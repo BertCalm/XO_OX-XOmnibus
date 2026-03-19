@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 10.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
-        "amount": 0.66
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Violent Shade Flow",
   "mood": "Flux",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Ombr_Obsc_Violent_Shade_Flow.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.952,
-    "brightness": 0.433,
-    "density": 0.956,
-    "movement": 0.92,
-    "space": 0.088,
-    "warmth": 0.084
-  },
-  "engines": [
-    "Ombre",
-    "Obscura"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Flux",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.96,
-      "macro_space": 0.2
-    },
-    "Ombre": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.9,
-      "macro_space": 0.44
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "flux"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Flux/5X DARK COLD KINETIC DENSE VIOLENT FLX 10.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.088,
     "aggression": 0.952
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Flux/Ombr_Obsc_Violent_Shade_Flow.xometa
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.981
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ombre",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.954
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERBITE",
+    "target": "OMBRE",
+    "amount": 0.954
   },
   "dna": {
-    "aggression": 0.978,
     "brightness": 0.524,
-    "density": 0.929,
+    "warmth": 0.915,
     "movement": 0.963,
+    "density": 0.929,
     "space": 0.97,
-    "warmth": 0.915
+    "aggression": 0.978
   },
-  "engines": [
-    "Overbite",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.72,
-    "COUPLING": 0.954,
     "MOVEMENT": 0.963,
+    "COUPLING": 0.954,
     "SPACE": 0.97
   },
-  "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOL...",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.738,
-      "macro_coupling": 0.95,
-      "macro_movement": 0.944,
-      "macro_space": 0.981
-    },
-    "Overbite": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.963,
-      "macro_space": 0.97
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
@@ -82,10 +47,5 @@
     "dense",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

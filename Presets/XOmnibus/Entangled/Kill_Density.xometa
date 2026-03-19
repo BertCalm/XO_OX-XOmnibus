@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.93,
-        "engineA": "Orca",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Orca kill velocity coupling into Onset XVC — every breach triggers percussion cascade.",
-  "dna": {
-    "aggression": 0.99,
-    "brightness": 0.48,
-    "density": 0.95,
-    "movement": 0.8,
-    "space": 0.05,
-    "warmth": 0.12
-  },
+  "schema_version": 1,
+  "name": "Kill Density",
+  "mood": "Entangled",
   "engines": [
     "Orca",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "orca",
     "onset",
     "predator"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "COUPLING": 0.93,
     "MOVEMENT": 0.8,
+    "COUPLING": 0.93,
     "SPACE": 0.05
   },
-  "mood": "Entangled",
-  "name": "Kill Density",
-  "parameters": {
-    "Orca": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.99,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.48,
-    "density": 0.95,
+    "warmth": 0.12,
     "movement": 0.8,
+    "density": 0.95,
     "space": 0.05,
-    "warmth": 0.12
+    "aggression": 0.99
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "orca",
-    "onset",
-    "predator"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.12,
+    "movement": 0.8,
+    "density": 0.95,
+    "space": 0.05,
+    "aggression": 0.99
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORCA",
+        "engineB": "ONSET",
+        "type": "CHAOS_INJECT",
+        "amount": 0.93
+      }
+    ]
+  }
 }

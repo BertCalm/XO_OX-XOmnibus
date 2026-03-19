@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SCORCHED SURGE",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.599
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oblique",
-        "type": "CHAOS_INJECT",
-        "amount": 0.742
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OBSIDIAN",
+    "target": "OBLIQUE",
+    "amount": 0.742
   },
   "dna": {
-    "aggression": 0.903,
     "brightness": 0.905,
-    "density": 0.549,
+    "warmth": 0.857,
     "movement": 0.507,
+    "density": 0.549,
     "space": 0.499,
-    "warmth": 0.857
+    "aggression": 0.903
   },
-  "engines": [
-    "Obsidian",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.904,
-    "COUPLING": 0.431,
     "MOVEMENT": 0.52,
+    "COUPLING": 0.431,
     "SPACE": 0.485
   },
-  "mood": "Flux",
-  "name": "SCORCHED SURGE",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.834,
-      "macro_coupling": 0.367,
-      "macro_movement": 0.409,
-      "macro_space": 0.599
-    },
-    "Obsidian": {
-      "macro_character": 0.904,
-      "macro_coupling": 0.431,
-      "macro_movement": 0.52,
-      "macro_space": 0.485
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

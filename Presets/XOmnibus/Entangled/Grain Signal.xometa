@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Optic",
-        "type": "SPECTRAL_REFRACTION",
-        "amount": 0.75
-      }
-    ]
-  },
-  "description": "Granular particles scattered through optical scan — each grain a photon burst",
+  "name": "Grain Signal",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
     "SPACE": 0.8
   },
-  "mood": "Entangled",
-  "name": "Grain Signal",
-  "parameters": {
-    "Opal": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.28,
     "brightness": 0.64,
-    "density": 0.48,
+    "warmth": 0.47,
     "movement": 0.62,
+    "density": 0.48,
     "space": 0.64,
-    "warmth": 0.47
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPAL",
+    "target": "OPTIC",
+    "amount": 0.75
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "optic",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Granular particles scattered through optical scan — each grain a photon burst"
->>>>>>> origin/v1-launch-prep
 }

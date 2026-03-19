@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Osprey",
-        "type": "COASTAL_DIVE",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Granular particles carried on shore wind — osprey dive scattering the opal cloud",
+  "name": "Coastal Grain",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Osprey"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Coastal Grain",
-  "parameters": {
-    "Opal": {},
-    "Osprey": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.34,
     "brightness": 0.54,
-    "density": 0.52,
+    "warmth": 0.53,
     "movement": 0.64,
+    "density": 0.52,
     "space": 0.66,
-    "warmth": 0.53
+    "aggression": 0.34
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "OPAL",
+    "target": "OSPREY",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "osprey",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Granular particles carried on shore wind — osprey dive scattering the opal cloud"
->>>>>>> origin/v1-launch-prep
 }

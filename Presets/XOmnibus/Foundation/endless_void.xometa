@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overlap",
-        "type": "PITCH_SYNC",
-        "amount": 0.676
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.314,
-    "brightness": 0.316,
-    "density": 0.67,
-    "movement": 0.942,
-    "space": 0.959,
-    "warmth": 0.261
-  },
+  "name": "ENDLESS VOID",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oracle",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.506,
-    "COUPLING": 0.132,
-    "MOVEMENT": 0.942,
-    "SPACE": 0.959
-  },
-  "mood": "Foundation",
-  "name": "ENDLESS VOID",
   "parameters": {
     "Oracle": {
       "macro_character": 0.646,
-      "macro_coupling": 0.929,
       "macro_movement": 0.938,
+      "macro_coupling": 0.929,
       "macro_space": 0.985
     },
     "Overlap": {
       "macro_character": 0.009,
-      "macro_coupling": 0.563,
       "macro_movement": 0.954,
+      "macro_coupling": 0.563,
       "macro_space": 0.935
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OVERLAP",
+    "amount": 0.676
+  },
+  "dna": {
+    "brightness": 0.316,
+    "warmth": 0.261,
+    "movement": 0.942,
+    "density": 0.67,
+    "space": 0.959,
+    "aggression": 0.314
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.942,
+    "COUPLING": 0.132,
+    "SPACE": 0.959
+  },
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

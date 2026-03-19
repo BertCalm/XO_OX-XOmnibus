@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.06,
-    "brightness": 0.05,
-    "density": 0.15,
-    "movement": 0.35,
-    "space": 0.95,
-    "warmth": 0.18
-  },
+  "name": "Event Horizon",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.27,
-    "COUPLING": 0.3,
-    "MOVEMENT": 0.35,
-    "SPACE": 0.95
-  },
-  "mood": "Aether",
-  "name": "Event Horizon",
   "parameters": {
     "Obscura": {
       "obscura_macro_character": 0.23,
-      "obscura_macro_coupling": 0.16,
       "obscura_macro_movement": 0.34,
+      "obscura_macro_coupling": 0.16,
       "obscura_macro_space": 0.95
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.18,
+    "movement": 0.35,
+    "density": 0.15,
+    "space": 0.95,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.3,
+    "SPACE": 0.95
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "event-horizon",
     "cosmic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

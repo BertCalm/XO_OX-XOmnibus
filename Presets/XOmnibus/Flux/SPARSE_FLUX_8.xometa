@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SPARSE FLUX 8",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.8949
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8076
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ONSET",
+    "amount": 0.8076
   },
   "dna": {
-    "aggression": 0.4326,
     "brightness": 0.8578,
-    "density": 0.1078,
+    "warmth": 0.6398,
     "movement": 0.182,
+    "density": 0.1078,
     "space": 0.9663,
-    "warmth": 0.6398
+    "aggression": 0.4326
   },
-  "engines": [
-    "Ouroboros",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2506,
-    "COUPLING": 0.5508,
     "MOVEMENT": 0.6351,
+    "COUPLING": 0.5508,
     "SPACE": 0.1252
   },
-  "mood": "Flux",
-  "name": "SPARSE FLUX 8",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.7093,
-      "macro_coupling": 0.9409,
-      "macro_movement": 0.346,
-      "macro_space": 0.8949
-    },
-    "Ouroboros": {
-      "macro_character": 0.1242,
-      "macro_coupling": 0.1647,
-      "macro_movement": 0.153,
-      "macro_space": 0.3227
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

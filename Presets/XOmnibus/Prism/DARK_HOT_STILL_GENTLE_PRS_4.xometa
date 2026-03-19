@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Ottoni",
-        "type": "PITCH_SYNC",
-        "amount": 0.606
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.062,
-    "brightness": 0.084,
-    "density": 0.394,
-    "movement": 0.098,
-    "space": 0.574,
-    "warmth": 0.925
-  },
+  "name": "DARK_HOT_STILL_GENTLE_PRS_4",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oblique",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.073,
-    "COUPLING": 0.778,
-    "MOVEMENT": 0.098,
-    "SPACE": 0.574
-  },
-  "mood": "Prism",
-  "name": "DARK_HOT_STILL_GENTLE_PRS_4",
   "parameters": {
     "Oblique": {
       "macro_character": 0.073,
-      "macro_coupling": 0.778,
       "macro_movement": 0.098,
+      "macro_coupling": 0.778,
       "macro_space": 0.574
     },
     "Ottoni": {
       "macro_character": 0.489,
-      "macro_coupling": 0.476,
       "macro_movement": 0.098,
+      "macro_coupling": 0.476,
       "macro_space": 0.574
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBLIQUE",
+    "target": "OTTONI",
+    "amount": 0.606
+  },
+  "dna": {
+    "brightness": 0.084,
+    "warmth": 0.925,
+    "movement": 0.098,
+    "density": 0.394,
+    "space": 0.574,
+    "aggression": 0.062
+  },
+  "macros": {
+    "CHARACTER": 0.073,
+    "MOVEMENT": 0.098,
+    "COUPLING": 0.778,
+    "SPACE": 0.574
+  },
   "tags": [
     "prism",
     "dark",
     "hot",
     "still",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

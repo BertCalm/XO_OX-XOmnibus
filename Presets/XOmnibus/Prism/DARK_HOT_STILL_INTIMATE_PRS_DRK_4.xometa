@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_4",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.0938
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ottoni",
-        "type": "PITCH_SYNC",
-        "amount": 0.6957
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "OTTONI",
+    "amount": 0.6957
   },
   "dna": {
-    "aggression": 0.5747,
     "brightness": 0.0371,
-    "density": 0.508,
+    "warmth": 0.8753,
     "movement": 0.068,
+    "density": 0.508,
     "space": 0.1087,
-    "warmth": 0.8753
+    "aggression": 0.5747
   },
-  "engines": [
-    "Overworld",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.725,
-    "COUPLING": 0.508,
     "MOVEMENT": 0.068,
+    "COUPLING": 0.508,
     "SPACE": 0.1087
   },
-  "mood": "Prism",
-  "name": "Smoke Wrath",
-  "parameters": {
-    "Ottoni": {
-      "macro_character": 0.6906,
-      "macro_coupling": 0.4944,
-      "macro_movement": 0.0811,
-      "macro_space": 0.0938
-    },
-    "Overworld": {
-      "macro_character": 0.725,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.068,
-      "macro_space": 0.1087
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "still",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

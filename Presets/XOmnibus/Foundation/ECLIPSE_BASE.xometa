@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Osprey",
-        "type": "ENVELOPE_FOLLOW",
-        "amount": 0.793
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.487,
-    "brightness": 0.031,
-    "density": 0.017,
-    "movement": 0.464,
-    "space": 0.765,
-    "warmth": 0.482
-  },
+  "name": "ECLIPSE BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Obbligato",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.275,
-    "COUPLING": 0.467,
-    "MOVEMENT": 0.318,
-    "SPACE": 0.524
-  },
-  "mood": "Foundation",
-  "name": "ECLIPSE BASE",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.401,
-      "macro_coupling": 0.629,
       "macro_movement": 0.074,
+      "macro_coupling": 0.629,
       "macro_space": 0.054
     },
     "Osprey": {
       "macro_character": 0.149,
-      "macro_coupling": 0.304,
       "macro_movement": 0.563,
+      "macro_coupling": 0.304,
       "macro_space": 0.994
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_FOLLOW",
+    "source": "OBBLIGATO",
+    "target": "OSPREY",
+    "amount": 0.793
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.482,
+    "movement": 0.464,
+    "density": 0.017,
+    "space": 0.765,
+    "aggression": 0.487
+  },
+  "macros": {
+    "CHARACTER": 0.275,
+    "MOVEMENT": 0.318,
+    "COUPLING": 0.467,
+    "SPACE": 0.524
+  },
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "low-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

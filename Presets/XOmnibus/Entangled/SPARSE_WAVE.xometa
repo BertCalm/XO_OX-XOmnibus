@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SPARSE WAVE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.063
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Opal",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.721
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OSPREY",
+    "target": "OPAL",
+    "amount": 0.721
   },
   "dna": {
-    "aggression": 0.042,
     "brightness": 0.458,
-    "density": 0.09,
+    "warmth": 0.293,
     "movement": 0.044,
+    "density": 0.09,
     "space": 0.199,
-    "warmth": 0.293
+    "aggression": 0.042
   },
-  "engines": [
-    "Osprey",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.933,
-    "COUPLING": 0.989,
     "MOVEMENT": 0.515,
+    "COUPLING": 0.989,
     "SPACE": 0.543
   },
-  "mood": "Entangled",
-  "name": "SPARSE WAVE",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.695,
-      "macro_coupling": 0.811,
-      "macro_movement": 0.632,
-      "macro_space": 0.063
-    },
-    "Osprey": {
-      "macro_character": 0.814,
-      "macro_coupling": 0.779,
-      "macro_movement": 0.175,
-      "macro_space": 0.465
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

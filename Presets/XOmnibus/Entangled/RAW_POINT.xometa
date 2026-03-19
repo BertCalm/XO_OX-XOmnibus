@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ole",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.646
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.542,
-    "brightness": 0.846,
-    "density": 0.061,
-    "movement": 0.347,
-    "space": 0.065,
-    "warmth": 0.32
-  },
+  "name": "RAW POINT",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.891,
-    "COUPLING": 0.712,
-    "MOVEMENT": 0.851,
-    "SPACE": 0.927
-  },
-  "mood": "Entangled",
-  "name": "RAW POINT",
   "parameters": {
     "Obscura": {
       "macro_character": 0.916,
-      "macro_coupling": 0.123,
       "macro_movement": 0.491,
+      "macro_coupling": 0.123,
       "macro_space": 0.853
     },
     "Ole": {
       "macro_character": 0.452,
-      "macro_coupling": 0.445,
       "macro_movement": 0.899,
+      "macro_coupling": 0.445,
       "macro_space": 0.088
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OBSCURA",
+    "target": "OLE",
+    "amount": 0.646
+  },
+  "dna": {
+    "brightness": 0.846,
+    "warmth": 0.32,
+    "movement": 0.347,
+    "density": 0.061,
+    "space": 0.065,
+    "aggression": 0.542
+  },
+  "macros": {
+    "CHARACTER": 0.891,
+    "MOVEMENT": 0.851,
+    "COUPLING": 0.712,
+    "SPACE": 0.927
+  },
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

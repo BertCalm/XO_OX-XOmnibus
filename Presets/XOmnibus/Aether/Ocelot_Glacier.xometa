@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.75,
-    "density": 0.09,
-    "movement": 0.18,
-    "space": 0.84,
-    "warmth": 0.08
-  },
+  "name": "Ocelot Glacier",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ocelot"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.29,
-    "COUPLING": 0.34,
-    "MOVEMENT": 0.18,
-    "SPACE": 0.84
-  },
-  "mood": "Aether",
-  "name": "Ocelot Glacier",
   "parameters": {
     "Ocelot": {
       "ocel_macro_character": 0.19,
-      "ocel_macro_coupling": 0.27,
       "ocel_macro_movement": 0.22,
+      "ocel_macro_coupling": 0.27,
       "ocel_macro_space": 0.84
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.08,
+    "movement": 0.18,
+    "density": 0.09,
+    "space": 0.84,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.34,
+    "SPACE": 0.84
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "glacier",
     "ocelot"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

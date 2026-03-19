@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_SPARSE_VIOLENT_FAM_VOL_122",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.627
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Odyssey",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.492
-      }
-    ]
+    "type": "ENVELOPE_MIRROR",
+    "source": "OPAL",
+    "target": "ODYSSEY",
+    "amount": 0.492
   },
   "dna": {
-    "aggression": 0.898,
     "brightness": 0.895,
-    "density": 0.055,
+    "warmth": 0.955,
     "movement": 0.671,
+    "density": 0.055,
     "space": 0.609,
-    "warmth": 0.955
+    "aggression": 0.898
   },
-  "engines": [
-    "Opal",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.931,
-    "COUPLING": 0.487,
     "MOVEMENT": 0.661,
+    "COUPLING": 0.487,
     "SPACE": 0.617
   },
-  "mood": "Family",
-  "name": "Glow Wrath",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.468,
-      "macro_movement": 0.673,
-      "macro_space": 0.627
-    },
-    "Opal": {
-      "macro_character": 0.951,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.649,
-      "macro_space": 0.607
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "aggressive",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

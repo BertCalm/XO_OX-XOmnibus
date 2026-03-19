@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_21",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.677
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Overdub",
-        "type": "SPECTRAL_WEAVE",
-        "amount": 0.698
-      }
-    ]
+    "type": "SPECTRAL_WEAVE",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.698
   },
   "dna": {
-    "aggression": 0.497,
     "brightness": 0.915,
-    "density": 0.949,
+    "warmth": 0.887,
     "movement": 0.021,
+    "density": 0.949,
     "space": 0.659,
-    "warmth": 0.887
+    "aggression": 0.497
   },
-  "engines": [
-    "Overdub",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.895,
-    "COUPLING": 0.736,
     "MOVEMENT": 0.026,
+    "COUPLING": 0.736,
     "SPACE": 0.673
   },
-  "mood": "Family",
-  "name": "Candlelight Saturated",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.013,
-      "macro_space": 0.677
-    },
-    "Overdub": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.749,
-      "macro_movement": 0.04,
-      "macro_space": 0.668
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "ODDOSCAR at maximum weight and minimum light — the character unmasked.",
-  "dna": {
-    "aggression": 0.65,
-    "brightness": 0.12,
-    "density": 0.8,
-    "movement": 0.3,
-    "space": 0.35,
-    "warmth": 0.5
-  },
+  "schema_version": 1,
+  "name": "Oscar's Shadow Self",
+  "mood": "Family",
   "engines": [
     "OddOscar"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "WEIGHT",
-    "CHARACTER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Oscar's Shadow Self",
-  "parameters": {
-    "OddOscar": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ODDOSCAR at maximum weight and minimum light — the character unmasked.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "character",
     "weight"
   ],
+  "macroLabels": [
+    "WEIGHT",
+    "CHARACTER",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.35,
     "aggression": 0.65
   }
->>>>>>> origin/v1-launch-prep
 }

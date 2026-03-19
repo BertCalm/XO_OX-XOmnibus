@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LOCKED SHELL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.864
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ohm",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.43
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERBITE",
+    "target": "OHM",
+    "amount": 0.43
   },
   "dna": {
-    "aggression": 0.067,
     "brightness": 0.349,
-    "density": 0.942,
+    "warmth": 0.698,
     "movement": 0.051,
+    "density": 0.942,
     "space": 0.653,
-    "warmth": 0.698
+    "aggression": 0.067
   },
-  "engines": [
-    "Overbite",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.621,
-    "COUPLING": 0.284,
     "MOVEMENT": 0.051,
+    "COUPLING": 0.284,
     "SPACE": 0.254
   },
-  "mood": "Entangled",
-  "name": "LOCKED SHELL",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.07,
-      "macro_movement": 0.045,
-      "macro_space": 0.864
-    },
-    "Overbite": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.078,
-      "macro_movement": 0.056,
-      "macro_space": 0.935
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "locked"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overlap",
-        "type": "TIMBRAL_BLEND",
-        "amount": 0.815
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.85,
-    "brightness": 0.08,
-    "density": 0.397,
-    "movement": 0.722,
-    "space": 0.289,
-    "warmth": 0.33
-  },
+  "name": "BLACK VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oracle",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.403,
-    "COUPLING": 0.133,
-    "MOVEMENT": 0.078,
-    "SPACE": 0.482
-  },
-  "mood": "Atmosphere",
-  "name": "BLACK VAPOR",
   "parameters": {
     "Oracle": {
       "macro_character": 0.145,
-      "macro_coupling": 0.251,
       "macro_movement": 0.13,
+      "macro_coupling": 0.251,
       "macro_space": 0.174
     },
     "Overlap": {
       "macro_character": 0.661,
-      "macro_coupling": 0.015,
       "macro_movement": 0.026,
+      "macro_coupling": 0.015,
       "macro_space": 0.79
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRAL_BLEND",
+    "source": "ORACLE",
+    "target": "OVERLAP",
+    "amount": 0.815
+  },
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.33,
+    "movement": 0.722,
+    "density": 0.397,
+    "space": 0.289,
+    "aggression": 0.85
+  },
+  "macros": {
+    "CHARACTER": 0.403,
+    "MOVEMENT": 0.078,
+    "COUPLING": 0.133,
+    "SPACE": 0.482
+  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Osprey",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.7642
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.3103,
-    "brightness": 0.5415,
-    "density": 0.9581,
-    "movement": 0.9418,
-    "space": 0.0912,
-    "warmth": 0.0682
-  },
+  "name": "COLD_KINETIC_INTIMATE_DENSE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oceanic",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5403,
-    "COUPLING": 0.7642,
-    "MOVEMENT": 0.9335,
-    "SPACE": 0.0912
-  },
-  "mood": "Aether",
-  "name": "Flux Packed",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.5127,
-      "macro_coupling": 0.9774,
       "macro_movement": 0.9577,
+      "macro_coupling": 0.9774,
       "macro_space": 0.0958
     },
     "Osprey": {
       "macro_character": 0.5678,
-      "macro_coupling": 0.96,
       "macro_movement": 0.9093,
+      "macro_coupling": 0.96,
       "macro_space": 0.0854
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.7642
+  },
+  "dna": {
+    "warmth": 0.0682,
+    "movement": 0.9418,
+    "space": 0.0912,
+    "density": 0.9581,
+    "brightness": 0.5415,
+    "aggression": 0.3103
+  },
+  "macros": {
+    "CHARACTER": 0.5403,
+    "MOVEMENT": 0.9335,
+    "COUPLING": 0.7642,
+    "SPACE": 0.0912
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "intimate",
     "dense",
     "mechanical"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.806,
-        "engineA": "Overlap",
-        "engineB": "Osprey",
-        "type": "SPATIAL_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Shoreline Tail",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Osprey shore blend feeds OVERLAP late decay colour — cultural coast tones absorbed into FDN space",
-  "dna": {
-    "aggression": 0.275,
-    "brightness": 0.525,
-    "density": 0.575,
-    "movement": 0.45,
-    "space": 0.75,
-    "warmth": 0.525
-  },
-  "engines": [
-    "Overlap",
-    "Osprey"
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "osprey",
+    "shore",
+    "cultural"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.571,
-    "COUPLING": 0.693,
     "MOVEMENT": 0.413,
+    "COUPLING": 0.693,
     "SPACE": 0.71
   },
-  "mood": "Entangled",
-  "name": "Shoreline Tail",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.575
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.575
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.834,
-      "olap_crossfeedAmt": 0.306,
-=======
       "olap_size": 0.793,
       "olap_decay": 0.816,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.34,
-      "olap_decay": 0.816,
       "olap_diffusion": 0.709,
-      "olap_earlyMix": 0.547,
-      "olap_filterCutoff": 0.661,
-      "olap_filterReso": 0.313,
-      "olap_frondDensity": 0.404,
-      "olap_lateMix": 0.537,
       "olap_modDepth": 0.28,
       "olap_modRate": 0.205,
-      "olap_nodeCount": 9,
-      "olap_outputLevel": 0.82,
       "olap_preDelay": 0.258,
-      "olap_shimmerMix": 0.096,
-      "olap_size": 0.793,
-      "olap_spinRate": 0.039
+      "olap_earlyMix": 0.547,
+      "olap_lateMix": 0.537,
+      "olap_filterCutoff": 0.661,
+      "olap_filterReso": 0.313,
+      "olap_outputLevel": 0.82,
+      "olap_couplingLevel": 0.834,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.404,
+      "olap_nodeCount": 9,
+      "olap_crossfeedAmt": 0.306,
+      "olap_spinRate": 0.039,
+      "olap_shimmerMix": 0.096
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.275,
-    "brightness": 0.525,
-    "density": 0.575,
-    "movement": 0.45,
-    "space": 0.75,
-    "warmth": 0.525
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "osprey",
-    "shore",
-    "cultural"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OSPREY",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.806
+      }
+    ]
+  }
 }

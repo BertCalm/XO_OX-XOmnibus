@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SAVAGE KNOT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.527
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.577
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERLAP",
+    "target": "OTTONI",
+    "amount": 0.577
   },
   "dna": {
-    "aggression": 0.969,
     "brightness": 0.222,
-    "density": 0.667,
+    "warmth": 0.232,
     "movement": 0.358,
+    "density": 0.667,
     "space": 0.142,
-    "warmth": 0.232
+    "aggression": 0.969
   },
-  "engines": [
-    "Overlap",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.235,
-    "COUPLING": 0.223,
     "MOVEMENT": 0.853,
+    "COUPLING": 0.223,
     "SPACE": 0.627
   },
-  "mood": "Entangled",
-  "name": "SAVAGE KNOT",
-  "parameters": {
-    "Ottoni": {
-      "macro_character": 0.541,
-      "macro_coupling": 0.342,
-      "macro_movement": 0.2,
-      "macro_space": 0.527
-    },
-    "Overlap": {
-      "macro_character": 0.816,
-      "macro_coupling": 0.3,
-      "macro_movement": 0.777,
-      "macro_space": 0.608
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "brutal",
     "aggressive",
     "violent",
     "entangled"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Owlfish",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.3069
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.1016,
-    "brightness": 0.2193,
-    "density": 0.5095,
-    "movement": 0.9975,
-    "space": 0.0909,
-    "warmth": 0.0599
-  },
+  "name": "FROZEN FLUX",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Ole",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7207,
-    "COUPLING": 0.537,
-    "MOVEMENT": 0.6817,
-    "SPACE": 0.2668
-  },
-  "mood": "Flux",
-  "name": "FROZEN FLUX",
   "parameters": {
     "Ole": {
       "macro_character": 0.7921,
-      "macro_coupling": 0.0635,
       "macro_movement": 0.4222,
+      "macro_coupling": 0.0635,
       "macro_space": 0.3816
     },
     "Owlfish": {
       "macro_character": 0.9961,
-      "macro_coupling": 0.9711,
       "macro_movement": 0.5291,
+      "macro_coupling": 0.9711,
       "macro_space": 0.8608
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OLE",
+    "target": "OWLFISH",
+    "amount": 0.3069
+  },
+  "dna": {
+    "brightness": 0.2193,
+    "warmth": 0.0599,
+    "movement": 0.9975,
+    "density": 0.5095,
+    "space": 0.0909,
+    "aggression": 0.1016
+  },
+  "macros": {
+    "CHARACTER": 0.7207,
+    "MOVEMENT": 0.6817,
+    "COUPLING": 0.537,
+    "SPACE": 0.2668
+  },
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

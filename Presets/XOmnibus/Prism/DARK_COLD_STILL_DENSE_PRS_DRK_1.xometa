@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_DENSE_PRS_DRK_1",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.6182
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ocelot",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.5541
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.5541
   },
   "dna": {
-    "aggression": 0.4361,
     "brightness": 0.0226,
-    "density": 0.8955,
+    "warmth": 0.1136,
     "movement": 0.04,
+    "density": 0.8955,
     "space": 0.6191,
-    "warmth": 0.1136
+    "aggression": 0.4361
   },
-  "engines": [
-    "Orphica",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2748,
-    "COUPLING": 0.8955,
     "MOVEMENT": 0.04,
+    "COUPLING": 0.8955,
     "SPACE": 0.6191
   },
-  "mood": "Prism",
-  "name": "Tone Heavy 2",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.3106,
-      "macro_coupling": 0.9131,
-      "macro_movement": 0.01,
-      "macro_space": 0.6182
-    },
-    "Orphica": {
-      "macro_character": 0.2748,
-      "macro_coupling": 0.8955,
-      "macro_movement": 0.04,
-      "macro_space": 0.6191
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "still",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

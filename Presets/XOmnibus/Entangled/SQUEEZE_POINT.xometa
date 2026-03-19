@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SQUEEZE POINT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.028
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Octopus",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.395
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERLAP",
+    "target": "OCTOPUS",
+    "amount": 0.395
   },
   "dna": {
-    "aggression": 0.077,
     "brightness": 0.669,
-    "density": 0.74,
+    "warmth": 0.315,
     "movement": 0.608,
+    "density": 0.74,
     "space": 0.037,
-    "warmth": 0.315
+    "aggression": 0.077
   },
-  "engines": [
-    "Overlap",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.353,
-    "COUPLING": 0.843,
     "MOVEMENT": 0.283,
+    "COUPLING": 0.843,
     "SPACE": 0.037
   },
-  "mood": "Entangled",
-  "name": "SQUEEZE POINT",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.667,
-      "macro_coupling": 0.175,
-      "macro_movement": 0.709,
-      "macro_space": 0.028
-    },
-    "Overlap": {
-      "macro_character": 0.437,
-      "macro_coupling": 0.311,
-      "macro_movement": 0.106,
-      "macro_space": 0.011
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CLOISTERED AIR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.079
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Obese",
-        "type": "PITCH_SYNC",
-        "amount": 0.662
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OWLFISH",
+    "target": "OBESE",
+    "amount": 0.662
   },
   "dna": {
-    "aggression": 0.743,
     "brightness": 0.195,
-    "density": 0.281,
+    "warmth": 0.941,
     "movement": 0.733,
+    "density": 0.281,
     "space": 0.044,
-    "warmth": 0.941
+    "aggression": 0.743
   },
-  "engines": [
-    "Owlfish",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.226,
-    "COUPLING": 0.16,
     "MOVEMENT": 0.239,
+    "COUPLING": 0.16,
     "SPACE": 0.044
   },
-  "mood": "Atmosphere",
-  "name": "CLOISTERED AIR",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.858,
-      "macro_coupling": 0.269,
-      "macro_movement": 0.266,
-      "macro_space": 0.079
-    },
-    "Owlfish": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.588,
-      "macro_movement": 0.597,
-      "macro_space": 0.044
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

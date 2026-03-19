@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_106",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.988
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "OddfeliX",
-        "type": "MODULATION_FLOW",
-        "amount": 0.705
-      }
-    ]
+    "type": "MODULATION_FLOW",
+    "source": "OSTERIA",
+    "target": "ODDFELIX",
+    "amount": 0.705
   },
   "dna": {
-    "aggression": 0.924,
     "brightness": 0.908,
-    "density": 0.559,
+    "warmth": 0.888,
     "movement": 0.388,
+    "density": 0.559,
     "space": 0.959,
-    "warmth": 0.888
+    "aggression": 0.924
   },
-  "engines": [
-    "Osteria",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.911,
-    "COUPLING": 0.741,
     "MOVEMENT": 0.379,
+    "COUPLING": 0.741,
     "SPACE": 0.964
   },
-  "mood": "Family",
-  "name": "Bloom Abyss",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.762,
-      "macro_movement": 0.389,
-      "macro_space": 0.988
-    },
-    "Osteria": {
-      "macro_character": 0.925,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.368,
-      "macro_space": 0.939
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "vast",
     "aggressive",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

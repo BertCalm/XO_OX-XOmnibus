@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LAVA THREAD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.053
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "OddOscar",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.394
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORCA",
+    "target": "ODDOSCAR",
+    "amount": 0.394
   },
   "dna": {
-    "aggression": 0.877,
     "brightness": 0.878,
-    "density": 0.156,
+    "warmth": 0.898,
     "movement": 0.626,
+    "density": 0.156,
     "space": 0.693,
-    "warmth": 0.898
+    "aggression": 0.877
   },
-  "engines": [
-    "Orca",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.618,
-    "COUPLING": 0.272,
     "MOVEMENT": 0.674,
+    "COUPLING": 0.272,
     "SPACE": 0.662
   },
-  "mood": "Entangled",
-  "name": "LAVA THREAD",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.777,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.568,
-      "macro_space": 0.053
-    },
-    "Orca": {
-      "macro_character": 0.42,
-      "macro_coupling": 0.37,
-      "macro_movement": 0.341,
-      "macro_space": 0.722
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

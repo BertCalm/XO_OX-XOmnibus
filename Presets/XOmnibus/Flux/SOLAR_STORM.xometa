@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SOLAR STORM",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 0.443
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obbligato",
-        "type": "RHYTHM_SYNC",
-        "amount": 0.85
-      }
-    ]
+    "type": "RHYTHM_SYNC",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.85
   },
   "dna": {
-    "aggression": 0.534,
     "brightness": 0.881,
-    "density": 0.618,
+    "warmth": 0.881,
     "movement": 0.682,
+    "density": 0.618,
     "space": 0.479,
-    "warmth": 0.881
+    "aggression": 0.534
   },
-  "engines": [
-    "Overdub",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.34,
-    "COUPLING": 0.61,
     "MOVEMENT": 0.225,
+    "COUPLING": 0.61,
     "SPACE": 0.487
   },
-  "mood": "Flux",
-  "name": "SOLAR STORM",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.755,
-      "macro_movement": 0.317,
-      "macro_space": 0.443
-    },
-    "Overdub": {
-      "macro_character": 0.121,
-      "macro_coupling": 0.465,
-      "macro_movement": 0.133,
-      "macro_space": 0.531
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "extreme",
     "high-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

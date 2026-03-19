@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Ombre",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.816
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.901,
-    "brightness": 0.882,
-    "density": 0.317,
-    "movement": 0.929,
-    "space": 0.946,
-    "warmth": 0.821
-  },
+  "name": "FURY LINK",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ole",
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.757,
-    "COUPLING": 0.339,
-    "MOVEMENT": 0.843,
-    "SPACE": 0.551
-  },
-  "mood": "Entangled",
-  "name": "FURY LINK",
   "parameters": {
     "Ole": {
       "macro_character": 0.324,
-      "macro_coupling": 0.626,
       "macro_movement": 0.534,
+      "macro_coupling": 0.626,
       "macro_space": 0.243
     },
     "Ombre": {
       "macro_character": 0.78,
-      "macro_coupling": 0.266,
       "macro_movement": 0.113,
+      "macro_coupling": 0.266,
       "macro_space": 0.215
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OLE",
+    "target": "OMBRE",
+    "amount": 0.816
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.821,
+    "movement": 0.929,
+    "density": 0.317,
+    "space": 0.946,
+    "aggression": 0.901
+  },
+  "macros": {
+    "CHARACTER": 0.757,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.339,
+    "SPACE": 0.551
+  },
   "tags": [
     "brutal",
     "entangled",
     "aggressive",
     "obliterating"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

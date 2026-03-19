@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OVERDUB spring and tape at maximum warmth — the room that never ends.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.42,
-    "density": 0.38,
-    "movement": 0.55,
-    "space": 0.85,
-    "warmth": 0.9
-  },
+  "schema_version": 1,
+  "name": "Dub Room Eternal",
+  "mood": "Family",
   "engines": [
     "Overdub"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DRIVE",
-    "TAPE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Dub Room Eternal",
-  "parameters": {
-    "Overdub": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERDUB spring and tape at maximum warmth — the room that never ends.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "spatial",
     "tape"
   ],
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.85,
     "aggression": 0.18
   }
->>>>>>> origin/v1-launch-prep
 }

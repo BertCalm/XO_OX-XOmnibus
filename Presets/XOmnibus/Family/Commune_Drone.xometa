@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OHM COMMUNE axis — drone warmth sustained, MEDDLING at peace. The hippy dad who knows when to stop talking and just hum.",
-  "dna": {
-    "aggression": 0.12,
-    "brightness": 0.42,
-    "density": 0.55,
-    "movement": 0.28,
-    "space": 0.75,
-    "warmth": 0.78
-  },
+  "schema_version": 1,
+  "name": "Commune Drone",
+  "mood": "Family",
   "engines": [
     "Ohm"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "MEDDLING",
-    "COMMUNE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Commune Drone",
-  "parameters": {
-    "Ohm": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OHM COMMUNE axis — drone warmth sustained, MEDDLING at peace. The hippy dad who knows when to stop talking and just hum.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "meditative",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.75,
     "aggression": 0.12
   }
->>>>>>> origin/v1-launch-prep
 }

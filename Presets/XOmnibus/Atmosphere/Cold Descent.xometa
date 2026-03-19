@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "The sound of water above water, heard from below. Refracted, slow, still.",
+  "name": "Cold Descent",
+  "version": "1.0",
   "engines": [
     "Ombre"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.433,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.151,
+    "COUPLING": 0.0,
     "SPACE": 0.934
   },
-  "mood": "Atmosphere",
-  "name": "Cold Descent",
-  "parameters": {
-    "Ombre": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.094,
     "brightness": 0.292,
-    "density": 0.525,
+    "warmth": 0.575,
     "movement": 0.151,
+    "density": 0.525,
     "space": 0.934,
-    "warmth": 0.575
+    "aggression": 0.094
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "deep",
     "vast"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "The sound of water above water, heard from below. Refracted, slow, still."
 }

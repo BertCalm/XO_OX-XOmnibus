@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "OddfeliX",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.639
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.478,
-    "brightness": 0.477,
-    "density": 0.471,
-    "movement": 0.957,
-    "space": 0.663,
-    "warmth": 0.948
-  },
+  "name": "HEAT SPIRAL",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Octopus",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.478,
-    "COUPLING": 0.495,
-    "MOVEMENT": 0.811,
-    "SPACE": 0.623
-  },
-  "mood": "Flux",
-  "name": "HEAT SPIRAL",
   "parameters": {
     "Octopus": {
       "macro_character": 0.478,
-      "macro_coupling": 0.495,
       "macro_movement": 0.811,
+      "macro_coupling": 0.495,
       "macro_space": 0.623
     },
     "OddfeliX": {
       "macro_character": 0.586,
-      "macro_coupling": 0.571,
       "macro_movement": 0.796,
+      "macro_coupling": 0.571,
       "macro_space": 0.725
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCTOPUS",
+    "target": "ODDFELIX",
+    "amount": 0.639
+  },
+  "dna": {
+    "brightness": 0.477,
+    "warmth": 0.948,
+    "movement": 0.957,
+    "density": 0.471,
+    "space": 0.663,
+    "aggression": 0.478
+  },
+  "macros": {
+    "CHARACTER": 0.478,
+    "MOVEMENT": 0.811,
+    "COUPLING": 0.495,
+    "SPACE": 0.623
+  },
   "tags": [
     "flux",
     "warm",
     "kinetic",
     "movement"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

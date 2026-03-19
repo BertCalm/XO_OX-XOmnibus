@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "NOCTURNE SPECTRUM",
   "version": "1.0",
   "mood": "Prism",
@@ -23,66 +20,29 @@
       "macro_space": 0.75
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oracle",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.468
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.468
   },
   "dna": {
-    "aggression": 0.999,
     "brightness": 0.064,
-    "density": 0.691,
+    "warmth": 0.188,
     "movement": 0.893,
+    "density": 0.691,
     "space": 0.036,
-    "warmth": 0.188
+    "aggression": 0.999
   },
-  "engines": [
-    "Orbital",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.98,
-    "COUPLING": 0.408,
     "MOVEMENT": 0.166,
+    "COUPLING": 0.408,
     "SPACE": 0.464
   },
-  "mood": "Prism",
-  "name": "NOCTURNE SPECTRUM",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.538,
-      "macro_coupling": 0.551,
-      "macro_movement": 0.526,
-      "macro_space": 0.75
-    },
-    "Orbital": {
-      "macro_character": 0.311,
-      "macro_coupling": 0.929,
-      "macro_movement": 0.148,
-      "macro_space": 0.643
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

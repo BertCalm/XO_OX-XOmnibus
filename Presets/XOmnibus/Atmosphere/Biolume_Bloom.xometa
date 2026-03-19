@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OCTOPUS — bright extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.17,
-    "brightness": 0.93,
-    "density": 0.71,
-    "movement": 0.74,
-    "space": 0.81,
-    "warmth": 0.76
-  },
+  "schema_version": 1,
+  "name": "Biolume Bloom",
+  "mood": "Atmosphere",
   "engines": [
     "Octopus"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Biolume Bloom",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.76,
+    "movement": 0.74,
+    "density": 0.71,
+    "space": 0.81,
+    "aggression": 0.17
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.76,
+    "movement": 0.74,
+    "density": 0.71,
+    "space": 0.81,
+    "aggression": 0.17
+  },
   "parameters": {
     "Octopus": {
-<<<<<<< HEAD
-=======
       "oct_armCount": 0.61,
       "oct_inkCloud": 0.78,
       "oct_filterCutoff": 0.03,
       "oct_filterReso": 0.07,
->>>>>>> origin/v1-launch-prep
       "oct_ampAttack": 623.9,
       "oct_ampDecay": 296.2,
-      "oct_ampRelease": 456.0,
       "oct_ampSustain": 0.57,
-      "oct_armCount": 0.61,
-      "oct_character": 0.76,
-      "oct_coupling": 0.4,
-      "oct_delayMix": 0.37,
-      "oct_filterCutoff": 0.03,
-      "oct_filterReso": 0.07,
-      "oct_inkCloud": 0.78,
-      "oct_lfoDepth": 0.68,
+      "oct_ampRelease": 456.0,
       "oct_lfoRate": 0.61,
-      "oct_movement": 0.57,
+      "oct_lfoDepth": 0.68,
       "oct_reverbMix": 0.95,
-      "oct_space": 0.53
+      "oct_delayMix": 0.37,
+      "oct_character": 0.76,
+      "oct_movement": 0.57,
+      "oct_space": 0.53,
+      "oct_coupling": 0.4
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.17,
-    "brightness": 0.93,
-    "density": 0.71,
-    "movement": 0.74,
-    "space": 0.81,
-    "warmth": 0.76
-  },
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

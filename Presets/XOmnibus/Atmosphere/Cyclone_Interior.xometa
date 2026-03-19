@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Cyclone Interior",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OUTWIT kinetic register.",
-  "dna": {
-    "aggression": 0.429,
-    "brightness": 0.586,
-    "density": 0.685,
-    "movement": 0.9,
-    "space": 0.44,
-    "warmth": 0.34
-  },
-  "engines": [
-    "Outwit"
-  ],
-  "macroLabels": [
-    "CUNNING",
-    "REFLEX",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.209,
-    "CUNNING": 0.356,
-    "REFLEX": 0.911,
-    "SPACE": 0.461
-  },
-  "mood": "Atmosphere",
-  "name": "Cyclone Interior",
-  "parameters": {
-    "Outwit": {
-      "coupling": 0.209,
-      "cunning": 0.356,
-      "reflex": 0.911,
-      "space": 0.461
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -58,9 +16,6 @@
     "weather",
     "dynamic"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "CUNNING",
     "REFLEX",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

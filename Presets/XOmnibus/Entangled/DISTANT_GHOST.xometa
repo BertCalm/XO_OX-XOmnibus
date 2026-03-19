@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DISTANT GHOST",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.51
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Obese",
-        "type": "PITCH_SYNC",
-        "amount": 0.191
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OWLFISH",
+    "target": "OBESE",
+    "amount": 0.191
   },
   "dna": {
-    "aggression": 0.819,
     "brightness": 0.51,
-    "density": 0.057,
+    "warmth": 0.906,
     "movement": 0.349,
+    "density": 0.057,
     "space": 0.727,
-    "warmth": 0.906
+    "aggression": 0.819
   },
-  "engines": [
-    "Owlfish",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.815,
-    "COUPLING": 0.146,
     "MOVEMENT": 0.236,
+    "COUPLING": 0.146,
     "SPACE": 0.197
   },
-  "mood": "Entangled",
-  "name": "DISTANT GHOST",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.34,
-      "macro_coupling": 0.168,
-      "macro_movement": 0.333,
-      "macro_space": 0.51
-    },
-    "Owlfish": {
-      "macro_character": 0.589,
-      "macro_coupling": 0.396,
-      "macro_movement": 0.524,
-      "macro_space": 0.31
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

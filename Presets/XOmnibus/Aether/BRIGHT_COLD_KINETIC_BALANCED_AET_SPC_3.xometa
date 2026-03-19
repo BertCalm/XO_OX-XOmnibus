@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT COLD KINETIC BALANCED AET SPC 3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.573
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "OddfeliX",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.936
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "ODDFELIX",
+    "amount": 0.936
   },
   "dna": {
-    "aggression": 0.95,
     "brightness": 0.982,
-    "density": 0.443,
+    "warmth": 0.127,
     "movement": 0.875,
+    "density": 0.443,
     "space": 0.555,
-    "warmth": 0.127
+    "aggression": 0.95
   },
-  "engines": [
-    "Organon",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.554,
-    "COUPLING": 0.837,
     "MOVEMENT": 0.875,
+    "COUPLING": 0.837,
     "SPACE": 0.555
   },
-  "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCE...",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.817,
-      "macro_movement": 0.859,
-      "macro_space": 0.573
-    },
-    "Organon": {
-      "macro_character": 0.554,
-      "macro_coupling": 0.837,
-      "macro_movement": 0.875,
-      "macro_space": 0.555
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -83,10 +48,5 @@
     "aggressive",
     "bright",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

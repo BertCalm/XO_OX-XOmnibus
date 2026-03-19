@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.79,
-        "engineA": "Obbligato",
-        "engineB": "Organon",
-        "type": "Spectral->Harmonic"
-      }
-    ]
-  },
-  "couplingIntensity": "Extreme",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OBBLIGATO Rascal Chord",
   "mood": "Entangled",
@@ -23,43 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Obligatory reeds breathe through variational metabolism — OBBLIGATO's BOND macro drives ORGANON's cellular respiration.",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.88,
-    "density": 0.62,
-    "movement": 0.55,
-    "space": 0.5,
-    "warmth": 0.75
-  },
-  "engines": [
-    "Obbligato",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.815,
-    "COUPLING": 0.736,
-    "MOVEMENT": 0.55,
-    "SPACE": 0.5
-  },
-  "mood": "Entangled",
-  "name": "OBBLIGATO Rascal Chord",
-  "parameters": {
-    "obbl_breathA": 0.598,
-    "obbl_breathB": 0.548,
-    "obbl_macroBond": 0.762,
-    "organon_metabolicRate": 0.675,
-    "organon_variationalEnergy": 0.75
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -72,6 +21,45 @@
     "metabolic",
     "bioluminescent"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.598,
+    "obbl_breathB": 0.548,
+    "obbl_macroBond": 0.762,
+    "organon_metabolicRate": 0.675,
+    "organon_variationalEnergy": 0.75
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORGANON",
+        "type": "Spectral->Harmonic",
+        "amount": 0.79
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.815,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.736,
+    "SPACE": 0.5
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.2
+  }
 }

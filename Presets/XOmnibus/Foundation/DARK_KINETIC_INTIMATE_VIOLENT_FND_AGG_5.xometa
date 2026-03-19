@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_INTIMATE_VIOLENT_FND_AGG_5",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.71
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "OddfeliX",
-        "type": "CHAOS_INJECT",
-        "amount": 0.88
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.88
   },
   "dna": {
-    "aggression": 0.895,
     "brightness": 0.088,
-    "density": 0.509,
+    "warmth": 0.468,
     "movement": 0.94,
+    "density": 0.509,
     "space": 0.123,
-    "warmth": 0.468
+    "aggression": 0.895
   },
-  "engines": [
-    "Origami",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.587,
     "MOVEMENT": 0.493,
+    "COUPLING": 0.587,
     "SPACE": 0.753
   },
-  "mood": "Foundation",
-  "name": "Wave Stream",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.475,
-      "macro_space": 0.71
-    },
-    "Origami": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.587,
-      "macro_movement": 0.493,
-      "macro_space": 0.753
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

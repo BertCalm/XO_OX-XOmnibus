@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VAST_FLX_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.8472
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.7454
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ODYSSEY",
+    "target": "OBLONG",
+    "amount": 0.7454
   },
   "dna": {
-    "aggression": 0.5378,
     "brightness": 0.8709,
-    "density": 0.3851,
+    "warmth": 0.9611,
     "movement": 0.9321,
+    "density": 0.3851,
     "space": 0.9536,
-    "warmth": 0.9611
+    "aggression": 0.5378
   },
-  "engines": [
-    "Odyssey",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8485,
-    "COUPLING": 0.493,
     "MOVEMENT": 0.9787,
+    "COUPLING": 0.493,
     "SPACE": 0.8419
   },
-  "mood": "Flux",
-  "name": "BRIGHT_WARM_KINETIC_VAST_FLX_3",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.8085,
-      "macro_coupling": 0.6128,
-      "macro_movement": 0.862,
-      "macro_space": 0.8472
-    },
-    "Odyssey": {
-      "macro_character": 0.8485,
-      "macro_coupling": 0.493,
-      "macro_movement": 0.9787,
-      "macro_space": 0.8419
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "high-warmth",
     "high-movement",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

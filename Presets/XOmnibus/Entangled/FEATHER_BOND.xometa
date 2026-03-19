@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Odyssey",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.807
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.045,
-    "brightness": 0.145,
-    "density": 0.128,
-    "movement": 0.079,
-    "space": 0.132,
-    "warmth": 0.506
-  },
+  "name": "FEATHER BOND",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Odyssey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.621,
-    "COUPLING": 0.481,
-    "MOVEMENT": 0.357,
-    "SPACE": 0.221
-  },
-  "mood": "Entangled",
-  "name": "FEATHER BOND",
   "parameters": {
     "Obscura": {
       "macro_character": 0.784,
-      "macro_coupling": 0.506,
       "macro_movement": 0.592,
+      "macro_coupling": 0.506,
       "macro_space": 0.47
     },
     "Odyssey": {
       "macro_character": 0.543,
-      "macro_coupling": 0.817,
       "macro_movement": 0.733,
+      "macro_coupling": 0.817,
       "macro_space": 0.46
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "ODYSSEY",
+    "amount": 0.807
+  },
+  "dna": {
+    "brightness": 0.145,
+    "warmth": 0.506,
+    "movement": 0.079,
+    "density": 0.128,
+    "space": 0.132,
+    "aggression": 0.045
+  },
+  "macros": {
+    "CHARACTER": 0.621,
+    "MOVEMENT": 0.357,
+    "COUPLING": 0.481,
+    "SPACE": 0.221
+  },
   "tags": [
     "calm",
     "entangled",
     "yielding",
     "delicate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

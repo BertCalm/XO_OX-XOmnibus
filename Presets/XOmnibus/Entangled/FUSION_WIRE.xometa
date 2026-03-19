@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FUSION WIRE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.546
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Obsidian",
-        "type": "FILTER_MOD",
-        "amount": 0.706
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ONSET",
+    "target": "OBSIDIAN",
+    "amount": 0.706
   },
   "dna": {
-    "aggression": 0.689,
     "brightness": 0.917,
-    "density": 0.836,
+    "warmth": 0.949,
     "movement": 0.72,
+    "density": 0.836,
     "space": 0.798,
-    "warmth": 0.949
+    "aggression": 0.689
   },
-  "engines": [
-    "Onset",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.868,
-    "COUPLING": 0.804,
     "MOVEMENT": 0.681,
+    "COUPLING": 0.804,
     "SPACE": 0.264
   },
-  "mood": "Entangled",
-  "name": "FUSION WIRE",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.957,
-      "macro_coupling": 0.533,
-      "macro_movement": 0.46,
-      "macro_space": 0.546
-    },
-    "Onset": {
-      "macro_character": 0.561,
-      "macro_coupling": 0.478,
-      "macro_movement": 0.998,
-      "macro_space": 0.377
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

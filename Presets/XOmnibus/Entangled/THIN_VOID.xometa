@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Oracle",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.738
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.01,
-    "brightness": 0.34,
-    "density": 0.127,
-    "movement": 0.701,
-    "space": 0.276,
-    "warmth": 0.88
-  },
+  "name": "THIN VOID",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.948,
-    "COUPLING": 0.72,
-    "MOVEMENT": 0.086,
-    "SPACE": 0.489
-  },
-  "mood": "Entangled",
-  "name": "THIN VOID",
   "parameters": {
     "Oblique": {
       "macro_character": 0.244,
-      "macro_coupling": 0.61,
       "macro_movement": 0.465,
+      "macro_coupling": 0.61,
       "macro_space": 0.379
     },
     "Oracle": {
       "macro_character": 0.029,
-      "macro_coupling": 0.182,
       "macro_movement": 0.851,
+      "macro_coupling": 0.182,
       "macro_space": 0.212
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "ORACLE",
+    "amount": 0.738
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.88,
+    "movement": 0.701,
+    "density": 0.127,
+    "space": 0.276,
+    "aggression": 0.01
+  },
+  "macros": {
+    "CHARACTER": 0.948,
+    "MOVEMENT": 0.086,
+    "COUPLING": 0.72,
+    "SPACE": 0.489
+  },
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

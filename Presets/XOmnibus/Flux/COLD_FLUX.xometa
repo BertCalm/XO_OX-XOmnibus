@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD FLUX",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.5449
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obese",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.4323
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ODDFELIX",
+    "target": "OBESE",
+    "amount": 0.4323
   },
   "dna": {
-    "aggression": 0.6767,
     "brightness": 0.8622,
-    "density": 0.2232,
+    "warmth": 0.0839,
     "movement": 0.275,
+    "density": 0.2232,
     "space": 0.7365,
-    "warmth": 0.0839
+    "aggression": 0.6767
   },
-  "engines": [
-    "OddfeliX",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5893,
-    "COUPLING": 0.0065,
     "MOVEMENT": 0.8094,
+    "COUPLING": 0.0065,
     "SPACE": 0.8058
   },
-  "mood": "Flux",
-  "name": "COLD FLUX",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.0265,
-      "macro_coupling": 0.6499,
-      "macro_movement": 0.1988,
-      "macro_space": 0.5449
-    },
-    "OddfeliX": {
-      "macro_character": 0.4219,
-      "macro_coupling": 0.2186,
-      "macro_movement": 0.0298,
-      "macro_space": 0.5054
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

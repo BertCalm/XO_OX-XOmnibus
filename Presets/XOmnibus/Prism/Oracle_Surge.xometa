@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Drift surge at peak aggression and movement",
-  "dna": {
-    "aggression": 0.8426,
+  "schema_version": 1,
+  "name": "Oracle Surge",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.679,
-    "density": 0.7019,
+    "warmth": 0.3123,
     "movement": 0.8317,
+    "density": 0.7019,
     "space": 0.3471,
-    "warmth": 0.3123
+    "aggression": 0.8426
+  },
+  "dna": {
+    "brightness": 0.679,
+    "warmth": 0.3123,
+    "movement": 0.8317,
+    "density": 0.7019,
+    "space": 0.3471,
+    "aggression": 0.8426
   },
   "engines": [
     "Oracle"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SIGNAL",
@@ -36,53 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "COUPLE": 0.5154,
-    "DRIFT": 0.7728,
     "SIGNAL": 0.2525,
+    "DRIFT": 0.7728,
+    "COUPLE": 0.5154,
     "SPACE": 0.6157
   },
-  "mood": "Prism",
-  "name": "Oracle Surge",
+  "couplingIntensity": "None",
   "parameters": {
     "Oracle": {
-<<<<<<< HEAD
-      "orc_couplingBus": 0,
-=======
       "orc_macro_signal": 0.2525,
       "orc_macro_drift": 0.7728,
       "orc_macro_couple": 0.5154,
       "orc_macro_space": 0.6157,
       "orc_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "orc_couplingLevel": 0.5,
-      "orc_macro_couple": 0.5154,
-      "orc_macro_drift": 0.7728,
-      "orc_macro_signal": 0.2525,
-      "orc_macro_space": 0.6157,
-      "orc_outputLevel": 0.85
+      "orc_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8426,
-    "brightness": 0.679,
-    "density": 0.7019,
-    "movement": 0.8317,
-    "space": 0.3471,
-    "warmth": 0.3123
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

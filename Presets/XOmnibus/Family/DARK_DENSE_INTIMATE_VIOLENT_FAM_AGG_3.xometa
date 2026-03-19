@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_3",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.616
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osprey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.834
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.834
   },
   "dna": {
-    "aggression": 0.974,
     "brightness": 0.069,
-    "density": 0.946,
+    "warmth": 0.67,
     "movement": 0.526,
+    "density": 0.946,
     "space": 0.089,
-    "warmth": 0.67
+    "aggression": 0.974
   },
-  "engines": [
-    "Ottoni",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.726,
-    "COUPLING": 0.391,
     "MOVEMENT": 0.441,
+    "COUPLING": 0.391,
     "SPACE": 0.615
   },
-  "mood": "Family",
-  "name": "Mahogany Strike 2",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.706,
-      "macro_coupling": 0.347,
-      "macro_movement": 0.418,
-      "macro_space": 0.616
-    },
-    "Ottoni": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.391,
-      "macro_movement": 0.441,
-      "macro_space": 0.615
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "dense",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

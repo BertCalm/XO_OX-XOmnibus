@@ -855,7 +855,6 @@ public:
             if (v.active) ++count;
         activeVoices = count;
 
-<<<<<<< HEAD
         // Reset coupling accumulators AFTER render loop so they're consumed first
         // (Sisters S-014: was before the loop, making couplingPitchMod always 0)
         couplingWTPosMod = 0.0f;
@@ -863,9 +862,8 @@ public:
         couplingArmRateMod = 0.0f;
         couplingRingModSrc = 0.0f;
         couplingPitchMod = 0.0f;
-=======
+
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
->>>>>>> origin/v1-launch-prep
     }
 
     //==========================================================================

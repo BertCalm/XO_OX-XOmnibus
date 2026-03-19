@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Osprey",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Orphica's microsound harp rising on Osprey's warm thermal columns.",
+  "name": "Harp Thermals",
+  "version": "1.0",
   "engines": [
     "Orphica",
     "Osprey"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.72,
     "MOVEMENT": 0.65,
+    "COUPLING": 0.72,
     "SPACE": 0.88
   },
-  "mood": "Entangled",
-  "name": "Harp Thermals",
-  "parameters": {
-    "Orphica": {},
-    "Osprey": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.1,
     "brightness": 0.5,
-    "density": 0.1,
+    "warmth": 0.92,
     "movement": 0.62,
+    "density": 0.1,
     "space": 0.85,
-    "warmth": 0.92
+    "aggression": 0.1
   },
-  "strategy": "Warm Sparse",
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ORPHICA",
+    "target": "OSPREY",
+    "amount": 0.65
+  },
   "tags": [
     "entangled",
     "warm",
@@ -53,13 +35,5 @@
     "harp",
     "soaring"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Orphica's microsound harp rising on Osprey's warm thermal columns."
 }

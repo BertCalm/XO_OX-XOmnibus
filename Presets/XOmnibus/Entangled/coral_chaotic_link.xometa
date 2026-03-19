@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.71,
-        "engineA": "Obbligato",
-        "engineB": "Ouroboros",
-        "type": "Rhythm->Gate"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Coral Chaotic Link",
   "mood": "Entangled",
@@ -23,43 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Coral wind tangles the serpent — OBBLIGATO's dual breath couples into OUROBOROS's recursive topology.",
-  "dna": {
-    "aggression": 0.68,
-    "brightness": 0.82,
-    "density": 0.6,
-    "movement": 0.92,
-    "space": 0.4,
-    "warmth": 0.55
-  },
-  "engines": [
-    "Obbligato",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.685,
-    "COUPLING": 0.73,
-    "MOVEMENT": 0.92,
-    "SPACE": 0.4
-  },
-  "mood": "Entangled",
-  "name": "Coral Chaotic Link",
-  "parameters": {
-    "obbl_breathA": 0.764,
-    "obbl_breathB": 0.54,
-    "obbl_macroBond": 0.693,
-    "ouro_chaosLeash": 0.66,
-    "ouro_topology": 0.708
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -73,6 +22,45 @@
     "recursive",
     "serpent"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.764,
+    "obbl_breathB": 0.54,
+    "obbl_macroBond": 0.693,
+    "ouro_topology": 0.708,
+    "ouro_chaosLeash": 0.66
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OUROBOROS",
+        "type": "Rhythm->Gate",
+        "amount": 0.71
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.685,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.73,
+    "SPACE": 0.4
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.55,
+    "movement": 0.92,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.68
+  }
 }

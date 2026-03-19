@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_DENSE_VAST_VIOLENT_FLX_AGG_4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.97
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Oblong",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.975
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "OBLONG",
+    "amount": 0.975
   },
   "dna": {
-    "aggression": 0.942,
     "brightness": 0.114,
-    "density": 0.96,
+    "warmth": 0.681,
     "movement": 0.468,
+    "density": 0.96,
     "space": 0.936,
-    "warmth": 0.681
+    "aggression": 0.942
   },
-  "engines": [
-    "Optic",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.438,
-    "COUPLING": 0.855,
     "MOVEMENT": 0.468,
+    "COUPLING": 0.855,
     "SPACE": 0.936
   },
-  "mood": "Flux",
-  "name": "Smoke Dense",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.438,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.498,
-      "macro_space": 0.97
-    },
-    "Optic": {
-      "macro_character": 0.438,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.457,
-      "macro_space": 0.953
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "dark",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

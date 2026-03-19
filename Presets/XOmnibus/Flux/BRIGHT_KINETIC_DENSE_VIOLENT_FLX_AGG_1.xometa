@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.573
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Organon",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.93
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "ORGANON",
+    "amount": 0.93
   },
   "dna": {
-    "aggression": 0.965,
     "brightness": 0.931,
-    "density": 0.883,
+    "warmth": 0.336,
     "movement": 0.876,
+    "density": 0.883,
     "space": 0.551,
-    "warmth": 0.336
+    "aggression": 0.965
   },
-  "engines": [
-    "Origami",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.447,
-    "COUPLING": 0.842,
     "MOVEMENT": 0.876,
+    "COUPLING": 0.842,
     "SPACE": 0.551
   },
-  "mood": "Flux",
-  "name": "Crystal Crush",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.803,
-      "macro_movement": 0.912,
-      "macro_space": 0.573
-    },
-    "Origami": {
-      "macro_character": 0.519,
-      "macro_coupling": 0.842,
-      "macro_movement": 0.879,
-      "macro_space": 0.598
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

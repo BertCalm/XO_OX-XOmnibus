@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Ouroboros",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.914
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.031,
-    "brightness": 0.887,
-    "density": 0.65,
-    "movement": 0.068,
-    "space": 0.937,
-    "warmth": 0.9
-  },
+  "name": "BRIGHT_WARM_FROZEN_VAST_GENTLE_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Onset",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9,
-    "COUPLING": 0.914,
-    "MOVEMENT": 0.069,
-    "SPACE": 0.931
-  },
-  "mood": "Entangled",
-  "name": "Candlelight Abyss",
   "parameters": {
     "Onset": {
       "macro_character": 0.88,
-      "macro_coupling": 0.629,
       "macro_movement": 0.076,
+      "macro_coupling": 0.629,
       "macro_space": 0.933
     },
     "Ouroboros": {
       "macro_character": 0.92,
-      "macro_coupling": 0.647,
       "macro_movement": 0.062,
+      "macro_coupling": 0.647,
       "macro_space": 0.928
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ONSET",
+    "target": "OUROBOROS",
+    "amount": 0.914
+  },
+  "dna": {
+    "brightness": 0.887,
+    "warmth": 0.9,
+    "movement": 0.068,
+    "density": 0.65,
+    "space": 0.937,
+    "aggression": 0.031
+  },
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.069,
+    "COUPLING": 0.914,
+    "SPACE": 0.931
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "warm",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

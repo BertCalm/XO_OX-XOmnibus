@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Orbital",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.51
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.932,
-    "brightness": 0.911,
-    "density": 0.087,
-    "movement": 0.947,
-    "space": 0.32,
-    "warmth": 0.976
-  },
+  "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 5",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ohm",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.944,
-    "COUPLING": 0.51,
-    "MOVEMENT": 0.947,
-    "SPACE": 0.32
-  },
-  "mood": "Entangled",
-  "name": "BRIGHT WARM KINETIC SPARSE ...",
   "parameters": {
     "Ohm": {
       "macro_character": 0.944,
-      "macro_coupling": 0.51,
       "macro_movement": 0.947,
+      "macro_coupling": 0.51,
       "macro_space": 0.32
     },
     "Orbital": {
       "macro_character": 0.935,
-      "macro_coupling": 0.522,
       "macro_movement": 0.956,
+      "macro_coupling": 0.522,
       "macro_space": 0.276
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OHM",
+    "target": "ORBITAL",
+    "amount": 0.51
+  },
+  "dna": {
+    "brightness": 0.911,
+    "warmth": 0.976,
+    "movement": 0.947,
+    "density": 0.087,
+    "space": 0.32,
+    "aggression": 0.932
+  },
+  "macros": {
+    "CHARACTER": 0.944,
+    "MOVEMENT": 0.947,
+    "COUPLING": 0.51,
+    "SPACE": 0.32
+  },
   "tags": [
     "entangled",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "sparse",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

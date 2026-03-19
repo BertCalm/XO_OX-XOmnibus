@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Owlfish",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.797
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.833,
-    "brightness": 0.582,
-    "density": 0.941,
-    "movement": 0.22,
-    "space": 0.631,
-    "warmth": 0.976
-  },
+  "name": "BLAZE CIRCUIT",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.739,
-    "COUPLING": 0.526,
-    "MOVEMENT": 0.685,
-    "SPACE": 0.646
-  },
-  "mood": "Entangled",
-  "name": "BLAZE CIRCUIT",
   "parameters": {
     "Oblong": {
       "macro_character": 0.392,
-      "macro_coupling": 0.938,
       "macro_movement": 0.595,
+      "macro_coupling": 0.938,
       "macro_space": 0.31
     },
     "Owlfish": {
       "macro_character": 0.377,
-      "macro_coupling": 0.813,
       "macro_movement": 0.792,
+      "macro_coupling": 0.813,
       "macro_space": 0.67
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLONG",
+    "target": "OWLFISH",
+    "amount": 0.797
+  },
+  "dna": {
+    "brightness": 0.582,
+    "warmth": 0.976,
+    "movement": 0.22,
+    "density": 0.941,
+    "space": 0.631,
+    "aggression": 0.833
+  },
+  "macros": {
+    "CHARACTER": 0.739,
+    "MOVEMENT": 0.685,
+    "COUPLING": 0.526,
+    "SPACE": 0.646
+  },
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

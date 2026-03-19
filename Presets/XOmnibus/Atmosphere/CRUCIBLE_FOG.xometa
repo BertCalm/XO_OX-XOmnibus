@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CRUCIBLE FOG",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.871
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Obscura",
-        "type": "FILTER_MOD",
-        "amount": 0.263
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "OBSCURA",
+    "amount": 0.263
   },
   "dna": {
-    "aggression": 0.885,
     "brightness": 0.61,
-    "density": 0.18,
+    "warmth": 0.062,
     "movement": 0.674,
+    "density": 0.18,
     "space": 0.426,
-    "warmth": 0.062
+    "aggression": 0.885
   },
-  "engines": [
-    "Overbite",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.559,
-    "COUPLING": 0.678,
     "MOVEMENT": 0.528,
+    "COUPLING": 0.678,
     "SPACE": 0.426
   },
-  "mood": "Atmosphere",
-  "name": "CRUCIBLE FOG",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.357,
-      "macro_coupling": 0.826,
-      "macro_movement": 0.617,
-      "macro_space": 0.871
-    },
-    "Overbite": {
-      "macro_character": 0.803,
-      "macro_coupling": 0.26,
-      "macro_movement": 0.482,
-      "macro_space": 0.848
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

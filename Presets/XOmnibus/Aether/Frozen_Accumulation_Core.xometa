@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Abyssal density without warmth: dark matter in audio form.",
-  "dna": {
-    "aggression": 0.514,
+  "schema_version": 1,
+  "name": "Frozen Accumulation Core",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.496,
-    "density": 0.972,
+    "warmth": 0.077,
     "movement": 0.381,
+    "density": 0.972,
     "space": 0.518,
-    "warmth": 0.077
+    "aggression": 0.514
   },
   "engines": [
     "Owlfish"
   ],
-  "macroLabels": [
-    "COLLAPSE",
-    "FEEDBACK",
-    "COUPLING",
-    "DARK"
-  ],
-  "mood": "Aether",
-  "name": "Frozen Accumulation Core",
-  "parameters": {
-    "Owlfish": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.514,
-    "brightness": 0.496,
-    "density": 0.972,
-    "movement": 0.381,
-    "space": 0.518,
-    "warmth": 0.077
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Abyssal density without warmth: dark matter in audio form.",
   "tags": [
     "aether",
     "cold",
@@ -44,9 +24,6 @@
     "pressure",
     "aggressive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COLLAPSE",
     "FEEDBACK",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

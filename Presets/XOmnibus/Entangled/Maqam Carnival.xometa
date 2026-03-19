@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.62,
-        "engineA": "Ole",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Oracle Maqam tuning pitch-syncs OLE scales — microtonal carnival.",
-  "dna": {
-    "aggression": 0.6,
-    "brightness": 0.62,
-    "density": 0.55,
-    "movement": 0.65,
-    "space": 0.5,
-    "warmth": 0.7
-  },
-  "engines": [
-    "Ole",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.615,
-    "COUPLING": 0.62,
-    "MOVEMENT": 0.635,
-    "SPACE": 0.48
-  },
-  "mood": "Entangled",
-  "name": "Maqam Carnival",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.65,
-      "macro_space": 0.38
-    },
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.62,
-      "macro_space": 0.58
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Maqam Carnival",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Oracle Maqam tuning pitch-syncs OLE scales — microtonal carnival.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "carnival",
     "tuning"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.62,
     "warmth": 0.7,
@@ -118,5 +64,4 @@
     "SPACE": 0.48
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

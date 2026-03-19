@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Obsidian Motion Field",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.24
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Origami",
-        "type": "PHASE_MOD",
-        "amount": 0.62
-      }
-    ]
+    "type": "PHASE_MOD",
+    "source": "OCTOPUS",
+    "target": "ORIGAMI",
+    "amount": 0.62
   },
   "dna": {
-    "aggression": 0.31,
     "brightness": 0.06,
-    "density": 0.59,
+    "warmth": 0.5,
     "movement": 0.91,
+    "density": 0.59,
     "space": 0.36,
-    "warmth": 0.5
+    "aggression": 0.31
   },
-  "engines": [
-    "Origami",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.53,
-    "COUPLING": 0.69,
     "MOVEMENT": 0.91,
+    "COUPLING": 0.69,
     "SPACE": 0.36
   },
-  "mood": "Entangled",
-  "name": "Obsidian Motion Field",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.18,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.49,
-      "macro_space": 0.24
-    },
-    "Origami": {
-      "macro_character": 0.63,
-      "macro_coupling": 0.51,
-      "macro_movement": 0.55,
-      "macro_space": 0.26
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

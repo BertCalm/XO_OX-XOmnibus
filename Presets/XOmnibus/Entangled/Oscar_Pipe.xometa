@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Organon",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.68
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.49,
-    "brightness": 0.55,
-    "density": 0.89,
-    "movement": 0.69,
-    "space": 0.22,
-    "warmth": 0.89
-  },
+  "name": "Oscar Pipe",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "OddOscar",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7,
-    "COUPLING": 0.65,
-    "MOVEMENT": 0.67,
-    "SPACE": 0.26
-  },
-  "mood": "Entangled",
-  "name": "Oscar Pipe",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.76,
-      "macro_coupling": 0.73,
       "macro_movement": 0.68,
+      "macro_coupling": 0.73,
       "macro_space": 0.22
     },
     "Organon": {
       "macro_character": 0.64,
-      "macro_coupling": 0.56,
       "macro_movement": 0.66,
+      "macro_coupling": 0.56,
       "macro_space": 0.3
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "ORGANON",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.89,
+    "movement": 0.69,
+    "density": 0.89,
+    "space": 0.22,
+    "aggression": 0.49
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.67,
+    "COUPLING": 0.65,
+    "SPACE": 0.26
+  },
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

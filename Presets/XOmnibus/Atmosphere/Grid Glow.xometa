@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Grid interference mapped as tone. Every frequency a data artifact.",
+  "name": "Grid Glow",
+  "version": "1.0",
   "engines": [
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.561,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.522,
+    "COUPLING": 0.0,
     "SPACE": 0.567
   },
-  "mood": "Atmosphere",
-  "name": "Grid Glow",
-  "parameters": {
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.164,
     "brightness": 0.914,
-    "density": 0.515,
+    "warmth": 0.208,
     "movement": 0.522,
+    "density": 0.515,
     "space": 0.567,
-    "warmth": 0.208
+    "aggression": 0.164
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Grid interference mapped as tone. Every frequency a data artifact."
 }

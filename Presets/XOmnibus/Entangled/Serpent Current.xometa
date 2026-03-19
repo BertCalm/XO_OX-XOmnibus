@@ -1,51 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Oceanic",
-        "engineB": "Ouroboros",
-        "type": "Audio->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "Ouroboros cycles in the open ocean — a current that feeds itself forever.",
-  "dna": {
-    "aggression": 0.189,
-    "brightness": 0.56,
-    "density": 0.57,
-    "movement": 0.67,
-    "space": 0.902,
-    "warmth": 0.868
-  },
-  "engines": [
-    "Oceanic",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.8,
-    "MOVEMENT": 0.7,
-    "SPACE": 0.7
-  },
-  "mood": "Entangled",
-  "name": "Serpent Current",
-  "parameters": {
-    "Oceanic": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Serpent Current",
   "mood": "Entangled",
@@ -56,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ouroboros cycles in the open ocean — a current that feeds itself forever.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -67,6 +19,38 @@
     "ouroboros",
     "abyssal"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.8,
+    "SPACE": 0.7
+  },
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.868,
+    "movement": 0.67,
+    "density": 0.57,
+    "space": 0.902,
+    "aggression": 0.189
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OUROBOROS",
+        "type": "Audio->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
 }

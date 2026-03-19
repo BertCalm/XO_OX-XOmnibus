@@ -3,11 +3,8 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
-<<<<<<< HEAD
 #include "../../UI/OddOscar/OscarAnimState.h"
-=======
 #include "../../DSP/SRO/SilenceGate.h"
->>>>>>> origin/v1-launch-prep
 #include <array>
 #include <cmath>
 
@@ -722,7 +719,6 @@ public:
             }
         }
 
-<<<<<<< HEAD
         //----------------------------------------------------------------------
         // Update Oscar animation state (lock-free atomics, UI thread reads at 60 Hz)
         //----------------------------------------------------------------------
@@ -744,12 +740,11 @@ public:
             oscarState->voiceActive.store   (anyVoiceActive,                          std::memory_order_relaxed);
             oscarState->outputLevel.store   (juce::jlimit (0.0f, 1.0f, blockPeak),   std::memory_order_relaxed);
         }
-=======
+
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock (buffer.getReadPointer (0),
                                   buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
                                   numSamples);
->>>>>>> origin/v1-launch-prep
     }
 
     //==========================================================================

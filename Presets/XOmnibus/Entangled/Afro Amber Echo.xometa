@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Ole",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.72
-      }
-    ]
-  },
-  "description": "Olé's fiery warmth stretched into amber dub delays — sparse and deeply soulful.",
+  "name": "Afro Amber Echo",
+  "version": "1.0",
   "engines": [
     "Ole",
     "Overdub"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
   "macros": {
     "CHARACTER": 0.9,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.4,
+    "COUPLING": 0.8,
     "SPACE": 0.8
   },
-  "mood": "Entangled",
-  "name": "Afro Amber Echo",
-  "parameters": {
-    "Ole": {},
-    "Overdub": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.12,
     "brightness": 0.42,
-    "density": 0.08,
+    "warmth": 0.95,
     "movement": 0.38,
+    "density": 0.08,
     "space": 0.78,
-    "warmth": 0.95
+    "aggression": 0.12
   },
-  "strategy": "Warm Sparse",
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OVERDUB",
+    "target": "OLE",
+    "amount": 0.72
+  },
   "tags": [
     "entangled",
     "warm",
@@ -53,17 +35,5 @@
     "afro-latin",
     "dub"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Olé's fiery warmth stretched into amber dub delays — sparse and deeply soulful."
->>>>>>> origin/v1-launch-prep
 }

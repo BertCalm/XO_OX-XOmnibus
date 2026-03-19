@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Molten core tone. Filter barely open, heat radiating outward.",
-  "dna": {
-    "aggression": 0.452,
+  "schema_version": 1,
+  "name": "Cast Weight Dark",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.508,
-    "density": 0.922,
+    "warmth": 0.826,
     "movement": 0.526,
+    "density": 0.922,
     "space": 0.372,
-    "warmth": 0.826
+    "aggression": 0.452
   },
   "engines": [
     "Obese"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "dense",
     "analog",
     "thick"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MELT",
@@ -35,33 +29,17 @@
     "COUPLING",
     "TAIL"
   ],
-  "mood": "Foundation",
-  "name": "Cast Weight Dark",
-  "parameters": {
-    "Obese": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.452,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.508,
-    "density": 0.922,
+    "warmth": 0.826,
     "movement": 0.526,
+    "density": 0.922,
     "space": 0.372,
-    "warmth": 0.826
+    "aggression": 0.452
   },
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

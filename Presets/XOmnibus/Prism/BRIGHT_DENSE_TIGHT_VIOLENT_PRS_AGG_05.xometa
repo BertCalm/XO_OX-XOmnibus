@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Overworld",
-        "type": "FILTER_MOD",
-        "amount": 0.784
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.982,
-    "brightness": 0.955,
-    "density": 0.928,
-    "movement": 0.496,
-    "space": 0.082,
-    "warmth": 0.576
-  },
+  "name": "BRIGHT DENSE TIGHT VIOLENT PRS AGG 5",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ocelot",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.941,
-    "COUPLING": 0.919,
-    "MOVEMENT": 0.47,
-    "SPACE": 0.08
-  },
-  "mood": "Prism",
-  "name": "BRIGHT DENSE TIGHT VIOLENT ...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.934,
-      "macro_coupling": 0.932,
       "macro_movement": 0.468,
+      "macro_coupling": 0.932,
       "macro_space": 0.079
     },
     "Overworld": {
       "macro_character": 0.947,
-      "macro_coupling": 0.905,
       "macro_movement": 0.472,
+      "macro_coupling": 0.905,
       "macro_space": 0.081
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCELOT",
+    "target": "OVERWORLD",
+    "amount": 0.784
+  },
+  "dna": {
+    "brightness": 0.955,
+    "warmth": 0.576,
+    "movement": 0.496,
+    "density": 0.928,
+    "space": 0.082,
+    "aggression": 0.982
+  },
+  "macros": {
+    "CHARACTER": 0.941,
+    "MOVEMENT": 0.47,
+    "COUPLING": 0.919,
+    "SPACE": 0.08
+  },
   "tags": [
     "prism",
     "aggressive",
@@ -59,10 +48,5 @@
     "bright",
     "dense",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

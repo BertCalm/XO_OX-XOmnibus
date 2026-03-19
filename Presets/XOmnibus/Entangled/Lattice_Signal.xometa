@@ -1,29 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.843,
-        "engineA": "Orbital",
-        "engineB": "OddfeliX",
-        "type": "RHYTHM_LOCK"
-      }
-    ]
-  },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "aggression": 0.3,
-    "brightness": 0.67,
-    "density": 0.435,
-    "movement": 0.765,
-    "space": 1.0,
-    "warmth": 0.4
-  },
+  "schema_version": 1,
+  "name": "Lattice Signal",
+  "mood": "Entangled",
   "engines": [
     "OddfeliX",
     "Orbital"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -33,7 +14,6 @@
     "coverage",
     "oddfelix",
     "orbital"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,45 +23,41 @@
   ],
   "macros": {
     "CHARACTER": 0.508,
-    "COUPLING": 0.487,
     "MOVEMENT": 0.625,
+    "COUPLING": 0.487,
     "SPACE": 0.913
   },
-  "mood": "Entangled",
-  "name": "Lattice Signal",
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.4,
+    "movement": 0.765,
+    "density": 0.435,
+    "space": 1.0,
+    "aggression": 0.3
+  },
+  "sonic_dna": {
+    "brightness": 0.67,
+    "warmth": 0.4,
+    "movement": 0.765,
+    "density": 0.435,
+    "space": 1.0,
+    "aggression": 0.3
+  },
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.648,
-      "macro_coupling": 0.772,
       "macro_movement": 0.369,
+      "macro_coupling": 0.772,
       "macro_space": 0.219
     },
     "Orbital": {
       "macro_character": 0.734,
-      "macro_coupling": 0.561,
       "macro_movement": 0.325,
+      "macro_coupling": 0.561,
       "macro_space": 0.681
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.67,
-    "density": 0.435,
-    "movement": 0.765,
-    "space": 1.0,
-    "warmth": 0.4
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "oddfelix",
-    "orbital"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": [
       {
@@ -92,5 +68,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

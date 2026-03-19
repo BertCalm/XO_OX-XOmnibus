@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Loaded Atmosphere",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORGANON dense register.",
-  "dna": {
-    "aggression": 0.323,
-    "brightness": 0.287,
-    "density": 0.929,
-    "movement": 0.351,
-    "space": 0.349,
-    "warmth": 0.633
-  },
-  "engines": [
-    "Organon"
-  ],
-  "macroLabels": [
-    "SYSTEM",
-    "LOGIC",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.425,
-    "LOGIC": 0.487,
-    "SPACE": 0.359,
-    "SYSTEM": 0.295
-  },
-  "mood": "Atmosphere",
-  "name": "Loaded Atmosphere",
-  "parameters": {
-    "Organon": {
-      "coupling": 0.425,
-      "logic": 0.487,
-      "space": 0.359,
-      "system": 0.295
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -58,9 +16,6 @@
     "warm",
     "thick"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "SYSTEM",
     "LOGIC",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

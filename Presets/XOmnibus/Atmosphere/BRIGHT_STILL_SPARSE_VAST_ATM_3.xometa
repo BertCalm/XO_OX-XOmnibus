@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Organon",
-        "type": "PITCH_SYNC",
-        "amount": 0.772
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.486,
-    "brightness": 0.95,
-    "density": 0.082,
-    "movement": 0.088,
-    "space": 0.898,
-    "warmth": 0.614
-  },
+  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "OddOscar",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.352,
-    "COUPLING": 0.692,
-    "MOVEMENT": 0.251,
-    "SPACE": 0.9
-  },
-  "mood": "Atmosphere",
-  "name": "BRIGHT_STILL_SPARSE_VAST_ATM_3",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.352,
-      "macro_coupling": 0.692,
       "macro_movement": 0.251,
+      "macro_coupling": 0.692,
       "macro_space": 0.9
     },
     "Organon": {
       "macro_character": 0.752,
-      "macro_coupling": 0.654,
       "macro_movement": 0.099,
+      "macro_coupling": 0.654,
       "macro_space": 0.848
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODDOSCAR",
+    "target": "ORGANON",
+    "amount": 0.772
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.614,
+    "movement": 0.088,
+    "density": 0.082,
+    "space": 0.898,
+    "aggression": 0.486
+  },
+  "macros": {
+    "CHARACTER": 0.352,
+    "MOVEMENT": 0.251,
+    "COUPLING": 0.692,
+    "SPACE": 0.9
+  },
   "tags": [
     "atmosphere",
     "bright",
     "still",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

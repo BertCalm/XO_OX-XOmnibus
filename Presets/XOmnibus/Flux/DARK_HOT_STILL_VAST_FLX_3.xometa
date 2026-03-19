@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_VAST_FLX_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.8996
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Optic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.738
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORACLE",
+    "target": "OPTIC",
+    "amount": 0.738
   },
   "dna": {
-    "aggression": 0.5931,
     "brightness": 0.0575,
-    "density": 0.6592,
+    "warmth": 0.901,
     "movement": 0.1163,
+    "density": 0.6592,
     "space": 0.9789,
-    "warmth": 0.901
+    "aggression": 0.5931
   },
-  "engines": [
-    "Oracle",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1529,
-    "COUPLING": 0.7174,
     "MOVEMENT": 0.1963,
+    "COUPLING": 0.7174,
     "SPACE": 0.847
   },
-  "mood": "Flux",
-  "name": "DARK_HOT_STILL_VAST_FLX_3",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.7339,
-      "macro_movement": 0.1757,
-      "macro_space": 0.8996
-    },
-    "Oracle": {
-      "macro_character": 0.1529,
-      "macro_coupling": 0.7174,
-      "macro_movement": 0.1963,
-      "macro_space": 0.847
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "high-warmth",
     "low-movement",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

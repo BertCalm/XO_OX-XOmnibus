@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Overworld",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.994
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.514,
-    "brightness": 0.901,
-    "density": 0.947,
-    "movement": 0.414,
-    "space": 0.48,
-    "warmth": 0.92
-  },
+  "name": "BRIGHT HOT DENSE AET 17",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "OddOscar",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.911,
-    "COUPLING": 0.555,
-    "MOVEMENT": 0.414,
-    "SPACE": 0.48
-  },
-  "mood": "Aether",
-  "name": "BRIGHT HOT DENSE AET 17",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.911,
-      "macro_coupling": 0.555,
       "macro_movement": 0.414,
+      "macro_coupling": 0.555,
       "macro_space": 0.48
     },
     "Overworld": {
       "macro_character": 0.902,
-      "macro_coupling": 0.764,
       "macro_movement": 0.515,
+      "macro_coupling": 0.764,
       "macro_space": 0.614
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.994
+  },
+  "dna": {
+    "brightness": 0.901,
+    "warmth": 0.92,
+    "movement": 0.414,
+    "density": 0.947,
+    "space": 0.48,
+    "aggression": 0.514
+  },
+  "macros": {
+    "CHARACTER": 0.911,
+    "MOVEMENT": 0.414,
+    "COUPLING": 0.555,
+    "SPACE": 0.48
+  },
   "tags": [
     "aether",
     "bright",
@@ -58,10 +47,5 @@
     "dense",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

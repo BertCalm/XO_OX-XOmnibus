@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Overdub",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.7019
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.6104,
-    "brightness": 0.8819,
-    "density": 0.894,
-    "movement": 0.5525,
-    "space": 0.0491,
-    "warmth": 0.0923
-  },
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Origami",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9444,
-    "COUPLING": 0.5385,
-    "MOVEMENT": 0.5512,
-    "SPACE": 0.1878
-  },
-  "mood": "Flux",
-  "name": "Frost Molten",
   "parameters": {
     "Origami": {
       "macro_character": 0.9444,
-      "macro_coupling": 0.5385,
       "macro_movement": 0.5512,
+      "macro_coupling": 0.5385,
       "macro_space": 0.1878
     },
     "Overdub": {
       "macro_character": 0.7902,
-      "macro_coupling": 0.4997,
       "macro_movement": 0.482,
+      "macro_coupling": 0.4997,
       "macro_space": 0.1303
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.7019
+  },
+  "dna": {
+    "brightness": 0.8819,
+    "warmth": 0.0923,
+    "movement": 0.5525,
+    "density": 0.894,
+    "space": 0.0491,
+    "aggression": 0.6104
+  },
+  "macros": {
+    "CHARACTER": 0.9444,
+    "MOVEMENT": 0.5512,
+    "COUPLING": 0.5385,
+    "SPACE": 0.1878
+  },
   "tags": [
     "flux",
     "unstable",
@@ -59,10 +48,5 @@
     "low-warmth",
     "high-density",
     "low-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

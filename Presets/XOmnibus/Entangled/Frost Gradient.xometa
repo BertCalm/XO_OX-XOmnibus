@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ombre",
-        "type": "SPECTRAL_FOLD",
-        "amount": 0.82
-      }
-    ]
-  },
-  "description": "Deep coupling freezes OVERWORLD's chip harmonics into Ombre's tonal gradients.",
+  "name": "Frost Gradient",
+  "version": "1.0",
   "engines": [
     "Overworld",
     "Ombre"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
   "macros": {
     "CHARACTER": 0.5,
-    "COUPLING": 0.9,
     "MOVEMENT": 0.35,
+    "COUPLING": 0.9,
     "SPACE": 0.8
   },
-  "mood": "Entangled",
-  "name": "Frost Gradient",
-  "parameters": {
-    "Overworld": {},
-    "Ombre": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.18,
     "brightness": 0.94,
-    "density": 0.55,
+    "warmth": 0.06,
     "movement": 0.32,
+    "density": 0.55,
     "space": 0.78,
-    "warmth": 0.06
+    "aggression": 0.18
   },
-  "strategy": "Bright Dark",
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OVERWORLD",
+    "target": "OMBRE",
+    "amount": 0.82
+  },
   "tags": [
     "entangled",
     "bright",
@@ -53,13 +35,5 @@
     "dense-mid",
     "still"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Deep coupling freezes OVERWORLD's chip harmonics into Ombre's tonal gradients."
 }

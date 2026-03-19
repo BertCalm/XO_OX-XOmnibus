@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
   "schema_version": 1,
   "name": "Bound for Shore",
   "mood": "Entangled",
@@ -8,52 +6,9 @@
     "Osprey",
     "Obbligato"
   ],
->>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.65,
-        "engineA": "Osprey",
-        "engineB": "Obbligato",
-        "type": "Env->Morph"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
+  "version": "1.0.0",
   "description": "OBBLIGATO's obligatory melodic line mirrors the seabird's required route home.",
-  "dna": {
-    "aggression": 0.31,
-    "brightness": 0.61,
-    "density": 0.5,
-    "movement": 0.62,
-    "space": 0.69,
-    "warmth": 0.59
-  },
-  "engines": [
-    "Osprey",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.5
-  },
-  "mood": "Entangled",
-  "name": "Bound for Shore",
-  "parameters": {
-    "Osprey": {},
-    "Obbligato": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -64,6 +19,38 @@
     "obligatory",
     "homeward"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.61,
+    "warmth": 0.59,
+    "movement": 0.62,
+    "density": 0.5,
+    "space": 0.69,
+    "aggression": 0.31
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OBBLIGATO",
+        "type": "Env->Morph",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
 }

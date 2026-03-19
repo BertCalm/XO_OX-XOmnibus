@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.561,
-        "engineA": "Obbligato",
-        "engineB": "Orphica",
-        "type": "Amp->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Rascal Coral ft Orphica",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "ORPHICA granular scatter feeds OBBLIGATO's filter; BOND casts the result as a double coral shimmer.",
-  "dna": {
-    "aggression": 0.374,
-    "brightness": 0.645,
-    "density": 0.79,
-    "movement": 0.638,
-    "space": 0.928,
-    "warmth": 0.41
-  },
-  "engines": [
-    "Obbligato",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Rascal Coral ft Orphica",
-  "parameters": {
-    "obbl_breathA": 0.707,
-    "obbl_breathB": 0.76,
-    "obbl_macroBond": 0.755
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "granular",
     "shimmer"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.707,
+    "obbl_breathB": 0.76,
+    "obbl_macroBond": 0.755
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORPHICA",
+        "type": "Amp->Filter",
+        "amount": 0.561
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.645,
+    "warmth": 0.41,
+    "movement": 0.638,
+    "density": 0.79,
+    "space": 0.928,
+    "aggression": 0.374
+  }
 }

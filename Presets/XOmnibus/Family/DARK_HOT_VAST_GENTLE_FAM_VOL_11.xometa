@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_11",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.962
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Opal",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.81
-      }
-    ]
+    "type": "ENVELOPE_MIRROR",
+    "source": "OHM",
+    "target": "OPAL",
+    "amount": 0.81
   },
   "dna": {
-    "aggression": 0.127,
     "brightness": 0.054,
-    "density": 0.367,
+    "warmth": 0.954,
     "movement": 0.311,
+    "density": 0.367,
     "space": 0.936,
-    "warmth": 0.954
+    "aggression": 0.127
   },
-  "engines": [
-    "Opal",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.516,
-    "COUPLING": 0.253,
     "MOVEMENT": 0.298,
+    "COUPLING": 0.253,
     "SPACE": 0.938
   },
-  "mood": "Family",
-  "name": "Cocoa Orbit 2",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.523,
-      "macro_coupling": 0.242,
-      "macro_movement": 0.3,
-      "macro_space": 0.962
-    },
-    "Opal": {
-      "macro_character": 0.508,
-      "macro_coupling": 0.263,
-      "macro_movement": 0.296,
-      "macro_space": 0.914
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

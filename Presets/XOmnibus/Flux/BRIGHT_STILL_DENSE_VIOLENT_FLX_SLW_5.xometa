@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_STILL_DENSE_VIOLENT_FLX_SLW_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.416
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Oceanic",
-        "type": "CHAOS_INJECT",
-        "amount": 0.758
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.758
   },
   "dna": {
-    "aggression": 0.965,
     "brightness": 0.971,
-    "density": 0.954,
+    "warmth": 0.412,
     "movement": 0.023,
+    "density": 0.954,
     "space": 0.418,
-    "warmth": 0.412
+    "aggression": 0.965
   },
-  "engines": [
-    "Oracle",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.96,
-    "COUPLING": 0.711,
     "MOVEMENT": 0.023,
+    "COUPLING": 0.711,
     "SPACE": 0.418
   },
-  "mood": "Flux",
-  "name": "Signal Fang",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.849,
-      "macro_coupling": 0.872,
-      "macro_movement": 0.023,
-      "macro_space": 0.416
-    },
-    "Oracle": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.028,
-      "macro_space": 0.408
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "dense",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Medium",
-  "couplingType": "PHASE",
-  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for PHASE coupling with XOsteria.",
-  "dna": {
-    "aggression": 0.8984,
+  "schema_version": 1,
+  "name": "BRIGHT HOT VIOLENT KINETIC 2",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.8984,
-    "density": 0.5524,
+    "warmth": 0.9035,
+    "aggression": 0.8984,
     "movement": 0.9275,
-    "space": 0.437,
-    "warmth": 0.9035
+    "density": 0.5524,
+    "space": 0.437
+  },
+  "dna": {
+    "brightness": 0.8984,
+    "warmth": 0.9035,
+    "aggression": 0.8984,
+    "movement": 0.9275,
+    "density": 0.5524,
+    "space": 0.437
   },
   "engines": [
     "Osteria"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "phase",
     "osteria"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DRIFT",
@@ -35,32 +36,10 @@
     "LUSTER",
     "SHRED"
   ],
-  "mood": "Flux",
-  "name": "BRIGHT HOT VIOLENT KINETIC 2",
+  "couplingType": "PHASE",
+  "couplingIntensity": "Medium",
   "parameters": {
     "Osteria": {
-<<<<<<< HEAD
-      "couplingBus": 3,
-      "couplingLevel": 0.798
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8984,
-    "brightness": 0.8984,
-    "density": 0.5524,
-    "movement": 0.9275,
-    "space": 0.437,
-    "warmth": 0.9035
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "osteria"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.798,
       "couplingBus": 3
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

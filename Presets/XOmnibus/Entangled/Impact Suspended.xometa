@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Oblong",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.72
-      }
-    ]
-  },
-  "description": "Maximum impact suspended in time — aggression held at the moment of strike.",
+  "name": "Impact Suspended",
+  "version": "1.0",
   "engines": [
     "Onset",
     "Oblong"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.06,
+    "COUPLING": 0.8,
     "SPACE": 0.45
   },
-  "mood": "Entangled",
-  "name": "Impact Suspended",
-  "parameters": {
-    "Onset": {},
-    "Oblong": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.93,
     "brightness": 0.28,
-    "density": 0.8,
+    "warmth": 0.48,
     "movement": 0.06,
+    "density": 0.8,
     "space": 0.42,
-    "warmth": 0.48
+    "aggression": 0.93
   },
-  "strategy": "Still Aggressive",
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ONSET",
+    "target": "OBLONG",
+    "amount": 0.72
+  },
   "tags": [
     "entangled",
     "aggressive",
@@ -53,17 +35,5 @@
     "impact",
     "suspension"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Maximum impact suspended in time — aggression held at the moment of strike."
->>>>>>> origin/v1-launch-prep
 }

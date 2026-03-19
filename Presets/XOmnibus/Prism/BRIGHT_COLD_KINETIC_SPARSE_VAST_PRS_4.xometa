@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Oracle",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.748
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_4",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_KINETIC_SPARSE_VAST. Variant 4.",
-  "dna": {
-    "aggression": 0.42,
-    "brightness": 0.906,
-    "density": 0.079,
-    "movement": 0.969,
-    "space": 0.955,
-    "warmth": 0.057
-  },
-  "engines": [
-    "Overworld",
-    "Oracle"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.965,
-    "COUPLING": 0.0,
-    "MOVEMENT": 0.993,
-    "SPACE": 0.986
-  },
-  "mood": "Prism",
-  "name": "Arctic Swirl",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.0,
-      "macro_movement": 1.0,
-      "macro_space": 0.991
-    },
-    "Overworld": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.986,
-      "macro_space": 0.981
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "vast",
     "prism"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.0,
     "SPACE": 0.986
   }
->>>>>>> origin/v1-launch-prep
 }

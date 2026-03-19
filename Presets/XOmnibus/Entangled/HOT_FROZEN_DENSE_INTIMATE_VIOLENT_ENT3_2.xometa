@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Ottoni",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.9025
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.9379,
-    "brightness": 0.5789,
-    "density": 0.9667,
-    "movement": 0.0784,
-    "space": 0.1076,
-    "warmth": 0.9062
-  },
+  "schema_version": 1,
+  "name": "HOT_FROZEN_DENSE_INTIMATE_VIOLENT_ENT3_2",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Ottoni"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6336,
-    "COUPLING": 0.8798,
-    "MOVEMENT": 0.08,
-    "SPACE": 0.3377
-  },
-  "mood": "Entangled",
-  "name": "Node Packed",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.761,
-      "macro_coupling": 0.9088,
-      "macro_movement": 0.0843,
-      "macro_space": 0.1586
-    },
-    "Ottoni": {
-      "macro_character": 0.5062,
-      "macro_coupling": 0.8508,
-      "macro_movement": 0.0757,
-      "macro_space": 0.5167
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_DENSE_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "dense",
     "intimate"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.1076,
     "aggression": 0.9379
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Overworld",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.141
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.485,
-    "brightness": 0.267,
-    "density": 0.121,
-    "movement": 0.288,
-    "space": 0.881,
-    "warmth": 0.131
-  },
+  "name": "PALE HAZE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.029,
-    "COUPLING": 0.799,
-    "MOVEMENT": 0.63,
-    "SPACE": 0.71
-  },
-  "mood": "Entangled",
-  "name": "PALE HAZE",
   "parameters": {
     "Oblique": {
       "macro_character": 0.001,
-      "macro_coupling": 0.462,
       "macro_movement": 0.869,
+      "macro_coupling": 0.462,
       "macro_space": 0.054
     },
     "Overworld": {
       "macro_character": 0.518,
-      "macro_coupling": 0.498,
       "macro_movement": 0.623,
+      "macro_coupling": 0.498,
       "macro_space": 0.442
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLIQUE",
+    "target": "OVERWORLD",
+    "amount": 0.141
+  },
+  "dna": {
+    "brightness": 0.267,
+    "warmth": 0.131,
+    "movement": 0.288,
+    "density": 0.121,
+    "space": 0.881,
+    "aggression": 0.485
+  },
+  "macros": {
+    "CHARACTER": 0.029,
+    "MOVEMENT": 0.63,
+    "COUPLING": 0.799,
+    "SPACE": 0.71
+  },
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

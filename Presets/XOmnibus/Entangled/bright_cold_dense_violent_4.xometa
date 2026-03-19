@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Medium",
-  "couplingType": "FLOW",
-  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for FLOW coupling with XOutwit.",
-  "dna": {
-    "aggression": 0.9381,
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT 4",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.9205,
+    "warmth": 0.0764,
     "density": 0.9465,
+    "aggression": 0.9381,
     "movement": 0.5881,
-    "space": 0.5474,
-    "warmth": 0.0764
+    "space": 0.5474
+  },
+  "dna": {
+    "brightness": 0.9205,
+    "warmth": 0.0764,
+    "density": 0.9465,
+    "aggression": 0.9381,
+    "movement": 0.5881,
+    "space": 0.5474
   },
   "engines": [
     "Outwit"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "flow",
     "outwit"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "PACK",
@@ -35,32 +36,10 @@
     "HEAT",
     "RADIANCE"
   ],
-  "mood": "Prism",
-  "name": "BRIGHT COLD DENSE VIOLENT 4",
+  "couplingType": "FLOW",
+  "couplingIntensity": "Medium",
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-      "couplingBus": 2,
-      "couplingLevel": 0.812
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9381,
-    "brightness": 0.9205,
-    "density": 0.9465,
-    "movement": 0.5881,
-    "space": 0.5474,
-    "warmth": 0.0764
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "flow",
-    "outwit"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.812,
       "couplingBus": 2
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

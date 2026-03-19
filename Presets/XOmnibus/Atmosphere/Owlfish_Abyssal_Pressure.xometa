@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-=======
   "schema_version": 1,
   "name": "Abyssal Pressure",
   "mood": "Atmosphere",
@@ -29,68 +23,9 @@
     "DEFENSE",
     "PRESSURE"
   ],
->>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
+  "tempo": null,
   "created": "2026-03-16",
-<<<<<<< HEAD
-  "description": "bodyFreq 28 Hz — seismic. Below the threshold of pitch, felt in the chest rather than heard by the ear. Even divisions (÷2, ÷4) provide harmonic clarity above the subterranean foundation. owl_bodyLevel 0.8. The melodic voice plays against a pressure that does not acknowledge melody.",
-  "dna": {
-    "aggression": 0.25,
-    "brightness": 0.2,
-    "density": 0.7,
-    "movement": 0.15,
-    "space": 0.55,
-    "warmth": 0.45
-  },
-  "engines": [
-    "Owlfish"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "DEFENSE",
-    "PRESSURE"
-  ],
-  "mood": "Atmosphere",
-  "name": "Abyssal Pressure",
-  "parameters": {
-    "Owlfish": {
-      "owl_ampAttack": 30,
-      "owl_ampDecay": 350,
-      "owl_ampRelease": 700,
-      "owl_ampSustain": 0.8,
-      "owl_armorDecay": 0.0,
-      "owl_armorDelay": 0.0,
-      "owl_armorDuck": 0.0,
-      "owl_armorScatter": 0.0,
-      "owl_armorThreshold": 1.0,
-      "owl_bodyFreq": 28,
-      "owl_bodyLevel": 0.8,
-      "owl_compAttack": 0.12,
-      "owl_compRatio": 0.55,
-      "owl_compRelease": 0.4,
-      "owl_compThreshold": 0.6,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.0,
-      "owl_depth": 0.8,
-      "owl_feedRate": 0.0,
-      "owl_feeding": 0.0,
-      "owl_filterCutoff": 0.5,
-      "owl_filterEnvDepth": 0.4,
-      "owl_filterReso": 0.2,
-      "owl_filterTrack": 0.6,
-      "owl_fundWave": 0.15,
-      "owl_grainDensity": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainSize": 0.5,
-=======
   "legacy": {
     "sourceInstrument": null,
     "sourceCategory": null,
@@ -99,18 +34,9 @@
   "parameters": {
     "Owlfish": {
       "owl_portamento": 0.1,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
-      "owl_mixtur": 0.35,
       "owl_morphGlide": 0.2,
-      "owl_outputLevel": 0.75,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.1,
-      "owl_pressure": 0.85,
-      "owl_reverbDamp": 0.7,
-      "owl_reverbMix": 0.28,
-      "owl_reverbPreDelay": 0.1,
-      "owl_reverbSize": 0.55,
+      "owl_subMix": 0.6,
       "owl_subDiv1": 2,
       "owl_subDiv2": 4,
       "owl_subDiv3": 0,
@@ -119,27 +45,57 @@
       "owl_subLevel2": 0.45,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-      "owl_subMix": 0.6,
-      "owl_subWave": 0.2
+      "owl_mixtur": 0.35,
+      "owl_fundWave": 0.15,
+      "owl_subWave": 0.2,
+      "owl_bodyFreq": 28,
+      "owl_bodyLevel": 0.8,
+      "owl_compRatio": 0.55,
+      "owl_compThreshold": 0.6,
+      "owl_compAttack": 0.12,
+      "owl_compRelease": 0.4,
+      "owl_filterCutoff": 0.5,
+      "owl_filterReso": 0.2,
+      "owl_filterTrack": 0.6,
+      "owl_filterEnvDepth": 0.4,
+      "owl_grainSize": 0.5,
+      "owl_grainDensity": 0.0,
+      "owl_grainPitch": 0.0,
+      "owl_grainMix": 0.0,
+      "owl_feedRate": 0.0,
+      "owl_armorThreshold": 1.0,
+      "owl_armorDecay": 0.0,
+      "owl_armorScatter": 0.0,
+      "owl_armorDuck": 0.0,
+      "owl_armorDelay": 0.0,
+      "owl_reverbSize": 0.55,
+      "owl_reverbDamp": 0.7,
+      "owl_reverbPreDelay": 0.1,
+      "owl_reverbMix": 0.28,
+      "owl_ampAttack": 30,
+      "owl_ampDecay": 350,
+      "owl_ampSustain": 0.8,
+      "owl_ampRelease": 700,
+      "owl_depth": 0.8,
+      "owl_feeding": 0.0,
+      "owl_defense": 0.0,
+      "owl_pressure": 0.85,
+      "owl_outputLevel": 0.75,
+      "owl_outputPan": 0.0,
+      "owl_couplingLevel": 0.5,
+      "owl_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-=======
   "coupling": {
     "pairs": []
   },
->>>>>>> origin/v1-launch-prep
   "sequencer": null,
-  "tags": [
-    "28hz",
-    "seismic",
-    "sub-bass",
-    "abyssal",
-    "even-divisions",
-    "atmosphere",
-    "pressure"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.45,
+    "movement": 0.15,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.25
+  }
 }

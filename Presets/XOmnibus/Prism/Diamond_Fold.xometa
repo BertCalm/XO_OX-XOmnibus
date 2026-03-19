@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Moderate",
-  "description": "ORIGAMI pushed to extreme brightness — brightness 0.94, movement 0.74, aggression 0.57. Ultra-bright Prism zone filler.",
-  "dna": {
-    "aggression": 0.57,
-    "brightness": 0.938,
-    "density": 0.584,
-    "movement": 0.737,
-    "space": 0.493,
-    "warmth": 0.265
-  },
-  "engines": [
-    "Origami"
-=======
   "schema_version": 1,
   "name": "Diamond Fold",
   "mood": "Prism",
@@ -32,7 +14,6 @@
     "extreme",
     "brightness",
     "origami"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,48 +21,37 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Prism",
-  "name": "Diamond Fold",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.265,
+    "movement": 0.737,
+    "density": 0.584,
+    "space": 0.493,
+    "aggression": 0.57
+  },
+  "sonic_dna": {
+    "brightness": 0.938,
+    "warmth": 0.265,
+    "movement": 0.737,
+    "density": 0.584,
+    "space": 0.493,
+    "aggression": 0.57
+  },
   "parameters": {
     "Origami": {
-<<<<<<< HEAD
-      "ori_couplingBus": 0,
-=======
       "ori_macro_fold": 0.36,
       "ori_macro_tension": 0.849,
       "ori_macro_couple": 0.25,
       "ori_macro_space": 0.339,
       "ori_outputLevel": 0.807,
->>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.341,
-      "ori_macro_couple": 0.25,
-      "ori_macro_fold": 0.36,
-      "ori_macro_space": 0.339,
-      "ori_macro_tension": 0.849,
-      "ori_outputLevel": 0.807
+      "ori_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.57,
-    "brightness": 0.938,
-    "density": 0.584,
-    "movement": 0.737,
-    "space": 0.493,
-    "warmth": 0.265
+  "coupling": {
+    "pairs": []
   },
-<<<<<<< HEAD
-  "tags": [
-    "prism",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "origami"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

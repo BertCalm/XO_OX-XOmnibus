@@ -1,54 +1,12 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Oracle",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.663
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.027,
-    "brightness": 0.488,
-    "density": 0.646,
-    "movement": 0.038,
-    "space": 0.98,
-    "warmth": 0.976
-  },
+  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_2",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Ouroboros",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.337,
-    "COUPLING": 0.701,
-    "MOVEMENT": 0.038,
-    "SPACE": 0.98
-  },
-  "mood": "Flux",
-  "name": "Node Horizon",
   "parameters": {
-<<<<<<< HEAD
-    "Oracle": {
-      "macro_character": 0.621,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.037,
-      "macro_space": 1.0
-    },
-    "Ouroboros": {
-      "macro_character": 0.567,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.04,
-=======
     "Ouroboros": {
       "macro_character": 0.567,
       "macro_movement": 0.04,
@@ -59,11 +17,29 @@
       "macro_character": 0.621,
       "macro_movement": 0.037,
       "macro_coupling": 0.918,
->>>>>>> origin/v1-launch-prep
       "macro_space": 1.0
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ORACLE",
+    "amount": 0.663
+  },
+  "dna": {
+    "brightness": 0.488,
+    "warmth": 0.976,
+    "movement": 0.038,
+    "density": 0.646,
+    "space": 0.98,
+    "aggression": 0.027
+  },
+  "macros": {
+    "CHARACTER": 0.337,
+    "MOVEMENT": 0.038,
+    "COUPLING": 0.701,
+    "SPACE": 0.98
+  },
   "tags": [
     "flux",
     "still",
@@ -71,10 +47,5 @@
     "vast",
     "gentle",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

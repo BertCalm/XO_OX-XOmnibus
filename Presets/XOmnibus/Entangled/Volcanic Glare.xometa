@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "OddfeliX",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Cold white light striking obsidian — blinding and hard-edged.",
+  "name": "Volcanic Glare",
+  "version": "1.0",
   "engines": [
     "OddfeliX",
     "Obsidian"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
   "macros": {
     "CHARACTER": 0.85,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.5,
+    "COUPLING": 0.7,
     "SPACE": 0.45
   },
-  "mood": "Entangled",
-  "name": "Volcanic Glare",
-  "parameters": {
-    "OddfeliX": {},
-    "Obsidian": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.6,
     "brightness": 0.95,
-    "density": 0.65,
+    "warmth": 0.07,
     "movement": 0.5,
+    "density": 0.65,
     "space": 0.45,
-    "warmth": 0.07
+    "aggression": 0.6
   },
-  "strategy": "Bright Dark",
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OBSIDIAN",
+    "target": "ODDFELIX",
+    "amount": 0.6
+  },
   "tags": [
     "entangled",
     "bright",
@@ -53,17 +35,5 @@
     "aggressive",
     "volcanic"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Cold white light striking obsidian — blinding and hard-edged."
->>>>>>> origin/v1-launch-prep
 }

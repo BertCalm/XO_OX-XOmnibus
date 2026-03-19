@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Obbligato",
-        "type": "PITCH_SYNC",
-        "amount": 0.777
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.976,
-    "brightness": 0.357,
-    "density": 0.983,
-    "movement": 0.923,
-    "space": 0.97,
-    "warmth": 0.964
-  },
+  "name": "ALLHI ENT 01",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Obbligato"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.66,
-    "COUPLING": 0.973,
-    "MOVEMENT": 0.953,
-    "SPACE": 0.97
-  },
-  "mood": "Entangled",
-  "name": "ALLHI ENT 01",
   "parameters": {
-<<<<<<< HEAD
-    "Obbligato": {
-=======
     "Obscura": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.66,
-      "macro_coupling": 0.973,
       "macro_movement": 0.953,
+      "macro_coupling": 0.973,
       "macro_space": 0.97
     },
-<<<<<<< HEAD
-    "Obscura": {
-=======
     "Obbligato": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.66,
-      "macro_coupling": 0.973,
       "macro_movement": 0.953,
+      "macro_coupling": 0.973,
       "macro_space": 0.97
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSCURA",
+    "target": "OBBLIGATO",
+    "amount": 0.777
+  },
+  "dna": {
+    "brightness": 0.357,
+    "warmth": 0.964,
+    "movement": 0.923,
+    "density": 0.983,
+    "space": 0.97,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.953,
+    "COUPLING": 0.973,
+    "SPACE": 0.97
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

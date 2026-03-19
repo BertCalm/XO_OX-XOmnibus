@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Orphica",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.757
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.88,
-    "brightness": 0.918,
-    "density": 0.532,
-    "movement": 0.061,
-    "space": 0.875,
-    "warmth": 0.124
-  },
+  "name": "BRIGHT_COLD_FROZEN_VAST_HARSH_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Onset",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.522,
-    "COUPLING": 0.757,
-    "MOVEMENT": 0.057,
-    "SPACE": 0.867
-  },
-  "mood": "Entangled",
-  "name": "Arctic Fang",
   "parameters": {
     "Onset": {
       "macro_character": 0.534,
-      "macro_coupling": 0.526,
       "macro_movement": 0.056,
+      "macro_coupling": 0.526,
       "macro_space": 0.885
     },
     "Orphica": {
       "macro_character": 0.509,
-      "macro_coupling": 0.547,
       "macro_movement": 0.057,
+      "macro_coupling": 0.547,
       "macro_space": 0.849
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ONSET",
+    "target": "ORPHICA",
+    "amount": 0.757
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.124,
+    "movement": 0.061,
+    "density": 0.532,
+    "space": 0.875,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.522,
+    "MOVEMENT": 0.057,
+    "COUPLING": 0.757,
+    "SPACE": 0.867
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "cold",
     "vast",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

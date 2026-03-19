@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OBESE — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.8,
-    "brightness": 0.11,
-    "density": 0.94,
-    "movement": 0.35,
-    "space": 0.14,
-    "warmth": 0.88
-  },
+  "schema_version": 1,
+  "name": "Subterranean Mass",
+  "mood": "Foundation",
   "engines": [
     "Obese"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Subterranean Mass",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.11,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.94,
+    "space": 0.14,
+    "aggression": 0.8
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.88,
+    "movement": 0.35,
+    "density": 0.94,
+    "space": 0.14,
+    "aggression": 0.8
+  },
   "parameters": {
     "Obese": {
-<<<<<<< HEAD
-=======
       "fat_drive": 0.95,
       "fat_saturation": 0.09,
       "fat_filterCutoff": 0.49,
       "fat_filterReso": 0.07,
->>>>>>> origin/v1-launch-prep
       "fat_ampAttack": 609.7,
       "fat_ampDecay": 613.8,
-      "fat_ampRelease": 382.8,
       "fat_ampSustain": 0.39,
+      "fat_ampRelease": 382.8,
+      "fat_subLevel": 0.55,
       "fat_bodyLevel": 0.27,
-      "fat_character": 0.21,
-      "fat_coupling": 0.2,
-      "fat_delayMix": 0.42,
-      "fat_drive": 0.95,
-      "fat_filterCutoff": 0.49,
-      "fat_filterReso": 0.07,
-      "fat_movement": 0.54,
       "fat_reverbMix": 0.87,
-      "fat_saturation": 0.09,
+      "fat_delayMix": 0.42,
+      "fat_character": 0.21,
+      "fat_movement": 0.54,
       "fat_space": 0.73,
-      "fat_subLevel": 0.55
+      "fat_coupling": 0.2
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8,
-    "brightness": 0.11,
-    "density": 0.94,
-    "movement": 0.35,
-    "space": 0.14,
-    "warmth": 0.88
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

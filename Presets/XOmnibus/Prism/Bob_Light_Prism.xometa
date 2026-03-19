@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Oblong in ultra-bright sparse prism territory",
-  "dna": {
-    "aggression": 0.2306,
+  "schema_version": 1,
+  "name": "Bob Light Prism",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.8906,
-    "density": 0.49,
+    "warmth": 0.2441,
     "movement": 0.4725,
+    "density": 0.49,
     "space": 0.8415,
-    "warmth": 0.2441
+    "aggression": 0.2306
+  },
+  "dna": {
+    "brightness": 0.8906,
+    "warmth": 0.2441,
+    "movement": 0.4725,
+    "density": 0.49,
+    "space": 0.8415,
+    "aggression": 0.2306
   },
   "engines": [
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "ultra",
     "spectral",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -37,52 +39,23 @@
   ],
   "macros": {
     "CHARACTER": 0.8115,
-    "COUPLING": 0.3891,
     "MOVEMENT": 0.8758,
+    "COUPLING": 0.3891,
     "SPACE": 0.7657
   },
-  "mood": "Prism",
-  "name": "Bob Light Prism",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblong": {
-<<<<<<< HEAD
-      "bob_couplingBus": 0,
-=======
       "bob_macro_character": 0.8115,
       "bob_macro_movement": 0.8758,
       "bob_macro_coupling": 0.3891,
       "bob_macro_space": 0.7657,
       "bob_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
-      "bob_macro_character": 0.8115,
-      "bob_macro_coupling": 0.3891,
-      "bob_macro_movement": 0.8758,
-      "bob_macro_space": 0.7657,
-      "bob_outputLevel": 0.85
+      "bob_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2306,
-    "brightness": 0.8906,
-    "density": 0.49,
-    "movement": 0.4725,
-    "space": 0.8415,
-    "warmth": 0.2441
-  },
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

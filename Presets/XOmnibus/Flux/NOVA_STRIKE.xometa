@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "NOVA STRIKE",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.305
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "OddOscar",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.983
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "ODDOSCAR",
+    "amount": 0.983
   },
   "dna": {
-    "aggression": 0.969,
     "brightness": 0.899,
-    "density": 0.665,
+    "warmth": 0.888,
     "movement": 0.489,
+    "density": 0.665,
     "space": 0.452,
-    "warmth": 0.888
+    "aggression": 0.969
   },
-  "engines": [
-    "Optic",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.941,
-    "COUPLING": 0.875,
     "MOVEMENT": 0.542,
+    "COUPLING": 0.875,
     "SPACE": 0.417
   },
-  "mood": "Flux",
-  "name": "NOVA STRIKE",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.987,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.438,
-      "macro_space": 0.305
-    },
-    "Optic": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.875,
-      "macro_movement": 0.542,
-      "macro_space": 0.417
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

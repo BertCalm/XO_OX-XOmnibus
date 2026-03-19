@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK WARM TIGHT VIOLENT ATM AGG 4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.072
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Oblique",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.925
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "OBLIQUE",
+    "amount": 0.925
   },
   "dna": {
-    "aggression": 0.922,
     "brightness": 0.028,
-    "density": 0.468,
+    "warmth": 0.948,
     "movement": 0.305,
+    "density": 0.468,
     "space": 0.074,
-    "warmth": 0.948
+    "aggression": 0.922
   },
-  "engines": [
-    "OddfeliX",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.026,
-    "COUPLING": 0.873,
     "MOVEMENT": 0.297,
+    "COUPLING": 0.873,
     "SPACE": 0.071
   },
-  "mood": "Atmosphere",
-  "name": "DARK WARM TIGHT VIOLENT ATM...",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.026,
-      "macro_coupling": 0.883,
-      "macro_movement": 0.293,
-      "macro_space": 0.072
-    },
-    "OddfeliX": {
-      "macro_character": 0.027,
-      "macro_coupling": 0.862,
-      "macro_movement": 0.302,
-      "macro_space": 0.069
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "dark",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

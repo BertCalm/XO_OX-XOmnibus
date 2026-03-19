@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Seafoam Biome",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.58
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Organon",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORPHICA",
+    "target": "ORGANON",
+    "amount": 0.7,
+    "intensity": "Deep"
   },
-  "description": "Timbre blend: ORPHICA's harmonic shimmer colors ORGANON's bio-signal teal.",
   "dna": {
-    "aggression": 0.08,
     "brightness": 0.88,
-    "density": 0.46,
+    "warmth": 0.42,
     "movement": 0.55,
+    "density": 0.46,
     "space": 0.76,
-    "warmth": 0.42
+    "aggression": 0.08
   },
-  "engines": [
-    "Orphica",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
     "SPACE": 0.72
   },
-  "mood": "Entangled",
-  "name": "Seafoam Biome",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.63,
-      "macro_space": 0.58
-    },
-    "Orphica": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.55,
-      "macro_space": 0.72
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "organon",
     "timbre",
     "seafoam"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

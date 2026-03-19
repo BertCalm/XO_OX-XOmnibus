@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.2732
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Opal",
-        "type": "PITCH_SYNC",
-        "amount": 0.8654
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.8654
   },
   "dna": {
-    "aggression": 0.0992,
     "brightness": 0.4433,
-    "density": 0.8811,
+    "warmth": 0.1399,
     "movement": 0.4453,
+    "density": 0.8811,
     "space": 0.1355,
-    "warmth": 0.1399
+    "aggression": 0.0992
   },
-  "engines": [
-    "Oracle",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3518,
-    "COUPLING": 0.1121,
     "MOVEMENT": 0.4068,
+    "COUPLING": 0.1121,
     "SPACE": 0.2852
   },
-  "mood": "Flux",
-  "name": "Fragment Deep",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.4782,
-      "macro_coupling": 0.0554,
-      "macro_movement": 0.4191,
-      "macro_space": 0.2732
-    },
-    "Oracle": {
-      "macro_character": 0.3518,
-      "macro_coupling": 0.1121,
-      "macro_movement": 0.4068,
-      "macro_space": 0.2852
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "high-density",
     "low-space",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

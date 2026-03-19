@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_SPARSE_VAST_GENTLE_ATM_4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.847
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oceanic",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.591
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.591
   },
   "dna": {
-    "aggression": 0.076,
     "brightness": 0.392,
-    "density": 0.053,
+    "warmth": 0.897,
     "movement": 0.556,
+    "density": 0.053,
     "space": 0.865,
-    "warmth": 0.897
+    "aggression": 0.076
   },
-  "engines": [
-    "Organon",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.33,
-    "COUPLING": 0.884,
     "MOVEMENT": 0.63,
+    "COUPLING": 0.884,
     "SPACE": 0.703
   },
-  "mood": "Atmosphere",
-  "name": "HOT_SPARSE_VAST_GENTLE_ATM_4",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.867,
-      "macro_movement": 0.482,
-      "macro_space": 0.847
-    },
-    "Organon": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.884,
-      "macro_movement": 0.63,
-      "macro_space": 0.703
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "warm",
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_DENSE_VIOLENT_PRS_DRK_1",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.4513
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Ole",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.8171
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OTTONI",
+    "target": "OLE",
+    "amount": 0.8171
   },
   "dna": {
-    "aggression": 0.9881,
     "brightness": 0.042,
-    "density": 0.9352,
+    "warmth": 0.414,
     "movement": 0.9226,
+    "density": 0.9352,
     "space": 0.421,
-    "warmth": 0.414
+    "aggression": 0.9881
   },
-  "engines": [
-    "Ottoni",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.701,
-    "COUPLING": 0.9352,
     "MOVEMENT": 0.9226,
+    "COUPLING": 0.9352,
     "SPACE": 0.421
   },
-  "mood": "Prism",
-  "name": "Tone Crush",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.7054,
-      "macro_coupling": 0.9035,
-      "macro_movement": 0.9571,
-      "macro_space": 0.4513
-    },
-    "Ottoni": {
-      "macro_character": 0.701,
-      "macro_coupling": 0.9352,
-      "macro_movement": 0.9226,
-      "macro_space": 0.421
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "kinetic",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

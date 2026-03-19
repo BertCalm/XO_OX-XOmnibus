@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7394,
-        "source": "Organon",
-        "target": "Octopus",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "description": "Dark Hot Vast Violent character entanglement — OCTOPUS × ORGANON via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.975,
-    "brightness": 0.044,
-    "density": 0.5615,
-    "movement": 0.5944,
-    "space": 0.8997,
-    "warmth": 0.921
-  },
+  "schema_version": 1,
+  "name": "DARK_HOT_VAST_VIOLENT_ENT_4",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Organon"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "ARM",
-    "INK",
-    "CAMOUFLAGE",
-    "DEEP"
-  ],
-  "macros": {
-    "CHARACTER": 0.4825,
-    "COUPLING": 0.7394,
-    "MOVEMENT": 0.5944,
-    "SPACE": 0.8997
-  },
-  "mood": "Entangled",
-  "name": "DARK_HOT_VAST_VIOLENT_ENT_4",
-  "parameters": {
-    "Octopus": {
-      "amp_attack": 0.2273,
-      "amp_release": 0.6687,
-      "coupling_level": 0.9644,
-      "density": 0.5843,
-      "drive": 0.8393,
-      "filter_cutoff": 0.2076,
-      "filter_resonance": 0.6065,
-      "macro_character": 0.6486,
-      "macro_coupling": 0.9106,
-      "macro_movement": 0.6236,
-      "macro_space": 0.9247,
-      "output_level": 0.8655,
-      "reverb_mix": 0.6536,
-      "reverb_size": 0.7341
-    },
-    "Organon": {
-      "amp_attack": 0.218,
-      "amp_release": 0.676,
-      "coupling_level": 0.9329,
-      "density": 0.5323,
-      "drive": 0.8552,
-      "filter_cutoff": 0.2691,
-      "filter_resonance": 0.5709,
-      "macro_character": 0.6872,
-      "macro_coupling": 0.9489,
-      "macro_movement": 0.597,
-      "macro_space": 0.8732,
-      "output_level": 0.8604,
-      "reverb_mix": 0.646,
-      "reverb_size": 0.7718
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.975,
-    "brightness": 0.044,
-    "density": 0.5615,
-    "movement": 0.5944,
-    "space": 0.8997,
-    "warmth": 0.921
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dark Hot Vast Violent character entanglement — OCTOPUS × ORGANON via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ARM",
     "INK",
@@ -175,5 +94,4 @@
     "COUPLING": 0.7394,
     "SPACE": 0.8997
   }
->>>>>>> origin/v1-launch-prep
 }

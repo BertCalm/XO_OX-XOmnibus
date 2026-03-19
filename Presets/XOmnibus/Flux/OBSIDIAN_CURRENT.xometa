@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OBSIDIAN CURRENT",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 0.04
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Organon",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.811
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OVERBITE",
+    "target": "ORGANON",
+    "amount": 0.811
   },
   "dna": {
-    "aggression": 0.505,
     "brightness": 0.097,
-    "density": 0.519,
+    "warmth": 0.077,
     "movement": 0.752,
+    "density": 0.519,
     "space": 0.234,
-    "warmth": 0.077
+    "aggression": 0.505
   },
-  "engines": [
-    "Overbite",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.505,
-    "COUPLING": 0.72,
     "MOVEMENT": 0.319,
+    "COUPLING": 0.72,
     "SPACE": 0.222
   },
-  "mood": "Flux",
-  "name": "OBSIDIAN CURRENT",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.942,
-      "macro_coupling": 0.579,
-      "macro_movement": 0.57,
-      "macro_space": 0.04
-    },
-    "Overbite": {
-      "macro_character": 0.069,
-      "macro_coupling": 0.862,
-      "macro_movement": 0.068,
-      "macro_space": 0.404
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "extreme",
     "low-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

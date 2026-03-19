@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.748,
-        "engineA": "Outwit",
-        "engineB": "Orbital",
-        "type": "FM_CROSS"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Harmonic Arms",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Orbital partial balance maps to OUTWIT arm amplitude ratio — each harmonic feeds a different arm",
-  "dna": {
-    "aggression": 0.475,
-    "brightness": 0.625,
-    "density": 0.625,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.4
-  },
-  "engines": [
-    "Outwit",
-    "Orbital"
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "orbital",
+    "harmonic",
+    "additive"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,16 +25,29 @@
   ],
   "macros": {
     "CHARACTER": 0.728,
-    "COUPLING": 0.81,
     "MOVEMENT": 0.518,
+    "COUPLING": 0.81,
     "SPACE": 0.47
   },
-  "mood": "Entangled",
-  "name": "Harmonic Arms",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.625,
+    "space": 0.575,
+    "aggression": 0.475,
+    "movement": 0.7,
+    "warmth": 0.4,
+    "density": 0.625
+  },
+  "sonic_dna": {
+    "brightness": 0.625,
+    "space": 0.575,
+    "aggression": 0.475,
+    "movement": 0.7,
+    "warmth": 0.4,
+    "density": 0.625
+  },
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-=======
       "owit_rule": 73,
       "owit_arms": 6,
       "owit_cellSize": 0.512,
@@ -63,45 +57,27 @@
       "owit_pitchSpread": 0.609,
       "owit_filterCutoff": 0.451,
       "owit_filterReso": 0.263,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.037,
       "owit_ampRelease": 0.812,
+      "owit_outputLevel": 0.72,
+      "owit_couplingLevel": 0.672,
+      "owit_couplingBus": 0,
       "owit_armStagger": 0.049,
-      "owit_arms": 6,
       "owit_borderMode": 2,
-      "owit_cellSize": 0.512,
+      "owit_inkCloudMix": 0.061,
       "owit_chroma1": 0.572,
       "owit_chroma2": 0.702,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.672,
-      "owit_density": 0.45,
-      "owit_evolveRate": 0.282,
-      "owit_filterCutoff": 0.451,
-      "owit_filterReso": 0.263,
-      "owit_inkCloudMix": 0.061,
-      "owit_mutateProb": 0.295,
-      "owit_outputLevel": 0.72,
-      "owit_pitchSpread": 0.609,
-      "owit_polyDepth": 0.672,
-      "owit_rule": 73
+      "owit_polyDepth": 0.672
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.475,
-    "brightness": 0.625,
-    "density": 0.625,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.4
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "orbital",
-    "harmonic",
-    "additive"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORBITAL",
+        "type": "FM_CROSS",
+        "amount": 0.748
+      }
+    ]
+  }
 }

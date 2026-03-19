@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_3",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.82
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Obese",
-        "type": "CHAOS_INJECT",
-        "amount": 0.702
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "OBESE",
+    "amount": 0.702
   },
   "dna": {
-    "aggression": 0.926,
     "brightness": 0.062,
-    "density": 0.92,
+    "warmth": 0.361,
     "movement": 0.386,
+    "density": 0.92,
     "space": 0.91,
-    "warmth": 0.361
+    "aggression": 0.926
   },
-  "engines": [
-    "Oblong",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.387,
-    "COUPLING": 0.584,
     "MOVEMENT": 0.85,
+    "COUPLING": 0.584,
     "SPACE": 0.812
   },
-  "mood": "Foundation",
-  "name": "Flux Storm",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.432,
-      "macro_coupling": 0.622,
-      "macro_movement": 0.802,
-      "macro_space": 0.82
-    },
-    "Oblong": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.584,
-      "macro_movement": 0.85,
-      "macro_space": 0.812
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

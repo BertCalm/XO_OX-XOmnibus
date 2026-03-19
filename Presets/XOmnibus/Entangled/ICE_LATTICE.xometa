@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Optic",
-        "type": "PITCH_SYNC",
-        "amount": 0.584
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.666,
-    "brightness": 0.138,
-    "density": 0.571,
-    "movement": 0.543,
-    "space": 0.106,
-    "warmth": 0.026
-  },
+  "name": "ICE LATTICE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.785,
-    "COUPLING": 0.19,
-    "MOVEMENT": 0.807,
-    "SPACE": 0.097
-  },
-  "mood": "Entangled",
-  "name": "ICE LATTICE",
   "parameters": {
     "Obese": {
       "macro_character": 0.86,
-      "macro_coupling": 0.238,
       "macro_movement": 0.071,
+      "macro_coupling": 0.238,
       "macro_space": 0.669
     },
     "Optic": {
       "macro_character": 0.214,
-      "macro_coupling": 0.936,
       "macro_movement": 0.132,
+      "macro_coupling": 0.936,
       "macro_space": 0.571
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBESE",
+    "target": "OPTIC",
+    "amount": 0.584
+  },
+  "dna": {
+    "brightness": 0.138,
+    "warmth": 0.026,
+    "movement": 0.543,
+    "density": 0.571,
+    "space": 0.106,
+    "aggression": 0.666
+  },
+  "macros": {
+    "CHARACTER": 0.785,
+    "MOVEMENT": 0.807,
+    "COUPLING": 0.19,
+    "SPACE": 0.097
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ouroboros",
-        "type": "PITCH_SYNC",
-        "amount": 0.617
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9332,
-    "brightness": 0.9315,
-    "density": 0.0946,
-    "movement": 0.8833,
-    "space": 0.5373,
-    "warmth": 0.058
-  },
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4869,
-    "COUPLING": 0.0835,
-    "MOVEMENT": 0.8612,
-    "SPACE": 0.5139
-  },
-  "mood": "Flux",
-  "name": "Mirror Rage",
   "parameters": {
     "Optic": {
       "macro_character": 0.5007,
-      "macro_coupling": 0.0827,
       "macro_movement": 0.8538,
+      "macro_coupling": 0.0827,
       "macro_space": 0.52
     },
     "Ouroboros": {
       "macro_character": 0.473,
-      "macro_coupling": 0.0843,
       "macro_movement": 0.8686,
+      "macro_coupling": 0.0843,
       "macro_space": 0.5078
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.617
+  },
+  "dna": {
+    "brightness": 0.9315,
+    "warmth": 0.058,
+    "movement": 0.8833,
+    "density": 0.0946,
+    "space": 0.5373,
+    "aggression": 0.9332
+  },
+  "macros": {
+    "CHARACTER": 0.4869,
+    "MOVEMENT": 0.8612,
+    "COUPLING": 0.0835,
+    "SPACE": 0.5139
+  },
   "tags": [
     "flux",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "sparse",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

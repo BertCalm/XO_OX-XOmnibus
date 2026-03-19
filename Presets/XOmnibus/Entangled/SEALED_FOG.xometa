@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SEALED FOG",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.716
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Octopus",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.42
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORCA",
+    "target": "OCTOPUS",
+    "amount": 0.42
   },
   "dna": {
-    "aggression": 0.105,
     "brightness": 0.978,
-    "density": 0.094,
+    "warmth": 0.145,
     "movement": 0.085,
+    "density": 0.094,
     "space": 0.273,
-    "warmth": 0.145
+    "aggression": 0.105
   },
-  "engines": [
-    "Orca",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.123,
-    "COUPLING": 0.737,
     "MOVEMENT": 0.085,
+    "COUPLING": 0.737,
     "SPACE": 0.011
   },
-  "mood": "Entangled",
-  "name": "SEALED FOG",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.248,
-      "macro_coupling": 0.16,
-      "macro_movement": 0.063,
-      "macro_space": 0.716
-    },
-    "Orca": {
-      "macro_character": 0.372,
-      "macro_coupling": 0.49,
-      "macro_movement": 0.107,
-      "macro_space": 0.021
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "sealed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

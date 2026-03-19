@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Sunken Archive",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. ORACLE in void register.",
-  "dna": {
-    "aggression": 0.126,
-    "brightness": 0.115,
-    "density": 0.519,
-    "movement": 0.151,
-    "space": 0.641,
-    "warmth": 0.533
-  },
-  "engines": [
-    "Oracle"
-  ],
-  "macroLabels": [
-    "VISION",
-    "FLOW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.323,
-    "FLOW": 0.211,
-    "SPACE": 0.678,
-    "VISION": 0.273
-  },
-  "mood": "Atmosphere",
-  "name": "Sunken Archive",
-  "parameters": {
-    "Oracle": {
-      "coupling": 0.323,
-      "flow": 0.211,
-      "space": 0.678,
-      "vision": 0.273
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "VISION",
     "FLOW",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

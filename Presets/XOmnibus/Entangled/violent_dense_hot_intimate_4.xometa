@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT INTIMATE 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "aggression": 0.9579,
+    "density": 0.9183,
+    "warmth": 0.926,
+    "space": 0.1092,
+    "brightness": 0.5315,
+    "movement": 0.5085
   },
-  "couplingIntensity": "Extreme",
-  "couplingType": "PHASE",
-  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for PHASE coupling with XOddFelix.",
   "dna": {
     "aggression": 0.9579,
-    "brightness": 0.5315,
     "density": 0.9183,
-    "movement": 0.5085,
+    "warmth": 0.926,
     "space": 0.1092,
-    "warmth": 0.926
+    "brightness": 0.5315,
+    "movement": 0.5085
   },
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "phase",
     "oddfelix"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "IMPACT",
@@ -35,32 +36,10 @@
     "PRESS",
     "FIELD"
   ],
-  "mood": "Prism",
-  "name": "VIOLENT DENSE HOT INTIMATE 4",
+  "couplingType": "PHASE",
+  "couplingIntensity": "Extreme",
   "parameters": {
     "OddfeliX": {
-<<<<<<< HEAD
-      "couplingBus": 1,
-      "couplingLevel": 0.811
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9579,
-    "brightness": 0.5315,
-    "density": 0.9183,
-    "movement": 0.5085,
-    "space": 0.1092,
-    "warmth": 0.926
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "phase",
-    "oddfelix"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.811,
       "couplingBus": 1
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Riding the updraft — open treble soar",
-  "dna": {
-    "aggression": 0.1,
+  "schema_version": 1,
+  "name": "Thermal Ascent",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.9,
-    "density": 0.2,
+    "warmth": 0.12,
+    "aggression": 0.1,
     "movement": 0.75,
-    "space": 0.8,
-    "warmth": 0.12
+    "density": 0.2,
+    "space": 0.8
   },
   "engines": [
     "Osprey"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "DIVE",
-    "THERMAL",
-    "COUPLING",
-    "SOAR"
-  ],
-  "mood": "Prism",
-  "name": "Thermal Ascent",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1,
-    "brightness": 0.9,
-    "density": 0.2,
-    "movement": 0.75,
-    "space": 0.8,
-    "warmth": 0.12
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Riding the updraft — open treble soar",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "air",
     "bird"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "DIVE",
     "THERMAL",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

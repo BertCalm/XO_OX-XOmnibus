@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Obese",
-        "type": "RING_MOD",
-        "amount": 0.81
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.71,
-    "brightness": 0.07,
-    "density": 0.89,
-    "movement": 0.2,
-    "space": 0.24,
-    "warmth": 0.69
-  },
+  "name": "Tar Pit Oscillator",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.57,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.2,
-    "SPACE": 0.24
-  },
-  "mood": "Entangled",
-  "name": "Tar Pit Oscillator",
   "parameters": {
     "Obese": {
       "macro_character": 0.75,
-      "macro_coupling": 0.89,
       "macro_movement": 0.71,
+      "macro_coupling": 0.89,
       "macro_space": 0.78
     },
     "Overworld": {
       "macro_character": 0.61,
-      "macro_coupling": 0.59,
       "macro_movement": 0.52,
+      "macro_coupling": 0.59,
       "macro_space": 0.15
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OVERWORLD",
+    "target": "OBESE",
+    "amount": 0.81
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.69,
+    "movement": 0.2,
+    "density": 0.89,
+    "space": 0.24,
+    "aggression": 0.71
+  },
+  "macros": {
+    "CHARACTER": 0.57,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.86,
+    "SPACE": 0.24
+  },
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Medium",
-  "couplingType": "BIND",
-  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for BIND coupling with XOwlfish.",
-  "dna": {
-    "aggression": 0.9086,
-    "brightness": 0.5867,
+  "schema_version": 1,
+  "name": "HOT DENSE STILL VIOLENT 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.9597,
     "density": 0.8951,
     "movement": 0.0549,
-    "space": 0.5762,
-    "warmth": 0.9597
+    "aggression": 0.9086,
+    "brightness": 0.5867,
+    "space": 0.5762
+  },
+  "dna": {
+    "warmth": 0.9597,
+    "density": 0.8951,
+    "movement": 0.0549,
+    "aggression": 0.9086,
+    "brightness": 0.5867,
+    "space": 0.5762
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "bind",
     "owlfish"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "BURN",
@@ -35,32 +36,10 @@
     "FORCE",
     "LAYER"
   ],
-  "mood": "Prism",
-  "name": "HOT DENSE STILL VIOLENT 4",
+  "couplingType": "BIND",
+  "couplingIntensity": "Medium",
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "couplingBus": 0,
-      "couplingLevel": 0.917
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9086,
-    "brightness": 0.5867,
-    "density": 0.8951,
-    "movement": 0.0549,
-    "space": 0.5762,
-    "warmth": 0.9597
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "bind",
-    "owlfish"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.917,
       "couplingBus": 0
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

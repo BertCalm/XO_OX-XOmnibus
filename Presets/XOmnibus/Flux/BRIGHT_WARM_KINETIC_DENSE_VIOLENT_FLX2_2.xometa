@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.4307
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Oblique",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.852
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OPTIC",
+    "target": "OBLIQUE",
+    "amount": 0.852
   },
   "dna": {
-    "aggression": 0.9599,
     "brightness": 0.8808,
-    "density": 0.8848,
+    "warmth": 0.9173,
     "movement": 0.9017,
+    "density": 0.8848,
     "space": 0.4474,
-    "warmth": 0.9173
+    "aggression": 0.9599
   },
-  "engines": [
-    "Optic",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9238,
-    "COUPLING": 0.8892,
     "MOVEMENT": 0.8918,
+    "COUPLING": 0.8892,
     "SPACE": 0.4248
   },
-  "mood": "Flux",
-  "name": "Bloom Edge",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.9221,
-      "macro_coupling": 0.9097,
-      "macro_movement": 0.9054,
-      "macro_space": 0.4307
-    },
-    "Optic": {
-      "macro_character": 0.9255,
-      "macro_coupling": 0.8688,
-      "macro_movement": 0.8782,
-      "macro_space": 0.4189
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -82,10 +47,5 @@
     "kinetic",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK WARM DENSE VIOLENT AET AGG 2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.602
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "OddOscar",
-        "type": "FILTER_MOD",
-        "amount": 0.915
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERWORLD",
+    "target": "ODDOSCAR",
+    "amount": 0.915
   },
   "dna": {
-    "aggression": 0.902,
     "brightness": 0.087,
-    "density": 0.981,
+    "warmth": 0.947,
     "movement": 0.311,
+    "density": 0.981,
     "space": 0.632,
-    "warmth": 0.947
+    "aggression": 0.902
   },
-  "engines": [
-    "Overworld",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.081,
-    "COUPLING": 0.841,
     "MOVEMENT": 0.306,
+    "COUPLING": 0.841,
     "SPACE": 0.601
   },
-  "mood": "Aether",
-  "name": "DARK WARM DENSE VIOLENT AET...",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.308,
-      "macro_space": 0.602
-    },
-    "Overworld": {
-      "macro_character": 0.081,
-      "macro_coupling": 0.827,
-      "macro_movement": 0.304,
-      "macro_space": 0.599
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "dark",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

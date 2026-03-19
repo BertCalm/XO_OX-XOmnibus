@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Electron Storm",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. OVERWORLD kinetic register.",
-  "dna": {
-    "aggression": 0.616,
-    "brightness": 0.309,
-    "density": 0.683,
-    "movement": 0.85,
-    "space": 0.641,
-    "warmth": 0.471
-  },
-  "engines": [
-    "Overworld"
-  ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.415,
-    "ERA": 0.719,
-    "GLITCH": 0.817,
-    "SPACE": 0.563
-  },
-  "mood": "Atmosphere",
-  "name": "Electron Storm",
-  "parameters": {
-    "Overworld": {
-      "coupling": 0.415,
-      "era": 0.719,
-      "glitch": 0.817,
-      "space": 0.563
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -58,9 +16,6 @@
     "weather",
     "dynamic"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "ERA",
     "GLITCH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

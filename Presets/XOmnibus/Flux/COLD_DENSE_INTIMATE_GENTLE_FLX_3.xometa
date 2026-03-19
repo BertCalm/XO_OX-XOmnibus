@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ouroboros",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.5742
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0514,
-    "brightness": 0.4605,
-    "density": 0.9753,
-    "movement": 0.4873,
-    "space": 0.1002,
-    "warmth": 0.0822
-  },
+  "name": "COLD_DENSE_INTIMATE_GENTLE_FLX_3",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5138,
-    "COUPLING": 0.1163,
-    "MOVEMENT": 0.5676,
-    "SPACE": 0.1142
-  },
-  "mood": "Flux",
-  "name": "Fragment Saturated",
   "parameters": {
     "Optic": {
       "macro_character": 0.5138,
-      "macro_coupling": 0.1163,
       "macro_movement": 0.5676,
+      "macro_coupling": 0.1163,
       "macro_space": 0.1142
     },
     "Ouroboros": {
       "macro_character": 0.5844,
-      "macro_coupling": 0.1892,
       "macro_movement": 0.555,
+      "macro_coupling": 0.1892,
       "macro_space": 0.1918
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.5742
+  },
+  "dna": {
+    "brightness": 0.4605,
+    "warmth": 0.0822,
+    "movement": 0.4873,
+    "density": 0.9753,
+    "space": 0.1002,
+    "aggression": 0.0514
+  },
+  "macros": {
+    "CHARACTER": 0.5138,
+    "MOVEMENT": 0.5676,
+    "COUPLING": 0.1163,
+    "SPACE": 0.1142
+  },
   "tags": [
     "flux",
     "unstable",
@@ -59,10 +48,5 @@
     "high-density",
     "low-space",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

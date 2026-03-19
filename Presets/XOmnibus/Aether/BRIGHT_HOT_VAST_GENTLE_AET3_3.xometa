@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Osprey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8158
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0288,
-    "brightness": 0.8755,
-    "density": 0.5543,
-    "movement": 0.4112,
-    "space": 0.9047,
-    "warmth": 0.8973
-  },
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_3",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oceanic",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.8864,
-    "COUPLING": 0.8158,
-    "MOVEMENT": 0.4112,
-    "SPACE": 0.9047
-  },
-  "mood": "Aether",
-  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_3",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.7127,
-      "macro_coupling": 0.6762,
       "macro_movement": 0.2536,
+      "macro_coupling": 0.6762,
       "macro_space": 0.6006
     },
     "Osprey": {
       "macro_character": 0.3836,
-      "macro_coupling": 0.4025,
       "macro_movement": 0.5467,
+      "macro_coupling": 0.4025,
       "macro_space": 0.894
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "OSPREY",
+    "amount": 0.8158
+  },
+  "dna": {
+    "brightness": 0.8755,
+    "warmth": 0.8973,
+    "movement": 0.4112,
+    "density": 0.5543,
+    "space": 0.9047,
+    "aggression": 0.0288
+  },
+  "macros": {
+    "CHARACTER": 0.8864,
+    "MOVEMENT": 0.4112,
+    "COUPLING": 0.8158,
+    "SPACE": 0.9047
+  },
   "tags": [
     "aether",
     "warm",
@@ -58,10 +47,5 @@
     "vast",
     "gentle",
     "transcendent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

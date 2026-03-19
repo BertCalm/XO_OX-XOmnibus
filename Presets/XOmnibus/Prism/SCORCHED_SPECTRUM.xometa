@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Obsidian",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.888
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.997,
-    "brightness": 0.741,
-    "density": 0.937,
-    "movement": 0.895,
-    "space": 0.021,
-    "warmth": 0.969
-  },
+  "name": "SCORCHED SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Obese",
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.754,
-    "COUPLING": 0.992,
-    "MOVEMENT": 0.635,
-    "SPACE": 0.339
-  },
-  "mood": "Prism",
-  "name": "SCORCHED SPECTRUM",
   "parameters": {
     "Obese": {
       "macro_character": 0.567,
-      "macro_coupling": 0.591,
       "macro_movement": 0.605,
+      "macro_coupling": 0.591,
       "macro_space": 0.018
     },
     "Obsidian": {
       "macro_character": 0.196,
-      "macro_coupling": 0.08,
       "macro_movement": 0.353,
+      "macro_coupling": 0.08,
       "macro_space": 0.008
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBESE",
+    "target": "OBSIDIAN",
+    "amount": 0.888
+  },
+  "dna": {
+    "brightness": 0.741,
+    "warmth": 0.969,
+    "movement": 0.895,
+    "density": 0.937,
+    "space": 0.021,
+    "aggression": 0.997
+  },
+  "macros": {
+    "CHARACTER": 0.754,
+    "MOVEMENT": 0.635,
+    "COUPLING": 0.992,
+    "SPACE": 0.339
+  },
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

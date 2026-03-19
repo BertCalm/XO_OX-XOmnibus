@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_VAST_GENTLE_FAM_VOL_126",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.927
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osteria",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.537
-      }
-    ]
+    "type": "ENVELOPE_MIRROR",
+    "source": "OTTONI",
+    "target": "OSTERIA",
+    "amount": 0.537
   },
   "dna": {
-    "aggression": 0.094,
     "brightness": 0.087,
-    "density": 0.643,
+    "warmth": 0.045,
     "movement": 0.359,
+    "density": 0.643,
     "space": 0.905,
-    "warmth": 0.045
+    "aggression": 0.094
   },
-  "engines": [
-    "Ottoni",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.072,
-    "COUPLING": 0.353,
     "MOVEMENT": 0.372,
+    "COUPLING": 0.353,
     "SPACE": 0.916
   },
-  "mood": "Family",
-  "name": "Grain Dome",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.058,
-      "macro_coupling": 0.343,
-      "macro_movement": 0.358,
-      "macro_space": 0.927
-    },
-    "Ottoni": {
-      "macro_character": 0.085,
-      "macro_coupling": 0.363,
-      "macro_movement": 0.386,
-      "macro_space": 0.905
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

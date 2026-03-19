@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
-  "dna": {
-    "aggression": 0.635,
+  "schema_version": 1,
+  "name": "Pressure Pulse Slow",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.339,
-    "density": 0.885,
+    "warmth": 0.896,
     "movement": 0.439,
+    "density": 0.885,
     "space": 0.246,
-    "warmth": 0.896
+    "aggression": 0.635
   },
   "engines": [
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "DRIVE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Foundation",
-  "name": "Pressure Pulse Slow",
-  "parameters": {
-    "Ohm": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.635,
-    "brightness": 0.339,
-    "density": 0.885,
-    "movement": 0.439,
-    "space": 0.246,
-    "warmth": 0.896
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
   "tags": [
     "foundation",
     "warm",
@@ -44,9 +24,6 @@
     "thick",
     "aggressive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "DRIVE",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

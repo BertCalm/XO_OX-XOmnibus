@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Neon tubes humming in an empty corridor. The sound of artificial light.",
+  "name": "Cathode Fog",
+  "version": "1.0",
   "engines": [
     "Overworld"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.531,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.583,
+    "COUPLING": 0.0,
     "SPACE": 0.491
   },
-  "mood": "Atmosphere",
-  "name": "Cathode Fog",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.119,
     "brightness": 0.878,
-    "density": 0.324,
+    "warmth": 0.185,
     "movement": 0.583,
+    "density": 0.324,
     "space": 0.491,
-    "warmth": 0.185
+    "aggression": 0.119
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Neon tubes humming in an empty corridor. The sound of artificial light."
 }

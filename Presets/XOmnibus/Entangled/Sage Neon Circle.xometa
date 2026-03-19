@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "OddfeliX",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Warm ohm commune illuminated by neon tetra flash — folk warmth and electric shimmer share the same hearth",
+  "name": "Sage Neon Circle",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "OddfeliX"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.6,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.6,
     "SPACE": 0.65
   },
-  "mood": "Entangled",
-  "name": "Sage Neon Circle",
-  "parameters": {
-    "Ohm": {},
-    "OddfeliX": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.3,
     "brightness": 0.58,
-    "density": 0.5,
+    "warmth": 0.65,
     "movement": 0.62,
+    "density": 0.5,
     "space": 0.64,
-    "warmth": 0.65
+    "aggression": 0.3
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OHM",
+    "target": "ODDFELIX",
+    "amount": 0.6
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oddfelix",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Warm ohm commune illuminated by neon tetra flash — folk warmth and electric shimmer share the same hearth"
->>>>>>> origin/v1-launch-prep
 }

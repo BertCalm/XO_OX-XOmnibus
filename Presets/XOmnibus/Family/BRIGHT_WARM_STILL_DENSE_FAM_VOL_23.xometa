@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_23",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.474
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Osteria",
-        "type": "HARMONIC_MESH",
-        "amount": 0.795
-      }
-    ]
+    "type": "HARMONIC_MESH",
+    "source": "ORIGAMI",
+    "target": "OSTERIA",
+    "amount": 0.795
   },
   "dna": {
-    "aggression": 0.504,
     "brightness": 0.936,
-    "density": 0.91,
+    "warmth": 0.981,
     "movement": 0.07,
+    "density": 0.91,
     "space": 0.492,
-    "warmth": 0.981
+    "aggression": 0.504
   },
-  "engines": [
-    "Osteria",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.982,
-    "COUPLING": 0.702,
     "MOVEMENT": 0.09,
+    "COUPLING": 0.702,
     "SPACE": 0.495
   },
-  "mood": "Family",
-  "name": "Candlelight Packed 2",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.986,
-      "macro_coupling": 0.696,
-      "macro_movement": 0.093,
-      "macro_space": 0.474
-    },
-    "Osteria": {
-      "macro_character": 0.977,
-      "macro_coupling": 0.708,
-      "macro_movement": 0.088,
-      "macro_space": 0.517
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_INTIMATE_GENTLE_FAM_VOL_32",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.068
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Osprey",
-        "type": "DYNAMIC_CROSS",
-        "amount": 0.429
-      }
-    ]
+    "type": "DYNAMIC_CROSS",
+    "source": "ODDOSCAR",
+    "target": "OSPREY",
+    "amount": 0.429
   },
   "dna": {
-    "aggression": 0.023,
     "brightness": 0.967,
-    "density": 0.378,
+    "warmth": 0.942,
     "movement": 0.596,
+    "density": 0.378,
     "space": 0.045,
-    "warmth": 0.942
+    "aggression": 0.023
   },
-  "engines": [
-    "Osprey",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.927,
-    "COUPLING": 0.214,
     "MOVEMENT": 0.597,
+    "COUPLING": 0.214,
     "SPACE": 0.059
   },
-  "mood": "Family",
-  "name": "Halo Surge 3",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.228,
-      "macro_movement": 0.599,
-      "macro_space": 0.068
-    },
-    "Osprey": {
-      "macro_character": 0.925,
-      "macro_coupling": 0.2,
-      "macro_movement": 0.595,
-      "macro_space": 0.049
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "gentle",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

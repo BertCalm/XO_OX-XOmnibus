@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "AGGRESSIVE ETHER RISE",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.029
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ohm",
-        "type": "FILTER_MOD",
-        "amount": 0.368
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "OHM",
+    "amount": 0.368
   },
   "dna": {
-    "aggression": 0.895,
     "brightness": 0.366,
-    "density": 0.045,
+    "warmth": 0.403,
     "movement": 0.264,
+    "density": 0.045,
     "space": 0.051,
-    "warmth": 0.403
+    "aggression": 0.895
   },
-  "engines": [
-    "Overbite",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.373,
-    "COUPLING": 0.987,
     "MOVEMENT": 0.264,
+    "COUPLING": 0.987,
     "SPACE": 0.051
   },
-  "mood": "Aether",
-  "name": "AGGRESSIVE ETHER RISE",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.825,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.276,
-      "macro_space": 0.029
-    },
-    "Overbite": {
-      "macro_character": 0.289,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.253,
-      "macro_space": 0.054
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

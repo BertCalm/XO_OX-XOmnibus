@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.87,
-        "engineA": "Ottoni",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Triple brass GROW macro with Ouroboros chaos injection — harmonic brass in fractal formation.",
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.8,
-    "density": 0.76,
-    "movement": 0.75,
-    "space": 0.2,
-    "warmth": 0.22
-  },
+  "schema_version": 1,
+  "name": "Brass Phosphor",
+  "mood": "Entangled",
   "engines": [
     "Ottoni",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ottoni",
     "ouroboros",
     "brass"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "COUPLING": 0.87,
     "MOVEMENT": 0.75,
+    "COUPLING": 0.87,
     "SPACE": 0.2
   },
-  "mood": "Entangled",
-  "name": "Brass Phosphor",
-  "parameters": {
-    "Ottoni": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.8,
-    "density": 0.76,
+    "warmth": 0.22,
     "movement": 0.75,
+    "density": 0.76,
     "space": 0.2,
-    "warmth": 0.22
+    "aggression": 0.91
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "ottoni",
-    "ouroboros",
-    "brass"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.8,
+    "warmth": 0.22,
+    "movement": 0.75,
+    "density": 0.76,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.87
+      }
+    ]
+  }
 }

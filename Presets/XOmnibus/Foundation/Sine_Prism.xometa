@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Single bright grain cluster, maximum air",
-  "dna": {
-    "aggression": 0.1292,
+  "schema_version": 1,
+  "name": "Sine Prism",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.8784,
-    "density": 0.1574,
+    "warmth": 0.3337,
     "movement": 0.1613,
+    "density": 0.1574,
     "space": 0.6216,
-    "warmth": 0.3337
+    "aggression": 0.1292
+  },
+  "dna": {
+    "brightness": 0.8784,
+    "warmth": 0.3337,
+    "movement": 0.1613,
+    "density": 0.1574,
+    "space": 0.6216,
+    "aggression": 0.1292
   },
   "engines": [
     "Opal"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GRAIN",
@@ -36,48 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "DENSITY": 0.4213,
     "GRAIN": 0.6718,
     "SCATTER": 0.41,
+    "DENSITY": 0.4213,
     "SPACE": 0.7263
   },
-  "mood": "Foundation",
-  "name": "Sine Prism",
+  "couplingIntensity": "None",
   "parameters": {
     "Opal": {
-<<<<<<< HEAD
-      "opal_couplingBus": 0,
-      "opal_couplingLevel": 0.5,
-      "opal_macro_density": 0.4213,
-=======
->>>>>>> origin/v1-launch-prep
       "opal_macro_grain": 0.6718,
       "opal_macro_scatter": 0.41,
+      "opal_macro_density": 0.4213,
       "opal_macro_space": 0.7263,
-      "opal_outputLevel": 0.85
+      "opal_outputLevel": 0.85,
+      "opal_couplingLevel": 0.5,
+      "opal_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1292,
-    "brightness": 0.8784,
-    "density": 0.1574,
-    "movement": 0.1613,
-    "space": 0.6216,
-    "warmth": 0.3337
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

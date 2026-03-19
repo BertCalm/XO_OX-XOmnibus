@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Umbra Surge Wave",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.63
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Optic",
-        "type": "AMP_MOD",
-        "amount": 0.71
-      }
-    ]
+    "type": "AMP_MOD",
+    "source": "ONSET",
+    "target": "OPTIC",
+    "amount": 0.71
   },
   "dna": {
-    "aggression": 0.36,
     "brightness": 0.05,
-    "density": 0.62,
+    "warmth": 0.26,
     "movement": 0.84,
+    "density": 0.62,
     "space": 0.31,
-    "warmth": 0.26
+    "aggression": 0.36
   },
-  "engines": [
-    "Optic",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3,
-    "COUPLING": 0.66,
     "MOVEMENT": 0.84,
+    "COUPLING": 0.66,
     "SPACE": 0.31
   },
-  "mood": "Entangled",
-  "name": "Umbra Surge Wave",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.57,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.27,
-      "macro_space": 0.63
-    },
-    "Optic": {
-      "macro_character": 0.32,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.57,
-      "macro_space": 0.71
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

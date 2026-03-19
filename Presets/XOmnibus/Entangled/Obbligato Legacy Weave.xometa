@@ -1,32 +1,11 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.779,
-        "engineA": "Obbligato",
-        "engineB": "OddfeliX",
-        "type": "Amp->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "OBBLIGATO and OddfeliX coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.461,
-    "brightness": 0.507,
-    "density": 0.654,
-    "movement": 0.551,
-    "space": 0.587,
-    "warmth": 0.561
-  },
+  "schema_version": 1,
+  "name": "Obbligato Legacy Weave",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "OddfeliX"
   ],
-<<<<<<< HEAD
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OBBLIGATO and OddfeliX coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
@@ -36,27 +15,33 @@
     "obbligato",
     "oddfelix"
   ],
->>>>>>> origin/v1-launch-prep
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "Obbligato Legacy Weave",
-  "parameters": {
-    "Obbligato": {},
-    "OddfeliX": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "obbligato",
-    "oddfelix"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OddfeliX",
+        "type": "Amp->Filter",
+        "amount": 0.779
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.507,
+    "warmth": 0.561,
+    "movement": 0.551,
+    "density": 0.654,
+    "space": 0.587,
+    "aggression": 0.461
+  }
 }

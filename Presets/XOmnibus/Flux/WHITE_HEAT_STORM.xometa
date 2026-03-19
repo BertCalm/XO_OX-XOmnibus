@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WHITE HEAT STORM",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.747
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Oracle",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.633
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "ORACLE",
+    "amount": 0.633
   },
   "dna": {
-    "aggression": 0.852,
     "brightness": 0.89,
-    "density": 0.34,
+    "warmth": 0.862,
     "movement": 0.638,
+    "density": 0.34,
     "space": 0.664,
-    "warmth": 0.862
+    "aggression": 0.852
   },
-  "engines": [
-    "Osprey",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.867,
-    "COUPLING": 0.486,
     "MOVEMENT": 0.549,
+    "COUPLING": 0.486,
     "SPACE": 0.663
   },
-  "mood": "Flux",
-  "name": "WHITE HEAT STORM",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.978,
-      "macro_coupling": 0.358,
-      "macro_movement": 0.69,
-      "macro_space": 0.747
-    },
-    "Osprey": {
-      "macro_character": 0.867,
-      "macro_coupling": 0.486,
-      "macro_movement": 0.549,
-      "macro_space": 0.663
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FLARE HAZE",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.853
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ole",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.535
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OVERWORLD",
+    "target": "OLE",
+    "amount": 0.535
   },
   "dna": {
-    "aggression": 0.975,
     "brightness": 0.566,
-    "density": 0.289,
+    "warmth": 0.558,
     "movement": 0.054,
+    "density": 0.289,
     "space": 0.838,
-    "warmth": 0.558
+    "aggression": 0.975
   },
-  "engines": [
-    "Overworld",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.464,
-    "COUPLING": 0.399,
     "MOVEMENT": 0.891,
+    "COUPLING": 0.399,
     "SPACE": 0.838
   },
-  "mood": "Atmosphere",
-  "name": "FLARE HAZE",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.394,
-      "macro_coupling": 0.866,
-      "macro_movement": 0.277,
-      "macro_space": 0.853
-    },
-    "Overworld": {
-      "macro_character": 0.716,
-      "macro_coupling": 0.611,
-      "macro_movement": 0.652,
-      "macro_space": 0.81
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

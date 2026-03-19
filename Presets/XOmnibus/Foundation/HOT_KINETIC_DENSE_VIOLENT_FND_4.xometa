@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_DENSE_VIOLENT_FND_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.79
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "OddOscar",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.365
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERBITE",
+    "target": "ODDOSCAR",
+    "amount": 0.365
   },
   "dna": {
-    "aggression": 0.897,
     "brightness": 0.612,
-    "density": 0.958,
+    "warmth": 0.911,
     "movement": 0.943,
+    "density": 0.958,
     "space": 0.617,
-    "warmth": 0.911
+    "aggression": 0.897
   },
-  "engines": [
-    "Overbite",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.152,
-    "COUPLING": 0.255,
     "MOVEMENT": 0.522,
+    "COUPLING": 0.255,
     "SPACE": 0.897
   },
-  "mood": "Foundation",
-  "name": "Peach Massive",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.666,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.205,
-      "macro_space": 0.79
-    },
-    "Overbite": {
-      "macro_character": 0.812,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.831,
-      "macro_space": 0.377
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "dense",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

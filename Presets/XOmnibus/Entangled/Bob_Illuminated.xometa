@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.8,
-        "engineA": "Oblong",
-        "engineB": "Optic",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Optic velocity signal driving Bob's filter — amber warmth at maximum luminous aggression.",
-  "dna": {
-    "aggression": 0.87,
-    "brightness": 0.82,
-    "density": 0.68,
-    "movement": 0.68,
-    "space": 0.22,
-    "warmth": 0.32
-  },
+  "schema_version": 1,
+  "name": "Bob Illuminated",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Optic"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "oblong",
     "optic",
     "illuminated"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.72,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.68,
+    "COUPLING": 0.8,
     "SPACE": 0.22
   },
-  "mood": "Entangled",
-  "name": "Bob Illuminated",
-  "parameters": {
-    "Oblong": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.87,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.82,
-    "density": 0.68,
+    "warmth": 0.32,
     "movement": 0.68,
+    "density": 0.68,
     "space": 0.22,
-    "warmth": 0.32
+    "aggression": 0.87
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "oblong",
-    "optic",
-    "illuminated"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.82,
+    "warmth": 0.32,
+    "movement": 0.68,
+    "density": 0.68,
+    "space": 0.22,
+    "aggression": 0.87
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLONG",
+        "engineB": "OPTIC",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.8
+      }
+    ]
+  }
 }

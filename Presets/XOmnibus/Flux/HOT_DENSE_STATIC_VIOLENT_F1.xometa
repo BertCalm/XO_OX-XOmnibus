@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Temporal",
-  "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.933,
+  "schema_version": 1,
+  "name": "HOT DENSE STATIC VIOLENT F1",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.587,
-    "density": 0.897,
+    "warmth": 0.891,
+    "aggression": 0.933,
     "movement": 0.079,
-    "space": 0.508,
-    "warmth": 0.891
+    "density": 0.897,
+    "space": 0.508
   },
   "engines": [
     "Orca"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "HOT DENSE STATIC VIOLENT F1",
-  "parameters": {
-    "Orca": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.933,
-    "brightness": 0.587,
-    "density": 0.897,
-    "movement": 0.079,
-    "space": 0.508,
-    "warmth": 0.891
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme hot warmth, extreme violent aggression, extreme static movement, extreme dense density. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "warm",
     "aggressive",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

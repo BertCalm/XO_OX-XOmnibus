@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.748,
-        "engineA": "Obbligato",
-        "engineB": "Oceanic",
-        "type": "Env->LFO Rate"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OBBLIGATO The Bond — Oceanic",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Coral reef breath: BOND ties OBBLIGATO's wind pair to OCEANIC's chromophore shimmer column.",
-  "dna": {
-    "aggression": 0.583,
-    "brightness": 0.941,
-    "density": 0.799,
-    "movement": 0.553,
-    "space": 0.67,
-    "warmth": 0.603
-  },
-  "engines": [
-    "Obbligato",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "OBBLIGATO The Bond — Oceanic",
-  "parameters": {
-    "obbl_breathA": 0.558,
-    "obbl_breathB": 0.567,
-    "obbl_macroBond": 0.992
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "bioluminescent",
     "aquatic"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.558,
+    "obbl_breathB": 0.567,
+    "obbl_macroBond": 0.992
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OCEANIC",
+        "type": "Env->LFO Rate",
+        "amount": 0.748
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.603,
+    "movement": 0.553,
+    "density": 0.799,
+    "space": 0.67,
+    "aggression": 0.583
+  }
 }

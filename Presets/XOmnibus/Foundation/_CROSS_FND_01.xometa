@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.717
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.106,
-    "brightness": 0.974,
-    "density": 0.054,
-    "movement": 0.91,
-    "space": 0.398,
-    "warmth": 0.941
-  },
+  "name": "CROSS FND 01",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddOscar",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.958,
-    "COUPLING": 0.252,
-    "MOVEMENT": 0.482,
-    "SPACE": 0.398
-  },
-  "mood": "Foundation",
-  "name": "CROSS FND 01",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.958,
-      "macro_coupling": 0.252,
       "macro_movement": 0.482,
+      "macro_coupling": 0.252,
       "macro_space": 0.398
     },
     "Overbite": {
       "macro_character": 0.958,
-      "macro_coupling": 0.252,
       "macro_movement": 0.482,
+      "macro_coupling": 0.252,
       "macro_space": 0.398
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "OVERBITE",
+    "amount": 0.717
+  },
+  "dna": {
+    "brightness": 0.974,
+    "warmth": 0.941,
+    "movement": 0.91,
+    "density": 0.054,
+    "space": 0.398,
+    "aggression": 0.106
+  },
+  "macros": {
+    "CHARACTER": 0.958,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.252,
+    "SPACE": 0.398
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

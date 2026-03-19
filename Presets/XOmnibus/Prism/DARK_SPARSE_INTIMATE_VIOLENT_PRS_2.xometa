@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Owlfish",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.581
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.974,
-    "brightness": 0.074,
-    "density": 0.064,
-    "movement": 0.425,
-    "space": 0.058,
-    "warmth": 0.592
-  },
+  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Osteria",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.524,
-    "COUPLING": 0.652,
-    "MOVEMENT": 0.425,
-    "SPACE": 0.058
-  },
-  "mood": "Prism",
-  "name": "Thread Grit",
   "parameters": {
     "Osteria": {
       "macro_character": 0.524,
-      "macro_coupling": 0.652,
       "macro_movement": 0.425,
+      "macro_coupling": 0.652,
       "macro_space": 0.058
     },
     "Owlfish": {
       "macro_character": 0.95,
-      "macro_coupling": 0.637,
       "macro_movement": 0.425,
+      "macro_coupling": 0.637,
       "macro_space": 0.058
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OSTERIA",
+    "target": "OWLFISH",
+    "amount": 0.581
+  },
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.592,
+    "movement": 0.425,
+    "density": 0.064,
+    "space": 0.058,
+    "aggression": 0.974
+  },
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.425,
+    "COUPLING": 0.652,
+    "SPACE": 0.058
+  },
   "tags": [
     "prism",
     "dark",
     "sparse",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

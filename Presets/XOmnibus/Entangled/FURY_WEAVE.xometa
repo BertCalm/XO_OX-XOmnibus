@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FURY WEAVE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.641
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Orca",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.485
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OWLFISH",
+    "target": "ORCA",
+    "amount": 0.485
   },
   "dna": {
-    "aggression": 0.961,
     "brightness": 0.546,
-    "density": 0.331,
+    "warmth": 0.28,
     "movement": 0.892,
+    "density": 0.331,
     "space": 0.266,
-    "warmth": 0.28
+    "aggression": 0.961
   },
-  "engines": [
-    "Owlfish",
-    "Orca"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.884,
-    "COUPLING": 0.864,
     "MOVEMENT": 0.755,
+    "COUPLING": 0.864,
     "SPACE": 0.744
   },
-  "mood": "Entangled",
-  "name": "FURY WEAVE",
-  "parameters": {
-    "Orca": {
-      "macro_character": 0.736,
-      "macro_coupling": 0.197,
-      "macro_movement": 0.319,
-      "macro_space": 0.641
-    },
-    "Owlfish": {
-      "macro_character": 0.664,
-      "macro_coupling": 0.379,
-      "macro_movement": 0.354,
-      "macro_space": 0.847
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "violent",
     "chaos",
     "aggressive",
     "savage"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

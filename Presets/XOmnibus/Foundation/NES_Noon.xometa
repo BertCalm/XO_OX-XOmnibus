@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERWORLD — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.68,
-    "brightness": 0.94,
-    "density": 0.27,
-    "movement": 0.72,
-    "space": 0.13,
-    "warmth": 0.36
-  },
+  "schema_version": 1,
+  "name": "NES Noon",
+  "mood": "Foundation",
   "engines": [
     "Overworld"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "NES Noon",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.94,
+    "warmth": 0.36,
+    "movement": 0.72,
+    "density": 0.27,
+    "space": 0.13,
+    "aggression": 0.68
+  },
+  "dna": {
+    "brightness": 0.94,
+    "warmth": 0.36,
+    "movement": 0.72,
+    "density": 0.27,
+    "space": 0.13,
+    "aggression": 0.68
+  },
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-=======
       "ow_era": 0.71,
       "ow_chipWave": 1,
       "ow_filterCutoff": 0.39,
       "ow_filterReso": 0.66,
->>>>>>> origin/v1-launch-prep
       "ow_ampAttack": 657.5,
       "ow_ampDecay": 784.8,
-      "ow_ampRelease": 34.4,
       "ow_ampSustain": 0.65,
-      "ow_character": 0.44,
-      "ow_chipWave": 1,
-      "ow_coupling": 0.72,
-      "ow_delayMix": 0.87,
-      "ow_era": 0.71,
-      "ow_filterCutoff": 0.39,
-      "ow_filterReso": 0.66,
-      "ow_lfoDepth": 0.59,
+      "ow_ampRelease": 34.4,
       "ow_lfoRate": 0.5,
-      "ow_movement": 0.53,
+      "ow_lfoDepth": 0.59,
       "ow_reverbMix": 0.87,
-      "ow_space": 0.46
+      "ow_delayMix": 0.87,
+      "ow_character": 0.44,
+      "ow_movement": 0.53,
+      "ow_space": 0.46,
+      "ow_coupling": 0.72
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.68,
-    "brightness": 0.94,
-    "density": 0.27,
-    "movement": 0.72,
-    "space": 0.13,
-    "warmth": 0.36
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

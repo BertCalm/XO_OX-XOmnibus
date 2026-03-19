@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.673,
-        "engineA": "Obbligato",
-        "engineB": "Oblong",
-        "type": "LFO->Pan"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OBBLIGATO Bond — Oblong",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Rascal coral meets warm amber: BOND creates a literal tonal tie between the two wind voices and OBLONG's resonance.",
-  "dna": {
-    "aggression": 0.187,
-    "brightness": 0.783,
-    "density": 1.0,
-    "movement": 0.557,
-    "space": 0.579,
-    "warmth": 0.65
-  },
-  "engines": [
-    "Obbligato",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "OBBLIGATO Bond — Oblong",
-  "parameters": {
-    "obbl_breathA": 0.617,
-    "obbl_breathB": 0.485,
-    "obbl_macroBond": 0.615
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "amber",
     "warm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.617,
+    "obbl_breathB": 0.485,
+    "obbl_macroBond": 0.615
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OBLONG",
+        "type": "LFO->Pan",
+        "amount": 0.673
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.783,
+    "warmth": 0.65,
+    "movement": 0.557,
+    "density": 1.0,
+    "space": 0.579,
+    "aggression": 0.187
+  }
 }

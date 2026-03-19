@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_INTIMATE_ATM_2",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.21
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC",
-        "amount": 0.862
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OSPREY",
+    "target": "ORACLE",
+    "amount": 0.862
   },
   "dna": {
-    "aggression": 0.439,
     "brightness": 0.121,
-    "density": 0.359,
+    "warmth": 0.086,
     "movement": 0.073,
+    "density": 0.359,
     "space": 0.126,
-    "warmth": 0.086
+    "aggression": 0.439
   },
-  "engines": [
-    "Osprey",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.755,
-    "COUPLING": 0.761,
     "MOVEMENT": 0.111,
+    "COUPLING": 0.761,
     "SPACE": 0.279
   },
-  "mood": "Atmosphere",
-  "name": "DARK_COLD_STILL_INTIMATE_ATM_2",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.752,
-      "macro_movement": 0.162,
-      "macro_space": 0.21
-    },
-    "Osprey": {
-      "macro_character": 0.755,
-      "macro_coupling": 0.761,
-      "macro_movement": 0.111,
-      "macro_space": 0.279
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "cold",
     "still",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

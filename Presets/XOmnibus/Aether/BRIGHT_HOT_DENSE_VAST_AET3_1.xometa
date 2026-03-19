@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_HOT_DENSE_VAST_AET3_1",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.5771
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Ombre",
-        "type": "CHAOS_INJECT",
-        "amount": 0.5697
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OMBRE",
+    "amount": 0.5697
   },
   "dna": {
-    "aggression": 0.6133,
     "brightness": 0.9783,
-    "density": 0.8703,
+    "warmth": 0.8898,
     "movement": 0.4141,
+    "density": 0.8703,
     "space": 0.9169,
-    "warmth": 0.8898
+    "aggression": 0.6133
   },
-  "engines": [
-    "Osprey",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9341,
-    "COUPLING": 0.5697,
     "MOVEMENT": 0.4141,
+    "COUPLING": 0.5697,
     "SPACE": 0.9169
   },
-  "mood": "Aether",
-  "name": "BRIGHT_HOT_DENSE_VAST_AET3_1",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.761,
-      "macro_coupling": 0.6381,
-      "macro_movement": 0.2429,
-      "macro_space": 0.5771
-    },
-    "Osprey": {
-      "macro_character": 0.4225,
-      "macro_coupling": 0.6344,
-      "macro_movement": 0.9265,
-      "macro_space": 0.6066
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "bright",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Viscous subharmonic pulse, zero shimmer",
-  "dna": {
-    "aggression": 0.1551,
+  "schema_version": 1,
+  "name": "Tar Pool Bass",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.1005,
-    "density": 0.7625,
+    "warmth": 0.558,
     "movement": 0.2097,
+    "density": 0.7625,
     "space": 0.4635,
-    "warmth": 0.558
+    "aggression": 0.1551
+  },
+  "dna": {
+    "brightness": 0.1005,
+    "warmth": 0.558,
+    "movement": 0.2097,
+    "density": 0.7625,
+    "space": 0.4635,
+    "aggression": 0.1551
   },
   "engines": [
     "OddOscar"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +29,6 @@
     "dark",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WEIGHT",
@@ -35,48 +37,24 @@
     "SPACE"
   ],
   "macros": {
+    "WEIGHT": 0.2745,
     "BREATH": 0.7666,
     "COUPLE": 0.2045,
-    "SPACE": 0.6851,
-    "WEIGHT": 0.2745
+    "SPACE": 0.6851
   },
-  "mood": "Foundation",
-  "name": "Tar Pool Bass",
+  "couplingIntensity": "None",
   "parameters": {
     "OddOscar": {
-<<<<<<< HEAD
-      "oscar_couplingBus": 0,
-      "oscar_couplingLevel": 0.5,
-=======
       "oscar_macro_weight": 0.2745,
->>>>>>> origin/v1-launch-prep
       "oscar_macro_breath": 0.7666,
       "oscar_macro_couple": 0.2045,
       "oscar_macro_space": 0.6851,
-      "oscar_macro_weight": 0.2745,
-      "oscar_outputLevel": 0.85
+      "oscar_outputLevel": 0.85,
+      "oscar_couplingLevel": 0.5,
+      "oscar_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1551,
-    "brightness": 0.1005,
-    "density": 0.7625,
-    "movement": 0.2097,
-    "space": 0.4635,
-    "warmth": 0.558
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

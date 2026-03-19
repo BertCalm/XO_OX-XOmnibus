@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Optic",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.526
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.58,
-    "brightness": 0.95,
-    "density": 0.044,
-    "movement": 0.415,
-    "space": 0.943,
-    "warmth": 0.093
-  },
+  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Osteria",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.765,
-    "COUPLING": 0.662,
-    "MOVEMENT": 0.415,
-    "SPACE": 0.943
-  },
-  "mood": "Prism",
-  "name": "BRIGHT_COLD_SPARSE_VAST_PRS_1",
   "parameters": {
-<<<<<<< HEAD
-    "Optic": {
-      "macro_character": 0.315,
-      "macro_coupling": 0.316,
-=======
     "Osteria": {
       "macro_character": 0.765,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.415,
+      "macro_coupling": 0.662,
       "macro_space": 0.943
     },
-<<<<<<< HEAD
-    "Osteria": {
-      "macro_character": 0.765,
-      "macro_coupling": 0.662,
-=======
     "Optic": {
       "macro_character": 0.315,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.415,
+      "macro_coupling": 0.316,
       "macro_space": 0.943
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSTERIA",
+    "target": "OPTIC",
+    "amount": 0.526
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.093,
+    "movement": 0.415,
+    "density": 0.044,
+    "space": 0.943,
+    "aggression": 0.58
+  },
+  "macros": {
+    "CHARACTER": 0.765,
+    "MOVEMENT": 0.415,
+    "COUPLING": 0.662,
+    "SPACE": 0.943
+  },
   "tags": [
     "prism",
     "bright",
     "cold",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

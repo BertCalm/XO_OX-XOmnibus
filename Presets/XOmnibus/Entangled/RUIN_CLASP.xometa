@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RUIN CLASP",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.762
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Orbital",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.586
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "ORBITAL",
+    "amount": 0.586
   },
   "dna": {
-    "aggression": 0.951,
     "brightness": 0.916,
-    "density": 0.08,
+    "warmth": 0.254,
     "movement": 0.19,
+    "density": 0.08,
     "space": 0.044,
-    "warmth": 0.254
+    "aggression": 0.951
   },
-  "engines": [
-    "Origami",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.169,
-    "COUPLING": 0.248,
     "MOVEMENT": 0.635,
+    "COUPLING": 0.248,
     "SPACE": 0.212
   },
-  "mood": "Entangled",
-  "name": "RUIN CLASP",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.24,
-      "macro_coupling": 0.818,
-      "macro_movement": 0.785,
-      "macro_space": 0.762
-    },
-    "Origami": {
-      "macro_character": 0.689,
-      "macro_coupling": 0.554,
-      "macro_movement": 0.733,
-      "macro_space": 0.706
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "savage",
     "brutal",
     "fury",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

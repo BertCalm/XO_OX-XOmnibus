@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Orphica",
-        "type": "PITCH_SYNC",
-        "amount": 0.537
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.087,
-    "brightness": 0.502,
-    "density": 0.972,
-    "movement": 0.046,
-    "space": 0.142,
-    "warmth": 0.435
-  },
+  "name": "SOFT CLASP",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.511,
-    "COUPLING": 0.173,
-    "MOVEMENT": 0.765,
-    "SPACE": 0.828
-  },
-  "mood": "Entangled",
-  "name": "SOFT CLASP",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.484,
-      "macro_coupling": 0.847,
       "macro_movement": 0.397,
+      "macro_coupling": 0.847,
       "macro_space": 0.669
     },
     "Orphica": {
       "macro_character": 0.513,
-      "macro_coupling": 0.167,
       "macro_movement": 0.2,
+      "macro_coupling": 0.167,
       "macro_space": 0.228
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBBLIGATO",
+    "target": "ORPHICA",
+    "amount": 0.537
+  },
+  "dna": {
+    "brightness": 0.502,
+    "warmth": 0.435,
+    "movement": 0.046,
+    "density": 0.972,
+    "space": 0.142,
+    "aggression": 0.087
+  },
+  "macros": {
+    "CHARACTER": 0.511,
+    "MOVEMENT": 0.765,
+    "COUPLING": 0.173,
+    "SPACE": 0.828
+  },
   "tags": [
     "delicate",
     "calm",
     "soft",
     "yielding"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

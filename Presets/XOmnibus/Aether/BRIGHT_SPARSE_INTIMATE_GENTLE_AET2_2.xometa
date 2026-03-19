@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0316
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.6037
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORBITAL",
+    "target": "OMBRE",
+    "amount": 0.6037
   },
   "dna": {
-    "aggression": 0.1021,
     "brightness": 0.9268,
     "density": 0.0784,
-    "movement": 0.5811,
     "space": 0.054,
-    "warmth": 0.4323
+    "aggression": 0.1021,
+    "warmth": 0.4323,
+    "movement": 0.5811
   },
-  "engines": [
-    "Orbital",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9429,
-    "COUPLING": 0.6037,
     "MOVEMENT": 0.5601,
+    "COUPLING": 0.6037,
     "SPACE": 0.054
   },
-  "mood": "Aether",
-  "name": "Node Current",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.9458,
-      "macro_coupling": 0.1023,
-      "macro_movement": 0.5503,
-      "macro_space": 0.0316
-    },
-    "Orbital": {
-      "macro_character": 0.9401,
-      "macro_coupling": 0.093,
-      "macro_movement": 0.57,
-      "macro_space": 0.0811
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "airy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

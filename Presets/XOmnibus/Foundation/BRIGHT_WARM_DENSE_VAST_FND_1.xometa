@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Onset",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.657
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.316,
-    "brightness": 0.957,
-    "density": 0.956,
-    "movement": 0.434,
-    "space": 0.897,
-    "warmth": 0.924
-  },
+  "name": "BRIGHT_WARM_DENSE_VAST_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oblong",
     "Onset"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.723,
-    "COUPLING": 0.695,
-    "MOVEMENT": 0.614,
-    "SPACE": 0.469
-  },
-  "mood": "Foundation",
-  "name": "BRIGHT_WARM_DENSE_VAST_FND_1",
   "parameters": {
     "Oblong": {
       "macro_character": 0.695,
-      "macro_coupling": 0.544,
       "macro_movement": 0.739,
+      "macro_coupling": 0.544,
       "macro_space": 0.245
     },
     "Onset": {
       "macro_character": 0.754,
-      "macro_coupling": 0.586,
       "macro_movement": 0.785,
+      "macro_coupling": 0.586,
       "macro_space": 0.608
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLONG",
+    "target": "ONSET",
+    "amount": 0.657
+  },
+  "dna": {
+    "brightness": 0.957,
+    "warmth": 0.924,
+    "movement": 0.434,
+    "density": 0.956,
+    "space": 0.897,
+    "aggression": 0.316
+  },
+  "macros": {
+    "CHARACTER": 0.723,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.695,
+    "SPACE": 0.469
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -59,10 +48,5 @@
     "dense",
     "vast",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

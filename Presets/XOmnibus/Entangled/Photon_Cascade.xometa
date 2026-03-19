@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.92,
-        "engineA": "Optic",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Optic AutoPulse velocity triggering Onset percussion at maximum kinetic rate — light percussion.",
-  "dna": {
-    "aggression": 0.95,
-    "brightness": 0.9,
-    "density": 0.65,
-    "movement": 0.96,
-    "space": 0.18,
-    "warmth": 0.08
-  },
+  "schema_version": 1,
+  "name": "Photon Cascade",
+  "mood": "Entangled",
   "engines": [
     "Optic",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "optic",
     "onset",
     "photon"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.72,
-    "COUPLING": 0.92,
     "MOVEMENT": 0.96,
+    "COUPLING": 0.92,
     "SPACE": 0.18
   },
-  "mood": "Entangled",
-  "name": "Photon Cascade III",
-  "parameters": {
-    "Optic": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.95,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.9,
-    "density": 0.65,
+    "warmth": 0.08,
     "movement": 0.96,
+    "density": 0.65,
     "space": 0.18,
-    "warmth": 0.08
+    "aggression": 0.95
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "optic",
-    "onset",
-    "photon"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.08,
+    "movement": 0.96,
+    "density": 0.65,
+    "space": 0.18,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.92
+      }
+    ]
+  }
 }

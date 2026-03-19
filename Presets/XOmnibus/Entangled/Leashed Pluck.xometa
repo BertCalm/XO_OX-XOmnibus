@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.75,
-        "engineA": "Ouroboros",
-        "engineB": "Orphica",
-        "type": "ENVELOPE_LINK"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "Ouroboros leash envelope shape linked to ORPHICA pluck decay — controlled chaos harp.",
-  "dna": {
-    "aggression": 0.42,
-    "brightness": 0.76,
-    "density": 0.44,
-    "movement": 0.68,
-    "space": 0.75,
-    "warmth": 0.4
-  },
-  "engines": [
-    "Ouroboros",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.625,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.615,
-    "SPACE": 0.6
-  },
-  "mood": "Entangled",
-  "name": "Leashed Pluck",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.48,
-      "macro_space": 0.78
-    },
-    "Ouroboros": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.75,
-      "macro_space": 0.42
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Leashed Pluck",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Ouroboros leash envelope shape linked to ORPHICA pluck decay — controlled chaos harp.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "pluck",
     "envelope"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.76,
     "warmth": 0.4,
@@ -118,5 +64,4 @@
     "SPACE": 0.6
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

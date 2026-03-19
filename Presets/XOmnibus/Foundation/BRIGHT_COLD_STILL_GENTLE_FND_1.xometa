@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Ouroboros",
-        "type": "FILTER_MOD",
-        "amount": 0.748
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.076,
-    "brightness": 0.882,
-    "density": 0.621,
-    "movement": 0.084,
-    "space": 0.644,
-    "warmth": 0.068
-  },
+  "name": "BRIGHT_COLD_STILL_GENTLE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddOscar",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.423,
-    "COUPLING": 0.215,
-    "MOVEMENT": 0.891,
-    "SPACE": 0.775
-  },
-  "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_GENTLE_FND_1",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.783,
-      "macro_coupling": 0.796,
       "macro_movement": 0.82,
+      "macro_coupling": 0.796,
       "macro_space": 0.239
     },
     "Ouroboros": {
       "macro_character": 0.505,
-      "macro_coupling": 0.3,
       "macro_movement": 0.848,
+      "macro_coupling": 0.3,
       "macro_space": 0.538
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDOSCAR",
+    "target": "OUROBOROS",
+    "amount": 0.748
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.068,
+    "movement": 0.084,
+    "density": 0.621,
+    "space": 0.644,
+    "aggression": 0.076
+  },
+  "macros": {
+    "CHARACTER": 0.423,
+    "MOVEMENT": 0.891,
+    "COUPLING": 0.215,
+    "SPACE": 0.775
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -58,10 +47,5 @@
     "cold",
     "still",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

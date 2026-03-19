@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_DENSE_PRS_DRK_4",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.3768
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ocelot",
-        "type": "PITCH_SYNC",
-        "amount": 0.6944
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OCELOT",
+    "amount": 0.6944
   },
   "dna": {
-    "aggression": 0.3402,
     "brightness": 0.0636,
-    "density": 0.933,
+    "warmth": 0.0997,
     "movement": 0.1274,
+    "density": 0.933,
     "space": 0.4132,
-    "warmth": 0.0997
+    "aggression": 0.3402
   },
-  "engines": [
-    "Optic",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.22,
-    "COUPLING": 0.933,
     "MOVEMENT": 0.1274,
+    "COUPLING": 0.933,
     "SPACE": 0.4132
   },
-  "mood": "Prism",
-  "name": "Node Solid",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.2042,
-      "macro_coupling": 0.9031,
-      "macro_movement": 0.144,
-      "macro_space": 0.3768
-    },
-    "Optic": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.1274,
-      "macro_space": 0.4132
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "still",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

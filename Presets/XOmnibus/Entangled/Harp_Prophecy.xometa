@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Harp Prophecy",
   "mood": "Entangled",
@@ -26,65 +23,32 @@
       "macro_space": 0.58
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oracle",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.68
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORPHICA",
+    "target": "ORACLE",
+    "amount": 0.68,
+    "intensity": "Moderate"
   },
-  "description": "ORPHICA's high-frequency shimmer seeds ORACLE's stochastic breakpoint mapping.",
   "dna": {
-    "aggression": 0.08,
     "brightness": 0.88,
-    "density": 0.227,
+    "warmth": 0.628,
     "movement": 0.377,
+    "density": 0.227,
     "space": 0.76,
-    "warmth": 0.628
+    "aggression": 0.08
   },
-  "engines": [
-    "Orphica",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.68,
-    "COUPLING": 0.68,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.68,
     "SPACE": 0.74
   },
-  "mood": "Entangled",
-  "name": "Harp Prophecy",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.54,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.6,
-      "macro_space": 0.58
-    },
-    "Orphica": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.55,
-      "macro_space": 0.74
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "oracle",
     "frequency",
     "prophecy"
-  ],
-  "version": "1.0"
+  ]
 }

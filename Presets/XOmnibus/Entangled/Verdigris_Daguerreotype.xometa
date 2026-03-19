@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Verdigris Daguerreotype",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.44
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obscura",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.8
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OTTONI",
+    "target": "OBSCURA",
+    "amount": 0.8,
+    "intensity": "Deep"
   },
-  "description": "Spectral morphing captures brass formants in OBSCURA's photographic resonance — warmth 0.86.",
   "dna": {
-    "aggression": 0.1,
     "brightness": 0.65,
-    "density": 0.7,
+    "warmth": 0.86,
     "movement": 0.62,
+    "density": 0.7,
     "space": 0.4,
-    "warmth": 0.86
+    "aggression": 0.1
   },
-  "engines": [
-    "Ottoni",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.65,
+    "COUPLING": 0.8,
     "SPACE": 0.38
   },
-  "mood": "Entangled",
-  "name": "Verdigris Daguerreotype",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.6,
-      "macro_space": 0.44
-    },
-    "Ottoni": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.65,
-      "macro_space": 0.38
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "obscura",
     "spectral",
     "daguerreotype"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

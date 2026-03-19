@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9012,
-        "source": "OddfeliX",
-        "target": "Ocelot",
-        "type": "TIMBRAL_BLEED"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Hot Dense Vast Violent character entanglement — ODDFELIX × OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.9396,
-    "brightness": 0.5579,
-    "density": 0.9413,
-    "movement": 0.3361,
-    "space": 0.9161,
-    "warmth": 0.9873
-  },
+  "schema_version": 1,
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_3",
+  "mood": "Entangled",
   "engines": [
     "OddfeliX",
     "Ocelot"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "FELIX",
-    "DRIFT",
-    "ENTANGLE",
-    "FIELD"
-  ],
-  "macros": {
-    "CHARACTER": 0.7726,
-    "COUPLING": 0.9012,
-    "MOVEMENT": 0.3361,
-    "SPACE": 0.9161
-  },
-  "mood": "Entangled",
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_3",
-  "parameters": {
-    "Ocelot": {
-      "amp_attack": 0.3376,
-      "amp_release": 0.664,
-      "coupling_level": 0.9167,
-      "density": 0.9277,
-      "drive": 0.7885,
-      "filter_cutoff": 0.6239,
-      "filter_resonance": 0.5608,
-      "macro_character": 0.9016,
-      "macro_coupling": 0.9377,
-      "macro_movement": 0.338,
-      "macro_space": 0.9052,
-      "output_level": 0.9399,
-      "reverb_mix": 0.6181,
-      "reverb_size": 0.7602
-    },
-    "OddfeliX": {
-      "amp_attack": 0.3116,
-      "amp_release": 0.6746,
-      "coupling_level": 0.9424,
-      "density": 0.953,
-      "drive": 0.7684,
-      "filter_cutoff": 0.5906,
-      "filter_resonance": 0.6064,
-      "macro_character": 0.895,
-      "macro_coupling": 0.904,
-      "macro_movement": 0.3418,
-      "macro_space": 0.9245,
-      "output_level": 0.8984,
-      "reverb_mix": 0.6809,
-      "reverb_size": 0.7883
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9396,
-    "brightness": 0.5579,
-    "density": 0.9413,
-    "movement": 0.3361,
-    "space": 0.9161,
-    "warmth": 0.9873
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Hot Dense Vast Violent character entanglement — ODDFELIX × OCELOT via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "warm",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FELIX",
     "DRIFT",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9012,
     "SPACE": 0.9161
   }
->>>>>>> origin/v1-launch-prep
 }

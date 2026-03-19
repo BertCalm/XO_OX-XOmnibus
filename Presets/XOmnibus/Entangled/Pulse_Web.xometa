@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.557,
-        "engineA": "Overlap",
-        "engineB": "Optic",
-        "type": "SPECTRAL_CROSS"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Pulse Web",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "OPTIC auto-pulse rate modulates OVERLAP spin rate — light pulses weave through the spatial web",
-  "dna": {
-    "aggression": 0.325,
-    "brightness": 0.65,
-    "density": 0.525,
-    "movement": 0.525,
-    "space": 0.675,
-    "warmth": 0.45
-  },
-  "engines": [
-    "Overlap",
-    "Optic"
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "optic",
+    "pulse",
+    "visual"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.675,
-    "COUPLING": 0.802,
     "MOVEMENT": 0.724,
+    "COUPLING": 0.802,
     "SPACE": 0.485
   },
-  "mood": "Entangled",
-  "name": "Pulse Web",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.65,
+    "space": 0.675,
+    "aggression": 0.325,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.525
+  },
+  "sonic_dna": {
+    "brightness": 0.65,
+    "space": 0.675,
+    "aggression": 0.325,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.525
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.565,
-      "olap_crossfeedAmt": 0.367,
-=======
       "olap_size": 0.895,
       "olap_decay": 0.628,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.645,
-      "olap_decay": 0.628,
       "olap_diffusion": 0.638,
-      "olap_earlyMix": 0.237,
-      "olap_filterCutoff": 0.411,
-      "olap_filterReso": 0.257,
-      "olap_frondDensity": 0.773,
-      "olap_lateMix": 0.509,
       "olap_modDepth": 0.259,
       "olap_modRate": 0.316,
-      "olap_nodeCount": 15,
-      "olap_outputLevel": 0.682,
       "olap_preDelay": 0.154,
-      "olap_shimmerMix": 0.361,
-      "olap_size": 0.895,
-      "olap_spinRate": 0.241
+      "olap_earlyMix": 0.237,
+      "olap_lateMix": 0.509,
+      "olap_filterCutoff": 0.411,
+      "olap_filterReso": 0.257,
+      "olap_outputLevel": 0.682,
+      "olap_couplingLevel": 0.565,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.773,
+      "olap_nodeCount": 15,
+      "olap_crossfeedAmt": 0.367,
+      "olap_spinRate": 0.241,
+      "olap_shimmerMix": 0.361
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.325,
-    "brightness": 0.65,
-    "density": 0.525,
-    "movement": 0.525,
-    "space": 0.675,
-    "warmth": 0.45
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "optic",
-    "pulse",
-    "visual"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OPTIC",
+        "type": "SPECTRAL_CROSS",
+        "amount": 0.557
+      }
+    ]
+  }
 }

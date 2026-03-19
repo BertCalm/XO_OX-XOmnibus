@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Orca",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.785
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.943,
-    "brightness": 0.951,
-    "density": 0.677,
-    "movement": 0.066,
-    "space": 0.056,
-    "warmth": 0.927
-  },
+  "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.936,
-    "COUPLING": 0.785,
-    "MOVEMENT": 0.058,
-    "SPACE": 0.039
-  },
-  "mood": "Entangled",
-  "name": "Solar Fang",
   "parameters": {
     "Opal": {
       "macro_character": 0.933,
-      "macro_coupling": 0.704,
       "macro_movement": 0.059,
+      "macro_coupling": 0.704,
       "macro_space": 0.044
     },
     "Orca": {
       "macro_character": 0.939,
-      "macro_coupling": 0.7,
       "macro_movement": 0.058,
+      "macro_coupling": 0.7,
       "macro_space": 0.034
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "ORCA",
+    "amount": 0.785
+  },
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.927,
+    "movement": 0.066,
+    "density": 0.677,
+    "space": 0.056,
+    "aggression": 0.943
+  },
+  "macros": {
+    "CHARACTER": 0.936,
+    "MOVEMENT": 0.058,
+    "COUPLING": 0.785,
+    "SPACE": 0.039
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "warm",
     "close",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

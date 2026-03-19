@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Blooming Tail",
   "version": "1.0",
@@ -43,64 +40,13 @@
       "olap_couplingBus": 0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Oracle",
-        "type": "ENVELOPE_SHARING",
-        "amount": 0.858
-      }
-    ]
+    "type": "ENVELOPE_SHARING",
+    "source": "OVERLAP",
+    "target": "ORACLE",
+    "amount": 0.858
   },
   "couplingIntensity": "Deep",
-  "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoes in the FDN's first bounce",
-  "engines": [
-    "Overlap",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.56,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.68,
-    "SPACE": 0.79
-  },
-  "mood": "Entangled",
-  "name": "Blooming Tail",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.722,
-      "olap_damping": 0.509,
-      "olap_decay": 0.718,
-      "olap_diffusion": 0.845,
-      "olap_earlyMix": 0.308,
-      "olap_filterCutoff": 0.628,
-      "olap_filterReso": 0.187,
-      "olap_lateMix": 0.7,
-      "olap_modDepth": 0.389,
-      "olap_modRate": 0.071,
-      "olap_outputLevel": 0.675,
-      "olap_preDelay": 0.041,
-      "olap_size": 0.72
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.27,
-    "brightness": 0.61,
-    "density": 0.66,
-    "movement": 0.56,
-    "space": 0.79,
-    "warmth": 0.57
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -110,17 +56,5 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.628,
-    "warmth": 0.5,
-    "movement": 0.071,
-    "density": 0.5,
-    "space": 0.041,
-    "aggression": 0.3
-  }
-=======
   "description": "Oracle resonance feeds OVERLAP early reflections — prophecy echoes in the FDN's first bounce"
->>>>>>> origin/v1-launch-prep
 }

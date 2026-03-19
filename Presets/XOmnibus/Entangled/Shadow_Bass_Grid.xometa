@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Shadow Bass Grid",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.89
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oblong",
-        "type": "PITCH_MOD",
-        "amount": 0.56
-      }
-    ]
+    "type": "PITCH_MOD",
+    "source": "OBSIDIAN",
+    "target": "OBLONG",
+    "amount": 0.56
   },
   "dna": {
-    "aggression": 0.67,
     "brightness": 0.12,
-    "density": 0.95,
+    "warmth": 0.59,
     "movement": 0.25,
+    "density": 0.95,
     "space": 0.28,
-    "warmth": 0.59
+    "aggression": 0.67
   },
-  "engines": [
-    "Obsidian",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.22,
-    "COUPLING": 0.67,
     "MOVEMENT": 0.25,
+    "COUPLING": 0.67,
     "SPACE": 0.28
   },
-  "mood": "Entangled",
-  "name": "Shadow Bass Grid",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.85,
-      "macro_space": 0.89
-    },
-    "Obsidian": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.17,
-      "macro_space": 0.9
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

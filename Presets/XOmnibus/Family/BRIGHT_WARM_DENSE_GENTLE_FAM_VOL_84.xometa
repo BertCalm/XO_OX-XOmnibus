@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_84",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.471
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oblong",
-        "type": "SPATIAL_BIND",
-        "amount": 0.773
-      }
-    ]
+    "type": "SPATIAL_BIND",
+    "source": "OPAL",
+    "target": "OBLONG",
+    "amount": 0.773
   },
   "dna": {
-    "aggression": 0.026,
     "brightness": 0.963,
-    "density": 0.886,
+    "warmth": 0.877,
     "movement": 0.558,
+    "density": 0.886,
     "space": 0.5,
-    "warmth": 0.877
+    "aggression": 0.026
   },
-  "engines": [
-    "Opal",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.924,
-    "COUPLING": 0.445,
     "MOVEMENT": 0.532,
+    "COUPLING": 0.445,
     "SPACE": 0.488
   },
-  "mood": "Family",
-  "name": "Halo Solid",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.907,
-      "macro_coupling": 0.43,
-      "macro_movement": 0.536,
-      "macro_space": 0.471
-    },
-    "Opal": {
-      "macro_character": 0.942,
-      "macro_coupling": 0.46,
-      "macro_movement": 0.529,
-      "macro_space": 0.505
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "gentle",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

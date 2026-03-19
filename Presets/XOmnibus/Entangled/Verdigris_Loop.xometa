@@ -1,44 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Ouroboros",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.84
-      }
-    ]
-  },
-  "description": "Spectral morphing between brass formants and attractor-state noise — warmth 0.84 locks the loop.",
-  "dna": {
-    "aggression": 0.32,
-    "brightness": 0.7,
-    "density": 0.76,
-    "movement": 0.7,
-    "space": 0.3,
-    "warmth": 0.86
-  },
-  "engines": [
-    "Ottoni",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.84,
-    "MOVEMENT": 0.68,
-    "SPACE": 0.33
-  },
-  "mood": "Entangled",
-  "name": "Verdigris Loop",
-=======
   "schema_version": 1,
   "name": "Verdigris Loop",
   "mood": "Entangled",
@@ -49,32 +9,46 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Spectral morphing between brass formants and attractor-state noise — warmth 0.84 locks the loop.",
->>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ottoni": {
       "macro_character": 0.82,
-      "macro_coupling": 0.84,
       "macro_movement": 0.68,
+      "macro_coupling": 0.84,
       "macro_space": 0.33
     },
     "Ouroboros": {
       "macro_character": 0.76,
-      "macro_coupling": 0.78,
       "macro_movement": 0.74,
+      "macro_coupling": 0.78,
       "macro_space": 0.38
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OTTONI",
+    "target": "OUROBOROS",
+    "amount": 0.84,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.86,
+    "movement": 0.7,
+    "density": 0.76,
+    "space": 0.3,
+    "aggression": 0.32
+  },
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.84,
+    "SPACE": 0.33
+  },
   "tags": [
     "entangled",
     "ottoni",
     "ouroboros",
     "spectral",
     "loop"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

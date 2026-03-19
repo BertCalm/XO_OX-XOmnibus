@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MASSACRE MESH",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.282
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "OddOscar",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.239
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OVERBITE",
+    "target": "ODDOSCAR",
+    "amount": 0.239
   },
   "dna": {
-    "aggression": 0.989,
     "brightness": 0.55,
-    "density": 0.074,
+    "warmth": 0.48,
     "movement": 0.063,
+    "density": 0.074,
     "space": 0.137,
-    "warmth": 0.48
+    "aggression": 0.989
   },
-  "engines": [
-    "Overbite",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.484,
-    "COUPLING": 0.677,
     "MOVEMENT": 0.519,
+    "COUPLING": 0.677,
     "SPACE": 0.72
   },
-  "mood": "Entangled",
-  "name": "MASSACRE MESH",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.624,
-      "macro_coupling": 0.563,
-      "macro_movement": 0.878,
-      "macro_space": 0.282
-    },
-    "Overbite": {
-      "macro_character": 0.798,
-      "macro_coupling": 0.578,
-      "macro_movement": 0.603,
-      "macro_space": 0.312
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "violent",
     "chaos",
     "brutal",
     "fury"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

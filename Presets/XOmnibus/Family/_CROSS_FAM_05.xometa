@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Ottoni",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.688
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.975,
-    "brightness": 0.921,
-    "density": 0.396,
-    "movement": 0.941,
-    "space": 0.063,
-    "warmth": 0.029
-  },
+  "name": "CROSS FAM 05",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Odyssey",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.475,
-    "COUPLING": 0.519,
-    "MOVEMENT": 0.668,
-    "SPACE": 0.063
-  },
-  "mood": "Family",
-  "name": "CROSS FAM 05",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.475,
-      "macro_coupling": 0.519,
       "macro_movement": 0.668,
+      "macro_coupling": 0.519,
       "macro_space": 0.063
     },
     "Ottoni": {
       "macro_character": 0.475,
-      "macro_coupling": 0.519,
       "macro_movement": 0.668,
+      "macro_coupling": 0.519,
       "macro_space": 0.063
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODYSSEY",
+    "target": "OTTONI",
+    "amount": 0.688
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.029,
+    "movement": 0.941,
+    "density": 0.396,
+    "space": 0.063,
+    "aggression": 0.975
+  },
+  "macros": {
+    "CHARACTER": 0.475,
+    "MOVEMENT": 0.668,
+    "COUPLING": 0.519,
+    "SPACE": 0.063
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

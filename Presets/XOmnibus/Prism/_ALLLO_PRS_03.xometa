@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Oblique",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.054
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.095,
-    "brightness": 0.096,
-    "density": 0.106,
-    "movement": 0.382,
-    "space": 0.077,
-    "warmth": 0.094
-  },
+  "name": "ALLLO PRS 03",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Osteria",
     "Oblique"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.095,
-    "COUPLING": 0.086,
-    "MOVEMENT": 0.244,
-    "SPACE": 0.077
-  },
-  "mood": "Prism",
-  "name": "ALLLO PRS 03",
   "parameters": {
-<<<<<<< HEAD
-    "Oblique": {
-=======
     "Osteria": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
-      "macro_coupling": 0.086,
       "macro_movement": 0.244,
+      "macro_coupling": 0.086,
       "macro_space": 0.077
     },
-<<<<<<< HEAD
-    "Osteria": {
-=======
     "Oblique": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
-      "macro_coupling": 0.086,
       "macro_movement": 0.244,
+      "macro_coupling": 0.086,
       "macro_space": 0.077
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OSTERIA",
+    "target": "OBLIQUE",
+    "amount": 0.054
+  },
+  "dna": {
+    "brightness": 0.096,
+    "warmth": 0.094,
+    "movement": 0.382,
+    "density": 0.106,
+    "space": 0.077,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.244,
+    "COUPLING": 0.086,
+    "SPACE": 0.077
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

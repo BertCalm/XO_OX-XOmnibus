@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT COLD KINETIC BALANCED AET SPC 2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.376
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Obscura",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.42
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "OBSCURA",
+    "amount": 0.42
   },
   "dna": {
-    "aggression": 0.983,
     "brightness": 0.889,
-    "density": 0.524,
+    "warmth": 0.069,
     "movement": 0.955,
+    "density": 0.524,
     "space": 0.384,
-    "warmth": 0.069
+    "aggression": 0.983
   },
-  "engines": [
-    "Ombre",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.479,
-    "COUPLING": 0.666,
     "MOVEMENT": 0.955,
+    "COUPLING": 0.666,
     "SPACE": 0.384
   },
-  "mood": "Aether",
-  "name": "BRIGHT COLD KINETIC BALANCE...",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.482,
-      "macro_coupling": 0.639,
-      "macro_movement": 0.951,
-      "macro_space": 0.376
-    },
-    "Ombre": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.666,
-      "macro_movement": 0.955,
-      "macro_space": 0.384
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -83,10 +48,5 @@
     "aggressive",
     "bright",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_INTIMATE_VIOLENT_FND_5",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.563
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "OddfeliX",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.552
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "ODDFELIX",
+    "amount": 0.552
   },
   "dna": {
-    "aggression": 0.97,
     "brightness": 0.957,
-    "density": 0.333,
+    "warmth": 0.454,
     "movement": 0.864,
+    "density": 0.333,
     "space": 0.096,
-    "warmth": 0.454
+    "aggression": 0.97
   },
-  "engines": [
-    "Overdub",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.638,
-    "COUPLING": 0.454,
     "MOVEMENT": 0.359,
+    "COUPLING": 0.454,
     "SPACE": 0.776
   },
-  "mood": "Foundation",
-  "name": "Shard Grit",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.267,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.751,
-      "macro_space": 0.563
-    },
-    "Overdub": {
-      "macro_character": 0.413,
-      "macro_coupling": 0.707,
-      "macro_movement": 0.355,
-      "macro_space": 0.362
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "intimate",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

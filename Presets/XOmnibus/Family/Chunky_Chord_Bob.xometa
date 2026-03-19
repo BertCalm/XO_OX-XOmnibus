@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OBLONG at full mass — chord mode engaged, harmonic density rich. XOblongBob's warm plural voice doing what it was born for.",
-  "dna": {
-    "aggression": 0.35,
-    "brightness": 0.4,
-    "density": 0.78,
-    "movement": 0.3,
-    "space": 0.45,
-    "warmth": 0.8
-  },
+  "schema_version": 1,
+  "name": "Chunky Chord Bob",
+  "mood": "Family",
   "engines": [
     "Oblong"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Chunky Chord Bob",
-  "parameters": {
-    "Oblong": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OBLONG at full mass — chord mode engaged, harmonic density rich. XOblongBob's warm plural voice doing what it was born for.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -49,10 +18,14 @@
     "harmonic",
     "batch1-signatures"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -70,5 +43,4 @@
     "space": 0.45,
     "aggression": 0.35
   }
->>>>>>> origin/v1-launch-prep
 }

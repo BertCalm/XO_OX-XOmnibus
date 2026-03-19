@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "High-aggression bob drive, dense harmonic grit",
-  "dna": {
-    "aggression": 0.776,
+  "schema_version": 1,
+  "name": "Diesel Drive",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.5194,
-    "density": 0.8278,
+    "warmth": 0.6612,
     "movement": 0.4895,
+    "density": 0.8278,
     "space": 0.3827,
-    "warmth": 0.6612
+    "aggression": 0.776
+  },
+  "dna": {
+    "brightness": 0.5194,
+    "warmth": 0.6612,
+    "movement": 0.4895,
+    "density": 0.8278,
+    "space": 0.3827,
+    "aggression": 0.776
   },
   "engines": [
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "extreme",
     "anchor",
     "drive"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -37,52 +39,23 @@
   ],
   "macros": {
     "CHARACTER": 0.7338,
-    "COUPLING": 0.745,
     "MOVEMENT": 0.7001,
+    "COUPLING": 0.745,
     "SPACE": 0.681
   },
-  "mood": "Foundation",
-  "name": "Diesel Drive",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblong": {
-<<<<<<< HEAD
-      "bob_couplingBus": 0,
-=======
       "bob_macro_character": 0.7338,
       "bob_macro_movement": 0.7001,
       "bob_macro_coupling": 0.745,
       "bob_macro_space": 0.681,
       "bob_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
-      "bob_macro_character": 0.7338,
-      "bob_macro_coupling": 0.745,
-      "bob_macro_movement": 0.7001,
-      "bob_macro_space": 0.681,
-      "bob_outputLevel": 0.85
+      "bob_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.776,
-    "brightness": 0.5194,
-    "density": 0.8278,
-    "movement": 0.4895,
-    "space": 0.3827,
-    "warmth": 0.6612
-  },
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

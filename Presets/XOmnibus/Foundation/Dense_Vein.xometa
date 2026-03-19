@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Cauldron harmonic — boiling slowly, dense as cast iron.",
-  "dna": {
-    "aggression": 0.381,
+  "schema_version": 1,
+  "name": "Dense Vein",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.31,
-    "density": 0.945,
+    "warmth": 0.929,
     "movement": 0.46,
+    "density": 0.945,
     "space": 0.201,
-    "warmth": 0.929
+    "aggression": 0.381
   },
   "engines": [
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "dense",
     "analog",
     "thick"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -35,33 +29,17 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Dense Vein",
-  "parameters": {
-    "Overbite": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.381,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.31,
-    "density": 0.945,
+    "warmth": 0.929,
     "movement": 0.46,
+    "density": 0.945,
     "space": 0.201,
-    "warmth": 0.929
+    "aggression": 0.381
   },
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

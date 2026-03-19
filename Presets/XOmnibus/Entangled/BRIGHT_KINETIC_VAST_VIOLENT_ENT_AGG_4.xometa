@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Organon",
-        "type": "CHAOS_INJECT",
-        "amount": 0.958
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.958,
-    "brightness": 0.978,
-    "density": 0.476,
-    "movement": 0.907,
-    "space": 0.94,
-    "warmth": 0.559
-  },
+  "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_4",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.427,
-    "COUPLING": 0.929,
-    "MOVEMENT": 0.907,
-    "SPACE": 0.94
-  },
-  "mood": "Entangled",
-  "name": "Shard Storm 3",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.386,
-      "macro_coupling": 0.929,
       "macro_movement": 0.87,
+      "macro_coupling": 0.929,
       "macro_space": 0.944
     },
     "Organon": {
       "macro_character": 0.468,
-      "macro_coupling": 0.931,
       "macro_movement": 0.954,
+      "macro_coupling": 0.931,
       "macro_space": 0.981
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBSIDIAN",
+    "target": "ORGANON",
+    "amount": 0.958
+  },
+  "dna": {
+    "brightness": 0.978,
+    "warmth": 0.559,
+    "movement": 0.907,
+    "density": 0.476,
+    "space": 0.94,
+    "aggression": 0.958
+  },
+  "macros": {
+    "CHARACTER": 0.427,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.929,
+    "SPACE": 0.94
+  },
   "tags": [
     "entangled",
     "violent",
     "bright",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

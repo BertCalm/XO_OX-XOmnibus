@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Moderate",
-  "description": "ORIGAMI pushed to extreme brightness — brightness 0.97, movement 0.87, aggression 0.81. Ultra-bright Flux zone filler.",
-  "dna": {
-    "aggression": 0.805,
-    "brightness": 0.969,
-    "density": 0.326,
-    "movement": 0.872,
-    "space": 0.259,
-    "warmth": 0.083
-  },
-  "engines": [
-    "Origami"
-=======
   "schema_version": 1,
   "name": "Fold Chaos Maximum",
   "mood": "Flux",
@@ -32,7 +14,6 @@
     "extreme",
     "brightness",
     "origami"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,48 +21,37 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Flux",
-  "name": "Fold Chaos Maximum",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.969,
+    "warmth": 0.083,
+    "movement": 0.872,
+    "density": 0.326,
+    "space": 0.259,
+    "aggression": 0.805
+  },
+  "sonic_dna": {
+    "brightness": 0.969,
+    "warmth": 0.083,
+    "movement": 0.872,
+    "density": 0.326,
+    "space": 0.259,
+    "aggression": 0.805
+  },
   "parameters": {
     "Origami": {
-<<<<<<< HEAD
-      "ori_couplingBus": 0,
-=======
       "ori_macro_fold": 0.782,
       "ori_macro_tension": 0.742,
       "ori_macro_couple": 0.347,
       "ori_macro_space": 0.544,
       "ori_outputLevel": 0.812,
->>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.313,
-      "ori_macro_couple": 0.347,
-      "ori_macro_fold": 0.782,
-      "ori_macro_space": 0.544,
-      "ori_macro_tension": 0.742,
-      "ori_outputLevel": 0.812
+      "ori_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.805,
-    "brightness": 0.969,
-    "density": 0.326,
-    "movement": 0.872,
-    "space": 0.259,
-    "warmth": 0.083
+  "coupling": {
+    "pairs": []
   },
-<<<<<<< HEAD
-  "tags": [
-    "flux",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "origami"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

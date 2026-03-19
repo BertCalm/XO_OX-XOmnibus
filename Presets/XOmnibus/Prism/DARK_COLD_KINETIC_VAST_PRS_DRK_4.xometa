@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_4",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.9617
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ohm",
-        "type": "FILTER_MOD",
-        "amount": 0.8706
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORIGAMI",
+    "target": "OHM",
+    "amount": 0.8706
   },
   "dna": {
-    "aggression": 0.523,
     "brightness": 0.0901,
-    "density": 0.5784,
+    "warmth": 0.0441,
     "movement": 0.9665,
+    "density": 0.5784,
     "space": 0.9257,
-    "warmth": 0.0441
+    "aggression": 0.523
   },
-  "engines": [
-    "Origami",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2836,
-    "COUPLING": 0.5784,
     "MOVEMENT": 0.9665,
+    "COUPLING": 0.5784,
     "SPACE": 0.9257
   },
-  "mood": "Prism",
-  "name": "Node Swirl",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.297,
-      "macro_coupling": 0.586,
-      "macro_movement": 0.99,
-      "macro_space": 0.9617
-    },
-    "Origami": {
-      "macro_character": 0.2836,
-      "macro_coupling": 0.5784,
-      "macro_movement": 0.9665,
-      "macro_space": 0.9257
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OVERDUB in its element — drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",
-  "dna": {
-    "aggression": 0.28,
-    "brightness": 0.35,
-    "density": 0.65,
-    "movement": 0.68,
-    "space": 0.8,
-    "warmth": 0.88
-  },
+  "schema_version": 1,
+  "name": "The Dub Machine",
+  "mood": "Family",
   "engines": [
     "Overdub"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DRIVE",
-    "WOBBLE",
-    "SEND",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "The Dub Machine",
-  "parameters": {
-    "Overdub": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERDUB in its element — drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -49,10 +18,14 @@
     "saturated",
     "batch1-signatures"
   ],
+  "macroLabels": [
+    "DRIVE",
+    "WOBBLE",
+    "SEND",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -70,5 +43,4 @@
     "space": 0.8,
     "aggression": 0.28
   }
->>>>>>> origin/v1-launch-prep
 }

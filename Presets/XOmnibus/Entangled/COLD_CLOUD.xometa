@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD CLOUD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.915
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ohm",
-        "type": "CHAOS_INJECT",
-        "amount": 0.55
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "OHM",
+    "amount": 0.55
   },
   "dna": {
-    "aggression": 0.065,
     "brightness": 0.613,
-    "density": 0.936,
+    "warmth": 0.147,
     "movement": 0.1,
+    "density": 0.936,
     "space": 0.429,
-    "warmth": 0.147
+    "aggression": 0.065
   },
-  "engines": [
-    "Optic",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.162,
-    "COUPLING": 0.936,
     "MOVEMENT": 0.1,
+    "COUPLING": 0.936,
     "SPACE": 0.484
   },
-  "mood": "Entangled",
-  "name": "COLD CLOUD",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.879,
-      "macro_coupling": 0.239,
-      "macro_movement": 0.102,
-      "macro_space": 0.915
-    },
-    "Optic": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.422,
-      "macro_movement": 0.097,
-      "macro_space": 0.571
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "cold"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

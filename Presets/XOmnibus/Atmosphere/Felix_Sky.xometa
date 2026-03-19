@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ODDFELIX — bright extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.66,
-    "brightness": 0.98,
-    "density": 0.18,
-    "movement": 0.13,
-    "space": 0.37,
-    "warmth": 0.7
-  },
+  "schema_version": 1,
+  "name": "Felix Sky",
+  "mood": "Atmosphere",
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Felix Sky",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.98,
+    "warmth": 0.7,
+    "movement": 0.13,
+    "density": 0.18,
+    "space": 0.37,
+    "aggression": 0.66
+  },
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.7,
+    "movement": 0.13,
+    "density": 0.18,
+    "space": 0.37,
+    "aggression": 0.66
+  },
   "parameters": {
     "OddfeliX": {
-<<<<<<< HEAD
-=======
       "oddf_oscAwave": 1,
       "oddf_oscBwave": 1,
       "oddf_filterCutoff": 0.75,
       "oddf_filterReso": 0.78,
->>>>>>> origin/v1-launch-prep
       "oddf_ampAttack": 191.0,
       "oddf_ampDecay": 195.1,
-      "oddf_ampRelease": 628.6,
       "oddf_ampSustain": 0.98,
-      "oddf_character": 0.44,
-      "oddf_coupling": 0.5,
-      "oddf_delayMix": 0.57,
-      "oddf_filterCutoff": 0.75,
-      "oddf_filterReso": 0.78,
-      "oddf_lfoDepth": 0.19,
+      "oddf_ampRelease": 628.6,
       "oddf_lfoRate": 0.9,
-      "oddf_movement": 0.77,
-      "oddf_oscAwave": 1,
-      "oddf_oscBwave": 1,
+      "oddf_lfoDepth": 0.19,
       "oddf_reverbMix": 0.68,
-      "oddf_space": 0.78
+      "oddf_delayMix": 0.57,
+      "oddf_character": 0.44,
+      "oddf_movement": 0.77,
+      "oddf_space": 0.78,
+      "oddf_coupling": 0.5
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.66,
-    "brightness": 0.98,
-    "density": 0.18,
-    "movement": 0.13,
-    "space": 0.37,
-    "warmth": 0.7
-  },
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

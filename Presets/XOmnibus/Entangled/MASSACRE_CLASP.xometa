@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Owlfish",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.677
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.935,
-    "brightness": 0.751,
-    "density": 0.037,
-    "movement": 0.592,
-    "space": 0.194,
-    "warmth": 0.892
-  },
+  "name": "MASSACRE CLASP",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ohm",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.655,
-    "COUPLING": 0.9,
-    "MOVEMENT": 0.616,
-    "SPACE": 0.544
-  },
-  "mood": "Entangled",
-  "name": "MASSACRE CLASP",
   "parameters": {
     "Ohm": {
       "macro_character": 0.344,
-      "macro_coupling": 0.655,
       "macro_movement": 0.246,
+      "macro_coupling": 0.655,
       "macro_space": 0.509
     },
     "Owlfish": {
       "macro_character": 0.435,
-      "macro_coupling": 0.407,
       "macro_movement": 0.21,
+      "macro_coupling": 0.407,
       "macro_space": 0.249
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OHM",
+    "target": "OWLFISH",
+    "amount": 0.677
+  },
+  "dna": {
+    "brightness": 0.751,
+    "warmth": 0.892,
+    "movement": 0.592,
+    "density": 0.037,
+    "space": 0.194,
+    "aggression": 0.935
+  },
+  "macros": {
+    "CHARACTER": 0.655,
+    "MOVEMENT": 0.616,
+    "COUPLING": 0.9,
+    "SPACE": 0.544
+  },
   "tags": [
     "fury",
     "violent",
     "entangled",
     "brutal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

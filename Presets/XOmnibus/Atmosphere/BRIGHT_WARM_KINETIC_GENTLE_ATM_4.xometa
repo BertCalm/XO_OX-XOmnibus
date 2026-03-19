@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.624
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Orbital",
-        "type": "PITCH_SYNC",
-        "amount": 0.62
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORGANON",
+    "target": "ORBITAL",
+    "amount": 0.62
   },
   "dna": {
-    "aggression": 0.06,
     "brightness": 0.869,
-    "density": 0.682,
+    "warmth": 0.974,
     "movement": 0.908,
+    "density": 0.682,
     "space": 0.625,
-    "warmth": 0.974
+    "aggression": 0.06
   },
-  "engines": [
-    "Organon",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.552,
-    "COUPLING": 0.572,
     "MOVEMENT": 0.791,
+    "COUPLING": 0.572,
     "SPACE": 0.523
   },
-  "mood": "Atmosphere",
-  "name": "Glow Shimmer",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.642,
-      "macro_movement": 0.845,
-      "macro_space": 0.624
-    },
-    "Organon": {
-      "macro_character": 0.552,
-      "macro_coupling": 0.572,
-      "macro_movement": 0.791,
-      "macro_space": 0.523
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "kinetic",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

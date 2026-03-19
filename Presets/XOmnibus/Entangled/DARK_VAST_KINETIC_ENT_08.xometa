@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK VAST KINETIC ENT 08",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.793
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ombre",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.984
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.984
   },
   "dna": {
-    "aggression": 0.471,
     "brightness": 0.084,
-    "density": 0.613,
+    "warmth": 0.348,
     "movement": 0.969,
+    "density": 0.613,
     "space": 0.911,
-    "warmth": 0.348
+    "aggression": 0.471
   },
-  "engines": [
-    "Opal",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.216,
-    "COUPLING": 0.585,
     "MOVEMENT": 0.969,
+    "COUPLING": 0.585,
     "SPACE": 0.911
   },
-  "mood": "Entangled",
-  "name": "DARK VAST KINETIC ENT 08",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.168,
-      "macro_coupling": 0.75,
-      "macro_movement": 1.0,
-      "macro_space": 0.793
-    },
-    "Opal": {
-      "macro_character": 0.216,
-      "macro_coupling": 0.585,
-      "macro_movement": 0.969,
-      "macro_space": 0.911
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

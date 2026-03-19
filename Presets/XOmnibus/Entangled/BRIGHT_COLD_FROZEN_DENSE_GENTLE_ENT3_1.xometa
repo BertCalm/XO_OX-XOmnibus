@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8773
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.0984,
-    "brightness": 0.8737,
-    "density": 0.9212,
-    "movement": 0.0947,
-    "space": 0.3432,
-    "warmth": 0.1298
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_FROZEN_DENSE_GENTLE_ENT3_1",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Opal"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.8732,
-    "COUPLING": 0.8589,
-    "MOVEMENT": 0.0848,
-    "SPACE": 0.4657
-  },
-  "mood": "Entangled",
-  "name": "Frost Titan 2",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.9406,
-      "macro_coupling": 0.8273,
-      "macro_movement": 0.0797,
-      "macro_space": 0.2261
-    },
-    "Opal": {
-      "macro_character": 0.8059,
-      "macro_coupling": 0.8905,
-      "macro_movement": 0.0899,
-      "macro_space": 0.7053
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "gentle",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.3432,
     "aggression": 0.0984
   }
->>>>>>> origin/v1-launch-prep
 }

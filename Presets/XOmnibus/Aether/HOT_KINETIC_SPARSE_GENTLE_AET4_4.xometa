@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.2487
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Obscura",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.7034
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.7034
   },
   "dna": {
-    "aggression": 0.0488,
     "brightness": 0.4041,
-    "density": 0.0818,
+    "warmth": 0.9299,
     "movement": 0.9164,
+    "density": 0.0818,
     "space": 0.6666,
-    "warmth": 0.9299
+    "aggression": 0.0488
   },
-  "engines": [
-    "Oracle",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.667,
-    "COUPLING": 0.7034,
     "MOVEMENT": 0.9164,
+    "COUPLING": 0.7034,
     "SPACE": 0.6666
   },
-  "mood": "Aether",
-  "name": "Flux Ripple",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.8341,
-      "macro_coupling": 0.4606,
-      "macro_movement": 0.4397,
-      "macro_space": 0.2487
-    },
-    "Oracle": {
-      "macro_character": 0.874,
-      "macro_coupling": 0.2658,
-      "macro_movement": 0.5338,
-      "macro_space": 0.7114
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "warm",
     "sparse",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

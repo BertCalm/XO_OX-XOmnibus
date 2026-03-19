@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MIDNIGHT CORE",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.103
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Ombre",
-        "type": "PHASE_COUPLE",
-        "amount": 0.725
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "OVERDUB",
+    "target": "OMBRE",
+    "amount": 0.725
   },
   "dna": {
-    "aggression": 0.052,
     "brightness": 0.095,
-    "density": 0.7,
+    "warmth": 0.558,
     "movement": 0.788,
+    "density": 0.7,
     "space": 0.378,
-    "warmth": 0.558
+    "aggression": 0.052
   },
-  "engines": [
-    "Overdub",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.535,
-    "COUPLING": 0.404,
     "MOVEMENT": 0.342,
+    "COUPLING": 0.404,
     "SPACE": 0.197
   },
-  "mood": "Foundation",
-  "name": "MIDNIGHT CORE",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.944,
-      "macro_coupling": 0.753,
-      "macro_movement": 0.638,
-      "macro_space": 0.103
-    },
-    "Overdub": {
-      "macro_character": 0.127,
-      "macro_coupling": 0.055,
-      "macro_movement": 0.046,
-      "macro_space": 0.292
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

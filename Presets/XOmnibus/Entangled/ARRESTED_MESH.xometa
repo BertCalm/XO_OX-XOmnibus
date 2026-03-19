@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ARRESTED MESH",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.299
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.572
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.572
   },
   "dna": {
-    "aggression": 0.941,
     "brightness": 0.622,
-    "density": 0.906,
+    "warmth": 0.02,
     "movement": 0.077,
+    "density": 0.906,
     "space": 0.027,
-    "warmth": 0.02
+    "aggression": 0.941
   },
-  "engines": [
-    "Origami",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.081,
-    "COUPLING": 0.862,
     "MOVEMENT": 0.077,
+    "COUPLING": 0.862,
     "SPACE": 0.107
   },
-  "mood": "Entangled",
-  "name": "ARRESTED MESH",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.525,
-      "macro_coupling": 0.316,
-      "macro_movement": 0.09,
-      "macro_space": 0.299
-    },
-    "Origami": {
-      "macro_character": 0.677,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.064,
-      "macro_space": 0.13
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "arrested"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

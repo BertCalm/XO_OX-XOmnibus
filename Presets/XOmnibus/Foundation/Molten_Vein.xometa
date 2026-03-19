@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Tar-slow attack into a saturated, immovable bed of sound.",
-  "dna": {
-    "aggression": 0.438,
+  "schema_version": 1,
+  "name": "Molten Vein",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.434,
-    "density": 0.827,
+    "warmth": 0.835,
     "movement": 0.47,
+    "density": 0.827,
     "space": 0.317,
-    "warmth": 0.835
+    "aggression": 0.438
   },
   "engines": [
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "dense",
     "analog",
     "thick"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "BODY",
@@ -35,33 +29,17 @@
     "COUPLING",
     "ROOM"
   ],
-  "mood": "Foundation",
-  "name": "Molten Vein",
-  "parameters": {
-    "Overbite": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.438,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.434,
-    "density": 0.827,
+    "warmth": 0.835,
     "movement": 0.47,
+    "density": 0.827,
     "space": 0.317,
-    "warmth": 0.835
+    "aggression": 0.438
   },
-  "tags": [
-    "foundation",
-    "warm",
-    "dense",
-    "analog",
-    "thick"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LAYERED BLOCK",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.2422
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Ocelot",
-        "type": "PITCH_SYNC",
-        "amount": 0.8718
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "OCELOT",
+    "amount": 0.8718
   },
   "dna": {
-    "aggression": 0.413,
     "brightness": 0.7005,
-    "density": 0.9397,
+    "warmth": 0.1908,
     "movement": 0.441,
+    "density": 0.9397,
     "space": 0.4188,
-    "warmth": 0.1908
+    "aggression": 0.413
   },
-  "engines": [
-    "OddfeliX",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2039,
-    "COUPLING": 0.8834,
     "MOVEMENT": 0.5018,
+    "COUPLING": 0.8834,
     "SPACE": 0.4716
   },
-  "mood": "Entangled",
-  "name": "LAYERED BLOCK",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.7746,
-      "macro_coupling": 0.9287,
-      "macro_movement": 0.3802,
-      "macro_space": 0.2422
-    },
-    "OddfeliX": {
-      "macro_character": 0.0514,
-      "macro_coupling": 0.8097,
-      "macro_movement": 0.4804,
-      "macro_space": 0.7212
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -83,10 +48,5 @@
     "deep",
     "tectonic",
     "compressed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

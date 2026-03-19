@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_98",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.926
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.493
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "OTTONI",
+    "amount": 0.493
   },
   "dna": {
-    "aggression": 0.496,
     "brightness": 0.952,
-    "density": 0.061,
+    "warmth": 0.063,
     "movement": 0.36,
+    "density": 0.061,
     "space": 0.928,
-    "warmth": 0.063
+    "aggression": 0.496
   },
-  "engines": [
-    "Ottoni",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.516,
-    "COUPLING": 0.28,
     "MOVEMENT": 0.353,
+    "COUPLING": 0.28,
     "SPACE": 0.919
   },
-  "mood": "Family",
-  "name": "Frost Horizon",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.297,
-      "macro_movement": 0.368,
-      "macro_space": 0.926
-    },
-    "Ottoni": {
-      "macro_character": 0.498,
-      "macro_coupling": 0.263,
-      "macro_movement": 0.338,
-      "macro_space": 0.911
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

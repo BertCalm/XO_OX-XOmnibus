@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Ouroboros",
-        "engineB": "Obese",
-        "type": "SATURATION_DRIVE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "MOJO driven by Ouroboros topology loop — the serpent swallowed by its own belly.",
-  "dna": {
-    "aggression": 0.96,
-    "brightness": 0.48,
-    "density": 0.95,
-    "movement": 0.65,
-    "space": 0.06,
-    "warmth": 0.42
-  },
+  "schema_version": 1,
+  "name": "Serpent Belly",
+  "mood": "Entangled",
   "engines": [
     "Ouroboros",
     "Obese"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ouroboros",
     "obese",
     "serpent"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 1.0,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.65,
+    "COUPLING": 0.88,
     "SPACE": 0.06
   },
-  "mood": "Entangled",
-  "name": "Serpent Belly",
-  "parameters": {
-    "Ouroboros": {},
-    "Obese": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.96,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.48,
-    "density": 0.95,
+    "warmth": 0.42,
     "movement": 0.65,
+    "density": 0.95,
     "space": 0.06,
-    "warmth": 0.42
+    "aggression": 0.96
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "obese",
-    "serpent"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.48,
+    "warmth": 0.42,
+    "movement": 0.65,
+    "density": 0.95,
+    "space": 0.06,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OBESE",
+        "type": "SATURATION_DRIVE",
+        "amount": 0.88
+      }
+    ]
+  }
 }

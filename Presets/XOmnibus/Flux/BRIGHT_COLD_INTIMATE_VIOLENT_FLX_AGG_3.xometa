@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Organon",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.985
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.976,
-    "brightness": 0.959,
-    "density": 0.304,
-    "movement": 0.471,
-    "space": 0.028,
-    "warmth": 0.081
-  },
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.64,
-    "COUPLING": 0.95,
-    "MOVEMENT": 0.471,
-    "SPACE": 0.028
-  },
-  "mood": "Flux",
-  "name": "Ice Wrath",
   "parameters": {
     "Optic": {
       "macro_character": 0.712,
-      "macro_coupling": 0.95,
       "macro_movement": 0.476,
+      "macro_coupling": 0.95,
       "macro_space": 0.021
     },
     "Organon": {
       "macro_character": 0.568,
-      "macro_coupling": 0.939,
       "macro_movement": 0.425,
+      "macro_coupling": 0.939,
       "macro_space": 0.071
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPTIC",
+    "target": "ORGANON",
+    "amount": 0.985
+  },
+  "dna": {
+    "brightness": 0.959,
+    "warmth": 0.081,
+    "movement": 0.471,
+    "density": 0.304,
+    "space": 0.028,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.64,
+    "MOVEMENT": 0.471,
+    "COUPLING": 0.95,
+    "SPACE": 0.028
+  },
   "tags": [
     "flux",
     "violent",
     "bright",
     "cold",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

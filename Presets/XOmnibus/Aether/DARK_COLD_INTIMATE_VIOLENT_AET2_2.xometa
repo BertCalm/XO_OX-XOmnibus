@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_INTIMATE_VIOLENT_AET2_2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0706
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oblique",
-        "type": "FILTER_MOD",
-        "amount": 0.7042
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.7042
   },
   "dna": {
-    "aggression": 0.9601,
     "brightness": 0.0948,
-    "density": 0.4361,
-    "movement": 0.6074,
+    "warmth": 0.0326,
     "space": 0.0908,
-    "warmth": 0.0326
+    "aggression": 0.9601,
+    "movement": 0.6074,
+    "density": 0.4361
   },
-  "engines": [
-    "Orbital",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0924,
-    "COUPLING": 0.7042,
     "MOVEMENT": 0.6394,
+    "COUPLING": 0.7042,
     "SPACE": 0.0908
   },
-  "mood": "Aether",
-  "name": "Wave Strike",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.0627,
-      "macro_coupling": 0.4732,
-      "macro_movement": 0.6487,
-      "macro_space": 0.0706
-    },
-    "Orbital": {
-      "macro_character": 0.122,
-      "macro_coupling": 0.4219,
-      "macro_movement": 0.63,
-      "macro_space": 0.0908
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "violent",
     "compressed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

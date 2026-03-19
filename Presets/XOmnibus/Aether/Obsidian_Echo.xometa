@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Dark reverb tail — reflection from obsidian walls",
-  "dna": {
-    "aggression": 0.15,
+  "schema_version": 1,
+  "name": "Obsidian Echo",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.1,
-    "density": 0.5,
+    "warmth": 0.55,
+    "aggression": 0.15,
     "movement": 0.2,
-    "space": 0.8,
-    "warmth": 0.55
+    "density": 0.5,
+    "space": 0.8
   },
   "engines": [
     "Oracle"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "PROPHECY",
-    "VOID",
-    "COUPLING",
-    "ECHO"
-  ],
-  "mood": "Aether",
-  "name": "Obsidian Echo",
-  "parameters": {
-    "Oracle": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.1,
-    "density": 0.5,
-    "movement": 0.2,
-    "space": 0.8,
-    "warmth": 0.55
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dark reverb tail — reflection from obsidian walls",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -50,9 +24,6 @@
     "obsidian",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "PROPHECY",
     "VOID",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

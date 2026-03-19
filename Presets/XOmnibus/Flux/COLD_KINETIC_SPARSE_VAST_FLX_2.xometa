@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_SPARSE_VAST_FLX_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.907
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Ouroboros",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.7842
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OUROBOROS",
+    "amount": 0.7842
   },
   "dna": {
-    "aggression": 0.6603,
     "brightness": 0.5195,
-    "density": 0.0643,
+    "warmth": 0.0906,
     "movement": 0.8982,
+    "density": 0.0643,
     "space": 0.8822,
-    "warmth": 0.0906
+    "aggression": 0.6603
   },
-  "engines": [
-    "Overdub",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6016,
-    "COUPLING": 0.6692,
     "MOVEMENT": 0.8578,
+    "COUPLING": 0.6692,
     "SPACE": 0.9403
   },
-  "mood": "Flux",
-  "name": "COLD_KINETIC_SPARSE_VAST_FLX_2",
-  "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.3947,
-      "macro_coupling": 0.7916,
-      "macro_movement": 0.9397,
-      "macro_space": 0.907
-    },
-    "Overdub": {
-      "macro_character": 0.6016,
-      "macro_coupling": 0.6692,
-      "macro_movement": 0.8578,
-      "macro_space": 0.9403
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "high-movement",
     "low-density",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_1",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.908
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oblong",
-        "type": "CHAOS_INJECT",
-        "amount": 0.771
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.771
   },
   "dna": {
-    "aggression": 0.884,
     "brightness": 0.054,
-    "density": 0.39,
+    "warmth": 0.872,
     "movement": 0.919,
+    "density": 0.39,
     "space": 0.637,
-    "warmth": 0.872
+    "aggression": 0.884
   },
-  "engines": [
-    "Overdub",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.918,
-    "COUPLING": 0.442,
     "MOVEMENT": 0.739,
+    "COUPLING": 0.442,
     "SPACE": 0.91
   },
-  "mood": "Family",
-  "name": "Rust Stream",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.897,
-      "macro_coupling": 0.434,
-      "macro_movement": 0.76,
-      "macro_space": 0.908
-    },
-    "Overdub": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.442,
-      "macro_movement": 0.739,
-      "macro_space": 0.91
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

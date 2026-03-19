@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Orca",
-        "type": "CHAOS_INJECT",
-        "amount": 0.939
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.343,
-    "brightness": 0.398,
-    "density": 0.948,
-    "movement": 0.03,
-    "space": 0.608,
-    "warmth": 0.939
-  },
+  "name": "HOT DENSE STILL ATM 15",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oblong",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.668,
-    "COUPLING": 0.613,
-    "MOVEMENT": 0.03,
-    "SPACE": 0.608
-  },
-  "mood": "Atmosphere",
-  "name": "HOT DENSE STILL ATM 15",
   "parameters": {
     "Oblong": {
       "macro_character": 0.668,
-      "macro_coupling": 0.613,
       "macro_movement": 0.03,
+      "macro_coupling": 0.613,
       "macro_space": 0.608
     },
     "Orca": {
       "macro_character": 0.805,
-      "macro_coupling": 0.353,
       "macro_movement": 0.035,
+      "macro_coupling": 0.353,
       "macro_space": 0.533
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.939
+  },
+  "dna": {
+    "brightness": 0.398,
+    "warmth": 0.939,
+    "movement": 0.03,
+    "density": 0.948,
+    "space": 0.608,
+    "aggression": 0.343
+  },
+  "macros": {
+    "CHARACTER": 0.668,
+    "MOVEMENT": 0.03,
+    "COUPLING": 0.613,
+    "SPACE": 0.608
+  },
   "tags": [
     "atmosphere",
     "warm",
@@ -58,10 +47,5 @@
     "static",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

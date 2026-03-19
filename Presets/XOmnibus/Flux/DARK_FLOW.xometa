@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Overbite",
-        "type": "FREQUENCY_LOCK",
-        "amount": 0.379
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.047,
-    "brightness": 0.037,
-    "density": 0.356,
-    "movement": 0.39,
-    "space": 0.602,
-    "warmth": 0.539
-  },
+  "name": "DARK FLOW",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Obese",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.328,
-    "COUPLING": 0.746,
-    "MOVEMENT": 0.539,
-    "SPACE": 0.518
-  },
-  "mood": "Flux",
-  "name": "DARK FLOW",
   "parameters": {
     "Obese": {
       "macro_character": 0.646,
-      "macro_coupling": 0.929,
       "macro_movement": 0.457,
+      "macro_coupling": 0.929,
       "macro_space": 0.936
     },
     "Overbite": {
       "macro_character": 0.009,
-      "macro_coupling": 0.563,
       "macro_movement": 0.621,
+      "macro_coupling": 0.563,
       "macro_space": 0.1
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_LOCK",
+    "source": "OBESE",
+    "target": "OVERBITE",
+    "amount": 0.379
+  },
+  "dna": {
+    "brightness": 0.037,
+    "warmth": 0.539,
+    "movement": 0.39,
+    "density": 0.356,
+    "space": 0.602,
+    "aggression": 0.047
+  },
+  "macros": {
+    "CHARACTER": 0.328,
+    "MOVEMENT": 0.539,
+    "COUPLING": 0.746,
+    "SPACE": 0.518
+  },
   "tags": [
     "flux",
     "dark",
     "extreme",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

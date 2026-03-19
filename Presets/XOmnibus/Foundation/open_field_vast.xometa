@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OPEN FIELD VAST",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.934
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obbligato",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.375
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OBBLIGATO",
+    "amount": 0.375
   },
   "dna": {
-    "aggression": 0.073,
     "brightness": 0.245,
-    "density": 0.85,
+    "warmth": 0.475,
     "movement": 0.024,
+    "density": 0.85,
     "space": 0.918,
-    "warmth": 0.475
+    "aggression": 0.073
   },
-  "engines": [
-    "Ottoni",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.425,
-    "COUPLING": 0.176,
     "MOVEMENT": 0.024,
+    "COUPLING": 0.176,
     "SPACE": 0.918
   },
-  "mood": "Foundation",
-  "name": "OPEN FIELD VAST",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.656,
-      "macro_coupling": 0.751,
-      "macro_movement": -0.025,
-      "macro_space": 0.934
-    },
-    "Ottoni": {
-      "macro_character": 0.194,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.044,
-      "macro_space": 0.903
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

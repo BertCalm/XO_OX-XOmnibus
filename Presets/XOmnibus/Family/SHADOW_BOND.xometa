@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Optic",
-        "type": "ENVELOPE_FOLLOW",
-        "amount": 0.627
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.134,
-    "brightness": 0.115,
-    "density": 0.543,
-    "movement": 0.326,
-    "space": 0.571,
-    "warmth": 0.359
-  },
+  "name": "SHADOW BOND",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.524,
-    "COUPLING": 0.467,
-    "MOVEMENT": 0.378,
-    "SPACE": 0.483
-  },
-  "mood": "Family",
-  "name": "SHADOW BOND",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.642,
-      "macro_coupling": 0.245,
       "macro_movement": 0.302,
+      "macro_coupling": 0.245,
       "macro_space": 0.807
     },
     "Optic": {
       "macro_character": 0.406,
-      "macro_coupling": 0.689,
       "macro_movement": 0.454,
+      "macro_coupling": 0.689,
       "macro_space": 0.158
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_FOLLOW",
+    "source": "ODDOSCAR",
+    "target": "OPTIC",
+    "amount": 0.627
+  },
+  "dna": {
+    "brightness": 0.115,
+    "warmth": 0.359,
+    "movement": 0.326,
+    "density": 0.543,
+    "space": 0.571,
+    "aggression": 0.134
+  },
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.378,
+    "COUPLING": 0.467,
+    "SPACE": 0.483
+  },
   "tags": [
     "family",
     "dark",
     "extreme",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

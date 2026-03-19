@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Ottoni",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.742
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.916,
-    "brightness": 0.951,
-    "density": 0.438,
-    "movement": 0.319,
-    "space": 0.947,
-    "warmth": 0.937
-  },
+  "name": "BRIGHT WARM VAST VIOLENT PRS AGG 4",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oracle",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.902,
-    "COUPLING": 0.842,
-    "MOVEMENT": 0.309,
-    "SPACE": 0.891
-  },
-  "mood": "Prism",
-  "name": "BRIGHT WARM VAST VIOLENT PR...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.915,
-      "macro_coupling": 0.851,
       "macro_movement": 0.311,
+      "macro_coupling": 0.851,
       "macro_space": 0.894
     },
     "Ottoni": {
       "macro_character": 0.889,
-      "macro_coupling": 0.833,
       "macro_movement": 0.307,
+      "macro_coupling": 0.833,
       "macro_space": 0.888
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORACLE",
+    "target": "OTTONI",
+    "amount": 0.742
+  },
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.937,
+    "movement": 0.319,
+    "density": 0.438,
+    "space": 0.947,
+    "aggression": 0.916
+  },
+  "macros": {
+    "CHARACTER": 0.902,
+    "MOVEMENT": 0.309,
+    "COUPLING": 0.842,
+    "SPACE": 0.891
+  },
   "tags": [
     "prism",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

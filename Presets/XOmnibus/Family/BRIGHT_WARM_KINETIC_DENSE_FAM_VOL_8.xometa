@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Ohm",
-        "type": "PITCH_SYNC",
-        "amount": 0.633
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.54,
-    "brightness": 0.916,
-    "density": 0.881,
-    "movement": 0.882,
-    "space": 0.672,
-    "warmth": 0.958
-  },
+  "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_8",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Ohm",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.929,
-    "COUPLING": 0.698,
-    "MOVEMENT": 0.895,
-    "SPACE": 0.694
-  },
-  "mood": "Family",
-  "name": "Radiant Flutter",
   "parameters": {
     "Ohm": {
       "macro_character": 0.919,
-      "macro_coupling": 0.685,
       "macro_movement": 0.897,
+      "macro_coupling": 0.685,
       "macro_space": 0.701
     },
     "Osteria": {
       "macro_character": 0.939,
-      "macro_coupling": 0.711,
       "macro_movement": 0.892,
+      "macro_coupling": 0.711,
       "macro_space": 0.686
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OSTERIA",
+    "target": "OHM",
+    "amount": 0.633
+  },
+  "dna": {
+    "brightness": 0.916,
+    "warmth": 0.958,
+    "movement": 0.882,
+    "density": 0.881,
+    "space": 0.672,
+    "aggression": 0.54
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.895,
+    "COUPLING": 0.698,
+    "SPACE": 0.694
+  },
   "tags": [
     "family",
     "warm",
     "kinetic",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "High-angle oblique sweep, relentless motion",
-  "dna": {
-    "aggression": 0.8218,
+  "schema_version": 1,
+  "name": "Oblique Assault",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.4132,
-    "density": 0.6023,
+    "warmth": 0.2802,
     "movement": 0.8291,
+    "density": 0.6023,
     "space": 0.3538,
-    "warmth": 0.2802
+    "aggression": 0.8218
+  },
+  "dna": {
+    "brightness": 0.4132,
+    "warmth": 0.2802,
+    "movement": 0.8291,
+    "density": 0.6023,
+    "space": 0.3538,
+    "aggression": 0.8218
   },
   "engines": [
     "Oblique"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ANGLE",
@@ -37,52 +39,23 @@
   ],
   "macros": {
     "ANGLE": 0.5739,
-    "COUPLE": 0.882,
     "MOTION": 0.8744,
+    "COUPLE": 0.882,
     "SPACE": 0.5874
   },
-  "mood": "Prism",
-  "name": "Oblique Assault",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblique": {
-<<<<<<< HEAD
-      "obl_couplingBus": 0,
-=======
       "obl_macro_angle": 0.5739,
       "obl_macro_motion": 0.8744,
       "obl_macro_couple": 0.882,
       "obl_macro_space": 0.5874,
       "obl_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "obl_couplingLevel": 0.5,
-      "obl_macro_angle": 0.5739,
-      "obl_macro_couple": 0.882,
-      "obl_macro_motion": 0.8744,
-      "obl_macro_space": 0.5874,
-      "obl_outputLevel": 0.85
+      "obl_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8218,
-    "brightness": 0.4132,
-    "density": 0.6023,
-    "movement": 0.8291,
-    "space": 0.3538,
-    "warmth": 0.2802
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DEEP FRONT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.2506
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Obbligato",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.9267
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORCA",
+    "target": "OBBLIGATO",
+    "amount": 0.9267
   },
   "dna": {
-    "aggression": 0.6275,
     "brightness": 0.7675,
-    "density": 0.8808,
+    "warmth": 0.6809,
     "movement": 0.1368,
+    "density": 0.8808,
     "space": 0.0972,
-    "warmth": 0.6809
+    "aggression": 0.6275
   },
-  "engines": [
-    "Orca",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0394,
-    "COUPLING": 0.71,
     "MOVEMENT": 0.7886,
+    "COUPLING": 0.71,
     "SPACE": 0.3649
   },
-  "mood": "Entangled",
-  "name": "DEEP FRONT",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.8019,
-      "macro_coupling": 0.6761,
-      "macro_movement": 0.219,
-      "macro_space": 0.2506
-    },
-    "Orca": {
-      "macro_character": 0.8328,
-      "macro_coupling": 0.9103,
-      "macro_movement": 0.9029,
-      "macro_space": 0.2301
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "fused",
     "compressed",
     "solid"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

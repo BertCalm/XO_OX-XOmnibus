@@ -1,51 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.65,
-        "engineA": "Osprey",
-        "engineB": "Ocelot",
-        "type": "Env->Amp"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Cat and raptor share the shoreline at dusk — speed and grace in coupling.",
-  "dna": {
-    "aggression": 0.41,
-    "brightness": 0.67,
-    "density": 0.48,
-    "movement": 0.72,
-    "space": 0.65,
-    "warmth": 0.55
-  },
-  "engines": [
-    "Osprey",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.65,
-    "COUPLING": 0.7,
-    "MOVEMENT": 0.75,
-    "SPACE": 0.5
-  },
-  "mood": "Entangled",
-  "name": "Feline Shore",
-  "parameters": {
-    "Osprey": {},
-    "Ocelot": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Feline Shore",
   "mood": "Entangled",
@@ -56,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cat and raptor share the shoreline at dusk — speed and grace in coupling.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -67,6 +19,38 @@
     "predator",
     "dusk"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.7,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.67,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.48,
+    "space": 0.65,
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OCELOT",
+        "type": "Env->Amp",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
 }

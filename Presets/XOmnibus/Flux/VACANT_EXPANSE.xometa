@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VACANT EXPANSE",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 1.0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Organon",
-        "type": "CHAOS_INJECT",
-        "amount": 0.889
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.889
   },
   "dna": {
-    "aggression": 0.486,
     "brightness": 0.549,
-    "density": 0.044,
+    "warmth": 0.395,
     "movement": 0.489,
+    "density": 0.044,
     "space": 0.964,
-    "warmth": 0.395
+    "aggression": 0.486
   },
-  "engines": [
-    "Overdub",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.511,
-    "COUPLING": 0.554,
     "MOVEMENT": 0.355,
+    "COUPLING": 0.554,
     "SPACE": 0.962
   },
-  "mood": "Flux",
-  "name": "VACANT EXPANSE",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.472,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.387,
-      "macro_space": 1.0
-    },
-    "Overdub": {
-      "macro_character": 0.511,
-      "macro_coupling": 0.554,
-      "macro_movement": 0.355,
-      "macro_space": 0.962
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

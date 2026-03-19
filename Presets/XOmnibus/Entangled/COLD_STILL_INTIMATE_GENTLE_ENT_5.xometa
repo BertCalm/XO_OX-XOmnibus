@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9001,
-        "source": "Ombre",
-        "target": "Outwit",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Cold Still Intimate Gentle character entanglement — OMBRE × OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.0475,
-    "brightness": 0.6052,
-    "density": 0.4592,
-    "movement": 0.0782,
-    "space": 0.0915,
-    "warmth": 0.0831
-  },
+  "schema_version": 1,
+  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_5",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Outwit"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "SHADE",
-    "GRADIENT",
-    "FADE",
-    "DRIFT"
-  ],
-  "macros": {
-    "CHARACTER": 0.3441,
-    "COUPLING": 0.9001,
-    "MOVEMENT": 0.0782,
-    "SPACE": 0.0915
-  },
-  "mood": "Entangled",
-  "name": "Quartz Flux",
-  "parameters": {
-    "Ombre": {
-      "amp_attack": 0.4015,
-      "amp_release": 0.1882,
-      "coupling_level": 0.5646,
-      "density": 0.4554,
-      "drive": 0.1162,
-      "filter_cutoff": 0.6193,
-      "filter_resonance": 0.1634,
-      "macro_character": 0.5058,
-      "macro_coupling": 0.5975,
-      "macro_movement": 0.0831,
-      "macro_space": 0.0723,
-      "output_level": 0.8467,
-      "reverb_mix": 0.1996,
-      "reverb_size": 0.2247
-    },
-    "Outwit": {
-      "amp_attack": 0.4221,
-      "amp_release": 0.1862,
-      "coupling_level": 0.5697,
-      "density": 0.4702,
-      "drive": 0.1222,
-      "filter_cutoff": 0.6114,
-      "filter_resonance": 0.0889,
-      "macro_character": 0.4818,
-      "macro_coupling": 0.6442,
-      "macro_movement": 0.0928,
-      "macro_space": 0.0771,
-      "output_level": 0.8383,
-      "reverb_mix": 0.2284,
-      "reverb_size": 0.2718
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0475,
-    "brightness": 0.6052,
-    "density": 0.4592,
-    "movement": 0.0782,
-    "space": 0.0915,
-    "warmth": 0.0831
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Cold Still Intimate Gentle character entanglement — OMBRE × OUTWIT via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "cold",
@@ -95,9 +17,6 @@
     "gentle",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "SHADE",
     "GRADIENT",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9001,
     "SPACE": 0.0915
   }
->>>>>>> origin/v1-launch-prep
 }

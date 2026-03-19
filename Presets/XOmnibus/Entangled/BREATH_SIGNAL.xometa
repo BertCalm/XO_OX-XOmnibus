@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BREATH SIGNAL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.584
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.518
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OUROBOROS",
+    "target": "OBLONG",
+    "amount": 0.518
   },
   "dna": {
-    "aggression": 0.396,
     "brightness": 0.935,
-    "density": 0.104,
+    "warmth": 0.204,
     "movement": 0.716,
+    "density": 0.104,
     "space": 0.239,
-    "warmth": 0.204
+    "aggression": 0.396
   },
-  "engines": [
-    "Ouroboros",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.672,
-    "COUPLING": 0.316,
     "MOVEMENT": 0.3,
+    "COUPLING": 0.316,
     "SPACE": 0.752
   },
-  "mood": "Entangled",
-  "name": "BREATH SIGNAL",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.595,
-      "macro_coupling": 0.419,
-      "macro_movement": 0.619,
-      "macro_space": 0.584
-    },
-    "Ouroboros": {
-      "macro_character": 0.235,
-      "macro_coupling": 0.89,
-      "macro_movement": 0.12,
-      "macro_space": 0.246
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hollow",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

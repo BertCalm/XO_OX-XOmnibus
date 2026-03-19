@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Spectral decomposition under maximum aggression",
-  "dna": {
-    "aggression": 0.881,
+  "schema_version": 1,
+  "name": "Refract Violence",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.3505,
-    "density": 0.7507,
+    "warmth": 0.5105,
     "movement": 0.8736,
+    "density": 0.7507,
     "space": 0.4722,
-    "warmth": 0.5105
+    "aggression": 0.881
+  },
+  "dna": {
+    "brightness": 0.3505,
+    "warmth": 0.5105,
+    "movement": 0.8736,
+    "density": 0.7507,
+    "space": 0.4722,
+    "aggression": 0.881
   },
   "engines": [
     "Optic"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "REFRACT",
@@ -37,47 +39,23 @@
   ],
   "macros": {
     "REFRACT": 0.5083,
+    "SPECTRUM": 0.8194,
     "SCATTER": 0.236,
-    "SPACE": 0.8055,
-    "SPECTRUM": 0.8194
+    "SPACE": 0.8055
   },
-  "mood": "Prism",
-  "name": "Refract Violence",
+  "couplingIntensity": "None",
   "parameters": {
     "Optic": {
-<<<<<<< HEAD
-      "optic_couplingBus": 0,
-      "optic_couplingLevel": 0.5,
-=======
->>>>>>> origin/v1-launch-prep
       "optic_macro_refract": 0.5083,
+      "optic_macro_spectrum": 0.8194,
       "optic_macro_scatter": 0.236,
       "optic_macro_space": 0.8055,
-      "optic_macro_spectrum": 0.8194,
-      "optic_outputLevel": 0.85
+      "optic_outputLevel": 0.85,
+      "optic_couplingLevel": 0.5,
+      "optic_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.881,
-    "brightness": 0.3505,
-    "density": 0.7507,
-    "movement": 0.8736,
-    "space": 0.4722,
-    "warmth": 0.5105
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

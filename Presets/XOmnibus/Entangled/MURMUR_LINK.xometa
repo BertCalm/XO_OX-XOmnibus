@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Ottoni",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.294
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.536,
-    "density": 0.252,
-    "movement": 0.072,
-    "space": 0.198,
-    "warmth": 0.882
-  },
+  "name": "MURMUR LINK",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oracle",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.552,
-    "COUPLING": 0.712,
-    "MOVEMENT": 0.155,
-    "SPACE": 0.266
-  },
-  "mood": "Entangled",
-  "name": "MURMUR LINK",
   "parameters": {
     "Oracle": {
       "macro_character": 0.778,
-      "macro_coupling": 0.63,
       "macro_movement": 0.464,
+      "macro_coupling": 0.63,
       "macro_space": 0.613
     },
     "Ottoni": {
       "macro_character": 0.578,
-      "macro_coupling": 0.729,
       "macro_movement": 0.117,
+      "macro_coupling": 0.729,
       "macro_space": 0.295
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORACLE",
+    "target": "OTTONI",
+    "amount": 0.294
+  },
+  "dna": {
+    "brightness": 0.536,
+    "warmth": 0.882,
+    "movement": 0.072,
+    "density": 0.252,
+    "space": 0.198,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.552,
+    "MOVEMENT": 0.155,
+    "COUPLING": 0.712,
+    "SPACE": 0.266
+  },
   "tags": [
     "calm",
     "yielding",
     "gentle",
     "tender"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

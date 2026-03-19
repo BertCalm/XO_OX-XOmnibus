@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_VAST_VIOLENT_FAM_VOL_109",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.948
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Ole",
-        "type": "PHASE_COUPLE",
-        "amount": 0.46
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OLE",
+    "amount": 0.46
   },
   "dna": {
-    "aggression": 0.892,
     "brightness": 0.922,
-    "density": 0.316,
+    "warmth": 0.894,
     "movement": 0.681,
+    "density": 0.316,
     "space": 0.956,
-    "warmth": 0.894
+    "aggression": 0.892
   },
-  "engines": [
-    "Ole",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.903,
-    "COUPLING": 0.619,
     "MOVEMENT": 0.692,
+    "COUPLING": 0.619,
     "SPACE": 0.962
   },
-  "mood": "Family",
-  "name": "Peach Vast",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.609,
-      "macro_movement": 0.679,
-      "macro_space": 0.948
-    },
-    "Ole": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.63,
-      "macro_movement": 0.705,
-      "macro_space": 0.975
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "vast",
     "aggressive",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

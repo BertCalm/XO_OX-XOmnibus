@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Opal",
-        "type": "PITCH_SYNC",
-        "amount": 0.8502
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.0935,
-    "brightness": 0.4723,
-    "density": 0.0453,
-    "movement": 0.0633,
-    "space": 0.937,
-    "warmth": 0.8855
-  },
+  "schema_version": 1,
+  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_3",
+  "mood": "Entangled",
   "engines": [
     "Ottoni",
     "Opal"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6164,
-    "COUPLING": 0.8766,
-    "MOVEMENT": 0.0606,
-    "SPACE": 0.4678
-  },
-  "mood": "Entangled",
-  "name": "Flux Horizon 2",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.5382,
-      "macro_coupling": 0.8251,
-      "macro_movement": 0.0595,
-      "macro_space": 0.4649
-    },
-    "Ottoni": {
-      "macro_character": 0.6946,
-      "macro_coupling": 0.9281,
-      "macro_movement": 0.0617,
-      "macro_space": 0.4708
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "sparse",
     "vast"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.937,
     "aggression": 0.0935
   }
->>>>>>> origin/v1-launch-prep
 }

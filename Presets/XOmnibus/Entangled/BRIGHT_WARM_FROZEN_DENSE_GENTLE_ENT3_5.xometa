@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Obese",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8322
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.1052,
-    "brightness": 0.8723,
-    "density": 0.9529,
-    "movement": 0.0251,
-    "space": 0.4642,
-    "warmth": 0.9076
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_DENSE_GENTLE_ENT3_5",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Obese"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7901,
-    "COUPLING": 0.8575,
-    "MOVEMENT": 0.0343,
-    "SPACE": 0.745
-  },
-  "mood": "Entangled",
-  "name": "Solar Thick 2",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.7344,
-      "macro_coupling": 0.8404,
-      "macro_movement": 0.0235,
-      "macro_space": 0.9132
-    },
-    "Octopus": {
-      "macro_character": 0.8458,
-      "macro_coupling": 0.8745,
-      "macro_movement": 0.045,
-      "macro_space": 0.5768
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_DENSE_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "gentle",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.4642,
     "aggression": 0.1052
   }
->>>>>>> origin/v1-launch-prep
 }

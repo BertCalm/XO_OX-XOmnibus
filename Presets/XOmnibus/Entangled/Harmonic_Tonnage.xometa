@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Organon",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.75
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.51,
-    "brightness": 0.39,
-    "density": 0.97,
-    "movement": 0.59,
-    "space": 0.49,
-    "warmth": 0.95
-  },
+  "name": "Harmonic Tonnage",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.94,
-    "COUPLING": 0.81,
-    "MOVEMENT": 0.55,
-    "SPACE": 0.48
-  },
-  "mood": "Entangled",
-  "name": "Harmonic Tonnage",
   "parameters": {
     "Obese": {
       "macro_character": 0.99,
-      "macro_coupling": 0.84,
       "macro_movement": 0.52,
+      "macro_coupling": 0.84,
       "macro_space": 0.6
     },
     "Organon": {
       "macro_character": 0.89,
-      "macro_coupling": 0.78,
       "macro_movement": 0.59,
+      "macro_coupling": 0.78,
       "macro_space": 0.37
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBESE",
+    "target": "ORGANON",
+    "amount": 0.75
+  },
+  "dna": {
+    "brightness": 0.39,
+    "warmth": 0.95,
+    "movement": 0.59,
+    "density": 0.97,
+    "space": 0.49,
+    "aggression": 0.51
+  },
+  "macros": {
+    "CHARACTER": 0.94,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.81,
+    "SPACE": 0.48
+  },
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

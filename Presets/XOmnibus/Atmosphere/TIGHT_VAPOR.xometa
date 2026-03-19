@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "TIGHT VAPOR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.025
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Opal",
-        "type": "CHAOS_INJECT",
-        "amount": 0.235
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "OPAL",
+    "amount": 0.235
   },
   "dna": {
-    "aggression": 0.513,
     "brightness": 0.0,
-    "density": 0.728,
+    "warmth": 0.412,
     "movement": 0.841,
+    "density": 0.728,
     "space": 0.089,
-    "warmth": 0.412
+    "aggression": 0.513
   },
-  "engines": [
-    "Organon",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.481,
-    "COUPLING": 0.525,
     "MOVEMENT": 0.836,
+    "COUPLING": 0.525,
     "SPACE": 0.089
   },
-  "mood": "Atmosphere",
-  "name": "TIGHT VAPOR",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.689,
-      "macro_coupling": 0.351,
-      "macro_movement": 0.149,
-      "macro_space": 0.025
-    },
-    "Organon": {
-      "macro_character": 0.489,
-      "macro_coupling": 0.274,
-      "macro_movement": 0.252,
-      "macro_space": 0.089
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

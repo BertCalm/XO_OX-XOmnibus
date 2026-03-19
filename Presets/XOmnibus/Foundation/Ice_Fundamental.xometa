@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "NES square wave at high brightness, wide open",
-  "dna": {
-    "aggression": 0.103,
+  "schema_version": 1,
+  "name": "Ice Fundamental",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.8687,
-    "density": 0.061,
+    "warmth": 0.3496,
     "movement": 0.3988,
+    "density": 0.061,
     "space": 0.6139,
-    "warmth": 0.3496
+    "aggression": 0.103
+  },
+  "dna": {
+    "brightness": 0.8687,
+    "warmth": 0.3496,
+    "movement": 0.3988,
+    "density": 0.061,
+    "space": 0.6139,
+    "aggression": 0.103
   },
   "engines": [
     "Overworld"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ERA",
@@ -36,49 +38,24 @@
     "SPACE"
   ],
   "macros": {
+    "ERA": 0.6973,
     "CHAOS": 0.8166,
     "COUPLE": 0.8155,
-    "ERA": 0.6973,
     "SPACE": 0.4587
   },
-  "mood": "Foundation",
-  "name": "Ice Fundamental",
+  "couplingIntensity": "None",
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-      "ow_couplingBus": 0,
-      "ow_couplingLevel": 0.5,
-=======
       "ow_macro_era": 0.6973,
->>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.8166,
       "ow_macro_couple": 0.8155,
-      "ow_macro_era": 0.6973,
       "ow_macro_space": 0.4587,
-      "ow_outputLevel": 0.85
+      "ow_outputLevel": 0.85,
+      "ow_couplingLevel": 0.5,
+      "ow_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.103,
-    "brightness": 0.8687,
-    "density": 0.061,
-    "movement": 0.3988,
-    "space": 0.6139,
-    "warmth": 0.3496
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

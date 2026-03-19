@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Low-harmonic rumble anchoring the deepest register",
-  "dna": {
-    "aggression": 0.2692,
+  "schema_version": 1,
+  "name": "Abyssal Root",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.1139,
-    "density": 0.6558,
+    "warmth": 0.5575,
     "movement": 0.2325,
+    "density": 0.6558,
     "space": 0.5209,
-    "warmth": 0.5575
+    "aggression": 0.2692
+  },
+  "dna": {
+    "brightness": 0.1139,
+    "warmth": 0.5575,
+    "movement": 0.2325,
+    "density": 0.6558,
+    "space": 0.5209,
+    "aggression": 0.2692
   },
   "engines": [
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +29,6 @@
     "dark",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -36,51 +38,23 @@
   ],
   "macros": {
     "CHARACTER": 0.1547,
-    "COUPLING": 0.4953,
     "MOVEMENT": 0.2609,
+    "COUPLING": 0.4953,
     "SPACE": 0.2209
   },
-  "mood": "Foundation",
-  "name": "Abyssal Root",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblong": {
-<<<<<<< HEAD
-      "bob_couplingBus": 0,
-=======
       "bob_macro_character": 0.1547,
       "bob_macro_movement": 0.2609,
       "bob_macro_coupling": 0.4953,
       "bob_macro_space": 0.2209,
       "bob_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
-      "bob_macro_character": 0.1547,
-      "bob_macro_coupling": 0.4953,
-      "bob_macro_movement": 0.2609,
-      "bob_macro_space": 0.2209,
-      "bob_outputLevel": 0.85
+      "bob_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2692,
-    "brightness": 0.1139,
-    "density": 0.6558,
-    "movement": 0.2325,
-    "space": 0.5209,
-    "warmth": 0.5575
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

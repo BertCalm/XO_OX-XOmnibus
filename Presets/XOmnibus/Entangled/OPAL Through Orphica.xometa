@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.781,
-        "engineA": "Orphica",
-        "engineB": "Opal",
-        "type": "Mod->Cutoff"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "ORPHICA and OPAL coupled via Mod->Cutoff. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.729,
-    "density": 0.5,
-    "movement": 0.75,
-    "space": 0.765,
-    "warmth": 0.463
-  },
+  "schema_version": 1,
+  "name": "OPAL Through Orphica",
+  "mood": "Entangled",
   "engines": [
     "Orphica",
     "Opal"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "orphica",
     "opal"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WARMTH",
@@ -43,20 +21,27 @@
     "ENTANGLE",
     "AIR"
   ],
-  "mood": "Entangled",
-  "name": "OPAL Through Orphica",
-  "parameters": {
-    "Orphica": {},
-    "Opal": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "orphica",
-    "opal"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OPAL",
+        "type": "Mod->Cutoff",
+        "amount": 0.781
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.729,
+    "warmth": 0.463,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.765,
+    "aggression": 0.18
+  }
 }

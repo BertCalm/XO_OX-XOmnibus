@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OUROBOROS maximum tension — loop compressed beyond breaking, mass extreme.",
-  "dna": {
-    "aggression": 0.82,
-    "brightness": 0.22,
-    "density": 0.92,
-    "movement": 0.8,
-    "space": 0.22,
-    "warmth": 0.4
-  },
+  "schema_version": 1,
+  "name": "Ouroboros Compression",
+  "mood": "Family",
   "engines": [
     "Ouroboros"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CYCLE",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Ouroboros Compression",
-  "parameters": {
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OUROBOROS maximum tension — loop compressed beyond breaking, mass extreme.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "aggressive",
     "cyclic"
   ],
+  "macroLabels": [
+    "CYCLE",
+    "TENSION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.22,
     "aggression": 0.82
   }
->>>>>>> origin/v1-launch-prep
 }

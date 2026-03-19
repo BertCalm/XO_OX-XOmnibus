@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD FURY PRI 11",
   "version": "1.0",
   "mood": "Prism",
@@ -23,58 +20,26 @@
       "macro_space": 0.443
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ocelot",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.801
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.801
   },
   "dna": {
-    "aggression": 0.953,
     "brightness": 0.051,
-    "density": 0.598,
+    "warmth": 0.1,
     "movement": 0.317,
+    "density": 0.598,
     "space": 0.582,
-    "warmth": 0.1
+    "aggression": 0.953
   },
-  "engines": [
-    "Overbite",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.075,
-    "COUPLING": 0.593,
     "MOVEMENT": 0.317,
+    "COUPLING": 0.593,
     "SPACE": 0.582
   },
-  "mood": "Prism",
-  "name": "DARK COLD FURY PRI 11",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.171,
-      "macro_coupling": 0.731,
-      "macro_movement": 0.461,
-      "macro_space": 0.443
-    },
-    "Overbite": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.593,
-      "macro_movement": 0.317,
-      "macro_space": 0.582
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
@@ -82,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

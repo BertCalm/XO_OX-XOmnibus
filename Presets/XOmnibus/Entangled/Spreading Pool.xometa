@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Spreading Pool",
   "version": "1.0",
@@ -43,64 +40,13 @@
       "olap_couplingBus": 0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ole",
-        "type": "ENVELOPE_SHARING",
-        "amount": 0.744
-      }
-    ]
+    "type": "ENVELOPE_SHARING",
+    "source": "OVERLAP",
+    "target": "OLE",
+    "amount": 0.744
   },
   "couplingIntensity": "Deep",
-  "description": "OLE groove displacement rhythmically pumps OVERLAP modulation — the rhythm section rides the reverb",
-  "engines": [
-    "Overlap",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.55,
-    "COUPLING": 0.74,
-    "MOVEMENT": 0.48,
-    "SPACE": 0.75
-  },
-  "mood": "Entangled",
-  "name": "Spreading Pool",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.794,
-      "olap_damping": 0.35,
-      "olap_decay": 0.67,
-      "olap_diffusion": 0.821,
-      "olap_earlyMix": 0.283,
-      "olap_filterCutoff": 0.63,
-      "olap_filterReso": 0.398,
-      "olap_lateMix": 0.629,
-      "olap_modDepth": 0.17,
-      "olap_modRate": 0.165,
-      "olap_outputLevel": 0.709,
-      "olap_preDelay": 0.121,
-      "olap_size": 0.806
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.37,
-    "brightness": 0.65,
-    "density": 0.66,
-    "movement": 0.66,
-    "space": 0.75,
-    "warmth": 0.61
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -110,17 +56,5 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.63,
-    "warmth": 0.5,
-    "movement": 0.165,
-    "density": 0.5,
-    "space": 0.121,
-    "aggression": 0.3
-  }
-=======
   "description": "OLE groove displacement rhythmically pumps OVERLAP modulation — the rhythm section rides the reverb"
->>>>>>> origin/v1-launch-prep
 }

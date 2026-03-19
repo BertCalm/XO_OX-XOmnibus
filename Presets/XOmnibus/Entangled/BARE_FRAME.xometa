@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BARE FRAME",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.395
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.312
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "OMBRE",
+    "amount": 0.312
   },
   "dna": {
-    "aggression": 0.381,
     "brightness": 0.124,
-    "density": 0.113,
+    "warmth": 0.369,
     "movement": 0.749,
+    "density": 0.113,
     "space": 0.262,
-    "warmth": 0.369
+    "aggression": 0.381
   },
-  "engines": [
-    "Overworld",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.639,
-    "COUPLING": 0.675,
     "MOVEMENT": 0.371,
+    "COUPLING": 0.675,
     "SPACE": 0.471
   },
-  "mood": "Entangled",
-  "name": "BARE FRAME",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.846,
-      "macro_coupling": 0.09,
-      "macro_movement": 0.557,
-      "macro_space": 0.395
-    },
-    "Overworld": {
-      "macro_character": 0.226,
-      "macro_coupling": 0.674,
-      "macro_movement": 0.676,
-      "macro_space": 0.397
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "spectral"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

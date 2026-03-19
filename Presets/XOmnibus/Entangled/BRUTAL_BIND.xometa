@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRUTAL BIND",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.258
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osprey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.285
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "OSPREY",
+    "amount": 0.285
   },
   "dna": {
-    "aggression": 0.93,
     "brightness": 0.626,
-    "density": 0.444,
+    "warmth": 0.116,
     "movement": 0.913,
+    "density": 0.444,
     "space": 0.048,
-    "warmth": 0.116
+    "aggression": 0.93
   },
-  "engines": [
-    "Overdub",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.637,
-    "COUPLING": 0.873,
     "MOVEMENT": 0.492,
+    "COUPLING": 0.873,
     "SPACE": 0.351
   },
-  "mood": "Entangled",
-  "name": "BRUTAL BIND",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.393,
-      "macro_movement": 0.53,
-      "macro_space": 0.258
-    },
-    "Overdub": {
-      "macro_character": 0.323,
-      "macro_coupling": 0.737,
-      "macro_movement": 0.663,
-      "macro_space": 0.562
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "fury",
     "aggressive",
     "savage",
     "chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

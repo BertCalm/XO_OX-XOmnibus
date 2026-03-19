@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.65,
-        "engineA": "Ole",
-        "engineB": "Ouroboros",
-        "type": "TIMBRE_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "OLE clave pattern timbres blend with strange attractor state — topological rhythm.",
-  "dna": {
-    "aggression": 0.7,
-    "brightness": 0.56,
-    "density": 0.62,
-    "movement": 0.78,
-    "space": 0.38,
-    "warmth": 0.65
-  },
-  "engines": [
-    "Ole",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.66,
-    "COUPLING": 0.65,
-    "MOVEMENT": 0.71,
-    "SPACE": 0.4
-  },
-  "mood": "Entangled",
-  "name": "Strange Clave",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.7,
-      "macro_space": 0.35
-    },
-    "Ouroboros": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.72,
-      "macro_space": 0.45
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Strange Clave",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "OLE clave pattern timbres blend with strange attractor state — topological rhythm.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "clave",
     "strange"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.56,
     "warmth": 0.65,
@@ -118,5 +64,4 @@
     "SPACE": 0.4
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

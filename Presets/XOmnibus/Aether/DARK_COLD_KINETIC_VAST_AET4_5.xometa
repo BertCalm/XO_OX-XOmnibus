@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_VAST_AET4_5",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.933
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Orbital",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7661
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "ORBITAL",
+    "amount": 0.7661
   },
   "dna": {
-    "aggression": 0.4876,
     "brightness": 0.0837,
-    "density": 0.4265,
+    "warmth": 0.0949,
     "movement": 0.9758,
+    "density": 0.4265,
     "space": 0.9472,
-    "warmth": 0.0949
+    "aggression": 0.4876
   },
-  "engines": [
-    "Osprey",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0893,
-    "COUPLING": 0.7661,
     "MOVEMENT": 0.9758,
+    "COUPLING": 0.7661,
     "SPACE": 0.9472
   },
-  "mood": "Aether",
-  "name": "DARK_COLD_KINETIC_VAST_AET4_5",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.4766,
-      "macro_coupling": 0.6835,
-      "macro_movement": 0.4153,
-      "macro_space": 0.933
-    },
-    "Osprey": {
-      "macro_character": 0.464,
-      "macro_coupling": 0.5463,
-      "macro_movement": 0.2556,
-      "macro_space": 0.2282
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "cold",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

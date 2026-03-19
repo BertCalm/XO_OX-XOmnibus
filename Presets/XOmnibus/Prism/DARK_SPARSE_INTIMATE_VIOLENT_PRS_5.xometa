@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Ole",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.771
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.886,
-    "brightness": 0.074,
-    "density": 0.033,
-    "movement": 0.553,
-    "space": 0.112,
-    "warmth": 0.357
-  },
+  "name": "DARK_SPARSE_INTIMATE_VIOLENT_PRS_5",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ottoni",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.48,
-    "COUPLING": 0.394,
-    "MOVEMENT": 0.553,
-    "SPACE": 0.112
-  },
-  "mood": "Prism",
-  "name": "Wave Fang",
   "parameters": {
-<<<<<<< HEAD
-    "Ole": {
-      "macro_character": 0.906,
-      "macro_coupling": 0.671,
-=======
     "Ottoni": {
       "macro_character": 0.48,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.553,
+      "macro_coupling": 0.394,
       "macro_space": 0.112
     },
-<<<<<<< HEAD
-    "Ottoni": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.394,
-=======
     "Ole": {
       "macro_character": 0.906,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.553,
+      "macro_coupling": 0.671,
       "macro_space": 0.112
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OLE",
+    "amount": 0.771
+  },
+  "dna": {
+    "brightness": 0.074,
+    "warmth": 0.357,
+    "movement": 0.553,
+    "density": 0.033,
+    "space": 0.112,
+    "aggression": 0.886
+  },
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.394,
+    "SPACE": 0.112
+  },
   "tags": [
     "prism",
     "dark",
     "sparse",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

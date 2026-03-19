@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_FROZEN_VAST_HARSH_SPARSE_ENT4_4",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.922
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Obscura",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.806
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORCA",
+    "target": "OBSCURA",
+    "amount": 0.806
   },
   "dna": {
-    "aggression": 0.886,
     "brightness": 0.023,
-    "density": 0.023,
+    "warmth": 0.458,
     "movement": 0.061,
+    "density": 0.023,
     "space": 0.947,
-    "warmth": 0.458
+    "aggression": 0.886
   },
-  "engines": [
-    "Orca",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.239,
-    "COUPLING": 0.806,
     "MOVEMENT": 0.063,
+    "COUPLING": 0.806,
     "SPACE": 0.931
   },
-  "mood": "Entangled",
-  "name": "Node Dome 2",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.256,
-      "macro_coupling": 0.01,
-      "macro_movement": 0.068,
-      "macro_space": 0.922
-    },
-    "Orca": {
-      "macro_character": 0.223,
-      "macro_coupling": 0.039,
-      "macro_movement": 0.058,
-      "macro_space": 0.94
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "sparse",
     "vast",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

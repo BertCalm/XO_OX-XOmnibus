@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DESERT VEIL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.55
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Onset",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.14
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OSPREY",
+    "target": "ONSET",
+    "amount": 0.14
   },
   "dna": {
-    "aggression": 0.849,
     "brightness": 0.999,
-    "density": 0.051,
+    "warmth": 0.836,
     "movement": 0.969,
+    "density": 0.051,
     "space": 0.926,
-    "warmth": 0.836
+    "aggression": 0.849
   },
-  "engines": [
-    "Osprey",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.166,
-    "COUPLING": 0.214,
     "MOVEMENT": 0.486,
+    "COUPLING": 0.214,
     "SPACE": 0.401
   },
-  "mood": "Entangled",
-  "name": "DESERT VEIL",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.923,
-      "macro_coupling": 0.861,
-      "macro_movement": 0.443,
-      "macro_space": 0.55
-    },
-    "Osprey": {
-      "macro_character": 0.449,
-      "macro_coupling": 0.279,
-      "macro_movement": 0.422,
-      "macro_space": 0.25
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.83,
-        "engineA": "Ouroboros",
-        "engineB": "Oblong",
-        "type": "FREQUENCY_SMEAR"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ouroboros fractal frequency smearing Bob's filter cutoff — warmth buried under mathematical weight.",
-  "dna": {
-    "aggression": 0.9,
-    "brightness": 0.57,
-    "density": 0.88,
-    "movement": 0.66,
-    "space": 0.09,
-    "warmth": 0.48
-  },
+  "schema_version": 1,
+  "name": "Fractal Density",
+  "mood": "Entangled",
   "engines": [
     "Ouroboros",
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ouroboros",
     "oblong",
     "fractal"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.87,
-    "COUPLING": 0.83,
     "MOVEMENT": 0.66,
+    "COUPLING": 0.83,
     "SPACE": 0.09
   },
-  "mood": "Entangled",
-  "name": "Fractal Density",
-  "parameters": {
-    "Ouroboros": {},
-    "Oblong": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.57,
-    "density": 0.88,
+    "warmth": 0.48,
     "movement": 0.66,
+    "density": 0.88,
     "space": 0.09,
-    "warmth": 0.48
+    "aggression": 0.9
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "oblong",
-    "fractal"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.57,
+    "warmth": 0.48,
+    "movement": 0.66,
+    "density": 0.88,
+    "space": 0.09,
+    "aggression": 0.9
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OBLONG",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.83
+      }
+    ]
+  }
 }

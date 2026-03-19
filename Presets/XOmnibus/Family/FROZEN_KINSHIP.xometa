@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ouroboros",
-        "type": "SPECTRAL_GATE",
-        "amount": 0.367
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.871,
-    "brightness": 0.876,
-    "density": 0.179,
-    "movement": 0.501,
-    "space": 0.926,
-    "warmth": 0.046
-  },
+  "name": "FROZEN KINSHIP",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Obscura",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.363,
-    "COUPLING": 0.807,
-    "MOVEMENT": 0.985,
-    "SPACE": 0.239
-  },
-  "mood": "Family",
-  "name": "FROZEN KINSHIP",
   "parameters": {
     "Obscura": {
       "macro_character": 0.199,
-      "macro_coupling": 0.162,
       "macro_movement": 0.374,
+      "macro_coupling": 0.162,
       "macro_space": 0.953
     },
     "Ouroboros": {
       "macro_character": 0.922,
-      "macro_coupling": 0.599,
       "macro_movement": 0.918,
+      "macro_coupling": 0.599,
       "macro_space": 0.489
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_GATE",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.367
+  },
+  "dna": {
+    "brightness": 0.876,
+    "warmth": 0.046,
+    "movement": 0.501,
+    "density": 0.179,
+    "space": 0.926,
+    "aggression": 0.871
+  },
+  "macros": {
+    "CHARACTER": 0.363,
+    "MOVEMENT": 0.985,
+    "COUPLING": 0.807,
+    "SPACE": 0.239
+  },
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

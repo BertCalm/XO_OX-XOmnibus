@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.06,
-    "brightness": 0.07,
-    "density": 0.14,
-    "movement": 0.45,
-    "space": 0.75,
-    "warmth": 0.16
-  },
+  "name": "Nightfall Raptor",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.29,
-    "COUPLING": 0.17,
-    "MOVEMENT": 0.45,
-    "SPACE": 0.75
-  },
-  "mood": "Aether",
-  "name": "Nightfall Raptor",
   "parameters": {
     "Osprey": {
       "osp_macro_character": 0.48,
-      "osp_macro_coupling": 0.4,
       "osp_macro_movement": 0.49,
+      "osp_macro_coupling": 0.4,
       "osp_macro_space": 0.75
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.16,
+    "movement": 0.45,
+    "density": 0.14,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.17,
+    "SPACE": 0.75
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "nightfall",
     "raptor"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

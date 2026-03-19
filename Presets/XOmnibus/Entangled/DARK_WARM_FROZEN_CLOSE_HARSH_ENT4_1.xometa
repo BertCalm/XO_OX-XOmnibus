@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Overworld",
-        "type": "PITCH_SYNC",
-        "amount": 0.933
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.959,
-    "brightness": 0.07,
-    "density": 0.678,
-    "movement": 0.077,
-    "space": 0.066,
-    "warmth": 0.95
-  },
+  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.505,
-    "COUPLING": 0.933,
-    "MOVEMENT": 0.081,
-    "SPACE": 0.068
-  },
-  "mood": "Entangled",
-  "name": "Amber Storm",
   "parameters": {
     "Origami": {
       "macro_character": 0.517,
-      "macro_coupling": 0.665,
       "macro_movement": 0.086,
+      "macro_coupling": 0.665,
       "macro_space": 0.077
     },
     "Overworld": {
       "macro_character": 0.493,
-      "macro_coupling": 0.662,
       "macro_movement": 0.076,
+      "macro_coupling": 0.662,
       "macro_space": 0.058
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "OVERWORLD",
+    "amount": 0.933
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.95,
+    "movement": 0.077,
+    "density": 0.678,
+    "space": 0.066,
+    "aggression": 0.959
+  },
+  "macros": {
+    "CHARACTER": 0.505,
+    "MOVEMENT": 0.081,
+    "COUPLING": 0.933,
+    "SPACE": 0.068
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "warm",
     "close",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

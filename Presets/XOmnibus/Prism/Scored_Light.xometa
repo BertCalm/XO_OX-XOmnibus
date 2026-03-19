@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Crease lines become frequency partials — luminous structure",
-  "dna": {
-    "aggression": 0.15,
+  "schema_version": 1,
+  "name": "Scored Light",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.88,
-    "density": 0.3,
+    "warmth": 0.2,
+    "aggression": 0.15,
     "movement": 0.6,
-    "space": 0.75,
-    "warmth": 0.2
+    "density": 0.3,
+    "space": 0.75
   },
   "engines": [
     "Origami"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "FOLD",
-    "CREASE",
-    "COUPLING",
-    "UNFOLD"
-  ],
-  "mood": "Prism",
-  "name": "Scored Light",
-  "parameters": {
-    "Origami": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.88,
-    "density": 0.3,
-    "movement": 0.6,
-    "space": 0.75,
-    "warmth": 0.2
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Crease lines become frequency partials — luminous structure",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "structure",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FOLD",
     "CREASE",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

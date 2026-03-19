@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Osprey",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.77
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.41,
-    "brightness": 0.49,
-    "density": 0.6,
-    "movement": 0.51,
-    "space": 0.62,
-    "warmth": 0.92
-  },
+  "name": "Warm Cosmos Braid",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Odyssey",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.83,
-    "COUPLING": 0.77,
-    "MOVEMENT": 0.47,
-    "SPACE": 0.67
-  },
-  "mood": "Entangled",
-  "name": "Warm Cosmos Braid",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.82,
-      "macro_coupling": 0.76,
       "macro_movement": 0.5,
+      "macro_coupling": 0.76,
       "macro_space": 0.71
     },
     "Osprey": {
       "macro_character": 0.84,
-      "macro_coupling": 0.77,
       "macro_movement": 0.44,
+      "macro_coupling": 0.77,
       "macro_space": 0.62
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RHYTHM_LOCK",
+    "source": "ODYSSEY",
+    "target": "OSPREY",
+    "amount": 0.77
+  },
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.92,
+    "movement": 0.51,
+    "density": 0.6,
+    "space": 0.62,
+    "aggression": 0.41
+  },
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.47,
+    "COUPLING": 0.77,
+    "SPACE": 0.67
+  },
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

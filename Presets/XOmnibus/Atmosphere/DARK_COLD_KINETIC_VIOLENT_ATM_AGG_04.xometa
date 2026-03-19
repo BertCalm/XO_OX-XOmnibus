@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD KINETIC VIOLENT ATM AGG 4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.646
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oracle",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.888
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.888
   },
   "dna": {
-    "aggression": 0.89,
     "brightness": 0.128,
-    "density": 0.564,
+    "warmth": 0.079,
     "movement": 0.885,
+    "density": 0.564,
     "space": 0.679,
-    "warmth": 0.079
+    "aggression": 0.89
   },
-  "engines": [
-    "Orbital",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.124,
-    "COUPLING": 0.873,
     "MOVEMENT": 0.86,
+    "COUPLING": 0.873,
     "SPACE": 0.661
   },
-  "mood": "Atmosphere",
-  "name": "DARK COLD KINETIC VIOLENT A...",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.125,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.863,
-      "macro_space": 0.646
-    },
-    "Orbital": {
-      "macro_character": 0.123,
-      "macro_coupling": 0.886,
-      "macro_movement": 0.857,
-      "macro_space": 0.675
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "dark",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

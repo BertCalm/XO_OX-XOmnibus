@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Overlap",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.8967
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4397,
-    "brightness": 0.2732,
-    "density": 0.8844,
-    "movement": 0.437,
-    "space": 0.4,
-    "warmth": 0.7993
-  },
+  "name": "LEADEN SURGE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9565,
-    "COUPLING": 0.756,
-    "MOVEMENT": 0.339,
-    "SPACE": 0.6921
-  },
-  "mood": "Entangled",
-  "name": "LEADEN SURGE",
   "parameters": {
     "Ombre": {
       "macro_character": 0.3982,
-      "macro_coupling": 0.7894,
       "macro_movement": 0.8154,
+      "macro_coupling": 0.7894,
       "macro_space": 0.0366
     },
     "Overlap": {
       "macro_character": 0.6469,
-      "macro_coupling": 0.9449,
       "macro_movement": 0.2861,
+      "macro_coupling": 0.9449,
       "macro_space": 0.0478
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OMBRE",
+    "target": "OVERLAP",
+    "amount": 0.8967
+  },
+  "dna": {
+    "brightness": 0.2732,
+    "warmth": 0.7993,
+    "movement": 0.437,
+    "density": 0.8844,
+    "space": 0.4,
+    "aggression": 0.4397
+  },
+  "macros": {
+    "CHARACTER": 0.9565,
+    "MOVEMENT": 0.339,
+    "COUPLING": 0.756,
+    "SPACE": 0.6921
+  },
   "tags": [
     "entangled",
     "dense",
     "packed",
     "layered",
     "industrial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

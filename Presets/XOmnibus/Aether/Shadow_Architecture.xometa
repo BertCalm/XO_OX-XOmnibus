@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Structural shadow — form defined only by absence",
-  "dna": {
-    "aggression": 0.22,
+  "schema_version": 1,
+  "name": "Shadow Architecture",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.13,
-    "density": 0.65,
+    "warmth": 0.7,
+    "aggression": 0.22,
     "movement": 0.18,
-    "space": 0.5,
-    "warmth": 0.7
+    "density": 0.65,
+    "space": 0.5
   },
   "engines": [
     "Obscura"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "SHADOW",
-    "BLUR",
-    "COUPLING",
-    "VEIL"
-  ],
-  "mood": "Aether",
-  "name": "Shadow Architecture",
-  "parameters": {
-    "Obscura": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.22,
-    "brightness": 0.13,
-    "density": 0.65,
-    "movement": 0.18,
-    "space": 0.5,
-    "warmth": 0.7
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Structural shadow — form defined only by absence",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -50,9 +24,6 @@
     "structure",
     "negative"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "SHADOW",
     "BLUR",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Ole",
-        "type": "CHAOS_INJECT",
-        "amount": 0.681
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.354,
-    "brightness": 0.031,
-    "density": 0.565,
-    "movement": 0.907,
-    "space": 0.965,
-    "warmth": 0.627
-  },
+  "name": "DARK VAST KINETIC ATM 03",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Ohm",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.329,
-    "COUPLING": 0.458,
-    "MOVEMENT": 0.907,
-    "SPACE": 0.965
-  },
-  "mood": "Atmosphere",
-  "name": "DARK VAST KINETIC ATM 03",
   "parameters": {
     "Ohm": {
       "macro_character": 0.329,
-      "macro_coupling": 0.458,
       "macro_movement": 0.907,
+      "macro_coupling": 0.458,
       "macro_space": 0.965
     },
     "Ole": {
       "macro_character": 0.345,
-      "macro_coupling": 0.485,
       "macro_movement": 0.839,
+      "macro_coupling": 0.485,
       "macro_space": 1.0
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "OLE",
+    "amount": 0.681
+  },
+  "dna": {
+    "brightness": 0.031,
+    "warmth": 0.627,
+    "movement": 0.907,
+    "density": 0.565,
+    "space": 0.965,
+    "aggression": 0.354
+  },
+  "macros": {
+    "CHARACTER": 0.329,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.458,
+    "SPACE": 0.965
+  },
   "tags": [
     "atmosphere",
     "dark",
@@ -58,10 +47,5 @@
     "kinetic",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

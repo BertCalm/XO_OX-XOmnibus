@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_2",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.532
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Origami",
-        "type": "CHAOS_INJECT",
-        "amount": 0.856
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "ORIGAMI",
+    "amount": 0.856
   },
   "dna": {
-    "aggression": 0.903,
     "brightness": 0.051,
-    "density": 0.889,
+    "warmth": 0.116,
     "movement": 0.604,
+    "density": 0.889,
     "space": 0.469,
-    "warmth": 0.116
+    "aggression": 0.903
   },
-  "engines": [
-    "Ouroboros",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.479,
-    "COUPLING": 0.411,
     "MOVEMENT": 0.808,
+    "COUPLING": 0.411,
     "SPACE": 0.578
   },
-  "mood": "Foundation",
-  "name": "Tone Wrath",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.465,
-      "macro_coupling": 0.387,
-      "macro_movement": 0.792,
-      "macro_space": 0.532
-    },
-    "Ouroboros": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.411,
-      "macro_movement": 0.808,
-      "macro_space": 0.578
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

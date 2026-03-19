@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_STILL_VAST_GENTLE_ATM_1",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.894
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Oceanic",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.822
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.822
   },
   "dna": {
-    "aggression": 0.057,
     "brightness": 0.107,
-    "density": 0.566,
+    "warmth": 0.529,
     "movement": 0.05,
+    "density": 0.566,
     "space": 0.912,
-    "warmth": 0.529
+    "aggression": 0.057
   },
-  "engines": [
-    "Oracle",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.612,
-    "COUPLING": 0.865,
     "MOVEMENT": 0.162,
+    "COUPLING": 0.865,
     "SPACE": 0.814
   },
-  "mood": "Atmosphere",
-  "name": "DARK_STILL_VAST_GENTLE_ATM_1",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.764,
-      "macro_coupling": 0.805,
-      "macro_movement": 0.224,
-      "macro_space": 0.894
-    },
-    "Oracle": {
-      "macro_character": 0.612,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.162,
-      "macro_space": 0.814
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "still",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

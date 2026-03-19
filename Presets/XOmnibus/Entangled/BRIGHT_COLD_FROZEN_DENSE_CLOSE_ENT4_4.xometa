@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_4",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.033
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Obbligato",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.751
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OHM",
+    "target": "OBBLIGATO",
+    "amount": 0.751
   },
   "dna": {
-    "aggression": 0.581,
     "brightness": 0.873,
-    "density": 0.902,
+    "warmth": 0.122,
     "movement": 0.085,
+    "density": 0.902,
     "space": 0.04,
-    "warmth": 0.122
+    "aggression": 0.581
   },
-  "engines": [
-    "Ohm",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.501,
-    "COUPLING": 0.751,
     "MOVEMENT": 0.082,
+    "COUPLING": 0.751,
     "SPACE": 0.043
   },
-  "mood": "Entangled",
-  "name": "Quartz Dense",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.526,
-      "macro_coupling": 0.904,
-      "macro_movement": 0.077,
-      "macro_space": 0.033
-    },
-    "Ohm": {
-      "macro_character": 0.476,
-      "macro_coupling": 0.876,
-      "macro_movement": 0.088,
-      "macro_space": 0.054
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "cold",
     "dense",
     "close"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

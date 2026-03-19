@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Opal",
-        "type": "PITCH_SYNC",
-        "amount": 0.469
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.787,
-    "brightness": 0.812,
-    "density": 0.877,
-    "movement": 0.091,
-    "space": 0.824,
-    "warmth": 0.999
-  },
+  "name": "REMOTE POOL",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Odyssey",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.545,
-    "COUPLING": 0.708,
-    "MOVEMENT": 0.091,
-    "SPACE": 0.918
-  },
-  "mood": "Entangled",
-  "name": "REMOTE POOL",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.932,
-      "macro_coupling": 0.015,
       "macro_movement": 0.089,
+      "macro_coupling": 0.015,
       "macro_space": 0.322
     },
     "Opal": {
       "macro_character": 0.453,
-      "macro_coupling": 0.978,
       "macro_movement": 0.093,
+      "macro_coupling": 0.978,
       "macro_space": 0.361
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ODYSSEY",
+    "target": "OPAL",
+    "amount": 0.469
+  },
+  "dna": {
+    "brightness": 0.812,
+    "warmth": 0.999,
+    "movement": 0.091,
+    "density": 0.877,
+    "space": 0.824,
+    "aggression": 0.787
+  },
+  "macros": {
+    "CHARACTER": 0.545,
+    "MOVEMENT": 0.091,
+    "COUPLING": 0.708,
+    "SPACE": 0.918
+  },
   "tags": [
     "entangled",
     "stillness",
     "remote"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

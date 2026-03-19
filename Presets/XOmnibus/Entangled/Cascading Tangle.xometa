@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Cascading Tangle",
   "version": "1.0",
@@ -43,64 +40,13 @@
       "olap_couplingBus": 0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECTION",
-        "amount": 0.851
-      }
-    ]
+    "type": "CHAOS_INJECTION",
+    "source": "OVERLAP",
+    "target": "ONSET",
+    "amount": 0.851
   },
   "couplingIntensity": "Deep",
-  "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter",
-  "engines": [
-    "Overlap",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.66,
-    "SPACE": 0.65
-  },
-  "mood": "Entangled",
-  "name": "Cascading Tangle",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.78,
-      "olap_damping": 0.583,
-      "olap_decay": 0.547,
-      "olap_diffusion": 0.689,
-      "olap_earlyMix": 0.492,
-      "olap_filterCutoff": 0.497,
-      "olap_filterReso": 0.265,
-      "olap_lateMix": 0.792,
-      "olap_modDepth": 0.351,
-      "olap_modRate": 0.203,
-      "olap_outputLevel": 0.727,
-      "olap_preDelay": 0.068,
-      "olap_size": 0.735
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.43,
-    "brightness": 0.59,
-    "density": 0.74,
-    "movement": 0.64,
-    "space": 0.65,
-    "warmth": 0.55
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -110,17 +56,5 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.497,
-    "warmth": 0.5,
-    "movement": 0.203,
-    "density": 0.5,
-    "space": 0.068,
-    "aggression": 0.3
-  }
-=======
   "description": "Onset rhythmic density modulates OVERLAP mod rate — drum patterns animate the FDN's internal flutter"
->>>>>>> origin/v1-launch-prep
 }

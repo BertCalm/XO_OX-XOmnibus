@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.352,
-      "destination": "OVERLAP",
-      "source": "ORPHICA",
-      "type": "VELOCITY_COUPLE"
-    }
-  ],
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Extreme DNA corners — family, bright, warm, vast.",
-  "dna": {
-    "aggression": 0.106,
-    "brightness": 0.95,
-    "density": 0.526,
-    "movement": 0.594,
-    "space": 0.921,
-    "warmth": 0.939
-  },
-  "engines": [
-    "Orphica",
-    "Overlap"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "BRIGHT WARM VAST GENTLE FAM 5",
-  "parameters": {
-    "Orphica": {
-      "level": 0.771,
-      "pan": -0.122
-    },
-    "Overlap": {
-      "level": 0.829,
-      "pan": 0.072
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "BRIGHT WARM VAST GENTLE FAM 5",
   "mood": "Family",
@@ -55,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme DNA corners — family, bright, warm, vast.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -64,10 +17,14 @@
     "gentle",
     "ultra-diverse"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "dna": {
     "brightness": 0.95,
@@ -96,5 +53,4 @@
     }
   ],
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

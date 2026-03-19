@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_DENSE_FAM_VOL_45",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.654
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Ole",
-        "type": "PHASE_COUPLE",
-        "amount": 0.483
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "ODYSSEY",
+    "target": "OLE",
+    "amount": 0.483
   },
   "dna": {
-    "aggression": 0.491,
     "brightness": 0.08,
-    "density": 0.926,
+    "warmth": 0.034,
     "movement": 0.058,
+    "density": 0.926,
     "space": 0.642,
-    "warmth": 0.034
+    "aggression": 0.491
   },
-  "engines": [
-    "Ole",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.066,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.055,
+    "COUPLING": 0.7,
     "SPACE": 0.655
   },
-  "mood": "Family",
-  "name": "Fragment Solid 2",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.077,
-      "macro_coupling": 0.707,
-      "macro_movement": 0.05,
-      "macro_space": 0.654
-    },
-    "Ole": {
-      "macro_character": 0.054,
-      "macro_coupling": 0.694,
-      "macro_movement": 0.06,
-      "macro_space": 0.656
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "still",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

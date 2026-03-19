@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 9.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "OddfeliX",
-        "type": "SPECTRAL_BLEND",
-        "amount": 0.93
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Violent Brass Base",
   "mood": "Foundation",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Otto_Oddf_Violent_Brass_Base.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.956,
-    "brightness": 0.078,
-    "density": 0.913,
-    "movement": 0.482,
-    "space": 0.056,
-    "warmth": 0.062
-  },
-  "engines": [
-    "Ottoni",
-    "OddfeliX"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Foundation",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.99,
-      "macro_space": 0.46
-    },
-    "Ottoni": {
-      "macro_character": 0.73,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.83,
-      "macro_space": 0.27
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "foundation"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 9.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.056,
     "aggression": 0.956
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Otto_Oddf_Violent_Brass_Base.xometa
 }

@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 10.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Obscura",
-        "type": "SPECTRAL_BLEND",
-        "amount": 0.75
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Violent Shade Drift",
   "mood": "Atmosphere",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Ombr_Obsc_Violent_Shade_Drift.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.919,
-    "brightness": 0.086,
-    "density": 0.932,
-    "movement": 0.947,
-    "space": 0.43,
-    "warmth": 0.072
-  },
-  "engines": [
-    "Ombre",
-    "Obscura"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.66,
-      "macro_space": 0.42
-    },
-    "Ombre": {
-      "macro_character": 0.84,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.77,
-      "macro_space": 0.4
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "atmosphere"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 10.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.43,
     "aggression": 0.919
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Ombr_Obsc_Violent_Shade_Drift.xometa
 }

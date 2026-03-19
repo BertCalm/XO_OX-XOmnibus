@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Cryogenic thickness — cold partials locked together tightly.",
-  "dna": {
-    "aggression": 0.43,
+  "schema_version": 1,
+  "name": "Abyssal Pull Dark",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.363,
-    "density": 0.853,
+    "warmth": 0.053,
     "movement": 0.299,
+    "density": 0.853,
     "space": 0.504,
-    "warmth": 0.053
+    "aggression": 0.43
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "dense",
     "dark",
     "pressure"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CYCLE",
@@ -35,33 +29,17 @@
     "COUPLING",
     "VOID"
   ],
-  "mood": "Aether",
-  "name": "Abyssal Pull Dark",
-  "parameters": {
-    "Owlfish": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.43,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.363,
-    "density": 0.853,
+    "warmth": 0.053,
     "movement": 0.299,
+    "density": 0.853,
     "space": 0.504,
-    "warmth": 0.053
+    "aggression": 0.43
   },
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

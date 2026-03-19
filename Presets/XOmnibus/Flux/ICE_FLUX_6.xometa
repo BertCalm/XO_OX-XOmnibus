@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ICE FLUX 6",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.8307
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Obscura",
-        "type": "PITCH_SYNC",
-        "amount": 0.352
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OBSCURA",
+    "amount": 0.352
   },
   "dna": {
-    "aggression": 0.7338,
     "brightness": 0.6356,
-    "density": 0.8878,
+    "warmth": 0.1161,
     "movement": 0.8287,
+    "density": 0.8878,
     "space": 0.4355,
-    "warmth": 0.1161
+    "aggression": 0.7338
   },
-  "engines": [
-    "Optic",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8816,
-    "COUPLING": 0.4647,
     "MOVEMENT": 0.2439,
+    "COUPLING": 0.4647,
     "SPACE": 0.6103
   },
-  "mood": "Flux",
-  "name": "ICE FLUX 6",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.731,
-      "macro_coupling": 0.8517,
-      "macro_movement": 0.2684,
-      "macro_space": 0.8307
-    },
-    "Optic": {
-      "macro_character": 0.8082,
-      "macro_coupling": 0.4835,
-      "macro_movement": 0.5382,
-      "macro_space": 0.4356
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERWORLD — bright extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.32,
-    "brightness": 0.9,
-    "density": 0.31,
-    "movement": 0.2,
-    "space": 0.22,
-    "warmth": 0.28
-  },
+  "schema_version": 1,
+  "name": "SNES Afternoon",
+  "mood": "Atmosphere",
   "engines": [
     "Overworld"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "SNES Afternoon",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.9,
+    "warmth": 0.28,
+    "movement": 0.2,
+    "density": 0.31,
+    "space": 0.22,
+    "aggression": 0.32
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.28,
+    "movement": 0.2,
+    "density": 0.31,
+    "space": 0.22,
+    "aggression": 0.32
+  },
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-=======
       "ow_era": 0.71,
       "ow_chipWave": 1,
       "ow_filterCutoff": 0.95,
       "ow_filterReso": 0.52,
->>>>>>> origin/v1-launch-prep
       "ow_ampAttack": 230.8,
       "ow_ampDecay": 67.7,
-      "ow_ampRelease": 765.3,
       "ow_ampSustain": 0.44,
-      "ow_character": 0.64,
-      "ow_chipWave": 1,
-      "ow_coupling": 0.17,
-      "ow_delayMix": 0.09,
-      "ow_era": 0.71,
-      "ow_filterCutoff": 0.95,
-      "ow_filterReso": 0.52,
-      "ow_lfoDepth": 0.63,
+      "ow_ampRelease": 765.3,
       "ow_lfoRate": 0.27,
-      "ow_movement": 0.59,
+      "ow_lfoDepth": 0.63,
       "ow_reverbMix": 0.61,
-      "ow_space": 0.58
+      "ow_delayMix": 0.09,
+      "ow_character": 0.64,
+      "ow_movement": 0.59,
+      "ow_space": 0.58,
+      "ow_coupling": 0.17
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.32,
-    "brightness": 0.9,
-    "density": 0.31,
-    "movement": 0.2,
-    "space": 0.22,
-    "warmth": 0.28
-  },
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

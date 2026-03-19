@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_STILL_GENTLE_FND_3",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.152
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obsidian",
-        "type": "CHAOS_INJECT",
-        "amount": 0.809
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "OBSIDIAN",
+    "amount": 0.809
   },
   "dna": {
-    "aggression": 0.058,
     "brightness": 0.895,
-    "density": 0.67,
+    "warmth": 0.103,
     "movement": 0.083,
+    "density": 0.67,
     "space": 0.326,
-    "warmth": 0.103
+    "aggression": 0.058
   },
-  "engines": [
-    "Overdub",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.639,
-    "COUPLING": 0.575,
     "MOVEMENT": 0.67,
+    "COUPLING": 0.575,
     "SPACE": 0.34
   },
-  "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_GENTLE_FND_3",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.635,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.684,
-      "macro_space": 0.152
-    },
-    "Overdub": {
-      "macro_character": 0.388,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.781,
-      "macro_space": 0.518
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -82,10 +47,5 @@
     "cold",
     "still",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

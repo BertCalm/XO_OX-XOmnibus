@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_VAST_VIOLENT_PRS_DRK_3",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.9375
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Oblique",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.8383
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OLE",
+    "target": "OBLIQUE",
+    "amount": 0.8383
   },
   "dna": {
-    "aggression": 0.9002,
     "brightness": 0.0812,
-    "density": 0.5384,
+    "warmth": 0.0856,
     "movement": 0.4539,
+    "density": 0.5384,
     "space": 0.9262,
-    "warmth": 0.0856
+    "aggression": 0.9002
   },
-  "engines": [
-    "Ole",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.4929,
-    "COUPLING": 0.5384,
     "MOVEMENT": 0.4539,
+    "COUPLING": 0.5384,
     "SPACE": 0.9262
   },
-  "mood": "Prism",
-  "name": "Fragment Orbit",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.5074,
-      "macro_coupling": 0.5197,
-      "macro_movement": 0.4569,
-      "macro_space": 0.9375
-    },
-    "Ole": {
-      "macro_character": 0.4929,
-      "macro_coupling": 0.5384,
-      "macro_movement": 0.4539,
-      "macro_space": 0.9262
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "cold",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

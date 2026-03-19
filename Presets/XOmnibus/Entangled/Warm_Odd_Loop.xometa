@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Warm Odd Loop",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.33
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "OddOscar",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.9
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERDUB",
+    "target": "ODDOSCAR",
+    "amount": 0.9
   },
   "dna": {
-    "aggression": 0.34,
     "brightness": 0.21,
-    "density": 0.86,
+    "warmth": 0.97,
     "movement": 0.48,
+    "density": 0.86,
     "space": 0.35,
-    "warmth": 0.97
+    "aggression": 0.34
   },
-  "engines": [
-    "Overdub",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.94,
-    "COUPLING": 0.91,
     "MOVEMENT": 0.39,
+    "COUPLING": 0.91,
     "SPACE": 0.39
   },
-  "mood": "Entangled",
-  "name": "Warm Odd Loop",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.4,
-      "macro_space": 0.33
-    },
-    "Overdub": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.37,
-      "macro_space": 0.45
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

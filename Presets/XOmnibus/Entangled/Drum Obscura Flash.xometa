@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Obscura",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Onset's transient flash illuminating Obscura's shadowed chambers in cold white.",
+  "name": "Drum Obscura Flash",
+  "version": "1.0",
   "engines": [
     "Onset",
     "Obscura"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
   "macros": {
     "CHARACTER": 0.75,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.7,
+    "COUPLING": 0.7,
     "SPACE": 0.5
   },
-  "mood": "Entangled",
-  "name": "Drum Obscura Flash",
-  "parameters": {
-    "Onset": {},
-    "Obscura": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.55,
     "brightness": 0.93,
-    "density": 0.65,
+    "warmth": 0.07,
     "movement": 0.72,
+    "density": 0.65,
     "space": 0.52,
-    "warmth": 0.07
+    "aggression": 0.55
   },
-  "strategy": "Bright Dark",
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ONSET",
+    "target": "OBSCURA",
+    "amount": 0.65
+  },
   "tags": [
     "entangled",
     "bright",
@@ -53,13 +35,5 @@
     "percussive",
     "obscure"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Onset's transient flash illuminating Obscura's shadowed chambers in cold white."
 }

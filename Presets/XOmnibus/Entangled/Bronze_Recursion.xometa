@@ -1,44 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Ouroboros",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.76
-      }
-    ]
-  },
-  "description": "Resonance shared between OTTONI's bell and OUROBOROS's loop — self-devouring harmonics.",
-  "dna": {
-    "aggression": 0.28,
-    "brightness": 0.62,
-    "density": 0.68,
-    "movement": 0.62,
-    "space": 0.35,
-    "warmth": 0.86
-  },
-  "engines": [
-    "Ottoni",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.74,
-    "COUPLING": 0.76,
-    "MOVEMENT": 0.6,
-    "SPACE": 0.38
-  },
-  "mood": "Entangled",
-  "name": "Bronze Recursion",
-=======
   "schema_version": 1,
   "name": "Bronze Recursion",
   "mood": "Entangled",
@@ -49,32 +9,46 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Resonance shared between OTTONI's bell and OUROBOROS's loop — self-devouring harmonics.",
->>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ottoni": {
       "macro_character": 0.74,
-      "macro_coupling": 0.76,
       "macro_movement": 0.6,
+      "macro_coupling": 0.76,
       "macro_space": 0.38
     },
     "Ouroboros": {
       "macro_character": 0.68,
-      "macro_coupling": 0.7,
       "macro_movement": 0.65,
+      "macro_coupling": 0.7,
       "macro_space": 0.42
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OTTONI",
+    "target": "OUROBOROS",
+    "amount": 0.76,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.86,
+    "movement": 0.62,
+    "density": 0.68,
+    "space": 0.35,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHARACTER": 0.74,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.76,
+    "SPACE": 0.38
+  },
   "tags": [
     "entangled",
     "ottoni",
     "ouroboros",
     "resonance",
     "recursion"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

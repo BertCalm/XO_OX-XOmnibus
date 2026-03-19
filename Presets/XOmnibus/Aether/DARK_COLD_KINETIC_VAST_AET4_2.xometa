@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Obscura",
-        "type": "FILTER_MOD",
-        "amount": 0.6711
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.499,
-    "brightness": 0.0443,
-    "density": 0.4158,
-    "movement": 0.8766,
-    "space": 0.8945,
-    "warmth": 0.1283
-  },
+  "name": "DARK_COLD_KINETIC_VAST_AET4_2",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oblique",
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.0863,
-    "COUPLING": 0.6711,
-    "MOVEMENT": 0.8766,
-    "SPACE": 0.8945
-  },
-  "mood": "Aether",
-  "name": "DARK_COLD_KINETIC_VAST_AET4_2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.7278,
-      "macro_coupling": 0.825,
       "macro_movement": 0.5752,
+      "macro_coupling": 0.825,
       "macro_space": 0.8047
     },
     "Obscura": {
       "macro_character": 0.2541,
-      "macro_coupling": 0.2317,
       "macro_movement": 0.8463,
+      "macro_coupling": 0.2317,
       "macro_space": 0.2141
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OBSCURA",
+    "amount": 0.6711
+  },
+  "dna": {
+    "brightness": 0.0443,
+    "warmth": 0.1283,
+    "movement": 0.8766,
+    "density": 0.4158,
+    "space": 0.8945,
+    "aggression": 0.499
+  },
+  "macros": {
+    "CHARACTER": 0.0863,
+    "MOVEMENT": 0.8766,
+    "COUPLING": 0.6711,
+    "SPACE": 0.8945
+  },
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "cold",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

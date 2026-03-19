@@ -1,49 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.837,
-        "engineA": "OddfeliX",
-        "engineB": "Onset",
-        "type": "TIMBRE_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Extreme",
-  "description": "OddFelix × Onset — Timbre Blend coupling at extreme DNA corner.",
-  "dna": {
-    "aggression": 0.517,
-    "brightness": 0.113,
-    "density": 0.891,
-    "movement": 0.591,
-    "space": 0.489,
-    "warmth": 0.89
-  },
+  "schema_version": 1,
+  "name": "DARK HOT DENSE 3",
+  "mood": "Entangled",
   "engines": [
     "OddfeliX",
     "Onset"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "EDGE",
-    "BODY",
-    "FLUX",
-    "FIELD"
-  ],
-  "mood": "Entangled",
-  "name": "DARK HOT DENSE 3",
-  "parameters": {
-    "OddfeliX": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OddFelix × Onset — Timbre Blend coupling at extreme DNA corner.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "oddfelix",
@@ -52,10 +17,14 @@
     "extreme-dna",
     "diversity-push"
   ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "dna": {
     "brightness": 0.113,
     "warmth": 0.89,
@@ -76,5 +45,4 @@
     ]
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

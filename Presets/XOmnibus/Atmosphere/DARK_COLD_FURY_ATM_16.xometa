@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD FURY ATM 16",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.552
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Oceanic",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.959
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.959
   },
   "dna": {
-    "aggression": 0.966,
     "brightness": 0.071,
-    "density": 0.695,
+    "warmth": 0.102,
     "movement": 0.567,
+    "density": 0.695,
     "space": 0.538,
-    "warmth": 0.102
+    "aggression": 0.966
   },
-  "engines": [
-    "Outwit",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.086,
-    "COUPLING": 0.846,
     "MOVEMENT": 0.567,
+    "COUPLING": 0.846,
     "SPACE": 0.538
   },
-  "mood": "Atmosphere",
-  "name": "DARK COLD FURY ATM 16",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.152,
-      "macro_coupling": 0.805,
-      "macro_movement": 0.568,
-      "macro_space": 0.552
-    },
-    "Outwit": {
-      "macro_character": 0.086,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.567,
-      "macro_space": 0.538
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -82,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

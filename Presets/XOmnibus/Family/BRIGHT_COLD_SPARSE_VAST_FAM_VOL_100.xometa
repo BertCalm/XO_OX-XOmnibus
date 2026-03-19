@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ole",
-        "type": "FILTER_LINK",
-        "amount": 0.451
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.646,
-    "brightness": 0.901,
-    "density": 0.023,
-    "movement": 0.305,
-    "space": 0.978,
-    "warmth": 0.1
-  },
+  "name": "BRIGHT_COLD_SPARSE_VAST_FAM_VOL_100",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Ole",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.506,
-    "COUPLING": 0.334,
-    "MOVEMENT": 0.302,
-    "SPACE": 0.974
-  },
-  "mood": "Family",
-  "name": "Prism Orbit",
   "parameters": {
     "Ole": {
       "macro_character": 0.489,
-      "macro_coupling": 0.349,
       "macro_movement": 0.32,
+      "macro_coupling": 0.349,
       "macro_space": 0.959
     },
     "Opal": {
       "macro_character": 0.522,
-      "macro_coupling": 0.318,
       "macro_movement": 0.285,
+      "macro_coupling": 0.318,
       "macro_space": 0.99
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_LINK",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.451
+  },
+  "dna": {
+    "brightness": 0.901,
+    "warmth": 0.1,
+    "movement": 0.305,
+    "density": 0.023,
+    "space": 0.978,
+    "aggression": 0.646
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.302,
+    "COUPLING": 0.334,
+    "SPACE": 0.974
+  },
   "tags": [
     "family",
     "bright",
     "cold",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

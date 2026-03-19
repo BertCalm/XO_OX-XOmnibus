@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Orbital",
-        "type": "PITCH_SYNC",
-        "amount": 0.747
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.111,
-    "brightness": 0.259,
-    "density": 0.487,
-    "movement": 0.408,
-    "space": 0.29,
-    "warmth": 0.105
-  },
+  "name": "STERILE SYNC",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.833,
-    "COUPLING": 0.776,
-    "MOVEMENT": 0.903,
-    "SPACE": 0.23
-  },
-  "mood": "Entangled",
-  "name": "STERILE SYNC",
   "parameters": {
     "Ombre": {
       "macro_character": 0.022,
-      "macro_coupling": 0.396,
       "macro_movement": 0.83,
+      "macro_coupling": 0.396,
       "macro_space": 0.008
     },
     "Orbital": {
       "macro_character": 0.865,
-      "macro_coupling": 0.974,
       "macro_movement": 0.778,
+      "macro_coupling": 0.974,
       "macro_space": 0.911
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OMBRE",
+    "target": "ORBITAL",
+    "amount": 0.747
+  },
+  "dna": {
+    "brightness": 0.259,
+    "warmth": 0.105,
+    "movement": 0.408,
+    "density": 0.487,
+    "space": 0.29,
+    "aggression": 0.111
+  },
+  "macros": {
+    "CHARACTER": 0.833,
+    "MOVEMENT": 0.903,
+    "COUPLING": 0.776,
+    "SPACE": 0.23
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

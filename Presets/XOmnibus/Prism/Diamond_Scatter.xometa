@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Prism scattering into pure high brightness",
-  "dna": {
-    "aggression": 0.2247,
+  "schema_version": 1,
+  "name": "Diamond Scatter",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.9494,
-    "density": 0.3427,
+    "warmth": 0.206,
     "movement": 0.2725,
+    "density": 0.3427,
     "space": 0.8085,
-    "warmth": 0.206
+    "aggression": 0.2247
+  },
+  "dna": {
+    "brightness": 0.9494,
+    "warmth": 0.206,
+    "movement": 0.2725,
+    "density": 0.3427,
+    "space": 0.8085,
+    "aggression": 0.2247
   },
   "engines": [
     "Optic"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "ultra",
     "spectral",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "REFRACT",
@@ -37,47 +39,23 @@
   ],
   "macros": {
     "REFRACT": 0.8587,
+    "SPECTRUM": 0.4941,
     "SCATTER": 0.8334,
-    "SPACE": 0.6089,
-    "SPECTRUM": 0.4941
+    "SPACE": 0.6089
   },
-  "mood": "Prism",
-  "name": "Diamond Scatter",
+  "couplingIntensity": "None",
   "parameters": {
     "Optic": {
-<<<<<<< HEAD
-      "optic_couplingBus": 0,
-      "optic_couplingLevel": 0.5,
-=======
->>>>>>> origin/v1-launch-prep
       "optic_macro_refract": 0.8587,
+      "optic_macro_spectrum": 0.4941,
       "optic_macro_scatter": 0.8334,
       "optic_macro_space": 0.6089,
-      "optic_macro_spectrum": 0.4941,
-      "optic_outputLevel": 0.85
+      "optic_outputLevel": 0.85,
+      "optic_couplingLevel": 0.5,
+      "optic_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2247,
-    "brightness": 0.9494,
-    "density": 0.3427,
-    "movement": 0.2725,
-    "space": 0.8085,
-    "warmth": 0.206
-  },
-  "tags": [
-    "prism",
-    "bright",
-    "ultra",
-    "spectral",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

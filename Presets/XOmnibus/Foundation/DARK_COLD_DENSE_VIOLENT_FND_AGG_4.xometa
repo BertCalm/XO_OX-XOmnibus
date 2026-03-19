@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.932
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obese",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.766
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "OBESE",
+    "amount": 0.766
   },
   "dna": {
-    "aggression": 0.934,
     "brightness": 0.094,
-    "density": 0.879,
+    "warmth": 0.097,
     "movement": 0.573,
+    "density": 0.879,
     "space": 0.554,
-    "warmth": 0.097
+    "aggression": 0.934
   },
-  "engines": [
-    "Overdub",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.497,
-    "COUPLING": 0.512,
     "MOVEMENT": 0.627,
+    "COUPLING": 0.512,
     "SPACE": 0.905
   },
-  "mood": "Foundation",
-  "name": "Wave Rage",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.599,
-      "macro_space": 0.932
-    },
-    "Overdub": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.512,
-      "macro_movement": 0.627,
-      "macro_space": 0.905
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

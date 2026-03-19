@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Glitch-shredded SNES palette, aggressive treble presence",
-  "dna": {
-    "aggression": 0.2,
+  "schema_version": 1,
+  "name": "Neon Overpass",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.88,
-    "density": 0.45,
+    "warmth": 0.18,
+    "aggression": 0.2,
     "movement": 0.6,
-    "space": 0.65,
-    "warmth": 0.18
+    "density": 0.45,
+    "space": 0.65
   },
   "engines": [
     "Overworld"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Prism",
-  "name": "Neon Overpass",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2,
-    "brightness": 0.88,
-    "density": 0.45,
-    "movement": 0.6,
-    "space": 0.65,
-    "warmth": 0.18
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glitch-shredded SNES palette, aggressive treble presence",
   "tags": [
     "prism",
     "bright",
@@ -44,9 +24,6 @@
     "glitch",
     "urban"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ERA",
     "GLITCH",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

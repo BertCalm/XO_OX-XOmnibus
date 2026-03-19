@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Ouroboros",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.75
-      }
-    ]
-  },
-  "description": "A logical proof whose conclusion is violence, held in perfect grammatical stillness.",
+  "name": "Serpent Syllogism",
+  "version": "1.0",
   "engines": [
     "Organon",
     "Ouroboros"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Still Aggressive",
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.82,
     "MOVEMENT": 0.06,
+    "COUPLING": 0.82,
     "SPACE": 0.52
   },
-  "mood": "Entangled",
-  "name": "Serpent Syllogism",
-  "parameters": {
-    "Organon": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.93,
     "brightness": 0.38,
-    "density": 0.75,
+    "warmth": 0.4,
     "movement": 0.06,
+    "density": 0.75,
     "space": 0.5,
-    "warmth": 0.4
+    "aggression": 0.93
   },
-  "strategy": "Still Aggressive",
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "ORGANON",
+    "target": "OUROBOROS",
+    "amount": 0.75
+  },
   "tags": [
     "entangled",
     "aggressive",
@@ -53,13 +35,5 @@
     "syllogism",
     "cyclic"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "A logical proof whose conclusion is violence, held in perfect grammatical stillness."
 }

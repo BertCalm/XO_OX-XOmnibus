@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Phosphor coating on a CRT screen. Bright, buzzing, slightly toxic.",
+  "name": "Phosphor Bloom",
+  "version": "1.0",
   "engines": [
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.571,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.538,
+    "COUPLING": 0.0,
     "SPACE": 0.663
   },
-  "mood": "Atmosphere",
-  "name": "Phosphor Bloom",
-  "parameters": {
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.076,
     "brightness": 0.89,
-    "density": 0.513,
+    "warmth": 0.251,
     "movement": 0.538,
+    "density": 0.513,
     "space": 0.663,
-    "warmth": 0.251
+    "aggression": 0.076
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Phosphor coating on a CRT screen. Bright, buzzing, slightly toxic."
 }

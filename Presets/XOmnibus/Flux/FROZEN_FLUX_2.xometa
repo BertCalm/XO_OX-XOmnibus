@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FROZEN FLUX 2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.4856
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Oblique",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.4282
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OMBRE",
+    "target": "OBLIQUE",
+    "amount": 0.4282
   },
   "dna": {
-    "aggression": 0.927,
     "brightness": 0.4219,
-    "density": 0.2498,
+    "warmth": 0.0649,
     "movement": 0.2785,
+    "density": 0.2498,
     "space": 0.9233,
-    "warmth": 0.0649
+    "aggression": 0.927
   },
-  "engines": [
-    "Ombre",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.401,
-    "COUPLING": 0.379,
     "MOVEMENT": 0.0586,
+    "COUPLING": 0.379,
     "SPACE": 0.9853
   },
-  "mood": "Flux",
-  "name": "FROZEN FLUX 2",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.9264,
-      "macro_coupling": 0.1663,
-      "macro_movement": 0.8487,
-      "macro_space": 0.4856
-    },
-    "Ombre": {
-      "macro_character": 0.0506,
-      "macro_coupling": 0.836,
-      "macro_movement": 0.9993,
-      "macro_space": 0.969
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

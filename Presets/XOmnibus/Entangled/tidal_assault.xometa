@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Outwit",
-        "engineB": "Oceanic",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Tidal Assault",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OCEANIC's deep-current tidal character (phosphorescent abyssal pressure). Coupling: Resonance Share.",
-  "dna": {
-    "aggression": 0.64,
-    "brightness": 0.23,
-    "density": 0.0,
-    "movement": 0.68,
-    "space": 0.31,
-    "warmth": 0.28
-  },
-  "engines": [
-    "Outwit",
-    "Oceanic"
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "oceanic",
+    "chaotic",
+    "generative"
   ],
   "macroLabels": [
     "ARMS",
@@ -44,30 +25,28 @@
   ],
   "macros": {
     "CHARACTER": 0.48,
-    "COUPLING": 0.64,
     "MOVEMENT": 0.63,
+    "COUPLING": 0.64,
     "SPACE": 0.54
   },
-  "mood": "Entangled",
-  "name": "Tidal Assault",
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.23,
+    "warmth": 0.28,
+    "movement": 0.68,
+    "density": 0.0,
+    "space": 0.31,
+    "aggression": 0.64
+  },
+  "dna": {
+    "brightness": 0.23,
+    "warmth": 0.28,
+    "movement": 0.68,
+    "density": 0.0,
+    "space": 0.31,
+    "aggression": 0.64
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Oceanic": {
-      "ocean_ampAttack": 0.14,
-      "ocean_ampRelease": 0.64,
-      "ocean_ampSustain": 0.81,
-      "ocean_character": 0.29,
-      "ocean_coupling": 0.89,
-      "ocean_couplingLevel": 0.51,
-      "ocean_filterCutoff": 0.35,
-      "ocean_filterReso": 0.32,
-      "ocean_movement": 0.68,
-      "ocean_outputLevel": 0.81,
-      "ocean_reverbMix": 0.59,
-      "ocean_space": 0.54
-    },
-    "Outwit": {
-=======
     "Outwit": {
       "owit_rule": 30,
       "owit_arms": 8,
@@ -78,30 +57,17 @@
       "owit_pitchSpread": 0.49,
       "owit_filterCutoff": 0.81,
       "owit_filterReso": 0.16,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.06,
       "owit_ampRelease": 0.27,
       "owit_armStagger": 0.27,
-      "owit_arms": 8,
       "owit_borderMode": 2,
-      "owit_cellSize": 0.13,
+      "owit_inkCloudMix": 0.29,
       "owit_chroma1": 0.37,
       "owit_chroma2": 0.81,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.78,
-      "owit_density": 0.36,
-      "owit_evolveRate": 0.74,
-      "owit_filterCutoff": 0.81,
-      "owit_filterReso": 0.16,
-      "owit_inkCloudMix": 0.29,
-      "owit_mutateProb": 0.07,
-      "owit_outputLevel": 0.68,
-<<<<<<< HEAD
-      "owit_outputPan": -0.2,
-      "owit_pitchSpread": 0.49,
       "owit_polyDepth": 0.51,
-      "owit_rule": 30
-=======
+      "owit_couplingLevel": 0.78,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.68,
       "owit_outputPan": -0.2
     },
     "Oceanic": {
@@ -117,25 +83,20 @@
       "ocean_reverbMix": 0.59,
       "ocean_couplingLevel": 0.51,
       "ocean_outputLevel": 0.81
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.64,
-    "brightness": 0.23,
-    "density": 0.0,
-    "movement": 0.68,
-    "space": 0.31,
-    "warmth": 0.28
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "oceanic",
-    "chaotic",
-    "generative"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.7,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OCEANIC",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7
+      }
+    ]
+  }
 }

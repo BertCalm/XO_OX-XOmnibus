@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Ouroboros",
-        "type": "PITCH_SYNC",
-        "amount": 0.975
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.383,
-    "brightness": 0.87,
-    "density": 0.239,
-    "movement": 0.933,
-    "space": 0.934,
-    "warmth": 0.981
-  },
+  "name": "OPEN MESA FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Obbligato",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.126,
-    "COUPLING": 0.965,
-    "MOVEMENT": 0.933,
-    "SPACE": 0.934
-  },
-  "mood": "Foundation",
-  "name": "OPEN MESA FOUNDATION",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.318,
-      "macro_coupling": 0.913,
       "macro_movement": 0.93,
+      "macro_coupling": 0.913,
       "macro_space": 0.927
     },
     "Ouroboros": {
       "macro_character": 0.988,
-      "macro_coupling": 0.652,
       "macro_movement": 0.962,
+      "macro_coupling": 0.652,
       "macro_space": 0.913
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBBLIGATO",
+    "target": "OUROBOROS",
+    "amount": 0.975
+  },
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.981,
+    "movement": 0.933,
+    "density": 0.239,
+    "space": 0.934,
+    "aggression": 0.383
+  },
+  "macros": {
+    "CHARACTER": 0.126,
+    "MOVEMENT": 0.933,
+    "COUPLING": 0.965,
+    "SPACE": 0.934
+  },
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

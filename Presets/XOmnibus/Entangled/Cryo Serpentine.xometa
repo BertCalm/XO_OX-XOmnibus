@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Optic",
-        "type": "SPECTRAL_FOLD",
-        "amount": 0.75
-      }
-    ]
-  },
-  "description": "Frozen snake motion fracturing into prismatic cold at maximum cycle speed.",
+  "name": "Cryo Serpentine",
+  "version": "1.0",
   "engines": [
     "Ouroboros",
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
   "macros": {
     "CHARACTER": 0.75,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.92,
+    "COUPLING": 0.8,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Cryo Serpentine",
-  "parameters": {
-    "Ouroboros": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.55,
     "brightness": 0.8,
-    "density": 0.45,
+    "warmth": 0.09,
     "movement": 0.92,
+    "density": 0.45,
     "space": 0.58,
-    "warmth": 0.09
+    "aggression": 0.55
   },
-  "strategy": "Fast Cold",
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_FOLD",
+    "source": "OUROBOROS",
+    "target": "OPTIC",
+    "amount": 0.75
+  },
   "tags": [
     "entangled",
     "cold",
@@ -53,13 +35,5 @@
     "serpentine",
     "prism"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Frozen snake motion fracturing into prismatic cold at maximum cycle speed."
 }

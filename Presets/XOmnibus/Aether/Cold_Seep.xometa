@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Methane seep at trench floor — cold, dense, dark",
-  "dna": {
-    "aggression": 0.22,
+  "schema_version": 1,
+  "name": "Cold Seep",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.09,
-    "density": 0.88,
+    "warmth": 0.86,
+    "aggression": 0.22,
     "movement": 0.12,
-    "space": 0.2,
-    "warmth": 0.86
+    "density": 0.88,
+    "space": 0.2
   },
   "engines": [
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CURRENT",
-    "PRESSURE",
-    "COUPLING",
-    "ABYSS"
-  ],
-  "mood": "Aether",
-  "name": "Cold Seep",
-  "parameters": {
-    "Oceanic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.22,
-    "brightness": 0.09,
-    "density": 0.88,
-    "movement": 0.12,
-    "space": 0.2,
-    "warmth": 0.86
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Methane seep at trench floor — cold, dense, dark",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -50,9 +24,6 @@
     "methane",
     "abyssal"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CURRENT",
     "PRESSURE",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

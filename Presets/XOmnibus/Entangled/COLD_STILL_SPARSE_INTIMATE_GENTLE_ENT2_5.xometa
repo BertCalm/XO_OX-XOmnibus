@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.032
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obbligato",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.103
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.103
   },
   "dna": {
-    "aggression": 0.105,
     "brightness": 0.305,
-    "density": 0.102,
+    "warmth": 0.02,
     "movement": 0.109,
+    "density": 0.102,
     "space": 0.051,
-    "warmth": 0.02
+    "aggression": 0.105
   },
-  "engines": [
-    "Overdub",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.163,
-    "COUPLING": 0.103,
     "MOVEMENT": 0.109,
+    "COUPLING": 0.103,
     "SPACE": 0.051
   },
-  "mood": "Entangled",
-  "name": "COLD STILL SPARSE INTIMATE ...",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.162,
-      "macro_coupling": 0.088,
-      "macro_movement": 0.108,
-      "macro_space": 0.032
-    },
-    "Overdub": {
-      "macro_character": 0.163,
-      "macro_coupling": 0.103,
-      "macro_movement": 0.109,
-      "macro_space": 0.051
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
@@ -82,10 +47,5 @@
     "sparse",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

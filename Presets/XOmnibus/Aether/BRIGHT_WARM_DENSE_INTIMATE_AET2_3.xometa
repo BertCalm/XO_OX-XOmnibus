@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Osprey",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.5679
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.6946,
-    "brightness": 0.9376,
-    "density": 0.9758,
-    "movement": 0.5572,
-    "space": 0.0745,
-    "warmth": 0.9395
-  },
+  "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Organon",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9024,
-    "COUPLING": 0.5679,
-    "MOVEMENT": 0.5558,
-    "SPACE": 0.0745
-  },
-  "mood": "Aether",
-  "name": "Peach Massive 2",
   "parameters": {
     "Organon": {
       "macro_character": 0.9117,
-      "macro_coupling": 0.964,
       "macro_movement": 0.5537,
+      "macro_coupling": 0.964,
       "macro_space": 0.061
     },
     "Osprey": {
       "macro_character": 0.8932,
-      "macro_coupling": 0.9568,
       "macro_movement": 0.5579,
+      "macro_coupling": 0.9568,
       "macro_space": 0.0697
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORGANON",
+    "target": "OSPREY",
+    "amount": 0.5679
+  },
+  "dna": {
+    "brightness": 0.9376,
+    "warmth": 0.9395,
+    "space": 0.0745,
+    "density": 0.9758,
+    "movement": 0.5572,
+    "aggression": 0.6946
+  },
+  "macros": {
+    "CHARACTER": 0.9024,
+    "MOVEMENT": 0.5558,
+    "COUPLING": 0.5679,
+    "SPACE": 0.0745
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "dense",
     "intimate",
     "lush"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

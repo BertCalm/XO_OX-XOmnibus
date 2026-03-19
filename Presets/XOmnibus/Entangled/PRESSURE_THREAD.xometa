@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PRESSURE THREAD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.2685
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obsidian",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.9021
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "OBSIDIAN",
+    "amount": 0.9021
   },
   "dna": {
-    "aggression": 0.7243,
     "brightness": 0.6029,
-    "density": 0.9213,
+    "warmth": 0.8736,
     "movement": 0.1882,
+    "density": 0.9213,
     "space": 0.7617,
-    "warmth": 0.8736
+    "aggression": 0.7243
   },
-  "engines": [
-    "Ottoni",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5589,
-    "COUPLING": 0.9608,
     "MOVEMENT": 0.4794,
+    "COUPLING": 0.9608,
     "SPACE": 0.333
   },
-  "mood": "Entangled",
-  "name": "PRESSURE THREAD",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.0925,
-      "macro_coupling": 0.6762,
-      "macro_movement": 0.7246,
-      "macro_space": 0.2685
-    },
-    "Ottoni": {
-      "macro_character": 0.2033,
-      "macro_coupling": 0.9689,
-      "macro_movement": 0.6467,
-      "macro_space": 0.8471
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -84,10 +49,5 @@
     "iron",
     "tectonic",
     "monolithic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

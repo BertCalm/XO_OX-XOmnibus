@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Overworld",
-        "type": "CHAOS_INJECT",
-        "amount": 0.703
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.889,
-    "brightness": 0.511,
-    "density": 0.964,
-    "movement": 0.877,
-    "space": 0.565,
-    "warmth": 0.865
-  },
+  "name": "HOT_KINETIC_DENSE_VIOLENT_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddfeliX",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.373,
-    "COUPLING": 0.583,
-    "MOVEMENT": 0.23,
-    "SPACE": 0.226
-  },
-  "mood": "Foundation",
-  "name": "Grain Heavy",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.851,
-      "macro_coupling": 0.312,
       "macro_movement": 0.482,
+      "macro_coupling": 0.312,
       "macro_space": 0.464
     },
     "Overworld": {
       "macro_character": 0.748,
-      "macro_coupling": 0.146,
       "macro_movement": 0.167,
+      "macro_coupling": 0.146,
       "macro_space": 0.379
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "OVERWORLD",
+    "amount": 0.703
+  },
+  "dna": {
+    "brightness": 0.511,
+    "warmth": 0.865,
+    "movement": 0.877,
+    "density": 0.964,
+    "space": 0.565,
+    "aggression": 0.889
+  },
+  "macros": {
+    "CHARACTER": 0.373,
+    "MOVEMENT": 0.23,
+    "COUPLING": 0.583,
+    "SPACE": 0.226
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -59,10 +48,5 @@
     "dense",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

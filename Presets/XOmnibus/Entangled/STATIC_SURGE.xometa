@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "STATIC SURGE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.994
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Osteria",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.559
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OWLFISH",
+    "target": "OSTERIA",
+    "amount": 0.559
   },
   "dna": {
-    "aggression": 0.761,
     "brightness": 0.764,
-    "density": 0.791,
+    "warmth": 0.606,
     "movement": 0.903,
+    "density": 0.791,
     "space": 0.226,
-    "warmth": 0.606
+    "aggression": 0.761
   },
-  "engines": [
-    "Owlfish",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.451,
-    "COUPLING": 0.443,
     "MOVEMENT": 0.903,
+    "COUPLING": 0.443,
     "SPACE": 0.86
   },
-  "mood": "Entangled",
-  "name": "STATIC SURGE",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.563,
-      "macro_coupling": 0.304,
-      "macro_movement": 0.887,
-      "macro_space": 0.994
-    },
-    "Owlfish": {
-      "macro_character": 0.629,
-      "macro_coupling": 0.054,
-      "macro_movement": 0.92,
-      "macro_space": 0.149
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "storm",
     "vortex"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9851,
-        "source": "Ombre",
-        "target": "Overdub",
-        "type": "FORMANT_BRIDGE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Cold Sparse Vast Violent character entanglement — OVERDUB × OMBRE via Formant Bridge. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.8984,
-    "brightness": 0.6666,
-    "density": 0.105,
-    "movement": 0.531,
-    "space": 0.9682,
-    "warmth": 0.0834
-  },
+  "schema_version": 1,
+  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_2",
+  "mood": "Entangled",
   "engines": [
     "Overdub",
     "Ombre"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "VOICE",
-    "DRIVE",
-    "DELAY",
-    "SPRING"
-  ],
-  "macros": {
-    "CHARACTER": 0.375,
-    "COUPLING": 0.9851,
-    "MOVEMENT": 0.531,
-    "SPACE": 0.9682
-  },
-  "mood": "Entangled",
-  "name": "COLD_SPARSE_VAST_VIOLENT_ENT_2",
-  "parameters": {
-    "Ombre": {
-      "amp_attack": 0.2662,
-      "amp_release": 0.6524,
-      "coupling_level": 0.9005,
-      "density": 0.0983,
-      "drive": 0.7617,
-      "filter_cutoff": 0.6459,
-      "filter_resonance": 0.5272,
-      "macro_character": 0.526,
-      "macro_coupling": 0.8891,
-      "macro_movement": 0.515,
-      "macro_space": 0.9712,
-      "output_level": 0.7286,
-      "reverb_mix": 0.6795,
-      "reverb_size": 0.7455
-    },
-    "Overdub": {
-      "amp_attack": 0.2519,
-      "amp_release": 0.6854,
-      "coupling_level": 0.9251,
-      "density": 0.0955,
-      "drive": 0.7802,
-      "filter_cutoff": 0.6854,
-      "filter_resonance": 0.5232,
-      "macro_character": 0.5264,
-      "macro_coupling": 0.9189,
-      "macro_movement": 0.513,
-      "macro_space": 0.9755,
-      "output_level": 0.7282,
-      "reverb_mix": 0.6463,
-      "reverb_size": 0.7685
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8984,
-    "brightness": 0.6666,
-    "density": 0.105,
-    "movement": 0.531,
-    "space": 0.9682,
-    "warmth": 0.0834
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Cold Sparse Vast Violent character entanglement — OVERDUB × OMBRE via Formant Bridge. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "cold",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "VOICE",
     "DRIVE",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9851,
     "SPACE": 0.9682
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Maximum depth pressure — owlfish at 8000m",
-  "dna": {
-    "aggression": 0.55,
+  "schema_version": 1,
+  "name": "Hadal Pressure",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.02,
-    "density": 0.9,
+    "warmth": 0.88,
+    "aggression": 0.55,
     "movement": 0.28,
-    "space": 0.25,
-    "warmth": 0.88
+    "density": 0.9,
+    "space": 0.25
   },
   "engines": [
     "Owlfish"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "COUPLING",
-    "PRESSURE"
-  ],
-  "mood": "Aether",
-  "name": "Hadal Pressure II",
-  "parameters": {
-    "Owlfish": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.55,
-    "brightness": 0.02,
-    "density": 0.9,
-    "movement": 0.28,
-    "space": 0.25,
-    "warmth": 0.88
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Maximum depth pressure — owlfish at 8000m",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -50,9 +24,6 @@
     "pressure",
     "depth"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "DEPTH",
     "FEEDING",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

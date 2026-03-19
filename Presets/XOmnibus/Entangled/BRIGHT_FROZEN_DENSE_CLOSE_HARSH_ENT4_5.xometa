@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Ouroboros",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.924
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.876,
-    "brightness": 0.883,
-    "density": 0.985,
-    "movement": 0.026,
-    "space": 0.077,
-    "warmth": 0.47
-  },
+  "name": "BRIGHT_FROZEN_DENSE_CLOSE_HARSH_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.694,
-    "COUPLING": 0.924,
-    "MOVEMENT": 0.032,
-    "SPACE": 0.09
-  },
-  "mood": "Entangled",
-  "name": "Flux Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.687,
-      "macro_coupling": 0.99,
       "macro_movement": 0.036,
+      "macro_coupling": 0.99,
       "macro_space": 0.104
     },
     "Ouroboros": {
       "macro_character": 0.7,
-      "macro_coupling": 0.99,
       "macro_movement": 0.028,
+      "macro_coupling": 0.99,
       "macro_space": 0.077
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "OUROBOROS",
+    "amount": 0.924
+  },
+  "dna": {
+    "brightness": 0.883,
+    "warmth": 0.47,
+    "movement": 0.026,
+    "density": 0.985,
+    "space": 0.077,
+    "aggression": 0.876
+  },
+  "macros": {
+    "CHARACTER": 0.694,
+    "MOVEMENT": 0.032,
+    "COUPLING": 0.924,
+    "SPACE": 0.09
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "dense",
     "close",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

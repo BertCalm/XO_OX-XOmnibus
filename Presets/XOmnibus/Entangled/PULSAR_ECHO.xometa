@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Ombre",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.645
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.853,
-    "brightness": 0.365,
-    "density": 0.902,
-    "movement": 0.076,
-    "space": 0.957,
-    "warmth": 0.348
-  },
+  "name": "PULSAR ECHO",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.067,
-    "COUPLING": 0.74,
-    "MOVEMENT": 0.054,
-    "SPACE": 0.957
-  },
-  "mood": "Entangled",
-  "name": "PULSAR ECHO",
   "parameters": {
     "Ombre": {
       "macro_character": 0.054,
-      "macro_coupling": 0.737,
       "macro_movement": 0.552,
+      "macro_coupling": 0.737,
       "macro_space": 0.927
     },
     "Organon": {
       "macro_character": 0.943,
-      "macro_coupling": 0.761,
       "macro_movement": 0.888,
+      "macro_coupling": 0.761,
       "macro_space": 0.943
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OMBRE",
+    "amount": 0.645
+  },
+  "dna": {
+    "brightness": 0.365,
+    "warmth": 0.348,
+    "movement": 0.076,
+    "density": 0.902,
+    "space": 0.957,
+    "aggression": 0.853
+  },
+  "macros": {
+    "CHARACTER": 0.067,
+    "MOVEMENT": 0.054,
+    "COUPLING": 0.74,
+    "SPACE": 0.957
+  },
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

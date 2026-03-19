@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CORROSIVE FOUNDATION",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.201
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Obbligato",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.431
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCTOPUS",
+    "target": "OBBLIGATO",
+    "amount": 0.431
   },
   "dna": {
-    "aggression": 0.939,
     "brightness": 0.666,
-    "density": 0.101,
+    "warmth": 0.343,
     "movement": 0.273,
+    "density": 0.101,
     "space": 0.583,
-    "warmth": 0.343
+    "aggression": 0.939
   },
-  "engines": [
-    "Octopus",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.476,
-    "COUPLING": 0.431,
     "MOVEMENT": 0.273,
+    "COUPLING": 0.431,
     "SPACE": 0.583
   },
-  "mood": "Foundation",
-  "name": "CORROSIVE FOUNDATION",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.588,
-      "macro_coupling": 0.446,
-      "macro_movement": 0.587,
-      "macro_space": 0.201
-    },
-    "Octopus": {
-      "macro_character": 0.718,
-      "macro_coupling": 0.568,
-      "macro_movement": 0.5,
-      "macro_space": 0.516
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

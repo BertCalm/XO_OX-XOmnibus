@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Osprey",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.725
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.02,
-    "brightness": 0.652,
-    "density": 0.113,
-    "movement": 0.95,
-    "space": 0.199,
-    "warmth": 0.754
-  },
+  "name": "NULL VOID",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.152,
-    "COUPLING": 0.669,
-    "MOVEMENT": 0.126,
-    "SPACE": 0.564
-  },
-  "mood": "Entangled",
-  "name": "NULL VOID",
   "parameters": {
     "Oblique": {
       "macro_character": 0.832,
-      "macro_coupling": 0.082,
       "macro_movement": 0.252,
+      "macro_coupling": 0.082,
       "macro_space": 0.019
     },
     "Osprey": {
       "macro_character": 0.539,
-      "macro_coupling": 0.35,
       "macro_movement": 1.0,
+      "macro_coupling": 0.35,
       "macro_space": 0.65
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLIQUE",
+    "target": "OSPREY",
+    "amount": 0.725
+  },
+  "dna": {
+    "brightness": 0.652,
+    "warmth": 0.754,
+    "movement": 0.95,
+    "density": 0.113,
+    "space": 0.199,
+    "aggression": 0.02
+  },
+  "macros": {
+    "CHARACTER": 0.152,
+    "MOVEMENT": 0.126,
+    "COUPLING": 0.669,
+    "SPACE": 0.564
+  },
   "tags": [
     "entangled",
     "thin",
     "ghosted"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

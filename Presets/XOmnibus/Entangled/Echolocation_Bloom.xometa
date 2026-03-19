@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.617,
-        "engineA": "Overlap",
-        "engineB": "Orca",
-        "type": "SPATIAL_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Echolocation Bloom",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Orca echolocation pulse fires into OVERLAP FDN — the apex predator's sonar maps the infinite room",
-  "dna": {
-    "aggression": 0.45,
-    "brightness": 0.45,
-    "density": 0.675,
-    "movement": 0.525,
-    "space": 0.7,
-    "warmth": 0.45
-  },
-  "engines": [
-    "Overlap",
-    "Orca"
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "orca",
+    "orca",
+    "spatial"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.526,
-    "COUPLING": 0.669,
     "MOVEMENT": 0.733,
+    "COUPLING": 0.669,
     "SPACE": 0.484
   },
-  "mood": "Entangled",
-  "name": "Echolocation Bloom",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.45,
+    "space": 0.7,
+    "aggression": 0.45,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.675
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "space": 0.7,
+    "aggression": 0.45,
+    "movement": 0.525,
+    "warmth": 0.45,
+    "density": 0.675
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.81,
-      "olap_crossfeedAmt": 0.52,
-=======
       "olap_size": 0.568,
       "olap_decay": 0.58,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.267,
-      "olap_decay": 0.58,
       "olap_diffusion": 0.873,
-      "olap_earlyMix": 0.289,
-      "olap_filterCutoff": 0.446,
-      "olap_filterReso": 0.225,
-      "olap_frondDensity": 0.466,
-      "olap_lateMix": 0.739,
       "olap_modDepth": 0.306,
       "olap_modRate": 0.396,
-      "olap_nodeCount": 7,
-      "olap_outputLevel": 0.83,
       "olap_preDelay": 0.163,
-      "olap_shimmerMix": 0.16,
-      "olap_size": 0.568,
-      "olap_spinRate": 0.12
+      "olap_earlyMix": 0.289,
+      "olap_lateMix": 0.739,
+      "olap_filterCutoff": 0.446,
+      "olap_filterReso": 0.225,
+      "olap_outputLevel": 0.83,
+      "olap_couplingLevel": 0.81,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.466,
+      "olap_nodeCount": 7,
+      "olap_crossfeedAmt": 0.52,
+      "olap_spinRate": 0.12,
+      "olap_shimmerMix": 0.16
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.45,
-    "brightness": 0.45,
-    "density": 0.675,
-    "movement": 0.525,
-    "space": 0.7,
-    "warmth": 0.45
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "orca",
-    "orca",
-    "spatial"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORCA",
+        "type": "SPATIAL_BLEND",
+        "amount": 0.617
+      }
+    ]
+  }
 }

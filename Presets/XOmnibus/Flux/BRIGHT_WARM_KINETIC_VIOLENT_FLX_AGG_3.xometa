@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Origami",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.882
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.988,
-    "brightness": 0.882,
-    "density": 0.54,
-    "movement": 0.972,
-    "space": 0.348,
-    "warmth": 0.963
-  },
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_FLX_AGG_3",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oceanic",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.576,
-    "COUPLING": 0.853,
-    "MOVEMENT": 0.972,
-    "SPACE": 0.348
-  },
-  "mood": "Flux",
-  "name": "Radiant Strike",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.663,
-      "macro_coupling": 0.853,
       "macro_movement": 0.929,
+      "macro_coupling": 0.853,
       "macro_space": 0.363
     },
     "Origami": {
       "macro_character": 0.489,
-      "macro_coupling": 0.847,
       "macro_movement": 0.923,
+      "macro_coupling": 0.847,
       "macro_space": 0.347
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "ORIGAMI",
+    "amount": 0.882
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.963,
+    "movement": 0.972,
+    "density": 0.54,
+    "space": 0.348,
+    "aggression": 0.988
+  },
+  "macros": {
+    "CHARACTER": 0.576,
+    "MOVEMENT": 0.972,
+    "COUPLING": 0.853,
+    "SPACE": 0.348
+  },
   "tags": [
     "flux",
     "violent",
     "bright",
     "warm",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7925,
-        "source": "Orca",
-        "target": "Opal",
-        "type": "TIMBRAL_BLEED"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Dark Still Sparse Vast character entanglement — OPAL × ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.5973,
-    "brightness": 0.0307,
-    "density": 0.0699,
-    "movement": 0.0349,
-    "space": 0.9505,
-    "warmth": 0.6549
-  },
+  "schema_version": 1,
+  "name": "DARK_STILL_SPARSE_VAST_ENT_1",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Orca"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "GRAIN",
-    "SCATTER",
-    "FUSE",
-    "CLOUD"
-  ],
-  "macros": {
-    "CHARACTER": 0.3428,
-    "COUPLING": 0.7925,
-    "MOVEMENT": 0.0349,
-    "SPACE": 0.9505
-  },
-  "mood": "Entangled",
-  "name": "DARK_STILL_SPARSE_VAST_ENT_1",
-  "parameters": {
-    "Opal": {
-      "amp_attack": 0.3986,
-      "amp_release": 0.6599,
-      "coupling_level": 0.7925,
-      "density": 0.0378,
-      "drive": 0.5562,
-      "filter_cutoff": 0.2141,
-      "filter_resonance": 0.4348,
-      "macro_character": 0.5436,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.0281,
-      "macro_space": 0.9496,
-      "output_level": 0.7324,
-      "reverb_mix": 0.6683,
-      "reverb_size": 0.8063
-    },
-    "Orca": {
-      "amp_attack": 0.4324,
-      "amp_release": 0.6833,
-      "coupling_level": 0.759,
-      "density": 0.0928,
-      "drive": 0.4895,
-      "filter_cutoff": 0.1913,
-      "filter_resonance": 0.4265,
-      "macro_character": 0.6094,
-      "macro_coupling": 0.801,
-      "macro_movement": 0.0236,
-      "macro_space": 0.9257,
-      "output_level": 0.697,
-      "reverb_mix": 0.6841,
-      "reverb_size": 0.7781
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.5973,
-    "brightness": 0.0307,
-    "density": 0.0699,
-    "movement": 0.0349,
-    "space": 0.9505,
-    "warmth": 0.6549
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dark Still Sparse Vast character entanglement — OPAL × ORCA via Timbral Bleed. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -95,9 +17,6 @@
     "vast",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "GRAIN",
     "SCATTER",
@@ -175,5 +94,4 @@
     "COUPLING": 0.7925,
     "SPACE": 0.9505
   }
->>>>>>> origin/v1-launch-prep
 }

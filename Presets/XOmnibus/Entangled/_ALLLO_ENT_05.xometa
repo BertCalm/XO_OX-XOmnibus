@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Orphica",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.236
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.089,
-    "brightness": 0.064,
-    "density": 0.02,
-    "movement": 0.079,
-    "space": 0.575,
-    "warmth": 0.042
-  },
+  "name": "ALLLO ENT 05",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oceanic",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.053,
-    "COUPLING": 0.332,
-    "MOVEMENT": 0.05,
-    "SPACE": 0.575
-  },
-  "mood": "Entangled",
-  "name": "ALLLO ENT 05",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.053,
-      "macro_coupling": 0.332,
       "macro_movement": 0.05,
+      "macro_coupling": 0.332,
       "macro_space": 0.575
     },
     "Orphica": {
       "macro_character": 0.053,
-      "macro_coupling": 0.332,
       "macro_movement": 0.05,
+      "macro_coupling": 0.332,
       "macro_space": 0.575
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OCEANIC",
+    "target": "ORPHICA",
+    "amount": 0.236
+  },
+  "dna": {
+    "brightness": 0.064,
+    "warmth": 0.042,
+    "movement": 0.079,
+    "density": 0.02,
+    "space": 0.575,
+    "aggression": 0.089
+  },
+  "macros": {
+    "CHARACTER": 0.053,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.332,
+    "SPACE": 0.575
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

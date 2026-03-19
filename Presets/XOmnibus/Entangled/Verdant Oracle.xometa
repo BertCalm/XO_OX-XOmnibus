@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.76,
-        "engineA": "Oracle",
-        "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "Oracle resonance peaks shared into OTTONI body — prophecy in patina green.",
-  "dna": {
-    "aggression": 0.1,
-    "brightness": 0.48,
-    "density": 0.7,
-    "movement": 0.55,
-    "space": 0.45,
-    "warmth": 0.76
-  },
-  "engines": [
-    "Oracle",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.615,
-    "COUPLING": 0.76,
-    "MOVEMENT": 0.545,
-    "SPACE": 0.465
-  },
-  "mood": "Entangled",
-  "name": "Verdant Oracle",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.65,
-      "macro_space": 0.58
-    },
-    "Ottoni": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.44,
-      "macro_space": 0.35
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Verdant Oracle",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Oracle resonance peaks shared into OTTONI body — prophecy in patina green.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "deep",
     "verdant"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.48,
     "warmth": 0.76,
@@ -118,5 +64,4 @@
     "SPACE": 0.465
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

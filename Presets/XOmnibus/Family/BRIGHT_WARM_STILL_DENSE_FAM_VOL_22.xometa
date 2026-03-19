@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_DENSE_FAM_VOL_22",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.401
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Ole",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.825
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "OSPREY",
+    "target": "OLE",
+    "amount": 0.825
   },
   "dna": {
-    "aggression": 0.357,
     "brightness": 0.987,
-    "density": 0.965,
+    "warmth": 0.916,
     "movement": 0.027,
+    "density": 0.965,
     "space": 0.401,
-    "warmth": 0.916
+    "aggression": 0.357
   },
-  "engines": [
-    "Osprey",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.953,
-    "COUPLING": 0.635,
     "MOVEMENT": 0.035,
+    "COUPLING": 0.635,
     "SPACE": 0.409
   },
-  "mood": "Family",
-  "name": "Halo Molten 2",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.932,
-      "macro_coupling": 0.634,
-      "macro_movement": 0.041,
-      "macro_space": 0.401
-    },
-    "Osprey": {
-      "macro_character": 0.973,
-      "macro_coupling": 0.635,
-      "macro_movement": 0.028,
-      "macro_space": 0.418
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

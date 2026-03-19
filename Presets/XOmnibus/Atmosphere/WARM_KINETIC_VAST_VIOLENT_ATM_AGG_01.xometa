@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "OddOscar",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.711
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.903,
-    "brightness": 0.309,
-    "density": 0.646,
-    "movement": 0.909,
-    "space": 0.986,
-    "warmth": 0.893
-  },
+  "name": "WARM KINETIC VAST VIOLENT ATM AGG 1",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oceanic",
     "OddOscar"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.303,
-    "COUPLING": 0.901,
-    "MOVEMENT": 0.855,
-    "SPACE": 0.935
-  },
-  "mood": "Atmosphere",
-  "name": "WARM KINETIC VAST VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.3,
-      "macro_coupling": 0.901,
       "macro_movement": 0.865,
+      "macro_coupling": 0.901,
       "macro_space": 0.949
     },
     "OddOscar": {
       "macro_character": 0.307,
-      "macro_coupling": 0.9,
       "macro_movement": 0.845,
+      "macro_coupling": 0.9,
       "macro_space": 0.921
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "ODDOSCAR",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.309,
+    "warmth": 0.893,
+    "movement": 0.909,
+    "density": 0.646,
+    "space": 0.986,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.303,
+    "MOVEMENT": 0.855,
+    "COUPLING": 0.901,
+    "SPACE": 0.935
+  },
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

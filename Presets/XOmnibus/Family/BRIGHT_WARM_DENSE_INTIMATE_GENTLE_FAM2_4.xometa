@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 4",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.2
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Ole",
-        "type": "FILTER_MOD",
-        "amount": 0.521
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OSTERIA",
+    "target": "OLE",
+    "amount": 0.521
   },
   "dna": {
-    "aggression": 0.095,
     "brightness": 0.891,
-    "density": 0.947,
+    "warmth": 0.938,
     "movement": 0.404,
+    "density": 0.947,
     "space": 0.129,
-    "warmth": 0.938
+    "aggression": 0.095
   },
-  "engines": [
-    "Osteria",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.914,
-    "COUPLING": 0.521,
     "MOVEMENT": 0.404,
+    "COUPLING": 0.521,
     "SPACE": 0.129
   },
-  "mood": "Family",
-  "name": "BRIGHT WARM DENSE INTIMATE ...",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.885,
-      "macro_coupling": 0.541,
-      "macro_movement": 0.44,
-      "macro_space": 0.2
-    },
-    "Osteria": {
-      "macro_character": 0.914,
-      "macro_coupling": 0.521,
-      "macro_movement": 0.404,
-      "macro_space": 0.129
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -82,10 +47,5 @@
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

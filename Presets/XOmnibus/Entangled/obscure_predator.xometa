@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.87,
-        "engineA": "Outwit",
-        "engineB": "Obscura",
-        "type": "TIMBRE_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Obscure Predator",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with OBSCURA's daguerreotype-veiled spectral character (plate physics and silver grain). Coupling: Timbre Blend.",
-  "dna": {
-    "aggression": 0.19,
-    "brightness": 0.64,
-    "density": 0.59,
-    "movement": 0.85,
-    "space": 0.82,
-    "warmth": 0.14
-  },
-  "engines": [
-    "Outwit",
-    "Obscura"
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "obscura",
+    "chaotic",
+    "generative"
   ],
   "macroLabels": [
     "ARMS",
@@ -44,30 +25,28 @@
   ],
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.66,
     "MOVEMENT": 0.53,
+    "COUPLING": 0.66,
     "SPACE": 0.43
   },
-  "mood": "Entangled",
-  "name": "Obscure Predator",
+  "couplingIntensity": "Deep",
+  "sonic_dna": {
+    "brightness": 0.64,
+    "warmth": 0.14,
+    "movement": 0.85,
+    "density": 0.59,
+    "space": 0.82,
+    "aggression": 0.19
+  },
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.14,
+    "movement": 0.85,
+    "density": 0.59,
+    "space": 0.82,
+    "aggression": 0.19
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Obscura": {
-      "obscura_ampAttack": 0.3,
-      "obscura_ampRelease": 0.58,
-      "obscura_ampSustain": 0.82,
-      "obscura_character": 0.67,
-      "obscura_coupling": 0.65,
-      "obscura_couplingLevel": 0.61,
-      "obscura_filterCutoff": 0.34,
-      "obscura_filterReso": 0.34,
-      "obscura_movement": 0.77,
-      "obscura_outputLevel": 0.77,
-      "obscura_reverbMix": 0.08,
-      "obscura_space": 0.77
-    },
-    "Outwit": {
-=======
     "Outwit": {
       "owit_rule": 126,
       "owit_arms": 8,
@@ -78,30 +57,17 @@
       "owit_pitchSpread": 0.29,
       "owit_filterCutoff": 0.57,
       "owit_filterReso": 0.18,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.16,
       "owit_ampRelease": 0.62,
       "owit_armStagger": 0.43,
-      "owit_arms": 8,
       "owit_borderMode": 1,
-      "owit_cellSize": 0.16,
+      "owit_inkCloudMix": 0.47,
       "owit_chroma1": 0.37,
       "owit_chroma2": 0.44,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.74,
-      "owit_density": 0.64,
-      "owit_evolveRate": 0.58,
-      "owit_filterCutoff": 0.57,
-      "owit_filterReso": 0.18,
-      "owit_inkCloudMix": 0.47,
-      "owit_mutateProb": 0.26,
-      "owit_outputLevel": 0.76,
-<<<<<<< HEAD
-      "owit_outputPan": 0.07,
-      "owit_pitchSpread": 0.29,
       "owit_polyDepth": 0.74,
-      "owit_rule": 126
-=======
+      "owit_couplingLevel": 0.74,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.76,
       "owit_outputPan": 0.07
     },
     "Obscura": {
@@ -117,25 +83,20 @@
       "obscura_reverbMix": 0.08,
       "obscura_couplingLevel": 0.61,
       "obscura_outputLevel": 0.77
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.19,
-    "brightness": 0.64,
-    "density": 0.59,
-    "movement": 0.85,
-    "space": 0.82,
-    "warmth": 0.14
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "obscura",
-    "chaotic",
-    "generative"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUTWIT",
+    "target": "OBSCURA",
+    "amount": 0.87,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OBSCURA",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.87
+      }
+    ]
+  }
 }

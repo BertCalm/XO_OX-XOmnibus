@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_DENSE_FLX_SLW_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.649
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Odyssey",
-        "type": "PITCH_SYNC",
-        "amount": 0.736
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ODYSSEY",
+    "amount": 0.736
   },
   "dna": {
-    "aggression": 0.457,
     "brightness": 0.067,
-    "density": 0.965,
+    "warmth": 0.969,
     "movement": 0.055,
+    "density": 0.965,
     "space": 0.618,
-    "warmth": 0.969
+    "aggression": 0.457
   },
-  "engines": [
-    "Overworld",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.711,
-    "COUPLING": 0.684,
     "MOVEMENT": 0.055,
+    "COUPLING": 0.684,
     "SPACE": 0.618
   },
-  "mood": "Flux",
-  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_1",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.901,
-      "macro_coupling": 0.693,
-      "macro_movement": 0.058,
-      "macro_space": 0.649
-    },
-    "Overworld": {
-      "macro_character": 0.971,
-      "macro_coupling": 0.763,
-      "macro_movement": 0.052,
-      "macro_space": 0.599
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "warm",
     "dense",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

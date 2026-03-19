@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Orbital",
-        "type": "CHAOS_INJECT",
-        "amount": 0.5523
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.3559,
-    "brightness": 0.8776,
-    "density": 0.4633,
-    "movement": 0.1106,
-    "space": 0.0928,
-    "warmth": 0.0532
-  },
+  "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_3",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Opal",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.8921,
-    "COUPLING": 0.5523,
-    "MOVEMENT": 0.1216,
-    "SPACE": 0.0928
-  },
-  "mood": "Aether",
-  "name": "Silver Grain",
   "parameters": {
     "Opal": {
       "macro_character": 0.8617,
-      "macro_coupling": 0.4566,
       "macro_movement": 0.1129,
+      "macro_coupling": 0.4566,
       "macro_space": 0.0851
     },
     "Orbital": {
       "macro_character": 0.9225,
-      "macro_coupling": 0.4673,
       "macro_movement": 0.1302,
+      "macro_coupling": 0.4673,
       "macro_space": 0.1015
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPAL",
+    "target": "ORBITAL",
+    "amount": 0.5523
+  },
+  "dna": {
+    "brightness": 0.8776,
+    "movement": 0.1106,
+    "space": 0.0928,
+    "warmth": 0.0532,
+    "density": 0.4633,
+    "aggression": 0.3559
+  },
+  "macros": {
+    "CHARACTER": 0.8921,
+    "MOVEMENT": 0.1216,
+    "COUPLING": 0.5523,
+    "SPACE": 0.0928
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "still",
     "intimate",
     "frozen"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

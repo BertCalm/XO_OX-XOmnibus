@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Obbligato",
-        "type": "MORPH_CHAIN",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "OBBLIGATO BOND macro tied to OddOscar morph depth — wind must breathe with the axolotl",
+  "name": "Coral Gill",
+  "version": "1.0",
   "engines": [
     "Obbligato",
     "OddOscar"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
     "SPACE": 0.5
   },
-  "mood": "Entangled",
-  "name": "Coral Gill",
-  "parameters": {
-    "Obbligato": {},
-    "OddOscar": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.33,
     "brightness": 0.51,
-    "density": 0.61,
+    "warmth": 0.67,
     "movement": 0.61,
+    "density": 0.61,
     "space": 0.54,
-    "warmth": 0.67
+    "aggression": 0.33
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "MORPH_CHAIN",
+    "source": "ODDOSCAR",
+    "target": "OBBLIGATO",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oddoscar",
     "wind"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "OBBLIGATO BOND macro tied to OddOscar morph depth — wind must breathe with the axolotl"
->>>>>>> origin/v1-launch-prep
 }

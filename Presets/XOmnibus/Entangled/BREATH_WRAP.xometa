@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Overbite",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.442
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.081,
-    "brightness": 0.608,
-    "density": 0.107,
-    "movement": 0.378,
-    "space": 0.786,
-    "warmth": 0.032
-  },
+  "name": "BREATH WRAP",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Osteria",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.876,
-    "COUPLING": 0.512,
-    "MOVEMENT": 0.423,
-    "SPACE": 0.89
-  },
-  "mood": "Entangled",
-  "name": "BREATH WRAP",
   "parameters": {
     "Osteria": {
       "macro_character": 0.364,
-      "macro_coupling": 0.331,
       "macro_movement": 0.655,
+      "macro_coupling": 0.331,
       "macro_space": 0.856
     },
     "Overbite": {
       "macro_character": 0.751,
-      "macro_coupling": 0.464,
       "macro_movement": 0.54,
+      "macro_coupling": 0.464,
       "macro_space": 0.352
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSTERIA",
+    "target": "OVERBITE",
+    "amount": 0.442
+  },
+  "dna": {
+    "brightness": 0.608,
+    "warmth": 0.032,
+    "movement": 0.378,
+    "density": 0.107,
+    "space": 0.786,
+    "aggression": 0.081
+  },
+  "macros": {
+    "CHARACTER": 0.876,
+    "MOVEMENT": 0.423,
+    "COUPLING": 0.512,
+    "SPACE": 0.89
+  },
   "tags": [
     "tender",
     "yielding",
     "soft",
     "quiet"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

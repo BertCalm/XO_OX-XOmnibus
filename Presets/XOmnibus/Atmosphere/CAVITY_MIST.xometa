@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CAVITY MIST",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.089
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Obbligato",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.722
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OBSIDIAN",
+    "target": "OBBLIGATO",
+    "amount": 0.722
   },
   "dna": {
-    "aggression": 0.065,
     "brightness": 0.465,
-    "density": 0.185,
+    "warmth": 0.342,
     "movement": 0.978,
+    "density": 0.185,
     "space": 0.054,
-    "warmth": 0.342
+    "aggression": 0.065
   },
-  "engines": [
-    "Obsidian",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.766,
-    "COUPLING": 0.721,
     "MOVEMENT": 0.822,
+    "COUPLING": 0.721,
     "SPACE": 0.054
   },
-  "mood": "Atmosphere",
-  "name": "CAVITY MIST",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.723,
-      "macro_coupling": 0.828,
-      "macro_movement": 0.879,
-      "macro_space": 0.089
-    },
-    "Obsidian": {
-      "macro_character": 0.764,
-      "macro_coupling": 0.106,
-      "macro_movement": 0.417,
-      "macro_space": 0.054
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

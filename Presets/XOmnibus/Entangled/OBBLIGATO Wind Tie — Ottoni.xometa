@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.487,
-        "engineA": "Obbligato",
-        "engineB": "Ottoni",
-        "type": "Amp->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Light",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OBBLIGATO Wind Tie — Ottoni",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Coral and patina: BOND binds OBBLIGATO's dual reeds to OTTONI's third brass harmonic for obligate resonance.",
-  "dna": {
-    "aggression": 0.537,
-    "brightness": 0.845,
-    "density": 0.931,
-    "movement": 0.694,
-    "space": 0.571,
-    "warmth": 0.621
-  },
-  "engines": [
-    "Obbligato",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "OBBLIGATO Wind Tie — Ottoni",
-  "parameters": {
-    "obbl_breathA": 0.736,
-    "obbl_breathB": 0.574,
-    "obbl_macroBond": 0.674
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "brass",
     "grow"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.736,
+    "obbl_breathB": 0.574,
+    "obbl_macroBond": 0.674
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OTTONI",
+        "type": "Amp->Filter",
+        "amount": 0.487
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.845,
+    "warmth": 0.621,
+    "movement": 0.694,
+    "density": 0.931,
+    "space": 0.571,
+    "aggression": 0.537
+  }
 }

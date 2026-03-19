@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Assault Weather",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OVERWORLD aggressive register.",
-  "dna": {
-    "aggression": 0.816,
-    "brightness": 0.366,
-    "density": 0.594,
-    "movement": 0.709,
-    "space": 0.344,
-    "warmth": 0.489
-  },
-  "engines": [
-    "Overworld"
-  ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.168,
-    "ERA": 0.857,
-    "GLITCH": 0.807,
-    "SPACE": 0.26
-  },
-  "mood": "Atmosphere",
-  "name": "Assault Weather",
-  "parameters": {
-    "Overworld": {
-      "coupling": 0.168,
-      "era": 0.857,
-      "glitch": 0.807,
-      "space": 0.26
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,9 +16,6 @@
     "pressure",
     "fierce"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "ERA",
     "GLITCH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

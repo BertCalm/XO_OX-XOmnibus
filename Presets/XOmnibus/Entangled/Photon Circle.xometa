@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ohm",
-        "type": "SPECTRAL_REFRACTION",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Communal chant processed through optical shimmer — shared breath caught in light",
+  "name": "Photon Circle",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "Photon Circle",
-  "parameters": {
-    "Ohm": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.28,
     "brightness": 0.64,
-    "density": 0.48,
+    "warmth": 0.59,
     "movement": 0.62,
+    "density": 0.48,
     "space": 0.64,
-    "warmth": 0.59
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OPTIC",
+    "target": "OHM",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "optic",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Communal chant processed through optical shimmer — shared breath caught in light"
->>>>>>> origin/v1-launch-prep
 }

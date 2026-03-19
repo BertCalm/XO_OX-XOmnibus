@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.07,
-    "density": 0.15,
-    "movement": 0.32,
-    "space": 0.81,
-    "warmth": 0.18
-  },
+  "name": "Ombre Void",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.38,
-    "COUPLING": 0.42,
-    "MOVEMENT": 0.32,
-    "SPACE": 0.81
-  },
-  "mood": "Aether",
-  "name": "Ombre Void",
   "parameters": {
     "Ombre": {
       "ombre_macro_character": 0.27,
-      "ombre_macro_coupling": 0.23,
       "ombre_macro_movement": 0.33,
+      "ombre_macro_coupling": 0.23,
       "ombre_macro_space": 0.81
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.18,
+    "movement": 0.32,
+    "density": 0.15,
+    "space": 0.81,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.42,
+    "SPACE": 0.81
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "ombre",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

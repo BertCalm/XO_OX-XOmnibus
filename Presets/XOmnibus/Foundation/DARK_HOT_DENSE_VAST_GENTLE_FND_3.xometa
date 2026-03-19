@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Origami",
-        "type": "FILTER_MOD",
-        "amount": 0.734
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_3",
   "mood": "Foundation",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 3.",
-  "dna": {
-    "aggression": 0.074,
-    "brightness": 0.087,
-    "density": 0.946,
-    "movement": 0.381,
-    "space": 0.902,
-    "warmth": 0.956
-  },
-  "engines": [
-    "Overbite",
-    "Origami"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.118,
-    "COUPLING": 0.909,
-    "MOVEMENT": 0.308,
-    "SPACE": 0.946
-  },
-  "mood": "Foundation",
-  "name": "Smoke Molten",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.123,
-      "macro_coupling": 0.819,
-      "macro_movement": 0.283,
-      "macro_space": 0.979
-    },
-    "Overbite": {
-      "macro_character": 0.114,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.333,
-      "macro_space": 0.912
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -82,10 +19,14 @@
     "foundation",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.909,
     "SPACE": 0.946
   }
->>>>>>> origin/v1-launch-prep
 }

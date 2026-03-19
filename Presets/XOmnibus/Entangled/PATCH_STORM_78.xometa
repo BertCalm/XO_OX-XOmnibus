@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PATCH STORM 78",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.913
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ombre",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.572
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "OMBRE",
+    "amount": 0.572
   },
   "dna": {
-    "aggression": 0.902,
     "brightness": 0.461,
-    "density": 0.255,
+    "warmth": 0.254,
     "movement": 0.948,
+    "density": 0.255,
     "space": 0.009,
-    "warmth": 0.254
+    "aggression": 0.902
   },
-  "engines": [
-    "Orphica",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.901,
-    "COUPLING": 0.678,
     "MOVEMENT": 0.948,
+    "COUPLING": 0.678,
     "SPACE": 0.158
   },
-  "mood": "Entangled",
-  "name": "PATCH STORM 78",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.241,
-      "macro_movement": 0.959,
-      "macro_space": 0.913
-    },
-    "Orphica": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.079,
-      "macro_movement": 0.937,
-      "macro_space": 0.871
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "rupture",
     "intensity"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

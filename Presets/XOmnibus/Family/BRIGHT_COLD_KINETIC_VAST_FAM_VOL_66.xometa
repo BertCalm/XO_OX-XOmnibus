@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_66",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.914
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Osteria",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.638
-      }
-    ]
+    "type": "ENVELOPE_MIRROR",
+    "source": "OLE",
+    "target": "OSTERIA",
+    "amount": 0.638
   },
   "dna": {
-    "aggression": 0.473,
     "brightness": 0.914,
-    "density": 0.6,
+    "warmth": 0.067,
     "movement": 0.974,
+    "density": 0.6,
     "space": 0.9,
-    "warmth": 0.067
+    "aggression": 0.473
   },
-  "engines": [
-    "Osteria",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.496,
-    "COUPLING": 0.513,
     "MOVEMENT": 0.964,
+    "COUPLING": 0.513,
     "SPACE": 0.898
   },
-  "mood": "Family",
-  "name": "Prism Shimmer 2",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.509,
-      "macro_movement": 0.968,
-      "macro_space": 0.914
-    },
-    "Osteria": {
-      "macro_character": 0.494,
-      "macro_coupling": 0.517,
-      "macro_movement": 0.96,
-      "macro_space": 0.882
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

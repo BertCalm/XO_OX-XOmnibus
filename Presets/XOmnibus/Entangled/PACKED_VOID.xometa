@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PACKED VOID",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.078
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Optic",
-        "type": "CHAOS_INJECT",
-        "amount": 0.817
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "OPTIC",
+    "amount": 0.817
   },
   "dna": {
-    "aggression": 0.765,
     "brightness": 0.606,
-    "density": 0.849,
+    "warmth": 0.257,
     "movement": 0.379,
+    "density": 0.849,
     "space": 0.054,
-    "warmth": 0.257
+    "aggression": 0.765
   },
-  "engines": [
-    "Optic",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.98,
-    "COUPLING": 0.388,
     "MOVEMENT": 0.785,
+    "COUPLING": 0.388,
     "SPACE": 0.054
   },
-  "mood": "Entangled",
-  "name": "PACKED VOID",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.544,
-      "macro_coupling": 0.804,
-      "macro_movement": 0.643,
-      "macro_space": 0.078
-    },
-    "Optic": {
-      "macro_character": 0.179,
-      "macro_coupling": 0.882,
-      "macro_movement": 0.237,
-      "macro_space": 0.045
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

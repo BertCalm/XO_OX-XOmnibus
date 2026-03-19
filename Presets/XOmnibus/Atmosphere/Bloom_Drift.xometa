@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sun through fog: radiant warmth, minimal presence.",
-  "dna": {
-    "aggression": 0.281,
+  "schema_version": 1,
+  "name": "Bloom Drift",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.77,
-    "density": 0.076,
+    "warmth": 0.874,
     "movement": 0.582,
+    "density": 0.076,
     "space": 0.657,
-    "warmth": 0.874
+    "aggression": 0.281
   },
   "engines": [
     "Orphica"
   ],
-  "macroLabels": [
-    "BLOOM",
-    "EXHALE",
-    "COUPLING",
-    "HORIZON"
-  ],
-  "mood": "Atmosphere",
-  "name": "Bloom Drift",
-  "parameters": {
-    "Orphica": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.281,
-    "brightness": 0.77,
-    "density": 0.076,
-    "movement": 0.582,
-    "space": 0.657,
-    "warmth": 0.874
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
   "tags": [
     "atmosphere",
     "warm",
@@ -45,9 +25,6 @@
     "evolving",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "BLOOM",
     "EXHALE",
@@ -67,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

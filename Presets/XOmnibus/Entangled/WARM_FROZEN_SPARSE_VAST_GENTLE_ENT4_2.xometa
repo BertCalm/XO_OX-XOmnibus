@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.958
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.115,
-    "brightness": 0.581,
-    "density": 0.109,
-    "movement": 0.085,
-    "space": 0.879,
-    "warmth": 0.93
-  },
+  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.764,
-    "COUPLING": 0.958,
-    "MOVEMENT": 0.082,
-    "SPACE": 0.88
-  },
-  "mood": "Entangled",
-  "name": "Node Expanse 3",
   "parameters": {
     "Oblong": {
       "macro_character": 0.777,
-      "macro_coupling": 0.113,
       "macro_movement": 0.087,
+      "macro_coupling": 0.113,
       "macro_space": 0.892
     },
     "Overbite": {
       "macro_character": 0.751,
-      "macro_coupling": 0.08,
       "macro_movement": 0.077,
+      "macro_coupling": 0.08,
       "macro_space": 0.868
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBLONG",
+    "target": "OVERBITE",
+    "amount": 0.958
+  },
+  "dna": {
+    "brightness": 0.581,
+    "warmth": 0.93,
+    "movement": 0.085,
+    "density": 0.109,
+    "space": 0.879,
+    "aggression": 0.115
+  },
+  "macros": {
+    "CHARACTER": 0.764,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.958,
+    "SPACE": 0.88
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

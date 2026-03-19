@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Drama Daguerreotype",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.5
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Obscura",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.8
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OLE",
+    "target": "OBSCURA",
+    "amount": 0.8,
+    "intensity": "Deep"
   },
-  "description": "Harmonic folds from DRAMA's percussive attack are preserved in OBSCURA's silver plate.",
   "dna": {
-    "aggression": 0.86,
     "brightness": 0.65,
-    "density": 0.7,
+    "warmth": 0.74,
     "movement": 0.74,
+    "density": 0.7,
     "space": 0.34,
-    "warmth": 0.74
+    "aggression": 0.86
   },
-  "engines": [
-    "Ole",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.72,
+    "COUPLING": 0.8,
     "SPACE": 0.36
   },
-  "mood": "Entangled",
-  "name": "Drama Daguerreotype",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.58,
-      "macro_space": 0.5
-    },
-    "Ole": {
-      "macro_character": 0.8,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.72,
-      "macro_space": 0.36
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "obscura",
     "harmonic",
     "drama"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

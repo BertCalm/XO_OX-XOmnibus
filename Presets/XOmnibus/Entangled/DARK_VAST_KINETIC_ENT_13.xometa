@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK VAST KINETIC ENT 13",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.935
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osprey",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.713
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.713
   },
   "dna": {
-    "aggression": 0.605,
     "brightness": 0.053,
-    "density": 0.348,
+    "warmth": 0.348,
     "movement": 0.897,
+    "density": 0.348,
     "space": 0.928,
-    "warmth": 0.348
+    "aggression": 0.605
   },
-  "engines": [
-    "Ottoni",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2,
-    "COUPLING": 0.493,
     "MOVEMENT": 0.897,
+    "COUPLING": 0.493,
     "SPACE": 0.928
   },
-  "mood": "Entangled",
-  "name": "DARK VAST KINETIC ENT 13",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.195,
-      "macro_coupling": 0.651,
-      "macro_movement": 0.964,
-      "macro_space": 0.935
-    },
-    "Ottoni": {
-      "macro_character": 0.2,
-      "macro_coupling": 0.493,
-      "macro_movement": 0.897,
-      "macro_space": 0.928
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.767,
-        "engineA": "Obbligato",
-        "engineB": "Orbital",
-        "type": "Amp->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Coral Rascal × Orbital",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Rascal coral in orbit: BOND synchronises OBBLIGATO's dual voices to ORBITAL's group swell.",
-  "dna": {
-    "aggression": 0.475,
-    "brightness": 0.575,
-    "density": 0.625,
-    "movement": 0.576,
-    "space": 0.6,
-    "warmth": 0.65
-  },
-  "engines": [
-    "Obbligato",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Coral Rascal × Orbital",
-  "parameters": {
-    "obbl_breathA": 0.61,
-    "obbl_breathB": 0.6,
-    "obbl_macroBond": 0.993
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "group-envelope",
     "warm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.61,
+    "obbl_breathB": 0.6,
+    "obbl_macroBond": 0.993
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORBITAL",
+        "type": "Amp->Filter",
+        "amount": 0.767
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.575,
+    "warmth": 0.65,
+    "movement": 0.576,
+    "density": 0.625,
+    "space": 0.6,
+    "aggression": 0.475
+  }
 }

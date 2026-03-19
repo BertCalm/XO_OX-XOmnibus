@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Orphica",
-        "type": "GRAIN_SCATTER",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Orphica harp plucks seeding the granular cloud — microsound and grain in conversation",
+  "name": "Harp Grain",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Orphica"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
     "SPACE": 0.8
   },
-  "mood": "Entangled",
-  "name": "Harp Grain",
-  "parameters": {
-    "Opal": {},
-    "Orphica": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.18,
     "brightness": 0.58,
-    "density": 0.46,
+    "warmth": 0.53,
     "movement": 0.68,
+    "density": 0.46,
     "space": 0.66,
-    "warmth": 0.53
+    "aggression": 0.18
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRAIN_SCATTER",
+    "source": "OPAL",
+    "target": "ORPHICA",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "orphica",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Orphica harp plucks seeding the granular cloud — microsound and grain in conversation"
->>>>>>> origin/v1-launch-prep
 }

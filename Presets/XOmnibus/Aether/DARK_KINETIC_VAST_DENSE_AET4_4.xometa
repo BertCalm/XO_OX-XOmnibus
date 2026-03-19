@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_VAST_DENSE_AET4_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.8224
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.5954
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.5954
   },
   "dna": {
-    "aggression": 0.6796,
     "brightness": 0.046,
-    "density": 0.9141,
+    "warmth": 0.5579,
     "movement": 0.9135,
+    "density": 0.9141,
     "space": 0.9877,
-    "warmth": 0.5579
+    "aggression": 0.6796
   },
-  "engines": [
-    "Origami",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3019,
-    "COUPLING": 0.5954,
     "MOVEMENT": 0.9135,
+    "COUPLING": 0.5954,
     "SPACE": 0.9877
   },
-  "mood": "Aether",
-  "name": "DARK_KINETIC_VAST_DENSE_AET4_4",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.9416,
-      "macro_coupling": 0.3539,
-      "macro_movement": 0.7902,
-      "macro_space": 0.8224
-    },
-    "Origami": {
-      "macro_character": 0.6796,
-      "macro_coupling": 0.2379,
-      "macro_movement": 0.9283,
-      "macro_space": 0.4501
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "dark",
     "vast",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

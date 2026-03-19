@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Overdub",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.942
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.429,
-    "brightness": 0.121,
-    "density": 0.919,
-    "movement": 0.921,
-    "space": 0.325,
-    "warmth": 0.936
-  },
+  "name": "DARK_HOT_KINETIC_DENSE_FND_5",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddfeliX",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.814,
-    "COUPLING": 0.81,
-    "MOVEMENT": 0.724,
-    "SPACE": 0.739
-  },
-  "mood": "Foundation",
-  "name": "DARK_HOT_KINETIC_DENSE_FND_5",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.404,
-      "macro_coupling": 0.529,
       "macro_movement": 0.586,
+      "macro_coupling": 0.529,
       "macro_space": 0.365
     },
     "Overdub": {
       "macro_character": 0.398,
-      "macro_coupling": 0.402,
       "macro_movement": 0.836,
+      "macro_coupling": 0.402,
       "macro_space": 0.801
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "OVERDUB",
+    "amount": 0.942
+  },
+  "dna": {
+    "brightness": 0.121,
+    "warmth": 0.936,
+    "movement": 0.921,
+    "density": 0.919,
+    "space": 0.325,
+    "aggression": 0.429
+  },
+  "macros": {
+    "CHARACTER": 0.814,
+    "MOVEMENT": 0.724,
+    "COUPLING": 0.81,
+    "SPACE": 0.739
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -58,10 +47,5 @@
     "hot",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

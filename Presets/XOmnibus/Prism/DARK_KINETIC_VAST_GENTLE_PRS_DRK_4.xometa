@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_4",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.9141
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Origami",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.6399
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OWLFISH",
+    "target": "ORIGAMI",
+    "amount": 0.6399
   },
   "dna": {
-    "aggression": 0.1227,
     "brightness": 0.0819,
-    "density": 0.55,
+    "warmth": 0.6696,
     "movement": 0.9645,
+    "density": 0.55,
     "space": 0.9493,
-    "warmth": 0.6696
+    "aggression": 0.1227
   },
-  "engines": [
-    "Owlfish",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3962,
-    "COUPLING": 0.55,
     "MOVEMENT": 0.9645,
+    "COUPLING": 0.55,
     "SPACE": 0.9493
   },
-  "mood": "Prism",
-  "name": "Dusk Surge",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.3681,
-      "macro_coupling": 0.5214,
-      "macro_movement": 0.9458,
-      "macro_space": 0.9141
-    },
-    "Owlfish": {
-      "macro_character": 0.3962,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.9645,
-      "macro_space": 0.9493
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "kinetic",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

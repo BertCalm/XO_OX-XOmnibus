@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_37",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.072
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Ohm",
-        "type": "FILTER_LINK",
-        "amount": 0.739
-      }
-    ]
+    "type": "FILTER_LINK",
+    "source": "OSPREY",
+    "target": "OHM",
+    "amount": 0.739
   },
   "dna": {
-    "aggression": 0.331,
     "brightness": 0.898,
-    "density": 0.978,
+    "warmth": 0.04,
     "movement": 0.358,
+    "density": 0.978,
     "space": 0.076,
-    "warmth": 0.04
+    "aggression": 0.331
   },
-  "engines": [
-    "Osprey",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.472,
-    "COUPLING": 0.659,
     "MOVEMENT": 0.365,
+    "COUPLING": 0.659,
     "SPACE": 0.069
   },
-  "mood": "Family",
-  "name": "Crystal Thick",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.635,
-      "macro_movement": 0.355,
-      "macro_space": 0.072
-    },
-    "Osprey": {
-      "macro_character": 0.474,
-      "macro_coupling": 0.682,
-      "macro_movement": 0.375,
-      "macro_space": 0.066
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "dense",
     "intimate",
     "cool"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

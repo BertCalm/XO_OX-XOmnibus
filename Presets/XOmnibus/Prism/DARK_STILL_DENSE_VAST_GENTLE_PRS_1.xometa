@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Optic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.681
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_1",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 1.",
-  "dna": {
-    "aggression": 0.032,
-    "brightness": 0.083,
-    "density": 0.948,
-    "movement": 0.064,
-    "space": 0.9,
-    "warmth": 0.512
-  },
-  "engines": [
-    "Origami",
-    "Optic"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.049,
-    "COUPLING": 0.91,
-    "MOVEMENT": 0.043,
-    "SPACE": 0.917
-  },
-  "mood": "Prism",
-  "name": "Flux Titan",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.073,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.0,
-      "macro_space": 0.835
-    },
-    "Origami": {
-      "macro_character": 0.026,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.086,
-      "macro_space": 1.0
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "dark",
@@ -82,10 +19,14 @@
     "still",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.91,
     "SPACE": 0.917
   }
->>>>>>> origin/v1-launch-prep
 }

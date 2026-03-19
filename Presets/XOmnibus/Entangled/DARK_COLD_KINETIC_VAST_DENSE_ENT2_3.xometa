@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Orbital",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.704
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.426,
-    "brightness": 0.069,
-    "density": 0.981,
-    "movement": 0.933,
-    "space": 0.99,
-    "warmth": 0.096
-  },
+  "name": "DARK COLD KINETIC VAST DENSE ENT2 3",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oracle",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.083,
-    "COUPLING": 0.704,
-    "MOVEMENT": 0.933,
-    "SPACE": 0.99
-  },
-  "mood": "Entangled",
-  "name": "DARK COLD KINETIC VAST DENS...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.083,
-      "macro_coupling": 0.704,
       "macro_movement": 0.933,
+      "macro_coupling": 0.704,
       "macro_space": 0.99
     },
     "Orbital": {
       "macro_character": 0.088,
-      "macro_coupling": 0.722,
       "macro_movement": 0.92,
+      "macro_coupling": 0.722,
       "macro_space": 0.99
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORACLE",
+    "target": "ORBITAL",
+    "amount": 0.704
+  },
+  "dna": {
+    "brightness": 0.069,
+    "warmth": 0.096,
+    "movement": 0.933,
+    "density": 0.981,
+    "space": 0.99,
+    "aggression": 0.426
+  },
+  "macros": {
+    "CHARACTER": 0.083,
+    "MOVEMENT": 0.933,
+    "COUPLING": 0.704,
+    "SPACE": 0.99
+  },
   "tags": [
     "entangled",
     "dark",
@@ -58,10 +47,5 @@
     "kinetic",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

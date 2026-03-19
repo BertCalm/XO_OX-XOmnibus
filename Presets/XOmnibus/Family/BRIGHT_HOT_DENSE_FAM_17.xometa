@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Overworld",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.929
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.545,
-    "brightness": 0.882,
-    "density": 0.952,
-    "movement": 0.448,
-    "space": 0.521,
-    "warmth": 0.93
-  },
+  "name": "BRIGHT HOT DENSE FAM 17",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.906,
-    "COUPLING": 0.443,
-    "MOVEMENT": 0.448,
-    "SPACE": 0.521
-  },
-  "mood": "Family",
-  "name": "BRIGHT HOT DENSE FAM 17",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.906,
-      "macro_coupling": 0.443,
       "macro_movement": 0.448,
+      "macro_coupling": 0.443,
       "macro_space": 0.521
     },
     "Overworld": {
       "macro_character": 1.0,
-      "macro_coupling": 0.563,
       "macro_movement": 0.514,
+      "macro_coupling": 0.563,
       "macro_space": 0.602
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.929
+  },
+  "dna": {
+    "brightness": 0.882,
+    "warmth": 0.93,
+    "movement": 0.448,
+    "density": 0.952,
+    "space": 0.521,
+    "aggression": 0.545
+  },
+  "macros": {
+    "CHARACTER": 0.906,
+    "MOVEMENT": 0.448,
+    "COUPLING": 0.443,
+    "SPACE": 0.521
+  },
   "tags": [
     "family",
     "bright",
@@ -58,10 +47,5 @@
     "dense",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

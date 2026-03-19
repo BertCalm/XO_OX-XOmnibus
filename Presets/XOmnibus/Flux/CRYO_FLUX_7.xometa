@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CRYO FLUX 7",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.7907
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "OddfeliX",
-        "type": "CHAOS_INJECT",
-        "amount": 0.4354
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERBITE",
+    "target": "ODDFELIX",
+    "amount": 0.4354
   },
   "dna": {
-    "aggression": 0.0741,
     "brightness": 0.9411,
-    "density": 0.8221,
+    "warmth": 0.0251,
     "movement": 0.8575,
+    "density": 0.8221,
     "space": 0.4007,
-    "warmth": 0.0251
+    "aggression": 0.0741
   },
-  "engines": [
-    "Overbite",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5226,
-    "COUPLING": 0.4427,
     "MOVEMENT": 0.4505,
+    "COUPLING": 0.4427,
     "SPACE": 0.8602
   },
-  "mood": "Flux",
-  "name": "CRYO FLUX 7",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.1185,
-      "macro_coupling": 0.6063,
-      "macro_movement": 0.7644,
-      "macro_space": 0.7907
-    },
-    "Overbite": {
-      "macro_character": 0.1492,
-      "macro_coupling": 0.3038,
-      "macro_movement": 0.5628,
-      "macro_space": 0.9939
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

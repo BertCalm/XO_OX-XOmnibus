@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_13",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.965
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Obbligato",
-        "type": "MODULATION_FLOW",
-        "amount": 0.664
-      }
-    ]
+    "type": "MODULATION_FLOW",
+    "source": "OBLONG",
+    "target": "OBBLIGATO",
+    "amount": 0.664
   },
   "dna": {
-    "aggression": 0.121,
     "brightness": 0.114,
-    "density": 0.498,
+    "warmth": 0.917,
     "movement": 0.66,
+    "density": 0.498,
     "space": 0.939,
-    "warmth": 0.917
+    "aggression": 0.121
   },
-  "engines": [
-    "Oblong",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.512,
-    "COUPLING": 0.303,
     "MOVEMENT": 0.665,
+    "COUPLING": 0.303,
     "SPACE": 0.953
   },
-  "mood": "Family",
-  "name": "Cocoa Expanse",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.294,
-      "macro_movement": 0.649,
-      "macro_space": 0.965
-    },
-    "Oblong": {
-      "macro_character": 0.524,
-      "macro_coupling": 0.312,
-      "macro_movement": 0.68,
-      "macro_space": 0.941
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

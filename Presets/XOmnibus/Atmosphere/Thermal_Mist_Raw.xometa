@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Desert heat shimmer: warm glow, no groundmass at all.",
-  "dna": {
-    "aggression": 0.125,
+  "schema_version": 1,
+  "name": "Thermal Mist Raw",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.78,
-    "density": 0.098,
+    "warmth": 0.862,
     "movement": 0.689,
+    "density": 0.098,
     "space": 0.723,
-    "warmth": 0.862
+    "aggression": 0.125
   },
   "engines": [
     "Oceanic"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "Thermal Mist Raw",
-  "parameters": {
-    "Oceanic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.125,
-    "brightness": 0.78,
-    "density": 0.098,
-    "movement": 0.689,
-    "space": 0.723,
-    "warmth": 0.862
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Desert heat shimmer: warm glow, no groundmass at all.",
   "tags": [
     "atmosphere",
     "warm",
@@ -46,9 +26,6 @@
     "spacious",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -68,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

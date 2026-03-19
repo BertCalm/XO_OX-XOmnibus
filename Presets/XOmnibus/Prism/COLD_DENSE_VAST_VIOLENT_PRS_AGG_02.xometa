@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Owlfish",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.963
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.987,
-    "brightness": 0.432,
-    "density": 0.886,
-    "movement": 0.572,
-    "space": 0.986,
-    "warmth": 0.072
-  },
+  "name": "COLD DENSE VAST VIOLENT PRS AGG 2",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Origami",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.411,
-    "COUPLING": 0.938,
-    "MOVEMENT": 0.558,
-    "SPACE": 0.938
-  },
-  "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Origami": {
       "macro_character": 0.403,
-      "macro_coupling": 0.973,
       "macro_movement": 0.556,
+      "macro_coupling": 0.973,
       "macro_space": 0.945
     },
     "Owlfish": {
       "macro_character": 0.42,
-      "macro_coupling": 0.903,
       "macro_movement": 0.561,
+      "macro_coupling": 0.903,
       "macro_space": 0.93
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OWLFISH",
+    "amount": 0.963
+  },
+  "dna": {
+    "brightness": 0.432,
+    "warmth": 0.072,
+    "movement": 0.572,
+    "density": 0.886,
+    "space": 0.986,
+    "aggression": 0.987
+  },
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.558,
+    "COUPLING": 0.938,
+    "SPACE": 0.938
+  },
   "tags": [
     "prism",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

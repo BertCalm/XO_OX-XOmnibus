@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Oracle",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.884
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.903,
-    "brightness": 0.123,
-    "density": 0.883,
-    "movement": 0.884,
-    "space": 0.521,
-    "warmth": 0.354
-  },
+  "name": "DARK KINETIC DENSE VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "OddfeliX",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.117,
-    "COUPLING": 0.855,
-    "MOVEMENT": 0.856,
-    "SPACE": 0.51
-  },
-  "mood": "Atmosphere",
-  "name": "DARK KINETIC DENSE VIOLENT ...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.119,
-      "macro_coupling": 0.817,
       "macro_movement": 0.864,
+      "macro_coupling": 0.817,
       "macro_space": 0.506
     },
     "Oracle": {
       "macro_character": 0.116,
-      "macro_coupling": 0.893,
       "macro_movement": 0.848,
+      "macro_coupling": 0.893,
       "macro_space": 0.515
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ODDFELIX",
+    "target": "ORACLE",
+    "amount": 0.884
+  },
+  "dna": {
+    "brightness": 0.123,
+    "warmth": 0.354,
+    "movement": 0.884,
+    "density": 0.883,
+    "space": 0.521,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.117,
+    "MOVEMENT": 0.856,
+    "COUPLING": 0.855,
+    "SPACE": 0.51
+  },
   "tags": [
     "atmosphere",
     "aggressive",
@@ -59,10 +48,5 @@
     "dark",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

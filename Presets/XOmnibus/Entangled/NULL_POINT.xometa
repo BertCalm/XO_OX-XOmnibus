@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "NULL POINT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.996
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Ocelot",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.473
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ODYSSEY",
+    "target": "OCELOT",
+    "amount": 0.473
   },
   "dna": {
-    "aggression": 0.457,
     "brightness": 0.879,
-    "density": 0.076,
+    "warmth": 0.497,
     "movement": 0.09,
+    "density": 0.076,
     "space": 0.393,
-    "warmth": 0.497
+    "aggression": 0.457
   },
-  "engines": [
-    "Odyssey",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.241,
-    "COUPLING": 0.049,
     "MOVEMENT": 0.583,
+    "COUPLING": 0.049,
     "SPACE": 0.281
   },
-  "mood": "Entangled",
-  "name": "NULL POINT",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.721,
-      "macro_coupling": 0.159,
-      "macro_movement": 0.19,
-      "macro_space": 0.996
-    },
-    "Odyssey": {
-      "macro_character": 0.963,
-      "macro_coupling": 0.813,
-      "macro_movement": 0.902,
-      "macro_space": 0.934
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "trace",
     "residue"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

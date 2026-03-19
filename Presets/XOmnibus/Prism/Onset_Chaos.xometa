@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Percussion prism exploding with brutal movement",
-  "dna": {
-    "aggression": 0.9318,
+  "schema_version": 1,
+  "name": "Onset Chaos",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.6163,
-    "density": 0.6536,
+    "warmth": 0.3177,
     "movement": 0.8784,
+    "density": 0.6536,
     "space": 0.4328,
-    "warmth": 0.3177
+    "aggression": 0.9318
+  },
+  "dna": {
+    "brightness": 0.6163,
+    "warmth": 0.3177,
+    "movement": 0.8784,
+    "density": 0.6536,
+    "space": 0.4328,
+    "aggression": 0.9318
   },
   "engines": [
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MACHINE",
@@ -37,47 +39,23 @@
   ],
   "macros": {
     "MACHINE": 0.893,
-    "MUTATE": 0.6267,
     "PUNCH": 0.885,
-    "SPACE": 0.6347
+    "SPACE": 0.6347,
+    "MUTATE": 0.6267
   },
-  "mood": "Prism",
-  "name": "Onset Chaos",
+  "couplingIntensity": "None",
   "parameters": {
     "Onset": {
-<<<<<<< HEAD
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-=======
->>>>>>> origin/v1-launch-prep
       "onset_macro_machine": 0.893,
-      "onset_macro_mutate": 0.6267,
       "onset_macro_punch": 0.885,
       "onset_macro_space": 0.6347,
-      "onset_outputLevel": 0.85
+      "onset_macro_mutate": 0.6267,
+      "onset_outputLevel": 0.85,
+      "onset_couplingLevel": 0.5,
+      "onset_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9318,
-    "brightness": 0.6163,
-    "density": 0.6536,
-    "movement": 0.8784,
-    "space": 0.4328,
-    "warmth": 0.3177
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

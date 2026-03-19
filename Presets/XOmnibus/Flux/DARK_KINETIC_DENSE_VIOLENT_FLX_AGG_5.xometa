@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_DENSE_VIOLENT_FLX_AGG_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.43
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Oblique",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.896
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.896
   },
   "dna": {
-    "aggression": 0.902,
     "brightness": 0.082,
-    "density": 0.95,
+    "warmth": 0.427,
     "movement": 0.901,
+    "density": 0.95,
     "space": 0.426,
-    "warmth": 0.427
+    "aggression": 0.902
   },
-  "engines": [
-    "Oceanic",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.505,
-    "COUPLING": 0.86,
     "MOVEMENT": 0.901,
+    "COUPLING": 0.86,
     "SPACE": 0.426
   },
-  "mood": "Flux",
-  "name": "Grain Deep",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.608,
-      "macro_coupling": 0.828,
-      "macro_movement": 0.907,
-      "macro_space": 0.43
-    },
-    "Oceanic": {
-      "macro_character": 0.402,
-      "macro_coupling": 0.86,
-      "macro_movement": 0.852,
-      "macro_space": 0.438
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "dark",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

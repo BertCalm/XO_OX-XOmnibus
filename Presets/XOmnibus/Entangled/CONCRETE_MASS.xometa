@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Overlap",
-        "type": "CHAOS_INJECT",
-        "amount": 0.9902
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0753,
-    "brightness": 0.2951,
-    "density": 0.971,
-    "movement": 0.8042,
-    "space": 0.4683,
-    "warmth": 0.8704
-  },
+  "name": "CONCRETE MASS",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7542,
-    "COUPLING": 0.9029,
-    "MOVEMENT": 0.2256,
-    "SPACE": 0.6744
-  },
-  "mood": "Entangled",
-  "name": "CONCRETE MASS",
   "parameters": {
     "Obscura": {
       "macro_character": 0.7865,
-      "macro_coupling": 0.7463,
       "macro_movement": 0.8765,
+      "macro_coupling": 0.7463,
       "macro_space": 0.5018
     },
     "Overlap": {
       "macro_character": 0.2725,
-      "macro_coupling": 0.9656,
       "macro_movement": 0.1645,
+      "macro_coupling": 0.9656,
       "macro_space": 0.9442
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBSCURA",
+    "target": "OVERLAP",
+    "amount": 0.9902
+  },
+  "dna": {
+    "brightness": 0.2951,
+    "warmth": 0.8704,
+    "movement": 0.8042,
+    "density": 0.971,
+    "space": 0.4683,
+    "aggression": 0.0753
+  },
+  "macros": {
+    "CHARACTER": 0.7542,
+    "MOVEMENT": 0.2256,
+    "COUPLING": 0.9029,
+    "SPACE": 0.6744
+  },
   "tags": [
     "entangled",
     "dense",
@@ -59,10 +48,5 @@
     "crushing",
     "pressure",
     "heavy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.95,
-        "engineA": "Ouroboros",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ouroboros chaos injected into Onset XVC — every drum voice erupting from a fractal attractor.",
-  "dna": {
-    "aggression": 0.99,
-    "brightness": 0.62,
-    "density": 0.96,
-    "movement": 0.78,
-    "space": 0.05,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Percussion Mass",
+  "mood": "Entangled",
   "engines": [
     "Ouroboros",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ouroboros",
     "onset",
     "percussion"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.82,
-    "COUPLING": 0.95,
     "MOVEMENT": 0.78,
+    "COUPLING": 0.95,
     "SPACE": 0.05
   },
-  "mood": "Entangled",
-  "name": "Percussion Mass",
-  "parameters": {
-    "Ouroboros": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.99,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.62,
-    "density": 0.96,
+    "warmth": 0.2,
     "movement": 0.78,
+    "density": 0.96,
     "space": 0.05,
-    "warmth": 0.2
+    "aggression": 0.99
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "onset",
-    "percussion"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.62,
+    "warmth": 0.2,
+    "movement": 0.78,
+    "density": 0.96,
+    "space": 0.05,
+    "aggression": 0.99
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "ONSET",
+        "type": "CHAOS_INJECT",
+        "amount": 0.95
+      }
+    ]
+  }
 }

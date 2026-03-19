@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Ouroboros",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.621
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_FND_2",
   "mood": "Foundation",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_SPARSE_VAST_GENTLE. Variant 2.",
-  "dna": {
-    "aggression": 0.109,
-    "brightness": 0.986,
-    "density": 0.128,
-    "movement": 0.59,
-    "space": 0.986,
-    "warmth": 0.973
-  },
-  "engines": [
-    "Obsidian",
-    "Ouroboros"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 1.0,
-    "COUPLING": 0.101,
-    "MOVEMENT": 0.568,
-    "SPACE": 0.946
-  },
-  "mood": "Foundation",
-  "name": "Bloom Cathedral",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.153,
-      "macro_movement": 0.624,
-      "macro_space": 1.0
-    },
-    "Ouroboros": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.048,
-      "macro_movement": 0.512,
-      "macro_space": 0.891
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "foundation",
     "gentle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.101,
     "SPACE": 0.946
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "THROAT CLOSE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.015
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Orphica",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.434
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OTTONI",
+    "target": "ORPHICA",
+    "amount": 0.434
   },
   "dna": {
-    "aggression": 0.1,
     "brightness": 0.168,
-    "density": 0.3,
+    "warmth": 0.834,
     "movement": 0.825,
+    "density": 0.3,
     "space": 0.037,
-    "warmth": 0.834
+    "aggression": 0.1
   },
-  "engines": [
-    "Ottoni",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.621,
-    "COUPLING": 0.418,
     "MOVEMENT": 0.227,
+    "COUPLING": 0.418,
     "SPACE": 0.037
   },
-  "mood": "Entangled",
-  "name": "THROAT CLOSE",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.075,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.846,
-      "macro_space": 0.015
-    },
-    "Ottoni": {
-      "macro_character": 0.728,
-      "macro_coupling": 0.935,
-      "macro_movement": 0.318,
-      "macro_space": 0.061
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

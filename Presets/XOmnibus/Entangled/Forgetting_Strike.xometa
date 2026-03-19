@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.92,
-        "engineA": "Ombre",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Forgetting layer chaos-injected by Ouroboros topology — the narrative erased by mathematics.",
-  "dna": {
-    "aggression": 0.96,
-    "brightness": 0.14,
-    "density": 0.89,
-    "movement": 0.65,
-    "space": 0.12,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Forgetting Strike",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ombre",
     "ouroboros",
     "forgetting"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "COUPLING": 0.92,
     "MOVEMENT": 0.65,
+    "COUPLING": 0.92,
     "SPACE": 0.12
   },
-  "mood": "Entangled",
-  "name": "Forgetting Strike",
-  "parameters": {
-    "Ombre": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.96,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.14,
-    "density": 0.89,
+    "warmth": 0.2,
     "movement": 0.65,
+    "density": 0.89,
     "space": 0.12,
-    "warmth": 0.2
+    "aggression": 0.96
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "ombre",
-    "ouroboros",
-    "forgetting"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.14,
+    "warmth": 0.2,
+    "movement": 0.65,
+    "density": 0.89,
+    "space": 0.12,
+    "aggression": 0.96
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.92
+      }
+    ]
+  }
 }

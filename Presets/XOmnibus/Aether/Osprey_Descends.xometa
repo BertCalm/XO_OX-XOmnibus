@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.09,
-    "density": 0.12,
-    "movement": 0.35,
-    "space": 0.97,
-    "warmth": 0.2
-  },
+  "name": "Osprey Descends",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.45,
-    "COUPLING": 0.38,
-    "MOVEMENT": 0.35,
-    "SPACE": 0.97
-  },
-  "mood": "Aether",
-  "name": "Osprey Descends",
   "parameters": {
     "Osprey": {
       "osp_macro_character": 0.39,
-      "osp_macro_coupling": 0.36,
       "osp_macro_movement": 0.36,
+      "osp_macro_coupling": 0.36,
       "osp_macro_space": 0.97
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.2,
+    "movement": 0.35,
+    "density": 0.12,
+    "space": 0.97,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.38,
+    "SPACE": 0.97
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "osprey",
     "descent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

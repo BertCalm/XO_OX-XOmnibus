@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Overdub",
-        "type": "PITCH_SYNC",
-        "amount": 0.719
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.904,
-    "brightness": 0.562,
-    "density": 0.062,
-    "movement": 0.063,
-    "space": 0.936,
-    "warmth": 0.932
-  },
+  "name": "CROSS FLX 04",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.747,
-    "COUPLING": 0.92,
-    "MOVEMENT": 0.062,
-    "SPACE": 0.936
-  },
-  "mood": "Flux",
-  "name": "CROSS FLX 04",
   "parameters": {
     "Optic": {
       "macro_character": 0.747,
-      "macro_coupling": 0.92,
       "macro_movement": 0.062,
+      "macro_coupling": 0.92,
       "macro_space": 0.936
     },
     "Overdub": {
       "macro_character": 0.747,
-      "macro_coupling": 0.92,
       "macro_movement": 0.062,
+      "macro_coupling": 0.92,
       "macro_space": 0.936
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "OVERDUB",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.562,
+    "warmth": 0.932,
+    "movement": 0.063,
+    "density": 0.062,
+    "space": 0.936,
+    "aggression": 0.904
+  },
+  "macros": {
+    "CHARACTER": 0.747,
+    "MOVEMENT": 0.062,
+    "COUPLING": 0.92,
+    "SPACE": 0.936
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

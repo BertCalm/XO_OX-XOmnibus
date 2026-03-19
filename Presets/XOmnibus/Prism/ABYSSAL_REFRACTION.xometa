@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ABYSSAL REFRACTION",
   "version": "1.0",
   "mood": "Prism",
@@ -23,66 +20,29 @@
       "macro_space": 0.206
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Octopus",
-        "type": "CHAOS_INJECT",
-        "amount": 0.9
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "OCTOPUS",
+    "amount": 0.9
   },
   "dna": {
-    "aggression": 0.549,
     "brightness": 0.035,
-    "density": 0.374,
+    "warmth": 0.861,
     "movement": 0.792,
+    "density": 0.374,
     "space": 0.958,
-    "warmth": 0.861
+    "aggression": 0.549
   },
-  "engines": [
-    "Ohm",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.91,
-    "COUPLING": 0.618,
     "MOVEMENT": 0.033,
+    "COUPLING": 0.618,
     "SPACE": 0.734
   },
-  "mood": "Prism",
-  "name": "ABYSSAL REFRACTION",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.136,
-      "macro_coupling": 0.04,
-      "macro_movement": 0.945,
-      "macro_space": 0.206
-    },
-    "Ohm": {
-      "macro_character": 0.996,
-      "macro_coupling": 0.074,
-      "macro_movement": 0.327,
-      "macro_space": 0.123
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

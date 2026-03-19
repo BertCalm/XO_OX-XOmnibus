@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CINDERBLOCK SPECTRUM",
   "version": "1.0",
   "mood": "Prism",
@@ -23,67 +20,30 @@
       "macro_space": 0.499
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.335
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OUTWIT",
+    "target": "OBLONG",
+    "amount": 0.335
   },
   "dna": {
-    "aggression": 0.951,
     "brightness": 0.814,
-    "density": 0.908,
+    "warmth": 0.883,
     "movement": 0.304,
+    "density": 0.908,
     "space": 0.41,
-    "warmth": 0.883
+    "aggression": 0.951
   },
-  "engines": [
-    "Outwit",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.354,
-    "COUPLING": 0.02,
     "MOVEMENT": 0.867,
+    "COUPLING": 0.02,
     "SPACE": 0.574
   },
-  "mood": "Prism",
-  "name": "CINDERBLOCK SPECTRUM",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.133,
-      "macro_movement": 0.645,
-      "macro_space": 0.499
-    },
-    "Outwit": {
-      "macro_character": 0.086,
-      "macro_coupling": 0.175,
-      "macro_movement": 0.754,
-      "macro_space": 0.779
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

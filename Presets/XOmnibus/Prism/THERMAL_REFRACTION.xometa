@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.585
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8,
-    "brightness": 0.867,
-    "density": 0.135,
-    "movement": 0.258,
-    "space": 0.245,
-    "warmth": 0.932
-  },
+  "name": "THERMAL REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "OddfeliX",
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.709,
-    "COUPLING": 0.774,
-    "MOVEMENT": 0.443,
-    "SPACE": 0.114
-  },
-  "mood": "Prism",
-  "name": "THERMAL REFRACTION",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.097,
-      "macro_coupling": 0.711,
       "macro_movement": 0.947,
+      "macro_coupling": 0.711,
       "macro_space": 0.627
     },
     "Ombre": {
       "macro_character": 0.142,
-      "macro_coupling": 0.771,
       "macro_movement": 0.259,
+      "macro_coupling": 0.771,
       "macro_space": 0.32
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "OMBRE",
+    "amount": 0.585
+  },
+  "dna": {
+    "brightness": 0.867,
+    "warmth": 0.932,
+    "movement": 0.258,
+    "density": 0.135,
+    "space": 0.245,
+    "aggression": 0.8
+  },
+  "macros": {
+    "CHARACTER": 0.709,
+    "MOVEMENT": 0.443,
+    "COUPLING": 0.774,
+    "SPACE": 0.114
+  },
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

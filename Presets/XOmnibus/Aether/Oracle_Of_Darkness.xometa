@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.07,
-    "density": 0.1,
-    "movement": 0.4,
-    "space": 0.93,
-    "warmth": 0.2
-  },
+  "name": "Oracle Of Darkness",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.3,
-    "COUPLING": 0.2,
-    "MOVEMENT": 0.4,
-    "SPACE": 0.93
-  },
-  "mood": "Aether",
-  "name": "Oracle Of Darkness",
   "parameters": {
     "Oracle": {
       "oracle_macro_character": 0.2,
-      "oracle_macro_coupling": 0.36,
       "oracle_macro_movement": 0.43,
+      "oracle_macro_coupling": 0.36,
       "oracle_macro_space": 0.93
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.2,
+    "movement": 0.4,
+    "density": 0.1,
+    "space": 0.93,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.2,
+    "SPACE": 0.93
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "oracle",
     "prophecy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

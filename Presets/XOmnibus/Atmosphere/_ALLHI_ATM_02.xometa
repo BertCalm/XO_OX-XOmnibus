@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oceanic",
-        "type": "CHAOS_INJECT",
-        "amount": 0.951
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.932,
-    "brightness": 0.968,
-    "density": 0.9,
-    "movement": 0.909,
-    "space": 0.933,
-    "warmth": 0.592
-  },
+  "name": "ALLHI ATM 02",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Orbital",
     "Oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.78,
-    "COUPLING": 0.933,
-    "MOVEMENT": 0.905,
-    "SPACE": 0.933
-  },
-  "mood": "Atmosphere",
-  "name": "ALLHI ATM 02",
   "parameters": {
-<<<<<<< HEAD
-    "Oceanic": {
-=======
     "Orbital": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.78,
-      "macro_coupling": 0.933,
       "macro_movement": 0.905,
+      "macro_coupling": 0.933,
       "macro_space": 0.933
     },
-<<<<<<< HEAD
-    "Orbital": {
-=======
     "Oceanic": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.78,
-      "macro_coupling": 0.933,
       "macro_movement": 0.905,
+      "macro_coupling": 0.933,
       "macro_space": 0.933
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.951
+  },
+  "dna": {
+    "brightness": 0.968,
+    "warmth": 0.592,
+    "movement": 0.909,
+    "density": 0.9,
+    "space": 0.933,
+    "aggression": 0.932
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.905,
+    "COUPLING": 0.933,
+    "SPACE": 0.933
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

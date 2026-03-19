@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ONSET — bright extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.67,
-    "brightness": 0.92,
-    "density": 0.53,
-    "movement": 0.15,
-    "space": 0.46,
-    "warmth": 0.25
-  },
+  "schema_version": 1,
+  "name": "Machine Daylight",
+  "mood": "Atmosphere",
   "engines": [
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,12 +19,25 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Machine Daylight",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.25,
+    "movement": 0.15,
+    "density": 0.53,
+    "space": 0.46,
+    "aggression": 0.67
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.25,
+    "movement": 0.15,
+    "density": 0.53,
+    "space": 0.46,
+    "aggression": 0.67
+  },
   "parameters": {
     "Onset": {
-<<<<<<< HEAD
-=======
       "ons_machine": 0.2,
       "ons_punch": 0.61,
       "ons_space": 0.31,
@@ -52,44 +51,12 @@
       "ons_character": 0.32,
       "ons_movement": 0.47,
       "ons_density": 0.27,
->>>>>>> origin/v1-launch-prep
       "ons_aggression": 0.25,
-      "ons_character": 0.32,
       "ons_coupling": 0.1,
-      "ons_delayMix": 0.56,
-      "ons_density": 0.27,
-      "ons_filterCutoff": 0.13,
-      "ons_hihatDecay": 780.4,
-      "ons_kickTune": 0.73,
-      "ons_machine": 0.2,
-      "ons_movement": 0.47,
-      "ons_mutate": 0.72,
-      "ons_outputLevel": 0.29,
-      "ons_punch": 0.61,
-      "ons_reverbMix": 0.37,
-      "ons_snareTone": 0.86,
-      "ons_space": 0.31
+      "ons_outputLevel": 0.29
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.67,
-    "brightness": 0.92,
-    "density": 0.53,
-    "movement": 0.15,
-    "space": 0.46,
-    "warmth": 0.25
-  },
-  "tags": [
-    "atmosphere",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

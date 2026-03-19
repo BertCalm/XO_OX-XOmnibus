@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.692,
-        "engineA": "Overlap",
-        "engineB": "Obbligato",
-        "type": "PHASE_LOCK"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Obbligato dual winds breathe into OVERLAP FDN room size — flute/oboe vibrato becomes room modulation",
-  "dna": {
-    "aggression": 0.409,
-    "brightness": 0.525,
-    "density": 0.082,
-    "movement": 0.45,
-    "space": 0.725,
-    "warmth": 0.378
-  },
+  "schema_version": 1,
+  "name": "Wind Cathedral",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Obbligato"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "obbligato",
     "wind",
     "breath"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.504,
-    "COUPLING": 0.629,
     "MOVEMENT": 0.383,
+    "COUPLING": 0.629,
     "SPACE": 0.543
   },
-  "mood": "Entangled",
-  "name": "Wind Cathedral",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.409,
+    "movement": 0.45,
+    "warmth": 0.378,
+    "density": 0.082
+  },
+  "sonic_dna": {
+    "brightness": 0.525,
+    "space": 0.725,
+    "aggression": 0.25,
+    "movement": 0.45,
+    "warmth": 0.575,
+    "density": 0.6
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.795,
-      "olap_crossfeedAmt": 0.366,
-=======
       "olap_size": 0.698,
       "olap_decay": 0.874,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.535,
-      "olap_decay": 0.874,
       "olap_diffusion": 0.706,
-      "olap_earlyMix": 0.357,
-      "olap_filterCutoff": 0.766,
-      "olap_filterReso": 0.132,
-      "olap_frondDensity": 0.742,
-      "olap_lateMix": 0.631,
       "olap_modDepth": 0.15,
       "olap_modRate": 0.079,
-      "olap_nodeCount": 6,
-      "olap_outputLevel": 0.859,
       "olap_preDelay": 0.048,
-      "olap_shimmerMix": 0.15,
-      "olap_size": 0.698,
-      "olap_spinRate": 0.111
+      "olap_earlyMix": 0.357,
+      "olap_lateMix": 0.631,
+      "olap_filterCutoff": 0.766,
+      "olap_filterReso": 0.132,
+      "olap_outputLevel": 0.859,
+      "olap_couplingLevel": 0.795,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.742,
+      "olap_nodeCount": 6,
+      "olap_crossfeedAmt": 0.366,
+      "olap_spinRate": 0.111,
+      "olap_shimmerMix": 0.15
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.25,
-    "brightness": 0.525,
-    "density": 0.6,
-    "movement": 0.45,
-    "space": 0.725,
-    "warmth": 0.575
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "obbligato",
-    "wind",
-    "breath"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OBBLIGATO",
+        "type": "PHASE_LOCK",
+        "amount": 0.692
+      }
+    ]
+  }
 }

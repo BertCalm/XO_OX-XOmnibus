@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Maximum Diet macro with fast feed rate and Mixtur growl — the owlfish attacks",
-  "dna": {
-    "aggression": 0.75,
+  "schema_version": 1,
+  "name": "Feeding Frenzy",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.4,
-    "density": 0.8,
+    "warmth": 0.45,
+    "aggression": 0.75,
     "movement": 1.0,
-    "space": 0.4,
-    "warmth": 0.45
+    "density": 0.8,
+    "space": 0.4
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +21,6 @@
     "granular",
     "growl",
     "chaotic"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -34,54 +28,21 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "mood": "Flux",
-  "name": "Feeding Frenzy",
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 1.0,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.75
+  },
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "owl_ampAttack": 1,
-      "owl_ampDecay": 150,
-      "owl_ampRelease": 250,
-      "owl_ampSustain": 0.8,
-      "owl_armorDecay": 0.3,
-      "owl_armorDelay": 0.35,
-      "owl_armorDuck": 0.45,
-      "owl_armorScatter": 0.5,
-      "owl_armorThreshold": 0.6,
-      "owl_bodyFreq": 42,
-      "owl_bodyLevel": 0.45,
-      "owl_compAttack": 0.15,
-      "owl_compRatio": 0.55,
-      "owl_compRelease": 0.25,
-      "owl_compThreshold": 0.35,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.4,
-      "owl_depth": 0.45,
-      "owl_feedRate": 0.9,
-      "owl_feeding": 0.9,
-      "owl_filterCutoff": 0.5,
-      "owl_filterReso": 0.4,
-      "owl_filterTrack": 0.55,
-      "owl_fundWave": 0.4,
-      "owl_grainDensity": 0.9,
-      "owl_grainMix": 0.8,
-      "owl_grainPitch": 0.55,
-      "owl_grainSize": 0.15,
-=======
       "owl_portamento": 0.1,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
-      "owl_mixtur": 0.75,
       "owl_morphGlide": 0.35,
-      "owl_outputLevel": 0.8,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.1,
-      "owl_pressure": 0.55,
-      "owl_reverbDamp": 0.5,
-      "owl_reverbMix": 0.2,
-      "owl_reverbPreDelay": 0.15,
-      "owl_reverbSize": 0.3,
+      "owl_subMix": 0.55,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 4,
@@ -90,24 +51,47 @@
       "owl_subLevel2": 0.6,
       "owl_subLevel3": 0.45,
       "owl_subLevel4": 0.3,
-      "owl_subMix": 0.55,
-      "owl_subWave": 0.9
+      "owl_mixtur": 0.75,
+      "owl_fundWave": 0.4,
+      "owl_subWave": 0.9,
+      "owl_bodyFreq": 42,
+      "owl_bodyLevel": 0.45,
+      "owl_compRatio": 0.55,
+      "owl_compThreshold": 0.35,
+      "owl_compAttack": 0.15,
+      "owl_compRelease": 0.25,
+      "owl_filterCutoff": 0.5,
+      "owl_filterReso": 0.4,
+      "owl_filterTrack": 0.55,
+      "owl_grainSize": 0.15,
+      "owl_grainDensity": 0.9,
+      "owl_grainPitch": 0.55,
+      "owl_grainMix": 0.8,
+      "owl_feedRate": 0.9,
+      "owl_armorThreshold": 0.6,
+      "owl_armorDecay": 0.3,
+      "owl_armorScatter": 0.5,
+      "owl_armorDuck": 0.45,
+      "owl_armorDelay": 0.35,
+      "owl_reverbSize": 0.3,
+      "owl_reverbDamp": 0.5,
+      "owl_reverbPreDelay": 0.15,
+      "owl_reverbMix": 0.2,
+      "owl_ampAttack": 1,
+      "owl_ampDecay": 150,
+      "owl_ampSustain": 0.8,
+      "owl_ampRelease": 250,
+      "owl_depth": 0.45,
+      "owl_feeding": 0.9,
+      "owl_defense": 0.4,
+      "owl_pressure": 0.55,
+      "owl_outputLevel": 0.8,
+      "owl_outputPan": 0.0,
+      "owl_couplingLevel": 0.5,
+      "owl_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.75,
-    "brightness": 0.4,
-    "density": 0.8,
-    "movement": 1.0,
-    "space": 0.4,
-    "warmth": 0.45
-  },
-  "tags": [
-    "aggressive",
-    "granular",
-    "growl",
-    "chaotic"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": []
+  }
 }

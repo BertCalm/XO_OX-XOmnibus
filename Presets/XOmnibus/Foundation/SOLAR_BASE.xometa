@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Origami",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.532
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.687,
-    "brightness": 0.904,
-    "density": 0.226,
-    "movement": 0.665,
-    "space": 0.949,
-    "warmth": 0.34
-  },
+  "name": "SOLAR BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Optic",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.351,
-    "COUPLING": 0.785,
-    "MOVEMENT": 0.661,
-    "SPACE": 0.682
-  },
-  "mood": "Foundation",
-  "name": "SOLAR BASE",
   "parameters": {
     "Optic": {
       "macro_character": 0.664,
-      "macro_coupling": 0.981,
       "macro_movement": 0.821,
+      "macro_coupling": 0.981,
       "macro_space": 0.495
     },
     "Origami": {
       "macro_character": 0.037,
-      "macro_coupling": 0.59,
       "macro_movement": 0.502,
+      "macro_coupling": 0.59,
       "macro_space": 0.87
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_LOCK",
+    "source": "OPTIC",
+    "target": "ORIGAMI",
+    "amount": 0.532
+  },
+  "dna": {
+    "brightness": 0.904,
+    "warmth": 0.34,
+    "movement": 0.665,
+    "density": 0.226,
+    "space": 0.949,
+    "aggression": 0.687
+  },
+  "macros": {
+    "CHARACTER": 0.351,
+    "MOVEMENT": 0.661,
+    "COUPLING": 0.785,
+    "SPACE": 0.682
+  },
   "tags": [
     "foundation",
     "bright",
     "extreme",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

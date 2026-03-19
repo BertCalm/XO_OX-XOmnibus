@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MASS FLOOD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.4663
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Ohm",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.8946
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OMBRE",
+    "target": "OHM",
+    "amount": 0.8946
   },
   "dna": {
-    "aggression": 0.8028,
     "brightness": 0.3084,
-    "density": 0.9737,
+    "warmth": 0.3596,
     "movement": 0.8828,
+    "density": 0.9737,
     "space": 0.466,
-    "warmth": 0.3596
+    "aggression": 0.8028
   },
-  "engines": [
-    "Ombre",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7224,
-    "COUPLING": 0.7961,
     "MOVEMENT": 0.7616,
+    "COUPLING": 0.7961,
     "SPACE": 0.2031
   },
-  "mood": "Entangled",
-  "name": "MASS FLOOD",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.2393,
-      "macro_coupling": 0.7132,
-      "macro_movement": 0.3216,
-      "macro_space": 0.4663
-    },
-    "Ombre": {
-      "macro_character": 0.9144,
-      "macro_coupling": 0.8815,
-      "macro_movement": 0.6956,
-      "macro_space": 0.3966
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "compressed",
     "bound",
     "solid"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

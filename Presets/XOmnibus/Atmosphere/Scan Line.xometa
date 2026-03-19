@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Scan lines refreshing faster than perception. Electric texture, cool warmth.",
+  "name": "Scan Line",
+  "version": "1.0",
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.582,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.603,
+    "COUPLING": 0.0,
     "SPACE": 0.448
   },
-  "mood": "Atmosphere",
-  "name": "Scan Line",
-  "parameters": {
-    "OddfeliX": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.219,
     "brightness": 0.906,
-    "density": 0.587,
+    "warmth": 0.257,
     "movement": 0.603,
+    "density": 0.587,
     "space": 0.448,
-    "warmth": 0.257
+    "aggression": 0.219
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Scan lines refreshing faster than perception. Electric texture, cool warmth."
 }

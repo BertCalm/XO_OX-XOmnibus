@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Orbit at maximum angular velocity, brutal phase",
-  "dna": {
-    "aggression": 0.9098,
+  "schema_version": 1,
+  "name": "Orbital Fury",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.6792,
-    "density": 0.6624,
+    "warmth": 0.2757,
     "movement": 0.908,
+    "density": 0.6624,
     "space": 0.5274,
-    "warmth": 0.2757
+    "aggression": 0.9098
+  },
+  "dna": {
+    "brightness": 0.6792,
+    "warmth": 0.2757,
+    "movement": 0.908,
+    "density": 0.6624,
+    "space": 0.5274,
+    "aggression": 0.9098
   },
   "engines": [
     "Orbital"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ORBIT",
@@ -36,48 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "COUPLE": 0.7551,
     "ORBIT": 0.6521,
     "PHASE": 0.7554,
+    "COUPLE": 0.7551,
     "SPACE": 0.2651
   },
-  "mood": "Prism",
-  "name": "Orbital Fury",
+  "couplingIntensity": "None",
   "parameters": {
     "Orbital": {
-<<<<<<< HEAD
-      "orb_couplingBus": 0,
-      "orb_couplingLevel": 0.5,
-      "orb_macro_couple": 0.7551,
-=======
->>>>>>> origin/v1-launch-prep
       "orb_macro_orbit": 0.6521,
       "orb_macro_phase": 0.7554,
+      "orb_macro_couple": 0.7551,
       "orb_macro_space": 0.2651,
-      "orb_outputLevel": 0.85
+      "orb_outputLevel": 0.85,
+      "orb_couplingLevel": 0.5,
+      "orb_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9098,
-    "brightness": 0.6792,
-    "density": 0.6624,
-    "movement": 0.908,
-    "space": 0.5274,
-    "warmth": 0.2757
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

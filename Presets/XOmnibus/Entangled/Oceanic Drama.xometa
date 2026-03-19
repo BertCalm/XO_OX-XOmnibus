@@ -1,51 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Oceanic",
-        "engineB": "Ole",
-        "type": "HARMONIC_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OLE's Afro-Latin percussion drives OCEANIC swell — the ocean has rhythm, always.",
-  "dna": {
-    "aggression": 0.34,
-    "brightness": 0.64,
-    "density": 0.53,
-    "movement": 0.67,
-    "space": 0.62,
-    "warmth": 0.59
-  },
-  "engines": [
-    "Oceanic",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.65,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.7,
-    "SPACE": 0.6
-  },
-  "mood": "Entangled",
-  "name": "Oceanic Drama",
-  "parameters": {
-    "Oceanic": {},
-    "Ole": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Oceanic Drama",
   "mood": "Entangled",
@@ -56,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OLE's Afro-Latin percussion drives OCEANIC swell — the ocean has rhythm, always.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -67,6 +19,38 @@
     "swell",
     "rhythm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.75,
+    "SPACE": 0.6
+  },
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.59,
+    "movement": 0.67,
+    "density": 0.53,
+    "space": 0.62,
+    "aggression": 0.34
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "OLE",
+        "type": "HARMONIC_BLEND",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
 }

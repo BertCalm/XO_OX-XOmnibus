@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Overbite",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.872
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.968,
-    "brightness": 0.962,
-    "density": 0.599,
-    "movement": 0.943,
-    "space": 0.346,
-    "warmth": 0.038
-  },
+  "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_2",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Ouroboros",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.929,
-    "COUPLING": 0.365,
-    "MOVEMENT": 0.415,
-    "SPACE": 0.537
-  },
-  "mood": "Foundation",
-  "name": "Quartz Crush",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.929,
-      "macro_coupling": 0.365,
       "macro_movement": 0.415,
+      "macro_coupling": 0.365,
       "macro_space": 0.537
     },
     "Overbite": {
       "macro_character": 0.947,
-      "macro_coupling": 0.355,
       "macro_movement": 0.461,
+      "macro_coupling": 0.355,
       "macro_space": 0.559
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OUROBOROS",
+    "target": "OVERBITE",
+    "amount": 0.872
+  },
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.038,
+    "movement": 0.943,
+    "density": 0.599,
+    "space": 0.346,
+    "aggression": 0.968
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.415,
+    "COUPLING": 0.365,
+    "SPACE": 0.537
+  },
   "tags": [
     "foundation",
     "violent",
     "bright",
     "cold",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

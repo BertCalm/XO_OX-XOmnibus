@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "2A03 pulse wave at dawn — pure retro luminance",
-  "dna": {
-    "aggression": 0.15,
+  "schema_version": 1,
+  "name": "Chip Sunrise",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.96,
-    "density": 0.2,
+    "warmth": 0.1,
+    "aggression": 0.15,
     "movement": 0.7,
-    "space": 0.6,
-    "warmth": 0.1
+    "density": 0.2,
+    "space": 0.6
   },
   "engines": [
     "Overworld"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Prism",
-  "name": "Chip Sunrise II",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.96,
-    "density": 0.2,
-    "movement": 0.7,
-    "space": 0.6,
-    "warmth": 0.1
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "2A03 pulse wave at dawn — pure retro luminance",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "8bit",
     "morning"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ERA",
     "GLITCH",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

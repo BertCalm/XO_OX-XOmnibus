@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Crepuscular Shroud",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. ORACLE in void register.",
-  "dna": {
-    "aggression": 0.083,
-    "brightness": 0.15,
-    "density": 0.578,
-    "movement": 0.391,
-    "space": 0.812,
-    "warmth": 0.601
-  },
-  "engines": [
-    "Oracle"
-  ],
-  "macroLabels": [
-    "VISION",
-    "FLOW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.26,
-    "FLOW": 0.344,
-    "SPACE": 0.724,
-    "VISION": 0.113
-  },
-  "mood": "Atmosphere",
-  "name": "Crepuscular Shroud",
-  "parameters": {
-    "Oracle": {
-      "coupling": 0.26,
-      "flow": 0.344,
-      "space": 0.724,
-      "vision": 0.113
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "VISION",
     "FLOW",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

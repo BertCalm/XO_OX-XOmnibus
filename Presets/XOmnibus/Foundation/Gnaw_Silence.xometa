@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERBITE — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.15,
-    "brightness": 0.09,
-    "density": 0.45,
-    "movement": 0.11,
-    "space": 0.28,
-    "warmth": 0.67
-  },
+  "schema_version": 1,
+  "name": "Gnaw Silence",
+  "mood": "Foundation",
   "engines": [
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,53 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Gnaw Silence",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.67,
+    "movement": 0.11,
+    "density": 0.45,
+    "space": 0.28,
+    "aggression": 0.15
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.67,
+    "movement": 0.11,
+    "density": 0.45,
+    "space": 0.28,
+    "aggression": 0.15
+  },
   "parameters": {
     "Overbite": {
-<<<<<<< HEAD
-=======
       "poss_filterCutoff": 0.89,
       "poss_filterReso": 0.25,
       "poss_envAmount": 0.59,
->>>>>>> origin/v1-launch-prep
       "poss_ampAttack": 497.4,
       "poss_ampDecay": 338.3,
-      "poss_ampRelease": 420.6,
       "poss_ampSustain": 0.71,
-      "poss_bite": 0.75,
-      "poss_character": 0.4,
-      "poss_coupling": 0.32,
-      "poss_delayMix": 0.24,
-      "poss_envAmount": 0.59,
-      "poss_filterCutoff": 0.89,
-      "poss_filterReso": 0.25,
-      "poss_lfoDepth": 0.2,
+      "poss_ampRelease": 420.6,
       "poss_lfoRate": 0.93,
-      "poss_movement": 0.67,
+      "poss_lfoDepth": 0.2,
       "poss_reverbMix": 0.72,
-      "poss_space": 0.3
+      "poss_delayMix": 0.24,
+      "poss_character": 0.4,
+      "poss_movement": 0.67,
+      "poss_space": 0.3,
+      "poss_coupling": 0.32,
+      "poss_bite": 0.75
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.09,
-    "density": 0.45,
-    "movement": 0.11,
-    "space": 0.28,
-    "warmth": 0.67
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

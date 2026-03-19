@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Spectral",
-  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.587,
+  "schema_version": 1,
+  "name": "COLD TIGHT KINETIC DARK F5",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.043,
-    "density": 0.408,
+    "warmth": 0.066,
+    "aggression": 0.587,
     "movement": 0.958,
-    "space": 0.065,
-    "warmth": 0.066
+    "density": 0.408,
+    "space": 0.065
   },
   "engines": [
     "Obbligato"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "COLD TIGHT KINETIC DARK F5",
-  "parameters": {
-    "Obbligato": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.587,
-    "brightness": 0.043,
-    "density": 0.408,
-    "movement": 0.958,
-    "space": 0.065,
-    "warmth": 0.066
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme kinetic movement, extreme tight space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "cold",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

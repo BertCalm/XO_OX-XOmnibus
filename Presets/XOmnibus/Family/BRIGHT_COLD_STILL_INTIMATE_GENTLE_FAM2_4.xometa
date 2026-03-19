@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT COLD STILL INTIMATE GENTLE FAM2 4",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.121
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ole",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.192
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.192
   },
   "dna": {
-    "aggression": 0.087,
     "brightness": 0.921,
-    "density": 0.297,
+    "warmth": 0.084,
     "movement": 0.02,
+    "density": 0.297,
     "space": 0.102,
-    "warmth": 0.084
+    "aggression": 0.087
   },
-  "engines": [
-    "Opal",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.503,
-    "COUPLING": 0.192,
     "MOVEMENT": 0.02,
+    "COUPLING": 0.192,
     "SPACE": 0.102
   },
-  "mood": "Family",
-  "name": "BRIGHT COLD STILL INTIMATE ...",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.207,
-      "macro_movement": 0.03,
-      "macro_space": 0.121
-    },
-    "Opal": {
-      "macro_character": 0.503,
-      "macro_coupling": 0.192,
-      "macro_movement": 0.02,
-      "macro_space": 0.102
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -82,10 +47,5 @@
     "still",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

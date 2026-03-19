@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "GRIND GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.667
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Onset",
-        "type": "FILTER_MOD",
-        "amount": 0.806
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OUTWIT",
+    "target": "ONSET",
+    "amount": 0.806
   },
   "dna": {
-    "aggression": 0.915,
     "brightness": 0.688,
-    "density": 0.479,
+    "warmth": 0.305,
     "movement": 0.667,
+    "density": 0.479,
     "space": 0.932,
-    "warmth": 0.305
+    "aggression": 0.915
   },
-  "engines": [
-    "Outwit",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.558,
-    "COUPLING": 0.806,
     "MOVEMENT": 0.667,
+    "COUPLING": 0.806,
     "SPACE": 0.932
   },
-  "mood": "Foundation",
-  "name": "GRIND GROUND",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.322,
-      "macro_coupling": 0.321,
-      "macro_movement": 0.38,
-      "macro_space": 0.667
-    },
-    "Outwit": {
-      "macro_character": 0.332,
-      "macro_coupling": 0.529,
-      "macro_movement": 0.61,
-      "macro_space": 0.347
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

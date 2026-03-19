@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Osprey",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.931
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.903,
-    "brightness": 0.111,
-    "density": 0.398,
-    "movement": 0.429,
-    "space": 0.123,
-    "warmth": 0.941
-  },
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 5",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Orbital",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.105,
-    "COUPLING": 0.843,
-    "MOVEMENT": 0.416,
-    "SPACE": 0.119
-  },
-  "mood": "Atmosphere",
-  "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
     "Orbital": {
       "macro_character": 0.106,
-      "macro_coupling": 0.856,
       "macro_movement": 0.42,
+      "macro_coupling": 0.856,
       "macro_space": 0.12
     },
     "Osprey": {
       "macro_character": 0.105,
-      "macro_coupling": 0.83,
       "macro_movement": 0.412,
+      "macro_coupling": 0.83,
       "macro_space": 0.118
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORBITAL",
+    "target": "OSPREY",
+    "amount": 0.931
+  },
+  "dna": {
+    "brightness": 0.111,
+    "warmth": 0.941,
+    "movement": 0.429,
+    "density": 0.398,
+    "space": 0.123,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.105,
+    "MOVEMENT": 0.416,
+    "COUPLING": 0.843,
+    "SPACE": 0.119
+  },
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "dark",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

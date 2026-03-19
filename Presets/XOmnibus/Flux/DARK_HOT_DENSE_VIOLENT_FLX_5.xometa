@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_VIOLENT_FLX_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.2945
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.9513
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERWORLD",
+    "target": "ORACLE",
+    "amount": 0.9513
   },
   "dna": {
-    "aggression": 0.8767,
     "brightness": 0.1052,
-    "density": 0.9343,
+    "warmth": 0.9016,
     "movement": 0.5153,
+    "density": 0.9343,
     "space": 0.3545,
-    "warmth": 0.9016
+    "aggression": 0.8767
   },
-  "engines": [
-    "Overworld",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.2079,
-    "COUPLING": 0.7345,
     "MOVEMENT": 0.5981,
+    "COUPLING": 0.7345,
     "SPACE": 0.2403
   },
-  "mood": "Flux",
-  "name": "DARK_HOT_DENSE_VIOLENT_FLX_5",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.0628,
-      "macro_coupling": 0.7567,
-      "macro_movement": 0.5788,
-      "macro_space": 0.2945
-    },
-    "Overworld": {
-      "macro_character": 0.2079,
-      "macro_coupling": 0.7345,
-      "macro_movement": 0.5981,
-      "macro_space": 0.2403
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "high-warmth",
     "high-density",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

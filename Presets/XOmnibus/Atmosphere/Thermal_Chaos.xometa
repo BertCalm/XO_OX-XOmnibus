@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Thermal Chaos",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. ONSET kinetic register.",
-  "dna": {
-    "aggression": 0.453,
-    "brightness": 0.408,
-    "density": 0.665,
-    "movement": 0.919,
-    "space": 0.67,
-    "warmth": 0.52
-  },
-  "engines": [
-    "Onset"
-  ],
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "SPACE",
-    "MUTATE"
-  ],
-  "macros": {
-    "MACHINE": 0.415,
-    "MUTATE": 0.747,
-    "PUNCH": 0.838,
-    "SPACE": 0.412
-  },
-  "mood": "Atmosphere",
-  "name": "Thermal Chaos",
-  "parameters": {
-    "Onset": {
-      "machine": 0.415,
-      "mutate": 0.747,
-      "punch": 0.838,
-      "space": 0.412
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -58,9 +16,6 @@
     "weather",
     "dynamic"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "MACHINE",
     "PUNCH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

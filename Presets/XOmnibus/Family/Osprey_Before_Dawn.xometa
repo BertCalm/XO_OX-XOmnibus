@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OSPREY in pre-dawn dark — wings folded, waiting, all potential unreleased.",
-  "dna": {
-    "aggression": 0.52,
-    "brightness": 0.14,
-    "density": 0.65,
-    "movement": 0.2,
-    "space": 0.48,
-    "warmth": 0.32
-  },
+  "schema_version": 1,
+  "name": "Osprey Before Dawn",
+  "mood": "Family",
   "engines": [
     "Osprey"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "SOAR",
-    "CLARITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Osprey Before Dawn",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OSPREY in pre-dawn dark — wings folded, waiting, all potential unreleased.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "patient",
     "hunting"
   ],
+  "macroLabels": [
+    "SOAR",
+    "CLARITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.48,
     "aggression": 0.52
   }
->>>>>>> origin/v1-launch-prep
 }

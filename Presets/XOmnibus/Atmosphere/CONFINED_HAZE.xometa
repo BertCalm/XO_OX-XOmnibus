@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Overlap",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.522
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.618,
-    "brightness": 0.881,
-    "density": 0.689,
-    "movement": 0.12,
-    "space": 0.094,
-    "warmth": 0.982
-  },
+  "name": "CONFINED HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Orphica",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.344,
-    "COUPLING": 0.282,
-    "MOVEMENT": 0.736,
-    "SPACE": 0.094
-  },
-  "mood": "Atmosphere",
-  "name": "CONFINED HAZE",
   "parameters": {
     "Orphica": {
       "macro_character": 0.313,
-      "macro_coupling": 0.186,
       "macro_movement": 0.73,
+      "macro_coupling": 0.186,
       "macro_space": 0.094
     },
     "Overlap": {
       "macro_character": 0.787,
-      "macro_coupling": 0.753,
       "macro_movement": 0.278,
+      "macro_coupling": 0.753,
       "macro_space": 0.09
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORPHICA",
+    "target": "OVERLAP",
+    "amount": 0.522
+  },
+  "dna": {
+    "brightness": 0.881,
+    "warmth": 0.982,
+    "movement": 0.12,
+    "density": 0.689,
+    "space": 0.094,
+    "aggression": 0.618
+  },
+  "macros": {
+    "CHARACTER": 0.344,
+    "MOVEMENT": 0.736,
+    "COUPLING": 0.282,
+    "SPACE": 0.094
+  },
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

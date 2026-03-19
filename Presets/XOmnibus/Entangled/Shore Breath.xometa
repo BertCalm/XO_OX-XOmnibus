@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Oceanic",
-        "type": "PHOSPHOR_PULSE",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Oceanic shoreline separation obligated to OBBLIGATO breath rhythm — tide follows the reed",
+  "name": "Shore Breath",
+  "version": "1.0",
   "engines": [
     "Obbligato",
     "Oceanic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Shore Breath",
-  "parameters": {
-    "Obbligato": {},
-    "Oceanic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.33,
     "brightness": 0.55,
-    "density": 0.63,
+    "warmth": 0.63,
     "movement": 0.59,
+    "density": 0.63,
     "space": 0.6,
-    "warmth": 0.63
+    "aggression": 0.33
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHOSPHOR_PULSE",
+    "source": "OBBLIGATO",
+    "target": "OCEANIC",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oceanic",
     "wind"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Oceanic shoreline separation obligated to OBBLIGATO breath rhythm — tide follows the reed"
->>>>>>> origin/v1-launch-prep
 }

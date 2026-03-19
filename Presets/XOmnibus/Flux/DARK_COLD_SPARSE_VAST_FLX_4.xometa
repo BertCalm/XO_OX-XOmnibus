@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_SPARSE_VAST_FLX_4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.9498
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Odyssey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8636
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "ODYSSEY",
+    "amount": 0.8636
   },
   "dna": {
-    "aggression": 0.4814,
     "brightness": 0.1315,
-    "density": 0.0455,
+    "warmth": 0.0756,
     "movement": 0.6028,
+    "density": 0.0455,
     "space": 0.9347,
-    "warmth": 0.0756
+    "aggression": 0.4814
   },
-  "engines": [
-    "Oracle",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1411,
-    "COUPLING": 0.4027,
     "MOVEMENT": 0.6347,
+    "COUPLING": 0.4027,
     "SPACE": 0.7854
   },
-  "mood": "Flux",
-  "name": "DARK_COLD_SPARSE_VAST_FLX_4",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.1773,
-      "macro_coupling": 0.6245,
-      "macro_movement": 0.5068,
-      "macro_space": 0.9498
-    },
-    "Oracle": {
-      "macro_character": 0.1411,
-      "macro_coupling": 0.4027,
-      "macro_movement": 0.6347,
-      "macro_space": 0.7854
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-warmth",
     "low-density",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

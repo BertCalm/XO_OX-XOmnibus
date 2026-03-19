@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OUROBOROS — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.54,
-    "brightness": 0.04,
-    "density": 0.74,
-    "movement": 0.79,
-    "space": 0.53,
-    "warmth": 0.84
-  },
+  "schema_version": 1,
+  "name": "Ouroboros Night",
+  "mood": "Atmosphere",
   "engines": [
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,50 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Ouroboros Night",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.04,
+    "warmth": 0.84,
+    "movement": 0.79,
+    "density": 0.74,
+    "space": 0.53,
+    "aggression": 0.54
+  },
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.84,
+    "movement": 0.79,
+    "density": 0.74,
+    "space": 0.53,
+    "aggression": 0.54
+  },
   "parameters": {
     "Ouroboros": {
-<<<<<<< HEAD
-      "uro_ampAttack": 21.6,
-      "uro_ampDecay": 263.2,
-      "uro_ampRelease": 496.4,
-      "uro_ampSustain": 0.86,
-      "uro_character": 0.24,
-      "uro_coupling": 0.4,
-      "uro_cycle": 0.31,
-      "uro_delayMix": 0.84,
-=======
->>>>>>> origin/v1-launch-prep
       "uro_feedbackLoop": 0.71,
       "uro_filterCutoff": 0.42,
       "uro_filterReso": 0.12,
-      "uro_lfoDepth": 0.92,
+      "uro_ampAttack": 21.6,
+      "uro_ampDecay": 263.2,
+      "uro_ampSustain": 0.86,
+      "uro_ampRelease": 496.4,
       "uro_lfoRate": 0.83,
-      "uro_movement": 0.59,
+      "uro_lfoDepth": 0.92,
       "uro_reverbMix": 0.09,
-      "uro_space": 0.52
+      "uro_delayMix": 0.84,
+      "uro_character": 0.24,
+      "uro_movement": 0.59,
+      "uro_space": 0.52,
+      "uro_coupling": 0.4,
+      "uro_cycle": 0.31
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.54,
-    "brightness": 0.04,
-    "density": 0.74,
-    "movement": 0.79,
-    "space": 0.53,
-    "warmth": 0.84
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

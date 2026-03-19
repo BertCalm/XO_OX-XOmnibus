@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Ocelot",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.46
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.041,
-    "brightness": 0.929,
-    "density": 0.623,
-    "movement": 0.614,
-    "space": 0.883,
-    "warmth": 0.917
-  },
+  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oracle",
     "Ocelot"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.485,
-    "COUPLING": 0.737,
-    "MOVEMENT": 0.614,
-    "SPACE": 0.883
-  },
-  "mood": "Prism",
-  "name": "BRIGHT_WARM_VAST_GENTLE_PRS_1",
   "parameters": {
-<<<<<<< HEAD
-    "Ocelot": {
-      "macro_character": 0.056,
-      "macro_coupling": 0.78,
-=======
     "Oracle": {
       "macro_character": 0.485,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.614,
+      "macro_coupling": 0.737,
       "macro_space": 0.883
     },
-<<<<<<< HEAD
-    "Oracle": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.737,
-=======
     "Ocelot": {
       "macro_character": 0.056,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.614,
+      "macro_coupling": 0.78,
       "macro_space": 0.883
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORACLE",
+    "target": "OCELOT",
+    "amount": 0.46
+  },
+  "dna": {
+    "brightness": 0.929,
+    "warmth": 0.917,
+    "movement": 0.614,
+    "density": 0.623,
+    "space": 0.883,
+    "aggression": 0.041
+  },
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.737,
+    "SPACE": 0.883
+  },
   "tags": [
     "prism",
     "bright",
     "warm",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Orca",
-        "type": "ECHOLOCATION_SYNC",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Orca pod navigates by drift FM — wavetable odyssey mapped as echolocation terrain",
+  "name": "Pod Drift",
+  "version": "1.0",
   "engines": [
     "Odyssey",
     "Orca"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.5,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.75,
+    "COUPLING": 0.7,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Pod Drift",
-  "parameters": {
-    "Odyssey": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.51,
     "brightness": 0.57,
-    "density": 0.59,
+    "warmth": 0.48,
     "movement": 0.67,
+    "density": 0.59,
     "space": 0.6,
-    "warmth": 0.48
+    "aggression": 0.51
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ODYSSEY",
+    "target": "ORCA",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "orca",
     "wavetable"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Orca pod navigates by drift FM — wavetable odyssey mapped as echolocation terrain"
->>>>>>> origin/v1-launch-prep
 }

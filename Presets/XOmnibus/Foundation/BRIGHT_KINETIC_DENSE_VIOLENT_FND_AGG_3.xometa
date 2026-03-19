@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Overdub",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.912
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.909,
-    "brightness": 0.962,
-    "density": 0.934,
-    "movement": 0.963,
-    "space": 0.3,
-    "warmth": 0.516
-  },
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_3",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oblong",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.362,
-    "COUPLING": 0.877,
-    "MOVEMENT": 0.907,
-    "SPACE": 0.849
-  },
-  "mood": "Foundation",
-  "name": "Flux Current",
   "parameters": {
     "Oblong": {
       "macro_character": 0.362,
-      "macro_coupling": 0.877,
       "macro_movement": 0.907,
+      "macro_coupling": 0.877,
       "macro_space": 0.849
     },
     "Overdub": {
       "macro_character": 0.343,
-      "macro_coupling": 0.915,
       "macro_movement": 0.863,
+      "macro_coupling": 0.915,
       "macro_space": 0.894
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "OVERDUB",
+    "amount": 0.912
+  },
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.516,
+    "movement": 0.963,
+    "density": 0.934,
+    "space": 0.3,
+    "aggression": 0.909
+  },
+  "macros": {
+    "CHARACTER": 0.362,
+    "MOVEMENT": 0.907,
+    "COUPLING": 0.877,
+    "SPACE": 0.849
+  },
   "tags": [
     "foundation",
     "violent",
     "bright",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

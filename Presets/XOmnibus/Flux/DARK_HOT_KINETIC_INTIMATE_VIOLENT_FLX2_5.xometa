@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Organon",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.433
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9594,
-    "brightness": 0.0956,
-    "density": 0.3341,
-    "movement": 0.8809,
-    "space": 0.0675,
-    "warmth": 0.9269
-  },
+  "name": "DARK_HOT_KINETIC_INTIMATE_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Opal",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5361,
-    "COUPLING": 0.3369,
-    "MOVEMENT": 0.896,
-    "SPACE": 0.0773
-  },
-  "mood": "Flux",
-  "name": "Cocoa Rage 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.5386,
-      "macro_coupling": 0.3443,
       "macro_movement": 0.8846,
+      "macro_coupling": 0.3443,
       "macro_space": 0.0621
     },
     "Organon": {
       "macro_character": 0.5337,
-      "macro_coupling": 0.3295,
       "macro_movement": 0.9074,
+      "macro_coupling": 0.3295,
       "macro_space": 0.0925
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.433
+  },
+  "dna": {
+    "brightness": 0.0956,
+    "warmth": 0.9269,
+    "movement": 0.8809,
+    "density": 0.3341,
+    "space": 0.0675,
+    "aggression": 0.9594
+  },
+  "macros": {
+    "CHARACTER": 0.5361,
+    "MOVEMENT": 0.896,
+    "COUPLING": 0.3369,
+    "SPACE": 0.0773
+  },
   "tags": [
     "flux",
     "dark",
@@ -58,10 +47,5 @@
     "kinetic",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

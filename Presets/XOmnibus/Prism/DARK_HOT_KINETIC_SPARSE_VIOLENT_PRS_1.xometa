@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Ole",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.611
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "DARK_HOT_KINETIC_SPARSE_VIOLENT_PRS_1",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_KINETIC_SPARSE_VIOLENT. Variant 1.",
-  "dna": {
-    "aggression": 0.951,
-    "brightness": 0.087,
-    "density": 0.063,
-    "movement": 0.98,
-    "space": 0.61,
-    "warmth": 0.914
-  },
-  "engines": [
-    "Owlfish",
-    "Ole"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.143,
-    "COUPLING": 0.015,
-    "MOVEMENT": 0.998,
-    "SPACE": 0.605
-  },
-  "mood": "Prism",
-  "name": "Shadow Cascade",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.231,
-      "macro_coupling": 0.031,
-      "macro_movement": 1.0,
-      "macro_space": 0.629
-    },
-    "Owlfish": {
-      "macro_character": 0.054,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.997,
-      "macro_space": 0.58
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "hot",
@@ -82,10 +19,14 @@
     "violent",
     "prism"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.015,
     "SPACE": 0.605
   }
->>>>>>> origin/v1-launch-prep
 }

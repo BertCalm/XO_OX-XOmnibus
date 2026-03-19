@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_VIOLENT_FND_5",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.655
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obese",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.297
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "OBESE",
+    "amount": 0.297
   },
   "dna": {
-    "aggression": 0.911,
     "brightness": 0.085,
-    "density": 0.423,
+    "warmth": 0.085,
     "movement": 0.94,
+    "density": 0.423,
     "space": 0.485,
-    "warmth": 0.085
+    "aggression": 0.911
   },
-  "engines": [
-    "Overdub",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.511,
-    "COUPLING": 0.524,
     "MOVEMENT": 0.29,
+    "COUPLING": 0.524,
     "SPACE": 0.41
   },
-  "mood": "Foundation",
-  "name": "Phase Ripple",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.554,
-      "macro_coupling": 0.791,
-      "macro_movement": 0.846,
-      "macro_space": 0.655
-    },
-    "Overdub": {
-      "macro_character": 0.529,
-      "macro_coupling": 0.241,
-      "macro_movement": 0.844,
-      "macro_space": 0.222
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "kinetic",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

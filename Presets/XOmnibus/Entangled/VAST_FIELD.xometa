@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VAST FIELD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.408
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oceanic",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.82
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.82
   },
   "dna": {
-    "aggression": 0.812,
     "brightness": 0.522,
-    "density": 0.643,
+    "warmth": 0.523,
     "movement": 0.073,
+    "density": 0.643,
     "space": 0.413,
-    "warmth": 0.523
+    "aggression": 0.812
   },
-  "engines": [
-    "Organon",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.531,
-    "COUPLING": 0.186,
     "MOVEMENT": 0.073,
+    "COUPLING": 0.186,
     "SPACE": 0.396
   },
-  "mood": "Entangled",
-  "name": "VAST FIELD",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.253,
-      "macro_movement": 0.066,
-      "macro_space": 0.408
-    },
-    "Organon": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.458,
-      "macro_movement": 0.08,
-      "macro_space": 0.693
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

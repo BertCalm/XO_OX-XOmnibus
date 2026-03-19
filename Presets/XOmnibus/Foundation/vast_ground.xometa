@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VAST GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.89
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oceanic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.669
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OCEANIC",
+    "amount": 0.669
   },
   "dna": {
-    "aggression": 0.241,
     "brightness": 0.985,
-    "density": 0.239,
+    "warmth": 0.807,
     "movement": 0.92,
+    "density": 0.239,
     "space": 0.91,
-    "warmth": 0.807
+    "aggression": 0.241
   },
-  "engines": [
-    "Origami",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.607,
-    "COUPLING": 0.964,
     "MOVEMENT": 0.92,
+    "COUPLING": 0.964,
     "SPACE": 0.91
   },
-  "mood": "Foundation",
-  "name": "VAST GROUND",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.126,
-      "macro_coupling": 0.947,
-      "macro_movement": 0.936,
-      "macro_space": 0.89
-    },
-    "Origami": {
-      "macro_character": 0.732,
-      "macro_coupling": 0.978,
-      "macro_movement": 0.952,
-      "macro_space": 0.912
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

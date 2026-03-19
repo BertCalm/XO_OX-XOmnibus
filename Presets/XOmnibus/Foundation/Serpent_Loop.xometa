@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OUROBOROS — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.34,
-    "brightness": 0.08,
-    "density": 0.94,
-    "movement": 0.5,
-    "space": 0.28,
-    "warmth": 0.7
-  },
+  "schema_version": 1,
+  "name": "Serpent Loop",
+  "mood": "Foundation",
   "engines": [
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,50 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Serpent Loop",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.08,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.94,
+    "space": 0.28,
+    "aggression": 0.34
+  },
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.94,
+    "space": 0.28,
+    "aggression": 0.34
+  },
   "parameters": {
     "Ouroboros": {
-<<<<<<< HEAD
-      "uro_ampAttack": 309.5,
-      "uro_ampDecay": 126.5,
-      "uro_ampRelease": 334.8,
-      "uro_ampSustain": 0.45,
-      "uro_character": 0.39,
-      "uro_coupling": 0.02,
-      "uro_cycle": 0.88,
-      "uro_delayMix": 0.83,
-=======
->>>>>>> origin/v1-launch-prep
       "uro_feedbackLoop": 0.89,
       "uro_filterCutoff": 0.08,
       "uro_filterReso": 0.15,
-      "uro_lfoDepth": 0.47,
+      "uro_ampAttack": 309.5,
+      "uro_ampDecay": 126.5,
+      "uro_ampSustain": 0.45,
+      "uro_ampRelease": 334.8,
       "uro_lfoRate": 0.33,
-      "uro_movement": 0.77,
+      "uro_lfoDepth": 0.47,
       "uro_reverbMix": 0.06,
-      "uro_space": 0.95
+      "uro_delayMix": 0.83,
+      "uro_character": 0.39,
+      "uro_movement": 0.77,
+      "uro_space": 0.95,
+      "uro_coupling": 0.02,
+      "uro_cycle": 0.88
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.34,
-    "brightness": 0.08,
-    "density": 0.94,
-    "movement": 0.5,
-    "space": 0.28,
-    "warmth": 0.7
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

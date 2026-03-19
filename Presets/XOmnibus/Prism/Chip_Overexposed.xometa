@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERWORLD pushed to extreme brightness — brightness 0.91, movement 0.56, aggression 0.60. Ultra-bright Prism zone filler.",
-  "dna": {
-    "aggression": 0.603,
-    "brightness": 0.914,
-    "density": 0.368,
-    "movement": 0.565,
-    "space": 0.546,
-    "warmth": 0.146
-  },
-  "engines": [
-    "Overworld"
-=======
   "schema_version": 1,
   "name": "Chip Overexposed",
   "mood": "Prism",
@@ -32,7 +14,6 @@
     "extreme",
     "brightness",
     "overworld"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,44 +21,37 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Prism",
-  "name": "Chip Overexposed",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.146,
+    "movement": 0.565,
+    "density": 0.368,
+    "space": 0.546,
+    "aggression": 0.603
+  },
+  "sonic_dna": {
+    "brightness": 0.914,
+    "warmth": 0.146,
+    "movement": 0.565,
+    "density": 0.368,
+    "space": 0.546,
+    "aggression": 0.603
+  },
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-      "ow_couplingBus": 0,
-      "ow_couplingLevel": 0.05,
-=======
       "ow_macro_era": 0.812,
->>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.376,
       "ow_macro_couple": 0.086,
-      "ow_macro_era": 0.812,
       "ow_macro_space": 0.312,
-      "ow_outputLevel": 0.897
+      "ow_outputLevel": 0.897,
+      "ow_couplingLevel": 0.05,
+      "ow_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.603,
-    "brightness": 0.914,
-    "density": 0.368,
-    "movement": 0.565,
-    "space": 0.546,
-    "warmth": 0.146
+  "coupling": {
+    "pairs": []
   },
-<<<<<<< HEAD
-  "tags": [
-    "prism",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "overworld"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

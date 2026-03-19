@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HARMONIC FRACTURE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.424
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Ole",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.715
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OWLFISH",
+    "target": "OLE",
+    "amount": 0.715
   },
   "dna": {
-    "aggression": 0.664,
     "brightness": 0.995,
-    "density": 0.294,
+    "warmth": 0.18,
     "movement": 0.907,
+    "density": 0.294,
     "space": 0.103,
-    "warmth": 0.18
+    "aggression": 0.664
   },
-  "engines": [
-    "Owlfish",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.296,
-    "COUPLING": 0.446,
     "MOVEMENT": 0.907,
+    "COUPLING": 0.446,
     "SPACE": 0.718
   },
-  "mood": "Entangled",
-  "name": "HARMONIC FRACTURE",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.267,
-      "macro_coupling": 0.083,
-      "macro_movement": 0.899,
-      "macro_space": 0.424
-    },
-    "Owlfish": {
-      "macro_character": 0.692,
-      "macro_coupling": 0.367,
-      "macro_movement": 0.914,
-      "macro_space": 0.797
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "chaotic",
     "high-energy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ombre",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.074
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.419,
-    "brightness": 0.102,
-    "density": 0.101,
-    "movement": 0.095,
-    "space": 0.09,
-    "warmth": 0.087
-  },
+  "name": "ALLLO AET 06",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Opal",
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.095,
-    "COUPLING": 0.255,
-    "MOVEMENT": 0.098,
-    "SPACE": 0.09
-  },
-  "mood": "Aether",
-  "name": "ALLLO AET 06",
   "parameters": {
-<<<<<<< HEAD
-    "Ombre": {
-=======
     "Opal": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
-      "macro_coupling": 0.255,
       "macro_movement": 0.098,
+      "macro_coupling": 0.255,
       "macro_space": 0.09
     },
-<<<<<<< HEAD
-    "Opal": {
-=======
     "Ombre": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.095,
-      "macro_coupling": 0.255,
       "macro_movement": 0.098,
+      "macro_coupling": 0.255,
       "macro_space": 0.09
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.074
+  },
+  "dna": {
+    "brightness": 0.102,
+    "warmth": 0.087,
+    "movement": 0.095,
+    "density": 0.101,
+    "space": 0.09,
+    "aggression": 0.419
+  },
+  "macros": {
+    "CHARACTER": 0.095,
+    "MOVEMENT": 0.098,
+    "COUPLING": 0.255,
+    "SPACE": 0.09
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

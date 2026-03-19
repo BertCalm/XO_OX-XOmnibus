@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PROPEL FOUNDATION",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.349
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Oblique",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.608
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "OBLIQUE",
+    "amount": 0.608
   },
   "dna": {
-    "aggression": 0.349,
     "brightness": 0.093,
-    "density": 0.769,
+    "warmth": 0.687,
     "movement": 0.941,
+    "density": 0.769,
     "space": 0.251,
-    "warmth": 0.687
+    "aggression": 0.349
   },
-  "engines": [
-    "OddOscar",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.594,
-    "COUPLING": 0.608,
     "MOVEMENT": 0.941,
+    "COUPLING": 0.608,
     "SPACE": 0.251
   },
-  "mood": "Foundation",
-  "name": "PROPEL FOUNDATION",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.754,
-      "macro_movement": 0.962,
-      "macro_space": 0.349
-    },
-    "OddOscar": {
-      "macro_character": 0.598,
-      "macro_coupling": 0.609,
-      "macro_movement": 0.928,
-      "macro_space": 0.588
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

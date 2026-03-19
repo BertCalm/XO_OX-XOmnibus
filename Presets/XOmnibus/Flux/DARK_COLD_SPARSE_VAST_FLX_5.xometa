@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_SPARSE_VAST_FLX_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.8926
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Optic",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.7933
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.7933
   },
   "dna": {
-    "aggression": 0.5861,
     "brightness": 0.0432,
-    "density": 0.0849,
+    "warmth": 0.0386,
     "movement": 0.5313,
+    "density": 0.0849,
     "space": 0.9035,
-    "warmth": 0.0386
+    "aggression": 0.5861
   },
-  "engines": [
-    "Overdub",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.084,
-    "COUPLING": 0.6563,
     "MOVEMENT": 0.5105,
+    "COUPLING": 0.6563,
     "SPACE": 0.8288
   },
-  "mood": "Flux",
-  "name": "DARK_COLD_SPARSE_VAST_FLX_5",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.1443,
-      "macro_coupling": 0.6383,
-      "macro_movement": 0.5185,
-      "macro_space": 0.8926
-    },
-    "Overdub": {
-      "macro_character": 0.084,
-      "macro_coupling": 0.6563,
-      "macro_movement": 0.5105,
-      "macro_space": 0.8288
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-warmth",
     "low-density",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

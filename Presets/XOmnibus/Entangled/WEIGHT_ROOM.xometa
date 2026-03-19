@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Origami",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.929
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.24,
-    "brightness": 0.391,
-    "density": 0.575,
-    "movement": 0.326,
-    "space": 0.083,
-    "warmth": 0.595
-  },
+  "name": "WEIGHT ROOM",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ole",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.258,
-    "COUPLING": 0.93,
-    "MOVEMENT": 0.582,
-    "SPACE": 0.083
-  },
-  "mood": "Entangled",
-  "name": "WEIGHT ROOM",
   "parameters": {
     "Ole": {
       "macro_character": 0.418,
-      "macro_coupling": 0.957,
       "macro_movement": 0.985,
+      "macro_coupling": 0.957,
       "macro_space": 0.111
     },
     "Origami": {
       "macro_character": 0.08,
-      "macro_coupling": 0.916,
       "macro_movement": 0.616,
+      "macro_coupling": 0.916,
       "macro_space": 0.092
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OLE",
+    "target": "ORIGAMI",
+    "amount": 0.929
+  },
+  "dna": {
+    "brightness": 0.391,
+    "warmth": 0.595,
+    "movement": 0.326,
+    "density": 0.575,
+    "space": 0.083,
+    "aggression": 0.24
+  },
+  "macros": {
+    "CHARACTER": 0.258,
+    "MOVEMENT": 0.582,
+    "COUPLING": 0.93,
+    "SPACE": 0.083
+  },
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

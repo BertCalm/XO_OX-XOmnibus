@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Overdub",
-        "type": "PITCH_SYNC",
-        "amount": 0.807
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.5648,
-    "brightness": 0.9646,
-    "density": 0.1013,
-    "movement": 0.064,
-    "space": 0.0779,
-    "warmth": 0.9309
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_SPARSE_INTIMATE_ENT3_1",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Overdub"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.759,
-    "COUPLING": 0.8582,
-    "MOVEMENT": 0.0638,
-    "SPACE": 0.413
-  },
-  "mood": "Entangled",
-  "name": "Peach Blade",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.5756,
-      "macro_coupling": 0.7934,
-      "macro_movement": 0.069,
-      "macro_space": 0.6889
-    },
-    "Overdub": {
-      "macro_character": 0.9423,
-      "macro_coupling": 0.9231,
-      "macro_movement": 0.0586,
-      "macro_space": 0.1371
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_SPARSE_INTIMATE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "sparse",
     "intimate"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.0779,
     "aggression": 0.5648
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Oblong in brutal movement prism configuration",
-  "dna": {
-    "aggression": 0.8932,
+  "schema_version": 1,
+  "name": "Bob Prism Riot",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.4603,
-    "density": 0.5623,
+    "warmth": 0.2722,
     "movement": 0.8944,
+    "density": 0.5623,
     "space": 0.3448,
-    "warmth": 0.2722
+    "aggression": 0.8932
+  },
+  "dna": {
+    "brightness": 0.4603,
+    "warmth": 0.2722,
+    "movement": 0.8944,
+    "density": 0.5623,
+    "space": 0.3448,
+    "aggression": 0.8932
   },
   "engines": [
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "movement",
     "aggressive",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -37,52 +39,23 @@
   ],
   "macros": {
     "CHARACTER": 0.4127,
-    "COUPLING": 0.2829,
     "MOVEMENT": 0.8516,
+    "COUPLING": 0.2829,
     "SPACE": 0.7351
   },
-  "mood": "Prism",
-  "name": "Bob Prism Riot",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblong": {
-<<<<<<< HEAD
-      "bob_couplingBus": 0,
-=======
       "bob_macro_character": 0.4127,
       "bob_macro_movement": 0.8516,
       "bob_macro_coupling": 0.2829,
       "bob_macro_space": 0.7351,
       "bob_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
-      "bob_macro_character": 0.4127,
-      "bob_macro_coupling": 0.2829,
-      "bob_macro_movement": 0.8516,
-      "bob_macro_space": 0.7351,
-      "bob_outputLevel": 0.85
+      "bob_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8932,
-    "brightness": 0.4603,
-    "density": 0.5623,
-    "movement": 0.8944,
-    "space": 0.3448,
-    "warmth": 0.2722
-  },
-  "tags": [
-    "prism",
-    "brutal",
-    "movement",
-    "aggressive",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

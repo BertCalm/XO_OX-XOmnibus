@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.09,
-    "density": 0.2,
-    "movement": 0.58,
-    "space": 0.92,
-    "warmth": 0.22
-  },
+  "name": "Blur Singularity",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.28,
-    "COUPLING": 0.41,
-    "MOVEMENT": 0.58,
-    "SPACE": 0.92
-  },
-  "mood": "Aether",
-  "name": "Blur Singularity",
   "parameters": {
     "Obscura": {
       "obscura_macro_character": 0.24,
-      "obscura_macro_coupling": 0.31,
       "obscura_macro_movement": 0.58,
+      "obscura_macro_coupling": 0.31,
       "obscura_macro_space": 0.92
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.22,
+    "movement": 0.58,
+    "density": 0.2,
+    "space": 0.92,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.41,
+    "SPACE": 0.92
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "blur",
     "singularity"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

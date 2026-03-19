@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_53",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.099
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.787
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OHM",
+    "target": "OTTONI",
+    "amount": 0.787
   },
   "dna": {
-    "aggression": 0.545,
     "brightness": 0.942,
-    "density": 0.971,
+    "warmth": 0.907,
     "movement": 0.599,
+    "density": 0.971,
     "space": 0.095,
-    "warmth": 0.907
+    "aggression": 0.545
   },
-  "engines": [
-    "Ottoni",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.911,
-    "COUPLING": 0.76,
     "MOVEMENT": 0.603,
+    "COUPLING": 0.76,
     "SPACE": 0.106
   },
-  "mood": "Family",
-  "name": "Golden Molten 2",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.747,
-      "macro_movement": 0.595,
-      "macro_space": 0.099
-    },
-    "Ottoni": {
-      "macro_character": 0.897,
-      "macro_coupling": 0.773,
-      "macro_movement": 0.611,
-      "macro_space": 0.113
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "intimate",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

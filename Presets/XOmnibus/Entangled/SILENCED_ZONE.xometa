@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overlap",
-        "type": "PITCH_SYNC",
-        "amount": 0.636
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.714,
-    "brightness": 0.449,
-    "density": 0.05,
-    "movement": 0.074,
-    "space": 0.272,
-    "warmth": 0.504
-  },
+  "name": "SILENCED ZONE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oracle",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.741,
-    "COUPLING": 0.441,
-    "MOVEMENT": 0.074,
-    "SPACE": 0.77
-  },
-  "mood": "Entangled",
-  "name": "SILENCED ZONE",
   "parameters": {
     "Oracle": {
       "macro_character": 0.819,
-      "macro_coupling": 0.482,
       "macro_movement": 0.063,
+      "macro_coupling": 0.482,
       "macro_space": 0.016
     },
     "Overlap": {
       "macro_character": 0.41,
-      "macro_coupling": 0.449,
       "macro_movement": 0.085,
+      "macro_coupling": 0.449,
       "macro_space": 0.859
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OVERLAP",
+    "amount": 0.636
+  },
+  "dna": {
+    "brightness": 0.449,
+    "warmth": 0.504,
+    "movement": 0.074,
+    "density": 0.05,
+    "space": 0.272,
+    "aggression": 0.714
+  },
+  "macros": {
+    "CHARACTER": 0.741,
+    "MOVEMENT": 0.074,
+    "COUPLING": 0.441,
+    "SPACE": 0.77
+  },
   "tags": [
     "entangled",
     "stillness",
     "silenced"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

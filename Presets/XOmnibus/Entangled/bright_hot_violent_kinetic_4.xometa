@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Extreme",
-  "couplingType": "SPARK",
-  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for SPARK coupling with XOhm.",
-  "dna": {
-    "aggression": 0.9427,
+  "schema_version": 1,
+  "name": "BRIGHT HOT VIOLENT KINETIC 4",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.9561,
-    "density": 0.4025,
+    "warmth": 0.9347,
+    "aggression": 0.9427,
     "movement": 0.8972,
-    "space": 0.4569,
-    "warmth": 0.9347
+    "density": 0.4025,
+    "space": 0.4569
+  },
+  "dna": {
+    "brightness": 0.9561,
+    "warmth": 0.9347,
+    "aggression": 0.9427,
+    "movement": 0.8972,
+    "density": 0.4025,
+    "space": 0.4569
   },
   "engines": [
     "Ohm"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "spark",
     "ohm"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FLARE",
@@ -35,32 +36,10 @@
     "GLOW",
     "FLOW"
   ],
-  "mood": "Flux",
-  "name": "BRIGHT HOT VIOLENT KINETIC 4",
+  "couplingType": "SPARK",
+  "couplingIntensity": "Extreme",
   "parameters": {
     "Ohm": {
-<<<<<<< HEAD
-      "couplingBus": 3,
-      "couplingLevel": 0.626
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9427,
-    "brightness": 0.9561,
-    "density": 0.4025,
-    "movement": 0.8972,
-    "space": 0.4569,
-    "warmth": 0.9347
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "spark",
-    "ohm"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.626,
       "couplingBus": 3
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

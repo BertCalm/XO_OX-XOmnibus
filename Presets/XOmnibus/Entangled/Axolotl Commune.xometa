@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "OddOscar",
-        "type": "MORPH_CHAIN",
-        "amount": 0.55
-      }
-    ]
-  },
-  "description": "Regenerative axolotl morphology breathes through ohm's warm family circle — tender and strange together",
+  "name": "Axolotl Commune",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "OddOscar"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.55,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.55,
     "SPACE": 0.65
   },
-  "mood": "Entangled",
-  "name": "Axolotl Commune",
-  "parameters": {
-    "Ohm": {},
-    "OddOscar": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.24,
     "brightness": 0.48,
-    "density": 0.52,
+    "warmth": 0.73,
     "movement": 0.64,
+    "density": 0.52,
     "space": 0.66,
-    "warmth": 0.73
+    "aggression": 0.24
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "MORPH_CHAIN",
+    "source": "OHM",
+    "target": "ODDOSCAR",
+    "amount": 0.55
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oddoscar",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Regenerative axolotl morphology breathes through ohm's warm family circle — tender and strange together"
->>>>>>> origin/v1-launch-prep
 }

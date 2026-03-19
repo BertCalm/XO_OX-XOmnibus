@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Rupture Front",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUROBOROS aggressive register.",
-  "dna": {
-    "aggression": 0.802,
-    "brightness": 0.557,
-    "density": 0.61,
-    "movement": 0.825,
-    "space": 0.458,
-    "warmth": 0.511
-  },
-  "engines": [
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CYCLE",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.362,
-    "CYCLE": 0.883,
-    "SPACE": 0.389,
-    "TENSION": 0.827
-  },
-  "mood": "Atmosphere",
-  "name": "Rupture Front",
-  "parameters": {
-    "Ouroboros": {
-      "coupling": 0.362,
-      "cycle": 0.883,
-      "space": 0.389,
-      "tension": 0.827
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,9 +16,6 @@
     "pressure",
     "fierce"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "CYCLE",
     "TENSION",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

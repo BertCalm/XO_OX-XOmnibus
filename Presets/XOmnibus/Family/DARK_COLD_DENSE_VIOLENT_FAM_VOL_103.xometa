@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_103",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.295
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Oblong",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.821
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "ODDFELIX",
+    "target": "OBLONG",
+    "amount": 0.821
   },
   "dna": {
-    "aggression": 0.871,
     "brightness": 0.121,
-    "density": 0.966,
+    "warmth": 0.03,
     "movement": 0.61,
+    "density": 0.966,
     "space": 0.312,
-    "warmth": 0.03
+    "aggression": 0.871
   },
-  "engines": [
-    "OddfeliX",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.069,
-    "COUPLING": 0.942,
     "MOVEMENT": 0.609,
+    "COUPLING": 0.942,
     "SPACE": 0.296
   },
-  "mood": "Family",
-  "name": "Tone Dense 2",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.057,
-      "macro_coupling": 0.945,
-      "macro_movement": 0.592,
-      "macro_space": 0.295
-    },
-    "OddfeliX": {
-      "macro_character": 0.08,
-      "macro_coupling": 0.939,
-      "macro_movement": 0.627,
-      "macro_space": 0.297
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

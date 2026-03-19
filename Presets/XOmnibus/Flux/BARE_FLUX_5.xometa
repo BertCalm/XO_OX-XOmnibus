@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Overworld",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.3607
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4234,
-    "brightness": 0.7388,
-    "density": 0.1029,
-    "movement": 0.0671,
-    "space": 0.646,
-    "warmth": 0.6854
-  },
+  "name": "BARE FLUX 5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Osteria",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7709,
-    "COUPLING": 0.8837,
-    "MOVEMENT": 0.8351,
-    "SPACE": 0.0377
-  },
-  "mood": "Flux",
-  "name": "BARE FLUX 5",
   "parameters": {
     "Osteria": {
       "macro_character": 0.1803,
-      "macro_coupling": 0.9477,
       "macro_movement": 0.2142,
+      "macro_coupling": 0.9477,
       "macro_space": 0.4863
     },
     "Overworld": {
       "macro_character": 0.2265,
-      "macro_coupling": 0.0772,
       "macro_movement": 0.1376,
+      "macro_coupling": 0.0772,
       "macro_space": 0.8444
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OSTERIA",
+    "target": "OVERWORLD",
+    "amount": 0.3607
+  },
+  "dna": {
+    "brightness": 0.7388,
+    "warmth": 0.6854,
+    "movement": 0.0671,
+    "density": 0.1029,
+    "space": 0.646,
+    "aggression": 0.4234
+  },
+  "macros": {
+    "CHARACTER": 0.7709,
+    "MOVEMENT": 0.8351,
+    "COUPLING": 0.8837,
+    "SPACE": 0.0377
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

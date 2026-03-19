@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Overworld",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.957
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.898,
-    "brightness": 0.123,
-    "density": 0.387,
-    "movement": 0.953,
-    "space": 0.069,
-    "warmth": 0.412
-  },
+  "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_3",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.619,
-    "COUPLING": 0.838,
-    "MOVEMENT": 0.953,
-    "SPACE": 0.069
-  },
-  "mood": "Entangled",
-  "name": "Phase Flutter",
   "parameters": {
     "Overlap": {
       "macro_character": 0.495,
-      "macro_coupling": 0.838,
       "macro_movement": 0.967,
+      "macro_coupling": 0.838,
       "macro_space": 0.025
     },
     "Overworld": {
       "macro_character": 0.742,
-      "macro_coupling": 0.875,
       "macro_movement": 0.931,
+      "macro_coupling": 0.875,
       "macro_space": 0.114
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERLAP",
+    "target": "OVERWORLD",
+    "amount": 0.957
+  },
+  "dna": {
+    "brightness": 0.123,
+    "warmth": 0.412,
+    "movement": 0.953,
+    "density": 0.387,
+    "space": 0.069,
+    "aggression": 0.898
+  },
+  "macros": {
+    "CHARACTER": 0.619,
+    "MOVEMENT": 0.953,
+    "COUPLING": 0.838,
+    "SPACE": 0.069
+  },
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

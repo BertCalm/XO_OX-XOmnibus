@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.8425,
-        "source": "Overlap",
-        "target": "Ouroboros",
-        "type": "FORMANT_BRIDGE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Dark Still Sparse Vast character entanglement — OVERLAP × OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.3024,
-    "brightness": 0.0494,
-    "density": 0.054,
-    "movement": 0.0973,
-    "space": 0.9108,
-    "warmth": 0.3722
-  },
+  "schema_version": 1,
+  "name": "DARK_STILL_SPARSE_VAST_ENT_5",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Ouroboros"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "KNOT",
-    "FOLD",
-    "WEAVE",
-    "HALL"
-  ],
-  "macros": {
-    "CHARACTER": 0.2108,
-    "COUPLING": 0.8425,
-    "MOVEMENT": 0.0973,
-    "SPACE": 0.9108
-  },
-  "mood": "Entangled",
-  "name": "DARK_STILL_SPARSE_VAST_ENT_5",
-  "parameters": {
-    "Ouroboros": {
-      "amp_attack": 0.393,
-      "amp_release": 0.6669,
-      "coupling_level": 0.6844,
-      "density": 0.0683,
-      "drive": 0.2746,
-      "filter_cutoff": 0.2335,
-      "filter_resonance": 0.2466,
-      "macro_character": 0.4731,
-      "macro_coupling": 0.6876,
-      "macro_movement": 0.1112,
-      "macro_space": 0.9238,
-      "output_level": 0.7124,
-      "reverb_mix": 0.62,
-      "reverb_size": 0.7409
-    },
-    "Overlap": {
-      "amp_attack": 0.3984,
-      "amp_release": 0.6361,
-      "coupling_level": 0.6436,
-      "density": 0.0208,
-      "drive": 0.2973,
-      "filter_cutoff": 0.2118,
-      "filter_resonance": 0.2448,
-      "macro_character": 0.435,
-      "macro_coupling": 0.6683,
-      "macro_movement": 0.108,
-      "macro_space": 0.9305,
-      "output_level": 0.6777,
-      "reverb_mix": 0.6686,
-      "reverb_size": 0.7686
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3024,
-    "brightness": 0.0494,
-    "density": 0.054,
-    "movement": 0.0973,
-    "space": 0.9108,
-    "warmth": 0.3722
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dark Still Sparse Vast character entanglement — OVERLAP × OUROBOROS via Formant Bridge. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -95,9 +17,6 @@
     "vast",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -175,5 +94,4 @@
     "COUPLING": 0.8425,
     "SPACE": 0.9108
   }
->>>>>>> origin/v1-launch-prep
 }

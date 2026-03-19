@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.7937
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.0652,
-    "brightness": 0.9761,
-    "density": 0.5868,
-    "movement": 0.0498,
-    "space": 0.9274,
-    "warmth": 0.0272
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_FROZEN_VAST_GENTLE_ENT3_5",
+  "mood": "Entangled",
   "engines": [
     "Overworld",
     "Opal"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6574,
-    "COUPLING": 0.8034,
-    "MOVEMENT": 0.0502,
-    "SPACE": 0.4839
-  },
-  "mood": "Entangled",
-  "name": "Glass Horizon 3",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.7535,
-      "macro_coupling": 0.7808,
-      "macro_movement": 0.0519,
-      "macro_space": 0.8047
-    },
-    "Overworld": {
-      "macro_character": 0.5614,
-      "macro_coupling": 0.8261,
-      "macro_movement": 0.0484,
-      "macro_space": 0.163
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_COLD_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "gentle",
     "vast"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.9274,
     "aggression": 0.0652
   }
->>>>>>> origin/v1-launch-prep
 }

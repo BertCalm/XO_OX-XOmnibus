@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "GHOSTED THREAD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.912
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Oblique",
-        "type": "PITCH_SYNC",
-        "amount": 0.592
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OCELOT",
+    "target": "OBLIQUE",
+    "amount": 0.592
   },
   "dna": {
-    "aggression": 0.671,
     "brightness": 0.435,
-    "density": 0.066,
+    "warmth": 0.639,
     "movement": 0.791,
+    "density": 0.066,
     "space": 0.057,
-    "warmth": 0.639
+    "aggression": 0.671
   },
-  "engines": [
-    "Ocelot",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.406,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.513,
+    "COUPLING": 0.75,
     "SPACE": 0.16
   },
-  "mood": "Entangled",
-  "name": "GHOSTED THREAD",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.444,
-      "macro_coupling": 0.727,
-      "macro_movement": 0.447,
-      "macro_space": 0.912
-    },
-    "Ocelot": {
-      "macro_character": 0.296,
-      "macro_coupling": 0.718,
-      "macro_movement": 0.446,
-      "macro_space": 0.167
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

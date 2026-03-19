@@ -1,60 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "The Mojo axis in continuous motion. LFO sweeps fat_morph from analog to digital and back — the character breathes, oscillating between warm and cold identity.",
-  "dna": {
-    "aggression": 0.4,
-    "brightness": 0.55,
-    "density": 0.5,
-    "movement": 0.8,
-    "space": 0.45,
-    "warmth": 0.55
-  },
-  "engines": [
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Flux",
-  "name": "Obese Mojo Sweep",
-  "parameters": {
-    "Obese": {
-      "fat_ampAttack": 0.01,
-      "fat_ampDecay": 0.5,
-      "fat_ampRelease": 1.0,
-      "fat_ampSustain": 0.7,
-      "fat_filterCutoff": 1800,
-      "fat_filterRes": 0.3,
-      "fat_lfo1Depth": 0.5,
-      "fat_lfo1Rate": 0.25,
-      "fat_macroCharacter": 0.5,
-      "fat_macroMovement": 0.8,
-      "fat_morph": 0.5,
-      "fat_satDrive": 0.5
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "obese",
-    "mojo",
-    "blessed",
-    "sweep",
-    "motion",
-    "lfo",
-    "flux"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "schema_version": 1,
   "name": "Mojo Sweep",
   "mood": "Flux",
@@ -104,5 +48,4 @@
   },
   "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.35},
   "coupling": {"pairs": []}
->>>>>>> origin/v1-launch-prep
 }

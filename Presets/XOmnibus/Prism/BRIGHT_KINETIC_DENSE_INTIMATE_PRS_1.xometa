@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Optic",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.401
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.315,
-    "brightness": 0.863,
-    "density": 0.93,
-    "movement": 0.891,
-    "space": 0.138,
-    "warmth": 0.651
-  },
+  "name": "BRIGHT_KINETIC_DENSE_INTIMATE_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Origami",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.589,
-    "COUPLING": 0.453,
-    "MOVEMENT": 0.891,
-    "SPACE": 0.138
-  },
-  "mood": "Prism",
-  "name": "Bloom Saturated",
   "parameters": {
-<<<<<<< HEAD
-    "Optic": {
-      "macro_character": 0.226,
-      "macro_coupling": 0.725,
-=======
     "Origami": {
       "macro_character": 0.589,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.891,
+      "macro_coupling": 0.453,
       "macro_space": 0.138
     },
-<<<<<<< HEAD
-    "Origami": {
-      "macro_character": 0.589,
-      "macro_coupling": 0.453,
-=======
     "Optic": {
       "macro_character": 0.226,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.891,
+      "macro_coupling": 0.725,
       "macro_space": 0.138
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OPTIC",
+    "amount": 0.401
+  },
+  "dna": {
+    "brightness": 0.863,
+    "warmth": 0.651,
+    "movement": 0.891,
+    "density": 0.93,
+    "space": 0.138,
+    "aggression": 0.315
+  },
+  "macros": {
+    "CHARACTER": 0.589,
+    "MOVEMENT": 0.891,
+    "COUPLING": 0.453,
+    "SPACE": 0.138
+  },
   "tags": [
     "prism",
     "bright",
     "kinetic",
     "dense",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

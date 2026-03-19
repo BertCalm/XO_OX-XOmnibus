@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_INTIMATE_VIOLENT_FAM_AGG_4",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.464
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "OddfeliX",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.962
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OLE",
+    "target": "ODDFELIX",
+    "amount": 0.962
   },
   "dna": {
-    "aggression": 0.898,
     "brightness": 0.979,
-    "density": 0.661,
+    "warmth": 0.959,
     "movement": 0.633,
+    "density": 0.661,
     "space": 0.105,
-    "warmth": 0.959
+    "aggression": 0.898
   },
-  "engines": [
-    "Ole",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.831,
-    "COUPLING": 0.464,
     "MOVEMENT": 0.481,
+    "COUPLING": 0.464,
     "SPACE": 0.5
   },
-  "mood": "Family",
-  "name": "Golden Blade 2",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.857,
-      "macro_coupling": 0.482,
-      "macro_movement": 0.508,
-      "macro_space": 0.464
-    },
-    "Ole": {
-      "macro_character": 0.831,
-      "macro_coupling": 0.464,
-      "macro_movement": 0.481,
-      "macro_space": 0.5
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.719,
-        "engineA": "Outwit",
-        "engineB": "Obbligato",
-        "type": "PITCH_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OUTWIT arm count maps to OBBLIGATO voice balance — 8 arms, 2 voices, infinite shades",
-  "dna": {
-    "aggression": 0.4,
-    "brightness": 0.843,
-    "density": 1.0,
-    "movement": 0.65,
-    "space": 0.575,
-    "warmth": 0.754
-  },
+  "schema_version": 1,
+  "name": "Branch Signal",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Obbligato"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Branch Signal",
-  "parameters": {
-    "Outwit": {
-      "owit_ampAttack": 0.122,
-      "owit_ampRelease": 0.626,
-      "owit_arms": 5,
-      "owit_cellSize": 0.207,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.504,
-      "owit_density": 0.446,
-      "owit_evolveRate": 0.415,
-      "owit_filterCutoff": 0.362,
-      "owit_filterReso": 0.321,
-      "owit_mutateProb": 0.27,
-      "owit_outputLevel": 0.712,
-      "owit_pitchSpread": 0.394,
-      "owit_rule": 30
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.4,
-    "brightness": 0.575,
-    "density": 0.625,
-    "movement": 0.65,
-    "space": 0.575,
-    "warmth": 0.525
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OUTWIT arm count maps to OBBLIGATO voice balance — 8 arms, 2 voices, infinite shades",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "cellular-automata",
     "wolfram"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

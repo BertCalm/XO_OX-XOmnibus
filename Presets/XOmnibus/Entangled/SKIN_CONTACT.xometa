@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SKIN CONTACT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.102
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Origami",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.689
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORGANON",
+    "target": "ORIGAMI",
+    "amount": 0.689
   },
   "dna": {
-    "aggression": 0.912,
     "brightness": 0.976,
-    "density": 0.214,
+    "warmth": 0.338,
     "movement": 0.716,
+    "density": 0.214,
     "space": 0.075,
-    "warmth": 0.338
+    "aggression": 0.912
   },
-  "engines": [
-    "Origami",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.597,
-    "COUPLING": 0.918,
     "MOVEMENT": 0.552,
+    "COUPLING": 0.918,
     "SPACE": 0.075
   },
-  "mood": "Entangled",
-  "name": "Skin Contact",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.448,
-      "macro_coupling": 0.472,
-      "macro_movement": 0.404,
-      "macro_space": 0.102
-    },
-    "Origami": {
-      "macro_character": 0.335,
-      "macro_coupling": 0.195,
-      "macro_movement": 0.288,
-      "macro_space": 0.078
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

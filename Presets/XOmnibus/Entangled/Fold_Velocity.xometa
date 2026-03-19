@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.87,
-        "engineA": "Origami",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Origami fold velocity coupled into Onset percussion — paper crane at drumstick speed.",
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.7,
-    "density": 0.69,
-    "movement": 0.9,
-    "space": 0.18,
-    "warmth": 0.26
-  },
+  "schema_version": 1,
+  "name": "Fold Velocity",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "origami",
     "onset",
     "fold"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.83,
-    "COUPLING": 0.87,
     "MOVEMENT": 0.9,
+    "COUPLING": 0.87,
     "SPACE": 0.18
   },
-  "mood": "Entangled",
-  "name": "Fold Velocity",
-  "parameters": {
-    "Origami": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.7,
-    "density": 0.69,
+    "warmth": 0.26,
     "movement": 0.9,
+    "density": 0.69,
     "space": 0.18,
-    "warmth": 0.26
+    "aggression": 0.91
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "origami",
-    "onset",
-    "fold"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.7,
+    "warmth": 0.26,
+    "movement": 0.9,
+    "density": 0.69,
+    "space": 0.18,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORIGAMI",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.87
+      }
+    ]
+  }
 }

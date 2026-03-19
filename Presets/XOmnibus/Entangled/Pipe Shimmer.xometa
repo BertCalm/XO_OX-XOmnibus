@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Opal",
-        "type": "RESONANT_PIPE",
-        "amount": 0.55
-      }
-    ]
-  },
-  "description": "Mixtur-Trautonium harmonics scatter the grain field — abyssal tone meeting granular light",
+  "name": "Pipe Shimmer",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Owlfish"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.55,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.55,
     "SPACE": 0.8
   },
-  "mood": "Entangled",
-  "name": "Pipe Shimmer",
-  "parameters": {
-    "Opal": {},
-    "Owlfish": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.24,
     "brightness": 0.48,
-    "density": 0.56,
+    "warmth": 0.57,
     "movement": 0.52,
+    "density": 0.56,
     "space": 0.68,
-    "warmth": 0.57
+    "aggression": 0.24
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RESONANT_PIPE",
+    "source": "OWLFISH",
+    "target": "OPAL",
+    "amount": 0.55
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "owlfish",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Mixtur-Trautonium harmonics scatter the grain field — abyssal tone meeting granular light"
->>>>>>> origin/v1-launch-prep
 }

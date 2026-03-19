@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Refracting Decay",
   "version": "1.0",
@@ -43,64 +40,13 @@
       "olap_couplingBus": 0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ottoni",
-        "type": "GRANULAR_EXCHANGE",
-        "amount": 0.576
-      }
-    ]
+    "type": "GRANULAR_EXCHANGE",
+    "source": "OVERLAP",
+    "target": "OTTONI",
+    "amount": 0.576
   },
   "couplingIntensity": "Moderate",
-  "description": "Ottoni bell sustain feeds OVERLAP decay time — brass ring and FDN tail merge into one shimmer",
-  "engines": [
-    "Overlap",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.48,
-    "COUPLING": 0.58,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.73
-  },
-  "mood": "Entangled",
-  "name": "Refracting Decay",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.589,
-      "olap_damping": 0.346,
-      "olap_decay": 0.748,
-      "olap_diffusion": 0.847,
-      "olap_earlyMix": 0.289,
-      "olap_filterCutoff": 0.722,
-      "olap_filterReso": 0.37,
-      "olap_lateMix": 0.404,
-      "olap_modDepth": 0.15,
-      "olap_modRate": 0.188,
-      "olap_outputLevel": 0.786,
-      "olap_preDelay": 0.063,
-      "olap_size": 0.898
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.39,
-    "brightness": 0.63,
-    "density": 0.7,
-    "movement": 0.56,
-    "space": 0.73,
-    "warmth": 0.57
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -110,17 +56,5 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.722,
-    "warmth": 0.5,
-    "movement": 0.188,
-    "density": 0.5,
-    "space": 0.063,
-    "aggression": 0.3
-  }
-=======
   "description": "Ottoni bell sustain feeds OVERLAP decay time — brass ring and FDN tail merge into one shimmer"
->>>>>>> origin/v1-launch-prep
 }

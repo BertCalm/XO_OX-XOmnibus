@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_SPARSE_VAST_FAM_VOL_17",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.974
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "OddfeliX",
-        "type": "DYNAMIC_CROSS",
-        "amount": 0.607
-      }
-    ]
+    "type": "DYNAMIC_CROSS",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.607
   },
   "dna": {
-    "aggression": 0.555,
     "brightness": 0.936,
-    "density": 0.034,
+    "warmth": 0.897,
     "movement": 0.523,
+    "density": 0.034,
     "space": 0.971,
-    "warmth": 0.897
+    "aggression": 0.555
   },
-  "engines": [
-    "OddfeliX",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.895,
-    "COUPLING": 0.302,
     "MOVEMENT": 0.508,
+    "COUPLING": 0.302,
     "SPACE": 0.96
   },
-  "mood": "Family",
-  "name": "Peach Abyss",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.295,
-      "macro_movement": 0.52,
-      "macro_space": 0.974
-    },
-    "OddfeliX": {
-      "macro_character": 0.891,
-      "macro_coupling": 0.31,
-      "macro_movement": 0.496,
-      "macro_space": 0.946
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "sparse",
     "vast",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

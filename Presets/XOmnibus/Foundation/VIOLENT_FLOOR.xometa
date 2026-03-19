@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VIOLENT FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.474
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Orbital",
-        "type": "CHAOS_INJECT",
-        "amount": 0.645
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "ORBITAL",
+    "amount": 0.645
   },
   "dna": {
-    "aggression": 0.918,
     "brightness": 0.475,
-    "density": 0.487,
+    "warmth": 0.778,
     "movement": 0.236,
+    "density": 0.487,
     "space": 0.939,
-    "warmth": 0.778
+    "aggression": 0.918
   },
-  "engines": [
-    "Origami",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.463,
-    "COUPLING": 0.645,
     "MOVEMENT": 0.236,
+    "COUPLING": 0.645,
     "SPACE": 0.939
   },
-  "mood": "Foundation",
-  "name": "VIOLENT FLOOR",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.333,
-      "macro_coupling": 0.617,
-      "macro_movement": 0.41,
-      "macro_space": 0.474
-    },
-    "Origami": {
-      "macro_character": 0.755,
-      "macro_coupling": 0.34,
-      "macro_movement": 0.329,
-      "macro_space": 0.504
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Overdub",
-        "type": "FILTER_MOD",
-        "amount": 0.549
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.955,
-    "brightness": 0.057,
-    "density": 0.901,
-    "movement": 0.974,
-    "space": 0.105,
-    "warmth": 0.417
-  },
+  "name": "CROSS FLX 03",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Ouroboros",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.237,
-    "COUPLING": 0.53,
-    "MOVEMENT": 0.938,
-    "SPACE": 0.105
-  },
-  "mood": "Flux",
-  "name": "CROSS FLX 03",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.237,
-      "macro_coupling": 0.53,
       "macro_movement": 0.938,
+      "macro_coupling": 0.53,
       "macro_space": 0.105
     },
     "Overdub": {
       "macro_character": 0.237,
-      "macro_coupling": 0.53,
       "macro_movement": 0.938,
+      "macro_coupling": 0.53,
       "macro_space": 0.105
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OUROBOROS",
+    "target": "OVERDUB",
+    "amount": 0.549
+  },
+  "dna": {
+    "brightness": 0.057,
+    "warmth": 0.417,
+    "movement": 0.974,
+    "density": 0.901,
+    "space": 0.105,
+    "aggression": 0.955
+  },
+  "macros": {
+    "CHARACTER": 0.237,
+    "MOVEMENT": 0.938,
+    "COUPLING": 0.53,
+    "SPACE": 0.105
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

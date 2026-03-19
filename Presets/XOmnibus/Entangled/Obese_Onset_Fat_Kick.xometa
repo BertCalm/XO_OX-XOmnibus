@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Obese",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.88
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.92,
-    "brightness": 0.15,
-    "density": 0.97,
-    "movement": 0.4,
-    "space": 0.15,
-    "warmth": 0.88
-  },
+  "name": "Fat Kick",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Onset"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.92,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.4,
-    "SPACE": 0.1
-  },
-  "mood": "Entangled",
-  "name": "Fat Kick",
   "parameters": {
     "Obese": {
       "macro_character": 0.92,
-      "macro_coupling": 0.85,
       "macro_movement": 0.4,
+      "macro_coupling": 0.85,
       "macro_space": 0.1
     },
     "Onset": {
       "macro_character": 0.85,
-      "macro_coupling": 0.75,
       "macro_movement": 0.55,
+      "macro_coupling": 0.75,
       "macro_space": 0.2
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ONSET",
+    "target": "OBESE",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.88,
+    "movement": 0.4,
+    "density": 0.97,
+    "space": 0.15,
+    "aggression": 0.92
+  },
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.85,
+    "SPACE": 0.1
+  },
   "tags": [
     "entangled",
     "obese",
@@ -59,10 +48,5 @@
     "drums",
     "kick",
     "fat"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

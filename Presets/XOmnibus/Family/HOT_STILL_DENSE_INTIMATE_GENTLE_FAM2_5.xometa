@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Osprey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.522
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.054,
-    "brightness": 0.486,
-    "density": 0.99,
-    "movement": 0.02,
-    "space": 0.048,
-    "warmth": 0.953
-  },
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 5",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.72,
-    "COUPLING": 0.522,
-    "MOVEMENT": 0.02,
-    "SPACE": 0.048
-  },
-  "mood": "Family",
-  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.72,
-      "macro_coupling": 0.522,
       "macro_movement": 0.02,
+      "macro_coupling": 0.522,
       "macro_space": 0.048
     },
     "Osprey": {
       "macro_character": 0.671,
-      "macro_coupling": 0.525,
       "macro_movement": 0.039,
+      "macro_coupling": 0.525,
       "macro_space": 0.053
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OSPREY",
+    "amount": 0.522
+  },
+  "dna": {
+    "brightness": 0.486,
+    "warmth": 0.953,
+    "movement": 0.02,
+    "density": 0.99,
+    "space": 0.048,
+    "aggression": 0.054
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.522,
+    "SPACE": 0.048
+  },
   "tags": [
     "family",
     "warm",
@@ -58,10 +47,5 @@
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

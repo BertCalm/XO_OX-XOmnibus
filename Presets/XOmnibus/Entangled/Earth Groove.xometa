@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Ohm",
-        "engineB": "Ole",
-        "type": "Mod->Cutoff"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "OHM and OLE coupled via Mod->Cutoff. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.462,
-    "brightness": 0.568,
-    "density": 0.555,
-    "movement": 0.725,
-    "space": 0.707,
-    "warmth": 0.736
-  },
+  "schema_version": 1,
+  "name": "Earth Groove",
+  "mood": "Entangled",
   "engines": [
     "Ohm",
     "Ole"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "ohm",
     "ole"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "TEXTURE",
@@ -43,20 +21,27 @@
     "BRIDGE",
     "DEPTH"
   ],
-  "mood": "Entangled",
-  "name": "Earth Groove",
-  "parameters": {
-    "Ohm": {},
-    "Ole": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "ole"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OLE",
+        "type": "Mod->Cutoff",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.568,
+    "warmth": 0.736,
+    "movement": 0.725,
+    "density": 0.555,
+    "space": 0.707,
+    "aggression": 0.462
+  }
 }

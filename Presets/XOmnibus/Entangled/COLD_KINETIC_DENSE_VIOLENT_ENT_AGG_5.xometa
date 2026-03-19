@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.477
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Obbligato",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.944
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OHM",
+    "target": "OBBLIGATO",
+    "amount": 0.944
   },
   "dna": {
-    "aggression": 0.893,
     "brightness": 0.389,
-    "density": 0.946,
+    "warmth": 0.106,
     "movement": 0.879,
+    "density": 0.946,
     "space": 0.512,
-    "warmth": 0.106
+    "aggression": 0.893
   },
-  "engines": [
-    "Ohm",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.575,
-    "COUPLING": 0.98,
     "MOVEMENT": 0.879,
+    "COUPLING": 0.98,
     "SPACE": 0.512
   },
-  "mood": "Entangled",
-  "name": "Wave Saturated",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.855,
-      "macro_space": 0.477
-    },
-    "Ohm": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.98,
-      "macro_movement": 0.844,
-      "macro_space": 0.472
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "cold",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

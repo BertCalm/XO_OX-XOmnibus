@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.8826,
-        "source": "Orca",
-        "target": "Orphica",
-        "type": "SPECTRAL_MORPH"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Cold Vast Violent character entanglement — ORPHICA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.9537,
-    "brightness": 0.983,
-    "density": 0.6322,
-    "movement": 0.5368,
-    "space": 0.8991,
-    "warmth": 0.0418
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_5",
+  "mood": "Entangled",
   "engines": [
     "Orphica",
     "Orca"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "PLUCK",
-    "SCATTER",
-    "RESONATE",
-    "HALL"
-  ],
-  "macros": {
-    "CHARACTER": 0.5124,
-    "COUPLING": 0.8826,
-    "MOVEMENT": 0.5368,
-    "SPACE": 0.8991
-  },
-  "mood": "Entangled",
-  "name": "BRIGHT_COLD_VAST_VIOLENT_ENT_5",
-  "parameters": {
-    "Orca": {
-      "amp_attack": 0.2573,
-      "amp_release": 0.6367,
-      "coupling_level": 0.9138,
-      "density": 0.6118,
-      "drive": 0.7988,
-      "filter_cutoff": 0.8974,
-      "filter_resonance": 0.6104,
-      "macro_character": 0.5838,
-      "macro_coupling": 0.9355,
-      "macro_movement": 0.5109,
-      "macro_space": 0.9111,
-      "output_level": 0.8928,
-      "reverb_mix": 0.6706,
-      "reverb_size": 0.7469
-    },
-    "Orphica": {
-      "amp_attack": 0.2471,
-      "amp_release": 0.6005,
-      "coupling_level": 0.9283,
-      "density": 0.6212,
-      "drive": 0.8077,
-      "filter_cutoff": 0.901,
-      "filter_resonance": 0.5423,
-      "macro_character": 0.6353,
-      "macro_coupling": 0.8971,
-      "macro_movement": 0.5421,
-      "macro_space": 0.9017,
-      "output_level": 0.8893,
-      "reverb_mix": 0.6381,
-      "reverb_size": 0.7387
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9537,
-    "brightness": 0.983,
-    "density": 0.6322,
-    "movement": 0.5368,
-    "space": 0.8991,
-    "warmth": 0.0418
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Cold Vast Violent character entanglement — ORPHICA × ORCA via Spectral Morph. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "PLUCK",
     "SCATTER",
@@ -175,5 +94,4 @@
     "COUPLING": 0.8826,
     "SPACE": 0.8991
   }
->>>>>>> origin/v1-launch-prep
 }

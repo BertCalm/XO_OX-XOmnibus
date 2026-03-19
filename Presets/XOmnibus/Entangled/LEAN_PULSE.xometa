@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LEAN PULSE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.419
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.23
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.23
   },
   "dna": {
-    "aggression": 0.481,
     "brightness": 0.2,
-    "density": 0.129,
+    "warmth": 0.605,
     "movement": 0.873,
+    "density": 0.129,
     "space": 0.052,
-    "warmth": 0.605
+    "aggression": 0.481
   },
-  "engines": [
-    "Origami",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.371,
-    "COUPLING": 0.711,
     "MOVEMENT": 0.934,
+    "COUPLING": 0.711,
     "SPACE": 0.516
   },
-  "mood": "Entangled",
-  "name": "LEAN PULSE",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.769,
-      "macro_coupling": 0.503,
-      "macro_movement": 0.778,
-      "macro_space": 0.419
-    },
-    "Origami": {
-      "macro_character": 0.194,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.678,
-      "macro_space": 0.441
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hollow",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_VIOLENT_FND_3",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.763
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obsidian",
-        "type": "FILTER_MOD",
-        "amount": 0.858
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.858
   },
   "dna": {
-    "aggression": 0.917,
     "brightness": 0.108,
-    "density": 0.596,
+    "warmth": 0.121,
     "movement": 0.892,
+    "density": 0.596,
     "space": 0.443,
-    "warmth": 0.121
+    "aggression": 0.917
   },
-  "engines": [
-    "OddfeliX",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.492,
-    "COUPLING": 0.523,
     "MOVEMENT": 0.739,
+    "COUPLING": 0.523,
     "SPACE": 0.771
   },
-  "mood": "Foundation",
-  "name": "Thread Storm",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.333,
-      "macro_coupling": 0.681,
-      "macro_movement": 0.56,
-      "macro_space": 0.763
-    },
-    "OddfeliX": {
-      "macro_character": 0.339,
-      "macro_coupling": 0.541,
-      "macro_movement": 0.845,
-      "macro_space": 0.651
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "kinetic",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

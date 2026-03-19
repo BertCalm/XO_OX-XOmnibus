@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Single-cycle sine at extreme low, dub-processed",
-  "dna": {
-    "aggression": 0.2134,
+  "schema_version": 1,
+  "name": "Depth Charge Sine",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.1037,
-    "density": 0.6279,
+    "warmth": 0.63,
     "movement": 0.3423,
+    "density": 0.6279,
     "space": 0.4304,
-    "warmth": 0.63
+    "aggression": 0.2134
+  },
+  "dna": {
+    "brightness": 0.1037,
+    "warmth": 0.63,
+    "movement": 0.3423,
+    "density": 0.6279,
+    "space": 0.4304,
+    "aggression": 0.2134
   },
   "engines": [
     "Overdub"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +29,6 @@
     "dark",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -35,49 +37,24 @@
     "PANIC"
   ],
   "macros": {
-    "ECHO": 0.3844,
-    "PANIC": 0.5504,
+    "VOICE": 0.1447,
     "SEND": 0.8131,
-    "VOICE": 0.1447
+    "ECHO": 0.3844,
+    "PANIC": 0.5504
   },
-  "mood": "Foundation",
-  "name": "Depth Charge Sine",
+  "couplingIntensity": "None",
   "parameters": {
     "Overdub": {
-<<<<<<< HEAD
-      "dub_couplingBus": 0,
-      "dub_couplingLevel": 0.5,
-=======
       "dub_macro_voice": 0.1447,
       "dub_macro_send": 0.8131,
->>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.3844,
       "dub_macro_panic": 0.5504,
-      "dub_macro_send": 0.8131,
-      "dub_macro_voice": 0.1447,
-      "dub_outputLevel": 0.85
+      "dub_outputLevel": 0.85,
+      "dub_couplingLevel": 0.5,
+      "dub_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2134,
-    "brightness": 0.1037,
-    "density": 0.6279,
-    "movement": 0.3423,
-    "space": 0.4304,
-    "warmth": 0.63
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

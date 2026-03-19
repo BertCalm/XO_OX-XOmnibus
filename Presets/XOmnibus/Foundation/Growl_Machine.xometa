@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Oscar vocal growl pushed into full aggression",
-  "dna": {
-    "aggression": 0.7882,
+  "schema_version": 1,
+  "name": "Growl Machine",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.5483,
-    "density": 0.8035,
+    "warmth": 0.595,
     "movement": 0.5314,
+    "density": 0.8035,
     "space": 0.2363,
-    "warmth": 0.595
+    "aggression": 0.7882
+  },
+  "dna": {
+    "brightness": 0.5483,
+    "warmth": 0.595,
+    "movement": 0.5314,
+    "density": 0.8035,
+    "space": 0.2363,
+    "aggression": 0.7882
   },
   "engines": [
     "OddOscar"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "extreme",
     "anchor",
     "drive"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WEIGHT",
@@ -36,49 +38,24 @@
     "SPACE"
   ],
   "macros": {
+    "WEIGHT": 0.4367,
     "BREATH": 0.7177,
     "COUPLE": 0.3611,
-    "SPACE": 0.7578,
-    "WEIGHT": 0.4367
+    "SPACE": 0.7578
   },
-  "mood": "Foundation",
-  "name": "Growl Machine",
+  "couplingIntensity": "None",
   "parameters": {
     "OddOscar": {
-<<<<<<< HEAD
-      "oscar_couplingBus": 0,
-      "oscar_couplingLevel": 0.5,
-=======
       "oscar_macro_weight": 0.4367,
->>>>>>> origin/v1-launch-prep
       "oscar_macro_breath": 0.7177,
       "oscar_macro_couple": 0.3611,
       "oscar_macro_space": 0.7578,
-      "oscar_macro_weight": 0.4367,
-      "oscar_outputLevel": 0.85
+      "oscar_outputLevel": 0.85,
+      "oscar_couplingLevel": 0.5,
+      "oscar_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.7882,
-    "brightness": 0.5483,
-    "density": 0.8035,
-    "movement": 0.5314,
-    "space": 0.2363,
-    "warmth": 0.595
-  },
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

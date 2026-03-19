@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "ONSET at maximum punch — MACHINE full, density stacked, every hit a wall.",
-  "dna": {
-    "aggression": 0.86,
-    "brightness": 0.42,
-    "density": 0.88,
-    "movement": 0.7,
-    "space": 0.25,
-    "warmth": 0.3
-  },
+  "schema_version": 1,
+  "name": "Machine Blunt Force",
+  "mood": "Family",
   "engines": [
     "Onset"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "MACHINE",
-    "PUNCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Machine Blunt Force",
-  "parameters": {
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ONSET at maximum punch — MACHINE full, density stacked, every hit a wall.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "aggressive",
     "percussive"
   ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.25,
     "aggression": 0.86
   }
->>>>>>> origin/v1-launch-prep
 }

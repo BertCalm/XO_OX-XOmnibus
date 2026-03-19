@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "EMPTY WIRE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.83
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obese",
-        "type": "FILTER_MOD",
-        "amount": 0.633
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "OBESE",
+    "amount": 0.633
   },
   "dna": {
-    "aggression": 0.859,
     "brightness": 0.616,
-    "density": 0.321,
+    "warmth": 0.11,
     "movement": 0.148,
+    "density": 0.321,
     "space": 0.048,
-    "warmth": 0.11
+    "aggression": 0.859
   },
-  "engines": [
-    "Overdub",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.586,
-    "COUPLING": 0.233,
     "MOVEMENT": 0.813,
+    "COUPLING": 0.233,
     "SPACE": 0.774
   },
-  "mood": "Entangled",
-  "name": "EMPTY WIRE",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.989,
-      "macro_coupling": 0.205,
-      "macro_movement": 0.787,
-      "macro_space": 0.83
-    },
-    "Overdub": {
-      "macro_character": 0.639,
-      "macro_coupling": 0.051,
-      "macro_movement": 0.971,
-      "macro_space": 0.334
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

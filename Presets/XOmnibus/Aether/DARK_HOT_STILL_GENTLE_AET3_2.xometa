@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_GENTLE_AET3_2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.2207
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Oblique",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.6254
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.6254
   },
   "dna": {
-    "aggression": 0.0445,
     "brightness": 0.0319,
-    "density": 0.6181,
+    "warmth": 0.9747,
     "movement": 0.1144,
+    "density": 0.6181,
     "space": 0.391,
-    "warmth": 0.9747
+    "aggression": 0.0445
   },
-  "engines": [
-    "Oceanic",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5033,
-    "COUPLING": 0.6254,
     "MOVEMENT": 0.1144,
+    "COUPLING": 0.6254,
     "SPACE": 0.391
   },
-  "mood": "Aether",
-  "name": "DARK_HOT_STILL_GENTLE_AET3_2",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.7096,
-      "macro_coupling": 0.4484,
-      "macro_movement": 0.8327,
-      "macro_space": 0.2207
-    },
-    "Oceanic": {
-      "macro_character": 0.2521,
-      "macro_coupling": 0.4634,
-      "macro_movement": 0.78,
-      "macro_space": 0.5821
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "still",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

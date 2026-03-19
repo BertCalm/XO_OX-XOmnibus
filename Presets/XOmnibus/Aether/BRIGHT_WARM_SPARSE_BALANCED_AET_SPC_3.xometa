@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT WARM SPARSE BALANCED AET SPC 3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.451
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
-        "amount": 0.517
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "OBSCURA",
+    "amount": 0.517
   },
   "dna": {
-    "aggression": 0.873,
     "brightness": 0.976,
-    "density": 0.087,
+    "warmth": 0.899,
     "movement": 0.486,
+    "density": 0.087,
     "space": 0.464,
-    "warmth": 0.899
+    "aggression": 0.873
   },
-  "engines": [
-    "Organon",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.938,
-    "COUPLING": 0.859,
     "MOVEMENT": 0.486,
+    "COUPLING": 0.859,
     "SPACE": 0.464
   },
-  "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED...",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.928,
-      "macro_coupling": 0.871,
-      "macro_movement": 0.509,
-      "macro_space": 0.451
-    },
-    "Organon": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.486,
-      "macro_space": 0.464
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -83,10 +48,5 @@
     "aggressive",
     "bright",
     "warm"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

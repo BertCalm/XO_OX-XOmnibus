@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Overworld",
-        "type": "FILTER_MOD",
-        "amount": 0.547
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.063,
-    "brightness": 0.018,
-    "density": 0.048,
-    "movement": 0.111,
-    "space": 0.144,
-    "warmth": 0.424
-  },
+  "name": "BOUND GLASS",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ole",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.256,
-    "COUPLING": 0.151,
-    "MOVEMENT": 0.111,
-    "SPACE": 0.989
-  },
-  "mood": "Entangled",
-  "name": "BOUND GLASS",
   "parameters": {
     "Ole": {
       "macro_character": 0.005,
-      "macro_coupling": 0.652,
       "macro_movement": 0.11,
+      "macro_coupling": 0.652,
       "macro_space": 0.722
     },
     "Overworld": {
       "macro_character": 0.253,
-      "macro_coupling": 0.761,
       "macro_movement": 0.111,
+      "macro_coupling": 0.761,
       "macro_space": 0.769
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "OVERWORLD",
+    "amount": 0.547
+  },
+  "dna": {
+    "brightness": 0.018,
+    "warmth": 0.424,
+    "movement": 0.111,
+    "density": 0.048,
+    "space": 0.144,
+    "aggression": 0.063
+  },
+  "macros": {
+    "CHARACTER": 0.256,
+    "MOVEMENT": 0.111,
+    "COUPLING": 0.151,
+    "SPACE": 0.989
+  },
   "tags": [
     "entangled",
     "stillness",
     "bound"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

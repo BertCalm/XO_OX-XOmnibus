@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Osprey",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.544
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.933,
-    "brightness": 0.339,
-    "density": 0.6,
-    "movement": 0.476,
-    "space": 0.08,
-    "warmth": 0.583
-  },
+  "name": "AGGRESSIVE BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Onset",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.451,
-    "COUPLING": 0.544,
-    "MOVEMENT": 0.476,
-    "SPACE": 0.08
-  },
-  "mood": "Foundation",
-  "name": "AGGRESSIVE BASE",
   "parameters": {
     "Onset": {
       "macro_character": 0.573,
-      "macro_coupling": 0.773,
       "macro_movement": 0.33,
+      "macro_coupling": 0.773,
       "macro_space": 0.694
     },
     "Osprey": {
       "macro_character": 0.45,
-      "macro_coupling": 0.645,
       "macro_movement": 0.685,
+      "macro_coupling": 0.645,
       "macro_space": 0.428
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ONSET",
+    "target": "OSPREY",
+    "amount": 0.544
+  },
+  "dna": {
+    "brightness": 0.339,
+    "warmth": 0.583,
+    "movement": 0.476,
+    "density": 0.6,
+    "space": 0.08,
+    "aggression": 0.933
+  },
+  "macros": {
+    "CHARACTER": 0.451,
+    "MOVEMENT": 0.476,
+    "COUPLING": 0.544,
+    "SPACE": 0.08
+  },
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

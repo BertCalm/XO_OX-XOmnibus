@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.658
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.545,
-    "brightness": 0.126,
-    "density": 0.97,
-    "movement": 0.014,
-    "space": 0.636,
-    "warmth": 0.957
-  },
+  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oblong",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.758,
-    "COUPLING": 0.744,
-    "MOVEMENT": 0.014,
-    "SPACE": 0.636
-  },
-  "mood": "Flux",
-  "name": "DARK_HOT_STILL_DENSE_FLX_SLW_5",
   "parameters": {
     "Oblong": {
       "macro_character": 0.85,
-      "macro_coupling": 0.934,
       "macro_movement": 0.013,
+      "macro_coupling": 0.934,
       "macro_space": 0.632
     },
     "Origami": {
       "macro_character": 0.822,
-      "macro_coupling": 0.808,
       "macro_movement": 0.015,
+      "macro_coupling": 0.808,
       "macro_space": 0.648
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "ORIGAMI",
+    "amount": 0.658
+  },
+  "dna": {
+    "brightness": 0.126,
+    "warmth": 0.957,
+    "movement": 0.014,
+    "density": 0.97,
+    "space": 0.636,
+    "aggression": 0.545
+  },
+  "macros": {
+    "CHARACTER": 0.758,
+    "MOVEMENT": 0.014,
+    "COUPLING": 0.744,
+    "SPACE": 0.636
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "warm",
     "dense",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

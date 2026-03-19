@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sun through fog: radiant warmth, minimal presence.",
-  "dna": {
-    "aggression": 0.205,
+  "schema_version": 1,
+  "name": "Thermal Breath Slow",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.647,
-    "density": 0.083,
+    "warmth": 0.915,
     "movement": 0.622,
+    "density": 0.083,
     "space": 0.645,
-    "warmth": 0.915
+    "aggression": 0.205
   },
   "engines": [
     "Osprey"
   ],
-  "macroLabels": [
-    "BLOOM",
-    "EXHALE",
-    "COUPLING",
-    "HORIZON"
-  ],
-  "mood": "Atmosphere",
-  "name": "Thermal Breath Slow",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.205,
-    "brightness": 0.647,
-    "density": 0.083,
-    "movement": 0.622,
-    "space": 0.645,
-    "warmth": 0.915
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
   "tags": [
     "atmosphere",
     "warm",
@@ -44,9 +24,6 @@
     "breath",
     "evolving"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "BLOOM",
     "EXHALE",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

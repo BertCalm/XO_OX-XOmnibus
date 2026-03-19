@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Owlfish",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.681
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.916,
-    "brightness": 0.144,
-    "density": 0.278,
-    "movement": 0.424,
-    "space": 0.236,
-    "warmth": 0.647
-  },
+  "name": "AGGRESSIVE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Obscura",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.456,
-    "COUPLING": 0.681,
-    "MOVEMENT": 0.424,
-    "SPACE": 0.236
-  },
-  "mood": "Foundation",
-  "name": "AGGRESSIVE FOUNDATION",
   "parameters": {
     "Obscura": {
       "macro_character": 0.635,
-      "macro_coupling": 0.737,
       "macro_movement": 0.464,
+      "macro_coupling": 0.737,
       "macro_space": 0.671
     },
     "Owlfish": {
       "macro_character": 0.511,
-      "macro_coupling": 0.326,
       "macro_movement": 0.666,
+      "macro_coupling": 0.326,
       "macro_space": 0.344
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSCURA",
+    "target": "OWLFISH",
+    "amount": 0.681
+  },
+  "dna": {
+    "brightness": 0.144,
+    "warmth": 0.647,
+    "movement": 0.424,
+    "density": 0.278,
+    "space": 0.236,
+    "aggression": 0.916
+  },
+  "macros": {
+    "CHARACTER": 0.456,
+    "MOVEMENT": 0.424,
+    "COUPLING": 0.681,
+    "SPACE": 0.236
+  },
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

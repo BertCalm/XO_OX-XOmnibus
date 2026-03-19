@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Fast armor decay with high scatter and delay feedback — a storm of pitch-shifted fragments",
-  "dna": {
-    "aggression": 0.55,
+  "schema_version": 1,
+  "name": "Fragment Storm",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.4,
-    "density": 0.9,
+    "warmth": 0.45,
+    "aggression": 0.55,
     "movement": 1.0,
-    "space": 0.4,
-    "warmth": 0.45
+    "density": 0.9,
+    "space": 0.4
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +21,6 @@
     "armor",
     "delay",
     "scattered"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -34,54 +28,21 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "mood": "Flux",
-  "name": "Fragment Storm",
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 1.0,
+    "density": 0.9,
+    "space": 0.4,
+    "aggression": 0.55
+  },
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "owl_ampAttack": 1,
-      "owl_ampDecay": 100,
-      "owl_ampRelease": 200,
-      "owl_ampSustain": 0.65,
-      "owl_armorDecay": 0.35,
-      "owl_armorDelay": 0.65,
-      "owl_armorDuck": 0.7,
-      "owl_armorScatter": 0.75,
-      "owl_armorThreshold": 0.3,
-      "owl_bodyFreq": 45,
-      "owl_bodyLevel": 0.35,
-      "owl_compAttack": 0.1,
-      "owl_compRatio": 0.45,
-      "owl_compRelease": 0.2,
-      "owl_compThreshold": 0.4,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.85,
-      "owl_depth": 0.4,
-      "owl_feedRate": 0.65,
-      "owl_feeding": 0.35,
-      "owl_filterCutoff": 0.55,
-      "owl_filterReso": 0.35,
-      "owl_filterTrack": 0.5,
-      "owl_fundWave": 0.35,
-      "owl_grainDensity": 0.3,
-      "owl_grainMix": 0.25,
-      "owl_grainPitch": 0.3,
-      "owl_grainSize": 0.2,
-=======
       "owl_portamento": 0.05,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
-      "owl_mixtur": 0.5,
       "owl_morphGlide": 0.2,
-      "owl_outputLevel": 0.8,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.05,
-      "owl_pressure": 0.6,
-      "owl_reverbDamp": 0.45,
-      "owl_reverbMix": 0.3,
-      "owl_reverbPreDelay": 0.2,
-      "owl_reverbSize": 0.4,
+      "owl_subMix": 0.5,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 4,
@@ -90,24 +51,47 @@
       "owl_subLevel2": 0.5,
       "owl_subLevel3": 0.35,
       "owl_subLevel4": 0.0,
-      "owl_subMix": 0.5,
-      "owl_subWave": 0.6
+      "owl_mixtur": 0.5,
+      "owl_fundWave": 0.35,
+      "owl_subWave": 0.6,
+      "owl_bodyFreq": 45,
+      "owl_bodyLevel": 0.35,
+      "owl_compRatio": 0.45,
+      "owl_compThreshold": 0.4,
+      "owl_compAttack": 0.1,
+      "owl_compRelease": 0.2,
+      "owl_filterCutoff": 0.55,
+      "owl_filterReso": 0.35,
+      "owl_filterTrack": 0.5,
+      "owl_grainSize": 0.2,
+      "owl_grainDensity": 0.3,
+      "owl_grainPitch": 0.3,
+      "owl_grainMix": 0.25,
+      "owl_feedRate": 0.65,
+      "owl_armorThreshold": 0.3,
+      "owl_armorDecay": 0.35,
+      "owl_armorScatter": 0.75,
+      "owl_armorDuck": 0.7,
+      "owl_armorDelay": 0.65,
+      "owl_reverbSize": 0.4,
+      "owl_reverbDamp": 0.45,
+      "owl_reverbPreDelay": 0.2,
+      "owl_reverbMix": 0.3,
+      "owl_ampAttack": 1,
+      "owl_ampDecay": 100,
+      "owl_ampSustain": 0.65,
+      "owl_ampRelease": 200,
+      "owl_depth": 0.4,
+      "owl_feeding": 0.35,
+      "owl_defense": 0.85,
+      "owl_pressure": 0.6,
+      "owl_outputLevel": 0.8,
+      "owl_outputPan": 0.0,
+      "owl_couplingLevel": 0.5,
+      "owl_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.55,
-    "brightness": 0.4,
-    "density": 0.9,
-    "movement": 1.0,
-    "space": 0.4,
-    "warmth": 0.45
-  },
-  "tags": [
-    "chaotic",
-    "armor",
-    "delay",
-    "scattered"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": []
+  }
 }

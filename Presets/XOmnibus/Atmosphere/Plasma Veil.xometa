@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Cathode glow warming nothing but the eye. Cool brightness, restless movement.",
+  "name": "Plasma Veil",
+  "version": "1.0",
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.501,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.554,
+    "COUPLING": 0.0,
     "SPACE": 0.43
   },
-  "mood": "Atmosphere",
-  "name": "Plasma Veil",
-  "parameters": {
-    "OddfeliX": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.103,
     "brightness": 0.843,
-    "density": 0.467,
+    "warmth": 0.159,
     "movement": 0.554,
+    "density": 0.467,
     "space": 0.43,
-    "warmth": 0.159
+    "aggression": 0.103
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Cathode glow warming nothing but the eye. Cool brightness, restless movement."
 }

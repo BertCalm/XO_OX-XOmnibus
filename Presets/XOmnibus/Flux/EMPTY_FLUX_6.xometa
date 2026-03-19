@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Orca",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.5208
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.926,
-    "brightness": 0.0438,
-    "density": 0.0493,
-    "movement": 0.0419,
-    "space": 0.9334,
-    "warmth": 0.1995
-  },
+  "name": "EMPTY FLUX 6",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Odyssey",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.8895,
-    "COUPLING": 0.8946,
-    "MOVEMENT": 0.7433,
-    "SPACE": 0.3866
-  },
-  "mood": "Flux",
-  "name": "EMPTY FLUX 6",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.2533,
-      "macro_coupling": 0.1911,
       "macro_movement": 0.7533,
+      "macro_coupling": 0.1911,
       "macro_space": 0.357
     },
     "Orca": {
       "macro_character": 0.7808,
-      "macro_coupling": 0.3319,
       "macro_movement": 0.8658,
+      "macro_coupling": 0.3319,
       "macro_space": 0.1245
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODYSSEY",
+    "target": "ORCA",
+    "amount": 0.5208
+  },
+  "dna": {
+    "brightness": 0.0438,
+    "warmth": 0.1995,
+    "movement": 0.0419,
+    "density": 0.0493,
+    "space": 0.9334,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.8895,
+    "MOVEMENT": 0.7433,
+    "COUPLING": 0.8946,
+    "SPACE": 0.3866
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

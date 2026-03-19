@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK HOT STILL BALANCED AET SPC 1",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.562
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "OddfeliX",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.795
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "ODDFELIX",
+    "amount": 0.795
   },
   "dna": {
-    "aggression": 0.1,
     "brightness": 0.063,
-    "density": 0.414,
+    "warmth": 0.981,
     "movement": 0.106,
+    "density": 0.414,
     "space": 0.559,
-    "warmth": 0.981
+    "aggression": 0.1
   },
-  "engines": [
-    "Overworld",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.522,
-    "COUPLING": 0.57,
     "MOVEMENT": 0.106,
+    "COUPLING": 0.57,
     "SPACE": 0.559
   },
-  "mood": "Aether",
-  "name": "DARK HOT STILL BALANCED AET...",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.575,
-      "macro_movement": 0.134,
-      "macro_space": 0.562
-    },
-    "Overworld": {
-      "macro_character": 0.522,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.106,
-      "macro_space": 0.559
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -82,10 +47,5 @@
     "space-mid",
     "gentle",
     "warm"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

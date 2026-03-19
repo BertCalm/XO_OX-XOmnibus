@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.55,
-        "engineA": "Ohm",
-        "engineB": "Obsidian",
-        "type": "Filter->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Light",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OHM Crystal Commune",
   "mood": "Entangled",
@@ -23,44 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Sage smoke drifts through crystal fractures — OHM's communal hum resonates inside OBSIDIAN's glassy depth.",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.32,
-    "density": 0.72,
-    "movement": 0.38,
-    "space": 0.85,
-    "warmth": 0.52
-  },
-  "engines": [
-    "Ohm",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.42,
-    "COUPLING": 0.766,
-    "MOVEMENT": 0.38,
-    "SPACE": 0.85
-  },
-  "mood": "Entangled",
-  "name": "OHM Crystal Commune",
-  "parameters": {
-    "obsidian_crystalResonance": 0.46,
-    "obsidian_depth": 0.84,
-    "ohm_droneFund": 0.588,
-    "ohm_macroCommune": 0.656,
-    "ohm_macroMeddling": 0.552,
-    "ohm_orgHarmonics": 0.356
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -73,6 +21,46 @@
     "crystal",
     "glassy"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.552,
+    "ohm_macroCommune": 0.656,
+    "ohm_orgHarmonics": 0.356,
+    "ohm_droneFund": 0.588,
+    "obsidian_depth": 0.84,
+    "obsidian_crystalResonance": 0.46
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OBSIDIAN",
+        "type": "Filter->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.766,
+    "SPACE": 0.85
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.52,
+    "movement": 0.38,
+    "density": 0.72,
+    "space": 0.85,
+    "aggression": 0.2
+  }
 }

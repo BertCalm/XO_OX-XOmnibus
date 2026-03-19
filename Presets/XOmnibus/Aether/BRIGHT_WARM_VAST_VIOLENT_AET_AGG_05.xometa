@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Organon",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.859
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.87,
-    "brightness": 0.9,
-    "density": 0.646,
-    "movement": 0.609,
-    "space": 0.969,
-    "warmth": 0.884
-  },
+  "name": "BRIGHT WARM VAST VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oracle",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.882,
-    "COUPLING": 0.792,
-    "MOVEMENT": 0.584,
-    "SPACE": 0.913
-  },
-  "mood": "Aether",
-  "name": "BRIGHT WARM VAST VIOLENT AE...",
   "parameters": {
     "Oracle": {
       "macro_character": 0.891,
-      "macro_coupling": 0.771,
       "macro_movement": 0.583,
+      "macro_coupling": 0.771,
       "macro_space": 0.932
     },
     "Organon": {
       "macro_character": 0.873,
-      "macro_coupling": 0.812,
       "macro_movement": 0.585,
+      "macro_coupling": 0.812,
       "macro_space": 0.895
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.859
+  },
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.884,
+    "movement": 0.609,
+    "density": 0.646,
+    "space": 0.969,
+    "aggression": 0.87
+  },
+  "macros": {
+    "CHARACTER": 0.882,
+    "MOVEMENT": 0.584,
+    "COUPLING": 0.792,
+    "SPACE": 0.913
+  },
   "tags": [
     "aether",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

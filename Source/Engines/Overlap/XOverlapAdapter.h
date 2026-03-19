@@ -249,13 +249,6 @@ public:
 
         // SVF filter coefficients (once per block)
         float envMod = filterEnvLevel * filterEnvVelocity * params.filterEnvAmt;
-<<<<<<< HEAD
-        float effectiveCutoff = modFilterCutoff * std::pow(2.0f, envMod * 4.0f);
-        effectiveCutoff = std::clamp(effectiveCutoff, 20.0f,
-                                     std::min(20000.0f, static_cast<float>(sr) * 0.45f));
-        modFilterCutoffCache = effectiveCutoff;  // fix: FilterToFilter coupling reads live cutoff
-        float g_svf   = std::tan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
-=======
         float effectiveCutoff = modFilterCutoff * fastPow2(envMod * 4.0f);
         effectiveCutoff = clamp(effectiveCutoff, 20.0f,
                                      juce::jmin(20000.0f, static_cast<float>(sr) * 0.45f));
@@ -263,7 +256,6 @@ public:
         // D004 fix: update cache so FilterToFilter coupling reflects running filter state
         modFilterCutoffCache = effectiveCutoff;
         float g_svf   = fastTan(3.14159265f * effectiveCutoff / static_cast<float>(sr));
->>>>>>> origin/v1-launch-prep
         float k_svf   = 2.0f - 2.0f * params.filterRes;
         k_svf         = juce::jmax(k_svf, 0.01f);
         float svfDen  = 1.0f / (1.0f + k_svf * g_svf + g_svf * g_svf);

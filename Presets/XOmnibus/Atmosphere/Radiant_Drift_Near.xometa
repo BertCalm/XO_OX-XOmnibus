@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Thermal drift — a sparse harmonic rising on warm air.",
-  "dna": {
-    "aggression": 0.223,
+  "schema_version": 1,
+  "name": "Radiant Drift Near",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.548,
-    "density": 0.104,
+    "warmth": 0.857,
     "movement": 0.613,
+    "density": 0.104,
     "space": 0.567,
-    "warmth": 0.857
+    "aggression": 0.223
   },
   "engines": [
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "GLOW",
-    "WANDER",
-    "COUPLING",
-    "AIR"
-  ],
-  "mood": "Atmosphere",
-  "name": "Radiant Drift Near",
-  "parameters": {
-    "Oceanic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.223,
-    "brightness": 0.548,
-    "density": 0.104,
-    "movement": 0.613,
-    "space": 0.567,
-    "warmth": 0.857
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Thermal drift — a sparse harmonic rising on warm air.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "atmosphere",
     "warm",
@@ -50,9 +24,6 @@
     "breath",
     "evolving"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "GLOW",
     "WANDER",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

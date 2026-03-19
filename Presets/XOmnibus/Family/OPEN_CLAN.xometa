@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OPEN CLAN",
   "version": "1.0",
   "mood": "Family",
@@ -23,66 +20,29 @@
       "macro_space": 0.615
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osprey",
-        "type": "GRANULAR_SYNC",
-        "amount": 0.736
-      }
-    ]
+    "type": "GRANULAR_SYNC",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.736
   },
   "dna": {
-    "aggression": 0.174,
     "brightness": 0.063,
-    "density": 0.044,
+    "warmth": 0.015,
     "movement": 0.79,
+    "density": 0.044,
     "space": 0.324,
-    "warmth": 0.015
+    "aggression": 0.174
   },
-  "engines": [
-    "Ottoni",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.909,
-    "COUPLING": 0.302,
     "MOVEMENT": 0.659,
+    "COUPLING": 0.302,
     "SPACE": 0.643
   },
-  "mood": "Family",
-  "name": "OPEN CLAN",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.594,
-      "macro_coupling": 0.222,
-      "macro_movement": 0.452,
-      "macro_space": 0.615
-    },
-    "Ottoni": {
-      "macro_character": 0.114,
-      "macro_coupling": 0.448,
-      "macro_movement": 0.064,
-      "macro_space": 0.362
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Organon",
-        "type": "CHAOS_INJECT",
-        "amount": 0.527
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.431,
-    "brightness": 0.637,
-    "density": 0.564,
-    "movement": 0.926,
-    "space": 0.925,
-    "warmth": 0.388
-  },
+  "name": "RHYTHMIC FLOOR",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Optic",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.635,
-    "COUPLING": 0.527,
-    "MOVEMENT": 0.926,
-    "SPACE": 0.925
-  },
-  "mood": "Foundation",
-  "name": "RHYTHMIC FLOOR",
   "parameters": {
     "Optic": {
       "macro_character": 0.654,
-      "macro_coupling": 0.301,
       "macro_movement": 0.976,
+      "macro_coupling": 0.301,
       "macro_space": 0.663
     },
     "Organon": {
       "macro_character": 0.569,
-      "macro_coupling": 0.66,
       "macro_movement": 0.907,
+      "macro_coupling": 0.66,
       "macro_space": 0.571
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "ORGANON",
+    "amount": 0.527
+  },
+  "dna": {
+    "brightness": 0.637,
+    "warmth": 0.388,
+    "movement": 0.926,
+    "density": 0.564,
+    "space": 0.925,
+    "aggression": 0.431
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.926,
+    "COUPLING": 0.527,
+    "SPACE": 0.925
+  },
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

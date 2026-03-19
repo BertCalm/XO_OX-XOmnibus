@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Ignis Weave",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.45
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Obese",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.67
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "ODDOSCAR",
+    "target": "OBESE",
+    "amount": 0.67
   },
   "dna": {
-    "aggression": 0.44,
     "brightness": 0.46,
-    "density": 0.76,
+    "warmth": 0.97,
     "movement": 0.54,
+    "density": 0.76,
     "space": 0.41,
-    "warmth": 0.97
+    "aggression": 0.44
   },
-  "engines": [
-    "OddOscar",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.89,
-    "COUPLING": 0.64,
     "MOVEMENT": 0.53,
+    "COUPLING": 0.64,
     "SPACE": 0.46
   },
-  "mood": "Entangled",
-  "name": "Ignis Weave",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.51,
-      "macro_movement": 0.41,
-      "macro_space": 0.45
-    },
-    "OddOscar": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.65,
-      "macro_space": 0.48
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

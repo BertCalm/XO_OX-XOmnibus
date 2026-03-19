@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OBLITERATE MESH",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.737
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "OddfeliX",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.498
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ODDFELIX",
+    "amount": 0.498
   },
   "dna": {
-    "aggression": 0.944,
     "brightness": 0.117,
-    "density": 0.464,
+    "warmth": 0.656,
     "movement": 0.802,
+    "density": 0.464,
     "space": 0.096,
-    "warmth": 0.656
+    "aggression": 0.944
   },
-  "engines": [
-    "Ouroboros",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.875,
-    "COUPLING": 0.496,
     "MOVEMENT": 0.76,
+    "COUPLING": 0.496,
     "SPACE": 0.358
   },
-  "mood": "Entangled",
-  "name": "OBLITERATE MESH",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.608,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.658,
-      "macro_space": 0.737
-    },
-    "Ouroboros": {
-      "macro_character": 0.795,
-      "macro_coupling": 0.175,
-      "macro_movement": 0.778,
-      "macro_space": 0.878
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "violent",
     "obliterating",
     "aggressive",
     "fury"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.851,
-        "engineA": "Outwit",
-        "engineB": "Osprey",
-        "type": "FILTER_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Shore Automata",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Osprey shore blend index selects OUTWIT ecological rule biome — each shore a different cellular world",
-  "dna": {
-    "aggression": 0.475,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.45
-  },
-  "engines": [
-    "Outwit",
-    "Osprey"
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "osprey",
+    "shore",
+    "ecological"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,16 +25,29 @@
   ],
   "macros": {
     "CHARACTER": 0.652,
-    "COUPLING": 0.847,
     "MOVEMENT": 0.539,
+    "COUPLING": 0.847,
     "SPACE": 0.535
   },
-  "mood": "Entangled",
-  "name": "Shore Automata",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.575,
+    "space": 0.575,
+    "aggression": 0.475,
+    "movement": 0.7,
+    "warmth": 0.45,
+    "density": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.575,
+    "space": 0.575,
+    "aggression": 0.475,
+    "movement": 0.7,
+    "warmth": 0.45,
+    "density": 0.65
+  },
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-=======
       "owit_rule": 73,
       "owit_arms": 5,
       "owit_cellSize": 0.286,
@@ -63,45 +57,27 @@
       "owit_pitchSpread": 0.531,
       "owit_filterCutoff": 0.388,
       "owit_filterReso": 0.372,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.116,
       "owit_ampRelease": 0.183,
+      "owit_outputLevel": 0.729,
+      "owit_couplingLevel": 0.725,
+      "owit_couplingBus": 0,
       "owit_armStagger": 0.191,
-      "owit_arms": 5,
       "owit_borderMode": 2,
-      "owit_cellSize": 0.286,
+      "owit_inkCloudMix": 0.143,
       "owit_chroma1": 0.55,
       "owit_chroma2": 0.39,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.725,
-      "owit_density": 0.474,
-      "owit_evolveRate": 0.528,
-      "owit_filterCutoff": 0.388,
-      "owit_filterReso": 0.372,
-      "owit_inkCloudMix": 0.143,
-      "owit_mutateProb": 0.223,
-      "owit_outputLevel": 0.729,
-      "owit_pitchSpread": 0.531,
-      "owit_polyDepth": 0.488,
-      "owit_rule": 73
+      "owit_polyDepth": 0.488
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.475,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.45
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "osprey",
-    "shore",
-    "ecological"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OSPREY",
+        "type": "FILTER_MOD",
+        "amount": 0.851
+      }
+    ]
+  }
 }

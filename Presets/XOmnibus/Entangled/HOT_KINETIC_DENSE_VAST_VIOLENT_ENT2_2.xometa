@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT KINETIC DENSE VAST VIOLENT ENT2 2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.946
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Orbital",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.927
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORPHICA",
+    "target": "ORBITAL",
+    "amount": 0.927
   },
   "dna": {
-    "aggression": 0.96,
     "brightness": 0.527,
-    "density": 0.895,
+    "warmth": 0.925,
     "movement": 0.945,
+    "density": 0.895,
     "space": 0.953,
-    "warmth": 0.925
+    "aggression": 0.96
   },
-  "engines": [
-    "Orphica",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.726,
-    "COUPLING": 0.927,
     "MOVEMENT": 0.945,
+    "COUPLING": 0.927,
     "SPACE": 0.953
   },
-  "mood": "Entangled",
-  "name": "HOT KINETIC DENSE VAST VIOL...",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.694,
-      "macro_coupling": 0.909,
-      "macro_movement": 0.917,
-      "macro_space": 0.946
-    },
-    "Orphica": {
-      "macro_character": 0.726,
-      "macro_coupling": 0.927,
-      "macro_movement": 0.945,
-      "macro_space": 0.953
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
@@ -82,10 +47,5 @@
     "dense",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

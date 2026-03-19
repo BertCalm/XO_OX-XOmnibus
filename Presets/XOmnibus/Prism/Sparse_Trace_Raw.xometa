@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sub-zero shimmer. The silence between notes is the sound.",
-  "dna": {
-    "aggression": 0.088,
+  "schema_version": 1,
+  "name": "Sparse Trace Raw",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.759,
-    "density": 0.118,
+    "warmth": 0.119,
     "movement": 0.261,
+    "density": 0.118,
     "space": 0.981,
-    "warmth": 0.119
+    "aggression": 0.088
   },
   "engines": [
     "Oblique"
   ],
-  "macroLabels": [
-    "CRYSTAL",
-    "BREATH",
-    "COUPLING",
-    "OPEN"
-  ],
-  "mood": "Prism",
-  "name": "Sparse Trace Raw",
-  "parameters": {
-    "Oblique": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.088,
-    "brightness": 0.759,
-    "density": 0.118,
-    "movement": 0.261,
-    "space": 0.981,
-    "warmth": 0.119
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-zero shimmer. The silence between notes is the sound.",
   "tags": [
     "prism",
     "cold",
@@ -45,9 +25,6 @@
     "spacious",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CRYSTAL",
     "BREATH",
@@ -67,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

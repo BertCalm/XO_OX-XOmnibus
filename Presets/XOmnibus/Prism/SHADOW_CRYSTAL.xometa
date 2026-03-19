@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Overbite",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.576
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.457,
-    "brightness": 0.062,
-    "density": 0.83,
-    "movement": 0.273,
-    "space": 0.067,
-    "warmth": 0.371
-  },
+  "name": "SHADOW CRYSTAL",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Orbital",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.536,
-    "COUPLING": 0.719,
-    "MOVEMENT": 0.438,
-    "SPACE": 0.737
-  },
-  "mood": "Prism",
-  "name": "SHADOW CRYSTAL",
   "parameters": {
     "Orbital": {
       "macro_character": 0.461,
-      "macro_coupling": 0.628,
       "macro_movement": 0.384,
+      "macro_coupling": 0.628,
       "macro_space": 0.965
     },
     "Overbite": {
       "macro_character": 0.528,
-      "macro_coupling": 0.926,
       "macro_movement": 0.918,
+      "macro_coupling": 0.926,
       "macro_space": 0.718
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORBITAL",
+    "target": "OVERBITE",
+    "amount": 0.576
+  },
+  "dna": {
+    "brightness": 0.062,
+    "warmth": 0.371,
+    "movement": 0.273,
+    "density": 0.83,
+    "space": 0.067,
+    "aggression": 0.457
+  },
+  "macros": {
+    "CHARACTER": 0.536,
+    "MOVEMENT": 0.438,
+    "COUPLING": 0.719,
+    "SPACE": 0.737
+  },
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

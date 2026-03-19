@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Opal",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.721
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0267,
-    "brightness": 0.0735,
-    "density": 0.3234,
-    "movement": 0.8961,
-    "space": 0.9583,
-    "warmth": 0.8928
-  },
+  "name": "DARK_HOT_KINETIC_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oblique",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4707,
-    "COUPLING": 0.316,
-    "MOVEMENT": 0.8972,
-    "SPACE": 0.9773
-  },
-  "mood": "Atmosphere",
-  "name": "Mahogany Horizon",
   "parameters": {
     "Oblique": {
       "macro_character": 0.4833,
-      "macro_coupling": 0.3028,
       "macro_movement": 0.9173,
+      "macro_coupling": 0.3028,
       "macro_space": 0.9859
     },
     "Opal": {
       "macro_character": 0.458,
-      "macro_coupling": 0.3291,
       "macro_movement": 0.8772,
+      "macro_coupling": 0.3291,
       "macro_space": 0.9688
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLIQUE",
+    "target": "OPAL",
+    "amount": 0.721
+  },
+  "dna": {
+    "brightness": 0.0735,
+    "warmth": 0.8928,
+    "movement": 0.8961,
+    "density": 0.3234,
+    "space": 0.9583,
+    "aggression": 0.0267
+  },
+  "macros": {
+    "CHARACTER": 0.4707,
+    "MOVEMENT": 0.8972,
+    "COUPLING": 0.316,
+    "SPACE": 0.9773
+  },
   "tags": [
     "atmosphere",
     "dark",
@@ -58,10 +47,5 @@
     "kinetic",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

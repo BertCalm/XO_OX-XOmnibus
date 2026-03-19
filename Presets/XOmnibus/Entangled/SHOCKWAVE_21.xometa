@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Odyssey",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.967
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.539,
-    "brightness": 0.225,
-    "density": 0.519,
-    "movement": 0.925,
-    "space": 0.284,
-    "warmth": 0.947
-  },
+  "name": "SHOCKWAVE 21",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Odyssey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.196,
-    "COUPLING": 0.956,
-    "MOVEMENT": 0.925,
-    "SPACE": 0.274
-  },
-  "mood": "Entangled",
-  "name": "SHOCKWAVE 21",
   "parameters": {
     "Oblong": {
       "macro_character": 0.503,
-      "macro_coupling": 0.868,
       "macro_movement": 0.957,
+      "macro_coupling": 0.868,
       "macro_space": 0.831
     },
     "Odyssey": {
       "macro_character": 0.518,
-      "macro_coupling": 0.304,
       "macro_movement": 0.893,
+      "macro_coupling": 0.304,
       "macro_space": 0.162
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OBLONG",
+    "target": "ODYSSEY",
+    "amount": 0.967
+  },
+  "dna": {
+    "brightness": 0.225,
+    "warmth": 0.947,
+    "movement": 0.925,
+    "density": 0.519,
+    "space": 0.284,
+    "aggression": 0.539
+  },
+  "macros": {
+    "CHARACTER": 0.196,
+    "MOVEMENT": 0.925,
+    "COUPLING": 0.956,
+    "SPACE": 0.274
+  },
   "tags": [
     "entangled",
     "explosive",
     "unstable"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Overdub",
-        "type": "CHAOS_INJECT",
-        "amount": 0.285
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.073,
-    "brightness": 0.454,
-    "density": 0.135,
-    "movement": 0.037,
-    "space": 0.024,
-    "warmth": 0.141
-  },
+  "name": "GOSSAMER KNOT",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.858,
-    "COUPLING": 0.223,
-    "MOVEMENT": 0.618,
-    "SPACE": 0.846
-  },
-  "mood": "Entangled",
-  "name": "GOSSAMER KNOT",
   "parameters": {
     "Origami": {
       "macro_character": 0.604,
-      "macro_coupling": 0.668,
       "macro_movement": 0.739,
+      "macro_coupling": 0.668,
       "macro_space": 0.349
     },
     "Overdub": {
       "macro_character": 0.111,
-      "macro_coupling": 0.28,
       "macro_movement": 0.426,
+      "macro_coupling": 0.28,
       "macro_space": 0.773
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORIGAMI",
+    "target": "OVERDUB",
+    "amount": 0.285
+  },
+  "dna": {
+    "brightness": 0.454,
+    "warmth": 0.141,
+    "movement": 0.037,
+    "density": 0.135,
+    "space": 0.024,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.858,
+    "MOVEMENT": 0.618,
+    "COUPLING": 0.223,
+    "SPACE": 0.846
+  },
   "tags": [
     "calm",
     "yielding",
     "entangled",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

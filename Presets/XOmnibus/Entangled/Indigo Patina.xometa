@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.71,
-        "engineA": "Ottoni",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OTTONI triple-brass folds into Oracle's indigo harmonic space — ancient metals.",
-  "dna": {
-    "aggression": 0.12,
-    "brightness": 0.52,
-    "density": 0.65,
-    "movement": 0.5,
-    "space": 0.5,
-    "warmth": 0.72
-  },
-  "engines": [
-    "Ottoni",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.625,
-    "COUPLING": 0.71,
-    "MOVEMENT": 0.565,
-    "SPACE": 0.48
-  },
-  "mood": "Entangled",
-  "name": "Indigo Patina",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.65,
-      "macro_space": 0.58
-    },
-    "Ottoni": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.48,
-      "macro_space": 0.38
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Indigo Patina",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "OTTONI triple-brass folds into Oracle's indigo harmonic space — ancient metals.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "harmonic",
     "deep"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.52,
     "warmth": 0.72,
@@ -118,5 +64,4 @@
     "SPACE": 0.48
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

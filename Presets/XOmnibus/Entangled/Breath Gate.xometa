@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Onset",
-        "type": "RHYTHM_GATE",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Onset percussive hits gated by OBBLIGATO breath pattern — drums speak only when wind allows",
+  "name": "Breath Gate",
+  "version": "1.0",
   "engines": [
     "Obbligato",
     "Onset"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.65,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.7,
     "SPACE": 0.5
   },
-  "mood": "Entangled",
-  "name": "Breath Gate",
-  "parameters": {
-    "Obbligato": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.49,
     "brightness": 0.53,
-    "density": 0.71,
+    "warmth": 0.61,
     "movement": 0.61,
+    "density": 0.71,
     "space": 0.44,
-    "warmth": 0.61
+    "aggression": 0.49
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHM_GATE",
+    "source": "OBBLIGATO",
+    "target": "ONSET",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "onset",
     "wind"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Onset percussive hits gated by OBBLIGATO breath pattern — drums speak only when wind allows"
->>>>>>> origin/v1-launch-prep
 }

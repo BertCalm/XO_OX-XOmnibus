@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_4",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.9691
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Oblique",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.8071
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OTTONI",
+    "target": "OBLIQUE",
+    "amount": 0.8071
   },
   "dna": {
-    "aggression": 0.941,
     "brightness": 0.0956,
-    "density": 0.0788,
+    "warmth": 0.6678,
     "movement": 0.6923,
+    "density": 0.0788,
     "space": 0.9788,
-    "warmth": 0.6678
+    "aggression": 0.941
   },
-  "engines": [
-    "Ottoni",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8044,
-    "COUPLING": 0.0788,
     "MOVEMENT": 0.6923,
+    "COUPLING": 0.0788,
     "SPACE": 0.9788
   },
-  "mood": "Prism",
-  "name": "Shadow Expanse 2",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.7753,
-      "macro_coupling": 0.0428,
-      "macro_movement": 0.6892,
-      "macro_space": 0.9691
-    },
-    "Ottoni": {
-      "macro_character": 0.8044,
-      "macro_coupling": 0.0788,
-      "macro_movement": 0.6923,
-      "macro_space": 0.9788
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Overbite",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.764
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.651,
-    "brightness": 0.931,
-    "density": 0.884,
-    "movement": 0.081,
-    "space": 0.092,
-    "warmth": 0.067
-  },
+  "name": "BRIGHT_COLD_FROZEN_DENSE_CLOSE_ENT4_1",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Ocelot",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.492,
-    "COUPLING": 0.764,
-    "MOVEMENT": 0.082,
-    "SPACE": 0.07
-  },
-  "mood": "Entangled",
-  "name": "Mirror Saturated",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.489,
-      "macro_coupling": 0.879,
       "macro_movement": 0.08,
+      "macro_coupling": 0.879,
       "macro_space": 0.068
     },
     "Overbite": {
       "macro_character": 0.495,
-      "macro_coupling": 0.876,
       "macro_movement": 0.084,
+      "macro_coupling": 0.876,
       "macro_space": 0.071
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCELOT",
+    "target": "OVERBITE",
+    "amount": 0.764
+  },
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.067,
+    "movement": 0.081,
+    "density": 0.884,
+    "space": 0.092,
+    "aggression": 0.651
+  },
+  "macros": {
+    "CHARACTER": 0.492,
+    "MOVEMENT": 0.082,
+    "COUPLING": 0.764,
+    "SPACE": 0.07
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "cold",
     "dense",
     "close"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

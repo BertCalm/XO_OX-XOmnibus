@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DENSE BREATH",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.074
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Oblique",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.735
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORCA",
+    "target": "OBLIQUE",
+    "amount": 0.735
   },
   "dna": {
-    "aggression": 0.564,
     "brightness": 0.451,
-    "density": 0.318,
+    "warmth": 0.475,
     "movement": 0.06,
+    "density": 0.318,
     "space": 0.086,
-    "warmth": 0.475
+    "aggression": 0.564
   },
-  "engines": [
-    "Orca",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.757,
-    "COUPLING": 0.71,
     "MOVEMENT": 0.561,
+    "COUPLING": 0.71,
     "SPACE": 0.086
   },
-  "mood": "Atmosphere",
-  "name": "DENSE BREATH",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.788,
-      "macro_coupling": 0.117,
-      "macro_movement": 0.57,
-      "macro_space": 0.074
-    },
-    "Orca": {
-      "macro_character": 0.583,
-      "macro_coupling": 0.283,
-      "macro_movement": 0.121,
-      "macro_space": 0.086
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK DRIVE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.5054
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Oceanic",
-        "type": "FILTER_MOD",
-        "amount": 0.99
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "OCEANIC",
+    "amount": 0.99
   },
   "dna": {
-    "aggression": 0.8823,
     "brightness": 0.2151,
-    "density": 0.9218,
+    "warmth": 0.3529,
     "movement": 0.0505,
+    "density": 0.9218,
     "space": 0.4949,
-    "warmth": 0.3529
+    "aggression": 0.8823
   },
-  "engines": [
-    "Overbite",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6543,
-    "COUPLING": 0.861,
     "MOVEMENT": 0.4706,
+    "COUPLING": 0.861,
     "SPACE": 0.8472
   },
-  "mood": "Entangled",
-  "name": "DARK DRIVE",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.3085,
-      "macro_coupling": 0.9781,
-      "macro_movement": 0.0232,
-      "macro_space": 0.5054
-    },
-    "Overbite": {
-      "macro_character": 0.7631,
-      "macro_coupling": 0.8059,
-      "macro_movement": 0.4983,
-      "macro_space": 0.4988
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -82,10 +47,5 @@
     "deep",
     "compressed",
     "pressure"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

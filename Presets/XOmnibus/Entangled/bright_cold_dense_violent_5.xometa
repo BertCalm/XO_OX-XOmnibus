@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "High",
-  "couplingType": "SPARK",
-  "description": "Ultra-diverse Entangled preset — bright cold dense violent. Designed for SPARK coupling with XOddFelix.",
-  "dna": {
-    "aggression": 0.9255,
+  "schema_version": 1,
+  "name": "BRIGHT COLD DENSE VIOLENT 5",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.9364,
+    "warmth": 0.0487,
     "density": 0.953,
+    "aggression": 0.9255,
     "movement": 0.5334,
-    "space": 0.4652,
-    "warmth": 0.0487
+    "space": 0.4652
+  },
+  "dna": {
+    "brightness": 0.9364,
+    "warmth": 0.0487,
+    "density": 0.953,
+    "aggression": 0.9255,
+    "movement": 0.5334,
+    "space": 0.4652
   },
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "spark",
     "oddfelix"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "PRESS",
@@ -35,32 +36,10 @@
     "SHIMMER",
     "CRUSH"
   ],
-  "mood": "Prism",
-  "name": "BRIGHT COLD DENSE VIOLENT 5",
+  "couplingType": "SPARK",
+  "couplingIntensity": "High",
   "parameters": {
     "OddfeliX": {
-<<<<<<< HEAD
-      "couplingBus": 2,
-      "couplingLevel": 0.832
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9255,
-    "brightness": 0.9364,
-    "density": 0.953,
-    "movement": 0.5334,
-    "space": 0.4652,
-    "warmth": 0.0487
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "spark",
-    "oddfelix"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.832,
       "couplingBus": 2
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

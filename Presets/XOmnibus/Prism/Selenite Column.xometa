@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Selenite Column",
   "mood": "Prism",
@@ -13,56 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Selenite column transmitting lunar light — translucent crystal pillar, softly glowing.",
-  "dna": {
-    "aggression": 0.09,
-    "brightness": 0.89,
-    "density": 0.26,
-    "movement": 0.21,
-    "space": 0.79,
-    "warmth": 0.13
-  },
-  "engines": [
-    "OddfeliX"
-  ],
-  "legacy": {
-    "sourceCategory": "Prism",
-    "sourceInstrument": "OddfeliX",
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Prism",
-  "name": "Selenite Column",
-  "parameters": {
-    "OddfeliX": {
-      "oddfelix_ampAttack": 0.0085,
-      "oddfelix_ampDecay": 1.032,
-      "oddfelix_ampRelease": 1.985,
-      "oddfelix_ampSustain": 0.767,
-      "oddfelix_filterCutoff": 16460.0,
-      "oddfelix_filterReso": 0.127,
-      "oddfelix_harmonicBlend": 0.801,
-      "oddfelix_level": 0.8,
-      "oddfelix_lfoDepth": 0.063,
-      "oddfelix_lfoRate": 1.445,
-      "oddfelix_macroCharacter": 0.712,
-      "oddfelix_macroCoupling": 0.0,
-      "oddfelix_macroMovement": 0.21,
-      "oddfelix_macroSpace": 0.79,
-      "oddfelix_pitchMod": 0.084,
-      "oddfelix_reverbMix": 0.553,
-      "oddfelix_spectralTilt": 0.623,
-      "oddfelix_stereoWidth": 0.816
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "crystal",
     "selenite",
@@ -70,10 +15,14 @@
     "translucent",
     "prism"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": "OddFelix",
@@ -112,5 +61,4 @@
     "space": 0.79,
     "aggression": 0.09
   }
->>>>>>> origin/v1-launch-prep
 }

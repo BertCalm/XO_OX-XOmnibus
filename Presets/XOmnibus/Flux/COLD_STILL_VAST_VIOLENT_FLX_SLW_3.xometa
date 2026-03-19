@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.971
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Optic",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.682
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.682
   },
   "dna": {
-    "aggression": 0.899,
     "brightness": 0.495,
-    "density": 0.398,
+    "warmth": 0.065,
     "movement": 0.02,
+    "density": 0.398,
     "space": 0.988,
-    "warmth": 0.065
+    "aggression": 0.899
   },
-  "engines": [
-    "Overdub",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.649,
-    "COUPLING": 0.839,
     "MOVEMENT": 0.02,
+    "COUPLING": 0.839,
     "SPACE": 0.988
   },
-  "mood": "Flux",
-  "name": "Signal Canyon 2",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.636,
-      "macro_coupling": 0.823,
-      "macro_movement": 0.018,
-      "macro_space": 0.971
-    },
-    "Overdub": {
-      "macro_character": 0.574,
-      "macro_coupling": 0.724,
-      "macro_movement": 0.019,
-      "macro_space": 1.0
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "vast",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

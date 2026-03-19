@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_VIOLENT_FAM_VOL_116",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.683
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Orphica",
-        "type": "SPECTRAL_WEAVE",
-        "amount": 0.939
-      }
-    ]
+    "type": "SPECTRAL_WEAVE",
+    "source": "OBLONG",
+    "target": "ORPHICA",
+    "amount": 0.939
   },
   "dna": {
-    "aggression": 0.967,
     "brightness": 0.101,
-    "density": 0.902,
+    "warmth": 0.914,
     "movement": 0.334,
+    "density": 0.902,
     "space": 0.697,
-    "warmth": 0.914
+    "aggression": 0.967
   },
-  "engines": [
-    "Orphica",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.506,
-    "COUPLING": 0.934,
     "MOVEMENT": 0.346,
+    "COUPLING": 0.934,
     "SPACE": 0.685
   },
-  "mood": "Family",
-  "name": "Copper Rage 3",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.94,
-      "macro_movement": 0.328,
-      "macro_space": 0.683
-    },
-    "Orphica": {
-      "macro_character": 0.482,
-      "macro_coupling": 0.928,
-      "macro_movement": 0.364,
-      "macro_space": 0.687
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "aggressive",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

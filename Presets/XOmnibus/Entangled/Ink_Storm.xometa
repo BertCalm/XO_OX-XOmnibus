@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Octopus",
-        "engineB": "Ouroboros",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ouroboros timbral warping Octopus ink cloud mix — chromatophore explosion in topological space.",
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.6,
-    "density": 0.73,
-    "movement": 0.9,
-    "space": 0.17,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Ink Storm",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "octopus",
     "ouroboros",
     "ink"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.9,
+    "COUPLING": 0.88,
     "SPACE": 0.17
   },
-  "mood": "Entangled",
-  "name": "Ink Storm",
-  "parameters": {
-    "Octopus": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.6,
-    "density": 0.73,
+    "warmth": 0.2,
     "movement": 0.9,
+    "density": 0.73,
     "space": 0.17,
-    "warmth": 0.2
+    "aggression": 0.91
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "octopus",
-    "ouroboros",
-    "ink"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.73,
+    "space": 0.17,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCTOPUS",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.88
+      }
+    ]
+  }
 }

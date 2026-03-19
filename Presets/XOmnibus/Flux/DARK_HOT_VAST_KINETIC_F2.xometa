@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Resonant",
-  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.536,
+  "schema_version": 1,
+  "name": "DARK HOT VAST KINETIC F2",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.065,
-    "density": 0.466,
+    "warmth": 0.926,
+    "aggression": 0.536,
     "movement": 0.949,
-    "space": 0.892,
-    "warmth": 0.926
+    "density": 0.466,
+    "space": 0.892
   },
   "engines": [
     "Origami"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "DARK HOT VAST KINETIC F2",
-  "parameters": {
-    "Origami": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.536,
-    "brightness": 0.065,
-    "density": 0.466,
-    "movement": 0.949,
-    "space": 0.892,
-    "warmth": 0.926
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "warm",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

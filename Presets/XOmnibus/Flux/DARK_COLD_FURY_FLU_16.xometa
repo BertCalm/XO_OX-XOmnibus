@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD FURY FLU 16",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.694
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Oceanic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.69
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.69
   },
   "dna": {
-    "aggression": 0.945,
     "brightness": 0.041,
-    "density": 0.6,
+    "warmth": 0.062,
     "movement": 0.566,
+    "density": 0.6,
     "space": 0.647,
-    "warmth": 0.062
+    "aggression": 0.945
   },
-  "engines": [
-    "Outwit",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.052,
-    "COUPLING": 0.884,
     "MOVEMENT": 0.566,
+    "COUPLING": 0.884,
     "SPACE": 0.647
   },
-  "mood": "Flux",
-  "name": "DARK COLD FURY FLU 16",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.007,
-      "macro_coupling": 0.614,
-      "macro_movement": 0.589,
-      "macro_space": 0.694
-    },
-    "Outwit": {
-      "macro_character": 0.052,
-      "macro_coupling": 0.884,
-      "macro_movement": 0.566,
-      "macro_space": 0.647
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -82,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

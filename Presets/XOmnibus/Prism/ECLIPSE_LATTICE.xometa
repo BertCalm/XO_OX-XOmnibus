@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Overbite",
-        "type": "CHAOS_INJECT",
-        "amount": 0.836
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.891,
-    "brightness": 0.045,
-    "density": 0.348,
-    "movement": 0.13,
-    "space": 0.463,
-    "warmth": 0.54
-  },
+  "name": "ECLIPSE LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oblong",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.151,
-    "COUPLING": 0.775,
-    "MOVEMENT": 0.109,
-    "SPACE": 0.553
-  },
-  "mood": "Prism",
-  "name": "ECLIPSE LATTICE",
   "parameters": {
     "Oblong": {
       "macro_character": 0.566,
-      "macro_coupling": 0.902,
       "macro_movement": 0.136,
+      "macro_coupling": 0.902,
       "macro_space": 0.052
     },
     "Overbite": {
       "macro_character": 0.942,
-      "macro_coupling": 0.824,
       "macro_movement": 0.79,
+      "macro_coupling": 0.824,
       "macro_space": 0.952
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "OVERBITE",
+    "amount": 0.836
+  },
+  "dna": {
+    "brightness": 0.045,
+    "warmth": 0.54,
+    "movement": 0.13,
+    "density": 0.348,
+    "space": 0.463,
+    "aggression": 0.891
+  },
+  "macros": {
+    "CHARACTER": 0.151,
+    "MOVEMENT": 0.109,
+    "COUPLING": 0.775,
+    "SPACE": 0.553
+  },
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

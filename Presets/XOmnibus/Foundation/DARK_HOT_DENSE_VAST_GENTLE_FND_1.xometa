@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Obsidian",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.688
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "DARK_HOT_DENSE_VAST_GENTLE_FND_1",
   "mood": "Foundation",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_HOT_DENSE_VAST_GENTLE. Variant 1.",
-  "dna": {
-    "aggression": 0.084,
-    "brightness": 0.027,
-    "density": 0.983,
-    "movement": 0.462,
-    "space": 0.938,
-    "warmth": 0.973
-  },
-  "engines": [
-    "Origami",
-    "Obsidian"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.083,
-    "COUPLING": 0.957,
-    "MOVEMENT": 0.439,
-    "SPACE": 0.932
-  },
-  "mood": "Foundation",
-  "name": "Mahogany Molten",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.106,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.453,
-      "macro_space": 1.0
-    },
-    "Origami": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.913,
-      "macro_movement": 0.425,
-      "macro_space": 0.864
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -82,10 +19,14 @@
     "foundation",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.957,
     "SPACE": 0.932
   }
->>>>>>> origin/v1-launch-prep
 }

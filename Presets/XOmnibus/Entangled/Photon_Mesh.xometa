@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Photon Mesh",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.53
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Ohm",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.88
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OTTONI",
+    "target": "OHM",
+    "amount": 0.88
   },
   "dna": {
-    "aggression": 0.35,
     "brightness": 0.83,
-    "density": 0.54,
+    "warmth": 0.87,
     "movement": 0.44,
+    "density": 0.54,
     "space": 0.51,
-    "warmth": 0.87
+    "aggression": 0.35
   },
-  "engines": [
-    "Ottoni",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.83,
-    "COUPLING": 0.91,
     "MOVEMENT": 0.43,
+    "COUPLING": 0.91,
     "SPACE": 0.52
   },
-  "mood": "Entangled",
-  "name": "Photon Mesh",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.9,
-      "macro_movement": 0.4,
-      "macro_space": 0.53
-    },
-    "Ottoni": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.47,
-      "macro_space": 0.51
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

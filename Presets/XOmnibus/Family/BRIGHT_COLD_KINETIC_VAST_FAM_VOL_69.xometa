@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_69",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.934
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Ohm",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.799
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OHM",
+    "amount": 0.799
   },
   "dna": {
-    "aggression": 0.587,
     "brightness": 0.946,
-    "density": 0.553,
+    "warmth": 0.129,
     "movement": 0.911,
+    "density": 0.553,
     "space": 0.911,
-    "warmth": 0.129
+    "aggression": 0.587
   },
-  "engines": [
-    "Organon",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.522,
-    "COUPLING": 0.561,
     "MOVEMENT": 0.919,
+    "COUPLING": 0.561,
     "SPACE": 0.926
   },
-  "mood": "Family",
-  "name": "Chrome Shimmer",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.515,
-      "macro_coupling": 0.564,
-      "macro_movement": 0.918,
-      "macro_space": 0.934
-    },
-    "Organon": {
-      "macro_character": 0.529,
-      "macro_coupling": 0.558,
-      "macro_movement": 0.92,
-      "macro_space": 0.918
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

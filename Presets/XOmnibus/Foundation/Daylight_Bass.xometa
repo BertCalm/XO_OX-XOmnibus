@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Bright dub tone — clean tape, no saturation",
-  "dna": {
-    "aggression": 0.1935,
+  "schema_version": 1,
+  "name": "Daylight Bass",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.8173,
-    "density": 0.0909,
+    "warmth": 0.1268,
     "movement": 0.266,
+    "density": 0.0909,
     "space": 0.7314,
-    "warmth": 0.1268
+    "aggression": 0.1935
+  },
+  "dna": {
+    "brightness": 0.8173,
+    "warmth": 0.1268,
+    "movement": 0.266,
+    "density": 0.0909,
+    "space": 0.7314,
+    "aggression": 0.1935
   },
   "engines": [
     "Overdub"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -36,50 +38,24 @@
     "PANIC"
   ],
   "macros": {
-    "ECHO": 0.3848,
-    "PANIC": 0.542,
+    "VOICE": 0.9216,
     "SEND": 0.644,
-    "VOICE": 0.9216
+    "ECHO": 0.3848,
+    "PANIC": 0.542
   },
-  "mood": "Foundation",
-  "name": "Daylight Bass",
+  "couplingIntensity": "None",
   "parameters": {
     "Overdub": {
-<<<<<<< HEAD
-      "dub_couplingBus": 0,
-      "dub_couplingLevel": 0.5,
-=======
       "dub_macro_voice": 0.9216,
       "dub_macro_send": 0.644,
->>>>>>> origin/v1-launch-prep
       "dub_macro_echo": 0.3848,
       "dub_macro_panic": 0.542,
-      "dub_macro_send": 0.644,
-      "dub_macro_voice": 0.9216,
-      "dub_outputLevel": 0.85
+      "dub_outputLevel": 0.85,
+      "dub_couplingLevel": 0.5,
+      "dub_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1935,
-    "brightness": 0.8173,
-    "density": 0.0909,
-    "movement": 0.266,
-    "space": 0.7314,
-    "warmth": 0.1268
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

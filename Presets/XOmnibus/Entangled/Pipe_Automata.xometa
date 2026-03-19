@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.666,
-        "engineA": "Outwit",
-        "engineB": "Organon",
-        "type": "PHASE_LOCK"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Organon registration depth modulates OUTWIT mutation probability — denser pipe stops, less order",
-  "dna": {
-    "aggression": 0.677,
-    "brightness": 0.6,
-    "density": 0.899,
-    "movement": 0.725,
-    "space": 0.298,
-    "warmth": 0.475
-  },
+  "schema_version": 1,
+  "name": "Pipe Automata",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Organon"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "organon",
     "pipe",
     "complex"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,16 +25,29 @@
   ],
   "macros": {
     "CHARACTER": 0.532,
-    "COUPLING": 0.775,
     "MOVEMENT": 0.615,
+    "COUPLING": 0.775,
     "SPACE": 0.669
   },
-  "mood": "Entangled",
-  "name": "Pipe Automata",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.6,
+    "space": 0.298,
+    "aggression": 0.677,
+    "movement": 0.725,
+    "warmth": 0.475,
+    "density": 0.899
+  },
+  "sonic_dna": {
+    "brightness": 0.6,
+    "space": 0.55,
+    "aggression": 0.45,
+    "movement": 0.725,
+    "warmth": 0.475,
+    "density": 0.7
+  },
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-=======
       "owit_rule": 54,
       "owit_arms": 7,
       "owit_cellSize": 0.377,
@@ -65,45 +57,27 @@
       "owit_pitchSpread": 0.298,
       "owit_filterCutoff": 0.522,
       "owit_filterReso": 0.194,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.079,
       "owit_ampRelease": 0.837,
+      "owit_outputLevel": 0.734,
+      "owit_couplingLevel": 0.816,
+      "owit_couplingBus": 0,
       "owit_armStagger": 0.322,
-      "owit_arms": 7,
       "owit_borderMode": 0,
-      "owit_cellSize": 0.377,
+      "owit_inkCloudMix": 0.179,
       "owit_chroma1": 0.414,
       "owit_chroma2": 0.373,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.816,
-      "owit_density": 0.773,
-      "owit_evolveRate": 0.39,
-      "owit_filterCutoff": 0.522,
-      "owit_filterReso": 0.194,
-      "owit_inkCloudMix": 0.179,
-      "owit_mutateProb": 0.254,
-      "owit_outputLevel": 0.734,
-      "owit_pitchSpread": 0.298,
-      "owit_polyDepth": 0.724,
-      "owit_rule": 54
+      "owit_polyDepth": 0.724
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.45,
-    "brightness": 0.6,
-    "density": 0.7,
-    "movement": 0.725,
-    "space": 0.55,
-    "warmth": 0.475
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "organon",
-    "pipe",
-    "complex"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORGANON",
+        "type": "PHASE_LOCK",
+        "amount": 0.666
+      }
+    ]
+  }
 }

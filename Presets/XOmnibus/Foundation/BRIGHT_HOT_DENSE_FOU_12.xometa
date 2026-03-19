@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT HOT DENSE FOU 12",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.232
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Octopus",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.772
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "OCTOPUS",
+    "amount": 0.772
   },
   "dna": {
-    "aggression": 0.674,
     "brightness": 0.886,
-    "density": 0.899,
+    "warmth": 0.901,
     "movement": 0.568,
+    "density": 0.899,
     "space": 0.353,
-    "warmth": 0.901
+    "aggression": 0.674
   },
-  "engines": [
-    "Overdub",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.893,
-    "COUPLING": 0.686,
     "MOVEMENT": 0.568,
+    "COUPLING": 0.686,
     "SPACE": 0.353
   },
-  "mood": "Foundation",
-  "name": "BRIGHT HOT DENSE FOU 12",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.978,
-      "macro_coupling": 0.543,
-      "macro_movement": 0.66,
-      "macro_space": 0.232
-    },
-    "Overdub": {
-      "macro_character": 0.893,
-      "macro_coupling": 0.686,
-      "macro_movement": 0.568,
-      "macro_space": 0.353
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
@@ -82,10 +47,5 @@
     "dense",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

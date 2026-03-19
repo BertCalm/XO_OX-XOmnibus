@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MAYHEM GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.532
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ocelot",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.679
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "OCELOT",
+    "amount": 0.679
   },
   "dna": {
-    "aggression": 0.945,
     "brightness": 0.665,
-    "density": 0.893,
+    "warmth": 0.607,
     "movement": 0.231,
+    "density": 0.893,
     "space": 0.401,
-    "warmth": 0.607
+    "aggression": 0.945
   },
-  "engines": [
-    "Orphica",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.758,
-    "COUPLING": 0.679,
     "MOVEMENT": 0.231,
+    "COUPLING": 0.679,
     "SPACE": 0.401
   },
-  "mood": "Foundation",
-  "name": "MAYHEM GROUND",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.341,
-      "macro_movement": 0.36,
-      "macro_space": 0.532
-    },
-    "Orphica": {
-      "macro_character": 0.493,
-      "macro_coupling": 0.726,
-      "macro_movement": 0.401,
-      "macro_space": 0.682
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

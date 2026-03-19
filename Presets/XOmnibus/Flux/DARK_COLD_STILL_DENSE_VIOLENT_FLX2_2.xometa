@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_DENSE_VIOLENT_FLX2_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.6836
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Odyssey",
-        "type": "CHAOS_INJECT",
-        "amount": 0.738
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "ODYSSEY",
+    "amount": 0.738
   },
   "dna": {
-    "aggression": 0.9267,
     "brightness": 0.0986,
-    "density": 0.8746,
+    "warmth": 0.0569,
     "movement": 0.0361,
+    "density": 0.8746,
     "space": 0.667,
-    "warmth": 0.0569
+    "aggression": 0.9267
   },
-  "engines": [
-    "Organon",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1031,
-    "COUPLING": 0.8638,
     "MOVEMENT": 0.0313,
+    "COUPLING": 0.8638,
     "SPACE": 0.6648
   },
-  "mood": "Flux",
-  "name": "Shard Fang",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.1042,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.0426,
-      "macro_space": 0.6836
-    },
-    "Organon": {
-      "macro_character": 0.1021,
-      "macro_coupling": 0.8575,
-      "macro_movement": 0.02,
-      "macro_space": 0.646
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -82,10 +47,5 @@
     "still",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

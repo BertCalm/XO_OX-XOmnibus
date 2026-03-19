@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.708,
-        "engineA": "Ottoni",
-        "engineB": "Overbite",
-        "type": "Pitch->Mod"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "OTTONI and OVERBITE coupled via Pitch->Mod. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.654,
-    "brightness": 0.5,
-    "density": 0.729,
-    "movement": 0.584,
-    "space": 0.605,
-    "warmth": 0.658
-  },
+  "schema_version": 1,
+  "name": "Ottoni Legacy Weave",
+  "mood": "Entangled",
   "engines": [
     "Ottoni",
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "ottoni",
     "overbite"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WARMTH",
@@ -43,20 +21,27 @@
     "ENTANGLE",
     "AIR"
   ],
-  "mood": "Entangled",
-  "name": "Ottoni Legacy Weave",
-  "parameters": {
-    "Ottoni": {},
-    "Overbite": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ottoni",
-    "overbite"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OVERBITE",
+        "type": "Pitch->Mod",
+        "amount": 0.708
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.658,
+    "movement": 0.584,
+    "density": 0.729,
+    "space": 0.605,
+    "aggression": 0.654
+  }
 }

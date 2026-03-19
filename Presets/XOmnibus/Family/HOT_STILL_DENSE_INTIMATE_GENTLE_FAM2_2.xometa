@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Ottoni",
-        "type": "FILTER_MOD",
-        "amount": 0.518
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.092,
-    "brightness": 0.512,
-    "density": 0.944,
-    "movement": 0.032,
-    "space": 0.033,
-    "warmth": 0.99
-  },
+  "name": "HOT STILL DENSE INTIMATE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.751,
-    "COUPLING": 0.518,
-    "MOVEMENT": 0.032,
-    "SPACE": 0.033
-  },
-  "mood": "Family",
-  "name": "HOT STILL DENSE INTIMATE GE...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.751,
-      "macro_coupling": 0.518,
       "macro_movement": 0.032,
+      "macro_coupling": 0.518,
       "macro_space": 0.033
     },
     "Ottoni": {
       "macro_character": 0.735,
-      "macro_coupling": 0.535,
       "macro_movement": 0.02,
+      "macro_coupling": 0.535,
       "macro_space": 0.061
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "OTTONI",
+    "amount": 0.518
+  },
+  "dna": {
+    "brightness": 0.512,
+    "warmth": 0.99,
+    "movement": 0.032,
+    "density": 0.944,
+    "space": 0.033,
+    "aggression": 0.092
+  },
+  "macros": {
+    "CHARACTER": 0.751,
+    "MOVEMENT": 0.032,
+    "COUPLING": 0.518,
+    "SPACE": 0.033
+  },
   "tags": [
     "family",
     "warm",
@@ -58,10 +47,5 @@
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

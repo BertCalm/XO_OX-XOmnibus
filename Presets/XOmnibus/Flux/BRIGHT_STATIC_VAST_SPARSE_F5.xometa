@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Spectral",
-  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.403,
+  "schema_version": 1,
+  "name": "BRIGHT STATIC VAST SPARSE F5",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.94,
-    "density": 0.068,
+    "warmth": 0.49,
+    "aggression": 0.403,
     "movement": 0.061,
-    "space": 0.907,
-    "warmth": 0.49
+    "density": 0.068,
+    "space": 0.907
   },
   "engines": [
     "Odyssey"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "BRIGHT STATIC VAST SPARSE F5",
-  "parameters": {
-    "Odyssey": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.403,
-    "brightness": 0.94,
-    "density": 0.068,
-    "movement": 0.061,
-    "space": 0.907,
-    "warmth": 0.49
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "bright",
     "static",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

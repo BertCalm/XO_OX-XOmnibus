@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERDUB — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.43,
-    "brightness": 0.06,
-    "density": 0.61,
-    "movement": 0.3,
-    "space": 0.79,
-    "warmth": 0.71
-  },
+  "schema_version": 1,
+  "name": "Dub Burial",
+  "mood": "Foundation",
   "engines": [
     "Overdub"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Dub Burial",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.06,
+    "warmth": 0.71,
+    "movement": 0.3,
+    "density": 0.61,
+    "space": 0.79,
+    "aggression": 0.43
+  },
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.71,
+    "movement": 0.3,
+    "density": 0.61,
+    "space": 0.79,
+    "aggression": 0.43
+  },
   "parameters": {
     "Overdub": {
-<<<<<<< HEAD
-=======
       "dub_drive": 0.86,
       "dub_tapeDelay": 0.55,
       "dub_springReverb": 0.05,
       "dub_filterCutoff": 1.0,
->>>>>>> origin/v1-launch-prep
       "dub_ampAttack": 669.6,
       "dub_ampDecay": 775.4,
-      "dub_ampRelease": 679.7,
       "dub_ampSustain": 0.95,
-      "dub_character": 0.06,
-      "dub_coupling": 0.27,
-      "dub_delayMix": 0.4,
-      "dub_drive": 0.86,
-      "dub_filterCutoff": 1.0,
-      "dub_lfoDepth": 0.49,
+      "dub_ampRelease": 679.7,
       "dub_lfoRate": 0.17,
-      "dub_movement": 0.38,
+      "dub_lfoDepth": 0.49,
       "dub_reverbMix": 0.21,
+      "dub_delayMix": 0.4,
+      "dub_character": 0.06,
+      "dub_movement": 0.38,
       "dub_space": 0.99,
-      "dub_springReverb": 0.05,
-      "dub_tapeDelay": 0.55
+      "dub_coupling": 0.27
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.43,
-    "brightness": 0.06,
-    "density": 0.61,
-    "movement": 0.3,
-    "space": 0.79,
-    "warmth": 0.71
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

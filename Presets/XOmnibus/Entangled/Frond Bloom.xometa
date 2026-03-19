@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.717,
-        "engineA": "Overlap",
-        "engineB": "Orbital",
-        "type": "AMP_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OVERLAP cascade tail feeds ORBITAL timbre bus — reverb becomes a new oscillator",
-  "dna": {
-    "aggression": 0.3,
-    "brightness": 0.65,
-    "density": 0.6,
-    "movement": 0.55,
-    "space": 0.75,
-    "warmth": 0.475
-  },
+  "schema_version": 1,
+  "name": "Frond Bloom",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Orbital"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Frond Bloom",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.753,
-      "olap_damping": 0.603,
-      "olap_decay": 0.872,
-      "olap_diffusion": 0.842,
-      "olap_earlyMix": 0.421,
-      "olap_filterCutoff": 0.772,
-      "olap_filterReso": 0.341,
-      "olap_lateMix": 0.533,
-      "olap_modDepth": 0.384,
-      "olap_modRate": 0.314,
-      "olap_outputLevel": 0.823,
-      "olap_preDelay": 0.006,
-      "olap_size": 0.612
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.65,
-    "density": 0.6,
-    "movement": 0.55,
-    "space": 0.75,
-    "warmth": 0.475
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERLAP cascade tail feeds ORBITAL timbre bus — reverb becomes a new oscillator",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Osprey",
-        "type": "PITCH_TRACK",
-        "amount": 0.819
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.942,
-    "brightness": 0.921,
-    "density": 0.636,
-    "movement": 0.202,
-    "space": 0.702,
-    "warmth": 0.36
-  },
+  "name": "DAWN CORE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Organon",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.412,
-    "COUPLING": 0.601,
-    "MOVEMENT": 0.709,
-    "SPACE": 0.872
-  },
-  "mood": "Foundation",
-  "name": "DAWN CORE",
   "parameters": {
     "Organon": {
       "macro_character": 0.447,
-      "macro_coupling": 0.332,
       "macro_movement": 0.484,
+      "macro_coupling": 0.332,
       "macro_space": 0.763
     },
     "Osprey": {
       "macro_character": 0.377,
-      "macro_coupling": 0.87,
       "macro_movement": 0.933,
+      "macro_coupling": 0.87,
       "macro_space": 0.981
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_TRACK",
+    "source": "ORGANON",
+    "target": "OSPREY",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.36,
+    "movement": 0.202,
+    "density": 0.636,
+    "space": 0.702,
+    "aggression": 0.942
+  },
+  "macros": {
+    "CHARACTER": 0.412,
+    "MOVEMENT": 0.709,
+    "COUPLING": 0.601,
+    "SPACE": 0.872
+  },
   "tags": [
     "foundation",
     "bright",
     "extreme",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Opal",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.887
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.966,
-    "brightness": 0.044,
-    "density": 0.943,
-    "movement": 0.637,
-    "space": 0.624,
-    "warmth": 0.023
-  },
+  "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_105",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Ohm",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.039,
-    "COUPLING": 0.938,
-    "MOVEMENT": 0.653,
-    "SPACE": 0.625
-  },
-  "mood": "Family",
-  "name": "Wave Edge",
   "parameters": {
     "Ohm": {
       "macro_character": 0.055,
-      "macro_coupling": 0.939,
       "macro_movement": 0.655,
+      "macro_coupling": 0.939,
       "macro_space": 0.637
     },
     "Opal": {
       "macro_character": 0.023,
-      "macro_coupling": 0.938,
       "macro_movement": 0.65,
+      "macro_coupling": 0.938,
       "macro_space": 0.612
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_MIRROR",
+    "source": "OHM",
+    "target": "OPAL",
+    "amount": 0.887
+  },
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.023,
+    "movement": 0.637,
+    "density": 0.943,
+    "space": 0.624,
+    "aggression": 0.966
+  },
+  "macros": {
+    "CHARACTER": 0.039,
+    "MOVEMENT": 0.653,
+    "COUPLING": 0.938,
+    "SPACE": 0.625
+  },
   "tags": [
     "family",
     "dark",
     "cold",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Oceanic",
-        "type": "PHOSPHOR_PULSE",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Ohm warmth meeting oceanic phosphorescent pulse — campfire at the edge of a glowing sea",
+  "name": "Phosphor Commune",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "Oceanic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "Phosphor Commune",
-  "parameters": {
-    "Ohm": {},
-    "Oceanic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.24,
     "brightness": 0.52,
-    "density": 0.54,
+    "warmth": 0.69,
     "movement": 0.62,
+    "density": 0.54,
     "space": 0.72,
-    "warmth": 0.69
+    "aggression": 0.24
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PHOSPHOR_PULSE",
+    "source": "OHM",
+    "target": "OCEANIC",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oceanic",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Ohm warmth meeting oceanic phosphorescent pulse — campfire at the edge of a glowing sea"
->>>>>>> origin/v1-launch-prep
 }

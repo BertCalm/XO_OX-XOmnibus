@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_DENSE_VAST_VIOLENT_FND_AGG_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.602
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Overbite",
-        "type": "FILTER_MOD",
-        "amount": 0.944
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "OVERBITE",
+    "amount": 0.944
   },
   "dna": {
-    "aggression": 0.936,
     "brightness": 0.103,
-    "density": 0.92,
+    "warmth": 0.641,
     "movement": 0.681,
+    "density": 0.92,
     "space": 0.96,
-    "warmth": 0.641
+    "aggression": 0.936
   },
-  "engines": [
-    "Overdub",
-    "Overbite"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.712,
-    "COUPLING": 0.482,
     "MOVEMENT": 0.482,
+    "COUPLING": 0.482,
     "SPACE": 0.612
   },
-  "mood": "Foundation",
-  "name": "Shadow Expanse",
-  "parameters": {
-    "Overbite": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.466,
-      "macro_space": 0.602
-    },
-    "Overdub": {
-      "macro_character": 0.712,
-      "macro_coupling": 0.482,
-      "macro_movement": 0.482,
-      "macro_space": 0.612
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Signal drift into spectral darkness, dense output",
-  "dna": {
-    "aggression": 0.7305,
+  "schema_version": 1,
+  "name": "Oracle Void",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.1348,
-    "density": 0.8464,
+    "warmth": 0.5799,
     "movement": 0.4401,
+    "density": 0.8464,
     "space": 0.3021,
-    "warmth": 0.5799
+    "aggression": 0.7305
+  },
+  "dna": {
+    "brightness": 0.1348,
+    "warmth": 0.5799,
+    "movement": 0.4401,
+    "density": 0.8464,
+    "space": 0.3021,
+    "aggression": 0.7305
   },
   "engines": [
     "Oracle"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "dense",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SIGNAL",
@@ -36,53 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "COUPLE": 0.4943,
-    "DRIFT": 0.2891,
     "SIGNAL": 0.2693,
+    "DRIFT": 0.2891,
+    "COUPLE": 0.4943,
     "SPACE": 0.8257
   },
-  "mood": "Prism",
-  "name": "Oracle Void",
+  "couplingIntensity": "None",
   "parameters": {
     "Oracle": {
-<<<<<<< HEAD
-      "orc_couplingBus": 0,
-=======
       "orc_macro_signal": 0.2693,
       "orc_macro_drift": 0.2891,
       "orc_macro_couple": 0.4943,
       "orc_macro_space": 0.8257,
       "orc_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "orc_couplingLevel": 0.5,
-      "orc_macro_couple": 0.4943,
-      "orc_macro_drift": 0.2891,
-      "orc_macro_signal": 0.2693,
-      "orc_macro_space": 0.8257,
-      "orc_outputLevel": 0.85
+      "orc_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.7305,
-    "brightness": 0.1348,
-    "density": 0.8464,
-    "movement": 0.4401,
-    "space": 0.3021,
-    "warmth": 0.5799
-  },
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

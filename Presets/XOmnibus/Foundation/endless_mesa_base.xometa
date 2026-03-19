@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Ole",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.774
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.244,
-    "density": 0.682,
-    "movement": 0.431,
-    "space": 0.932,
-    "warmth": 0.131
-  },
+  "name": "ENDLESS MESA BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddOscar",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.158,
-    "COUPLING": 0.442,
-    "MOVEMENT": 0.431,
-    "SPACE": 0.932
-  },
-  "mood": "Foundation",
-  "name": "ENDLESS MESA BASE",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.913,
-      "macro_coupling": 0.461,
       "macro_movement": 0.395,
+      "macro_coupling": 0.461,
       "macro_space": 0.917
     },
     "Ole": {
       "macro_character": 0.255,
-      "macro_coupling": 0.805,
       "macro_movement": 0.382,
+      "macro_coupling": 0.805,
       "macro_space": 0.956
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OLE",
+    "amount": 0.774
+  },
+  "dna": {
+    "brightness": 0.244,
+    "warmth": 0.131,
+    "movement": 0.431,
+    "density": 0.682,
+    "space": 0.932,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.158,
+    "MOVEMENT": 0.431,
+    "COUPLING": 0.442,
+    "SPACE": 0.932
+  },
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

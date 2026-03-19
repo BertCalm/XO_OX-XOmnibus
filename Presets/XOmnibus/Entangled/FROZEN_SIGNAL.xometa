@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Obsidian",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.897
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.425,
-    "brightness": 0.112,
-    "density": 0.703,
-    "movement": 0.175,
-    "space": 0.072,
-    "warmth": 0.074
-  },
+  "name": "FROZEN SIGNAL",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.556,
-    "COUPLING": 0.155,
-    "MOVEMENT": 0.718,
-    "SPACE": 0.297
-  },
-  "mood": "Entangled",
-  "name": "FROZEN SIGNAL",
   "parameters": {
     "Oblique": {
       "macro_character": 0.059,
-      "macro_coupling": 0.985,
       "macro_movement": 0.379,
+      "macro_coupling": 0.985,
       "macro_space": 0.265
     },
     "Obsidian": {
       "macro_character": 0.784,
-      "macro_coupling": 0.423,
       "macro_movement": 0.455,
+      "macro_coupling": 0.423,
       "macro_space": 0.957
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.897
+  },
+  "dna": {
+    "brightness": 0.112,
+    "warmth": 0.074,
+    "movement": 0.175,
+    "density": 0.703,
+    "space": 0.072,
+    "aggression": 0.425
+  },
+  "macros": {
+    "CHARACTER": 0.556,
+    "MOVEMENT": 0.718,
+    "COUPLING": 0.155,
+    "SPACE": 0.297
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

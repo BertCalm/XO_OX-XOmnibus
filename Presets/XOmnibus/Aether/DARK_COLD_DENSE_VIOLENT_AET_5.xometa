@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.533,
-      "destination": "OUROBOROS",
-      "source": "OBLONG",
-      "type": "TIMBRE_BLEND"
-    }
-  ],
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Extreme DNA corners — aether, dark, cold, dense.",
-  "dna": {
-    "aggression": 0.954,
-    "brightness": 0.048,
-    "density": 0.932,
-    "movement": 0.55,
-    "space": 0.498,
-    "warmth": 0.075
-  },
-  "engines": [
-    "Oblong",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Aether",
-  "name": "DARK COLD DENSE VIOLENT AET 5",
-  "parameters": {
-    "Oblong": {
-      "level": 0.702,
-      "pan": -0.024
-    },
-    "Ouroboros": {
-      "level": 0.835,
-      "pan": -0.006
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "DARK COLD DENSE VIOLENT AET 5",
   "mood": "Aether",
@@ -55,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme DNA corners — aether, dark, cold, dense.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "dark",
@@ -64,10 +17,14 @@
     "violent",
     "ultra-diverse"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "dna": {
     "brightness": 0.048,
@@ -96,5 +53,4 @@
     }
   ],
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

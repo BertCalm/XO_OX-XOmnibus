@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BLAZING ASSAULT",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.482
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "OddOscar",
-        "type": "CHAOS_INJECT",
-        "amount": 0.873
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.873
   },
   "dna": {
-    "aggression": 0.908,
     "brightness": 0.868,
-    "density": 0.582,
+    "warmth": 0.962,
     "movement": 0.417,
+    "density": 0.582,
     "space": 0.466,
-    "warmth": 0.962
+    "aggression": 0.908
   },
-  "engines": [
-    "OddfeliX",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.892,
-    "COUPLING": 0.683,
     "MOVEMENT": 0.466,
+    "COUPLING": 0.683,
     "SPACE": 0.452
   },
-  "mood": "Flux",
-  "name": "BLAZING ASSAULT",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.879,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.359,
-      "macro_space": 0.482
-    },
-    "OddfeliX": {
-      "macro_character": 0.892,
-      "macro_coupling": 0.683,
-      "macro_movement": 0.466,
-      "macro_space": 0.452
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

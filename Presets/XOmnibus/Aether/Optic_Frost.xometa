@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.04,
-    "brightness": 0.88,
-    "density": 0.12,
-    "movement": 0.25,
-    "space": 0.84,
-    "warmth": 0.06
-  },
+  "name": "Optic Frost",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.22,
-    "COUPLING": 0.3,
-    "MOVEMENT": 0.25,
-    "SPACE": 0.84
-  },
-  "mood": "Aether",
-  "name": "Optic Frost",
   "parameters": {
     "Optic": {
       "optic_macro_character": 0.42,
-      "optic_macro_coupling": 0.12,
       "optic_macro_movement": 0.29,
+      "optic_macro_coupling": 0.12,
       "optic_macro_space": 0.84
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.06,
+    "movement": 0.25,
+    "density": 0.12,
+    "space": 0.84,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.3,
+    "SPACE": 0.84
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "optic",
     "frost"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

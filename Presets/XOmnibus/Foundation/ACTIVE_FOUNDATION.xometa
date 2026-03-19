@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Orca",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.832
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.758,
-    "brightness": 0.729,
-    "density": 0.642,
-    "movement": 0.936,
-    "space": 0.399,
-    "warmth": 0.124
-  },
+  "name": "ACTIVE FOUNDATION",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oceanic",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.411,
-    "COUPLING": 0.832,
-    "MOVEMENT": 0.936,
-    "SPACE": 0.399
-  },
-  "mood": "Foundation",
-  "name": "ACTIVE FOUNDATION",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.705,
-      "macro_coupling": 0.433,
       "macro_movement": 0.942,
+      "macro_coupling": 0.433,
       "macro_space": 0.594
     },
     "Orca": {
       "macro_character": 0.354,
-      "macro_coupling": 0.736,
       "macro_movement": 0.895,
+      "macro_coupling": 0.736,
       "macro_space": 0.629
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCEANIC",
+    "target": "ORCA",
+    "amount": 0.832
+  },
+  "dna": {
+    "brightness": 0.729,
+    "warmth": 0.124,
+    "movement": 0.936,
+    "density": 0.642,
+    "space": 0.399,
+    "aggression": 0.758
+  },
+  "macros": {
+    "CHARACTER": 0.411,
+    "MOVEMENT": 0.936,
+    "COUPLING": 0.832,
+    "SPACE": 0.399
+  },
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

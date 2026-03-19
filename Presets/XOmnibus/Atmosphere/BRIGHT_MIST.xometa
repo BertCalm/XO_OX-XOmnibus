@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Outwit",
-        "type": "RHYTHM_SYNC",
-        "amount": 0.358
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.256,
-    "brightness": 0.911,
-    "density": 0.859,
-    "movement": 0.292,
-    "space": 0.699,
-    "warmth": 0.425
-  },
+  "name": "BRIGHT MIST",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oceanic",
     "Outwit"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.651,
-    "COUPLING": 0.339,
-    "MOVEMENT": 0.571,
-    "SPACE": 0.47
-  },
-  "mood": "Atmosphere",
-  "name": "BRIGHT MIST",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.739,
-      "macro_coupling": 0.556,
       "macro_movement": 0.812,
+      "macro_coupling": 0.556,
       "macro_space": 0.586
     },
     "Outwit": {
       "macro_character": 0.562,
-      "macro_coupling": 0.122,
       "macro_movement": 0.33,
+      "macro_coupling": 0.122,
       "macro_space": 0.354
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "OCEANIC",
+    "target": "OUTWIT",
+    "amount": 0.358
+  },
+  "dna": {
+    "brightness": 0.911,
+    "warmth": 0.425,
+    "movement": 0.292,
+    "density": 0.859,
+    "space": 0.699,
+    "aggression": 0.256
+  },
+  "macros": {
+    "CHARACTER": 0.651,
+    "MOVEMENT": 0.571,
+    "COUPLING": 0.339,
+    "SPACE": 0.47
+  },
   "tags": [
     "atmosphere",
     "bright",
     "extreme",
     "high-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

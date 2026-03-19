@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ottoni",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.711
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.431,
-    "brightness": 0.334,
-    "density": 0.052,
-    "movement": 0.647,
-    "space": 0.881,
-    "warmth": 0.471
-  },
+  "name": "VOID STREAM",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Opal",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.392,
-    "COUPLING": 0.673,
-    "MOVEMENT": 0.468,
-    "SPACE": 0.901
-  },
-  "mood": "Flux",
-  "name": "VOID STREAM",
   "parameters": {
     "Opal": {
       "macro_character": 0.392,
-      "macro_coupling": 0.673,
       "macro_movement": 0.468,
+      "macro_coupling": 0.673,
       "macro_space": 0.901
     },
     "Ottoni": {
       "macro_character": 0.343,
-      "macro_coupling": 0.606,
       "macro_movement": 0.582,
+      "macro_coupling": 0.606,
       "macro_space": 1.0
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OTTONI",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.334,
+    "warmth": 0.471,
+    "movement": 0.647,
+    "density": 0.052,
+    "space": 0.881,
+    "aggression": 0.431
+  },
+  "macros": {
+    "CHARACTER": 0.392,
+    "MOVEMENT": 0.468,
+    "COUPLING": 0.673,
+    "SPACE": 0.901
+  },
   "tags": [
     "flux",
     "spatial",
     "sparse",
     "open"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

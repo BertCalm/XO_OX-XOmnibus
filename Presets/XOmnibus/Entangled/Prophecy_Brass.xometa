@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Prophecy Brass",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.55
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Oracle",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.68
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OTTONI",
+    "target": "ORACLE",
+    "amount": 0.68,
+    "intensity": "Moderate"
   },
-  "description": "Brass frequency shifts seed ORACLE's stochastic breakpoint predictions.",
   "dna": {
-    "aggression": 0.1,
     "brightness": 0.55,
-    "density": 0.58,
+    "warmth": 0.86,
     "movement": 0.52,
+    "density": 0.58,
     "space": 0.52,
-    "warmth": 0.86
+    "aggression": 0.1
   },
-  "engines": [
-    "Ottoni",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.68,
-    "COUPLING": 0.68,
     "MOVEMENT": 0.52,
+    "COUPLING": 0.68,
     "SPACE": 0.5
   },
-  "mood": "Entangled",
-  "name": "Prophecy Brass II",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.58,
-      "macro_space": 0.55
-    },
-    "Ottoni": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.52,
-      "macro_space": 0.5
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "oracle",
     "frequency",
     "prophecy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

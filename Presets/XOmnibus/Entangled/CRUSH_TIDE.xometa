@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CRUSH TIDE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.1153
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Osteria",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.9911
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OVERWORLD",
+    "target": "OSTERIA",
+    "amount": 0.9911
   },
   "dna": {
-    "aggression": 0.4346,
     "brightness": 0.1786,
-    "density": 0.8824,
+    "warmth": 0.9625,
     "movement": 0.2655,
+    "density": 0.8824,
     "space": 0.1084,
-    "warmth": 0.9625
+    "aggression": 0.4346
   },
-  "engines": [
-    "Overworld",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7285,
-    "COUPLING": 0.8819,
     "MOVEMENT": 0.3137,
+    "COUPLING": 0.8819,
     "SPACE": 0.5114
   },
-  "mood": "Entangled",
-  "name": "CRUSH TIDE",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.9811,
-      "macro_coupling": 0.9757,
-      "macro_movement": 0.5362,
-      "macro_space": 0.1153
-    },
-    "Overworld": {
-      "macro_character": 0.9669,
-      "macro_coupling": 0.8566,
-      "macro_movement": 0.2791,
-      "macro_space": 0.3997
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
@@ -82,10 +47,5 @@
     "packed",
     "monolithic",
     "massive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

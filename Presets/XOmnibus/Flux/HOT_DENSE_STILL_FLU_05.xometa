@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ouroboros",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.689
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.676,
-    "brightness": 0.482,
-    "density": 0.933,
-    "movement": 0.091,
-    "space": 0.629,
-    "warmth": 0.941
-  },
+  "name": "HOT DENSE STILL FLU 05",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Obscura",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.712,
-    "COUPLING": 0.454,
-    "MOVEMENT": 0.091,
-    "SPACE": 0.629
-  },
-  "mood": "Flux",
-  "name": "HOT DENSE STILL FLU 05",
   "parameters": {
     "Obscura": {
       "macro_character": 0.712,
-      "macro_coupling": 0.454,
       "macro_movement": 0.091,
+      "macro_coupling": 0.454,
       "macro_space": 0.629
     },
     "Ouroboros": {
       "macro_character": 0.57,
-      "macro_coupling": 0.535,
       "macro_movement": 0.206,
+      "macro_coupling": 0.535,
       "macro_space": 0.754
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "OUROBOROS",
+    "amount": 0.689
+  },
+  "dna": {
+    "brightness": 0.482,
+    "warmth": 0.941,
+    "movement": 0.091,
+    "density": 0.933,
+    "space": 0.629,
+    "aggression": 0.676
+  },
+  "macros": {
+    "CHARACTER": 0.712,
+    "MOVEMENT": 0.091,
+    "COUPLING": 0.454,
+    "SPACE": 0.629
+  },
   "tags": [
     "flux",
     "warm",
@@ -58,10 +47,5 @@
     "static",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

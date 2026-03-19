@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sun through fog: radiant warmth, minimal presence.",
-  "dna": {
-    "aggression": 0.187,
+  "schema_version": 1,
+  "name": "Radiant Thread Low",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.601,
-    "density": 0.106,
+    "warmth": 0.905,
     "movement": 0.736,
+    "density": 0.106,
     "space": 0.755,
-    "warmth": 0.905
+    "aggression": 0.187
   },
   "engines": [
     "Ole"
   ],
-  "macroLabels": [
-    "WARMTH",
-    "BREATH",
-    "COUPLING",
-    "OPEN"
-  ],
-  "mood": "Atmosphere",
-  "name": "Radiant Thread Low",
-  "parameters": {
-    "Ole": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.187,
-    "brightness": 0.601,
-    "density": 0.106,
-    "movement": 0.736,
-    "space": 0.755,
-    "warmth": 0.905
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sun through fog: radiant warmth, minimal presence.",
   "tags": [
     "atmosphere",
     "warm",
@@ -45,9 +25,6 @@
     "evolving",
     "spacious"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "WARMTH",
     "BREATH",
@@ -67,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

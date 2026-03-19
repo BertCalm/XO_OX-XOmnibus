@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "OddfeliX",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.875
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.885,
-    "brightness": 0.89,
-    "density": 0.938,
-    "movement": 0.6,
-    "space": 0.415,
-    "warmth": 0.907
-  },
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.763,
-    "COUPLING": 0.916,
-    "MOVEMENT": 0.77,
-    "SPACE": 0.65
-  },
-  "mood": "Family",
-  "name": "Honey Saturated",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.763,
-      "macro_coupling": 0.916,
       "macro_movement": 0.77,
+      "macro_coupling": 0.916,
       "macro_space": 0.65
     },
     "OddfeliX": {
       "macro_character": 0.762,
-      "macro_coupling": 0.87,
       "macro_movement": 0.728,
+      "macro_coupling": 0.87,
       "macro_space": 0.643
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.875
+  },
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.907,
+    "movement": 0.6,
+    "density": 0.938,
+    "space": 0.415,
+    "aggression": 0.885
+  },
+  "macros": {
+    "CHARACTER": 0.763,
+    "MOVEMENT": 0.77,
+    "COUPLING": 0.916,
+    "SPACE": 0.65
+  },
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

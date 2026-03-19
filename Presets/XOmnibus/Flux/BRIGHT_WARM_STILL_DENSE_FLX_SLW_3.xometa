@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Oceanic",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.667
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.331,
-    "brightness": 0.925,
-    "density": 0.958,
-    "movement": 0.098,
-    "space": 0.386,
-    "warmth": 0.956
-  },
+  "name": "BRIGHT_WARM_STILL_DENSE_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oblong",
     "Oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.644,
-    "COUPLING": 0.765,
-    "MOVEMENT": 0.098,
-    "SPACE": 0.386
-  },
-  "mood": "Flux",
-  "name": "Honey Massive 2",
   "parameters": {
     "Oblong": {
       "macro_character": 0.893,
-      "macro_coupling": 0.95,
       "macro_movement": 0.081,
+      "macro_coupling": 0.95,
       "macro_space": 0.389
     },
     "Oceanic": {
       "macro_character": 0.899,
-      "macro_coupling": 0.864,
       "macro_movement": 0.094,
+      "macro_coupling": 0.864,
       "macro_space": 0.383
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBLONG",
+    "target": "OCEANIC",
+    "amount": 0.667
+  },
+  "dna": {
+    "brightness": 0.925,
+    "warmth": 0.956,
+    "movement": 0.098,
+    "density": 0.958,
+    "space": 0.386,
+    "aggression": 0.331
+  },
+  "macros": {
+    "CHARACTER": 0.644,
+    "MOVEMENT": 0.098,
+    "COUPLING": 0.765,
+    "SPACE": 0.386
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "warm",
     "dense",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ZERO DECAY",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.067
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Overdub",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.305
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCELOT",
+    "target": "OVERDUB",
+    "amount": 0.305
   },
   "dna": {
-    "aggression": 0.336,
     "brightness": 0.181,
-    "density": 0.695,
+    "warmth": 0.566,
     "movement": 0.26,
+    "density": 0.695,
     "space": 0.044,
-    "warmth": 0.566
+    "aggression": 0.336
   },
-  "engines": [
-    "Overdub",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.373,
-    "COUPLING": 0.859,
     "MOVEMENT": 0.163,
+    "COUPLING": 0.859,
     "SPACE": 0.044
   },
-  "mood": "Entangled",
-  "name": "ZERO DECAY",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.608,
-      "macro_coupling": 0.468,
-      "macro_movement": 0.538,
-      "macro_space": 0.067
-    },
-    "Overdub": {
-      "macro_character": 0.139,
-      "macro_coupling": 0.123,
-      "macro_movement": 0.251,
-      "macro_space": 0.066
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

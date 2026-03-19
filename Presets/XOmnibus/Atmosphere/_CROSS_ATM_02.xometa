@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oracle",
-        "type": "FILTER_MOD",
-        "amount": 0.646
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.108,
-    "brightness": 0.953,
-    "density": 0.923,
-    "movement": 0.363,
-    "space": 0.903,
-    "warmth": 0.095
-  },
+  "name": "CROSS ATM 02",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Opal",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.524,
-    "COUPLING": 0.506,
-    "MOVEMENT": 0.643,
-    "SPACE": 0.903
-  },
-  "mood": "Atmosphere",
-  "name": "CROSS ATM 02",
   "parameters": {
     "Opal": {
       "macro_character": 0.524,
-      "macro_coupling": 0.506,
       "macro_movement": 0.643,
+      "macro_coupling": 0.506,
       "macro_space": 0.903
     },
     "Oracle": {
       "macro_character": 0.524,
-      "macro_coupling": 0.506,
       "macro_movement": 0.643,
+      "macro_coupling": 0.506,
       "macro_space": 0.903
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.646
+  },
+  "dna": {
+    "brightness": 0.953,
+    "warmth": 0.095,
+    "movement": 0.363,
+    "density": 0.923,
+    "space": 0.903,
+    "aggression": 0.108
+  },
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.643,
+    "COUPLING": 0.506,
+    "SPACE": 0.903
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

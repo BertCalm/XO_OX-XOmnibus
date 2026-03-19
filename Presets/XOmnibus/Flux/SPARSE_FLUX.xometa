@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Ottoni",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.7481
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8593,
-    "brightness": 0.0612,
-    "density": 0.0539,
-    "movement": 0.8518,
-    "space": 0.8523,
-    "warmth": 0.6498
-  },
+  "name": "SPARSE FLUX",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oblong",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.434,
-    "COUPLING": 0.6337,
-    "MOVEMENT": 0.0984,
-    "SPACE": 0.8726
-  },
-  "mood": "Flux",
-  "name": "SPARSE FLUX",
   "parameters": {
     "Oblong": {
       "macro_character": 0.7187,
-      "macro_coupling": 0.8724,
       "macro_movement": 0.7594,
+      "macro_coupling": 0.8724,
       "macro_space": 0.0359
     },
     "Ottoni": {
       "macro_character": 0.0684,
-      "macro_coupling": 0.9209,
       "macro_movement": 0.6312,
+      "macro_coupling": 0.9209,
       "macro_space": 0.9974
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBLONG",
+    "target": "OTTONI",
+    "amount": 0.7481
+  },
+  "dna": {
+    "brightness": 0.0612,
+    "warmth": 0.6498,
+    "movement": 0.8518,
+    "density": 0.0539,
+    "space": 0.8523,
+    "aggression": 0.8593
+  },
+  "macros": {
+    "CHARACTER": 0.434,
+    "MOVEMENT": 0.0984,
+    "COUPLING": 0.6337,
+    "SPACE": 0.8726
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

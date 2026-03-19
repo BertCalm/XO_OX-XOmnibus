@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.59,
-        "engineA": "Orphica",
-        "engineB": "Ottoni",
-        "type": "Gate->Env"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-  "description": "ORPHICA and OTTONI coupled via Gate->Env. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.462,
-    "brightness": 0.69,
-    "density": 0.617,
-    "movement": 0.592,
-    "space": 0.61,
-    "warmth": 0.541
-  },
+  "schema_version": 1,
+  "name": "Copper Filament",
+  "mood": "Entangled",
   "engines": [
     "Orphica",
     "Ottoni"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "orphica",
     "ottoni"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -43,20 +21,27 @@
     "WEAVE",
     "SPREAD"
   ],
-  "mood": "Entangled",
-  "name": "Copper Filament",
-  "parameters": {
-    "Orphica": {},
-    "Ottoni": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "orphica",
-    "ottoni"
-  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORPHICA",
+        "engineB": "OTTONI",
+        "type": "Gate->Env",
+        "amount": 0.59
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.69,
+    "warmth": 0.541,
+    "movement": 0.592,
+    "density": 0.617,
+    "space": 0.61,
+    "aggression": 0.462
+  }
 }

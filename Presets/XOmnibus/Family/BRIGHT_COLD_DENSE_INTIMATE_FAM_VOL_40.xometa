@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_40",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.105
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Ole",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.626
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ODDOSCAR",
+    "target": "OLE",
+    "amount": 0.626
   },
   "dna": {
-    "aggression": 0.376,
     "brightness": 0.952,
-    "density": 0.977,
+    "warmth": 0.069,
     "movement": 0.612,
+    "density": 0.977,
     "space": 0.129,
-    "warmth": 0.069
+    "aggression": 0.376
   },
-  "engines": [
-    "Ole",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.508,
-    "COUPLING": 0.661,
     "MOVEMENT": 0.639,
+    "COUPLING": 0.661,
     "SPACE": 0.12
   },
-  "mood": "Family",
-  "name": "Glass Massive 3",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.534,
-      "macro_coupling": 0.654,
-      "macro_movement": 0.637,
-      "macro_space": 0.105
-    },
-    "Ole": {
-      "macro_character": 0.481,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.641,
-      "macro_space": 0.136
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "dense",
     "intimate",
     "cool"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

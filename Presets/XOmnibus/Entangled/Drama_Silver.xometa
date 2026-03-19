@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Drama Silver",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.48
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Obscura",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.84
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OLE",
+    "target": "OBSCURA",
+    "amount": 0.84,
+    "intensity": "Deep"
   },
-  "description": "Spectral morphing: DRAMA's harmonic spray exposed on OBSCURA's silver surface — aggression 0.88.",
   "dna": {
-    "aggression": 0.88,
     "brightness": 0.68,
-    "density": 0.74,
+    "warmth": 0.76,
     "movement": 0.76,
+    "density": 0.74,
     "space": 0.32,
-    "warmth": 0.76
+    "aggression": 0.88
   },
-  "engines": [
-    "Ole",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.82,
-    "COUPLING": 0.84,
     "MOVEMENT": 0.74,
+    "COUPLING": 0.84,
     "SPACE": 0.34
   },
-  "mood": "Entangled",
-  "name": "Drama Silver",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.6,
-      "macro_space": 0.48
-    },
-    "Ole": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.74,
-      "macro_space": 0.34
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "obscura",
     "spectral",
     "drama"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

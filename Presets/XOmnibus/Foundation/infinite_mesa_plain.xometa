@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "INFINITE MESA PLAIN",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.944
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Octopus",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.32
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OSTERIA",
+    "target": "OCTOPUS",
+    "amount": 0.32
   },
   "dna": {
-    "aggression": 0.235,
     "brightness": 0.488,
-    "density": 0.617,
+    "warmth": 0.541,
     "movement": 0.887,
+    "density": 0.617,
     "space": 0.956,
-    "warmth": 0.541
+    "aggression": 0.235
   },
-  "engines": [
-    "Osteria",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.324,
-    "COUPLING": 0.056,
     "MOVEMENT": 0.887,
+    "COUPLING": 0.056,
     "SPACE": 0.956
   },
-  "mood": "Foundation",
-  "name": "INFINITE MESA PLAIN",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.704,
-      "macro_coupling": 0.166,
-      "macro_movement": 0.847,
-      "macro_space": 0.944
-    },
-    "Osteria": {
-      "macro_character": 0.227,
-      "macro_coupling": 0.978,
-      "macro_movement": 0.846,
-      "macro_space": 0.972
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

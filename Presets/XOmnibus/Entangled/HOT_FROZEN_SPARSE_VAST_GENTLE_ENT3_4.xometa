@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Orbital",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.7683
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.1115,
-    "brightness": 0.3461,
-    "density": 0.1081,
-    "movement": 0.0425,
-    "space": 0.9442,
-    "warmth": 0.8725
-  },
+  "schema_version": 1,
+  "name": "HOT_FROZEN_SPARSE_VAST_GENTLE_ENT3_4",
+  "mood": "Entangled",
   "engines": [
     "Ole",
     "Orbital"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6262,
-    "COUPLING": 0.8671,
-    "MOVEMENT": 0.0349,
-    "SPACE": 0.6021
-  },
-  "mood": "Entangled",
-  "name": "Rust Void",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.714,
-      "macro_coupling": 0.7754,
-      "macro_movement": 0.0385,
-      "macro_space": 0.4703
-    },
-    "Orbital": {
-      "macro_character": 0.5385,
-      "macro_coupling": 0.9589,
-      "macro_movement": 0.0314,
-      "macro_space": 0.7339
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: HOT_FROZEN_SPARSE_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "sparse",
     "vast"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.9442,
     "aggression": 0.1115
   }
->>>>>>> origin/v1-launch-prep
 }

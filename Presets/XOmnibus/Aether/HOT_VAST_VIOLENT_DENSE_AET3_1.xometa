@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_VAST_VIOLENT_DENSE_AET3_1",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.9081
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC",
-        "amount": 0.6333
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.6333
   },
   "dna": {
-    "aggression": 0.9343,
     "brightness": 0.3741,
-    "density": 0.9615,
+    "warmth": 0.8931,
     "movement": 0.4937,
+    "density": 0.9615,
     "space": 0.8843,
-    "warmth": 0.8931
+    "aggression": 0.9343
   },
-  "engines": [
-    "Orbital",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6336,
-    "COUPLING": 0.6333,
     "MOVEMENT": 0.4937,
+    "COUPLING": 0.6333,
     "SPACE": 0.8843
   },
-  "mood": "Aether",
-  "name": "HOT_VAST_VIOLENT_DENSE_AET3_1",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.2341,
-      "macro_coupling": 0.4191,
-      "macro_movement": 0.2409,
-      "macro_space": 0.9081
-    },
-    "Orbital": {
-      "macro_character": 0.4707,
-      "macro_coupling": 0.731,
-      "macro_movement": 0.4267,
-      "macro_space": 0.2949
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "vast",
     "violent",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

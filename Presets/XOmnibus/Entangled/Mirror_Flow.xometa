@@ -1,29 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.669,
-        "engineA": "Owlfish",
-        "engineB": "Orca",
-        "type": "TEXTURE_WEAVE"
-      }
-    ]
-  },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "aggression": 0.44,
-    "brightness": 0.365,
-    "density": 0.97,
-    "movement": 0.57,
-    "space": 0.665,
-    "warmth": 0.5
-  },
+  "schema_version": 1,
+  "name": "Mirror Flow",
+  "mood": "Entangled",
   "engines": [
     "Orca",
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -33,7 +14,6 @@
     "coverage",
     "orca",
     "owlfish"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,45 +23,41 @@
   ],
   "macros": {
     "CHARACTER": 0.446,
-    "COUPLING": 0.644,
     "MOVEMENT": 0.531,
+    "COUPLING": 0.644,
     "SPACE": 0.538
   },
-  "mood": "Entangled",
-  "name": "Mirror Flow",
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.365,
+    "warmth": 0.5,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
+  "sonic_dna": {
+    "brightness": 0.365,
+    "warmth": 0.5,
+    "movement": 0.57,
+    "density": 0.97,
+    "space": 0.665,
+    "aggression": 0.44
+  },
   "parameters": {
     "Orca": {
       "macro_character": 0.356,
-      "macro_coupling": 0.693,
       "macro_movement": 0.301,
+      "macro_coupling": 0.693,
       "macro_space": 0.261
     },
     "Owlfish": {
       "macro_character": 0.75,
-      "macro_coupling": 0.589,
       "macro_movement": 0.793,
+      "macro_coupling": 0.589,
       "macro_space": 0.223
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.44,
-    "brightness": 0.365,
-    "density": 0.97,
-    "movement": 0.57,
-    "space": 0.665,
-    "warmth": 0.5
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "orca",
-    "owlfish"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": [
       {
@@ -92,5 +68,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

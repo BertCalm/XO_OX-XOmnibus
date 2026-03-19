@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "A cave system beneath the ocean floor. Darkness with its own harmonics.",
+  "name": "Hadal Dream",
+  "version": "1.0",
   "engines": [
     "Odyssey"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.271,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.071,
+    "COUPLING": 0.0,
     "SPACE": 0.81
   },
-  "mood": "Atmosphere",
-  "name": "Hadal Dream",
-  "parameters": {
-    "Odyssey": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.035,
     "brightness": 0.139,
-    "density": 0.766,
+    "warmth": 0.403,
     "movement": 0.071,
+    "density": 0.766,
     "space": 0.81,
-    "warmth": 0.403
+    "aggression": 0.035
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "deep",
     "vast"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "A cave system beneath the ocean floor. Darkness with its own harmonics."
 }

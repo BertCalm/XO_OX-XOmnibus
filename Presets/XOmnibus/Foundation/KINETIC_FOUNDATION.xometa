@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "KINETIC FOUNDATION",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.318
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oracle",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.449
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "ORACLE",
+    "amount": 0.449
   },
   "dna": {
-    "aggression": 0.685,
     "brightness": 0.31,
-    "density": 0.725,
+    "warmth": 0.961,
     "movement": 0.896,
+    "density": 0.725,
     "space": 0.245,
-    "warmth": 0.961
+    "aggression": 0.685
   },
-  "engines": [
-    "Organon",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.503,
-    "COUPLING": 0.449,
     "MOVEMENT": 0.896,
+    "COUPLING": 0.449,
     "SPACE": 0.245
   },
-  "mood": "Foundation",
-  "name": "KINETIC FOUNDATION",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.347,
-      "macro_coupling": 0.677,
-      "macro_movement": 0.899,
-      "macro_space": 0.318
-    },
-    "Organon": {
-      "macro_character": 0.626,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.891,
-      "macro_space": 0.207
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.112
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Organon",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.783
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OWLFISH",
+    "target": "ORGANON",
+    "amount": 0.783
   },
   "dna": {
-    "aggression": 0.104,
     "brightness": 0.576,
-    "density": 0.05,
+    "warmth": 0.041,
     "movement": 0.076,
+    "density": 0.05,
     "space": 0.085,
-    "warmth": 0.041
+    "aggression": 0.104
   },
-  "engines": [
-    "Owlfish",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.29,
-    "COUPLING": 0.783,
     "MOVEMENT": 0.07,
+    "COUPLING": 0.783,
     "SPACE": 0.087
   },
-  "mood": "Entangled",
-  "name": "Shard Flux",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.281,
-      "macro_coupling": 0.038,
-      "macro_movement": 0.067,
-      "macro_space": 0.112
-    },
-    "Owlfish": {
-      "macro_character": 0.3,
-      "macro_coupling": 0.062,
-      "macro_movement": 0.072,
-      "macro_space": 0.063
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "sparse",
     "close",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

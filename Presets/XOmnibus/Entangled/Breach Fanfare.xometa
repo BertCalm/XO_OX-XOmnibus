@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Ottoni",
-        "type": "ECHOLOCATION_SYNC",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "The orca breach is answered by brass flourish — ocean triumph declared in patina",
+  "name": "Breach Fanfare",
+  "version": "1.0",
   "engines": [
     "Ottoni",
     "Orca"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.65,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
     "SPACE": 0.45
   },
-  "mood": "Entangled",
-  "name": "Breach Fanfare",
-  "parameters": {
-    "Ottoni": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.66,
     "brightness": 0.63,
-    "density": 0.68,
+    "warmth": 0.54,
     "movement": 0.58,
+    "density": 0.68,
     "space": 0.54,
-    "warmth": 0.54
+    "aggression": 0.66
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ORCA",
+    "target": "OTTONI",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "orca",
     "triple"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "The orca breach is answered by brass flourish — ocean triumph declared in patina"
->>>>>>> origin/v1-launch-prep
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Octopus",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.908
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.937,
-    "brightness": 0.801,
-    "density": 0.25,
-    "movement": 0.946,
-    "space": 0.641,
-    "warmth": 0.138
-  },
+  "name": "ELECTRIC FRENZY 37",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Octopus"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.555,
-    "COUPLING": 0.103,
-    "MOVEMENT": 0.946,
-    "SPACE": 0.846
-  },
-  "mood": "Entangled",
-  "name": "ELECTRIC FRENZY 37",
   "parameters": {
     "Obese": {
       "macro_character": 0.984,
-      "macro_coupling": 0.462,
       "macro_movement": 0.917,
+      "macro_coupling": 0.462,
       "macro_space": 0.282
     },
     "Octopus": {
       "macro_character": 0.382,
-      "macro_coupling": 0.527,
       "macro_movement": 0.975,
+      "macro_coupling": 0.527,
       "macro_space": 0.966
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBESE",
+    "target": "OCTOPUS",
+    "amount": 0.908
+  },
+  "dna": {
+    "brightness": 0.801,
+    "warmth": 0.138,
+    "movement": 0.946,
+    "density": 0.25,
+    "space": 0.641,
+    "aggression": 0.937
+  },
+  "macros": {
+    "CHARACTER": 0.555,
+    "MOVEMENT": 0.946,
+    "COUPLING": 0.103,
+    "SPACE": 0.846
+  },
   "tags": [
     "entangled",
     "frantic",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

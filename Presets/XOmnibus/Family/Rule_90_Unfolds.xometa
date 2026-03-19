@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OUTWIT RULE 90 — the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",
-  "dna": {
-    "aggression": 0.58,
-    "brightness": 0.55,
-    "density": 0.62,
-    "movement": 0.9,
-    "space": 0.5,
-    "warmth": 0.42
-  },
+  "schema_version": 1,
+  "name": "Rule 90 Unfolds",
+  "mood": "Family",
   "engines": [
     "Outwit"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "RULE",
-    "ARMS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Rule 90 Unfolds",
-  "parameters": {
-    "Outwit": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OUTWIT RULE 90 — the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "pattern",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "RULE",
+    "ARMS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.5,
     "aggression": 0.58
   }
->>>>>>> origin/v1-launch-prep
 }

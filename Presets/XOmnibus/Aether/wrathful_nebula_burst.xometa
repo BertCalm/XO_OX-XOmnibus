@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WRATHFUL NEBULA BURST",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.891
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Odyssey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.498
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OPTIC",
+    "target": "ODYSSEY",
+    "amount": 0.498
   },
   "dna": {
-    "aggression": 0.915,
     "brightness": 0.151,
-    "density": 0.104,
+    "warmth": 0.062,
     "movement": 0.476,
+    "density": 0.104,
     "space": 0.899,
-    "warmth": 0.062
+    "aggression": 0.915
   },
-  "engines": [
-    "Optic",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.409,
-    "COUPLING": 0.338,
     "MOVEMENT": 0.476,
+    "COUPLING": 0.338,
     "SPACE": 0.899
   },
-  "mood": "Aether",
-  "name": "WRATHFUL NEBULA BURST",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.439,
-      "macro_coupling": 0.159,
-      "macro_movement": 0.478,
-      "macro_space": 0.891
-    },
-    "Optic": {
-      "macro_character": 0.505,
-      "macro_coupling": 0.248,
-      "macro_movement": 0.443,
-      "macro_space": 0.895
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9,
-        "engineA": "Outwit",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Origami Ambush",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Timbre Blend.",
-  "dna": {
-    "aggression": 0.63,
-    "brightness": 0.72,
-    "density": 0.12,
-    "movement": 0.92,
-    "space": 0.8,
-    "warmth": 0.54
-  },
-  "engines": [
-    "Outwit",
-    "Origami"
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "origami",
+    "chaotic",
+    "generative"
   ],
   "macroLabels": [
     "ARMS",
@@ -44,30 +25,28 @@
   ],
   "macros": {
     "CHARACTER": 0.42,
-    "COUPLING": 0.82,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.82,
     "SPACE": 0.49
   },
-  "mood": "Entangled",
-  "name": "Origami Ambush",
+  "couplingIntensity": "Deep",
+  "sonic_dna": {
+    "brightness": 0.72,
+    "warmth": 0.54,
+    "movement": 0.92,
+    "density": 0.12,
+    "space": 0.8,
+    "aggression": 0.63
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.54,
+    "movement": 0.92,
+    "density": 0.12,
+    "space": 0.8,
+    "aggression": 0.63
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Origami": {
-      "origami_ampAttack": 0.27,
-      "origami_ampRelease": 0.19,
-      "origami_ampSustain": 0.68,
-      "origami_character": 0.51,
-      "origami_coupling": 0.81,
-      "origami_couplingLevel": 0.66,
-      "origami_filterCutoff": 0.29,
-      "origami_filterReso": 0.24,
-      "origami_movement": 0.76,
-      "origami_outputLevel": 0.84,
-      "origami_reverbMix": 0.57,
-      "origami_space": 0.75
-    },
-    "Outwit": {
-=======
     "Outwit": {
       "owit_rule": 22,
       "owit_arms": 8,
@@ -78,30 +57,17 @@
       "owit_pitchSpread": 0.63,
       "owit_filterCutoff": 0.55,
       "owit_filterReso": 0.24,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.13,
       "owit_ampRelease": 0.18,
       "owit_armStagger": 0.09,
-      "owit_arms": 8,
       "owit_borderMode": 0,
-      "owit_cellSize": 0.21,
+      "owit_inkCloudMix": 0.45,
       "owit_chroma1": 0.63,
       "owit_chroma2": 0.46,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.7,
-      "owit_density": 0.67,
-      "owit_evolveRate": 0.65,
-      "owit_filterCutoff": 0.55,
-      "owit_filterReso": 0.24,
-      "owit_inkCloudMix": 0.45,
-      "owit_mutateProb": 0.32,
-      "owit_outputLevel": 0.81,
-<<<<<<< HEAD
-      "owit_outputPan": 0.18,
-      "owit_pitchSpread": 0.63,
       "owit_polyDepth": 0.61,
-      "owit_rule": 22
-=======
+      "owit_couplingLevel": 0.7,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.81,
       "owit_outputPan": 0.18
     },
     "Origami": {
@@ -117,25 +83,20 @@
       "origami_reverbMix": 0.57,
       "origami_couplingLevel": 0.66,
       "origami_outputLevel": 0.84
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.63,
-    "brightness": 0.72,
-    "density": 0.12,
-    "movement": 0.92,
-    "space": 0.8,
-    "warmth": 0.54
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "origami",
-    "chaotic",
-    "generative"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUTWIT",
+    "target": "ORIGAMI",
+    "amount": 0.9,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORIGAMI",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.9
+      }
+    ]
+  }
 }

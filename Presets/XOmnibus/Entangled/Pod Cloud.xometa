@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Opal",
-        "type": "ECHOLOCATION_SYNC",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Opal grain cloud navigated by orca pod — granular terrain mapped by echolocation",
+  "name": "Pod Cloud",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Orca"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.7,
+    "COUPLING": 0.65,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Pod Cloud",
-  "parameters": {
-    "Opal": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.42,
     "brightness": 0.54,
-    "density": 0.56,
+    "warmth": 0.51,
     "movement": 0.64,
+    "density": 0.56,
     "space": 0.66,
-    "warmth": 0.51
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ORCA",
+    "target": "OPAL",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "orca",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Opal grain cloud navigated by orca pod — granular terrain mapped by echolocation"
->>>>>>> origin/v1-launch-prep
 }

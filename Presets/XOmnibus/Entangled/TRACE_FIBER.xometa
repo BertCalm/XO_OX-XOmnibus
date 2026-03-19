@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "TRACE FIBER",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.171
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Ohm",
-        "type": "FILTER_MOD",
-        "amount": 0.683
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ONSET",
+    "target": "OHM",
+    "amount": 0.683
   },
   "dna": {
-    "aggression": 0.557,
     "brightness": 0.163,
-    "density": 0.1,
+    "warmth": 0.379,
     "movement": 0.99,
+    "density": 0.1,
     "space": 0.64,
-    "warmth": 0.379
+    "aggression": 0.557
   },
-  "engines": [
-    "Onset",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.685,
-    "COUPLING": 0.776,
     "MOVEMENT": 0.843,
+    "COUPLING": 0.776,
     "SPACE": 0.229
   },
-  "mood": "Entangled",
-  "name": "TRACE FIBER",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.937,
-      "macro_coupling": 0.609,
-      "macro_movement": 0.648,
-      "macro_space": 0.171
-    },
-    "Onset": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.21,
-      "macro_movement": 0.37,
-      "macro_space": 0.267
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

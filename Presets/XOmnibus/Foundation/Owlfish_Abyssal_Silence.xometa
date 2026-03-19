@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-=======
   "schema_version": 1,
   "name": "Abyssal Silence",
   "mood": "Foundation",
@@ -28,68 +22,9 @@
     "DEFENSE",
     "PRESSURE"
   ],
->>>>>>> origin/v1-launch-prep
   "couplingIntensity": "None",
+  "tempo": null,
   "created": "2026-03-14",
-<<<<<<< HEAD
-  "description": "The Mixtur-Trautonium at zero subharmonic depth — fundamental wave only, body resonator at minimum, no grain, reverb barely present. A single percussive click tone in near-total isolation. Cold as the deep trench without bioluminescence.",
-  "dna": {
-    "aggression": 0.15,
-    "brightness": 0.7,
-    "density": 0.12,
-    "movement": 0.08,
-    "space": 0.14,
-    "warmth": 0.08
-  },
-  "engines": [
-    "Owlfish"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "DEFENSE",
-    "PRESSURE"
-  ],
-  "mood": "Foundation",
-  "name": "Abyssal Silence",
-  "parameters": {
-    "Owlfish": {
-      "owl_ampAttack": 1,
-      "owl_ampDecay": 60,
-      "owl_ampRelease": 40,
-      "owl_ampSustain": 0.0,
-      "owl_armorDecay": 0.0,
-      "owl_armorDelay": 0.0,
-      "owl_armorDuck": 0.0,
-      "owl_armorScatter": 0.0,
-      "owl_armorThreshold": 1.0,
-      "owl_bodyFreq": 1200,
-      "owl_bodyLevel": 0.0,
-      "owl_compAttack": 0.01,
-      "owl_compRatio": 0.0,
-      "owl_compRelease": 0.05,
-      "owl_compThreshold": 1.0,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.0,
-      "owl_depth": 0.0,
-      "owl_feedRate": 0.0,
-      "owl_feeding": 0.0,
-      "owl_filterCutoff": 0.95,
-      "owl_filterEnvDepth": 0.0,
-      "owl_filterReso": 0.3,
-      "owl_filterTrack": 1.0,
-      "owl_fundWave": 1.0,
-      "owl_grainDensity": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainSize": 0.5,
-=======
   "legacy": {
     "sourceInstrument": null,
     "sourceCategory": null,
@@ -98,18 +33,9 @@
   "parameters": {
     "Owlfish": {
       "owl_portamento": 0.0,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
-      "owl_mixtur": 0.05,
       "owl_morphGlide": 0.0,
-      "owl_outputLevel": 0.7,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.0,
-      "owl_pressure": 0.0,
-      "owl_reverbDamp": 1.0,
-      "owl_reverbMix": 0.02,
-      "owl_reverbPreDelay": 0.0,
-      "owl_reverbSize": 0.03,
+      "owl_subMix": 0.0,
       "owl_subDiv1": 0,
       "owl_subDiv2": 0,
       "owl_subDiv3": 0,
@@ -118,10 +44,6 @@
       "owl_subLevel2": 0.0,
       "owl_subLevel3": 0.0,
       "owl_subLevel4": 0.0,
-<<<<<<< HEAD
-      "owl_subMix": 0.0,
-      "owl_subWave": 0.0
-=======
       "owl_mixtur": 0.05,
       "owl_fundWave": 1.0,
       "owl_subWave": 0.0,
@@ -161,23 +83,12 @@
       "owl_outputPan": 0.0,
       "owl_couplingLevel": 0.5,
       "owl_couplingBus": 0
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-<<<<<<< HEAD
-  "tags": [
-    "cold",
-    "dry",
-    "minimal",
-    "click",
-    "percussive",
-    "isolated"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "dna": {
     "brightness": 0.7,
     "warmth": 0.08,
@@ -186,5 +97,4 @@
     "space": 0.14,
     "aggression": 0.15
   }
->>>>>>> origin/v1-launch-prep
 }

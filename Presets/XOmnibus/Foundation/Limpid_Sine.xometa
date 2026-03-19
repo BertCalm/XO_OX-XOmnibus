@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Bright pitched percussion foundation, zero mud",
-  "dna": {
-    "aggression": 0.055,
+  "schema_version": 1,
+  "name": "Limpid Sine",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.9395,
-    "density": 0.1716,
+    "warmth": 0.3162,
     "movement": 0.3929,
+    "density": 0.1716,
     "space": 0.8144,
-    "warmth": 0.3162
+    "aggression": 0.055
+  },
+  "dna": {
+    "brightness": 0.9395,
+    "warmth": 0.3162,
+    "movement": 0.3929,
+    "density": 0.1716,
+    "space": 0.8144,
+    "aggression": 0.055
   },
   "engines": [
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "MACHINE",
@@ -37,47 +39,23 @@
   ],
   "macros": {
     "MACHINE": 0.9092,
-    "MUTATE": 0.7616,
     "PUNCH": 0.4325,
-    "SPACE": 0.8516
+    "SPACE": 0.8516,
+    "MUTATE": 0.7616
   },
-  "mood": "Foundation",
-  "name": "Limpid Sine",
+  "couplingIntensity": "None",
   "parameters": {
     "Onset": {
-<<<<<<< HEAD
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-=======
->>>>>>> origin/v1-launch-prep
       "onset_macro_machine": 0.9092,
-      "onset_macro_mutate": 0.7616,
       "onset_macro_punch": 0.4325,
       "onset_macro_space": 0.8516,
-      "onset_outputLevel": 0.85
+      "onset_macro_mutate": 0.7616,
+      "onset_outputLevel": 0.85,
+      "onset_couplingLevel": 0.5,
+      "onset_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.055,
-    "brightness": 0.9395,
-    "density": 0.1716,
-    "movement": 0.3929,
-    "space": 0.8144,
-    "warmth": 0.3162
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

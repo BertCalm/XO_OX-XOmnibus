@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Outwit",
-        "type": "PITCH_SYNC",
-        "amount": 0.961
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.9298,
-    "brightness": 0.9891,
-    "density": 0.347,
-    "movement": 0.0561,
-    "space": 0.1115,
-    "warmth": 0.9796
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT_ENT3_5",
+  "mood": "Entangled",
   "engines": [
     "Owlfish",
     "Outwit"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7848,
-    "COUPLING": 0.8172,
-    "MOVEMENT": 0.0576,
-    "SPACE": 0.3861
-  },
-  "mood": "Entangled",
-  "name": "Honey Force",
-  "parameters": {
-    "Outwit": {
-      "macro_character": 0.7238,
-      "macro_coupling": 0.7847,
-      "macro_movement": 0.0601,
-      "macro_space": 0.262
-    },
-    "Owlfish": {
-      "macro_character": 0.8457,
-      "macro_coupling": 0.8497,
-      "macro_movement": 0.055,
-      "macro_space": 0.5101
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_WARM_FROZEN_INTIMATE_VIOLENT. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "violent",
     "intimate"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.1115,
     "aggression": 0.9298
   }
->>>>>>> origin/v1-launch-prep
 }

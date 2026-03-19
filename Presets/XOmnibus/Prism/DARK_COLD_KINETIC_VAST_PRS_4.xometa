@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Oblique",
-        "type": "PITCH_SYNC",
-        "amount": 0.525
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.679,
-    "brightness": 0.091,
-    "density": 0.351,
-    "movement": 0.899,
-    "space": 0.944,
-    "warmth": 0.101
-  },
+  "name": "DARK_COLD_KINETIC_VAST_PRS_4",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ole",
     "Oblique"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.385,
-    "COUPLING": 0.869,
-    "MOVEMENT": 0.899,
-    "SPACE": 0.944
-  },
-  "mood": "Prism",
-  "name": "DARK_COLD_KINETIC_VAST_PRS_4",
   "parameters": {
-<<<<<<< HEAD
-    "Oblique": {
-      "macro_character": 0.794,
-      "macro_coupling": 0.592,
-=======
     "Ole": {
       "macro_character": 0.385,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.899,
+      "macro_coupling": 0.869,
       "macro_space": 0.944
     },
-<<<<<<< HEAD
-    "Ole": {
-      "macro_character": 0.385,
-      "macro_coupling": 0.869,
-=======
     "Oblique": {
       "macro_character": 0.794,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.899,
+      "macro_coupling": 0.592,
       "macro_space": 0.944
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OLE",
+    "target": "OBLIQUE",
+    "amount": 0.525
+  },
+  "dna": {
+    "brightness": 0.091,
+    "warmth": 0.101,
+    "movement": 0.899,
+    "density": 0.351,
+    "space": 0.944,
+    "aggression": 0.679
+  },
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.869,
+    "SPACE": 0.944
+  },
   "tags": [
     "prism",
     "dark",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

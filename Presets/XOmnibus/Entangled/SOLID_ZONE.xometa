@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SOLID ZONE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.4267
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.9721
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORPHICA",
+    "target": "OMBRE",
+    "amount": 0.9721
   },
   "dna": {
-    "aggression": 0.7518,
     "brightness": 0.4459,
-    "density": 0.9357,
+    "warmth": 0.1592,
     "movement": 0.8615,
+    "density": 0.9357,
     "space": 0.4501,
-    "warmth": 0.1592
+    "aggression": 0.7518
   },
-  "engines": [
-    "Orphica",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8399,
-    "COUPLING": 0.9333,
     "MOVEMENT": 0.2773,
+    "COUPLING": 0.9333,
     "SPACE": 0.4846
   },
-  "mood": "Entangled",
-  "name": "SOLID ZONE",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.4426,
-      "macro_coupling": 0.9568,
-      "macro_movement": 0.815,
-      "macro_space": 0.4267
-    },
-    "Orphica": {
-      "macro_character": 0.5311,
-      "macro_coupling": 0.7269,
-      "macro_movement": 0.5589,
-      "macro_space": 0.7553
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "xhigh",
     "heavy",
     "coiled"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

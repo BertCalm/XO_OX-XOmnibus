@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Optic",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.421
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.952,
-    "brightness": 0.039,
-    "density": 0.563,
-    "movement": 0.881,
-    "space": 0.311,
-    "warmth": 0.893
-  },
+  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oblique",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.369,
-    "COUPLING": 0.655,
-    "MOVEMENT": 0.753,
-    "SPACE": 0.335
-  },
-  "mood": "Atmosphere",
-  "name": "DARK_HOT_KINETIC_VIOLENT_ATM_2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.369,
-      "macro_coupling": 0.655,
       "macro_movement": 0.753,
+      "macro_coupling": 0.655,
       "macro_space": 0.335
     },
     "Optic": {
       "macro_character": 0.741,
-      "macro_coupling": 0.726,
       "macro_movement": 0.867,
+      "macro_coupling": 0.726,
       "macro_space": 0.432
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "OPTIC",
+    "amount": 0.421
+  },
+  "dna": {
+    "brightness": 0.039,
+    "warmth": 0.893,
+    "movement": 0.881,
+    "density": 0.563,
+    "space": 0.311,
+    "aggression": 0.952
+  },
+  "macros": {
+    "CHARACTER": 0.369,
+    "MOVEMENT": 0.753,
+    "COUPLING": 0.655,
+    "SPACE": 0.335
+  },
   "tags": [
     "atmosphere",
     "dark",
     "warm",
     "kinetic",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

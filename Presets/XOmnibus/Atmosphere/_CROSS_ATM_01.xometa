@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Optic",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.712
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.065,
-    "brightness": 0.918,
-    "density": 0.082,
-    "movement": 0.924,
-    "space": 0.606,
-    "warmth": 0.911
-  },
+  "name": "CROSS ATM 01",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Obscura",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.915,
-    "COUPLING": 0.336,
-    "MOVEMENT": 0.503,
-    "SPACE": 0.606
-  },
-  "mood": "Atmosphere",
-  "name": "CROSS ATM 01",
   "parameters": {
     "Obscura": {
       "macro_character": 0.915,
-      "macro_coupling": 0.336,
       "macro_movement": 0.503,
+      "macro_coupling": 0.336,
       "macro_space": 0.606
     },
     "Optic": {
       "macro_character": 0.915,
-      "macro_coupling": 0.336,
       "macro_movement": 0.503,
+      "macro_coupling": 0.336,
       "macro_space": 0.606
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBSCURA",
+    "target": "OPTIC",
+    "amount": 0.712
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.911,
+    "movement": 0.924,
+    "density": 0.082,
+    "space": 0.606,
+    "aggression": 0.065
+  },
+  "macros": {
+    "CHARACTER": 0.915,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.336,
+    "SPACE": 0.606
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

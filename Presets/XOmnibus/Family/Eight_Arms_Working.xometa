@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OCTOPUS ARMS macro full — Wolfram CA in 8-part motion. The distributed intelligence that solves problems sideways.",
-  "dna": {
-    "aggression": 0.5,
-    "brightness": 0.52,
-    "density": 0.68,
-    "movement": 0.88,
-    "space": 0.55,
-    "warmth": 0.48
-  },
+  "schema_version": 1,
+  "name": "Eight Arms Working",
+  "mood": "Family",
   "engines": [
     "Octopus"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "ARMS",
-    "ADAPT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Eight Arms Working",
-  "parameters": {
-    "Octopus": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OCTOPUS ARMS macro full — Wolfram CA in 8-part motion. The distributed intelligence that solves problems sideways.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "intelligent",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "ARMS",
+    "ADAPT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.55,
     "aggression": 0.5
   }
->>>>>>> origin/v1-launch-prep
 }

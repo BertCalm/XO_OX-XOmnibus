@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.04,
-    "brightness": 0.87,
-    "density": 0.1,
-    "movement": 0.28,
-    "space": 0.95,
-    "warmth": 0.04
-  },
+  "name": "Orbital Winter",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.28,
-    "COUPLING": 0.18,
-    "MOVEMENT": 0.28,
-    "SPACE": 0.95
-  },
-  "mood": "Aether",
-  "name": "Orbital Winter",
   "parameters": {
     "Orbital": {
       "orb_macro_character": 0.22,
-      "orb_macro_coupling": 0.23,
       "orb_macro_movement": 0.25,
+      "orb_macro_coupling": 0.23,
       "orb_macro_space": 0.95
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.87,
+    "warmth": 0.04,
+    "movement": 0.28,
+    "density": 0.1,
+    "space": 0.95,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.18,
+    "SPACE": 0.95
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "orbital",
     "winter"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

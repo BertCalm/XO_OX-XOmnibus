@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Owlfish",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.6763
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.1771,
-    "brightness": 0.1973,
-    "density": 0.0346,
-    "movement": 0.7602,
-    "space": 0.9192,
-    "warmth": 0.6024
-  },
+  "name": "HOLLOW CURRENT 4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Ole",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.151,
-    "COUPLING": 0.4422,
-    "MOVEMENT": 0.0683,
-    "SPACE": 0.3028
-  },
-  "mood": "Flux",
-  "name": "HOLLOW CURRENT 4",
   "parameters": {
     "Ole": {
       "macro_character": 0.7544,
-      "macro_coupling": 0.4489,
       "macro_movement": 0.7599,
+      "macro_coupling": 0.4489,
       "macro_space": 0.9242
     },
     "Owlfish": {
       "macro_character": 0.5645,
-      "macro_coupling": 0.6245,
       "macro_movement": 0.6353,
+      "macro_coupling": 0.6245,
       "macro_space": 0.8642
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OLE",
+    "target": "OWLFISH",
+    "amount": 0.6763
+  },
+  "dna": {
+    "brightness": 0.1973,
+    "warmth": 0.6024,
+    "movement": 0.7602,
+    "density": 0.0346,
+    "space": 0.9192,
+    "aggression": 0.1771
+  },
+  "macros": {
+    "CHARACTER": 0.151,
+    "MOVEMENT": 0.0683,
+    "COUPLING": 0.4422,
+    "SPACE": 0.3028
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

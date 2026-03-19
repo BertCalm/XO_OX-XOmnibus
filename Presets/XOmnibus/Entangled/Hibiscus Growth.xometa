@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.68,
-        "engineA": "Ole",
-        "engineB": "Organon",
-        "type": "HARMONIC_FOLD"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "OLE harmonic bloom folds into Organon's metabolic expansion — flowers multiply.",
-  "dna": {
-    "aggression": 0.6,
-    "brightness": 0.6,
-    "density": 0.6,
-    "movement": 0.65,
-    "space": 0.42,
-    "warmth": 0.72
-  },
-  "engines": [
-    "Ole",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.635,
-    "COUPLING": 0.68,
-    "MOVEMENT": 0.64,
-    "SPACE": 0.465
-  },
-  "mood": "Entangled",
-  "name": "Hibiscus Growth",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.6,
-      "macro_space": 0.38
-    },
-    "Organon": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.68,
-      "macro_space": 0.55
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Hibiscus Growth",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "OLE harmonic bloom folds into Organon's metabolic expansion — flowers multiply.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "harmonic",
     "bloom"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.6,
     "warmth": 0.72,
@@ -118,5 +64,4 @@
     "SPACE": 0.465
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

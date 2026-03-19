@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.312
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Optic",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.829
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.829
   },
   "dna": {
-    "aggression": 0.957,
     "brightness": 0.962,
-    "density": 0.889,
+    "warmth": 0.436,
     "movement": 0.905,
+    "density": 0.889,
     "space": 0.301,
-    "warmth": 0.436
+    "aggression": 0.957
   },
-  "engines": [
-    "Overdub",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.689,
-    "COUPLING": 0.933,
     "MOVEMENT": 0.905,
+    "COUPLING": 0.933,
     "SPACE": 0.301
   },
-  "mood": "Flux",
-  "name": "Tone Strike",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.739,
-      "macro_coupling": 0.944,
-      "macro_movement": 0.885,
-      "macro_space": 0.312
-    },
-    "Overdub": {
-      "macro_character": 0.638,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.946,
-      "macro_space": 0.338
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

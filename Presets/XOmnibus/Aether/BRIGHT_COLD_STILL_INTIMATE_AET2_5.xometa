@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_5",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0384
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Ombre",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.937
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "OMBRE",
+    "amount": 0.937
   },
   "dna": {
-    "aggression": 0.5651,
     "brightness": 0.9178,
-    "density": 0.4819,
     "movement": 0.0409,
     "space": 0.0298,
-    "warmth": 0.1133
+    "warmth": 0.1133,
+    "density": 0.4819,
+    "aggression": 0.5651
   },
-  "engines": [
-    "Osprey",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8896,
-    "COUPLING": 0.937,
     "MOVEMENT": 0.0524,
+    "COUPLING": 0.937,
     "SPACE": 0.0298
   },
-  "mood": "Aether",
-  "name": "Glass Strike",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.8883,
-      "macro_coupling": 0.4873,
-      "macro_movement": 0.0739,
-      "macro_space": 0.0384
-    },
-    "Osprey": {
-      "macro_character": 0.8908,
-      "macro_coupling": 0.5112,
-      "macro_movement": 0.0309,
-      "macro_space": 0.047
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "still",
     "intimate",
     "frozen"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

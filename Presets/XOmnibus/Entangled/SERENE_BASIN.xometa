@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SERENE BASIN",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.635
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Osteria",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.635
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OUROBOROS",
+    "target": "OSTERIA",
+    "amount": 0.635
   },
   "dna": {
-    "aggression": 0.873,
     "brightness": 0.721,
-    "density": 0.711,
+    "warmth": 0.575,
     "movement": 0.065,
+    "density": 0.711,
     "space": 0.305,
-    "warmth": 0.575
+    "aggression": 0.873
   },
-  "engines": [
-    "Ouroboros",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.227,
-    "COUPLING": 0.456,
     "MOVEMENT": 0.065,
+    "COUPLING": 0.456,
     "SPACE": 0.763
   },
-  "mood": "Entangled",
-  "name": "SERENE BASIN",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.057,
-      "macro_coupling": 0.772,
-      "macro_movement": 0.063,
-      "macro_space": 0.635
-    },
-    "Ouroboros": {
-      "macro_character": 0.721,
-      "macro_coupling": 0.985,
-      "macro_movement": 0.066,
-      "macro_space": 0.512
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "serene"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

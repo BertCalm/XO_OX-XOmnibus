@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Bone Frequency",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.91
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Odyssey",
-        "type": "PITCH_SYNC",
-        "amount": 0.78
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "ODYSSEY",
+    "amount": 0.78
   },
-  "description": "A single harmonic bone — Obsidian locks Odyssey's pitch to sub-zero stillness.",
   "dna": {
-    "aggression": 0.12,
     "brightness": 0.12,
-    "density": 0.06,
+    "warmth": 0.03,
     "movement": 0.18,
+    "density": 0.06,
     "space": 0.88,
-    "warmth": 0.03
+    "aggression": 0.12
   },
-  "engines": [
-    "Odyssey",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.25,
-    "COUPLING": 0.78,
     "MOVEMENT": 0.18,
+    "COUPLING": 0.78,
     "SPACE": 0.88
   },
-  "mood": "Entangled",
-  "name": "Bone Frequency",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.22,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.13,
-      "macro_space": 0.91
-    },
-    "Odyssey": {
-      "macro_character": 0.25,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.18,
-      "macro_space": 0.88
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "void",
     "drone"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "A single harmonic bone — Obsidian locks Odyssey's pitch to sub-zero stillness."
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_INTIMATE_FAM_VOL_57",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.041
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Organon",
-        "type": "PHASE_COUPLE",
-        "amount": 0.523
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "OBLONG",
+    "target": "ORGANON",
+    "amount": 0.523
   },
   "dna": {
-    "aggression": 0.373,
     "brightness": 0.111,
-    "density": 0.905,
+    "warmth": 0.922,
     "movement": 0.417,
+    "density": 0.905,
     "space": 0.031,
-    "warmth": 0.922
+    "aggression": 0.373
   },
-  "engines": [
-    "Organon",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.538,
-    "COUPLING": 0.639,
     "MOVEMENT": 0.41,
+    "COUPLING": 0.639,
     "SPACE": 0.035
   },
-  "mood": "Family",
-  "name": "Amber Massive",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.541,
-      "macro_coupling": 0.635,
-      "macro_movement": 0.41,
-      "macro_space": 0.041
-    },
-    "Organon": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.643,
-      "macro_movement": 0.411,
-      "macro_space": 0.028
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "dense",
     "intimate",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

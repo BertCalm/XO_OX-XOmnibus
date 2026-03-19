@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9685,
-        "source": "Oblique",
-        "target": "Osteria",
-        "type": "SPECTRAL_MORPH"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Warm Still Dense character entanglement — OSTERIA × OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.3838,
-    "brightness": 0.8821,
-    "density": 0.9138,
-    "movement": 0.0899,
-    "space": 0.4481,
-    "warmth": 0.9034
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_2",
+  "mood": "Entangled",
   "engines": [
     "Osteria",
     "Oblique"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "FERMENT",
-    "SEASON",
-    "SPICE",
-    "CELLAR"
-  ],
-  "macros": {
-    "CHARACTER": 0.8927,
-    "COUPLING": 0.9685,
-    "MOVEMENT": 0.0899,
-    "SPACE": 0.4481
-  },
-  "mood": "Entangled",
-  "name": "BRIGHT_WARM_STILL_DENSE_ENT_2",
-  "parameters": {
-    "Oblique": {
-      "amp_attack": 0.4057,
-      "amp_release": 0.4021,
-      "coupling_level": 0.7103,
-      "density": 0.9187,
-      "drive": 0.3367,
-      "filter_cutoff": 0.8027,
-      "filter_resonance": 0.3043,
-      "macro_character": 0.9074,
-      "macro_coupling": 0.7697,
-      "macro_movement": 0.0668,
-      "macro_space": 0.4782,
-      "output_level": 0.9094,
-      "reverb_mix": 0.3932,
-      "reverb_size": 0.4501
-    },
-    "Osteria": {
-      "amp_attack": 0.4252,
-      "amp_release": 0.3735,
-      "coupling_level": 0.6887,
-      "density": 0.8921,
-      "drive": 0.3791,
-      "filter_cutoff": 0.8079,
-      "filter_resonance": 0.3311,
-      "macro_character": 0.9347,
-      "macro_coupling": 0.7526,
-      "macro_movement": 0.0636,
-      "macro_space": 0.4212,
-      "output_level": 0.891,
-      "reverb_mix": 0.4113,
-      "reverb_size": 0.4963
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3838,
-    "brightness": 0.8821,
-    "density": 0.9138,
-    "movement": 0.0899,
-    "space": 0.4481,
-    "warmth": 0.9034
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Warm Still Dense character entanglement — OSTERIA × OBLIQUE via Spectral Morph. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "dense",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FERMENT",
     "SEASON",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9685,
     "SPACE": 0.4481
   }
->>>>>>> origin/v1-launch-prep
 }

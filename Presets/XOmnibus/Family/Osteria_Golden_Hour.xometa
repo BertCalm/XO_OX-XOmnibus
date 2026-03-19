@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OSTERIA at table — WARMTH full, texture present. The Italian gathering where nobody leaves hungry. Late afternoon light.",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.48,
-    "density": 0.65,
-    "movement": 0.38,
-    "space": 0.52,
-    "warmth": 0.85
-  },
+  "schema_version": 1,
+  "name": "Osteria Golden Hour",
+  "mood": "Family",
   "engines": [
     "Osteria"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "WARMTH",
-    "TEXTURE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Osteria Golden Hour",
-  "parameters": {
-    "Osteria": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OSTERIA at table — WARMTH full, texture present. The Italian gathering where nobody leaves hungry. Late afternoon light.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "rich",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "WARMTH",
+    "TEXTURE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.52,
     "aggression": 0.2
   }
->>>>>>> origin/v1-launch-prep
 }

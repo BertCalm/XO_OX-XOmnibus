@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT WARM KINETIC SPARSE VIOLENT ENT2 2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.411
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Orca",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.494
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "ORCA",
+    "amount": 0.494
   },
   "dna": {
-    "aggression": 0.909,
     "brightness": 0.924,
-    "density": 0.079,
+    "warmth": 0.99,
     "movement": 0.925,
+    "density": 0.079,
     "space": 0.372,
-    "warmth": 0.99
+    "aggression": 0.909
   },
-  "engines": [
-    "Ottoni",
-    "Orca"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.957,
-    "COUPLING": 0.494,
     "MOVEMENT": 0.925,
+    "COUPLING": 0.494,
     "SPACE": 0.372
   },
-  "mood": "Entangled",
-  "name": "BRIGHT WARM KINETIC SPARSE ...",
-  "parameters": {
-    "Orca": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.504,
-      "macro_movement": 0.943,
-      "macro_space": 0.411
-    },
-    "Ottoni": {
-      "macro_character": 0.957,
-      "macro_coupling": 0.494,
-      "macro_movement": 0.925,
-      "macro_space": 0.372
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "bright",
@@ -82,10 +47,5 @@
     "kinetic",
     "sparse",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RADIANT EXPANSE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.909
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ombre",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.828
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "OMBRE",
+    "amount": 0.828
   },
   "dna": {
-    "aggression": 0.637,
     "brightness": 0.127,
-    "density": 0.641,
+    "warmth": 0.583,
     "movement": 0.11,
+    "density": 0.641,
     "space": 0.92,
-    "warmth": 0.583
+    "aggression": 0.637
   },
-  "engines": [
-    "Opal",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.068,
-    "COUPLING": 0.976,
     "MOVEMENT": 0.261,
+    "COUPLING": 0.976,
     "SPACE": 0.92
   },
-  "mood": "Entangled",
-  "name": "RADIANT EXPANSE",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.755,
-      "macro_coupling": 0.902,
-      "macro_movement": 0.205,
-      "macro_space": 0.909
-    },
-    "Opal": {
-      "macro_character": 0.176,
-      "macro_coupling": 0.511,
-      "macro_movement": 0.986,
-      "macro_space": 0.943
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

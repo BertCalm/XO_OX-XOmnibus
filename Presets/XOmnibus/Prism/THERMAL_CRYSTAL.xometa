@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "THERMAL CRYSTAL",
   "version": "1.0",
   "mood": "Prism",
@@ -23,67 +20,30 @@
       "macro_space": 0.684
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "OddOscar",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.842
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "ODDOSCAR",
+    "amount": 0.842
   },
   "dna": {
-    "aggression": 0.806,
     "brightness": 0.184,
-    "density": 0.317,
+    "warmth": 0.897,
     "movement": 0.129,
+    "density": 0.317,
     "space": 0.116,
-    "warmth": 0.897
+    "aggression": 0.806
   },
-  "engines": [
-    "Overworld",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.522,
-    "COUPLING": 0.239,
     "MOVEMENT": 0.535,
+    "COUPLING": 0.239,
     "SPACE": 0.647
   },
-  "mood": "Prism",
-  "name": "THERMAL CRYSTAL",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.397,
-      "macro_coupling": 0.935,
-      "macro_movement": 0.057,
-      "macro_space": 0.684
-    },
-    "Overworld": {
-      "macro_character": 0.167,
-      "macro_coupling": 0.721,
-      "macro_movement": 0.224,
-      "macro_space": 0.592
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

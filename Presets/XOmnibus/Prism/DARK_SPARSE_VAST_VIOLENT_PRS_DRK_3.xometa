@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_3",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.9603
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ocelot",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7443
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OPTIC",
+    "target": "OCELOT",
+    "amount": 0.7443
   },
   "dna": {
-    "aggression": 0.8965,
     "brightness": 0.1058,
-    "density": 0.0801,
+    "warmth": 0.4676,
     "movement": 0.599,
+    "density": 0.0801,
     "space": 0.9424,
-    "warmth": 0.4676
+    "aggression": 0.8965
   },
-  "engines": [
-    "Optic",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6821,
-    "COUPLING": 0.0801,
     "MOVEMENT": 0.599,
+    "COUPLING": 0.0801,
     "SPACE": 0.9424
   },
-  "mood": "Prism",
-  "name": "Thread Abyss",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.6732,
-      "macro_coupling": 0.104,
-      "macro_movement": 0.6125,
-      "macro_space": 0.9603
-    },
-    "Optic": {
-      "macro_character": 0.6821,
-      "macro_coupling": 0.0801,
-      "macro_movement": 0.599,
-      "macro_space": 0.9424
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

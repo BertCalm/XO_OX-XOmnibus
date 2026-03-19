@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ETCH MIST",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.61
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Orbital",
-        "type": "PITCH_SYNC",
-        "amount": 0.341
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OTTONI",
+    "target": "ORBITAL",
+    "amount": 0.341
   },
   "dna": {
-    "aggression": 0.892,
     "brightness": 0.135,
-    "density": 0.646,
+    "warmth": 0.456,
     "movement": 0.17,
+    "density": 0.646,
     "space": 0.534,
-    "warmth": 0.456
+    "aggression": 0.892
   },
-  "engines": [
-    "Ottoni",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.211,
-    "COUPLING": 0.121,
     "MOVEMENT": 0.732,
+    "COUPLING": 0.121,
     "SPACE": 0.534
   },
-  "mood": "Atmosphere",
-  "name": "ETCH MIST",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.735,
-      "macro_coupling": 0.197,
-      "macro_movement": 0.507,
-      "macro_space": 0.61
-    },
-    "Ottoni": {
-      "macro_character": 0.781,
-      "macro_coupling": 0.842,
-      "macro_movement": 0.669,
-      "macro_space": 0.813
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

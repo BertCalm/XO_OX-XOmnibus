@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "OddfeliX",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.832
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.954,
-    "brightness": 0.431,
-    "density": 0.946,
-    "movement": 0.948,
-    "space": 0.486,
-    "warmth": 0.087
-  },
+  "name": "COLD KINETIC DENSE VIOLENT AET AGG 3",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "OddOscar",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.425,
-    "COUPLING": 0.855,
-    "MOVEMENT": 0.881,
-    "SPACE": 0.459
-  },
-  "mood": "Aether",
-  "name": "COLD KINETIC DENSE VIOLENT ...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.419,
-      "macro_coupling": 0.845,
       "macro_movement": 0.881,
+      "macro_coupling": 0.845,
       "macro_space": 0.449
     },
     "OddfeliX": {
       "macro_character": 0.431,
-      "macro_coupling": 0.866,
       "macro_movement": 0.881,
+      "macro_coupling": 0.866,
       "macro_space": 0.468
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.832
+  },
+  "dna": {
+    "brightness": 0.431,
+    "warmth": 0.087,
+    "movement": 0.948,
+    "density": 0.946,
+    "space": 0.486,
+    "aggression": 0.954
+  },
+  "macros": {
+    "CHARACTER": 0.425,
+    "MOVEMENT": 0.881,
+    "COUPLING": 0.855,
+    "SPACE": 0.459
+  },
   "tags": [
     "aether",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

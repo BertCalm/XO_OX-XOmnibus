@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_VAST_ATM_1",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.702
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Oceanic",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.722
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ODDOSCAR",
+    "target": "OCEANIC",
+    "amount": 0.722
   },
   "dna": {
-    "aggression": 0.529,
     "brightness": 0.967,
-    "density": 0.685,
+    "warmth": 0.049,
     "movement": 0.874,
+    "density": 0.685,
     "space": 0.865,
-    "warmth": 0.049
+    "aggression": 0.529
   },
-  "engines": [
-    "OddOscar",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.696,
-    "COUPLING": 0.797,
     "MOVEMENT": 0.767,
+    "COUPLING": 0.797,
     "SPACE": 0.701
   },
-  "mood": "Atmosphere",
-  "name": "BRIGHT_COLD_KINETIC_VAST_ATM_1",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.421,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.746,
-      "macro_space": 0.702
-    },
-    "OddOscar": {
-      "macro_character": 0.696,
-      "macro_coupling": 0.797,
-      "macro_movement": 0.767,
-      "macro_space": 0.701
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

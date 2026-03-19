@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
   "schema_version": 1,
   "name": "Ouroboros Shore",
   "mood": "Entangled",
@@ -8,52 +6,9 @@
     "Osprey",
     "Ouroboros"
   ],
->>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.65,
-        "engineA": "Osprey",
-        "engineB": "Ouroboros",
-        "type": "Audio->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
+  "version": "1.0.0",
   "description": "The serpent's circular breath underlies osprey's cyclical hunting pattern.",
-  "dna": {
-    "aggression": 0.37,
-    "brightness": 0.59,
-    "density": 1.0,
-    "movement": 0.7,
-    "space": 0.69,
-    "warmth": 0.755
-  },
-  "engines": [
-    "Osprey",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.55,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.6,
-    "SPACE": 0.65
-  },
-  "mood": "Entangled",
-  "name": "Ouroboros Shore",
-  "parameters": {
-    "Osprey": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -64,6 +19,38 @@
     "hunting",
     "deep"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.75,
+    "SPACE": 0.65
+  },
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.755,
+    "movement": 0.7,
+    "density": 1.0,
+    "space": 0.69,
+    "aggression": 0.37
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "OUROBOROS",
+        "type": "Audio->Filter",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Overworld",
-        "type": "RHYTHM_SYNC",
-        "amount": 0.883
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.026,
-    "brightness": 0.845,
-    "density": 0.081,
-    "movement": 0.818,
-    "space": 0.041,
-    "warmth": 0.975
-  },
+  "name": "SPARSE ORIGIN",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.092,
-    "COUPLING": 0.376,
-    "MOVEMENT": 0.53,
-    "SPACE": 0.454
-  },
-  "mood": "Family",
-  "name": "SPARSE ORIGIN",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.762,
-      "macro_coupling": 0.351,
       "macro_movement": 0.922,
+      "macro_coupling": 0.351,
       "macro_space": 0.181
     },
     "Overworld": {
       "macro_character": 0.143,
-      "macro_coupling": 0.07,
       "macro_movement": 0.657,
+      "macro_coupling": 0.07,
       "macro_space": 0.741
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "ODDOSCAR",
+    "target": "OVERWORLD",
+    "amount": 0.883
+  },
+  "dna": {
+    "brightness": 0.845,
+    "warmth": 0.975,
+    "movement": 0.818,
+    "density": 0.081,
+    "space": 0.041,
+    "aggression": 0.026
+  },
+  "macros": {
+    "CHARACTER": 0.092,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.376,
+    "SPACE": 0.454
+  },
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MOVING FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.229
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Osteria",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.765
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "OSTERIA",
+    "amount": 0.765
   },
   "dna": {
-    "aggression": 0.371,
     "brightness": 0.201,
-    "density": 0.756,
+    "warmth": 0.941,
     "movement": 0.963,
+    "density": 0.756,
     "space": 0.671,
-    "warmth": 0.941
+    "aggression": 0.371
   },
-  "engines": [
-    "Ouroboros",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.668,
-    "COUPLING": 0.765,
     "MOVEMENT": 0.963,
+    "COUPLING": 0.765,
     "SPACE": 0.671
   },
-  "mood": "Foundation",
-  "name": "MOVING FLOOR",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.395,
-      "macro_coupling": 0.409,
-      "macro_movement": 0.966,
-      "macro_space": 0.229
-    },
-    "Ouroboros": {
-      "macro_character": 0.692,
-      "macro_coupling": 0.631,
-      "macro_movement": 0.928,
-      "macro_space": 0.443
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

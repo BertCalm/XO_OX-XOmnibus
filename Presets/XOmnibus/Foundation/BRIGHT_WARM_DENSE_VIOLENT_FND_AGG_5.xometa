@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECT",
-        "amount": 0.801
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.974,
-    "brightness": 0.873,
-    "density": 0.982,
-    "movement": 0.433,
-    "space": 0.621,
-    "warmth": 0.958
-  },
+  "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_5",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oblong",
     "Onset"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.836,
-    "COUPLING": 0.822,
-    "MOVEMENT": 0.51,
-    "SPACE": 0.415
-  },
-  "mood": "Foundation",
-  "name": "Golden Heavy",
   "parameters": {
     "Oblong": {
       "macro_character": 0.836,
-      "macro_coupling": 0.822,
       "macro_movement": 0.51,
+      "macro_coupling": 0.822,
       "macro_space": 0.415
     },
     "Onset": {
       "macro_character": 0.873,
-      "macro_coupling": 0.794,
       "macro_movement": 0.546,
+      "macro_coupling": 0.794,
       "macro_space": 0.447
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "ONSET",
+    "amount": 0.801
+  },
+  "dna": {
+    "brightness": 0.873,
+    "warmth": 0.958,
+    "movement": 0.433,
+    "density": 0.982,
+    "space": 0.621,
+    "aggression": 0.974
+  },
+  "macros": {
+    "CHARACTER": 0.836,
+    "MOVEMENT": 0.51,
+    "COUPLING": 0.822,
+    "SPACE": 0.415
+  },
   "tags": [
     "foundation",
     "violent",
     "bright",
     "warm",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

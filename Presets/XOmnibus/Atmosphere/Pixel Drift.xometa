@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Pixel decay in slow motion. A signal losing integrity in beautiful increments.",
+  "name": "Pixel Drift",
+  "version": "1.0",
   "engines": [
     "Origami"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.482,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.582,
+    "COUPLING": 0.0,
     "SPACE": 0.633
   },
-  "mood": "Atmosphere",
-  "name": "Pixel Drift",
-  "parameters": {
-    "Origami": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.133,
     "brightness": 0.852,
-    "density": 0.569,
+    "warmth": 0.113,
     "movement": 0.582,
+    "density": 0.569,
     "space": 0.633,
-    "warmth": 0.113
+    "aggression": 0.133
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Pixel decay in slow motion. A signal losing integrity in beautiful increments."
 }

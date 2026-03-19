@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OHM commune at maximum frequency — a shared platinum radiance",
-  "dna": {
-    "aggression": 0.06,
+  "schema_version": 1,
+  "name": "Platinum Veil",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.86,
-    "density": 0.22,
+    "warmth": 0.12,
+    "aggression": 0.06,
     "movement": 0.55,
-    "space": 0.82,
-    "warmth": 0.12
+    "density": 0.22,
+    "space": 0.82
   },
   "engines": [
     "Ohm"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "COMMUNE",
-    "MEDDLING",
-    "COUPLING",
-    "DRIFT"
-  ],
-  "mood": "Prism",
-  "name": "Platinum Veil",
-  "parameters": {
-    "Ohm": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.06,
-    "brightness": 0.86,
-    "density": 0.22,
-    "movement": 0.55,
-    "space": 0.82,
-    "warmth": 0.12
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OHM commune at maximum frequency — a shared platinum radiance",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "platinum",
     "radiance"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COMMUNE",
     "MEDDLING",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

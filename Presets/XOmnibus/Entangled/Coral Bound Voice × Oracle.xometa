@@ -1,57 +1,14 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.557,
-        "engineA": "Obbligato",
-        "engineB": "Oracle",
-        "type": "Env->LFO Rate"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-  "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
-  "dna": {
-    "aggression": 0.431,
-    "brightness": 0.532,
-    "density": 1.0,
-    "movement": 0.6,
-    "space": 0.481,
-    "warmth": 0.377
-  },
-=======
   "schema_version": 1,
   "name": "Coral Bound Voice × Oracle",
   "mood": "Entangled",
->>>>>>> origin/v1-launch-prep
   "engines": [
     "Obbligato",
     "Oracle"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Coral Bound Voice × Oracle",
-  "parameters": {
-    "obbl_breathA": 0.659,
-    "obbl_breathB": 0.654,
-    "obbl_macroBond": 0.857
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "GENDY maqam lattice meets dual wind BOND — OBBLIGATO's voices are bound to ORACLE's spectral decree.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "stochastic",
     "maqam"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.659,
+    "obbl_breathB": 0.654,
+    "obbl_macroBond": 0.857
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORACLE",
+        "type": "Env->LFO Rate",
+        "amount": 0.557
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.532,
+    "warmth": 0.377,
+    "movement": 0.6,
+    "density": 1.0,
+    "space": 0.481,
+    "aggression": 0.431
+  }
 }

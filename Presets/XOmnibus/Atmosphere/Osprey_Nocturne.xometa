@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OSPREY — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.37,
-    "brightness": 0.07,
-    "density": 0.59,
-    "movement": 0.45,
-    "space": 0.22,
-    "warmth": 0.37
-  },
+  "schema_version": 1,
+  "name": "Osprey Nocturne",
+  "mood": "Atmosphere",
   "engines": [
     "Osprey"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,49 +19,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Osprey Nocturne",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.07,
+    "warmth": 0.37,
+    "movement": 0.45,
+    "density": 0.59,
+    "space": 0.22,
+    "aggression": 0.37
+  },
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.37,
+    "movement": 0.45,
+    "density": 0.59,
+    "space": 0.22,
+    "aggression": 0.37
+  },
   "parameters": {
     "Osprey": {
-<<<<<<< HEAD
-      "osp_ampAttack": 544.7,
-      "osp_ampDecay": 46.6,
-      "osp_ampRelease": 271.0,
-      "osp_ampSustain": 0.74,
-      "osp_character": 0.85,
-      "osp_coupling": 0.15,
-      "osp_delayMix": 0.25,
-=======
->>>>>>> origin/v1-launch-prep
       "osp_diveSpeed": 1,
       "osp_filterCutoff": 0.39,
       "osp_filterReso": 0.77,
-      "osp_lfoDepth": 0.56,
+      "osp_ampAttack": 544.7,
+      "osp_ampDecay": 46.6,
+      "osp_ampSustain": 0.74,
+      "osp_ampRelease": 271.0,
       "osp_lfoRate": 0.33,
-      "osp_movement": 0.96,
+      "osp_lfoDepth": 0.56,
       "osp_reverbMix": 0.39,
-      "osp_space": 0.6
+      "osp_delayMix": 0.25,
+      "osp_character": 0.85,
+      "osp_movement": 0.96,
+      "osp_space": 0.6,
+      "osp_coupling": 0.15
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.37,
-    "brightness": 0.07,
-    "density": 0.59,
-    "movement": 0.45,
-    "space": 0.22,
-    "warmth": 0.37
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

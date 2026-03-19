@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Overdub",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.389
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.479,
-    "brightness": 0.022,
-    "density": 0.041,
-    "movement": 0.537,
-    "space": 0.974,
-    "warmth": 0.108
-  },
+  "name": "COAL SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oceanic",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.88,
-    "COUPLING": 0.614,
-    "MOVEMENT": 0.365,
-    "SPACE": 0.856
-  },
-  "mood": "Prism",
-  "name": "COAL SPECTRUM",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.413,
-      "macro_coupling": 0.948,
       "macro_movement": 0.385,
+      "macro_coupling": 0.948,
       "macro_space": 0.658
     },
     "Overdub": {
       "macro_character": 0.483,
-      "macro_coupling": 0.085,
       "macro_movement": 0.452,
+      "macro_coupling": 0.085,
       "macro_space": 0.408
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OVERDUB",
+    "amount": 0.389
+  },
+  "dna": {
+    "brightness": 0.022,
+    "warmth": 0.108,
+    "movement": 0.537,
+    "density": 0.041,
+    "space": 0.974,
+    "aggression": 0.479
+  },
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.365,
+    "COUPLING": 0.614,
+    "SPACE": 0.856
+  },
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

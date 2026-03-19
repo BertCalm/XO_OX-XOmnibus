@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ACID FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.21
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Optic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.419
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORCA",
+    "target": "OPTIC",
+    "amount": 0.419
   },
   "dna": {
-    "aggression": 0.897,
     "brightness": 0.869,
-    "density": 0.629,
+    "warmth": 0.391,
     "movement": 0.259,
+    "density": 0.629,
     "space": 0.401,
-    "warmth": 0.391
+    "aggression": 0.897
   },
-  "engines": [
-    "Orca",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.408,
-    "COUPLING": 0.419,
     "MOVEMENT": 0.259,
+    "COUPLING": 0.419,
     "SPACE": 0.401
   },
-  "mood": "Foundation",
-  "name": "ACID FLOOR",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.535,
-      "macro_coupling": 0.753,
-      "macro_movement": 0.546,
-      "macro_space": 0.21
-    },
-    "Orca": {
-      "macro_character": 0.759,
-      "macro_coupling": 0.716,
-      "macro_movement": 0.489,
-      "macro_space": 0.579
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

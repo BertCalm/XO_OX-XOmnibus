@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Compressed Column",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OBESE dense register.",
-  "dna": {
-    "aggression": 0.235,
-    "brightness": 0.396,
-    "density": 0.856,
-    "movement": 0.279,
-    "space": 0.402,
-    "warmth": 0.637
-  },
-  "engines": [
-    "Obese"
-  ],
-  "macroLabels": [
-    "MASS",
-    "DENSITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.142,
-    "DENSITY": 0.385,
-    "MASS": 0.347,
-    "SPACE": 0.494
-  },
-  "mood": "Atmosphere",
-  "name": "Compressed Column",
-  "parameters": {
-    "Obese": {
-      "coupling": 0.142,
-      "density": 0.385,
-      "mass": 0.347,
-      "space": 0.494
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -58,9 +16,6 @@
     "warm",
     "thick"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "MASS",
     "DENSITY",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

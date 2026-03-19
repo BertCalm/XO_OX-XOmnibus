@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Origami",
-        "type": "FILTER_MOD",
-        "amount": 0.6103
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9084,
-    "brightness": 0.0764,
-    "density": 0.0514,
-    "movement": 0.331,
-    "space": 0.9026,
-    "warmth": 0.4098
-  },
+  "name": "DARK_SPARSE_VAST_VIOLENT_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ole",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6591,
-    "COUPLING": 0.0514,
-    "MOVEMENT": 0.331,
-    "SPACE": 0.9026
-  },
-  "mood": "Prism",
-  "name": "Node Storm",
   "parameters": {
     "Ole": {
       "macro_character": 0.6591,
-      "macro_coupling": 0.0514,
       "macro_movement": 0.331,
+      "macro_coupling": 0.0514,
       "macro_space": 0.9026
     },
     "Origami": {
       "macro_character": 0.6497,
-      "macro_coupling": 0.0285,
       "macro_movement": 0.3032,
+      "macro_coupling": 0.0285,
       "macro_space": 0.8958
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "ORIGAMI",
+    "amount": 0.6103
+  },
+  "dna": {
+    "brightness": 0.0764,
+    "warmth": 0.4098,
+    "movement": 0.331,
+    "density": 0.0514,
+    "space": 0.9026,
+    "aggression": 0.9084
+  },
+  "macros": {
+    "CHARACTER": 0.6591,
+    "MOVEMENT": 0.331,
+    "COUPLING": 0.0514,
+    "SPACE": 0.9026
+  },
   "tags": [
     "prism",
     "dark",
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

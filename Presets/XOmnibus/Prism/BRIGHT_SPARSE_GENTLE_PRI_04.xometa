@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Organon",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.797
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.098,
-    "brightness": 0.966,
-    "density": 0.054,
-    "movement": 0.569,
-    "space": 0.316,
-    "warmth": 0.7
-  },
+  "name": "BRIGHT SPARSE GENTLE PRI 04",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oracle",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.833,
-    "COUPLING": 0.635,
-    "MOVEMENT": 0.569,
-    "SPACE": 0.316
-  },
-  "mood": "Prism",
-  "name": "BRIGHT SPARSE GENTLE PRI 04",
   "parameters": {
     "Oracle": {
       "macro_character": 0.833,
-      "macro_coupling": 0.635,
       "macro_movement": 0.569,
+      "macro_coupling": 0.635,
       "macro_space": 0.316
     },
     "Organon": {
       "macro_character": 0.958,
-      "macro_coupling": 0.752,
       "macro_movement": 0.473,
+      "macro_coupling": 0.752,
       "macro_space": 0.356
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.797
+  },
+  "dna": {
+    "brightness": 0.966,
+    "warmth": 0.7,
+    "movement": 0.569,
+    "density": 0.054,
+    "space": 0.316,
+    "aggression": 0.098
+  },
+  "macros": {
+    "CHARACTER": 0.833,
+    "MOVEMENT": 0.569,
+    "COUPLING": 0.635,
+    "SPACE": 0.316
+  },
   "tags": [
     "prism",
     "bright",
@@ -58,10 +47,5 @@
     "gentle",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

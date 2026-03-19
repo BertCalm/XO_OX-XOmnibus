@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_VOL_79",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.507
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "OddfeliX",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.826
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "ORGANON",
+    "target": "ODDFELIX",
+    "amount": 0.826
   },
   "dna": {
-    "aggression": 0.924,
     "brightness": 0.902,
-    "density": 0.401,
+    "warmth": 0.899,
     "movement": 0.89,
+    "density": 0.401,
     "space": 0.509,
-    "warmth": 0.899
+    "aggression": 0.924
   },
-  "engines": [
-    "Organon",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.899,
-    "COUPLING": 0.669,
     "MOVEMENT": 0.885,
+    "COUPLING": 0.669,
     "SPACE": 0.515
   },
-  "mood": "Family",
-  "name": "Solar Fang 2",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.691,
-      "macro_movement": 0.864,
-      "macro_space": 0.507
-    },
-    "Organon": {
-      "macro_character": 0.904,
-      "macro_coupling": 0.647,
-      "macro_movement": 0.907,
-      "macro_space": 0.523
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "aggressive",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

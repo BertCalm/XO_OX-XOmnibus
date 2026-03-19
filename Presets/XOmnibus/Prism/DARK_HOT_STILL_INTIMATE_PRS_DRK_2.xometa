@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_2",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.0763
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ocelot",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.8066
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OCELOT",
+    "amount": 0.8066
   },
   "dna": {
-    "aggression": 0.4313,
     "brightness": 0.0475,
-    "density": 0.3095,
+    "warmth": 0.9654,
     "movement": 0.045,
+    "density": 0.3095,
     "space": 0.0412,
-    "warmth": 0.9654
+    "aggression": 0.4313
   },
-  "engines": [
-    "Origami",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6984,
-    "COUPLING": 0.3095,
     "MOVEMENT": 0.045,
+    "COUPLING": 0.3095,
     "SPACE": 0.0412
   },
-  "mood": "Prism",
-  "name": "Amber Wave",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.6904,
-      "macro_coupling": 0.3124,
-      "macro_movement": 0.0835,
-      "macro_space": 0.0763
-    },
-    "Origami": {
-      "macro_character": 0.6984,
-      "macro_coupling": 0.3095,
-      "macro_movement": 0.045,
-      "macro_space": 0.0412
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "still",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

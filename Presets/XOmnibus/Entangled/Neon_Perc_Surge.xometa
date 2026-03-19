@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.85,
-        "engineA": "Overworld",
-        "engineB": "Oblique",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Overworld chip timbral-warped by Oblique prism — neon spectrum through bounced geometry.",
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.89,
-    "density": 0.7,
-    "movement": 0.84,
-    "space": 0.2,
-    "warmth": 0.1
-  },
+  "schema_version": 1,
+  "name": "Neon Perc Surge",
+  "mood": "Entangled",
   "engines": [
     "Overworld",
     "Oblique"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "overworld",
     "oblique",
     "neon"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.85,
     "MOVEMENT": 0.84,
+    "COUPLING": 0.85,
     "SPACE": 0.2
   },
-  "mood": "Entangled",
-  "name": "Neon Perc Surge",
-  "parameters": {
-    "Overworld": {},
-    "Oblique": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.89,
-    "density": 0.7,
+    "warmth": 0.1,
     "movement": 0.84,
+    "density": 0.7,
     "space": 0.2,
-    "warmth": 0.1
+    "aggression": 0.91
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "overworld",
-    "oblique",
-    "neon"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.89,
+    "warmth": 0.1,
+    "movement": 0.84,
+    "density": 0.7,
+    "space": 0.2,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERWORLD",
+        "engineB": "OBLIQUE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.85
+      }
+    ]
+  }
 }

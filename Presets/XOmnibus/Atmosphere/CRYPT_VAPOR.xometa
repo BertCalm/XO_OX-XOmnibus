@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CRYPT VAPOR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.028
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Obscura",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.427
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OPTIC",
+    "target": "OBSCURA",
+    "amount": 0.427
   },
   "dna": {
-    "aggression": 0.113,
     "brightness": 0.601,
-    "density": 0.594,
+    "warmth": 0.81,
     "movement": 0.081,
+    "density": 0.594,
     "space": 0.05,
-    "warmth": 0.81
+    "aggression": 0.113
   },
-  "engines": [
-    "Optic",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.145,
-    "COUPLING": 0.445,
     "MOVEMENT": 0.387,
+    "COUPLING": 0.445,
     "SPACE": 0.05
   },
-  "mood": "Atmosphere",
-  "name": "CRYPT VAPOR",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.233,
-      "macro_coupling": 0.123,
-      "macro_movement": 0.34,
-      "macro_space": 0.028
-    },
-    "Optic": {
-      "macro_character": 0.883,
-      "macro_coupling": 0.663,
-      "macro_movement": 0.708,
-      "macro_space": 0.05
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

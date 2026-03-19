@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERWORLD — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.84,
-    "brightness": 0.97,
-    "density": 0.79,
-    "movement": 0.32,
-    "space": 0.41,
-    "warmth": 0.16
-  },
+  "schema_version": 1,
+  "name": "Chip Sunrise",
+  "mood": "Foundation",
   "engines": [
     "Overworld"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Chip Sunrise",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.97,
+    "warmth": 0.16,
+    "movement": 0.32,
+    "density": 0.79,
+    "space": 0.41,
+    "aggression": 0.84
+  },
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.16,
+    "movement": 0.32,
+    "density": 0.79,
+    "space": 0.41,
+    "aggression": 0.84
+  },
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-=======
       "ow_era": 0.51,
       "ow_chipWave": 0,
       "ow_filterCutoff": 0.28,
       "ow_filterReso": 0.3,
->>>>>>> origin/v1-launch-prep
       "ow_ampAttack": 471.6,
       "ow_ampDecay": 799.1,
-      "ow_ampRelease": 123.1,
       "ow_ampSustain": 0.64,
-      "ow_character": 0.46,
-      "ow_chipWave": 0,
-      "ow_coupling": 0.7,
-      "ow_delayMix": 0.54,
-      "ow_era": 0.51,
-      "ow_filterCutoff": 0.28,
-      "ow_filterReso": 0.3,
-      "ow_lfoDepth": 0.35,
+      "ow_ampRelease": 123.1,
       "ow_lfoRate": 0.54,
-      "ow_movement": 0.32,
+      "ow_lfoDepth": 0.35,
       "ow_reverbMix": 0.55,
-      "ow_space": 0.19
+      "ow_delayMix": 0.54,
+      "ow_character": 0.46,
+      "ow_movement": 0.32,
+      "ow_space": 0.19,
+      "ow_coupling": 0.7
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.84,
-    "brightness": 0.97,
-    "density": 0.79,
-    "movement": 0.32,
-    "space": 0.41,
-    "warmth": 0.16
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

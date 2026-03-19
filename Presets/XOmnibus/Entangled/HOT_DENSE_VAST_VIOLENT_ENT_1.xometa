@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.84,
-        "source": "Optic",
-        "target": "Oblong",
-        "type": "SPECTRAL_MORPH"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Hot Dense Vast Violent character entanglement — OBLONG × OPTIC via Spectral Morph. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.9339,
-    "brightness": 0.4158,
-    "density": 0.9217,
-    "movement": 0.499,
-    "space": 0.8855,
-    "warmth": 0.8844
-  },
+  "schema_version": 1,
+  "name": "HOT_DENSE_VAST_VIOLENT_ENT_1",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Optic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "BOB",
-    "FIDGET",
-    "WEAVE",
-    "CHAMBER"
-  ],
-  "macros": {
-    "CHARACTER": 0.6501,
-    "COUPLING": 0.84,
-    "MOVEMENT": 0.499,
-    "SPACE": 0.8855
-  },
-  "mood": "Entangled",
-  "name": "HOT_DENSE_VAST_VIOLENT_ENT_1",
-  "parameters": {
-    "Oblong": {
-      "amp_attack": 0.2354,
-      "amp_release": 0.6256,
-      "coupling_level": 0.8973,
-      "density": 0.9141,
-      "drive": 0.7803,
-      "filter_cutoff": 0.4879,
-      "filter_resonance": 0.5331,
-      "macro_character": 0.7668,
-      "macro_coupling": 0.9463,
-      "macro_movement": 0.4908,
-      "macro_space": 0.8804,
-      "output_level": 0.9677,
-      "reverb_mix": 0.6294,
-      "reverb_size": 0.7425
-    },
-    "Optic": {
-      "amp_attack": 0.2453,
-      "amp_release": 0.6233,
-      "coupling_level": 0.8897,
-      "density": 0.8994,
-      "drive": 0.8168,
-      "filter_cutoff": 0.486,
-      "filter_resonance": 0.5354,
-      "macro_character": 0.8143,
-      "macro_coupling": 0.9421,
-      "macro_movement": 0.4958,
-      "macro_space": 0.8744,
-      "output_level": 0.9527,
-      "reverb_mix": 0.6033,
-      "reverb_size": 0.7609
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9339,
-    "brightness": 0.4158,
-    "density": 0.9217,
-    "movement": 0.499,
-    "space": 0.8855,
-    "warmth": 0.8844
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Hot Dense Vast Violent character entanglement — OBLONG × OPTIC via Spectral Morph. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "warm",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "BOB",
     "FIDGET",
@@ -175,5 +94,4 @@
     "COUPLING": 0.84,
     "SPACE": 0.8855
   }
->>>>>>> origin/v1-launch-prep
 }

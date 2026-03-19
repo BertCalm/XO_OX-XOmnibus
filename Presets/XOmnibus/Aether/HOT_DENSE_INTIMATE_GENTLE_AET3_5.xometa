@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_DENSE_INTIMATE_GENTLE_AET3_5",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.2145
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oblique",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.5952
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.5952
   },
   "dna": {
-    "aggression": 0.1198,
     "brightness": 0.5368,
-    "density": 0.9877,
+    "warmth": 0.9803,
     "movement": 0.3336,
+    "density": 0.9877,
     "space": 0.0788,
-    "warmth": 0.9803
+    "aggression": 0.1198
   },
-  "engines": [
-    "Orbital",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7586,
-    "COUPLING": 0.5952,
     "MOVEMENT": 0.3336,
+    "COUPLING": 0.5952,
     "SPACE": 0.0788
   },
-  "mood": "Aether",
-  "name": "Grain Thick",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.8239,
-      "macro_coupling": 0.2614,
-      "macro_movement": 0.3892,
-      "macro_space": 0.2145
-    },
-    "Orbital": {
-      "macro_character": 0.4451,
-      "macro_coupling": 0.4843,
-      "macro_movement": 0.7709,
-      "macro_space": 0.764
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9714,
-        "source": "OddOscar",
-        "target": "Overlap",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Warm Intimate Violent character entanglement — OVERLAP × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.8869,
-    "brightness": 0.9318,
-    "density": 0.349,
-    "movement": 0.3967,
-    "space": 0.0695,
-    "warmth": 0.8827
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_3",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "OddOscar"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "KNOT",
-    "FOLD",
-    "WEAVE",
-    "HALL"
-  ],
-  "macros": {
-    "CHARACTER": 0.9073,
-    "COUPLING": 0.9714,
-    "MOVEMENT": 0.3967,
-    "SPACE": 0.0695
-  },
-  "mood": "Entangled",
-  "name": "Sunrise Strike 2",
-  "parameters": {
-    "OddOscar": {
-      "amp_attack": 0.3187,
-      "amp_release": 0.1555,
-      "coupling_level": 0.8941,
-      "density": 0.3197,
-      "drive": 0.7281,
-      "filter_cutoff": 0.8348,
-      "filter_resonance": 0.5512,
-      "macro_character": 0.9292,
-      "macro_coupling": 0.9171,
-      "macro_movement": 0.376,
-      "macro_space": 0.0334,
-      "output_level": 0.7685,
-      "reverb_mix": 0.1711,
-      "reverb_size": 0.2024
-    },
-    "Overlap": {
-      "amp_attack": 0.2665,
-      "amp_release": 0.1144,
-      "coupling_level": 0.8963,
-      "density": 0.3488,
-      "drive": 0.7898,
-      "filter_cutoff": 0.887,
-      "filter_resonance": 0.5611,
-      "macro_character": 0.9261,
-      "macro_coupling": 0.9426,
-      "macro_movement": 0.4337,
-      "macro_space": 0.0946,
-      "output_level": 0.7545,
-      "reverb_mix": 0.2279,
-      "reverb_size": 0.239
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8869,
-    "brightness": 0.9318,
-    "density": 0.349,
-    "movement": 0.3967,
-    "space": 0.0695,
-    "warmth": 0.8827
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Warm Intimate Violent character entanglement — OVERLAP × ODDOSCAR via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9714,
     "SPACE": 0.0695
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_INTIMATE_GENTLE_AET2_5",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0689
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Obscura",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.527
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORGANON",
+    "target": "OBSCURA",
+    "amount": 0.527
   },
   "dna": {
-    "aggression": 0.0294,
-    "brightness": 0.4728,
-    "density": 0.5978,
+    "warmth": 0.9524,
     "movement": 0.9269,
     "space": 0.0273,
-    "warmth": 0.9524
+    "aggression": 0.0294,
+    "brightness": 0.4728,
+    "density": 0.5978
   },
-  "engines": [
-    "Organon",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5052,
-    "COUPLING": 0.527,
     "MOVEMENT": 0.9508,
+    "COUPLING": 0.527,
     "SPACE": 0.0273
   },
-  "mood": "Aether",
-  "name": "Wave Stream 2",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.5102,
-      "macro_coupling": 0.5901,
-      "macro_movement": 0.971,
-      "macro_space": 0.0689
-    },
-    "Organon": {
-      "macro_character": 0.5002,
-      "macro_coupling": 0.608,
-      "macro_movement": 0.9306,
-      "macro_space": 0.0219
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "tender"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

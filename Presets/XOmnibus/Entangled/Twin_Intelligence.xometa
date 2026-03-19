@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.615,
-        "engineA": "Outwit",
-        "engineB": "Octopus",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Twin Intelligence",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Two cephalopod intelligences merge — Octopus arm depth wires directly into OUTWIT arm amplitude",
-  "dna": {
-    "aggression": 0.6,
-    "brightness": 0.625,
-    "density": 0.725,
-    "movement": 0.85,
-    "space": 0.475,
-    "warmth": 0.425
-  },
-  "engines": [
-    "Outwit",
-    "Octopus"
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "octopus",
+    "octopus",
+    "cephalopod"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,16 +25,29 @@
   ],
   "macros": {
     "CHARACTER": 0.466,
-    "COUPLING": 0.654,
     "MOVEMENT": 0.365,
+    "COUPLING": 0.654,
     "SPACE": 0.671
   },
-  "mood": "Entangled",
-  "name": "Twin Intelligence",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.625,
+    "space": 0.475,
+    "aggression": 0.6,
+    "movement": 0.85,
+    "warmth": 0.425,
+    "density": 0.725
+  },
+  "sonic_dna": {
+    "brightness": 0.625,
+    "space": 0.475,
+    "aggression": 0.6,
+    "movement": 0.85,
+    "warmth": 0.425,
+    "density": 0.725
+  },
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-=======
       "owit_rule": 150,
       "owit_arms": 4,
       "owit_cellSize": 0.509,
@@ -63,45 +57,27 @@
       "owit_pitchSpread": 0.525,
       "owit_filterCutoff": 0.768,
       "owit_filterReso": 0.465,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.043,
       "owit_ampRelease": 0.768,
+      "owit_outputLevel": 0.69,
+      "owit_couplingLevel": 0.822,
+      "owit_couplingBus": 0,
       "owit_armStagger": 0.499,
-      "owit_arms": 4,
       "owit_borderMode": 1,
-      "owit_cellSize": 0.509,
+      "owit_inkCloudMix": 0.355,
       "owit_chroma1": 0.412,
       "owit_chroma2": 0.749,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.822,
-      "owit_density": 0.39,
-      "owit_evolveRate": 0.537,
-      "owit_filterCutoff": 0.768,
-      "owit_filterReso": 0.465,
-      "owit_inkCloudMix": 0.355,
-      "owit_mutateProb": 0.206,
-      "owit_outputLevel": 0.69,
-      "owit_pitchSpread": 0.525,
-      "owit_polyDepth": 0.736,
-      "owit_rule": 150
+      "owit_polyDepth": 0.736
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.6,
-    "brightness": 0.625,
-    "density": 0.725,
-    "movement": 0.85,
-    "space": 0.475,
-    "warmth": 0.425
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "octopus",
-    "octopus",
-    "cephalopod"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OCTOPUS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.615
+      }
+    ]
+  }
 }

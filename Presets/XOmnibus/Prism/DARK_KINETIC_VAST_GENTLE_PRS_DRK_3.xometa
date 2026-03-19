@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Orphica",
-        "type": "CHAOS_INJECT",
-        "amount": 0.6665
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0203,
-    "brightness": 0.039,
-    "density": 0.3695,
-    "movement": 0.8888,
-    "space": 0.879,
-    "warmth": 0.5642
-  },
+  "name": "DARK_KINETIC_VAST_GENTLE_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ohm",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.2923,
-    "COUPLING": 0.3695,
-    "MOVEMENT": 0.8888,
-    "SPACE": 0.879
-  },
-  "mood": "Prism",
-  "name": "Shard Drift",
   "parameters": {
     "Ohm": {
       "macro_character": 0.2923,
-      "macro_coupling": 0.3695,
       "macro_movement": 0.8888,
+      "macro_coupling": 0.3695,
       "macro_space": 0.879
     },
     "Orphica": {
       "macro_character": 0.2708,
-      "macro_coupling": 0.3857,
       "macro_movement": 0.9054,
+      "macro_coupling": 0.3857,
       "macro_space": 0.8753
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OHM",
+    "target": "ORPHICA",
+    "amount": 0.6665
+  },
+  "dna": {
+    "brightness": 0.039,
+    "warmth": 0.5642,
+    "movement": 0.8888,
+    "density": 0.3695,
+    "space": 0.879,
+    "aggression": 0.0203
+  },
+  "macros": {
+    "CHARACTER": 0.2923,
+    "MOVEMENT": 0.8888,
+    "COUPLING": 0.3695,
+    "SPACE": 0.879
+  },
   "tags": [
     "prism",
     "dark",
     "kinetic",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

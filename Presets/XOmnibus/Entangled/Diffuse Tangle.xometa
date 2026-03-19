@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.726,
-        "engineA": "Overlap",
-        "engineB": "Odyssey",
-        "type": "PITCH_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "ODYSSEY modulation clock syncs OVERLAP mod rate — rhythmic bloom in open water",
-  "dna": {
-    "aggression": 0.25,
-    "brightness": 0.625,
-    "density": 0.287,
-    "movement": 0.916,
-    "space": 0.8,
-    "warmth": 0.6
-  },
+  "schema_version": 1,
+  "name": "Diffuse Tangle",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Odyssey"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Diffuse Tangle",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.764,
-      "olap_damping": 0.58,
-      "olap_decay": 0.791,
-      "olap_diffusion": 0.538,
-      "olap_earlyMix": 0.255,
-      "olap_filterCutoff": 0.75,
-      "olap_filterReso": 0.123,
-      "olap_lateMix": 0.585,
-      "olap_modDepth": 0.167,
-      "olap_modRate": 0.211,
-      "olap_outputLevel": 0.812,
-      "olap_preDelay": 0.035,
-      "olap_size": 0.574
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.25,
-    "brightness": 0.625,
-    "density": 0.6,
-    "movement": 0.65,
-    "space": 0.8,
-    "warmth": 0.6
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ODYSSEY modulation clock syncs OVERLAP mod rate — rhythmic bloom in open water",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

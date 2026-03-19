@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FORGE HEAT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.721
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Optic",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.881
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORBITAL",
+    "target": "OPTIC",
+    "amount": 0.881
   },
   "dna": {
-    "aggression": 0.691,
     "brightness": 0.154,
-    "density": 0.175,
+    "warmth": 0.972,
     "movement": 0.926,
+    "density": 0.175,
     "space": 0.177,
-    "warmth": 0.972
+    "aggression": 0.691
   },
-  "engines": [
-    "Orbital",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.578,
     "MOVEMENT": 0.352,
+    "COUPLING": 0.578,
     "SPACE": 0.213
   },
-  "mood": "Entangled",
-  "name": "FORGE HEAT",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.665,
-      "macro_coupling": 0.868,
-      "macro_movement": 0.75,
-      "macro_space": 0.721
-    },
-    "Orbital": {
-      "macro_character": 0.562,
-      "macro_coupling": 0.122,
-      "macro_movement": 0.33,
-      "macro_space": 0.354
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

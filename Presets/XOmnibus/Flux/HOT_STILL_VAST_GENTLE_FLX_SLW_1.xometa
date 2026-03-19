@@ -1,54 +1,12 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oblong",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.893
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.033,
-    "brightness": 0.447,
-    "density": 0.317,
-    "movement": 0.027,
-    "space": 0.982,
-    "warmth": 0.917
-  },
+  "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_1",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Organon",
     "Oblong"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.175,
-    "COUPLING": 0.853,
-    "MOVEMENT": 0.027,
-    "SPACE": 0.982
-  },
-  "mood": "Flux",
-  "name": "Thread Orbit 2",
   "parameters": {
-<<<<<<< HEAD
-    "Oblong": {
-      "macro_character": 0.4,
-      "macro_coupling": 0.923,
-      "macro_movement": 0.031,
-      "macro_space": 0.951
-    },
-    "Organon": {
-      "macro_character": 0.496,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.026,
-=======
     "Organon": {
       "macro_character": 0.496,
       "macro_movement": 0.026,
@@ -59,11 +17,29 @@
       "macro_character": 0.4,
       "macro_movement": 0.031,
       "macro_coupling": 0.923,
->>>>>>> origin/v1-launch-prep
       "macro_space": 0.951
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ORGANON",
+    "target": "OBLONG",
+    "amount": 0.893
+  },
+  "dna": {
+    "brightness": 0.447,
+    "warmth": 0.917,
+    "movement": 0.027,
+    "density": 0.317,
+    "space": 0.982,
+    "aggression": 0.033
+  },
+  "macros": {
+    "CHARACTER": 0.175,
+    "MOVEMENT": 0.027,
+    "COUPLING": 0.853,
+    "SPACE": 0.982
+  },
   "tags": [
     "flux",
     "still",
@@ -71,10 +47,5 @@
     "vast",
     "gentle",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

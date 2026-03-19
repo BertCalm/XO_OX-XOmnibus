@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DRIFT FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.418
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Optic",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.767
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORCA",
+    "target": "OPTIC",
+    "amount": 0.767
   },
   "dna": {
-    "aggression": 0.624,
     "brightness": 0.263,
-    "density": 0.581,
+    "warmth": 0.776,
     "movement": 0.918,
+    "density": 0.581,
     "space": 0.907,
-    "warmth": 0.776
+    "aggression": 0.624
   },
-  "engines": [
-    "Orca",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.666,
-    "COUPLING": 0.767,
     "MOVEMENT": 0.918,
+    "COUPLING": 0.767,
     "SPACE": 0.907
   },
-  "mood": "Foundation",
-  "name": "DRIFT FLOOR",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.569,
-      "macro_coupling": 0.542,
-      "macro_movement": 0.931,
-      "macro_space": 0.418
-    },
-    "Orca": {
-      "macro_character": 0.783,
-      "macro_coupling": 0.435,
-      "macro_movement": 0.917,
-      "macro_space": 0.604
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

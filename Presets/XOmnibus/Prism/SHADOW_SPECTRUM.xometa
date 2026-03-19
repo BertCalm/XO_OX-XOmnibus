@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Ohm",
-        "type": "FILTER_MOD",
-        "amount": 0.883
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.169,
-    "brightness": 0.079,
-    "density": 0.103,
-    "movement": 0.075,
-    "space": 0.641,
-    "warmth": 0.794
-  },
+  "name": "SHADOW SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ocelot",
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.385,
-    "COUPLING": 0.794,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.254
-  },
-  "mood": "Prism",
-  "name": "SHADOW SPECTRUM",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.99,
-      "macro_coupling": 0.608,
       "macro_movement": 0.67,
+      "macro_coupling": 0.608,
       "macro_space": 0.739
     },
     "Ohm": {
       "macro_character": 0.705,
-      "macro_coupling": 0.653,
       "macro_movement": 0.924,
+      "macro_coupling": 0.653,
       "macro_space": 0.542
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCELOT",
+    "target": "OHM",
+    "amount": 0.883
+  },
+  "dna": {
+    "brightness": 0.079,
+    "warmth": 0.794,
+    "movement": 0.075,
+    "density": 0.103,
+    "space": 0.641,
+    "aggression": 0.169
+  },
+  "macros": {
+    "CHARACTER": 0.385,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.794,
+    "SPACE": 0.254
+  },
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

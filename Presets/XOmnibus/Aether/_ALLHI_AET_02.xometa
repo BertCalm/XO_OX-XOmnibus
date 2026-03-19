@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Oblique",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.987
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.971,
-    "brightness": 0.913,
-    "density": 0.964,
-    "movement": 0.894,
-    "space": 0.961,
-    "warmth": 0.583
-  },
+  "name": "ALLHI AET 02",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oceanic",
     "Oblique"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.748,
-    "COUPLING": 0.966,
-    "MOVEMENT": 0.929,
-    "SPACE": 0.961
-  },
-  "mood": "Aether",
-  "name": "ALLHI AET 02",
   "parameters": {
-<<<<<<< HEAD
-    "Oblique": {
-=======
     "Oceanic": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.748,
-      "macro_coupling": 0.966,
       "macro_movement": 0.929,
+      "macro_coupling": 0.966,
       "macro_space": 0.961
     },
-<<<<<<< HEAD
-    "Oceanic": {
-=======
     "Oblique": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.748,
-      "macro_coupling": 0.966,
       "macro_movement": 0.929,
+      "macro_coupling": 0.966,
       "macro_space": 0.961
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OBLIQUE",
+    "amount": 0.987
+  },
+  "dna": {
+    "brightness": 0.913,
+    "warmth": 0.583,
+    "movement": 0.894,
+    "density": 0.964,
+    "space": 0.961,
+    "aggression": 0.971
+  },
+  "macros": {
+    "CHARACTER": 0.748,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.966,
+    "SPACE": 0.961
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

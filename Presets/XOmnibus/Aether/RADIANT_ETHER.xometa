@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RADIANT ETHER",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.786
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Oblique",
-        "type": "PHASE_COUPLE",
-        "amount": 0.512
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "OHM",
+    "target": "OBLIQUE",
+    "amount": 0.512
   },
   "dna": {
-    "aggression": 0.01,
     "brightness": 0.971,
-    "density": 0.545,
+    "warmth": 0.522,
     "movement": 0.579,
+    "density": 0.545,
     "space": 0.631,
-    "warmth": 0.522
+    "aggression": 0.01
   },
-  "engines": [
-    "Ohm",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.466,
-    "COUPLING": 0.606,
     "MOVEMENT": 0.57,
+    "COUPLING": 0.606,
     "SPACE": 0.655
   },
-  "mood": "Aether",
-  "name": "RADIANT ETHER",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.361,
-      "macro_coupling": 0.544,
-      "macro_movement": 0.953,
-      "macro_space": 0.786
-    },
-    "Ohm": {
-      "macro_character": 0.571,
-      "macro_coupling": 0.668,
-      "macro_movement": 0.187,
-      "macro_space": 0.523
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "bright",
     "extreme",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

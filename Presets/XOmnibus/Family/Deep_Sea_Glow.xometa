@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OWLFISH in the dark — GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",
-  "dna": {
-    "aggression": 0.22,
-    "brightness": 0.38,
-    "density": 0.55,
-    "movement": 0.38,
-    "space": 0.7,
-    "warmth": 0.5
-  },
+  "schema_version": 1,
+  "name": "Deep Sea Glow",
+  "mood": "Family",
   "engines": [
     "Owlfish"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DEPTH",
-    "GLOW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Deep Sea Glow",
-  "parameters": {
-    "Owlfish": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OWLFISH in the dark — GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "patient",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "DEPTH",
+    "GLOW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.7,
     "aggression": 0.22
   }
->>>>>>> origin/v1-launch-prep
 }

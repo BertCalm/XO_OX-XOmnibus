@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT HOT DENSE FLU 07",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.457
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Orbital",
-        "type": "FILTER_MOD",
-        "amount": 0.748
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORPHICA",
+    "target": "ORBITAL",
+    "amount": 0.748
   },
   "dna": {
-    "aggression": 0.362,
     "brightness": 0.94,
-    "density": 0.918,
+    "warmth": 0.947,
     "movement": 0.678,
+    "density": 0.918,
     "space": 0.597,
-    "warmth": 0.947
+    "aggression": 0.362
   },
-  "engines": [
-    "Orphica",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.944,
-    "COUPLING": 0.607,
     "MOVEMENT": 0.678,
+    "COUPLING": 0.607,
     "SPACE": 0.597
   },
-  "mood": "Flux",
-  "name": "BRIGHT HOT DENSE FLU 07",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.585,
-      "macro_movement": 0.65,
-      "macro_space": 0.457
-    },
-    "Orphica": {
-      "macro_character": 0.944,
-      "macro_coupling": 0.607,
-      "macro_movement": 0.678,
-      "macro_space": 0.597
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -82,10 +47,5 @@
     "dense",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

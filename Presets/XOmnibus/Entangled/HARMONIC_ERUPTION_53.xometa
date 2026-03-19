@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HARMONIC ERUPTION 53",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.999
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Obscura",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.927
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORBITAL",
+    "target": "OBSCURA",
+    "amount": 0.927
   },
   "dna": {
-    "aggression": 0.85,
     "brightness": 0.107,
-    "density": 0.359,
+    "warmth": 0.381,
     "movement": 0.977,
+    "density": 0.359,
     "space": 0.296,
-    "warmth": 0.381
+    "aggression": 0.85
   },
-  "engines": [
-    "Orbital",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.022,
-    "COUPLING": 0.83,
     "MOVEMENT": 0.977,
+    "COUPLING": 0.83,
     "SPACE": 0.396
   },
-  "mood": "Entangled",
-  "name": "HARMONIC ERUPTION 53",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.302,
-      "macro_movement": 0.979,
-      "macro_space": 0.999
-    },
-    "Orbital": {
-      "macro_character": 0.299,
-      "macro_coupling": 0.962,
-      "macro_movement": 0.975,
-      "macro_space": 0.69
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "kinetic",
     "turbulent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

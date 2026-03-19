@@ -20,16 +20,12 @@ inline const juce::StringArray validEngineNames {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Optic", "Oblique", "Ombre", "Orca", "Octopus",
-<<<<<<< HEAD
-    "Overlap", "Outwit",
-=======
     // Phase 4 engines
     "Overlap", "Outwit",
     // V1 concept engines
     "OpenSky", "Ostinato", "OceanDeep", "Ouie",
     // V2 theorem engines
     "Overtone", "Organism",
->>>>>>> origin/v1-launch-prep
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -74,10 +70,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         { "XOverworld",  "Overworld" },
         { "XOrca",       "Orca"      },
         { "XOctopus",    "Octopus"   },
-<<<<<<< HEAD
-=======
         // Phase 4 engine aliases
->>>>>>> origin/v1-launch-prep
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
     };

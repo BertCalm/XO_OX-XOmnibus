@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Ocelot",
-        "type": "FILTER_MOD",
-        "amount": 0.724
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.971,
-    "density": 0.529,
-    "movement": 0.929,
-    "space": 0.584,
-    "warmth": 0.963
-  },
+  "name": "BRIGHT_WARM_KINETIC_VIOLENT_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ole",
     "Ocelot"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.941,
-    "COUPLING": 0.807,
-    "MOVEMENT": 0.929,
-    "SPACE": 0.584
-  },
-  "mood": "Prism",
-  "name": "Sunrise Drift 2",
   "parameters": {
-<<<<<<< HEAD
-    "Ocelot": {
-      "macro_character": 0.47,
-      "macro_coupling": 0.446,
-=======
     "Ole": {
       "macro_character": 0.941,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.929,
+      "macro_coupling": 0.807,
       "macro_space": 0.584
     },
-<<<<<<< HEAD
-    "Ole": {
-      "macro_character": 0.941,
-      "macro_coupling": 0.807,
-=======
     "Ocelot": {
       "macro_character": 0.47,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.929,
+      "macro_coupling": 0.446,
       "macro_space": 0.584
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OLE",
+    "target": "OCELOT",
+    "amount": 0.724
+  },
+  "dna": {
+    "brightness": 0.971,
+    "warmth": 0.963,
+    "movement": 0.929,
+    "density": 0.529,
+    "space": 0.584,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.941,
+    "MOVEMENT": 0.929,
+    "COUPLING": 0.807,
+    "SPACE": 0.584
+  },
   "tags": [
     "prism",
     "bright",
     "warm",
     "kinetic",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

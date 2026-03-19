@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
+  "schema_version": 1,
+  "name": "VIOLENT DENSE HOT INTIMATE 3",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "aggression": 0.8973,
+    "density": 0.9013,
+    "warmth": 0.9188,
+    "space": 0.0747,
+    "brightness": 0.5325,
+    "movement": 0.4801
   },
-  "couplingIntensity": "Low",
-  "couplingType": "TANGLE",
-  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for TANGLE coupling with XOutwit.",
   "dna": {
     "aggression": 0.8973,
-    "brightness": 0.5325,
     "density": 0.9013,
-    "movement": 0.4801,
+    "warmth": 0.9188,
     "space": 0.0747,
-    "warmth": 0.9188
+    "brightness": 0.5325,
+    "movement": 0.4801
   },
   "engines": [
     "Outwit"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "tangle",
     "outwit"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -35,32 +36,10 @@
     "PACK",
     "STRIKE"
   ],
-  "mood": "Prism",
-  "name": "VIOLENT DENSE HOT INTIMATE 3",
+  "couplingType": "TANGLE",
+  "couplingIntensity": "Low",
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-      "couplingBus": 1,
-      "couplingLevel": 0.662
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8973,
-    "brightness": 0.5325,
-    "density": 0.9013,
-    "movement": 0.4801,
-    "space": 0.0747,
-    "warmth": 0.9188
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "outwit"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.662,
       "couplingBus": 1
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

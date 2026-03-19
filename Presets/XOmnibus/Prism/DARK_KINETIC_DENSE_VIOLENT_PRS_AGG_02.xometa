@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK KINETIC DENSE VIOLENT PRS AGG 2",
   "version": "1.0",
   "mood": "Prism",
@@ -23,58 +20,26 @@
       "macro_space": 0.388
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Optic",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.777
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OTTONI",
+    "target": "OPTIC",
+    "amount": 0.777
   },
   "dna": {
-    "aggression": 0.966,
     "brightness": 0.051,
-    "density": 0.949,
+    "warmth": 0.645,
     "movement": 0.876,
+    "density": 0.949,
     "space": 0.409,
-    "warmth": 0.645
+    "aggression": 0.966
   },
-  "engines": [
-    "Ottoni",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.049,
-    "COUPLING": 0.915,
     "MOVEMENT": 0.827,
+    "COUPLING": 0.915,
     "SPACE": 0.398
   },
-  "mood": "Prism",
-  "name": "DARK KINETIC DENSE VIOLENT ...",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.048,
-      "macro_coupling": 0.93,
-      "macro_movement": 0.819,
-      "macro_space": 0.388
-    },
-    "Ottoni": {
-      "macro_character": 0.049,
-      "macro_coupling": 0.901,
-      "macro_movement": 0.834,
-      "macro_space": 0.408
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "aggressive",
@@ -83,10 +48,5 @@
     "dark",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

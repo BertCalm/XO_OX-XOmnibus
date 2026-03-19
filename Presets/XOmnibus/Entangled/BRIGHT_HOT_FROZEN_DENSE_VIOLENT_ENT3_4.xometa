@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Osprey",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.9564
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.9027,
-    "brightness": 0.8941,
-    "density": 0.9139,
-    "movement": 0.0976,
-    "space": 0.5007,
-    "warmth": 0.9644
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_HOT_FROZEN_DENSE_VIOLENT_ENT3_4",
+  "mood": "Entangled",
   "engines": [
     "Oracle",
     "Osprey"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9372,
-    "COUPLING": 0.9598,
-    "MOVEMENT": 0.085,
-    "SPACE": 0.7102
-  },
-  "mood": "Entangled",
-  "name": "Radiant Deep",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.9479,
-      "macro_coupling": 0.9766,
-      "macro_movement": 0.0894,
-      "macro_space": 0.9223
-    },
-    "Osprey": {
-      "macro_character": 0.9265,
-      "macro_coupling": 0.943,
-      "macro_movement": 0.0806,
-      "macro_space": 0.4981
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: BRIGHT_HOT_FROZEN_DENSE_VIOLENT. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "violent",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.5007,
     "aggression": 0.9027
   }
->>>>>>> origin/v1-launch-prep
 }

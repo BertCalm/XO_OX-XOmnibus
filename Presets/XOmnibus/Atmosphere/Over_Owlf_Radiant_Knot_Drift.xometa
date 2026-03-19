@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 11.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Owlfish",
-        "type": "RHYTHM_GATE",
-        "amount": 0.77
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Radiant Knot Drift",
   "mood": "Atmosphere",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Over_Owlf_Radiant_Knot_Drift.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.438,
-    "brightness": 0.901,
-    "density": 0.09,
-    "movement": 0.093,
-    "space": 0.918,
-    "warmth": 0.956
-  },
-  "engines": [
-    "Overlap",
-    "Owlfish"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Overlap": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.61,
-      "macro_movement": 0.97,
-      "macro_space": 0.26
-    },
-    "Owlfish": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.71,
-      "macro_movement": 0.91,
-      "macro_space": 0.3
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "atmosphere"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 11.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.918,
     "aggression": 0.438
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Over_Owlf_Radiant_Knot_Drift.xometa
 }

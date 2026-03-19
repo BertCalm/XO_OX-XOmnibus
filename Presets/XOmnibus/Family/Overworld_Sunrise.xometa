@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OVERWORLD chip sunrise — NES palette at dawn, all 16 colors fully lit.",
-  "dna": {
-    "aggression": 0.28,
-    "brightness": 0.94,
-    "density": 0.28,
-    "movement": 0.65,
-    "space": 0.72,
-    "warmth": 0.72
-  },
+  "schema_version": 1,
+  "name": "Overworld Sunrise",
+  "mood": "Family",
   "engines": [
     "Overworld"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "ERA",
-    "CHIP",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Overworld Sunrise",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERWORLD chip sunrise — NES palette at dawn, all 16 colors fully lit.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "chip",
     "nostalgic"
   ],
+  "macroLabels": [
+    "ERA",
+    "CHIP",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.72,
     "aggression": 0.28
   }
->>>>>>> origin/v1-launch-prep
 }

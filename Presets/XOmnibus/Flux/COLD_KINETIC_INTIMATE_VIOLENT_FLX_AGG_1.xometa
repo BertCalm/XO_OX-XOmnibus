@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.124
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.905
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERWORLD",
+    "target": "OBLONG",
+    "amount": 0.905
   },
   "dna": {
-    "aggression": 0.965,
     "brightness": 0.495,
-    "density": 0.558,
+    "warmth": 0.103,
     "movement": 0.953,
+    "density": 0.558,
     "space": 0.074,
-    "warmth": 0.103
+    "aggression": 0.965
   },
-  "engines": [
-    "Overworld",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.413,
-    "COUPLING": 0.916,
     "MOVEMENT": 0.953,
+    "COUPLING": 0.916,
     "SPACE": 0.074
   },
-  "mood": "Flux",
-  "name": "Grain Crush 2",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.439,
-      "macro_coupling": 0.904,
-      "macro_movement": 0.958,
-      "macro_space": 0.124
-    },
-    "Overworld": {
-      "macro_character": 0.387,
-      "macro_coupling": 0.916,
-      "macro_movement": 0.969,
-      "macro_space": 0.061
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "cold",
     "kinetic",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

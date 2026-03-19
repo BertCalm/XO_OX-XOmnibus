@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WILDFIRE 6",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.554
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Ottoni",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.695
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OUTWIT",
+    "target": "OTTONI",
+    "amount": 0.695
   },
   "dna": {
-    "aggression": 0.508,
     "brightness": 0.47,
-    "density": 0.981,
+    "warmth": 0.636,
     "movement": 0.917,
+    "density": 0.981,
     "space": 0.254,
-    "warmth": 0.636
+    "aggression": 0.508
   },
-  "engines": [
-    "Outwit",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.789,
-    "COUPLING": 0.345,
     "MOVEMENT": 0.917,
+    "COUPLING": 0.345,
     "SPACE": 0.733
   },
-  "mood": "Entangled",
-  "name": "WILDFIRE 6",
-  "parameters": {
-    "Ottoni": {
-      "macro_character": 0.507,
-      "macro_coupling": 0.988,
-      "macro_movement": 0.889,
-      "macro_space": 0.554
-    },
-    "Outwit": {
-      "macro_character": 0.975,
-      "macro_coupling": 0.068,
-      "macro_movement": 0.946,
-      "macro_space": 0.526
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frantic",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Orbital",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.7887
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8728,
-    "brightness": 0.3773,
-    "density": 0.9654,
-    "movement": 0.4313,
-    "space": 0.0382,
-    "warmth": 0.9066
-  },
+  "name": "HOT_DENSE_INTIMATE_VIOLENT_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oracle",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.355,
-    "COUPLING": 0.7887,
-    "MOVEMENT": 0.4693,
-    "SPACE": 0.0382
-  },
-  "mood": "Aether",
-  "name": "Rust Heavy",
   "parameters": {
     "Oracle": {
       "macro_character": 0.3713,
-      "macro_coupling": 0.9676,
       "macro_movement": 0.4602,
+      "macro_coupling": 0.9676,
       "macro_space": 0.0646
     },
     "Orbital": {
       "macro_character": 0.3388,
-      "macro_coupling": 0.9333,
       "macro_movement": 0.4783,
+      "macro_coupling": 0.9333,
       "macro_space": 0.0845
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORACLE",
+    "target": "ORBITAL",
+    "amount": 0.7887
+  },
+  "dna": {
+    "warmth": 0.9066,
+    "density": 0.9654,
+    "space": 0.0382,
+    "aggression": 0.8728,
+    "brightness": 0.3773,
+    "movement": 0.4313
+  },
+  "macros": {
+    "CHARACTER": 0.355,
+    "MOVEMENT": 0.4693,
+    "COUPLING": 0.7887,
+    "SPACE": 0.0382
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "intimate",
     "violent",
     "compressed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

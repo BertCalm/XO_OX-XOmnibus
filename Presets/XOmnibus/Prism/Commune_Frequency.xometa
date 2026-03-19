@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Hippy Dad's highest harmonic — open, radiant, communal",
-  "dna": {
-    "aggression": 0.08,
+  "schema_version": 1,
+  "name": "Commune Frequency",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.89,
-    "density": 0.35,
+    "warmth": 0.3,
+    "aggression": 0.08,
     "movement": 0.65,
-    "space": 0.75,
-    "warmth": 0.3
+    "density": 0.35,
+    "space": 0.75
   },
   "engines": [
     "Ohm"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "COMMUNE",
-    "MEDDLING",
-    "COUPLING",
-    "DRIFT"
-  ],
-  "mood": "Prism",
-  "name": "Commune Frequency",
-  "parameters": {
-    "Ohm": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.08,
-    "brightness": 0.89,
-    "density": 0.35,
-    "movement": 0.65,
-    "space": 0.75,
-    "warmth": 0.3
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Hippy Dad's highest harmonic — open, radiant, communal",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "harmonic",
     "open"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COMMUNE",
     "MEDDLING",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

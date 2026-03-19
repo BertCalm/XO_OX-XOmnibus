@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.6681,
-        "source": "Ole",
-        "target": "Octopus",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "description": "Cold Still Intimate Gentle character entanglement — OCTOPUS × OLE via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.0585,
-    "brightness": 0.3589,
-    "density": 0.3888,
-    "movement": 0.1241,
-    "space": 0.0696,
-    "warmth": 0.0681
-  },
+  "schema_version": 1,
+  "name": "COLD_STILL_INTIMATE_GENTLE_ENT_1",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Ole"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "ARM",
-    "INK",
-    "CAMOUFLAGE",
-    "DEEP"
-  ],
-  "macros": {
-    "CHARACTER": 0.2135,
-    "COUPLING": 0.6681,
-    "MOVEMENT": 0.1241,
-    "SPACE": 0.0696
-  },
-  "mood": "Entangled",
-  "name": "Thread Thread",
-  "parameters": {
-    "Octopus": {
-      "amp_attack": 0.4124,
-      "amp_release": 0.1651,
-      "coupling_level": 0.5898,
-      "density": 0.4045,
-      "drive": 0.1232,
-      "filter_cutoff": 0.4857,
-      "filter_resonance": 0.1564,
-      "macro_character": 0.4138,
-      "macro_coupling": 0.6105,
-      "macro_movement": 0.1637,
-      "macro_space": 0.0319,
-      "output_level": 0.7683,
-      "reverb_mix": 0.1593,
-      "reverb_size": 0.2248
-    },
-    "Ole": {
-      "amp_attack": 0.4186,
-      "amp_release": 0.144,
-      "coupling_level": 0.5969,
-      "density": 0.3526,
-      "drive": 0.0809,
-      "filter_cutoff": 0.478,
-      "filter_resonance": 0.1332,
-      "macro_character": 0.4308,
-      "macro_coupling": 0.5868,
-      "macro_movement": 0.0845,
-      "macro_space": 0.0501,
-      "output_level": 0.7908,
-      "reverb_mix": 0.1572,
-      "reverb_size": 0.2248
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0585,
-    "brightness": 0.3589,
-    "density": 0.3888,
-    "movement": 0.1241,
-    "space": 0.0696,
-    "warmth": 0.0681
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Cold Still Intimate Gentle character entanglement — OCTOPUS × OLE via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "cold",
@@ -95,9 +17,6 @@
     "gentle",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ARM",
     "INK",
@@ -175,5 +94,4 @@
     "COUPLING": 0.6681,
     "SPACE": 0.0696
   }
->>>>>>> origin/v1-launch-prep
 }

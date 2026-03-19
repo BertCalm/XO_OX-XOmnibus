@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.505
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.471,
-    "brightness": 0.056,
-    "density": 0.922,
-    "movement": 0.867,
-    "space": 0.627,
-    "warmth": 0.94
-  },
+  "name": "DARK_HOT_KINETIC_DENSE_FND_1",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "OddOscar",
     "Onset"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.801,
-    "COUPLING": 0.846,
-    "MOVEMENT": 0.339,
-    "SPACE": 0.575
-  },
-  "mood": "Foundation",
-  "name": "DARK_HOT_KINETIC_DENSE_FND_1",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.733,
-      "macro_coupling": 0.158,
       "macro_movement": 0.85,
+      "macro_coupling": 0.158,
       "macro_space": 0.408
     },
     "Onset": {
       "macro_character": 0.715,
-      "macro_coupling": 0.549,
       "macro_movement": 0.641,
+      "macro_coupling": 0.549,
       "macro_space": 0.82
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ONSET",
+    "amount": 0.505
+  },
+  "dna": {
+    "brightness": 0.056,
+    "warmth": 0.94,
+    "movement": 0.867,
+    "density": 0.922,
+    "space": 0.627,
+    "aggression": 0.471
+  },
+  "macros": {
+    "CHARACTER": 0.801,
+    "MOVEMENT": 0.339,
+    "COUPLING": 0.846,
+    "SPACE": 0.575
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -58,10 +47,5 @@
     "hot",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

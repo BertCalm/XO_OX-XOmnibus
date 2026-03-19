@@ -1,44 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Ouroboros",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.9
-      }
-    ]
-  },
-  "description": "DRAMA × CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor — aggression 0.90.",
-  "dna": {
-    "aggression": 0.9,
-    "brightness": 0.72,
-    "density": 0.82,
-    "movement": 0.85,
-    "space": 0.25,
-    "warmth": 0.75
-  },
-  "engines": [
-    "Ole",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.88,
-    "COUPLING": 0.9,
-    "MOVEMENT": 0.8,
-    "SPACE": 0.28
-  },
-  "mood": "Entangled",
-  "name": "Drama Attractor",
-=======
   "schema_version": 1,
   "name": "Drama Attractor",
   "mood": "Entangled",
@@ -49,32 +9,46 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "DRAMA × CHAOS: OLE's harmonic folds ignite OUROBOROS's strange attractor — aggression 0.90.",
->>>>>>> origin/v1-launch-prep
   "parameters": {
     "Ole": {
       "macro_character": 0.88,
-      "macro_coupling": 0.9,
       "macro_movement": 0.8,
+      "macro_coupling": 0.9,
       "macro_space": 0.28
     },
     "Ouroboros": {
       "macro_character": 0.8,
-      "macro_coupling": 0.85,
       "macro_movement": 0.84,
+      "macro_coupling": 0.85,
       "macro_space": 0.32
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OLE",
+    "target": "OUROBOROS",
+    "amount": 0.9,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.75,
+    "movement": 0.85,
+    "density": 0.82,
+    "space": 0.25,
+    "aggression": 0.9
+  },
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.9,
+    "SPACE": 0.28
+  },
   "tags": [
     "entangled",
     "ole",
     "ouroboros",
     "chaos",
     "drama"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

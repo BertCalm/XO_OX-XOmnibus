@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CERAMIC BOND",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.454
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osprey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.712
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.712
   },
   "dna": {
-    "aggression": 0.165,
     "brightness": 0.179,
-    "density": 0.6,
+    "warmth": 0.116,
     "movement": 0.03,
+    "density": 0.6,
     "space": 0.312,
-    "warmth": 0.116
+    "aggression": 0.165
   },
-  "engines": [
-    "Ottoni",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.924,
-    "COUPLING": 0.625,
     "MOVEMENT": 0.788,
+    "COUPLING": 0.625,
     "SPACE": 0.661
   },
-  "mood": "Entangled",
-  "name": "CERAMIC BOND",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.231,
-      "macro_coupling": 0.703,
-      "macro_movement": 0.707,
-      "macro_space": 0.454
-    },
-    "Ottoni": {
-      "macro_character": 0.003,
-      "macro_coupling": 0.594,
-      "macro_movement": 0.451,
-      "macro_space": 0.291
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

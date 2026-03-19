@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Abyssal Bass Node",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.88
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Obsidian",
-        "type": "RING_MOD",
-        "amount": 0.51
-      }
-    ]
+    "type": "RING_MOD",
+    "source": "OUROBOROS",
+    "target": "OBSIDIAN",
+    "amount": 0.51
   },
   "dna": {
-    "aggression": 0.81,
     "brightness": 0.05,
-    "density": 0.91,
+    "warmth": 0.54,
     "movement": 0.44,
+    "density": 0.91,
     "space": 0.17,
-    "warmth": 0.54
+    "aggression": 0.81
   },
-  "engines": [
-    "Ouroboros",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.72,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.44,
+    "COUPLING": 0.65,
     "SPACE": 0.17
   },
-  "mood": "Entangled",
-  "name": "Abyssal Bass Node",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.51,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.36,
-      "macro_space": 0.88
-    },
-    "Ouroboros": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.51,
-      "macro_space": 0.71
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

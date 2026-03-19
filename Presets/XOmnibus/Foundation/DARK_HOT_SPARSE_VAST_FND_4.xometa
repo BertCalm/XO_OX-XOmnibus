@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_SPARSE_VAST_FND_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.608
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Obsidian",
-        "type": "PITCH_SYNC",
-        "amount": 0.533
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "OBSIDIAN",
+    "amount": 0.533
   },
   "dna": {
-    "aggression": 0.593,
     "brightness": 0.067,
-    "density": 0.127,
+    "warmth": 0.936,
     "movement": 0.557,
+    "density": 0.127,
     "space": 0.865,
-    "warmth": 0.936
+    "aggression": 0.593
   },
-  "engines": [
-    "Overworld",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.788,
-    "COUPLING": 0.66,
     "MOVEMENT": 0.734,
+    "COUPLING": 0.66,
     "SPACE": 0.627
   },
-  "mood": "Foundation",
-  "name": "DARK_HOT_SPARSE_VAST_FND_4",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.612,
-      "macro_coupling": 0.279,
-      "macro_movement": 0.256,
-      "macro_space": 0.608
-    },
-    "Overworld": {
-      "macro_character": 0.786,
-      "macro_coupling": 0.654,
-      "macro_movement": 0.25,
-      "macro_space": 0.491
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "sparse",
     "vast",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

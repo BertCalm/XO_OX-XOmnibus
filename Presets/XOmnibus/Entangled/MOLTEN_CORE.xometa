@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "MOLTEN CORE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.081
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Overbite",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.665
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERLAP",
+    "target": "OVERBITE",
+    "amount": 0.665
   },
   "dna": {
-    "aggression": 0.627,
     "brightness": 0.277,
-    "density": 0.145,
+    "warmth": 0.925,
     "movement": 0.592,
+    "density": 0.145,
     "space": 0.827,
-    "warmth": 0.925
+    "aggression": 0.627
   },
-  "engines": [
-    "Overlap",
-    "Overbite"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.066,
-    "COUPLING": 0.633,
     "MOVEMENT": 0.275,
+    "COUPLING": 0.633,
     "SPACE": 0.548
   },
-  "mood": "Entangled",
-  "name": "Molten Core",
-  "parameters": {
-    "Overbite": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.073,
-      "macro_movement": 0.91,
-      "macro_space": 0.081
-    },
-    "Overlap": {
-      "macro_character": 0.061,
-      "macro_coupling": 0.402,
-      "macro_movement": 0.479,
-      "macro_space": 0.686
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Osteria",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.719
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.055,
-    "brightness": 0.915,
-    "density": 0.109,
-    "movement": 0.503,
-    "space": 0.646,
-    "warmth": 0.669
-  },
+  "name": "BRIGHT SPARSE GENTLE PRI 09",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Onset",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.792,
-    "COUPLING": 0.795,
-    "MOVEMENT": 0.503,
-    "SPACE": 0.646
-  },
-  "mood": "Prism",
-  "name": "BRIGHT SPARSE GENTLE PRI 09",
   "parameters": {
     "Onset": {
       "macro_character": 0.792,
-      "macro_coupling": 0.795,
       "macro_movement": 0.503,
+      "macro_coupling": 0.795,
       "macro_space": 0.646
     },
     "Osteria": {
       "macro_character": 0.922,
-      "macro_coupling": 0.703,
       "macro_movement": 0.505,
+      "macro_coupling": 0.703,
       "macro_space": 0.581
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ONSET",
+    "target": "OSTERIA",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.915,
+    "warmth": 0.669,
+    "movement": 0.503,
+    "density": 0.109,
+    "space": 0.646,
+    "aggression": 0.055
+  },
+  "macros": {
+    "CHARACTER": 0.792,
+    "MOVEMENT": 0.503,
+    "COUPLING": 0.795,
+    "SPACE": 0.646
+  },
   "tags": [
     "prism",
     "bright",
@@ -58,10 +47,5 @@
     "gentle",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

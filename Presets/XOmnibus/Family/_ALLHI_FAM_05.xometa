@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "OddOscar",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.975
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.918,
-    "brightness": 0.988,
-    "density": 0.954,
-    "movement": 0.98,
-    "space": 0.368,
-    "warmth": 0.927
-  },
+  "name": "ALLHI FAM 05",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Opal",
     "OddOscar"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.958,
-    "COUPLING": 0.643,
-    "MOVEMENT": 0.967,
-    "SPACE": 0.368
-  },
-  "mood": "Family",
-  "name": "ALLHI FAM 05",
   "parameters": {
-<<<<<<< HEAD
-    "OddOscar": {
-=======
     "Opal": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.958,
-      "macro_coupling": 0.643,
       "macro_movement": 0.967,
+      "macro_coupling": 0.643,
       "macro_space": 0.368
     },
-<<<<<<< HEAD
-    "Opal": {
-=======
     "OddOscar": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.958,
-      "macro_coupling": 0.643,
       "macro_movement": 0.967,
+      "macro_coupling": 0.643,
       "macro_space": 0.368
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.975
+  },
+  "dna": {
+    "brightness": 0.988,
+    "warmth": 0.927,
+    "movement": 0.98,
+    "density": 0.954,
+    "space": 0.368,
+    "aggression": 0.918
+  },
+  "macros": {
+    "CHARACTER": 0.958,
+    "MOVEMENT": 0.967,
+    "COUPLING": 0.643,
+    "SPACE": 0.368
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

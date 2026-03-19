@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DIM SHELL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.243
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Orca",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.304
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORPHICA",
+    "target": "ORCA",
+    "amount": 0.304
   },
   "dna": {
-    "aggression": 0.91,
     "brightness": 0.621,
-    "density": 0.474,
+    "warmth": 0.291,
     "movement": 0.11,
+    "density": 0.474,
     "space": 0.868,
-    "warmth": 0.291
+    "aggression": 0.91
   },
-  "engines": [
-    "Orphica",
-    "Orca"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.281,
-    "COUPLING": 0.022,
     "MOVEMENT": 0.11,
+    "COUPLING": 0.022,
     "SPACE": 0.927
   },
-  "mood": "Entangled",
-  "name": "DIM SHELL",
-  "parameters": {
-    "Orca": {
-      "macro_character": 0.532,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.101,
-      "macro_space": 0.243
-    },
-    "Orphica": {
-      "macro_character": 0.875,
-      "macro_coupling": 0.302,
-      "macro_movement": 0.119,
-      "macro_space": 0.736
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "dim"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

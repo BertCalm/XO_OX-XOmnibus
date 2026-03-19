@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Lead Atmosphere",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OBLONG dense register.",
-  "dna": {
-    "aggression": 0.319,
-    "brightness": 0.405,
-    "density": 0.804,
-    "movement": 0.182,
-    "space": 0.344,
-    "warmth": 0.791
-  },
-  "engines": [
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.459,
-    "COUPLING": 0.386,
-    "MOVEMENT": 0.181,
-    "SPACE": 0.259
-  },
-  "mood": "Atmosphere",
-  "name": "Lead Atmosphere",
-  "parameters": {
-    "Oblong": {
-      "character": 0.459,
-      "coupling": 0.386,
-      "movement": 0.181,
-      "space": 0.259
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -58,9 +16,6 @@
     "warm",
     "thick"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

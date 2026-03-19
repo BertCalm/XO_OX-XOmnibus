@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_5",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.616
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.821
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OHM",
+    "target": "OBLONG",
+    "amount": 0.821
   },
   "dna": {
-    "aggression": 0.913,
     "brightness": 0.886,
-    "density": 0.523,
+    "warmth": 0.934,
     "movement": 0.898,
+    "density": 0.523,
     "space": 0.567,
-    "warmth": 0.934
+    "aggression": 0.913
   },
-  "engines": [
-    "Ohm",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.588,
-    "COUPLING": 0.612,
     "MOVEMENT": 0.795,
+    "COUPLING": 0.612,
     "SPACE": 0.626
   },
-  "mood": "Family",
-  "name": "Sunrise Strike 3",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.546,
-      "macro_coupling": 0.605,
-      "macro_movement": 0.776,
-      "macro_space": 0.616
-    },
-    "Ohm": {
-      "macro_character": 0.588,
-      "macro_coupling": 0.612,
-      "macro_movement": 0.795,
-      "macro_space": 0.626
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

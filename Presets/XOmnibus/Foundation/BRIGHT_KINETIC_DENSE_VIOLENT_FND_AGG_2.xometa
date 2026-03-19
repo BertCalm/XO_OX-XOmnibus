@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_2",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.841
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Obsidian",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.877
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ODDOSCAR",
+    "target": "OBSIDIAN",
+    "amount": 0.877
   },
   "dna": {
-    "aggression": 0.87,
     "brightness": 0.96,
-    "density": 0.905,
+    "warmth": 0.607,
     "movement": 0.911,
+    "density": 0.905,
     "space": 0.363,
-    "warmth": 0.607
+    "aggression": 0.87
   },
-  "engines": [
-    "OddOscar",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.783,
-    "COUPLING": 0.933,
     "MOVEMENT": 0.782,
+    "COUPLING": 0.933,
     "SPACE": 0.807
   },
-  "mood": "Foundation",
-  "name": "Sunrise Current",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.784,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.743,
-      "macro_space": 0.841
-    },
-    "OddOscar": {
-      "macro_character": 0.783,
-      "macro_coupling": 0.933,
-      "macro_movement": 0.782,
-      "macro_space": 0.807
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

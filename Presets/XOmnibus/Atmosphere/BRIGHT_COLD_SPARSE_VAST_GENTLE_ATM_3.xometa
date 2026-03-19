@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "OddOscar",
-        "type": "PITCH_SYNC",
-        "amount": 0.611
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0794,
-    "brightness": 0.903,
-    "density": 0.0499,
-    "movement": 0.4143,
-    "space": 0.9084,
-    "warmth": 0.0285
-  },
+  "name": "BRIGHT_COLD_SPARSE_VAST_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Obscura",
     "OddOscar"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4543,
-    "COUPLING": 0.0573,
-    "MOVEMENT": 0.3926,
-    "SPACE": 0.9001
-  },
-  "mood": "Atmosphere",
-  "name": "Quartz Vast",
   "parameters": {
     "Obscura": {
       "macro_character": 0.4449,
-      "macro_coupling": 0.0448,
       "macro_movement": 0.3971,
+      "macro_coupling": 0.0448,
       "macro_space": 0.8983
     },
     "OddOscar": {
       "macro_character": 0.4637,
-      "macro_coupling": 0.0699,
       "macro_movement": 0.388,
+      "macro_coupling": 0.0699,
       "macro_space": 0.9018
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSCURA",
+    "target": "ODDOSCAR",
+    "amount": 0.611
+  },
+  "dna": {
+    "brightness": 0.903,
+    "warmth": 0.0285,
+    "movement": 0.4143,
+    "density": 0.0499,
+    "space": 0.9084,
+    "aggression": 0.0794
+  },
+  "macros": {
+    "CHARACTER": 0.4543,
+    "MOVEMENT": 0.3926,
+    "COUPLING": 0.0573,
+    "SPACE": 0.9001
+  },
   "tags": [
     "atmosphere",
     "bright",
@@ -58,10 +47,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Medium",
-  "couplingType": "TANGLE",
-  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for TANGLE coupling with XOwlfish.",
-  "dna": {
-    "aggression": 0.0795,
+  "schema_version": 1,
+  "name": "DARK SPARSE GENTLE STILL 2",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.057,
     "density": 0.0488,
+    "aggression": 0.0795,
     "movement": 0.0448,
-    "space": 0.4414,
-    "warmth": 0.553
+    "warmth": 0.553,
+    "space": 0.4414
+  },
+  "dna": {
+    "brightness": 0.057,
+    "density": 0.0488,
+    "aggression": 0.0795,
+    "movement": 0.0448,
+    "warmth": 0.553,
+    "space": 0.4414
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "tangle",
     "owlfish"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SURGE",
@@ -35,32 +36,10 @@
     "SHIMMER",
     "SHRED"
   ],
-  "mood": "Foundation",
-  "name": "DARK SPARSE GENTLE STILL 2",
+  "couplingType": "TANGLE",
+  "couplingIntensity": "Medium",
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "couplingBus": 2,
-      "couplingLevel": 0.501
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0795,
-    "brightness": 0.057,
-    "density": 0.0488,
-    "movement": 0.0448,
-    "space": 0.4414,
-    "warmth": 0.553
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "tangle",
-    "owlfish"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.501,
       "couplingBus": 2
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

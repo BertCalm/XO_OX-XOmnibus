@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Warm breath on cold glass — heat without weight.",
-  "dna": {
-    "aggression": 0.202,
+  "schema_version": 1,
+  "name": "Radiant Exhale",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.621,
-    "density": 0.133,
+    "warmth": 0.909,
     "movement": 0.442,
+    "density": 0.133,
     "space": 0.68,
-    "warmth": 0.909
+    "aggression": 0.202
   },
   "engines": [
     "Orphica"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "sparse",
     "airy",
     "breath"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GLOW",
@@ -35,33 +29,17 @@
     "COUPLING",
     "AIR"
   ],
-  "mood": "Atmosphere",
-  "name": "Radiant Exhale",
-  "parameters": {
-    "Orphica": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.202,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.621,
-    "density": 0.133,
+    "warmth": 0.909,
     "movement": 0.442,
+    "density": 0.133,
     "space": 0.68,
-    "warmth": 0.909
+    "aggression": 0.202
   },
-  "tags": [
-    "atmosphere",
-    "warm",
-    "sparse",
-    "airy",
-    "breath"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

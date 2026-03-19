@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Dark Jaw",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.25
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
-        "amount": 0.85
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERBITE",
+    "target": "OBSCURA",
+    "amount": 0.85
   },
   "dna": {
-    "aggression": 0.9,
     "brightness": 0.1,
-    "density": 0.95,
+    "warmth": 0.85,
     "movement": 0.5,
+    "density": 0.95,
     "space": 0.15,
-    "warmth": 0.85
+    "aggression": 0.9
   },
-  "engines": [
-    "Overbite",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9,
-    "COUPLING": 0.8,
     "MOVEMENT": 0.45,
+    "COUPLING": 0.8,
     "SPACE": 0.15
   },
-  "mood": "Entangled",
-  "name": "Dark Jaw",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.6,
-      "macro_space": 0.25
-    },
-    "Overbite": {
-      "macro_character": 0.9,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.45,
-      "macro_space": 0.15
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "overbite",
@@ -83,10 +48,5 @@
     "chaos",
     "dark",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

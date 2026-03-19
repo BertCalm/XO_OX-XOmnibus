@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.438,
-      "destination": "OBLONG",
-      "source": "OCTOPUS",
-      "type": "ENVELOPE_LINK"
-    }
-  ],
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Extreme DNA corners — family, bright, cold, sparse.",
-  "dna": {
-    "aggression": 0.52,
-    "brightness": 0.927,
-    "density": 0.092,
-    "movement": 0.594,
-    "space": 0.895,
-    "warmth": 0.058
-  },
-  "engines": [
-    "Octopus",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "COLD SPARSE VAST BRIGHT FAM 1",
-  "parameters": {
-    "Oblong": {
-      "level": 0.831,
-      "pan": 0.065
-    },
-    "Octopus": {
-      "level": 0.674,
-      "pan": 0.139
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "COLD SPARSE VAST BRIGHT FAM 1",
   "mood": "Family",
@@ -55,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme DNA corners — family, bright, cold, sparse.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "bright",
@@ -64,10 +17,14 @@
     "vast",
     "ultra-diverse"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "dna": {
     "brightness": 0.927,
@@ -96,5 +53,4 @@
     }
   ],
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

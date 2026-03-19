@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VIOLENT_FAM_AGG_1",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.845
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "OddOscar",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.861
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.861
   },
   "dna": {
-    "aggression": 0.971,
     "brightness": 0.939,
-    "density": 0.39,
+    "warmth": 0.896,
     "movement": 0.949,
+    "density": 0.39,
     "space": 0.343,
-    "warmth": 0.896
+    "aggression": 0.971
   },
-  "engines": [
-    "Opal",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.571,
-    "COUPLING": 0.694,
     "MOVEMENT": 0.808,
+    "COUPLING": 0.694,
     "SPACE": 0.834
   },
-  "mood": "Family",
-  "name": "Honey Crush",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.606,
-      "macro_coupling": 0.726,
-      "macro_movement": 0.855,
-      "macro_space": 0.845
-    },
-    "Opal": {
-      "macro_character": 0.571,
-      "macro_coupling": 0.694,
-      "macro_movement": 0.808,
-      "macro_space": 0.834
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

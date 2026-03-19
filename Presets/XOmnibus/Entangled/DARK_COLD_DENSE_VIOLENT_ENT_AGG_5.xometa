@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_ENT_AGG_5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.347
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Oblong",
-        "type": "CHAOS_INJECT",
-        "amount": 0.868
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERLAP",
+    "target": "OBLONG",
+    "amount": 0.868
   },
   "dna": {
-    "aggression": 0.881,
     "brightness": 0.088,
-    "density": 0.904,
+    "warmth": 0.046,
     "movement": 0.574,
+    "density": 0.904,
     "space": 0.391,
-    "warmth": 0.046
+    "aggression": 0.881
   },
-  "engines": [
-    "Overlap",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.698,
-    "COUPLING": 0.919,
     "MOVEMENT": 0.574,
+    "COUPLING": 0.919,
     "SPACE": 0.391
   },
-  "mood": "Entangled",
-  "name": "Grain Molten",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.654,
-      "macro_coupling": 0.905,
-      "macro_movement": 0.527,
-      "macro_space": 0.347
-    },
-    "Overlap": {
-      "macro_character": 0.741,
-      "macro_coupling": 0.919,
-      "macro_movement": 0.541,
-      "macro_space": 0.371
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "cold",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

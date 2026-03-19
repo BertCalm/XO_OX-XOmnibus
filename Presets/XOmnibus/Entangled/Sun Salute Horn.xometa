@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.769,
-        "engineA": "Ohm",
-        "engineB": "Ottoni",
-        "type": "Env->Morph"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "OHM and OTTONI coupled via Env->Morph. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.451,
-    "brightness": 0.509,
-    "density": 0.689,
-    "movement": 0.581,
-    "space": 0.644,
-    "warmth": 0.633
-  },
+  "schema_version": 1,
+  "name": "Sun Salute Horn",
+  "mood": "Entangled",
   "engines": [
     "Ohm",
     "Ottoni"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "ohm",
     "ottoni"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,20 +21,27 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "Sun Salute Horn",
-  "parameters": {
-    "Ohm": {},
-    "Ottoni": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "ottoni"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "OTTONI",
+        "type": "Env->Morph",
+        "amount": 0.769
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.509,
+    "warmth": 0.633,
+    "movement": 0.581,
+    "density": 0.689,
+    "space": 0.644,
+    "aggression": 0.451
+  }
 }

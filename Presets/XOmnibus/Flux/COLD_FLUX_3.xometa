@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD FLUX 3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.5842
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Outwit",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.6017
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "OUTWIT",
+    "amount": 0.6017
   },
   "dna": {
-    "aggression": 0.9954,
     "brightness": 0.9506,
-    "density": 0.423,
+    "warmth": 0.0465,
     "movement": 0.455,
+    "density": 0.423,
     "space": 0.9573,
-    "warmth": 0.0465
+    "aggression": 0.9954
   },
-  "engines": [
-    "Overdub",
-    "Outwit"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8527,
-    "COUPLING": 0.9608,
     "MOVEMENT": 0.1574,
+    "COUPLING": 0.9608,
     "SPACE": 0.0801
   },
-  "mood": "Flux",
-  "name": "COLD FLUX 3",
-  "parameters": {
-    "Outwit": {
-      "macro_character": 0.5422,
-      "macro_coupling": 0.0572,
-      "macro_movement": 0.748,
-      "macro_space": 0.5842
-    },
-    "Overdub": {
-      "macro_character": 0.1548,
-      "macro_coupling": 0.9687,
-      "macro_movement": 0.2967,
-      "macro_space": 0.5792
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

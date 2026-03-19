@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VAST_FAM_VOL_138",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.85
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Origami",
-        "type": "HARMONIC_MESH",
-        "amount": 0.456
-      }
-    ]
+    "type": "HARMONIC_MESH",
+    "source": "ODDOSCAR",
+    "target": "ORIGAMI",
+    "amount": 0.456
   },
   "dna": {
-    "aggression": 0.321,
     "brightness": 0.083,
-    "density": 0.638,
+    "warmth": 0.921,
     "movement": 0.944,
+    "density": 0.638,
     "space": 0.876,
-    "warmth": 0.921
+    "aggression": 0.321
   },
-  "engines": [
-    "Origami",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.478,
-    "COUPLING": 0.473,
     "MOVEMENT": 0.94,
+    "COUPLING": 0.473,
     "SPACE": 0.872
   },
-  "mood": "Family",
-  "name": "Amber Cascade 2",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.482,
-      "macro_coupling": 0.462,
-      "macro_movement": 0.929,
-      "macro_space": 0.85
-    },
-    "Origami": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.483,
-      "macro_movement": 0.95,
-      "macro_space": 0.894
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "vast",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

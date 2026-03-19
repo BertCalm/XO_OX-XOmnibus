@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DIM CLOUD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.444
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Oblong",
-        "type": "CHAOS_INJECT",
-        "amount": 0.471
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OSPREY",
+    "target": "OBLONG",
+    "amount": 0.471
   },
   "dna": {
-    "aggression": 0.678,
     "brightness": 0.341,
-    "density": 0.486,
+    "warmth": 0.576,
     "movement": 0.079,
+    "density": 0.486,
     "space": 0.139,
-    "warmth": 0.576
+    "aggression": 0.678
   },
-  "engines": [
-    "Osprey",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.844,
-    "COUPLING": 0.68,
     "MOVEMENT": 0.079,
+    "COUPLING": 0.68,
     "SPACE": 0.851
   },
-  "mood": "Entangled",
-  "name": "DIM CLOUD",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.978,
-      "macro_coupling": 0.655,
-      "macro_movement": 0.045,
-      "macro_space": 0.444
-    },
-    "Osprey": {
-      "macro_character": 0.908,
-      "macro_coupling": 0.22,
-      "macro_movement": 0.113,
-      "macro_space": 0.812
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "dim"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

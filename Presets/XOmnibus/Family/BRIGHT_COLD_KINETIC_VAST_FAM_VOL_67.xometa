@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Ole",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.888
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.641,
-    "brightness": 0.952,
-    "density": 0.574,
-    "movement": 0.928,
-    "space": 0.873,
-    "warmth": 0.089
-  },
+  "name": "BRIGHT_COLD_KINETIC_VAST_FAM_VOL_67",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Obbligato",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.529,
-    "COUPLING": 0.619,
-    "MOVEMENT": 0.95,
-    "SPACE": 0.855
-  },
-  "mood": "Family",
-  "name": "Ice Surge",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.537,
-      "macro_coupling": 0.612,
       "macro_movement": 0.958,
+      "macro_coupling": 0.612,
       "macro_space": 0.856
     },
     "Ole": {
       "macro_character": 0.521,
-      "macro_coupling": 0.627,
       "macro_movement": 0.942,
+      "macro_coupling": 0.627,
       "macro_space": 0.854
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "OLE",
+    "amount": 0.888
+  },
+  "dna": {
+    "brightness": 0.952,
+    "warmth": 0.089,
+    "movement": 0.928,
+    "density": 0.574,
+    "space": 0.873,
+    "aggression": 0.641
+  },
+  "macros": {
+    "CHARACTER": 0.529,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.619,
+    "SPACE": 0.855
+  },
   "tags": [
     "family",
     "bright",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

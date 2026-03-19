@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT COLD DENSE BALANCED AET SPC 3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.616
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Orbital",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.422
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "ORBITAL",
+    "amount": 0.422
   },
   "dna": {
-    "aggression": 0.13,
     "brightness": 0.881,
-    "density": 0.939,
+    "warmth": 0.126,
     "movement": 0.634,
+    "density": 0.939,
     "space": 0.635,
-    "warmth": 0.126
+    "aggression": 0.13
   },
-  "engines": [
-    "Osprey",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.504,
-    "COUPLING": 0.84,
     "MOVEMENT": 0.634,
+    "COUPLING": 0.84,
     "SPACE": 0.635
   },
-  "mood": "Aether",
-  "name": "BRIGHT COLD DENSE BALANCED ...",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.502,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.643,
-      "macro_space": 0.616
-    },
-    "Osprey": {
-      "macro_character": 0.504,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.634,
-      "macro_space": 0.635
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -83,10 +48,5 @@
     "gentle",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

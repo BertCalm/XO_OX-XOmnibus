@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ORACLE — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.84,
-    "brightness": 0.1,
-    "density": 0.22,
-    "movement": 0.61,
-    "space": 0.66,
-    "warmth": 0.63
-  },
+  "schema_version": 1,
+  "name": "Omen Atmosphere",
+  "mood": "Atmosphere",
   "engines": [
     "Oracle"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,53 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Omen Atmosphere",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.63,
+    "movement": 0.61,
+    "density": 0.22,
+    "space": 0.66,
+    "aggression": 0.84
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.63,
+    "movement": 0.61,
+    "density": 0.22,
+    "space": 0.66,
+    "aggression": 0.84
+  },
   "parameters": {
     "Oracle": {
-<<<<<<< HEAD
-=======
       "orc_prophecyDepth": 0.83,
       "orc_filterCutoff": 0.27,
       "orc_filterReso": 0.18,
->>>>>>> origin/v1-launch-prep
       "orc_ampAttack": 563.6,
       "orc_ampDecay": 250.6,
-      "orc_ampRelease": 9.9,
       "orc_ampSustain": 0.54,
-      "orc_character": 0.63,
-      "orc_coupling": 0.22,
-      "orc_delayMix": 0.14,
-      "orc_filterCutoff": 0.27,
-      "orc_filterReso": 0.18,
-      "orc_lfoDepth": 0.57,
+      "orc_ampRelease": 9.9,
       "orc_lfoRate": 0.87,
-      "orc_movement": 0.03,
-      "orc_prophecyDepth": 0.83,
+      "orc_lfoDepth": 0.57,
       "orc_reverbMix": 0.4,
+      "orc_delayMix": 0.14,
+      "orc_character": 0.63,
+      "orc_movement": 0.03,
       "orc_space": 0.75,
+      "orc_coupling": 0.22,
       "orc_vision": 0.42
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.84,
-    "brightness": 0.1,
-    "density": 0.22,
-    "movement": 0.61,
-    "space": 0.66,
-    "warmth": 0.63
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

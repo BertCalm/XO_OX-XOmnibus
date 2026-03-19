@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VOID NEXUS",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.7055
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Ohm",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.8346
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ONSET",
+    "target": "OHM",
+    "amount": 0.8346
   },
   "dna": {
-    "aggression": 0.5488,
     "brightness": 0.0053,
-    "density": 0.9795,
+    "warmth": 0.0792,
     "movement": 0.2559,
+    "density": 0.9795,
     "space": 0.835,
-    "warmth": 0.0792
+    "aggression": 0.5488
   },
-  "engines": [
-    "Onset",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7272,
-    "COUPLING": 0.7334,
     "MOVEMENT": 0.5278,
+    "COUPLING": 0.7334,
     "SPACE": 0.2881
   },
-  "mood": "Entangled",
-  "name": "VOID NEXUS",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.8298,
-      "macro_coupling": 0.6555,
-      "macro_movement": 0.6961,
-      "macro_space": 0.7055
-    },
-    "Onset": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.655,
-      "macro_movement": 0.7914,
-      "macro_space": 0.2869
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "tectonic",
     "dense",
@@ -82,10 +47,5 @@
     "packed",
     "thick",
     "stacked"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

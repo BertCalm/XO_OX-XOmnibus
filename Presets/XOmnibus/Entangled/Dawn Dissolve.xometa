@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Orphica",
-        "type": "GRADIENT_DISSOLVE",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Microsound dawn slowly dissolves into dusk palette — time-lapse of a day",
+  "name": "Dawn Dissolve",
+  "version": "1.0",
   "engines": [
     "Orphica",
     "Ombre"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.6,
     "MOVEMENT": 0.7,
+    "COUPLING": 0.6,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "Dawn Dissolve",
-  "parameters": {
-    "Orphica": {},
-    "Ombre": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.19,
     "brightness": 0.66,
-    "density": 0.44,
+    "warmth": 0.54,
     "movement": 0.68,
+    "density": 0.44,
     "space": 0.66,
-    "warmth": 0.54
+    "aggression": 0.19
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "GRADIENT_DISSOLVE",
+    "source": "OMBRE",
+    "target": "ORPHICA",
+    "amount": 0.6
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "ombre",
     "microsound"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Microsound dawn slowly dissolves into dusk palette — time-lapse of a day"
->>>>>>> origin/v1-launch-prep
 }

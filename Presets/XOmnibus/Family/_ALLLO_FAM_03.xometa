@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Oblong",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.159
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.06,
-    "brightness": 0.044,
-    "density": 0.03,
-    "movement": 0.476,
-    "space": 0.026,
-    "warmth": 0.031
-  },
+  "name": "ALLLO FAM 03",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Oblong"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.037,
-    "COUPLING": 0.043,
-    "MOVEMENT": 0.253,
-    "SPACE": 0.026
-  },
-  "mood": "Family",
-  "name": "ALLLO FAM 03",
   "parameters": {
-<<<<<<< HEAD
-    "Oblong": {
-=======
     "OddfeliX": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.037,
-      "macro_coupling": 0.043,
       "macro_movement": 0.253,
+      "macro_coupling": 0.043,
       "macro_space": 0.026
     },
-<<<<<<< HEAD
-    "OddfeliX": {
-=======
     "Oblong": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.037,
-      "macro_coupling": 0.043,
       "macro_movement": 0.253,
+      "macro_coupling": 0.043,
       "macro_space": 0.026
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ODDFELIX",
+    "target": "OBLONG",
+    "amount": 0.159
+  },
+  "dna": {
+    "brightness": 0.044,
+    "warmth": 0.031,
+    "movement": 0.476,
+    "density": 0.03,
+    "space": 0.026,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.037,
+    "MOVEMENT": 0.253,
+    "COUPLING": 0.043,
+    "SPACE": 0.026
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

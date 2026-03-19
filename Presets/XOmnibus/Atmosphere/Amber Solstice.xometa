@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "First birdsong over dew-covered grass. Bright, tender, unhurried.",
+  "name": "Amber Solstice",
+  "version": "1.0",
   "engines": [
     "Osprey"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.726,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.237,
+    "COUPLING": 0.0,
     "SPACE": 0.663
   },
-  "mood": "Atmosphere",
-  "name": "Amber Solstice",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.038,
     "brightness": 0.69,
-    "density": 0.504,
+    "warmth": 0.763,
     "movement": 0.237,
+    "density": 0.504,
     "space": 0.663,
-    "warmth": 0.763
+    "aggression": 0.038
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "dawn",
     "gentle"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "First birdsong over dew-covered grass. Bright, tender, unhurried."
 }

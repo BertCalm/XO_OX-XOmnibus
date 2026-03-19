@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ole",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.884
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_HOT_STILL_INTIMATE_GENTLE_PRS_2",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_HOT_STILL_INTIMATE_GENTLE. Variant 2.",
-  "dna": {
-    "aggression": 0.096,
-    "brightness": 0.987,
-    "density": 0.392,
-    "movement": 0.121,
-    "space": 0.119,
-    "warmth": 0.977
-  },
-  "engines": [
-    "Optic",
-    "Ole"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.945,
-    "COUPLING": 0.308,
-    "MOVEMENT": 0.135,
-    "SPACE": 0.158
-  },
-  "mood": "Prism",
-  "name": "Honey Flux",
-  "parameters": {
-    "Ole": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.332,
-      "macro_movement": 0.207,
-      "macro_space": 0.132
-    },
-    "Optic": {
-      "macro_character": 0.89,
-      "macro_coupling": 0.285,
-      "macro_movement": 0.062,
-      "macro_space": 0.183
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "hot",
     "extreme",
@@ -82,10 +19,14 @@
     "still",
     "gentle"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.308,
     "SPACE": 0.158
   }
->>>>>>> origin/v1-launch-prep
 }

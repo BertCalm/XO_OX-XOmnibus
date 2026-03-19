@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Outwit",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.201
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.234,
-    "brightness": 0.642,
-    "density": 0.778,
-    "movement": 0.07,
-    "space": 0.146,
-    "warmth": 0.865
-  },
+  "name": "HOLLOW FOG",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Outwit"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.459,
-    "COUPLING": 0.139,
-    "MOVEMENT": 0.07,
-    "SPACE": 0.003
-  },
-  "mood": "Entangled",
-  "name": "HOLLOW FOG",
   "parameters": {
     "Octopus": {
       "macro_character": 0.144,
-      "macro_coupling": 0.713,
       "macro_movement": 0.089,
+      "macro_coupling": 0.713,
       "macro_space": 0.736
     },
     "Outwit": {
       "macro_character": 0.195,
-      "macro_coupling": 0.195,
       "macro_movement": 0.051,
+      "macro_coupling": 0.195,
       "macro_space": 0.004
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OCTOPUS",
+    "target": "OUTWIT",
+    "amount": 0.201
+  },
+  "dna": {
+    "brightness": 0.642,
+    "warmth": 0.865,
+    "movement": 0.07,
+    "density": 0.778,
+    "space": 0.146,
+    "aggression": 0.234
+  },
+  "macros": {
+    "CHARACTER": 0.459,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.139,
+    "SPACE": 0.003
+  },
   "tags": [
     "entangled",
     "stillness",
     "hollow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

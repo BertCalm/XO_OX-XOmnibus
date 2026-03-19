@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Overdub",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.651
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.978,
-    "brightness": 0.52,
-    "density": 0.425,
-    "movement": 0.059,
-    "space": 0.892,
-    "warmth": 0.055
-  },
+  "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_2",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oceanic",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.702,
-    "COUPLING": 0.684,
-    "MOVEMENT": 0.059,
-    "SPACE": 0.892
-  },
-  "mood": "Flux",
-  "name": "Shard Blade",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.546,
-      "macro_coupling": 0.85,
       "macro_movement": 0.057,
+      "macro_coupling": 0.85,
       "macro_space": 0.822
     },
     "Overdub": {
       "macro_character": 0.69,
-      "macro_coupling": 0.833,
       "macro_movement": 0.058,
+      "macro_coupling": 0.833,
       "macro_space": 0.883
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OCEANIC",
+    "target": "OVERDUB",
+    "amount": 0.651
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.055,
+    "movement": 0.059,
+    "density": 0.425,
+    "space": 0.892,
+    "aggression": 0.978
+  },
+  "macros": {
+    "CHARACTER": 0.702,
+    "MOVEMENT": 0.059,
+    "COUPLING": 0.684,
+    "SPACE": 0.892
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "vast",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

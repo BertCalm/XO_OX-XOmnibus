@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Orphica",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.629
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.434,
-    "brightness": 0.083,
-    "density": 0.108,
-    "movement": 0.078,
-    "space": 0.888,
-    "warmth": 0.396
-  },
+  "name": "DARK_STILL_SPARSE_VAST_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Owlfish",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.259,
-    "COUPLING": 0.545,
-    "MOVEMENT": 0.078,
-    "SPACE": 0.888
-  },
-  "mood": "Prism",
-  "name": "DARK_STILL_SPARSE_VAST_PRS_2",
   "parameters": {
-<<<<<<< HEAD
-    "Orphica": {
-      "macro_character": 0.675,
-      "macro_coupling": 0.626,
-=======
     "Owlfish": {
       "macro_character": 0.259,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.078,
+      "macro_coupling": 0.545,
       "macro_space": 0.888
     },
-<<<<<<< HEAD
-    "Owlfish": {
-      "macro_character": 0.259,
-      "macro_coupling": 0.545,
-=======
     "Orphica": {
       "macro_character": 0.675,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.078,
+      "macro_coupling": 0.626,
       "macro_space": 0.888
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OWLFISH",
+    "target": "ORPHICA",
+    "amount": 0.629
+  },
+  "dna": {
+    "brightness": 0.083,
+    "warmth": 0.396,
+    "movement": 0.078,
+    "density": 0.108,
+    "space": 0.888,
+    "aggression": 0.434
+  },
+  "macros": {
+    "CHARACTER": 0.259,
+    "MOVEMENT": 0.078,
+    "COUPLING": 0.545,
+    "SPACE": 0.888
+  },
   "tags": [
     "prism",
     "dark",
     "still",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

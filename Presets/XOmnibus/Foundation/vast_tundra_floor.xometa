@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VAST TUNDRA FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.977
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Octopus",
-        "type": "FILTER_MOD",
-        "amount": 0.32
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERWORLD",
+    "target": "OCTOPUS",
+    "amount": 0.32
   },
   "dna": {
-    "aggression": 0.054,
     "brightness": 0.001,
-    "density": 0.462,
+    "warmth": 0.869,
     "movement": 0.825,
+    "density": 0.462,
     "space": 0.978,
-    "warmth": 0.869
+    "aggression": 0.054
   },
-  "engines": [
-    "Overworld",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.63,
-    "COUPLING": 0.799,
     "MOVEMENT": 0.825,
+    "COUPLING": 0.799,
     "SPACE": 0.978
   },
-  "mood": "Foundation",
-  "name": "VAST TUNDRA FLOOR",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.131,
-      "macro_coupling": 0.881,
-      "macro_movement": 0.804,
-      "macro_space": 0.977
-    },
-    "Overworld": {
-      "macro_character": 0.498,
-      "macro_coupling": 0.052,
-      "macro_movement": 0.819,
-      "macro_space": 0.964
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

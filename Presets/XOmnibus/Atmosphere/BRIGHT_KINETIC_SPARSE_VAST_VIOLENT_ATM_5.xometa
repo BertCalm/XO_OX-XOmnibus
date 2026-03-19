@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_5",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.8891
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "OddfeliX",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.846
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.846
   },
   "dna": {
-    "aggression": 0.9809,
     "brightness": 0.8895,
-    "density": 0.0654,
+    "warmth": 0.62,
     "movement": 0.8912,
+    "density": 0.0654,
     "space": 0.8915,
-    "warmth": 0.62
+    "aggression": 0.9809
   },
-  "engines": [
-    "Osprey",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7586,
-    "COUPLING": 0.0631,
     "MOVEMENT": 0.8915,
+    "COUPLING": 0.0631,
     "SPACE": 0.9014
   },
-  "mood": "Atmosphere",
-  "name": "Honey Grit",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.7763,
-      "macro_coupling": 0.0844,
-      "macro_movement": 0.8745,
-      "macro_space": 0.8891
-    },
-    "Osprey": {
-      "macro_character": 0.7408,
-      "macro_coupling": 0.0419,
-      "macro_movement": 0.9084,
-      "macro_space": 0.9138
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -82,10 +47,5 @@
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

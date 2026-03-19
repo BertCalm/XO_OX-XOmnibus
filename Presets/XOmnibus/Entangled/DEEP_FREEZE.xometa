@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DEEP FREEZE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.469
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Octopus",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.564
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERDUB",
+    "target": "OCTOPUS",
+    "amount": 0.564
   },
   "dna": {
-    "aggression": 0.666,
     "brightness": 0.766,
-    "density": 0.389,
+    "warmth": 0.118,
     "movement": 0.147,
+    "density": 0.389,
     "space": 0.342,
-    "warmth": 0.118
+    "aggression": 0.666
   },
-  "engines": [
-    "Overdub",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.184,
-    "COUPLING": 0.941,
     "MOVEMENT": 0.051,
+    "COUPLING": 0.941,
     "SPACE": 0.478
   },
-  "mood": "Entangled",
-  "name": "DEEP FREEZE",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.491,
-      "macro_coupling": 0.574,
-      "macro_movement": 0.873,
-      "macro_space": 0.469
-    },
-    "Overdub": {
-      "macro_character": 0.553,
-      "macro_coupling": 0.126,
-      "macro_movement": 0.697,
-      "macro_space": 0.868
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

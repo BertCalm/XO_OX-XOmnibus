@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Osteria",
-        "type": "FILTER_MOD",
-        "amount": 0.188
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.081,
-    "brightness": 0.471,
-    "density": 0.058,
-    "movement": 0.031,
-    "space": 0.105,
-    "warmth": 0.047
-  },
+  "name": "ALLLO ENT 01",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.259,
-    "COUPLING": 0.093,
-    "MOVEMENT": 0.044,
-    "SPACE": 0.105
-  },
-  "mood": "Entangled",
-  "name": "ALLLO ENT 01",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.259,
-      "macro_coupling": 0.093,
       "macro_movement": 0.044,
+      "macro_coupling": 0.093,
       "macro_space": 0.105
     },
     "Osteria": {
       "macro_character": 0.259,
-      "macro_coupling": 0.093,
       "macro_movement": 0.044,
+      "macro_coupling": 0.093,
       "macro_space": 0.105
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBBLIGATO",
+    "target": "OSTERIA",
+    "amount": 0.188
+  },
+  "dna": {
+    "brightness": 0.471,
+    "warmth": 0.047,
+    "movement": 0.031,
+    "density": 0.058,
+    "space": 0.105,
+    "aggression": 0.081
+  },
+  "macros": {
+    "CHARACTER": 0.259,
+    "MOVEMENT": 0.044,
+    "COUPLING": 0.093,
+    "SPACE": 0.105
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Triple-brass GROW macro pushed to piccolo register",
-  "dna": {
-    "aggression": 0.28,
+  "schema_version": 1,
+  "name": "Piccolo Trumpet",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.96,
-    "density": 0.45,
+    "warmth": 0.32,
+    "aggression": 0.28,
     "movement": 0.6,
-    "space": 0.55,
-    "warmth": 0.32
+    "density": 0.45,
+    "space": 0.55
   },
   "engines": [
     "Ottoni"
   ],
-  "macroLabels": [
-    "GROW",
-    "BELL",
-    "COUPLING",
-    "HALL"
-  ],
-  "mood": "Prism",
-  "name": "Piccolo Trumpet",
-  "parameters": {
-    "Ottoni": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.28,
-    "brightness": 0.96,
-    "density": 0.45,
-    "movement": 0.6,
-    "space": 0.55,
-    "warmth": 0.32
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Triple-brass GROW macro pushed to piccolo register",
   "tags": [
     "prism",
     "bright",
@@ -44,9 +24,6 @@
     "trumpet",
     "high"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "GROW",
     "BELL",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

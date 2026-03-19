@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Glass Prophecy",
   "mood": "Entangled",
@@ -26,65 +23,32 @@
       "macro_space": 0.58
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oracle",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORPHICA",
+    "target": "ORACLE",
+    "amount": 0.7,
+    "intensity": "Deep"
   },
-  "description": "Timbre blend: ORACLE's GENDY waveform acquires ORPHICA's glass-harmonic sheen.",
   "dna": {
-    "aggression": 0.08,
     "brightness": 0.674,
-    "density": 0.46,
+    "warmth": 0.071,
     "movement": 0.56,
+    "density": 0.46,
     "space": 1.0,
-    "warmth": 0.071
+    "aggression": 0.08
   },
-  "engines": [
-    "Orphica",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.56,
+    "COUPLING": 0.7,
     "SPACE": 0.74
   },
-  "mood": "Entangled",
-  "name": "Glass Prophecy II",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.56,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.61,
-      "macro_space": 0.58
-    },
-    "Orphica": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.56,
-      "macro_space": 0.74
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "oracle",
     "timbre",
     "glass"
-  ],
-  "version": "1.0"
+  ]
 }

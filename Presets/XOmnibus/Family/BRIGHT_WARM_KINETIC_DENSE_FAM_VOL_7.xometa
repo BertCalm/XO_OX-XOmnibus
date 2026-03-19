@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_7",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.331
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "OddfeliX",
-        "type": "MODULATION_FLOW",
-        "amount": 0.635
-      }
-    ]
+    "type": "MODULATION_FLOW",
+    "source": "OBBLIGATO",
+    "target": "ODDFELIX",
+    "amount": 0.635
   },
   "dna": {
-    "aggression": 0.579,
     "brightness": 0.912,
-    "density": 0.927,
+    "warmth": 0.945,
     "movement": 0.948,
+    "density": 0.927,
     "space": 0.349,
-    "warmth": 0.945
+    "aggression": 0.579
   },
-  "engines": [
-    "OddfeliX",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.933,
-    "COUPLING": 0.763,
     "MOVEMENT": 0.942,
+    "COUPLING": 0.763,
     "SPACE": 0.351
   },
-  "mood": "Family",
-  "name": "Solar Surge 3",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.935,
-      "macro_coupling": 0.745,
-      "macro_movement": 0.938,
-      "macro_space": 0.331
-    },
-    "OddfeliX": {
-      "macro_character": 0.931,
-      "macro_coupling": 0.781,
-      "macro_movement": 0.946,
-      "macro_space": 0.37
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

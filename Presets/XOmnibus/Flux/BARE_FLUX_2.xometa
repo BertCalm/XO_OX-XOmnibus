@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BARE FLUX 2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.5445
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
-        "amount": 0.8867
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OPTIC",
+    "target": "OBSCURA",
+    "amount": 0.8867
   },
   "dna": {
-    "aggression": 0.4893,
     "brightness": 0.7423,
-    "density": 0.0619,
+    "warmth": 0.1545,
     "movement": 0.1437,
+    "density": 0.0619,
     "space": 0.099,
-    "warmth": 0.1545
+    "aggression": 0.4893
   },
-  "engines": [
-    "Optic",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3587,
-    "COUPLING": 0.1898,
     "MOVEMENT": 0.3981,
+    "COUPLING": 0.1898,
     "SPACE": 0.1222
   },
-  "mood": "Flux",
-  "name": "BARE FLUX 2",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.8555,
-      "macro_coupling": 0.6857,
-      "macro_movement": 0.0994,
-      "macro_space": 0.5445
-    },
-    "Optic": {
-      "macro_character": 0.0327,
-      "macro_coupling": 0.4434,
-      "macro_movement": 0.3705,
-      "macro_space": 0.9506
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

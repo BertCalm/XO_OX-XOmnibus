@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.04,
-    "brightness": 0.13,
-    "density": 0.2,
-    "movement": 0.5,
-    "space": 0.94,
-    "warmth": 0.28
-  },
+  "name": "Penumbra Drift",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.47,
-    "COUPLING": 0.29,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.94
-  },
-  "mood": "Aether",
-  "name": "Penumbra Drift",
   "parameters": {
     "Obscura": {
       "obscura_macro_character": 0.29,
-      "obscura_macro_coupling": 0.27,
       "obscura_macro_movement": 0.52,
+      "obscura_macro_coupling": 0.27,
       "obscura_macro_space": 0.94
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.13,
+    "warmth": 0.28,
+    "movement": 0.5,
+    "density": 0.2,
+    "space": 0.94,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.47,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.29,
+    "SPACE": 0.94
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "penumbra",
     "drift"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

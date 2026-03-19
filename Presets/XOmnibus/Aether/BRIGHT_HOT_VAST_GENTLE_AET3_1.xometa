@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Overworld",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.7709
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0446,
-    "brightness": 0.9467,
-    "density": 0.3348,
-    "movement": 0.6569,
-    "space": 0.903,
-    "warmth": 0.873
-  },
+  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_1",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oceanic",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9099,
-    "COUPLING": 0.7709,
-    "MOVEMENT": 0.6569,
-    "SPACE": 0.903
-  },
-  "mood": "Aether",
-  "name": "BRIGHT_HOT_VAST_GENTLE_AET3_1",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.6209,
-      "macro_coupling": 0.726,
       "macro_movement": 0.737,
+      "macro_coupling": 0.726,
       "macro_space": 0.5146
     },
     "Overworld": {
       "macro_character": 0.5369,
-      "macro_coupling": 0.852,
       "macro_movement": 0.4086,
+      "macro_coupling": 0.852,
       "macro_space": 0.7691
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OVERWORLD",
+    "amount": 0.7709
+  },
+  "dna": {
+    "brightness": 0.9467,
+    "warmth": 0.873,
+    "movement": 0.6569,
+    "density": 0.3348,
+    "space": 0.903,
+    "aggression": 0.0446
+  },
+  "macros": {
+    "CHARACTER": 0.9099,
+    "MOVEMENT": 0.6569,
+    "COUPLING": 0.7709,
+    "SPACE": 0.903
+  },
   "tags": [
     "aether",
     "warm",
@@ -58,10 +47,5 @@
     "vast",
     "gentle",
     "transcendent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

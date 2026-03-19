@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Saturated Tide",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.41
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osprey",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.56
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OSPREY",
+    "amount": 0.56
   },
   "dna": {
-    "aggression": 0.39,
     "brightness": 0.54,
-    "density": 0.88,
+    "warmth": 0.88,
     "movement": 0.56,
+    "density": 0.88,
     "space": 0.32,
-    "warmth": 0.88
+    "aggression": 0.39
   },
-  "engines": [
-    "Overdub",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.84,
-    "COUPLING": 0.45,
     "MOVEMENT": 0.57,
+    "COUPLING": 0.45,
     "SPACE": 0.41
   },
-  "mood": "Entangled",
-  "name": "Saturated Tide",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.41,
-      "macro_movement": 0.49,
-      "macro_space": 0.41
-    },
-    "Overdub": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.49,
-      "macro_movement": 0.65,
-      "macro_space": 0.42
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

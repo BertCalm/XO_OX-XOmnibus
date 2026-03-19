@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VIOLENT GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.384
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Opal",
-        "type": "FILTER_MOD",
-        "amount": 0.737
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORBITAL",
+    "target": "OPAL",
+    "amount": 0.737
   },
   "dna": {
-    "aggression": 0.933,
     "brightness": 0.683,
-    "density": 0.652,
+    "warmth": 0.481,
     "movement": 0.938,
+    "density": 0.652,
     "space": 0.335,
-    "warmth": 0.481
+    "aggression": 0.933
   },
-  "engines": [
-    "Orbital",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.675,
-    "COUPLING": 0.737,
     "MOVEMENT": 0.938,
+    "COUPLING": 0.737,
     "SPACE": 0.335
   },
-  "mood": "Foundation",
-  "name": "VIOLENT GROUND",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.497,
-      "macro_coupling": 0.362,
-      "macro_movement": 0.406,
-      "macro_space": 0.384
-    },
-    "Orbital": {
-      "macro_character": 0.499,
-      "macro_coupling": 0.579,
-      "macro_movement": 0.638,
-      "macro_space": 0.245
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

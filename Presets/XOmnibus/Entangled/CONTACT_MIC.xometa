@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CONTACT MIC",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.056
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Osteria",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.835
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OSTERIA",
+    "amount": 0.835
   },
   "dna": {
-    "aggression": 0.584,
     "brightness": 0.267,
-    "density": 0.595,
+    "warmth": 0.209,
     "movement": 0.308,
+    "density": 0.595,
     "space": 0.059,
-    "warmth": 0.209
+    "aggression": 0.584
   },
-  "engines": [
-    "Osteria",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.395,
-    "COUPLING": 0.089,
     "MOVEMENT": 0.823,
+    "COUPLING": 0.089,
     "SPACE": 0.059
   },
-  "mood": "Entangled",
-  "name": "Contact Mic",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.156,
-      "macro_coupling": 0.779,
-      "macro_movement": 0.157,
-      "macro_space": 0.056
-    },
-    "Osteria": {
-      "macro_character": 0.748,
-      "macro_coupling": 0.567,
-      "macro_movement": 0.77,
-      "macro_space": 0.072
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

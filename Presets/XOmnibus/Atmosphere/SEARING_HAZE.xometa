@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Ombre",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.427
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.881,
-    "brightness": 0.241,
-    "density": 0.975,
-    "movement": 0.663,
-    "space": 0.115,
-    "warmth": 0.404
-  },
+  "name": "SEARING HAZE",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Obese",
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.741,
-    "COUPLING": 0.766,
-    "MOVEMENT": 0.595,
-    "SPACE": 0.115
-  },
-  "mood": "Atmosphere",
-  "name": "SEARING HAZE",
   "parameters": {
     "Obese": {
       "macro_character": 0.79,
-      "macro_coupling": 0.559,
       "macro_movement": 0.561,
+      "macro_coupling": 0.559,
       "macro_space": 0.837
     },
     "Ombre": {
       "macro_character": 0.434,
-      "macro_coupling": 0.117,
       "macro_movement": 0.192,
+      "macro_coupling": 0.117,
       "macro_space": 0.668
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBESE",
+    "target": "OMBRE",
+    "amount": 0.427
+  },
+  "dna": {
+    "brightness": 0.241,
+    "warmth": 0.404,
+    "movement": 0.663,
+    "density": 0.975,
+    "space": 0.115,
+    "aggression": 0.881
+  },
+  "macros": {
+    "CHARACTER": 0.741,
+    "MOVEMENT": 0.595,
+    "COUPLING": 0.766,
+    "SPACE": 0.115
+  },
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

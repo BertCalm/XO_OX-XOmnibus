@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Overdub",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.751
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.975,
-    "brightness": 0.076,
-    "density": 0.933,
-    "movement": 0.076,
-    "space": 0.949,
-    "warmth": 0.516
-  },
+  "name": "DARK_FROZEN_DENSE_VAST_HARSH_ENT4_5",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.288,
-    "COUPLING": 0.751,
-    "MOVEMENT": 0.075,
-    "SPACE": 0.97
-  },
-  "mood": "Entangled",
-  "name": "Signal Rage 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.308,
-      "macro_coupling": 0.957,
       "macro_movement": 0.078,
+      "macro_coupling": 0.957,
       "macro_space": 0.962
     },
     "Overdub": {
       "macro_character": 0.269,
-      "macro_coupling": 0.946,
       "macro_movement": 0.073,
+      "macro_coupling": 0.946,
       "macro_space": 0.977
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSIDIAN",
+    "target": "OVERDUB",
+    "amount": 0.751
+  },
+  "dna": {
+    "brightness": 0.076,
+    "warmth": 0.516,
+    "movement": 0.076,
+    "density": 0.933,
+    "space": 0.949,
+    "aggression": 0.975
+  },
+  "macros": {
+    "CHARACTER": 0.288,
+    "MOVEMENT": 0.075,
+    "COUPLING": 0.751,
+    "SPACE": 0.97
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "dense",
     "vast",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD FURY ATM 11",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.403
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ocelot",
-        "type": "PITCH_SYNC",
-        "amount": 0.718
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.718
   },
   "dna": {
-    "aggression": 0.908,
     "brightness": 0.09,
-    "density": 0.566,
+    "warmth": 0.063,
     "movement": 0.328,
+    "density": 0.566,
     "space": 0.432,
-    "warmth": 0.063
+    "aggression": 0.908
   },
-  "engines": [
-    "Overbite",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.076,
-    "COUPLING": 0.824,
     "MOVEMENT": 0.328,
+    "COUPLING": 0.824,
     "SPACE": 0.432
   },
-  "mood": "Atmosphere",
-  "name": "DARK COLD FURY ATM 11",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.016,
-      "macro_coupling": 0.733,
-      "macro_movement": 0.271,
-      "macro_space": 0.403
-    },
-    "Overbite": {
-      "macro_character": 0.076,
-      "macro_coupling": 0.824,
-      "macro_movement": 0.328,
-      "macro_space": 0.432
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -82,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

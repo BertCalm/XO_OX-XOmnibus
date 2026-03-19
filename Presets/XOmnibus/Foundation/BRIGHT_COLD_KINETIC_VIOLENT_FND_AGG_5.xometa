@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_VIOLENT_FND_AGG_5",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.73
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Origami",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.818
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ORIGAMI",
+    "amount": 0.818
   },
   "dna": {
-    "aggression": 0.895,
     "brightness": 0.943,
-    "density": 0.64,
+    "warmth": 0.062,
     "movement": 0.873,
+    "density": 0.64,
     "space": 0.373,
-    "warmth": 0.062
+    "aggression": 0.895
   },
-  "engines": [
-    "Ouroboros",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.829,
-    "COUPLING": 0.878,
     "MOVEMENT": 0.554,
+    "COUPLING": 0.878,
     "SPACE": 0.771
   },
-  "mood": "Foundation",
-  "name": "Arctic Storm",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.807,
-      "macro_coupling": 0.923,
-      "macro_movement": 0.505,
-      "macro_space": 0.73
-    },
-    "Ouroboros": {
-      "macro_character": 0.829,
-      "macro_coupling": 0.878,
-      "macro_movement": 0.554,
-      "macro_space": 0.771
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "cold",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

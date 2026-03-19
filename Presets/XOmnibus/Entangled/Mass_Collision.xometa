@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.92,
-        "engineA": "Ouroboros",
-        "engineB": "Obese",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ouroboros strange attractor injecting chaos into OBESE saturation — harmonic mass at total density.",
-  "dna": {
-    "aggression": 0.98,
-    "brightness": 0.55,
-    "density": 0.97,
-    "movement": 0.72,
-    "space": 0.08,
-    "warmth": 0.35
-  },
+  "schema_version": 1,
+  "name": "Mass Collision",
+  "mood": "Entangled",
   "engines": [
     "Ouroboros",
     "Obese"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ouroboros",
     "obese",
     "collision"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.95,
-    "COUPLING": 0.92,
     "MOVEMENT": 0.72,
+    "COUPLING": 0.92,
     "SPACE": 0.08
   },
-  "mood": "Entangled",
-  "name": "Mass Collision",
-  "parameters": {
-    "Ouroboros": {},
-    "Obese": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.98,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.55,
-    "density": 0.97,
+    "warmth": 0.35,
     "movement": 0.72,
+    "density": 0.97,
     "space": 0.08,
-    "warmth": 0.35
+    "aggression": 0.98
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "ouroboros",
-    "obese",
-    "collision"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.72,
+    "density": 0.97,
+    "space": 0.08,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUROBOROS",
+        "engineB": "OBESE",
+        "type": "CHAOS_INJECT",
+        "amount": 0.92
+      }
+    ]
+  }
 }

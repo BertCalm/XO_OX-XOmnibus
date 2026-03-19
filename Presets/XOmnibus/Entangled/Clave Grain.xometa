@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ole",
-        "type": "RHYTHMIC_LOCK",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Afro-Latin clave rhythm scattered across grain field — percussion becoming texture",
+  "name": "Clave Grain",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Ole"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.7,
+    "COUPLING": 0.7,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Clave Grain",
-  "parameters": {
-    "Opal": {},
-    "Ole": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.32,
     "brightness": 0.58,
-    "density": 0.54,
+    "warmth": 0.61,
     "movement": 0.7,
+    "density": 0.54,
     "space": 0.62,
-    "warmth": 0.61
+    "aggression": 0.32
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHMIC_LOCK",
+    "source": "OPAL",
+    "target": "OLE",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "ole",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Afro-Latin clave rhythm scattered across grain field — percussion becoming texture"
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.999
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oracle",
-        "type": "FILTER_MOD",
-        "amount": 0.876
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERDUB",
+    "target": "ORACLE",
+    "amount": 0.876
   },
   "dna": {
-    "aggression": 0.406,
     "brightness": 0.905,
-    "density": 0.454,
+    "warmth": 0.94,
     "movement": 0.049,
+    "density": 0.454,
     "space": 0.961,
-    "warmth": 0.94
+    "aggression": 0.406
   },
-  "engines": [
-    "Overdub",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.43,
-    "COUPLING": 0.705,
     "MOVEMENT": 0.049,
+    "COUPLING": 0.705,
     "SPACE": 0.961
   },
-  "mood": "Flux",
-  "name": "Halo Vast 2",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.828,
-      "macro_movement": 0.052,
-      "macro_space": 0.999
-    },
-    "Overdub": {
-      "macro_character": 0.632,
-      "macro_coupling": 0.937,
-      "macro_movement": 0.04,
-      "macro_space": 1.0
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "warm",
     "vast",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

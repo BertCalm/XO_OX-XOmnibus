@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Plasma field shimmering above stadium grass. High brightness, high movement.",
+  "name": "Neon Passage",
+  "version": "1.0",
   "engines": [
     "Oblique"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.526,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.656,
+    "COUPLING": 0.0,
     "SPACE": 0.54
   },
-  "mood": "Atmosphere",
-  "name": "Neon Passage",
-  "parameters": {
-    "Oblique": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.115,
     "brightness": 0.853,
-    "density": 0.425,
+    "warmth": 0.2,
     "movement": 0.656,
+    "density": 0.425,
     "space": 0.54,
-    "warmth": 0.2
+    "aggression": 0.115
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Plasma field shimmering above stadium grass. High brightness, high movement."
 }

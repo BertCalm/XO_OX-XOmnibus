@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Rhythmic anvil-weight pulse, unrelenting density",
-  "dna": {
-    "aggression": 0.9147,
+  "schema_version": 1,
+  "name": "Anvil Pulse",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.5015,
-    "density": 0.8999,
+    "warmth": 0.5651,
     "movement": 0.4152,
+    "density": 0.8999,
     "space": 0.4508,
-    "warmth": 0.5651
+    "aggression": 0.9147
+  },
+  "dna": {
+    "brightness": 0.5015,
+    "warmth": 0.5651,
+    "movement": 0.4152,
+    "density": 0.8999,
+    "space": 0.4508,
+    "aggression": 0.9147
   },
   "engines": [
     "Oblong"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "extreme",
     "anchor",
     "drive"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -37,52 +39,23 @@
   ],
   "macros": {
     "CHARACTER": 0.8485,
-    "COUPLING": 0.3164,
     "MOVEMENT": 0.7534,
+    "COUPLING": 0.3164,
     "SPACE": 0.7003
   },
-  "mood": "Foundation",
-  "name": "Anvil Pulse",
+  "couplingIntensity": "None",
   "parameters": {
     "Oblong": {
-<<<<<<< HEAD
-      "bob_couplingBus": 0,
-=======
       "bob_macro_character": 0.8485,
       "bob_macro_movement": 0.7534,
       "bob_macro_coupling": 0.3164,
       "bob_macro_space": 0.7003,
       "bob_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "bob_couplingLevel": 0.5,
-      "bob_macro_character": 0.8485,
-      "bob_macro_coupling": 0.3164,
-      "bob_macro_movement": 0.7534,
-      "bob_macro_space": 0.7003,
-      "bob_outputLevel": 0.85
+      "bob_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9147,
-    "brightness": 0.5015,
-    "density": 0.8999,
-    "movement": 0.4152,
-    "space": 0.4508,
-    "warmth": 0.5651
-  },
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

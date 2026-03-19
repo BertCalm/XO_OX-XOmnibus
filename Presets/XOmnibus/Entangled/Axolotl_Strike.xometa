@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.89,
-        "engineA": "OddOscar",
-        "engineB": "Orca",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Orca strike velocity coupled into Oddoscar morph — gill pink meets apex predator cold.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.15,
-    "density": 0.88,
-    "movement": 0.74,
-    "space": 0.11,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Axolotl Strike",
+  "mood": "Entangled",
   "engines": [
     "OddOscar",
     "Orca"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "oddoscar",
     "orca",
     "axolotl"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.88,
-    "COUPLING": 0.89,
     "MOVEMENT": 0.74,
+    "COUPLING": 0.89,
     "SPACE": 0.11
   },
-  "mood": "Entangled",
-  "name": "Axolotl Strike",
-  "parameters": {
-    "OddOscar": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.15,
-    "density": 0.88,
+    "warmth": 0.2,
     "movement": 0.74,
+    "density": 0.88,
     "space": 0.11,
-    "warmth": 0.2
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "oddoscar",
-    "orca",
-    "axolotl"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.15,
+    "warmth": 0.2,
+    "movement": 0.74,
+    "density": 0.88,
+    "space": 0.11,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ODDOSCAR",
+        "engineB": "ORCA",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.89
+      }
+    ]
+  }
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CELL VAPOR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.096
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Obsidian",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.42
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OUTWIT",
+    "target": "OBSIDIAN",
+    "amount": 0.42
   },
   "dna": {
-    "aggression": 0.65,
     "brightness": 0.833,
-    "density": 0.924,
+    "warmth": 0.245,
     "movement": 0.568,
+    "density": 0.924,
     "space": 0.034,
-    "warmth": 0.245
+    "aggression": 0.65
   },
-  "engines": [
-    "Outwit",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.359,
-    "COUPLING": 0.423,
     "MOVEMENT": 0.876,
+    "COUPLING": 0.423,
     "SPACE": 0.034
   },
-  "mood": "Atmosphere",
-  "name": "CELL VAPOR",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.751,
-      "macro_coupling": 0.464,
-      "macro_movement": 0.54,
-      "macro_space": 0.096
-    },
-    "Outwit": {
-      "macro_character": 0.364,
-      "macro_coupling": 0.331,
-      "macro_movement": 0.655,
-      "macro_space": 0.034
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

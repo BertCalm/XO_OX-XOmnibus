@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_VIOLENT_FAM_AGG_5",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.792
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "OddOscar",
-        "type": "FILTER_MOD",
-        "amount": 0.929
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORPHICA",
+    "target": "ODDOSCAR",
+    "amount": 0.929
   },
   "dna": {
-    "aggression": 0.899,
     "brightness": 0.093,
-    "density": 0.873,
+    "warmth": 0.947,
     "movement": 0.539,
+    "density": 0.873,
     "space": 0.615,
-    "warmth": 0.947
+    "aggression": 0.899
   },
-  "engines": [
-    "Orphica",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.426,
-    "COUPLING": 0.391,
     "MOVEMENT": 0.689,
+    "COUPLING": 0.391,
     "SPACE": 0.809
   },
-  "mood": "Family",
-  "name": "Dusk Wrath 2",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.397,
-      "macro_coupling": 0.428,
-      "macro_movement": 0.661,
-      "macro_space": 0.792
-    },
-    "Orphica": {
-      "macro_character": 0.426,
-      "macro_coupling": 0.391,
-      "macro_movement": 0.689,
-      "macro_space": 0.809
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

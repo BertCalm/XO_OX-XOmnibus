@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_2",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.737
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Oracle",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.766
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERBITE",
+    "target": "ORACLE",
+    "amount": 0.766
   },
   "dna": {
-    "aggression": 0.953,
     "brightness": 0.045,
-    "density": 0.597,
+    "warmth": 0.957,
     "movement": 0.908,
+    "density": 0.597,
     "space": 0.68,
-    "warmth": 0.957
+    "aggression": 0.953
   },
-  "engines": [
-    "Overbite",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.465,
-    "COUPLING": 0.516,
     "MOVEMENT": 0.793,
+    "COUPLING": 0.516,
     "SPACE": 0.704
   },
-  "mood": "Foundation",
-  "name": "Amber Strike",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.491,
-      "macro_coupling": 0.564,
-      "macro_movement": 0.803,
-      "macro_space": 0.737
-    },
-    "Overbite": {
-      "macro_character": 0.465,
-      "macro_coupling": 0.516,
-      "macro_movement": 0.793,
-      "macro_space": 0.704
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

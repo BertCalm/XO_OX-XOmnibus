@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Organon",
-        "type": "CHAOS_INJECT",
-        "amount": 0.348
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.661,
-    "brightness": 0.983,
-    "density": 0.868,
-    "movement": 0.707,
-    "space": 0.039,
-    "warmth": 0.556
-  },
+  "name": "BONE PROXIMITY",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Organon",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.302,
-    "COUPLING": 0.787,
-    "MOVEMENT": 0.407,
-    "SPACE": 0.039
-  },
-  "mood": "Entangled",
-  "name": "BONE PROXIMITY",
   "parameters": {
     "Organon": {
       "macro_character": 0.225,
-      "macro_coupling": 0.407,
       "macro_movement": 0.601,
+      "macro_coupling": 0.407,
       "macro_space": 0.014
     },
     "Overworld": {
       "macro_character": 0.776,
-      "macro_coupling": 0.282,
       "macro_movement": 0.328,
+      "macro_coupling": 0.282,
       "macro_space": 0.045
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OVERWORLD",
+    "target": "ORGANON",
+    "amount": 0.348
+  },
+  "dna": {
+    "brightness": 0.983,
+    "warmth": 0.556,
+    "movement": 0.707,
+    "density": 0.868,
+    "space": 0.039,
+    "aggression": 0.661
+  },
+  "macros": {
+    "CHARACTER": 0.302,
+    "MOVEMENT": 0.407,
+    "COUPLING": 0.787,
+    "SPACE": 0.039
+  },
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

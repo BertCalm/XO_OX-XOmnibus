@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "EMPTY FLUX 3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.0526
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obese",
-        "type": "FILTER_MOD",
-        "amount": 0.3944
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "OBESE",
+    "amount": 0.3944
   },
   "dna": {
-    "aggression": 0.8801,
     "brightness": 0.5663,
-    "density": 0.107,
+    "warmth": 0.4008,
     "movement": 0.1419,
+    "density": 0.107,
     "space": 0.6332,
-    "warmth": 0.4008
+    "aggression": 0.8801
   },
-  "engines": [
-    "OddfeliX",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6178,
-    "COUPLING": 0.2721,
     "MOVEMENT": 0.674,
+    "COUPLING": 0.2721,
     "SPACE": 0.6619
   },
-  "mood": "Flux",
-  "name": "EMPTY FLUX 3",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.7768,
-      "macro_coupling": 0.085,
-      "macro_movement": 0.5676,
-      "macro_space": 0.0526
-    },
-    "OddfeliX": {
-      "macro_character": 0.4198,
-      "macro_coupling": 0.3701,
-      "macro_movement": 0.3409,
-      "macro_space": 0.7216
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

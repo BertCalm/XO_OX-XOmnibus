@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "KILN SIGNAL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.831
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Octopus",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.755
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OVERWORLD",
+    "target": "OCTOPUS",
+    "amount": 0.755
   },
   "dna": {
-    "aggression": 0.896,
     "brightness": 0.121,
-    "density": 0.061,
+    "warmth": 0.915,
     "movement": 0.143,
+    "density": 0.061,
     "space": 0.289,
-    "warmth": 0.915
+    "aggression": 0.896
   },
-  "engines": [
-    "Overworld",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.469,
-    "COUPLING": 0.906,
     "MOVEMENT": 0.615,
+    "COUPLING": 0.906,
     "SPACE": 0.019
   },
-  "mood": "Entangled",
-  "name": "KILN SIGNAL",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.038,
-      "macro_coupling": 0.472,
-      "macro_movement": 0.917,
-      "macro_space": 0.831
-    },
-    "Overworld": {
-      "macro_character": 0.099,
-      "macro_coupling": 0.335,
-      "macro_movement": 0.715,
-      "macro_space": 0.146
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

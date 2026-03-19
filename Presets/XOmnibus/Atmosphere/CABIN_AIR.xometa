@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CABIN AIR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.04
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Octopus",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.739
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ONSET",
+    "target": "OCTOPUS",
+    "amount": 0.739
   },
   "dna": {
-    "aggression": 0.491,
     "brightness": 0.638,
-    "density": 0.296,
+    "warmth": 0.03,
     "movement": 0.12,
+    "density": 0.296,
     "space": 0.085,
-    "warmth": 0.03
+    "aggression": 0.491
   },
-  "engines": [
-    "Onset",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.185,
-    "COUPLING": 0.241,
     "MOVEMENT": 0.44,
+    "COUPLING": 0.241,
     "SPACE": 0.085
   },
-  "mood": "Atmosphere",
-  "name": "CABIN AIR",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.625,
-      "macro_coupling": 0.701,
-      "macro_movement": 0.104,
-      "macro_space": 0.04
-    },
-    "Onset": {
-      "macro_character": 0.256,
-      "macro_coupling": 0.496,
-      "macro_movement": 0.657,
-      "macro_space": 0.085
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

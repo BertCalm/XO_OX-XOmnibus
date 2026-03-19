@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FIBER CAGE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.025
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Odyssey",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.584
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OBBLIGATO",
+    "target": "ODYSSEY",
+    "amount": 0.584
   },
   "dna": {
-    "aggression": 0.445,
     "brightness": 0.852,
-    "density": 0.566,
+    "warmth": 0.77,
     "movement": 0.305,
+    "density": 0.566,
     "space": 0.025,
-    "warmth": 0.77
+    "aggression": 0.445
   },
-  "engines": [
-    "Odyssey",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.946,
-    "COUPLING": 0.28,
     "MOVEMENT": 0.274,
+    "COUPLING": 0.28,
     "SPACE": 0.025
   },
-  "mood": "Entangled",
-  "name": "FIBER CAGE",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.661,
-      "macro_coupling": 0.342,
-      "macro_movement": 0.655,
-      "macro_space": 0.025
-    },
-    "Odyssey": {
-      "macro_character": 0.357,
-      "macro_coupling": 0.767,
-      "macro_movement": 0.601,
-      "macro_space": 0.042
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

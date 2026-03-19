@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OBSIDIAN ETHER",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.739
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Oblong",
-        "type": "RESONANCE_LINK",
-        "amount": 0.472
-      }
-    ]
+    "type": "RESONANCE_LINK",
+    "source": "ONSET",
+    "target": "OBLONG",
+    "amount": 0.472
   },
   "dna": {
-    "aggression": 0.421,
     "brightness": 0.057,
-    "density": 0.075,
+    "warmth": 0.555,
     "movement": 0.411,
+    "density": 0.075,
     "space": 0.223,
-    "warmth": 0.555
+    "aggression": 0.421
   },
-  "engines": [
-    "Onset",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.514,
-    "COUPLING": 0.522,
     "MOVEMENT": 0.778,
+    "COUPLING": 0.522,
     "SPACE": 0.666
   },
-  "mood": "Aether",
-  "name": "OBSIDIAN ETHER",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.384,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.58,
-      "macro_space": 0.739
-    },
-    "Onset": {
-      "macro_character": 0.645,
-      "macro_coupling": 0.09,
-      "macro_movement": 0.977,
-      "macro_space": 0.594
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "extreme",
     "low-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "ORACLE in the extended session — the vision wider now. Resonance deeper, space more generous. The ancient voice unguarded.",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.52,
-    "density": 0.5,
-    "movement": 0.58,
-    "space": 0.78,
-    "warmth": 0.65
-  },
+  "schema_version": 1,
+  "name": "Oracle Extended Vision",
+  "mood": "Family",
   "engines": [
     "Oracle"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "VOICE",
-    "RESONANCE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Oracle Extended Vision",
-  "parameters": {
-    "Oracle": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ORACLE in the extended session — the vision wider now. Resonance deeper, space more generous. The ancient voice unguarded.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "deep",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "VOICE",
+    "RESONANCE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.78,
     "aggression": 0.2
   }
->>>>>>> origin/v1-launch-prep
 }

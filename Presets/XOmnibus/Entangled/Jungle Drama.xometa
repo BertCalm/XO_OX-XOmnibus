@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Ocelot",
-        "type": "PREDATOR_STALK",
-        "amount": 0.75
-      }
-    ]
-  },
-  "description": "Afro-Latin percussion meets the jungle cat — DRAMA macro triggers feline eruption",
+  "name": "Jungle Drama",
+  "version": "1.0",
   "engines": [
     "Ole",
     "Ocelot"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.8,
+    "COUPLING": 0.75,
     "SPACE": 0.45
   },
-  "mood": "Entangled",
-  "name": "Jungle Drama",
-  "parameters": {
-    "Ole": {},
-    "Ocelot": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.58,
     "brightness": 0.68,
-    "density": 0.58,
+    "warmth": 0.64,
     "movement": 0.81,
+    "density": 0.58,
     "space": 0.48,
-    "warmth": 0.64
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "PREDATOR_STALK",
+    "source": "OLE",
+    "target": "OCELOT",
+    "amount": 0.75
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "ocelot",
     "afro-latin"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Afro-Latin percussion meets the jungle cat — DRAMA macro triggers feline eruption"
->>>>>>> origin/v1-launch-prep
 }

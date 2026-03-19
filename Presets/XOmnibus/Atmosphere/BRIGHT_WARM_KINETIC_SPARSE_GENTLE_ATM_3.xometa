@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Obscura",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.408
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0526,
-    "brightness": 0.9408,
-    "density": 0.1279,
-    "movement": 0.9416,
-    "space": 0.6331,
-    "warmth": 0.9612
-  },
+  "name": "BRIGHT_WARM_KINETIC_SPARSE_GENTLE_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oblique",
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9579,
-    "COUPLING": 0.1532,
-    "MOVEMENT": 0.9237,
-    "SPACE": 0.6344
-  },
-  "mood": "Atmosphere",
-  "name": "Sunrise Shimmer",
   "parameters": {
     "Oblique": {
       "macro_character": 0.953,
-      "macro_coupling": 0.1564,
       "macro_movement": 0.9281,
+      "macro_coupling": 0.1564,
       "macro_space": 0.6363
     },
     "Obscura": {
       "macro_character": 0.9628,
-      "macro_coupling": 0.15,
       "macro_movement": 0.9192,
+      "macro_coupling": 0.15,
       "macro_space": 0.6326
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "OBSCURA",
+    "amount": 0.408
+  },
+  "dna": {
+    "brightness": 0.9408,
+    "warmth": 0.9612,
+    "movement": 0.9416,
+    "density": 0.1279,
+    "space": 0.6331,
+    "aggression": 0.0526
+  },
+  "macros": {
+    "CHARACTER": 0.9579,
+    "MOVEMENT": 0.9237,
+    "COUPLING": 0.1532,
+    "SPACE": 0.6344
+  },
   "tags": [
     "atmosphere",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "sparse",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

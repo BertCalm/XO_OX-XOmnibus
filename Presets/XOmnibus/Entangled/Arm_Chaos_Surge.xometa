@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.93,
-        "engineA": "Outwit",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Outwit 8-arm Wolfram CA chaos-injected by Ouroboros topology — cellular automation in fractal storm.",
-  "dna": {
-    "aggression": 0.97,
-    "brightness": 0.58,
-    "density": 0.72,
-    "movement": 0.96,
-    "space": 0.16,
-    "warmth": 0.25
-  },
+  "schema_version": 1,
+  "name": "Arm Chaos Surge",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "outwit",
     "ouroboros",
     "kinetic"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "COUPLING": 0.93,
     "MOVEMENT": 0.96,
+    "COUPLING": 0.93,
     "SPACE": 0.16
   },
-  "mood": "Entangled",
-  "name": "Arm Chaos Surge",
-  "parameters": {
-    "Outwit": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.97,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.58,
-    "density": 0.72,
+    "warmth": 0.25,
     "movement": 0.96,
+    "density": 0.72,
     "space": 0.16,
-    "warmth": 0.25
+    "aggression": 0.97
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "outwit",
-    "ouroboros",
-    "kinetic"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.25,
+    "movement": 0.96,
+    "density": 0.72,
+    "space": 0.16,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.93
+      }
+    ]
+  }
 }

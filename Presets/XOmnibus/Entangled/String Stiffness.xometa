@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.55,
-        "engineA": "Obscura",
-        "engineB": "Ottoni",
-        "type": "FREQUENCY_SHIFT"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Obscura string stiffness frequency-shifts OTTONI partials — warped brass.",
-  "dna": {
-    "aggression": 0.15,
-    "brightness": 0.45,
-    "density": 0.55,
-    "movement": 0.58,
-    "space": 0.5,
-    "warmth": 0.66
-  },
-  "engines": [
-    "Obscura",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.59,
-    "COUPLING": 0.55,
-    "MOVEMENT": 0.55,
-    "SPACE": 0.48
-  },
-  "mood": "Entangled",
-  "name": "String Stiffness",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.65,
-      "macro_space": 0.58
-    },
-    "Ottoni": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.55,
-      "macro_movement": 0.45,
-      "macro_space": 0.38
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "String Stiffness",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Obscura string stiffness frequency-shifts OTTONI partials — warped brass.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "stiffness",
     "shift"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.45,
     "warmth": 0.66,
@@ -118,5 +64,4 @@
     "SPACE": 0.48
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

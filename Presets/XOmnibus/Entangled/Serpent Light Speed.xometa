@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Optic",
-        "type": "PHASE_LOCK",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Ouroboros cycles spinning at light speed through Optic's cold prismatic field.",
+  "name": "Serpent Light Speed",
+  "version": "1.0",
   "engines": [
     "Ouroboros",
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.95,
+    "COUPLING": 0.75,
     "SPACE": 0.55
   },
-  "mood": "Entangled",
-  "name": "Serpent Light Speed",
-  "parameters": {
-    "Ouroboros": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.6,
     "brightness": 0.75,
-    "density": 0.5,
+    "warmth": 0.08,
     "movement": 0.93,
+    "density": 0.5,
     "space": 0.52,
-    "warmth": 0.08
+    "aggression": 0.6
   },
-  "strategy": "Fast Cold",
+  "parameters": {},
+  "coupling": {
+    "type": "PHASE_LOCK",
+    "source": "OUROBOROS",
+    "target": "OPTIC",
+    "amount": 0.7
+  },
   "tags": [
     "entangled",
     "cold",
@@ -53,13 +35,5 @@
     "cyclical",
     "kinetic"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Ouroboros cycles spinning at light speed through Optic's cold prismatic field."
 }

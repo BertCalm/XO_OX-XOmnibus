@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ottoni",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.308
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.884,
-    "brightness": 0.051,
-    "density": 0.087,
-    "movement": 0.57,
-    "space": 0.032,
-    "warmth": 0.639
-  },
+  "name": "DEAD POCKET",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.439,
-    "COUPLING": 0.731,
-    "MOVEMENT": 0.782,
-    "SPACE": 0.032
-  },
-  "mood": "Entangled",
-  "name": "DEAD POCKET",
   "parameters": {
     "Obscura": {
       "macro_character": 0.147,
-      "macro_coupling": 0.571,
       "macro_movement": 0.134,
+      "macro_coupling": 0.571,
       "macro_space": 0.025
     },
     "Ottoni": {
       "macro_character": 0.611,
-      "macro_coupling": 0.862,
       "macro_movement": 0.787,
+      "macro_coupling": 0.862,
       "macro_space": 0.024
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "OTTONI",
+    "amount": 0.308
+  },
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.639,
+    "movement": 0.57,
+    "density": 0.087,
+    "space": 0.032,
+    "aggression": 0.884
+  },
+  "macros": {
+    "CHARACTER": 0.439,
+    "MOVEMENT": 0.782,
+    "COUPLING": 0.731,
+    "SPACE": 0.032
+  },
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

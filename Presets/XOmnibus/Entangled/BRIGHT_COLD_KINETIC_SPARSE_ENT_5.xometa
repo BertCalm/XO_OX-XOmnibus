@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.8129,
-        "source": "Overdub",
-        "target": "Octopus",
-        "type": "PITCH_ENTANGLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Cold Kinetic Sparse character entanglement — OVERDUB × OCTOPUS via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.3296,
-    "brightness": 0.946,
-    "density": 0.0987,
-    "movement": 0.949,
-    "space": 0.6156,
-    "warmth": 0.0466
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_5",
+  "mood": "Entangled",
   "engines": [
     "Overdub",
     "Octopus"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "VOICE",
-    "DRIVE",
-    "DELAY",
-    "SPRING"
-  ],
-  "macros": {
-    "CHARACTER": 0.4963,
-    "COUPLING": 0.8129,
-    "MOVEMENT": 0.949,
-    "SPACE": 0.6156
-  },
-  "mood": "Entangled",
-  "name": "Mirror Cascade",
-  "parameters": {
-    "Octopus": {
-      "amp_attack": 0.0648,
-      "amp_release": 0.4302,
-      "coupling_level": 0.6775,
-      "density": 0.1051,
-      "drive": 0.3152,
-      "filter_cutoff": 0.8824,
-      "filter_resonance": 0.3021,
-      "macro_character": 0.5659,
-      "macro_coupling": 0.7296,
-      "macro_movement": 0.9877,
-      "macro_space": 0.6076,
-      "output_level": 0.7307,
-      "reverb_mix": 0.4693,
-      "reverb_size": 0.5703
-    },
-    "Overdub": {
-      "amp_attack": 0.102,
-      "amp_release": 0.4724,
-      "coupling_level": 0.6936,
-      "density": 0.1113,
-      "drive": 0.3352,
-      "filter_cutoff": 0.8855,
-      "filter_resonance": 0.2536,
-      "macro_character": 0.6029,
-      "macro_coupling": 0.7307,
-      "macro_movement": 0.9826,
-      "macro_space": 0.6191,
-      "output_level": 0.7131,
-      "reverb_mix": 0.4997,
-      "reverb_size": 0.5362
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3296,
-    "brightness": 0.946,
-    "density": 0.0987,
-    "movement": 0.949,
-    "space": 0.6156,
-    "warmth": 0.0466
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Cold Kinetic Sparse character entanglement — OVERDUB × OCTOPUS via Pitch Entangle. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "sparse",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "VOICE",
     "DRIVE",
@@ -175,5 +94,4 @@
     "COUPLING": 0.8129,
     "SPACE": 0.6156
   }
->>>>>>> origin/v1-launch-prep
 }

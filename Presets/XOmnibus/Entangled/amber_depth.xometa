@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Amber Depth",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,64 +20,31 @@
       "macro_space": 0.805
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Oceanic",
-        "type": "SPACE_BLEND",
-        "amount": 0.779
-      }
-    ]
+    "type": "SPACE_BLEND",
+    "source": "OCELOT",
+    "target": "OCEANIC",
+    "amount": 0.779
   },
   "dna": {
-    "aggression": 0.15,
     "brightness": 0.45,
-    "density": 0.5,
+    "warmth": 0.85,
     "movement": 0.45,
+    "density": 0.5,
     "space": 0.88,
-    "warmth": 0.85
+    "aggression": 0.15
   },
-  "engines": [
-    "Ocelot",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.475,
-    "COUPLING": 0.779,
     "MOVEMENT": 0.525,
+    "COUPLING": 0.779,
     "SPACE": 0.625
   },
-  "mood": "Entangled",
-  "name": "Amber Depth",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.305,
-      "macro_coupling": 0.455,
-      "macro_movement": 0.355,
-      "macro_space": 0.805
-    },
-    "Ocelot": {
-      "macro_character": 0.645,
-      "macro_coupling": 0.545,
-      "macro_movement": 0.695,
-      "macro_space": 0.445
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "deep",
     "warm"
-  ],
-  "version": "1.0"
+  ]
 }

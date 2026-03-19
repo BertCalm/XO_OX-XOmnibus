@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Orca",
-        "type": "FILTER_MOD",
-        "amount": 0.841
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.317,
-    "brightness": 0.868,
-    "density": 0.916,
-    "movement": 0.448,
-    "space": 0.472,
-    "warmth": 0.314
-  },
+  "name": "RADIANT MASS",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Obese",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.537,
-    "COUPLING": 0.619,
-    "MOVEMENT": 0.588,
-    "SPACE": 0.356
-  },
-  "mood": "Flux",
-  "name": "RADIANT MASS",
   "parameters": {
     "Obese": {
       "macro_character": 0.537,
-      "macro_coupling": 0.619,
       "macro_movement": 0.588,
+      "macro_coupling": 0.619,
       "macro_space": 0.356
     },
     "Orca": {
       "macro_character": 0.667,
-      "macro_coupling": 0.481,
       "macro_movement": 0.73,
+      "macro_coupling": 0.481,
       "macro_space": 0.313
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBESE",
+    "target": "ORCA",
+    "amount": 0.841
+  },
+  "dna": {
+    "brightness": 0.868,
+    "warmth": 0.314,
+    "movement": 0.448,
+    "density": 0.916,
+    "space": 0.472,
+    "aggression": 0.317
+  },
+  "macros": {
+    "CHARACTER": 0.537,
+    "MOVEMENT": 0.588,
+    "COUPLING": 0.619,
+    "SPACE": 0.356
+  },
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

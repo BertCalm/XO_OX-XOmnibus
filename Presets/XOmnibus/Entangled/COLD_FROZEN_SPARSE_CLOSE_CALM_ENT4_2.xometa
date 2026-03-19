@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Obscura",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.771
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.073,
-    "brightness": 0.555,
-    "density": 0.021,
-    "movement": 0.019,
-    "space": 0.051,
-    "warmth": 0.103
-  },
+  "name": "COLD_FROZEN_SPARSE_CLOSE_CALM_ENT4_2",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.343,
-    "COUPLING": 0.771,
-    "MOVEMENT": 0.017,
-    "SPACE": 0.06
-  },
-  "mood": "Entangled",
-  "name": "Phase Shard",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.351,
-      "macro_coupling": 0.01,
       "macro_movement": 0.011,
+      "macro_coupling": 0.01,
       "macro_space": 0.051
     },
     "Obscura": {
       "macro_character": 0.334,
-      "macro_coupling": 0.01,
       "macro_movement": 0.023,
+      "macro_coupling": 0.01,
       "macro_space": 0.07
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBBLIGATO",
+    "target": "OBSCURA",
+    "amount": 0.771
+  },
+  "dna": {
+    "brightness": 0.555,
+    "warmth": 0.103,
+    "movement": 0.019,
+    "density": 0.021,
+    "space": 0.051,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.343,
+    "MOVEMENT": 0.017,
+    "COUPLING": 0.771,
+    "SPACE": 0.06
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "sparse",
     "close",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

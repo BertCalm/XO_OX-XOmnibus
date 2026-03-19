@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_PRS_DRK_3",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.4147
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Ole",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.8131
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OWLFISH",
+    "target": "OLE",
+    "amount": 0.8131
   },
   "dna": {
-    "aggression": 0.9088,
     "brightness": 0.1051,
-    "density": 0.4819,
+    "warmth": 0.9676,
     "movement": 0.936,
+    "density": 0.4819,
     "space": 0.4258,
-    "warmth": 0.9676
+    "aggression": 0.9088
   },
-  "engines": [
-    "Owlfish",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9382,
-    "COUPLING": 0.4819,
     "MOVEMENT": 0.936,
+    "COUPLING": 0.4819,
     "SPACE": 0.4258
   },
-  "mood": "Prism",
-  "name": "Rust Current",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.9416,
-      "macro_coupling": 0.4569,
-      "macro_movement": 0.9291,
-      "macro_space": 0.4147
-    },
-    "Owlfish": {
-      "macro_character": 0.9382,
-      "macro_coupling": 0.4819,
-      "macro_movement": 0.936,
-      "macro_space": 0.4258
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "kinetic",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

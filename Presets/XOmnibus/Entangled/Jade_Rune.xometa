@@ -1,29 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.791,
-        "engineA": "Obsidian",
-        "engineB": "OddOscar",
-        "type": "PITCH_TRACK"
-      }
-    ]
-  },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "aggression": 0.695,
-    "brightness": 0.0,
-    "density": 0.765,
-    "movement": 0.4,
-    "space": 0.5,
-    "warmth": 0.475
-  },
+  "schema_version": 1,
+  "name": "Jade Rune",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "OddOscar"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -33,7 +14,6 @@
     "coverage",
     "obsidian",
     "oddoscar"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,45 +23,41 @@
   ],
   "macros": {
     "CHARACTER": 0.285,
-    "COUPLING": 0.704,
     "MOVEMENT": 0.488,
+    "COUPLING": 0.704,
     "SPACE": 0.447
   },
-  "mood": "Entangled",
-  "name": "Jade Rune",
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.0,
+    "warmth": 0.475,
+    "movement": 0.4,
+    "density": 0.765,
+    "space": 0.5,
+    "aggression": 0.695
+  },
+  "sonic_dna": {
+    "brightness": 0.0,
+    "warmth": 0.475,
+    "movement": 0.4,
+    "density": 0.765,
+    "space": 0.5,
+    "aggression": 0.695
+  },
   "parameters": {
     "Obsidian": {
       "macro_character": 0.622,
-      "macro_coupling": 0.593,
       "macro_movement": 0.339,
+      "macro_coupling": 0.593,
       "macro_space": 0.225
     },
     "OddOscar": {
       "macro_character": 0.367,
-      "macro_coupling": 0.653,
       "macro_movement": 0.699,
+      "macro_coupling": 0.653,
       "macro_space": 0.497
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.695,
-    "brightness": 0.0,
-    "density": 0.765,
-    "movement": 0.4,
-    "space": 0.5,
-    "warmth": 0.475
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "obsidian",
-    "oddoscar"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": [
       {
@@ -92,5 +68,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

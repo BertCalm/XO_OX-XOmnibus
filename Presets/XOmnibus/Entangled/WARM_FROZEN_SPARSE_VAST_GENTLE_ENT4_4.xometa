@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Osprey",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.869
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.046,
-    "brightness": 0.662,
-    "density": 0.11,
-    "movement": 0.075,
-    "space": 0.968,
-    "warmth": 0.912
-  },
+  "name": "WARM_FROZEN_SPARSE_VAST_GENTLE_ENT4_4",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.795,
-    "COUPLING": 0.869,
-    "MOVEMENT": 0.079,
-    "SPACE": 0.974
-  },
-  "mood": "Entangled",
-  "name": "Peach Cathedral",
   "parameters": {
     "Origami": {
       "macro_character": 0.803,
-      "macro_coupling": 0.091,
       "macro_movement": 0.078,
+      "macro_coupling": 0.091,
       "macro_space": 0.984
     },
     "Osprey": {
       "macro_character": 0.787,
-      "macro_coupling": 0.126,
       "macro_movement": 0.08,
+      "macro_coupling": 0.126,
       "macro_space": 0.965
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ORIGAMI",
+    "target": "OSPREY",
+    "amount": 0.869
+  },
+  "dna": {
+    "brightness": 0.662,
+    "warmth": 0.912,
+    "movement": 0.075,
+    "density": 0.11,
+    "space": 0.968,
+    "aggression": 0.046
+  },
+  "macros": {
+    "CHARACTER": 0.795,
+    "MOVEMENT": 0.079,
+    "COUPLING": 0.869,
+    "SPACE": 0.974
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

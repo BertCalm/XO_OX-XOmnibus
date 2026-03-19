@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.04,
-    "brightness": 0.06,
-    "density": 0.12,
-    "movement": 0.22,
-    "space": 0.89,
-    "warmth": 0.25
-  },
+  "name": "Void Communion",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.42,
-    "COUPLING": 0.35,
-    "MOVEMENT": 0.22,
-    "SPACE": 0.89
-  },
-  "mood": "Aether",
-  "name": "Void Communion",
   "parameters": {
     "Obsidian": {
       "obsidian_macro_character": 0.21,
-      "obsidian_macro_coupling": 0.22,
       "obsidian_macro_movement": 0.2,
+      "obsidian_macro_coupling": 0.22,
       "obsidian_macro_space": 0.89
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.25,
+    "movement": 0.22,
+    "density": 0.12,
+    "space": 0.89,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.35,
+    "SPACE": 0.89
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "void",
     "communion"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

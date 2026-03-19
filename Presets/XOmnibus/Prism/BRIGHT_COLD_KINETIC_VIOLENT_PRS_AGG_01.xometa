@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Ohm",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.719
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.886,
-    "brightness": 0.896,
-    "density": 0.699,
-    "movement": 0.953,
-    "space": 0.38,
-    "warmth": 0.087
-  },
+  "name": "BRIGHT COLD KINETIC VIOLENT PRS AGG 1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ocelot",
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.856,
-    "COUPLING": 0.871,
-    "MOVEMENT": 0.92,
-    "SPACE": 0.375
-  },
-  "mood": "Prism",
-  "name": "BRIGHT COLD KINETIC VIOLENT...",
   "parameters": {
     "Ocelot": {
       "macro_character": 0.83,
-      "macro_coupling": 0.856,
       "macro_movement": 0.89,
+      "macro_coupling": 0.856,
       "macro_space": 0.38
     },
     "Ohm": {
       "macro_character": 0.882,
-      "macro_coupling": 0.885,
       "macro_movement": 0.951,
+      "macro_coupling": 0.885,
       "macro_space": 0.37
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "OHM",
+    "amount": 0.719
+  },
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.087,
+    "movement": 0.953,
+    "density": 0.699,
+    "space": 0.38,
+    "aggression": 0.886
+  },
+  "macros": {
+    "CHARACTER": 0.856,
+    "MOVEMENT": 0.92,
+    "COUPLING": 0.871,
+    "SPACE": 0.375
+  },
   "tags": [
     "prism",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

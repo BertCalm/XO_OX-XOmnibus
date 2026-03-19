@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orca",
-        "engineB": "Orphica",
-        "type": "ECHOLOCATION_SYNC",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Siren calls bounce back as echolocation — the ocean replies in grain-shimmer",
+  "name": "Echoic Harp",
+  "version": "1.0",
   "engines": [
     "Orphica",
     "Orca"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.8,
+    "COUPLING": 0.7,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Echoic Harp",
-  "parameters": {
-    "Orphica": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.39,
     "brightness": 0.66,
-    "density": 0.5,
+    "warmth": 0.48,
     "movement": 0.76,
+    "density": 0.5,
     "space": 0.6,
-    "warmth": 0.48
+    "aggression": 0.39
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "ECHOLOCATION_SYNC",
+    "source": "ORCA",
+    "target": "ORPHICA",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "orca",
     "microsound"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Siren calls bounce back as echolocation — the ocean replies in grain-shimmer"
->>>>>>> origin/v1-launch-prep
 }

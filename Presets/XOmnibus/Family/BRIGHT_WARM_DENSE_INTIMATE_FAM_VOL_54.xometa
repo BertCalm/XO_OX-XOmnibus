@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_INTIMATE_FAM_VOL_54",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.068
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.921
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.921
   },
   "dna": {
-    "aggression": 0.394,
     "brightness": 0.903,
-    "density": 0.943,
+    "warmth": 0.915,
     "movement": 0.321,
+    "density": 0.943,
     "space": 0.093,
-    "warmth": 0.915
+    "aggression": 0.394
   },
-  "engines": [
-    "Osprey",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.892,
-    "COUPLING": 0.649,
     "MOVEMENT": 0.316,
+    "COUPLING": 0.649,
     "SPACE": 0.077
   },
-  "mood": "Family",
-  "name": "Solar Dense",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.888,
-      "macro_coupling": 0.658,
-      "macro_movement": 0.312,
-      "macro_space": 0.068
-    },
-    "Osprey": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.639,
-      "macro_movement": 0.32,
-      "macro_space": 0.085
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "intimate",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

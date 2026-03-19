@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.597,
-        "engineA": "Overlap",
-        "engineB": "Obscura",
-        "type": "FILTER_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Silver Diffusion",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Obscura daguerreotype grain texture spreads into OVERLAP shimmer — aged image in infinite hall",
-  "dna": {
-    "aggression": 0.275,
-    "brightness": 0.45,
-    "density": 0.6,
-    "movement": 0.45,
-    "space": 0.75,
-    "warmth": 0.525
-  },
-  "engines": [
-    "Overlap",
-    "Obscura"
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "obscura",
+    "vintage",
+    "textured"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.633,
-    "COUPLING": 0.807,
     "MOVEMENT": 0.524,
+    "COUPLING": 0.807,
     "SPACE": 0.834
   },
-  "mood": "Entangled",
-  "name": "Silver Diffusion",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.45,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.45,
+    "space": 0.75,
+    "aggression": 0.275,
+    "movement": 0.45,
+    "warmth": 0.525,
+    "density": 0.6
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.676,
-      "olap_crossfeedAmt": 0.584,
-=======
       "olap_size": 0.829,
       "olap_decay": 0.621,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.524,
-      "olap_decay": 0.621,
       "olap_diffusion": 0.822,
-      "olap_earlyMix": 0.386,
-      "olap_filterCutoff": 0.384,
-      "olap_filterReso": 0.327,
-      "olap_frondDensity": 0.545,
-      "olap_lateMix": 0.698,
       "olap_modDepth": 0.418,
       "olap_modRate": 0.248,
-      "olap_nodeCount": 12,
-      "olap_outputLevel": 0.653,
       "olap_preDelay": 0.012,
-      "olap_shimmerMix": 0.331,
-      "olap_size": 0.829,
-      "olap_spinRate": 0.166
+      "olap_earlyMix": 0.386,
+      "olap_lateMix": 0.698,
+      "olap_filterCutoff": 0.384,
+      "olap_filterReso": 0.327,
+      "olap_outputLevel": 0.653,
+      "olap_couplingLevel": 0.676,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.545,
+      "olap_nodeCount": 12,
+      "olap_crossfeedAmt": 0.584,
+      "olap_spinRate": 0.166,
+      "olap_shimmerMix": 0.331
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.275,
-    "brightness": 0.45,
-    "density": 0.6,
-    "movement": 0.45,
-    "space": 0.75,
-    "warmth": 0.525
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "obscura",
-    "vintage",
-    "textured"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OBSCURA",
+        "type": "FILTER_MOD",
+        "amount": 0.597
+      }
+    ]
+  }
 }

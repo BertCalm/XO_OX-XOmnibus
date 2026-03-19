@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Origami",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.792
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.961,
-    "brightness": 0.871,
-    "density": 0.099,
-    "movement": 0.334,
-    "space": 0.497,
-    "warmth": 0.984
-  },
+  "name": "BRIGHT WARM SPARSE BALANCED AET SPC 4",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ombre",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.927,
-    "COUPLING": 0.702,
-    "MOVEMENT": 0.334,
-    "SPACE": 0.497
-  },
-  "mood": "Aether",
-  "name": "BRIGHT WARM SPARSE BALANCED...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.927,
-      "macro_coupling": 0.702,
       "macro_movement": 0.334,
+      "macro_coupling": 0.702,
       "macro_space": 0.497
     },
     "Origami": {
       "macro_character": 0.898,
-      "macro_coupling": 0.696,
       "macro_movement": 0.322,
+      "macro_coupling": 0.696,
       "macro_space": 0.482
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OMBRE",
+    "target": "ORIGAMI",
+    "amount": 0.792
+  },
+  "dna": {
+    "brightness": 0.871,
+    "warmth": 0.984,
+    "movement": 0.334,
+    "density": 0.099,
+    "space": 0.497,
+    "aggression": 0.961
+  },
+  "macros": {
+    "CHARACTER": 0.927,
+    "MOVEMENT": 0.334,
+    "COUPLING": 0.702,
+    "SPACE": 0.497
+  },
   "tags": [
     "aether",
     "balanced",
@@ -59,10 +48,5 @@
     "aggressive",
     "bright",
     "warm"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Opal",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.9235
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.5673,
-    "brightness": 0.9078,
-    "density": 0.9151,
-    "movement": 0.4973,
-    "space": 0.056,
-    "warmth": 0.1179
-  },
+  "name": "BRIGHT_COLD_DENSE_INTIMATE_FLX_1",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oceanic",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.8133,
-    "COUPLING": 0.5132,
-    "MOVEMENT": 0.5085,
-    "SPACE": 0.1235
-  },
-  "mood": "Flux",
-  "name": "Prism Solid",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.8133,
-      "macro_coupling": 0.5132,
       "macro_movement": 0.5085,
+      "macro_coupling": 0.5132,
       "macro_space": 0.1235
     },
     "Opal": {
       "macro_character": 0.8766,
-      "macro_coupling": 0.6938,
       "macro_movement": 0.5512,
+      "macro_coupling": 0.6938,
       "macro_space": 0.0525
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCEANIC",
+    "target": "OPAL",
+    "amount": 0.9235
+  },
+  "dna": {
+    "brightness": 0.9078,
+    "warmth": 0.1179,
+    "movement": 0.4973,
+    "density": 0.9151,
+    "space": 0.056,
+    "aggression": 0.5673
+  },
+  "macros": {
+    "CHARACTER": 0.8133,
+    "MOVEMENT": 0.5085,
+    "COUPLING": 0.5132,
+    "SPACE": 0.1235
+  },
   "tags": [
     "flux",
     "unstable",
@@ -59,10 +48,5 @@
     "low-warmth",
     "high-density",
     "low-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

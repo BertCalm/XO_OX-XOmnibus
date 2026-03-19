@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_STILL_VAST_GENTLE_FLX_SLW_4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.971
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Oracle",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.678
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OUROBOROS",
+    "target": "ORACLE",
+    "amount": 0.678
   },
   "dna": {
-    "aggression": 0.063,
     "brightness": 0.456,
-    "density": 0.395,
+    "warmth": 0.906,
     "movement": 0.044,
+    "density": 0.395,
     "space": 0.883,
-    "warmth": 0.906
+    "aggression": 0.063
   },
-  "engines": [
-    "Ouroboros",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.229,
-    "COUPLING": 0.778,
     "MOVEMENT": 0.044,
+    "COUPLING": 0.778,
     "SPACE": 0.883
   },
-  "mood": "Flux",
-  "name": "Node Canyon",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.747,
-      "macro_movement": 0.044,
-      "macro_space": 0.971
-    },
-    "Ouroboros": {
-      "macro_character": 0.531,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.041,
-      "macro_space": 0.813
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "vast",
     "gentle",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

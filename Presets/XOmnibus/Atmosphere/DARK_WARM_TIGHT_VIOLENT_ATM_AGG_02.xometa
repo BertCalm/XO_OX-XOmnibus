@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Opal",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.707
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.926,
-    "brightness": 0.088,
-    "density": 0.346,
-    "movement": 0.489,
-    "space": 0.124,
-    "warmth": 0.899
-  },
+  "name": "DARK WARM TIGHT VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oceanic",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.084,
-    "COUPLING": 0.857,
-    "MOVEMENT": 0.472,
-    "SPACE": 0.12
-  },
-  "mood": "Atmosphere",
-  "name": "DARK WARM TIGHT VIOLENT ATM...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.083,
-      "macro_coupling": 0.882,
       "macro_movement": 0.464,
+      "macro_coupling": 0.882,
       "macro_space": 0.124
     },
     "Opal": {
       "macro_character": 0.086,
-      "macro_coupling": 0.833,
       "macro_movement": 0.48,
+      "macro_coupling": 0.833,
       "macro_space": 0.117
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OCEANIC",
+    "target": "OPAL",
+    "amount": 0.707
+  },
+  "dna": {
+    "brightness": 0.088,
+    "warmth": 0.899,
+    "movement": 0.489,
+    "density": 0.346,
+    "space": 0.124,
+    "aggression": 0.926
+  },
+  "macros": {
+    "CHARACTER": 0.084,
+    "MOVEMENT": 0.472,
+    "COUPLING": 0.857,
+    "SPACE": 0.12
+  },
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "dark",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Ohm",
-        "type": "RHYTHM_GATE",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Onset rhythms shaped by ohm MEDDLING macro — the drum machine joins the commune",
+  "name": "Rhythmic Commune",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "Onset"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.6,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
     "SPACE": 0.65
   },
-  "mood": "Entangled",
-  "name": "Rhythmic Commune",
-  "parameters": {
-    "Ohm": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.4,
     "brightness": 0.5,
-    "density": 0.62,
+    "warmth": 0.67,
     "movement": 0.64,
+    "density": 0.62,
     "space": 0.56,
-    "warmth": 0.67
+    "aggression": 0.4
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHM_GATE",
+    "source": "ONSET",
+    "target": "OHM",
+    "amount": 0.6
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "onset",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Onset rhythms shaped by ohm MEDDLING macro — the drum machine joins the commune"
->>>>>>> origin/v1-launch-prep
 }

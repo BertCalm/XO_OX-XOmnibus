@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.05,
-    "density": 0.08,
-    "movement": 0.2,
-    "space": 0.8,
-    "warmth": 0.12
-  },
+  "name": "Null Space",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.26,
-    "COUPLING": 0.43,
-    "MOVEMENT": 0.2,
-    "SPACE": 0.8
-  },
-  "mood": "Aether",
-  "name": "Null Space",
   "parameters": {
     "Obsidian": {
       "obsidian_macro_character": 0.21,
-      "obsidian_macro_coupling": 0.23,
       "obsidian_macro_movement": 0.18,
+      "obsidian_macro_coupling": 0.23,
       "obsidian_macro_space": 0.8
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.12,
+    "movement": 0.2,
+    "density": 0.08,
+    "space": 0.8,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.43,
+    "SPACE": 0.8
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "null",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

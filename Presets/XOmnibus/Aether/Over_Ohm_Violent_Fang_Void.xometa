@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 4.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ohm",
-        "type": "FILTER_SHARE",
-        "amount": 0.75
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Violent Fang Void",
   "mood": "Aether",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Over_Ohm_Violent_Fang_Void.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.935,
-    "brightness": 0.532,
-    "density": 0.931,
-    "movement": 0.936,
-    "space": 0.063,
-    "warmth": 0.059
-  },
-  "engines": [
-    "Overbite",
-    "Ohm"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Aether",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.59,
-      "macro_movement": 0.65,
-      "macro_space": 0.33
-    },
-    "Overbite": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.52,
-      "macro_movement": 0.81,
-      "macro_space": 0.15
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "aether"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Aether/5X DARK COLD KINETIC DENSE VIOLENT ATH 4.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.063,
     "aggression": 0.935
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Aether/Over_Ohm_Violent_Fang_Void.xometa
 }

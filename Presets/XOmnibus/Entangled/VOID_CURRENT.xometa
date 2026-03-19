@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Overbite",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.772
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.989,
-    "brightness": 0.588,
-    "density": 0.394,
-    "movement": 0.909,
-    "space": 0.924,
-    "warmth": 0.43
-  },
+  "name": "VOID CURRENT",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Overbite",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.259,
-    "COUPLING": 0.788,
-    "MOVEMENT": 0.553,
-    "SPACE": 0.924
-  },
-  "mood": "Entangled",
-  "name": "Void Current",
   "parameters": {
     "Overbite": {
       "macro_character": 0.443,
-      "macro_coupling": 0.083,
       "macro_movement": 0.415,
+      "macro_coupling": 0.083,
       "macro_space": 0.937
     },
     "Overworld": {
       "macro_character": 0.716,
-      "macro_coupling": 0.229,
       "macro_movement": 0.588,
+      "macro_coupling": 0.229,
       "macro_space": 0.948
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERWORLD",
+    "target": "OVERBITE",
+    "amount": 0.772
+  },
+  "dna": {
+    "brightness": 0.588,
+    "warmth": 0.43,
+    "movement": 0.909,
+    "density": 0.394,
+    "space": 0.924,
+    "aggression": 0.989
+  },
+  "macros": {
+    "CHARACTER": 0.259,
+    "MOVEMENT": 0.553,
+    "COUPLING": 0.788,
+    "SPACE": 0.924
+  },
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Optic",
-        "type": "FILTER_MOD",
-        "amount": 0.268
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.442,
-    "brightness": 0.666,
-    "density": 0.202,
-    "movement": 0.044,
-    "space": 0.346,
-    "warmth": 0.351
-  },
+  "name": "ANCHORED SKIN",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.262,
-    "COUPLING": 0.848,
-    "MOVEMENT": 0.044,
-    "SPACE": 0.708
-  },
-  "mood": "Entangled",
-  "name": "ANCHORED SKIN",
   "parameters": {
     "Obscura": {
       "macro_character": 0.794,
-      "macro_coupling": 0.623,
       "macro_movement": 0.043,
+      "macro_coupling": 0.623,
       "macro_space": 0.682
     },
     "Optic": {
       "macro_character": 0.112,
-      "macro_coupling": 0.749,
       "macro_movement": 0.045,
+      "macro_coupling": 0.749,
       "macro_space": 0.321
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBSCURA",
+    "target": "OPTIC",
+    "amount": 0.268
+  },
+  "dna": {
+    "brightness": 0.666,
+    "warmth": 0.351,
+    "movement": 0.044,
+    "density": 0.202,
+    "space": 0.346,
+    "aggression": 0.442
+  },
+  "macros": {
+    "CHARACTER": 0.262,
+    "MOVEMENT": 0.044,
+    "COUPLING": 0.848,
+    "SPACE": 0.708
+  },
   "tags": [
     "entangled",
     "stillness",
     "anchored"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Rhythmic",
-  "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.468,
+  "schema_version": 1,
+  "name": "COLD DENSE KINETIC TIGHT F4",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.465,
-    "density": 0.909,
+    "warmth": 0.072,
+    "aggression": 0.468,
     "movement": 0.952,
-    "space": 0.107,
-    "warmth": 0.072
+    "density": 0.909,
+    "space": 0.107
   },
   "engines": [
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "COLD DENSE KINETIC TIGHT F4",
-  "parameters": {
-    "Oceanic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.468,
-    "brightness": 0.465,
-    "density": 0.909,
-    "movement": 0.952,
-    "space": 0.107,
-    "warmth": 0.072
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "cold",
     "kinetic",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

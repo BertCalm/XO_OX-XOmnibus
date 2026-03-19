@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ole",
-        "type": "FILTER_MOD",
-        "amount": 0.447
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.523,
-    "brightness": 0.105,
-    "density": 0.434,
-    "movement": 0.936,
-    "space": 0.9,
-    "warmth": 0.036
-  },
+  "name": "DARK_COLD_KINETIC_VAST_PRS_3",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Overworld",
     "Ole"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.314,
-    "COUPLING": 0.377,
-    "MOVEMENT": 0.936,
-    "SPACE": 0.9
-  },
-  "mood": "Prism",
-  "name": "DARK_COLD_KINETIC_VAST_PRS_3",
   "parameters": {
-<<<<<<< HEAD
-    "Ole": {
-      "macro_character": 0.709,
-      "macro_coupling": 0.725,
-=======
     "Overworld": {
       "macro_character": 0.314,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.936,
+      "macro_coupling": 0.377,
       "macro_space": 0.9
     },
-<<<<<<< HEAD
-    "Overworld": {
-      "macro_character": 0.314,
-      "macro_coupling": 0.377,
-=======
     "Ole": {
       "macro_character": 0.709,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.936,
+      "macro_coupling": 0.725,
       "macro_space": 0.9
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OVERWORLD",
+    "target": "OLE",
+    "amount": 0.447
+  },
+  "dna": {
+    "brightness": 0.105,
+    "warmth": 0.036,
+    "movement": 0.936,
+    "density": 0.434,
+    "space": 0.9,
+    "aggression": 0.523
+  },
+  "macros": {
+    "CHARACTER": 0.314,
+    "MOVEMENT": 0.936,
+    "COUPLING": 0.377,
+    "SPACE": 0.9
+  },
   "tags": [
     "prism",
     "dark",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

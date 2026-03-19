@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Orca",
-        "type": "AMP_COUPLE",
-        "amount": 0.645
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.403,
-    "brightness": 0.824,
-    "density": 0.067,
-    "movement": 0.439,
-    "space": 0.924,
-    "warmth": 0.921
-  },
+  "name": "OPEN CIRCLE",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Oblong",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.951,
-    "COUPLING": 0.672,
-    "MOVEMENT": 1.0,
-    "SPACE": 0.27
-  },
-  "mood": "Family",
-  "name": "OPEN CIRCLE",
   "parameters": {
     "Oblong": {
       "macro_character": 0.08,
-      "macro_coupling": 0.432,
       "macro_movement": 0.04,
+      "macro_coupling": 0.432,
       "macro_space": 0.322
     },
     "Orca": {
       "macro_character": 0.25,
-      "macro_coupling": 0.962,
       "macro_movement": 0.091,
+      "macro_coupling": 0.962,
       "macro_space": 0.836
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMP_COUPLE",
+    "source": "OBLONG",
+    "target": "ORCA",
+    "amount": 0.645
+  },
+  "dna": {
+    "brightness": 0.824,
+    "warmth": 0.921,
+    "movement": 0.439,
+    "density": 0.067,
+    "space": 0.924,
+    "aggression": 0.403
+  },
+  "macros": {
+    "CHARACTER": 0.951,
+    "MOVEMENT": 1.0,
+    "COUPLING": 0.672,
+    "SPACE": 0.27
+  },
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

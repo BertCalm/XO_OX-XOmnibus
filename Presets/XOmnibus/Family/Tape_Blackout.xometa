@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OVERDUB saturated to extinction — tape eaten alive, signal buried in dark.",
-  "dna": {
-    "aggression": 0.68,
-    "brightness": 0.05,
-    "density": 0.9,
-    "movement": 0.48,
-    "space": 0.2,
-    "warmth": 0.6
-  },
+  "schema_version": 1,
+  "name": "Tape Blackout",
+  "mood": "Family",
   "engines": [
     "Overdub"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DRIVE",
-    "TAPE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Tape Blackout II",
-  "parameters": {
-    "Overdub": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERDUB saturated to extinction — tape eaten alive, signal buried in dark.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "tape",
     "saturated"
   ],
+  "macroLabels": [
+    "DRIVE",
+    "TAPE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.2,
     "aggression": 0.68
   }
->>>>>>> origin/v1-launch-prep
 }

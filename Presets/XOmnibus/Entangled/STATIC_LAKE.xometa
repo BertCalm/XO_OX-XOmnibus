@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Overlap",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.504
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.944,
-    "brightness": 0.516,
-    "density": 1.0,
-    "movement": 0.085,
-    "space": 0.827,
-    "warmth": 0.811
-  },
+  "name": "STATIC LAKE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Osprey",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.767,
-    "COUPLING": 0.659,
-    "MOVEMENT": 0.085,
-    "SPACE": 0.732
-  },
-  "mood": "Entangled",
-  "name": "STATIC LAKE",
   "parameters": {
     "Osprey": {
       "macro_character": 0.257,
-      "macro_coupling": 0.692,
       "macro_movement": 0.054,
+      "macro_coupling": 0.692,
       "macro_space": 0.896
     },
     "Overlap": {
       "macro_character": 0.66,
-      "macro_coupling": 0.212,
       "macro_movement": 0.115,
+      "macro_coupling": 0.212,
       "macro_space": 0.889
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OSPREY",
+    "target": "OVERLAP",
+    "amount": 0.504
+  },
+  "dna": {
+    "brightness": 0.516,
+    "warmth": 0.811,
+    "movement": 0.085,
+    "density": 1.0,
+    "space": 0.827,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.767,
+    "MOVEMENT": 0.085,
+    "COUPLING": 0.659,
+    "SPACE": 0.732
+  },
   "tags": [
     "entangled",
     "stillness",
     "static"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

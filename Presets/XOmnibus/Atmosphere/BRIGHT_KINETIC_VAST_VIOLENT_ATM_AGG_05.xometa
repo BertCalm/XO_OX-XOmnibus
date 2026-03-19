@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT KINETIC VAST VIOLENT ATM AGG 5",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.937
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oblique",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.96
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "OBLIQUE",
+    "amount": 0.96
   },
   "dna": {
-    "aggression": 0.896,
     "brightness": 0.918,
-    "density": 0.527,
+    "warmth": 0.326,
     "movement": 0.98,
+    "density": 0.527,
     "space": 0.956,
-    "warmth": 0.326
+    "aggression": 0.896
   },
-  "engines": [
-    "Opal",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.868,
-    "COUPLING": 0.852,
     "MOVEMENT": 0.966,
+    "COUPLING": 0.852,
     "SPACE": 0.913
   },
-  "mood": "Atmosphere",
-  "name": "BRIGHT KINETIC VAST VIOLENT...",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.855,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.96,
-      "macro_space": 0.937
-    },
-    "Opal": {
-      "macro_character": 0.881,
-      "macro_coupling": 0.858,
-      "macro_movement": 0.971,
-      "macro_space": 0.89
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -83,10 +48,5 @@
     "bright",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

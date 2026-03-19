@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "THRUST GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.544
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "OddfeliX",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.483
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ODYSSEY",
+    "target": "ODDFELIX",
+    "amount": 0.483
   },
   "dna": {
-    "aggression": 0.029,
     "brightness": 0.455,
-    "density": 0.589,
+    "warmth": 0.527,
     "movement": 0.916,
+    "density": 0.589,
     "space": 0.745,
-    "warmth": 0.527
+    "aggression": 0.029
   },
-  "engines": [
-    "Odyssey",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.65,
-    "COUPLING": 0.483,
     "MOVEMENT": 0.916,
+    "COUPLING": 0.483,
     "SPACE": 0.745
   },
-  "mood": "Foundation",
-  "name": "THRUST GROUND",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.444,
-      "macro_coupling": 0.362,
-      "macro_movement": 0.906,
-      "macro_space": 0.544
-    },
-    "Odyssey": {
-      "macro_character": 0.454,
-      "macro_coupling": 0.674,
-      "macro_movement": 0.903,
-      "macro_space": 0.485
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

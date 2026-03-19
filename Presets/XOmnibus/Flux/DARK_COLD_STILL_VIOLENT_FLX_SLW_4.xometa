@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Oceanic",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.724
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.029,
-    "density": 0.353,
-    "movement": 0.046,
-    "space": 0.493,
-    "warmth": 0.084
-  },
+  "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oblong",
     "Oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.631,
-    "COUPLING": 0.67,
-    "MOVEMENT": 0.046,
-    "SPACE": 0.493
-  },
-  "mood": "Flux",
-  "name": "Grain Blade",
   "parameters": {
     "Oblong": {
       "macro_character": 0.35,
-      "macro_coupling": 0.912,
       "macro_movement": 0.055,
+      "macro_coupling": 0.912,
       "macro_space": 0.537
     },
     "Oceanic": {
       "macro_character": 0.531,
-      "macro_coupling": 0.777,
       "macro_movement": 0.043,
+      "macro_coupling": 0.777,
       "macro_space": 0.454
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLONG",
+    "target": "OCEANIC",
+    "amount": 0.724
+  },
+  "dna": {
+    "brightness": 0.029,
+    "warmth": 0.084,
+    "movement": 0.046,
+    "density": 0.353,
+    "space": 0.493,
+    "aggression": 0.91
+  },
+  "macros": {
+    "CHARACTER": 0.631,
+    "MOVEMENT": 0.046,
+    "COUPLING": 0.67,
+    "SPACE": 0.493
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "cold",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

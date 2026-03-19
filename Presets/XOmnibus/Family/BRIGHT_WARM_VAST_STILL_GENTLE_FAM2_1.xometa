@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT WARM VAST STILL GENTLE FAM2 1",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.987
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ohm",
-        "type": "PITCH_SYNC",
-        "amount": 0.258
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "OHM",
+    "amount": 0.258
   },
   "dna": {
-    "aggression": 0.067,
     "brightness": 0.909,
-    "density": 0.449,
+    "warmth": 0.922,
     "movement": 0.084,
+    "density": 0.449,
     "space": 0.954,
-    "warmth": 0.922
+    "aggression": 0.067
   },
-  "engines": [
-    "Orphica",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.915,
-    "COUPLING": 0.258,
     "MOVEMENT": 0.084,
+    "COUPLING": 0.258,
     "SPACE": 0.954
   },
-  "mood": "Family",
-  "name": "BRIGHT WARM VAST STILL GENT...",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.921,
-      "macro_coupling": 0.276,
-      "macro_movement": 0.049,
-      "macro_space": 0.987
-    },
-    "Orphica": {
-      "macro_character": 0.915,
-      "macro_coupling": 0.258,
-      "macro_movement": 0.084,
-      "macro_space": 0.954
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -82,10 +47,5 @@
     "still",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

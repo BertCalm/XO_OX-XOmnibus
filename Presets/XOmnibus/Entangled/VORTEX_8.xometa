@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Owlfish",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.838
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.545,
-    "brightness": 0.674,
-    "density": 0.846,
-    "movement": 0.944,
-    "space": 0.557,
-    "warmth": 0.397
-  },
+  "name": "VORTEX 8",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Orphica",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.395,
-    "COUPLING": 0.264,
-    "MOVEMENT": 0.944,
-    "SPACE": 0.124
-  },
-  "mood": "Entangled",
-  "name": "VORTEX 8",
   "parameters": {
     "Orphica": {
       "macro_character": 0.87,
-      "macro_coupling": 0.804,
       "macro_movement": 0.977,
+      "macro_coupling": 0.804,
       "macro_space": 0.468
     },
     "Owlfish": {
       "macro_character": 0.075,
-      "macro_coupling": 0.754,
       "macro_movement": 0.91,
+      "macro_coupling": 0.754,
       "macro_space": 0.226
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORPHICA",
+    "target": "OWLFISH",
+    "amount": 0.838
+  },
+  "dna": {
+    "brightness": 0.674,
+    "warmth": 0.397,
+    "movement": 0.944,
+    "density": 0.846,
+    "space": 0.557,
+    "aggression": 0.545
+  },
+  "macros": {
+    "CHARACTER": 0.395,
+    "MOVEMENT": 0.944,
+    "COUPLING": 0.264,
+    "SPACE": 0.124
+  },
   "tags": [
     "entangled",
     "wild",
     "movement"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

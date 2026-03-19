@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0194
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.6803
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.6803
   },
   "dna": {
-    "aggression": 0.0685,
     "brightness": 0.9747,
     "density": 0.0831,
-    "movement": 0.3206,
     "space": 0.0576,
-    "warmth": 0.3737
+    "aggression": 0.0685,
+    "warmth": 0.3737,
+    "movement": 0.3206
   },
-  "engines": [
-    "Origami",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.965,
-    "COUPLING": 0.6803,
     "MOVEMENT": 0.3147,
+    "COUPLING": 0.6803,
     "SPACE": 0.0576
   },
-  "mood": "Aether",
-  "name": "Chrome Shard",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.981,
-      "macro_coupling": 0.1325,
-      "macro_movement": 0.301,
-      "macro_space": 0.0194
-    },
-    "Origami": {
-      "macro_character": 0.9491,
-      "macro_coupling": 0.0563,
-      "macro_movement": 0.3284,
-      "macro_space": 0.0366
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "airy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

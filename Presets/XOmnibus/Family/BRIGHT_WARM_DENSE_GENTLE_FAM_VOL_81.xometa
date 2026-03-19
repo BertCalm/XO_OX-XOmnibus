@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_GENTLE_FAM_VOL_81",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.502
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Osprey",
-        "type": "PITCH_SYNC",
-        "amount": 0.585
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORGANON",
+    "target": "OSPREY",
+    "amount": 0.585
   },
   "dna": {
-    "aggression": 0.029,
     "brightness": 0.934,
-    "density": 0.917,
+    "warmth": 0.91,
     "movement": 0.3,
+    "density": 0.917,
     "space": 0.51,
-    "warmth": 0.91
+    "aggression": 0.029
   },
-  "engines": [
-    "Osprey",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.943,
-    "COUPLING": 0.473,
     "MOVEMENT": 0.321,
+    "COUPLING": 0.473,
     "SPACE": 0.498
   },
-  "mood": "Family",
-  "name": "Solar Packed 2",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.947,
-      "macro_coupling": 0.477,
-      "macro_movement": 0.321,
-      "macro_space": 0.502
-    },
-    "Osprey": {
-      "macro_character": 0.939,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.32,
-      "macro_space": 0.494
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "dense",
     "gentle",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

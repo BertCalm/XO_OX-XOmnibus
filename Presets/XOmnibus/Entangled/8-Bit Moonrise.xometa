@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Overworld",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.55
-      }
-    ]
-  },
-  "description": "Retro chip brightness sliding through Ombre's cool gradient spectrum.",
+  "name": "8-Bit Moonrise",
+  "version": "1.0",
   "engines": [
     "Overworld",
     "Ombre"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Bright Dark",
   "macros": {
     "CHARACTER": 0.75,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "8-Bit Moonrise",
-  "parameters": {
-    "Overworld": {},
-    "Ombre": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.28,
     "brightness": 0.9,
-    "density": 0.45,
+    "warmth": 0.1,
     "movement": 0.62,
+    "density": 0.45,
     "space": 0.7,
-    "warmth": 0.1
+    "aggression": 0.28
   },
-  "strategy": "Bright Dark",
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "OMBRE",
+    "target": "OVERWORLD",
+    "amount": 0.55
+  },
   "tags": [
     "entangled",
     "bright",
@@ -53,13 +35,5 @@
     "chiptune",
     "gradient"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
+  "description": "Retro chip brightness sliding through Ombre's cool gradient spectrum."
 }

@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.84,
-        "engineA": "Optic",
-        "engineB": "Ouroboros",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ouroboros timbral warp modulating Optic luminance — bright singularity event.",
-  "dna": {
-    "aggression": 0.92,
-    "brightness": 0.88,
-    "density": 0.68,
-    "movement": 0.82,
-    "space": 0.22,
-    "warmth": 0.08
-  },
+  "schema_version": 1,
+  "name": "Light Singularity",
+  "mood": "Entangled",
   "engines": [
     "Optic",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "optic",
     "ouroboros",
     "light"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.72,
-    "COUPLING": 0.84,
     "MOVEMENT": 0.82,
+    "COUPLING": 0.84,
     "SPACE": 0.22
   },
-  "mood": "Entangled",
-  "name": "Light Singularity",
-  "parameters": {
-    "Optic": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.92,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.88,
-    "density": 0.68,
+    "warmth": 0.08,
     "movement": 0.82,
+    "density": 0.68,
     "space": 0.22,
-    "warmth": 0.08
+    "aggression": 0.92
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "optic",
-    "ouroboros",
-    "light"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.88,
+    "warmth": 0.08,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.22,
+    "aggression": 0.92
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "OUROBOROS",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.84
+      }
+    ]
+  }
 }

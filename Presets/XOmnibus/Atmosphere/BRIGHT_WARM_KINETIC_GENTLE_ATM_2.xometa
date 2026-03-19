@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_GENTLE_ATM_2",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.372
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oblique",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.551
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORBITAL",
+    "target": "OBLIQUE",
+    "amount": 0.551
   },
   "dna": {
-    "aggression": 0.077,
     "brightness": 0.916,
-    "density": 0.314,
+    "warmth": 0.87,
     "movement": 0.895,
+    "density": 0.314,
     "space": 0.386,
-    "warmth": 0.87
+    "aggression": 0.077
   },
-  "engines": [
-    "Orbital",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.718,
-    "COUPLING": 0.719,
     "MOVEMENT": 0.805,
+    "COUPLING": 0.719,
     "SPACE": 0.396
   },
-  "mood": "Atmosphere",
-  "name": "Golden Shimmer",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.441,
-      "macro_coupling": 0.421,
-      "macro_movement": 0.827,
-      "macro_space": 0.372
-    },
-    "Orbital": {
-      "macro_character": 0.718,
-      "macro_coupling": 0.719,
-      "macro_movement": 0.805,
-      "macro_space": 0.396
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "kinetic",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

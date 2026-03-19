@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Ohm",
-        "type": "PITCH_SYNC",
-        "amount": 0.642
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.919,
-    "brightness": 0.563,
-    "density": 0.698,
-    "movement": 0.534,
-    "space": 0.146,
-    "warmth": 0.117
-  },
+  "name": "CLINICAL MESH",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.579,
-    "COUPLING": 0.082,
-    "MOVEMENT": 0.04,
-    "SPACE": 0.657
-  },
-  "mood": "Entangled",
-  "name": "CLINICAL MESH",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.057,
-      "macro_coupling": 0.851,
       "macro_movement": 0.508,
+      "macro_coupling": 0.851,
       "macro_space": 0.069
     },
     "Ohm": {
       "macro_character": 0.068,
-      "macro_coupling": 0.404,
       "macro_movement": 0.862,
+      "macro_coupling": 0.404,
       "macro_space": 0.942
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "OHM",
+    "amount": 0.642
+  },
+  "dna": {
+    "brightness": 0.563,
+    "warmth": 0.117,
+    "movement": 0.534,
+    "density": 0.698,
+    "space": 0.146,
+    "aggression": 0.919
+  },
+  "macros": {
+    "CHARACTER": 0.579,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.082,
+    "SPACE": 0.657
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.729,
-        "engineA": "Overlap",
-        "engineB": "Oceanic",
-        "type": "SYNC_LFO"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OVERLAP frond-spread follows OCEANIC current rate — slow drift, infinite room",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.769,
-    "density": 0.966,
-    "movement": 0.5,
-    "space": 1.0,
-    "warmth": 0.625
-  },
+  "schema_version": 1,
+  "name": "Web Tangle",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Web Tangle",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.601,
-      "olap_damping": 0.405,
-      "olap_decay": 0.827,
-      "olap_diffusion": 0.732,
-      "olap_earlyMix": 0.232,
-      "olap_filterCutoff": 0.509,
-      "olap_filterReso": 0.281,
-      "olap_lateMix": 0.621,
-      "olap_modDepth": 0.429,
-      "olap_modRate": 0.09,
-      "olap_outputLevel": 0.794,
-      "olap_preDelay": 0.029,
-      "olap_size": 0.553
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.5,
-    "space": 0.875,
-    "warmth": 0.625
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERLAP frond-spread follows OCEANIC current rate — slow drift, infinite room",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

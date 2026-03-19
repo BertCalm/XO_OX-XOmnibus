@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VAST_FAM_VOL_50",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.907
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Osteria",
-        "type": "HARMONIC_MESH",
-        "amount": 0.711
-      }
-    ]
+    "type": "HARMONIC_MESH",
+    "source": "OSPREY",
+    "target": "OSTERIA",
+    "amount": 0.711
   },
   "dna": {
-    "aggression": 0.504,
     "brightness": 0.97,
-    "density": 0.654,
+    "warmth": 0.902,
     "movement": 0.937,
+    "density": 0.654,
     "space": 0.9,
-    "warmth": 0.902
+    "aggression": 0.504
   },
-  "engines": [
-    "Osteria",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.934,
-    "COUPLING": 0.567,
     "MOVEMENT": 0.916,
+    "COUPLING": 0.567,
     "SPACE": 0.915
   },
-  "mood": "Family",
-  "name": "Peach Shimmer",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.566,
-      "macro_movement": 0.914,
-      "macro_space": 0.907
-    },
-    "Osteria": {
-      "macro_character": 0.931,
-      "macro_coupling": 0.567,
-      "macro_movement": 0.918,
-      "macro_space": 0.922
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "vast",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

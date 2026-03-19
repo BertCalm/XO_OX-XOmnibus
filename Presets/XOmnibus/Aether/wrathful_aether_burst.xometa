@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WRATHFUL AETHER BURST",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.518
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Onset",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.469
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORACLE",
+    "target": "ONSET",
+    "amount": 0.469
   },
   "dna": {
-    "aggression": 0.901,
     "brightness": 0.523,
-    "density": 0.953,
+    "warmth": 0.361,
     "movement": 0.668,
+    "density": 0.953,
     "space": 0.544,
-    "warmth": 0.361
+    "aggression": 0.901
   },
-  "engines": [
-    "Oracle",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.657,
-    "COUPLING": 0.104,
     "MOVEMENT": 0.668,
+    "COUPLING": 0.104,
     "SPACE": 0.544
   },
-  "mood": "Aether",
-  "name": "WRATHFUL AETHER BURST",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.373,
-      "macro_coupling": 0.357,
-      "macro_movement": 0.693,
-      "macro_space": 0.518
-    },
-    "Oracle": {
-      "macro_character": 0.02,
-      "macro_coupling": 0.044,
-      "macro_movement": 0.705,
-      "macro_space": 0.537
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

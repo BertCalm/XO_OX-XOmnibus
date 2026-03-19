@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK GATHERING",
   "version": "1.0",
   "mood": "Family",
@@ -23,67 +20,30 @@
       "macro_space": 0.081
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Obese",
-        "type": "PHASE_COUPLE",
-        "amount": 0.648
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OBESE",
+    "amount": 0.648
   },
   "dna": {
-    "aggression": 0.933,
     "brightness": 0.053,
-    "density": 0.569,
+    "warmth": 0.365,
     "movement": 0.575,
+    "density": 0.569,
     "space": 0.256,
-    "warmth": 0.365
+    "aggression": 0.933
   },
-  "engines": [
-    "Origami",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.547,
-    "COUPLING": 0.883,
     "MOVEMENT": 0.333,
+    "COUPLING": 0.883,
     "SPACE": 0.21
   },
-  "mood": "Family",
-  "name": "DARK GATHERING",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.041,
-      "macro_space": 0.081
-    },
-    "Origami": {
-      "macro_character": 0.171,
-      "macro_coupling": 0.902,
-      "macro_movement": 0.624,
-      "macro_space": 0.338
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "extreme",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

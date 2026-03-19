@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Iron Fog",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. OVERBITE dense register.",
-  "dna": {
-    "aggression": 0.363,
-    "brightness": 0.335,
-    "density": 0.91,
-    "movement": 0.281,
-    "space": 0.331,
-    "warmth": 0.671
-  },
-  "engines": [
-    "Overbite"
-  ],
-  "macroLabels": [
-    "BITE",
-    "RESONANCE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "BITE": 0.471,
-    "COUPLING": 0.453,
-    "RESONANCE": 0.203,
-    "SPACE": 0.28
-  },
-  "mood": "Atmosphere",
-  "name": "Iron Fog II",
-  "parameters": {
-    "Overbite": {
-      "bite": 0.471,
-      "coupling": 0.453,
-      "resonance": 0.203,
-      "space": 0.28
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -58,9 +16,6 @@
     "warm",
     "thick"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "BITE",
     "RESONANCE",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

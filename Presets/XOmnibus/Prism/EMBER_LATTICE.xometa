@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Outwit",
-        "type": "CHAOS_INJECT",
-        "amount": 0.303
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.906,
-    "brightness": 0.797,
-    "density": 0.126,
-    "movement": 0.125,
-    "space": 0.857,
-    "warmth": 0.884
-  },
+  "name": "EMBER LATTICE",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Octopus",
     "Outwit"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.344,
-    "COUPLING": 0.287,
-    "MOVEMENT": 0.238,
-    "SPACE": 0.045
-  },
-  "mood": "Prism",
-  "name": "EMBER LATTICE",
   "parameters": {
     "Octopus": {
       "macro_character": 0.169,
-      "macro_coupling": 0.846,
       "macro_movement": 0.203,
+      "macro_coupling": 0.846,
       "macro_space": 0.29
     },
     "Outwit": {
       "macro_character": 0.79,
-      "macro_coupling": 0.99,
       "macro_movement": 0.43,
+      "macro_coupling": 0.99,
       "macro_space": 0.907
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OCTOPUS",
+    "target": "OUTWIT",
+    "amount": 0.303
+  },
+  "dna": {
+    "brightness": 0.797,
+    "warmth": 0.884,
+    "movement": 0.125,
+    "density": 0.126,
+    "space": 0.857,
+    "aggression": 0.906
+  },
+  "macros": {
+    "CHARACTER": 0.344,
+    "MOVEMENT": 0.238,
+    "COUPLING": 0.287,
+    "SPACE": 0.045
+  },
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_STILL_GENTLE_FND_2",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.556
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.925
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERWORLD",
+    "target": "OBLONG",
+    "amount": 0.925
   },
   "dna": {
-    "aggression": 0.055,
     "brightness": 0.871,
-    "density": 0.441,
+    "warmth": 0.102,
     "movement": 0.102,
+    "density": 0.441,
     "space": 0.546,
-    "warmth": 0.102
+    "aggression": 0.055
   },
-  "engines": [
-    "Overworld",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.866,
-    "COUPLING": 0.698,
     "MOVEMENT": 0.147,
+    "COUPLING": 0.698,
     "SPACE": 0.841
   },
-  "mood": "Foundation",
-  "name": "BRIGHT_COLD_STILL_GENTLE_FND_2",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.344,
-      "macro_coupling": 0.415,
-      "macro_movement": 0.42,
-      "macro_space": 0.556
-    },
-    "Overworld": {
-      "macro_character": 0.112,
-      "macro_coupling": 0.476,
-      "macro_movement": 0.43,
-      "macro_space": 0.278
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -82,10 +47,5 @@
     "cold",
     "still",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

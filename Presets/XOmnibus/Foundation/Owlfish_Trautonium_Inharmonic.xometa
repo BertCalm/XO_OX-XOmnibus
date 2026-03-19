@@ -1,9 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-=======
   "schema_version": 1,
   "name": "Trautonium Inharmonic",
   "mood": "Foundation",
@@ -36,76 +31,13 @@
     "density": 0.6,
     "space": 0.3,
     "aggression": 0.45
->>>>>>> origin/v1-launch-prep
   },
-  "couplingIntensity": "None",
-  "description": "subDiv [2,4,6,0] = divide by 3, 5, 7 — the Oskar Sala inharmonic stack. Subharmonics that form NO recognizable harmonic series with each other. Not a chord, not noise. What the original Trautonium used for the serpent, the snake-charmer, the alien. The preset the library has never had.",
-  "dna": {
-    "aggression": 0.45,
-    "brightness": 0.35,
-    "density": 0.6,
-    "movement": 0.25,
-    "space": 0.3,
-    "warmth": 0.3
-  },
-  "engines": [
-    "Owlfish"
-  ],
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "DEFENSE",
-    "PRESSURE"
-  ],
-  "mood": "Foundation",
-  "name": "Trautonium Inharmonic",
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "owl_ampAttack": 8,
-      "owl_ampDecay": 300,
-      "owl_ampRelease": 500,
-      "owl_ampSustain": 0.65,
-      "owl_armorDecay": 0.0,
-      "owl_armorDelay": 0.0,
-      "owl_armorDuck": 0.0,
-      "owl_armorScatter": 0.0,
-      "owl_armorThreshold": 1.0,
-      "owl_bodyFreq": 40,
-      "owl_bodyLevel": 0.2,
-      "owl_compAttack": 0.1,
-      "owl_compRatio": 0.35,
-      "owl_compRelease": 0.3,
-      "owl_compThreshold": 0.55,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.0,
-      "owl_depth": 0.5,
-      "owl_feedRate": 0.0,
-      "owl_feeding": 0.1,
-      "owl_filterCutoff": 0.55,
-      "owl_filterEnvDepth": 0.4,
-      "owl_filterReso": 0.45,
-      "owl_filterTrack": 0.5,
-      "owl_fundWave": 0.0,
-      "owl_grainDensity": 0.0,
-      "owl_grainMix": 0.0,
-      "owl_grainPitch": 0.0,
-      "owl_grainSize": 0.5,
-=======
       "owl_portamento": 0.0,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 0,
-      "owl_mixtur": 0.25,
       "owl_morphGlide": 0.0,
-      "owl_outputLevel": 0.72,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.0,
-      "owl_pressure": 0.3,
-      "owl_reverbDamp": 0.7,
-      "owl_reverbMix": 0.12,
-      "owl_reverbPreDelay": 0.0,
-      "owl_reverbSize": 0.3,
+      "owl_subMix": 0.75,
       "owl_subDiv1": 2,
       "owl_subDiv2": 4,
       "owl_subDiv3": 6,
@@ -114,27 +46,49 @@
       "owl_subLevel2": 0.5,
       "owl_subLevel3": 0.3,
       "owl_subLevel4": 0.0,
-      "owl_subMix": 0.75,
-      "owl_subWave": 0.4
+      "owl_mixtur": 0.25,
+      "owl_fundWave": 0.0,
+      "owl_subWave": 0.4,
+      "owl_bodyFreq": 40,
+      "owl_bodyLevel": 0.2,
+      "owl_compRatio": 0.35,
+      "owl_compThreshold": 0.55,
+      "owl_compAttack": 0.1,
+      "owl_compRelease": 0.3,
+      "owl_filterCutoff": 0.55,
+      "owl_filterReso": 0.45,
+      "owl_filterTrack": 0.5,
+      "owl_filterEnvDepth": 0.4,
+      "owl_grainSize": 0.5,
+      "owl_grainDensity": 0.0,
+      "owl_grainPitch": 0.0,
+      "owl_grainMix": 0.0,
+      "owl_feedRate": 0.0,
+      "owl_armorThreshold": 1.0,
+      "owl_armorDecay": 0.0,
+      "owl_armorScatter": 0.0,
+      "owl_armorDuck": 0.0,
+      "owl_armorDelay": 0.0,
+      "owl_reverbSize": 0.3,
+      "owl_reverbDamp": 0.7,
+      "owl_reverbPreDelay": 0.0,
+      "owl_reverbMix": 0.12,
+      "owl_ampAttack": 8,
+      "owl_ampDecay": 300,
+      "owl_ampSustain": 0.65,
+      "owl_ampRelease": 500,
+      "owl_depth": 0.5,
+      "owl_feeding": 0.1,
+      "owl_defense": 0.0,
+      "owl_pressure": 0.3,
+      "owl_outputLevel": 0.72,
+      "owl_outputPan": 0.0,
+      "owl_couplingLevel": 0.5,
+      "owl_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "inharmonic",
-    "subharmonic",
-    "trautonium",
-    "oskar-sala",
-    "foundation",
-    "awakening"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

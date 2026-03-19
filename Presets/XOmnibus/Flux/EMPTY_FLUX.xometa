@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "EMPTY FLUX",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.257
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ouroboros",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7948
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERLAP",
+    "target": "OUROBOROS",
+    "amount": 0.7948
   },
   "dna": {
-    "aggression": 0.1172,
     "brightness": 0.3089,
-    "density": 0.0846,
+    "warmth": 0.4408,
     "movement": 0.5796,
+    "density": 0.0846,
     "space": 0.7324,
-    "warmth": 0.4408
+    "aggression": 0.1172
   },
-  "engines": [
-    "Overlap",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.4818,
-    "COUPLING": 0.7466,
     "MOVEMENT": 0.8065,
+    "COUPLING": 0.7466,
     "SPACE": 0.3387
   },
-  "mood": "Flux",
-  "name": "EMPTY FLUX",
-  "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.5309,
-      "macro_coupling": 0.8305,
-      "macro_movement": 0.9135,
-      "macro_space": 0.257
-    },
-    "Overlap": {
-      "macro_character": 0.1756,
-      "macro_coupling": 0.5394,
-      "macro_movement": 0.1322,
-      "macro_space": 0.9715
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

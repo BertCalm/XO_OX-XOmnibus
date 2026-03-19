@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.515,
-        "engineA": "Obbligato",
-        "engineB": "Oracle",
-        "type": "Pitch->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Bound Voice with Oracle",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "ORACLE stochastic pitch arcs activate OBBLIGATO's BOND, making the coral reeds an obligate prophecy.",
-  "dna": {
-    "aggression": 0.424,
-    "brightness": 0.524,
-    "density": 0.675,
-    "movement": 0.6,
-    "space": 0.651,
-    "warmth": 0.522
-  },
-  "engines": [
-    "Obbligato",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Bound Voice with Oracle",
-  "parameters": {
-    "obbl_breathA": 0.745,
-    "obbl_breathB": 0.488,
-    "obbl_macroBond": 0.859
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "stochastic",
     "maqam"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.745,
+    "obbl_breathB": 0.488,
+    "obbl_macroBond": 0.859
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "ORACLE",
+        "type": "Pitch->Filter",
+        "amount": 0.515
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.524,
+    "warmth": 0.522,
+    "movement": 0.6,
+    "density": 0.675,
+    "space": 0.651,
+    "aggression": 0.424
+  }
 }

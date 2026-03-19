@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Osteria",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.741
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.965,
-    "brightness": 0.081,
-    "density": 0.393,
-    "movement": 0.083,
-    "space": 0.105,
-    "warmth": 0.94
-  },
+  "name": "DARK_WARM_FROZEN_CLOSE_HARSH_ENT4_3",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "OddfeliX",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.485,
-    "COUPLING": 0.741,
-    "MOVEMENT": 0.075,
-    "SPACE": 0.102
-  },
-  "mood": "Entangled",
-  "name": "Velvet Storm 2",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.488,
-      "macro_coupling": 0.373,
       "macro_movement": 0.078,
+      "macro_coupling": 0.373,
       "macro_space": 0.115
     },
     "Osteria": {
       "macro_character": 0.482,
-      "macro_coupling": 0.41,
       "macro_movement": 0.073,
+      "macro_coupling": 0.41,
       "macro_space": 0.089
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "OSTERIA",
+    "amount": 0.741
+  },
+  "dna": {
+    "brightness": 0.081,
+    "warmth": 0.94,
+    "movement": 0.083,
+    "density": 0.393,
+    "space": 0.105,
+    "aggression": 0.965
+  },
+  "macros": {
+    "CHARACTER": 0.485,
+    "MOVEMENT": 0.075,
+    "COUPLING": 0.741,
+    "SPACE": 0.102
+  },
   "tags": [
     "entangled",
     "frozen",
@@ -59,10 +48,5 @@
     "warm",
     "close",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

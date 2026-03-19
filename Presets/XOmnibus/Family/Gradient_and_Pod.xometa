@@ -1,46 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "Light",
-  "created": "2026-03-16",
-  "description": "OMBRE watercolor fade + ORCA pod signal — soft surface above, apex hunter below. The gradient that ends in apex predator.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.5,
-    "density": 0.48,
-    "movement": 0.62,
-    "space": 0.82,
-    "warmth": 0.52
-  },
+  "schema_version": 1,
+  "name": "Gradient and Pod",
+  "mood": "Family",
   "engines": [
     "Ombre",
     "Orca"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "SHADE",
-    "FADE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Gradient and Pod",
-  "parameters": {
-    "Ombre": {},
-    "Orca": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OMBRE watercolor fade + ORCA pod signal — soft surface above, apex hunter below. The gradient that ends in apex predator.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -51,10 +19,14 @@
     "deep",
     "batch3-reunion"
   ],
+  "macroLabels": [
+    "SHADE",
+    "FADE",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Light",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -72,5 +44,4 @@
     "space": 0.82,
     "aggression": 0.18
   }
->>>>>>> origin/v1-launch-prep
 }

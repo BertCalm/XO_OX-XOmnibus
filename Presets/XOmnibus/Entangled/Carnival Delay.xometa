@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Overdub",
-        "type": "RHYTHMIC_LOCK",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Ole drama macro feeds dub delay — festival percussion echoing through the night",
+  "name": "Carnival Delay",
+  "version": "1.0",
   "engines": [
     "Overdub",
     "Ole"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.5,
+    "COUPLING": 0.65,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Carnival Delay",
-  "parameters": {
-    "Overdub": {},
-    "Ole": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.41,
     "brightness": 0.52,
-    "density": 0.6,
+    "warmth": 0.67,
     "movement": 0.61,
+    "density": 0.6,
     "space": 0.53,
-    "warmth": 0.67
+    "aggression": 0.41
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "RHYTHMIC_LOCK",
+    "source": "OLE",
+    "target": "OVERDUB",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "ole",
     "dub"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Ole drama macro feeds dub delay — festival percussion echoing through the night"
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Overbite",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.233
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.068,
-    "brightness": 0.107,
-    "density": 0.085,
-    "movement": 0.021,
-    "space": 0.555,
-    "warmth": 0.097
-  },
+  "name": "ALLLO FND 05",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Ouroboros",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.102,
-    "COUPLING": 0.311,
-    "MOVEMENT": 0.053,
-    "SPACE": 0.555
-  },
-  "mood": "Foundation",
-  "name": "ALLLO FND 05",
   "parameters": {
     "Ouroboros": {
       "macro_character": 0.102,
-      "macro_coupling": 0.311,
       "macro_movement": 0.053,
+      "macro_coupling": 0.311,
       "macro_space": 0.555
     },
     "Overbite": {
       "macro_character": 0.102,
-      "macro_coupling": 0.311,
       "macro_movement": 0.053,
+      "macro_coupling": 0.311,
       "macro_space": 0.555
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OUROBOROS",
+    "target": "OVERBITE",
+    "amount": 0.233
+  },
+  "dna": {
+    "brightness": 0.107,
+    "warmth": 0.097,
+    "movement": 0.021,
+    "density": 0.085,
+    "space": 0.555,
+    "aggression": 0.068
+  },
+  "macros": {
+    "CHARACTER": 0.102,
+    "MOVEMENT": 0.053,
+    "COUPLING": 0.311,
+    "SPACE": 0.555
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

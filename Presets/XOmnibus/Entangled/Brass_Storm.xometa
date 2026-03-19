@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.87,
-        "engineA": "Ottoni",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Ottoni triple brass velocity coupled into Onset percussion — martial brass storm.",
-  "dna": {
-    "aggression": 0.91,
-    "brightness": 0.78,
-    "density": 0.77,
-    "movement": 0.82,
-    "space": 0.18,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Brass Storm",
+  "mood": "Entangled",
   "engines": [
     "Ottoni",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ottoni",
     "onset",
     "brass"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.82,
-    "COUPLING": 0.87,
     "MOVEMENT": 0.82,
+    "COUPLING": 0.87,
     "SPACE": 0.18
   },
-  "mood": "Entangled",
-  "name": "Brass Storm",
-  "parameters": {
-    "Ottoni": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.78,
-    "density": 0.77,
+    "warmth": 0.2,
     "movement": 0.82,
+    "density": 0.77,
     "space": 0.18,
-    "warmth": 0.2
+    "aggression": 0.91
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "ottoni",
-    "onset",
-    "brass"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.78,
+    "warmth": 0.2,
+    "movement": 0.82,
+    "density": 0.77,
+    "space": 0.18,
+    "aggression": 0.91
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.87
+      }
+    ]
+  }
 }

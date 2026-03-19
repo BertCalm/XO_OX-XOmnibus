@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Hot Void Braid",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.82
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Organon",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.68
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.68
   },
   "dna": {
-    "aggression": 0.31,
     "brightness": 0.42,
-    "density": 0.43,
+    "warmth": 0.93,
     "movement": 0.52,
+    "density": 0.43,
     "space": 0.76,
-    "warmth": 0.93
+    "aggression": 0.31
   },
-  "engines": [
-    "Overdub",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.84,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.41,
+    "COUPLING": 0.65,
     "SPACE": 0.78
   },
-  "mood": "Entangled",
-  "name": "Hot Void Braid",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.83,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.35,
-      "macro_space": 0.82
-    },
-    "Overdub": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.46,
-      "macro_space": 0.74
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

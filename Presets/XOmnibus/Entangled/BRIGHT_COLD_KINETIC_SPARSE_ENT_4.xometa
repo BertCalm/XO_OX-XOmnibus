@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.759,
-        "source": "Overdub",
-        "target": "Odyssey",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Cold Kinetic Sparse character entanglement — ODYSSEY × OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.6897,
-    "brightness": 0.9665,
-    "density": 0.1097,
-    "movement": 0.9102,
-    "space": 0.6438,
-    "warmth": 0.0562
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_ENT_4",
+  "mood": "Entangled",
   "engines": [
     "Odyssey",
     "Overdub"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "WAVE",
-    "WANDER",
-    "GLIDE",
-    "HALL"
-  ],
-  "macros": {
-    "CHARACTER": 0.5113,
-    "COUPLING": 0.759,
-    "MOVEMENT": 0.9102,
-    "SPACE": 0.6438
-  },
-  "mood": "Entangled",
-  "name": "Quartz Swirl",
-  "parameters": {
-    "Odyssey": {
-      "amp_attack": 0.0852,
-      "amp_release": 0.4924,
-      "coupling_level": 0.831,
-      "density": 0.1011,
-      "drive": 0.6271,
-      "filter_cutoff": 0.8598,
-      "filter_resonance": 0.4604,
-      "macro_character": 0.5885,
-      "macro_coupling": 0.8786,
-      "macro_movement": 0.8953,
-      "macro_space": 0.6813,
-      "output_level": 0.6965,
-      "reverb_mix": 0.4835,
-      "reverb_size": 0.5764
-    },
-    "Overdub": {
-      "amp_attack": 0.1026,
-      "amp_release": 0.4814,
-      "coupling_level": 0.8258,
-      "density": 0.1334,
-      "drive": 0.6273,
-      "filter_cutoff": 0.9127,
-      "filter_resonance": 0.4417,
-      "macro_character": 0.6198,
-      "macro_coupling": 0.8559,
-      "macro_movement": 0.9139,
-      "macro_space": 0.6478,
-      "output_level": 0.7201,
-      "reverb_mix": 0.4874,
-      "reverb_size": 0.6017
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.6897,
-    "brightness": 0.9665,
-    "density": 0.1097,
-    "movement": 0.9102,
-    "space": 0.6438,
-    "warmth": 0.0562
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Cold Kinetic Sparse character entanglement — ODYSSEY × OVERDUB via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "sparse",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "WAVE",
     "WANDER",
@@ -175,5 +94,4 @@
     "COUPLING": 0.759,
     "SPACE": 0.6438
   }
->>>>>>> origin/v1-launch-prep
 }

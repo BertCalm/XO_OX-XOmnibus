@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Indigo Plate",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.97
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Obscura",
-        "type": "PITCH_SYNC",
-        "amount": 0.79
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.79
   },
-  "description": "Oracle's indigo pitch anchors Obscura's silverpoint resonance — cold tonality fixed.",
   "dna": {
-    "aggression": 0.06,
     "brightness": 0.0,
-    "density": 0.36,
+    "warmth": 0.06,
     "movement": 0.096,
+    "density": 0.36,
     "space": 0.94,
-    "warmth": 0.06
+    "aggression": 0.06
   },
-  "engines": [
-    "Oracle",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.13,
-    "COUPLING": 0.79,
     "MOVEMENT": 0.25,
+    "COUPLING": 0.79,
     "SPACE": 0.94
   },
-  "mood": "Entangled",
-  "name": "Indigo Plate",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.1,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.2,
-      "macro_space": 0.97
-    },
-    "Oracle": {
-      "macro_character": 0.13,
-      "macro_coupling": 0.79,
-      "macro_movement": 0.25,
-      "macro_space": 0.94
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "indigo",
     "plate"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "Oracle's indigo pitch anchors Obscura's silverpoint resonance — cold tonality fixed."
->>>>>>> origin/v1-launch-prep
 }

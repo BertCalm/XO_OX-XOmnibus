@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Organon",
-        "type": "FILTER_MOD",
-        "amount": 0.92
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.893,
-    "brightness": 0.389,
-    "density": 0.09,
-    "movement": 0.879,
-    "space": 0.934,
-    "warmth": 0.612
-  },
+  "name": "KINETIC SPARSE VAST VIOLENT AET AGG 2",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ombre",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.372,
-    "COUPLING": 0.851,
-    "MOVEMENT": 0.825,
-    "SPACE": 0.89
-  },
-  "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT...",
   "parameters": {
     "Ombre": {
       "macro_character": 0.382,
-      "macro_coupling": 0.889,
       "macro_movement": 0.833,
+      "macro_coupling": 0.889,
       "macro_space": 0.908
     },
     "Organon": {
       "macro_character": 0.362,
-      "macro_coupling": 0.813,
       "macro_movement": 0.816,
+      "macro_coupling": 0.813,
       "macro_space": 0.872
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OMBRE",
+    "target": "ORGANON",
+    "amount": 0.92
+  },
+  "dna": {
+    "brightness": 0.389,
+    "warmth": 0.612,
+    "movement": 0.879,
+    "density": 0.09,
+    "space": 0.934,
+    "aggression": 0.893
+  },
+  "macros": {
+    "CHARACTER": 0.372,
+    "MOVEMENT": 0.825,
+    "COUPLING": 0.851,
+    "SPACE": 0.89
+  },
   "tags": [
     "aether",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

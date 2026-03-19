@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Suspended Diffuse",
   "version": "1.0",
@@ -43,64 +40,13 @@
       "olap_couplingBus": 0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Obbligato",
-        "type": "SPECTRAL_TRANSFER",
-        "amount": 0.779
-      }
-    ]
+    "type": "SPECTRAL_TRANSFER",
+    "source": "OVERLAP",
+    "target": "OBBLIGATO",
+    "amount": 0.779
   },
   "couplingIntensity": "Deep",
-  "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider",
-  "engines": [
-    "Overlap",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.65,
-    "COUPLING": 0.78,
-    "MOVEMENT": 0.62,
-    "SPACE": 0.75
-  },
-  "mood": "Entangled",
-  "name": "Suspended Diffuse",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.78,
-      "olap_damping": 0.591,
-      "olap_decay": 0.841,
-      "olap_diffusion": 0.827,
-      "olap_earlyMix": 0.466,
-      "olap_filterCutoff": 0.414,
-      "olap_filterReso": 0.121,
-      "olap_lateMix": 0.749,
-      "olap_modDepth": 0.233,
-      "olap_modRate": 0.145,
-      "olap_outputLevel": 0.776,
-      "olap_preDelay": 0.18,
-      "olap_size": 0.81
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.33,
-    "brightness": 0.61,
-    "density": 0.68,
-    "movement": 0.6,
-    "space": 0.75,
-    "warmth": 0.59
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -110,17 +56,5 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.414,
-    "warmth": 0.5,
-    "movement": 0.145,
-    "density": 0.5,
-    "space": 0.18,
-    "aggression": 0.3
-  }
-=======
   "description": "Obbligato breath pressure drives OVERLAP pre-delay — each exhalation opens the room wider"
->>>>>>> origin/v1-launch-prep
 }

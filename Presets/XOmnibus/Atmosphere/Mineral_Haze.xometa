@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Mineral Haze",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Thick, heavy environment. Maximum density, warm compression. ORIGAMI dense register.",
-  "dna": {
-    "aggression": 0.179,
-    "brightness": 0.338,
-    "density": 0.937,
-    "movement": 0.448,
-    "space": 0.388,
-    "warmth": 0.573
-  },
-  "engines": [
-    "Origami"
-  ],
-  "macroLabels": [
-    "FOLD",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.387,
-    "FOLD": 0.287,
-    "SPACE": 0.39,
-    "TENSION": 0.473
-  },
-  "mood": "Atmosphere",
-  "name": "Mineral Haze",
-  "parameters": {
-    "Origami": {
-      "coupling": 0.387,
-      "fold": 0.287,
-      "space": 0.39,
-      "tension": 0.473
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dense",
@@ -58,9 +16,6 @@
     "warm",
     "thick"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "FOLD",
     "TENSION",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

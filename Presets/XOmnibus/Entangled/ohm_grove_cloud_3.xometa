@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.79,
-        "engineA": "Ohm",
-        "engineB": "Origami",
-        "type": "Env->Cutoff"
-      }
-    ]
-  },
-  "couplingIntensity": "Extreme",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "OHM Grove Cloud 3",
   "mood": "Entangled",
@@ -23,44 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "The commune folds itself into geometric patience — OHM's organ harmonics crease through ORIGAMI's folded architecture.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.72,
-    "density": 0.8,
-    "movement": 0.9,
-    "space": 0.52,
-    "warmth": 0.5
-  },
-  "engines": [
-    "Ohm",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.61,
-    "COUPLING": 0.79,
-    "MOVEMENT": 0.9,
-    "SPACE": 0.52
-  },
-  "mood": "Entangled",
-  "name": "OHM Grove Cloud 3",
-  "parameters": {
-    "ohm_droneFund": 0.62,
-    "ohm_macroCommune": 0.65,
-    "ohm_macroMeddling": 0.76,
-    "ohm_orgHarmonics": 0.676,
-    "origami_creaseDensity": 0.72,
-    "origami_foldPoint": 0.68
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -73,6 +21,46 @@
     "folded",
     "geometric"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.76,
+    "ohm_macroCommune": 0.65,
+    "ohm_orgHarmonics": 0.676,
+    "ohm_droneFund": 0.62,
+    "origami_foldPoint": 0.68,
+    "origami_creaseDensity": 0.72
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORIGAMI",
+        "type": "Env->Cutoff",
+        "amount": 0.79
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.61,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.79,
+    "SPACE": 0.52
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.5,
+    "movement": 0.9,
+    "density": 0.8,
+    "space": 0.52,
+    "aggression": 0.18
+  }
 }

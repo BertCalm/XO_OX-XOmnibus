@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Oblique",
-        "type": "PITCH_SYNC",
-        "amount": 0.753
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_1",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_KINETIC_SPARSE_VAST. Variant 1.",
-  "dna": {
-    "aggression": 0.32,
-    "brightness": 0.883,
-    "density": 0.069,
-    "movement": 0.885,
-    "space": 0.887,
-    "warmth": 0.047
-  },
-  "engines": [
-    "Ole",
-    "Oblique"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.861,
-    "COUPLING": 0.07,
-    "MOVEMENT": 0.931,
-    "SPACE": 0.914
-  },
-  "mood": "Prism",
-  "name": "Chrome Dome",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.838,
-      "macro_coupling": 0.071,
-      "macro_movement": 0.974,
-      "macro_space": 0.98
-    },
-    "Ole": {
-      "macro_character": 0.883,
-      "macro_coupling": 0.069,
-      "macro_movement": 0.888,
-      "macro_space": 0.849
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "vast",
     "prism"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.07,
     "SPACE": 0.914
   }
->>>>>>> origin/v1-launch-prep
 }

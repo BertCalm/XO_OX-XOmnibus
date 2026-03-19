@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Chaotic",
-  "description": "Ultra-diverse Flux preset — extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.904,
+  "schema_version": 1,
+  "name": "KINETIC VIOLENT SPARSE VAST F1",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.588,
-    "density": 0.106,
+    "warmth": 0.547,
+    "aggression": 0.904,
     "movement": 0.92,
-    "space": 0.954,
-    "warmth": 0.547
+    "density": 0.106,
+    "space": 0.954
   },
   "engines": [
     "Optic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "KINETIC VIOLENT SPARSE VAST F1",
-  "parameters": {
-    "Optic": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.904,
-    "brightness": 0.588,
-    "density": 0.106,
-    "movement": 0.92,
-    "space": 0.954,
-    "warmth": 0.547
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme violent aggression, extreme kinetic movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aggressive",
     "kinetic",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_2",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.9218
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.895
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "ORACLE",
+    "amount": 0.895
   },
   "dna": {
-    "aggression": 0.5425,
     "brightness": 0.0492,
-    "density": 0.1001,
+    "warmth": 0.0319,
     "movement": 0.9221,
+    "density": 0.1001,
     "space": 0.9076,
-    "warmth": 0.0319
+    "aggression": 0.5425
   },
-  "engines": [
-    "Organon",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0404,
-    "COUPLING": 0.1114,
     "MOVEMENT": 0.9141,
+    "COUPLING": 0.1114,
     "SPACE": 0.9153
   },
-  "mood": "Atmosphere",
-  "name": "Tone Shimmer 3",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.0589,
-      "macro_coupling": 0.1265,
-      "macro_movement": 0.9333,
-      "macro_space": 0.9218
-    },
-    "Organon": {
-      "macro_character": 0.022,
-      "macro_coupling": 0.0963,
-      "macro_movement": 0.8948,
-      "macro_space": 0.9088
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

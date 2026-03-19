@@ -1,54 +1,12 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.258
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.103,
-    "brightness": 0.941,
-    "density": 0.413,
-    "movement": 0.049,
-    "space": 0.99,
-    "warmth": 0.934
-  },
+  "name": "BRIGHT WARM VAST STILL GENTLE FAM2 4",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Osprey",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.938,
-    "COUPLING": 0.258,
-    "MOVEMENT": 0.049,
-    "SPACE": 0.99
-  },
-  "mood": "Family",
-  "name": "BRIGHT WARM VAST STILL GENT...",
   "parameters": {
-<<<<<<< HEAD
-    "Origami": {
-      "macro_character": 0.95,
-      "macro_coupling": 0.209,
-      "macro_movement": 0.057,
-      "macro_space": 0.99
-    },
-    "Osprey": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.258,
-      "macro_movement": 0.049,
-=======
     "Osprey": {
       "macro_character": 0.938,
       "macro_movement": 0.049,
@@ -59,11 +17,29 @@
       "macro_character": 0.95,
       "macro_movement": 0.057,
       "macro_coupling": 0.209,
->>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.258
+  },
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.934,
+    "movement": 0.049,
+    "density": 0.413,
+    "space": 0.99,
+    "aggression": 0.103
+  },
+  "macros": {
+    "CHARACTER": 0.938,
+    "MOVEMENT": 0.049,
+    "COUPLING": 0.258,
+    "SPACE": 0.99
+  },
   "tags": [
     "family",
     "bright",
@@ -71,10 +47,5 @@
     "still",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

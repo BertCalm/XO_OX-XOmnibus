@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.737
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.957,
-    "brightness": 0.49,
-    "density": 0.04,
-    "movement": 0.088,
-    "space": 0.958,
-    "warmth": 0.898
-  },
+  "name": "CROSS AET 04",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Organon",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.694,
-    "COUPLING": 0.958,
-    "MOVEMENT": 0.064,
-    "SPACE": 0.958
-  },
-  "mood": "Aether",
-  "name": "CROSS AET 04",
   "parameters": {
-<<<<<<< HEAD
-    "Oracle": {
-=======
     "Organon": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.694,
-      "macro_coupling": 0.958,
       "macro_movement": 0.064,
+      "macro_coupling": 0.958,
       "macro_space": 0.958
     },
-<<<<<<< HEAD
-    "Organon": {
-=======
     "Oracle": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.694,
-      "macro_coupling": 0.958,
       "macro_movement": 0.064,
+      "macro_coupling": 0.958,
       "macro_space": 0.958
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "ORACLE",
+    "amount": 0.737
+  },
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.898,
+    "movement": 0.088,
+    "density": 0.04,
+    "space": 0.958,
+    "aggression": 0.957
+  },
+  "macros": {
+    "CHARACTER": 0.694,
+    "MOVEMENT": 0.064,
+    "COUPLING": 0.958,
+    "SPACE": 0.958
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "cross-pole",
     "contrast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

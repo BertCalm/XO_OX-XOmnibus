@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.915
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Octopus",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.85
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OSPREY",
+    "target": "OCTOPUS",
+    "amount": 0.85
   },
   "dna": {
-    "aggression": 0.879,
     "brightness": 0.986,
-    "density": 0.622,
+    "warmth": 0.418,
     "movement": 0.974,
+    "density": 0.622,
     "space": 0.926,
-    "warmth": 0.418
+    "aggression": 0.879
   },
-  "engines": [
-    "Osprey",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.546,
-    "COUPLING": 0.912,
     "MOVEMENT": 0.974,
+    "COUPLING": 0.912,
     "SPACE": 0.926
   },
-  "mood": "Entangled",
-  "name": "Tone Surge 3",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.44,
-      "macro_coupling": 0.879,
-      "macro_movement": 0.98,
-      "macro_space": 0.915
-    },
-    "Osprey": {
-      "macro_character": 0.652,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.964,
-      "macro_space": 0.961
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

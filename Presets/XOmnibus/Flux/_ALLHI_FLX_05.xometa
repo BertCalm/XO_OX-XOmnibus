@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Organon",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.767
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.937,
-    "brightness": 0.914,
-    "density": 0.931,
-    "movement": 0.906,
-    "space": 0.557,
-    "warmth": 0.945
-  },
+  "name": "ALLHI FLX 05",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oracle",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.929,
-    "COUPLING": 0.747,
-    "MOVEMENT": 0.919,
-    "SPACE": 0.557
-  },
-  "mood": "Flux",
-  "name": "ALLHI FLX 05",
   "parameters": {
     "Oracle": {
       "macro_character": 0.929,
-      "macro_coupling": 0.747,
       "macro_movement": 0.919,
+      "macro_coupling": 0.747,
       "macro_space": 0.557
     },
     "Organon": {
       "macro_character": 0.929,
-      "macro_coupling": 0.747,
       "macro_movement": 0.919,
+      "macro_coupling": 0.747,
       "macro_space": 0.557
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.767
+  },
+  "dna": {
+    "brightness": 0.914,
+    "warmth": 0.945,
+    "movement": 0.906,
+    "density": 0.931,
+    "space": 0.557,
+    "aggression": 0.937
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.919,
+    "COUPLING": 0.747,
+    "SPACE": 0.557
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

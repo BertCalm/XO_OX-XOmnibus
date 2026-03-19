@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Organon",
-        "type": "FILTER_MOD",
-        "amount": 0.818
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.923,
-    "brightness": 0.924,
-    "density": 0.9,
-    "movement": 0.411,
-    "space": 0.669,
-    "warmth": 0.921
-  },
+  "name": "BRIGHT WARM DENSE VIOLENT ATM AGG 2",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oceanic",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.913,
-    "COUPLING": 0.867,
-    "MOVEMENT": 0.403,
-    "SPACE": 0.665
-  },
-  "mood": "Atmosphere",
-  "name": "BRIGHT WARM DENSE VIOLENT A...",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.914,
-      "macro_coupling": 0.818,
       "macro_movement": 0.396,
+      "macro_coupling": 0.818,
       "macro_space": 0.669
     },
     "Organon": {
       "macro_character": 0.912,
-      "macro_coupling": 0.915,
       "macro_movement": 0.41,
+      "macro_coupling": 0.915,
       "macro_space": 0.661
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OCEANIC",
+    "target": "ORGANON",
+    "amount": 0.818
+  },
+  "dna": {
+    "brightness": 0.924,
+    "warmth": 0.921,
+    "movement": 0.411,
+    "density": 0.9,
+    "space": 0.669,
+    "aggression": 0.923
+  },
+  "macros": {
+    "CHARACTER": 0.913,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.867,
+    "SPACE": 0.665
+  },
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

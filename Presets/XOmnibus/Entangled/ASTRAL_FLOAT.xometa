@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ASTRAL FLOAT",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.891
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Onset",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.632
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ODDFELIX",
+    "target": "ONSET",
+    "amount": 0.632
   },
   "dna": {
-    "aggression": 0.122,
     "brightness": 0.447,
-    "density": 0.591,
+    "warmth": 0.579,
     "movement": 0.188,
+    "density": 0.591,
     "space": 0.905,
-    "warmth": 0.579
+    "aggression": 0.122
   },
-  "engines": [
-    "Onset",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.799,
-    "COUPLING": 0.701,
     "MOVEMENT": 0.704,
+    "COUPLING": 0.701,
     "SPACE": 0.905
   },
-  "mood": "Entangled",
-  "name": "ASTRAL FLOAT",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.261,
-      "macro_coupling": 0.416,
-      "macro_movement": 0.658,
-      "macro_space": 0.891
-    },
-    "Onset": {
-      "macro_character": 0.629,
-      "macro_coupling": 0.578,
-      "macro_movement": 0.685,
-      "macro_space": 0.878
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "vast",
     "cosmic",
     "xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

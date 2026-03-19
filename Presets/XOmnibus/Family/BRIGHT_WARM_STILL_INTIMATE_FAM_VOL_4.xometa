@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_4",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.083
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Orphica",
-        "type": "PITCH_SYNC",
-        "amount": 0.639
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ORPHICA",
+    "amount": 0.639
   },
   "dna": {
-    "aggression": 0.637,
     "brightness": 0.884,
-    "density": 0.537,
+    "warmth": 0.966,
     "movement": 0.095,
+    "density": 0.537,
     "space": 0.096,
-    "warmth": 0.966
+    "aggression": 0.637
   },
-  "engines": [
-    "Orphica",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.919,
-    "COUPLING": 0.589,
     "MOVEMENT": 0.104,
+    "COUPLING": 0.589,
     "SPACE": 0.095
   },
-  "mood": "Family",
-  "name": "Glow Crush",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.933,
-      "macro_coupling": 0.568,
-      "macro_movement": 0.083,
-      "macro_space": 0.083
-    },
-    "Orphica": {
-      "macro_character": 0.905,
-      "macro_coupling": 0.609,
-      "macro_movement": 0.124,
-      "macro_space": 0.106
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "bright",
     "still"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

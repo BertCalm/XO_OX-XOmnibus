@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_15",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.905
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Oblong",
-        "type": "PITCH_SYNC",
-        "amount": 0.468
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OBBLIGATO",
+    "target": "OBLONG",
+    "amount": 0.468
   },
   "dna": {
-    "aggression": 0.024,
     "brightness": 0.04,
-    "density": 0.504,
+    "warmth": 0.911,
     "movement": 0.535,
+    "density": 0.504,
     "space": 0.892,
-    "warmth": 0.911
+    "aggression": 0.024
   },
-  "engines": [
-    "Oblong",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.488,
-    "COUPLING": 0.291,
     "MOVEMENT": 0.528,
+    "COUPLING": 0.291,
     "SPACE": 0.913
   },
-  "mood": "Family",
-  "name": "Amber Void 2",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.492,
-      "macro_coupling": 0.29,
-      "macro_movement": 0.551,
-      "macro_space": 0.905
-    },
-    "Oblong": {
-      "macro_character": 0.485,
-      "macro_coupling": 0.292,
-      "macro_movement": 0.506,
-      "macro_space": 0.92
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

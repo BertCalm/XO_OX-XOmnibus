@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.889
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Oblong",
-        "type": "FILTER_MOD",
-        "amount": 0.767
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ODYSSEY",
+    "target": "OBLONG",
+    "amount": 0.767
   },
   "dna": {
-    "aggression": 0.697,
     "brightness": 0.978,
-    "density": 0.459,
+    "warmth": 0.904,
     "movement": 0.074,
+    "density": 0.459,
     "space": 0.978,
-    "warmth": 0.904
+    "aggression": 0.697
   },
-  "engines": [
-    "Odyssey",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.578,
-    "COUPLING": 0.677,
     "MOVEMENT": 0.074,
+    "COUPLING": 0.677,
     "SPACE": 0.978
   },
-  "mood": "Flux",
-  "name": "Sunrise Void",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.581,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.075,
-      "macro_space": 0.889
-    },
-    "Odyssey": {
-      "macro_character": 0.521,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.072,
-      "macro_space": 1.0
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "warm",
     "vast",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

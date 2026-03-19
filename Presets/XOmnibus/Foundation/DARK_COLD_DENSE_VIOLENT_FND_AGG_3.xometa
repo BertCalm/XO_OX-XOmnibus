@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_FND_AGG_3",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.412
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "OddOscar",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.747
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ONSET",
+    "target": "ODDOSCAR",
+    "amount": 0.747
   },
   "dna": {
-    "aggression": 0.955,
     "brightness": 0.081,
-    "density": 0.973,
+    "warmth": 0.111,
     "movement": 0.547,
+    "density": 0.973,
     "space": 0.531,
-    "warmth": 0.111
+    "aggression": 0.955
   },
-  "engines": [
-    "Onset",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.377,
-    "COUPLING": 0.524,
     "MOVEMENT": 0.487,
+    "COUPLING": 0.524,
     "SPACE": 0.398
   },
-  "mood": "Foundation",
-  "name": "Grain Massive",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.35,
-      "macro_coupling": 0.502,
-      "macro_movement": 0.447,
-      "macro_space": 0.412
-    },
-    "Onset": {
-      "macro_character": 0.377,
-      "macro_coupling": 0.524,
-      "macro_movement": 0.487,
-      "macro_space": 0.398
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "cold",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

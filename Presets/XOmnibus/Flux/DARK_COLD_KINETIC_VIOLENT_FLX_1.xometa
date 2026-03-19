@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_VIOLENT_FLX_1",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.4581
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oblong",
-        "type": "PITCH_SYNC",
-        "amount": 0.577
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.577
   },
   "dna": {
-    "aggression": 0.9396,
     "brightness": 0.0939,
-    "density": 0.6696,
+    "warmth": 0.0514,
     "movement": 0.9758,
+    "density": 0.6696,
     "space": 0.4869,
-    "warmth": 0.0514
+    "aggression": 0.9396
   },
-  "engines": [
-    "Overdub",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0875,
-    "COUPLING": 0.9131,
     "MOVEMENT": 0.8851,
+    "COUPLING": 0.9131,
     "SPACE": 0.4469
   },
-  "mood": "Flux",
-  "name": "Node Cascade 2",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.1415,
-      "macro_coupling": 0.8918,
-      "macro_movement": 0.9098,
-      "macro_space": 0.4581
-    },
-    "Overdub": {
-      "macro_character": 0.0875,
-      "macro_coupling": 0.9131,
-      "macro_movement": 0.8851,
-      "macro_space": 0.4469
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-warmth",
     "high-movement",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

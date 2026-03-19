@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Overworld",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.593
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8735,
-    "brightness": 0.951,
-    "density": 0.0924,
-    "movement": 0.9431,
-    "space": 0.5774,
-    "warmth": 0.0812
-  },
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5138,
-    "COUPLING": 0.0849,
-    "MOVEMENT": 0.9466,
-    "SPACE": 0.5654
-  },
-  "mood": "Flux",
-  "name": "Mirror Shimmer",
   "parameters": {
     "Optic": {
       "macro_character": 0.497,
-      "macro_coupling": 0.1018,
       "macro_movement": 0.9217,
+      "macro_coupling": 0.1018,
       "macro_space": 0.5516
     },
     "Overworld": {
       "macro_character": 0.5306,
-      "macro_coupling": 0.0679,
       "macro_movement": 0.9714,
+      "macro_coupling": 0.0679,
       "macro_space": 0.5792
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "OPTIC",
+    "target": "OVERWORLD",
+    "amount": 0.593
+  },
+  "dna": {
+    "brightness": 0.951,
+    "warmth": 0.0812,
+    "movement": 0.9431,
+    "density": 0.0924,
+    "space": 0.5774,
+    "aggression": 0.8735
+  },
+  "macros": {
+    "CHARACTER": 0.5138,
+    "MOVEMENT": 0.9466,
+    "COUPLING": 0.0849,
+    "SPACE": 0.5654
+  },
   "tags": [
     "flux",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "sparse",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

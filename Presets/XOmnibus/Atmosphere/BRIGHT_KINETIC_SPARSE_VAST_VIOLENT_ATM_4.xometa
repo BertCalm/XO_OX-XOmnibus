@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_SPARSE_VAST_VIOLENT_ATM_4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.8592
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oblique",
-        "type": "PITCH_SYNC",
-        "amount": 0.775
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OPAL",
+    "target": "OBLIQUE",
+    "amount": 0.775
   },
   "dna": {
-    "aggression": 0.9138,
     "brightness": 0.8743,
-    "density": 0.0673,
+    "warmth": 0.4477,
     "movement": 0.9363,
+    "density": 0.0673,
     "space": 0.875,
-    "warmth": 0.4477
+    "aggression": 0.9138
   },
-  "engines": [
-    "Opal",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6802,
-    "COUPLING": 0.0819,
     "MOVEMENT": 0.9394,
+    "COUPLING": 0.0819,
     "SPACE": 0.8783
   },
-  "mood": "Atmosphere",
-  "name": "Grain Swirl",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.6894,
-      "macro_coupling": 0.0928,
-      "macro_movement": 0.9513,
-      "macro_space": 0.8592
-    },
-    "Opal": {
-      "macro_character": 0.671,
-      "macro_coupling": 0.0709,
-      "macro_movement": 0.9275,
-      "macro_space": 0.8975
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -82,10 +47,5 @@
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Oceanic",
-        "type": "CHAOS_INJECT",
-        "amount": 0.5118
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0983,
-    "brightness": 0.6709,
-    "density": 0.1136,
-    "movement": 0.977,
-    "space": 0.3485,
-    "warmth": 0.9351
-  },
+  "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_5",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obscura",
     "Oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.803,
-    "COUPLING": 0.5118,
-    "MOVEMENT": 0.977,
-    "SPACE": 0.3485
-  },
-  "mood": "Aether",
-  "name": "Sunrise Current 2",
   "parameters": {
     "Obscura": {
       "macro_character": 0.6155,
-      "macro_coupling": 0.8027,
       "macro_movement": 0.4767,
+      "macro_coupling": 0.8027,
       "macro_space": 0.6137
     },
     "Oceanic": {
       "macro_character": 0.659,
-      "macro_coupling": 0.432,
       "macro_movement": 0.2647,
+      "macro_coupling": 0.432,
       "macro_space": 0.9497
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBSCURA",
+    "target": "OCEANIC",
+    "amount": 0.5118
+  },
+  "dna": {
+    "brightness": 0.6709,
+    "warmth": 0.9351,
+    "movement": 0.977,
+    "density": 0.1136,
+    "space": 0.3485,
+    "aggression": 0.0983
+  },
+  "macros": {
+    "CHARACTER": 0.803,
+    "MOVEMENT": 0.977,
+    "COUPLING": 0.5118,
+    "SPACE": 0.3485
+  },
   "tags": [
     "aether",
     "kinetic",
     "warm",
     "sparse",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

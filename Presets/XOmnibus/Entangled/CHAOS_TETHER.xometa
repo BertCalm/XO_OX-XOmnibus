@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Osteria",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.899
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.976,
-    "brightness": 0.34,
-    "density": 0.072,
-    "movement": 0.483,
-    "space": 0.355,
-    "warmth": 0.947
-  },
+  "name": "CHAOS TETHER",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Orbital",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.26,
-    "COUPLING": 0.244,
-    "MOVEMENT": 0.898,
-    "SPACE": 0.714
-  },
-  "mood": "Entangled",
-  "name": "CHAOS TETHER",
   "parameters": {
     "Orbital": {
       "macro_character": 0.688,
-      "macro_coupling": 0.874,
       "macro_movement": 0.606,
+      "macro_coupling": 0.874,
       "macro_space": 0.726
     },
     "Osteria": {
       "macro_character": 0.361,
-      "macro_coupling": 0.729,
       "macro_movement": 0.324,
+      "macro_coupling": 0.729,
       "macro_space": 0.392
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORBITAL",
+    "target": "OSTERIA",
+    "amount": 0.899
+  },
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.947,
+    "movement": 0.483,
+    "density": 0.072,
+    "space": 0.355,
+    "aggression": 0.976
+  },
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.898,
+    "COUPLING": 0.244,
+    "SPACE": 0.714
+  },
   "tags": [
     "fury",
     "chaos",
     "brutal",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OVERBITE in the depths — BITE maximal but no brightness, only bass and darkness.",
-  "dna": {
-    "aggression": 0.72,
-    "brightness": 0.1,
-    "density": 0.78,
-    "movement": 0.42,
-    "space": 0.28,
-    "warmth": 0.55
-  },
+  "schema_version": 1,
+  "name": "Deep Fang",
+  "mood": "Family",
   "engines": [
     "Overbite"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "BITE",
-    "WARMTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Deep Fang",
-  "parameters": {
-    "Overbite": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERBITE in the depths — BITE maximal but no brightness, only bass and darkness.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "bass",
     "bite"
   ],
+  "macroLabels": [
+    "BITE",
+    "WARMTH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.28,
     "aggression": 0.72
   }
->>>>>>> origin/v1-launch-prep
 }

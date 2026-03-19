@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Overdub",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.897
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.883,
-    "brightness": 0.896,
-    "density": 0.881,
-    "movement": 0.931,
-    "space": 0.319,
-    "warmth": 0.699
-  },
+  "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FND_AGG_1",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Onset",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.726,
-    "COUPLING": 0.603,
-    "MOVEMENT": 0.825,
-    "SPACE": 0.388
-  },
-  "mood": "Foundation",
-  "name": "Golden Pulse",
   "parameters": {
     "Onset": {
       "macro_character": 0.726,
-      "macro_coupling": 0.603,
       "macro_movement": 0.825,
+      "macro_coupling": 0.603,
       "macro_space": 0.388
     },
     "Overdub": {
       "macro_character": 0.714,
-      "macro_coupling": 0.606,
       "macro_movement": 0.875,
+      "macro_coupling": 0.606,
       "macro_space": 0.435
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ONSET",
+    "target": "OVERDUB",
+    "amount": 0.897
+  },
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.699,
+    "movement": 0.931,
+    "density": 0.881,
+    "space": 0.319,
+    "aggression": 0.883
+  },
+  "macros": {
+    "CHARACTER": 0.726,
+    "MOVEMENT": 0.825,
+    "COUPLING": 0.603,
+    "SPACE": 0.388
+  },
   "tags": [
     "foundation",
     "violent",
     "bright",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

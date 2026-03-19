@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Overbite",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.7389
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4787,
-    "brightness": 0.8842,
-    "density": 0.9512,
-    "movement": 0.3982,
-    "space": 0.7169,
-    "warmth": 0.0657
-  },
+  "name": "FORGE WAVE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4108,
-    "COUPLING": 0.8725,
-    "MOVEMENT": 0.4094,
-    "SPACE": 0.1253
-  },
-  "mood": "Entangled",
-  "name": "FORGE WAVE",
   "parameters": {
     "Octopus": {
       "macro_character": 0.9851,
-      "macro_coupling": 0.6947,
       "macro_movement": 0.7921,
+      "macro_coupling": 0.6947,
       "macro_space": 0.494
     },
     "Overbite": {
       "macro_character": 0.3609,
-      "macro_coupling": 0.787,
       "macro_movement": 0.5723,
+      "macro_coupling": 0.787,
       "macro_space": 0.983
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCTOPUS",
+    "target": "OVERBITE",
+    "amount": 0.7389
+  },
+  "dna": {
+    "brightness": 0.8842,
+    "warmth": 0.0657,
+    "movement": 0.3982,
+    "density": 0.9512,
+    "space": 0.7169,
+    "aggression": 0.4787
+  },
+  "macros": {
+    "CHARACTER": 0.4108,
+    "MOVEMENT": 0.4094,
+    "COUPLING": 0.8725,
+    "SPACE": 0.1253
+  },
   "tags": [
     "entangled",
     "dense",
@@ -58,10 +47,5 @@
     "industrial",
     "tectonic",
     "thick"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

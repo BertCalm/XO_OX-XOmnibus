@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SERENE MEMBRANE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.746
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "OddOscar",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.874
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OUTWIT",
+    "target": "ODDOSCAR",
+    "amount": 0.874
   },
   "dna": {
-    "aggression": 0.411,
     "brightness": 0.143,
-    "density": 0.897,
+    "warmth": 0.586,
     "movement": 0.07,
+    "density": 0.897,
     "space": 0.061,
-    "warmth": 0.586
+    "aggression": 0.411
   },
-  "engines": [
-    "Outwit",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.354,
-    "COUPLING": 0.437,
     "MOVEMENT": 0.07,
+    "COUPLING": 0.437,
     "SPACE": 0.161
   },
-  "mood": "Entangled",
-  "name": "SERENE MEMBRANE",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.508,
-      "macro_coupling": 0.777,
-      "macro_movement": 0.043,
-      "macro_space": 0.746
-    },
-    "Outwit": {
-      "macro_character": 0.832,
-      "macro_coupling": 0.878,
-      "macro_movement": 0.096,
-      "macro_space": 0.784
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "serene"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD ROOTS",
   "version": "1.0",
   "mood": "Family",
@@ -23,66 +20,29 @@
       "macro_space": 0.933
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ocelot",
-        "type": "GRANULAR_SYNC",
-        "amount": 0.829
-      }
-    ]
+    "type": "GRANULAR_SYNC",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.829
   },
   "dna": {
-    "aggression": 0.113,
     "brightness": 0.261,
-    "density": 0.266,
+    "warmth": 0.087,
     "movement": 0.314,
+    "density": 0.266,
     "space": 0.131,
-    "warmth": 0.087
+    "aggression": 0.113
   },
-  "engines": [
-    "Overbite",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.879,
-    "COUPLING": 0.158,
     "MOVEMENT": 0.37,
+    "COUPLING": 0.158,
     "SPACE": 0.834
   },
-  "mood": "Family",
-  "name": "COLD ROOTS",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.073,
-      "macro_coupling": 0.265,
-      "macro_movement": 0.213,
-      "macro_space": 0.933
-    },
-    "Overbite": {
-      "macro_character": 0.073,
-      "macro_coupling": 0.998,
-      "macro_movement": 0.458,
-      "macro_space": 0.996
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

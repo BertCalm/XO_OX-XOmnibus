@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Orphica",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.804
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_COLD_KINETIC_SPARSE_VAST_PRS_2",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_KINETIC_SPARSE_VAST. Variant 2.",
-  "dna": {
-    "aggression": 0.414,
-    "brightness": 0.876,
-    "density": 0.113,
-    "movement": 0.942,
-    "space": 0.951,
-    "warmth": 0.051
-  },
-  "engines": [
-    "Overworld",
-    "Orphica"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.845,
-    "COUPLING": 0.1,
-    "MOVEMENT": 0.943,
-    "SPACE": 0.955
-  },
-  "mood": "Prism",
-  "name": "Silver Horizon",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.903,
-      "macro_coupling": 0.128,
-      "macro_movement": 0.932,
-      "macro_space": 1.0
-    },
-    "Overworld": {
-      "macro_character": 0.786,
-      "macro_coupling": 0.072,
-      "macro_movement": 0.954,
-      "macro_space": 0.909
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "vast",
     "prism"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.1,
     "SPACE": 0.955
   }
->>>>>>> origin/v1-launch-prep
 }

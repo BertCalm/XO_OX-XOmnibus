@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC",
-        "amount": 0.79
-      }
-    ]
-  },
-  "description": "Obsidian locks Oracle's pitch into crystalline void — absolute cold prophecy.",
-  "dna": {
-    "aggression": 0.05,
-    "brightness": 0.253,
-    "density": 0.403,
-    "movement": 0.24,
-    "space": 1.0,
-    "warmth": 0.04
-  },
+  "name": "Void Oracle",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.11,
-    "COUPLING": 0.79,
-    "MOVEMENT": 0.24,
-    "SPACE": 0.95
-  },
-  "mood": "Entangled",
-  "name": "Void Oracle III",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.11,
-      "macro_coupling": 0.79,
       "macro_movement": 0.24,
+      "macro_coupling": 0.79,
       "macro_space": 0.95
     },
     "Oracle": {
       "macro_character": 0.08,
-      "macro_coupling": 0.84,
       "macro_movement": 0.19,
+      "macro_coupling": 0.84,
       "macro_space": 0.98
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSIDIAN",
+    "target": "ORACLE",
+    "amount": 0.79
+  },
+  "dna": {
+    "brightness": 0.253,
+    "warmth": 0.04,
+    "movement": 0.24,
+    "density": 0.403,
+    "space": 1.0,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.11,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.79,
+    "SPACE": 0.95
+  },
   "tags": [
     "entangled",
     "cold-sparse",
     "void",
     "oracle"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "Obsidian locks Oracle's pitch into crystalline void — absolute cold prophecy."
->>>>>>> origin/v1-launch-prep
 }

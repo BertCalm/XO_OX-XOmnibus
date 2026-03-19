@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Opal",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.881
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.987,
-    "brightness": 0.962,
-    "density": 0.396,
-    "movement": 0.955,
-    "space": 0.937,
-    "warmth": 0.931
-  },
+  "name": "ALLHI AET 04",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Origami",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.947,
-    "COUPLING": 0.962,
-    "MOVEMENT": 0.675,
-    "SPACE": 0.937
-  },
-  "mood": "Aether",
-  "name": "ALLHI AET 04",
   "parameters": {
-<<<<<<< HEAD
-    "Opal": {
-=======
     "Origami": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.947,
-      "macro_coupling": 0.962,
       "macro_movement": 0.675,
+      "macro_coupling": 0.962,
       "macro_space": 0.937
     },
-<<<<<<< HEAD
-    "Origami": {
-=======
     "Opal": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.947,
-      "macro_coupling": 0.962,
       "macro_movement": 0.675,
+      "macro_coupling": 0.962,
       "macro_space": 0.937
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.881
+  },
+  "dna": {
+    "brightness": 0.962,
+    "warmth": 0.931,
+    "movement": 0.955,
+    "density": 0.396,
+    "space": 0.937,
+    "aggression": 0.987
+  },
+  "macros": {
+    "CHARACTER": 0.947,
+    "MOVEMENT": 0.675,
+    "COUPLING": 0.962,
+    "SPACE": 0.937
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

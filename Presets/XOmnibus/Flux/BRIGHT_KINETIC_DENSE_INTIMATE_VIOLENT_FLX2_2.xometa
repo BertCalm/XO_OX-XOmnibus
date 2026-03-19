@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.0631
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Optic",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.8
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OPTIC",
+    "amount": 0.8
   },
   "dna": {
-    "aggression": 0.9809,
     "brightness": 0.9774,
-    "density": 0.9295,
+    "warmth": 0.4547,
     "movement": 0.9868,
+    "density": 0.9295,
     "space": 0.0747,
-    "warmth": 0.4547
+    "aggression": 0.9809
   },
-  "engines": [
-    "Overdub",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6981,
-    "COUPLING": 0.944,
     "MOVEMENT": 0.9758,
+    "COUPLING": 0.944,
     "SPACE": 0.0703
   },
-  "mood": "Flux",
-  "name": "Signal Surge",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.7053,
-      "macro_coupling": 0.9392,
-      "macro_movement": 0.9616,
-      "macro_space": 0.0631
-    },
-    "Overdub": {
-      "macro_character": 0.6908,
-      "macro_coupling": 0.9488,
-      "macro_movement": 0.99,
-      "macro_space": 0.0774
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
@@ -82,10 +47,5 @@
     "dense",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

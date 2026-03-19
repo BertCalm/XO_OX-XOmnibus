@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Origami",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.527
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.429,
-    "brightness": 0.907,
-    "density": 0.06,
-    "movement": 0.663,
-    "space": 0.084,
-    "warmth": 0.592
-  },
+  "name": "ETHER TOPOLOGY",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.867,
-    "COUPLING": 0.26,
-    "MOVEMENT": 0.182,
-    "SPACE": 0.327
-  },
-  "mood": "Entangled",
-  "name": "ETHER TOPOLOGY",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.486,
-      "macro_coupling": 0.669,
       "macro_movement": 0.389,
+      "macro_coupling": 0.669,
       "macro_space": 0.798
     },
     "Origami": {
       "macro_character": 0.724,
-      "macro_coupling": 0.92,
       "macro_movement": 0.841,
+      "macro_coupling": 0.92,
       "macro_space": 0.981
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBBLIGATO",
+    "target": "ORIGAMI",
+    "amount": 0.527
+  },
+  "dna": {
+    "brightness": 0.907,
+    "warmth": 0.592,
+    "movement": 0.663,
+    "density": 0.06,
+    "space": 0.084,
+    "aggression": 0.429
+  },
+  "macros": {
+    "CHARACTER": 0.867,
+    "MOVEMENT": 0.182,
+    "COUPLING": 0.26,
+    "SPACE": 0.327
+  },
   "tags": [
     "entangled",
     "trace",
     "residue"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

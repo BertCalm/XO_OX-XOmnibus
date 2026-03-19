@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_DENSE_FAM_VOL_10",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.521
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "OddfeliX",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.781
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "OTTONI",
+    "target": "ODDFELIX",
+    "amount": 0.781
   },
   "dna": {
-    "aggression": 0.625,
     "brightness": 0.905,
-    "density": 0.934,
+    "warmth": 0.877,
     "movement": 0.928,
+    "density": 0.934,
     "space": 0.492,
-    "warmth": 0.877
+    "aggression": 0.625
   },
-  "engines": [
-    "Ottoni",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.903,
-    "COUPLING": 0.774,
     "MOVEMENT": 0.931,
+    "COUPLING": 0.774,
     "SPACE": 0.519
   },
-  "mood": "Family",
-  "name": "Sunrise Molten",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.894,
-      "macro_coupling": 0.759,
-      "macro_movement": 0.908,
-      "macro_space": 0.521
-    },
-    "Ottoni": {
-      "macro_character": 0.911,
-      "macro_coupling": 0.788,
-      "macro_movement": 0.954,
-      "macro_space": 0.517
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "dense",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

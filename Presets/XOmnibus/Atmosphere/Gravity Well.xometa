@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Hadal zone gravity. Sound compresses. Everything hums at a lower register.",
+  "name": "Gravity Well",
+  "version": "1.0",
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.345,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.117,
+    "COUPLING": 0.0,
     "SPACE": 0.936
   },
-  "mood": "Atmosphere",
-  "name": "Gravity Well III",
-  "parameters": {
-    "Owlfish": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.007,
     "brightness": 0.204,
-    "density": 0.679,
+    "warmth": 0.487,
     "movement": 0.117,
+    "density": 0.679,
     "space": 0.936,
-    "warmth": 0.487
+    "aggression": 0.007
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "deep",
     "vast"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Hadal zone gravity. Sound compresses. Everything hums at a lower register."
 }

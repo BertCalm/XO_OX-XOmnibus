@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ABYSS STRIKE",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 0.493
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Obscura",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.719
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OCELOT",
+    "target": "OBSCURA",
+    "amount": 0.719
   },
   "dna": {
-    "aggression": 0.911,
     "brightness": 0.031,
-    "density": 0.34,
+    "warmth": 0.548,
     "movement": 0.525,
+    "density": 0.34,
     "space": 0.515,
-    "warmth": 0.548
+    "aggression": 0.911
   },
-  "engines": [
-    "Ocelot",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.559,
-    "COUPLING": 0.479,
     "MOVEMENT": 0.47,
+    "COUPLING": 0.479,
     "SPACE": 0.558
   },
-  "mood": "Flux",
-  "name": "ABYSS STRIKE",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.514,
-      "macro_coupling": 0.402,
-      "macro_movement": 0.341,
-      "macro_space": 0.493
-    },
-    "Ocelot": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.479,
-      "macro_movement": 0.47,
-      "macro_space": 0.558
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

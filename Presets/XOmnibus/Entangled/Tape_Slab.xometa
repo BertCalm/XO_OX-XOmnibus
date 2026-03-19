@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Tape Slab",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.29
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oblong",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.92
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.92
   },
   "dna": {
-    "aggression": 0.49,
     "brightness": 0.29,
-    "density": 0.83,
+    "warmth": 0.95,
     "movement": 0.63,
+    "density": 0.83,
     "space": 0.23,
-    "warmth": 0.95
+    "aggression": 0.49
   },
-  "engines": [
-    "Overdub",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.67,
+    "COUPLING": 0.88,
     "SPACE": 0.22
   },
-  "mood": "Entangled",
-  "name": "Tape Slab",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.74,
-      "macro_coupling": 0.83,
-      "macro_movement": 0.68,
-      "macro_space": 0.29
-    },
-    "Overdub": {
-      "macro_character": 0.81,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.65,
-      "macro_space": 0.15
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

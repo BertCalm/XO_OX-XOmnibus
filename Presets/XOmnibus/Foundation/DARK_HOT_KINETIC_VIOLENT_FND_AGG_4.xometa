@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.394
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "OddOscar",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.81
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OUROBOROS",
+    "target": "ODDOSCAR",
+    "amount": 0.81
   },
   "dna": {
-    "aggression": 0.888,
     "brightness": 0.11,
-    "density": 0.552,
+    "warmth": 0.918,
     "movement": 0.879,
+    "density": 0.552,
     "space": 0.321,
-    "warmth": 0.918
+    "aggression": 0.888
   },
-  "engines": [
-    "Ouroboros",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.688,
-    "COUPLING": 0.946,
     "MOVEMENT": 0.532,
+    "COUPLING": 0.946,
     "SPACE": 0.421
   },
-  "mood": "Foundation",
-  "name": "Mahogany Blade",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.714,
-      "macro_coupling": 0.975,
-      "macro_movement": 0.543,
-      "macro_space": 0.394
-    },
-    "Ouroboros": {
-      "macro_character": 0.688,
-      "macro_coupling": 0.946,
-      "macro_movement": 0.532,
-      "macro_space": 0.421
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

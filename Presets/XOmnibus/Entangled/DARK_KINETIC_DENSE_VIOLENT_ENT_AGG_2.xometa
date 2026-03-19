@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_DENSE_VIOLENT_ENT_AGG_2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.658
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.982
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OMBRE",
+    "target": "OBLONG",
+    "amount": 0.982
   },
   "dna": {
-    "aggression": 0.874,
     "brightness": 0.034,
-    "density": 0.913,
+    "warmth": 0.394,
     "movement": 0.947,
+    "density": 0.913,
     "space": 0.68,
-    "warmth": 0.394
+    "aggression": 0.874
   },
-  "engines": [
-    "Ombre",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.471,
-    "COUPLING": 0.839,
     "MOVEMENT": 0.947,
+    "COUPLING": 0.839,
     "SPACE": 0.68
   },
-  "mood": "Entangled",
-  "name": "Node Stream 2",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.53,
-      "macro_coupling": 0.824,
-      "macro_movement": 0.934,
-      "macro_space": 0.658
-    },
-    "Ombre": {
-      "macro_character": 0.411,
-      "macro_coupling": 0.839,
-      "macro_movement": 0.905,
-      "macro_space": 0.644
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

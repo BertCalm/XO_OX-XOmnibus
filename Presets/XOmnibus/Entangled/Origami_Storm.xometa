@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9,
-        "engineA": "Origami",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Origami fold point chaos-injected by Ouroboros — paper crane in topological storm.",
-  "dna": {
-    "aggression": 0.94,
-    "brightness": 0.68,
-    "density": 0.74,
-    "movement": 0.88,
-    "space": 0.18,
-    "warmth": 0.28
-  },
+  "schema_version": 1,
+  "name": "Origami Storm",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "origami",
     "ouroboros",
     "storm"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.86,
-    "COUPLING": 0.9,
     "MOVEMENT": 0.88,
+    "COUPLING": 0.9,
     "SPACE": 0.18
   },
-  "mood": "Entangled",
-  "name": "Origami Storm II",
-  "parameters": {
-    "Origami": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.94,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.68,
-    "density": 0.74,
+    "warmth": 0.28,
     "movement": 0.88,
+    "density": 0.74,
     "space": 0.18,
-    "warmth": 0.28
+    "aggression": 0.94
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "origami",
-    "ouroboros",
-    "storm"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.68,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.74,
+    "space": 0.18,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ORIGAMI",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  }
 }

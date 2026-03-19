@@ -1,51 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.5,
-        "engineA": "Osteria",
-        "engineB": "Overworld",
-        "type": "Env->Amp"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Chiptune glitch decorates the tavern table — retro colour in a warm room.",
-  "dna": {
-    "aggression": 0.36,
-    "brightness": 0.63,
-    "density": 0.54,
-    "movement": 0.46,
-    "space": 0.44,
-    "warmth": 0.62
-  },
-  "engines": [
-    "Osteria",
-    "Overworld"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.5
-  },
-  "mood": "Entangled",
-  "name": "Pixel Feast",
-  "parameters": {
-    "Osteria": {},
-    "Overworld": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Pixel Feast",
   "mood": "Entangled",
@@ -56,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chiptune glitch decorates the tavern table — retro colour in a warm room.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -67,6 +19,38 @@
     "playful",
     "warm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.63,
+    "warmth": 0.62,
+    "movement": 0.46,
+    "density": 0.54,
+    "space": 0.44,
+    "aggression": 0.36
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSTERIA",
+        "engineB": "OVERWORLD",
+        "type": "Env->Amp",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
 }

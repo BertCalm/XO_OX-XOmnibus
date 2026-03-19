@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Orbital",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.727
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.103,
-    "brightness": 0.683,
-    "density": 0.08,
-    "movement": 0.187,
-    "space": 0.028,
-    "warmth": 0.74
-  },
+  "name": "NEAR BREATH",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oracle",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.289,
-    "COUPLING": 0.485,
-    "MOVEMENT": 0.425,
-    "SPACE": 0.028
-  },
-  "mood": "Atmosphere",
-  "name": "NEAR BREATH",
   "parameters": {
     "Oracle": {
       "macro_character": 0.746,
-      "macro_coupling": 0.178,
       "macro_movement": 0.785,
+      "macro_coupling": 0.178,
       "macro_space": 0.028
     },
     "Orbital": {
       "macro_character": 0.532,
-      "macro_coupling": 0.175,
       "macro_movement": 0.112,
+      "macro_coupling": 0.175,
       "macro_space": 0.072
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORACLE",
+    "target": "ORBITAL",
+    "amount": 0.727
+  },
+  "dna": {
+    "brightness": 0.683,
+    "warmth": 0.74,
+    "movement": 0.187,
+    "density": 0.08,
+    "space": 0.028,
+    "aggression": 0.103
+  },
+  "macros": {
+    "CHARACTER": 0.289,
+    "MOVEMENT": 0.425,
+    "COUPLING": 0.485,
+    "SPACE": 0.028
+  },
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

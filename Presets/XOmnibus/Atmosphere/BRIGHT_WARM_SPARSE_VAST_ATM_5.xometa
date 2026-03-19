@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_SPARSE_VAST_ATM_5",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.858
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.828
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.828
   },
   "dna": {
-    "aggression": 0.399,
     "brightness": 0.929,
-    "density": 0.057,
+    "warmth": 0.917,
     "movement": 0.494,
+    "density": 0.057,
     "space": 0.871,
-    "warmth": 0.917
+    "aggression": 0.399
   },
-  "engines": [
-    "Oracle",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.756,
-    "COUPLING": 0.484,
     "MOVEMENT": 0.557,
+    "COUPLING": 0.484,
     "SPACE": 0.824
   },
-  "mood": "Atmosphere",
-  "name": "BRIGHT_WARM_SPARSE_VAST_ATM_5",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.742,
-      "macro_movement": 0.481,
-      "macro_space": 0.858
-    },
-    "Oracle": {
-      "macro_character": 0.756,
-      "macro_coupling": 0.484,
-      "macro_movement": 0.557,
-      "macro_space": 0.824
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
     "warm",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

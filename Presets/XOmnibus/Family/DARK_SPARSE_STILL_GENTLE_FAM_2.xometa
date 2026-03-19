@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.726,
-      "destination": "OHM",
-      "source": "OCEANIC",
-      "type": "PITCH_SYNC"
-    }
-  ],
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Extreme DNA corners — family, dark, still, sparse.",
-  "dna": {
-    "aggression": 0.053,
-    "brightness": 0.076,
-    "density": 0.062,
-    "movement": 0.063,
-    "space": 0.468,
-    "warmth": 0.504
-  },
-  "engines": [
-    "Oceanic",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "DARK SPARSE STILL GENTLE FAM 2",
-  "parameters": {
-    "Oceanic": {
-      "level": 0.848,
-      "pan": 0.109
-    },
-    "Ohm": {
-      "level": 0.685,
-      "pan": -0.073
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "DARK SPARSE STILL GENTLE FAM 2",
   "mood": "Family",
@@ -55,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme DNA corners — family, dark, still, sparse.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "dark",
@@ -64,10 +17,14 @@
     "gentle",
     "ultra-diverse"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "dna": {
     "brightness": 0.076,
@@ -96,5 +53,4 @@
     }
   ],
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

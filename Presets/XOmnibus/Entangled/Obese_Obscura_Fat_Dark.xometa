@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Obscura",
-        "type": "RING_MOD",
-        "amount": 0.9
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.95,
-    "brightness": 0.05,
-    "density": 1.0,
-    "movement": 0.35,
-    "space": 0.1,
-    "warmth": 0.9
-  },
+  "name": "Fat Dark",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.92,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.35,
-    "SPACE": 0.1
-  },
-  "mood": "Entangled",
-  "name": "Fat Dark",
   "parameters": {
     "Obese": {
       "macro_character": 0.92,
-      "macro_coupling": 0.85,
       "macro_movement": 0.35,
+      "macro_coupling": 0.85,
       "macro_space": 0.1
     },
     "Obscura": {
       "macro_character": 0.88,
-      "macro_coupling": 0.8,
       "macro_movement": 0.4,
+      "macro_coupling": 0.8,
       "macro_space": 0.2
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OBESE",
+    "target": "OBSCURA",
+    "amount": 0.9
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.9,
+    "movement": 0.35,
+    "density": 1.0,
+    "space": 0.1,
+    "aggression": 0.95
+  },
+  "macros": {
+    "CHARACTER": 0.92,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.85,
+    "SPACE": 0.1
+  },
   "tags": [
     "entangled",
     "obese",
@@ -59,10 +48,5 @@
     "dark",
     "extreme",
     "fat"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

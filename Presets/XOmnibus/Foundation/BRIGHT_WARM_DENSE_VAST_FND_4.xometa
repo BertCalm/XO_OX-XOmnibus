@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_VAST_FND_4",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.308
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "OddOscar",
-        "type": "CHAOS_INJECT",
-        "amount": 0.219
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "ODDOSCAR",
+    "amount": 0.219
   },
   "dna": {
-    "aggression": 0.367,
     "brightness": 0.964,
-    "density": 0.902,
+    "warmth": 0.887,
     "movement": 0.687,
+    "density": 0.902,
     "space": 0.909,
-    "warmth": 0.887
+    "aggression": 0.367
   },
-  "engines": [
-    "Ouroboros",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.263,
-    "COUPLING": 0.271,
     "MOVEMENT": 0.774,
+    "COUPLING": 0.271,
     "SPACE": 0.64
   },
-  "mood": "Foundation",
-  "name": "BRIGHT_WARM_DENSE_VAST_FND_4",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.731,
-      "macro_coupling": 0.505,
-      "macro_movement": 0.344,
-      "macro_space": 0.308
-    },
-    "Ouroboros": {
-      "macro_character": 0.776,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.326,
-      "macro_space": 0.359
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "dense",
     "vast",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

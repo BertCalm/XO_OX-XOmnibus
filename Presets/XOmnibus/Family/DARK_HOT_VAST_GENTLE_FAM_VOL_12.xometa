@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_VAST_GENTLE_FAM_VOL_12",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.942
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "OddOscar",
-        "type": "DYNAMIC_CROSS",
-        "amount": 0.713
-      }
-    ]
+    "type": "DYNAMIC_CROSS",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.713
   },
   "dna": {
-    "aggression": 0.045,
     "brightness": 0.072,
-    "density": 0.641,
+    "warmth": 0.889,
     "movement": 0.437,
+    "density": 0.641,
     "space": 0.952,
-    "warmth": 0.889
+    "aggression": 0.045
   },
-  "engines": [
-    "Opal",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.467,
-    "COUPLING": 0.342,
     "MOVEMENT": 0.421,
+    "COUPLING": 0.342,
     "SPACE": 0.939
   },
-  "mood": "Family",
-  "name": "Shadow Void 4",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.454,
-      "macro_coupling": 0.367,
-      "macro_movement": 0.423,
-      "macro_space": 0.942
-    },
-    "Opal": {
-      "macro_character": 0.48,
-      "macro_coupling": 0.317,
-      "macro_movement": 0.42,
-      "macro_space": 0.936
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "vast",
     "gentle",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

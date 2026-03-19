@@ -1,46 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-  "description": "OBSIDIAN volcanic edge + OBSCURA pinhole dark — the two darknesses meeting. One cuts, one conceals. The shadow and the veil.",
-  "dna": {
-    "aggression": 0.55,
-    "brightness": 0.22,
-    "density": 0.72,
-    "movement": 0.38,
-    "space": 0.65,
-    "warmth": 0.35
-  },
+  "schema_version": 1,
+  "name": "Shadow and Veil",
+  "mood": "Family",
   "engines": [
     "Obsidian",
     "Obscura"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "EDGE",
-    "MASS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Shadow and Veil",
-  "parameters": {
-    "Obsidian": {},
-    "Obscura": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OBSIDIAN volcanic edge + OBSCURA pinhole dark — the two darknesses meeting. One cuts, one conceals. The shadow and the veil.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -51,10 +19,14 @@
     "deep",
     "batch3-reunion"
   ],
+  "macroLabels": [
+    "EDGE",
+    "MASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -72,5 +44,4 @@
     "space": 0.65,
     "aggression": 0.55
   }
->>>>>>> origin/v1-launch-prep
 }

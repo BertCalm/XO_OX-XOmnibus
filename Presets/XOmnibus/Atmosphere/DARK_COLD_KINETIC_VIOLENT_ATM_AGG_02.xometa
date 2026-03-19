@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD KINETIC VIOLENT ATM AGG 2",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.405
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "OddfeliX",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.847
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "ODDFELIX",
+    "amount": 0.847
   },
   "dna": {
-    "aggression": 0.889,
     "brightness": 0.117,
-    "density": 0.436,
+    "warmth": 0.103,
     "movement": 0.962,
+    "density": 0.436,
     "space": 0.417,
-    "warmth": 0.103
+    "aggression": 0.889
   },
-  "engines": [
-    "Oracle",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.112,
-    "COUPLING": 0.827,
     "MOVEMENT": 0.932,
+    "COUPLING": 0.827,
     "SPACE": 0.41
   },
-  "mood": "Atmosphere",
-  "name": "DARK COLD KINETIC VIOLENT A...",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.115,
-      "macro_coupling": 0.794,
-      "macro_movement": 0.924,
-      "macro_space": 0.405
-    },
-    "Oracle": {
-      "macro_character": 0.108,
-      "macro_coupling": 0.859,
-      "macro_movement": 0.941,
-      "macro_space": 0.416
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "dark",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

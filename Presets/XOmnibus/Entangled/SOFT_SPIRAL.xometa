@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SOFT SPIRAL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.168
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Oblong",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.239
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCELOT",
+    "target": "OBLONG",
+    "amount": 0.239
   },
   "dna": {
-    "aggression": 0.034,
     "brightness": 0.553,
-    "density": 0.125,
+    "warmth": 0.038,
     "movement": 0.607,
+    "density": 0.125,
     "space": 0.697,
-    "warmth": 0.038
+    "aggression": 0.034
   },
-  "engines": [
-    "Ocelot",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.226,
-    "COUPLING": 0.639,
     "MOVEMENT": 0.594,
+    "COUPLING": 0.639,
     "SPACE": 0.318
   },
-  "mood": "Entangled",
-  "name": "SOFT SPIRAL",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.677,
-      "macro_coupling": 0.554,
-      "macro_movement": 0.721,
-      "macro_space": 0.168
-    },
-    "Ocelot": {
-      "macro_character": 0.272,
-      "macro_coupling": 0.373,
-      "macro_movement": 0.436,
-      "macro_space": 0.396
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "soft",
     "tender",
     "quiet",
     "entangled"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

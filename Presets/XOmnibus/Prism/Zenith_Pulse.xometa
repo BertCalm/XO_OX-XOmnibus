@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Orbital peak at zenith — highest orbital resonance",
-  "dna": {
-    "aggression": 0.15,
+  "schema_version": 1,
+  "name": "Zenith Pulse",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.85,
-    "density": 0.3,
+    "warmth": 0.2,
+    "aggression": 0.15,
     "movement": 0.8,
-    "space": 0.8,
-    "warmth": 0.2
+    "density": 0.3,
+    "space": 0.8
   },
   "engines": [
     "Orbital"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "ORBIT",
-    "DECAY",
-    "COUPLING",
-    "DRIFT"
-  ],
-  "mood": "Prism",
-  "name": "Zenith Pulse",
-  "parameters": {
-    "Orbital": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.85,
-    "density": 0.3,
-    "movement": 0.8,
-    "space": 0.8,
-    "warmth": 0.2
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Orbital peak at zenith — highest orbital resonance",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "pulse",
     "peak"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ORBIT",
     "DECAY",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

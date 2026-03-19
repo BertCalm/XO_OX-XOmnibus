@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Permafrost texture — dense and cold as geological strata.",
-  "dna": {
-    "aggression": 0.578,
+  "schema_version": 1,
+  "name": "Cryogenic Descent",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.358,
-    "density": 0.824,
+    "warmth": 0.153,
     "movement": 0.506,
+    "density": 0.824,
     "space": 0.248,
-    "warmth": 0.153
+    "aggression": 0.578
   },
   "engines": [
     "Ouroboros"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "COLLAPSE",
-    "FEEDBACK",
-    "COUPLING",
-    "DARK"
-  ],
-  "mood": "Aether",
-  "name": "Cryogenic Descent",
-  "parameters": {
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.578,
-    "brightness": 0.358,
-    "density": 0.824,
-    "movement": 0.506,
-    "space": 0.248,
-    "warmth": 0.153
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Permafrost texture — dense and cold as geological strata.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "cold",
@@ -50,9 +24,6 @@
     "pressure",
     "aggressive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COLLAPSE",
     "FEEDBACK",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

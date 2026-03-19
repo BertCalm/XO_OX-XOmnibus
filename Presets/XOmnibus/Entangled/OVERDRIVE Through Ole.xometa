@@ -1,31 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.643,
-        "engineA": "Ole",
-        "engineB": "Overdub",
-        "type": "Env->Level"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-  "description": "OLE and OVERDRIVE coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.571,
-    "brightness": 0.573,
-    "density": 0.699,
-    "movement": 0.638,
-    "space": 0.552,
-    "warmth": 0.536
-  },
+  "schema_version": 1,
+  "name": "OVERDRIVE Through Ole",
+  "mood": "Entangled",
   "engines": [
     "Ole",
-<<<<<<< HEAD
-    "Overdub"
-=======
     "OVERDRIVE"
   ],
   "author": "XO_OX",
@@ -36,7 +14,6 @@
     "constellation",
     "ole",
     "overdrive"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,20 +21,27 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "OVERDRIVE Through Ole",
-  "parameters": {
-    "Ole": {},
-    "Overdub": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ole",
-    "overdrive"
-  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OLE",
+        "engineB": "OVERDRIVE",
+        "type": "Env->Level",
+        "amount": 0.643
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.573,
+    "warmth": 0.536,
+    "movement": 0.638,
+    "density": 0.699,
+    "space": 0.552,
+    "aggression": 0.571
+  }
 }

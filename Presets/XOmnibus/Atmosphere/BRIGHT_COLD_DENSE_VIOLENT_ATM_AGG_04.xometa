@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT COLD DENSE VIOLENT ATM AGG 4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.413
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Opal",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.841
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.841
   },
   "dna": {
-    "aggression": 0.96,
     "brightness": 0.973,
-    "density": 0.871,
+    "warmth": 0.104,
     "movement": 0.452,
+    "density": 0.871,
     "space": 0.441,
-    "warmth": 0.104
+    "aggression": 0.96
   },
-  "engines": [
-    "Origami",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.95,
-    "COUPLING": 0.881,
     "MOVEMENT": 0.444,
+    "COUPLING": 0.881,
     "SPACE": 0.422
   },
-  "mood": "Atmosphere",
-  "name": "BRIGHT COLD DENSE VIOLENT A...",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.938,
-      "macro_coupling": 0.87,
-      "macro_movement": 0.438,
-      "macro_space": 0.413
-    },
-    "Origami": {
-      "macro_character": 0.962,
-      "macro_coupling": 0.893,
-      "macro_movement": 0.45,
-      "macro_space": 0.432
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "OddfeliX",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.797
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.923,
-    "brightness": 0.422,
-    "density": 0.943,
-    "movement": 0.614,
-    "space": 0.055,
-    "warmth": 0.043
-  },
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_FND_AGG_4",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Obsidian",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.755,
-    "COUPLING": 0.826,
-    "MOVEMENT": 0.657,
-    "SPACE": 0.926
-  },
-  "mood": "Foundation",
-  "name": "Tone Saturated",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.755,
-      "macro_coupling": 0.826,
       "macro_movement": 0.657,
+      "macro_coupling": 0.826,
       "macro_space": 0.926
     },
     "OddfeliX": {
       "macro_character": 0.779,
-      "macro_coupling": 0.804,
       "macro_movement": 0.673,
+      "macro_coupling": 0.804,
       "macro_space": 0.942
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBSIDIAN",
+    "target": "ODDFELIX",
+    "amount": 0.797
+  },
+  "dna": {
+    "brightness": 0.422,
+    "warmth": 0.043,
+    "movement": 0.614,
+    "density": 0.943,
+    "space": 0.055,
+    "aggression": 0.923
+  },
+  "macros": {
+    "CHARACTER": 0.755,
+    "MOVEMENT": 0.657,
+    "COUPLING": 0.826,
+    "SPACE": 0.926
+  },
   "tags": [
     "foundation",
     "violent",
     "cold",
     "dense",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Osteria",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.7557
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0452,
-    "brightness": 0.0729,
-    "density": 0.3284,
-    "movement": 0.3881,
-    "space": 0.9457,
-    "warmth": 0.8976
-  },
+  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_3",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oblique",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4714,
-    "COUPLING": 0.3284,
-    "MOVEMENT": 0.3881,
-    "SPACE": 0.9457
-  },
-  "mood": "Prism",
-  "name": "DARK_HOT_VAST_GENTLE_PRS_DRK_3",
   "parameters": {
     "Oblique": {
       "macro_character": 0.4714,
-      "macro_coupling": 0.3284,
       "macro_movement": 0.3881,
+      "macro_coupling": 0.3284,
       "macro_space": 0.9457
     },
     "Osteria": {
       "macro_character": 0.4537,
-      "macro_coupling": 0.3315,
       "macro_movement": 0.3869,
+      "macro_coupling": 0.3315,
       "macro_space": 0.9636
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "OSTERIA",
+    "amount": 0.7557
+  },
+  "dna": {
+    "brightness": 0.0729,
+    "warmth": 0.8976,
+    "movement": 0.3881,
+    "density": 0.3284,
+    "space": 0.9457,
+    "aggression": 0.0452
+  },
+  "macros": {
+    "CHARACTER": 0.4714,
+    "MOVEMENT": 0.3881,
+    "COUPLING": 0.3284,
+    "SPACE": 0.9457
+  },
   "tags": [
     "prism",
     "dark",
     "hot",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

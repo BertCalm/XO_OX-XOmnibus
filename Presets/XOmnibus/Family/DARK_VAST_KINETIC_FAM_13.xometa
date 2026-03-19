@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK VAST KINETIC FAM 13",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.992
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Osprey",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.83
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "OSPREY",
+    "amount": 0.83
   },
   "dna": {
-    "aggression": 0.453,
     "brightness": 0.1,
-    "density": 0.611,
+    "warmth": 0.314,
     "movement": 0.886,
+    "density": 0.611,
     "space": 0.913,
-    "warmth": 0.314
+    "aggression": 0.453
   },
-  "engines": [
-    "Ottoni",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.207,
-    "COUPLING": 0.684,
     "MOVEMENT": 0.886,
+    "COUPLING": 0.684,
     "SPACE": 0.913
   },
-  "mood": "Family",
-  "name": "DARK VAST KINETIC FAM 13",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.261,
-      "macro_coupling": 0.665,
-      "macro_movement": 1.0,
-      "macro_space": 0.992
-    },
-    "Ottoni": {
-      "macro_character": 0.207,
-      "macro_coupling": 0.684,
-      "macro_movement": 0.886,
-      "macro_space": 0.913
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

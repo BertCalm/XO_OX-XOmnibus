@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "INNER WALL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.072
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "OddOscar",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.78
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OUTWIT",
+    "target": "ODDOSCAR",
+    "amount": 0.78
   },
   "dna": {
-    "aggression": 0.756,
     "brightness": 0.838,
-    "density": 0.28,
+    "warmth": 0.989,
     "movement": 0.396,
+    "density": 0.28,
     "space": 0.065,
-    "warmth": 0.989
+    "aggression": 0.756
   },
-  "engines": [
-    "Outwit",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.339,
-    "COUPLING": 0.974,
     "MOVEMENT": 0.243,
+    "COUPLING": 0.974,
     "SPACE": 0.065
   },
-  "mood": "Entangled",
-  "name": "INNER WALL",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.365,
-      "macro_coupling": 0.404,
-      "macro_movement": 0.763,
-      "macro_space": 0.072
-    },
-    "Outwit": {
-      "macro_character": 0.648,
-      "macro_coupling": 0.059,
-      "macro_movement": 0.702,
-      "macro_space": 0.053
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

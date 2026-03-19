@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Organon",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.536
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8801,
-    "brightness": 0.1253,
-    "density": 0.9705,
-    "movement": 0.9673,
-    "space": 0.9879,
-    "warmth": 0.4802
-  },
+  "name": "DARK_KINETIC_DENSE_VAST_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oceanic",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.297,
-    "COUPLING": 0.9685,
-    "MOVEMENT": 0.959,
-    "SPACE": 0.9728
-  },
-  "mood": "Flux",
-  "name": "Node Dome",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.299,
-      "macro_coupling": 0.9719,
       "macro_movement": 0.9637,
+      "macro_coupling": 0.9719,
       "macro_space": 0.9674
     },
     "Organon": {
       "macro_character": 0.2951,
-      "macro_coupling": 0.965,
       "macro_movement": 0.9543,
+      "macro_coupling": 0.965,
       "macro_space": 0.9782
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCEANIC",
+    "target": "ORGANON",
+    "amount": 0.536
+  },
+  "dna": {
+    "brightness": 0.1253,
+    "warmth": 0.4802,
+    "movement": 0.9673,
+    "density": 0.9705,
+    "space": 0.9879,
+    "aggression": 0.8801
+  },
+  "macros": {
+    "CHARACTER": 0.297,
+    "MOVEMENT": 0.959,
+    "COUPLING": 0.9685,
+    "SPACE": 0.9728
+  },
   "tags": [
     "flux",
     "dark",
@@ -58,10 +47,5 @@
     "dense",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

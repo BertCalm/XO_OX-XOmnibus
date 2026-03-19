@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Resonant",
-  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.563,
+  "schema_version": 1,
+  "name": "DARK COLD SPARSE VAST F3",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.093,
-    "density": 0.07,
+    "warmth": 0.071,
+    "aggression": 0.563,
     "movement": 0.578,
-    "space": 0.953,
-    "warmth": 0.071
+    "density": 0.07,
+    "space": 0.953
   },
   "engines": [
     "Oracle"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "DARK COLD SPARSE VAST F3",
-  "parameters": {
-    "Oracle": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.563,
-    "brightness": 0.093,
-    "density": 0.07,
-    "movement": 0.578,
-    "space": 0.953,
-    "warmth": 0.071
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "dark",
     "cold",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

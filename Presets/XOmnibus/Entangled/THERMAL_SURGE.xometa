@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Orca",
-        "type": "PITCH_SYNC",
-        "amount": 0.317
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.076,
-    "brightness": 0.279,
-    "density": 0.776,
-    "movement": 0.187,
-    "space": 0.394,
-    "warmth": 0.946
-  },
+  "name": "THERMAL SURGE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Optic",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.273,
-    "COUPLING": 0.922,
-    "MOVEMENT": 0.762,
-    "SPACE": 0.351
-  },
-  "mood": "Entangled",
-  "name": "THERMAL SURGE",
   "parameters": {
     "Optic": {
       "macro_character": 0.561,
-      "macro_coupling": 0.622,
       "macro_movement": 0.767,
+      "macro_coupling": 0.622,
       "macro_space": 0.675
     },
     "Orca": {
       "macro_character": 0.557,
-      "macro_coupling": 0.658,
       "macro_movement": 0.609,
+      "macro_coupling": 0.658,
       "macro_space": 0.693
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPTIC",
+    "target": "ORCA",
+    "amount": 0.317
+  },
+  "dna": {
+    "brightness": 0.279,
+    "warmth": 0.946,
+    "movement": 0.187,
+    "density": 0.776,
+    "space": 0.394,
+    "aggression": 0.076
+  },
+  "macros": {
+    "CHARACTER": 0.273,
+    "MOVEMENT": 0.762,
+    "COUPLING": 0.922,
+    "SPACE": 0.351
+  },
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

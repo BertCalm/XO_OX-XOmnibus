@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK TORRENT",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 0.461
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Ombre",
-        "type": "FILTER_MOD",
-        "amount": 0.532
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OWLFISH",
+    "target": "OMBRE",
+    "amount": 0.532
   },
   "dna": {
-    "aggression": 0.898,
     "brightness": 0.146,
-    "density": 0.576,
+    "warmth": 0.672,
     "movement": 0.602,
+    "density": 0.576,
     "space": 0.585,
-    "warmth": 0.672
+    "aggression": 0.898
   },
-  "engines": [
-    "Owlfish",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.597,
-    "COUPLING": 0.803,
     "MOVEMENT": 0.594,
+    "COUPLING": 0.803,
     "SPACE": 0.537
   },
-  "mood": "Flux",
-  "name": "DARK TORRENT",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.559,
-      "macro_coupling": 0.788,
-      "macro_movement": 0.714,
-      "macro_space": 0.461
-    },
-    "Owlfish": {
-      "macro_character": 0.597,
-      "macro_coupling": 0.803,
-      "macro_movement": 0.594,
-      "macro_space": 0.537
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

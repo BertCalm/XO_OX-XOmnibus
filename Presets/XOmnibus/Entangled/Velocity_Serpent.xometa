@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
   "schema_version": 1,
   "name": "Velocity Serpent",
   "mood": "Entangled",
@@ -8,70 +6,49 @@
     "Ole",
     "Ouroboros"
   ],
->>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.82
-      }
-    ]
-  },
+  "version": "1.0",
   "description": "Velocity coupling: OLE's attack energy winds OUROBOROS's recursion rate tighter.",
-  "dna": {
-    "aggression": 0.86,
-    "brightness": 0.65,
-    "density": 0.76,
-    "movement": 0.8,
-    "space": 0.3,
-    "warmth": 0.7
-  },
-  "engines": [
-    "Ole",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.82,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.74,
-    "SPACE": 0.34
-  },
-  "mood": "Entangled",
-  "name": "Velocity Serpent",
   "parameters": {
     "Ole": {
       "macro_character": 0.82,
-      "macro_coupling": 0.82,
       "macro_movement": 0.74,
+      "macro_coupling": 0.82,
       "macro_space": 0.34
     },
     "Ouroboros": {
       "macro_character": 0.74,
-      "macro_coupling": 0.77,
       "macro_movement": 0.78,
+      "macro_coupling": 0.77,
       "macro_space": 0.38
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OLE",
+    "target": "OUROBOROS",
+    "amount": 0.82,
+    "intensity": "Deep"
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.7,
+    "movement": 0.8,
+    "density": 0.76,
+    "space": 0.3,
+    "aggression": 0.86
+  },
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.74,
+    "COUPLING": 0.82,
+    "SPACE": 0.34
+  },
   "tags": [
     "entangled",
     "ole",
     "ouroboros",
     "velocity",
     "serpent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

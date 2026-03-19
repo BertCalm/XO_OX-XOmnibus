@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_VIOLENT_FAM_AGG_1",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.797
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Odyssey",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.94
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORPHICA",
+    "target": "ODYSSEY",
+    "amount": 0.94
   },
   "dna": {
-    "aggression": 0.898,
     "brightness": 0.874,
-    "density": 0.973,
+    "warmth": 0.905,
     "movement": 0.413,
+    "density": 0.973,
     "space": 0.328,
-    "warmth": 0.905
+    "aggression": 0.898
   },
-  "engines": [
-    "Orphica",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.509,
-    "COUPLING": 0.704,
     "MOVEMENT": 0.825,
+    "COUPLING": 0.704,
     "SPACE": 0.832
   },
-  "mood": "Family",
-  "name": "Sunrise Saturated 3",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.676,
-      "macro_movement": 0.786,
-      "macro_space": 0.797
-    },
-    "Orphica": {
-      "macro_character": 0.509,
-      "macro_coupling": 0.704,
-      "macro_movement": 0.825,
-      "macro_space": 0.832
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "bright",
     "warm",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "OddOscar",
-        "type": "SPATIAL_BIND",
-        "amount": 0.707
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.921,
-    "brightness": 0.945,
-    "density": 0.628,
-    "movement": 0.413,
-    "space": 0.058,
-    "warmth": 0.128
-  },
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_143",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddOscar",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.528,
-    "COUPLING": 0.796,
-    "MOVEMENT": 0.395,
-    "SPACE": 0.038
-  },
-  "mood": "Family",
-  "name": "Quartz Rage 2",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.523,
-      "macro_coupling": 0.791,
       "macro_movement": 0.401,
+      "macro_coupling": 0.791,
       "macro_space": 0.03
     },
     "Opal": {
       "macro_character": 0.534,
-      "macro_coupling": 0.802,
       "macro_movement": 0.388,
+      "macro_coupling": 0.802,
       "macro_space": 0.046
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_BIND",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.707
+  },
+  "dna": {
+    "brightness": 0.945,
+    "warmth": 0.128,
+    "movement": 0.413,
+    "density": 0.628,
+    "space": 0.058,
+    "aggression": 0.921
+  },
+  "macros": {
+    "CHARACTER": 0.528,
+    "MOVEMENT": 0.395,
+    "COUPLING": 0.796,
+    "SPACE": 0.038
+  },
   "tags": [
     "family",
     "bright",
     "cold",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

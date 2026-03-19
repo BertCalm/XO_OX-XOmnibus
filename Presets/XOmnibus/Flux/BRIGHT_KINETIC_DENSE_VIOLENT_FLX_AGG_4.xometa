@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_DENSE_VIOLENT_FLX_AGG_4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.689
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Organon",
-        "type": "CHAOS_INJECT",
-        "amount": 0.886
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OVERDUB",
+    "target": "ORGANON",
+    "amount": 0.886
   },
   "dna": {
-    "aggression": 0.921,
     "brightness": 0.885,
-    "density": 0.902,
+    "warmth": 0.49,
     "movement": 0.936,
+    "density": 0.902,
     "space": 0.649,
-    "warmth": 0.49
+    "aggression": 0.921
   },
-  "engines": [
-    "Overdub",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5,
-    "COUPLING": 0.925,
     "MOVEMENT": 0.936,
+    "COUPLING": 0.925,
     "SPACE": 0.649
   },
-  "mood": "Flux",
-  "name": "Thread Swirl 2",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.566,
-      "macro_coupling": 0.915,
-      "macro_movement": 0.953,
-      "macro_space": 0.689
-    },
-    "Overdub": {
-      "macro_character": 0.435,
-      "macro_coupling": 0.925,
-      "macro_movement": 0.957,
-      "macro_space": 0.639
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "kinetic",
     "bright",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

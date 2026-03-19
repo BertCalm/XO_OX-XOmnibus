@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_INTIMATE_FAM_VOL_112",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.071
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Obbligato",
-        "type": "FILTER_LINK",
-        "amount": 0.883
-      }
-    ]
+    "type": "FILTER_LINK",
+    "source": "OHM",
+    "target": "OBBLIGATO",
+    "amount": 0.883
   },
   "dna": {
-    "aggression": 0.424,
     "brightness": 0.931,
-    "density": 0.549,
+    "warmth": 0.917,
     "movement": 0.977,
+    "density": 0.549,
     "space": 0.094,
-    "warmth": 0.917
+    "aggression": 0.424
   },
-  "engines": [
-    "Ohm",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.899,
-    "COUPLING": 0.466,
     "MOVEMENT": 0.976,
+    "COUPLING": 0.466,
     "SPACE": 0.071
   },
-  "mood": "Family",
-  "name": "Candlelight Shimmer",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.895,
-      "macro_coupling": 0.47,
-      "macro_movement": 0.978,
-      "macro_space": 0.071
-    },
-    "Ohm": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.461,
-      "macro_movement": 0.973,
-      "macro_space": 0.072
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "intimate",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

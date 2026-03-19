@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Ouroboros",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.537
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.513,
-    "brightness": 0.356,
-    "density": 0.583,
-    "movement": 0.962,
-    "space": 0.931,
-    "warmth": 0.348
-  },
+  "name": "CURRENT BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Ohm",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.416,
-    "COUPLING": 0.537,
-    "MOVEMENT": 0.962,
-    "SPACE": 0.931
-  },
-  "mood": "Foundation",
-  "name": "CURRENT BASE",
   "parameters": {
     "Ohm": {
       "macro_character": 0.339,
-      "macro_coupling": 0.443,
       "macro_movement": 0.935,
+      "macro_coupling": 0.443,
       "macro_space": 0.336
     },
     "Ouroboros": {
       "macro_character": 0.46,
-      "macro_coupling": 0.57,
       "macro_movement": 0.97,
+      "macro_coupling": 0.57,
       "macro_space": 0.269
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OHM",
+    "target": "OUROBOROS",
+    "amount": 0.537
+  },
+  "dna": {
+    "brightness": 0.356,
+    "warmth": 0.348,
+    "movement": 0.962,
+    "density": 0.583,
+    "space": 0.931,
+    "aggression": 0.513
+  },
+  "macros": {
+    "CHARACTER": 0.416,
+    "MOVEMENT": 0.962,
+    "COUPLING": 0.537,
+    "SPACE": 0.931
+  },
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

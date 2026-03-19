@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Opal",
-        "type": "FILTER_MOD",
-        "amount": 0.525
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.972,
-    "brightness": 0.637,
-    "density": 0.881,
-    "movement": 0.375,
-    "space": 0.973,
-    "warmth": 0.893
-  },
+  "name": "HOT SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "OddfeliX",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.506,
-    "COUPLING": 0.282,
-    "MOVEMENT": 0.508,
-    "SPACE": 0.654
-  },
-  "mood": "Prism",
-  "name": "HOT SPECTRUM",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.66,
-      "macro_coupling": 0.454,
       "macro_movement": 0.839,
+      "macro_coupling": 0.454,
       "macro_space": 0.222
     },
     "Opal": {
       "macro_character": 0.94,
-      "macro_coupling": 0.628,
       "macro_movement": 0.227,
+      "macro_coupling": 0.628,
       "macro_space": 0.536
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "OPAL",
+    "amount": 0.525
+  },
+  "dna": {
+    "brightness": 0.637,
+    "warmth": 0.893,
+    "movement": 0.375,
+    "density": 0.881,
+    "space": 0.973,
+    "aggression": 0.972
+  },
+  "macros": {
+    "CHARACTER": 0.506,
+    "MOVEMENT": 0.508,
+    "COUPLING": 0.282,
+    "SPACE": 0.654
+  },
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

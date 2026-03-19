@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "THIN TOPOLOGY",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.273
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obbligato",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.768
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "ODDFELIX",
+    "target": "OBBLIGATO",
+    "amount": 0.768
   },
   "dna": {
-    "aggression": 0.922,
     "brightness": 0.98,
-    "density": 0.139,
+    "warmth": 0.244,
     "movement": 0.551,
+    "density": 0.139,
     "space": 0.384,
-    "warmth": 0.244
+    "aggression": 0.922
   },
-  "engines": [
-    "OddfeliX",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.508,
-    "COUPLING": 0.864,
     "MOVEMENT": 0.879,
+    "COUPLING": 0.864,
     "SPACE": 0.276
   },
-  "mood": "Entangled",
-  "name": "THIN TOPOLOGY",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.498,
-      "macro_coupling": 0.509,
-      "macro_movement": 0.717,
-      "macro_space": 0.273
-    },
-    "OddfeliX": {
-      "macro_character": 0.913,
-      "macro_coupling": 0.117,
-      "macro_movement": 0.461,
-      "macro_space": 0.832
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "drift",
     "filament"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

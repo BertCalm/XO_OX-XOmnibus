@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.93,
-        "engineA": "Outwit",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Outwit 8-arm velocity coupled into Onset XVC — Wolfram CA feeding drum velocity at maximum kinetics.",
-  "dna": {
-    "aggression": 0.97,
-    "brightness": 0.6,
-    "density": 0.68,
-    "movement": 0.98,
-    "space": 0.14,
-    "warmth": 0.2
-  },
+  "schema_version": 1,
+  "name": "Arm Topology",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "outwit",
     "onset",
     "arm"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.93,
     "MOVEMENT": 0.98,
+    "COUPLING": 0.93,
     "SPACE": 0.14
   },
-  "mood": "Entangled",
-  "name": "Arm Topology",
-  "parameters": {
-    "Outwit": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.97,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.6,
-    "density": 0.68,
+    "warmth": 0.2,
     "movement": 0.98,
+    "density": 0.68,
     "space": 0.14,
-    "warmth": 0.2
+    "aggression": 0.97
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "outwit",
-    "onset",
-    "arm"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.2,
+    "movement": 0.98,
+    "density": 0.68,
+    "space": 0.14,
+    "aggression": 0.97
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.93
+      }
+    ]
+  }
 }

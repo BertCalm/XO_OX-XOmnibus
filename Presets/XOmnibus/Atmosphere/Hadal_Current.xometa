@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OCEANIC — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.11,
-    "brightness": 0.1,
-    "density": 0.55,
-    "movement": 0.16,
-    "space": 0.56,
-    "warmth": 0.25
-  },
+  "schema_version": 1,
+  "name": "Hadal Current",
+  "mood": "Atmosphere",
   "engines": [
     "Oceanic"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Hadal Current",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.25,
+    "movement": 0.16,
+    "density": 0.55,
+    "space": 0.56,
+    "aggression": 0.11
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.25,
+    "movement": 0.16,
+    "density": 0.55,
+    "space": 0.56,
+    "aggression": 0.11
+  },
   "parameters": {
     "Oceanic": {
-<<<<<<< HEAD
-=======
       "ocn_depthZone": 0.28,
       "ocn_pressure": 0.63,
       "ocn_filterCutoff": 0.55,
       "ocn_filterReso": 0.33,
->>>>>>> origin/v1-launch-prep
       "ocn_ampAttack": 795.7,
       "ocn_ampDecay": 426.8,
-      "ocn_ampRelease": 486.3,
       "ocn_ampSustain": 0.62,
-      "ocn_character": 0.77,
-      "ocn_coupling": 0.45,
-      "ocn_delayMix": 0.65,
-      "ocn_depthZone": 0.28,
-      "ocn_filterCutoff": 0.55,
-      "ocn_filterReso": 0.33,
-      "ocn_lfoDepth": 0.7,
+      "ocn_ampRelease": 486.3,
       "ocn_lfoRate": 0.1,
-      "ocn_movement": 0.72,
-      "ocn_pressure": 0.63,
+      "ocn_lfoDepth": 0.7,
       "ocn_reverbMix": 0.85,
-      "ocn_space": 0.22
+      "ocn_delayMix": 0.65,
+      "ocn_character": 0.77,
+      "ocn_movement": 0.72,
+      "ocn_space": 0.22,
+      "ocn_coupling": 0.45
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.11,
-    "brightness": 0.1,
-    "density": 0.55,
-    "movement": 0.16,
-    "space": 0.56,
-    "warmth": 0.25
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

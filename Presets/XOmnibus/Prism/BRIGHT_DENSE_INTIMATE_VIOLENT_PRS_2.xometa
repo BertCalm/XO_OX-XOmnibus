@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Origami",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.763
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.949,
-    "brightness": 0.977,
-    "density": 0.928,
-    "movement": 0.41,
-    "space": 0.105,
-    "warmth": 0.563
-  },
+  "name": "BRIGHT_DENSE_INTIMATE_VIOLENT_PRS_2",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Orphica",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.963,
-    "COUPLING": 0.707,
-    "MOVEMENT": 0.41,
-    "SPACE": 0.105
-  },
-  "mood": "Prism",
-  "name": "Thread Storm 2",
   "parameters": {
-<<<<<<< HEAD
-    "Origami": {
-      "macro_character": 0.486,
-      "macro_coupling": 0.733,
-=======
     "Orphica": {
       "macro_character": 0.963,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.41,
+      "macro_coupling": 0.707,
       "macro_space": 0.105
     },
-<<<<<<< HEAD
-    "Orphica": {
-      "macro_character": 0.963,
-      "macro_coupling": 0.707,
-=======
     "Origami": {
       "macro_character": 0.486,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.41,
+      "macro_coupling": 0.733,
       "macro_space": 0.105
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORPHICA",
+    "target": "ORIGAMI",
+    "amount": 0.763
+  },
+  "dna": {
+    "brightness": 0.977,
+    "warmth": 0.563,
+    "movement": 0.41,
+    "density": 0.928,
+    "space": 0.105,
+    "aggression": 0.949
+  },
+  "macros": {
+    "CHARACTER": 0.963,
+    "MOVEMENT": 0.41,
+    "COUPLING": 0.707,
+    "SPACE": 0.105
+  },
   "tags": [
     "prism",
     "bright",
     "dense",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

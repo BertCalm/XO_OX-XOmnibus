@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.535,
-        "engineA": "Outwit",
-        "engineB": "Overworld",
-        "type": "PITCH_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "OVERWORLD noise register seeds OUTWIT initial pattern — retro chaos into cellular order",
-  "dna": {
-    "aggression": 0.475,
-    "brightness": 0.65,
-    "density": 0.55,
-    "movement": 0.7,
-    "space": 0.45,
-    "warmth": 0.375
-  },
+  "schema_version": 1,
+  "name": "Branch Evolve",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Overworld"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Branch Evolve",
-  "parameters": {
-    "Outwit": {
-      "owit_ampAttack": 0.076,
-      "owit_ampRelease": 0.22,
-      "owit_arms": 5,
-      "owit_cellSize": 0.206,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.585,
-      "owit_density": 0.428,
-      "owit_evolveRate": 0.396,
-      "owit_filterCutoff": 0.513,
-      "owit_filterReso": 0.341,
-      "owit_mutateProb": 0.188,
-      "owit_outputLevel": 0.708,
-      "owit_pitchSpread": 0.263,
-      "owit_rule": 90
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.475,
-    "brightness": 0.65,
-    "density": 0.55,
-    "movement": 0.7,
-    "space": 0.45,
-    "warmth": 0.375
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERWORLD noise register seeds OUTWIT initial pattern — retro chaos into cellular order",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "cellular-automata",
     "wolfram"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

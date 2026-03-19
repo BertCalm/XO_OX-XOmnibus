@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_DENSE_VAST_GENTLE_FND_2",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,58 +20,26 @@
       "macro_space": 0.423
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obsidian",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.293
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ODDFELIX",
+    "target": "OBSIDIAN",
+    "amount": 0.293
   },
   "dna": {
-    "aggression": 0.12,
     "brightness": 0.321,
-    "density": 0.971,
+    "warmth": 0.925,
     "movement": 0.582,
+    "density": 0.971,
     "space": 0.952,
-    "warmth": 0.925
+    "aggression": 0.12
   },
-  "engines": [
-    "OddfeliX",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.618,
-    "COUPLING": 0.46,
     "MOVEMENT": 0.241,
+    "COUPLING": 0.46,
     "SPACE": 0.701
   },
-  "mood": "Foundation",
-  "name": "HOT_DENSE_VAST_GENTLE_FND_2",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.115,
-      "macro_coupling": 0.332,
-      "macro_movement": 0.531,
-      "macro_space": 0.423
-    },
-    "OddfeliX": {
-      "macro_character": 0.375,
-      "macro_coupling": 0.145,
-      "macro_movement": 0.732,
-      "macro_space": 0.253
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "extreme",
@@ -83,10 +48,5 @@
     "vast",
     "gentle",
     "spatial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

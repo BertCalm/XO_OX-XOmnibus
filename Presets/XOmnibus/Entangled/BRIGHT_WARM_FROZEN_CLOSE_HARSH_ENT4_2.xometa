@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_FROZEN_CLOSE_HARSH_ENT4_2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.04
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Optic",
-        "type": "PITCH_SYNC",
-        "amount": 0.874
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OTTONI",
+    "target": "OPTIC",
+    "amount": 0.874
   },
   "dna": {
-    "aggression": 0.966,
     "brightness": 0.876,
-    "density": 0.662,
+    "warmth": 0.943,
     "movement": 0.055,
+    "density": 0.662,
     "space": 0.051,
-    "warmth": 0.943
+    "aggression": 0.966
   },
-  "engines": [
-    "Ottoni",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.919,
-    "COUPLING": 0.874,
     "MOVEMENT": 0.061,
+    "COUPLING": 0.874,
     "SPACE": 0.055
   },
-  "mood": "Entangled",
-  "name": "Solar Grit 2",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.917,
-      "macro_coupling": 0.671,
-      "macro_movement": 0.063,
-      "macro_space": 0.04
-    },
-    "Ottoni": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.672,
-      "macro_movement": 0.059,
-      "macro_space": 0.071
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "warm",
     "close",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_SPARSE_INTIMATE_GENTLE_AET2_1",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.029
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "OddfeliX",
-        "type": "PITCH_SYNC",
-        "amount": 0.8108
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.8108
   },
   "dna": {
-    "aggression": 0.1243,
     "brightness": 0.9541,
     "density": 0.0504,
-    "movement": 0.588,
     "space": 0.0208,
-    "warmth": 0.3342
+    "aggression": 0.1243,
+    "warmth": 0.3342,
+    "movement": 0.588
   },
-  "engines": [
-    "Origami",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9446,
-    "COUPLING": 0.8108,
     "MOVEMENT": 0.5973,
+    "COUPLING": 0.8108,
     "SPACE": 0.0208
   },
-  "mood": "Aether",
-  "name": "Crystal Swirl",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.9263,
-      "macro_coupling": 0.031,
-      "macro_movement": 0.6072,
-      "macro_space": 0.029
-    },
-    "Origami": {
-      "macro_character": 0.9629,
-      "macro_coupling": 0.068,
-      "macro_movement": 0.5874,
-      "macro_space": 0.01
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "airy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

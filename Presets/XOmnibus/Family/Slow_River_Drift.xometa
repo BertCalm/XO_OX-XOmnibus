@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "ODYSSEY on a wide horizon — drift macro open, depth resonant. An exploratory wander that never rushes. The engine at its most ODYSSEY.",
-  "dna": {
-    "aggression": 0.22,
-    "brightness": 0.55,
-    "density": 0.45,
-    "movement": 0.7,
-    "space": 0.65,
-    "warmth": 0.48
-  },
+  "schema_version": 1,
+  "name": "Slow River Drift",
+  "mood": "Family",
   "engines": [
     "Odyssey"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DRIFT",
-    "DEPTH",
-    "COUPLING",
-    "HORIZON"
-  ],
-  "mood": "Family",
-  "name": "Slow River Drift",
-  "parameters": {
-    "Odyssey": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ODYSSEY on a wide horizon — drift macro open, depth resonant. An exploratory wander that never rushes. The engine at its most ODYSSEY.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -49,10 +18,14 @@
     "slow",
     "batch1-signatures"
   ],
+  "macroLabels": [
+    "DRIFT",
+    "DEPTH",
+    "COUPLING",
+    "HORIZON"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -70,5 +43,4 @@
     "space": 0.65,
     "aggression": 0.22
   }
->>>>>>> origin/v1-launch-prep
 }

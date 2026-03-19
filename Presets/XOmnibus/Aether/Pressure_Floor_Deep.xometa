@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Cold iron mass — dense, toneless, infinite pressure.",
-  "dna": {
-    "aggression": 0.516,
+  "schema_version": 1,
+  "name": "Pressure Floor Deep",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.376,
-    "density": 0.93,
+    "warmth": 0.082,
     "movement": 0.321,
+    "density": 0.93,
     "space": 0.38,
-    "warmth": 0.082
+    "aggression": 0.516
   },
   "engines": [
     "Obbligato"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "COLLAPSE",
-    "FEEDBACK",
-    "COUPLING",
-    "DARK"
-  ],
-  "mood": "Aether",
-  "name": "Pressure Floor Deep",
-  "parameters": {
-    "Obbligato": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.516,
-    "brightness": 0.376,
-    "density": 0.93,
-    "movement": 0.321,
-    "space": 0.38,
-    "warmth": 0.082
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Cold iron mass — dense, toneless, infinite pressure.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "aether",
     "cold",
@@ -50,9 +24,6 @@
     "pressure",
     "aggressive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COLLAPSE",
     "FEEDBACK",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

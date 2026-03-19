@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_DENSE_VIOLENT_FLX2_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.6897
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Odyssey",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.719
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OPTIC",
+    "target": "ODYSSEY",
+    "amount": 0.719
   },
   "dna": {
-    "aggression": 0.9476,
     "brightness": 0.0993,
-    "density": 0.9454,
+    "warmth": 0.0925,
     "movement": 0.9706,
+    "density": 0.9454,
     "space": 0.6614,
-    "warmth": 0.0925
+    "aggression": 0.9476
   },
-  "engines": [
-    "Optic",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0931,
-    "COUPLING": 0.9405,
     "MOVEMENT": 0.9472,
+    "COUPLING": 0.9405,
     "SPACE": 0.6829
   },
-  "mood": "Flux",
-  "name": "Shard Drift 2",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.0764,
-      "macro_coupling": 0.9478,
-      "macro_movement": 0.9485,
-      "macro_space": 0.6897
-    },
-    "Optic": {
-      "macro_character": 0.1098,
-      "macro_coupling": 0.9331,
-      "macro_movement": 0.946,
-      "macro_space": 0.6762
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

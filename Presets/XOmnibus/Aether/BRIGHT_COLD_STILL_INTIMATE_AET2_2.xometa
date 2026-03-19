@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_2",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0133
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "OddOscar",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.8701
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORBITAL",
+    "target": "ODDOSCAR",
+    "amount": 0.8701
   },
   "dna": {
-    "aggression": 0.5996,
     "brightness": 0.8808,
-    "density": 0.4474,
     "movement": 0.0634,
     "space": 0.0412,
-    "warmth": 0.0336
+    "warmth": 0.0336,
+    "density": 0.4474,
+    "aggression": 0.5996
   },
-  "engines": [
-    "Orbital",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9132,
-    "COUPLING": 0.8701,
     "MOVEMENT": 0.0547,
+    "COUPLING": 0.8701,
     "SPACE": 0.0412
   },
-  "mood": "Aether",
-  "name": "Silver Edge",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.9192,
-      "macro_coupling": 0.4889,
-      "macro_movement": 0.0695,
-      "macro_space": 0.0133
-    },
-    "Orbital": {
-      "macro_character": 0.9072,
-      "macro_coupling": 0.4314,
-      "macro_movement": 0.0399,
-      "macro_space": 0.0127
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "still",
     "intimate",
     "frozen"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

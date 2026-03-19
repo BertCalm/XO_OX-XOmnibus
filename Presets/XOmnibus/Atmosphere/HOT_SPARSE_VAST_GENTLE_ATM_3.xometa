@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_SPARSE_VAST_GENTLE_ATM_3",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.759
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Oblique",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.871
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "OBLIQUE",
+    "amount": 0.871
   },
   "dna": {
-    "aggression": 0.08,
     "brightness": 0.68,
-    "density": 0.042,
+    "warmth": 0.88,
     "movement": 0.44,
+    "density": 0.042,
     "space": 0.876,
-    "warmth": 0.88
+    "aggression": 0.08
   },
-  "engines": [
-    "Obscura",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.312,
-    "COUPLING": 0.508,
     "MOVEMENT": 0.52,
+    "COUPLING": 0.508,
     "SPACE": 0.89
   },
-  "mood": "Atmosphere",
-  "name": "HOT_SPARSE_VAST_GENTLE_ATM_3",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.338,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.443,
-      "macro_space": 0.759
-    },
-    "Obscura": {
-      "macro_character": 0.312,
-      "macro_coupling": 0.508,
-      "macro_movement": 0.52,
-      "macro_space": 0.89
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "warm",
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

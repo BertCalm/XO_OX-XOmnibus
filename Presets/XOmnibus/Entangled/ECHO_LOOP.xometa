@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ECHO LOOP",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.892
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osteria",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.468
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "OSTERIA",
+    "amount": 0.468
   },
   "dna": {
-    "aggression": 0.616,
     "brightness": 0.153,
-    "density": 0.103,
+    "warmth": 0.176,
     "movement": 0.522,
+    "density": 0.103,
     "space": 0.65,
-    "warmth": 0.176
+    "aggression": 0.616
   },
-  "engines": [
-    "Overdub",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.92,
-    "COUPLING": 0.465,
     "MOVEMENT": 0.775,
+    "COUPLING": 0.465,
     "SPACE": 0.826
   },
-  "mood": "Entangled",
-  "name": "ECHO LOOP",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.49,
-      "macro_coupling": 0.362,
-      "macro_movement": 0.434,
-      "macro_space": 0.892
-    },
-    "Overdub": {
-      "macro_character": 0.069,
-      "macro_coupling": 0.013,
-      "macro_movement": 0.648,
-      "macro_space": 0.42
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "minimal",
     "negative-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

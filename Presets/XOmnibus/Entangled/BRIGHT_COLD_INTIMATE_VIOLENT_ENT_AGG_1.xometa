@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_INTIMATE_VIOLENT_ENT_AGG_1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.097
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Obscura",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.951
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "OBSCURA",
+    "amount": 0.951
   },
   "dna": {
-    "aggression": 0.952,
     "brightness": 0.984,
-    "density": 0.525,
+    "warmth": 0.089,
     "movement": 0.486,
+    "density": 0.525,
     "space": 0.084,
-    "warmth": 0.089
+    "aggression": 0.952
   },
-  "engines": [
-    "Opal",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.655,
-    "COUPLING": 0.987,
     "MOVEMENT": 0.486,
+    "COUPLING": 0.987,
     "SPACE": 0.084
   },
-  "mood": "Entangled",
-  "name": "Crystal Fang",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.607,
-      "macro_coupling": 0.985,
-      "macro_movement": 0.48,
-      "macro_space": 0.097
-    },
-    "Opal": {
-      "macro_character": 0.703,
-      "macro_coupling": 0.987,
-      "macro_movement": 0.533,
-      "macro_space": 0.066
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "cold",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

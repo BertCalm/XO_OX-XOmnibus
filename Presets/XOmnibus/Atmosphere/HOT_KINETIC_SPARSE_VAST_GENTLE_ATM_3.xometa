@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_SPARSE_VAST_GENTLE_ATM_3",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.9787
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "OddfeliX",
-        "type": "PITCH_SYNC",
-        "amount": 0.456
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORIGAMI",
+    "target": "ODDFELIX",
+    "amount": 0.456
   },
   "dna": {
-    "aggression": 0.0418,
     "brightness": 0.6716,
-    "density": 0.0613,
+    "warmth": 0.9391,
     "movement": 0.979,
+    "density": 0.0613,
     "space": 0.983,
-    "warmth": 0.9391
+    "aggression": 0.0418
   },
-  "engines": [
-    "Origami",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.828,
-    "COUPLING": 0.0597,
     "MOVEMENT": 0.99,
+    "COUPLING": 0.0597,
     "SPACE": 0.9695
   },
-  "mood": "Atmosphere",
-  "name": "Radiant Canyon",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.8344,
-      "macro_coupling": 0.0521,
-      "macro_movement": 0.99,
-      "macro_space": 0.9787
-    },
-    "Origami": {
-      "macro_character": 0.8217,
-      "macro_coupling": 0.0673,
-      "macro_movement": 0.99,
-      "macro_space": 0.9603
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "warm",
@@ -82,10 +47,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

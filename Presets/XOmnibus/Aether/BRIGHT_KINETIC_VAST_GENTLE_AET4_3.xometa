@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_VAST_GENTLE_AET4_3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.834
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8049
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "ORIGAMI",
+    "amount": 0.8049
   },
   "dna": {
-    "aggression": 0.0465,
     "brightness": 0.8795,
-    "density": 0.4016,
+    "warmth": 0.3572,
     "movement": 0.9745,
+    "density": 0.4016,
     "space": 0.9444,
-    "warmth": 0.3572
+    "aggression": 0.0465
   },
-  "engines": [
-    "Overworld",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6183,
-    "COUPLING": 0.8049,
     "MOVEMENT": 0.9745,
+    "COUPLING": 0.8049,
     "SPACE": 0.9444
   },
-  "mood": "Aether",
-  "name": "Silver Swirl",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.6792,
-      "macro_coupling": 0.3876,
-      "macro_movement": 0.5182,
-      "macro_space": 0.834
-    },
-    "Overworld": {
-      "macro_character": 0.3185,
-      "macro_coupling": 0.4592,
-      "macro_movement": 0.5313,
-      "macro_space": 0.6407
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "bright",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

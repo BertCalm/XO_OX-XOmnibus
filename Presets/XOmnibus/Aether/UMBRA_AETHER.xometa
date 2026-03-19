@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "UMBRA AETHER",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.873
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Origami",
-        "type": "PHASE_COUPLE",
-        "amount": 0.564
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "ORPHICA",
+    "target": "ORIGAMI",
+    "amount": 0.564
   },
   "dna": {
-    "aggression": 0.542,
     "brightness": 0.078,
-    "density": 0.877,
+    "warmth": 0.779,
     "movement": 0.671,
+    "density": 0.877,
     "space": 0.607,
-    "warmth": 0.779
+    "aggression": 0.542
   },
-  "engines": [
-    "Orphica",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.466,
-    "COUPLING": 0.554,
     "MOVEMENT": 0.489,
+    "COUPLING": 0.554,
     "SPACE": 0.646
   },
-  "mood": "Aether",
-  "name": "UMBRA AETHER",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.162,
-      "macro_coupling": 0.605,
-      "macro_movement": 0.2,
-      "macro_space": 0.873
-    },
-    "Orphica": {
-      "macro_character": 0.769,
-      "macro_coupling": 0.503,
-      "macro_movement": 0.778,
-      "macro_space": 0.419
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "dark",
     "extreme",
     "high-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

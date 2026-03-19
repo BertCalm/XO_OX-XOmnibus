@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Osteria",
-        "type": "PITCH_SYNC",
-        "amount": 0.97
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.376,
-    "brightness": 0.944,
-    "density": 0.864,
-    "movement": 0.694,
-    "space": 0.66,
-    "warmth": 0.475
-  },
+  "name": "INCANDESCENT FLOW",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oracle",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.603,
-    "COUPLING": 0.427,
-    "MOVEMENT": 0.745,
-    "SPACE": 0.503
-  },
-  "mood": "Flux",
-  "name": "INCANDESCENT FLOW",
   "parameters": {
     "Oracle": {
       "macro_character": 0.603,
-      "macro_coupling": 0.427,
       "macro_movement": 0.745,
+      "macro_coupling": 0.427,
       "macro_space": 0.503
     },
     "Osteria": {
       "macro_character": 0.584,
-      "macro_coupling": 0.519,
       "macro_movement": 0.751,
+      "macro_coupling": 0.519,
       "macro_space": 0.559
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OSTERIA",
+    "amount": 0.97
+  },
+  "dna": {
+    "brightness": 0.944,
+    "warmth": 0.475,
+    "movement": 0.694,
+    "density": 0.864,
+    "space": 0.66,
+    "aggression": 0.376
+  },
+  "macros": {
+    "CHARACTER": 0.603,
+    "MOVEMENT": 0.745,
+    "COUPLING": 0.427,
+    "SPACE": 0.503
+  },
   "tags": [
     "flux",
     "bright",
     "dense",
     "saturated"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

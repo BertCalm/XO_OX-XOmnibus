@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "INFINITE PLAIN",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.97
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Oblong",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.705
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OLE",
+    "target": "OBLONG",
+    "amount": 0.705
   },
   "dna": {
-    "aggression": 0.919,
     "brightness": 0.314,
-    "density": 0.477,
+    "warmth": 0.05,
     "movement": 0.887,
+    "density": 0.477,
     "space": 0.966,
-    "warmth": 0.05
+    "aggression": 0.919
   },
-  "engines": [
-    "Ole",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.04,
-    "COUPLING": 0.082,
     "MOVEMENT": 0.887,
+    "COUPLING": 0.082,
     "SPACE": 0.966
   },
-  "mood": "Foundation",
-  "name": "INFINITE PLAIN",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.862,
-      "macro_coupling": 0.942,
-      "macro_movement": 0.877,
-      "macro_space": 0.97
-    },
-    "Ole": {
-      "macro_character": 0.508,
-      "macro_coupling": 0.069,
-      "macro_movement": 0.922,
-      "macro_space": 0.94
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

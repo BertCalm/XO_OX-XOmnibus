@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Owlfish",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.9982
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4089,
-    "brightness": 0.9346,
-    "density": 0.8932,
-    "movement": 0.9338,
-    "space": 0.0317,
-    "warmth": 0.069
-  },
+  "name": "PRESSURE BOND",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Orbital",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.769,
-    "COUPLING": 0.9935,
-    "MOVEMENT": 0.7658,
-    "SPACE": 0.6459
-  },
-  "mood": "Entangled",
-  "name": "PRESSURE BOND",
   "parameters": {
     "Orbital": {
       "macro_character": 0.7233,
-      "macro_coupling": 0.9266,
       "macro_movement": 0.3959,
+      "macro_coupling": 0.9266,
       "macro_space": 0.7458
     },
     "Owlfish": {
       "macro_character": 0.5783,
-      "macro_coupling": 0.7378,
       "macro_movement": 0.0453,
+      "macro_coupling": 0.7378,
       "macro_space": 0.0638
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORBITAL",
+    "target": "OWLFISH",
+    "amount": 0.9982
+  },
+  "dna": {
+    "brightness": 0.9346,
+    "warmth": 0.069,
+    "movement": 0.9338,
+    "density": 0.8932,
+    "space": 0.0317,
+    "aggression": 0.4089
+  },
+  "macros": {
+    "CHARACTER": 0.769,
+    "MOVEMENT": 0.7658,
+    "COUPLING": 0.9935,
+    "SPACE": 0.6459
+  },
   "tags": [
     "entangled",
     "xhigh",
@@ -59,10 +48,5 @@
     "dark",
     "bound",
     "layered"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

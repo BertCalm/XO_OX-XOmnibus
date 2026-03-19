@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.3766
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Origami",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.7159
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OUROBOROS",
+    "target": "ORIGAMI",
+    "amount": 0.7159
   },
   "dna": {
-    "aggression": 0.5458,
     "brightness": 0.9569,
-    "density": 0.8657,
+    "warmth": 0.064,
     "movement": 0.9385,
+    "density": 0.8657,
     "space": 0.4634,
-    "warmth": 0.064
+    "aggression": 0.5458
   },
-  "engines": [
-    "Ouroboros",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8545,
-    "COUPLING": 0.5372,
     "MOVEMENT": 0.8782,
+    "COUPLING": 0.5372,
     "SPACE": 0.594
   },
-  "mood": "Flux",
-  "name": "Arctic Ripple 2",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.8147,
-      "macro_coupling": 0.6594,
-      "macro_movement": 0.9489,
-      "macro_space": 0.3766
-    },
-    "Ouroboros": {
-      "macro_character": 0.8545,
-      "macro_coupling": 0.5372,
-      "macro_movement": 0.8782,
-      "macro_space": 0.594
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-warmth",
     "high-movement",
     "high-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Octopus",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Octopus CA rule 30 chaos injected into Onset drum voices — alien intelligence driving drums.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.58,
-    "density": 0.72,
-    "movement": 0.91,
-    "space": 0.17,
-    "warmth": 0.18
-  },
+  "schema_version": 1,
+  "name": "Arm Drum Surge",
+  "mood": "Entangled",
   "engines": [
     "Octopus",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "octopus",
     "onset",
     "arm"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.91,
+    "COUPLING": 0.88,
     "SPACE": 0.17
   },
-  "mood": "Entangled",
-  "name": "Arm Drum Surge",
-  "parameters": {
-    "Octopus": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.58,
-    "density": 0.72,
+    "warmth": 0.18,
     "movement": 0.91,
+    "density": 0.72,
     "space": 0.17,
-    "warmth": 0.18
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "octopus",
-    "onset",
-    "arm"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.58,
+    "warmth": 0.18,
+    "movement": 0.91,
+    "density": 0.72,
+    "space": 0.17,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCTOPUS",
+        "engineB": "ONSET",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
+  }
 }

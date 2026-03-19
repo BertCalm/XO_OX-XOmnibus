@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Electron cloud above a supercooled magnet. Eerie, bright, faintly alive.",
+  "name": "Signal Burn",
+  "version": "1.0",
   "engines": [
     "Overworld"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.562,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.637,
+    "COUPLING": 0.0,
     "SPACE": 0.617
   },
-  "mood": "Atmosphere",
-  "name": "Signal Burn",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.087,
     "brightness": 0.991,
-    "density": 0.528,
+    "warmth": 0.134,
     "movement": 0.637,
+    "density": 0.528,
     "space": 0.617,
-    "warmth": 0.134
+    "aggression": 0.087
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Electron cloud above a supercooled magnet. Eerie, bright, faintly alive."
 }

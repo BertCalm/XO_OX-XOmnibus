@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Origami",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.724
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.918,
-    "brightness": 0.895,
-    "density": 0.251,
-    "movement": 0.941,
-    "space": 0.635,
-    "warmth": 0.846
-  },
+  "name": "AGGRESSIVE SKY STORM",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obese",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.843,
-    "COUPLING": 0.564,
-    "MOVEMENT": 0.941,
-    "SPACE": 0.635
-  },
-  "mood": "Aether",
-  "name": "AGGRESSIVE SKY STORM",
   "parameters": {
     "Obese": {
       "macro_character": 0.303,
-      "macro_coupling": 0.503,
       "macro_movement": 0.944,
+      "macro_coupling": 0.503,
       "macro_space": 0.615
     },
     "Origami": {
       "macro_character": 0.942,
-      "macro_coupling": 0.659,
       "macro_movement": 0.906,
+      "macro_coupling": 0.659,
       "macro_space": 0.648
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBESE",
+    "target": "ORIGAMI",
+    "amount": 0.724
+  },
+  "dna": {
+    "brightness": 0.895,
+    "warmth": 0.846,
+    "movement": 0.941,
+    "density": 0.251,
+    "space": 0.635,
+    "aggression": 0.918
+  },
+  "macros": {
+    "CHARACTER": 0.843,
+    "MOVEMENT": 0.941,
+    "COUPLING": 0.564,
+    "SPACE": 0.635
+  },
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

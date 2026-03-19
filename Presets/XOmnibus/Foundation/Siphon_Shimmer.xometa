@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ORPHICA — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.13,
-    "brightness": 0.95,
-    "density": 0.57,
-    "movement": 0.62,
-    "space": 0.69,
-    "warmth": 0.36
-  },
+  "schema_version": 1,
+  "name": "Siphon Shimmer",
+  "mood": "Foundation",
   "engines": [
     "Orphica"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Siphon Shimmer",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.95,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.57,
+    "space": 0.69,
+    "aggression": 0.13
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.57,
+    "space": 0.69,
+    "aggression": 0.13
+  },
   "parameters": {
     "Orphica": {
-<<<<<<< HEAD
-=======
       "orph_pluckDecay": 181.2,
       "orph_resonanceBody": 0.69,
       "orph_filterCutoff": 0.31,
       "orph_filterReso": 0.58,
->>>>>>> origin/v1-launch-prep
       "orph_ampAttack": 381.2,
       "orph_ampDecay": 427.1,
-      "orph_ampRelease": 598.0,
       "orph_ampSustain": 0.6,
-      "orph_character": 0.12,
-      "orph_coupling": 0.54,
-      "orph_delayMix": 0.25,
-      "orph_filterCutoff": 0.31,
-      "orph_filterReso": 0.58,
-      "orph_lfoDepth": 0.7,
+      "orph_ampRelease": 598.0,
       "orph_lfoRate": 0.33,
-      "orph_movement": 0.19,
-      "orph_pluckDecay": 181.2,
-      "orph_resonanceBody": 0.69,
+      "orph_lfoDepth": 0.7,
       "orph_reverbMix": 0.27,
-      "orph_space": 0.12
+      "orph_delayMix": 0.25,
+      "orph_character": 0.12,
+      "orph_movement": 0.19,
+      "orph_space": 0.12,
+      "orph_coupling": 0.54
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.13,
-    "brightness": 0.95,
-    "density": 0.57,
-    "movement": 0.62,
-    "space": 0.69,
-    "warmth": 0.36
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

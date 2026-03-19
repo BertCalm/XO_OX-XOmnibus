@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Paper Drift",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.94
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Odyssey",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.69
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "ODYSSEY",
+    "amount": 0.69
   },
-  "description": "A paper fold drifts across wavetable space — folded harmonics dispersing on cold air.",
   "dna": {
-    "aggression": 0.0,
     "brightness": 0.09,
-    "density": 0.12,
+    "warmth": 0.08,
     "movement": 0.746,
+    "density": 0.12,
     "space": 1.0,
-    "warmth": 0.08
+    "aggression": 0.0
   },
-  "engines": [
-    "Origami",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.17,
-    "COUPLING": 0.69,
     "MOVEMENT": 0.42,
+    "COUPLING": 0.69,
     "SPACE": 0.91
   },
-  "mood": "Entangled",
-  "name": "Paper Drift",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.37,
-      "macro_space": 0.94
-    },
-    "Origami": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.69,
-      "macro_movement": 0.42,
-      "macro_space": 0.91
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "paper",
     "drift"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "A paper fold drifts across wavetable space — folded harmonics dispersing on cold air."
->>>>>>> origin/v1-launch-prep
 }

@@ -1,29 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.677,
-        "engineA": "Octopus",
-        "engineB": "Obbligato",
-        "type": "PHASE_LOCK"
-      }
-    ]
-  },
-  "couplingIntensity": "Strong",
-  "dna": {
-    "aggression": 0.53,
-    "brightness": 0.535,
-    "density": 0.63,
-    "movement": 1.0,
-    "space": 0.535,
-    "warmth": 0.435
-  },
+  "schema_version": 1,
+  "name": "Murky Heart",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Octopus"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -33,7 +14,6 @@
     "coverage",
     "obbligato",
     "octopus"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,45 +23,41 @@
   ],
   "macros": {
     "CHARACTER": 0.475,
-    "COUPLING": 0.628,
     "MOVEMENT": 0.859,
+    "COUPLING": 0.628,
     "SPACE": 0.502
   },
-  "mood": "Entangled",
-  "name": "Murky Heart",
+  "couplingIntensity": "Strong",
+  "dna": {
+    "brightness": 0.535,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.63,
+    "space": 0.535,
+    "aggression": 0.53
+  },
+  "sonic_dna": {
+    "brightness": 0.535,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.63,
+    "space": 0.535,
+    "aggression": 0.53
+  },
   "parameters": {
     "Obbligato": {
       "macro_character": 0.327,
-      "macro_coupling": 0.584,
       "macro_movement": 0.522,
+      "macro_coupling": 0.584,
       "macro_space": 0.608
     },
     "Octopus": {
       "macro_character": 0.685,
-      "macro_coupling": 0.406,
       "macro_movement": 0.776,
+      "macro_coupling": 0.406,
       "macro_space": 0.361
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.53,
-    "brightness": 0.535,
-    "density": 0.63,
-    "movement": 1.0,
-    "space": 0.535,
-    "warmth": 0.435
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "obbligato",
-    "octopus"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": [
       {
@@ -92,5 +68,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

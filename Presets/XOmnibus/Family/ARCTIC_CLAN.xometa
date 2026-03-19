@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Origami",
-        "type": "ENVELOPE_SHARE",
-        "amount": 0.487
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.978,
-    "brightness": 0.241,
-    "density": 0.732,
-    "movement": 0.071,
-    "space": 0.816,
-    "warmth": 0.077
-  },
+  "name": "ARCTIC CLAN",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Obbligato",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.995,
-    "COUPLING": 0.438,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.518
-  },
-  "mood": "Family",
-  "name": "ARCTIC CLAN",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.55,
-      "macro_coupling": 0.872,
       "macro_movement": 0.265,
+      "macro_coupling": 0.872,
       "macro_space": 0.423
     },
     "Origami": {
       "macro_character": 0.212,
-      "macro_coupling": 0.73,
       "macro_movement": 0.539,
+      "macro_coupling": 0.73,
       "macro_space": 0.201
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_SHARE",
+    "source": "OBBLIGATO",
+    "target": "ORIGAMI",
+    "amount": 0.487
+  },
+  "dna": {
+    "brightness": 0.241,
+    "warmth": 0.077,
+    "movement": 0.071,
+    "density": 0.732,
+    "space": 0.816,
+    "aggression": 0.978
+  },
+  "macros": {
+    "CHARACTER": 0.995,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.438,
+    "SPACE": 0.518
+  },
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

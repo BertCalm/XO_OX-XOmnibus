@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Opal",
-        "type": "SIDECHAIN_DUCK",
-        "amount": 0.65
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.6,
-    "brightness": 0.45,
-    "density": 0.78,
-    "movement": 0.75,
-    "space": 0.6,
-    "warmth": 0.7
-  },
+  "name": "Mojo Cloud",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.75,
-    "COUPLING": 0.65,
-    "MOVEMENT": 0.6,
-    "SPACE": 0.35
-  },
-  "mood": "Entangled",
-  "name": "Mojo Cloud",
   "parameters": {
     "Obese": {
       "macro_character": 0.75,
-      "macro_coupling": 0.65,
       "macro_movement": 0.6,
+      "macro_coupling": 0.65,
       "macro_space": 0.35
     },
     "Opal": {
       "macro_character": 0.6,
-      "macro_coupling": 0.6,
       "macro_movement": 0.8,
+      "macro_coupling": 0.6,
       "macro_space": 0.75
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SIDECHAIN_DUCK",
+    "source": "OBESE",
+    "target": "OPAL",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.75,
+    "density": 0.78,
+    "space": 0.6,
+    "aggression": 0.6
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.65,
+    "SPACE": 0.35
+  },
   "tags": [
     "entangled",
     "obese",
@@ -59,10 +48,5 @@
     "mojo",
     "granular",
     "cloud"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

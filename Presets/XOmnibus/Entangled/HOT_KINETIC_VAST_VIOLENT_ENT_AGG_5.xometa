@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_VAST_VIOLENT_ENT_AGG_5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.922
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oceanic",
-        "type": "CHAOS_INJECT",
-        "amount": 0.889
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORPHICA",
+    "target": "OCEANIC",
+    "amount": 0.889
   },
   "dna": {
-    "aggression": 0.873,
     "brightness": 0.605,
-    "density": 0.5,
+    "warmth": 0.93,
     "movement": 0.932,
+    "density": 0.5,
     "space": 0.907,
-    "warmth": 0.93
+    "aggression": 0.873
   },
-  "engines": [
-    "Orphica",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.64,
-    "COUPLING": 0.982,
     "MOVEMENT": 0.932,
+    "COUPLING": 0.982,
     "SPACE": 0.907
   },
-  "mood": "Entangled",
-  "name": "Radiant Swirl",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.552,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.931,
-      "macro_space": 0.922
-    },
-    "Orphica": {
-      "macro_character": 0.728,
-      "macro_coupling": 0.982,
-      "macro_movement": 0.917,
-      "macro_space": 0.862
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "hot",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

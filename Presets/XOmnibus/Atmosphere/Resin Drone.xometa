@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "An earthen vessel resonating in a warm room. Ancient and comfortable.",
+  "name": "Resin Drone",
+  "version": "1.0",
   "engines": [
     "Ohm"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.53,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.053,
+    "COUPLING": 0.0,
     "SPACE": 0.597
   },
-  "mood": "Atmosphere",
-  "name": "Resin Drone",
-  "parameters": {
-    "Ohm": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.003,
     "brightness": 0.235,
-    "density": 0.794,
+    "warmth": 0.825,
     "movement": 0.053,
+    "density": 0.794,
     "space": 0.597,
-    "warmth": 0.825
+    "aggression": 0.003
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "drone",
@@ -40,13 +27,5 @@
     "warm",
     "thick"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "An earthen vessel resonating in a warm room. Ancient and comfortable."
 }

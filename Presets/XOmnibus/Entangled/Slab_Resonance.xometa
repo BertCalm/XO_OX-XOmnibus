@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Ohm",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.58
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.27,
-    "brightness": 0.26,
-    "density": 0.84,
-    "movement": 0.47,
-    "space": 0.4,
-    "warmth": 0.91
-  },
+  "name": "Slab Resonance",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.83,
-    "COUPLING": 0.61,
-    "MOVEMENT": 0.44,
-    "SPACE": 0.34
-  },
-  "mood": "Entangled",
-  "name": "Slab Resonance",
   "parameters": {
     "Oblong": {
       "macro_character": 0.8,
-      "macro_coupling": 0.66,
       "macro_movement": 0.41,
+      "macro_coupling": 0.66,
       "macro_space": 0.39
     },
     "Ohm": {
       "macro_character": 0.87,
-      "macro_coupling": 0.56,
       "macro_movement": 0.47,
+      "macro_coupling": 0.56,
       "macro_space": 0.28
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLONG",
+    "target": "OHM",
+    "amount": 0.58
+  },
+  "dna": {
+    "brightness": 0.26,
+    "warmth": 0.91,
+    "movement": 0.47,
+    "density": 0.84,
+    "space": 0.4,
+    "aggression": 0.27
+  },
+  "macros": {
+    "CHARACTER": 0.83,
+    "MOVEMENT": 0.44,
+    "COUPLING": 0.61,
+    "SPACE": 0.34
+  },
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

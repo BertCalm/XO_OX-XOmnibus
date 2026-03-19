@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "TENEBRIS PRISM",
   "version": "1.0",
   "mood": "Prism",
@@ -23,66 +20,29 @@
       "macro_space": 0.632
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Oblong",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.72
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ONSET",
+    "target": "OBLONG",
+    "amount": 0.72
   },
   "dna": {
-    "aggression": 0.489,
     "brightness": 0.113,
-    "density": 0.863,
+    "warmth": 0.626,
     "movement": 0.443,
+    "density": 0.863,
     "space": 0.968,
-    "warmth": 0.626
+    "aggression": 0.489
   },
-  "engines": [
-    "Onset",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.889,
-    "COUPLING": 0.876,
     "MOVEMENT": 0.872,
+    "COUPLING": 0.876,
     "SPACE": 0.225
   },
-  "mood": "Prism",
-  "name": "TENEBRIS PRISM",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.541,
-      "macro_coupling": 0.162,
-      "macro_movement": 0.777,
-      "macro_space": 0.632
-    },
-    "Onset": {
-      "macro_character": 0.912,
-      "macro_coupling": 0.647,
-      "macro_movement": 0.265,
-      "macro_space": 0.512
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

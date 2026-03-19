@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Extreme",
-  "couplingType": "WEAVE",
-  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for WEAVE coupling with XOle.",
-  "dna": {
-    "aggression": 0.4499,
-    "brightness": 0.0547,
-    "density": 0.4206,
-    "movement": 0.9529,
+  "schema_version": 1,
+  "name": "COLD INTIMATE KINETIC DARK 4",
+  "mood": "Entangled",
+  "sonic_dna": {
+    "warmth": 0.0957,
     "space": 0.1002,
-    "warmth": 0.0957
+    "movement": 0.9529,
+    "brightness": 0.0547,
+    "aggression": 0.4499,
+    "density": 0.4206
+  },
+  "dna": {
+    "warmth": 0.0957,
+    "space": 0.1002,
+    "movement": 0.9529,
+    "brightness": 0.0547,
+    "aggression": 0.4499,
+    "density": 0.4206
   },
   "engines": [
     "Ole"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "weave",
     "ole"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "SWEEP",
@@ -35,32 +36,10 @@
     "GLOW",
     "OPEN"
   ],
-  "mood": "Flux",
-  "name": "COLD INTIMATE KINETIC DARK 4",
+  "couplingType": "WEAVE",
+  "couplingIntensity": "Extreme",
   "parameters": {
     "Ole": {
-<<<<<<< HEAD
-      "couplingBus": 1,
-      "couplingLevel": 0.988
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.4499,
-    "brightness": 0.0547,
-    "density": 0.4206,
-    "movement": 0.9529,
-    "space": 0.1002,
-    "warmth": 0.0957
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "weave",
-    "ole"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.988,
       "couplingBus": 1
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

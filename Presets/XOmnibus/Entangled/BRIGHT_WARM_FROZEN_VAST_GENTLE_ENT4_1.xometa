@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_FROZEN_VAST_GENTLE_ENT4_1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.917
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Oceanic",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.965
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OCTOPUS",
+    "target": "OCEANIC",
+    "amount": 0.965
   },
   "dna": {
-    "aggression": 0.126,
     "brightness": 0.943,
-    "density": 0.394,
+    "warmth": 0.96,
     "movement": 0.081,
+    "density": 0.394,
     "space": 0.899,
-    "warmth": 0.96
+    "aggression": 0.126
   },
-  "engines": [
-    "Octopus",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.967,
-    "COUPLING": 0.965,
     "MOVEMENT": 0.085,
+    "COUPLING": 0.965,
     "SPACE": 0.905
   },
-  "mood": "Entangled",
-  "name": "Honey Horizon 2",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.953,
-      "macro_coupling": 0.413,
-      "macro_movement": 0.09,
-      "macro_space": 0.917
-    },
-    "Octopus": {
-      "macro_character": 0.981,
-      "macro_coupling": 0.381,
-      "macro_movement": 0.08,
-      "macro_space": 0.892
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "warm",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

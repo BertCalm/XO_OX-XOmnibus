@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Folded Crystal",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.96
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Obsidian",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.73
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "OBSIDIAN",
+    "amount": 0.73
   },
-  "description": "A paper fold frozen mid-crease — Origami's vermillion edge meets Obsidian's white silence.",
   "dna": {
-    "aggression": 0.0,
     "brightness": 0.07,
-    "density": 0.0,
+    "warmth": 0.07,
     "movement": 0.22,
+    "density": 0.0,
     "space": 0.601,
-    "warmth": 0.07
+    "aggression": 0.0
   },
-  "engines": [
-    "Origami",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.14,
-    "COUPLING": 0.73,
     "MOVEMENT": 0.22,
+    "COUPLING": 0.73,
     "SPACE": 0.93
   },
-  "mood": "Entangled",
-  "name": "Folded Crystal II",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.11,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.17,
-      "macro_space": 0.96
-    },
-    "Origami": {
-      "macro_character": 0.14,
-      "macro_coupling": 0.73,
-      "macro_movement": 0.22,
-      "macro_space": 0.93
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "origami",
     "crystalline"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "A paper fold frozen mid-crease — Origami's vermillion edge meets Obsidian's white silence."
->>>>>>> origin/v1-launch-prep
 }

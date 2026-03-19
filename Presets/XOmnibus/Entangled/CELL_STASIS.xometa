@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CELL STASIS",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.036
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Onset",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.55
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ODYSSEY",
+    "target": "ONSET",
+    "amount": 0.55
   },
   "dna": {
-    "aggression": 0.819,
     "brightness": 0.893,
-    "density": 0.361,
+    "warmth": 0.852,
     "movement": 0.903,
+    "density": 0.361,
     "space": 0.035,
-    "warmth": 0.852
+    "aggression": 0.819
   },
-  "engines": [
-    "Onset",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.578,
-    "COUPLING": 0.435,
     "MOVEMENT": 0.664,
+    "COUPLING": 0.435,
     "SPACE": 0.035
   },
-  "mood": "Entangled",
-  "name": "CELL STASIS",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.945,
-      "macro_coupling": 0.233,
-      "macro_movement": 0.506,
-      "macro_space": 0.036
-    },
-    "Onset": {
-      "macro_character": 0.841,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.632,
-      "macro_space": 0.047
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

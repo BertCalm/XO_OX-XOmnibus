@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_VIOLENT_ENT_AGG_3",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.543
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oracle",
-        "type": "CHAOS_INJECT",
-        "amount": 0.966
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ORPHICA",
+    "target": "ORACLE",
+    "amount": 0.966
   },
   "dna": {
-    "aggression": 0.931,
     "brightness": 0.917,
-    "density": 0.537,
+    "warmth": 0.944,
     "movement": 0.971,
+    "density": 0.537,
     "space": 0.503,
-    "warmth": 0.944
+    "aggression": 0.931
   },
-  "engines": [
-    "Orphica",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.56,
-    "COUPLING": 0.864,
     "MOVEMENT": 0.971,
+    "COUPLING": 0.864,
     "SPACE": 0.503
   },
-  "mood": "Entangled",
-  "name": "Honey Flutter",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.575,
-      "macro_coupling": 0.849,
-      "macro_movement": 0.963,
-      "macro_space": 0.543
-    },
-    "Orphica": {
-      "macro_character": 0.546,
-      "macro_coupling": 0.864,
-      "macro_movement": 0.954,
-      "macro_space": 0.464
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "warm",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

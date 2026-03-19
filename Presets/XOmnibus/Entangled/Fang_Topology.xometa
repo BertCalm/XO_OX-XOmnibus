@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.86,
-        "engineA": "Overbite",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "BITE macro chaos-injected by Ouroboros — the possum's fang at fractal frequency.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.6,
-    "density": 0.94,
-    "movement": 0.72,
-    "space": 0.06,
-    "warmth": 0.3
-  },
+  "schema_version": 1,
+  "name": "Fang Topology",
+  "mood": "Entangled",
   "engines": [
     "Overbite",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "overbite",
     "ouroboros",
     "fang"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.9,
-    "COUPLING": 0.86,
     "MOVEMENT": 0.72,
+    "COUPLING": 0.86,
     "SPACE": 0.06
   },
-  "mood": "Entangled",
-  "name": "Fang Topology",
-  "parameters": {
-    "Overbite": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.6,
-    "density": 0.94,
+    "warmth": 0.3,
     "movement": 0.72,
+    "density": 0.94,
     "space": 0.06,
-    "warmth": 0.3
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "overbite",
-    "ouroboros",
-    "fang"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.72,
+    "density": 0.94,
+    "space": 0.06,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERBITE",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.86
+      }
+    ]
+  }
 }

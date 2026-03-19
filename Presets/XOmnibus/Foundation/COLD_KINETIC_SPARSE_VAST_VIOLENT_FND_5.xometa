@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obsidian",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.501
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "COLD_KINETIC_SPARSE_VAST_VIOLENT_FND_5",
   "mood": "Foundation",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: COLD_KINETIC_SPARSE_VAST_VIOLENT. Variant 5.",
-  "dna": {
-    "aggression": 0.873,
-    "brightness": 0.343,
-    "density": 0.053,
-    "movement": 0.913,
-    "space": 0.954,
-    "warmth": 0.062
-  },
-  "engines": [
-    "Overdub",
-    "Obsidian"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.396,
-    "COUPLING": 0.098,
-    "MOVEMENT": 0.92,
-    "SPACE": 0.989
-  },
-  "mood": "Foundation",
-  "name": "Thread Cavern",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.429,
-      "macro_coupling": 0.101,
-      "macro_movement": 0.957,
-      "macro_space": 1.0
-    },
-    "Overdub": {
-      "macro_character": 0.364,
-      "macro_coupling": 0.094,
-      "macro_movement": 0.883,
-      "macro_space": 0.978
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "violent",
     "foundation"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.098,
     "SPACE": 0.989
   }
->>>>>>> origin/v1-launch-prep
 }

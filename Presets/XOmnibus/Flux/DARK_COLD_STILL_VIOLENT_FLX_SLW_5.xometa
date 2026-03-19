@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_VIOLENT_FLX_SLW_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.618
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Oblong",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.612
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OCEANIC",
+    "target": "OBLONG",
+    "amount": 0.612
   },
   "dna": {
-    "aggression": 0.897,
     "brightness": 0.1,
-    "density": 0.499,
+    "warmth": 0.079,
     "movement": 0.049,
+    "density": 0.499,
     "space": 0.631,
-    "warmth": 0.079
+    "aggression": 0.897
   },
-  "engines": [
-    "Oceanic",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.698,
-    "COUPLING": 0.741,
     "MOVEMENT": 0.049,
+    "COUPLING": 0.741,
     "SPACE": 0.631
   },
-  "mood": "Flux",
-  "name": "Node Blade",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.601,
-      "macro_coupling": 0.705,
-      "macro_movement": 0.048,
-      "macro_space": 0.618
-    },
-    "Oceanic": {
-      "macro_character": 0.625,
-      "macro_coupling": 0.918,
-      "macro_movement": 0.046,
-      "macro_space": 0.604
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "cold",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

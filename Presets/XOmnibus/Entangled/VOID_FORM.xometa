@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VOID FORM",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.384
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Orbital",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8199
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERWORLD",
+    "target": "ORBITAL",
+    "amount": 0.8199
   },
   "dna": {
-    "aggression": 0.8855,
     "brightness": 0.1476,
-    "density": 0.9025,
+    "warmth": 0.6876,
     "movement": 0.8927,
+    "density": 0.9025,
     "space": 0.8604,
-    "warmth": 0.6876
+    "aggression": 0.8855
   },
-  "engines": [
-    "Overworld",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.7784,
-    "COUPLING": 0.9412,
     "MOVEMENT": 0.2188,
+    "COUPLING": 0.9412,
     "SPACE": 0.6959
   },
-  "mood": "Entangled",
-  "name": "VOID FORM",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.8861,
-      "macro_coupling": 0.8873,
-      "macro_movement": 0.5757,
-      "macro_space": 0.384
-    },
-    "Overworld": {
-      "macro_character": 0.9839,
-      "macro_coupling": 0.9074,
-      "macro_movement": 0.6113,
-      "macro_space": 0.4554
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "heavy",
     "entangled",
     "dense",
     "tectonic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

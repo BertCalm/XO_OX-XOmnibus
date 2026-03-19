@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK HOT KINETIC BALANCED AET SPC 4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.577
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Oceanic",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.531
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORGANON",
+    "target": "OCEANIC",
+    "amount": 0.531
   },
   "dna": {
-    "aggression": 0.915,
     "brightness": 0.115,
-    "density": 0.433,
+    "warmth": 0.924,
     "movement": 0.928,
+    "density": 0.433,
     "space": 0.579,
-    "warmth": 0.924
+    "aggression": 0.915
   },
-  "engines": [
-    "Organon",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.52,
-    "COUPLING": 0.672,
     "MOVEMENT": 0.928,
+    "COUPLING": 0.672,
     "SPACE": 0.579
   },
-  "mood": "Aether",
-  "name": "DARK HOT KINETIC BALANCED A...",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.541,
-      "macro_coupling": 0.661,
-      "macro_movement": 0.923,
-      "macro_space": 0.577
-    },
-    "Organon": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.672,
-      "macro_movement": 0.928,
-      "macro_space": 0.579
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -83,10 +48,5 @@
     "aggressive",
     "warm",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

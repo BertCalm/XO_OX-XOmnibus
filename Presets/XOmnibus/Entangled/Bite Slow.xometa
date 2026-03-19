@@ -1,32 +1,16 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "amount": 0.76,
-    "pairs": [
-      {
-        "amount": 0.76,
-        "engineA": "Overbite",
-        "engineB": "Osteria",
-        "type": "Filter->Drive"
-      }
-    ],
-    "type": "Filter->Drive"
-  },
-  "couplingIntensity": "Deep",
-  "description": "OVERBITE bite at the OSTERIA table. Slow feast, fat bass. [Filter->Drive]",
-  "dna": {
-    "aggression": 0.548,
+  "schema_version": 1,
+  "name": "Bite Slow",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.421,
-    "density": 0.689,
+    "warmth": 0.681,
     "movement": 0.499,
+    "density": 0.689,
     "space": 0.506,
-    "warmth": 0.681
+    "aggression": 0.548
   },
   "engines": [
-<<<<<<< HEAD
-    "Overbite",
-    "Osteria"
-=======
     "XOverbite",
     "Osteria"
   ],
@@ -39,7 +23,6 @@
     "overbite",
     "osteria",
     "bite"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -47,16 +30,16 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "Bite Slow",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.421,
+    "warmth": 0.681,
+    "movement": 0.499,
+    "density": 0.689,
+    "space": 0.506,
+    "aggression": 0.548
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Osteria": {
-      "ost_aggression": 0.483,
-      "ost_brightness": 0.394,
-      "ost_couplingBus": 0,
-      "ost_couplingLevel": 0.6,
-=======
     "XOverbite": {
       "poss_outputLevel": 0.78,
       "poss_outputPan": -0.04,
@@ -67,36 +50,25 @@
       "poss_aggression": 0.602
     },
     "Osteria": {
->>>>>>> origin/v1-launch-prep
       "ost_outputLevel": 0.89,
       "ost_outputPan": -0.05,
-      "ost_warmth": 0.737
-    },
-    "Overbite": {
-      "poss_aggression": 0.602,
-      "poss_brightness": 0.452,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.73,
-      "poss_outputLevel": 0.78,
-      "poss_outputPan": -0.04,
-      "poss_warmth": 0.629
+      "ost_couplingLevel": 0.6,
+      "ost_couplingBus": 0,
+      "ost_brightness": 0.394,
+      "ost_warmth": 0.737,
+      "ost_aggression": 0.483
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.548,
-    "brightness": 0.421,
-    "density": 0.689,
-    "movement": 0.499,
-    "space": 0.506,
-    "warmth": 0.681
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overbite",
-    "osteria",
-    "bite"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "Filter->Drive",
+    "amount": 0.76,
+    "pairs": [
+      {
+        "engineA": "XOverbite",
+        "engineB": "XOsteria",
+        "type": "Filter->Drive",
+        "amount": 0.76
+      }
+    ]
+  }
 }

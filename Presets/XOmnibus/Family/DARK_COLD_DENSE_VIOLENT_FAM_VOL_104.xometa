@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_DENSE_VIOLENT_FAM_VOL_104",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.666
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ohm",
-        "type": "MODULATION_FLOW",
-        "amount": 0.592
-      }
-    ]
+    "type": "MODULATION_FLOW",
+    "source": "ORPHICA",
+    "target": "OHM",
+    "amount": 0.592
   },
   "dna": {
-    "aggression": 0.901,
     "brightness": 0.099,
-    "density": 0.91,
+    "warmth": 0.104,
     "movement": 0.541,
+    "density": 0.91,
     "space": 0.656,
-    "warmth": 0.104
+    "aggression": 0.901
   },
-  "engines": [
-    "Orphica",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.12,
-    "COUPLING": 0.921,
     "MOVEMENT": 0.522,
+    "COUPLING": 0.921,
     "SPACE": 0.661
   },
-  "mood": "Family",
-  "name": "Signal Heavy 3",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.114,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.522,
-      "macro_space": 0.666
-    },
-    "Orphica": {
-      "macro_character": 0.126,
-      "macro_coupling": 0.931,
-      "macro_movement": 0.522,
-      "macro_space": 0.655
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
     "cold",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

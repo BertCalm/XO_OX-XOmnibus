@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Owlfish",
-        "type": "PITCH_SYNC",
-        "amount": 0.747
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.782,
-    "brightness": 0.754,
-    "density": 0.449,
-    "movement": 0.899,
-    "space": 0.924,
-    "warmth": 0.76
-  },
+  "name": "WHIPLASH",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Orbital",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.635,
-    "COUPLING": 0.625,
-    "MOVEMENT": 0.899,
-    "SPACE": 0.864
-  },
-  "mood": "Entangled",
-  "name": "Whiplash",
   "parameters": {
     "Orbital": {
       "macro_character": 0.197,
-      "macro_coupling": 0.602,
       "macro_movement": 0.904,
+      "macro_coupling": 0.602,
       "macro_space": 0.76
     },
     "Owlfish": {
       "macro_character": 0.656,
-      "macro_coupling": 0.177,
       "macro_movement": 0.895,
+      "macro_coupling": 0.177,
       "macro_space": 0.773
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "OWLFISH",
+    "amount": 0.747
+  },
+  "dna": {
+    "brightness": 0.754,
+    "warmth": 0.76,
+    "movement": 0.899,
+    "density": 0.449,
+    "space": 0.924,
+    "aggression": 0.782
+  },
+  "macros": {
+    "CHARACTER": 0.635,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.625,
+    "SPACE": 0.864
+  },
   "tags": [
     "entangled",
     "wild",
     "movement"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

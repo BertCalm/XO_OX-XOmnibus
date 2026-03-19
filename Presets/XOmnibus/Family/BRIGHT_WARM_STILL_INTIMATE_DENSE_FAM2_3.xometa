@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT WARM STILL INTIMATE DENSE FAM2 3",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.113
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obbligato",
-        "type": "PITCH_SYNC",
-        "amount": 0.784
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.784
   },
   "dna": {
-    "aggression": 0.58,
     "brightness": 0.968,
-    "density": 0.988,
+    "warmth": 0.99,
     "movement": 0.089,
+    "density": 0.988,
     "space": 0.102,
-    "warmth": 0.99
+    "aggression": 0.58
   },
-  "engines": [
-    "Overdub",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.979,
-    "COUPLING": 0.784,
     "MOVEMENT": 0.089,
+    "COUPLING": 0.784,
     "SPACE": 0.102
   },
-  "mood": "Family",
-  "name": "BRIGHT WARM STILL INTIMATE ...",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.99,
-      "macro_coupling": 0.798,
-      "macro_movement": 0.084,
-      "macro_space": 0.113
-    },
-    "Overdub": {
-      "macro_character": 0.979,
-      "macro_coupling": 0.784,
-      "macro_movement": 0.089,
-      "macro_space": 0.102
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
@@ -82,10 +47,5 @@
     "still",
     "dense",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

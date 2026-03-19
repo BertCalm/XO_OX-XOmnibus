@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Fractured Ceiling",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OCTOPUS aggressive register.",
-  "dna": {
-    "aggression": 0.728,
-    "brightness": 0.622,
-    "density": 0.626,
-    "movement": 0.672,
-    "space": 0.584,
-    "warmth": 0.404
-  },
-  "engines": [
-    "Octopus"
-  ],
-  "macroLabels": [
-    "SPREAD",
-    "PULSE",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.309,
-    "PULSE": 0.789,
-    "SPACE": 0.576,
-    "SPREAD": 0.824
-  },
-  "mood": "Atmosphere",
-  "name": "Fractured Ceiling",
-  "parameters": {
-    "Octopus": {
-      "coupling": 0.309,
-      "pulse": 0.789,
-      "space": 0.576,
-      "spread": 0.824
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,9 +16,6 @@
     "pressure",
     "fierce"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "SPREAD",
     "PULSE",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

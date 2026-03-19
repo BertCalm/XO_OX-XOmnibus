@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9423,
-        "source": "Overbite",
-        "target": "Oblong",
-        "type": "SUBHARMONIC_WEAVE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.3916,
-    "brightness": 0.9406,
-    "density": 0.8785,
-    "movement": 0.0442,
-    "space": 0.5524,
-    "warmth": 0.8976
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_STILL_DENSE_ENT_5",
+  "mood": "Entangled",
   "engines": [
     "Overbite",
     "Oblong"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "FANG",
-    "BASS",
-    "BITE",
-    "BODY"
-  ],
-  "macros": {
-    "CHARACTER": 0.9191,
-    "COUPLING": 0.9423,
-    "MOVEMENT": 0.0442,
-    "SPACE": 0.5524
-  },
-  "mood": "Entangled",
-  "name": "BRIGHT_WARM_STILL_DENSE_ENT_5",
-  "parameters": {
-    "Oblong": {
-      "amp_attack": 0.4612,
-      "amp_release": 0.4113,
-      "coupling_level": 0.7405,
-      "density": 0.8608,
-      "drive": 0.3571,
-      "filter_cutoff": 0.8506,
-      "filter_resonance": 0.2829,
-      "macro_character": 0.9595,
-      "macro_coupling": 0.7758,
-      "macro_movement": 0.0581,
-      "macro_space": 0.5203,
-      "output_level": 0.8996,
-      "reverb_mix": 0.429,
-      "reverb_size": 0.5273
-    },
-    "Overbite": {
-      "amp_attack": 0.4301,
-      "amp_release": 0.4542,
-      "coupling_level": 0.704,
-      "density": 0.873,
-      "drive": 0.3311,
-      "filter_cutoff": 0.8932,
-      "filter_resonance": 0.3015,
-      "macro_character": 0.9202,
-      "macro_coupling": 0.7142,
-      "macro_movement": 0.0577,
-      "macro_space": 0.523,
-      "output_level": 0.9135,
-      "reverb_mix": 0.4784,
-      "reverb_size": 0.5066
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3916,
-    "brightness": 0.9406,
-    "density": 0.8785,
-    "movement": 0.0442,
-    "space": 0.5524,
-    "warmth": 0.8976
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Warm Still Dense character entanglement — OVERBITE × OBLONG via Subharmonic Weave. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "dense",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FANG",
     "BASS",
@@ -175,5 +94,4 @@
     "COUPLING": 0.9423,
     "SPACE": 0.5524
   }
->>>>>>> origin/v1-launch-prep
 }

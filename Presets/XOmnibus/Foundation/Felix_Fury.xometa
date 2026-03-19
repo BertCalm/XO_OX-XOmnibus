@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Felix voice at peak harmonic aggression",
-  "dna": {
-    "aggression": 0.8263,
+  "schema_version": 1,
+  "name": "Felix Fury",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.3409,
-    "density": 0.7497,
+    "warmth": 0.5018,
     "movement": 0.6585,
+    "density": 0.7497,
     "space": 0.2571,
-    "warmth": 0.5018
+    "aggression": 0.8263
+  },
+  "dna": {
+    "brightness": 0.3409,
+    "warmth": 0.5018,
+    "movement": 0.6585,
+    "density": 0.7497,
+    "space": 0.2571,
+    "aggression": 0.8263
   },
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "extreme",
     "anchor",
     "drive"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "VOICE",
@@ -36,53 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "COUPLE": 0.3749,
+    "VOICE": 0.4953,
     "MOTION": 0.8108,
-    "SPACE": 0.8463,
-    "VOICE": 0.4953
+    "COUPLE": 0.3749,
+    "SPACE": 0.8463
   },
-  "mood": "Foundation",
-  "name": "Felix Fury",
+  "couplingIntensity": "None",
   "parameters": {
     "OddfeliX": {
-<<<<<<< HEAD
-      "felix_couplingBus": 0,
-=======
       "felix_macro_voice": 0.4953,
       "felix_macro_motion": 0.8108,
       "felix_macro_couple": 0.3749,
       "felix_macro_space": 0.8463,
       "felix_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "felix_couplingLevel": 0.5,
-      "felix_macro_couple": 0.3749,
-      "felix_macro_motion": 0.8108,
-      "felix_macro_space": 0.8463,
-      "felix_macro_voice": 0.4953,
-      "felix_outputLevel": 0.85
+      "felix_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8263,
-    "brightness": 0.3409,
-    "density": 0.7497,
-    "movement": 0.6585,
-    "space": 0.2571,
-    "warmth": 0.5018
-  },
-  "tags": [
-    "foundation",
-    "aggressive",
-    "extreme",
-    "anchor",
-    "drive"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

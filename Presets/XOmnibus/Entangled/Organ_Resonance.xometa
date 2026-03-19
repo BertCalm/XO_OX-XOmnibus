@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Organ Resonance",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.23
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Ohm",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.61
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORGANON",
+    "target": "OHM",
+    "amount": 0.61
   },
   "dna": {
-    "aggression": 0.71,
     "brightness": 0.25,
-    "density": 0.78,
+    "warmth": 0.88,
     "movement": 0.56,
+    "density": 0.78,
     "space": 0.38,
-    "warmth": 0.88
+    "aggression": 0.71
   },
-  "engines": [
-    "Organon",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.77,
-    "COUPLING": 0.47,
     "MOVEMENT": 0.52,
+    "COUPLING": 0.47,
     "SPACE": 0.34
   },
-  "mood": "Entangled",
-  "name": "Organ Resonance",
-  "parameters": {
-    "Ohm": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.55,
-      "macro_space": 0.23
-    },
-    "Organon": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.49,
-      "macro_space": 0.45
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm-dense",
     "scorching"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Origami",
-        "type": "CHAOS_INJECT",
-        "amount": 0.895
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.764,
-    "brightness": 0.745,
-    "density": 0.384,
-    "movement": 0.111,
-    "space": 0.705,
-    "warmth": 0.926
-  },
+  "name": "FURNACE SPECTRUM",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Organon",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.152,
-    "COUPLING": 0.346,
-    "MOVEMENT": 0.14,
-    "SPACE": 0.568
-  },
-  "mood": "Prism",
-  "name": "FURNACE SPECTRUM",
   "parameters": {
     "Organon": {
       "macro_character": 0.149,
-      "macro_coupling": 0.342,
       "macro_movement": 0.015,
+      "macro_coupling": 0.342,
       "macro_space": 0.372
     },
     "Origami": {
       "macro_character": 0.418,
-      "macro_coupling": 0.934,
       "macro_movement": 0.115,
+      "macro_coupling": 0.934,
       "macro_space": 0.073
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORGANON",
+    "target": "ORIGAMI",
+    "amount": 0.895
+  },
+  "dna": {
+    "brightness": 0.745,
+    "warmth": 0.926,
+    "movement": 0.111,
+    "density": 0.384,
+    "space": 0.705,
+    "aggression": 0.764
+  },
+  "macros": {
+    "CHARACTER": 0.152,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.346,
+    "SPACE": 0.568
+  },
   "tags": [
     "prism",
     "warm",
     "spectrum",
     "fire"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.04,
-    "brightness": 0.12,
-    "density": 0.18,
-    "movement": 0.35,
-    "space": 0.84,
-    "warmth": 0.3
-  },
+  "name": "Inky Transcendence",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ombre"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.26,
-    "COUPLING": 0.24,
-    "MOVEMENT": 0.35,
-    "SPACE": 0.84
-  },
-  "mood": "Aether",
-  "name": "Inky Transcendence",
   "parameters": {
     "Ombre": {
       "ombre_macro_character": 0.26,
-      "ombre_macro_coupling": 0.37,
       "ombre_macro_movement": 0.35,
+      "ombre_macro_coupling": 0.37,
       "ombre_macro_space": 0.84
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.3,
+    "movement": 0.35,
+    "density": 0.18,
+    "space": 0.84,
+    "aggression": 0.04
+  },
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.24,
+    "SPACE": 0.84
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "inky",
     "transcendence"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

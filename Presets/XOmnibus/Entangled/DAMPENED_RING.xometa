@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DAMPENED RING",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.384
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Outwit",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.881
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERLAP",
+    "target": "OUTWIT",
+    "amount": 0.881
   },
   "dna": {
-    "aggression": 0.575,
     "brightness": 0.859,
-    "density": 0.831,
+    "warmth": 0.609,
     "movement": 0.077,
+    "density": 0.831,
     "space": 0.066,
-    "warmth": 0.609
+    "aggression": 0.575
   },
-  "engines": [
-    "Overlap",
-    "Outwit"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.712,
-    "COUPLING": 0.189,
     "MOVEMENT": 0.077,
+    "COUPLING": 0.189,
     "SPACE": 0.165
   },
-  "mood": "Entangled",
-  "name": "DAMPENED RING",
-  "parameters": {
-    "Outwit": {
-      "macro_character": 0.052,
-      "macro_coupling": 0.045,
-      "macro_movement": 0.066,
-      "macro_space": 0.384
-    },
-    "Overlap": {
-      "macro_character": 0.092,
-      "macro_coupling": 0.381,
-      "macro_movement": 0.088,
-      "macro_space": 0.686
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "dampened"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

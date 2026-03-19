@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_VAST_VIOLENT_ENT_AGG_2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 1.0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Oracle",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.804
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "ORACLE",
+    "amount": 0.804
   },
   "dna": {
-    "aggression": 0.953,
     "brightness": 0.879,
-    "density": 0.42,
+    "warmth": 0.678,
     "movement": 0.989,
+    "density": 0.42,
     "space": 0.985,
-    "warmth": 0.678
+    "aggression": 0.953
   },
-  "engines": [
-    "Owlfish",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.502,
-    "COUPLING": 0.99,
     "MOVEMENT": 0.989,
+    "COUPLING": 0.99,
     "SPACE": 0.985
   },
-  "mood": "Entangled",
-  "name": "Solar Ripple",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.471,
-      "macro_coupling": 0.974,
-      "macro_movement": 0.975,
-      "macro_space": 1.0
-    },
-    "Owlfish": {
-      "macro_character": 0.533,
-      "macro_coupling": 0.99,
-      "macro_movement": 0.95,
-      "macro_space": 0.973
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "bright",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OBLIQUE — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.21,
-    "brightness": 0.97,
-    "density": 0.26,
-    "movement": 0.48,
-    "space": 0.43,
-    "warmth": 0.6
-  },
+  "schema_version": 1,
+  "name": "Refraction Edge",
+  "mood": "Foundation",
   "engines": [
     "Oblique"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,53 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Refraction Edge",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.97,
+    "warmth": 0.6,
+    "movement": 0.48,
+    "density": 0.26,
+    "space": 0.43,
+    "aggression": 0.21
+  },
+  "dna": {
+    "brightness": 0.97,
+    "warmth": 0.6,
+    "movement": 0.48,
+    "density": 0.26,
+    "space": 0.43,
+    "aggression": 0.21
+  },
   "parameters": {
     "Oblique": {
-<<<<<<< HEAD
-=======
       "oblq_warpAngle": 0.05,
       "oblq_filterCutoff": 0.94,
       "oblq_filterReso": 0.48,
->>>>>>> origin/v1-launch-prep
       "oblq_ampAttack": 658.6,
       "oblq_ampDecay": 323.6,
-      "oblq_ampRelease": 505.4,
       "oblq_ampSustain": 0.35,
-      "oblq_character": 0.99,
-      "oblq_coupling": 0.61,
-      "oblq_delayMix": 0.3,
-      "oblq_filterCutoff": 0.94,
-      "oblq_filterReso": 0.48,
-      "oblq_lfoDepth": 0.15,
+      "oblq_ampRelease": 505.4,
       "oblq_lfoRate": 0.05,
-      "oblq_movement": 0.12,
+      "oblq_lfoDepth": 0.15,
       "oblq_reverbMix": 0.56,
-      "oblq_skew": 0.79,
+      "oblq_delayMix": 0.3,
+      "oblq_character": 0.99,
+      "oblq_movement": 0.12,
       "oblq_space": 0.76,
-      "oblq_warpAngle": 0.05
+      "oblq_coupling": 0.61,
+      "oblq_skew": 0.79
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.21,
-    "brightness": 0.97,
-    "density": 0.26,
-    "movement": 0.48,
-    "space": 0.43,
-    "warmth": 0.6
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

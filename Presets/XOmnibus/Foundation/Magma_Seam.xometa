@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OBSIDIAN — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.56,
-    "brightness": 0.09,
-    "density": 0.94,
-    "movement": 0.15,
-    "space": 0.13,
-    "warmth": 0.9
-  },
+  "schema_version": 1,
+  "name": "Magma Seam",
+  "mood": "Foundation",
   "engines": [
     "Obsidian"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,53 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Magma Seam",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.94,
+    "space": 0.13,
+    "aggression": 0.56
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.94,
+    "space": 0.13,
+    "aggression": 0.56
+  },
   "parameters": {
     "Obsidian": {
-<<<<<<< HEAD
-=======
       "obs_glassResonance": 0.35,
       "obs_filterCutoff": 0.79,
       "obs_filterReso": 0.44,
->>>>>>> origin/v1-launch-prep
       "obs_ampAttack": 787.5,
       "obs_ampDecay": 96.9,
-      "obs_ampRelease": 156.1,
       "obs_ampSustain": 0.93,
-      "obs_character": 0.69,
-      "obs_coupling": 0.2,
-      "obs_darkMatter": 0.43,
-      "obs_delayMix": 0.81,
-      "obs_filterCutoff": 0.79,
-      "obs_filterReso": 0.44,
-      "obs_glassResonance": 0.35,
-      "obs_lfoDepth": 0.44,
+      "obs_ampRelease": 156.1,
       "obs_lfoRate": 0.04,
-      "obs_movement": 0.94,
+      "obs_lfoDepth": 0.44,
       "obs_reverbMix": 0.52,
-      "obs_space": 0.74
+      "obs_delayMix": 0.81,
+      "obs_character": 0.69,
+      "obs_movement": 0.94,
+      "obs_space": 0.74,
+      "obs_coupling": 0.2,
+      "obs_darkMatter": 0.43
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.56,
-    "brightness": 0.09,
-    "density": 0.94,
-    "movement": 0.15,
-    "space": 0.13,
-    "warmth": 0.9
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

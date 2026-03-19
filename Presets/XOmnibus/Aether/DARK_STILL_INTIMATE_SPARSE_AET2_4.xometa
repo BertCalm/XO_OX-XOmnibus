@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Organon",
-        "type": "PITCH_SYNC",
-        "amount": 0.8069
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4459,
-    "brightness": 0.024,
-    "density": 0.0673,
-    "movement": 0.0606,
-    "space": 0.0642,
-    "warmth": 0.3167
-  },
+  "name": "DARK_STILL_INTIMATE_SPARSE_AET2_4",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Opal",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.0527,
-    "COUPLING": 0.8069,
-    "MOVEMENT": 0.0687,
-    "SPACE": 0.0642
-  },
-  "mood": "Aether",
-  "name": "Fragment Shard",
   "parameters": {
     "Opal": {
       "macro_character": 0.034,
-      "macro_coupling": 0.0709,
       "macro_movement": 0.0518,
+      "macro_coupling": 0.0709,
       "macro_space": 0.0867
     },
     "Organon": {
       "macro_character": 0.0714,
-      "macro_coupling": 0.1099,
       "macro_movement": 0.0855,
+      "macro_coupling": 0.1099,
       "macro_space": 0.0379
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.8069
+  },
+  "dna": {
+    "brightness": 0.024,
+    "movement": 0.0606,
+    "space": 0.0642,
+    "density": 0.0673,
+    "warmth": 0.3167,
+    "aggression": 0.4459
+  },
+  "macros": {
+    "CHARACTER": 0.0527,
+    "MOVEMENT": 0.0687,
+    "COUPLING": 0.8069,
+    "SPACE": 0.0642
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "intimate",
     "sparse",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

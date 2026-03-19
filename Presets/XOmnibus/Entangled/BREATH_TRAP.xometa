@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BREATH TRAP",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.062
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oblong",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.444
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORPHICA",
+    "target": "OBLONG",
+    "amount": 0.444
   },
   "dna": {
-    "aggression": 0.163,
     "brightness": 0.69,
-    "density": 0.583,
+    "warmth": 0.072,
     "movement": 0.382,
+    "density": 0.583,
     "space": 0.09,
-    "warmth": 0.072
+    "aggression": 0.163
   },
-  "engines": [
-    "Orphica",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.752,
-    "COUPLING": 0.696,
     "MOVEMENT": 0.575,
+    "COUPLING": 0.696,
     "SPACE": 0.09
   },
-  "mood": "Entangled",
-  "name": "BREATH TRAP",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.798,
-      "macro_coupling": 0.143,
-      "macro_movement": 0.15,
-      "macro_space": 0.062
-    },
-    "Orphica": {
-      "macro_character": 0.658,
-      "macro_coupling": 0.362,
-      "macro_movement": 0.959,
-      "macro_space": 0.085
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

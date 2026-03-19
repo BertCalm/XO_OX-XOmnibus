@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sub-zero pressure wave — thick and cold, no amber anywhere.",
-  "dna": {
-    "aggression": 0.377,
+  "schema_version": 1,
+  "name": "Permafrost Collapse",
+  "mood": "Aether",
+  "sonic_dna": {
     "brightness": 0.417,
-    "density": 0.883,
+    "warmth": 0.045,
     "movement": 0.408,
+    "density": 0.883,
     "space": 0.233,
-    "warmth": 0.045
+    "aggression": 0.377
   },
   "engines": [
     "Obbligato"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +22,6 @@
     "dense",
     "dark",
     "pressure"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "PRESSURE",
@@ -35,33 +29,17 @@
     "COUPLING",
     "MASS"
   ],
-  "mood": "Aether",
-  "name": "Permafrost Collapse",
-  "parameters": {
-    "Obbligato": {}
-  },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.377,
+  "couplingIntensity": "None",
+  "dna": {
     "brightness": 0.417,
-    "density": 0.883,
+    "warmth": 0.045,
     "movement": 0.408,
+    "density": 0.883,
     "space": 0.233,
-    "warmth": 0.045
+    "aggression": 0.377
   },
-  "tags": [
-    "aether",
-    "cold",
-    "dense",
-    "dark",
-    "pressure"
-  ],
-  "version": "1.0.0"
-=======
   "parameters": {},
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

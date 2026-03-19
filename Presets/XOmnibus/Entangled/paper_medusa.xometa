@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.58,
-        "engineA": "Overlap",
-        "engineB": "Origami",
-        "type": "HARMONIC_FOLD"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Paper Medusa",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Lion's Mane knot-topology FDN entangled with ORIGAMI's folded geometric character (Vermillion fold-based synthesis). Coupling: Harmonic Fold.",
-  "dna": {
-    "aggression": 0.12,
-    "brightness": 0.31,
-    "density": 0.54,
-    "movement": 0.59,
-    "space": 0.67,
-    "warmth": 0.39
-  },
-  "engines": [
-    "Overlap",
-    "Origami"
+  "tags": [
+    "entangled",
+    "coupling",
+    "overlap",
+    "origami",
+    "spatial",
+    "lush"
   ],
   "macroLabels": [
     "TOPOLOGY",
@@ -44,56 +25,48 @@
   ],
   "macros": {
     "CHARACTER": 0.73,
-    "COUPLING": 0.71,
     "MOVEMENT": 0.59,
+    "COUPLING": 0.71,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Paper Medusa",
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.31,
+    "warmth": 0.39,
+    "movement": 0.59,
+    "density": 0.54,
+    "space": 0.67,
+    "aggression": 0.12
+  },
+  "dna": {
+    "brightness": 0.31,
+    "warmth": 0.39,
+    "movement": 0.59,
+    "density": 0.54,
+    "space": 0.67,
+    "aggression": 0.12
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Origami": {
-      "origami_ampAttack": 0.07,
-      "origami_ampRelease": 0.57,
-      "origami_ampSustain": 0.83,
-      "origami_character": 0.69,
-      "origami_coupling": 0.74,
-      "origami_couplingLevel": 0.85,
-      "origami_filterCutoff": 0.35,
-      "origami_filterReso": 0.23,
-      "origami_movement": 0.55,
-      "origami_outputLevel": 0.71,
-      "origami_reverbMix": 0.29,
-      "origami_space": 0.22
-    },
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.81,
-      "olap_crossfeedAmt": 0.5,
-=======
     "Overlap": {
       "olap_size": 0.6,
       "olap_decay": 0.69,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.54,
-      "olap_decay": 0.69,
       "olap_diffusion": 0.71,
+      "olap_modDepth": 0.28,
+      "olap_modRate": 0.18,
+      "olap_preDelay": 0.12,
       "olap_earlyMix": 0.42,
+      "olap_lateMix": 0.86,
       "olap_filterCutoff": 0.61,
       "olap_filterReso": 0.42,
       "olap_frondDensity": 0.76,
-      "olap_lateMix": 0.86,
-      "olap_modDepth": 0.28,
-      "olap_modRate": 0.18,
       "olap_nodeCount": 13,
-      "olap_outputLevel": 0.79,
-<<<<<<< HEAD
-      "olap_outputPan": 0.01,
-      "olap_preDelay": 0.12,
+      "olap_crossfeedAmt": 0.5,
+      "olap_spinRate": 0.26,
       "olap_shimmerMix": 0.1,
-      "olap_size": 0.6,
-      "olap_spinRate": 0.26
-=======
+      "olap_couplingLevel": 0.81,
+      "olap_couplingBus": 0,
+      "olap_outputLevel": 0.79,
       "olap_outputPan": 0.01
     },
     "Origami": {
@@ -109,25 +82,20 @@
       "origami_reverbMix": 0.29,
       "origami_couplingLevel": 0.85,
       "origami_outputLevel": 0.71
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.12,
-    "brightness": 0.31,
-    "density": 0.54,
-    "movement": 0.59,
-    "space": 0.67,
-    "warmth": 0.39
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "overlap",
-    "origami",
-    "spatial",
-    "lush"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OVERLAP",
+    "target": "ORIGAMI",
+    "amount": 0.58,
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "ORIGAMI",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.58
+      }
+    ]
+  }
 }

@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Orphica",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.841
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.053,
-    "brightness": 0.051,
-    "density": 0.636,
-    "movement": 0.933,
-    "space": 0.044,
-    "warmth": 0.291
-  },
+  "name": "OBSIDIAN REFRACTION",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Origami",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.464,
-    "COUPLING": 0.098,
-    "MOVEMENT": 0.02,
-    "SPACE": 0.357
-  },
-  "mood": "Prism",
-  "name": "OBSIDIAN REFRACTION",
   "parameters": {
     "Origami": {
       "macro_character": 0.907,
-      "macro_coupling": 0.796,
       "macro_movement": 0.061,
+      "macro_coupling": 0.796,
       "macro_space": 0.241
     },
     "Orphica": {
       "macro_character": 0.932,
-      "macro_coupling": 0.816,
       "macro_movement": 0.094,
+      "macro_coupling": 0.816,
       "macro_space": 0.128
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "ORIGAMI",
+    "target": "ORPHICA",
+    "amount": 0.841
+  },
+  "dna": {
+    "brightness": 0.051,
+    "warmth": 0.291,
+    "movement": 0.933,
+    "density": 0.636,
+    "space": 0.044,
+    "aggression": 0.053
+  },
+  "macros": {
+    "CHARACTER": 0.464,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.098,
+    "SPACE": 0.357
+  },
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

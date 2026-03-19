@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Optic",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.602
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.567,
-    "brightness": 0.921,
-    "density": 0.481,
-    "movement": 0.022,
-    "space": 0.898,
-    "warmth": 0.114
-  },
+  "name": "BRIGHT_COLD_STILL_VAST_FLX_SLW_4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oblong",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.524,
-    "COUPLING": 0.818,
-    "MOVEMENT": 0.022,
-    "SPACE": 0.898
-  },
-  "mood": "Flux",
-  "name": "Crystal Canyon",
   "parameters": {
     "Oblong": {
       "macro_character": 0.348,
-      "macro_coupling": 0.711,
       "macro_movement": 0.019,
+      "macro_coupling": 0.711,
       "macro_space": 0.897
     },
     "Optic": {
       "macro_character": 0.433,
-      "macro_coupling": 0.943,
       "macro_movement": 0.022,
+      "macro_coupling": 0.943,
       "macro_space": 0.909
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBLONG",
+    "target": "OPTIC",
+    "amount": 0.602
+  },
+  "dna": {
+    "brightness": 0.921,
+    "warmth": 0.114,
+    "movement": 0.022,
+    "density": 0.481,
+    "space": 0.898,
+    "aggression": 0.567
+  },
+  "macros": {
+    "CHARACTER": 0.524,
+    "MOVEMENT": 0.022,
+    "COUPLING": 0.818,
+    "SPACE": 0.898
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "cold",
     "vast",
     "imperceptible-morph"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

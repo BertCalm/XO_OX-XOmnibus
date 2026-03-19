@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.319
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Obbligato",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.831
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OCELOT",
+    "target": "OBBLIGATO",
+    "amount": 0.831
   },
   "dna": {
-    "aggression": 0.971,
     "brightness": 0.124,
-    "density": 0.355,
+    "warmth": 0.928,
     "movement": 0.897,
+    "density": 0.355,
     "space": 0.331,
-    "warmth": 0.928
+    "aggression": 0.971
   },
-  "engines": [
-    "Ocelot",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.524,
-    "COUPLING": 0.95,
     "MOVEMENT": 0.897,
+    "COUPLING": 0.95,
     "SPACE": 0.331
   },
-  "mood": "Entangled",
-  "name": "Mahogany Rage",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.658,
-      "macro_coupling": 0.92,
-      "macro_movement": 0.924,
-      "macro_space": 0.319
-    },
-    "Ocelot": {
-      "macro_character": 0.39,
-      "macro_coupling": 0.95,
-      "macro_movement": 0.851,
-      "macro_space": 0.315
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

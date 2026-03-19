@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_DENSE_VIOLENT_ENT_AGG_2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.553
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Ombre",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.857
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OSTERIA",
+    "target": "OMBRE",
+    "amount": 0.857
   },
   "dna": {
-    "aggression": 0.884,
     "brightness": 0.565,
-    "density": 0.903,
+    "warmth": 0.073,
     "movement": 0.923,
+    "density": 0.903,
     "space": 0.602,
-    "warmth": 0.073
+    "aggression": 0.884
   },
-  "engines": [
-    "Osteria",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.493,
-    "COUPLING": 0.913,
     "MOVEMENT": 0.923,
+    "COUPLING": 0.913,
     "SPACE": 0.602
   },
-  "mood": "Entangled",
-  "name": "Tone Surge 2",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.463,
-      "macro_coupling": 0.921,
-      "macro_movement": 0.913,
-      "macro_space": 0.553
-    },
-    "Osteria": {
-      "macro_character": 0.522,
-      "macro_coupling": 0.913,
-      "macro_movement": 0.94,
-      "macro_space": 0.557
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "cold",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

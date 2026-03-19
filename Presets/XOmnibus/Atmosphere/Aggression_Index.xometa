@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Aggression Index",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUTWIT aggressive register.",
-  "dna": {
-    "aggression": 0.807,
-    "brightness": 0.536,
-    "density": 0.564,
-    "movement": 0.816,
-    "space": 0.547,
-    "warmth": 0.524
-  },
-  "engines": [
-    "Outwit"
-  ],
-  "macroLabels": [
-    "CUNNING",
-    "REFLEX",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.235,
-    "CUNNING": 0.909,
-    "REFLEX": 0.903,
-    "SPACE": 0.47
-  },
-  "mood": "Atmosphere",
-  "name": "Aggression Index",
-  "parameters": {
-    "Outwit": {
-      "coupling": 0.235,
-      "cunning": 0.909,
-      "reflex": 0.903,
-      "space": 0.47
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,9 +16,6 @@
     "pressure",
     "fierce"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "CUNNING",
     "REFLEX",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

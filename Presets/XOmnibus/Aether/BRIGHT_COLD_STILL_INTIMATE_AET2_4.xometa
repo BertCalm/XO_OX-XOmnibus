@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_STILL_INTIMATE_AET2_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0583
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.6667
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORBITAL",
+    "target": "OPAL",
+    "amount": 0.6667
   },
   "dna": {
-    "aggression": 0.6756,
     "brightness": 0.9572,
-    "density": 0.5463,
     "movement": 0.1174,
     "space": 0.0724,
-    "warmth": 0.1117
+    "warmth": 0.1117,
+    "density": 0.5463,
+    "aggression": 0.6756
   },
-  "engines": [
-    "Orbital",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9648,
-    "COUPLING": 0.6667,
     "MOVEMENT": 0.1331,
+    "COUPLING": 0.6667,
     "SPACE": 0.0724
   },
-  "mood": "Aether",
-  "name": "Silver Rage",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.9758,
-      "macro_coupling": 0.5941,
-      "macro_movement": 0.1218,
-      "macro_space": 0.0583
-    },
-    "Orbital": {
-      "macro_character": 0.9538,
-      "macro_coupling": 0.5676,
-      "macro_movement": 0.1444,
-      "macro_space": 0.0484
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "still",
     "intimate",
     "frozen"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

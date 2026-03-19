@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Void Automata March",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.62
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Overworld",
-        "type": "PHASE_MOD",
-        "amount": 0.92
-      }
-    ]
+    "type": "PHASE_MOD",
+    "source": "ONSET",
+    "target": "OVERWORLD",
+    "amount": 0.92
   },
   "dna": {
-    "aggression": 0.59,
     "brightness": 0.04,
-    "density": 0.57,
+    "warmth": 0.44,
     "movement": 0.77,
+    "density": 0.57,
     "space": 0.26,
-    "warmth": 0.44
+    "aggression": 0.59
   },
-  "engines": [
-    "Overworld",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.54,
-    "COUPLING": 0.89,
     "MOVEMENT": 0.77,
+    "COUPLING": 0.89,
     "SPACE": 0.26
   },
-  "mood": "Entangled",
-  "name": "Void Automata March",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.17,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.15,
-      "macro_space": 0.62
-    },
-    "Overworld": {
-      "macro_character": 0.46,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.45,
-      "macro_space": 0.43
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_INTIMATE_GENTLE_AET2_3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0573
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Opal",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.6026
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.6026
   },
   "dna": {
-    "aggression": 0.1174,
     "brightness": 0.8795,
-    "density": 0.3769,
-    "movement": 0.4447,
+    "warmth": 0.9052,
     "space": 0.0703,
-    "warmth": 0.9052
+    "aggression": 0.1174,
+    "movement": 0.4447,
+    "density": 0.3769
   },
-  "engines": [
-    "Oracle",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8621,
-    "COUPLING": 0.6026,
     "MOVEMENT": 0.4389,
+    "COUPLING": 0.6026,
     "SPACE": 0.0703
   },
-  "mood": "Aether",
-  "name": "Golden Wave",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.8573,
-      "macro_coupling": 0.3634,
-      "macro_movement": 0.4583,
-      "macro_space": 0.0573
-    },
-    "Oracle": {
-      "macro_character": 0.8669,
-      "macro_coupling": 0.3609,
-      "macro_movement": 0.4195,
-      "macro_space": 0.0464
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "celestial"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

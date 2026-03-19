@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.9215
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oceanic",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.5
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "OVERDUB",
+    "target": "OCEANIC",
+    "amount": 0.5
   },
   "dna": {
-    "aggression": 0.8854,
     "brightness": 0.3501,
-    "density": 0.0712,
+    "warmth": 0.908,
     "movement": 0.8789,
+    "density": 0.0712,
     "space": 0.9321,
-    "warmth": 0.908
+    "aggression": 0.8854
   },
-  "engines": [
-    "Overdub",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6318,
-    "COUPLING": 0.0735,
     "MOVEMENT": 0.8665,
+    "COUPLING": 0.0735,
     "SPACE": 0.9134
   },
-  "mood": "Flux",
-  "name": "Rust Dome",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.6065,
-      "macro_coupling": 0.0511,
-      "macro_movement": 0.8581,
-      "macro_space": 0.9215
-    },
-    "Overdub": {
-      "macro_character": 0.657,
-      "macro_coupling": 0.0958,
-      "macro_movement": 0.8749,
-      "macro_space": 0.9054
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "warm",
@@ -82,10 +47,5 @@
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

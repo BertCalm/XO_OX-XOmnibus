@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RESONANCE QUAKE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.371
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Octopus",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.975
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERLAP",
+    "target": "OCTOPUS",
+    "amount": 0.975
   },
   "dna": {
-    "aggression": 0.943,
     "brightness": 0.696,
-    "density": 0.587,
+    "warmth": 0.54,
     "movement": 0.885,
+    "density": 0.587,
     "space": 0.727,
-    "warmth": 0.54
+    "aggression": 0.943
   },
-  "engines": [
-    "Overlap",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.655,
-    "COUPLING": 0.834,
     "MOVEMENT": 0.885,
+    "COUPLING": 0.834,
     "SPACE": 0.616
   },
-  "mood": "Entangled",
-  "name": "RESONANCE QUAKE",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.538,
-      "macro_coupling": 0.389,
-      "macro_movement": 0.884,
-      "macro_space": 0.371
-    },
-    "Overlap": {
-      "macro_character": 0.996,
-      "macro_coupling": 0.116,
-      "macro_movement": 0.885,
-      "macro_space": 0.235
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "explosive",
     "unstable"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

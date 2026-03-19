@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Oblique",
-        "engineB": "Onset",
-        "type": "FREQUENCY_SMEAR"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Prism bounce frequency smearing Onset percussion — shattered light spectrum as percussion.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.85,
-    "density": 0.78,
-    "movement": 0.87,
-    "space": 0.2,
-    "warmth": 0.15
-  },
+  "schema_version": 1,
+  "name": "Prism Shatter Storm",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "oblique",
     "onset",
     "prism"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.87,
+    "COUPLING": 0.88,
     "SPACE": 0.2
   },
-  "mood": "Entangled",
-  "name": "Prism Shatter Storm",
-  "parameters": {
-    "Oblique": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.85,
-    "density": 0.78,
+    "warmth": 0.15,
     "movement": 0.87,
+    "density": 0.78,
     "space": 0.2,
-    "warmth": 0.15
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "oblique",
-    "onset",
-    "prism"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.85,
+    "warmth": 0.15,
+    "movement": 0.87,
+    "density": 0.78,
+    "space": 0.2,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLIQUE",
+        "engineB": "ONSET",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.88
+      }
+    ]
+  }
 }

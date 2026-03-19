@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_STILL_INTIMATE_ATM_4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.251
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oracle",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.767
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORIGAMI",
+    "target": "ORACLE",
+    "amount": 0.767
   },
   "dna": {
-    "aggression": 0.599,
     "brightness": 0.135,
-    "density": 0.536,
+    "warmth": 0.111,
     "movement": 0.079,
+    "density": 0.536,
     "space": 0.124,
-    "warmth": 0.111
+    "aggression": 0.599
   },
-  "engines": [
-    "Origami",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.65,
-    "COUPLING": 0.827,
     "MOVEMENT": 0.246,
+    "COUPLING": 0.827,
     "SPACE": 0.144
   },
-  "mood": "Atmosphere",
-  "name": "DARK_COLD_STILL_INTIMATE_ATM_4",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.667,
-      "macro_movement": 0.256,
-      "macro_space": 0.251
-    },
-    "Origami": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.827,
-      "macro_movement": 0.246,
-      "macro_space": 0.144
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "cold",
     "still",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

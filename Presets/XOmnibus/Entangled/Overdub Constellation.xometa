@@ -1,32 +1,11 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.777,
-        "engineA": "Ohm",
-        "engineB": "Overdub",
-        "type": "Amp->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "created": "2026-03-16",
-  "description": "OHM and Overdub coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.307,
-    "brightness": 0.461,
-    "density": 0.517,
-    "movement": 0.569,
-    "space": 0.667,
-    "warmth": 0.693
-  },
+  "schema_version": 1,
+  "name": "Overdub Constellation",
+  "mood": "Entangled",
   "engines": [
     "Ohm",
     "Overdub"
   ],
-<<<<<<< HEAD
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OHM and Overdub coupled via Amp->Filter. Blended Constellation DNA — stub seeded for expansion.",
@@ -36,27 +15,33 @@
     "ohm",
     "overdub"
   ],
->>>>>>> origin/v1-launch-prep
   "macroLabels": [
     "WARMTH",
     "BLOOM",
     "ENTANGLE",
     "AIR"
   ],
-  "mood": "Entangled",
-  "name": "Overdub Constellation",
-  "parameters": {
-    "Ohm": {},
-    "Overdub": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ohm",
-    "overdub"
-  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "Overdub",
+        "type": "Amp->Filter",
+        "amount": 0.777
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.461,
+    "warmth": 0.693,
+    "movement": 0.569,
+    "density": 0.517,
+    "space": 0.667,
+    "aggression": 0.307
+  }
 }

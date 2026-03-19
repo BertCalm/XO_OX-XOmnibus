@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_KINETIC_SPARSE_VAST_ATM_5",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.8912
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Obscura",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.425
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OCEANIC",
+    "target": "OBSCURA",
+    "amount": 0.425
   },
   "dna": {
-    "aggression": 0.4242,
     "brightness": 0.093,
-    "density": 0.1247,
+    "warmth": 0.0881,
     "movement": 0.8812,
+    "density": 0.1247,
     "space": 0.8982,
-    "warmth": 0.0881
+    "aggression": 0.4242
   },
-  "engines": [
-    "Oceanic",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1167,
-    "COUPLING": 0.1393,
     "MOVEMENT": 0.8868,
+    "COUPLING": 0.1393,
     "SPACE": 0.8933
   },
-  "mood": "Atmosphere",
-  "name": "Node Cathedral 2",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.1137,
-      "macro_coupling": 0.1378,
-      "macro_movement": 0.8857,
-      "macro_space": 0.8912
-    },
-    "Oceanic": {
-      "macro_character": 0.1196,
-      "macro_coupling": 0.1408,
-      "macro_movement": 0.8879,
-      "macro_space": 0.8955
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -82,10 +47,5 @@
     "kinetic",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

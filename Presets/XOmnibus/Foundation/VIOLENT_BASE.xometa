@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Overworld",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.826
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.903,
-    "brightness": 0.482,
-    "density": 0.616,
-    "movement": 0.403,
-    "space": 0.59,
-    "warmth": 0.131
-  },
+  "name": "VIOLENT BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oblong",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.616,
-    "COUPLING": 0.826,
-    "MOVEMENT": 0.403,
-    "SPACE": 0.59
-  },
-  "mood": "Foundation",
-  "name": "VIOLENT BASE",
   "parameters": {
     "Oblong": {
       "macro_character": 0.73,
-      "macro_coupling": 0.458,
       "macro_movement": 0.452,
+      "macro_coupling": 0.458,
       "macro_space": 0.559
     },
     "Overworld": {
       "macro_character": 0.68,
-      "macro_coupling": 0.318,
       "macro_movement": 0.649,
+      "macro_coupling": 0.318,
       "macro_space": 0.234
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPATIAL_COUPLE",
+    "source": "OBLONG",
+    "target": "OVERWORLD",
+    "amount": 0.826
+  },
+  "dna": {
+    "brightness": 0.482,
+    "warmth": 0.131,
+    "movement": 0.403,
+    "density": 0.616,
+    "space": 0.59,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.616,
+    "MOVEMENT": 0.403,
+    "COUPLING": 0.826,
+    "SPACE": 0.59
+  },
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

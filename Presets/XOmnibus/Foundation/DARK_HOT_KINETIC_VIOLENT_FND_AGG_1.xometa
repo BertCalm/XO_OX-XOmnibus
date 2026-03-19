@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_FND_AGG_1",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.617
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Obese",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.832
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OBSIDIAN",
+    "target": "OBESE",
+    "amount": 0.832
   },
   "dna": {
-    "aggression": 0.897,
     "brightness": 0.096,
-    "density": 0.617,
+    "warmth": 0.948,
     "movement": 0.929,
+    "density": 0.617,
     "space": 0.337,
-    "warmth": 0.948
+    "aggression": 0.897
   },
-  "engines": [
-    "Obsidian",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.765,
-    "COUPLING": 0.699,
     "MOVEMENT": 0.534,
+    "COUPLING": 0.699,
     "SPACE": 0.634
   },
-  "mood": "Foundation",
-  "name": "Amber Shimmer",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.768,
-      "macro_coupling": 0.724,
-      "macro_movement": 0.527,
-      "macro_space": 0.617
-    },
-    "Obsidian": {
-      "macro_character": 0.765,
-      "macro_coupling": 0.699,
-      "macro_movement": 0.534,
-      "macro_space": 0.634
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

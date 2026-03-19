@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OSPREY in full dive — CLARITY macro open, Mediterranean air carrying it. The clean predator falling toward the water.",
-  "dna": {
-    "aggression": 0.42,
-    "brightness": 0.75,
-    "density": 0.38,
-    "movement": 0.78,
-    "space": 0.75,
-    "warmth": 0.42
-  },
+  "schema_version": 1,
+  "name": "Osprey Dive",
+  "mood": "Family",
   "engines": [
     "Osprey"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DIVE",
-    "CLARITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Osprey Dive II",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OSPREY in full dive — CLARITY macro open, Mediterranean air carrying it. The clean predator falling toward the water.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "Mediterranean",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "DIVE",
+    "CLARITY",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.75,
     "aggression": 0.42
   }
->>>>>>> origin/v1-launch-prep
 }

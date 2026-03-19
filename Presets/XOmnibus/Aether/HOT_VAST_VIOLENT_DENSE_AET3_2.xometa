@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overworld",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.7213
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.8823,
-    "brightness": 0.4137,
-    "density": 0.8715,
-    "movement": 0.4363,
-    "space": 0.9603,
-    "warmth": 0.9465
-  },
+  "name": "HOT_VAST_VIOLENT_DENSE_AET3_2",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oracle",
     "Overworld"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6801,
-    "COUPLING": 0.7213,
-    "MOVEMENT": 0.4363,
-    "SPACE": 0.9603
-  },
-  "mood": "Aether",
-  "name": "HOT_VAST_VIOLENT_DENSE_AET3_2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.6328,
-      "macro_coupling": 0.3138,
       "macro_movement": 0.7148,
+      "macro_coupling": 0.3138,
       "macro_space": 0.8084
     },
     "Overworld": {
       "macro_character": 0.9118,
-      "macro_coupling": 0.3861,
       "macro_movement": 0.2639,
+      "macro_coupling": 0.3861,
       "macro_space": 0.6186
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ORACLE",
+    "target": "OVERWORLD",
+    "amount": 0.7213
+  },
+  "dna": {
+    "brightness": 0.4137,
+    "warmth": 0.9465,
+    "movement": 0.4363,
+    "density": 0.8715,
+    "space": 0.9603,
+    "aggression": 0.8823
+  },
+  "macros": {
+    "CHARACTER": 0.6801,
+    "MOVEMENT": 0.4363,
+    "COUPLING": 0.7213,
+    "SPACE": 0.9603
+  },
   "tags": [
     "aether",
     "warm",
     "vast",
     "violent",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

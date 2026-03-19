@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Velocity Patina",
   "mood": "Entangled",
@@ -26,65 +23,32 @@
       "macro_space": 0.56
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obscura",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.66
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OTTONI",
+    "target": "OBSCURA",
+    "amount": 0.66,
+    "intensity": "Moderate"
   },
-  "description": "Velocity coupling: harder strikes age the patina faster, bowing OBSCURA's plate inward.",
   "dna": {
-    "aggression": 0.251,
     "brightness": 1.0,
-    "density": 0.58,
+    "warmth": 0.74,
     "movement": 0.266,
+    "density": 0.58,
     "space": 0.52,
-    "warmth": 0.74
+    "aggression": 0.251
   },
-  "engines": [
-    "Ottoni",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.66,
-    "COUPLING": 0.66,
     "MOVEMENT": 0.52,
+    "COUPLING": 0.66,
     "SPACE": 0.52
   },
-  "mood": "Entangled",
-  "name": "Velocity Patina",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.54,
-      "macro_coupling": 0.58,
-      "macro_movement": 0.48,
-      "macro_space": 0.56
-    },
-    "Ottoni": {
-      "macro_character": 0.66,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.52,
-      "macro_space": 0.52
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ottoni",
     "obscura",
     "velocity",
     "patina"
-  ],
-  "version": "1.0"
+  ]
 }

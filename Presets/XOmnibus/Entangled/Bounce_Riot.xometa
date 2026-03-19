@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Oblique",
-        "engineB": "Ouroboros",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Prism walls chaos-injected by Ouroboros — the bounce has no predictable reflection.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.87,
-    "density": 0.74,
-    "movement": 0.85,
-    "space": 0.2,
-    "warmth": 0.14
-  },
+  "schema_version": 1,
+  "name": "Bounce Riot",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "oblique",
     "ouroboros",
     "bounce"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.84,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.85,
+    "COUPLING": 0.88,
     "SPACE": 0.2
   },
-  "mood": "Entangled",
-  "name": "Bounce Riot",
-  "parameters": {
-    "Oblique": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.87,
-    "density": 0.74,
+    "warmth": 0.14,
     "movement": 0.85,
+    "density": 0.74,
     "space": 0.2,
-    "warmth": 0.14
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "oblique",
-    "ouroboros",
-    "bounce"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.87,
+    "warmth": 0.14,
+    "movement": 0.85,
+    "density": 0.74,
+    "space": 0.2,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBLIQUE",
+        "engineB": "OUROBOROS",
+        "type": "CHAOS_INJECT",
+        "amount": 0.88
+      }
+    ]
+  }
 }

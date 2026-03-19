@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Obese",
-        "type": "RING_MOD",
-        "amount": 0.92
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.98,
-    "brightness": 0.1,
-    "density": 1.0,
-    "movement": 0.5,
-    "space": 0.1,
-    "warmth": 0.92
-  },
+  "name": "Fat Fang",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.95,
-    "COUPLING": 0.88,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.1
-  },
-  "mood": "Entangled",
-  "name": "Fat Fang",
   "parameters": {
     "Obese": {
       "macro_character": 0.95,
-      "macro_coupling": 0.88,
       "macro_movement": 0.5,
+      "macro_coupling": 0.88,
       "macro_space": 0.1
     },
     "Overbite": {
       "macro_character": 0.9,
-      "macro_coupling": 0.82,
       "macro_movement": 0.55,
+      "macro_coupling": 0.82,
       "macro_space": 0.15
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RING_MOD",
+    "source": "OVERBITE",
+    "target": "OBESE",
+    "amount": 0.92
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.92,
+    "movement": 0.5,
+    "density": 1.0,
+    "space": 0.1,
+    "aggression": 0.98
+  },
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.88,
+    "SPACE": 0.1
+  },
   "tags": [
     "entangled",
     "obese",
@@ -59,10 +48,5 @@
     "extreme",
     "fat",
     "fang"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

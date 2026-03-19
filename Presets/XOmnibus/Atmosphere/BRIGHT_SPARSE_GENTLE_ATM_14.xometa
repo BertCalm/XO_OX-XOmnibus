@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Owlfish",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.798
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.073,
-    "brightness": 0.941,
-    "density": 0.032,
-    "movement": 0.38,
-    "space": 0.398,
-    "warmth": 0.39
-  },
+  "name": "BRIGHT SPARSE GENTLE ATM 14",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Odyssey",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.665,
-    "COUPLING": 0.825,
-    "MOVEMENT": 0.38,
-    "SPACE": 0.398
-  },
-  "mood": "Atmosphere",
-  "name": "BRIGHT SPARSE GENTLE ATM 14",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.665,
-      "macro_coupling": 0.825,
       "macro_movement": 0.38,
+      "macro_coupling": 0.825,
       "macro_space": 0.398
     },
     "Owlfish": {
       "macro_character": 0.639,
-      "macro_coupling": 0.344,
       "macro_movement": 0.419,
+      "macro_coupling": 0.344,
       "macro_space": 0.457
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "ODYSSEY",
+    "target": "OWLFISH",
+    "amount": 0.798
+  },
+  "dna": {
+    "brightness": 0.941,
+    "warmth": 0.39,
+    "movement": 0.38,
+    "density": 0.032,
+    "space": 0.398,
+    "aggression": 0.073
+  },
+  "macros": {
+    "CHARACTER": 0.665,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.825,
+    "SPACE": 0.398
+  },
   "tags": [
     "atmosphere",
     "bright",
@@ -58,10 +47,5 @@
     "gentle",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

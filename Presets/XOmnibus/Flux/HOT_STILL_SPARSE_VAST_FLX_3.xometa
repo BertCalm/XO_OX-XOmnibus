@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_STILL_SPARSE_VAST_FLX_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.8561
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Opal",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.7838
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OPAL",
+    "amount": 0.7838
   },
   "dna": {
-    "aggression": 0.4178,
     "brightness": 0.4271,
-    "density": 0.0732,
+    "warmth": 0.8766,
     "movement": 0.1112,
+    "density": 0.0732,
     "space": 0.897,
-    "warmth": 0.8766
+    "aggression": 0.4178
   },
-  "engines": [
-    "Oracle",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.3752,
-    "COUPLING": 0.5407,
     "MOVEMENT": 0.1083,
+    "COUPLING": 0.5407,
     "SPACE": 0.7903
   },
-  "mood": "Flux",
-  "name": "HOT_STILL_SPARSE_VAST_FLX_3",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.3591,
-      "macro_coupling": 0.2952,
-      "macro_movement": 0.0952,
-      "macro_space": 0.8561
-    },
-    "Oracle": {
-      "macro_character": 0.3752,
-      "macro_coupling": 0.5407,
-      "macro_movement": 0.1083,
-      "macro_space": 0.7903
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-movement",
     "low-density",
     "high-space"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

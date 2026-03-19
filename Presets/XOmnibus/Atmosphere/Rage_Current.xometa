@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Rage Current",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Storm and pressure atmosphere. Maximum aggression, kinetic density. OUROBOROS aggressive register.",
-  "dna": {
-    "aggression": 0.89,
-    "brightness": 0.638,
-    "density": 0.602,
-    "movement": 0.71,
-    "space": 0.342,
-    "warmth": 0.523
-  },
-  "engines": [
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CYCLE",
-    "TENSION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.139,
-    "CYCLE": 0.854,
-    "SPACE": 0.419,
-    "TENSION": 0.733
-  },
-  "mood": "Atmosphere",
-  "name": "Rage Current",
-  "parameters": {
-    "Ouroboros": {
-      "coupling": 0.139,
-      "cycle": 0.854,
-      "space": 0.419,
-      "tension": 0.733
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -58,9 +16,6 @@
     "pressure",
     "fierce"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "CYCLE",
     "TENSION",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

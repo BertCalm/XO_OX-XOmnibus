@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Forgotten Cave System",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OCEANIC in void register.",
-  "dna": {
-    "aggression": 0.126,
-    "brightness": 0.061,
-    "density": 0.427,
-    "movement": 0.338,
-    "space": 0.616,
-    "warmth": 0.538
-  },
-  "engines": [
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "TIDE",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.488,
-    "DEPTH": 0.37,
-    "SPACE": 0.688,
-    "TIDE": 0.275
-  },
-  "mood": "Atmosphere",
-  "name": "Forgotten Cave System",
-  "parameters": {
-    "Oceanic": {
-      "coupling": 0.488,
-      "depth": 0.37,
-      "space": 0.688,
-      "tide": 0.275
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "TIDE",
     "DEPTH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

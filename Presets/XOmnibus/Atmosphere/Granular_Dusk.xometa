@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OPAL — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.59,
-    "brightness": 0.09,
-    "density": 0.89,
-    "movement": 0.45,
-    "space": 0.52,
-    "warmth": 0.51
-  },
+  "schema_version": 1,
+  "name": "Granular Dusk",
+  "mood": "Atmosphere",
   "engines": [
     "Opal"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Granular Dusk",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.09,
+    "warmth": 0.51,
+    "movement": 0.45,
+    "density": 0.89,
+    "space": 0.52,
+    "aggression": 0.59
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.51,
+    "movement": 0.45,
+    "density": 0.89,
+    "space": 0.52,
+    "aggression": 0.59
+  },
   "parameters": {
     "Opal": {
-<<<<<<< HEAD
-=======
       "opal_grainSize": 0.62,
       "opal_grainDensity": 0.86,
       "opal_grainPitch": 0.63,
       "opal_filterCutoff": 0.15,
->>>>>>> origin/v1-launch-prep
       "opal_ampAttack": 59.3,
       "opal_ampDecay": 356.6,
-      "opal_ampRelease": 223.4,
       "opal_ampSustain": 0.51,
-      "opal_character": 0.06,
-      "opal_coupling": 0.86,
-      "opal_delayMix": 0.45,
-      "opal_filterCutoff": 0.15,
-      "opal_grainDensity": 0.86,
-      "opal_grainPitch": 0.63,
-      "opal_grainSize": 0.62,
-      "opal_lfoDepth": 0.51,
+      "opal_ampRelease": 223.4,
       "opal_lfoRate": 0.06,
-      "opal_movement": 0.83,
+      "opal_lfoDepth": 0.51,
       "opal_reverbMix": 0.31,
-      "opal_space": 0.08
+      "opal_delayMix": 0.45,
+      "opal_character": 0.06,
+      "opal_movement": 0.83,
+      "opal_space": 0.08,
+      "opal_coupling": 0.86
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.59,
-    "brightness": 0.09,
-    "density": 0.89,
-    "movement": 0.45,
-    "space": 0.52,
-    "warmth": 0.51
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

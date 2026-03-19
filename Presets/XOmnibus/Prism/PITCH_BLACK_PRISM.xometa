@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PITCH BLACK PRISM",
   "version": "1.0",
   "mood": "Prism",
@@ -23,66 +20,29 @@
       "macro_space": 0.74
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Obese",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.842
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OCELOT",
+    "target": "OBESE",
+    "amount": 0.842
   },
   "dna": {
-    "aggression": 0.682,
     "brightness": 0.102,
-    "density": 0.144,
+    "warmth": 0.807,
     "movement": 0.18,
+    "density": 0.144,
     "space": 0.922,
-    "warmth": 0.807
+    "aggression": 0.682
   },
-  "engines": [
-    "Ocelot",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.814,
-    "COUPLING": 0.859,
     "MOVEMENT": 0.419,
+    "COUPLING": 0.859,
     "SPACE": 0.899
   },
-  "mood": "Prism",
-  "name": "PITCH BLACK PRISM",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.047,
-      "macro_coupling": 0.042,
-      "macro_movement": 0.983,
-      "macro_space": 0.74
-    },
-    "Ocelot": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.226,
-      "macro_movement": 0.822,
-      "macro_space": 0.268
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

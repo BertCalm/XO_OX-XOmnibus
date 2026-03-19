@@ -1,54 +1,12 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Obbligato",
-        "type": "FILTER_MOD",
-        "amount": 0.533
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.102,
-    "brightness": 0.89,
-    "density": 0.965,
-    "movement": 0.346,
-    "space": 0.106,
-    "warmth": 0.908
-  },
+  "name": "BRIGHT WARM DENSE INTIMATE GENTLE FAM2 1",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Obbligato"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.899,
-    "COUPLING": 0.533,
-    "MOVEMENT": 0.346,
-    "SPACE": 0.106
-  },
-  "mood": "Family",
-  "name": "BRIGHT WARM DENSE INTIMATE ...",
   "parameters": {
-<<<<<<< HEAD
-    "Obbligato": {
-      "macro_character": 0.879,
-      "macro_coupling": 0.536,
-      "macro_movement": 0.349,
-      "macro_space": 0.106
-    },
-    "OddfeliX": {
-      "macro_character": 0.899,
-      "macro_coupling": 0.533,
-      "macro_movement": 0.346,
-=======
     "OddfeliX": {
       "macro_character": 0.899,
       "macro_movement": 0.346,
@@ -59,11 +17,29 @@
       "macro_character": 0.879,
       "macro_movement": 0.349,
       "macro_coupling": 0.536,
->>>>>>> origin/v1-launch-prep
       "macro_space": 0.106
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ODDFELIX",
+    "target": "OBBLIGATO",
+    "amount": 0.533
+  },
+  "dna": {
+    "brightness": 0.89,
+    "warmth": 0.908,
+    "movement": 0.346,
+    "density": 0.965,
+    "space": 0.106,
+    "aggression": 0.102
+  },
+  "macros": {
+    "CHARACTER": 0.899,
+    "MOVEMENT": 0.346,
+    "COUPLING": 0.533,
+    "SPACE": 0.106
+  },
   "tags": [
     "family",
     "bright",
@@ -71,10 +47,5 @@
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

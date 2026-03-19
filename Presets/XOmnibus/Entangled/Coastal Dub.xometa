@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osprey",
-        "type": "COASTAL_DIVE",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Shore winds carry the dub delay out to sea — osprey plunge timed to the echo",
+  "name": "Coastal Dub",
+  "version": "1.0",
   "engines": [
     "Overdub",
     "Osprey"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.55,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.4,
+    "COUPLING": 0.65,
     "SPACE": 0.6
   },
-  "mood": "Entangled",
-  "name": "Coastal Dub",
-  "parameters": {
-    "Overdub": {},
-    "Osprey": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.43,
     "brightness": 0.48,
-    "density": 0.58,
+    "warmth": 0.59,
     "movement": 0.55,
+    "density": 0.58,
     "space": 0.57,
-    "warmth": 0.59
+    "aggression": 0.43
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "COASTAL_DIVE",
+    "source": "OVERDUB",
+    "target": "OSPREY",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "osprey",
     "dub"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Shore winds carry the dub delay out to sea — osprey plunge timed to the echo"
->>>>>>> origin/v1-launch-prep
 }

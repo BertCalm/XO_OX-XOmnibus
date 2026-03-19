@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obese",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC",
-        "amount": 0.541
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.407,
-    "brightness": 0.041,
-    "density": 0.964,
-    "movement": 0.894,
-    "space": 0.34,
-    "warmth": 0.974
-  },
+  "name": "DARK_HOT_KINETIC_DENSE_FND_3",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Obese",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.526,
-    "COUPLING": 0.251,
-    "MOVEMENT": 0.691,
-    "SPACE": 0.629
-  },
-  "mood": "Foundation",
-  "name": "DARK_HOT_KINETIC_DENSE_FND_3",
   "parameters": {
     "Obese": {
       "macro_character": 0.128,
-      "macro_coupling": 0.715,
       "macro_movement": 0.878,
+      "macro_coupling": 0.715,
       "macro_space": 0.703
     },
     "Oracle": {
       "macro_character": 0.242,
-      "macro_coupling": 0.59,
       "macro_movement": 0.867,
+      "macro_coupling": 0.59,
       "macro_space": 0.884
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBESE",
+    "target": "ORACLE",
+    "amount": 0.541
+  },
+  "dna": {
+    "brightness": 0.041,
+    "warmth": 0.974,
+    "movement": 0.894,
+    "density": 0.964,
+    "space": 0.34,
+    "aggression": 0.407
+  },
+  "macros": {
+    "CHARACTER": 0.526,
+    "MOVEMENT": 0.691,
+    "COUPLING": 0.251,
+    "SPACE": 0.629
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -58,10 +47,5 @@
     "hot",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

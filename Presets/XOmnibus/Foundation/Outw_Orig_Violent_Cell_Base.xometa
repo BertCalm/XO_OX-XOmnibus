@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 11.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Origami",
-        "type": "HARMONIC_STACK",
-        "amount": 0.64
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Violent Cell Base",
   "mood": "Foundation",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Outw_Orig_Violent_Cell_Base.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.947,
-    "brightness": 0.099,
-    "density": 0.941,
-    "movement": 0.933,
-    "space": 0.548,
-    "warmth": 0.078
-  },
-  "engines": [
-    "Outwit",
-    "Origami"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Foundation",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.97,
-      "macro_space": 0.13
-    },
-    "Outwit": {
-      "macro_character": 0.86,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.9,
-      "macro_space": 0.14
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "foundation"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Foundation/5X DARK COLD KINETIC DENSE VIOLENT FND 11.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.548,
     "aggression": 0.947
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Foundation/Outw_Orig_Violent_Cell_Base.xometa
 }

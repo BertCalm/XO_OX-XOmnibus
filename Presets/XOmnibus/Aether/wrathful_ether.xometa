@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Ottoni",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.376
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.908,
-    "brightness": 0.661,
-    "density": 0.015,
-    "movement": 0.899,
-    "space": 0.79,
-    "warmth": 0.026
-  },
+  "name": "WRATHFUL ETHER",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ombre",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.504,
-    "COUPLING": 0.945,
-    "MOVEMENT": 0.899,
-    "SPACE": 0.79
-  },
-  "mood": "Aether",
-  "name": "WRATHFUL ETHER",
   "parameters": {
     "Ombre": {
       "macro_character": 0.174,
-      "macro_coupling": 0.742,
       "macro_movement": 0.854,
+      "macro_coupling": 0.742,
       "macro_space": 0.792
     },
     "Ottoni": {
       "macro_character": 0.746,
-      "macro_coupling": 0.778,
       "macro_movement": 0.897,
+      "macro_coupling": 0.778,
       "macro_space": 0.791
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OMBRE",
+    "target": "OTTONI",
+    "amount": 0.376
+  },
+  "dna": {
+    "brightness": 0.661,
+    "warmth": 0.026,
+    "movement": 0.899,
+    "density": 0.015,
+    "space": 0.79,
+    "aggression": 0.908
+  },
+  "macros": {
+    "CHARACTER": 0.504,
+    "MOVEMENT": 0.899,
+    "COUPLING": 0.945,
+    "SPACE": 0.79
+  },
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh",
     "movement-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,51 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Oceanic",
-        "engineB": "Orbital",
-        "type": "LFO->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "ORBITAL frequency rotation mirrors deep-ocean gyre — spectral and vast.",
-  "dna": {
-    "aggression": 0.28,
-    "brightness": 0.6,
-    "density": 0.53,
-    "movement": 0.65,
-    "space": 0.72,
-    "warmth": 0.51
-  },
-  "engines": [
-    "Oceanic",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.8
-  },
-  "mood": "Entangled",
-  "name": "Spectral Current",
-  "parameters": {
-    "Oceanic": {},
-    "Orbital": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Spectral Current",
   "mood": "Entangled",
@@ -56,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL frequency rotation mirrors deep-ocean gyre — spectral and vast.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -67,6 +19,38 @@
     "gyre",
     "vast"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.75,
+    "SPACE": 0.8
+  },
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.51,
+    "movement": 0.65,
+    "density": 0.53,
+    "space": 0.72,
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OCEANIC",
+        "engineB": "ORBITAL",
+        "type": "LFO->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
 }

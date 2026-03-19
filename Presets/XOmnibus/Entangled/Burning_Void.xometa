@@ -1,29 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.516,
-        "engineA": "Osprey",
-        "engineB": "Owlfish",
-        "type": "TIMBRE_BLEND"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "dna": {
-    "aggression": 0.43,
-    "brightness": 0.595,
-    "density": 0.405,
-    "movement": 1.0,
-    "space": 0.7,
-    "warmth": 0.435
-  },
+  "schema_version": 1,
+  "name": "Burning Void",
+  "mood": "Entangled",
   "engines": [
     "Osprey",
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -33,7 +14,6 @@
     "coverage",
     "osprey",
     "owlfish"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,45 +23,41 @@
   ],
   "macros": {
     "CHARACTER": 0.499,
-    "COUPLING": 0.367,
     "MOVEMENT": 0.829,
+    "COUPLING": 0.367,
     "SPACE": 0.679
   },
-  "mood": "Entangled",
-  "name": "Burning Void",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.595,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.405,
+    "space": 0.7,
+    "aggression": 0.43
+  },
+  "sonic_dna": {
+    "brightness": 0.595,
+    "warmth": 0.435,
+    "movement": 1.0,
+    "density": 0.405,
+    "space": 0.7,
+    "aggression": 0.43
+  },
   "parameters": {
     "Osprey": {
       "macro_character": 0.785,
-      "macro_coupling": 0.867,
       "macro_movement": 0.57,
+      "macro_coupling": 0.867,
       "macro_space": 0.61
     },
     "Owlfish": {
       "macro_character": 0.44,
-      "macro_coupling": 0.617,
       "macro_movement": 0.625,
+      "macro_coupling": 0.617,
       "macro_space": 0.676
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.43,
-    "brightness": 0.595,
-    "density": 0.405,
-    "movement": 1.0,
-    "space": 0.7,
-    "warmth": 0.435
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "coverage",
-    "osprey",
-    "owlfish"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": [
       {
@@ -92,5 +68,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

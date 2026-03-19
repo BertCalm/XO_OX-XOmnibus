@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Overlap",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.829
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.438,
-    "brightness": 0.535,
-    "density": 0.893,
-    "movement": 0.074,
-    "space": 0.515,
-    "warmth": 0.97
-  },
+  "name": "HOT DENSE STILL PRI 10",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "OddfeliX",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.752,
-    "COUPLING": 0.676,
-    "MOVEMENT": 0.074,
-    "SPACE": 0.515
-  },
-  "mood": "Prism",
-  "name": "HOT DENSE STILL PRI 10",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.752,
-      "macro_coupling": 0.676,
       "macro_movement": 0.074,
+      "macro_coupling": 0.676,
       "macro_space": 0.515
     },
     "Overlap": {
       "macro_character": 0.739,
-      "macro_coupling": 0.579,
       "macro_movement": 0.021,
+      "macro_coupling": 0.579,
       "macro_space": 0.574
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ODDFELIX",
+    "target": "OVERLAP",
+    "amount": 0.829
+  },
+  "dna": {
+    "brightness": 0.535,
+    "warmth": 0.97,
+    "movement": 0.074,
+    "density": 0.893,
+    "space": 0.515,
+    "aggression": 0.438
+  },
+  "macros": {
+    "CHARACTER": 0.752,
+    "MOVEMENT": 0.074,
+    "COUPLING": 0.676,
+    "SPACE": 0.515
+  },
   "tags": [
     "prism",
     "warm",
@@ -58,10 +47,5 @@
     "static",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

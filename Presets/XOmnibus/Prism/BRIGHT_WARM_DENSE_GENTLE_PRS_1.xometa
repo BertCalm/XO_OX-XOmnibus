@@ -1,76 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ocelot",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.538
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.056,
-    "brightness": 0.976,
-    "density": 0.954,
-    "movement": 0.601,
-    "space": 0.394,
-    "warmth": 0.933
-  },
+  "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Origami",
     "Ocelot"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.516,
-    "COUPLING": 0.781,
-    "MOVEMENT": 0.601,
-    "SPACE": 0.394
-  },
-  "mood": "Prism",
-  "name": "BRIGHT_WARM_DENSE_GENTLE_PRS_1",
   "parameters": {
-<<<<<<< HEAD
-    "Ocelot": {
-      "macro_character": 0.04,
-      "macro_coupling": 0.383,
-=======
     "Origami": {
       "macro_character": 0.516,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.601,
+      "macro_coupling": 0.781,
       "macro_space": 0.394
     },
-<<<<<<< HEAD
-    "Origami": {
-      "macro_character": 0.516,
-      "macro_coupling": 0.781,
-=======
     "Ocelot": {
       "macro_character": 0.04,
->>>>>>> origin/v1-launch-prep
       "macro_movement": 0.601,
+      "macro_coupling": 0.383,
       "macro_space": 0.394
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORIGAMI",
+    "target": "OCELOT",
+    "amount": 0.538
+  },
+  "dna": {
+    "brightness": 0.976,
+    "warmth": 0.933,
+    "movement": 0.601,
+    "density": 0.954,
+    "space": 0.394,
+    "aggression": 0.056
+  },
+  "macros": {
+    "CHARACTER": 0.516,
+    "MOVEMENT": 0.601,
+    "COUPLING": 0.781,
+    "SPACE": 0.394
+  },
   "tags": [
     "prism",
     "bright",
     "warm",
     "dense",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

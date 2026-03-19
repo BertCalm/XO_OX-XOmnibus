@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK HOT DENSE INTIMATE GENTLE FAM2 4",
   "version": "1.0",
   "mood": "Family",
@@ -23,58 +20,26 @@
       "macro_space": 0.124
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Odyssey",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.505
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OSTERIA",
+    "target": "ODYSSEY",
+    "amount": 0.505
   },
   "dna": {
-    "aggression": 0.052,
     "brightness": 0.139,
-    "density": 0.959,
+    "warmth": 0.887,
     "movement": 0.626,
+    "density": 0.959,
     "space": 0.104,
-    "warmth": 0.887
+    "aggression": 0.052
   },
-  "engines": [
-    "Osteria",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.513,
-    "COUPLING": 0.505,
     "MOVEMENT": 0.626,
+    "COUPLING": 0.505,
     "SPACE": 0.104
   },
-  "mood": "Family",
-  "name": "DARK HOT DENSE INTIMATE GEN...",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.556,
-      "macro_coupling": 0.511,
-      "macro_movement": 0.623,
-      "macro_space": 0.124
-    },
-    "Osteria": {
-      "macro_character": 0.513,
-      "macro_coupling": 0.505,
-      "macro_movement": 0.626,
-      "macro_space": 0.104
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "dark",
@@ -82,10 +47,5 @@
     "dense",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

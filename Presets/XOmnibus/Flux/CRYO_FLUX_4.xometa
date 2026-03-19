@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "CRYO FLUX 4",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.5362
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Orbital",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8635
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORGANON",
+    "target": "ORBITAL",
+    "amount": 0.8635
   },
   "dna": {
-    "aggression": 0.2276,
     "brightness": 0.8166,
-    "density": 0.3052,
+    "warmth": 0.0422,
     "movement": 0.0451,
+    "density": 0.3052,
     "space": 0.7953,
-    "warmth": 0.0422
+    "aggression": 0.2276
   },
-  "engines": [
-    "Organon",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1153,
-    "COUPLING": 0.1786,
     "MOVEMENT": 0.9704,
+    "COUPLING": 0.1786,
     "SPACE": 0.9625
   },
-  "mood": "Flux",
-  "name": "CRYO FLUX 4",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.6415,
-      "macro_coupling": 0.9811,
-      "macro_movement": 0.3997,
-      "macro_space": 0.5362
-    },
-    "Organon": {
-      "macro_character": 0.3283,
-      "macro_coupling": 0.9669,
-      "macro_movement": 0.8644,
-      "macro_space": 0.2791
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

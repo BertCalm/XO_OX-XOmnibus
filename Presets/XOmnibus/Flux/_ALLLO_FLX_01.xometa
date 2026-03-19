@@ -1,73 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Origami",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.249
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.048,
-    "brightness": 0.544,
-    "density": 0.026,
-    "movement": 0.094,
-    "space": 0.035,
-    "warmth": 0.102
-  },
+  "name": "ALLLO FLX 01",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Overdub",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.323,
-    "COUPLING": 0.042,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.035
-  },
-  "mood": "Flux",
-  "name": "ALLLO FLX 01",
   "parameters": {
-<<<<<<< HEAD
-    "Origami": {
-=======
     "Overdub": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.323,
-      "macro_coupling": 0.042,
       "macro_movement": 0.06,
+      "macro_coupling": 0.042,
       "macro_space": 0.035
     },
-<<<<<<< HEAD
-    "Overdub": {
-=======
     "Origami": {
->>>>>>> origin/v1-launch-prep
       "macro_character": 0.323,
-      "macro_coupling": 0.042,
       "macro_movement": 0.06,
+      "macro_coupling": 0.042,
       "macro_space": 0.035
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "ORIGAMI",
+    "amount": 0.249
+  },
+  "dna": {
+    "brightness": 0.544,
+    "warmth": 0.102,
+    "movement": 0.094,
+    "density": 0.026,
+    "space": 0.035,
+    "aggression": 0.048
+  },
+  "macros": {
+    "CHARACTER": 0.323,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.042,
+    "SPACE": 0.035
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

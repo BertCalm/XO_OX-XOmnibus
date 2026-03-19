@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Overbite",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.75
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.069,
-    "brightness": 0.419,
-    "density": 0.381,
-    "movement": 0.719,
-    "space": 0.022,
-    "warmth": 0.01
-  },
+  "name": "PRESSED VAPOR",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Orbital",
     "Overbite"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.449,
-    "COUPLING": 0.193,
-    "MOVEMENT": 0.887,
-    "SPACE": 0.022
-  },
-  "mood": "Atmosphere",
-  "name": "PRESSED VAPOR",
   "parameters": {
     "Orbital": {
       "macro_character": 0.802,
-      "macro_coupling": 0.564,
       "macro_movement": 0.309,
+      "macro_coupling": 0.564,
       "macro_space": 0.022
     },
     "Overbite": {
       "macro_character": 0.131,
-      "macro_coupling": 0.377,
       "macro_movement": 0.577,
+      "macro_coupling": 0.377,
       "macro_space": 0.099
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "ORBITAL",
+    "target": "OVERBITE",
+    "amount": 0.75
+  },
+  "dna": {
+    "brightness": 0.419,
+    "warmth": 0.01,
+    "movement": 0.719,
+    "density": 0.381,
+    "space": 0.022,
+    "aggression": 0.069
+  },
+  "macros": {
+    "CHARACTER": 0.449,
+    "MOVEMENT": 0.887,
+    "COUPLING": 0.193,
+    "SPACE": 0.022
+  },
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

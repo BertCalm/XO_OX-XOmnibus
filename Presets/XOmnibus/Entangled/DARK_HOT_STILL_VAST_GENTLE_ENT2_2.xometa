@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK HOT STILL VAST GENTLE ENT2 2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.99
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oblique",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.197
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORPHICA",
+    "target": "OBLIQUE",
+    "amount": 0.197
   },
   "dna": {
-    "aggression": 0.02,
     "brightness": 0.041,
-    "density": 0.373,
+    "warmth": 0.902,
     "movement": 0.118,
+    "density": 0.373,
     "space": 0.971,
-    "warmth": 0.902
+    "aggression": 0.02
   },
-  "engines": [
-    "Orphica",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.472,
-    "COUPLING": 0.197,
     "MOVEMENT": 0.118,
+    "COUPLING": 0.197,
     "SPACE": 0.971
   },
-  "mood": "Entangled",
-  "name": "DARK HOT STILL VAST GENTLE ...",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.182,
-      "macro_movement": 0.102,
-      "macro_space": 0.99
-    },
-    "Orphica": {
-      "macro_character": 0.472,
-      "macro_coupling": 0.197,
-      "macro_movement": 0.118,
-      "macro_space": 0.971
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -82,10 +47,5 @@
     "still",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

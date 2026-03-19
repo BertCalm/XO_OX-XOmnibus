@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SAVAGE LIGHT TEAR",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.674
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Obbligato",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.537
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERWORLD",
+    "target": "OBBLIGATO",
+    "amount": 0.537
   },
   "dna": {
-    "aggression": 0.914,
     "brightness": 0.815,
-    "density": 0.037,
+    "warmth": 0.473,
     "movement": 0.398,
+    "density": 0.037,
     "space": 0.647,
-    "warmth": 0.473
+    "aggression": 0.914
   },
-  "engines": [
-    "Overworld",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.187,
-    "COUPLING": 0.692,
     "MOVEMENT": 0.398,
+    "COUPLING": 0.692,
     "SPACE": 0.647
   },
-  "mood": "Aether",
-  "name": "SAVAGE LIGHT TEAR",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.437,
-      "macro_coupling": 0.44,
-      "macro_movement": 0.388,
-      "macro_space": 0.674
-    },
-    "Overworld": {
-      "macro_character": 0.048,
-      "macro_coupling": 0.273,
-      "macro_movement": 0.414,
-      "macro_space": 0.665
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

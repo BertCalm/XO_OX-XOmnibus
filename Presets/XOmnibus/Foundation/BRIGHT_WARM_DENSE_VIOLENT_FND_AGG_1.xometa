@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_1",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.723
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "OddOscar",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.787
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORIGAMI",
+    "target": "ODDOSCAR",
+    "amount": 0.787
   },
   "dna": {
-    "aggression": 0.976,
     "brightness": 0.879,
-    "density": 0.982,
+    "warmth": 0.896,
     "movement": 0.406,
+    "density": 0.982,
     "space": 0.652,
-    "warmth": 0.896
+    "aggression": 0.976
   },
-  "engines": [
-    "Origami",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.572,
-    "COUPLING": 0.85,
     "MOVEMENT": 0.445,
+    "COUPLING": 0.85,
     "SPACE": 0.772
   },
-  "mood": "Foundation",
-  "name": "Golden Massive",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.583,
-      "macro_coupling": 0.865,
-      "macro_movement": 0.494,
-      "macro_space": 0.723
-    },
-    "Origami": {
-      "macro_character": 0.572,
-      "macro_coupling": 0.85,
-      "macro_movement": 0.445,
-      "macro_space": 0.772
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "warm",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

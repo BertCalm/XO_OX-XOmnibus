@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.722,
-        "engineA": "Overlap",
-        "engineB": "Oceanic",
-        "type": "FILTER_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "OCEANIC depth zone index modulates OVERLAP damping — deeper zones, warmer tails",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.5,
-    "space": 0.875,
-    "warmth": 0.625
-  },
+  "schema_version": 1,
+  "name": "Diffuse Bloom",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Diffuse Bloom",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.688,
-      "olap_damping": 0.617,
-      "olap_decay": 0.695,
-      "olap_diffusion": 0.796,
-      "olap_earlyMix": 0.201,
-      "olap_filterCutoff": 0.655,
-      "olap_filterReso": 0.179,
-      "olap_lateMix": 0.708,
-      "olap_modDepth": 0.132,
-      "olap_modRate": 0.177,
-      "olap_outputLevel": 0.798,
-      "olap_preDelay": 0.069,
-      "olap_size": 0.656
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2,
-    "brightness": 0.575,
-    "density": 0.65,
-    "movement": 0.5,
-    "space": 0.875,
-    "warmth": 0.625
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OCEANIC depth zone index modulates OVERLAP damping — deeper zones, warmer tails",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

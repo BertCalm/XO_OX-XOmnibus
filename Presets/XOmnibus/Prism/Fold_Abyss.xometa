@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Origami fold collapsed into maximum darkness",
-  "dna": {
-    "aggression": 0.751,
+  "schema_version": 1,
+  "name": "Fold Abyss",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.1095,
-    "density": 0.8919,
+    "warmth": 0.6375,
     "movement": 0.6174,
+    "density": 0.8919,
     "space": 0.3798,
-    "warmth": 0.6375
+    "aggression": 0.751
+  },
+  "dna": {
+    "brightness": 0.1095,
+    "warmth": 0.6375,
+    "movement": 0.6174,
+    "density": 0.8919,
+    "space": 0.3798,
+    "aggression": 0.751
   },
   "engines": [
     "Origami"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "dense",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FOLD",
@@ -36,53 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "COUPLE": 0.828,
     "FOLD": 0.2187,
-    "SPACE": 0.6618,
-    "TENSION": 0.7648
+    "TENSION": 0.7648,
+    "COUPLE": 0.828,
+    "SPACE": 0.6618
   },
-  "mood": "Prism",
-  "name": "Fold Abyss",
+  "couplingIntensity": "None",
   "parameters": {
     "Origami": {
-<<<<<<< HEAD
-      "ori_couplingBus": 0,
-=======
       "ori_macro_fold": 0.2187,
       "ori_macro_tension": 0.7648,
       "ori_macro_couple": 0.828,
       "ori_macro_space": 0.6618,
       "ori_outputLevel": 0.85,
->>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.5,
-      "ori_macro_couple": 0.828,
-      "ori_macro_fold": 0.2187,
-      "ori_macro_space": 0.6618,
-      "ori_macro_tension": 0.7648,
-      "ori_outputLevel": 0.85
+      "ori_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.751,
-    "brightness": 0.1095,
-    "density": 0.8919,
-    "movement": 0.6174,
-    "space": 0.3798,
-    "warmth": 0.6375
-  },
-  "tags": [
-    "prism",
-    "dark",
-    "dense",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

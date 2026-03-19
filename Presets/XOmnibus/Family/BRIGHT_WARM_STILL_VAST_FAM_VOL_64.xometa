@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_64",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.899
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Orphica",
-        "type": "FILTER_LINK",
-        "amount": 0.841
-      }
-    ]
+    "type": "FILTER_LINK",
+    "source": "OVERDUB",
+    "target": "ORPHICA",
+    "amount": 0.841
   },
   "dna": {
-    "aggression": 0.36,
     "brightness": 0.931,
-    "density": 0.501,
+    "warmth": 0.895,
     "movement": 0.118,
+    "density": 0.501,
     "space": 0.891,
-    "warmth": 0.895
+    "aggression": 0.36
   },
-  "engines": [
-    "Overdub",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.909,
-    "COUPLING": 0.448,
     "MOVEMENT": 0.099,
+    "COUPLING": 0.448,
     "SPACE": 0.887
   },
-  "mood": "Family",
-  "name": "Halo Void",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.885,
-      "macro_coupling": 0.445,
-      "macro_movement": 0.088,
-      "macro_space": 0.899
-    },
-    "Overdub": {
-      "macro_character": 0.934,
-      "macro_coupling": 0.45,
-      "macro_movement": 0.109,
-      "macro_space": 0.875
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "vast",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Opal",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.436
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9884,
-    "brightness": 0.3691,
-    "density": 0.1092,
-    "movement": 0.9897,
-    "space": 0.9861,
-    "warmth": 0.9556
-  },
+  "name": "HOT_KINETIC_SPARSE_VAST_VIOLENT_FLX2_1",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oceanic",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6764,
-    "COUPLING": 0.1285,
-    "MOVEMENT": 0.99,
-    "SPACE": 0.9883
-  },
-  "mood": "Flux",
-  "name": "Rust Ripple",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.6649,
-      "macro_coupling": 0.1303,
       "macro_movement": 0.99,
+      "macro_coupling": 0.1303,
       "macro_space": 0.99
     },
     "Opal": {
       "macro_character": 0.688,
-      "macro_coupling": 0.1268,
       "macro_movement": 0.99,
+      "macro_coupling": 0.1268,
       "macro_space": 0.9866
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "OPAL",
+    "amount": 0.436
+  },
+  "dna": {
+    "brightness": 0.3691,
+    "warmth": 0.9556,
+    "movement": 0.9897,
+    "density": 0.1092,
+    "space": 0.9861,
+    "aggression": 0.9884
+  },
+  "macros": {
+    "CHARACTER": 0.6764,
+    "MOVEMENT": 0.99,
+    "COUPLING": 0.1285,
+    "SPACE": 0.9883
+  },
   "tags": [
     "flux",
     "warm",
@@ -58,10 +47,5 @@
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

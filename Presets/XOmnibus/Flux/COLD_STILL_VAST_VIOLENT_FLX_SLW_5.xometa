@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_STILL_VAST_VIOLENT_FLX_SLW_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.973
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oblique",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.668
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OBLIQUE",
+    "amount": 0.668
   },
   "dna": {
-    "aggression": 0.926,
     "brightness": 0.64,
-    "density": 0.412,
+    "warmth": 0.028,
     "movement": 0.054,
+    "density": 0.412,
     "space": 0.978,
-    "warmth": 0.028
+    "aggression": 0.926
   },
-  "engines": [
-    "Opal",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.669,
-    "COUPLING": 0.736,
     "MOVEMENT": 0.054,
+    "COUPLING": 0.736,
     "SPACE": 0.978
   },
-  "mood": "Flux",
-  "name": "Frost Void",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.346,
-      "macro_coupling": 0.744,
-      "macro_movement": 0.047,
-      "macro_space": 0.973
-    },
-    "Opal": {
-      "macro_character": 0.468,
-      "macro_coupling": 0.841,
-      "macro_movement": 0.047,
-      "macro_space": 0.896
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "vast",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

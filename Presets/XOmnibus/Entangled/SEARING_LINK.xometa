@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SEARING LINK",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.06
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Obbligato",
-        "type": "CHAOS_INJECT",
-        "amount": 0.564
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "OBBLIGATO",
+    "amount": 0.564
   },
   "dna": {
-    "aggression": 0.594,
     "brightness": 0.102,
-    "density": 0.269,
+    "warmth": 0.975,
     "movement": 0.312,
+    "density": 0.269,
     "space": 0.558,
-    "warmth": 0.975
+    "aggression": 0.594
   },
-  "engines": [
-    "Ouroboros",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.484,
-    "COUPLING": 0.607,
     "MOVEMENT": 0.204,
+    "COUPLING": 0.607,
     "SPACE": 0.313
   },
-  "mood": "Entangled",
-  "name": "SEARING LINK",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.685,
-      "macro_coupling": 0.073,
-      "macro_movement": 0.297,
-      "macro_space": 0.06
-    },
-    "Ouroboros": {
-      "macro_character": 0.29,
-      "macro_coupling": 0.483,
-      "macro_movement": 0.957,
-      "macro_space": 0.805
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

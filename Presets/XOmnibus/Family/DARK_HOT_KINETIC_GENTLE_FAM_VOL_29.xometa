@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_GENTLE_FAM_VOL_29",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.575
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Odyssey",
-        "type": "PHASE_COUPLE",
-        "amount": 0.69
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "OSTERIA",
+    "target": "ODYSSEY",
+    "amount": 0.69
   },
   "dna": {
-    "aggression": 0.101,
     "brightness": 0.043,
-    "density": 0.313,
+    "warmth": 0.99,
     "movement": 0.979,
+    "density": 0.313,
     "space": 0.547,
-    "warmth": 0.99
+    "aggression": 0.101
   },
-  "engines": [
-    "Osteria",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.508,
-    "COUPLING": 0.21,
     "MOVEMENT": 0.986,
+    "COUPLING": 0.21,
     "SPACE": 0.546
   },
-  "mood": "Family",
-  "name": "Cocoa Pulse 2",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.487,
-      "macro_coupling": 0.206,
-      "macro_movement": 0.981,
-      "macro_space": 0.575
-    },
-    "Osteria": {
-      "macro_character": 0.528,
-      "macro_coupling": 0.215,
-      "macro_movement": 0.99,
-      "macro_space": 0.518
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "hot",
     "kinetic",
     "gentle",
     "dark"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VEILED THREAD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.031
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Ole",
-        "type": "CHAOS_INJECT",
-        "amount": 0.858
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OUROBOROS",
+    "target": "OLE",
+    "amount": 0.858
   },
   "dna": {
-    "aggression": 0.249,
     "brightness": 0.719,
-    "density": 0.32,
+    "warmth": 0.489,
     "movement": 0.079,
+    "density": 0.32,
     "space": 0.839,
-    "warmth": 0.489
+    "aggression": 0.249
   },
-  "engines": [
-    "Ouroboros",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.275,
-    "COUPLING": 0.987,
     "MOVEMENT": 0.079,
+    "COUPLING": 0.987,
     "SPACE": 0.863
   },
-  "mood": "Entangled",
-  "name": "VEILED THREAD",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.201,
-      "macro_coupling": 0.521,
-      "macro_movement": 0.1,
-      "macro_space": 0.031
-    },
-    "Ouroboros": {
-      "macro_character": 0.132,
-      "macro_coupling": 0.913,
-      "macro_movement": 0.057,
-      "macro_space": 0.98
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "veiled"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

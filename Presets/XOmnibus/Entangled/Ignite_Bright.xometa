@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ottoni",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.66
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.4,
-    "brightness": 0.72,
-    "density": 0.62,
-    "movement": 0.53,
-    "space": 0.45,
-    "warmth": 0.91
-  },
+  "name": "Ignite Bright",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.79,
-    "COUPLING": 0.55,
-    "MOVEMENT": 0.57,
-    "SPACE": 0.49
-  },
-  "mood": "Entangled",
-  "name": "Ignite Bright",
   "parameters": {
     "Origami": {
       "macro_character": 0.73,
-      "macro_coupling": 0.59,
       "macro_movement": 0.6,
+      "macro_coupling": 0.59,
       "macro_space": 0.52
     },
     "Ottoni": {
       "macro_character": 0.85,
-      "macro_coupling": 0.51,
       "macro_movement": 0.54,
+      "macro_coupling": 0.51,
       "macro_space": 0.47
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_MIRROR",
+    "source": "ORIGAMI",
+    "target": "OTTONI",
+    "amount": 0.66
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.91,
+    "movement": 0.53,
+    "density": 0.62,
+    "space": 0.45,
+    "aggression": 0.4
+  },
+  "macros": {
+    "CHARACTER": 0.79,
+    "MOVEMENT": 0.57,
+    "COUPLING": 0.55,
+    "SPACE": 0.49
+  },
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

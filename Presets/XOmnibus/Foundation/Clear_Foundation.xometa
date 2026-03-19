@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Granular foundation stripped to luminous core",
-  "dna": {
-    "aggression": 0.0706,
+  "schema_version": 1,
+  "name": "Clear Foundation",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.9194,
-    "density": 0.0815,
+    "warmth": 0.3152,
     "movement": 0.3697,
+    "density": 0.0815,
     "space": 0.6249,
-    "warmth": 0.3152
+    "aggression": 0.0706
+  },
+  "dna": {
+    "brightness": 0.9194,
+    "warmth": 0.3152,
+    "movement": 0.3697,
+    "density": 0.0815,
+    "space": 0.6249,
+    "aggression": 0.0706
   },
   "engines": [
     "Opal"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "GRAIN",
@@ -36,48 +38,24 @@
     "SPACE"
   ],
   "macros": {
-    "DENSITY": 0.4845,
     "GRAIN": 0.6964,
     "SCATTER": 0.8189,
+    "DENSITY": 0.4845,
     "SPACE": 0.6345
   },
-  "mood": "Foundation",
-  "name": "Clear Foundation",
+  "couplingIntensity": "None",
   "parameters": {
     "Opal": {
-<<<<<<< HEAD
-      "opal_couplingBus": 0,
-      "opal_couplingLevel": 0.5,
-      "opal_macro_density": 0.4845,
-=======
->>>>>>> origin/v1-launch-prep
       "opal_macro_grain": 0.6964,
       "opal_macro_scatter": 0.8189,
+      "opal_macro_density": 0.4845,
       "opal_macro_space": 0.6345,
-      "opal_outputLevel": 0.85
+      "opal_outputLevel": 0.85,
+      "opal_couplingLevel": 0.5,
+      "opal_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0706,
-    "brightness": 0.9194,
-    "density": 0.0815,
-    "movement": 0.3697,
-    "space": 0.6249,
-    "warmth": 0.3152
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

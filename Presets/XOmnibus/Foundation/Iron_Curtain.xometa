@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "NES pulse wave pushed into shadow territory",
-  "dna": {
-    "aggression": 0.2639,
+  "schema_version": 1,
+  "name": "Iron Curtain",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.0768,
-    "density": 0.8191,
+    "warmth": 0.6133,
     "movement": 0.4329,
+    "density": 0.8191,
     "space": 0.3944,
-    "warmth": 0.6133
+    "aggression": 0.2639
+  },
+  "dna": {
+    "brightness": 0.0768,
+    "warmth": 0.6133,
+    "movement": 0.4329,
+    "density": 0.8191,
+    "space": 0.3944,
+    "aggression": 0.2639
   },
   "engines": [
     "Overworld"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +29,6 @@
     "dark",
     "extreme",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "ERA",
@@ -35,48 +37,24 @@
     "SPACE"
   ],
   "macros": {
+    "ERA": 0.1617,
     "CHAOS": 0.8402,
     "COUPLE": 0.5212,
-    "ERA": 0.1617,
     "SPACE": 0.7403
   },
-  "mood": "Foundation",
-  "name": "Iron Curtain",
+  "couplingIntensity": "None",
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-      "ow_couplingBus": 0,
-      "ow_couplingLevel": 0.5,
-=======
       "ow_macro_era": 0.1617,
->>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.8402,
       "ow_macro_couple": 0.5212,
-      "ow_macro_era": 0.1617,
       "ow_macro_space": 0.7403,
-      "ow_outputLevel": 0.85
+      "ow_outputLevel": 0.85,
+      "ow_couplingLevel": 0.5,
+      "ow_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2639,
-    "brightness": 0.0768,
-    "density": 0.8191,
-    "movement": 0.4329,
-    "space": 0.3944,
-    "warmth": 0.6133
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

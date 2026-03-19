@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.88,
-        "engineA": "Ombre",
-        "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Shadow mauve frequency-smeared by Ouroboros — the memory's topology consumed by chaos.",
-  "dna": {
-    "aggression": 0.93,
-    "brightness": 0.1,
-    "density": 0.86,
-    "movement": 0.68,
-    "space": 0.0,
-    "warmth": 0.364
-  },
+  "schema_version": 1,
+  "name": "Shadow Topology",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "ombre",
     "ouroboros",
     "shadow"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.85,
-    "COUPLING": 0.88,
     "MOVEMENT": 0.68,
+    "COUPLING": 0.88,
     "SPACE": 0.15
   },
-  "mood": "Entangled",
-  "name": "Shadow Topology",
-  "parameters": {
-    "Ombre": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.93,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.1,
-    "density": 0.86,
+    "warmth": 0.364,
     "movement": 0.68,
-    "space": 0.15,
-    "warmth": 0.15
+    "density": 0.86,
+    "space": 0.0,
+    "aggression": 0.93
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "ombre",
-    "ouroboros",
-    "shadow"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.1,
+    "warmth": 0.15,
+    "movement": 0.68,
+    "density": 0.86,
+    "space": 0.15,
+    "aggression": 0.93
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OMBRE",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.88
+      }
+    ]
+  }
 }

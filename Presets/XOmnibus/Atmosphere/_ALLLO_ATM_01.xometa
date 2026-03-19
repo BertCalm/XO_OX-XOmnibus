@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Organon",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.033
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.034,
-    "brightness": 0.574,
-    "density": 0.065,
-    "movement": 0.073,
-    "space": 0.097,
-    "warmth": 0.025
-  },
+  "name": "ALLLO ATM 01",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Opal",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.299,
-    "COUPLING": 0.066,
-    "MOVEMENT": 0.069,
-    "SPACE": 0.097
-  },
-  "mood": "Atmosphere",
-  "name": "ALLLO ATM 01",
   "parameters": {
     "Opal": {
       "macro_character": 0.299,
-      "macro_coupling": 0.066,
       "macro_movement": 0.069,
+      "macro_coupling": 0.066,
       "macro_space": 0.097
     },
     "Organon": {
       "macro_character": 0.299,
-      "macro_coupling": 0.066,
       "macro_movement": 0.069,
+      "macro_coupling": 0.066,
       "macro_space": 0.097
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.033
+  },
+  "dna": {
+    "brightness": 0.574,
+    "warmth": 0.025,
+    "movement": 0.073,
+    "density": 0.065,
+    "space": 0.097,
+    "aggression": 0.034
+  },
+  "macros": {
+    "CHARACTER": 0.299,
+    "MOVEMENT": 0.069,
+    "COUPLING": 0.066,
+    "SPACE": 0.097
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "minimal",
     "sparse"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

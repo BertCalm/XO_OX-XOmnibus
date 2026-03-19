@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK AIR",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,67 +20,30 @@
       "macro_space": 0.659
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osteria",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.569
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OVERDUB",
+    "target": "OSTERIA",
+    "amount": 0.569
   },
   "dna": {
-    "aggression": 0.238,
     "brightness": 0.051,
-    "density": 0.069,
+    "warmth": 0.209,
     "movement": 0.359,
+    "density": 0.069,
     "space": 0.268,
-    "warmth": 0.209
+    "aggression": 0.238
   },
-  "engines": [
-    "Overdub",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.488,
-    "COUPLING": 0.68,
     "MOVEMENT": 0.66,
+    "COUPLING": 0.68,
     "SPACE": 0.441
   },
-  "mood": "Atmosphere",
-  "name": "DARK AIR",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.615,
-      "macro_coupling": 0.909,
-      "macro_movement": 0.727,
-      "macro_space": 0.659
-    },
-    "Overdub": {
-      "macro_character": 0.362,
-      "macro_coupling": 0.452,
-      "macro_movement": 0.594,
-      "macro_space": 0.222
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
     "extreme",
     "low-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Ottoni",
-        "type": "NEURAL_WEAVE",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Brass declaration shrouded in octopus ink cloud — triumph gone mysterious",
+  "name": "Ink Fanfare",
+  "version": "1.0",
   "engines": [
     "Ottoni",
     "Octopus"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.65,
-    "COUPLING": 0.6,
     "MOVEMENT": 0.45,
+    "COUPLING": 0.6,
     "SPACE": 0.45
   },
-  "mood": "Entangled",
-  "name": "Ink Fanfare",
-  "parameters": {
-    "Ottoni": {},
-    "Octopus": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.58,
     "brightness": 0.59,
-    "density": 0.7,
+    "warmth": 0.58,
     "movement": 0.62,
+    "density": 0.7,
     "space": 0.5,
-    "warmth": 0.58
+    "aggression": 0.58
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "NEURAL_WEAVE",
+    "source": "OCTOPUS",
+    "target": "OTTONI",
+    "amount": 0.6
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "octopus",
     "triple"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Brass declaration shrouded in octopus ink cloud — triumph gone mysterious"
->>>>>>> origin/v1-launch-prep
 }

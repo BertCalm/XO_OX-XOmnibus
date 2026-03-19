@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ODDOSCAR — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.79,
-    "brightness": 0.05,
-    "density": 0.4,
-    "movement": 0.63,
-    "space": 0.66,
-    "warmth": 0.45
-  },
+  "schema_version": 1,
+  "name": "Oscar Still Water",
+  "mood": "Atmosphere",
   "engines": [
     "OddOscar"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Oscar Still Water",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.45,
+    "movement": 0.63,
+    "density": 0.4,
+    "space": 0.66,
+    "aggression": 0.79
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.45,
+    "movement": 0.63,
+    "density": 0.4,
+    "space": 0.66,
+    "aggression": 0.79
+  },
   "parameters": {
     "OddOscar": {
-<<<<<<< HEAD
-=======
       "oddo_oscAwave": 0,
       "oddo_oscBwave": 1,
       "oddo_filterCutoff": 0.6,
       "oddo_filterReso": 0.35,
->>>>>>> origin/v1-launch-prep
       "oddo_ampAttack": 464.4,
       "oddo_ampDecay": 174.1,
-      "oddo_ampRelease": 183.3,
       "oddo_ampSustain": 0.76,
-      "oddo_character": 0.57,
-      "oddo_coupling": 0.97,
-      "oddo_delayMix": 0.76,
-      "oddo_filterCutoff": 0.6,
-      "oddo_filterReso": 0.35,
-      "oddo_lfoDepth": 0.85,
+      "oddo_ampRelease": 183.3,
       "oddo_lfoRate": 0.11,
-      "oddo_movement": 0.81,
-      "oddo_oscAwave": 0,
-      "oddo_oscBwave": 1,
+      "oddo_lfoDepth": 0.85,
       "oddo_reverbMix": 0.37,
-      "oddo_space": 0.85
+      "oddo_delayMix": 0.76,
+      "oddo_character": 0.57,
+      "oddo_movement": 0.81,
+      "oddo_space": 0.85,
+      "oddo_coupling": 0.97
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.79,
-    "brightness": 0.05,
-    "density": 0.4,
-    "movement": 0.63,
-    "space": 0.66,
-    "warmth": 0.45
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

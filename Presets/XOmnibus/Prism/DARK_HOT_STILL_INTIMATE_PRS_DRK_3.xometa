@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_STILL_INTIMATE_PRS_DRK_3",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.0812
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Osteria",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.8646
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "OSTERIA",
+    "amount": 0.8646
   },
   "dna": {
-    "aggression": 0.3434,
     "brightness": 0.0304,
-    "density": 0.685,
+    "warmth": 0.9864,
     "movement": 0.0396,
+    "density": 0.685,
     "space": 0.0492,
-    "warmth": 0.9864
+    "aggression": 0.3434
   },
-  "engines": [
-    "Owlfish",
-    "Osteria"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6649,
-    "COUPLING": 0.685,
     "MOVEMENT": 0.0396,
+    "COUPLING": 0.685,
     "SPACE": 0.0492
   },
-  "mood": "Prism",
-  "name": "Copper Saturated",
-  "parameters": {
-    "Osteria": {
-      "macro_character": 0.6598,
-      "macro_coupling": 0.6543,
-      "macro_movement": 0.0783,
-      "macro_space": 0.0812
-    },
-    "Owlfish": {
-      "macro_character": 0.6649,
-      "macro_coupling": 0.685,
-      "macro_movement": 0.0396,
-      "macro_space": 0.0492
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "still",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "OddfeliX",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.728
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.949,
-    "brightness": 0.905,
-    "density": 0.617,
-    "movement": 0.472,
-    "space": 0.033,
-    "warmth": 0.076
-  },
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 4",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "OddOscar",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.897,
-    "COUPLING": 0.931,
-    "MOVEMENT": 0.453,
-    "SPACE": 0.031
-  },
-  "mood": "Aether",
-  "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
     "OddOscar": {
       "macro_character": 0.896,
-      "macro_coupling": 0.934,
       "macro_movement": 0.455,
+      "macro_coupling": 0.934,
       "macro_space": 0.031
     },
     "OddfeliX": {
       "macro_character": 0.897,
-      "macro_coupling": 0.929,
       "macro_movement": 0.45,
+      "macro_coupling": 0.929,
       "macro_space": 0.031
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "ODDOSCAR",
+    "target": "ODDFELIX",
+    "amount": 0.728
+  },
+  "dna": {
+    "brightness": 0.905,
+    "warmth": 0.076,
+    "movement": 0.472,
+    "density": 0.617,
+    "space": 0.033,
+    "aggression": 0.949
+  },
+  "macros": {
+    "CHARACTER": 0.897,
+    "MOVEMENT": 0.453,
+    "COUPLING": 0.931,
+    "SPACE": 0.031
+  },
   "tags": [
     "aether",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

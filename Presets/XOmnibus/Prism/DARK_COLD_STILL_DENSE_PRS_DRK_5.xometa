@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Orphica",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7378
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.341,
-    "brightness": 0.0249,
-    "density": 0.9465,
-    "movement": 0.1238,
-    "space": 0.6011,
-    "warmth": 0.0521
-  },
+  "name": "DARK_COLD_STILL_DENSE_PRS_DRK_5",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oblique",
     "Orphica"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.1966,
-    "COUPLING": 0.9465,
-    "MOVEMENT": 0.1238,
-    "SPACE": 0.6011
-  },
-  "mood": "Prism",
-  "name": "Node Thick",
   "parameters": {
     "Oblique": {
       "macro_character": 0.1966,
-      "macro_coupling": 0.9465,
       "macro_movement": 0.1238,
+      "macro_coupling": 0.9465,
       "macro_space": 0.6011
     },
     "Orphica": {
       "macro_character": 0.1918,
-      "macro_coupling": 0.9106,
       "macro_movement": 0.0985,
+      "macro_coupling": 0.9106,
       "macro_space": 0.6364
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "ORPHICA",
+    "amount": 0.7378
+  },
+  "dna": {
+    "brightness": 0.0249,
+    "warmth": 0.0521,
+    "movement": 0.1238,
+    "density": 0.9465,
+    "space": 0.6011,
+    "aggression": 0.341
+  },
+  "macros": {
+    "CHARACTER": 0.1966,
+    "MOVEMENT": 0.1238,
+    "COUPLING": 0.9465,
+    "SPACE": 0.6011
+  },
   "tags": [
     "prism",
     "dark",
     "cold",
     "still",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

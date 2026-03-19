@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Daguerreotype Oracle",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.94
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Obscura",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.75
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "OBSCURA",
+    "amount": 0.75
   },
-  "description": "Prophecy fixed in silver plate — Oracle's voice captured as a fading spectral image.",
   "dna": {
-    "aggression": 0.07,
     "brightness": 0.0,
-    "density": 0.0,
+    "warmth": 0.13,
     "movement": 0.32,
+    "density": 0.0,
     "space": 1.0,
-    "warmth": 0.13
+    "aggression": 0.07
   },
-  "engines": [
-    "Oracle",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.16,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.32,
+    "COUPLING": 0.75,
     "SPACE": 0.91
   },
-  "mood": "Entangled",
-  "name": "Daguerreotype Oracle",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.13,
-      "macro_coupling": 0.8,
-      "macro_movement": 0.27,
-      "macro_space": 0.94
-    },
-    "Oracle": {
-      "macro_character": 0.16,
-      "macro_coupling": 0.75,
-      "macro_movement": 0.32,
-      "macro_space": 0.91
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold-sparse",
     "daguerreotype",
     "prophecy"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "Prophecy fixed in silver plate — Oracle's voice captured as a fading spectral image."
->>>>>>> origin/v1-launch-prep
 }

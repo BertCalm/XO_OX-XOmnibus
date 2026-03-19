@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_COLD_FROZEN_VAST_HARSH_ENT4_5",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.895
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Orca",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.703
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OSPREY",
+    "target": "ORCA",
+    "amount": 0.703
   },
   "dna": {
-    "aggression": 0.925,
     "brightness": 0.116,
-    "density": 0.665,
+    "warmth": 0.088,
     "movement": 0.032,
+    "density": 0.665,
     "space": 0.887,
-    "warmth": 0.088
+    "aggression": 0.925
   },
-  "engines": [
-    "Osprey",
-    "Orca"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.11,
-    "COUPLING": 0.703,
     "MOVEMENT": 0.035,
+    "COUPLING": 0.703,
     "SPACE": 0.881
   },
-  "mood": "Entangled",
-  "name": "Wave Rage 3",
-  "parameters": {
-    "Orca": {
-      "macro_character": 0.099,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.029,
-      "macro_space": 0.895
-    },
-    "Osprey": {
-      "macro_character": 0.12,
-      "macro_coupling": 0.676,
-      "macro_movement": 0.04,
-      "macro_space": 0.866
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "frozen",
@@ -83,10 +48,5 @@
     "cold",
     "vast",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

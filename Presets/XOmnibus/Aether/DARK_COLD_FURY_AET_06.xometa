@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Origami",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.758
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.955,
-    "brightness": 0.04,
-    "density": 0.621,
-    "movement": 0.43,
-    "space": 0.547,
-    "warmth": 0.032
-  },
+  "name": "DARK COLD FURY AET 06",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obbligato",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.036,
-    "COUPLING": 0.86,
-    "MOVEMENT": 0.43,
-    "SPACE": 0.547
-  },
-  "mood": "Aether",
-  "name": "DARK COLD FURY AET 06",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.036,
-      "macro_coupling": 0.86,
       "macro_movement": 0.43,
+      "macro_coupling": 0.86,
       "macro_space": 0.547
     },
     "Origami": {
       "macro_character": 0.139,
-      "macro_coupling": 0.471,
       "macro_movement": 0.353,
+      "macro_coupling": 0.471,
       "macro_space": 0.554
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBBLIGATO",
+    "target": "ORIGAMI",
+    "amount": 0.758
+  },
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.032,
+    "movement": 0.43,
+    "density": 0.621,
+    "space": 0.547,
+    "aggression": 0.955
+  },
+  "macros": {
+    "CHARACTER": 0.036,
+    "MOVEMENT": 0.43,
+    "COUPLING": 0.86,
+    "SPACE": 0.547
+  },
   "tags": [
     "aether",
     "dark",
@@ -58,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

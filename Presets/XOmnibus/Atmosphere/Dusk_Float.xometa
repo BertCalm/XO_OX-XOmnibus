@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Rare-earth warmth — light touch, maximum space around it.",
-  "dna": {
-    "aggression": 0.125,
+  "schema_version": 1,
+  "name": "Dusk Float",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.775,
-    "density": 0.119,
+    "warmth": 0.888,
     "movement": 0.585,
+    "density": 0.119,
     "space": 0.643,
-    "warmth": 0.888
+    "aggression": 0.125
   },
   "engines": [
     "Osprey"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "Dusk Float",
-  "parameters": {
-    "Osprey": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.125,
-    "brightness": 0.775,
-    "density": 0.119,
-    "movement": 0.585,
-    "space": 0.643,
-    "warmth": 0.888
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rare-earth warmth — light touch, maximum space around it.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "atmosphere",
     "warm",
@@ -51,9 +25,6 @@
     "evolving",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -73,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

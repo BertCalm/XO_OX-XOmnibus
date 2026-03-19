@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "IGNEOUS FURY",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.582
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Orphica",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.809
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OWLFISH",
+    "target": "ORPHICA",
+    "amount": 0.809
   },
   "dna": {
-    "aggression": 0.914,
     "brightness": 0.925,
-    "density": 0.431,
+    "warmth": 0.898,
     "movement": 0.332,
+    "density": 0.431,
     "space": 0.57,
-    "warmth": 0.898
+    "aggression": 0.914
   },
-  "engines": [
-    "Owlfish",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.918,
-    "COUPLING": 0.972,
     "MOVEMENT": 0.362,
+    "COUPLING": 0.972,
     "SPACE": 0.57
   },
-  "mood": "Flux",
-  "name": "IGNEOUS FURY",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.956,
-      "macro_coupling": 0.968,
-      "macro_movement": 0.478,
-      "macro_space": 0.582
-    },
-    "Owlfish": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.972,
-      "macro_movement": 0.362,
-      "macro_space": 0.57
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "bright",
     "hot",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

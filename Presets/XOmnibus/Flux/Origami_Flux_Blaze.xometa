@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ORIGAMI pushed to extreme brightness — brightness 0.93, movement 0.94, aggression 0.60. Ultra-bright Flux zone filler.",
-  "dna": {
-    "aggression": 0.604,
-    "brightness": 0.931,
-    "density": 0.44,
-    "movement": 0.944,
-    "space": 0.4,
-    "warmth": 0.078
-  },
-  "engines": [
-    "Origami"
-=======
   "schema_version": 1,
   "name": "Origami Flux Blaze",
   "mood": "Flux",
@@ -32,7 +14,6 @@
     "extreme",
     "brightness",
     "origami"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,48 +21,37 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Flux",
-  "name": "Origami Flux Blaze",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.931,
+    "warmth": 0.078,
+    "movement": 0.944,
+    "density": 0.44,
+    "space": 0.4,
+    "aggression": 0.604
+  },
+  "sonic_dna": {
+    "brightness": 0.931,
+    "warmth": 0.078,
+    "movement": 0.944,
+    "density": 0.44,
+    "space": 0.4,
+    "aggression": 0.604
+  },
   "parameters": {
     "Origami": {
-<<<<<<< HEAD
-      "ori_couplingBus": 0,
-=======
       "ori_macro_fold": 0.566,
       "ori_macro_tension": 0.73,
       "ori_macro_couple": 0.272,
       "ori_macro_space": 0.33,
       "ori_outputLevel": 0.812,
->>>>>>> origin/v1-launch-prep
       "ori_couplingLevel": 0.054,
-      "ori_macro_couple": 0.272,
-      "ori_macro_fold": 0.566,
-      "ori_macro_space": 0.33,
-      "ori_macro_tension": 0.73,
-      "ori_outputLevel": 0.812
+      "ori_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.604,
-    "brightness": 0.931,
-    "density": 0.44,
-    "movement": 0.944,
-    "space": 0.4,
-    "warmth": 0.078
+  "coupling": {
+    "pairs": []
   },
-<<<<<<< HEAD
-  "tags": [
-    "flux",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "origami"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

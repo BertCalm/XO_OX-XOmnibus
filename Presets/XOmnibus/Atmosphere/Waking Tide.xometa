@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Lavender into amber. The transition between night and day held in sustained tone.",
+  "name": "Waking Tide",
+  "version": "1.0",
   "engines": [
     "Oracle"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.66,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.242,
+    "COUPLING": 0.0,
     "SPACE": 0.727
   },
-  "mood": "Atmosphere",
-  "name": "Waking Tide",
-  "parameters": {
-    "Oracle": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.06,
     "brightness": 0.715,
-    "density": 0.409,
+    "warmth": 0.605,
     "movement": 0.242,
+    "density": 0.409,
     "space": 0.727,
-    "warmth": 0.605
+    "aggression": 0.06
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "dawn",
     "gentle"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Lavender into amber. The transition between night and day held in sustained tone."
 }

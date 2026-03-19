@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Shadow Column",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OBSIDIAN in void register.",
-  "dna": {
-    "aggression": 0.112,
-    "brightness": 0.092,
-    "density": 0.519,
-    "movement": 0.262,
-    "space": 0.65,
-    "warmth": 0.414
-  },
-  "engines": [
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "DARKNESS",
-    "SHIMMER",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.275,
-    "DARKNESS": 0.261,
-    "SHIMMER": 0.324,
-    "SPACE": 0.654
-  },
-  "mood": "Atmosphere",
-  "name": "Shadow Column",
-  "parameters": {
-    "Obsidian": {
-      "coupling": 0.275,
-      "darkness": 0.261,
-      "shimmer": 0.324,
-      "space": 0.654
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "DARKNESS",
     "SHIMMER",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

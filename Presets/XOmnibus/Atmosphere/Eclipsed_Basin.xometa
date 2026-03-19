@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Eclipsed Basin",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OPAL in void register.",
-  "dna": {
-    "aggression": 0.093,
-    "brightness": 0.057,
-    "density": 0.599,
-    "movement": 0.4,
-    "space": 0.618,
-    "warmth": 0.487
-  },
-  "engines": [
-    "Opal"
-  ],
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.452,
-    "DRIFT": 0.533,
-    "SCATTER": 0.064,
-    "SPACE": 0.694
-  },
-  "mood": "Atmosphere",
-  "name": "Eclipsed Basin",
-  "parameters": {
-    "Opal": {
-      "coupling": 0.452,
-      "drift": 0.533,
-      "scatter": 0.064,
-      "space": 0.694
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_KINETIC_VIOLENT_ENT_AGG_3",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.508
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Overdub",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.885
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OWLFISH",
+    "target": "OVERDUB",
+    "amount": 0.885
   },
   "dna": {
-    "aggression": 0.975,
     "brightness": 0.075,
-    "density": 0.38,
+    "warmth": 0.92,
     "movement": 0.889,
+    "density": 0.38,
     "space": 0.542,
-    "warmth": 0.92
+    "aggression": 0.975
   },
-  "engines": [
-    "Owlfish",
-    "Overdub"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.457,
-    "COUPLING": 0.839,
     "MOVEMENT": 0.889,
+    "COUPLING": 0.839,
     "SPACE": 0.542
   },
-  "mood": "Entangled",
-  "name": "Velvet Wrath 2",
-  "parameters": {
-    "Overdub": {
-      "macro_character": 0.542,
-      "macro_coupling": 0.806,
-      "macro_movement": 0.851,
-      "macro_space": 0.508
-    },
-    "Owlfish": {
-      "macro_character": 0.371,
-      "macro_coupling": 0.839,
-      "macro_movement": 0.91,
-      "macro_space": 0.544
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

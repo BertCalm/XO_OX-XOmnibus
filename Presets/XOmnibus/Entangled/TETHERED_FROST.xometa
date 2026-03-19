@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "TETHERED FROST",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.713
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Oceanic",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.905
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.905
   },
   "dna": {
-    "aggression": 0.991,
     "brightness": 0.629,
-    "density": 0.561,
+    "warmth": 0.173,
     "movement": 0.08,
+    "density": 0.561,
     "space": 0.487,
-    "warmth": 0.173
+    "aggression": 0.991
   },
-  "engines": [
-    "Oracle",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.974,
-    "COUPLING": 0.788,
     "MOVEMENT": 0.08,
+    "COUPLING": 0.788,
     "SPACE": 0.844
   },
-  "mood": "Entangled",
-  "name": "TETHERED FROST",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.568,
-      "macro_coupling": 0.66,
-      "macro_movement": 0.057,
-      "macro_space": 0.713
-    },
-    "Oracle": {
-      "macro_character": 0.679,
-      "macro_coupling": 0.846,
-      "macro_movement": 0.103,
-      "macro_space": 0.859
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "tethered"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

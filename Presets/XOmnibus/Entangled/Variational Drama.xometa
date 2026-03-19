@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.72,
-        "engineA": "Organon",
-        "engineB": "Ole",
-        "type": "SPECTRAL_MORPH"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "Organon's free-energy inference spectrally morphs OLE's timbral drama — lived theatre.",
-  "dna": {
-    "aggression": 0.923,
-    "brightness": 0.263,
-    "density": 0.62,
-    "movement": 0.72,
-    "space": 0.4,
-    "warmth": 0.7
-  },
-  "engines": [
-    "Organon",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.63,
-    "COUPLING": 0.72,
-    "MOVEMENT": 0.65,
-    "SPACE": 0.44
-  },
-  "mood": "Entangled",
-  "name": "Variational Drama",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.68,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.62,
-      "macro_space": 0.36
-    },
-    "Organon": {
-      "macro_character": 0.58,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.68,
-      "macro_space": 0.52
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Variational Drama",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Organon's free-energy inference spectrally morphs OLE's timbral drama — lived theatre.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "spectral",
     "vivid"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.263,
     "warmth": 0.7,
@@ -118,5 +64,4 @@
     "SPACE": 0.44
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VACANT SIGNAL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.403
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oceanic",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.318
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.318
   },
   "dna": {
-    "aggression": 0.735,
     "brightness": 0.54,
-    "density": 0.037,
+    "warmth": 0.438,
     "movement": 0.598,
+    "density": 0.037,
     "space": 0.889,
-    "warmth": 0.438
+    "aggression": 0.735
   },
-  "engines": [
-    "Orbital",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.604,
-    "COUPLING": 0.229,
     "MOVEMENT": 0.026,
+    "COUPLING": 0.229,
     "SPACE": 0.674
   },
-  "mood": "Entangled",
-  "name": "VACANT SIGNAL",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.439,
-      "macro_coupling": 0.304,
-      "macro_movement": 0.469,
-      "macro_space": 0.403
-    },
-    "Orbital": {
-      "macro_character": 0.793,
-      "macro_coupling": 0.824,
-      "macro_movement": 0.595,
-      "macro_space": 0.921
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

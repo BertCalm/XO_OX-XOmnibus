@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_KINETIC_INTIMATE_DENSE_AET2_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0549
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Opal",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.7629
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "ORGANON",
+    "target": "OPAL",
+    "amount": 0.7629
   },
   "dna": {
-    "aggression": 0.3244,
     "brightness": 0.9284,
-    "density": 0.877,
     "movement": 0.8928,
     "space": 0.0374,
-    "warmth": 0.5943
+    "density": 0.877,
+    "warmth": 0.5943,
+    "aggression": 0.3244
   },
-  "engines": [
-    "Organon",
-    "Opal"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.9075,
-    "COUPLING": 0.7629,
     "MOVEMENT": 0.8877,
+    "COUPLING": 0.7629,
     "SPACE": 0.0374
   },
-  "mood": "Aether",
-  "name": "Thread Surge",
-  "parameters": {
-    "Opal": {
-      "macro_character": 0.8864,
-      "macro_coupling": 0.8865,
-      "macro_movement": 0.8614,
-      "macro_space": 0.0549
-    },
-    "Organon": {
-      "macro_character": 0.9286,
-      "macro_coupling": 0.8564,
-      "macro_movement": 0.914,
-      "macro_space": 0.065
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "dense",
     "ethereal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

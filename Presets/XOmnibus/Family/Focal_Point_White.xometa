@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OPTIC full spectrum — refraction complete, white light resolved to purest signal.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.98,
-    "density": 0.22,
-    "movement": 0.55,
-    "space": 0.78,
-    "warmth": 0.45
-  },
+  "schema_version": 1,
+  "name": "Focal Point White",
+  "mood": "Family",
   "engines": [
     "Optic"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "FOCUS",
-    "REFRACTION",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Focal Point White",
-  "parameters": {
-    "Optic": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OPTIC full spectrum — refraction complete, white light resolved to purest signal.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "focused",
     "spectrum"
   ],
+  "macroLabels": [
+    "FOCUS",
+    "REFRACTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.78,
     "aggression": 0.18
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.63,
-        "engineA": "Obbligato",
-        "engineB": "Obsidian",
-        "type": "Spectral->Harmonic"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Reed Glassy Reed",
   "mood": "Entangled",
@@ -23,43 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Rascal coral fractures crystal — OBBLIGATO's obligatory voice resonates inside OBSIDIAN's mirror depth.",
-  "dna": {
-    "aggression": 0.2,
-    "brightness": 0.88,
-    "density": 0.8,
-    "movement": 0.38,
-    "space": 0.85,
-    "warmth": 0.45
-  },
-  "engines": [
-    "Obbligato",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.665,
-    "COUPLING": 0.79,
-    "MOVEMENT": 0.38,
-    "SPACE": 0.85
-  },
-  "mood": "Entangled",
-  "name": "Reed Glassy Reed",
-  "parameters": {
-    "obbl_breathA": 0.521,
-    "obbl_breathB": 0.62,
-    "obbl_macroBond": 0.657,
-    "obsidian_crystalResonance": 0.74,
-    "obsidian_depth": 0.84
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -72,6 +21,45 @@
     "crystal",
     "glassy"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.521,
+    "obbl_breathB": 0.62,
+    "obbl_macroBond": 0.657,
+    "obsidian_depth": 0.84,
+    "obsidian_crystalResonance": 0.74
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OBSIDIAN",
+        "type": "Spectral->Harmonic",
+        "amount": 0.63
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.665,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.79,
+    "SPACE": 0.85
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.45,
+    "movement": 0.38,
+    "density": 0.8,
+    "space": 0.85,
+    "aggression": 0.2
+  }
 }

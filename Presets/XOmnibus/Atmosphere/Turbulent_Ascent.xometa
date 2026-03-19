@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Turbulent Ascent",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Weather system in motion. High movement, active aggression. ORBITAL kinetic register.",
-  "dna": {
-    "aggression": 0.453,
-    "brightness": 0.45,
-    "density": 0.566,
-    "movement": 0.898,
-    "space": 0.533,
-    "warmth": 0.424
-  },
-  "engines": [
-    "Orbital"
-  ],
-  "macroLabels": [
-    "ORBIT",
-    "GRAVITY",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.418,
-    "GRAVITY": 0.98,
-    "ORBIT": 0.471,
-    "SPACE": 0.467
-  },
-  "mood": "Atmosphere",
-  "name": "Turbulent Ascent",
-  "parameters": {
-    "Orbital": {
-      "coupling": 0.418,
-      "gravity": 0.98,
-      "orbit": 0.471,
-      "space": 0.467
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "kinetic",
@@ -58,9 +16,6 @@
     "weather",
     "dynamic"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "ORBIT",
     "GRAVITY",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Optic",
-        "type": "SPECTRAL_REFRACTION",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Sage warmth refracts through a prismatic lens — folk harmonics split to spectral rays",
+  "name": "Prism Commune",
+  "version": "1.0",
   "engines": [
     "Ohm",
     "Optic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.6,
-    "COUPLING": 0.6,
     "MOVEMENT": 0.55,
+    "COUPLING": 0.6,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "Prism Commune",
-  "parameters": {
-    "Ohm": {},
-    "Optic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.28,
     "brightness": 0.64,
-    "density": 0.48,
+    "warmth": 0.59,
     "movement": 0.62,
+    "density": 0.48,
     "space": 0.64,
-    "warmth": 0.59
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "SPECTRAL_REFRACTION",
+    "source": "OHM",
+    "target": "OPTIC",
+    "amount": 0.6
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "optic",
     "hippy"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Sage warmth refracts through a prismatic lens — folk harmonics split to spectral rays"
->>>>>>> origin/v1-launch-prep
 }

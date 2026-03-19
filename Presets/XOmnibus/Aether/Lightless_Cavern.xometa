@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.04,
-    "density": 0.1,
-    "movement": 0.28,
-    "space": 0.94,
-    "warmth": 0.1
-  },
+  "name": "Lightless Cavern",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.22,
-    "COUPLING": 0.38,
-    "MOVEMENT": 0.28,
-    "SPACE": 0.94
-  },
-  "mood": "Aether",
-  "name": "Lightless Cavern",
   "parameters": {
     "Obsidian": {
       "obsidian_macro_character": 0.48,
-      "obsidian_macro_coupling": 0.3,
       "obsidian_macro_movement": 0.24,
+      "obsidian_macro_coupling": 0.3,
       "obsidian_macro_space": 0.94
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.1,
+    "movement": 0.28,
+    "density": 0.1,
+    "space": 0.94,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.38,
+    "SPACE": 0.94
+  },
   "tags": [
     "aether",
     "dark",
     "void",
     "lightless",
     "cavern"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

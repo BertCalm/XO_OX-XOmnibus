@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Osteria",
-        "type": "PITCH_SYNC",
-        "amount": 0.65
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.692,
-    "brightness": 0.104,
-    "density": 0.122,
-    "movement": 0.11,
-    "space": 0.97,
-    "warmth": 0.619
-  },
+  "name": "DARK_STILL_SPARSE_VAST_PRS_4",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Ole",
     "Osteria"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.398,
-    "COUPLING": 0.456,
-    "MOVEMENT": 0.11,
-    "SPACE": 0.97
-  },
-  "mood": "Prism",
-  "name": "DARK_STILL_SPARSE_VAST_PRS_4",
   "parameters": {
     "Ole": {
       "macro_character": 0.398,
-      "macro_coupling": 0.456,
       "macro_movement": 0.11,
+      "macro_coupling": 0.456,
       "macro_space": 0.97
     },
     "Osteria": {
       "macro_character": 0.794,
-      "macro_coupling": 0.496,
       "macro_movement": 0.11,
+      "macro_coupling": 0.496,
       "macro_space": 0.97
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OLE",
+    "target": "OSTERIA",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.104,
+    "warmth": 0.619,
+    "movement": 0.11,
+    "density": 0.122,
+    "space": 0.97,
+    "aggression": 0.692
+  },
+  "macros": {
+    "CHARACTER": 0.398,
+    "MOVEMENT": 0.11,
+    "COUPLING": 0.456,
+    "SPACE": 0.97
+  },
   "tags": [
     "prism",
     "dark",
     "still",
     "sparse",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

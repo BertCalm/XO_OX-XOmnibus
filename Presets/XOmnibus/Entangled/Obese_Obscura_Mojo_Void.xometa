@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Obese",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.68
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.88,
-    "brightness": 0.1,
-    "density": 0.9,
-    "movement": 0.45,
-    "space": 0.2,
-    "warmth": 0.85
-  },
+  "name": "Mojo Void",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Obscura"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.78,
-    "COUPLING": 0.7,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.25
-  },
-  "mood": "Entangled",
-  "name": "Mojo Void",
   "parameters": {
     "Obese": {
       "macro_character": 0.78,
-      "macro_coupling": 0.7,
       "macro_movement": 0.5,
+      "macro_coupling": 0.7,
       "macro_space": 0.25
     },
     "Obscura": {
       "macro_character": 0.8,
-      "macro_coupling": 0.65,
       "macro_movement": 0.45,
+      "macro_coupling": 0.65,
       "macro_space": 0.3
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBSCURA",
+    "target": "OBESE",
+    "amount": 0.68
+  },
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.45,
+    "density": 0.9,
+    "space": 0.2,
+    "aggression": 0.88
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.7,
+    "SPACE": 0.25
+  },
   "tags": [
     "entangled",
     "obese",
@@ -58,10 +47,5 @@
     "bass",
     "mojo",
     "void"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

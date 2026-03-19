@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Bob's snap transient cracked to maximum brilliance",
-  "dna": {
-    "aggression": 0.3,
+  "schema_version": 1,
+  "name": "Glass Snap",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.91,
-    "density": 0.4,
+    "warmth": 0.25,
+    "aggression": 0.3,
     "movement": 0.85,
-    "space": 0.55,
-    "warmth": 0.25
+    "density": 0.4,
+    "space": 0.55
   },
   "engines": [
     "Oblong"
   ],
-  "macroLabels": [
-    "BOB",
-    "SNAP",
-    "COUPLING",
-    "ROOM"
-  ],
-  "mood": "Prism",
-  "name": "Glass Snap",
-  "parameters": {
-    "Oblong": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.91,
-    "density": 0.4,
-    "movement": 0.85,
-    "space": 0.55,
-    "warmth": 0.25
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bob's snap transient cracked to maximum brilliance",
   "tags": [
     "prism",
     "bright",
@@ -44,9 +24,6 @@
     "transient",
     "crack"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "BOB",
     "SNAP",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

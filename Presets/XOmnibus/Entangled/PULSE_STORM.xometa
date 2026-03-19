@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PULSE STORM",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.655
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Obscura",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.939
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OUTWIT",
+    "target": "OBSCURA",
+    "amount": 0.939
   },
   "dna": {
-    "aggression": 0.707,
     "brightness": 0.551,
-    "density": 0.43,
+    "warmth": 0.865,
     "movement": 0.929,
+    "density": 0.43,
     "space": 0.888,
-    "warmth": 0.865
+    "aggression": 0.707
   },
-  "engines": [
-    "Outwit",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.827,
-    "COUPLING": 0.399,
     "MOVEMENT": 0.929,
+    "COUPLING": 0.399,
     "SPACE": 0.73
   },
-  "mood": "Entangled",
-  "name": "PULSE STORM",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.793,
-      "macro_coupling": 0.114,
-      "macro_movement": 0.94,
-      "macro_space": 0.655
-    },
-    "Outwit": {
-      "macro_character": 0.295,
-      "macro_coupling": 0.506,
-      "macro_movement": 0.918,
-      "macro_space": 0.43
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "wild",
     "movement"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

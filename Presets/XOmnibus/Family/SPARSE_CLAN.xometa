@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Owlfish",
-        "type": "FILTER_COUPLE",
-        "amount": 0.459
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.035,
-    "brightness": 0.409,
-    "density": 0.023,
-    "movement": 0.47,
-    "space": 0.288,
-    "warmth": 0.689
-  },
+  "name": "SPARSE CLAN",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Odyssey",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.142,
-    "COUPLING": 0.793,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.595
-  },
-  "mood": "Family",
-  "name": "SPARSE CLAN",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.265,
-      "macro_coupling": 0.59,
       "macro_movement": 0.791,
+      "macro_coupling": 0.59,
       "macro_space": 0.804
     },
     "Owlfish": {
       "macro_character": 0.198,
-      "macro_coupling": 0.225,
       "macro_movement": 0.115,
+      "macro_coupling": 0.225,
       "macro_space": 0.149
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_COUPLE",
+    "source": "ODYSSEY",
+    "target": "OWLFISH",
+    "amount": 0.459
+  },
+  "dna": {
+    "brightness": 0.409,
+    "warmth": 0.689,
+    "movement": 0.47,
+    "density": 0.023,
+    "space": 0.288,
+    "aggression": 0.035
+  },
+  "macros": {
+    "CHARACTER": 0.142,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.793,
+    "SPACE": 0.595
+  },
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Monolith of warm frequency. Singular, dense, and completely still.",
+  "name": "Warm Monolith",
+  "version": "1.0",
   "engines": [
     "OddOscar"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.613,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.143,
+    "COUPLING": 0.0,
     "SPACE": 0.651
   },
-  "mood": "Atmosphere",
-  "name": "Warm Monolith",
-  "parameters": {
-    "OddOscar": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.07,
     "brightness": 0.246,
-    "density": 0.844,
+    "warmth": 0.979,
     "movement": 0.143,
+    "density": 0.844,
     "space": 0.651,
-    "warmth": 0.979
+    "aggression": 0.07
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "drone",
@@ -40,13 +27,5 @@
     "warm",
     "thick"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Monolith of warm frequency. Singular, dense, and completely still."
 }

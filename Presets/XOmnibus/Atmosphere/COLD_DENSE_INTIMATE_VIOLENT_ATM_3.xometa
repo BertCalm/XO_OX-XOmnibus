@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Organon",
-        "type": "PITCH_SYNC",
-        "amount": 0.416
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.948,
-    "brightness": 0.407,
-    "density": 0.893,
-    "movement": 0.656,
-    "space": 0.136,
-    "warmth": 0.063
-  },
+  "name": "COLD_DENSE_INTIMATE_VIOLENT_ATM_3",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Oblique",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.633,
-    "COUPLING": 0.769,
-    "MOVEMENT": 0.699,
-    "SPACE": 0.12
-  },
-  "mood": "Atmosphere",
-  "name": "Signal Fang 2",
   "parameters": {
     "Oblique": {
       "macro_character": 0.633,
-      "macro_coupling": 0.769,
       "macro_movement": 0.699,
+      "macro_coupling": 0.769,
       "macro_space": 0.12
     },
     "Organon": {
       "macro_character": 0.604,
-      "macro_coupling": 0.474,
       "macro_movement": 0.723,
+      "macro_coupling": 0.474,
       "macro_space": 0.228
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.416
+  },
+  "dna": {
+    "brightness": 0.407,
+    "warmth": 0.063,
+    "movement": 0.656,
+    "density": 0.893,
+    "space": 0.136,
+    "aggression": 0.948
+  },
+  "macros": {
+    "CHARACTER": 0.633,
+    "MOVEMENT": 0.699,
+    "COUPLING": 0.769,
+    "SPACE": 0.12
+  },
   "tags": [
     "atmosphere",
     "cold",
     "dense",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FUSED SIGNAL",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.055
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obese",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.374
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OTTONI",
+    "target": "OBESE",
+    "amount": 0.374
   },
   "dna": {
-    "aggression": 0.159,
     "brightness": 0.428,
-    "density": 0.2,
+    "warmth": 0.921,
     "movement": 0.56,
+    "density": 0.2,
     "space": 0.895,
-    "warmth": 0.921
+    "aggression": 0.159
   },
-  "engines": [
-    "Ottoni",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.153,
-    "COUPLING": 0.323,
     "MOVEMENT": 0.165,
+    "COUPLING": 0.323,
     "SPACE": 0.709
   },
-  "mood": "Entangled",
-  "name": "FUSED SIGNAL",
-  "parameters": {
-    "Obese": {
-      "macro_character": 0.966,
-      "macro_coupling": 0.911,
-      "macro_movement": 0.433,
-      "macro_space": 0.055
-    },
-    "Ottoni": {
-      "macro_character": 0.878,
-      "macro_coupling": 0.64,
-      "macro_movement": 0.78,
-      "macro_space": 0.182
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "hot",
     "molten",
     "furnace"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

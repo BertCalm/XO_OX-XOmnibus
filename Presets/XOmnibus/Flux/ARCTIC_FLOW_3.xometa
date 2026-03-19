@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ARCTIC FLOW 3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.4236
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Owlfish",
-        "engineB": "Oblong",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.466
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OWLFISH",
+    "target": "OBLONG",
+    "amount": 0.466
   },
   "dna": {
-    "aggression": 0.2723,
     "brightness": 0.1343,
-    "density": 0.107,
+    "warmth": 0.1139,
     "movement": 0.1154,
+    "density": 0.107,
     "space": 0.9505,
-    "warmth": 0.1139
+    "aggression": 0.2723
   },
-  "engines": [
-    "Owlfish",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.0035,
-    "COUPLING": 0.6371,
     "MOVEMENT": 0.7711,
+    "COUPLING": 0.6371,
     "SPACE": 0.262
   },
-  "mood": "Flux",
-  "name": "ARCTIC FLOW 3",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.9053,
-      "macro_coupling": 0.0923,
-      "macro_movement": 0.8461,
-      "macro_space": 0.4236
-    },
-    "Owlfish": {
-      "macro_character": 0.2036,
-      "macro_coupling": 0.264,
-      "macro_movement": 0.6342,
-      "macro_space": 0.4885
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

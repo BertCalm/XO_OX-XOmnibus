@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.842
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.903,
-    "brightness": 0.062,
-    "density": 0.652,
-    "movement": 0.931,
-    "space": 0.646,
-    "warmth": 0.981
-  },
+  "name": "DARK_HOT_KINETIC_VIOLENT_FAM_AGG_2",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "Obbligato",
     "Oblong"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.824,
-    "COUPLING": 0.911,
-    "MOVEMENT": 0.599,
-    "SPACE": 0.655
-  },
-  "mood": "Family",
-  "name": "Smoke Swirl 4",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.824,
-      "macro_coupling": 0.911,
       "macro_movement": 0.599,
+      "macro_coupling": 0.911,
       "macro_space": 0.655
     },
     "Oblong": {
       "macro_character": 0.856,
-      "macro_coupling": 0.891,
       "macro_movement": 0.577,
+      "macro_coupling": 0.891,
       "macro_space": 0.664
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OBBLIGATO",
+    "target": "OBLONG",
+    "amount": 0.842
+  },
+  "dna": {
+    "brightness": 0.062,
+    "warmth": 0.981,
+    "movement": 0.931,
+    "density": 0.652,
+    "space": 0.646,
+    "aggression": 0.903
+  },
+  "macros": {
+    "CHARACTER": 0.824,
+    "MOVEMENT": 0.599,
+    "COUPLING": 0.911,
+    "SPACE": 0.655
+  },
   "tags": [
     "family",
     "violent",
     "dark",
     "hot",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

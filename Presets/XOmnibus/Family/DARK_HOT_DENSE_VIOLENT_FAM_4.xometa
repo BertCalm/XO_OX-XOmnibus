@@ -1,50 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": [
-    {
-      "amount": 0.307,
-      "destination": "OBSIDIAN",
-      "source": "OBESE",
-      "type": "AMPLITUDE_MOD"
-    }
-  ],
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Extreme DNA corners — family, dark, warm, dense.",
-  "dna": {
-    "aggression": 0.894,
-    "brightness": 0.078,
-    "density": 0.928,
-    "movement": 0.503,
-    "space": 0.499,
-    "warmth": 0.928
-  },
-  "engines": [
-    "Obese",
-    "Obsidian"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "DARK HOT DENSE VIOLENT FAM 4",
-  "parameters": {
-    "Obese": {
-      "level": 0.72,
-      "pan": 0.011
-    },
-    "Obsidian": {
-      "level": 0.743,
-      "pan": -0.077
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "DARK HOT DENSE VIOLENT FAM 4",
   "mood": "Family",
@@ -55,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Extreme DNA corners — family, dark, warm, dense.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "dark",
@@ -64,10 +17,14 @@
     "violent",
     "ultra-diverse"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "dna": {
     "brightness": 0.078,
@@ -96,5 +53,4 @@
     }
   ],
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "ALL LOW ENT2 1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.058
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Odyssey",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.054
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OVERBITE",
+    "target": "ODYSSEY",
+    "amount": 0.054
   },
   "dna": {
-    "aggression": 0.074,
     "brightness": 0.108,
-    "density": 0.034,
+    "warmth": 0.084,
     "movement": 0.357,
+    "density": 0.034,
     "space": 0.094,
-    "warmth": 0.084
+    "aggression": 0.074
   },
-  "engines": [
-    "Overbite",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.096,
-    "COUPLING": 0.054,
     "MOVEMENT": 0.357,
+    "COUPLING": 0.054,
     "SPACE": 0.094
   },
-  "mood": "Entangled",
-  "name": "ALL LOW ENT2 1",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.105,
-      "macro_coupling": 0.032,
-      "macro_movement": 0.359,
-      "macro_space": 0.058
-    },
-    "Overbite": {
-      "macro_character": 0.096,
-      "macro_coupling": 0.054,
-      "macro_movement": 0.357,
-      "macro_space": 0.094
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -82,10 +47,5 @@
     "sparse",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

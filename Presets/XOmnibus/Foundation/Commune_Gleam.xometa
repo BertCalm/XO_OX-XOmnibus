@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OHM — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.87,
-    "brightness": 0.92,
-    "density": 0.55,
-    "movement": 0.22,
-    "space": 0.59,
-    "warmth": 0.66
-  },
+  "schema_version": 1,
+  "name": "Commune Gleam",
+  "mood": "Foundation",
   "engines": [
     "Ohm"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Commune Gleam",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.66,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.59,
+    "aggression": 0.87
+  },
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.66,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.59,
+    "aggression": 0.87
+  },
   "parameters": {
     "Ohm": {
-<<<<<<< HEAD
-=======
       "ohm_commune": 0.34,
       "ohm_meddling": 0.69,
       "ohm_filterCutoff": 0.65,
       "ohm_filterReso": 0.85,
->>>>>>> origin/v1-launch-prep
       "ohm_ampAttack": 682.6,
       "ohm_ampDecay": 688.2,
-      "ohm_ampRelease": 256.7,
       "ohm_ampSustain": 0.57,
-      "ohm_character": 0.07,
-      "ohm_commune": 0.34,
-      "ohm_coupling": 1.0,
-      "ohm_delayMix": 0.04,
-      "ohm_filterCutoff": 0.65,
-      "ohm_filterReso": 0.85,
-      "ohm_lfoDepth": 0.76,
+      "ohm_ampRelease": 256.7,
       "ohm_lfoRate": 0.72,
-      "ohm_meddling": 0.69,
-      "ohm_movement": 0.63,
+      "ohm_lfoDepth": 0.76,
       "ohm_reverbMix": 0.87,
-      "ohm_space": 0.92
+      "ohm_delayMix": 0.04,
+      "ohm_character": 0.07,
+      "ohm_movement": 0.63,
+      "ohm_space": 0.92,
+      "ohm_coupling": 1.0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.87,
-    "brightness": 0.92,
-    "density": 0.55,
-    "movement": 0.22,
-    "space": 0.59,
-    "warmth": 0.66
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

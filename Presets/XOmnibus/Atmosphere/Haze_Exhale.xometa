@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Desert heat shimmer: warm glow, no groundmass at all.",
-  "dna": {
-    "aggression": 0.205,
+  "schema_version": 1,
+  "name": "Haze Exhale",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.616,
-    "density": 0.094,
+    "warmth": 0.863,
     "movement": 0.594,
+    "density": 0.094,
     "space": 0.664,
-    "warmth": 0.863
+    "aggression": 0.205
   },
   "engines": [
     "Oracle"
   ],
-  "macroLabels": [
-    "SCATTER",
-    "DRIFT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "Haze Exhale",
-  "parameters": {
-    "Oracle": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.205,
-    "brightness": 0.616,
-    "density": 0.094,
-    "movement": 0.594,
-    "space": 0.664,
-    "warmth": 0.863
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Desert heat shimmer: warm glow, no groundmass at all.",
   "tags": [
     "atmosphere",
     "warm",
@@ -44,9 +24,6 @@
     "breath",
     "evolving"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "SCATTER",
     "DRIFT",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

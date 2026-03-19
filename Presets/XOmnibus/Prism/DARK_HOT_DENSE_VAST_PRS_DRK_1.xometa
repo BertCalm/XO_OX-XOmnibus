@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_VAST_PRS_DRK_1",
   "version": "1.0",
   "mood": "Prism",
@@ -23,68 +20,31 @@
       "macro_space": 0.8744
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Optic",
-        "type": "FILTER_MOD",
-        "amount": 0.7394
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ORACLE",
+    "target": "OPTIC",
+    "amount": 0.7394
   },
   "dna": {
-    "aggression": 0.3082,
     "brightness": 0.0903,
-    "density": 0.984,
+    "warmth": 0.9482,
     "movement": 0.6017,
+    "density": 0.984,
     "space": 0.8939,
-    "warmth": 0.9482
+    "aggression": 0.3082
   },
-  "engines": [
-    "Oracle",
-    "Optic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.6282,
-    "COUPLING": 0.984,
     "MOVEMENT": 0.6017,
+    "COUPLING": 0.984,
     "SPACE": 0.8939
   },
-  "mood": "Prism",
-  "name": "DARK_HOT_DENSE_VAST_PRS_DRK_1",
-  "parameters": {
-    "Optic": {
-      "macro_character": 0.5974,
-      "macro_coupling": 0.9812,
-      "macro_movement": 0.6375,
-      "macro_space": 0.8744
-    },
-    "Oracle": {
-      "macro_character": 0.6282,
-      "macro_coupling": 0.984,
-      "macro_movement": 0.6017,
-      "macro_space": 0.8939
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "hot",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

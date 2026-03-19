@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oracle",
-        "type": "FILTER_MOD",
-        "amount": 0.822
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.944,
-    "brightness": 0.896,
-    "density": 0.901,
-    "movement": 0.59,
-    "space": 0.909,
-    "warmth": 0.963
-  },
+  "name": "ALLHI ATM 03",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Opal",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.929,
-    "COUPLING": 0.926,
-    "MOVEMENT": 0.746,
-    "SPACE": 0.909
-  },
-  "mood": "Atmosphere",
-  "name": "ALLHI ATM 03",
   "parameters": {
     "Opal": {
       "macro_character": 0.929,
-      "macro_coupling": 0.926,
       "macro_movement": 0.746,
+      "macro_coupling": 0.926,
       "macro_space": 0.909
     },
     "Oracle": {
       "macro_character": 0.929,
-      "macro_coupling": 0.926,
       "macro_movement": 0.746,
+      "macro_coupling": 0.926,
       "macro_space": 0.909
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.822
+  },
+  "dna": {
+    "brightness": 0.896,
+    "warmth": 0.963,
+    "movement": 0.59,
+    "density": 0.901,
+    "space": 0.909,
+    "aggression": 0.944
+  },
+  "macros": {
+    "CHARACTER": 0.929,
+    "MOVEMENT": 0.746,
+    "COUPLING": 0.926,
+    "SPACE": 0.909
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

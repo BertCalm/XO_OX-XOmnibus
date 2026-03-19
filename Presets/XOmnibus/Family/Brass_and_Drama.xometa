@@ -1,46 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-  "description": "OTTONI triple brass + OLE Afro-Latin trio — the full ensemble reunion. GROW meets DRAMA. The most joyful collision in the family.",
-  "dna": {
-    "aggression": 0.52,
-    "brightness": 0.62,
-    "density": 0.68,
-    "movement": 0.78,
-    "space": 0.5,
-    "warmth": 0.62
-  },
+  "schema_version": 1,
+  "name": "Brass and Drama",
+  "mood": "Family",
   "engines": [
     "Ottoni",
     "Ole"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "GROW",
-    "BRASS",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Brass and Drama",
-  "parameters": {
-    "Ottoni": {},
-    "Ole": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OTTONI triple brass + OLE Afro-Latin trio — the full ensemble reunion. GROW meets DRAMA. The most joyful collision in the family.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "reunion",
@@ -51,10 +19,14 @@
     "ensemble",
     "batch3-reunion"
   ],
+  "macroLabels": [
+    "GROW",
+    "BRASS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -72,5 +44,4 @@
     "space": 0.5,
     "aggression": 0.52
   }
->>>>>>> origin/v1-launch-prep
 }

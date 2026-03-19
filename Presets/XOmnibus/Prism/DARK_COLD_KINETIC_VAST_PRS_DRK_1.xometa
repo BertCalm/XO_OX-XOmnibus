@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Ottoni",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.736
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.6143,
-    "brightness": 0.0712,
-    "density": 0.4215,
-    "movement": 0.97,
-    "space": 0.8952,
-    "warmth": 0.0647
-  },
+  "name": "DARK_COLD_KINETIC_VAST_PRS_DRK_1",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Orphica",
     "Ottoni"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.3395,
-    "COUPLING": 0.4215,
-    "MOVEMENT": 0.97,
-    "SPACE": 0.8952
-  },
-  "mood": "Prism",
-  "name": "Shard Shimmer 3",
   "parameters": {
     "Orphica": {
       "macro_character": 0.3395,
-      "macro_coupling": 0.4215,
       "macro_movement": 0.97,
+      "macro_coupling": 0.4215,
       "macro_space": 0.8952
     },
     "Ottoni": {
       "macro_character": 0.3349,
-      "macro_coupling": 0.4194,
       "macro_movement": 0.9471,
+      "macro_coupling": 0.4194,
       "macro_space": 0.9273
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORPHICA",
+    "target": "OTTONI",
+    "amount": 0.736
+  },
+  "dna": {
+    "brightness": 0.0712,
+    "warmth": 0.0647,
+    "movement": 0.97,
+    "density": 0.4215,
+    "space": 0.8952,
+    "aggression": 0.6143
+  },
+  "macros": {
+    "CHARACTER": 0.3395,
+    "MOVEMENT": 0.97,
+    "COUPLING": 0.4215,
+    "SPACE": 0.8952
+  },
   "tags": [
     "prism",
     "dark",
     "cold",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

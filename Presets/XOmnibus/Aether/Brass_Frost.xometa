@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.82,
-    "density": 0.1,
-    "movement": 0.24,
-    "space": 0.87,
-    "warmth": 0.06
-  },
+  "name": "Brass Frost",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obbligato"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.34,
-    "COUPLING": 0.18,
-    "MOVEMENT": 0.24,
-    "SPACE": 0.87
-  },
-  "mood": "Aether",
-  "name": "Brass Frost",
   "parameters": {
     "Obbligato": {
       "obbl_macro_character": 0.23,
-      "obbl_macro_coupling": 0.33,
       "obbl_macro_movement": 0.19,
+      "obbl_macro_coupling": 0.33,
       "obbl_macro_space": 0.87
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.06,
+    "movement": 0.24,
+    "density": 0.1,
+    "space": 0.87,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.24,
+    "COUPLING": 0.18,
+    "SPACE": 0.87
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "brass",
     "frost"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

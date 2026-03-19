@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_VIOLENT_FND_AGG_3",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,68 +20,31 @@
       "macro_space": 0.888
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "OddfeliX",
-        "type": "FILTER_MOD",
-        "amount": 0.825
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OVERBITE",
+    "target": "ODDFELIX",
+    "amount": 0.825
   },
   "dna": {
-    "aggression": 0.936,
     "brightness": 0.87,
-    "density": 0.901,
+    "warmth": 0.963,
     "movement": 0.555,
+    "density": 0.901,
     "space": 0.596,
-    "warmth": 0.963
+    "aggression": 0.936
   },
-  "engines": [
-    "Overbite",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.607,
-    "COUPLING": 0.395,
     "MOVEMENT": 0.356,
+    "COUPLING": 0.395,
     "SPACE": 0.88
   },
-  "mood": "Foundation",
-  "name": "Bloom Blade",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.647,
-      "macro_coupling": 0.428,
-      "macro_movement": 0.361,
-      "macro_space": 0.888
-    },
-    "Overbite": {
-      "macro_character": 0.607,
-      "macro_coupling": 0.395,
-      "macro_movement": 0.356,
-      "macro_space": 0.88
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "violent",
     "bright",
     "warm",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

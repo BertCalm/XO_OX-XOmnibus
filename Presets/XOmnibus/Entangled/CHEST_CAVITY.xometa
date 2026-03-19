@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "OddfeliX",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.731
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.642,
-    "brightness": 0.392,
-    "density": 0.918,
-    "movement": 0.429,
-    "space": 0.054,
-    "warmth": 0.059
-  },
+  "name": "CHEST CAVITY",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oceanic",
     "OddfeliX"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.173,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.324,
-    "SPACE": 0.054
-  },
-  "mood": "Entangled",
-  "name": "CHEST CAVITY",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.596,
-      "macro_coupling": 0.649,
       "macro_movement": 0.525,
+      "macro_coupling": 0.649,
       "macro_space": 0.082
     },
     "OddfeliX": {
       "macro_character": 0.421,
-      "macro_coupling": 0.109,
       "macro_movement": 0.606,
+      "macro_coupling": 0.109,
       "macro_space": 0.082
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OCEANIC",
+    "target": "ODDFELIX",
+    "amount": 0.731
+  },
+  "dna": {
+    "brightness": 0.392,
+    "warmth": 0.059,
+    "movement": 0.429,
+    "density": 0.918,
+    "space": 0.054,
+    "aggression": 0.642
+  },
+  "macros": {
+    "CHARACTER": 0.173,
+    "MOVEMENT": 0.324,
+    "COUPLING": 0.85,
+    "SPACE": 0.054
+  },
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "INFINITE SILENT BASE",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.98
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Overbite",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.739
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERDUB",
+    "target": "OVERBITE",
+    "amount": 0.739
   },
   "dna": {
-    "aggression": 0.819,
     "brightness": 0.607,
-    "density": 0.115,
+    "warmth": 0.748,
     "movement": 0.168,
+    "density": 0.115,
     "space": 0.969,
-    "warmth": 0.748
+    "aggression": 0.819
   },
-  "engines": [
-    "Overdub",
-    "Overbite"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.102,
-    "COUPLING": 0.772,
     "MOVEMENT": 0.168,
+    "COUPLING": 0.772,
     "SPACE": 0.969
   },
-  "mood": "Foundation",
-  "name": "INFINITE SILENT BASE",
-  "parameters": {
-    "Overbite": {
-      "macro_character": 0.397,
-      "macro_coupling": 0.076,
-      "macro_movement": 0.19,
-      "macro_space": 0.98
-    },
-    "Overdub": {
-      "macro_character": 0.026,
-      "macro_coupling": 0.677,
-      "macro_movement": 0.149,
-      "macro_space": 0.996
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

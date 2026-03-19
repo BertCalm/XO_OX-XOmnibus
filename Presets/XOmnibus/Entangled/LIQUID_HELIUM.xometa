@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Outwit",
-        "type": "PITCH_SYNC",
-        "amount": 0.405
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.714,
-    "brightness": 0.275,
-    "density": 0.301,
-    "movement": 0.967,
-    "space": 0.704,
-    "warmth": 0.1
-  },
+  "name": "LIQUID HELIUM",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Orbital",
     "Outwit"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.132,
-    "COUPLING": 0.971,
-    "MOVEMENT": 0.539,
-    "SPACE": 0.531
-  },
-  "mood": "Entangled",
-  "name": "LIQUID HELIUM",
   "parameters": {
     "Orbital": {
       "macro_character": 0.646,
-      "macro_coupling": 0.441,
       "macro_movement": 0.309,
+      "macro_coupling": 0.441,
       "macro_space": 0.58
     },
     "Outwit": {
       "macro_character": 0.732,
-      "macro_coupling": 0.295,
       "macro_movement": 0.09,
+      "macro_coupling": 0.295,
       "macro_space": 0.747
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "ORBITAL",
+    "target": "OUTWIT",
+    "amount": 0.405
+  },
+  "dna": {
+    "brightness": 0.275,
+    "warmth": 0.1,
+    "movement": 0.967,
+    "density": 0.301,
+    "space": 0.704,
+    "aggression": 0.714
+  },
+  "macros": {
+    "CHARACTER": 0.132,
+    "MOVEMENT": 0.539,
+    "COUPLING": 0.971,
+    "SPACE": 0.531
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

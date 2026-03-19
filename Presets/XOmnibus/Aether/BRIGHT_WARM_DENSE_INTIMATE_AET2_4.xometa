@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_DENSE_INTIMATE_AET2_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0262
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Oblique",
-        "type": "CHAOS_INJECT",
-        "amount": 0.7611
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "ODDFELIX",
+    "target": "OBLIQUE",
+    "amount": 0.7611
   },
   "dna": {
-    "aggression": 0.546,
     "brightness": 0.8768,
+    "warmth": 0.9698,
+    "space": 0.0261,
     "density": 0.9737,
     "movement": 0.6421,
-    "space": 0.0261,
-    "warmth": 0.9698
+    "aggression": 0.546
   },
-  "engines": [
-    "OddfeliX",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8941,
-    "COUPLING": 0.7611,
     "MOVEMENT": 0.6337,
+    "COUPLING": 0.7611,
     "SPACE": 0.0261
   },
-  "mood": "Aether",
-  "name": "Sunrise Saturated",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.884,
-      "macro_coupling": 0.9842,
-      "macro_movement": 0.6109,
-      "macro_space": 0.0262
-    },
-    "OddfeliX": {
-      "macro_character": 0.9041,
-      "macro_coupling": 0.9462,
-      "macro_movement": 0.6564,
-      "macro_space": 0.0506
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "dense",
     "intimate",
     "lush"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

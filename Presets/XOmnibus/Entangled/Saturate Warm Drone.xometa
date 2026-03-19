@@ -1,32 +1,16 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "amount": 0.78,
-    "pairs": [
-      {
-        "amount": 0.78,
-        "engineA": "Obese",
-        "engineB": "Ohm",
-        "type": "Filter->Drive"
-      }
-    ],
-    "type": "Filter->Drive"
-  },
-  "couplingIntensity": "Deep",
-  "description": "OBESE drive softened by OHM commune warmth. Hot hippie. [Filter->Drive]",
-  "dna": {
-    "aggression": 0.565,
+  "schema_version": 1,
+  "name": "Saturate Warm Drone",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.471,
-    "density": 0.693,
+    "warmth": 0.713,
     "movement": 0.497,
+    "density": 0.693,
     "space": 0.569,
-    "warmth": 0.713
+    "aggression": 0.565
   },
   "engines": [
-<<<<<<< HEAD
-    "Obese",
-    "Ohm"
-=======
     "XObese",
     "Ohm"
   ],
@@ -39,7 +23,6 @@
     "obese",
     "ohm",
     "fat"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -47,46 +30,45 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "Saturate Warm Drone",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.471,
+    "warmth": 0.713,
+    "movement": 0.497,
+    "density": 0.693,
+    "space": 0.569,
+    "aggression": 0.565
+  },
   "parameters": {
-    "Obese": {
-      "fat_aggression": 0.68,
-      "fat_brightness": 0.458,
-      "fat_couplingBus": 0,
-      "fat_couplingLevel": 0.62,
+    "XObese": {
       "fat_outputLevel": 0.82,
       "fat_outputPan": 0.02,
-      "fat_warmth": 0.741
+      "fat_couplingLevel": 0.62,
+      "fat_couplingBus": 0,
+      "fat_brightness": 0.458,
+      "fat_warmth": 0.741,
+      "fat_aggression": 0.68
     },
     "Ohm": {
-<<<<<<< HEAD
-      "ohm_aggression": 0.391,
-      "ohm_brightness": 0.476,
-      "ohm_couplingBus": 0,
-      "ohm_couplingLevel": 0.57,
-=======
->>>>>>> origin/v1-launch-prep
       "ohm_outputLevel": 0.88,
       "ohm_outputPan": 0.03,
-      "ohm_warmth": 0.774
+      "ohm_couplingLevel": 0.57,
+      "ohm_couplingBus": 0,
+      "ohm_brightness": 0.476,
+      "ohm_warmth": 0.774,
+      "ohm_aggression": 0.391
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.565,
-    "brightness": 0.471,
-    "density": 0.693,
-    "movement": 0.497,
-    "space": 0.569,
-    "warmth": 0.713
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "obese",
-    "ohm",
-    "fat"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "Filter->Drive",
+    "amount": 0.78,
+    "pairs": [
+      {
+        "engineA": "XObese",
+        "engineB": "XOhm",
+        "type": "Filter->Drive",
+        "amount": 0.78
+      }
+    ]
+  }
 }

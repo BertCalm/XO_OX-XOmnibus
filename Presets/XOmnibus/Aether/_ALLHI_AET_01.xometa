@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Origami",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.952
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.928,
-    "brightness": 0.61,
-    "density": 0.923,
-    "movement": 0.938,
-    "space": 0.966,
-    "warmth": 0.935
-  },
+  "name": "ALLHI AET 01",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Orbital",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.772,
-    "COUPLING": 0.947,
-    "MOVEMENT": 0.93,
-    "SPACE": 0.966
-  },
-  "mood": "Aether",
-  "name": "ALLHI AET 01",
   "parameters": {
     "Orbital": {
       "macro_character": 0.772,
-      "macro_coupling": 0.947,
       "macro_movement": 0.93,
+      "macro_coupling": 0.947,
       "macro_space": 0.966
     },
     "Origami": {
       "macro_character": 0.772,
-      "macro_coupling": 0.947,
       "macro_movement": 0.93,
+      "macro_coupling": 0.947,
       "macro_space": 0.966
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORBITAL",
+    "target": "ORIGAMI",
+    "amount": 0.952
+  },
+  "dna": {
+    "brightness": 0.61,
+    "warmth": 0.935,
+    "movement": 0.938,
+    "density": 0.923,
+    "space": 0.966,
+    "aggression": 0.928
+  },
+  "macros": {
+    "CHARACTER": 0.772,
+    "MOVEMENT": 0.93,
+    "COUPLING": 0.947,
+    "SPACE": 0.966
+  },
   "tags": [
     "extreme",
     "pole-fill",
     "high-energy",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

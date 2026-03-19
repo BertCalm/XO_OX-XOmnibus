@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_VAST_GENTLE_ATM_4",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.9624
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Oceanic",
-        "type": "FILTER_MOD",
-        "amount": 0.654
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "ODDOSCAR",
+    "target": "OCEANIC",
+    "amount": 0.654
   },
   "dna": {
-    "aggression": 0.0388,
     "brightness": 0.8951,
-    "density": 0.5592,
+    "warmth": 0.0494,
     "movement": 0.9824,
+    "density": 0.5592,
     "space": 0.9431,
-    "warmth": 0.0494
+    "aggression": 0.0388
   },
-  "engines": [
-    "OddOscar",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.46,
-    "COUPLING": 0.5515,
     "MOVEMENT": 0.99,
+    "COUPLING": 0.5515,
     "SPACE": 0.9444
   },
-  "mood": "Atmosphere",
-  "name": "Glass Drift",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.4617,
-      "macro_coupling": 0.5326,
-      "macro_movement": 0.99,
-      "macro_space": 0.9624
-    },
-    "OddOscar": {
-      "macro_character": 0.4584,
-      "macro_coupling": 0.5705,
-      "macro_movement": 0.99,
-      "macro_space": 0.9263
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "bright",
@@ -82,10 +47,5 @@
     "kinetic",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

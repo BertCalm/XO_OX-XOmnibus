@@ -1,31 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.612,
-        "engineA": "Ottoni",
-        "engineB": "Overbite",
-        "type": "Env->Level"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-  "description": "OTTONI and OVERBITE coupled via Env->Level. Blended Constellation DNA — stub seeded for expansion.",
-  "dna": {
-    "aggression": 0.692,
-    "brightness": 0.641,
-    "density": 0.738,
-    "movement": 0.491,
-    "space": 0.453,
-    "warmth": 0.63
-  },
+  "schema_version": 1,
+  "name": "OVERBITE Through Ottoni",
+  "mood": "Entangled",
   "engines": [
     "Ottoni",
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -35,7 +14,6 @@
     "constellation",
     "ottoni",
     "overbite"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -43,20 +21,27 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Entangled",
-  "name": "OVERBITE Through Ottoni",
-  "parameters": {
-    "Ottoni": {},
-    "Overbite": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "coupling",
-    "constellation",
-    "ottoni",
-    "overbite"
-  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OTTONI",
+        "engineB": "OVERBITE",
+        "type": "Env->Level",
+        "amount": 0.612
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.641,
+    "warmth": 0.63,
+    "movement": 0.491,
+    "density": 0.738,
+    "space": 0.453,
+    "aggression": 0.692
+  }
 }

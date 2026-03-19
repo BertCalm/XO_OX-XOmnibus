@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblong",
-        "engineB": "Opal",
-        "type": "CHAOS_INJECT",
-        "amount": 0.9412
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.2656,
-    "brightness": 0.1978,
-    "density": 0.8803,
-    "movement": 0.2248,
-    "space": 0.149,
-    "warmth": 0.1148
-  },
+  "name": "PACKED WAVE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblong",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.1422,
-    "COUPLING": 0.9378,
-    "MOVEMENT": 0.0596,
-    "SPACE": 0.595
-  },
-  "mood": "Entangled",
-  "name": "PACKED WAVE",
   "parameters": {
     "Oblong": {
       "macro_character": 0.2881,
-      "macro_coupling": 0.9438,
       "macro_movement": 0.2827,
+      "macro_coupling": 0.9438,
       "macro_space": 0.0712
     },
     "Opal": {
       "macro_character": 0.2334,
-      "macro_coupling": 0.9165,
       "macro_movement": 0.2646,
+      "macro_coupling": 0.9165,
       "macro_space": 0.5898
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "OBLONG",
+    "target": "OPAL",
+    "amount": 0.9412
+  },
+  "dna": {
+    "brightness": 0.1978,
+    "warmth": 0.1148,
+    "movement": 0.2248,
+    "density": 0.8803,
+    "space": 0.149,
+    "aggression": 0.2656
+  },
+  "macros": {
+    "CHARACTER": 0.1422,
+    "MOVEMENT": 0.0596,
+    "COUPLING": 0.9378,
+    "SPACE": 0.595
+  },
   "tags": [
     "entangled",
     "stacked",
@@ -59,10 +48,5 @@
     "layered",
     "dense",
     "tectonic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

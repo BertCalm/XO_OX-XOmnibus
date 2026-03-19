@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Ocelot",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.908
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.935,
-    "brightness": 0.527,
-    "density": 0.904,
-    "movement": 0.693,
-    "space": 0.989,
-    "warmth": 0.032
-  },
+  "name": "COLD DENSE VAST VIOLENT PRS AGG 4",
+  "version": "1.0",
+  "mood": "Prism",
   "engines": [
     "Oblique",
     "Ocelot"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.499,
-    "COUPLING": 0.879,
-    "MOVEMENT": 0.667,
-    "SPACE": 0.946
-  },
-  "mood": "Prism",
-  "name": "COLD DENSE VAST VIOLENT PRS...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.506,
-      "macro_coupling": 0.918,
       "macro_movement": 0.69,
+      "macro_coupling": 0.918,
       "macro_space": 0.947
     },
     "Ocelot": {
       "macro_character": 0.493,
-      "macro_coupling": 0.841,
       "macro_movement": 0.644,
+      "macro_coupling": 0.841,
       "macro_space": 0.946
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OBLIQUE",
+    "target": "OCELOT",
+    "amount": 0.908
+  },
+  "dna": {
+    "brightness": 0.527,
+    "warmth": 0.032,
+    "movement": 0.693,
+    "density": 0.904,
+    "space": 0.989,
+    "aggression": 0.935
+  },
+  "macros": {
+    "CHARACTER": 0.499,
+    "MOVEMENT": 0.667,
+    "COUPLING": 0.879,
+    "SPACE": 0.946
+  },
   "tags": [
     "prism",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "dense",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

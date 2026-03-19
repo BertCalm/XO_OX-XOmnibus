@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Glass filament vibration, barely there, barely audible.",
-  "dna": {
-    "aggression": 0.066,
+  "schema_version": 1,
+  "name": "Ice Edge Near",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.86,
-    "density": 0.167,
+    "warmth": 0.078,
     "movement": 0.322,
+    "density": 0.167,
     "space": 0.893,
-    "warmth": 0.078
+    "aggression": 0.066
   },
   "engines": [
     "Obscura"
   ],
-  "macroLabels": [
-    "PRISM",
-    "DISTANCE",
-    "COUPLING",
-    "TAIL"
-  ],
-  "mood": "Prism",
-  "name": "Ice Edge Near",
-  "parameters": {
-    "Obscura": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.066,
-    "brightness": 0.86,
-    "density": 0.167,
-    "movement": 0.322,
-    "space": 0.893,
-    "warmth": 0.078
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Glass filament vibration, barely there, barely audible.",
   "tags": [
     "prism",
     "cold",
@@ -45,9 +25,6 @@
     "spacious",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "PRISM",
     "DISTANCE",
@@ -67,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

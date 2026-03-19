@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_DENSE_INTIMATE_VIOLENT_FAM_AGG_2",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.462
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Obbligato",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.843
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ODDOSCAR",
+    "target": "OBBLIGATO",
+    "amount": 0.843
   },
   "dna": {
-    "aggression": 0.985,
     "brightness": 0.09,
-    "density": 0.963,
+    "warmth": 0.512,
     "movement": 0.378,
+    "density": 0.963,
     "space": 0.059,
-    "warmth": 0.512
+    "aggression": 0.985
   },
-  "engines": [
-    "OddOscar",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.737,
-    "COUPLING": 0.412,
     "MOVEMENT": 0.439,
+    "COUPLING": 0.412,
     "SPACE": 0.504
   },
-  "mood": "Family",
-  "name": "Phase Force",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.704,
-      "macro_coupling": 0.438,
-      "macro_movement": 0.404,
-      "macro_space": 0.462
-    },
-    "OddOscar": {
-      "macro_character": 0.737,
-      "macro_coupling": 0.412,
-      "macro_movement": 0.439,
-      "macro_space": 0.504
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "violent",
     "dark",
     "dense",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SHADOW FRACTURE",
   "version": "1.0",
   "mood": "Flux",
@@ -23,67 +20,30 @@
       "macro_space": 0.392
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Obscura",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.932
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OTTONI",
+    "target": "OBSCURA",
+    "amount": 0.932
   },
   "dna": {
-    "aggression": 0.907,
     "brightness": 0.095,
-    "density": 0.53,
+    "warmth": 0.589,
     "movement": 0.653,
+    "density": 0.53,
     "space": 0.397,
-    "warmth": 0.589
+    "aggression": 0.907
   },
-  "engines": [
-    "Ottoni",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.582,
-    "COUPLING": 0.644,
     "MOVEMENT": 0.616,
+    "COUPLING": 0.644,
     "SPACE": 0.419
   },
-  "mood": "Flux",
-  "name": "SHADOW FRACTURE",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.46,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.664,
-      "macro_space": 0.392
-    },
-    "Ottoni": {
-      "macro_character": 0.582,
-      "macro_coupling": 0.644,
-      "macro_movement": 0.616,
-      "macro_space": 0.419
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "violent",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

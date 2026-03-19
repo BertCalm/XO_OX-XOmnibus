@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Depths Unlit",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OBSCURA in void register.",
-  "dna": {
-    "aggression": 0.184,
-    "brightness": 0.073,
-    "density": 0.321,
-    "movement": 0.358,
-    "space": 0.66,
-    "warmth": 0.622
-  },
-  "engines": [
-    "Obscura"
-  ],
-  "macroLabels": [
-    "VEIL",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.474,
-    "DEPTH": 0.291,
-    "SPACE": 0.674,
-    "VEIL": 0.138
-  },
-  "mood": "Atmosphere",
-  "name": "Depths Unlit",
-  "parameters": {
-    "Obscura": {
-      "coupling": 0.474,
-      "depth": 0.291,
-      "space": 0.674,
-      "veil": 0.138
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "VEIL",
     "DEPTH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

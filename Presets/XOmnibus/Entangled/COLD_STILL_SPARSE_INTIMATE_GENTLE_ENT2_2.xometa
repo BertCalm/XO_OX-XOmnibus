@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD STILL SPARSE INTIMATE GENTLE ENT2 2",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.101
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.099
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OUROBOROS",
+    "target": "ORACLE",
+    "amount": 0.099
   },
   "dna": {
-    "aggression": 0.105,
     "brightness": 0.288,
-    "density": 0.093,
+    "warmth": 0.038,
     "movement": 0.095,
+    "density": 0.093,
     "space": 0.064,
-    "warmth": 0.038
+    "aggression": 0.105
   },
-  "engines": [
-    "Ouroboros",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.163,
-    "COUPLING": 0.099,
     "MOVEMENT": 0.095,
+    "COUPLING": 0.099,
     "SPACE": 0.064
   },
-  "mood": "Entangled",
-  "name": "COLD STILL SPARSE INTIMATE ...",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.122,
-      "macro_coupling": 0.102,
-      "macro_movement": 0.08,
-      "macro_space": 0.101
-    },
-    "Ouroboros": {
-      "macro_character": 0.163,
-      "macro_coupling": 0.099,
-      "macro_movement": 0.095,
-      "macro_space": 0.064
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "cold",
@@ -82,10 +47,5 @@
     "sparse",
     "intimate",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

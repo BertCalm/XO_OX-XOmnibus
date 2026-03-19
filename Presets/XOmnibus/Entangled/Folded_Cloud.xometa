@@ -1,66 +1,50 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Opal",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.85
-      }
-    ]
-  },
-  "description": "Origami envelope shapes grain cloud density — the cloud folds into almost nothing.",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.0,
-    "density": 0.0,
-    "movement": 0.14,
-    "space": 0.97,
-    "warmth": 0.03
-  },
+  "name": "Folded Cloud",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.08,
-    "COUPLING": 0.85,
-    "MOVEMENT": 0.14,
-    "SPACE": 0.97
-  },
-  "mood": "Entangled",
-  "name": "Folded Cloud",
   "parameters": {
     "Opal": {
       "macro_character": 0.08,
-      "macro_coupling": 0.85,
       "macro_movement": 0.14,
+      "macro_coupling": 0.85,
       "macro_space": 0.97
     },
     "Origami": {
       "macro_character": 0.05,
-      "macro_coupling": 0.9,
       "macro_movement": 0.09,
+      "macro_coupling": 0.9,
       "macro_space": 1.0
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "ENVELOPE_LINK",
+    "source": "ORIGAMI",
+    "target": "OPAL",
+    "amount": 0.85
+  },
+  "dna": {
+    "brightness": 0.0,
+    "warmth": 0.03,
+    "movement": 0.14,
+    "density": 0.0,
+    "space": 0.97,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.85,
+    "SPACE": 0.97
+  },
   "tags": [
     "entangled",
     "cold-sparse",
     "folded",
     "cloud"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "description": "Origami envelope shapes grain cloud density — the cloud folds into almost nothing."
->>>>>>> origin/v1-launch-prep
 }

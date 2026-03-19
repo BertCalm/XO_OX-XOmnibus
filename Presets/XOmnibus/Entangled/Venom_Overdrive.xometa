@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.87,
-        "engineA": "Obese",
-        "engineB": "Overbite",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Overbite fang venom soaking OBESE harmonic chain — poisoned saturation at maximum density.",
-  "dna": {
-    "aggression": 0.95,
-    "brightness": 0.5,
-    "density": 0.95,
-    "movement": 0.58,
-    "space": 0.07,
-    "warmth": 0.4
-  },
+  "schema_version": 1,
+  "name": "Venom Overdrive",
+  "mood": "Entangled",
   "engines": [
     "Obese",
     "Overbite"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "obese",
     "overbite",
     "venom"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.95,
-    "COUPLING": 0.87,
     "MOVEMENT": 0.58,
+    "COUPLING": 0.87,
     "SPACE": 0.07
   },
-  "mood": "Entangled",
-  "name": "Venom Overdrive",
-  "parameters": {
-    "Obese": {},
-    "Overbite": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.95,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.5,
-    "density": 0.95,
+    "warmth": 0.4,
     "movement": 0.58,
+    "density": 0.95,
     "space": 0.07,
-    "warmth": 0.4
+    "aggression": 0.95
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "dense",
-    "obese",
-    "overbite",
-    "venom"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.58,
+    "density": 0.95,
+    "space": 0.07,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBESE",
+        "engineB": "OVERBITE",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.87
+      }
+    ]
+  }
 }

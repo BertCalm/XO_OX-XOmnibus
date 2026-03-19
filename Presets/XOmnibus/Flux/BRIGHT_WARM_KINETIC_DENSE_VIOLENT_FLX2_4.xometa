@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.604
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9827,
-    "brightness": 0.9572,
-    "density": 0.97,
-    "movement": 0.9486,
-    "space": 0.5463,
-    "warmth": 0.9762
-  },
+  "name": "BRIGHT_WARM_KINETIC_DENSE_VIOLENT_FLX2_4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Optic",
     "Ouroboros"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9706,
-    "COUPLING": 0.99,
-    "MOVEMENT": 0.9635,
-    "SPACE": 0.53
-  },
-  "mood": "Flux",
-  "name": "Solar Grit",
   "parameters": {
     "Optic": {
       "macro_character": 0.9633,
-      "macro_coupling": 0.99,
       "macro_movement": 0.9756,
+      "macro_coupling": 0.99,
       "macro_space": 0.5223
     },
     "Ouroboros": {
       "macro_character": 0.9778,
-      "macro_coupling": 0.99,
       "macro_movement": 0.9513,
+      "macro_coupling": 0.99,
       "macro_space": 0.5378
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPTIC",
+    "target": "OUROBOROS",
+    "amount": 0.604
+  },
+  "dna": {
+    "brightness": 0.9572,
+    "warmth": 0.9762,
+    "movement": 0.9486,
+    "density": 0.97,
+    "space": 0.5463,
+    "aggression": 0.9827
+  },
+  "macros": {
+    "CHARACTER": 0.9706,
+    "MOVEMENT": 0.9635,
+    "COUPLING": 0.99,
+    "SPACE": 0.53
+  },
   "tags": [
     "flux",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

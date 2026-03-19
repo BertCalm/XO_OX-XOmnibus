@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Seafoam Silver",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.54
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Obscura",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.78
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORPHICA",
+    "target": "OBSCURA",
+    "amount": 0.78,
+    "intensity": "Deep"
   },
-  "description": "Spectral morphing: OBSCURA's silver plate becomes ORPHICA's resonant canvas — brightness 0.92.",
   "dna": {
-    "aggression": 0.08,
     "brightness": 0.92,
-    "density": 0.52,
+    "warmth": 0.34,
     "movement": 0.6,
+    "density": 0.52,
     "space": 0.72,
-    "warmth": 0.34
+    "aggression": 0.08
   },
-  "engines": [
-    "Orphica",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.78,
     "MOVEMENT": 0.64,
+    "COUPLING": 0.78,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Seafoam Silver",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.57,
-      "macro_space": 0.54
-    },
-    "Orphica": {
-      "macro_character": 0.78,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.64,
-      "macro_space": 0.7
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "obscura",
     "spectral",
     "seafoam"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_INTIMATE_VIOLENT_ENT_AGG_1",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.086
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Orca",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.933
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OUROBOROS",
+    "target": "ORCA",
+    "amount": 0.933
   },
   "dna": {
-    "aggression": 0.915,
     "brightness": 0.061,
-    "density": 0.452,
+    "warmth": 0.6,
     "movement": 0.901,
+    "density": 0.452,
     "space": 0.09,
-    "warmth": 0.6
+    "aggression": 0.915
   },
-  "engines": [
-    "Ouroboros",
-    "Orca"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.58,
-    "COUPLING": 0.899,
     "MOVEMENT": 0.901,
+    "COUPLING": 0.899,
     "SPACE": 0.09
   },
-  "mood": "Entangled",
-  "name": "Node Edge 2",
-  "parameters": {
-    "Orca": {
-      "macro_character": 0.539,
-      "macro_coupling": 0.91,
-      "macro_movement": 0.916,
-      "macro_space": 0.086
-    },
-    "Ouroboros": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.899,
-      "macro_movement": 0.884,
-      "macro_space": 0.101
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "violent",
     "dark",
     "kinetic",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

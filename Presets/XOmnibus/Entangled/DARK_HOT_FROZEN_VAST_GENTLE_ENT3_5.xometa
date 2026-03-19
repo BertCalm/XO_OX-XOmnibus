@@ -1,71 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ombre",
-        "engineB": "Ole",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.9044
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
-  "dna": {
-    "aggression": 0.027,
-    "brightness": 0.0217,
-    "density": 0.4684,
-    "movement": 0.0227,
-    "space": 0.8836,
-    "warmth": 0.9018
-  },
+  "schema_version": 1,
+  "name": "DARK_HOT_FROZEN_VAST_GENTLE_ENT3_5",
+  "mood": "Entangled",
   "engines": [
     "Ombre",
     "Ole"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6363,
-    "COUPLING": 0.8571,
-    "MOVEMENT": 0.0321,
-    "SPACE": 0.6826
-  },
-  "mood": "Entangled",
-  "name": "Velvet Abyss",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.5212,
-      "macro_coupling": 0.938,
-      "macro_movement": 0.0236,
-      "macro_space": 0.8369
-    },
-    "Ombre": {
-      "macro_character": 0.7515,
-      "macro_coupling": 0.7762,
-      "macro_movement": 0.0405,
-      "macro_space": 0.5283
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: DARK_HOT_FROZEN_VAST_GENTLE. Designed to raise Entangled cosine diversity.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "frozen",
@@ -76,10 +19,14 @@
     "gentle",
     "vast"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -121,5 +68,4 @@
     "space": 0.8836,
     "aggression": 0.027
   }
->>>>>>> origin/v1-launch-prep
 }

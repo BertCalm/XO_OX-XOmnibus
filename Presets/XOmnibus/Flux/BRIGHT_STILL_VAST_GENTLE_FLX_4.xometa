@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Odyssey",
-        "engineB": "Overdub",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.7875
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0507,
-    "brightness": 0.9105,
-    "density": 0.5772,
-    "movement": 0.0975,
-    "space": 0.9211,
-    "warmth": 0.6904
-  },
+  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_4",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Odyssey",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.7847,
-    "COUPLING": 0.1273,
-    "MOVEMENT": 0.0637,
-    "SPACE": 0.8483
-  },
-  "mood": "Flux",
-  "name": "BRIGHT_STILL_VAST_GENTLE_FLX_4",
   "parameters": {
     "Odyssey": {
       "macro_character": 0.7847,
-      "macro_coupling": 0.1273,
       "macro_movement": 0.0637,
+      "macro_coupling": 0.1273,
       "macro_space": 0.8483
     },
     "Overdub": {
       "macro_character": 0.7664,
-      "macro_coupling": 0.1222,
       "macro_movement": 0.113,
+      "macro_coupling": 0.1222,
       "macro_space": 0.902
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODYSSEY",
+    "target": "OVERDUB",
+    "amount": 0.7875
+  },
+  "dna": {
+    "brightness": 0.9105,
+    "warmth": 0.6904,
+    "movement": 0.0975,
+    "density": 0.5772,
+    "space": 0.9211,
+    "aggression": 0.0507
+  },
+  "macros": {
+    "CHARACTER": 0.7847,
+    "MOVEMENT": 0.0637,
+    "COUPLING": 0.1273,
+    "SPACE": 0.8483
+  },
   "tags": [
     "flux",
     "unstable",
@@ -59,10 +48,5 @@
     "low-movement",
     "high-space",
     "low-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

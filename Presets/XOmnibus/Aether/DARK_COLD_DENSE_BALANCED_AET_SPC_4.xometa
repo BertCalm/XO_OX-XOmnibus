@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD DENSE BALANCED AET SPC 4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.508
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "OddOscar",
-        "type": "PITCH_SYNC",
-        "amount": 0.484
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ODDFELIX",
+    "target": "ODDOSCAR",
+    "amount": 0.484
   },
   "dna": {
-    "aggression": 0.971,
     "brightness": 0.127,
-    "density": 0.883,
+    "warmth": 0.104,
     "movement": 0.503,
+    "density": 0.883,
     "space": 0.538,
-    "warmth": 0.104
+    "aggression": 0.971
   },
-  "engines": [
-    "OddfeliX",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.115,
-    "COUPLING": 0.843,
     "MOVEMENT": 0.503,
+    "COUPLING": 0.843,
     "SPACE": 0.538
   },
-  "mood": "Aether",
-  "name": "DARK COLD DENSE BALANCED AE...",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.117,
-      "macro_coupling": 0.845,
-      "macro_movement": 0.52,
-      "macro_space": 0.508
-    },
-    "OddfeliX": {
-      "macro_character": 0.115,
-      "macro_coupling": 0.843,
-      "macro_movement": 0.503,
-      "macro_space": 0.538
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -82,10 +47,5 @@
     "space-mid",
     "aggressive",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

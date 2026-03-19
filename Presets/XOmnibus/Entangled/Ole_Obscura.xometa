@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Ole Obscura",
   "mood": "Entangled",
@@ -26,65 +23,32 @@
       "macro_space": 0.52
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Obscura",
-        "type": "CHAOS_INJECT",
-        "amount": 0.76
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OLE",
+    "target": "OBSCURA",
+    "amount": 0.76,
+    "intensity": "Deep"
   },
-  "description": "Chaos injection sends OBSCURA's strings into Afro-Latin syncopated chaos.",
   "dna": {
-    "aggression": 0.86,
     "brightness": 0.62,
-    "density": 0.881,
+    "warmth": 0.962,
     "movement": 0.7,
+    "density": 0.881,
     "space": 0.047,
-    "warmth": 0.962
+    "aggression": 0.86
   },
-  "engines": [
-    "Ole",
-    "Obscura"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.76,
-    "COUPLING": 0.76,
     "MOVEMENT": 0.68,
+    "COUPLING": 0.76,
     "SPACE": 0.4
   },
-  "mood": "Entangled",
-  "name": "Ole Obscura",
-  "parameters": {
-    "Obscura": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.65,
-      "macro_movement": 0.55,
-      "macro_space": 0.52
-    },
-    "Ole": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.76,
-      "macro_movement": 0.68,
-      "macro_space": 0.4
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "ole",
     "obscura",
     "chaos",
     "obscura"
-  ],
-  "version": "1.0"
+  ]
 }

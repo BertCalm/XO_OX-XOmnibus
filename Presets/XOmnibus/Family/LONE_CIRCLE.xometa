@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LONE CIRCLE",
   "version": "1.0",
   "mood": "Family",
@@ -23,66 +20,29 @@
       "macro_space": 0.276
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overbite",
-        "engineB": "Ocelot",
-        "type": "RING_MOD",
-        "amount": 0.881
-      }
-    ]
+    "type": "RING_MOD",
+    "source": "OVERBITE",
+    "target": "OCELOT",
+    "amount": 0.881
   },
   "dna": {
-    "aggression": 0.28,
     "brightness": 0.885,
-    "density": 0.082,
+    "warmth": 0.655,
     "movement": 0.834,
+    "density": 0.082,
     "space": 0.067,
-    "warmth": 0.655
+    "aggression": 0.28
   },
-  "engines": [
-    "Overbite",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.949,
-    "COUPLING": 0.092,
     "MOVEMENT": 0.824,
+    "COUPLING": 0.092,
     "SPACE": 0.212
   },
-  "mood": "Family",
-  "name": "LONE CIRCLE",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.902,
-      "macro_coupling": 0.061,
-      "macro_movement": 0.645,
-      "macro_space": 0.276
-    },
-    "Overbite": {
-      "macro_character": 0.236,
-      "macro_coupling": 0.981,
-      "macro_movement": 0.363,
-      "macro_space": 0.367
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

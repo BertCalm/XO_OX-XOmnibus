@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COMPRESSED LINK",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,68 +20,31 @@
       "macro_space": 0.7881
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Obese",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.8523
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OBSCURA",
+    "target": "OBESE",
+    "amount": 0.8523
   },
   "dna": {
-    "aggression": 0.8764,
     "brightness": 0.5398,
-    "density": 0.9308,
+    "warmth": 0.7386,
     "movement": 0.5265,
+    "density": 0.9308,
     "space": 0.6619,
-    "warmth": 0.7386
+    "aggression": 0.8764
   },
-  "engines": [
-    "Obscura",
-    "Obese"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.618,
-    "COUPLING": 0.7463,
     "MOVEMENT": 0.5972,
+    "COUPLING": 0.7463,
     "SPACE": 0.1808
   },
-  "mood": "Entangled",
-  "name": "COMPRESSED LINK",
-  "parameters": {
-    "Obese": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.7183,
-      "macro_movement": 0.1549,
-      "macro_space": 0.7881
-    },
-    "Obscura": {
-      "macro_character": 0.9512,
-      "macro_coupling": 0.9065,
-      "macro_movement": 0.3417,
-      "macro_space": 0.192
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dense",
     "granite",
     "layered",
     "crushing"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

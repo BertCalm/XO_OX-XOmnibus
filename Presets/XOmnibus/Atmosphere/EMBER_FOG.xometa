@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "EMBER FOG",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.507
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Obbligato",
-        "type": "SPATIAL_COUPLE",
-        "amount": 0.433
-      }
-    ]
+    "type": "SPATIAL_COUPLE",
+    "source": "ONSET",
+    "target": "OBBLIGATO",
+    "amount": 0.433
   },
   "dna": {
-    "aggression": 0.899,
     "brightness": 0.159,
-    "density": 0.891,
+    "warmth": 0.503,
     "movement": 0.892,
+    "density": 0.891,
     "space": 0.736,
-    "warmth": 0.503
+    "aggression": 0.899
   },
-  "engines": [
-    "Onset",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.479,
-    "COUPLING": 0.585,
     "MOVEMENT": 0.466,
+    "COUPLING": 0.585,
     "SPACE": 0.736
   },
-  "mood": "Atmosphere",
-  "name": "EMBER FOG",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.21,
-      "macro_movement": 0.136,
-      "macro_space": 0.507
-    },
-    "Onset": {
-      "macro_character": 0.851,
-      "macro_coupling": 0.259,
-      "macro_movement": 0.704,
-      "macro_space": 0.371
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

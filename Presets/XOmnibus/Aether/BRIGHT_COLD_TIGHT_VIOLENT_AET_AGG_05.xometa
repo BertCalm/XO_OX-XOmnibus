@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Organon",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.819
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.97,
-    "brightness": 0.95,
-    "density": 0.669,
-    "movement": 0.361,
-    "space": 0.027,
-    "warmth": 0.061
-  },
+  "name": "BRIGHT COLD TIGHT VIOLENT AET AGG 5",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oblique",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.899,
-    "COUPLING": 0.929,
-    "MOVEMENT": 0.342,
-    "SPACE": 0.026
-  },
-  "mood": "Aether",
-  "name": "BRIGHT COLD TIGHT VIOLENT A...",
   "parameters": {
     "Oblique": {
       "macro_character": 0.881,
-      "macro_coupling": 0.94,
       "macro_movement": 0.335,
+      "macro_coupling": 0.94,
       "macro_space": 0.027
     },
     "Organon": {
       "macro_character": 0.916,
-      "macro_coupling": 0.919,
       "macro_movement": 0.349,
+      "macro_coupling": 0.919,
       "macro_space": 0.026
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "ORGANON",
+    "amount": 0.819
+  },
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.061,
+    "movement": 0.361,
+    "density": 0.669,
+    "space": 0.027,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.899,
+    "MOVEMENT": 0.342,
+    "COUPLING": 0.929,
+    "SPACE": 0.026
+  },
   "tags": [
     "aether",
     "aggressive",
@@ -58,10 +47,5 @@
     "violent",
     "bright",
     "tight"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

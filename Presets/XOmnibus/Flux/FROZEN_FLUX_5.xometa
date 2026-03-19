@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "FROZEN FLUX 5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,66 +20,29 @@
       "macro_space": 0.5394
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ouroboros",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.8999
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERLAP",
+    "target": "OUROBOROS",
+    "amount": 0.8999
   },
   "dna": {
-    "aggression": 0.0625,
     "brightness": 0.6427,
-    "density": 0.4617,
+    "warmth": 0.0227,
     "movement": 0.1357,
+    "density": 0.4617,
     "space": 0.0503,
-    "warmth": 0.0227
+    "aggression": 0.0625
   },
-  "engines": [
-    "Overlap",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.35,
-    "COUPLING": 0.7812,
     "MOVEMENT": 0.6501,
+    "COUPLING": 0.7812,
     "SPACE": 0.6518
   },
-  "mood": "Flux",
-  "name": "FROZEN FLUX 5",
-  "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.2523,
-      "macro_coupling": 0.0194,
-      "macro_movement": 0.0819,
-      "macro_space": 0.5394
-    },
-    "Overlap": {
-      "macro_character": 0.7612,
-      "macro_coupling": 0.752,
-      "macro_movement": 0.3791,
-      "macro_space": 0.8319
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "cold",
     "shifting"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

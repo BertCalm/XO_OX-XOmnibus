@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Oracle",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.834
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.964,
-    "brightness": 0.075,
-    "density": 0.972,
-    "movement": 0.674,
-    "space": 0.031,
-    "warmth": 0.614
-  },
+  "name": "DARK_DENSE_INTIMATE_VIOLENT_FND_4",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Onset",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.538,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.614,
-    "SPACE": 0.396
-  },
-  "mood": "Foundation",
-  "name": "Ember Molten",
   "parameters": {
     "Onset": {
       "macro_character": 0.618,
-      "macro_coupling": 0.125,
       "macro_movement": 0.706,
+      "macro_coupling": 0.125,
       "macro_space": 0.247
     },
     "Oracle": {
       "macro_character": 0.7,
-      "macro_coupling": 0.496,
       "macro_movement": 0.287,
+      "macro_coupling": 0.496,
       "macro_space": 0.147
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "ONSET",
+    "target": "ORACLE",
+    "amount": 0.834
+  },
+  "dna": {
+    "brightness": 0.075,
+    "warmth": 0.614,
+    "movement": 0.674,
+    "density": 0.972,
+    "space": 0.031,
+    "aggression": 0.964
+  },
+  "macros": {
+    "CHARACTER": 0.538,
+    "MOVEMENT": 0.614,
+    "COUPLING": 0.82,
+    "SPACE": 0.396
+  },
   "tags": [
     "foundation",
     "extreme",
@@ -59,10 +48,5 @@
     "intimate",
     "violent",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

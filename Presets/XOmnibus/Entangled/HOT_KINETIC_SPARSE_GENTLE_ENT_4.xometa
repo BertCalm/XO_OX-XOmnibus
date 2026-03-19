@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7088,
-        "source": "Owlfish",
-        "target": "Ohm",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "description": "Hot Kinetic Sparse Gentle character entanglement — OWLFISH × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.0232,
-    "brightness": 0.4844,
-    "density": 0.1104,
-    "movement": 0.9389,
-    "space": 0.458,
-    "warmth": 0.8902
-  },
+  "schema_version": 1,
+  "name": "HOT_KINETIC_SPARSE_GENTLE_ENT_4",
+  "mood": "Entangled",
   "engines": [
     "Owlfish",
     "Ohm"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "DEPTH",
-    "FEEDING",
-    "DEFENSE",
-    "PRESSURE"
-  ],
-  "macros": {
-    "CHARACTER": 0.6873,
-    "COUPLING": 0.7088,
-    "MOVEMENT": 0.9389,
-    "SPACE": 0.458
-  },
-  "mood": "Entangled",
-  "name": "Grain Stream 4",
-  "parameters": {
-    "Ohm": {
-      "amp_attack": 0.0631,
-      "amp_release": 0.3784,
-      "coupling_level": 0.5448,
-      "density": 0.1015,
-      "drive": 0.0688,
-      "filter_cutoff": 0.5783,
-      "filter_resonance": 0.1342,
-      "macro_character": 0.8035,
-      "macro_coupling": 0.6323,
-      "macro_movement": 0.9494,
-      "macro_space": 0.4816,
-      "output_level": 0.702,
-      "reverb_mix": 0.4007,
-      "reverb_size": 0.5078
-    },
-    "Owlfish": {
-      "amp_attack": 0.058,
-      "amp_release": 0.3678,
-      "coupling_level": 0.5901,
-      "density": 0.0814,
-      "drive": 0.051,
-      "filter_cutoff": 0.5486,
-      "filter_resonance": 0.0913,
-      "macro_character": 0.7764,
-      "macro_coupling": 0.6388,
-      "macro_movement": 0.9213,
-      "macro_space": 0.4208,
-      "output_level": 0.7036,
-      "reverb_mix": 0.406,
-      "reverb_size": 0.4397
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0232,
-    "brightness": 0.4844,
-    "density": 0.1104,
-    "movement": 0.9389,
-    "space": 0.458,
-    "warmth": 0.8902
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Hot Kinetic Sparse Gentle character entanglement — OWLFISH × OHM via Velocity Couple. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "warm",
@@ -95,9 +17,6 @@
     "gentle",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "DEPTH",
     "FEEDING",
@@ -175,5 +94,4 @@
     "COUPLING": 0.7088,
     "SPACE": 0.458
   }
->>>>>>> origin/v1-launch-prep
 }

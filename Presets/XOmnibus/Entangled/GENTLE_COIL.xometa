@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Owlfish",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.682
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.095,
-    "brightness": 0.381,
-    "density": 0.279,
-    "movement": 0.105,
-    "space": 0.13,
-    "warmth": 0.562
-  },
+  "name": "GENTLE COIL",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Owlfish"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.121,
-    "COUPLING": 0.764,
-    "MOVEMENT": 0.843,
-    "SPACE": 0.314
-  },
-  "mood": "Entangled",
-  "name": "GENTLE COIL",
   "parameters": {
     "Opal": {
       "macro_character": 0.394,
-      "macro_coupling": 0.559,
       "macro_movement": 0.71,
+      "macro_coupling": 0.559,
       "macro_space": 0.746
     },
     "Owlfish": {
       "macro_character": 0.776,
-      "macro_coupling": 0.755,
       "macro_movement": 0.88,
+      "macro_coupling": 0.755,
       "macro_space": 0.591
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "OWLFISH",
+    "amount": 0.682
+  },
+  "dna": {
+    "brightness": 0.381,
+    "warmth": 0.562,
+    "movement": 0.105,
+    "density": 0.279,
+    "space": 0.13,
+    "aggression": 0.095
+  },
+  "macros": {
+    "CHARACTER": 0.121,
+    "MOVEMENT": 0.843,
+    "COUPLING": 0.764,
+    "SPACE": 0.314
+  },
   "tags": [
     "quiet",
     "calm",
     "delicate",
     "entangled"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

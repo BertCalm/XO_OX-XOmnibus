@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_INTIMATE_VIOLENT_FAM_VOL_142",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.069
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Obbligato",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.626
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "OVERDUB",
+    "target": "OBBLIGATO",
+    "amount": 0.626
   },
   "dna": {
-    "aggression": 0.944,
     "brightness": 0.871,
-    "density": 0.538,
+    "warmth": 0.081,
     "movement": 0.666,
+    "density": 0.538,
     "space": 0.054,
-    "warmth": 0.081
+    "aggression": 0.944
   },
-  "engines": [
-    "Overdub",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.477,
-    "COUPLING": 0.721,
     "MOVEMENT": 0.675,
+    "COUPLING": 0.721,
     "SPACE": 0.062
   },
-  "mood": "Family",
-  "name": "Ice Rage 3",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.458,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.694,
-      "macro_space": 0.069
-    },
-    "Overdub": {
-      "macro_character": 0.496,
-      "macro_coupling": 0.722,
-      "macro_movement": 0.657,
-      "macro_space": 0.055
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "cold",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

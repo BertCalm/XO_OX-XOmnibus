@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Oceanic",
-        "type": "FILTER_MOD",
-        "amount": 0.8618
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9771,
-    "brightness": 0.918,
-    "density": 0.6542,
-    "movement": 0.6442,
-    "space": 0.075,
-    "warmth": 0.0362
-  },
+  "name": "BRIGHT_COLD_INTIMATE_VIOLENT_AET2_1",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Oblique",
     "Oceanic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9049,
-    "COUPLING": 0.8618,
-    "MOVEMENT": 0.6248,
-    "SPACE": 0.075
-  },
-  "mood": "Aether",
-  "name": "Glass Crush",
   "parameters": {
     "Oblique": {
       "macro_character": 0.9298,
-      "macro_coupling": 0.6576,
       "macro_movement": 0.6421,
+      "macro_coupling": 0.6576,
       "macro_space": 0.1
     },
     "Oceanic": {
       "macro_character": 0.8801,
-      "macro_coupling": 0.6507,
       "macro_movement": 0.6075,
+      "macro_coupling": 0.6507,
       "macro_space": 0.0781
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "OCEANIC",
+    "amount": 0.8618
+  },
+  "dna": {
+    "brightness": 0.918,
+    "warmth": 0.0362,
+    "space": 0.075,
+    "aggression": 0.9771,
+    "movement": 0.6442,
+    "density": 0.6542
+  },
+  "macros": {
+    "CHARACTER": 0.9049,
+    "MOVEMENT": 0.6248,
+    "COUPLING": 0.8618,
+    "SPACE": 0.075
+  },
   "tags": [
     "aether",
     "intimate",
@@ -60,10 +49,5 @@
     "intimate",
     "violent",
     "crystalline"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

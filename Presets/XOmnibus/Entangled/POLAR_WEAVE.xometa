@@ -1,65 +1,49 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Organon",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.627
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.135,
-    "brightness": 0.827,
-    "density": 0.933,
-    "movement": 0.141,
-    "space": 0.763,
-    "warmth": 0.045
-  },
+  "name": "POLAR WEAVE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oracle",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.835,
-    "COUPLING": 0.148,
-    "MOVEMENT": 0.583,
-    "SPACE": 0.127
-  },
-  "mood": "Entangled",
-  "name": "POLAR WEAVE",
   "parameters": {
     "Oracle": {
       "macro_character": 0.262,
-      "macro_coupling": 0.552,
       "macro_movement": 0.741,
+      "macro_coupling": 0.552,
       "macro_space": 0.428
     },
     "Organon": {
       "macro_character": 0.01,
-      "macro_coupling": 0.883,
       "macro_movement": 0.075,
+      "macro_coupling": 0.883,
       "macro_space": 0.904
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORACLE",
+    "target": "ORGANON",
+    "amount": 0.627
+  },
+  "dna": {
+    "brightness": 0.827,
+    "warmth": 0.045,
+    "movement": 0.141,
+    "density": 0.933,
+    "space": 0.763,
+    "aggression": 0.135
+  },
+  "macros": {
+    "CHARACTER": 0.835,
+    "MOVEMENT": 0.583,
+    "COUPLING": 0.148,
+    "SPACE": 0.127
+  },
   "tags": [
     "entangled",
     "cold",
     "clinical",
     "icy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

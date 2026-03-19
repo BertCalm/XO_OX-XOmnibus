@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osteria",
-        "engineB": "Oracle",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.485
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_WARM_STILL_INTIMATE_VIOLENT_PRS_1",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_WARM_STILL_INTIMATE_VIOLENT. Variant 1.",
-  "dna": {
-    "aggression": 0.899,
-    "brightness": 0.943,
-    "density": 0.395,
-    "movement": 0.105,
-    "space": 0.033,
-    "warmth": 0.921
-  },
-  "engines": [
-    "Osteria",
-    "Oracle"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.994,
-    "COUPLING": 0.345,
-    "MOVEMENT": 0.053,
-    "SPACE": 0.021
-  },
-  "mood": "Prism",
-  "name": "Solar Crush",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 1.0,
-      "macro_coupling": 0.445,
-      "macro_movement": 0.042,
-      "macro_space": 0.038
-    },
-    "Osteria": {
-      "macro_character": 0.987,
-      "macro_coupling": 0.245,
-      "macro_movement": 0.063,
-      "macro_space": 0.004
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "still",
@@ -82,10 +19,14 @@
     "prism",
     "warm"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.345,
     "SPACE": 0.021
   }
->>>>>>> origin/v1-launch-prep
 }

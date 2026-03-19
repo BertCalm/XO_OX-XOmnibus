@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Orbital decay frozen at closest bright approach",
-  "dna": {
-    "aggression": 0.08,
+  "schema_version": 1,
+  "name": "Solar Periapsis",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.94,
-    "density": 0.2,
+    "warmth": 0.1,
+    "aggression": 0.08,
     "movement": 0.55,
-    "space": 0.85,
-    "warmth": 0.1
+    "density": 0.2,
+    "space": 0.85
   },
   "engines": [
     "Orbital"
   ],
-  "macroLabels": [
-    "ORBIT",
-    "DECAY",
-    "COUPLING",
-    "DRIFT"
-  ],
-  "mood": "Prism",
-  "name": "Solar Periapsis",
-  "parameters": {
-    "Orbital": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.08,
-    "brightness": 0.94,
-    "density": 0.2,
-    "movement": 0.55,
-    "space": 0.85,
-    "warmth": 0.1
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Orbital decay frozen at closest bright approach",
   "tags": [
     "prism",
     "bright",
@@ -44,9 +24,6 @@
     "orbit",
     "luminous"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ORBIT",
     "DECAY",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Organon",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.787
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.9472,
-    "brightness": 0.5649,
-    "density": 0.8802,
-    "movement": 0.9551,
-    "space": 0.0815,
-    "warmth": 0.0342
-  },
+  "name": "COLD_KINETIC_DENSE_INTIMATE_VIOLENT_FLX2_2",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Opal",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.3181,
-    "COUPLING": 0.8781,
-    "MOVEMENT": 0.9703,
-    "SPACE": 0.0635
-  },
-  "mood": "Flux",
-  "name": "Signal Stream 2",
   "parameters": {
     "Opal": {
       "macro_character": 0.3264,
-      "macro_coupling": 0.9049,
       "macro_movement": 0.9849,
+      "macro_coupling": 0.9049,
       "macro_space": 0.0571
     },
     "Organon": {
       "macro_character": 0.3098,
-      "macro_coupling": 0.8513,
       "macro_movement": 0.9556,
+      "macro_coupling": 0.8513,
       "macro_space": 0.07
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OPAL",
+    "target": "ORGANON",
+    "amount": 0.787
+  },
+  "dna": {
+    "brightness": 0.5649,
+    "warmth": 0.0342,
+    "movement": 0.9551,
+    "density": 0.8802,
+    "space": 0.0815,
+    "aggression": 0.9472
+  },
+  "macros": {
+    "CHARACTER": 0.3181,
+    "MOVEMENT": 0.9703,
+    "COUPLING": 0.8781,
+    "SPACE": 0.0635
+  },
   "tags": [
     "flux",
     "cold",
@@ -58,10 +47,5 @@
     "dense",
     "intimate",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

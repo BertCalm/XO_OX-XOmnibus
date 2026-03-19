@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.706,
-        "engineA": "Obbligato",
-        "engineB": "Ohm",
-        "type": "LFO->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Breath Bond with Ohm",
   "mood": "Entangled",
@@ -23,35 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "OBBLIGATO's BOND tightens as OHM's meditative drone grounds the dual reeds.",
-  "dna": {
-    "aggression": 0.362,
-    "brightness": 0.491,
-    "density": 0.621,
-    "movement": 0.571,
-    "space": 0.659,
-    "warmth": 0.709
-  },
-  "engines": [
-    "Obbligato",
-    "Ohm"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Breath Bond with Ohm",
-  "parameters": {
-    "obbl_breathA": 0.695,
-    "obbl_breathB": 0.465,
-    "obbl_macroBond": 0.685
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "coupling",
     "obbligato",
@@ -60,6 +17,37 @@
     "drone",
     "meditative"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "obbl_breathA": 0.695,
+    "obbl_breathB": 0.465,
+    "obbl_macroBond": 0.685
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OBBLIGATO",
+        "engineB": "OHM",
+        "type": "LFO->Filter",
+        "amount": 0.706
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.491,
+    "warmth": 0.709,
+    "movement": 0.571,
+    "density": 0.621,
+    "space": 0.659,
+    "aggression": 0.362
+  }
 }

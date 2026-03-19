@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK LATTICE",
   "version": "1.0",
   "mood": "Prism",
@@ -23,66 +20,29 @@
       "macro_space": 0.307
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "Oblique",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.525
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ONSET",
+    "target": "OBLIQUE",
+    "amount": 0.525
   },
   "dna": {
-    "aggression": 0.747,
     "brightness": 0.021,
-    "density": 0.533,
+    "warmth": 0.112,
     "movement": 0.312,
+    "density": 0.533,
     "space": 0.144,
-    "warmth": 0.112
+    "aggression": 0.747
   },
-  "engines": [
-    "Onset",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.047,
-    "COUPLING": 0.523,
     "MOVEMENT": 0.696,
+    "COUPLING": 0.523,
     "SPACE": 0.323
   },
-  "mood": "Prism",
-  "name": "DARK LATTICE",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.614,
-      "macro_coupling": 0.5,
-      "macro_movement": 0.236,
-      "macro_space": 0.307
-    },
-    "Onset": {
-      "macro_character": 0.537,
-      "macro_coupling": 0.641,
-      "macro_movement": 0.738,
-      "macro_space": 0.248
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "prism",
     "dark",
     "spectrum"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

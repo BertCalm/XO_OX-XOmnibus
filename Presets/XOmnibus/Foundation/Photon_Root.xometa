@@ -1,22 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Oscar voice at bright register, breath wide open",
-  "dna": {
-    "aggression": 0.2169,
+  "schema_version": 1,
+  "name": "Photon Root",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.8015,
-    "density": 0.1856,
+    "warmth": 0.1188,
     "movement": 0.3649,
+    "density": 0.1856,
     "space": 0.7137,
-    "warmth": 0.1188
+    "aggression": 0.2169
+  },
+  "dna": {
+    "brightness": 0.8015,
+    "warmth": 0.1188,
+    "movement": 0.3649,
+    "density": 0.1856,
+    "space": 0.7137,
+    "aggression": 0.2169
   },
   "engines": [
     "OddOscar"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +30,6 @@
     "sparse",
     "crystalline",
     "anchor"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "WEIGHT",
@@ -36,49 +38,24 @@
     "SPACE"
   ],
   "macros": {
+    "WEIGHT": 0.9197,
     "BREATH": 0.3037,
     "COUPLE": 0.2892,
-    "SPACE": 0.4158,
-    "WEIGHT": 0.9197
+    "SPACE": 0.4158
   },
-  "mood": "Foundation",
-  "name": "Photon Root",
+  "couplingIntensity": "None",
   "parameters": {
     "OddOscar": {
-<<<<<<< HEAD
-      "oscar_couplingBus": 0,
-      "oscar_couplingLevel": 0.5,
-=======
       "oscar_macro_weight": 0.9197,
->>>>>>> origin/v1-launch-prep
       "oscar_macro_breath": 0.3037,
       "oscar_macro_couple": 0.2892,
       "oscar_macro_space": 0.4158,
-      "oscar_macro_weight": 0.9197,
-      "oscar_outputLevel": 0.85
+      "oscar_outputLevel": 0.85,
+      "oscar_couplingLevel": 0.5,
+      "oscar_couplingBus": 0
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2169,
-    "brightness": 0.8015,
-    "density": 0.1856,
-    "movement": 0.3649,
-    "space": 0.7137,
-    "warmth": 0.1188
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "sparse",
-    "crystalline",
-    "anchor"
-  ],
-  "version": "1.0.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

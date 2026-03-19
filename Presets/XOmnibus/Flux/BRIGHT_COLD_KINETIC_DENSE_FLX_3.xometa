@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_KINETIC_DENSE_FLX_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.4155
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Oblong",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.7554
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "OBLONG",
+    "amount": 0.7554
   },
   "dna": {
-    "aggression": 0.6145,
     "brightness": 0.922,
-    "density": 0.8602,
+    "warmth": 0.0359,
     "movement": 0.9733,
+    "density": 0.8602,
     "space": 0.5344,
-    "warmth": 0.0359
+    "aggression": 0.6145
   },
-  "engines": [
-    "Oceanic",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.8257,
-    "COUPLING": 0.6636,
     "MOVEMENT": 0.9528,
+    "COUPLING": 0.6636,
     "SPACE": 0.6151
   },
-  "mood": "Flux",
-  "name": "Chrome Cascade",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.8977,
-      "macro_coupling": 0.6498,
-      "macro_movement": 0.9188,
-      "macro_space": 0.4155
-    },
-    "Oceanic": {
-      "macro_character": 0.8257,
-      "macro_coupling": 0.6636,
-      "macro_movement": 0.9528,
-      "macro_space": 0.6151
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "unstable",
@@ -83,10 +48,5 @@
     "low-warmth",
     "high-movement",
     "high-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

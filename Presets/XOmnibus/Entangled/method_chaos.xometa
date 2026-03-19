@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.61,
-        "engineA": "Outwit",
-        "engineB": "Organon",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Method Chaos",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Giant Pacific Octopus 8-arm Wolfram CA entangled with ORGANON's logical-metabolic character (Aristotelian organ-pipe variational synthesis). Coupling: Velocity Couple.",
-  "dna": {
-    "aggression": 0.09,
-    "brightness": 0.75,
-    "density": 0.51,
-    "movement": 0.61,
-    "space": 0.26,
-    "warmth": 0.44
-  },
-  "engines": [
-    "Outwit",
-    "Organon"
+  "tags": [
+    "entangled",
+    "coupling",
+    "outwit",
+    "organon",
+    "chaotic",
+    "generative"
   ],
   "macroLabels": [
     "ARMS",
@@ -44,30 +25,28 @@
   ],
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.75,
     "MOVEMENT": 0.56,
+    "COUPLING": 0.75,
     "SPACE": 0.83
   },
-  "mood": "Entangled",
-  "name": "Method Chaos",
+  "couplingIntensity": "Moderate",
+  "sonic_dna": {
+    "brightness": 0.75,
+    "warmth": 0.44,
+    "movement": 0.61,
+    "density": 0.51,
+    "space": 0.26,
+    "aggression": 0.09
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.44,
+    "movement": 0.61,
+    "density": 0.51,
+    "space": 0.26,
+    "aggression": 0.09
+  },
   "parameters": {
-<<<<<<< HEAD
-    "Organon": {
-      "organon_ampAttack": 0.34,
-      "organon_ampRelease": 0.28,
-      "organon_ampSustain": 0.69,
-      "organon_character": 0.25,
-      "organon_coupling": 0.53,
-      "organon_couplingLevel": 0.81,
-      "organon_filterCutoff": 0.74,
-      "organon_filterReso": 0.24,
-      "organon_movement": 0.63,
-      "organon_outputLevel": 0.8,
-      "organon_reverbMix": 0.18,
-      "organon_space": 0.58
-    },
-    "Outwit": {
-=======
     "Outwit": {
       "owit_rule": 220,
       "owit_arms": 8,
@@ -78,30 +57,17 @@
       "owit_pitchSpread": 0.62,
       "owit_filterCutoff": 0.51,
       "owit_filterReso": 0.24,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.09,
       "owit_ampRelease": 0.55,
       "owit_armStagger": 0.1,
-      "owit_arms": 8,
       "owit_borderMode": 2,
-      "owit_cellSize": 0.29,
+      "owit_inkCloudMix": 0.04,
       "owit_chroma1": 0.45,
       "owit_chroma2": 0.53,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.76,
-      "owit_density": 0.47,
-      "owit_evolveRate": 0.81,
-      "owit_filterCutoff": 0.51,
-      "owit_filterReso": 0.24,
-      "owit_inkCloudMix": 0.04,
-      "owit_mutateProb": 0.08,
-      "owit_outputLevel": 0.85,
-<<<<<<< HEAD
-      "owit_outputPan": 0.21,
-      "owit_pitchSpread": 0.62,
       "owit_polyDepth": 0.71,
-      "owit_rule": 220
-=======
+      "owit_couplingLevel": 0.76,
+      "owit_couplingBus": 0,
+      "owit_outputLevel": 0.85,
       "owit_outputPan": 0.21
     },
     "Organon": {
@@ -117,25 +83,20 @@
       "organon_reverbMix": 0.18,
       "organon_couplingLevel": 0.81,
       "organon_outputLevel": 0.8
->>>>>>> origin/v1-launch-prep
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.09,
-    "brightness": 0.75,
-    "density": 0.51,
-    "movement": 0.61,
-    "space": 0.26,
-    "warmth": 0.44
-  },
-  "tags": [
-    "entangled",
-    "coupling",
-    "outwit",
-    "organon",
-    "chaotic",
-    "generative"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OUTWIT",
+    "target": "ORGANON",
+    "amount": 0.61,
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ORGANON",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.61
+      }
+    ]
+  }
 }

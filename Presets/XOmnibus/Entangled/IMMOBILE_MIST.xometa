@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Outwit",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.245
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.962,
-    "brightness": 0.766,
-    "density": 0.977,
-    "movement": 0.06,
-    "space": 0.584,
-    "warmth": 0.571
-  },
+  "name": "IMMOBILE MIST",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obbligato",
     "Outwit"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.658,
-    "COUPLING": 0.634,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.494
-  },
-  "mood": "Entangled",
-  "name": "IMMOBILE MIST",
   "parameters": {
     "Obbligato": {
       "macro_character": 0.37,
-      "macro_coupling": 0.072,
       "macro_movement": 0.072,
+      "macro_coupling": 0.072,
       "macro_space": 0.444
     },
     "Outwit": {
       "macro_character": 0.97,
-      "macro_coupling": 0.564,
       "macro_movement": 0.048,
+      "macro_coupling": 0.564,
       "macro_space": 0.048
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FREQUENCY_SHIFT",
+    "source": "OBBLIGATO",
+    "target": "OUTWIT",
+    "amount": 0.245
+  },
+  "dna": {
+    "brightness": 0.766,
+    "warmth": 0.571,
+    "movement": 0.06,
+    "density": 0.977,
+    "space": 0.584,
+    "aggression": 0.962
+  },
+  "macros": {
+    "CHARACTER": 0.658,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.634,
+    "SPACE": 0.494
+  },
   "tags": [
     "entangled",
     "stillness",
     "immobile"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

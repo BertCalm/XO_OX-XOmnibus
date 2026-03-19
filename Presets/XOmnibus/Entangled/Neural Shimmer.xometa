@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Octopus",
-        "engineB": "Opal",
-        "type": "NEURAL_WEAVE",
-        "amount": 0.7
-      }
-    ]
-  },
-  "description": "Eight-arm intelligence routing the granular cloud — opal shimmer processed through neural net",
+  "name": "Neural Shimmer",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Octopus"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.7,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Neural Shimmer",
-  "parameters": {
-    "Opal": {},
-    "Octopus": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.34,
     "brightness": 0.5,
-    "density": 0.58,
+    "warmth": 0.55,
     "movement": 0.68,
+    "density": 0.58,
     "space": 0.62,
-    "warmth": 0.55
+    "aggression": 0.34
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "NEURAL_WEAVE",
+    "source": "OCTOPUS",
+    "target": "OPAL",
+    "amount": 0.7
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "octopus",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Eight-arm intelligence routing the granular cloud — opal shimmer processed through neural net"
->>>>>>> origin/v1-launch-prep
 }

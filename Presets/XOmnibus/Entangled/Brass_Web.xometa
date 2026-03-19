@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.54,
-        "engineA": "Overlap",
-        "engineB": "Ottoni",
-        "type": "TIMBRAL_WARP"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-=======
   "schema_version": 1,
   "name": "Brass Web",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Ottoni triple brass partials distribute across OVERLAP node matrix — brass in the FDN cathedral",
-  "dna": {
-    "aggression": 0.3,
-    "brightness": 0.55,
-    "density": 0.6,
-    "movement": 0.475,
-    "space": 0.7,
-    "warmth": 0.525
-  },
-  "engines": [
-    "Overlap",
-    "Ottoni"
+  "tags": [
+    "coupling",
+    "entangled",
+    "overlap",
+    "ottoni",
+    "brass",
+    "harmonic"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,56 +25,58 @@
   ],
   "macros": {
     "CHARACTER": 0.47,
-    "COUPLING": 0.697,
     "MOVEMENT": 0.369,
+    "COUPLING": 0.697,
     "SPACE": 0.757
   },
-  "mood": "Entangled",
-  "name": "Brass Web",
+  "couplingIntensity": "Moderate",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.7,
+    "aggression": 0.3,
+    "movement": 0.475,
+    "warmth": 0.525,
+    "density": 0.6
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.7,
+    "aggression": 0.3,
+    "movement": 0.475,
+    "warmth": 0.525,
+    "density": 0.6
+  },
   "parameters": {
     "Overlap": {
-<<<<<<< HEAD
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.615,
-      "olap_crossfeedAmt": 0.411,
-=======
       "olap_size": 0.836,
       "olap_decay": 0.634,
->>>>>>> origin/v1-launch-prep
       "olap_damping": 0.308,
-      "olap_decay": 0.634,
       "olap_diffusion": 0.515,
-      "olap_earlyMix": 0.466,
-      "olap_filterCutoff": 0.658,
-      "olap_filterReso": 0.417,
-      "olap_frondDensity": 0.375,
-      "olap_lateMix": 0.611,
       "olap_modDepth": 0.467,
       "olap_modRate": 0.215,
-      "olap_nodeCount": 15,
-      "olap_outputLevel": 0.654,
       "olap_preDelay": 0.249,
-      "olap_shimmerMix": 0.115,
-      "olap_size": 0.836,
-      "olap_spinRate": 0.046
+      "olap_earlyMix": 0.466,
+      "olap_lateMix": 0.611,
+      "olap_filterCutoff": 0.658,
+      "olap_filterReso": 0.417,
+      "olap_outputLevel": 0.654,
+      "olap_couplingLevel": 0.615,
+      "olap_couplingBus": 0,
+      "olap_frondDensity": 0.375,
+      "olap_nodeCount": 15,
+      "olap_crossfeedAmt": 0.411,
+      "olap_spinRate": 0.046,
+      "olap_shimmerMix": 0.115
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.55,
-    "density": 0.6,
-    "movement": 0.475,
-    "space": 0.7,
-    "warmth": 0.525
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "overlap",
-    "ottoni",
-    "brass",
-    "harmonic"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OVERLAP",
+        "engineB": "OTTONI",
+        "type": "TIMBRAL_WARP",
+        "amount": 0.54
+      }
+    ]
+  }
 }

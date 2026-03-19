@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_61",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.867
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddOscar",
-        "engineB": "Odyssey",
-        "type": "SPECTRAL_WEAVE",
-        "amount": 0.94
-      }
-    ]
+    "type": "SPECTRAL_WEAVE",
+    "source": "ODDOSCAR",
+    "target": "ODYSSEY",
+    "amount": 0.94
   },
   "dna": {
-    "aggression": 0.687,
     "brightness": 0.984,
-    "density": 0.487,
+    "warmth": 0.97,
     "movement": 0.032,
+    "density": 0.487,
     "space": 0.87,
-    "warmth": 0.97
+    "aggression": 0.687
   },
-  "engines": [
-    "Odyssey",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.96,
-    "COUPLING": 0.587,
     "MOVEMENT": 0.04,
+    "COUPLING": 0.587,
     "SPACE": 0.875
   },
-  "mood": "Family",
-  "name": "Bloom Orbit 2",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.965,
-      "macro_coupling": 0.607,
-      "macro_movement": 0.05,
-      "macro_space": 0.867
-    },
-    "Odyssey": {
-      "macro_character": 0.956,
-      "macro_coupling": 0.567,
-      "macro_movement": 0.03,
-      "macro_space": 0.883
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "vast",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OLE DRAMA macro at peak — Afro-Latin trio in full voice. The circle that drives itself. Nobody sitting down.",
-  "dna": {
-    "aggression": 0.48,
-    "brightness": 0.72,
-    "density": 0.58,
-    "movement": 0.82,
-    "space": 0.52,
-    "warmth": 0.68
-  },
+  "schema_version": 1,
+  "name": "Afro-Latin Drama",
+  "mood": "Family",
   "engines": [
     "Ole"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "DRAMA",
-    "RHYTHM",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Afro-Latin Drama",
-  "parameters": {
-    "Ole": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OLE DRAMA macro at peak — Afro-Latin trio in full voice. The circle that drives itself. Nobody sitting down.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "communal",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "DRAMA",
+    "RHYTHM",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.52,
     "aggression": 0.48
   }
->>>>>>> origin/v1-launch-prep
 }

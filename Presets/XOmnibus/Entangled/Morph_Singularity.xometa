@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.94,
-        "engineA": "OddOscar",
-        "engineB": "Ouroboros",
-        "type": "FREQUENCY_SMEAR"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Morph parameter frequency-smeared by Ouroboros — axolotl regeneration as brutal topology.",
-  "dna": {
-    "aggression": 0.98,
-    "brightness": 0.12,
-    "density": 0.91,
-    "movement": 0.6,
-    "space": 0.1,
-    "warmth": 0.18
-  },
+  "schema_version": 1,
+  "name": "Morph Singularity",
+  "mood": "Entangled",
   "engines": [
     "OddOscar",
     "Ouroboros"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "oddoscar",
     "ouroboros",
     "morph"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.92,
-    "COUPLING": 0.94,
     "MOVEMENT": 0.6,
+    "COUPLING": 0.94,
     "SPACE": 0.1
   },
-  "mood": "Entangled",
-  "name": "Morph Singularity",
-  "parameters": {
-    "OddOscar": {},
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.98,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.12,
-    "density": 0.91,
+    "warmth": 0.18,
     "movement": 0.6,
+    "density": 0.91,
     "space": 0.1,
-    "warmth": 0.18
+    "aggression": 0.98
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "cold",
-    "oddoscar",
-    "ouroboros",
-    "morph"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.12,
+    "warmth": 0.18,
+    "movement": 0.6,
+    "density": 0.91,
+    "space": 0.1,
+    "aggression": 0.98
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "ODDOSCAR",
+        "engineB": "OUROBOROS",
+        "type": "FREQUENCY_SMEAR",
+        "amount": 0.94
+      }
+    ]
+  }
 }

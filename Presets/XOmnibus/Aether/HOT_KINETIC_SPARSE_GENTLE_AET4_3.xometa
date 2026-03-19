@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "HOT_KINETIC_SPARSE_GENTLE_AET4_3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.7518
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Origami",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.6674
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OSPREY",
+    "target": "ORIGAMI",
+    "amount": 0.6674
   },
   "dna": {
-    "aggression": 0.0238,
     "brightness": 0.3269,
-    "density": 0.1059,
+    "warmth": 0.8871,
     "movement": 0.9429,
+    "density": 0.1059,
     "space": 0.5269,
-    "warmth": 0.8871
+    "aggression": 0.0238
   },
-  "engines": [
-    "Osprey",
-    "Origami"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.607,
-    "COUPLING": 0.6674,
     "MOVEMENT": 0.9429,
+    "COUPLING": 0.6674,
     "SPACE": 0.5269
   },
-  "mood": "Aether",
-  "name": "Ember Surge",
-  "parameters": {
-    "Origami": {
-      "macro_character": 0.6872,
-      "macro_coupling": 0.2851,
-      "macro_movement": 0.3872,
-      "macro_space": 0.7518
-    },
-    "Osprey": {
-      "macro_character": 0.7723,
-      "macro_coupling": 0.5971,
-      "macro_movement": 0.6304,
-      "macro_space": 0.4985
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "kinetic",
     "warm",
     "sparse",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BARE CIRCLE",
   "version": "1.0",
   "mood": "Family",
@@ -23,66 +20,29 @@
       "macro_space": 0.968
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Orbital",
-        "type": "FM_COUPLE",
-        "amount": 0.719
-      }
-    ]
+    "type": "FM_COUPLE",
+    "source": "ORPHICA",
+    "target": "ORBITAL",
+    "amount": 0.719
   },
   "dna": {
-    "aggression": 0.109,
     "brightness": 0.774,
-    "density": 0.083,
+    "warmth": 0.679,
     "movement": 0.052,
+    "density": 0.083,
     "space": 0.335,
-    "warmth": 0.679
+    "aggression": 0.109
   },
-  "engines": [
-    "Orphica",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.392,
-    "COUPLING": 0.938,
     "MOVEMENT": 0.595,
+    "COUPLING": 0.938,
     "SPACE": 0.31
   },
-  "mood": "Family",
-  "name": "BARE CIRCLE",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.583,
-      "macro_coupling": 0.35,
-      "macro_movement": 0.141,
-      "macro_space": 0.968
-    },
-    "Orphica": {
-      "macro_character": 0.657,
-      "macro_coupling": 0.873,
-      "macro_movement": 0.906,
-      "macro_space": 0.333
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "sparse",
     "xlow-density"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

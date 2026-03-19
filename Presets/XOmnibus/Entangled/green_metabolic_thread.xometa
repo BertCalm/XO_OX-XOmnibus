@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.55,
-        "engineA": "Ohm",
-        "engineB": "Organon",
-        "type": "Filter->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Green Metabolic Thread",
   "mood": "Entangled",
@@ -23,44 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Sage green commune meets bioluminescent metabolism — OHM's harmonics breathe through ORGANON's variational free energy.",
-  "dna": {
-    "aggression": 0.08,
-    "brightness": 0.55,
-    "density": 0.57,
-    "movement": 0.66,
-    "space": 0.63,
-    "warmth": 0.88
-  },
-  "engines": [
-    "Ohm",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.715,
-    "COUPLING": 0.721,
-    "MOVEMENT": 0.66,
-    "SPACE": 0.63
-  },
-  "mood": "Entangled",
-  "name": "Green Metabolic Thread",
-  "parameters": {
-    "ohm_droneFund": 0.528,
-    "ohm_macroCommune": 0.764,
-    "ohm_macroMeddling": 0.664,
-    "ohm_orgHarmonics": 0.54,
-    "organon_metabolicRate": 0.73,
-    "organon_variationalEnergy": 0.828
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -73,6 +21,46 @@
     "metabolic",
     "bioluminescent"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-  "version": "1.0.0"
+  "created": "2026-03-16",
+  "parameters": {
+    "ohm_macroMeddling": 0.664,
+    "ohm_macroCommune": 0.764,
+    "ohm_orgHarmonics": 0.54,
+    "ohm_droneFund": 0.528,
+    "organon_metabolicRate": 0.73,
+    "organon_variationalEnergy": 0.828
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OHM",
+        "engineB": "ORGANON",
+        "type": "Filter->Filter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "macros": {
+    "CHARACTER": 0.715,
+    "MOVEMENT": 0.66,
+    "COUPLING": 0.721,
+    "SPACE": 0.63
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.88,
+    "movement": 0.66,
+    "density": 0.57,
+    "space": 0.63,
+    "aggression": 0.08
+  }
 }

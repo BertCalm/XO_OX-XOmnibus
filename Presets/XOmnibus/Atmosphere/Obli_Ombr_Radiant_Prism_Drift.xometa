@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 7.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Ombre",
-        "type": "LFO_SYNC",
-        "amount": 0.89
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Radiant Prism Drift",
   "mood": "Atmosphere",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Obli_Ombr_Radiant_Prism_Drift.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.066,
-    "brightness": 0.941,
-    "density": 0.078,
-    "movement": 0.056,
-    "space": 0.907,
-    "warmth": 0.505
-  },
-  "engines": [
-    "Oblique",
-    "Ombre"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.57,
-      "macro_movement": 0.9,
-      "macro_space": 0.46
-    },
-    "Ombre": {
-      "macro_character": 0.98,
-      "macro_coupling": 0.82,
-      "macro_movement": 0.91,
-      "macro_space": 0.48
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "atmosphere"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 7.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.907,
     "aggression": 0.066
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Obli_Ombr_Radiant_Prism_Drift.xometa
 }

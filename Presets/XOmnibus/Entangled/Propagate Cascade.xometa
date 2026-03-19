@@ -1,70 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.562,
-        "engineA": "Overlap",
-        "engineB": "Organon",
-        "type": "SYNC_LFO"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "Organon pipe resonance propagates through OVERLAP web — the cathedral breathes",
-  "dna": {
-    "aggression": 0.275,
-    "brightness": 0.625,
-    "density": 0.675,
-    "movement": 0.575,
-    "space": 0.725,
-    "warmth": 0.55
-  },
+  "schema_version": 1,
+  "name": "Propagate Cascade",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Organon"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Propagate Cascade",
-  "parameters": {
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.55,
-      "olap_damping": 0.338,
-      "olap_decay": 0.606,
-      "olap_diffusion": 0.652,
-      "olap_earlyMix": 0.353,
-      "olap_filterCutoff": 0.631,
-      "olap_filterReso": 0.176,
-      "olap_lateMix": 0.554,
-      "olap_modDepth": 0.355,
-      "olap_modRate": 0.144,
-      "olap_outputLevel": 0.792,
-      "olap_preDelay": 0.152,
-      "olap_size": 0.935
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.275,
-    "brightness": 0.625,
-    "density": 0.675,
-    "movement": 0.575,
-    "space": 0.725,
-    "warmth": 0.55
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Organon pipe resonance propagates through OVERLAP web — the cathedral breathes",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -75,9 +19,6 @@
     "fdn",
     "reverb"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -129,5 +70,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

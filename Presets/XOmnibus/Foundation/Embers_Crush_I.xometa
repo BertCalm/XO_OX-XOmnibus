@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Sub-heavy foundation with slow bloom and settled weight.",
-  "dna": {
-    "aggression": 0.604,
+  "schema_version": 1,
+  "name": "Embers Crush I",
+  "mood": "Foundation",
+  "sonic_dna": {
     "brightness": 0.268,
-    "density": 0.867,
+    "warmth": 0.903,
     "movement": 0.474,
+    "density": 0.867,
     "space": 0.211,
-    "warmth": 0.903
+    "aggression": 0.604
   },
   "engines": [
     "Organon"
   ],
-  "macroLabels": [
-    "MELT",
-    "COMPRESS",
-    "COUPLING",
-    "TAIL"
-  ],
-  "mood": "Foundation",
-  "name": "Embers Crush I",
-  "parameters": {
-    "Organon": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.604,
-    "brightness": 0.268,
-    "density": 0.867,
-    "movement": 0.474,
-    "space": 0.211,
-    "warmth": 0.903
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Sub-heavy foundation with slow bloom and settled weight.",
   "tags": [
     "foundation",
     "warm",
@@ -44,9 +24,6 @@
     "thick",
     "aggressive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MELT",
     "COMPRESS",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

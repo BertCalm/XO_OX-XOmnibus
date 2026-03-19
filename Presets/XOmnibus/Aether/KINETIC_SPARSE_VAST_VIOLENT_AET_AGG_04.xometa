@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "KINETIC SPARSE VAST VIOLENT AET AGG 4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.872
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Orbital",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.96
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERWORLD",
+    "target": "ORBITAL",
+    "amount": 0.96
   },
   "dna": {
-    "aggression": 0.914,
     "brightness": 0.537,
-    "density": 0.071,
+    "warmth": 0.441,
     "movement": 0.879,
+    "density": 0.071,
     "space": 0.875,
-    "warmth": 0.441
+    "aggression": 0.914
   },
-  "engines": [
-    "Overworld",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.513,
-    "COUPLING": 0.89,
     "MOVEMENT": 0.845,
+    "COUPLING": 0.89,
     "SPACE": 0.842
   },
-  "mood": "Aether",
-  "name": "KINETIC SPARSE VAST VIOLENT...",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.52,
-      "macro_coupling": 0.868,
-      "macro_movement": 0.836,
-      "macro_space": 0.872
-    },
-    "Overworld": {
-      "macro_character": 0.506,
-      "macro_coupling": 0.912,
-      "macro_movement": 0.854,
-      "macro_space": 0.811
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "kinetic",
     "vast"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

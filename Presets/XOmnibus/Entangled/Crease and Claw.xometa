@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Ocelot",
-        "type": "TIMBRAL_WARP",
-        "amount": 0.6
-      }
-    ]
-  },
-  "description": "Claws through cold paper at maximum speed — tension and release at velocity.",
+  "name": "Crease and Claw",
+  "version": "1.0",
   "engines": [
     "Ocelot",
     "Origami"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Fast Cold",
   "macros": {
     "CHARACTER": 0.8,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.97,
+    "COUPLING": 0.65,
     "SPACE": 0.48
   },
-  "mood": "Entangled",
-  "name": "Crease and Claw",
-  "parameters": {
-    "Ocelot": {},
-    "Origami": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.72,
     "brightness": 0.55,
-    "density": 0.5,
+    "warmth": 0.07,
     "movement": 0.97,
+    "density": 0.5,
     "space": 0.45,
-    "warmth": 0.07
+    "aggression": 0.72
   },
-  "strategy": "Fast Cold",
+  "parameters": {},
+  "coupling": {
+    "type": "TIMBRAL_WARP",
+    "source": "ORIGAMI",
+    "target": "OCELOT",
+    "amount": 0.6
+  },
   "tags": [
     "entangled",
     "cold",
@@ -53,17 +35,5 @@
     "aggressive",
     "tension"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Claws through cold paper at maximum speed — tension and release at velocity."
->>>>>>> origin/v1-launch-prep
 }

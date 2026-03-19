@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BURNING FOG",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.672
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Ottoni",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.842
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OVERLAP",
+    "target": "OTTONI",
+    "amount": 0.842
   },
   "dna": {
-    "aggression": 0.925,
     "brightness": 0.765,
-    "density": 0.808,
+    "warmth": 0.137,
     "movement": 0.753,
+    "density": 0.808,
     "space": 0.409,
-    "warmth": 0.137
+    "aggression": 0.925
   },
-  "engines": [
-    "Overlap",
-    "Ottoni"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.478,
-    "COUPLING": 0.707,
     "MOVEMENT": 0.765,
+    "COUPLING": 0.707,
     "SPACE": 0.409
   },
-  "mood": "Atmosphere",
-  "name": "BURNING FOG",
-  "parameters": {
-    "Ottoni": {
-      "macro_character": 0.368,
-      "macro_coupling": 0.131,
-      "macro_movement": 0.217,
-      "macro_space": 0.672
-    },
-    "Overlap": {
-      "macro_character": 0.28,
-      "macro_coupling": 0.179,
-      "macro_movement": 0.355,
-      "macro_space": 0.165
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

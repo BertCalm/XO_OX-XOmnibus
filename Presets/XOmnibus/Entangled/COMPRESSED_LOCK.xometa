@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Optic",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8423
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.3726,
-    "brightness": 0.0912,
-    "density": 0.9678,
-    "movement": 0.4319,
-    "space": 0.7446,
-    "warmth": 0.0854
-  },
+  "name": "COMPRESSED LOCK",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Optic"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.1301,
-    "COUPLING": 0.987,
-    "MOVEMENT": 0.06,
-    "SPACE": 0.5617
-  },
-  "mood": "Entangled",
-  "name": "COMPRESSED LOCK",
   "parameters": {
     "Opal": {
       "macro_character": 0.8274,
-      "macro_coupling": 0.8918,
       "macro_movement": 0.3987,
+      "macro_coupling": 0.8918,
       "macro_space": 0.3125
     },
     "Optic": {
       "macro_character": 0.3125,
-      "macro_coupling": 0.9814,
       "macro_movement": 0.2549,
+      "macro_coupling": 0.9814,
       "macro_space": 0.6868
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "OPAL",
+    "target": "OPTIC",
+    "amount": 0.8423
+  },
+  "dna": {
+    "brightness": 0.0912,
+    "warmth": 0.0854,
+    "movement": 0.4319,
+    "density": 0.9678,
+    "space": 0.7446,
+    "aggression": 0.3726
+  },
+  "macros": {
+    "CHARACTER": 0.1301,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.987,
+    "SPACE": 0.5617
+  },
   "tags": [
     "entangled",
     "dense",
@@ -58,10 +47,5 @@
     "xhigh",
     "tectonic",
     "packed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

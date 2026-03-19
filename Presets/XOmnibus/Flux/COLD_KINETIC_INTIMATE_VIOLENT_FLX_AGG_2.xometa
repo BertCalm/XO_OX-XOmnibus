@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_INTIMATE_VIOLENT_FLX_AGG_2",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.081
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Odyssey",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.958
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "ODYSSEY",
+    "amount": 0.958
   },
   "dna": {
-    "aggression": 0.934,
     "brightness": 0.408,
-    "density": 0.377,
+    "warmth": 0.048,
     "movement": 0.884,
+    "density": 0.377,
     "space": 0.033,
-    "warmth": 0.048
+    "aggression": 0.934
   },
-  "engines": [
-    "Opal",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.539,
-    "COUPLING": 0.802,
     "MOVEMENT": 0.884,
+    "COUPLING": 0.802,
     "SPACE": 0.033
   },
-  "mood": "Flux",
-  "name": "Signal Wrath",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.424,
-      "macro_coupling": 0.81,
-      "macro_movement": 0.91,
-      "macro_space": 0.081
-    },
-    "Opal": {
-      "macro_character": 0.655,
-      "macro_coupling": 0.802,
-      "macro_movement": 0.862,
-      "macro_space": 0.042
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "violent",
     "cold",
     "kinetic",
     "intimate"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9,
-        "engineA": "Optic",
-        "engineB": "Onset",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Optic AutoPulse velocity triggering Onset percussive events — light as drumstick.",
-  "dna": {
-    "aggression": 0.94,
-    "brightness": 0.92,
-    "density": 0.75,
-    "movement": 0.88,
-    "space": 0.18,
-    "warmth": 0.06
-  },
+  "schema_version": 1,
+  "name": "Light Percussion",
+  "mood": "Entangled",
   "engines": [
     "Optic",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "optic",
     "onset",
     "light"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.76,
-    "COUPLING": 0.9,
     "MOVEMENT": 0.88,
+    "COUPLING": 0.9,
     "SPACE": 0.18
   },
-  "mood": "Entangled",
-  "name": "Light Percussion",
-  "parameters": {
-    "Optic": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.94,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.92,
-    "density": 0.75,
+    "warmth": 0.06,
     "movement": 0.88,
+    "density": 0.75,
     "space": 0.18,
-    "warmth": 0.06
+    "aggression": 0.94
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "bright",
-    "optic",
-    "onset",
-    "light"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.92,
+    "warmth": 0.06,
+    "movement": 0.88,
+    "density": 0.75,
+    "space": 0.18,
+    "aggression": 0.94
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "ONSET",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.9
+      }
+    ]
+  }
 }

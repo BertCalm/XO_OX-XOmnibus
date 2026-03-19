@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.8896,
-        "source": "Overlap",
-        "target": "Oblong",
-        "type": "RESONANCE_SHARE"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Dark Cold Dense Intimate character entanglement — OVERLAP × OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.3238,
-    "brightness": 0.1087,
-    "density": 0.9663,
-    "movement": 0.371,
-    "space": 0.1155,
-    "warmth": 0.0575
-  },
+  "schema_version": 1,
+  "name": "DARK_COLD_DENSE_INTIMATE_ENT_1",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Oblong"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "KNOT",
-    "FOLD",
-    "WEAVE",
-    "HALL"
-  ],
-  "macros": {
-    "CHARACTER": 0.0831,
-    "COUPLING": 0.8896,
-    "MOVEMENT": 0.371,
-    "SPACE": 0.1155
-  },
-  "mood": "Entangled",
-  "name": "DARK_COLD_DENSE_INTIMATE_ENT_1",
-  "parameters": {
-    "Oblong": {
-      "amp_attack": 0.3148,
-      "amp_release": 0.1945,
-      "coupling_level": 0.6957,
-      "density": 0.9405,
-      "drive": 0.2926,
-      "filter_cutoff": 0.2852,
-      "filter_resonance": 0.2504,
-      "macro_character": 0.341,
-      "macro_coupling": 0.7183,
-      "macro_movement": 0.3876,
-      "macro_space": 0.1467,
-      "output_level": 0.9017,
-      "reverb_mix": 0.2038,
-      "reverb_size": 0.288
-    },
-    "Overlap": {
-      "amp_attack": 0.3085,
-      "amp_release": 0.1562,
-      "coupling_level": 0.6785,
-      "density": 0.9612,
-      "drive": 0.3276,
-      "filter_cutoff": 0.2925,
-      "filter_resonance": 0.2749,
-      "macro_character": 0.3245,
-      "macro_coupling": 0.7025,
-      "macro_movement": 0.3731,
-      "macro_space": 0.0813,
-      "output_level": 0.9527,
-      "reverb_mix": 0.1993,
-      "reverb_size": 0.3074
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3238,
-    "brightness": 0.1087,
-    "density": 0.9663,
-    "movement": 0.371,
-    "space": 0.1155,
-    "warmth": 0.0575
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Dark Cold Dense Intimate character entanglement — OVERLAP × OBLONG via Resonance Share. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "dark",
@@ -95,9 +17,6 @@
     "intimate",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "KNOT",
     "FOLD",
@@ -175,5 +94,4 @@
     "COUPLING": 0.8896,
     "SPACE": 0.1155
   }
->>>>>>> origin/v1-launch-prep
 }

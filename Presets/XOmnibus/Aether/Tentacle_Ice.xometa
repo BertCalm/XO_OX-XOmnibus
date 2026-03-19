@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.06,
-    "brightness": 0.76,
-    "density": 0.18,
-    "movement": 0.4,
-    "space": 0.97,
-    "warmth": 0.06
-  },
+  "name": "Tentacle Ice",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Octopus"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4,
-    "COUPLING": 0.15,
-    "MOVEMENT": 0.4,
-    "SPACE": 0.97
-  },
-  "mood": "Aether",
-  "name": "Tentacle Ice",
   "parameters": {
     "Octopus": {
       "oct_macro_character": 0.4,
-      "oct_macro_coupling": 0.38,
       "oct_macro_movement": 0.45,
+      "oct_macro_coupling": 0.38,
       "oct_macro_space": 0.97
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.06,
+    "movement": 0.4,
+    "density": 0.18,
+    "space": 0.97,
+    "aggression": 0.06
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.15,
+    "SPACE": 0.97
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "tentacle",
     "ice"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

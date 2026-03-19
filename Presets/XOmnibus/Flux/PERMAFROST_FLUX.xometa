@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PERMAFROST FLUX",
   "version": "1.0",
   "mood": "Flux",
@@ -23,68 +20,31 @@
       "macro_space": 0.742
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Osprey",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.721
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERLAP",
+    "target": "OSPREY",
+    "amount": 0.721
   },
   "dna": {
-    "aggression": 0.606,
     "brightness": 0.057,
-    "density": 0.535,
+    "warmth": 0.111,
     "movement": 0.644,
+    "density": 0.535,
     "space": 0.852,
-    "warmth": 0.111
+    "aggression": 0.606
   },
-  "engines": [
-    "Overlap",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.386,
-    "COUPLING": 0.893,
     "MOVEMENT": 0.611,
+    "COUPLING": 0.893,
     "SPACE": 0.736
   },
-  "mood": "Flux",
-  "name": "PERMAFROST FLUX",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.409,
-      "macro_coupling": 0.796,
-      "macro_movement": 0.69,
-      "macro_space": 0.742
-    },
-    "Overlap": {
-      "macro_character": 0.386,
-      "macro_coupling": 0.893,
-      "macro_movement": 0.611,
-      "macro_space": 0.736
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "dark",
     "cold",
     "vast",
     "extreme"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

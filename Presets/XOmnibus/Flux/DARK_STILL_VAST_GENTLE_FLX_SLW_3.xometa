@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_STILL_VAST_GENTLE_FLX_SLW_3",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 1.0
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Ouroboros",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.754
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "OVERDUB",
+    "target": "OUROBOROS",
+    "amount": 0.754
   },
   "dna": {
-    "aggression": 0.025,
     "brightness": 0.083,
-    "density": 0.531,
+    "warmth": 0.478,
     "movement": 0.025,
+    "density": 0.531,
     "space": 0.932,
-    "warmth": 0.478
+    "aggression": 0.025
   },
-  "engines": [
-    "Overdub",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.278,
-    "COUPLING": 0.891,
     "MOVEMENT": 0.025,
+    "COUPLING": 0.891,
     "SPACE": 0.932
   },
-  "mood": "Flux",
-  "name": "Tone Expanse",
-  "parameters": {
-    "Ouroboros": {
-      "macro_character": 0.523,
-      "macro_coupling": 0.805,
-      "macro_movement": 0.02,
-      "macro_space": 1.0
-    },
-    "Overdub": {
-      "macro_character": 0.371,
-      "macro_coupling": 0.701,
-      "macro_movement": 0.027,
-      "macro_space": 0.959
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "vast",
     "gentle",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

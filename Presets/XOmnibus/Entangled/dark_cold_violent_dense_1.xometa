@@ -1,23 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Low",
-  "couplingType": "DRIFT",
-  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for DRIFT coupling with XOddFelix.",
-  "dna": {
-    "aggression": 0.9093,
+  "schema_version": 1,
+  "name": "DARK COLD VIOLENT DENSE 1",
+  "mood": "Entangled",
+  "sonic_dna": {
     "brightness": 0.0848,
+    "warmth": 0.0418,
+    "aggression": 0.9093,
     "density": 0.9056,
     "movement": 0.5473,
-    "space": 0.5353,
-    "warmth": 0.0418
+    "space": 0.5353
+  },
+  "dna": {
+    "brightness": 0.0848,
+    "warmth": 0.0418,
+    "aggression": 0.9093,
+    "density": 0.9056,
+    "movement": 0.5473,
+    "space": 0.5353
   },
   "engines": [
     "OddfeliX"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -27,7 +29,6 @@
     "ultra-diverse",
     "drift",
     "oddfelix"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "FORGE",
@@ -35,32 +36,10 @@
     "IMPACT",
     "MASS"
   ],
-  "mood": "Prism",
-  "name": "DARK COLD VIOLENT DENSE 1",
+  "couplingType": "DRIFT",
+  "couplingIntensity": "Low",
   "parameters": {
     "OddfeliX": {
-<<<<<<< HEAD
-      "couplingBus": 0,
-      "couplingLevel": 0.547
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9093,
-    "brightness": 0.0848,
-    "density": 0.9056,
-    "movement": 0.5473,
-    "space": 0.5353,
-    "warmth": 0.0418
-  },
-  "tags": [
-    "entangled",
-    "ultra-diverse",
-    "drift",
-    "oddfelix"
-  ],
-  "version": "1.0.0"
-=======
       "couplingLevel": 0.547,
       "couplingBus": 0
     }
@@ -68,5 +47,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

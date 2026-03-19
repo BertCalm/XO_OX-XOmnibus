@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK HOT STILL BALANCED AET SPC 3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.509
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oceanic",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.794
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORBITAL",
+    "target": "OCEANIC",
+    "amount": 0.794
   },
   "dna": {
-    "aggression": 0.055,
     "brightness": 0.084,
-    "density": 0.563,
+    "warmth": 0.875,
     "movement": 0.029,
+    "density": 0.563,
     "space": 0.52,
-    "warmth": 0.875
+    "aggression": 0.055
   },
-  "engines": [
-    "Orbital",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.479,
-    "COUPLING": 0.607,
     "MOVEMENT": 0.029,
+    "COUPLING": 0.607,
     "SPACE": 0.52
   },
-  "mood": "Aether",
-  "name": "DARK HOT STILL BALANCED AET...",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.473,
-      "macro_coupling": 0.595,
-      "macro_movement": 0.039,
-      "macro_space": 0.509
-    },
-    "Orbital": {
-      "macro_character": 0.479,
-      "macro_coupling": 0.607,
-      "macro_movement": 0.029,
-      "macro_space": 0.52
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "balanced",
@@ -82,10 +47,5 @@
     "space-mid",
     "gentle",
     "warm"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Rapid room reflections — bright and percussive",
-  "dna": {
-    "aggression": 0.25,
+  "schema_version": 1,
+  "name": "Mirror Bounce",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.87,
-    "density": 0.5,
+    "warmth": 0.3,
+    "aggression": 0.25,
     "movement": 0.75,
-    "space": 0.6,
-    "warmth": 0.3
+    "density": 0.5,
+    "space": 0.6
   },
   "engines": [
     "Oblong"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "BOB",
-    "SNAP",
-    "COUPLING",
-    "ROOM"
-  ],
-  "mood": "Prism",
-  "name": "Mirror Bounce",
-  "parameters": {
-    "Oblong": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.25,
-    "brightness": 0.87,
-    "density": 0.5,
-    "movement": 0.75,
-    "space": 0.6,
-    "warmth": 0.3
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Rapid room reflections — bright and percussive",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "bright",
@@ -50,9 +24,6 @@
     "bounce",
     "percussive"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "BOB",
     "SNAP",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

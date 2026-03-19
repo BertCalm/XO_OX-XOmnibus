@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FLX_SLW_5",
   "version": "1.0",
   "mood": "Flux",
@@ -23,58 +20,26 @@
       "macro_space": 0.834
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Oceanic",
-        "type": "PITCH_SYNC",
-        "amount": 0.702
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORACLE",
+    "target": "OCEANIC",
+    "amount": 0.702
   },
   "dna": {
-    "aggression": 0.356,
     "brightness": 0.912,
-    "density": 0.548,
+    "warmth": 0.935,
     "movement": 0.072,
+    "density": 0.548,
     "space": 0.886,
-    "warmth": 0.935
+    "aggression": 0.356
   },
-  "engines": [
-    "Oracle",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.452,
-    "COUPLING": 0.849,
     "MOVEMENT": 0.072,
+    "COUPLING": 0.849,
     "SPACE": 0.886
   },
-  "mood": "Flux",
-  "name": "Halo Horizon",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.323,
-      "macro_coupling": 0.894,
-      "macro_movement": 0.075,
-      "macro_space": 0.834
-    },
-    "Oracle": {
-      "macro_character": 0.428,
-      "macro_coupling": 0.855,
-      "macro_movement": 0.078,
-      "macro_space": 0.916
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "flux",
     "still",
@@ -82,10 +47,5 @@
     "warm",
     "vast",
     "suspended-chaos"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

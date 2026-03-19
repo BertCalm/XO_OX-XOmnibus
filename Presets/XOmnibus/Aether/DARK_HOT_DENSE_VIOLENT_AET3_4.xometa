@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_HOT_DENSE_VIOLENT_AET3_4",
   "version": "1.0",
   "mood": "Aether",
@@ -23,68 +20,31 @@
       "macro_space": 0.4829
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Ombre",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.8769
-      }
-    ]
+    "type": "TIMBRE_BLEND",
+    "source": "ORBITAL",
+    "target": "OMBRE",
+    "amount": 0.8769
   },
   "dna": {
-    "aggression": 0.9737,
     "brightness": 0.1214,
-    "density": 0.9755,
+    "warmth": 0.931,
     "movement": 0.466,
+    "density": 0.9755,
     "space": 0.5031,
-    "warmth": 0.931
+    "aggression": 0.9737
   },
-  "engines": [
-    "Orbital",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.5262,
-    "COUPLING": 0.8769,
     "MOVEMENT": 0.466,
+    "COUPLING": 0.8769,
     "SPACE": 0.5031
   },
-  "mood": "Aether",
-  "name": "DARK_HOT_DENSE_VIOLENT_AET3_4",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.5633,
-      "macro_coupling": 0.7722,
-      "macro_movement": 0.4493,
-      "macro_space": 0.4829
-    },
-    "Orbital": {
-      "macro_character": 0.6349,
-      "macro_coupling": 0.8489,
-      "macro_movement": 0.695,
-      "macro_space": 0.5349
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "warm",
     "dark",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

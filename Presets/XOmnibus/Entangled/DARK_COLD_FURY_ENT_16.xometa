@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD FURY ENT 16",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,58 +20,26 @@
       "macro_space": 0.33
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Oceanic",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.944
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OUTWIT",
+    "target": "OCEANIC",
+    "amount": 0.944
   },
   "dna": {
-    "aggression": 0.949,
     "brightness": 0.043,
-    "density": 0.698,
+    "warmth": 0.081,
     "movement": 0.422,
+    "density": 0.698,
     "space": 0.347,
-    "warmth": 0.081
+    "aggression": 0.949
   },
-  "engines": [
-    "Outwit",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.062,
-    "COUPLING": 0.703,
     "MOVEMENT": 0.422,
+    "COUPLING": 0.703,
     "SPACE": 0.347
   },
-  "mood": "Entangled",
-  "name": "DARK COLD FURY ENT 16",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.0,
-      "macro_coupling": 0.78,
-      "macro_movement": 0.429,
-      "macro_space": 0.33
-    },
-    "Outwit": {
-      "macro_character": 0.062,
-      "macro_coupling": 0.703,
-      "macro_movement": 0.422,
-      "macro_space": 0.347
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
@@ -82,10 +47,5 @@
     "aggressive",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

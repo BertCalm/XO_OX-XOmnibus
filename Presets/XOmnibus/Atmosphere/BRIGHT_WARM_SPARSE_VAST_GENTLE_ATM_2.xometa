@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Optic",
-        "engineB": "Osprey",
-        "type": "FILTER_MOD",
-        "amount": 0.65
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0574,
-    "brightness": 0.9516,
-    "density": 0.1026,
-    "movement": 0.6539,
-    "space": 0.9622,
-    "warmth": 0.8837
-  },
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_2",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Optic",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9216,
-    "COUPLING": 0.1066,
-    "MOVEMENT": 0.6776,
-    "SPACE": 0.9562
-  },
-  "mood": "Atmosphere",
-  "name": "Solar Abyss",
   "parameters": {
     "Optic": {
       "macro_character": 0.9449,
-      "macro_coupling": 0.0884,
       "macro_movement": 0.6765,
+      "macro_coupling": 0.0884,
       "macro_space": 0.9622
     },
     "Osprey": {
       "macro_character": 0.8984,
-      "macro_coupling": 0.1248,
       "macro_movement": 0.6787,
+      "macro_coupling": 0.1248,
       "macro_space": 0.9501
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OPTIC",
+    "target": "OSPREY",
+    "amount": 0.65
+  },
+  "dna": {
+    "brightness": 0.9516,
+    "warmth": 0.8837,
+    "movement": 0.6539,
+    "density": 0.1026,
+    "space": 0.9622,
+    "aggression": 0.0574
+  },
+  "macros": {
+    "CHARACTER": 0.9216,
+    "MOVEMENT": 0.6776,
+    "COUPLING": 0.1066,
+    "SPACE": 0.9562
+  },
   "tags": [
     "atmosphere",
     "bright",
@@ -58,10 +47,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

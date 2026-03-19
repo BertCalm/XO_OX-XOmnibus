@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Arctic breath tone. Maximum air, minimum body.",
-  "dna": {
-    "aggression": 0.108,
+  "schema_version": 1,
+  "name": "Null Line",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.571,
-    "density": 0.085,
+    "warmth": 0.006,
     "movement": 0.309,
+    "density": 0.085,
     "space": 0.805,
-    "warmth": 0.006
+    "aggression": 0.108
   },
   "engines": [
     "Obscura"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "mood": "Prism",
-  "name": "Null Line",
-  "parameters": {
-    "Obscura": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.108,
-    "brightness": 0.571,
-    "density": 0.085,
-    "movement": 0.309,
-    "space": 0.805,
-    "warmth": 0.006
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Arctic breath tone. Maximum air, minimum body.",
   "tags": [
     "prism",
     "cold",
@@ -44,9 +24,6 @@
     "airy",
     "spacious"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FREEZE",
     "GLINT",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

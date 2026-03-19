@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Osprey",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.197
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.063,
-    "brightness": 0.09,
-    "density": 0.331,
-    "movement": 0.13,
-    "space": 0.99,
-    "warmth": 0.896
-  },
+  "name": "DARK HOT STILL VAST GENTLE ENT2 4",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obsidian",
     "Osprey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.493,
-    "COUPLING": 0.197,
-    "MOVEMENT": 0.13,
-    "SPACE": 0.99
-  },
-  "mood": "Entangled",
-  "name": "DARK HOT STILL VAST GENTLE ...",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.493,
-      "macro_coupling": 0.197,
       "macro_movement": 0.13,
+      "macro_coupling": 0.197,
       "macro_space": 0.99
     },
     "Osprey": {
       "macro_character": 0.518,
-      "macro_coupling": 0.173,
       "macro_movement": 0.2,
+      "macro_coupling": 0.173,
       "macro_space": 0.967
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OBSIDIAN",
+    "target": "OSPREY",
+    "amount": 0.197
+  },
+  "dna": {
+    "brightness": 0.09,
+    "warmth": 0.896,
+    "movement": 0.13,
+    "density": 0.331,
+    "space": 0.99,
+    "aggression": 0.063
+  },
+  "macros": {
+    "CHARACTER": 0.493,
+    "MOVEMENT": 0.13,
+    "COUPLING": 0.197,
+    "SPACE": 0.99
+  },
   "tags": [
     "entangled",
     "dark",
@@ -58,10 +47,5 @@
     "still",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

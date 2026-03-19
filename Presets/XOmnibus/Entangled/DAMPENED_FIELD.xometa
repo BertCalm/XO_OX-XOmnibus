@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DAMPENED FIELD",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.1
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Oblong",
-        "type": "CHAOS_INJECT",
-        "amount": 0.474
-      }
-    ]
+    "type": "CHAOS_INJECT",
+    "source": "OUTWIT",
+    "target": "OBLONG",
+    "amount": 0.474
   },
   "dna": {
-    "aggression": 0.957,
     "brightness": 0.932,
-    "density": 0.623,
+    "warmth": 0.634,
     "movement": 0.083,
+    "density": 0.623,
     "space": 0.622,
-    "warmth": 0.634
+    "aggression": 0.957
   },
-  "engines": [
-    "Outwit",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.311,
-    "COUPLING": 0.085,
     "MOVEMENT": 0.083,
+    "COUPLING": 0.085,
     "SPACE": 0.025
   },
-  "mood": "Entangled",
-  "name": "DAMPENED FIELD",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.116,
-      "macro_coupling": 0.075,
-      "macro_movement": 0.096,
-      "macro_space": 0.1
-    },
-    "Outwit": {
-      "macro_character": 0.79,
-      "macro_coupling": 0.663,
-      "macro_movement": 0.071,
-      "macro_space": 0.675
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "stillness",
     "dampened"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

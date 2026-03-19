@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Orbital",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.236
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.814,
-    "brightness": 0.563,
-    "density": 0.701,
-    "movement": 0.072,
-    "space": 0.318,
-    "warmth": 0.718
-  },
+  "name": "CALMED MEMBRANE",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Orbital"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.863,
-    "COUPLING": 0.902,
-    "MOVEMENT": 0.072,
-    "SPACE": 0.621
-  },
-  "mood": "Entangled",
-  "name": "CALMED MEMBRANE",
   "parameters": {
     "Opal": {
       "macro_character": 0.757,
-      "macro_coupling": 0.193,
       "macro_movement": 0.06,
+      "macro_coupling": 0.193,
       "macro_space": 0.924
     },
     "Orbital": {
       "macro_character": 0.107,
-      "macro_coupling": 0.912,
       "macro_movement": 0.084,
+      "macro_coupling": 0.912,
       "macro_space": 0.012
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ORBITAL",
+    "amount": 0.236
+  },
+  "dna": {
+    "brightness": 0.563,
+    "warmth": 0.718,
+    "movement": 0.072,
+    "density": 0.701,
+    "space": 0.318,
+    "aggression": 0.814
+  },
+  "macros": {
+    "CHARACTER": 0.863,
+    "MOVEMENT": 0.072,
+    "COUPLING": 0.902,
+    "SPACE": 0.621
+  },
   "tags": [
     "entangled",
     "stillness",
     "calmed"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

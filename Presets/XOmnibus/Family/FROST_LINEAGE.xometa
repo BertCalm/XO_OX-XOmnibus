@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Overlap",
-        "type": "FM_COUPLE",
-        "amount": 0.324
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.584,
-    "brightness": 0.969,
-    "density": 0.748,
-    "movement": 0.076,
-    "space": 0.057,
-    "warmth": 0.078
-  },
+  "name": "FROST LINEAGE",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.082,
-    "COUPLING": 0.565,
-    "MOVEMENT": 0.657,
-    "SPACE": 0.316
-  },
-  "mood": "Family",
-  "name": "FROST LINEAGE",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.851,
-      "macro_coupling": 0.068,
       "macro_movement": 0.069,
+      "macro_coupling": 0.068,
       "macro_space": 0.862
     },
     "Overlap": {
       "macro_character": 0.404,
-      "macro_coupling": 0.57,
       "macro_movement": 0.942,
+      "macro_coupling": 0.57,
       "macro_space": 0.579
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FM_COUPLE",
+    "source": "ODDFELIX",
+    "target": "OVERLAP",
+    "amount": 0.324
+  },
+  "dna": {
+    "brightness": 0.969,
+    "warmth": 0.078,
+    "movement": 0.076,
+    "density": 0.748,
+    "space": 0.057,
+    "aggression": 0.584
+  },
+  "macros": {
+    "CHARACTER": 0.082,
+    "MOVEMENT": 0.657,
+    "COUPLING": 0.565,
+    "SPACE": 0.316
+  },
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

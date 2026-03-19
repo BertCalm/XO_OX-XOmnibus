@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OBBLIGATO maximum BOND warmth — dual wind fully entangled in spacious warm air.",
-  "dna": {
-    "aggression": 0.14,
-    "brightness": 0.62,
-    "density": 0.32,
-    "movement": 0.48,
-    "space": 0.83,
-    "warmth": 0.91
-  },
+  "schema_version": 1,
+  "name": "Obbligato Warm Bond",
+  "mood": "Family",
   "engines": [
     "Obbligato"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "BOND",
-    "WIND",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Obbligato Warm Bond",
-  "parameters": {
-    "Obbligato": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OBBLIGATO maximum BOND warmth — dual wind fully entangled in spacious warm air.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "portrait",
@@ -47,10 +16,14 @@
     "spatial",
     "wind"
   ],
+  "macroLabels": [
+    "BOND",
+    "WIND",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -68,5 +41,4 @@
     "space": 0.83,
     "aggression": 0.14
   }
->>>>>>> origin/v1-launch-prep
 }

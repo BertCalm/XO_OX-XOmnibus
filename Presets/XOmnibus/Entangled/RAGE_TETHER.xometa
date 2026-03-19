@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RAGE TETHER",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.247
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Obbligato",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.867
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "ORGANON",
+    "target": "OBBLIGATO",
+    "amount": 0.867
   },
   "dna": {
-    "aggression": 0.952,
     "brightness": 0.556,
-    "density": 0.119,
+    "warmth": 0.092,
     "movement": 0.855,
+    "density": 0.119,
     "space": 0.491,
-    "warmth": 0.092
+    "aggression": 0.952
   },
-  "engines": [
-    "Organon",
-    "Obbligato"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.892,
-    "COUPLING": 0.519,
     "MOVEMENT": 0.866,
+    "COUPLING": 0.519,
     "SPACE": 0.771
   },
-  "mood": "Entangled",
-  "name": "RAGE TETHER",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.382,
-      "macro_coupling": 0.537,
-      "macro_movement": 0.212,
-      "macro_space": 0.247
-    },
-    "Organon": {
-      "macro_character": 0.679,
-      "macro_coupling": 0.469,
-      "macro_movement": 0.692,
-      "macro_space": 0.686
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "fury",
     "brutal",
     "savage",
     "obliterating"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

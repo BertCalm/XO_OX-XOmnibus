@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "category": "Foundation",
-=======
   "schema_version": 1,
   "name": "Frozen Wood",
   "mood": "Foundation",
@@ -11,7 +7,6 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Log drum cracks through frozen air, each hit triggering a distant wolf howl. Dusty crackle and sparse dark canopy. Percussive, stark, primal.",
   "tags": [],
   "macroLabels": [
@@ -23,101 +18,13 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "aggression": 0.35,
     "brightness": 0.4,
-    "density": 0.5,
+    "warmth": 0.25,
     "movement": 0.55,
+    "density": 0.5,
     "space": 0.5,
-    "warmth": 0.25
+    "aggression": 0.35
   },
-<<<<<<< HEAD
-  "engine": "OCELOT",
-  "format": "xometa/1",
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "M1": "PROWL",
-    "M2": "FOLIAGE",
-    "M3": "ECOSYSTEM",
-    "M4": "CANOPY"
-  },
-  "name": "Frozen Wood",
-  "parameters": {
-    "ocelot_ampAttack": 3.0,
-    "ocelot_ampDecay": 200.0,
-    "ocelot_ampRelease": 400.0,
-    "ocelot_ampSustain": 0.7,
-    "ocelot_biome": 2,
-    "ocelot_bitDepth": 13.0,
-    "ocelot_canopy": 0.0,
-    "ocelot_canopyBreathe": 0.2,
-    "ocelot_canopyDetune": 0.15,
-    "ocelot_canopyLevel": 0.35,
-    "ocelot_canopyPartials": 3,
-    "ocelot_canopyPitch": 0.45,
-    "ocelot_canopyShimmer": 0.15,
-    "ocelot_canopySpectralFilter": 0.35,
-    "ocelot_canopyWavefold": 0.15,
-    "ocelot_chopRate": 10,
-    "ocelot_chopSwing": 0.2,
-    "ocelot_couplingBus": 0,
-    "ocelot_couplingLevel": 0.0,
-    "ocelot_creatureAttack": 0.35,
-    "ocelot_creatureDecay": 0.7,
-    "ocelot_creatureLevel": 0.45,
-    "ocelot_creaturePitch": 0.4,
-    "ocelot_creatureRate": 0.3,
-    "ocelot_creatureSpread": 0.5,
-    "ocelot_creatureTrigger": 1,
-    "ocelot_creatureType": 4,
-    "ocelot_delayFeedback": 0.3,
-    "ocelot_delayMix": 0.2,
-    "ocelot_delayTime": 0.35,
-    "ocelot_density": 0.5,
-    "ocelot_dustLevel": 0.5,
-    "ocelot_ecosystem": 0.0,
-    "ocelot_ecosystemDepth": 0.6,
-    "ocelot_floorDamping": 0.6,
-    "ocelot_floorLevel": 0.75,
-    "ocelot_floorModel": 5,
-    "ocelot_floorPattern": 0,
-    "ocelot_floorPitch": 0.5,
-    "ocelot_floorStrike": 0.6,
-    "ocelot_floorTension": 0.55,
-    "ocelot_floorVelocity": 0.85,
-    "ocelot_foliage": 0.0,
-    "ocelot_humidity": 0.15,
-    "ocelot_prowl": 0.0,
-    "ocelot_reverbMix": 0.3,
-    "ocelot_reverbSize": 0.55,
-    "ocelot_sampleRate": 33000.0,
-    "ocelot_strataBalance": 0.35,
-    "ocelot_swing": 0.05,
-    "ocelot_tapeAge": 0.3,
-    "ocelot_tapeWobble": 0.15,
-    "ocelot_understoryLevel": 0.55,
-    "ocelot_understorySrc": 0.0,
-    "ocelot_xf_canopyEmerg": 0.0,
-    "ocelot_xf_canopyFloor": 0.0,
-    "ocelot_xf_canopyUnder": 0.0,
-    "ocelot_xf_emergCanopy": 0.0,
-    "ocelot_xf_emergFloor": 0.4,
-    "ocelot_xf_emergUnder": 0.0,
-    "ocelot_xf_floorCanopy": 0.0,
-    "ocelot_xf_floorEmerg": 0.8,
-    "ocelot_xf_floorUnder": 0.0,
-    "ocelot_xf_underCanopy": 0.0,
-    "ocelot_xf_underEmerg": 0.0,
-    "ocelot_xf_underFloor": 0.0
-  },
-  "schema_version": 1,
-  "mood": "Foundation",
-  "tags": []
-=======
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -197,5 +104,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "ORCA POD macro active — echolocation and song. The apex predator communicating across kilometers of dark water.",
-  "dna": {
-    "aggression": 0.55,
-    "brightness": 0.38,
-    "density": 0.72,
-    "movement": 0.68,
-    "space": 0.82,
-    "warmth": 0.45
-  },
+  "schema_version": 1,
+  "name": "Orca Pod Signal",
+  "mood": "Family",
   "engines": [
     "Orca"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "HUNT",
-    "POD",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Orca Pod Signal",
-  "parameters": {
-    "Orca": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "ORCA POD macro active — echolocation and song. The apex predator communicating across kilometers of dark water.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "deep",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "HUNT",
+    "POD",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.82,
     "aggression": 0.55
   }
->>>>>>> origin/v1-launch-prep
 }

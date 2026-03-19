@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_COLD_DENSE_INTIMATE_FAM_VOL_36",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.062
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Organon",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.546
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.546
   },
   "dna": {
-    "aggression": 0.494,
     "brightness": 0.884,
-    "density": 0.979,
+    "warmth": 0.12,
     "movement": 0.339,
+    "density": 0.979,
     "space": 0.059,
-    "warmth": 0.12
+    "aggression": 0.494
   },
-  "engines": [
-    "Ottoni",
-    "Organon"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.501,
-    "COUPLING": 0.742,
     "MOVEMENT": 0.336,
+    "COUPLING": 0.742,
     "SPACE": 0.074
   },
-  "mood": "Family",
-  "name": "Arctic Dense",
-  "parameters": {
-    "Organon": {
-      "macro_character": 0.478,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.31,
-      "macro_space": 0.062
-    },
-    "Ottoni": {
-      "macro_character": 0.524,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.362,
-      "macro_space": 0.085
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "bright",
     "dense",
     "intimate",
     "cool"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Origami",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.484
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "DARK_STILL_DENSE_VAST_GENTLE_PRS_2",
   "mood": "Prism",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: DARK_STILL_DENSE_VAST_GENTLE. Variant 2.",
-  "dna": {
-    "aggression": 0.027,
-    "brightness": 0.03,
-    "density": 0.908,
-    "movement": 0.113,
-    "space": 0.912,
-    "warmth": 0.573
-  },
-  "engines": [
-    "Oblique",
-    "Origami"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.091,
-    "COUPLING": 0.953,
-    "MOVEMENT": 0.083,
-    "SPACE": 0.861
-  },
-  "mood": "Prism",
-  "name": "Flux Dome",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.088,
-      "macro_coupling": 0.906,
-      "macro_movement": 0.06,
-      "macro_space": 0.884
-    },
-    "Origami": {
-      "macro_character": 0.094,
-      "macro_coupling": 1.0,
-      "macro_movement": 0.106,
-      "macro_space": 0.838
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "dark",
@@ -82,10 +19,14 @@
     "still",
     "dense"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Medium",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.953,
     "SPACE": 0.861
   }
->>>>>>> origin/v1-launch-prep
 }

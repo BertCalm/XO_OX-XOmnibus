@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WRATHFUL STAR FURY",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.655
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Organon",
-        "engineB": "Ombre",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.752
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "ORGANON",
+    "target": "OMBRE",
+    "amount": 0.752
   },
   "dna": {
-    "aggression": 0.948,
     "brightness": 0.639,
-    "density": 0.057,
+    "warmth": 0.791,
     "movement": 0.435,
+    "density": 0.057,
     "space": 0.671,
-    "warmth": 0.791
+    "aggression": 0.948
   },
-  "engines": [
-    "Organon",
-    "Ombre"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.362,
-    "COUPLING": 0.949,
     "MOVEMENT": 0.435,
+    "COUPLING": 0.949,
     "SPACE": 0.671
   },
-  "mood": "Aether",
-  "name": "WRATHFUL STAR FURY",
-  "parameters": {
-    "Ombre": {
-      "macro_character": 0.678,
-      "macro_coupling": 0.126,
-      "macro_movement": 0.429,
-      "macro_space": 0.655
-    },
-    "Organon": {
-      "macro_character": 0.75,
-      "macro_coupling": 0.031,
-      "macro_movement": 0.401,
-      "macro_space": 0.692
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

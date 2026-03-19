@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Umber Passage",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OCEANIC in void register.",
-  "dna": {
-    "aggression": 0.174,
-    "brightness": 0.074,
-    "density": 0.374,
-    "movement": 0.367,
-    "space": 0.749,
-    "warmth": 0.386
-  },
-  "engines": [
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "TIDE",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.309,
-    "DEPTH": 0.413,
-    "SPACE": 0.836,
-    "TIDE": 0.179
-  },
-  "mood": "Atmosphere",
-  "name": "Umber Passage",
-  "parameters": {
-    "Oceanic": {
-      "coupling": 0.309,
-      "depth": 0.413,
-      "space": 0.836,
-      "tide": 0.179
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "TIDE",
     "DEPTH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

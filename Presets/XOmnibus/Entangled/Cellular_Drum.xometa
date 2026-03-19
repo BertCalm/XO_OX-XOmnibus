@@ -1,30 +1,10 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.9,
-        "engineA": "Outwit",
-        "engineB": "Onset",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "description": "Outwit CA chaos injected into Onset percussive triggers — alien cellular intelligence as drum computer.",
-  "dna": {
-    "aggression": 0.95,
-    "brightness": 0.55,
-    "density": 0.72,
-    "movement": 0.95,
-    "space": 0.16,
-    "warmth": 0.18
-  },
+  "schema_version": 1,
+  "name": "Cellular Drum",
+  "mood": "Entangled",
   "engines": [
     "Outwit",
     "Onset"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -36,7 +16,6 @@
     "outwit",
     "onset",
     "cellular"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -46,32 +25,36 @@
   ],
   "macros": {
     "CHARACTER": 0.78,
-    "COUPLING": 0.9,
     "MOVEMENT": 0.95,
+    "COUPLING": 0.9,
     "SPACE": 0.16
   },
-  "mood": "Entangled",
-  "name": "Cellular Drum",
-  "parameters": {
-    "Outwit": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.95,
+  "couplingIntensity": "High",
+  "dna": {
     "brightness": 0.55,
-    "density": 0.72,
+    "warmth": 0.18,
     "movement": 0.95,
+    "density": 0.72,
     "space": 0.16,
-    "warmth": 0.18
+    "aggression": 0.95
   },
-  "tags": [
-    "entangled",
-    "brutal",
-    "movement",
-    "outwit",
-    "onset",
-    "cellular"
-  ],
-  "version": "1.0.0"
+  "sonic_dna": {
+    "brightness": 0.55,
+    "warmth": 0.18,
+    "movement": 0.95,
+    "density": 0.72,
+    "space": 0.16,
+    "aggression": 0.95
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "ONSET",
+        "type": "CHAOS_INJECT",
+        "amount": 0.9
+      }
+    ]
+  }
 }

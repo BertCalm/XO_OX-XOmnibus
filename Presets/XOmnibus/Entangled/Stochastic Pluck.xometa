@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.6,
-        "engineA": "Oracle",
-        "engineB": "Orphica",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "GENDY chaos injected into ORPHICA pluck — stochastic microsound.",
-  "dna": {
-    "aggression": 0.1,
-    "brightness": 0.82,
-    "density": 0.4,
-    "movement": 0.62,
-    "space": 0.78,
-    "warmth": 0.4
-  },
-  "engines": [
-    "Oracle",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.595,
-    "COUPLING": 0.6,
-    "MOVEMENT": 0.59,
-    "SPACE": 0.7
-  },
-  "mood": "Entangled",
-  "name": "Stochastic Pluck",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.54,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.68,
-      "macro_space": 0.62
-    },
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.6,
-      "macro_movement": 0.5,
-      "macro_space": 0.78
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Stochastic Pluck",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "GENDY chaos injected into ORPHICA pluck — stochastic microsound.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "pluck",
     "chaos"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.82,
     "warmth": 0.4,
@@ -118,5 +64,4 @@
     "SPACE": 0.7
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

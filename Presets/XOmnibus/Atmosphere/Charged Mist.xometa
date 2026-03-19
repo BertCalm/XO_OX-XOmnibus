@@ -1,38 +1,25 @@
 {
-  "author": "XO_OX Designs",
-  "description": "Charged atmosphere before a plasma storm. Everything bright, nothing warm.",
+  "name": "Charged Mist",
+  "version": "1.0",
   "engines": [
     "Onset"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Atmosphere",
   "macros": {
     "CHARACTER": 0.579,
-    "COUPLING": 0.0,
     "MOVEMENT": 0.656,
+    "COUPLING": 0.0,
     "SPACE": 0.596
   },
-  "mood": "Atmosphere",
-  "name": "Charged Mist",
-  "parameters": {
-    "Onset": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.173,
     "brightness": 0.987,
-    "density": 0.482,
+    "warmth": 0.17,
     "movement": 0.656,
+    "density": 0.482,
     "space": 0.596,
-    "warmth": 0.17
+    "aggression": 0.173
   },
+  "parameters": {},
   "tags": [
     "atmosphere",
     "pad",
@@ -40,13 +27,5 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.4,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.3,
-    "space": 0.7,
-    "aggression": 0.2
-  }
+  "description": "Charged atmosphere before a plasma storm. Everything bright, nothing warm."
 }

@@ -1,49 +1,31 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oceanic",
-        "type": "TIDAL_MODULATION",
-        "amount": 0.65
-      }
-    ]
-  },
-  "description": "Granular particles swept on oceanic current — opal cloud dispersed by tidal pressure",
+  "name": "Tidal Grain",
+  "version": "1.0",
   "engines": [
     "Opal",
     "Oceanic"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
   "macros": {
     "CHARACTER": 0.45,
-    "COUPLING": 0.65,
     "MOVEMENT": 0.7,
+    "COUPLING": 0.65,
     "SPACE": 0.7
   },
-  "mood": "Entangled",
-  "name": "Tidal Grain",
-  "parameters": {
-    "Opal": {},
-    "Oceanic": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.28,
     "brightness": 0.52,
-    "density": 0.54,
+    "warmth": 0.53,
     "movement": 0.66,
+    "density": 0.54,
     "space": 0.7,
-    "warmth": 0.53
+    "aggression": 0.28
+  },
+  "parameters": {},
+  "coupling": {
+    "type": "TIDAL_MODULATION",
+    "source": "OPAL",
+    "target": "OCEANIC",
+    "amount": 0.65
   },
   "tags": [
     "entangled",
@@ -53,17 +35,5 @@
     "oceanic",
     "granular"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Granular particles swept on oceanic current — opal cloud dispersed by tidal pressure"
->>>>>>> origin/v1-launch-prep
 }

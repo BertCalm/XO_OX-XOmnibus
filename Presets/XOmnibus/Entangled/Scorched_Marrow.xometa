@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Scorched Marrow",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.45
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Oblong",
-        "type": "RHYTHM_LOCK",
-        "amount": 0.76
-      }
-    ]
+    "type": "RHYTHM_LOCK",
+    "source": "OVERDUB",
+    "target": "OBLONG",
+    "amount": 0.76
   },
   "dna": {
-    "aggression": 0.44,
     "brightness": 0.54,
-    "density": 0.79,
+    "warmth": 0.88,
     "movement": 0.33,
+    "density": 0.79,
     "space": 0.52,
-    "warmth": 0.88
+    "aggression": 0.44
   },
-  "engines": [
-    "Overdub",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.68,
-    "COUPLING": 0.71,
     "MOVEMENT": 0.29,
+    "COUPLING": 0.71,
     "SPACE": 0.5
   },
-  "mood": "Entangled",
-  "name": "Scorched Marrow",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.36,
-      "macro_space": 0.45
-    },
-    "Overdub": {
-      "macro_character": 0.64,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.23,
-      "macro_space": 0.55
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "warm",
     "scorching",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

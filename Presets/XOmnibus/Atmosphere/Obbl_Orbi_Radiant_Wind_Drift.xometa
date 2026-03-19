@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 9.xometa
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obbligato",
-        "engineB": "Orbital",
-        "type": "PHASE_LOCK",
-        "amount": 0.81
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "Radiant Wind Drift",
   "mood": "Atmosphere",
@@ -23,49 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Obbl_Orbi_Radiant_Wind_Drift.xometa
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
-  "dna": {
-    "aggression": 0.049,
-    "brightness": 0.955,
-    "density": 0.519,
-    "movement": 0.058,
-    "space": 0.937,
-    "warmth": 0.952
-  },
-  "engines": [
-    "Obbligato",
-    "Orbital"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Atmosphere",
-  "name": "5X DARK COLD KINETIC DENSE ...",
-  "parameters": {
-    "Obbligato": {
-      "macro_character": 0.92,
-      "macro_coupling": 0.52,
-      "macro_movement": 0.92,
-      "macro_space": 0.31
-    },
-    "Orbital": {
-      "macro_character": 0.67,
-      "macro_coupling": 0.84,
-      "macro_movement": 0.93,
-      "macro_space": 0.3
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "extreme",
     "diversity",
@@ -74,10 +17,14 @@
     "dense",
     "atmosphere"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD:Presets/XOmnibus/Atmosphere/5X DARK COLD KINETIC DENSE VIOLENT ATM 9.xometa
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -113,5 +60,4 @@
     "space": 0.937,
     "aggression": 0.049
   }
->>>>>>> origin/v1-launch-prep:Presets/XOmnibus/Atmosphere/Obbl_Orbi_Radiant_Wind_Drift.xometa
 }

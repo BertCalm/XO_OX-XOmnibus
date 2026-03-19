@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Refracted spectrum: one cold sine per octave, wide open.",
-  "dna": {
-    "aggression": 0.14,
+  "schema_version": 1,
+  "name": "Sparse Edge Dark",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.851,
-    "density": 0.063,
+    "warmth": 0.043,
     "movement": 0.348,
+    "density": 0.063,
     "space": 0.765,
-    "warmth": 0.043
+    "aggression": 0.14
   },
   "engines": [
     "Origami"
   ],
-  "macroLabels": [
-    "FREEZE",
-    "GLINT",
-    "COUPLING",
-    "VOID"
-  ],
-  "mood": "Prism",
-  "name": "Sparse Edge Dark",
-  "parameters": {
-    "Origami": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.14,
-    "brightness": 0.851,
-    "density": 0.063,
-    "movement": 0.348,
-    "space": 0.765,
-    "warmth": 0.043
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Refracted spectrum: one cold sine per octave, wide open.",
   "tags": [
     "prism",
     "cold",
@@ -45,9 +25,6 @@
     "spacious",
     "bright"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "FREEZE",
     "GLINT",
@@ -67,5 +44,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Frozen millisecond — cold attack, instant decay, vast tail.",
-  "dna": {
-    "aggression": 0.148,
+  "schema_version": 1,
+  "name": "Prism Edge I",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.63,
-    "density": 0.107,
+    "warmth": 0.13,
     "movement": 0.168,
+    "density": 0.107,
     "space": 0.881,
-    "warmth": 0.13
+    "aggression": 0.148
   },
   "engines": [
     "Onset"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CRYSTAL",
-    "BREATH",
-    "COUPLING",
-    "OPEN"
-  ],
-  "mood": "Prism",
-  "name": "Prism Edge I",
-  "parameters": {
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.148,
-    "brightness": 0.63,
-    "density": 0.107,
-    "movement": 0.168,
-    "space": 0.881,
-    "warmth": 0.13
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Frozen millisecond — cold attack, instant decay, vast tail.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "prism",
     "cold",
@@ -50,9 +24,6 @@
     "airy",
     "spacious"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CRYSTAL",
     "BREATH",
@@ -72,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

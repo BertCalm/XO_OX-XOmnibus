@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Odyssey",
-        "type": "FILTER_MOD",
-        "amount": 0.855
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.921,
-    "brightness": 0.311,
-    "density": 0.408,
-    "movement": 0.9,
-    "space": 0.225,
-    "warmth": 0.014
-  },
+  "name": "KINETIC CORE 38",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Oblique",
     "Odyssey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.113,
-    "COUPLING": 0.947,
-    "MOVEMENT": 0.9,
-    "SPACE": 0.648
-  },
-  "mood": "Entangled",
-  "name": "KINETIC CORE 38",
   "parameters": {
     "Oblique": {
       "macro_character": 0.288,
-      "macro_coupling": 0.881,
       "macro_movement": 0.907,
+      "macro_coupling": 0.881,
       "macro_space": 0.485
     },
     "Odyssey": {
       "macro_character": 0.029,
-      "macro_coupling": 0.63,
       "macro_movement": 0.893,
+      "macro_coupling": 0.63,
       "macro_space": 0.799
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "OBLIQUE",
+    "target": "ODYSSEY",
+    "amount": 0.855
+  },
+  "dna": {
+    "brightness": 0.311,
+    "warmth": 0.014,
+    "movement": 0.9,
+    "density": 0.408,
+    "space": 0.225,
+    "aggression": 0.921
+  },
+  "macros": {
+    "CHARACTER": 0.113,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.947,
+    "SPACE": 0.648
+  },
   "tags": [
     "entangled",
     "chaotic",
     "high-energy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

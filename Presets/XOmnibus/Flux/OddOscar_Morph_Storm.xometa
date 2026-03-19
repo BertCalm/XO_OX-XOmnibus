@@ -1,55 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Morph cycling 0 to 1 and back in rapid storm pattern — morph_morph sits at 0.5 with high LFO depth riding the full range. Brightness shifts dramatically as the axolotl transforms and reverts. Turbulent, unstable, vivid.",
-  "dna": {
-    "aggression": 0.55,
-    "brightness": 0.6,
-    "density": 0.7,
-    "movement": 0.85,
-    "space": 0.4,
-    "warmth": 0.45
-  },
-  "engines": [
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Flux",
-  "name": "OddOscar Morph Storm",
-  "parameters": {
-    "OddOscar": {
-      "morph_envAttack": 0.008,
-      "morph_envDecay": 0.2,
-      "morph_envRelease": 0.3,
-      "morph_envSustain": 0.5,
-      "morph_filterCutoff": 2000,
-      "morph_filterRes": 0.5,
-      "morph_morph": 0.5
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-  "tags": [
-    "flux",
-    "oddoscar",
-    "morph",
-    "rapid",
-    "cycling",
-    "movement",
-    "storm"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "schema_version": 1,
   "name": "Morph Storm",
   "mood": "Flux",
@@ -67,5 +16,4 @@
   },
   "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.38},
   "coupling": {"pairs": []}
->>>>>>> origin/v1-launch-prep
 }

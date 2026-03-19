@@ -289,14 +289,6 @@ public:
         const float macroCoupling  = (pMacroCoupling != nullptr) ? pMacroCoupling->load() : 0.5f;
         const float macroSpace     = (pMacroSpace != nullptr) ? pMacroSpace->load() : 0.5f;
 
-        // D002: Macro reads — centered at 0.5, bipolar offset is (value - 0.5)
-        const float macroChar  = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.5f;
-        const float macroMove  = (pMacroMovement != nullptr)  ? pMacroMovement->load()  : 0.5f;
-        const float macroCoup  = (pMacroCoupling != nullptr)  ? pMacroCoupling->load()  : 0.5f;
-        const float macroSpace = (pMacroSpace != nullptr)     ? pMacroSpace->load()     : 0.5f;
-        // macroCoup: scales coupling receive gain | macroSpace: expands ghost stereo field
-        // (applied below in memory feed and stereo spread sections)
-
         // --- Process MIDI events ---
         for (const auto metadata : midi)
         {
@@ -312,10 +304,6 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
-<<<<<<< HEAD
-            else if (msg.isChannelPressure())
-                aftertouch_ = msg.getChannelPressureValue() / 127.0f; // D006: deepens interference haunting
-=======
             else if (msg.isAftertouch() || msg.isChannelPressure())
             {
                 // Aftertouch modulates blend toward Opsis (timbral brightening)
@@ -352,7 +340,6 @@ public:
             if (lfo2Phase > 1.0f) lfo2Phase -= 1.0f;
             lfo2Value = fastSin (lfo2Phase * 6.2831853f)
                         * lfo2Depth * macroMovement;
->>>>>>> origin/v1-launch-prep
         }
 
         // Mod wheel: sweeps blend toward pure Opsis (perception) at full throw.
@@ -372,9 +359,6 @@ public:
 
         // LFO1 modulates blend (scaled by MOVEMENT macro via lfo1Value which already includes it)
         const float effectiveBlend = clamp (blendBeforeLfo + lfo1Value * 0.5f, 0.0f, 1.0f);
-
-        // Aftertouch: deepens Oubli haunting — pressure deepens memory interference. (D006)
-        const float effectiveInterference = clamp (interference + aftertouch_ * (1.0f - interference), 0.0f, 1.0f);
 
         // Consume coupling accumulators
         float pitchMod = externalPitchMod;
@@ -404,26 +388,12 @@ public:
             case 3: waveform = PolyBLEP::Waveform::Triangle; break;
         }
 
-<<<<<<< HEAD
-        // D005: breathing LFO — modulates filter cutoff
-        const float lfoRate  = (pLfoRate != nullptr) ? pLfoRate->load() : 0.08f;
-        const float lfoDepth = (pLfoDepth != nullptr) ? pLfoDepth->load() : 0.15f;
-        lfoPhase_ += lfoRate * static_cast<float> (numSamples) / srf;
-        if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
-        float lfoVal = std::sin (lfoPhase_ * 6.28318530f) * lfoDepth;
-
-        // Effective filter cutoff with coupling modulation
-        // D002: CHARACTER macro offsets filter cutoff (±4000 Hz from center)
-        // D005: LFO modulates cutoff (±2000 Hz at full depth)
-        float effectiveCutoff = clamp (cutoff + filterMod + (macroChar - 0.5f) * 8000.0f + lfoVal * 2000.0f, 20.0f, 20000.0f);
-=======
         // Effective filter cutoff with:
         //   - coupling modulation
         //   - LFO2 breathing (D005)
         //   - COUPLING macro scales cross-engine send amount (applied at coupling receive)
         float lfo2CutoffMod = lfo2Value * 3000.0f;  // LFO2 sweeps ±3kHz * depth * movement
         float effectiveCutoff = clamp (cutoff + filterMod + lfo2CutoffMod, 20.0f, 20000.0f);
->>>>>>> origin/v1-launch-prep
 
         // Hoist filter coefficient updates outside sample loop
         for (auto& voice : voices)
@@ -544,25 +514,17 @@ public:
                 // ============================================================
                 float oubliOut = 0.0f;
                 {
-                    // Feed Opsis output into memory (modulated by aftertouch-deepened interference)
-                    float feedSample = opsisOut * effectiveInterference;
+                    // Feed Opsis output into memory (modulated by interference)
+                    float feedSample = opsisOut * interference;
 
-<<<<<<< HEAD
-                    // Also feed external coupling audio into memory.
-                    // COUPLING macro scales receive gain — more coupling = more porous to incoming signals.
-                    feedSample += memFeed * (0.3f + (macroCoup - 0.5f) * 0.4f);
-=======
                     // Also feed external coupling audio into memory
                     // COUPLING macro scales the cross-engine feed amount
                     feedSample += memFeed * 0.3f * (0.5f + macroCoupling * 0.5f);
->>>>>>> origin/v1-launch-prep
 
                     voice.memory.writeSample (feedSample);
 
                     // Read back granular reconstruction from fading memory
-                    // D002: MOVEMENT macro increases memory drift (more modulation)
-                    float effectiveMemDrift = std::max (0.0f, std::min (1.0f, memDrift + (macroMove - 0.5f) * 0.6f));
-                    oubliOut = voice.memory.readGrains (memGrain, effectiveMemDrift, srf, decayRate);
+                    oubliOut = voice.memory.readGrains (memGrain, memDrift, srf, decayRate);
                 }
 
                 // ============================================================
@@ -571,9 +533,9 @@ public:
 
                 // Interference: Oubli output modulates Opsis pitch slightly
                 // (memories haunt the present)
-                if (effectiveInterference > 0.01f)
+                if (interference > 0.01f)
                 {
-                    float hauntMod = oubliOut * effectiveInterference * 0.02f;
+                    float hauntMod = oubliOut * interference * 0.02f;
                     float hauntedFreq = freq * (1.0f + hauntMod);
                     if (hauntedFreq > 1.0f)
                         voice.oscPrimary.setFrequency (hauntedFreq, srf);
@@ -589,9 +551,8 @@ public:
                 // Apply envelope and velocity
                 float out = filtered * voice.envLevel * voice.velocity * stealFade;
 
-                // Stereo spread — Oubli wider, Opsis centered.
-                // SPACE macro expands the ghost stereo field (up to +0.5 additional width).
-                float stereoWidth = (1.0f - effectiveBlend) * (0.3f + macroSpace * 0.5f);
+                // Stereo spread — Oubli wider, Opsis centered
+                float stereoWidth = (1.0f - effectiveBlend) * 0.3f;
                 float panMod = oubliOut * stereoWidth;
                 float outL = out * (1.0f - panMod * 0.5f);
                 float outR = out * (1.0f + panMod * 0.5f);
@@ -761,29 +722,6 @@ public:
             juce::ParameterID { "ombre_level", 1 }, "Ombre Level",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
 
-<<<<<<< HEAD
-        // D005: breathing LFO for autonomous modulation
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_lfoRate", 1 }, "Ombre LFO Rate",
-            juce::NormalisableRange<float> (0.005f, 10.0f, 0.001f, 0.3f), 0.08f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_lfoDepth", 1 }, "Ombre LFO Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
-
-        // D002: 4 macros
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_macroCharacter", 1 }, "CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_macroMovement", 1 }, "MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_macroCoupling", 1 }, "COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "ombre_macroSpace", 1 }, "SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-=======
         // --- D001: Velocity → filter cutoff scale ---
         // Controls how much note velocity opens the filter (0 = vel has no cutoff effect).
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
@@ -831,31 +769,11 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ombre_macroSpace", 1 }, "Ombre Space",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
->>>>>>> origin/v1-launch-prep
     }
 
 public:
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
-<<<<<<< HEAD
-        pBlend        = apvts.getRawParameterValue ("ombre_blend");
-        pInterference = apvts.getRawParameterValue ("ombre_interference");
-        pMemoryDecay  = apvts.getRawParameterValue ("ombre_memoryDecay");
-        pMemoryGrain  = apvts.getRawParameterValue ("ombre_memoryGrain");
-        pMemoryDrift  = apvts.getRawParameterValue ("ombre_memoryDrift");
-        pOscShape     = apvts.getRawParameterValue ("ombre_oscShape");
-        pReactivity   = apvts.getRawParameterValue ("ombre_reactivity");
-        pSubLevel     = apvts.getRawParameterValue ("ombre_subLevel");
-        pFilterCutoff = apvts.getRawParameterValue ("ombre_filterCutoff");
-        pFilterReso   = apvts.getRawParameterValue ("ombre_filterReso");
-        pAttack       = apvts.getRawParameterValue ("ombre_attack");
-        pDecay        = apvts.getRawParameterValue ("ombre_decay");
-        pSustain      = apvts.getRawParameterValue ("ombre_sustain");
-        pRelease      = apvts.getRawParameterValue ("ombre_release");
-        pLevel        = apvts.getRawParameterValue ("ombre_level");
-        pLfoRate      = apvts.getRawParameterValue ("ombre_lfoRate");
-        pLfoDepth     = apvts.getRawParameterValue ("ombre_lfoDepth");
-=======
         pBlend          = apvts.getRawParameterValue ("ombre_blend");
         pInterference   = apvts.getRawParameterValue ("ombre_interference");
         pMemoryDecay    = apvts.getRawParameterValue ("ombre_memoryDecay");
@@ -876,7 +794,6 @@ public:
         pLfo1Depth      = apvts.getRawParameterValue ("ombre_lfo1Depth");
         pLfo2Rate       = apvts.getRawParameterValue ("ombre_lfo2Rate");
         pLfo2Depth      = apvts.getRawParameterValue ("ombre_lfo2Depth");
->>>>>>> origin/v1-launch-prep
         pMacroCharacter = apvts.getRawParameterValue ("ombre_macroCharacter");
         pMacroMovement  = apvts.getRawParameterValue ("ombre_macroMovement");
         pMacroCoupling  = apvts.getRawParameterValue ("ombre_macroCoupling");
@@ -972,14 +889,8 @@ private:
     std::array<OmbreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 
-    // D005: breathing LFO state
-    float lfoPhase_ = 0.0f;
-
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — sweeps blend toward Opsis (D006)
-<<<<<<< HEAD
-    float aftertouch_     = 0.0f;   // channel pressure — deepens Oubli interference haunting (D006)
-=======
     float aftertouchAmount_ = 0.0f; // Channel pressure / poly AT — also sweeps toward Opsis (D006)
 
     // LFO state — control-rate (every 64 samples)
@@ -988,7 +899,6 @@ private:
     int   lfoControlCounter = 0;    // counts samples since last LFO update
     float lfo1Value = 0.0f;         // latest computed LFO1 output (bipolar, already depth-scaled)
     float lfo2Value = 0.0f;         // latest computed LFO2 output (bipolar, already depth-scaled)
->>>>>>> origin/v1-launch-prep
 
     // Coupling state
     float envelopeOutput = 0.0f;
@@ -1001,26 +911,6 @@ private:
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-<<<<<<< HEAD
-    // Cached APVTS parameter pointers
-    std::atomic<float>* pBlend = nullptr;
-    std::atomic<float>* pInterference = nullptr;
-    std::atomic<float>* pMemoryDecay = nullptr;
-    std::atomic<float>* pMemoryGrain = nullptr;
-    std::atomic<float>* pMemoryDrift = nullptr;
-    std::atomic<float>* pOscShape = nullptr;
-    std::atomic<float>* pReactivity = nullptr;
-    std::atomic<float>* pSubLevel = nullptr;
-    std::atomic<float>* pFilterCutoff = nullptr;
-    std::atomic<float>* pFilterReso = nullptr;
-    std::atomic<float>* pAttack = nullptr;
-    std::atomic<float>* pDecay = nullptr;
-    std::atomic<float>* pSustain = nullptr;
-    std::atomic<float>* pRelease = nullptr;
-    std::atomic<float>* pLevel = nullptr;
-    std::atomic<float>* pLfoRate = nullptr;
-    std::atomic<float>* pLfoDepth = nullptr;
-=======
     // Cached APVTS parameter pointers (15 original + 1 velCutoffScale + 4 LFO + 4 macro = 24 total)
     std::atomic<float>* pBlend          = nullptr;
     std::atomic<float>* pInterference   = nullptr;
@@ -1042,7 +932,6 @@ private:
     std::atomic<float>* pLfo1Depth      = nullptr;
     std::atomic<float>* pLfo2Rate       = nullptr;
     std::atomic<float>* pLfo2Depth      = nullptr;
->>>>>>> origin/v1-launch-prep
     std::atomic<float>* pMacroCharacter = nullptr;
     std::atomic<float>* pMacroMovement  = nullptr;
     std::atomic<float>* pMacroCoupling  = nullptr;

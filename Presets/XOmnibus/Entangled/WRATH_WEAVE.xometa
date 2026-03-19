@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WRATH WEAVE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.129
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Onset",
-        "engineB": "OddfeliX",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.926
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ONSET",
+    "target": "ODDFELIX",
+    "amount": 0.926
   },
   "dna": {
-    "aggression": 0.902,
     "brightness": 0.869,
-    "density": 0.075,
+    "warmth": 0.342,
     "movement": 0.302,
+    "density": 0.075,
     "space": 0.402,
-    "warmth": 0.342
+    "aggression": 0.902
   },
-  "engines": [
-    "Onset",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.661,
-    "COUPLING": 0.575,
     "MOVEMENT": 0.75,
+    "COUPLING": 0.575,
     "SPACE": 0.832
   },
-  "mood": "Entangled",
-  "name": "WRATH WEAVE",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.839,
-      "macro_coupling": 0.435,
-      "macro_movement": 0.796,
-      "macro_space": 0.129
-    },
-    "Onset": {
-      "macro_character": 0.459,
-      "macro_coupling": 0.566,
-      "macro_movement": 0.578,
-      "macro_space": 0.527
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "chaos",
     "obliterating",
     "savage",
     "aggressive"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

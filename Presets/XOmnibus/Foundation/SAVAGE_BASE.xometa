@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oceanic",
-        "engineB": "Orca",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.615
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.897,
-    "brightness": 0.708,
-    "density": 0.049,
-    "movement": 0.534,
-    "space": 0.367,
-    "warmth": 0.41
-  },
+  "name": "SAVAGE BASE",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oceanic",
     "Orca"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.314,
-    "COUPLING": 0.615,
-    "MOVEMENT": 0.534,
-    "SPACE": 0.367
-  },
-  "mood": "Foundation",
-  "name": "SAVAGE BASE",
   "parameters": {
     "Oceanic": {
       "macro_character": 0.58,
-      "macro_coupling": 0.611,
       "macro_movement": 0.607,
+      "macro_coupling": 0.611,
       "macro_space": 0.537
     },
     "Orca": {
       "macro_character": 0.578,
-      "macro_coupling": 0.629,
       "macro_movement": 0.544,
+      "macro_coupling": 0.629,
       "macro_space": 0.547
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "OCEANIC",
+    "target": "ORCA",
+    "amount": 0.615
+  },
+  "dna": {
+    "brightness": 0.708,
+    "warmth": 0.41,
+    "movement": 0.534,
+    "density": 0.049,
+    "space": 0.367,
+    "aggression": 0.897
+  },
+  "macros": {
+    "CHARACTER": 0.314,
+    "MOVEMENT": 0.534,
+    "COUPLING": 0.615,
+    "SPACE": 0.367
+  },
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK_KINETIC_INTIMATE_GENTLE_AET2_3",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.0475
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Oracle",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.8469
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "ORBITAL",
+    "target": "ORACLE",
+    "amount": 0.8469
   },
   "dna": {
-    "aggression": 0.0411,
     "brightness": 0.1246,
-    "density": 0.362,
     "movement": 0.911,
     "space": 0.0813,
-    "warmth": 0.7
+    "aggression": 0.0411,
+    "warmth": 0.7,
+    "density": 0.362
   },
-  "engines": [
-    "Orbital",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.1479,
-    "COUPLING": 0.8469,
     "MOVEMENT": 0.9041,
+    "COUPLING": 0.8469,
     "SPACE": 0.0813
   },
-  "mood": "Aether",
-  "name": "Smoke Cascade",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.1512,
-      "macro_coupling": 0.3497,
-      "macro_movement": 0.8741,
-      "macro_space": 0.0475
-    },
-    "Orbital": {
-      "macro_character": 0.1447,
-      "macro_coupling": 0.3343,
-      "macro_movement": 0.934,
-      "macro_space": 0.0715
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "intimate",
@@ -84,10 +49,5 @@
     "intimate",
     "gentle",
     "stirring"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

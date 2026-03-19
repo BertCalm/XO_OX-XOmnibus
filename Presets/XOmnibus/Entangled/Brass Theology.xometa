@@ -1,51 +1,33 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ottoni",
-        "engineB": "Organon",
-        "type": "HARMONIC_BLEND",
-        "amount": 0.75
-      }
-    ]
-  },
-  "description": "Ottoni's triple brass warmth feeding Organon's theological resonance — sparse and stately.",
+  "name": "Brass Theology",
+  "version": "1.0",
   "engines": [
     "Ottoni",
     "Organon"
-<<<<<<< HEAD
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-=======
->>>>>>> origin/v1-launch-prep
-  ],
+  "mood": "Entangled",
+  "strategy": "Warm Sparse",
   "macros": {
     "CHARACTER": 0.7,
-    "COUPLING": 0.82,
     "MOVEMENT": 0.35,
+    "COUPLING": 0.82,
     "SPACE": 0.75
   },
-  "mood": "Entangled",
-  "name": "Brass Theology",
-  "parameters": {
-    "Ottoni": {},
-    "Organon": {}
-  },
-  "schema_version": 1,
   "sonic_dna": {
-    "aggression": 0.2,
     "brightness": 0.5,
-    "density": 0.09,
+    "warmth": 0.93,
     "movement": 0.32,
+    "density": 0.09,
     "space": 0.72,
-    "warmth": 0.93
+    "aggression": 0.2
   },
-  "strategy": "Warm Sparse",
+  "parameters": {},
+  "coupling": {
+    "type": "HARMONIC_BLEND",
+    "source": "OTTONI",
+    "target": "ORGANON",
+    "amount": 0.75
+  },
   "tags": [
     "entangled",
     "warm",
@@ -53,17 +35,5 @@
     "brass",
     "organ"
   ],
-<<<<<<< HEAD
-  "version": "1.0",
-  "dna": {
-    "brightness": 0.5,
-    "warmth": 0.5,
-    "movement": 0.6,
-    "density": 0.6,
-    "space": 0.5,
-    "aggression": 0.4
-  }
-=======
   "description": "Ottoni's triple brass warmth feeding Organon's theological resonance — sparse and stately."
->>>>>>> origin/v1-launch-prep
 }

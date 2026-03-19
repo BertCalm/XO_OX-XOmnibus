@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OPTIC at full spectrum — REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",
-  "dna": {
-    "aggression": 0.28,
-    "brightness": 0.88,
-    "density": 0.38,
-    "movement": 0.6,
-    "space": 0.72,
-    "warmth": 0.28
-  },
+  "schema_version": 1,
+  "name": "Prismatic Light",
+  "mood": "Family",
   "engines": [
     "Optic"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "SPECTRUM",
-    "REFRACT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Prismatic Light",
-  "parameters": {
-    "Optic": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OPTIC at full spectrum — REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "signature",
@@ -49,10 +18,14 @@
     "light",
     "batch1-signatures"
   ],
+  "macroLabels": [
+    "SPECTRUM",
+    "REFRACT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -70,5 +43,4 @@
     "space": 0.72,
     "aggression": 0.28
   }
->>>>>>> origin/v1-launch-prep
 }

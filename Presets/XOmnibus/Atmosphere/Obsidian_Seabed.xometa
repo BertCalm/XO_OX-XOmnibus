@@ -1,11 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-=======
   "schema_version": 1,
   "name": "Obsidian Seabed",
   "mood": "Atmosphere",
@@ -14,42 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0",
->>>>>>> origin/v1-launch-prep
   "description": "Shadowy environmental texture. Low brightness, expansive space. OBSCURA in void register.",
-  "dna": {
-    "aggression": 0.081,
-    "brightness": 0.131,
-    "density": 0.509,
-    "movement": 0.342,
-    "space": 0.685,
-    "warmth": 0.352
-  },
-  "engines": [
-    "Obscura"
-  ],
-  "macroLabels": [
-    "VEIL",
-    "DEPTH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "COUPLING": 0.137,
-    "DEPTH": 0.326,
-    "SPACE": 0.604,
-    "VEIL": 0.221
-  },
-  "mood": "Atmosphere",
-  "name": "Obsidian Seabed",
-  "parameters": {
-    "Obscura": {
-      "coupling": 0.137,
-      "depth": 0.326,
-      "space": 0.604,
-      "veil": 0.221
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "dark",
@@ -58,9 +16,6 @@
     "environmental",
     "deep"
   ],
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "macroLabels": [
     "VEIL",
     "DEPTH",
@@ -93,5 +48,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

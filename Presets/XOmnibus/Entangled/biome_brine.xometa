@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Biome Brine",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,63 +20,30 @@
       "macro_space": 0.795
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ocelot",
-        "engineB": "Oceanic",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.601
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OCELOT",
+    "target": "OCEANIC",
+    "amount": 0.601
   },
   "dna": {
-    "aggression": 0.3,
     "brightness": 0.55,
-    "density": 0.65,
+    "warmth": 0.75,
     "movement": 0.55,
+    "density": 0.65,
     "space": 0.86,
-    "warmth": 0.75
+    "aggression": 0.3
   },
-  "engines": [
-    "Ocelot",
-    "Oceanic"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.475,
-    "COUPLING": 0.601,
     "MOVEMENT": 0.525,
+    "COUPLING": 0.601,
     "SPACE": 0.625
   },
-  "mood": "Entangled",
-  "name": "Biome Brine",
-  "parameters": {
-    "Oceanic": {
-      "macro_character": 0.295,
-      "macro_coupling": 0.445,
-      "macro_movement": 0.345,
-      "macro_space": 0.795
-    },
-    "Ocelot": {
-      "macro_character": 0.655,
-      "macro_coupling": 0.555,
-      "macro_movement": 0.705,
-      "macro_space": 0.455
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "coupling",
     "visual",
     "aquatic"
-  ],
-  "version": "1.0"
+  ]
 }

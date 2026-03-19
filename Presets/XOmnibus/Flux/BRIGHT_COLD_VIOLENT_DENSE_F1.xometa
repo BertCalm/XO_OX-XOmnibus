@@ -1,47 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "Harmonic",
-  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
-  "dna": {
-    "aggression": 0.915,
+  "schema_version": 1,
+  "name": "BRIGHT COLD VIOLENT DENSE F1",
+  "mood": "Flux",
+  "sonic_dna": {
     "brightness": 0.938,
-    "density": 0.951,
+    "warmth": 0.087,
+    "aggression": 0.915,
     "movement": 0.512,
-    "space": 0.595,
-    "warmth": 0.087
+    "density": 0.951,
+    "space": 0.595
   },
   "engines": [
     "Ouroboros"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "MACRO1",
-    "MACRO2",
-    "MACRO3",
-    "MACRO4"
-  ],
-  "mood": "Flux",
-  "name": "BRIGHT COLD VIOLENT DENSE F1",
-  "parameters": {
-    "Ouroboros": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.915,
-    "brightness": 0.938,
-    "density": 0.951,
-    "movement": 0.512,
-    "space": 0.595,
-    "warmth": 0.087
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "bright",
     "cold",
@@ -50,9 +24,6 @@
     "flux",
     "extreme"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "MACRO1",
     "MACRO2",
@@ -74,5 +45,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

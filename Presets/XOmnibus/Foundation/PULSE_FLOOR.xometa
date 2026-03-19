@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "PULSE FLOOR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.365
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "OddOscar",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.694
-      }
-    ]
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ODDOSCAR",
+    "amount": 0.694
   },
   "dna": {
-    "aggression": 0.213,
     "brightness": 0.74,
-    "density": 0.922,
+    "warmth": 0.471,
     "movement": 0.942,
+    "density": 0.922,
     "space": 0.238,
-    "warmth": 0.471
+    "aggression": 0.213
   },
-  "engines": [
-    "Opal",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.557,
-    "COUPLING": 0.694,
     "MOVEMENT": 0.942,
+    "COUPLING": 0.694,
     "SPACE": 0.238
   },
-  "mood": "Foundation",
-  "name": "PULSE FLOOR",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.334,
-      "macro_coupling": 0.316,
-      "macro_movement": 0.92,
-      "macro_space": 0.365
-    },
-    "Opal": {
-      "macro_character": 0.304,
-      "macro_coupling": 0.654,
-      "macro_movement": 0.951,
-      "macro_space": 0.229
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "kinetic",
     "moving"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

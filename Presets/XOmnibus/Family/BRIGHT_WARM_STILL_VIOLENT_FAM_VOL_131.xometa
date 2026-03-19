@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VIOLENT_FAM_VOL_131",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.421
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "Odyssey",
-        "type": "PHASE_COUPLE",
-        "amount": 0.45
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "OLE",
+    "target": "ODYSSEY",
+    "amount": 0.45
   },
   "dna": {
-    "aggression": 0.919,
     "brightness": 0.963,
-    "density": 0.633,
+    "warmth": 0.948,
     "movement": 0.115,
+    "density": 0.633,
     "space": 0.432,
-    "warmth": 0.948
+    "aggression": 0.919
   },
-  "engines": [
-    "Ole",
-    "Odyssey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.953,
-    "COUPLING": 0.772,
     "MOVEMENT": 0.103,
+    "COUPLING": 0.772,
     "SPACE": 0.414
   },
-  "mood": "Family",
-  "name": "Honey Strike 2",
-  "parameters": {
-    "Odyssey": {
-      "macro_character": 0.94,
-      "macro_coupling": 0.778,
-      "macro_movement": 0.096,
-      "macro_space": 0.421
-    },
-    "Ole": {
-      "macro_character": 0.966,
-      "macro_coupling": 0.765,
-      "macro_movement": 0.11,
-      "macro_space": 0.407
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "aggressive",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

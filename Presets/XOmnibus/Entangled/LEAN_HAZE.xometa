@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "LEAN HAZE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.019
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overlap",
-        "engineB": "Onset",
-        "type": "ENVELOPE_LINK",
-        "amount": 0.843
-      }
-    ]
+    "type": "ENVELOPE_LINK",
+    "source": "OVERLAP",
+    "target": "ONSET",
+    "amount": 0.843
   },
   "dna": {
-    "aggression": 0.878,
     "brightness": 0.879,
-    "density": 0.097,
+    "warmth": 0.832,
     "movement": 0.308,
+    "density": 0.097,
     "space": 0.058,
-    "warmth": 0.832
+    "aggression": 0.878
   },
-  "engines": [
-    "Overlap",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.947,
-    "COUPLING": 0.486,
     "MOVEMENT": 0.086,
+    "COUPLING": 0.486,
     "SPACE": 0.069
   },
-  "mood": "Entangled",
-  "name": "LEAN HAZE",
-  "parameters": {
-    "Onset": {
-      "macro_character": 0.53,
-      "macro_coupling": 0.324,
-      "macro_movement": 0.001,
-      "macro_space": 0.019
-    },
-    "Overlap": {
-      "macro_character": 0.153,
-      "macro_coupling": 0.539,
-      "macro_movement": 0.763,
-      "macro_space": 0.779
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "bare",
     "skeletal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_KINETIC_SPARSE_FAM_VOL_93",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.584
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Odyssey",
-        "type": "PHASE_COUPLE",
-        "amount": 0.879
-      }
-    ]
+    "type": "PHASE_COUPLE",
+    "source": "ODDFELIX",
+    "target": "ODYSSEY",
+    "amount": 0.879
   },
   "dna": {
-    "aggression": 0.643,
     "brightness": 0.967,
-    "density": 0.097,
+    "warmth": 0.974,
     "movement": 0.98,
+    "density": 0.097,
     "space": 0.608,
-    "warmth": 0.974
+    "aggression": 0.643
   },
-  "engines": [
-    "Odyssey",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.974,
-    "COUPLING": 0.366,
     "MOVEMENT": 0.977,
+    "COUPLING": 0.366,
     "SPACE": 0.595
   },
-  "mood": "Family",
-  "name": "Solar Surge 4",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.988,
-      "macro_coupling": 0.356,
-      "macro_movement": 0.975,
-      "macro_space": 0.584
-    },
-    "Odyssey": {
-      "macro_character": 0.96,
-      "macro_coupling": 0.377,
-      "macro_movement": 0.979,
-      "macro_space": 0.605
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "kinetic",
     "sparse",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.68,
-        "engineA": "Orphica",
-        "engineB": "Ouroboros",
-        "type": "PITCH_SYNC"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "ORPHICA siphonophore pitch-synced to strange attractor — colony orbits chaos.",
-  "dna": {
-    "aggression": 0.48,
-    "brightness": 0.72,
-    "density": 0.48,
-    "movement": 0.7,
-    "space": 0.72,
-    "warmth": 0.42
-  },
-  "engines": [
-    "Orphica",
-    "Ouroboros"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.625,
-    "COUPLING": 0.68,
-    "MOVEMENT": 0.62,
-    "SPACE": 0.585
-  },
-  "mood": "Entangled",
-  "name": "Strange Siphon",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.65,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.52,
-      "macro_space": 0.75
-    },
-    "Ouroboros": {
-      "macro_character": 0.6,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.72,
-      "macro_space": 0.42
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Strange Siphon",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "ORPHICA siphonophore pitch-synced to strange attractor — colony orbits chaos.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "siphon",
     "pitch"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.72,
     "warmth": 0.42,
@@ -118,5 +64,4 @@
     "SPACE": 0.585
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

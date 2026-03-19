@@ -1,54 +1,12 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oblique",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.532
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.933,
-    "brightness": 0.904,
-    "density": 0.13,
-    "movement": 0.856,
-    "space": 0.99,
-    "warmth": 0.264
-  },
+  "name": "BRIGHT KINETIC VAST SPARSE VIOLENT ENT2 2",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Origami",
     "Oblique"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.584,
-    "COUPLING": 0.532,
-    "MOVEMENT": 0.856,
-    "SPACE": 0.99
-  },
-  "mood": "Entangled",
-  "name": "BRIGHT KINETIC VAST SPARSE ...",
   "parameters": {
-<<<<<<< HEAD
-    "Oblique": {
-      "macro_character": 0.628,
-      "macro_coupling": 0.56,
-      "macro_movement": 0.8,
-      "macro_space": 0.99
-    },
-    "Origami": {
-      "macro_character": 0.584,
-      "macro_coupling": 0.532,
-      "macro_movement": 0.856,
-=======
     "Origami": {
       "macro_character": 0.584,
       "macro_movement": 0.856,
@@ -59,11 +17,29 @@
       "macro_character": 0.628,
       "macro_movement": 0.8,
       "macro_coupling": 0.56,
->>>>>>> origin/v1-launch-prep
       "macro_space": 0.99
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "SPECTRAL_MORPH",
+    "source": "ORIGAMI",
+    "target": "OBLIQUE",
+    "amount": 0.532
+  },
+  "dna": {
+    "brightness": 0.904,
+    "warmth": 0.264,
+    "movement": 0.856,
+    "density": 0.13,
+    "space": 0.99,
+    "aggression": 0.933
+  },
+  "macros": {
+    "CHARACTER": 0.584,
+    "MOVEMENT": 0.856,
+    "COUPLING": 0.532,
+    "SPACE": 0.99
+  },
   "tags": [
     "entangled",
     "bright",
@@ -71,10 +47,5 @@
     "sparse",
     "vast",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

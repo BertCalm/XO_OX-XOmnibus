@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD KINETIC DENSE VIOLENT AET AGG 1",
   "version": "1.0",
   "mood": "Aether",
@@ -23,58 +20,26 @@
       "macro_space": 0.359
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "OddfeliX",
-        "type": "PITCH_SYNC",
-        "amount": 0.949
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "OVERWORLD",
+    "target": "ODDFELIX",
+    "amount": 0.949
   },
   "dna": {
-    "aggression": 0.98,
     "brightness": 0.651,
-    "density": 0.903,
+    "warmth": 0.06,
     "movement": 0.93,
+    "density": 0.903,
     "space": 0.366,
-    "warmth": 0.06
+    "aggression": 0.98
   },
-  "engines": [
-    "Overworld",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.645,
-    "COUPLING": 0.884,
     "MOVEMENT": 0.909,
+    "COUPLING": 0.884,
     "SPACE": 0.36
   },
-  "mood": "Aether",
-  "name": "COLD KINETIC DENSE VIOLENT ...",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.641,
-      "macro_coupling": 0.871,
-      "macro_movement": 0.89,
-      "macro_space": 0.359
-    },
-    "Overworld": {
-      "macro_character": 0.648,
-      "macro_coupling": 0.897,
-      "macro_movement": 0.928,
-      "macro_space": 0.362
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "kinetic",
     "dense"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "VAST CATHEDRAL BASE",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.991
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Orbital",
-        "type": "SPECTRAL_MORPH",
-        "amount": 0.514
-      }
-    ]
+    "type": "SPECTRAL_MORPH",
+    "source": "OVERDUB",
+    "target": "ORBITAL",
+    "amount": 0.514
   },
   "dna": {
-    "aggression": 0.086,
     "brightness": 0.276,
-    "density": 0.948,
+    "warmth": 0.01,
     "movement": 0.701,
+    "density": 0.948,
     "space": 0.979,
-    "warmth": 0.01
+    "aggression": 0.086
   },
-  "engines": [
-    "Overdub",
-    "Orbital"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.582,
-    "COUPLING": 0.473,
     "MOVEMENT": 0.701,
+    "COUPLING": 0.473,
     "SPACE": 0.979
   },
-  "mood": "Foundation",
-  "name": "VAST CATHEDRAL BASE",
-  "parameters": {
-    "Orbital": {
-      "macro_character": 0.793,
-      "macro_coupling": 0.222,
-      "macro_movement": 0.66,
-      "macro_space": 0.991
-    },
-    "Overdub": {
-      "macro_character": 0.758,
-      "macro_coupling": 0.646,
-      "macro_movement": 0.72,
-      "macro_space": 0.978
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "vast",
     "open",
     "space-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

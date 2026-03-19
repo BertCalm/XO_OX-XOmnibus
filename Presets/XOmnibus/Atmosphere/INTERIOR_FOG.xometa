@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "INTERIOR FOG",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.088
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Ocelot",
-        "type": "FILTER_MOD",
-        "amount": 0.486
-      }
-    ]
+    "type": "FILTER_MOD",
+    "source": "OPAL",
+    "target": "OCELOT",
+    "amount": 0.486
   },
   "dna": {
-    "aggression": 0.099,
     "brightness": 0.304,
-    "density": 0.531,
+    "warmth": 0.85,
     "movement": 0.84,
+    "density": 0.531,
     "space": 0.092,
-    "warmth": 0.85
+    "aggression": 0.099
   },
-  "engines": [
-    "Opal",
-    "Ocelot"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.422,
-    "COUPLING": 0.202,
     "MOVEMENT": 0.337,
+    "COUPLING": 0.202,
     "SPACE": 0.092
   },
-  "mood": "Atmosphere",
-  "name": "INTERIOR FOG",
-  "parameters": {
-    "Ocelot": {
-      "macro_character": 0.676,
-      "macro_coupling": 0.347,
-      "macro_movement": 0.34,
-      "macro_space": 0.088
-    },
-    "Opal": {
-      "macro_character": 0.631,
-      "macro_coupling": 0.351,
-      "macro_movement": 0.364,
-      "macro_space": 0.092
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "claustrophobic",
     "intimate",
     "close",
     "space-xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
   "schema_version": 1,
   "name": "Osprey Strike Pattern",
   "mood": "Entangled",
@@ -8,52 +6,9 @@
     "Osprey",
     "Onset"
   ],
->>>>>>> origin/v1-launch-prep
   "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.7,
-        "engineA": "Osprey",
-        "engineB": "Onset",
-        "type": "Env->Filter"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
+  "version": "1.0.0",
   "description": "Drum hit triggers osprey's plunge; attack and impact fused into one gesture.",
-  "dna": {
-    "aggression": 0.45,
-    "brightness": 0.59,
-    "density": 0.58,
-    "movement": 0.66,
-    "space": 0.61,
-    "warmth": 0.51
-  },
-  "engines": [
-    "Osprey",
-    "Onset"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5,
-    "COUPLING": 0.75,
-    "MOVEMENT": 0.5,
-    "SPACE": 0.5
-  },
-  "mood": "Entangled",
-  "name": "Osprey Strike Pattern",
-  "parameters": {
-    "Osprey": {},
-    "Onset": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "entangled",
     "coupling",
@@ -63,6 +18,38 @@
     "percussive",
     "attack"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.75,
+    "SPACE": 0.5
+  },
+  "couplingIntensity": "Deep",
   "tempo": null,
-  "version": "1.0.0"
+  "dna": {
+    "brightness": 0.59,
+    "warmth": 0.51,
+    "movement": 0.66,
+    "density": 0.58,
+    "space": 0.61,
+    "aggression": 0.45
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OSPREY",
+        "engineB": "ONSET",
+        "type": "Env->Filter",
+        "amount": 0.7
+      }
+    ]
+  },
+  "sequencer": null
 }

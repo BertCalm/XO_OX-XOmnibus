@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "Midnight Kinetics",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.64
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Outwit",
-        "engineB": "Octopus",
-        "type": "PITCH_MOD",
-        "amount": 0.81
-      }
-    ]
+    "type": "PITCH_MOD",
+    "source": "OUTWIT",
+    "target": "OCTOPUS",
+    "amount": 0.81
   },
   "dna": {
-    "aggression": 0.47,
     "brightness": 0.06,
-    "density": 0.55,
+    "warmth": 0.29,
     "movement": 0.83,
+    "density": 0.55,
     "space": 0.54,
-    "warmth": 0.29
+    "aggression": 0.47
   },
-  "engines": [
-    "Outwit",
-    "Octopus"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.85,
-    "COUPLING": 0.86,
     "MOVEMENT": 0.83,
+    "COUPLING": 0.86,
     "SPACE": 0.54
   },
-  "mood": "Entangled",
-  "name": "Midnight Kinetics",
-  "parameters": {
-    "Octopus": {
-      "macro_character": 0.37,
-      "macro_coupling": 0.53,
-      "macro_movement": 0.56,
-      "macro_space": 0.64
-    },
-    "Outwit": {
-      "macro_character": 0.71,
-      "macro_coupling": 0.88,
-      "macro_movement": 0.38,
-      "macro_space": 0.41
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

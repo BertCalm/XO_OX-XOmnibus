@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oracle",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.503
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.7143,
-    "brightness": 0.8742,
-    "density": 0.0351,
-    "movement": 0.8991,
-    "space": 0.3434,
-    "warmth": 0.1035
-  },
+  "name": "SPARSE FLUX 5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Opal",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.5979,
-    "COUPLING": 0.6473,
-    "MOVEMENT": 0.7892,
-    "SPACE": 0.0659
-  },
-  "mood": "Flux",
-  "name": "SPARSE FLUX 5",
   "parameters": {
     "Opal": {
       "macro_character": 0.2477,
-      "macro_coupling": 0.4394,
       "macro_movement": 0.4378,
+      "macro_coupling": 0.4394,
       "macro_space": 0.5227
     },
     "Oracle": {
       "macro_character": 0.1587,
-      "macro_coupling": 0.2829,
       "macro_movement": 0.3729,
+      "macro_coupling": 0.2829,
       "macro_space": 0.4088
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RESONANCE_SHARE",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.503
+  },
+  "dna": {
+    "brightness": 0.8742,
+    "warmth": 0.1035,
+    "movement": 0.8991,
+    "density": 0.0351,
+    "space": 0.3434,
+    "aggression": 0.7143
+  },
+  "macros": {
+    "CHARACTER": 0.5979,
+    "MOVEMENT": 0.7892,
+    "COUPLING": 0.6473,
+    "SPACE": 0.0659
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

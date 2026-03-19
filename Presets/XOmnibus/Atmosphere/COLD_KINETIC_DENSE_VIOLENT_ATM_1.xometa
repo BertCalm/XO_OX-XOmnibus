@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "COLD_KINETIC_DENSE_VIOLENT_ATM_1",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.415
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "OddOscar",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.946
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "ORBITAL",
+    "target": "ODDOSCAR",
+    "amount": 0.946
   },
   "dna": {
-    "aggression": 0.977,
     "brightness": 0.302,
-    "density": 0.909,
+    "warmth": 0.047,
     "movement": 0.946,
+    "density": 0.909,
     "space": 0.475,
-    "warmth": 0.047
+    "aggression": 0.977
   },
-  "engines": [
-    "Orbital",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.527,
-    "COUPLING": 0.556,
     "MOVEMENT": 0.802,
+    "COUPLING": 0.556,
     "SPACE": 0.469
   },
-  "mood": "Atmosphere",
-  "name": "Flux Force 3",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.599,
-      "macro_coupling": 0.409,
-      "macro_movement": 0.777,
-      "macro_space": 0.415
-    },
-    "Orbital": {
-      "macro_character": 0.527,
-      "macro_coupling": 0.556,
-      "macro_movement": 0.802,
-      "macro_space": 0.469
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "cold",
     "kinetic",
     "dense",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

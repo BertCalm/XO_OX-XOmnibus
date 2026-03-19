@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Opal",
-        "type": "PITCH_SYNC",
-        "amount": 0.532
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.257,
-    "brightness": 0.971,
-    "density": 0.064,
-    "movement": 0.913,
-    "space": 0.83,
-    "warmth": 0.531
-  },
+  "name": "GHOSTED FIELD",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Opal"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.825,
-    "COUPLING": 0.806,
-    "MOVEMENT": 0.482,
-    "SPACE": 0.747
-  },
-  "mood": "Entangled",
-  "name": "GHOSTED FIELD",
   "parameters": {
     "Obscura": {
       "macro_character": 0.441,
-      "macro_coupling": 0.732,
       "macro_movement": 0.58,
+      "macro_coupling": 0.732,
       "macro_space": 0.09
     },
     "Opal": {
       "macro_character": 0.295,
-      "macro_coupling": 0.176,
       "macro_movement": 0.747,
+      "macro_coupling": 0.176,
       "macro_space": 0.132
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "PITCH_SYNC",
+    "source": "OBSCURA",
+    "target": "OPAL",
+    "amount": 0.532
+  },
+  "dna": {
+    "brightness": 0.971,
+    "warmth": 0.531,
+    "movement": 0.913,
+    "density": 0.064,
+    "space": 0.83,
+    "aggression": 0.257
+  },
+  "macros": {
+    "CHARACTER": 0.825,
+    "MOVEMENT": 0.482,
+    "COUPLING": 0.806,
+    "SPACE": 0.747
+  },
   "tags": [
     "entangled",
     "sparse",
     "spectral"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

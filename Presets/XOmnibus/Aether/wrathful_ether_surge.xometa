@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "WRATHFUL ETHER SURGE",
   "version": "1.0",
   "mood": "Aether",
@@ -23,67 +20,30 @@
       "macro_space": 0.525
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Origami",
-        "engineB": "Oblong",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.5
-      }
-    ]
+    "type": "VELOCITY_COUPLE",
+    "source": "ORIGAMI",
+    "target": "OBLONG",
+    "amount": 0.5
   },
   "dna": {
-    "aggression": 0.916,
     "brightness": 0.313,
-    "density": 0.92,
+    "warmth": 0.763,
     "movement": 0.578,
+    "density": 0.92,
     "space": 0.515,
-    "warmth": 0.763
+    "aggression": 0.916
   },
-  "engines": [
-    "Origami",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.008,
-    "COUPLING": 0.107,
     "MOVEMENT": 0.578,
+    "COUPLING": 0.107,
     "SPACE": 0.515
   },
-  "mood": "Aether",
-  "name": "WRATHFUL ETHER SURGE",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.281,
-      "macro_coupling": 0.843,
-      "macro_movement": 0.588,
-      "macro_space": 0.525
-    },
-    "Origami": {
-      "macro_character": 0.457,
-      "macro_coupling": 0.583,
-      "macro_movement": 0.552,
-      "macro_space": 0.488
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "aether",
     "violent",
     "transcendence",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

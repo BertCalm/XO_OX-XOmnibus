@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SMELT CLOUD",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,68 +20,31 @@
       "macro_space": 0.323
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "OddfeliX",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.74
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSPREY",
+    "target": "ODDFELIX",
+    "amount": 0.74
   },
   "dna": {
-    "aggression": 0.901,
     "brightness": 0.898,
-    "density": 0.468,
+    "warmth": 0.483,
     "movement": 0.144,
+    "density": 0.468,
     "space": 0.645,
-    "warmth": 0.483
+    "aggression": 0.901
   },
-  "engines": [
-    "Osprey",
-    "OddfeliX"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.664,
-    "COUPLING": 0.491,
     "MOVEMENT": 0.652,
+    "COUPLING": 0.491,
     "SPACE": 0.645
   },
-  "mood": "Atmosphere",
-  "name": "SMELT CLOUD",
-  "parameters": {
-    "OddfeliX": {
-      "macro_character": 0.339,
-      "macro_coupling": 0.886,
-      "macro_movement": 0.853,
-      "macro_space": 0.323
-    },
-    "Osprey": {
-      "macro_character": 0.311,
-      "macro_coupling": 0.866,
-      "macro_movement": 0.487,
-      "macro_space": 0.743
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "harsh",
     "abrasive",
     "hostile",
     "aggression-xhigh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

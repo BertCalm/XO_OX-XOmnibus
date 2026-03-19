@@ -1,18 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.806,
-        "engineA": "Outwit",
-        "engineB": "Ohm",
-        "type": "FILTER_MOD"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-=======
   "schema_version": 1,
   "name": "Commune Cells",
   "mood": "Entangled",
@@ -22,19 +8,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "OHM commune resonance feeds OUTWIT communal cell birth rate — the circle breathes into the automata",
-  "dna": {
-    "aggression": 0.4,
-    "brightness": 0.55,
-    "density": 0.65,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.525
-  },
-  "engines": [
-    "Outwit",
-    "Ohm"
+  "tags": [
+    "coupling",
+    "entangled",
+    "outwit",
+    "ohm",
+    "meditative",
+    "communal"
   ],
   "macroLabels": [
     "CHARACTER",
@@ -44,16 +25,29 @@
   ],
   "macros": {
     "CHARACTER": 0.416,
-    "COUPLING": 0.694,
     "MOVEMENT": 0.525,
+    "COUPLING": 0.694,
     "SPACE": 0.704
   },
-  "mood": "Entangled",
-  "name": "Commune Cells",
+  "couplingIntensity": "Deep",
+  "dna": {
+    "brightness": 0.55,
+    "space": 0.575,
+    "aggression": 0.4,
+    "movement": 0.7,
+    "warmth": 0.525,
+    "density": 0.65
+  },
+  "sonic_dna": {
+    "brightness": 0.55,
+    "space": 0.575,
+    "aggression": 0.4,
+    "movement": 0.7,
+    "warmth": 0.525,
+    "density": 0.65
+  },
   "parameters": {
     "Outwit": {
-<<<<<<< HEAD
-=======
       "owit_rule": 110,
       "owit_arms": 5,
       "owit_cellSize": 0.55,
@@ -63,45 +57,27 @@
       "owit_pitchSpread": 0.428,
       "owit_filterCutoff": 0.57,
       "owit_filterReso": 0.395,
->>>>>>> origin/v1-launch-prep
       "owit_ampAttack": 0.11,
       "owit_ampRelease": 0.613,
+      "owit_outputLevel": 0.852,
+      "owit_couplingLevel": 0.716,
+      "owit_couplingBus": 0,
       "owit_armStagger": 0.299,
-      "owit_arms": 5,
       "owit_borderMode": 0,
-      "owit_cellSize": 0.55,
+      "owit_inkCloudMix": 0.073,
       "owit_chroma1": 0.799,
       "owit_chroma2": 0.763,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.716,
-      "owit_density": 0.42,
-      "owit_evolveRate": 0.398,
-      "owit_filterCutoff": 0.57,
-      "owit_filterReso": 0.395,
-      "owit_inkCloudMix": 0.073,
-      "owit_mutateProb": 0.284,
-      "owit_outputLevel": 0.852,
-      "owit_pitchSpread": 0.428,
-      "owit_polyDepth": 0.705,
-      "owit_rule": 110
+      "owit_polyDepth": 0.705
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.4,
-    "brightness": 0.55,
-    "density": 0.65,
-    "movement": 0.7,
-    "space": 0.575,
-    "warmth": 0.525
-  },
-  "tags": [
-    "coupling",
-    "entangled",
-    "outwit",
-    "ohm",
-    "meditative",
-    "communal"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OUTWIT",
+        "engineB": "OHM",
+        "type": "FILTER_MOD",
+        "amount": 0.806
+      }
+    ]
+  }
 }

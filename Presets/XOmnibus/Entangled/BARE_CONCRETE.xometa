@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BARE CONCRETE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,67 +20,30 @@
       "macro_space": 0.114
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "OddOscar",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.359
-      }
-    ]
+    "type": "HARMONIC_FOLD",
+    "source": "OBLIQUE",
+    "target": "ODDOSCAR",
+    "amount": 0.359
   },
   "dna": {
-    "aggression": 0.34,
     "brightness": 0.614,
-    "density": 0.081,
+    "warmth": 0.597,
     "movement": 0.277,
+    "density": 0.081,
     "space": 0.094,
-    "warmth": 0.597
+    "aggression": 0.34
   },
-  "engines": [
-    "OddOscar",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.809,
-    "COUPLING": 0.712,
     "MOVEMENT": 0.336,
+    "COUPLING": 0.712,
     "SPACE": 0.094
   },
-  "mood": "Entangled",
-  "name": "BARE CONCRETE",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.475,
-      "macro_coupling": 0.851,
-      "macro_movement": 0.486,
-      "macro_space": 0.114
-    },
-    "OddOscar": {
-      "macro_character": 0.163,
-      "macro_coupling": 0.774,
-      "macro_movement": 0.387,
-      "macro_space": 0.088
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "claustrophobic",
     "intimate",
     "xlow"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

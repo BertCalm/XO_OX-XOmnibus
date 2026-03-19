@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "Odyssey",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.3814
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0632,
-    "brightness": 0.8842,
-    "density": 0.0225,
-    "movement": 0.9153,
-    "space": 0.2214,
-    "warmth": 0.9773
-  },
+  "name": "THIN FLOW 2",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Obsidian",
     "Odyssey"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.4536,
-    "COUPLING": 0.7431,
-    "MOVEMENT": 0.6705,
-    "SPACE": 0.946
-  },
-  "mood": "Flux",
-  "name": "THIN FLOW 2",
   "parameters": {
     "Obsidian": {
       "macro_character": 0.3022,
-      "macro_coupling": 0.1398,
       "macro_movement": 0.4083,
+      "macro_coupling": 0.1398,
       "macro_space": 0.9463
     },
     "Odyssey": {
       "macro_character": 0.3044,
-      "macro_coupling": 0.0972,
       "macro_movement": 0.4926,
+      "macro_coupling": 0.0972,
       "macro_space": 0.8873
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OBSIDIAN",
+    "target": "ODYSSEY",
+    "amount": 0.3814
+  },
+  "dna": {
+    "brightness": 0.8842,
+    "warmth": 0.9773,
+    "movement": 0.9153,
+    "density": 0.0225,
+    "space": 0.2214,
+    "aggression": 0.0632
+  },
+  "macros": {
+    "CHARACTER": 0.4536,
+    "MOVEMENT": 0.6705,
+    "COUPLING": 0.7431,
+    "SPACE": 0.946
+  },
   "tags": [
     "flux",
     "sparse",
     "minimal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

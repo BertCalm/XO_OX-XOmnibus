@@ -1,41 +1,21 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "YM2612 FM operators locked to a bright resonant peak",
-  "dna": {
-    "aggression": 0.12,
+  "schema_version": 1,
+  "name": "Crystal Palace",
+  "mood": "Prism",
+  "sonic_dna": {
     "brightness": 0.9,
-    "density": 0.35,
+    "warmth": 0.22,
+    "aggression": 0.12,
     "movement": 0.5,
-    "space": 0.75,
-    "warmth": 0.22
+    "density": 0.35,
+    "space": 0.75
   },
   "engines": [
     "Overworld"
   ],
-  "macroLabels": [
-    "ERA",
-    "GLITCH",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Prism",
-  "name": "Crystal Palace",
-  "parameters": {
-    "Overworld": {}
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.12,
-    "brightness": 0.9,
-    "density": 0.35,
-    "movement": 0.5,
-    "space": 0.75,
-    "warmth": 0.22
-  },
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "YM2612 FM operators locked to a bright resonant peak",
   "tags": [
     "prism",
     "bright",
@@ -44,9 +24,6 @@
     "fm",
     "retro"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "ERA",
     "GLITCH",
@@ -66,5 +43,4 @@
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

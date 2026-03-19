@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_INTIMATE_FAM_VOL_5",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.074
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ole",
-        "engineB": "OddOscar",
-        "type": "MODULATION_FLOW",
-        "amount": 0.433
-      }
-    ]
+    "type": "MODULATION_FLOW",
+    "source": "OLE",
+    "target": "ODDOSCAR",
+    "amount": 0.433
   },
   "dna": {
-    "aggression": 0.361,
     "brightness": 0.897,
-    "density": 0.618,
+    "warmth": 0.909,
     "movement": 0.049,
+    "density": 0.618,
     "space": 0.069,
-    "warmth": 0.909
+    "aggression": 0.361
   },
-  "engines": [
-    "Ole",
-    "OddOscar"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.905,
-    "COUPLING": 0.486,
     "MOVEMENT": 0.022,
+    "COUPLING": 0.486,
     "SPACE": 0.072
   },
-  "mood": "Family",
-  "name": "Golden Titan 2",
-  "parameters": {
-    "OddOscar": {
-      "macro_character": 0.88,
-      "macro_coupling": 0.502,
-      "macro_movement": 0.021,
-      "macro_space": 0.074
-    },
-    "Ole": {
-      "macro_character": 0.929,
-      "macro_coupling": 0.471,
-      "macro_movement": 0.024,
-      "macro_space": 0.071
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "intimate",
     "bright",
     "still"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

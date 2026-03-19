@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "DARK COLD KINETIC VIOLENT ATM AGG 1",
   "version": "1.0",
   "mood": "Atmosphere",
@@ -23,58 +20,26 @@
       "macro_space": 0.318
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Osprey",
-        "engineB": "Oblique",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.897
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OSPREY",
+    "target": "OBLIQUE",
+    "amount": 0.897
   },
   "dna": {
-    "aggression": 0.883,
     "brightness": 0.044,
-    "density": 0.336,
+    "warmth": 0.13,
     "movement": 0.931,
+    "density": 0.336,
     "space": 0.319,
-    "warmth": 0.13
+    "aggression": 0.883
   },
-  "engines": [
-    "Osprey",
-    "Oblique"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.042,
-    "COUPLING": 0.827,
     "MOVEMENT": 0.923,
+    "COUPLING": 0.827,
     "SPACE": 0.306
   },
-  "mood": "Atmosphere",
-  "name": "DARK COLD KINETIC VIOLENT A...",
-  "parameters": {
-    "Oblique": {
-      "macro_character": 0.042,
-      "macro_coupling": 0.833,
-      "macro_movement": 0.931,
-      "macro_space": 0.318
-    },
-    "Osprey": {
-      "macro_character": 0.043,
-      "macro_coupling": 0.822,
-      "macro_movement": 0.916,
-      "macro_space": 0.295
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "atmosphere",
     "aggressive",
@@ -82,10 +47,5 @@
     "violent",
     "dark",
     "kinetic"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

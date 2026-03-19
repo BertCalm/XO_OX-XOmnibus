@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oblique",
-        "engineB": "Obsidian",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.711
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.582,
-    "brightness": 0.93,
-    "density": 0.958,
-    "movement": 0.547,
-    "space": 0.531,
-    "warmth": 0.955
-  },
+  "name": "BRIGHT HOT DENSE FOU 02",
+  "version": "1.0",
+  "mood": "Foundation",
   "engines": [
     "Oblique",
     "Obsidian"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.943,
-    "COUPLING": 0.423,
-    "MOVEMENT": 0.547,
-    "SPACE": 0.531
-  },
-  "mood": "Foundation",
-  "name": "BRIGHT HOT DENSE FOU 02",
   "parameters": {
     "Oblique": {
       "macro_character": 0.943,
-      "macro_coupling": 0.423,
       "macro_movement": 0.547,
+      "macro_coupling": 0.423,
       "macro_space": 0.531
     },
     "Obsidian": {
       "macro_character": 0.88,
-      "macro_coupling": 0.434,
       "macro_movement": 0.421,
+      "macro_coupling": 0.434,
       "macro_space": 0.411
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "AMPLITUDE_MOD",
+    "source": "OBLIQUE",
+    "target": "OBSIDIAN",
+    "amount": 0.711
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.955,
+    "movement": 0.547,
+    "density": 0.958,
+    "space": 0.531,
+    "aggression": 0.582
+  },
+  "macros": {
+    "CHARACTER": 0.943,
+    "MOVEMENT": 0.547,
+    "COUPLING": 0.423,
+    "SPACE": 0.531
+  },
   "tags": [
     "foundation",
     "bright",
@@ -58,10 +47,5 @@
     "dense",
     "extreme",
     "diversity-push"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

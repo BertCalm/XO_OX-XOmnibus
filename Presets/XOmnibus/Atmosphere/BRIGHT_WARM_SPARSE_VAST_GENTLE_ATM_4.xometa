@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orbital",
-        "engineB": "Organon",
-        "type": "FILTER_MOD",
-        "amount": 0.546
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0341,
-    "brightness": 0.8803,
-    "density": 0.1037,
-    "movement": 0.3277,
-    "space": 0.9619,
-    "warmth": 0.9283
-  },
+  "name": "BRIGHT_WARM_SPARSE_VAST_GENTLE_ATM_4",
+  "version": "1.0",
+  "mood": "Atmosphere",
   "engines": [
     "Orbital",
     "Organon"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.9224,
-    "COUPLING": 0.0894,
-    "MOVEMENT": 0.3165,
-    "SPACE": 0.9771
-  },
-  "mood": "Atmosphere",
-  "name": "Glow Vast",
   "parameters": {
     "Orbital": {
       "macro_character": 0.9266,
-      "macro_coupling": 0.0864,
       "macro_movement": 0.3231,
+      "macro_coupling": 0.0864,
       "macro_space": 0.9643
     },
     "Organon": {
       "macro_character": 0.9181,
-      "macro_coupling": 0.0924,
       "macro_movement": 0.3098,
+      "macro_coupling": 0.0924,
       "macro_space": 0.99
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FILTER_MOD",
+    "source": "ORBITAL",
+    "target": "ORGANON",
+    "amount": 0.546
+  },
+  "dna": {
+    "brightness": 0.8803,
+    "warmth": 0.9283,
+    "movement": 0.3277,
+    "density": 0.1037,
+    "space": 0.9619,
+    "aggression": 0.0341
+  },
+  "macros": {
+    "CHARACTER": 0.9224,
+    "MOVEMENT": 0.3165,
+    "COUPLING": 0.0894,
+    "SPACE": 0.9771
+  },
   "tags": [
     "atmosphere",
     "bright",
@@ -58,10 +47,5 @@
     "sparse",
     "vast",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

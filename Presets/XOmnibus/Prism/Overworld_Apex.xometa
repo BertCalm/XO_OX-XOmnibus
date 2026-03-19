@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OVERWORLD pushed to extreme brightness — brightness 0.96, movement 0.73, aggression 0.67. Ultra-bright Prism zone filler.",
-  "dna": {
-    "aggression": 0.671,
-    "brightness": 0.96,
-    "density": 0.728,
-    "movement": 0.732,
-    "space": 0.485,
-    "warmth": 0.097
-  },
-  "engines": [
-    "Overworld"
-=======
   "schema_version": 1,
   "name": "Overworld Apex",
   "mood": "Prism",
@@ -32,7 +14,6 @@
     "extreme",
     "brightness",
     "overworld"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -40,44 +21,37 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Prism",
-  "name": "Overworld Apex",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.96,
+    "warmth": 0.097,
+    "movement": 0.732,
+    "density": 0.728,
+    "space": 0.485,
+    "aggression": 0.671
+  },
+  "sonic_dna": {
+    "brightness": 0.96,
+    "warmth": 0.097,
+    "movement": 0.732,
+    "density": 0.728,
+    "space": 0.485,
+    "aggression": 0.671
+  },
   "parameters": {
     "Overworld": {
-<<<<<<< HEAD
-      "ow_couplingBus": 0,
-      "ow_couplingLevel": 0.286,
-=======
       "ow_macro_era": 0.926,
->>>>>>> origin/v1-launch-prep
       "ow_macro_chaos": 0.393,
       "ow_macro_couple": 0.011,
-      "ow_macro_era": 0.926,
       "ow_macro_space": 0.345,
-      "ow_outputLevel": 0.831
+      "ow_outputLevel": 0.831,
+      "ow_couplingLevel": 0.286,
+      "ow_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.671,
-    "brightness": 0.96,
-    "density": 0.728,
-    "movement": 0.732,
-    "space": 0.485,
-    "warmth": 0.097
+  "coupling": {
+    "pairs": []
   },
-<<<<<<< HEAD
-  "tags": [
-    "prism",
-    "ultra-bright",
-    "extreme",
-    "brightness",
-    "overworld"
-  ],
-  "tempo": null,
-  "version": "1.0.0"
-=======
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

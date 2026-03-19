@@ -1,39 +1,32 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.86,
-    "density": 0.09,
-    "movement": 0.18,
-    "space": 0.89,
-    "warmth": 0.04
-  },
+  "name": "Wind Bond Freeze",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Obbligato"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.44,
-    "COUPLING": 0.27,
-    "MOVEMENT": 0.18,
-    "SPACE": 0.89
-  },
-  "mood": "Aether",
-  "name": "Wind Bond Freeze",
   "parameters": {
     "Obbligato": {
       "obbl_macro_character": 0.37,
-      "obbl_macro_coupling": 0.19,
       "obbl_macro_movement": 0.15,
+      "obbl_macro_coupling": 0.19,
       "obbl_macro_space": 0.89
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.86,
+    "warmth": 0.04,
+    "movement": 0.18,
+    "density": 0.09,
+    "space": 0.89,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.27,
+    "SPACE": 0.89
+  },
   "tags": [
     "aether",
     "frozen",
@@ -41,10 +34,5 @@
     "wind",
     "bond",
     "freeze"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Oracle",
-        "engineB": "Overdub",
-        "type": "CHAOS_INJECT",
-        "amount": 0.654
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.893,
-    "brightness": 0.927,
-    "density": 0.684,
-    "movement": 0.046,
-    "space": 0.09,
-    "warmth": 0.487
-  },
+  "name": "BRIGHT_STILL_INTIMATE_VIOLENT_FLX_SLW_3",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Oracle",
     "Overdub"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.788,
-    "COUPLING": 0.839,
-    "MOVEMENT": 0.046,
-    "SPACE": 0.09
-  },
-  "mood": "Flux",
-  "name": "Thread Fang 2",
   "parameters": {
     "Oracle": {
       "macro_character": 0.486,
-      "macro_coupling": 0.864,
       "macro_movement": 0.044,
+      "macro_coupling": 0.864,
       "macro_space": 0.089
     },
     "Overdub": {
       "macro_character": 0.471,
-      "macro_coupling": 0.765,
       "macro_movement": 0.049,
+      "macro_coupling": 0.765,
       "macro_space": 0.094
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "CHAOS_INJECT",
+    "source": "ORACLE",
+    "target": "OVERDUB",
+    "amount": 0.654
+  },
+  "dna": {
+    "brightness": 0.927,
+    "warmth": 0.487,
+    "movement": 0.046,
+    "density": 0.684,
+    "space": 0.09,
+    "aggression": 0.893
+  },
+  "macros": {
+    "CHARACTER": 0.788,
+    "MOVEMENT": 0.046,
+    "COUPLING": 0.839,
+    "SPACE": 0.09
+  },
   "tags": [
     "flux",
     "still",
@@ -58,10 +47,5 @@
     "intimate",
     "violent",
     "frozen-instability"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

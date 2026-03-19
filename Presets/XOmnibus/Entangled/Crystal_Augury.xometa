@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "schema_version": 1,
   "name": "Crystal Augury",
   "mood": "Entangled",
@@ -26,69 +23,32 @@
       "macro_space": 0.6
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Orphica",
-        "engineB": "Oracle",
-        "type": "PITCH_SYNC",
-        "amount": 0.62
-      }
-    ]
+    "type": "PITCH_SYNC",
+    "source": "ORPHICA",
+    "target": "ORACLE",
+    "amount": 0.62,
+    "intensity": "Moderate"
   },
-  "description": "Pitch sync locks ORPHICA's overtone series to ORACLE's microtonal breakpoint lattice.",
   "dna": {
-    "aggression": 0.06,
     "brightness": 0.84,
-    "density": 0.4,
+    "warmth": 0.36,
     "movement": 0.5,
+    "density": 0.4,
     "space": 0.78,
-    "warmth": 0.36
+    "aggression": 0.06
   },
-  "engines": [
-    "Orphica",
-    "Oracle"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.62,
-    "COUPLING": 0.62,
     "MOVEMENT": 0.5,
+    "COUPLING": 0.62,
     "SPACE": 0.76
   },
-  "mood": "Entangled",
-  "name": "Crystal Augury",
-  "parameters": {
-    "Oracle": {
-      "macro_character": 0.5,
-      "macro_coupling": 0.54,
-      "macro_movement": 0.55,
-      "macro_space": 0.6
-    },
-    "Orphica": {
-      "macro_character": 0.62,
-      "macro_coupling": 0.62,
-      "macro_movement": 0.5,
-      "macro_space": 0.76
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "orphica",
     "oracle",
     "pitch",
     "crystal"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

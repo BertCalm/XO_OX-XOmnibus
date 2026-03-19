@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oracle",
-        "type": "VELOCITY_COUPLE",
-        "amount": 0.7097
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.0769,
-    "brightness": 0.1534,
-    "density": 0.9471,
-    "movement": 0.371,
-    "space": 0.4439,
-    "warmth": 0.4499
-  },
+  "name": "PRESSURE LAYERS",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Opal",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.1377,
-    "COUPLING": 0.7943,
-    "MOVEMENT": 0.3669,
-    "SPACE": 0.2787
-  },
-  "mood": "Entangled",
-  "name": "PRESSURE LAYERS",
   "parameters": {
     "Opal": {
       "macro_character": 0.8487,
-      "macro_coupling": 0.7753,
       "macro_movement": 0.6781,
+      "macro_coupling": 0.7753,
       "macro_space": 0.1262
     },
     "Oracle": {
       "macro_character": 0.236,
-      "macro_coupling": 0.7449,
       "macro_movement": 0.6452,
+      "macro_coupling": 0.7449,
       "macro_space": 0.9495
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "VELOCITY_COUPLE",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.7097
+  },
+  "dna": {
+    "brightness": 0.1534,
+    "warmth": 0.4499,
+    "movement": 0.371,
+    "density": 0.9471,
+    "space": 0.4439,
+    "aggression": 0.0769
+  },
+  "macros": {
+    "CHARACTER": 0.1377,
+    "MOVEMENT": 0.3669,
+    "COUPLING": 0.7943,
+    "SPACE": 0.2787
+  },
   "tags": [
     "granite",
     "dense",
@@ -59,10 +48,5 @@
     "crushing",
     "entangled",
     "heavy"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

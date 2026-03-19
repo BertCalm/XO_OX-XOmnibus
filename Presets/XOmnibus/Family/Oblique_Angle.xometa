@@ -1,44 +1,13 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": null,
-  "couplingIntensity": "None",
-  "created": "2026-03-16",
-  "description": "OBLIQUE at its most itself — harmonics arriving from an unexpected direction. Not wrong, just off-axis. The perspective that reframes the room.",
-  "dna": {
-    "aggression": 0.32,
-    "brightness": 0.55,
-    "density": 0.45,
-    "movement": 0.62,
-    "space": 0.6,
-    "warmth": 0.5
-  },
+  "schema_version": 1,
+  "name": "Oblique Angle",
+  "mood": "Family",
   "engines": [
     "Oblique"
   ],
-<<<<<<< HEAD
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "ANGLE",
-    "SKEW",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Family",
-  "name": "Oblique Angle",
-  "parameters": {
-    "Oblique": {}
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OBLIQUE at its most itself — harmonics arriving from an unexpected direction. Not wrong, just off-axis. The perspective that reframes the room.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "family",
     "extended-family",
@@ -48,10 +17,14 @@
     "unexpected",
     "batch2-extended"
   ],
+  "macroLabels": [
+    "ANGLE",
+    "SKEW",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -69,5 +42,4 @@
     "space": 0.6,
     "aggression": 0.32
   }
->>>>>>> origin/v1-launch-prep
 }

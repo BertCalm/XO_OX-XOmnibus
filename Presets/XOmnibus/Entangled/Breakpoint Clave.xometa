@@ -1,61 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.72,
-        "engineA": "Oracle",
-        "engineB": "Ole",
-        "type": "VELOCITY_COUPLE"
-      }
-    ]
-  },
-  "couplingIntensity": "Deep",
-  "description": "Oracle breakpoints velocity-drive OLE clave accents — prophetic rhythm.",
-  "dna": {
-    "aggression": 0.7,
-    "brightness": 0.55,
-    "density": 0.62,
-    "movement": 0.72,
-    "space": 0.4,
-    "warmth": 0.68
-  },
-  "engines": [
-    "Oracle",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.635,
-    "COUPLING": 0.72,
-    "MOVEMENT": 0.66,
-    "SPACE": 0.45
-  },
-  "mood": "Entangled",
-  "name": "Breakpoint Clave",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.62,
-      "macro_space": 0.35
-    },
-    "Oracle": {
-      "macro_character": 0.55,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.7,
-      "macro_space": 0.55
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
-=======
   "schema_version": 1,
   "name": "Breakpoint Clave",
   "mood": "Entangled",
@@ -66,7 +9,6 @@
   "author": "XO_OX Designs",
   "version": "1.0",
   "description": "Oracle breakpoints velocity-drive OLE clave accents — prophetic rhythm.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "coupling",
@@ -75,10 +17,14 @@
     "clave",
     "velocity"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0"
-=======
   "dna": {
     "brightness": 0.55,
     "warmth": 0.68,
@@ -118,5 +64,4 @@
     "SPACE": 0.45
   },
   "sequencer": null
->>>>>>> origin/v1-launch-prep
 }

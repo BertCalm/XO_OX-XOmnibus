@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Overlap",
-        "type": "RHYTHM_SYNC",
-        "amount": 0.555
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.924,
-    "brightness": 0.517,
-    "density": 0.406,
-    "movement": 0.241,
-    "space": 0.555,
-    "warmth": 0.039
-  },
+  "name": "COLD COVENANT",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Overlap"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.746,
-    "COUPLING": 0.703,
-    "MOVEMENT": 0.331,
-    "SPACE": 0.271
-  },
-  "mood": "Family",
-  "name": "COLD COVENANT",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.793,
-      "macro_coupling": 0.222,
       "macro_movement": 0.093,
+      "macro_coupling": 0.222,
       "macro_space": 0.692
     },
     "Overlap": {
       "macro_character": 0.306,
-      "macro_coupling": 0.473,
       "macro_movement": 0.582,
+      "macro_coupling": 0.473,
       "macro_space": 0.531
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "RHYTHM_SYNC",
+    "source": "ODDFELIX",
+    "target": "OVERLAP",
+    "amount": 0.555
+  },
+  "dna": {
+    "brightness": 0.517,
+    "warmth": 0.039,
+    "movement": 0.241,
+    "density": 0.406,
+    "space": 0.555,
+    "aggression": 0.924
+  },
+  "macros": {
+    "CHARACTER": 0.746,
+    "MOVEMENT": 0.331,
+    "COUPLING": 0.703,
+    "SPACE": 0.271
+  },
   "tags": [
     "family",
     "cold",
     "xlow-warmth"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

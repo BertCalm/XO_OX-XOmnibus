@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "OVERDRIVE",
   "version": "1.0",
   "mood": "Entangled",
@@ -23,66 +20,29 @@
       "macro_space": 0.902
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overdub",
-        "engineB": "Osprey",
-        "type": "AMPLITUDE_MOD",
-        "amount": 0.669
-      }
-    ]
+    "type": "AMPLITUDE_MOD",
+    "source": "OVERDUB",
+    "target": "OSPREY",
+    "amount": 0.669
   },
   "dna": {
-    "aggression": 0.974,
     "brightness": 0.924,
-    "density": 0.864,
+    "warmth": 0.041,
     "movement": 0.915,
+    "density": 0.864,
     "space": 0.081,
-    "warmth": 0.041
+    "aggression": 0.974
   },
-  "engines": [
-    "Overdub",
-    "Osprey"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.771,
-    "COUPLING": 0.265,
     "MOVEMENT": 0.915,
+    "COUPLING": 0.265,
     "SPACE": 0.211
   },
-  "mood": "Entangled",
-  "name": "OVERDRIVE",
-  "parameters": {
-    "Osprey": {
-      "macro_character": 0.171,
-      "macro_coupling": 0.624,
-      "macro_movement": 0.889,
-      "macro_space": 0.902
-    },
-    "Overdub": {
-      "macro_character": 0.641,
-      "macro_coupling": 0.592,
-      "macro_movement": 0.941,
-      "macro_space": 0.581
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "entangled",
     "storm",
     "vortex"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

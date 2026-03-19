@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "RADIANT PILLAR",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,67 +20,30 @@
       "macro_space": 0.945
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ouroboros",
-        "engineB": "Orphica",
-        "type": "HARMONIC_LOCK",
-        "amount": 0.355
-      }
-    ]
+    "type": "HARMONIC_LOCK",
+    "source": "OUROBOROS",
+    "target": "ORPHICA",
+    "amount": 0.355
   },
   "dna": {
-    "aggression": 0.919,
     "brightness": 0.898,
-    "density": 0.309,
+    "warmth": 0.591,
     "movement": 0.75,
+    "density": 0.309,
     "space": 0.551,
-    "warmth": 0.591
+    "aggression": 0.919
   },
-  "engines": [
-    "Ouroboros",
-    "Orphica"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.339,
-    "COUPLING": 0.479,
     "MOVEMENT": 0.513,
+    "COUPLING": 0.479,
     "SPACE": 0.901
   },
-  "mood": "Foundation",
-  "name": "RADIANT PILLAR",
-  "parameters": {
-    "Orphica": {
-      "macro_character": 0.33,
-      "macro_coupling": 0.288,
-      "macro_movement": 0.694,
-      "macro_space": 0.945
-    },
-    "Ouroboros": {
-      "macro_character": 0.348,
-      "macro_coupling": 0.67,
-      "macro_movement": 0.333,
-      "macro_space": 0.858
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "bright",
     "extreme",
     "high-aggression"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

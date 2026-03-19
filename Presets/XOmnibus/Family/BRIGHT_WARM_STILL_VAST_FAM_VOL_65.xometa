@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "BRIGHT_WARM_STILL_VAST_FAM_VOL_65",
   "version": "1.0",
   "mood": "Family",
@@ -23,68 +20,31 @@
       "macro_space": 0.87
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Ohm",
-        "engineB": "Oblong",
-        "type": "ENVELOPE_MIRROR",
-        "amount": 0.653
-      }
-    ]
+    "type": "ENVELOPE_MIRROR",
+    "source": "OHM",
+    "target": "OBLONG",
+    "amount": 0.653
   },
   "dna": {
-    "aggression": 0.398,
     "brightness": 0.919,
-    "density": 0.497,
+    "warmth": 0.933,
     "movement": 0.033,
+    "density": 0.497,
     "space": 0.874,
-    "warmth": 0.933
+    "aggression": 0.398
   },
-  "engines": [
-    "Ohm",
-    "Oblong"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.91,
-    "COUPLING": 0.455,
     "MOVEMENT": 0.019,
+    "COUPLING": 0.455,
     "SPACE": 0.867
   },
-  "mood": "Family",
-  "name": "Solar Canyon",
-  "parameters": {
-    "Oblong": {
-      "macro_character": 0.896,
-      "macro_coupling": 0.477,
-      "macro_movement": 0.02,
-      "macro_space": 0.87
-    },
-    "Ohm": {
-      "macro_character": 0.924,
-      "macro_coupling": 0.433,
-      "macro_movement": 0.019,
-      "macro_space": 0.865
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "family",
     "warm",
     "still",
     "vast",
     "bright"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

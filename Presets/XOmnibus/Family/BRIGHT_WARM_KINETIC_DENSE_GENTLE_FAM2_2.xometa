@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "OddfeliX",
-        "engineB": "Origami",
-        "type": "TIMBRE_BLEND",
-        "amount": 0.446
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.02,
-    "brightness": 0.932,
-    "density": 0.872,
-    "movement": 0.942,
-    "space": 0.629,
-    "warmth": 0.939
-  },
+  "name": "BRIGHT WARM KINETIC DENSE GENTLE FAM2 2",
+  "version": "1.0",
+  "mood": "Family",
   "engines": [
     "OddfeliX",
     "Origami"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.935,
-    "COUPLING": 0.446,
-    "MOVEMENT": 0.942,
-    "SPACE": 0.629
-  },
-  "mood": "Family",
-  "name": "BRIGHT WARM KINETIC DENSE G...",
   "parameters": {
     "OddfeliX": {
       "macro_character": 0.935,
-      "macro_coupling": 0.446,
       "macro_movement": 0.942,
+      "macro_coupling": 0.446,
       "macro_space": 0.629
     },
     "Origami": {
       "macro_character": 0.962,
-      "macro_coupling": 0.41,
       "macro_movement": 0.981,
+      "macro_coupling": 0.41,
       "macro_space": 0.652
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "TIMBRE_BLEND",
+    "source": "ODDFELIX",
+    "target": "ORIGAMI",
+    "amount": 0.446
+  },
+  "dna": {
+    "brightness": 0.932,
+    "warmth": 0.939,
+    "movement": 0.942,
+    "density": 0.872,
+    "space": 0.629,
+    "aggression": 0.02
+  },
+  "macros": {
+    "CHARACTER": 0.935,
+    "MOVEMENT": 0.942,
+    "COUPLING": 0.446,
+    "SPACE": 0.629
+  },
   "tags": [
     "family",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "dense",
     "gentle"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

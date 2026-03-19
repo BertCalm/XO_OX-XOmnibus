@@ -1,19 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obsidian",
-        "engineB": "OddOscar",
-        "type": "RESONANCE_SHARE",
-        "amount": 0.807
-      }
-    ]
-  },
-  "couplingIntensity": "High",
-  "created": "2026-03-16",
-=======
   "schema_version": 1,
   "name": "BRIGHT_COLD_STILL_SPARSE_INTIMATE_FND_1",
   "mood": "Foundation",
@@ -23,55 +8,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
->>>>>>> origin/v1-launch-prep
   "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Corner: BRIGHT_COLD_STILL_SPARSE_INTIMATE. Variant 1.",
-  "dna": {
-    "aggression": 0.651,
-    "brightness": 0.931,
-    "density": 0.056,
-    "movement": 0.113,
-    "space": 0.023,
-    "warmth": 0.095
-  },
-  "engines": [
-    "Obsidian",
-    "OddOscar"
-  ],
-  "legacy": {
-    "sourceCategory": null,
-    "sourceInstrument": null,
-    "sourcePresetName": null
-  },
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.919,
-    "COUPLING": 0.018,
-    "MOVEMENT": 0.116,
-    "SPACE": 0.065
-  },
-  "mood": "Foundation",
-  "name": "Glass Fang",
-  "parameters": {
-    "Obsidian": {
-      "macro_character": 0.918,
-      "macro_coupling": 0.0,
-      "macro_movement": 0.21,
-      "macro_space": 0.103
-    },
-    "OddOscar": {
-      "macro_character": 0.919,
-      "macro_coupling": 0.037,
-      "macro_movement": 0.022,
-      "macro_space": 0.027
-    }
-  },
-  "schema_version": 1,
-  "sequencer": null,
   "tags": [
     "sparse",
     "extreme",
@@ -82,10 +19,14 @@
     "intimate",
     "foundation"
   ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
   "tempo": null,
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "created": "2026-03-16",
   "legacy": {
     "sourceInstrument": null,
@@ -127,5 +68,4 @@
     "COUPLING": 0.018,
     "SPACE": 0.065
   }
->>>>>>> origin/v1-launch-prep
 }

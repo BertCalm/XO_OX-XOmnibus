@@ -1,49 +1,37 @@
 {
-  "author": "XO_OX Designs",
-  "dna": {
-    "aggression": 0.03,
-    "brightness": 0.83,
-    "density": 0.08,
-    "movement": 0.2,
-    "space": 0.88,
-    "warmth": 0.05
-  },
+  "name": "OHM Below Zero",
+  "version": "1.0",
+  "mood": "Aether",
   "engines": [
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.26,
-    "COUPLING": 0.4,
-    "MOVEMENT": 0.2,
-    "SPACE": 0.88
-  },
-  "mood": "Aether",
-  "name": "OHM Below Zero",
   "parameters": {
     "Ohm": {
       "ohm_macro_character": 0.21,
-      "ohm_macro_coupling": 0.12,
       "ohm_macro_movement": 0.19,
+      "ohm_macro_coupling": 0.12,
       "ohm_macro_space": 0.88
     }
   },
-  "schema_version": 1,
+  "dna": {
+    "brightness": 0.83,
+    "warmth": 0.05,
+    "movement": 0.2,
+    "density": 0.08,
+    "space": 0.88,
+    "aggression": 0.03
+  },
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.4,
+    "SPACE": 0.88
+  },
   "tags": [
     "aether",
     "frozen",
     "crystalline",
     "ohm",
     "zero"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

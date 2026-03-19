@@ -1,86 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.669,
-        "engineA": "Overlap",
-        "engineB": "Outwit",
-        "type": "SYNC_LFO"
-      }
-    ]
-  },
-  "couplingIntensity": "Moderate",
-  "description": "OVERLAP frond-spread follows OUTWIT Wolfram frontier — the jellyfish traces the octopus's thought",
-  "dna": {
-    "aggression": 0.375,
-    "brightness": 0.782,
-    "density": 0.675,
-    "movement": 0.7,
-    "space": 0.891,
-    "warmth": 0.791
-  },
+  "schema_version": 1,
+  "name": "Web Pattern",
+  "mood": "Entangled",
   "engines": [
     "Overlap",
     "Outwit"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "mood": "Entangled",
-  "name": "Web Pattern",
-  "parameters": {
-    "Outwit": {
-      "owit_ampAttack": 0.117,
-      "owit_ampRelease": 0.609,
-      "owit_arms": 6,
-      "owit_cellSize": 0.41,
-      "owit_couplingBus": 0,
-      "owit_couplingLevel": 0.529,
-      "owit_density": 0.481,
-      "owit_evolveRate": 0.621,
-      "owit_filterCutoff": 0.45,
-      "owit_filterReso": 0.364,
-      "owit_mutateProb": 0.105,
-      "owit_outputLevel": 0.677,
-      "owit_pitchSpread": 0.276,
-      "owit_rule": 184
-    },
-    "Overlap": {
-      "olap_couplingBus": 0,
-      "olap_couplingLevel": 0.702,
-      "olap_damping": 0.501,
-      "olap_decay": 0.729,
-      "olap_diffusion": 0.847,
-      "olap_earlyMix": 0.282,
-      "olap_filterCutoff": 0.674,
-      "olap_filterReso": 0.323,
-      "olap_lateMix": 0.626,
-      "olap_modDepth": 0.203,
-      "olap_modRate": 0.343,
-      "olap_outputLevel": 0.66,
-      "olap_preDelay": 0.165,
-      "olap_size": 0.645
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.375,
-    "brightness": 0.625,
-    "density": 0.675,
-    "movement": 0.7,
-    "space": 0.7,
-    "warmth": 0.5
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "OVERLAP frond-spread follows OUTWIT Wolfram frontier — the jellyfish traces the octopus's thought",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "coupling",
     "entangled",
@@ -93,9 +21,6 @@
     "wolfram",
     "cellular-automata"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "CHARACTER",
     "MOVEMENT",
@@ -163,5 +88,4 @@
       }
     ]
   }
->>>>>>> origin/v1-launch-prep
 }

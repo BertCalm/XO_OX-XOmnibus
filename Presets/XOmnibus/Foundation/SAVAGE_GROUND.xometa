@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "author": "XO_OX Designs",
-=======
   "name": "SAVAGE GROUND",
   "version": "1.0",
   "mood": "Foundation",
@@ -23,66 +20,29 @@
       "macro_space": 0.599
     }
   },
->>>>>>> origin/v1-launch-prep
   "coupling": {
-    "pairs": [
-      {
-        "engineA": "Overworld",
-        "engineB": "Ole",
-        "type": "FREQUENCY_SHIFT",
-        "amount": 0.683
-      }
-    ]
+    "type": "FREQUENCY_SHIFT",
+    "source": "OVERWORLD",
+    "target": "OLE",
+    "amount": 0.683
   },
   "dna": {
-    "aggression": 0.957,
     "brightness": 0.545,
-    "density": 0.886,
+    "warmth": 0.796,
     "movement": 0.377,
+    "density": 0.886,
     "space": 0.595,
-    "warmth": 0.796
+    "aggression": 0.957
   },
-  "engines": [
-    "Overworld",
-    "Ole"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
   "macros": {
     "CHARACTER": 0.604,
-    "COUPLING": 0.683,
     "MOVEMENT": 0.377,
+    "COUPLING": 0.683,
     "SPACE": 0.595
   },
-  "mood": "Foundation",
-  "name": "SAVAGE GROUND",
-  "parameters": {
-    "Ole": {
-      "macro_character": 0.548,
-      "macro_coupling": 0.443,
-      "macro_movement": 0.662,
-      "macro_space": 0.599
-    },
-    "Overworld": {
-      "macro_character": 0.643,
-      "macro_coupling": 0.325,
-      "macro_movement": 0.598,
-      "macro_space": 0.503
-    }
-  },
-  "schema_version": 1,
   "tags": [
     "foundation",
     "aggressive",
     "harsh"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

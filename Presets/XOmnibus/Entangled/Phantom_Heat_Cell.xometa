@@ -1,64 +1,48 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Obscura",
-        "engineB": "Ohm",
-        "type": "FEEDBACK",
-        "amount": 0.88
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.27,
-    "brightness": 0.11,
-    "density": 0.61,
-    "movement": 0.29,
-    "space": 0.23,
-    "warmth": 0.72
-  },
+  "name": "Phantom Heat Cell",
+  "version": "1.0",
+  "mood": "Entangled",
   "engines": [
     "Obscura",
     "Ohm"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.26,
-    "COUPLING": 0.82,
-    "MOVEMENT": 0.29,
-    "SPACE": 0.23
-  },
-  "mood": "Entangled",
-  "name": "Phantom Heat Cell",
   "parameters": {
     "Obscura": {
       "macro_character": 0.17,
-      "macro_coupling": 0.66,
       "macro_movement": 0.33,
+      "macro_coupling": 0.66,
       "macro_space": 0.67
     },
     "Ohm": {
       "macro_character": 0.67,
-      "macro_coupling": 0.59,
       "macro_movement": 0.47,
+      "macro_coupling": 0.59,
       "macro_space": 0.66
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "FEEDBACK",
+    "source": "OBSCURA",
+    "target": "OHM",
+    "amount": 0.88
+  },
+  "dna": {
+    "brightness": 0.11,
+    "warmth": 0.72,
+    "movement": 0.29,
+    "density": 0.61,
+    "space": 0.23,
+    "aggression": 0.27
+  },
+  "macros": {
+    "CHARACTER": 0.26,
+    "MOVEMENT": 0.29,
+    "COUPLING": 0.82,
+    "SPACE": 0.23
+  },
   "tags": [
     "entangled",
     "dark",
     "low-brightness"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }

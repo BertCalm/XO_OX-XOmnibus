@@ -1,92 +1,14 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "amount": 0.6926,
-        "source": "Ouroboros",
-        "target": "Oceanic",
-        "type": "CHAOS_INJECT"
-      }
-    ]
-  },
-  "couplingIntensity": "Medium",
-  "description": "Bright Warm Intimate Violent character entanglement — OUROBOROS × OCEANIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
-  "dna": {
-    "aggression": 0.9191,
-    "brightness": 0.8779,
-    "density": 0.4915,
-    "movement": 0.5868,
-    "space": 0.0652,
-    "warmth": 0.9178
-  },
+  "schema_version": 1,
+  "name": "BRIGHT_WARM_INTIMATE_VIOLENT_ENT_1",
+  "mood": "Entangled",
   "engines": [
     "Ouroboros",
     "Oceanic"
   ],
-<<<<<<< HEAD
-  "macroLabels": [
-    "COIL",
-    "CYCLE",
-    "FEED",
-    "ABYSS"
-  ],
-  "macros": {
-    "CHARACTER": 0.8979,
-    "COUPLING": 0.6926,
-    "MOVEMENT": 0.5868,
-    "SPACE": 0.0652
-  },
-  "mood": "Entangled",
-  "name": "Peach Storm 3",
-  "parameters": {
-    "Oceanic": {
-      "amp_attack": 0.1816,
-      "amp_release": 0.1148,
-      "coupling_level": 0.9289,
-      "density": 0.5007,
-      "drive": 0.7953,
-      "filter_cutoff": 0.816,
-      "filter_resonance": 0.5422,
-      "macro_character": 0.9035,
-      "macro_coupling": 0.8997,
-      "macro_movement": 0.6216,
-      "macro_space": 0.101,
-      "output_level": 0.7904,
-      "reverb_mix": 0.2224,
-      "reverb_size": 0.2211
-    },
-    "Ouroboros": {
-      "amp_attack": 0.2223,
-      "amp_release": 0.1605,
-      "coupling_level": 0.9019,
-      "density": 0.518,
-      "drive": 0.8148,
-      "filter_cutoff": 0.8408,
-      "filter_resonance": 0.5636,
-      "macro_character": 0.8964,
-      "macro_coupling": 0.9231,
-      "macro_movement": 0.5841,
-      "macro_space": 0.0355,
-      "output_level": 0.8243,
-      "reverb_mix": 0.1562,
-      "reverb_size": 0.2393
-    }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9191,
-    "brightness": 0.8779,
-    "density": 0.4915,
-    "movement": 0.5868,
-    "space": 0.0652,
-    "warmth": 0.9178
-  },
-=======
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Bright Warm Intimate Violent character entanglement — OUROBOROS × OCEANIC via Chaos Inject. Extreme DNA zones push sound design to the edges.",
->>>>>>> origin/v1-launch-prep
   "tags": [
     "entangled",
     "bright",
@@ -95,9 +17,6 @@
     "violent",
     "resonant"
   ],
-<<<<<<< HEAD
-  "version": "1.0.0"
-=======
   "macroLabels": [
     "COIL",
     "CYCLE",
@@ -175,5 +94,4 @@
     "COUPLING": 0.6926,
     "SPACE": 0.0652
   }
->>>>>>> origin/v1-launch-prep
 }

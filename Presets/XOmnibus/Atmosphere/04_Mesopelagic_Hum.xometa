@@ -1,22 +1,17 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Long evolving drone with all four subharmonic divisions and massive reverb wash",
-  "dna": {
-    "aggression": 0.05,
+  "schema_version": 1,
+  "name": "Mesopelagic Hum",
+  "mood": "Atmosphere",
+  "sonic_dna": {
     "brightness": 0.2,
-    "density": 0.8,
+    "warmth": 0.85,
+    "aggression": 0.05,
     "movement": 0.4,
-    "space": 1.0,
-    "warmth": 0.85
+    "density": 0.8,
+    "space": 1.0
   },
   "engines": [
     "Owlfish"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0.0",
@@ -26,7 +21,6 @@
     "ambient",
     "sub",
     "evolving"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "DEPTH",
@@ -34,54 +28,21 @@
     "DEFENSE",
     "PRESSURE"
   ],
-  "mood": "Atmosphere",
-  "name": "Mesopelagic Hum",
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.8,
+    "space": 1.0,
+    "aggression": 0.05
+  },
   "parameters": {
     "Owlfish": {
-<<<<<<< HEAD
-      "owl_ampAttack": 800,
-      "owl_ampDecay": 3000,
-      "owl_ampRelease": 5000,
-      "owl_ampSustain": 1.0,
-      "owl_armorDecay": 0.5,
-      "owl_armorDelay": 0.15,
-      "owl_armorDuck": 0.2,
-      "owl_armorScatter": 0.2,
-      "owl_armorThreshold": 0.9,
-      "owl_bodyFreq": 35,
-      "owl_bodyLevel": 0.5,
-      "owl_compAttack": 0.4,
-      "owl_compRatio": 0.3,
-      "owl_compRelease": 0.6,
-      "owl_compThreshold": 0.5,
-      "owl_couplingBus": 0,
-      "owl_couplingLevel": 0.5,
-      "owl_defense": 0.15,
-      "owl_depth": 0.7,
-      "owl_feedRate": 0.3,
-      "owl_feeding": 0.2,
-      "owl_filterCutoff": 0.45,
-      "owl_filterReso": 0.15,
-      "owl_filterTrack": 0.35,
-      "owl_fundWave": 0.1,
-      "owl_grainDensity": 0.1,
-      "owl_grainMix": 0.08,
-      "owl_grainPitch": 0.05,
-      "owl_grainSize": 0.4,
-=======
       "owl_portamento": 0.6,
->>>>>>> origin/v1-launch-prep
       "owl_legatoMode": 1,
-      "owl_mixtur": 0.15,
       "owl_morphGlide": 0.7,
-      "owl_outputLevel": 0.75,
-      "owl_outputPan": 0.0,
-      "owl_portamento": 0.6,
-      "owl_pressure": 0.45,
-      "owl_reverbDamp": 0.5,
-      "owl_reverbMix": 0.6,
-      "owl_reverbPreDelay": 0.4,
-      "owl_reverbSize": 0.85,
+      "owl_subMix": 0.75,
       "owl_subDiv1": 1,
       "owl_subDiv2": 2,
       "owl_subDiv3": 3,
@@ -90,24 +51,47 @@
       "owl_subLevel2": 0.55,
       "owl_subLevel3": 0.4,
       "owl_subLevel4": 0.25,
-      "owl_subMix": 0.75,
-      "owl_subWave": 0.2
+      "owl_mixtur": 0.15,
+      "owl_fundWave": 0.1,
+      "owl_subWave": 0.2,
+      "owl_bodyFreq": 35,
+      "owl_bodyLevel": 0.5,
+      "owl_compRatio": 0.3,
+      "owl_compThreshold": 0.5,
+      "owl_compAttack": 0.4,
+      "owl_compRelease": 0.6,
+      "owl_filterCutoff": 0.45,
+      "owl_filterReso": 0.15,
+      "owl_filterTrack": 0.35,
+      "owl_grainSize": 0.4,
+      "owl_grainDensity": 0.1,
+      "owl_grainPitch": 0.05,
+      "owl_grainMix": 0.08,
+      "owl_feedRate": 0.3,
+      "owl_armorThreshold": 0.9,
+      "owl_armorDecay": 0.5,
+      "owl_armorScatter": 0.2,
+      "owl_armorDuck": 0.2,
+      "owl_armorDelay": 0.15,
+      "owl_reverbSize": 0.85,
+      "owl_reverbDamp": 0.5,
+      "owl_reverbPreDelay": 0.4,
+      "owl_reverbMix": 0.6,
+      "owl_ampAttack": 800,
+      "owl_ampDecay": 3000,
+      "owl_ampSustain": 1.0,
+      "owl_ampRelease": 5000,
+      "owl_depth": 0.7,
+      "owl_feeding": 0.2,
+      "owl_defense": 0.15,
+      "owl_pressure": 0.45,
+      "owl_outputLevel": 0.75,
+      "owl_outputPan": 0.0,
+      "owl_couplingLevel": 0.5,
+      "owl_couplingBus": 0
     }
   },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.05,
-    "brightness": 0.2,
-    "density": 0.8,
-    "movement": 0.4,
-    "space": 1.0,
-    "warmth": 0.85
-  },
-  "tags": [
-    "drone",
-    "ambient",
-    "sub",
-    "evolving"
-  ],
-  "version": "1.0.0"
+  "coupling": {
+    "pairs": []
+  }
 }

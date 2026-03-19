@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ORIGAMI — dark extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.32,
-    "brightness": 0.05,
-    "density": 0.6,
-    "movement": 0.25,
-    "space": 0.52,
-    "warmth": 0.53
-  },
+  "schema_version": 1,
+  "name": "Folded Dark",
+  "mood": "Foundation",
   "engines": [
     "Origami"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,54 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Folded Dark",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.53,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.52,
+    "aggression": 0.32
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.53,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.52,
+    "aggression": 0.32
+  },
   "parameters": {
     "Origami": {
-<<<<<<< HEAD
-=======
       "ori_foldDepth": 0.76,
       "ori_foldRate": 0.44,
       "ori_filterCutoff": 0.82,
       "ori_filterReso": 0.89,
->>>>>>> origin/v1-launch-prep
       "ori_ampAttack": 344.3,
       "ori_ampDecay": 725.9,
-      "ori_ampRelease": 131.5,
       "ori_ampSustain": 0.61,
-      "ori_character": 0.28,
-      "ori_coupling": 0.24,
-      "ori_delayMix": 0.84,
-      "ori_filterCutoff": 0.82,
-      "ori_filterReso": 0.89,
-      "ori_foldDepth": 0.76,
-      "ori_foldRate": 0.44,
-      "ori_lfoDepth": 0.45,
+      "ori_ampRelease": 131.5,
       "ori_lfoRate": 0.86,
-      "ori_movement": 0.78,
+      "ori_lfoDepth": 0.45,
       "ori_reverbMix": 0.75,
-      "ori_space": 0.48
+      "ori_delayMix": 0.84,
+      "ori_character": 0.28,
+      "ori_movement": 0.78,
+      "ori_space": 0.48,
+      "ori_coupling": 0.24
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.32,
-    "brightness": 0.05,
-    "density": 0.6,
-    "movement": 0.25,
-    "space": 0.52,
-    "warmth": 0.53
-  },
-  "tags": [
-    "foundation",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

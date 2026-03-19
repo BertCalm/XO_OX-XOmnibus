@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "ORBITAL — bright extreme brightness preset for Foundation.",
-  "dna": {
-    "aggression": 0.55,
-    "brightness": 0.93,
-    "density": 0.5,
-    "movement": 0.83,
-    "space": 0.24,
-    "warmth": 0.66
-  },
+  "schema_version": 1,
+  "name": "Perihelion Flash",
+  "mood": "Foundation",
   "engines": [
     "Orbital"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "foundation",
     "bright",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,51 +19,44 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Foundation",
-  "name": "Perihelion Flash",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.93,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.5,
+    "space": 0.24,
+    "aggression": 0.55
+  },
+  "dna": {
+    "brightness": 0.93,
+    "warmth": 0.66,
+    "movement": 0.83,
+    "density": 0.5,
+    "space": 0.24,
+    "aggression": 0.55
+  },
   "parameters": {
     "Orbital": {
-<<<<<<< HEAD
-      "orb_ampAttack": 270.0,
-      "orb_ampDecay": 537.8,
-      "orb_ampRelease": 267.2,
-      "orb_ampSustain": 0.9,
-      "orb_character": 0.55,
-      "orb_coupling": 0.32,
-      "orb_delayMix": 0.81,
-=======
       "orb_orbitPeriod": 0.63,
->>>>>>> origin/v1-launch-prep
       "orb_eccentricity": 0.49,
       "orb_filterCutoff": 0.09,
       "orb_filterReso": 0.35,
-      "orb_lfoDepth": 0.29,
+      "orb_ampAttack": 270.0,
+      "orb_ampDecay": 537.8,
+      "orb_ampSustain": 0.9,
+      "orb_ampRelease": 267.2,
       "orb_lfoRate": 0.69,
-      "orb_movement": 0.45,
-      "orb_orbitPeriod": 0.63,
+      "orb_lfoDepth": 0.29,
       "orb_reverbMix": 0.95,
-      "orb_space": 0.31
+      "orb_delayMix": 0.81,
+      "orb_character": 0.55,
+      "orb_movement": 0.45,
+      "orb_space": 0.31,
+      "orb_coupling": 0.32
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.55,
-    "brightness": 0.93,
-    "density": 0.5,
-    "movement": 0.83,
-    "space": 0.24,
-    "warmth": 0.66
-  },
-  "tags": [
-    "foundation",
-    "bright",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

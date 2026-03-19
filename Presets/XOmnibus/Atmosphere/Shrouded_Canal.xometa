@@ -1,22 +1,9 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "OBSCURA — dark extreme brightness preset for Atmosphere.",
-  "dna": {
-    "aggression": 0.18,
-    "brightness": 0.05,
-    "density": 0.45,
-    "movement": 0.8,
-    "space": 0.88,
-    "warmth": 0.35
-  },
+  "schema_version": 1,
+  "name": "Shrouded Canal",
+  "mood": "Atmosphere",
   "engines": [
     "Obscura"
-<<<<<<< HEAD
-=======
   ],
   "author": "XO_OX",
   "version": "1.0",
@@ -25,7 +12,6 @@
     "atmosphere",
     "dark",
     "extreme-brightness"
->>>>>>> origin/v1-launch-prep
   ],
   "macroLabels": [
     "CHARACTER",
@@ -33,52 +19,43 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Atmosphere",
-  "name": "Shrouded Canal",
+  "couplingIntensity": "None",
+  "sonic_dna": {
+    "brightness": 0.05,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.18
+  },
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obscura": {
-<<<<<<< HEAD
-=======
       "obsc_veilDepth": 0.9,
       "obsc_filterCutoff": 0.0,
       "obsc_filterReso": 0.86,
->>>>>>> origin/v1-launch-prep
       "obsc_ampAttack": 120.0,
       "obsc_ampDecay": 108.3,
-      "obsc_ampRelease": 143.7,
       "obsc_ampSustain": 0.48,
-      "obsc_character": 0.24,
-      "obsc_coupling": 0.05,
-      "obsc_delayMix": 0.79,
-      "obsc_filterCutoff": 0.0,
-      "obsc_filterReso": 0.86,
-      "obsc_lfoDepth": 0.03,
+      "obsc_ampRelease": 143.7,
       "obsc_lfoRate": 0.66,
-      "obsc_movement": 0.32,
+      "obsc_lfoDepth": 0.03,
       "obsc_reverbMix": 0.01,
+      "obsc_delayMix": 0.79,
+      "obsc_character": 0.24,
+      "obsc_movement": 0.32,
       "obsc_space": 0.17,
-      "obsc_veilDepth": 0.9
+      "obsc_coupling": 0.05
     }
   },
-<<<<<<< HEAD
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.18,
-    "brightness": 0.05,
-    "density": 0.45,
-    "movement": 0.8,
-    "space": 0.88,
-    "warmth": 0.35
-  },
-  "tags": [
-    "atmosphere",
-    "dark",
-    "extreme-brightness"
-  ],
-  "version": "1.0"
-=======
   "coupling": {
     "pairs": []
   }
->>>>>>> origin/v1-launch-prep
 }

@@ -1,56 +1,45 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": [
-      {
-        "engineA": "Opal",
-        "engineB": "Oracle",
-        "type": "HARMONIC_FOLD",
-        "amount": 0.874
-      }
-    ]
-  },
-  "dna": {
-    "aggression": 0.97,
-    "brightness": 0.9596,
-    "density": 0.0974,
-    "movement": 0.9156,
-    "space": 0.5001,
-    "warmth": 0.0393
-  },
+  "name": "BRIGHT_COLD_KINETIC_SPARSE_VIOLENT_FLX2_5",
+  "version": "1.0",
+  "mood": "Flux",
   "engines": [
     "Opal",
     "Oracle"
   ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.488,
-    "COUPLING": 0.1164,
-    "MOVEMENT": 0.9034,
-    "SPACE": 0.5085
-  },
-  "mood": "Flux",
-  "name": "Chrome Wrath",
   "parameters": {
     "Opal": {
       "macro_character": 0.472,
-      "macro_coupling": 0.1227,
       "macro_movement": 0.8867,
+      "macro_coupling": 0.1227,
       "macro_space": 0.5218
     },
     "Oracle": {
       "macro_character": 0.504,
-      "macro_coupling": 0.11,
       "macro_movement": 0.92,
+      "macro_coupling": 0.11,
       "macro_space": 0.4952
     }
   },
-  "schema_version": 1,
+  "coupling": {
+    "type": "HARMONIC_FOLD",
+    "source": "OPAL",
+    "target": "ORACLE",
+    "amount": 0.874
+  },
+  "dna": {
+    "brightness": 0.9596,
+    "warmth": 0.0393,
+    "movement": 0.9156,
+    "density": 0.0974,
+    "space": 0.5001,
+    "aggression": 0.97
+  },
+  "macros": {
+    "CHARACTER": 0.488,
+    "MOVEMENT": 0.9034,
+    "COUPLING": 0.1164,
+    "SPACE": 0.5085
+  },
   "tags": [
     "flux",
     "bright",
@@ -58,10 +47,5 @@
     "kinetic",
     "sparse",
     "violent"
-<<<<<<< HEAD
-  ],
-  "version": "1.0"
-=======
   ]
->>>>>>> origin/v1-launch-prep
 }
