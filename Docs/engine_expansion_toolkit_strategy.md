@@ -30,11 +30,25 @@ What changes post-V1:
 
 ### Channel B: Community Engines (Third-Party)
 
-This is the big unlock. The `SynthEngine` interface is already clean enough to
-serve as a public API — 10 methods, well-documented responsibilities, no hidden
-dependencies. The work is making it *safe* and *discoverable*.
+> **⚠️ BOARD RESOLUTION (2026-03-18): Channel B same-process `.dylib` loading
+> DEFERRED to V2 minimum.** D2 (Security) found that the stated safety model
+> (watchdog + constraint declarations) cannot enforce "no threads, no file I/O,
+> no network" at the application layer — a loaded `.dylib` can call `pthread_create`,
+> `fopen`, or `mmap(..., PROT_EXEC)` without restriction. Memory corruption can
+> occur before any watchdog fires. Enforcement requires OS-level process isolation,
+> which defeats real-time audio requirements.
+>
+> **V1.x community expansion proceeds via the preset-only community pack program**
+> (`.xometa` + sample bundles, no binary loading). This achieves community economics
+> safely. The SDK technical design below is preserved as the V2 target architecture,
+> pending a process-isolation solution (separate audio process + IPC, or Apple/MS
+> code-signing with notarization).
 
-**Technical architecture:**
+The `SynthEngine` interface is already clean enough to serve as a public API — 10
+methods, well-documented responsibilities, no hidden dependencies. The work is
+making it *safe* and *discoverable*. **The architecture below is the V2 target.**
+
+**Technical architecture (V2 target — not V1.x):**
 
 ```
 Community Engine (.dylib / .framework / .so)
@@ -52,21 +66,22 @@ XOmnibus Host
     │   └── ~/.local/share/XOmnibus/Engines/ (Linux)
     ├── Loads modules at startup (not on audio thread)
     ├── Validates interface version compatibility
-    ├── Sandboxes: no file system access, no network, no UI
+    ├── REQUIRED: Code signing + notarization (macOS) / Authenticode (Windows)
+    ├── REQUIRED: Process isolation or OS-level sandboxing
     └── Registers validated engines into EngineRegistry
 ```
 
-**Safety model:**
+**Safety model (V2 — enhanced per Board D2 findings):**
 
-Community engines run in the same process (required for real-time audio), but
-XOmnibus enforces constraints:
+Community engines must run with verifiable trust boundaries:
 
 | Constraint | How |
 |-----------|-----|
+| Code signing | Mandatory — Apple Developer ID + notarization (macOS) |
 | Interface version check | Engine declares `XOMNIBUS_API_VERSION` — reject mismatches |
 | Parameter namespace collision | Reject if prefix collides with existing engine |
 | Engine ID collision | Reject duplicate IDs |
-| Crash isolation | Wrap `renderBlock()` in a watchdog — if an engine stalls for >100ms, mute it and flag to user |
+| Process isolation | Separate audio process + IPC (latency ~1-5ms) — prevents memory corruption |
 | Resource limits | Engines declare max voices and max buffer size in metadata |
 | No UI injection | Community engines have no UI access — XOmnibus auto-generates controls from parameter layout |
 
@@ -77,11 +92,12 @@ XOmnibus enforces constraints:
 - Ship `.xometa` presets
 - Define macro mappings
 
-**What community engines CANNOT do:**
+**What community engines CANNOT do (enforced by process isolation):**
 - Custom UI (auto-generated from parameters)
-- File I/O (no sample loading — that's a deliberate scope limit for V1 community)
+- Access host memory (process boundary)
+- File I/O beyond declared sandbox paths
 - Network access
-- Spawn threads
+- Spawn threads beyond declared limit
 
 ### Channel C: OBRIX — The Synthesis Toy Box (see Part 3)
 
@@ -309,12 +325,13 @@ class ObrixEngine : public SynthEngine {
     ObrixPatchMatrix patchMatrix;
 
     void renderBlock(...) override {
-        // 1. Read patch matrix from parameters
+        // 1. Snapshot patch matrix into BrixPatchState (per-block, atomic)
         // 2. Process modulators (they need no audio input)
-        // 3. Process sources
-        // 4. Process processors in chain order
+        // 3. Process sources in snapshot order
+        // 4. Process processors in chain order per snapshot
         // 5. Apply modulation
-        // 6. Write output
+        // 6. Denormal flush on all feedback accumulators
+        // 7. Write output
     }
 };
 ```
@@ -324,12 +341,20 @@ class ObrixEngine : public SynthEngine {
 - **Fixed brick pool, not dynamic.** 2 sources + 3 processors + 4 modulators + 3 effects
   = 12 bricks max per instance. Pre-allocated in `prepare()`. Inactive bricks cost
   zero CPU. This avoids audio-thread allocation entirely.
+- **ParamSnapshot for routing (Board D6 mandate).** The patch matrix is captured into
+  a `BrixPatchState` struct at the start of each `renderBlock()`. UI parameter changes
+  take effect at the next block boundary (≤50ms latency). This prevents race conditions
+  between the UI thread writing routing parameters and the audio thread reading them.
+- **Denormal protection (Board D6 mandate).** All feedback paths in the brick DSP
+  (comb filter, feedback delay, wavefolder, ring mod) must include denormal flush:
+  `if (std::abs(v) < 1e-30f) v = 0.0f;` — required by XOmnibus Architecture Rules.
 - **Patch state is parameters.** The routing matrix is stored as integer parameters
   (`obrix_source1_type`, `obrix_mod1_target`, `obrix_mod1_depth`, etc.). This means
   patches are standard `.xometa` presets and participate in the full preset system.
 - **Multi-instance safe.** Each OBRIX instance in a different slot gets its own
-  independent brick pool and patch matrix. The parameter prefix handles namespacing
-  per slot automatically (same as any other engine in multi-slot configs).
+  independent brick pool and patch matrix. Slot-level namespacing uses the standard
+  `slot_N_` prefix mechanism (same as any other engine in multi-slot configs).
+  Test: 4-instance preset save/load must produce no parameter collision.
 - **Coupling-compatible.** OBRIX outputs coupling signals just like any engine.
   Couple your hand-built OBRIX patch with ORBITAL, OUROBOROS — or another OBRIX.
 - **No code generation.** OBRIX doesn't "export" to a real engine. It IS a real
@@ -899,24 +924,31 @@ ObrixEngine (DSP — identical everywhere)
 
 ### Accent Color
 
-**Reef Teal `#2CB5A0`** — sits between OCEANIC's Phosphorescent Teal (`#00B4A0`)
-and ORGANON's Bioluminescent Cyan (`#00CED1`) but distinct from both. Warmer,
-more mineral, like sun-bleached coral viewed through clear tropical water.
+**Reef Jade `#1E8B7E`** — green-skewed to create clear separation from OCEANIC's
+Phosphorescent Teal (`#00B4A0`) and ORGANON's Bioluminescent Cyan (`#00CED1`).
+Warm, mineral, like sun-bleached coral viewed through clear tropical water.
+
+> **Board D3 resolution (2026-03-18):** Original `#2CB5A0` was only 12 hex units
+> from OCEANIC — visually ambiguous at MPC Store thumbnail scale. Shifted to
+> `#1E8B7E` (Reef Jade) for perceptual distinctness. Verify at 1x/2x/3x before shipping.
 
 ### Brick Type Visual Language
 
 Every brick category has an aquatic visual metaphor:
 
-| Category | Metaphor | Color Family | Shape |
-|----------|----------|-------------|-------|
-| **Sources** (oscillators) | Shells | Warm amber / sand `#D4A76A` | Conch spiral icon |
-| **Processors** (filters, wavefolder) | Coral | Living pink / reef `#E8839B` | Branching coral icon |
-| **Modulators** (LFO, env, velocity) | Currents | Ocean blue / teal `#2CB5A0` | Wave/current icon |
-| **Effects** (delay, chorus) | Tide Pools | Deep violet / iridescent `#7B6B8A` | Pool ripple icon |
+| Category | Metaphor | Color | Shape | Pattern (colorblind-safe) |
+|----------|----------|-------|-------|--------------------------|
+| **Sources** (oscillators) | Shells | Warm neutral `#D4A76A` | Conch spiral icon | Diagonal stripes |
+| **Processors** (filters, wavefolder) | Coral | Dark neutral `#3A3A3A` | Branching coral icon | Dot pattern |
+| **Modulators** (LFO, env, velocity) | Currents | **Accent: Reef Jade `#1E8B7E`** | Wave/current icon | Horizontal stripes |
+| **Effects** (delay, chorus) | Tide Pools | Dark neutral `#3A3A3A` | Pool ripple icon | Gradient pattern |
 
-The brick colors create a natural visual grouping — you can see at a glance
-that the pink things are processors and the teal things are modulators,
-without reading labels.
+> **Board D8 resolution (2026-03-18):** Collapsed from 4 distinct colors to
+> accent + 2 neutrals. Reef Jade is the dominant visual voice (modulators +
+> focus states). Icon differentiation + pattern overlays provide colorblind-safe
+> category identification. The original 4-color scheme (amber/pink/teal/violet)
+> diluted the accent color's meaning — only modulators wore it, making the
+> engine's identity invisible in screenshots and social media.
 
 ### On-Brand but Distinct
 
@@ -930,10 +962,15 @@ has permission to be more playful than other engines:
 - **Sound on interaction** — optional subtle water/click sounds when snapping
   bricks together (off by default, toggle in settings).
 
-On iPhone Pocket, OBRIX drops the Gallery Model warm white entirely and goes
-full ocean — dark gradient background, luminous bricks, underwater atmosphere.
-This is deliberate: Pocket OBRIX is a different *experience*, not just a
-smaller layout.
+On iPhone Pocket, OBRIX stays within the Gallery Model warm white shell —
+the shell contracts on small screens but does not disappear. Pocket's
+playfulness comes from larger tactile brick buttons, snap haptics, optional
+water/click sounds, and increased Oscar presence (20% of screen vs 5%).
+
+> **Board D8 resolution (2026-03-18):** Removed the dark ocean gradient
+> exception. Gallery Model is the unifying visual language — if OBRIX Pocket
+> gets an exemption, every future engine will request their own. Within 5
+> engines, brand cohesion dissolves. The warm shell stays.
 
 ---
 
@@ -1129,8 +1166,14 @@ and earned Brix Pack items live. It's not a preset browser — it's a trophy cas
 - **Stats are for fun, not competition.** No leaderboards. No sharing pressure.
   Your BrixBox is yours. The count at the top (42/87) is the only hint at
   how much is left to find.
-- **BrixBox syncs via iCloud / user account.** Discover an Easter egg on
-  iPhone Pocket, it's in your BrixBox on desktop too.
+- **BrixBox sync is opt-in (Board D7 mandate).** On first BrixBox access:
+  "Sync your discoveries to iCloud?" with explicit opt-in. Show what data
+  syncs. Provide Settings → Privacy → "Clear iCloud Data" with confirmation.
+  "BrixBox data is personal. Never shared, never sold, never used for analytics."
+  Merge strategy: last-write-wins (not union — union amplifies compromise, per D2).
+- **Collection stats are opt-in (Board D7/P1).** The "42/87" counter and
+  `????????` slots are hidden by default. Users opt into "Show Collection Stats"
+  in BrixBox settings. BrixBox without stats is just a list of discoveries.
 
 ### Progressive Unlocks — The Roguelite Layer
 
@@ -1267,16 +1310,21 @@ The toggle is worded carefully:
 
 Not "cheat mode." Not "skip tutorial." Just a preference.
 
-### Boss Mode — The Climax of Each Level
+### Boss Mode — Optional Synthesis Challenges
 
-Each level ends with a **Boss** — a synthesis challenge that tests everything
-you learned in that level. Not a quiz. Not a puzzle with one answer. A creative
-challenge with a target *quality* and Oscar as the judge.
+> **Board D7 resolution (2026-03-18):** Boss Mode is an **optional challenge**,
+> not a progression gate. Users can advance to the next level without completing
+> a Boss. Bosses reward trophies + Oscar reactions but do not block access to
+> content. "Respect the user — no dark patterns" (XO_OX value #3).
+
+Each level offers a **Boss** — an optional synthesis challenge that celebrates
+what you've learned. Not a quiz. Not a gate. A creative challenge with a target
+*quality* and Oscar as the judge. Complete it for a trophy; skip it if you want.
 
 **How Boss Mode works:**
 
-1. **Oscar announces the Boss.** When you hit the final tier of a level, Oscar
-   doesn't just unlock the next bricks — he issues a challenge:
+1. **Oscar offers the Boss.** When you reach the Boss tier, Oscar presents a challenge
+   (not a gate — the next level unlocks regardless via tier progression):
 
    > *"You've explored every corner of the shallows. Before we go deeper,*
    > *I want to hear something from you. Build me a sound that breathes —*
@@ -1435,18 +1483,24 @@ release model keeps OBRIX fresh without charging for content.
 
 **Oscar evolves across levels:**
 
+> **Board D8 resolution (2026-03-18):** V1 ships with **2 Oscar forms only**
+> (Baby + Adult). Baby = first-launch celebrations + milestone rewards.
+> Adult = default teaching state. This halves Rive rig maintenance and keeps
+> pedagogy clear. Adolescent + Elder forms deferred to V2 with data-informed
+> design (validate which moments resonate before expanding the arc).
+
 Oscar isn't just a static guide — he grows with you.
 
-| Level | Oscar's Form | Personality Shift |
-|-------|-------------|-------------------|
-| 1: The Reef | Baby axolotl (current) | Warm, encouraging, analogies-first |
-| 2: The Trench | Adolescent — gills more elaborate, eyes brighter | More conversational, shares opinions, references your history |
-| 3: The Rift | Adult — bioluminescent markings appear | Speaks as a peer, asks questions back, philosophical |
-| 4: The Leviathan | Elder — translucent, glowing, almost mythical | Sparse, poetic. Lets you lead. Only speaks when it matters. |
+| Level | Oscar's Form | Personality Shift | V1 Status |
+|-------|-------------|-------------------|-----------|
+| 1: The Reef | Baby axolotl | Warm, encouraging, analogies-first | **V1 — ships** |
+| 2: The Trench | Adult — bioluminescent markings appear | Speaks as a peer, references your history | **V1 — ships** |
+| 3: The Rift | Adolescent — more elaborate gills | More conversational, philosophical | V2 — deferred |
+| 4: The Leviathan | Elder — translucent, glowing, mythical | Sparse, poetic. Only speaks when it matters. | V2 — deferred |
 
-By Level 4, Oscar has grown from teacher to companion to elder. His final
-Boss reaction (THE KRAKEN victory) is the emotional payoff of the entire
-OBRIX arc. We write that line last, when we know what it needs to be.
+The Adult form is the default teaching state. Baby appears for first-launch
+and milestone moments. The full 4-stage arc remains the long-term vision,
+validated by data from V1 before committing to additional Rive rigs.
 
 **The secret ending:**
 
@@ -1619,23 +1673,34 @@ combos become packs → packs bring users back → more combos → repeat.
 
 ## Part 9: Sequencing & Priority
 
+> **Board Resolution (2026-03-18):** Version numbering below is PROVISIONAL.
+> The ratified V1 tiered release plan (2026-03-17) specifies V1.1 = Aquatic FX
+> suite, V1.2 = preset expansion + XPN #2. **Owner decision required:** do these
+> strategy phases supersede the ratified plan, or do they begin at V1.3+?
+> Do NOT make public commitments on version numbers until this is resolved.
+
+> **Board D9 resolution:** SDK and OBRIX develop on **parallel tracks**, not
+> sequentially. OBRIX ships when consumer value is ready. SDK ships when
+> developer tooling is ready. Neither blocks the other.
+
 ### V1 (Ship)
 - 34 engines, current architecture, no expansion API yet
 - OBRIX is NOT in V1 — it's a significant UI + DSP effort
 
-### V1.1 (Foundation)
+### Post-V1 Track A: Infrastructure (SDK)
 - **Engine version metadata** — `sinceVersion` in registry, graceful missing-engine handling
-- **Begin SDK extraction** — pull `SynthEngine.h` + `CouplingTypes.h` into standalone headers with no JUCE types in the interface boundary
-- **Write adapter guide for community** — expand `how_to_write_a_xomnibus_adapter.md` into full SDK getting-started
-
-### V1.2 (SDK Beta)
+- **SDK extraction** — pull `SynthEngine.h` + `CouplingTypes.h` into standalone headers with no JUCE types in the interface boundary
 - **Ship `xomnibus-engine-sdk` repo** — templates, validate-engine CLI, test harness
-- **Dynamic engine loading** — scan user engine directory, load `.dylib`/`.so` at startup
 - **Parameter namespace registry** — prevent collisions
+- **Dynamic engine loading deferred to V2** (per Board D2 security resolution)
 
-### V1.3 (OBRIX — Level 1: The Reef)
-- **XObrix** — the ocean brick synthesis toy box
-- Ships as engine "Obrix" with param prefix `obrix_`, accent color Reef Teal `#2CB5A0`
+### Post-V1 Track B: OBRIX (Level 1: The Reef)
+
+> **Board D1 scope warning:** OBRIX is estimated at 2,500-3,500 engineering hours.
+> Phase ruthlessly: V1.3a (core DSP + basic UI) → V1.3b (Oscar training mode) →
+> V1.3c (BrixBox + progressive unlock). Pocket deferred to V1.4 minimum.
+
+- Ships as engine "Obrix" with param prefix `obrix_`, accent color Reef Jade `#1E8B7E`
 - Starter kit presets + snap challenges
 - Multi-slot support (up to 4 OBRIX instances, each independently configured)
 - Cross-instance coupling via MegaCouplingMatrix
@@ -1733,3 +1798,40 @@ combos become packs → packs bring users back → more combos → repeat.
 11. **Oscar localization.** Training mode text needs translation. Oscar's
    personality needs to survive localization — casual analogies don't always
    translate well. Consider hiring writers per language, not just translators.
+
+12. **Sustainability model (Board P0-5).** Everything is currently promised free.
+    Finalize funding model before V1 ship: Patreon tiers? B2B SDK licensing?
+    Premium boutique engines? "Core content free; curated premium packs optional"?
+    The promise of "free forever" creates obligations that must be backed by revenue.
+
+13. **Accessibility (Board P0-3).** Screen reader support for brick canvas,
+    colorblind mode (icon + pattern + color), motor accessibility (button
+    alternatives for all gestures), WCAG 2.1 Level AA minimum. Non-negotiable
+    for OBRIX launch per XO_OX value: "if someone can't use it, it's broken."
+
+---
+
+## Appendix: Board Resolution Summary (2026-03-18)
+
+Full Board (9 directors) + Khan Sultan reviewed this strategy. 12 P0 breaches
+identified and resolved inline above. Key resolutions:
+
+| P0 | Resolution | Director |
+|----|-----------|----------|
+| Version numbering collision | PROVISIONAL — owner decision required | D1 |
+| Channel B same-process loading | Deferred to V2; preset-only community model for V1.x | D2 |
+| Accessibility triad | Screen reader + colorblind + motor — WCAG 2.1 AA required | D5, D7 |
+| OBRIX DSP safety | ParamSnapshot for routing + denormal protection mandatory | D6 |
+| "Free forever" sustainability | Finalize funding model before V1 ship | D7 |
+| Boss Mode forced gate | Reframed as optional challenge, not progression blocker | D7 |
+| iCloud sync consent | Explicit opt-in, data dictionary, delete path | D7 |
+| Gallery Model Pocket exception | Removed — Pocket stays in warm white shell | D8 |
+| 4-color brick palette | Collapsed to accent + 2 neutrals | D8 |
+| Oscar 4-stage arc | Scoped to 2 stages (Baby + Adult) for V1 | D8 |
+| SDK→OBRIX sequential | Parallel tracks; neither blocks the other | D9 |
+| Reef Teal proximity | Shifted to Reef Jade `#1E8B7E` | D3 |
+
+**Owner decisions still pending:**
+1. Version numbering: V1.1 = Aquatic FX (ratified) or SDK extraction (strategy)?
+2. Sustainability model: Patreon / B2B licensing / hybrid?
+3. XObrix naming: rename to XO+O-word or formally ratify neologism exception?
