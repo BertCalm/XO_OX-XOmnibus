@@ -230,6 +230,24 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.aquaBiolumeSpectrum = apvts.getRawParameterValue("aqua_biolumeSpectrum");
     cachedParams.aquaBiolumeDecay   = apvts.getRawParameterValue("aqua_biolumeDecay");
     cachedParams.aquaBiolumeMix     = apvts.getRawParameterValue("aqua_biolumeMix");
+
+    // Mathematical FX Chain
+    cachedParams.mfxEcStability   = apvts.getRawParameterValue("mfx_ecStability");
+    cachedParams.mfxEcCoolRate    = apvts.getRawParameterValue("mfx_ecCoolRate");
+    cachedParams.mfxEcThreshold   = apvts.getRawParameterValue("mfx_ecThreshold");
+    cachedParams.mfxEcMix         = apvts.getRawParameterValue("mfx_ecMix");
+    cachedParams.mfxVsCrystallize = apvts.getRawParameterValue("mfx_vsCrystallize");
+    cachedParams.mfxVsTension     = apvts.getRawParameterValue("mfx_vsTension");
+    cachedParams.mfxVsGrainSize   = apvts.getRawParameterValue("mfx_vsGrainSize");
+    cachedParams.mfxVsMix         = apvts.getRawParameterValue("mfx_vsMix");
+    cachedParams.mfxQsObservation = apvts.getRawParameterValue("mfx_qsObservation");
+    cachedParams.mfxQsFeedback    = apvts.getRawParameterValue("mfx_qsFeedback");
+    cachedParams.mfxQsDelayCenter = apvts.getRawParameterValue("mfx_qsDelayCenter");
+    cachedParams.mfxQsMix         = apvts.getRawParameterValue("mfx_qsMix");
+    cachedParams.mfxAdBifurcation = apvts.getRawParameterValue("mfx_adBifurcation");
+    cachedParams.mfxAdDriveBase   = apvts.getRawParameterValue("mfx_adDriveBase");
+    cachedParams.mfxAdSpeed       = apvts.getRawParameterValue("mfx_adSpeed");
+    cachedParams.mfxAdMix         = apvts.getRawParameterValue("mfx_adMix");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -609,6 +627,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     // Aquatic FX Suite (22 params)
     AquaticFXSuite::addParameters(params);
 
+    // Mathematical FX Chain (16 params)
+    MathFXChain::addParameters(params);
+
     return { params.begin(), params.end() };
 }
 
@@ -620,6 +641,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     couplingMatrix.prepare(samplesPerBlock);
     chordMachine.prepare(sampleRate, samplesPerBlock);
     aquaticFX.prepare(sampleRate);
+    mathFX.prepare(sampleRate);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
     for (auto& buf : engineBuffers)
@@ -644,6 +666,7 @@ void XOmnibusProcessor::releaseResources()
             eng->releaseResources();
     }
     aquaticFX.reset();
+    mathFX.reset();
     masterFX.reset();
 }
 
@@ -827,6 +850,31 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+
+    // Mathematical FX Chain: entropy cooler → voronoi shatter → quantum smear → attractor drive
+    if (buffer.getNumChannels() >= 2)
+    {
+        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
+        float* mfxL = buffer.getWritePointer(0);
+        float* mfxR = buffer.getWritePointer(1);
+        mathFX.processBlock(mfxL, mfxR, numSamples,
+            load(cachedParams.mfxEcStability, 0.5f),
+            load(cachedParams.mfxEcCoolRate, 0.3f),
+            load(cachedParams.mfxEcThreshold, 0.5f),
+            load(cachedParams.mfxEcMix, 0.0f),
+            load(cachedParams.mfxVsCrystallize, 0.0f),
+            load(cachedParams.mfxVsTension, 0.5f),
+            load(cachedParams.mfxVsGrainSize, 30.0f),
+            load(cachedParams.mfxVsMix, 0.0f),
+            load(cachedParams.mfxQsObservation, 0.3f),
+            load(cachedParams.mfxQsFeedback, 0.4f),
+            load(cachedParams.mfxQsDelayCenter, 150.0f),
+            load(cachedParams.mfxQsMix, 0.0f),
+            load(cachedParams.mfxAdBifurcation, 0.3f),
+            load(cachedParams.mfxAdDriveBase, 0.3f),
+            load(cachedParams.mfxAdSpeed, 0.3f),
+            load(cachedParams.mfxAdMix, 0.0f));
+    }
 }
 
 void XOmnibusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)

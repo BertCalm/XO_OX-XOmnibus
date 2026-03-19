@@ -5,6 +5,7 @@
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/MasterFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
+#include "DSP/Effects/MathFXChain.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
@@ -74,6 +75,7 @@ private:
     juce::AudioProcessorValueTreeState apvts;
     MegaCouplingMatrix couplingMatrix;
     AquaticFXSuite aquaticFX;
+    MathFXChain mathFX;
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
@@ -146,6 +148,24 @@ private:
         std::atomic<float>* aquaBiolumeSpectrum = nullptr;
         std::atomic<float>* aquaBiolumeDecay = nullptr;
         std::atomic<float>* aquaBiolumeMix = nullptr;
+
+        // Mathematical FX Chain (CC 30-33)
+        std::atomic<float>* mfxEcStability = nullptr;
+        std::atomic<float>* mfxEcCoolRate = nullptr;
+        std::atomic<float>* mfxEcThreshold = nullptr;
+        std::atomic<float>* mfxEcMix = nullptr;
+        std::atomic<float>* mfxVsCrystallize = nullptr;
+        std::atomic<float>* mfxVsTension = nullptr;
+        std::atomic<float>* mfxVsGrainSize = nullptr;
+        std::atomic<float>* mfxVsMix = nullptr;
+        std::atomic<float>* mfxQsObservation = nullptr;
+        std::atomic<float>* mfxQsFeedback = nullptr;
+        std::atomic<float>* mfxQsDelayCenter = nullptr;
+        std::atomic<float>* mfxQsMix = nullptr;
+        std::atomic<float>* mfxAdBifurcation = nullptr;
+        std::atomic<float>* mfxAdDriveBase = nullptr;
+        std::atomic<float>* mfxAdSpeed = nullptr;
+        std::atomic<float>* mfxAdMix = nullptr;
 
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
