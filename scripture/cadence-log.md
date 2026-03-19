@@ -12,6 +12,7 @@
 | OUROBOROS | 2026-03-15 | ouro_injection=0.0 in all 82 presets (door never opened); leash 0.4–0.6 uncanny middle never designed; Chua topology underrepresented; Z-axis projection (theta=π/2) warmer — never used | 7 awakening presets (Atmosphere×2, Foundation×2, Aether×1, Entangled×1, Family×1) | 4 OURO-specific verses |
 | OWLFISH | 2026-03-15 | Body sine is habitat not bass (fixed freq, doesn't follow MIDI); engine is secretly duophonic; inharmonic subs ÷3,÷5,÷7 never used (Oskar Sala territory); mixtur never above 0.45 in 17 presets; morphGlide is timbral color during portamento | 7 awakening presets (Foundation×2, Atmosphere×1, Flux×1, Prism×1, Entangled×1, Aether×1) | 4 OWL-specific verses |
 | OCEANIC | 2026-03-15 | Sound design guide was completely wrong (string ensemble vs boid swarm); Swarm ADSR controls boid force independently of amplitude (no other engine does this); Murmuration (RhythmToBlend cascade) never demonstrated; Chromatophore (aftertouch=scatter) = B013 blessing, never shown in presets; 0 factory presets at retreat start | 7 awakening presets (Foundation×1, Atmosphere×2, Entangled×1, Prism×1, Flux×1, Aether×1) | 4 OCE-specific verses + guide corrected |
+| OSTINATO | 2026-03-19 | GATHER=0.1–0.4 (organic looseness) never explored; body model left on Auto in all cases (60 timbral combos ignored); CIRCLE ghost cascade = emergent improvisation; articulation as compositional axis across seats; pitch envelope default 0.0 (least realistic); tuning creates melodic percussion ensembles | Presets deferred to generation phase | 4 OSTI-specific verses |
 
 ---
 
@@ -19,6 +20,7 @@
 
 | Engine | Last Retreat | Status | Priority |
 |--------|-------------|--------|----------|
+| OSTINATO | 2026-03-19 | Retreat complete, presets pending generation | High |
 | OVERLAP | Never | Phase 4 complete, no seance yet | Medium |
 | OUTWIT | Never | Phase 4 complete, no seance yet | Medium |
 | OBSCURA | Never | 20 presets, moderate coverage | Low |
@@ -72,7 +74,18 @@
 - **OddfeliX Guide Rewrite (5 error categories):** Missing params (`snap_filterEnvDepth`, `snap_sweepDirection`, `snap_pitchLock`), wrong ranges (detune documented as 0–100, actual 0–50; decay documented as 0–8s, actual 0–5s), wrong defaults, incomplete macro table. Full guide rewritten from source.
 - **Preset Expansion:** Outwit 1→21, Overlap 1→21, Orbital+Origami each 2→17, Ocelot 0→8, Oblique+Ombre+Orca Foundation/Aether +14, Family mood +6 (15 engines now represented in Family), 12 Oracle/Obscura/Ouroboros presets added.
 
+**OSTINATO Retreat (2026-03-19):**
+- First retreat for a percussion/rhythm engine — different character from all prior retreats (melodic/timbral engines)
+- 6 discoveries: GATHER spectrum (organic looseness), body model geography, CIRCLE ghost cascade, articulation as composition, pitch envelope as attack character, tuning as melody
+- D004 fix (exciterMix) completed before retreat — clean engine state at retreat start
+- Key revelation: OSTINATO is not a drum machine. It is a gathering of cultures. The 12 instruments represent 12 musical traditions. Preset names should honor the cultural conversation, not the technology.
+- CIRCLE macro (ghost cascade) is the engine's singular phenomenon — deterministic patterns producing emergent rhythmic conversation through sympathetic triggering
+- Tuning discovery extends the engine beyond percussion into melodic territory (gamelan, pitched ensemble)
+- Presets deferred to dedicated Python generator phase — 150+ presets across 7 moods planned
+- Seance score 8.0/10 with 2 Blessing candidates (CIRCLE ghost cascade, physically-modeled world instruments)
+
 **Active Triggers:**
 - Next retreats: OVERLAP/OUTWIT (post-build, need seances first); OCELOT (0 presets, 6.4/10 — high priority)
 - OWLFISH coupling: once applyCouplingInput is wired, design receiving-end presets (OWLFISH as coupling target)
 - OCEANIC: design Saw/Pulse waveform presets (not yet explored); Poly4 + Murmuration behavior unknown
+- OSTINATO: 150+ preset generation pending; Beatbox circle unexplored; micro-tuning for non-Western scales; body model as macro target; extreme FIRE (industrial percussion)

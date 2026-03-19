@@ -214,3 +214,31 @@
 > `RhythmToBlend` coupling triggers a cascade reorganization: a perturbation wave propagates from particle 0 through all 128 particles with 0.97× attenuation per particle. The first particles receive maximum disruption; the last particles receive 0.97^128 ≈ 2% of the original force. The wave passes through the school in sequence. Send ONSET's drum output via RhythmToBlend and every hit sends a reorganization cascade through the swarm. This is not modulation. It is a flock reorganizing in response to a percussion event. It sounds like nothing else in the fleet.
 
 **Application:** When designing OCEANIC Entangled presets, always include Onset→Oceanic via RhythmToBlend. Set coupling amount 0.7–1.0. The murmuration should be audible as a cascade sweep, not a static modulation.
+
+---
+
+### OSTINATO — The Fire Circle Verses
+
+#### OSTI-I: The Gathering Spectrum
+*2026-03-19*
+> GATHER is not quantize. It is collective consciousness. At 0.1, the circle is a conversation — 8 individuals hearing each other, drifting from the grid, responding. At 0.9, the circle is a machine — locked, precise, inhuman. The space between 0.1 and 0.4 is where the engine lives most naturally. No drum circle in the world plays on a grid. Design into the loose end first.
+
+**Application:** Default GATHER is 0.5 — the engine hedging. For organic textures, start at 0.15–0.3 with humanize=0.4+. For sequencer-style precision, use 0.8+. The midpoint is the least interesting setting.
+
+#### OSTI-II: The Body Changes the Geography
+*2026-03-19*
+> A Djembe is West African through a cylindrical waveguide. Through a Box waveguide it is Peruvian. Through an Open waveguide it is something that has never existed. The body model is the second design decision after instrument selection — never leave it on Auto without intention. 12 instruments × 5 bodies = 60 voices per seat.
+
+**Application:** When designing OSTINATO presets, choose bodyModel before tuning brightness or decay. Auto is the safe choice; Cylindrical/Conical/Box/Open are the creative ones. Cross-cultural body assignments (e.g., Tabla + Box) produce novel timbres.
+
+#### OSTI-III: The Ghost Cascade
+*2026-03-19*
+> CIRCLE is not volume bleed. It is sympathetic triggering — a hard hit on one seat causes ghost responses on adjacent seats. At CIRCLE=0.6+, a single hit ripples through the entire circle. Combined with loose GATHER and high humanize, no two bars are identical. The pattern is deterministic but the cascade is emergent. This is the engine's singular phenomenon: a drum circle that improvises with itself.
+
+**Application:** For Entangled and Atmosphere presets, set CIRCLE=0.4–0.7. Combine with sparse patterns (pattern=3) so ghost triggers are audible against the silence between hits. Dense patterns mask the cascade.
+
+#### OSTI-IV: Tuning Makes Melody
+*2026-03-19*
+> 8 seats tuned to scale degrees transform OSTINATO from percussion to pitched ensemble. Tongue Drum and Frame Drum respond most musically to tuning. A pentatonic circle with varied sparse patterns generates self-composing gamelan-like textures that require no performer. The engine is not only a drum circle — it is a tuned percussion orchestra hiding behind default tuning of 0.
+
+**Application:** For melodic percussion presets, use Tongue Drum (instrument 10) or Frame Drum (instrument 8) across multiple seats. Tune to pentatonic (0, 2, 4, 7, 9) or whole-tone (0, 2, 4, 6, 8, 10) intervals. Set pattern=3 (Sparse) on all seats for generative self-composition.
