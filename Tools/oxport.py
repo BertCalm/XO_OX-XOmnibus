@@ -12,7 +12,8 @@ Pipeline stages:
   6. export            — Generate .xpm programs (drum or keygroup, per engine)
   7. cover_art         — Generate branded procedural cover art
   8. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
-  9. package           — Package everything into a .xpn archive
+  9. preview           — Generate 15-second preview audio for each program
+ 10. package           — Package everything into a .xpn archive
 
 Usage:
     # Full pipeline for an engine
@@ -47,10 +48,16 @@ Usage:
     python3 oxport.py batch --config batch.json
     python3 oxport.py batch --config batch.json --parallel 4 --skip-failed
     python3 oxport.py batch --config batch.json --dry-run
+
+    # Batch with cross-engine loudness normalization
+    python3 oxport.py batch --config batch.json --normalize
+    python3 oxport.py batch --config batch.json --normalize --normalize-target -16.0
 """
 
 import argparse
 import json
+import math
+import struct
 import sys
 import time
 from datetime import datetime
@@ -97,6 +104,7 @@ STAGES = [
     "export",
     "cover_art",
     "complement_chain",
+    "preview",
     "package",
 ]
 
@@ -109,6 +117,7 @@ STAGE_DESCRIPTIONS = {
     "export":           "Generate .xpm programs (drum or keygroup)",
     "cover_art":        "Generate branded procedural cover art",
     "complement_chain": "Generate primary+complement variant XPM pairs (Artwork/Color collection)",
+    "preview":          "Generate 15-second preview audio for each program",
     "package":          "Package into .xpn archive",
 }
 
@@ -242,6 +251,24 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
     for xmeta in presets_found:
         try:
             spec = generate_render_spec(xmeta)
+
+            # Check for Entangled mood or coupling data — coupling is lost in XPN export
+            _preset_data = {}
+            try:
+                with open(xmeta) as _f:
+                    _preset_data = json.load(_f)
+            except (json.JSONDecodeError, OSError):
+                pass
+            _mood = _preset_data.get("mood", "")
+            _coupling = _preset_data.get("coupling", _preset_data.get("coupling_data", None))
+            if _mood == "Entangled" or _coupling:
+                _pname = _preset_data.get("name", xmeta.stem)
+                print(f"      [WARN] Entangled preset '{_pname}' — coupling will be "
+                      f"lost in XPN export. Consider rendering dry variant.")
+                spec["coupling_warning"] = True
+            else:
+                spec["coupling_warning"] = False
+
             ctx.render_specs.append(spec)
 
             if not ctx.dry_run:
@@ -400,6 +427,46 @@ def _stage_qa(ctx: PipelineContext) -> None:
     if blocking_found and not ctx.strict_qa:
         print(f"    [WARN] Blocking issues detected (pass --strict-qa to abort): "
               + ", ".join(blocking_found[:3]))
+
+    # --- Musical QA: velocity layer balance and tonal consistency ---
+    # Group WAV files by voice (note) to find velocity layer sets.
+    # Naming convention: {preset}__{NOTE}__{vel}.WAV — group by note, order by vel tag.
+    import re as _re
+    _vel_re = _re.compile(r'^(.+)__([A-Ga-g][#bs]?\d+)__(v\d+)\.wav$', _re.IGNORECASE)
+    voice_groups: dict[str, list[tuple[int, Path]]] = {}
+    for wp in wav_paths:
+        m = _vel_re.match(wp.name)
+        if m:
+            voice_key = f"{m.group(1)}__{m.group(2)}"
+            vel_num = int(m.group(3)[1:])
+            voice_groups.setdefault(voice_key, []).append((vel_num, wp))
+
+    # Only check groups with 2+ velocity layers
+    layer_groups = {k: v for k, v in voice_groups.items() if len(v) >= 2}
+    if layer_groups:
+        try:
+            n_layer_pass = 0
+            n_layer_fail = 0
+            for voice_key, vel_list in layer_groups.items():
+                ordered_paths = [p for _, p in sorted(vel_list)]
+                layer_result = xpn_qa_checker.check_velocity_layers(ordered_paths)
+                layer_overall = layer_result.get("overall", "ERROR")
+                layer_issues = layer_result.get("issues", [])
+
+                if layer_overall == "PASS":
+                    n_layer_pass += 1
+                else:
+                    n_layer_fail += 1
+                    for issue in layer_issues:
+                        desc = f"{issue} in {voice_key} layers"
+                        warnings.append(desc)
+                        print(f"      [WARN] {desc}")
+
+            print(f"    Musical QA: {n_layer_pass}/{n_layer_pass + n_layer_fail} "
+                  f"voice groups passed layer checks")
+        except AttributeError:
+            # check_velocity_layers not available in older xpn_qa_checker
+            pass
 
 
 def _stage_smart_trim(ctx: PipelineContext) -> None:
@@ -732,6 +799,400 @@ def _stage_complement_chain(ctx: PipelineContext) -> None:
     print(f"    {n_presets} preset(s) × 5 shades = {n_variants} variant programs")
 
 
+# ---------------------------------------------------------------------------
+# WAV reading/writing helpers (stdlib only — no numpy/scipy dependency)
+# ---------------------------------------------------------------------------
+
+def _read_wav_raw(path: Path) -> tuple[int, int, int, bytes]:
+    """Read a WAV file and return (num_channels, sample_rate, bits_per_sample, raw_data).
+
+    Only supports PCM (format tag 1). Raises ValueError for compressed formats.
+    """
+    with open(path, "rb") as f:
+        riff = f.read(4)
+        if riff != b"RIFF":
+            raise ValueError(f"Not a RIFF file: {path}")
+        f.read(4)  # file size
+        wave = f.read(4)
+        if wave != b"WAVE":
+            raise ValueError(f"Not a WAVE file: {path}")
+
+        fmt_found = False
+        num_channels = sample_rate = bits_per_sample = 0
+        data_bytes = b""
+
+        while True:
+            chunk_id = f.read(4)
+            if len(chunk_id) < 4:
+                break
+            chunk_size = struct.unpack("<I", f.read(4))[0]
+            if chunk_id == b"fmt ":
+                fmt_data = f.read(chunk_size)
+                audio_fmt = struct.unpack("<H", fmt_data[0:2])[0]
+                if audio_fmt != 1:
+                    raise ValueError(f"Unsupported audio format {audio_fmt} (only PCM supported)")
+                num_channels = struct.unpack("<H", fmt_data[2:4])[0]
+                sample_rate = struct.unpack("<I", fmt_data[4:8])[0]
+                bits_per_sample = struct.unpack("<H", fmt_data[14:16])[0]
+                fmt_found = True
+            elif chunk_id == b"data":
+                data_bytes = f.read(chunk_size)
+            else:
+                f.read(chunk_size)
+            # WAV chunks are word-aligned
+            if chunk_size % 2 != 0:
+                f.read(1)
+
+        if not fmt_found:
+            raise ValueError(f"No fmt chunk in {path}")
+
+        return num_channels, sample_rate, bits_per_sample, data_bytes
+
+
+def _write_wav(path: Path, num_channels: int, sample_rate: int,
+               bits_per_sample: int, raw_data: bytes) -> None:
+    """Write a PCM WAV file from raw sample bytes."""
+    byte_rate = sample_rate * num_channels * (bits_per_sample // 8)
+    block_align = num_channels * (bits_per_sample // 8)
+    data_size = len(raw_data)
+    file_size = 36 + data_size  # RIFF header (minus 8) + fmt (24) + data header (8) + data
+
+    with open(path, "wb") as f:
+        # RIFF header
+        f.write(b"RIFF")
+        f.write(struct.pack("<I", file_size))
+        f.write(b"WAVE")
+        # fmt chunk
+        f.write(b"fmt ")
+        f.write(struct.pack("<I", 16))  # chunk size
+        f.write(struct.pack("<H", 1))   # PCM
+        f.write(struct.pack("<H", num_channels))
+        f.write(struct.pack("<I", sample_rate))
+        f.write(struct.pack("<I", byte_rate))
+        f.write(struct.pack("<H", block_align))
+        f.write(struct.pack("<H", bits_per_sample))
+        # data chunk
+        f.write(b"data")
+        f.write(struct.pack("<I", data_size))
+        f.write(raw_data)
+
+
+def _make_silence_bytes(sample_rate: int, num_channels: int,
+                        bits_per_sample: int, duration_s: float) -> bytes:
+    """Return raw PCM silence bytes for the given duration."""
+    n_samples = int(sample_rate * duration_s)
+    bytes_per_sample = bits_per_sample // 8
+    return b"\x00" * (n_samples * num_channels * bytes_per_sample)
+
+
+def _generate_preview_wav(wav_paths: list[Path], output_path: Path,
+                          max_duration_s: float = 15.0,
+                          gap_s: float = 0.5) -> bool:
+    """Concatenate the first few WAV samples with silence gaps into a preview file.
+
+    All input WAVs are assumed to share the same format (channels, sample rate,
+    bit depth). If they differ, the first file's format is used and mismatched
+    files are skipped.
+
+    Returns True if the preview was written, False otherwise.
+    """
+    if not wav_paths:
+        return False
+
+    # Read the first WAV to establish format
+    try:
+        ref_ch, ref_sr, ref_bps, first_data = _read_wav_raw(wav_paths[0])
+    except (ValueError, OSError) as e:
+        print(f"      [WARN] Cannot read {wav_paths[0].name}: {e}")
+        return False
+
+    bytes_per_sample = ref_bps // 8
+    bytes_per_frame = ref_ch * bytes_per_sample
+    max_bytes = int(max_duration_s * ref_sr) * bytes_per_frame
+    gap_bytes = _make_silence_bytes(ref_sr, ref_ch, ref_bps, gap_s)
+
+    accumulated = bytearray()
+    files_used = 0
+
+    for wav_path in wav_paths:
+        if len(accumulated) >= max_bytes:
+            break
+
+        try:
+            ch, sr, bps, data = _read_wav_raw(wav_path)
+        except (ValueError, OSError):
+            continue
+
+        if ch != ref_ch or sr != ref_sr or bps != ref_bps:
+            continue  # format mismatch — skip
+
+        # Add gap before second and subsequent clips
+        if files_used > 0:
+            accumulated.extend(gap_bytes)
+
+        # Truncate this clip if it would exceed the budget
+        remaining = max_bytes - len(accumulated)
+        if len(data) > remaining:
+            # Truncate to whole frame boundary
+            remaining = (remaining // bytes_per_frame) * bytes_per_frame
+            data = data[:remaining]
+
+        accumulated.extend(data)
+        files_used += 1
+
+    if files_used == 0:
+        return False
+
+    # Trim to max duration (whole frame boundary)
+    if len(accumulated) > max_bytes:
+        max_bytes = (max_bytes // bytes_per_frame) * bytes_per_frame
+        accumulated = accumulated[:max_bytes]
+
+    _write_wav(output_path, ref_ch, ref_sr, ref_bps, bytes(accumulated))
+    return True
+
+
+def _stage_preview(ctx: PipelineContext) -> None:
+    """Stage: Generate 15-second preview audio for each XPM program."""
+    if not ctx.xpm_paths:
+        # Check for existing XPMs from a prior run
+        existing = list(ctx.programs_dir.glob("*.xpm")) if ctx.programs_dir.exists() else []
+        if not existing:
+            print("    [SKIP] No .xpm programs — nothing to preview")
+            return
+        xpm_list = existing
+    else:
+        xpm_list = ctx.xpm_paths
+
+    # Determine WAV source directories
+    search_dirs: list[Path] = []
+    if ctx.samples_dir.exists():
+        search_dirs.append(ctx.samples_dir)
+    if ctx.wavs_dir and ctx.wavs_dir.exists():
+        search_dirs.append(ctx.wavs_dir)
+
+    if not search_dirs:
+        print("    [SKIP] No WAV directories available for preview generation")
+        return
+
+    # Collect all WAV files, grouped by subdirectory slug if possible
+    all_wavs: list[Path] = []
+    for d in search_dirs:
+        all_wavs.extend(sorted(d.rglob("*.wav")))
+        all_wavs.extend(sorted(d.rglob("*.WAV")))
+
+    if not all_wavs:
+        print("    [SKIP] No WAV files found for preview generation")
+        return
+
+    if ctx.dry_run:
+        print(f"    [DRY] Would generate preview WAV for {len(xpm_list)} program(s)")
+        return
+
+    n_generated = 0
+    for xpm_path in xpm_list:
+        slug = xpm_path.stem
+        preview_path = ctx.programs_dir / f"{slug}.wav"
+
+        # Try to find WAVs specific to this program slug first
+        slug_wavs = [w for w in all_wavs if slug.lower() in str(w.parent).lower()
+                     or slug.lower() in w.stem.lower()]
+
+        if ctx.is_drum_engine:
+            # For drums: use first velocity layer of pads 1-4
+            candidates = slug_wavs[:4] if slug_wavs else all_wavs[:4]
+        else:
+            # For keygroups: use first 4 notes
+            candidates = slug_wavs[:4] if slug_wavs else all_wavs[:4]
+
+        if _generate_preview_wav(candidates, preview_path, max_duration_s=15.0, gap_s=0.5):
+            size_kb = preview_path.stat().st_size / 1024
+            print(f"      {preview_path.name}  ({size_kb:.1f} KB, {len(candidates)} clips)")
+            n_generated += 1
+        else:
+            print(f"      [WARN] Could not generate preview for {slug}")
+
+    print(f"    Generated {n_generated} preview(s)")
+
+
+# ---------------------------------------------------------------------------
+# Loudness normalization helpers (RMS-based, stdlib only)
+# ---------------------------------------------------------------------------
+
+def _compute_rms_db(wav_path: Path) -> float:
+    """Compute the RMS level in dB for a WAV file. Returns -inf for silence."""
+    try:
+        num_ch, sr, bps, data = _read_wav_raw(wav_path)
+    except (ValueError, OSError):
+        return float("-inf")
+
+    bytes_per_sample = bps // 8
+    n_samples = len(data) // bytes_per_sample
+    if n_samples == 0:
+        return float("-inf")
+
+    # Decode samples to float [-1, 1]
+    if bps == 16:
+        fmt = f"<{n_samples}h"
+        samples = struct.unpack(fmt, data[:n_samples * 2])
+        scale = 1.0 / 32768.0
+    elif bps == 24:
+        samples = []
+        for i in range(0, n_samples * 3, 3):
+            b = data[i:i + 3]
+            if len(b) < 3:
+                break
+            val = b[0] | (b[1] << 8) | (b[2] << 16)
+            if val >= 0x800000:
+                val -= 0x1000000
+            samples.append(val)
+        scale = 1.0 / 8388608.0
+    elif bps == 32:
+        fmt = f"<{n_samples}i"
+        samples = struct.unpack(fmt, data[:n_samples * 4])
+        scale = 1.0 / 2147483648.0
+    elif bps == 8:
+        # 8-bit WAV is unsigned
+        samples = [b - 128 for b in data[:n_samples]]
+        scale = 1.0 / 128.0
+    else:
+        return float("-inf")
+
+    sum_sq = 0.0
+    for s in samples:
+        v = s * scale
+        sum_sq += v * v
+
+    rms = math.sqrt(sum_sq / n_samples) if n_samples > 0 else 0.0
+    if rms < 1e-10:
+        return float("-inf")
+    return 20.0 * math.log10(rms)
+
+
+def _apply_gain_db(wav_path: Path, gain_db: float) -> None:
+    """Apply a gain offset (in dB) to a WAV file in-place."""
+    if abs(gain_db) < 0.01:
+        return  # negligible — skip
+
+    num_ch, sr, bps, data = _read_wav_raw(wav_path)
+    bytes_per_sample = bps // 8
+    n_samples = len(data) // bytes_per_sample
+    if n_samples == 0:
+        return
+
+    gain_linear = 10.0 ** (gain_db / 20.0)
+
+    if bps == 16:
+        fmt = f"<{n_samples}h"
+        samples = list(struct.unpack(fmt, data[:n_samples * 2]))
+        for i in range(n_samples):
+            v = int(samples[i] * gain_linear)
+            samples[i] = max(-32768, min(32767, v))
+        new_data = struct.pack(fmt, *samples)
+    elif bps == 24:
+        out = bytearray()
+        for i in range(0, min(n_samples * 3, len(data)), 3):
+            b = data[i:i + 3]
+            if len(b) < 3:
+                break
+            val = b[0] | (b[1] << 8) | (b[2] << 16)
+            if val >= 0x800000:
+                val -= 0x1000000
+            val = int(val * gain_linear)
+            val = max(-8388608, min(8388607, val))
+            if val < 0:
+                val += 0x1000000
+            out.append(val & 0xFF)
+            out.append((val >> 8) & 0xFF)
+            out.append((val >> 16) & 0xFF)
+        new_data = bytes(out)
+    elif bps == 32:
+        fmt = f"<{n_samples}i"
+        samples = list(struct.unpack(fmt, data[:n_samples * 4]))
+        for i in range(n_samples):
+            v = int(samples[i] * gain_linear)
+            samples[i] = max(-2147483648, min(2147483647, v))
+        new_data = struct.pack(fmt, *samples)
+    else:
+        return  # unsupported bit depth
+
+    _write_wav(wav_path, num_ch, sr, bps, new_data)
+
+
+def normalize_batch_loudness(output_base: Path, engine_dirs: list[Path],
+                             target_lufs: float = -14.0,
+                             dry_run: bool = False) -> dict[str, float]:
+    """Normalize loudness across engine output directories.
+
+    Computes RMS (as LUFS proxy) per engine, then applies per-engine gain to
+    reach the target. Returns a dict of engine_name -> gain_db applied.
+
+    If target_lufs is None, uses the median RMS across engines as the target.
+    """
+    engine_rms: dict[str, list[float]] = {}
+
+    for edir in engine_dirs:
+        if not edir.exists():
+            continue
+        engine_name = edir.name
+        wavs = list(edir.rglob("*.wav")) + list(edir.rglob("*.WAV"))
+        if not wavs:
+            continue
+
+        rms_values = []
+        for wav in wavs:
+            rms = _compute_rms_db(wav)
+            if rms > float("-inf"):
+                rms_values.append(rms)
+
+        if rms_values:
+            engine_rms[engine_name] = rms_values
+
+    if not engine_rms:
+        print("    [SKIP] No WAV files found across engine directories")
+        return {}
+
+    # Compute per-engine average RMS
+    engine_avg: dict[str, float] = {}
+    for name, values in engine_rms.items():
+        engine_avg[name] = sum(values) / len(values)
+
+    # Determine target
+    if target_lufs is None:
+        sorted_avgs = sorted(engine_avg.values())
+        mid = len(sorted_avgs) // 2
+        target = sorted_avgs[mid] if len(sorted_avgs) % 2 == 1 else \
+            (sorted_avgs[mid - 1] + sorted_avgs[mid]) / 2.0
+    else:
+        target = target_lufs
+
+    # Compute and apply gain offsets
+    adjustments: dict[str, float] = {}
+    for name, avg in engine_avg.items():
+        gain = target - avg
+        adjustments[name] = round(gain, 1)
+
+    if dry_run:
+        return adjustments
+
+    for edir in engine_dirs:
+        engine_name = edir.name
+        if engine_name not in adjustments:
+            continue
+        gain = adjustments[engine_name]
+        if abs(gain) < 0.1:
+            continue
+
+        wavs = list(edir.rglob("*.wav")) + list(edir.rglob("*.WAV"))
+        for wav in wavs:
+            try:
+                _apply_gain_db(wav, gain)
+            except (ValueError, OSError) as e:
+                print(f"      [WARN] {wav.name}: {e}")
+
+    return adjustments
+
+
 # Stage function dispatch
 STAGE_FUNCS = {
     "render_spec":      _stage_render_spec,
@@ -742,6 +1203,7 @@ STAGE_FUNCS = {
     "export":           _stage_export,
     "cover_art":        _stage_cover_art,
     "complement_chain": _stage_complement_chain,
+    "preview":          _stage_preview,
     "package":          _stage_package,
 }
 
@@ -1143,6 +1605,40 @@ def cmd_batch(args) -> int:
                 print(f"  [ABORT] {result.engine} failed — stopping batch")
                 break
 
+    # --- Post-batch loudness normalization ---
+    do_normalize = getattr(args, "normalize", False)
+    if do_normalize:
+        print()
+        print(f"  LOUDNESS NORMALIZATION")
+        print(f"  {'─'*50}")
+
+        # Collect engine output directories
+        engine_dirs: list[Path] = []
+        for job in jobs:
+            engine = job.get("engine", "unknown")
+            edir = output_base / engine.replace(" ", "_")
+            if edir.exists():
+                engine_dirs.append(edir)
+
+        target = getattr(args, "normalize_target", -14.0)
+        dry_run_norm = getattr(args, "dry_run", False)
+
+        adjustments = normalize_batch_loudness(
+            output_base, engine_dirs,
+            target_lufs=target,
+            dry_run=dry_run_norm,
+        )
+
+        if adjustments:
+            prefix = "[DRY] " if dry_run_norm else ""
+            for name, gain in sorted(adjustments.items()):
+                sign = "+" if gain >= 0 else ""
+                print(f"    {prefix}{name}: {sign}{gain:.1f} dB")
+            print()
+        else:
+            print("    No adjustments needed (or no WAVs found)")
+            print()
+
     # Summary
     print()
     print(f"  {'='*50}")
@@ -1248,6 +1744,12 @@ def main():
                          help="Show commands without executing")
     p_batch.add_argument("--skip-failed",  action="store_true", dest="skip_failed",
                          help="Continue batch even if a job fails")
+    p_batch.add_argument("--normalize",    action="store_true",
+                         help="After all jobs complete, normalize loudness across engines "
+                              "(RMS-based, target -14 LUFS)")
+    p_batch.add_argument("--normalize-target", type=float, default=-14.0,
+                         metavar="LUFS", dest="normalize_target",
+                         help="Target loudness in dB RMS (default: -14.0)")
 
     args = parser.parse_args()
     if not args.command:

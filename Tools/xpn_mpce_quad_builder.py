@@ -1,1159 +1,548 @@
 #!/usr/bin/env python3
 """
-XPN MPCe Quad Builder — XO_OX Designs
-Rex + Hex flagship tool for MPCe-native feliX-Oscar quad-corner drum kits.
+MPCe Quad-Corner Builder — XOmnibus Engine Preset → 3D Pad Program Generator
 
-Each pad carries 4 sample variants mapped to velocity zones (Tier 1, all MPC hardware)
-with a commented-out native MPCe corner XML stub (Tier 2, pending Akai docs).
+PURPOSE:
+    Build MPCe-native programs that use the quad-corner 3D pad system
+    (X/Y/Z per pad) on MPC Live III and MPC XL. Each pad gets 4 presets
+    assigned to its corners (NW / NE / SW / SE). Sliding a finger across
+    the pad crossfades between the four corner presets in real time.
 
-feliX-Oscar Corner Architecture:
-  NW = feliX/Dry  — clinical, bright, unprocessed     (vel  1-31)
-  NE = feliX/Wet  — bright + FX chain                 (vel 32-63)
-  SW = Oscar/Dry  — warm, organic, unprocessed        (vel 64-95)
-  SE = Oscar/Wet  — warm + FX chain                   (vel 96-127)
+    This tool takes an XOmnibus engine name and a directory of .xometa
+    preset files, then:
 
-Usage — Single pad:
+    1. Reads each preset's 6D Sonic DNA and macro defaults.
+    2. Groups presets into sets of 4 per pad.
+    3. Assigns corners so that OPPOSITE corners (NW↔SE, NE↔SW) are
+       maximally different in DNA space — giving the widest morph range.
+    4. Generates an XPM file with speculative <PadCornerAssignment>
+       metadata for MPCe-native corner morphing.
+
+CORNER LAYOUT (looking at the pad from above):
+
+    NW ──── NE        X axis (left→right): CHARACTER morph
+    │        │        Y axis (top→bottom): MOVEMENT morph
+    │  pad   │        Z axis (pressure):   Expression / filter
+    │        │
+    SW ──── SE
+
+    Opposite corners = max DNA distance:
+      NW ↔ SE  (diagonal 1 — should be maximally different)
+      NE ↔ SW  (diagonal 2 — should be maximally different)
+
+SPECULATIVE FORMAT:
+    The <PadCornerAssignment> XML schema is our best guess for how Akai
+    will implement 3D pad preset morphing. The format is NOT finalized.
+    Use --speculative (default: on) to include a warning in the output.
+    When Akai publishes the official spec, this tool will be updated.
+
+USAGE:
     python xpn_mpce_quad_builder.py \\
-        --felix-dry  samples/kick_felix_dry/ \\
-        --felix-wet  samples/kick_felix_wet/ \\
-        --oscar-dry  samples/kick_oscar_dry/ \\
-        --oscar-wet  samples/kick_oscar_wet/ \\
-        --output     programs/mpce_kick_quad/ \\
-        --pad-name   "Kick_QuadCorner"
+        --engine OPAL \\
+        --presets-dir ../Presets/XOmnibus/opal/ \\
+        --output-dir ./output/ \\
+        --pad-count 16
 
-Usage — Full kit from structured directory:
     python xpn_mpce_quad_builder.py \\
-        --kit-dir samples/full_kit/ \\
-        --output  programs/mpce_full_kit/
-    # expects: samples/full_kit/{pad_name}/{felix_dry,felix_wet,oscar_dry,oscar_wet}/
+        --engine OVERLAP \\
+        --presets-dir ../Presets/XOmnibus/overlap/ \\
+        --output-dir ./output/ \\
+        --pad-count 4 \\
+        --no-speculative
 
-Usage — Auto-generate tone variants from standard kit:
-    python xpn_mpce_quad_builder.py \\
-        --from-standard-kit existing_kit.xpm \\
-        --auto-tone-variants \\
-        --output programs/mpce_auto/
+DEPENDENCIES:
+    Python 3.8+, no external packages required.
 """
 
 import argparse
 import json
-import re
-import shutil
+import math
+import os
 import sys
 import xml.etree.ElementTree as ET
-from datetime import date
+from dataclasses import dataclass, field
+from itertools import combinations
 from pathlib import Path
-from xml.sax.saxutils import escape as xml_escape
-
-# Optional scipy for shelf filters (--auto-tone-variants)
-try:
-    import numpy as np
-    import scipy.signal as signal
-    import scipy.io.wavfile as wavfile
-    SCIPY_AVAILABLE = True
-except ImportError:
-    SCIPY_AVAILABLE = False
-
-REPO_ROOT = Path(__file__).parent.parent
-TODAY = date.today().isoformat()
-
-# =============================================================================
-# CORNER DEFINITIONS
-# =============================================================================
-
-CORNERS = ["felix_dry", "felix_wet", "oscar_dry", "oscar_wet"]
-
-CORNER_META = {
-    "felix_dry": {
-        "position":    "NW",
-        "vel_start":   1,
-        "vel_end":     31,
-        "volume":      0.707946,
-        "label":       "feliX/Dry",
-        "description": "clinical, bright, unprocessed",
-    },
-    "felix_wet": {
-        "position":    "NE",
-        "vel_start":   32,
-        "vel_end":     63,
-        "volume":      0.707946,
-        "label":       "feliX/Wet",
-        "description": "bright + FX chain",
-    },
-    "oscar_dry": {
-        "position":    "SW",
-        "vel_start":   64,
-        "vel_end":     95,
-        "volume":      0.707946,
-        "label":       "Oscar/Dry",
-        "description": "warm, organic, unprocessed",
-    },
-    "oscar_wet": {
-        "position":    "SE",
-        "vel_start":   96,
-        "vel_end":     127,
-        "volume":      0.707946,
-        "label":       "Oscar/Wet",
-        "description": "warm + FX chain",
-    },
-}
-
-# GM-convention pad layout matching xpn_drum_export.py
-PAD_MAP = [
-    (36, "kick",  0, [0, 0, 0, 0]),
-    (38, "snare", 0, [0, 0, 0, 0]),
-    (39, "clap",  0, [0, 0, 0, 0]),
-    (42, "chat",  1, [46, 0, 0, 0]),
-    (46, "ohat",  1, [0, 0, 0, 0]),
-    (41, "tom",   0, [0, 0, 0, 0]),
-    (43, "perc",  0, [0, 0, 0, 0]),
-    (49, "fx",    0, [0, 0, 0, 0]),
-]
-
-# Kit subdirectory names for --kit-dir mode (canonical)
-KIT_CORNER_DIRS = ["felix_dry", "felix_wet", "oscar_dry", "oscar_wet"]
-
-# =============================================================================
-# TONE VARIANT DSP  (--auto-tone-variants)
-# =============================================================================
-
-def _design_shelf(shelf_type: str, fc: float, sr: float,
-                  gain_db: float) -> tuple:
-    """
-    Design a 2nd-order shelf filter using the Audio EQ Cookbook formulation
-    (Robert Bristow-Johnson) with bilinear pre-warping for correct fc placement.
-    shelf_type: 'low' or 'high'
-    Returns (b, a) direct-form IIR coefficients.
-    """
-    if not SCIPY_AVAILABLE:
-        raise RuntimeError("scipy is required for --auto-tone-variants")
-
-    A = 10 ** (gain_db / 40.0)   # sqrt of linear amplitude gain
-    # Bilinear pre-warp: maps analogue fc to digital domain correctly
-    w0 = 2.0 * np.pi * fc / sr
-    cos_w0 = np.cos(w0)
-    alpha = np.sin(w0) / (2.0 * 0.707)   # Q = 0.707 (Butterworth slope)
-
-    if shelf_type == "high":
-        b0 =      A * ((A + 1) + (A - 1) * cos_w0 + 2 * np.sqrt(A) * alpha)
-        b1 = -2 * A * ((A - 1) + (A + 1) * cos_w0)
-        b2 =      A * ((A + 1) + (A - 1) * cos_w0 - 2 * np.sqrt(A) * alpha)
-        a0 =           (A + 1) - (A - 1) * cos_w0 + 2 * np.sqrt(A) * alpha
-        a1 =  2 *     ((A - 1) - (A + 1) * cos_w0)
-        a2 =           (A + 1) - (A - 1) * cos_w0 - 2 * np.sqrt(A) * alpha
-    else:
-        # Low shelf
-        b0 =      A * ((A + 1) - (A - 1) * cos_w0 + 2 * np.sqrt(A) * alpha)
-        b1 =  2 * A * ((A - 1) - (A + 1) * cos_w0)
-        b2 =      A * ((A + 1) - (A - 1) * cos_w0 - 2 * np.sqrt(A) * alpha)
-        a0 =           (A + 1) + (A - 1) * cos_w0 + 2 * np.sqrt(A) * alpha
-        a1 = -2 *     ((A - 1) + (A + 1) * cos_w0)
-        a2 =           (A + 1) + (A - 1) * cos_w0 - 2 * np.sqrt(A) * alpha
-
-    b = np.array([b0, b1, b2]) / a0
-    a = np.array([a0, a1, a2]) / a0
-    return b, a
+from typing import Dict, List, Optional, Tuple
 
 
-def _apply_shelf(samples: np.ndarray, sr: int,
-                 shelf_type: str, fc: float, gain_db: float) -> np.ndarray:
-    """Apply shelf filter to audio samples array (float64)."""
-    b, a = _design_shelf(shelf_type, fc, sr, gain_db)
-    if samples.ndim == 1:
-        return signal.lfilter(b, a, samples)
-    # Stereo: filter each channel
-    out = np.stack([signal.lfilter(b, a, samples[:, ch])
-                    for ch in range(samples.shape[1])], axis=1)
-    return out
+# ---------------------------------------------------------------------------
+# Data structures
+# ---------------------------------------------------------------------------
 
+@dataclass
+class PresetInfo:
+    """Metadata extracted from a single .xometa preset file."""
+    name: str
+    filepath: str
+    engine: str = ""
 
-def _normalize_peak(samples: np.ndarray, target_db: float = -0.5) -> np.ndarray:
-    """Normalise peak to target_db (default -0.5 dBFS)."""
-    peak = np.max(np.abs(samples))
-    if peak < 1e-10:
-        return samples
-    target_linear = 10 ** (target_db / 20.0)
-    return samples * (target_linear / peak)
+    # 6D Sonic DNA (0.0-1.0 each)
+    brightness: float = 0.5
+    warmth: float = 0.5
+    movement: float = 0.5
+    density: float = 0.5
+    space: float = 0.5
+    aggression: float = 0.5
 
+    # Macro defaults (0.0-1.0)
+    character: float = 0.5
+    movement_macro: float = 0.5
+    coupling: float = 0.5
+    space_macro: float = 0.5
 
-def _read_wav(path: Path) -> tuple:
-    """Return (sr, float64 samples) from a WAV file."""
-    sr, data = wavfile.read(str(path))
-    if data.dtype == np.int16:
-        samples = data.astype(np.float64) / 32768.0
-    elif data.dtype == np.int32:
-        samples = data.astype(np.float64) / 2147483648.0
-    elif data.dtype == np.float32:
-        samples = data.astype(np.float64)
-    else:
-        samples = data.astype(np.float64)
-    return sr, samples
+    mood: str = ""
+    tags: List[str] = field(default_factory=list)
 
-
-def _write_wav(path: Path, sr: int, samples: np.ndarray) -> None:
-    """Write float64 samples to 16-bit WAV."""
-    clipped = np.clip(samples, -1.0, 1.0)
-    int16_data = (clipped * 32767).astype(np.int16)
-    wavfile.write(str(path), sr, int16_data)
-
-
-def generate_tone_variants(source_wav: Path, output_dir: Path,
-                            stem: str) -> dict:
-    """
-    Generate 4 feliX-Oscar tone variants from a single source WAV.
-
-    Returns dict mapping corner key -> output Path.
-
-    Tonal recipes:
-      felix_dry: source normalised bright (high-shelf +1.5 dB @ 6kHz)
-      felix_wet: source + high-shelf +3 dB @ 8kHz
-      oscar_dry: source + low-shelf +3 dB @ 300Hz
-      oscar_wet: source + high-shelf -2 dB @ 4kHz + low-shelf +4 dB @ 300Hz
-    """
-    if not SCIPY_AVAILABLE:
-        raise RuntimeError(
-            "scipy + numpy are required for --auto-tone-variants.\n"
-            "Install with: pip install scipy numpy"
+    @property
+    def dna_vector(self) -> Tuple[float, float, float, float, float, float]:
+        """6D vector representing the preset's sonic identity."""
+        return (
+            self.brightness, self.warmth, self.movement,
+            self.density, self.space, self.aggression,
         )
-    sr, samples = _read_wav(source_wav)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    out_paths = {}
-
-    recipes = {
-        "felix_dry": [("high", 6000.0, +1.5)],
-        "felix_wet": [("high", 8000.0, +3.0)],
-        "oscar_dry": [("low",  300.0,  +3.0)],
-        "oscar_wet": [("high", 4000.0, -2.0), ("low", 300.0, +4.0)],
-    }
-
-    for corner, shelves in recipes.items():
-        processed = samples.copy()
-        for shelf_type, fc, gain_db in shelves:
-            processed = _apply_shelf(processed, sr, shelf_type, fc, gain_db)
-        processed = _normalize_peak(processed, target_db=-0.5)
-        out_name = f"{stem}_{corner}.wav"
-        out_path = output_dir / out_name
-        _write_wav(out_path, sr, processed)
-        out_paths[corner] = out_path
-        print(f"  [tone] {corner}: {out_path.name}")
-
-    return out_paths
 
 
-# =============================================================================
-# SAMPLE FILE DISCOVERY
-# =============================================================================
-
-WAV_EXTENSIONS = {".wav", ".WAV"}
-
-
-def _find_samples_in_dir(directory: Path) -> list[Path]:
-    """Return sorted list of WAV files in a directory (non-recursive)."""
-    if not directory.is_dir():
-        return []
-    return sorted(p for p in directory.iterdir()
-                  if p.suffix in WAV_EXTENSIONS)
+@dataclass
+class CornerAssignment:
+    """Four presets assigned to a single pad's corners."""
+    pad_index: int  # 0-based
+    nw: PresetInfo
+    ne: PresetInfo
+    sw: PresetInfo
+    se: PresetInfo
 
 
-def _find_samples_recursive(directory: Path) -> list[Path]:
-    """Return sorted list of WAV files anywhere under directory."""
-    if not directory.is_dir():
-        return []
-    return sorted(directory.rglob("*.wav"))
+# ---------------------------------------------------------------------------
+# DNA distance
+# ---------------------------------------------------------------------------
 
-
-def _pick_best_sample(candidates: list) -> "Path | None":
+def dna_distance(a: PresetInfo, b: PresetInfo) -> float:
     """
-    From a list of candidate WAV files, return the 'best' one.
-    Strategy: prefer files whose names don't start with '_' or '.';
-    among ties, return the first alphabetically.
+    Euclidean distance in 6D Sonic DNA space.
+    Higher = more different = better for opposite corners.
+
+    The 6 dimensions are: brightness, warmth, movement, density, space,
+    aggression. All are normalized 0.0-1.0, so max distance is sqrt(6).
     """
-    valid = [p for p in candidates if not p.name.startswith(("_", "."))]
-    return (valid or candidates or [None])[0]
+    va, vb = a.dna_vector, b.dna_vector
+    return math.sqrt(sum((ai - bi) ** 2 for ai, bi in zip(va, vb)))
 
 
-# =============================================================================
-# XPM XML GENERATION
-# =============================================================================
+# ---------------------------------------------------------------------------
+# Preset loading
+# ---------------------------------------------------------------------------
 
-def _tier2_corner_comment(pad_num: int, stem: str,
-                           sample_paths: dict) -> str:
+def load_presets(presets_dir: str, engine: str) -> List[PresetInfo]:
     """
-    Generate the Tier 2 commented-out MPCe native corner assignment block.
-    pad_num is 1-based instrument index.
-    sample_paths: dict corner_key -> filename (just the basename).
+    Scan presets_dir for .xometa preset files belonging to the given engine.
+
+    Each .xometa file is a JSON object with fields like:
+        name, engine/engines, dna {brightness, warmth, ...},
+        macros {character, movement, coupling, space},
+        mood, tags
+
+    Presets whose engine field doesn't match the requested engine are skipped.
     """
-    lines = [
-        f'<!-- MPCe Native Corner Assignment (pending Akai documentation confirmation)',
-        f'<PadCornerAssignment pad="{pad_num}">',
-    ]
-    for corner, meta in CORNER_META.items():
-        fname = sample_paths.get(corner, "")
-        pos = meta["position"]
-        lines.append(f'  <Corner position="{pos}" sample="{xml_escape(fname)}" />')
-    lines.append('</PadCornerAssignment>')
-    lines.append('-->')
-    return "\n".join(lines)
+    presets = []
+    presets_path = Path(presets_dir)
 
+    if not presets_path.exists():
+        print(f"Warning: presets directory '{presets_dir}' not found.",
+              file=sys.stderr)
+        return presets
 
-def _layer_block_quad(number: int, corner: str,
-                       sample_name: str, sample_file: str,
-                       program_slug: str) -> str:
-    """Build one <Layer> XML block for a quad corner velocity zone."""
-    meta = CORNER_META[corner]
-    vel_start = meta["vel_start"]
-    vel_end   = meta["vel_end"]
-    volume    = meta["volume"]
-    active    = "True" if sample_name else "False"
-    file_path = (f"Samples/{program_slug}/{sample_file}"
-                 if (sample_file and program_slug) else sample_file)
-    return (
-        f'          <Layer number="{number}">\n'
-        f'            <Active>{active}</Active>\n'
-        f'            <Volume>{volume:.6f}</Volume>\n'
-        f'            <Pan>0.500000</Pan>\n'
-        f'            <Pitch>0.000000</Pitch>\n'
-        f'            <TuneCoarse>0</TuneCoarse>\n'
-        f'            <TuneFine>0</TuneFine>\n'
-        f'            <VelStart>{vel_start}</VelStart>\n'
-        f'            <VelEnd>{vel_end}</VelEnd>\n'
-        f'            <SampleStart>0</SampleStart>\n'
-        f'            <SampleEnd>0</SampleEnd>\n'
-        f'            <Loop>False</Loop>\n'
-        f'            <LoopStart>0</LoopStart>\n'
-        f'            <LoopEnd>0</LoopEnd>\n'
-        f'            <LoopTune>0</LoopTune>\n'
-        f'            <Mute>False</Mute>\n'
-        f'            <RootNote>0</RootNote>\n'
-        f'            <KeyTrack>True</KeyTrack>\n'
-        f'            <SampleName>{xml_escape(sample_name)}</SampleName>\n'
-        f'            <SampleFile>{xml_escape(sample_file)}</SampleFile>\n'
-        f'            <File>{xml_escape(file_path)}</File>\n'
-        f'            <SliceIndex>128</SliceIndex>\n'
-        f'            <Direction>0</Direction>\n'
-        f'            <Offset>0</Offset>\n'
-        f'            <SliceStart>0</SliceStart>\n'
-        f'            <SliceEnd>0</SliceEnd>\n'
-        f'            <SliceLoopStart>0</SliceLoopStart>\n'
-        f'            <SliceLoop>0</SliceLoop>\n'
-        f'          </Layer>'
+    # Collect .xometa and .json files
+    candidates = sorted(
+        p for p in presets_path.rglob("*")
+        if p.suffix in (".xometa", ".json") and p.is_file()
     )
 
-
-def _empty_layer_block(number: int) -> str:
-    return (
-        f'          <Layer number="{number}">\n'
-        f'            <Active>False</Active>\n'
-        f'            <Volume>0.707946</Volume>\n'
-        f'            <Pan>0.500000</Pan>\n'
-        f'            <Pitch>0.000000</Pitch>\n'
-        f'            <TuneCoarse>0</TuneCoarse>\n'
-        f'            <TuneFine>0</TuneFine>\n'
-        f'            <VelStart>0</VelStart>\n'
-        f'            <VelEnd>0</VelEnd>\n'
-        f'            <SampleStart>0</SampleStart>\n'
-        f'            <SampleEnd>0</SampleEnd>\n'
-        f'            <Loop>False</Loop>\n'
-        f'            <LoopStart>0</LoopStart>\n'
-        f'            <LoopEnd>0</LoopEnd>\n'
-        f'            <LoopTune>0</LoopTune>\n'
-        f'            <Mute>False</Mute>\n'
-        f'            <RootNote>0</RootNote>\n'
-        f'            <KeyTrack>True</KeyTrack>\n'
-        f'            <SampleName></SampleName>\n'
-        f'            <SampleFile></SampleFile>\n'
-        f'            <File></File>\n'
-        f'            <SliceIndex>128</SliceIndex>\n'
-        f'            <Direction>0</Direction>\n'
-        f'            <Offset>0</Offset>\n'
-        f'            <SliceStart>0</SliceStart>\n'
-        f'            <SliceEnd>0</SliceEnd>\n'
-        f'            <SliceLoopStart>0</SliceLoopStart>\n'
-        f'            <SliceLoop>0</SliceLoop>\n'
-        f'          </Layer>'
-    )
-
-
-def _instrument_block_quad(instrument_num: int,
-                            midi_note: int,
-                            pad_name: str,
-                            mute_group: int,
-                            mute_targets: list,
-                            sample_paths: dict,
-                            program_slug: str,
-                            tier2_comment: bool = True) -> str:
-    """
-    Build one full <Instrument> block with 4 quad-corner velocity layers.
-    sample_paths: dict corner_key -> Path or None
-    """
-    is_active = any(sample_paths.get(c) for c in CORNERS)
-
-    # Prepare layer XML
-    layers_xml_parts = []
-    sample_basenames = {}
-    for i, corner in enumerate(CORNERS):
-        sp = sample_paths.get(corner)
-        if sp and Path(sp).exists():
-            fname = Path(sp).name
-            sample_basenames[corner] = fname
-            layers_xml_parts.append(
-                _layer_block_quad(i + 1, corner, fname, fname, program_slug)
-            )
-        else:
-            sample_basenames[corner] = ""
-            layers_xml_parts.append(_empty_layer_block(i + 1))
-
-    layers_xml = "\n".join(layers_xml_parts)
-
-    # Mute target XML
-    mute_xml = "\n".join(
-        f"        <MuteTarget{i+1}>{t}</MuteTarget{i+1}>"
-        for i, t in enumerate(mute_targets)
-    )
-    simult_xml = "\n".join(
-        f"        <SimultTarget{i+1}>0</SimultTarget{i+1}>"
-        for i in range(4)
-    )
-
-    # Tier 2 stub (commented out)
-    tier2_block = ""
-    if tier2_comment and is_active:
-        comment = _tier2_corner_comment(instrument_num, pad_name, sample_basenames)
-        # Indent the comment inside the instrument block
-        indented = "\n".join(f"        {line}" for line in comment.splitlines())
-        tier2_block = f"\n{indented}\n"
-
-    return (
-        f'      <Instrument number="{instrument_num}">\n'
-        f'        <AudioRoute>\n'
-        f'          <AudioRoute>0</AudioRoute>\n'
-        f'          <AudioRouteSubIndex>0</AudioRouteSubIndex>\n'
-        f'          <InsertsEnabled>False</InsertsEnabled>\n'
-        f'        </AudioRoute>\n'
-        f'        <Send1>0.000000</Send1>\n'
-        f'        <Send2>0.000000</Send2>\n'
-        f'        <Send3>0.000000</Send3>\n'
-        f'        <Send4>0.000000</Send4>\n'
-        f'        <Volume>0.707946</Volume>\n'
-        f'        <Mute>False</Mute>\n'
-        f'        <Pan>0.500000</Pan>\n'
-        f'        <TuneCoarse>0</TuneCoarse>\n'
-        f'        <TuneFine>0</TuneFine>\n'
-        f'        <Mono>True</Mono>\n'
-        f'        <Polyphony>1</Polyphony>\n'
-        f'        <FilterKeytrack>0.000000</FilterKeytrack>\n'
-        f'        <LowNote>0</LowNote>\n'
-        f'        <HighNote>127</HighNote>\n'
-        f'        <IgnoreBaseNote>False</IgnoreBaseNote>\n'
-        f'        <ZonePlay>1</ZonePlay>\n'
-        f'        <MuteGroup>{mute_group}</MuteGroup>\n'
-        f'{mute_xml}\n'
-        f'{simult_xml}\n'
-        f'        <LfoPitch>0.000000</LfoPitch>\n'
-        f'        <LfoCutoff>0.000000</LfoCutoff>\n'
-        f'        <LfoVolume>0.000000</LfoVolume>\n'
-        f'        <LfoPan>0.000000</LfoPan>\n'
-        f'        <OneShot>True</OneShot>\n'
-        f'        <FilterType>2</FilterType>\n'
-        f'        <Cutoff>1.000000</Cutoff>\n'
-        f'        <Resonance>0.000000</Resonance>\n'
-        f'        <FilterEnvAmt>0.000000</FilterEnvAmt>\n'
-        f'        <AfterTouchToFilter>0.000000</AfterTouchToFilter>\n'
-        f'        <VelocityToStart>0.000000</VelocityToStart>\n'
-        f'        <VelocityToFilterAttack>0.000000</VelocityToFilterAttack>\n'
-        f'        <VelocityToFilter>0.000000</VelocityToFilter>\n'
-        f'        <VelocityToFilterEnvelope>0.000000</VelocityToFilterEnvelope>\n'
-        f'        <FilterAttack>0.000000</FilterAttack>\n'
-        f'        <FilterDecay>0.000000</FilterDecay>\n'
-        f'        <FilterSustain>1.000000</FilterSustain>\n'
-        f'        <FilterRelease>0.000000</FilterRelease>\n'
-        f'        <FilterHold>0.000000</FilterHold>\n'
-        f'        <FilterDecayType>True</FilterDecayType>\n'
-        f'        <FilterADEnvelope>True</FilterADEnvelope>\n'
-        f'        <VolumeHold>0.000000</VolumeHold>\n'
-        f'        <VolumeDecayType>True</VolumeDecayType>\n'
-        f'        <VolumeADEnvelope>True</VolumeADEnvelope>\n'
-        f'        <VolumeAttack>0.000000</VolumeAttack>\n'
-        f'        <VolumeDecay>0.300000</VolumeDecay>\n'
-        f'        <VolumeSustain>0.000000</VolumeSustain>\n'
-        f'        <VolumeRelease>0.050000</VolumeRelease>\n'
-        f'        <VelocityToPitch>0.000000</VelocityToPitch>\n'
-        f'        <VelocityToVolumeAttack>0.000000</VelocityToVolumeAttack>\n'
-        f'        <VelocitySensitivity>1.000000</VelocitySensitivity>\n'
-        f'        <VelocityToPan>0.000000</VelocityToPan>\n'
-        f'        <LFO>\n'
-        f'          <Speed>0.000000</Speed>\n'
-        f'          <Amount>0.000000</Amount>\n'
-        f'          <Type>0</Type>\n'
-        f'          <Sync>False</Sync>\n'
-        f'          <Retrigger>True</Retrigger>\n'
-        f'        </LFO>\n'
-        f'{tier2_block}'
-        f'        <Layers>\n'
-        f'{layers_xml}\n'
-        f'        </Layers>\n'
-        f'      </Instrument>'
-    )
-
-
-def _qlink_xml() -> str:
-    """Q-Link assignments: TONE / PITCH / CHARACTER / SPACE."""
-    return (
-        '    <QLinks>\n'
-        '      <QLink number="1">\n'
-        '        <Name>TONE</Name>\n'
-        '        <Parameter>FilterCutoff</Parameter>\n'
-        '        <Min>0.200000</Min>\n'
-        '        <Max>1.000000</Max>\n'
-        '      </QLink>\n'
-        '      <QLink number="2">\n'
-        '        <Name>PITCH</Name>\n'
-        '        <Parameter>TuneCoarse</Parameter>\n'
-        '        <Min>-12</Min>\n'
-        '        <Max>12</Max>\n'
-        '      </QLink>\n'
-        '      <QLink number="3">\n'
-        '        <Name>CHARACTER</Name>\n'
-        '        <Parameter>Resonance</Parameter>\n'
-        '        <Min>0.000000</Min>\n'
-        '        <Max>0.600000</Max>\n'
-        '      </QLink>\n'
-        '      <QLink number="4">\n'
-        '        <Name>SPACE</Name>\n'
-        '        <Parameter>Send1</Parameter>\n'
-        '        <Min>0.000000</Min>\n'
-        '        <Max>0.700000</Max>\n'
-        '      </QLink>\n'
-        '    </QLinks>\n'
-    )
-
-
-def build_xpm(program_name: str,
-              program_slug: str,
-              pads: list[dict],
-              tier2_comment: bool = True) -> str:
-    """
-    Build a complete XPM drum program XML string.
-
-    pads: list of dicts, each with keys:
-        instrument_num (int, 1-based)
-        midi_note      (int)
-        pad_name       (str)
-        mute_group     (int)
-        mute_targets   (list of 4 ints)
-        sample_paths   (dict corner_key -> Path or None)
-
-    Inactive pads (127 empty slots) are filled automatically.
-    """
-    active_nums = {p["instrument_num"] for p in pads}
-    pad_lookup = {p["instrument_num"]: p for p in pads}
-
-    instruments_xml_parts = []
-
-    for i in range(1, 129):
-        if i in pad_lookup:
-            p = pad_lookup[i]
-            instruments_xml_parts.append(
-                _instrument_block_quad(
-                    instrument_num=i,
-                    midi_note=p["midi_note"],
-                    pad_name=p["pad_name"],
-                    mute_group=p.get("mute_group", 0),
-                    mute_targets=p.get("mute_targets", [0, 0, 0, 0]),
-                    sample_paths=p["sample_paths"],
-                    program_slug=program_slug,
-                    tier2_comment=tier2_comment,
-                )
-            )
-        else:
-            # Empty inactive instrument
-            empty_sample_paths = {c: None for c in CORNERS}
-            instruments_xml_parts.append(
-                _instrument_block_quad(
-                    instrument_num=i,
-                    midi_note=i - 1,
-                    pad_name="",
-                    mute_group=0,
-                    mute_targets=[0, 0, 0, 0],
-                    sample_paths=empty_sample_paths,
-                    program_slug=program_slug,
-                    tier2_comment=False,
-                )
-            )
-
-    instruments_xml = "\n".join(instruments_xml_parts)
-    qlinks = _qlink_xml()
-
-    return (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        f'<!-- XPN MPCe Quad Kit — {program_name} -->\n'
-        f'<!-- Generated by xpn_mpce_quad_builder.py — XO_OX Designs {TODAY} -->\n'
-        f'<!-- feliX-Oscar quad-corner architecture -->\n'
-        f'<!--   NW (vel 1-31):  feliX/Dry — clinical, bright, unprocessed -->\n'
-        f'<!--   NE (vel 32-63): feliX/Wet — bright + FX chain -->\n'
-        f'<!--   SW (vel 64-95): Oscar/Dry — warm, organic, unprocessed -->\n'
-        f'<!--   SE (vel 96-127):Oscar/Wet — warm + FX chain -->\n'
-        '<MPCVObject>\n'
-        '  <Version>2.4</Version>\n'
-        '  <Type>Program</Type>\n'
-        '  <Program>\n'
-        '    <Name>' + xml_escape(program_name) + '</Name>\n'
-        '    <Type>Drum</Type>\n'
-        f'{qlinks}'
-        '    <Instruments>\n'
-        f'{instruments_xml}\n'
-        '    </Instruments>\n'
-        '  </Program>\n'
-        '</MPCVObject>\n'
-    )
-
-
-# =============================================================================
-# MANIFEST GENERATION
-# =============================================================================
-
-def build_manifest(program_name: str,
-                   program_slug: str,
-                   pads: list[dict],
-                   accent_color: str = "#00A6D6") -> dict:
-    """Build mpce_kit_manifest.json data."""
-    pad_records = []
-    for p in pads:
-        corner_files = {}
-        for corner in CORNERS:
-            sp = p["sample_paths"].get(corner)
-            corner_files[corner] = str(sp) if sp else ""
-
-        pad_records.append({
-            "instrument_num": p["instrument_num"],
-            "pad_name":       p["pad_name"],
-            "midi_note":      p["midi_note"],
-            "mute_group":     p.get("mute_group", 0),
-            "corners": {
-                corner: {
-                    "file":        corner_files[corner],
-                    "position":    CORNER_META[corner]["position"],
-                    "vel_start":   CORNER_META[corner]["vel_start"],
-                    "vel_end":     CORNER_META[corner]["vel_end"],
-                    "label":       CORNER_META[corner]["label"],
-                    "description": CORNER_META[corner]["description"],
-                }
-                for corner in CORNERS
-            },
-        })
-
-    return {
-        "program_name":    program_name,
-        "program_slug":    program_slug,
-        "generated_by":    "xpn_mpce_quad_builder.py",
-        "generated_date":  TODAY,
-        "engine":          "XO_OX feliX-Oscar Quad Architecture",
-        "accent_color":    accent_color,
-        "tier1_mode":      "velocity_proxy",
-        "tier2_mode":      "mpce_native_corner (stub — pending Akai docs)",
-        "corner_architecture": {
-            corner: {
-                "position":    CORNER_META[corner]["position"],
-                "vel_start":   CORNER_META[corner]["vel_start"],
-                "vel_end":     CORNER_META[corner]["vel_end"],
-                "label":       CORNER_META[corner]["label"],
-                "description": CORNER_META[corner]["description"],
-            }
-            for corner in CORNERS
-        },
-        "pad_count": len(pads),
-        "pads": pad_records,
-        "xpn_rules": {
-            "KeyTrack":  "True — samples transpose across zones",
-            "RootNote":  "0 — MPC auto-detect convention",
-            "VelStart":  "1 minimum (not 0) for active layers",
-        },
-    }
-
-
-# =============================================================================
-# MPCE_SETUP.md GENERATION
-# =============================================================================
-
-MPCE_SETUP_MD = """\
-# MPCe 3D Pad Setup Guide
-
-Generated by `xpn_mpce_quad_builder.py` — XO_OX Designs
-
----
-
-## The feliX-Oscar Quad Architecture
-
-Each pad in this kit carries **4 sample variants** — one for each corner
-of the feliX-Oscar polarity axis. feliX is clinical and bright; Oscar is
-warm and organic. Dry is unprocessed; Wet has the full FX chain applied.
-
-| Corner | Velocity     | Character       | Description                    |
-|--------|-------------|-----------------|-------------------------------|
-| NW     | vel   1–31  | feliX / Dry     | Clinical, bright, unprocessed |
-| NE     | vel  32–63  | feliX / Wet     | Bright with FX chain          |
-| SW     | vel  64–95  | Oscar / Dry     | Warm, organic, unprocessed    |
-| SE     | vel  96–127 | Oscar / Wet     | Warm with FX chain            |
-
----
-
-## Velocity Proxy — Works on All MPC Hardware (Tier 1)
-
-This kit uses **velocity zones** to access the 4 character variants per pad.
-No special MPCe hardware required — works on any MPC.
-
-| Touch intensity | Velocity range | Corner you're accessing |
-|-----------------|---------------|-------------------------|
-| Light press     | vel   1–31    | NW — feliX/Dry          |
-| Medium-light    | vel  32–63    | NE — feliX/Wet          |
-| Medium-hard     | vel  64–95    | SW — Oscar/Dry          |
-| Hard press      | vel  96–127   | SE — Oscar/Wet          |
-
-**Tip:** Adjust pad sensitivity in MPC Settings → Hardware to shift where
-your natural playing lands on the velocity curve.
-
----
-
-## For MPCe Owners — 3D Pad Physical Corners
-
-The velocity zones map directly to MPCe's physical pad corner positions:
-
-```
-NW ─────── NE
- │         │
- │   Pad   │
- │         │
-SW ─────── SE
-```
-
-- **NW corner** (light touch) → feliX/Dry
-- **NE corner** (medium-light) → feliX/Wet
-- **SW corner** (medium-hard) → Oscar/Dry
-- **SE corner** (hard press) → Oscar/Wet
-
-Press closer to a corner + adjust pressure to blend between character voices.
-
-> **Note:** A native MPCe `<PadCornerAssignment>` XML stub is included (commented
-> out) inside the XPM file. When Akai releases official 3D pad documentation,
-> that block gets un-commented and the tool is updated to write it live.
-
----
-
-## Session Tips
-
-1. **Lock a single corner** — automate the channel's MIDI output velocity to
-   a fixed range to commit to one character (e.g., vel 1–31 for all-feliX/Dry).
-
-2. **Sweep the corner axis live** — map a MIDI CC to velocity (check your
-   controller's velocity-CC routing or use a DAW MIDI transform) and sweep
-   from feliX to Oscar across a performance.
-
-3. **Use both dry and wet on separate tracks** — route the same MIDI note to
-   two MIDI channels, one at vel 1–31 (dry) and one at 32–63 (wet), for
-   parallel processing control.
-
-4. **Q-Links on this kit:**
-   - Q1: TONE (filter cutoff)
-   - Q2: PITCH (coarse tune)
-   - Q3: CHARACTER (resonance)
-   - Q4: SPACE (send 1 / reverb)
-
----
-
-## About feliX and Oscar
-
-feliX is the neon tetra — darting, neon-lit, clinical precision.
-Oscar is the axolotl — warm-blooded, regenerative, organic depth.
-
-Together they form the XO_OX polarity axis. Every sample in this kit
-lives somewhere on that spectrum, and this quad architecture lets you
-access all four quadrants with a single finger.
-
-*XO_OX Designs — for all*
-"""
-
-
-# =============================================================================
-# STANDARD KIT PARSER  (--from-standard-kit)
-# =============================================================================
-
-def parse_standard_xpm(xpm_path: Path) -> list[dict]:
-    """
-    Parse an existing standard XPM drum program.
-    Returns list of dicts:
-        instrument_num, midi_note (guessed from num-1), pad_name, sample_path
-    Only returns instruments that have at least one active layer.
-    """
-    tree = ET.parse(str(xpm_path))
-    root = tree.getroot()
-
-    # XPM structure: MPCVObject/Program/Instruments/Instrument
-    instruments = root.findall(".//Instrument")
-    pads = []
-    for inst in instruments:
-        num_attr = inst.get("number")
-        if num_attr is None:
-            continue
-        num = int(num_attr)
-        layers = inst.findall(".//Layer")
-        # Find first active layer with a sample file
-        sample_file = ""
-        for layer in layers:
-            active = layer.findtext("Active", "False")
-            if active.strip() == "True":
-                sf = layer.findtext("SampleFile", "").strip()
-                sn = layer.findtext("SampleName", "").strip()
-                if sf or sn:
-                    sample_file = sf or sn
-                    break
-        if not sample_file:
+    for fp in candidates:
+        try:
+            with open(fp, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, UnicodeDecodeError):
             continue
 
-        # Try to derive the pad name from sample file
-        stem = Path(sample_file).stem
-        # Strip trailing _v1/_v2/_c1 etc.
-        clean_stem = re.sub(r'[_-](v\d|c\d)$', '', stem, flags=re.IGNORECASE)
-
-        pads.append({
-            "instrument_num": num,
-            "midi_note":      num - 1,
-            "pad_name":       clean_stem,
-            "sample_path":    sample_file,
-        })
-
-    return pads
-
-
-# =============================================================================
-# BUILD MODES
-# =============================================================================
-
-def _slugify(name: str) -> str:
-    """Convert a name to a filesystem-safe slug."""
-    slug = re.sub(r'[^\w\-]', '_', name.lower())
-    slug = re.sub(r'_+', '_', slug).strip('_')
-    return slug
-
-
-def build_single_pad_kit(args) -> None:
-    """
-    Build a kit from 4 explicit corner directories (--felix-dry / ... flags).
-    """
-    corners_dirs = {
-        "felix_dry": Path(args.felix_dry),
-        "felix_wet": Path(args.felix_wet),
-        "oscar_dry": Path(args.oscar_dry),
-        "oscar_wet": Path(args.oscar_wet),
-    }
-    pad_name = args.pad_name or "Quad_Pad"
-    program_name = args.program_name or f"{pad_name}_MPCe"
-    program_slug = _slugify(program_name)
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Discover samples per corner
-    sample_paths = {}
-    for corner, cdir in corners_dirs.items():
-        candidates = _find_samples_in_dir(cdir)
-        if not candidates:
-            print(f"  [warn] No WAV files found in {cdir} for corner {corner}")
-            sample_paths[corner] = None
+        # Check engine match (flexible: engines array or engine string)
+        preset_engines = data.get("engines", [])
+        preset_engine = data.get("engine", "")
+        if isinstance(preset_engines, list):
+            engine_match = engine.upper() in [e.upper() for e in preset_engines]
         else:
-            # Use all found samples — for single-pad kit, pick best one
-            sample_paths[corner] = _pick_best_sample(candidates)
-            print(f"  [{corner}] {sample_paths[corner].name}")
+            engine_match = False
+        if not engine_match:
+            engine_match = preset_engine.upper() == engine.upper()
+        if not engine_match and preset_engines == [] and preset_engine == "":
+            # No engine metadata — include it (might be engine-agnostic)
+            engine_match = True
+        if not engine_match:
+            continue
 
-    pads = [
-        {
-            "instrument_num": 1,
-            "midi_note":      36,
-            "pad_name":       pad_name,
-            "mute_group":     0,
-            "mute_targets":   [0, 0, 0, 0],
-            "sample_paths":   sample_paths,
-        }
-    ]
+        # Extract DNA
+        dna = data.get("dna", {})
+        macros = data.get("macros", {})
 
-    _write_kit_outputs(program_name, program_slug, pads, output_dir,
-                       accent_color=args.accent_color)
+        presets.append(PresetInfo(
+            name=data.get("name", fp.stem),
+            filepath=str(fp),
+            engine=engine,
+            brightness=float(dna.get("brightness", 0.5)),
+            warmth=float(dna.get("warmth", 0.5)),
+            movement=float(dna.get("movement", 0.5)),
+            density=float(dna.get("density", 0.5)),
+            space=float(dna.get("space", 0.5)),
+            aggression=float(dna.get("aggression", 0.5)),
+            character=float(macros.get("character", 0.5)),
+            movement_macro=float(macros.get("movement", 0.5)),
+            coupling=float(macros.get("coupling", 0.5)),
+            space_macro=float(macros.get("space", 0.5)),
+            mood=data.get("mood", ""),
+            tags=data.get("tags", []),
+        ))
+
+    return presets
 
 
-def build_kit_from_dir(args) -> None:
+# ---------------------------------------------------------------------------
+# Corner assignment algorithm
+# ---------------------------------------------------------------------------
+
+def _find_max_distance_pair(group: List[PresetInfo]) -> Tuple[int, int]:
+    """Find the pair of indices with the greatest DNA distance."""
+    best_dist = -1.0
+    best_pair = (0, 1)
+    for i, j in combinations(range(len(group)), 2):
+        d = dna_distance(group[i], group[j])
+        if d > best_dist:
+            best_dist = d
+            best_pair = (i, j)
+    return best_pair
+
+
+def assign_corners(presets: List[PresetInfo],
+                   pad_count: int) -> List[CornerAssignment]:
     """
-    Build a full multi-pad kit from a structured directory.
-    Expects: kit_dir/{pad_name}/{felix_dry,felix_wet,oscar_dry,oscar_wet}/
+    Assign presets to pad corners using DNA distance maximization.
+
+    Algorithm:
+    1. Need 4 presets per pad. Total needed = pad_count * 4.
+       If fewer presets are available, pads are filled round-robin with
+       repeats. If more are available, the first pad_count * 4 are used
+       (sorted by DNA diversity — most spread-out presets first).
+
+    2. For each group of 4:
+       a. Find the pair with the greatest DNA distance.
+          Assign them to the NW/SE diagonal (opposite corners).
+       b. The remaining two go to the NE/SW diagonal.
+       c. Among the NE/SW pair, maximize their distance too.
+
+    This ensures the widest morph range on each pad's X/Y surface.
+    Opposite corners are always maximally different.
     """
-    kit_dir = Path(args.kit_dir)
-    if not kit_dir.is_dir():
-        print(f"ERROR: --kit-dir {kit_dir} does not exist.", file=sys.stderr)
-        sys.exit(1)
+    assignments = []
 
-    program_name = args.program_name or (kit_dir.name + "_MPCe_Quad")
-    program_slug = _slugify(program_name)
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    if len(presets) == 0:
+        print("Error: no presets found.", file=sys.stderr)
+        return assignments
 
-    # Discover pad subdirectories
-    pad_dirs = sorted(p for p in kit_dir.iterdir() if p.is_dir())
-    if not pad_dirs:
-        print(f"ERROR: No subdirectories found in {kit_dir}.", file=sys.stderr)
-        sys.exit(1)
+    needed = pad_count * 4
 
-    # Use GM pad map if pad count matches, otherwise number sequentially
-    gm_notes = {name: (note, mg, mt) for (note, name, mg, mt) in PAD_MAP}
+    # If we have more presets than needed, pick the most diverse subset.
+    # Simple greedy: sort by distance from the centroid (most extreme first).
+    if len(presets) > needed:
+        centroid = tuple(
+            sum(p.dna_vector[d] for p in presets) / len(presets)
+            for d in range(6)
+        )
+        # Create a dummy preset at the centroid for distance measurement
+        centroid_preset = PresetInfo(name="__centroid__", filepath="")
+        (centroid_preset.brightness, centroid_preset.warmth,
+         centroid_preset.movement, centroid_preset.density,
+         centroid_preset.space, centroid_preset.aggression) = centroid
 
-    pads = []
-    for pad_idx, pad_dir in enumerate(pad_dirs):
-        pad_name = pad_dir.name
-        # Look up GM note if pad_name matches a GM voice
-        if pad_name.lower() in gm_notes:
-            note, mg, mt = gm_notes[pad_name.lower()]
-            instr_num = [i for i, (n, nm, g, t) in enumerate(PAD_MAP)
-                         if nm == pad_name.lower()][0] + 1
-        else:
-            note = 36 + pad_idx
-            mg = 0
-            mt = [0, 0, 0, 0]
-            instr_num = pad_idx + 1
+        presets_ranked = sorted(
+            presets,
+            key=lambda p: dna_distance(p, centroid_preset),
+            reverse=True,
+        )
+        pool = presets_ranked[:needed]
+    else:
+        # Pad with repeats if not enough
+        pool = presets * ((needed // len(presets)) + 1)
+        pool = pool[:needed]
 
-        sample_paths = {}
-        for corner in CORNERS:
-            corner_dir = pad_dir / corner
-            if corner_dir.is_dir():
-                candidates = _find_samples_in_dir(corner_dir)
-                sample_paths[corner] = _pick_best_sample(candidates) if candidates else None
+    for pad_idx in range(pad_count):
+        group = pool[pad_idx * 4 : (pad_idx + 1) * 4]
+
+        # Find the most different pair -> NW and SE (main diagonal)
+        nw_idx, se_idx = _find_max_distance_pair(group)
+
+        # Remaining two -> NE and SW (secondary diagonal)
+        others = [k for k in range(4) if k not in (nw_idx, se_idx)]
+
+        # Among the other two, also maximize: the one more similar to NW
+        # goes to NE (adjacent to NW on X axis), the other to SW.
+        if len(others) == 2:
+            d0_to_nw = dna_distance(group[others[0]], group[nw_idx])
+            d1_to_nw = dna_distance(group[others[1]], group[nw_idx])
+            if d0_to_nw < d1_to_nw:
+                ne_idx, sw_idx = others[0], others[1]
             else:
-                # Also try files directly in pad_dir named *_corner*
-                matches = [p for p in _find_samples_in_dir(pad_dir)
-                           if corner in p.stem.lower()]
-                sample_paths[corner] = _pick_best_sample(matches) if matches else None
-
-        has_any = any(v for v in sample_paths.values())
-        if not has_any:
-            print(f"  [skip] {pad_name}: no samples found")
-            continue
-
-        pads.append({
-            "instrument_num": instr_num,
-            "midi_note":      note,
-            "pad_name":       pad_name,
-            "mute_group":     mg,
-            "mute_targets":   list(mt),
-            "sample_paths":   sample_paths,
-        })
-        print(f"  [pad] {pad_name} → MIDI {note} | "
-              + " ".join(f"{c}={'Y' if sample_paths[c] else 'N'}"
-                         for c in CORNERS))
-
-    if not pads:
-        print("ERROR: No valid pads found.", file=sys.stderr)
-        sys.exit(1)
-
-    _write_kit_outputs(program_name, program_slug, pads, output_dir,
-                       accent_color=args.accent_color)
-
-
-def build_from_standard_kit(args) -> None:
-    """
-    Parse existing standard XPM, auto-generate tone variants,
-    and rebuild as quad kit.
-    """
-    if not SCIPY_AVAILABLE and args.auto_tone_variants:
-        print("ERROR: scipy + numpy required for --auto-tone-variants.\n"
-              "Install: pip install scipy numpy", file=sys.stderr)
-        sys.exit(1)
-
-    xpm_path = Path(args.from_standard_kit)
-    if not xpm_path.exists():
-        print(f"ERROR: {xpm_path} does not exist.", file=sys.stderr)
-        sys.exit(1)
-
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    variants_dir = output_dir / "Samples"
-
-    parsed_pads = parse_standard_xpm(xpm_path)
-    if not parsed_pads:
-        print("ERROR: No active instruments found in XPM.", file=sys.stderr)
-        sys.exit(1)
-
-    program_name = args.program_name or (xpm_path.stem + "_MPCe_Quad")
-    program_slug = _slugify(program_name)
-
-    # Resolve sample paths relative to the XPM directory
-    xpm_dir = xpm_path.parent
-    pads = []
-
-    for p in parsed_pads:
-        pad_name = p["pad_name"]
-        source_wav_name = p["sample_path"]
-        # Resolve: try relative to XPM, then check Samples/ sibling
-        source_wav = xpm_dir / source_wav_name
-        if not source_wav.exists():
-            source_wav = xpm_dir / "Samples" / source_wav_name
-        if not source_wav.exists():
-            # Search recursively
-            candidates = list(xpm_dir.rglob(Path(source_wav_name).name))
-            source_wav = candidates[0] if candidates else source_wav
-
-        if args.auto_tone_variants and source_wav.exists():
-            stem = _slugify(pad_name)
-            out_subdir = variants_dir / program_slug / stem
-            print(f"  [auto-tone] {pad_name} ← {source_wav.name}")
-            variant_paths = generate_tone_variants(source_wav, out_subdir, stem)
-            sample_paths = {c: variant_paths.get(c) for c in CORNERS}
+                ne_idx, sw_idx = others[1], others[0]
         else:
-            if not source_wav.exists():
-                print(f"  [warn] Source WAV not found for {pad_name}: {source_wav_name}")
-            # No auto-tone: use source for all corners (producer fills the gaps)
-            sample_paths = {c: source_wav if source_wav.exists() else None
-                            for c in CORNERS}
+            ne_idx, sw_idx = others[0], others[0]
 
-        gm_map = {name: (note, mg, mt) for (note, name, mg, mt) in PAD_MAP}
-        pad_lower = pad_name.lower()
-        if pad_lower in gm_map:
-            note, mg, mt = gm_map[pad_lower]
-        else:
-            note = p["midi_note"]
-            mg = 0
-            mt = [0, 0, 0, 0]
+        assignments.append(CornerAssignment(
+            pad_index=pad_idx,
+            nw=group[nw_idx],
+            ne=group[ne_idx],
+            sw=group[sw_idx],
+            se=group[se_idx],
+        ))
 
-        pads.append({
-            "instrument_num": p["instrument_num"],
-            "midi_note":      note,
-            "pad_name":       pad_name,
-            "mute_group":     mg,
-            "mute_targets":   list(mt),
-            "sample_paths":   sample_paths,
-        })
-
-    _write_kit_outputs(program_name, program_slug, pads, output_dir,
-                       accent_color=args.accent_color)
+    return assignments
 
 
-def _write_kit_outputs(program_name: str, program_slug: str,
-                        pads: list[dict], output_dir: Path,
-                        accent_color: str = "#00A6D6") -> None:
-    """Write XPM, manifest JSON, and MPCE_SETUP.md to output_dir."""
-    # XPM file
-    xpm_content = build_xpm(program_name, program_slug, pads, tier2_comment=True)
-    xpm_path = output_dir / f"{program_slug}.xpm"
-    xpm_path.write_text(xpm_content, encoding="utf-8")
-    print(f"\n[output] XPM: {xpm_path}")
+# ---------------------------------------------------------------------------
+# XPM generation (speculative MPCe XML schema)
+# ---------------------------------------------------------------------------
 
-    # Manifest JSON
-    manifest = build_manifest(program_name, program_slug, pads,
-                               accent_color=accent_color)
-    manifest_path = output_dir / "mpce_kit_manifest.json"
-    manifest_path.write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False),
-        encoding="utf-8"
-    )
-    print(f"[output] Manifest: {manifest_path}")
+def generate_xpm(
+    engine: str,
+    assignments: List[CornerAssignment],
+    output_dir: str,
+    speculative: bool = True,
+) -> str:
+    """
+    Generate an XPM file with quad-corner pad preset assignments.
 
-    # MPCE_SETUP.md
-    setup_path = output_dir / "MPCE_SETUP.md"
-    setup_path.write_text(MPCE_SETUP_MD, encoding="utf-8")
-    print(f"[output] Setup guide: {setup_path}")
+    SPECULATIVE TAGS:
+    The following XML elements are NOT part of any published Akai schema.
+    They represent our best guess for how MPCe 3D pad morphing will work:
 
-    print(f"\n[done] {len(pads)} pads | program: {program_name}")
-    print(f"       {program_slug}.xpm written to {output_dir}")
+        <PadCornerAssignment>     — container for one pad's 4 corners
+        <Corner position="NW">   — one corner assignment
+        <PresetRef>               — reference to the engine preset
+        <MacroSnapshot>           — macro values frozen at this corner
+        <DNAVector>               — 6D sonic DNA for interpolation
+        <PadAxisRouting>          — X/Y/Z axis mapping
+        <CornerInterpolation>     — morphing algorithm hint
+
+    When Akai publishes the real format, replace these stubs with the
+    official tags. The corner assignment ALGORITHM (DNA distance
+    maximization) will remain the same regardless of XML format.
+
+    Returns the path to the written file.
+    """
+    root = ET.Element("MPCVObject")
+    root.set("Version", "2.0")
+
+    if speculative:
+        root.append(ET.Comment(
+            " SPECULATIVE FORMAT: MPCe quad-corner preset morphing schema "
+            "is not finalized by Akai. Do not ship until official spec is "
+            "published. Generated by xpn_mpce_quad_builder.py — XO_OX Designs. "
+        ))
+
+    program = ET.SubElement(root, "Program")
+    ET.SubElement(program, "Name").text = f"{engine} Quad-Corner Program"
+    ET.SubElement(program, "Engine").text = engine
+    ET.SubElement(program, "Type").text = "MPCe-QuadCorner"
+    ET.SubElement(program, "PadCount").text = str(len(assignments))
+
+    # [SPECULATIVE] Global axis routing
+    routing = ET.SubElement(program, "PadAxisRouting")
+    routing.append(ET.Comment(" X/Y control corner crossfade, Z is expression "))
+    ET.SubElement(routing, "XAxis").text = "CornerCrossfade_X"
+    ET.SubElement(routing, "YAxis").text = "CornerCrossfade_Y"
+    ET.SubElement(routing, "ZAxis").text = "Expression"
+
+    # [SPECULATIVE] Interpolation mode
+    interp = ET.SubElement(program, "CornerInterpolation")
+    ET.SubElement(interp, "Mode").text = "bilinear"
+    interp.append(ET.Comment(
+        " bilinear: standard 2D lerp between 4 corners. "
+        "Other candidates: spherical, weighted-nearest, dna-guided "
+    ))
+
+    # Pad assignments
+    pads_el = ET.SubElement(program, "Pads")
+
+    for assignment in assignments:
+        pad_el = ET.SubElement(pads_el, "Pad")
+        pad_el.set("index", str(assignment.pad_index))
+        ET.SubElement(pad_el, "MidiNote").text = str(37 + assignment.pad_index)
+
+        # [SPECULATIVE] Corner assignments
+        corners_el = ET.SubElement(pad_el, "PadCornerAssignment")
+
+        for corner_name, preset in [
+            ("NW", assignment.nw),
+            ("NE", assignment.ne),
+            ("SW", assignment.sw),
+            ("SE", assignment.se),
+        ]:
+            corner_el = ET.SubElement(corners_el, "Corner")
+            corner_el.set("position", corner_name)
+
+            ET.SubElement(corner_el, "PresetRef").text = preset.name
+            ET.SubElement(corner_el, "PresetFile").text = (
+                os.path.basename(preset.filepath)
+            )
+
+            # Macro snapshot at this corner
+            macros_el = ET.SubElement(corner_el, "MacroSnapshot")
+            ET.SubElement(macros_el, "CHARACTER").text = f"{preset.character:.3f}"
+            ET.SubElement(macros_el, "MOVEMENT").text = (
+                f"{preset.movement_macro:.3f}"
+            )
+            ET.SubElement(macros_el, "COUPLING").text = f"{preset.coupling:.3f}"
+            ET.SubElement(macros_el, "SPACE").text = f"{preset.space_macro:.3f}"
+
+            # DNA vector for interpolation engine
+            dna_el = ET.SubElement(corner_el, "DNAVector")
+            ET.SubElement(dna_el, "brightness").text = (
+                f"{preset.brightness:.3f}"
+            )
+            ET.SubElement(dna_el, "warmth").text = f"{preset.warmth:.3f}"
+            ET.SubElement(dna_el, "movement").text = f"{preset.movement:.3f}"
+            ET.SubElement(dna_el, "density").text = f"{preset.density:.3f}"
+            ET.SubElement(dna_el, "space").text = f"{preset.space:.3f}"
+            ET.SubElement(dna_el, "aggression").text = (
+                f"{preset.aggression:.3f}"
+            )
+
+        # Distance summary for this pad
+        diag1 = dna_distance(assignment.nw, assignment.se)
+        diag2 = dna_distance(assignment.ne, assignment.sw)
+        pad_el.append(ET.Comment(
+            f" Diagonal distances: NW-SE={diag1:.3f}  NE-SW={diag2:.3f} "
+        ))
+
+    # Write output
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+    filename = f"{engine}_QuadCorner.xpm"
+    filepath = output_path / filename
+
+    tree = ET.ElementTree(root)
+    ET.indent(tree, space="  ")
+    tree.write(str(filepath), encoding="unicode", xml_declaration=True)
+
+    return str(filepath)
 
 
-# =============================================================================
+# ---------------------------------------------------------------------------
 # CLI
-# =============================================================================
+# ---------------------------------------------------------------------------
 
-def _build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(
-        prog="xpn_mpce_quad_builder",
+def main():
+    parser = argparse.ArgumentParser(
         description=(
-            "XO_OX MPCe feliX-Oscar Quad Corner Kit Builder.\n"
-            "Builds XPM drum programs with 4 corner velocity zones per pad.\n"
-            "Generates XPM + mpce_kit_manifest.json + MPCE_SETUP.md."
+            "MPCe Quad-Corner Builder: generate XPM programs that assign "
+            "4 engine presets to each pad's quad corners (NW/NE/SW/SE) "
+            "for 3D pad morphing on MPC Live III and MPC XL. Opposite "
+            "corners are chosen to be maximally different in 6D Sonic DNA "
+            "space, giving the widest morph range per pad."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
+    parser.add_argument(
+        "--engine",
+        required=True,
+        help="XOmnibus engine name (e.g. OPAL, OVERLAP, ONSET, OCEANIC)",
+    )
+    parser.add_argument(
+        "--presets-dir",
+        required=True,
+        help="Directory containing .xometa preset files for the engine",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default="./output",
+        help="Directory to write the generated XPM (default: ./output)",
+    )
+    parser.add_argument(
+        "--pad-count",
+        type=int,
+        default=16,
+        choices=[4, 8, 16],
+        help="Number of pads to assign (default: 16, needs 4 presets each)",
+    )
+    parser.add_argument(
+        "--speculative",
+        action="store_true",
+        default=True,
+        help=(
+            "Mark output as speculative format (default: on). The MPCe "
+            "quad-corner XPM schema is not finalized by Akai. Adds a "
+            "warning comment to the output XML."
+        ),
+    )
+    parser.add_argument(
+        "--no-speculative",
+        action="store_false",
+        dest="speculative",
+        help=(
+            "Omit the speculative warning. Use only if the official Akai "
+            "schema has been confirmed and this tool has been updated."
+        ),
+    )
 
-    # --- Mode: single pad ---
-    single = p.add_argument_group("Single-pad mode (one pad, 4 explicit corner dirs)")
-    single.add_argument("--felix-dry",  metavar="DIR",
-                        help="Directory of feliX/Dry WAVs (vel 1-31)")
-    single.add_argument("--felix-wet",  metavar="DIR",
-                        help="Directory of feliX/Wet WAVs (vel 32-63)")
-    single.add_argument("--oscar-dry",  metavar="DIR",
-                        help="Directory of Oscar/Dry WAVs (vel 64-95)")
-    single.add_argument("--oscar-wet",  metavar="DIR",
-                        help="Directory of Oscar/Wet WAVs (vel 96-127)")
-    single.add_argument("--pad-name",   metavar="NAME",
-                        help="Name for the single pad (default: Quad_Pad)")
-
-    # --- Mode: full kit from directory ---
-    kit = p.add_argument_group("Kit-dir mode (full kit from structured directory)")
-    kit.add_argument("--kit-dir", metavar="DIR",
-                     help=(
-                         "Root directory containing {pad_name}/"
-                         "{felix_dry,felix_wet,oscar_dry,oscar_wet}/ subdirs"
-                     ))
-
-    # --- Mode: from standard XPM ---
-    std = p.add_argument_group("Standard-kit mode (convert existing XPM)")
-    std.add_argument("--from-standard-kit", metavar="XPM",
-                     help="Path to existing standard MPC XPM drum program")
-    std.add_argument("--auto-tone-variants", action="store_true",
-                     help=(
-                         "Auto-generate feliX/Oscar tone variants using shelf "
-                         "filters (requires scipy+numpy). Writes WAV variants "
-                         "alongside the XPM."
-                     ))
-
-    # --- Common ---
-    p.add_argument("--output", "-o", metavar="DIR", required=True,
-                   help="Output directory for XPM + manifest + setup guide")
-    p.add_argument("--program-name", metavar="NAME",
-                   help="Override the XPM program name (default: derived from input)")
-    p.add_argument("--accent-color", metavar="HEX", default="#00A6D6",
-                   help="Engine accent color for manifest (default: neon tetra blue)")
-    p.add_argument("--no-tier2-stub", action="store_true",
-                   help="Omit the commented-out MPCe native corner XML stub")
-
-    return p
-
-
-def main() -> None:
-    parser = _build_parser()
     args = parser.parse_args()
 
-    # Determine mode
-    has_single = any([args.felix_dry, args.felix_wet,
-                      args.oscar_dry, args.oscar_wet])
-    has_kit_dir = bool(args.kit_dir)
-    has_standard = bool(getattr(args, "from_standard_kit", None))
+    # Load presets
+    print(f"Loading {args.engine} presets from {args.presets_dir}...")
+    presets = load_presets(args.presets_dir, args.engine)
 
-    modes_active = sum([has_single, has_kit_dir, has_standard])
-    if modes_active == 0:
-        parser.error(
-            "Specify one mode:\n"
-            "  --felix-dry/--felix-wet/--oscar-dry/--oscar-wet  (single pad)\n"
-            "  --kit-dir                                          (full kit)\n"
-            "  --from-standard-kit                                (convert XPM)"
+    if not presets:
+        print(
+            f"No presets found for engine '{args.engine}' in "
+            f"'{args.presets_dir}'. Check the directory and engine name.",
+            file=sys.stderr,
         )
-    if modes_active > 1:
-        parser.error("Specify only one mode at a time.")
+        sys.exit(1)
 
-    if has_single:
-        missing = [f"--{c.replace('_','-')}" for c in
-                   ["felix_dry", "felix_wet", "oscar_dry", "oscar_wet"]
-                   if not getattr(args, c.replace("-", "_"), None)]
-        if missing:
-            parser.error(f"Single-pad mode requires all 4 corner dirs: {missing}")
-        build_single_pad_kit(args)
+    needed = args.pad_count * 4
+    print(f"Found {len(presets)} presets. Need {needed} for {args.pad_count} "
+          f"pads (4 per pad).")
+    if len(presets) < needed:
+        print(f"Note: only {len(presets)} presets available — some will "
+              f"repeat across pads.")
 
-    elif has_kit_dir:
-        build_kit_from_dir(args)
+    # Assign corners by DNA distance
+    print("Assigning corners by DNA distance maximization...")
+    assignments = assign_corners(presets, args.pad_count)
 
-    elif has_standard:
-        build_from_standard_kit(args)
+    # Generate XPM
+    print("Generating XPM...")
+    output_file = generate_xpm(
+        engine=args.engine,
+        assignments=assignments,
+        output_dir=args.output_dir,
+        speculative=args.speculative,
+    )
+
+    print(f"\nOutput: {output_file}")
+    if args.speculative:
+        print("Note: output uses SPECULATIVE MPCe format (--speculative).")
+
+    # Summary table
+    print(f"\n{'Pad':>4}  {'NW (top-left)':20s}  {'NE (top-right)':20s}  "
+          f"{'SW (bot-left)':20s}  {'SE (bot-right)':20s}  "
+          f"{'NW-SE dist':>10s}")
+    print("-" * 102)
+    for a in assignments:
+        dist = dna_distance(a.nw, a.se)
+        print(
+            f"{a.pad_index:4d}  "
+            f"{a.nw.name:20s}  {a.ne.name:20s}  "
+            f"{a.sw.name:20s}  {a.se.name:20s}  "
+            f"{dist:10.3f}"
+        )
 
 
 if __name__ == "__main__":

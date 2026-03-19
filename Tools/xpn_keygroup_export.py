@@ -233,6 +233,74 @@ def _family_vel_layers(instrument_family: str) -> List[tuple]:
 
 
 # ---------------------------------------------------------------------------
+# Velocity crossfade
+# ---------------------------------------------------------------------------
+#
+# Hard velocity boundaries cause audible "switching" between layers instead of
+# smooth morphing. On MPC hardware, when adjacent layers overlap in velocity
+# range, both layers sound simultaneously at complementary volumes in the
+# overlap zone — producing a natural timbral crossfade.
+#
+# Only applied for instrument families where timbral crossfade matters.
+# Drums keep hard splits because transient character changes are intentionally
+# abrupt — crossfading would blur the attack.
+# ---------------------------------------------------------------------------
+
+# Families that benefit from velocity crossfade (timbral variation across layers)
+_CROSSFADE_FAMILIES = {"piano", "strings", "brass", "pads", "woodwind", "organ", "world", "bass", "default"}
+
+
+def _apply_vel_crossfade(
+    layers: List[Tuple[int, int, float]],
+    crossfade: int,
+    instrument_family: str = "default",
+) -> List[Tuple[int, int, float]]:
+    """
+    Apply velocity crossfade overlap to adjacent velocity layers.
+
+    When crossfade > 0, adjacent layers overlap by that many velocity units.
+    In the overlap zone both layers sound at complementary volumes on MPC,
+    producing a smooth morph instead of an abrupt timbral switch.
+
+    Example with crossfade=3 on standard 4-layer:
+        Before: v1: 1-31,  v2: 32-63,  v3: 64-95,  v4: 96-127
+        After:  v1: 1-34,  v2: 29-66,  v3: 61-98,  v4: 93-127
+
+    Drums/percussion always get hard splits (no crossfade applied).
+
+    Args:
+        layers: list of (vel_start, vel_end, volume) tuples
+        crossfade: velocity units to overlap on each side of a boundary
+        instrument_family: family name — drums skip crossfade regardless
+    """
+    family = (instrument_family or "default").lower()
+
+    # Drums and percussive families: hard splits by design
+    if family in ("drums", "percussion") or family not in _CROSSFADE_FAMILIES:
+        return list(layers)
+
+    if crossfade <= 0 or len(layers) < 2:
+        return list(layers)
+
+    result: List[Tuple[int, int, float]] = []
+    for i, (vs, ve, vol) in enumerate(layers):
+        new_vs = vs
+        new_ve = ve
+
+        # Extend start downward into previous layer's territory
+        if i > 0:
+            new_vs = max(1, vs - crossfade)
+
+        # Extend end upward into next layer's territory
+        if i < len(layers) - 1:
+            new_ve = min(127, ve + crossfade)
+
+        result.append((new_vs, new_ve, vol))
+
+    return result
+
+
+# ---------------------------------------------------------------------------
 # DNA-Adaptive Velocity Curves (ported from xpn_drum_export.py)
 # ---------------------------------------------------------------------------
 #
@@ -637,6 +705,7 @@ def generate_keygroup_xpm(
     dna_adaptive: bool = False,
     dna: Optional[dict] = None,
     vel_curve: str = "musical",
+    vel_crossfade: int = 3,
 ) -> str:
     """
     Generate a complete Keygroup XPM from a wav_map.
@@ -653,6 +722,9 @@ def generate_keygroup_xpm(
         dna_adaptive:      apply DNA-adaptive velocity curves
         dna:               Sonic DNA dict (loaded from .xometa if None + dna_adaptive)
         vel_curve:         "musical" (Vibe curve) or "even" (equal splits)
+        vel_crossfade:     velocity units to overlap between adjacent layers (default 3).
+                           Set to 0 for hard splits. Only applied for timbral families
+                           (piano, strings, brass, pads, etc.) — drums always use hard splits.
 
     If wav_map is empty, returns a single-instrument program with no layers
     that MPC can load (though it will be silent until WAVs are present).
@@ -676,6 +748,11 @@ def generate_keygroup_xpm(
             (64, 95, 0.85),
             (96, 127, 0.97),
         ]
+
+    # --- Apply velocity crossfade (overlap adjacent layers for smooth morphing) ---
+    active_vel_layers = _apply_vel_crossfade(
+        active_vel_layers, vel_crossfade, instrument_family
+    )
 
     # --- CycleType constants ---
     CYCLE_TYPE_ROUNDROBIN = "RoundRobin"
@@ -921,26 +998,31 @@ def generate_keygroup_xpm(
             inst_idx += 1
             num_instruments += 1
 
-    # Q-Link assignments for keygroup programs (Atlas bridge §9)
+    # Standardized XOmnibus macro → MPC Q-Link mapping:
+    #   Q1 → CHARACTER  (FilterCutoff — timbral character)
+    #   Q2 → MOVEMENT   (LFO Rate — motion/modulation depth)
+    #   Q3 → COUPLING   (Send2/AuxSend — cross-feed, closest MPC analog to coupling)
+    #   Q4 → SPACE      (Send1/Reverb — spatial depth)
+    # Label names are ≤10 chars for MPC XL OLED display compatibility.
     qlink_xml = (
         '    <QLinks>\n'
         '      <QLink number="1">\n'
-        '        <Name>TONE</Name>\n'
+        '        <Name>CHARACTER</Name>\n'
         '        <Parameter>FilterCutoff</Parameter>\n'
         '        <Min>0.200000</Min>\n'
         '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="2">\n'
-        '        <Name>ATTACK</Name>\n'
-        '        <Parameter>VolumeAttack</Parameter>\n'
+        '        <Name>MOVEMENT</Name>\n'
+        '        <Parameter>LFORate</Parameter>\n'
         '        <Min>0.000000</Min>\n'
         '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="3">\n'
-        '        <Name>RELEASE</Name>\n'
-        '        <Parameter>VolumeRelease</Parameter>\n'
+        '        <Name>COUPLING</Name>\n'
+        '        <Parameter>Send2</Parameter>\n'
         '        <Min>0.000000</Min>\n'
-        '        <Max>2.000000</Max>\n'
+        '        <Max>0.700000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="4">\n'
         '        <Name>SPACE</Name>\n'
@@ -1030,6 +1112,10 @@ def main():
                         choices=["musical", "even"],
                         default="musical",
                         help="Velocity curve style when not using DNA-adaptive or family modes")
+    parser.add_argument("--vel-crossfade", type=int, default=3, metavar="N",
+                        help="Velocity units to overlap between adjacent layers (default 3). "
+                             "Set to 0 for hard splits. Only applies to timbral families "
+                             "(piano/strings/brass/pads etc.), not drums.")
 
     args = parser.parse_args()
 
@@ -1052,6 +1138,7 @@ def main():
         zone_strategy=args.zone_strategy,
         dna_adaptive=args.dna_adaptive,
         vel_curve=args.vel_curve,
+        vel_crossfade=args.vel_crossfade,
     )
 
     if args.dry_run:

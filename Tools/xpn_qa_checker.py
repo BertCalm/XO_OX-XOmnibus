@@ -48,6 +48,12 @@ REMEDIATION = {
                         "or mid-side routing may be collapsing the mix to silence in mono",
     "UNDYNAMIC":        "Check if this sample has meaningful timbral variation; "
                         "consider replacing with a more expressive render",
+    "ATTACK_PRESENCE":  "First 50ms has no transient (peak < 0.1) — MPC players expect "
+                        "impact on note-on. Check render start point or add a transient shaper",
+    "LAYER_BALANCE":    "Adjacent velocity layers differ by < 3 dB — velocity response will "
+                        "feel flat. Re-render with more dynamic contrast between layers",
+    "TONAL_CONSISTENCY":"Spectral centroid shifts > 50% between adjacent velocity layers — "
+                        "layers may not sound like the same instrument. Check sample assignment",
 }
 
 # ---------------------------------------------------------------------------
@@ -208,6 +214,118 @@ def _estimate_true_peak(samples: "np.ndarray") -> float:
     return max_tp
 
 
+# ---------------------------------------------------------------------------
+# Musical quality checks
+# ---------------------------------------------------------------------------
+# These go beyond technical correctness to check musical intent:
+# - ATTACK_PRESENCE: MPC players expect impact — flag weak transients
+# - LAYER_BALANCE: Adjacent velocity layers should differ meaningfully
+# - TONAL_CONSISTENCY: Layers of the same voice should sound like the same instrument
+
+def _check_attack_presence(samples: "np.ndarray", framerate: int) -> dict:
+    """
+    Verify the first 50ms has a transient (peak > 0.1).
+    MPC players expect impact on note-on — a missing attack feels broken.
+    """
+    attack_frames = int(framerate * 0.050)  # 50ms
+    if attack_frames < 1 or len(samples) < attack_frames:
+        return {"pass": True, "skipped": "too short"}
+    flat = samples[:attack_frames].flatten()
+    peak = float(np.max(np.abs(flat)))
+    passed = peak > 0.1
+    result: dict = {"pass": passed, "attack_peak": round(peak, 4)}
+    if not passed:
+        result["issue"] = "ATTACK_PRESENCE"
+    return result
+
+
+def _check_layer_balance(layer_samples_list: list) -> dict:
+    """
+    Check that adjacent velocity layers differ by > 3 dB RMS.
+    If layers are too similar, the velocity response feels flat/broken.
+
+    layer_samples_list: list of numpy arrays, one per layer, ordered by velocity.
+    Returns pass/fail with per-pair dB differences.
+    """
+    if len(layer_samples_list) < 2:
+        return {"pass": True, "skipped": "single layer"}
+
+    rms_values = []
+    for samples in layer_samples_list:
+        flat = samples.flatten()
+        rms = float(np.sqrt(np.mean(flat.astype(np.float64) ** 2)))
+        rms_values.append(rms)
+
+    pair_diffs_db = []
+    all_pass = True
+    for i in range(len(rms_values) - 1):
+        if rms_values[i] < 1e-10 or rms_values[i + 1] < 1e-10:
+            pair_diffs_db.append(None)
+            continue
+        diff_db = abs(20.0 * math.log10(rms_values[i + 1] / rms_values[i]))
+        pair_diffs_db.append(round(diff_db, 2))
+        if diff_db < 3.0:
+            all_pass = False
+
+    result: dict = {"pass": all_pass, "pair_diffs_db": pair_diffs_db}
+    if not all_pass:
+        result["issue"] = "LAYER_BALANCE"
+    return result
+
+
+def _spectral_centroid(samples: "np.ndarray", framerate: int) -> float:
+    """
+    Compute spectral centroid in Hz using FFT.
+    Returns 0.0 if the signal is silent.
+    """
+    flat = samples.flatten().astype(np.float64)
+    if len(flat) < 256:
+        return 0.0
+    # Use a window to reduce spectral leakage
+    n = len(flat)
+    window = np.hanning(n)
+    spectrum = np.abs(np.fft.rfft(flat * window))
+    freqs = np.fft.rfftfreq(n, d=1.0 / framerate)
+    total_energy = float(np.sum(spectrum))
+    if total_energy < 1e-10:
+        return 0.0
+    centroid = float(np.sum(freqs * spectrum) / total_energy)
+    return centroid
+
+
+def _check_tonal_consistency(layer_samples_list: list, framerate: int) -> dict:
+    """
+    Compare spectral centroid between adjacent velocity layers.
+    Flag if centroid shifts by > 50% — suggests layers don't sound like
+    the same instrument (mismatched samples, wrong render, etc.).
+    """
+    if len(layer_samples_list) < 2:
+        return {"pass": True, "skipped": "single layer"}
+
+    centroids = [_spectral_centroid(s, framerate) for s in layer_samples_list]
+
+    pair_shifts = []
+    all_pass = True
+    for i in range(len(centroids) - 1):
+        c0, c1 = centroids[i], centroids[i + 1]
+        if c0 < 1.0 or c1 < 1.0:
+            pair_shifts.append(None)
+            continue
+        shift_pct = abs(c1 - c0) / min(c0, c1) * 100.0
+        pair_shifts.append(round(shift_pct, 1))
+        if shift_pct > 50.0:
+            all_pass = False
+
+    result: dict = {
+        "pass": all_pass,
+        "centroids_hz": [round(c, 1) for c in centroids],
+        "pair_shift_pct": pair_shifts,
+    }
+    if not all_pass:
+        result["issue"] = "TONAL_CONSISTENCY"
+    return result
+
+
 # True peak threshold: -1 dBTP = 10^(-1/20) = 0.891
 _TRUE_PEAK_THRESHOLD = 0.891
 
@@ -260,6 +378,7 @@ def check_file(path: Path) -> dict:
     checks["dc_offset"]         = _check_dc_offset(samples)
     checks["phase_cancellation"] = _check_phase_cancellation(samples, n_channels)
     checks["undynamic"]         = _check_undynamic(samples, framerate)
+    checks["attack_presence"]   = _check_attack_presence(samples, framerate)
 
     for check_result in checks.values():
         issue = check_result.pop("issue", None)
@@ -267,7 +386,63 @@ def check_file(path: Path) -> dict:
             issues.append(issue)
 
     overall = "FAIL" if issues else "PASS"
-    remediation = {issue: REMEDIATION[issue] for issue in issues}
+    remediation = {issue: REMEDIATION.get(issue, "") for issue in issues}
+
+    result["checks"]      = checks
+    result["overall"]     = overall
+    result["issues"]      = issues
+    result["remediation"] = remediation
+    return result
+
+
+def check_velocity_layers(layer_paths: list[Path]) -> dict:
+    """
+    Run musical QA checks across a set of velocity layer WAV files.
+
+    layer_paths should be ordered by velocity (v1=softest first, v4=loudest last).
+
+    Checks:
+      - LAYER_BALANCE: adjacent layers differ by > 3 dB
+      - TONAL_CONSISTENCY: spectral centroid shift < 50% between adjacent layers
+
+    Returns structured result dict with per-check details.
+    """
+    result: dict = {"files": [p.name for p in layer_paths]}
+
+    if not _NUMPY_AVAILABLE:
+        result["error"] = "numpy not available"
+        result["overall"] = "ERROR"
+        result["issues"] = []
+        result["remediation"] = {}
+        return result
+
+    layer_samples = []
+    framerate = 44100
+    for p in layer_paths:
+        try:
+            samples, fr, _ = _read_wav(p)
+            layer_samples.append(samples)
+            framerate = fr
+        except Exception as exc:
+            result["error"] = f"Failed to read {p.name}: {exc}"
+            result["overall"] = "ERROR"
+            result["issues"] = []
+            result["remediation"] = {}
+            return result
+
+    checks: dict = {}
+    issues: list[str] = []
+
+    checks["layer_balance"]      = _check_layer_balance(layer_samples)
+    checks["tonal_consistency"]  = _check_tonal_consistency(layer_samples, framerate)
+
+    for check_result in checks.values():
+        issue = check_result.pop("issue", None)
+        if issue:
+            issues.append(issue)
+
+    overall = "FAIL" if issues else "PASS"
+    remediation = {issue: REMEDIATION.get(issue, "") for issue in issues}
 
     result["checks"]      = checks
     result["overall"]     = overall
