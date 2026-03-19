@@ -212,12 +212,15 @@ target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
 )
 
-# XOverlap and XOutwit DSP headers are resolved via relative-path symlinks:
+# XOverlap and XOutwit DSP headers — their local FastMath.h stubs forward to
+# the shared XOmnibus Source/DSP/FastMath.h via #include "DSP/FastMath.h".
+# That path requires Source/ in the search path. Engine-specific files (Voice.h,
+# FDN.h, ArmChannel.h, etc.) are resolved via symlinks:
 #   Source/Engines/Overlap/DSP/ -> ../XOverlap/Source/DSP/
 #   Source/Engines/Outwit/DSP/  -> ../XOutwit/Source/DSP/
-# The compiler resolves "DSP/Voice.h" relative to the including adapter header's
-# directory first, so each adapter finds its own DSP files without global search
-# paths and without any cross-repo name collisions.
+target_include_directories(XOmnibus PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source"
+)
 
 target_compile_definitions(XOmnibus PUBLIC
     JUCE_WEB_BROWSER=0
