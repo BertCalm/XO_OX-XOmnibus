@@ -828,6 +828,7 @@ public:
                       int numSamples) override
     {
         EngineProfiler::ScopedMeasurement measurement (profiler);
+        juce::ScopedNoDenormals noDeNormals;
 
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block (zero per-sample cost)
@@ -908,7 +909,7 @@ public:
         const float lfoDepth_ = paramLfoDepth ? paramLfoDepth->load() : 0.2f;
         lfoPhase_ += lfoRate_ * static_cast<float> (numSamples) / static_cast<float> (currentSampleRate);
         if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
-        float lfoVal = std::sin (lfoPhase_ * 6.28318530f) * lfoDepth_;
+        float lfoVal = fastSin (lfoPhase_ * 6.28318530f) * lfoDepth_;
 
         // D002: MOVEMENT macro boosts chaos (±0.3 from center)
         // D005: breathing LFO modulates chaos index (±0.15 at full depth)
@@ -921,10 +922,10 @@ public:
         // Theta rotates around X-axis (tilts Y/Z plane),
         // Phi rotates around Y-axis (tilts X/Z plane).
         //----------------------------------------------------------------------
-        float cosTheta = std::cos (projectionTheta + couplingThetaModulation);
-        float sinTheta = std::sin (projectionTheta + couplingThetaModulation);
-        float cosPhi   = std::cos (projectionPhi);
-        float sinPhi   = std::sin (projectionPhi);
+        float cosTheta = fastCos (projectionTheta + couplingThetaModulation);
+        float sinTheta = fastSin (projectionTheta + couplingThetaModulation);
+        float cosPhi   = fastCos (projectionPhi);
+        float sinPhi   = fastSin (projectionPhi);
 
         //----------------------------------------------------------------------
         // Damping coefficient for LP accumulator.

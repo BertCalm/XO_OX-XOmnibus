@@ -21,10 +21,10 @@
     "sourcePresetName": null
   },
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "mood": "Prism",
   "name": "Pressure Wave",

@@ -16,10 +16,10 @@
     "dark"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,

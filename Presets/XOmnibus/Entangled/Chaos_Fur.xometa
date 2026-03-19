@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Chaos Fur",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Overbite"],
+  "engines": [
+    "Ouroboros",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ouroboros chaos velocities modulate Overbite filter and damping. Two creatures entangled in strange orbit.",
-  "tags": ["coupled", "chaos", "filter", "entangled", "dual engine"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "chaos",
+    "filter",
+    "entangled",
+    "dual engine"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "dna": {

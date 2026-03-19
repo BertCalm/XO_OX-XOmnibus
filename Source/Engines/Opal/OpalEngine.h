@@ -1035,15 +1035,18 @@ public:
         for (auto& s : couplingBufL) s = 0.0f;
         for (auto& s : couplingBufR) s = 0.0f;
 
-        // AudioToBuffer: 4 per-slot ring buffers (~186ms each at 44.1kHz).
-        // Using kOpalExternalBufferSeconds (not kOpalBufferSeconds) so external
-        // inputs get a smaller dedicated window separate from the 4s grain buffer.
+        // AudioToBuffer: 4 per-slot ring buffers (kOpalExternalBufferSamples = 8192
+        // samples — ~186ms at 44.1 kHz, ~171ms at 48 kHz). Duration is derived from
+        // the actual runtime sampleRate so the buffer is always exactly 8192 samples,
+        // not whatever 8192/44100 seconds maps to at a different host sample rate.
+        const float extBufDuration = static_cast<float> (kOpalExternalBufferSamples)
+                                   / static_cast<float> (sampleRate);
         for (auto& rb : inputBuffers)
-            rb.prepare (static_cast<int> (sampleRate), kOpalExternalBufferSeconds);
+            rb.prepare (static_cast<int> (sampleRate), extBufDuration);
 
-        // Per-block external audio cache (blended in renderBlock grain source path)
+        // Per-block mono external audio cache (blended in renderBlock grain source path).
+        // Mono: external input is always summed to centre before grain write.
         extAudioBufL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
-        extAudioBufR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
     }
 
     void releaseResources() override
@@ -1070,7 +1073,6 @@ public:
         lastSampleL = 0.0f;
         lastSampleR = 0.0f;
         for (auto& s : extAudioBufL) s = 0.0f;
-        for (auto& s : extAudioBufR) s = 0.0f;
     }
 
     //-- Parameters ------------------------------------------------------------
@@ -1647,7 +1649,6 @@ public:
             if (static_cast<size_t>(n) < extAudioBufL.size())
             {
                 extAudioBufL[static_cast<size_t>(n)] += extMono * mix;
-                extAudioBufR[static_cast<size_t>(n)] += extMono * mix;
             }
         }
     }
@@ -1879,7 +1880,6 @@ public:
         if (externalMix > 0.001f)
         {
             for (auto& s : extAudioBufL) s = 0.0f;
-            for (auto& s : extAudioBufR) s = 0.0f;
             for (int slot = 0; slot < kOpalInputSlots; ++slot)
             {
                 const auto& rb = inputBuffers[static_cast<size_t>(slot)];
@@ -2036,7 +2036,8 @@ public:
 
             // Apply mod matrix modulation (accumulated)
             float modOffsets[12] = {}; // indexed by mod dest
-            applyModMatrix (modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount);
+            applyModMatrix (modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount,
+                            velFilterSum); // velAvg: normalized velocity avg (D001)
 
             // Filter with key tracking + filter envelope + drive
             // Key tracking: shift cutoff based on average active note vs middle C (60)
@@ -2346,7 +2347,8 @@ private:
     }
 
     void applyModMatrix (float* offsets, float lfo1Val, float lfo2Val,
-                         float filterEnvVal, float ampEnvVal, int activeCount) noexcept
+                         float filterEnvVal, float ampEnvVal, int activeCount,
+                         float velAvg) noexcept
     {
         if (activeCount == 0) return;
 
@@ -2365,9 +2367,17 @@ private:
                 case 2: srcVal = lfo2Val;      break;
                 case 3: srcVal = filterEnvVal; break;
                 case 4: srcVal = ampEnvVal;    break;
-                case 5: srcVal = 0.5f;         break; // Velocity (avg placeholder)
-                case 6: srcVal = 0.0f;         break; // KeyTrack (placeholder)
-                case 7: srcVal = 0.0f;         break; // ModWheel (placeholder)
+                case 5: srcVal = velAvg;       break; // Velocity: avg across active voices (0–1)
+                case 6:                               // KeyTrack: avg MIDI note, middle-C = 0
+                {
+                    float avgNote = 0.0f;
+                    for (const auto& v : voices)
+                        if (v.active) avgNote += static_cast<float> (v.noteNumber);
+                    avgNote /= static_cast<float> (activeCount);
+                    srcVal = (avgNote - 60.0f) / 60.0f; // ~[-1, +1] around middle C
+                    break;
+                }
+                case 7: srcVal = modWheelAmount; break; // ModWheel CC#1 (0–1)
             }
 
             offsets[dst] += srcVal * amt;
@@ -2432,21 +2442,25 @@ private:
     //
     // 4 per-slot stereo ring buffers. MegaCouplingMatrix::processAudioRoute() holds a
     // pointer to the slot-matching buffer and calls pushBlock() before renderBlock().
-    // Each buffer is ~186ms at 44.1kHz (kOpalExternalBufferSeconds = 8192 / 44100).
+    // Each buffer is kOpalExternalBufferSamples = 8192 samples (~186ms at 44.1 kHz,
+    // ~171ms at 48 kHz). Duration is derived per-sample-rate in prepare().
     //
     // Slot assignment mirrors MegaCouplingMatrix source slot indices (0–3).
     // A source in slot 2 pushes into inputBuffers[2]; OpalEngine blends [0..3] in
     // receiveAudioBuffer(), summing contributions before writing to grainBuffer.
     //
-    static constexpr int   kOpalInputSlots          = 4;
-    static constexpr float kOpalExternalBufferSeconds = 8192.0f / 44100.0f; // ~186ms
+    static constexpr int kOpalInputSlots           = 4;
+    // Power-of-2 sample count for external audio ring buffers (~186ms at 44.1 kHz,
+    // ~171ms at 48 kHz). Stored as sample count so prepare() always allocates exactly
+    // this many samples regardless of host sample rate — no 44100 assumption baked in.
+    static constexpr int kOpalExternalBufferSamples = 8192;
 
     std::array<AudioRingBuffer, kOpalInputSlots> inputBuffers;
 
     // Per-block mono blend cache for external audio (populated in renderBlock
     // from inputBuffers[], consumed in the grain-source write loop).
+    // Stereo input is always down-mixed to mono before grain write (see receiveAudioBuffer).
     std::vector<float> extAudioBufL;
-    std::vector<float> extAudioBufR;
 
     //-- Parameter pointers (87 total, opal_externalMix added Phase 2) ----------
 

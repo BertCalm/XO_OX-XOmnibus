@@ -23,10 +23,10 @@
     "Obsidian"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "macros": {
     "CHARACTER": 0.6678,

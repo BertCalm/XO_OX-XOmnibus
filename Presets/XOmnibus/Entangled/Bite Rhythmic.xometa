@@ -27,10 +27,10 @@
     "Onset"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "mood": "Entangled",
   "name": "Bite Rhythmic",

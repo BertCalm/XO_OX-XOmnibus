@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Attractor Ghost",
   "mood": "Aether",
-  "engines": ["Ouroboros", "Overbite"],
+  "engines": [
+    "Ouroboros",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chua attractor orbits fade through Overbite Play Dead reverb. A mathematical ghost dissolving into space.",
-  "tags": ["coupled", "ghost", "chua", "attractor", "ethereal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "ghost",
+    "chua",
+    "attractor",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {

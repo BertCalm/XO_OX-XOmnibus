@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Slow rhythmic pulse — a metronomic visual modulation source. Low aggression heartbeat that other engines can lock onto.",
+  "description": "Slow rhythmic pulse — a metronomic visual modulation source. Low aggression heartbeat that other engines can lock onto. AutoPulse on, pulse-dominant output, moderate evolution so the heartbeat breathes.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.45,
@@ -17,26 +17,31 @@
     "Optic"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "PULSE RATE",
+    "PULSE SHAPE",
+    "REACTIVITY",
+    "EVOLVE"
   ],
   "mood": "Foundation",
   "name": "Pulse Root",
   "parameters": {
     "Optic": {
-      "optic_couplingBus": 0,
-      "optic_couplingLevel": 0.5,
-      "optic_emissionLevel": 0.6,
-      "optic_filterCutoff": 0.5,
-      "optic_filterReso": 0.2,
-      "optic_outputLevel": 0.8,
-      "optic_outputPan": 0.0,
-      "optic_pulseDepth": 0.7,
-      "optic_pulseRate": 0.5,
-      "optic_pulseShape": 0.3,
-      "optic_reverbMix": 0.2
+      "optic_autoPulse": 1,
+      "optic_inputGain": 1.0,
+      "optic_modDepth": 0.6,
+      "optic_modMixPulse": 0.7,
+      "optic_modMixSpec": 0.3,
+      "optic_pulseAccent": 0.6,
+      "optic_pulseEvolve": 0.3,
+      "optic_pulseRate": 2.0,
+      "optic_pulseShape": 0.2,
+      "optic_pulseSubdiv": 0.0,
+      "optic_pulseSwing": 0.1,
+      "optic_reactivity": 0.5,
+      "optic_vizFeedback": 0.6,
+      "optic_vizIntensity": 0.5,
+      "optic_vizMode": 2,
+      "optic_vizSpeed": 1.0
     }
   },
   "schema_version": 1,

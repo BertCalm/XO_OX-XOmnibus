@@ -10,16 +10,16 @@
   "couplingIntensity": "None",
   "tempo": null,
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
   ],
   "macros": {
-    "CHARACTER": 0.88,
-    "MOVEMENT": 0.88,
-    "COUPLING": 0.0,
-    "SPACE": 0.1
+    "BELLY": 0.3,
+    "BITE": 0.88,
+    "SCURRY": 0.4,
+    "TRASH": 0.65
   },
   "coupling": {
     "pairs": []
@@ -34,7 +34,55 @@
     "aggression": 0.97
   },
   "parameters": {
-    "Overbite": {}
+    "Overbite": {
+      "poss_oscAWaveform": 2,
+      "poss_oscAShape": 0.7,
+      "poss_oscADrift": 0.15,
+      "poss_oscBWaveform": 2,
+      "poss_oscBShape": 0.8,
+      "poss_oscBInstability": 0.5,
+      "poss_oscInteractMode": 4,
+      "poss_oscInteractAmount": 0.65,
+      "poss_oscMix": 0.55,
+      "poss_subLevel": 0.6,
+      "poss_subOctave": 0,
+      "poss_weightLevel": 0.5,
+      "poss_weightShape": 0,
+      "poss_weightOctave": 1,
+      "poss_noiseType": 3,
+      "poss_noiseRouting": 0,
+      "poss_noiseLevel": 0.12,
+      "poss_noiseDecay": 0.08,
+      "poss_filterCutoff": 800.0,
+      "poss_filterReso": 0.7,
+      "poss_filterMode": 0,
+      "poss_filterDrive": 0.6,
+      "poss_filterKeyTrack": 0.5,
+      "poss_filterEnvAmount": 0.85,
+      "poss_filterAttack": 0.001,
+      "poss_filterDecay": 0.12,
+      "poss_filterSustain": 0.0,
+      "poss_filterRelease": 0.15,
+      "poss_furAmount": 0.45,
+      "poss_driveAmount": 0.55,
+      "poss_driveType": 2,
+      "poss_chewAmount": 0.5,
+      "poss_chewFreq": 2400.0,
+      "poss_gnashAmount": 0.6,
+      "poss_trashMode": 2,
+      "poss_trashAmount": 0.55,
+      "poss_ampAttack": 0.001,
+      "poss_ampDecay": 0.25,
+      "poss_ampSustain": 0.6,
+      "poss_ampRelease": 0.2,
+      "poss_ampVelSens": 0.8,
+      "poss_macroBite": 0.88,
+      "poss_macroScurry": 0.4,
+      "poss_macroTrash": 0.65,
+      "poss_level": 0.8,
+      "poss_fxFinishGlue": 0.3,
+      "poss_fxFinishClip": 0.2
+    }
   },
   "tags": [
     "flux",
@@ -43,5 +91,5 @@
     "fang",
     "override"
   ],
-  "description": "All five BITE macros pinned — the filter bites through bone."
+  "description": "All five BITE macros pinned — the filter bites through bone. Grit Multiply oscillator interaction, maximum gnash and trash, wavefolding at full aggression. The creature is not playing dead."
 }

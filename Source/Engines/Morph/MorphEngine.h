@@ -268,6 +268,53 @@ private:
 // an ADSR envelope with Bloom-shaped attack, and drift modulation for
 // organic stereo movement.
 //==============================================================================
+// D002: User-facing per-voice LFO for sustained pad modulation.
+// LFO1 targets filter cutoff (±3000 Hz); LFO2 targets morph position (±1.5).
+// 5 shapes match OceanicLFO for fleet consistency. Rate floor 0.01 Hz satisfies D005.
+struct MorphLFO
+{
+    enum class Shape { Sine, Triangle, Saw, Square, SandH };
+
+    float phase = 0.0f;
+    float phaseInc = 0.0f;
+    Shape shape = Shape::Sine;
+    float holdValue = 0.0f;
+
+    void setRate (float hz, float sampleRate) noexcept
+    {
+        phaseInc = hz / std::max (1.0f, sampleRate);
+    }
+
+    void setShape (int idx) noexcept
+    {
+        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
+    }
+
+    float process() noexcept
+    {
+        float out = 0.0f;
+        switch (shape)
+        {
+            case Shape::Sine:
+                out = fastSin (phase * 6.28318530718f); break;
+            case Shape::Triangle:
+                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
+            case Shape::Saw:
+                out = 2.0f * phase - 1.0f; break;
+            case Shape::Square:
+                out = (phase < 0.5f) ? 1.0f : -1.0f; break;
+            case Shape::SandH:
+                if (phase < phaseInc)
+                    holdValue = (fastSin (phase * 6.28318530718f) >= 0.0f) ? 1.0f : -1.0f;
+                out = holdValue; break;
+        }
+        phase += phaseInc;
+        if (phase >= 1.0f) phase -= 1.0f;
+        return out;
+    }
+};
+
+
 struct MorphVoice
 {
     bool active = false;
@@ -294,6 +341,12 @@ struct MorphVoice
     //-- Drift modulation ------------------------------------------------------
     float driftPhase = 0.0f;             // Perlin noise phase (randomized per note)
     float driftValue = 0.0f;             // current drift output (stereo spread + FM)
+
+    //-- D002: user-facing LFOs (per-voice, free-running) ----------------------
+    MorphLFO lfo1;                       // LFO1 → filter cutoff sweep
+    MorphLFO lfo2;                       // LFO2 → morph position sweep
+    float lfo1Output = 0.0f;             // cached LFO1 output (applied at filter update)
+    float lfo2Output = 0.0f;             // cached LFO2 output (applied at morph set)
 
     //-- Portamento/legato pitch tracking --------------------------------------
     float currentFrequency = 440.0f;     // instantaneous (gliding) frequency in Hz
@@ -458,6 +511,24 @@ public:
         const float macroDepth = (paramMacroDepth != nullptr) ? paramMacroDepth->load() : 0.0f;
         const float macroSpace = (paramMacroSpace != nullptr) ? paramMacroSpace->load() : 0.0f;
 
+        // D002: LFO parameters (block-rate snapshot)
+        const float lfo1Rate  = (paramLfo1Rate  != nullptr) ? paramLfo1Rate->load()  : 0.3f;
+        const float lfo1Depth = (paramLfo1Depth != nullptr) ? paramLfo1Depth->load() : 0.0f;
+        const int   lfo1Shape = (paramLfo1Shape != nullptr) ? static_cast<int> (paramLfo1Shape->load()) : 0;
+        const float lfo2Rate  = (paramLfo2Rate  != nullptr) ? paramLfo2Rate->load()  : 0.15f;
+        const float lfo2Depth = (paramLfo2Depth != nullptr) ? paramLfo2Depth->load() : 0.0f;
+        const int   lfo2Shape = (paramLfo2Shape != nullptr) ? static_cast<int> (paramLfo2Shape->load()) : 0;
+
+        // Configure LFO rate and shape once per block (shape/rate don't change per-sample)
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.lfo1.setRate (lfo1Rate, cachedSampleRateFloat);
+            voice.lfo1.setShape (lfo1Shape);
+            voice.lfo2.setRate (lfo2Rate, cachedSampleRateFloat);
+            voice.lfo2.setShape (lfo2Shape);
+        }
+
         // Apply macro offsets to DSP parameters:
         //   BLOOM: shifts morph position up to +1.5 (sine→square character sweep).
         //   DRIFT: widens detune spread up to +30 cents (animated chorus shimmer).
@@ -583,8 +654,11 @@ public:
                 }
 
                 //-- Morph position (update all 3 oscillators) -----------------
+                // LFO2 sweeps morph ±1.5 at full depth (half the full 0–3 range)
+                const float perVoiceMorph = juce::jlimit (0.0f, 3.0f,
+                    effectiveMorph + voice.lfo2Output * 1.5f);
                 for (auto& osc : voice.oscillators)
-                    osc.setMorph (effectiveMorph);
+                    osc.setMorph (perVoiceMorph);
 
                 //-- Portamento/glide: smooth currentFrequency toward targetFrequency ----
                 // In Poly mode, glideCoefficient is 1.0 (instant — no per-voice glide).
@@ -599,6 +673,10 @@ public:
                 voice.driftPhase += 0.1f / cachedSampleRateFloat;
                 if (voice.driftPhase >= 1.0f) voice.driftPhase -= 1.0f;
                 voice.driftValue = perlinNoise (voice.driftPhase) * driftAmount;
+
+                // D002: advance per-voice LFOs each sample; cache outputs for application below
+                voice.lfo1Output = voice.lfo1.process() * lfo1Depth;
+                voice.lfo2Output = voice.lfo2.process() * lfo2Depth;
 
                 //-- Oscillator mix (3 detuned oscillators for chorus width) ---
                 float oscillatorMix = 0.0f;
@@ -651,6 +729,9 @@ public:
                     // Max sweep: filterEnvDepth × velocity × 6000 Hz.
                     constexpr float kFilterEnvMaxSweep = 6000.0f;
                     modulatedCutoff += filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+                    // D002: LFO1 sweeps filter cutoff ±3000 Hz at depth 1.0
+                    constexpr float kLfo1CutoffRange = 3000.0f;
+                    modulatedCutoff += voice.lfo1Output * kLfo1CutoffRange;
                     modulatedCutoff = std::max (20.0f, std::min (20000.0f, modulatedCutoff));
                     voice.filter.setCutoff (modulatedCutoff);
                     voice.filter.setResonance (filterResonance);
@@ -900,6 +981,28 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "morph_macroSpace", 1 }, "Morph SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        // D002: user-facing LFOs (resolves D002 gap — zero LFOs in original design)
+        // LFO1 → filter cutoff (±3000 Hz at depth 1.0, ≤ 0.01 Hz floor satisfies D005)
+        // LFO2 → morph position (±1.5 at depth 1.0 — sweeps half the morph range)
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo1Rate", 1 }, "Morph LFO1 Rate",
+            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 0.3f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo1Depth", 1 }, "Morph LFO1 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "morph_lfo1Shape", 1 }, "Morph LFO1 Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo2Rate", 1 }, "Morph LFO2 Rate",
+            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 0.15f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo2Depth", 1 }, "Morph LFO2 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "morph_lfo2Shape", 1 }, "Morph LFO2 Shape",
+            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
     }
 
 public:
@@ -925,6 +1028,13 @@ public:
         paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
         paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
         paramMacroSpace      = apvts.getRawParameterValue ("morph_macroSpace");
+        // D002 LFOs
+        paramLfo1Rate        = apvts.getRawParameterValue ("morph_lfo1Rate");
+        paramLfo1Depth       = apvts.getRawParameterValue ("morph_lfo1Depth");
+        paramLfo1Shape       = apvts.getRawParameterValue ("morph_lfo1Shape");
+        paramLfo2Rate        = apvts.getRawParameterValue ("morph_lfo2Rate");
+        paramLfo2Depth       = apvts.getRawParameterValue ("morph_lfo2Depth");
+        paramLfo2Shape       = apvts.getRawParameterValue ("morph_lfo2Shape");
     }
 
     //==========================================================================
@@ -1251,6 +1361,13 @@ private:
     std::atomic<float>* paramMacroDrift      = nullptr;
     std::atomic<float>* paramMacroDepth      = nullptr;
     std::atomic<float>* paramMacroSpace      = nullptr;
+    // D002: user-facing LFOs
+    std::atomic<float>* paramLfo1Rate        = nullptr;
+    std::atomic<float>* paramLfo1Depth       = nullptr;
+    std::atomic<float>* paramLfo1Shape       = nullptr;
+    std::atomic<float>* paramLfo2Rate        = nullptr;
+    std::atomic<float>* paramLfo2Depth       = nullptr;
+    std::atomic<float>* paramLfo2Shape       = nullptr;
 };
 
 } // namespace xomnibus
