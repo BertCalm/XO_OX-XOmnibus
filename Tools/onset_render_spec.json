@@ -1,0 +1,4510 @@
+{
+  "pack_name": "ONSET Drum Essentials",
+  "engine": "Onset",
+  "program_type": "drum",
+  "version": "1.0",
+  "preset_count": 20,
+  "total_wavs": 640,
+  "presets": [
+    {
+      "preset_name": "Crystal Gentle",
+      "preset_slug": "Crystal_Gentle",
+      "dna": {
+        "aggression": 0.02,
+        "brightness": 0.95,
+        "density": 0.3,
+        "movement": 0.1,
+        "space": 0.55,
+        "warmth": 0.3
+      },
+      "source_file": "Presets/XOmnibus/Atmosphere/Onset/Crystal_Gentle.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Crystal_Gentle_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Crystal_Gentle_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Crystal_Gentle_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Crystal_Gentle_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Crystal_Gentle_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Glacial Machine",
+      "preset_slug": "Glacial_Machine",
+      "dna": {
+        "aggression": 0.08,
+        "brightness": 0.76,
+        "density": 0.24,
+        "movement": 0.55,
+        "space": 0.91,
+        "warmth": 0.09
+      },
+      "source_file": "Presets/XOmnibus/Aether/Glacial_Machine.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Glacial_Machine_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Glacial_Machine_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Glacial_Machine_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Glacial_Machine_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Glacial_Machine_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "STATIC GENTLE SPARSE VAST F1",
+      "preset_slug": "STATIC_GENTLE_SPARSE_VAST_F1",
+      "dna": {
+        "aggression": 0.107,
+        "brightness": 0.502,
+        "density": 0.086,
+        "movement": 0.092,
+        "space": 0.91,
+        "warmth": 0.559
+      },
+      "source_file": "Presets/XOmnibus/Flux/STATIC_GENTLE_SPARSE_VAST_F1.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "STATIC_GENTLE_SPARSE_VAST_F1_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Silt Floor",
+      "preset_slug": "Silt_Floor",
+      "dna": {
+        "aggression": 0.1524,
+        "brightness": 0.0601,
+        "density": 0.6912,
+        "movement": 0.3407,
+        "space": 0.4111,
+        "warmth": 0.6334
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Silt_Floor.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Silt_Floor_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Silt_Floor_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Silt_Floor_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Silt_Floor_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Silt_Floor_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Machine Ghost",
+      "preset_slug": "Machine_Ghost",
+      "dna": {
+        "aggression": 0.2,
+        "brightness": 0.35,
+        "density": 0.65,
+        "movement": 0.72,
+        "space": 0.55,
+        "warmth": 0.55
+      },
+      "source_file": "Presets/XOmnibus/Flux/Onset/XVC/Machine_Ghost.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Machine_Ghost_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Machine_Ghost_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Machine_Ghost_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Machine_Ghost_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Machine_Ghost_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Deep House",
+      "preset_slug": "Deep_House",
+      "dna": {
+        "aggression": 0.25,
+        "brightness": 0.35,
+        "density": 0.4,
+        "movement": 0.15,
+        "space": 0.15,
+        "warmth": 0.7
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset/Deep_House.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Deep_House_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Deep_House_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Deep_House_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Deep_House_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Deep_House_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Dub Pressure",
+      "preset_slug": "Dub_Pressure",
+      "dna": {
+        "aggression": 0.3,
+        "brightness": 0.35,
+        "density": 0.5,
+        "movement": 0.45,
+        "space": 0.6,
+        "warmth": 0.7
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset/Dub_Pressure.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Dub_Pressure_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Dub_Pressure_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Dub_Pressure_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Dub_Pressure_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Dub_Pressure_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Distant Impacts",
+      "preset_slug": "Distant_Impacts",
+      "dna": {
+        "aggression": 0.35,
+        "brightness": 0.2,
+        "density": 0.45,
+        "movement": 0.15,
+        "space": 0.85,
+        "warmth": 0.65
+      },
+      "source_file": "Presets/XOmnibus/Atmosphere/Onset/Distant_Impacts.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Distant_Impacts_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Distant_Impacts_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Distant_Impacts_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Distant_Impacts_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Distant_Impacts_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "606 Toy Box",
+      "preset_slug": "606_Toy_Box",
+      "dna": {
+        "aggression": 0.35,
+        "brightness": 0.7,
+        "density": 0.45,
+        "movement": 0.15,
+        "space": 0.1,
+        "warmth": 0.35
+      },
+      "source_file": "Presets/XOmnibus/Prism/Onset/606_Toy_Box.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "606_Toy_Box_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "606_Toy_Box_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "606_Toy_Box_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "606_Toy_Box_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "606_Toy_Box_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Bitcrushed Fur",
+      "preset_slug": "Bitcrushed_Fur",
+      "dna": {
+        "aggression": 0.4,
+        "brightness": 0.3,
+        "density": 0.5,
+        "movement": 0.15,
+        "space": 0.1,
+        "warmth": 0.65
+      },
+      "source_file": "Presets/XOmnibus/Flux/Onset/Bitcrushed Fur.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Bitcrushed_Fur_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Bitcrushed_Fur_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Bitcrushed_Fur_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Bitcrushed_Fur_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Bitcrushed_Fur_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Neural Beats",
+      "preset_slug": "Neural_Beats",
+      "dna": {
+        "aggression": 0.45,
+        "brightness": 0.5,
+        "density": 0.6,
+        "movement": 0.8,
+        "space": 0.2,
+        "warmth": 0.45
+      },
+      "source_file": "Presets/XOmnibus/Aether/Onset/Neural_Beats.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Neural_Beats_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Neural_Beats_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Neural_Beats_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Neural_Beats_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Neural_Beats_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "CZ Crystal",
+      "preset_slug": "CZ_Crystal",
+      "dna": {
+        "aggression": 0.45,
+        "brightness": 0.75,
+        "density": 0.55,
+        "movement": 0.15,
+        "space": 0.1,
+        "warmth": 0.3
+      },
+      "source_file": "Presets/XOmnibus/Prism/Onset/CZ_Crystal.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "CZ_Crystal_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "CZ_Crystal_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "CZ_Crystal_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "CZ_Crystal_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "CZ_Crystal_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Velocity Feedback",
+      "preset_slug": "Velocity_Feedback",
+      "dna": {
+        "aggression": 0.48,
+        "brightness": 0.52,
+        "density": 0.7,
+        "movement": 0.75,
+        "space": 0.28,
+        "warmth": 0.52
+      },
+      "source_file": "Presets/XOmnibus/Flux/Onset/XVC/Velocity_Feedback.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Velocity_Feedback_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Velocity_Feedback_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Velocity_Feedback_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Velocity_Feedback_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Velocity_Feedback_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Boom Bap OG",
+      "preset_slug": "Boom_Bap_OG",
+      "dna": {
+        "aggression": 0.5,
+        "brightness": 0.45,
+        "density": 0.55,
+        "movement": 0.15,
+        "space": 0.1,
+        "warmth": 0.65
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset/Boom_Bap_OG.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Boom_Bap_OG_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Boom_Bap_OG_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Boom_Bap_OG_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Boom_Bap_OG_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Boom_Bap_OG_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "BRIGHT HOT KINETIC DENSE 2",
+      "preset_slug": "BRIGHT_HOT_KINETIC_DENSE_2",
+      "dna": {
+        "aggression": 0.5436,
+        "brightness": 0.9181,
+        "density": 0.9297,
+        "movement": 0.9539,
+        "space": 0.4425,
+        "warmth": 0.8946
+      },
+      "source_file": "Presets/XOmnibus/Entangled/bright_hot_kinetic_dense_2.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "BRIGHT_HOT_KINETIC_DENSE_2_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Onset Drum Kit Core",
+      "preset_slug": "Onset_Drum_Kit_Core",
+      "dna": {
+        "aggression": 0.55,
+        "brightness": 0.5,
+        "density": 0.8,
+        "movement": 0.6,
+        "space": 0.3,
+        "warmth": 0.55
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset_Drum_Kit_Core.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Onset_Drum_Kit_Core_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Drum_Kit_Core_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Punch Mode",
+      "preset_slug": "Punch_Mode",
+      "dna": {
+        "aggression": 0.65,
+        "brightness": 0.55,
+        "density": 0.6,
+        "movement": 0.1,
+        "space": 0.05,
+        "warmth": 0.5
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset/Punch_Mode.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Punch_Mode_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Punch_Mode_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Punch_Mode_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Punch_Mode_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Punch_Mode_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Onset Concrete Kick",
+      "preset_slug": "Onset_Concrete_Kick",
+      "dna": {
+        "aggression": 0.7,
+        "brightness": 0.15,
+        "density": 1.0,
+        "movement": 0.15,
+        "space": 0.1,
+        "warmth": 0.6
+      },
+      "source_file": "Presets/XOmnibus/Foundation/Onset_Concrete_Kick.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Onset_Concrete_Kick_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Concrete_Kick_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Concrete_Kick_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Concrete_Kick_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Concrete_Kick_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Techno Industrial",
+      "preset_slug": "Techno_Industrial",
+      "dna": {
+        "aggression": 0.8,
+        "brightness": 0.45,
+        "density": 0.65,
+        "movement": 0.3,
+        "space": 0.1,
+        "warmth": 0.3
+      },
+      "source_file": "Presets/XOmnibus/Flux/Onset/Techno_Industrial.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Techno_Industrial_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Techno_Industrial_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Techno_Industrial_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Techno_Industrial_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Techno_Industrial_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    },
+    {
+      "preset_name": "Onset Typhoon",
+      "preset_slug": "Onset_Typhoon",
+      "dna": {
+        "aggression": 0.92,
+        "brightness": 0.72,
+        "density": 0.95,
+        "movement": 0.98,
+        "space": 0.45,
+        "warmth": 0.15
+      },
+      "source_file": "Presets/XOmnibus/Atmosphere/Onset_Typhoon.xometa",
+      "voices": [
+        "kick",
+        "snare",
+        "chat",
+        "ohat",
+        "clap",
+        "tom",
+        "perc",
+        "fx"
+      ],
+      "velocity_layers": 4,
+      "velocity_midi_values": [
+        20,
+        50,
+        90,
+        127
+      ],
+      "duration_ms": 2000,
+      "wavs": [
+        {
+          "filename": "Onset_Typhoon_kick_v1.wav",
+          "voice": "kick",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_kick_v2.wav",
+          "voice": "kick",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_kick_v3.wav",
+          "voice": "kick",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_kick_v4.wav",
+          "voice": "kick",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_snare_v1.wav",
+          "voice": "snare",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_snare_v2.wav",
+          "voice": "snare",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_snare_v3.wav",
+          "voice": "snare",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_snare_v4.wav",
+          "voice": "snare",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_chat_v1.wav",
+          "voice": "chat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_chat_v2.wav",
+          "voice": "chat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_chat_v3.wav",
+          "voice": "chat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_chat_v4.wav",
+          "voice": "chat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_ohat_v1.wav",
+          "voice": "ohat",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_ohat_v2.wav",
+          "voice": "ohat",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_ohat_v3.wav",
+          "voice": "ohat",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_ohat_v4.wav",
+          "voice": "ohat",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_clap_v1.wav",
+          "voice": "clap",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_clap_v2.wav",
+          "voice": "clap",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_clap_v3.wav",
+          "voice": "clap",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_clap_v4.wav",
+          "voice": "clap",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_tom_v1.wav",
+          "voice": "tom",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_tom_v2.wav",
+          "voice": "tom",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_tom_v3.wav",
+          "voice": "tom",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_tom_v4.wav",
+          "voice": "tom",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_perc_v1.wav",
+          "voice": "perc",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_perc_v2.wav",
+          "voice": "perc",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_perc_v3.wav",
+          "voice": "perc",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_perc_v4.wav",
+          "voice": "perc",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        },
+        {
+          "filename": "Onset_Typhoon_fx_v1.wav",
+          "voice": "fx",
+          "velocity_layer": 1,
+          "midi_velocity": 20
+        },
+        {
+          "filename": "Onset_Typhoon_fx_v2.wav",
+          "voice": "fx",
+          "velocity_layer": 2,
+          "midi_velocity": 50
+        },
+        {
+          "filename": "Onset_Typhoon_fx_v3.wav",
+          "voice": "fx",
+          "velocity_layer": 3,
+          "midi_velocity": 90
+        },
+        {
+          "filename": "Onset_Typhoon_fx_v4.wav",
+          "voice": "fx",
+          "velocity_layer": 4,
+          "midi_velocity": 127
+        }
+      ]
+    }
+  ]
+}
