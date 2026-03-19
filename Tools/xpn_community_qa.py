@@ -20,11 +20,9 @@ Outputs:
 import argparse
 import hashlib
 import json
-import os
 import struct
 import sys
 import tempfile
-import traceback
 import xml.etree.ElementTree as ET
 import zipfile
 from datetime import datetime, timezone

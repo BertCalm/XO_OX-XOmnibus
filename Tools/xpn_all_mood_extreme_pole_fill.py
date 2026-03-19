@@ -16,7 +16,6 @@ Total: 17 × 7 = 119 → pad Family to 18 for 120 total.
 import json
 import os
 import random
-import math
 
 random.seed(42)
 

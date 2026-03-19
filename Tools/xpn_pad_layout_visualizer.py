@@ -27,7 +27,6 @@ Grid display (MPC pad order — rows top-to-bottom are rows 4,3,2,1):
 """
 
 import argparse
-import os
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path

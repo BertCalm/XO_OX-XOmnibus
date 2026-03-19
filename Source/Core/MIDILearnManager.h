@@ -57,8 +57,8 @@ public:
         learning = false;
     }
 
-    bool isLearning() const { return learning; }
-    juce::String getLearningParam() const { return learnTargetParam; }
+    [[nodiscard]] bool isLearning() const { return learning; }
+    [[nodiscard]] juce::String getLearningParam() const { return learnTargetParam; }
 
     void setLearnCompleteCallback(LearnCompleteCallback cb)
     {
@@ -123,7 +123,7 @@ public:
         return m ? *m : std::vector<MIDIMapping>{};
     }
 
-    bool hasMapping(const juce::String& paramId) const
+    [[nodiscard]] bool hasMapping(const juce::String& paramId) const
     {
         auto m = std::atomic_load(&activeMappings);
         if (!m) return false;

@@ -108,7 +108,7 @@ public:
     }
 
     // Get statistics snapshot. Safe to call from UI/message thread.
-    Stats getStats() const noexcept
+    [[nodiscard]] Stats getStats() const noexcept
     {
         Stats s;
         s.sampleRate = static_cast<float> (sr);

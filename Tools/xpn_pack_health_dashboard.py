@@ -24,8 +24,6 @@ Exit codes:
 
 import argparse
 import json
-import math
-import os
 import struct
 import sys
 import zipfile

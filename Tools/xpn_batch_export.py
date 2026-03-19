@@ -29,7 +29,6 @@ Optional job fields (all map directly to oxport.py flags):
 
 import argparse
 import json
-import os
 import subprocess
 import sys
 import time

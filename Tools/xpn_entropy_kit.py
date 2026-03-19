@@ -34,7 +34,6 @@ CLI:
 Dependencies: pure stdlib (no numpy/scipy/soundfile/librosa).
 """
 
-from __future__ import annotations
 
 import argparse
 import cmath

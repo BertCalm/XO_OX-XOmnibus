@@ -68,7 +68,6 @@ from datetime import date
 from pathlib import Path
 from typing import FrozenSet, List, Optional
 from xml.etree import ElementTree as ET
-from xml.sax.saxutils import escape as xml_escape
 
 # =============================================================================
 # CONSTANTS

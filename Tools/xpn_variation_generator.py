@@ -47,11 +47,8 @@ import argparse
 import io
 import json
 import math
-import os
-import shutil
 import struct
 import sys
-import tempfile
 import zipfile
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple

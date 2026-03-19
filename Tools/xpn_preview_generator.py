@@ -37,8 +37,6 @@ Usage:
 import argparse
 import array
 import math
-import os
-import random
 import struct
 import subprocess
 import sys

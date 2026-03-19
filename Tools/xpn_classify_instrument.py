@@ -25,7 +25,6 @@ Shared dependency for: xpn_adaptive_velocity.py, xpn_adaptive_tags.py, oxport.py
 See: Docs/specs/oxport_adaptive_intelligence_rnd.md, Ideas 1, 5, 7
 """
 
-import sys
 import wave
 import math
 import json

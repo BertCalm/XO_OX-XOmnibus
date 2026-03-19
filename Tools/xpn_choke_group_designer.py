@@ -37,7 +37,6 @@ Usage:
 Pure stdlib — zipfile + xml.etree.ElementTree + argparse.
 """
 
-from __future__ import annotations
 
 import argparse
 import io

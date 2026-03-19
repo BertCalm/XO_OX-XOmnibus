@@ -14,7 +14,6 @@ Usage:
 
 import argparse
 import json
-import os
 import pathlib
 import random
 import sys

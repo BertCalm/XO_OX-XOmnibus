@@ -130,7 +130,7 @@ public:
         std::vector<Extension> extensions;
 
         // Validity
-        bool isValid() const { return name.isNotEmpty() && !engines.empty(); }
+        [[nodiscard]] bool isValid() const { return name.isNotEmpty() && !engines.empty(); }
     };
 
     /// Catalog entry for browsing

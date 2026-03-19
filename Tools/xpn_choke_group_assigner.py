@@ -18,7 +18,6 @@ Presets:
 Pure stdlib — no external dependencies beyond xpn_classify_instrument.
 """
 
-from __future__ import annotations
 
 import sys
 import os

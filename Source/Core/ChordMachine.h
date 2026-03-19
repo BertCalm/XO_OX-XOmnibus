@@ -360,7 +360,7 @@ public:
     //-- State setters (message thread, read by audio thread via atomics) ------
 
     void setEnabled (bool on)    { enabled.store (on, std::memory_order_relaxed); }
-    bool isEnabled() const       { return enabled.load (std::memory_order_relaxed); }
+    [[nodiscard]] bool isEnabled() const       { return enabled.load (std::memory_order_relaxed); }
 
     void setPalette (PaletteType p) { palette.store (static_cast<int> (p), std::memory_order_relaxed); }
     PaletteType getPalette() const  { return static_cast<PaletteType> (palette.load (std::memory_order_relaxed)); }
@@ -369,7 +369,7 @@ public:
     VoicingMode getVoicing() const  { return static_cast<VoicingMode> (voicing.load (std::memory_order_relaxed)); }
 
     void setSpread (float s)    { spread.store (s, std::memory_order_relaxed); }
-    float getSpread() const     { return spread.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getSpread() const     { return spread.load (std::memory_order_relaxed); }
 
     //-- Sequencer setters (message thread) ------------------------------------
 
@@ -378,25 +378,25 @@ public:
         sequencerRunning.store (on, std::memory_order_relaxed);
         if (! on) needsSeqReset.store (true, std::memory_order_relaxed);
     }
-    bool isSequencerRunning() const { return sequencerRunning.load (std::memory_order_relaxed); }
+    [[nodiscard]] bool isSequencerRunning() const { return sequencerRunning.load (std::memory_order_relaxed); }
 
     void setBPM (float b)       { bpm.store (std::max (30.0f, std::min (300.0f, b)), std::memory_order_relaxed); }
-    float getBPM() const        { return bpm.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getBPM() const        { return bpm.load (std::memory_order_relaxed); }
 
     void setSwing (float s)     { swing.store (std::max (0.0f, std::min (1.0f, s)), std::memory_order_relaxed); }
-    float getSwing() const      { return swing.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getSwing() const      { return swing.load (std::memory_order_relaxed); }
 
     void setGlobalGate (float g) { globalGate.store (std::max (0.01f, std::min (1.0f, g)), std::memory_order_relaxed); }
-    float getGlobalGate() const  { return globalGate.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getGlobalGate() const  { return globalGate.load (std::memory_order_relaxed); }
 
     void setVelocityCurve (VelocityCurve c) { velocityCurve.store (static_cast<int> (c), std::memory_order_relaxed); }
-    VelocityCurve getVelocityCurve() const  { return static_cast<VelocityCurve> (velocityCurve.load (std::memory_order_relaxed)); }
+    [[nodiscard]] VelocityCurve getVelocityCurve() const  { return static_cast<VelocityCurve> (velocityCurve.load (std::memory_order_relaxed)); }
 
     void setHumanize (float h)      { humanize.store (std::max (0.0f, std::min (1.0f, h)), std::memory_order_relaxed); }
-    float getHumanize() const       { return humanize.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getHumanize() const       { return humanize.load (std::memory_order_relaxed); }
 
     void setSidechainDuck (float d)  { sidechainDuck.store (std::max (0.0f, std::min (1.0f, d)), std::memory_order_relaxed); }
-    float getSidechainDuck() const   { return sidechainDuck.load (std::memory_order_relaxed); }
+    [[nodiscard]] float getSidechainDuck() const   { return sidechainDuck.load (std::memory_order_relaxed); }
 
     // Apply a rhythm pattern preset (sets step active flags)
     void applyPattern (RhythmPattern p)
@@ -441,9 +441,9 @@ public:
 
     // Read-only access for UI visualization (message thread)
     ChordAssignment getCurrentAssignment() const { return currentAssignment; }
-    bool hasChord() const { return hasActiveChord; }
-    int getCurrentStep() const { return seqCurrentStep; }
-    int getLiveRoot() const { return liveRoot; }
+    [[nodiscard]] bool hasChord() const { return hasActiveChord; }
+    [[nodiscard]] int getCurrentStep() const { return seqCurrentStep; }
+    [[nodiscard]] int getLiveRoot() const { return liveRoot; }
 
     //-- Label helpers (UI convenience) ----------------------------------------
 
@@ -498,7 +498,7 @@ public:
     //-- Eno mode setters -------------------------------------------------------
 
     void setEnoMode (bool on)    { enoMode.store (on, std::memory_order_relaxed); }
-    bool isEnoMode() const       { return enoMode.load (std::memory_order_relaxed); }
+    [[nodiscard]] bool isEnoMode() const       { return enoMode.load (std::memory_order_relaxed); }
 
     //-- Serialization (message thread) ----------------------------------------
 

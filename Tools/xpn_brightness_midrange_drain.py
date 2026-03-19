@@ -11,7 +11,6 @@ Run from repo root or Tools/ directory.
 import json
 import os
 import random
-import sys
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FOUNDATION_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Foundation")

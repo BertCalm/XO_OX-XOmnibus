@@ -7,8 +7,6 @@ camelCase IDs registered by OverworldEngine / xoverworld::Parameters.
 """
 
 import json
-import os
-import sys
 from pathlib import Path
 
 # Complete mapping: preset key → canonical engine key

@@ -41,7 +41,7 @@ public:
     }
 
     // Create an engine by ID
-    std::unique_ptr<SynthEngine> createEngine(const std::string& id) const
+    [[nodiscard]] std::unique_ptr<SynthEngine> createEngine(const std::string& id) const
     {
         auto it = factories.find(id);
         if (it != factories.end())
@@ -50,7 +50,7 @@ public:
     }
 
     // Get all registered engine IDs
-    std::vector<std::string> getRegisteredIds() const
+    [[nodiscard]] std::vector<std::string> getRegisteredIds() const
     {
         std::vector<std::string> ids;
         ids.reserve(factories.size());
@@ -59,7 +59,7 @@ public:
         return ids;
     }
 
-    bool isRegistered(const std::string& id) const
+    [[nodiscard]] bool isRegistered(const std::string& id) const
     {
         return factories.count(id) > 0;
     }

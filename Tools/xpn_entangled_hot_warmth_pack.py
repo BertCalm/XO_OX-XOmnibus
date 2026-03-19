@@ -8,7 +8,6 @@ Saves to Presets/XOmnibus/Entangled/. Skips if file exists.
 import json
 import os
 import random
-import math
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")

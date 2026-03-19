@@ -66,7 +66,6 @@ Usage (library):
 import argparse
 import re
 import struct
-import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from xml.sax.saxutils import escape as xml_escape

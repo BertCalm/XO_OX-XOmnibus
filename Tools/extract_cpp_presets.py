@@ -15,7 +15,6 @@ Usage:
 """
 
 import json
-import os
 import re
 import sys
 from pathlib import Path
@@ -444,7 +443,6 @@ def to_xometa(preset: dict, engine: str) -> dict:
     coupling = guess_coupling_intensity(params, engine)
 
     # Build description
-    import random
     templates = DESCRIPTION_TEMPLATES.get(mood, DESCRIPTION_TEMPLATES["Atmosphere"])
     display_cat = CATEGORY_DISPLAY.get(category, category)
     template = templates[hash(preset["name"]) % len(templates)]

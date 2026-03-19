@@ -33,7 +33,6 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Optional
 
 REPO_ROOT   = Path(__file__).parent.parent
 PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"

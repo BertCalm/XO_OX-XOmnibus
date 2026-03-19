@@ -10,8 +10,6 @@ Writes to Presets/XOmnibus/Prism/ — skips existing files.
 """
 
 import json
-import os
-import sys
 from pathlib import Path
 
 # ---------------------------------------------------------------------------

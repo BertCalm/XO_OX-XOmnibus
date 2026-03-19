@@ -26,7 +26,6 @@ Exit codes:
 
 import argparse
 import json
-import struct
 import sys
 import zipfile
 from pathlib import Path

@@ -18,7 +18,6 @@ Writes to Presets/XOmnibus/Atmosphere/. Skips existing files.
 
 import json
 import os
-import sys
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),

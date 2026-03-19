@@ -50,7 +50,6 @@ Usage:
       --sidecar sidecar.json --pack <pack_dir> --presets <preset_dir>
 """
 
-from __future__ import annotations
 
 import argparse
 import json

@@ -16,7 +16,6 @@ Usage:
 import argparse
 import json
 import zipfile
-import sys
 from datetime import date
 from pathlib import Path
 from typing import Optional

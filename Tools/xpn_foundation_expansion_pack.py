@@ -13,7 +13,6 @@ Writes to Presets/XOmnibus/Foundation/. Skips existing files.
 
 import json
 import os
-import sys
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),

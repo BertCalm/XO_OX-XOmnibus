@@ -9,9 +9,7 @@ Generates:
 """
 
 import json
-import os
 import pathlib
-import textwrap
 from datetime import date
 
 # ---------------------------------------------------------------------------

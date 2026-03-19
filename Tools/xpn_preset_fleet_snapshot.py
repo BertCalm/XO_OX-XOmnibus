@@ -9,7 +9,6 @@ Usage:
 
 import argparse
 import json
-import os
 import statistics
 import sys
 from collections import Counter, defaultdict

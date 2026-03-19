@@ -20,10 +20,8 @@ Report saved to: Docs/snapshots/clone_cluster_repair_report.json
 """
 
 import json
-import os
 import random
 import sys
-from copy import deepcopy
 from pathlib import Path
 from typing import Dict, List, Optional
 

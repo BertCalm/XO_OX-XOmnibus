@@ -157,7 +157,7 @@ public:
             std::clamp (voiceIndex, 0, kMaxVoices - 1))];
     }
 
-    float getSmoothedPressure (int voiceIndex) const
+    [[nodiscard]] float getSmoothedPressure (int voiceIndex) const
     {
         return smoothedPressure[static_cast<size_t> (
             std::clamp (voiceIndex, 0, kMaxVoices - 1))];

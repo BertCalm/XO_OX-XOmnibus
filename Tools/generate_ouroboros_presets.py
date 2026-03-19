@@ -14,7 +14,6 @@ Generates 30 presets across all 6 moods:
 """
 
 import json
-import math
 import os
 import random
 

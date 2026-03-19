@@ -40,7 +40,6 @@ Grades:
 
 import argparse
 import json
-import math
 import struct
 import sys
 import zipfile

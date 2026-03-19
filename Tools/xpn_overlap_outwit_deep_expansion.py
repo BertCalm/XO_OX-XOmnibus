@@ -23,7 +23,6 @@ Coupling types rotate through all 12 in the MegaCouplingMatrix.
 """
 
 import json
-import os
 import random
 from pathlib import Path
 

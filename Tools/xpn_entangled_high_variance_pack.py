@@ -17,7 +17,6 @@ Each preset has at least 2 DNA dimensions locked into extreme zones
 
 import json
 import os
-import random
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(__file__),

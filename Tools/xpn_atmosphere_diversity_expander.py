@@ -12,7 +12,6 @@ Saves to Presets/XOmnibus/Atmosphere/. Skips existing files.
 """
 
 import json
-import os
 import random
 from pathlib import Path
 

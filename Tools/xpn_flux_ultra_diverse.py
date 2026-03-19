@@ -9,7 +9,6 @@ Output: Presets/XOmnibus/Flux/
 import json
 import os
 import random
-import math
 
 random.seed(42)
 

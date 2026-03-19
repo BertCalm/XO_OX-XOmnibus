@@ -9,7 +9,6 @@ the kinetic skew in Flux (movement-XHIGH was 40.9% of the mood).
 
 import json
 import random
-import os
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent

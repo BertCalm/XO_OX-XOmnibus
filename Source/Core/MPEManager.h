@@ -72,10 +72,10 @@ public:
     MPEZoneLayout getZoneLayout() const noexcept { return static_cast<MPEZoneLayout>(zoneLayout.load()); }
 
     void setPitchBendRange(int semitones) noexcept { pitchBendRange.store(juce::jlimit(1, 96, semitones)); }
-    int getPitchBendRange() const noexcept { return pitchBendRange.load(); }
+    [[nodiscard]] int getPitchBendRange() const noexcept { return pitchBendRange.load(); }
 
     void setMPEEnabled(bool enabled) noexcept { mpeEnabled.store(enabled ? 1 : 0); }
-    bool isMPEEnabled() const noexcept { return mpeEnabled.load() != 0; }
+    [[nodiscard]] bool isMPEEnabled() const noexcept { return mpeEnabled.load() != 0; }
 
     // Pressure and slide routing targets
     enum class ExpressionTarget : int
@@ -235,7 +235,7 @@ public:
 
     //-- Master channel detection (for zone routing) ---------------------------
 
-    bool isMasterChannel(int midiChannel) const noexcept
+    [[nodiscard]] bool isMasterChannel(int midiChannel) const noexcept
     {
         auto layout = getZoneLayout();
         if (layout == MPEZoneLayout::Off) return false;
@@ -245,7 +245,7 @@ public:
         return false;
     }
 
-    bool isMemberChannel(int midiChannel) const noexcept
+    [[nodiscard]] bool isMemberChannel(int midiChannel) const noexcept
     {
         if (!isMPEEnabled()) return false;
         return !isMasterChannel(midiChannel);

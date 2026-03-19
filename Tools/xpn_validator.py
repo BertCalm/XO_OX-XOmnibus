@@ -34,10 +34,8 @@ Usage:
 import argparse
 import json
 import os
-import re
 import struct
 import sys
-import tempfile
 import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path

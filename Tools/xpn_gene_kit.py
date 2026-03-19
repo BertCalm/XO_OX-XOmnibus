@@ -32,7 +32,6 @@ CLI:
 """
 
 import argparse
-import os
 import sys
 import zipfile
 from datetime import date

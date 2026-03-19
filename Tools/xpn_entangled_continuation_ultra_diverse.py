@@ -8,7 +8,6 @@ Generates 80 Entangled mood presets with extreme DNA diversity.
 import json
 import os
 import random
-import math
 
 random.seed(42)
 

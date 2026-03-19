@@ -15,7 +15,6 @@ Skips files that already exist.
 import json
 import os
 import random
-import math
 from datetime import date
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

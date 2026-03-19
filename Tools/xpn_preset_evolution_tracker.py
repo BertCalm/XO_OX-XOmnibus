@@ -9,11 +9,9 @@ Usage:
 """
 
 import argparse
-import json
 import re
 import subprocess
 import sys
-from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
 

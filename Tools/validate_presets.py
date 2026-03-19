@@ -24,10 +24,8 @@ Options:
 """
 
 import json
-import math
 import re
 import sys
-import os
 from pathlib import Path
 from collections import defaultdict, Counter
 
@@ -40,14 +38,14 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"}
 
 VALID_ENGINES = {
-    # Canonical O-prefix engine IDs (all 21)
+    # Canonical O-prefix engine IDs (all 34)
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
     "Oracle", "Obscura", "Oceanic", "Optic", "Oblique",
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
-    "Ombre",
+    "Ombre", "Overlap", "Outwit", "Orca", "Octopus",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",

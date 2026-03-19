@@ -11,7 +11,6 @@ Usage:
     python3 fix_xobese_xpms.py [--dry-run]
 """
 
-import os
 import re
 import sys
 from pathlib import Path

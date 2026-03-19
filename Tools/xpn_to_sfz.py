@@ -37,7 +37,6 @@ SFZ mapping:
 
 import argparse
 import math
-import os
 import sys
 import zipfile
 import xml.etree.ElementTree as ET

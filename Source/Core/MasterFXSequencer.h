@@ -211,10 +211,10 @@ public:
 
     //--------------------------------------------------------------------------
     /// Get current modulation output for target 1. Range: [0, 1]
-    float getModValue1() const { return modValue1; }
+    [[nodiscard]] float getModValue1() const { return modValue1; }
 
     /// Get current modulation output for target 2. Range: [0, 1]
-    float getModValue2() const { return modValue2; }
+    [[nodiscard]] float getModValue2() const { return modValue2; }
 
     /// Get which parameter target 1 modulates
     Target getTarget1() const { return target1; }
@@ -223,10 +223,10 @@ public:
     Target getTarget2() const { return target2; }
 
     /// Get current step (for UI display)
-    int getCurrentStep() const { return currentStep; }
+    [[nodiscard]] int getCurrentStep() const { return currentStep; }
 
     /// Is the sequencer enabled?
-    bool isEnabled() const { return enabled; }
+    [[nodiscard]] bool isEnabled() const { return enabled; }
 
     //--------------------------------------------------------------------------
     void reset()

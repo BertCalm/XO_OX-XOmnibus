@@ -19,7 +19,6 @@ import argparse
 import array
 import json
 import math
-import os
 import struct
 import sys
 import wave

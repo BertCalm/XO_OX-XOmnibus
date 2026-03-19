@@ -28,11 +28,9 @@ Options:
 
 import argparse
 import json
-import os
 import struct
 import sys
 import zipfile
-import zlib
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional

@@ -37,7 +37,6 @@ Usage — Auto-generate tone variants from standard kit:
 import argparse
 import json
 import re
-import shutil
 import sys
 import xml.etree.ElementTree as ET
 from datetime import date

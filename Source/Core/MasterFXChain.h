@@ -605,9 +605,9 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    float getCompGainReduction() const { return compressor.getGainReduction(); }
-    int getSeqCurrentStep() const { return sequencer.getCurrentStep(); }
-    bool isSeqEnabled() const { return sequencer.isEnabled(); }
+    [[nodiscard]] float getCompGainReduction() const { return compressor.getGainReduction(); }
+    [[nodiscard]] int getSeqCurrentStep() const { return sequencer.getCurrentStep(); }
+    [[nodiscard]] bool isSeqEnabled() const { return sequencer.isEnabled(); }
     MasterDelay& getDelay() { return delay; }
 
     //--------------------------------------------------------------------------

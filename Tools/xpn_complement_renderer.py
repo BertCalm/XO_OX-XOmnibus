@@ -39,7 +39,6 @@ Dependencies: Pillow, numpy (only required for cover-art generation)
 
 import argparse
 import json
-import math
 import os
 import random
 import sys

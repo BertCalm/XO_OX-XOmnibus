@@ -214,14 +214,14 @@ public:
     // Query — safe to call from any thread
     //--------------------------------------------------------------------------
 
-    juce::String getLabel(int macroIndex) const
+    [[nodiscard]] juce::String getLabel(int macroIndex) const
     {
         if (!isValidIndex(macroIndex))
             return {};
         return labels[static_cast<size_t>(macroIndex)];
     }
 
-    float getValue(int macroIndex) const
+    [[nodiscard]] float getValue(int macroIndex) const
     {
         if (!isValidIndex(macroIndex))
             return 0.0f;
@@ -230,7 +230,7 @@ public:
         return param != nullptr ? param->load() : 0.0f;
     }
 
-    const std::vector<MacroTarget>& getTargets(int macroIndex) const
+    [[nodiscard]] const std::vector<MacroTarget>& getTargets(int macroIndex) const
     {
         jassert(isValidIndex(macroIndex));
         return macroSlots[static_cast<size_t>(macroIndex)].targets;

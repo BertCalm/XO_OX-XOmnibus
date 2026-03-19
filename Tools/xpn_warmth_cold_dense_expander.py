@@ -24,7 +24,6 @@ Usage
 """
 
 import json
-import os
 import argparse
 import random
 from pathlib import Path

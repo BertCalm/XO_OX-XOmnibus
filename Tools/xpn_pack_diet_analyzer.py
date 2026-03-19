@@ -9,13 +9,11 @@ Usage:
     python xpn_pack_diet_analyzer.py <pack_dir_or_zip> [--target-mb 500]
                                      [--prune-orphans] [--output diet_report.txt]
 """
-from __future__ import annotations
 
 import argparse
 import json
 import struct
 import sys
-import tempfile
 import zipfile
 import xml.etree.ElementTree as ET
 from collections import defaultdict

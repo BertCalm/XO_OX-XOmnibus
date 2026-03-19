@@ -34,7 +34,6 @@ Exit codes: 0 success, 1 input error
 import argparse
 import json
 import math
-import itertools
 from pathlib import Path
 
 # ---------------------------------------------------------------------------

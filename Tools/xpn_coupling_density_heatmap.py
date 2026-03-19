@@ -10,7 +10,6 @@ Usage:
 """
 
 import json
-import os
 import argparse
 import pathlib
 from collections import defaultdict

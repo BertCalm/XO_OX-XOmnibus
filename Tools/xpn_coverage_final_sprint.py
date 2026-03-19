@@ -5,9 +5,7 @@ Scans Entangled presets, finds uncovered engine pairs, generates 2 presets per p
 """
 
 import json
-import os
 import random
-import math
 from itertools import combinations
 from pathlib import Path
 

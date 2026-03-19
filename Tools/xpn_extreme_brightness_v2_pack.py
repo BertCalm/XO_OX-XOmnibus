@@ -13,7 +13,6 @@ Run from any directory — resolves paths relative to this script's location.
 """
 
 import json
-import os
 import pathlib
 
 # ---------------------------------------------------------------------------

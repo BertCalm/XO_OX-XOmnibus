@@ -18,7 +18,6 @@ Output: a single self-contained HTML file — no external assets, no server need
 
 import argparse
 import json
-import os
 import sys
 import zipfile
 from pathlib import Path

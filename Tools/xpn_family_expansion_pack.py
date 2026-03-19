@@ -6,7 +6,6 @@ Writes to Presets/XOmnibus/Family/. Skips existing files.
 """
 
 import json
-import os
 from pathlib import Path
 
 OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus" / "Family"

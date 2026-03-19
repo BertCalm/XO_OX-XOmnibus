@@ -52,7 +52,6 @@ Flat kit input naming (auto-detected):
 """
 
 import argparse
-import math
 import os
 import sys
 import time

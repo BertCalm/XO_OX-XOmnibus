@@ -13,9 +13,7 @@ Generates:
 
 import argparse
 import json
-import os
 import random
-import sys
 from pathlib import Path
 
 # ---------------------------------------------------------------------------

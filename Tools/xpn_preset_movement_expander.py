@@ -7,7 +7,6 @@ Targets the Flux mood with three intensity levels: Pulse, Surge, Storm.
 """
 
 import json
-import os
 import argparse
 import random
 from pathlib import Path

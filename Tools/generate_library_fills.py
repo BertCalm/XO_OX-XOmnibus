@@ -6,7 +6,6 @@ Targets: Overdub/Prism, Odyssey missing moods, OddOscar missing moods,
 """
 
 import json
-import os
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent

@@ -15,7 +15,6 @@ Renames:
 """
 
 import json
-import re
 from pathlib import Path
 from collections import OrderedDict
 

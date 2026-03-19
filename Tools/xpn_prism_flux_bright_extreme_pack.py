@@ -20,7 +20,6 @@ Skip if file already exists.
 """
 
 import json
-import math
 import os
 import random
 

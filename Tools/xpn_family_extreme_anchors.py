@@ -6,7 +6,6 @@ Four groups of 10: dark-family, ultra-bright-family, dense-aggressive-family, wa
 """
 
 import json
-import os
 from pathlib import Path
 
 OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus" / "Family"

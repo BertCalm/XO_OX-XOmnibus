@@ -13,13 +13,11 @@ Importable:
     from xpn_pack_readme_generator import generate_readme_for_pack
 """
 
-from __future__ import annotations
 
 import argparse
 import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Optional
 
 # ---------------------------------------------------------------------------
 # Engine description library

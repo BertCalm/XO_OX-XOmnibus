@@ -118,7 +118,7 @@ public:
             lanes[static_cast<size_t> (laneIdx)].muted[static_cast<size_t> (step)] = muted;
     }
 
-    float getStepValue (int laneIdx, int step) const
+    [[nodiscard]] float getStepValue (int laneIdx, int step) const
     {
         if (laneIdx >= 0 && laneIdx < kMaxLanes && step >= 0 && step < kMaxSteps)
             return lanes[static_cast<size_t> (laneIdx)].values[static_cast<size_t> (step)];

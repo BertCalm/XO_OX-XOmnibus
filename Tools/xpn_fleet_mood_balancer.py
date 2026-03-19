@@ -12,10 +12,8 @@ Usage:
 
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
-from statistics import mean, stdev
 from typing import Dict, List, Optional
 
 # ---------------------------------------------------------------------------

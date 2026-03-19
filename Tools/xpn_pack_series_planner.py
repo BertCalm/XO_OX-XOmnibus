@@ -24,7 +24,6 @@ Example spec JSON:
 import argparse
 import json
 import math
-import os
 import statistics
 import sys
 from collections import defaultdict

@@ -15,7 +15,6 @@ Output: Presets/XOmnibus/Atmosphere/*.xometa  (skips existing files)
 import json
 import os
 import random
-import math
 
 random.seed(2026)
 

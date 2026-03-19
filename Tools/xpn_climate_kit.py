@@ -19,8 +19,6 @@ CLI:
 
 import argparse
 import json
-import math
-import sys
 from datetime import date
 from pathlib import Path
 from xml.sax.saxutils import escape as xml_escape

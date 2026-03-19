@@ -35,7 +35,6 @@ import zipfile
 import hashlib
 from datetime import date
 from difflib import SequenceMatcher
-from xml.etree import ElementTree as ET
 
 
 # ---------------------------------------------------------------------------

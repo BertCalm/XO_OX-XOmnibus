@@ -27,7 +27,6 @@ Exit codes: 0 = success, 1 = failure
 
 import argparse
 import json
-import os
 import shutil
 import sys
 import zipfile

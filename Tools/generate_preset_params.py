@@ -9,7 +9,6 @@ the parameters back into the .xocmeta JSON.
 import json
 import os
 import hashlib
-import math
 
 PRESETS_DIR = os.path.join(os.path.dirname(__file__), '..', 'Presets', 'Factory')
 

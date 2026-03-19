@@ -27,7 +27,6 @@ import sys
 import zipfile
 from datetime import date
 from typing import Optional
-from xml.etree import ElementTree as ET
 
 
 # ---------------------------------------------------------------------------

@@ -97,10 +97,8 @@ Collection Profile Format:
 
 import argparse
 import json
-import os
 import shutil
 import sys
-import zipfile
 from pathlib import Path
 from typing import Dict, List, Optional
 

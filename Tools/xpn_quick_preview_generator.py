@@ -19,7 +19,6 @@ Requirements:
 
 import argparse
 import json
-import os
 import sys
 import zipfile
 import xml.etree.ElementTree as ET

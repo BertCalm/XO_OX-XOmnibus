@@ -70,7 +70,7 @@ public:
     // Return the most recent output sample for coupling reads.
     // Called per-sample by the MegaCouplingMatrix during tight coupling.
     // Must be O(1) — return from a cached member, not a computation.
-    virtual float getSampleForCoupling(int channel, int sampleIndex) const = 0;
+    [[nodiscard]] virtual float getSampleForCoupling(int channel, int sampleIndex) const = 0;
 
     // Receive modulation from another engine via the coupling matrix.
     // Called before renderBlock() for block-level coupling,
@@ -95,19 +95,19 @@ public:
     //-- Identity --------------------------------------------------------------
 
     // Return the engine's unique identifier (e.g., "OddfeliX", "OddOscar", "Overdub").
-    virtual juce::String getEngineId() const = 0;
+    [[nodiscard]] virtual juce::String getEngineId() const = 0;
 
     // Return the engine's accent colour for UI theming.
-    virtual juce::Colour getAccentColour() const = 0;
+    [[nodiscard]] virtual juce::Colour getAccentColour() const = 0;
 
     // Return the maximum polyphony for this engine.
-    virtual int getMaxVoices() const = 0;
+    [[nodiscard]] virtual int getMaxVoices() const = 0;
 
     // Return the number of currently active (sounding) voices.
     // Default returns 0; engines with polyphony override this.
     // Safe to call from the message thread — implementations must use an atomic
     // or just return a cached counter updated at the end of each renderBlock().
-    virtual int getActiveVoiceCount() const { return 0; }
+    [[nodiscard]] virtual int getActiveVoiceCount() const { return 0; }
 
     //-- MPE Expression --------------------------------------------------------
 

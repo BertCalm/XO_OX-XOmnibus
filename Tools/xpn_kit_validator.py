@@ -39,7 +39,6 @@ import argparse
 import json
 import os
 import sys
-import tempfile
 import zipfile
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
