@@ -762,12 +762,20 @@ public:
                     voiceSignal = voiceSignal * (1.0f - smoothedChromaDepth) + morphedFilter * smoothedChromaDepth;
                 }
 
-                // --- Main filter with arm modulation ---
+                // --- Main filter with velocity + LFO2 + arm modulation ---
+                // D001: velocity opens the filter — harder hit = brighter timbre
+                // LFO2 sculpts filter cutoff for secondary rhythmic texture (D004 wire)
+                float velCutoffBoost = voice.velocity * 4000.0f;
                 float filterCutoffMod = clamp (
-                    effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f,
+                    effectiveCutoff + velCutoffBoost + lfo2Val * 3000.0f
+                    + armMods[ArmFilterCutoff] * 4000.0f,
                     20.0f, 20000.0f);
                 voice.mainFilter.setCoefficients (filterCutoffMod, effectiveReso, srf);
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
+
+                // AudioToRing coupling — ring/AM modulate voice with external engine (D004)
+                if (std::abs (couplingRingModSrc) > 0.001f)
+                    voiceSignal *= (1.0f + couplingRingModSrc);
 
                 // =====================================================
                 // 3. INK CLOUD — Freeze reverb noise burst
