@@ -1,0 +1,82 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Frozen curtain of torus harmonics \u2014 high feedback and minimal dampening create icy sustain.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.7,
+    "density": 0.25,
+    "movement": 0.35,
+    "space": 0.9,
+    "warmth": 0.15
+  },
+  "engines": [
+    "XOverlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Atmosphere",
+  "name": "Glacier Veil",
+  "parameters": {
+    "XOverlap": {
+      "olap_knot": 3,
+      "olap_tangleDepth": 0.35,
+      "olap_torusP": 5,
+      "olap_torusQ": 3,
+      "olap_pulseRate": 0.06,
+      "olap_entrain": 0.1,
+      "olap_spread": 0.95,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 6.0,
+      "olap_dampening": 0.12,
+      "olap_feedback": 0.93,
+      "olap_brightness": 0.75,
+      "olap_bioluminescence": 0.15,
+      "olap_current": 0.1,
+      "olap_currentRate": 0.01,
+      "olap_attack": 1.8,
+      "olap_decay": 4.5,
+      "olap_sustain": 0.95,
+      "olap_release": 8.0,
+      "olap_filterCutoff": 15000.0,
+      "olap_filterRes": 0.05,
+      "olap_filterEnvAmt": 0.05,
+      "olap_filterEnvDecay": 2.5,
+      "olap_lfo1Rate": 0.05,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.2,
+      "olap_lfo1Dest": 3,
+      "olap_lfo2Rate": 0.03,
+      "olap_lfo2Shape": 1,
+      "olap_lfo2Depth": 0.15,
+      "olap_lfo2Dest": 5,
+      "olap_chorusMix": 0.25,
+      "olap_chorusRate": 0.02,
+      "olap_diffusion": 0.4,
+      "olap_macroKnot": 0.15,
+      "olap_macroPulse": 0.1,
+      "olap_macroEntrain": 0.1,
+      "olap_macroBloom": 0.5,
+      "olap_modWheelDest": 0,
+      "olap_modWheelDepth": 0.5,
+      "olap_atPressureDest": 1,
+      "olap_atPressureDepth": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "glacial",
+    "icy",
+    "sustain",
+    "ambient"
+  ],
+  "version": "1.0.0"
+}

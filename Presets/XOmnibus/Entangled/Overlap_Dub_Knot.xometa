@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "OVERDUB's spring reverb and tape delay feed into OVERLAP's figure-8 topology, creating a dub machine with knot-topology spatial depth. The spring metallic splash hits the figure-8 and doubles back — dub echoes folded through themselves. Classic dub technique elevated by topological recursion.",
   "dna": {
     "aggression": 0.3,

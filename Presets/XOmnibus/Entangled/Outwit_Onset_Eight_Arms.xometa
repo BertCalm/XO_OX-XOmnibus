@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "OUTWIT's 8-arm Wolfram CA generates rhythmic step patterns that directly trigger ONSET's 8 drum voices — one arm per voice. The octopus becomes the drummer. Cellular automata rules determine which instruments fire and when, producing evolving polyrhythms no human would program.",
   "dna": {
     "aggression": 0.6,

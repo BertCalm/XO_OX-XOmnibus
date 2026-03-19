@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "OVERLAP's knot-topology FDN — six voices entangled through torus geometry — feeds OPAL's granular engine as the audio source. The FDN's geometrically constrained resonance becomes the grain material. Topology shapes texture: change the knot type, change the grain character.",
   "dna": {
     "aggression": 0.15,

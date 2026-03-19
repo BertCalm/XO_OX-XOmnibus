@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "OPAL granular synthesis feeds directly into OVERLAP's knot-topology FDN. The grains scatter into the torus knot, emerge as a vast reverberant cloud. The coupling route is OPAL grain density → OVERLAP diffusion, so denser grain clouds produce denser spatial wash. A cathedral built from fragments.",
   "dna": {
     "aggression": 0.12,

@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "Outwit's Rule 110 complexity modulates Opal's grain scatter and position. The cellular automaton becomes a grain sequencer — life patterns at the edge of chaos decide where each granule lands. Two alien intelligences building one texture.",
   "dna": {
     "aggression": 0.2,
