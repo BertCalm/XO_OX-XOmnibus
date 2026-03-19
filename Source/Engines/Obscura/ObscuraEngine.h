@@ -1120,9 +1120,7 @@ public:
             float finalLeft  = mixLeft  * paramMasterLevel;
             float finalRight = mixRight * paramMasterLevel;
 
-            // Write to output buffer
-            // NOTE: buffer.clear() is called once before the per-sample loop (see below).
-            // addSample() accumulates; without clear() we'd mix into stale host memory.
+            // Write to output buffer (buffer was cleared before the loop — see above)
             if (buffer.getNumChannels() >= 2)
             {
                 buffer.addSample (0, sample, finalLeft);

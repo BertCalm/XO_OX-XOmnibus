@@ -36,7 +36,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOmnibus Is
 
-**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 6 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 38 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -144,18 +144,48 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The Seven Engines
+### 3.1 The 38 Engines
 
-| Short Name | Source | Sonic Role | Voices | CPU Est. | Accent Color |
-|-----------|--------|-----------|--------|----------|-------------|
-| **ODDFELIX** | OddfeliX | Percussive (PolyBLEP, FM, K-S) | 8 | ~15% | Neon Tetra Blue `#00A6D6` |
-| **ODDOSCAR** | OddOscar | Pad (wavetable morph, Moog ladder) | 16 | ~15% | Axolotl Gill Pink `#E8839B` |
-| **OVERDUB** | XOverdub | Dub mixing desk (send/return FX) | 8 | ~10% | Olive `#6B7B3A` |
-| **ODYSSEY** | XOdyssey | Psychedelic pad (Familiar→Alien) | 24 | ~20% | Violet `#7B2D8B` |
-| **OBLONG** | XOblong | Warm character (fuzzy, curious motion) | 16 | ~15% | Amber `#E9A84A` |
-| **OBESE** | XObese | Character-driven sampler | 8 | ~8% | Hot Pink `#FF1493` |
-| **ONSET** | XOnset (new) | Percussive synthesis (Circuit↔Algorithm) | 8 | ~12% | Electric Blue `#0066FF` |
-| **OMBRE** | XOmbre (new) | Dual-narrative (memory/forgetting + perception) | 8 | ~12% | Shadow Mauve `#7B6B8A` |
+| Short Name | Source Instrument | Accent Color | Parameter Prefix |
+|-----------|------------------|-------------|-----------------|
+| **ODDFELIX** | OddfeliX | Neon Tetra Blue `#00A6D6` | `snap_` |
+| **ODDOSCAR** | OddOscar | Axolotl Gill Pink `#E8839B` | `morph_` |
+| **OVERDUB** | XOverdub | Olive `#6B7B3A` | `dub_` |
+| **ODYSSEY** | XOdyssey | Violet `#7B2D8B` | `drift_` |
+| **OBLONG** | XOblong | Amber `#E9A84A` | `bob_` |
+| **OBESE** | XObese | Hot Pink `#FF1493` | `fat_` |
+| **ONSET** | XOnset | Electric Blue `#0066FF` | `perc_` |
+| **OVERWORLD** | XOverworld | Neon Green `#39FF14` | `ow_` |
+| **OPAL** | XOpal | Lavender `#A78BFA` | `opal_` |
+| **ORBITAL** | XOrbital | Warm Red `#FF6B6B` | `orb_` |
+| **ORGANON** | XOrganon | Bioluminescent Cyan `#00CED1` | `organon_` |
+| **OUROBOROS** | XOuroboros | Strange Attractor Red `#FF2D2D` | `ouro_` |
+| **OBSIDIAN** | XObsidian | Crystal White `#E8E0D8` | `obsidian_` |
+| **OVERBITE** | XOverbite | Fang White `#F0EDE8` | `poss_` |
+| **ORIGAMI** | XOrigami | Vermillion Fold `#E63946` | `origami_` |
+| **ORACLE** | XOracle | Prophecy Indigo `#4B0082` | `oracle_` |
+| **OBSCURA** | XObscura | Daguerreotype Silver `#8A9BA8` | `obscura_` |
+| **OCEANIC** | XOceanic | Phosphorescent Teal `#00B4A0` | `ocean_` |
+| **OCELOT** | XOcelot | Ocelot Tawny `#C5832B` | `ocelot_` |
+| **OPTIC** | XOptic | Phosphor Green `#00FF41` | `optic_` |
+| **OBLIQUE** | XOblique | Prism Violet `#BF40FF` | `oblq_` |
+| **OSPREY** | XOsprey | Azulejo Blue `#1B4F8A` | `osprey_` |
+| **OSTERIA** | XOsteria | Porto Wine `#722F37` | `osteria_` |
+| **OWLFISH** | XOwlfish | Abyssal Gold `#B8860B` | `owl_` |
+| **OHM** | XOhm | Sage `#87AE73` | `ohm_` |
+| **ORPHICA** | XOrphica | Siren Seafoam `#7FDBCA` | `orph_` |
+| **OBBLIGATO** | XObbligato | Rascal Coral `#FF8A7A` | `obbl_` |
+| **OTTONI** | XOttoni | Patina `#5B8A72` | `otto_` |
+| **OLE** | XOlé | Hibiscus `#C9377A` | `ole_` |
+| **OMBRE** | XOmbre | Shadow Mauve `#7B6B8A` | `ombre_` |
+| **ORCA** | XOrca | Deep Ocean `#1B2838` | `orca_` |
+| **OCTOPUS** | XOctopus | Chromatophore Magenta `#E040FB` | `octo_` |
+| **OSTINATO** | XOstinato | Firelight Orange `#E8701A` | `osti_` |
+| **OPENSKY** | XOpenSky | Sunburst `#FF8C00` | `sky_` |
+| **OCEANDEEP** | XOceanDeep | Trench Violet `#2D0A4E` | `deep_` |
+| **OUIE** | XOuïe | Hammerhead Steel `#708090` | `ouie_` |
+| **OVERLAP** | XOverlap | Bioluminescent Cyan-Green `#00FFB4` | `olap_` |
+| **OUTWIT** | XOutwit | Chromatophore Amber `#CC6600` | `owit_` |
 
 ### 3.2 Engine Visual Identity
 
@@ -998,7 +1028,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 7 engines wrapped and integrated
+- All 38 engines wrapped and integrated
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
 - 1000 factory presets with DNA fingerprints
