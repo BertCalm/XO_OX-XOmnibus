@@ -34,6 +34,7 @@
 #include "Engines/Ombre/OmbreEngine.h"
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
+#include "Engines/Obrix/ObrixEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -174,6 +175,10 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
     "Octopus", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OctopusEngine>();
     });
+static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObrixEngine>();
+    });
 
 namespace xomnibus {
 
@@ -311,6 +316,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OmbreEngine::addParameters(params);
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
+    ObrixEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
