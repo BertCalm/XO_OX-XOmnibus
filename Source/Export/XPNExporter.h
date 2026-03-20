@@ -36,11 +36,19 @@ public:
     {
         const auto& dna = preset.dna;
 
-        // Check for ONSET engine → always Rhythmic
+        // Check for engines that produce inherently rhythmic output.
+        // ONSET/XONSET:    percussion engine — always Rhythmic
+        // OBRIX/XOBRIX:    modular brick sequencer — always Rhythmic
+        // OUROBOROS:       chaotic attractor — Rhythmic when high movement + aggression
         for (const auto& eng : preset.engines)
         {
             auto upper = eng.toUpperCase();
-            if (upper == "ONSET" || upper == "XONSET")
+            if (upper == "ONSET"    || upper == "XONSET" ||
+                upper == "OBRIX"    || upper == "XOBRIX")
+                return rhythmic();
+
+            if ((upper == "OUROBOROS" || upper == "XOUROBOROS") &&
+                dna.movement > 0.6f && dna.aggression > 0.5f)
                 return rhythmic();
         }
 
@@ -118,6 +126,7 @@ public:
     struct RenderSettings {
         double sampleRate    = 48000.0;
         int    bitDepth      = 24;             // 16 or 24
+        int    numChannels   = 2;              // 1 = mono, 2 = stereo
         float  renderSeconds = 4.0f;           // note hold time
         float  tailSeconds   = 2.0f;           // after noteOff
         float  normCeiling   = -0.3f;          // dBFS normalization target
@@ -180,7 +189,7 @@ public:
 
         // WAV size: header(44) + samples * channels * bytesPerSample
         int bytesPerSample = settings.bitDepth / 8;
-        int64_t wavBodySize = (int64_t)est.samplesPerNote * 2 * bytesPerSample;
+        int64_t wavBodySize = (int64_t)est.samplesPerNote * settings.numChannels * bytesPerSample;
         int64_t wavFileSize = 44 + wavBodySize;
 
         est.totalBytes = wavFileSize * est.totalWavFiles;
@@ -622,7 +631,7 @@ private:
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
-        juce::AudioBuffer<float> buffer(2, totalSamples);
+        juce::AudioBuffer<float> buffer(settings.numChannels, totalSamples);
         buffer.clear();
 
         if (!ctx.valid)
@@ -664,7 +673,7 @@ private:
                 noteOffSent = true;
             }
 
-            juce::AudioBuffer<float> engineBuf(2, blockSize);
+            juce::AudioBuffer<float> engineBuf(settings.numChannels, blockSize);
 
             for (auto& engine : ctx.engines)
             {
@@ -673,7 +682,7 @@ private:
                 engine->analyzeForSilenceGate(engineBuf, blockSize);
 
                 // Mix engine output into the accumulated buffer
-                for (int ch = 0; ch < 2; ++ch)
+                for (int ch = 0; ch < settings.numChannels; ++ch)
                     buffer.addFrom(ch, rendered, engineBuf, ch, 0, blockSize);
             }
 

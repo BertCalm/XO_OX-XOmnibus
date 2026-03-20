@@ -70,6 +70,23 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+# Optional tqdm progress bars — degrade gracefully if not installed
+try:
+    from tqdm import tqdm as _tqdm
+    HAS_TQDM = True
+except ImportError:
+    HAS_TQDM = False
+
+def tqdm(iterable, **kwargs):
+    """Wrap tqdm if available, otherwise iterate transparently."""
+    if HAS_TQDM:
+        return _tqdm(iterable, **kwargs)
+    desc = kwargs.get("desc", "")
+    total = kwargs.get("total", None)
+    if desc:
+        print(f"  {desc}...")
+    return iterable
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Constants
 # ─────────────────────────────────────────────────────────────────────────────
@@ -158,6 +175,11 @@ VELOCITY_CURVES = {
 
 # Default pad colors (used when no engine color available)
 DEFAULT_PAD_COLOR = "#E9C46A"  # XO Gold
+
+# Loop crossfade applied at the loop splice point.
+# MPC interprets this as a number of samples (not milliseconds).
+# 100 samples ≈ 2.3 ms @ 44.1 kHz — short enough to avoid audible pre-echo.
+LOOP_CROSSFADE_SAMPLES = 100
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -335,18 +357,27 @@ def classify_by_name(name: str) -> str:
 
 
 def classify_by_audio(channels: List[List[float]], sr: int, duration: float) -> str:
-    """Classify by audio characteristics when filename doesn't help."""
+    """Classify by audio characteristics when filename doesn't help.
+
+    Uses ZCR for spectral proxy (low ZCR → low-frequency / bass content,
+    high ZCR → noise / hat content) and decay shape to distinguish sustained
+    pads from plucked one-shots.
+    """
     if not channels or not channels[0]:
         return CATEGORY_UNKNOWN
 
     mono = channels[0]
     n = len(mono)
 
-    # Short = percussive
+    # Zero-crossing rate — cheap spectral proxy used across all duration ranges
+    zc = sum(1 for i in range(1, n) if (mono[i] >= 0) != (mono[i - 1] >= 0))
+    zcr = zc / n * sr
+
+    # Short = percussive (< 500 ms)
     if duration < 0.5:
-        # Analyze spectral content roughly via zero-crossing rate
-        zc = sum(1 for i in range(1, n) if (mono[i] >= 0) != (mono[i - 1] >= 0))
-        zcr = zc / n * sr
+        # Low ZCR → mostly low-frequency energy → kick / bass-drum
+        # Very high ZCR → mostly high-frequency noise → closed hi-hat
+        # Mid ZCR → broadband transient → snare / clap / tom
         if zcr < 500:
             return CATEGORY_KICK
         elif zcr > 3000:
@@ -354,17 +385,22 @@ def classify_by_audio(channels: List[List[float]], sr: int, duration: float) -> 
         else:
             return CATEGORY_SNARE
 
-    # Medium = melodic one-shot or percussion
+    # Medium = one-shot melodic or long percussion (0.5 s – 3 s)
     if duration < 3.0:
-        # Check for sustained energy (pad vs pluck)
+        # Decay shape: compare RMS of first quarter-second vs mid quarter-second
         mid = n // 2
         rms_start = math.sqrt(sum(s * s for s in mono[:sr // 4]) / max(1, sr // 4))
         rms_mid = math.sqrt(sum(s * s for s in mono[mid:mid + sr // 4]) / max(1, sr // 4))
-        if rms_mid > rms_start * 0.5:
-            return CATEGORY_BASS  # sustained
-        return CATEGORY_PLUCK  # decaying
+        sustained = rms_mid > rms_start * 0.5
 
-    # Long = pad or texture
+        if sustained:
+            # Sustained sound in this range: use ZCR to guess pitch register.
+            # Bass fundamentals (< ~200 Hz) cross zero fewer times per second
+            # than mid/high melodic material.
+            return CATEGORY_BASS if zcr < 200 else CATEGORY_LEAD
+        return CATEGORY_PLUCK  # fast-decaying one-shot
+
+    # Long = pad or ambient texture (>= 3 s)
     return CATEGORY_PAD
 
 
@@ -500,7 +536,17 @@ def generate_round_robin(channels: List[List[float]], sr: int,
                          num_variations: int = 4) -> List[List[List[float]]]:
     """Generate round-robin variations via micro-variation."""
     variations = [channels]  # original is variation 0
-    rng = random.Random(hash(str(len(channels[0]))))
+
+    # Content-sensitive seed: length alone causes seed collisions for same-duration
+    # samples (e.g. all 1-bar loops at the same BPM). Mix in 16 evenly-spaced
+    # sample values so each unique waveform gets a unique RNG stream.
+    n = len(channels[0]) if channels and channels[0] else 0
+    step = max(1, n // 16)
+    seed_data = (n,) + tuple(
+        round(channels[0][i * step] * 1_000_000)
+        for i in range(min(16, n // max(1, step)))
+    )
+    rng = random.Random(hash(seed_data))
 
     for v in range(1, num_variations):
         varied = []
@@ -581,7 +627,7 @@ def enhance(samples: List[SampleInfo], work_dir: str,
 
     programs = {}  # program_name → {category, samples: [{path, vel_layer, rr_idx, ...}]}
 
-    for s in samples:
+    for s in tqdm(samples, desc="Enhancing samples", unit="sample"):
         try:
             channels, sr, bd = read_wav(s.path)
         except Exception:
@@ -631,23 +677,32 @@ def enhance(samples: List[SampleInfo], work_dir: str,
 # ─────────────────────────────────────────────────────────────────────────────
 
 def lufs_approximate(channels: List[List[float]], sr: int) -> float:
-    """Simplified LUFS measurement (ITU-R BS.1770 approximation)."""
+    """Simplified LUFS measurement (ITU-R BS.1770 approximation).
+
+    Averages all channels before gating — critical for stereo files.
+    Channel 0 alone under-reports loudness by ~3 dB on balanced stereo material.
+    """
     if not channels or not channels[0]:
         return -100.0
 
-    mono = channels[0]
-    n = len(mono)
+    n = len(channels[0])
+    nch = len(channels)
     window = int(0.4 * sr)  # 400ms windows
 
+    # Mix to mono by averaging squared values across all channels (BS.1770 §2.1)
+    mixed_sq = [
+        sum(channels[ch][i] ** 2 for ch in range(nch)) / nch
+        for i in range(n)
+    ]
+
     if n < window:
-        rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
-        return 20 * math.log10(max(rms, 1e-10)) - 0.691
+        ms = sum(mixed_sq) / max(1, n)
+        return 10 * math.log10(max(ms, 1e-10)) - 0.691
 
     # Compute gated mean square over 400ms windows
     powers = []
     for i in range(0, n - window, window // 4):  # 75% overlap
-        chunk = mono[i:i + window]
-        ms = sum(s * s for s in chunk) / window
+        ms = sum(mixed_sq[i:i + window]) / window
         powers.append(ms)
 
     if not powers:
@@ -672,7 +727,7 @@ def lufs_approximate(channels: List[List[float]], sr: int) -> float:
 
 def normalize_programs(programs: Dict[str, dict], target_lufs: float = -14.0):
     """Stage 5: LUFS normalize all samples in each program."""
-    for prog_name, prog in programs.items():
+    for prog_name, prog in tqdm(programs.items(), desc="Normalizing programs", unit="prog"):
         # Find the loudest layer (highest velocity, first round-robin)
         loudest_layer = None
         for layer in prog["layers"]:
@@ -837,7 +892,7 @@ def build_xpm_keygroup(prog_name: str, prog: dict,
             if si.is_loopable:
                 ET.SubElement(layer, "LoopStart").text = str(si.loop_start)
                 ET.SubElement(layer, "LoopEnd").text = str(si.loop_end)
-                ET.SubElement(layer, "LoopCrossfade").text = "100"
+                ET.SubElement(layer, "LoopCrossfade").text = str(LOOP_CROSSFADE_SAMPLES)
             else:
                 ET.SubElement(layer, "LoopStart").text = "-1"
                 ET.SubElement(layer, "LoopEnd").text = "-1"
@@ -986,53 +1041,133 @@ def validate(programs: Dict[str, dict], output_path: str) -> int:
 # Main Pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
+_STAGE_MARKER_PREFIX = ".xoutshine_stage_"
+
+
+def _stage_done(work_dir: str, stage: int) -> bool:
+    return os.path.exists(os.path.join(work_dir, f"{_STAGE_MARKER_PREFIX}{stage}"))
+
+
+def _mark_stage(work_dir: str, stage: int):
+    open(os.path.join(work_dir, f"{_STAGE_MARKER_PREFIX}{stage}"), "w").close()
+
+
 def run_pipeline(args):
     """Run the full XOutshine pipeline."""
     print(BANNER)
 
     pack_name = args.name or os.path.splitext(os.path.basename(args.input))[0]
     output_format = args.format or ("xpn" if args.output.lower().endswith(".xpn") else "folder")
+    dry_run = getattr(args, "dry_run", False)
+    resume = getattr(args, "resume", False)
 
-    with tempfile.TemporaryDirectory(prefix="xoutshine_") as work_dir:
-        # Stage 1: INGEST
+    # Work directory: persistent if --work-dir specified, otherwise temporary
+    explicit_work_dir = getattr(args, "work_dir", None)
+    if explicit_work_dir:
+        os.makedirs(explicit_work_dir, exist_ok=True)
+        work_dir = explicit_work_dir
+        _cleanup = False
+    else:
+        _tmp = tempfile.mkdtemp(prefix="xoutshine_")
+        work_dir = _tmp
+        _cleanup = True
+
+    try:
+        # ── Stage 1: INGEST ──────────────────────────────────────────────────
         print("[1/8] INGEST")
-        samples = ingest(args.input, work_dir)
-        if not samples:
-            print("  ERROR: No samples found.")
-            return 1
+        state_path = os.path.join(work_dir, "samples_state.json")
+        if resume and _stage_done(work_dir, 1) and os.path.exists(state_path):
+            print("  Resuming: stage 1 already complete")
+            with open(state_path) as f:
+                state = json.load(f)
+            samples = [SampleInfo(s["path"], s["original_name"]) for s in state]
+            for s_obj, s_dict in zip(samples, state):
+                s_obj.__dict__.update(s_dict)
+        else:
+            samples = ingest(args.input, work_dir)
+            if not samples:
+                print("  ERROR: No samples found.")
+                return 1
+            _mark_stage(work_dir, 1)
 
-        # Stage 2: CLASSIFY
+        if dry_run:
+            print("\n[DRY RUN] Classification preview (stages 2–3 only):")
+            samples = classify(samples)
+            samples = analyze(samples)
+            total_dur = sum(s.duration_s for s in samples)
+            # Estimate: 4 vel layers × 4 RR × ~WAV size per file
+            est_files = len(samples) * args.velocity_layers * args.round_robin
+            # Rough size: avg duration × sr × channels × bytes (16-bit) with 0.8× compression
+            avg_dur = total_dur / max(1, len(samples))
+            est_bytes = est_files * avg_dur * 44100 * 2 * 3 * 0.8
+            est_mb = est_bytes / (1024 * 1024)
+            print(f"\n  Would process : {len(samples)} samples → {est_files} output files")
+            print(f"  Est. pack size: ~{est_mb:.0f} MB")
+            dist = defaultdict(int)
+            for s in samples:
+                dist[s.category] += 1
+            print(f"  Category dist : {dict(dist)}")
+            return 0
+
+        # ── Stage 2: CLASSIFY ────────────────────────────────────────────────
         print("[2/8] CLASSIFY")
-        samples = classify(samples)
+        if resume and _stage_done(work_dir, 2):
+            print("  Resuming: stage 2 already complete")
+        else:
+            samples = classify(samples)
+            _mark_stage(work_dir, 2)
 
-        # Stage 3: ANALYZE
+        # ── Stage 3: ANALYZE ─────────────────────────────────────────────────
         print("[3/8] ANALYZE")
-        samples = analyze(samples)
+        if resume and _stage_done(work_dir, 3):
+            print("  Resuming: stage 3 already complete")
+        else:
+            samples = analyze(samples)
+            _mark_stage(work_dir, 3)
 
-        # Stage 4: ENHANCE
+        # ── Stage 4: ENHANCE ─────────────────────────────────────────────────
         print("[4/8] ENHANCE")
-        programs = enhance(samples, work_dir,
-                          num_round_robin=args.round_robin,
-                          num_velocity_layers=args.velocity_layers)
+        programs_path = os.path.join(work_dir, "programs_state.json")
+        if resume and _stage_done(work_dir, 4) and os.path.exists(programs_path):
+            print("  Resuming: stage 4 already complete")
+            with open(programs_path) as f:
+                programs = json.load(f)
+        else:
+            programs = enhance(samples, work_dir,
+                               num_round_robin=args.round_robin,
+                               num_velocity_layers=args.velocity_layers)
+            _mark_stage(work_dir, 4)
 
-        # Stage 5: NORMALIZE
+        # ── Stage 5: NORMALIZE ───────────────────────────────────────────────
         print("[5/8] NORMALIZE")
-        normalize_programs(programs, target_lufs=args.lufs_target)
+        if resume and _stage_done(work_dir, 5):
+            print("  Resuming: stage 5 already complete")
+        else:
+            normalize_programs(programs, target_lufs=args.lufs_target)
+            _mark_stage(work_dir, 5)
 
-        # Stage 6: MAP
+        # ── Stage 6: MAP ─────────────────────────────────────────────────────
         print("[6/8] MAP")
-        build_programs(programs, work_dir, velocity_curve=args.velocity_curve)
+        if resume and _stage_done(work_dir, 6):
+            print("  Resuming: stage 6 already complete")
+        else:
+            build_programs(programs, work_dir, velocity_curve=args.velocity_curve)
+            _mark_stage(work_dir, 6)
 
-        # Stage 7: PACKAGE
+        # ── Stage 7: PACKAGE ─────────────────────────────────────────────────
         print("[7/8] PACKAGE")
         if output_format == "xpn":
             package_xpn(programs, work_dir, args.output, pack_name)
         else:
             package_folder(programs, work_dir, args.output, pack_name)
 
-        # Stage 8: VALIDATE
+        # ── Stage 8: VALIDATE ────────────────────────────────────────────────
         print("[8/8] VALIDATE")
         issues = validate(programs, args.output)
+
+    finally:
+        if _cleanup:
+            shutil.rmtree(work_dir, ignore_errors=True)
 
     print(f"\nXOutshine complete. {len(programs)} programs upgraded.")
     print("Outshine the original. ✧")
@@ -1049,6 +1184,12 @@ Examples:
   python xoutshine.py --input ./samples/ --output ./upgraded/ --format folder
   python xoutshine.py --input pack.xpn --output upgraded.xpn --velocity-curve boom-bap
   python xoutshine.py --input ./drums/ --output drums.xpn --round-robin 4 --velocity-layers 5
+
+  # Preview what would be processed (no files written)
+  python xoutshine.py --input ./samples/ --output out.xpn --dry-run
+
+  # Resume an interrupted run
+  python xoutshine.py --input pack.xpn --output upgraded.xpn --work-dir /tmp/xo_work --resume
 
 Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
         """)
@@ -1072,6 +1213,13 @@ Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
                         help="Target LUFS level (default: -14)")
     parser.add_argument("--no-round-robin", action="store_true",
                         help="Disable round-robin generation")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Preview classification and estimated output size without processing")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume an interrupted run (requires --work-dir)")
+    parser.add_argument("--work-dir",
+                        help="Persistent working directory for resume support "
+                             "(default: auto-managed temp dir, deleted on completion)")
     parser.add_argument("--version", action="version", version=f"XOutshine {VERSION}")
 
     args = parser.parse_args()
