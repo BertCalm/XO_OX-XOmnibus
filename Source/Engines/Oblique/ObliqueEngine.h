@@ -1022,7 +1022,9 @@ public:
                 bounceParams.swing = bounceSwing;
                 bounceParams.clickTone = bounceClickTone;
                 // D004 fix: bounceClickDecay (oblq_percDecay) now controls click burst duration.
-                bounceParams.clickDecay = bounceClickDecay;
+                // Normalize: param range is 0.001–0.05, remap to 0–1 for the Bounce's
+                // clickDecay field (which maps 0–1 → 1ms–30ms click duration).
+                bounceParams.clickDecay = clamp ((bounceClickDecay - 0.001f) / (0.05f - 0.001f), 0.0f, 1.0f);
 
                 float bounceOutput = voice.bounce.process (bounceParams)
                                    * bounceClickLevel * voice.velocity;
@@ -1058,18 +1060,21 @@ public:
             // ================================================================
 
             // --- D005: Prism LFO accumulation ---
-            // 0.2 Hz autonomous sine LFO modulates prism color spread ±0.15.
-            // kLfoRate is compile-time constant: no parameter load on audio thread.
+            // Autonomous sine LFO modulates prism color spread.
+            // Base rate 0.2 Hz; COLOR macro accelerates up to 2.0 Hz for faster
+            // prismatic shimmer. BOUNCE macro deepens the LFO to ±0.35 at full throw.
             // Double precision phase prevents drift over long performance sessions.
-            static constexpr double kLfoRate = 0.2;    // Hz — one sweep per 5 seconds
+            static constexpr double kLfoBaseRate = 0.2;   // Hz — one sweep per 5 seconds
+            static constexpr double kLfoMaxRate  = 2.0;   // Hz — fast prismatic flutter
             static constexpr double kTwoPiD  = 6.28318530718;
-            obliqueLfoPhase += kLfoRate / hostSampleRate;
+            double effectiveLfoRate = kLfoBaseRate + static_cast<double> (macroColor) * (kLfoMaxRate - kLfoBaseRate);
+            obliqueLfoPhase += effectiveLfoRate / hostSampleRate;
             if (obliqueLfoPhase >= 1.0) obliqueLfoPhase -= 1.0;
             float obliqueLfoValue = fastSin (static_cast<float> (obliqueLfoPhase * kTwoPiD));
-            // ±0.15 spectral spread depth: enough to be audible without being
-            // distracting. The prism fish catches a slowly rotating light beam.
-            static constexpr float kLfoDepth = 0.15f;
-            float lfoColorMod = obliqueLfoValue * kLfoDepth;
+            // ±0.15 base spectral spread depth; BOUNCE macro deepens to ±0.35.
+            // The prism fish catches a slowly rotating light beam — or fast flutter with macros.
+            float lfoDepth = 0.15f + macroBounce * 0.20f;
+            float lfoColorMod = obliqueLfoValue * lfoDepth;
 
             // --- Prism Delay (6-facet spectral delay — the prismatic core) ---
             // D006: mod wheel increases prism color spread up to +0.3 at full wheel (sensitivity 0.3)

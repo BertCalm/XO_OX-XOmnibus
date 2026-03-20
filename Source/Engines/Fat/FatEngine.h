@@ -802,12 +802,20 @@ public:
     {
         if (numSamples <= 0) return;
 
+        // -- XOmnibus macros (MOJO, GRIT, SIZE, CRUSH) — read first, used below ---
+        const float macroMojo  = (pMacroMojo  != nullptr) ? pMacroMojo->load()  : 0.0f;
+        const float macroGrit  = (pMacroGrit  != nullptr) ? pMacroGrit->load()  : 0.0f;
+        const float macroSize  = (pMacroSize  != nullptr) ? pMacroSize->load()  : 0.0f;
+        const float macroCrush = (pMacroCrush != nullptr) ? pMacroCrush->load() : 0.0f;
+
         // Snapshot parameters (block-constant)
         const float morph       = (pMorph != nullptr) ? pMorph->load() : 0.5f;
         const float mojo        = (pMojo != nullptr) ? pMojo->load() : 0.5f;
         const float subLevel    = (pSubLevel != nullptr) ? pSubLevel->load() : 0.5f;
         const int   subOct      = (pSubOct != nullptr) ? static_cast<int> (pSubOct->load()) : 1;
-        const float groupMix    = (pGroupMix != nullptr) ? pGroupMix->load() : 1.0f;
+        // M3 SIZE macro: adds group mix (+0.3) for wider octave stacks
+        const float groupMix    = clamp (((pGroupMix != nullptr) ? pGroupMix->load() : 1.0f)
+                                         + macroSize * 0.3f, 0.0f, 1.0f);
         const float detune      = (pDetune != nullptr) ? pDetune->load() : 5.0f;
         const float stereoWidth = (pStereoWidth != nullptr) ? pStereoWidth->load() : 0.5f;
 
@@ -816,17 +824,26 @@ public:
         const float ampS        = (pAmpSustain != nullptr) ? pAmpSustain->load() : 0.8f;
         const float ampR        = (pAmpRelease != nullptr) ? pAmpRelease->load() : 0.15f;
 
-        const float fltCutoff   = (pFltCutoff != nullptr) ? pFltCutoff->load() : 2000.0f;
+        // M3 SIZE macro: opens filter cutoff (+6000 Hz) for massive stacks
+        const float fltCutoff   = clamp (((pFltCutoff != nullptr) ? pFltCutoff->load() : 2000.0f)
+                                         + macroSize * 6000.0f, 20.0f, 18000.0f);
         const float fltReso     = (pFltReso != nullptr) ? pFltReso->load() : 0.2f;
-        const float fltDrive    = (pFltDrive != nullptr) ? pFltDrive->load() : 0.0f;
+        // M2 GRIT macro: increases filter drive (+0.3) for more inter-stage saturation
+        const float fltDrive    = clamp (((pFltDrive != nullptr) ? pFltDrive->load() : 0.0f)
+                                         + macroGrit * 0.3f, 0.0f, 1.0f);
         const float fltKeyTrack = (pFltKeyTrack != nullptr) ? pFltKeyTrack->load() : 0.5f;
         const float fltEnvAmt   = (pFltEnvAmt != nullptr) ? pFltEnvAmt->load() : 0.5f;
         const float fltEnvA     = (pFltEnvAttack != nullptr) ? pFltEnvAttack->load() : 0.001f;
         const float fltEnvD     = (pFltEnvDecay != nullptr) ? pFltEnvDecay->load() : 0.3f;
 
-        const float satDrive    = (pSatDrive != nullptr) ? pSatDrive->load() : 0.3f;
-        const float crushDepth  = (pCrushDepth != nullptr) ? pCrushDepth->load() : 16.0f;
-        const float crushRate   = (pCrushRate != nullptr) ? pCrushRate->load() : 44100.0f;
+        // M2 GRIT macro: increases saturation drive (+0.6) and filter drive (+0.3)
+        const float satDrive    = clamp (((pSatDrive != nullptr) ? pSatDrive->load() : 0.3f)
+                                         + macroGrit * 0.6f, 0.0f, 1.0f);
+        // M4 CRUSH macro: reduces crush depth and rate for lo-fi character
+        const float crushDepth  = clamp (((pCrushDepth != nullptr) ? pCrushDepth->load() : 16.0f)
+                                         - macroCrush * 8.0f, 2.0f, 16.0f);
+        const float crushRate   = clamp (((pCrushRate != nullptr) ? pCrushRate->load() : 44100.0f)
+                                         - macroCrush * 20000.0f, 500.0f, 44100.0f);
 
         const int   arpOn       = (pArpOn != nullptr) ? static_cast<int> (pArpOn->load()) : 0;
         const int   arpPattern  = (pArpPattern != nullptr) ? static_cast<int> (pArpPattern->load()) : 0;
@@ -846,8 +863,9 @@ public:
         const float subSemitones = static_cast<float> ((subOct - 2) * 12); // index 0=-24, 1=-12, 2=0
 
         // Analog amount: mojo=0 → digital, mojo=1 → full analog drift
+        // M1 MOJO macro pushes toward analog (+0.5 at full throw)
         // D006: non-const so aftertouch boost (computed post-MIDI-loop) can update it
-        float analogAmount = mojo;
+        float analogAmount = clamp (mojo + macroMojo * 0.5f, 0.0f, 1.0f);
 
         // Precompute group pan gains (constant-power)
         const float g2Pan = -0.3f * stereoWidth * 2.0f;
@@ -969,7 +987,8 @@ public:
         // Higher pressure = more analog drift + soft-clip saturation on all oscillators.
         // This is Blessing B015 in action: the Mojo orthogonal axis becomes touch-sensitive.
         // D006: mod wheel also boosts mojo up to +0.5 at full wheel (classic Moog expression; sensitivity 0.5)
-        const float effectiveMojo = clamp (mojo + atPressure * 0.3f + modWheelValue * 0.5f, 0.0f, 1.0f);
+        // M1 MOJO macro already added to analogAmount above; aftertouch + mod wheel also contribute
+        const float effectiveMojo = clamp (mojo + macroMojo * 0.5f + atPressure * 0.3f + modWheelValue * 0.5f, 0.0f, 1.0f);
         analogAmount = effectiveMojo;  // update after MIDI loop once atPressure is known
 
         // Consume coupling accumulators
@@ -1343,6 +1362,30 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "fat_polyphony", 1 }, "Fat Polyphony",
             juce::StringArray { "1", "2", "4", "6" }, 3));
+
+        // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // All default to 0.0 — existing presets are unaffected.
+        //
+        // M1 MOJO (CHARACTER): pushes mojo axis toward analog — more drift + soft-clip.
+        //   At max: +0.5 mojo → full analog saturation on all 13 oscillators.
+        // M2 GRIT (MOVEMENT): increases saturation drive (+0.6) and filter drive (+0.3).
+        //   At max: satDrive + 0.6, fltDrive + 0.3 — nasty, overdriven character.
+        // M3 SIZE (COUPLING): opens filter cutoff (+6000 Hz) and group mix (+0.3).
+        //   At max: +6000 Hz sweep + more octave groups = massive, wide stacks.
+        // M4 CRUSH (SPACE): reduces crush depth and rate for lo-fi character.
+        //   At max: crushDepth - 8 bits, crushRate - 20000 Hz — crunchy, degraded.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_macroMojo",  1 }, "Fat MOJO",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_macroGrit",  1 }, "Fat GRIT",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_macroSize",  1 }, "Fat SIZE",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_macroCrush", 1 }, "Fat CRUSH",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
     }
 
 public:
@@ -1384,6 +1427,11 @@ public:
         pVoiceMode   = apvts.getRawParameterValue ("fat_voiceMode");
         pGlide       = apvts.getRawParameterValue ("fat_glide");
         pPolyphony   = apvts.getRawParameterValue ("fat_polyphony");
+        // XOmnibus macros
+        pMacroMojo   = apvts.getRawParameterValue ("fat_macroMojo");
+        pMacroGrit   = apvts.getRawParameterValue ("fat_macroGrit");
+        pMacroSize   = apvts.getRawParameterValue ("fat_macroSize");
+        pMacroCrush  = apvts.getRawParameterValue ("fat_macroCrush");
     }
 
 private:
@@ -1562,6 +1610,12 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
+
+    // XOmnibus macros (MOJO, GRIT, SIZE, CRUSH)
+    std::atomic<float>* pMacroMojo  = nullptr;
+    std::atomic<float>* pMacroGrit  = nullptr;
+    std::atomic<float>* pMacroSize  = nullptr;
+    std::atomic<float>* pMacroCrush = nullptr;
 };
 
 } // namespace xomnibus
