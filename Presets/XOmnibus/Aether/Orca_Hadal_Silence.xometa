@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Silence",
+  "mood": "Aether",
+  "engines": ["Orca"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The hadal zone — trenches below 6000m. Maximum pressure, minimum life, absolute darkness. The sound of the place beyond ordinary ocean — a different physics, a different silence. Almost nothing, but not quite.",
+  "tags": ["aether", "hadal", "trench", "extreme", "deep"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {"brightness": 0.04, "warmth": 0.3, "movement": 0.03, "density": 0.18, "space": 0.98, "aggression": 0.02},
+  "parameters": {
+    "Orca": {
+      "orca_wtPosition": 0.02, "orca_wtScanRate": 0.01, "orca_formantIntensity": 0.15, "orca_formantShift": 0.15, "orca_glide": 5.0,
+      "orca_echoRate": 0.5, "orca_echoReso": 0.92, "orca_echoDamp": 0.88, "orca_echoMix": 0.35, "orca_huntMacro": 0.0,
+      "orca_breachSub": 0.15, "orca_breachShape": 0.0, "orca_breachThreshold": -60.0, "orca_breachRatio": 1.1,
+      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 500.0,
+      "orca_filterCutoff": 400.0, "orca_filterReso": 0.05, "orca_level": 0.55,
+      "orca_ampAttack": 7.0, "orca_ampDecay": 5.0, "orca_ampSustain": 0.38, "orca_ampRelease": 12.0,
+      "orca_modAttack": 5.0, "orca_modDecay": 4.0, "orca_modSustain": 0.25, "orca_modRelease": 9.0,
+      "orca_lfo1Rate": 0.01, "orca_lfo1Depth": 0.08, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.01, "orca_lfo2Depth": 0.04, "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2, "orca_velCutoffAmt": 0.12, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+    }
+  },
+  "coupling": null, "sequencer": null
+}

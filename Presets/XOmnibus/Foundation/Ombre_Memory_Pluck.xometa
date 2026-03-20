@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Memory Pluck",
+  "mood": "Foundation",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Short decay, no sustain, short release. Each note a pluck. The memory grain is short enough that it trails behind each pluck like a brief reflection in water. Musical and clear.",
+  "tags": ["foundation", "pluck", "short", "percussive", "melodic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.52,
+    "movement": 0.2,
+    "density": 0.32,
+    "space": 0.38,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.72,
+      "ombre_interference": 0.2,
+      "ombre_memoryDecay": 1.2,
+      "ombre_memoryGrain": 30.0,
+      "ombre_memoryDrift": 0.1,
+      "ombre_oscShape": 3,
+      "ombre_reactivity": 0.75,
+      "ombre_subLevel": 0.12,
+      "ombre_filterCutoff": 4800.0,
+      "ombre_filterReso": 0.32,
+      "ombre_attack": 0.003,
+      "ombre_decay": 0.15,
+      "ombre_sustain": 0.0,
+      "ombre_release": 0.2,
+      "ombre_level": 0.82,
+      "ombre_velCutoffScale": 0.55,
+      "ombre_lfo1Rate": 1.2,
+      "ombre_lfo1Depth": 0.05,
+      "ombre_lfo2Rate": 0.6,
+      "ombre_lfo2Depth": 0.04,
+      "ombre_macroCharacter": 0.3,
+      "ombre_macroMovement": 0.2,
+      "ombre_macroCoupling": 0.2,
+      "ombre_macroSpace": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

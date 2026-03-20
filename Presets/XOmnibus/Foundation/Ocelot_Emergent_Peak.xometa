@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Emergent Peak",
+  "mood": "Foundation",
+  "engines": ["Ocelot"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Emergent layer above the canopy — the tallest trees reaching into open sky, bright and expansive.",
+  "tags": ["emergent", "peak", "foundation", "tall", "bright", "jungle"],
+  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.48, "movement": 0.42, "density": 0.5, "space": 0.65, "aggression": 0.25},
+  "parameters": {
+    "Ocelot": {
+      "ocelot_biome": 3,
+      "ocelot_strataBalance": 0.9,
+      "ocelot_ecosystemDepth": 0.58,
+      "ocelot_humidity": 0.55,
+      "ocelot_swing": 0.1,
+      "ocelot_density": 0.45,
+      "ocelot_floorModel": 0,
+      "ocelot_floorTension": 0.35,
+      "ocelot_floorStrike": 0.4,
+      "ocelot_floorDamping": 0.65,
+      "ocelot_floorLevel": 0.15,
+      "ocelot_canopyLevel": 0.75,
+      "ocelot_canopyShimmer": 0.65,
+      "ocelot_canopyBreathe": 0.55,
+      "ocelot_creatureType": 1,
+      "ocelot_creatureRate": 1.2,
+      "ocelot_creatureLevel": 0.5,
+      "ocelot_reverbMix": 0.55,
+      "ocelot_delayMix": 0.18,
+      "ocelot_prowl": 0.25,
+      "ocelot_foliage": 0.55,
+      "ocelot_ecosystem": 0.55,
+      "ocelot_canopy": 0.75
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

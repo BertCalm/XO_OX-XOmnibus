@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Dense Ground",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "High diffusion, high feedback \u2014 six lines tangled in an unknot creating a near-diffuse cloud with excellent early reflections. The input sounds like it was recorded in a vessel made of sound.",
+  "tags": [
+    "dense",
+    "diffuse",
+    "cloud",
+    "unknot",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.75,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.7,
+      "olap_diffusion": 0.85,
+      "olap_spread": 0.8,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.06,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

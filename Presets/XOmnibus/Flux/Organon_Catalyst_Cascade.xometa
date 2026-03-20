@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Catalyst Cascade",
+  "mood": "Flux",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Enzyme catalyst activity cascading through all pathways — biochemical chain reaction in full flux.",
+  "tags": ["catalyst", "cascade", "flux", "chain", "reaction", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.42, "movement": 0.82, "density": 0.68, "space": 0.35, "aggression": 0.72},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.75,
+      "organon_membrane": 0.38,
+      "organon_enzymeSelect": 2,
+      "organon_catalystDrive": 0.92,
+      "organon_isotopeBalance": 0.38,
+      "organon_phasonShift": 0.6,
+      "organon_dampingCoeff": 0.22,
+      "organon_signalFlux": 0.75,
+      "organon_noiseColor": 3,
+      "organon_lockIn": 0.15
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

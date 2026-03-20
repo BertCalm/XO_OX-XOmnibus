@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Quantum Blur",
+  "mood": "Aether",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Position and momentum cannot both be known. Moderate interference and drift ensure that neither the note's pitch nor its temporal position can be precisely determined.",
+  "tags": ["aether", "quantum", "blur", "uncertain", "probability", "abstract"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.65,
+    "density": 0.62,
+    "space": 0.78,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.42,
+      "ombre_interference": 0.65,
+      "ombre_memoryDecay": 7.0,
+      "ombre_memoryGrain": 120.0,
+      "ombre_memoryDrift": 0.75,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.58,
+      "ombre_subLevel": 0.25,
+      "ombre_filterCutoff": 4000.0,
+      "ombre_filterReso": 0.38,
+      "ombre_attack": 0.12,
+      "ombre_decay": 0.8,
+      "ombre_sustain": 0.68,
+      "ombre_release": 3.0,
+      "ombre_level": 0.68,
+      "ombre_velCutoffScale": 0.38,
+      "ombre_lfo1Rate": 0.95,
+      "ombre_lfo1Depth": 0.7,
+      "ombre_lfo2Rate": 0.58,
+      "ombre_lfo2Depth": 0.65,
+      "ombre_macroCharacter": 0.62,
+      "ombre_macroMovement": 0.65,
+      "ombre_macroCoupling": 0.5,
+      "ombre_macroSpace": 0.8
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

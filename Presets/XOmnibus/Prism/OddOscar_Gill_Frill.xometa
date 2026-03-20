@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Gill Frill",
+  "mood": "Prism",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Spectral frill display — high bloom and resonance create prismatic overtone fans.",
+  "tags": ["gill", "frill", "prism", "display"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.52, "movement": 0.5, "density": 0.62, "space": 0.58, "aggression": 0.2},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.65,
+      "morph_bloom": 0.82,
+      "morph_detune": 0.2,
+      "morph_drift": 0.38,
+      "morph_filterCutoff": 8000.0,
+      "morph_filterReso": 0.72,
+      "morph_filterEnvDepth": 0.58,
+      "morph_sub": 0.25,
+      "morph_decay": 1.0,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_glide": 0.18,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 6,
+      "morph_level": 0.72,
+      "morph_macroBloom": 0.82,
+      "morph_macroDepth": 0.62,
+      "morph_macroDrift": 0.38,
+      "morph_macroSpace": 0.58
+    }
+  },
+  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.58},
+  "coupling": {"pairs": []}
+}

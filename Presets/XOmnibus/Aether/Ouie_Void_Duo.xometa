@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Void Duo",
+  "mood": "Aether",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Two voices barely present in vast reverb void, soft hammer almost inaudible.",
+  "tags": ["aether", "void", "sparse", "distant"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.95,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.5,
+      "ouie_ampDec": 1.5,
+      "ouie_ampSus": 0.35,
+      "ouie_ampRel": 4.0,
+      "ouie_filterACutoff": 1800,
+      "ouie_filterARes": 0.12,
+      "ouie_filterBCutoff": 2200,
+      "ouie_filterBRes": 0.1,
+      "ouie_hammerDepth": 0.15,
+      "ouie_hammerPos": 0.5,
+      "ouie_lfo1Rate": 0.05,
+      "ouie_lfo1Depth": 0.06,
+      "ouie_lfo1Target": 2,
+      "ouie_lfo2Rate": 0.03,
+      "ouie_lfo2Depth": 0.05,
+      "ouie_portaAuto": 0.5,
+      "ouie_macroHammer": 0.15,
+      "ouie_macroCartilage": 0.2,
+      "ouie_macroAmpullae": 0.35,
+      "ouie_macroCurrent": 0.95
+    }
+  },
+  "macros": {
+    "HAMMER": 0.15,
+    "CARTILAGE": 0.2,
+    "AMPULLAE": 0.35,
+    "CURRENT": 0.95
+  },
+  "coupling": {"pairs": []}
+}

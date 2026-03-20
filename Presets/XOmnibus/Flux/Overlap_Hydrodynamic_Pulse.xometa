@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hydrodynamic Pulse",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Kuramoto coupling tuned to hydrodynamic timescales \u2014 the six voices entrain like vortex rings in a fluid, with coupling mediated by pressure waves rather than rigid locking. Fluid synchrony.",
+  "tags": [
+    "hydrodynamic",
+    "vortex",
+    "figure-eight",
+    "coupling",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.78,
+    "density": 0.68,
+    "space": 0.78,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.62,
+      "olap_diffusion": 0.7,
+      "olap_spread": 0.82,
+      "olap_decay": 6.5,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.11,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

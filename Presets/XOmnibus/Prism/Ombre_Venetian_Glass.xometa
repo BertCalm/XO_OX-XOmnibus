@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Venetian Glass",
+  "mood": "Prism",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Ornate and fragile. High resonance filter on mostly-Opsis content, minimal memory. The resonance gives it color — each velocity a different tint in the glass.",
+  "tags": ["prism", "glass", "ornate", "fragile", "resonant", "venetian"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.38,
+    "density": 0.4,
+    "space": 0.58,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.78,
+      "ombre_interference": 0.18,
+      "ombre_memoryDecay": 2.0,
+      "ombre_memoryGrain": 30.0,
+      "ombre_memoryDrift": 0.3,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.8,
+      "ombre_subLevel": 0.05,
+      "ombre_filterCutoff": 7500.0,
+      "ombre_filterReso": 0.78,
+      "ombre_attack": 0.005,
+      "ombre_decay": 0.2,
+      "ombre_sustain": 0.55,
+      "ombre_release": 0.8,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.7,
+      "ombre_lfo1Rate": 1.2,
+      "ombre_lfo1Depth": 0.3,
+      "ombre_lfo2Rate": 0.7,
+      "ombre_lfo2Depth": 0.55,
+      "ombre_macroCharacter": 0.15,
+      "ombre_macroMovement": 0.38,
+      "ombre_macroCoupling": 0.28,
+      "ombre_macroSpace": 0.55
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

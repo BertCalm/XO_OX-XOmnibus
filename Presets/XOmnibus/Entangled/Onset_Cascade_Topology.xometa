@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Cascade Topology",
+  "mood": "Entangled",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "XVC cascading from kick to snare to hat to perc to tom.",
+  "tags": [
+    "cascade",
+    "topology",
+    "xvc",
+    "chain",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.42,
+    "movement": 0.52,
+    "density": 0.56,
+    "space": 0.28,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.48,
+      "perc_macro_punch": 0.58,
+      "perc_macro_space": 0.28,
+      "perc_macro_mutate": 0.38,
+      "perc_drive": 0.42,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.55,
+      "perc_char_grit": 0.32,
+      "perc_char_warmth": 0.42,
+      "perc_fx_reverb_size": 0.28,
+      "perc_fx_reverb_decay": 0.4,
+      "perc_fx_reverb_mix": 0.22,
+      "perc_fx_delay_time": 0.25,
+      "perc_fx_delay_feedback": 0.15,
+      "perc_fx_delay_mix": 0.08,
+      "perc_fx_lofi_bits": 14,
+      "perc_fx_lofi_mix": 0.05,
+      "perc_xvc_global_amount": 0.88,
+      "perc_xvc_kick_to_snare_filter": 0.78,
+      "perc_xvc_kick_to_tom_pitch": 0.68,
+      "perc_xvc_snare_to_hat_decay": 0.58,
+      "perc_xvc_snare_to_perc_blend": 0.48,
+      "perc_xvc_hat_choke": 0.38
+    }
+  },
+  "macros": {
+    "MACHINE": 0.48,
+    "PUNCH": 0.58,
+    "SPACE": 0.28,
+    "MUTATE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

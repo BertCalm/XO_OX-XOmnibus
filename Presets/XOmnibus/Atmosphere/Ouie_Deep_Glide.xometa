@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Deep Glide",
+  "mood": "Atmosphere",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "High portamento with deep low-pass filters, slow gliding in darkness.",
+  "tags": ["atmosphere", "deep", "gliding", "slow"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.22,
+      "ouie_ampDec": 0.85,
+      "ouie_ampSus": 0.58,
+      "ouie_ampRel": 2.2,
+      "ouie_filterACutoff": 600,
+      "ouie_filterARes": 0.2,
+      "ouie_filterBCutoff": 750,
+      "ouie_filterBRes": 0.18,
+      "ouie_hammerDepth": 0.55,
+      "ouie_hammerPos": 0.3,
+      "ouie_lfo1Rate": 0.1,
+      "ouie_lfo1Depth": 0.1,
+      "ouie_lfo1Target": 2,
+      "ouie_lfo2Rate": 0.07,
+      "ouie_lfo2Depth": 0.08,
+      "ouie_portaAuto": 0.75,
+      "ouie_macroHammer": 0.55,
+      "ouie_macroCartilage": 0.3,
+      "ouie_macroAmpullae": 0.4,
+      "ouie_macroCurrent": 0.82
+    }
+  },
+  "macros": {
+    "HAMMER": 0.55,
+    "CARTILAGE": 0.3,
+    "AMPULLAE": 0.4,
+    "CURRENT": 0.82
+  },
+  "coupling": {"pairs": []}
+}

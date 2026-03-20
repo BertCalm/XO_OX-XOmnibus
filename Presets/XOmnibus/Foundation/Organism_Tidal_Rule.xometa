@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Rule",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "cellular",
+    "rhythmic",
+    "pattern",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.4,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 8192,
+      "org_stepRate": 5.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3400.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.6,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.68,
+      "org_ampRel": 0.65,
+      "org_lfo1Rate": 0.8,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.5,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.18,
+      "org_macroRule": 0.43,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

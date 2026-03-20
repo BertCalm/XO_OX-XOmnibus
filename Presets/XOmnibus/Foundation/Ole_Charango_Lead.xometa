@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Charango Lead",
+  "mood": "Foundation",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Aunt 1 charango leading with bright tone and fast strum, the main melodic voice.",
+  "tags": ["latin", "charango", "bright", "lead", "strum"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.6, "movement": 0.55, "density": 0.35, "space": 0.52, "aggression": 0.3},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.4,
+      "ole_aunt1Level": 0.9,
+      "ole_aunt1Brightness": 0.75,
+      "ole_aunt1StrumRate": 5.0,
+      "ole_aunt2Level": 0.3,
+      "ole_aunt2GourdSize": 0.4,
+      "ole_aunt2CoinPress": 0.35,
+      "ole_aunt3Level": 0.3,
+      "ole_aunt3Brightness": 0.4,
+      "ole_aunt3Tremolo": 0.2,
+      "ole_husbandOudLevel": 0.2,
+      "ole_husbandBouzLevel": 0.15,
+      "ole_husbandPinLevel": 0.15,
+      "ole_damping": 0.35,
+      "ole_sympatheticAmt": 0.35,
+      "ole_driftRate": 0.6,
+      "ole_driftDepth": 0.12,
+      "ole_macroDrama": 0.35,
+      "ole_macroFuego": 0.5,
+      "ole_macroIsla": 0.2,
+      "ole_macroSides": 0.25
+    }
+  },
+  "macros": {"DRAMA": 0.35, "FUEGO": 0.5, "ISLA": 0.2, "SIDES": 0.25},
+  "coupling": {"pairs": []}
+}

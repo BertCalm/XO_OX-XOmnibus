@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Snap Five",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Five-voice unison snap — a balanced school spread across a moderate detune range.",
+  "tags": ["five", "unison", "balanced", "snap"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.79, "warmth": 0.27, "movement": 0.48, "density": 0.6, "space": 0.44, "aggression": 0.2},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.73, "snap_decay": 0.27, "snap_detune": 0.2, "snap_filterCutoff": 10500.0, "snap_filterReso": 0.33, "snap_filterEnvDepth": 0.48, "snap_unison": 5, "snap_sweepDirection": 0, "snap_pitchLock": 0.84, "snap_polyphony": 7, "snap_level": 0.74, "snap_macroDart": 0.48, "snap_macroDepth": 0.47, "snap_macroSchool": 0.68, "snap_macroSurface": 0.43}
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.44},
+  "coupling": {"pairs": []}
+}

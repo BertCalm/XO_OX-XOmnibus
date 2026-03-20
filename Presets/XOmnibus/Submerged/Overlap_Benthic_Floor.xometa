@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Floor",
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The benthic floor \u2014 the unknot topology as seafloor. Enormous space above, infinite depth below. Low feedback because the floor absorbs. But the distances are so vast the tail still lasts forever.",
+  "tags": [
+    "benthic",
+    "seafloor",
+    "unknot",
+    "vast",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.75,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.82,
+      "olap_spread": 0.85,
+      "olap_decay": 18.0,
+      "olap_modDepth": 0.1,
+      "olap_modRate": 0.03,
+      "olap_damping": 0.75,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

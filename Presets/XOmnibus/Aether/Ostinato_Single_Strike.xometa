@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Single Strike",
+  "mood": "Aether",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "acoustic",
+    "soft",
+    "percussion"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 0,
+      "osti_filterCutoff": 900,
+      "osti_filterRes": 0.45,
+      "osti_ampAtk": 0.004,
+      "osti_ampDec": 0.7,
+      "osti_ampSus": 0.1,
+      "osti_ampRel": 0.62,
+      "osti_velCutoffAmt": 0.35,
+      "osti_reverbMix": 0.5,
+      "osti_lfo1Rate": 0.15,
+      "osti_lfo1Depth": 0.12,
+      "osti_lfo2Rate": 0.4,
+      "osti_lfo2Depth": 0.08,
+      "osti_patternStep0": true,
+      "osti_patternStep1": false,
+      "osti_patternStep2": false,
+      "osti_patternStep3": false,
+      "osti_patternStep4": false,
+      "osti_patternStep5": false,
+      "osti_patternStep6": false,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.3,
+      "osti_macroFire": 0.25,
+      "osti_macroCircle": 0.15,
+      "osti_macroSpace": 0.55
+    }
+  },
+  "macros": {
+    "GATHER": 0.3,
+    "FIRE": 0.25,
+    "CIRCLE": 0.15,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Drift",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "abyssal",
+    "sub",
+    "drone",
+    "dark"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.76,
+    "movement": 0.1,
+    "density": 0.79,
+    "space": 1.0,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 2,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.06,
+      "deep_pressure": 0.68,
+      "deep_bodyType": 3,
+      "deep_bodySize": 1.0,
+      "deep_bodyDamp": 0.97,
+      "deep_flashRate": 0.06,
+      "deep_flashBright": 0.08,
+      "deep_creatureSpeed": 0.1,
+      "deep_creatureDepth": 0.08,
+      "deep_darkness": 0.98,
+      "deep_filterReso": 0.06,
+      "deep_reverbMix": 0.93,
+      "deep_reverbSize": 1.0,
+      "deep_delayMix": 0.04,
+      "deep_rumble": 0.68,
+      "deep_attack": 1.8,
+      "deep_decay": 4.0,
+      "deep_sustain": 0.86,
+      "deep_release": 8.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.68,
+    "CREATURE": 0.1,
+    "WRECK": 0.08,
+    "ABYSS": 0.96
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

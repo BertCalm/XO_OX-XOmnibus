@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Strata Color",
+  "mood": "Prism",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Geological strata revealing color — layered brightness, filtered spectrum, warm prism.",
+  "tags": ["strata", "color", "layered", "geological"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.68, "warmth": 0.52, "movement": 0.38, "density": 0.55, "space": 0.52, "aggression": 0.28},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.55,
+      "obsidian_character": 0.68,
+      "obsidian_brightness": 0.68,
+      "obsidian_warmth": 0.52,
+      "obsidian_attack": 0.02,
+      "obsidian_decay": 0.48,
+      "obsidian_sustain": 0.65,
+      "obsidian_release": 0.72,
+      "obsidian_filterCutoff": 6800,
+      "obsidian_filterReso": 0.48,
+      "obsidian_filterEnvAmt": 0.42,
+      "obsidian_lfoRate": 2.2,
+      "obsidian_lfoDepth": 0.28,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.52,
+      "obsidian_reverbMix": 0.28,
+      "obsidian_stereoWidth": 0.72,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 5,
+      "obsidian_level": 0.75
+    }
+  },
+  "macros": {"CHARACTER": 0.68, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.52},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Trench Mist",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "mist",
+    "atmosphere",
+    "deep"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.65,
+    "movement": 0.28,
+    "density": 0.72,
+    "space": 0.88,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 1,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.32,
+      "deep_pressure": 0.45,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.88,
+      "deep_bodyDamp": 0.75,
+      "deep_flashRate": 0.22,
+      "deep_flashBright": 0.35,
+      "deep_creatureSpeed": 0.32,
+      "deep_creatureDepth": 0.28,
+      "deep_darkness": 0.72,
+      "deep_filterReso": 0.35,
+      "deep_reverbMix": 0.78,
+      "deep_reverbSize": 0.92,
+      "deep_delayMix": 0.25,
+      "deep_rumble": 0.52,
+      "deep_attack": 0.8,
+      "deep_decay": 2.2,
+      "deep_sustain": 0.62,
+      "deep_release": 5.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.32,
+    "WRECK": 0.28,
+    "ABYSS": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Phosphene",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bioluminescent phosphene snap — ultra-bright single hit that glows in the deep.",
+  "tags": ["phosphene", "bioluminescent", "bright", "glow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.97, "warmth": 0.1, "movement": 0.55, "density": 0.18, "space": 0.5, "aggression": 0.28},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.88,
+      "snap_decay": 0.25,
+      "snap_detune": 0.02,
+      "snap_filterCutoff": 17000.0,
+      "snap_filterReso": 0.72,
+      "snap_filterEnvDepth": 0.88,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.97,
+      "snap_polyphony": 4,
+      "snap_level": 0.78,
+      "snap_macroDart": 0.58,
+      "snap_macroDepth": 0.22,
+      "snap_macroSchool": 0.05,
+      "snap_macroSurface": 0.88
+    }
+  },
+  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

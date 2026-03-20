@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Sky Bridge",
+  "mood": "Entangled",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "coupled",
+    "spacious",
+    "shimmer"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.45,
+      "sky_sawLevel": 0.88,
+      "sky_filterFc": 10000.0,
+      "sky_filterRes": 0.16,
+      "sky_ampAttack": 0.18,
+      "sky_ampDecay": 0.35,
+      "sky_ampSustain": 0.84,
+      "sky_ampRelease": 2.2,
+      "sky_shimmerMix": 0.62,
+      "sky_shimmerDecay": 3.2,
+      "sky_shimmerOct": 0.92,
+      "sky_shimmerBright": 0.78,
+      "sky_lfoRate": 0.14,
+      "sky_lfoDepth": 10.0,
+      "sky_lfoShape": 0.38,
+      "sky_chorusMix": 0.4,
+      "sky_chorusRate": 0.38,
+      "sky_chorusDepth": 11.5,
+      "sky_reverbMix": 0.55,
+      "sky_reverbSize": 0.78,
+      "sky_outputGain": 0.8,
+      "sky_couplingAmt": 0.58,
+      "sky_macroCharacter": 0.65,
+      "sky_macroMovement": 0.52,
+      "sky_macroCoupling": 0.58,
+      "sky_macroSpace": 0.72,
+      "sky_shimmerSpread": 0.68,
+      "sky_shimmerPhase": 0.3,
+      "sky_velSensitivity": 0.82,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.58,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

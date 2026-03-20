@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Saw Colony",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "generative",
+    "cellular",
+    "rhythmic",
+    "living"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 1024,
+      "org_stepRate": 6.0,
+      "org_scope": 3,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.25,
+      "org_filterCutoff": 4000.0,
+      "org_filterRes": 0.45,
+      "org_velCutoff": 0.65,
+      "org_ampAtk": 0.008,
+      "org_ampDec": 0.25,
+      "org_ampSus": 0.65,
+      "org_ampRel": 0.5,
+      "org_lfo1Rate": 1.0,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.6,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.15,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

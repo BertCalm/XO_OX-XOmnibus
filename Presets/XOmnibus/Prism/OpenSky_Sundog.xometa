@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sundog",
+  "mood": "Prism",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Parhelia — twin bright spots flanking the sun, like harmonic mirrors singing back its light.",
+  "tags": ["prism", "harmonic", "twin", "light"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.62,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 0.1,
+      "sky_ampDecay": 0.55,
+      "sky_ampSustain": 0.82,
+      "sky_ampRelease": 1.3,
+      "sky_filterFc": 14000,
+      "sky_filterRes": 0.28,
+      "sky_glide": 0.04,
+      "sky_lfoRate": 0.5,
+      "sky_lfoDepth": 0.28,
+      "sky_lfoShape": 3,
+      "sky_chorusRate": 0.6,
+      "sky_chorusDepth": 0.45,
+      "sky_chorusMix": 0.55,
+      "sky_reverbMix": 0.72,
+      "sky_outputGain": 0.82,
+      "sky_couplingAmt": 0.0,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 0.48,
+      "sky_velSensitivity": 0.62,
+      "sky_macroCharacter": 0.78,
+      "sky_macroMovement": 0.3,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.85
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
+  "coupling": {"pairs": []}
+}

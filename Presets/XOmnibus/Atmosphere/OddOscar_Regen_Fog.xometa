@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Regen Fog",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Regenerative fog atmosphere — the mist that surrounds new growth, warm and obscuring.",
+  "tags": ["regenerative", "fog", "growth", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.28, "warmth": 0.72, "movement": 0.48, "density": 0.5, "space": 0.68, "aggression": 0.06},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.52, "morph_bloom": 0.6, "morph_detune": 0.2, "morph_drift": 0.48, "morph_filterCutoff": 2200.0, "morph_filterReso": 0.32, "morph_filterEnvDepth": 0.22, "morph_sub": 0.45, "morph_decay": 2.5, "morph_sustain": 0.88, "morph_release": 4.5, "morph_glide": 0.18, "morph_voiceMode": 0, "morph_polyphony": 5, "morph_level": 0.64, "morph_macroBloom": 0.6, "morph_macroDepth": 0.45, "morph_macroDrift": 0.48, "morph_macroSpace": 0.68}
+  },
+  "macros": {"CHARACTER": 0.44, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.68},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Optic Sonar Flash",
+  "mood": "Entangled",
+  "engines": [
+    "Optic",
+    "Orca"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Optic's visual pulse triggering Orca echolocation rate — the phosphor green flash of the visual engine becoming the clock for Orca's acoustic ping rate. Light and sound synchronized.",
+  "tags": [
+    "entangled",
+    "optic",
+    "orca",
+    "pulse",
+    "synchronized"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.68,
+    "SPACE": 0.48
+  },
+  "couplingIntensity": "Medium",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.32,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.42
+  },
+  "parameters": {},
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OPTIC",
+        "engineB": "ORCA",
+        "type": "EnvToMorph",
+        "amount": 0.65
+      }
+    ]
+  }
+}

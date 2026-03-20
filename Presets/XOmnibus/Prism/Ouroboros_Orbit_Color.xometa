@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Orbit Color",
+  "mood": "Prism",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Color based on orbital position — each point on the attractor basin assigns a different spectral value.",
+  "tags": ["orbit", "color", "position", "basin", "prism"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.72, "warmth": 0.52, "movement": 0.55, "density": 0.6, "space": 0.62, "aggression": 0.32},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 1,
+    "ouro_rate": 0.48,
+    "ouro_chaosIndex": 0.48,
+    "ouro_leash": 0.52,
+    "ouro_theta": 0.15,
+    "ouro_phi": 0.85,
+    "ouro_damping": 0.32,
+    "ouro_injection": 0.52
+  }},
+  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.55, "COUPLING": 0.5, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

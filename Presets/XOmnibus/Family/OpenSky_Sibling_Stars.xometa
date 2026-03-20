@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Sibling Stars",
+  "mood": "Family",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Binary stars born from the same nebula, singing in resonant harmony across the sky.",
+  "tags": ["family", "harmonic", "stars", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.48,
+    "movement": 0.38,
+    "density": 0.35,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 0.08,
+      "sky_ampDecay": 0.6,
+      "sky_ampSustain": 0.8,
+      "sky_ampRelease": 1.5,
+      "sky_filterFc": 11000,
+      "sky_filterRes": 0.32,
+      "sky_glide": 0.12,
+      "sky_lfoRate": 0.7,
+      "sky_lfoDepth": 0.28,
+      "sky_lfoShape": 1,
+      "sky_chorusRate": 0.8,
+      "sky_chorusDepth": 0.45,
+      "sky_chorusMix": 0.55,
+      "sky_reverbMix": 0.75,
+      "sky_outputGain": 0.82,
+      "sky_couplingAmt": 0.6,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 0.45,
+      "sky_velSensitivity": 0.55,
+      "sky_macroCharacter": 0.7,
+      "sky_macroMovement": 0.38,
+      "sky_macroCoupling": 0.6,
+      "sky_macroSpace": 0.85
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.6,
+    "SPACE": 0.85
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Void Cell",
+  "mood": "Aether",
+  "engines": ["Organism"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Rule-0 empty state paradox — near silence punctuated by stochastic mutations.",
+  "tags": ["aether", "void", "minimal", "stochastic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.3,
+    "movement": 0.2,
+    "density": 0.15,
+    "space": 0.98,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organism": {
+      "org_oscWave": 0,
+      "org_rule": 0,
+      "org_mutate": 0.08,
+      "org_freeze": 0.85,
+      "org_scope": 0.25,
+      "org_filterCutoff": 2000,
+      "org_filterRes": 0.05,
+      "org_ampAtk": 0.8,
+      "org_ampDec": 2.5,
+      "org_ampSus": 0.2,
+      "org_ampRel": 6.0,
+      "org_lfo1Rate": 0.03,
+      "org_lfo1Depth": 0.03,
+      "org_lfo2Rate": 0.01,
+      "org_lfo2Depth": 0.02,
+      "org_reverbMix": 0.92,
+      "org_macroRule": 0.0,
+      "org_macroMutate": 0.08,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  },
+  "coupling": {"pairs": []}
+}

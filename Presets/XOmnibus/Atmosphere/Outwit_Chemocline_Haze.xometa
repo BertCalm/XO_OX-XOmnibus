@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Chemocline Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 90 at mid-chaos \u2014 a haze at the oxygen minimum zone. All arms muted and slow, blurring together into a single ambient plane.",
+  "tags": [
+    "atmosphere",
+    "haze",
+    "ambient",
+    "muted",
+    "blurred"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.48,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.78,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 90,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.6,
+      "owit_sync": 0.22,
+      "owit_feedbackAmt": 0.42,
+      "owit_chaos": 0.35,
+      "owit_density": 0.42,
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.55,
+      "owit_ampSustain": 0.68,
+      "owit_ampRelease": 2.5,
+      "owit_filterCutoff": 0.4,
+      "owit_filterRes": 0.22,
+      "owit_lfoRate": 0.06,
+      "owit_lfoDepth": 0.18,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

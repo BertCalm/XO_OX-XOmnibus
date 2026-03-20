@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Reunion Burst",
+  "mood": "Family",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Excited pulse burst on reunion. Multiple fast accents.",
+  "tags": [
+    "reunion",
+    "burst",
+    "excited",
+    "multiple",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.68,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 3.0,
+      "optic_pulseShape": 1,
+      "optic_pulseAccent": 0.88,
+      "optic_pulseSwing": 0.15,
+      "optic_pulseSubdiv": 3,
+      "optic_pulseEvolve": 0.3,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.72,
+      "optic_inputGain": 0.75,
+      "optic_modDepth": 0.72,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.82,
+      "optic_vizSpeed": 0.68,
+      "optic_vizFeedback": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Aquatic Stage NES",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Water World. Bubble Bobble's ocean. The NES underwater level — that remarkable thing the 2A03 accomplished with a slow triangle arpeggio and a pulse wave set to duty 25%, making you feel submerged in something both alien and peaceful. Chaos almost zero, space maximal.",
+  "tags": [
+    "nes",
+    "underwater",
+    "atmosphere",
+    "aquatic",
+    "2A03",
+    "peaceful",
+    "bubble",
+    "ambient"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.32,
+    "density": 0.35,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 0.1,
+      "ow_macro_chaos": 0.04,
+      "ow_macro_couple": 0.22,
+      "ow_macro_space": 0.85,
+      "ow_outputLevel": 0.75,
+      "ow_couplingLevel": 0.18,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 0.1,
+    "CHAOS": 0.04,
+    "COUPLE": 0.22,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

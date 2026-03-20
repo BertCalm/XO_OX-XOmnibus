@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Pixel Rain",
+  "mood": "Prism",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense NES noise bursts overlaid with Genesis FM bells — pixels cascading from screen to floor.",
+  "tags": [
+    "pixel",
+    "rain",
+    "prism",
+    "dense",
+    "chip",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.72,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.35,
+      "ow_macro_chaos": 0.35,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.5,
+      "ow_outputLevel": 0.78,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

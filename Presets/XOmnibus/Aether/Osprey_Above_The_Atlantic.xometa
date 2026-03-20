@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Above the Atlantic",
+  "mood": "Aether",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Osprey at cruising altitude — ocean miles below, aether beginning at the wing-tips.",
+  "tags": ["aether", "altitude", "soaring", "atlantic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.42, "movement": 0.4, "density": 0.3, "space": 0.9, "aggression": 0.1},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.25,
+      "osprey_foam": 0.2,
+      "osprey_fog": 0.5,
+      "osprey_hull": 0.25,
+      "osprey_depth": 0.2,
+      "osprey_coherence": 0.65,
+      "osprey_filterTilt": 0.6,
+      "osprey_filterEnvDepth": 0.0,
+      "osprey_harborVerb": 0.8,
+      "osprey_creatureRate": 0.1,
+      "osprey_creatureDepth": 0.1,
+      "osprey_glide": 0.65,
+      "osprey_ampAttack": 1.3,
+      "osprey_ampDecay": 0.65,
+      "osprey_ampSustain": 0.52,
+      "osprey_ampRelease": 4.5,
+      "osprey_macroCharacter": 0.38,
+      "osprey_macroMovement": 0.4,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.9
+    }
+  },
+  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.4, "COUPLING": 0.0, "SPACE": 0.9},
+  "coupling": {"pairs": []}
+}

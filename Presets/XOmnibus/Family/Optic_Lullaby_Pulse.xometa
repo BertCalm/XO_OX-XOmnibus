@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Lullaby Pulse",
+  "mood": "Family",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Very slow gentle pulse. Calm, bedtime energy.",
+  "tags": [
+    "lullaby",
+    "slow",
+    "gentle",
+    "calm",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.38,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.3,
+      "optic_pulseShape": 3,
+      "optic_pulseAccent": 0.5,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.04,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.45,
+      "optic_inputGain": 0.62,
+      "optic_modDepth": 0.38,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.65,
+      "optic_vizSpeed": 0.28,
+      "optic_vizFeedback": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

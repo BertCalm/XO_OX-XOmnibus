@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Visual Driver",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Moderate modulation driving connected engines visually.",
+  "tags": [
+    "driver",
+    "moderate",
+    "modulation",
+    "visual",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.5,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.6,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.1,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.65,
+      "optic_inputGain": 0.7,
+      "optic_modDepth": 0.65,
+      "optic_modMixPulse": 0.7,
+      "optic_modMixSpec": 0.3,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.75,
+      "optic_vizSpeed": 0.5,
+      "optic_vizFeedback": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

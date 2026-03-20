@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Drift Flux",
+  "mood": "Flux",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure drift mode at high rate — formless aquatic motion with no fixed state.",
+  "tags": ["drift", "flux", "formless", "motion"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.88, "density": 0.58, "space": 0.55, "aggression": 0.22},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.65,
+      "morph_bloom": 0.55,
+      "morph_detune": 0.35,
+      "morph_drift": 0.92,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.42,
+      "morph_filterEnvDepth": 0.58,
+      "morph_sub": 0.35,
+      "morph_decay": 0.8,
+      "morph_sustain": 0.72,
+      "morph_release": 1.5,
+      "morph_glide": 0.2,
+      "morph_voiceMode": 0,
+      "morph_polyphony": 4,
+      "morph_level": 0.72,
+      "morph_macroBloom": 0.55,
+      "morph_macroDepth": 0.58,
+      "morph_macroDrift": 0.92,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []}
+}

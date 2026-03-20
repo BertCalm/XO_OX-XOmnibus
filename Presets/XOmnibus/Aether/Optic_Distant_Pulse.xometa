@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Distant Pulse",
+  "mood": "Aether",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pulse barely detectable from infinite distance.",
+  "tags": [
+    "distant",
+    "barely",
+    "infinite",
+    "pulse",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.28,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.95,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.08,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.22,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.06,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.3,
+      "optic_inputGain": 0.45,
+      "optic_modDepth": 0.28,
+      "optic_modMixPulse": 0.85,
+      "optic_modMixSpec": 0.15,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.5,
+      "optic_vizSpeed": 0.15,
+      "optic_vizFeedback": 0.42
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

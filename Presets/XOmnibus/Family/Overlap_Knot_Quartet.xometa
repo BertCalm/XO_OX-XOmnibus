@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot Quartet",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Four of the six voices playing ensemble \u2014 the remaining two provide harmonic support. A torus topology configures the four-voice structure with the support pair at opposite points on the donut surface.",
+  "tags": [
+    "quartet",
+    "torus",
+    "ensemble",
+    "four-voice",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.78,
+    "aggression": 0.09
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.55,
+      "olap_diffusion": 0.7,
+      "olap_spread": 0.82,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.18,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

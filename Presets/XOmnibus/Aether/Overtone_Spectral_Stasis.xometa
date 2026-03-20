@@ -1,0 +1,63 @@
+{
+  "name": "Spectral Stasis",
+  "schema_version": 1,
+  "version": "1.0",
+  "mood": "Aether",
+  "macros": {
+    "CHARACTER": 0.31,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.0,
+    "SPACE": 0.9
+  },
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2,
+      "over_depth": 6.5,
+      "over_partial0": 0.6,
+      "over_partial1": 0.49,
+      "over_partial2": 0.41,
+      "over_partial3": 0.35,
+      "over_partial4": 0.28,
+      "over_partial5": 0.23,
+      "over_partial6": 0.18,
+      "over_partial7": 0.15,
+      "over_velBright": 0.37,
+      "over_filterCutoff": 10200,
+      "over_filterRes": 0.37,
+      "over_ampAtk": 2.3,
+      "over_ampDec": 3.8,
+      "over_ampSus": 0.46,
+      "over_ampRel": 8.0,
+      "over_lfo1Rate": 0.11,
+      "over_lfo1Depth": 0.41,
+      "over_lfo2Rate": 0.08,
+      "over_lfo2Depth": 0.31,
+      "over_resoMix": 0.55,
+      "over_macroDepth": 0.31,
+      "over_macroColor": 0.58,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.9
+    }
+  },
+  "sonicDNA": {
+    "brightness": 0.53,
+    "warmth": 0.57,
+    "movement": 0.49,
+    "density": 0.72,
+    "space": 0.94,
+    "aggression": 0.04
+  },
+  "tags": [
+    "spectral",
+    "resonant",
+    "airy",
+    "harmonic"
+  ],
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "engines": [
+    "Overtone"
+  ]
+}

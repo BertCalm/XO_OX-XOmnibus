@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Morning Haze",
+  "mood": "Foundation",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "warm",
+    "airy",
+    "meditative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.4,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.35,
+      "sky_sawLevel": 0.85,
+      "sky_filterFc": 7000.0,
+      "sky_filterRes": 0.0,
+      "sky_ampAttack": 0.8,
+      "sky_ampDecay": 0.5,
+      "sky_ampSustain": 0.7,
+      "sky_ampRelease": 1.8,
+      "sky_shimmerMix": 0.42,
+      "sky_shimmerDecay": 3.2,
+      "sky_shimmerOct": 0.7,
+      "sky_shimmerBright": 0.55,
+      "sky_lfoRate": 0.04,
+      "sky_lfoDepth": 6.0,
+      "sky_lfoShape": 0.3,
+      "sky_chorusMix": 0.28,
+      "sky_chorusRate": 0.15,
+      "sky_chorusDepth": 7.0,
+      "sky_reverbMix": 0.48,
+      "sky_reverbSize": 0.68,
+      "sky_outputGain": 0.76,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.45,
+      "sky_macroMovement": 0.25,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.6,
+      "sky_shimmerSpread": 0.45,
+      "sky_shimmerPhase": 0.0,
+      "sky_velSensitivity": 0.7,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Trench Cosmos",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "cosmic",
+    "deep",
+    "space"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.14,
+    "warmth": 0.6,
+    "movement": 0.18,
+    "density": 0.7,
+    "space": 0.95,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.35,
+      "deep_pressure": 0.48,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.9,
+      "deep_bodyDamp": 0.58,
+      "deep_flashRate": 0.15,
+      "deep_flashBright": 0.28,
+      "deep_creatureSpeed": 0.22,
+      "deep_creatureDepth": 0.2,
+      "deep_darkness": 0.85,
+      "deep_filterReso": 0.32,
+      "deep_reverbMix": 0.85,
+      "deep_reverbSize": 0.98,
+      "deep_delayMix": 0.28,
+      "deep_rumble": 0.42,
+      "deep_attack": 1.2,
+      "deep_decay": 1.8,
+      "deep_sustain": 0.72,
+      "deep_release": 6.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.48,
+    "CREATURE": 0.32,
+    "WRECK": 0.15,
+    "ABYSS": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

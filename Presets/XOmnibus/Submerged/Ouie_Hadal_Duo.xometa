@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Duo",
+  "mood": "Submerged",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Both voices at maximum depth pressure, ultra-low filters in hadal zone.",
+  "tags": ["submerged", "hadal", "deep", "pressure"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.72,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.25,
+      "ouie_ampDec": 0.9,
+      "ouie_ampSus": 0.65,
+      "ouie_ampRel": 2.0,
+      "ouie_filterACutoff": 200,
+      "ouie_filterARes": 0.25,
+      "ouie_filterBCutoff": 280,
+      "ouie_filterBRes": 0.22,
+      "ouie_hammerDepth": 0.7,
+      "ouie_hammerPos": 0.2,
+      "ouie_lfo1Rate": 0.06,
+      "ouie_lfo1Depth": 0.08,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.04,
+      "ouie_lfo2Depth": 0.06,
+      "ouie_portaAuto": 0.3,
+      "ouie_macroHammer": 0.7,
+      "ouie_macroCartilage": 0.2,
+      "ouie_macroAmpullae": 0.45,
+      "ouie_macroCurrent": 0.88
+    }
+  },
+  "macros": {
+    "HAMMER": 0.7,
+    "CARTILAGE": 0.2,
+    "AMPULLAE": 0.45,
+    "CURRENT": 0.88
+  },
+  "coupling": {"pairs": []}
+}

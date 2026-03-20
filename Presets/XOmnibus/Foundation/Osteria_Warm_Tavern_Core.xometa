@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Warm Tavern Core",
+  "mood": "Foundation",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The heart of the tavern. Warm voices, smoke, and memory.",
+  "tags": [
+    "tavern",
+    "warm",
+    "core",
+    "smoke",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.2,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.5,
+      "osteria_patina": 0.5,
+      "osteria_murmur": 0.35,
+      "osteria_oceanBleed": 0.08,
+      "osteria_blendMode": 1,
+      "osteria_bassLevel": 0.7,
+      "osteria_melLevel": 0.6,
+      "osteria_harmLevel": 0.65,
+      "osteria_rhythmLevel": 0.6,
+      "osteria_qBassShore": 0.25,
+      "osteria_qMelShore": 0.15,
+      "osteria_qHarmShore": 0.2,
+      "osteria_qRhythmShore": 0.15,
+      "osteria_qElastic": 0.35,
+      "osteria_qMemory": 0.45,
+      "osteria_qStretch": 0.3,
+      "osteria_qSympathy": 0.5,
+      "osteria_attack": 0.02,
+      "osteria_decay": 0.25,
+      "osteria_sustain": 0.65,
+      "osteria_release": 0.85,
+      "osteria_chorus": 0.2,
+      "osteria_hall": 0.28,
+      "osteria_ensWidth": 0.6,
+      "osteria_tape": 0.08,
+      "osteria_sessionDelay": 0.15,
+      "osteria_filterEnvDepth": 0.35,
+      "osteria_warmth": 0.65,
+      "osteria_smoke": 0.25,
+      "osteria_tavernMix": 0.7,
+      "osteria_tavernShore": 0.35,
+      "osteria_macroCharacter": 0.35,
+      "osteria_macroMovement": 0.3,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

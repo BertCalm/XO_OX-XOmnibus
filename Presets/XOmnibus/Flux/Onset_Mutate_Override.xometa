@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Mutate Override",
+  "mood": "Flux",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Full mutation override. MUTATE macro pushed to maximum.",
+  "tags": [
+    "mutate",
+    "override",
+    "maximum",
+    "extreme",
+    "flux"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.38,
+    "movement": 0.62,
+    "density": 0.62,
+    "space": 0.28,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.5,
+      "perc_macro_punch": 0.55,
+      "perc_macro_space": 0.28,
+      "perc_macro_mutate": 0.95,
+      "perc_drive": 0.48,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.58,
+      "perc_char_grit": 0.42,
+      "perc_char_warmth": 0.38,
+      "perc_fx_reverb_size": 0.28,
+      "perc_fx_reverb_decay": 0.38,
+      "perc_fx_reverb_mix": 0.2,
+      "perc_fx_delay_time": 0.28,
+      "perc_fx_delay_feedback": 0.2,
+      "perc_fx_delay_mix": 0.1,
+      "perc_fx_lofi_bits": 12,
+      "perc_fx_lofi_mix": 0.12,
+      "perc_xvc_global_amount": 0.3,
+      "perc_xvc_kick_to_snare_filter": 0.38,
+      "perc_xvc_kick_to_tom_pitch": 0.18,
+      "perc_xvc_snare_to_hat_decay": 0.15,
+      "perc_xvc_snare_to_perc_blend": 0.28,
+      "perc_xvc_hat_choke": 0.45
+    }
+  },
+  "macros": {
+    "MACHINE": 0.5,
+    "PUNCH": 0.55,
+    "SPACE": 0.28,
+    "MUTATE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

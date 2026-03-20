@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "name": "Empyrean",
+  "mood": "Aether",
+  "engines": ["OpenSky"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The highest heaven, the sphere of pure fire and light — infinite shimmer at the edge of existence.",
+  "tags": ["aether", "divine", "infinite", "shimmer"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.15,
+    "space": 1.0,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_ampAttack": 1.5,
+      "sky_ampDecay": 2.0,
+      "sky_ampSustain": 0.5,
+      "sky_ampRelease": 4.0,
+      "sky_filterFc": 18000,
+      "sky_filterRes": 0.1,
+      "sky_glide": 0.2,
+      "sky_lfoRate": 0.05,
+      "sky_lfoDepth": 0.4,
+      "sky_lfoShape": 0,
+      "sky_chorusRate": 0.1,
+      "sky_chorusDepth": 0.6,
+      "sky_chorusMix": 0.7,
+      "sky_reverbMix": 0.95,
+      "sky_outputGain": 0.55,
+      "sky_couplingAmt": 0.0,
+      "sky_shimmerOct": 2,
+      "sky_shimmerMix": 0.85,
+      "sky_velSensitivity": 0.25,
+      "sky_macroCharacter": 0.3,
+      "sky_macroMovement": 0.55,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 1.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 1.0
+  },
+  "coupling": {"pairs": []}
+}

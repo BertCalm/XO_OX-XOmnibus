@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Frozen State",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "organic",
+    "living",
+    "cellular",
+    "pattern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.62,
+    "movement": 0.1,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 21845,
+      "org_stepRate": 4.0,
+      "org_scope": 8,
+      "org_mutate": 0.0,
+      "org_freeze": 1,
+      "org_oscWave": 2,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.02,
+      "org_ampDec": 0.5,
+      "org_ampSus": 0.85,
+      "org_ampRel": 1.5,
+      "org_lfo1Rate": 0.3,
+      "org_lfo1Depth": 0.12,
+      "org_lfo2Rate": 0.2,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

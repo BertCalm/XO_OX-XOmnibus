@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Trefoil Ground",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A trefoil knot in its most basic form \u2014 three delay lines crossing once each, creating a stable resonant triangle. The topology is clear enough to hear individual reflections, warm enough to sit under anything.",
+  "tags": [
+    "trefoil",
+    "warm",
+    "foundation",
+    "clean",
+    "utility"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.52,
+      "olap_diffusion": 0.55,
+      "olap_spread": 0.75,
+      "olap_decay": 3.0,
+      "olap_modDepth": 0.08,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.45,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

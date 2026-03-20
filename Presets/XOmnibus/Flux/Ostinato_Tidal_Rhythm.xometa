@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Rhythm",
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "evolving",
+    "groove",
+    "soft"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 9,
+      "osti_filterCutoff": 600,
+      "osti_filterRes": 0.3,
+      "osti_ampAtk": 0.007,
+      "osti_ampDec": 1.4,
+      "osti_ampSus": 0.12,
+      "osti_ampRel": 1.2,
+      "osti_velCutoffAmt": 0.4,
+      "osti_reverbMix": 0.45,
+      "osti_lfo1Rate": 0.25,
+      "osti_lfo1Depth": 0.25,
+      "osti_lfo2Rate": 0.6,
+      "osti_lfo2Depth": 0.2,
+      "osti_patternStep0": true,
+      "osti_patternStep1": false,
+      "osti_patternStep2": true,
+      "osti_patternStep3": true,
+      "osti_patternStep4": true,
+      "osti_patternStep5": false,
+      "osti_patternStep6": true,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.3,
+      "osti_macroFire": 0.5,
+      "osti_macroCircle": 0.5,
+      "osti_macroSpace": 0.5
+    }
+  },
+  "macros": {
+    "GATHER": 0.3,
+    "FIRE": 0.5,
+    "CIRCLE": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

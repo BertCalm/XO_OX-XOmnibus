@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Prism Refraction",
+  "mood": "Prism",
+  "engines": ["Oracle"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Stochastic light refracting through indigo prism — each breakpoint a different spectral angle.",
+  "tags": ["prism", "refraction", "spectral", "bright"],
+  "macroLabels": ["DRIFT", "EVOLUTION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.8, "warmth": 0.3, "movement": 0.6, "density": 0.45, "space": 0.6, "aggression": 0.3},
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 0.6,
+      "oracle_distribution": 2,
+      "oracle_drift": 0.55,
+      "oracle_gravity": 0.45,
+      "oracle_barrierElasticity": 0.6,
+      "oracle_ampStep": 0.5,
+      "oracle_glide": 0.2,
+      "oracle_level": 0.78,
+      "oracle_lfo1Rate": 1.0,
+      "oracle_lfo1Depth": 0.4,
+      "oracle_lfo1Shape": 0,
+      "oracle_lfo2Rate": 0.7,
+      "oracle_lfo2Depth": 0.3,
+      "oracle_lfo2Shape": 1,
+      "oracle_ampAttack": 0.05,
+      "oracle_ampDecay": 0.25,
+      "oracle_ampSustain": 0.7,
+      "oracle_ampRelease": 0.6,
+      "oracle_macroDrift": 0.55,
+      "oracle_macroEvolution": 0.55,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.6
+    }
+  },
+  "macros": {"DRIFT": 0.55, "EVOLUTION": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
+  "coupling": {"pairs": []}
+}

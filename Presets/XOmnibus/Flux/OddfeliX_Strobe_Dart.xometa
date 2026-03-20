@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Strobe Dart",
+  "mood": "Flux",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Single-voice strobe dart — fast repeating single snap creating rhythmic strobe effect.",
+  "tags": ["strobe", "single", "dart", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.88, "warmth": 0.18, "movement": 0.88, "density": 0.28, "space": 0.38, "aggression": 0.48},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.92, "snap_decay": 0.06, "snap_detune": 0.03, "snap_filterCutoff": 15000.0, "snap_filterReso": 0.38, "snap_filterEnvDepth": 0.82, "snap_unison": 1, "snap_sweepDirection": 0, "snap_pitchLock": 0.96, "snap_polyphony": 2, "snap_level": 0.83, "snap_macroDart": 0.94, "snap_macroDepth": 0.28, "snap_macroSchool": 0.12, "snap_macroSurface": 0.6}
+  },
+  "macros": {"CHARACTER": 0.82, "MOVEMENT": 0.88, "COUPLING": 0.0, "SPACE": 0.38},
+  "coupling": {"pairs": []}
+}

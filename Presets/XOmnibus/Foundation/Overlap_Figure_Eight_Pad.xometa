@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Figure Eight Pad",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Figure-eight topology gives a clear two-loop structure. Notes enter one loop and bleed into the other at the crossing point \u2014 a natural doubling that adds depth without mud. Essential pad workhorse.",
+  "tags": [
+    "figure-eight",
+    "pad",
+    "clean",
+    "utility",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.28,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.54,
+      "olap_diffusion": 0.65,
+      "olap_spread": 0.82,
+      "olap_decay": 3.5,
+      "olap_modDepth": 0.07,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.43,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

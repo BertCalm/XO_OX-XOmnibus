@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "The Observer",
+  "mood": "Aether",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Opsis at maximum — pure observer state. All reactivity, no memory. The note is played and immediately observed, nothing lingering. A state of pure attentive present.",
+  "tags": ["aether", "observer", "pure-opsis", "present", "attentive", "reactive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.35,
+    "space": 0.48,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 1.0,
+      "ombre_interference": 0.0,
+      "ombre_memoryDecay": 0.01,
+      "ombre_memoryGrain": 5.0,
+      "ombre_memoryDrift": 0.0,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 1.0,
+      "ombre_subLevel": 0.1,
+      "ombre_filterCutoff": 8000.0,
+      "ombre_filterReso": 0.35,
+      "ombre_attack": 0.001,
+      "ombre_decay": 0.1,
+      "ombre_sustain": 0.58,
+      "ombre_release": 0.2,
+      "ombre_level": 0.8,
+      "ombre_velCutoffScale": 0.8,
+      "ombre_lfo1Rate": 3.0,
+      "ombre_lfo1Depth": 0.15,
+      "ombre_lfo2Rate": 1.5,
+      "ombre_lfo2Depth": 0.2,
+      "ombre_macroCharacter": 0.0,
+      "ombre_macroMovement": 0.35,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.0
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

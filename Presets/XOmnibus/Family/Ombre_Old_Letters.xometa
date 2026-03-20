@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Old Letters",
+  "mood": "Family",
+  "engines": ["Ombre"],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Faded handwriting on yellowed paper — warm, analog, imprecise. Low-pass filter with warm memory grain. Notes feel like reading someone else's handwriting from the past.",
+  "tags": ["family", "letters", "handwriting", "faded", "warm", "analog"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.85,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.28,
+      "ombre_interference": 0.22,
+      "ombre_memoryDecay": 10.0,
+      "ombre_memoryGrain": 220.0,
+      "ombre_memoryDrift": 0.18,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.38,
+      "ombre_subLevel": 0.48,
+      "ombre_filterCutoff": 2000.0,
+      "ombre_filterReso": 0.16,
+      "ombre_attack": 0.1,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.72,
+      "ombre_release": 3.0,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.28,
+      "ombre_lfo1Rate": 0.18,
+      "ombre_lfo1Depth": 0.22,
+      "ombre_lfo2Rate": 0.12,
+      "ombre_lfo2Depth": 0.18,
+      "ombre_macroCharacter": 0.72,
+      "ombre_macroMovement": 0.22,
+      "ombre_macroCoupling": 0.48,
+      "ombre_macroSpace": 0.72
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

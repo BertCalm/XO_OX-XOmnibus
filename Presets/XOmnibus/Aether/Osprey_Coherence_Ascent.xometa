@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "name": "Coherence Ascent",
+  "mood": "Aether",
+  "engines": ["Osprey"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Signal coherence maintained as the coastal system ascends into aether — crystalline and vast.",
+  "tags": ["aether", "coherent", "ascending", "vast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.38, "density": 0.32, "space": 0.9, "aggression": 0.08},
+  "parameters": {
+    "Osprey": {
+      "osprey_brine": 0.28,
+      "osprey_foam": 0.2,
+      "osprey_fog": 0.55,
+      "osprey_hull": 0.28,
+      "osprey_depth": 0.25,
+      "osprey_coherence": 0.92,
+      "osprey_filterTilt": 0.58,
+      "osprey_filterEnvDepth": 0.02,
+      "osprey_harborVerb": 0.82,
+      "osprey_creatureRate": 0.08,
+      "osprey_creatureDepth": 0.1,
+      "osprey_glide": 0.68,
+      "osprey_ampAttack": 1.4,
+      "osprey_ampDecay": 0.65,
+      "osprey_ampSustain": 0.5,
+      "osprey_ampRelease": 4.5,
+      "osprey_macroCharacter": 0.38,
+      "osprey_macroMovement": 0.38,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroSpace": 0.9
+    }
+  },
+  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.38, "COUPLING": 0.0, "SPACE": 0.9},
+  "coupling": {"pairs": []}
+}

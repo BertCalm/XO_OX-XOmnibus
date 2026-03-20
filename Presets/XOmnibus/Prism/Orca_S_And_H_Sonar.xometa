@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "S And H Sonar",
+  "mood": "Prism",
+  "engines": ["Orca"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "LFO2 set to Sample & Hold shape driving echolocation rate — the click bursts becoming rhythmically stochastic, firing at random intervals. The sonar equivalent of probabilistic spatial mapping.",
+  "tags": ["prism", "sample-hold", "stochastic", "random", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {"brightness": 0.62, "warmth": 0.28, "movement": 0.68, "density": 0.48, "space": 0.55, "aggression": 0.42},
+  "parameters": {
+    "Orca": {
+      "orca_wtPosition": 0.32, "orca_wtScanRate": 0.28, "orca_formantIntensity": 0.28, "orca_formantShift": 0.5, "orca_glide": 0.0,
+      "orca_echoRate": 12.0, "orca_echoReso": 0.88, "orca_echoDamp": 0.15, "orca_echoMix": 0.72, "orca_huntMacro": 0.1,
+      "orca_breachSub": 0.12, "orca_breachShape": 0.0, "orca_breachThreshold": -38.0, "orca_breachRatio": 1.5,
+      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 1500.0,
+      "orca_filterCutoff": 12000.0, "orca_filterReso": 0.3, "orca_level": 0.76,
+      "orca_ampAttack": 0.002, "orca_ampDecay": 0.2, "orca_ampSustain": 0.48, "orca_ampRelease": 0.28,
+      "orca_modAttack": 0.002, "orca_modDecay": 0.15, "orca_modSustain": 0.38, "orca_modRelease": 0.22,
+      "orca_lfo1Rate": 0.08, "orca_lfo1Depth": 0.1, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 2.0, "orca_lfo2Depth": 0.75, "orca_lfo2Shape": 4.0,
+      "orca_polyphony": 2, "orca_velCutoffAmt": 0.58, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+    }
+  },
+  "coupling": null, "sequencer": null
+}

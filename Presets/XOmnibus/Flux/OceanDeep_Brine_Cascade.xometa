@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Brine Cascade",
+  "mood": "Flux",
+  "engines": ["OceanDeep"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense hypersaline water cascading down the continental slope, a slow rolling bass descent.",
+  "tags": ["flux", "descending", "dense", "dark"],
+  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.48,
+    "movement": 0.58,
+    "density": 0.82,
+    "space": 0.45,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_attack": 0.06,
+      "deep_decay": 0.55,
+      "deep_sustain": 0.78,
+      "deep_release": 0.95,
+      "deep_bodyType": 0,
+      "deep_bodySize": 0.82,
+      "deep_bodyDamp": 0.72,
+      "deep_subOctave": 1,
+      "deep_subShape": 2,
+      "deep_harmonicLevel": 0.3,
+      "deep_pressure": 0.72,
+      "deep_darkness": 0.82,
+      "deep_filterReso": 0.32,
+      "deep_rumble": 0.68,
+      "deep_creatureDepth": 0.32,
+      "deep_creatureSpeed": 0.42,
+      "deep_flashBright": 0.2,
+      "deep_flashRate": 2.8,
+      "deep_reverbSize": 0.58,
+      "deep_reverbMix": 0.35,
+      "deep_delayMix": 0.15,
+      "deep_macroPressure": 0.72,
+      "deep_macroCreature": 0.32,
+      "deep_macroDepth": 0.82,
+      "deep_macroLight": 0.2
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.72,
+    "CREATURE": 0.32,
+    "DEPTH": 0.82,
+    "LIGHT": 0.2
+  },
+  "coupling": {"pairs": []}
+}

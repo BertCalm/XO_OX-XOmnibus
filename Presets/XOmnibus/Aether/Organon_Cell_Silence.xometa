@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Cell Silence",
+  "mood": "Aether",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Metabolic rate near zero — the organism in suspended animation, barely present in vast space.",
+  "tags": ["silence", "aether", "minimal", "suspended", "space", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.28, "warmth": 0.55, "movement": 0.08, "density": 0.18, "space": 0.98, "aggression": 0.04},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.05,
+      "organon_membrane": 0.82,
+      "organon_enzymeSelect": 1,
+      "organon_catalystDrive": 0.04,
+      "organon_isotopeBalance": 0.6,
+      "organon_phasonShift": 0.05,
+      "organon_dampingCoeff": 0.88,
+      "organon_signalFlux": 0.05,
+      "organon_noiseColor": 2,
+      "organon_lockIn": 0.1
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

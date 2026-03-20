@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Tank Atmosphere",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Aquarium tank ambient morph — the quiet hum of water around a submerged creature.",
+  "tags": ["tank", "aquarium", "ambient", "submerged"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.32, "warmth": 0.68, "movement": 0.42, "density": 0.5, "space": 0.65, "aggression": 0.07},
+  "parameters": {
+    "OddOscar": {"morph_morph": 0.5, "morph_bloom": 0.52, "morph_detune": 0.16, "morph_drift": 0.38, "morph_filterCutoff": 2600.0, "morph_filterReso": 0.35, "morph_filterEnvDepth": 0.3, "morph_sub": 0.45, "morph_decay": 1.8, "morph_sustain": 0.85, "morph_release": 3.2, "morph_glide": 0.14, "morph_voiceMode": 0, "morph_polyphony": 6, "morph_level": 0.65, "morph_macroBloom": 0.52, "morph_macroDepth": 0.5, "morph_macroDrift": 0.38, "morph_macroSpace": 0.65}
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.65},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Game Over",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The descending chip motif — three notes falling through NES register space. Simple, final.",
+  "tags": [
+    "nes",
+    "game-over",
+    "descending",
+    "motif",
+    "chip",
+    "foundation"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.3,
+    "movement": 0.5,
+    "density": 0.4,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.08,
+      "ow_macro_chaos": 0.12,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.3,
+      "ow_outputLevel": 0.75,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

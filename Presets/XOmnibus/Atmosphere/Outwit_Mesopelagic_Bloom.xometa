@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Mesopelagic Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 182 at mid-spread \u2014 plankton bloom in the twilight zone. Organic, textured, alive in ways you can sense but not see. Filter breathes slowly.",
+  "tags": [
+    "atmosphere",
+    "plankton",
+    "bloom",
+    "organic",
+    "twilight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 182,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.2,
+      "owit_armSpread": 0.62,
+      "owit_sync": 0.32,
+      "owit_feedbackAmt": 0.35,
+      "owit_chaos": 0.32,
+      "owit_density": 0.55,
+      "owit_ampAttack": 0.2,
+      "owit_ampDecay": 0.5,
+      "owit_ampSustain": 0.72,
+      "owit_ampRelease": 2.2,
+      "owit_filterCutoff": 0.5,
+      "owit_filterRes": 0.28,
+      "owit_lfoRate": 0.07,
+      "owit_lfoDepth": 0.18,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

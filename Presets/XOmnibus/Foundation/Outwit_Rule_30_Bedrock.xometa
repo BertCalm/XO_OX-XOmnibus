@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Rule 30 Bedrock",
+  "mood": "Foundation",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 30 \u2014 the gold standard of deterministic chaos. A single cell blooms into a pattern mathematically proven to be unpredictable. Eight arms anchor this chaos to the low register, creating a foundation that feels lawful but never repeats.",
+  "tags": [
+    "foundation",
+    "rule30",
+    "deterministic",
+    "bedrock",
+    "anchored"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 30,
+      "owit_armBalance": 0.45,
+      "owit_mutationRate": 0.05,
+      "owit_armSpread": 0.45,
+      "owit_sync": 0.65,
+      "owit_feedbackAmt": 0.3,
+      "owit_chaos": 0.2,
+      "owit_density": 0.6,
+      "owit_ampAttack": 0.1,
+      "owit_ampDecay": 0.3,
+      "owit_ampSustain": 0.85,
+      "owit_ampRelease": 1.2,
+      "owit_filterCutoff": 0.5,
+      "owit_filterRes": 0.25,
+      "owit_lfoRate": 0.07,
+      "owit_lfoDepth": 0.1,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

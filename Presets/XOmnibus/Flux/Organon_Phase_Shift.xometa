@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Phase Shift",
+  "mood": "Flux",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Phason transitions sweeping through the organism — phase boundaries crossing in real time.",
+  "tags": ["phase", "shift", "flux", "transition", "phason", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.6, "warmth": 0.38, "movement": 0.78, "density": 0.6, "space": 0.45, "aggression": 0.62},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.62,
+      "organon_membrane": 0.42,
+      "organon_enzymeSelect": 2,
+      "organon_catalystDrive": 0.68,
+      "organon_isotopeBalance": 0.45,
+      "organon_phasonShift": 0.88,
+      "organon_dampingCoeff": 0.3,
+      "organon_signalFlux": 0.65,
+      "organon_noiseColor": 1,
+      "organon_lockIn": 0.08
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

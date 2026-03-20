@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Stone Aether",
+  "mood": "Aether",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Stone transformed to aether — geological weight dissolved, only mineral essence remains.",
+  "tags": ["stone", "aether", "dissolved", "essence"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.42, "warmth": 0.48, "movement": 0.07, "density": 0.18, "space": 0.96, "aggression": 0.02},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.18,
+      "obsidian_character": 0.42,
+      "obsidian_brightness": 0.42,
+      "obsidian_warmth": 0.48,
+      "obsidian_attack": 1.5,
+      "obsidian_decay": 1.8,
+      "obsidian_sustain": 0.65,
+      "obsidian_release": 6.5,
+      "obsidian_filterCutoff": 5500,
+      "obsidian_filterReso": 0.1,
+      "obsidian_filterEnvAmt": 0.06,
+      "obsidian_lfoRate": 0.02,
+      "obsidian_lfoDepth": 0.08,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.96,
+      "obsidian_reverbMix": 0.68,
+      "obsidian_stereoWidth": 0.95,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 4,
+      "obsidian_level": 0.62
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.07, "COUPLING": 0.0, "SPACE": 0.96},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "Isotope Trace",
+  "mood": "Aether",
+  "engines": ["Organon"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Radioactive tracer in deep space — a single isotope emitting one photon per second.",
+  "tags": ["isotope", "trace", "aether", "radioactive", "minimal", "organic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.42, "warmth": 0.45, "movement": 0.08, "density": 0.15, "space": 0.98, "aggression": 0.05},
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.06,
+      "organon_membrane": 0.72,
+      "organon_enzymeSelect": 2,
+      "organon_catalystDrive": 0.05,
+      "organon_isotopeBalance": 0.15,
+      "organon_phasonShift": 0.06,
+      "organon_dampingCoeff": 0.92,
+      "organon_signalFlux": 0.04,
+      "organon_noiseColor": 1,
+      "organon_lockIn": 0.08
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null
+}

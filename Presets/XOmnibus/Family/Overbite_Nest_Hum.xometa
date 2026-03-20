@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Nest Hum",
+  "mood": "Family",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Continuous gentle hum of a nest at rest — low sustaining sine with minimal movement.",
+  "tags": ["hum", "gentle", "sustained", "warm"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.25, "warmth": 0.85, "movement": 0.1, "density": 0.5, "space": 0.45, "aggression": 0.05},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_oscADrift": 0.08,
+      "poss_subLevel": 0.5,
+      "poss_filterCutoff": 800,
+      "poss_filterReso": 0.05,
+      "poss_ampAttack": 0.5,
+      "poss_ampDecay": 0.5,
+      "poss_ampSustain": 0.85,
+      "poss_ampRelease": 1.0,
+      "poss_furAmount": 0.2,
+      "poss_fxSpaceSize": 0.45,
+      "poss_fxSpaceDecay": 0.4,
+      "poss_fxSpaceMix": 0.2,
+      "poss_macroBelly": 0.75,
+      "poss_macroBite": 0.05,
+      "poss_macroScurry": 0.1,
+      "poss_macroTrash": 0.0,
+      "poss_macroPlayDead": 0.4
+    }
+  },
+  "macros": {"BELLY": 0.75, "BITE": 0.05, "SCURRY": 0.1, "TRASH": 0.0, "PLAY DEAD": 0.4},
+  "coupling": {"pairs": []}
+}

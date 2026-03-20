@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Quarry Fog",
+  "mood": "Atmosphere",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Heavy fog over open quarry — damp low filter, wide reverb, diffuse and cool.",
+  "tags": ["quarry", "fog", "damp", "diffuse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.22, "warmth": 0.42, "movement": 0.2, "density": 0.55, "space": 0.72, "aggression": 0.05},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.6,
+      "obsidian_character": 0.22,
+      "obsidian_brightness": 0.22,
+      "obsidian_warmth": 0.42,
+      "obsidian_attack": 0.5,
+      "obsidian_decay": 1.0,
+      "obsidian_sustain": 0.65,
+      "obsidian_release": 2.2,
+      "obsidian_filterCutoff": 2400,
+      "obsidian_filterReso": 0.15,
+      "obsidian_filterEnvAmt": 0.12,
+      "obsidian_lfoRate": 0.08,
+      "obsidian_lfoDepth": 0.15,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.78,
+      "obsidian_reverbMix": 0.48,
+      "obsidian_stereoWidth": 0.82,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 5,
+      "obsidian_level": 0.7
+    }
+  },
+  "macros": {"CHARACTER": 0.22, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.72},
+  "coupling": {"pairs": []}
+}

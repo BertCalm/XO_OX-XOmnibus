@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Vortex Topology",
+  "mood": "Flux",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "An unknot becoming a trefoil \u2014 the topological transition is audible as a sudden shift in spectral character. Low tangle depth feels like a vortex beginning to form. High tangle: the vortex collapses inward.",
+  "tags": [
+    "vortex",
+    "transition",
+    "unknot",
+    "topological",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.5,
+    "movement": 0.85,
+    "density": 0.65,
+    "space": 0.75,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.68,
+      "olap_spread": 0.8,
+      "olap_decay": 5.0,
+      "olap_modDepth": 0.5,
+      "olap_modRate": 0.15,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

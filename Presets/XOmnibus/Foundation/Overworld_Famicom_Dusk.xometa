@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Famicom Dusk",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Pure NES 2A03 at golden hour — the pulse wave at its most iconic, the slight warmth of a cathode-ray tube warming up in a 1986 living room. This is the voice every chip composer hears in their sleep.",
+  "tags": [
+    "nes",
+    "famicom",
+    "lead",
+    "pulse",
+    "foundation",
+    "classic",
+    "2A03",
+    "retro"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.38,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.22,
+    "aggression": 0.44
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_macro_era": 0.0,
+      "ow_macro_chaos": 0.05,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.2,
+      "ow_outputLevel": 0.88,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "macros": {
+    "ERA": 0.0,
+    "CHAOS": 0.05,
+    "COUPLE": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

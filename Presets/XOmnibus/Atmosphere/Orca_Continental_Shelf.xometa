@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Continental Shelf",
+  "mood": "Atmosphere",
+  "engines": ["Orca"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The continental shelf break — where the ocean floor drops suddenly from shallow coastal zone to deep abyss. A transitional acoustic environment, the border between worlds. Rich mid frequencies from the shelf, deepening into void.",
+  "tags": ["atmosphere", "shelf", "transitional", "border", "depth"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {"brightness": 0.38, "warmth": 0.5, "movement": 0.2, "density": 0.5, "space": 0.7, "aggression": 0.22},
+  "parameters": {
+    "Orca": {
+      "orca_wtPosition": 0.32, "orca_wtScanRate": 0.08, "orca_formantIntensity": 0.48, "orca_formantShift": 0.42, "orca_glide": 0.75,
+      "orca_echoRate": 1.5, "orca_echoReso": 0.8, "orca_echoDamp": 0.52, "orca_echoMix": 0.45, "orca_huntMacro": 0.05,
+      "orca_breachSub": 0.45, "orca_breachShape": 0.0, "orca_breachThreshold": -25.0, "orca_breachRatio": 3.0,
+      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 1000.0,
+      "orca_filterCutoff": 3200.0, "orca_filterReso": 0.17, "orca_level": 0.74,
+      "orca_ampAttack": 0.35, "orca_ampDecay": 0.9, "orca_ampSustain": 0.58, "orca_ampRelease": 1.8,
+      "orca_modAttack": 0.28, "orca_modDecay": 0.72, "orca_modSustain": 0.44, "orca_modRelease": 1.4,
+      "orca_lfo1Rate": 0.04, "orca_lfo1Depth": 0.2, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.08, "orca_lfo2Depth": 0.1, "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2, "orca_velCutoffAmt": 0.32, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+    }
+  },
+  "coupling": null, "sequencer": null
+}

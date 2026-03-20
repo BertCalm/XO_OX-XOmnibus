@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Circle Full",
+  "mood": "Foundation",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Full circle alliance config with all voices balanced, the complete community in equal voice.",
+  "tags": ["latin", "circle", "community", "balanced", "full"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.52, "warmth": 0.7, "movement": 0.42, "density": 0.55, "space": 0.58, "aggression": 0.2},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 2,
+      "ole_allianceBlend": 0.6,
+      "ole_aunt1Level": 0.72,
+      "ole_aunt1Brightness": 0.52,
+      "ole_aunt1StrumRate": 2.5,
+      "ole_aunt2Level": 0.72,
+      "ole_aunt2GourdSize": 0.55,
+      "ole_aunt2CoinPress": 0.5,
+      "ole_aunt3Level": 0.72,
+      "ole_aunt3Brightness": 0.55,
+      "ole_aunt3Tremolo": 0.35,
+      "ole_husbandOudLevel": 0.6,
+      "ole_husbandBouzLevel": 0.45,
+      "ole_husbandPinLevel": 0.4,
+      "ole_damping": 0.35,
+      "ole_sympatheticAmt": 0.5,
+      "ole_driftRate": 0.6,
+      "ole_driftDepth": 0.15,
+      "ole_macroDrama": 0.38,
+      "ole_macroFuego": 0.38,
+      "ole_macroIsla": 0.42,
+      "ole_macroSides": 0.38
+    }
+  },
+  "macros": {"DRAMA": 0.38, "FUEGO": 0.38, "ISLA": 0.42, "SIDES": 0.38},
+  "coupling": {"pairs": []}
+}

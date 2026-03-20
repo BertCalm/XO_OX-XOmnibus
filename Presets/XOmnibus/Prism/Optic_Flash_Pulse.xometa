@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Flash Pulse",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Ultra-bright flash pulse. Maximum accent, sharp attack.",
+  "tags": [
+    "flash",
+    "bright",
+    "accent",
+    "sharp",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.18,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.25,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 4.0,
+      "optic_pulseShape": 1,
+      "optic_pulseAccent": 0.98,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.1,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.75,
+      "optic_inputGain": 0.78,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.92,
+      "optic_modMixSpec": 0.08,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.95,
+      "optic_vizSpeed": 0.75,
+      "optic_vizFeedback": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

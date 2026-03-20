@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Duo",
+  "mood": "Atmosphere",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Deep-filtered two voices in abyssal pressure, barely audible LFO motion.",
+  "tags": ["atmosphere", "deep", "pressure", "abyssal"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.3,
+      "ouie_ampDec": 1.0,
+      "ouie_ampSus": 0.55,
+      "ouie_ampRel": 2.5,
+      "ouie_filterACutoff": 400,
+      "ouie_filterARes": 0.18,
+      "ouie_filterBCutoff": 500,
+      "ouie_filterBRes": 0.15,
+      "ouie_hammerDepth": 0.6,
+      "ouie_hammerPos": 0.2,
+      "ouie_lfo1Rate": 0.08,
+      "ouie_lfo1Depth": 0.08,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.05,
+      "ouie_lfo2Depth": 0.06,
+      "ouie_portaAuto": 0.2,
+      "ouie_macroHammer": 0.6,
+      "ouie_macroCartilage": 0.2,
+      "ouie_macroAmpullae": 0.35,
+      "ouie_macroCurrent": 0.8
+    }
+  },
+  "macros": {
+    "HAMMER": 0.6,
+    "CARTILAGE": 0.2,
+    "AMPULLAE": 0.35,
+    "CURRENT": 0.8
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Lineage Torus",
+  "mood": "Family",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A torus knot representing evolutionary lineage \u2014 each traversal is a generation, each crossing is a branching point. Long decay to represent deep time. A phylogenetic tree made of delay lines.",
+  "tags": [
+    "lineage",
+    "evolution",
+    "torus",
+    "deep-time",
+    "family"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.42,
+    "density": 0.72,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.75,
+      "olap_spread": 0.85,
+      "olap_decay": 9.0,
+      "olap_modDepth": 0.18,
+      "olap_modRate": 0.07,
+      "olap_damping": 0.42,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

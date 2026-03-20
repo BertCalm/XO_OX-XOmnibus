@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Rule Wash",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "generative",
+    "evolving",
+    "cellular",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.82,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 38000,
+      "org_stepRate": 4.0,
+      "org_scope": 8,
+      "org_mutate": 0.03,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 2600.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.45,
+      "org_ampAtk": 0.1,
+      "org_ampDec": 0.7,
+      "org_ampSus": 0.82,
+      "org_ampRel": 2.2,
+      "org_lfo1Rate": 0.22,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.13,
+      "org_lfo2Depth": 0.35,
+      "org_reverbMix": 0.78,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.08
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

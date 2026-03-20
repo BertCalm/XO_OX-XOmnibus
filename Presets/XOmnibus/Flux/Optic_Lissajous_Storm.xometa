@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Lissajous Storm",
+  "mood": "Flux",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Lissajous mode driven to storm feedback conditions.",
+  "tags": [
+    "lissajous",
+    "storm",
+    "feedback",
+    "chaos",
+    "flux"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.25,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 4.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.78,
+      "optic_pulseSwing": 0.3,
+      "optic_pulseSubdiv": 4,
+      "optic_pulseEvolve": 0.85,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.85,
+      "optic_inputGain": 0.85,
+      "optic_modDepth": 0.88,
+      "optic_modMixPulse": 0.55,
+      "optic_modMixSpec": 0.45,
+      "optic_vizMode": 2,
+      "optic_vizIntensity": 0.98,
+      "optic_vizSpeed": 0.92,
+      "optic_vizFeedback": 0.95
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

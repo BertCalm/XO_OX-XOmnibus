@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Flash Fauna",
+  "mood": "Prism",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "bass",
+    "dark",
+    "growl",
+    "deep"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.9,
+    "density": 0.75,
+    "space": 0.58,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 0,
+      "deep_subOctave": -1,
+      "deep_harmonicLevel": 0.55,
+      "deep_pressure": 0.55,
+      "deep_bodyType": 1,
+      "deep_bodySize": 0.65,
+      "deep_bodyDamp": 0.42,
+      "deep_flashRate": 0.9,
+      "deep_flashBright": 1.0,
+      "deep_creatureSpeed": 0.88,
+      "deep_creatureDepth": 0.82,
+      "deep_darkness": 0.62,
+      "deep_filterReso": 0.65,
+      "deep_reverbMix": 0.42,
+      "deep_reverbSize": 0.68,
+      "deep_delayMix": 0.35,
+      "deep_rumble": 0.45,
+      "deep_attack": 0.001,
+      "deep_decay": 0.4,
+      "deep_sustain": 0.6,
+      "deep_release": 1.2
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.55,
+    "CREATURE": 0.9,
+    "WRECK": 0.25,
+    "ABYSS": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

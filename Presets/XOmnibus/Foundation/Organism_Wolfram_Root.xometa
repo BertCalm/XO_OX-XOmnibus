@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Wolfram Root",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "generative",
+    "cellular",
+    "pattern",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 100,
+      "org_stepRate": 4.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

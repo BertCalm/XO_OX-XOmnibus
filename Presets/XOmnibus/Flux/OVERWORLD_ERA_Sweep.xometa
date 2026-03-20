@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "ERA Sweep",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "ERA morphing continuously from NES to SNES — three console generations blurring into one.",
+  "tags": [
+    "era",
+    "sweep",
+    "flux",
+    "morph",
+    "chip",
+    "overworld"
+  ],
+  "macroLabels": [
+    "ERA",
+    "CHAOS",
+    "COUPLE",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.45,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_era": 0,
+      "ow_macro_era": 0.5,
+      "ow_macro_chaos": 0.2,
+      "ow_macro_couple": 0.0,
+      "ow_macro_space": 0.4,
+      "ow_outputLevel": 0.8,
+      "ow_couplingLevel": 0.0,
+      "ow_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

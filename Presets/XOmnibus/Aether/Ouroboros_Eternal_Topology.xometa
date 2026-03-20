@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "Eternal Topology",
+  "mood": "Aether",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The eternal topological form — Hopf fibration at near stillness in infinite aethereal space.",
+  "tags": ["eternal", "topology", "hopf", "infinite", "aether"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.6, "warmth": 0.48, "movement": 0.05, "density": 0.5, "space": 0.98, "aggression": 0.02},
+  "parameters": {"Ouroboros": {
+    "ouro_topology": 4,
+    "ouro_rate": 0.05,
+    "ouro_chaosIndex": 0.02,
+    "ouro_leash": 0.99,
+    "ouro_theta": 0.5,
+    "ouro_phi": 0.5,
+    "ouro_damping": 0.99,
+    "ouro_injection": 0.05
+  }},
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.05, "COUPLING": 0.5, "SPACE": 0.97},
+  "coupling": {"pairs": []}
+}

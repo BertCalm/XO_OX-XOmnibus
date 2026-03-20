@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Neon Flash",
+  "mood": "Foundation",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Clean neon tetra snap — pure transient attack with bright presence.",
+  "tags": ["snap", "bright", "clean", "pluck"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.85, "warmth": 0.2, "movement": 0.5, "density": 0.3, "space": 0.4, "aggression": 0.2},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.85,
+      "snap_decay": 0.18,
+      "snap_detune": 0.05,
+      "snap_filterCutoff": 12000.0,
+      "snap_filterReso": 0.25,
+      "snap_filterEnvDepth": 0.6,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.9,
+      "snap_polyphony": 6,
+      "snap_level": 0.8,
+      "snap_macroDart": 0.3,
+      "snap_macroDepth": 0.4,
+      "snap_macroSchool": 0.2,
+      "snap_macroSurface": 0.5
+    }
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.4},
+  "coupling": {"pairs": []}
+}

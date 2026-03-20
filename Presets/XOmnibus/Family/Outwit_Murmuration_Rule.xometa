@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Murmuration Rule",
+  "mood": "Family",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 184 with high synapse \u2014 starling murmurations translated to cellular automata. Each arm adjusts to its neighbors; the flock moves as one body.",
+  "tags": [
+    "family",
+    "murmuration",
+    "flock",
+    "synapse",
+    "coordinated"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.6,
+    "density": 0.62,
+    "space": 0.55,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 184,
+      "owit_armBalance": 0.5,
+      "owit_mutationRate": 0.12,
+      "owit_armSpread": 0.52,
+      "owit_sync": 0.65,
+      "owit_feedbackAmt": 0.28,
+      "owit_chaos": 0.28,
+      "owit_density": 0.62,
+      "owit_ampAttack": 0.07,
+      "owit_ampDecay": 0.28,
+      "owit_ampSustain": 0.88,
+      "owit_ampRelease": 1.1,
+      "owit_filterCutoff": 0.58,
+      "owit_filterRes": 0.25,
+      "owit_lfoRate": 0.09,
+      "owit_lfoDepth": 0.14,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

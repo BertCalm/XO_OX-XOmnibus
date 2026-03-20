@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Rain",
+  "mood": "Atmosphere",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Fine mineral rain — delicate texture, slow LFO shimmer, cool atmospheric presence.",
+  "tags": ["rain", "mineral", "delicate", "cool"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.38, "movement": 0.3, "density": 0.42, "space": 0.72, "aggression": 0.06},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.42,
+      "obsidian_character": 0.48,
+      "obsidian_brightness": 0.48,
+      "obsidian_warmth": 0.38,
+      "obsidian_attack": 0.3,
+      "obsidian_decay": 0.65,
+      "obsidian_sustain": 0.62,
+      "obsidian_release": 1.5,
+      "obsidian_filterCutoff": 5200,
+      "obsidian_filterReso": 0.22,
+      "obsidian_filterEnvAmt": 0.18,
+      "obsidian_lfoRate": 0.22,
+      "obsidian_lfoDepth": 0.2,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.72,
+      "obsidian_reverbMix": 0.45,
+      "obsidian_stereoWidth": 0.78,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 5,
+      "obsidian_level": 0.7
+    }
+  },
+  "macros": {"CHARACTER": 0.48, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.72},
+  "coupling": {"pairs": []}
+}

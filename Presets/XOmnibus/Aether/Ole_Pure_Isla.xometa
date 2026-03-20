@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Pure Isla",
+  "mood": "Aether",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Isla macro alone at peak, drama and fuego silent — the island in pure, solitary aether.",
+  "tags": ["latin", "isla", "pure", "solitary", "aether"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.72, "movement": 0.3, "density": 0.35, "space": 0.97, "aggression": 0.05},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 0,
+      "ole_allianceBlend": 0.65,
+      "ole_aunt1Level": 0.58,
+      "ole_aunt1Brightness": 0.48,
+      "ole_aunt1StrumRate": 1.2,
+      "ole_aunt2Level": 0.55,
+      "ole_aunt2GourdSize": 0.52,
+      "ole_aunt2CoinPress": 0.48,
+      "ole_aunt3Level": 0.58,
+      "ole_aunt3Brightness": 0.5,
+      "ole_aunt3Tremolo": 0.38,
+      "ole_husbandOudLevel": 0.52,
+      "ole_husbandBouzLevel": 0.48,
+      "ole_husbandPinLevel": 0.42,
+      "ole_damping": 0.08,
+      "ole_sympatheticAmt": 0.95,
+      "ole_driftRate": 0.4,
+      "ole_driftDepth": 0.2,
+      "ole_macroDrama": 0.12,
+      "ole_macroFuego": 0.12,
+      "ole_macroIsla": 1.0,
+      "ole_macroSides": 0.35
+    }
+  },
+  "macros": {"DRAMA": 0.12, "FUEGO": 0.12, "ISLA": 1.0, "SIDES": 0.35},
+  "coupling": {"pairs": []}
+}

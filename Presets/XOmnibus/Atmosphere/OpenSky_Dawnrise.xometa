@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Dawnrise",
+  "mood": "Atmosphere",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "pad",
+    "warm",
+    "shimmer",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.64,
+    "warmth": 0.56,
+    "movement": 0.36,
+    "density": 0.48,
+    "space": 0.7,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.42,
+      "sky_sawLevel": 0.92,
+      "sky_filterFc": 9200.0,
+      "sky_filterRes": 0.06,
+      "sky_ampAttack": 0.6,
+      "sky_ampDecay": 0.5,
+      "sky_ampSustain": 0.78,
+      "sky_ampRelease": 2.0,
+      "sky_shimmerMix": 0.52,
+      "sky_shimmerDecay": 3.8,
+      "sky_shimmerOct": 0.9,
+      "sky_shimmerBright": 0.68,
+      "sky_lfoRate": 0.065,
+      "sky_lfoDepth": 7.5,
+      "sky_lfoShape": 0.3,
+      "sky_chorusMix": 0.3,
+      "sky_chorusRate": 0.22,
+      "sky_chorusDepth": 7.5,
+      "sky_reverbMix": 0.52,
+      "sky_reverbSize": 0.78,
+      "sky_outputGain": 0.78,
+      "sky_couplingAmt": 0.0,
+      "sky_macroCharacter": 0.55,
+      "sky_macroMovement": 0.35,
+      "sky_macroCoupling": 0.0,
+      "sky_macroSpace": 0.68,
+      "sky_shimmerSpread": 0.58,
+      "sky_shimmerPhase": 0.1,
+      "sky_velSensitivity": 0.75,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

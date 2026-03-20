@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "name": "Pink Bloom",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "The signature pink of the axolotl in full bloom — warm mid-morph with legato glide.",
+  "tags": ["pink", "bloom", "warm", "legato"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.45, "warmth": 0.75, "movement": 0.42, "density": 0.55, "space": 0.55, "aggression": 0.12},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.55,
+      "morph_bloom": 0.72,
+      "morph_detune": 0.1,
+      "morph_drift": 0.22,
+      "morph_filterCutoff": 5500.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.45,
+      "morph_sub": 0.38,
+      "morph_decay": 1.3,
+      "morph_sustain": 0.78,
+      "morph_release": 2.0,
+      "morph_glide": 0.25,
+      "morph_voiceMode": 2,
+      "morph_polyphony": 1,
+      "morph_level": 0.75,
+      "morph_macroBloom": 0.72,
+      "morph_macroDepth": 0.5,
+      "morph_macroDrift": 0.22,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []}
+}

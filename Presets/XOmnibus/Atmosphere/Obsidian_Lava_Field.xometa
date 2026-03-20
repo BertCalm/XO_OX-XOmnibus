@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Lava Field",
+  "mood": "Atmosphere",
+  "engines": ["Obsidian"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Cooling lava field atmosphere — warm low register, slow pulse, primal heat.",
+  "tags": ["lava", "warm", "geological", "pulse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.22, "density": 0.7, "space": 0.55, "aggression": 0.12},
+  "parameters": {
+    "Obsidian": {
+      "obsidian_depth": 0.72,
+      "obsidian_character": 0.25,
+      "obsidian_brightness": 0.25,
+      "obsidian_warmth": 0.75,
+      "obsidian_attack": 0.45,
+      "obsidian_decay": 0.9,
+      "obsidian_sustain": 0.72,
+      "obsidian_release": 2.0,
+      "obsidian_filterCutoff": 2800,
+      "obsidian_filterReso": 0.25,
+      "obsidian_filterEnvAmt": 0.2,
+      "obsidian_lfoRate": 0.1,
+      "obsidian_lfoDepth": 0.2,
+      "obsidian_lfoDest": 0,
+      "obsidian_reverbSize": 0.62,
+      "obsidian_reverbMix": 0.35,
+      "obsidian_stereoWidth": 0.6,
+      "obsidian_voiceMode": 0,
+      "obsidian_glide": 0.0,
+      "obsidian_polyphony": 4,
+      "obsidian_level": 0.73
+    }
+  },
+  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []}
+}

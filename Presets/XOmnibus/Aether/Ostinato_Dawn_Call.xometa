@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Call",
+  "mood": "Aether",
+  "engines": [
+    "Ostinato"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "",
+  "tags": [
+    "drums",
+    "tribal",
+    "soft",
+    "textural"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "GATHER",
+    "FIRE",
+    "CIRCLE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_drumType": 0,
+      "osti_filterCutoff": 650,
+      "osti_filterRes": 0.42,
+      "osti_ampAtk": 0.007,
+      "osti_ampDec": 1.1,
+      "osti_ampSus": 0.15,
+      "osti_ampRel": 1.0,
+      "osti_velCutoffAmt": 0.28,
+      "osti_reverbMix": 0.55,
+      "osti_lfo1Rate": 0.12,
+      "osti_lfo1Depth": 0.18,
+      "osti_lfo2Rate": 0.35,
+      "osti_lfo2Depth": 0.1,
+      "osti_patternStep0": true,
+      "osti_patternStep1": false,
+      "osti_patternStep2": false,
+      "osti_patternStep3": false,
+      "osti_patternStep4": false,
+      "osti_patternStep5": true,
+      "osti_patternStep6": false,
+      "osti_patternStep7": false,
+      "osti_macroGather": 0.2,
+      "osti_macroFire": 0.25,
+      "osti_macroCircle": 0.2,
+      "osti_macroSpace": 0.55
+    }
+  },
+  "macros": {
+    "GATHER": 0.2,
+    "FIRE": 0.25,
+    "CIRCLE": 0.2,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

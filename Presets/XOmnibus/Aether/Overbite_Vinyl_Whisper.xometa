@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Vinyl Whisper",
+  "mood": "Aether",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hushed bass riding a vinyl noise floor — barely above silence, warm and crackling.",
+  "tags": ["bass", "vinyl", "quiet", "lo-fi"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.15, "density": 0.35, "space": 0.6, "aggression": 0.1},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 0,
+      "poss_noiseLevel": 0.25,
+      "poss_noiseType": 2,
+      "poss_noiseDecay": 1.0,
+      "poss_subLevel": 0.35,
+      "poss_filterCutoff": 1200,
+      "poss_filterReso": 0.1,
+      "poss_ampAttack": 0.5,
+      "poss_ampDecay": 0.8,
+      "poss_ampSustain": 0.5,
+      "poss_ampRelease": 1.2,
+      "poss_driveAmount": 0.2,
+      "poss_driveType": 2,
+      "poss_fxSpaceSize": 0.5,
+      "poss_fxSpaceDecay": 0.45,
+      "poss_fxSpaceMix": 0.25,
+      "poss_macroBelly": 0.4,
+      "poss_macroBite": 0.05,
+      "poss_macroScurry": 0.15,
+      "poss_macroTrash": 0.15,
+      "poss_macroPlayDead": 0.8
+    }
+  },
+  "macros": {"BELLY": 0.4, "BITE": 0.05, "SCURRY": 0.15, "TRASH": 0.15, "PLAY DEAD": 0.8},
+  "coupling": {"pairs": []}
+}

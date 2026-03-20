@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Light",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "First light on the water — gradual brightening shimmer as school becomes visible.",
+  "tags": ["dawn", "light", "gradual", "morning"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.75, "warmth": 0.4, "movement": 0.35, "density": 0.58, "space": 0.78, "aggression": 0.1},
+  "parameters": {
+    "OddfeliX": {"snap_oscMode": 0, "snap_snap": 0.32, "snap_decay": 0.85, "snap_detune": 0.25, "snap_filterCutoff": 9000.0, "snap_filterReso": 0.42, "snap_filterEnvDepth": 0.35, "snap_unison": 5, "snap_sweepDirection": 0, "snap_pitchLock": 0.5, "snap_polyphony": 8, "snap_level": 0.63, "snap_macroDart": 0.22, "snap_macroDepth": 0.65, "snap_macroSchool": 0.68, "snap_macroSurface": 0.72}
+  },
+  "macros": {"CHARACTER": 0.32, "MOVEMENT": 0.35, "COUPLING": 0.0, "SPACE": 0.78},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Chew Sync",
+  "mood": "Prism",
+  "engines": ["Overbite"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscillator sync bass with chewing tremolo — rhythmic jaw motion baked into the waveform.",
+  "tags": ["bass", "sync", "rhythmic", "character"],
+  "macroLabels": ["BELLY", "BITE", "SCURRY", "TRASH", "PLAY DEAD"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.6, "warmth": 0.55, "movement": 0.5, "density": 0.6, "space": 0.2, "aggression": 0.6},
+  "parameters": {
+    "Overbite": {
+      "poss_oscAWaveform": 2,
+      "poss_oscBWaveform": 2,
+      "poss_oscInteractMode": 3,
+      "poss_oscInteractAmount": 0.5,
+      "poss_subLevel": 0.4,
+      "poss_filterCutoff": 2000,
+      "poss_filterReso": 0.35,
+      "poss_filterEnvAmount": 0.55,
+      "poss_filterDecay": 0.2,
+      "poss_ampAttack": 0.003,
+      "poss_ampDecay": 0.3,
+      "poss_ampSustain": 0.55,
+      "poss_ampRelease": 0.15,
+      "poss_chewAmount": 0.55,
+      "poss_chewFreq": 0.5,
+      "poss_chewMix": 0.45,
+      "poss_macroBelly": 0.45,
+      "poss_macroBite": 0.7,
+      "poss_macroScurry": 0.5,
+      "poss_macroTrash": 0.25,
+      "poss_macroPlayDead": 0.05
+    }
+  },
+  "macros": {"BELLY": 0.45, "BITE": 0.7, "SCURRY": 0.5, "TRASH": 0.25, "PLAY DEAD": 0.05},
+  "coupling": {"pairs": []}
+}

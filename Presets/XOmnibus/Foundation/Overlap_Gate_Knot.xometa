@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Gate Knot",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Short, gated decay on a trefoil topology. The delay lines open, cascade through the three crossings, then shut. A rhythmic tool \u2014 every note gets a defined, choppy tail. Use on drums or stabs.",
+  "tags": [
+    "gated",
+    "trefoil",
+    "rhythmic",
+    "short",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.44,
+      "olap_diffusion": 0.45,
+      "olap_spread": 0.7,
+      "olap_decay": 0.8,
+      "olap_modDepth": 0.07,
+      "olap_modRate": 0.12,
+      "olap_damping": 0.5,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

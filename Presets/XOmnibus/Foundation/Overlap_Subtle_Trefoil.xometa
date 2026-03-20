@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Subtle Trefoil",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "A trefoil knot at minimal tangle depth \u2014 the topology is there but barely audible. A traditional reverb tail with a slight instability at the very end that tells you something unusual is routing the reflections.",
+  "tags": [
+    "subtle",
+    "trefoil",
+    "minimal",
+    "natural",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.42,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.48,
+      "olap_diffusion": 0.52,
+      "olap_spread": 0.72,
+      "olap_decay": 3.0,
+      "olap_modDepth": 0.04,
+      "olap_modRate": 0.1,
+      "olap_damping": 0.48,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

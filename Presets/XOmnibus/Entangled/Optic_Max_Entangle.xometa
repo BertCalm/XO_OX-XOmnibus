@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Max Entangle",
+  "mood": "Entangled",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Maximum coupling depth and reactivity.",
+  "tags": [
+    "maximum",
+    "entangled",
+    "coupling",
+    "reactive",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.68,
+    "density": 0.62,
+    "space": 0.35,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 3.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.78,
+      "optic_pulseSwing": 0.15,
+      "optic_pulseSubdiv": 3,
+      "optic_pulseEvolve": 0.25,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.95,
+      "optic_inputGain": 0.88,
+      "optic_modDepth": 0.95,
+      "optic_modMixPulse": 0.68,
+      "optic_modMixSpec": 0.32,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.92,
+      "optic_vizSpeed": 0.68,
+      "optic_vizFeedback": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

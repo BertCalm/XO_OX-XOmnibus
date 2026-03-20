@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Low Tangle",
+  "mood": "Foundation",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Minimal tangle depth on a trefoil \u2014 the crossings barely register, leaving a near-circular path with just a hint of asymmetry. Clean enough for mixing, interesting enough to listen to. The tasteful choice.",
+  "tags": [
+    "low-tangle",
+    "subtle",
+    "clean",
+    "utility",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.18,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.42,
+      "olap_diffusion": 0.38,
+      "olap_spread": 0.68,
+      "olap_decay": 2.8,
+      "olap_modDepth": 0.06,
+      "olap_modRate": 0.15,
+      "olap_damping": 0.52,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

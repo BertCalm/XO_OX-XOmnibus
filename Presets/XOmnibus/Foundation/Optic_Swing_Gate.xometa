@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Swing Gate",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Swung gate pulse. Adds human feel to modulation.",
+  "tags": [
+    "swing",
+    "gate",
+    "human",
+    "feel",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.42,
+    "movement": 0.52,
+    "density": 0.5,
+    "space": 0.28,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.0,
+      "optic_pulseShape": 1,
+      "optic_pulseAccent": 0.7,
+      "optic_pulseSwing": 0.4,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.0,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.55,
+      "optic_inputGain": 0.7,
+      "optic_modDepth": 0.58,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.72,
+      "optic_vizSpeed": 0.5,
+      "optic_vizFeedback": 0.1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

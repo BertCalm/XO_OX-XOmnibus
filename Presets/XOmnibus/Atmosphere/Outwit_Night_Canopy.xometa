@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Night Canopy",
+  "mood": "Atmosphere",
+  "engines": [
+    "Outwit"
+  ],
+  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Rule 150 \u2014 the canopy of the giant kelp forest at night. The big fronds are dark but the micro-organisms still glow faint. Filter near-closed, reverb massive.",
+  "tags": [
+    "atmosphere",
+    "kelp",
+    "canopy",
+    "night",
+    "micro"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "CHAOS",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.82,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Outwit": {
+      "owit_rule": 150,
+      "owit_armBalance": 0.48,
+      "owit_mutationRate": 0.15,
+      "owit_armSpread": 0.5,
+      "owit_sync": 0.2,
+      "owit_feedbackAmt": 0.42,
+      "owit_chaos": 0.2,
+      "owit_density": 0.45,
+      "owit_ampAttack": 0.28,
+      "owit_ampDecay": 0.65,
+      "owit_ampSustain": 0.68,
+      "owit_ampRelease": 3.0,
+      "owit_filterCutoff": 0.38,
+      "owit_filterRes": 0.2,
+      "owit_lfoRate": 0.05,
+      "owit_lfoDepth": 0.14,
+      "owit_macroCharacter": 0.0,
+      "owit_macroChaos": 0.0,
+      "owit_macroCoupling": 0.0,
+      "owit_macroSpace": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

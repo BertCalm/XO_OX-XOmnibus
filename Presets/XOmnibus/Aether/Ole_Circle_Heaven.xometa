@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Circle Heaven",
+  "mood": "Aether",
+  "engines": ["Ole"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Full circle alliance dissolved into aether, the community beyond the physical world.",
+  "tags": ["latin", "circle", "heaven", "community", "aether"],
+  "macroLabels": ["DRAMA", "FUEGO", "ISLA", "SIDES"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.72, "movement": 0.45, "density": 0.45, "space": 0.95, "aggression": 0.08},
+  "parameters": {
+    "Ole": {
+      "ole_allianceConfig": 2,
+      "ole_allianceBlend": 0.85,
+      "ole_aunt1Level": 0.68,
+      "ole_aunt1Brightness": 0.55,
+      "ole_aunt1StrumRate": 2.5,
+      "ole_aunt2Level": 0.65,
+      "ole_aunt2GourdSize": 0.55,
+      "ole_aunt2CoinPress": 0.58,
+      "ole_aunt3Level": 0.68,
+      "ole_aunt3Brightness": 0.58,
+      "ole_aunt3Tremolo": 0.52,
+      "ole_husbandOudLevel": 0.62,
+      "ole_husbandBouzLevel": 0.58,
+      "ole_husbandPinLevel": 0.52,
+      "ole_damping": 0.1,
+      "ole_sympatheticAmt": 0.92,
+      "ole_driftRate": 0.8,
+      "ole_driftDepth": 0.28,
+      "ole_macroDrama": 0.62,
+      "ole_macroFuego": 0.62,
+      "ole_macroIsla": 0.82,
+      "ole_macroSides": 0.78
+    }
+  },
+  "macros": {"DRAMA": 0.62, "FUEGO": 0.62, "ISLA": 0.82, "SIDES": 0.78},
+  "coupling": {"pairs": []}
+}

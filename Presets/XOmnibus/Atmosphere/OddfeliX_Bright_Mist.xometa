@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "Bright Mist",
+  "mood": "Atmosphere",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Very slow attack shimmer dissolving into a luminous cloud — pure ambient brightness.",
+  "tags": ["mist", "bright", "ambient", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.9, "warmth": 0.18, "movement": 0.22, "density": 0.5, "space": 0.85, "aggression": 0.05},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.12,
+      "snap_decay": 1.8,
+      "snap_detune": 0.38,
+      "snap_filterCutoff": 16000.0,
+      "snap_filterReso": 0.3,
+      "snap_filterEnvDepth": 0.15,
+      "snap_unison": 6,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.25,
+      "snap_polyphony": 8,
+      "snap_level": 0.55,
+      "snap_macroDart": 0.05,
+      "snap_macroDepth": 0.8,
+      "snap_macroSchool": 0.75,
+      "snap_macroSurface": 0.95
+    }
+  },
+  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.22, "COUPLING": 0.0, "SPACE": 0.85},
+  "coupling": {"pairs": []}
+}

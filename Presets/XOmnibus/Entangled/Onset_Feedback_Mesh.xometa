@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Feedback Mesh",
+  "mood": "Entangled",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Dense feedback mesh between all XVC coupling paths.",
+  "tags": [
+    "feedback",
+    "mesh",
+    "dense",
+    "coupling",
+    "entangled"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.56,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.3,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.5,
+      "perc_macro_punch": 0.55,
+      "perc_macro_space": 0.3,
+      "perc_macro_mutate": 0.42,
+      "perc_drive": 0.48,
+      "perc_level": 0.8,
+      "perc_masterTone": 0.55,
+      "perc_char_grit": 0.38,
+      "perc_char_warmth": 0.42,
+      "perc_fx_reverb_size": 0.3,
+      "perc_fx_reverb_decay": 0.42,
+      "perc_fx_reverb_mix": 0.22,
+      "perc_fx_delay_time": 0.28,
+      "perc_fx_delay_feedback": 0.2,
+      "perc_fx_delay_mix": 0.12,
+      "perc_fx_lofi_bits": 13,
+      "perc_fx_lofi_mix": 0.08,
+      "perc_xvc_global_amount": 0.75,
+      "perc_xvc_kick_to_snare_filter": 0.7,
+      "perc_xvc_kick_to_tom_pitch": 0.65,
+      "perc_xvc_snare_to_hat_decay": 0.6,
+      "perc_xvc_snare_to_perc_blend": 0.55,
+      "perc_xvc_hat_choke": 0.65
+    }
+  },
+  "macros": {
+    "MACHINE": 0.5,
+    "PUNCH": 0.55,
+    "SPACE": 0.3,
+    "MUTATE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

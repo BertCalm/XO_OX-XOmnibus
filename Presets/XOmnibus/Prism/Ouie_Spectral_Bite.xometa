@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Bite",
+  "mood": "Prism",
+  "engines": ["Ouie"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Hard hammer attack biting into spectral resonance peaks, sharp and refractive.",
+  "tags": ["prism", "attack", "spectral", "sharp"],
+  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_ampAtk": 0.005,
+      "ouie_ampDec": 0.22,
+      "ouie_ampSus": 0.65,
+      "ouie_ampRel": 0.65,
+      "ouie_filterACutoff": 7500,
+      "ouie_filterARes": 0.8,
+      "ouie_filterBCutoff": 10000,
+      "ouie_filterBRes": 0.75,
+      "ouie_hammerDepth": 0.9,
+      "ouie_hammerPos": 0.7,
+      "ouie_lfo1Rate": 0.8,
+      "ouie_lfo1Depth": 0.3,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 0.6,
+      "ouie_lfo2Depth": 0.25,
+      "ouie_portaAuto": 0.0,
+      "ouie_macroHammer": 0.9,
+      "ouie_macroCartilage": 0.72,
+      "ouie_macroAmpullae": 0.78,
+      "ouie_macroCurrent": 0.48
+    }
+  },
+  "macros": {
+    "HAMMER": 0.9,
+    "CARTILAGE": 0.72,
+    "AMPULLAE": 0.78,
+    "CURRENT": 0.48
+  },
+  "coupling": {"pairs": []}
+}

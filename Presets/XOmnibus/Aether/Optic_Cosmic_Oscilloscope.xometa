@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Cosmic Oscilloscope",
+  "mood": "Aether",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Oscilloscope revealing cosmic signal patterns.",
+  "tags": [
+    "cosmic",
+    "oscilloscope",
+    "signal",
+    "pattern",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.3,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.88,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 0.2,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.32,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 1,
+      "optic_pulseEvolve": 0.1,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.52,
+      "optic_inputGain": 0.62,
+      "optic_modDepth": 0.42,
+      "optic_modMixPulse": 0.82,
+      "optic_modMixSpec": 0.18,
+      "optic_vizMode": 0,
+      "optic_vizIntensity": 0.62,
+      "optic_vizSpeed": 0.25,
+      "optic_vizFeedback": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

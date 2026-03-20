@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "ORGANON Entangle",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "ORGANON's metabolic outputs driving the entrainment depth \u2014 biological rhythms shaping which voices synchronize and when. An organism using delay topology as its skeleton.",
+  "tags": [
+    "coupling",
+    "organon",
+    "metabolic",
+    "biological",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.7,
+    "space": 0.82,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.75,
+      "olap_spread": 0.85,
+      "olap_decay": 8.0,
+      "olap_modDepth": 0.35,
+      "olap_modRate": 0.08,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

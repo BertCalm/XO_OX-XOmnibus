@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Neon Lissajous",
+  "mood": "Prism",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Vivid neon lissajous figures with high feedback.",
+  "tags": [
+    "neon",
+    "lissajous",
+    "vivid",
+    "feedback",
+    "prism"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.2,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.38,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 2.0,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.6,
+      "optic_pulseSwing": 0.1,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.35,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.8,
+      "optic_inputGain": 0.8,
+      "optic_modDepth": 0.75,
+      "optic_modMixPulse": 0.55,
+      "optic_modMixSpec": 0.45,
+      "optic_vizMode": 2,
+      "optic_vizIntensity": 0.95,
+      "optic_vizSpeed": 0.78,
+      "optic_vizFeedback": 0.62
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
