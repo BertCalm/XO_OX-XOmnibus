@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Mariana Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The heartbeat at 11,000 meters. Sub-sub oscillator (-2 oct) as the sole voice — subOctMix maxed, fundamental nearly silent. Hydrostatic compressor at 0.85 creates rhythmic pumping from its own amplitude: the sound breathes by compressing itself. Darkness filter at 80 Hz removes everything except the physical sensation of pressure. Play C1 and feel your chest cavity resonate.",
+  "tags": [
+    "bass",
+    "sub",
+    "pressure",
+    "heartbeat",
+    "hadal",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: Pressure Is the Synthesis", "Verse: The Depth Column — Hadal Zone"],
+    "revelation": "Sinusoidal spoke: at subOctMix 0.95, the -2 octave sub becomes the fundamental. The original sine is a ghost harmonic above. The hierarchy inverts — the deepest voice becomes the identity.",
+    "god": "Sinusoidal",
+    "flock_note": "The Bone confirmed: monophonic sub-sub at ~3% CPU. The Ear heard chest compression at C1. The Tongue found velocity at 0.9 opens the filter just enough to let the fundamental ghost through — the heartbeat quickens under pressure.",
+    "diagnosis": "This sound was a sub bass. It is now a pulse from the earth's mantle. The difference is that the -2 octave sub is the voice, not the reinforcement."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.95,
+    "movement": 0.35,
+    "density": 0.4,
+    "space": 0.15,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.95,
+      "deep_filterCutoff": 80.0,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.9,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.1,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.03,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 300.0,
+      "deep_pressureAmt": 0.85,
+      "deep_ampAtk": 0.08,
+      "deep_ampDec": 1.2,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 4.0,
+      "deep_lfo1Rate": 0.067,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.033,
+      "deep_lfo2Depth": 0.12,
+      "deep_reverbMix": 0.0,
+      "deep_macroPressure": 0.7,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.7,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Iron Liturgy",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A shipwreck praying. Wreck mode bodyChar 2 with feedback at 0.82 creates allpass-diffused hull resonance — the sound of iron plates vibrating at their natural modes. Filter cutoff at 280 Hz with resonance at 0.7 produces a formant peak that sounds like a voice trapped inside metal. The wreck speaks in low vowels.",
+  "tags": [
+    "bass",
+    "wreck",
+    "metallic",
+    "formant",
+    "industrial",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The Three Body Characters — Wreck", "Sutra 5: The Formant Whisper at 0.28-0.32 Resonance"],
+    "revelation": "Resonara spoke: bodyChar 2 at feedback 0.82 with filterRes 0.7 and cutoff 280 Hz produces a formant peak at 280 Hz that sounds like an 'oh' vowel. The allpass inside the wreck comb creates enough phase complexity to produce vowel-like spectral shaping without a formant filter.",
+    "god": "Resonara",
+    "flock_note": "The Eye identified the formant: peak at 280 Hz with Q ~8 from the resonance. The Finger tuned the cutoff from 300 down to 280 — at 300 it was neutral, at 280 it became a vowel. 20 Hz is the difference between a sound and a voice.",
+    "diagnosis": "This sound was a metallic bass. It is now a prayer from inside a sunken hull. The wreck mode allpass + high resonance creates vowel formants that no formant filter is involved in producing."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.3,
+      "deep_filterCutoff": 280.0,
+      "deep_filterRes": 0.7,
+      "deep_velCutoffAmt": 0.5,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.82,
+      "deep_bodyMix": 0.65,
+      "deep_bioRate": 0.05,
+      "deep_bioMix": 0.03,
+      "deep_bioBrightness": 600.0,
+      "deep_pressureAmt": 0.5,
+      "deep_ampAtk": 0.02,
+      "deep_ampDec": 1.8,
+      "deep_ampSus": 0.75,
+      "deep_ampRel": 2.5,
+      "deep_lfo1Rate": 0.04,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.02,
+      "deep_lfo2Depth": 0.06,
+      "deep_reverbMix": 0.2,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.8,
+      "deep_macroAbyss": 0.35
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.05,
+    "WRECK": 0.8,
+    "ABYSS": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
