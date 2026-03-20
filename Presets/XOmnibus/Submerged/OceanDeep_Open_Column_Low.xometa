@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Open Column Low",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The coupling preset: Full Column Low. OCEANDEEP holds the bottom of the water column — filterCutoff=700, the shallow end of the darkness filter, maximum transparency. bodyChar=0 (Open Water): no coloration, no room, just the column. This pairs with OPENSKY at the surface. Together they describe the complete vertical range of existence.",
+  "tags": ["bass", "submerged", "coupling", "open water", "column", "paired", "OPENSKY", "vertical", "clean"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The water column is one continuous body.",
+      "OPENSKY holds the surface. OCEANDEEP holds the floor.",
+      "Together: the full vertical range of everything."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "Designed to pair with an OPENSKY preset. filterCutoff=700 is as high as OCEANDEEP goes — approaching the surface without breaking through. subLevel=0.5 leaves room for OPENSKY to occupy the upper register. The PRESSURE macro can gradually separate the two engines by adding compression.",
+    "diagnosis": "filterCutoff=700: the shallowest point of the darkness filter constraint — maximum brightness within the rule. bodyChar=0 (Open Water): no waveguide coloration for clean coupling. subLevel=0.5: balanced sub presence, not competing with upper registers. pressureAmt=0.2: minimal compression for clean column definition."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.5,
+      "deep_subOctMix": 0.25,
+      "deep_filterCutoff": 700,
+      "deep_filterRes": 0.2,
+      "deep_velCutoffAmt": 0.35,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.05,
+      "deep_bodyMix": 0.1,
+      "deep_bioRate": 0.15,
+      "deep_bioMix": 0.1,
+      "deep_bioBrightness": 1200,
+      "deep_pressureAmt": 0.2,
+      "deep_ampAtk": 0.02,
+      "deep_ampDec": 0.4,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 1.0,
+      "deep_lfo1Rate": 0.2,
+      "deep_lfo1Depth": 0.06,
+      "deep_lfo2Rate": 0.12,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.25,
+      "deep_macroPressure": 0.2,
+      "deep_macroCreature": 0.1,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.15
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.2,
+    "CREATURE": 0.1,
+    "WRECK": 0.0,
+    "ABYSS": 0.15
+  },
+  "coupling": {"pairs": []}
+}

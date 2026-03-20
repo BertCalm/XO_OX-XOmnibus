@@ -5,14 +5,14 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "High braid depth with Torus (5,7) \u2014 complex winding creates otherworldly harmonics. Long attack, ethereal character. The sound arrives from another dimension.",
+  "description": "Very quiet, very spacious. Sine strands at minimum braid depth with maximum reverb. The coupling is a whisper \u2014 barely there but felt. A thread connecting worlds.",
   "dna": {
-    "brightness": 0.55,
-    "warmth": 0.5,
-    "movement": 0.4,
-    "density": 0.5,
-    "space": 0.7,
-    "aggression": 0.05
+    "brightness": 0.35,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.95,
+    "aggression": 0.0
   },
   "engines": [
     "Orbweave"
@@ -24,22 +24,22 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Astral Knot",
+  "name": "Spirit Thread",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 1,
       "weave_strandTune": 0.0,
-      "weave_knotType": 2,
-      "weave_braidDepth": 0.75,
-      "weave_torusP": 5,
-      "weave_torusQ": 7,
-      "weave_filterCutoff": 8000,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.1,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 4000,
       "weave_filterReso": 0.0,
       "weave_filterType": 0,
-      "weave_ampA": 2.0,
+      "weave_ampA": 3.0,
       "weave_ampD": 1.0,
-      "weave_ampS": 0.8,
-      "weave_ampR": 6.0,
+      "weave_ampS": 0.7,
+      "weave_ampR": 12.0,
       "weave_lfo1Type": 0,
       "weave_lfo1Target": 0,
       "weave_lfo1Depth": 0.0,
@@ -49,8 +49,8 @@
       "weave_lfo2Depth": 0.0,
       "weave_lfo2Rate": 1.0,
       "weave_fx1Type": 3,
-      "weave_fx1Mix": 0.5,
-      "weave_fx1Param": 0.55,
+      "weave_fx1Mix": 0.65,
+      "weave_fx1Param": 0.7,
       "weave_fx2Type": 0,
       "weave_fx2Mix": 0.0,
       "weave_fx2Param": 0.3,
@@ -61,7 +61,7 @@
       "weave_macroTension": 0.0,
       "weave_macroKnot": 0.0,
       "weave_macroSpace": 0.0,
-      "weave_level": 0.8,
+      "weave_level": 0.5,
       "weave_voiceMode": 3,
       "weave_pitchBendRange": 2,
       "weave_glideTime": 0.0
@@ -70,11 +70,11 @@
   "schema_version": 1,
   "sequencer": null,
   "tags": [
-    "astral",
-    "otherworldly",
-    "torus",
-    "complex",
-    "dimensional"
+    "spirit",
+    "quiet",
+    "spacious",
+    "whisper",
+    "minimal"
   ],
   "tempo": null,
   "version": "1.0.0"

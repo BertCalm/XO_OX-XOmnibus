@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Submarine Hull",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "A nuclear submarine at 400 meters. The hull is 50mm of HY-80 steel. It groans under lateral pressure. The comb filter is the metal — short delay, allpass diffusion, the distinct ring of a hollow chamber built to withstand crushing force.",
+  "tags": ["bass", "submerged", "submarine", "industrial", "wreck", "metal", "hull", "heavy", "compression"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The hull is a musical instrument built by engineers who never thought of music.",
+      "Every rivet is a tuned frequency. The ocean plays them.",
+      "pressureAmt=0.5 — the submarine survives. At 0.9, the metaphor ends."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "WRECK macro controls hull mix. PRESSURE macro adds hydrostatic compression — push past 0.7 and the hull begins to fail. The industrial sub-bass core sits at filterCutoff=280 for mid-depth warmth with metal weight.",
+    "diagnosis": "bodyChar=2 (Wreck): short comb + allpass diffusion — the signature of a hollow metal chamber. bodyMix=0.9 makes the hull completely dominant. pressureAmt=0.5 gives realistic submarine depth compression without collapse. filterCutoff=280 for mid-depth industrial weight."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.42,
+    "movement": 0.12,
+    "density": 0.78,
+    "space": 0.15,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 280,
+      "deep_filterRes": 0.35,
+      "deep_velCutoffAmt": 0.25,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.9,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 500,
+      "deep_pressureAmt": 0.5,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 0.9,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 2.2,
+      "deep_lfo1Rate": 0.06,
+      "deep_lfo1Depth": 0.07,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.15,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.9,
+      "deep_macroAbyss": 0.55
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.5,
+    "CREATURE": 0.0,
+    "WRECK": 0.9,
+    "ABYSS": 0.55
+  },
+  "coupling": {"pairs": []}
+}

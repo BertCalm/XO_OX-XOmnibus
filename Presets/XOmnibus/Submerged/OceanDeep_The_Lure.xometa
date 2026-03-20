@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "The Lure",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The anglerfish strategy. At pianissimo: total darkness, a sub-bass rumble barely present. At fortissimo: the lure fires — velCutoffAmt=1.0 opens the filter completely, a flash of brightness, a creature revealed. The prey does not understand what it sees until it is too late.",
+  "tags": ["bass", "submerged", "velocity", "anglerfish", "predator", "dynamic", "expressive", "lure", "D001"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "D001: velocity controls the cutoff. This is doctrine.",
+      "At pianissimo: darkness. At fortissimo: the lure fires.",
+      "The prey sees the light for 0.001 seconds before it understands the danger."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "This preset REQUIRES velocity expression to reveal its nature. A static MIDI velocity reveals nothing — only the sub rumble. Sweep velocity from 1 to 127 on each note. The darkness gives way to the lure. CREATURE macro adds bioluminescent shimmer to the lure flash.",
+    "diagnosis": "velCutoffAmt=1.0 — maximum D001 expression. At low velocity, filterCutoff=100 stays dark. At high velocity, cutoff sweeps up toward 800 Hz — the lure fires. bioMix=0.4 adds organic shimmer to the velocity response. bodyChar=0 (Open Water) keeps the lure clean, not industrial."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.2,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 100,
+      "deep_filterRes": 0.55,
+      "deep_velCutoffAmt": 1.0,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.15,
+      "deep_bodyMix": 0.3,
+      "deep_bioRate": 0.2,
+      "deep_bioMix": 0.4,
+      "deep_bioBrightness": 2200,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.001,
+      "deep_ampDec": 0.6,
+      "deep_ampSus": 0.7,
+      "deep_ampRel": 1.8,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.08,
+      "deep_lfo2Depth": 0.07,
+      "deep_reverbMix": 0.22,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.4,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.4,
+    "WRECK": 0.0,
+    "ABYSS": 0.5
+  },
+  "coupling": {"pairs": []}
+}

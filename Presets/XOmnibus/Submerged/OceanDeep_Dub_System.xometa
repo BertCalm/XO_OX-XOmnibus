@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Dub System",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Resonara's revelation. filterCutoff=200, filterRes=0.8, bodyMix=0, bioMix=0. The pure sub plus a resonant peak — the engineer's system check tone, the sound check before the bass drops, the frequency that tests whether the speaker can be trusted.",
+  "tags": ["bass", "submerged", "dub", "system", "sub", "resonant", "pure", "clean", "foundation"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "Before the music there is the check tone.",
+      "Resonara speaks: 200 Hz, resonance at 0.8 — is the system ready?",
+      "The body is silent. The bio is silent. Only the frequency remains."
+    ],
+    "revelation": "The System Check",
+    "god": "Resonara",
+    "flock_note": "This is the canonical dub system tone discovered during the OCEANDEEP retreat. bodyMix=0, bioMix=0 strips everything away — pure sub oscillator feeding through a resonant peak at 200 Hz. Play it on a proper system. This is how you know the speakers are ready.",
+    "diagnosis": "Resonara's Revelation in preset form. filterCutoff=200: the dub standard. filterRes=0.8: the resonant peak that defines the note. bodyMix=0.0: no waveguide coloration — purity. bioMix=0.0: no bioluminescence — silence except for what matters. subLevel=1.0 for maximum sub presence."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.55,
+    "movement": 0.0,
+    "density": 0.7,
+    "space": 0.05,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 1.0,
+      "deep_subOctMix": 0.2,
+      "deep_filterCutoff": 200,
+      "deep_filterRes": 0.8,
+      "deep_velCutoffAmt": 0.0,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.1,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 600,
+      "deep_pressureAmt": 0.25,
+      "deep_ampAtk": 0.001,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 0.8,
+      "deep_lfo1Rate": 0.05,
+      "deep_lfo1Depth": 0.0,
+      "deep_lfo2Rate": 0.08,
+      "deep_lfo2Depth": 0.0,
+      "deep_reverbMix": 0.0,
+      "deep_macroPressure": 0.25,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.35
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.25,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.35
+  },
+  "coupling": {"pairs": []}
+}

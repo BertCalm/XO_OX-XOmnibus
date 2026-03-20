@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Trench Bass",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The sub-bass that moves air. filterCutoff=80 sits at the edge of human hearing — felt in the sternum, not heard in the ears. subOctMix=0.7 adds a full octave below. At concert volume this displaces the air in the room. On headphones it is a rumour of a frequency.",
+  "tags": ["bass", "submerged", "sub-bass", "trench", "hadal", "physical", "infrasonic", "pressure", "deep"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "80 Hz is heard. The sub octave is felt.",
+      "A proper sound system is required to know this note exists.",
+      "Headphone listeners will hear a suggestion. Speaker listeners will feel the walls."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "This is a physical preset. Requires a subwoofer or large speaker system to experience fully. On headphones the sub octave is reduced. ABYSS macro sweeps the darkness filter fully closed — use this to take the preset from infrasonic rumble to silence.",
+    "diagnosis": "filterCutoff=80: deep hadal column — maximum darkness within practical range. subOctMix=0.7: the sub octave is the feature. pressureAmt=0.7: significant compression, the ocean is present. filterRes=0.25: low resonance to prevent peaks at inaudible frequencies. This is the deepest playable pitch in the collection."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.01,
+    "warmth": 0.4,
+    "movement": 0.1,
+    "density": 0.8,
+    "space": 0.12,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.95,
+      "deep_subOctMix": 0.7,
+      "deep_filterCutoff": 80,
+      "deep_filterRes": 0.25,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.1,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.06,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 350,
+      "deep_pressureAmt": 0.7,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 1.5,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 4.0,
+      "deep_lfo1Rate": 0.04,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.1,
+      "deep_macroPressure": 0.7,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.8
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.7,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.8
+  },
+  "coupling": {"pairs": []}
+}

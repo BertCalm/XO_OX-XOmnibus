@@ -5,14 +5,14 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "High braid depth with Torus (5,7) \u2014 complex winding creates otherworldly harmonics. Long attack, ethereal character. The sound arrives from another dimension.",
+  "description": "Lead texture designed to couple with ODYSSEY drift engine. Solomon coupling mirrors Odyssey's dual oscillator architecture. LFOToPitch coupling recommended.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.5,
-    "movement": 0.4,
+    "movement": 0.3,
     "density": 0.5,
-    "space": 0.7,
-    "aggression": 0.05
+    "space": 0.2,
+    "aggression": 0.2
   },
   "engines": [
     "Orbweave"
@@ -23,23 +23,23 @@
     "KNOT",
     "SPACE"
   ],
-  "mood": "Aether",
-  "name": "Astral Knot",
+  "mood": "Family",
+  "name": "Braid for Odyssey",
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1,
+      "weave_strandType": 2,
       "weave_strandTune": 0.0,
-      "weave_knotType": 2,
-      "weave_braidDepth": 0.75,
-      "weave_torusP": 5,
-      "weave_torusQ": 7,
-      "weave_filterCutoff": 8000,
-      "weave_filterReso": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.5,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 6000,
+      "weave_filterReso": 0.15,
       "weave_filterType": 0,
-      "weave_ampA": 2.0,
-      "weave_ampD": 1.0,
-      "weave_ampS": 0.8,
-      "weave_ampR": 6.0,
+      "weave_ampA": 0.02,
+      "weave_ampD": 0.3,
+      "weave_ampS": 0.7,
+      "weave_ampR": 0.6,
       "weave_lfo1Type": 0,
       "weave_lfo1Target": 0,
       "weave_lfo1Depth": 0.0,
@@ -48,9 +48,9 @@
       "weave_lfo2Target": 0,
       "weave_lfo2Depth": 0.0,
       "weave_lfo2Rate": 1.0,
-      "weave_fx1Type": 3,
-      "weave_fx1Mix": 0.5,
-      "weave_fx1Param": 0.55,
+      "weave_fx1Type": 0,
+      "weave_fx1Mix": 0.0,
+      "weave_fx1Param": 0.3,
       "weave_fx2Type": 0,
       "weave_fx2Mix": 0.0,
       "weave_fx2Param": 0.3,
@@ -62,19 +62,19 @@
       "weave_macroKnot": 0.0,
       "weave_macroSpace": 0.0,
       "weave_level": 0.8,
-      "weave_voiceMode": 3,
+      "weave_voiceMode": 1,
       "weave_pitchBendRange": 2,
-      "weave_glideTime": 0.0
+      "weave_glideTime": 0.06
     }
   },
   "schema_version": 1,
   "sequencer": null,
   "tags": [
-    "astral",
-    "otherworldly",
-    "torus",
-    "complex",
-    "dimensional"
+    "odyssey",
+    "coupling",
+    "lead",
+    "mirror",
+    "solomon"
   ],
   "tempo": null,
   "version": "1.0.0"

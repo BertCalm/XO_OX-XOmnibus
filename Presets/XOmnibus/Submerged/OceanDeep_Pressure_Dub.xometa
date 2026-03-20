@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Dub",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Reggae sub-bass at 3,000 PSI. The hydrostatic compression is the dub compression — pressureAmt=0.85 means the note attacks and then surrenders to the weight of the water. The filterCutoff=300 places this in the mid-depth column: warm enough to feel in the chest, dark enough to be subterranean.",
+  "tags": ["bass", "submerged", "dub", "reggae", "pressure", "compression", "sub-bass", "warm", "heavy"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The dub bass has always been water. This makes it literal.",
+      "pressureAmt=0.85: the ocean IS the compressor.",
+      "filterCutoff=300: warm enough for the dance floor, dark enough for the abyss."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "PRESSURE macro is the dub compressor. The higher you push it, the more the ocean sits on top of the bass. For classic reggae feel keep PRESSURE at 0.6-0.75. For deep dub spirituality push to 0.9 and let the bass nearly disappear.",
+    "diagnosis": "pressureAmt=0.85: heavy hydrostatic compression gives authentic dub weight. filterCutoff=300 with filterRes=0.6: the dub resonant peak without excessive brightness. bodyChar=0 (Open Water): clean sub without waveguide coloration. This is the most playable preset in the collection."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.2,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.9,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 300,
+      "deep_filterRes": 0.6,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.1,
+      "deep_bodyMix": 0.15,
+      "deep_bioRate": 0.1,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 700,
+      "deep_pressureAmt": 0.85,
+      "deep_ampAtk": 0.003,
+      "deep_ampDec": 0.7,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.2,
+      "deep_lfo1Rate": 0.08,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.08,
+      "deep_macroPressure": 0.85,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.4
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.85,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.4
+  },
+  "coupling": {"pairs": []}
+}

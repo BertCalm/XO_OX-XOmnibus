@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Cave Singer",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "An underwater cave that has found its own pitch. The walls are limestone. The water is cold and still. Somewhere inside, the resonance has become a voice — slightly detuned, haunted, ancient.",
+  "tags": ["bass", "submerged", "cave", "resonance", "haunting", "eerie", "pitched", "atmospheric"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The cave does not echo — it remembers.",
+      "Each note arrives and the limestone teaches it a new pitch.",
+      "You are not playing the instrument. The cave is."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "WRECK macro at zero keeps this pure Cave. Raise CREATURE for bioluminescent shimmer from deep within the grotto. The cave sings back whatever you give it.",
+    "diagnosis": "bodyChar=1 (Cave): slightly detuned comb creates that signature eerie pitched resonance. bodyFeedback=0.6 sustains the cave's own voice. bodyMix=0.8 makes the cave dominant over the direct signal. filterCutoff=350 — mid-depth, enough warmth to feel the limestone."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.6,
+      "deep_subOctMix": 0.3,
+      "deep_filterCutoff": 350,
+      "deep_filterRes": 0.45,
+      "deep_velCutoffAmt": 0.35,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.6,
+      "deep_bodyMix": 0.8,
+      "deep_bioRate": 0.15,
+      "deep_bioMix": 0.05,
+      "deep_bioBrightness": 800,
+      "deep_pressureAmt": 0.3,
+      "deep_ampAtk": 0.15,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 4.0,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.08,
+      "deep_lfo2Rate": 0.07,
+      "deep_lfo2Depth": 0.05,
+      "deep_reverbMix": 0.28,
+      "deep_macroPressure": 0.3,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.45
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.3,
+    "CREATURE": 0.05,
+    "WRECK": 0.0,
+    "ABYSS": 0.45
+  },
+  "coupling": {"pairs": []}
+}

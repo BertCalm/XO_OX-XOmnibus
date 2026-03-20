@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Velocity Darkness",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Maximum D001 expression plus a bioluminescent LFO at 0.06 Hz that modulates the bio brightness — the darkness itself has a slow organic pulse. velCutoffAmt=0.9: the player's touch is everything. A ghost note barely opens the filter. A full strike reveals the organism below the surface.",
+  "tags": ["bass", "submerged", "velocity", "expressive", "D001", "bioluminescence", "organic", "dynamic", "living"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "D001: velocity shapes the cutoff. This is not optional — it is the engine's doctrine.",
+      "velCutoffAmt=0.9: you own the darkness. Your touch controls the light.",
+      "0.06 Hz: the bioluminescence breathes on its own schedule, underneath your expression."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "Two modulation systems operate simultaneously: your velocity (D001, conscious) and the bio LFO at 0.06 Hz (autonomous, unconscious). Use soft touch for meditative exploration of the darkness. Strike hard for moments when the creature surfaces. CREATURE macro increases the autonomous bio breath.",
+    "diagnosis": "velCutoffAmt=0.9: near-maximum D001 — soft touch gives filterCutoff=120, hard strike approaches 800 Hz. lfo2Rate=0.06 Hz on bioBrightness: slow autonomous organism breath beneath the velocity expression. The two modulations create a complex living darkness. filterCutoff=120 base: very dark by default."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.28,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.45,
+      "deep_filterCutoff": 120,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.9,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.15,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.25,
+      "deep_bioMix": 0.35,
+      "deep_bioBrightness": 1400,
+      "deep_pressureAmt": 0.4,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.75,
+      "deep_ampRel": 2.5,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.08,
+      "deep_lfo2Rate": 0.06,
+      "deep_lfo2Depth": 0.18,
+      "deep_reverbMix": 0.2,
+      "deep_macroPressure": 0.4,
+      "deep_macroCreature": 0.35,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.55
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.4,
+    "CREATURE": 0.35,
+    "WRECK": 0.0,
+    "ABYSS": 0.55
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Comb Cathedral",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The cave became a cathedral of resonance. bodyFeedback=0.7, bodyMix=1.0, bodyChar=1. At these settings the Cave comb filter is self-sustaining — each note becomes an organ pipe that speaks back to you in the underwater dark. Gothic architecture assembled from water and limestone.",
+  "tags": ["bass", "submerged", "cave", "cathedral", "resonance", "feedback", "organ", "gothic", "atmospheric"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The cave became a cathedral by accumulation — one drip, one resonance, ten thousand years.",
+      "bodyFeedback=0.7: the cave sustains its own memory of your note.",
+      "bodyMix=1.0: the cathedral is everything. The player is incidental."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "WRECK macro adds the steel character to the limestone — the cathedral was once a ship. Slowly increase WRECK to transform gothic stone into industrial ruin. Never exceed bodyFeedback=0.8 or the cave holds the note forever. That is a choice you can make.",
+    "diagnosis": "bodyFeedback=0.7: near self-sustaining comb resonance — the cathedral sings back. bodyMix=1.0: total body dominance, the direct signal is architecture. bodyChar=1 (Cave): the specifically detuned comb that makes this haunting rather than clean. filterCutoff=400: mid-depth, the gothic stone has warmth."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.4,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.55,
+      "deep_subOctMix": 0.2,
+      "deep_filterCutoff": 400,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.7,
+      "deep_bodyMix": 1.0,
+      "deep_bioRate": 0.1,
+      "deep_bioMix": 0.08,
+      "deep_bioBrightness": 900,
+      "deep_pressureAmt": 0.25,
+      "deep_ampAtk": 0.2,
+      "deep_ampDec": 1.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 5.5,
+      "deep_lfo1Rate": 0.09,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.06,
+      "deep_reverbMix": 0.38,
+      "deep_macroPressure": 0.25,
+      "deep_macroCreature": 0.08,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.35
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.25,
+    "CREATURE": 0.08,
+    "WRECK": 0.0,
+    "ABYSS": 0.35
+  },
+  "coupling": {"pairs": []}
+}

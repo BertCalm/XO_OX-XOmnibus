@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Current GB",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The deep-water thermohaline current at 1,500 meters — cold, saline, moving at 0.12 Hz (a long ocean wave). bioRate=0.12 Hz maps to the biological wave period. bioMix=0.4 and bioBrightness=600 Hz: the organism photophores pulse in time with the current. The sub lives beneath it all.",
+  "tags": ["bass", "submerged", "current", "thermohaline", "bioluminescence", "organic", "pulsing", "mid-depth", "living"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The thermohaline current moves water across the entire planet.",
+      "It does not hurry. 0.12 Hz is the pace of the deep ocean.",
+      "The organisms have synchronized their photophores to this rhythm over millennia."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Guru Bin transcendental companion to the factory Midnight Current preset. Where the factory preset has movement and darkness, this version adds the biological dimension — the living organisms pulsing at ocean wave frequency. CREATURE macro governs bio intensity. Let the bioRate of 0.12 Hz establish the groove.",
+    "diagnosis": "bioRate=0.12 Hz: mapped to ocean wave frequency — this is the preset's rhythm engine. bioMix=0.4: significant bio presence, the organisms are active. bioBrightness=600 Hz: warm biological photophore color, not alien white. filterCutoff=250: mid-depth column, cold and dark but with organic warmth. lfo1Rate=0.12 Hz synchronized to bioRate."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.55,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.3,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.35,
+      "deep_filterCutoff": 250,
+      "deep_filterRes": 0.38,
+      "deep_velCutoffAmt": 0.45,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.12,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.12,
+      "deep_bioMix": 0.4,
+      "deep_bioBrightness": 600,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.05,
+      "deep_ampDec": 1.0,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 3.0,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.12,
+      "deep_lfo2Rate": 0.08,
+      "deep_lfo2Depth": 0.06,
+      "deep_reverbMix": 0.28,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.4,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.4,
+    "WRECK": 0.0,
+    "ABYSS": 0.5
+  },
+  "coupling": {"pairs": []}
+}
