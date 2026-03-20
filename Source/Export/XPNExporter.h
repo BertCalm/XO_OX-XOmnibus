@@ -5,12 +5,11 @@
 #include "../Core/EngineRegistry.h"
 #include "../Core/MegaCouplingMatrix.h"
 #include "XPNCoverArt.h"
+#include "XPNVelocityCurves.h"
 
 #include <atomic>
 #include <cmath>
-#include <thread>
 #include <mutex>
-#include <future>
 
 namespace xomnibus {
 
@@ -98,7 +97,7 @@ private:
 };
 
 //==============================================================================
-// XPNExporter — Renders XOmnibus presets to WAV samples and packages them
+// XOriginate — Renders XOmnibus presets to WAV samples and packages them
 // as MPC-compatible .xpn expansion packs.
 //
 // IMPORTANT: All rendering runs on a worker thread (never the audio thread).
@@ -109,7 +108,7 @@ private:
 //   2. RootNote = 0         — MPC auto-detect convention
 //   3. Empty VelStart = 0   — prevents ghost triggering
 //
-class XPNExporter {
+class XOriginate {
 public:
 
     //==========================================================================
@@ -187,6 +186,21 @@ public:
         est.totalBytes = wavFileSize * est.totalWavFiles;
         return est;
     }
+
+    //==========================================================================
+    // APVTS injection — call before exporting to enable real audio rendering.
+    // Pass the live processor's APVTS so preset parameters can be loaded into
+    // the shared parameter tree before each render. Engine instances created
+    // for offline rendering attach to this APVTS and read values from it.
+    //
+    // Thread safety: preset parameter writes are atomic float stores.
+    // Concurrent live audio rendering will see the export's parameter values
+    // during the export window — this is acceptable since export is a batch
+    // operation that occupies the full rendering context.
+    //
+    // Call from the message thread before starting the export worker.
+    //==========================================================================
+    void setAPVTS(juce::AudioProcessorValueTreeState* a) { sharedApvts = a; }
 
     //==========================================================================
     // Export entry point — call from worker thread
@@ -269,106 +283,54 @@ public:
             int totalNotesForPreset = (int)notes.size() * effectiveSettings.velocityLayers;
             progress.totalNotes = totalNotesForPreset;
 
-            // Build work items for parallel rendering
-            struct RenderJob {
-                int note;
-                int velLayer;
-                float velocity;
-                juce::File wavFile;
-            };
-            std::vector<RenderJob> jobs;
-            jobs.reserve((size_t)totalNotesForPreset);
+            // Build offline render context — one per preset, reused across all notes.
+            // Applies preset parameters to the shared APVTS and creates engine instances.
+            auto ctx = buildOfflineContext(preset, effectiveSettings.sampleRate);
 
-            for (int ni = 0; ni < (int)notes.size(); ++ni)
+            int notesDone = 0;
+            bool renderFailed = false;
+            juce::String renderError;
+
+            for (int ni = 0; ni < (int)notes.size() && !cancelled.load(); ++ni)
             {
                 int note = notes[(size_t)ni];
-                for (int vel = 0; vel < effectiveSettings.velocityLayers; ++vel)
+                for (int vel = 0; vel < effectiveSettings.velocityLayers && !cancelled.load(); ++vel)
                 {
-                    jobs.push_back({
-                        note, vel,
-                        velocityForLayer(vel, effectiveSettings.velocityLayers),
-                        presetDir.getChildFile(wavFilename(preset.name, note, vel))
-                    });
-                }
-            }
+                    float velocity = velocityForLayer(vel, effectiveSettings.velocityLayers);
+                    auto wavFile = presetDir.getChildFile(wavFilename(preset.name, note, vel));
 
-            // Parallel rendering with thread pool
-            unsigned int numWorkers = juce::jmax(1u, std::thread::hardware_concurrency() - 1);
-            std::atomic<int> completedJobs { 0 };
-            std::atomic<bool> renderError { false };
-            juce::String firstError;
-            std::mutex errorMutex;
-            std::mutex progressMutex;
-
-            auto renderBatch = [&](size_t startIdx, size_t endIdx)
-            {
-                for (size_t j = startIdx; j < endIdx && !cancelled.load() && !renderError.load(); ++j)
-                {
-                    const auto& job = jobs[j];
-                    auto wavResult = renderNoteToWav(preset, job.note, job.velocity,
-                                                     effectiveSettings, job.wavFile);
+                    auto wavResult = renderNoteToWav(ctx, note, velocity,
+                                                     effectiveSettings, wavFile);
                     if (!wavResult.success)
                     {
-                        std::lock_guard<std::mutex> lock(errorMutex);
-                        if (!renderError.load())
-                        {
-                            renderError.store(true);
-                            firstError = wavResult.error;
-                        }
-                        return;
+                        renderFailed = true;
+                        renderError = wavResult.error;
+                        break;
                     }
 
-                    int done = completedJobs.fetch_add(1) + 1;
+                    result.samplesRendered++;
+                    result.totalSizeBytes += wavFile.getSize();
+                    ++notesDone;
 
-                    // Progress update — serialized via mutex to avoid data races
-                    if (progressCb && (done % juce::jmax(1, (int)numWorkers) == 0 || done == (int)jobs.size()))
+                    if (progressCb)
                     {
-                        std::lock_guard<std::mutex> lock(progressMutex);
-                        progress.currentNote = done;
-                        float presetFrac = (float)pi / (float)presets.size();
-                        float noteFrac = (float)done / (float)totalNotesForPreset;
-                        progress.overallProgress = presetFrac + noteFrac / (float)presets.size();
+                        progress.currentNote = notesDone;
+                        progress.overallProgress =
+                            ((float)pi + (float)notesDone / (float)totalNotesForPreset)
+                            / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
                             cancelled.store(true);
                     }
                 }
-            };
-
-            if (numWorkers <= 1 || jobs.size() <= 4)
-            {
-                // Small batch: run sequentially
-                renderBatch(0, jobs.size());
-            }
-            else
-            {
-                // Partition jobs across worker threads
-                std::vector<std::future<void>> futures;
-                size_t chunkSize = (jobs.size() + numWorkers - 1) / numWorkers;
-
-                for (unsigned int w = 0; w < numWorkers && w * chunkSize < jobs.size(); ++w)
-                {
-                    size_t start = w * chunkSize;
-                    size_t end = juce::jmin(start + chunkSize, jobs.size());
-                    futures.push_back(std::async(std::launch::async, renderBatch, start, end));
-                }
-
-                for (auto& f : futures)
-                    f.get();
+                if (renderFailed) break;
             }
 
-            if (renderError.load())
+            if (renderFailed)
             {
-                result.errorMessage = "WAV render failed for " + preset.name + ": " + firstError;
+                result.errorMessage = "WAV render failed for " + preset.name + ": " + renderError;
                 tempBundleDir.deleteRecursively();
                 return result;
-            }
-
-            // Tally results
-            for (const auto& job : jobs)
-            {
-                result.samplesRendered++;
-                result.totalSizeBytes += job.wavFile.getSize();
             }
 
             if (!cancelled)
@@ -518,6 +480,10 @@ private:
     static constexpr int  ROOT_NOTE      = 0;
     static constexpr int  EMPTY_VEL_START = 0;
 
+    // Shared APVTS — injected via setAPVTS() before export.
+    // Nullptr = default parameter values will be used (parameters won't match preset).
+    juce::AudioProcessorValueTreeState* sharedApvts = nullptr;
+
     //==========================================================================
     // Internal result types for error propagation
     //==========================================================================
@@ -526,6 +492,19 @@ private:
         bool success = true;
         juce::String error;
     };
+
+    //==========================================================================
+    // OfflineRenderContext — one per preset, reused across all notes.
+    // Holds fresh engine instances attached to the shared APVTS.
+    //==========================================================================
+
+    struct OfflineRenderContext
+    {
+        std::vector<std::unique_ptr<SynthEngine>> engines;
+        bool valid = false;
+    };
+
+    static constexpr int kOfflineBlockSize = 512;
 
     //==========================================================================
     // Note strategy
@@ -554,11 +533,56 @@ private:
 
     static float velocityForLayer(int layer, int totalLayers)
     {
-        if (totalLayers <= 1) return 0.8f;
-        if (totalLayers == 2) return layer == 0 ? 0.5f : 1.0f;
-        // 3 layers: soft, medium, hard
-        static constexpr float vels[] = { 0.3f, 0.7f, 1.0f };
-        return vels[juce::jlimit(0, 2, layer)];
+        return renderVelocityForLayer(layer, totalLayers, VelocityCurve::Musical);
+    }
+
+    //==========================================================================
+    // Offline render context — create once per preset
+    //==========================================================================
+
+    OfflineRenderContext buildOfflineContext(const PresetData& preset, double sampleRate)
+    {
+        OfflineRenderContext ctx;
+
+        if (!sharedApvts)
+            return ctx; // No APVTS — caller will get a silent render
+
+        // Apply preset parameters to the shared APVTS.
+        // Atomic stores are thread-safe; see setAPVTS() comment above.
+        for (const auto& [engName, paramsVar] : preset.parametersByEngine)
+        {
+            if (auto* obj = paramsVar.getDynamicObject())
+            {
+                for (const auto& prop : obj->getProperties())
+                {
+                    juce::String paramId = prop.name.toString();
+                    // Resolve OddfeliX legacy param aliases before writing
+                    auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
+                        ? resolveSnapParamAlias(paramId) : paramId;
+                    if (canonical.isEmpty()) continue; // removed param
+
+                    if (auto* raw = sharedApvts->getRawParameterValue(canonical))
+                        raw->store((float)prop.value);
+                }
+            }
+        }
+
+        // Create fresh engine instances for each engine in the preset
+        for (const auto& engName : preset.engines)
+        {
+            auto canonical = resolveEngineAlias(engName);
+            auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
+            if (!engine) continue;
+
+            engine->attachParameters(*sharedApvts);
+            engine->prepare(sampleRate, kOfflineBlockSize);
+            engine->prepareSilenceGate(sampleRate, kOfflineBlockSize, 500.0f);
+            engine->reset();
+            ctx.engines.push_back(std::move(engine));
+        }
+
+        ctx.valid = !ctx.engines.empty();
+        return ctx;
     }
 
     //==========================================================================
@@ -589,37 +613,74 @@ private:
     // WAV rendering (offline, worker thread)
     //==========================================================================
 
-    IOResult renderNoteToWav(const PresetData& /*preset*/, int note, float velocity,
+    // Render a single note using the offline engine context.
+    // ctx must have been prepared via buildOfflineContext() for this preset.
+    // If ctx.valid is false (no APVTS available), writes a silent placeholder.
+    IOResult renderNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
-        // Calculate total samples
         int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
         int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
-        // Render buffer (stereo)
         juce::AudioBuffer<float> buffer(2, totalSamples);
         buffer.clear();
 
-        // NOTE: In a full implementation, this would:
-        // 1. Create a temporary processor instance
-        // 2. Load the preset's engines and parameters
-        // 3. Set up coupling routes
-        // 4. Send MIDI noteOn(note, velocity)
-        // 5. Render holdSamples of audio
-        // 6. Send MIDI noteOff
-        // 7. Render tailSamples for release/FX decay
-        //
-        // For now, generate a silent placeholder WAV.
-        // Integration with the real processor is the next step.
+        if (!ctx.valid)
+        {
+            // No APVTS — write silent placeholder and continue
+            return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+        }
 
-        (void)note;
-        (void)velocity;
-        (void)holdSamples;
+        // Reset all engine voices for a clean note render
+        for (auto& engine : ctx.engines)
+        {
+            engine->reset();
+            engine->wakeSilenceGate();
+        }
 
-        // Apply normalization
+        // Render in kOfflineBlockSize blocks: note-on → hold → note-off → tail
+        int rendered = 0;
+        bool noteOffSent = false;
+
+        juce::MidiBuffer noteOnMsg;
+        noteOnMsg.addEvent(
+            juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
+
+        while (rendered < totalSamples)
+        {
+            int blockSize = juce::jmin(kOfflineBlockSize, totalSamples - rendered);
+
+            juce::MidiBuffer midi;
+            if (rendered == 0)
+            {
+                midi = noteOnMsg; // note-on at start of first block
+            }
+            else if (!noteOffSent && rendered >= holdSamples)
+            {
+                // Note-off at the first block boundary after hold time
+                int offsetInBlock = holdSamples - (rendered - blockSize);
+                offsetInBlock = juce::jlimit(0, blockSize - 1, offsetInBlock);
+                midi.addEvent(juce::MidiMessage::noteOff(1, note), offsetInBlock);
+                noteOffSent = true;
+            }
+
+            juce::AudioBuffer<float> engineBuf(2, blockSize);
+
+            for (auto& engine : ctx.engines)
+            {
+                engineBuf.clear();
+                engine->renderBlock(engineBuf, midi, blockSize);
+                engine->analyzeForSilenceGate(engineBuf, blockSize);
+
+                // Mix engine output into the accumulated buffer
+                for (int ch = 0; ch < 2; ++ch)
+                    buffer.addFrom(ch, rendered, engineBuf, ch, 0, blockSize);
+            }
+
+            rendered += blockSize;
+        }
+
         normalizeBuffer(buffer, settings.normCeiling);
-
-        // Write WAV
         return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
     }
 
@@ -652,55 +713,70 @@ private:
     IOResult writeXPM(const juce::File& file, const PresetData& preset,
                       const std::vector<int>& notes, const RenderSettings& settings)
     {
-        juce::XmlElement root("Keygroup");
+        // Canonical MPCVObject keygroup format — matches XOutshine and XPNDrumExporter
+        juce::String xml;
+        xml << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+        xml << "<MPCVObject type=\"com.akaipro.mpc.keygroup.program\">\n";
+        xml << "  <Version>1.7</Version>\n";
+        xml << "  <ProgramName>" << preset.name.substring(0, 30) << "</ProgramName>\n";
+        xml << "  <AfterTouch>\n";
+        xml << "    <Destination>FilterCutoff</Destination>\n";
+        xml << "    <Amount>50</Amount>\n";
+        xml << "  </AfterTouch>\n";
+        xml << "  <ModWheel>\n";
+        xml << "    <Destination>FilterCutoff</Destination>\n";
+        xml << "    <Amount>70</Amount>\n";
+        xml << "  </ModWheel>\n";
+        xml << "  <PitchBendRange>12</PitchBendRange>\n";
+        xml << "  <Keygroups>\n";
 
-        // Required MPC attributes
-        root.setAttribute("KeyTrack", KEY_TRACK ? "True" : "False");
+        auto velSplits = getVelocitySplits(VelocityCurve::Musical, settings.velocityLayers);
 
         for (int i = 0; i < (int)notes.size(); ++i)
         {
-            int note = notes[(size_t)i];
+            int note    = notes[(size_t)i];
             int lowKey  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
             int highKey = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
 
-            auto* zone = root.createNewChildElement("Zone");
-            zone->setAttribute("RootNote", ROOT_NOTE);
-            zone->setAttribute("LowKey", lowKey);
-            zone->setAttribute("HighKey", highKey);
+            xml << "    <Keygroup index=\"" << i << "\">\n";
+            xml << "      <LowNote>" << lowKey << "</LowNote>\n";
+            xml << "      <HighNote>" << highKey << "</HighNote>\n";
+            xml << "      <Layers>\n";
 
-            for (int v = 0; v < settings.velocityLayers; ++v)
+            int layerIdx = 0;
+            for (int v = 0; v < (int)velSplits.size(); ++v)
             {
-                auto* layer = zone->createNewChildElement("Layer");
-                layer->setAttribute("SampleFile",
-                    sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v));
-
-                // Velocity ranges
-                if (settings.velocityLayers == 1)
-                {
-                    layer->setAttribute("VelStart", 0);
-                    layer->setAttribute("VelEnd", 127);
-                }
-                else
-                {
-                    int velRange = 128 / settings.velocityLayers;
-                    layer->setAttribute("VelStart", v * velRange);
-                    layer->setAttribute("VelEnd", (v == settings.velocityLayers - 1) ? 127 : (v + 1) * velRange - 1);
-                }
+                xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
+                xml << "          <SampleName>" << wavFilename(preset.name, note, v) << "</SampleName>\n";
+                xml << "          <VelStart>" << velSplits[(size_t)v].start << "</VelStart>\n";
+                xml << "          <VelEnd>"   << velSplits[(size_t)v].end   << "</VelEnd>\n";
+                xml << "          <Volume>"   << juce::String(velSplits[(size_t)v].volume, 2) << "</Volume>\n";
+                xml << "          <RootNote>" << ROOT_NOTE  << "</RootNote>\n";
+                xml << "          <KeyTrack>" << (KEY_TRACK ? "True" : "False") << "</KeyTrack>\n";
+                xml << "          <TuneCoarse>0</TuneCoarse>\n";
+                xml << "          <TuneFine>0</TuneFine>\n";
+                xml << "          <LoopStart>-1</LoopStart>\n";
+                xml << "          <LoopEnd>-1</LoopEnd>\n";
+                xml << "        </Layer>\n";
             }
 
-            // Empty layers get VelStart = 0 (critical rule #3)
-            if (settings.velocityLayers < 4)
+            // Empty layers get VelStart = 0 (critical XPM rule #3)
+            for (int v = settings.velocityLayers; v < 4; ++v)
             {
-                for (int v = settings.velocityLayers; v < 4; ++v)
-                {
-                    auto* emptyLayer = zone->createNewChildElement("Layer");
-                    emptyLayer->setAttribute("VelStart", EMPTY_VEL_START);
-                    emptyLayer->setAttribute("VelEnd", 0);
-                }
+                xml << "        <Layer index=\"" << layerIdx++ << "\">\n";
+                xml << "          <VelStart>" << EMPTY_VEL_START << "</VelStart>\n";
+                xml << "          <VelEnd>0</VelEnd>\n";
+                xml << "        </Layer>\n";
             }
+
+            xml << "      </Layers>\n";
+            xml << "    </Keygroup>\n";
         }
 
-        if (!root.writeTo(file))
+        xml << "  </Keygroups>\n";
+        xml << "</MPCVObject>\n";
+
+        if (!file.replaceWithText(xml))
             return { false, "Failed to write XPM: " + file.getFullPathName() };
 
         return { true, {} };
@@ -750,5 +826,8 @@ private:
         return name + ".WAV";
     }
 };
+
+// Backward-compatibility alias — use XOriginate in new code
+using XPNExporter = XOriginate;
 
 } // namespace xomnibus

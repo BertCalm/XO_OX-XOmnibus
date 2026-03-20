@@ -5,6 +5,7 @@
 
 #include "../DSP/FastMath.h"
 #include "XPNExporter.h"
+#include "XPNVelocityCurves.h"
 
 #include <algorithm>
 #include <cmath>
@@ -81,29 +82,10 @@ inline const char* categoryName (SampleCategory c)
 }
 
 //------------------------------------------------------------------------------
-// Velocity curve presets
+// Velocity curve presets — defined in XPNVelocityCurves.h (shared with XOriginate)
 //------------------------------------------------------------------------------
-
-struct VelocitySplit { int start; int end; float volume; };
-
-enum class VelocityCurve { Musical, BoomBap, NeoSoul, TrapHard, Linear };
-
-inline std::vector<VelocitySplit> getVelocitySplits (VelocityCurve curve)
-{
-    switch (curve) {
-        case VelocityCurve::BoomBap:
-            return { {1,15,0.25f}, {16,45,0.50f}, {46,85,0.78f}, {86,127,1.00f} };
-        case VelocityCurve::NeoSoul:
-            return { {1,30,0.35f}, {31,65,0.60f}, {66,95,0.80f}, {96,127,0.95f} };
-        case VelocityCurve::TrapHard:
-            return { {1,10,0.20f}, {11,35,0.55f}, {36,70,0.80f}, {71,127,1.00f} };
-        case VelocityCurve::Linear:
-            return { {1,31,0.25f}, {32,63,0.50f}, {64,95,0.75f}, {96,127,1.00f} };
-        case VelocityCurve::Musical:
-        default:
-            return { {1,20,0.30f}, {21,50,0.55f}, {51,90,0.75f}, {91,127,0.95f} };
-    }
-}
+// VelocitySplit, VelocityCurve, and getVelocitySplits() are available via the
+// XPNVelocityCurves.h include above.
 
 //------------------------------------------------------------------------------
 // Analyzed sample metadata
@@ -946,17 +928,22 @@ private:
 
     static float measureLufs (const juce::AudioBuffer<float>& buf, double sr)
     {
-        auto* ch0 = buf.getReadPointer(0);
         int n = buf.getNumSamples();
+        int nch = buf.getNumChannels();
         int window = (int)(0.4 * sr);
-        if (n < window) return -100.0f;
+        if (n < window || nch == 0) return -100.0f;
 
+        // Sum mean-square energy across all channels (ITU-R BS.1770 multi-channel)
         std::vector<float> powers;
         for (int i = 0; i <= n - window; i += window / 4)
         {
             float ms = 0.0f;
-            for (int j = 0; j < window; ++j) ms += ch0[i + j] * ch0[i + j];
-            powers.push_back(ms / window);
+            for (int ch = 0; ch < nch; ++ch)
+            {
+                auto* data = buf.getReadPointer(ch);
+                for (int j = 0; j < window; ++j) ms += data[i + j] * data[i + j];
+            }
+            powers.push_back(ms / (window * nch));
         }
         if (powers.empty()) return -100.0f;
 

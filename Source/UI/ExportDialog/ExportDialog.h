@@ -4,6 +4,7 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../../Export/XPNExporter.h"
 #include "../../Core/PresetManager.h"
+#include "../../Core/EngineRegistry.h"
 #include "../XOmnibusEditor.h"
 
 namespace xomnibus {
@@ -24,8 +25,9 @@ class ExportDialog : public juce::Component,
                      private juce::Timer
 {
 public:
-    ExportDialog(PresetManager& pm)
-        : presetManager(pm)
+    ExportDialog(PresetManager& pm,
+                 juce::AudioProcessorValueTreeState* apvts = nullptr)
+        : presetManager(pm), dialogApvts(apvts)
     {
         setWantsKeyboardFocus(true);
         A11y::setup(*this, "XPN Export", "Export presets as MPC-compatible expansion pack");
@@ -37,7 +39,7 @@ public:
         buildProgressSection();
         buildActionButtons();
 
-        setSize(520, 640);
+        setSize(520, 680);
     }
 
     ~ExportDialog() override
@@ -104,22 +106,35 @@ public:
         auto presetArea = area.removeFromTop(kPresetSectionH).reduced(12, 20);
         presetList.setBounds(presetArea);
 
-        // Render settings section
-        auto settingsArea = area.removeFromTop(kSettingsSectionH).reduced(12, 22);
-        int settingsW = settingsArea.getWidth() / 4;
-        strategyBox.setBounds(settingsArea.removeFromLeft(settingsW).reduced(2, 0).removeFromTop(28));
-        velLayersBox.setBounds(settingsArea.removeFromLeft(settingsW).reduced(2, 0).removeFromTop(28));
-        bitDepthBox.setBounds(settingsArea.removeFromLeft(settingsW).reduced(2, 0).removeFromTop(28));
-        sampleRateBox.setBounds(settingsArea.removeFromLeft(settingsW).reduced(2, 0).removeFromTop(28));
+        // Render settings section — row 1: combo boxes, row 2: quick-profile buttons
+        auto settingsArea = area.removeFromTop(kSettingsSectionH).reduced(12, 0);
+        settingsArea.removeFromTop(20); // section label space
+        auto settingsRow1 = settingsArea.removeFromTop(28);
+        int settingsW = settingsRow1.getWidth() / 4;
+        strategyBox.setBounds(settingsRow1.removeFromLeft(settingsW).reduced(2, 0));
+        velLayersBox.setBounds(settingsRow1.removeFromLeft(settingsW).reduced(2, 0));
+        bitDepthBox.setBounds(settingsRow1.removeFromLeft(settingsW).reduced(2, 0));
+        sampleRateBox.setBounds(settingsRow1.removeFromLeft(settingsW).reduced(2, 0));
+        settingsArea.removeFromTop(4);
+        auto profileRow = settingsArea.removeFromTop(22);
+        int profileBtnW = 88;
+        profileMPCBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
+        profileLightBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
+        profileMaxBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
 
         // Bundle config section
-        auto bundleArea = area.removeFromTop(kBundleSectionH).reduced(12, 22);
+        auto bundleArea = area.removeFromTop(kBundleSectionH).reduced(12, 0);
+        bundleArea.removeFromTop(20); // section label space
         auto nameRow = bundleArea.removeFromTop(28);
         bundleNameField.setBounds(nameRow);
         bundleArea.removeFromTop(6);
         auto engineRow = bundleArea.removeFromTop(28);
         coverEngineBox.setBounds(engineRow.removeFromLeft(engineRow.getWidth() / 2).reduced(0, 0));
         soundShapeToggle.setBounds(engineRow.reduced(4, 0));
+        bundleArea.removeFromTop(6);
+        auto outputRow = bundleArea.removeFromTop(24);
+        outputDirBtn.setBounds(outputRow.removeFromRight(80).reduced(2, 0));
+        outputDirLabel.setBounds(outputRow.reduced(2, 0));
 
         // Size estimate (just painted, no child component)
         area.removeFromTop(24);
@@ -197,11 +212,12 @@ private:
 
     static constexpr int kHeaderH          = 36;
     static constexpr int kPresetSectionH   = 140;
-    static constexpr int kSettingsSectionH  = 70;
-    static constexpr int kBundleSectionH   = 90;
+    static constexpr int kSettingsSectionH  = 100;
+    static constexpr int kBundleSectionH   = 122;
     static constexpr int kProgressH        = 44;
 
     PresetManager& presetManager;
+    juce::AudioProcessorValueTreeState* dialogApvts = nullptr;
     bool exporting = false;
     std::unique_ptr<juce::Thread> exportThread;
 
@@ -211,10 +227,21 @@ private:
     // Render settings
     juce::ComboBox strategyBox, velLayersBox, bitDepthBox, sampleRateBox;
 
+    // Quick-profile buttons (surfaces ExportProfile enum to the user)
+    juce::TextButton profileMPCBtn     { "MPC Standard" };
+    juce::TextButton profileLightBtn   { "Lightweight" };
+    juce::TextButton profileMaxBtn     { "Max Quality" };
+
     // Bundle config
     juce::TextEditor bundleNameField;
     juce::ComboBox coverEngineBox;
     juce::ToggleButton soundShapeToggle { "Sound Shape Auto" };
+
+    // Output directory
+    juce::File outputDir { juce::File::getSpecialLocation(juce::File::userDesktopDirectory)
+                                       .getChildFile("XPN_Exports") };
+    juce::Label outputDirLabel;
+    juce::TextButton outputDirBtn { "CHOOSE..." };
 
     // Size estimate
     juce::String sizeEstimateText = "Estimated size: calculating...";
@@ -231,6 +258,7 @@ private:
 
     // Export state
     std::atomic<bool> shouldCancel { false };
+    std::unique_ptr<juce::FileChooser> fileChooser;
 
     //==========================================================================
     // Build methods
@@ -282,6 +310,28 @@ private:
         A11y::setup(sampleRateBox, "Sample Rate", "Audio sample rate in kHz");
         sampleRateBox.onChange = [this] { updateSizeEstimate(); };
         addAndMakeVisible(sampleRateBox);
+
+        // Quick-profile buttons — one-click preset bundles for common use cases
+        auto styleProfile = [this](juce::TextButton& btn, const juce::String& a11yTitle,
+                                   const juce::String& a11yDesc)
+        {
+            btn.setColour(juce::TextButton::buttonColourId,
+                          GalleryColors::get(GalleryColors::borderGray()));
+            btn.setColour(juce::TextButton::textColourOffId,
+                          GalleryColors::get(GalleryColors::textDark()));
+            A11y::setup(btn, a11yTitle, a11yDesc);
+            addAndMakeVisible(btn);
+        };
+        styleProfile(profileMPCBtn,   "MPC Standard Profile",
+                     "Standard MPC export: minor 3rds, 3 velocity layers, 24-bit, 48kHz");
+        styleProfile(profileLightBtn, "Lightweight Profile",
+                     "Compact export: octaves only, 1 velocity layer, 16-bit, 44.1kHz");
+        styleProfile(profileMaxBtn,   "Max Quality Profile",
+                     "Chromatic export: chromatic, 3 velocity layers, 24-bit, 48kHz");
+
+        profileMPCBtn.onClick   = [this] { applyProfile(ExportProfile::MPCStandard);  };
+        profileLightBtn.onClick = [this] { applyProfile(ExportProfile::Lightweight);  };
+        profileMaxBtn.onClick   = [this] { applyProfile(ExportProfile::MaxQuality);   };
     }
 
     void buildBundleConfig()
@@ -290,16 +340,12 @@ private:
         A11y::setup(bundleNameField, "Bundle Name", "Name for the exported expansion pack");
         addAndMakeVisible(bundleNameField);
 
-        // Cover engine picker
+        // Cover engine picker — populated from live registry (all registered engines)
         coverEngineBox.addItem("Auto (first engine)", 1);
-        static const char* engines[] = {
-            "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
-            "Obese", "Onset", "Overworld", "Opal", "Orbital",
-            "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
-            "Oracle", "Obscura", "Oceanic", "Optic", "Oblique"
-        };
-        for (int i = 0; i < 20; ++i)
-            coverEngineBox.addItem(engines[i], i + 2);
+        auto registeredIds = EngineRegistry::instance().getRegisteredIds();
+        std::sort(registeredIds.begin(), registeredIds.end());
+        for (int i = 0; i < (int)registeredIds.size(); ++i)
+            coverEngineBox.addItem(juce::String(registeredIds[(size_t)i]), i + 2);
         coverEngineBox.setSelectedId(1);
         A11y::setup(coverEngineBox, "Cover Engine", "Engine style for procedural cover art");
         addAndMakeVisible(coverEngineBox);
@@ -308,6 +354,46 @@ private:
         soundShapeToggle.setTooltip("Auto-adjust render settings per preset character");
         A11y::setup(soundShapeToggle, "Sound Shape", "Enable automatic render optimization per preset type");
         addAndMakeVisible(soundShapeToggle);
+
+        // Output directory
+        auto updateOutputLabel = [this]
+        {
+            outputDirLabel.setText(outputDir.getFullPathName(), juce::dontSendNotification);
+        };
+        outputDirLabel.setFont(GalleryFonts::label(8.0f));
+        outputDirLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
+        outputDirLabel.setMinimumHorizontalScale(0.5f);
+        A11y::setup(outputDirLabel, "Output Directory", "Folder where exported XPN files will be saved");
+        addAndMakeVisible(outputDirLabel);
+        updateOutputLabel();
+
+        outputDirBtn.setColour(juce::TextButton::buttonColourId,
+                               GalleryColors::get(GalleryColors::borderGray()));
+        outputDirBtn.setColour(juce::TextButton::textColourOffId,
+                               GalleryColors::get(GalleryColors::textDark()));
+        A11y::setup(outputDirBtn, "Choose Output Folder", "Browse for the export destination folder");
+        addAndMakeVisible(outputDirBtn);
+
+        outputDirBtn.onClick = [this, updateOutputLabel]
+        {
+            fileChooser = std::make_unique<juce::FileChooser>(
+                "Choose XPN Export Folder", outputDir, "", false);
+            fileChooser->launchAsync(
+                juce::FileBrowserComponent::openMode |
+                juce::FileBrowserComponent::canSelectDirectories,
+                [this, updateOutputLabel](const juce::FileChooser& fc)
+                {
+                    auto result = fc.getResult();
+                    if (result.isDirectory())
+                    {
+                        outputDir = result;
+                        updateOutputLabel();
+                        juce::AccessibilityHandler::postAnnouncement(
+                            "Output folder set to " + outputDir.getFullPathName(),
+                            juce::AccessibilityHandler::AnnouncementPriority::medium);
+                    }
+                });
+        };
     }
 
     void buildSizeEstimate()
@@ -489,11 +575,14 @@ private:
             {
                 XOriginate exporter;
 
+                // Wire the shared APVTS so renderNoteToWav() produces real audio.
+                // If dialogApvts is null the render falls back to silent placeholders.
+                exporter.setAPVTS(dialog.dialogApvts);
+
                 XOriginate::BundleConfig config;
                 config.name = bundleName;
                 config.bundleId = "com.xo-ox.xomnibus." + config.name.toLowerCase().replace(" ", "-");
-                config.outputDir = juce::File::getSpecialLocation(
-                    juce::File::userDesktopDirectory).getChildFile("XPN_Exports");
+                config.outputDir = dialog.outputDir;
                 config.outputDir.createDirectory();
 
                 if (coverEngine.isNotEmpty())
