@@ -429,9 +429,19 @@ public:
         // Computing once per block (not per sample) saves significant CPU while
         // being perceptually transparent for block sizes up to ~128 samples.
 
-        // D005 fix: minimal LFO added — 0.15 Hz BPF center wobble (±8%)
-        lfoPhase += (0.15 * juce::MathConstants<double>::twoPi) / sampleRate;
+        // D005 fix: autonomous LFO — BPF center wobble (±8%).
+        // DSP FIX: LFO rate now scales with DART macro (0.15→0.6 Hz) for more
+        // agitated filter movement when feliX is darting harder. Previously fixed 0.15 Hz.
+        double lfoRateHz = 0.15 + static_cast<double> (macroDart) * 0.45;
+        lfoPhase += (lfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi) lfoPhase -= juce::MathConstants<double>::twoPi;
+
+        // DSP FIX: Secondary LFO — slow stereo pan wobble (0.08 Hz triangle).
+        // Adds autonomous stereo movement (feliX darting laterally in the shallows).
+        lfo2Phase += 0.08 / sampleRate;
+        if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
+        float lfo2Stereo = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0) * 0.08f; // ±8% pan offset
+
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
@@ -663,8 +673,9 @@ public:
             }
 
             // ---- Write to output buffer -------------------------------------
-            float finalLeft  = mixLeft * outputLevel;
-            float finalRight = mixRight * outputLevel;
+            // DSP FIX: Apply LFO2 stereo pan wobble — subtle lateral movement
+            float finalLeft  = (mixLeft  * (1.0f + lfo2Stereo) + mixRight * (-lfo2Stereo * 0.5f)) * outputLevel;
+            float finalRight = (mixRight * (1.0f - lfo2Stereo) + mixLeft  * ( lfo2Stereo * 0.5f)) * outputLevel;
 
             if (buffer.getNumChannels() >= 2)
             {
@@ -1026,8 +1037,9 @@ private:
     std::array<SnapVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 
-    // D005 fix: minimal LFO added
-    double lfoPhase = 0.0;  // BPF center drift accumulator (0.15 Hz)
+    // D005 fix: autonomous LFO
+    double lfoPhase = 0.0;  // BPF center drift accumulator (0.15-0.6 Hz, scales with DART)
+    double lfo2Phase = 0.0; // DSP FIX: stereo pan wobble LFO (0.08 Hz triangle)
 
     // ---- D006 Aftertouch — pressure opens BPF cutoff for brightness on pressure ----
     PolyAftertouch aftertouch;

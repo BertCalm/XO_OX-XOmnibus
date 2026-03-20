@@ -200,15 +200,50 @@ private:
 class DubLFO
 {
 public:
-    void prepare (double sampleRate) noexcept { sr = sampleRate; }
-    void reset() noexcept { phase = 0.0; }
+    // Shape enum: 5 shapes matching fleet standard (D002 compliance)
+    enum class Shape { Sine, Triangle, Saw, Square, SandH };
+
+    void prepare (double sampleRate) noexcept { sr = sampleRate; sampleCounter = 12345u; }
+    void reset() noexcept { phase = 0.0; holdValue = 0.0f; sampleCounter = 12345u; }
 
     void setRate (float hz) noexcept { rate = static_cast<double> (hz); }
 
+    void setShape (int idx) noexcept
+    {
+        shape = static_cast<Shape> (std::max (0, std::min (4, idx)));
+    }
+
     float process() noexcept
     {
-        constexpr double twoPi = 6.28318530717958647692;
-        float out = fastSin (static_cast<float> (phase * twoPi));
+        float out = 0.0f;
+
+        switch (shape)
+        {
+            case Shape::Sine:
+                out = fastSin (static_cast<float> (phase * 6.28318530717958647692));
+                break;
+            case Shape::Triangle:
+                out = 4.0f * std::fabs (static_cast<float> (phase) - 0.5f) - 1.0f;
+                break;
+            case Shape::Saw:
+                out = 2.0f * static_cast<float> (phase) - 1.0f;
+                break;
+            case Shape::Square:
+                out = (phase < 0.5) ? 1.0f : -1.0f;
+                break;
+            case Shape::SandH:
+            {
+                double prevPhase = phase - rate / sr;
+                if (prevPhase < 0.0 || phase < prevPhase)
+                {
+                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
+                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
+                }
+                out = holdValue;
+                break;
+            }
+        }
+
         phase += rate / sr;
         if (phase >= 1.0) phase -= 1.0;
         return out;
@@ -218,6 +253,9 @@ private:
     double sr = 44100.0;
     double phase = 0.0;
     double rate = 2.0;
+    Shape shape = Shape::Sine;
+    float holdValue = 0.0f;
+    uint32_t sampleCounter = 12345u;
 };
 
 //==============================================================================
@@ -562,6 +600,7 @@ public:
         }
 
         lfo.prepare (sr);
+        lfo2.prepare (sr);
         tapeDelay.prepare (sr);
         springReverb.prepare (sr);
         aftertouch.prepare (sr);  // D006: 5ms attack / 20ms release smoothing
@@ -583,6 +622,7 @@ public:
             v.glideActive = false;
         }
         lfo.reset();
+        lfo2.reset();
         tapeDelay.reset();
         springReverb.reset();
         envelopeOutput = 0.0f;
@@ -706,9 +746,18 @@ public:
         float filterMod = externalFilterMod;
         externalFilterMod = 0.0f;
 
-        // Setup LFO
+        // Setup LFO — main LFO rate/depth from params
         lfo.setRate (lfoRate);
         bool hasLfo = lfoDepth > 0.001f;
+
+        // DSP FIX: Secondary LFO — autonomous triangle modulation on the
+        // non-targeted destination. When main LFO targets pitch, LFO2 adds
+        // gentle filter movement; when main targets filter/amp, LFO2 adds
+        // slow pitch drift. Rate = 1/3 of main (organic breathing rate).
+        // This addresses the "weakest modulation in fleet" seance finding.
+        lfo2.setRate (std::max (0.05f, lfoRate * 0.333f));
+        lfo2.setShape (1); // Triangle — softer movement than sine
+        bool hasLfo2 = lfoDepth > 0.05f; // only when main LFO is meaningfully active
 
         float peakEnv = 0.0f;
 
@@ -729,6 +778,19 @@ public:
                     case 0: lfoPitchMod = lfoVal; break;
                     case 1: lfoCutoffMod = lfoVal; break;
                     case 2: lfoAmpMod = lfoVal; break;
+                }
+            }
+
+            // DSP FIX: LFO2 adds complementary modulation on the non-targeted axis.
+            // Depth is 30% of main — subtle but audible movement.
+            if (hasLfo2)
+            {
+                float lfo2Val = lfo2.process() * lfoDepth * 0.3f;
+                switch (lfoDest)
+                {
+                    case 0: lfoCutoffMod += lfo2Val; break;  // Main→Pitch, LFO2→Filter
+                    case 1: lfoPitchMod  += lfo2Val * 0.5f; break; // Main→Filter, LFO2→Pitch (gentler)
+                    case 2: lfoCutoffMod += lfo2Val; break;  // Main→Amp, LFO2→Filter
                 }
             }
 
@@ -1291,6 +1353,7 @@ private:
 
     // LFO
     DubLFO lfo;
+    DubLFO lfo2;  // DSP FIX: secondary LFO for complementary modulation
 
     // FX chain
     DubTapeDelay tapeDelay;

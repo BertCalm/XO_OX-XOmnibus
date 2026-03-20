@@ -287,8 +287,10 @@ public:
                     revOut+=rd;
                 }
                 revOut*=0.25f;
+                // DSP FIX: Slight stereo decorrelation on reverb (was mono sum).
+                // L gets full reverb, R gets 95% — creates width without phase issues.
                 sL+=revOut*effRevSz*0.5f;
-                sR+=revOut*effRevSz*0.5f;
+                sR+=revOut*effRevSz*0.475f;
             }
 
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;

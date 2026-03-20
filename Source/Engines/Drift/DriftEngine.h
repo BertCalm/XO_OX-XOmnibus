@@ -721,16 +721,53 @@ private:
 class DriftLFO
 {
 public:
-    void prepare (double sampleRate) noexcept { sr = sampleRate; }
+    // DSP FIX: 5 shapes matching fleet standard (was sine-only).
+    // Shape selection driven by destination index: Pitch→Sine, Filter→Triangle,
+    // Amp→Sine (default). This gives timbral variety without adding parameters.
+    enum class Shape { Sine, Triangle, Saw, Square, SandH };
 
-    void reset() noexcept { phase = 0.0; }
+    void prepare (double sampleRate) noexcept { sr = sampleRate; sampleCounter = 54321u; }
+
+    void reset() noexcept { phase = 0.0; holdValue = 0.0f; sampleCounter = 54321u; }
 
     void setRate (float hz) noexcept { rate = hz; }
 
+    void setShape (int idx) noexcept
+    {
+        shape = static_cast<Shape> (std::max (0, std::min (4, idx)));
+    }
+
     float process() noexcept
     {
-        constexpr double twoPi = 6.28318530717958647692;
-        float out = fastSin (static_cast<float> (phase * twoPi));
+        float out = 0.0f;
+
+        switch (shape)
+        {
+            case Shape::Sine:
+                out = fastSin (static_cast<float> (phase * 6.28318530717958647692));
+                break;
+            case Shape::Triangle:
+                out = 4.0f * std::fabs (static_cast<float> (phase) - 0.5f) - 1.0f;
+                break;
+            case Shape::Saw:
+                out = 2.0f * static_cast<float> (phase) - 1.0f;
+                break;
+            case Shape::Square:
+                out = (phase < 0.5) ? 1.0f : -1.0f;
+                break;
+            case Shape::SandH:
+            {
+                double prevPhase = phase - static_cast<double> (rate) / sr;
+                if (prevPhase < 0.0 || phase < prevPhase)
+                {
+                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
+                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
+                }
+                out = holdValue;
+                break;
+            }
+        }
+
         phase += static_cast<double> (rate) / sr;
         if (phase >= 1.0) phase -= 1.0;
         return out;
@@ -740,6 +777,9 @@ private:
     double sr = 44100.0;
     double phase = 0.0;
     float rate = 1.5f;
+    Shape shape = Shape::Sine;
+    float holdValue = 0.0f;
+    uint32_t sampleCounter = 54321u;
 };
 
 //==============================================================================
@@ -868,6 +908,7 @@ public:
         }
 
         lfo.prepare (sr);
+        lfo2.prepare (sr);
         reverb.prepare (sr);
     }
 
@@ -896,6 +937,7 @@ public:
             v.glideActive = false;
         }
         lfo.reset();
+        lfo2.reset();
         reverb.reset();
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
@@ -1047,7 +1089,17 @@ public:
 
         // Setup LFO
         lfo.setRate (lfoRate);
+        // DSP FIX: Shape varies by destination for timbral variety (was sine-only).
+        // Pitch→Sine (smooth pitch wobble), Filter→Triangle (organic sweep), Amp→Saw (rhythmic pulse).
+        static constexpr int kLfoShapeByDest[] = { 0, 1, 2 }; // Sine, Triangle, Saw
+        lfo.setShape (lfoDest < 3 ? kLfoShapeByDest[lfoDest] : 0);
         bool hasLfo = lfoDepth > 0.001f;
+
+        // DSP FIX: LFO2 — complementary modulation on non-targeted axis.
+        // Rate = 1/4 of main (slow organic movement), Triangle shape.
+        lfo2.setRate (std::max (0.05f, lfoRate * 0.25f));
+        lfo2.setShape (1); // Triangle
+        bool hasLfo2 = lfoDepth > 0.05f;
 
         // Cache per-voice block-start base frequencies — midiToFreqTune calls std::pow,
         // but note number + tune offsets are block-constant, so compute once.
@@ -1077,6 +1129,19 @@ public:
                     case 0: lfoPitchMod = lfoVal; break;
                     case 1: lfoCutoffMod = lfoVal; break;
                     case 2: lfoAmpMod = lfoVal; break;
+                }
+            }
+
+            // DSP FIX: LFO2 adds complementary modulation (D002: min 2 LFOs).
+            // Depth is 25% of main — subtle but audible evolving movement.
+            if (hasLfo2)
+            {
+                float lfo2Val = lfo2.process() * lfoDepth * 0.25f;
+                switch (lfoDest)
+                {
+                    case 0: lfoCutoffMod += lfo2Val; break;        // Main→Pitch, LFO2→Filter
+                    case 1: lfoAmpMod    += lfo2Val * 0.5f; break; // Main→Filter, LFO2→Amp (gentle)
+                    case 2: lfoCutoffMod += lfo2Val; break;        // Main→Amp, LFO2→Filter
                 }
             }
 
@@ -1770,6 +1835,7 @@ private:
 
     // LFO (global, not per-voice — XOdyssey LFO1 is global)
     DriftLFO lfo;
+    DriftLFO lfo2;  // DSP FIX: secondary LFO for D002 compliance (complementary axis)
 
     // Reverb — engine-level, not per-voice (Option B, Round 11B)
     // Buffers pre-allocated in prepare(); safe on audio thread.

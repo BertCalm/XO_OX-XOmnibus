@@ -347,13 +347,22 @@ public:
 
         auto*outL=buf.getWritePointer(0);
         auto*outR=buf.getWritePointer(1);
+        // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).
+        // 0.12 Hz triangle = ~8 second cycle. Modulates in-law interference level
+        // so the SIDES of the family breathe even with static macro settings.
+        sidesLfoPhase += 0.12 / sr;
+        if (sidesLfoPhase >= 1.0) sidesLfoPhase -= 1.0;
+        float sidesLfo = 4.0f * std::fabs((float)sidesLfoPhase - 0.5f) - 1.0f; // triangle [-1,1]
+        float sidesLfoMod = sidesLfo * 0.15f; // ±15% modulation on in-law level
+
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
+            int voiceIdx = 0;
             for(auto&v:voices){
-                if(!v.active)continue;
+                if(!v.active){ ++voiceIdx; continue; }
                 float relRate=v.releasing?1.f/(v.sr*0.3f):0;
                 v.ampEnv=std::max(0.f,v.ampEnv-relRate);
-                if(v.ampEnv<0.0001f&&v.releasing){v.active=false;continue;}
+                if(v.ampEnv<0.0001f&&v.releasing){v.active=false;++voiceIdx;continue;}
 
                 // Update body resonance based on material
                 v.body.setParams(v.freq * bodyFreqMul, bodyQ);
@@ -364,8 +373,15 @@ public:
                 float out=v.dl.read(dlen);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 float effIntens = extIntens * velIntens;
+
+                // DSP FIX D001: velocity scales BRIGHTNESS (damping), not just intensity.
+                // Higher velocity = higher damping coefficient = brighter string tone.
+                // velBright: vel=0 → 0.97 (dull), vel=1 → 1.0 (bright, minimal damping)
+                float velBright = 0.97f + v.vel * 0.03f;
+                float effDamp = std::clamp(pDamp * velBright + extDampMod, 0.f, 1.f);
+
                 float exc=(v.bowed?v.bow.tick(pBowP*velIntens,pBowS,v.lastOut):v.pick.tick(pBright*velIntens))*effIntens;
-                float damped=v.df.process(out+exc*0.3f,std::clamp(pDamp+extDampMod,0.f,1.f));
+                float damped=v.df.process(out+exc*0.3f,effDamp);
                 v.dl.write(damped);
                 float bo=out+v.body.process(out)*0.25f;
                 float so=v.symp.process(bo,pSymp);
@@ -373,13 +389,15 @@ public:
                 v.lastOut=out;
 
                 // In-law interference (theremin + glass + grain)
+                // DSP FIX: SIDES LFO modulates in-law level for autonomous breathing
                 float inlawSig=0;
+                float effInlaw = std::clamp(pInlaw + sidesLfoMod, 0.f, 1.f);
                 if(pMeddling>pMedTh){
                     float amt=(pMeddling-pMedTh)/(1-pMedTh+0.001f);
                     float theremin=v.inlaw.tick(v.freq,pThScale,pThWob);
                     float glassSig=v.glass.tick(v.freq,pGlassBrt)*0.5f;
                     float grainSig=v.grain.tick(v.freq,pGrainSz,pGrainDen,pGrainScat)*0.4f;
-                    inlawSig=(theremin+glassSig+grainSig)*amt*pInlaw;
+                    inlawSig=(theremin+glassSig+grainSig)*amt*effInlaw;
                 }
                 // Apply spectral freeze to in-law signal
                 inlawSig = v.specFreeze.process(inlawSig, pSpecFreeze);
@@ -401,8 +419,16 @@ public:
                 static constexpr float kDadPan[]={0.25f,0.5f,0.75f,0.3f,0.7f,0.5f,0.28f,0.72f,0.5f,0.68f};
                 int instIdx=std::clamp((int)pDadInst,0,9);
                 float pan=kDadPan[instIdx];
-                sL+=sig*(1.f-pan)*2.f;
-                sR+=sig*pan*2.f;
+
+                // DSP FIX: Stereo spread — offset pan per voice index so polyphonic voices
+                // fan out across the stereo field instead of all summing to the same pan.
+                // voiceIdx 0-11 maps to ±0.15 spread around instrument pan position.
+                float voiceSpread = ((float)(voiceIdx % kVoices) / (float)(kVoices - 1) - 0.5f) * 0.3f;
+                float spreadPan = std::clamp(pan + voiceSpread, 0.05f, 0.95f);
+
+                sL+=sig*(1.f-spreadPan)*2.f;
+                sR+=sig*spreadPan*2.f;
+                ++voiceIdx;
             }
 
             // Master FX: reverb then delay (meadow macro scales both)
@@ -560,6 +586,9 @@ private:
 
     // V010: aftertouch → COMMUNE (leaning into the note merges the family)
     float atCommune = 0.f;
+
+    // DSP FIX: autonomous LFO for SIDES breathing (in-law interference modulation)
+    double sidesLfoPhase = 0.0;
 
     // Master FX
     OhmDelay delay;

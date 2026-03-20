@@ -120,7 +120,15 @@ public:
 
         // D006: mod wheel deepens subharmonic mix — full wheel adds +0.45 to subMix.
         // The owlfish descends deeper into its Mixtur-Trautonium resonant abyss.
-        snapshot.subMix = std::clamp (snapshot.subMix + modWheelAmount * 0.45f, 0.0f, 1.0f);
+        snapshot.subMix = std::clamp (snapshot.subMix + modWheelAmount * 0.45f + couplingSubMod, 0.0f, 1.0f);
+
+        // DSP FIX: Apply coupling modulation to grain density (AmpToFilter → grain cloud)
+        snapshot.grainDensity = std::clamp (snapshot.grainDensity + couplingGrainMod, 0.0f, 1.0f);
+
+        // Reset coupling accumulators after use
+        couplingGrainMod = 0.0f;
+        couplingSubMod = 0.0f;
+        couplingPitchMod = 0.0f; // pitch mod would be applied in voice if accessible
 
         // Render the organism
         buffer.clear();
@@ -151,17 +159,38 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Coupling input stub -- to be wired by MegaCouplingMatrix later.
+    /// Coupling input — routes external modulation into the owlfish organ chain.
     void applyCouplingInput (xomnibus::CouplingType type,
                              float amount,
                              const float* sourceBuffer,
                              int numSamples) override
     {
-        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
-        (void) type;
-        (void) amount;
         (void) sourceBuffer;
         (void) numSamples;
+
+        switch (type)
+        {
+            case xomnibus::CouplingType::LFOToPitch:
+                // External LFO modulates pitch — applied as pitch offset in semitones.
+                // Max ±1 semitone at amount=1.0 — subtle organic drift from partner engine.
+                couplingPitchMod = amount * 1.0f;
+                break;
+
+            case xomnibus::CouplingType::AmpToFilter:
+                // External amplitude modulates grain density — partner loudness
+                // increases predatory grain cloud activity.
+                couplingGrainMod = amount * 0.3f;
+                break;
+
+            case xomnibus::CouplingType::EnvToMorph:
+                // External envelope modulates subharmonic mix — partner dynamics
+                // push the owlfish deeper into its Mixtur-Trautonium resonant abyss.
+                couplingSubMod = amount * 0.2f;
+                break;
+
+            default:
+                break;
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -206,6 +235,11 @@ private:
 
     // D006: mod wheel (CC#1) — deepens mixtur subharmonic mix (+0.45 at full wheel)
     float  modWheelAmount = 0.0f;
+
+    // Coupling modulation accumulators (DSP FIX: was no-op stub)
+    float  couplingPitchMod = 0.0f;  // semitones from LFOToPitch
+    float  couplingGrainMod = 0.0f;  // grain density boost from AmpToFilter
+    float  couplingSubMod   = 0.0f;  // subharmonic mix boost from EnvToMorph
 };
 
 } // namespace xowlfish

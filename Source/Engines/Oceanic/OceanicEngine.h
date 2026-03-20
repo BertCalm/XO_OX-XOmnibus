@@ -442,11 +442,19 @@ public:
         // particle scatter, modelling the chromatophore rate speeding up under pressure.
         // atPressure is computed after the MIDI loop so we use a forward-read pattern:
         // scatter is a block-constant, so we compute it after updateBlock() below.
+        // DSP FIX: Autonomous breathing LFO on tether strength — even with LFO depths
+        // at 0, the boid school gently contracts and expands. 0.07 Hz (~14s cycle)
+        // triangle wave modulates tether ±10%. This addresses "nothing dynamic" seance finding.
+        autoBreathPhase += 0.07 / sr;
+        if (autoBreathPhase >= 1.0) autoBreathPhase -= 1.0;
+        float breathMod = (4.0f * std::fabs (static_cast<float> (autoBreathPhase) - 0.5f) - 1.0f) * 0.1f;
+
         float effectiveSep    = clamp (pSep + macroChar * 0.3f, 0.0f, 1.0f);
         float effectiveAlign  = clamp (pAlign + macroMove * 0.3f, 0.0f, 1.0f);
         // D006: mod wheel boosts cohesion — CC#1 tightens boid school (sensitivity 0.4)
         float effectiveCoh    = clamp (pCoh + couplingCohesionMod + macroCoup * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
-        float effectiveTeth   = clamp (pTeth, 0.0f, 1.0f);
+        // DSP FIX: tether breathes autonomously — school contracts/expands gently
+        float effectiveTeth   = clamp (pTeth + breathMod, 0.0f, 1.0f);
         float effectiveDamp   = clamp (pDamp + macroSpace * 0.2f, 0.0f, 1.0f);
         int   effectiveFlocks = std::max (1, std::min (4, pFlocks));
 
@@ -1421,6 +1429,9 @@ private:
 
     // D006: CS-80-inspired poly aftertouch (channel pressure → particle scatter rate)
     PolyAftertouch aftertouch;
+
+    // DSP FIX: autonomous breathing LFO for tether modulation (0.07 Hz)
+    double autoBreathPhase = 0.0;
 
     // ---- D006 Mod wheel — CC#1 boosts boid cohesion (+0–0.4, boids school together more) ----
     float modWheelAmount = 0.0f;
