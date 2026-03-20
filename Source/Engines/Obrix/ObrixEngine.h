@@ -10,10 +10,6 @@
 
 namespace xomnibus {
 
-// DSP constants — named once, used everywhere
-static constexpr float kTwoPi = 6.28318530717959f;
-static constexpr float kPi    = 3.14159265358979f;
-
 //==============================================================================
 // ObrixEngine — Ocean Bricks: The Living Reef
 //
@@ -143,6 +139,8 @@ struct ObrixADSR
 //==============================================================================
 struct ObrixLFO
 {
+    static constexpr float kTwoPi = 6.28318530717958647692f;
+
     float phase = 0.0f;
     float phaseInc = 0.0f;
     int shape = 0;
@@ -1006,6 +1004,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+    static constexpr float kTwoPi = 6.28318530717958647692f;
+    static constexpr float kPi    = 3.14159265358979323846f;
+
     static float loadP (std::atomic<float>* p, float fb) noexcept { return p ? p->load() : fb; }
 
     //==========================================================================
