@@ -24,8 +24,10 @@ inline const juce::StringArray validEngineNames {
     "Overlap", "Outwit",
     // V1 concept engines
     "OpenSky", "Ostinato", "OceanDeep", "Ouie",
+    // Flagship
+    "Obrix",
     // V2 theorem engines
-    "Overtone", "Organism",
+    "Orbweave", "Overtone", "Organism",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -123,7 +125,10 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Ostinato",    "osti"    },
         { "OceanDeep",   "deep"    },
         { "Ouie",        "ouie"    },
+        // Flagship
+        { "Obrix",       "obrix"   },
         // V2 Theorem Engines
+        { "Orbweave",    "weave"   },
         { "Overtone",    "over"    },
         { "Organism",    "org"     },
     };

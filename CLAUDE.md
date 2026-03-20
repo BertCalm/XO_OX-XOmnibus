@@ -4,14 +4,14 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **39 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19)
+and mutate into sounds impossible with any single synth. **42 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (13 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 10,514 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+- **Presets:** ~15,200 factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -80,6 +80,9 @@ and mutate into sounds impossible with any single synth. **39 engines** are regi
 | OVERLAP | XOverlap | Bioluminescent Mint `#00FFB4` |
 | OUTWIT | XOutwit | Ochre Burn `#CC6600` |
 | OBRIX | XObrix | Reef Jade `#1E8B7E` |
+| ORBWEAVE | XOrbweave | Kelp Knot Purple `#8E4585` |
+| OVERTONE | XOvertone | Spectral Ice `#A8D8EA` |
+| ORGANISM | XOrganism | Emergence Lime `#C6E377` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -127,6 +130,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Overlap | `olap_` | `olap_knotDepth` |
 | Outwit | `owit_` | `owit_armDepth` |
 | Obrix | `obrix_` | `obrix_src1Type` |
+| Orbweave | `weave_` | `weave_knotDepth` |
+| Overtone | `over_` | `over_cfDepth` |
+| Organism | `org_` | `org_ruleSet` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -150,6 +156,9 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Octopus/OctopusEngine.h` | Decentralized alien intelligence engine (arms + chromatophores + ink cloud) |
 | `Source/Engines/OpenSky/OpenSkyEngine.h` | Euphoric shimmer synth (supersaw + shimmer reverb + chorus + unison) |
 | `Source/Engines/Ouie/OuieEngine.h` | Duophonic hammerhead synth (2 voices x 8 algorithms + STRIFE/LOVE interaction) |
+| `Source/Engines/Orbweave/OrbweaveEngine.h` | Topological knot coupling engine (Kelp Knot) |
+| `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
+| `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
 | `Docs/xomnibus_sound_design_guides.md` | Sound design guide (34 of 34 engines in unified guide; 5 Constellation engines also have dedicated guides in Docs/) |
 | `Source/DSP/` | Shared DSP library |
@@ -167,7 +176,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 ## Preset System
 
 - `.xometa` JSON files are the source of truth (version-controlled)
-- 7 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+- 8 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
 - 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE
 - 6D Sonic DNA: brightness, warmth, movement, density, space, aggression
 - Naming: 2-3 words, evocative, max 30 chars, no duplicates, no jargon
@@ -282,7 +291,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
-- 10,028 presets, 0 duplicates, 100% DNA coverage, health score ~92/100
+- ~15,200 presets (was 10,028 at sweep completion), 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 

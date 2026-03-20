@@ -103,7 +103,10 @@ namespace GalleryColors {
         if (id == "Ostinato")  return juce::Colour(0xFFE8701A); // Firelight Orange
         if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
         if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
+        // Flagship
+        if (id == "Obrix")     return juce::Colour(0xFF1E8B7E); // Reef Jade
         // V2 Theorem Engines
+        if (id == "Orbweave")  return juce::Colour(0xFF8E4585); // Kelp Knot Purple
         if (id == "Overtone")  return juce::Colour(0xFFA8D8EA); // Spectral Ice
         if (id == "Organism")  return juce::Colour(0xFFC6E377); // Emergence Lime
         return get(borderGray());

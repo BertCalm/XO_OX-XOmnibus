@@ -38,6 +38,8 @@
 #include "Engines/Ostinato/OstinatoEngine.h"
 #include "Engines/OceanDeep/OceandeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
+#include "Engines/Obrix/ObrixEngine.h"
+#include "Engines/Orbweave/OrbweaveEngine.h"
 #include "Engines/Overtone/OvertoneEngine.h"
 #include "Engines/Organism/OrganismEngine.h"
 
@@ -200,6 +202,16 @@ static bool registered_Ouie = xomnibus::EngineRegistry::instance().registerEngin
     "Ouie", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OuieEngine>();
     });
+// Flagship — OBRIX (modular brick synthesis)
+static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObrixEngine>();
+    });
+// Theorem Engine — ORBWEAVE (topological knot coupling)
+static bool registered_Orbweave = xomnibus::EngineRegistry::instance().registerEngine(
+    "Orbweave", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrbweaveEngine>();
+    });
 // Theorem Engine — OVERTONE (continued fraction spectral synthesis)
 static bool registered_Overtone = xomnibus::EngineRegistry::instance().registerEngine(
     "Overtone", []() -> std::unique_ptr<xomnibus::SynthEngine> {
@@ -306,8 +318,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
     // V1 Concept Engines
+    OstinatoEngine::addParameters(params);
     OpenSkyEngine::addParameters(params);
     OceandeepEngine::addParameters(params);
+    OuieEngine::addParameters(params);
+    // Flagship
+    ObrixEngine::addParameters(params);
+    // V2 Theorem Engines
+    OrbweaveEngine::addParameters(params);
+    OvertoneEngine::addParameters(params);
+    OrganismEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(

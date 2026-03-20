@@ -224,6 +224,8 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ouie/OuieEngine.cpp
 
     # V2 Theorem Engines
+    Source/Engines/Orbweave/OrbweaveEngine.h
+    Source/Engines/Orbweave/OrbweaveEngine.cpp
     Source/Engines/Overtone/OvertoneEngine.h
     Source/Engines/Overtone/OvertoneEngine.cpp
     Source/Engines/Organism/OrganismEngine.h
