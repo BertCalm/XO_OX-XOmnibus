@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Violent Era Void",
+  "mood": "Aether",
+  "engines": [
+    "Overworld",
+    "Organon"
+  ],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "created": "2026-03-16",
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.64,
+      "macro_movement": 0.66,
+      "macro_coupling": 0.56,
+      "macro_space": 0.11
+    },
+    "Organon": {
+      "macro_character": 0.98,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.61,
+      "macro_space": 0.27
+    }
+  },
+  "coupling": {
+    "type": "HARMONIC_STACK",
+    "source": "OVERWORLD",
+    "target": "ORGANON",
+    "amount": 0.79
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.078,
+    "warmth": 0.064,
+    "movement": 0.959,
+    "density": 0.932,
+    "space": 0.561,
+    "aggression": 0.907
+  }
+}

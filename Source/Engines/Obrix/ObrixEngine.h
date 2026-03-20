@@ -309,7 +309,8 @@ public:
         lastSampleL = lastSampleR = 0.0f;
         gestureLevel = 0.0f;
         gesturePhase = 0.0f;
-        // Wave 3
+
+        // Wave 3 — Drift Bus + Spatial filter state
         driftPhase_  = 0.0f;
         journeyMode_ = false;
         distFiltL_ = distFiltR_ = 0.0f;
@@ -397,13 +398,23 @@ public:
         const auto  wtBankVal    = static_cast<int> (loadP (pWtBank, 0.0f));
         const float unisonDetune = loadP (pUnisonDetune, 0.0f);
 
-        // Wave 3 params
+        // Wave 3 params — Drift Bus, Journey, Spatial
         const float driftRate  = loadP (pDriftRate,  0.005f); // Hz: 0.001–0.05
         const float driftDepth = loadP (pDriftDepth, 0.0f);   // 0=off, 1=full ensemble drift
         const bool  journeyOn  = loadP (pJourneyMode, 0.0f) > 0.5f;
         const float distance   = loadP (pDistance,   0.0f);   // 0=close, 1=far (HF rolloff)
         const float air        = loadP (pAir,        0.5f);   // 0=warm(bass), 1=cold(treble)
-        journeyMode_ = journeyOn; // cache for noteOff suppression
+        journeyMode_ = journeyOn; // cached for noteOff suppression in MIDI handler
+
+        // Pre-compute spatial filter coefficients once per block (not per sample)
+        // DISTANCE: fc sweeps 20kHz (close) → ~1kHz (far) via matched-Z 1-pole LP
+        const float distFc    = 20000.0f * (1.0f - distance * 0.95f);
+        const float distCoeff = 1.0f - std::exp (-kTwoPi * distFc / sr);
+        // AIR: fixed 1kHz LP/HP split for spectral tilt
+        const float airCoeff  = 1.0f - std::exp (-kTwoPi * 1000.0f / sr);
+        // air=0 → lpGain=1.3, hpGain=0.7; air=0.5 → both 1.0; air=1 → lpGain=0.7, hpGain=1.3
+        const float airLpGain = 1.0f + (0.5f - air) * 0.6f;
+        const float airHpGain = 1.0f + (air - 0.5f) * 0.6f;
 
         const int voiceModeIdx = static_cast<int> (loadP (pVoiceMode, 3.0f));
         const int polyLimit    = (voiceModeIdx <= 1) ? 1 : (voiceModeIdx == 2) ? 4 : 8;
@@ -563,13 +574,16 @@ public:
                 pitchMod += pitchBend_ * bendRange * 100.0f;
 
                 // === DRIFT BUS per-voice application (Wave 3) ===
-                // Each voice slot reads the same slow LFO at a different phase offset,
-                // producing independent pitch wander that sounds like an ensemble
+                // Each voice slot reads the global ultra-slow LFO at a unique phase
+                // offset. 0.23 is irrational relative to 1.0, so no two voice slots
+                // ever phase-lock — producing Berlin School ensemble drift from one
+                // oscillator (Schulze's trick).
                 if (driftDepth > 0.001f)
                 {
-                    float voiceDrift = fastSin ((driftPhase_ + vi * 0.23f) * kTwoPi) * driftDepth;
-                    pitchMod  += voiceDrift * 50.0f;  // ±50 cents pitch drift at full depth
-                    cutoffMod += voiceDrift * 200.0f; // ±200 Hz filter drift (subtle harmonic breathing)
+                    static constexpr float kDriftSlotOffset = 0.23f; // irrational spacing
+                    float voiceDrift = fastSin ((driftPhase_ + vi * kDriftSlotOffset) * kTwoPi) * driftDepth;
+                    pitchMod  += voiceDrift * 50.0f;  // +-50 cents pitch drift at full depth
+                    cutoffMod += voiceDrift * 200.0f; // +-200 Hz filter drift (subtle harmonic breathing)
                 }
 
                 // D001: Velocity shapes timbre — cutoff AND wavefolder depth
@@ -681,12 +695,15 @@ public:
             }
 
             // === PER-BRICK SPATIAL (Wave 3) — Tomita's scene-making ===
-            // DISTANCE: HF rolloff via 1-pole LP (air absorption at far distances)
-            // fc = 20 kHz at distance=0, ~1 kHz at distance=1.0
+            //
+            // Two complementary spatial processors that position the sound in an
+            // imaginary acoustic space. DISTANCE models air absorption (HF rolloff
+            // at far distances); AIR models spectral tilt (warm/cold atmosphere).
+            // Coefficients are pre-computed once per block above.
+
+            // DISTANCE: 1-pole LP simulating HF air absorption
             if (distance > 0.001f)
             {
-                float distFc = 20000.0f * (1.0f - distance * 0.95f);
-                float distCoeff = 1.0f - std::exp (-kTwoPi * distFc / sr); // matched-Z
                 distFiltL_ += distCoeff * (mixL - distFiltL_);
                 distFiltR_ += distCoeff * (mixR - distFiltR_);
                 distFiltL_ = flushDenormal (distFiltL_);
@@ -695,21 +712,17 @@ public:
                 mixR = distFiltR_;
             }
 
-            // AIR: spectral tilt — warm (bass-boosted) ↔ cold (treble-boosted)
-            // LP/HP split at 1 kHz; air=0 boosts LP (warm), air=1 boosts HP (cold)
+            // AIR: LP/HP split at 1 kHz; gains tilt spectrum warm or cold
             if (std::fabs (air - 0.5f) > 0.02f)
             {
-                float airCoeff = 1.0f - std::exp (-kTwoPi * 1000.0f / sr);
                 airFiltL_ += airCoeff * (mixL - airFiltL_);
                 airFiltR_ += airCoeff * (mixR - airFiltR_);
                 airFiltL_ = flushDenormal (airFiltL_);
                 airFiltR_ = flushDenormal (airFiltR_);
-                float hpL = mixL - airFiltL_, hpR = mixR - airFiltR_;
-                // air=0 → lpGain=1.3 hpGain=0.7; air=0.5 → both 1.0; air=1 → lpGain=0.7 hpGain=1.3
-                float lpGain = 1.0f + (0.5f - air) * 0.6f;
-                float hpGain = 1.0f + (air - 0.5f) * 0.6f;
-                mixL = airFiltL_ * lpGain + hpL * hpGain;
-                mixR = airFiltR_ * lpGain + hpR * hpGain;
+                float hpL = mixL - airFiltL_;
+                float hpR = mixR - airFiltR_;
+                mixL = airFiltL_ * airLpGain + hpL * airHpGain;
+                mixR = airFiltR_ * airLpGain + hpR * airHpGain;
             }
 
             mixL *= level;
@@ -734,13 +747,15 @@ public:
         for (const auto& v : voices) if (v.active) ++count;
         activeVoices = count;
 
-        // Brick complexity for coupling metadata (0-1 normalized)
-        int maxBricks = 2 + 3 + 3; // sources + procs + effects
-        brickComplexity = static_cast<float> (std::min (activeVoices, 1))
-                        * static_cast<float> (std::max (1, (src1Type > 0 ? 1 : 0) + (src2Type > 0 ? 1 : 0)
+        // Brick complexity for coupling metadata (0–1 normalized)
+        // Smith: architectural complexity signal — how many bricks are active
+        static constexpr int kMaxBricks = 2 + 3 + 3; // 2 sources + 3 procs + 3 effects
+        int numActiveBricks = (src1Type > 0 ? 1 : 0) + (src2Type > 0 ? 1 : 0)
                             + (proc1Type > 0 ? 1 : 0) + (proc2Type > 0 ? 1 : 0) + (proc3Type > 0 ? 1 : 0)
-                            + (fxType[0] > 0 ? 1 : 0) + (fxType[1] > 0 ? 1 : 0) + (fxType[2] > 0 ? 1 : 0)))
-                        / static_cast<float> (maxBricks);
+                            + (fxType[0] > 0 ? 1 : 0) + (fxType[1] > 0 ? 1 : 0) + (fxType[2] > 0 ? 1 : 0);
+        float voiceGate = (activeVoices > 0) ? 1.0f : 0.0f;
+        brickComplexity = voiceGate * static_cast<float> (std::max (1, numActiveBricks))
+                        / static_cast<float> (kMaxBricks);
     }
 
     //==========================================================================
