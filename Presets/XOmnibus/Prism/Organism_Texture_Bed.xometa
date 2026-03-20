@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Texture Bed",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Background texture for production. The colony fills the space.",
+  "tags": [
+    "electronic",
+    "texture",
+    "background",
+    "ambient"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.25,
+    "space": 0.4,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 42,
+      "org_stepRate": 3.0,
+      "org_scope": 12,
+      "org_mutate": 0.08,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 2000.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 1.5,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.8,
+      "org_ampRel": 2.5,
+      "org_lfo1Rate": 0.04,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.03,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.4,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}

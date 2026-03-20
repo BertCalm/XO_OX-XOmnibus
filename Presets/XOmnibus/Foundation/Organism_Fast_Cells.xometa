@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Fast Cells",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "32 steps per second. Maximum speed. The colony becomes a texture.",
+  "tags": [
+    "fast",
+    "texture",
+    "32hz"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.7,
+    "density": 0.3,
+    "space": 0.0,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 32.0,
+      "org_scope": 2,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.2,
+      "org_filterCutoff": 4000.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.1,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}

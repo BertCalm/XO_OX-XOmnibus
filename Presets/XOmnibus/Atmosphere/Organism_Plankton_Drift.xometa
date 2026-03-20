@@ -2,51 +2,60 @@
   "schema_version": 1,
   "name": "Plankton Drift",
   "mood": "Atmosphere",
-  "engines": ["Organism"],
-  "author": "XO_OX",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tiny cellular voices drifting on slow LFO currents, rule-62 softly blooming.",
-  "tags": ["atmosphere", "delicate", "drifting", "organic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Additive rule with gentle mutation. Millions of tiny lives drifting.",
+  "tags": [
+    "ambient",
+    "plankton",
+    "drift",
+    "organic"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.5,
+    "brightness": 0.4,
     "warmth": 0.55,
-    "movement": 0.45,
-    "density": 0.35,
-    "space": 0.7,
-    "aggression": 0.08
+    "movement": 0.4,
+    "density": 0.25,
+    "space": 0.4,
+    "aggression": 0.05
   },
   "parameters": {
     "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 42,
+      "org_stepRate": 3.0,
+      "org_scope": 8,
+      "org_mutate": 0.06,
+      "org_freeze": 0,
       "org_oscWave": 0,
-      "org_rule": 62,
-      "org_mutate": 0.1,
-      "org_freeze": 0.1,
-      "org_scope": 0.45,
-      "org_filterCutoff": 2400,
-      "org_filterRes": 0.1,
-      "org_ampAtk": 0.2,
-      "org_ampDec": 0.7,
-      "org_ampSus": 0.5,
-      "org_ampRel": 2.0,
-      "org_lfo1Rate": 0.15,
-      "org_lfo1Depth": 0.09,
-      "org_lfo2Rate": 0.08,
-      "org_lfo2Depth": 0.07,
-      "org_reverbMix": 0.6,
-      "org_macroRule": 0.3,
-      "org_macroMutate": 0.1,
-      "org_macroSeed": 0.5,
-      "org_macroCoupling": 0.0
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 2500.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.5,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 1.5,
+      "org_lfo1Rate": 0.06,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.04,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
     }
-  },
-  "macros": {
-    "CHARACTER": 0.3,
-    "MOVEMENT": 0.45,
-    "COUPLING": 0.0,
-    "SPACE": 0.6
-  },
-  "coupling": {"pairs": []}
+  }
 }

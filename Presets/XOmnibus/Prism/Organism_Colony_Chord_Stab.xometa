@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Colony Chord Stab",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chord stab where each hit has the colony's current state baked in.",
+  "tags": [
+    "electronic",
+    "stab",
+    "chord",
+    "dynamic"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.3,
+    "space": 0.1,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 4.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.8,
+      "org_ampAtk": 0.001,
+      "org_ampDec": 0.2,
+      "org_ampSus": 0.0,
+      "org_ampRel": 0.3,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.0,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.0,
+      "org_reverbMix": 0.1,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}

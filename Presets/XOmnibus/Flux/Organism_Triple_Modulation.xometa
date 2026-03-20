@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Triple Modulation",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Colony + LFO1 + LFO2 all modulating the filter. Triple-layered movement.",
+  "tags": [
+    "flux",
+    "triple",
+    "modulation",
+    "complex"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.3,
+    "space": 0.15,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 6.0,
+      "org_scope": 4,
+      "org_mutate": 0.1,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 2500.0,
+      "org_filterRes": 0.4,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 0.8,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.5,
+      "org_lfo2Depth": 0.3,
+      "org_reverbMix": 0.15,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}

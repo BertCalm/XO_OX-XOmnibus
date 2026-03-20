@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Maximum Everything",
+  "mood": "Aether",
+  "engines": [
+    "Overtone"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Every parameter at or near maximum. The Nautilus at absolute peak. Use with caution.",
+  "tags": [
+    "aether",
+    "maximum",
+    "everything",
+    "extreme",
+    "full"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.8,
+    "space": 0.8,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2,
+      "over_depth": 7.0,
+      "over_partial0": 1.0,
+      "over_partial1": 1.0,
+      "over_partial2": 1.0,
+      "over_partial3": 1.0,
+      "over_partial4": 1.0,
+      "over_partial5": 1.0,
+      "over_partial6": 1.0,
+      "over_partial7": 1.0,
+      "over_velBright": 1.0,
+      "over_filterCutoff": 20000.0,
+      "over_filterRes": 0.8,
+      "over_ampAtk": 0.02,
+      "over_ampDec": 0.3,
+      "over_ampSus": 0.7,
+      "over_ampRel": 1.0,
+      "over_lfo1Rate": 5.0,
+      "over_lfo1Depth": 1.0,
+      "over_lfo2Rate": 7.0,
+      "over_lfo2Depth": 1.0,
+      "over_resoMix": 0.8,
+      "over_macroDepth": 1.0,
+      "over_macroColor": 1.0,
+      "over_macroCoupling": 1.0,
+      "over_macroSpace": 1.0
+    }
+  }
+}

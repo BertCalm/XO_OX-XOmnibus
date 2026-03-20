@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Last Generation",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sparse Rule 18. The colony is dying out. Each generation has fewer cells.",
+  "tags": [
+    "aether",
+    "sparse",
+    "dying",
+    "minimal"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.2,
+    "space": 0.6,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 42,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 1800.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 2.0,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.85,
+      "org_ampRel": 5.0,
+      "org_lfo1Rate": 0.01,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.01,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.55,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}

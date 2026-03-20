@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Sunrise Cells",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bright, active colony. Light returning to the reef.",
+  "tags": [
+    "ambient",
+    "sunrise",
+    "bright",
+    "hopeful"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.25,
+    "space": 0.35,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 6.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.2,
+      "org_filterCutoff": 4500.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.5,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 1.5,
+      "org_lfo1Rate": 0.12,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.08,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.3,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  }
+}
