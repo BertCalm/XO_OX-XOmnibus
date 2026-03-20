@@ -3,6 +3,8 @@
 #include "DissolvingArchive.h"
 #include "ArtifactCathedral.h"
 #include "SubmersionEngine.h"
+// NOTE: JUCE dependency intentional — parameter declarations live here for centralization
+// (adapter-layer responsibility; DSP logic below is JUCE-free)
 #include <juce_audio_processors/juce_audio_processors.h>
 
 namespace xomnibus {

@@ -180,7 +180,7 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
         return std::make_unique<xomnibus::OctopusEngine>();
     });
 static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
-    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+    "OBRIX", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::ObrixEngine>();
     });
 static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(

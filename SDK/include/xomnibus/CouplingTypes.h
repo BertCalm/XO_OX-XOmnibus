@@ -25,6 +25,8 @@ enum class CouplingType {
 
 /// Number of coupling types — useful for iteration.
 constexpr int kNumCouplingTypes = 13;
+static_assert (static_cast<int>(CouplingType::AudioToBuffer) + 1 == kNumCouplingTypes,
+    "kNumCouplingTypes must match the number of CouplingType enum values");
 
 /// Get a human-readable name for a CouplingType.
 inline const char* couplingTypeName (CouplingType t)

@@ -610,7 +610,7 @@ public:
     // Identity
     //==========================================================================
 
-    juce::String getEngineId() const override { return "Obrix"; }
+    juce::String getEngineId() const override { return "OBRIX"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF1E8B7E); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoices; }
