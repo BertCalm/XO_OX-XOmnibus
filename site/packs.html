@@ -433,6 +433,99 @@ body::before {
   border-color: var(--cream);
 }
 
+/* ═══════════ TRANSCENDENTAL ═══════════ */
+.transcendental-section {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 6rem);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.transcendental-section .section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.transcendental-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--cream);
+  font-weight: 300;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.transcendental-section h2 em { color: var(--gold); font-style: italic; }
+.transcendental-vol {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+.vol-header { margin-bottom: 1.5rem; }
+.vol-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.75rem;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+}
+.vol-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  color: var(--cream);
+  font-weight: 600;
+}
+.vol-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+  letter-spacing: 0.04em;
+}
+.vol-engines {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+.vol-engine {
+  background: var(--bg-surface);
+  border: 1px solid;
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+}
+.vol-includes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.transcendental-btn {
+  display: inline-block;
+  padding: 0.8rem 1.75rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+}
+.transcendental-btn:hover { opacity: 0.85; }
+
 /* ═══════════ SUPPORT ═══════════ */
 .support-section {
   border-top: 1px solid var(--border);
@@ -592,12 +685,12 @@ footer {
 }
 </style>
 <meta property="og:title" content="XOmnibus — Free Multi-Engine Synthesizer">
-<meta property="og:description" content="34 engines. 10,028 presets. Free and open-source. By XO_OX Designs.">
+<meta property="og:description" content="42 engines. 15,200 presets. Free and open-source. By XO_OX Designs.">
 <meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="XOmnibus — Free Multi-Engine Synthesizer">
-<meta name="twitter:description" content="34 engines. 10,028 presets. Free and open-source.">
+<meta name="twitter:description" content="42 engines. 15,200 presets. Free and open-source.">
 <meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
 </head>
@@ -651,6 +744,53 @@ footer {
 <div class="packs-section">
   <div class="packs-grid" id="packsGrid"></div>
 </div>
+
+<!-- ═══════════ TRANSCENDENTAL VOL 1 ═══════════ -->
+<section class="transcendental-section reveal" id="transcendental">
+  <div class="section-label">Guru Bin &mdash; Transcendental</div>
+  <h2>Premium preset volumes.<br><em>Deeper exploration.</em></h2>
+  <p style="max-width:640px;margin:0 auto 2.5rem;text-align:center;color:var(--text-dim);">
+    Awakening presets are free in XOmnibus, forever. Transcendental volumes go further &mdash; 15&ndash;20 presets per engine, deeper sound design, each volume with a PDF lore booklet exploring the aquatic mythology. Released through Patreon.
+  </p>
+
+  <div class="transcendental-vol">
+    <div class="vol-header">
+      <div class="vol-badge">Vol 1</div>
+      <div class="vol-title">The New Species</div>
+      <div class="vol-subtitle">OBRIX &middot; OSTINATO &middot; OPENSKY &middot; OCEANDEEP &middot; OUIE</div>
+    </div>
+    <div class="vol-engines">
+      <div class="vol-engine" style="border-color: rgba(30,139,126,0.3);">
+        <div style="color:#1E8B7E;font-weight:600;font-size:0.9rem;">OBRIX</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">The Coral Architecture &mdash; 15 presets</div>
+      </div>
+      <div class="vol-engine" style="border-color: rgba(232,112,26,0.3);">
+        <div style="color:#E8701A;font-weight:600;font-size:0.9rem;">OSTINATO</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">The Drum Circle &mdash; 15 presets</div>
+      </div>
+      <div class="vol-engine" style="border-color: rgba(255,140,0,0.3);">
+        <div style="color:#FF8C00;font-weight:600;font-size:0.9rem;">OPENSKY</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">Pure feliX &mdash; 15 presets</div>
+      </div>
+      <div class="vol-engine" style="border-color: rgba(123,104,238,0.3);">
+        <div style="color:#7B68EE;font-weight:600;font-size:0.9rem;">OCEANDEEP</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">Pure Oscar &mdash; 15 presets</div>
+      </div>
+      <div class="vol-engine" style="border-color: rgba(112,128,144,0.3);">
+        <div style="color:#708090;font-weight:600;font-size:0.9rem;">OUIE</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">The Hammerhead &mdash; 15 presets</div>
+      </div>
+    </div>
+    <div class="vol-includes">
+      <span>&#10003; 75 premium presets</span>
+      <span>&#10003; PDF lore booklet</span>
+      <span>&#10003; XPN format &mdash; MPC-compatible</span>
+    </div>
+    <!-- TODO: Replace patreon.com/xoox with real Patreon URL when account is live -->
+    <a href="https://patreon.com/xoox" class="transcendental-btn" target="_blank" rel="noopener">Support on Patreon to access Transcendental Vol 1</a>
+    <div style="font-size:0.75rem;color:var(--text-faint);text-align:center;margin-top:0.75rem;">Awakening tier presets are always free inside XOmnibus directly.</div>
+  </div>
+</section>
 
 <!-- ═══════════ SUPPORT ═══════════ -->
 <section class="support-section reveal">

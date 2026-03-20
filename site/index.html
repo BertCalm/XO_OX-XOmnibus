@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="XO_OX Designs — Character synthesis. Thirty-four engines, over twenty-four hundred presets, infinite coupling. Free & open-source.">
+<meta name="description" content="XO_OX Designs — Character synthesis. Forty-two engines, over fifteen thousand presets, infinite coupling. Free & open-source.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <title>XO_OX Designs — Character Synthesis</title>
 <script type="application/ld+json">
@@ -23,7 +23,7 @@
     "name": "XO_OX Designs",
     "url": "https://xo-ox.org"
   },
-  "description": "Multi-engine character synthesizer with thirty-four engines, over twenty-four hundred presets, and cross-engine coupling. Free and open-source."
+  "description": "Multi-engine character synthesizer with forty-two engines, over fifteen thousand presets, and cross-engine coupling. Free and open-source."
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2033,12 +2033,12 @@ footer {
 }
 </style>
 <meta property="og:title" content="XOmnibus — Free Multi-Engine Synthesizer">
-<meta property="og:description" content="34 engines. 10,028 presets. Free and open-source. By XO_OX Designs.">
+<meta property="og:description" content="42 engines. 15,200 presets. Free and open-source. By XO_OX Designs.">
 <meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="XOmnibus — Free Multi-Engine Synthesizer">
-<meta name="twitter:description" content="34 engines. 10,028 presets. Free and open-source.">
+<meta name="twitter:description" content="42 engines. 15,200 presets. Free and open-source.">
 <meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
 </head>
@@ -2137,7 +2137,7 @@ footer {
 <!-- ═══════════ INSTRUMENTS ═══════════ -->
 <section class="instruments reveal" id="instruments">
   <div class="section-label">The Instruments</div>
-  <h2>Thirty-four engines.<br>Thirty-four <em>characters.</em></h2>
+  <h2>Forty-two engines.<br>Forty-two <em>characters.</em></h2>
   <p class="section-text">
     Each began as a standalone instrument with its own identity, voice, and reason to exist.
     Together in XOmnibus, they couple, collide, and mutate into sounds impossible with any single synth.
@@ -2153,7 +2153,7 @@ footer {
   <h2>The <em>Chord Machine.</em></h2>
   <p class="section-text">
     One note in, four voices out. Each chord tone is synthesized through a different engine —
-    timbral chord distribution that makes house music's stab heritage sing with thirty-four characters at once.
+    timbral chord distribution that makes house music's stab heritage sing with forty-two characters at once.
     <span style="display:block; margin-top:0.8rem; font-size:0.8rem; color:var(--text-faint);">Visual illustration — the real Chord Machine synthesizes each voice through a full engine.</span>
   </p>
 
@@ -2214,7 +2214,7 @@ footer {
 
   <div class="aquarium-intro">
     <p class="section-text">
-      Every engine in XOmnibus passes through the same water on the way out. Six master effects — each named for a water phenomenon — create the sonic environment where all thirty-four characters live. The aquarium is where brand identity becomes audible.
+      Every engine in XOmnibus passes through the same water on the way out. Six master effects — each named for a water phenomenon — create the sonic environment where all forty-two characters live. The aquarium is where brand identity becomes audible.
     </p>
     <p class="aquarium-lore">
       <span class="felix">feliX</span> lives near the surface — bright, darting, neon-electric. <span class="oscar">Oscar</span> lives in the depths — patient, regenerative, still. The Aquarium is the water between them. Every sound passes through both worlds.
@@ -2633,6 +2633,94 @@ const engines = [
     features: ["Three physical instrument models: berimbau, charango, djembe", "DRAMA macro: theatrical intensity control", "Cross-continental rhythm intelligence — instruments that listen to each other", "Surface-level energy: vivid, percussive, alive"],
     coupling: ["OHM", "ONSET", "OBBLIGATO"],
     prefix: "ole_", format: "AU / Standalone" },
+  { name: "Osprey", code: "OSPREY", color: "#1B4F8A",
+    desc: "Shoreline synthesis — coastal ecology across five cultural coastlines",
+    wave: "noise", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Coastal Ecology Synthesis",
+    tagline: "The osprey hunts at the boundary — not fully water, not fully land. Five-coastline ShoreSystem captures the acoustic character and cultural rhythm of different shores. The signal ecology of the coast where feliX dives and Oscar waits.",
+    features: ["Five-coastline ShoreSystem with cultural rhythm data", "Shore blend parameter for coastline crossfading", "Boundary-zone synthesis at the water's edge", "Sibling engine to OSTERIA — shared ShoreSystem data"],
+    coupling: ["OSTERIA", "ONSET", "OVERDUB"],
+    prefix: "osprey_", format: "XOmnibus native" },
+  { name: "Osteria", code: "OSTERIA", color: "#722F37",
+    desc: "Cultural warmth — the waterfront tavern, music from every port",
+    wave: "additive", freq: 196, fm: 0.3, fmAmt: 20,
+    synthType: "Cultural Warmth Synthesis",
+    tagline: "The oldest gathering place — simple food, port wine, music from wherever the sailors came from. Five coastlines of cultural warmth. ShoreSystem sibling to OSPREY. Where creatures pause and share what they carry.",
+    features: ["Five-coastline ShoreSystem — cultural harmony synthesis", "Porto wine warmth: Q-bass harbor hum", "Cultural rhythm presets from global coastal traditions", "Sibling engine to OSPREY — shared ShoreSystem data"],
+    coupling: ["OSPREY", "OHM", "OBLONG"],
+    prefix: "osteria_", format: "XOmnibus native" },
+  { name: "Overlap", code: "OVERLAP", color: "#00FFB4",
+    desc: "Kelp forest synthesis — entangled harmonics through KnotMatrix resonance",
+    wave: "fm", freq: 220, fm: 1.5, fmAmt: 60,
+    synthType: "KnotMatrix Resonance",
+    tagline: "A cathedral of filtered green light and entangled kelp. KnotMatrix generates topological resonances — harmonics that loop through each other like living tendrils. FDN reverb is the cathedral space inside the forest.",
+    features: ["KnotMatrix topological resonance engine", "FDN (Feedback Delay Network) reverb — cathedral forest space", "Bioluminescent harmonic shimmer at resonance peaks", "Entanglement coupling: pair with ORBWEAVE for maximum topology"],
+    coupling: ["ORBWEAVE", "OPAL", "OVERDUB"],
+    prefix: "olap_", format: "XOmnibus native" },
+  { name: "Outwit", code: "OUTWIT", color: "#CC6600",
+    desc: "Chromatophore camouflage — adaptive timbre that shifts to complement its environment",
+    wave: "fm", freq: 196, fm: 3.0, fmAmt: 120,
+    synthType: "Adaptive Camouflage Synthesis",
+    tagline: "The mimic octopus. The cuttlefish. Creatures never the same twice. Adaptive timbre reads spectral content of input and shifts harmonic character to complement or disguise itself. The great mimic of the deep.",
+    features: ["Spectral adaptive camouflage — reads and shifts to input", "Chromatophore AM modulation for timbral skin-shifting", "Mimic modes: complement, contrast, dissolve", "Deep-water character — works best in Oscar territory"],
+    coupling: ["OCELOT", "OCTOPUS", "ORGANON"],
+    prefix: "owit_", format: "XOmnibus native" },
+  { name: "Ombre", code: "OMBRE", color: "#7B6B8A",
+    desc: "Dual narrative synthesis — the gradient between memory and forgetting",
+    wave: "sine", freq: 220, fm: 0.5, fmAmt: 30,
+    synthType: "Dual Narrative Synthesis",
+    tagline: "The gradient where color fades. Two voices — bright and present, fading and past — blending at the thermocline. The boundary where clarity becomes uncertainty. Memory meeting forgetting in the same sound.",
+    features: ["Dual-voice narrative blend with MEMORY/FORGETTING axis", "Thermocline gradient filter modeling", "Shadow depth parameter — how far into forgetting", "Perception vs reality modulation modes"],
+    coupling: ["OVERDUB", "ODYSSEY", "OCEANDEEP"],
+    prefix: "ombre_", format: "XOmnibus native" },
+  { name: "Orca", code: "ORCA", color: "#1B2838",
+    desc: "Apex predator synthesis — wavetable body, echolocation, HUNT macro",
+    wave: "wavetable", freq: 110, fm: 0, fmAmt: 0,
+    synthType: "Apex Predator Synthesis",
+    tagline: "The only predator that hunts whales. Coordinated, strategic, spatial. The HUNT macro drives filter cutoff, resonance, echolocation resonance, and sub-bass simultaneously — the most cohesive macro in the fleet.",
+    features: ["HUNT macro: coordinated predator behavior in one parameter", "Echolocation resonance — click train return modeling", "Breach dynamics: wavetable body leaving the water", "Three-dimensional ocean spatial modeling"],
+    coupling: ["OCEANDEEP", "ONSET", "OVERBITE"],
+    prefix: "orca_", format: "XOmnibus native" },
+  { name: "Octopus", code: "OCTOPUS", color: "#E040FB",
+    desc: "Decentralized alien intelligence — 8 arm LFOs, chromatophores, ink cloud",
+    wave: "wavetable", freq: 220, fm: 2.0, fmAmt: 80,
+    synthType: "Distributed Intelligence Synthesis",
+    tagline: "Two-thirds of neurons in the arms. Eight arm LFOs operating semi-independently. Chromatophore skin-shifting AM modulation. Ink cloud timbral weapon. EnvToMorph coupling conducts all 8 arms simultaneously from outside.",
+    features: ["8 arm LFOs with semi-independent rates and phase", "Chromatophore AM modulation — timbral skin color", "Ink cloud: harmonic noise burst timbral weapon", "Fleet-leading coupling: external env conducts arm neurological tempo"],
+    coupling: ["OUTWIT", "ONSET", "ORGANON"],
+    prefix: "octo_", format: "XOmnibus native" },
+  { name: "Obrix", code: "OBRIX", color: "#1E8B7E",
+    desc: "Modular brick synthesis — stackable building blocks, the coral architecture",
+    wave: "additive", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Modular Brick Synthesis",
+    tagline: "Individual polyps stacking into architecture of staggering complexity. Oscillator bricks, filter bricks, modulation bricks, FX bricks snap together in configurable chains. Each brick alone is modest. Stacked, they become the reef.",
+    features: ["Stackable synthesis bricks: oscillator, filter, mod, FX", "Configurable brick chains with independent addressability", "Reef jade architecture — maximum adaptability", "Blessing B016: Brick Independence"],
+    coupling: ["OVERDUB", "OPAL", "ORACLE"],
+    prefix: "obrix_", format: "XOmnibus native" },
+  { name: "Orbweave", code: "ORBWEAVE", color: "#8E4585",
+    desc: "Topological knot coupling — bidirectional harmonic entanglement. Preview.",
+    wave: "fm", freq: 196, fm: 2.5, fmAmt: 100,
+    synthType: "Topological Knot Synthesis",
+    tagline: "Kelp growing in fast currents ties itself into knots that cannot be undone without cutting. Topological resonances — harmonic series looping through each other inseparably. Built specifically around a coupling concept: it exists to entangle.",
+    features: ["KnotMatrix topological resonance synthesis", "Bidirectional harmonic entanglement routing", "Kelp knot purple: the bruised color of pressure", "Preview engine — DSP complete"],
+    coupling: ["OVERLAP", "ODYSSEY", "OBRIX"],
+    prefix: "weave_", format: "XOmnibus native" },
+  { name: "Overtone", code: "OVERTONE", color: "#A8D8EA",
+    desc: "Continued fraction spectral synthesis — the nautilus. Preview.",
+    wave: "additive", freq: 330, fm: 0, fmAmt: 0,
+    synthType: "Continued Fraction Spectral Synthesis",
+    tagline: "The nautilus builds its shell according to a logarithmic spiral. Harmonic series derived from continued fraction approximations of irrational numbers — pi, phi, e. Mathematically precise but never periodic.",
+    features: ["Continued fraction harmonic series generation", "Irrational number spectrum: pi, phi, e, sqrt(2)", "Nautilus shell spiral parameter mapping", "Preview engine — DSP complete"],
+    coupling: ["ORACLE", "ORBITAL", "OBSCURA"],
+    prefix: "over_", format: "XOmnibus native" },
+  { name: "Organism", code: "ORGANISM", color: "#C6E377",
+    desc: "Cellular automata synthesis — coral colony emergence. Preview.",
+    wave: "noise", freq: 220, fm: 0, fmAmt: 0,
+    synthType: "Cellular Automata Synthesis",
+    tagline: "Millions of identical simple organisms following simple rules produce one of the most complex ecosystems on Earth. Cellular automata generate synthesis parameters. Patterns no human would compose but that feel inevitable once heard.",
+    features: ["Conway-family + custom aquatic cellular automata", "Emergence: synthesis parameters from rule-based evolution", "Coral colony rule presets across automata families", "Preview engine — DSP complete"],
+    coupling: ["OCELOT", "OCTOPUS", "OUROBOROS"],
+    prefix: "org_", format: "XOmnibus native" },
 ];
 
 // ═══════════ ENGINE AUDIO PREVIEW SYSTEM ═══════════
