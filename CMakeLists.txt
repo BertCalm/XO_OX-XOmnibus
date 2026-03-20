@@ -253,17 +253,14 @@ if(XO_HAS_RIVE)
     )
 endif()
 
-# XOverworld DSP headers — included by OverworldEngine adapter
+# XOverworld DSP headers — embedded in Source/Engines/Overworld/
 target_include_directories(XOmnibus PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
-# XOverlap and XOutwit DSP headers — their local FastMath.h stubs forward to
-# the shared XOmnibus Source/DSP/FastMath.h via #include "DSP/FastMath.h".
-# That path requires Source/ in the search path. Engine-specific files (Voice.h,
-# FDN.h, ArmChannel.h, etc.) are resolved via symlinks:
-#   Source/Engines/Overlap/DSP/ -> ../XOverlap/Source/DSP/
-#   Source/Engines/Outwit/DSP/  -> ../XOutwit/Source/DSP/
+# XOverlap and XOutwit DSP headers — embedded in Source/Engines/{Overlap,Outwit}/DSP/
+# FastMath.h stubs forward to the shared Source/DSP/FastMath.h via #include "DSP/FastMath.h".
+# That path requires Source/ in the search path.
 target_include_directories(XOmnibus PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source"
 )
@@ -311,7 +308,7 @@ add_executable(XOmnibusTests
 
 target_include_directories(XOmnibusTests PRIVATE
     Source
-    "${CMAKE_CURRENT_SOURCE_DIR}/../XOverworld/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
 target_link_libraries(XOmnibusTests PRIVATE
