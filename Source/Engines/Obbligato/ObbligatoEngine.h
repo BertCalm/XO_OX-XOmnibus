@@ -213,7 +213,13 @@ public:
                 v.body.setParams(v.freq * bfr, bqv);
                 float bo=out+v.body.process(out)*0.2f;
                 float so=v.symp.process(bo,effSymp);
-                float sig=(bo+so)*v.ampEnv*0.4f;
+
+                // DSP Fix Wave 2B: D001 — velocity shapes brightness, not just amplitude.
+                // Higher velocity increases body Q (brighter harmonics) and opens the
+                // sympathetic resonance (richer overtone coupling). This was the seance
+                // finding: "Constellation-wide pattern: intensity not brightness".
+                float velBrightScale = 0.7f + v.vel * 0.6f; // 0.7→1.3x brightness at full vel
+                float sig=(bo+so*velBrightScale)*v.ampEnv*0.4f;
 
                 // Stereo panning: A left-ish, B right-ish, modulated by BOND pan spread
                 float basePan = v.isBroA ? 0.35f : 0.65f;

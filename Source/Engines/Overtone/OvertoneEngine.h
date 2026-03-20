@@ -463,7 +463,11 @@ public:
     //--------------------------------------------------------------------------
     juce::String  getEngineId()     const override { return "Overtone"; }
     juce::Colour  getAccentColour() const override { return juce::Colour(0xffA8D8EA); }
-    int           getMaxVoices()    const override { return 8; }
+    // DSP Fix Wave 2B: Corrected from 8 to 1 — engine implements single-voice
+    // spectral additive synthesis (one set of 8 partials, one ADSR). Polyphonic
+    // voice allocation would require 8x partial oscillators + 8x envelope state.
+    // Declaring 8 when only 1 processes is a seance-flagged lie.
+    int           getMaxVoices()    const override { return 1; }
 
     int getActiveVoiceCount() const override {
         return (noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0;
@@ -585,6 +589,8 @@ public:
                 currentVel    = msg.getFloatVelocity();
                 noteIsOn      = true;
                 ampEnvStage   = EnvStage::Attack;
+                // DSP Fix Wave 2B: trigger filter envelope on note-on
+                filterEnvLevel = currentVel;
                 // Phase reset on new note for clean spectral onset
                 for (int i = 0; i < kNumPartials; ++i)
                     partials[i].reset();
@@ -654,11 +660,22 @@ public:
         // Upper partial boost = velocity * velBright (applied to partials 3-7)
         const float velUpperBoost = currentVel * velBright * 0.6f;
 
+        // DSP Fix Wave 2B: Filter envelope — velocity triggers a decaying filter
+        // sweep that adds brightness on attack, then falls back to baseCutoff.
+        // This addresses the seance finding "no filter envelope" and gives the
+        // Nautilus shell a natural spectral bloom on each note-on.
+        // filterEnvLevel is set to currentVel on noteOn (in MIDI parse above),
+        // decays per-block at ~300ms half-life. velBright scales the envelope depth.
+        const float filterEnvDecay = fastExp(-1.0f / (0.3f * sr)); // ~300ms half-life
+        filterEnvLevel *= filterEnvDecay;
+        filterEnvLevel = flushDenormal(filterEnvLevel);
+        const float filterEnvBoost = filterEnvLevel * velBright * 5000.f; // up to +5kHz sweep
+
         // Filter cutoff: COLOR macro brightens by raising cutoff
         const float colorCutoffBoost = macroColor * 6000.f; // +0..+6000 Hz
         const float velCutoffBoost   = currentVel * velBright * 3000.f; // D001
         const float finalCutoff = clamp(baseCutoff + colorCutoffBoost + velCutoffBoost
-                                        + couplingFilterMod, 1000.f, 20000.f);
+                                        + filterEnvBoost + couplingFilterMod, 1000.f, 20000.f);
         const float Q = 0.5f + filterRes * 5.5f; // map 0-0.8 → Q 0.5-4.9
 
         // Fundamental frequency (MIDI note + coupling pitch mod)
@@ -867,6 +884,9 @@ private:
     // D006 expression
     float modWheelVal   = 0.f;
     float aftertouchVal = 0.f;
+
+    // DSP Fix Wave 2B: Filter envelope level (set to velocity on noteOn, decays per block)
+    float filterEnvLevel = 0.f;
 
     // Coupling modulation (consumed each block)
     float couplingFilterMod = 0.f;

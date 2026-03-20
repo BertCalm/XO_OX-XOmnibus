@@ -384,19 +384,30 @@ public:
 
             sample *= snap.masterVol;
 
-            L[s] = sample;
-            R[s] = sample;
+            // DSP Fix Wave 2B: Stereo widening — Haas-style micro-delay for width.
+            // OVERWORLD's VoicePool is mono by design (chip engines sum to one channel).
+            // We add a subtle stereo image via a tiny delay on the right channel (~0.3ms)
+            // plus phase-inverted ERA drift for organic width. This lifts the mono
+            // collapse flagged in the 7.6 seance without altering the mono character.
+            {
+                // Micro-delay right channel: ~13 samples at 44100 Hz (~0.3ms Haas)
+                int haasIdx = haasWritePos % kHaasDelayLen;
+                float haasOut = haasDelayBuf[haasIdx];
+                haasDelayBuf[haasIdx] = sample;
+                haasWritePos++;
+
+                // ERA drift adds subtle stereo decorrelation
+                float eraStereo = snap.eraDriftDepth * 0.02f * fastSin(eraPhase * juce::MathConstants<float>::twoPi * 1.3f);
+
+                L[s] = sample * (1.0f + eraStereo);
+                R[s] = haasOut * (1.0f - eraStereo);
+            }
 
             // P0-05 fix: cache per-sample output for getSampleForCoupling.
-            // OVERWORLD is mono by design — VoicePool::process() returns a single
-            // float (summed chip voices). The entire downstream chain (SVFilter,
-            // BitCrusher, GlitchEngine, FIREcho) is also mono. Both cache channels
-            // intentionally receive the same value so that coupling consumers can
-            // read either channel and receive a consistent signal.
             if (s < static_cast<int> (outputCacheLeft.size()))
             {
-                outputCacheLeft[static_cast<size_t> (s)]  = sample;
-                outputCacheRight[static_cast<size_t> (s)] = sample;
+                outputCacheLeft[static_cast<size_t> (s)]  = L[s];
+                outputCacheRight[static_cast<size_t> (s)] = R[s];
             }
         }
 
@@ -561,6 +572,11 @@ private:
 
     // D005 fix: minimal LFO added — ERA position drift at eraDriftRate Hz
     float eraPhase   = 0.0f;
+
+    // DSP Fix Wave 2B: Haas stereo widening (~0.3ms delay on R channel)
+    static constexpr int kHaasDelayLen = 16; // ~0.3ms at 48kHz
+    float haasDelayBuf[kHaasDelayLen] = {};
+    int   haasWritePos = 0;
 
     // P0-05 fix: per-sample output cache for getSampleForCoupling
     std::vector<float> outputCacheLeft;

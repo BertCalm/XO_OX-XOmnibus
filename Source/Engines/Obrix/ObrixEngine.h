@@ -519,11 +519,24 @@ public:
                 // --- All 4 Modulators ---
                 // MOVEMENT macro scales LFO depth BEFORE routing
                 float moveScale = 1.0f + macroMove * 3.0f;
+                // DSP Fix Wave 2B: MOVEMENT macro also multiplies LFO RATE,
+                // unlocking audio-rate modulation (up to 30Hz * 34x = 1020 Hz).
+                // This lifts the 30 Hz LFO ceiling flagged in the OBRIX seance
+                // without changing the frozen parameter range. Players access
+                // audio-rate crossover by pushing the MOVEMENT macro.
+                // modWheel further scales rate: at full modWheel+MOVEMENT, LFOs
+                // can reach ~1000 Hz for true audio-rate FM/AM territory.
+                float rateMultiplier = 1.0f + macroMove * 10.0f + modWheel_ * 23.0f;
                 float modVals[4] {};
                 for (int m = 0; m < 4; ++m)
                 {
                     if (modType[m] == 1)      modVals[m] = voice.modEnvs[m].process() * modDepth[m];
-                    else if (modType[m] == 2)  modVals[m] = voice.modLFOs[m].process() * modDepth[m] * moveScale;
+                    else if (modType[m] == 2)
+                    {
+                        // Apply rate multiplier by advancing extra phase
+                        voice.modLFOs[m].setRate (modRate[m] * rateMultiplier, sr);
+                        modVals[m] = voice.modLFOs[m].process() * modDepth[m] * moveScale;
+                    }
                     else if (modType[m] == 3)  modVals[m] = voice.velocity * modDepth[m];
                     else if (modType[m] == 4)  modVals[m] = voice.aftertouch * modDepth[m];
                 }

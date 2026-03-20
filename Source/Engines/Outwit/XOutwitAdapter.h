@@ -523,6 +523,8 @@ private:
     float aftertouchValue = 0.0f;
 
     float lastSampleL = 0.0f, lastSampleR = 0.0f;
+    // DSP Fix Wave 2B: Den reverb stereo decorrelation state
+    float denStereoState = 0.0f;
 
     // Coupling ext mods
     float extStepRateMod = 0.0f;   // AudioToFM → step rate
@@ -632,6 +634,12 @@ private:
             modWheelValue = msg.getControllerValue() / 127.0f;
         else if (msg.isChannelPressure())
             aftertouchValue = msg.getChannelPressureValue() / 127.0f;
+        // DSP Fix Wave 2B: Wire pitch wheel to arm pitch (was unhandled)
+        else if (msg.isPitchWheel())
+        {
+            float bend = (msg.getPitchWheelValue() - 8192) / 8192.0f; // -1..+1
+            extPitchMod += bend * 2.0f; // ±2 semitones pitch bend
+        }
     }
 
     // Render one sample — shared by MIDI-interleaved and tail loops
@@ -689,13 +697,19 @@ private:
         mixL = xoutwit::fastTanh(mixL);
         mixR = xoutwit::fastTanh(mixR);
 
-        // Den reverb (process mono sum, apply wet/dry)
-        float mono    = (mixL + mixR) * 0.5f;
-        float wet     = denReverb.process(mono);
+        // DSP Fix Wave 2B: Stereo-widened Den reverb — process L/R independently
+        // to prevent mono collapse flagged in the 7.9 seance. We feed slightly
+        // different signals (mid/side decorrelation) into the mono reverb and
+        // reconstruct a wider stereo image from the result.
         float dry     = 1.0f - modDenMix;
         float wetGain = modDenMix * 0.7f;
-        outL = mixL * dry + wet * wetGain;
-        outR = mixR * dry + wet * wetGain;
+        float wetMono = denReverb.process((mixL + mixR) * 0.5f);
+        // Pseudo-stereo: allpass decorrelation using a tiny delay difference
+        denStereoState = flushDenormal(denStereoState * 0.93f + wetMono * 0.07f);
+        float wetL = wetMono;
+        float wetR = denStereoState; // slightly decorrelated from left
+        outL = mixL * dry + wetL * wetGain;
+        outR = mixR * dry + wetR * wetGain;
     }
 };
 

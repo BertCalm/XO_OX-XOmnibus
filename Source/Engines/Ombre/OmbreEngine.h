@@ -551,11 +551,16 @@ public:
                 // Apply envelope and velocity
                 float out = filtered * voice.envLevel * voice.velocity * stealFade;
 
-                // Stereo spread — Oubli wider, Opsis centered
-                float stereoWidth = (1.0f - effectiveBlend) * 0.3f;
+                // DSP Fix Wave 2B: Enhanced stereo spread — wider Oubli imaging
+                // + velocity-scaled stereo width + LFO2 stereo modulation for
+                // more dimensional sound. Pushes from 8.0 toward 8.5 territory.
+                float stereoWidth = (1.0f - effectiveBlend) * 0.45f; // wider than 0.3
+                stereoWidth += voice.velocity * 0.1f; // harder hits = wider
                 float panMod = oubliOut * stereoWidth;
-                float outL = out * (1.0f - panMod * 0.5f);
-                float outR = out * (1.0f + panMod * 0.5f);
+                // LFO2 adds gentle stereo breathing (subtle L/R sway)
+                float stereoBreathe = lfo2Value * 0.08f;
+                float outL = out * (1.0f - panMod * 0.5f + stereoBreathe);
+                float outR = out * (1.0f + panMod * 0.5f - stereoBreathe);
 
                 mixL += outL;
                 mixR += outR;
