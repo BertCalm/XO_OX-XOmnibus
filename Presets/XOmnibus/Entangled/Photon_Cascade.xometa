@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Optic AutoPulse velocity triggering Onset percussion at maximum kinetic rate — light percussion.",
   "dna": {
     "aggression": 0.95,

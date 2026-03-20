@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "The hiss beneath the signal — OPTIC modeling analog video noise floor coupled to OBSCURA's daguerreotype grain. Both engines live at the threshold between information and entropy. Visualization feedback synchronizes with Obscura's stiffness to produce a sound that cannot decide whether it is signal or its own absence.",
   "dna": {

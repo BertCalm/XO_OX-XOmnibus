@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OCELOT marking territory across ORBITAL's planetary arc — each orbit claiming a new biome.",
   "dna": {

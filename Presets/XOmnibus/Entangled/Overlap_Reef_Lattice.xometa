@@ -14,7 +14,7 @@
     "warmth": 0.55
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Reef Lattice",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.92,
       "olap_torusP": 6,

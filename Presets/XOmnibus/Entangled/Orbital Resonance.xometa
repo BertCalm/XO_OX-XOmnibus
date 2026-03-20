@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "created": "2026-03-16",
   "description": "ORBITAL's group system phase-locks to OWLFISH's resonant frequency — all orbital voices sharing the Mixtur-Trautonium's pitch center.",
   "dna": {

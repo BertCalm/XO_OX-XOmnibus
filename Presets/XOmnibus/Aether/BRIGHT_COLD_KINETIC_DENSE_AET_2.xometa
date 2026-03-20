@@ -8,9 +8,9 @@
       "type": "CHAOS_INJECT"
     }
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 aether, bright, cold, kinetic.",
+  "description": "Extreme DNA corners — aether, bright, cold, kinetic.",
   "dna": {
     "aggression": 0.472,
     "brightness": 0.957,

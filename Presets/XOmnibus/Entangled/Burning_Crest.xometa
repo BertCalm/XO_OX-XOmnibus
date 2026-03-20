@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.595,

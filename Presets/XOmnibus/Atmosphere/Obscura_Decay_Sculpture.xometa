@@ -1,28 +1,46 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Decay Sculpture",
   "mood": "Atmosphere",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Physics envelope sustain is low — the bowing force decays away during the held note, draining the chain's physical energy independently of the amplitude envelope. The tone naturally deflates from bowed to bare resonance, then silence. No amplitude envelope intervention.",
-  "tags": ["evolving", "decay", "physical", "textural", "ambient", "dying"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Physics envelope sustain is low \u2014 the bowing force decays away during the held note, draining the chain's physical energy independently of the amplitude envelope. The tone naturally deflates from bowed to bare resonance, then silence. No amplitude envelope intervention.",
+  "tags": [
+    "evolving",
+    "decay",
+    "physical",
+    "textural",
+    "ambient",
+    "dying"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.55,
       "obscura_damping": 0.14,
       "obscura_nonlinear": 0.18,
-      "obscura_excitePos": 0.40,
+      "obscura_excitePos": 0.4,
       "obscura_exciteWidth": 0.25,
       "obscura_scanWidth": 0.45,
       "obscura_boundary": 0,
-      "obscura_sustain": 0.80,
-      "obscura_level": 0.80,
+      "obscura_sustain": 0.8,
+      "obscura_level": 0.8,
       "obscura_ampAttack": 0.06,
       "obscura_ampDecay": 3.0,
       "obscura_ampSustain": 0.85,
@@ -46,7 +64,9 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.38,

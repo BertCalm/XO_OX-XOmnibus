@@ -1,33 +1,53 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Leash Loosening",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Starts tight and pitched; automate ouro_leash downward from 0.9 to 0.1 over 8 bars and the fundamental dissolves into free chaos. A transition preset — the collar coming off in real time.",
-  "tags": ["lorenz", "transition", "evolving", "leash", "automation", "transformation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Starts tight and pitched; automate ouro_leash downward from 0.9 to 0.1 over 8 bars and the fundamental dissolves into free chaos. A transition preset \u2014 the collar coming off in real time.",
+  "tags": [
+    "lorenz",
+    "transition",
+    "evolving",
+    "leash",
+    "automation",
+    "transformation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 0,
       "ouro_rate": 130.0,
-      "ouro_chaosIndex": 0.60,
-      "ouro_leash": 0.90,
+      "ouro_chaosIndex": 0.6,
+      "ouro_leash": 0.9,
       "ouro_theta": 0.2,
       "ouro_phi": 0.15,
-      "ouro_damping": 0.30,
+      "ouro_damping": 0.3,
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.60,
+    "brightness": 0.6,
     "warmth": 0.38,
     "movement": 0.58,
     "density": 0.55,

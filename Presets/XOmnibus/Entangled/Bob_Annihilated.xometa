@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Frequency smear from the ouroboros loop dissolves Bob's harmonic order entirely.",
   "dna": {
     "aggression": 0.91,

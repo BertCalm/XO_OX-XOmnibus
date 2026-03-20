@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Outwit 8-arm Wolfram CA chaos-injected by Ouroboros topology — cellular automation in fractal storm.",
   "dna": {
     "aggression": 0.97,

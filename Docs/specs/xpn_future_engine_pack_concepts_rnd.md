@@ -283,7 +283,4 @@ the crossover point) gives it a product architecture that rewards close study.
 
 ---
 
-*Status: R&D — no source code exists yet for the four concept engines or the ten utility engines.
-Pack designs here should be revisited once Phase 1 architectures are complete and initial renders
-are possible. The OUIE MPCE quad-corner design in particular should be validated against actual
-MPC hardware behavior before committing to as a marketing claim.*
+*Status: Updated 2026-03-19 — DSP complete for OSTINATO, OPENSKY, OCEANDEEP, OUIE (2026-03-18). The ten utility engine concepts still have no source code. Pack designs here are valid for planning; preset libraries still need to be built. The OUIE MPCE quad-corner design should be validated against actual MPC hardware behavior before committing to as a marketing claim.*

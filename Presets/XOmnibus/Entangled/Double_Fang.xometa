@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Both BITE and MOJO maxed and coupled — double bite architecture at total density.",
   "dna": {
     "aggression": 0.91,

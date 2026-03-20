@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OCELOT's biome variability applied to OSTERIA's shore regions — the menu changes with the ocelot's territory, flavor as habitat.",
   "dna": {

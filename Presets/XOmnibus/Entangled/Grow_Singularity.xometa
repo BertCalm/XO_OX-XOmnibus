@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "GROW macro timbral-warped by Ouroboros topology — brass expansion without harmonic ceiling.",
   "dna": {
     "aggression": 0.88,

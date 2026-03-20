@@ -3,9 +3,9 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "couplingType": "WEAVE",
-  "description": "Ultra-diverse Entangled preset \u2014 dark cold violent dense. Designed for WEAVE coupling with XOblongBob.",
+  "description": "Ultra-diverse Entangled preset — dark cold violent dense. Designed for WEAVE coupling with XOblongBob.",
   "dna": {
     "aggression": 0.9166,
     "brightness": 0.0999,

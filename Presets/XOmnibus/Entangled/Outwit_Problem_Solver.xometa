@@ -14,7 +14,7 @@
     "warmth": 0.3
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Problem Solver",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 54,
       "owit_arm0Length": 8,
       "owit_arm0Level": 0.8,

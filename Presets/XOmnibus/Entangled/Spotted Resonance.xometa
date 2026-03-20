@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "OCELOT's biome variability applied to OWLFISH's oscillator tuning — the drone that changes terrain, the Mixtur-Trautonium as habitat.",
   "dna": {

@@ -364,11 +364,92 @@ XOuïe gives duophonic texture — two-algorithm output that is harmonically ric
 |-----------|-----------|-----------|-------|------|--------|
 | Medium | Medium | High | Medium | High | Medium |
 
+
+---
+
+## XOstinato — OSTINATO
+
+**Gallery code:** OSTINATO | **Accent:** Firelight Orange `#E8701A` | **Prefix:** `osti_`
+**Thesis:** Communal drum circle synthesis — 8 physically-modeled world percussion instruments playing interlocking ostinato patterns. You can sit down and join.
+**Personality:** Communal, Rhythmic, Gathering
+**Polarity:** Oscar-leaning (Shore — where land and water meet)
+
+### Aquatic Identity
+The shore. The place where the water column meets the land — where all creatures gather to drum. XOstinato is the campfire circle at the edge of the tide line: djembes, cajóns, frame drums, talking drums, taikos, and udus, all interlocking in a pattern that was already playing before you arrived. The firelight orange is the color of flames at dusk, reflecting off wet sand. It is the warmest engine in the fleet — the one that invites you in, hands you a rhythm, and asks you to join the circle. The circle never stops. You add to it. You take from it. It carries on.
+
+### Coupling Thesis
+Ostinato sends rhythmic triggers and accent patterns — the pulse of the drum circle as a modulation source. Receive from ONSET (additional percussive transients), OVERDUB (dub delays that turn the circle spatial), OUROBOROS (strange attractors that nudge the circle out of phase), and OUIE (a second rhythmic voice that hunts alongside). The circle becomes richest when coupled with non-percussive engines: OSTINATO sends rhythm, the other engine adds melody, and the combination is what a drum circle + bass player sounds like.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| Very High | Low | High | Medium | High | Low |
+
+---
+
+## XOpenSky — OPENSKY
+
+**Gallery code:** OPENSKY | **Accent:** Sunburst `#FF8C00` | **Prefix:** `sky_`
+**Thesis:** Euphoric ascension synthesis — supersaw anthems, shimmer reverb, crystalline bells. feliX leaves the water entirely.
+**Personality:** Euphoric, Ascending, Radiant
+**Polarity:** Pure feliX (Above the Water Column)
+
+### Aquatic Identity
+Above the water column entirely. feliX the neon tetra — the engine's primordial ancestor — has broken the surface and caught the full sunlight for one shimmering moment. Every other XOmnibus engine lives in the water. OPENSKY is what happens when you leave it. The supersaw stack is feliX's neon scales scattering the full spectrum of sunlight. The shimmer reverb is the refracted light on the wave surface, viewed from above. The Sunburst accent is not a color choice — it is the sun itself, the source of all feliX energy. OPENSKY completes the top of the water column; OCEANDEEP completes the bottom. Together they span the full vertical mythology.
+
+### Coupling Thesis
+Opensky gives high-frequency shimmer and upward harmonic motion — the brightest, most euphoric signal in the fleet. Pair downward with ORPHICA (harp strings receive sky shimmer as divine vibrato), ODYSSEY (shimmer LFO drives oscillator pitch for transcendent leads), and OPAL (sky audio feeds grain source for crystalline granular pads). Receive from ORBITAL (harmonic overtones drive sky unison spread) and OPTIC (rhythmic pulse drives shimmer rhythm). The OPENSKY x OCEANDEEP "Full Column" coupling is the most mythologically complete preset in the fleet.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| Low | High | High | Very High | Low | High |
+
+---
+
+## XOceanDeep — OCEANDEEP
+
+**Gallery code:** OCEANDEEP | **Accent:** Trench Violet `#2D0A4E` | **Prefix:** `deep_`
+**Thesis:** Abyssal bass synthesis — 808 pressure, bioluminescent creature FX, shipwreck waveguide bodies. Pure Oscar at the ocean floor.
+**Personality:** Abyssal, Massive, Alien
+**Polarity:** Pure Oscar (Below the Water Column)
+
+### Aquatic Identity
+The hadal zone — 11 kilometers below the surface, in permanent darkness, under crushing pressure. The counterpart to OPENSKY. If OPENSKY is feliX above the surface, OCEANDEEP is Oscar below the floor — the absolute extreme of Oscar polarity. The Trench Violet is the color of the deep sea where no sunlight reaches: not black, not blue, but the specific color of perpetual midnight with bioluminescent organisms as the only light source. The hydrostatic compressor models the physics of crushing pressure on sound — at maximum pressure, every transient becomes massive, slow, inevitable. The creature layer is the alien biology of hadal fauna: anglerfish lures, giant isopods, things that should not exist but do. OCEANDEEP does not just go low — it goes *under*.
+
+### Coupling Thesis
+Oceandeep sends sub-bass authority and pressure-wave amplitude envelopes. Receive from ONSET (drum transients feed the sub trigger for 808-style kick synthesis), OVERBITE (the anglerfish and the fang — two deep-sea predators coupling), ORPHICA (bass strings feed abyssal resonance — unplucked strings begin to sing). Pair upward with OPENSKY for the "Full Column" mythology preset — the full vertical span in one coupling. The most important coupling position for OCEANDEEP is beneath other engines: it is the floor that other sounds rest on.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| Very High | High | High | Low | Medium | Very High |
+
+---
+
+## XObrix — OBRIX
+
+**Gallery code:** OBRIX | **Accent:** Reef Jade `#1E8B7E` | **Prefix:** `obrix_`
+**Thesis:** Modular brick synthesis — stackable synthesis building blocks that snap together. The LEGO of the XO_OX fleet.
+**Personality:** Modular, Constructive, Adaptable
+**Polarity:** Oscar-leaning (Reef — structured, hidden complexity)
+
+### Aquatic Identity
+The coral reef. The most structurally complex environment in the ocean — built from individual polyps, each a simple organism, that together form an architecture of staggering complexity. XObrix is that architecture made audible: individual synthesis bricks (oscillator bricks, filter bricks, modulation bricks, FX bricks) that snap together in configurable chains. Each brick alone is modest. Stacked and coupled, they become the reef. The reef jade accent is the exact color of shallow tropical reef water — clear enough to see the structure below, rich enough to contain multitudes. OBRIX is the synthesis engine that rewards study: the more you understand the bricks, the deeper you can build.
+
+### Coupling Thesis
+Obrix gives configurable modular routing — its brick architecture means it can act as oscillator, modulator, or processor depending on how the bricks are stacked. This makes it the most adaptable coupling partner in the fleet: pair with any engine and OBRIX can be shaped to complement. As an oscillator source, it feeds OVERDUB (dub FX on brick stacks), OPAL (brick audio as grain source), and OBSCURA (physical resonance on brick output). As a modulation source, it shapes ORACLE (brick envelopes drive GENDY stochastic parameters) and ORBITAL (brick overtones define harmonic envelope series).
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| High | Medium | Very High | Medium | High | Medium |
+
 ---
 
 *All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
-*Every engine now has a full concept brief in `Docs/concepts/`. The aquatic refresh is complete.*
+*Identity cards cover all 39 registered engines. See `Docs/concepts/` for full engine specs.*
 
 ---
 
-*XO_OX Designs | Engine Identity Cards v1.1 | feliX + Oscar — the primordial coupling*
+*XO_OX Designs | Engine Identity Cards v1.2 | feliX + Oscar — the primordial coupling*

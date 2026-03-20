@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Ocelot's biome index directly routes into Obese's saturation drive — the habitat determines how hard the signal is pushed. A dense tropical biome cranks the saturation to its limits; a sparse coastal biome lets the signal breathe clean. The predator's environment becomes the distortion engine. Velocity-sensitive biome scanning keeps the coupling alive across playing dynamics.",
   "dna": {
     "aggression": 0.65,

@@ -1,13 +1,27 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Modal Refraction",
   "mood": "Prism",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High stiffness, low damping — the physical chain rings with pronounced modal peaks. Periodic boundary creates standing waves. Bright inharmonic partials scattered like light through a prism.",
-  "tags": ["prism", "bright", "modal", "inharmonic", "physical", "ringing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "High stiffness, low damping \u2014 the physical chain rings with pronounced modal peaks. Periodic boundary creates standing waves. Bright inharmonic partials scattered like light through a prism.",
+  "tags": [
+    "prism",
+    "bright",
+    "modal",
+    "inharmonic",
+    "physical",
+    "ringing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",

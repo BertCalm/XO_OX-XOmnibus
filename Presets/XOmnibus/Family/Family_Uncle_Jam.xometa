@@ -8,7 +8,7 @@
       "type": "AudioToFM"
     }
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Breath sustains through long phrases. WIND high — the air path reverbs into wide space.",
   "dna": {

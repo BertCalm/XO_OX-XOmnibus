@@ -14,7 +14,7 @@
     "warmth": 0.85
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Foundation",
   "name": "Deep Current",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.5,
       "olap_torusP": 3,

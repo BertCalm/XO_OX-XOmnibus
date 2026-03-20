@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Bioluminescent Rain",
   "mood": "Atmosphere",
-  "engines": ["Optic", "Odyssey"],
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow OPTIC pulse with high visual feedback creates liquid, flowing modulation. Milkdrop viz at low speed gives gentle spectral weather. Odyssey pad breathes with each bioluminescent pulse.",
-  "tags": ["optic", "atmosphere", "ambient", "bioluminescent", "slow", "liquid"],
-  "macroLabels": ["REACTIVITY", "DRIFT", "SPACE", "BLOOM"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "optic",
+    "atmosphere",
+    "ambient",
+    "bioluminescent",
+    "slow",
+    "liquid"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "DRIFT",
+    "SPACE",
+    "BLOOM"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.45,
@@ -59,8 +78,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.3 },
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "LFOToPitch", "amount": 0.1 }
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.3
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.1
+      }
     ]
   },
   "sequencer": null,

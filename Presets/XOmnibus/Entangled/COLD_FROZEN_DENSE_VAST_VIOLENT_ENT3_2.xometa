@@ -10,9 +10,9 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Static Entangled diversity anchor. Frozen resonance \u2014 movement \u2264 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
+  "description": "Static Entangled diversity anchor. Frozen resonance — movement ≤ 0.13. Corner: COLD_FROZEN_DENSE_VAST_VIOLENT. Designed to raise Entangled cosine diversity.",
   "dna": {
     "aggression": 0.8885,
     "brightness": 0.4211,

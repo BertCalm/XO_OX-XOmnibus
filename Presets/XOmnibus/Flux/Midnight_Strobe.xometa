@@ -22,7 +22,7 @@
     "DRIVE",
     "EVOLVE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": 145,
   "dna": {
     "brightness": 0.35,

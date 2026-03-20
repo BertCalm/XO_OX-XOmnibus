@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Figure-8 texture with moderate density \u2014 layers beautifully under lead sounds.",
   "dna": {
     "brightness": 0.4,
@@ -23,7 +23,7 @@
     "aggression": 0.1
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Woven Texture",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.52,
       "olap_torusP": 3,

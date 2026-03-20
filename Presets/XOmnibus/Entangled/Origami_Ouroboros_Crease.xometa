@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "OUROBOROS's chaotic attractor output feeds ORIGAMI's fold point, continuously shifting where in the waveform the fold occurs. The harmonic content changes unpredictably but not randomly — it follows strange attractor topology. A fold whose crease moves according to the geometry of chaos.",
   "dna": {
     "aggression": 0.55,

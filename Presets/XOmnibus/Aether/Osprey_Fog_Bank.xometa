@@ -1,13 +1,28 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Fog Bank",
   "mood": "Aether",
-  "engines": ["Osprey"],
+  "engines": [
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A calm sea buried in fog — seaState at near-zero, maximum fog and coherence, the resonator ringing at long decay. The ocean disappears into itself. Breathe slowly.",
-  "tags": ["aether", "ambient", "fog", "drone", "ocean", "slow", "vast"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "A calm sea buried in fog \u2014 seaState at near-zero, maximum fog and coherence, the resonator ringing at long decay. The ocean disappears into itself. Breathe slowly.",
+  "tags": [
+    "aether",
+    "ambient",
+    "fog",
+    "drone",
+    "ocean",
+    "slow",
+    "vast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",

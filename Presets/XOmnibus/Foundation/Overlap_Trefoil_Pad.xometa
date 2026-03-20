@@ -14,7 +14,7 @@
     "warmth": 0.75
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Foundation",
   "name": "Trefoil Pad",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.6,
       "olap_torusP": 3,

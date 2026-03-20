@@ -22,12 +22,12 @@
     "SNAP",
     "FILTER"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": 150,
   "dna": {
     "brightness": 0.93,
-    "warmth": 0.10,
-    "movement": 0.90,
+    "warmth": 0.1,
+    "movement": 0.9,
     "density": 0.78,
     "space": 0.25,
     "aggression": 0.92

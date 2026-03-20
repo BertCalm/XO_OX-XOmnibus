@@ -1,13 +1,28 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Infinite Barrier",
   "mood": "Aether",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum elasticity, minimum gravity — the stochastic barriers never collapse, holding each note in an unresolved probability cloud. Very slow time-step. A prophecy that never arrives.",
-  "tags": ["aether", "ambient", "stochastic", "drone", "slow", "evolving", "prophecy"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "description": "Maximum elasticity, minimum gravity \u2014 the stochastic barriers never collapse, holding each note in an unresolved probability cloud. Very slow time-step. A prophecy that never arrives.",
+  "tags": [
+    "aether",
+    "ambient",
+    "stochastic",
+    "drone",
+    "slow",
+    "evolving",
+    "prophecy"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",

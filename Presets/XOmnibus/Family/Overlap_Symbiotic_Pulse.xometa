@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Trefoil with gentle pulse \u2014 rhythmic coupling signal for partner engines.",
   "dna": {
     "brightness": 0.5,
@@ -23,7 +23,7 @@
     "aggression": 0.18
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Symbiotic Pulse",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 0,
       "olap_tangleDepth": 0.5,
       "olap_torusP": 3,

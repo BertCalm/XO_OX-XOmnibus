@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Outwit 8-arm velocity coupled into Onset XVC — Wolfram CA feeding drum velocity at maximum kinetics.",
   "dna": {
     "aggression": 0.97,

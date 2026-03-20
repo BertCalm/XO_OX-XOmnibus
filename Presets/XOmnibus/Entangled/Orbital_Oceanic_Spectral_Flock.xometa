@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "ORBITAL's additive partials LFO modulates OCEANIC's swarm cohesion, making the fish school tighten and scatter with the spectral movement above. Two different models of collective motion — harmonic stacking and biological flocking — locked into shared pulse.",
   "dna": {
     "aggression": 0.2,

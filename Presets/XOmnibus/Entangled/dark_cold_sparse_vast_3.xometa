@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "couplingType": "WEAVE",
   "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for WEAVE coupling with XOcelot.",
   "dna": {

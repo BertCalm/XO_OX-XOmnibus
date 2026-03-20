@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL's group envelope system maps to ORCA pod sync — the orca pod as a unified rhythmic entity, all voices breathing together.",
   "dna": {

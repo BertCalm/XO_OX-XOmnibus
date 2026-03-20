@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Orca hunt velocity coupling into Outwit arm evolution — apex predator driving cellular automata.",
   "dna": {
     "aggression": 0.97,

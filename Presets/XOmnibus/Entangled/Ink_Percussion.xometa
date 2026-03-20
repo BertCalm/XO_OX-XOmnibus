@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Octopus eight arms velocity coupled into Onset XVC — ink cloud as percussion weapon.",
   "dna": {
     "aggression": 0.96,

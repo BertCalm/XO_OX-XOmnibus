@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Chua Clang",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chua circuit at high chaos — the diode nonlinearity creates that distinctive buzzy metallic signature. Tight enough leash to recognize the note; low damping exposes every harsh frequency. Short percussive hits at velocity 100+.",
-  "tags": ["chua", "metallic", "industrial", "percussive", "aggressive", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Chua circuit at high chaos \u2014 the diode nonlinearity creates that distinctive buzzy metallic signature. Tight enough leash to recognize the note; low damping exposes every harsh frequency. Short percussive hits at velocity 100+.",
+  "tags": [
+    "chua",
+    "metallic",
+    "industrial",
+    "percussive",
+    "aggressive",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 2,
@@ -24,13 +42,15 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.90,
+    "brightness": 0.9,
     "warmth": 0.12,
     "movement": 0.55,
-    "density": 0.70,
+    "density": 0.7,
     "space": 0.25,
     "aggression": 0.92
   }

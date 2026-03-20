@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "RTJ-mode prism with velocity coupling to Onset — percussive light cascade.",
   "dna": {
     "aggression": 0.9,

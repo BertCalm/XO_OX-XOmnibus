@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Osteria's qBassShore LFO modulates Overdub's delay time, bending the echo trail with the slow undulation of the tavern's tidal memory. The Porto wine warmth of the ensemble seeps into the delay character — a dub session in a coastal taverna, where every repeat is stained with salt and red wine. Slow, hypnotic, deeply cultured.",
   "dna": {
     "aggression": 0.2,

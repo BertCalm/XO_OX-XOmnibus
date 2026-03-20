@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Aether",
-  "description": "Biome 1 (Cloud Forest) with maximum reverb and canopy shimmer. Understory as sea kelp fronds. The liminal space between forest and ocean — light filtering through wavering fronds into impossible depth.",
+  "description": "Biome 1 (Cloud Forest) with maximum reverb and canopy shimmer. Understory as sea kelp fronds. The liminal space between forest and ocean \u2014 light filtering through wavering fronds into impossible depth.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.55,
@@ -95,5 +95,8 @@
   },
   "schema_version": 1,
   "mood": "Aether",
-  "tags": []
+  "tags": [],
+  "engines": [
+    "Ocelot"
+  ]
 }

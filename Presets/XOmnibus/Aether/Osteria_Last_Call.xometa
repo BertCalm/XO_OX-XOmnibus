@@ -1,13 +1,28 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Last Call",
   "mood": "Aether",
-  "engines": ["Osteria"],
+  "engines": [
+    "Osteria"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The tavern empties — maximum memory, maximum warmth, minimum rhythm and melody. The bass and harmony hold a final note while ocean bleed rises. A closing chord dissolving into the night sea.",
-  "tags": ["aether", "ambient", "tavern", "drone", "warm", "ending", "ocean"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "The tavern empties \u2014 maximum memory, maximum warmth, minimum rhythm and melody. The bass and harmony hold a final note while ocean bleed rises. A closing chord dissolving into the night sea.",
+  "tags": [
+    "aether",
+    "ambient",
+    "tavern",
+    "drone",
+    "warm",
+    "ending",
+    "ocean"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",

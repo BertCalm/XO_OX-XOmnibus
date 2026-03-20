@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "Organon's variational free-energy metabolism controls how much signal enters Overdub's dub loop — the organism's biochemical state is the send knob. High metabolic activity floods the delay; low activity starves it to a whisper. ModToMod coupling: organon_metabolicRate → dub_sendAmount, amount 0.72. The enzyme becomes the engineer. Biology replaces automation.",
   "dna": {
     "aggression": 0.28,

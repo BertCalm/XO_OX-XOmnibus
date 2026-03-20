@@ -14,7 +14,7 @@
     "aggression": 0.3
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Flux",
   "name": "Elastic Thread",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.6,
       "olap_torusP": 3,

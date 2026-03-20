@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Figure-8 bridge tone \u2014 connects two engines with harmonic glue.",
   "dna": {
     "brightness": 0.48,
@@ -23,7 +23,7 @@
     "aggression": 0.12
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Harmonic Bridge",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.42,
       "olap_torusP": 3,

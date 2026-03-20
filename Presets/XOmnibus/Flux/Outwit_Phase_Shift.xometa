@@ -14,7 +14,7 @@
     "aggression": 0.35
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Flux",
   "name": "Phase Shift",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 30,
       "owit_arm0Length": 15,
       "owit_arm0Level": 0.7,

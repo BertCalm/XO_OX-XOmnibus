@@ -14,7 +14,7 @@
     "aggression": 0.01
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Aether",
   "name": "Frozen Current",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.35,
       "olap_torusP": 4,

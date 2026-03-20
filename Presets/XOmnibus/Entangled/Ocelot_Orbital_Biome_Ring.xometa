@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Ocelot's biome audio output feeds directly into Orbital's FM ratio path — the tawny warmth of the jungle floor modulates the bright orbital ring. Dense ecosystem complexity translates to richer FM sidebands; sparse terrain collapses the ring to a clean fundamental. Where the predator hunts, the orbits ring.",
   "dna": {
     "aggression": 0.4,

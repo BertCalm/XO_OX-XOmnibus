@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "Ombre's dissolving memory feeds into Opal's granular cloud via AudioToWavetable. The ghost of every note becomes shimmer. Opal's envelope drives Ombre's filter — the louder the grain, the brighter the memory.",
   "dna": {

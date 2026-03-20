@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "AutoPulse 16th-note trance engine \u2014 OPTIC's rhythmic pulse drives Oblong's filter and Odyssey's pitch for classic trance arpeggiation without MIDI.",
+  "description": "AutoPulse 16th-note trance engine — OPTIC's rhythmic pulse drives Oblong's filter and Odyssey's pitch for classic trance arpeggiation without MIDI.",
   "tags": [
     "trance",
     "autopulse",
@@ -23,7 +23,7 @@
     "FILTER SWEEP",
     "SPACE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": 140,
   "dna": {
     "brightness": 0.6,

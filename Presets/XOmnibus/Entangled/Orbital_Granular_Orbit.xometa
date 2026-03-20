@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "OPAL's grain position feeds ORBITAL's spread parameter — as grains scatter, voices disperse into wider intervals. When OPAL clusters, ORBITAL tightens into unison. A dual-gravity system: two cloud engines pulling each other into mutual orbit.",
   "dna": {
     "aggression": 0.18,

@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Plucked String",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Fixed-boundary chain at medium stiffness — integer harmonic series, natural string decay. No bowing force. Excitation near the quarter-point for guitar-like brightness. The physics simulates a real plucked string, not an approximation of one.",
-  "tags": ["plucked", "string", "clean", "natural", "guitar", "acoustic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Fixed-boundary chain at medium stiffness \u2014 integer harmonic series, natural string decay. No bowing force. Excitation near the quarter-point for guitar-like brightness. The physics simulates a real plucked string, not an approximation of one.",
+  "tags": [
+    "plucked",
+    "string",
+    "clean",
+    "natural",
+    "guitar",
+    "acoustic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.52,
@@ -46,13 +64,15 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.62,
     "warmth": 0.52,
     "movement": 0.18,
-    "density": 0.30,
+    "density": 0.3,
     "space": 0.32,
     "aggression": 0.15
   }

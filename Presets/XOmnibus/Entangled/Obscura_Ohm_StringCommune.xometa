@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "The commune tunes to whatever frequency the string produces, not the MIDI note that triggered it — Obscura's stiffness, boundary conditions, and excitation position all shift the actual resonant pitch away from equal temperament, and Ohm's commune tracking follows that physical pitch. The result is a hippy collective that learns from the instrument in real time: pluck near the bridge (high excitePos) and the commune hears a brighter, slightly flat tone and re-tunes accordingly; switch to clamped boundary and the pitch drops a fraction, pulling the commune down. Set ohm_macroMeddling to 0.8 to let the commune lean hard into every new tuning; lower values produce a lagging collective that trails behind the string's whims like a group of people who need more time to agree.",
   "dna": {

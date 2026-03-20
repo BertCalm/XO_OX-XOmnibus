@@ -20,7 +20,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "The NES triangle wave's pitch is the boid school's target frequency — the chip is the attractor, the boid cloud is the organism orbiting it. AudioToFM routes the chip's raw audio into Oceanic's FM carrier so the swarm literally oscillates at the chip's pitch. AmpToFilter further couples the chip's amplitude envelope to Oceanic's filter, so louder chip notes open the swarm filter and reveal more harmonic content. Play staccato chip notes: the boid cloud surges toward each note and then slowly disperses during silence. Play legato: the school locks onto the pitch and becomes a resonant shadow of the chip voice. ERA position determines which chip vertex the school is following.",
   "dna": {

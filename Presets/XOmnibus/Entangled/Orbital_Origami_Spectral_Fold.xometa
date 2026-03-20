@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "ORBITAL's additive partials feed ORIGAMI as the source material for wavefolding. The clean harmonic series becomes raw material for geometric distortion — each partial folded, rotated, and stretched into something new. Spectral purity meeting maximal geometric violence.",
   "dna": {
     "aggression": 0.45,
