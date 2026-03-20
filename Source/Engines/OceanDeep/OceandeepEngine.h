@@ -39,7 +39,7 @@ namespace xomnibus {
 //
 //  ~45 deep_ parameters — doctrine compliant D001–D006.
 //
-//  Parameter prefix: deep_   Engine ID: "Oceandeep"
+//  Parameter prefix: deep_   Engine ID: "OceanDeep"
 //
 //  SilenceGate: 500 ms hold (long bass tails).
 //
@@ -465,7 +465,7 @@ public:
     //--------------------------------------------------------------------------
     // SynthEngine interface
     //--------------------------------------------------------------------------
-    juce::String   getEngineId()     const override { return "Oceandeep"; }
+    juce::String   getEngineId()     const override { return "OceanDeep"; }
     juce::Colour   getAccentColour() const override { return juce::Colour(0xff2D0A4E); }
     int            getMaxVoices()    const override { return 1; } // monophonic bass engine
 

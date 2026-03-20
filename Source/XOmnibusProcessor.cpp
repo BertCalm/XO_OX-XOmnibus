@@ -162,12 +162,12 @@ static bool registered_Ole = xomnibus::EngineRegistry::instance().registerEngine
     "Ole", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OleEngine>();
     });
-static bool registered_XOverlap = xomnibus::EngineRegistry::instance().registerEngine(
-    "XOverlap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overlap = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overlap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::XOverlapEngine>();
     });
-static bool registered_XOutwit = xomnibus::EngineRegistry::instance().registerEngine(
-    "XOutwit", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Outwit = xomnibus::EngineRegistry::instance().registerEngine(
+    "Outwit", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::XOutwitEngine>();
     });
 static bool registered_Ombre = xomnibus::EngineRegistry::instance().registerEngine(
@@ -193,8 +193,8 @@ static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerE
         return std::make_unique<xomnibus::OstinatoEngine>();
     });
 // V1 Concept Engines — OCEANDEEP
-static bool registered_Oceandeep = xomnibus::EngineRegistry::instance().registerEngine(
-    "Oceandeep", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_OceanDeep = xomnibus::EngineRegistry::instance().registerEngine(
+    "OceanDeep", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OceandeepEngine>();
     });
 // V1 Concept Engines — OUIE

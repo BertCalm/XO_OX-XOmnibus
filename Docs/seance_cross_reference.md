@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-03-19 — Seance 30: OSTINATO
+**Updated:** 2026-03-20 — Seances 31–33: ORBWEAVE, OVERTONE, ORGANISM
 **Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 30 seance records
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -39,6 +39,9 @@
 | XOrca | ORCA | 8.1/10 | APEX HUNT macro (5 simultaneous DSP targets) | None | D006: no aftertouch | "The predator hunts without hearing — aftertouch is silent." |
 | XOctopus | OCTOPUS | 8.3/10 | 8-arm prime-ratio LFO system (never phase-locks) | None | D006: no aftertouch | "Eight arms reach into every parameter — but the skin never responds to the player's touch." |
 | XOstinato | OSTINATO | 8.0/10 | B016 Communal Ghost Trigger System; B017 Cross-Tradition Pattern Library | D004 exciterMix dead — fixed 2026-03-19 | D002: 1 hardcoded LFO, no user control, no mod matrix | "Eight seats, and the seats listen to each other." — Buchla |
+| XOrbweave | ORBWEAVE | 8.4/10 | MACRO KNOT continuous topological traversal (paradigm contribution) | None | None (all D001–D006 PASS) | "The Torus P/Q parameter lets the player navigate knot theory in real time. This is what synthesis should aspire to." — Buchla |
+| XOvertone | OVERTONE | 8.1/10 | Continued fraction convergent synthesis — no other engine derives timbre from rational approximations to irrational constants | P0: reverb comb lengths hardcoded (halve room at 96kHz) | None (all D001–D006 PASS) | "The convergent tables are not decoration — they ARE the synthesis." — Buchla |
+| XOrganism | ORGANISM | 8.1/10 | OrgScopeHistory moving-average system — performance depth through CA scope control | None | None (all D001–D006 PASS) | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
 
 ---
 
@@ -67,8 +70,11 @@
 | 14 | OCELOT | 6.4/10 |
 | 15 | OSTINATO | 8.0/10 |
 | 15 | OBSCURA | High (unscored) |
-| 16 | ODDFELIX | ~C+ |
-| 17 | OBLIQUE | 5.9/10 → 7.2/10 est. (Round 8A complete) |
+| 16 | ORBWEAVE | 8.4/10 |
+| 16 | OVERTONE | 8.1/10 |
+| 16 | ORGANISM | 8.1/10 |
+| 17 | ODDFELIX | ~C+ |
+| 18 | OBLIQUE | 5.9/10 → 7.2/10 est. (Round 8A complete) |
 
 ---
 

@@ -2,7 +2,7 @@
 
 **A free, open-source multi-engine synthesizer platform by XO_OX Designs.**
 
-34 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
+42 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
 
 ## Engines
 
@@ -42,12 +42,20 @@
 | Octopus | 8-arm decentralized intelligence | Giant Pacific Octopus |
 | Overlap | Knot-topology FDN | Lion's Mane Jellyfish |
 | Outwit | 8-arm Wolfram CA | Giant Pacific Octopus |
+| Ostinato | Rhythmic ostinato looper | Mantis Shrimp |
+| OpenSky | Euphoric shimmer (supersaw + shimmer reverb) | Flying Fish |
+| OceanDeep | Abyssal sub-bass (anglerfish + pressure) | Anglerfish |
+| Ouie | Duophonic hammerhead (2 voices x 8 algorithms) | Hammerhead Shark |
+| Obrix | Modular brick synthesis (coral reef) | Coral Reef Colony |
+| Orbweave | Topological knot coupling (Kelp Knot) | Kelp Forest Spider |
+| Overtone | Continued fraction spectral (Nautilus) | Nautilus |
+| Organism | Cellular automata generative (Coral Colony) | Coral Colony |
 
 ## Features
 
 - **4-slot engine gallery** — load any combination of engines
 - **Cross-engine coupling** — 13 coupling types let engines modulate each other
-- **10,000+ factory presets** across 7 mood categories
+- **21,000+ factory presets** across 8 mood categories
 - **PlaySurface** — unified 4-zone playing interface
 - **6D Sonic DNA** — every preset tagged with brightness, warmth, movement, density, space, aggression
 - **4 performance macros** per engine
@@ -76,7 +84,7 @@ cmake --build build
 ## Presets
 
 Factory presets live in `Presets/XOmnibus/` organized by mood:
-Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family.
+Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged.
 
 Preset format is `.xometa` (JSON). See `Docs/xomnibus_master_specification.md` for the schema.
 

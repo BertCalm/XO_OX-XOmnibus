@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **Author:** XO_OX Designs
-**Date:** 2026-03-08
+**Date:** 2026-03-20
 **Status:** AUTHORITATIVE — This document is the single source of truth for XOmnibus architecture, design, and implementation. All other spec documents are subordinate references.
 
 ---
@@ -36,7 +36,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 ### 1.1 What XOmnibus Is
 
-**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 38 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
+**XOmnibus** (Latin: "for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**. It merges 42 character instruments — each originally a standalone product — into a unified creative environment where engines couple, collide, and mutate into sounds impossible with any single synth.
 
 - **Not** a DAW replacement, a commercial product, or a plugin that tries to do everything
 - **Is** a creative tool where cross-engine coupling is the signature feature
@@ -144,7 +144,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 3. Engine Modules
 
-### 3.1 The 38 Engines
+### 3.1 The 42 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -186,6 +186,10 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 | **OUIE** | XOuïe | Hammerhead Steel `#708090` | `ouie_` |
 | **OVERLAP** | XOverlap | Bioluminescent Cyan-Green `#00FFB4` | `olap_` |
 | **OUTWIT** | XOutwit | Chromatophore Amber `#CC6600` | `owit_` |
+| **OBRIX** | XObrix | Reef Jade `#1E8B7E` | `obrix_` |
+| **ORBWEAVE** | XOrbweave | Kelp Knot Purple `#8E4585` | `weave_` |
+| **OVERTONE** | XOvertone | Spectral Ice `#A8D8EA` | `over_` |
+| **ORGANISM** | XOrganism | Emergence Lime `#C6E377` | `org_` |
 
 ### 3.2 Engine Visual Identity
 
@@ -1028,7 +1032,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 38 engines wrapped and integrated
+- All 42 engines wrapped and integrated
 - Full coupling matrix (12 types)
 - PlaySurface (all 3 modes)
 - 1000 factory presets with DNA fingerprints

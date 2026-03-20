@@ -565,7 +565,7 @@ public:
     }
 
     //==========================================================================
-    juce::String getEngineId()      const override { return "XOverlap"; }
+    juce::String getEngineId()      const override { return "Overlap"; }
     juce::Colour getAccentColour()  const override { return juce::Colour(0xFF00FFB4); }
     int getMaxVoices()              const override { return kVoices; }
     int getActiveVoiceCount()       const override { return activeCount; }
