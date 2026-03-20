@@ -68,6 +68,9 @@ enum class ObrixModTarget {
     kCount
 };
 
+// ObrixGestureType — PlaySurface pad behavior modes (maps to obrix_gestureMode param)
+// Ripple: gentle modulation on pad pressure | Pulse: rhythmic trigger burst
+// Flow: sustained smooth modulation | Tide: slow swell with ocean-sourced wavetables
 enum class ObrixGestureType {
     Ripple = 0, Pulse, Flow, Tide,
     kCount
@@ -111,7 +114,7 @@ struct ObrixADSR
                 return level;
             case Stage::Sustain: return level;
             case Stage::Release:
-                level -= rRate * (level + 0.0001f);
+                level -= rRate * (level + 0.0001f); // epsilon prevents denormals at floor
                 level = flushDenormal (level);
                 if (level <= 0.001f) { level = 0.0f; stage = Stage::Idle; }
                 return level;
@@ -143,7 +146,7 @@ struct ObrixLFO
             case 1: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
             case 2: out = 2.0f * phase - 1.0f; break;
             case 3: out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case 4:
+            case 4: // S&H: hold a random value each time phase wraps (LCG noise source)
             {
                 float prev = phase - phaseInc;
                 if (prev < 0.0f || phase < prev)
@@ -181,13 +184,13 @@ struct ObrixFXState
         delayBufL.assign (static_cast<size_t> (maxDelay), 0.0f);
         delayBufR.assign (static_cast<size_t> (maxDelay), 0.0f);
         delayWritePos = 0;
-        int chorusMax = static_cast<int> (sr * 0.03f) + 16;
+        int chorusMax = static_cast<int> (sr * 0.03f) + 16; // +16 guards against sub-1ms at low sr
         chorusBufL.assign (static_cast<size_t> (chorusMax), 0.0f);
         chorusBufR.assign (static_cast<size_t> (chorusMax), 0.0f);
         chorusWritePos = 0;
         chorusLFOPhase = 0.0f;
         float srScale = sr / 44100.0f;
-        static constexpr int kRevLens[4] = { 1087, 1283, 1511, 1789 };
+        static constexpr int kRevLens[4] = { 1087, 1283, 1511, 1789 }; // Schroeder parallel comb lengths (prime-adjacent)
         for (int i = 0; i < 4; ++i)
         {
             int len = static_cast<int> (static_cast<float> (kRevLens[i]) * srScale) + 1;
