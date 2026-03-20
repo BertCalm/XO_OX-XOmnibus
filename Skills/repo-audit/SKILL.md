@@ -237,10 +237,10 @@ grep -rL "Last Updated" Skills/*/SKILL.md
 ### 3.3 Skills/README.md Currency
 
 ```bash
-# Skills in directory but not in README
+# Skills in directory but not in README table (checks link format, not body text)
 for dir in Skills/*/; do
   skill=$(basename "$dir")
-  grep -q "$skill" Skills/README.md || echo "MISSING FROM README: $skill"
+  grep -q "\[${skill}\](" Skills/README.md || echo "MISSING FROM README: $skill"
 done
 
 # README rows pointing to non-existent dirs
@@ -248,6 +248,11 @@ grep "\./.*SKILL\.md" Skills/README.md | grep -oP '\./\K[^/]+' | while read skil
   [ ! -d "Skills/$skill" ] && echo "DEAD LINK: $skill"
 done
 ```
+
+> **Note:** Use `grep -q "\[${skill}\]("` not `grep -q "$skill"` — the latter
+> matches skill names appearing in body text (descriptions, related skills sections)
+> and produces false "already in README" results for skills that are only mentioned
+> in passing, not linked in the table.
 
 ---
 

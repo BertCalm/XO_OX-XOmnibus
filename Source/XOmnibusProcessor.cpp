@@ -82,8 +82,8 @@ static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngin
     "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalEngine>();
     });
-static bool registered_Bite = xomnibus::EngineRegistry::instance().registerEngine(
-    "Bite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overbite = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overbite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BiteEngine>();
     });
 static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(
@@ -699,7 +699,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
 static float silenceGateHoldMs(const juce::String& engineId)
 {
     // Percussive — 100ms
-    if (engineId == "Onset"     || engineId == "Bite"      || engineId == "OddfeliX"
+    if (engineId == "Onset"     || engineId == "Overbite"  || engineId == "OddfeliX"
      || engineId == "Origami")
         return 100.0f;
 

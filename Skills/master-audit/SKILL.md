@@ -118,7 +118,14 @@ Run `/coupling-interaction-cookbook` reference to verify:
 
 ```bash
 python3 Tools/validate_presets.py --check-coupling
+
+# Precise STUB coupling check (avoids matching "stubborn" in preset descriptions)
+grep -rl '"type".*"STUB"\|"STUB".*"type"' Presets/ 2>/dev/null
+# Zero results = PASS
 ```
+
+> **Note:** `grep -rl "stub" Presets/` produces false positives (matches "stubborn",
+> "stubby" etc. in preset descriptions). Always use the JSON key-targeted pattern above.
 
 ---
 

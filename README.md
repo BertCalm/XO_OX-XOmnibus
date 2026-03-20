@@ -54,7 +54,7 @@
 ## Features
 
 - **4-slot engine gallery** — load any combination of engines
-- **Cross-engine coupling** — 13 coupling types let engines modulate each other
+- **Cross-engine coupling** — 14 coupling types let engines modulate each other
 - **21,000+ factory presets** across 8 mood categories
 - **PlaySurface** — unified 4-zone playing interface
 - **6D Sonic DNA** — every preset tagged with brightness, warmth, movement, density, space, aggression

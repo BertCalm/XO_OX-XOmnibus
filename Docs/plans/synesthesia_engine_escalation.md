@@ -1,3 +1,5 @@
+> **STATUS: FLAGGED** | New direction identified; needs dedicated planning session before work begins.
+
 # Synesthesia Engine — Escalation for Visibility
 
 **Date:** 2026-03-17

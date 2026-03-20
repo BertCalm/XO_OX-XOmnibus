@@ -22,6 +22,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [coupling-debugger](./coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose and fix broken or inaudible coupling routes | HIGH |
 | [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
 | [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
+| [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
