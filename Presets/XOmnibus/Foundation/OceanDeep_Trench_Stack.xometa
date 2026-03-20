@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Trench Stack",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fundamental plus two sub-octaves. The full oscillator stack revealed.",
+  "tags": [
+    "foundation",
+    "sub",
+    "stack",
+    "octave"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.0,
+    "density": 0.2,
+    "space": 0.0,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.6,
+      "deep_filterCutoff": 600.0,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.2,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.5,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.0,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.0,
+      "deep_reverbMix": 0.0,
+      "deep_macroPressure": 0.0,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.0
+    }
+  }
+}

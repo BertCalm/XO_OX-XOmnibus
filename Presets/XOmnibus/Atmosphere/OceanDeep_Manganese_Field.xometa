@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Nodule fields on the abyssal plain. Slow, dark, with cave-like resonance.",
   "tags": [
-    "drone",
-    "deep",
-    "abyssal",
-    "dark"
+    "atmosphere",
+    "manganese",
+    "plain",
+    "mineral"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -24,44 +24,39 @@
   "tempo": null,
   "dna": {
     "brightness": 0.05,
-    "warmth": 0.8,
-    "movement": 0.1,
-    "density": 0.85,
-    "space": 0.96,
-    "aggression": 0.15
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.55,
+    "aggression": 0.0
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 1,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.1,
-      "deep_pressure": 0.68,
-      "deep_bodyType": 1,
-      "deep_bodySize": 0.88,
-      "deep_bodyDamp": 0.85,
-      "deep_flashRate": 0.05,
-      "deep_flashBright": 0.08,
-      "deep_creatureSpeed": 0.08,
-      "deep_creatureDepth": 0.08,
-      "deep_darkness": 0.92,
-      "deep_filterReso": 0.12,
-      "deep_reverbMix": 0.78,
-      "deep_reverbSize": 0.98,
-      "deep_delayMix": 0.15,
-      "deep_rumble": 0.72,
-      "deep_attack": 0.6,
-      "deep_decay": 3.2,
-      "deep_sustain": 0.86,
-      "deep_release": 7.0
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 180.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.55,
+      "deep_bodyMix": 0.25,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.65,
+      "deep_ampAtk": 0.4,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.3,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.2,
+      "deep_reverbMix": 0.55,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.68,
-    "CREATURE": 0.08,
-    "WRECK": 0.35,
-    "ABYSS": 0.82
-  },
-  "coupling": {
-    "pairs": []
   }
 }

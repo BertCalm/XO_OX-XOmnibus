@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "A thousand fathoms of water overhead. Cave resonance and bio-luminescent cloud.",
   "tags": [
-    "drone",
-    "abyssal",
-    "deep",
-    "sub"
+    "atmosphere",
+    "fathom",
+    "cloud",
+    "deep"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -23,45 +23,40 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.05,
-    "warmth": 0.8,
-    "movement": 0.16,
-    "density": 0.85,
-    "space": 0.97,
-    "aggression": 0.14
+    "brightness": 0.08,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.25,
+    "space": 0.6,
+    "aggression": 0.0
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 0,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.1,
-      "deep_pressure": 0.7,
-      "deep_bodyType": 3,
-      "deep_bodySize": 0.97,
-      "deep_bodyDamp": 0.92,
-      "deep_flashRate": 0.1,
-      "deep_flashBright": 0.15,
-      "deep_creatureSpeed": 0.15,
-      "deep_creatureDepth": 0.12,
-      "deep_darkness": 0.94,
-      "deep_filterReso": 0.12,
-      "deep_reverbMix": 0.86,
-      "deep_reverbSize": 0.98,
-      "deep_delayMix": 0.08,
-      "deep_rumble": 0.72,
-      "deep_attack": 0.7,
-      "deep_decay": 3.5,
-      "deep_sustain": 0.87,
-      "deep_release": 7.5
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 220.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.55,
+      "deep_bodyMix": 0.35,
+      "deep_bioRate": 0.06,
+      "deep_bioMix": 0.2,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.6,
+      "deep_ampAtk": 0.3,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.88,
+      "deep_ampRel": 4.5,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.2,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.15,
+      "deep_reverbMix": 0.6,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.7,
-    "CREATURE": 0.15,
-    "WRECK": 0.12,
-    "ABYSS": 0.88
-  },
-  "coupling": {
-    "pairs": []
   }
 }

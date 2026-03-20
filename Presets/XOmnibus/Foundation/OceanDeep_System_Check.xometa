@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "System Check",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Resonara's revelation: cutoff 200Hz with resonance 0.8 equals dub sound system test tone. Pure sub through a resonant darkness filter with no body, no creature — just the anglerfish in total darkness. The check tone before the session begins.",
+  "tags": [
+    "bass",
+    "sub",
+    "foundation",
+    "dub",
+    "resonant",
+    "system-check",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.92,
+    "movement": 0.02,
+    "density": 0.55,
+    "space": 0.05,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.95,
+      "deep_subOctMix": 0.45,
+      "deep_filterCutoff": 200.0,
+      "deep_filterRes": 0.8,
+      "deep_velCutoffAmt": 0.2,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.02,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 300.0,
+      "deep_pressureAmt": 0.5,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 1.0,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 1.618,
+      "deep_lfo1Rate": 0.067,
+      "deep_lfo1Depth": 0.0,
+      "deep_lfo2Rate": 0.11,
+      "deep_lfo2Depth": 0.0,
+      "deep_reverbMix": 0.0,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.15
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.5,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

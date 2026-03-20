@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bass with fast LFO surge. Filter opens and closes on each creature breath.",
   "tags": [
+    "flux",
+    "surge",
     "bass",
-    "massive",
-    "sub",
-    "dark"
+    "lfo"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -24,44 +24,39 @@
   "tempo": null,
   "dna": {
     "brightness": 0.12,
-    "warmth": 0.8,
-    "movement": 0.32,
-    "density": 0.9,
-    "space": 0.78,
-    "aggression": 0.7
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.2,
+    "space": 0.05,
+    "aggression": 0.18
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 2,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.18,
-      "deep_pressure": 0.88,
-      "deep_bodyType": 2,
-      "deep_bodySize": 0.8,
-      "deep_bodyDamp": 0.62,
-      "deep_flashRate": 0.25,
-      "deep_flashBright": 0.35,
-      "deep_creatureSpeed": 0.28,
-      "deep_creatureDepth": 0.3,
-      "deep_darkness": 0.9,
-      "deep_filterReso": 0.38,
-      "deep_reverbMix": 0.5,
-      "deep_reverbSize": 0.85,
-      "deep_delayMix": 0.18,
-      "deep_rumble": 0.85,
-      "deep_attack": 0.002,
-      "deep_decay": 0.7,
-      "deep_sustain": 0.78,
-      "deep_release": 2.0
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 450.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.3,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.5,
+      "deep_ampAtk": 0.001,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.6,
+      "deep_ampRel": 0.5,
+      "deep_lfo1Rate": 0.6,
+      "deep_lfo1Depth": 0.5,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.2,
+      "deep_reverbMix": 0.35,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.88,
-    "CREATURE": 0.28,
-    "WRECK": 0.3,
-    "ABYSS": 0.72
-  },
-  "coupling": {
-    "pairs": []
   }
 }

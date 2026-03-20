@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Trench Floor",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Everything active. Wreck body with high feedback, bioluminescent exciter pulsing, maximum pressure, coprime LFOs drifting at 0.07 and 0.11 Hz (never repeating for 130 seconds), long reverb tail. OCEANDEEP at its most complex — the absolute bottom of the water column where all forces converge.",
+  "tags": [
+    "bass",
+    "aether",
+    "complex",
+    "wreck",
+    "creature",
+    "reverb",
+    "maximal",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.88,
+    "movement": 0.55,
+    "density": 0.85,
+    "space": 0.8,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.9,
+      "deep_subOctMix": 0.6,
+      "deep_filterCutoff": 250.0,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.5,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.75,
+      "deep_bodyMix": 0.55,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.3,
+      "deep_bioBrightness": 1000.0,
+      "deep_pressureAmt": 0.85,
+      "deep_ampAtk": 0.1,
+      "deep_ampDec": 3.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 6.0,
+      "deep_lfo1Rate": 0.07,
+      "deep_lfo1Depth": 0.35,
+      "deep_lfo2Rate": 0.11,
+      "deep_lfo2Depth": 0.25,
+      "deep_reverbMix": 0.65,
+      "deep_macroPressure": 0.85,
+      "deep_macroCreature": 0.55,
+      "deep_macroWreck": 0.7,
+      "deep_macroAbyss": 0.9
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.85,
+    "CREATURE": 0.55,
+    "WRECK": 0.7,
+    "ABYSS": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

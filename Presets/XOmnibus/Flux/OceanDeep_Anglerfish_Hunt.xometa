@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Anglerfish Hunt",
+  "mood": "Flux",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "D001 in the abyss. Playing hard triggers a brightness flash — the anglerfish lure strikes. Playing soft yields total darkness. Velocity-to-cutoff at 0.8 creates extreme dynamic range through the darkness filter. The hunt is velocity.",
+  "tags": [
+    "bass",
+    "flux",
+    "velocity",
+    "dynamic",
+    "anglerfish",
+    "expressive",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.82,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.35,
+      "deep_filterCutoff": 400.0,
+      "deep_filterRes": 0.45,
+      "deep_velCutoffAmt": 0.8,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.3,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.12,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.003,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.7,
+      "deep_ampRel": 0.8,
+      "deep_lfo1Rate": 0.07,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.11,
+      "deep_lfo2Depth": 0.05,
+      "deep_reverbMix": 0.12,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.35,
+      "deep_macroWreck": 0.15,
+      "deep_macroAbyss": 0.25
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.35,
+    "WRECK": 0.15,
+    "ABYSS": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

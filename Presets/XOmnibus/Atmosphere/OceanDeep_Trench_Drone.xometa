@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sustained sub drone at the trench floor. Nearly subsonic. Felt more than heard.",
   "tags": [
+    "atmosphere",
     "drone",
-    "abyssal",
-    "deep",
-    "sub"
+    "trench",
+    "subsonic"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -23,45 +23,40 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.04,
-    "warmth": 0.82,
-    "movement": 0.08,
-    "density": 0.88,
-    "space": 0.98,
-    "aggression": 0.15
+    "brightness": 0.05,
+    "warmth": 0.8,
+    "movement": 0.1,
+    "density": 0.25,
+    "space": 0.4,
+    "aggression": 0.05
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 0,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.08,
-      "deep_pressure": 0.72,
-      "deep_bodyType": 3,
-      "deep_bodySize": 0.95,
-      "deep_bodyDamp": 0.9,
-      "deep_flashRate": 0.03,
-      "deep_flashBright": 0.06,
-      "deep_creatureSpeed": 0.08,
-      "deep_creatureDepth": 0.08,
-      "deep_darkness": 0.95,
-      "deep_filterReso": 0.1,
-      "deep_reverbMix": 0.82,
-      "deep_reverbSize": 1.0,
-      "deep_delayMix": 0.06,
-      "deep_rumble": 0.72,
-      "deep_attack": 0.5,
-      "deep_decay": 4.0,
-      "deep_sustain": 0.9,
-      "deep_release": 8.0
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.7,
+      "deep_filterCutoff": 180.0,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.7,
+      "deep_ampAtk": 0.15,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.95,
+      "deep_ampRel": 6.0,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.15,
+      "deep_reverbMix": 0.45,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.72,
-    "CREATURE": 0.08,
-    "WRECK": 0.18,
-    "ABYSS": 0.88
-  },
-  "coupling": {
-    "pairs": []
   }
 }

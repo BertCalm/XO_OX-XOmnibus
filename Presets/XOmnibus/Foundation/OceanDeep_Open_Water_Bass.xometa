@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Open Water Bass",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The shallowest OCEANDEEP sound. Pure sine sub bass in open water — no cave, no wreck, no creature. Just pressure and fundamental. The anglerfish before the descent.",
+  "tags": [
+    "bass",
+    "sub",
+    "foundation",
+    "clean",
+    "pure",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.9,
+    "movement": 0.05,
+    "density": 0.4,
+    "space": 0.15,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.3,
+      "deep_filterCutoff": 600.0,
+      "deep_filterRes": 0.2,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.05,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 400.0,
+      "deep_pressureAmt": 0.3,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 0.6,
+      "deep_lfo1Rate": 0.067,
+      "deep_lfo1Depth": 0.0,
+      "deep_lfo2Rate": 0.11,
+      "deep_lfo2Depth": 0.0,
+      "deep_reverbMix": 0.08,
+      "deep_macroPressure": 0.3,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.1
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.3,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

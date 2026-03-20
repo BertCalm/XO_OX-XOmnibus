@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Trench x Drift",
+  "mood": "Family",
+  "engines": [
+    "OceanDeep",
+    "Odyssey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two wanderers in the dark. OceanDeep anchors the drift.",
+  "tags": [
+    "family",
+    "odyssey",
+    "drift",
+    "anchor"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.72,
+    "movement": 0.2,
+    "density": 0.2,
+    "space": 0.4,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 250.0,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.6,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.5,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.3,
+      "deep_lfo2Rate": 0.05,
+      "deep_lfo2Depth": 0.2,
+      "deep_reverbMix": 0.45,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      }
+    ]
+  }
+}

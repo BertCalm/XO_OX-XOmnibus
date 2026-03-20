@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Night Drift",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Drifting in total darkness. The slowest LFO2 creates glacial pitch movement.",
+  "tags": [
+    "atmosphere",
+    "night",
+    "drift",
+    "glacial"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.75,
+    "movement": 0.22,
+    "density": 0.2,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 200.0,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.03,
+      "deep_bioMix": 0.2,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.6,
+      "deep_ampAtk": 0.3,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.15,
+      "deep_lfo2Rate": 0.02,
+      "deep_lfo2Depth": 0.3,
+      "deep_reverbMix": 0.5,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
+    }
+  }
+}

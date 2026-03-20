@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Deep Meditation",
+  "mood": "Prism",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extended meditation drone. Maximum release, minimum brightness. Just pressure.",
+  "tags": [
+    "ambient",
+    "meditation",
+    "drone",
+    "minimal"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.82,
+    "movement": 0.08,
+    "density": 0.12,
+    "space": 0.55,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 150.0,
+      "deep_filterRes": 0.25,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.3,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.4,
+      "deep_ampAtk": 0.5,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.95,
+      "deep_ampRel": 8.0,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.3,
+      "deep_lfo2Rate": 0.02,
+      "deep_lfo2Depth": 0.15,
+      "deep_reverbMix": 0.55,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
+    }
+  }
+}

@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Slow deep swell from the ocean floor. Pressure and pitch rise and fall together.",
   "tags": [
-    "drone",
-    "abyssal",
-    "deep",
-    "sub"
+    "atmosphere",
+    "swell",
+    "slow",
+    "floor"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -24,44 +24,39 @@
   "tempo": null,
   "dna": {
     "brightness": 0.06,
-    "warmth": 0.8,
-    "movement": 0.22,
-    "density": 0.85,
-    "space": 0.98,
-    "aggression": 0.16
+    "warmth": 0.74,
+    "movement": 0.18,
+    "density": 0.2,
+    "space": 0.5,
+    "aggression": 0.0
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 0,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.14,
-      "deep_pressure": 0.72,
-      "deep_bodyType": 3,
-      "deep_bodySize": 0.95,
-      "deep_bodyDamp": 0.88,
-      "deep_flashRate": 0.15,
-      "deep_flashBright": 0.2,
-      "deep_creatureSpeed": 0.2,
-      "deep_creatureDepth": 0.18,
-      "deep_darkness": 0.92,
-      "deep_filterReso": 0.15,
-      "deep_reverbMix": 0.82,
-      "deep_reverbSize": 1.0,
-      "deep_delayMix": 0.1,
-      "deep_rumble": 0.72,
-      "deep_attack": 0.8,
-      "deep_decay": 3.8,
-      "deep_sustain": 0.86,
-      "deep_release": 7.5
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.55,
+      "deep_filterCutoff": 220.0,
+      "deep_filterRes": 0.35,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.1,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.55,
+      "deep_ampAtk": 0.4,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.88,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.15,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.25,
+      "deep_reverbMix": 0.5,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.72,
-    "CREATURE": 0.2,
-    "WRECK": 0.2,
-    "ABYSS": 0.86
-  },
-  "coupling": {
-    "pairs": []
   }
 }

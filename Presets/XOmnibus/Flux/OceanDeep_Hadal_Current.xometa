@@ -5,14 +5,14 @@
   "engines": [
     "OceanDeep"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Deep current in the hadal zone. Dual LFO creates complex movement at extreme depth.",
   "tags": [
-    "bass",
-    "sub",
-    "abyssal",
-    "dark"
+    "flux",
+    "hadal",
+    "current",
+    "dual-lfo"
   ],
   "macroLabels": [
     "PRESSURE",
@@ -24,44 +24,39 @@
   "tempo": null,
   "dna": {
     "brightness": 0.08,
-    "warmth": 0.82,
-    "movement": 0.28,
-    "density": 0.92,
-    "space": 0.88,
-    "aggression": 0.52
+    "warmth": 0.68,
+    "movement": 0.4,
+    "density": 0.22,
+    "space": 0.1,
+    "aggression": 0.08
   },
   "parameters": {
     "OceanDeep": {
-      "deep_subShape": 2,
-      "deep_subOctave": -2,
-      "deep_harmonicLevel": 0.14,
-      "deep_pressure": 0.85,
-      "deep_bodyType": 1,
-      "deep_bodySize": 0.88,
-      "deep_bodyDamp": 0.7,
-      "deep_flashRate": 0.2,
-      "deep_flashBright": 0.28,
-      "deep_creatureSpeed": 0.25,
-      "deep_creatureDepth": 0.28,
-      "deep_darkness": 0.92,
-      "deep_filterReso": 0.32,
-      "deep_reverbMix": 0.65,
-      "deep_reverbSize": 0.95,
-      "deep_delayMix": 0.16,
-      "deep_rumble": 0.85,
-      "deep_attack": 0.008,
-      "deep_decay": 1.0,
-      "deep_sustain": 0.82,
-      "deep_release": 2.8
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 280.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.4,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.25,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.55,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.5,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.4,
+      "deep_lfo2Rate": 0.06,
+      "deep_lfo2Depth": 0.3,
+      "deep_reverbMix": 0.35,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.3,
+      "deep_macroWreck": 0.4,
+      "deep_macroAbyss": 0.5
     }
-  },
-  "macros": {
-    "PRESSURE": 0.85,
-    "CREATURE": 0.25,
-    "WRECK": 0.28,
-    "ABYSS": 0.82
-  },
-  "coupling": {
-    "pairs": []
   }
 }
