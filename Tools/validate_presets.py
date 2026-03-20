@@ -40,7 +40,7 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "User"}
 
 VALID_ENGINES = {
-    # Canonical O-prefix engine IDs (all 21)
+    # Canonical O-prefix engine IDs (all 39)
     "OddfeliX", "OddOscar", "Overdub", "Odyssey", "Oblong",
     "Obese", "Onset", "Overworld", "Opal", "Orbital",
     "Organon", "Ouroboros", "Obsidian", "Overbite", "Origami",
@@ -48,10 +48,12 @@ VALID_ENGINES = {
     "Ocelot", "Osprey", "Osteria", "Owlfish",
     "Ohm", "Orphica", "Obbligato", "Ottoni", "Ole",
     "Ombre", "Orca", "Octopus", "Overlap", "Outwit",
+    "OceanDeep", "Ostinato", "OpenSky", "Ouie", "Obrix",
     # Legacy aliases (resolved by PresetManager::resolveEngineAlias)
     "Snap", "Morph", "Dub", "Drift", "Bob", "Fat", "Bite",
     "XOverdub", "XOdyssey", "XOblong", "XObese", "XOnset",
     "XOpal", "XOrbital", "XOrganon", "XOuroboros",
+    "XOverlap", "XOutwit", "OBRIX",
 }
 
 # Map non-standard coupling intensities to valid ones
@@ -67,6 +69,7 @@ VALID_COUPLING_TYPES = {
     "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph",
     "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
     "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable",
+    "Audio->Buffer",
 }
 
 VALID_COUPLING_INTENSITIES = {"None", "Subtle", "Moderate", "Deep"}
@@ -87,14 +90,21 @@ JARGON_WORDS = {
 # Known engine parameter prefixes for cross-checking (frozen — never change)
 ENGINE_PARAM_PREFIXES = {
     "OddfeliX": "snap_", "OddOscar": "morph_", "Overdub": "dub_",
-    "Odyssey": "odyssey_", "Oblong": "bob_", "Obese": "fat_",
-    "Overbite": "poss_", "Onset": "onset_", "Opal": "opal_",
-    "Overworld": "era_", "Orbital": "orbital_",
-    "Organon": "organon_", "Ouroboros": "ouroboros_",
+    "Odyssey": "drift_", "Oblong": "bob_", "Obese": "fat_",
+    "Overbite": "poss_", "Onset": "perc_", "Opal": "opal_",
+    "Overworld": "ow_", "Orbital": "orb_",
+    "Organon": "organon_", "Ouroboros": "ouro_",
     "Obsidian": "obsidian_", "Origami": "origami_", "Oracle": "oracle_",
-    "Obscura": "obscura_", "Oceanic": "oceanic_", "Optic": "optic_",
+    "Obscura": "obscura_", "Oceanic": "ocean_", "Optic": "optic_",
     "Oblique": "oblq_",
     "Ombre": "ombre_",
+    "Orca": "orca_", "Octopus": "octo_",
+    "Osprey": "osprey_", "Osteria": "osteria_", "Owlfish": "owl_",
+    "Ocelot": "ocelot_",
+    "Ohm": "ohm_", "Orphica": "orph_", "Obbligato": "obbl_",
+    "Ottoni": "otto_", "Ole": "ole_",
+    "Overlap": "olap_", "Outwit": "owit_", "OceanDeep": "deep_",
+    "Ostinato": "osti_", "OpenSky": "sky_", "Ouie": "ouie_", "Obrix": "obrix_",
 }
 
 # Core engines that should have coupling presets with each other

@@ -159,12 +159,12 @@ static bool registered_Ole = xomnibus::EngineRegistry::instance().registerEngine
     "Ole", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OleEngine>();
     });
-static bool registered_XOverlap = xomnibus::EngineRegistry::instance().registerEngine(
-    "XOverlap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Overlap = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overlap", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::XOverlapEngine>();
     });
-static bool registered_XOutwit = xomnibus::EngineRegistry::instance().registerEngine(
-    "XOutwit", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Outwit = xomnibus::EngineRegistry::instance().registerEngine(
+    "Outwit", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::XOutwitEngine>();
     });
 static bool registered_Ombre = xomnibus::EngineRegistry::instance().registerEngine(
@@ -180,7 +180,7 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
         return std::make_unique<xomnibus::OctopusEngine>();
     });
 static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
-    "OBRIX", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::ObrixEngine>();
     });
 static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
