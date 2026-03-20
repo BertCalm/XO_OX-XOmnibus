@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "NES Drum Kit",
+  "mood": "Flux",
+  "engines": [
+    "Overworld"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.08
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.25,
+    "movement": 0.85,
+    "density": 0.7,
+    "space": 0.08,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_drumMode": 1.0,
+      "ow_era": 0.05,
+      "ow_eraY": 0.1,
+      "ow_vertexA": 0.0,
+      "ow_vertexB": 1.0,
+      "ow_vertexC": 3.0,
+      "ow_noiseMode": 1.0,
+      "ow_noisePeriod": 4.0,
+      "ow_triEnable": 1.0,
+      "ow_pulseDuty": 2.0,
+      "ow_pulseSweep": 0.0,
+      "ow_nesMix": 1.0,
+      "ow_ampAttack": 0.001,
+      "ow_ampDecay": 0.08,
+      "ow_ampSustain": 0.0,
+      "ow_ampRelease": 0.05,
+      "ow_filterCutoff": 3500.0,
+      "ow_filterReso": 0.5,
+      "ow_filterType": 0.0,
+      "ow_crushBits": 8.0,
+      "ow_crushRate": 1.0,
+      "ow_crushMix": 0.6,
+      "ow_filterEnvDepth": 0.5,
+      "ow_macroEra": 0.0,
+      "ow_macroCrush": 0.0,
+      "ow_macroGlitch": 0.0,
+      "ow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "flux",
+    "overworld",
+    "chiptune",
+    "drums",
+    "nes",
+    "percussion",
+    "drum-mode"
+  ],
+  "description": "NES percussion rig — pulse+triangle kick body, short noise snare/hat. ow_drumMode forces one-shot chip hits."
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Chip Cave Drums",
+  "mood": "Foundation",
+  "engines": [
+    "Overworld"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.25,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_drumMode": 1.0,
+      "ow_era": 0.08,
+      "ow_eraY": 0.08,
+      "ow_vertexA": 3.0,
+      "ow_vertexB": 0.0,
+      "ow_vertexC": 4.0,
+      "ow_gbWaveSlot": 2.0,
+      "ow_gbPulseDuty": 1.0,
+      "ow_ampAttack": 0.001,
+      "ow_ampDecay": 0.15,
+      "ow_ampSustain": 0.0,
+      "ow_ampRelease": 0.05,
+      "ow_filterCutoff": 600.0,
+      "ow_filterReso": 0.4,
+      "ow_filterType": 0.0,
+      "ow_crushBits": 4.0,
+      "ow_crushRate": 1.0,
+      "ow_crushMix": 0.75,
+      "ow_echoDelay": 2.0,
+      "ow_echoFeedback": 0.3,
+      "ow_echoMix": 0.15,
+      "ow_filterEnvDepth": 0.35,
+      "ow_macroEra": 0.0,
+      "ow_macroCrush": 0.0,
+      "ow_macroGlitch": 0.0,
+      "ow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "foundation",
+    "overworld",
+    "chiptune",
+    "drums",
+    "game-boy",
+    "dark",
+    "cave",
+    "percussion",
+    "drum-mode"
+  ],
+  "description": "Dark cavernous Game Boy percussion — heavy 4-bit crush, low filter, cave echo tail. ow_drumMode for one-shot hits."
+}
