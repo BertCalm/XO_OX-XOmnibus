@@ -1,1892 +1,883 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
-#include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
-#include "../../DSP/Effects/LushReverb.h"
-#include "../../DSP/Effects/Compressor.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
 #include <cstring>
-
 namespace xomnibus {
 
 //==============================================================================
-// OceanDeepEngine — Abyssal Bass Synthesis.
 //
-// Pure Oscar polarity. The deepest, darkest engine in the XO_OX water column.
-// Maps the physics and creatures of the hadal zone (6000-11000m) into a bass
-// synthesis architecture optimized for crushing sub-frequency weight.
+//  OCEANDEEP ENGINE — Abyssal Bass Synthesizer
+//  XOmnibus Engine Module | Accent: Trench Violet #2D0A4E
 //
-// SUBSYSTEMS:
+//  Creature: Anglerfish / Gulper Eel — bottom-of-the-water-column predator
+//  Habitat:  THE HADAL ZONE — 6,000–11,000 m depth, perpetual darkness,
+//            crushing pressure, bioluminescent flickers in the void.
 //
-//   1. SUB OSCILLATOR STACK — Three-oscillator sub engine (sine + triangle +
-//      square, selectable per-osc) with a sub-harmonic generator that adds
-//      octave-below content. Phase-locked for maximum bottom-end coherence.
-//      The fundamental building block of abyssal pressure.
+//  XOceanDeep lives at the absolute floor of the XO_OX water column. It is the
+//  engine of pressure and darkness: pure Oscar polarity, sub-bass presence that
+//  displaces air before sound reaches your ears. Where OPENSKY launches upward,
+//  OCEANDEEP pulls everything toward the trench.
 //
-//   2. HYDROSTATIC COMPRESSOR — Pressure-dependent dynamics processor.
-//      As PRESSURE macro increases, compression ratio and makeup gain
-//      increase logarithmically, simulating the crushing weight of water
-//      at depth. At full depth: brickwall limiting with extreme makeup.
-//      The sound gets heavier, denser, more compressed the deeper you go.
+//  Architecture:
+//    1. Sub oscillator stack — 3 sine oscillators (fundamental, -1 oct, -2 oct)
+//    2. Hydrostatic compressor — peak-sensing gain reduction (pressure depth)
+//    3. Waveguide body — comb filter (shipwreck hull / underwater cave resonance)
+//    4. Bioluminescent exciter — slowly modulated bandpass noise bursts (alien life)
+//    5. Darkness filter — 2-pole Butterworth LP (50-800 Hz, signature abyssal tone)
+//    6. Amp ADSR envelope
+//    7. Abyssal reverb tail (optional, controlled by deep_reverbMix)
 //
-//   3. WAVEGUIDE BODY RESONANCE — Three selectable body types (Shipwreck,
-//      Cave, Trench) each modeled as a delay line + allpass network with
-//      characteristic reflection patterns. Shipwreck: metallic, short.
-//      Cave: round, medium. Trench: massive, dark, infinite-feeling.
-//      WRECK macro controls resonance intensity and body selection blend.
+//  4 Macros:
+//    deep_macroPressure  — hydrostatic compression depth + sub level
+//    deep_macroCreature  — bioluminescent exciter level + rate
+//    deep_macroWreck     — waveguide body mix + character
+//    deep_macroAbyss     — darkness filter sweep (close filter) + reverb tail
 //
-//   4. BIOLUMINESCENT EXCITER — Random light-like transients: subtle
-//      noise bursts with a pitch envelope that sweeps downward, simulating
-//      the flash patterns of deep-sea creatures. Adds organic transient
-//      interest to sustained bass tones. Probability-based triggering.
+//  ~45 deep_ parameters — doctrine compliant D001–D006.
 //
-//   5. CREATURE MODULATION — Slow, organic LFO system with random drift.
-//      Two independent creature LFOs with rates below 0.01 Hz (D005).
-//      Random walk modulation simulates bioluminescent creatures drifting
-//      through the darkness. CREATURE macro controls depth and randomness.
+//  Parameter prefix: deep_   Engine ID: "Oceandeep"
 //
-//   6. DARKNESS FILTER — Multi-mode SVF that gets progressively darker
-//      with increasing PRESSURE. At zero depth: open, bright. At full
-//      depth: heavily filtered, only the deepest frequencies survive.
-//      The ocean eats light; this filter eats harmonics.
-//
-// 4 MACROS:
-//   PRESSURE — depth/weight (drives compressor, filter darkness, sub level)
-//   CREATURE — alien life modulation (LFO depth, exciter probability)
-//   WRECK    — environment resonance (body type blend, resonance intensity)
-//   ABYSS    — vastness/reverb (reverb size, pre-delay, darkness)
-//
-// Coupling:
-//   - Output: Post-process stereo audio (ch 0,1), envelope level (ch 2)
-//   - Input: AmpToFilter (modulate darkness cutoff), LFOToPitch (creature
-//            pitch warping), AudioToFM (FM input to sub osc), EnvToDecay
-//            (modulate body resonance decay)
-//   - Key coupling: OCEANDEEP x OPENSKY = "The Full Column"
-//
-// Accent Color: Trench Violet #2D0A4E
+//  SilenceGate: 500 ms hold (long bass tails).
 //
 //==============================================================================
 
-//==============================================================================
-// ADSR envelope generator.
-//==============================================================================
-struct DeepADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
+// ---------------------------------------------------------------------------
+// Deep sine oscillator — single voice phase accumulator
+// Used for fundamental, sub-octave (-1), and sub-sub-octave (-2).
+// ---------------------------------------------------------------------------
+struct DeepSineOsc {
+    float phase = 0.f;
+    float sr    = 44100.f;
 
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
+    void prepare(double s) { sr = (float)s; }
+    void reset()           { phase = 0.f; }
 
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
+    // freq in Hz. Returns one sample.
+    float tick(float freq) {
+        phase += freq / sr;
+        if (phase >= 1.f) phase -= 1.f;
+        return fastSin(phase * 6.2831853f);
     }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:    return 0.0f;
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f) { level = sustainLevel; stage = Stage::Sustain; }
-                return level;
-            case Stage::Sustain:
-                return level;
-            case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; }
 };
 
-//==============================================================================
-// LFO with multiple shapes — used by creature modulation and general mod.
-//==============================================================================
-struct DeepLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
+// ---------------------------------------------------------------------------
+// Hydrostatic compressor — peak-sensing gain reduction
+// Models the weight of the water column pressing down on the signal.
+// gain = 1 / (1 + pressureAmt * peakDetector)
+// peakDetector is a one-pole envelope follower.
+// ---------------------------------------------------------------------------
+struct DeepHydroCompressor {
+    float peak = 0.f;
 
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t rngState = 12345u;
+    void reset() { peak = 0.f; }
 
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / std::max (1.0f, sampleRate);
+    // attackCoeff / releaseCoeff: one-pole smoother coefficients
+    float process(float in, float pressureAmt, float attackCoeff, float releaseCoeff) {
+        float absSample = std::fabs(in);
+        // Peak follower: fast attack, slow release
+        if (absSample > peak)
+            peak = peak + attackCoeff  * (absSample - peak);
+        else
+            peak = peak + releaseCoeff * (absSample - peak);
+        peak = flushDenormal(peak);
+
+        float gain = 1.0f / (1.0f + pressureAmt * peak);
+        return in * gain;
+    }
+};
+
+// ---------------------------------------------------------------------------
+// Waveguide body — comb filter tuned to fundamental frequency
+// Simulates a shipwreck hull or underwater cave resonance.
+// y[n] = input[n] + bodyFeedback * y[n - delaySamples]
+//
+// bodyChar selects character mode:
+//   0 = open water (light feedback, standard comb period)
+//   1 = cave        (higher feedback, slightly detuned comb = cave reflections)
+//   2 = wreck       (high feedback, short comb + allpass diffusion = hull modes)
+//
+// Buffer is pre-allocated at prepare() to max delay (1 Hz fundamental → 44100 samples).
+// No allocation in renderBlock().
+// ---------------------------------------------------------------------------
+struct DeepWaveguideBody {
+    static constexpr int kMaxDelay = 48001; // covers 1 Hz fundamental at up to 48 kHz
+
+    float buf[kMaxDelay] = {};
+    int   writePos  = 0;
+    float sr        = 44100.f;
+
+    void prepare(double s) {
+        sr = (float)s;
+        reset();
     }
 
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
+    void reset() {
+        std::fill(std::begin(buf), std::end(buf), 0.f);
+        writePos = 0;
     }
 
-    float process() noexcept
-    {
-        float out = 0.0f;
-        switch (shape)
-        {
-            case Shape::Sine:     out = fastSin (phase * 6.28318530718f); break;
-            case Shape::Triangle: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
-            case Shape::Saw:      out = 2.0f * phase - 1.0f; break;
-            case Shape::Square:   out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case Shape::SandH:
-            {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    rngState = rngState * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (rngState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
+    // freq: fundamental Hz | feedback: 0-0.9 | bodyChar: 0/1/2
+    float tick(float in, float freq, float feedback, int bodyChar) {
+        // Choose comb tuning factor based on character
+        float tuneOffset = 0.f;
+        if (bodyChar == 1) tuneOffset =  0.012f; // cave — slightly flat resonance
+        if (bodyChar == 2) tuneOffset = -0.025f; // wreck — hull harmonic shift
+
+        float f = clamp(freq * (1.f + tuneOffset), 20.f, sr * 0.48f);
+        int delaySamples = (int)(sr / f);
+        if (delaySamples < 2)   delaySamples = 2;
+        if (delaySamples >= kMaxDelay) delaySamples = kMaxDelay - 1;
+
+        // Read from circular buffer
+        int readPos = writePos - delaySamples;
+        if (readPos < 0) readPos += kMaxDelay;
+
+        float delayed = buf[readPos];
+        float out = in + feedback * delayed;
+        out = flushDenormal(out);
+
+        // For wreck mode: light allpass diffusion inside the comb
+        if (bodyChar == 2) {
+            float g = 0.3f;
+            out = (out - g * delayed) / (1.f - g * out);
+            out = flushDenormal(out);
         }
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
+
+        buf[writePos] = out;
+        writePos = (writePos + 1 >= kMaxDelay) ? 0 : writePos + 1;
+
         return out;
     }
-
-    void reset() noexcept { phase = 0.0f; holdValue = 0.0f; rngState = 12345u; }
 };
 
-//==============================================================================
-// Waveguide body resonance — delay + allpass + reflection network.
-// Three body types: Shipwreck (metallic), Cave (round), Trench (massive).
-//==============================================================================
-struct DeepWaveguideBody
-{
-    static constexpr int kMaxDelay = 8192;
-    static constexpr int kNumAllpass = 3;
+// ---------------------------------------------------------------------------
+// Bioluminescent exciter — bandpass-filtered noise triggered at irregular
+// intervals by an LFO. Models deep-sea creature bioluminescence: intermittent
+// alien light pulses in the darkness.
+//
+// The LFO phase crossing zero from below triggers a burst envelope.
+// Bandpass center frequency controlled by deep_bioBrightness (200-4000 Hz).
+// ---------------------------------------------------------------------------
+struct DeepBioExciter {
+    float lfoPhase     = 0.f;   // creature LFO accumulator
+    float burstEnv     = 0.f;   // burst envelope level
+    float bpState1     = 0.f;   // bandpass filter state (z1)
+    float bpState2     = 0.f;   // bandpass filter state (z2)
+    float noiseState   = 0.f;   // pink-ish noise filter state
+    bool  lfoWasHigh   = false; // edge detect for trigger
 
-    // Delay line
-    float delayBuffer[kMaxDelay] {};
-    int writePos = 0;
-    float delaySamples = 200.0f;
-    float feedback = 0.6f;
-    float damping = 0.4f;
-    float prevSample = 0.0f;
+    // Reproducible noise — lcg updated per tick
+    uint32_t rng = 0x1234ABCD;
 
-    // Allpass chain for diffusion
-    float allpassBuffers[kNumAllpass][1024] {};
-    int allpassPos[kNumAllpass] {};
-    float allpassDelays[kNumAllpass] = { 113.0f, 199.0f, 347.0f };
-
-    void setBodyType (float bodyBlend, float sampleRate) noexcept
-    {
-        // bodyBlend: 0=Shipwreck, 0.5=Cave, 1.0=Trench
-        // Shipwreck: short delay, high damping, metallic resonance
-        // Cave: medium delay, moderate damping, round resonance
-        // Trench: long delay, low damping, massive dark resonance
-
-        float srScale = sampleRate / 44100.0f;
-
-        if (bodyBlend < 0.5f)
-        {
-            // Shipwreck -> Cave blend
-            float t = bodyBlend * 2.0f;
-            delaySamples = clamp ((80.0f + t * 200.0f) * srScale, 1.0f, static_cast<float> (kMaxDelay - 1));
-            damping = 0.7f - t * 0.3f;
-            allpassDelays[0] = (37.0f + t * 76.0f) * srScale;
-            allpassDelays[1] = (67.0f + t * 132.0f) * srScale;
-            allpassDelays[2] = (97.0f + t * 250.0f) * srScale;
-        }
-        else
-        {
-            // Cave -> Trench blend
-            float t = (bodyBlend - 0.5f) * 2.0f;
-            delaySamples = clamp ((280.0f + t * 500.0f) * srScale, 1.0f, static_cast<float> (kMaxDelay - 1));
-            damping = 0.4f - t * 0.25f;
-            allpassDelays[0] = (113.0f + t * 150.0f) * srScale;
-            allpassDelays[1] = (199.0f + t * 250.0f) * srScale;
-            allpassDelays[2] = (347.0f + t * 400.0f) * srScale;
-        }
-
-        // Clamp allpass delays
-        for (int i = 0; i < kNumAllpass; ++i)
-            allpassDelays[i] = clamp (allpassDelays[i], 1.0f, 1023.0f);
+    void reset() {
+        lfoPhase = burstEnv = bpState1 = bpState2 = noiseState = 0.f;
+        lfoWasHigh = false;
+        rng = 0x1234ABCD;
     }
 
-    void setFeedback (float fb) noexcept
-    {
-        feedback = clamp (fb, 0.0f, 0.97f);
-    }
-
-    float processSample (float input) noexcept
-    {
-        // Read from delay line with linear interpolation
-        float readPos = static_cast<float> (writePos) - delaySamples;
-        if (readPos < 0.0f) readPos += static_cast<float> (kMaxDelay);
-
-        int idx0 = static_cast<int> (readPos);
-        int idx1 = (idx0 + 1) % kMaxDelay;
-        float frac = readPos - static_cast<float> (idx0);
-        idx0 = idx0 % kMaxDelay;
-
-        float delayed = delayBuffer[idx0] + frac * (delayBuffer[idx1] - delayBuffer[idx0]);
-
-        // 1-pole damping in feedback path
-        float damped = delayed + damping * (prevSample - delayed);
-        prevSample = flushDenormal (damped);
-
-        // Write: input + feedback
-        delayBuffer[writePos] = flushDenormal (input + damped * feedback);
-        writePos = (writePos + 1) % kMaxDelay;
-
-        // Process through allpass chain for diffusion
-        float diffused = delayed;
-        for (int i = 0; i < kNumAllpass; ++i)
-        {
-            int apDelay = static_cast<int> (allpassDelays[i]);
-            apDelay = std::min (apDelay, 1023);
-            int apReadPos = (allpassPos[i] - apDelay + 1024) % 1024;
-
-            float apDelayed = allpassBuffers[i][apReadPos];
-            float apInput = diffused + apDelayed * 0.5f;
-            allpassBuffers[i][allpassPos[i]] = flushDenormal (apInput);
-            allpassPos[i] = (allpassPos[i] + 1) % 1024;
-
-            diffused = apDelayed - diffused * 0.5f;
-        }
-
-        return flushDenormal (diffused);
-    }
-
-    void reset() noexcept
-    {
-        std::memset (delayBuffer, 0, sizeof (delayBuffer));
-        std::memset (allpassBuffers, 0, sizeof (allpassBuffers));
-        writePos = 0;
-        prevSample = 0.0f;
-        for (int i = 0; i < kNumAllpass; ++i)
-            allpassPos[i] = 0;
-    }
-};
-
-//==============================================================================
-// Bioluminescent exciter — random transient noise bursts with pitch envelope.
-//==============================================================================
-struct DeepBioExciter
-{
-    float phase = 0.0f;
-    float freq = 2000.0f;
-    float freqDecay = 0.999f;
-    float envLevel = 0.0f;
-    float envDecay = 0.0f;
-    bool active = false;
-    uint32_t rng = 67890u;
-
-    void trigger (float startFreq, float decayTime, float sampleRate) noexcept
-    {
-        freq = startFreq;
-        freqDecay = 1.0f - (1.0f / (decayTime * std::max (1.0f, sampleRate) + 1.0f));
-        envLevel = 1.0f;
-        envDecay = 1.0f - (1.0f / (decayTime * 0.5f * std::max (1.0f, sampleRate) + 1.0f));
-        phase = 0.0f;
-        active = true;
-    }
-
-    float process (float sampleRate) noexcept
-    {
-        if (!active) return 0.0f;
-
-        // Noise burst modulated by decaying pitch envelope
+    // Advance the noise source — white noise via LCG
+    float nextNoise() {
         rng = rng * 1664525u + 1013904223u;
-        float noise = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
+        return (float)(int32_t)rng * (1.f / 2147483648.f); // [-1, 1]
+    }
 
-        // Tonal component: swept sine
-        float tonal = fastSin (phase * 6.28318530718f);
-        phase += freq / std::max (1.0f, sampleRate);
-        if (phase >= 1.0f) phase -= 1.0f;
+    // lfoRate: 0.01-0.5 Hz | bioBrightness: 200-4000 Hz | sr: sample rate
+    // Returns one sample of bio excitation.
+    float tick(float lfoRate, float bioBrightness, float sr) {
+        // Advance LFO (triangle shape for smooth creature breathing)
+        lfoPhase += lfoRate / sr;
+        if (lfoPhase >= 1.f) lfoPhase -= 1.f;
+        float lfoVal = (lfoPhase < 0.5f)
+                     ? (lfoPhase * 4.f - 1.f)    // rising: -1 → +1
+                     : (3.f - lfoPhase * 4.f);   // falling: +1 → -1
 
-        // Mix noise and tonal — more tonal at start, more noise at end
-        float mix = tonal * envLevel + noise * (1.0f - envLevel) * 0.5f;
-
-        // Apply amplitude envelope
-        float output = mix * envLevel;
-
-        // Decay pitch downward (bioluminescent flash fades down)
-        freq *= freqDecay;
-        freq = std::max (20.0f, freq);
-
-        // Decay amplitude
-        envLevel *= envDecay;
-        envLevel = flushDenormal (envLevel);
-
-        if (envLevel < 0.0001f)
-        {
-            active = false;
-            envLevel = 0.0f;
+        // Trigger burst envelope on positive zero-crossing
+        bool lfoHigh = (lfoVal > 0.f);
+        if (lfoHigh && !lfoWasHigh) {
+            burstEnv = 1.0f; // trigger!
         }
+        lfoWasHigh = lfoHigh;
 
-        return output;
-    }
+        // Burst envelope — fast attack (already triggered), exponential decay
+        float burstDecay = fastExp(-8.0f / sr); // ~125 ms decay at 44100
+        burstEnv *= burstDecay;
+        burstEnv = flushDenormal(burstEnv);
 
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        envLevel = 0.0f;
-        active = false;
+        // Generate noise sample
+        float noise = nextNoise();
+
+        // One-pole "pink-ish" pre-filter on noise (softens harshness)
+        noiseState = noiseState * 0.98f + noise * 0.02f;
+        noiseState = flushDenormal(noiseState);
+        noise = noise - noiseState; // high-shelf tilt
+
+        // 2-pole bandpass filter (State Variable Filter, topology: HP → LP)
+        // Using simple matched-Z 2-pole BPF via sequential one-poles
+        float fc    = clamp(bioBrightness, 50.f, sr * 0.45f);
+        float coeff = fastExp(-6.2831853f * fc / sr);
+
+        bpState1 = bpState1 * coeff + noise * (1.f - coeff);
+        bpState2 = bpState2 * coeff + bpState1 * (1.f - coeff);
+        bpState1 = flushDenormal(bpState1);
+        bpState2 = flushDenormal(bpState2);
+        float bp  = bpState1 - bpState2; // approximate bandpass
+
+        return bp * burstEnv;
     }
 };
 
-//==============================================================================
-// Creature modulation — slow organic LFO with random drift.
-// D005 compliant: rate floor <= 0.01 Hz.
-//==============================================================================
-struct DeepCreatureLFO
-{
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    float driftPhase = 0.0f;
-    float driftRate = 0.003f;
-    float driftAmount = 0.0f;
-    uint32_t rng = 11111u;
-    float smoothedOutput = 0.0f;
-    float smoothCoeff = 0.999f;
+// ---------------------------------------------------------------------------
+// Darkness filter — 2-pole Butterworth lowpass
+// The signature abyssal tone: frequency response that dies below 800 Hz,
+// rolls off everything bright, leaving only pressure and darkness behind.
+//
+// Butterworth design via bilinear transform (Zölzer cookbook).
+// Cutoff range: 50–800 Hz.
+// ---------------------------------------------------------------------------
+struct DeepDarknessFilter {
+    float x1=0.f, x2=0.f;
+    float y1=0.f, y2=0.f;
+    float b0=1.f, b1=0.f, b2=0.f;
+    float a1=0.f, a2=0.f;
+    float lastFc=-1.f, lastQ=-1.f;
 
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        // D005: floor at 0.005 Hz — ultra-slow breathing
-        float clampedHz = std::max (0.005f, hz);
-        phaseInc = clampedHz / std::max (1.0f, sampleRate);
-        smoothCoeff = 1.0f - (1.0f / (0.05f * std::max (1.0f, sampleRate)));
+    void reset() {
+        x1=x2=y1=y2=0.f;
+        lastFc=lastQ=-1.f;
+        b0=1.f; b1=b2=a1=a2=0.f;
     }
 
-    void setDrift (float amount) noexcept
-    {
-        driftAmount = clamp (amount, 0.0f, 1.0f);
+    // Recompute Butterworth 2-pole LP coefficients when fc or Q changes.
+    // Uses prewarped bilinear transform: omega = 2*sr*tan(pi*fc/sr)
+    void computeCoeffs(float fc, float Q, float sr) {
+        if (fc == lastFc && Q == lastQ) return;
+        lastFc = fc; lastQ = Q;
+
+        fc = clamp(fc, 20.f, sr * 0.45f);
+        Q  = clamp(Q,  0.5f, 20.f);
+
+        float w0   = 6.2831853f * fc / sr;
+        float cosW = fastCos(w0);
+        float sinW = fastSin(w0);
+        float alpha = sinW / (2.f * Q);
+
+        float b0r = (1.f - cosW) * 0.5f;
+        float b1r = 1.f - cosW;
+        float b2r = (1.f - cosW) * 0.5f;
+        float a0r = 1.f + alpha;
+        float a1r = -2.f * cosW;
+        float a2r = 1.f - alpha;
+
+        float inv = 1.f / a0r;
+        b0 = b0r * inv;
+        b1 = b1r * inv;
+        b2 = b2r * inv;
+        a1 = a1r * inv;
+        a2 = a2r * inv;
     }
 
-    float process() noexcept
-    {
-        // Base sine LFO
-        float base = fastSin (phase * 6.28318530718f);
+    float process(float in, float fc, float Q, float sr) {
+        computeCoeffs(fc, Q, sr);
+        float out = b0*in + b1*x1 + b2*x2 - a1*y1 - a2*y2;
+        out = flushDenormal(out);
+        x2=x1; x1=in;
+        y2=y1; y1=out;
+        return out;
+    }
+};
 
-        // Random drift: slow random walk modulation
-        driftPhase += driftRate * phaseInc * 3.7f;
-        if (driftPhase >= 1.0f)
-        {
-            driftPhase -= 1.0f;
-            rng = rng * 1664525u + 1013904223u;
+// ---------------------------------------------------------------------------
+// Abyssal reverb — short dense Schroeder reverb for underwater cave tail
+// Less diffuse than sky reverb: small room, dense reflections, dark.
+// ---------------------------------------------------------------------------
+struct DeepAbyssalReverb {
+    static constexpr int kCombs = 4;
+    // Short comb lengths for a tight dark room feel (cave / hull)
+    static constexpr int kCombLensL[kCombs] = { 557, 601, 641, 683 };
+    static constexpr int kCombLensR[kCombs] = { 571, 617, 659, 701 };
+    static constexpr int kAP1Len = 113, kAP2Len = 223;
+
+    float combBufL[kCombs][701] = {};
+    float combBufR[kCombs][701] = {};
+    int   combPosL[kCombs]      = {};
+    int   combPosR[kCombs]      = {};
+    float combStateL[kCombs]    = {};
+    float combStateR[kCombs]    = {};
+
+    float ap1BufL[kAP1Len] = {}, ap1BufR[kAP1Len] = {};
+    float ap2BufL[kAP2Len] = {}, ap2BufR[kAP2Len] = {};
+    int ap1PosL=0, ap1PosR=0, ap2PosL=0, ap2PosR=0;
+
+    void reset() {
+        for (int i = 0; i < kCombs; ++i) {
+            std::fill(combBufL[i], combBufL[i] + kCombLensL[i], 0.f); combStateL[i]=0.f; combPosL[i]=0;
+            std::fill(combBufR[i], combBufR[i] + kCombLensR[i], 0.f); combStateR[i]=0.f; combPosR[i]=0;
         }
-        float drift = fastSin (driftPhase * 6.28318530718f);
-
-        // Secondary random perturbation
-        rng = rng * 1664525u + 1013904223u;
-        float jitter = static_cast<float> (rng & 0xFFFF) / 65536.0f - 0.5f;
-
-        // Combine: base + organic drift
-        float raw = base + driftAmount * (drift * 0.5f + jitter * 0.1f);
-
-        // Smooth to prevent clicks
-        smoothedOutput += (raw - smoothedOutput) * (1.0f - smoothCoeff);
-        smoothedOutput = flushDenormal (smoothedOutput);
-
-        // Advance phase
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return clamp (smoothedOutput, -1.0f, 1.0f);
+        std::fill(ap1BufL, ap1BufL+kAP1Len, 0.f);
+        std::fill(ap1BufR, ap1BufR+kAP1Len, 0.f);
+        std::fill(ap2BufL, ap2BufL+kAP2Len, 0.f);
+        std::fill(ap2BufR, ap2BufR+kAP2Len, 0.f);
+        ap1PosL=ap1PosR=ap2PosL=ap2PosR=0;
     }
 
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        driftPhase = 0.0f;
-        smoothedOutput = 0.0f;
-    }
-};
+    void prepare(double /*sr*/) { reset(); }
 
-//==============================================================================
-// DeepVoice — per-voice state.
-//==============================================================================
-struct DeepVoice
-{
-    bool active = false;
-    int noteNumber = -1;
-    float velocity = 0.0f;
-    uint64_t startTime = 0;
+    // space: 0-1 scales feedback 0.60→0.85 (dark short room)
+    // mix:   wet mix 0-1
+    void process(float& inL, float& inR, float space, float mix) {
+        float fb = 0.60f + space * 0.25f;
+        float dryL = inL, dryR = inR;
 
-    // MPE per-voice expression state
-    MPEVoiceExpression mpeExpression;
+        auto runComb = [&](float* buf, int& pos, float& state,
+                           int len, float input) -> float {
+            float rd = buf[pos];
+            // Very dark damping — high-frequency absorption, like deep sea
+            state = flushDenormal(rd * 0.60f + state * 0.40f);
+            float wr = input + fb * state;
+            wr = flushDenormal(wr);
+            buf[pos] = wr;
+            pos = (pos + 1 >= len) ? 0 : pos + 1;
+            return rd;
+        };
 
-    // Glide
-    float currentFreq = 440.0f;
-    float targetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+        auto runAP = [&](float* buf, int& pos, int len, float input) -> float {
+            float g = 0.5f;
+            float rd = buf[pos];
+            float wr = input + g * rd;
+            wr = flushDenormal(wr);
+            buf[pos] = wr;
+            pos = (pos + 1 >= len) ? 0 : pos + 1;
+            return rd - g * wr;
+        };
 
-    // Sub oscillator phases (3 oscillators + 1 sub-harmonic)
-    float oscPhase[3] = { 0.0f, 0.0f, 0.0f };
-    float subPhase = 0.0f;  // sub-harmonic generator (octave below)
+        float wL = 0.f, wR = 0.f;
+        for (int i = 0; i < kCombs; ++i) {
+            wL += runComb(combBufL[i], combPosL[i], combStateL[i], kCombLensL[i], inL);
+            wR += runComb(combBufR[i], combPosR[i], combStateR[i], kCombLensR[i], inR);
+        }
+        wL *= 0.25f; wR *= 0.25f;
 
-    // Envelopes
-    DeepADSR ampEnv;
-    DeepADSR modEnv;
-    DeepADSR filterEnv;
+        wL = runAP(ap1BufL, ap1PosL, kAP1Len, wL);
+        wL = runAP(ap2BufL, ap2PosL, kAP2Len, wL);
+        wR = runAP(ap1BufR, ap1PosR, kAP1Len, wR);
+        wR = runAP(ap2BufR, ap2PosR, kAP2Len, wR);
 
-    // LFOs
-    DeepLFO lfo1;
-    DeepLFO lfo2;
-
-    // Creature modulation (per-voice for organic independence)
-    DeepCreatureLFO creature1;
-    DeepCreatureLFO creature2;
-
-    // Bioluminescent exciter
-    DeepBioExciter exciter;
-    uint32_t exciterRng = 0u;
-
-    // Waveguide body resonance (stereo pair)
-    DeepWaveguideBody bodyL;
-    DeepWaveguideBody bodyR;
-
-    // Darkness filter (multi-mode SVF)
-    CytomicSVF darknessFilter;
-
-    // Filter envelope filter (velocity-scaled, D001)
-    CytomicSVF filterEnvSVF;
-
-    // Voice stealing crossfade
-    float fadeGain = 1.0f;
-    bool fadingOut = false;
-
-    void reset() noexcept
-    {
-        active = false;
-        noteNumber = -1;
-        velocity = 0.0f;
-        currentFreq = 440.0f;
-        targetFreq = 440.0f;
-        fadeGain = 1.0f;
-        fadingOut = false;
-        for (int i = 0; i < 3; ++i) oscPhase[i] = 0.0f;
-        subPhase = 0.0f;
-        ampEnv.reset();
-        modEnv.reset();
-        filterEnv.reset();
-        lfo1.reset();
-        lfo2.reset();
-        creature1.reset();
-        creature2.reset();
-        exciter.reset();
-        bodyL.reset();
-        bodyR.reset();
-        darknessFilter.reset();
-        filterEnvSVF.reset();
+        inL = dryL * (1.f - mix) + wL * mix;
+        inR = dryR * (1.f - mix) + wR * mix;
     }
 };
 
 //==============================================================================
-// OceanDeepEngine — the main engine class.
+// OceandeepEngine — the full SynthEngine implementation
 //==============================================================================
-class OceanDeepEngine : public SynthEngine
-{
+class OceandeepEngine : public SynthEngine {
 public:
-    static constexpr int kMaxVoices = 8;
-    static constexpr float kPI = 3.14159265358979323846f;
-    static constexpr float kTwoPi = 6.28318530717958647692f;
+    OceandeepEngine()  = default;
+    ~OceandeepEngine() = default;
 
-    //==========================================================================
-    // Lifecycle
-    //==========================================================================
-
-    void prepare (double sampleRate, int maxBlockSize) override
+    //--------------------------------------------------------------------------
+    // Static parameter registration (called by XOmnibusProcessor)
+    //--------------------------------------------------------------------------
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-        sr = sampleRate;
-        srf = static_cast<float> (sr);
+        using P  = juce::ParameterID;
+        using PF = juce::AudioParameterFloat;
+        using PI = juce::AudioParameterInt;
+        auto nr  = [](float lo, float hi, float step=0.f) {
+            return juce::NormalisableRange<float>(lo, hi, step);
+        };
 
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
-        crossfadeRate = 1.0f / (0.005f * srf);
+        // --- Sub oscillator stack ---
+        params.push_back(std::make_unique<PF>(P("deep_subLevel",1),    "Sub Level",
+            nr(0.f, 1.f), 0.7f));
+        params.push_back(std::make_unique<PF>(P("deep_subOctMix",1),   "Sub Oct Mix",
+            nr(0.f, 1.f), 0.4f));
 
-        outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
-        outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
+        // --- Darkness filter ---
+        params.push_back(std::make_unique<PF>(P("deep_filterCutoff",1),"Filter Cutoff",
+            nr(50.f, 800.f), 400.f));
+        params.push_back(std::make_unique<PF>(P("deep_filterRes",1),   "Filter Resonance",
+            nr(0.f, 0.95f), 0.5f));
+        params.push_back(std::make_unique<PF>(P("deep_velCutoffAmt",1),"Vel Cutoff Amount",
+            nr(0.f, 1.f), 0.4f));
 
-        // Initialize voices
-        for (int v = 0; v < kMaxVoices; ++v)
-        {
-            auto& voice = voices[v];
-            voice.reset();
-            voice.exciterRng = static_cast<uint32_t> (v * 999 + 24601);
+        // --- Waveguide body ---
+        params.push_back(std::make_unique<PI>(P("deep_bodyChar",1),    "Body Character",
+            0, 2, 0));
+        params.push_back(std::make_unique<PF>(P("deep_bodyFeedback",1),"Body Feedback",
+            nr(0.f, 0.9f), 0.45f));
+        params.push_back(std::make_unique<PF>(P("deep_bodyMix",1),     "Body Mix",
+            nr(0.f, 1.f), 0.3f));
 
-            voice.darknessFilter.reset();
-            voice.darknessFilter.setMode (CytomicSVF::Mode::LowPass);
+        // --- Bioluminescent exciter ---
+        params.push_back(std::make_unique<PF>(P("deep_bioRate",1),     "Bio Rate",
+            nr(0.01f, 0.5f), 0.08f));
+        params.push_back(std::make_unique<PF>(P("deep_bioMix",1),      "Bio Mix",
+            nr(0.f, 1.f), 0.15f));
+        params.push_back(std::make_unique<PF>(P("deep_bioBrightness",1),"Bio Brightness",
+            nr(200.f, 4000.f), 800.f));
 
-            voice.filterEnvSVF.reset();
-            voice.filterEnvSVF.setMode (CytomicSVF::Mode::LowPass);
-        }
+        // --- Hydrostatic compressor ---
+        params.push_back(std::make_unique<PF>(P("deep_pressureAmt",1), "Pressure Amount",
+            nr(0.f, 1.f), 0.6f));
 
-        // Initialize hydrostatic compressor
-        hydroComp.prepare (sr);
+        // --- Amp envelope ---
+        params.push_back(std::make_unique<PF>(P("deep_ampAtk",1),      "Amp Attack",
+            nr(0.001f, 0.5f), 0.01f));
+        params.push_back(std::make_unique<PF>(P("deep_ampDec",1),      "Amp Decay",
+            nr(0.1f,  5.0f),  0.5f));
+        params.push_back(std::make_unique<PF>(P("deep_ampSus",1),      "Amp Sustain",
+            nr(0.f, 1.f), 0.8f));
+        params.push_back(std::make_unique<PF>(P("deep_ampRel",1),      "Amp Release",
+            nr(0.2f, 8.0f), 1.5f));
 
-        // Initialize abyss reverb
-        abyssReverb.prepare (sr);
-        abyssReverb.setRoomSize (0.9f);
-        abyssReverb.setDamping (0.6f);
-        abyssReverb.setWidth (1.0f);
-        abyssReverb.setMix (0.0f);
+        // --- LFO 1: creature modulation ---
+        params.push_back(std::make_unique<PF>(P("deep_lfo1Rate",1),    "LFO1 Rate",
+            nr(0.01f, 2.0f), 0.15f));
+        params.push_back(std::make_unique<PF>(P("deep_lfo1Depth",1),   "LFO1 Depth",
+            nr(0.f, 1.f), 0.3f));
+
+        // --- LFO 2: pressure wobble ---
+        params.push_back(std::make_unique<PF>(P("deep_lfo2Rate",1),    "LFO2 Rate",
+            nr(0.01f, 0.5f), 0.05f));
+        params.push_back(std::make_unique<PF>(P("deep_lfo2Depth",1),   "LFO2 Depth",
+            nr(0.f, 1.f), 0.2f));
+
+        // --- Reverb ---
+        params.push_back(std::make_unique<PF>(P("deep_reverbMix",1),   "Reverb Mix",
+            nr(0.f, 1.f), 0.35f));
+
+        // --- 4 Macros ---
+        params.push_back(std::make_unique<PF>(P("deep_macroPressure",1),"PRESSURE",
+            nr(0.f, 1.f), 0.5f));
+        params.push_back(std::make_unique<PF>(P("deep_macroCreature",1),"CREATURE",
+            nr(0.f, 1.f), 0.3f));
+        params.push_back(std::make_unique<PF>(P("deep_macroWreck",1),   "WRECK",
+            nr(0.f, 1.f), 0.4f));
+        params.push_back(std::make_unique<PF>(P("deep_macroAbyss",1),   "ABYSS",
+            nr(0.f, 1.f), 0.5f));
+    }
+
+    //--------------------------------------------------------------------------
+    // SynthEngine interface
+    //--------------------------------------------------------------------------
+    juce::String   getEngineId()     const override { return "Oceandeep"; }
+    juce::Colour   getAccentColour() const override { return juce::Colour(0xff2D0A4E); }
+    int            getMaxVoices()    const override { return 1; } // monophonic bass engine
+
+    int getActiveVoiceCount() const override {
+        return (noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0;
+    }
+
+    //--------------------------------------------------------------------------
+    void prepare(double sampleRate, int maxBlockSize) override
+    {
+        sr = (float)sampleRate;
+
+        oscFund.prepare(sampleRate);
+        oscSub1.prepare(sampleRate);
+        oscSub2.prepare(sampleRate);
+        compressor.reset();
+        body.prepare(sampleRate);
+        bioExciter.reset();
+        darknessFilter.reset();
+        reverb.prepare(sampleRate);
+
+        ampEnvStage = EnvStage::Idle;
+        ampEnvLevel = 0.f;
+        noteIsOn    = false;
+        currentNote = 60;
+        currentVel  = 1.f;
+        lfo1Phase   = 0.f;
+        lfo2Phase   = 0.f;
+        modWheelVal = 0.f;
+        aftertouchVal= 0.f;
+
+        prepareSilenceGate(sampleRate, maxBlockSize, 500.f);
+        (void)maxBlockSize;
     }
 
     void releaseResources() override {}
 
     void reset() override
     {
-        for (auto& v : voices)
-            v.reset();
+        oscFund.reset();
+        oscSub1.reset();
+        oscSub2.reset();
+        compressor.reset();
+        body.reset();
+        bioExciter.reset();
+        darknessFilter.reset();
+        reverb.reset();
 
-        envelopeOutput = 0.0f;
-        couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingFMMod = 0.0f;
-        couplingDecayMod = 0.0f;
-
-        smoothedDarkness = 8000.0f;
-        smoothedPressure = 0.0f;
-        smoothedCreature = 0.0f;
-        smoothedWreck = 0.0f;
-        smoothedAbyss = 0.0f;
-
-        std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
-        std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
+        ampEnvStage = EnvStage::Idle;
+        ampEnvLevel = 0.f;
+        noteIsOn    = false;
+        lfo1Phase   = 0.f;
+        lfo2Phase   = 0.f;
     }
 
-    //==========================================================================
-    // Audio
-    //==========================================================================
-
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
-                      int numSamples) override
-    {
-        if (numSamples <= 0) return;
-
-        // --- ParamSnapshot: read all parameters once per block ---
-
-        // Sub oscillator stack
-        const int   pOsc1Wave     = static_cast<int> (loadParam (paramOsc1Wave, 0.0f));
-        const int   pOsc2Wave     = static_cast<int> (loadParam (paramOsc2Wave, 1.0f));
-        const int   pOsc3Wave     = static_cast<int> (loadParam (paramOsc3Wave, 2.0f));
-        const float pOsc1Level    = loadParam (paramOsc1Level, 1.0f);
-        const float pOsc2Level    = loadParam (paramOsc2Level, 0.0f);
-        const float pOsc3Level    = loadParam (paramOsc3Level, 0.0f);
-        const float pOsc2Detune   = loadParam (paramOsc2Detune, 0.0f);
-        const float pOsc3Detune   = loadParam (paramOsc3Detune, 0.0f);
-        const float pSubLevel     = loadParam (paramSubLevel, 0.5f);
-        const float pSubOctave    = loadParam (paramSubOctave, -1.0f);
-        const float pOscFM        = loadParam (paramOscFM, 0.0f);
-        const float pGlide        = loadParam (paramGlide, 0.1f);
-
-        // Hydrostatic compressor
-        const float pCompThresh   = loadParam (paramCompThresh, -12.0f);
-        const float pCompRatio    = loadParam (paramCompRatio, 4.0f);
-        const float pCompAttack   = loadParam (paramCompAttackMs, 5.0f);
-        const float pCompRelease  = loadParam (paramCompReleaseMs, 80.0f);
-
-        // Body resonance
-        const float pBodyType     = loadParam (paramBodyType, 0.5f);
-        const float pBodyFeedback = loadParam (paramBodyFeedback, 0.5f);
-        const float pBodyMix      = loadParam (paramBodyMix, 0.0f);
-
-        // Bioluminescent exciter
-        const float pExciterProb  = loadParam (paramExciterProb, 0.1f);
-        const float pExciterFreq  = loadParam (paramExciterFreq, 3000.0f);
-        const float pExciterDecay = loadParam (paramExciterDecay, 0.1f);
-        const float pExciterMix   = loadParam (paramExciterMix, 0.0f);
-
-        // Creature modulation
-        const float pCreature1Rate  = loadParam (paramCreature1Rate, 0.05f);
-        const float pCreature1Drift = loadParam (paramCreature1Drift, 0.3f);
-        const float pCreature2Rate  = loadParam (paramCreature2Rate, 0.02f);
-        const float pCreature2Drift = loadParam (paramCreature2Drift, 0.5f);
-        const float pCreatureToPitch = loadParam (paramCreatureToPitch, 0.0f);
-        const float pCreatureToFilter = loadParam (paramCreatureToFilter, 0.0f);
-
-        // Darkness filter
-        const float pDarkCutoff   = loadParam (paramDarkCutoff, 8000.0f);
-        const float pDarkReso     = loadParam (paramDarkReso, 0.0f);
-        const int   pDarkMode     = static_cast<int> (loadParam (paramDarkMode, 0.0f));
-
-        // Filter envelope
-        const float pFiltEnvAmt   = loadParam (paramFilterEnvAmt, 0.0f);
-        const float pFiltEnvA     = loadParam (paramFilterEnvAttack, 0.01f);
-        const float pFiltEnvD     = loadParam (paramFilterEnvDecay, 0.3f);
-        const float pFiltEnvS     = loadParam (paramFilterEnvSustain, 0.0f);
-        const float pFiltEnvR     = loadParam (paramFilterEnvRelease, 0.3f);
-
-        // Amp envelope
-        const float pAmpA         = loadParam (paramAmpAttack, 0.01f);
-        const float pAmpD         = loadParam (paramAmpDecay, 0.3f);
-        const float pAmpS         = loadParam (paramAmpSustain, 0.9f);
-        const float pAmpR         = loadParam (paramAmpRelease, 0.5f);
-
-        // Mod envelope
-        const float pModA         = loadParam (paramModAttack, 0.01f);
-        const float pModD         = loadParam (paramModDecay, 0.5f);
-        const float pModS         = loadParam (paramModSustain, 0.5f);
-        const float pModR         = loadParam (paramModRelease, 0.5f);
-
-        // LFOs
-        const float pLfo1Rate     = loadParam (paramLfo1Rate, 0.5f);
-        const float pLfo1Depth    = loadParam (paramLfo1Depth, 0.0f);
-        const int   pLfo1Shape    = static_cast<int> (loadParam (paramLfo1Shape, 0.0f));
-        const float pLfo2Rate     = loadParam (paramLfo2Rate, 0.1f);
-        const float pLfo2Depth    = loadParam (paramLfo2Depth, 0.0f);
-        const int   pLfo2Shape    = static_cast<int> (loadParam (paramLfo2Shape, 0.0f));
-
-        // Abyss reverb
-        const float pAbyssSize    = loadParam (paramAbyssSize, 0.8f);
-        const float pAbyssDamp    = loadParam (paramAbyssDamp, 0.5f);
-        const float pAbyssMix     = loadParam (paramAbyssMix, 0.0f);
-        const float pAbyssPreDelay = loadParam (paramAbyssPreDelay, 0.0f);
-
-        // Voice mode
-        const int   voiceModeIdx  = static_cast<int> (loadParam (paramVoiceMode, 2.0f));
-
-        // Level
-        const float pLevel        = loadParam (paramLevel, 0.8f);
-
-        // Macros — the 4 abyssal controls
-        const float macroPressure = loadParam (paramMacroPressure, 0.0f);
-        const float macroCreature = loadParam (paramMacroCreature, 0.0f);
-        const float macroWreck    = loadParam (paramMacroWreck, 0.0f);
-        const float macroAbyss    = loadParam (paramMacroAbyss, 0.0f);
-
-        // Voice mode resolution
-        int maxPoly = kMaxVoices;
-        bool monoMode = false;
-        bool legatoMode = false;
-        switch (voiceModeIdx)
-        {
-            case 0: maxPoly = 1; monoMode = true; break;
-            case 1: maxPoly = 1; monoMode = true; legatoMode = true; break;
-            case 2: maxPoly = 4; break;
-            case 3: maxPoly = 8; break;
-            default: maxPoly = 4; break;
-        }
-
-        // Glide coefficient
-        float glideCoeff = 1.0f;
-        if (pGlide > 0.001f)
-            glideCoeff = 1.0f - std::exp (-1.0f / (pGlide * srf));
-
-        // === MACRO MODULATION ===
-        //
-        // PRESSURE: depth/weight — drives compressor harder, darkens filter,
-        //           boosts sub-harmonic level, increases body resonance density
-        // CREATURE: alien life — increases creature LFO depths, exciter probability
-        // WRECK:    environment — body type blend toward Trench, body mix up
-        // ABYSS:    vastness — reverb size/mix, pre-delay, filter darkens
-
-        float effectivePressure = clamp (macroPressure + aftertouch_ * 0.3f, 0.0f, 1.0f);
-
-        // Hydrostatic compressor: pressure drives ratio and makeup
-        float hydroRatio  = clamp (pCompRatio + effectivePressure * 12.0f, 1.0f, 20.0f);
-        float hydroThresh = clamp (pCompThresh - effectivePressure * 12.0f, -60.0f, 0.0f);
-
-        // Darkness filter: pressure closes the filter
-        float darkCutoff = clamp (pDarkCutoff - effectivePressure * 6000.0f
-                                  + couplingFilterMod * 4000.0f, 20.0f, 20000.0f);
-        float darkReso = clamp (pDarkReso + effectivePressure * 0.15f, 0.0f, 1.0f);
-
-        // Sub-harmonic boost from pressure
-        float effectiveSubLevel = clamp (pSubLevel + effectivePressure * 0.4f, 0.0f, 1.0f);
-
-        // Creature macro: LFO depth and exciter probability
-        float creatureScale = clamp (macroCreature + modWheelAmount_ * 0.4f, 0.0f, 1.0f);
-        float effectiveCreaturePitch = clamp (pCreatureToPitch + creatureScale * 0.5f, 0.0f, 1.0f);
-        float effectiveCreatureFilter = clamp (pCreatureToFilter + creatureScale * 0.5f, 0.0f, 1.0f);
-        float effectiveExciterProb = clamp (pExciterProb + creatureScale * 0.3f, 0.0f, 1.0f);
-
-        // Wreck macro: body type toward Trench, body mix up
-        float effectiveBodyType = clamp (pBodyType + macroWreck * 0.5f, 0.0f, 1.0f);
-        float effectiveBodyMix  = clamp (pBodyMix + macroWreck * 0.5f, 0.0f, 1.0f);
-        float effectiveBodyFB   = clamp (pBodyFeedback + macroWreck * 0.2f + couplingDecayMod * 0.2f, 0.0f, 0.97f);
-
-        // Abyss macro: reverb size and mix, also darkens filter further
-        float effectiveAbyssSize = clamp (pAbyssSize + macroAbyss * 0.2f, 0.0f, 1.0f);
-        float effectiveAbyssMix  = clamp (pAbyssMix + macroAbyss * 0.5f, 0.0f, 1.0f);
-        float effectiveAbyssPreDelay = clamp (pAbyssPreDelay + macroAbyss * 0.05f, 0.0f, 0.1f);
-        darkCutoff = clamp (darkCutoff - macroAbyss * 2000.0f, 20.0f, 20000.0f);
-
-        // FM amount (from oscillator + coupling)
-        float effectiveFM = clamp (pOscFM + couplingFMMod * 2.0f, 0.0f, 1.0f);
-
-        // Filter envelope amount — velocity scaling (D001)
-        float effectiveFiltEnvAmt = pFiltEnvAmt;
-
-        // Set darkness filter mode
-        CytomicSVF::Mode darkFilterMode = CytomicSVF::Mode::LowPass;
-        switch (pDarkMode)
-        {
-            case 0: darkFilterMode = CytomicSVF::Mode::LowPass;  break;
-            case 1: darkFilterMode = CytomicSVF::Mode::BandPass; break;
-            case 2: darkFilterMode = CytomicSVF::Mode::HighPass; break;
-            case 3: darkFilterMode = CytomicSVF::Mode::Notch;    break;
-            default: break;
-        }
-
-        // Update abyss reverb parameters
-        abyssReverb.setRoomSize (effectiveAbyssSize);
-        abyssReverb.setDamping (clamp (pAbyssDamp + effectivePressure * 0.3f, 0.0f, 1.0f));
-        abyssReverb.setMix (effectiveAbyssMix);
-        abyssReverb.setPreDelay (effectiveAbyssPreDelay * 1000.0f);  // param is seconds, API expects ms
-
-        // --- Process MIDI events ---
-        for (const auto metadata : midi)
-        {
-            const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())
-                noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(),
-                        maxPoly, monoMode, legatoMode, glideCoeff,
-                        pAmpA, pAmpD, pAmpS, pAmpR,
-                        pModA, pModD, pModS, pModR,
-                        pFiltEnvA, pFiltEnvD, pFiltEnvS, pFiltEnvR,
-                        pLfo1Rate, pLfo1Shape, pLfo2Rate, pLfo2Shape,
-                        pCreature1Rate, pCreature1Drift, pCreature2Rate, pCreature2Drift,
-                        darkCutoff, darkReso, darkFilterMode);
-            else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber(), msg.getChannel());
-            else if (msg.isAllNotesOff() || msg.isAllSoundOff())
-                reset();
-            else if (msg.isController())
-            {
-                if (msg.getControllerNumber() == 1)
-                    modWheelAmount_ = msg.getControllerValue() / 127.0f;
-            }
-            else if (msg.isAftertouch() || msg.isChannelPressure())
-            {
-                aftertouch_ = msg.isChannelPressure()
-                    ? msg.getChannelPressureValue() / 127.0f
-                    : msg.getAfterTouchValue() / 127.0f;
-            }
-        }
-
-        // --- Update per-voice MPE expression from MPEManager ---
-        if (mpeManager != nullptr)
-        {
-            for (auto& voice : voices)
-            {
-                if (!voice.active) continue;
-                mpeManager->updateVoiceExpression (voice.mpeExpression);
-            }
-        }
-
-        // --- Update per-voice parameters once per block ---
-        for (auto& voice : voices)
-        {
-            if (!voice.active) continue;
-
-            // Darkness filter coefficients
-            voice.darknessFilter.setMode (darkFilterMode);
-            voice.darknessFilter.setCoefficients (darkCutoff, darkReso, srf);
-
-            // Body resonance settings
-            voice.bodyL.setBodyType (effectiveBodyType, srf);
-            voice.bodyR.setBodyType (effectiveBodyType, srf);
-            voice.bodyL.setFeedback (effectiveBodyFB);
-            voice.bodyR.setFeedback (effectiveBodyFB);
-            // Slight stereo offset for body R
-            voice.bodyR.delaySamples = voice.bodyL.delaySamples * 1.007f;
-
-            // Creature LFO rates
-            voice.creature1.setRate (pCreature1Rate, srf);
-            voice.creature1.setDrift (pCreature1Drift + creatureScale * 0.3f);
-            voice.creature2.setRate (pCreature2Rate, srf);
-            voice.creature2.setDrift (pCreature2Drift + creatureScale * 0.3f);
-        }
-
-        // Hydrostatic compressor setup (per-block, no allocations)
-        hydroComp.setThreshold (hydroThresh);
-        hydroComp.setRatio (hydroRatio);
-        hydroComp.setAttack (pCompAttack);
-        hydroComp.setRelease (pCompRelease);
-
-        float peakEnv = 0.0f;
-
-        // --- Render sample loop ---
-        for (int sample = 0; sample < numSamples; ++sample)
-        {
-            // Smooth macro values
-            smoothedPressure += (effectivePressure - smoothedPressure) * smoothCoeff;
-            smoothedCreature += (creatureScale - smoothedCreature) * smoothCoeff;
-            smoothedWreck    += (effectiveBodyMix - smoothedWreck) * smoothCoeff;
-            smoothedAbyss    += (effectiveAbyssMix - smoothedAbyss) * smoothCoeff;
-            smoothedDarkness += (darkCutoff - smoothedDarkness) * smoothCoeff;
-
-            float mixL = 0.0f, mixR = 0.0f;
-
-            for (auto& voice : voices)
-            {
-                if (!voice.active) continue;
-
-                // --- Voice-stealing crossfade ---
-                if (voice.fadingOut)
-                {
-                    voice.fadeGain -= crossfadeRate;
-                    voice.fadeGain = flushDenormal (voice.fadeGain);
-                    if (voice.fadeGain <= 0.0f)
-                    {
-                        voice.fadeGain = 0.0f;
-                        voice.active = false;
-                        continue;
-                    }
-                }
-
-                // --- Glide ---
-                voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
-                voice.currentFreq = flushDenormal (voice.currentFreq);
-
-                // --- Envelopes ---
-                float ampLevel = voice.ampEnv.process();
-                float modLevel = voice.modEnv.process();
-                float filtEnvLevel = voice.filterEnv.process();
-
-                if (!voice.ampEnv.isActive())
-                {
-                    voice.active = false;
-                    continue;
-                }
-
-                // --- LFO modulation ---
-                float lfo1Val = voice.lfo1.process() * pLfo1Depth;
-                float lfo2Val = voice.lfo2.process() * pLfo2Depth;
-
-                // --- Creature modulation ---
-                float creature1Val = voice.creature1.process();
-                float creature2Val = voice.creature2.process();
-
-                // Creature pitch modulation
-                float creaturePitchMod = creature1Val * effectiveCreaturePitch * 0.5f;
-
-                // Creature filter modulation
-                float creatureFilterMod = creature2Val * effectiveCreatureFilter;
-
-                // =====================================================
-                // 1. SUB OSCILLATOR STACK
-                // =====================================================
-
-                // MPE pitch bend
-                float mpeFreq = voice.currentFreq
-                    * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
-
-                // Apply creature pitch modulation and coupling pitch mod
-                float modFreq = mpeFreq * std::pow (2.0f,
-                    (creaturePitchMod + couplingPitchMod * 0.5f + lfo1Val * 0.1f) / 12.0f);
-
-                // Oscillator 1 (primary)
-                float osc1 = generateOsc (voice.oscPhase[0], modFreq, pOsc1Wave, srf);
-
-                // Oscillator 2 (detuned)
-                float osc2Freq = modFreq * std::pow (2.0f, pOsc2Detune / 1200.0f);
-                float osc2 = generateOsc (voice.oscPhase[1], osc2Freq, pOsc2Wave, srf);
-
-                // Oscillator 3 (detuned opposite)
-                float osc3Freq = modFreq * std::pow (2.0f, pOsc3Detune / 1200.0f);
-                float osc3 = generateOsc (voice.oscPhase[2], osc3Freq, pOsc3Wave, srf);
-
-                // FM: osc2 modulates osc1 phase
-                if (effectiveFM > 0.001f)
-                {
-                    float fmAmount = effectiveFM * osc2 * 0.5f;
-                    osc1 = generateOscWithFM (voice.oscPhase[0], modFreq, pOsc1Wave, srf, fmAmount);
-                }
-
-                // Sub-harmonic generator (octave below, always sine for purity)
-                float subOctMul = std::pow (2.0f, std::round (pSubOctave));
-                float subFreq = modFreq * subOctMul;
-                voice.subPhase += subFreq / srf;
-                if (voice.subPhase >= 1.0f) voice.subPhase -= 1.0f;
-                float subOsc = fastSin (voice.subPhase * kTwoPi);
-
-                // Mix oscillators
-                float oscMix = osc1 * pOsc1Level
-                             + osc2 * pOsc2Level
-                             + osc3 * pOsc3Level
-                             + subOsc * effectiveSubLevel;
-
-                // Normalize if multiple oscillators are active
-                float oscGainComp = 1.0f / std::max (1.0f,
-                    pOsc1Level + pOsc2Level + pOsc3Level + effectiveSubLevel);
-                oscMix *= oscGainComp;
-
-                // =====================================================
-                // 4. BIOLUMINESCENT EXCITER
-                // =====================================================
-
-                // Probability-based triggering (per sample)
-                voice.exciterRng = voice.exciterRng * 1664525u + 1013904223u;
-                float randVal = static_cast<float> (voice.exciterRng & 0xFFFF) / 65536.0f;
-
-                // Trigger probability per sample (scaled to make sense at audio rate)
-                float triggerProb = effectiveExciterProb * 0.0001f;
-                if (randVal < triggerProb && !voice.exciter.active)
-                {
-                    voice.exciter.trigger (
-                        pExciterFreq * (0.5f + randVal * 2.0f),
-                        pExciterDecay, srf);
-                }
-
-                float exciterSig = voice.exciter.process (srf);
-
-                // Mix exciter with oscillator
-                float voiceSignal = oscMix + exciterSig * pExciterMix;
-
-                // =====================================================
-                // 6. DARKNESS FILTER — the ocean eats light
-                // =====================================================
-
-                // D001: velocity scales filter brightness
-                float velFilterBoost = voice.velocity * 0.4f;
-                float envFilterMod = filtEnvLevel * effectiveFiltEnvAmt * voice.velocity;
-
-                // Per-sample darkness filter with creature and velocity modulation
-                float dynCutoff = clamp (smoothedDarkness
-                    + creatureFilterMod * 3000.0f
-                    + envFilterMod * 8000.0f
-                    + velFilterBoost * 2000.0f
-                    + lfo2Val * 1000.0f, 20.0f, 20000.0f);
-
-                voice.darknessFilter.setCoefficients_fast (dynCutoff, darkReso, srf);
-                voiceSignal = voice.darknessFilter.processSample (voiceSignal);
-
-                // =====================================================
-                // 3. WAVEGUIDE BODY RESONANCE
-                // =====================================================
-
-                if (smoothedWreck > 0.001f)
-                {
-                    float bodyL = voice.bodyL.processSample (voiceSignal);
-                    float bodyR = voice.bodyR.processSample (voiceSignal);
-
-                    voiceSignal = voiceSignal * (1.0f - smoothedWreck)
-                                + bodyL * smoothedWreck;
-
-                    // Body adds stereo information
-                    float stereoBody = bodyR - bodyL;
-                    float finalL = voiceSignal;
-                    float finalR = voiceSignal + stereoBody * smoothedWreck * 0.5f;
-
-                    // Apply amplitude envelope, velocity, crossfade
-                    float gain = ampLevel * voice.velocity * voice.fadeGain;
-                    mixL += finalL * gain;
-                    mixR += finalR * gain;
-                }
-                else
-                {
-                    // No body resonance: mono signal
-                    float gain = ampLevel * voice.velocity * voice.fadeGain;
-                    mixL += voiceSignal * gain;
-                    mixR += voiceSignal * gain;
-                }
-
-                peakEnv = std::max (peakEnv, ampLevel);
-            }
-
-            // Denormal protection on mix bus
-            mixL = flushDenormal (mixL);
-            mixR = flushDenormal (mixR);
-
-            // Apply master level
-            float finalL = mixL * pLevel;
-            float finalR = mixR * pLevel;
-
-            // Write to output buffer
-            if (buffer.getNumChannels() >= 2)
-            {
-                buffer.addSample (0, sample, finalL);
-                buffer.addSample (1, sample, finalR);
-            }
-            else if (buffer.getNumChannels() == 1)
-            {
-                buffer.addSample (0, sample, (finalL + finalR) * 0.5f);
-            }
-
-            // Cache for coupling
-            if (sample < static_cast<int> (outputCacheL.size()))
-            {
-                outputCacheL[static_cast<size_t> (sample)] = finalL;
-                outputCacheR[static_cast<size_t> (sample)] = finalR;
-            }
-        }
-
-        // =====================================================
-        // 2. HYDROSTATIC COMPRESSOR — pressure-dependent compression
-        //    Applied post-voice-mix for maximum weight
-        // =====================================================
-        if (effectivePressure > 0.001f && buffer.getNumChannels() >= 2)
-        {
-            float* left  = buffer.getWritePointer (0);
-            float* right = buffer.getWritePointer (1);
-            hydroComp.processBlock (left, right, numSamples);
-
-            // Update output cache with compressed signal
-            for (int s = 0; s < numSamples && s < static_cast<int> (outputCacheL.size()); ++s)
-            {
-                outputCacheL[static_cast<size_t> (s)] = left[s];
-                outputCacheR[static_cast<size_t> (s)] = right[s];
-            }
-        }
-
-        // =====================================================
-        // ABYSS REVERB — vastness of the deep
-        //    Applied after compression for maximum depth
-        // =====================================================
-        if (effectiveAbyssMix > 0.001f && buffer.getNumChannels() >= 2)
-        {
-            float* left  = buffer.getWritePointer (0);
-            float* right = buffer.getWritePointer (1);
-
-            // Process reverb in-place
-            float reverbL[2048];
-            float reverbR[2048];
-            int remaining = numSamples;
-            int offset = 0;
-
-            while (remaining > 0)
-            {
-                int blockSize = std::min (remaining, 2048);
-                std::memcpy (reverbL, left + offset, static_cast<size_t> (blockSize) * sizeof (float));
-                std::memcpy (reverbR, right + offset, static_cast<size_t> (blockSize) * sizeof (float));
-
-                abyssReverb.processBlock (reverbL, reverbR, reverbL, reverbR, blockSize);
-
-                std::memcpy (left + offset, reverbL, static_cast<size_t> (blockSize) * sizeof (float));
-                std::memcpy (right + offset, reverbR, static_cast<size_t> (blockSize) * sizeof (float));
-
-                offset += blockSize;
-                remaining -= blockSize;
-            }
-
-            // Update coupling cache post-reverb
-            for (int s = 0; s < numSamples && s < static_cast<int> (outputCacheL.size()); ++s)
-            {
-                outputCacheL[static_cast<size_t> (s)] = left[s];
-                outputCacheR[static_cast<size_t> (s)] = right[s];
-            }
-        }
-
-        envelopeOutput = peakEnv;
-
-        // Reset coupling accumulators (after render, Sisters S-014 pattern)
-        couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingFMMod = 0.0f;
-        couplingDecayMod = 0.0f;
-
-        int count = 0;
-        for (const auto& v : voices)
-            if (v.active) ++count;
-        activeVoices = count;
-    }
-
-    //==========================================================================
-    // Coupling
-    //==========================================================================
-
-    float getSampleForCoupling (int channel, int sampleIndex) const override
-    {
-        auto si = static_cast<size_t> (sampleIndex);
-        if (channel == 0 && si < outputCacheL.size()) return outputCacheL[si];
-        if (channel == 1 && si < outputCacheR.size()) return outputCacheR[si];
-        if (channel == 2) return envelopeOutput;
-        return 0.0f;
-    }
-
-    void applyCouplingInput (CouplingType type, float amount,
-                             const float* /*sourceBuffer*/, int /*numSamples*/) override
-    {
-        switch (type)
-        {
-            case CouplingType::AmpToFilter:
-                couplingFilterMod += amount;
-                break;
-            case CouplingType::LFOToPitch:
-                couplingPitchMod += amount * 0.5f;
-                break;
-            case CouplingType::AudioToFM:
-                couplingFMMod += amount * 0.3f;
-                break;
-            case CouplingType::EnvToDecay:
-                couplingDecayMod += amount * 0.4f;
-                break;
-            default:
-                break;
-        }
-    }
-
-    //==========================================================================
-    // Parameters
-    //==========================================================================
-
-    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
-    {
-        addParametersImpl (params);
-    }
-
+    //--------------------------------------------------------------------------
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-        addParametersImpl (params);
+        addParameters(params);
         return { params.begin(), params.end() };
     }
 
-    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    //--------------------------------------------------------------------------
+    void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
-        // --- Sub Oscillator Stack ---
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_osc1Wave", 1 }, "Deep Osc1 Waveform",
-            juce::StringArray { "Sine", "Triangle", "Square" }, 0));
-
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_osc2Wave", 1 }, "Deep Osc2 Waveform",
-            juce::StringArray { "Sine", "Triangle", "Square" }, 1));
-
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_osc3Wave", 1 }, "Deep Osc3 Waveform",
-            juce::StringArray { "Sine", "Triangle", "Square" }, 2));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_osc1Level", 1 }, "Deep Osc1 Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 1.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_osc2Level", 1 }, "Deep Osc2 Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_osc3Level", 1 }, "Deep Osc3 Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_osc2Detune", 1 }, "Deep Osc2 Detune",
-            juce::NormalisableRange<float> (-100.0f, 100.0f, 0.1f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_osc3Detune", 1 }, "Deep Osc3 Detune",
-            juce::NormalisableRange<float> (-100.0f, 100.0f, 0.1f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_subLevel", 1 }, "Deep Sub-Harmonic Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_subOctave", 1 }, "Deep Sub Octave",
-            juce::NormalisableRange<float> (-2.0f, -1.0f, 1.0f), -1.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_oscFM", 1 }, "Deep FM Amount",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_glide", 1 }, "Deep Glide",
-            juce::NormalisableRange<float> (0.0f, 5.0f, 0.001f, 0.5f), 0.1f));
-
-        // --- Hydrostatic Compressor ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_compThresh", 1 }, "Deep Comp Threshold",
-            juce::NormalisableRange<float> (-60.0f, 0.0f, 0.1f), -12.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_compRatio", 1 }, "Deep Comp Ratio",
-            juce::NormalisableRange<float> (1.0f, 20.0f, 0.1f), 4.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_compAttack", 1 }, "Deep Comp Attack",
-            juce::NormalisableRange<float> (0.1f, 100.0f, 0.1f), 5.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_compRelease", 1 }, "Deep Comp Release",
-            juce::NormalisableRange<float> (10.0f, 1000.0f, 1.0f), 80.0f));
-
-        // --- Waveguide Body Resonance ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_bodyType", 1 }, "Deep Body Type",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_bodyFeedback", 1 }, "Deep Body Feedback",
-            juce::NormalisableRange<float> (0.0f, 0.97f, 0.001f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_bodyMix", 1 }, "Deep Body Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        // --- Bioluminescent Exciter ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_exciterProb", 1 }, "Deep Exciter Probability",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.1f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_exciterFreq", 1 }, "Deep Exciter Frequency",
-            juce::NormalisableRange<float> (500.0f, 8000.0f, 1.0f, 0.3f), 3000.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_exciterDecay", 1 }, "Deep Exciter Decay",
-            juce::NormalisableRange<float> (0.01f, 0.5f, 0.001f), 0.1f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_exciterMix", 1 }, "Deep Exciter Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        // --- Creature Modulation ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creature1Rate", 1 }, "Deep Creature1 Rate",
-            juce::NormalisableRange<float> (0.005f, 5.0f, 0.001f, 0.3f), 0.05f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creature1Drift", 1 }, "Deep Creature1 Drift",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creature2Rate", 1 }, "Deep Creature2 Rate",
-            juce::NormalisableRange<float> (0.005f, 5.0f, 0.001f, 0.3f), 0.02f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creature2Drift", 1 }, "Deep Creature2 Drift",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creatureToPitch", 1 }, "Deep Creature to Pitch",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_creatureToFilter", 1 }, "Deep Creature to Filter",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        // --- Darkness Filter ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_darkCutoff", 1 }, "Deep Darkness Cutoff",
-            juce::NormalisableRange<float> (20.0f, 20000.0f, 0.1f, 0.3f), 8000.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_darkReso", 1 }, "Deep Darkness Resonance",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_darkMode", 1 }, "Deep Darkness Mode",
-            juce::StringArray { "LowPass", "BandPass", "HighPass", "Notch" }, 0));
-
-        // --- Filter Envelope ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_filtEnvAmt", 1 }, "Deep Filter Env Amount",
-            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_filtEnvAttack", 1 }, "Deep Filter Env Attack",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_filtEnvDecay", 1 }, "Deep Filter Env Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.3f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_filtEnvSustain", 1 }, "Deep Filter Env Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_filtEnvRelease", 1 }, "Deep Filter Env Release",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.3f));
-
-        // --- Amp Envelope ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_ampAttack", 1 }, "Deep Amp Attack",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_ampDecay", 1 }, "Deep Amp Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.3f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_ampSustain", 1 }, "Deep Amp Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.9f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_ampRelease", 1 }, "Deep Amp Release",
-            juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.5f));
-
-        // --- Mod Envelope ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_modAttack", 1 }, "Deep Mod Attack",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.01f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_modDecay", 1 }, "Deep Mod Decay",
-            juce::NormalisableRange<float> (0.0f, 10.0f, 0.001f, 0.3f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_modSustain", 1 }, "Deep Mod Sustain",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_modRelease", 1 }, "Deep Mod Release",
-            juce::NormalisableRange<float> (0.0f, 20.0f, 0.001f, 0.3f), 0.5f));
-
-        // --- LFO 1 ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_lfo1Rate", 1 }, "Deep LFO1 Rate",
-            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_lfo1Depth", 1 }, "Deep LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_lfo1Shape", 1 }, "Deep LFO1 Shape",
-            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
-
-        // --- LFO 2 ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_lfo2Rate", 1 }, "Deep LFO2 Rate",
-            juce::NormalisableRange<float> (0.01f, 30.0f, 0.01f, 0.3f), 0.1f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_lfo2Depth", 1 }, "Deep LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_lfo2Shape", 1 }, "Deep LFO2 Shape",
-            juce::StringArray { "Sine", "Triangle", "Saw", "Square", "S&H" }, 0));
-
-        // --- Abyss Reverb ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_abyssSize", 1 }, "Deep Abyss Size",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_abyssDamp", 1 }, "Deep Abyss Damping",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_abyssMix", 1 }, "Deep Abyss Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_abyssPreDelay", 1 }, "Deep Abyss Pre-Delay",
-            juce::NormalisableRange<float> (0.0f, 0.1f, 0.001f), 0.0f));
-
-        // --- Voice Mode ---
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { "deep_polyphony", 1 }, "Deep Voice Mode",
-            juce::StringArray { "Mono", "Legato", "Poly4", "Poly8" }, 2));
-
-        // --- Level ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_level", 1 }, "Deep Level",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.8f));
-
-        // --- Macros ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_macroPressure", 1 }, "Deep Macro PRESSURE",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_macroCreature", 1 }, "Deep Macro CREATURE",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_macroWreck", 1 }, "Deep Macro WRECK",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "deep_macroAbyss", 1 }, "Deep Macro ABYSS",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        p_subLevel       = apvts.getRawParameterValue("deep_subLevel");
+        p_subOctMix      = apvts.getRawParameterValue("deep_subOctMix");
+        p_filterCutoff   = apvts.getRawParameterValue("deep_filterCutoff");
+        p_filterRes      = apvts.getRawParameterValue("deep_filterRes");
+        p_velCutoffAmt   = apvts.getRawParameterValue("deep_velCutoffAmt");
+        p_bodyChar       = apvts.getRawParameterValue("deep_bodyChar");
+        p_bodyFeedback   = apvts.getRawParameterValue("deep_bodyFeedback");
+        p_bodyMix        = apvts.getRawParameterValue("deep_bodyMix");
+        p_bioRate        = apvts.getRawParameterValue("deep_bioRate");
+        p_bioMix         = apvts.getRawParameterValue("deep_bioMix");
+        p_bioBrightness  = apvts.getRawParameterValue("deep_bioBrightness");
+        p_pressureAmt    = apvts.getRawParameterValue("deep_pressureAmt");
+        p_ampAtk         = apvts.getRawParameterValue("deep_ampAtk");
+        p_ampDec         = apvts.getRawParameterValue("deep_ampDec");
+        p_ampSus         = apvts.getRawParameterValue("deep_ampSus");
+        p_ampRel         = apvts.getRawParameterValue("deep_ampRel");
+        p_lfo1Rate       = apvts.getRawParameterValue("deep_lfo1Rate");
+        p_lfo1Depth      = apvts.getRawParameterValue("deep_lfo1Depth");
+        p_lfo2Rate       = apvts.getRawParameterValue("deep_lfo2Rate");
+        p_lfo2Depth      = apvts.getRawParameterValue("deep_lfo2Depth");
+        p_reverbMix      = apvts.getRawParameterValue("deep_reverbMix");
+        p_macroPressure  = apvts.getRawParameterValue("deep_macroPressure");
+        p_macroCreature  = apvts.getRawParameterValue("deep_macroCreature");
+        p_macroWreck     = apvts.getRawParameterValue("deep_macroWreck");
+        p_macroAbyss     = apvts.getRawParameterValue("deep_macroAbyss");
     }
 
-    void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
+    //--------------------------------------------------------------------------
+    void applyCouplingInput(CouplingType type, float amount,
+                            const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
-        // Sub oscillator stack
-        paramOsc1Wave     = apvts.getRawParameterValue ("deep_osc1Wave");
-        paramOsc2Wave     = apvts.getRawParameterValue ("deep_osc2Wave");
-        paramOsc3Wave     = apvts.getRawParameterValue ("deep_osc3Wave");
-        paramOsc1Level    = apvts.getRawParameterValue ("deep_osc1Level");
-        paramOsc2Level    = apvts.getRawParameterValue ("deep_osc2Level");
-        paramOsc3Level    = apvts.getRawParameterValue ("deep_osc3Level");
-        paramOsc2Detune   = apvts.getRawParameterValue ("deep_osc2Detune");
-        paramOsc3Detune   = apvts.getRawParameterValue ("deep_osc3Detune");
-        paramSubLevel     = apvts.getRawParameterValue ("deep_subLevel");
-        paramSubOctave    = apvts.getRawParameterValue ("deep_subOctave");
-        paramOscFM        = apvts.getRawParameterValue ("deep_oscFM");
-        paramGlide        = apvts.getRawParameterValue ("deep_glide");
-
-        // Hydrostatic compressor
-        paramCompThresh    = apvts.getRawParameterValue ("deep_compThresh");
-        paramCompRatio     = apvts.getRawParameterValue ("deep_compRatio");
-        paramCompAttackMs  = apvts.getRawParameterValue ("deep_compAttack");
-        paramCompReleaseMs = apvts.getRawParameterValue ("deep_compRelease");
-
-        // Body resonance
-        paramBodyType     = apvts.getRawParameterValue ("deep_bodyType");
-        paramBodyFeedback = apvts.getRawParameterValue ("deep_bodyFeedback");
-        paramBodyMix      = apvts.getRawParameterValue ("deep_bodyMix");
-
-        // Exciter
-        paramExciterProb  = apvts.getRawParameterValue ("deep_exciterProb");
-        paramExciterFreq  = apvts.getRawParameterValue ("deep_exciterFreq");
-        paramExciterDecay = apvts.getRawParameterValue ("deep_exciterDecay");
-        paramExciterMix   = apvts.getRawParameterValue ("deep_exciterMix");
-
-        // Creature modulation
-        paramCreature1Rate  = apvts.getRawParameterValue ("deep_creature1Rate");
-        paramCreature1Drift = apvts.getRawParameterValue ("deep_creature1Drift");
-        paramCreature2Rate  = apvts.getRawParameterValue ("deep_creature2Rate");
-        paramCreature2Drift = apvts.getRawParameterValue ("deep_creature2Drift");
-        paramCreatureToPitch  = apvts.getRawParameterValue ("deep_creatureToPitch");
-        paramCreatureToFilter = apvts.getRawParameterValue ("deep_creatureToFilter");
-
-        // Darkness filter
-        paramDarkCutoff   = apvts.getRawParameterValue ("deep_darkCutoff");
-        paramDarkReso     = apvts.getRawParameterValue ("deep_darkReso");
-        paramDarkMode     = apvts.getRawParameterValue ("deep_darkMode");
-
-        // Filter envelope
-        paramFilterEnvAmt     = apvts.getRawParameterValue ("deep_filtEnvAmt");
-        paramFilterEnvAttack  = apvts.getRawParameterValue ("deep_filtEnvAttack");
-        paramFilterEnvDecay   = apvts.getRawParameterValue ("deep_filtEnvDecay");
-        paramFilterEnvSustain = apvts.getRawParameterValue ("deep_filtEnvSustain");
-        paramFilterEnvRelease = apvts.getRawParameterValue ("deep_filtEnvRelease");
-
-        // Amp envelope
-        paramAmpAttack    = apvts.getRawParameterValue ("deep_ampAttack");
-        paramAmpDecay     = apvts.getRawParameterValue ("deep_ampDecay");
-        paramAmpSustain   = apvts.getRawParameterValue ("deep_ampSustain");
-        paramAmpRelease   = apvts.getRawParameterValue ("deep_ampRelease");
-
-        // Mod envelope
-        paramModAttack    = apvts.getRawParameterValue ("deep_modAttack");
-        paramModDecay     = apvts.getRawParameterValue ("deep_modDecay");
-        paramModSustain   = apvts.getRawParameterValue ("deep_modSustain");
-        paramModRelease   = apvts.getRawParameterValue ("deep_modRelease");
-
-        // LFOs
-        paramLfo1Rate     = apvts.getRawParameterValue ("deep_lfo1Rate");
-        paramLfo1Depth    = apvts.getRawParameterValue ("deep_lfo1Depth");
-        paramLfo1Shape    = apvts.getRawParameterValue ("deep_lfo1Shape");
-        paramLfo2Rate     = apvts.getRawParameterValue ("deep_lfo2Rate");
-        paramLfo2Depth    = apvts.getRawParameterValue ("deep_lfo2Depth");
-        paramLfo2Shape    = apvts.getRawParameterValue ("deep_lfo2Shape");
-
-        // Abyss reverb
-        paramAbyssSize     = apvts.getRawParameterValue ("deep_abyssSize");
-        paramAbyssDamp     = apvts.getRawParameterValue ("deep_abyssDamp");
-        paramAbyssMix      = apvts.getRawParameterValue ("deep_abyssMix");
-        paramAbyssPreDelay = apvts.getRawParameterValue ("deep_abyssPreDelay");
-
-        // Voice mode
-        paramVoiceMode    = apvts.getRawParameterValue ("deep_polyphony");
-
-        // Level
-        paramLevel        = apvts.getRawParameterValue ("deep_level");
-
-        // Macros
-        paramMacroPressure = apvts.getRawParameterValue ("deep_macroPressure");
-        paramMacroCreature = apvts.getRawParameterValue ("deep_macroCreature");
-        paramMacroWreck    = apvts.getRawParameterValue ("deep_macroWreck");
-        paramMacroAbyss    = apvts.getRawParameterValue ("deep_macroAbyss");
+        // OCEANDEEP accepts coupling as modulation on filter cutoff (AmpToFilter),
+        // or pitch offset (AmpToPitch / PitchToPitch).
+        if (type == CouplingType::AmpToFilter)
+            couplingFilterMod += amount * 200.f; // ±200 Hz range
+        else if (type == CouplingType::AmpToPitch || type == CouplingType::PitchToPitch)
+            couplingPitchMod += amount;
     }
 
-    //==========================================================================
-    // Identity
-    //==========================================================================
-
-    juce::String getEngineId() const override { return "OceanDeep"; }
-
-    // Trench Violet — the deepest darkness of the hadal zone
-    juce::Colour getAccentColour() const override { return juce::Colour (0xFF2D0A4E); }
-
-    int getMaxVoices() const override { return kMaxVoices; }
-
-    int getActiveVoiceCount() const override { return activeVoices; }
-
-private:
-    //==========================================================================
-    // Safe parameter load
-    //==========================================================================
-
-    static float loadParam (std::atomic<float>* p, float fallback) noexcept
-    {
-        return (p != nullptr) ? p->load() : fallback;
+    float getSampleForCoupling(int /*channel*/, int /*sampleIndex*/) const override {
+        return lastOutputSample;
     }
 
-    //==========================================================================
-    // Oscillator generation — sine, triangle, square with anti-aliased edges
-    //==========================================================================
-
-    static float generateOsc (float& phase, float freq, int waveform, float sampleRate) noexcept
+    //--------------------------------------------------------------------------
+    void renderBlock(juce::AudioBuffer<float>& buffer,
+                     juce::MidiBuffer&          midi,
+                     int                        numSamples) override
     {
-        float phaseInc = freq / sampleRate;
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-        if (phase < 0.0f)  phase += 1.0f;
-
-        switch (waveform)
-        {
-            case 0: // Sine — pure, massive fundamental
-                return fastSin (phase * 6.28318530718f);
-
-            case 1: // Triangle — slightly brighter, still round
-            {
-                float t = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                return t;
+        // 1. Parse MIDI — note-on/off, CC1 (mod wheel), aftertouch
+        for (const auto meta : midi) {
+            const auto msg = meta.getMessage();
+            if (msg.isNoteOn()) {
+                currentNote   = msg.getNoteNumber();
+                currentVel    = msg.getFloatVelocity();
+                noteIsOn      = true;
+                ampEnvStage   = EnvStage::Attack;
+                // Re-trigger oscillators for mono bass (phase reset on new note)
+                oscFund.reset(); oscSub1.reset(); oscSub2.reset();
+                wakeSilenceGate();
+            } else if (msg.isNoteOff() && msg.getNoteNumber() == currentNote) {
+                noteIsOn    = false;
+                ampEnvStage = EnvStage::Release;
+            } else if (msg.isController() && msg.getControllerNumber() == 1) {
+                modWheelVal = msg.getControllerValue() / 127.f; // D006
+            } else if (msg.isChannelPressure()) {
+                aftertouchVal = msg.getChannelPressureValue() / 127.f; // D006
+            } else if (msg.isAftertouch()) {
+                aftertouchVal = msg.getAfterTouchValue() / 127.f;      // D006
             }
-
-            case 2: // Square — hollow, powerful sub
-            {
-                // PolyBLEP square for reduced aliasing
-                float naive = (phase < 0.5f) ? 1.0f : -1.0f;
-
-                // PolyBLEP correction at transitions
-                float t;
-                // Transition at phase = 0
-                t = phase / phaseInc;
-                if (t < 1.0f)
-                    naive += (2.0f * t - t * t - 1.0f);
-                else
-                {
-                    t = (phase - 1.0f) / phaseInc;
-                    if (t > -1.0f)
-                        naive += (t * t + 2.0f * t + 1.0f);
-                }
-                // Transition at phase = 0.5
-                t = (phase - 0.5f) / phaseInc;
-                if (t >= 0.0f && t < 1.0f)
-                    naive -= (2.0f * t - t * t - 1.0f);
-                else
-                {
-                    t = (phase - 0.5f - 1.0f) / phaseInc;
-                    if (t > -1.0f && t < 0.0f)
-                        naive -= (t * t + 2.0f * t + 1.0f);
-                }
-                return naive;
-            }
-
-            default:
-                return fastSin (phase * 6.28318530718f);
         }
-    }
 
-    static float generateOscWithFM (float& phase, float freq, int waveform,
-                                     float sampleRate, float fmAmount) noexcept
-    {
-        float phaseInc = freq / sampleRate;
-        float modPhase = phase + fmAmount;
-        // Wrap modulated phase
-        modPhase = modPhase - static_cast<float> (static_cast<int> (modPhase));
-        if (modPhase < 0.0f) modPhase += 1.0f;
-
-        // Advance the base phase normally
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        switch (waveform)
-        {
-            case 0:  return fastSin (modPhase * 6.28318530718f);
-            case 1:  return 4.0f * std::fabs (modPhase - 0.5f) - 1.0f;
-            case 2:  return (modPhase < 0.5f) ? 1.0f : -1.0f;
-            default: return fastSin (modPhase * 6.28318530718f);
-        }
-    }
-
-    //==========================================================================
-    // MIDI note handling
-    //==========================================================================
-
-    void noteOn (int noteNumber, float velocity, int midiChannel,
-                 int maxPoly, bool monoMode, bool legatoMode, float glideCoeff,
-                 float ampA, float ampD, float ampS, float ampR,
-                 float modA, float modD, float modS, float modR,
-                 float filtA, float filtD, float filtS, float filtR,
-                 float lfo1Rate, int lfo1Shape, float lfo2Rate, int lfo2Shape,
-                 float c1Rate, float c1Drift, float c2Rate, float c2Drift,
-                 float cutoff, float reso, CytomicSVF::Mode filterMode)
-    {
-        float freq = 440.0f * fastPow2 ((static_cast<float> (noteNumber) - 69.0f) / 12.0f);
-
-        if (monoMode)
-        {
-            auto& voice = voices[0];
-            bool wasActive = voice.active;
-
-            voice.targetFreq = freq;
-            voice.glideCoeff = glideCoeff;
-
-            if (!wasActive || !legatoMode)
-            {
-                if (!wasActive)
-                    voice.currentFreq = freq;
-
-                voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
-                voice.ampEnv.noteOn();
-                voice.modEnv.setParams (modA, modD, modS, modR, srf);
-                voice.modEnv.noteOn();
-                voice.filterEnv.setParams (filtA, filtD, filtS, filtR, srf);
-                voice.filterEnv.noteOn();
-            }
-
-            voice.active = true;
-            voice.noteNumber = noteNumber;
-            voice.velocity = velocity;
-            voice.fadingOut = false;
-            voice.fadeGain = 1.0f;
-            voice.startTime = ++voiceCounter;
-
-            voice.mpeExpression.reset();
-            voice.mpeExpression.midiChannel = midiChannel;
-            if (mpeManager != nullptr)
-                mpeManager->updateVoiceExpression (voice.mpeExpression);
-
-            voice.lfo1.setRate (lfo1Rate, srf);
-            voice.lfo1.setShape (lfo1Shape);
-            voice.lfo2.setRate (lfo2Rate, srf);
-            voice.lfo2.setShape (lfo2Shape);
-            voice.creature1.setRate (c1Rate, srf);
-            voice.creature1.setDrift (c1Drift);
-            voice.creature2.setRate (c2Rate, srf);
-            voice.creature2.setDrift (c2Drift);
-
-            voice.darknessFilter.setMode (filterMode);
-            voice.darknessFilter.setCoefficients (cutoff, reso, srf);
-
+        // 2. Check SilenceGate bypass
+        if (isSilenceGateBypassed()) {
+            buffer.clear();
             return;
         }
 
-        // Polyphonic — find free voice or steal oldest
-        int freeSlot = -1;
-        uint64_t oldest = UINT64_MAX;
-        int oldestSlot = 0;
+        // 3. Snapshot parameters once per block (ParamSnapshot pattern)
+        if (!p_subLevel) { buffer.clear(); return; } // not yet attached
 
-        for (int i = 0; i < maxPoly && i < kMaxVoices; ++i)
-        {
-            if (!voices[i].active)
-            {
-                freeSlot = i;
-                break;
+        const float subLevel      = p_subLevel->load();
+        const float subOctMix     = p_subOctMix->load();
+        const float baseCutoff    = p_filterCutoff->load();
+        const float filterRes     = p_filterRes->load();
+        const float velCutoffAmt  = p_velCutoffAmt->load();
+        const float bodyFeedback  = p_bodyFeedback->load();
+        const float bodyMix       = p_bodyMix->load();
+        const int   bodyChar      = (int)(p_bodyChar->load() + 0.5f);
+        const float bioRate       = p_bioRate->load();
+        const float bioMix        = p_bioMix->load();
+        const float bioBrightness = p_bioBrightness->load();
+        const float pressureAmt   = p_pressureAmt->load();
+        const float ampAtk        = p_ampAtk->load();
+        const float ampDec        = p_ampDec->load();
+        const float ampSus        = p_ampSus->load();
+        const float ampRel        = p_ampRel->load();
+        const float lfo1Rate      = p_lfo1Rate->load();
+        const float lfo1Depth     = p_lfo1Depth->load();
+        const float lfo2Rate      = p_lfo2Rate->load();
+        const float lfo2Depth     = p_lfo2Depth->load();
+        const float reverbMix     = p_reverbMix->load();
+
+        // 4 macros with their coupling behavior:
+        const float macroPressure = p_macroPressure->load();
+        const float macroCreature = p_macroCreature->load();
+        const float macroWreck    = p_macroWreck->load();
+        const float macroAbyss    = p_macroAbyss->load();
+
+        // Macro-derived parameter blends
+        // PRESSURE macro: increases pressure amount + pushes sub levels up
+        const float effectivePressure = clamp(pressureAmt + macroPressure * 0.4f, 0.f, 1.f);
+        const float macroSubBoost     = macroPressure * 0.2f; // boosts sub level
+
+        // CREATURE macro: amplifies bio exciter mix + rate
+        const float effectiveBioMix   = clamp(bioMix  + macroCreature * 0.5f, 0.f, 1.f);
+        const float effectiveBioRate  = clamp(bioRate + macroCreature * 0.4f, 0.01f, 0.5f);
+
+        // WRECK macro: increases body mix + chooses bodyChar toward wreck
+        const float effectiveBodyMix  = clamp(bodyMix + macroWreck * 0.5f, 0.f, 1.f);
+        const float effectiveFeedback = clamp(bodyFeedback + macroWreck * 0.2f, 0.f, 0.9f);
+        const int   effectiveBodyChar = (macroWreck > 0.7f) ? 2 :
+                                        (macroWreck > 0.35f) ? 1 : bodyChar;
+
+        // ABYSS macro: darkens filter (lower cutoff) + increases reverb
+        const float abyssFilterClose  = macroAbyss * 350.f; // sweeps cutoff down by up to 350 Hz
+        const float effectiveReverb   = clamp(reverbMix + macroAbyss * 0.4f, 0.f, 1.f);
+
+        // Velocity → filter brightness (D001): high velocity = slightly higher cutoff
+        const float velCutoffBoost = currentVel * velCutoffAmt * 150.f; // +0..150 Hz
+
+        // Mod wheel → darkness filter (D006)
+        const float modWheelCutoffMod = modWheelVal * (-200.f); // lower cutoff
+
+        // Aftertouch → pressure compression (D006)
+        const float aftertouchPressureMod = aftertouchVal * 0.3f;
+        const float totalPressure = clamp(effectivePressure + aftertouchPressureMod, 0.f, 1.f);
+
+        // Final cutoff (clamped)
+        const float finalCutoff = clamp(
+            baseCutoff + velCutoffBoost + modWheelCutoffMod
+            - abyssFilterClose + couplingFilterMod,
+            50.f, 800.f);
+
+        // Resonance → map 0-0.95 to Q factor 0.5 → 12.0
+        const float Q = 0.5f + filterRes * 11.5f;
+
+        // Derived frequencies
+        const float fundamentalFreq = midiToFreq(currentNote) * fastPow2(couplingPitchMod / 12.f);
+        const float sub1Freq        = fundamentalFreq * 0.5f;  // -1 octave
+        const float sub2Freq        = fundamentalFreq * 0.25f; // -2 octaves
+
+        // Envelope coefficients (one-pole smoother approach per stage)
+        const float atkCoeff  = smoothCoeffFromTime(ampAtk,  sr);
+        const float decCoeff  = smoothCoeffFromTime(ampDec,  sr);
+        const float relCoeff  = smoothCoeffFromTime(ampRel,  sr);
+
+        // Compressor one-pole coefficients
+        const float compAtk  = smoothCoeffFromTime(0.005f, sr); // 5ms attack
+        const float compRel  = smoothCoeffFromTime(0.100f, sr); // 100ms release
+
+        float* L = buffer.getWritePointer(0);
+        float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
+
+        // Reset coupling modulation (consumed each block)
+        couplingFilterMod = 0.f;
+        couplingPitchMod  = 0.f;
+
+        // ----- Per-sample DSP loop -----
+        for (int n = 0; n < numSamples; ++n) {
+            // --- Amp envelope ---
+            float envTarget = 0.f;
+            float envCoeff  = 0.f;
+            switch (ampEnvStage) {
+                case EnvStage::Idle:
+                    envTarget = 0.f; envCoeff = relCoeff;
+                    break;
+                case EnvStage::Attack:
+                    envTarget = 1.f; envCoeff = atkCoeff;
+                    if (ampEnvLevel >= 0.999f) {
+                        ampEnvLevel = 1.f;
+                        ampEnvStage = EnvStage::Decay;
+                    }
+                    break;
+                case EnvStage::Decay:
+                    envTarget = ampSus; envCoeff = decCoeff;
+                    if (std::fabs(ampEnvLevel - ampSus) < 0.001f) {
+                        ampEnvLevel = ampSus;
+                        ampEnvStage = EnvStage::Sustain;
+                    }
+                    break;
+                case EnvStage::Sustain:
+                    envTarget = ampSus; envCoeff = decCoeff;
+                    break;
+                case EnvStage::Release:
+                    envTarget = 0.f; envCoeff = relCoeff;
+                    if (ampEnvLevel < 0.0001f) {
+                        ampEnvLevel = 0.f;
+                        ampEnvStage = EnvStage::Idle;
+                    }
+                    break;
             }
-            if (voices[i].startTime < oldest)
-            {
-                oldest = voices[i].startTime;
-                oldestSlot = i;
-            }
+            ampEnvLevel += envCoeff * (envTarget - ampEnvLevel);
+            ampEnvLevel = flushDenormal(ampEnvLevel);
+
+            // --- LFO 1: creature modulation (0.01-2 Hz) ---
+            lfo1Phase += lfo1Rate / sr;
+            if (lfo1Phase >= 1.f) lfo1Phase -= 1.f;
+            float lfo1Val = fastSin(lfo1Phase * 6.2831853f); // sine LFO
+
+            // --- LFO 2: pressure wobble (0.01-0.5 Hz) ---
+            lfo2Phase += lfo2Rate / sr;
+            if (lfo2Phase >= 1.f) lfo2Phase -= 1.f;
+            float lfo2Val = fastSin(lfo2Phase * 6.2831853f); // sine LFO
+
+            // Apply LFO depth
+            float lfo1Out = lfo1Val * lfo1Depth;
+            float lfo2Out = lfo2Val * lfo2Depth;
+
+            // --- Sub oscillator stack ---
+            // LFO2 creates gentle pressure wobble on the fundamental pitch
+            float freqMod = fundamentalFreq * (1.f + lfo2Out * 0.005f); // ±0.5% pitch wobble
+            float s0 = oscFund.tick(freqMod);
+            float s1 = oscSub1.tick(sub1Freq * (1.f + lfo2Out * 0.004f));
+            float s2 = oscSub2.tick(sub2Freq * (1.f + lfo2Out * 0.003f));
+
+            // Mix sub stack: fundamental always at full subLevel, subs at scaled levels
+            float effectiveSubLevel = clamp(subLevel + macroSubBoost, 0.f, 1.f);
+            float subMix  = s0 + s1 * subOctMix + s2 * subOctMix * 0.5f;
+            float oscOut  = subMix * effectiveSubLevel;
+
+            // --- Bioluminescent exciter ---
+            // LFO1 modulates the bio rate for organic creature-like variation
+            float modBioRate = clamp(effectiveBioRate + lfo1Out * 0.1f, 0.01f, 0.5f);
+            float bioSample  = bioExciter.tick(modBioRate, bioBrightness, sr);
+
+            // --- Mix osc + bio ---
+            float mixedSignal = oscOut * (1.f - effectiveBioMix * 0.5f)
+                              + bioSample * effectiveBioMix;
+
+            // --- Waveguide body ---
+            float bodySample = body.tick(mixedSignal, freqMod, effectiveFeedback, effectiveBodyChar);
+            float withBody   = mixedSignal * (1.f - effectiveBodyMix) + bodySample * effectiveBodyMix;
+
+            // --- Hydrostatic compressor ---
+            // LFO2 creates subtle pressure variation (underwater breathing)
+            float dynamicPressure = clamp(totalPressure + lfo2Out * lfo2Depth * 0.15f, 0.f, 1.f);
+            float compressed      = compressor.process(withBody, dynamicPressure, compAtk, compRel);
+
+            // --- Darkness filter ---
+            // LFO1 slightly modulates cutoff for alien life feel
+            float dynCutoff = clamp(finalCutoff + lfo1Out * lfo1Depth * 50.f, 50.f, 800.f);
+            float filtered  = darknessFilter.process(compressed, dynCutoff, Q, sr);
+
+            // --- Amp envelope ---
+            float output = filtered * ampEnvLevel * 0.7f; // 0.7 headroom
+
+            // Soft-clip for subtle saturation under pressure
+            output = softClip(output);
+
+            // Write stereo (mono source spread to both channels)
+            L[n] = output;
+            R[n] = output;
+
+            lastOutputSample = output;
         }
 
-        int slot = (freeSlot >= 0) ? freeSlot : oldestSlot;
-
-        if (freeSlot < 0)
-            voices[slot].fadingOut = true;
-
-        auto& voice = voices[slot];
-        voice.reset();
-        voice.active = true;
-        voice.noteNumber = noteNumber;
-        voice.velocity = velocity;
-        voice.currentFreq = freq;
-        voice.targetFreq = freq;
-        voice.glideCoeff = glideCoeff;
-        voice.startTime = ++voiceCounter;
-        voice.exciterRng = static_cast<uint32_t> (slot * 999 + voiceCounter);
-
-        voice.mpeExpression.reset();
-        voice.mpeExpression.midiChannel = midiChannel;
-        if (mpeManager != nullptr)
-            mpeManager->updateVoiceExpression (voice.mpeExpression);
-
-        voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
-        voice.ampEnv.noteOn();
-        voice.modEnv.setParams (modA, modD, modS, modR, srf);
-        voice.modEnv.noteOn();
-        voice.filterEnv.setParams (filtA, filtD, filtS, filtR, srf);
-        voice.filterEnv.noteOn();
-
-        voice.lfo1.setRate (lfo1Rate, srf);
-        voice.lfo1.setShape (lfo1Shape);
-        voice.lfo2.setRate (lfo2Rate, srf);
-        voice.lfo2.setShape (lfo2Shape);
-        voice.creature1.setRate (c1Rate, srf);
-        voice.creature1.setDrift (c1Drift);
-        voice.creature2.setRate (c2Rate, srf);
-        voice.creature2.setDrift (c2Drift);
-
-        voice.darknessFilter.setMode (filterMode);
-        voice.darknessFilter.setCoefficients (cutoff, reso, srf);
-    }
-
-    void noteOff (int noteNumber, int midiChannel = 0)
-    {
-        for (auto& voice : voices)
-        {
-            if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
-            {
-                if (midiChannel > 0 && voice.mpeExpression.midiChannel > 0
-                    && voice.mpeExpression.midiChannel != midiChannel)
-                    continue;
-
-                voice.ampEnv.noteOff();
-                voice.modEnv.noteOff();
-                voice.filterEnv.noteOff();
-            }
+        // --- Block-level reverb processing ---
+        // Apply abyssal reverb after the sample loop (block-rate reverb is fine
+        // for this type of dense-room tail; no per-sample aliasing concern).
+        for (int n = 0; n < numSamples; ++n) {
+            float l = L[n], r = R[n];
+            // Slight stereo spread: invert a fraction of R for width
+            float lIn = l, rIn = r * 0.97f + l * 0.03f;
+            reverb.process(lIn, rIn, macroAbyss, effectiveReverb);
+            L[n] = lIn;
+            R[n] = rIn;
         }
+
+        // 4. Feed SilenceGate analyzer
+        analyzeForSilenceGate(buffer, numSamples);
     }
 
-    //==========================================================================
-    // State
-    //==========================================================================
+    //--------------------------------------------------------------------------
+private:
+    // Envelope stages
+    enum class EnvStage { Idle, Attack, Decay, Sustain, Release };
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
-    float smoothCoeff = 0.0f;
-    float crossfadeRate = 0.0f;
-    uint64_t voiceCounter = 0;
+    // DSP state
+    float sr = 44100.f;
+    DeepSineOsc          oscFund, oscSub1, oscSub2;
+    DeepHydroCompressor  compressor;
+    DeepWaveguideBody    body;
+    DeepBioExciter       bioExciter;
+    DeepDarknessFilter   darknessFilter;
+    DeepAbyssalReverb    reverb;
 
-    // MIDI expression
-    float modWheelAmount_ = 0.0f;   // CC#1 — creature modulation intensity (D006)
-    float aftertouch_ = 0.0f;       // aftertouch — PRESSURE macro boost (D006)
+    // Envelope state
+    EnvStage  ampEnvStage = EnvStage::Idle;
+    float     ampEnvLevel = 0.f;
 
-    // Voices
-    std::array<DeepVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    // Voice state
+    bool  noteIsOn    = false;
+    int   currentNote = 60;
+    float currentVel  = 1.f;
 
-    // Hydrostatic compressor
-    Compressor hydroComp;
+    // LFO phases
+    float lfo1Phase = 0.f;
+    float lfo2Phase = 0.f;
 
-    // Abyss reverb
-    LushReverb abyssReverb;
+    // Expression
+    float modWheelVal   = 0.f;
+    float aftertouchVal = 0.f;
 
-    // Output cache for coupling
-    std::vector<float> outputCacheL;
-    std::vector<float> outputCacheR;
-    float envelopeOutput = 0.0f;
+    // Coupling modulation (consumed each block)
+    float couplingFilterMod = 0.f;
+    float couplingPitchMod  = 0.f;
 
-    // Coupling modulation accumulators
-    float couplingFilterMod = 0.0f;
-    float couplingPitchMod = 0.0f;
-    float couplingFMMod = 0.0f;
-    float couplingDecayMod = 0.0f;
+    // Coupling output
+    float lastOutputSample = 0.f;
 
-    // Smoothed control values
-    float smoothedDarkness = 8000.0f;
-    float smoothedPressure = 0.0f;
-    float smoothedCreature = 0.0f;
-    float smoothedWreck = 0.0f;
-    float smoothedAbyss = 0.0f;
-
-    // Parameter pointers
-    // Sub oscillator stack
-    std::atomic<float>* paramOsc1Wave = nullptr;
-    std::atomic<float>* paramOsc2Wave = nullptr;
-    std::atomic<float>* paramOsc3Wave = nullptr;
-    std::atomic<float>* paramOsc1Level = nullptr;
-    std::atomic<float>* paramOsc2Level = nullptr;
-    std::atomic<float>* paramOsc3Level = nullptr;
-    std::atomic<float>* paramOsc2Detune = nullptr;
-    std::atomic<float>* paramOsc3Detune = nullptr;
-    std::atomic<float>* paramSubLevel = nullptr;
-    std::atomic<float>* paramSubOctave = nullptr;
-    std::atomic<float>* paramOscFM = nullptr;
-    std::atomic<float>* paramGlide = nullptr;
-
-    // Hydrostatic compressor
-    std::atomic<float>* paramCompThresh = nullptr;
-    std::atomic<float>* paramCompRatio = nullptr;
-    std::atomic<float>* paramCompAttackMs = nullptr;
-    std::atomic<float>* paramCompReleaseMs = nullptr;
-
-    // Body resonance
-    std::atomic<float>* paramBodyType = nullptr;
-    std::atomic<float>* paramBodyFeedback = nullptr;
-    std::atomic<float>* paramBodyMix = nullptr;
-
-    // Exciter
-    std::atomic<float>* paramExciterProb = nullptr;
-    std::atomic<float>* paramExciterFreq = nullptr;
-    std::atomic<float>* paramExciterDecay = nullptr;
-    std::atomic<float>* paramExciterMix = nullptr;
-
-    // Creature modulation
-    std::atomic<float>* paramCreature1Rate = nullptr;
-    std::atomic<float>* paramCreature1Drift = nullptr;
-    std::atomic<float>* paramCreature2Rate = nullptr;
-    std::atomic<float>* paramCreature2Drift = nullptr;
-    std::atomic<float>* paramCreatureToPitch = nullptr;
-    std::atomic<float>* paramCreatureToFilter = nullptr;
-
-    // Darkness filter
-    std::atomic<float>* paramDarkCutoff = nullptr;
-    std::atomic<float>* paramDarkReso = nullptr;
-    std::atomic<float>* paramDarkMode = nullptr;
-
-    // Filter envelope
-    std::atomic<float>* paramFilterEnvAmt = nullptr;
-    std::atomic<float>* paramFilterEnvAttack = nullptr;
-    std::atomic<float>* paramFilterEnvDecay = nullptr;
-    std::atomic<float>* paramFilterEnvSustain = nullptr;
-    std::atomic<float>* paramFilterEnvRelease = nullptr;
-
-    // Amp envelope
-    std::atomic<float>* paramAmpAttack = nullptr;
-    std::atomic<float>* paramAmpDecay = nullptr;
-    std::atomic<float>* paramAmpSustain = nullptr;
-    std::atomic<float>* paramAmpRelease = nullptr;
-
-    // Mod envelope
-    std::atomic<float>* paramModAttack = nullptr;
-    std::atomic<float>* paramModDecay = nullptr;
-    std::atomic<float>* paramModSustain = nullptr;
-    std::atomic<float>* paramModRelease = nullptr;
-
-    // LFOs
-    std::atomic<float>* paramLfo1Rate = nullptr;
-    std::atomic<float>* paramLfo1Depth = nullptr;
-    std::atomic<float>* paramLfo1Shape = nullptr;
-    std::atomic<float>* paramLfo2Rate = nullptr;
-    std::atomic<float>* paramLfo2Depth = nullptr;
-    std::atomic<float>* paramLfo2Shape = nullptr;
-
-    // Abyss reverb
-    std::atomic<float>* paramAbyssSize = nullptr;
-    std::atomic<float>* paramAbyssDamp = nullptr;
-    std::atomic<float>* paramAbyssMix = nullptr;
-    std::atomic<float>* paramAbyssPreDelay = nullptr;
-
-    // Voice mode
-    std::atomic<float>* paramVoiceMode = nullptr;
-
-    // Level
-    std::atomic<float>* paramLevel = nullptr;
-
-    // Macros
-    std::atomic<float>* paramMacroPressure = nullptr;
-    std::atomic<float>* paramMacroCreature = nullptr;
-    std::atomic<float>* paramMacroWreck = nullptr;
-    std::atomic<float>* paramMacroAbyss = nullptr;
+    // Cached parameter pointers (attached once via attachParameters)
+    std::atomic<float>* p_subLevel       = nullptr;
+    std::atomic<float>* p_subOctMix      = nullptr;
+    std::atomic<float>* p_filterCutoff   = nullptr;
+    std::atomic<float>* p_filterRes      = nullptr;
+    std::atomic<float>* p_velCutoffAmt   = nullptr;
+    std::atomic<float>* p_bodyChar       = nullptr;
+    std::atomic<float>* p_bodyFeedback   = nullptr;
+    std::atomic<float>* p_bodyMix        = nullptr;
+    std::atomic<float>* p_bioRate        = nullptr;
+    std::atomic<float>* p_bioMix         = nullptr;
+    std::atomic<float>* p_bioBrightness  = nullptr;
+    std::atomic<float>* p_pressureAmt    = nullptr;
+    std::atomic<float>* p_ampAtk         = nullptr;
+    std::atomic<float>* p_ampDec         = nullptr;
+    std::atomic<float>* p_ampSus         = nullptr;
+    std::atomic<float>* p_ampRel         = nullptr;
+    std::atomic<float>* p_lfo1Rate       = nullptr;
+    std::atomic<float>* p_lfo1Depth      = nullptr;
+    std::atomic<float>* p_lfo2Rate       = nullptr;
+    std::atomic<float>* p_lfo2Depth      = nullptr;
+    std::atomic<float>* p_reverbMix      = nullptr;
+    std::atomic<float>* p_macroPressure  = nullptr;
+    std::atomic<float>* p_macroCreature  = nullptr;
+    std::atomic<float>* p_macroWreck     = nullptr;
+    std::atomic<float>* p_macroAbyss     = nullptr;
 };
 
 } // namespace xomnibus

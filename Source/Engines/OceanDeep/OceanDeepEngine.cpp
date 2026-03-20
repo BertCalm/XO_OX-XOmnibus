@@ -1,5 +1,1 @@
-#include "OceanDeepEngine.h"
-// All DSP is inline in OceanDeepEngine.h.
-// This stub provides the translation unit required by CMake.
-
-// Registration is centralized in XOmnibusProcessor.cpp.
+#include "OceandeepEngine.h"

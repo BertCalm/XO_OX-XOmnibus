@@ -39,11 +39,15 @@ static constexpr float kPi    = 3.14159265358979f;
 //   Real wavetable banks — Analog / Vocal / Metallic / Organic (obrix_wtBank)
 //   Unison voice stacking with detune spread (obrix_unisonDetune 0–50 ct)
 //
-// Wave 3 additions (65 params):
-//   Drift Bus — global ultra-slow LFO (0.001–0.05 Hz) with per-voice phase offsets;
-//               Berlin School ensemble drift from one oscillator (obrix_driftRate, obrix_driftDepth)
-//   Journey Mode — suppress note-off: sound evolves forever (obrix_journeyMode)
-//   Per-Brick Spatial — DISTANCE (HF rolloff via 1-pole LP) + AIR (warm/cold spectral tilt)
+// Wave 3 additions (65 params total):
+//   Drift Bus — global ultra-slow LFO (0.001-0.05 Hz) with per-voice irrational
+//               phase offsets; Berlin School ensemble drift from one oscillator.
+//               Modulates pitch (+/-50 ct) and filter cutoff (+/-200 Hz).
+//               (obrix_driftRate, obrix_driftDepth)
+//   Journey Mode — suppress note-off: sound evolves indefinitely (obrix_journeyMode)
+//   Per-Brick Spatial — DISTANCE: HF rolloff via matched-Z 1-pole LP (air absorption)
+//                       AIR: LP/HP split at 1 kHz with tilt gains (warm/cold atmosphere)
+//                       Coefficients hoisted to block rate for efficiency.
 //                       (obrix_distance, obrix_air)
 //
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
@@ -500,8 +504,8 @@ public:
             }
 
             // === DRIFT BUS (Wave 3) — Schulze's ultra-slow ensemble LFO ===
-            // One global oscillator ticked per sample; per-voice slot offset (0.23 is irrational
-            // relative to 2π, so no two voice slots ever phase-lock)
+            // One global oscillator ticked per sample. Per-voice slot offsets
+            // are applied in the voice loop below (see kDriftSlotOffset).
             driftPhase_ += driftRate / sr;
             if (driftPhase_ >= 1.0f) driftPhase_ -= 1.0f;
 
@@ -1299,11 +1303,13 @@ private:
     float gesturePhase = 0.0f;
     float prevFlashTrig = 0.0f;
 
-    // Wave 3 state
-    float driftPhase_  = 0.0f;    // Drift Bus global LFO phase (0–1)
+    // Wave 3 — Drift Bus + Journey + Spatial
+    float driftPhase_  = 0.0f;    // Drift Bus global LFO phase (0-1, wraps at 1)
     bool  journeyMode_ = false;   // Journey: suppress note-off (cached from param each block)
-    float distFiltL_ = 0.0f, distFiltR_ = 0.0f; // DISTANCE 1-pole LP filter state
-    float airFiltL_  = 0.0f, airFiltR_  = 0.0f; // AIR LP/HP split filter state
+    float distFiltL_   = 0.0f;    // DISTANCE 1-pole LP filter state (L)
+    float distFiltR_   = 0.0f;    // DISTANCE 1-pole LP filter state (R)
+    float airFiltL_    = 0.0f;    // AIR LP/HP split filter state (L)
+    float airFiltR_    = 0.0f;    // AIR LP/HP split filter state (R)
 
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
