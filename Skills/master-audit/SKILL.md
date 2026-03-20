@@ -2,6 +2,7 @@
 
 **Invoke with:** `/master-audit`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** Monthly or on major milestone
 **Purpose:** Orchestrate all XOmnibus QA checks into a comprehensive fleet-wide health report. Use before releases, after major engine additions, or when you need a full picture of what needs attention.
 
 ---

@@ -2,6 +2,7 @@
 
 **Invoke with:** `/coupling-debugger`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new coupling type addition or MegaCouplingMatrix changes
 **Purpose:** Diagnose and fix broken or inaudible coupling routes. Coupling is XOmnibus's signature feature — when it doesn't work, this skill finds why.
 
 ---

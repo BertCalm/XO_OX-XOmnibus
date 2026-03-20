@@ -2,6 +2,7 @@
 
 **Invoke with:** `/xpn-export-specialist`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On XPN format changes or new MPC compatibility requirements
 **Purpose:** End-to-end guide for building XPN (MPC-compatible) export bundles from XOmnibus presets — covering render specs, WAV rendering, XPM generation, bundle assembly, and the 3 critical XPM rules.
 
 ---

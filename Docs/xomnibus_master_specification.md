@@ -26,9 +26,21 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 | Development strategy | `xo_mega_tool_dev_strategy.md` | Locked |
 | .xometa schema | `xometa_schema.json` | Locked |
 
-**Superseded documents** (replaced by the specs above):
+**Superseded documents** (replaced by the specs above — do not use):
 - `xo_mega_tool_preset_system.md` — superseded by `xomnibus_preset_spec_for_builder.md`
 - `xo_mega_tool_visual_identity.md` — superseded by `xomnibus_technical_design_system.md`
+
+**Living intelligence documents** (not foundation specs — authoritative for their domains):
+
+| Document | Authority For | Notes |
+|----------|--------------|-------|
+| `../CLAUDE.md` | Engine registry, blessings (B001–B031), debates, architecture rules | Claude Code project guide — always current |
+| `seance_cross_reference.md` | Engine health, seance scores, D-violations, P0 bugs | Updated after each seance |
+| `prism_sweep_final_report.md` | 12-round quality history, doctrine resolution | Immutable historical record |
+| `fleet_health_2026_03_20.md` | Current fleet status snapshot | Latest: 2026-03-20 |
+| `xomnibus_landscape_2026.md` | Grand survey baseline (2026-03-14) | Pre-sweep; see fleet_health for current |
+| `GOVERNANCE.md` | Update policies, SLAs, naming conventions | See before any doc update |
+| `MANIFEST.md` | Full documentation inventory | Discovery starting point |
 
 ---
 
@@ -139,6 +151,25 @@ class EngineRegistry {
 Toggle between modes at any time. Preset data is identical — only UI visibility changes.
 
 **Detail:** `xo_mega_tool_chaining_architecture.md`
+
+---
+
+## 2.6 Design Doctrines
+
+The 6 Doctrines are the quality contract every XOmnibus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 42 engines.
+
+| ID | Doctrine | Requirement |
+|----|----------|------------|
+| D001 | Velocity Must Shape Timbre | Velocity drives filter brightness / harmonic content — **not just amplitude**. Implement via `velCutoffBoost` or equivalent wired to filter cutoff per block. |
+| D002 | Modulation is the Lifeblood | Minimum: 2 LFOs (rate floor ≤ 0.01 Hz), mod wheel (CC1), aftertouch, 4 working macros, 4+ mod matrix slots. |
+| D003 | The Physics IS the Synthesis | Physically-modeled engines must cite sources (papers, formulas, named models) in inline header comments. Rigor required. |
+| D004 | Dead Parameters Are Broken Promises | Every declared parameter must affect audio output. Zero tolerance for parameters that do nothing. Verify with DSP trace. |
+| D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz. The engine must be capable of autonomous, slow evolution without performer interaction. |
+| D006 | Expression Input Is Not Optional | Velocity→timbre (D001) + at least one CC: aftertouch, mod wheel (CC1), or expression pedal. OPTIC is the sole intentional exception (visual engine, no audio). |
+
+**Authoritative source:** `CLAUDE.md` — Seance Findings section.
+**Per-engine audit tool:** `/engine-health-check` skill.
+**Fleet compliance status:** `Docs/seance_cross_reference.md` — Doctrine Violation Summary.
 
 ---
 
@@ -258,7 +289,7 @@ ombre_blend            // OMBRE engine
 
 ## 4. Coupling Matrix
 
-### 4.1 Coupling Types (12)
+### 4.1 Coupling Types (14)
 
 ```cpp
 enum class CouplingType {
@@ -273,7 +304,12 @@ enum class CouplingType {
     RhythmToBlend,    // Engine A rhythm pattern → Engine B blend parameter
     EnvToDecay,       // Engine A envelope → Engine B decay time
     PitchToPitch,     // Engine A pitch → Engine B pitch (harmony)
-    AudioToWavetable  // Engine A audio → Engine B wavetable source
+    AudioToWavetable, // Engine A audio → Engine B wavetable source
+    AudioToBuffer,    // Engine A audio → Engine B ring buffer (continuous stereo streaming)
+                      // Designed for OPAL's grain buffer. Unlike AudioToWavetable (snapshots),
+                      // streams every block into a pre-allocated circular buffer with freeze support.
+    KnotTopology      // Bidirectional irreducible coupling (B021/B022, ORBWEAVE). Both engines
+                      // modulate each other's parameters. Linking number 1–5 sets depth.
 };
 ```
 

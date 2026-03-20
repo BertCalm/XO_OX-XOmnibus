@@ -2,6 +2,7 @@
 
 **Invoke with:** `/preset-architect`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.2 | **Next Review:** On new engine addition or mood addition
 **Purpose:** Create high-quality `.xometa` presets from scratch — parameter design, DNA assignment, naming, mood selection, macro mapping, and quality gate.
 
 ---

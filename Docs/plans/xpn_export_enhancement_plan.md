@@ -1,3 +1,5 @@
+> **STATUS: ACTIVE** | Enhancements in progress; not yet shipped.
+
 # XPN Export System — Enhancement Plan
 
 ## Current State Assessment

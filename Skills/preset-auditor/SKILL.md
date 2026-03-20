@@ -2,6 +2,7 @@
 
 **Invoke with:** `/preset-auditor`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new mood or doctrine change
 **Purpose:** Quality gate for existing `.xometa` presets. Audits DNA coverage, macro responsiveness, D004 compliance, naming conventions, and mood correctness. Use before committing new presets or after bulk preset generation.
 
 ---

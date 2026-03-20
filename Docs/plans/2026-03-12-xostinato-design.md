@@ -1,3 +1,5 @@
+> **STATUS: COMPLETED** | OSTINATO shipped 2026-03-18 and seance completed 2026-03-20. See `Docs/seances/ostinato_seance_verdict.md`.
+
 # XOstinato — Design Document
 
 **Date:** March 12, 2026
