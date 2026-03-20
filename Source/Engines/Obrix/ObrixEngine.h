@@ -729,7 +729,7 @@ public:
         auto gestChoices = juce::StringArray { "Ripple", "Pulse", "Flow", "Tide" };
 
         // Sources (7)
-        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 2  // Default: Saw (was Sine — Guild P1 fix)));
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 1)); // 1 = Sine default
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src2Type", 1 }, "Obrix Source 2 Type", srcChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src1Tune", 1 }, "Obrix Source 1 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src2Tune", 1 }, "Obrix Source 2 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));
