@@ -9,9 +9,9 @@ and mutate into sounds impossible with any single synth. **42 engines** are regi
 — see engine table below.
 
 - **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM
-- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (13 coupling types)
+- **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** ~15,200 factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
+- **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -227,10 +227,14 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-30 seances complete (2026-03-19) — all 30 registered engines covered (24 original + 5 Constellation + OBRIX). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. OBRIX seance verdict at `Docs/seances/obrix_seance_verdict.md` (2026-03-19, 6.8/10 current → 9.8 target via 4 waves). Full data in:
+**42 engines seanced** (2026-03-20) — all 42 registered engines have formal numeric or approval-class verdicts. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Three engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0). Full data in:
+- Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
+- Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
+- Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
+- Seance review of Guild plan: `Docs/seance-review-guild-plan-2026-03-20.md`
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
-- Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
+- Individual verdicts: `Docs/seances/` and `scripture/seances/`
 
 ### The 6 Doctrines
 
@@ -275,7 +279,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range**: 7.2/10 est. (OBLIQUE, recovered) to 8/8 PASS + 8.6/10 (ORGANON, ORACLE)
+- **Seance score range (post 2026-03-20 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE). Fleet avg ~8.6. All 42 engines at 8.0+ target.
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)
