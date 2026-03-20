@@ -951,7 +951,7 @@ public:
         const float pDepth             = loadParam (paramDepth, 0.3f);
 
         // --- Resonator parameters ---
-        const float pResonatorBright   = loadParam (paramResonatorBright, 0.5f);
+        float pResonatorBright   = loadParam (paramResonatorBright, 0.5f);
         const float pResonatorDecay    = loadParam (paramResonatorDecay, 1.0f);
         const float pSympathyAmount    = loadParam (paramSympathyAmount, 0.3f);
 
@@ -1003,19 +1003,37 @@ public:
         // The LFO creates organic amplitude breathing: the sea state gently rises and falls
         // like a slowly breathing organism at rest, or choppy waves when MOVEMENT is high.
         // Depth is fixed at 0.15 (audible but not overwhelming — a gentle swell, not a storm).
+        // D002: LFO1 shape is now user-controllable (was sine-only).
         float lfoRateHz = 0.05f + macroMovement * 0.95f;  // 0.05 Hz resting to 1.0 Hz active
         seaStateLFO.setRate (lfoRateHz, sampleRateFloat);
+        seaStateLFO.setShape (static_cast<int> (loadParam (paramLfo1Shape, 0.0f)));
         float lfoOutput = seaStateLFO.process();  // [-1, +1]
         static constexpr float kLfoSeaStateDepth = 0.15f;
         effectiveSeaState = clamp (effectiveSeaState + lfoOutput * kLfoSeaStateDepth, 0.0f, 1.0f);
         // D006: mod wheel raises sea state / turbulence intensity — CC#1 adds up to +0.4 storm energy
         effectiveSeaState = clamp (effectiveSeaState + modWheelAmount * 0.4f, 0.0f, 1.0f);
 
+        // D002: LFO2 — resonator brightness modulation (timbral shimmer).
+        // Rate and shape are user-controllable. Depth scales the modulation amount.
+        // At depth 0 = no effect. At depth 1 = full +/-0.4 brightness modulation.
+        const float lfo2Rate  = loadParam (paramLfo2Rate, 0.2f);
+        const float lfo2Depth = loadParam (paramLfo2Depth, 0.0f);
+        const int   lfo2Shape = static_cast<int> (loadParam (paramLfo2Shape, 1.0f));
+        brightnessLFO.setRate (lfo2Rate, sampleRateFloat);
+        brightnessLFO.setShape (lfo2Shape);
+        float lfo2Output = brightnessLFO.process();  // [-1, +1]
+        float brightnessLfoMod = lfo2Output * lfo2Depth * 0.4f;
+
         // M4 (SPACE): increases harbor verb wet mix
         float effectiveVerbAmount = clamp (pHarborVerb + macroSpace * 0.4f, 0.0f, 1.0f);
 
         // M3 (COUPLING): increases creature voice depth
         float effectiveCreatureDepth = clamp (pCreatureDepth + macroCoupling * 0.3f, 0.0f, 1.0f);
+
+        // D002: Apply LFO2 brightness modulation to resonator brightness parameter.
+        // This creates timbral shimmer — the resonant body's brightness slowly morphs
+        // as if light is moving across the instrument's surface.
+        pResonatorBright = clamp (pResonatorBright + brightnessLfoMod, 0.0f, 1.0f);
 
         // =================================================================
         //  Shore morphing: decompose continuous shore position into
@@ -1791,6 +1809,25 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "osprey_macroSpace", 1 }, "Osprey Macro SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+
+        // --- D002: LFO Shape + Second LFO ---
+        // LFO1 shape: selects waveform for the existing sea state LFO (was sine-only).
+        // 0=Sine, 1=Triangle, 2=Saw, 3=Square, 4=S&H
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_lfo1Shape", 1 }, "Osprey LFO1 Shape",
+            juce::NormalisableRange<float> (0.0f, 4.0f, 1.0f), 0.0f));
+
+        // LFO2: secondary modulator targeting resonator brightness.
+        // Rate: 0.01-8 Hz (slow shimmer to fast tremolo). Depth: 0-1.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_lfo2Rate", 1 }, "Osprey LFO2 Rate",
+            juce::NormalisableRange<float> (0.01f, 8.0f, 0.01f, 0.35f), 0.2f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_lfo2Depth", 1 }, "Osprey LFO2 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "osprey_lfo2Shape", 1 }, "Osprey LFO2 Shape",
+            juce::NormalisableRange<float> (0.0f, 4.0f, 1.0f), 1.0f));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -1824,6 +1861,10 @@ public:
         // Round 10F: voice mode and glide
         paramVoiceMode         = apvts.getRawParameterValue ("osprey_voiceMode");
         paramGlideTime         = apvts.getRawParameterValue ("osprey_glide");
+        paramLfo1Shape         = apvts.getRawParameterValue ("osprey_lfo1Shape");
+        paramLfo2Rate          = apvts.getRawParameterValue ("osprey_lfo2Rate");
+        paramLfo2Depth         = apvts.getRawParameterValue ("osprey_lfo2Depth");
+        paramLfo2Shape         = apvts.getRawParameterValue ("osprey_lfo2Shape");
     }
 
     //==========================================================================
@@ -2119,6 +2160,9 @@ private:
     // Rate is controlled by M2 MOVEMENT macro (higher MOVEMENT = faster LFO = choppier seas).
     OspreyLFO seaStateLFO;
 
+    // D002: Second LFO — targets resonator brightness for timbral shimmer.
+    OspreyLFO brightnessLFO;
+
     // --- Coupling accumulators ---
     // Written by applyCouplingInput(), consumed and cleared each renderBlock()
     float  peakEnvelopeOutput          = 0.0f;   // output: peak env for coupling reads
@@ -2188,6 +2232,12 @@ private:
     // Round 10F: voice mode and glide (osprey_voiceMode, osprey_glide)
     std::atomic<float>* paramVoiceMode         = nullptr;  // 0=Poly, 1=Mono, 2=Legato
     std::atomic<float>* paramGlideTime         = nullptr;  // portamento time 0–2s
+
+    // D002: LFO shape + second LFO
+    std::atomic<float>* paramLfo1Shape         = nullptr;  // 0=Sine, 1=Tri, 2=Saw, 3=Sq, 4=S&H
+    std::atomic<float>* paramLfo2Rate          = nullptr;  // 0.01-8 Hz
+    std::atomic<float>* paramLfo2Depth         = nullptr;  // 0-1
+    std::atomic<float>* paramLfo2Shape         = nullptr;  // 0=Sine, 1=Tri, 2=Saw, 3=Sq, 4=S&H
 };
 
 } // namespace xomnibus
