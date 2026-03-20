@@ -76,7 +76,7 @@
       "osti_seat3_instrument": 10,
       "osti_seat3_articulation": 2,
       "osti_seat3_tuning": 7.0,
-      "osti_seat3_decay": 2.5,
+      "osti_seat3_decay": 2.0,
       "osti_seat3_brightness": 0.55,
       "osti_seat3_body": 0.1,
       "osti_seat3_level": 0.5,

@@ -53,7 +53,7 @@
       "sky_shimmerDamping": 0.15,
       "sky_shimmerFeedback": 0.85,
       "sky_shimmerOctave": 0.8,
-      "sky_chorusRate": 0.0,
+      "sky_chorusRate": 0.05,
       "sky_chorusDepth": 0.0,
       "sky_chorusMix": 0.0,
       "sky_unisonCount": 3,

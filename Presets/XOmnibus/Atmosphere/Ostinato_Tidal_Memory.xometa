@@ -35,7 +35,7 @@
     "SPACE"
   ],
   "couplingIntensity": "None",
-  "tempo": 30.0,
+  "tempo": 40.0,
   "dna": {
     "brightness": 0.2,
     "warmth": 0.75,
@@ -77,7 +77,7 @@
       "osti_seat3_instrument": 10,
       "osti_seat3_articulation": 1,
       "osti_seat3_tuning": 0.0,
-      "osti_seat3_decay": 2.5,
+      "osti_seat3_decay": 2.0,
       "osti_seat3_brightness": 0.35,
       "osti_seat3_body": 0.2,
       "osti_seat3_level": 0.35,
@@ -162,7 +162,7 @@
       "osti_macroFire": 0.1,
       "osti_macroCircle": 0.3,
       "osti_macroSpace": 0.9,
-      "osti_tempo": 30.0,
+      "osti_tempo": 40.0,
       "osti_swing": 0.0,
       "osti_masterTune": 0.0,
       "osti_masterDecay": 1.618,
