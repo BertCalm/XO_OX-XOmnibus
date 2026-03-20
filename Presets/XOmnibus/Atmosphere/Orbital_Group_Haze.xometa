@@ -3,7 +3,7 @@
   "name": "Group Haze",
   "mood": "Atmosphere",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope stagger creating hazy layers — each group entering at different time, atmospheric depth.",
   "tags": ["group", "haze", "layered", "atmospheric", "atmosphere"],

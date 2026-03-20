@@ -3,7 +3,7 @@
   "name": "Bioluminescent Wake",
   "mood": "Atmosphere",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Trail of light left by fast wavetable scan — bright formant shimmer over a slow echo tail captures the visual logic of bioluminescence in an orca's wake.",
   "tags": ["atmosphere", "bioluminescent", "shimmer", "wake", "luminous"],

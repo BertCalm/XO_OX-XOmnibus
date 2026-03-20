@@ -3,7 +3,7 @@
   "name": "FM Crown",
   "mood": "Prism",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM sideband crown — prismatic frequency modulation, warm carrier, bright sidebands.",
   "tags": ["FM", "crown", "sideband", "modulated"],

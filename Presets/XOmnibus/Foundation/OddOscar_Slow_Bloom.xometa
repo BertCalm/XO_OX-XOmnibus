@@ -3,7 +3,7 @@
   "name": "Slow Bloom",
   "mood": "Foundation",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gradual blooming morph — slow filter envelope reveals harmonic depth over time.",
   "tags": ["slow", "bloom", "gradual", "harmonic"],

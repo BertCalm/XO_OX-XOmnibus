@@ -3,7 +3,7 @@
   "name": "Negative Sweep",
   "mood": "Prism",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Negative filter envelope amount sweeps the filter closed on attack — darkness blooming from silence.",
   "tags": ["prism", "negative", "envelope", "invert", "sweep", "dark"],

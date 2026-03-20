@@ -3,7 +3,7 @@
   "name": "Rule 184 Road",
   "mood": "Foundation",
   "engines": ["Organism"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rule 184 traffic-flow automaton rendered as a rolling rhythmic sine pulse.",
   "tags": ["rhythmic", "cellular", "pulse", "driving"],

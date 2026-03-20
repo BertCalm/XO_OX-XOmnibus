@@ -3,7 +3,7 @@
   "name": "Vocal Dialect",
   "mood": "Foundation",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant network pushed hard. Five-band vowel filter tracks the metallic wavetable — the specific sound pattern that identifies pod membership. LFO slow-scanning through the formant space like a call being recognized.",
   "tags": ["foundation", "vocal", "formant", "wavetable", "pod"],

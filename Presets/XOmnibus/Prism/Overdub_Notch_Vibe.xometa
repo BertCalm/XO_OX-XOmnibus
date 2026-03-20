@@ -3,7 +3,7 @@
   "name": "Notch Vibe",
   "mood": "Prism",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Notch filter with envelope creates a telephonic mid-scoop like a phaser without the motion.",
   "tags": ["prism", "notch", "filter", "telephonic", "mid-scoop", "character"],

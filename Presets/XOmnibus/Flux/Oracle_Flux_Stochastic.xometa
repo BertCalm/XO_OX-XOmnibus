@@ -3,7 +3,7 @@
   "name": "Flux Stochastic",
   "mood": "Flux",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum flux in stochastic space — drift and evolution racing each other.",
   "tags": ["flux", "stochastic", "fast", "dynamic"],

@@ -3,7 +3,7 @@
   "name": "Benthic Group",
   "mood": "Submerged",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope system at benthic depth — 4 groups staggered in slow dark swell, low spectral mass.",
   "tags": ["benthic", "group", "swell", "slow", "submerged"],

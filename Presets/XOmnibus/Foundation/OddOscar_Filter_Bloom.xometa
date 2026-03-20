@@ -3,7 +3,7 @@
   "name": "Filter Bloom",
   "mood": "Foundation",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter-forward bloom morph — filter envelope depth is the primary expressive element.",
   "tags": ["filter", "envelope", "expressive", "depth"],

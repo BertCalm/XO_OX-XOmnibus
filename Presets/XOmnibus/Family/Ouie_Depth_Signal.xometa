@@ -3,7 +3,7 @@
   "name": "Depth Signal",
   "mood": "Family",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Split mode: low register for Voice A bass frequencies, high register for Voice B treble. Parent calling to offspring across the water column — each voice in its natural register.",
   "tags": ["duophonic", "expressive", "counterpoint", "steel"],

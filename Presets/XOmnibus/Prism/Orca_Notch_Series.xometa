@@ -3,7 +3,7 @@
   "name": "Notch Series",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Comb filter at ultra-high resonance creating a strong harmonic comb notch pattern. Each note activates a unique notch series based on pitch. The absent frequencies become as important as the present ones.",
   "tags": ["prism", "notch", "comb", "harmonic", "absence"],

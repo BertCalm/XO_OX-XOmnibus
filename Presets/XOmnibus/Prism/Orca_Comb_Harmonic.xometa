@@ -3,7 +3,7 @@
   "name": "Comb Harmonic",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Comb filter as the primary spectral shaper. Very high resonance creates strong periodic notch pattern that colors every harmonic differently. Clicks as input impulse, echolocation mix near full. Metallic precision.",
   "tags": ["prism", "comb", "harmonic", "notch", "spectral"],

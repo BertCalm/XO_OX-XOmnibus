@@ -3,7 +3,7 @@
   "name": "Refraction",
   "mood": "Prism",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Grain light split into spectra — bandpass filter with high resonance reveals grain harmonics like a prism.",
   "tags": ["refraction", "prism", "spectral", "bandpass", "harmonic"],

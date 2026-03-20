@@ -3,7 +3,7 @@
   "name": "Benthic Boid",
   "mood": "Submerged",
   "engines": ["Oceanic"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bottom-dwelling boid creatures — dense, slow, crawling along the seafloor in tight formation.",
   "tags": ["benthic", "boid", "bottom", "crawling", "submerged"],

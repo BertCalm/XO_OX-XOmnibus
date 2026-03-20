@@ -3,7 +3,7 @@
   "name": "Slow Drift Pad",
   "mood": "Foundation",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lazily drifting grain pad with soft smear and low filter — a reliable foundation voice.",
   "tags": ["pad", "drift", "slow", "foundation", "granular"],

@@ -3,7 +3,7 @@
   "name": "Morph Gate",
   "mood": "Prism",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full morph crossfade gate — noise profile into harmonic, fast group attack texture.",
   "tags": ["morph", "gate", "noise-to-harmonic", "textured"],

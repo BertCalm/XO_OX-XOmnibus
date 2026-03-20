@@ -3,7 +3,7 @@
   "name": "Morph Arc",
   "mood": "Prism",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic morph arc — filter envelope sweeps a bright arc through the harmonic spectrum.",
   "tags": ["arc", "sweep", "bright", "spectral"],

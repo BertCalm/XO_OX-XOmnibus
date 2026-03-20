@@ -3,7 +3,7 @@
   "name": "Pack Run",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multiple pod members at full speed in formation. Poly mode for the simultaneous voices, high echo rate for rapid navigation, all five subsystems coordinating in real-time. The pack at maximum efficiency.",
   "tags": ["flux", "pack", "formation", "speed", "polyphonic"],

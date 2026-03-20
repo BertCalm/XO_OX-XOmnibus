@@ -3,7 +3,7 @@
   "name": "S And H Sonar",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO2 set to Sample & Hold shape driving echolocation rate — the click bursts becoming rhythmically stochastic, firing at random intervals. The sonar equivalent of probabilistic spatial mapping.",
   "tags": ["prism", "sample-hold", "stochastic", "random", "rhythmic"],

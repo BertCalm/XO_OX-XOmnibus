@@ -3,7 +3,7 @@
   "name": "Oracle Entangled",
   "mood": "Entangled",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two stochastic streams quantum-entangled — one drifts and the other mirrors probabilistically.",
   "tags": ["entangled", "quantum", "dual", "oracle"],

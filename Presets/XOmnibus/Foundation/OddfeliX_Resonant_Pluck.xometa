@@ -3,7 +3,7 @@
   "name": "Resonant Pluck",
   "mood": "Foundation",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-resonance pluck — filter self-oscillation at the edge of feedback, bright and ringing.",
   "tags": ["resonant", "pluck", "ring", "feedback"],

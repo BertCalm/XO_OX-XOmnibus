@@ -3,7 +3,7 @@
   "name": "Damped Loop",
   "mood": "Foundation",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-damping loop that resists chaos — leash and damping together create a tight, disciplined orbit.",
   "tags": ["damped", "loop", "disciplined", "tight", "foundation"],

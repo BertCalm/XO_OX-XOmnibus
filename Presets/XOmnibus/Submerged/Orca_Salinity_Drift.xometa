@@ -3,7 +3,7 @@
   "name": "Salinity Drift",
   "mood": "Submerged",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-moving halocline texture — echo resonance blooms and decays as though navigating salt-density gradients, wavetable scanning at oceanic tide pace.",
   "tags": ["submerged", "drift", "halocline", "texture", "slow"],

@@ -3,7 +3,7 @@
   "name": "Counter Rhythm",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Duo mode with very different filter envelopes creating polyrhythmic texture when playing rapid note sequences.",
   "tags": ["counterpoint", "movement", "expressive", "duophonic"],

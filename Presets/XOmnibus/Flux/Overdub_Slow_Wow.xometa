@@ -3,7 +3,7 @@
   "name": "Slow Wow",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow tape wow modulation creates gentle pitch drift, like a tape machine warming up after a cold night.",
   "tags": ["flux", "wow", "tape", "slow", "pitch-drift", "warming"],

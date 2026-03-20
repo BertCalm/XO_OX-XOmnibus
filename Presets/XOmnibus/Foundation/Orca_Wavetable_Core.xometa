@@ -3,7 +3,7 @@
   "name": "Wavetable Core",
   "mood": "Foundation",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean wavetable foundation at mid-table position — minimal effects reveal the raw timbral character of the orca wavetable engine, a blank canvas for sound design.",
   "tags": ["foundation", "clean", "wavetable", "neutral", "init"],

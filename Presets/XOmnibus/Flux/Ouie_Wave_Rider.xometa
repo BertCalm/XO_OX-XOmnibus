@@ -3,7 +3,7 @@
   "name": "Wave Rider",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wavetable Voice A with slow morph LFO, VA Voice B static. Voice A surfing through timbres above the foundational tone.",
   "tags": ["movement", "evolving", "expressive", "duophonic"],

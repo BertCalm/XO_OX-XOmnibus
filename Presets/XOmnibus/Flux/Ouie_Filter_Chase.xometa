@@ -3,7 +3,7 @@
   "name": "Filter Chase",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter A chasing up while Filter B chases down — opposing LFO filter motion. Counterpoint in the spectral domain.",
   "tags": ["counterpoint", "movement", "tension", "cutting"],

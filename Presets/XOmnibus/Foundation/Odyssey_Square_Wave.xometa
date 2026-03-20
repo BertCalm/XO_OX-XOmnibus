@@ -3,7 +3,7 @@
   "name": "Square Wave",
   "mood": "Foundation",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean square oscillator — hollow mid character, moderate PWM, bright filter.",
   "tags": ["square", "hollow", "PWM", "clean"],

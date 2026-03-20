@@ -3,7 +3,7 @@
   "name": "Morph Snap",
   "mood": "Flux",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Snappy morph attack — short decay with high filter env gives a percussive morph character.",
   "tags": ["snap", "morph", "percussive", "short"],

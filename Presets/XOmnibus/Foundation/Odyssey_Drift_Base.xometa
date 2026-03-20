@@ -3,7 +3,7 @@
   "name": "Drift Base",
   "mood": "Foundation",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift engine exposed — oscillator detuning via drift, slow and alive, wavetable shimmer.",
   "tags": ["drift", "alive", "detuned", "shimmer"],

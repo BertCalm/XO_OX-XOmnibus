@@ -3,7 +3,7 @@
   "name": "Shimmer Arc",
   "mood": "Prism",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arcing shimmer across filter sweep — shimmer at maximum with LFO-modulated cutoff.",
   "tags": ["shimmer", "arc", "sweep", "dynamic"],

@@ -3,7 +3,7 @@
   "name": "Phase Lock",
   "mood": "Foundation",
   "engines": ["Organon"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phason shift locked at stable point — biological oscillator phase-locked to fundamental.",
   "tags": ["phase", "lock", "foundation", "stable", "phason", "organic"],

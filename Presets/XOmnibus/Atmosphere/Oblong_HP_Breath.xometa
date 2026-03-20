@@ -3,7 +3,7 @@
   "name": "HP Breath",
   "mood": "Atmosphere",
   "engines": ["Oblong"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-pass filter breathing — airy atmospheric overtones from the amber oscillator pair.",
   "tags": ["atmosphere", "highpass", "airy", "overtones"],

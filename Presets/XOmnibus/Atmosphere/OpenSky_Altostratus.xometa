@@ -3,7 +3,7 @@
   "name": "Altostratus",
   "mood": "Atmosphere",
   "engines": ["OpenSky"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-altitude sheet cloud diffusing the light into an even grey-white glow across the whole sky.",
   "tags": ["diffuse", "grey", "atmospheric", "mid-altitude"],

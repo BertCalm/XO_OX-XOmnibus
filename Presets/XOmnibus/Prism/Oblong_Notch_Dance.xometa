@@ -3,7 +3,7 @@
   "name": "Notch Dance",
   "mood": "Prism",
   "engines": ["Oblong"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Notch filter animated by LFO — comb-like prism effect dancing through the amber.",
   "tags": ["prism", "notch", "animated", "comb"],

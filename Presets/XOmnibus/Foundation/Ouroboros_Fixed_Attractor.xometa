@@ -3,7 +3,7 @@
   "name": "Fixed Attractor",
   "mood": "Foundation",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "System locked at a fixed-point attractor — no chaos, heavy damping, orbit collapsed to a single note.",
   "tags": ["fixed", "attractor", "locked", "still", "foundation"],

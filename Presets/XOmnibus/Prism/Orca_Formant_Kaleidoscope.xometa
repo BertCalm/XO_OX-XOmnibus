@@ -3,7 +3,7 @@
   "name": "Formant Kaleidoscope",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum formant intensity with rapid wavetable scan decomposes every note into a shifting kaleidoscope of vowel colors, harmonic identities morphing through the table.",
   "tags": ["prism", "formant", "kaleidoscope", "shifting", "harmonic"],

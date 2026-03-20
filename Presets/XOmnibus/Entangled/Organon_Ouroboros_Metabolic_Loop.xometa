@@ -3,7 +3,7 @@
   "name": "Metabolic Loop",
   "mood": "Entangled",
   "engines": ["Organon", "Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Organon metabolism feeding Ouroboros attractor — the cell consuming and regenerating in a strange loop.",
   "tags": ["entangled", "metabolic", "loop", "ouroboros", "attractor", "organic"],

@@ -3,7 +3,7 @@
   "name": "Target Lock",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The moment the pod identifies a single target — all attention converges. LFO2 at high rate modulating echolocation, formant shift pointed toward the target frequency, Hunt macro armed but not yet full.",
   "tags": ["flux", "focus", "target", "precision", "locked"],

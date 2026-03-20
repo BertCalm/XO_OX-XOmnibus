@@ -3,7 +3,7 @@
   "name": "Dispersion Field",
   "mood": "Prism",
   "engines": ["OpenSky"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "White light entering a refractive medium — a slow blooming of separated frequencies.",
   "tags": ["prism", "dispersion", "slow", "harmonic"],

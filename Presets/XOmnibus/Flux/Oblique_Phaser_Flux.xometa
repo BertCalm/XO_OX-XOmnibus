@@ -3,7 +3,7 @@
   "name": "Phaser Flux",
   "mood": "Flux",
   "engines": ["Oblique"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-rate phaser flux — fast oscillating phaser at near-feedback with bounce chaos.",
   "tags": ["phaser", "flux", "oscillating", "fast"],

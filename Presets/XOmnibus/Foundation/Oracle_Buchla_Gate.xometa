@@ -3,7 +3,7 @@
   "name": "Buchla Gate",
   "mood": "Foundation",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Homage to Buchla: fast attack, clipped release, Cauchy distribution at the gate.",
   "tags": ["buchla", "foundation", "percussive", "gate"],

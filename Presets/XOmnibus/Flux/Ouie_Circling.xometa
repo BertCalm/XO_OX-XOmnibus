@@ -3,7 +3,7 @@
   "name": "Circling",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both LFOs on pitch at slightly offset rates — voice A and B slowly drift apart and back. Circular predatory patrol.",
   "tags": ["movement", "tension", "duophonic", "evolving"],

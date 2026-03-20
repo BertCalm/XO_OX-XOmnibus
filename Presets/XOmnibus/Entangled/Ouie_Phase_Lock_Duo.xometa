@@ -3,7 +3,7 @@
   "name": "Phase Lock Duo",
   "mood": "Entangled",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Identical filter settings phase-locked between voices, constructive interference.",
   "tags": ["entangled", "phase-locked", "constructive", "interference"],

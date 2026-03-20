@@ -3,7 +3,7 @@
   "name": "Tape Flutter",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High wow and flutter with pitch LFO, mimicking a tape machine running just below speed.",
   "tags": ["flux", "tape", "flutter", "wow", "unstable", "vintage"],

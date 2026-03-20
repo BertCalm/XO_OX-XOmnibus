@@ -3,7 +3,7 @@
   "name": "Pluck Chord",
   "mood": "Foundation",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Plucked chord with group envelope stagger — fast decay, short release, warm overtone decay tail.",
   "tags": ["pluck", "chord", "fast", "staccato", "foundation"],

@@ -3,7 +3,7 @@
   "name": "Barrier Wall",
   "mood": "Foundation",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum elasticity creates a bouncing generative tone that hits the barrier hard.",
   "tags": ["foundation", "elastic", "barrier", "xenakis"],

@@ -3,7 +3,7 @@
   "name": "FM Swarm",
   "mood": "Flux",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High FM index swarm — irrational ratio detuning, noise profile blend, fast envelopes.",
   "tags": ["FM", "swarm", "irrational", "dense"],

@@ -3,7 +3,7 @@
   "name": "Bandpass Burrow",
   "mood": "Prism",
   "engines": ["Overbite"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Narrow bandpass character synth — only the burrowing frequency range survives the filter.",
   "tags": ["synth", "bandpass", "narrow", "character"],

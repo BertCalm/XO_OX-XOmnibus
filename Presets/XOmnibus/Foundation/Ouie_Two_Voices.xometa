@@ -3,7 +3,7 @@
   "name": "Two Voices",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Duo mode — lower notes go to Voice A, higher to Voice B. The hammerhead's dual eye placement expressed as split register counterpoint.",
   "tags": ["duophonic", "counterpoint", "expressive"],

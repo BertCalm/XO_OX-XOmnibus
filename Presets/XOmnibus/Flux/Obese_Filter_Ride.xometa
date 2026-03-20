@@ -3,7 +3,7 @@
   "name": "Filter Ride",
   "mood": "Flux",
   "engines": ["Obese"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter cutoff in motion from low to high across a sustained note — the fat engine's ladder filter rides the note as a dynamic timbral event, opening from darkness into light.",
   "tags": ["flux", "filter", "dynamic", "timbral", "opening"],

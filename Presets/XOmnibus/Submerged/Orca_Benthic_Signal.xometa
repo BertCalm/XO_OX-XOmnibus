@@ -3,7 +3,7 @@
   "name": "Benthic Signal",
   "mood": "Submerged",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ultra-deep echolocation ping decaying into abyssal silence, wavetable locked at lowest position with maximum echo resonance.",
   "tags": ["submerged", "deep", "echolocation", "benthic", "sparse"],

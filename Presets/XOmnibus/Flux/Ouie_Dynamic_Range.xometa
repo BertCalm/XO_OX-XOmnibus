@@ -3,7 +3,7 @@
   "name": "Dynamic Range",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum velocity sensitivity + filter LFO. Playing dynamics translate directly into spectrum — whisper to roar.",
   "tags": ["expressive", "movement", "evolving", "predator"],

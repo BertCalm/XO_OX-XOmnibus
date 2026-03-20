@@ -3,7 +3,7 @@
   "name": "Shark Dance",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-rate LFO pitch on Voice A, filter wobble on Voice B. Asymmetric movement — one voice dances, one holds.",
   "tags": ["movement", "expressive", "duophonic", "counterpoint"],

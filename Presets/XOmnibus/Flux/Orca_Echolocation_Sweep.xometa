@@ -3,7 +3,7 @@
   "name": "Echolocation Sweep",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter sweep synchronized to echo return — as resonance peaks and decays, the filter opens and closes like an active echolocation scan sweeping a target zone.",
   "tags": ["flux", "sweep", "filter", "echolocation", "active"],

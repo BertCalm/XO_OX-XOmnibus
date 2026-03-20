@@ -3,7 +3,7 @@
   "name": "Bonded Hunters",
   "mood": "Entangled",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two hammerheads hunting in coordinated pair, filters tracking the same prey.",
   "tags": ["entangled", "hunting", "coordinated", "bonded"],

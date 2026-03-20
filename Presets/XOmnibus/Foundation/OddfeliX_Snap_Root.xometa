@@ -3,7 +3,7 @@
   "name": "Snap Root",
   "mood": "Foundation",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Root-position snap with minimal detune and downward filter decay — grounding energy.",
   "tags": ["root", "snap", "grounded", "foundation"],

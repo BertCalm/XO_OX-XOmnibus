@@ -3,7 +3,7 @@
   "name": "Bounce Spectrum",
   "mood": "Prism",
   "engines": ["Oblique"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum bounce count — 8 bounces cascading through full prism color spectrum.",
   "tags": ["bounce", "spectrum", "cascade", "maximum"],

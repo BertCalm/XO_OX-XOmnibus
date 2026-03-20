@@ -3,7 +3,7 @@
   "name": "Stochastic Web",
   "mood": "Entangled",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A web of coupled stochastic events — each breakpoint triggers probabilistic cousins.",
   "tags": ["entangled", "web", "network", "stochastic"],

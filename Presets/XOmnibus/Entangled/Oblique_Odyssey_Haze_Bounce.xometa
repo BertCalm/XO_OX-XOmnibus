@@ -3,7 +3,7 @@
   "name": "Haze Bounce",
   "mood": "Entangled",
   "engines": ["Oblique", "Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ODYSSEY's haze depth modulating OBLIQUE's bounce damping — more haze means longer bounce decay, atmospheric depth and geometric momentum in sync.",
   "tags": ["haze", "bounce", "damp", "depth", "entangled"],

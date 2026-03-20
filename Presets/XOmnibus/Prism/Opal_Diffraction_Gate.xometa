@@ -3,7 +3,7 @@
   "name": "Diffraction Gate",
   "mood": "Prism",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "HP filter opens like a diffraction gate — grains emerge from below as brighter spectral fragments.",
   "tags": ["diffraction", "gate", "highpass", "spectral", "prism"],

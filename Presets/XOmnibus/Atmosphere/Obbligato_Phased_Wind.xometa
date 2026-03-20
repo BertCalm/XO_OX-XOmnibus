@@ -3,7 +3,7 @@
   "name": "Phased Wind",
   "mood": "Atmosphere",
   "engines": ["Obbligato"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phaser effect on voice B creates slow phase sweeps through paired woodwind breath.",
   "tags": ["woodwind", "phaser", "wind", "sweeping", "atmospheric"],

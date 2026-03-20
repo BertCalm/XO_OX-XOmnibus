@@ -3,7 +3,7 @@
   "name": "Valve Spectrum",
   "mood": "Prism",
   "engines": ["Ottoni"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum tween valve position creating spectral brass texture while grow and embouchure vary.",
   "tags": ["brass", "valve", "spectral", "tween", "prismatic"],

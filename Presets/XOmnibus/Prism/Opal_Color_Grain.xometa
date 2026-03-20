@@ -3,7 +3,7 @@
   "name": "Color Grain",
   "mood": "Prism",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Grain cloud with strong color variation — pitch scatter paints each grain a different spectral hue.",
   "tags": ["color", "grain", "spectral", "hue", "prism"],

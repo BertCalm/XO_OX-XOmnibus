@@ -3,7 +3,7 @@
   "name": "Ink Pulse",
   "mood": "Flux",
   "engines": ["Octopus"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ink cloud triggered rhythmically at medium threshold — each burst fires on velocity peaks, creating a dark-flux stutter that pulses with the music's dynamic contour.",
   "tags": ["flux", "ink", "rhythmic", "stutter", "dynamic"],

@@ -3,7 +3,7 @@
   "name": "Tape Web",
   "mood": "Entangled",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bidirectional delay feedback web — two engines sharing time-space through tape circuits.",
   "tags": ["entangled", "tape", "web", "bidirectional", "delay", "circuit"],

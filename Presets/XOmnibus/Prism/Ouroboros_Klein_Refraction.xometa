@@ -3,7 +3,7 @@
   "name": "Klein Refraction",
   "mood": "Prism",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Klein bottle as light prism — non-orientable topology refracts orbits into prismatic harmonic bands.",
   "tags": ["klein", "refraction", "non-orientable", "harmonic", "prism"],

@@ -3,7 +3,7 @@
   "name": "Tension Release",
   "mood": "Entangled",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "HAMMER LFO at slow rate — voice interaction cycling the STRIFE-LOVE axis once per second. Built-in musical resolution.",
   "tags": ["tension", "evolving", "movement", "expressive"],

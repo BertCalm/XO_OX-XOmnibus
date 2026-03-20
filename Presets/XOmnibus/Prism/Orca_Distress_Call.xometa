@@ -3,7 +3,7 @@
   "name": "Distress Call",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The call type that brings the pod from miles away. Formant shift high, rapid LFO, echolocation rate maxed — an urgent acoustic signal cutting through noise. The biological alarm system at full output.",
   "tags": ["prism", "distress", "urgent", "alarm", "call"],

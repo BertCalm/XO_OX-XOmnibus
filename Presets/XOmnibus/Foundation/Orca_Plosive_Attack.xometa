@@ -3,7 +3,7 @@
   "name": "Plosive Attack",
   "mood": "Foundation",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The plosive consonant of orca vocalization — a hard stop before the resonant vowel. Very fast attack, short decay, high formant intensity. Used as a transient shaper or rhythmic element in production.",
   "tags": ["foundation", "plosive", "transient", "attack", "rhythmic"],

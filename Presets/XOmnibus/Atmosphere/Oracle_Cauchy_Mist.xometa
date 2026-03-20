@@ -3,7 +3,7 @@
   "name": "Cauchy Mist",
   "mood": "Atmosphere",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cauchy distribution creates heavy-tailed atmospheric fog with unpredictable bursts.",
   "tags": ["atmosphere", "cauchy", "fog", "generative"],

@@ -3,7 +3,7 @@
   "name": "Foraging Party",
   "mood": "Family",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A small group heading out to hunt — not the full pod, just 3-4 individuals. Poly mode, moderate hunt macro, good energy but family context maintained. The sub-group within the family operating as a unit.",
   "tags": ["family", "foraging", "group", "cooperative", "moderate"],

@@ -3,7 +3,7 @@
   "name": "Lorenz Drift",
   "mood": "Atmosphere",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lorenz butterfly slowly drifting — low rate keeps the butterfly wings visible and atmospheric.",
   "tags": ["lorenz", "drift", "butterfly", "slow", "atmosphere"],

@@ -3,7 +3,7 @@
   "name": "Attractor Spectrum",
   "mood": "Prism",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Strange attractor cycling through spectral colors — medium chaos with varying phase sweeps harmonics.",
   "tags": ["attractor", "spectrum", "spectral", "phase", "prism"],

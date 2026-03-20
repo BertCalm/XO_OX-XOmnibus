@@ -3,7 +3,7 @@
   "name": "High Formant",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant shift at maximum — the five-band filter network pushed to its highest frequency configuration. The presence band and air band both fully active. Bright, forward, almost human-like upper formants.",
   "tags": ["prism", "high", "formant", "bright", "forward"],

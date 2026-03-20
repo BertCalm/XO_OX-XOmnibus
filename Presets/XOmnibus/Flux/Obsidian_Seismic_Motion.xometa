@@ -3,7 +3,7 @@
   "name": "Seismic Motion",
   "mood": "Flux",
   "engines": ["Obsidian"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Trembling mineral terrain — seismic LFO modulation with irregular cross-mod bursts.",
   "tags": ["seismic", "trembling", "modulation", "irregular"],

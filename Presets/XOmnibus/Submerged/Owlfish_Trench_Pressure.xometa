@@ -3,7 +3,7 @@
   "name": "Trench Pressure",
   "mood": "Submerged",
   "engines": ["Owlfish"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low cutoff with maximum sub density and heavy body resonance at 22Hz — the physical sensation of trench pressure in audio.",
   "tags": ["submerged", "trench", "pressure", "maximum-depth", "22hz", "body"],

@@ -3,7 +3,7 @@
   "name": "Step Echo",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic delay steps with LFO filter movement — syncopated echo that moves like a dancer.",
   "tags": ["flux", "rhythm", "delay", "step", "syncopated", "lfo"],

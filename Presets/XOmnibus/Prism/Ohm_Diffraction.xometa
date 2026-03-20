@@ -3,7 +3,7 @@
   "name": "Diffraction",
   "mood": "Prism",
   "engines": ["Ohm"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Blown tone diffracting around grain scatter, spectral bending like light around edges.",
   "tags": ["prism", "diffraction", "spectral", "bending"],

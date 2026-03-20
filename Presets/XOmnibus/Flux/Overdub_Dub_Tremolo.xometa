@@ -3,7 +3,7 @@
   "name": "Dub Tremolo",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Amplitude modulation tremolo with tape delay offset — the classic dub engineer trick.",
   "tags": ["flux", "tremolo", "amplitude", "tape", "lfo", "dub-engineer"],

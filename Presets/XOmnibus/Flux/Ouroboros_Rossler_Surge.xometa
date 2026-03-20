@@ -3,7 +3,7 @@
   "name": "Rossler Surge",
   "mood": "Flux",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rossler attractor surging — asymmetric chaos with periodic large excursions, sudden and wild.",
   "tags": ["rossler", "surge", "asymmetric", "excursion", "flux"],

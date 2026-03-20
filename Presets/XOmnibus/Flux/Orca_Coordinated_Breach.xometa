@@ -3,7 +3,7 @@
   "name": "Coordinated Breach",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multiple pod members breaching simultaneously — a behavior documented in orca but not fully understood. The mass displacement of several bodies landing at once. Maximum sub collision, maximum sidechain compression.",
   "tags": ["flux", "coordinated", "simultaneous", "breach", "mass"],

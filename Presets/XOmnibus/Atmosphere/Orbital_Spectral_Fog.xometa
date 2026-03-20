@@ -3,7 +3,7 @@
   "name": "Spectral Fog",
   "mood": "Atmosphere",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Noise-blended spectral fog — morph near noise profile, soft filter, ambient diffuse.",
   "tags": ["fog", "noise", "diffuse", "ambient"],

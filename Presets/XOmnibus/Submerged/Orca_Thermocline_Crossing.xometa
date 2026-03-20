@@ -3,7 +3,7 @@
   "name": "Thermocline Crossing",
   "mood": "Submerged",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow wavetable sweep mimicking the acoustic boundary between warm and cold water layers — formant shift glides from negative to positive across the thermal divide.",
   "tags": ["submerged", "thermocline", "transition", "slow", "ambient"],

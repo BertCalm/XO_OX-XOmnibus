@@ -3,7 +3,7 @@
   "name": "Scan Artifact",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast wavetable scan rate generates intermodulation artifacts — the sonic residue of rapid table traversal, producing shifting sidebands that no single position could create.",
   "tags": ["prism", "artifact", "scan", "intermodulation", "complex"],

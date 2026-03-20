@@ -3,7 +3,7 @@
   "name": "Pulse Morph",
   "mood": "Flux",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pulsing morph engine — short staccato notes pulse the morph filter in rapid succession.",
   "tags": ["pulse", "staccato", "rapid", "rhythmic"],

@@ -3,7 +3,7 @@
   "name": "Level Crossfade",
   "mood": "Prism",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice A fully up, Voice B at 30%. CURRENT macro brings Voice B to full and reduces A — audible blend morphing.",
   "tags": ["expressive", "counterpoint", "movement", "duophonic"],

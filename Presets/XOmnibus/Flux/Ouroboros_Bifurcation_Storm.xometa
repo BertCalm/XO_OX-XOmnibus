@@ -3,7 +3,7 @@
   "name": "Bifurcation Storm",
   "mood": "Flux",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Period-doubling cascade into full chaos — a system bifurcating rapidly through a stormy parameter sweep.",
   "tags": ["bifurcation", "cascade", "storm", "period-doubling", "flux"],

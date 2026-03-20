@@ -3,7 +3,7 @@
   "name": "Pulse Divide",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO1 at 4Hz, LFO2 at 3Hz — near-polyrhythmic LFO interaction creates evolving cross-beat filter animation.",
   "tags": ["movement", "evolving", "counterpoint", "tension"],

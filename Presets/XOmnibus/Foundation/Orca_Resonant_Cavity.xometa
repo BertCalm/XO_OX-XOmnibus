@@ -3,7 +3,7 @@
   "name": "Resonant Cavity",
   "mood": "Foundation",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The melon organ of an orca — the specialized fatty tissue that focuses echolocation clicks into a directional beam. Comb filter tuned to simulate the acoustic lens, formant network at biological precision.",
   "tags": ["foundation", "melon", "focus", "organ", "biological"],

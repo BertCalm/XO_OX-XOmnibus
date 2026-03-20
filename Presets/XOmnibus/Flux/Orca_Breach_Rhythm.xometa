@@ -3,7 +3,7 @@
   "name": "Breach Rhythm",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Breach dynamics used as a rhythmic tool — hard ratio compressor fires like a sidechain on every transient, turning the predator's impact into driving rhythmic pulse.",
   "tags": ["flux", "rhythmic", "breach", "drive", "pulse"],

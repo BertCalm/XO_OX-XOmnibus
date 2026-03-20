@@ -3,7 +3,7 @@
   "name": "Phase Tether",
   "mood": "Entangled",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phase-locked attractors in tethered entanglement — theta/phi coordinates mirrored across coupling.",
   "tags": ["phase", "tether", "locked", "mirrored", "entangled"],

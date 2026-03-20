@@ -3,7 +3,7 @@
   "name": "Color Shift",
   "mood": "Prism",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shifting chromatophore colors — morph parameter continuously cycles timbral hue.",
   "tags": ["color", "shift", "chromatophore", "cycle"],

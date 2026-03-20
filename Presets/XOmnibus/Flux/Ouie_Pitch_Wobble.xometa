@@ -3,7 +3,7 @@
   "name": "Pitch Wobble",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid pitch LFO making both voices waver and collide, unstable vibrato flux.",
   "tags": ["flux", "vibrato", "wobble", "unstable"],

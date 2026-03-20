@@ -3,7 +3,7 @@
   "name": "Mono Morph",
   "mood": "Foundation",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mono legato morph lead — single voice gliding between notes with continuous transformation.",
   "tags": ["mono", "lead", "glide", "morph"],

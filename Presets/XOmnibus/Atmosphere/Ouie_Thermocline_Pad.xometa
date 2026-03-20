@@ -3,7 +3,7 @@
   "name": "Thermocline Pad",
   "mood": "Atmosphere",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two voices at the temperature boundary — warm wavetable below, cool FM above. HAMMER holds them in tension at the interface.",
   "tags": ["duophonic", "evolving", "tension", "expressive"],

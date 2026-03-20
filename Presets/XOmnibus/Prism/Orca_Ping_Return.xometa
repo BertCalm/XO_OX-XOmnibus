@@ -3,7 +3,7 @@
   "name": "Ping Return",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Single echolocation ping and its acoustic return — the moment of spatial recognition. Echo mix at 0.8 with long delay time (low click rate), high resonance. Short attack, long decay. Used as plucked metallic texture.",
   "tags": ["prism", "ping", "return", "pluck", "resonance"],

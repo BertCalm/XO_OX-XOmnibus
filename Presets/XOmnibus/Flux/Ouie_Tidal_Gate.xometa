@@ -3,7 +3,7 @@
   "name": "Tidal Gate",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Velocity-driven filter gate — low velocity barely opens, high velocity floods the spectrum. Tidal pressure applied to both voices simultaneously.",
   "tags": ["expressive", "movement", "evolving", "steel"],

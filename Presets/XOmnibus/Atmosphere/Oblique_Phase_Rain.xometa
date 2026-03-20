@@ -3,7 +3,7 @@
   "name": "Phase Rain",
   "mood": "Atmosphere",
   "engines": ["Oblique"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phaser cycling like rainfall — slow sweep rate with high depth, bounces spaced like drops, atmospheric shimmer.",
   "tags": ["phaser", "rain", "sweep", "atmospheric", "atmosphere"],

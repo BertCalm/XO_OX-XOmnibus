@@ -3,7 +3,7 @@
   "name": "Bass Culture Dual",
   "mood": "Entangled",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overdub sub frequency modulates a paired engine's filter — the bass instructs the melody.",
   "tags": ["entangled", "coupling", "bass", "modulation", "filter", "instruction"],

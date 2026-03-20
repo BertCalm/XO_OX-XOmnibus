@@ -3,7 +3,7 @@
   "name": "LFO Spectrum",
   "mood": "Prism",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO targeting filter B sweeps through the spectrum while filter A holds anchor.",
   "tags": ["prism", "LFO", "sweeping", "spectral"],

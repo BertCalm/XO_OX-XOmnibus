@@ -3,7 +3,7 @@
   "name": "Dub To Opal",
   "mood": "Entangled",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Overdub's send VCA feeds granular cloud — tape delay fragments becoming grain scatter.",
   "tags": ["entangled", "coupling", "granular", "send", "feed", "experimental"],

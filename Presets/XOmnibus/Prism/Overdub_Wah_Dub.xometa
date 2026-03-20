@@ -3,7 +3,7 @@
   "name": "Wah Dub",
   "mood": "Prism",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bandpass filter envelope imitates a wah pedal on a dub session guitar riff.",
   "tags": ["prism", "wah", "bandpass", "guitar-feel", "envelope", "funky"],

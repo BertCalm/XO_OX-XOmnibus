@@ -3,7 +3,7 @@
   "name": "Pressure Gradient",
   "mood": "Atmosphere",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Water pressure increasing with depth — the sub layer grows as mid-range compresses. Breach compressor creates that sense of constriction. Formant shift slightly low for the pressure-dampened vowel space.",
   "tags": ["atmosphere", "pressure", "depth", "sub", "compressor"],

@@ -3,7 +3,7 @@
   "name": "Depth Model",
   "mood": "Foundation",
   "engines": ["Osprey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Water depth model at maximum — pressure and resonance of deep coastal shelves.",
   "tags": ["foundation", "depth", "pressure", "subaqueous"],

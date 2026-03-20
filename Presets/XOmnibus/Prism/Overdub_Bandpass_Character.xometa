@@ -3,7 +3,7 @@
   "name": "Bandpass Character",
   "mood": "Prism",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tight bandpass filter carves out a vocal-like resonant character from the sawtooth source.",
   "tags": ["prism", "bandpass", "vocal", "resonant", "character", "mid"],

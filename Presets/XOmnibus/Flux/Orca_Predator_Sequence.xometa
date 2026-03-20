@@ -3,7 +3,7 @@
   "name": "Predator Sequence",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hunt macro cycling at medium rate drives wavetable scan through attack and stalk phases — programmatic, evolving motion that follows predator logic across each phrase.",
   "tags": ["flux", "hunt", "sequence", "evolving", "motion"],

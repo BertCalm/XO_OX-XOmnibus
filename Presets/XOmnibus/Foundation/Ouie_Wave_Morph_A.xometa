@@ -3,7 +3,7 @@
   "name": "Wave Morph A",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wavetable morph from sine to square — both voices morphing at slightly different rates via LFOs. Timbral evolution in parallel.",
   "tags": ["duophonic", "evolving", "movement", "expressive"],

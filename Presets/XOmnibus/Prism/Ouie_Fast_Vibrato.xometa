@@ -3,7 +3,7 @@
   "name": "Fast Vibrato",
   "mood": "Prism",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO1 at 8Hz pitch vibrato on both voices. Classic expressive vibrato — the shark's rapid lateral undulation.",
   "tags": ["expressive", "movement", "duophonic", "counterpoint"],

@@ -3,7 +3,7 @@
   "name": "Morph Spectrum",
   "mood": "Prism",
   "engines": ["Obese"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum spectral morph with mojo at center — the fat morph parameter sweeps the harmonic content from dense to sparse as CHARACTER macro morphs character in real time.",
   "tags": ["prism", "morph", "spectral", "harmonic", "dynamic"],

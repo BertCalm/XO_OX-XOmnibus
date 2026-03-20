@@ -3,7 +3,7 @@
   "name": "Lateral Line",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Split mode — keyboard divided at C4. Low register VA saw; upper register wavetable. Mimics the shark's lateral line sensing across its body.",
   "tags": ["duophonic", "expressive", "focused", "counterpoint"],

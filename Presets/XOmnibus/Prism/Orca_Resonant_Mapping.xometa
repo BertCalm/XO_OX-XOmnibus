@@ -3,7 +3,7 @@
   "name": "Resonant Mapping",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-range click rate where spatial mapping transitions to harmonic tone. The comb resonance colors every pitch differently — a map that turns into music. LFO2 slowly drifts the click rate.",
   "tags": ["prism", "resonant", "mapping", "spatial", "harmonic"],

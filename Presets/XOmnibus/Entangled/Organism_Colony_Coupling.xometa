@@ -3,7 +3,7 @@
   "name": "Colony Coupling",
   "mood": "Entangled",
   "engines": ["Organism"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dual-coupled colony chains sharing rule state, rule 102 propagating bidirectionally.",
   "tags": ["entangled", "coupled", "bidirectional", "cellular"],

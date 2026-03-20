@@ -3,7 +3,7 @@
   "name": "Delay Bounce",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tight stutter delay that bounces against a filter LFO — pure kinetic energy in a feedback loop.",
   "tags": ["flux", "delay", "bounce", "stutter", "kinetic", "feedback"],

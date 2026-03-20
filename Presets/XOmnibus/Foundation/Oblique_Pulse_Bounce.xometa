@@ -3,7 +3,7 @@
   "name": "Pulse Bounce",
   "mood": "Foundation",
   "engines": ["Oblique"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pulse wave with active bounce — square oscillator feeding fast ricochet, clean prismatic stab.",
   "tags": ["pulse", "bounce", "square", "clean", "foundation"],

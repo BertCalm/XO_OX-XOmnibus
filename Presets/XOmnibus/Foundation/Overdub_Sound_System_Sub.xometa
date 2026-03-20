@@ -3,7 +3,7 @@
   "name": "Sound System Sub",
   "mood": "Foundation",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum sub pressure from stacked sine oscillators — designed for open-air sound system columns.",
   "tags": ["foundation", "sub", "sound-system", "deep", "powerful"],

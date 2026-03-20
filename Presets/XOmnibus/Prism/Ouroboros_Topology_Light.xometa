@@ -3,7 +3,7 @@
   "name": "Topology Light",
   "mood": "Prism",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Light refracted through a topological surface — different topology types produce different spectral bands.",
   "tags": ["topology", "light", "refracted", "spectral", "prism"],

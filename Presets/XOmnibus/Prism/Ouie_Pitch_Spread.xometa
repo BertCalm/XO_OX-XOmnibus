@@ -3,7 +3,7 @@
   "name": "Pitch Spread",
   "mood": "Prism",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum pitch divergence — Voice A at -12, Voice B at +12. Two octaves apart in LOVE mode for a rich harmonic tower.",
   "tags": ["powerful", "counterpoint", "duophonic", "expressive"],

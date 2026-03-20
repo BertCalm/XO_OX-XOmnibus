@@ -3,7 +3,7 @@
   "name": "Maqam Prism",
   "mood": "Prism",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maqam microtones split through a stochastic prism into exotic spectral components.",
   "tags": ["prism", "maqam", "microtonal", "spectral"],

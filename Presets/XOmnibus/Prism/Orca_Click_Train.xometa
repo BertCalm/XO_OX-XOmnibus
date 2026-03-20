@@ -3,7 +3,7 @@
   "name": "Click Train",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure echolocation — the biological sonar sequence. Rapid click bursts at 20Hz feeding ultra-high-resonance comb filter. As delay decreases, the clicks merge into ringing pitched tones that map the acoustic space.",
   "tags": ["prism", "echolocation", "click", "metallic", "sonar"],

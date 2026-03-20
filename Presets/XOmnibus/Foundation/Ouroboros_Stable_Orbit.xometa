@@ -3,7 +3,7 @@
   "name": "Stable Orbit",
   "mood": "Foundation",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A fixed point attractor in stable orbit — low chaos, strong leash, torus topology grounds the motion.",
   "tags": ["orbit", "stable", "torus", "attractor", "foundation"],

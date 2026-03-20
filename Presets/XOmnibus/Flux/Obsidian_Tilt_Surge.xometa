@@ -3,7 +3,7 @@
   "name": "Tilt Surge",
   "mood": "Flux",
   "engines": ["Obsidian"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Alternating tilt plane surge — LFO-driven tilt axis sweep through bright-dark extremes.",
   "tags": ["tilt", "surge", "sweep", "dynamic"],

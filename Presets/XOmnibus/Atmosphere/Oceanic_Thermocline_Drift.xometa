@@ -3,7 +3,7 @@
   "name": "Thermocline Drift",
   "mood": "Atmosphere",
   "engines": ["Oceanic"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Flock hovering at the thermocline boundary — temperature gradient creates slow oscillating drift.",
   "tags": ["thermocline", "drift", "boundary", "oscillating", "atmosphere"],

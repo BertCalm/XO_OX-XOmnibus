@@ -3,7 +3,7 @@
   "name": "Metabolic Burst",
   "mood": "Flux",
   "engines": ["Organon"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Metabolic rate spiking under sudden load — the cell burning glucose at maximum rate.",
   "tags": ["metabolic", "burst", "flux", "spike", "high-rate", "organic"],

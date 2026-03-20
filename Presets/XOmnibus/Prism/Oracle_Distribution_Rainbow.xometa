@@ -3,7 +3,7 @@
   "name": "Distribution Rainbow",
   "mood": "Prism",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Four probability distributions cycle through like a stochastic rainbow arc.",
   "tags": ["prism", "rainbow", "distribution", "cyclic"],

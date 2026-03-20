@@ -3,7 +3,7 @@
   "name": "Hammer LFO Clash",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two LFOs at different speeds clashing on different targets, rhythmic chaos.",
   "tags": ["flux", "polyrhythm", "clashing", "chaotic"],

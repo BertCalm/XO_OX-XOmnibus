@@ -3,7 +3,7 @@
   "name": "Duophonic Init",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Clean starting point — both voices VA saw at default pitch, filters open, HAMMER neutral. The blank canvas for OUIE.",
   "tags": ["duophonic", "expressive", "focused"],

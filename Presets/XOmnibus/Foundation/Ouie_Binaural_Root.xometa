@@ -3,7 +3,7 @@
   "name": "Binaural Root",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slight filter offset between A and B creates a natural binaural beating sensation.",
   "tags": ["foundation", "binaural", "beating", "stereo"],

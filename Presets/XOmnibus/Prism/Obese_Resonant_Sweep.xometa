@@ -3,7 +3,7 @@
   "name": "Resonant Sweep",
   "mood": "Prism",
   "engines": ["Obese"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High resonance filter envelope that sweeps from sub darkness to a stabbing mid peak on every note attack.",
   "tags": ["resonant", "sweep", "filter", "attack", "prism"],

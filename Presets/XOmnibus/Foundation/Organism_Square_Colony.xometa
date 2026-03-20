@@ -3,7 +3,7 @@
   "name": "Square Colony",
   "mood": "Foundation",
   "engines": ["Organism"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Square-wave colony with rule 110, moderate mutation and bright presence.",
   "tags": ["lead", "cellular", "bright", "rhythmic"],

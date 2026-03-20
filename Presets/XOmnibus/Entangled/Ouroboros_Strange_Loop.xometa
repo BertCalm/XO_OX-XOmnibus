@@ -3,7 +3,7 @@
   "name": "Strange Loop",
   "mood": "Entangled",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hofstadter strange loop — two attractors referencing each other in an endlessly entangled recursion.",
   "tags": ["strange", "loop", "recursive", "hofstadter", "entangled"],

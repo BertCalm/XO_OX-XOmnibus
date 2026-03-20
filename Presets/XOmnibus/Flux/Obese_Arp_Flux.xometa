@@ -3,7 +3,7 @@
   "name": "Arp Flux",
   "mood": "Flux",
   "engines": ["Obese"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arpeggiator in upward pattern through 3 octaves with synced rate — fat engine arp builds ascending sequences that evolve through each repetition with filter envelope motion.",
   "tags": ["flux", "arpeggio", "ascending", "sync", "evolving"],

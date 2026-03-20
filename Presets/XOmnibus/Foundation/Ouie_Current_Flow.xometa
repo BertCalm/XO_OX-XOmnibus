@@ -3,7 +3,7 @@
   "name": "Current Flow",
   "mood": "Foundation",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO filter wobble on both voices at different rates — continuous harmonic movement like tidal flow. CURRENT macro deepens the sweep.",
   "tags": ["duophonic", "movement", "evolving", "expressive"],

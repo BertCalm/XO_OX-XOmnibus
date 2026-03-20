@@ -3,7 +3,7 @@
   "name": "Periodic Drone",
   "mood": "Foundation",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Periodic-orbit drone with slight injection — steady predictable oscillation makes a reliable tone.",
   "tags": ["periodic", "drone", "predictable", "steady", "foundation"],

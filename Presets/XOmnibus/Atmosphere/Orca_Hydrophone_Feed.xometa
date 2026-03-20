@@ -3,7 +3,7 @@
   "name": "Hydrophone Feed",
   "mood": "Atmosphere",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The raw signal from an underwater microphone — everything filtered through miles of water. High echo mix, subtle formant presence, the ambient hiss of deep ocean acoustic environment.",
   "tags": ["atmosphere", "hydrophone", "field-recording", "underwater", "raw"],

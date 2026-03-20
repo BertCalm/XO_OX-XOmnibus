@@ -3,7 +3,7 @@
   "name": "Flicker Train",
   "mood": "Flux",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid-fire arp sequence with cascading downward sweeps — light flickering off each fish.",
   "tags": ["flicker", "arp", "cascade", "train"],

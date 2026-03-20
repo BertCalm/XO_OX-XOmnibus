@@ -3,7 +3,7 @@
   "name": "Granular Enzyme",
   "mood": "Entangled",
   "engines": ["Organon", "Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Organon enzyme activity driving Opal grain scatter — each catalytic event seeds a new grain cloud.",
   "tags": ["entangled", "granular", "enzyme", "opal", "coupling", "organic"],

@@ -3,7 +3,7 @@
   "name": "Noise Bloom",
   "mood": "Foundation",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Noise-profile spectral bloom with slow group attack stagger and smooth filter.",
   "tags": ["noise", "bloom", "spectral", "smooth"],

@@ -3,7 +3,7 @@
   "name": "Fjord Echo",
   "mood": "Atmosphere",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The enclosed natural reverb chamber of a fjord — steep rock walls creating long echolocation returns. The comb filter tuned to simulate stone reflection time, the formant network shaped by granite acoustics.",
   "tags": ["atmosphere", "fjord", "echo", "reverb", "enclosed"],

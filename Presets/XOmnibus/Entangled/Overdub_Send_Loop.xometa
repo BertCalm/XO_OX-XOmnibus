@@ -3,7 +3,7 @@
   "name": "Send Loop",
   "mood": "Entangled",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High send level creates a permanent coupling loop — whatever Overdub plays, the paired engine echoes.",
   "tags": ["entangled", "send", "loop", "echo", "coupled", "call-response"],

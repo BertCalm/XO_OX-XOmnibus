@@ -6,7 +6,7 @@
     "Orbital",
     "Orca"
   ],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orbital envelope output triggering Orca echolocation rate modulation. As Orbital's group envelope rises, the click rate accelerates — both engines locked in temporal coordination, the orbit becoming the hunt.",
   "tags": [

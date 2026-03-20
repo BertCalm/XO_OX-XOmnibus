@@ -3,7 +3,7 @@
   "name": "Encirclement",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The carousel hunt — orca swimming in tight circles around a prey school, compressing the bait ball. Wavetable scan cyclic, echo rate building tension, filter cutoff slowly rising. The trap tightening.",
   "tags": ["flux", "encirclement", "tension", "building", "circular"],

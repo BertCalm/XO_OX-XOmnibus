@@ -3,7 +3,7 @@
   "name": "Phase Prism",
   "mood": "Prism",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phase coordinates sweeping a prism — theta and phi at opposite extremes split the orbit into color.",
   "tags": ["phase", "prism", "theta", "phi", "spectral"],

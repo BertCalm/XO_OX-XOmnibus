@@ -3,7 +3,7 @@
   "name": "Contrail",
   "mood": "Atmosphere",
   "engines": ["OpenSky"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A thin white line drawn across the sky that slowly widens, blurs, and joins the clouds.",
   "tags": ["atmospheric", "fading", "bright", "trail"],

@@ -3,7 +3,7 @@
   "name": "Riddim LFO",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter LFO synced to dub rhythm with delay feedback — constant forward motion.",
   "tags": ["flux", "lfo", "filter", "riddim", "motion", "rhythmic"],

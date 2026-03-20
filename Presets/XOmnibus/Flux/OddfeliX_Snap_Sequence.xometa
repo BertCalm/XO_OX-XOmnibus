@@ -3,7 +3,7 @@
   "name": "Snap Sequence",
   "mood": "Flux",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Programmatic snap sequence — arp locked to pitch with steady tempo feel.",
   "tags": ["sequence", "arp", "tempo", "locked"],

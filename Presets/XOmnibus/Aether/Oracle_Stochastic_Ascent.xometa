@@ -3,7 +3,7 @@
   "name": "Stochastic Ascent",
   "mood": "Aether",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "GENDY breakpoints slowly drift upward in an endless stochastic ascension.",
   "tags": ["aether", "ascent", "upward", "infinite"],

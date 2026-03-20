@@ -3,7 +3,7 @@
   "name": "Arm Scatter",
   "mood": "Prism",
   "engines": ["Octopus"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum arm spread with high rate and depth scatters oscillators across a wide frequency range — each arm acting as an independent frequency voice in a prismatic scatter field.",
   "tags": ["prism", "scatter", "wide", "arms", "polyphonic"],

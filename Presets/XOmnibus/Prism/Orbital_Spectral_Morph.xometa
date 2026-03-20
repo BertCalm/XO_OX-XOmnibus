@@ -3,7 +3,7 @@
   "name": "Spectral Morph",
   "mood": "Prism",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-morph spectral sweep — harmonic to inharmonic crossfade with formant animation.",
   "tags": ["morph", "spectral", "crossfade", "animated"],

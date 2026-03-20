@@ -3,7 +3,7 @@
   "name": "Sentinel Patrol",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Constant slow movement along the territory boundary — not hunting yet, but aware. Moderate hunt macro, rhythmic LFO1, scanning echolocation. The sentinel state: patient aggression, always ready.",
   "tags": ["flux", "patrol", "sentinel", "territory", "ready"],

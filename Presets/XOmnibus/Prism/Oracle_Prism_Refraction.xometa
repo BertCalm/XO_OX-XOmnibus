@@ -3,7 +3,7 @@
   "name": "Prism Refraction",
   "mood": "Prism",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Stochastic light refracting through indigo prism — each breakpoint a different spectral angle.",
   "tags": ["prism", "refraction", "spectral", "bright"],

@@ -3,7 +3,7 @@
   "name": "Mirror Grain",
   "mood": "Entangled",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Forward and reverse grain mirrors — entangled pair where one plays forward, one backward simultaneously.",
   "tags": ["mirror", "reverse", "forward", "entangled", "pair"],

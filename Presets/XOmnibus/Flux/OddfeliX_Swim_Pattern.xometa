@@ -3,7 +3,7 @@
   "name": "Swim Pattern",
   "mood": "Flux",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Alternating up-down arp — the natural swim oscillation of a tetra in motion.",
   "tags": ["swim", "pattern", "arp", "oscillation"],

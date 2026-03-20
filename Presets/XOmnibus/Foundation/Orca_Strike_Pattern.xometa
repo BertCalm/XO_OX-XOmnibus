@@ -3,7 +3,7 @@
   "name": "Strike Pattern",
   "mood": "Foundation",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Percussive attack with tight breach compression — snappy, punchy mid-register hit built on wavetable position 0.7 for harmonic density without low-end mud.",
   "tags": ["foundation", "percussive", "attack", "punchy", "hunt"],

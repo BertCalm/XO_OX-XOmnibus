@@ -3,7 +3,7 @@
   "name": "FM Chord",
   "mood": "Foundation",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM-enriched chord — osc B modulating osc A, metallic harmonic richness.",
   "tags": ["FM", "chord", "metallic", "rich"],

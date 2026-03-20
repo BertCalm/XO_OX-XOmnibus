@@ -3,7 +3,7 @@
   "name": "Waveform Scan",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO1 set to maximum depth driving the wavetable position scan from position 0 to 1 across the full metallic table. Each period sweeps the entire timbral character — from round to jagged and back. A complete sonic portrait.",
   "tags": ["prism", "scan", "wavetable", "lfo", "sweep"],

@@ -3,7 +3,7 @@
   "name": "Drift Current",
   "mood": "Flux",
   "engines": ["Ohm"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid drift rate tossing the blown tone on fast, irregular currents.",
   "tags": ["flux", "drift", "current", "undulating"],

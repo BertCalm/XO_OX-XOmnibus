@@ -3,7 +3,7 @@
   "name": "Surface Tension",
   "mood": "Atmosphere",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The atmospheric boundary layer — morph hovering at the water-air interface.",
   "tags": ["surface", "tension", "boundary", "hover"],

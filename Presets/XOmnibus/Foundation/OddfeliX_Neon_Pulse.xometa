@@ -3,7 +3,7 @@
   "name": "Neon Pulse",
   "mood": "Foundation",
   "engines": ["OddfeliX"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Repeating snap sequence in arp mode — pulsing neon signal in a dark tank.",
   "tags": ["pulse", "arp", "neon", "sequence"],

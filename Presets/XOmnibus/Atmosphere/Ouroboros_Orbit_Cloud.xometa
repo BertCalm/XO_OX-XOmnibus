@@ -3,7 +3,7 @@
   "name": "Orbit Cloud",
   "mood": "Atmosphere",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orbital paths forming a cloud — multiple trajectory loops accumulate into an atmospheric wash.",
   "tags": ["orbit", "cloud", "trajectory", "accumulate", "atmosphere"],

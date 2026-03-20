@@ -3,7 +3,7 @@
   "name": "Filter Sweep",
   "mood": "Prism",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wide resonant filter sweep from sub to open — a full timbral spectrum in a single gesture.",
   "tags": ["prism", "filter", "sweep", "resonant", "spectrum", "character"],

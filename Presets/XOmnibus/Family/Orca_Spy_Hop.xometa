@@ -3,7 +3,7 @@
   "name": "Spy Hop",
   "mood": "Family",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The behavior where orca rises vertically to observe above the waterline — curious, not hunting. Higher wavetable position and formant shift for the air-adjacent acoustic environment. Alert, bright, observational.",
   "tags": ["family", "spy-hop", "curious", "vertical", "observation"],

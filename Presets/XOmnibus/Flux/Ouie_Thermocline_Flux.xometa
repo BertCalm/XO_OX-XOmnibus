@@ -3,7 +3,7 @@
   "name": "Thermocline Flux",
   "mood": "Flux",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice filters at opposing temperature zones, oscillating LFOs creating the micro-turbulence at the thermal boundary.",
   "tags": ["tension", "movement", "evolving", "counterpoint"],

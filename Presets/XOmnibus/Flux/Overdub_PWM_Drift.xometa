@@ -3,7 +3,7 @@
   "name": "PWM Drift",
   "mood": "Flux",
   "engines": ["Overdub"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pulse width modulation with slow drift LFO creates a breathing, living bass tone.",
   "tags": ["flux", "pwm", "drift", "pulse", "breathing", "bass"],

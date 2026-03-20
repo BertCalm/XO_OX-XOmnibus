@@ -3,7 +3,7 @@
   "name": "Filter Sweep",
   "mood": "Prism",
   "engines": ["Oblong"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LP filter sweeping through the amber spectrum — classic synth prism effect.",
   "tags": ["prism", "filter-sweep", "classic", "spectral"],

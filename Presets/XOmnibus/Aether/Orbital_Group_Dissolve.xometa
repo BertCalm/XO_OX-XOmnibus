@@ -3,7 +3,7 @@
   "name": "Group Dissolve",
   "mood": "Aether",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group stagger dissolving into aetheric space — very slow group attack spread, maximum reverb, each group bloom fading before the next arrives.",
   "tags": ["group", "dissolve", "stagger", "space", "aether"],

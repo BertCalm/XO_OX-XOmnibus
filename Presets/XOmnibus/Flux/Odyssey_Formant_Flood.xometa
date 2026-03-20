@@ -3,7 +3,7 @@
   "name": "Formant Flood",
   "mood": "Flux",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant morph at flood intensity — rapid vowel sequence, fast LFO, chaotic vocal cascade.",
   "tags": ["formant", "flood", "vocal", "chaotic", "flux"],

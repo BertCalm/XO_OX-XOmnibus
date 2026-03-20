@@ -3,7 +3,7 @@
   "name": "Micro Tide",
   "mood": "Flux",
   "engines": ["Orphica"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscillating micro-rate and drift depth create a tidal flux, strings ebbing and flowing.",
   "tags": ["harp", "tidal", "micro", "flux", "oscillating"],

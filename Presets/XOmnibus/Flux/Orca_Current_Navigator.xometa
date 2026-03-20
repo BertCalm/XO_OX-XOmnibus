@@ -3,7 +3,7 @@
   "name": "Current Navigator",
   "mood": "Flux",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Moderate wavetable drift with responsive velocity-to-filter mapping — notes feel like a pod navigating between current flows, each velocity change redirecting the harmonic path.",
   "tags": ["flux", "navigation", "current", "responsive", "velocity"],

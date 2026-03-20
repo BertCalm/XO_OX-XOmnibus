@@ -3,7 +3,7 @@
   "name": "Harmonic Burst",
   "mood": "Prism",
   "engines": ["Obese"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Filter resonance pushed high with fast negative env sweep decompresses harmonics into a burst on attack — each note releases a spectrum of overtones then snaps shut.",
   "tags": ["prism", "harmonic", "burst", "resonant", "envelope"],

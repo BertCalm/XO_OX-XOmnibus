@@ -3,7 +3,7 @@
   "name": "Iridescent Cloud",
   "mood": "Prism",
   "engines": ["Opal"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cloud that shifts color as you move — variable shimmer and scatter that changes the spectral character.",
   "tags": ["iridescent", "cloud", "shifting", "color", "prism"],

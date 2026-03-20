@@ -3,7 +3,7 @@
   "name": "Bifurcation Colors",
   "mood": "Prism",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Period-doubling bifurcation cascade painted in color — each doublings adds a new spectral harmonic.",
   "tags": ["bifurcation", "colors", "doubling", "harmonic", "prism"],

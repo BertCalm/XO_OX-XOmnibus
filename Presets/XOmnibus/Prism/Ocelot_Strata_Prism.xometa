@@ -3,7 +3,7 @@
   "name": "Strata Prism",
   "mood": "Prism",
   "engines": ["Ocelot"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Four biome layers refracting as one prism — floor warmth, understory green, canopy gold, emergent sky.",
   "tags": ["strata", "prism", "layers", "refraction", "four-bands", "jungle"],

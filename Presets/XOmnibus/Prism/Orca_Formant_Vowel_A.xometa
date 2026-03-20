@@ -3,7 +3,7 @@
   "name": "Formant Vowel A",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pod Dialect isolated for spectral exploration. Formant network pushed to maximum intensity with shift tuned for the open-A vowel zone. The five-band filter network creates the impression of a massive animal's vocal tract.",
   "tags": ["prism", "formant", "vocal", "vowel", "spectral"],

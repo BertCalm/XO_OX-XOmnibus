@@ -3,7 +3,7 @@
   "name": "Phase Slip",
   "mood": "Flux",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phase coordinates slipping — theta and phi moving into unstable territory, creating sudden jumps.",
   "tags": ["phase", "slip", "unstable", "jump", "flux"],

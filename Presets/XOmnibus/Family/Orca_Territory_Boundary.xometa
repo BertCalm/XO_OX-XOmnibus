@@ -3,7 +3,7 @@
   "name": "Territory Boundary",
   "mood": "Family",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The edge of the known territory — calls that mark the boundary and warn other pods. Moderate aggression without full hunt engagement. The sound of a family declaring its space.",
   "tags": ["family", "territory", "boundary", "warning", "declaration"],

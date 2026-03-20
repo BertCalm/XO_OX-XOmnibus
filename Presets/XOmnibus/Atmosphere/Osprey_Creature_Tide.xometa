@@ -3,7 +3,7 @@
   "name": "Creature Tide",
   "mood": "Atmosphere",
   "engines": ["Osprey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Coastal creatures animate the atmosphere — creatureRate high, breathing with the tide.",
   "tags": ["atmosphere", "creature", "animated", "tidal"],

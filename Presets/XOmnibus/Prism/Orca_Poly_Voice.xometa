@@ -3,7 +3,7 @@
   "name": "Poly Voice",
   "mood": "Prism",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "16-voice polyphony at full density — exploring Orca as a pad sound. Multiple simultaneous notes revealing the formant network's harmonic interaction in full chord form. The pod as a polyphonic instrument.",
   "tags": ["prism", "polyphonic", "pad", "chord", "density"],

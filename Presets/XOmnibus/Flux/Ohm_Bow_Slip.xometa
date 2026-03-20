@@ -3,7 +3,7 @@
   "name": "Bow Slip",
   "mood": "Flux",
   "engines": ["Ohm"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slipping bow pressure with chaotic stick-slip dynamics and FM trembling.",
   "tags": ["flux", "bowed", "chaotic", "slipping"],

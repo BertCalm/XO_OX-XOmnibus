@@ -3,7 +3,7 @@
   "name": "Gaussian Plain",
   "mood": "Foundation",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gaussian distribution gives smooth probabilistic spread across the tonal plain.",
   "tags": ["gaussian", "foundation", "smooth", "gendy"],

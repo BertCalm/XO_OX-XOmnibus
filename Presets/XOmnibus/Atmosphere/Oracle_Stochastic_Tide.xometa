@@ -3,7 +3,7 @@
   "name": "Stochastic Tide",
   "mood": "Atmosphere",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Tidal probabilistic rise and fall — GENDY breathing with oceanic slowness.",
   "tags": ["atmosphere", "tidal", "breathing", "slow"],

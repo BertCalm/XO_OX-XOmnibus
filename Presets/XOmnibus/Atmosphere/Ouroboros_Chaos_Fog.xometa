@@ -3,7 +3,7 @@
   "name": "Chaos Fog",
   "mood": "Atmosphere",
   "engines": ["Ouroboros"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Chaotic system wrapped in fog — higher chaos but heavy damping keeps the motion atmospheric.",
   "tags": ["chaos", "fog", "wrapped", "heavy", "atmosphere"],

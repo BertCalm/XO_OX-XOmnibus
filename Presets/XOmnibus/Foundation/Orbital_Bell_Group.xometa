@@ -3,7 +3,7 @@
   "name": "Bell Group",
   "mood": "Foundation",
   "engines": ["Orbital"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Group envelope applied to bell tones — staggered decay, harmonic shimmer, polyphonic.",
   "tags": ["bell", "group", "staggered", "harmonic"],

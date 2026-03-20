@@ -3,7 +3,7 @@
   "name": "Elastic Storm",
   "mood": "Flux",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High barrier elasticity and fast drift collide into a volatile stochastic storm.",
   "tags": ["flux", "storm", "elastic", "volatile"],

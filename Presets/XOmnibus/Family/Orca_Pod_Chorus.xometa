@@ -3,7 +3,7 @@
   "name": "Pod Chorus",
   "mood": "Family",
   "engines": ["Orca"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Multiple voices of the pod calling simultaneously — polyphonic formant network simulating multiple overlapping cetacean calls. Different voices with shared dialect structure but individual variation.",
   "tags": ["family", "chorus", "polyphonic", "pod", "collective"],

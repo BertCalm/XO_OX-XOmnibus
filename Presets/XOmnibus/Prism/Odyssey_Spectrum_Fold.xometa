@@ -3,7 +3,7 @@
   "name": "Spectrum Fold",
   "mood": "Prism",
   "engines": ["Odyssey"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant morph mid-sweep — formant fold from neutral to peak, bright shimmer tail.",
   "tags": ["formant", "sweep", "bright", "spectrum"],

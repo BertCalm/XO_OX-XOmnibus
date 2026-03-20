@@ -3,7 +3,7 @@
   "name": "Theremin Prism",
   "mood": "Prism",
   "engines": ["Ohm"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Theremin wobble hitting full scale, waving through a prism of harmonics.",
   "tags": ["prism", "theremin", "harmonic", "spectral"],

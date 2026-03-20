@@ -3,7 +3,7 @@
   "name": "Attack Morph",
   "mood": "Foundation",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Short attack morph pad — fast filter envelope gives a percussive bloom on each note.",
   "tags": ["attack", "percussive", "snap", "envelope"],

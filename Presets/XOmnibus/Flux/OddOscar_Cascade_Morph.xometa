@@ -3,7 +3,7 @@
   "name": "Cascade Morph",
   "mood": "Flux",
   "engines": ["OddOscar"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cascading morph sequence — harmonic content waterfalls through a series of filter states.",
   "tags": ["cascade", "waterfall", "sequence", "harmonic"],

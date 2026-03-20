@@ -3,7 +3,7 @@
   "name": "Cross Feed",
   "mood": "Entangled",
   "engines": ["Ouie"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM cross-modulation in STRIFE — Voice A feeds Voice B's carrier with high depth. Signal energy flowing between two independent systems.",
   "tags": ["tension", "movement", "predator", "focused"],

@@ -3,7 +3,7 @@
   "name": "Attractor Haze",
   "mood": "Atmosphere",
   "engines": ["Oracle"],
-  "author": "XO_OX",
+  "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Gravitational attractor pulls stochastic haze into orbiting atmospheric clusters.",
   "tags": ["atmosphere", "attractor", "orbital", "haze"],
