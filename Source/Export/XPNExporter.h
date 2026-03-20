@@ -37,14 +37,16 @@ public:
         const auto& dna = preset.dna;
 
         // Check for engines that produce inherently rhythmic output.
-        // ONSET/XONSET:    percussion engine — always Rhythmic
-        // OBRIX/XOBRIX:    modular brick sequencer — always Rhythmic
-        // OUROBOROS:       chaotic attractor — Rhythmic when high movement + aggression
+        // ONSET/XONSET:       percussion engine — always Rhythmic
+        // OBRIX/XOBRIX:       modular brick sequencer — always Rhythmic
+        // OSTINATO/XOSTINATO: repeated-pattern engine (lit. "obstinate") — always Rhythmic
+        // OUROBOROS:          chaotic attractor — Rhythmic when high movement + aggression
         for (const auto& eng : preset.engines)
         {
             auto upper = eng.toUpperCase();
-            if (upper == "ONSET"    || upper == "XONSET" ||
-                upper == "OBRIX"    || upper == "XOBRIX")
+            if (upper == "ONSET"    || upper == "XONSET"    ||
+                upper == "OBRIX"    || upper == "XOBRIX"    ||
+                upper == "OSTINATO" || upper == "XOSTINATO")
                 return rhythmic();
 
             if ((upper == "OUROBOROS" || upper == "XOUROBOROS") &&
