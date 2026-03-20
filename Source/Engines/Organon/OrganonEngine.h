@@ -932,6 +932,39 @@ public:
         // At default signalFlux 0.5, full pressure reaches 0.7 — well within the [0,1] range.
         signalFlux = std::clamp (signalFlux + atPressure * 0.2f, 0.0f, 1.0f);
 
+        // ---- Macros (M1-M4) ----
+        const float macroMetabolism = paramMacroMetabolism ? paramMacroMetabolism->load() : 0.0f;
+        const float macroSpectrum   = paramMacroSpectrum   ? paramMacroSpectrum->load()   : 0.0f;
+        const float macroCoupling   = paramMacroCoupling   ? paramMacroCoupling->load()   : 0.0f;
+        const float macroSpace      = paramMacroSpace      ? paramMacroSpace->load()      : 0.0f;
+
+        // M1 METABOLISM: boosts metabolic rate (+3 Hz) and catalyst drive (+0.5)
+        metabolicRate = std::clamp (metabolicRate + macroMetabolism * 3.0f, 0.1f, 10.0f);
+        float effectiveCatalyst = std::clamp (catalystDrive + macroMetabolism * 0.5f, 0.0f, 2.0f);
+
+        // M2 SPECTRUM: shifts isotope balance toward bright (+0.4) and noise color (+0.3)
+        float effectiveIsotope = std::clamp (isotopeBalance + macroSpectrum * 0.4f, 0.0f, 1.0f);
+        float effectiveNoiseColor = std::clamp (noiseColor + macroSpectrum * 0.3f, 0.0f, 1.0f);
+
+        // M3 COUPLING: boosts signal flux (+0.3) and membrane porosity (+0.3)
+        float effectiveSignalFlux = std::clamp (signalFlux + macroCoupling * 0.3f, 0.0f, 1.0f);
+        float effectiveMembrane = std::clamp (membrane + macroCoupling * 0.3f, 0.0f, 1.0f);
+
+        // M4 SPACE: boosts membrane (+0.4) and damping (+0.3, more percussive reverberant tails)
+        effectiveMembrane = std::clamp (effectiveMembrane + macroSpace * 0.4f, 0.0f, 1.0f);
+        float effectiveDamping = std::clamp (dampingParameter + macroSpace * 0.3f, 0.01f, 0.99f);
+
+        // ---- D005: Breathing LFO ----
+        // Slow autonomous modulation of metabolic rate (+/- 0.5 Hz) and isotope balance
+        // (+/- 0.1). Rate is 0.02 Hz (50-second cycle) — slow enough to feel organic,
+        // fast enough to be perceivable within a performance.
+        breathingLfoIncrement = 0.02f / static_cast<float> (cachedSampleRate);
+        breathingLfoPhase += breathingLfoIncrement * static_cast<float> (numSamples);
+        if (breathingLfoPhase >= 1.0f) breathingLfoPhase -= 1.0f;
+        float breathLfo = std::sin (breathingLfoPhase * 6.28318530717958647692f);
+        metabolicRate = std::clamp (metabolicRate + breathLfo * 0.5f, 0.1f, 10.0f);
+        effectiveIsotope = std::clamp (effectiveIsotope + breathLfo * 0.1f, 0.0f, 1.0f);
+
         float lockedMetabolicRate = metabolicRate;
         float lockInTransportPhase = 0.0f;
         if (lockIn > 0.001f && sharedTransport != nullptr)
@@ -985,7 +1018,7 @@ public:
         //   Low damping (~0.2): very long resonant tails, shimmering
         //   Mid damping (~6.0): natural acoustic decay
         //   High damping (~19.8): heavily damped, percussive, muted
-        float gamma = dampingParameter * 20.0f;
+        float gamma = effectiveDamping * 20.0f;
 
         // ---- Phason Shift: per-voice metabolic rate modulation ----
         // Each voice gets an evenly-spaced phase offset around a cycle;
@@ -1062,7 +1095,7 @@ public:
                     // Read from coupling ingestion buffer (fed by partner engines)
                     int readPosition = (voice.ingestionWritePosition - 1 + OrganonVoice::kIngestionBufferSize)
                                        & (OrganonVoice::kIngestionBufferSize - 1);
-                    ingestedSample = voice.ingestionBuffer[readPosition] * signalFlux;
+                    ingestedSample = voice.ingestionBuffer[readPosition] * effectiveSignalFlux;
                 }
                 else
                 {
@@ -1078,9 +1111,9 @@ public:
                     // Range [0.3, 0.7] maps noiseColor [0, 1]
                     voice.ingestionFilter.setCoefficients (
                         enzymeSelectivity + externalFilterModulation * 2000.0f,
-                        0.3f + noiseColor * 0.4f,
+                        0.3f + effectiveNoiseColor * 0.4f,
                         static_cast<float> (cachedSampleRate));
-                    ingestedSample = voice.ingestionFilter.processSample (noise) * signalFlux;
+                    ingestedSample = voice.ingestionFilter.processSample (noise) * effectiveSignalFlux;
                 }
 
                 // ---- CATABOLISM: break down the signal ----
@@ -1092,7 +1125,7 @@ public:
                 float voiceMetabolicRate = lockedMetabolicRate * (1.0f + phasonModulations[voiceIndex]);
                 if (voiceMetabolicRate < 0.05f) voiceMetabolicRate = 0.05f; // Floor prevents stalling
 
-                voice.economy.update (voiceMetabolicRate, signalFlux,
+                voice.economy.update (voiceMetabolicRate, effectiveSignalFlux,
                                       voice.entropyAnalyzer.getEntropy(),
                                       externalRhythmModulation, externalDecayModulation,
                                       voice.released);
@@ -1113,20 +1146,20 @@ public:
                 // 0.15f scaling: full surprise shifts balance by 15% — enough to
                 // hear timbral change without destabilizing the harmonic structure.
                 float surpriseShift = voice.economy.getSurprise() * 0.15f;
-                float effectiveIsotope = clamp (isotopeBalance + externalMorphModulation * 0.3f + surpriseShift, 0.0f, 1.0f);
+                float voiceIsotope = clamp (effectiveIsotope + externalMorphModulation * 0.3f + surpriseShift, 0.0f, 1.0f);
 
-                voice.modalArray.setFundamental (fundamental, effectiveIsotope);
+                voice.modalArray.setFundamental (fundamental, voiceIsotope);
 
                 // VFE adaptation gain modulates catalyst effectiveness:
                 // Settled organisms (low VFE) get full catalyst drive -> rich harmonics.
                 // Surprised organisms redirect energy to adaptation -> thinner sound.
-                float effectiveCatalyst = catalystDrive * voice.economy.getAdaptationGain();
+                float voiceCatalyst = effectiveCatalyst * voice.economy.getAdaptationGain();
 
                 voice.modalArray.updateWeights (voice.entropyAnalyzer.getSpectralCentroid(),
                                                 voice.economy.getFreeEnergy(),
-                                                effectiveCatalyst,
+                                                voiceCatalyst,
                                                 voice.entropyAnalyzer.getEntropy(),
-                                                effectiveIsotope);
+                                                voiceIsotope);
 
                 float sample = voice.modalArray.processSample (gamma);
 
@@ -1203,7 +1236,7 @@ public:
         // 0.3f scaling: prevents reverb from overwhelming the dry signal.
         if (count > 0)
             averageSurprise /= static_cast<float> (count);
-        float sendLevel = membrane + averageSurprise * 0.3f;
+        float sendLevel = effectiveMembrane + averageSurprise * 0.3f;
         if (sendLevel > 1.0f) sendLevel = 1.0f;
         reverbSendLevel.store (sendLevel, std::memory_order_relaxed);
 
@@ -1316,6 +1349,10 @@ public:
         paramLockIn           = apvts.getRawParameterValue ("organon_lockIn");
         paramMembrane         = apvts.getRawParameterValue ("organon_membrane");
         paramNoiseColor       = apvts.getRawParameterValue ("organon_noiseColor");
+        paramMacroMetabolism  = apvts.getRawParameterValue ("organon_macroMetabolism");
+        paramMacroSpectrum    = apvts.getRawParameterValue ("organon_macroSpectrum");
+        paramMacroCoupling    = apvts.getRawParameterValue ("organon_macroCoupling");
+        paramMacroSpace       = apvts.getRawParameterValue ("organon_macroSpace");
     }
 
 private:
@@ -1405,6 +1442,25 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("organon_noiseColor", 1), "Noise Color",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // ---- Macros (M1-M4) ----
+        // D002: 4 standard macros for one-knob performance control.
+        // M1 METABOLISM: boosts metabolicRate + catalystDrive (faster, hotter feeding)
+        // M2 SPECTRUM: shifts isotopeBalance + noiseColor (dark <-> bright)
+        // M3 COUPLING: increases signalFlux + membrane porosity (more connected)
+        // M4 SPACE: increases membrane + damping (more diffuse, reverberant)
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroMetabolism", 1), "Organon Macro METABOLISM",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroSpectrum", 1), "Organon Macro SPECTRUM",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroCoupling", 1), "Organon Macro COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("organon_macroSpace", 1), "Organon Macro SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 
     //==========================================================================
@@ -1489,6 +1545,19 @@ private:
     float externalRhythmModulation = 0.0f;
     float externalDecayModulation = 0.0f;
     bool couplingAudioActive = false;
+
+    // ---- Macro parameter pointers (M1-M4) ----
+    std::atomic<float>* paramMacroMetabolism = nullptr;
+    std::atomic<float>* paramMacroSpectrum   = nullptr;
+    std::atomic<float>* paramMacroCoupling   = nullptr;
+    std::atomic<float>* paramMacroSpace      = nullptr;
+
+    // ---- D005: Breathing LFO ----
+    // A slow autonomous LFO that modulates metabolic rate and isotope balance,
+    // creating organic rhythmic variation in the organism's metabolic cycle.
+    // Rate floor 0.005 Hz (200-second breathing cycle) satisfies D005.
+    float breathingLfoPhase = 0.0f;
+    float breathingLfoIncrement = 0.0f;
 
     // Performance profiler
     EngineProfiler profiler;

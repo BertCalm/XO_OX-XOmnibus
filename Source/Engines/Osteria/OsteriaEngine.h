@@ -594,6 +594,36 @@ struct OsteriaVoice
 // Water column: Open Water (same depth as ODYSSEY, OBESE, OSTINATO)
 // Companion: OSPREY (together they form "The Diptych" — ocean and shore)
 //==============================================================================
+
+//==============================================================================
+// OsteriaLFO — D005/D002 compliant user-controllable low-frequency oscillator.
+//
+// Provides sine modulation with rate floor of 0.005 Hz (200-second cycle)
+// to satisfy D005's "engines must breathe" requirement. Targets shore blend
+// drift — the quartet slowly wanders between coastlines, creating evolving
+// folk instrument timbres without user intervention.
+//==============================================================================
+struct OsteriaLFO
+{
+    float phase = 0.0f;
+    float phaseIncrement = 0.0f;
+
+    void setRate (float hz, float sampleRate) noexcept
+    {
+        phaseIncrement = hz / std::max (1.0f, sampleRate);
+    }
+
+    float process() noexcept
+    {
+        float out = std::sin (phase * kOsteriaTwoPi);
+        phase += phaseIncrement;
+        if (phase >= 1.0f) phase -= 1.0f;
+        return out;
+    }
+
+    void reset() noexcept { phase = 0.0f; }
+};
+
 class OsteriaEngine : public SynthEngine
 {
 public:
@@ -825,6 +855,22 @@ public:
         couplingShoreDrift = 0.0f;
         for (int i = 0; i < 4; ++i)
             shoreTargets[i] = clamp (shoreTargets[i] + driftOffset, 0.0f, 4.0f);
+
+        // D005/D002: User LFO — shore drift breathing.
+        // Rate: 0.005 Hz (200s cycle, deep breathing) at M2=0, up to 2 Hz at M2=1.
+        // Depth: fixed at 0.4 shore units — enough to drift across ~1 coastline.
+        // Each quartet channel gets a phase-offset version for organic spread.
+        float userLfoRate = 0.005f + macroMovement * 1.995f;
+        userLFO.setRate (userLfoRate, srf);
+        float lfoOut = userLFO.process();
+        static constexpr float kUserLfoShoreDepth = 0.4f;
+        for (int i = 0; i < 4; ++i)
+        {
+            // Stagger channels by 0.25 of the LFO output using simple phase rotation
+            float channelLfo = lfoOut * std::cos (kOsteriaPI * 0.5f * static_cast<float> (i))
+                             + std::sin (kOsteriaPI * 0.5f * static_cast<float> (i)) * lfoOut * 0.5f;
+            shoreTargets[i] = clamp (shoreTargets[i] + channelLfo * kUserLfoShoreDepth, 0.0f, 4.0f);
+        }
 
         // Setup tavern room
         ShoreMorphState tavernMorph = decomposeShore (pTavernShore);
@@ -1966,6 +2012,10 @@ private:
     // D001: filter envelope depth + per-block boost (Hz, applied to smoke filter)
     std::atomic<float>* paramFilterEnvDepth = nullptr;
     float filterEnvBoost = 0.0f;
+
+    // D005/D002: User-controllable LFO — modulates shore drift for evolving timbres.
+    // Rate controlled by M2 MOVEMENT: 0.005 Hz at rest (breathing) to 2 Hz active.
+    OsteriaLFO userLFO;
 };
 
 } // namespace xomnibus

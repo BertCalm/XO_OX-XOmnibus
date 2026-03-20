@@ -600,9 +600,22 @@ public:
     //  A U D I O   R E N D E R I N G
     //==========================================================================
 
-    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midi*/,
+    void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        // ---- D006: MIDI expression processing ----
+        // OPTIC is a modulation engine with no voices, but it still responds to
+        // MIDI expression for live performance control. Aftertouch boosts pulse
+        // intensity and modulation depth; mod wheel scales reactivity and viz speed.
+        for (const auto metadata : midi)
+        {
+            auto message = metadata.getMessage();
+            if (message.isChannelPressure())
+                midiAftertouchAmount = message.getChannelPressureValue() / 127.0f;
+            else if (message.isController() && message.getControllerNumber() == 1)
+                midiModWheelAmount = message.getControllerValue() / 127.0f;
+        }
+
         // ---- ParamSnapshot: cache all parameter values once per block ----
         // This is the XOmnibus standard pattern: read atomic parameter pointers
         // once at block start, then use local copies in the inner loop.
@@ -623,6 +636,14 @@ public:
 
         const bool autoPulseEnabled = (autoPulseToggle >= 0.5f);
 
+        // ---- D006: Apply MIDI expression to effective parameter values ----
+        // Aftertouch: boosts mod depth by up to +0.3 and pulse rate by up to +4 Hz
+        // (pressing harder makes the comb jelly pulse brighter and faster).
+        // Mod wheel: boosts reactivity by up to +0.3 (wheel up = more sensitive analysis).
+        const float effectiveModDepth    = clamp (modulationDepth + midiAftertouchAmount * 0.3f, 0.0f, 1.0f);
+        const float effectivePulseRate   = clamp (pulseRate + midiAftertouchAmount * 4.0f, 0.5f, 16.0f);
+        const float effectiveReactivity  = clamp (reactivity + midiModWheelAmount * 0.3f, 0.0f, 1.0f);
+
         // ---- Per-sample processing loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
@@ -641,7 +662,7 @@ public:
                 inputSample += (leftChannel + rightChannel) * 0.5f;  // Mono sum for analysis
             }
 
-            inputSample *= inputGain * reactivity;
+            inputSample *= inputGain * effectiveReactivity;
             inputSample = inputSmoothingFilter.processSample (inputSample);
 
             //------------------------------------------------------------------
@@ -658,7 +679,7 @@ public:
             if (autoPulseEnabled)
             {
                 OpticAutoPulse::Params pulseParams;
-                pulseParams.rate            = pulseRate;
+                pulseParams.rate            = effectivePulseRate;
                 pulseParams.shape           = pulseShape;
                 pulseParams.swing           = pulseSwing;
                 pulseParams.evolve          = pulseEvolve;
@@ -740,7 +761,7 @@ public:
             if (autoPulseEnabled)
                 couplingOutput += pulseOutput * modMixPulse;
             couplingOutput += energy * modMixSpectrum;
-            couplingOutput *= modulationDepth;
+            couplingOutput *= effectiveModDepth;
             couplingOutput = clamp (couplingOutput, 0.0f, 1.0f);
 
             // Cache for per-sample coupling reads by other engines
@@ -997,6 +1018,11 @@ private:
     // ---- Coupling state ----
     float couplingInputLevel = 0.0f;       // Accumulated input from other engines (reset per block)
     float compositeEnvelopeOutput = 0.0f;  // Last composite mod value (for envelope coupling reads)
+
+    // ---- D006: MIDI expression state ----
+    // Aftertouch boosts pulse intensity/rate; mod wheel boosts analysis reactivity.
+    float midiAftertouchAmount = 0.0f;     // Channel pressure [0, 1]
+    float midiModWheelAmount   = 0.0f;     // CC#1 mod wheel [0, 1]
 
     // ---- Output cache for per-sample coupling reads ----
     std::vector<float> outputCacheLeft;    // Composite mod signal, left channel

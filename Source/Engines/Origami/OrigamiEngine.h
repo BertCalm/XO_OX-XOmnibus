@@ -805,6 +805,15 @@ public:
                 // can produce denormals that cause 100x CPU spikes on x86.
                 outputSample = flushDenormal (outputSample);
 
+                // ---- Post-FFT brightness filter (velocity-modulated) ----
+                // The postFilter is a lowpass SVF that tames FFT artifacts and doubles
+                // as a D001-compliant velocity->brightness control. Higher velocity
+                // opens the filter (brighter), lower velocity darkens. The base cutoff
+                // of 18kHz is pulled down by (1 - velocity) to create a 4kHz-18kHz range.
+                float velBrightness = 4000.0f + voice.velocity * 14000.0f;
+                voice.postFilter.setCoefficients (velBrightness, 0.3f, sampleRateFloat);
+                outputSample = voice.postFilter.processSample (outputSample);
+
                 // ---- Apply amplitude envelope, velocity, and crossfade gain ----
                 float voiceGain = amplitudeLevel * voice.velocity * voice.crossfadeGain;
                 outputSample *= voiceGain;
