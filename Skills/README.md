@@ -21,6 +21,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [preset-auditor](./preset-auditor/SKILL.md) | `/preset-auditor` | Quality gate for existing presets — DNA coverage, macro responsiveness, D004 compliance | HIGH |
 | [coupling-debugger](./coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose and fix broken or inaudible coupling routes | HIGH |
 | [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
+| [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -52,6 +53,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Auditing existing preset quality | `/preset-auditor` |
 | Coupling route not working/inaudible | `/coupling-debugger` |
 | Full fleet QA / pre-release health check | `/master-audit` |
+| Stale counts, broken IDs, governance gaps | `/repo-audit` |
 | CPU optimization for an engine | `/sro-optimizer` |
 
 ---

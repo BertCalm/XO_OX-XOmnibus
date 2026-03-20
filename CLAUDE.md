@@ -327,6 +327,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [preset-auditor](Skills/preset-auditor/SKILL.md) | `/preset-auditor` | Preset quality gate — DNA, macros, D004, naming |
 | [coupling-debugger](Skills/coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose broken or inaudible coupling routes |
 | [master-audit](Skills/master-audit/SKILL.md) | `/master-audit` | Fleet-wide QA orchestration — pre-release health check |
+| [repo-audit](Skills/repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene + doc currency — stale counts, broken IDs, governance gaps |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
