@@ -508,7 +508,7 @@ Given what the Grand Survey found, here is recommended allocation for 11 subsequ
 - auval validation for all engines
 - Sound Design Guide update for 4 missing engines (OCELOT, OSTINATO, OPENSKY, OCEANDEEP)
 - Seance findings incorporated into per-engine CLAUDE.md files
-- Final coupling matrix smoke test (all 24 engines × 12 coupling types)
+- Final coupling matrix smoke test (all 24 engines × 13 coupling types)
 - Deliverable: XOmnibus v1.0 feature-complete
 
 ---
