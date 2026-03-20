@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Prism walls chaos-injected by Ouroboros — the bounce has no predictable reflection.",
   "dna": {
     "aggression": 0.93,

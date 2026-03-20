@@ -14,7 +14,7 @@
     "aggression": 0.55
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Flux",
   "name": "Riptide Sweep",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 0,
       "olap_tangleDepth": 0.72,
       "olap_torusP": 3,

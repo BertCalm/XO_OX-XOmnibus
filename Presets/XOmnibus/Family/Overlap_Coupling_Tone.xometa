@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Torus with moderate settings \u2014 clean coupling carrier. Pairs with textural engines.",
   "dna": {
     "brightness": 0.55,
@@ -23,7 +23,7 @@
     "aggression": 0.1
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Coupling Tone",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.4,
       "olap_torusP": 3,

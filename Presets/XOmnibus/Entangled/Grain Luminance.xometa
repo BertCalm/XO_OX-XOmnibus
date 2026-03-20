@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OPTIC brightness envelope feeding OPAL's grain scatter — each cloud of particles lit from within by reactive phosphor.",
   "dna": {

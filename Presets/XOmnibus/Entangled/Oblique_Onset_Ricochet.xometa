@@ -22,7 +22,7 @@
     "PRISM",
     "DRUMS"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": 120,
   "dna": {
     "brightness": 0.6,

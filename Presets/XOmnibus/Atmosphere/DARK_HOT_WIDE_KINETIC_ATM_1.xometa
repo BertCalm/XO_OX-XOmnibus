@@ -6,7 +6,7 @@
     "targetEngine": null,
     "type": "Spectral"
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 1.",
   "dna": {

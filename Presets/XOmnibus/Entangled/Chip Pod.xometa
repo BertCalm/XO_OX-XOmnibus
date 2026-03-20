@@ -11,7 +11,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "XOverworld's chip-era oscillators tuned to ORCA's pod frequencies — the NES 2A03 pulse waves that a pod of orcas would compose.",
   "dna": {

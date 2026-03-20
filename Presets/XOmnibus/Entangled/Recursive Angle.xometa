@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OUROBOROS loops feeding into OBLIQUE's bounce — each revolution exits at a different angle than it entered.",
   "dna": {

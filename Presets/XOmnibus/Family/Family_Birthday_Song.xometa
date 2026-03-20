@@ -8,7 +8,7 @@
       "type": "EnvToMorph"
     }
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-14",
   "description": "DRAMA builds. Sweep past 0.7 and the husbands enter the room.",
   "dna": {

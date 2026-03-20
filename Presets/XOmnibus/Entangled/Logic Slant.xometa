@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OBLIQUE redirecting ORGANON's Boolean logic outputs — the rule is to never go straight.",
   "dna": {

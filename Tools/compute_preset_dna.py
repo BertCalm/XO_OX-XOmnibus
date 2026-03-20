@@ -26,21 +26,21 @@ PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
 # Utility
 # ---------------------------------------------------------------------------
 
-def clamp(v, lo=0.0, hi=1.0):
+def clamp(v: float, lo: float = 0.0, hi: float = 1.0) -> float:
     return max(lo, min(hi, v))
 
-def norm_freq(hz, lo=20.0, hi=20000.0):
+def norm_freq(hz: float, lo: float = 20.0, hi: float = 20000.0) -> float:
     """Normalize a frequency (Hz) to 0.0–1.0 using log scale."""
     if hz <= lo: return 0.0
     if hz >= hi: return 1.0
     return math.log(hz / lo) / math.log(hi / lo)
 
-def norm_range(val, lo, hi):
+def norm_range(val: float, lo: float, hi: float) -> float:
     """Normalize a value within a known range to 0.0–1.0."""
     if hi <= lo: return 0.5
     return clamp((val - lo) / (hi - lo))
 
-def softmax(*values, scale=1.0):
+def softmax(*values: float, scale: float = 1.0) -> float:
     """Average multiple 0-1 signals, clamped."""
     if not values: return 0.0
     return clamp(sum(values) / len(values) * scale)

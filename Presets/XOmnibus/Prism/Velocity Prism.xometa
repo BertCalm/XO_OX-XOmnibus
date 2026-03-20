@@ -55,8 +55,7 @@
     "refraction",
     "velocity",
     "prism",
-    "speed",
-    "prism"
+    "speed"
   ],
   "tempo": null,
   "version": "1.0.0"

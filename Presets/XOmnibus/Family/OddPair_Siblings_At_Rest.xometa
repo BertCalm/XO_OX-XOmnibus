@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Both siblings at rest — a gentle conversation in still water. feliX's low filter murmurs while Oscar barely morphs. Low aggression, wide space, warm as a shared tank at dusk.",
   "dna": {
     "aggression": 0.1,

@@ -3,7 +3,7 @@
   "coupling": {
     "pairs": []
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Designed for ORBITAL coupling — balanced subharmonics ready to entangle with additive partials",
   "dna": {
     "aggression": 0.65,

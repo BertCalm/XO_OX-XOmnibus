@@ -14,7 +14,7 @@
     "warmth": 0.4
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Topology Shift",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.85,
       "olap_torusP": 5,

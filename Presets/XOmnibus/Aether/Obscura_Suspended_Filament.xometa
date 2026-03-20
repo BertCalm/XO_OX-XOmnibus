@@ -1,13 +1,28 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Suspended Filament",
   "mood": "Aether",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Nearly zero damping with very slow bowing force — the physical chain hangs in near-vacuum. Modes decay over many seconds. Free boundary lets ends oscillate freely in infinite-seeming space.",
-  "tags": ["aether", "drone", "sustained", "slow", "physical", "ambient", "infinite"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Nearly zero damping with very slow bowing force \u2014 the physical chain hangs in near-vacuum. Modes decay over many seconds. Free boundary lets ends oscillate freely in infinite-seeming space.",
+  "tags": [
+    "aether",
+    "drone",
+    "sustained",
+    "slow",
+    "physical",
+    "ambient",
+    "infinite"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",

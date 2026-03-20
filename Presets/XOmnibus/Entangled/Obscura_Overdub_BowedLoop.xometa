@@ -20,7 +20,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "The physical string's resonance feeds directly into Overdub's tape delay loop — Obscura's bowing output IS the dub source material, and the tape delay's reflections return to shape the next bow stroke via amplitude modulation of the filter. The loop memory accumulates the physical character of the string: stiffness artifacts, boundary mode changes, nonlinear harmonics — all preserved and cycled back. Set obscura_damping low to let the string ring long enough to fill the loop; raise dub_delayTime to a string-resonant period to create standing-wave feedback between instrument and machine. The bow and the tape are one continuous system.",
   "dna": {

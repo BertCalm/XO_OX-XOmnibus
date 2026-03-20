@@ -14,7 +14,7 @@
     "warmth": 0.45
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Medusa Crown",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 1.0,
       "olap_torusP": 3,

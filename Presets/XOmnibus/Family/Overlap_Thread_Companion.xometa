@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Cinquefoil companion \u2014 warm mid-range presence that supports lead engines.",
   "dna": {
     "brightness": 0.42,
@@ -23,7 +23,7 @@
     "aggression": 0.1
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Thread Companion",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.38,
       "olap_torusP": 3,

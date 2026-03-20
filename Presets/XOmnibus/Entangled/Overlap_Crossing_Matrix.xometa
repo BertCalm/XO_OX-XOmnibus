@@ -14,7 +14,7 @@
     "warmth": 0.45
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Crossing Matrix",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.88,
       "olap_torusP": 3,

@@ -150,7 +150,7 @@ The following items were intentionally deferred, documented, and left for future
 
 **DB001–DB004 — The four ongoing debates remain unresolved.** Mutual exclusivity vs. effect chaining, silence as paradigm vs. accessibility, init patch philosophy, expression vs. evolution — these are genuine tensions, not defects. They were unresolved at the seances and intentionally left unresolved by the sweep. They are design philosophy debates that every XO_OX instrument will navigate differently.
 
-**Concept engines — OSTINATO, OPENSKY, OCEANDEEP, OUIE.** Four engines are in the concept or early-design phase and were out of scope for the Prism Sweep. When they are implemented and integrated, they will undergo their own seance process and their own sweep cycle.
+**New engines — OSTINATO, OPENSKY, OCEANDEEP, OUIE.** Four engines were in the concept phase during the Prism Sweep and out of scope. DSP was completed for all four on 2026-03-18 and they are now installed in XOmnibus. They are pending seances and their own sweep cycles. OBRIX (added 2026-03-19) is also pending seance.
 
 ---
 

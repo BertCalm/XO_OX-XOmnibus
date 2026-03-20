@@ -2,16 +2,35 @@
   "schema_version": 1,
   "name": "Sidechain Jelly",
   "mood": "Flux",
-  "engines": ["Optic", "Organon"],
+  "engines": [
+    "Optic",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPTIC auto-pulse at near-quarter-note rate driving Organon's filter into deep pumping sidechain. The comb jelly as compressor sidechain — each luminous flash ducks the organism's membrane.",
-  "tags": ["optic", "flux", "sidechain", "pumping", "rhythmic", "organon-pair"],
-  "macroLabels": ["PUMP DEPTH", "PULSE RATE", "EVOLUTION", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "optic",
+    "flux",
+    "sidechain",
+    "pumping",
+    "rhythmic",
+    "organon-pair"
+  ],
+  "macroLabels": [
+    "PUMP DEPTH",
+    "PULSE RATE",
+    "EVOLUTION",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": 120,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.8,
@@ -46,8 +65,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Organon", "type": "AmpToFilter", "amount": 0.75 },
-      { "engineA": "Organon", "engineB": "Optic", "type": "AudioToFM", "amount": 0.5 }
+      {
+        "engineA": "Optic",
+        "engineB": "Organon",
+        "type": "AmpToFilter",
+        "amount": 0.75
+      },
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "AudioToFM",
+        "amount": 0.5
+      }
     ]
   },
   "sequencer": null,

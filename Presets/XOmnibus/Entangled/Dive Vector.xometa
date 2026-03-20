@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OSPREY's dive recalculated through OBLIQUE's angular engine — the strike arrives from the unexpected quadrant.",
   "dna": {

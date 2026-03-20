@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "description": "Torus bond with slow current \u2014 ebbing and flowing in sync with coupled engine.",
   "dna": {
     "brightness": 0.45,
@@ -23,7 +23,7 @@
     "aggression": 0.08
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Tidal Bond",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.42,
       "olap_torusP": 5,

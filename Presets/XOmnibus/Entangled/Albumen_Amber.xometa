@@ -10,9 +10,9 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Obscura \u00d7 Oblong coupling (envelope share). Stub preset \u2014 sound-design pass pending.",
+  "description": "Obscura × Oblong coupling (envelope share). Stub preset — sound-design pass pending.",
   "dna": {
     "aggression": 0.369,
     "brightness": 0.46,

@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "ORACLE's breakpoint output modulates ORIGAMI's fold layers — as the oracle shifts between prediction states, the fold layer count changes, revealing different harmonic strata. When the oracle sees clearly, three layers unfold. When uncertain, it collapses to one. Prophecy as a harmonic event.",
   "dna": {
     "aggression": 0.35,

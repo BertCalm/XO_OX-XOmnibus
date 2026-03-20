@@ -14,7 +14,7 @@
     "aggression": 0.05
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Aether",
   "name": "Abyssal Choir",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 54,
       "owit_arm0Length": 16,
       "owit_arm0Level": 0.7,

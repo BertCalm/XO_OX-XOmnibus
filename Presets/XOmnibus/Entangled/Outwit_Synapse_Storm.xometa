@@ -14,7 +14,7 @@
     "warmth": 0.2
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Synapse Storm",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 18,
       "owit_arm0Length": 4,
       "owit_arm0Level": 0.85,

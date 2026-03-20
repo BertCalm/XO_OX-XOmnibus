@@ -22,7 +22,7 @@
     "PRISM",
     "EVOLVE"
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "tempo": 125,
   "dna": {
     "brightness": 0.65,

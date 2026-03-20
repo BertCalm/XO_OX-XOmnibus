@@ -1,25 +1,43 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Membrane Hit",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Free-boundary chain at low-medium stiffness — odd harmonics dominant, hollow drum-head resonance. Broad excitation width models a drumstick tip of finite radius. Fast amplitude decay simulates damped membrane. Velocity-sensitive — harder notes are brighter.",
-  "tags": ["membrane", "drum", "percussive", "hollow", "free-boundary", "physical"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Free-boundary chain at low-medium stiffness \u2014 odd harmonics dominant, hollow drum-head resonance. Broad excitation width models a drumstick tip of finite radius. Fast amplitude decay simulates damped membrane. Velocity-sensitive \u2014 harder notes are brighter.",
+  "tags": [
+    "membrane",
+    "drum",
+    "percussive",
+    "hollow",
+    "free-boundary",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.35,
       "obscura_damping": 0.55,
       "obscura_nonlinear": 0.28,
-      "obscura_excitePos": 0.50,
-      "obscura_exciteWidth": 0.40,
-      "obscura_scanWidth": 0.30,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.4,
+      "obscura_scanWidth": 0.3,
       "obscura_boundary": 1,
       "obscura_sustain": 0.0,
       "obscura_level": 0.88,
@@ -46,7 +64,9 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.45,

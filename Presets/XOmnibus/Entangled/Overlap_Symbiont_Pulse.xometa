@@ -14,7 +14,7 @@
     "warmth": 0.6
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Symbiont Pulse",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.75,
       "olap_torusP": 3,

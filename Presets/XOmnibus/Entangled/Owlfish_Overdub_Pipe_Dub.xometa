@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "OWLFISH's massive pipe organ sub tones drive OVERDUB's filter cutoff via amplitude coupling. When the organ swells, the dub filter opens. When the organ sustains, the delay blooms. The oldest instrument class meeting the deepest Caribbean tradition — cathedral organ as dub send.",
   "dna": {
     "aggression": 0.2,

@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Shore data from Osprey's geological frequency system informs the commune's harmonic tuning reference via FreqToColor coupling. Each coastline carries a signature frequency signature — Atlantic, Pacific, Baltic — and the commune retunes its drone cluster to match that geological keynote. Geography as harmony. The hippy dad goes to the sea and finds his tonic.",
   "dna": {
     "aggression": 0.1,

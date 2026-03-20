@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Prism",
-  "description": "Biome 0. SP-1200 grit (low bit depth, low sample rate) on floor → canopy wavefold maximum. Emergent berimbau pitch sweeps. The capoeira circle gone electric.",
+  "description": "Biome 0. SP-1200 grit (low bit depth, low sample rate) on floor \u2192 canopy wavefold maximum. Emergent berimbau pitch sweeps. The capoeira circle gone electric.",
   "dna": {
     "aggression": 0.6,
     "brightness": 0.65,
@@ -95,5 +95,8 @@
   },
   "schema_version": 1,
   "mood": "Prism",
-  "tags": []
+  "tags": [],
+  "engines": [
+    "Ocelot"
+  ]
 }

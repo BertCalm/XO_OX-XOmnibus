@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Lorenz Lead",
   "mood": "Flux",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Lorenz at the controlled-chaos sweet spot — leash 0.55 implies pitch without demanding it. Every note has the same fundamental but a unique harmonic character drawn from wherever the attractor was at note-on.",
-  "tags": ["lorenz", "lead", "pitched", "expressive", "controlled-chaos", "melodic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Lorenz at the controlled-chaos sweet spot \u2014 leash 0.55 implies pitch without demanding it. Every note has the same fundamental but a unique harmonic character drawn from wherever the attractor was at note-on.",
+  "tags": [
+    "lorenz",
+    "lead",
+    "pitched",
+    "expressive",
+    "controlled-chaos",
+    "melodic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 0,
@@ -24,7 +42,9 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.58,

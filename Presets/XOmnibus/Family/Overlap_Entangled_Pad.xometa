@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Light",
+  "couplingIntensity": "Subtle",
   "description": "Trefoil pad with wide spread \u2014 fills the coupling space with gentle warmth.",
   "dna": {
     "brightness": 0.45,
@@ -23,7 +23,7 @@
     "aggression": 0.05
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Entangled Pad",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 0,
       "olap_tangleDepth": 0.4,
       "olap_torusP": 3,

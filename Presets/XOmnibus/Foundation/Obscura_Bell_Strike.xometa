@@ -1,28 +1,46 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Bell Strike",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Periodic boundary at high stiffness — ring topology with fast wave propagation produces bell-like inharmonic partials. No sustain, low damping lets the chain ring long. The nonlinear cubic term stiffens at higher velocities, exactly like a real bell.",
-  "tags": ["bell", "metallic", "inharmonic", "percussive", "bright", "periodic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Periodic boundary at high stiffness \u2014 ring topology with fast wave propagation produces bell-like inharmonic partials. No sustain, low damping lets the chain ring long. The nonlinear cubic term stiffens at higher velocities, exactly like a real bell.",
+  "tags": [
+    "bell",
+    "metallic",
+    "inharmonic",
+    "percussive",
+    "bright",
+    "periodic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.88,
       "obscura_damping": 0.08,
       "obscura_nonlinear": 0.45,
       "obscura_excitePos": 0.22,
-      "obscura_exciteWidth": 0.10,
+      "obscura_exciteWidth": 0.1,
       "obscura_scanWidth": 0.08,
       "obscura_boundary": 2,
       "obscura_sustain": 0.0,
-      "obscura_level": 0.80,
+      "obscura_level": 0.8,
       "obscura_ampAttack": 0.001,
       "obscura_ampDecay": 2.0,
       "obscura_ampSustain": 0.0,
@@ -46,14 +64,16 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.88,
     "warmth": 0.18,
     "movement": 0.12,
     "density": 0.42,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.35
   }
 }

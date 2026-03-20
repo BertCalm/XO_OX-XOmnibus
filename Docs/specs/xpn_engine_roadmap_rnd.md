@@ -280,8 +280,8 @@ Quaternary audience. Value: complexity, environmental sound, systems that evolve
 
 ## 5. V1 Concept Engine Packs
 
-These four engines have no source code yet and are scheduled for post-Constellation DSP builds.
-Their pack strategy should be planned now so it informs the DSP design.
+These four engines had their DSP completed on 2026-03-18 and are now installed in XOmnibus.
+Their pack strategies below were planned before DSP and remain valid — preset libraries still need building.
 
 ### Polarity Pair Strategy — OPENSKY + OCEANDEEP
 

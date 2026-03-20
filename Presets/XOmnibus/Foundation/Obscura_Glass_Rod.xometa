@@ -1,22 +1,40 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Glass Rod",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High stiffness, free boundary, heavy nonlinear — a rigid glass rod bowed at one end. The odd-harmonic free-boundary series combined with maximum nonlinearity creates glassy, cutting tones. Velocity controls the brightness jump, exactly as with glass.",
-  "tags": ["glass", "bright", "stiff", "aggressive", "nonlinear", "bowed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "High stiffness, free boundary, heavy nonlinear \u2014 a rigid glass rod bowed at one end. The odd-harmonic free-boundary series combined with maximum nonlinearity creates glassy, cutting tones. Velocity controls the brightness jump, exactly as with glass.",
+  "tags": [
+    "glass",
+    "bright",
+    "stiff",
+    "aggressive",
+    "nonlinear",
+    "bowed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.82,
       "obscura_damping": 0.12,
-      "obscura_nonlinear": 0.70,
+      "obscura_nonlinear": 0.7,
       "obscura_excitePos": 0.08,
       "obscura_exciteWidth": 0.06,
       "obscura_scanWidth": 0.06,
@@ -46,14 +64,16 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.92,
     "warmth": 0.12,
     "movement": 0.28,
     "density": 0.58,
-    "space": 0.30,
-    "aggression": 0.80
+    "space": 0.3,
+    "aggression": 0.8
   }
 }

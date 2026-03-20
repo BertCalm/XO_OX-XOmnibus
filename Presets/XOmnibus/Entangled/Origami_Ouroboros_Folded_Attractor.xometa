@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "ORIGAMI's wavefold output drives OUROBOROS as an FM source, making the chaos attractor's trajectory bend with each paper crease. The waveform geometry and the strange attractor share a common distortion axis — fold depth changes the attractor's fractal dimension.",
   "dna": {
     "aggression": 0.55,

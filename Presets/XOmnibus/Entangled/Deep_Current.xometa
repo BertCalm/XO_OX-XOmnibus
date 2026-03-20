@@ -11,7 +11,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Two deep-water engines merge \u2014 OCEANIC pressure gradient feeds OVERLAP room expansion",
+  "description": "Two deep-water engines merge — OCEANIC pressure gradient feeds OVERLAP room expansion",
   "dna": {
     "aggression": 0.175,
     "brightness": 0.5,
@@ -74,7 +74,6 @@
     "coupling",
     "entangled",
     "overlap",
-    "oceanic",
     "oceanic",
     "deep"
   ],

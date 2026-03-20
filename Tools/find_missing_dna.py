@@ -28,7 +28,7 @@ def engine_short_name(engine_str: str) -> str:
     return engine_str.replace("X", "", 1) if engine_str.startswith("X") else engine_str
 
 
-def scan_presets():
+def scan_presets() -> list[dict]:
     """
     Scan all .xometa files.
 
@@ -72,7 +72,7 @@ def scan_presets():
     return missing, total
 
 
-def group_by_engine(missing):
+def group_by_engine(missing: list[dict]) -> dict[str, list[dict]]:
     """Group missing-DNA entries by engine name."""
     by_engine = defaultdict(list)
     no_engine = []
@@ -87,7 +87,7 @@ def group_by_engine(missing):
     return by_engine
 
 
-def main():
+def main() -> int:
     verbose = "--verbose" in sys.argv or "-v" in sys.argv
 
     missing, total = scan_presets()

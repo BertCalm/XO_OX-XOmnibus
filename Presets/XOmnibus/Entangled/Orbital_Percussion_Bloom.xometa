@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "ONSET's kick and snare trigger ORBITAL's group envelope rate — every drum hit creates a ripple across the voice cluster. The pad blooms in sync with the groove. Percussion becomes planting. Each hit grows a momentary flower in the chord field.",
   "dna": {
     "aggression": 0.3,

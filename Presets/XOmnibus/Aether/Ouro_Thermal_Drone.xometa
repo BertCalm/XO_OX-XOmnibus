@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Thermal Drone",
   "mood": "Aether",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Rossler free-running at low chaos — near a limit cycle, almost tonal. Heavy damping filters out fast variations, leaving only the slow orbital heat. Pitch is approximate and honest about it.",
-  "tags": ["drone", "warm", "rossler", "atmospheric", "ambient", "free-running"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Rossler free-running at low chaos \u2014 near a limit cycle, almost tonal. Heavy damping filters out fast variations, leaving only the slow orbital heat. Pitch is approximate and honest about it.",
+  "tags": [
+    "drone",
+    "warm",
+    "rossler",
+    "atmospheric",
+    "ambient",
+    "free-running"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 1,
@@ -24,7 +42,9 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.18,

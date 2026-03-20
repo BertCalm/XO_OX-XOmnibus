@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Both siblings in rapid motion — feliX snaps and darts, Oscar morphs to follow. Fast LFOs on both engines create a chase pattern, two creatures circling in agitated water. High movement, medium aggression, energetic Family tension.",
   "dna": {
     "aggression": 0.5,

@@ -1,14 +1,29 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Session Drift",
   "mood": "Entangled",
-  "engines": ["Osteria", "Odyssey"],
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The tavern session bleeds into a dreaming pad — OSTERIA's ensemble sympathy couples to ODYSSEY's drift depth, the real conversation becoming a memory. Late-night entanglement.",
-  "tags": ["entangled", "ensemble", "drift", "coupled", "evolving", "organic"],
-  "macroLabels": ["SESSION", "DRIFT", "COUPLING", "SPACE"],
-  "couplingIntensity": "Light",
+  "tags": [
+    "entangled",
+    "ensemble",
+    "drift",
+    "coupled",
+    "evolving",
+    "organic"
+  ],
+  "macroLabels": [
+    "SESSION",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Subtle",
   "tempo": null,
   "created": "2026-03-14",
   "legacy": {

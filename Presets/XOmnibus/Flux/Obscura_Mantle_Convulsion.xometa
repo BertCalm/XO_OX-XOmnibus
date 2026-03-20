@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-14",
-  "description": "Continuous bowing force at high amplitude with cubic nonlinearity engaged — energy cascades up the chain's modes. Periodic boundary creates a closed resonant loop. Fast scanner, wide excitation. The squid's mantle in seizure.",
+  "description": "Continuous bowing force at high amplitude with cubic nonlinearity engaged \u2014 energy cascades up the chain's modes. Periodic boundary creates a closed resonant loop. Fast scanner, wide excitation. The squid's mantle in seizure.",
   "dna": {
     "aggression": 0.72,
     "brightness": 0.55,
@@ -64,7 +64,7 @@
       "obscura_voiceMode": 1
     }
   },
-  "schema_version": "1.0",
+  "schema_version": 1,
   "sequencer": null,
   "tags": [
     "dense",

@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Aizawa Mobile",
   "mood": "Aether",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Aizawa toroidal attractor free-running at sub-audio rate — a slowly rotating modulation sculpture. Hold a note and the orbit never repeats, sweeping endlessly through the compact torus.",
-  "tags": ["aizawa", "drone", "spatial", "toroidal", "ambient", "free-running"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Aizawa toroidal attractor free-running at sub-audio rate \u2014 a slowly rotating modulation sculpture. Hold a note and the orbit never repeats, sweeping endlessly through the compact torus.",
+  "tags": [
+    "aizawa",
+    "drone",
+    "spatial",
+    "toroidal",
+    "ambient",
+    "free-running"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 3,
@@ -24,7 +42,9 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.42,

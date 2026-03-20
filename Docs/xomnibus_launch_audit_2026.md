@@ -896,7 +896,7 @@ Simulated detailed feedback from 25 producer archetypes across 5 genre clusters 
 ### What Every Producer Agreed On
 
 1. **The coupling matrix is genuinely novel** — no other synth does cross-engine modulation this elegantly
-2. **10,028 presets for free** is an overwhelming competitive advantage
+2. **10,514 presets for free** is an overwhelming competitive advantage
 3. **XPN export is revolutionary** for MPC producers — creates an entirely new market for user-generated expansion packs
 4. **34 engines is overwhelming** — genre-specific starter collections would dramatically improve onboarding
 5. **The aquatic creature metaphors** are charming for some (ambient, lo-fi, dub) and alienating for others (gospel, K-Pop, metal)

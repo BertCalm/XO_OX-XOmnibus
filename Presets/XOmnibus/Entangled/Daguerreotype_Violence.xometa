@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Obscura plate stiffness velocity coupling into Onset percussion — frozen image as drumbeat.",
   "dna": {
     "aggression": 0.91,

@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Orca breach timbral-warping Obscura stiffness model — cold silver with hunter's velocity.",
   "dna": {
     "aggression": 0.592,

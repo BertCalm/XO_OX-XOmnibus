@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Foundation",
-  "description": "Root-level percussive foundation. Berimbau floor feeds the understory chop rate — louder strikes speed up the grain rhythm. The ecosystem breathes at base depth. PROWL macro sweeps density upward.",
+  "description": "Root-level percussive foundation. Berimbau floor feeds the understory chop rate \u2014 louder strikes speed up the grain rhythm. The ecosystem breathes at base depth. PROWL macro sweeps density upward.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.45,
@@ -95,5 +95,8 @@
   },
   "schema_version": 1,
   "mood": "Foundation",
-  "tags": []
+  "tags": [],
+  "engines": [
+    "Ocelot"
+  ]
 }

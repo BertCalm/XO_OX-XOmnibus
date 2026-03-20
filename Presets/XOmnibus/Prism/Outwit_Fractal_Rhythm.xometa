@@ -14,7 +14,7 @@
     "aggression": 0.45
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Prism",
   "name": "Fractal Rhythm",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 51,
       "owit_arm0Length": 3,
       "owit_arm0Level": 0.7,

@@ -14,7 +14,7 @@
     "warmth": 0.7
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Pelagic Hymn",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.6,
       "olap_torusP": 3,

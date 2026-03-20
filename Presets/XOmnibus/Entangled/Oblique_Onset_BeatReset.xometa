@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Each kick trigger resets the prismatic bounce phase — Onset's percussion events act as a hard clock for Oblique's oblq_bounceRate, snapping the waveform back to zero on every hit. The result is rhythmically quantized prism sweeps that land exactly on the beat. Tune oblq_bounceRate to a sub-beat fraction of tempo for polyrhythmic tension: at 1/4 rate each kick restarts the same sweep; at 3/8 rate the phase shifts forward, building a stuttering Funkadelic momentum. The bounce does not merely sync — it is continuously re-launched by the drum. That violence IS the groove.",
   "dna": {

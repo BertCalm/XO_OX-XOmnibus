@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Prism bounce frequency smearing Overbite resonance — bright venom across the spectrum.",
   "dna": {
     "aggression": 0.9,
