@@ -24,9 +24,16 @@ namespace xomnibus {
 //   3 Effects (Tide Pools) — delay / chorus / reverb in series
 //
 // Signal flow (the Constructive Collision):
-//   Src1 → Proc1 ─┐
-//                  ├─ Mix → Proc3 (post-mix insert) → Amp → FX1→FX2→FX3
-//   Src2 → Proc2 ─┘
+//   Src1 ──[FM mod]──→ Src2
+//   Src1 → Proc1(+fb) ─┐
+//                       ├─ Mix → Proc3 → Amp → FX1→FX2→FX3
+//   Src2 → Proc2(+fb) ─┘
+//
+// Wave 2 additions (60 params):
+//   Source-to-source FM (obrix_fmDepth ±1 → ±24 st frequency deviation)
+//   Filter feedback with tanh saturation (obrix_proc1/2Feedback 0→self-osc)
+//   Real wavetable banks — Analog / Vocal / Metallic / Organic (obrix_wtBank)
+//   Unison voice stacking with detune spread (obrix_unisonDetune 0–50 ct)
 //
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
 // Blessing B016: Brick Independence
@@ -234,6 +241,9 @@ struct ObrixVoice
     // 3 processor filters (Proc1→Src1, Proc2→Src2, Proc3→post-mix)
     CytomicSVF procFilters[3];
 
+    // Filter feedback state (Proc1, Proc2) — one sample memory for the loop
+    float procFbState[2] {};
+
     float pan = 0.0f;
 
     void reset() noexcept
@@ -250,6 +260,7 @@ struct ObrixVoice
         for (auto& e : modEnvs) e.reset();
         for (auto& l : modLFOs) l.reset();
         for (auto& f : procFilters) f.reset();
+        procFbState[0] = procFbState[1] = 0.0f;
         pan = 0.0f;
     }
 };
@@ -271,6 +282,7 @@ public:
         sr = static_cast<float> (sampleRate);
         for (auto& v : voices) v.reset();
         for (auto& fx : fxSlots) fx.prepare (sr);
+        buildWavetables();
     }
 
     void releaseResources() override {}
@@ -359,6 +371,13 @@ public:
         const auto gestureType = static_cast<int> (loadP (pGestureType, 0.0f));
         const float flashTrig  = loadP (pFlashTrigger, 0.0f);
 
+        // Wave 2 params
+        const float fmDepth      = loadP (pFmDepth, 0.0f);
+        const float proc1Fb      = loadP (pProc1Fb, 0.0f);
+        const float proc2Fb      = loadP (pProc2Fb, 0.0f);
+        const auto  wtBankVal    = static_cast<int> (loadP (pWtBank, 0.0f));
+        const float unisonDetune = loadP (pUnisonDetune, 0.0f);
+
         const int voiceModeIdx = static_cast<int> (loadP (pVoiceMode, 3.0f));
         const int polyLimit    = (voiceModeIdx <= 1) ? 1 : (voiceModeIdx == 2) ? 4 : 8;
         polyLimit_ = polyLimit;
@@ -383,9 +402,25 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                // Primary voice
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         ampA, ampD, ampS, ampR, src1Tune, src2Tune,
-                        modType, modRate, voiceModeIdx, glideCoeff);
+                        modType, modRate, voiceModeIdx, glideCoeff,
+                        0.0f, 0.0f, false);
+                // Unison extra voices (derived from voice mode)
+                const int unisonSize = calcUnisonSize (voiceModeIdx, unisonDetune);
+                for (int u = 1; u < unisonSize; ++u)
+                {
+                    float spread = static_cast<float> (u) / static_cast<float> (unisonSize - 1) * 2.0f - 1.0f;
+                    float detST  = spread * unisonDetune / 100.0f;
+                    float panOff = spread * 0.75f;
+                    noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
+                            ampA, ampD, ampS, ampR, src1Tune, src2Tune,
+                            modType, modRate, voiceModeIdx, glideCoeff,
+                            detST, panOff, true);
+                }
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -509,17 +544,20 @@ public:
                 float effPW1 = clamp (src1PW + pwMod, 0.05f, 0.95f);
                 float effPW2 = clamp (src2PW + pwMod, 0.05f, 0.95f);
 
-                // --- Source 1 ---
-                float src1 = renderSourceSample (src1Type, voice, 0, freq1, effPW1);
+                // --- Source 1 (rendered first — drives FM into Src2) ---
+                float src1 = renderSourceSample (src1Type, voice, 0, freq1, effPW1, 0.0f, wtBankVal);
 
-                // --- Source 2 ---
+                // --- Source 2 (Src1 FM-modulates Src2 frequency at audio rate) ---
                 float src2 = 0.0f;
                 if (src2Type > 0)
-                    src2 = renderSourceSample (src2Type, voice, 1, freq2, effPW2);
+                {
+                    float fmSemitones = src1 * fmDepth * 24.0f; // ±24 st at max depth
+                    src2 = renderSourceSample (src2Type, voice, 1, freq2, effPW2, fmSemitones, wtBankVal);
+                }
 
                 // === SPLIT PROCESSOR ROUTING (the Constructive Collision) ===
 
-                // Proc1 processes Source 1 independently
+                // Proc1 processes Source 1 independently (with optional feedback)
                 float sig1 = src1;
                 if (proc1Type > 0 && proc1Type <= 3)
                 {
@@ -527,10 +565,14 @@ public:
                     float cut = clamp (proc1Cut + cutoffMod + velTimbre, 20.0f, 20000.0f);
                     float res = clamp (proc1Res + resoMod, 0.0f, 1.0f);
                     voice.procFilters[0].setCoefficients (cut, res, sr);
-                    sig1 = voice.procFilters[0].processSample (sig1);
+                    // Filter feedback: route output back through tanh into input
+                    float fbIn = sig1 + fastTanh (voice.procFbState[0] * proc1Fb * 4.0f);
+                    float filtOut = voice.procFilters[0].processSample (fbIn);
+                    voice.procFbState[0] = flushDenormal (filtOut);
+                    sig1 = filtOut;
                 }
 
-                // Proc2 processes Source 2 independently
+                // Proc2 processes Source 2 independently (with optional feedback)
                 float sig2 = src2;
                 if (proc2Type > 0 && proc2Type <= 3 && src2Type > 0)
                 {
@@ -538,7 +580,10 @@ public:
                     float cut = clamp (proc2Cut + cutoffMod * 0.5f + velTimbre, 20.0f, 20000.0f);
                     float res = clamp (proc2Res + resoMod, 0.0f, 1.0f);
                     voice.procFilters[1].setCoefficients (cut, res, sr);
-                    sig2 = voice.procFilters[1].processSample (sig2);
+                    float fbIn = sig2 + fastTanh (voice.procFbState[1] * proc2Fb * 4.0f);
+                    float filtOut = voice.procFilters[1].processSample (fbIn);
+                    voice.procFbState[1] = flushDenormal (filtOut);
+                    sig2 = filtOut;
                 }
 
                 // Mix the independently-processed sources
@@ -655,7 +700,7 @@ public:
     }
 
     //==========================================================================
-    // Parameters (55 total — Wave 1 flagship)
+    // Parameters (60 total — Wave 2)
     //==========================================================================
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -676,6 +721,7 @@ public:
         using PC = juce::AudioParameterChoice;
 
         auto srcChoices  = juce::StringArray { "Off", "Sine", "Saw", "Square", "Triangle", "Noise", "Wavetable", "Pulse", "Lo-Fi Saw" };
+        auto wtChoices   = juce::StringArray { "Analog", "Vocal", "Metallic", "Organic" };
         auto procChoices = juce::StringArray { "Off", "LP Filter", "HP Filter", "BP Filter", "Wavefolder", "Ring Mod" };
         auto modChoices  = juce::StringArray { "Off", "Envelope", "LFO", "Velocity", "Aftertouch" };
         auto tgtChoices  = juce::StringArray { "None", "Pitch", "Filter Cutoff", "Filter Reso", "Volume", "WT Pos", "Pulse Width", "FX Mix", "Pan" };
@@ -683,7 +729,7 @@ public:
         auto gestChoices = juce::StringArray { "Ripple", "Pulse", "Flow", "Tide" };
 
         // Sources (7)
-        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 1));
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 2  // Default: Saw (was Sine — Guild P1 fix)));
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src2Type", 1 }, "Obrix Source 2 Type", srcChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src1Tune", 1 }, "Obrix Source 1 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src2Tune", 1 }, "Obrix Source 2 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));
@@ -758,6 +804,17 @@ public:
         // FLASH gesture (2)
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_gestureType", 1 }, "Obrix Gesture Type", gestChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_flashTrigger", 1 }, "Obrix FLASH Trigger", juce::NormalisableRange<float> (0.0f, 1.0f, 1.0f), 0.0f));
+
+        // Wave 2: Source FM + Filter Feedback + Wavetable Banks + Unison (5)
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fmDepth", 1 }, "Obrix FM Depth",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_proc1Feedback", 1 }, "Obrix Proc 1 Feedback",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_proc2Feedback", 1 }, "Obrix Proc 2 Feedback",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_wtBank", 1 }, "Obrix Wavetable Bank", wtChoices, 0));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_unisonDetune", 1 }, "Obrix Unison Detune",
+            juce::NormalisableRange<float> (0.0f, 50.0f, 0.1f), 0.0f));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -819,6 +876,13 @@ public:
         pGlideTime      = apvts.getRawParameterValue ("obrix_glideTime");
         pGestureType    = apvts.getRawParameterValue ("obrix_gestureType");
         pFlashTrigger   = apvts.getRawParameterValue ("obrix_flashTrigger");
+
+        // Wave 2
+        pFmDepth      = apvts.getRawParameterValue ("obrix_fmDepth");
+        pProc1Fb      = apvts.getRawParameterValue ("obrix_proc1Feedback");
+        pProc2Fb      = apvts.getRawParameterValue ("obrix_proc2Feedback");
+        pWtBank       = apvts.getRawParameterValue ("obrix_wtBank");
+        pUnisonDetune = apvts.getRawParameterValue ("obrix_unisonDetune");
     }
 
     //==========================================================================
@@ -836,9 +900,16 @@ private:
     //==========================================================================
     // Source rendering — PolyBLEP for anti-aliased types, manual for others
     //==========================================================================
-    float renderSourceSample (int type, ObrixVoice& voice, int idx, float freq, float pw) noexcept
+    float renderSourceSample (int type, ObrixVoice& voice, int idx,
+                              float freq, float pw,
+                              float fmSemitones = 0.0f, int wtBank = 0) noexcept
     {
-        float dt = freq / sr;
+        // FM: apply frequency deviation (±24 st from Src1 output)
+        float effFreq = (fmSemitones != 0.0f)
+            ? freq * fastPow2 (fmSemitones / 12.0f)
+            : freq;
+        float dt = effFreq / sr;
+
         switch (type)
         {
             case 1: // Sine — manual phase
@@ -850,19 +921,19 @@ private:
             }
             case 2: // Saw — PolyBLEP anti-aliased
             {
-                voice.srcOsc[idx].setFrequency (freq, sr);
+                voice.srcOsc[idx].setFrequency (effFreq, sr);
                 voice.srcOsc[idx].setWaveform (PolyBLEP::Waveform::Saw);
                 return voice.srcOsc[idx].processSample();
             }
             case 3: // Square — PolyBLEP
             {
-                voice.srcOsc[idx].setFrequency (freq, sr);
+                voice.srcOsc[idx].setFrequency (effFreq, sr);
                 voice.srcOsc[idx].setWaveform (PolyBLEP::Waveform::Square);
                 return voice.srcOsc[idx].processSample();
             }
             case 4: // Triangle — PolyBLEP (integrated square with BLAMP)
             {
-                voice.srcOsc[idx].setFrequency (freq, sr);
+                voice.srcOsc[idx].setFrequency (effFreq, sr);
                 voice.srcOsc[idx].setWaveform (PolyBLEP::Waveform::Triangle);
                 return voice.srcOsc[idx].processSample();
             }
@@ -871,19 +942,26 @@ private:
                 voice.noiseRng = voice.noiseRng * 1664525u + 1013904223u;
                 return static_cast<float> (voice.noiseRng & 0xFFFF) / 32768.0f - 1.0f;
             }
-            case 6: // Wavetable (sine→saw morph, PolyBLEP saw component)
+            case 6: // Real wavetable banks (Wave 2) — pw = morph position within bank
             {
-                float sine = fastSin (voice.srcPhase[idx] * 6.28318f);
-                voice.srcOsc[idx].setFrequency (freq, sr);
-                voice.srcOsc[idx].setWaveform (PolyBLEP::Waveform::Saw);
-                float saw = voice.srcOsc[idx].processSample();
+                int bank = std::max (0, std::min (3, wtBank));
+                float tablePos = voice.srcPhase[idx] * kWTSize;
+                auto ti = static_cast<int> (tablePos);
+                float frac = tablePos - static_cast<float> (ti);
+                ti = ti % kWTSize;
+                float s0 = wavetables[bank][ti];
+                float s1 = wavetables[bank][(ti + 1) % kWTSize];
+                float tableOut = s0 + frac * (s1 - s0);
+                // pw morphs between sine (pw=0) and full table character (pw=1)
+                float morph = (pw - 0.05f) / 0.9f;
+                float sineOut = fastSin (voice.srcPhase[idx] * 6.28318f);
                 voice.srcPhase[idx] += dt;
                 if (voice.srcPhase[idx] >= 1.0f) voice.srcPhase[idx] -= 1.0f;
-                return sine * (1.0f - pw) + saw * pw;
+                return sineOut * (1.0f - morph) + tableOut * morph;
             }
             case 7: // Pulse — PolyBLEP with variable width
             {
-                voice.srcOsc[idx].setFrequency (freq, sr);
+                voice.srcOsc[idx].setFrequency (effFreq, sr);
                 voice.srcOsc[idx].setWaveform (PolyBLEP::Waveform::Pulse);
                 voice.srcOsc[idx].setPulseWidth (pw);
                 return voice.srcOsc[idx].processSample();
@@ -1003,10 +1081,13 @@ private:
                  float ampA, float ampD, float ampS, float ampR,
                  float tune1, float tune2,
                  const int modTypes[4], const float modRates[4],
-                 int voiceMode, float glideCoeff)
+                 int voiceMode, float glideCoeff,
+                 float detuneOffsetST = 0.0f, float panOffset = 0.0f,
+                 bool isUnisonExtra = false)
     {
-        bool isLegato = (voiceMode == 1);
-        int maxVoicesNow = std::min (kMaxVoices, polyLimit_);
+        bool isLegato = (voiceMode == 1) && !isUnisonExtra;
+        // Unison extras search the full voice pool; primary voices respect polyLimit
+        int maxVoicesNow = isUnisonExtra ? kMaxVoices : std::min (kMaxVoices, polyLimit_);
 
         // Find free voice or steal oldest
         int slot = -1;
@@ -1032,8 +1113,8 @@ private:
 
         auto& v = voices[slot];
 
-        float newFreq1 = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune1) / 12.0f);
-        float newFreq2 = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune2) / 12.0f);
+        float newFreq1 = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
+        float newFreq2 = 440.0f * fastPow2 ((static_cast<float> (noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
 
         if (isLegato && v.active)
         {
@@ -1056,6 +1137,7 @@ private:
             v.targetFreq[0] = newFreq1;
             v.targetFreq[1] = newFreq2;
 
+            v.pan = panOffset;
             v.ampEnv.setParams (ampA, ampD, ampS, ampR, sr);
             v.ampEnv.noteOn();
 
@@ -1131,6 +1213,85 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pPitchBendRange = nullptr, *pGlideTime = nullptr;
     std::atomic<float>* pGestureType = nullptr, *pFlashTrigger = nullptr;
+
+    // Wave 2 parameter pointers
+    std::atomic<float>* pFmDepth      = nullptr;
+    std::atomic<float>* pProc1Fb      = nullptr;
+    std::atomic<float>* pProc2Fb      = nullptr;
+    std::atomic<float>* pWtBank       = nullptr;
+    std::atomic<float>* pUnisonDetune = nullptr;
+
+    // Wavetable banks (Wave 2): 4 banks × 512 samples, built once in prepare()
+    static constexpr int kWTSize = 512;
+    float wavetables[4][kWTSize] {};
+
+    //==========================================================================
+    // Wave 2 helpers
+    //==========================================================================
+
+    // Unison size derived from voice mode (Mono=8, Poly4=2, Legato/Poly8=1)
+    static int calcUnisonSize (int voiceModeIdx, float unisonDetune) noexcept
+    {
+        if (unisonDetune < 0.1f) return 1;
+        switch (voiceModeIdx)
+        {
+            case 0: return 8; // Mono: full 8-voice supersaw
+            case 2: return 2; // Poly4: 2-voice per note (2 notes max simultaneously)
+            default: return 1; // Legato / Poly8: no stacking
+        }
+    }
+
+    // Build 4 single-cycle wavetable banks (runs once at prepare time)
+    void buildWavetables() noexcept
+    {
+        // Bank 0 — Analog: additive saw (Σ sin(2πkx)/k, 12 harmonics)
+        for (int i = 0; i < kWTSize; ++i)
+        {
+            float t = static_cast<float> (i) / kWTSize;
+            float v = 0.0f;
+            for (int k = 1; k <= 12; ++k)
+                v += std::sin (t * 6.28318f * k) / static_cast<float> (k);
+            wavetables[0][i] = v * 0.55f;
+        }
+
+        // Bank 1 — Vocal: emphasized 2nd + 4th harmonics (formant vowel character)
+        for (int i = 0; i < kWTSize; ++i)
+        {
+            float t = static_cast<float> (i) / kWTSize;
+            float v = std::sin (t * 6.28318f)
+                    + 0.80f * std::sin (t * 6.28318f * 2.0f)
+                    + 0.30f * std::sin (t * 6.28318f * 3.0f)
+                    + 0.60f * std::sin (t * 6.28318f * 4.0f)
+                    + 0.15f * std::sin (t * 6.28318f * 5.0f)
+                    + 0.35f * std::sin (t * 6.28318f * 6.0f);
+            wavetables[1][i] = v * 0.30f;
+        }
+
+        // Bank 2 — Metallic: odd harmonics with slight inharmonic stretch
+        for (int i = 0; i < kWTSize; ++i)
+        {
+            float t = static_cast<float> (i) / kWTSize;
+            float v = std::sin (t * 6.28318f)
+                    + 0.70f * std::sin (t * 6.28318f * 3.02f)
+                    + 0.50f * std::sin (t * 6.28318f * 5.05f)
+                    + 0.35f * std::sin (t * 6.28318f * 7.10f)
+                    + 0.20f * std::sin (t * 6.28318f * 9.15f)
+                    + 0.12f * std::sin (t * 6.28318f * 11.2f);
+            wavetables[2][i] = v * 0.38f;
+        }
+
+        // Bank 3 — Organic: warm beating partials (ultra-slight detuning creates aliveness)
+        for (int i = 0; i < kWTSize; ++i)
+        {
+            float t = static_cast<float> (i) / kWTSize;
+            float v = std::sin (t * 6.28318f)
+                    + 0.50f * std::sin (t * 6.28318f * 2.002f)
+                    + 0.25f * std::sin (t * 6.28318f * 3.0f)
+                    + 0.18f * std::sin (t * 6.28318f * 4.003f)
+                    + 0.10f * std::sin (t * 6.28318f * 5.001f);
+            wavetables[3][i] = v * 0.48f;
+        }
+    }
 };
 
 } // namespace xomnibus
