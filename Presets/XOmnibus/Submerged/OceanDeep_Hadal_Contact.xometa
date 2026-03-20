@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Contact",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The absolute bottom. A wrecked hull at 11,000 meters, compressed into near-silence by the weight of the entire ocean above. There is no life here. Only pressure and the slow creaking of metal.",
+  "tags": ["bass", "submerged", "hadal", "wreck", "industrial", "pressure", "extreme depth", "sub"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "At the hadal zone there is no sound — only pressure.",
+      "The hull does not sing. The hull surrenders.",
+      "11,000 meters. The ocean has won."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "Dial PRESSURE macro to maximum for full hadal compression. This is the floor of all sound. Nothing below here.",
+    "diagnosis": "Absolute bottom preset. filterCutoff=60 — the darkest the darkness filter permits. bodyChar=2 (Wreck): industrial hull resonance. pressureAmt=0.9: the ocean nearly collapses the signal. bioMix=0.0: no life, no bioluminescence. Use for moments of geological weight."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.02,
+    "warmth": 0.35,
+    "movement": 0.05,
+    "density": 0.85,
+    "space": 0.08,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.9,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 60,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.2,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.35,
+      "deep_bodyMix": 0.7,
+      "deep_bioRate": 0.05,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 400,
+      "deep_pressureAmt": 0.9,
+      "deep_ampAtk": 0.08,
+      "deep_ampDec": 1.2,
+      "deep_ampSus": 0.75,
+      "deep_ampRel": 3.5,
+      "deep_lfo1Rate": 0.08,
+      "deep_lfo1Depth": 0.06,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.12,
+      "deep_macroPressure": 0.9,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.7,
+      "deep_macroAbyss": 0.95
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.9,
+    "CREATURE": 0.0,
+    "WRECK": 0.7,
+    "ABYSS": 0.95
+  },
+  "coupling": {"pairs": []}
+}
