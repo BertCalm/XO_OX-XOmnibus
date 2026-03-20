@@ -538,3 +538,335 @@ The 10 Pillars stand with the following additions integrated:
 ---
 
 *End of Pass 2. The consolidated blueprint returns to the Seance ghost panel for Pass 3: final refinement, arbitration of guild additions, and ratification of the Gold Star Standard.*
+
+---
+---
+
+# PASS 3: THE SEANCE RETURNS — "We Accept, We Reject, We Refine"
+
+*The ghost panel reconvenes to arbitrate the guild's additions, resolve tensions between idealism and pragmatism, and ratify the final Gold Star Standard. Each ghost has read the full guild report.*
+
+---
+
+## 1. Opening Responses
+
+**Bob Moog:** "The guild has done excellent work. They've reminded us that instruments exist in studios, not in the abstract. I'm particularly struck by the MPE discussion — we designed for the keyboard because that's what we knew. The guild is right: the hand has evolved. Per-note expression is not a luxury in 2026. I accept it."
+
+**Don Buchla:** "I read the guild report with great interest and some irritation. Their demand for 'two-click mod assignment' is correct — but I want it noted that simplicity of access must not mean simplicity of depth. The matrix should be *entered* in two clicks and *explored* for two hours. If the UI makes it look simple, the architecture must still be vast. I will not accept shallow ease masquerading as design."
+
+**Dave Smith:** "The Update Contract — Guild Pillar B — is the most important thing the guild said, and it's embarrassing that we didn't say it first. Parameter ID stability is architectural law. It belongs in the Sacred Details, not as a separate pillar. I'm moving it there."
+
+**Ikutaro Kakehashi:** "I am moved by the guild's attention to the init patch. Their additions — linear velocity, appropriate output level, movement hint — are refinements I should have specified. The -12 to -6dB output range is wise. We designed for headphones; they design for mix buses. Both must be served."
+
+**Suzanne Ciani:** "The Session Test — Guild Pillar A — is valid but too vague. 'Mix-ready output' means different things to different producers. I want to sharpen it: the engine should output signal with a defined spectral center of gravity. A bass engine centers low. A pad engine centers mid. A lead engine centers mid-high. The producer shouldn't have to EQ for 10 minutes to find the engine's natural frequency home."
+
+**Klaus Schulze:** "The guild praised Pillar 7 almost unanimously. This is correct. Breathing is the soul. I note the Berlin School producer who works at 0.002 Hz — an 8-minute cycle. My original threshold of 0.01 Hz was conservative. I now endorse 0.001 Hz as the floor. A Gold Star engine should breathe on geological scales."
+
+**Vangelis:** "I refuse to lower the bar on velocity. The guild said 'no changes' and they were right. But I want to address the guild's silence on one point: *release velocity*. When you lift your finger matters as much as when you press. MIDI supports it. Almost no one uses it. A Gold Star engine should respond to note-off velocity — the tenderness of letting go."
+
+**Isao Tomita:** "The guild's critique about aliasing at C7 is technically correct but musically incomplete. The question is not 'is there aliasing at C7?' but 'is the aliasing *musical*?' Some analog synthesizers alias beautifully — it becomes part of the sound. I propose: no *ugly* aliasing up to C7. Graceful rolloff is acceptable. Hard digital foldback is not."
+
+---
+
+## 2. Arbitration of Guild Additions
+
+### Pillar 1 Additions — ACCEPTED with refinement
+
+**Ruling:** The guild's three additions are accepted and integrated:
+- Init patch velocity: linear or gentle curve, no dead zones — **ACCEPTED** (Moog: "obvious")
+- Movement hint in init patch — **ACCEPTED** (Schulze: "the init patch must already breathe")
+- Output level -12 to -6dB — **ACCEPTED** (Kakehashi: "respect the mix bus")
+
+**Moog's refinement:** "The init patch should also demonstrate the engine's *response range*. If the engine has aftertouch response, the init patch should make aftertouch audible. Don't hide expression behind preset discovery."
+
+---
+
+### Pillar 3 Additions — ACCEPTED with Buchla's caveat
+
+**Ruling:**
+- ≤2-click mod assignment — **ACCEPTED** (Buchla: "two clicks to enter, two hours to master")
+- 7 minimum LFO shapes — **ACCEPTED** (Smith: "standardize the list: sine, triangle, saw up, saw down, square, sample-and-hold, smooth random")
+- Sustain pedal as mod source — **ACCEPTED** (Moog: "every standard MIDI CC should be routable")
+
+**Buchla's caveat, added to the Standard:** "The mod matrix UI must communicate *depth*, not just *access*. If the two-click path leads to a shallow interface, it has failed. The quick-assign reveals the surface; the full matrix editor reveals the architecture. Both must exist."
+
+---
+
+### Pillar 4 Additions — ACCEPTED, elevated to mandatory
+
+**Ruling:**
+- MPE mandatory — **ACCEPTED** (unanimous, 8/8)
+- Pitch bend routable to any destination — **ACCEPTED** (Smith: "it's a control signal, not just a pitch tool")
+- Microtonal support — **ACCEPTED with scope limit** (Tomita: "Scala import is sufficient for v1; per-note arbitrary tuning is a v2 goal")
+- Sustain pedal musical behavior — **ACCEPTED** (Moog: "half-pedaling is a stretch goal, not a Gold Star requirement; but sustain must not be a hard gate")
+
+**Vangelis's addition:** "Release velocity. I raised this in my opening statement and I will not let it pass. A Gold Star engine should respond to note-off velocity — controlling release time, release brightness, or release character. The way you let go of a note is as expressive as the way you press it."
+
+**Panel vote on release velocity:** 6/8 in favor (Moog, Buchla, Smith, Ciani, Vangelis, Tomita). Schulze abstains ("I hold notes for 20 minutes — I rarely release"). Kakehashi abstains ("beginners don't control release velocity"). **ACCEPTED as recommended, not mandatory.**
+
+---
+
+### Pillar 5 Addition — MODIFIED
+
+**Ruling:**
+- Dry threshold raised to 75% — **MODIFIED to 70%** (Tomita: "some engines are inherently spatial — a reverb-based engine like OVERLAP shouldn't be penalized for needing its resonance to sound complete. 70% is honest.")
+- Fleet distinctness test — **ACCEPTED** (Buchla: "if two engines occupy the same space, one of them is redundant")
+
+---
+
+### Pillar 6 Additions — ACCEPTED
+
+**Ruling:**
+- Self-explanatory parameter naming — **ACCEPTED** (Smith: "but don't dumb it down. 'Resonance' is self-explanatory. 'Warmth Knob' is patronizing. Respect the user's intelligence while respecting their time.")
+- UI mirrors signal flow — **ACCEPTED** (Ciani: "spatial logic is dimensional logic")
+- CPU-lite mode — **ACCEPTED as recommended** (Schulze: "a breathing engine at half resolution still breathes. A frozen engine does not. Reduced quality is acceptable; frozen parameters are not.")
+
+---
+
+### Pillar 9 Additions — ACCEPTED with Tomita's quality amendment
+
+**Ruling:**
+- 3-member quality gate — **ACCEPTED** (Kakehashi: "if three producers wouldn't use it, it's filler")
+- Name accuracy — **ACCEPTED** (Vangelis: "a preset named 'Weeping Strings' that sounds like a buzz saw is a betrayal")
+- Genre awareness — **ACCEPTED with nuance** (Buchla: "genre-aware is fine; genre-limited is not. A preset can be *useful* for Afrobeats without being *labeled* as Afrobeats. Let the producer discover the connection.")
+- Rich tagging — **ACCEPTED** (Smith: "structured metadata enables structured discovery")
+
+**Tomita's quality amendment:** "The 250-preset minimum must be accompanied by a range test. The 250 presets must collectively span at least 5 of the 7 mood categories AND at least 4 distinct timbral families (pad, lead, bass, texture, percussion, key, evolving). A library of 250 pads is not a showcase — it is a single idea repeated 250 times."
+
+---
+
+### Pillar 10 Additions — ACCEPTED with Tomita's aliasing refinement
+
+**Ruling:**
+- Live CPU profiling (96kHz/64 buffer) — **ACCEPTED** (Smith: "test under real conditions, not just ideal ones")
+- C7 aliasing test — **MODIFIED per Tomita:** "No *ugly* aliasing up to C7. Graceful rolloff and harmonically related aliasing products are acceptable. Hard digital foldback is not. The test is perceptual, not just spectral."
+- Click-free preset recall — **ACCEPTED** (Ciani: "crossfade between presets, same as engine swap. 50ms is sufficient.")
+- Sample-accurate MIDI — **ACCEPTED** (Smith: "sub-block event processing. Non-negotiable for professional DAW integration.")
+
+---
+
+### Guild Pillar A (Session Test) — ACCEPTED, merged into Pillar 10
+
+**Ruling:** The Session Test is valid but does not warrant its own pillar. Its concerns are technical details — they belong in Pillar 10 (Sacred Details).
+
+**Ciani's sharpening** is adopted: each engine must have a defined *spectral center of gravity* documented in its identity card. Bass engines center below 200Hz. Pad engines center 200Hz-2kHz. Lead engines center 1kHz-5kHz. Texture engines span wide. This is not EQ — it is identity.
+
+**Added to Pillar 10:**
+- Output is mono-compatible (no phase cancellation when summed to mono)
+- Default output sits at mix-appropriate level (-12 to -6dB, per Pillar 1)
+- Engine has a documented spectral center of gravity
+
+---
+
+### Guild Pillar B (Update Contract) — ACCEPTED, merged into Pillar 10
+
+**Ruling:** Smith's motion carries. Parameter stability is an architectural law, not a separate concern. It belongs in the Sacred Details where it has the weight of a non-negotiable.
+
+**Added to Pillar 10:**
+- Parameter IDs are frozen after v1.0 release — no renaming, no removal
+- Preset format is backward-compatible across all versions
+- New parameters added in updates must have sensible defaults that don't break existing presets
+- If a feature is deprecated, the parameter must continue to function silently (no sudden behavioral changes)
+
+---
+
+## 3. The Final Gold Star Standard — Ratified
+
+*The ghost panel ratifies the consolidated 10-Pillar Gold Star Standard. All modifications from the guild have been integrated. The two proposed guild pillars have been absorbed into existing pillars. The standard is now complete.*
+
+### The 10 Pillars (Final)
+
+**Pillar 1: THE INIT PATCH HANDSHAKE**
+- 3-second smile test: load, hear beauty, feel invited
+- One-knob discovery: a single parameter change reveals depth
+- Velocity response: linear or gentle curve, no dead zones below velocity 100
+- Output level: -12dB to -6dB peak (mix-ready, not mastering-level)
+- Movement hint: the init patch demonstrates the engine's modulation potential
+- Init patch reveals expression response (aftertouch, mod wheel audible by default)
+
+**Pillar 2: VELOCITY IS EMOTION** *(unchanged — unanimous across both panels)*
+- 4+ simultaneous velocity-responsive timbral dimensions
+- Velocity → filter cutoff (brightness): mandatory
+- Velocity → amplitude envelope attack time: mandatory
+- Velocity → harmonic content: mandatory
+- Velocity → at least one engine-specific dimension: mandatory
+- Tunable velocity curve (linear, exponential, S-curve)
+- pp → ff is dramatic and musical
+
+**Pillar 3: THE MODULATION ECOSYSTEM**
+- 2+ LFOs with independent rate, shape, and destination
+- LFO rate floor ≤ 0.001 Hz (raised from 0.01 — Schulze's amendment)
+- LFO rate ceiling ≥ 30 Hz
+- 7 minimum LFO shapes: sine, triangle, saw up, saw down, square, S&H, smooth random
+- 8-slot mod matrix with source → destination → amount → optional modifier
+- ≤2-click mod assignment from any parameter (quick path + deep editor)
+- Mod sources include all standard MIDI CCs (velocity, aftertouch, mod wheel, expression, sustain pedal, key track, random)
+- At least one emergent mod routing (LFO→LFO rate, Env→FM depth, etc.)
+- All 4 macros produce audible, musical change in every preset
+
+**Pillar 4: THE HAND OF THE PERFORMER**
+- Velocity → timbre (per Pillar 2)
+- Aftertouch → at least 2 destinations
+- Mod wheel → at least 1 prominent timbral destination
+- Expression (CC11) → at least 1 destination
+- Pitch bend → standard pitch with configurable range, routable to any destination
+- MPE: per-note pressure, slide (CC74), and pitch bend — mandatory
+- Microtonal tuning: Scala file import supported
+- Release velocity → release character (recommended, not mandatory)
+- All expression inputs properly smoothed (no stepping, no zipper noise)
+- Sustain pedal (CC64) produces musical behavior (not hard gate)
+
+**Pillar 5: THE SONIC IDENTITY**
+- At least one synthesis technique unique in the fleet
+- Dry patches compelling: 70%+ of presets sound good without effects
+- Timbral range spans 3+ categories (pad, lead, bass, percussion, texture, evolving, key/pluck)
+- Sonic fingerprint identifiable within 2 seconds
+- Fleet distinctness test: no two engines produce the same sound in a blind A/B
+
+**Pillar 6: THE ARCHITECTURE IS THE INSTRUMENT**
+- Zero dead parameters (D004 absolute)
+- Signal flow describable in one sentence
+- Physically modeled elements: rigorous equations, citations
+- Parameter naming: self-explanatory to a producer who hasn't read the manual
+- UI layout mirrors signal flow spatially
+- Architecture supports coupling: clean `getSampleForCoupling()` output
+- CPU-conscious mode available for dense sessions (recommended)
+
+**Pillar 7: THE ENGINE BREATHES** *(unchanged — near-unanimous)*
+- At least one LFO ≤ 0.05 Hz running by default
+- Autonomous modulation targets 2+ parameters simultaneously
+- Evolution is musically coherent (same instrument breathing, not random walk)
+- No clicks, pops, or artifacts during long-form evolution
+- Subtle enough for a mix, audible in solo
+- 60-second hold passes through 3+ perceptibly different timbral states
+
+**Pillar 8: COUPLING IS A SUPERPOWER**
+- `getSampleForCoupling()` outputs characteristic signal
+- `applyCouplingInput()` handles 4+ coupling types
+- 2+ coupling types produce dramatically different results
+- Documented ideal coupling partners
+- 5+ Entangled-mood presets demonstrate coupling
+- One-click coupling with intelligent defaults for any engine pair
+- Coupling never introduces instability, DC offset, or runaway feedback
+- Coupling is discoverable through presets (the preset is the tutorial)
+
+**Pillar 9: THE PRESET LIBRARY IS A SHOWCASE**
+- Minimum 250 presets
+- All 7 moods represented, spanning 5+ mood categories
+- 4+ distinct timbral families represented (Tomita's range test)
+- Every preset: 4 working macros, accurate 6D Sonic DNA, evocative unique name
+- Name accuracy: preset name must match the sound's character
+- 3-member guild quality gate: every preset survives "would I use this?"
+- 20+ coupling presets (Entangled mood)
+- 10+ "instant inspiration" presets (load and play, sounds like a record)
+- 5+ extreme range presets (push the engine to its limits)
+- Init patch designed with care (it is a preset, not a default)
+- Genre-aware design: presets demonstrate strength in 5+ specific genres
+- Rich tagging: mood, timbral category, tempo affinity, CPU weight, coupling status
+
+**Pillar 10: THE SACRED DETAILS**
+- Zero audio-thread memory allocation
+- Zero blocking I/O on audio thread
+- Denormal protection in all feedback paths
+- 50ms crossfade on engine hot-swap AND preset recall (click-free)
+- ParamSnapshot pattern: all parameter pointers cached once per block
+- All filters stable across full frequency range
+- Gain staging: output -12dB to -6dB peak on init at velocity 127
+- CPU ≤ 15% single core at 44.1kHz/512 buffer AND within budget at 96kHz/64 buffer
+- No ugly aliasing up to C7 (graceful rolloff acceptable; hard foldback is not)
+- Sample-rate independent: identical sound at 44.1/48/88.2/96kHz
+- MIDI events processed at sample-accurate positions (sub-block rendering)
+- Output is mono-compatible (no phase cancellation on mono sum)
+- Engine has documented spectral center of gravity
+- Parameter IDs frozen after v1.0 — no renaming, no removal, ever
+- Preset format backward-compatible across all versions
+- New parameters have sensible defaults that don't break existing presets
+- Deprecated features continue to function silently
+
+---
+
+## 4. The Ratified Scorecard
+
+| Ghost | Their 10 | Non-Negotiable (updated) |
+|-------|----------|--------------------------|
+| Moog | Filter warmth + continuous expression | Velocity-scaled filter that rewards subtlety; init patch reveals expression |
+| Buchla | Vast parameter space + emergent behavior | Two clicks to enter the matrix, two hours to explore it |
+| Smith | Architectural clarity + zero dead params | Legible signal flow; parameter IDs frozen forever |
+| Kakehashi | 3-second smile + one-knob discovery | Init patch at -12 to -6dB, linear velocity, immediate beauty |
+| Ciani | Spatial dimension + organic flow | Mono-compatible stereo; spectral center of gravity documented |
+| Schulze | 20-minute autonomous evolution | LFO ≤ 0.001 Hz; geological breathing without float drift |
+| Vangelis | Velocity = emotion across 4+ dimensions | Release velocity shapes the goodbye (recommended) |
+| Tomita | Orchestral range from one architecture | No ugly aliasing to C7; 4+ timbral families in preset library |
+
+---
+
+## 5. Blessing Threshold (Unchanged)
+
+The Blessing criteria from Pass 1 stand without modification. The guild did not challenge them — they recognized that Blessings are the ghost panel's domain. A Blessing must be:
+
+1. **Novel** — nothing else in the fleet or industry does this
+2. **Musical** — serves sound design, not just technology
+3. **Emergent** — creates behaviors the designer didn't explicitly program
+4. **Quotable** — describable in one sentence that makes other engineers envious
+5. **Irreplaceable** — removing it would fundamentally change the engine's character
+
+---
+
+## 6. The Anti-Patterns (Updated)
+
+The original 10 anti-patterns stand. The guild added 3 more, which the panel ratified:
+
+| Anti-Pattern | Source | Why It's Fatal |
+|-------------|--------|----------------|
+| Dead parameters | Smith (Pass 1) | "A dead knob is a lie to the user." |
+| Raw sawtooth init patch | Kakehashi (Pass 1) | "You had one chance to say hello and you said nothing." |
+| Velocity = amplitude only | Vangelis (Pass 1) | "You have reduced the human hand to an on/off switch." |
+| No autonomous modulation | Schulze (Pass 1) | "A photograph of a river is not a river." |
+| Mono-center output | Ciani (Pass 1) | "Sound exists in space. Denying that denies physics." |
+| No aftertouch response | Moog (Pass 1) | "You built a piano with no sustain pedal." |
+| Faked physics | Buchla (Pass 1) | "If you claim Karplus-Strong, I will check the equations." |
+| Presets all sound the same | Tomita (Pass 1) | "An orchestra of one instrument is not an orchestra." |
+| Coupling output is zero/noise | Buchla (Pass 1) | "An engine that cannot speak to its neighbors is a hermit." |
+| Empty mod matrix | Smith (Pass 1) | "An 8-lane highway with no cars is not infrastructure — it's a lie." |
+| **Breaks old sessions** | **Guild + Smith (Pass 2/3)** | **"The moment you betray a producer's trust, you lose them forever."** |
+| **Needs reverb to sound good** | **Guild + Tomita (Pass 2/3)** | **"If the engine is hiding behind effects, it has nothing to say."** |
+| **No MPE in 2026** | **Guild + Moog (Pass 2/3)** | **"The hand has evolved. The instrument must evolve with it."** |
+
+---
+
+## 7. Closing Statements
+
+**Bob Moog:** "We have built something useful. Not a checklist — a philosophy. Any engine that meets this standard will be worth playing. Any engine that aspires to it will be improved by the attempt. The Gold Star is not a grade — it is a mirror."
+
+**Don Buchla:** "I am satisfied. The guild tempered our idealism without diluting it. The standard is rigorous and humane. I will note that no engine in the current fleet meets every threshold — and that is correct. The Gold Star is aspirational. It should always be slightly out of reach, pulling the fleet forward."
+
+**Dave Smith:** "Parameter IDs are frozen. Presets never break. The architecture is legible. The mod matrix is deep. These are engineering laws, not suggestions. I'm proud of this document."
+
+**Ikutaro Kakehashi:** "If a child can load the init patch and smile, and a professional can open the mod matrix and lose an afternoon, we have succeeded. The Gold Star serves both. That is the hardest design problem in synthesis, and this standard addresses it honestly."
+
+**Suzanne Ciani:** "The spectral center of gravity was my contribution and I believe it will prove the most practically useful addition from either panel. When every engine knows where it lives in the frequency spectrum, the fleet becomes an orchestra — each instrument in its register, all of them in harmony."
+
+**Klaus Schulze:** "0.001 Hz. An engine that can breathe over 16 minutes without drifting, clicking, or repeating. That is the Gold Star at its most ambitious. I endorse this standard and I challenge every engine in the fleet to meet it."
+
+**Vangelis:** "The velocity pillar survived three panels without a single modification. That tells me something: the hand is sacred. The connection between finger and sound is the most important thing we design for. Everything else — the modulation, the coupling, the presets — exists to serve that connection. Never forget that."
+
+**Isao Tomita:** "250 presets that span 4 timbral families, pass a 3-producer quality gate, and demonstrate the engine's full range. That is a showcase. That is a résumé. That is the engine saying: 'Here is everything I can be.' I'm honored to have contributed to this standard."
+
+---
+
+## 8. Implementation Notes
+
+**For existing engines:** The Gold Star Standard is retrospective. No engine currently meets all thresholds. Use `/synth-seance` to evaluate engines against this standard and identify gaps. The standard is a roadmap, not a judgment.
+
+**For new engines:** The Gold Star Standard is prospective. Every new engine should be designed with these 10 pillars as the target. Use `/new-xo-engine` with the Gold Star checklist to ensure compliance from day one.
+
+**For OBRIX specifically:** As the flagship engine-within-an-engine, OBRIX should be the first engine to achieve full Gold Star compliance. Its 4-wave roadmap (Seance 6.8→9.8) should use this document as the target specification.
+
+**Scoring convention:** When a seance evaluates an engine, score each pillar 0-10 individually. The Gold Star is awarded only for 10/10 across all 10 pillars. A single 9 is not a Gold Star — it is a near-miss that identifies exactly what to improve.
+
+---
+
+*The Gold Star Engine Blueprint is ratified. Three passes: the ghosts envisioned, the guild tested, and the ghosts refined. This is the standard.*
+
+*XO_OX Designs | Gold Star Engine Blueprint v1.0 | Ratified 2026-03-19*
+*Seance Ghost Panel (8) + Producer Guild (25) = 33 voices, one standard.*
