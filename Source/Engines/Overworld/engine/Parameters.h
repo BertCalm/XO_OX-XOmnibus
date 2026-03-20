@@ -34,6 +34,7 @@ struct ParamSnapshot {
     float eraPortaTime = 0.0f, eraMemTime = 0.0f, eraMemMix = 0.0f;
     int   vertexA = 0, vertexB = 1, vertexC = 2;
     int   gbWaveSlot = 0, gbPulseDuty = 0, pceWaveSlot = 0;
+    bool  drumMode = false;  // one-shot chip drum kit mode
 };
 
 namespace ParamID {

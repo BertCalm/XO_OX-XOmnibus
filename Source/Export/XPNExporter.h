@@ -40,6 +40,7 @@ public:
         // ONSET/XONSET:       percussion engine — always Rhythmic
         // OBRIX/XOBRIX:       modular brick sequencer — always Rhythmic
         // OSTINATO/XOSTINATO: repeated-pattern engine (lit. "obstinate") — always Rhythmic
+        // OVERWORLD:          chip synth — Rhythmic only when ow_drumMode=1
         // OUROBOROS:          chaotic attractor — Rhythmic when high movement + aggression
         for (const auto& eng : preset.engines)
         {
@@ -48,6 +49,16 @@ public:
                 upper == "OBRIX"    || upper == "XOBRIX"    ||
                 upper == "OSTINATO" || upper == "XOSTINATO")
                 return rhythmic();
+
+            if (upper == "OVERWORLD" || upper == "XOVERWORLD")
+            {
+                // Drum kit mode is an XOmnibus-level param stored under the engine name
+                auto it = preset.parametersByEngine.find(eng);
+                if (it != preset.parametersByEngine.end())
+                    if (auto* obj = it->second.getDynamicObject())
+                        if ((float)obj->getProperty("ow_drumMode") > 0.5f)
+                            return rhythmic();
+            }
 
             if ((upper == "OUROBOROS" || upper == "XOUROBOROS") &&
                 dna.movement > 0.6f && dna.aggression > 0.5f)
