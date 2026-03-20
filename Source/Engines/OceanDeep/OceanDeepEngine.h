@@ -588,18 +588,25 @@ public:
                 currentVel    = msg.getFloatVelocity();
                 noteIsOn      = true;
                 ampEnvStage   = EnvStage::Attack;
+                // DSP Fix Wave 2B: trigger independent filter envelope
+                filterEnvStage = EnvStage::Attack;
                 // Re-trigger oscillators for mono bass (phase reset on new note)
                 oscFund.reset(); oscSub1.reset(); oscSub2.reset();
                 wakeSilenceGate();
             } else if (msg.isNoteOff() && msg.getNoteNumber() == currentNote) {
                 noteIsOn    = false;
                 ampEnvStage = EnvStage::Release;
+                // DSP Fix Wave 2B: release filter envelope with amp
+                filterEnvStage = EnvStage::Release;
             } else if (msg.isController() && msg.getControllerNumber() == 1) {
                 modWheelVal = msg.getControllerValue() / 127.f; // D006
             } else if (msg.isChannelPressure()) {
                 aftertouchVal = msg.getChannelPressureValue() / 127.f; // D006
             } else if (msg.isAftertouch()) {
                 aftertouchVal = msg.getAfterTouchValue() / 127.f;      // D006
+            // DSP Fix Wave 2B: Wire pitch bend to pitch (was missing entirely)
+            } else if (msg.isPitchWheel()) {
+                pitchBendVal = (msg.getPitchWheelValue() - 8192) / 8192.f; // -1..+1
             }
         }
 
@@ -678,8 +685,10 @@ public:
         // Resonance → map 0-0.95 to Q factor 0.5 → 12.0
         const float Q = 0.5f + filterRes * 11.5f;
 
+        // DSP Fix Wave 2B: pitch bend wired (±2 semitones default range)
+        const float pitchBendSemitones = pitchBendVal * 2.0f;
         // Derived frequencies
-        const float fundamentalFreq = midiToFreq(currentNote) * fastPow2(couplingPitchMod / 12.f);
+        const float fundamentalFreq = midiToFreq(currentNote) * fastPow2((couplingPitchMod + pitchBendSemitones) / 12.f);
         const float sub1Freq        = fundamentalFreq * 0.5f;  // -1 octave
         const float sub2Freq        = fundamentalFreq * 0.25f; // -2 octaves
 
@@ -780,9 +789,53 @@ public:
             float dynamicPressure = clamp(totalPressure + lfo2Out * lfo2Depth * 0.15f, 0.f, 1.f);
             float compressed      = compressor.process(withBody, dynamicPressure, compAtk, compRel);
 
+            // --- DSP Fix Wave 2B: Independent filter ADSR ---
+            // This was the #1 seance finding: bass programming requires an
+            // independent filter envelope separate from the amp ADSR.
+            // filterEnvLevel follows a simple one-pole ADSR that sweeps the
+            // darkness filter cutoff up to +300 Hz on attack, then decays.
+            {
+                float fEnvTarget = 0.f;
+                float fEnvCoeff  = 0.f;
+                switch (filterEnvStage) {
+                    case EnvStage::Idle:
+                        fEnvTarget = 0.f; fEnvCoeff = relCoeff;
+                        break;
+                    case EnvStage::Attack:
+                        fEnvTarget = 1.f; fEnvCoeff = smoothCoeffFromTime(0.005f, sr); // fast attack (5ms)
+                        if (filterEnvLevel >= 0.99f) {
+                            filterEnvLevel = 1.f;
+                            filterEnvStage = EnvStage::Decay;
+                        }
+                        break;
+                    case EnvStage::Decay:
+                        fEnvTarget = 0.3f; // sustain at 30%
+                        fEnvCoeff = smoothCoeffFromTime(0.3f, sr); // 300ms decay
+                        if (std::fabs(filterEnvLevel - 0.3f) < 0.01f) {
+                            filterEnvLevel = 0.3f;
+                            filterEnvStage = EnvStage::Sustain;
+                        }
+                        break;
+                    case EnvStage::Sustain:
+                        fEnvTarget = 0.3f; fEnvCoeff = decCoeff;
+                        break;
+                    case EnvStage::Release:
+                        fEnvTarget = 0.f; fEnvCoeff = smoothCoeffFromTime(0.5f, sr); // 500ms release
+                        if (filterEnvLevel < 0.001f) {
+                            filterEnvLevel = 0.f;
+                            filterEnvStage = EnvStage::Idle;
+                        }
+                        break;
+                }
+                filterEnvLevel += fEnvCoeff * (fEnvTarget - filterEnvLevel);
+                filterEnvLevel = flushDenormal(filterEnvLevel);
+            }
+            // Filter env sweeps cutoff up to +300 Hz, scaled by velocity
+            float filterEnvBoost = filterEnvLevel * currentVel * 300.f;
+
             // --- Darkness filter ---
             // LFO1 slightly modulates cutoff for alien life feel
-            float dynCutoff = clamp(finalCutoff + lfo1Out * lfo1Depth * 50.f, 50.f, 800.f);
+            float dynCutoff = clamp(finalCutoff + filterEnvBoost + lfo1Out * lfo1Depth * 50.f, 50.f, 1200.f);
             float filtered  = darknessFilter.process(compressed, dynCutoff, Q, sr);
 
             // --- Amp envelope ---
@@ -831,6 +884,13 @@ private:
     // Envelope state
     EnvStage  ampEnvStage = EnvStage::Idle;
     float     ampEnvLevel = 0.f;
+
+    // DSP Fix Wave 2B: Independent filter ADSR
+    EnvStage  filterEnvStage = EnvStage::Idle;
+    float     filterEnvLevel = 0.f;
+
+    // DSP Fix Wave 2B: Pitch bend
+    float pitchBendVal = 0.f;
 
     // Voice state
     bool  noteIsOn    = false;
