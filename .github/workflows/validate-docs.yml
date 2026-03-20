@@ -1,0 +1,48 @@
+name: Validate Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'CLAUDE.md'
+      - 'Docs/**'
+      - 'Source/Core/PresetManager.h'
+      - 'Source/XOmnibusProcessor.cpp'
+      - 'Tools/validate_presets.py'
+      - 'Tools/validate_docs.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'CLAUDE.md'
+      - 'Docs/**'
+      - 'Source/Core/PresetManager.h'
+      - 'Source/XOmnibusProcessor.cpp'
+      - 'Tools/validate_presets.py'
+      - 'Tools/validate_docs.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run documentation validator
+        run: python3 Tools/validate_docs.py --verbose
+
+      - name: Report results
+        if: always()
+        run: |
+          echo "## Documentation Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          python3 Tools/validate_docs.py --verbose 2>&1 | tee -a $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
