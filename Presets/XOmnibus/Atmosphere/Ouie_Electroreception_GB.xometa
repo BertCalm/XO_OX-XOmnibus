@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "The ampullae of Lorenzini sensing electromagnetic fields buried in sand. Additive partials shimmer above filtered noise — the shark's electrical awareness rendered as sound. High AMPULLAE macro opens the sensitivity wide. Aftertouch drives dramatic filter sweeps, as if the shark is homing in. Breathing LFO at 0.067 Hz keeps the ocean breathing beneath.",
   "tags": ["atmosphere", "sensing", "electric", "additive", "noise", "aftertouch", "ampullae", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OUIE — The Hammerhead",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 5: The Ampullae of Lorenzini — Electromagnetic Awareness Rendered as Sound", "Canon 3: Aftertouch Drives the Shark Homing In"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Finger applied aftertouch and The Ear felt the filter sweep as directional homing — the electronic sensing biology made into gesture.",
+    "diagnosis": "Electroreception demonstrates the additive partials algorithm over filtered noise — the hammerhead's electromagnetic sense rendered as synthesis. Reveals OUIE's ability to encode biological function as a unique timbral system."
+  },
   "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
   "couplingIntensity": "None",
   "tempo": null,

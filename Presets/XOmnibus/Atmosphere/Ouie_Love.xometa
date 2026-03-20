@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "The reconciliation. Wavetable and Additive voices locked in harmonic sympathy at HAMMER +0.8 — spectral blend fuses them into a single luminous entity. Warm, resolved, transcendent. Slow breathing at 0.067 Hz opens the filter like a tide. Golden ratio release lets every note dissolve naturally. Two become one.",
   "tags": ["atmosphere", "warm", "love", "harmonic", "pad", "transcendent", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OUIE — The Hammerhead",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 6: HAMMER +0.8 — Spectral Fusion, Two Become One", "Canon 5: Slow Breathing Opens the Filter Like a Tide"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Breath played long chords and felt the two voices merge into a single luminous entity — The Ear confirmed spectral fusion at HAMMER +0.8.",
+    "diagnosis": "Love demonstrates OUIE's LOVE pole of the HAMMER axis — wavetable and additive in harmonic lock, the two voices fused into warmth. It reveals what the engine becomes when conflict is fully resolved."
+  },
   "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
   "couplingIntensity": "None",
   "tempo": null,

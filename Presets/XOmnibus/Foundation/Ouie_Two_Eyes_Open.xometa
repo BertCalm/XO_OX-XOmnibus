@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "The hammerhead at rest. Two VA saw voices in Layer mode, HAMMER at zero — no interaction, no strife, no love. Pure dual-voice warmth. Both eyes open, watching the same horizon. Breathing LFO at 0.067 Hz keeps the filter alive beneath the surface.",
   "tags": ["foundation", "warm", "dual-voice", "layer", "clean", "saw", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OUIE — The Hammerhead",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 1: The Hammerhead at Rest — Both Eyes Open, Watching the Same Horizon", "Canon 6: HAMMER at Zero — No Interaction, No Strife, No Love"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone confirmed the dual VA saw is warm and self-sufficient — the engine at rest, before the HAMMER axis is engaged.",
+    "diagnosis": "Two Eyes Open is the OUIE foundation patch — two VA saw voices in Layer mode with HAMMER zeroed. Pure dual-voice warmth with no STRIFE/LOVE interaction, demonstrating the engine's ground state before its defining axis is introduced."
+  },
   "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
   "couplingIntensity": "None",
   "tempo": null,

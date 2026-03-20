@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "The argument. VA saw and Wavefolder locked in conflict at HAMMER -0.7 — cross-FM tears them apart, ring mod adds dissonant partials. Aggressive, unstable, beautiful chaos. Coprime LFOs at 0.13 and 0.17 Hz ensure the conflict never settles into a pattern. The resonance shelf at 0.28 keeps the snarl musical.",
   "tags": ["flux", "aggressive", "strife", "cross-fm", "wavefolder", "conflict", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OUIE — The Hammerhead",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 7: The Conflict Never Settles Into a Pattern", "Canon 4: Coprime LFOs at 0.13 and 0.17 Hz — Perpetual Argument"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear listened for resolution and found none — the coprime LFOs guarantee perpetual tension, beautiful chaos that never collapses into pattern.",
+    "diagnosis": "Strife demonstrates the STRIFE pole — VA saw and Wavefolder at HAMMER -0.7 with coprime LFOs ensuring the argument never settles. Reveals the engine's capacity for controlled dissonance that remains musical."
+  },
   "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
   "couplingIntensity": "None",
   "tempo": null,

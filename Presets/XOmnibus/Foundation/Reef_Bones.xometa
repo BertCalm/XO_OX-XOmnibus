@@ -12,6 +12,15 @@
   "engines": ["Obrix"],
   "description": "Pure saw through LP filter — the skeleton of the reef before coral grows. One source, one processor, zero effects. OBRIX at its most honest.",
   "tags": ["obrix", "init", "saw", "foundation", "minimal"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Psalm 1: Resonance Shelf (0.28)", "Rev 4: Physiological LFO (0.067 Hz)", "Truth 1: Golden Ratio Release (1.618)"],
+    "revelation": null,
+    "flock_note": "The Finger found reso 0.28 creates a presence shelf that mixing engineers spend hours automating with parametric EQ. The filter does it for free.",
+    "diagnosis": "The skeleton of the reef. One source, one processor. OBRIX at its most honest — before the coral grows."
+  },
   "dna": {
     "brightness": 0.5,
     "warmth": 0.6,

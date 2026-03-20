@@ -17,6 +17,16 @@
     "body",
     "guru-bin"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 3: The Cave Body Mode — Walls That Hum Back", "Canon 2: High Waveguide Feedback Creates Pitched Resonance"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear heard the walls resonate at the fundamental — The Tongue described the cave mode as 'a room that participates in the harmony'.",
+    "diagnosis": "Cave Resonance demonstrates OCEANDEEP's waveguide body mode — cave character with 0.65 feedback creates eerie pitched resonance around the sub oscillators. Reveals the body system as a co-synthesis layer, not just coloration."
+  },
   "macroLabels": [
     "PRESSURE",
     "CREATURE",

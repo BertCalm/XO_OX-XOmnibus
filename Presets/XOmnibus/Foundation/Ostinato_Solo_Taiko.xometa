@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Thunder from a single taiko. Deep body, long decay.",
   "tags": [
@@ -14,6 +14,16 @@
     "solo",
     "japan"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 2: Thunder From a Single Drum", "Doctrine D003: The Physics IS the Synthesis"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone felt the taiko's body resonance through the monitoring system — deep, singular, not decorative.",
+    "diagnosis": "Solo Taiko demonstrates OSTINATO's physically modeled membrane drum at maximum body depth — one voice, one instrument, showing the engine's acoustic modeling power stripped of all distraction."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

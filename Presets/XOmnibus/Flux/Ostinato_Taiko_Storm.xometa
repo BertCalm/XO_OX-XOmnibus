@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Four taikos in full assault. Double time, high fire, compressed power.",
   "tags": [
@@ -15,6 +15,19 @@
     "intense",
     "japan"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 6: The Gathering Swing (Tempora's revelation: swing values encode cultural memory)",
+      "Canon 1: CPU First Law"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone confirmed low CPU at 6%. The Ear heard the stadium resonance of the taiko body — pure power with zero mud.",
+    "diagnosis": "Japanese ceremony in code. Maximum taiko weight, zero swing. The Circle at its most martial."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

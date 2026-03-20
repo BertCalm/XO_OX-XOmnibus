@@ -16,6 +16,16 @@
     "pure",
     "guru-bin"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 1: The Anglerfish Before the Descent", "Gospel 1: No Cave, No Wreck, No Creature — Just Pressure and Fundamental"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone confirmed the dry sub is clean and self-sufficient — no body modes, no creature, the engine's foundation exposed.",
+    "diagnosis": "Open Water Bass is the OCEANDEEP starting point — pure sine sub with minimal pressure and no environmental character. It proves the engine's dry signal is compelling before its creature and wreck systems are engaged."
+  },
   "macroLabels": [
     "PRESSURE",
     "CREATURE",

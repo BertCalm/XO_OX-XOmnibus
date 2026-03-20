@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Three surdos plus repique and tamborim layers. Carnival energy.",
   "tags": [
@@ -15,6 +15,19 @@
     "brazil",
     "batucada"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 6: The Gathering Swing (swing 55% = Rio carnival — the furthest swing point on the spectrum)",
+      "Sutra 2: Coprime Drift"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Breath noted swing at 55% is at the edge of the human groove threshold — beyond this it becomes chaotic. The Ear confirmed: this is exactly Rio.",
+    "diagnosis": "Samba carnival explosion. All Brazilian instruments, maximum swing. GATHER is the crowd size — from rehearsal room to Sambódromo."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

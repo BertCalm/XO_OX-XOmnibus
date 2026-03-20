@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Eight beatbox voices \u2014 every articulation, every pattern. Full machine.",
   "tags": [
@@ -14,6 +14,16 @@
     "machine",
     "full"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 8: Eight Voices, Eight Articulations, Full Machine", "Canon 3: The Beatbox as Ensemble"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Finger activated all 8 seats simultaneously — The Ear confirmed the full beatbox ensemble as rhythmically self-sufficient.",
+    "diagnosis": "Beatbox Machine is OSTINATO at maximum seat density — all 8 beatbox voices with individual articulations and patterns running simultaneously. It reveals the engine's polyrhythmic ceiling."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

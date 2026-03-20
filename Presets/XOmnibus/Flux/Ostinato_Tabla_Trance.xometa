@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Four tablas at different tunings, interlocking patterns. Hypnotic.",
   "tags": [
@@ -14,6 +14,19 @@
     "trance",
     "interlocking"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 6: The Gathering Swing (swing 8% = North Indian classical lilt)",
+      "Truth 4: The Physiological LFO"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Tongue found that velocity 20 produces a ghost baya stroke — the tabla whispers before it speaks. The Ear confirmed the tabla body resonance sits at 220 Hz.",
+    "diagnosis": "North Indian morning raga. The tabla leads, the bell answers. GATHER here is a meditation bell, not a crowd."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

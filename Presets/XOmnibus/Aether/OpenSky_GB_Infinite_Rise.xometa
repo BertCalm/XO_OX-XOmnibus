@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "Aurum's revelation. Shimmer feedback at 0.82 with size 0.9 and octave balance at 0.7 creates an ever-ascending reverb tail — the Shepard tone of reverb. Each note feeds back through the octave-up pitch shifter, building an infinite staircase of light. The Guru says: this is the sound of looking up and never finding the ceiling. Transcendent.",
   "tags": ["opensky", "infinite", "shimmer", "transcendent", "aether", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OPENSKY — Above the Cloud Line",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 5: Shepard Shimmer — The Reverb That Never Descends", "Gospel 1: This Is the Sound of Looking Up and Never Finding the Ceiling"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear followed the shimmer feedback and could not find the top — The Eye watched the reverb tail build in spectrum, confirming infinite ascent.",
+    "diagnosis": "Infinite Rise is the OPENSKY transcendence preset — shimmer feedback at 0.82 with octave pitch-shift creates a Shepard-tone reverb that perpetually climbs. It reveals the engine's defining spiritual character."
+  },
   "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
   "couplingIntensity": "None",
   "tempo": null,

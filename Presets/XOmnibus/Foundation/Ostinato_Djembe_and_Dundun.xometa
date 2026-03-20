@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The classic West African pair. Djembe leads, dundun anchors.",
   "tags": [
@@ -15,6 +15,19 @@
     "pair",
     "west-africa"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 6: The Gathering Swing (swing 12% = West African griot tradition)",
+      "Gospel 4: Feedback Mirror (dundun bass as low-frequency anchor)"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Finger discovered that the djembe-dundun split at GATHER 0.4 creates a natural call-and-response pattern. The Ear heard the grove where this music lives.",
+    "diagnosis": "West African crossroads. The griot tradition in eight voices. The dundun is the heartbeat; the djembe is the story."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

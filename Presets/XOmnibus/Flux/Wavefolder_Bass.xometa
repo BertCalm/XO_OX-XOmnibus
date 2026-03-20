@@ -12,6 +12,16 @@
   "engines": ["Obrix"],
   "description": "Saw through wavefolder — velocity drives fold depth for extreme timbral range. Soft = warm sine. Hard = screaming harmonics. D001 at its best.",
   "tags": ["obrix", "bass", "wavefolder", "aggressive", "velocity"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Doctrine D001: Velocity Must Shape Timbre", "Verse 2: The Wavefolder Processor"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Finger played soft and heard warmth, hard and heard screaming harmonics — D001 fulfilled at maximum expression.",
+    "diagnosis": "Wavefolder Bass is D001 made flesh — velocity directly controls wavefold depth, turning a warm sine into extreme harmonic content. The hardest D001 demonstration in the fleet."
+  },
   "dna": {
     "brightness": 0.55,
     "warmth": 0.6,

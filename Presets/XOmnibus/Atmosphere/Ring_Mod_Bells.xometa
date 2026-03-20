@@ -12,6 +12,16 @@
   "engines": ["Obrix"],
   "description": "Sine + triangle through ring mod processor — crystalline inharmonic bells. Detuned sources create sum/difference tones that shimmer like glass.",
   "tags": ["obrix", "bell", "ring-mod", "crystalline", "inharmonic"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 4: The Ring Modulator Processor", "Canon 2: Sum and Difference Tones"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Finger placed two detuned sources into Processor 3 and heard glass — The Ear confirmed the inharmonic shimmer is uniquely OBRIX.",
+    "diagnosis": "Ring Mod Bells demonstrates the ring modulator processor brick — sine and triangle detuned by a fifth generate metallic, inharmonic bell tones that no other XOmnibus engine can produce in this way."
+  },
   "dna": {
     "brightness": 0.7,
     "warmth": 0.2,

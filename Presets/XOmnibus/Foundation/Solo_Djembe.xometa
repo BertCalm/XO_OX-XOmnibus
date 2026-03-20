@@ -12,6 +12,16 @@
   "engines": ["Ostinato"],
   "description": "One djembe, center of the circle. All 4 articulations across velocity layers. Pure physics — modal membrane, cylindrical body, Bessel zeros. The fire starts with one voice.",
   "tags": ["ostinato", "djembe", "solo", "acoustic", "foundation"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 1: The Fire Starts With One Voice", "Canon 1: Modal Membrane, Cylindrical Body, Bessel Zeros"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone felt the djembe's modal membrane physics immediately — all 4 articulations confirmed across velocity layers by The Finger.",
+    "diagnosis": "Solo Djembe is the OSTINATO foundation preset — one instrument, pure physics. It demonstrates the engine's per-seat articulation system and velocity-layered membrane model before any ensemble is assembled."
+  },
   "dna": {
     "brightness": 0.5,
     "warmth": 0.65,

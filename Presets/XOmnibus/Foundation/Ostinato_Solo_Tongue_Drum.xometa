@@ -5,7 +5,7 @@
   "engines": [
     "Ostinato"
   ],
-  "author": "XO_OX Designs",
+  "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Steel tongue drum \u2014 harmonic series rings clean and long.",
   "tags": [
@@ -14,6 +14,19 @@
     "solo",
     "meditative"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 5: The Silence Between Strikes (the tongue drum's decay is half the music)",
+      "Truth 1: Golden Ratio Release (1.618s decay = perfect tongue resonance)"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear heard that the tongue drum at low velocity produces a tone that sits at 432 Hz — the healing frequency. The Finger confirmed this is not set intentionally; it emerges from the physical model.",
+    "diagnosis": "Healing circle. One tongue drum, zero percussion, all resonance. The most meditative sound in OSTINATO's repertoire."
+  },
   "macroLabels": [
     "GATHER",
     "FIRE",

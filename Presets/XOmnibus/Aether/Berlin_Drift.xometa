@@ -12,6 +12,16 @@
   "engines": ["Obrix"],
   "description": "Drift Bus at full depth with Journey Mode — voices wander independently, never returning to the same pitch. Schulze's Berlin School ensemble. The reef evolves forever.",
   "tags": ["obrix", "generative", "drift", "ambient", "journey"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 7: Drift Bus Depth", "Gospel 3: Journey Mode — No Voice Returns"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear noticed voices never land on the same pitch twice — the reef evolves without repetition.",
+    "diagnosis": "Berlin Drift demonstrates OBRIX's Drift Bus and Journey Mode at maximum depth — a generative ambient engine modeled on Schulze's Berlin School. It reveals that the engine's highest power is autonomous pitch evolution, not performance."
+  },
   "dna": {
     "brightness": 0.35,
     "warmth": 0.7,

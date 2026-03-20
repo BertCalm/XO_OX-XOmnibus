@@ -17,6 +17,16 @@
     "alien",
     "guru-bin"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 8: The Anglerfish Lure — Intermittent Alien Pulses in Darkness", "Canon 7: Bio Exciter at 0.08 Hz Creates Slow Bioluminescent Flashes"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Eye watched the bioluminescent flash at 0.08 Hz — The Ear confirmed the bandpass noise pulse as the most alien-sounding element in the OCEANDEEP engine.",
+    "diagnosis": "Bioluminescent demonstrates the bio exciter system — slow 0.08 Hz pulsing bandpass noise over deep sub bass. It reveals OCEANDEEP's creature dimension as a synthesis system that produces genuinely alien organic textures."
+  },
   "macroLabels": [
     "PRESSURE",
     "CREATURE",

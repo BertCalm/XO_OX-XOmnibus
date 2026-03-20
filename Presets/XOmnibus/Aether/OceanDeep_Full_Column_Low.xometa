@@ -17,6 +17,16 @@
     "full-column",
     "guru-bin"
   ],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 6: The Anglerfish Does Not Compete With the Flying Fish", "Canon 5: Bass Half of the Full Column"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Ear confirmed the clean sub-400 Hz foundation leaves exact spectral space for OPENSKY's shimmer above — engineered for coupling from day one.",
+    "diagnosis": "Full Column Low is the bass half of the water column coupling pair — clean, foundational sub bass designed explicitly to pair with OPENSKY's Full Column High. Reveals OCEANDEEP's role as the deep register in cross-engine architecture."
+  },
   "macroLabels": [
     "PRESSURE",
     "CREATURE",

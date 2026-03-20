@@ -12,6 +12,16 @@
   "engines": ["Obrix"],
   "description": "Every brick type active. All 3 FX engaged. Drift Bus, Journey Mode, FLASH. The full OBRIX architecture singing at once. The reef at its most alive — the transcendence preset.",
   "tags": ["obrix", "transcendent", "generative", "complex", "evolving"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Blessing B016: Brick Independence", "Verse 1: Every Brick Type Active"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Eye saw all three FX lit simultaneously — the only preset that uses the full OBRIX architecture at once.",
+    "diagnosis": "Infinite Reef is the transcendence preset: every brick type, all 3 FX, Drift Bus, Journey Mode, and FLASH active together. It reveals OBRIX's full orchestral depth and is the benchmark for maximum complexity."
+  },
   "dna": {
     "brightness": 0.5,
     "warmth": 0.55,

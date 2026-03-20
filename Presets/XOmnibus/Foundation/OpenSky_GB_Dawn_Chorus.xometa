@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "The first lesson: restraint. Minimal supersaw spread at 0.2, sub sine for warmth, no shimmer at all. Pure clean signal with a breath of chorus for stereo width. The Guru says: before you reach for the sky, learn to stand on the ground. Compelling at C3 vel 80 with macros zeroed.",
   "tags": ["opensky", "clean", "foundation", "pad", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OPENSKY — Above the Cloud Line",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 10: Before You Reach for the Sky, Learn to Stand on the Ground", "Gospel 5: Compelling at C3 Vel 80 With Macros Zeroed"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone confirmed the dry patch holds — no shimmer, no shimmer shimmer, just warm supersaw and chorus breath. The architecture is sound before the sky appears.",
+    "diagnosis": "Dawn Chorus is the first OPENSKY lesson — minimal supersaw spread, no shimmer, pure clean signal with chorus width. It proves the engine's dry signal is compelling before any of its signature effects are applied."
+  },
   "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
   "couplingIntensity": "None",
   "tempo": null,

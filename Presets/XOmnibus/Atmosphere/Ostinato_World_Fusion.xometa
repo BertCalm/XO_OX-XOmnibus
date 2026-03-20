@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": 110,
+  "macroLabels": ["GATHER", "SWING", "BODY", "SPACE"],
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "name": "World Fusion",
+  "mood": "Atmosphere",
+  "engines": ["Ostinato"],
+  "description": "All 8 instruments playing together, swing at 33% — the universal groove that lives between all traditions. Global village in real time.",
+  "tags": ["ostinato", "world", "fusion", "ensemble", "multicultural", "groove"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OSTINATO — The Circle",
+    "retreat_date": "2026-03-19",
+    "scripture": [
+      "Verse 6: The Gathering Swing (33% swing = the median of all world traditions — where they overlap)",
+      "Gospel 1: Sympathetic String Theory (every instrument resonates with every other at GATHER 0.8+)"
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Eye confirmed spectral diversity peaks when all 8 instruments play simultaneously — each occupies a different frequency band with near-zero overlap. The Ear called it 'the democratic sound design.'",
+    "diagnosis": "The global village sounds like this. Eight traditions, one circle, one groove. GATHER is how much the world comes together — from individual voices to unified pulse."
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.75,
+    "density": 0.85,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ostinato": {
+      "osti_instrument1": 0,
+      "osti_instrument2": 1,
+      "osti_instrument3": 2,
+      "osti_instrument4": 3,
+      "osti_instrument5": 4,
+      "osti_instrument6": 5,
+      "osti_instrument7": 6,
+      "osti_instrument8": 7,
+      "osti_tempo": 110,
+      "osti_swing": 0.33,
+      "osti_macroGather": 0.0,
+      "osti_macroSwing": 0.0,
+      "osti_macroBody": 0.0,
+      "osti_macroSpace": 0.0,
+      "osti_level": 0.75,
+      "osti_space": 0.35,
+      "osti_attack": 0.005,
+      "osti_decay": 0.4,
+      "osti_sustain": 0.5,
+      "osti_release": 1.0,
+      "osti_velFilter": 0.5,
+      "osti_velAmp": 0.7,
+      "osti_lfo1Rate": 0.25,
+      "osti_lfo1Depth": 0.1,
+      "osti_lfo1Target": 1,
+      "osti_polyphony": 8,
+      "osti_pitchBendRange": 2.0
+    }
+  }
+}

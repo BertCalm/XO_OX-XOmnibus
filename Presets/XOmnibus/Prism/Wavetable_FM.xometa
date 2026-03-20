@@ -12,6 +12,16 @@
   "engines": ["Obrix"],
   "description": "Source 1 wavetable modulates Source 2 frequency — timbres no other engine can produce. CHARACTER exponentially folds the harmonic content.",
   "tags": ["obrix", "wavetable", "fm", "metallic", "evolving"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OBRIX — The Living Reef",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Gospel 4: Feedback Mirror", "Verse 3: FM Sweet Spot", "Canon 3: Wavetable as FM Carrier"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Eye watched the harmonic content shift as CHARACTER macro swept — exponential folding visible in the spectrum, confirmed by The Ear as uniquely metallic.",
+    "diagnosis": "Wavetable FM uses a wavetable source to frequency-modulate a second oscillator — a hybrid architecture producing metallic timbres impossible with either technique alone, revealing OBRIX's cross-brick synthesis potential."
+  },
   "dna": {
     "brightness": 0.65,
     "warmth": 0.3,

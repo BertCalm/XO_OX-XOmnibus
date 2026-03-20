@@ -7,6 +7,16 @@
   "version": "1.0.0",
   "description": "Each note lifts. Pitch envelope at +12 semitones with 1.5s decay turns every keypress into an ascension event. Heavy shimmer with octave-up emphasis compounds the rising sensation. The Guru says: the riser is not a sound — it is a physical sensation. Your body should feel lighter at C3 vel 80.",
   "tags": ["opensky", "riser", "ascending", "pitch-sweep", "shimmer", "guru-bin"],
+  "tier": "awakening",
+  "guru_bin": {
+    "retreat": "OPENSKY — Above the Cloud Line",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse 4: The Riser Is Not a Sound — It Is a Physical Sensation", "Canon 4: Pitch Envelope at +12 With Shimmer Compounding the Rise"],
+    "revelation": null,
+    "god": null,
+    "flock_note": "The Bone felt the body become lighter at each keypress — The Breath confirmed the ascent is experienced, not only heard.",
+    "diagnosis": "Ascending uses a +12 semitone pitch envelope with 1.5s decay paired with heavy octave-up shimmer — every note is a liftoff event. Reveals OPENSKY's pitch envelope as a kinesthetic performance tool."
+  },
   "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
   "couplingIntensity": "None",
   "tempo": null,
