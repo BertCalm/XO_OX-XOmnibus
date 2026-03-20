@@ -36,6 +36,9 @@
 | XOsprey | OSPREY | APPROVE/CONDITIONAL | B012 ShoreSystem (shared) | None | D004 + D005: OspreyLFO struct fully implemented, never instantiated | "The LFO is written, tested, elegant — and it has never been called." |
 | XOsteria | OSTERIA | Production-grade | B012 ShoreSystem (shared) | P0-02: warmthFilter only processes mixL; mixR never passes through | None | "The right channel of the warmth filter has been cold since the first compile." |
 | XOstinato | OSTINATO | 8.0/10 | B016 Communal Ghost Trigger System; B017 Cross-Tradition Pattern Library | D004 exciterMix dead — fixed 2026-03-19 | D002: 1 hardcoded LFO, no user control, no mod matrix | "Eight seats, and the seats listen to each other." — Buchla |
+| XOmbre | OMBRE | 7.8/10 | None | None | D002: only 1 LFO (2 required) | "Only one LFO — the engine has a ghost but not enough wind to move it." |
+| XOrca | ORCA | 8.1/10 | APEX HUNT macro (5 simultaneous DSP targets) | None | D006: no aftertouch | "The predator hunts without hearing — aftertouch is silent." |
+| XOctopus | OCTOPUS | 8.3/10 | 8-arm prime-ratio LFO system (never phase-locks) | None | D006: no aftertouch | "Eight arms reach into every parameter — but the skin never responds to the player's touch." |
 
 ---
 
