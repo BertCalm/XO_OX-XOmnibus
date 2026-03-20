@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
 #include <array>
 #include <cmath>
@@ -470,8 +471,8 @@ struct MurmurGenerator
         rng = rng * 1664525u + 1013904223u;
         float noise = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
 
-        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
-        modPhase += 0.005f / std::max (1.0f, sampleRate);
+        // Slow 0.5 Hz modulation — the ebb and flow of tavern conversation
+        modPhase += 0.5f / std::max (1.0f, sampleRate);
         if (modPhase >= 1.0f) modPhase -= 1.0f;
         float mod = fastSin (modPhase * kOsteriaTwoPi);
 
@@ -665,6 +666,9 @@ public:
         }
 
         aftertouch.prepare (sampleRate);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Osteria has hall reverb tails
     }
 
     void releaseResources() override {}
@@ -878,9 +882,12 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         shoreTargets, channelLevels, channelPans,
                         pAmpAttack, pAmpDecay, pAmpSustain, pAmpRelease);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -890,6 +897,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
@@ -1390,6 +1399,8 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1645,6 +1656,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Helpers
     //==========================================================================

@@ -13,6 +13,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <vector>
 #include <algorithm>
@@ -736,6 +737,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -840,20 +842,12 @@ public:
             ? std::array<int,4>{{1,2,4,6}}[std::min (3, static_cast<int> (pPolyphony->load()))]
             : 6;
 
-        // D002: Macro reads — centered at 0.5 so bipolar offset is (value - 0.5)
-        const float macroChar  = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.5f;
-        const float macroMove  = (pMacroMovement != nullptr)  ? pMacroMovement->load()  : 0.5f;
-        const float macroCoup  = (pMacroCoupling != nullptr)  ? pMacroCoupling->load()  : 0.5f;
-        const float macroSpace = (pMacroSpace != nullptr)     ? pMacroSpace->load()     : 0.5f;
-        juce::ignoreUnused (macroCoup, macroSpace);  // wired in FX/coupling section
-
         // Sub octave: -2, -1, 0 → semitone offsets
         const float subSemitones = static_cast<float> ((subOct - 2) * 12); // index 0=-24, 1=-12, 2=0
 
         // Analog amount: mojo=0 → digital, mojo=1 → full analog drift
-        // D002: MOVEMENT macro adds analog drift (±0.3 from center)
         // D006: non-const so aftertouch boost (computed post-MIDI-loop) can update it
-        float analogAmount = clamp (mojo + (macroMove - 0.5f) * 0.6f, 0.0f, 1.0f);
+        float analogAmount = mojo;
 
         // Precompute group pan gains (constant-power)
         const float g2Pan = -0.3f * stereoWidth * 2.0f;
@@ -910,8 +904,11 @@ public:
             for (int i = 0; i < numArpEvents; ++i)
             {
                 if (arpEvents[i].isNoteOn)
+                {
+                    silenceGate.wake();
                     noteOn (arpEvents[i].note, arpEvents[i].velocity,
                             glideAmt, voiceMode, maxPoly);
+                }
                 else
                     noteOff (arpEvents[i].note);
             }
@@ -922,8 +919,11 @@ public:
             {
                 const auto msg = metadata.getMessage();
                 if (msg.isNoteOn())
+                {
+                    silenceGate.wake();
                     noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                             glideAmt, voiceMode, maxPoly);
+                }
                 else if (msg.isNoteOff())
                     noteOff (msg.getNoteNumber());
                 else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -952,6 +952,13 @@ public:
                 else if (msg.isController() && msg.getControllerNumber() == 1)
                     modWheelValue = msg.getControllerValue() / 127.0f;
             }
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -1030,11 +1037,8 @@ public:
                 float keyTrackOffset = (static_cast<float> (voice.noteNumber) - 60.0f)
                                        * fltKeyTrack;
                 // D001: velocity scales filter envelope depth for timbral expression
-                // D002: CHARACTER macro offsets cutoff (±12 semitones from center 0.5)
-                //       MOVEMENT macro scales analog drift amount
-                float macroCharSt = (macroChar - 0.5f) * 24.0f;
                 float cutoff = fltCutoff
-                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod + macroCharSt)
+                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod)
                                * (0.693147f / 12.0f));
                 cutoff = clamp (cutoff, 20.0f, 18000.0f);
 
@@ -1181,6 +1185,11 @@ public:
         activeVoiceCount.store (cnt, std::memory_order_relaxed);
 
         envelopeOutput = peakEnv;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1334,20 +1343,6 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "fat_polyphony", 1 }, "Fat Polyphony",
             juce::StringArray { "1", "2", "4", "6" }, 3));
-
-        // D002: 4 macros
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "fat_macroCharacter", 1 }, "CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "fat_macroMovement", 1 }, "MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "fat_macroCoupling", 1 }, "COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "fat_macroSpace", 1 }, "SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
 public:
@@ -1389,13 +1384,11 @@ public:
         pVoiceMode   = apvts.getRawParameterValue ("fat_voiceMode");
         pGlide       = apvts.getRawParameterValue ("fat_glide");
         pPolyphony   = apvts.getRawParameterValue ("fat_polyphony");
-        pMacroCharacter = apvts.getRawParameterValue ("fat_macroCharacter");
-        pMacroMovement  = apvts.getRawParameterValue ("fat_macroMovement");
-        pMacroCoupling  = apvts.getRawParameterValue ("fat_macroCoupling");
-        pMacroSpace     = apvts.getRawParameterValue ("fat_macroSpace");
     }
 
 private:
+    SilenceGate silenceGate;
+
     //-- Voice management -------------------------------------------------------
 
     void noteOn (int noteNumber, float velocity, float glideAmt, int voiceMode, int maxPoly)
@@ -1569,10 +1562,6 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
-    std::atomic<float>* pMacroCharacter = nullptr;
-    std::atomic<float>* pMacroMovement  = nullptr;
-    std::atomic<float>* pMacroCoupling  = nullptr;
-    std::atomic<float>* pMacroSpace     = nullptr;
 };
 
 } // namespace xomnibus

@@ -8,7 +8,7 @@
 // The adapter calls:  xoutwit::fastTanh(x)
 //==============================================================================
 
-#include "DSP/FastMath.h"
+#include "../../../DSP/FastMath.h"
 
 namespace xoutwit {
 

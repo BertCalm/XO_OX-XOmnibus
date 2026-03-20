@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -33,7 +34,7 @@ struct OleAdapterVoice {
 
 class OleEngine : public SynthEngine {
 public:
-    void prepare(double sampleRate,int) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);}
+    void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);}
     void releaseResources() override {for(auto&v:voices)v.reset();}
     void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;}
 
@@ -41,6 +42,7 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
+                silenceGate.wake();
                 int nn=msg.getNoteNumber(); float vel=msg.getVelocity()/127.f;
                 float strumRateMs=a1StrumRate?a1StrumRate->load():8.0f;
 
@@ -57,9 +59,9 @@ public:
                 nhv=(nhv+1)%6;
                 voices[h].isHusband=true; voices[h].husbandType=(h-12)%3;
                 voices[h].noteOn(nn, vel, strumRateMs);
-            }else if(msg.isNoteOff())
-                for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
-            else if (msg.isChannelPressure()) {
+            } else if (msg.isNoteOff()) {
+                for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);
@@ -70,6 +72,9 @@ public:
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
         }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
         // ---- Read ALL parameters ----
         // Aunt levels
@@ -235,6 +240,8 @@ public:
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;
         }
         ac=0;for(auto&v:voices)if(v.active)++ac;
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
@@ -269,8 +276,7 @@ public:
         p.push_back(std::make_unique<F>("ole_aunt2GourdSize","Gourd Size",N{0,1},0.5f));
         // Aunt 3: Charango
         p.push_back(std::make_unique<F>("ole_aunt3Level","Aunt 3 Level",N{0,1},0.7f));
-        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
-        p.push_back(std::make_unique<F>("ole_aunt3Tremolo","Aunt 3 Tremolo",N{0.005f,25.0f},12.0f));
+        p.push_back(std::make_unique<F>("ole_aunt3Tremolo","Aunt 3 Tremolo",N{5,25},12.0f));
         p.push_back(std::make_unique<F>("ole_aunt3Brightness","Aunt 3 Brightness",N{0,1},0.5f));
         // Shared waveguide
         p.push_back(std::make_unique<F>("ole_damping","Damping",N{0.8f,0.999f},0.995f));
@@ -336,6 +342,7 @@ public:
     int getActiveVoiceCount() const override {return ac;}
 
 private:
+    SilenceGate silenceGate;
     static constexpr int kV=18;
     double sr=44100; int nv=0,nhv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;

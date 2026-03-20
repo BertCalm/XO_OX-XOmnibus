@@ -3,6 +3,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/Compressor.h"
 #include <array>
 #include <cmath>
@@ -277,10 +278,6 @@ struct OrcaVoice
     CytomicSVF bandSplitLP;   // belly (low, clean)
     CytomicSVF bandSplitHP;   // dorsal (high, crushed)
 
-    // Countershading sample-rate reduction state (per-voice, Sisters S-006 fix)
-    float crushHold = 0.0f;
-    float crushCounter = 0.0f;
-
     // Voice stealing crossfade
     float fadeGain = 1.0f;
     bool fadingOut = false;
@@ -308,8 +305,6 @@ struct OrcaVoice
         mainFilter.reset();
         bandSplitLP.reset();
         bandSplitHP.reset();
-        crushHold = 0.0f;
-        crushCounter = 0.0f;
     }
 };
 
@@ -331,6 +326,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
         crossfadeRate = 1.0f / (0.005f * srf);
@@ -424,6 +420,7 @@ public:
         const float pCutoff       = loadParam (paramFilterCutoff, 8000.0f);
         const float pReso         = loadParam (paramFilterReso, 0.0f);
         const float pLevel        = loadParam (paramLevel, 0.8f);
+        const float pVelCutoffAmt = loadParam (paramVelCutoffAmt, 0.5f);
 
         const float pAmpA         = loadParam (paramAmpAttack, 0.01f);
         const float pAmpD         = loadParam (paramAmpDecay, 0.1f);
@@ -473,14 +470,9 @@ public:
         float effectiveCutoff  = clamp (pCutoff + huntAmount * 8000.0f + couplingFormantMod * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso    = clamp (pReso + huntAmount * 0.4f, 0.0f, 1.0f);
         float effectiveFormant = clamp (pFormantInt + huntAmount * 0.5f + macroMove * 0.3f, 0.0f, 1.0f);
-        // SPACE macro expands the underwater acoustic chamber:
-        // more echolocation resonance = longer ringing comb = bigger space
-        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f + macroSpace * 0.15f, 0.0f, 0.95f);
-        // D006: aftertouch raises hunt intensity — apex predator on alert.
-        // +0.35 max on huntAmount at full pressure, escalating echo resonance and breach.
-        float effectiveCrush   = clamp (pCrushMix + (huntAmount + atPressure_ * 0.35f) * 0.6f, 0.0f, 1.0f);
-        // SPACE also deepens sub-bass presence (more space = more physical weight)
-        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f + macroSpace * 0.3f, 0.0f, 1.0f);
+        float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f, 0.0f, 0.995f);
+        float effectiveCrush   = clamp (pCrushMix + huntAmount * 0.6f, 0.0f, 1.0f);
+        float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f, 0.0f, 1.0f);
         // Mod wheel (CC#1) scans the wavetable position — sweeps from sine/whale-call
         // through metallic partials to complex vocal textures (D006 compliance)
         float effectiveWTPos   = clamp (pWTPos + couplingWTPosMod + macroMove * 0.3f + modWheelAmount_ * 0.5f, 0.0f, 1.0f);
@@ -527,21 +519,26 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pLfo1Rate, pLfo1Depth, pLfo1Shape, pLfo2Rate, pLfo2Depth, pLfo2Shape,
                         effectiveCutoff, effectiveReso, formantFreqs, formantQ);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
-            // D006: aftertouch deepens breach intensity — increased pressure
-            // tightens the hunt, raising echo resonance and breach threshold.
-            // Full pressure adds +0.35 to huntAmount (apex predator on alert).
-            else if (msg.isChannelPressure())
-                atPressure_ = msg.getChannelPressureValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -559,7 +556,14 @@ public:
         {
             if (!voice.active) continue;
 
-            voice.mainFilter.setCoefficients (effectiveCutoff, effectiveReso, srf);
+            // D001/D006 velocity → timbre: high velocity opens the filter (brighter
+            // attack), giving each note a distinct timbral character proportional to
+            // how hard it was struck.  maxCutoffOffset = 3000 Hz at full depth.
+            static constexpr float kMaxCutoffOffset = 3000.0f;
+            float velCutoff = clamp (effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffset,
+                                     20.0f, 20000.0f);
+
+            voice.mainFilter.setCoefficients (velCutoff, effectiveReso, srf);
 
             for (int f = 0; f < 5; ++f)
                 voice.formant[f].setCoefficients (formantFreqs[f], formantQ[f], srf);
@@ -570,9 +574,12 @@ public:
 
             // Echolocation comb filter: delay time from note frequency
             // Comb filter delay = sampleRate / frequency → resonates at note pitch
+            // D001: high velocity slightly compresses the comb delay → higher effective
+            // click rate → more frantic echolocation hunting behaviour.
             float combDelay = srf / std::max (20.0f, voice.currentFreq);
-            voice.echoL.setDelay (combDelay);
-            voice.echoR.setDelay (combDelay * 1.003f); // slight stereo spread
+            float velEchoDelay = combDelay * (1.0f - pVelCutoffAmt * voice.velocity * 0.3f);
+            voice.echoL.setDelay (velEchoDelay);
+            voice.echoR.setDelay (velEchoDelay * 1.003f); // slight stereo spread
             voice.echoL.setFeedback (effectiveEchoRes);
             voice.echoR.setFeedback (effectiveEchoRes);
             voice.echoL.setDamping (pEchoDamp);
@@ -643,17 +650,14 @@ public:
                 float wtSample = voice.wtOsc.processSample();
 
                 // Formant filter network — gives the wavetable a "speaking" quality
-                // D001: velocity boosts formant intensity — harder hits = more vocal character
-                float velFilterBoost = voice.velocity * 0.35f;
-                float velFormant = clamp (smoothedFormant + velFilterBoost, 0.0f, 1.0f);
                 float formantOut = 0.0f;
-                if (velFormant > 0.001f)
+                if (smoothedFormant > 0.001f)
                 {
                     for (int f = 0; f < 5; ++f)
                         formantOut += voice.formant[f].processSample (wtSample);
                     formantOut *= 0.2f;  // normalize 5-band sum
 
-                    wtSample = wtSample * (1.0f - velFormant) + formantOut * velFormant;
+                    wtSample = wtSample * (1.0f - smoothedFormant) + formantOut * smoothedFormant;
                 }
 
                 // =====================================================
@@ -702,16 +706,18 @@ public:
                     // Quantize to reduced bit depth
                     float crushed = std::round (dorsal * crushStep) / crushStep;
 
-                    // Sample-rate reduction on dorsal (per-voice state, Sisters S-006 fix)
-                    voice.crushCounter += 1.0f;
-                    if (voice.crushCounter >= crushDownsample)
+                    // Sample-rate reduction on dorsal
+                    static thread_local float crushHold = 0.0f;
+                    static thread_local float crushCounter = 0.0f;
+                    crushCounter += 1.0f;
+                    if (crushCounter >= crushDownsample)
                     {
-                        voice.crushHold = crushed;
-                        voice.crushCounter = 0.0f;
+                        crushHold = crushed;
+                        crushCounter = 0.0f;
                     }
 
                     // Recombine: clean belly + crushed dorsal
-                    float countershaded = belly + voice.crushHold;
+                    float countershaded = belly + crushHold;
 
                     // Mix with dry signal
                     voiceSignal = voiceSignal * (1.0f - smoothedCrushMix) + countershaded * smoothedCrushMix;
@@ -719,6 +725,11 @@ public:
 
                 // --- Main filter ---
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
+
+                // --- AudioToRing coupling: ring-modulate voice signal ---
+                // couplingRingModSrc is accumulated in applyCouplingInput() and
+                // zeroed each block before the sample loop (line ~487).
+                voiceSignal *= (1.0f + couplingRingModSrc);
 
                 // --- Apply amplitude envelope, velocity, crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
@@ -819,6 +830,11 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //==========================================================================
@@ -1037,6 +1053,11 @@ public:
             juce::ParameterID { "orca_polyphony", 1 }, "Orca Voice Mode",
             juce::StringArray { "Mono", "Legato", "Poly8", "Poly16" }, 1));
 
+        // --- Velocity → Timbre (D001 / D006) ---
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "orca_velCutoffAmt", 1 }, "Orca Velocity \xe2\x86\x92 Brightness",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
+
         // --- Macros ---
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "orca_macroCharacter", 1 }, "Orca Macro CHARACTER",
@@ -1103,6 +1124,8 @@ public:
 
         paramVoiceMode         = apvts.getRawParameterValue ("orca_polyphony");
 
+        paramVelCutoffAmt      = apvts.getRawParameterValue ("orca_velCutoffAmt");
+
         paramMacroCharacter    = apvts.getRawParameterValue ("orca_macroCharacter");
         paramMacroMovement     = apvts.getRawParameterValue ("orca_macroMovement");
         paramMacroCoupling     = apvts.getRawParameterValue ("orca_macroCoupling");
@@ -1123,6 +1146,8 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Safe parameter load
     //==========================================================================
@@ -1349,7 +1374,6 @@ private:
 
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — scans wavetable position (D006)
-    float atPressure_     = 0.0f;   // Channel aftertouch — deepens hunt/breach intensity (D006)
 
     // Voices
     std::array<OrcaVoice, kMaxVoices> voices {};
@@ -1423,6 +1447,8 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 
     std::atomic<float>* paramVoiceMode = nullptr;
+
+    std::atomic<float>* paramVelCutoffAmt = nullptr;
 
     std::atomic<float>* paramMacroCharacter = nullptr;
     std::atomic<float>* paramMacroMovement = nullptr;

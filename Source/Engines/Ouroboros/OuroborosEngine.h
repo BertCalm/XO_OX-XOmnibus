@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -792,6 +793,9 @@ public:
         profiler.prepare (sampleRate, maxBlockSize);
         profiler.setCpuBudgetFraction (0.22f);  // 22% CPU budget — generous for RK4 at 4x oversample
         aftertouch.prepare (sampleRate);
+
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (1000.0f);  // Ouroboros has infinite-sustain attractor voices
     }
 
     void releaseResources() override
@@ -828,7 +832,6 @@ public:
                       int numSamples) override
     {
         EngineProfiler::ScopedMeasurement measurement (profiler);
-        juce::ScopedNoDenormals noDeNormals;
 
         //----------------------------------------------------------------------
         // ParamSnapshot: read all parameters once per block (zero per-sample cost)
@@ -839,23 +842,8 @@ public:
         const float leashAmount       = paramLeash        ? paramLeash->load()        : 0.5f;
         const float projectionTheta   = paramTheta        ? paramTheta->load()        : 0.0f;
         const float projectionPhi     = paramPhi          ? paramPhi->load()          : 0.0f;
-        float dampingAmount     = paramDamping      ? paramDamping->load()      : 0.3f;
-        float injectionDepth    = paramInjection    ? paramInjection->load()    : 0.0f;
-
-        // D002: Macro reads — centered at 0.5, bipolar offset is (value - 0.5)
-        const float macroChar  = paramMacroCharacter ? paramMacroCharacter->load() : 0.5f;
-        const float macroMove  = paramMacroMovement  ? paramMacroMovement->load()  : 0.5f;
-        const float macroCoup  = paramMacroCoupling  ? paramMacroCoupling->load()  : 0.5f;
-        const float macroSpace = paramMacroSpace     ? paramMacroSpace->load()     : 0.5f;
-
-        // D002: CHARACTER → damping (filter/tone control: low=bright resonant, high=muted)
-        //       MOVEMENT → chaos index boost (modulation amount)
-        //       COUPLING → injection depth (coupling send)
-        //       SPACE → damping (also smooths output = more spatial)
-        dampingAmount   = clamp (dampingAmount + (macroChar - 0.5f) * 0.4f, 0.01f, 0.99f);
-        injectionDepth  = clamp (injectionDepth + (macroCoup - 0.5f) * 0.6f, 0.0f, 1.0f);
-        // macroMove and macroSpace applied to effectiveChaos and damping below
-        juce::ignoreUnused (macroSpace);
+        const float dampingAmount     = paramDamping      ? paramDamping->load()      : 0.3f;
+        const float injectionDepth    = paramInjection    ? paramInjection->load()    : 0.0f;
 
         const auto newTopology = static_cast<AttractorTopology> (
             clamp (static_cast<float> (topologySelection), 0.0f, 3.0f));
@@ -874,7 +862,10 @@ public:
         {
             auto message = metadata.getMessage();
             if (message.isNoteOn())
+            {
+                silenceGate.wake();
                 handleNoteOn (message.getNoteNumber(), message.getFloatVelocity());
+            }
             else if (message.isNoteOff())
                 handleNoteOff (message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
@@ -893,6 +884,8 @@ public:
                 modWheelAmount = message.getControllerValue() / 127.0f;
         }
 
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
+
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
@@ -904,16 +897,7 @@ public:
         // Full pressure adds up to +0.3 chaos and reduces leash by up to -0.3
         // D006: mod wheel tightens leash (sensitivity 0.4) — wheel up = more musical pitch control
         // Wheel creates counterpoint to aftertouch: one loosens chaos, the other reins it in.
-        // D005: breathing LFO — modulates chaos for autonomous evolution
-        const float lfoRate_  = paramLfoRate  ? paramLfoRate->load()  : 0.07f;
-        const float lfoDepth_ = paramLfoDepth ? paramLfoDepth->load() : 0.2f;
-        lfoPhase_ += lfoRate_ * static_cast<float> (numSamples) / static_cast<float> (currentSampleRate);
-        if (lfoPhase_ >= 1.0f) lfoPhase_ -= 1.0f;
-        float lfoVal = fastSin (lfoPhase_ * 6.28318530f) * lfoDepth_;
-
-        // D002: MOVEMENT macro boosts chaos (±0.3 from center)
-        // D005: breathing LFO modulates chaos index (±0.15 at full depth)
-        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation + atPressure * 0.3f + (macroMove - 0.5f) * 0.6f + lfoVal * 0.15f, 0.0f, 1.0f);
+        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
         float effectiveLeash = clamp (leashAmount - atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
 
         //----------------------------------------------------------------------
@@ -922,10 +906,10 @@ public:
         // Theta rotates around X-axis (tilts Y/Z plane),
         // Phi rotates around Y-axis (tilts X/Z plane).
         //----------------------------------------------------------------------
-        float cosTheta = fastCos (projectionTheta + couplingThetaModulation);
-        float sinTheta = fastSin (projectionTheta + couplingThetaModulation);
-        float cosPhi   = fastCos (projectionPhi);
-        float sinPhi   = fastSin (projectionPhi);
+        float cosTheta = std::cos (projectionTheta + couplingThetaModulation);
+        float sinTheta = std::sin (projectionTheta + couplingThetaModulation);
+        float cosPhi   = std::cos (projectionPhi);
+        float sinPhi   = std::sin (projectionPhi);
 
         //----------------------------------------------------------------------
         // Damping coefficient for LP accumulator.
@@ -1282,6 +1266,8 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount.store (count, std::memory_order_relaxed);
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1394,15 +1380,11 @@ public:
         paramPhi        = apvts.getRawParameterValue ("ouro_phi");
         paramDamping    = apvts.getRawParameterValue ("ouro_damping");
         paramInjection  = apvts.getRawParameterValue ("ouro_injection");
-        paramLfoRate    = apvts.getRawParameterValue ("ouro_lfoRate");
-        paramLfoDepth   = apvts.getRawParameterValue ("ouro_lfoDepth");
-        paramMacroCharacter = apvts.getRawParameterValue ("ouro_macroCharacter");
-        paramMacroMovement  = apvts.getRawParameterValue ("ouro_macroMovement");
-        paramMacroCoupling  = apvts.getRawParameterValue ("ouro_macroCoupling");
-        paramMacroSpace     = apvts.getRawParameterValue ("ouro_macroSpace");
     }
 
 private:
+
+    SilenceGate silenceGate;
 
     //==========================================================================
     //  PARAMETER DEFINITIONS
@@ -1453,28 +1435,6 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_injection", 1), "Injection",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-
-        // D005: breathing LFO for autonomous modulation
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_lfoRate", 1), "LFO Rate",
-            juce::NormalisableRange<float> (0.005f, 5.0f, 0.001f, 0.3f), 0.07f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_lfoDepth", 1), "LFO Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
-
-        // D002: 4 macros
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_macroCharacter", 1), "CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_macroMovement", 1), "MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_macroCoupling", 1), "COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID ("ouro_macroSpace", 1), "SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
     //==========================================================================
@@ -1555,7 +1515,6 @@ private:
     float couplingDampingModulation = 0.0f;      // Accumulates EnvToDecay / AmpToFilter
     float couplingThetaModulation = 0.0f;        // Accumulates EnvToMorph
     float couplingChaosModulation = 0.0f;        // Accumulates RhythmToBlend
-    float lfoPhase_ = 0.0f;                     // D005: breathing LFO phase
     bool couplingAudioActive = false;
 
     //-- Coupling audio buffer (pre-allocated, no heap allocation on audio thread)
@@ -1582,12 +1541,6 @@ private:
     std::atomic<float>* paramPhi        = nullptr;
     std::atomic<float>* paramDamping    = nullptr;
     std::atomic<float>* paramInjection  = nullptr;
-    std::atomic<float>* paramLfoRate    = nullptr;
-    std::atomic<float>* paramLfoDepth   = nullptr;
-    std::atomic<float>* paramMacroCharacter = nullptr;
-    std::atomic<float>* paramMacroMovement  = nullptr;
-    std::atomic<float>* paramMacroCoupling  = nullptr;
-    std::atomic<float>* paramMacroSpace     = nullptr;
 };
 
 } // namespace xomnibus

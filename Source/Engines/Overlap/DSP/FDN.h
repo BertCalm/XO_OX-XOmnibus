@@ -1,27 +1,29 @@
 #pragma once
-// XOverlap FeedbackDelayNetwork — 6-line FDN with knot-topology routing matrix.
+
+//==============================================================================
+// FDN.h — xoverlap::FeedbackDelayNetwork
+//
+// 6-channel Feedback Delay Network at the heart of the OVERLAP engine.
+// The feedback matrix is set to a KnotMatrix-derived 6×6 routing matrix,
+// producing topologically-shaped signal tangling that varies from simple
+// parallel reverb (Unknot) to complex braided diffusion (Torus knot).
 //
 // Architecture:
-//   Each delay line is a circular buffer. Per sample:
-//     1. Read delayed output from each line.
-//     2. Apply 1-pole lowpass dampening to each read value.
-//     3. Multiply vector of dampened reads by the routing matrix (matrix multiply).
-//     4. Multiply result by feedback factor.
-//     5. Add the external input signal for each line.
-//     6. Write combined value into each delay buffer.
-//     7. getOutput(i) returns the read value (= delayed signal before matrix mix).
+//   input[i]  →  delay_line[i]  →  matrix multiply  →  onepole_damp  →  output[i]
+//               ↑_______________________________________________________↑
 //
-// The routing matrix (set by setMatrix) determines the topological coupling.
-// Tangle depth interpolates identity → full knot routing.
-// Dampening coefficient controls 1-pole LP cutoff (0=none, ~1=heavy dark).
-// Feedback coefficient (0–0.99) controls self-resonance intensity.
+// Delay lengths:  delayBase (ms) × delayRatios[i], converted to samples.
+//                 Prime-ish lengths chosen at prepare() via Schroeder primes.
+// Dampening:      One-pole lowpass per channel — coefficient from dampeningCoeff.
+// Feedback:       Scalar gain applied to all matrix outputs before re-injection.
 //
-// Max delay per line: ~85ms at 96kHz (kMaxDelay=8192 samples).
-// Denormal protection: flushDenormal() applied per write.
+// All state is float[]. No heap allocation after prepare().
+//==============================================================================
 
 #include "KnotMatrix.h"
-#include "FastMath.h"   // provides xoverlap::flushDenormal via alias from xomnibus
+#include "FastMath.h"
 #include <array>
+#include <vector>
 #include <cmath>
 #include <algorithm>
 
@@ -31,109 +33,138 @@ namespace xoverlap {
 class FeedbackDelayNetwork
 {
 public:
-    // Public members set by the adapter each block
-    float feedback      = 0.7f;   // overall FDN feedback gain (0–0.99)
-    float dampeningCoeff = 0.5f;  // 1-pole LP coeff (0=none, approaches 1=heavy)
+    //==========================================================================
+    // Public members written directly by the adapter
+    float feedback      = 0.7f;   // feedback scalar [0, 0.99]
+    float dampeningCoeff = 0.5f;  // lowpass dampening amount [0, 1]
 
     //==========================================================================
-    void prepare(float sampleRate) noexcept
+    void prepare (double sampleRate) noexcept
     {
-        sr = sampleRate;
-        for (int i = 0; i < 6; ++i)
-            for (int j = 0; j < kMaxDelay; ++j)
-                delayBuf[i][j] = 0.0f;
-        for (int i = 0; i < 6; ++i) { lpState[i] = 0.0f; state[i] = 0.0f; }
-        for (int i = 0; i < 6; ++i) { writePos[i] = 0; delayLen[i] = 512; }
+        sr = static_cast<float> (sampleRate);
+
+        // Schroeder prime-ish delay lengths (in samples at 44.1 kHz; scaled for sr)
+        static const float kBaseLengthsMs[6] = { 29.7f, 37.1f, 41.1f, 43.3f, 47.3f, 53.1f };
+        for (int i = 0; i < kChannels; ++i)
+        {
+            baseLengthsSamples[i] = kBaseLengthsMs[i] * 0.001f * sr;
+            currentLengths[i]     = static_cast<int> (baseLengthsSamples[i]);
+        }
+
+        // Allocate delay buffers — max 200ms per channel
+        int maxLen = static_cast<int> (0.2f * sr) + 2;
+        for (int i = 0; i < kChannels; ++i)
+        {
+            delayBuffers[i].assign (static_cast<size_t> (maxLen), 0.0f);
+            writePos[i] = 0;
+        }
+
+        // Init dampening state and output
+        dampState.fill (0.0f);
+        outputs.fill (0.0f);
+
+        // Identity matrix as default
         matrix = KnotMatrix::unknot();
     }
 
     //==========================================================================
-    void setMatrix(const KnotMatrix::Matrix& m) noexcept
+    // setMatrix() — called once per block after knot topology changes
+    void setMatrix (const KnotMatrix::Matrix& m) noexcept
     {
         matrix = m;
     }
 
     //==========================================================================
-    // Set delay lengths from base time (ms) + per-voice ratio array.
-    // delayMs range: 1–50ms. Ratios should be in roughly 0.3–2.0 range.
-    void setDelayBase(float delayMs, float sampleRate,
-                      const std::array<float, 6>& ratios) noexcept
+    // setDelayBase() — recalculate delay lengths from base (ms) × ratios
+    void setDelayBase (float baseMs, double /*sampleRate*/,
+                       const std::array<float, 6>& ratios) noexcept
     {
-        int base = static_cast<int>(delayMs * sampleRate / 1000.0f);
-        base     = std::max(4, std::min(base, kMaxDelay / 2));
-
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < kChannels; ++i)
         {
-            int len = static_cast<int>(static_cast<float>(base) * ratios[static_cast<size_t>(i)]);
-            delayLen[static_cast<size_t>(i)] = std::max(4, std::min(len, kMaxDelay - 2));
+            float lenSamples = baseMs * 0.001f * sr * ratios[static_cast<size_t>(i)];
+            // Clamp to buffer capacity
+            int maxLen = static_cast<int> (delayBuffers[static_cast<size_t>(i)].size()) - 1;
+            currentLengths[i] = std::max (1, std::min (static_cast<int> (lenSamples), maxLen));
         }
     }
 
     //==========================================================================
-    // Process one sample block-element: read, matrix-mix, dampening, write.
-    // inputs: per-voice signal from bell oscillators.
-    void process(const std::array<float, 6>& inputs) noexcept
+    // process() — advance one sample.
+    // fdnInputs: external excitation from voice outputs.
+    void process (const std::array<float, 6>& fdnInputs) noexcept
     {
-        // Step 1: Read delayed outputs from each line
-        for (int i = 0; i < 6; ++i)
+        // 1. Read delayed samples from each channel
+        std::array<float, kChannels> delayed{};
+        for (int i = 0; i < kChannels; ++i)
         {
-            int rdPos = (writePos[static_cast<size_t>(i)]
-                         - delayLen[static_cast<size_t>(i)] + kMaxDelay) % kMaxDelay;
-            state[static_cast<size_t>(i)] = delayBuf[static_cast<size_t>(i)][rdPos];
+            auto& buf = delayBuffers[static_cast<size_t>(i)];
+            int   len = currentLengths[i];
+            int   rp  = writePos[i] - len;
+            if (rp < 0) rp += static_cast<int> (buf.size());
+            delayed[static_cast<size_t>(i)] = buf[static_cast<size_t>(rp)];
         }
 
-        // Step 2: Matrix multiply: fbMix[i] = sum_j( matrix[i][j] * state[j] )
-        float fbMix[6] = {};
-        for (int row = 0; row < 6; ++row)
-            for (int col = 0; col < 6; ++col)
-                fbMix[row] += matrix[static_cast<size_t>(row)][static_cast<size_t>(col)]
-                              * state[static_cast<size_t>(col)];
-
-        // Step 3–6: Dampening LP, add input, write
-        float lpCoeff = dampeningCoeff * 0.97f;  // max coefficient 0.97 for stability
-
-        for (int i = 0; i < 6; ++i)
+        // 2. Apply dampening (one-pole lowpass per channel)
+        //    cutoff increases as dampeningCoeff → 0 (less damping)
+        float dampAlpha = 0.5f + dampeningCoeff * 0.45f;  // 0.5..0.95
+        for (int i = 0; i < kChannels; ++i)
         {
-            // Combine: external input + matrix-routed feedback
-            float newVal = inputs[static_cast<size_t>(i)]
-                           + fbMix[i] * feedback;
-
-            // 1-pole lowpass: y = y_prev * c + x * (1-c)
-            lpState[static_cast<size_t>(i)] =
-                lpState[static_cast<size_t>(i)] * lpCoeff
-                + newVal * (1.0f - lpCoeff);
-
-            // Denormal flush
-            lpState[static_cast<size_t>(i)] =
-                flushDenormal(lpState[static_cast<size_t>(i)]);
-
-            // Write to delay buffer
-            delayBuf[static_cast<size_t>(i)][writePos[static_cast<size_t>(i)]] =
-                lpState[static_cast<size_t>(i)];
-
-            writePos[static_cast<size_t>(i)] =
-                (writePos[static_cast<size_t>(i)] + 1) % kMaxDelay;
+            dampState[static_cast<size_t>(i)] = dampAlpha * dampState[static_cast<size_t>(i)]
+                + (1.0f - dampAlpha) * delayed[static_cast<size_t>(i)];
+            delayed[static_cast<size_t>(i)] = flushDenormal (dampState[static_cast<size_t>(i)]);
         }
+
+        // 3. Matrix multiply: mixed[i] = Σ_j matrix[i][j] * delayed[j]
+        std::array<float, kChannels> mixed{};
+        for (int i = 0; i < kChannels; ++i)
+        {
+            float sum = 0.0f;
+            for (int j = 0; j < kChannels; ++j)
+                sum += matrix[static_cast<size_t>(i)][static_cast<size_t>(j)]
+                     * delayed[static_cast<size_t>(j)];
+            mixed[static_cast<size_t>(i)] = sum;
+        }
+
+        // 4. Write back: input + feedback * mixed
+        float fb = std::max (0.0f, std::min (0.99f, feedback));
+        for (int i = 0; i < kChannels; ++i)
+        {
+            auto& buf = delayBuffers[static_cast<size_t>(i)];
+            float writeVal = fdnInputs[static_cast<size_t>(i)] + fb * mixed[static_cast<size_t>(i)];
+            buf[static_cast<size_t>(writePos[i])] = flushDenormal (writeVal);
+            if (++writePos[i] >= static_cast<int> (buf.size())) writePos[i] = 0;
+        }
+
+        // 5. Outputs are the matrix-mixed (pre-feedback) signals
+        outputs = mixed;
     }
 
     //==========================================================================
-    // Returns the delayed output of delay line i (set during process()).
-    float getOutput(int i) const noexcept
+    // getOutput() — retrieve per-channel output for stereo panning
+    float getOutput (int channel) const noexcept
     {
-        return state[static_cast<size_t>(i)];
+        return outputs[static_cast<size_t>(channel)];
     }
 
 private:
-    static constexpr int kMaxDelay = 8192;  // max ~85ms at 96kHz
-
-    KnotMatrix::Matrix          matrix{};
-    std::array<float, 6>        state{};
-    std::array<float, 6>        lpState{};
-    std::array<int, 6>          writePos{};
-    std::array<int, 6>          delayLen{};
-    float delayBuf[6][kMaxDelay]{};
+    //==========================================================================
+    static constexpr int kChannels = 6;
 
     float sr = 44100.0f;
+
+    KnotMatrix::Matrix matrix;
+
+    // Per-channel delay buffers (heap-allocated once in prepare)
+    std::array<std::vector<float>, kChannels> delayBuffers;
+    std::array<int,   kChannels> writePos           {};
+    std::array<float, kChannels> baseLengthsSamples {};
+    std::array<int,   kChannels> currentLengths      {};
+
+    // Dampening one-pole state
+    std::array<float, kChannels> dampState {};
+
+    // Per-channel outputs (updated each process() call)
+    std::array<float, kChannels> outputs {};
 };
 
 } // namespace xoverlap

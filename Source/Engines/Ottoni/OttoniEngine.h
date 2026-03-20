@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 
@@ -32,7 +33,7 @@ struct OttoniAdapterVoice {
 
 class OttoniEngine : public SynthEngine {
 public:
-    void prepare(double sampleRate,int) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);
+    void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);
         // Reset FX state
         revState[0]=revState[1]=revState[2]=revState[3]=0;
         choPhase=0; delWr=0;
@@ -51,12 +52,13 @@ public:
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
+                silenceGate.wake();
                 int t=-1;for(int i=0;i<kV;++i)if(!voices[i].active){t=i;break;}
                 if(t<0)t=nv%kV;nv=(t+1)%kV;
                 voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
-            }else if(msg.isNoteOff())
-                for(auto&v:voices)if(v.active&&v.note==msg.getNoteNumber())v.noteOff();
-            else if (msg.isChannelPressure()) {
+            } else if (msg.isNoteOff()) {
+                for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, atPressure);
@@ -67,6 +69,9 @@ public:
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
         }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
 
         // --- Snapshot all 28 params ---
         // Section A: Toddler
@@ -289,6 +294,8 @@ public:
             oL[i]+=sL;oR[i]+=sR;lastL=sL;lastR=sR;
         }
         ac=0;for(auto&v:voices)if(v.active)++ac;
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock(buf.getReadPointer(0),buf.getNumChannels()>1?buf.getReadPointer(1):nullptr,ns);
     }
 
     float getSampleForCoupling(int ch,int) const override {return ch==0?lastL:lastR;}
@@ -330,8 +337,7 @@ public:
         p.push_back(std::make_unique<F>("otto_teenEmbouchure","Teen Embouchure",N{0,1},0.7f));
         p.push_back(std::make_unique<F>("otto_teenBore","Teen Bore",N{0,1},0.5f));
         p.push_back(std::make_unique<C>("otto_teenInst","Teen Inst",juce::StringArray{"French Horn","Trombone","Tuba","Euphonium","Tenor Sax","Dungchen","Serpent","Ophicleide","Sackbut","Bass Sax"},0));
-        // D005: rate floor lowered to 0.005 Hz for ultra-slow breathing modulation
-        p.push_back(std::make_unique<F>("otto_teenVibratoRate","Teen Vibrato Rate",N{0.005f,8.0f},5.0f));
+        p.push_back(std::make_unique<F>("otto_teenVibratoRate","Teen Vibrato Rate",N{3,8},5.0f));
         p.push_back(std::make_unique<F>("otto_teenVibratoDepth","Teen Vibrato Depth",N{0,1},0.3f));
 
         // Section D: Shared (4 params)
@@ -408,6 +414,7 @@ public:
     int getActiveVoiceCount() const override {return ac;}
 
 private:
+    SilenceGate silenceGate;
     static constexpr int kV=12;
     double sr=44100; int nv=0,ac=0; float lastL=0,lastR=0;
     std::array<OttoniAdapterVoice,kV> voices;

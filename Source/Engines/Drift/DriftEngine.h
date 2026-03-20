@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -611,224 +612,6 @@ private:
 };
 
 //==============================================================================
-// DriftChorus — BDD stereo chorus. Two modulated delay lines (L/R offset
-// phases) produce natural width without a dedicated stereo-to-mono collapse.
-// Pre-allocated delay buffers; no heap allocation in processBlock().
-//==============================================================================
-class DriftChorus
-{
-public:
-    void prepare (double sampleRate)
-    {
-        sr = static_cast<float> (sampleRate);
-        const int maxDelaySamples = static_cast<int> (sr * kMaxDelayMs * 0.001f) + 2;
-        for (auto& buf : delayBuf)
-            buf.assign (static_cast<size_t> (maxDelaySamples), 0.0f);
-        phase = 0.0f;
-    }
-
-    void reset()
-    {
-        for (auto& buf : delayBuf) std::fill (buf.begin(), buf.end(), 0.0f);
-        phase = 0.0f;
-        writePos = 0;
-    }
-
-    // In-place stereo process. rate in Hz, depth 0–1, mix 0–1.
-    void processBlock (float* L, float* R, int n, float rate, float depth, float mix) noexcept
-    {
-        if (mix < 0.0001f) return;
-
-        const float phaseInc = rate / sr;
-        // L uses phase; R is offset by π/2 for natural stereo width.
-        const float baseDelay = kBaseDelayMs * 0.001f * sr;
-        const float modRange  = kMaxModMs  * 0.001f * sr * depth;
-        const int bufLen = static_cast<int> (delayBuf[0].size());
-
-        for (int i = 0; i < n; ++i)
-        {
-            const float modL = fastSin (phase * 6.28318530f) * modRange;
-            const float modR = fastSin ((phase + 0.25f) * 6.28318530f) * modRange; // π/2 offset
-
-            auto readLerp = [&] (int ch, float delaySamples) -> float {
-                const float rd = static_cast<float> (writePos) - delaySamples;
-                int   i0 = static_cast<int> (rd);
-                float frac = rd - static_cast<float> (i0);
-                i0 = ((i0 % bufLen) + bufLen) % bufLen;
-                int   i1 = (i0 + 1) % bufLen;
-                return delayBuf[ch][static_cast<size_t> (i0)] * (1.0f - frac)
-                     + delayBuf[ch][static_cast<size_t> (i1)] * frac;
-            };
-
-            delayBuf[0][static_cast<size_t> (writePos)] = L[i];
-            delayBuf[1][static_cast<size_t> (writePos)] = R[i];
-            writePos = (writePos + 1) % bufLen;
-
-            const float wetL = readLerp (0, baseDelay + modL);
-            const float wetR = readLerp (1, baseDelay + modR);
-            L[i] += (wetL - L[i]) * mix;
-            R[i] += (wetR - R[i]) * mix;
-
-            phase += phaseInc;
-            if (phase >= 1.0f) phase -= 1.0f;
-        }
-    }
-
-private:
-    static constexpr float kBaseDelayMs = 7.0f;  // centre delay (ms)
-    static constexpr float kMaxModMs    = 5.0f;  // max modulation swing (ms)
-    static constexpr float kMaxDelayMs  = kBaseDelayMs + kMaxModMs + 1.0f;
-
-    float sr = 44100.0f;
-    float phase = 0.0f;
-    int   writePos = 0;
-    std::array<std::vector<float>, 2> delayBuf;
-};
-
-//==============================================================================
-// DriftPhaser — 4-stage all-pass phaser. LFO modulates all-pass pole frequency
-// to sweep the notch pattern through the spectrum. Feedback adds resonance.
-// Algorithm: textbook Regalia–Mitra APF chain; coefficients in [−1, +1].
-// No per-sample heap allocation; state arrays are value-initialised.
-//==============================================================================
-class DriftPhaser
-{
-public:
-    void prepare (double sampleRate)
-    {
-        sr = static_cast<float> (sampleRate);
-        for (auto& s : apState1) s = 0.0f;
-        for (auto& s : apState2) s = 0.0f;
-        for (auto& s : fbState)  s = 0.0f;
-        phase = 0.0f;
-    }
-
-    void reset()
-    {
-        for (auto& s : apState1) s = 0.0f;
-        for (auto& s : apState2) s = 0.0f;
-        for (auto& s : fbState)  s = 0.0f;
-        phase = 0.0f;
-    }
-
-    // In-place stereo process. rate in Hz, depth 0–1, feedback −1–+1, mix 0–1.
-    void processBlock (float* L, float* R, int n,
-                       float rate, float depth, float feedback, float mix) noexcept
-    {
-        if (mix < 0.0001f) return;
-
-        const float phaseInc  = rate / sr;
-        const float minFreq   = 200.0f;
-        const float freqRange = 8000.0f;
-
-        for (int i = 0; i < n; ++i)
-        {
-            const float lfoVal = fastSin (phase * 6.28318530f);
-            // LFO → normalised frequency for APF coefficient
-            const float freqHz = minFreq + (1.0f + lfoVal) * 0.5f * freqRange * depth;
-            const float w = std::tan (juce::MathConstants<float>::pi * freqHz / sr);
-            const float a = (w - 1.0f) / (w + 1.0f); // APF coefficient
-
-            auto processChain = [&] (float in, std::array<float, 4>& s1,
-                                     std::array<float, 4>& s2, float& fb) -> float {
-                const float input = in + fb * feedback;
-                float x = input;
-                for (int stage = 0; stage < 4; ++stage)
-                {
-                    float y = a * x + s1[static_cast<size_t>(stage)];
-                    s1[static_cast<size_t>(stage)] = x - a * y;
-                    x = y;
-                }
-                fb = x;
-                return (in + x) * 0.5f; // wet = dry+wet mix (classic phaser output)
-            };
-
-            const float wetL = processChain (L[i], apState1, apState2, fbState[0]);
-            const float wetR = processChain (R[i], apState2, apState1, fbState[1]);
-            L[i] += (wetL - L[i]) * mix;
-            R[i] += (wetR - R[i]) * mix;
-
-            phase += phaseInc;
-            if (phase >= 1.0f) phase -= 1.0f;
-        }
-    }
-
-private:
-    float sr = 44100.0f;
-    float phase = 0.0f;
-    std::array<float, 4> apState1 {};   // APF state for L chain
-    std::array<float, 4> apState2 {};   // APF state for R chain (swapped for stereo)
-    std::array<float, 2> fbState  {};   // feedback memory per channel
-};
-
-//==============================================================================
-// DriftDelay — stereo tape delay with LP feedback path. One-pole filter in
-// the feedback loop simulates high-frequency tape roll-off. Ping-pong mode
-// available via width parameter (0=mono, 1=full ping-pong).
-// Pre-allocated ring buffers; no per-sample allocation.
-//==============================================================================
-class DriftDelay
-{
-public:
-    static constexpr float kMaxDelaySeconds = 2.0f;
-
-    void prepare (double sampleRate)
-    {
-        sr = static_cast<float> (sampleRate);
-        const int cap = static_cast<int> (sr * kMaxDelaySeconds) + 2;
-        for (auto& buf : delayBuf)
-            buf.assign (static_cast<size_t> (cap), 0.0f);
-        writePos = 0;
-        for (auto& s : lpState) s = 0.0f;
-    }
-
-    void reset()
-    {
-        for (auto& buf : delayBuf) std::fill (buf.begin(), buf.end(), 0.0f);
-        writePos = 0;
-        for (auto& s : lpState) s = 0.0f;
-    }
-
-    // In-place stereo process. time 0–1 (maps to 0–2s), feedback 0–0.95, mix 0–1.
-    void processBlock (float* L, float* R, int n,
-                       float time, float feedbackAmt, float mix) noexcept
-    {
-        if (mix < 0.0001f) return;
-
-        const int bufLen     = static_cast<int> (delayBuf[0].size());
-        const int delaySamples = std::clamp (
-            static_cast<int> (time * sr * kMaxDelaySeconds),
-            1, bufLen - 1);
-        // LP coefficient: ~4 kHz cutoff simulates tape bandwidth
-        const float lpCoeff = 1.0f - std::exp (-2.0f * juce::MathConstants<float>::pi * 4000.0f / sr);
-
-        for (int i = 0; i < n; ++i)
-        {
-            const int readPos = ((writePos - delaySamples) % bufLen + bufLen) % bufLen;
-            float wetL = delayBuf[0][static_cast<size_t>(readPos)];
-            float wetR = delayBuf[1][static_cast<size_t>(readPos)];
-
-            // One-pole LP in feedback path
-            lpState[0] += lpCoeff * (wetL - lpState[0]);
-            lpState[1] += lpCoeff * (wetR - lpState[1]);
-
-            delayBuf[0][static_cast<size_t>(writePos)] = L[i] + lpState[0] * feedbackAmt;
-            delayBuf[1][static_cast<size_t>(writePos)] = R[i] + lpState[1] * feedbackAmt;
-            writePos = (writePos + 1) % bufLen;
-
-            L[i] += (wetL - L[i]) * mix;
-            R[i] += (wetR - R[i]) * mix;
-        }
-    }
-
-private:
-    float sr = 44100.0f;
-    int   writePos = 0;
-    std::array<float, 2> lpState {};
-    std::array<std::vector<float>, 2> delayBuf;
-};
-
-//==============================================================================
 // DriftAdsrEnvelope — ADSR with exponential decay/release.
 // Same pattern as DubAdsrEnvelope for consistency across XOmnibus engines.
 //==============================================================================
@@ -1050,6 +833,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -1084,9 +868,6 @@ public:
         }
 
         lfo.prepare (sr);
-        chorus.prepare (sampleRate);
-        phaser.prepare (sampleRate);
-        delay.prepare  (sampleRate);
         reverb.prepare (sr);
     }
 
@@ -1115,9 +896,6 @@ public:
             v.glideActive = false;
         }
         lfo.reset();
-        chorus.reset();
-        phaser.reset();
-        delay.reset();
         reverb.reset();
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
@@ -1228,8 +1006,11 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         oscA_tune, oscB_tune, glideAmt, voiceMode, maxPoly);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -1239,6 +1020,13 @@ public:
             // D006: channel pressure → aftertouch (applied to Prism Shimmer below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -1496,32 +1284,6 @@ public:
             outputCacheR[static_cast<size_t> (sample)] = outR;
         }
 
-        // --- FX chain (block-level, in-place on outputCache) ---
-        // Order: Chorus → Phaser → Delay → Reverb (each bypassed if mix ≈ 0).
-        // All FX operate on outputCacheL/R which were pre-allocated in prepare().
-        const float chorusMix      = (pChorusMix      != nullptr) ? pChorusMix->load()      : 0.0f;
-        const float chorusRate     = (pChorusRate     != nullptr) ? pChorusRate->load()     : 0.5f;
-        const float chorusDepth    = (pChorusDepth    != nullptr) ? pChorusDepth->load()    : 0.5f;
-        const float phaserMix      = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.0f;
-        const float phaserRate     = (pPhaserRate     != nullptr) ? pPhaserRate->load()     : 0.3f;
-        const float phaserDepth    = (pPhaserDepth    != nullptr) ? pPhaserDepth->load()    : 0.7f;
-        const float phaserFeedback = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.5f;
-        const float delayMix       = (pDelayMix       != nullptr) ? pDelayMix->load()       : 0.0f;
-        const float delayTime      = (pDelayTime      != nullptr) ? pDelayTime->load()      : 0.375f;
-        const float delayFeedback  = (pDelayFeedback  != nullptr) ? pDelayFeedback->load()  : 0.4f;
-
-        if (chorusMix > 0.0001f)
-            chorus.processBlock (outputCacheL.data(), outputCacheR.data(),
-                                 numSamples, chorusRate, chorusDepth, chorusMix);
-
-        if (phaserMix > 0.0001f)
-            phaser.processBlock (outputCacheL.data(), outputCacheR.data(),
-                                 numSamples, phaserRate, phaserDepth, phaserFeedback, phaserMix);
-
-        if (delayMix > 0.0001f)
-            delay.processBlock (outputCacheL.data(), outputCacheR.data(),
-                                numSamples, delayTime, delayFeedback, delayMix);
-
         // --- Reverb (engine-level, block-pass — BREATHE / spatial Option B) ---
         // Applied to the full block after the per-sample voice loop. The reverb
         // processStereo() call is in-place on the outputCache arrays, which were
@@ -1548,6 +1310,11 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1769,42 +1536,6 @@ public:
             juce::ParameterID { "drift_fractureRate", 1 }, "Drift Fracture Rate",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
 
-        // --- Chorus — BDD stereo chorus. Rate, Depth, Mix. Default off. ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_chorusMix", 1 }, "Drift Chorus Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_chorusRate", 1 }, "Drift Chorus Rate",
-            juce::NormalisableRange<float> (0.1f, 5.0f, 0.01f, 0.4f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_chorusDepth", 1 }, "Drift Chorus Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.5f));
-
-        // --- Phaser — 4-stage APF phaser. Rate, Depth, Feedback, Mix. Default off. ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_phaserMix", 1 }, "Drift Phaser Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_phaserRate", 1 }, "Drift Phaser Rate",
-            juce::NormalisableRange<float> (0.01f, 4.0f, 0.01f, 0.4f), 0.3f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_phaserDepth", 1 }, "Drift Phaser Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.7f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_phaserFeedback", 1 }, "Drift Phaser Feedback",
-            juce::NormalisableRange<float> (-0.9f, 0.9f, 0.01f), 0.5f));
-
-        // --- Delay — tape delay with LP feedback. Time, Feedback, Mix. Default off. ---
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_delayMix", 1 }, "Drift Delay Mix",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_delayTime", 1 }, "Drift Delay Time",
-            juce::NormalisableRange<float> (0.01f, 1.0f, 0.001f, 0.4f), 0.375f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "drift_delayFeedback", 1 }, "Drift Delay Feedback",
-            juce::NormalisableRange<float> (0.0f, 0.95f, 0.01f), 0.4f));
-
         // --- Reverb — engine-level spatial tail (Option B, Round 11B) ---
         // Schroeder 4-comb + 2-allpass reverb. Default off (mix=0).
         // Size controls room scale (feedback 0.50–0.95). Mix is wet/dry.
@@ -1877,16 +1608,6 @@ public:
         pFractureEnable    = apvts.getRawParameterValue ("drift_fractureEnable");
         pFractureIntensity = apvts.getRawParameterValue ("drift_fractureIntensity");
         pFractureRate      = apvts.getRawParameterValue ("drift_fractureRate");
-        pChorusMix      = apvts.getRawParameterValue ("drift_chorusMix");
-        pChorusRate     = apvts.getRawParameterValue ("drift_chorusRate");
-        pChorusDepth    = apvts.getRawParameterValue ("drift_chorusDepth");
-        pPhaserMix      = apvts.getRawParameterValue ("drift_phaserMix");
-        pPhaserRate     = apvts.getRawParameterValue ("drift_phaserRate");
-        pPhaserDepth    = apvts.getRawParameterValue ("drift_phaserDepth");
-        pPhaserFeedback = apvts.getRawParameterValue ("drift_phaserFeedback");
-        pDelayMix       = apvts.getRawParameterValue ("drift_delayMix");
-        pDelayTime      = apvts.getRawParameterValue ("drift_delayTime");
-        pDelayFeedback  = apvts.getRawParameterValue ("drift_delayFeedback");
         pReverbMix         = apvts.getRawParameterValue ("drift_reverbMix");
         pReverbSize        = apvts.getRawParameterValue ("drift_reverbSize");
         pLevel             = apvts.getRawParameterValue ("drift_level");
@@ -1902,6 +1623,8 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     void noteOn (int noteNumber, float velocity,
                  float oscA_tune, float oscB_tune,
@@ -2048,11 +1771,8 @@ private:
     // LFO (global, not per-voice — XOdyssey LFO1 is global)
     DriftLFO lfo;
 
-    // FX chain — engine-level, block-pass. Chorus → Phaser → Delay → Reverb.
-    // All buffers pre-allocated in prepare(); safe on audio thread.
-    DriftChorus chorus;
-    DriftPhaser phaser;
-    DriftDelay  delay;
+    // Reverb — engine-level, not per-voice (Option B, Round 11B)
+    // Buffers pre-allocated in prepare(); safe on audio thread.
     DriftReverb reverb;
 
     // Coupling state

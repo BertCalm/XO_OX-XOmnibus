@@ -1,70 +1,167 @@
 #pragma once
-// XOverlap ParamSnapshot stub — build-only placeholder.
+
+//==============================================================================
+// ParamSnapshot.h — xoverlap::ParamSnapshot
+//
+// Caches all 41 olap_ parameter values once per block via update().
+// Accessing parameter values through raw pointers avoids per-sample
+// tree lookups, which is critical for real-time audio performance.
+//==============================================================================
+
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <algorithm>
 
 namespace xoverlap {
 
-struct ParamSnapshot {
-    float attack = 0.05f, decay = 1.0f, sustain = 0.7f, release = 2.0f;
-    float tangleDepth = 0.4f, dampening = 0.5f, pulseRate = 0.5f;
-    float delayBase = 10.0f, filterCutoff = 8000.0f, spread = 0.7f;
-    int   knot = 0;
-    float entrain = 0.3f, feedback = 0.7f, bioluminescence = 0.2f;
-    float filterRes = 0.1f, filterEnvAmt = 0.3f, filterEnvDecay = 0.5f;
-    float lfo1Rate = 0.8f, lfo2Rate = 0.15f;
-    float lfo1Depth = 0.3f, lfo2Depth = 0.2f;
-    float chorusMix = 0.2f, chorusRate = 0.08f, diffusion = 0.3f;
-    int   torusP = 3, torusQ = 2;
-    float current = 0.1f, currentRate = 0.03f;
-    int   lfo1Shape = 0, lfo2Shape = 0;
-    int   lfo1Dest = 0, lfo2Dest = 2;
-    float macroKnot = 0.3f, macroPulse = 0.4f, macroEntrain = 0.3f, macroBloom = 0.3f;
-    float modWheelDepth = 0.5f, atPressureDepth = 0.4f;
-    int   modWheelDest = 0, atPressureDest = 1;
+//==============================================================================
+struct ParamSnapshot
+{
+    //==========================================================================
+    // Topology
+    int   knot          = 0;
+    float tangleDepth   = 0.4f;
+    int   torusP        = 3;
+    int   torusQ        = 2;
 
-    void update(juce::AudioProcessorValueTreeState& apvts) {
-        auto get = [&](const char* id) -> float {
-            auto* p = apvts.getRawParameterValue(id);
-            return p ? p->load() : 0.0f;
+    // Voice
+    float pulseRate     = 0.5f;
+    float entrain       = 0.3f;
+    float spread        = 0.7f;
+    int   voiceMode     = 0;
+    float glide         = 0.0f;
+
+    // FDN
+    float delayBase     = 10.0f;
+    float dampening     = 0.5f;
+    float feedback      = 0.7f;
+
+    // Timbre
+    float brightness        = 0.5f;
+    float bioluminescence   = 0.2f;
+    float current           = 0.1f;
+    float currentRate       = 0.03f;
+
+    // Envelope
+    float attack    = 0.05f;
+    float decay     = 1.0f;
+    float sustain   = 0.7f;
+    float release   = 2.0f;
+
+    // Filter
+    float filterCutoff      = 8000.0f;
+    float filterRes         = 0.1f;
+    float filterEnvAmt      = 0.3f;
+    float filterEnvDecay    = 0.5f;
+
+    // LFO 1
+    float lfo1Rate   = 0.8f;
+    int   lfo1Shape  = 0;
+    float lfo1Depth  = 0.3f;
+    int   lfo1Dest   = 0;
+
+    // LFO 2
+    float lfo2Rate   = 0.15f;
+    int   lfo2Shape  = 0;
+    float lfo2Depth  = 0.2f;
+    int   lfo2Dest   = 2;
+
+    // Post FX
+    float chorusMix  = 0.2f;
+    float chorusRate = 0.08f;
+    float diffusion  = 0.3f;
+
+    // Macros
+    float macroKnot    = 0.3f;
+    float macroPulse   = 0.4f;
+    float macroEntrain = 0.3f;
+    float macroBloom   = 0.3f;
+
+    // Expression
+    int   modWheelDest    = 0;
+    float modWheelDepth   = 0.5f;
+    int   atPressureDest  = 1;
+    float atPressureDepth = 0.4f;
+
+    //==========================================================================
+    // update() — call once per block with the live APVTS.
+    // Reads every parameter through its raw pointer for zero-overhead access.
+    void update (juce::AudioProcessorValueTreeState& apvts) noexcept
+    {
+        auto getFloat = [&] (const char* id, float def) -> float
+        {
+            auto* p = apvts.getRawParameterValue (id);
+            return p ? p->load() : def;
         };
-        attack       = get("olap_attack");
-        decay        = get("olap_decay");
-        sustain      = get("olap_sustain");
-        release      = get("olap_release");
-        tangleDepth  = get("olap_tangleDepth");
-        dampening    = get("olap_dampening");
-        pulseRate    = get("olap_pulseRate");
-        delayBase    = get("olap_delayBase");
-        filterCutoff = get("olap_filterCutoff");
-        filterRes    = get("olap_filterRes");
-        filterEnvAmt   = get("olap_filterEnvAmt");
-        filterEnvDecay = get("olap_filterEnvDecay");
-        spread       = get("olap_spread");
-        knot         = static_cast<int>(get("olap_knot"));
-        entrain      = get("olap_entrain");
-        feedback     = get("olap_feedback");
-        bioluminescence = get("olap_bioluminescence");
-        lfo1Rate     = get("olap_lfo1Rate");
-        lfo2Rate     = get("olap_lfo2Rate");
-        lfo1Depth    = get("olap_lfo1Depth");
-        lfo2Depth    = get("olap_lfo2Depth");
-        chorusMix    = get("olap_chorusMix");
-        chorusRate   = get("olap_chorusRate");
-        diffusion    = get("olap_diffusion");
-        torusP          = static_cast<int>(get("olap_torusP"));
-        torusQ          = static_cast<int>(get("olap_torusQ"));
-        lfo1Shape       = static_cast<int>(get("olap_lfo1Shape"));
-        lfo2Shape       = static_cast<int>(get("olap_lfo2Shape"));
-        lfo1Dest        = static_cast<int>(get("olap_lfo1Dest"));
-        lfo2Dest        = static_cast<int>(get("olap_lfo2Dest"));
-        macroKnot       = get("olap_macroKnot");
-        macroPulse      = get("olap_macroPulse");
-        macroEntrain    = get("olap_macroEntrain");
-        macroBloom      = get("olap_macroBloom");
-        modWheelDepth   = get("olap_modWheelDepth");
-        atPressureDepth = get("olap_atPressureDepth");
-        modWheelDest    = static_cast<int>(get("olap_modWheelDest"));
-        atPressureDest  = static_cast<int>(get("olap_atPressureDest"));
+        auto getInt = [&] (const char* id, int def) -> int
+        {
+            auto* p = apvts.getRawParameterValue (id);
+            return p ? static_cast<int> (p->load()) : def;
+        };
+
+        // Topology
+        knot        = getInt   ("olap_knot",        0);
+        tangleDepth = getFloat ("olap_tangleDepth",  0.4f);
+        torusP      = getInt   ("olap_torusP",       3);
+        torusQ      = getInt   ("olap_torusQ",       2);
+
+        // Voice
+        pulseRate   = getFloat ("olap_pulseRate",   0.5f);
+        entrain     = getFloat ("olap_entrain",     0.3f);
+        spread      = getFloat ("olap_spread",      0.7f);
+        voiceMode   = getInt   ("olap_voiceMode",   0);
+        glide       = getFloat ("olap_glide",       0.0f);
+
+        // FDN
+        delayBase   = getFloat ("olap_delayBase",   10.0f);
+        dampening   = getFloat ("olap_dampening",   0.5f);
+        feedback    = getFloat ("olap_feedback",    0.7f);
+
+        // Timbre
+        brightness      = getFloat ("olap_brightness",      0.5f);
+        bioluminescence = getFloat ("olap_bioluminescence",  0.2f);
+        current         = getFloat ("olap_current",          0.1f);
+        currentRate     = getFloat ("olap_currentRate",      0.03f);
+
+        // Envelope
+        attack  = getFloat ("olap_attack",  0.05f);
+        decay   = getFloat ("olap_decay",   1.0f);
+        sustain = getFloat ("olap_sustain", 0.7f);
+        release = getFloat ("olap_release", 2.0f);
+
+        // Filter
+        filterCutoff    = getFloat ("olap_filterCutoff",    8000.0f);
+        filterRes       = getFloat ("olap_filterRes",       0.1f);
+        filterEnvAmt    = getFloat ("olap_filterEnvAmt",    0.3f);
+        filterEnvDecay  = getFloat ("olap_filterEnvDecay",  0.5f);
+
+        // LFO 1
+        lfo1Rate  = getFloat ("olap_lfo1Rate",  0.8f);
+        lfo1Shape = getInt   ("olap_lfo1Shape", 0);
+        lfo1Depth = getFloat ("olap_lfo1Depth", 0.3f);
+        lfo1Dest  = getInt   ("olap_lfo1Dest",  0);
+
+        // LFO 2
+        lfo2Rate  = getFloat ("olap_lfo2Rate",  0.15f);
+        lfo2Shape = getInt   ("olap_lfo2Shape", 0);
+        lfo2Depth = getFloat ("olap_lfo2Depth", 0.2f);
+        lfo2Dest  = getInt   ("olap_lfo2Dest",  2);
+
+        // Post FX
+        chorusMix  = getFloat ("olap_chorusMix",  0.2f);
+        chorusRate = getFloat ("olap_chorusRate", 0.08f);
+        diffusion  = getFloat ("olap_diffusion",  0.3f);
+
+        // Macros
+        macroKnot    = getFloat ("olap_macroKnot",    0.3f);
+        macroPulse   = getFloat ("olap_macroPulse",   0.4f);
+        macroEntrain = getFloat ("olap_macroEntrain", 0.3f);
+        macroBloom   = getFloat ("olap_macroBloom",   0.3f);
+
+        // Expression
+        modWheelDest    = getInt   ("olap_modWheelDest",    0);
+        modWheelDepth   = getFloat ("olap_modWheelDepth",   0.5f);
+        atPressureDest  = getInt   ("olap_atPressureDest",  1);
+        atPressureDepth = getFloat ("olap_atPressureDepth", 0.4f);
     }
 };
 

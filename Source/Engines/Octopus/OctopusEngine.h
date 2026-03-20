@@ -3,6 +3,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/LushReverb.h"
 #include <array>
 #include <cmath>
@@ -384,6 +385,8 @@ public:
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+
         // Build procedural organic wavetable
         buildOctopusWavetable();
 
@@ -526,9 +529,8 @@ public:
         float effectiveArmRate  = clamp (pArmBaseRate + couplingArmRateMod + macroMove * 3.0f, 0.05f, 20.0f);
         // D006: mod wheel intensifies chromatophore skin-shift — adds up to +0.4
         // chroma depth, causing the filter topology to morph more aggressively.
-        // D006: aftertouch deepens chromatophore skin-shift (stress response).
         float effectiveChromaDepth = clamp (pChromaDepth + macroCoup * 0.4f + couplingChromaMod
-                                            + modWheelAmount_ * 0.4f + atPressure_ * 0.3f, 0.0f, 1.0f);
+                                            + modWheelAmount_ * 0.4f, 0.0f, 1.0f);
         float effectiveWTPos    = clamp (pWTPos + couplingWTPosMod + macroMove * 0.2f, 0.0f, 1.0f);
         float effectiveCutoff   = clamp (pCutoff + macroChar * 4000.0f, 20.0f, 20000.0f);
         float effectiveReso     = clamp (pReso + macroChar * 0.2f, 0.0f, 1.0f);
@@ -540,15 +542,20 @@ public:
         // Chromatophore filter morph target: 0=LP, 0.33=BP, 0.66=HP, 1.0=Notch
         float chromaMorphTarget = clamp (pChromaMorph + macroMove * 0.3f, 0.0f, 1.0f);
 
-        // NOTE: Coupling accumulators are reset AFTER the render loop (end of renderBlock),
-        // not before. This ensures values set by applyCouplingInput() between blocks
-        // survive into the sample loop where they are read. (Sisters S-014 fix)
+        // Reset coupling accumulators
+        couplingWTPosMod = 0.0f;
+        couplingChromaMod = 0.0f;
+        couplingArmRateMod = 0.0f;
+        couplingRingModSrc = 0.0f;
+        couplingPitchMod = 0.0f;
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly, monoMode, legatoMode, glideCoeff,
                         pAmpA, pAmpD, pAmpS, pAmpR, pModA, pModD, pModS, pModR,
                         pSuckerDecay,
@@ -556,18 +563,16 @@ public:
                         effectiveCutoff, effectiveReso, effectiveArmRate, pArmSpread, pArmCount,
                         pInkThreshold, pInkDensity, effectiveInkDecay,
                         pShiftMicro);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
-            // D006: aftertouch drives chromatophore intensity — pressure causes
-            // the skin to shift faster and deeper (biologically accurate: stress
-            // response). Full pressure adds +0.3 to chromatophore depth.
-            else if (msg.isChannelPressure())
-                atPressure_ = msg.getChannelPressureValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // --- Update per-voice MPE expression from MPEManager ---
         if (mpeManager != nullptr)
@@ -679,6 +684,7 @@ public:
 
                 // --- LFO modulation ---
                 float lfo1Val = voice.lfo1.process() * pLfo1Depth;
+                // LFO2 modulates chromatophore morph position (skin-color shift rate)
                 float lfo2Val = voice.lfo2.process() * pLfo2Depth;
 
                 // =====================================================
@@ -694,6 +700,10 @@ public:
                 voice.wtOsc.setFrequency (freqMod, srf);
 
                 float voiceSignal = voice.wtOsc.processSample();
+
+                // AudioToRing coupling: ring modulate the carrier with the incoming signal
+                if (couplingRingModSrc != 0.0f)
+                    voiceSignal *= (1.0f + couplingRingModSrc);
 
                 // =====================================================
                 // 5. SUCKERS — Ultra-fast transient pluck
@@ -726,40 +736,39 @@ public:
                     voice.envFollower = flushDenormal (voice.envFollower);
 
                     // Map envelope to filter frequency modulation
-                    // D001: velocity boosts chromatophore filter — harder hits = brighter skin-shift
-                    float velChromaBoost = voice.velocity * 0.3f * 3000.0f;
                     float chromaFreqMod = clamp (
                         pChromaFreq
                         + voice.envFollower * pChromaSens * 4000.0f
-                        + armMods[ArmChromaFreq] * 2000.0f
-                        + velChromaBoost,
+                        + armMods[ArmChromaFreq] * 2000.0f,
                         100.0f, 16000.0f);
 
                     // Morph filter type: LP → BP → HP → Notch
                     // We process through LP and HP, then blend
+                    // LFO2 continuously shifts the chromatophore morph position
+                    float voiceMorphTarget = clamp (chromaMorphTarget + lfo2Val * 0.5f, 0.0f, 1.0f);
                     voice.chromaFilter.setMode (CytomicSVF::Mode::LowPass);
                     voice.chromaFilter.setCoefficients (chromaFreqMod, 0.5f + smoothedChromaDepth * 0.4f, srf);
                     float lpOut = voice.chromaFilter.processSample (voiceSignal);
 
                     // Use morph to blend between filter types
                     float morphedFilter;
-                    if (chromaMorphTarget < 0.33f)
+                    if (voiceMorphTarget < 0.33f)
                     {
                         // LP dominant
-                        float t = chromaMorphTarget / 0.33f;
+                        float t = voiceMorphTarget / 0.33f;
                         morphedFilter = lpOut * (1.0f - t) + voiceSignal * t; // LP → dry (towards BP)
                     }
-                    else if (chromaMorphTarget < 0.66f)
+                    else if (voiceMorphTarget < 0.66f)
                     {
                         // BP zone — use bandpass-like response
-                        float t = (chromaMorphTarget - 0.33f) / 0.33f;
+                        float t = (voiceMorphTarget - 0.33f) / 0.33f;
                         float bpLike = voiceSignal - lpOut; // crude HP
                         morphedFilter = lpOut * (1.0f - t) + bpLike * t;
                     }
                     else
                     {
                         // HP → Notch zone
-                        float t = (chromaMorphTarget - 0.66f) / 0.34f;
+                        float t = (voiceMorphTarget - 0.66f) / 0.34f;
                         float hpLike = voiceSignal - lpOut;
                         float notchLike = voiceSignal - lpOut * 0.5f;
                         morphedFilter = hpLike * (1.0f - t) + notchLike * t;
@@ -768,20 +777,14 @@ public:
                     voiceSignal = voiceSignal * (1.0f - smoothedChromaDepth) + morphedFilter * smoothedChromaDepth;
                 }
 
-                // --- Main filter with velocity + LFO2 + arm modulation ---
-                // D001: velocity opens the filter — harder hit = brighter timbre
-                // LFO2 sculpts filter cutoff for secondary rhythmic texture (D004 wire)
-                float velCutoffBoost = voice.velocity * 4000.0f;
+                // --- Main filter with arm modulation ---
+                // D001: continuous velocity→timbre — higher velocity opens the filter further
                 float filterCutoffMod = clamp (
-                    effectiveCutoff + velCutoffBoost + lfo2Val * 3000.0f
-                    + armMods[ArmFilterCutoff] * 4000.0f,
+                    effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f
+                    + voice.velocity * 0.3f * 3000.0f,
                     20.0f, 20000.0f);
                 voice.mainFilter.setCoefficients (filterCutoffMod, effectiveReso, srf);
                 voiceSignal = voice.mainFilter.processSample (voiceSignal);
-
-                // AudioToRing coupling — ring/AM modulate voice with external engine (D004)
-                if (std::abs (couplingRingModSrc) > 0.001f)
-                    voiceSignal *= (1.0f + couplingRingModSrc);
 
                 // =====================================================
                 // 3. INK CLOUD — Freeze reverb noise burst
@@ -852,13 +855,7 @@ public:
             if (v.active) ++count;
         activeVoices = count;
 
-        // Reset coupling accumulators AFTER render loop so they're consumed first
-        // (Sisters S-014: was before the loop, making couplingPitchMod always 0)
-        couplingWTPosMod = 0.0f;
-        couplingChromaMod = 0.0f;
-        couplingArmRateMod = 0.0f;
-        couplingRingModSrc = 0.0f;
-        couplingPitchMod = 0.0f;
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -928,7 +925,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armBaseRate", 1 }, "Octopus Arm Base Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.001f, 0.3f), 1.0f)); // D005: rate floor ≤ 0.01
+            juce::NormalisableRange<float> (0.05f, 20.0f, 0.01f, 0.3f), 1.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "octo_armDepth", 1 }, "Octopus Arm Depth",
@@ -1186,6 +1183,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Safe parameter load
     //==========================================================================
@@ -1487,8 +1487,7 @@ private:
     // pushing the filter topology morph harder on each note. Full wheel
     // adds up to +0.4 to effectiveChromaDepth — the octopus flares its
     // full chromatophore palette in response to the performer's expression.
-    float modWheelAmount_ = 0.0f;  // CC#1 — chromatophore depth (D006)
-    float atPressure_     = 0.0f;  // Channel aftertouch — chromatophore stress response (D006)
+    float modWheelAmount_ = 0.0f;
 
     // Coupling modulation accumulators
     float couplingWTPosMod = 0.0f;

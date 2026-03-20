@@ -10,6 +10,10 @@
 
 namespace xomnibus {
 
+// DSP constants — named once, used everywhere
+static constexpr float kTwoPi = 6.28318530717959f;
+static constexpr float kPi    = 3.14159265358979f;
+
 //==============================================================================
 // ObrixEngine — Ocean Bricks: The Living Reef
 //
@@ -149,7 +153,7 @@ struct ObrixLFO
         float out = 0.0f;
         switch (shape)
         {
-            case 0: out = fastSin (phase * 6.28318f); break;
+            case 0: out = fastSin (phase * kTwoPi); break;
             case 1: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
             case 2: out = 2.0f * phase - 1.0f; break;
             case 3: out = (phase < 0.5f) ? 1.0f : -1.0f; break;
@@ -463,15 +467,6 @@ public:
         float blockPitchCoupling  = couplingPitchMod;  couplingPitchMod  = 0.0f;
         float blockCutoffCoupling = couplingCutoffMod; couplingCutoffMod = 0.0f;
 
-        // Count active bricks for coupling complexity (constant per block)
-        int activeBricks = 0;
-        if (src1Type > 0) ++activeBricks;
-        if (src2Type > 0) ++activeBricks;
-        if (proc1Type > 0) ++activeBricks;
-        if (proc2Type > 0) ++activeBricks;
-        if (proc3Type > 0) ++activeBricks;
-        for (int i = 0; i < 3; ++i) if (fxType[i] > 0) ++activeBricks;
-
         // === Sample Loop ===
         for (int s = 0; s < numSamples; ++s)
         {
@@ -484,9 +479,9 @@ public:
                 gesturePhase += 5.0f / sr;
                 switch (gestureType)
                 {
-                    case 0: gestureOut = gestureLevel * fastSin (gesturePhase * 6.28318f * 8.0f); break;
+                    case 0: gestureOut = gestureLevel * fastSin (gesturePhase * kTwoPi * 8.0f); break;
                     case 1: gestureOut = gestureLevel; break;
-                    case 2: gestureOut = gestureLevel * fastSin (gesturePhase * 6.28318f * 2.0f); break;
+                    case 2: gestureOut = gestureLevel * fastSin (gesturePhase * kTwoPi * 2.0f); break;
                     case 3: gestureOut = gestureLevel * (4.0f * std::fabs (gesturePhase - 0.5f) - 1.0f); break;
                 }
                 gestureLevel *= (1.0f - 3.0f / sr);
@@ -572,7 +567,7 @@ public:
                 // producing independent pitch wander that sounds like an ensemble
                 if (driftDepth > 0.001f)
                 {
-                    float voiceDrift = fastSin ((driftPhase_ + vi * 0.23f) * 6.28318f) * driftDepth;
+                    float voiceDrift = fastSin ((driftPhase_ + vi * 0.23f) * kTwoPi) * driftDepth;
                     pitchMod  += voiceDrift * 50.0f;  // ±50 cents pitch drift at full depth
                     cutoffMod += voiceDrift * 200.0f; // ±200 Hz filter drift (subtle harmonic breathing)
                 }
@@ -649,7 +644,7 @@ public:
                 if (doFold)
                 {
                     float fold = charFoldScale * velFoldBoost;
-                    signal = fastTanh (std::sin (signal * fold * 3.14159f));
+                    signal = fastTanh (std::sin (signal * fold * kPi));
                 }
 
                 // Ring mod — multiplies the two sources (requires Src2 active)
@@ -691,7 +686,7 @@ public:
             if (distance > 0.001f)
             {
                 float distFc = 20000.0f * (1.0f - distance * 0.95f);
-                float distCoeff = 1.0f - std::exp (-6.28318f * distFc / sr); // matched-Z
+                float distCoeff = 1.0f - std::exp (-kTwoPi * distFc / sr); // matched-Z
                 distFiltL_ += distCoeff * (mixL - distFiltL_);
                 distFiltR_ += distCoeff * (mixR - distFiltR_);
                 distFiltL_ = flushDenormal (distFiltL_);
@@ -704,7 +699,7 @@ public:
             // LP/HP split at 1 kHz; air=0 boosts LP (warm), air=1 boosts HP (cold)
             if (std::fabs (air - 0.5f) > 0.02f)
             {
-                float airCoeff = 1.0f - std::exp (-6.28318f * 1000.0f / sr);
+                float airCoeff = 1.0f - std::exp (-kTwoPi * 1000.0f / sr);
                 airFiltL_ += airCoeff * (mixL - airFiltL_);
                 airFiltR_ += airCoeff * (mixR - airFiltR_);
                 airFiltL_ = flushDenormal (airFiltL_);
@@ -1011,7 +1006,7 @@ private:
         {
             case 1: // Sine — manual phase
             {
-                float out = fastSin (voice.srcPhase[idx] * 6.28318f);
+                float out = fastSin (voice.srcPhase[idx] * kTwoPi);
                 voice.srcPhase[idx] += dt;
                 if (voice.srcPhase[idx] >= 1.0f) voice.srcPhase[idx] -= 1.0f;
                 return out;
@@ -1051,7 +1046,7 @@ private:
                 float tableOut = s0 + frac * (s1 - s0);
                 // pw morphs between sine (pw=0) and full table character (pw=1)
                 float morph = (pw - 0.05f) / 0.9f;
-                float sineOut = fastSin (voice.srcPhase[idx] * 6.28318f);
+                float sineOut = fastSin (voice.srcPhase[idx] * kTwoPi);
                 voice.srcPhase[idx] += dt;
                 if (voice.srcPhase[idx] >= 1.0f) voice.srcPhase[idx] -= 1.0f;
                 return sineOut * (1.0f - morph) + tableOut * morph;
@@ -1120,7 +1115,7 @@ private:
                 float centerDelay = 0.007f * sr;
                 fx.chorusLFOPhase += (0.3f + space * 2.0f) / sr;
                 if (fx.chorusLFOPhase >= 1.0f) fx.chorusLFOPhase -= 1.0f;
-                float lfoVal = fastSin (fx.chorusLFOPhase * 6.28318f);
+                float lfoVal = fastSin (fx.chorusLFOPhase * kTwoPi);
                 float delayL = centerDelay + lfoVal * depth;
                 float delayR = centerDelay - lfoVal * depth;
                 fx.chorusBufL[static_cast<size_t> (fx.chorusWritePos)] = L;
@@ -1360,7 +1355,7 @@ private:
             float t = static_cast<float> (i) / kWTSize;
             float v = 0.0f;
             for (int k = 1; k <= 12; ++k)
-                v += std::sin (t * 6.28318f * k) / static_cast<float> (k);
+                v += std::sin (t * kTwoPi * k) / static_cast<float> (k);
             wavetables[0][i] = v * 0.55f;
         }
 
@@ -1368,12 +1363,12 @@ private:
         for (int i = 0; i < kWTSize; ++i)
         {
             float t = static_cast<float> (i) / kWTSize;
-            float v = std::sin (t * 6.28318f)
-                    + 0.80f * std::sin (t * 6.28318f * 2.0f)
-                    + 0.30f * std::sin (t * 6.28318f * 3.0f)
-                    + 0.60f * std::sin (t * 6.28318f * 4.0f)
-                    + 0.15f * std::sin (t * 6.28318f * 5.0f)
-                    + 0.35f * std::sin (t * 6.28318f * 6.0f);
+            float v = std::sin (t * kTwoPi)
+                    + 0.80f * std::sin (t * kTwoPi * 2.0f)
+                    + 0.30f * std::sin (t * kTwoPi * 3.0f)
+                    + 0.60f * std::sin (t * kTwoPi * 4.0f)
+                    + 0.15f * std::sin (t * kTwoPi * 5.0f)
+                    + 0.35f * std::sin (t * kTwoPi * 6.0f);
             wavetables[1][i] = v * 0.30f;
         }
 
@@ -1381,12 +1376,12 @@ private:
         for (int i = 0; i < kWTSize; ++i)
         {
             float t = static_cast<float> (i) / kWTSize;
-            float v = std::sin (t * 6.28318f)
-                    + 0.70f * std::sin (t * 6.28318f * 3.02f)
-                    + 0.50f * std::sin (t * 6.28318f * 5.05f)
-                    + 0.35f * std::sin (t * 6.28318f * 7.10f)
-                    + 0.20f * std::sin (t * 6.28318f * 9.15f)
-                    + 0.12f * std::sin (t * 6.28318f * 11.2f);
+            float v = std::sin (t * kTwoPi)
+                    + 0.70f * std::sin (t * kTwoPi * 3.02f)
+                    + 0.50f * std::sin (t * kTwoPi * 5.05f)
+                    + 0.35f * std::sin (t * kTwoPi * 7.10f)
+                    + 0.20f * std::sin (t * kTwoPi * 9.15f)
+                    + 0.12f * std::sin (t * kTwoPi * 11.2f);
             wavetables[2][i] = v * 0.38f;
         }
 
@@ -1394,11 +1389,11 @@ private:
         for (int i = 0; i < kWTSize; ++i)
         {
             float t = static_cast<float> (i) / kWTSize;
-            float v = std::sin (t * 6.28318f)
-                    + 0.50f * std::sin (t * 6.28318f * 2.002f)
-                    + 0.25f * std::sin (t * 6.28318f * 3.0f)
-                    + 0.18f * std::sin (t * 6.28318f * 4.003f)
-                    + 0.10f * std::sin (t * 6.28318f * 5.001f);
+            float v = std::sin (t * kTwoPi)
+                    + 0.50f * std::sin (t * kTwoPi * 2.002f)
+                    + 0.25f * std::sin (t * kTwoPi * 3.0f)
+                    + 0.18f * std::sin (t * kTwoPi * 4.003f)
+                    + 0.10f * std::sin (t * kTwoPi * 5.001f);
             wavetables[3][i] = v * 0.48f;
         }
     }

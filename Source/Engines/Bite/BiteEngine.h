@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -920,6 +921,8 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (100.0f); // Percussive — short hold
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -1118,7 +1121,10 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), msg.getChannel(), maxPoly);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber(), msg.getChannel());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -1129,6 +1135,13 @@ public:
             // D006: CC#1 mod wheel → BITE macro depth boost (+0–0.4, increases feral bite edge)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1394,6 +1407,11 @@ public:
         // Clear coupling buffer pointer after use (consumed)
         externalFMBuffer = nullptr;
         externalFMSamples = 0;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1844,16 +1862,13 @@ public:
         //======================================================================
         // 16. MACROS — 5
         //======================================================================
-        // BELLY/BITE start at non-zero so first contact shows the asymmetric oscillator
-        // character (BITE) and warmth curve (BELLY) immediately — the creature is not static.
-        // SCURRY, TRASH, PLAY DEAD default to 0 — dramatic gestures, user-triggered.
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroBelly", 1 }, "Bite Macro Belly",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroBite", 1 }, "Bite Macro Bite",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "poss_macroScurry", 1 }, "Bite Macro Scurry",
@@ -2154,6 +2169,8 @@ public:
     }
 
 private:
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     // Safe parameter loading helpers (avoid nullptr dereference)
     static int safeLoad (std::atomic<float>* p, int fallback) noexcept

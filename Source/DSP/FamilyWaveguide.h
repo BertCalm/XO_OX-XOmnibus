@@ -182,9 +182,10 @@ public:
     // resonance: Q factor 1.0–20.0   — higher = narrower, more ringy
     void setParams (float frequency, float resonance)
     {
+        // SRO: fastSin/fastCos replace std:: trig (called per-sample from exciters)
         float w0    = 2.0f * 3.14159265f * frequency / sr;
-        float cosw0 = std::cos (w0);
-        float sinw0 = std::sin (w0);
+        float cosw0 = fastCos (w0);
+        float sinw0 = fastSin (w0);
         float alpha = sinw0 / (2.0f * std::max (resonance, 0.1f));
 
         float a0 =  1.0f + alpha;
@@ -331,8 +332,9 @@ public:
         phase1 = std::fmod (phase1 + inc1, 1.0f);
         phase2 = std::fmod (phase2 + inc2, 1.0f);
 
-        float lfo = 0.6f * std::sin (phase1 * 6.2831853f)
-                  + 0.4f * std::sin (phase2 * 6.2831853f);
+        // SRO: fastSin replaces std::sin (per-sample × 2 LFOs)
+        float lfo = 0.6f * fastSin (phase1 * 6.2831853f)
+                  + 0.4f * fastSin (phase2 * 6.2831853f);
 
         return lfo * (depthCents / 100.0f); // cents → semitone fraction
     }
@@ -674,7 +676,8 @@ public:
     {
         // Age-scaled intonation instability: toddlers wobble, teens are stable
         float jitterAmt = (1.0f - ageScale) * 0.015f;
-        float jitter    = jitterAmt * std::sin (phase * 17.3f); // irregular flutter
+        // SRO: fastSin replaces std::sin (per-sample)
+        float jitter    = jitterAmt * fastSin (phase * 17.3f); // irregular flutter
         float adjFreq   = frequency * (1.0f + jitter);
 
         phase += adjFreq / sr;

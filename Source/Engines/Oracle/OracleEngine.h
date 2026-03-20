@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -626,6 +627,9 @@ public:
 
         aftertouch.prepare (sampleRate);
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Oracle has reverb tails
+
         // Initialize all voices
         for (auto& voice : voices)
         {
@@ -755,6 +759,8 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         maxPolyphony, isMonophonic, isLegatoMode, glideCoefficient,
                         breakpointCount, effectiveMaqam, effectiveGravity,
@@ -762,6 +768,7 @@ public:
                         stochAttackTime, stochDecayTime, stochSustainLevel, stochReleaseTime,
                         lfo1RateHz, lfo1DepthAmount, lfo1ShapeIndex,
                         lfo2RateHz, lfo2DepthAmount, lfo2ShapeIndex);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -773,6 +780,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelValue = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch and apply to drift — pressure increases stochastic chaos
         aftertouch.updateBlock (numSamples);
@@ -839,9 +848,7 @@ public:
                 // Stochastic depth: how much the breakpoints actually move.
                 // Controlled by the stochastic envelope (fades in/out with note)
                 // and the drift parameter (global evolution intensity).
-                // D001: velocity adds stochastic scatter — harder hits = more chaotic evolution
-                float velScatterBoost = voice.velocity * 0.25f;
-                float stochasticDepth = stochasticLevel * (effectiveDrift + velScatterBoost);
+                float stochasticDepth = stochasticLevel * effectiveDrift;
 
                 // --- Phase increment ---
                 float frequency = voice.currentFrequency;
@@ -963,6 +970,8 @@ public:
         for (const auto& voice : voices)
             if (voice.active) ++count;
         activeVoiceCount = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1215,6 +1224,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoiceCount; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Helper: safe parameter load
     //==========================================================================

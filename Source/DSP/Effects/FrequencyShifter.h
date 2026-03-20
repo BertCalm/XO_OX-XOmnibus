@@ -113,7 +113,18 @@ public:
     /// Process stereo audio in-place.
     void processBlock (float* L, float* R, int numSamples)
     {
-        double phaseInc = static_cast<double> (shiftHz) / sr;
+        // SRO: Quadrature oscillator — zero trig per sample.
+        // Compute rotation increment once per block using fastSin/fastCos,
+        // then advance the oscillator with 4 multiplies + 2 adds per sample.
+        // Periodic amplitude correction prevents drift accumulation.
+        float w = static_cast<float> (6.283185307179586 * static_cast<double> (shiftHz) / sr);
+        float cosInc = fastCos (w);
+        float sinInc = fastSin (w);
+
+        // Initialize quadrature state from current phase
+        float oscAngle = static_cast<float> (oscPhase * 6.283185307179586);
+        float cosOsc = fastCos (oscAngle);
+        float sinOsc = fastSin (oscAngle);
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -125,10 +136,6 @@ public:
             float iL, qL, iR, qR;
             hilbertTransform (inL, 0, iL, qL);
             hilbertTransform (inR, 1, iR, qR);
-
-            // Generate shift oscillator (complex exponential)
-            float cosOsc = static_cast<float> (std::cos (oscPhase * 6.283185307179586));
-            float sinOsc = static_cast<float> (std::sin (oscPhase * 6.283185307179586));
 
             // Complex multiply: shift = I*cos - Q*sin (upper), I*cos + Q*sin (lower)
             float upL = iL * cosOsc - qL * sinOsc;
@@ -163,11 +170,27 @@ public:
             L[i] = L[i] * (1.0f - mix) + wetL * mix;
             R[i] = R[i] * (1.0f - mix) + wetR * mix;
 
-            // Advance oscillator
-            oscPhase += phaseInc;
-            if (oscPhase > 1.0) oscPhase -= 1.0;
-            if (oscPhase < 0.0) oscPhase += 1.0;
+            // Advance quadrature oscillator (complex rotation: 4 mul + 2 add)
+            float newCos = cosOsc * cosInc - sinOsc * sinInc;
+            float newSin = sinOsc * cosInc + cosOsc * sinInc;
+            cosOsc = newCos;
+            sinOsc = newSin;
+
+            // Amplitude correction every 64 samples (prevents drift accumulation)
+            if ((i & 63) == 63)
+            {
+                float mag2 = cosOsc * cosOsc + sinOsc * sinOsc;
+                float correction = 1.5f - 0.5f * mag2;  // Fast inverse sqrt approx
+                cosOsc *= correction;
+                sinOsc *= correction;
+            }
         }
+
+        // Update phase accumulator from quadrature state for next block.
+        // atan2 is NOT in the per-sample loop — only once per block.
+        oscPhase = std::atan2 (static_cast<double> (sinOsc),
+                               static_cast<double> (cosOsc)) / 6.283185307179586;
+        if (oscPhase < 0.0) oscPhase += 1.0;
     }
 
     //--------------------------------------------------------------------------

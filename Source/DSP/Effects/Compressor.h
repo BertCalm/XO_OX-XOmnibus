@@ -155,8 +155,9 @@ private:
         // Envelope follower coefficients: coeff = exp(-1 / (time_seconds * sampleRate))
         // Using 1 - exp(-1/(t*sr)) as the "approach" coefficient
         float srF = static_cast<float> (sr);
-        attackCoeff  = flushDenormal (1.0f - std::exp (-1.0f / (attackMs * 0.001f * srF)));
-        releaseCoeff = flushDenormal (1.0f - std::exp (-1.0f / (releaseMs * 0.001f * srF)));
+        // SRO: fastExp replaces std::exp (per-setter coefficient calc)
+        attackCoeff  = flushDenormal (1.0f - fastExp (-1.0f / (attackMs * 0.001f * srF)));
+        releaseCoeff = flushDenormal (1.0f - fastExp (-1.0f / (releaseMs * 0.001f * srF)));
     }
 
     //--------------------------------------------------------------------------

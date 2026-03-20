@@ -117,11 +117,6 @@ public:
         tape.fill(false);
         tape[0] = true;
         stepPhase = 0.0f;
-
-        // Immediate first step so the arm produces sound from sample 0
-        advanceCA();
-        if (getDensity() > 0.0f)
-            stepEnvGain = velocity * armLevel;
     }
 
     void noteOff() noexcept

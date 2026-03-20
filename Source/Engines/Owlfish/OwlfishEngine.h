@@ -2,6 +2,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include "OwlfishVoice.h"
 #include "OwlfishParamSnapshot.h"
 #include "OwlfishParameters.h"
@@ -46,6 +47,7 @@ public:
         outputCacheL.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.assign (static_cast<size_t> (maxBlockSize), 0.0f);
         lastNoteOn = -1;
+        silenceGate.prepare (sampleRate, maxBlockSize);
     }
 
     //--------------------------------------------------------------------------
@@ -79,6 +81,7 @@ public:
 
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 lastNoteOn = msg.getNoteNumber();
                 voice.noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), snapshot);
             }
@@ -105,6 +108,8 @@ public:
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
+
         aftertouch.updateBlock (numSamples);
         const float atPressure = aftertouch.getSmoothedPressure (0);
 
@@ -116,16 +121,6 @@ public:
         // D006: mod wheel deepens subharmonic mix — full wheel adds +0.45 to subMix.
         // The owlfish descends deeper into its Mixtur-Trautonium resonant abyss.
         snapshot.subMix = std::clamp (snapshot.subMix + modWheelAmount * 0.45f, 0.0f, 1.0f);
-
-        // Apply coupling accumulators (consumed once per block, then reset)
-        snapshot.subMix      = std::clamp (snapshot.subMix      + couplingSubMixMod, 0.0f, 1.0f);
-        snapshot.filterCutoff = std::clamp (snapshot.filterCutoff + couplingFilterMod, 0.0f, 1.0f);
-        // Pitch coupling: offset all three relevant pitch-like params proportionally
-        // (morphGlide is normalised 0–1, so a ±0.05 nudge is a subtle harmonic shift)
-        snapshot.morphGlide  = std::clamp (snapshot.morphGlide  + couplingPitchMod,  0.0f, 1.0f);
-        couplingSubMixMod = 0.0f;
-        couplingFilterMod = 0.0f;
-        couplingPitchMod  = 0.0f;
 
         // Render the organism
         buffer.clear();
@@ -141,6 +136,8 @@ public:
             outputCacheL[static_cast<size_t> (i)] = outL[i];
             outputCacheR[static_cast<size_t> (i)] = outR[i];
         }
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -154,46 +151,17 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Receive modulation from a partner engine via the MegaCouplingMatrix.
-    /// Accumulators are consumed once per renderBlock and then reset.
+    /// Coupling input stub -- to be wired by MegaCouplingMatrix later.
     void applyCouplingInput (xomnibus::CouplingType type,
                              float amount,
-                             const float* /*sourceBuffer*/,
-                             int /*numSamples*/) override
+                             const float* sourceBuffer,
+                             int numSamples) override
     {
-        switch (type)
-        {
-            case xomnibus::CouplingType::AudioToFM:
-                // Partner audio drives Mixtur-Trautonium subharmonic depth —
-                // the incoming signal acts as an FM carrier that deepens the
-                // owlfish's subharmonic resonance stack. Max +0.4 at amount=1.
-                couplingSubMixMod += amount * 0.4f;
-                break;
-
-            case xomnibus::CouplingType::AmpToFilter:
-                // Partner amplitude opens the OWL OPTICS filter — louder partner
-                // brightens the owlfish's spectral window. Additive cutoff offset
-                // (+0–0.25 in normalised filterCutoff units at amount=1).
-                couplingFilterMod += amount * 0.25f;
-                break;
-
-            case xomnibus::CouplingType::EnvToMorph:
-                // Partner envelope sweeps subMix toward deeper body resonance.
-                // Envelope peak pushes the harmonic stack into richer territory.
-                couplingSubMixMod += amount * 0.3f;
-                break;
-
-            case xomnibus::CouplingType::LFOToPitch:
-            case xomnibus::CouplingType::AmpToPitch:
-            case xomnibus::CouplingType::PitchToPitch:
-                // Monophonic pitch nudge — partner engine adds ±0.05 semitone
-                // equivalent (normalised) to the owlfish's current pitch state.
-                couplingPitchMod += amount * 0.05f;
-                break;
-
-            default:
-                break;
-        }
+        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
+        (void) type;
+        (void) amount;
+        (void) sourceBuffer;
+        (void) numSamples;
     }
 
     //--------------------------------------------------------------------------
@@ -226,6 +194,7 @@ public:
     int getActiveVoiceCount() const override { return voice.isActive() ? 1 : 0; }
 
 private:
+    xomnibus::SilenceGate      silenceGate;
     OwlfishVoice               voice;
     OwlfishParamSnapshot       snapshot;
     xomnibus::PolyAftertouch   aftertouch;
@@ -237,11 +206,6 @@ private:
 
     // D006: mod wheel (CC#1) — deepens mixtur subharmonic mix (+0.45 at full wheel)
     float  modWheelAmount = 0.0f;
-
-    // Coupling accumulators — consumed once per renderBlock, then reset
-    float  couplingSubMixMod = 0.0f;  // AudioToFM / EnvToMorph → subMix offset
-    float  couplingFilterMod = 0.0f;  // AmpToFilter → filterCutoff offset
-    float  couplingPitchMod  = 0.0f;  // LFO/Amp/PitchToPitch → morphGlide offset
 };
 
 } // namespace xowlfish

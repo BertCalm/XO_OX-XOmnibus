@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include "../../DSP/FastMath.h"
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
 
@@ -116,7 +117,8 @@ public:
                 else
                 {
                     float decayPos = (callEnvSample - attackSamp) / decaySamp;
-                    envAmp = std::exp(-5.0f * decayPos);
+                    // SRO: fastExp replaces std::exp (per-sample envelope decay)
+                    envAmp = xomnibus::fastExp(-5.0f * decayPos);
                     if (envAmp < 0.0001f)
                         callEnvSample = -1.0f; // call finished
                 }
@@ -133,9 +135,10 @@ public:
             float envPhaseNorm = (callEnvSample >= 0.0f && totalSamp > 0.0f)
                                  ? std::clamp(callEnvSample / totalSamp, 0.0f, 1.0f)
                                  : 0.0f;
-            float sweep    = std::sin(envPhaseNorm * juce::MathConstants<float>::pi)
+            // SRO: fastSin + fastPow2 replace std:: trig/pow (per-sample)
+            float sweep    = xomnibus::fastSin(envPhaseNorm * juce::MathConstants<float>::pi)
                              * biome.emergentPitchRange;
-            float sweepMul = std::pow(2.0f, sweep);
+            float sweepMul = xomnibus::fastPow2(sweep);
 
             // 3 SVF bandpass formant filters in parallel
             float sample = formants[0].process(noise, f1 * sweepMul, q, sr)
@@ -151,7 +154,11 @@ public:
             sumSq  += sample * sample;
         }
 
-        lastAmplitude = std::sqrt(sumSq / static_cast<float>(numSamples));
+        // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
+        float rmsArg = sumSq / static_cast<float>(numSamples);
+        lastAmplitude = (rmsArg > 1e-10f)
+            ? xomnibus::fastPow2(0.5f * xomnibus::fastLog2(rmsArg))
+            : 0.0f;
         lastPattern   = std::clamp(callsFired * 4.0f, 0.0f, 1.0f); // calls/block → density
         return lastAmplitude;
     }
@@ -170,15 +177,17 @@ private:
         float process(float x, float freq, float q, float sr)
         {
             // freq coefficient: approximate, clamp well below Nyquist
+            // SRO: fastSin replaces std::sin (per-sample SVF coefficient)
             float f = std::min(1.99f,
-                               2.0f * std::sin(juce::MathConstants<float>::pi
+                               2.0f * xomnibus::fastSin(juce::MathConstants<float>::pi
                                                * std::min(freq, sr * 0.45f) / sr));
             float qInv = 1.0f / std::max(0.5f, q);
             float h    = x - lp - qInv * bp;
             bp         = f * h + bp;
             lp         = f * bp + lp;
             // Soft-saturate BP output to prevent numerical blowup at high Q
-            bp         = std::tanh(bp);
+            // SRO: fastTanh replaces std::tanh (per-sample saturation)
+            bp         = xomnibus::fastTanh(bp);
             return bp;
         }
 

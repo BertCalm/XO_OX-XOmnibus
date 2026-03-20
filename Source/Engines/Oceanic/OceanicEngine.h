@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -353,6 +354,9 @@ public:
 
         aftertouch.prepare (sampleRate);  // D006: 5ms attack / 20ms release smoothing
 
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f);  // Oceanic has boid reverb tails
+
         // Initialize voices
         for (auto& v : voices)
             v.reset();
@@ -458,12 +462,15 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(), maxPoly, monoMode,
                         glideCoeff, effectiveFlocks,
                         pAmpA, pAmpD, pAmpS, pAmpR,
                         pSwmA, pSwmD, pSwmS, pSwmR,
                         pLfo1R, pLfo1D, pLfo1S, pLfo2R, pLfo2D, pLfo2S,
                         pScat);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -475,6 +482,8 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
+
+        if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         // D006: smooth aftertouch pressure — models the chromatophore rate response.
         // Pressing harder causes faster particle scatter (color shift), exactly like
@@ -952,6 +961,8 @@ public:
         for (const auto& v : voices)
             if (v.active) ++count;
         activeVoices = count;
+
+        silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
 
     //==========================================================================
@@ -1085,7 +1096,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ocean_lfo1Depth", 1 }, "Oceanic LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f)); // default 0.15 — audible out of the box
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "ocean_lfo1Shape", 1 }, "Oceanic LFO1 Shape",
@@ -1098,7 +1109,7 @@ public:
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "ocean_lfo2Depth", 1 }, "Oceanic LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.10f)); // default 0.10 — gentle cohesion breathing
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "ocean_lfo2Shape", 1 }, "Oceanic LFO2 Shape",
@@ -1181,6 +1192,9 @@ public:
     int getActiveVoiceCount() const override { return activeVoices; }
 
 private:
+
+    SilenceGate silenceGate;
+
     //==========================================================================
     // Helper: safe parameter load
     //==========================================================================

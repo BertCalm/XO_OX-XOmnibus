@@ -34,11 +34,12 @@
 #include "Engines/Ombre/OmbreEngine.h"
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
-#include "Engines/Obrix/ObrixEngine.h"
-#include "Engines/Ostinato/OstinatoEngine.h"
 #include "Engines/OpenSky/OpenSkyEngine.h"
-#include "Engines/OceanDeep/OceanDeepEngine.h"
+#include "Engines/Ostinato/OstinatoEngine.h"
+#include "Engines/OceanDeep/OceandeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
+#include "Engines/Overtone/OvertoneEngine.h"
+#include "Engines/Organism/OrganismEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -79,8 +80,8 @@ static bool registered_Opal = xomnibus::EngineRegistry::instance().registerEngin
     "Opal", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalEngine>();
     });
-static bool registered_Overbite = xomnibus::EngineRegistry::instance().registerEngine(
-    "Overbite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+static bool registered_Bite = xomnibus::EngineRegistry::instance().registerEngine(
+    "Bite", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::BiteEngine>();
     });
 static bool registered_Organon = xomnibus::EngineRegistry::instance().registerEngine(
@@ -179,25 +180,35 @@ static bool registered_Octopus = xomnibus::EngineRegistry::instance().registerEn
     "Octopus", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OctopusEngine>();
     });
-static bool registered_Obrix = xomnibus::EngineRegistry::instance().registerEngine(
-    "Obrix", []() -> std::unique_ptr<xomnibus::SynthEngine> {
-        return std::make_unique<xomnibus::ObrixEngine>();
-    });
-static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
-    "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
-        return std::make_unique<xomnibus::OstinatoEngine>();
-    });
+// V1 Concept Engines — OPENSKY
 static bool registered_OpenSky = xomnibus::EngineRegistry::instance().registerEngine(
     "OpenSky", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpenSkyEngine>();
     });
-static bool registered_OceanDeep = xomnibus::EngineRegistry::instance().registerEngine(
-    "OceanDeep", []() -> std::unique_ptr<xomnibus::SynthEngine> {
-        return std::make_unique<xomnibus::OceanDeepEngine>();
+// V1 Concept Engines — OSTINATO
+static bool registered_Ostinato = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ostinato", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OstinatoEngine>();
     });
+// V1 Concept Engines — OCEANDEEP
+static bool registered_Oceandeep = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oceandeep", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OceandeepEngine>();
+    });
+// V1 Concept Engines — OUIE
 static bool registered_Ouie = xomnibus::EngineRegistry::instance().registerEngine(
     "Ouie", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OuieEngine>();
+    });
+// Theorem Engine — OVERTONE (continued fraction spectral synthesis)
+static bool registered_Overtone = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overtone", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvertoneEngine>();
+    });
+// Theorem Engine — ORGANISM (cellular automata generative synthesis)
+static bool registered_Organism = xomnibus::EngineRegistry::instance().registerEngine(
+    "Organism", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrganismEngine>();
     });
 
 namespace xomnibus {
@@ -231,48 +242,6 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
-
-    // Aquatic FX Suite
-    cachedParams.aquaFathomDepth    = apvts.getRawParameterValue("aqua_fathomDepth");
-    cachedParams.aquaFathomPressure = apvts.getRawParameterValue("aqua_fathomPressure");
-    cachedParams.aquaFathomMix      = apvts.getRawParameterValue("aqua_fathomMix");
-    cachedParams.aquaDriftRate      = apvts.getRawParameterValue("aqua_driftRate");
-    cachedParams.aquaDriftWidth     = apvts.getRawParameterValue("aqua_driftWidth");
-    cachedParams.aquaDriftDepth     = apvts.getRawParameterValue("aqua_driftDepth");
-    cachedParams.aquaDriftMix       = apvts.getRawParameterValue("aqua_driftMix");
-    cachedParams.aquaTideRate       = apvts.getRawParameterValue("aqua_tideRate");
-    cachedParams.aquaTideShape      = apvts.getRawParameterValue("aqua_tideShape");
-    cachedParams.aquaTideTarget     = apvts.getRawParameterValue("aqua_tideTarget");
-    cachedParams.aquaTideMix        = apvts.getRawParameterValue("aqua_tideMix");
-    cachedParams.aquaReefSize       = apvts.getRawParameterValue("aqua_reefSize");
-    cachedParams.aquaReefDamping    = apvts.getRawParameterValue("aqua_reefDamping");
-    cachedParams.aquaReefDensity    = apvts.getRawParameterValue("aqua_reefDensity");
-    cachedParams.aquaReefMix        = apvts.getRawParameterValue("aqua_reefMix");
-    cachedParams.aquaSurfaceLevel   = apvts.getRawParameterValue("aqua_surfaceLevel");
-    cachedParams.aquaSurfaceTension = apvts.getRawParameterValue("aqua_surfaceTension");
-    cachedParams.aquaSurfaceMix     = apvts.getRawParameterValue("aqua_surfaceMix");
-    cachedParams.aquaBiolumeGlow    = apvts.getRawParameterValue("aqua_biolumeGlow");
-    cachedParams.aquaBiolumeSpectrum = apvts.getRawParameterValue("aqua_biolumeSpectrum");
-    cachedParams.aquaBiolumeDecay   = apvts.getRawParameterValue("aqua_biolumeDecay");
-    cachedParams.aquaBiolumeMix     = apvts.getRawParameterValue("aqua_biolumeMix");
-
-    // Mathematical FX Chain
-    cachedParams.mfxEcStability   = apvts.getRawParameterValue("mfx_ecStability");
-    cachedParams.mfxEcCoolRate    = apvts.getRawParameterValue("mfx_ecCoolRate");
-    cachedParams.mfxEcThreshold   = apvts.getRawParameterValue("mfx_ecThreshold");
-    cachedParams.mfxEcMix         = apvts.getRawParameterValue("mfx_ecMix");
-    cachedParams.mfxVsCrystallize = apvts.getRawParameterValue("mfx_vsCrystallize");
-    cachedParams.mfxVsTension     = apvts.getRawParameterValue("mfx_vsTension");
-    cachedParams.mfxVsGrainSize   = apvts.getRawParameterValue("mfx_vsGrainSize");
-    cachedParams.mfxVsMix         = apvts.getRawParameterValue("mfx_vsMix");
-    cachedParams.mfxQsObservation = apvts.getRawParameterValue("mfx_qsObservation");
-    cachedParams.mfxQsFeedback    = apvts.getRawParameterValue("mfx_qsFeedback");
-    cachedParams.mfxQsDelayCenter = apvts.getRawParameterValue("mfx_qsDelayCenter");
-    cachedParams.mfxQsMix         = apvts.getRawParameterValue("mfx_qsMix");
-    cachedParams.mfxAdBifurcation = apvts.getRawParameterValue("mfx_adBifurcation");
-    cachedParams.mfxAdDriveBase   = apvts.getRawParameterValue("mfx_adDriveBase");
-    cachedParams.mfxAdSpeed       = apvts.getRawParameterValue("mfx_adSpeed");
-    cachedParams.mfxAdMix         = apvts.getRawParameterValue("mfx_adMix");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -336,13 +305,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OmbreEngine::addParameters(params);
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
-    ObrixEngine::addParameters(params);
-
-    // V1 Concept Engines — Full DSP Builds
-    OstinatoEngine::addParameters(params);
+    // V1 Concept Engines
     OpenSkyEngine::addParameters(params);
-    OceanDeepEngine::addParameters(params);
-    OuieEngine::addParameters(params);
+    OceandeepEngine::addParameters(params);
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -542,10 +507,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget1", 1), "Master Seq Target 1",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqTarget2", 1), "Master Seq Target 2",
-        juce::NormalisableRange<float>(0.0f, 15.0f, 1.0f), 0.0f));
+        juce::NormalisableRange<float>(0.0f, 17.0f, 1.0f), 0.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_seqPattern", 1), "Master Seq Pattern",
         juce::NormalisableRange<float>(0.0f, 7.0f, 1.0f), 0.0f));
@@ -656,16 +621,85 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_pwidthMix", 1), "Master PWidth Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-    // Aquatic FX Suite (22 params)
-    AquaticFXSuite::addParameters(params);
+    // Stage 20: Brickwall Limiter
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limCeiling", 1), "Master Limiter Ceiling",
+        juce::NormalisableRange<float>(-6.0f, 0.0f), -0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_limRelease", 1), "Master Limiter Release",
+        juce::NormalisableRange<float>(10.0f, 500.0f, 0.0f, 0.4f), 50.0f));
 
-    // Mathematical FX Chain (16 params)
-    MathFXChain::addParameters(params);
+    // Stage 6: fXOsmosis (Membrane Transfer)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMembrane", 1), "Master Osmosis Membrane",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmReactivity", 1), "Master Osmosis Reactivity",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmResonance", 1), "Master Osmosis Resonance",
+        juce::NormalisableRange<float>(0.0f, 0.85f), 0.4f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmSaturation", 1), "Master Osmosis Saturation",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
-    // Boutique FX Chain (25 params)
-    BoutiqueFXChain::addParameters(params);
+    // Stage 12: fXOneiric (Dream State)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",
+        juce::NormalisableRange<float>(1.0f, 1500.0f, 0.0f, 0.3f), 350.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onShiftHz", 1), "Master Oneiric Shift",
+        juce::NormalisableRange<float>(-500.0f, 500.0f), 5.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onFeedback", 1), "Master Oneiric Feedback",
+        juce::NormalisableRange<float>(0.0f, 0.92f), 0.6f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onDamping", 1), "Master Oneiric Damping",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onSpread", 1), "Master Oneiric Spread",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
     return { params.begin(), params.end() };
+}
+
+// SRO: Engine-specific silence gate hold times.
+// Tuned to each engine's tail characteristics per SilenceGate.h guidance:
+//   Percussive (fast decay, no internal reverb):           100ms
+//   Standard (typical synth voices):                       200ms
+//   Reverb-tail (internal delay/reverb/granular):          500ms
+//   Infinite-sustain (self-sustaining feedback/metabolic): 1000ms
+//   Visual-only (OPTIC — no audio output):                  50ms
+static float silenceGateHoldMs(const juce::String& engineId)
+{
+    // Percussive — 100ms
+    if (engineId == "Onset"     || engineId == "Bite"      || engineId == "OddfeliX"
+     || engineId == "Origami")
+        return 100.0f;
+
+    // Reverb-tail / granular / delay — 500ms
+    if (engineId == "Overdub"   || engineId == "Opal"      || engineId == "Oceanic"
+     || engineId == "Obscura"   || engineId == "Osprey"    || engineId == "Osteria"
+     || engineId == "Ombre"     || engineId == "Overlap")
+        return 500.0f;
+
+    // Infinite-sustain / self-exciting feedback — 1000ms
+    if (engineId == "Organon"   || engineId == "Ouroboros"  || engineId == "Oracle"
+     || engineId == "Owlfish")
+        return 1000.0f;
+
+    // Visual-only — 50ms (Optic generates no audio; gate closes fast)
+    if (engineId == "Optic")
+        return 50.0f;
+
+    // Standard — 200ms (all remaining engines)
+    return 200.0f;
 }
 
 void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
@@ -675,10 +709,12 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 
     couplingMatrix.prepare(samplesPerBlock);
     chordMachine.prepare(sampleRate, samplesPerBlock);
-    aquaticFX.prepare(sampleRate);
-    mathFX.prepare(sampleRate);
-    boutiqueFX.prepare(sampleRate);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
+
+    // SRO: Prepare profilers and auditor
+    for (auto& prof : engineProfilers)
+        prof.prepare(sampleRate, samplesPerBlock);
+    sroAuditor.prepare(sampleRate, samplesPerBlock);
 
     for (auto& buf : engineBuffers)
         buf.setSize(2, samplesPerBlock);
@@ -689,7 +725,11 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     {
         auto eng = std::atomic_load(&engines[i]);
         if (eng)
+        {
             eng->prepare(sampleRate, samplesPerBlock);
+            eng->prepareSilenceGate(sampleRate, samplesPerBlock,
+                                    silenceGateHoldMs(eng->getEngineId()));
+        }
     }
 }
 
@@ -701,9 +741,6 @@ void XOmnibusProcessor::releaseResources()
         if (eng)
             eng->releaseResources();
     }
-    aquaticFX.reset();
-    mathFX.reset();
-    boutiqueFX.reset();
     masterFX.reset();
 }
 
@@ -777,8 +814,36 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         if (!enginePtrs[i])
             continue;
 
+        // SRO: Wake silence gate on note-on events (BEFORE bypass check)
+        for (const auto metadata : slotMidi[i])
+        {
+            if (metadata.getMessage().isNoteOn())
+            {
+                enginePtrs[i]->wakeSilenceGate();
+                break;  // One wake per block is sufficient
+            }
+        }
+
+        // SRO: Skip DSP if silence gate says engine output is silent
         engineBuffers[i].clear();
-        enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        if (enginePtrs[i]->isSilenceGateBypassed() && slotMidi[i].isEmpty())
+        {
+            // Still record as active-but-bypassed for the auditor
+            sroAuditor.recordSlot(i, engineProfilers[i].getStats(), true);
+            continue;
+        }
+
+        {
+            EngineProfiler::ScopedMeasurement measurement (engineProfilers[i]);
+            enginePtrs[i]->renderBlock(engineBuffers[i], slotMidi[i], numSamples);
+        }
+
+        // SRO: Feed output to silence gate for analysis
+        enginePtrs[i]->analyzeForSilenceGate(engineBuffers[i], numSamples);
+
+        // SRO: Record slot stats for auditor (CPU + silence gate state)
+        sroAuditor.recordSlot(i, engineProfilers[i].getStats(),
+                              enginePtrs[i]->isSilenceGateBypassed());
     }
 
     // Apply coupling matrix between engines.
@@ -842,37 +907,6 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
 
-    // Aquatic FX Suite: brand-defining water phenomena (post engines, pre master FX)
-    if (buffer.getNumChannels() >= 2)
-    {
-        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
-        float* aqL = buffer.getWritePointer(0);
-        float* aqR = buffer.getWritePointer(1);
-        aquaticFX.processBlock(aqL, aqR, numSamples,
-            load(cachedParams.aquaFathomDepth, 0.0f),
-            load(cachedParams.aquaFathomPressure, 0.0f),
-            load(cachedParams.aquaFathomMix, 0.0f),
-            load(cachedParams.aquaDriftRate, 0.5f),
-            load(cachedParams.aquaDriftWidth, 0.5f),
-            load(cachedParams.aquaDriftDepth, 0.3f),
-            load(cachedParams.aquaDriftMix, 0.0f),
-            load(cachedParams.aquaTideRate, 0.5f),
-            static_cast<int>(load(cachedParams.aquaTideShape, 0.0f)),
-            static_cast<int>(load(cachedParams.aquaTideTarget, 0.0f)),
-            load(cachedParams.aquaTideMix, 0.0f),
-            load(cachedParams.aquaReefSize, 0.4f),
-            load(cachedParams.aquaReefDamping, 0.5f),
-            load(cachedParams.aquaReefDensity, 0.5f),
-            load(cachedParams.aquaReefMix, 0.0f),
-            load(cachedParams.aquaSurfaceLevel, 0.0f),
-            load(cachedParams.aquaSurfaceTension, 0.0f),
-            load(cachedParams.aquaSurfaceMix, 0.0f),
-            load(cachedParams.aquaBiolumeGlow, 0.0f),
-            load(cachedParams.aquaBiolumeSpectrum, 0.5f),
-            load(cachedParams.aquaBiolumeDecay, 0.3f),
-            load(cachedParams.aquaBiolumeMix, 0.0f));
-    }
-
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
     double ppqPos = -1.0;
     double bpm = 0.0;
@@ -887,69 +921,6 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
-
-    // Mathematical FX Chain: entropy cooler → voronoi shatter → quantum smear → attractor drive
-    if (buffer.getNumChannels() >= 2)
-    {
-        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
-        float* mfxL = buffer.getWritePointer(0);
-        float* mfxR = buffer.getWritePointer(1);
-        mathFX.processBlock(mfxL, mfxR, numSamples,
-            load(cachedParams.mfxEcStability, 0.5f),
-            load(cachedParams.mfxEcCoolRate, 0.3f),
-            load(cachedParams.mfxEcThreshold, 0.5f),
-            load(cachedParams.mfxEcMix, 0.0f),
-            load(cachedParams.mfxVsCrystallize, 0.0f),
-            load(cachedParams.mfxVsTension, 0.5f),
-            load(cachedParams.mfxVsGrainSize, 30.0f),
-            load(cachedParams.mfxVsMix, 0.0f),
-            load(cachedParams.mfxQsObservation, 0.3f),
-            load(cachedParams.mfxQsFeedback, 0.4f),
-            load(cachedParams.mfxQsDelayCenter, 150.0f),
-            load(cachedParams.mfxQsMix, 0.0f),
-            load(cachedParams.mfxAdBifurcation, 0.3f),
-            load(cachedParams.mfxAdDriveBase, 0.3f),
-            load(cachedParams.mfxAdSpeed, 0.3f),
-            load(cachedParams.mfxAdMix, 0.0f));
-    }
-
-    // Boutique FX Chain: anomaly → dissolving archive → artifact cathedral → submersion
-    if (buffer.getNumChannels() >= 2)
-    {
-        auto load = [](std::atomic<float>* p, float def) { return p ? p->load() : def; };
-        float* bfxL = buffer.getWritePointer(0);
-        float* bfxR = buffer.getWritePointer(1);
-        boutiqueFX.processBlock(bfxL, bfxR, numSamples,
-            // Anomaly
-            load(apvts.getRawParameterValue("bfx_anTextureBlend"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_anReverbSize"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_anTremoloRate"), 2.0f),
-            load(apvts.getRawParameterValue("bfx_anTimeSlip"), 0.0f) > 0.5f,
-            load(apvts.getRawParameterValue("bfx_anSlipSpeed"), 0.0f),
-            load(apvts.getRawParameterValue("bfx_anMix"), 0.0f),
-            // Dissolving Archive
-            load(apvts.getRawParameterValue("bfx_daChance"), 0.0f),
-            load(apvts.getRawParameterValue("bfx_daDissolve"), 0.0f),
-            load(apvts.getRawParameterValue("bfx_daGrainMix"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_daReverbMix"), 0.3f),
-            load(apvts.getRawParameterValue("bfx_daMix"), 0.0f),
-            // Artifact Cathedral
-            load(apvts.getRawParameterValue("bfx_acPacketLoss"), 0.0f),
-            load(apvts.getRawParameterValue("bfx_acBitCrush"), 0.0f),
-            load(apvts.getRawParameterValue("bfx_acDarkMix"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_acSunMix"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_acModDepth"), 0.3f),
-            load(apvts.getRawParameterValue("bfx_acDecay"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_acFreeze"), 0.0f) > 0.5f,
-            load(apvts.getRawParameterValue("bfx_acMix"), 0.0f),
-            // Submersion
-            static_cast<int>(load(apvts.getRawParameterValue("bfx_smStages"), 4.0f)),
-            load(apvts.getRawParameterValue("bfx_smLFORate"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_smLFODepth"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_smLoopFB"), 0.3f),
-            load(apvts.getRawParameterValue("bfx_smClock"), 0.5f),
-            load(apvts.getRawParameterValue("bfx_smMix"), 0.0f));
-    }
 }
 
 void XOmnibusProcessor::processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs)
@@ -1025,6 +996,8 @@ void XOmnibusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     newEngine->prepare(currentSampleRate, currentBlockSize);
+    newEngine->prepareSilenceGate(currentSampleRate, currentBlockSize,
+                                  silenceGateHoldMs(newEngine->getEngineId()));
 
     // Move the old engine to crossfade-out state
     auto oldEngine = std::atomic_load(&engines[slot]);
@@ -1060,6 +1033,10 @@ void XOmnibusProcessor::unloadEngine(int slot)
 
     std::shared_ptr<SynthEngine> empty;
     std::atomic_store(&engines[slot], empty);
+
+    // SRO: Clear profiler and auditor for this slot
+    engineProfilers[slot].reset();
+    sroAuditor.clearSlot(slot);
 
     if (onEngineChanged)
         juce::MessageManager::callAsync([this, slot]{ if (onEngineChanged) onEngineChanged(slot); });

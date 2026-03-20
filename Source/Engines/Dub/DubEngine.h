@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -534,6 +535,8 @@ public:
     void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (500.0f); // Overdub has reverb tails
         srf = static_cast<float> (sr);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -640,12 +643,6 @@ public:
         const int maxPoly      = (pPolyphony != nullptr)
             ? (1 << std::min (3, static_cast<int> (pPolyphony->load()))) : 8;
 
-        // D002: Macro reads — centered at 0.5 so bipolar offset is (value - 0.5)
-        const float macroChar  = (pMacroCharacter != nullptr) ? pMacroCharacter->load() : 0.5f;
-        const float macroMove  = (pMacroMovement != nullptr)  ? pMacroMovement->load()  : 0.5f;
-        const float macroCoup  = (pMacroCoupling != nullptr)  ? pMacroCoupling->load()  : 0.5f;
-        const float macroSpace = (pMacroSpace != nullptr)     ? pMacroSpace->load()     : 0.5f;
-
         // Precompute glide coefficient (block-constant)
         float glideCoeff = 0.0f;
         if (glideAmt > 0.0f)
@@ -675,8 +672,11 @@ public:
         {
             const auto msg = metadata.getMessage();
             if (msg.isNoteOn())
+            {
+                silenceGate.wake();
                 noteOn (msg.getNoteNumber(), msg.getFloatVelocity(),
                         oscOctaveIdx, oscTune, glideAmt, voiceMode, maxPoly);
+            }
             else if (msg.isNoteOff())
                 noteOff (msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
@@ -687,6 +687,13 @@ public:
             // D006: CC#1 mod wheel → send VCA boost (+0–0.35, more signal into echo/reverb chain)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+        }
+
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
         }
 
         // D006: smooth aftertouch pressure and compute modulation value
@@ -716,9 +723,7 @@ public:
 
             if (hasLfo)
             {
-                // D002: MOVEMENT macro adds to LFO depth (±0.5 from center)
-                float effectiveLfoDepth = std::max (0.0f, lfoDepth + (macroMove - 0.5f) * 1.0f);
-                lfoVal = lfo.process() * effectiveLfoDepth;
+                lfoVal = lfo.process() * lfoDepth;
                 switch (lfoDest)
                 {
                     case 0: lfoPitchMod = lfoVal; break;
@@ -776,8 +781,7 @@ public:
 
                 // Filter with envelope + LFO + coupling modulation
                 float envVal = voice.ampEnv.process();
-                // D002: CHARACTER macro offsets filter cutoff (±4000 Hz from center 0.5)
-                float cutoffMod = filterCut + (macroChar - 0.5f) * 8000.0f;
+                float cutoffMod = filterCut;
 
                 if (std::abs (filterEnv) > 0.001f)
                 {
@@ -826,8 +830,7 @@ public:
             // the tape delay / spring reverb send chain — classic dub technique of
             // pressing a key harder to push more signal into the echo returns.
             // D006: mod wheel also boosts send VCA (+0–0.35) — performance send control.
-            // D002: COUPLING macro offsets send level (±0.3 from center)
-            const float effectiveSendLvl = std::min (1.0f, sendLvl + atPressure * 0.3f + modWheelAmount * 0.35f + (macroCoup - 0.5f) * 0.6f);
+            const float effectiveSendLvl = std::min (1.0f, sendLvl + atPressure * 0.3f + modWheelAmount * 0.35f);
             // Send bus: voice output × effective send level
             sendBufL[static_cast<size_t> (sample)] = mixL * effectiveSendLvl;
             sendBufR[static_cast<size_t> (sample)] = mixR * effectiveSendLvl;
@@ -860,10 +863,8 @@ public:
                                 delayTime, delayFb, delayWear, delayWow, delayMix);
 
         // Spring Reverb
-        // D002: SPACE macro offsets reverb mix (±0.3 from center)
-        float effectiveReverbMix = std::max (0.0f, std::min (1.0f, reverbMix + (macroSpace - 0.5f) * 0.6f));
         springReverb.processStereo (sendL, sendR, numSamples,
-                                   reverbSize, reverbDamp, effectiveReverbMix);
+                                   reverbSize, reverbDamp, reverbMix);
 
         // --- Mix dry + return, write to output buffer ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -897,6 +898,11 @@ public:
         }
 
         envelopeOutput = peakEnv;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -1033,7 +1039,7 @@ public:
         // LFO
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "dub_lfoRate", 1 }, "Dub LFO Rate",
-            juce::NormalisableRange<float> (0.005f, 20.0f, 0.001f, 0.3f), 2.0f));
+            juce::NormalisableRange<float> (0.1f, 20.0f, 0.01f, 0.3f), 2.0f));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "dub_lfoDepth", 1 }, "Dub LFO Depth",
@@ -1107,20 +1113,6 @@ public:
         params.push_back (std::make_unique<juce::AudioParameterChoice> (
             juce::ParameterID { "dub_polyphony", 1 }, "Dub Polyphony",
             juce::StringArray { "1", "2", "4", "8" }, 3));
-
-        // D002: 4 macros
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "dub_macroCharacter", 1 }, "CHARACTER",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "dub_macroMovement", 1 }, "MOVEMENT",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "dub_macroCoupling", 1 }, "COUPLING",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { "dub_macroSpace", 1 }, "SPACE",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
 public:
@@ -1162,10 +1154,6 @@ public:
         pVoiceMode     = apvts.getRawParameterValue ("dub_voiceMode");
         pGlide         = apvts.getRawParameterValue ("dub_glide");
         pPolyphony     = apvts.getRawParameterValue ("dub_polyphony");
-        pMacroCharacter = apvts.getRawParameterValue ("dub_macroCharacter");
-        pMacroMovement  = apvts.getRawParameterValue ("dub_macroMovement");
-        pMacroCoupling  = apvts.getRawParameterValue ("dub_macroCoupling");
-        pMacroSpace     = apvts.getRawParameterValue ("dub_macroSpace");
     }
 
     //-- Identity --------------------------------------------------------------
@@ -1175,6 +1163,8 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     //--------------------------------------------------------------------------
     void noteOn (int noteNumber, float velocity,
                  int oscOctaveIdx, float oscTune, float glideAmt,
@@ -1362,10 +1352,6 @@ private:
     std::atomic<float>* pVoiceMode = nullptr;
     std::atomic<float>* pGlide = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
-    std::atomic<float>* pMacroCharacter = nullptr;
-    std::atomic<float>* pMacroMovement  = nullptr;
-    std::atomic<float>* pMacroCoupling  = nullptr;
-    std::atomic<float>* pMacroSpace     = nullptr;
 };
 
 } // namespace xomnibus

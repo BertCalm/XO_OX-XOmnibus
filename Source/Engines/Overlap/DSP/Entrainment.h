@@ -1,84 +1,107 @@
 #pragma once
-// XOverlap Entrainment — Kuramoto phase-coupling model for 6 pulse oscillators.
+
+//==============================================================================
+// Entrainment.h — xoverlap::Entrainment
 //
-// Models hydrodynamic synchronization between jellyfish bell contractions.
-// At high entrainment (→1): all voice pulse phases converge to a shared mean,
-// creating bloom pulsing where all voices contract simultaneously.
-// At low entrainment (→0): voices pulse at independent natural rates (drift).
+// Kuramoto-model hydrodynamic phase coupling across the 6 OVERLAP voices.
+// In the Kuramoto model, each oscillator's phase is nudged toward the mean
+// phase of its neighbours at a rate proportional to the coupling strength K.
 //
-// Kuramoto coupling: dθ_i/dt = ω_i + (K/N) * Σ_j sin(θ_j - θ_i)
-// Approximated per-block as: θ_i += dt * K * sin(θ_mean - θ_i)
-// where K = entrain coefficient and θ_mean = mean phase of all active voices.
+//   dθᵢ/dt = ωᵢ + (K/N) Σⱼ sin(θⱼ − θᵢ)
 //
-// Note: this is applied AFTER voice::process() has already advanced phases.
-// It nudges phases toward the mean — a correction, not a replacement.
+// Here we apply a discrete per-sample update: the phase of each voice's
+// internal oscillator is gently shifted toward the centroid phase of all
+// active voices, scaled by the entrainment parameter [0, 1].
+//
+// At entrainment = 0: voices run freely at their MIDI pitches.
+// At entrainment = 1: voices phase-lock into a single collective pulse —
+//                     the "jellyfish bell contraction" sync state.
+//
+// The pulseRate parameter acts as an additional synchrony modulator:
+// higher pulse rates create faster entrainment convergence.
+//==============================================================================
 
 #include "Voice.h"
+#include "FastMath.h"
 #include <array>
 #include <cmath>
 
 namespace xoverlap {
 
+//==============================================================================
 class Entrainment
 {
 public:
-    void prepare(float sr) noexcept { sampleRate = sr; }
+    //==========================================================================
+    void prepare (double /*sampleRate*/) noexcept
+    {
+        // No per-sample state to initialise — coupling acts on Voice phases
+    }
 
     //==========================================================================
-    // Kuramoto nudge: push each active voice's pulse phase toward the mean.
-    // Called once per sample in the renderBlock inner loop.
-    void process(std::array<Voice, 6>& voices, float entrain, float /*pulseRate*/) noexcept
+    // process() — called once per sample after voices have been ticked.
+    // Applies Kuramoto coupling by nudging each voice's phase toward the
+    // circular mean of all active voice phases.
+    //
+    // voices:     array of 6 Voice objects (phases read/written)
+    // entrain:    coupling strength K  [0, 1]
+    // pulseRate:  modulates convergence speed [0.01, 8] Hz
+    template <size_t N>
+    void process (std::array<Voice, N>& voices,
+                  float entrain,
+                  float pulseRate) noexcept
     {
-        if (entrain < 0.001f)
-            return;
+        if (entrain < 0.001f) return;
 
-        // Compute mean pulse phase via circular mean (handle 0/2π wraparound)
-        float sinSum = 0.0f, cosSum = 0.0f;
-        int   activeCount = 0;
-
+        // 1. Compute the circular mean of active voice phases via Kuramoto order param
+        float sinSum = 0.0f;
+        float cosSum = 0.0f;
+        int   count  = 0;
         for (auto& v : voices)
         {
-            if (v.isActive())
-            {
-                constexpr float twoPi = 6.28318530f;
-                float theta = v.pulsePhase * twoPi;
-                sinSum += std::sin(theta);
-                cosSum += std::cos(theta);
-                ++activeCount;
-            }
+            if (!v.isActive()) continue;
+            float theta = v.phase * 6.28318530f;
+            sinSum += fastSin (theta);
+            cosSum += fastCos (theta);
+            ++count;
         }
 
-        if (activeCount < 2)
-            return;  // need at least 2 voices to couple
+        if (count < 2) return;
 
-        float meanTheta = std::atan2(sinSum, cosSum);
-        float meanPhase = meanTheta / 6.28318530f;
-        if (meanPhase < 0.0f) meanPhase += 1.0f;
+        // Mean phase in radians
+        float meanPhase = std::atan2 (sinSum, cosSum);  // in [-π, π]
 
-        // Nudge each voice's phase toward mean (small delta proportional to entrain)
-        // dt per sample = 1/sampleRate; coupling strength K = entrain
-        float dt = 1.0f / sampleRate;
-        float K  = entrain * 4.0f;  // scale: max coupling = 4 Hz phase velocity
+        // 2. Coupling rate scales with entrain and pulse rate.
+        //    Max shift per sample = entrain * pulseRate / sampleRate
+        //    (handled as fractional phase shift in [0,1) units)
+        // We compute a conservative max per-sample phase nudge:
+        //   baseRate ≈ 0.0002 * pulseRate (tuned so full K=1 sync in ~0.5s)
+        float nudgeAmt = entrain * 0.0002f * std::max (0.01f, pulseRate);
 
+        // 3. Apply nudge to each active voice
         for (auto& v : voices)
         {
             if (!v.isActive()) continue;
 
-            // Phase difference (wrapped to [-0.5, 0.5])
-            float diff = meanPhase - v.pulsePhase;
-            if (diff >  0.5f) diff -= 1.0f;
-            if (diff < -0.5f) diff += 1.0f;
+            float theta     = v.phase * 6.28318530f;
+            float phaseDiff = meanPhase - theta;
 
-            // Kuramoto nudge: θ_i += K * sin(diff * 2π) * dt
-            float nudge = K * std::sin(diff * 6.28318530f) * dt;
-            v.pulsePhase += nudge;
-            if (v.pulsePhase >= 1.0f) v.pulsePhase -= 1.0f;
-            if (v.pulsePhase < 0.0f)  v.pulsePhase += 1.0f;
+            // Wrap to [-π, π]
+            while (phaseDiff >  3.14159265f) phaseDiff -= 6.28318530f;
+            while (phaseDiff < -3.14159265f) phaseDiff += 6.28318530f;
+
+            // Kuramoto nudge: dθ = K * sin(Δθ) per discrete step
+            float sinDiff = fastSin (phaseDiff);
+            float phaseShift = nudgeAmt * sinDiff;
+
+            // Convert back to normalised [0,1) phase and apply
+            v.phase = v.phase + phaseShift / 6.28318530f;
+
+            // Keep phase in [0, 1)
+            if (v.phase >= 1.0f) v.phase -= 1.0f;
+            if (v.phase <  0.0f) v.phase += 1.0f;
         }
     }
-
-private:
-    float sampleRate = 44100.0f;
 };
 
 } // namespace xoverlap

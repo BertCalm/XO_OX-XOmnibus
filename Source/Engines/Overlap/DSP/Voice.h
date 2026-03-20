@@ -1,151 +1,273 @@
 #pragma once
-// XOverlap Voice — bell oscillator with ADSR + pulse envelope.
-//
-// Synthesis: sine fundamental + 3 inharmonic partials.
-//   Partial ratios: 2.17, 3.71, 5.43 (inharmonic bell character)
-//   Brightness = 0.3 + 0.7*velocity  (D001: velocity directly scales partials)
-//
-// Bell-pulse gate: cosine contraction at pulseRate Hz.
-//   gate = 0.35 + 0.65 * cos(2π·pulsePhase)
-// Kuramoto entrainment (Entrainment.h) nudges pulsePhase toward mutual lock.
 
-#include <cmath>
+//==============================================================================
+// Voice.h — xoverlap::Voice
+//
+// One of 6 synthesis voices in the OVERLAP engine. Each voice produces a
+// pulsed oscillator signal that feeds into the knot-topology FDN.
+//
+// Synthesis model: A sine/pulse hybrid oscillator whose phase is driven by a
+// MIDI pitch. The voice envelope (ADSR) shapes the amplitude. A "pulse rate"
+// parameter modulates the oscillator's waveform between smooth sine and hard
+// pulse — higher rates produce shorter, more impulsive excitation into the FDN,
+// creating the "jellyfish tentacle" tangled-reverberation character.
+//
+// Voice allocation state (noteOnOrder, noteOffOrder, held, midiNote) is public
+// so XOverlapEngine::allocateVoice() and handleNoteOff() can inspect it directly
+// without friend declarations.
+//==============================================================================
+
+#include "FastMath.h"
 #include <cstdint>
+#include <cmath>
 
 namespace xoverlap {
 
 //==============================================================================
-struct AmpEnvelope {
+// Simple ADSR envelope used by Voice.
+// env.setParams() is called per-block to update parameters without allocation.
+//==============================================================================
+struct VoiceEnvelope
+{
+    //==========================================================================
+    enum class Stage { Idle, Attack, Decay, Sustain, Release };
+
     float attack  = 0.05f;
     float decay   = 1.0f;
     float sustain = 0.7f;
     float release = 2.0f;
 
-    void setParams(float a, float d, float s, float r) noexcept
+    float level     = 0.0f;
+    float coeff     = 0.0f;
+    float target    = 0.0f;
+    Stage stage     = Stage::Idle;
+    float sampleRate = 44100.0f;
+
+    //==========================================================================
+    void prepare (float sr) noexcept
     {
-        attack = a; decay = d; sustain = s; release = r;
+        sampleRate = sr;
+        level  = 0.0f;
+        stage  = Stage::Idle;
+        coeff  = 0.0f;
+        target = 0.0f;
+    }
+
+    void reset() noexcept
+    {
+        level = 0.0f;
+        stage = Stage::Idle;
+    }
+
+    void setParams (float a, float d, float s, float r) noexcept
+    {
+        attack  = juce::jmax(0.0001f, a);
+        decay   = juce::jmax(0.0001f, d);
+        sustain = juce::jmax(0.0f,    s);
+        release = juce::jmax(0.0001f, r);
+    }
+
+    void noteOn() noexcept
+    {
+        stage  = Stage::Attack;
+        // Exponential attack: compute per-sample coefficient
+        coeff  = computeCoeff (attack,  1.0f);
+        target = 1.0f + (1.0f - level) * 0.0001f;  // overshoot target so level reaches 1
+    }
+
+    void noteOff() noexcept
+    {
+        if (stage != Stage::Idle)
+        {
+            stage  = Stage::Release;
+            coeff  = computeCoeff (release, 0.0001f);
+            target = 0.0f;
+        }
+    }
+
+    // Returns true while envelope is producing audio
+    bool isActive() const noexcept { return stage != Stage::Idle; }
+
+    // Per-sample tick — returns current envelope level
+    float tick() noexcept
+    {
+        switch (stage)
+        {
+            case Stage::Attack:
+                level += coeff * (1.001f - level);
+                if (level >= 1.0f)
+                {
+                    level  = 1.0f;
+                    stage  = Stage::Decay;
+                    coeff  = computeCoeff (decay, sustain);
+                    target = sustain;
+                }
+                break;
+
+            case Stage::Decay:
+                level += coeff * (sustain - level);
+                if (std::fabs (level - sustain) < 0.0001f)
+                {
+                    level = sustain;
+                    stage = Stage::Sustain;
+                }
+                break;
+
+            case Stage::Sustain:
+                level = sustain;
+                break;
+
+            case Stage::Release:
+                level += coeff * (0.0f - level);
+                if (level < 0.0001f)
+                {
+                    level = 0.0f;
+                    stage = Stage::Idle;
+                }
+                break;
+
+            case Stage::Idle:
+            default:
+                level = 0.0f;
+                break;
+        }
+        return level;
+    }
+
+private:
+    // Compute per-sample coefficient for exponential approach:
+    // coefficient = 1 - exp(-log(1/threshold) / (timeSec * sampleRate))
+    float computeCoeff (float timeSec, float /*targetLevel*/) const noexcept
+    {
+        return 1.0f - fastExp (-6.907755f / (timeSec * sampleRate));
     }
 };
 
 //==============================================================================
-struct Voice {
-    // ── Public fields (read by Entrainment, adapter) ─────────────────────────
-    float    pulsePhase   = 0.0f;   // bell-pulse phase [0, 1) — modified by Entrainment
-    float    pulseRate    = 0.5f;   // Hz, set each process() call
-    bool     held         = false;
+class Voice
+{
+public:
+    //==========================================================================
+    // Voice allocation state — read directly by the adapter
     uint64_t noteOnOrder  = 0;
     uint64_t noteOffOrder = 0;
-    int      midiNote     = 0;
-    AmpEnvelope env;
+    bool     held         = false;
+    int      midiNote     = -1;
+
+    // Envelope — referenced directly by the adapter: v.env.setParams(...)
+    VoiceEnvelope env;
+
+    // Glide coefficient — set once per block by the adapter from olap_glide.
+    // 0 = instant (no glide); values near 1 = very slow glide.
+    float glideCoeff = 0.005f;
 
     //==========================================================================
-    void prepare(float sr) noexcept { sampleRate = sr; }
+    void prepare (double sampleRate) noexcept
+    {
+        sr        = static_cast<float> (sampleRate);
+        invSr     = 1.0f / sr;
+        phase     = 0.0f;
+        glideFreq = 0.0f;
+        velocity  = 0.0f;
+        voiceIdx  = 0;
+        env.prepare (sr);
+    }
+
+    void setVoiceIndex (int idx) noexcept { voiceIdx = idx; }
 
     void reset() noexcept
     {
-        held = false;  noteOnOrder = 0;  noteOffOrder = 0;  midiNote = 0;
-        envLevel = 0.0f;  envStage = 0;
-        oscPhase = 0.0f;  pulsePhase = 0.0f;  pulseRate = 0.5f;
+        phase     = 0.0f;
+        held      = false;
+        midiNote  = -1;
+        velocity  = 0.0f;
+        glideFreq = 0.0f;
+        env.reset();
     }
 
-    void setVoiceIndex(int i) noexcept { voiceIndex = i; }
+    bool isActive() const noexcept { return env.isActive(); }
 
-    bool isActive() const noexcept
+    //==========================================================================
+    void noteOn (int note, float vel, uint64_t order) noexcept
     {
-        return envStage != 0 || envLevel > 0.001f;
+        midiNote     = note;
+        velocity     = vel;
+        held         = true;
+        noteOnOrder  = order;
+        noteOffOrder = 0;
+
+        float targetFreq = midiToFreq (note);
+        if (glideFreq < 1.0f) glideFreq = targetFreq;
+        targetGlideFreq = targetFreq;
+
+        // Reset phase for clean attack
+        phase = 0.0f;
+        env.noteOn();
+    }
+
+    void noteOff (uint64_t order) noexcept
+    {
+        held         = false;
+        noteOffOrder = order;
+        env.noteOff();
     }
 
     //==========================================================================
-    void noteOn(int note, float vel, uint64_t order) noexcept
+    // process() — advance oscillator one sample and return output.
+    // pulseRate (0.01–8 Hz) drives a pulsed waveform character:
+    //   at low pulse rate → near-sine
+    //   at high pulse rate → short burst / click (impulsive FDN excitation)
+    float process (float pulseRate) noexcept
     {
-        midiNote = note;   velocity = vel;
-        noteOnOrder = order;  noteOffOrder = 0;  held = true;
-        freq     = 440.0f * std::pow(2.0f, (note - 69) / 12.0f);
-        envLevel = 0.0f;  envStage = 1;  // start attack
-        pulsePhase = 0.0f;               // clean articulation
+        if (!env.isActive()) return 0.0f;
+
+        // Glide: one-pole smoothing toward target frequency (coeff set per-block)
+        glideFreq += glideCoeff * (targetGlideFreq - glideFreq);
+
+        // Advance oscillator phase
+        float phaseInc = glideFreq * invSr;
+        phase += phaseInc;
+        if (phase >= 1.0f) phase -= 1.0f;
+
+        // Waveform: blend sine with a narrow Gaussian pulse at phase = 0.
+        // pulseRate / maxPulse controls the burst sharpness.
+        // We use the continuous phase to generate a sine, then modulate
+        // its envelope with a pulse-width function driven by pulseRate.
+        float sineOut = fastSin (phase * 6.28318530f);
+
+        // Pulse modulation: at high pulseRate, multiply by a raised cosine
+        // window that peaks once per cycle.  Width = 1/pulseRate normalized.
+        const float maxPulse = 8.0f;
+        float normalizedPulse = juce::jmin(pulseRate / maxPulse, 1.0f);
+        float halfWidth = 0.5f * (1.0f - normalizedPulse * 0.85f);
+        float distFromCenter = std::fabs (phase - 0.5f);  // 0 at cycle center
+        float pulseEnv;
+        if (distFromCenter < halfWidth)
+            pulseEnv = 0.5f + 0.5f * fastCos ((distFromCenter / halfWidth) * 3.14159265f);
+        else
+            pulseEnv = 0.0f;
+
+        // Blend: low pulse rate → pure sine; high pulse rate → pulsed output
+        float oscOut = sineOut * (1.0f - normalizedPulse) + pulseEnv * normalizedPulse;
+
+        // Velocity scaling on amplitude
+        float envLevel = env.tick();
+        return oscOut * envLevel * velocity;
     }
 
-    void noteOff(uint64_t order) noexcept
-    {
-        held = false;  noteOffOrder = order;
-        if (envStage != 0 && envStage != 4)
-            envStage = 4;  // release
-    }
+    // phase is public — accessed by Entrainment (Kuramoto coupling)
+    float phase           = 0.0f;
 
-    //==========================================================================
-    // Returns one sample of bell oscillator output for the FDN input bus.
-    float process(float pulseRateHz) noexcept
-    {
-        pulseRate = pulseRateHz;
-        if (envStage == 0 && !isActive()) return 0.0f;
-
-        float invSr = 1.0f / sampleRate;
-
-        // — Amplitude ADSR ────────────────────────────────────────────────────
-        switch (envStage)
-        {
-            case 1: // attack
-            {
-                float inc = invSr / (env.attack > 0.001f ? env.attack : 0.001f);
-                envLevel += inc;
-                if (envLevel >= 1.0f) { envLevel = 1.0f; envStage = 2; }
-                break;
-            }
-            case 2: // decay → sustain
-            {
-                float span = (1.0f - env.sustain);
-                float inc  = span * invSr / (env.decay > 0.001f ? env.decay : 0.001f);
-                envLevel -= inc;
-                if (envLevel <= env.sustain) { envLevel = env.sustain; envStage = 3; }
-                break;
-            }
-            case 3: // sustain
-                envLevel = env.sustain;
-                break;
-            case 4: // release
-            {
-                float inc = env.sustain * invSr / (env.release > 0.001f ? env.release : 0.001f);
-                envLevel -= inc;
-                if (envLevel <= 0.0f) { envLevel = 0.0f; envStage = 0; }
-                break;
-            }
-            default:
-                envLevel = 0.0f;
-                break;
-        }
-
-        if (envStage == 0) return 0.0f;
-
-        // — Bell oscillator (D001: brightness from velocity) ──────────────────
-        constexpr float twoPi    = 6.28318530f;
-        float           brightness = 0.3f + 0.7f * velocity;
-        float           phRad      = oscPhase * twoPi;
-
-        float osc = std::sin(phRad);
-        osc      += std::sin(phRad * 2.17f) * 0.30f * brightness;
-        osc      += std::sin(phRad * 3.71f) * 0.15f * (brightness * brightness);
-        osc      += std::sin(phRad * 5.43f) * 0.08f * (brightness * brightness);
-
-        oscPhase += freq * invSr;
-        if (oscPhase >= 1.0f) oscPhase -= 1.0f;
-
-        // — Bell-pulse gate (cosine contraction) ──────────────────────────────
-        float gate = 0.35f + 0.65f * std::cos(pulsePhase * twoPi);
-        pulsePhase += pulseRateHz * invSr;
-        if (pulsePhase >= 1.0f) pulsePhase -= 1.0f;
-
-        // Output: amp env × pulse gate × oscillator (scaled for 6-voice mix)
-        return osc * envLevel * gate * 0.15f;
-    }
+    // targetGlideFreq is public — written by the adapter for Ocean Current drift (D004)
+    float targetGlideFreq = 440.0f;
 
 private:
-    float sampleRate = 44100.0f;
-    float freq       = 440.0f;
-    float velocity   = 1.0f;
-    float envLevel   = 0.0f;
-    int   envStage   = 0;     // 0=idle 1=attack 2=decay 3=sustain 4=release
-    float oscPhase   = 0.0f;  // [0, 1)
-    int   voiceIndex = 0;
+    //==========================================================================
+    float sr              = 44100.0f;
+    float invSr           = 1.0f / 44100.0f;
+    float glideFreq       = 0.0f;
+    float velocity        = 0.0f;
+    int   voiceIdx        = 0;
 };
 
 } // namespace xoverlap

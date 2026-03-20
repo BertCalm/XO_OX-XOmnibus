@@ -2,6 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <array>
+#include "../FastMath.h"
 
 namespace xomnibus {
 
@@ -74,7 +75,8 @@ public:
 
             // Limit gain range to prevent blowup
             gainDb = std::clamp (gainDb, -24.0f, 24.0f);
-            float gainLin = std::pow (10.0f, gainDb / 20.0f);
+            // SRO: dbToGain replaces std::pow (per-sample hot path)
+            float gainLin = dbToGain (gainDb);
 
             float wetL = left[i]  * gainLin;
             float wetR = right[i] * gainLin;
@@ -83,6 +85,7 @@ public:
             right[i] = dryR + mix * (wetR - dryR);
         }
 
+        // SRO: uses shared flushDenormal from FastMath.h
         envFast = flushDenormal (envFast);
         envSlow = flushDenormal (envSlow);
     }
@@ -93,10 +96,11 @@ public:
         envSlow = 0.0f;
 
         // Recalculate time constants
-        fastAttack  = 1.0f - std::exp (-1.0f / (static_cast<float> (sr) * 0.001f));
-        fastRelease = 1.0f - std::exp (-1.0f / (static_cast<float> (sr) * 0.010f));
-        slowAttack  = 1.0f - std::exp (-1.0f / (static_cast<float> (sr) * 0.020f));
-        slowRelease = 1.0f - std::exp (-1.0f / (static_cast<float> (sr) * 0.080f));
+        // SRO: fastExp replaces std::exp (per-reset coefficient computation)
+        fastAttack  = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.001f));
+        fastRelease = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.010f));
+        slowAttack  = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.020f));
+        slowRelease = 1.0f - fastExp (-1.0f / (static_cast<float> (sr) * 0.080f));
     }
 
 private:
@@ -116,11 +120,6 @@ private:
     float slowRelease = 0.0f;
 
     void calcCrossover() { /* crossover reserved for future per-band mode */ }
-
-    static float flushDenormal (float x)
-    {
-        return (std::abs (x) < 1.0e-15f) ? 0.0f : x;
-    }
 };
 
 } // namespace xomnibus

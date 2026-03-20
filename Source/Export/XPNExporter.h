@@ -1,14 +1,13 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_formats/juce_audio_formats.h>
 #include "../Core/PresetManager.h"
 #include "../Core/EngineRegistry.h"
 #include "../Core/MegaCouplingMatrix.h"
 #include "XPNCoverArt.h"
 
-#include <array>
 #include <atomic>
 #include <cmath>
-#include <random>
 #include <thread>
 #include <mutex>
 #include <future>
@@ -99,9 +98,8 @@ private:
 };
 
 //==============================================================================
-// XOriginate — Renders XOmnibus presets to WAV samples and packages them
+// XPNExporter — Renders XOmnibus presets to WAV samples and packages them
 // as MPC-compatible .xpn expansion packs.
-// (Formerly XPNExporter — renamed to XOriginate: XO + O-word convention)
 //
 // IMPORTANT: All rendering runs on a worker thread (never the audio thread).
 // The exporter creates a temporary processor instance for offline rendering.
@@ -111,7 +109,7 @@ private:
 //   2. RootNote = 0         — MPC auto-detect convention
 //   3. Empty VelStart = 0   — prevents ghost triggering
 //
-class XOriginate {
+class XPNExporter {
 public:
 
     //==========================================================================
@@ -119,15 +117,13 @@ public:
     //==========================================================================
 
     struct RenderSettings {
-        double sampleRate    = 44100.0;
+        double sampleRate    = 48000.0;
         int    bitDepth      = 24;             // 16 or 24
         float  renderSeconds = 4.0f;           // note hold time
         float  tailSeconds   = 2.0f;           // after noteOff
         float  normCeiling   = -0.3f;          // dBFS normalization target
-        int    velocityLayers = 4;             // 1-4 (default 4: ghost/light/mid/hard)
+        int    velocityLayers = 1;             // 1-3
         bool   useSoundShapes = false;         // auto-adjust per preset via SoundShapeClassifier
-        bool   generatePreviews = false;       // generate low-quality .mp3 preview per WAV
-        bool   dnaAdaptiveVelocity = true;     // shift velocity splits based on preset DNA aggression
 
         // Note sampling strategy
         enum class NoteStrategy { EveryMinor3rd, Chromatic, EveryFifth, OctavesOnly };
@@ -273,17 +269,7 @@ public:
             int totalNotesForPreset = (int)notes.size() * effectiveSettings.velocityLayers;
             progress.totalNotes = totalNotesForPreset;
 
-            // Build note-group work items for parallel rendering.
-            // Each note group contains all velocity layers so we can group-normalize
-            // (preserving dynamic relationships between soft and loud hits).
-            struct NoteGroupJob {
-                int note;
-                std::vector<VelocityGroupJob> velJobs;
-            };
-            std::vector<NoteGroupJob> noteGroups;
-            noteGroups.reserve(notes.size());
-
-            // Also track all WAV files for tally
+            // Build work items for parallel rendering
             struct RenderJob {
                 int note;
                 int velLayer;
@@ -296,30 +282,19 @@ public:
             for (int ni = 0; ni < (int)notes.size(); ++ni)
             {
                 int note = notes[(size_t)ni];
-                NoteGroupJob group;
-                group.note = note;
-
                 for (int vel = 0; vel < effectiveSettings.velocityLayers; ++vel)
                 {
-                    auto wavFile = presetDir.getChildFile(wavFilename(preset.name, note, vel));
-                    group.velJobs.push_back({
-                        vel,
+                    jobs.push_back({
+                        note, vel,
                         velocityForLayer(vel, effectiveSettings.velocityLayers),
-                        wavFile
+                        presetDir.getChildFile(wavFilename(preset.name, note, vel))
                     });
-                    jobs.push_back({ note, vel,
-                        velocityForLayer(vel, effectiveSettings.velocityLayers),
-                        wavFile });
                 }
-                noteGroups.push_back(std::move(group));
             }
 
-            // Parallel rendering with thread pool — one job per note group.
-            // Group rendering ensures all velocity layers for a note are rendered
-            // together, enabling group normalization (loudest layer hits ceiling,
-            // softer layers stay proportionally quieter).
+            // Parallel rendering with thread pool
             unsigned int numWorkers = juce::jmax(1u, std::thread::hardware_concurrency() - 1);
-            std::atomic<int> completedNoteGroups { 0 };
+            std::atomic<int> completedJobs { 0 };
             std::atomic<bool> renderError { false };
             juce::String firstError;
             std::mutex errorMutex;
@@ -329,31 +304,29 @@ public:
             {
                 for (size_t j = startIdx; j < endIdx && !cancelled.load() && !renderError.load(); ++j)
                 {
-                    const auto& group = noteGroups[j];
-                    auto groupResult = renderNoteGroupToWav(preset, group.note,
-                                                            group.velJobs, effectiveSettings);
-                    if (!groupResult.success)
+                    const auto& job = jobs[j];
+                    auto wavResult = renderNoteToWav(preset, job.note, job.velocity,
+                                                     effectiveSettings, job.wavFile);
+                    if (!wavResult.success)
                     {
                         std::lock_guard<std::mutex> lock(errorMutex);
                         if (!renderError.load())
                         {
                             renderError.store(true);
-                            firstError = groupResult.error;
+                            firstError = wavResult.error;
                         }
                         return;
                     }
 
-                    int doneGroups = completedNoteGroups.fetch_add(1) + 1;
-                    int doneJobs = doneGroups * effectiveSettings.velocityLayers;
+                    int done = completedJobs.fetch_add(1) + 1;
 
                     // Progress update — serialized via mutex to avoid data races
-                    if (progressCb && (doneGroups % juce::jmax(1, (int)numWorkers) == 0
-                                       || doneGroups == (int)noteGroups.size()))
+                    if (progressCb && (done % juce::jmax(1, (int)numWorkers) == 0 || done == (int)jobs.size()))
                     {
                         std::lock_guard<std::mutex> lock(progressMutex);
-                        progress.currentNote = doneJobs;
+                        progress.currentNote = done;
                         float presetFrac = (float)pi / (float)presets.size();
-                        float noteFrac = (float)doneJobs / (float)totalNotesForPreset;
+                        float noteFrac = (float)done / (float)totalNotesForPreset;
                         progress.overallProgress = presetFrac + noteFrac / (float)presets.size();
                         progressCb(progress);
                         if (progress.cancelled)
@@ -362,21 +335,21 @@ public:
                 }
             };
 
-            if (numWorkers <= 1 || noteGroups.size() <= 4)
+            if (numWorkers <= 1 || jobs.size() <= 4)
             {
                 // Small batch: run sequentially
-                renderBatch(0, noteGroups.size());
+                renderBatch(0, jobs.size());
             }
             else
             {
-                // Partition note groups across worker threads
+                // Partition jobs across worker threads
                 std::vector<std::future<void>> futures;
-                size_t chunkSize = (noteGroups.size() + numWorkers - 1) / numWorkers;
+                size_t chunkSize = (jobs.size() + numWorkers - 1) / numWorkers;
 
-                for (unsigned int w = 0; w < numWorkers && w * chunkSize < noteGroups.size(); ++w)
+                for (unsigned int w = 0; w < numWorkers && w * chunkSize < jobs.size(); ++w)
                 {
                     size_t start = w * chunkSize;
-                    size_t end = juce::jmin(start + chunkSize, noteGroups.size());
+                    size_t end = juce::jmin(start + chunkSize, jobs.size());
                     futures.push_back(std::async(std::launch::async, renderBatch, start, end));
                 }
 
@@ -583,87 +556,16 @@ private:
     {
         if (totalLayers <= 1) return 0.8f;
         if (totalLayers == 2) return layer == 0 ? 0.5f : 1.0f;
-        if (totalLayers == 3)
-        {
-            static constexpr float vels3[] = { 0.3f, 0.7f, 1.0f };
-            return vels3[juce::jlimit(0, 2, layer)];
-        }
-        // 4 layers: ghost, light, mid, hard (ported from Python toolchain)
-        static constexpr float vels4[] = { 0.15f, 0.45f, 0.75f, 1.0f };
-        return vels4[juce::jlimit(0, 3, layer)];
-    }
-
-    //==========================================================================
-    // Velocity split points — 4-layer system ported from Python toolchain
-    //
-    // Default splits: ghost(1-20), light(21-50), mid(51-90), hard(91-127)
-    // DNA-adaptive: high aggression shifts splits downward so hard hits
-    // trigger earlier (more aggressive response curve)
-    //==========================================================================
-
-    struct VelSplit { int start; int end; };
-
-    static std::array<VelSplit, 4> getVelocitySplits(float aggressionDNA = 0.5f,
-                                                      bool dnaAdaptive = true)
-    {
-        // Base split points: ghost(1-20), light(21-50), mid(51-90), hard(91-127)
-        int ghost_end = 20;
-        int light_end = 50;
-        int mid_end   = 90;
-
-        if (dnaAdaptive && aggressionDNA > 0.5f)
-        {
-            // High aggression: shift splits downward (hard hits trigger sooner)
-            float shift = (aggressionDNA - 0.5f) * 2.0f; // 0..1 for aggression 0.5..1.0
-            ghost_end = juce::jmax(10, ghost_end - (int)(shift * 8));   // 20 -> 12
-            light_end = juce::jmax(25, light_end - (int)(shift * 15));  // 50 -> 35
-            mid_end   = juce::jmax(60, mid_end   - (int)(shift * 20)); // 90 -> 70
-        }
-
-        return {{
-            { 1,             ghost_end },
-            { ghost_end + 1, light_end },
-            { light_end + 1, mid_end   },
-            { mid_end + 1,   127       }
-        }};
-    }
-
-    static VelSplit velSplitForLayer(int layer, int totalLayers,
-                                      float aggressionDNA = 0.5f,
-                                      bool dnaAdaptive = true)
-    {
-        if (totalLayers <= 1)
-            return { 0, 127 };
-
-        if (totalLayers == 2)
-        {
-            if (layer == 0) return { 0, 63 };
-            return { 64, 127 };
-        }
-
-        if (totalLayers == 3)
-        {
-            auto splits = getVelocitySplits(aggressionDNA, dnaAdaptive);
-            // Merge ghost+light for 3-layer mode
-            if (layer == 0) return { 0, splits[1].end };
-            if (layer == 1) return { splits[1].end + 1, splits[2].end };
-            return { splits[2].end + 1, 127 };
-        }
-
-        // 4 layers: use full split system
-        auto splits = getVelocitySplits(aggressionDNA, dnaAdaptive);
-        auto s = splits[(size_t)juce::jlimit(0, 3, layer)];
-        // First layer starts at 0 per MPC convention
-        if (layer == 0) s.start = 0;
-        return s;
+        // 3 layers: soft, medium, hard
+        static constexpr float vels[] = { 0.3f, 0.7f, 1.0f };
+        return vels[juce::jlimit(0, 2, layer)];
     }
 
     //==========================================================================
     // Normalization — peak-scan + gain to target ceiling
     //==========================================================================
 
-    // Find peak across a single buffer
-    static float findBufferPeak(const juce::AudioBuffer<float>& buffer)
+    static void normalizeBuffer(juce::AudioBuffer<float>& buffer, float ceilingDb)
     {
         float peak = 0.0f;
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
@@ -672,285 +574,53 @@ private:
             float chPeak = juce::jmax(std::abs(range.getStart()), std::abs(range.getEnd()));
             if (chPeak > peak) peak = chPeak;
         }
-        return peak;
-    }
 
-    // Normalize a single buffer using a pre-computed global peak (for group normalization).
-    // The loudest layer in the group hits the ceiling; softer layers stay proportionally quieter.
-    static void normalizeBufferWithGlobalPeak(juce::AudioBuffer<float>& buffer,
-                                               float globalPeak, float ceilingDb)
-    {
-        if (globalPeak < 1e-8f) return; // silence, nothing to normalize
+        if (peak < 1e-8f) return; // silence, nothing to normalize
 
         float targetGain = std::pow(10.0f, ceilingDb / 20.0f);
-        float gain = targetGain / globalPeak;
+        float gain = targetGain / peak;
 
+        // Only attenuate or boost to ceiling — never amplify silence
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
             buffer.applyGain(ch, 0, buffer.getNumSamples(), gain);
     }
-
-    // Legacy single-buffer normalization (used when only 1 velocity layer)
-    static void normalizeBuffer(juce::AudioBuffer<float>& buffer, float ceilingDb)
-    {
-        normalizeBufferWithGlobalPeak(buffer, findBufferPeak(buffer), ceilingDb);
-    }
-
-    //==========================================================================
-    // Shared audio utilities — public so XOutshine can reuse them
-    //==========================================================================
-public:
-
-    static void removeDCOffset(juce::AudioBuffer<float>& buffer)
-    {
-        int numChannels = buffer.getNumChannels();
-        int numSamples = buffer.getNumSamples();
-
-        for (int ch = 0; ch < numChannels; ++ch)
-        {
-            auto* data = buffer.getWritePointer(ch);
-            float sum = 0.0f;
-            for (int i = 0; i < numSamples; ++i)
-                sum += data[i];
-            float dcOffset = sum / (float)numSamples;
-            for (int i = 0; i < numSamples; ++i)
-                data[i] -= dcOffset;
-        }
-    }
-
-    //==========================================================================
-    // Fade guards — raised-cosine fade-in/out to prevent clicks
-    //==========================================================================
-
-    static void applyFadeGuards(juce::AudioBuffer<float>& buffer, double sampleRate)
-    {
-        int numChannels = buffer.getNumChannels();
-        int numSamples = buffer.getNumSamples();
-
-        // Fade-in (2ms)
-        const int fadeInSamples = static_cast<int>(sampleRate * 0.002);
-        for (int i = 0; i < fadeInSamples && i < numSamples; ++i)
-        {
-            float gain = 0.5f * (1.0f - std::cos(juce::MathConstants<float>::pi * i / fadeInSamples));
-            for (int ch = 0; ch < numChannels; ++ch)
-                buffer.getWritePointer(ch)[i] *= gain;
-        }
-
-        // Fade-out (10ms)
-        const int fadeOutSamples = static_cast<int>(sampleRate * 0.01);
-        for (int i = 0; i < fadeOutSamples && i < numSamples; ++i)
-        {
-            float gain = 0.5f * (1.0f + std::cos(juce::MathConstants<float>::pi * i / fadeOutSamples));
-            int idx = numSamples - 1 - i;
-            for (int ch = 0; ch < numChannels; ++ch)
-                buffer.getWritePointer(ch)[idx] *= gain;
-        }
-    }
-
-private:
 
     //==========================================================================
     // WAV rendering (offline, worker thread)
     //==========================================================================
 
-    //==========================================================================
-    // Render a single note to an audio buffer using a real engine instance.
-    // Does NOT normalize or write — caller handles group normalization.
-    //==========================================================================
-
-    IOResult renderNoteToBuffer(const PresetData& preset, int note, float velocity,
-                                const RenderSettings& settings,
-                                juce::AudioBuffer<float>& buffer)
-    {
-        int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
-        int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
-        int blockSize    = 512;
-
-        buffer.setSize(2, totalSamples);
-        buffer.clear();
-
-        // Create engine instance for this render job
-        juce::String engineId = preset.engines.isEmpty() ? juce::String("OddfeliX") : preset.engines[0];
-        auto engine = EngineRegistry::instance().createEngine(engineId.toStdString());
-        if (!engine)
-            return { false, "Failed to create engine: " + engineId };
-
-        // Prepare engine for offline rendering
-        engine->prepare(settings.sampleRate, blockSize);
-
-        // Apply preset parameters from the PresetData
-        // Create a temporary APVTS to host the engine's parameters
-        juce::AudioProcessorValueTreeState::ParameterLayout layout;
-        auto engineLayout = engine->createParameterLayout();
-
-        // We need a minimal AudioProcessor to host the APVTS
-        struct MinimalProcessor : juce::AudioProcessor {
-            MinimalProcessor() : AudioProcessor(BusesProperties()
-                .withOutput("Output", juce::AudioChannelSet::stereo())) {}
-            const juce::String getName() const override { return "XPNRenderer"; }
-            void prepareToPlay(double, int) override {}
-            void releaseResources() override {}
-            void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
-            double getTailLengthSeconds() const override { return 0; }
-            bool acceptsMidi() const override { return true; }
-            bool producesMidi() const override { return false; }
-            juce::AudioProcessorEditor* createEditor() override { return nullptr; }
-            bool hasEditor() const override { return false; }
-            int getNumPrograms() override { return 1; }
-            int getCurrentProgram() override { return 0; }
-            void setCurrentProgram(int) override {}
-            const juce::String getProgramName(int) override { return {}; }
-            void changeProgramName(int, const juce::String&) override {}
-            void getStateInformation(juce::MemoryBlock&) override {}
-            void setStateInformation(const void*, int) override {}
-        };
-
-        MinimalProcessor tempProcessor;
-        juce::AudioProcessorValueTreeState apvts(tempProcessor, nullptr, "XPNParams",
-                                                  engine->createParameterLayout());
-        engine->attachParameters(apvts);
-
-        // Apply preset parameters for this engine
-        for (const auto& [engName, params] : preset.parametersByEngine)
-        {
-            if (auto* obj = params.getDynamicObject())
-            {
-                for (const auto& prop : obj->getProperties())
-                {
-                    if (auto* param = apvts.getParameter(prop.name.toString()))
-                    {
-                        float normValue = param->convertTo0to1((float)prop.value);
-                        param->setValueNotifyingHost(normValue);
-                    }
-                }
-            }
-        }
-
-        engine->reset();
-
-        // Send MIDI noteOn
-        juce::MidiBuffer midiBuffer;
-        int midiVelocity = juce::jlimit(1, 127, (int)(velocity * 127.0f));
-        midiBuffer.addEvent(juce::MidiMessage::noteOn(1, note, (juce::uint8)midiVelocity), 0);
-
-        // Render blocks for the sustain phase
-        int samplesRendered = 0;
-        while (samplesRendered < holdSamples)
-        {
-            int samplesThisBlock = juce::jmin(blockSize, totalSamples - samplesRendered);
-            juce::AudioBuffer<float> blockBuffer(buffer.getArrayOfWritePointers(),
-                                                  2, samplesRendered, samplesThisBlock);
-
-            // Only pass MIDI on the first block (noteOn already queued)
-            engine->renderBlock(blockBuffer, midiBuffer, samplesThisBlock);
-            midiBuffer.clear();
-            samplesRendered += samplesThisBlock;
-        }
-
-        // Send MIDI noteOff at the start of the tail phase
-        midiBuffer.addEvent(juce::MidiMessage::noteOff(1, note), 0);
-
-        // Render tail (release) blocks
-        while (samplesRendered < totalSamples)
-        {
-            int samplesThisBlock = juce::jmin(blockSize, totalSamples - samplesRendered);
-            juce::AudioBuffer<float> blockBuffer(buffer.getArrayOfWritePointers(),
-                                                  2, samplesRendered, samplesThisBlock);
-
-            engine->renderBlock(blockBuffer, midiBuffer, samplesThisBlock);
-            midiBuffer.clear();
-            samplesRendered += samplesThisBlock;
-        }
-
-        // Apply fade guards (before DC removal and normalization)
-        applyFadeGuards(buffer, settings.sampleRate);
-
-        // Remove DC offset
-        removeDCOffset(buffer);
-
-        return { true, {} };
-    }
-
-    //==========================================================================
-    // Render a note + write WAV (single velocity layer, legacy path)
-    //==========================================================================
-
-    IOResult renderNoteToWav(const PresetData& preset, int note, float velocity,
+    IOResult renderNoteToWav(const PresetData& /*preset*/, int note, float velocity,
                              const RenderSettings& settings, const juce::File& outputFile)
     {
-        juce::AudioBuffer<float> buffer;
-        auto renderResult = renderNoteToBuffer(preset, note, velocity, settings, buffer);
-        if (!renderResult.success)
-            return renderResult;
+        // Calculate total samples
+        int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
+        int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
 
-        // Single-layer normalization (old path — only used when velocityLayers == 1)
+        // Render buffer (stereo)
+        juce::AudioBuffer<float> buffer(2, totalSamples);
+        buffer.clear();
+
+        // NOTE: In a full implementation, this would:
+        // 1. Create a temporary processor instance
+        // 2. Load the preset's engines and parameters
+        // 3. Set up coupling routes
+        // 4. Send MIDI noteOn(note, velocity)
+        // 5. Render holdSamples of audio
+        // 6. Send MIDI noteOff
+        // 7. Render tailSamples for release/FX decay
+        //
+        // For now, generate a silent placeholder WAV.
+        // Integration with the real processor is the next step.
+
+        (void)note;
+        (void)velocity;
+        (void)holdSamples;
+
+        // Apply normalization
         normalizeBuffer(buffer, settings.normCeiling);
 
-        // Optional preview generation
-        if (settings.generatePreviews)
-        {
-            auto previewFile = outputFile.getParentDirectory().getChildFile(
-                outputFile.getFileNameWithoutExtension() + ".mp3");
-            generatePreview(buffer, settings.sampleRate, previewFile);
-        }
-
+        // Write WAV
         return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
-    }
-
-    //==========================================================================
-    // Render all velocity layers for a note, group-normalize, then write WAVs.
-    // This preserves dynamic relationships between velocity layers.
-    //==========================================================================
-
-    struct VelocityGroupJob {
-        int velLayer;
-        float velocity;
-        juce::File wavFile;
-    };
-
-    IOResult renderNoteGroupToWav(const PresetData& preset, int note,
-                                   const std::vector<VelocityGroupJob>& velJobs,
-                                   const RenderSettings& settings)
-    {
-        // Phase 1: Render all velocity layers into buffers
-        std::vector<juce::AudioBuffer<float>> buffers(velJobs.size());
-
-        for (size_t v = 0; v < velJobs.size(); ++v)
-        {
-            auto renderResult = renderNoteToBuffer(preset, note, velJobs[v].velocity,
-                                                    settings, buffers[v]);
-            if (!renderResult.success)
-                return renderResult;
-        }
-
-        // Phase 2: Find global peak across ALL velocity layers for this note
-        float globalPeak = 0.0f;
-        for (const auto& buf : buffers)
-        {
-            float p = findBufferPeak(buf);
-            if (p > globalPeak) globalPeak = p;
-        }
-
-        // Phase 3: Normalize each layer relative to the global peak
-        for (auto& buf : buffers)
-            normalizeBufferWithGlobalPeak(buf, globalPeak, settings.normCeiling);
-
-        // Phase 4: Generate previews and write WAVs
-        for (size_t v = 0; v < velJobs.size(); ++v)
-        {
-            if (settings.generatePreviews)
-            {
-                auto previewFile = velJobs[v].wavFile.getParentDirectory().getChildFile(
-                    velJobs[v].wavFile.getFileNameWithoutExtension() + ".mp3");
-                generatePreview(buffers[v], settings.sampleRate, previewFile);
-            }
-
-            auto writeResult = writeWav(velJobs[v].wavFile, buffers[v],
-                                         settings.sampleRate, settings.bitDepth);
-            if (!writeResult.success)
-                return writeResult;
-        }
-
-        return { true, {} };
     }
 
     static IOResult writeWav(const juce::File& file, const juce::AudioBuffer<float>& buffer,
@@ -961,37 +631,15 @@ private:
         if (!stream)
             return { false, "Cannot create output stream: " + file.getFullPathName() };
 
-        // Apply TPDF dithering before quantization.
-        // We add triangular-PDF dither noise at the LSB level of the target bit depth
-        // to the float data, then let JUCE's writer handle the final conversion.
-        juce::AudioBuffer<float> dithered(buffer.getNumChannels(), buffer.getNumSamples());
-        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
-            dithered.copyFrom(ch, 0, buffer, ch, 0, buffer.getNumSamples());
-
-        // TPDF dither: sum of two uniform random values gives triangular distribution
-        float maxVal = (bitDepth == 24) ? 8388607.0f : 32767.0f;
-        std::mt19937 ditherRng(42 + std::hash<juce::String>{}(file.getFileName()));
-        std::uniform_real_distribution<float> ditherDist(-1.0f, 1.0f);
-
-        for (int ch = 0; ch < dithered.getNumChannels(); ++ch)
-        {
-            auto* data = dithered.getWritePointer(ch);
-            for (int i = 0; i < dithered.getNumSamples(); ++i)
-            {
-                float dither = (ditherDist(ditherRng) + ditherDist(ditherRng)) / maxVal;
-                data[i] = juce::jlimit(-1.0f, 1.0f, data[i] + dither);
-            }
-        }
-
         juce::WavAudioFormat wav;
         auto writer = std::unique_ptr<juce::AudioFormatWriter>(
             wav.createWriterFor(stream.release(), sampleRate,
-                               (unsigned int)dithered.getNumChannels(),
+                               (unsigned int)buffer.getNumChannels(),
                                bitDepth, {}, 0));
         if (!writer)
             return { false, "Cannot create WAV writer for: " + file.getFullPathName() };
 
-        if (!writer->writeFromAudioSampleBuffer(dithered, 0, dithered.getNumSamples()))
+        if (!writer->writeFromAudioSampleBuffer(buffer, 0, buffer.getNumSamples()))
             return { false, "Failed to write audio data: " + file.getFullPathName() };
 
         return { true, {} };
@@ -1004,122 +652,56 @@ private:
     IOResult writeXPM(const juce::File& file, const PresetData& preset,
                       const std::vector<int>& notes, const RenderSettings& settings)
     {
-        // MPCVObject format — the correct MPC keygroup program structure
-        juce::XmlElement root("MPCVObject");
-        root.setAttribute("type", "com.akaipro.mpc.keygroup.program");
-        root.setAttribute("version", "2.0");
+        juce::XmlElement root("Keygroup");
 
-        auto* program = root.createNewChildElement("Program");
-        program->createNewChildElement("ProgramName")->addTextElement(preset.name);
-        program->createNewChildElement("KeyTrack")->addTextElement(KEY_TRACK ? "True" : "False");
-        program->createNewChildElement("NumKeygroups")->addTextElement(juce::String((int)notes.size()));
-
-        // Expression mapping for keygroup programs
-        auto* afterTouch = program->createNewChildElement("AfterTouch");
-        afterTouch->createNewChildElement("Destination")->addTextElement("FilterCutoff");
-        afterTouch->createNewChildElement("Amount")->addTextElement("50");
-
-        auto* modWheel = program->createNewChildElement("ModWheel");
-        modWheel->createNewChildElement("Destination")->addTextElement("FilterCutoff");
-        modWheel->createNewChildElement("Amount")->addTextElement("70");
-
-        program->createNewChildElement("PitchBendRange")->addTextElement("12");
-
-        auto* keygroups = program->createNewChildElement("Keygroups");
+        // Required MPC attributes
+        root.setAttribute("KeyTrack", KEY_TRACK ? "True" : "False");
 
         for (int i = 0; i < (int)notes.size(); ++i)
         {
             int note = notes[(size_t)i];
-            int lowNote  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
-            int highNote = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
+            int lowKey  = (i == 0) ? 0 : (notes[(size_t)i - 1] + note) / 2;
+            int highKey = (i == (int)notes.size() - 1) ? 127 : (note + notes[(size_t)i + 1]) / 2;
 
-            auto* kg = keygroups->createNewChildElement("Keygroup");
-            kg->setAttribute("index", i);
-
-            kg->createNewChildElement("LowNote")->addTextElement(juce::String(lowNote));
-            kg->createNewChildElement("HighNote")->addTextElement(juce::String(highNote));
-            kg->createNewChildElement("RootNote")->addTextElement(juce::String(ROOT_NOTE));
-
-            auto* layers = kg->createNewChildElement("Layers");
+            auto* zone = root.createNewChildElement("Zone");
+            zone->setAttribute("RootNote", ROOT_NOTE);
+            zone->setAttribute("LowKey", lowKey);
+            zone->setAttribute("HighKey", highKey);
 
             for (int v = 0; v < settings.velocityLayers; ++v)
             {
-                auto* layer = layers->createNewChildElement("Layer");
-                layer->setAttribute("index", v);
+                auto* layer = zone->createNewChildElement("Layer");
+                layer->setAttribute("SampleFile",
+                    sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v));
 
-                auto sampleName = sanitizeFilename(preset.name) + "/" + wavFilename(preset.name, note, v);
-                layer->createNewChildElement("SampleName")->addTextElement(sampleName);
-
-                // Use DNA-adaptive velocity splits for 4-layer mode
-                auto split = velSplitForLayer(v, settings.velocityLayers,
-                                               preset.dna.aggression,
-                                               settings.dnaAdaptiveVelocity);
-                layer->createNewChildElement("VelStart")->addTextElement(juce::String(split.start));
-                layer->createNewChildElement("VelEnd")->addTextElement(juce::String(split.end));
+                // Velocity ranges
+                if (settings.velocityLayers == 1)
+                {
+                    layer->setAttribute("VelStart", 0);
+                    layer->setAttribute("VelEnd", 127);
+                }
+                else
+                {
+                    int velRange = 128 / settings.velocityLayers;
+                    layer->setAttribute("VelStart", v * velRange);
+                    layer->setAttribute("VelEnd", (v == settings.velocityLayers - 1) ? 127 : (v + 1) * velRange - 1);
+                }
             }
 
             // Empty layers get VelStart = 0 (critical rule #3)
-            for (int v = settings.velocityLayers; v < 4; ++v)
+            if (settings.velocityLayers < 4)
             {
-                auto* emptyLayer = layers->createNewChildElement("Layer");
-                emptyLayer->setAttribute("index", v);
-                emptyLayer->createNewChildElement("VelStart")->addTextElement(juce::String(EMPTY_VEL_START));
-                emptyLayer->createNewChildElement("VelEnd")->addTextElement("0");
+                for (int v = settings.velocityLayers; v < 4; ++v)
+                {
+                    auto* emptyLayer = zone->createNewChildElement("Layer");
+                    emptyLayer->setAttribute("VelStart", EMPTY_VEL_START);
+                    emptyLayer->setAttribute("VelEnd", 0);
+                }
             }
         }
 
         if (!root.writeTo(file))
             return { false, "Failed to write XPM: " + file.getFullPathName() };
-
-        return { true, {} };
-    }
-
-    //==========================================================================
-    // Preview generation — low-quality WAV with .mp3 extension
-    // (8-bit, mono, 22050Hz, first 2 seconds — MPC browsers play it)
-    //==========================================================================
-
-    static IOResult generatePreview(const juce::AudioBuffer<float>& sourceBuffer,
-                                    double sourceSampleRate,
-                                    const juce::File& previewFile)
-    {
-        // Take first 2 seconds max
-        int previewRate = 22050;
-        int maxSourceSamples = juce::jmin(sourceBuffer.getNumSamples(),
-                                          (int)(2.0 * sourceSampleRate));
-        int previewSamples = (int)((double)maxSourceSamples * previewRate / sourceSampleRate);
-
-        // Mono mixdown + resample
-        juce::AudioBuffer<float> preview(1, previewSamples);
-        preview.clear();
-
-        for (int i = 0; i < previewSamples; ++i)
-        {
-            int srcIdx = (int)((double)i * sourceSampleRate / previewRate);
-            if (srcIdx >= maxSourceSamples) break;
-
-            float mono = 0.0f;
-            for (int ch = 0; ch < sourceBuffer.getNumChannels(); ++ch)
-                mono += sourceBuffer.getSample(ch, srcIdx);
-            mono /= (float)sourceBuffer.getNumChannels();
-
-            preview.setSample(0, i, mono);
-        }
-
-        // Write as 8-bit WAV with .mp3 extension
-        previewFile.deleteFile();
-        auto stream = previewFile.createOutputStream();
-        if (!stream)
-            return { false, "Cannot create preview stream: " + previewFile.getFullPathName() };
-
-        juce::WavAudioFormat wav;
-        auto writer = std::unique_ptr<juce::AudioFormatWriter>(
-            wav.createWriterFor(stream.release(), (double)previewRate, 1, 8, {}, 0));
-        if (!writer)
-            return { false, "Cannot create preview writer" };
-
-        if (!writer->writeFromAudioSampleBuffer(preview, 0, previewSamples))
-            return { false, "Failed to write preview data" };
 
         return { true, {} };
     }

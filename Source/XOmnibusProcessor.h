@@ -4,12 +4,11 @@
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/MasterFXChain.h"
-#include "DSP/Effects/AquaticFXSuite.h"
-#include "DSP/Effects/MathFXChain.h"
-#include "DSP/Effects/BoutiqueFXChain.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/PresetManager.h"
+#include "DSP/EngineProfiler.h"
+#include "DSP/SRO/SROAuditor.h"
 #include <atomic>
 #include <memory>
 
@@ -70,14 +69,14 @@ public:
     // MPE Manager — per-note expression for Roli Seaboard, Linnstrument, Sensel, etc.
     MPEManager& getMPEManager() { return mpeManager; }
 
+    // SRO: CPU profiling and resource optimization report (UI thread safe)
+    SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
     juce::AudioProcessorValueTreeState apvts;
     MegaCouplingMatrix couplingMatrix;
-    AquaticFXSuite aquaticFX;
-    MathFXChain mathFX;
-    BoutiqueFXChain boutiqueFX;
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
@@ -105,6 +104,10 @@ private:
     double currentSampleRate = 44100.0;
     int currentBlockSize = 512;
 
+    // SRO: Per-slot CPU profiling + fleet-wide auditor
+    std::array<EngineProfiler, MaxSlots> engineProfilers;
+    SROAuditor sroAuditor;
+
     // Cached raw parameter pointers — resolved once in prepareToPlay, read per-block.
     // Eliminates string-based hash map lookups from the audio thread.
     struct CachedParams {
@@ -126,48 +129,6 @@ private:
         std::atomic<float>* ohmCommune  = nullptr;
         std::atomic<float>* obblBond    = nullptr;
         std::atomic<float>* oleDrama    = nullptr;
-
-        // Aquatic FX Suite
-        std::atomic<float>* aquaFathomDepth = nullptr;
-        std::atomic<float>* aquaFathomPressure = nullptr;
-        std::atomic<float>* aquaFathomMix = nullptr;
-        std::atomic<float>* aquaDriftRate = nullptr;
-        std::atomic<float>* aquaDriftWidth = nullptr;
-        std::atomic<float>* aquaDriftDepth = nullptr;
-        std::atomic<float>* aquaDriftMix = nullptr;
-        std::atomic<float>* aquaTideRate = nullptr;
-        std::atomic<float>* aquaTideShape = nullptr;
-        std::atomic<float>* aquaTideTarget = nullptr;
-        std::atomic<float>* aquaTideMix = nullptr;
-        std::atomic<float>* aquaReefSize = nullptr;
-        std::atomic<float>* aquaReefDamping = nullptr;
-        std::atomic<float>* aquaReefDensity = nullptr;
-        std::atomic<float>* aquaReefMix = nullptr;
-        std::atomic<float>* aquaSurfaceLevel = nullptr;
-        std::atomic<float>* aquaSurfaceTension = nullptr;
-        std::atomic<float>* aquaSurfaceMix = nullptr;
-        std::atomic<float>* aquaBiolumeGlow = nullptr;
-        std::atomic<float>* aquaBiolumeSpectrum = nullptr;
-        std::atomic<float>* aquaBiolumeDecay = nullptr;
-        std::atomic<float>* aquaBiolumeMix = nullptr;
-
-        // Mathematical FX Chain (CC 30-33)
-        std::atomic<float>* mfxEcStability = nullptr;
-        std::atomic<float>* mfxEcCoolRate = nullptr;
-        std::atomic<float>* mfxEcThreshold = nullptr;
-        std::atomic<float>* mfxEcMix = nullptr;
-        std::atomic<float>* mfxVsCrystallize = nullptr;
-        std::atomic<float>* mfxVsTension = nullptr;
-        std::atomic<float>* mfxVsGrainSize = nullptr;
-        std::atomic<float>* mfxVsMix = nullptr;
-        std::atomic<float>* mfxQsObservation = nullptr;
-        std::atomic<float>* mfxQsFeedback = nullptr;
-        std::atomic<float>* mfxQsDelayCenter = nullptr;
-        std::atomic<float>* mfxQsMix = nullptr;
-        std::atomic<float>* mfxAdBifurcation = nullptr;
-        std::atomic<float>* mfxAdDriveBase = nullptr;
-        std::atomic<float>* mfxAdSpeed = nullptr;
-        std::atomic<float>* mfxAdMix = nullptr;
 
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;

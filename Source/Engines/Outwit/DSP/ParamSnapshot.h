@@ -17,15 +17,15 @@ namespace xoutwit {
 struct ParamSnapshot
 {
     //--------------------------------------------------------------------------
-    // Per-arm cached values (8 arms) — defaults match createParameterLayout()
+    // Per-arm cached values (8 arms)
     //--------------------------------------------------------------------------
-    std::array<int,   8> armRule   {{ 110, 30, 90, 184, 60, 45, 150, 105 }};
-    std::array<int,   8> armLength {{ 16, 16, 16, 16, 16, 16, 16, 16 }};
-    std::array<float, 8> armLevel  {{ 0.7f, 0.7f, 0.7f, 0.7f, 0.7f, 0.7f, 0.7f, 0.7f }};
-    std::array<int,   8> armPitch  {{ 0, 0, 0, 0, 0, 0, 0, 0 }};
-    std::array<float, 8> armFilter {{ 4000.f, 4000.f, 4000.f, 4000.f, 4000.f, 4000.f, 4000.f, 4000.f }};
-    std::array<int,   8> armWave   {{ 0, 0, 0, 0, 0, 0, 0, 0 }};
-    std::array<float, 8> armPan    {{ -0.875f, -0.625f, -0.375f, -0.125f, 0.125f, 0.375f, 0.625f, 0.875f }};
+    std::array<int,   8> armRule   {};
+    std::array<int,   8> armLength {};
+    std::array<float, 8> armLevel  {};
+    std::array<int,   8> armPitch  {};
+    std::array<float, 8> armFilter {};
+    std::array<int,   8> armWave   {};
+    std::array<float, 8> armPan    {};
 
     //--------------------------------------------------------------------------
     // Global — Step/Clock
@@ -61,7 +61,7 @@ struct ParamSnapshot
     //--------------------------------------------------------------------------
     // Voice
     //--------------------------------------------------------------------------
-    float triggerThresh = 0.0f;  // 0 = always output; higher = CA density gating
+    float triggerThresh = 0.3f;
     float masterLevel   = 0.8f;
 
     //--------------------------------------------------------------------------

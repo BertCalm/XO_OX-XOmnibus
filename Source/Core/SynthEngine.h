@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "MPEManager.h"
+#include "../DSP/SRO/SilenceGate.h"
 
 namespace xomnibus {
 
@@ -20,11 +21,19 @@ enum class CouplingType {
     EnvToDecay,        // Engine A envelope → Engine B decay time
     PitchToPitch,      // Engine A pitch → Engine B pitch (harmony)
     AudioToWavetable,  // Engine A audio → Engine B wavetable source
-    AudioToBuffer      // Engine A audio → Engine B ring buffer (continuous stereo streaming)
+    AudioToBuffer,     // Engine A audio → Engine B ring buffer (continuous stereo streaming)
                        // Designed for OPAL's grain buffer — the "Time Telescope" coupling type.
                        // Unlike AudioToWavetable (periodic snapshots), AudioToBuffer streams
                        // every block into a pre-allocated circular buffer with freeze support.
                        // See Docs/xopal_phase1_architecture.md §15 for the full design.
+    KnotTopology       // Bidirectional irreducible coupling (KNOT type, V2 Theorem feature).
+                       // Both engines modulate each other's parameters simultaneously.
+                       // Linking number (encoded in `amount` param, 1-5) sets entanglement depth:
+                       //   linkingNum = juce::roundToInt(amount * 4.0f) + 1  →  range [1, 5]
+                       // Unlike all other CouplingType values (which are sender→receiver),
+                       // KnotTopology creates mutual, co-evolving entanglement: neither engine
+                       // can be decoupled from the other without destroying the patch.
+                       // See Docs/specs/knot_coupling_spec.md for full design.
 };
 
 //==============================================================================
@@ -116,10 +125,62 @@ public:
     // pitch bend, pressure, and slide values in their renderBlock().
     virtual void setMPEManager(MPEManager* manager) { mpeManager = manager; }
 
+    //-- SRO: SilenceGate — Zero-Idle Bypass -----------------------------------
+    //
+    // Every engine has a SilenceGate that monitors output and bypasses
+    // DSP processing when the signal falls below -90 dB. This eliminates
+    // idle CPU cost fleet-wide. Engines configure hold time in prepare()
+    // based on their tail characteristics:
+    //
+    //   Percussive (ONSET, OVERBITE, ODDFELIX):     100ms (default)
+    //   Standard (OBLONG, ODYSSEY, OBLIQUE):         200ms
+    //   Reverb-tail (OVERDUB, OPAL, OCEANIC):        500ms
+    //   Infinite-sustain (ORGANON, OUROBOROS):       1000ms
+    //
+    // CRITICAL INTEGRATION ORDER in renderBlock():
+    //   1. Parse MIDI → call wakeSilenceGate() on note-on
+    //   2. Check isSilenceGateBypassed()
+    //   3. If bypassed: clear buffer, return early (zero CPU)
+    //   4. If active: run DSP, then call analyzeForSilenceGate()
+    //
+
+    /// Prepare the silence gate. Called by the processor after engine prepare().
+    /// holdMs: gate hold time (100=percussive, 200=standard, 500=reverb, 1000=infinite).
+    void prepareSilenceGate(double sampleRate, int maxBlockSize, float holdMs = 100.0f)
+    {
+        silenceGate.prepare(sampleRate, maxBlockSize);
+        silenceGate.setHoldTime(holdMs);
+    }
+
+    /// Returns true if the engine's output has been silent for longer than
+    /// the hold time. Safe to call from audio thread (lock-free atomic read).
+    bool isSilenceGateBypassed() const { return silenceGate.isBypassed(); }
+
+    /// Force the gate open. Call on note-on, preset change, or any event
+    /// that will produce audio. Must be called BEFORE checking isBypassed().
+    void wakeSilenceGate() { silenceGate.wake(); }
+
+    /// Get the current peak level (for UI display). Thread-safe.
+    float getSilenceGatePeakLevel() const { return silenceGate.getPeakLevel(); }
+
 protected:
     // Engines access this to query per-channel expression state.
     // nullptr when MPE is disabled (engines should check before use).
     MPEManager* mpeManager = nullptr;
+
+    // SRO: SilenceGate instance — engines configure hold time in prepare().
+    // Call silenceGate.prepare(sampleRate, maxBlockSize) in engine's prepare().
+    // Call silenceGate.analyzeBlock(L, R, numSamples) at end of renderBlock().
+    SilenceGate silenceGate;
+
+public:
+    /// Helper: call from XOmnibusProcessor to feed the silence gate after renderBlock().
+    void analyzeForSilenceGate(const juce::AudioBuffer<float>& buffer, int numSamples)
+    {
+        const float* L = buffer.getReadPointer(0);
+        const float* R = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : L;
+        silenceGate.analyzeBlock(L, R, numSamples);
+    }
 };
 
 } // namespace xomnibus

@@ -57,6 +57,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -1237,10 +1238,10 @@ public:
         {
             int rp = apPos[a] - apLen[a];
             if (rp < 0) rp += apBufLen[a];
-            float del = flushDenormal (apBuf[a][static_cast<size_t> (rp)]);
+            float del = apBuf[a][static_cast<size_t> (rp)];
             float apIn = sum + del * 0.5f;
             apBuf[a][static_cast<size_t> (apPos[a])] = apIn;
-            sum = flushDenormal (del - apIn * 0.5f);
+            sum = del - apIn * 0.5f;
             apPos[a] = (apPos[a] + 1) % apBufLen[a];
         }
 
@@ -1427,17 +1428,6 @@ struct OnsetVoice
         voiceFilter.setCoefficients (baseCutoff, 0.1f, sr);
     }
 
-    // Called once per block per active voice — updates breathing LFO and voice filter
-    // coefficients at block rate instead of per-sample. The 0.08 Hz LFO changes
-    // imperceptibly between adjacent samples so block-rate update is identical in
-    // practice, while eliminating one std::tan() transcendental per sample per voice.
-    void prepareBlock() noexcept
-    {
-        float breathMod = breathingLFO.process (0.08f);
-        float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
-        voiceFilter.setCoefficients (modCutoff, 0.1f, sr);
-    }
-
     // QA C1: Blend gains precomputed per block, passed in to avoid per-sample trig
     float processSample (float blendGainX, float blendGainO, int algoMode) noexcept
     {
@@ -1476,7 +1466,12 @@ struct OnsetVoice
         // Add transient (pre-filter)
         blended += transient.process();
 
-        // Voice filter (coefficients updated once per block via prepareBlock())
+        // D005: breathing LFO modulates filter cutoff continuously (0.08 Hz)
+        float breathMod = breathingLFO.process (0.08f);
+        float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
+        voiceFilter.setCoefficients (modCutoff, 0.1f, sr);
+
+        // Voice filter
         blended = voiceFilter.processSample (blended);
 
         // Apply envelope and velocity
@@ -1563,6 +1558,8 @@ public:
         sr = sampleRate;
         blockSize = maxBlockSize;
         couplingBuffer.setSize (2, maxBlockSize);
+        silenceGate.prepare (sampleRate, maxBlockSize);
+        silenceGate.setHoldTime (100.0f); // Percussive — short hold
         couplingBuffer.clear();
 
         masterFilter.setMode (CytomicSVF::Mode::LowPass);
@@ -1604,7 +1601,6 @@ public:
                       juce::MidiBuffer& midi, int numSamples) override
     {
         if (numSamples <= 0) return;
-        juce::ScopedNoDenormals noDeNormals;
 
         // ---- 1. Snapshot parameters (ParamSnapshot pattern) ----
         // Cache all parameter values once per block to avoid per-sample
@@ -1742,6 +1738,7 @@ public:
             auto msg = metadata.getMessage();
             if (msg.isNoteOn())
             {
+                silenceGate.wake();
                 int voiceIdx = noteToVoice (msg.getNoteNumber());
                 if (voiceIdx < 0) continue;
 
@@ -1770,6 +1767,13 @@ public:
                 modWheelAmount = msg.getControllerValue() / 127.0f;
         }
 
+        // SilenceGate: skip all DSP if engine has been silent long enough
+        if (silenceGate.isBypassed() && midi.isEmpty())
+        {
+            buffer.clear();
+            return;
+        }
+
         // ---- 3. Precompute block-constant voice gains ----
         // Equal-power crossfade: cos(blend * pi/2) for Layer X, sin(blend * pi/2) for Layer O.
         // Pan law: sqrt(0.5*(1-pan)) for left, sqrt(0.5*(1+pan)) for right.
@@ -1791,11 +1795,6 @@ public:
         auto* cplL = couplingBuffer.getWritePointer (0);
         auto* cplR = couplingBuffer.getWritePointer (1);
         float blockPeaks[kNumVoices] = {};
-
-        // Block-rate voice filter update: advance breathing LFO and set CytomicSVF
-        // coefficients once per block, not per-sample. Eliminates 8× std::tan() per sample.
-        for (int v = 0; v < kNumVoices; ++v)
-            if (voices[v].active) voices[v].prepareBlock();
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -1850,6 +1849,11 @@ public:
         couplingFilterMod = 0.0f;
         couplingDecayMod = 0.0f;
         couplingBlendMod = 0.0f;
+
+        // SilenceGate: analyze output level for next-block bypass decision
+        silenceGate.analyzeBlock (buffer.getReadPointer (0),
+                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
+                                  numSamples);
     }
 
     //-- Coupling ----------------------------------------------------------------
@@ -1939,6 +1943,8 @@ public:
     int getMaxVoices() const override { return kNumVoices; }
 
 private:
+    SilenceGate silenceGate;
+
     std::array<OnsetVoice, kNumVoices> voices;
     juce::AudioBuffer<float> couplingBuffer;
     CytomicSVF masterFilter;   // QA I1: master tone LP filter (L channel)

@@ -1,11 +1,11 @@
 #pragma once
 #include "SynthEngine.h"
-#include "IAudioBufferSink.h"
+#include "../Engines/Opal/OpalEngine.h"
+#include "../DSP/FastMath.h"
 #include <array>
 #include <vector>
 #include <atomic>
 #include <memory>
-#include <algorithm>
 
 namespace xomnibus {
 
@@ -59,7 +59,6 @@ public:
 
     void clearRoutes()
     {
-        for (auto& v : audioBufferAdjacency) v.clear();
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>();
         std::atomic_store(&routeList, newRoutes);
     }
@@ -68,44 +67,6 @@ public:
     {
         auto current = std::atomic_load(&routeList);
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
-
-        if (route.type == CouplingType::AudioToBuffer)
-        {
-            // Reject self-routes immediately.
-            if (route.sourceSlot == route.destSlot)
-            {
-                juce::Logger::writeToLog ("AudioToBuffer: rejected self-route on slot "
-                                          + juce::String (route.sourceSlot));
-                return;
-            }
-
-            // Reject duplicate (srcSlot, dstSlot) pairs — second push would overwrite first.
-            for (const auto& existing : *newRoutes)
-            {
-                if (existing.type == CouplingType::AudioToBuffer
-                    && existing.sourceSlot == route.sourceSlot
-                    && existing.destSlot   == route.destSlot)
-                {
-                    juce::Logger::writeToLog ("AudioToBuffer: duplicate route rejected");
-                    return;
-                }
-            }
-
-            // Reject routes that would create a feedback cycle (A→B→A, A→B→C→A, ...).
-            // Normalled routes are authored acyclic — skip cycle check for them.
-            if (!route.isNormalled && wouldCreateCycle (route.sourceSlot, route.destSlot))
-            {
-                juce::Logger::writeToLog ("AudioToBuffer: cycle detected, route "
-                    + juce::String (route.sourceSlot) + " \xe2\x86\x92 "
-                    + juce::String (route.destSlot) + " rejected");
-                return;
-            }
-
-            // Safe to commit — register in adjacency list.
-            audioBufferAdjacency[static_cast<size_t>(route.sourceSlot)]
-                .push_back (route.destSlot);
-        }
-
         newRoutes->push_back(route);
         std::atomic_store(&routeList, newRoutes);
     }
@@ -130,14 +91,6 @@ public:
             if (r.sourceSlot == sourceSlot && r.destSlot == destSlot
                 && r.type == type && r.isNormalled)
                 r.active = true;
-
-        // Remove from adjacency list if this was an AudioToBuffer route.
-        if (type == CouplingType::AudioToBuffer)
-        {
-            auto& neighbors = audioBufferAdjacency[static_cast<size_t>(sourceSlot)];
-            neighbors.erase (std::remove (neighbors.begin(), neighbors.end(), destSlot),
-                             neighbors.end());
-        }
 
         std::atomic_store(&routeList, newRoutes);
     }
@@ -181,13 +134,22 @@ public:
             // Modulation coupling types (LFO, env, amp) are inherently mono.
             // AudioToBuffer is an audio route but is handled separately via
             // processAudioRoute() below — it bypasses the mono mixdown.
+            const int limit = juce::jmin(numSamples, static_cast<int>(couplingBuffer.size()));
+
+            // KNOT: bidirectional irreducible coupling — handled by its own path.
+            // Both engines act as source and destination simultaneously.
+            // Must be dispatched before the isAudioRoute branch.
+            if (route.type == CouplingType::KnotTopology)
+            {
+                processKnotRoute(source, dest, route, limit);
+                continue;
+            }
+
             const bool isAudioRoute =
                 route.type == CouplingType::AudioToWavetable
              || route.type == CouplingType::AudioToFM
              || route.type == CouplingType::AudioToRing
              || route.type == CouplingType::AudioToBuffer;
-
-            const int limit = juce::jmin(numSamples, static_cast<int>(couplingBuffer.size()));
 
             // AudioToBuffer routes bypass the mono mixdown — they require true
             // stereo and write directly into the destination's AudioRingBuffer.
@@ -200,6 +162,7 @@ public:
 
             if (isAudioRoute)
             {
+                // Audio routes: per-sample stereo-to-mono mixdown (must stay audio rate)
                 for (int i = 0; i < limit; ++i)
                     couplingBuffer[static_cast<size_t>(i)] =
                         (source->getSampleForCoupling(0, i)
@@ -207,9 +170,12 @@ public:
             }
             else
             {
-                for (int i = 0; i < limit; ++i)
-                    couplingBuffer[static_cast<size_t>(i)] =
-                        source->getSampleForCoupling(0, i);
+                // SRO: Control-rate decimation for modulation coupling types.
+                // Modulation signals (amp, LFO, envelope, pitch) change slowly —
+                // sample source every kControlRateRatio samples and linearly
+                // interpolate between control points (Buchla 266 topology).
+                // Saves ~97% of getSampleForCoupling calls for these route types.
+                fillControlRateBuffer(source, limit);
             }
 
             dest->applyCouplingInput(route.type, route.amount,
@@ -224,88 +190,184 @@ public:
     }
 
 private:
+    // SRO: Control-rate decimation ratio for modulation coupling types.
+    // Must be power of 2. 32 = sample every 32nd sample (~1.5 kHz at 48 kHz).
+    static constexpr int kControlRateRatio = 32;
+
     std::shared_ptr<std::vector<CouplingRoute>> routeList =
         std::make_shared<std::vector<CouplingRoute>>();
     std::array<SynthEngine*, MaxSlots> activeEngines = {};
     std::vector<float> couplingBuffer;   // L / mono scratch — pre-allocated in prepare()
     std::vector<float> couplingBufferR;  // R scratch for AudioToBuffer stereo push
 
-    // Directed adjacency list for AudioToBuffer cycle detection (message thread only).
-    // audioBufferAdjacency[srcSlot] = dest slots reachable from srcSlot via AudioToBuffer.
-    std::array<std::vector<int>, MaxSlots> audioBufferAdjacency;
-
-    //-- AudioToBuffer cycle detection (message thread, O(MaxSlots²) = O(16)) --
-    // DFS from dstSlot: if srcSlot is reachable, adding srcSlot→dstSlot closes a loop.
-    bool wouldCreateCycle (int srcSlot, int dstSlot) const
+    //-- SRO: Control-rate buffer fill with linear interpolation ----------------
+    //
+    // For modulation routes (AmpToFilter, LFOToPitch, EnvToMorph, etc.),
+    // the source signal is inherently control-rate. Instead of reading
+    // every sample, we read every kControlRateRatio-th sample and linearly
+    // interpolate between control points. This mirrors the Buchla 266
+    // "source of uncertainty" topology where CV line capacitance produces
+    // smooth transitions between discrete control updates.
+    //
+    void fillControlRateBuffer(SynthEngine* source, int numSamples)
     {
-        bool visited[MaxSlots] = {};
-        int  stack[MaxSlots];
-        int  top = 0;
-        stack[top++] = dstSlot;
+        if (numSamples <= 0)
+            return;
 
-        while (top > 0)
+        const float invRatio = 1.0f / static_cast<float>(kControlRateRatio);
+        float currentVal = source->getSampleForCoupling(0, 0);
+
+        int blockStart = 0;
+        while (blockStart < numSamples)
         {
-            int node = stack[--top];
-            if (node == srcSlot) return true;
-            if (visited[node])   continue;
-            visited[node] = true;
-            for (int neighbor : audioBufferAdjacency[static_cast<size_t>(node)])
-                stack[top++] = neighbor;
+            int blockEnd = std::min(blockStart + kControlRateRatio, numSamples);
+            // Read next control point (or last sample if at buffer end)
+            float nextVal = source->getSampleForCoupling(0,
+                std::min(blockEnd, numSamples - 1));
+
+            // Linearly interpolate between control points
+            int blockLen = blockEnd - blockStart;
+            float invLen = (blockLen > 1) ? 1.0f / static_cast<float>(blockLen) : 1.0f;
+            for (int i = 0; i < blockLen; ++i)
+            {
+                float t = static_cast<float>(i) * invLen;
+                couplingBuffer[static_cast<size_t>(blockStart + i)] =
+                    flushDenormal(currentVal + t * (nextVal - currentVal));
+            }
+
+            currentVal = nextVal;
+            blockStart = blockEnd;
         }
-        return false;
     }
 
     //-- AudioToBuffer push path -----------------------------------------------
     //
-    // Phase 3 implementation (Round 12D):
+    // Phase 2 implementation (Round 11F):
     //
-    //   1. Self-route and cycle checks are fully handled in addRoute().
-    //      processAudioRoute() trusts that the committed route list is acyclic.
+    //   1. Cycle detection: if source == dest (same engine slot), skip entirely.
+    //      Prevents a single engine from streaming into its own grain buffer,
+    //      which would create infinite DC feedback in the granulator.
+    //      Full graph-level cycle detection (A→B→A) is deferred to Phase 3.
     //
-    //   2. Fills couplingBuffer (L) and couplingBufferR (R) from source cache.
+    //   2. Fills couplingBuffer (L) and couplingBufferR (R) with the source
+    //      engine's per-sample output cache via getSampleForCoupling().
     //
-    //   3. Downcasts dest to IAudioBufferSink. Any conforming engine receives;
-    //      non-conforming engines return nullptr and are silently skipped.
+    //   3. Downcasts dest to OpalEngine — OPAL is the sole AudioToBuffer
+    //      receiver in Phase 2. A future IAudioBufferSink interface will
+    //      replace the downcast once additional receiver engines exist (Phase 3).
     //
-    //   4. Validates sourceSlot against sink->getNumInputSlots().
+    //   4. Fetches the per-slot AudioRingBuffer via getGrainBuffer(sourceSlot).
+    //      Slot matching ensures multiple simultaneous AudioToBuffer sources each
+    //      write into a dedicated ring, preventing sample-accurate collisions.
     //
-    //   5. pushBlock() into the ring buffer — lock-free, allocation-free.
+    //   5. Calls AudioRingBuffer::pushBlock() — real-time safe, no allocation.
+    //      dest->applyCouplingInput() is NOT called; the ring buffer is the sink.
     //
     // Full design: Docs/xopal_phase1_architecture.md §15.4
-    // Phase 3 spec: Docs/audio_to_buffer_phase3_spec.md
+    // Phase 2 summary: Docs/audio_to_buffer_phase2.md
     //
-    void processAudioRoute (SynthEngine* source, SynthEngine* dest,
-                            const CouplingRoute& route, int numSamples)
+    void processAudioRoute(SynthEngine* source, SynthEngine* dest,
+                           const CouplingRoute& route, int numSamples)
     {
+        // Phase 2 cycle detection: skip self-routes.
+        // A source slot routing to itself (AudioToBuffer with sourceSlot == destSlot)
+        // would feed the grain buffer with its own output — instant DC accumulation.
+        if (route.sourceSlot == route.destSlot)
+            return;
+
         // Step 1: fill stereo scratch buffers from source coupling cache.
         for (int i = 0; i < numSamples; ++i)
         {
-            couplingBuffer [static_cast<size_t>(i)] = source->getSampleForCoupling(0, i);
+            couplingBuffer[static_cast<size_t>(i)]  = source->getSampleForCoupling(0, i);
             couplingBufferR[static_cast<size_t>(i)] = source->getSampleForCoupling(1, i);
         }
 
-        // Step 2: query dest for IAudioBufferSink (Phase 3: replaces OpalEngine* downcast).
-        auto* sink = dynamic_cast<IAudioBufferSink*>(dest);
-        if (sink == nullptr)
+        // Step 2: downcast dest to OpalEngine — the only AudioToBuffer receiver in Phase 2.
+        // dynamic_cast returns nullptr if dest is not an OpalEngine; this is the
+        // safe guard for all non-OPAL destinations until Phase 3 adds an interface.
+        auto* opalDest = dynamic_cast<OpalEngine*>(dest);
+        if (opalDest == nullptr)
             return;
 
-        // Step 3: validate slot index against the sink's declared capacity.
-        if (route.sourceSlot >= sink->getNumInputSlots())
-        {
-            juce::Logger::writeToLog ("AudioToBuffer: sourceSlot "
-                + juce::String (route.sourceSlot)
-                + " exceeds sink capacity "
-                + juce::String (sink->getNumInputSlots()));
-            return;
-        }
-
-        // Step 4: obtain the per-slot ring buffer and push audio.
-        AudioRingBuffer* rb = sink->getGrainBuffer (route.sourceSlot);
+        // Step 3: obtain the per-slot ring buffer.
+        // route.sourceSlot identifies which input slot on OPAL receives this source.
+        // OpalEngine::getGrainBuffer() returns nullptr for out-of-range slots.
+        AudioRingBuffer* rb = opalDest->getGrainBuffer(route.sourceSlot);
         if (rb == nullptr)
             return;
 
-        rb->pushBlock (couplingBuffer.data(), couplingBufferR.data(),
-                       numSamples, route.amount);
+        // Step 4: push audio into the ring buffer.
+        // pushBlock() is lock-free and allocation-free. The level parameter
+        // scales each written sample by route.amount (0.0–1.0).
+        // Freeze state is managed internally by AudioRingBuffer::pushBlock().
+        rb->pushBlock(couplingBuffer.data(), couplingBufferR.data(),
+                      numSamples, route.amount);
+
+        // Do NOT call dest->applyCouplingInput() — the ring buffer is the exclusive
+        // sink for AudioToBuffer routes. OpalEngine reads from it during renderBlock().
+    }
+
+    //-- KnotTopology bidirectional coupling path ------------------------------
+    //
+    // KNOT creates mutual, co-evolving entanglement between two engines.
+    // Unlike all other coupling types (sender→receiver), KnotTopology applies
+    // modulation in BOTH directions within a single processing pass:
+    //
+    //   Pass A: source engine output → applyCouplingInput on dest (AmpToFilter)
+    //   Pass B: dest engine output   → applyCouplingInput on source (AmpToFilter)
+    //
+    // Both passes use AmpToFilter semantics — the established control-rate
+    // coupling type that every engine is guaranteed to handle. Future engines
+    // may inspect the CouplingType::KnotTopology tag in applyCouplingInput()
+    // to route differently, but AmpToFilter is the safe universal fallback.
+    //
+    // Linking number (1-5) scales the effective modulation amount for both
+    // directions. Higher linking = more deeply entangled parameter pairs, so
+    // the coupling is stronger. Encoding uses the full amount range:
+    //
+    //   linkingNum = juce::roundToInt(amount * 4.0f) + 1   →  [1, 5]
+    //   scaledAmount = static_cast<float>(linkingNum) / 5.0f
+    //
+    // The route's `amount` field therefore simultaneously encodes linking depth
+    // AND modulation strength — a compact single-float encoding that preserves
+    // compatibility with CouplingRoute.amount (0.0–1.0 convention).
+    //
+    // Self-routes (sourceSlot == destSlot) are skipped to prevent feedback.
+    // Both source and dest must be non-null (checked by the caller).
+    //
+    // Control-rate: uses fillControlRateBuffer (kControlRateRatio decimation)
+    // for both directions. KNOT modulation signals change slowly — no need for
+    // audio-rate resolution.
+    //
+    void processKnotRoute(SynthEngine* source, SynthEngine* dest,
+                          const CouplingRoute& route, int numSamples)
+    {
+        // Self-route guard: an engine cannot be KNOT-coupled to itself.
+        if (route.sourceSlot == route.destSlot)
+            return;
+
+        // Compute linking number from amount and derive scaled modulation depth.
+        // linkingNum range: [1, 5] — maps amount 0.0→1.0 to integer 1→5.
+        const int   linkingNum    = juce::roundToInt(route.amount * 4.0f) + 1;
+        const float scaledAmount  = static_cast<float>(linkingNum) / 5.0f;
+
+        // Pass A: source → dest (standard direction).
+        // Fill the control-rate buffer from source's coupling output cache,
+        // then apply it to dest with AmpToFilter semantics.
+        fillControlRateBuffer(source, numSamples);
+        dest->applyCouplingInput(CouplingType::AmpToFilter,
+                                 scaledAmount,
+                                 couplingBuffer.data(),
+                                 numSamples);
+
+        // Pass B: dest → source (reverse direction — the KNOT difference).
+        // Reuse the same scratch buffer (overwrite is safe; Pass A is done).
+        // Apply the same scaledAmount so both directions are symmetric.
+        fillControlRateBuffer(dest, numSamples);
+        source->applyCouplingInput(CouplingType::AmpToFilter,
+                                   scaledAmount,
+                                   couplingBuffer.data(),
+                                   numSamples);
     }
 };
 

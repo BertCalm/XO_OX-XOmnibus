@@ -223,6 +223,12 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Ouie/OuieEngine.h
     Source/Engines/Ouie/OuieEngine.cpp
 
+    # V2 Theorem Engines
+    Source/Engines/Overtone/OvertoneEngine.h
+    Source/Engines/Overtone/OvertoneEngine.cpp
+    Source/Engines/Organism/OrganismEngine.h
+    Source/Engines/Organism/OrganismEngine.cpp
+
     # Export pipeline
     Source/Export/XPNCoverArt.h
     Source/Export/XPNExporter.h
