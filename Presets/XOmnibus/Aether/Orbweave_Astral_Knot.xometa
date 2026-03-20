@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.362,
+    "movement": 0.4,
+    "density": 0.238,
+    "space": 0.736,
+    "aggression": 0.395
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.721,
+    "TENSION": 0.696,
+    "KNOT": 0.563,
+    "SPACE": 0.77
+  },
+  "mood": "Aether",
+  "name": "Orbweave Astral Knot",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 1.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.579,
+      "weave_torusP": 8.0,
+      "weave_torusQ": 5.0,
+      "weave_filterCutoff": 567.0,
+      "weave_filterReso": 0.321,
+      "weave_filterType": 2,
+      "weave_ampA": 1.478,
+      "weave_ampD": 2.587,
+      "weave_ampS": 0.386,
+      "weave_ampR": 2.253,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.372,
+      "weave_lfo1Rate": 1.699,
+      "weave_lfo2Type": 4,
+      "weave_lfo2Target": 3,
+      "weave_lfo2Depth": 0.306,
+      "weave_lfo2Rate": 4.443,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.43,
+      "weave_fx1Param": 0.443,
+      "weave_fx2Type": 1,
+      "weave_fx2Mix": 0.109,
+      "weave_fx2Param": 0.364,
+      "weave_fx3Type": 1,
+      "weave_fx3Mix": 0.175,
+      "weave_fx3Param": 0.124,
+      "weave_macroWeave": 0.721,
+      "weave_macroTension": 0.696,
+      "weave_macroKnot": 0.563,
+      "weave_macroSpace": 0.77,
+      "weave_voiceMode": 2,
+      "weave_velCutoff": 0.383,
+      "weave_velAmp": 0.572
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "ethereal",
+    "aether",
+    "otherworldly",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0"
+}

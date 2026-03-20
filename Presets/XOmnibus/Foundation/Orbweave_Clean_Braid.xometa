@@ -1,0 +1,78 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.39,
+    "warmth": 0.535,
+    "movement": 0.335,
+    "density": 0.369,
+    "space": 0.266,
+    "aggression": 0.121
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.342,
+    "TENSION": 0.222,
+    "KNOT": 0.228,
+    "SPACE": 0.298
+  },
+  "mood": "Foundation",
+  "name": "Orbweave Clean Braid",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 5.5,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.307,
+      "weave_torusP": 1.0,
+      "weave_torusQ": 7.0,
+      "weave_filterCutoff": 8311.0,
+      "weave_filterReso": 0.069,
+      "weave_filterType": 0,
+      "weave_ampA": 0.044,
+      "weave_ampD": 0.128,
+      "weave_ampS": 0.595,
+      "weave_ampR": 0.735,
+      "weave_lfo1Type": 0,
+      "weave_lfo1Target": 0,
+      "weave_lfo1Depth": 0.0,
+      "weave_lfo1Rate": 1.0,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 4,
+      "weave_lfo2Depth": -0.089,
+      "weave_lfo2Rate": 8.652,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.149,
+      "weave_fx1Param": 0.66,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.342,
+      "weave_macroTension": 0.222,
+      "weave_macroKnot": 0.228,
+      "weave_macroSpace": 0.298,
+      "weave_voiceMode": 2,
+      "weave_velCutoff": 0.155,
+      "weave_velAmp": 0.396
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "classic",
+    "foundation",
+    "bread-and-butter",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0"
+}
