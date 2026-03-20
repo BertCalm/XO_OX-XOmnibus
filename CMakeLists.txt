@@ -93,6 +93,17 @@ target_sources(XOmnibus PRIVATE
     Source/DSP/Effects/LushReverb.h
     Source/DSP/Effects/Saturator.h
     Source/DSP/Effects/Compressor.h
+    Source/DSP/Effects/AquaticFXSuite.h
+    Source/DSP/Effects/MathFXChain.h
+    Source/DSP/Effects/BoutiqueFXChain.h
+    Source/DSP/Effects/EntropyCooler.h
+    Source/DSP/Effects/VoronoiShatter.h
+    Source/DSP/Effects/QuantumSmear.h
+    Source/DSP/Effects/AttractorDrive.h
+    Source/DSP/Effects/AnomalyEngine.h
+    Source/DSP/Effects/DissolvingArchive.h
+    Source/DSP/Effects/ArtifactCathedral.h
+    Source/DSP/Effects/SubmersionEngine.h
 
     # Engine adapters (DSP in .h, registration stubs in .cpp)
     Source/Engines/Snap/SnapEngine.h

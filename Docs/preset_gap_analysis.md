@@ -23,13 +23,15 @@ All 5 engines below target are newly shipped (2026-03-18 / 2026-03-19) and have 
 
 | Engine | Gallery Code | Current Count | Target | Deficit | Priority |
 |--------|-------------|--------------|--------|---------|----------|
-| Obrix | OBRIX | 0 | 150 | **150** | P1 — V1.3a |
+| Obrix | OBRIX | 0 | 150 | **150** | P1 — Wave 4 (after param freeze) ⚠️ |
 | Ostinato | OSTINATO | 0 | 150 | **150** | P1 — V1.2 |
 | OpenSky | OPENSKY | 0 | 150 | **150** | P1 — V1.2 |
 | OceanDeep | OCEANDEEP | 0 | 150 | **150** | P1 — V1.2 |
 | Ouie | OUIE | 0 | 150 | **150** | P1 — V1.2 |
 
 **All 5 are new engines that shipped with DSP but no preset library.** Use `/exo-meta` + `/guru-bin` to design and fill each engine's preset library. Target 150 per engine across all 7 moods.
+
+> ⚠️ **OBRIX preset exception:** Do NOT author OBRIX presets yet. Waves 1–3 will add ~18 new parameters to OBRIX (FM depth, filter feedback, wavetables, unison, drift, journey mode, spatial). Presets written against the Wave 1 schema will break when Wave 2+ params are added. OBRIX preset authoring is Wave 4 work — after all parameters are frozen. Use `/exo-meta` on OSTINATO/OPENSKY/OCEANDEEP/OUIE first.
 
 ---
 
@@ -71,7 +73,7 @@ All 5 engines below target are newly shipped (2026-03-18 / 2026-03-19) and have 
 | Ombre | OMBRE | 312 | ✅ AT TARGET |
 | Orca | ORCA | 272 | ✅ AT TARGET |
 | Octopus | OCTOPUS | 260 | ✅ AT TARGET |
-| **Obrix** | **OBRIX** | **0** | ❌ DEFICIT 150 |
+| **Obrix** | **OBRIX** | **0** | ❌ DEFICIT 150 — Wave 4 only (param freeze pending) |
 | **Ostinato** | **OSTINATO** | **0** | ❌ DEFICIT 150 |
 | **OpenSky** | **OPENSKY** | **0** | ❌ DEFICIT 150 |
 | **OceanDeep** | **OCEANDEEP** | **0** | ❌ DEFICIT 150 |
