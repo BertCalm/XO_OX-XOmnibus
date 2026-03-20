@@ -457,10 +457,17 @@ public:
     }
 
     void trigger (float baseFreqHz, const OstiInstrumentData& inst, int articulation,
-                  float brightness, float tuningOffset, float velocityScale) noexcept
+                  float brightness, float tuningOffset, float velocityScale,
+                  float userExciterMix = 0.5f) noexcept
     {
         articulation = std::min (articulation, inst.numArticulations - 1);
         const auto& art = inst.articulations[articulation];
+
+        // D004: blend instrument's characteristic exciter mix with user control.
+        // userExciterMix 0.5 = instrument default, 0 = force noise, 1 = force pitched.
+        const float blendedExciterMix = lerp (art.exciterMix,
+                                              userExciterMix < 0.5f ? 0.0f : 1.0f,
+                                              std::abs (userExciterMix - 0.5f) * 2.0f);
 
         numActiveModes = inst.numModes;
         float tuneMultiplier = fastExp (tuningOffset * (0.693147f / 12.0f));
@@ -498,14 +505,14 @@ public:
             spikePhase = 0.0f;
             spikeFreq = baseFreqHz * art.pitchSpikeRatio * tuneMultiplier;
             spikeSamplesLeft = static_cast<int> (sr * art.pitchSpikeDurationMs * 0.001f);
-            spikeLevel = velocityScale * (1.0f - art.exciterMix);
+            spikeLevel = velocityScale * (1.0f - blendedExciterMix);
         }
         else
         {
             spikeActive = false;
         }
 
-        noiseLevel = velocityScale * art.exciterMix + velocityScale * (1.0f - art.exciterMix) * 0.5f;
+        noiseLevel = velocityScale * blendedExciterMix + velocityScale * (1.0f - blendedExciterMix) * 0.5f;
         active = true;
     }
 
@@ -1336,6 +1343,7 @@ struct OstiSubVoice
     float lastOutput = 0.0f;
     float velocity = 1.0f;
     float baseCutoff = 4000.0f;
+    float userExciterMix = 0.5f;
     float sr = 44100.0f;
 
     void prepare (double sampleRate)
@@ -1368,8 +1376,12 @@ struct OstiSubVoice
         // Pitch envelope: offset the initial pitch
         float initialTuning = tuning + pitchEnvAmount * 12.0f;
 
+        // D004: user exciterMix blends with the articulation's characteristic noise/pitched balance.
+        // At exciterMix=0.5 (default), pure instrument character. At 0 = all noise, at 1 = all pitched.
+        userExciterMix = exciterMix;
+
         // Configure modal membrane
-        membrane.trigger (freq, inst, articulation, brightness, initialTuning, effectiveVel);
+        membrane.trigger (freq, inst, articulation, brightness, initialTuning, effectiveVel, exciterMix);
 
         // Configure body resonance
         BodyModelType bType = (bodyModelOverride >= 0 && bodyModelOverride <= 3)

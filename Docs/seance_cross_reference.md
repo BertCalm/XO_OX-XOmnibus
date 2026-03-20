@@ -1,7 +1,8 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 24 seance records
+**Updated:** 2026-03-19 — Seance 30: OSTINATO
+**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 30 seance records
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
 ---
@@ -34,6 +35,7 @@
 | XOrganon | ORGANON | 8/8 PASS | B011 Variational Free Energy | None | D005: no standard LFO | "The VFE implementation is publishable as an academic paper — but it needs a sine wave." |
 | XOsprey | OSPREY | APPROVE/CONDITIONAL | B012 ShoreSystem (shared) | None | D004 + D005: OspreyLFO struct fully implemented, never instantiated | "The LFO is written, tested, elegant — and it has never been called." |
 | XOsteria | OSTERIA | Production-grade | B012 ShoreSystem (shared) | P0-02: warmthFilter only processes mixL; mixR never passes through | None | "The right channel of the warmth filter has been cold since the first compile." |
+| XOstinato | OSTINATO | 8.0/10 | B016 Communal Ghost Trigger System; B017 Cross-Tradition Pattern Library | D004 exciterMix dead — fixed 2026-03-19 | D002: 1 hardcoded LFO, no user control, no mod matrix | "Eight seats, and the seats listen to each other." — Buchla |
 
 ---
 
@@ -60,6 +62,7 @@
 | 13 | OBESE | 6.6/10 |
 | 13 | OBSIDIAN | 6.6/10 |
 | 14 | OCELOT | 6.4/10 |
+| 15 | OSTINATO | 8.0/10 |
 | 15 | OBSCURA | High (unscored) |
 | 16 | ODDFELIX | ~C+ |
 | 17 | OBLIQUE | 5.9/10 → 7.2/10 est. (Round 8A complete) |
@@ -71,7 +74,7 @@
 | Doctrine | Violating Engines (worst cases) |
 |----------|--------------------------------|
 | D001 (velocity→timbre) | OCEANIC (zero), OVERWORLD (amplitude only), OBESE (no CC), OWLFISH, OCELOT, OPAL |
-| D002 (modulation depth) | ODDFELIX, ODDOSCAR, OBESE, OWLFISH, OBLIQUE, ORBITAL, ORGANON, ONSET, OCELOT, OVERWORLD |
+| D002 (modulation depth) | ODDFELIX, ODDOSCAR, OBESE, OWLFISH, OBLIQUE, ORBITAL, ORGANON, ONSET, OCELOT, OVERWORLD, OSTINATO (1 hardcoded LFO) |
 | D003 (physics rigor) | Non-applicable to most; OUROBOROS, ORBITAL, OBSCURA, ORACLE fully compliant |
 | D004 (no dead params) | ODDFELIX (snap_macroDepth), OWLFISH (owl_morphGlide), OBLIQUE (oblq_percDecay), ODYSSEY (crossFmDepth, AfterTouch), OCELOT (macro_1-4), OPAL (opal_smear), OBSIDIAN (formant ID collision), OSPREY (dead LFO struct) |
 | D005 (engines must breathe) | OBESE, OWLFISH, ODDFELIX, ODDOSCAR, OBLIQUE, ORBITAL, ORGANON, ONSET, OVERWORLD adapter, OSPREY |
