@@ -42,7 +42,7 @@ HIGH_THRESHOLD = 0.7   # dimension max must reach this to be "covered" at high e
 LOW_THRESHOLD  = 0.3   # dimension min must reach this (or lower) to be "covered" at low end
 
 
-def load_presets():
+def load_presets() -> tuple[list[dict], list[str]]:
     """Load all .xometa files. Returns (list_of_dicts, list_of_missing_dna_paths)."""
     files = glob.glob(str(PRESET_DIR / "**" / "*.xometa"), recursive=True)
     presets = []
@@ -78,7 +78,7 @@ def load_presets():
     return presets, missing_dna
 
 
-def build_engine_dna_map(presets):
+def build_engine_dna_map(presets: list[dict]) -> dict[str, dict[str, list[float]]]:
     """Group DNA values by engine. Each engine includes all presets it appears in."""
     engine_dna = defaultdict(lambda: {d: [] for d in DIMS})
 
@@ -92,7 +92,7 @@ def build_engine_dna_map(presets):
     return engine_dna
 
 
-def compute_coverage(dim_values):
+def compute_coverage(dim_values: list[float]) -> dict[str, float]:
     """
     Given a list of values for one dimension, return a coverage dict:
       {min, max, mean, n, gap_high (bool), gap_low (bool), range_width}
@@ -116,7 +116,7 @@ def compute_coverage(dim_values):
     }
 
 
-def score_engine(engine_coverage):
+def score_engine(engine_coverage: dict[str, dict[str, float]]) -> float:
     """
     Compute a gap score for an engine (higher = worse coverage).
     Score = number of gap flags (max 12) + (1 - avg_range_width) as tiebreaker.
@@ -133,7 +133,7 @@ def score_engine(engine_coverage):
     return total_gaps, avg_range
 
 
-def print_report(engine_dna_map, missing_dna_paths, presets, verbose=False):
+def print_report(engine_dna_map: dict, missing_dna_paths: list[str], presets: list[dict], verbose: bool = False) -> None:
     """Print the full audit report to stdout."""
     sep  = "=" * 90
     sep2 = "-" * 90
@@ -259,7 +259,7 @@ def print_report(engine_dna_map, missing_dna_paths, presets, verbose=False):
     return worst_3, engine_coverages
 
 
-def main():
+def main() -> int:
     verbose = "--verbose" in sys.argv or "-v" in sys.argv
 
     presets, missing_dna = load_presets()

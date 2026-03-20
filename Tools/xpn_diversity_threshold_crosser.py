@@ -15,7 +15,7 @@ import json
 import os
 import random
 
-REPO_ROOT = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus"
+REPO_ROOT = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus"  # FIXME: hardcoded path — should use os.path.join or argparse
 PRESET_BASE = os.path.join(REPO_ROOT, "Presets", "XOmnibus")
 
 ENGINES = [
