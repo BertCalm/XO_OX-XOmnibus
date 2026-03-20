@@ -94,17 +94,19 @@ namespace xomnibus {
 // ---------------------------------------------------------------------------
 
 // Pi convergents: 3/1, 22/7, 333/106, 355/113, 103993/33102
-// Normalized by dividing by first convergent (3.0):
-//   1.0, 22/21, 333/318, 355/339, 103993/99306, 104348/99680, 208341/198986, 312689/298659
+// Spectral ratios derived from the NUMERATORS and DENOMINATORS of Pi's
+// continued fraction convergents, spread across the harmonic spectrum.
+// Design: fundamental → convergent-derived partials → irrational shimmer.
+// Modeled on the Phi/Sqrt2 tables' spread pattern (range ~1.0–3.14).
 static constexpr float kPiRatios[8] = {
-    1.000000f,          // 3/3       = 1.0
-    1.047619f,          // 22/21     ≈ 1.0476  (22/7 ÷ 3)
-    1.047170f,          // 333/318   ≈ 1.0472  (333/106 ÷ 3)
-    1.047493f,          // 355/339   ≈ 1.0474  (355/113 ÷ 3)
-    1.047198f,          // 103993/99306 ≈ 1.04720  (103993/33102 ÷ 3)
-    1.047198f,          // 104348/99680 ≈ 1.04720  (104348/33102+denominator step)
-    2.094395f,          // 2π/3 approx — 2nd octave harmonic (practical spread)
-    3.141593f           // π itself — deepest ratio
+    1.000000f,          // fundamental (identity)
+    3.000000f,          // 3/1 — first convergent numerator (natural 3rd harmonic)
+    7.0f / 3.0f,        // 7/3 ≈ 2.3333 — denominator of 22/7, scaled (tritone region)
+    22.0f / 7.0f,       // 22/7 ≈ 3.1429 — the classic Pi approximation itself
+    1.0f / 7.0f * 15.f, // 15/7 ≈ 2.1429 — CF partial quotient 15 over denom 7
+    113.0f / 106.0f,    // 113/106 ≈ 1.0660 — ratio of adjacent convergent denoms
+    113.0f / 33.0f,     // 113/33 ≈ 3.4242 — denom of 355/113 over CF quotient
+    1.570796f           // π/2 — half-Pi, musically useful sub-octave ratio
 };
 
 // E convergents: 2/1, 3/1, 8/3, 11/4, 19/7, 87/32, 106/39, 193/71
@@ -675,6 +677,11 @@ public:
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
 
+        // Anti-aliasing constants (Issue 2: smooth fadeout near Nyquist)
+        const float nyquist   = sr * 0.5f;
+        const float fadeStart = nyquist * 0.8f; // begin fade at 80% of Nyquist
+        const float fadeRange = nyquist - fadeStart; // denominator for fade calc
+
         // Reset coupling mods (consumed each block)
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
@@ -751,7 +758,13 @@ public:
 
                 // Partial frequency
                 float freq = fundamentalFreq * ratio;
-                freq = clamp(freq, 20.f, sr * 0.47f); // never above Nyquist
+                freq = clamp(freq, 20.f, nyquist); // never above Nyquist
+
+                // Anti-aliasing gain: smooth fade from 1.0 at fadeStart to 0.0 at Nyquist
+                float aaGain = 1.0f;
+                if (freq > fadeStart) {
+                    aaGain = clamp((nyquist - freq) / fadeRange, 0.0f, 1.0f);
+                }
 
                 // Partial amplitude: base + color boost for upper partials
                 float amp = partialAmp[i];
@@ -776,8 +789,8 @@ public:
                 float phaseRot = lfo2Out * (float)(i + 1) * 0.0001f; // tiny rotation per tick
                 partials[i].advancePhase(phaseRot);
 
-                // Generate sine and accumulate
-                addSum += partials[i].tick(freq) * amp;
+                // Generate sine and accumulate (with anti-aliasing fadeout)
+                addSum += partials[i].tick(freq) * amp * aaGain;
             }
 
             // Scale down (8 partials at full amp can exceed ±1)

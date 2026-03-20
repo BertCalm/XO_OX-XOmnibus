@@ -20,11 +20,14 @@ enum class CouplingType {
     EnvToDecay,        ///< Engine A envelope → Engine B decay time
     PitchToPitch,      ///< Engine A pitch → Engine B pitch (harmony)
     AudioToWavetable,  ///< Engine A audio → Engine B wavetable source
-    AudioToBuffer      ///< Engine A audio → Engine B ring buffer (continuous stereo stream)
+    AudioToBuffer,     ///< Engine A audio → Engine B ring buffer (continuous stereo stream)
+    KnotTopology       ///< Bidirectional topological coupling — both engines mutually modulate
+                       ///< each other's pitch/filter/morph via a shared knot state variable.
+                       ///< Post-V1 feature; included here for forward compatibility.
 };
 
 /// Number of coupling types — useful for iteration.
-constexpr int kNumCouplingTypes = 13;
+constexpr int kNumCouplingTypes = 14;
 
 /// Get a human-readable name for a CouplingType.
 inline const char* couplingTypeName (CouplingType t)
@@ -44,6 +47,7 @@ inline const char* couplingTypeName (CouplingType t)
         case CouplingType::PitchToPitch:     return "Pitch→Pitch";
         case CouplingType::AudioToWavetable: return "Audio→Wavetable";
         case CouplingType::AudioToBuffer:    return "Audio→Buffer";
+        case CouplingType::KnotTopology:     return "Knot↔Topology";
     }
     return "Unknown";
 }

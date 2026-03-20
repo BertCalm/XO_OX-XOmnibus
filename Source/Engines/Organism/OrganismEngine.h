@@ -55,6 +55,16 @@ namespace xomnibus {
 static constexpr int kCuratedRules[8] = { 30, 90, 110, 184, 150, 18, 54, 22 };
 
 // ---------------------------------------------------------------------------
+// PolyBLEP anti-aliasing correction for oscillator discontinuities.
+// t = current phase (0–1), dt = phase increment (freq/sampleRate).
+// ---------------------------------------------------------------------------
+inline float orgPolyBLEP(float t, float dt) {
+    if (t < dt) { t /= dt; return t + t - t * t - 1.0f; }
+    if (t > 1.0f - dt) { t = (t - 1.0f) / dt; return t * t + t + t + 1.0f; }
+    return 0.0f;
+}
+
+// ---------------------------------------------------------------------------
 // OrgScopeHistory — circular buffer of recent automaton 16-bit states.
 // Used to compute a moving average of cell outputs over the last N generations.
 // ---------------------------------------------------------------------------
@@ -98,8 +108,8 @@ struct OrgScopeHistory {
 };
 
 // ---------------------------------------------------------------------------
-// OrgSawOsc — naive bandlimited-by-scope saw wave oscillator
-// Phase accumulates 0–1, output is (phase*2-1) for saw.
+// OrgSawOsc — PolyBLEP anti-aliased saw wave oscillator
+// Phase accumulates 0–1, output is (phase*2-1) with PolyBLEP at wrap.
 // ---------------------------------------------------------------------------
 struct OrgSawOsc {
     float phase = 0.f;
@@ -108,16 +118,18 @@ struct OrgSawOsc {
     void prepare(double s) { sr = (float)s; }
     void reset()           { phase = 0.f; }
 
-    // Returns one sample of saw output. pitchSemitoneOffset applied here.
     float tick(float freq) {
-        phase += freq / sr;
+        float dt = freq / sr;
+        phase += dt;
         if (phase >= 1.f) phase -= 1.f;
-        return phase * 2.f - 1.f; // saw: -1..+1
+        float out = phase * 2.f - 1.f; // naive saw: -1..+1
+        out -= orgPolyBLEP(phase, dt);  // anti-alias at phase wrap (0/1)
+        return out;
     }
 };
 
 // ---------------------------------------------------------------------------
-// OrgSubOsc — square sub oscillator one octave below
+// OrgSubOsc — PolyBLEP anti-aliased square sub oscillator one octave below
 // ---------------------------------------------------------------------------
 struct OrgSubOsc {
     float phase = 0.f;
@@ -127,14 +139,18 @@ struct OrgSubOsc {
     void reset()           { phase = 0.f; }
 
     float tick(float freq) {
-        phase += (freq * 0.5f) / sr; // sub = half frequency
+        float dt = (freq * 0.5f) / sr; // sub = half frequency
+        phase += dt;
         if (phase >= 1.f) phase -= 1.f;
-        return (phase < 0.5f) ? 1.f : -1.f; // square wave
+        float out = (phase < 0.5f) ? 1.f : -1.f; // naive square
+        out += orgPolyBLEP(phase, dt);             // anti-alias at phase 0/1
+        out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
+        return out;
     }
 };
 
 // ---------------------------------------------------------------------------
-// OrgSquareOsc — square wave at fundamental frequency
+// OrgSquareOsc — PolyBLEP anti-aliased square wave at fundamental frequency
 // ---------------------------------------------------------------------------
 struct OrgSquareOsc {
     float phase = 0.f;
@@ -144,9 +160,13 @@ struct OrgSquareOsc {
     void reset()           { phase = 0.f; }
 
     float tick(float freq) {
-        phase += freq / sr;
+        float dt = freq / sr;
+        phase += dt;
         if (phase >= 1.f) phase -= 1.f;
-        return (phase < 0.5f) ? 1.f : -1.f;
+        float out = (phase < 0.5f) ? 1.f : -1.f; // naive square
+        out += orgPolyBLEP(phase, dt);             // anti-alias at phase 0/1
+        out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
+        return out;
     }
 };
 
@@ -432,6 +452,10 @@ public:
         cellAmpRate   = 0.5f;
         cellPitchOut  = 0.f;
         cellFXOut     = 0.5f;
+        cellFilterTarget = 0.5f;
+        cellAmpTarget    = 0.5f;
+        cellPitchTarget  = 0.f;
+        cellFXTarget     = 0.5f;
 
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
@@ -470,6 +494,10 @@ public:
         cellAmpRate   = 0.5f;
         cellPitchOut  = 0.f;
         cellFXOut     = 0.5f;
+        cellFilterTarget = 0.5f;
+        cellAmpTarget    = 0.5f;
+        cellPitchTarget  = 0.f;
+        cellFXTarget     = 0.5f;
 
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
@@ -705,13 +733,21 @@ public:
                                            effectiveMutate);
                     scopeHistory.push(caState);
 
-                    // Update output mappings from scope-averaged cell groups
-                    cellFilterOut = scopeHistory.averageBits(0,  scope); // cells 0–3
-                    cellAmpRate   = scopeHistory.averageBits(4,  scope); // cells 4–7
-                    cellPitchOut  = scopeHistory.averageBits(8,  scope); // cells 8–11
-                    cellFXOut     = scopeHistory.averageBits(12, scope); // cells 12–15
+                    // Update raw target values from scope-averaged cell groups
+                    cellFilterTarget = scopeHistory.averageBits(0,  scope); // cells 0–3
+                    cellAmpTarget    = scopeHistory.averageBits(4,  scope); // cells 4–7
+                    cellPitchTarget  = scopeHistory.averageBits(8,  scope); // cells 8–11
+                    cellFXTarget     = scopeHistory.averageBits(12, scope); // cells 12–15
                 }
             }
+
+            // --- Smooth automaton outputs (one-pole ~3ms at 44.1kHz) ---
+            // Prevents clicks from sudden parameter jumps when the automaton steps.
+            constexpr float kSmoothCoeff = 0.005f;
+            cellFilterOut += kSmoothCoeff * (cellFilterTarget - cellFilterOut);
+            cellAmpRate   += kSmoothCoeff * (cellAmpTarget   - cellAmpRate);
+            cellPitchOut  += kSmoothCoeff * (cellPitchTarget  - cellPitchOut);
+            cellFXOut     += kSmoothCoeff * (cellFXTarget     - cellFXOut);
 
             // --- LFO 1: modulates step rate (but step timing uses block-level stepRate param)
             //     Here LFO1 modulates filter cutoff for additional movement
@@ -771,8 +807,10 @@ public:
             // --- Pitch ---
             // Cells 8–11 → ±6 semitones offset from root
             // cellPitchOut 0–1 → semitone offset: (cellPitchOut * 12 - 6)
-            float pitchSemitones = (cellPitchOut * 12.f - 6.f)
-                                 + savedCouplingPitch;
+            // Quantize to semitone boundaries to avoid atonal 0.75-semitone steps
+            float rawSemitones = (cellPitchOut * 12.f - 6.f);
+            float quantizedSemitones = std::round(rawSemitones);
+            float pitchSemitones = quantizedSemitones + savedCouplingPitch;
             float freq = rootFreq * fastPow2(pitchSemitones / 12.f);
 
             // --- Oscillator ---
@@ -798,7 +836,9 @@ public:
                 + savedCouplingFilter,
                 200.f, 8000.f);
 
-            float filtered = filter.process(mixed, finalCutoff, Q, sr);
+            // Resonance gain compensation — prevent clipping at high Q
+            float gainComp = 1.0f / (1.0f + Q * 0.5f);
+            float filtered = filter.process(mixed * gainComp, finalCutoff, Q, sr);
 
             // --- Amp envelope + gain ---
             float output = filtered * ampEnvLevel * 0.65f;
@@ -892,6 +932,10 @@ private:
     float          cellAmpRate   = 0.5f; // smoothed cells 4–7 average
     float          cellPitchOut  = 0.f;  // smoothed cells 8–11 average
     float          cellFXOut     = 0.5f; // smoothed cells 12–15 average
+    float          cellFilterTarget = 0.5f; // raw target before smoothing
+    float          cellAmpTarget    = 0.5f;
+    float          cellPitchTarget  = 0.f;
+    float          cellFXTarget     = 0.5f;
 
     // LCG for mutation + seeding
     uint32_t rng = 0xDEADBEEFu;

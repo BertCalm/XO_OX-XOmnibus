@@ -683,9 +683,12 @@ private:
                 for (int ch = 0; ch < kNumChannels; ++ch)
                 {
                     int len = static_cast<int> (delays[ch].buffer.size());
-                    int rp  = (delays[ch].writePos - static_cast<int> (kPrimeLengths48k[ch] * srScale * size * 2.7f + 1)
-                               + len * 8) % len;
-                    rp = std::max (0, rp % len);
+                    // Pre-clamp effective delay to [1, len-1] before subtraction so the read
+                    // position cannot escape the buffer at high sample rates (e.g. 192 kHz where
+                    // srScale=4 would push the raw offset past the len*8 padding).
+                    int effectiveDelay = juce::jlimit (1, len - 1,
+                        static_cast<int> (kPrimeLengths48k[ch] * srScale * size * 2.7f + 1));
+                    int rp = ((delays[ch].writePos - effectiveDelay) + len) % len;
                     float raw = delays[ch].buffer[rp];
 
                     // LP damping: state = state + dampCoeff * (in - state)

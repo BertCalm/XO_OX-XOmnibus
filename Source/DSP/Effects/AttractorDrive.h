@@ -79,9 +79,11 @@ public:
         // Clamp bifurcation to valid logistic map range
         float r = std::max (1.0f, std::min (3.99f, 1.0f + bifurcation * 2.99f));
 
-        // ODE integration step (scaled to audio rate)
-        // speed controls how fast the attractor orbits
-        float basedt = (0.0001f + speed * 0.002f) * (44100.0f / sr);
+        // ODE integration step (scaled to audio rate).
+        // Multiply by (sr / 44100.0f) so the Lorenz orbit completes the same physical
+        // time at any sample rate — doubling sr doubles tick rate, so dt must scale up
+        // proportionally to keep the orbit speed perceptually constant.
+        float basedt = (0.0001f + speed * 0.002f) * (sr / 44100.0f);
 
         // How often we advance the attractor (every N samples for efficiency)
         constexpr int kAttractorSubsample = 4;

@@ -106,9 +106,13 @@ public:
             }
 
             // --- Compute Shannon Entropy (approximated via amplitude histogram) ---
-            // Uses 16 bins to quantize amplitude distribution
-            float entropy = computeEntropy();
-            smoothedEntropy += (entropy - smoothedEntropy) * entSmooth;
+            // Recompute every 32 samples to avoid O(N) histogram per sample.
+            // Smoothing already low-passes the result, so 32-sample granularity is inaudible.
+            constexpr int kEntropyInterval = 32;
+            if (entropySampleCounter == 0)
+                cachedEntropy = computeEntropy();
+            entropySampleCounter = (entropySampleCounter + 1) % kEntropyInterval;
+            smoothedEntropy += (cachedEntropy - smoothedEntropy) * entSmooth;
 
             // --- Heat Equation: 2-stage 1-pole lowpass cascade ---
             // Each stage: y[n] = y[n-1] + coeff * (x[n] - y[n-1])
@@ -183,6 +187,8 @@ private:
     int entropyWindowSize = 256;
     int entropyWritePos = 0;
     float smoothedEntropy = 0.0f;
+    float cachedEntropy = 0.0f;      // Last computed entropy value (updated every kEntropyInterval samples)
+    int entropySampleCounter = 0;    // Counts samples since last entropy recompute
 
     // Demon state
     float demonActiveL = 0.0f;
