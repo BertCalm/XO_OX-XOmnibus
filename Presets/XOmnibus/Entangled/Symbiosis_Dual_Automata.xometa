@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Dual Automata",
+  "mood": "Entangled",
+  "engines": ["Outwit", "Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two cellular automata engines run different rule sets — OUTWIT's chromatophore arm system sends rhythm patterns that trigger ORGANISM's colony generation cycles, while colony density feeds back as decay modulation into OUTWIT's arm behavior.",
+  "tags": ["symbiosis", "cellular-automata", "generative", "dual", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.42,
+    "movement": 0.82,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.55,
+      "macro_movement": 0.78,
+      "macro_coupling": 0.62,
+      "macro_space": 0.45,
+      "owit_armDepth": 0.65,
+      "owit_chromatophoreRate": 0.72,
+      "owit_ruleSet": 0.40,
+      "owit_filterCutoff": 0.50,
+      "owit_outputLevel": 0.80
+    },
+    "Organism": {
+      "macro_character": 0.52,
+      "macro_movement": 0.80,
+      "macro_coupling": 0.62,
+      "macro_space": 0.48,
+      "org_ruleSet": 0.75,
+      "org_colonyDensity": 0.58,
+      "org_generationRate": 0.65,
+      "org_filterCutoff": 0.48,
+      "org_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Organism",
+        "type": "RhythmToBlend",
+        "amount": 0.60
+      },
+      {
+        "engineA": "Organism",
+        "engineB": "Outwit",
+        "type": "EnvToDecay",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

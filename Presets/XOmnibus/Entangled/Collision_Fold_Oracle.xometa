@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Fold Oracle",
+  "mood": "Entangled",
+  "engines": ["Origami", "Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE's GENDY stochastic output replaces ORIGAMI's wavetable source — prophecy becomes the material that gets folded and refolded, while the fold point position modulates the oracle's probability distribution creating a recursive prediction machine.",
+  "tags": ["collision", "wavefolder", "stochastic", "origami", "oracle", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.35,
+    "movement": 0.75,
+    "density": 0.60,
+    "space": 0.48,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.65,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.78,
+      "macro_space": 0.42,
+      "oracle_breakpoints": 0.68,
+      "oracle_stochasticRate": 0.60,
+      "oracle_barrierMod": 0.52,
+      "oracle_filterCutoff": 0.50,
+      "oracle_outputLevel": 0.80
+    },
+    "Origami": {
+      "macro_character": 0.60,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.78,
+      "macro_space": 0.45,
+      "origami_foldPoint": 0.58,
+      "origami_foldDepth": 0.65,
+      "origami_freezeTrigger": 0.30,
+      "origami_filterCutoff": 0.52,
+      "origami_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Origami",
+        "type": "AudioToWavetable",
+        "amount": 0.75
+      },
+      {
+        "engineA": "Origami",
+        "engineB": "Oracle",
+        "type": "AmpToFilter",
+        "amount": 0.50
+      }
+    ]
+  },
+  "sequencer": null
+}

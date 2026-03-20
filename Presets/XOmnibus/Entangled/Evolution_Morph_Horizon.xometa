@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Morph Horizon",
+  "mood": "Entangled",
+  "engines": ["Odyssey", "Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY's wavetable envelope and LFO are routed as morph and pitch signals into OPAL's granular engine — over 55 seconds, familiar timbres dissolve into alien grain clouds and slowly reconstitute as something entirely new.",
+  "tags": ["evolution", "morph", "granular", "wavetable", "temporal", "coupled", "entangled", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.50,
+    "movement": 0.78,
+    "density": 0.60,
+    "space": 0.68,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.58,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.72,
+      "macro_space": 0.60,
+      "drift_oscA_mode": 3,
+      "drift_morphAmount": 0.55,
+      "drift_filterCutoff": 0.55,
+      "drift_reverbMix": 0.45,
+      "drift_outputLevel": 0.80
+    },
+    "Opal": {
+      "macro_character": 0.55,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.72,
+      "macro_space": 0.70,
+      "opal_grainSize": 0.48,
+      "opal_grainDensity": 0.60,
+      "opal_grainPitch": 0.50,
+      "opal_filterCutoff": 0.55,
+      "opal_reverbMix": 0.58,
+      "opal_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "EnvToMorph",
+        "amount": 0.68
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "AmpToFilter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Opal",
+        "type": "LFOToPitch",
+        "amount": 0.45
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 55,
+    "couplingEnvelope": "gaussian_peak",
+    "startAmount": 0.10,
+    "peakAmount": 0.90,
+    "peakTimeSeconds": 28,
+    "endAmount": 0.18,
+    "description": "Coupling peaks at 28 seconds — familiar into alien and back, different return path"
+  },
+  "sequencer": null
+}

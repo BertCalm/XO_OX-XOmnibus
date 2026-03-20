@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Predator Mind",
+  "mood": "Entangled",
+  "engines": ["Orca", "Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORCA's apex predator wavetable drives FM into OCTOPUS's decentralized arm modulation — the hunt macro feeds chromatophore depth while arm signals feed back as pitch modulation into the killer's echolocation sweep.",
+  "tags": ["symbiosis", "predator", "intelligence", "ocean", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.32,
+    "movement": 0.75,
+    "density": 0.70,
+    "space": 0.52,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.72,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.75,
+      "macro_space": 0.45,
+      "orca_huntMacro": 0.70,
+      "orca_breachAmount": 0.55,
+      "orca_echoDepth": 0.62,
+      "orca_filterCutoff": 0.50,
+      "orca_outputLevel": 0.80
+    },
+    "Octopus": {
+      "macro_character": 0.65,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.75,
+      "macro_space": 0.48,
+      "octo_armDepth": 0.68,
+      "octo_chromatophoreRate": 0.58,
+      "octo_inkCloudMix": 0.40,
+      "octo_filterCutoff": 0.52,
+      "octo_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Octopus",
+        "type": "AudioToFM",
+        "amount": 0.72
+      },
+      {
+        "engineA": "Octopus",
+        "engineB": "Orca",
+        "type": "AmpToPitch",
+        "amount": 0.48
+      }
+    ]
+  },
+  "sequencer": null
+}

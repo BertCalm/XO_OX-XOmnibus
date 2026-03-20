@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Shore",
+  "mood": "Entangled",
+  "engines": ["Overtone", "Osprey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERTONE's continued-fraction harmonic series feeds as FM excitation into OSPREY's shore resonator — nautilus partials become wave energy that excites coastline geometry, producing tidal harmonics impossible with shore synthesis alone.",
+  "tags": ["collision", "spectral", "shore", "FM", "tidal", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.50,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Overtone": {
+      "macro_character": 0.58,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.55,
+      "macro_space": 0.60,
+      "over_cfDepth": 0.68,
+      "over_partialCount": 0.65,
+      "over_spectralSpread": 0.50,
+      "over_filterCutoff": 0.55,
+      "over_outputLevel": 0.80
+    },
+    "Osprey": {
+      "macro_character": 0.55,
+      "macro_movement": 0.60,
+      "macro_coupling": 0.55,
+      "macro_space": 0.70,
+      "osprey_shoreBlend": 0.55,
+      "osprey_waveEnergy": 0.58,
+      "osprey_resonatorTuning": 0.50,
+      "osprey_reverbMix": 0.65,
+      "osprey_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overtone",
+        "engineB": "Osprey",
+        "type": "AudioToFM",
+        "amount": 0.52
+      },
+      {
+        "engineA": "Osprey",
+        "engineB": "Overtone",
+        "type": "EnvToMorph",
+        "amount": 0.40
+      }
+    ]
+  },
+  "sequencer": null
+}

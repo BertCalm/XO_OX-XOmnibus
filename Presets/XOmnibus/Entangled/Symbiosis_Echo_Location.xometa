@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Echo Location",
+  "mood": "Entangled",
+  "engines": ["Orca", "Octopus"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A second predator-intelligence coupling — OCTOPUS's chromatophore arm signals are routed as LFO pitch into ORCA's echolocation sweep, giving the predator a distributed intelligence system where all eight arms tune the sonar sweep simultaneously.",
+  "tags": ["symbiosis", "echolocation", "chromatophore", "ocean", "distributed", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.30,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.48,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Orca": {
+      "macro_character": 0.68,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.62,
+      "macro_space": 0.42,
+      "orca_huntMacro": 0.65,
+      "orca_breachAmount": 0.48,
+      "orca_echoDepth": 0.65,
+      "orca_filterCutoff": 0.55,
+      "orca_outputLevel": 0.80
+    },
+    "Octopus": {
+      "macro_character": 0.60,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.62,
+      "macro_space": 0.45,
+      "octo_armDepth": 0.72,
+      "octo_chromatophoreRate": 0.62,
+      "octo_inkCloudMix": 0.35,
+      "octo_filterCutoff": 0.55,
+      "octo_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Orca",
+        "type": "LFOToPitch",
+        "amount": 0.58
+      },
+      {
+        "engineA": "Orca",
+        "engineB": "Octopus",
+        "type": "AmpToFilter",
+        "amount": 0.45
+      }
+    ]
+  },
+  "sequencer": null
+}

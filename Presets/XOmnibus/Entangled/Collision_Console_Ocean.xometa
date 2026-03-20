@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Console Ocean",
+  "mood": "Entangled",
+  "engines": ["Overworld", "Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OVERWORLD's retro chip synthesis is injected as audio into ORCA's wavetable engine — NES square waves become the raw material for apex predator echolocation sweeps, while ORCA's hunt macro cross-fades the ERA triangle in real time.",
+  "tags": ["collision", "chip-synth", "wavetable", "retro", "ocean", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.35,
+    "movement": 0.68,
+    "density": 0.58,
+    "space": 0.42,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Overworld": {
+      "macro_character": 0.68,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.58,
+      "macro_space": 0.38,
+      "ow_era": 0.30,
+      "ow_glitchAmount": 0.35,
+      "ow_filterCutoff": 0.55,
+      "ow_reverbMix": 0.25,
+      "ow_outputLevel": 0.80
+    },
+    "Orca": {
+      "macro_character": 0.72,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.58,
+      "macro_space": 0.40,
+      "orca_huntMacro": 0.60,
+      "orca_breachAmount": 0.45,
+      "orca_echoDepth": 0.55,
+      "orca_filterCutoff": 0.60,
+      "orca_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Orca",
+        "type": "AudioToWavetable",
+        "amount": 0.58
+      },
+      {
+        "engineA": "Orca",
+        "engineB": "Overworld",
+        "type": "EnvToMorph",
+        "amount": 0.40
+      }
+    ]
+  },
+  "sequencer": null
+}

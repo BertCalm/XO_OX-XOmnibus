@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Tide Turns",
+  "mood": "Entangled",
+  "engines": ["Oceanic", "OceanDeep"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OCEANIC's murmuration particle field slowly feeds FM energy into OCEANDEEP's abyssal pressure engine — over 40+ seconds the surface shimmer sinks into crushing depth as coupling amount rises on a glacial LFO, never returning to its starting state.",
+  "tags": ["evolution", "ocean", "temporal", "depth", "tidal", "coupled", "entangled", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.62,
+    "density": 0.68,
+    "space": 0.80,
+    "aggression": 0.30
+  },
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.50,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.45,
+      "macro_space": 0.75,
+      "ocean_separation": 0.55,
+      "ocean_particleVelocity": 0.42,
+      "ocean_cohesion": 0.60,
+      "ocean_filterCutoff": 0.58,
+      "ocean_reverbMix": 0.65,
+      "ocean_outputLevel": 0.80
+    },
+    "OceanDeep": {
+      "macro_character": 0.48,
+      "macro_movement": 0.52,
+      "macro_coupling": 0.45,
+      "macro_space": 0.78,
+      "deep_macroPressure": 0.35,
+      "deep_abyssalFreq": 0.32,
+      "deep_filterCutoff": 0.40,
+      "deep_reverbSize": 0.80,
+      "deep_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "OceanDeep",
+        "type": "AudioToFM",
+        "amount": 0.62
+      },
+      {
+        "engineA": "OceanDeep",
+        "engineB": "Oceanic",
+        "type": "AmpToFilter",
+        "amount": 0.35
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 48,
+    "couplingEnvelope": "logarithmic_rise",
+    "startAmount": 0.10,
+    "endAmount": 0.85,
+    "description": "Coupling amount rises logarithmically over 48 seconds — surface to abyss"
+  },
+  "sequencer": null
+}

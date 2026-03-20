@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Strange Drum",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS's strange attractor dynamics are routed as rhythm, blend, and decay signals into ONSET — chaotic topology becomes the drummer, producing beats that are statistically rhythmic but never exactly repeating.",
+  "tags": ["collision", "chaos", "attractor", "drum", "rhythm", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.70,
+    "space": 0.42,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.72,
+      "macro_movement": 0.85,
+      "macro_coupling": 0.82,
+      "macro_space": 0.38,
+      "ouro_topology": 0.65,
+      "ouro_chaosAmount": 0.70,
+      "ouro_filterCutoff": 0.48,
+      "ouro_outputLevel": 0.80
+    },
+    "Onset": {
+      "macro_character": 0.60,
+      "macro_movement": 0.80,
+      "macro_coupling": 0.82,
+      "macro_space": 0.40,
+      "perc_noiseLevel": 0.50,
+      "perc_kickFreq": 55,
+      "perc_kickDecay": 0.40,
+      "perc_snareSnap": 0.65,
+      "perc_outputLevel": 0.82
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "AmpToFilter",
+        "amount": 0.68
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "EnvToDecay",
+        "amount": 0.60
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}

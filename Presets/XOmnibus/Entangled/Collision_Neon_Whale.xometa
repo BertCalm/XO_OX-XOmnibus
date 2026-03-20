@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Neon Whale",
+  "mood": "Entangled",
+  "engines": ["OddfeliX", "Orca"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODDFELIX's neon tetra transients ring-modulate ORCA's wavetable body — tiny bright attacks create a shimmering sidechannel around the deep ocean sweep, a sonic pairing that exists nowhere else in nature or synthesis.",
+  "tags": ["collision", "ring-mod", "transient", "wavetable", "ocean", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.32,
+    "movement": 0.65,
+    "density": 0.52,
+    "space": 0.45,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.72,
+      "macro_movement": 0.60,
+      "macro_coupling": 0.55,
+      "macro_space": 0.35,
+      "snap_filterCutoff": 0.65,
+      "snap_resonance": 0.45,
+      "snap_ampAttack": 0.005,
+      "snap_ampDecay": 0.18,
+      "snap_outputLevel": 0.78
+    },
+    "Orca": {
+      "macro_character": 0.65,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.55,
+      "macro_space": 0.42,
+      "orca_huntMacro": 0.52,
+      "orca_breachAmount": 0.38,
+      "orca_echoDepth": 0.48,
+      "orca_filterCutoff": 0.55,
+      "orca_outputLevel": 0.80
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Orca",
+        "type": "AudioToRing",
+        "amount": 0.52
+      },
+      {
+        "engineA": "Orca",
+        "engineB": "OddfeliX",
+        "type": "AmpToPitch",
+        "amount": 0.38
+      }
+    ]
+  },
+  "sequencer": null
+}

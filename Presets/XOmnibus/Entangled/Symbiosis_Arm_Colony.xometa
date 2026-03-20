@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Arm Colony",
+  "mood": "Entangled",
+  "engines": ["Outwit", "Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A second cross-automata symbiosis with KnotTopology — OUTWIT and ORGANISM are locked in irreducible bidirectional entanglement where neither can evolve without co-evolving the other, producing cellular behaviors impossible to trace to either rule set alone.",
+  "tags": ["symbiosis", "arm", "colony", "cellular-automata", "knot", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.85,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.50
+  },
+  "parameters": {
+    "Outwit": {
+      "macro_character": 0.58,
+      "macro_movement": 0.82,
+      "macro_coupling": 0.90,
+      "macro_space": 0.42,
+      "owit_armDepth": 0.70,
+      "owit_chromatophoreRate": 0.68,
+      "owit_ruleSet": 0.55,
+      "owit_filterCutoff": 0.52,
+      "owit_outputLevel": 0.80
+    },
+    "Organism": {
+      "macro_character": 0.55,
+      "macro_movement": 0.80,
+      "macro_coupling": 0.90,
+      "macro_space": 0.45,
+      "org_ruleSet": 0.62,
+      "org_colonyDensity": 0.65,
+      "org_generationRate": 0.72,
+      "org_filterCutoff": 0.50,
+      "org_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Organism",
+        "type": "KnotTopology",
+        "amount": 0.90
+      }
+    ]
+  },
+  "sequencer": null
+}

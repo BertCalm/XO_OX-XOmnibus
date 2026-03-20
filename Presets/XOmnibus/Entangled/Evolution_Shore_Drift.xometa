@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Shore Drift",
+  "mood": "Entangled",
+  "engines": ["Osprey", "Osteria"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OSPREY and OSTERIA share the ShoreSystem cultural data — their coupling evolves over 40 seconds as tidal energy from OSPREY modulates the Porto Wine room excitation in OSTERIA, which feeds back swell energy to shift the shore coastline blend.",
+  "tags": ["evolution", "shore", "tidal", "drift", "temporal", "coupled", "entangled", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.62,
+    "density": 0.52,
+    "space": 0.75,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Osprey": {
+      "macro_character": 0.52,
+      "macro_movement": 0.58,
+      "macro_coupling": 0.50,
+      "macro_space": 0.72,
+      "osprey_shoreBlend": 0.50,
+      "osprey_waveEnergy": 0.45,
+      "osprey_resonatorTuning": 0.52,
+      "osprey_reverbMix": 0.68,
+      "osprey_outputLevel": 0.80
+    },
+    "Osteria": {
+      "macro_character": 0.50,
+      "macro_movement": 0.55,
+      "macro_coupling": 0.50,
+      "macro_space": 0.75,
+      "osteria_qBassShore": 0.55,
+      "osteria_roomExcitation": 0.48,
+      "osteria_filterCutoff": 0.52,
+      "osteria_reverbMix": 0.65,
+      "osteria_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Osteria",
+        "type": "AudioToFM",
+        "amount": 0.48
+      },
+      {
+        "engineA": "Osteria",
+        "engineB": "Osprey",
+        "type": "EnvToMorph",
+        "amount": 0.38
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 40,
+    "couplingEnvelope": "slow_sine_cycle",
+    "startAmount": 0.12,
+    "endAmount": 0.65,
+    "description": "Tidal coupling cycles on 20-second period — shoreline character shifts with each wave"
+  },
+  "sequencer": null
+}

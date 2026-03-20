@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Dub Organism",
+  "mood": "Entangled",
+  "engines": ["Overdub", "Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANISM's cellular automata colony outputs a generative rhythm that modulates OVERDUB's tape delay feedback — the living pattern controls the echo while echo amplitude feeds back to trigger colony generation steps, creating an organic dub machine.",
+  "tags": ["collision", "dub", "cellular-automata", "tape-delay", "organic", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.58,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Organism": {
+      "macro_character": 0.52,
+      "macro_movement": 0.70,
+      "macro_coupling": 0.60,
+      "macro_space": 0.50,
+      "org_ruleSet": 0.68,
+      "org_colonyDensity": 0.52,
+      "org_generationRate": 0.58,
+      "org_filterCutoff": 0.50,
+      "org_outputLevel": 0.78
+    },
+    "Overdub": {
+      "macro_character": 0.55,
+      "macro_movement": 0.65,
+      "macro_coupling": 0.60,
+      "macro_space": 0.65,
+      "dub_oscWave": 1,
+      "dub_sendAmount": 0.62,
+      "dub_tapeDelayTime": 0.48,
+      "dub_springReverbMix": 0.55,
+      "dub_filterCutoff": 0.52,
+      "dub_outputLevel": 0.80
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organism",
+        "engineB": "Overdub",
+        "type": "RhythmToBlend",
+        "amount": 0.58
+      },
+      {
+        "engineA": "Overdub",
+        "engineB": "Organism",
+        "type": "AmpToFilter",
+        "amount": 0.42
+      }
+    ]
+  },
+  "sequencer": null
+}

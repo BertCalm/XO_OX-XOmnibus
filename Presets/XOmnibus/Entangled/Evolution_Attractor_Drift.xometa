@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Attractor Drift",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Odyssey"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS's strange attractor sends both amplitude and LFO pitch signals into ODYSSEY's wavetable morph — the chaos engine sculpts a pad that slowly migrates away from its starting timbre over 45 seconds, never returning to the same place.",
+  "tags": ["evolution", "attractor", "drift", "chaos", "wavetable", "coupled", "entangled", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.52,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.40
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.60,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.58,
+      "macro_space": 0.45,
+      "ouro_topology": 0.55,
+      "ouro_chaosAmount": 0.52,
+      "ouro_filterCutoff": 0.50,
+      "ouro_outputLevel": 0.78
+    },
+    "Odyssey": {
+      "macro_character": 0.55,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.58,
+      "macro_space": 0.62,
+      "drift_oscA_mode": 2,
+      "drift_morphAmount": 0.50,
+      "drift_filterCutoff": 0.55,
+      "drift_reverbMix": 0.55,
+      "drift_outputLevel": 0.80
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.45
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Odyssey",
+        "type": "EnvToMorph",
+        "amount": 0.50
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 45,
+    "couplingEnvelope": "linear_drift",
+    "startAmount": 0.15,
+    "endAmount": 0.72,
+    "description": "All three coupling amounts drift linearly over 45 seconds — never-repeating pad evolution"
+  },
+  "sequencer": null
+}

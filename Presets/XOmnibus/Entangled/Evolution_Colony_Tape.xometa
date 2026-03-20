@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Colony Tape",
+  "mood": "Entangled",
+  "engines": ["Organism", "Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORGANISM's cellular colony rhythm is imprinted into OVERDUB's spring reverb and tape delay architecture — the living pattern turns the dub machine into a morphing organism that changes its delay grid over 35 seconds of colony evolution.",
+  "tags": ["evolution", "colony", "tape-delay", "dub", "temporal", "coupled", "entangled", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.60,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.68,
+    "aggression": 0.30
+  },
+  "parameters": {
+    "Organism": {
+      "macro_character": 0.50,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.55,
+      "macro_space": 0.52,
+      "org_ruleSet": 0.72,
+      "org_colonyDensity": 0.48,
+      "org_generationRate": 0.42,
+      "org_filterCutoff": 0.52,
+      "org_outputLevel": 0.78
+    },
+    "Overdub": {
+      "macro_character": 0.52,
+      "macro_movement": 0.62,
+      "macro_coupling": 0.55,
+      "macro_space": 0.70,
+      "dub_oscWave": 0,
+      "dub_sendAmount": 0.58,
+      "dub_tapeDelayTime": 0.52,
+      "dub_springReverbMix": 0.60,
+      "dub_filterCutoff": 0.50,
+      "dub_outputLevel": 0.80
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organism",
+        "engineB": "Overdub",
+        "type": "RhythmToBlend",
+        "amount": 0.55
+      },
+      {
+        "engineA": "Organism",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.42
+      }
+    ]
+  },
+  "journey": {
+    "durationSeconds": 35,
+    "couplingEnvelope": "exponential_swell",
+    "startAmount": 0.08,
+    "endAmount": 0.68,
+    "description": "Colony matures exponentially — dub machine goes from predictable to alive over 35 seconds"
+  },
+  "sequencer": null
+}

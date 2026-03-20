@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Drum Through Glass",
+  "mood": "Entangled",
+  "engines": ["Onset", "Overlap"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ONSET's percussion impulses are fed directly into OVERLAP's FDN resonator network — each drum hit excites the glass of resonant modes, transforming a kick into cathedral harmonics and a snare into metallic shimmer impossible on either engine alone.",
+  "tags": ["collision", "percussion", "resonator", "FDN", "drum", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.40,
+    "movement": 0.75,
+    "density": 0.65,
+    "space": 0.68,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.65,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.82,
+      "macro_space": 0.38,
+      "perc_noiseLevel": 0.55,
+      "perc_kickFreq": 60,
+      "perc_kickDecay": 0.45,
+      "perc_snareSnap": 0.60,
+      "perc_outputLevel": 0.80
+    },
+    "Overlap": {
+      "macro_character": 0.55,
+      "macro_movement": 0.68,
+      "macro_coupling": 0.82,
+      "macro_space": 0.72,
+      "olap_knotDepth": 0.68,
+      "olap_feedbackAmount": 0.62,
+      "olap_resonanceFreq": 0.50,
+      "olap_reverbMix": 0.60,
+      "olap_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overlap",
+        "type": "AudioToFM",
+        "amount": 0.80
+      },
+      {
+        "engineA": "Overlap",
+        "engineB": "Onset",
+        "type": "AmpToFilter",
+        "amount": 0.38
+      }
+    ]
+  },
+  "sequencer": null
+}

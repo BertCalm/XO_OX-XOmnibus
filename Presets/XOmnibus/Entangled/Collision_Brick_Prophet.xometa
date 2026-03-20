@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Brick Prophet",
+  "mood": "Entangled",
+  "engines": ["Obrix", "Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ORACLE's stochastic GENDY breakpoints perturb OBRIX's modular brick routing — prophecy reorders the signal chain in real time while OBRIX's brick amplitude feeds back to shift the oracle's probability distribution.",
+  "tags": ["collision", "modular", "stochastic", "brick", "oracle", "coupled", "entangled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.30,
+    "movement": 0.78,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Obrix": {
+      "macro_character": 0.70,
+      "macro_movement": 0.72,
+      "macro_coupling": 0.80,
+      "macro_space": 0.42,
+      "obrix_src1Type": 2,
+      "obrix_driftBusAmount": 0.55,
+      "obrix_flashAmount": 0.48,
+      "obrix_fxDrive": 0.60,
+      "obrix_filterCutoff": 0.52,
+      "obrix_outputLevel": 0.80
+    },
+    "Oracle": {
+      "macro_character": 0.65,
+      "macro_movement": 0.75,
+      "macro_coupling": 0.80,
+      "macro_space": 0.45,
+      "oracle_breakpoints": 0.72,
+      "oracle_stochasticRate": 0.65,
+      "oracle_barrierMod": 0.50,
+      "oracle_filterCutoff": 0.48,
+      "oracle_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Obrix",
+        "type": "AudioToFM",
+        "amount": 0.75
+      },
+      {
+        "engineA": "Obrix",
+        "engineB": "Oracle",
+        "type": "AmpToFilter",
+        "amount": 0.55
+      }
+    ]
+  },
+  "sequencer": null
+}
