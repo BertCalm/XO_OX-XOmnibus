@@ -476,7 +476,9 @@ public:
         // SPACE macro expands the underwater acoustic chamber:
         // more echolocation resonance = longer ringing comb = bigger space
         float effectiveEchoRes = clamp (pEchoReso + huntAmount * 0.1f + macroSpace * 0.15f, 0.0f, 0.95f);
-        float effectiveCrush   = clamp (pCrushMix + huntAmount * 0.6f, 0.0f, 1.0f);
+        // D006: aftertouch raises hunt intensity — apex predator on alert.
+        // +0.35 max on huntAmount at full pressure, escalating echo resonance and breach.
+        float effectiveCrush   = clamp (pCrushMix + (huntAmount + atPressure_ * 0.35f) * 0.6f, 0.0f, 1.0f);
         // SPACE also deepens sub-bass presence (more space = more physical weight)
         float effectiveBreachSub = clamp (pBreachSub + huntAmount * 0.3f + macroSpace * 0.3f, 0.0f, 1.0f);
         // Mod wheel (CC#1) scans the wavetable position — sweeps from sine/whale-call
@@ -535,6 +537,11 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            // D006: aftertouch deepens breach intensity — increased pressure
+            // tightens the hunt, raising echo resonance and breach threshold.
+            // Full pressure adds +0.35 to huntAmount (apex predator on alert).
+            else if (msg.isChannelPressure())
+                atPressure_ = msg.getChannelPressureValue() / 127.0f;
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1342,6 +1349,7 @@ private:
 
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — scans wavetable position (D006)
+    float atPressure_     = 0.0f;   // Channel aftertouch — deepens hunt/breach intensity (D006)
 
     // Voices
     std::array<OrcaVoice, kMaxVoices> voices {};

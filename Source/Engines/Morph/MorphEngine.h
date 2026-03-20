@@ -279,6 +279,7 @@ struct MorphLFO
     float phaseInc = 0.0f;
     Shape shape = Shape::Sine;
     float holdValue = 0.0f;
+    uint32_t lcgState = 1234567891u; // LCG seed for S&H random values
 
     void setRate (float hz, float sampleRate) noexcept
     {
@@ -304,8 +305,11 @@ struct MorphLFO
             case Shape::Square:
                 out = (phase < 0.5f) ? 1.0f : -1.0f; break;
             case Shape::SandH:
-                if (phase < phaseInc)
-                    holdValue = (fastSin (phase * 6.28318530718f) >= 0.0f) ? 1.0f : -1.0f;
+                if (phase < phaseInc) {
+                    // LCG random: holds a new value each cycle (true S&H, not deterministic)
+                    lcgState = lcgState * 1664525u + 1013904223u;
+                    holdValue = static_cast<float> (lcgState & 0xFFFF) / 32768.0f - 1.0f;
+                }
                 out = holdValue; break;
         }
         phase += phaseInc;

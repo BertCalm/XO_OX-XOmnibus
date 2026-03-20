@@ -1,8 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 34 of 34 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
-*5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) have dedicated synthesis guides in Docs/ (e.g. ohm_synthesis_guide.md) but are not yet integrated into this unified guide.*
-*V2 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE) are not registered in XOmnibus and are out of scope for this guide.*
+*Covers 38 of 38 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
 
 ---
 
@@ -2366,3 +2364,216 @@ Three divider channels (`owl_divider1`, `owl_divider2`, `owl_divider3`) each sel
 OWLFISH demands that you approach `owl_bodyFreq` as a compositional decision before you touch anything else. Choose a frequency that fits your key or drone: 55 Hz (A1) for deep bass, 110 Hz (A2) for cello register, 165 Hz (E3) for a slightly higher anchor. That frequency IS the instrument. The dividers then build a subharmonic structure beneath it that is entirely determined by integer mathematics — not by equal temperament, not by standard intervals. This is why ÷3 and ÷5 feel uncanny: they produce ratios that do not appear in 12-tone equal temperament and never will.
 
 The duophonic architecture (OWL-II) means OWLFISH can voice two independent bodyFreq+divider configurations simultaneously. Use this for internal harmony or for a Trautonium-style melody-plus-drone texture. Keep morphGlide between 1–4 seconds for the metamorphosis character; shorter is more mechanical, longer approaches a slow vowel-like spectral drift. Velocity should shape filter brightness (D001) — higher velocity opens the filter, simulating the Trautonium's pressure-sensitive ribbon dynamic.
+
+---
+
+## 35. OSTINATO — World Drum Circle Synthesis
+
+**Gallery code:** OSTINATO | **Accent:** Firelight Orange `#E8701A`
+
+**Identity:** The fire at the center of the drum circle — 8 seats, 12 world instruments, each physically modeled with modal membrane resonators and waveguide body resonance. The most complex percussive engine in the fleet. Ostinato plays autonomously or responds to MIDI; the GATHER macro sweeps from loose/organic to locked/quantized.
+
+**Macros**
+| Macro | Name | Effect |
+|-------|------|--------|
+| M1 | **CHARACTER** (GATHER) | Ensemble tightness — loose/organic → locked/quantized |
+| M2 | **MOVEMENT** (FIRE) | Intensity — exciter energy, resonance, dynamics compression |
+| M3 | **COUPLING** (CIRCLE) | Inter-seat sympathetic resonance and ghost triggers |
+| M4 | **SPACE** | Environment — dry room → cathedral reverb |
+
+**Key Parameters**
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|--------------|
+| `osti_seat{N}Instrument` | 0–11 | Mix traditions | Which world instrument sits at seat N (0=Djembe … 11=Beatbox) |
+| `osti_seat{N}Pattern` | 0–7 | 0=foundational | Which of 8 embedded patterns this seat plays |
+| `osti_gather` | 0–1 | 0.4–0.6 | Ensemble tightness — at 0: loose/humanized; at 1: perfectly locked |
+| `osti_fire` | 0–1 | 0.5–0.8 | Global intensity — drives exciter level and dynamic compression |
+| `osti_circle` | 0–1 | 0.2–0.5 | Sympathetic resonance between seats (ghost triggers, cross-excitation) |
+| `osti_tempo` | 20–300 BPM | Host-synced | Pattern sequencer tempo (or host-sync) |
+| `osti_brightness` | 0–1 | 0.4–0.7 | Radiation filter brightness across all seats |
+| `osti_reverbMix` | 0–1 | 0.15–0.4 | Room environment blend |
+
+**Coupling**
+- **Sends:** Stereo percussive mix; amplitude envelope (useful as a rhythmic gate for other engines)
+- **Receives:** `EnvToMorph` (modulates CIRCLE resonance depth), `AmpToFilter` (external amplitude brightens radiation filter), `LFOToPitch` (subtle pitch drift on membrane resonators — adds bowl-drum quality)
+- **Best as source for:** `AmpToFilter` → OPAL (rhythm gates grain density), `AudioToFM` → ODYSSEY (percussive transients drive FM modulation)
+
+**Recommended Pairings**
+- **+ OPAL:** OSTINATO amplitude as grain-density gate — drums literally scatter OPAL's granular cloud
+- **+ OCEANIC:** Percussive hits through the phosphorescent ocean field — transient smearing
+- **+ OVERDUB:** Tape delay on the drum output — organic rhythm with trailing character
+- **+ ORGANON:** Metabolic LFO from ORGANON driving OSTINATO's FIRE macro — breathing rhythm intensity
+
+**Starter Recipes**
+**West Africa Circle:** Seat 0=Djembe/Pattern 0, Seat 1=Dundun/Pattern 0, Seat 2=Djembe/Pattern 1 — the canonical 12/8 feel; add CIRCLE=0.3 for ghost sympathetics
+**Global Fusion:** Mix Djembe (0), Tabla (6), Doumbek (7), Tongue Drum (10) — four traditions in one circle; GATHER=0.5 for intentional rhythmic tension
+**Beatbox Core:** Seat 0=Beatbox/Pattern 0 as kick/snare backbone, Seat 1=Djembe for texture, FIRE=0.8 — accessible modern groove with acoustic warmth underneath
+**Ambient Pulse:** All seats on Pattern 3 (sparse), GATHER=0.2, CIRCLE=0.6, SPACE=0.8 — barely-there rhythm that exists more as atmosphere than beat
+
+**Designer Notes**
+OSTINATO rewards seat assignment as a compositional act. Choose instruments that span geographic traditions — a djembe beside a tabla beside a doumbek creates rhythmic cross-pollination that no single tradition provides. The GATHER macro is the key creative axis: below 0.4, the circle feels like a live ensemble with human variation; above 0.7, it locks into a machine-tight grid. The sweet spot between 0.4–0.6 is where the magic lives — organized enough to feel intentional, loose enough to breathe. CIRCLE at moderate amounts creates sympathetic ghost hits: one drum's resonance triggers neighboring seats at low velocity, producing organic fills that emerge from the physics rather than the pattern.
+
+---
+
+## 36. OPENSKY — Euphoric Shimmer Synthesis
+
+**Gallery code:** OPENSKY | **Accent:** Sunburst `#FF8C00`
+
+**Identity:** The flying fish — leaping from water into air, wings spread against the sun. Pure feliX polarity. A supersaw-plus-shimmer engine for anthemic pads, crystalline leads, and euphoric ascension. Seven detuned saws into shimmer reverb (octave-up + fifth-up pitch-shifted tails) into stereo chorus into unison stack.
+
+**Macros**
+| Macro | Name | Effect |
+|-------|------|--------|
+| M1 | **CHARACTER** (RISE) | Pitch envelope up + filter opens + shimmer increases |
+| M2 | **MOVEMENT** (WIDTH) | Chorus depth + unison stereo spread |
+| M3 | **COUPLING** (GLOW) | Shimmer tail length + feedback amount |
+| M4 | **SPACE** (AIR) | Reverb size + high-frequency content boost |
+
+**Key Parameters**
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|--------------|
+| `sky_detune` | 0–1 | 0.3–0.6 | Supersaw stack detune — 0: unison; 1: wide chorus beat |
+| `sky_filterCutoff` | 20–20k Hz | 2k–8k | Bright filter cutoff — the tonal center of the shimmer |
+| `sky_filterRes` | 0–1 | 0.1–0.3 | Filter resonance — keep low for anthem pads |
+| `sky_shimmerMix` | 0–1 | 0.3–0.7 | Shimmer reverb wet amount |
+| `sky_shimmerSize` | 0–1 | 0.5–0.8 | Shimmer tail length |
+| `sky_chorusDepth` | 0–1 | 0.2–0.5 | Chorus modulation depth |
+| `sky_chorusRate` | 0–5 Hz | 0.3–1.0 | Chorus LFO rate |
+| `sky_unisonVoices` | 1–7 | 3–5 | Unison stack voice count |
+| `sky_unisonSpread` | 0–1 | 0.4–0.7 | Stereo spread of unison voices |
+| `sky_ampAttack` | 0–10 s | 0.5–3.0 | Attack time — OPENSKY rewards slow attacks |
+| `sky_lfo1Rate` | 0.01–5 Hz | 0.05–0.3 | Breathing LFO rate (D005 floor: 0.01 Hz) |
+| `sky_lfo1Depth` | 0–1 | 0.1–0.3 | LFO depth — filter shimmer undulation |
+
+**Coupling**
+- **Sends:** Stereo shimmer output; amplitude envelope
+- **Receives:** `AmpToFilter` (external amplitude modulates filter cutoff), `LFOToPitch` (pitch drift from partner engines), `AudioToFM` (FM modulation on supersaw stack), `PitchToPitch` (harmony — key coupling with OCEANDEEP)
+- **Key coupling:** OPENSKY × OCEANDEEP = **"The Full Column"** — sky feeds pitch harmony down, deep feeds sub rumble up; together they span the full frequency and emotional range of the mythology
+
+**Recommended Pairings**
+- **+ OCEANDEEP:** The Full Column. OPENSKY handles euphoric highs, OCEANDEEP provides crushing lows. Send OCEANDEEP's envelope to OPENSKY's filter for dynamic sub-to-shimmer movement.
+- **+ OPAL:** OPENSKY pads feeding OPAL's grain buffer — shimmer frozen and scattered into clouds
+- **+ ORBITAL:** Both engines are group-envelope-centric. ORBITAL's Group Envelope driving OPENSKY's RISE macro creates synchronized ascension arcs.
+- **+ ODYSSEY:** Drift engine beneath the shimmer — ODYSSEY's analog warmth grounds OPENSKY's digital brightness
+
+**Starter Recipes**
+**Anthem Pad:** sky_detune=0.4, sky_shimmerMix=0.5, sky_unisonVoices=5, sky_ampAttack=2.0 — the canonical euphoric pad; wide, shimmering, never harsh
+**Crystal Lead:** sky_detune=0.2, sky_filterCutoff=5000, sky_shimmerMix=0.3, sky_unisonVoices=3 — focused and melodic; shimmer adds air without obscuring pitch
+**Infinite Ascent:** RISE macro at 0.8, sky_ampAttack=4.0, sky_shimmerSize=0.9, sky_lfo1Rate=0.02 — holds forever; breathes imperceptibly; never resolves
+**Full Column:** OPENSKY paired with OCEANDEEP, PitchToPitch coupling at 0.7 — sky and abyss in simultaneous voice; the full XO_OX water column, surface to trench
+
+**Designer Notes**
+OPENSKY is unapologetically euphoric — it makes no pretense of darkness or complexity. Its power is in layering: the supersaw stack provides harmonic mass, the shimmer stage adds pitch-shifted reflections that make simple chords feel orchestral, and the unison engine widens everything into a wall of sound. Velocity shapes filter brightness (D001): soft touches yield warm, filtered pads; hard strikes open the filter and increase shimmer intensity. The key creative decision is how much shimmer to use — at low values (0.2–0.4) it adds air without calling attention to itself; at high values (0.7+) the pitch-shifted tails become a feature, adding intervals that weren't played. The Full Column pairing with OCEANDEEP is the intended complete system: let OPENSKY handle everything above 200 Hz and OCEANDEEP handle everything below.
+
+---
+
+## 37. OCEANDEEP — Abyssal Bass Synthesis
+
+**Gallery code:** OCEANDEEP | **Accent:** Trench Violet `#2D0A4E`
+
+**Identity:** Pure Oscar polarity. The deepest, darkest engine in the XO_OX water column — modeling the hadal zone (6000–11000m). Three-oscillator sub engine, hydrostatic compressor that increases ratio with PRESSURE, waveguide body resonance (Shipwreck / Cave / Trench), bioluminescent exciter transients, and creature LFOs with sub-0.01 Hz drift.
+
+**Macros**
+| Macro | Name | Effect |
+|-------|------|--------|
+| M1 | **CHARACTER** (PRESSURE) | Depth/weight — drives compressor, filter darkness, sub level |
+| M2 | **MOVEMENT** (CREATURE) | Alien life modulation — LFO depth, exciter probability |
+| M3 | **COUPLING** (WRECK) | Environment resonance — body type blend, resonance intensity |
+| M4 | **SPACE** (ABYSS) | Vastness — reverb size, pre-delay, darkness |
+
+**Key Parameters**
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|--------------|
+| `deep_osc1Wave` | 0–2 | 0=sine | Sub osc 1 waveform (sine/triangle/square) |
+| `deep_osc2Wave` | 0–2 | 1=triangle | Sub osc 2 waveform |
+| `deep_subLevel` | 0–1 | 0.6–1.0 | Sub-harmonic generator level (octave below) |
+| `deep_pressure` | 0–1 | 0.4–0.8 | Hydrostatic compressor depth — logarithmic ratio increase |
+| `deep_bodyType` | 0–2 | 2=Trench | Body resonance type: 0=Shipwreck, 1=Cave, 2=Trench |
+| `deep_wreck` | 0–1 | 0.3–0.6 | Body resonance intensity |
+| `deep_creatureLfo1Rate` | 0.001–0.1 Hz | 0.005–0.02 | Creature LFO 1 rate (D005: below 0.01 Hz floor) |
+| `deep_exciterProb` | 0–1 | 0.1–0.4 | Bioluminescent exciter trigger probability |
+| `deep_filterCutoff` | 20–2000 Hz | 100–600 | Darkness filter cutoff — pressure darkens this automatically |
+| `deep_ampAttack` | 0–10 s | 0.1–2.0 | Amp envelope attack |
+| `deep_ampRelease` | 0–20 s | 1.0–8.0 | Amp envelope release — abyssal sounds decay slowly |
+
+**Coupling**
+- **Sends:** Post-process stereo audio (ch 0/1), envelope level (ch 2)
+- **Receives:** `AmpToFilter` (modulates darkness filter cutoff), `LFOToPitch` (creature pitch warping), `AudioToFM` (FM input to sub oscillators), `EnvToDecay` (modulates body resonance decay)
+- **Key coupling:** OCEANDEEP × OPENSKY = **"The Full Column"** — send OPENSKY's envelope to OCEANDEEP's filter for surface-to-trench movement
+
+**Recommended Pairings**
+- **+ OPENSKY:** The Full Column. Together they span the complete mythological range — surface shimmer above, abyssal pressure below.
+- **+ OUROBOROS:** OUROBOROS chaotic instability feeds into OCEANDEEP's FM input — sub bass that writhes and mutates
+- **+ OPAL:** OCEANDEEP sub content frozen into OPAL grain buffers — low-frequency granular rumble
+- **+ OSTINATO:** Drum circle above an ocean trench — OSTINATO's rhythmic transients against OCEANDEEP's continuous pressure
+
+**Starter Recipes**
+**Abyssal Foundation:** deep_osc1Wave=sine, deep_pressure=0.7, deep_bodyType=2 (Trench), deep_subLevel=0.9 — maximum depth; the trench body gives a vast, metallic resonance to sustained bass
+**Creature Pulse:** deep_creatureLfo1Rate=0.008, deep_exciterProb=0.3, deep_creature=0.6 — bioluminescent flashes emerge unpredictably from the darkness; organic, alive, unsettling
+**Shipwreck Resonance:** deep_bodyType=0, deep_wreck=0.7, deep_pressure=0.5 — metallic, short resonance; industrial bass with history
+**Full Column (with OPENSKY):** PitchToPitch coupling 0.7, OCEANDEEP PRESSURE=0.6, OPENSKY RISE=0.5 — the complete XO_OX water column
+
+**Designer Notes**
+OCEANDEEP is a bass instrument first and a synthesis engine second. Approach it as you would a sub-bass oscillator that happens to have a biome. The PRESSURE macro is the primary voice — as you increase it, the compressor crushes harder, the filter darkens, and the sub level increases; you are literally descending. The bioluminescent exciter is subtle by design: at low probability (0.1–0.2) it adds occasional noise bursts that feel like creatures passing through the dark — not a feature, more a presence. Body type is the most dramatic timbre choice: Shipwreck gives a metallic, resonant character (think Vangelis's industrial bass); Cave rounds and deepens it; Trench is massive and nearly pitch-less at its extreme. The Full Column pairing with OPENSKY is the canonical complete patch — do not hesitate to start there.
+
+---
+
+## 38. OUIE — Duophonic Hammerhead Synthesis
+
+**Gallery code:** OUIE | **Accent:** Hammerhead Steel `#708090`
+
+**Identity:** The hammerhead shark at the thermocline — neither bright nor dark, sitting at perfect 50/50 feliX-Oscar polarity. Two voices, each running one of 8 algorithms (VA/Wavetable/FM/Additive on the smooth side; Phase Distortion/Wavefolder/Karplus-Strong/Noise on the rough side). The HAMMER macro sweeps from STRIFE (cross-FM + ring modulation, destructive) to LOVE (spectral blend + harmonic lock, constructive).
+
+**Macros**
+| Macro | Name | Effect |
+|-------|------|--------|
+| M1 | **CHARACTER** (HAMMER) | STRIFE↔LOVE — the interaction axis between the two voices |
+| M2 | **MOVEMENT** (AMPULLAE) | Sensitivity — velocity/aftertouch/expression depth |
+| M3 | **COUPLING** (CARTILAGE) | Flexibility — filter resonance + envelope speed |
+| M4 | **SPACE** (CURRENT) | Environment — chorus depth + delay + reverb |
+
+**Key Parameters**
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|--------------|
+| `ouie_v1Algorithm` | 0–7 | 0=VA, 4=PD | Voice 1 ("Left Eye") algorithm |
+| `ouie_v2Algorithm` | 0–7 | 1=Wavetable | Voice 2 ("Right Eye") algorithm |
+| `ouie_hammer` | -1–+1 | ±0.3–0.6 | STRIFE (<0) or LOVE (>0) interaction |
+| `ouie_voiceMode` | 0–2 | 1=Layer | Split / Layer / Duo voice mode |
+| `ouie_splitPoint` | C0–C8 | C4 | Split point for Split mode |
+| `ouie_v1FilterCutoff` | 20–20k | 800–4k | Voice 1 SVF filter cutoff |
+| `ouie_v2FilterCutoff` | 20–20k | 400–2k | Voice 2 SVF filter cutoff (often lower for contrast) |
+| `ouie_lfo1Rate` | 0.01–10 Hz | 0.1–1.0 | LFO 1 rate (D005 floor: 0.01 Hz) |
+| `ouie_lfo1Depth` | 0–1 | 0.1–0.4 | LFO 1 modulation depth |
+| `ouie_ampAttack` | 0–10 s | 0.01–0.5 | Amp envelope attack |
+| `ouie_ampRelease` | 0–20 s | 0.3–3.0 | Amp envelope release |
+
+**The 8 Algorithms**
+| Index | Name | Character |
+|-------|------|-----------|
+| 0 | VA | Virtual analog saw/square/tri with PWM — warm, familiar |
+| 1 | Wavetable | 16 metallic/organic tables — morphable, textural |
+| 2 | FM | 2-operator carrier+modulator — bell-like, percussive, inharmonic |
+| 3 | Additive | 8 partials with individual amplitude — precise, spectral |
+| 4 | Phase Dist | CZ-style phase distortion — nasal, sharp, hard |
+| 5 | Wavefolder | Triangle multi-stage folding — aggressive, complex |
+| 6 | KS | Karplus-Strong plucked string — organic, transient-rich |
+| 7 | Noise | Filtered noise with pitch tracking — airy, unpitched |
+
+**Coupling**
+- **Sends:** L/R stereo audio; envelope level
+- **Receives:** `AmpToFilter` (external amplitude opens filter), `LFOToPitch` (pitch drift), `AudioToFM` (FM modulation on voice 1), `AudioToRing` (ring modulation input)
+
+**Recommended Pairings**
+- **+ OPENSKY + OCEANDEEP:** OUIE at thermocline between them — the complete trilogy: abyss, surface, and the boundary between
+- **+ OUROBOROS:** OUROBOROS chaos feeding OUIE's AudioToFM — the HAMMER axis becomes unstable in a musically productive way
+- **+ OBBLIGATO:** Breath-driven voice above OUIE's duophonic texture — expressive lead over complex harmonic foundation
+- **+ OBESE:** OBESE saturation on OUIE's output — STRIFE-side HAMMER particularly benefits from additional saturation
+
+**Starter Recipes**
+**Thermocline (LOVE):** V1=VA, V2=Wavetable, HAMMER=+0.6, Mode=Layer — constructive coupling blends the smooth and the textural; spectral richness from harmonic lock
+**Strife Modulator:** V1=FM, V2=Wavefolder, HAMMER=-0.7, Mode=Layer — destructive cross-FM between an inharmonic and an aggressive voice; dissonant and alive
+**Split Persona:** V1=VA (below C4), V2=KS (above C4), Mode=Split, HAMMER=0 — bass register warm and sustained; treble plucked and transient; one instrument, two characters
+**Duo Hunting:** V1=Phase Dist, V2=Noise, Mode=Duo, HAMMER=-0.4 — the two most recent notes interact through ring modulation; each new note changes the texture of the one before it
+
+**Designer Notes**
+OUIE's central insight is that two voices don't need to agree. The HAMMER axis makes the relationship between them the instrument — not either voice in isolation. At LOVE extremes, the voices merge into something more coherent than either: harmonic lock adds intervals that weren't played, spectral blend creates a hybrid timbre. At STRIFE extremes, they fight: cross-FM introduces sidebands between them, ring modulation produces sum-and-difference frequencies that treat both voices as raw signal. The most musically interesting territory is moderate HAMMER values in either direction (±0.3–0.5), where the interaction is audible but not overwhelming. Voice mode shapes how the thermocline is played: Layer makes every note a two-voice interaction; Split gives you two entirely different instruments across the keyboard; Duo makes the most recent note always interact with the previous one — melodic lines that comment on themselves.

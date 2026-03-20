@@ -71,7 +71,20 @@ public:
         // D006: mod wheel also deepens ecosystem (+0–0.35) — strengthens cross-stratum pathways.
         snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
 
-        // 3. Clear buffer and render
+        // 3. Apply accumulated coupling modulation (consumed once per block)
+        snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + couplingEcosystemMod, 0.0f, 1.0f);
+        snapshot.humidity       = std::clamp(snapshot.humidity       + couplingHumidityMod,  0.0f, 1.0f);
+        snapshot.canopyWavefold = std::clamp(snapshot.canopyWavefold + couplingWavefoldMod,  0.0f, 1.0f);
+        snapshot.floorPitch     = std::clamp(snapshot.floorPitch     + couplingPitchMod,     0.0f, 1.0f);
+        snapshot.canopyPitch    = std::clamp(snapshot.canopyPitch    + couplingPitchMod,     0.0f, 1.0f);
+        snapshot.creaturePitch  = std::clamp(snapshot.creaturePitch  + couplingPitchMod,     0.0f, 1.0f);
+        // Reset for next block
+        couplingEcosystemMod = 0.0f;
+        couplingHumidityMod  = 0.0f;
+        couplingWavefoldMod  = 0.0f;
+        couplingPitchMod     = 0.0f;
+
+        // 4. Clear buffer and render
         buffer.clear();
         auto* outL = buffer.getWritePointer(0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
@@ -97,15 +110,43 @@ public:
 
     void applyCouplingInput(xomnibus::CouplingType type,
                             float amount,
-                            const float* sourceBuffer,
-                            int numSamples) override
+                            const float* /*sourceBuffer*/,
+                            int /*numSamples*/) override
     {
-        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
-        // Translate XOmnibus CouplingType to XOcelot StrataModulation
-        // These accumulate and are consumed by the next renderBlock via EcosystemMatrix
-        // For now, route supported types to coupling cache
-        // (Full routing wired when running inside XOmnibus)
-        (void)type; (void)amount; (void)sourceBuffer; (void)numSamples;
+        // Coupling accumulates here; renderBlock consumes and resets each block.
+        switch (type)
+        {
+            case xomnibus::CouplingType::EnvToMorph:
+                // Partner envelope sweeps ecosystemDepth — more envelope activity
+                // deepens cross-stratum coupling, thickening the biome's internal
+                // feed network. Max +0.4 at amount=1.
+                couplingEcosystemMod += amount * 0.4f;
+                break;
+
+            case xomnibus::CouplingType::AmpToFilter:
+                // Partner amplitude modulates humidity — louder partner warms/opens
+                // the biome atmosphere. Multiplier: 1 = no change, >1 = warmer.
+                couplingHumidityMod = std::clamp(couplingHumidityMod + amount * 0.5f,
+                                                  -0.5f, 0.5f);
+                break;
+
+            case xomnibus::CouplingType::AudioToFM:
+                // Partner audio drives canopy wavefold depth — high-frequency
+                // content from a partner adds harmonic folding to the emergent layer.
+                couplingWavefoldMod += amount * 0.3f;
+                break;
+
+            case xomnibus::CouplingType::LFOToPitch:
+            case xomnibus::CouplingType::AmpToPitch:
+            case xomnibus::CouplingType::PitchToPitch:
+                // Pitch nudge shared across all three strata pitch params.
+                // Max ±0.05 semitone equivalent (subtle ecosystem resonance drift).
+                couplingPitchMod += amount * 0.05f;
+                break;
+
+            default:
+                break;
+        }
     }
 
     // ── Parameters ───────────────────────────────────────
@@ -137,6 +178,12 @@ private:
 
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
     float modWheelAmount = 0.0f;
+
+    // ---- Coupling accumulators (reset each block after consumption) ----
+    float couplingEcosystemMod = 0.0f;  // EnvToMorph → ecosystemDepth offset
+    float couplingHumidityMod  = 0.0f;  // AmpToFilter → humidity offset
+    float couplingWavefoldMod  = 0.0f;  // AudioToFM → canopyWavefold offset
+    float couplingPitchMod     = 0.0f;  // LFO/Amp/PitchToPitch → strata pitch offset
 };
 
 } // namespace xocelot

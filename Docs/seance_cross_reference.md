@@ -34,6 +34,9 @@
 | XOrganon | ORGANON | 8/8 PASS | B011 Variational Free Energy | None | D005: no standard LFO | "The VFE implementation is publishable as an academic paper — but it needs a sine wave." |
 | XOsprey | OSPREY | APPROVE/CONDITIONAL | B012 ShoreSystem (shared) | None | D004 + D005: OspreyLFO struct fully implemented, never instantiated | "The LFO is written, tested, elegant — and it has never been called." |
 | XOsteria | OSTERIA | Production-grade | B012 ShoreSystem (shared) | P0-02: warmthFilter only processes mixL; mixR never passes through | None | "The right channel of the warmth filter has been cold since the first compile." |
+| XOmbre | OMBRE | 7.8/10 | None | None | D002: only 1 LFO (2 required) | "Only one LFO — the engine has a ghost but not enough wind to move it." |
+| XOrca | ORCA | 8.1/10 | APEX HUNT macro (5 simultaneous DSP targets) | None | D006: no aftertouch | "The predator hunts without hearing — aftertouch is silent." |
+| XOctopus | OCTOPUS | 8.3/10 | 8-arm prime-ratio LFO system (never phase-locks) | None | D006: no aftertouch | "Eight arms reach into every parameter — but the skin never responds to the player's touch." |
 
 ---
 
