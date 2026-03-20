@@ -1,0 +1,337 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 562" width="880" height="562">
+  <defs>
+    <style>
+      .display { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+      .body { font-family: 'Inter', sans-serif; font-weight: 400; }
+      .body-bold { font-family: 'Inter', sans-serif; font-weight: 700; }
+      .mono { font-family: 'JetBrains Mono', monospace; font-weight: 400; }
+    </style>
+  </defs>
+
+  <!-- DARK MODE — colors from GalleryColors::Dark namespace -->
+
+  <!-- ============================================ -->
+  <!-- BACKGROUND SHELL (Dark: near-black)          -->
+  <!-- ============================================ -->
+  <g id="Background">
+    <rect width="880" height="562" fill="#1A1A1A"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- HEADER BAR                                   -->
+  <!-- ============================================ -->
+  <g id="Header">
+    <rect x="0" y="0" width="880" height="50" fill="#1A1A1A"/>
+    <text x="16" y="32" class="display" font-size="18" fill="#EEEEEE">XO_OX</text>
+    <text x="16" y="44" class="body" font-size="8" fill="#C8C8C8">XOmnibus</text>
+    <text x="570" y="30" class="mono" font-size="9" fill="#C8C8C8">A→B: FreqMod | B→C: AmpMod</text>
+
+    <g id="CMToggle">
+      <rect x="642" y="12" width="42" height="26" rx="4" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="663" y="29" class="body-bold" font-size="9" fill="#C8C8C8" text-anchor="middle">CM</text>
+    </g>
+    <g id="ThemeToggle">
+      <rect x="690" y="12" width="32" height="26" rx="4" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+      <circle cx="706" cy="25" r="7" fill="#E9C46A" opacity="0.3"/>
+      <circle cx="706" cy="25" r="7" fill="none" stroke="#E9C46A" stroke-width="1.5"/>
+    </g>
+    <g id="PresetBrowser">
+      <rect x="730" y="12" width="140" height="26" rx="4" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="740" y="20" class="body" font-size="7" fill="#C8C8C8">PRESET</text>
+      <text x="740" y="30" class="body-bold" font-size="10" fill="#EEEEEE">Velvet Horizon</text>
+      <polygon points="734,25 738,21 738,29" fill="#C8C8C8"/>
+      <polygon points="866,25 862,21 862,29" fill="#C8C8C8"/>
+    </g>
+    <line x1="0" y1="50" x2="880" y2="50" stroke="#4A4A4A" stroke-width="1"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- LEFT SIDEBAR — 4 Engine Slot Tiles           -->
+  <!-- ============================================ -->
+  <g id="Sidebar">
+    <rect x="0" y="50" width="155" height="339" fill="#1A1A1A"/>
+    <line x1="155" y1="50" x2="155" y2="389" stroke="#4A4A4A" stroke-width="1"/>
+
+    <!-- Slot A: OddfeliX (active/selected) -->
+    <g id="SlotA">
+      <rect x="4" y="54" width="147" height="80" rx="6" fill="#2D2D2D" stroke="#E9C46A" stroke-width="2"/>
+      <rect x="4" y="54" width="5" height="80" rx="2" fill="#00A6D6"/>
+      <text x="16" y="70" class="body-bold" font-size="10" fill="#EEEEEE">A</text>
+      <text x="28" y="70" class="display" font-size="10" fill="#00A6D6">ODDFELIX</text>
+      <text x="16" y="83" class="body" font-size="8" fill="#C8C8C8">Neon Tetra Blue</text>
+      <rect x="16" y="92" width="80" height="3" rx="1.5" fill="#363636"/>
+      <rect x="16" y="92" width="52" height="3" rx="1.5" fill="#00A6D6" opacity="0.8"/>
+      <circle cx="140" cy="70" r="4" fill="#E9C46A"/>
+    </g>
+
+    <!-- Slot B: Odyssey -->
+    <g id="SlotB">
+      <rect x="4" y="138" width="147" height="80" rx="6" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+      <rect x="4" y="138" width="5" height="80" rx="2" fill="#7B2D8B"/>
+      <text x="16" y="154" class="body-bold" font-size="10" fill="#EEEEEE">B</text>
+      <text x="28" y="154" class="display" font-size="10" fill="#7B2D8B">ODYSSEY</text>
+      <text x="16" y="167" class="body" font-size="8" fill="#C8C8C8">Violet</text>
+      <rect x="16" y="176" width="80" height="3" rx="1.5" fill="#363636"/>
+      <rect x="16" y="176" width="38" height="3" rx="1.5" fill="#7B2D8B" opacity="0.8"/>
+    </g>
+
+    <!-- Slot C: Ouroboros -->
+    <g id="SlotC">
+      <rect x="4" y="222" width="147" height="80" rx="6" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+      <rect x="4" y="222" width="5" height="80" rx="2" fill="#FF2D2D"/>
+      <text x="16" y="238" class="body-bold" font-size="10" fill="#EEEEEE">C</text>
+      <text x="28" y="238" class="display" font-size="10" fill="#FF2D2D">OUROBOROS</text>
+      <text x="16" y="251" class="body" font-size="8" fill="#C8C8C8">Strange Attractor Red</text>
+      <rect x="16" y="260" width="80" height="3" rx="1.5" fill="#363636"/>
+      <rect x="16" y="260" width="65" height="3" rx="1.5" fill="#FF2D2D" opacity="0.8"/>
+    </g>
+
+    <!-- Slot D: Empty -->
+    <g id="SlotD">
+      <rect x="4" y="306" width="147" height="80" rx="6" fill="#363636" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="4 3"/>
+      <text x="78" y="350" class="body" font-size="10" fill="#C8C8C8" text-anchor="middle">+ Add Engine</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- MAIN CONTENT AREA (Engine Detail View)       -->
+  <!-- ============================================ -->
+  <g id="MainContent">
+    <g id="EngineDetail">
+      <rect x="160" y="54" width="715" height="32" fill="#2D2D2D"/>
+      <rect x="160" y="54" width="715" height="3" fill="#00A6D6"/>
+      <text x="172" y="74" class="display" font-size="14" fill="#00A6D6">ODDFELIX</text>
+      <text x="270" y="74" class="body" font-size="10" fill="#C8C8C8">Neon Tetra — Wavetable + FM Hybrid</text>
+      <line x1="160" y1="86" x2="875" y2="86" stroke="#4A4A4A" stroke-width="0.5"/>
+
+      <!-- PARAMETER GRID -->
+      <g id="ParameterGrid">
+        <text x="172" y="102" class="body-bold" font-size="9" fill="#C8C8C8">PARAMETERS</text>
+
+        <g id="Knob_FilterCutoff" transform="translate(172, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 1 1 12 44" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">CUTOFF</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">2.4 kHz</text>
+        </g>
+
+        <g id="Knob_Resonance" transform="translate(254, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 44 36" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">RESONANCE</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.42</text>
+        </g>
+
+        <g id="Knob_WavePos" transform="translate(336, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 1 1 8 28" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">WAVE POS</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.78</text>
+        </g>
+
+        <g id="Knob_FMDepth" transform="translate(418, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 48 28" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">FM DEPTH</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.30</text>
+        </g>
+
+        <g id="Knob_Attack" transform="translate(500, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 40 14" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">ATTACK</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">12 ms</text>
+        </g>
+
+        <g id="Knob_Release" transform="translate(582, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 44 18" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">RELEASE</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">480 ms</text>
+        </g>
+
+        <g id="Knob_LFORate" transform="translate(664, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 46 32" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">LFO RATE</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">1.2 Hz</text>
+        </g>
+
+        <g id="Knob_LFODepth" transform="translate(746, 110)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 42 20" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">LFO DEPTH</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.25</text>
+        </g>
+
+        <!-- Row 2 -->
+        <g id="Knob_Detune" transform="translate(172, 196)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 38 12" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">DETUNE</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">7 ct</text>
+        </g>
+
+        <g id="Knob_Spread" transform="translate(254, 196)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 44 36" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">SPREAD</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.45</text>
+        </g>
+
+        <g id="Knob_Drive" transform="translate(336, 196)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 42 18" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">DRIVE</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.15</text>
+        </g>
+
+        <g id="Knob_ModWheel" transform="translate(418, 196)">
+          <circle cx="28" cy="28" r="22" fill="none" stroke="#4A4A4A" stroke-width="2"/>
+          <path d="M28 8 A20 20 0 0 1 44 36" fill="none" stroke="#00A6D6" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#00A6D6"/>
+          <text x="28" y="60" class="body" font-size="7" fill="#C8C8C8" text-anchor="middle">MOD WHEEL</text>
+          <text x="28" y="70" class="mono" font-size="8" fill="#EEEEEE" text-anchor="middle">0.50</text>
+        </g>
+      </g>
+
+      <!-- COUPLING STRIP -->
+      <g id="CouplingStrip">
+        <rect x="160" y="286" width="715" height="40" fill="#2D2D2D"/>
+        <rect x="160" y="286" width="715" height="1" fill="#4A4A4A"/>
+        <text x="172" y="300" class="body-bold" font-size="8" fill="#E9C46A">COUPLING</text>
+        <g id="CouplingCard_AB">
+          <rect x="172" y="306" width="100" height="16" rx="3" fill="#E9C46A" opacity="0.1" stroke="#E9C46A" stroke-width="1"/>
+          <text x="222" y="317" class="mono" font-size="7" fill="#E9C46A" text-anchor="middle">A→B FreqMod</text>
+        </g>
+        <g id="CouplingCard_BC">
+          <rect x="280" y="306" width="100" height="16" rx="3" fill="#E9C46A" opacity="0.1" stroke="#E9C46A" stroke-width="1"/>
+          <text x="330" y="317" class="mono" font-size="7" fill="#E9C46A" text-anchor="middle">B→C AmpMod</text>
+        </g>
+        <g id="CouplingCard_AC">
+          <rect x="388" y="306" width="100" height="16" rx="3" fill="#363636" stroke="#4A4A4A" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="438" y="317" class="mono" font-size="7" fill="#C8C8C8" text-anchor="middle">A→C ---</text>
+        </g>
+        <rect x="160" y="326" width="715" height="1" fill="#4A4A4A"/>
+      </g>
+
+      <!-- WAVEFORM -->
+      <g id="Visualizer">
+        <rect x="510" y="196" width="360" height="86" rx="4" fill="#2D2D2D" stroke="#4A4A4A" stroke-width="1"/>
+        <text x="520" y="210" class="body-bold" font-size="8" fill="#C8C8C8">WAVEFORM</text>
+        <polyline points="520,250 540,230 555,260 570,225 585,255 600,235 615,250 630,228 645,258 660,230 675,250 690,235 705,252 720,228 735,245 750,238 765,248 780,240 795,246 810,242 830,248 850,244"
+                  fill="none" stroke="#00A6D6" stroke-width="1.5" opacity="0.9"/>
+        <polyline points="520,252 540,238 555,262 570,232 585,258 600,242 615,252 630,234 645,260 660,238 675,254 690,240 705,256 720,234 735,250 750,242 765,252 780,244 795,250 810,246 830,252 850,248"
+                  fill="none" stroke="#00A6D6" stroke-width="1" opacity="0.3"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- MASTER FX STRIP                              -->
+  <!-- ============================================ -->
+  <g id="MasterFXStrip">
+    <rect x="0" y="389" width="880" height="68" fill="#2D2D2D"/>
+    <line x1="0" y1="389" x2="880" y2="389" stroke="#4A4A4A" stroke-width="1"/>
+    <text x="16" y="404" class="body-bold" font-size="8" fill="#C8C8C8">MASTER FX</text>
+
+    <g id="FX_Reverb">
+      <rect x="16" y="410" width="90" height="40" rx="4" fill="#1A1A1A" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="61" y="424" class="body-bold" font-size="8" fill="#EEEEEE" text-anchor="middle">REVERB</text>
+      <rect x="26" y="432" width="70" height="3" rx="1.5" fill="#363636"/>
+      <rect x="26" y="432" width="42" height="3" rx="1.5" fill="#E9C46A"/>
+      <text x="61" y="445" class="mono" font-size="7" fill="#C8C8C8" text-anchor="middle">60%</text>
+    </g>
+
+    <g id="FX_Delay">
+      <rect x="114" y="410" width="90" height="40" rx="4" fill="#1A1A1A" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="159" y="424" class="body-bold" font-size="8" fill="#EEEEEE" text-anchor="middle">DELAY</text>
+      <rect x="124" y="432" width="70" height="3" rx="1.5" fill="#363636"/>
+      <rect x="124" y="432" width="28" height="3" rx="1.5" fill="#E9C46A"/>
+      <text x="159" y="445" class="mono" font-size="7" fill="#C8C8C8" text-anchor="middle">40%</text>
+    </g>
+
+    <g id="FX_Chorus">
+      <rect x="212" y="410" width="90" height="40" rx="4" fill="#1A1A1A" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="257" y="424" class="body-bold" font-size="8" fill="#EEEEEE" text-anchor="middle">CHORUS</text>
+      <rect x="222" y="432" width="70" height="3" rx="1.5" fill="#363636"/>
+      <rect x="222" y="432" width="18" height="3" rx="1.5" fill="#E9C46A"/>
+      <text x="257" y="445" class="mono" font-size="7" fill="#C8C8C8" text-anchor="middle">25%</text>
+    </g>
+
+    <g id="FX_Compressor">
+      <rect x="310" y="410" width="90" height="40" rx="4" fill="#1A1A1A" stroke="#4A4A4A" stroke-width="1"/>
+      <text x="355" y="424" class="body-bold" font-size="8" fill="#EEEEEE" text-anchor="middle">COMP</text>
+      <rect x="320" y="432" width="70" height="3" rx="1.5" fill="#363636"/>
+      <rect x="320" y="432" width="35" height="3" rx="1.5" fill="#E9C46A"/>
+      <text x="355" y="445" class="mono" font-size="7" fill="#C8C8C8" text-anchor="middle">50%</text>
+    </g>
+
+    <g id="OutputMeter">
+      <rect x="790" y="408" width="8" height="44" rx="2" fill="#363636"/>
+      <rect x="790" y="424" width="8" height="28" rx="2" fill="#00A6D6" opacity="0.7"/>
+      <rect x="802" y="408" width="8" height="44" rx="2" fill="#363636"/>
+      <rect x="802" y="420" width="8" height="32" rx="2" fill="#00A6D6" opacity="0.7"/>
+      <text x="800" y="404" class="mono" font-size="6" fill="#C8C8C8" text-anchor="middle">L  R</text>
+    </g>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- MACRO STRIP                                  -->
+  <!-- ============================================ -->
+  <g id="MacroStrip">
+    <rect x="0" y="457" width="880" height="105" fill="#1A1A1A"/>
+    <line x1="0" y1="457" x2="880" y2="457" stroke="#4A4A4A" stroke-width="1"/>
+
+    <g id="Macro_CHARACTER" transform="translate(60, 466)">
+      <circle cx="40" cy="26" r="22" fill="none" stroke="#E9C46A" stroke-width="2.5"/>
+      <path d="M40 6 A20 20 0 1 1 20 42" fill="none" stroke="#E9C46A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="40" cy="26" r="4" fill="#E9C46A"/>
+      <text x="40" y="58" class="body-bold" font-size="8" fill="#E9C46A" text-anchor="middle">CHARACTER</text>
+      <text x="40" y="70" class="mono" font-size="9" fill="#EEEEEE" text-anchor="middle">0.72</text>
+    </g>
+
+    <g id="Macro_MOVEMENT" transform="translate(230, 466)">
+      <circle cx="40" cy="26" r="22" fill="none" stroke="#E9C46A" stroke-width="2.5"/>
+      <path d="M40 6 A20 20 0 0 1 56 36" fill="none" stroke="#E9C46A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="40" cy="26" r="4" fill="#E9C46A"/>
+      <text x="40" y="58" class="body-bold" font-size="8" fill="#E9C46A" text-anchor="middle">MOVEMENT</text>
+      <text x="40" y="70" class="mono" font-size="9" fill="#EEEEEE" text-anchor="middle">0.45</text>
+    </g>
+
+    <g id="Macro_COUPLING" transform="translate(400, 466)">
+      <circle cx="40" cy="26" r="22" fill="none" stroke="#E9C46A" stroke-width="2.5"/>
+      <path d="M40 6 A20 20 0 0 1 48 10" fill="none" stroke="#E9C46A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="40" cy="26" r="4" fill="#E9C46A"/>
+      <text x="40" y="58" class="body-bold" font-size="8" fill="#E9C46A" text-anchor="middle">COUPLING</text>
+      <text x="40" y="70" class="mono" font-size="9" fill="#EEEEEE" text-anchor="middle">0.18</text>
+    </g>
+
+    <g id="Macro_SPACE" transform="translate(570, 466)">
+      <circle cx="40" cy="26" r="22" fill="none" stroke="#E9C46A" stroke-width="2.5"/>
+      <path d="M40 6 A20 20 0 0 1 58 30" fill="none" stroke="#E9C46A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="40" cy="26" r="4" fill="#E9C46A"/>
+      <text x="40" y="58" class="body-bold" font-size="8" fill="#E9C46A" text-anchor="middle">SPACE</text>
+      <text x="40" y="70" class="mono" font-size="9" fill="#EEEEEE" text-anchor="middle">0.55</text>
+    </g>
+
+    <g id="MasterVolume" transform="translate(760, 466)">
+      <circle cx="30" cy="26" r="20" fill="none" stroke="#EEEEEE" stroke-width="2"/>
+      <path d="M30 8 A18 18 0 1 1 14 40" fill="none" stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="30" cy="26" r="3" fill="#EEEEEE"/>
+      <text x="30" y="56" class="body-bold" font-size="8" fill="#EEEEEE" text-anchor="middle">MASTER</text>
+      <text x="30" y="68" class="mono" font-size="9" fill="#EEEEEE" text-anchor="middle">-3.2 dB</text>
+    </g>
+  </g>
+</svg>
