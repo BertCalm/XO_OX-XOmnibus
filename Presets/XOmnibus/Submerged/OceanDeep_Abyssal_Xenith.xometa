@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Abyssal Xenith",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The farthest point below — total silence interrupted only by alien pressure and distant rumble.",
-  "tags": ["submerged", "extreme-depth", "alien", "pressurized"],
-  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "description": "The farthest point below \u2014 total silence interrupted only by alien pressure and distant rumble.",
+  "tags": [
+    "submerged",
+    "extreme-depth",
+    "alien",
+    "pressurized"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "DEPTH",
+    "LIGHT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,7 +56,8 @@
       "deep_macroPressure": 1.0,
       "deep_macroCreature": 0.08,
       "deep_macroDepth": 1.0,
-      "deep_macroLight": 0.03
+      "deep_macroLight": 0.03,
+      "deep_velCutoffAmt": 0.4
     }
   },
   "macros": {
@@ -53,5 +66,7 @@
     "DEPTH": 1.0,
     "LIGHT": 0.03
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

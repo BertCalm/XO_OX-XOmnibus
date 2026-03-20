@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Siphonophore Song",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A colonial organism singing as one. Bio exciter at 0.6 mix with brightness at 1500 Hz creates a mid-frequency texture layer. LFO1 at 0.043 Hz and LFO2 at 0.029 Hz — two coprime rates that never synchronize, modeling the independent zooids of a siphonophore colony operating in loose coordination. Cave body adds the colony's shared resonant cavity. Each zooid acts independently but the colony produces a unified song.",
+  "tags": [
+    "atmosphere",
+    "organic",
+    "colony",
+    "bioluminescent",
+    "coprime",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns", "Verse: The Bioluminescent Exciter Is Alien Life"],
+    "revelation": "Tempora spoke: 0.043 Hz and 0.029 Hz have a least common multiple period of approximately 790 seconds — over 13 minutes before the exact modulation pattern repeats. This models a colonial organism where individual members operate on their own biological clocks. The colony never achieves perfect synchronization, but the near-alignments create emergent moments of coherence — flashes of unified beauty in an otherwise asynchronous system.",
+    "god": "Tempora",
+    "flock_note": "The Breath recognized: the two LFO rates create moments every 35-40 seconds where they briefly align — the modulations reinforce and the sound blooms. Between alignments, the texture drifts. This models real siphonophore behavior where zooids occasionally coordinate for feeding bursts.",
+    "diagnosis": "This sound was a textured pad. It is now a colonial organism — individual modulation sources operating on independent biological clocks, producing emergent moments of unity from mathematical inevitability."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.75,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.5,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 550.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.25,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.5,
+      "deep_bodyMix": 0.3,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.6,
+      "deep_bioBrightness": 1500.0,
+      "deep_pressureAmt": 0.35,
+      "deep_ampAtk": 0.25,
+      "deep_ampDec": 3.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.043,
+      "deep_lfo1Depth": 0.45,
+      "deep_lfo2Rate": 0.029,
+      "deep_lfo2Depth": 0.3,
+      "deep_reverbMix": 0.4,
+      "deep_macroPressure": 0.3,
+      "deep_macroCreature": 0.65,
+      "deep_macroWreck": 0.2,
+      "deep_macroAbyss": 0.45
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.3,
+    "CREATURE": 0.65,
+    "WRECK": 0.2,
+    "ABYSS": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

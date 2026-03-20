@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Macro Journey",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A preset designed to be played entirely through its macros. All base parameters set to minimum viable values. PRESSURE macro takes you from gentle sub to crushing compression. CREATURE macro introduces alien life from silence. WRECK macro transitions from open water through cave to full wreck mode. ABYSS macro sweeps the filter from 750 Hz to near-silence while flooding the reverb. Play one note. Now perform with the four macros — each one is a depth dial.",
+  "tags": [
+    "bass",
+    "performance",
+    "macro",
+    "expressive",
+    "journey",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["D002: Modulation is the Lifeblood", "D006: Expression Input Is Not Optional"],
+    "revelation": "Pressura spoke: this preset has no fixed identity. Its identity is whatever the performer makes it through the macros. All four macros start at 0 — the sound is a clean, open, dry sine bass. As each macro rises, a different dimension of the abyss opens. At all macros at 1.0, every system is active: maximum pressure, maximum creature, full wreck mode, total darkness with reverb. The journey from (0,0,0,0) to (1,1,1,1) IS the performance.",
+    "god": "Pressura",
+    "flock_note": "The Tongue mapped the macro arc: (0,0,0,0) = clean sine at 750 Hz. (1,0,0,0) = crushed sub. (0,1,0,0) = alien choir. (0,0,1,0) = wreck hull. (0,0,0,1) = dark reverb drone. (1,1,1,1) = the complete abyss. 16 combinations, 16 distinct sounds from one preset.",
+    "diagnosis": "This sound is not a sound. It is a journey. The destination depends on which macros the performer touches and in what order."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.6,
+      "deep_subOctMix": 0.3,
+      "deep_filterCutoff": 750.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.5,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.3,
+      "deep_bodyMix": 0.05,
+      "deep_bioRate": 0.06,
+      "deep_bioMix": 0.02,
+      "deep_bioBrightness": 1200.0,
+      "deep_pressureAmt": 0.1,
+      "deep_ampAtk": 0.02,
+      "deep_ampDec": 1.0,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 2.0,
+      "deep_lfo1Rate": 0.05,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.08,
+      "deep_reverbMix": 0.05,
+      "deep_macroPressure": 0.0,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.0
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.0,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

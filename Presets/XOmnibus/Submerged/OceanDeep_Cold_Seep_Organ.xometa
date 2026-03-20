@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Cold Seep Organ",
+  "mood": "Submerged",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A pipe organ built by geology. Cave body mode with feedback 0.7 tuned to the fundamental creates organ-like resonance. The three sub oscillators at fundamental, -1 oct, and -2 oct map to 8', 16', and 32' organ stops. Filter cutoff at 500 Hz with resonance 0.5 creates the closed-pipe formant. A cold seep is a place where methane bubbles rise from the seafloor — each bubble becomes a note, each geological formation becomes a pipe. The WRECK macro transitions from cave organ to industrial wreck organ.",
+  "tags": [
+    "bass",
+    "organ",
+    "resonant",
+    "geological",
+    "pipes",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The Cave Body Mode — Walls That Hum Back", "Verse: The Depth Column — Mid Zone"],
+    "revelation": "Nexus spoke: the three sine oscillators at fundamental, -1 oct, and -2 oct are identical in structure to organ stop registrations (8', 16', 32'). The waveguide body in cave mode is a pipe resonator. OCEANDEEP IS an organ — it was always an organ. The deep_subOctMix parameter is a stop drawbar. The body feedback is the pipe length. The filter cutoff is whether the pipe is open (high cutoff) or closed (low cutoff).",
+    "god": "Nexus",
+    "flock_note": "The Eye mapped the correspondence: subOctMix 0.0 = 8' only (fundamental). subOctMix 0.5 = 8'+16'. subOctMix 1.0 = 8'+16'+32'. This exactly mirrors organ registration. The Finger set feedback at 0.7 — the resonance point where the cave body adds sustain and harmonic emphasis without overwhelming the direct signal.",
+    "diagnosis": "This sound was a resonant bass. It is now a submarine pipe organ — three stops, cave resonance as pipe body, darkness filter as closed/open pipe voicing. The metaphor was always there; the preset reveals it."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.65,
+      "deep_filterCutoff": 500.0,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.7,
+      "deep_bodyMix": 0.5,
+      "deep_bioRate": 0.03,
+      "deep_bioMix": 0.03,
+      "deep_bioBrightness": 400.0,
+      "deep_pressureAmt": 0.35,
+      "deep_ampAtk": 0.05,
+      "deep_ampDec": 1.5,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 2.5,
+      "deep_lfo1Rate": 0.025,
+      "deep_lfo1Depth": 0.04,
+      "deep_lfo2Rate": 0.018,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.35,
+      "deep_macroPressure": 0.3,
+      "deep_macroCreature": 0.03,
+      "deep_macroWreck": 0.35,
+      "deep_macroAbyss": 0.4
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.3,
+    "CREATURE": 0.03,
+    "WRECK": 0.35,
+    "ABYSS": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

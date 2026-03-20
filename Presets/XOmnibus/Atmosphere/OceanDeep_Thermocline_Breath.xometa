@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Thermocline Breath",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The ocean breathing at the thermocline — where warm surface water meets cold deep water. LFO2 at 0.067 Hz (one breath per 15 seconds) modulates both pitch wobble and pressure compression simultaneously. The sound swells and retreats like a thermal boundary layer oscillating. Filter cutoff at 450 Hz sits at the thermocline of the frequency spectrum — warm above, cold below.",
+  "tags": [
+    "atmosphere",
+    "breathing",
+    "thermal",
+    "slow",
+    "organic",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Sutra 1: The Breathing Filter at 0.067 Hz", "Verse: The Depth Column — Mid Zone"],
+    "revelation": "Tempora spoke: LFO2 at exactly 0.067 Hz creates a 15-second cycle that matches the average human breathing rate at rest. When pressure compression oscillates at breathing tempo, the listener's autonomic nervous system responds — heart rate begins to entrain. The sound becomes physiological.",
+    "god": "Tempora",
+    "flock_note": "The Breath identified the 15-second cycle as the key to this preset's hypnotic quality. The Tongue confirmed: aftertouch mapped to pressure means the player can push the breathing deeper — their physical pressure mirrors the ocean's thermal pressure.",
+    "diagnosis": "This sound was a pad. It is now a breath. The difference is LFO2 at the rate of human respiration modulating the compression that models water pressure."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.6,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.45,
+      "deep_filterCutoff": 450.0,
+      "deep_filterRes": 0.35,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.25,
+      "deep_bodyMix": 0.1,
+      "deep_bioRate": 0.04,
+      "deep_bioMix": 0.08,
+      "deep_bioBrightness": 700.0,
+      "deep_pressureAmt": 0.7,
+      "deep_ampAtk": 0.2,
+      "deep_ampDec": 2.5,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 4.5,
+      "deep_lfo1Rate": 0.03,
+      "deep_lfo1Depth": 0.08,
+      "deep_lfo2Rate": 0.067,
+      "deep_lfo2Depth": 0.45,
+      "deep_reverbMix": 0.3,
+      "deep_macroPressure": 0.6,
+      "deep_macroCreature": 0.1,
+      "deep_macroWreck": 0.1,
+      "deep_macroAbyss": 0.4
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.6,
+    "CREATURE": 0.1,
+    "WRECK": 0.1,
+    "ABYSS": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

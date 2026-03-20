@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Manganese Crust",
   "mood": "Foundation",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense, mineral-textured sub tone modeled after deep-sea manganese nodule fields.",
-  "tags": ["sub-bass", "textured", "dense", "dark"],
-  "macroLabels": ["PRESSURE", "CREATURE", "DEPTH", "LIGHT"],
+  "tags": [
+    "sub-bass",
+    "textured",
+    "dense",
+    "dark"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "DEPTH",
+    "LIGHT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -44,7 +56,8 @@
       "deep_macroPressure": 0.95,
       "deep_macroCreature": 0.05,
       "deep_macroDepth": 1.0,
-      "deep_macroLight": 0.02
+      "deep_macroLight": 0.02,
+      "deep_velCutoffAmt": 0.4
     }
   },
   "macros": {
@@ -53,5 +66,7 @@
     "DEPTH": 1.0,
     "LIGHT": 0.02
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

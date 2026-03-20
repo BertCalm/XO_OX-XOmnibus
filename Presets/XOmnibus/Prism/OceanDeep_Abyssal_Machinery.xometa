@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Machinery",
+  "mood": "Prism",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Industrial machinery at the bottom of the sea. Wreck body mode at maximum feedback (0.9) creates self-oscillating hull resonance — the comb filter nearly singing on its own. Combined with fast LFO1 (1.5 Hz) modulating the filter cutoff, the result is a rhythmic metallic pumping. Bio exciter at 0.4 mix adds mechanical clicking. The sound of a machine that has been running at the ocean floor for centuries, forgotten by everyone on the surface.",
+  "tags": [
+    "bass",
+    "industrial",
+    "machinery",
+    "rhythmic",
+    "metallic",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The Three Body Characters — Wreck", "Canon 2: High Waveguide Feedback Creates Pitched Resonance"],
+    "revelation": "Nexus spoke: bodyFeedback at 0.9 is the absolute edge of stability. The allpass diffusion in wreck mode prevents true self-oscillation but creates a sustained metallic drone that persists between note triggers. Combined with LFO1 at 1.5 Hz, the filter cutoff pumps rhythmically — creating a mechanical breathing pattern. The machine breathes but it is not alive.",
+    "god": "Nexus",
+    "flock_note": "The Bone flagged: bodyFeedback 0.9 is safe because the allpass coefficient is fixed at 0.3 — total loop gain stays below unity. No runaway risk. The Tongue found that aftertouch at this feedback level creates a howling effect — pressing harder makes the wreck scream.",
+    "diagnosis": "This sound was metallic bass. It is now industrial deep-sea infrastructure — a machine with no operator, running on geothermal power, pumping rhythmically at the edge of the feedback threshold."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.8,
+    "space": 0.2,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.65,
+      "deep_subOctMix": 0.25,
+      "deep_filterCutoff": 550.0,
+      "deep_filterRes": 0.55,
+      "deep_velCutoffAmt": 0.6,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.9,
+      "deep_bodyMix": 0.7,
+      "deep_bioRate": 0.35,
+      "deep_bioMix": 0.4,
+      "deep_bioBrightness": 2200.0,
+      "deep_pressureAmt": 0.55,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 0.5,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 1.2,
+      "deep_lfo1Rate": 1.5,
+      "deep_lfo1Depth": 0.5,
+      "deep_lfo2Rate": 0.08,
+      "deep_lfo2Depth": 0.2,
+      "deep_reverbMix": 0.1,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.5,
+      "deep_macroWreck": 0.9,
+      "deep_macroAbyss": 0.15
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.5,
+    "WRECK": 0.9,
+    "ABYSS": 0.15
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

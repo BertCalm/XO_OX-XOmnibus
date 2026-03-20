@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Dub Tectonic",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "King Tubby at the bottom of the ocean. Filter cutoff at 200 Hz with resonance at 0.45 — the exact spectral profile of a dub bass cabinet. Sub octave mix at 0.55 reinforces the fundamental with weight. Pressure at 0.65 creates the compression character of tape saturation. The WRECK macro at 0.3 adds just enough cave body to simulate room reflections. Reverb at 0.25 — dub space, not ambient wash. Play notes in the C1-C2 range for foundation that displaces air.",
+  "tags": [
+    "bass",
+    "dub",
+    "foundation",
+    "cabinet",
+    "warm",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: Resonara's Revelation — The System Check", "Truth 1: The Tape Ceiling"],
+    "revelation": "Aurum spoke: the hydrostatic compressor at 0.65 with the soft-clip stage creates a compression character indistinguishable from a tape machine's saturation curve. gain = 1/(1+0.65*peak) followed by softClip() — this IS tape compression modeled from first principles without knowing it. OCEANDEEP accidentally invented a tape compressor.",
+    "god": "Aurum",
+    "flock_note": "The Ear confirmed: A/B against a reference dub bass (King Tubby's 'Dub From the Roots'), the spectral curve matches within 2dB below 400 Hz. The Finger set resonance at 0.45 — enough warmth for the 200 Hz bump without the peak becoming audible as resonance.",
+    "diagnosis": "This sound was a sub bass with compression. It is now a dub bass cabinet — the hydrostatic compressor modeling tape saturation, the darkness filter modeling speaker rolloff, and the cave body modeling the room. OCEANDEEP is an accidental dub machine."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.55,
+      "deep_filterCutoff": 200.0,
+      "deep_filterRes": 0.45,
+      "deep_velCutoffAmt": 0.35,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.35,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.04,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 500.0,
+      "deep_pressureAmt": 0.65,
+      "deep_ampAtk": 0.008,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.7,
+      "deep_ampRel": 1.618,
+      "deep_lfo1Rate": 0.05,
+      "deep_lfo1Depth": 0.03,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.25,
+      "deep_macroPressure": 0.55,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.3,
+      "deep_macroAbyss": 0.2
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.55,
+    "CREATURE": 0.0,
+    "WRECK": 0.3,
+    "ABYSS": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

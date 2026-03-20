@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Gulper Strike",
+  "mood": "Flux",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The gulper eel attacks. Near-zero attack (1ms), fast decay (0.3s), no sustain — a percussive sub hit. Wreck body mode with high feedback creates a metallic snap on the transient. Pressure at 0.9 squashes the peak into a physical thump. The bio exciter adds a bright flash at 3500 Hz on each strike — the bioluminescent burst of a predator lunging. Designed for 808-adjacent sub drops.",
+  "tags": [
+    "bass",
+    "percussive",
+    "hit",
+    "sub-drop",
+    "808",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: Pressure Is the Synthesis", "Canon 1: The Tape Ceiling — Saturation at 0.03-0.08"],
+    "revelation": "Pressura spoke: ampAtk at 0.001 with pressureAmt at 0.9 creates an inverted dynamic — the louder the initial transient, the harder it gets compressed. The result is a thump that hits chest then immediately retreats. The gulper's jaw unhinges and snaps shut in 300 milliseconds.",
+    "god": "Pressura",
+    "flock_note": "The Tongue found that this preset responds to velocity like a drum machine: vel 40 = gentle tap, vel 100 = solid hit, vel 127 = the room shakes. The Bone confirmed: at 3% CPU this is the cheapest 808-class sound in the fleet.",
+    "diagnosis": "This sound was a sustained bass pretending to be percussive. It is now a deep-sea predator strike — pure transient energy shaped by the hydrostatic compressor into physical impact."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.1,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.9,
+      "deep_subOctMix": 0.6,
+      "deep_filterCutoff": 500.0,
+      "deep_filterRes": 0.4,
+      "deep_velCutoffAmt": 0.7,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.7,
+      "deep_bodyMix": 0.35,
+      "deep_bioRate": 0.5,
+      "deep_bioMix": 0.2,
+      "deep_bioBrightness": 3500.0,
+      "deep_pressureAmt": 0.9,
+      "deep_ampAtk": 0.001,
+      "deep_ampDec": 0.3,
+      "deep_ampSus": 0.0,
+      "deep_ampRel": 0.8,
+      "deep_lfo1Rate": 0.2,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.1,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.05,
+      "deep_macroPressure": 0.85,
+      "deep_macroCreature": 0.25,
+      "deep_macroWreck": 0.5,
+      "deep_macroAbyss": 0.05
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.85,
+    "CREATURE": 0.25,
+    "WRECK": 0.5,
+    "ABYSS": 0.05
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

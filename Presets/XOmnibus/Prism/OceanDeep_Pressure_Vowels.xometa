@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Vowels",
+  "mood": "Prism",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The deep speaks in vowels. Wreck body mode with feedback 0.78 creates spectral complexity. Filter resonance at 0.8 with cutoff at 320 Hz produces a strong formant peak. LFO1 modulates the cutoff by 50 Hz at 0.1 Hz — the formant slowly shifts between 'oo' and 'oh' vowels. The mod wheel darkens the formant further toward 'uh'. Three vowels from one filter, no formant synthesis required.",
+  "tags": [
+    "bass",
+    "formant",
+    "vowel",
+    "speaking",
+    "spectral",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Sutra 5: The Formant Whisper", "D006: Expression Input Is Not Optional"],
+    "revelation": "Resonara spoke: the darkness filter's 2-pole Butterworth at Q 9.7 (filterRes 0.8) creates a resonant peak sharp enough to function as a formant. At 320 Hz it produces 'oo', at 370 Hz it shifts to 'oh', at 250 Hz it becomes 'uh'. LFO1 at 0.1 Hz sweeps between two vowels autonomously. The mod wheel accesses the third. Three phonemes from a lowpass filter.",
+    "god": "Resonara",
+    "flock_note": "The Eye confirmed: spectral analysis shows a 12dB peak at cutoff frequency with 0.8 resonance. This peak width and height matches first-formant characteristics of back vowels. The Finger pinpointed 320 Hz as the crossover between 'oo' and 'oh' — the exact midpoint.",
+    "diagnosis": "This sound was a resonant bass. It is now a speaking bass — producing recognizable vowel formants from nothing but a resonant lowpass filter and LFO modulation."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.7,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.3,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.75,
+      "deep_subOctMix": 0.35,
+      "deep_filterCutoff": 320.0,
+      "deep_filterRes": 0.8,
+      "deep_velCutoffAmt": 0.45,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.78,
+      "deep_bodyMix": 0.4,
+      "deep_bioRate": 0.06,
+      "deep_bioMix": 0.05,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.03,
+      "deep_ampDec": 1.5,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 2.0,
+      "deep_lfo1Rate": 0.1,
+      "deep_lfo1Depth": 0.35,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.08,
+      "deep_reverbMix": 0.15,
+      "deep_macroPressure": 0.4,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.55,
+      "deep_macroAbyss": 0.25
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.4,
+    "CREATURE": 0.05,
+    "WRECK": 0.55,
+    "ABYSS": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

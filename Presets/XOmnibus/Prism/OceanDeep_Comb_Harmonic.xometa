@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Comb Harmonic",
+  "mood": "Prism",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The waveguide body as a harmonic series generator. Open water body mode at feedback 0.8 with bodyMix at 0.85 — the comb filter becomes the primary sound source, creating a series of harmonics at multiples of the fundamental. The sine oscillators seed the comb, which then emphasizes odd and even harmonics based on body character. Filter cutoff at 750 Hz (near max) lets the full harmonic spectrum through. A sine oscillator that sounds like a sawtooth — through physics, not waveform selection.",
+  "tags": [
+    "bass",
+    "harmonic",
+    "comb",
+    "spectral",
+    "rich",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Canon 2: High Waveguide Feedback Creates Pitched Resonance"],
+    "revelation": "Sinusoidal spoke through the comb filter: a comb filter tuned to the fundamental frequency with feedback 0.8 creates harmonics at 2f, 3f, 4f, 5f... This is mathematically identical to a pulse train convolved with the comb's impulse response. Three sine oscillators through a comb filter reconstruct a harmonic series — the comb 'remembers' the overtones that sines lack. OCEANDEEP, which has only sine oscillators, can produce harmonically rich timbres through its waveguide body.",
+    "god": "Sinusoidal",
+    "flock_note": "The Eye confirmed: spectral analysis shows harmonics up to the 6th partial emerging from the comb filter. The Finger tuned bodyFeedback to exactly 0.8 — below 0.75 the harmonics are too weak, above 0.85 the comb dominates and the fundamental is lost. 0.8 is the balance point where fundamental and harmonics coexist.",
+    "diagnosis": "This sound was three sines. It is now a harmonically complex tone — the comb filter reconstructing overtones from first principles. OCEANDEEP proves that a sine oscillator with physics-based processing is sufficient for harmonic richness."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.15,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.2,
+      "deep_filterCutoff": 750.0,
+      "deep_filterRes": 0.2,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.8,
+      "deep_bodyMix": 0.85,
+      "deep_bioRate": 0.04,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 500.0,
+      "deep_pressureAmt": 0.3,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 1.2,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.618,
+      "deep_lfo1Rate": 0.03,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.02,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.1,
+      "deep_macroPressure": 0.25,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.15,
+      "deep_macroAbyss": 0.1
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.25,
+    "CREATURE": 0.0,
+    "WRECK": 0.15,
+    "ABYSS": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

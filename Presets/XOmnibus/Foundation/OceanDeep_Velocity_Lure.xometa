@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Velocity Lure",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The anglerfish's bioluminescent lure — activated by velocity. velCutoffAmt at 1.0 means soft playing produces pure darkness (cutoff 120 Hz), while maximum velocity opens the filter to 270 Hz and lets the bio exciter's brightness pierce through. The lure flashes when the fish strikes. Play pp for stalking, ff for the kill.",
+  "tags": [
+    "bass",
+    "velocity",
+    "expressive",
+    "predator",
+    "dynamic",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["D001: Velocity Must Shape Timbre", "Verse: The Velocity Gate"],
+    "revelation": "Pressura spoke: velCutoffAmt at maximum (1.0) with base cutoff at 120 Hz creates a 150 Hz velocity range. At velocity 0, the filter is at 120 Hz — nearly subsonic. At velocity 127, it opens to 270 Hz. This is not a volume change. This is the difference between a predator hiding in darkness and a predator revealing its lure. D001 fulfilled at its deepest level.",
+    "god": "Pressura",
+    "flock_note": "The Tongue mapped the full velocity arc: vel 20 = pure sub rumble, vel 64 = body resonance appears, vel 100 = bio brightness begins to cut through, vel 127 = the full lure flash. Four distinct timbral zones from one continuous parameter.",
+    "diagnosis": "This sound was a bass with velocity response. It is now a predator with behavioral states controlled by touch. The velocity curve IS the creature's behavior."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.8,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 120.0,
+      "deep_filterRes": 0.55,
+      "deep_velCutoffAmt": 1.0,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.35,
+      "deep_bodyMix": 0.25,
+      "deep_bioRate": 0.12,
+      "deep_bioMix": 0.3,
+      "deep_bioBrightness": 1800.0,
+      "deep_pressureAmt": 0.6,
+      "deep_ampAtk": 0.005,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.7,
+      "deep_ampRel": 1.618,
+      "deep_lfo1Rate": 0.08,
+      "deep_lfo1Depth": 0.15,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.1,
+      "deep_reverbMix": 0.15,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.35,
+      "deep_macroWreck": 0.2,
+      "deep_macroAbyss": 0.3
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.5,
+    "CREATURE": 0.35,
+    "WRECK": 0.2,
+    "ABYSS": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

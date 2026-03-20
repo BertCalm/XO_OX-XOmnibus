@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Whale Fall",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A whale carcass sinking through the water column — the largest gift the deep sea ever receives. Extremely slow attack (0.5s) with the full sub stack descending. LFO2 at 0.015 Hz creates a descent cycle lasting over a minute. Filter starts at 600 Hz and the ABYSS macro sweeps it down to near-silence. Bio exciter at low brightness (400 Hz) represents the scavenger creatures that follow the falling body. Play a note and wait — the descent takes time.",
+  "tags": [
+    "atmosphere",
+    "evolving",
+    "descent",
+    "organic",
+    "slow",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns", "Verse: The Depth Column"],
+    "revelation": "Tempora and Sinusoidal spoke together: LFO2 at 0.015 Hz takes 66.7 seconds per cycle. Over one minute, the pitch wobble creates a slow downward pull — the fundamental frequency drifts lower then returns. Combined with ABYSS macro at 0.7, the filter closes over the course of the note. The sound descends through the water column in real time. Patience is the instrument.",
+    "god": "Tempora",
+    "flock_note": "The Ear heard the full descent arc: bright and present at note-on, then gradually dimming over 30 seconds as pressure increases and darkness envelops. The Breath confirmed: this is a one-note composition. Play C2 and the next 60 seconds write themselves.",
+    "diagnosis": "This sound was an atmospheric bass. It is now an event — a whale fall that takes a full minute to complete its journey from surface light to trench floor darkness."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.75,
+      "deep_subOctMix": 0.6,
+      "deep_filterCutoff": 600.0,
+      "deep_filterRes": 0.3,
+      "deep_velCutoffAmt": 0.15,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.2,
+      "deep_bodyMix": 0.1,
+      "deep_bioRate": 0.03,
+      "deep_bioMix": 0.12,
+      "deep_bioBrightness": 400.0,
+      "deep_pressureAmt": 0.55,
+      "deep_ampAtk": 0.5,
+      "deep_ampDec": 5.0,
+      "deep_ampSus": 0.6,
+      "deep_ampRel": 8.0,
+      "deep_lfo1Rate": 0.02,
+      "deep_lfo1Depth": 0.1,
+      "deep_lfo2Rate": 0.015,
+      "deep_lfo2Depth": 0.5,
+      "deep_reverbMix": 0.5,
+      "deep_macroPressure": 0.5,
+      "deep_macroCreature": 0.15,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.7
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.5,
+    "CREATURE": 0.15,
+    "WRECK": 0.0,
+    "ABYSS": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

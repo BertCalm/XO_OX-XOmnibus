@@ -52,7 +52,8 @@
       "deep_attack": 0.01,
       "deep_decay": 1.6,
       "deep_sustain": 0.82,
-      "deep_release": 3.2
+      "deep_release": 3.2,
+      "deep_velCutoffAmt": 0.4
     }
   },
   "macros": {

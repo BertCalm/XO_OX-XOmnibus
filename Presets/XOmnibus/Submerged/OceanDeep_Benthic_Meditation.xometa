@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Meditation",
+  "mood": "Submerged",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sitting on the ocean floor in complete stillness. Every parameter tuned for maximum depth and minimum movement. Filter at 100 Hz, resonance at 0.15 (no peak — pure roll-off). No bio exciter. No body. No reverb. Just three sine oscillators at fundamental, -1 oct, -2 oct, pressed flat by the hydrostatic compressor at 0.8. The sound of absolute stillness under absolute pressure. Mod wheel opens the filter to 250 Hz — the first hint of light in the abyss.",
+  "tags": [
+    "sub",
+    "minimal",
+    "meditation",
+    "pressure",
+    "stillness",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The System Check — Strip Away Everything", "Canon 3: Subtraction Before Addition"],
+    "revelation": "Parsimonia spoke: the most transcendent OCEANDEEP preset has the fewest active parameters. Body mix 0. Bio mix 0. Reverb mix 0. LFO depths near zero. What remains is the irreducible core — three sines under pressure through a dark filter. This is what OCEANDEEP IS before it becomes anything else. CPU cost: 2%. The cheapest sound in the fleet is also the deepest.",
+    "god": "Parsimonia",
+    "flock_note": "The Bone measured 2.1% CPU. The Ear heard: nothing above 100 Hz. Pure sub-bass presence that vibrates the room without occupying any audible frequency band. The Tongue discovered the mod wheel acts as a depth gauge — turn it and you ascend from the hadal zone toward the bathypelagic.",
+    "diagnosis": "This sound was nothing. It is now the sound of nothing — and that nothing has more weight than everything. The absence of features IS the feature."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.02,
+    "warmth": 0.95,
+    "movement": 0.05,
+    "density": 0.3,
+    "space": 0.0,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.9,
+      "deep_subOctMix": 0.7,
+      "deep_filterCutoff": 100.0,
+      "deep_filterRes": 0.15,
+      "deep_velCutoffAmt": 0.1,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.01,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 200.0,
+      "deep_pressureAmt": 0.8,
+      "deep_ampAtk": 0.15,
+      "deep_ampDec": 2.0,
+      "deep_ampSus": 1.0,
+      "deep_ampRel": 3.0,
+      "deep_lfo1Rate": 0.01,
+      "deep_lfo1Depth": 0.02,
+      "deep_lfo2Rate": 0.01,
+      "deep_lfo2Depth": 0.02,
+      "deep_reverbMix": 0.0,
+      "deep_macroPressure": 0.75,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.9
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.75,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

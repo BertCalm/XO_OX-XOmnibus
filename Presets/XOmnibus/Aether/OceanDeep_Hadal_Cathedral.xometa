@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Cathedral",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Mariana Trench as a cathedral. Cave body mode with feedback at 0.85 (near self-oscillation) creates pitched resonance tuned to the note's fundamental. Reverb at 0.7 extends the tail into eternity. The darkness filter at 350 Hz with resonance 0.6 creates a warm formant. Release at 6.5 seconds — golden ratio times four. The note ends but the cathedral keeps singing.",
+  "tags": [
+    "drone",
+    "cathedral",
+    "reverb",
+    "eternal",
+    "hadal",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Truth 6: The Release Cathedral at Golden Ratio", "Verse: The Cave Body Mode — Walls That Hum Back"],
+    "revelation": "Nexus spoke: cave bodyFeedback at 0.85 is 94% of self-oscillation threshold. The comb filter is one reflection away from becoming a resonator. At this threshold, every note produces a pitched tail that sustains beyond the envelope — the cave itself becomes a voice that outlasts the player's gesture. The boundary between instrument and architecture dissolves.",
+    "god": "Nexus",
+    "flock_note": "The Ear heard the reverb tail and the body resonance merge into a single sustained voice after note-off. The Bone confirmed: despite heavy reverb, CPU stays at 4% — the reverb is block-rate, not per-sample.",
+    "diagnosis": "This sound was a reverberant bass. It is now a cathedral at the bottom of the ocean where every note becomes a permanent resident of the acoustic space."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.85,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.95,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.65,
+      "deep_subOctMix": 0.55,
+      "deep_filterCutoff": 350.0,
+      "deep_filterRes": 0.6,
+      "deep_velCutoffAmt": 0.2,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.85,
+      "deep_bodyMix": 0.55,
+      "deep_bioRate": 0.02,
+      "deep_bioMix": 0.06,
+      "deep_bioBrightness": 500.0,
+      "deep_pressureAmt": 0.3,
+      "deep_ampAtk": 0.3,
+      "deep_ampDec": 4.0,
+      "deep_ampSus": 0.9,
+      "deep_ampRel": 6.5,
+      "deep_lfo1Rate": 0.02,
+      "deep_lfo1Depth": 0.06,
+      "deep_lfo2Rate": 0.015,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.7,
+      "deep_macroPressure": 0.25,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.3,
+      "deep_macroAbyss": 0.85
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.25,
+    "CREATURE": 0.05,
+    "WRECK": 0.3,
+    "ABYSS": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

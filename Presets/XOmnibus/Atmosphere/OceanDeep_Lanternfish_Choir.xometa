@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Lanternfish Choir",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The bioluminescent exciter becomes the primary voice. bioMix at 0.75 with bioBrightness at 2800 Hz creates a flickering bandpass choir above the sub foundation. Two LFOs at coprime rates (0.067 Hz and 0.043 Hz) create irregular trigger patterns — the lanternfish don't synchronize, they converse. The sub sits at -18dB beneath, felt not heard.",
+  "tags": [
+    "atmosphere",
+    "bioluminescent",
+    "choir",
+    "alien",
+    "creatures",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The Bioluminescent Exciter Is Alien Life", "Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns"],
+    "revelation": "Tempora spoke: bioRate 0.067 Hz and lfo1Rate 0.043 Hz are coprime — their least common period is ~330 seconds. For five and a half minutes, the pattern never repeats. The lanternfish choir sings a song longer than any human attention span.",
+    "god": "Tempora",
+    "flock_note": "The Breath discovered that at bioMix 0.75, the exciter IS the sound — the sub is just weight beneath it. The Ear confirmed: bioBrightness 2800 Hz sits exactly in the vocal presence range. The choir is speaking in a frequency band the human ear is most sensitive to.",
+    "diagnosis": "This sound was bass with bioluminescent seasoning. It is now a choir of alien creatures over a sub-oceanic foundation. The exciter moved from decoration to identity."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.35,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 700.0,
+      "deep_filterRes": 0.25,
+      "deep_velCutoffAmt": 0.35,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.3,
+      "deep_bodyMix": 0.15,
+      "deep_bioRate": 0.067,
+      "deep_bioMix": 0.75,
+      "deep_bioBrightness": 2800.0,
+      "deep_pressureAmt": 0.25,
+      "deep_ampAtk": 0.15,
+      "deep_ampDec": 3.0,
+      "deep_ampSus": 0.85,
+      "deep_ampRel": 5.0,
+      "deep_lfo1Rate": 0.043,
+      "deep_lfo1Depth": 0.4,
+      "deep_lfo2Rate": 0.019,
+      "deep_lfo2Depth": 0.15,
+      "deep_reverbMix": 0.45,
+      "deep_macroPressure": 0.2,
+      "deep_macroCreature": 0.8,
+      "deep_macroWreck": 0.15,
+      "deep_macroAbyss": 0.5
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.2,
+    "CREATURE": 0.8,
+    "WRECK": 0.15,
+    "ABYSS": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

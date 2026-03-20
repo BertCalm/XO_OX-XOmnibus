@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Lock",
+  "mood": "Flux",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Gravitational lock between two modulation sources. LFO1 at 2.0 Hz (maximum) creates rapid filter movement. LFO2 at exactly 1.0 Hz creates a pressure modulation at half the filter rate. The 2:1 frequency ratio creates a tidally locked system — the filter breathes twice for every pressure cycle, producing a complex but repeating polyrhythmic texture. Aftertouch increases pressure compression, breaking the tidal lock into chaos.",
+  "tags": [
+    "bass",
+    "rhythmic",
+    "polyrhythm",
+    "modulation",
+    "tidal",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Sutra 4: Integer LFO Ratios Create Stable Polyrhythms", "D006: Expression Input Is Not Optional"],
+    "revelation": "Tempora spoke: LFO1 at 2.0 Hz and LFO2 at 1.0 Hz form a 2:1 ratio — the same relationship as Earth-Moon tidal locking. The filter oscillates at double the compression rate, creating a breathing pattern where every other filter sweep coincides with a pressure peak. The result is a polyrhythmic texture that never drifts because the ratio is exact. But aftertouch breaks the lock by adding non-periodic pressure — chaos from expression.",
+    "god": "Tempora",
+    "flock_note": "The Breath mapped the polyrhythm: beat 1 — filter up + pressure up. Beat 2 — filter up + pressure down. Beat 3 — filter up + pressure up. The pattern creates a compound rhythm from two simple sinusoidal LFOs. The Tongue confirmed: aftertouch disrupts the clean ratio by adding DC offset to the pressure, making the compression respond to touch rather than cycle.",
+    "diagnosis": "This sound was a modulated bass. It is now a tidal system — two gravitationally locked oscillations producing compound rhythm from simple ratios, with the performer's touch as the gravitational perturbation."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.9,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.75,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 450.0,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.35,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.4,
+      "deep_bodyMix": 0.2,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.08,
+      "deep_bioBrightness": 900.0,
+      "deep_pressureAmt": 0.75,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 0.8,
+      "deep_ampSus": 0.8,
+      "deep_ampRel": 1.2,
+      "deep_lfo1Rate": 2.0,
+      "deep_lfo1Depth": 0.6,
+      "deep_lfo2Rate": 0.5,
+      "deep_lfo2Depth": 0.5,
+      "deep_reverbMix": 0.1,
+      "deep_macroPressure": 0.65,
+      "deep_macroCreature": 0.1,
+      "deep_macroWreck": 0.15,
+      "deep_macroAbyss": 0.1
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.65,
+    "CREATURE": 0.1,
+    "WRECK": 0.15,
+    "ABYSS": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Eternal Fundamental",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The fundamental frequency as a permanent fixture. Sustain at 1.0, release at 7 seconds, attack at 0.4 seconds — the note rises slowly and never decays while held. SubOctMix at 0.8 stacks three octaves of sine reinforcement. Pressure at 0.7 ensures the level stays constant regardless of harmonic buildup. No bio exciter. No body character. Just pure sinusoidal weight, sustained forever. The note that was always playing before you arrived and will continue after you leave.",
+  "tags": [
+    "drone",
+    "eternal",
+    "sine",
+    "fundamental",
+    "pure",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Verse: The System Check — Strip Away Everything", "Canon 3: Subtraction Before Addition"],
+    "revelation": "Sinusoidal spoke the final truth: three sine waves at octave intervals with nothing else is the fundamental structure of all tonal music. Every other waveform is this plus overtones. Every other synthesis method is this plus processing. OCEANDEEP at its most stripped-down IS the universal fundamental — the note that every other instrument in a session tunes to, grounds to, and returns to.",
+    "god": "Sinusoidal",
+    "flock_note": "The Ear heard the eternal drone and recognized: this is the sound system test tone, the meditation bell's sustain, the pedal point of a cathedral organ, the hum of the universe's background radiation translated to audible frequency. The Finger found that subOctMix 0.8 creates a reinforcement pattern where the fundamental is supported by three octaves — each adding physical weight without changing the perceived pitch.",
+    "diagnosis": "This sound is the fundamental. Not a bass, not a drone, not a pad — the fundamental. The note that was always there."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.95,
+    "movement": 0.03,
+    "density": 0.35,
+    "space": 0.1,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.8,
+      "deep_filterCutoff": 300.0,
+      "deep_filterRes": 0.1,
+      "deep_velCutoffAmt": 0.05,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.0,
+      "deep_bodyMix": 0.0,
+      "deep_bioRate": 0.01,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 200.0,
+      "deep_pressureAmt": 0.7,
+      "deep_ampAtk": 0.4,
+      "deep_ampDec": 1.0,
+      "deep_ampSus": 1.0,
+      "deep_ampRel": 7.0,
+      "deep_lfo1Rate": 0.01,
+      "deep_lfo1Depth": 0.01,
+      "deep_lfo2Rate": 0.01,
+      "deep_lfo2Depth": 0.01,
+      "deep_reverbMix": 0.05,
+      "deep_macroPressure": 0.6,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.3
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.6,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

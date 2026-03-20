@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Pelagic Requiem",
+  "mood": "Aether",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A funeral in the open ocean. Maximum release (8 seconds) with cave body at 0.75 feedback creates notes that dissolve into resonant echoes long after release. Bio exciter at low rate (0.02 Hz) provides rare, solemn bioluminescent flickers — mourners holding lanterns in the dark water. Filter cutoff at 250 Hz with low resonance creates a muted, grieving tone. Every note is a goodbye that takes eight seconds to finish.",
+  "tags": [
+    "drone",
+    "requiem",
+    "solemn",
+    "release",
+    "eternal",
+    "guru-bin",
+    "transcendental"
+  ],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — Transcendental Vol 1",
+    "retreat_date": "2026-03-19",
+    "scripture": ["Truth 6: The Release Cathedral at Golden Ratio", "Verse: The Depth Column — Deep Zone"],
+    "revelation": "Tempora spoke: release at 8.0 seconds — the maximum — means the envelope takes longer to close than most musical phrases. The note outlives the intention that created it. At this timescale, monophonic legato creates a continuous requiem — each new note inherits the dying breath of the last through the envelope overlap.",
+    "god": "Tempora",
+    "flock_note": "The Ear heard the eight-second tail merge with the cave body resonance: the comb filter sustains the pitch memory while the envelope fades. The sound remembers the note after the note has gone. The Breath confirmed: bioRate 0.02 Hz means one bioluminescent flicker every 50 seconds — rare enough to feel like an event, not a pattern.",
+    "diagnosis": "This sound was a bass with long release. It is now a requiem — each note a mourner, each release a farewell, each bio flicker a candle in the deep."
+  },
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.8,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.7,
+      "deep_subOctMix": 0.5,
+      "deep_filterCutoff": 250.0,
+      "deep_filterRes": 0.2,
+      "deep_velCutoffAmt": 0.15,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.75,
+      "deep_bodyMix": 0.4,
+      "deep_bioRate": 0.02,
+      "deep_bioMix": 0.1,
+      "deep_bioBrightness": 600.0,
+      "deep_pressureAmt": 0.35,
+      "deep_ampAtk": 0.4,
+      "deep_ampDec": 4.5,
+      "deep_ampSus": 0.6,
+      "deep_ampRel": 8.0,
+      "deep_lfo1Rate": 0.015,
+      "deep_lfo1Depth": 0.06,
+      "deep_lfo2Rate": 0.01,
+      "deep_lfo2Depth": 0.04,
+      "deep_reverbMix": 0.6,
+      "deep_macroPressure": 0.3,
+      "deep_macroCreature": 0.1,
+      "deep_macroWreck": 0.25,
+      "deep_macroAbyss": 0.75
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.3,
+    "CREATURE": 0.1,
+    "WRECK": 0.25,
+    "ABYSS": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
