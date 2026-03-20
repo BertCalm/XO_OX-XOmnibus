@@ -77,8 +77,6 @@ and mutate into sounds impossible with any single synth. **42 engines** are regi
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
-| OVERLAP | XOverlap | Bioluminescent Mint `#00FFB4` |
-| OUTWIT | XOutwit | Ochre Burn `#CC6600` |
 | OBRIX | XObrix | Reef Jade `#1E8B7E` |
 | ORBWEAVE | XOrbweave | Kelp Knot Purple `#8E4585` |
 | OVERTONE | XOvertone | Spectral Ice `#A8D8EA` |
