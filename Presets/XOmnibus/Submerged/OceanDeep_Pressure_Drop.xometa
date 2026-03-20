@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Drop",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The dub step — not the genre, the physical act. ampAtk=0.001: instantaneous. ampRel=1.618 seconds (the golden ratio release, as all great dub engineers know). pressureAmt=0.6: the pressure compresses the attack into a click, and the release is the drop into silence. One note. One moment. The pressure holds.",
+  "tags": ["bass", "submerged", "dub", "pressure drop", "attack", "golden ratio", "click", "percussive", "step"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "ampAtk=0.001: the instantaneous onset. The note exists before the ear is ready.",
+      "ampRel=1.618: Phi. The golden ratio. This is how dub engineers measure silence.",
+      "The pressure drop is not a fall — it is a controlled descent into the waiting dark."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "Play staccato for maximum effect — each note is a pressure event. The 1.618s golden ratio release means consecutive notes form a specific rhythmic relationship at most tempos. PRESSURE macro adds compression to the click-attack character. At full PRESSURE, the attack vanishes entirely.",
+    "diagnosis": "ampAtk=0.001: instantaneous — the note is already there when you press the key. ampRel=1.618: golden ratio, a deliberate choice. pressureAmt=0.6: significant compression that shapes the attack transient into a deep click. filterCutoff=220: warm enough for the body of the note to feel physical. This is a rhythmic tool as much as a tonal one."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.6,
+    "movement": 0.08,
+    "density": 0.7,
+    "space": 0.15,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.85,
+      "deep_subOctMix": 0.35,
+      "deep_filterCutoff": 220,
+      "deep_filterRes": 0.55,
+      "deep_velCutoffAmt": 0.5,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.08,
+      "deep_bodyMix": 0.12,
+      "deep_bioRate": 0.1,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 500,
+      "deep_pressureAmt": 0.6,
+      "deep_ampAtk": 0.001,
+      "deep_ampDec": 0.3,
+      "deep_ampSus": 0.0,
+      "deep_ampRel": 1.618,
+      "deep_lfo1Rate": 0.06,
+      "deep_lfo1Depth": 0.04,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.03,
+      "deep_reverbMix": 0.1,
+      "deep_macroPressure": 0.6,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.45
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.6,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.45
+  },
+  "coupling": {"pairs": []}
+}

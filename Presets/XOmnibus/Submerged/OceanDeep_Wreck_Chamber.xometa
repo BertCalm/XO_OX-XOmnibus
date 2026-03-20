@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Wreck Chamber",
+  "mood": "Submerged",
+  "engines": ["OceanDeep"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Industrial archaeology at 800 meters. A compartment inside a sunken freighter — the allpass diffusion creates the specific acoustic signature of hollow steel rooms filled with water. bodyChar=2, bodyFeedback=0.5. filterCutoff=180: very dark, the wreck has been down a long time.",
+  "tags": ["bass", "submerged", "wreck", "industrial", "archaeology", "chamber", "metal", "dark", "deep"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "OCEANDEEP — The Abyssal Zone",
+    "retreat_date": "2026-03-19",
+    "vol": "Transcendental Vol 1",
+    "scripture": [
+      "The ship was industrial. The ocean made it art.",
+      "The chamber holds water now. The water holds sound.",
+      "bodyFeedback=0.5: the steel room remembers every note it ever heard."
+    ],
+    "revelation": null,
+    "god": null,
+    "flock_note": "WRECK macro dials in the metal chamber presence. Lower WRECK for more open water — the ship dissolves back into the ocean. Raise PRESSURE to add depth compression: the deeper the chamber, the more the walls press in. The wreck at maximum PRESSURE is barely distinguishable from the trench floor.",
+    "diagnosis": "bodyChar=2 (Wreck): short comb + allpass diffusion, the precise acoustic signature of hollow metal rooms. bodyFeedback=0.5: moderate — the chamber sustains but does not overwhelm. filterRes=0.5 with filterCutoff=180: dark resonant character, the wreck has been submerged for decades. Industrial archaeology, not industrial music."
+  },
+  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.07,
+    "warmth": 0.38,
+    "movement": 0.14,
+    "density": 0.72,
+    "space": 0.22,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.75,
+      "deep_subOctMix": 0.4,
+      "deep_filterCutoff": 180,
+      "deep_filterRes": 0.5,
+      "deep_velCutoffAmt": 0.3,
+      "deep_bodyChar": 2,
+      "deep_bodyFeedback": 0.5,
+      "deep_bodyMix": 0.75,
+      "deep_bioRate": 0.07,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 450,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.01,
+      "deep_ampDec": 1.1,
+      "deep_ampSus": 0.78,
+      "deep_ampRel": 3.2,
+      "deep_lfo1Rate": 0.05,
+      "deep_lfo1Depth": 0.07,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.05,
+      "deep_reverbMix": 0.18,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.75,
+      "deep_macroAbyss": 0.6
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.0,
+    "WRECK": 0.75,
+    "ABYSS": 0.6
+  },
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Rule 150 — the total rule, a symmetric XOR-based automaton that produces wave interference patterns. Medium scope and moderate step rate. LFO1 gently modulates step rate to make the colony breathe. LFO2 sweeps filter with organic timing. Generous reverb simulates the aquatic space around a living reef. Medium sub level for body. This is the default ecosystem.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.22
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Organic",
+  "name": "Reef Colony",
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 6174,
+      "org_stepRate": 6.0,
+      "org_scope": 8,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.42,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.35,
+      "org_velCutoff": 0.52,
+      "org_ampAtk": 0.022,
+      "org_ampDec": 0.38,
+      "org_ampSus": 0.72,
+      "org_ampRel": 1.2,
+      "org_lfo1Rate": 0.35,
+      "org_lfo1Depth": 0.28,
+      "org_lfo2Rate": 0.25,
+      "org_lfo2Depth": 0.32,
+      "org_reverbMix": 0.45,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "organic",
+    "rule-150",
+    "reef",
+    "ecosystem",
+    "balanced",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "E constant at depth 1. The first Euler convergent (2/1) is a pure octave — safe, warm, foundational. Filter very low — only the first two partials survive. Resonator at maximum creates a cavernous chamber. Long attack, full sustain, glacial release. This is a pressure-chamber at depth — mathematical warmth filtered to its absolute minimum.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.88,
+    "movement": 0.22,
+    "density": 0.82,
+    "space": 0.48,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Trench Harmonic",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 1,
+      "over_depth": 1.0,
+      "over_partial0": 1.0,
+      "over_partial1": 0.78,
+      "over_partial2": 0.12,
+      "over_partial3": 0.05,
+      "over_partial4": 0.02,
+      "over_partial5": 0.01,
+      "over_partial6": 0.0,
+      "over_partial7": 0.0,
+      "over_velBright": 0.55,
+      "over_filterCutoff": 2200.0,
+      "over_filterRes": 0.6,
+      "over_ampAtk": 0.65,
+      "over_ampDec": 0.8,
+      "over_ampSus": 0.9,
+      "over_ampRel": 5.5,
+      "over_lfo1Rate": 0.04,
+      "over_lfo1Depth": 0.18,
+      "over_lfo2Rate": 0.02,
+      "over_lfo2Depth": 0.12,
+      "over_resoMix": 0.78,
+      "over_macroDepth": 0.18,
+      "over_macroColor": 0.22,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.72
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "submerged",
+    "euler",
+    "dark",
+    "drone",
+    "cavernous",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

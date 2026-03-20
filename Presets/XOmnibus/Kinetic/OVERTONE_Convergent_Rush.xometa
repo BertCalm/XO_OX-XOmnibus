@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Sqrt2 constant with LFO1 sweeping depth rapidly across the full 0–7 range. As depth sweeps, the convergent ratios cascade through the partial tower creating a rushing, overtone-waterfall effect. High velocity brightness. Filter slightly open to let all partials breathe. LFO2 shimmers the partial rotation. This is mathematics in motion.",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.88,
+    "density": 0.65,
+    "space": 0.42,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Kinetic",
+  "name": "Convergent Rush",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 3,
+      "over_depth": 3.5,
+      "over_partial0": 0.9,
+      "over_partial1": 0.75,
+      "over_partial2": 0.65,
+      "over_partial3": 0.55,
+      "over_partial4": 0.45,
+      "over_partial5": 0.35,
+      "over_partial6": 0.28,
+      "over_partial7": 0.2,
+      "over_velBright": 0.72,
+      "over_filterCutoff": 18000.0,
+      "over_filterRes": 0.3,
+      "over_ampAtk": 0.005,
+      "over_ampDec": 0.25,
+      "over_ampSus": 0.62,
+      "over_ampRel": 0.8,
+      "over_lfo1Rate": 2.5,
+      "over_lfo1Depth": 0.85,
+      "over_lfo2Rate": 4.0,
+      "over_lfo2Depth": 0.35,
+      "over_resoMix": 0.12,
+      "over_macroDepth": 0.65,
+      "over_macroColor": 0.72,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.25
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "kinetic",
+    "sqrt2",
+    "sweep",
+    "cascading",
+    "overtone-waterfall",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Rule 22 — produces complex patterns with intermittent structure. Moderate mutation rate (0.08) adds biological drift — the spores mutate as they travel. Long attack (0.45s) lets each note bloom slowly. Maximum reverb. Wide scope. The combination of Rule 22's natural patterns + mutation creates a generative texture like watching spores disperse in slow motion through water.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.48,
+    "density": 0.28,
+    "space": 0.85,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Spore Cloud",
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 1337,
+      "org_stepRate": 3.0,
+      "org_scope": 14,
+      "org_mutate": 0.08,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.28,
+      "org_filterCutoff": 3200.0,
+      "org_filterRes": 0.22,
+      "org_velCutoff": 0.42,
+      "org_ampAtk": 0.45,
+      "org_ampDec": 0.65,
+      "org_ampSus": 0.58,
+      "org_ampRel": 3.0,
+      "org_lfo1Rate": 0.18,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.12,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.72,
+      "org_macroRule": 0.875,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "rule-22",
+    "spore",
+    "mutation",
+    "ambient",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

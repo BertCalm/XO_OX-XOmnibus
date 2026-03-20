@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Rule 110 with MACRO SEED mapped high — sweeping the seed macro scatters the colony into a new initial state, creating rapid timbral mutation. High step rate creates spectral chatter. Band-pass quality achieved by tuning filter cutoff mid-range with high resonance. Each key press spawns a different colony. LFO2 on filter creates a scanning, prismatic effect across the automaton's frequency output.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.42
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Prism",
+  "name": "Seed Scatter",
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 9999,
+      "org_stepRate": 16.0,
+      "org_scope": 6,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.18,
+      "org_filterCutoff": 4200.0,
+      "org_filterRes": 0.72,
+      "org_velCutoff": 0.65,
+      "org_ampAtk": 0.004,
+      "org_ampDec": 0.22,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.55,
+      "org_lfo1Rate": 5.0,
+      "org_lfo1Depth": 0.35,
+      "org_lfo2Rate": 3.5,
+      "org_lfo2Depth": 0.45,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "prism",
+    "rule-110",
+    "seed",
+    "scattered",
+    "spectral",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Rule 90 produces the Sierpinski triangle — pure fractal self-similarity. Wide scope (12) captures the full fractal pattern across time. Slow step rate lets the triangle's recursive structure breathe. Triangle oscillator warms the crystalline mathematical pattern. Heavy reverb mix: the coral polyps dissolve into fractured ambient wash. Ordered complexity at rest.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.58,
+    "movement": 0.42,
+    "density": 0.38,
+    "space": 0.78,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Ethereal",
+  "name": "Fractal Tide",
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 1,
+      "org_stepRate": 2.0,
+      "org_scope": 12,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.4,
+      "org_filterCutoff": 3800.0,
+      "org_filterRes": 0.28,
+      "org_velCutoff": 0.48,
+      "org_ampAtk": 0.18,
+      "org_ampDec": 0.55,
+      "org_ampSus": 0.68,
+      "org_ampRel": 2.5,
+      "org_lfo1Rate": 0.25,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.18,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.62,
+      "org_macroRule": 0.125,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "ethereal",
+    "rule-90",
+    "sierpinski",
+    "fractal",
+    "ambient",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Sine strand spread thin across Poly8 voices through a trefoil knot. Very low braid depth — the web barely forms. Both LFOs at slow rates sculpt the open air around each note. High reverb mix dissolves the strand into pure atmosphere. This is ORBWEAVE as sky — topology dissolved into cloud.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.45,
+    "density": 0.22,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Spider Cloud",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 5.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.12,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 7200.0,
+      "weave_filterReso": 0.05,
+      "weave_filterType": 0,
+      "weave_ampA": 0.55,
+      "weave_ampD": 0.9,
+      "weave_ampS": 0.62,
+      "weave_ampR": 5.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.22,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 4,
+      "weave_lfo2Depth": 0.12,
+      "weave_lfo2Rate": 0.12,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.78,
+      "weave_fx1Param": 0.88,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.35,
+      "weave_fx2Param": 0.5,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.72,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "cloud",
+    "sparse",
+    "reverb",
+    "airy",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

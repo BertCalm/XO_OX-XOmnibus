@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Square strand through a torus knot at P=3, Q=5. Maximum braid depth pushes harmonic tension to the surface. Low-pass filter almost closed — only the fundamental mass remains. S&H LFO on volume adds percussive underwater pressure bursts. Dense, pressurized, deep.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.48,
+    "density": 0.82,
+    "space": 0.35,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Deep",
+  "name": "Torus Abyss",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 3,
+      "weave_strandTune": -12.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.88,
+      "weave_torusP": 3,
+      "weave_torusQ": 5,
+      "weave_filterCutoff": 480.0,
+      "weave_filterReso": 0.35,
+      "weave_filterType": 0,
+      "weave_ampA": 0.08,
+      "weave_ampD": 0.55,
+      "weave_ampS": 0.82,
+      "weave_ampR": 2.5,
+      "weave_lfo1Type": 5,
+      "weave_lfo1Target": 4,
+      "weave_lfo1Depth": 0.28,
+      "weave_lfo1Rate": 0.55,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": -0.15,
+      "weave_lfo2Rate": 0.12,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.35,
+      "weave_fx1Param": 0.65,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.85,
+      "weave_voiceMode": 1,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.22
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "deep",
+    "torus",
+    "pressure",
+    "bass",
+    "dense",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

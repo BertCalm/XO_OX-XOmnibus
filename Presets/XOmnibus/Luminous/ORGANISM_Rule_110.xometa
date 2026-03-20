@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Rule 110 — the simplest Turing-complete cellular automaton. From 16 cells and a seed of 42, universal computation emerges. Fast step rate, narrow scope. The automaton's patterns map directly to filter brightness and envelope shape. Each note is a computation. Each held note is a program running. This is the Coral Colony saying hello.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.62,
+    "density": 0.48,
+    "space": 0.45,
+    "aggression": 0.25
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Luminous",
+  "name": "Rule 110",
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 8.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 4500.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.012,
+      "org_ampDec": 0.3,
+      "org_ampSus": 0.72,
+      "org_ampRel": 0.8,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.25,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "luminous",
+    "rule-110",
+    "turing-complete",
+    "computation",
+    "cellular",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

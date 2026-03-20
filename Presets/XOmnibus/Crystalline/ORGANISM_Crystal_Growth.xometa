@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Rule 18 — produces sparse, triangular crystal patterns from a single seed cell. Seed = 1 (single active cell) so the entire pattern grows from one point — pure emergence. High filter resonance and medium cutoff ring the crystal structure. Triangle oscillator for glass quality. Frozen at 0 so growth continues indefinitely. Medium step rate to watch the crystal expand.",
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.3,
+    "movement": 0.45,
+    "density": 0.32,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Crystalline",
+  "name": "Crystal Growth",
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 1,
+      "org_stepRate": 5.0,
+      "org_scope": 10,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.15,
+      "org_filterCutoff": 4800.0,
+      "org_filterRes": 0.68,
+      "org_velCutoff": 0.75,
+      "org_ampAtk": 0.008,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.58,
+      "org_ampRel": 1.5,
+      "org_lfo1Rate": 0.45,
+      "org_lfo1Depth": 0.15,
+      "org_lfo2Rate": 0.32,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.38,
+      "org_macroRule": 0.625,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "crystalline",
+    "rule-18",
+    "emergence",
+    "crystal",
+    "sparse",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}
