@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Bowed Cello",
   "mood": "Foundation",
-  "engines": ["Obscura"],
+  "engines": [
+    "Obscura"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Continuous bowing force via sustain + slow physics envelope attack — the chain builds resonance gradually like a real cello stroke. Fixed boundary, warm stiffness, wide scanner for the thick low-string character. Hold notes long.",
-  "tags": ["bowed", "cello", "warm", "sustained", "legato", "expressive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Continuous bowing force via sustain + slow physics envelope attack \u2014 the chain builds resonance gradually like a real cello stroke. Fixed boundary, warm stiffness, wide scanner for the thick low-string character. Hold notes long.",
+  "tags": [
+    "bowed",
+    "cello",
+    "warm",
+    "sustained",
+    "legato",
+    "expressive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Obscura": {
       "obscura_stiffness": 0.38,
@@ -29,7 +47,7 @@
       "obscura_ampRelease": 1.2,
       "obscura_physEnvAttack": 0.35,
       "obscura_physEnvDecay": 0.5,
-      "obscura_physEnvSustain": 0.80,
+      "obscura_physEnvSustain": 0.8,
       "obscura_physEnvRelease": 0.8,
       "obscura_lfo1Rate": 0.22,
       "obscura_lfo1Depth": 0.12,
@@ -46,11 +64,13 @@
       "obscura_macroSpace": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.28,
-    "warmth": 0.80,
+    "warmth": 0.8,
     "movement": 0.32,
     "density": 0.55,
     "space": 0.42,

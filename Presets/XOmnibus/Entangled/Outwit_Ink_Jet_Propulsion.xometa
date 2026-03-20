@@ -14,7 +14,7 @@
     "warmth": 0.3
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Ink Jet Propulsion",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 150,
       "owit_arm0Length": 4,
       "owit_arm0Level": 0.9,

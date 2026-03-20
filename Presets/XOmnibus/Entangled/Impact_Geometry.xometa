@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Bob's filter geometry velocity-coupled to Onset drum voices — warm percussion at maximum density.",
   "dna": {
     "aggression": 0.89,

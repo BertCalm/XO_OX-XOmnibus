@@ -14,7 +14,7 @@
     "warmth": 0.55
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Entangled",
   "name": "Tidal Entangle",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 2,
       "olap_tangleDepth": 0.8,
       "olap_torusP": 3,

@@ -14,7 +14,7 @@
     "warmth": 0.9
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Sucker Pad",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 77,
       "owit_arm0Length": 16,
       "owit_arm0Level": 0.7,

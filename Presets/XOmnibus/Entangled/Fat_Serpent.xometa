@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "MOJO and BITE fused — two saturation architectures driving toward thermal collapse.",
   "dna": {
     "aggression": 0.97,

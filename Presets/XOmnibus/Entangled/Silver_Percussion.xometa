@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Orca velocity driving Obscura stiffness — silver daguerreotype percussion at predator tempo.",
   "dna": {
     "aggression": 0.95,

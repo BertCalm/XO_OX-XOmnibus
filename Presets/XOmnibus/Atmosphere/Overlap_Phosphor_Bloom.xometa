@@ -14,7 +14,7 @@
     "warmth": 0.4
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Phosphor Bloom",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.5,
       "olap_torusP": 3,

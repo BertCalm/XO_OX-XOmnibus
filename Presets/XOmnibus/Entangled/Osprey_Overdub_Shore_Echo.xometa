@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Osprey's ShoreSystem amplitude envelope breathes directly into Overdub's tape mix, sculpting the reverb character with each tidal surge. The coastline is the dub engine — high-water moments bloom into long echo trails; retreating tides pull the signal back to dry. An oceanic dub machine.",
   "dna": {
     "aggression": 0.15,

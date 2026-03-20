@@ -1,14 +1,29 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Chain Tangle",
   "mood": "Entangled",
-  "engines": ["Obscura", "OddOscar"],
+  "engines": [
+    "Obscura",
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBSCURA's physical chain tangles with MORPH's spectral blur — the bowed string's odd resonances pull and push MORPH's formant. Each note is a knot being tightened.",
-  "tags": ["entangled", "bowed", "physical", "morph", "coupled", "evolving"],
-  "macroLabels": ["TANGLE", "MORPH", "COUPLING", "SPACE"],
-  "couplingIntensity": "Medium",
+  "tags": [
+    "entangled",
+    "bowed",
+    "physical",
+    "morph",
+    "coupled",
+    "evolving"
+  ],
+  "macroLabels": [
+    "TANGLE",
+    "MORPH",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",
   "legacy": {

@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Optic timbral-warping Onset drum timbre in real time — light shaping percussion.",
   "dna": {
     "aggression": 0.92,

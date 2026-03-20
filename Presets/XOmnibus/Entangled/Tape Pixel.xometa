@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "Visual modulation rate-locked to OVERDUB's tape flutter — the image shakes in time with the delay head.",
   "dna": {

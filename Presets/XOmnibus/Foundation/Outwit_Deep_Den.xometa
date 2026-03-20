@@ -14,7 +14,7 @@
     "warmth": 0.7
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Foundation",
   "name": "Deep Den",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 90,
       "owit_arm0Length": 16,
       "owit_arm0Level": 0.85,

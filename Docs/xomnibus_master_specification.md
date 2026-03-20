@@ -1115,4 +1115,38 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 ---
 
+## 17. Engine Addenda (Post-V1.0 Additions)
+
+### 17.1 OBRIX — Modular Brick Synth (Added 2026-03-19, Wave 1 Complete)
+
+**Identity:** Baby brother of XOmnibus — a living reef that grows over time. Teaching instrument that ships as a Standard Brick Kit and grows via periodic brick drops (5-40 LOC each). Gallery code: OBRIX. Accent: Reef Jade `#1E8B7E`. Prefix: `obrix_`.
+
+**Architectural Core — The Constructive Collision:**
+- Proc 1 processes Source 1 independently (Src1 → Proc1 → mix)
+- Proc 2 processes Source 2 independently (Src2 → Proc2 → mix)
+- Proc 3 is a post-mix insert (wavefolder/ring mod/filter after sources merge)
+- This split routing is OBRIX's defining identity — not a subtractive synth with options but a construction set for timbral collisions
+
+**Wave 1 Status (2026-03-19, commit de89586):** COMPLETE
+- 55 parameters (expanded from 34 in V1.3a)
+- PolyBLEP anti-aliasing on Saw/Square/Triangle/Pulse; Lo-Fi Saw (type 8) intentionally naive
+- All 4 modulators wired with routes to pitch, cutoff, amplitude, pulse-width, fold-depth
+- 3 FX slots wired in series (FX1→FX2→FX3); Delay, Reverb, Chorus, BitCrush available
+- Expression inputs: pitch bend (`obrix_pitchBendRange` 2–24 st) + portamento (`obrix_glideTime`)
+- Coupling output fix: returns real `lastSampleL/R`; channel 2 carries brick complexity ratio
+- Macro remap: CHARACTER → cutoff + fold (exponential); MOVEMENT → LFO scaling + stereo detune
+- FLASH gesture system: `obrix_gestureType` + `obrix_flashTrigger` for one-shot visual-sonic bursts
+- Reverb damping tracks param (Guru Bin fix); all DSP profiler issues resolved (4 bugs fixed)
+
+**Seance Verdict:** 6.8/10 current → 9.8 target | See `Docs/seances/obrix_seance_verdict.md`
+
+**Roadmap:** 4 waves → see `Docs/specs/obrix_flagship_roadmap.md`
+**Brick Drop Strategy:** See `Docs/specs/obrix_brick_drop_strategy.md`
+
+**Governance:** All 6 doctrines D001-D006 PASS. New Blessing B016: Brick Independence.
+
+**⚠️ Preset Constraint:** Do NOT author OBRIX presets until after Wave 3 param freeze. Waves 1-3 add ~18 new parameters that would break presets written against the Wave 1 schema. Factory presets (target: 150 across all moods per Lesson/Genre/Place taxonomy) are Wave 4 work.
+
+---
+
 *This document is the single source of truth for XOmnibus. All implementation should reference this spec. For deep dives into specific domains, follow the references to the detailed specification documents listed in Section 15.*

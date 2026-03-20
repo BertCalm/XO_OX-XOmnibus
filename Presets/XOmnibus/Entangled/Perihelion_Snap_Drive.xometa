@@ -22,7 +22,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "ORBITAL perihelion triggers OVERBITE snap; OBESE drive saturates the moment of closest approach. Dangerous warmth.",
   "dna": {

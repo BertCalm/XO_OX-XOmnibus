@@ -2,16 +2,36 @@
   "schema_version": 1,
   "name": "Flash Sequence",
   "mood": "Prism",
-  "engines": ["Optic", "Odyssey"],
+  "engines": [
+    "Optic",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Fast AutoPulse with strong accent and subdivision modulation — OPTIC firing rhythmic spectral flashes. Odyssey's pitch gets LFO-modulated by each pulse. Comb jelly in full performance mode.",
-  "tags": ["optic", "prism", "pulse", "fast", "rhythmic", "accent", "pitch-mod"],
-  "macroLabels": ["REACTIVITY", "PULSE RATE", "PITCH MOD", "SPACE"],
-  "couplingIntensity": "Strong",
+  "tags": [
+    "optic",
+    "prism",
+    "pulse",
+    "fast",
+    "rhythmic",
+    "accent",
+    "pitch-mod"
+  ],
+  "macroLabels": [
+    "REACTIVITY",
+    "PULSE RATE",
+    "PITCH MOD",
+    "SPACE"
+  ],
+  "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Optic": {
       "optic_reactivity": 0.7,
@@ -46,8 +66,18 @@
   },
   "coupling": {
     "pairs": [
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "LFOToPitch", "amount": 0.4 },
-      { "engineA": "Optic", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.5 }
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "LFOToPitch",
+        "amount": 0.4
+      },
+      {
+        "engineA": "Optic",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      }
     ]
   },
   "sequencer": null,

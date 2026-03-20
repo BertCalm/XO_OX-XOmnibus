@@ -1,17 +1,35 @@
 {
-  "schema_version": "1.0",
+  "schema_version": 1,
   "name": "Velocity Fist",
   "mood": "Aether",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Blessing B007 in full effect — medium chaos Lorenz, leash loose enough that velocity injection transients are the main event. Soft touches barely disturb the orbit; hard hits kick it violently into new trajectories. Your force becomes the sound.",
-  "tags": ["b007", "velocity", "expressive", "lorenz", "dynamic", "coupling-source"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Blessing B007 in full effect \u2014 medium chaos Lorenz, leash loose enough that velocity injection transients are the main event. Soft touches barely disturb the orbit; hard hits kick it violently into new trajectories. Your force becomes the sound.",
+  "tags": [
+    "b007",
+    "velocity",
+    "expressive",
+    "lorenz",
+    "dynamic",
+    "coupling-source"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Ouroboros": {
       "ouro_topology": 0,
@@ -20,18 +38,20 @@
       "ouro_leash": 0.35,
       "ouro_theta": 0.0,
       "ouro_phi": 0.5,
-      "ouro_damping": 0.20,
+      "ouro_damping": 0.2,
       "ouro_injection": 0.0
     }
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,
     "warmth": 0.38,
-    "movement": 0.70,
+    "movement": 0.7,
     "density": 0.48,
-    "space": 0.50,
+    "space": 0.5,
     "aggression": 0.55
   }
 }

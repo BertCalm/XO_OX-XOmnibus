@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Torus link with moderate resonance \u2014 designed to share filter space with partner.",
   "dna": {
     "brightness": 0.52,
@@ -23,7 +23,7 @@
     "aggression": 0.15
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Resonance Link",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 1,
       "olap_tangleDepth": 0.48,
       "olap_torusP": 4,

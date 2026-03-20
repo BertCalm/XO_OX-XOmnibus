@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPTIC drives Oblong's dense detuned stack with cold, clinical precision. No warmth \u2014 pure crystal rhythmic machinery. Complex polyrhythmic subdivision, dense oscillator mass, zero organic heat. DNA gap-fill: LOW warmth + HIGH density corner for Optic.",
+  "description": "OPTIC drives Oblong's dense detuned stack with cold, clinical precision. No warmth — pure crystal rhythmic machinery. Complex polyrhythmic subdivision, dense oscillator mass, zero organic heat. DNA gap-fill: LOW warmth + HIGH density corner for Optic.",
   "tags": [
     "cold",
     "complex",
@@ -22,7 +22,7 @@
     "FILTER",
     "EVOLVE"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": 130,
   "dna": {
     "brightness": 0.7,

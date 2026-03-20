@@ -18,7 +18,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "Two swarm intelligences collide in open water. Octopus chromatophore patterns modulate Oceanic's particle school reorganization — alien cephalopod intelligence painting itself onto a boid colony. When Octopus arms signal, the school reorients toward the bioluminescent source. Neither knows it is the other. This is attraction as misrecognition. Two collective minds interpreting the same signal differently.",
   "dna": {
     "aggression": 0.5,

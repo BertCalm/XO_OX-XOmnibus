@@ -357,7 +357,7 @@ def validate_preset(filepath: Path, do_fix: bool = False) -> ValidationResult:
     return result
 
 
-def run_validation(do_fix=False, report_all=False, strict=False):
+def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool = False) -> int:
     """Run validation across all presets."""
     if not PRESET_DIR.exists():
         print(f"ERROR: Preset directory not found: {PRESET_DIR}")

@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Optic luminance driven by Ouroboros topology — fractal light at kinetic velocity.",
   "dna": {
     "aggression": 0.95,

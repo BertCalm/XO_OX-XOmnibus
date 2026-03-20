@@ -32,13 +32,31 @@
       "status": "active"
     },
     {
+      "file": "generate_outwit_blocks23.py",
+      "category": "preset-design",
+      "description": "OUTWIT preset generator \u2014 Blocks 2 & 3 (100 presets: Atmosphere/Entangled/Flux/Aether/Prism/Foundation)",
+      "status": "active"
+    },
+    {
       "file": "generate_preset_params.py",
       "category": "general",
       "status": "active"
     },
     {
+      "file": "generate_presets_overlap_outwit.py",
+      "category": "preset-design",
+      "description": "XOmnibus preset generator for OVERLAP (106 presets) and OUTWIT Block 1 (50 presets)",
+      "status": "active"
+    },
+    {
       "file": "oxport.py",
       "category": "oxport-core",
+      "status": "active"
+    },
+    {
+      "file": "oxport_render.py",
+      "category": "xpn-export",
+      "description": "Fleet render automation \u2014 WAV rendering from XOmnibus via MIDI + audio loopback (BlackHole on macOS)",
       "status": "active"
     },
     {
@@ -222,8 +240,20 @@
       "status": "active"
     },
     {
+      "file": "xpn_dry_variant_duplicator.py",
+      "category": "preset-design",
+      "description": "Creates dry (FX-off) variants of .xometa presets \u2014 enforces brand rule that dry patches must sound compelling",
+      "status": "active"
+    },
+    {
       "file": "xpn_engine_coverage_mapper.py",
       "category": "fleet-analytics",
+      "status": "active"
+    },
+    {
+      "file": "xpn_engine_distinctness_analyzer.py",
+      "category": "dna-health",
+      "description": "Compares preset DNA profiles across engines to detect identity overlap and sonic drift between engines",
       "status": "active"
     },
     {

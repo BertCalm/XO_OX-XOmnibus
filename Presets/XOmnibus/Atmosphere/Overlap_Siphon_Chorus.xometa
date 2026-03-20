@@ -14,7 +14,7 @@
     "warmth": 0.6
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Siphon Chorus",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.5,
       "olap_torusP": 3,

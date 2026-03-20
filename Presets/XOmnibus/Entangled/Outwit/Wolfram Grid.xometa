@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-18",
-  "description": "Rules 110/54 alternating \u2014 two class 4 rules creating complex interference patterns.",
+  "description": "Rules 110/54 alternating — two class 4 rules creating complex interference patterns.",
   "dna": {
     "aggression": 0.33,
     "brightness": 0.52,
@@ -129,7 +129,6 @@
   "sequencer": null,
   "tags": [
     "entangled",
-    "class-4",
     "class-4",
     "grid",
     "complex"

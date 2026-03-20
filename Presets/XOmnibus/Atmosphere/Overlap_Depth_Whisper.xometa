@@ -14,7 +14,7 @@
     "warmth": 0.5
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Depth Whisper",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 0,
       "olap_tangleDepth": 0.15,
       "olap_torusP": 3,

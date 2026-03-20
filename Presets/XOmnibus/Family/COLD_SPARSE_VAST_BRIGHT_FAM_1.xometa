@@ -8,9 +8,9 @@
       "type": "ENVELOPE_LINK"
     }
   ],
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
-  "description": "Extreme DNA corners \u2014 family, bright, cold, sparse.",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
   "dna": {
     "aggression": 0.52,
     "brightness": 0.927,

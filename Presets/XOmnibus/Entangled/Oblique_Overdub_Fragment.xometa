@@ -22,7 +22,7 @@
     "SPACE",
     "DEPTH"
   ],
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "tempo": 90,
   "dna": {
     "brightness": 0.55,

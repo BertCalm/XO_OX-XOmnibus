@@ -14,7 +14,7 @@
     "warmth": 0.5
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Foundation",
   "name": "Periodic Grid",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 4,
       "owit_arm0Length": 8,
       "owit_arm0Level": 0.7,

@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "NES glitch velocity coupling into Onset XVC — chip noise driving percussion barrage.",
   "dna": {
     "aggression": 0.93,

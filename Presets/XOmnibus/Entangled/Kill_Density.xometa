@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Orca kill velocity coupling into Onset XVC — every breach triggers percussion cascade.",
   "dna": {
     "aggression": 0.99,

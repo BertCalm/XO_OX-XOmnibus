@@ -165,7 +165,7 @@ We are just getting started.
 > — OPENSKY (euphoric shimmer, pure feliX) — BUILD IN PROGRESS
 > — OCEANDEEP (abyssal bass, pure Oscar) — BUILD IN PROGRESS
 > — OUIE (duophonic hammerhead, dead-center) — BUILD IN PROGRESS
-> — Fleet raises to 38 engines
+> — Fleet raises to 39 engines
 >
 > **V1.2 (2026, Q3)**
 > — V1 Rapper Bundle — 10 utility engines (names TBA)

@@ -4,14 +4,14 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **38 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18)
+and mutate into sounds impossible with any single synth. **39 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (12 coupling types)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 10,028 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
+- **Presets:** 10,514 factory presets in `.xometa` format, 7 mood categories (incl. Family), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — warm white shell frames engine accent colors. Light mode default.
 
@@ -75,6 +75,9 @@ and mutate into sounds impossible with any single synth. **38 engines** are regi
 | OPENSKY | XOpenSky | Sunburst `#FF8C00` |
 | OCEANDEEP | XOceanDeep | Trench Violet `#2D0A4E` |
 | OUIE | XOuïe | Hammerhead Steel `#708090` |
+| OVERLAP | XOverlap | Bioluminescent Mint `#00FFB4` |
+| OUTWIT | XOutwit | Ochre Burn `#CC6600` |
+| OBRIX | XObrix | Reef Jade `#1E8B7E` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -119,6 +122,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | OpenSky | `sky_` | `sky_macroRise` |
 | OceanDeep | `deep_` | `deep_macroPressure` |
 | Ouie | `ouie_` | `ouie_macroHammer` |
+| Overlap | `olap_` | `olap_knotDepth` |
+| Outwit | `owit_` | `owit_armDepth` |
+| Obrix | `obrix_` | `obrix_src1Type` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -147,6 +153,11 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
+| `Source/Engines/Obrix/ObrixEngine.h` | Modular brick synthesis engine (coral reef) |
+| `Source/DSP/Effects/AquaticFXSuite.h` | Aquatic FX chain (Reef + Fathom + Drift + Tide) |
+| `Source/DSP/Effects/MathFXChain.h` | Mathematical FX chain (Entropy + Voronoi + Quantum + Attractor) |
+| `Source/DSP/Effects/BoutiqueFXChain.h` | Boutique FX chain (Anomaly + Archive + Cathedral + Submersion) |
+| `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
 | `Docs/` | All specification documents |
@@ -207,7 +218,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-29 seances complete (2026-03-14) — all 29 registered engines covered (24 original + 5 Constellation). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. Full data in:
+30 seances complete (2026-03-19) — all 30 registered engines covered (24 original + 5 Constellation + OBRIX). Constellation seances (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) completed same day; findings committed 836e85a. OBRIX seance verdict at `Docs/seances/obrix_seance_verdict.md` (2026-03-19, 6.8/10 current → 9.8 target via 4 waves). Full data in:
 - Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Knowledge tree: `~/.claude/skills/synth-seance/knowledge/index.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
@@ -223,7 +234,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
 | D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### The 15 Blessings
+### The 16 Blessings
 
 | ID | Blessing | Engine |
 |----|----------|--------|
@@ -242,6 +253,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | B013 | Chromatophore Modulator — praised by Buchla, Schulze, Kakehashi, Tomita | OCEANIC |
 | B014 | Mixtur-Trautonium Oscillator — unanimous praise, genuinely novel | OWLFISH |
 | B015 | Mojo Control — orthogonal analog/digital axis | OBESE |
+| B016 | Brick Independence — bricks must remain individually addressable regardless of coupling state | OBRIX |
 
 ### The 4 Ongoing Debates
 

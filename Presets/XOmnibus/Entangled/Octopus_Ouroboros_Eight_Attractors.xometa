@@ -18,7 +18,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "Eight Octopus arms each feed a chaotic signal into Ouroboros' single attractor. Eight independent sources of alien intelligence converging on one strange attractor. The attractor cannot resolve eight simultaneous inputs cleanly — it fractures, bifurcates, collapses, and re-emerges in new topology. The octopus is not using the chaos engine; it is becoming it. Eight minds become one unstable mind.",
   "dna": {
     "aggression": 0.7,

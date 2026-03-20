@@ -20,7 +20,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "The Lorenz attractor choreographs which chip voice is active at any moment — its X/Y trajectory continuously repositions Overworld's ERA triangle, making the 8-bit chips the attractor's visible output layer. Lorenz topology produces the most musical sweep: slow orbits that spend extended time in NES territory before a sudden bifurcation slings the ERA into Genesis space. The chips do not play music; they read the attractor's geometry as score. Set ouro_leash low (0.3) to let the chips drift freely across the ERA; increase toward 1.0 to constrain the attractor near a single chip vertex. The chaos IS the arrangement.",
   "dna": {

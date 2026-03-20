@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "MOJO driven by Ouroboros topology loop — the serpent swallowed by its own belly.",
   "dna": {
     "aggression": 0.96,

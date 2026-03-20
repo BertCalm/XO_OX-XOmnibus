@@ -14,7 +14,7 @@
     "aggression": 0.6
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Prism",
   "name": "Snap Lattice",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 77,
       "owit_arm0Length": 16,
       "owit_arm0Level": 0.7,

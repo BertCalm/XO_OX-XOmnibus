@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-14",
-  "description": "128 masses moving together — high stiffness makes the chain behave like a solid bar rather than a slack string. Slow scanner, wide excitation width. The periodic boundary creates an endless loop of resonance. Dense, warm, deeply moving.",
+  "description": "128 masses moving together \u2014 high stiffness makes the chain behave like a solid bar rather than a slack string. Slow scanner, wide excitation width. The periodic boundary creates an endless loop of resonance. Dense, warm, deeply moving.",
   "dna": {
     "aggression": 0.28,
     "brightness": 0.35,
@@ -64,7 +64,7 @@
       "obscura_voiceMode": 1
     }
   },
-  "schema_version": "1.0",
+  "schema_version": 1,
   "sequencer": null,
   "tags": [
     "moving",

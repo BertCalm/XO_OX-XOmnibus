@@ -16,7 +16,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OPTIC's scan-line feedback synced to OVERWORLD's retro oscillators — both engines live in the era of phosphorescent screens.",
   "dna": {

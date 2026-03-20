@@ -14,7 +14,7 @@
     "warmth": 0.7
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Kelp Forest",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 106,
       "owit_arm0Length": 12,
       "owit_arm0Level": 0.65,

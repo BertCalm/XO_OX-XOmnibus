@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "NES 2A03 glitch noise at maximum chaos injection from Ouroboros — chip fury without ceiling.",
   "dna": {
     "aggression": 0.95,

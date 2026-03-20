@@ -14,7 +14,7 @@
     "warmth": 0.3
   },
   "engines": [
-    "XOutwit"
+    "Outwit"
   ],
   "macroLabels": [
     "SOLVE",
@@ -25,7 +25,7 @@
   "mood": "Atmosphere",
   "name": "Phantom Limb",
   "parameters": {
-    "XOutwit": {
+    "Outwit": {
       "owit_arm0Rule": 126,
       "owit_arm0Length": 24,
       "owit_arm0Level": 0.3,

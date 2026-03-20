@@ -23,7 +23,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Ocelot's wildness index maps inversely onto Ouroboros's Leash parameter — the more feral the predator, the more the strange attractor escapes constraint. At rest the leash holds the attractor on a short loop; at full prowl the attractor spirals into unbound chaos. The predator unleashes the mathematics. VelocityToTimbre coupling keeps the chaos responsive to playing intensity.",
   "dna": {
     "aggression": 0.8,

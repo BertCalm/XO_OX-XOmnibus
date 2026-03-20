@@ -12,7 +12,7 @@
       }
     ]
   },
-  "couplingIntensity": "Medium",
+  "couplingIntensity": "Moderate",
   "description": "Cinquefoil signal tone \u2014 designed as coupling sender for group performances.",
   "dna": {
     "brightness": 0.55,
@@ -23,7 +23,7 @@
     "aggression": 0.2
   },
   "engines": [
-    "XOverlap"
+    "Overlap"
   ],
   "macroLabels": [
     "KNOT",
@@ -34,7 +34,7 @@
   "mood": "Family",
   "name": "Colony Signal",
   "parameters": {
-    "XOverlap": {
+    "Overlap": {
       "olap_knot": 3,
       "olap_tangleDepth": 0.5,
       "olap_torusP": 3,

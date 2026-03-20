@@ -10,7 +10,7 @@
       }
     ]
   },
-  "couplingIntensity": "High",
+  "couplingIntensity": "Deep",
   "description": "Frequency smear from the topology loop corrupting Obsidian's crystal silence.",
   "dna": {
     "aggression": 0.95,

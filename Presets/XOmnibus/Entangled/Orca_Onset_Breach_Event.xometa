@@ -18,7 +18,7 @@
       }
     ]
   },
-  "couplingIntensity": "Strong",
+  "couplingIntensity": "Deep",
   "description": "Onset kick hits trigger Orca wavetable position snaps — each percussion strike is a breach. The orca detonates from the water at the exact moment the kick fires. Kick energy determines how far up the wavetable the breach travels. Between snaps, the wavetable drifts back like a body re-entering the ocean. Percussion as predator gesture.",
   "dna": {
     "aggression": 0.75,
