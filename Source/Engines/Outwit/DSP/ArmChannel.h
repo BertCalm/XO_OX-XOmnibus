@@ -21,7 +21,7 @@
 //   arm.applySynapse(sourceDensity, amount)  // density from neighbour arm drives step phase
 //
 // DSP:
-//   - Oscillator: Saw/Pulse/Sine selectable per arm, PolyBLEP-style
+//   - Oscillator: Saw/Pulse/Sine selectable per arm, PolyBLEP anti-aliased
 //   - Amplitude envelope: simple AR per-step trigger
 //   - Filter: State-variable filter (LP/BP/HP)
 //   - Chromatophore modulation: scales filter cutoff per-step
@@ -47,6 +47,9 @@ public:
     {
         sr    = static_cast<float>(sampleRate);
         invSr = 1.0f / sr;
+
+        // Cache step envelope release coefficient (Seance P4: was recomputed every sample)
+        stepEnvRelCoeff = xoutwit::fastExp(-1.0f / (0.02f * sr)); // ~20ms release
 
         // Reset oscillator + filter + CA state
         oscPhase      = 0.0f;
@@ -90,14 +93,26 @@ public:
 
         // Recompute frequency if note is held
         if (noteActive)
-            baseFreqHz = xoutwit::midiToFreqTune(currentNote,
-                                                  static_cast<float>(pitchOffset));
+        {
+            float newFreq = xoutwit::midiToFreqTune(currentNote,
+                                                      static_cast<float>(pitchOffset));
+            if (gliding)
+                targetFreqHz = newFreq;  // Seance P1: update glide target, don't jump
+            else
+                baseFreqHz = newFreq;
+        }
     }
 
     //--------------------------------------------------------------------------
     void setStepRate(float hz) noexcept
     {
         stepRate = std::max(0.01f, hz);
+    }
+
+    // Seance P1: set portamento smoothing rate (1.0 = instant, near 0 = slow)
+    void setGlideRate(float rate) noexcept
+    {
+        glideRate = std::clamp(rate, 0.0001f, 1.0f);
     }
 
     //==========================================================================
@@ -112,6 +127,8 @@ public:
         oscPhase        = 0.0f;
         baseFreqHz      = xoutwit::midiToFreqTune(midiNote,
                                                    static_cast<float>(pitchOffset));
+        targetFreqHz    = baseFreqHz;  // Seance P1: sync target with base on hard trigger
+        gliding         = false;
 
         // Re-seed CA tape on note-on — starts from a single live cell
         tape.fill(false);
@@ -119,9 +136,22 @@ public:
         stepPhase = 0.0f;
     }
 
+    // Seance P1: Mono legato glide — update target pitch without resetting
+    // CA state, oscillator phase, or step envelope. Actual frequency
+    // interpolation is handled per-sample via glideFreq in the adapter.
+    void setGlideTarget(int midiNote, float velocity) noexcept
+    {
+        currentNote     = midiNote;
+        currentVelocity = velocity;
+        targetFreqHz    = xoutwit::midiToFreqTune(midiNote,
+                                                    static_cast<float>(pitchOffset));
+        gliding         = true;
+    }
+
     void noteOff() noexcept
     {
         noteActive = false;
+        gliding    = false;
     }
 
     //==========================================================================
@@ -160,15 +190,26 @@ public:
         }
 
         // --- Step envelope (simple AR) ---
-        // Attack: 1 sample (instant); release: exponential
-        const float envRelCoeff = xoutwit::fastExp(-1.0f / (0.02f * sr)); // ~20ms release
-        stepEnvGain *= envRelCoeff;
+        // Attack: 1 sample (instant); release: exponential (~20ms)
+        // Coefficient cached in prepare() (Seance P4)
+        stepEnvGain *= stepEnvRelCoeff;
         stepEnvGain  = xoutwit::flushDenormal(stepEnvGain);
 
         if (stepEnvGain < 0.00001f)
         {
             stepEnvGain = 0.0f;
             if (!noteActive) return 0.0f;
+        }
+
+        // --- Glide (Seance P1): smoothly interpolate toward target frequency ---
+        if (gliding && targetFreqHz > 0.0f)
+        {
+            baseFreqHz += (targetFreqHz - baseFreqHz) * glideRate;
+            if (std::abs(targetFreqHz - baseFreqHz) < 0.01f)
+            {
+                baseFreqHz = targetFreqHz;
+                gliding = false;
+            }
         }
 
         // --- Oscillator ---
@@ -256,25 +297,53 @@ private:
     float oscPhase   = 0.0f;
     int   waveShape  = 0;    // 0=Saw, 1=Pulse, 2=Sine
 
+    // PolyBLEP correction — reduces aliasing at discontinuities (Seance P3)
+    // t = phase distance from discontinuity, dt = phaseInc
+    static float polyBLEP(float t, float dt) noexcept
+    {
+        if (t < dt)  // rising edge: t in [0, dt)
+        {
+            t /= dt;
+            return t + t - t * t - 1.0f;
+        }
+        else if (t > 1.0f - dt)  // falling edge: t in (1-dt, 1)
+        {
+            t = (t - 1.0f) / dt;
+            return t * t + t + t + 1.0f;
+        }
+        return 0.0f;
+    }
+
     float generateOscillator(float phase, float phaseInc) noexcept
     {
-        juce::ignoreUnused(phaseInc);
         switch (waveShape)
         {
-            case 0: // Saw: phase in [0,1] → value in [-1, 1]
-                return 2.0f * phase - 1.0f;
-
-            case 1: // Pulse (50% duty)
-                return phase < 0.5f ? 1.0f : -1.0f;
-
-            case 2: // Sine
+            case 0: // Saw with PolyBLEP anti-aliasing
             {
-                // Use fastSin(phase * 2pi)
-                return xoutwit::fastSin(phase * 6.28318530f);
+                float saw = 2.0f * phase - 1.0f;
+                saw -= polyBLEP(phase, phaseInc);
+                return saw;
             }
 
+            case 1: // Pulse (50% duty) with PolyBLEP anti-aliasing
+            {
+                float pulse = phase < 0.5f ? 1.0f : -1.0f;
+                pulse += polyBLEP(phase, phaseInc);              // discontinuity at phase=0
+                float shifted = phase + 0.5f;
+                if (shifted >= 1.0f) shifted -= 1.0f;
+                pulse -= polyBLEP(shifted, phaseInc);            // discontinuity at phase=0.5
+                return pulse;
+            }
+
+            case 2: // Sine (no anti-aliasing needed)
+                return xoutwit::fastSin(phase * 6.28318530f);
+
             default:
-                return 2.0f * phase - 1.0f;
+            {
+                float saw = 2.0f * phase - 1.0f;
+                saw -= polyBLEP(phase, phaseInc);
+                return saw;
+            }
         }
     }
 
@@ -331,12 +400,18 @@ private:
 
     float synapsePhaseNudge = 0.0f;
 
+    // Glide state (Seance P1)
+    float targetFreqHz = 261.63f;
+    float glideRate    = 0.005f;  // per-sample smoothing rate (set from adapter)
+    bool  gliding      = false;
+
     //==========================================================================
     // Engine state
     //==========================================================================
 
     float sr    = 48000.0f;
     float invSr = 1.0f / 48000.0f;
+    float stepEnvRelCoeff = 0.9986f; // cached: fastExp(-1/(0.02*48000)), updated in prepare()
 };
 
 } // namespace xoutwit

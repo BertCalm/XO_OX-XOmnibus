@@ -148,11 +148,13 @@ public:
         if (params.lfo1Depth > 0.001f)
             applyLFOModulation(lfo1Val, params.lfo1Depth, params.lfo1Dest,
                                modTangleDepth, modDampening, modPulseRate,
-                               modDelayBase, modFilterCutoff, modSpread);
+                               modDelayBase, modFilterCutoff, modSpread,
+                               modBioluminescence, modEntrain);
         if (params.lfo2Depth > 0.001f)
             applyLFOModulation(lfo2Val, params.lfo2Depth, params.lfo2Dest,
                                modTangleDepth, modDampening, modPulseRate,
-                               modDelayBase, modFilterCutoff, modSpread);
+                               modDelayBase, modFilterCutoff, modSpread,
+                               modBioluminescence, modEntrain);
 
         // Apply macros
         {
@@ -327,12 +329,12 @@ public:
             }
             fdnMono *= (1.0f / static_cast<float>(kVoices));
 
-            // e. Bioluminescence layer
+            // e. Bioluminescence layer (stereo spread — per-tap L/R panning)
             // D004 fix: brightness scales shimmer amplitude (0→muted, 1→full shimmer)
-            float bioSample = biolum.process(fdnMono, modDelayBase,
-                                             modBioluminescence * (0.2f + params.brightness * 0.8f));
-            left  += bioSample;
-            right += bioSample;
+            auto bioStereo = biolum.processStereo(fdnMono, modDelayBase,
+                                                  modBioluminescence * (0.2f + params.brightness * 0.8f));
+            left  += bioStereo.left;
+            right += bioStereo.right;
 
             // f. SVF lowpass filter (Zavalishin TPT)
             {
@@ -516,7 +518,7 @@ public:
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_lfo1Depth", "LFO 1 Depth",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
         p.push_back(std::make_unique<juce::AudioParameterChoice>("olap_lfo1Dest", "LFO 1 Dest",
-            juce::StringArray{"Tangle", "Dampening", "Pulse Rate", "Delay", "Filter", "Spread"}, 0));
+            juce::StringArray{"Tangle", "Dampening", "Pulse Rate", "Delay", "Filter", "Spread", "Bioluminescence", "Entrainment"}, 0));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_lfo2Rate", "LFO 2 Rate",
             juce::NormalisableRange<float>(0.01f, 20.0f, 0.0f, 0.3f), 0.15f));
         p.push_back(std::make_unique<juce::AudioParameterChoice>("olap_lfo2Shape", "LFO 2 Shape",
@@ -524,7 +526,7 @@ public:
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_lfo2Depth", "LFO 2 Depth",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
         p.push_back(std::make_unique<juce::AudioParameterChoice>("olap_lfo2Dest", "LFO 2 Dest",
-            juce::StringArray{"Tangle", "Dampening", "Pulse Rate", "Delay", "Filter", "Spread"}, 2));
+            juce::StringArray{"Tangle", "Dampening", "Pulse Rate", "Delay", "Filter", "Spread", "Bioluminescence", "Entrainment"}, 2));
 
         // Post FX
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_chorusMix", "Chorus Mix",
@@ -550,7 +552,7 @@ public:
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_modWheelDepth", "Mod Wheel Depth",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
         p.push_back(std::make_unique<juce::AudioParameterChoice>("olap_atPressureDest", "Aftertouch Dest",
-            juce::StringArray{"Tangle", "Entrain", "Brightness", "Pulse Rate"}, 1));
+            juce::StringArray{"Tangle", "Entrain", "Bioluminescence", "Pulse Rate"}, 1));
         p.push_back(std::make_unique<juce::AudioParameterFloat>("olap_atPressureDepth", "Aftertouch Depth",
             juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
 
@@ -663,20 +665,23 @@ private:
         }
     }
 
-    // LFO modulation routing (6 destinations)
+    // LFO modulation routing (8 destinations)
     void applyLFOModulation(float lfoValue, float depth, int dest,
                             float& tangleDepth, float& dampening, float& pulseRate,
-                            float& delayBase, float& filterCutoff, float& spread) noexcept
+                            float& delayBase, float& filterCutoff, float& spread,
+                            float& bioluminescence, float& entrain) noexcept
     {
         float mod = lfoValue * depth;
         switch (dest)
         {
-            case 0: tangleDepth  = clamp(tangleDepth + mod * 0.5f, 0.0f, 1.0f); break;
-            case 1: dampening    = clamp(dampening + mod * 0.5f, 0.0f, 1.0f); break;
-            case 2: pulseRate    = juce::jmax(0.01f, pulseRate * (1.0f + mod * 0.5f)); break;
-            case 3: delayBase    = juce::jmax(1.0f, delayBase * (1.0f + mod * 0.3f)); break;
-            case 4: filterCutoff = clamp(filterCutoff * fastPow2(mod * 2.0f), 20.0f, 20000.0f); break;
-            case 5: spread       = clamp(spread + mod * 0.5f, 0.0f, 1.0f); break;
+            case 0: tangleDepth      = clamp(tangleDepth + mod * 0.5f, 0.0f, 1.0f); break;
+            case 1: dampening        = clamp(dampening + mod * 0.5f, 0.0f, 1.0f); break;
+            case 2: pulseRate        = juce::jmax(0.01f, pulseRate * (1.0f + mod * 0.5f)); break;
+            case 3: delayBase        = juce::jmax(1.0f, delayBase * (1.0f + mod * 0.3f)); break;
+            case 4: filterCutoff     = clamp(filterCutoff * fastPow2(mod * 2.0f), 20.0f, 20000.0f); break;
+            case 5: spread           = clamp(spread + mod * 0.5f, 0.0f, 1.0f); break;
+            case 6: bioluminescence  = clamp(bioluminescence + mod * 0.5f, 0.0f, 1.0f); break;
+            case 7: entrain          = clamp(entrain + mod * 0.5f, 0.0f, 1.0f); break;
         }
     }
 

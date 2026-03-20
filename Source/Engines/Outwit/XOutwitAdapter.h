@@ -49,6 +49,9 @@ public:
         denReverb.clear();
         noteHeld = false;
         currentNote = -1;
+        targetNote  = -1;
+        glideFreq   = 0.0f;
+        glideCoeff  = 1.0f;
         lfo1Phase = lfo2Phase = 0.0f;
         lfo1SHValue = lfo2SHValue = 0.0f;
         modWheelValue = aftertouchValue = 0.0f;
@@ -71,6 +74,9 @@ public:
         lfo1SHValue = lfo2SHValue = 0.0f;
         noteHeld = false;
         currentNote = -1;
+        targetNote  = -1;
+        glideFreq   = 0.0f;
+        glideCoeff  = 1.0f;
         extStepRateMod = extChromMod = extSynapseMod = extFilterMod = extPitchMod = 0.0f;
         extAmpMod = 1.0f;
         lastSampleL = lastSampleR = 0.0f;
@@ -216,6 +222,11 @@ public:
                                armPitchSt, armFilterHz,
                                snap.armWave[i], snap.armPan[i]);
             arms[i].setStepRate(modStepRate);
+
+            // Seance P1: pass glide rate to each arm (1-coeff = per-sample smoothing amount)
+            float rate = (snap.voiceMode == 1 && snap.glide > 0.001f)
+                         ? (1.0f - glideCoeff) : 1.0f;
+            arms[i].setGlideRate(rate);
         }
 
         denReverb.setParams(modDenSize, modDenDecay, sr);
@@ -499,6 +510,9 @@ private:
     double sr = 48000.0;
     bool   noteHeld = false;
     int    currentNote = -1;
+    int    targetNote  = -1;   // Seance P1: glide target note
+    float  glideFreq   = 0.0f; // Seance P1: current glide frequency (Hz)
+    float  glideCoeff  = 1.0f; // Seance P1: smoothing coefficient for portamento
     float  currentVelocity = 0.0f;
 
     float lfo1Phase = 0.0f, lfo2Phase = 0.0f;
@@ -555,14 +569,44 @@ private:
     {
         if (msg.isNoteOn())
         {
+            bool wasHeld = noteHeld;
+            bool monoLegato = (snap.voiceMode == 1) && wasHeld && (snap.glide > 0.001f);
+
             currentNote     = msg.getNoteNumber();
+            targetNote      = currentNote;
             currentVelocity = msg.getFloatVelocity();
 
-            for (auto& arm : arms)
-                arm.noteOn(currentNote, currentVelocity);
+            // Seance P1: voiceMode/glide wiring (D004 fix)
+            // Mono legato: do NOT re-trigger CA/env — just glide to new pitch
+            if (monoLegato)
+            {
+                // Update arm pitch targets without resetting CA or envelope
+                for (auto& arm : arms)
+                    arm.setGlideTarget(currentNote, currentVelocity);
+            }
+            else
+            {
+                // Normal trigger (Poly mode, or first note in Mono, or Mono with glide=0)
+                for (auto& arm : arms)
+                    arm.noteOn(currentNote, currentVelocity);
 
-            ampEnv.noteOn();
-            inkCloud.trigger(currentVelocity, snap.inkCloud);
+                ampEnv.noteOn();
+                inkCloud.trigger(currentVelocity, snap.inkCloud);
+                glideFreq = xoutwit::midiToFreq(currentNote);
+            }
+
+            // Compute glide coefficient from glide time (Seance P1)
+            // glide [0,1] maps to [0ms, 500ms] portamento time
+            if (snap.glide > 0.001f && snap.voiceMode == 1)
+            {
+                float glideTimeSec = snap.glide * 0.5f; // 0-500ms
+                glideCoeff = xoutwit::fastExp(-1.0f / (glideTimeSec * static_cast<float>(sr)));
+            }
+            else
+            {
+                glideCoeff = 0.0f; // instant — no portamento
+            }
+
             noteHeld = true;
         }
         else if (msg.isNoteOff())

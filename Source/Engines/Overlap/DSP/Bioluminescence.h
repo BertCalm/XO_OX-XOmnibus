@@ -51,25 +51,45 @@ public:
     }
 
     //==========================================================================
-    // process() — produce one bioluminescent shimmer sample.
+    // Stereo output pair returned by processStereo()
+    struct StereoSample { float left; float right; };
+
+    //==========================================================================
+    // process() — produce one bioluminescent shimmer sample (mono, legacy).
     //
     // fdnMono:   mono mix of FDN outputs
     // delayBase: FDN delay base in ms (taps are harmonically derived from this)
     // amount:    wet gain [0, 1]
     float process (float fdnMono, float delayBase, float amount) noexcept
     {
+        auto s = processStereo (fdnMono, delayBase, amount);
+        return (s.left + s.right) * 0.5f;
+    }
+
+    //==========================================================================
+    // processStereo() — produce stereo bioluminescent shimmer.
+    //
+    // Per-tap panning: odd-indexed taps are left-biased, even-indexed taps are
+    // right-biased, creating spatial depth from the shimmer layer.
+    //
+    // fdnMono:   mono mix of FDN outputs
+    // delayBase: FDN delay base in ms (taps are harmonically derived from this)
+    // amount:    wet gain [0, 1]
+    StereoSample processStereo (float fdnMono, float delayBase, float amount) noexcept
+    {
         if (amount < 0.001f)
         {
             // Still write to buffer to keep it fresh
             buffer[static_cast<size_t> (writeHead)] = flushDenormal (fdnMono);
             if (++writeHead >= kBufLen) writeHead = 0;
-            return 0.0f;
+            return { 0.0f, 0.0f };
         }
 
         // Write input to circular buffer
         buffer[static_cast<size_t> (writeHead)] = flushDenormal (fdnMono);
 
-        float sum = 0.0f;
+        float sumL = 0.0f;
+        float sumR = 0.0f;
         float baseOffset = std::max (1.0f, delayBase * 0.001f * sr);
 
         for (int i = 0; i < kTaps; ++i)
@@ -96,15 +116,22 @@ public:
             modPhase[i] += modRate[i];
             if (modPhase[i] >= 1.0f) modPhase[i] -= 1.0f;
 
-            sum += tapSample * modAmp;
+            float tapOut = tapSample * modAmp;
+
+            // Per-tap stereo panning: odd taps left-biased, even taps right-biased.
+            // Pan position alternates: L=0.75/R=0.25 for odd, L=0.25/R=0.75 for even.
+            float lGain = kTapPanL[i];
+            float rGain = kTapPanR[i];
+            sumL += tapOut * lGain;
+            sumR += tapOut * rGain;
         }
 
         // Advance write head
         if (++writeHead >= kBufLen) writeHead = 0;
 
         // Normalise by tap count and apply amount
-        float out = (sum / static_cast<float> (kTaps)) * amount * 0.35f;
-        return flushDenormal (out);
+        float scale = amount * 0.35f / static_cast<float> (kTaps);
+        return { flushDenormal (sumL * scale), flushDenormal (sumR * scale) };
     }
 
 private:
@@ -114,6 +141,13 @@ private:
 
     // Near-prime tap ratio multipliers for inharmonic shimmer character
     static constexpr float kTapRatios[kTaps] = { 1.0f, 1.31f, 1.71f, 2.09f, 2.61f, 3.19f, 3.89f };
+
+    // Per-tap stereo panning gains (constant-power approximation).
+    // Odd-indexed taps are left-biased (L=0.75, R=0.25), even-indexed are
+    // right-biased (L=0.25, R=0.75). This alternating spread transforms the
+    // bioluminescence from a mono overlay into a spatial phenomenon.
+    static constexpr float kTapPanL[kTaps] = { 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f };
+    static constexpr float kTapPanR[kTaps] = { 0.75f, 0.25f, 0.75f, 0.25f, 0.75f, 0.25f, 0.75f };
 
     float sr        = 44100.0f;
 

@@ -45,7 +45,7 @@ public:
             d = 0;
         for (auto& s : allpassBuf)
             s = 0.0f;
-        lpfState = 0.0f;
+        lpfStates.fill(0.0f);
     }
 
     //--------------------------------------------------------------------------
@@ -68,6 +68,8 @@ public:
         float x = input * 0.25f;
 
         // --- 4-comb filter network (Schroeder) ---
+        // Each comb line has its own independent LP state (Seance P2 fix:
+        // shared lpfState created serial dependency between parallel combs)
         float combOut = 0.0f;
         for (size_t i = 0; i < kNumCombs; ++i)
         {
@@ -76,8 +78,8 @@ public:
             float y    = delayBuffers[i][rpos];
             y = xoutwit::flushDenormal(y);
 
-            float filtered = y + lpfCoeff * (y - lpfState);  // shelf LPF
-            lpfState = xoutwit::flushDenormal(filtered);
+            float filtered = y + lpfCoeff * (y - lpfStates[i]);  // per-comb shelf LPF
+            lpfStates[i] = xoutwit::flushDenormal(filtered);
 
             delayBuffers[i][delayWritePos[i]] = x + filtered * feedbackGain;
             delayWritePos[i] = (delayWritePos[i] + 1) & kDelayMask;
@@ -117,7 +119,7 @@ private:
 
     float feedbackGain = 0.7f;
     float lpfCoeff     = 0.5f;
-    float lpfState     = 0.0f;
+    std::array<float, kNumCombs> lpfStates {}; // independent LP state per comb line (Seance P2)
 
     std::array<int, kNumCombs> combLengths {};
 
