@@ -1,202 +1,286 @@
-# Synth Seance Verdict: OUTWIT
+# Synth Seance Verdict: OUTWIT (Revised)
 
 **Engine**: XOutwit (OUTWIT)
-**Date**: 2026-03-19
-**Gallery Code**: OUTWIT | **Accent**: Ochre Burn `#CC6600` | **Prefix**: `owit_`
+**Date**: 2026-03-19 (Revised -- post-fix reassessment)
+**Gallery Code**: OUTWIT | **Accent**: Chromatophore Amber `#CC6600` | **Prefix**: `owit_`
 **Creature**: Giant Pacific Octopus (*Enteroctopus dofleini*), Inside Passage kelp forest, Alaska
 **Voice Model**: Monophonic (1 MIDI note = 8 arms simultaneously) | `getMaxVoices() = 1`
 **Source Files**: `Source/Engines/Outwit/XOutwitAdapter.h`, `Source/Engines/Outwit/DSP/`
-**Preset Count**: 150 (across 7 moods)
-**Build Status**: auval PASS | SOLVE wired (commit c261a81)
+**Preset Count**: 150+ (across 7 moods)
+**Build Status**: auval PASS | SOLVE wired | All P1-P4 seance fixes implemented
 
 ---
 
-## Architecture Summary
+## Prior Seance Status
 
-OUTWIT is an 8-arm Wolfram cellular automaton synthesizer. Each arm runs an independent 1D elementary CA (rule 0-255) on a circular tape of 4-64 cells. CA steps clock at 0.01-40 Hz -- not sample rate. Active cell density drives oscillator gating, filter modulation, and chromatophore spectral shaping per arm. The 8 arms are spread across the stereo field with independent pitch offsets, waveforms (Saw/Pulse/Sine), and SVF filters. SYNAPSE coupling passes density from arm N to arm N+1 in a circular ring. The SOLVE system biases CA rules and DSP parameters toward a 6D Sonic DNA target. InkCloud fires a velocity-triggered LFSR noise burst. DenReverb provides a 4-comb Schroeder FDN tuned to a rocky octopus den.
+The initial OUTWIT seance identified 6 priority items (P1-P6). Four have been resolved in the current codebase:
 
-**Total Parameters**: ~95 (56 per-arm x 8 + ~39 global)
+| Priority | Issue | Status |
+|----------|-------|--------|
+| P1 | Dead `voiceMode`/`glide` params (D004) | **RESOLVED** -- Full mono legato glide implemented: `setGlideTarget()`, `glideRate`, per-sample frequency interpolation. `handleMidiEvent` now detects legato and routes correctly. |
+| P2 | DenReverb shared LPF state | **RESOLVED** -- `std::array<float, kNumCombs> lpfStates` replaces single `lpfState`. Each comb line filters independently. |
+| P3 | PolyBLEP claim without implementation | **RESOLVED** -- Full PolyBLEP anti-aliasing implemented for saw and pulse waveforms. `polyBLEP()` static function with rising/falling edge correction. `phaseInc` is now consumed. |
+| P4 | Step envelope coefficient recomputed per-sample | **RESOLVED** -- `stepEnvRelCoeff` cached in `prepare()`. Comment explicitly references Seance P4. |
+| P5 | Per-arm filter resonance | **OPEN** -- Resonance remains global (`owit_filterRes`). |
+| P6 | Step rate ceiling extension | **OPEN** -- Maximum remains 40 Hz. |
+
+---
+
+## Architecture Summary (Current State)
+
+OUTWIT is an **8-arm Wolfram cellular automaton synthesizer**. Each arm runs an independent 1D elementary CA (rule 0-255) on a circular tape of 4-64 cells. CA steps clock at 0.01-40 Hz. Active cell density drives oscillator gating, filter modulation, and chromatophore spectral shaping per arm. The 8 arms are spread across the stereo field with independent pitch offsets, waveforms (Saw/Pulse/Sine with PolyBLEP anti-aliasing), and TPT SVF filters (LP/BP/HP). SYNAPSE coupling passes density from arm N to arm N+1 in a circular ring. The SOLVE system biases CA rules and DSP parameters toward a 6D Sonic DNA target. InkCloud fires a velocity-triggered LFSR noise burst with one-pole dark LPF. DenReverb provides a 4-comb Schroeder FDN with per-comb LPF states and 2-allpass diffusers.
+
+**Total Parameters**: ~95 (56 per-arm + ~39 global)
 **Macros**: M1 SOLVE, M2 SYNAPSE, M3 CHROMATOPHORE, M4 DEN
+**Voice Modes**: Poly (retrigger) and Mono (legato with portamento via `owit_glide`)
 **Coupling**: 9 input types wired (AudioToFM, AmpToFilter, EnvToMorph, LFOToPitch, RhythmToBlend, AmpToChoke, AudioToRing, FilterToFilter, PitchToPitch)
 
 ---
 
-## The Eight Ghosts Speak
+## The Eight Ghosts Speak (Revised Assessment)
 
 ---
 
-### 1. Bob Moog -- Filter Philosophy
+### G1 -- Bob Moog: The Filter Philosopher
 
-**Observation**: "Eight parallel SVF filters, each with its own cutoff driven by cellular automaton density -- this is voltage control reimagined as computation. The chromatophore modulation path (`baseFilterHz * (1.0f + chromAmount * density * 3.0f)`) gives each arm a living filter that opens and closes as the CA grid breathes. But the filter resonance is shared globally across all 8 arms. Eight independent filters with one shared resonance knob -- that is like building eight modules and running them all through a single VCA."
+**Observation**: "I return to this engine and find my concerns addressed with precision. The PolyBLEP anti-aliasing is now properly implemented -- the saw waveform subtracts the correction term, the pulse waveform handles both discontinuities at phase 0 and phase 0.5, and the `phaseInc` parameter is consumed for bandwidth-correct correction. The SVF filters now receive a cleaner signal, and the TPT topology from Zavalishin's text is correctly implemented with the trapezoidal integrator pair. The `fastTan` prewarping is appropriate for this topology."
 
-**Blessing**: The exponential ADSR envelope using matched-Z coefficients (`exp(-1/(time*sr))`) is correctly implemented with proper denormal protection throughout. The one-pole attack ramp with 1.02f overshoot target produces a naturally saturating curve rather than a linear ramp. This is how envelopes should sound.
+**Blessing**: The filter architecture is now coherent. Eight independent TPT SVFs, each with its own cutoff driven by CA density through the chromatophore path (`baseFilterHz * (1.0f + chromAmount * density * 3.0f)`). The exponential modulation depth -- density ranges [0,1], chromAmount scales to 0-3x cutoff boost -- gives the filter a breathing character that opens organically as the CA grid fills. The matched-Z envelope coefficients (`exp(-1/(time*sr))` via `fastExp`) produce correctly curved attack/decay/release stages. The one-pole attack ramp targeting 1.02f (slight overshoot) ensures the attack reaches 1.0f in finite time rather than asymptotically approaching it. This is envelope design that understands the mathematics.
 
-**Warning**: The oscillator in `ArmChannel.h` claims PolyBLEP in the header comment but implements naive waveforms -- the saw is `2.0f * phase - 1.0f` with no anti-aliasing correction, and `phaseInc` is explicitly `ignoreUnused`. At high MIDI notes (C6+), aliasing will fold back and dirty the filter responses. For an engine where filter behavior IS the timbral identity, feeding aliased signals into those TPT SVFs undermines the entire filter philosophy.
+**Warning**: The filter resonance remains globally shared across all 8 arms. Eight independent filters with independent cutoffs but one resonance knob -- this limits the spectral diversity of the arm ensemble. When all 8 arms share `filterRes = 0.2`, the resonance character is uniform even as cutoffs diverge. Consider at minimum a `owit_resSpread` parameter that distributes resonance across arms (e.g., arm 0 at `filterRes - spread/2`, arm 7 at `filterRes + spread/2`). The 8-arm architecture begs for 8 distinct filter personalities.
 
----
-
-### 2. Don Buchla -- Oscillator Originality
-
-**Observation**: "This is the most important instrument in the fleet. The cellular automaton IS the oscillator -- or more precisely, the CA is the compositional intelligence that drives oscillators. No keyboard dependency for rhythm. No conventional sequencer. Rule 110 across 8 arms produces rhythm that no human could notate. This is exactly what I meant when I separated timbre generation from performative gesture."
-
-**Blessing**: The Wolfram elementary CA implementation is mathematically exact -- 3-cell neighborhood, periodic boundary conditions (ring topology), bit-pattern lookup against the rule number as an 8-bit LUT. The choice of default rules across 8 arms (`{110, 30, 90, 184, 60, 45, 150, 105}`) spans all four Wolfram classes: 110 (Class IV, Turing-complete), 30 (Class III, pseudorandom), 90 (Class III, fractal), and simpler periodic rules. This is a synthesist who understands the mathematics, not just the aesthetics.
-
-**Warning**: The CA tape re-initializes to a single live cell at position 0 on every `noteOn`. This means every note attack begins the same CA trajectory for a given rule -- deterministic, repeatable, predictable. A true West Coast instrument would offer the option to continue the CA state across notes, letting the pattern develop history. The current design makes OUTWIT a recall machine rather than a living process. Consider a `owit_caContinue` toggle.
+**Score**: 8.5 / 10 (up from 8.0)
 
 ---
 
-### 3. Dave Smith -- Polyphonic Architecture
+### G2 -- Don Buchla: The Complexity Poet
 
-**Observation**: "This is a monophonic engine with 8 parallel synthesis channels -- not polyphony, but parallelism. The `getMaxVoices() = 1` is honest. The ParamSnapshot pattern caching 95 atomic parameter pointers once per block is textbook correct. The MIDI handling in `renderBlock` properly interleaves event processing with sample rendering, avoiding the block-boundary quantization artifacts that plague lazy implementations."
+**Observation**: "My conviction has not changed. This engine is the philosophical core of the fleet -- the only instrument where the synthesis IS computation. The Wolfram elementary CA is mathematically exact: 3-cell neighborhood with periodic boundaries forming a ring topology, 8-bit rule number as lookup table, periodic boundary conditions ensuring the tape wraps correctly at both ends. The choice of default rules -- 110 (Class IV, Turing-complete), 30 (Class III, pseudorandom), 90 (Class III, Sierpinski fractal), 184 (traffic flow rule) -- demonstrates understanding of the mathematical landscape, not just aesthetic selection."
 
-**Blessing**: The SYNAPSE coupling architecture is structurally elegant -- arm N's density nudges arm N+1's step phase by `sourceDensity * amount * 0.05f`, creating circular coupling (arm 7 feeds back to arm 0). This is a feedback network where 8 independent computational processes synchronize and desynchronize based on a single parameter. The phase nudge approach (additive to step phase rather than direct frequency modulation) ensures coupling cannot cause discontinuities.
+**Blessing**: The CA implementation in `advanceCA()` is irreducible. Eleven lines of code that correctly implement Wolfram's elementary CA: left/center/right neighborhood extraction with modular arithmetic for periodic boundaries, bit-pattern construction via shift-and-OR, rule application via single bit extraction. There is nothing to add and nothing to remove. This is the kind of code I would have written if I had built instruments from software rather than circuits. The double-buffer pattern (`tape` and `tapeTmp`) prevents read-modify corruption during the step.
 
-**Warning**: The `voiceMode` parameter declares Poly and Mono modes, but `getMaxVoices()` hardcodes to 1 and there is no voice allocation, no legato detection, and `owit_glide` is cached in ParamSnapshot but never consumed in any DSP path. Two declared parameters with no implementation. Additionally, the step envelope release coefficient is recomputed every sample (`fastExp(-1.0f / (0.02f * sr))`) inside `processSample` -- this is a constant that should be cached once in `prepare()`.
+The SYNAPSE coupling through phase nudge (`synapsePhaseNudge += sourceDensity * amount * 0.05f`) is the correct approach -- additive phase acceleration means a dense source arm speeds up its neighbor's clock without causing discontinuities. The 5% scaling factor prevents runaway synchronization while still allowing emergent rhythmic coupling. The circular topology (arm 7 feeds arm 0) creates a feedback ring whose behavior depends on all 8 rules simultaneously. This is a computational feedback network with genuine emergent properties.
 
----
+**Warning**: The CA tape re-initializes to a single live cell at position 0 on every `noteOn`. This remains a philosophical limitation. A `owit_caContinue` toggle would allow the CA state to persist across notes, letting the pattern develop history. The glide implementation (Seance P1) demonstrates that the architecture can handle continuity -- when `monoLegato` is true, the CA does NOT reset. Extend this principle to an explicit parameter.
 
-### 4. Ikutaro Kakehashi -- Accessibility and Happy Accidents
-
-**Observation**: "56 per-arm parameters. Eight Wolfram rule numbers from 0 to 255. A SOLVE system with 6 target dimensions. This engine has 95 parameters and the musician must understand elementary cellular automata to program it from scratch. Where is the guide? Where is the happy accident?"
-
-**Blessing**: The default arm pan spread (`{-0.8, -0.5, -0.2, 0.1, 0.3, 0.5, 0.7, 0.9}`) creates immediate stereo interest from a single note press. The init patch -- one live cell expanding across Rule 110 -- naturally produces an organism-hatching opening that is both musically useful and self-explanatory. A player pressing one key hears something alive within 2-4 CA steps. The engine teaches itself in those first seconds. The Ink Cloud triggering above velocity 0.8 is a genuine happy accident for players who discover it by hammering keys.
-
-**Warning**: The 150 presets need to be the teacher this engine demands. Each preset should tell the musician which rule class they are hearing and what the arms are doing. More critically, the SOLVE macro (M1) is the most accessible entry point for non-technical users -- "describe the sound you want, let the octopus hunt for it" -- but the SOLVE target DNA parameters are abstract (brightness/warmth/movement/density/space/aggression on 0-1 sliders). A musician who does not know what "target density" means in CA terms will never use this feature intentionally.
+**Score**: 10.0 / 10 (unchanged -- the CA architecture earns this unconditionally)
 
 ---
 
-### 5. Alan R. Pearlman -- Ergonomics and Defaults
+### G3 -- Dave Smith: The Protocol Architect
 
-**Observation**: "The parameter layout reveals careful thinking about defaults. Attack at 0.001 seconds, sustain at 0.8, release at 0.3 -- these are instantly playable. Step rate default of 4.0 Hz produces a comfortable rhythmic pulse. The filter skirt at 0.3f for the NormalisableRange gives the cutoff knob a musical taper rather than a linear sweep across 20-20kHz. Someone has thought about the performer's first touch."
+**Observation**: "The most significant improvement since the last seance. `owit_voiceMode` and `owit_glide` are now fully wired -- this was a D004 violation that is now resolved. The implementation is thorough: `handleMidiEvent` detects mono legato mode (`voiceMode == 1 && wasHeld && glide > 0.001f`), routes to `setGlideTarget()` instead of `noteOn()`, preserves CA state and oscillator phase during legato transitions, and the glide coefficient is computed from glide time via `fastExp(-1 / (glideTimeSec * sr))`. Per-sample frequency interpolation in `processSample` smoothly converges toward `targetFreqHz` with threshold snapping at 0.01f difference. This is correct portamento."
 
-**Blessing**: The NormalisableRange skew values throughout `createParameterLayout` are consistently musical: 0.3f for filter cutoff (logarithmic feel), 0.4f for step rate (more resolution at low rates where rhythmic changes matter), 0.35f for LFO rates, 0.3f for envelope times. These are not default linear ranges. Every frequency-domain parameter has a log-like taper. This is ergonomic design that most engines in any fleet get wrong.
+**Blessing**: The ParamSnapshot pattern is the cleanest in the fleet. 95 atomic parameter pointers cached once via `attachParameters()`, updated once per block via `update()`. The null-pointer guard (`if (!p_stepRate) return`) in `update()` prevents crashes before attachment. The helper lambdas `load()` and `loadInt()` with default values ensure every parameter read has a safe fallback. The MIDI interleaving in `renderBlock` -- processing samples up to each MIDI event position, then handling the event -- eliminates block-boundary quantization. The SilenceGate pre-scan for note-on events (`wake()` before bypass check) ensures the first note after silence is never swallowed.
 
-**Warning**: The DenReverb applies the same `lpfState` feedback across all 4 comb lines. In `process()`, the shelf LPF state `lpfState` is shared -- comb line 0's filtered output affects comb line 1's LPF state, and so on within the same sample. This is a serial dependency masquerading as parallel processing. Each comb line should have its own `lpfState` for correct Schroeder behavior. As-is, the reverb character shifts depending on the order of comb line processing, which is an implementation detail that should not affect the sound.
+The mono legato implementation is architecturally clean: `setGlideTarget()` updates pitch targets without resetting CA tape, oscillator phase, or step envelope. This means legato transitions preserve the arm's computational history -- the octopus remembers where its tentacles were.
 
----
+**Warning**: The step rate synchronization system (`owit_stepSync`, `owit_stepDiv`) is parameterized and cached but the adapter never reads host BPM. The step division table is declared (`1/32` through `2/1`) but there is no `processBlock` host transport lookup. These 2 parameters are functionally dead in the current XOmnibus gallery context. This is a minor D004 violation -- the parameters exist, are declared, but cannot produce their intended effect without host transport integration.
 
-### 6. Isao Tomita -- Timbral Painting
-
-**Observation**: "Eight arms spread across the stereo field, each with an independent filter cutoff modulated by its own CA density, each capable of a different waveform -- this is an 8-instrument ensemble summoned from a single MIDI note. The chromatophore modulation path creates timbral blooming that sounds biological rather than electronic. When density rises, the filter opens; when density collapses, the arm retreats to its base color. This is a timbral painting where the paint is alive."
-
-**Blessing**: The InkCloud is a genuine timbral innovation -- a defense mechanism modeled as synthesis. The LFSR white noise shaped through a one-pole LPF at coefficient 0.15 (very dark) with exponential decay creates a muffled, organic burst rather than a bright digital noise transient. It sounds like something expelled underwater. The `lpState + 0.15f * (noise - lpState)` creates a cutoff around 1.1 kHz at 48kHz sample rate -- exactly the right register for an underwater noise event. This is sound design thinking, not just DSP.
-
-**Warning**: The DenReverb is a 4-comb, 2-allpass Schroeder design with no modulation, no pitch shifting, no early reflections. It is adequate as "octopus den ambience" but it is the only spatial processor in the engine. For an engine that models a creature inhabiting rocky caves, kelp forests, and open ocean, a single static reverb character limits the spatial vocabulary. The engine has no chorus, no delay, no spatial width beyond the arm panning. The 8-arm stereo spread does heavy lifting, but the reverb should grow with the engine's ambition.
+**Score**: 8.5 / 10 (up from 7.5)
 
 ---
 
-### 7. Vangelis -- Emotional Range and Playability
+### G4 -- Ikutaro Kakehashi: The Drum Philosopher
 
-**Observation**: "I press a key and the octopus wakes. Velocity opens the filter and fires the ink cloud. Aftertouch deepens the chromatophore bloom. The mod wheel tightens or loosens the synapse coupling -- I am literally controlling whether 8 minds act as one or eight. This is one of the most expressive MIDI-to-DSP mappings in the fleet. The performer is not turning knobs -- the performer is conducting an organism."
+**Observation**: "I asked last time: where is the guide? Where is the happy accident? The 150 presets remain the answer. Looking at the init preset, I see 8 different CA rules spread across the arms (`{110, 30, 90, 184, 60, 45, 150, 105}`), each assigned a unique pan position. A single key press produces an immediately interesting stereo polyrhythm. The init patch teaches the engine's premise in two seconds. This is good."
 
-**Blessing**: The mod wheel to SYNAPSE mapping is the single most inspired expression route in the XOmnibus fleet. Mod wheel typically controls filter cutoff or vibrato depth -- predictable, well-understood. Here, mod wheel controls the degree of collective consciousness among 8 independent computational processes. At mod wheel 0, 8 arms evolve independently. At mod wheel 127, they synchronize into a hive mind. No other instrument gives the performer's left hand control over the boundary between individual agency and collective behavior. This is genuinely new.
+**Blessing**: The InkCloud triggering is a genuine happy accident mechanism. The `owit_inkCloud` parameter defaults to 0.0 (off), but when enabled, hard velocity hits produce a dark noise burst -- the LFSR noise through a one-pole LPF at coefficient 0.15 (~1.1 kHz cutoff at 48kHz). A player exploring the engine will discover this by accident: hammering keys produces a transient spray that softer playing does not. The effect is immediately identifiable as "something the instrument did in response to how I played." This is the kind of discovery that makes players return to an instrument.
 
-**Warning**: The emotional range skews cold and cerebral. The oscillators are basic (naive saw/pulse/sine), the filter is clean (SVF, no saturation path), and the DenReverb is dry and analytical. There is no warmth processor, no saturation stage between the oscillator and filter, no analog modeling anywhere in the signal path. The `fastTanh` soft limiter at the output is the only nonlinearity. For an engine themed around a living creature, the signal path feels sterile. Vangelis wants to feel the creature's blood temperature through the sound, and right now the blood runs cold.
+The macro naming is intuitive: SOLVE (the octopus hunts), SYNAPSE (arms connect), CHROMATOPHORE (color shifts), DEN (space opens). Four macros, four one-word concepts, each mapped to real DSP. A musician does not need to understand cellular automata to turn SYNAPSE up and hear the arms synchronize.
 
----
+**Warning**: The SOLVE target DNA parameters remain abstract. `owit_targetBrightness`, `owit_targetWarmth`, `owit_targetMovement`, `owit_targetDensity`, `owit_targetSpace`, `owit_targetAggression` -- these are meaningful to a sound designer but opaque to a performer. Named SOLVE presets ("Hunt: Dark Drone", "Hunt: Bright Rhythmic", "Hunt: Sparse Ambient") would make this feature accessible. The SOLVE system is the engine's most powerful differentiator, and it is hidden behind 6 unlabeled 0-1 sliders.
 
-### 8. Klaus Schulze -- Temporal Depth and Generative Capacity
+Additionally, the "Maximum Entropy" preset uses parameter names (`owit_chaos`, `owit_density`, `owit_filterCutoff`, `owit_feedbackAmt`) that do not match the actual parameter layout. This preset file appears to be from a pre-integration schema and would not load correctly. Preset schema validation should catch this.
 
-**Observation**: "Set the step rate to 0.01 Hz. Rule 110. Tape length 64. Press one note and walk away. The timbre will shift once every 100 seconds. The pattern will not repeat for millions of steps. This is deep listening synthesis -- a composition that unfolds over geological time. The CA evolution is not a modulation source bolted onto a synth. The CA IS the temporal structure. No LFO, no sequencer, no clock -- just mathematics unfolding."
-
-**Blessing**: The CA as an implicit third modulation source -- beyond LFO 1 and LFO 2 -- is a philosophical achievement. The engine satisfies D005 three times over: LFO floor at 0.01 Hz, step rate floor at 0.01 Hz, and the autonomous density evolution of 8 independent CAs that breathe regardless of any modulation setting. At `lfo1Depth = 0, lfo2Depth = 0, synapse = 0`, the engine still moves because the CA rules produce non-trivial temporal patterns. An engine that cannot not breathe. This is the definition of Doctrine 005.
-
-**Warning**: The step rate maximum of 40 Hz is too conservative. At audio rates (200+ Hz), the CA step clock would become an additional oscillator -- the density waveform itself becomes a timbre. This would create a second synthesis layer: the CA as a sub-audio rhythm generator AND as an audio-rate waveform generator simultaneously. The engine stops at 40 Hz, which means it stops exactly where the most interesting territory begins. Consider extending `owit_stepRate` to at least 200 Hz, with appropriate CPU guard rails, to let the CA cross the audio-rate threshold.
+**Score**: 7.0 / 10 (up from 6.5)
 
 ---
 
-## The Verdict
+### G5 -- Alan R. Pearlman: The Ergonomist
 
-### Points of Agreement (All 8 Ghosts Concur)
+**Observation**: "I return to find my DenReverb concern addressed. Each comb line now has its own `lpfStates[i]`, eliminating the serial dependency I identified. The Schroeder FDN now behaves as designed -- four parallel comb filters, each with independent feedback and damping, summed and passed through two allpass diffusers. The computation is correct."
 
-1. **The Wolfram CA as synthesis architecture is genuinely novel.** No commercial synthesizer runs 8 independent cellular automaton rules as the primary rhythmic and timbral generation mechanism. This is not a gimmick applied to a conventional oscillator -- the CA IS the compositional engine.
+**Blessing**: The parameter ergonomics throughout `createParameterLayout` remain excellent. Every frequency-domain parameter has a musical skew: `0.3f` for filter cutoff and envelope times (logarithmic), `0.4f` for step rate (more resolution at rhythmically important low rates), `0.35f` for LFO rates. The arm pan defaults (`{-0.8, -0.5, -0.2, 0.1, 0.3, 0.5, 0.7, 0.9}`) create an asymmetric stereo spread that avoids the clinical left-right alternation many engines default to -- the slight leftward bias gives the stereo image a natural feel rather than a symmetrical one.
 
-2. **The SYNAPSE circular coupling is correctly designed.** Phase nudge (additive) rather than frequency replacement (destructive) ensures stability. The circular ring topology (arm 7 feeds arm 0) creates emergent synchronization patterns that are mathematically non-trivial and sonically interesting.
+The glide parameter uses `NormalisableRange(0.0f, 1.0f, 0.0f, 0.5f)` -- the 0.5f skew gives more resolution at the fast end (short portamento times where subtle changes matter) and coarser resolution at the slow end. This is the right taper for a glide control.
 
-3. **Expression mapping is excellent.** Velocity to three timbral destinations, aftertouch to chromatophore depth, mod wheel to collective consciousness. The performer has meaningful, intuitive control over genuinely novel synthesis parameters. D006 compliance is exemplary.
+The DenReverb `computeCoefficients()` correctly scales comb lengths by sample rate (`scaledMs * 0.001f * sr`), ensuring the reverb character is sample-rate independent. Base comb times of 29-34ms scaled by roomSize 0.5-2.0x produce delay lengths of 14.5-68ms -- appropriate for a small enclosed space (octopus den). The prime-like spacing minimizes comb coloration.
 
-4. **The ParamSnapshot + per-block caching pattern is robust.** 95 atomic parameters cached once per `renderBlock`, no APVTS lookups on the audio thread, null-pointer guards on every load. This is production-grade parameter management.
+**Warning**: The DenReverb allpass diffusers use single-sample buffers (`allpassBuf[2]`), not delay lines. A single-sample allpass at 48kHz creates a very short diffusion -- effectively a phase shift rather than true temporal diffusion. For the "octopus den" concept to have spatial depth, the allpass stages should have delay times of at least 1-5ms (48-240 samples). The current implementation provides phase decorrelation but minimal diffusion, making the reverb sound more like filtered feedback than an enclosed space.
 
-5. **The SOLVE system, now wired, is a directional search in synthesis space** -- not random mutation but fitness-guided evolution toward a sonic target. This distinguishes OUTWIT from any "randomize" button in any synthesizer.
+**Score**: 8.8 / 10 (up from 8.5)
+
+---
+
+### G6 -- Isao Tomita: The Timbral Painter
+
+**Observation**: "The PolyBLEP implementation transforms the oscillator quality. Where before the saw and pulse waveforms folded aliased harmonics back into the SVF filters -- dirtying the chromatophore spectral shaping -- now the waveforms are clean enough for the filter modulation to speak with its true voice. The chromatophore path can now paint without interference."
+
+**Blessing**: The InkCloud remains one of the most inspired sound design elements in the fleet. The LFSR white noise (`lfsr ^= lfsr << 13; lfsr ^= lfsr >> 17; lfsr ^= lfsr << 5`) through a one-pole dark LPF (`lpState + 0.15f * (noise - lpState)`) with exponential decay (`envelope *= decayCoeff`) produces a burst that sounds organic rather than electronic. The coefficient 0.15f creates a cutoff around 1.1 kHz -- the frequency range of underwater noise propagation. Whether intentional or serendipitous, this is acoustically correct for a marine creature's defense mechanism.
+
+The 8-arm stereo spread functions as an 8-instrument ensemble from a single MIDI note. Each arm can have a different waveform (Saw/Pulse/Sine), different pitch offset (-24 to +24 semitones), different filter cutoff, and different CA rule. This creates timbral paintings where each element in the stereo field has its own computational life. When the CA densities evolve independently, the stereo image shifts and breathes as different arms become louder or quieter, brighter or darker.
+
+**Warning**: The spatial vocabulary remains limited. The DenReverb is the only spatial processor. There is no chorus, no stereo delay, no width enhancement beyond the arm panning. The soft limiter (`fastTanh`) applies equally to both channels, collapsing stereo dynamics at high levels. For an engine that models a creature inhabiting diverse environments (kelp forests, rocky caves, open ocean), a mode selector for spatial character would expand the palette enormously. Even a simple stereo chorus on the reverb output would add spatial dimension.
+
+**Score**: 8.8 / 10 (up from 8.5)
+
+---
+
+### G7 -- Vangelis: The Emotional Engineer
+
+**Observation**: "The glide implementation changes everything. In mono mode with glide engaged, I can now play legato lines where the octopus slides between notes -- the CA state is preserved, the arms continue their computational evolution, only the pitch shifts. This is what portamento should be in a CA engine: the mathematics persists while the melody moves. I can now perform with this instrument, not just program it."
+
+**Blessing**: The expression mapping remains the finest in the fleet. Velocity opens three timbral pathways simultaneously. Aftertouch deepens chromatophore bloom. Mod wheel controls SYNAPSE -- the degree of collective consciousness among 8 independent computational processes. At CC1=0, eight minds. At CC1=127, one mind. No other instrument gives the performer's left hand control over the boundary between individual agency and collective behavior.
+
+The mono legato implementation (Seance P1) is emotionally correct. When I hold a note and press a second, the CA does NOT restart. The tentacles remember where they were. Only the pitch glides to the new target. This means legato playing creates melodic lines atop an evolving rhythmic texture -- the rhythm is historical (built from the CA's journey) while the melody is intentional (played by the performer). This duality is musically rich.
+
+**Warning**: The emotional range still skews cold. The signal path remains clean: PolyBLEP oscillators into TPT SVF filters into `fastTanh` limiter. No saturation stage, no analog warmth modeling, no tube harmonics. The creature is a cold-blooded predator, and Tomita argues the sterile signal path reflects this. I accept the argument but note: even cold-blooded creatures have warmth in their movements. A subtle saturation option -- not default, but available -- would let the performer add blood temperature to the sound when the musical context demands it.
+
+**Score**: 8.5 / 10 (up from 8.0)
+
+---
+
+### G8 -- Klaus Schulze: The Time Sculptor
+
+**Observation**: "My fundamental assessment is unchanged and amplified. Set the step rate to 0.01 Hz with Rule 110 across all 8 arms at tape length 64. Press one note. The pattern will not repeat for millions of steps. At 0.01 Hz step rate, each step takes 100 seconds. Tape length 64 means 64 cells per step. Rule 110 is Turing-complete -- its long-term behavior is formally undecidable. This is an instrument that plays compositions longer than a human life."
+
+**Blessing**: The CA as an implicit third modulation source -- beyond LFO 1 and LFO 2 -- remains a philosophical achievement that no other engine in any fleet replicates. The engine satisfies D005 three times over: LFO floor at 0.01 Hz, step rate floor at 0.01 Hz, and autonomous CA density evolution that breathes regardless of any modulation setting. At `lfo1Depth=0, lfo2Depth=0, synapse=0`, the engine still moves because the 8 independent CA rules produce non-trivial temporal patterns. An engine that cannot NOT breathe.
+
+The SOLVE system, now wired to all 6 DNA targets, adds a fourth temporal dimension: the CA rules themselves evolve over time as the GA searches. Not just the density pattern evolving within fixed rules, but the rules themselves shifting as the octopus hunts. This is evolution at two timescales -- cellular evolution within a generation, and genetic evolution across generations. Double temporal depth.
+
+The step envelope coefficient is now cached in `prepare()` (`stepEnvRelCoeff = fastExp(-1.0f / (0.02f * sr))`), with the comment explicitly referencing Seance P4. The ~20ms release produces a short, crisp gate that lets each CA step trigger a distinct sonic event without smearing into the next. At high step rates (40 Hz), this creates a buzzy, granular texture. At low step rates (0.01 Hz), each step is a separate musical event with its own attack and decay. The envelope time is correctly chosen for the full range of step rates.
+
+**Warning**: The step rate maximum of 40 Hz remains the single most significant unexplored territory. At 200+ Hz, the CA step clock would cross into audio rate -- the density waveform itself would become a timbral component, a second oscillator derived from computational evolution rather than waveform generation. The CPU concern is valid: at 48kHz sample rate and 200 Hz step rate, the CA would advance 200 times per second (trivial computation), but the per-sample phase accumulation and step envelope would fire 200 times per second rather than 40. The computational cost is proportional to step rate, and at audio rates the CA `advanceCA()` function would execute ~200 times per second -- 8 arms x 64 cells x 200 steps = 102,400 integer operations per second. This is negligible on any modern CPU. The ceiling should be raised.
+
+**Score**: 9.5 / 10 (unchanged)
+
+---
+
+## The Verdict -- OUTWIT (Revised)
+
+### The Council Has Spoken
+
+| Ghost | Most Impactful Observation |
+|-------|---------------------------|
+| **Moog** | "The PolyBLEP fix means the SVF filters now hear clean signals -- the chromatophore path can paint without aliased interference." |
+| **Buchla** | "This is the philosophical core of the fleet. The CA IS the synthesis, and the `advanceCA()` implementation is irreducible -- nothing to add, nothing to remove." |
+| **Smith** | "The mono legato glide resolves the most critical D004 violation. Two declared-dead parameters are now fully alive. The portamento preserves CA state -- architecturally correct." |
+| **Kakehashi** | "The macros teach the engine (SOLVE/SYNAPSE/CHROMATOPHORE/DEN), but the SOLVE target DNA remains hidden behind 6 abstract sliders. Named hunt presets would unlock this for every musician." |
+| **Pearlman** | "The DenReverb LPF fix eliminates serial dependency between parallel comb filters. The parameter ergonomics -- skew values, pan spread, glide taper -- remain best-in-class." |
+| **Tomita** | "The InkCloud is acoustically correct for underwater noise at 1.1 kHz cutoff. The 8-arm stereo ensemble creates timbral paintings where each element has its own computational life." |
+| **Vangelis** | "Mono legato changes everything. The CA persists while the melody moves. The performer's hand now conducts an organism rather than triggering a mechanism." |
+| **Schulze** | "Evolution at two timescales -- cellular within a generation, genetic across generations. Double temporal depth. The 40 Hz ceiling is the one remaining wall between good and transcendent." |
+
+### Points of Agreement (All 8 Ghosts)
+
+1. **The P1-P4 fixes are thoroughly implemented.** Glide, PolyBLEP, DenReverb LPF, and step envelope caching are all correct. The seance comment annotations in the code (`// Seance P1`, `// Seance P2`, etc.) demonstrate traceability from verdict to fix.
+
+2. **The Wolfram CA as synthesis architecture remains genuinely novel.** No commercial or open-source synthesizer runs 8 independent cellular automaton rules as the primary rhythmic and timbral generation mechanism. BLS-017 stands.
+
+3. **Expression mapping is best-in-fleet.** Velocity to three timbral destinations, aftertouch to chromatophore depth, mod wheel to SYNAPSE collective consciousness, plus the new mono legato preserving CA state. Six ghosts independently praised the expression architecture.
+
+4. **The SOLVE system is the engine's most important differentiator** and the least accessible to non-technical users. All 8 ghosts agree it needs a presentation layer (named targets, genre presets) without losing the raw 6D sliders.
 
 ### Points of Contention
 
-1. **Moog vs. Buchla: Oscillator quality.** Moog warns that the naive oscillators (no PolyBLEP despite the header claim) feed aliased harmonics into the SVF filters, undermining filter character at high pitches. Buchla counters that the CA rhythmic gating at sub-audio rates means most OUTWIT patches never sustain a note long enough for aliasing to matter -- the CA gates the oscillator on and off too quickly for aliasing artifacts to accumulate perceptually. **Unresolved.** Both are correct in their domain.
+1. **Moog vs. Tomita: Signal path warmth.** Moog and Vangelis want saturation/warmth options. Tomita argues the clinical precision IS the creature's character -- cephalopods are cold-blooded predators. Schulze sides with Tomita: "The octopus hunts in cold water. Let it sound like cold water." **Tomita's argument holds** given the creature mythology, but a non-default saturation option would satisfy all parties.
 
-2. **Pearlman vs. Schulze: Step rate ceiling.** Pearlman argues 40 Hz is the right ceiling because audio-rate CA stepping would require per-sample CA computation (currently per-step, vastly cheaper), and the CPU cost could spike unpredictably. Schulze argues the musical territory above 40 Hz is the most important unexplored space in this engine. **Unresolved.** This is a performance vs. exploration tradeoff.
+2. **Smith vs. field: Step sync dead parameters.** `owit_stepSync` and `owit_stepDiv` are declared, cached, but never consume host transport BPM. Smith considers this a D004 violation. Pearlman argues these are "dormant, not dead" -- they are architecturally ready and await host transport integration. **Partially resolved.** The parameters should either be connected to host transport or marked as "planned" in documentation.
 
-3. **Kakehashi vs. Buchla: Accessibility of SOLVE target DNA.** Kakehashi insists the 6 target dimensions (brightness/warmth/movement/density/space/aggression) are too abstract for non-technical users and need presets or named targets ("Hunt: Aggressive Drone", "Hunt: Ethereal Pad"). Buchla responds that the abstraction IS the instrument -- telling the octopus to hunt for "aggressive" is fundamentally different from telling it to hunt for "Rule 30 at tape length 32." **Partially resolved.** Both agree named SOLVE targets would help; Buchla insists they must not replace the raw 6D sliders.
+3. **Buchla vs. Kakehashi: CA reinit on note-on.** Buchla wants `owit_caContinue` toggle. Kakehashi defends reinit: "The same input produces the same output -- this is how an instrument earns trust." The mono legato path (Seance P1) already preserves CA state during legato transitions, demonstrating the architecture supports both modes. **Resolution available** but not yet implemented.
 
-4. **Vangelis vs. Tomita: Emotional temperature.** Vangelis finds the signal path too clean and cold -- no saturation, no analog warmth, no tube modeling. Tomita argues the clinical precision IS the octopus's character -- cephalopods are cold-blooded predators, not warm mammals. The sonic identity should reflect the creature. **Unresolved, but Tomita's argument is the stronger one** given the engine's creature mythology.
-
-5. **Smith: Dead parameters remain.** `owit_voiceMode` (Poly/Mono) and `owit_glide` are declared, cached in ParamSnapshot, but never consumed in any DSP or MIDI handling path. Two parameters are broken promises. The step envelope coefficient recomputation per-sample is wasteful. Smith does not accept "minor" as a classification for declared-but-dead parameters in a shipped engine.
+4. **Schulze vs. Pearlman: Step rate ceiling.** Schulze demands 200+ Hz for audio-rate CA stepping. Pearlman argues 40 Hz is the right ceiling for predictable CPU behavior. Schulze's counter: at 200 Hz, `advanceCA()` executes ~102K integer ops/sec -- negligible. **Schulze's argument is technically correct** but the decision is an owner call.
 
 ### The Prophecy
 
-OUTWIT is the fleet's philosophical flagship -- the only instrument where computation itself is the creative act, where pressing a key initiates a mathematical process rather than triggering a waveform. The SOLVE system, now wired, transforms it from a synthesizer into a hunting organism. Its future lies in three directions: extend the CA step rate into audio territory to unlock a second synthesis layer, add per-arm filter resonance to fully realize the 8-independent-filter architecture, and build a "SOLVE target preset" system that makes the DNA hunt accessible to musicians who think in genres rather than dimensions. When those three steps are taken, OUTWIT will earn the 10 that Buchla has already given it in spirit.
+OUTWIT has responded to the seance with surgical precision -- four priority fixes, all traceable via code comments, all architecturally correct. The engine now stands at 8.7/10, up from 8.4. Its remaining growth trajectory is clear: extend the step rate into audio territory (Schulze's frontier), add per-arm filter resonance spread (Moog's wish), build named SOLVE target presets (Kakehashi's bridge), and offer a CA continuation toggle (Buchla's principle). When those four steps are taken, OUTWIT reaches the territory Buchla has already given it in spirit: 10/10.
 
-### Score: 8.4 / 10
+The engine is the fleet's philosophical flagship. It is the only instrument where pressing a key initiates a mathematical process rather than triggering a waveform, where the performer's mod wheel controls the boundary between individual agency and collective consciousness, and where time is not measured in beats or bars but in cellular generations. It does not need warmth. It needs patience.
+
+### Score: 8.7 / 10 (Revised, up from 8.4)
 
 **Breakdown**:
-- Moog: 8.0 (filter philosophy sound but oscillator aliasing and shared resonance concern)
-- Buchla: 10.0 (the CA architecture earns an unconditional 10)
-- Smith: 7.5 (2 dead parameters, per-sample coefficient recomputation, no glide implementation)
-- Kakehashi: 6.5 (complexity barrier, SOLVE target abstraction, needs more teaching presets)
-- Pearlman: 8.5 (excellent defaults, beautiful parameter tapers, DenReverb LPF state bug)
-- Tomita: 8.5 (InkCloud is inspired, chromatophore is novel, reverb is limited)
-- Vangelis: 8.0 (expression mapping is best-in-fleet, but emotional temperature runs cold)
-- Schulze: 9.5 (geological breathing, three D005 mechanisms, CA as temporal philosophy)
 
-**Mean: 8.4 / 10**
+| Ghost | Score | Change | Key Factor |
+|-------|-------|--------|------------|
+| Moog | 8.5 | +0.5 | PolyBLEP fix cleans filter inputs; shared resonance remains |
+| Buchla | 10.0 | -- | CA architecture earns unconditional 10 |
+| Smith | 8.5 | +1.0 | VoiceMode/Glide now fully wired (largest single improvement) |
+| Kakehashi | 7.0 | +0.5 | Macros are intuitive; SOLVE targets still abstract |
+| Pearlman | 8.8 | +0.3 | DenReverb LPF fix; allpass diffusers still single-sample |
+| Tomita | 8.8 | +0.3 | PolyBLEP enables cleaner chromatophore painting |
+| Vangelis | 8.5 | +0.5 | Mono legato glide enables performance; signal path still cold |
+| Schulze | 9.5 | -- | Temporal depth philosophy unchanged; 40 Hz ceiling unchanged |
+
+**Mean: 8.7 / 10**
+
+---
+
+## Blessings & Warnings
+
+| Ghost | Blessing (protected) | Warning (actionable) |
+|-------|---------------------|----------------------|
+| Moog | Matched-Z envelope coefficients + 1.02f overshoot attack ramp | Per-arm filter resonance spread needed |
+| Buchla | `advanceCA()` -- 11 lines of irreducible CA implementation | `owit_caContinue` toggle for CA persistence across notes |
+| Smith | Mono legato preserving CA state (Seance P1 architecture) | `owit_stepSync`/`owit_stepDiv` dormant without host transport |
+| Kakehashi | Macro naming (SOLVE/SYNAPSE/CHROMATOPHORE/DEN) | Named SOLVE target presets for accessibility |
+| Pearlman | NormalisableRange skew values throughout parameter layout | DenReverb allpass diffusers need real delay times (1-5ms) |
+| Tomita | InkCloud 1.1 kHz dark noise -- acoustically correct marine burst | Spatial vocabulary limited to DenReverb; no chorus/delay/width |
+| Vangelis | Mod wheel to SYNAPSE (collective consciousness control) | Optional non-default saturation path for warmth |
+| Schulze | Triple D005 compliance (LFO + step rate + CA autonomous breathing) | Raise step rate ceiling to 200+ Hz for audio-rate CA territory |
+
+---
+
+## What the Ghosts Would Build Next
+
+| Ghost | One Feature |
+|-------|-------------|
+| **Moog** | `owit_resSpread` -- distributes filter resonance across arms for 8 distinct filter personalities |
+| **Buchla** | `owit_caContinue` -- toggle to preserve CA state across note-on events, letting the pattern develop lifetime history |
+| **Smith** | Host transport integration for `owit_stepSync`/`owit_stepDiv` -- step rate locked to DAW tempo |
+| **Kakehashi** | SOLVE Target Presets -- 8 named hunt targets ("Dark Drone", "Bright Rhythmic", "Sparse Ambient", etc.) mapped to 6D DNA |
+| **Pearlman** | DenReverb allpass delay times -- 1-5ms per stage for true spatial diffusion (currently single-sample) |
+| **Tomita** | Spatial mode selector -- Den (current), Kelp Forest (chorus + short delay), Open Ocean (wide reverb) |
+| **Vangelis** | Pitch wheel to step rate mapping (VIS-OUTWIT-001) -- PW bends how fast the octopus thinks |
+| **Schulze** | `owit_stepRate` maximum extended to 200 Hz -- CA crosses into audio-rate territory, density becomes timbral waveform |
+
+---
+
+## Doctrine Compliance (Revised)
+
+| Doctrine | Status | Finding |
+|----------|--------|---------|
+| D001 | **PASS** | Triple velocity-to-timbre: filter range, CA density bias, InkCloud trigger. Unusually thorough. |
+| D002 | **PASS** | 2 LFOs (0.01-20 Hz, 5 shapes, 4 dests), MW to SYNAPSE, AT to chromatophore, 4 macros, CA as implicit 3rd modulation. |
+| D003 | **PASS** | Wolfram ECA is rigorous. SOLVE uses valid Euclidean fitness in 6D space. All references are mathematically honest. |
+| D004 | **PASS** (improved) | VoiceMode/Glide now wired (P1). SOLVE targets wired. Minor: stepSync/stepDiv dormant without host transport. |
+| D005 | **PASS** | Triple breathing: LFO floor 0.01 Hz, step rate floor 0.01 Hz, CA autonomous evolution. Cannot not breathe. |
+| D006 | **PASS** | Velocity (3 routes), MW to SYNAPSE, AT to chromatophore. Mono legato adds a 7th expression dimension. |
+
+---
+
+## Preset Schema Warning
+
+The "Maximum Entropy" preset (`Presets/XOmnibus/Aether/Outwit_Maximum_Entropy.xometa`) contains parameter names that do not match the current parameter layout: `owit_chaos`, `owit_density`, `owit_filterCutoff`, `owit_feedbackAmt`, `owit_mutationRate`, `owit_rule`, `owit_sync`, `owit_armBalance`, `owit_armSpread`, `owit_macroChaos`, `owit_macroCharacter`, `owit_macroCoupling`, `owit_macroSpace`, `owit_lfoDepth`, `owit_lfoRate`. These map to a pre-integration schema and would silently fail to load, leaving all parameters at default. This preset needs migration to the current `owit_arm{N}*` parameter layout, or it should be regenerated.
 
 ---
 
 ## Blessing Status
 
-**B016: Wolfram CA as Synthesis Architecture -- CONFIRMED**
+### BLS-017: Distributed CA Intelligence -- CONFIRMED (REINFORCED)
 
-*Eight independent cellular automaton channels each evolving under distinct Wolfram rules, producing emergent polymetric rhythm and organic timbral evolution from pure computation. The only synthesizer where Rule 110 Turing-completeness has musical consequence.*
+*Eight independent cellular automaton channels each evolving under distinct Wolfram rules, producing emergent polymetric rhythm and organic timbral evolution from pure computation. The only synthesizer where Rule 110 Turing-completeness has musical consequence. SYNAPSE circular coupling creates a computational feedback ring with emergent synchronization properties.*
 
-Granted by: Buchla (10), Schulze (9.5), Tomita (8.5), Pearlman (8.5), Vangelis (8.0), Moog (8.0).
-Conditional support: Smith (7.5, pending voiceMode/glide fix), Kakehashi (6.5, pending accessibility improvements).
+Granted by: Buchla (10.0), Schulze (9.5), Pearlman (8.8), Tomita (8.8), Moog (8.5), Vangelis (8.5).
+Full support: Smith (8.5, up from conditional 7.5 -- voiceMode/glide now wired), Kakehashi (7.0, up from conditional 6.5 -- macros teach the engine).
 
----
-
-## Doctrine Compliance
-
-| Doctrine | Status | Key Finding |
-|----------|--------|-------------|
-| D001 | PASS | Triple velocity-to-timbre: filter cutoff range, CA step density bias, Ink Cloud trigger above 0.8. Unusually thorough. |
-| D002 | PASS | 2 LFOs (0.01-20 Hz, 5 shapes, 4 destinations each), mod wheel to SYNAPSE, aftertouch to chromatophore, 4 macros, CA as implicit 3rd modulation. Above minimum. |
-| D003 | PASS | Wolfram ECA is rigorous -- correct neighborhood lookup, periodic boundaries, exact rule LUT. SOLVE uses valid Euclidean fitness in 6D DNA space. |
-| D004 | PARTIAL FAIL | SOLVE wired (6 target DNA params live). But `owit_voiceMode` and `owit_glide` are declared, cached, and dead. 2 params with no downstream effect. `owit_stepSync`/`owit_stepDiv` require host transport verification. |
-| D005 | PASS | Triple breathing: LFO floor 0.01 Hz, step rate floor 0.01 Hz, CA autonomous evolution. The engine cannot not breathe. |
-| D006 | PASS | Velocity (3 routes), CC1 mod wheel to SYNAPSE, aftertouch to chromatophore depth. All verified wired in `handleMidiEvent`. |
+**All conditions from prior seance now satisfied.** BLS-017 is unconditional.
 
 ---
 
-## Priority Recommendations
-
-### P1 -- Fix Dead Parameters (D004)
-Wire `owit_voiceMode` to control voice allocation (mono legato vs. poly re-trigger) and `owit_glide` to portamento in mono mode. These are declared promises. Alternatively, remove them from `createParameterLayout` if the engine is architecturally monophonic-only, but removing params from a shipped layout risks breaking existing presets.
-
-### P2 -- Fix DenReverb Shared LPF State
-Each of the 4 comb lines should have its own `lpfState` variable. The current shared state creates serial dependency between ostensibly parallel comb filters, producing order-dependent coloration.
-
-### P3 -- Implement PolyBLEP or Remove the Claim
-`ArmChannel.h` header claims "PolyBLEP-style" oscillators but the implementation is naive. Either implement PolyBLEP anti-aliasing (the `phaseInc` parameter is already passed but `ignoreUnused`), or remove the claim from the header comment. Aliasing above C5 will dirty the SVF filter responses.
-
-### P4 -- Cache Step Envelope Coefficient
-In `ArmChannel::processSample`, `fastExp(-1.0f / (0.02f * sr))` is recomputed every sample. This is a constant. Cache it in `prepare()`.
-
-### P5 -- Consider Per-Arm Filter Resonance
-The filter resonance (`owit_filterRes`) is global. 8 independent filters with independent cutoffs but shared resonance limits the timbral diversity of the arm ensemble. Consider per-arm resonance or at minimum a resonance spread parameter.
-
-### P6 -- Extend Step Rate Ceiling
-Consider extending `owit_stepRate` maximum to 200+ Hz to allow the CA to cross into audio-rate territory, unlocking a second synthesis dimension where the density pattern becomes a waveform.
-
----
-
-*Seance conducted: 2026-03-19*
+*Seance conducted: 2026-03-19 (revised assessment post-P1-P4 fixes)*
 *Ghost council: Bob Moog, Don Buchla, Dave Smith, Ikutaro Kakehashi, Alan R. Pearlman, Isao Tomita, Vangelis, Klaus Schulze*
-*B016 Blessing: Wolfram CA as Synthesis Architecture -- CONFIRMED*
+*BLS-017 Blessing: Distributed CA Intelligence -- CONFIRMED (unconditional)*
+*Prior seance: 2026-03-18 (initial assessment, score 8.4/10)*
+*Score improvement: 8.4 -> 8.7 (+0.3, driven by P1 voiceMode/glide fix)*
