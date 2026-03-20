@@ -694,7 +694,7 @@ private:
 
                     root->setProperty ("system",
                         "You are XOmnibus Sound Architect, an expert sound design assistant for "
-                        "XOmnibus, a multi-engine synthesizer with 20 engines and 12 coupling types. "
+                        "XOmnibus, a multi-engine synthesizer with 34 engines and 13 coupling types. "
                         "RESPOND WITH VALID JSON ONLY. No markdown code fences, no explanation text "
                         "outside the JSON. The user prompt contains a PARAMETER REFERENCE section — "
                         "use ONLY the parameter IDs listed there. Every value you return will be "
@@ -751,7 +751,7 @@ private:
 
     static juce::String buildSystemContext()
     {
-        return "XOmnibus is a multi-engine synthesizer with 20 engines, 12 coupling types, "
+        return "XOmnibus is a multi-engine synthesizer with 34 engines, 13 coupling types, "
                "an 18-stage master FX chain, and 4 macros (M1=CHARACTER, M2=MOVEMENT, "
                "M3=COUPLING, M4=SPACE). "
                "Master FX stages: Saturator, Corroder, VibeKnob(-1=sweet,+1=grit), "

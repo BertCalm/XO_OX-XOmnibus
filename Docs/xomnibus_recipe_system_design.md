@@ -17,7 +17,7 @@ Think of it this way:
 
 The relationship: **Recipe configures the rig. Preset dials in the sound.**
 
-Recipes solve a real problem. XOmnibus has 11 engines and 12 coupling types. The combinatorial space is vast. Most users will never explore OBLONG + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
+Recipes solve a real problem. XOmnibus has 34 engines and 13 coupling types. The combinatorial space is vast. Most users will never explore OBLONG + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
 
 ---
 

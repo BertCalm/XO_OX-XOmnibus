@@ -35,6 +35,13 @@ namespace xomnibus {
 //   Real wavetable banks — Analog / Vocal / Metallic / Organic (obrix_wtBank)
 //   Unison voice stacking with detune spread (obrix_unisonDetune 0–50 ct)
 //
+// Wave 3 additions (65 params):
+//   Drift Bus — global ultra-slow LFO (0.001–0.05 Hz) with per-voice phase offsets;
+//               Berlin School ensemble drift from one oscillator (obrix_driftRate, obrix_driftDepth)
+//   Journey Mode — suppress note-off: sound evolves forever (obrix_journeyMode)
+//   Per-Brick Spatial — DISTANCE (HF rolloff via 1-pole LP) + AIR (warm/cold spectral tilt)
+//                       (obrix_distance, obrix_air)
+//
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
 // Blessing B016: Brick Independence
 //==============================================================================
@@ -298,6 +305,11 @@ public:
         lastSampleL = lastSampleR = 0.0f;
         gestureLevel = 0.0f;
         gesturePhase = 0.0f;
+        // Wave 3
+        driftPhase_  = 0.0f;
+        journeyMode_ = false;
+        distFiltL_ = distFiltR_ = 0.0f;
+        airFiltL_  = airFiltR_  = 0.0f;
     }
 
     //==========================================================================
@@ -381,6 +393,14 @@ public:
         const auto  wtBankVal    = static_cast<int> (loadP (pWtBank, 0.0f));
         const float unisonDetune = loadP (pUnisonDetune, 0.0f);
 
+        // Wave 3 params
+        const float driftRate  = loadP (pDriftRate,  0.005f); // Hz: 0.001–0.05
+        const float driftDepth = loadP (pDriftDepth, 0.0f);   // 0=off, 1=full ensemble drift
+        const bool  journeyOn  = loadP (pJourneyMode, 0.0f) > 0.5f;
+        const float distance   = loadP (pDistance,   0.0f);   // 0=close, 1=far (HF rolloff)
+        const float air        = loadP (pAir,        0.5f);   // 0=warm(bass), 1=cold(treble)
+        journeyMode_ = journeyOn; // cache for noteOff suppression
+
         const int voiceModeIdx = static_cast<int> (loadP (pVoiceMode, 3.0f));
         const int polyLimit    = (voiceModeIdx <= 1) ? 1 : (voiceModeIdx == 2) ? 4 : 8;
         polyLimit_ = polyLimit;
@@ -425,7 +445,10 @@ public:
                 }
             }
             else if (msg.isNoteOff())
-                noteOff (msg.getNoteNumber());
+            {
+                if (!journeyMode_) // Journey mode: suppress note-off — sound evolves indefinitely
+                    noteOff (msg.getNoteNumber());
+            }
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isChannelPressure())
@@ -470,8 +493,15 @@ public:
                 gestureLevel = flushDenormal (gestureLevel);
             }
 
-            for (auto& voice : voices)
+            // === DRIFT BUS (Wave 3) — Schulze's ultra-slow ensemble LFO ===
+            // One global oscillator ticked per sample; per-voice slot offset (0.23 is irrational
+            // relative to 2π, so no two voice slots ever phase-lock)
+            driftPhase_ += driftRate / sr;
+            if (driftPhase_ >= 1.0f) driftPhase_ -= 1.0f;
+
+            for (int vi = 0; vi < kMaxVoices; ++vi)
             {
+                auto& voice = voices[vi];
                 if (!voice.active) continue;
 
                 // --- Portamento ---
@@ -536,6 +566,16 @@ public:
 
                 // Pitch bend
                 pitchMod += pitchBend_ * bendRange * 100.0f;
+
+                // === DRIFT BUS per-voice application (Wave 3) ===
+                // Each voice slot reads the same slow LFO at a different phase offset,
+                // producing independent pitch wander that sounds like an ensemble
+                if (driftDepth > 0.001f)
+                {
+                    float voiceDrift = fastSin ((driftPhase_ + vi * 0.23f) * 6.28318f) * driftDepth;
+                    pitchMod  += voiceDrift * 50.0f;  // ±50 cents pitch drift at full depth
+                    cutoffMod += voiceDrift * 200.0f; // ±200 Hz filter drift (subtle harmonic breathing)
+                }
 
                 // D001: Velocity shapes timbre — cutoff AND wavefolder depth
                 float velTimbre = voice.velocity * 2000.0f;
@@ -645,6 +685,38 @@ public:
                 }
             }
 
+            // === PER-BRICK SPATIAL (Wave 3) — Tomita's scene-making ===
+            // DISTANCE: HF rolloff via 1-pole LP (air absorption at far distances)
+            // fc = 20 kHz at distance=0, ~1 kHz at distance=1.0
+            if (distance > 0.001f)
+            {
+                float distFc = 20000.0f * (1.0f - distance * 0.95f);
+                float distCoeff = 1.0f - std::exp (-6.28318f * distFc / sr); // matched-Z
+                distFiltL_ += distCoeff * (mixL - distFiltL_);
+                distFiltR_ += distCoeff * (mixR - distFiltR_);
+                distFiltL_ = flushDenormal (distFiltL_);
+                distFiltR_ = flushDenormal (distFiltR_);
+                mixL = distFiltL_;
+                mixR = distFiltR_;
+            }
+
+            // AIR: spectral tilt — warm (bass-boosted) ↔ cold (treble-boosted)
+            // LP/HP split at 1 kHz; air=0 boosts LP (warm), air=1 boosts HP (cold)
+            if (std::fabs (air - 0.5f) > 0.02f)
+            {
+                float airCoeff = 1.0f - std::exp (-6.28318f * 1000.0f / sr);
+                airFiltL_ += airCoeff * (mixL - airFiltL_);
+                airFiltR_ += airCoeff * (mixR - airFiltR_);
+                airFiltL_ = flushDenormal (airFiltL_);
+                airFiltR_ = flushDenormal (airFiltR_);
+                float hpL = mixL - airFiltL_, hpR = mixR - airFiltR_;
+                // air=0 → lpGain=1.3 hpGain=0.7; air=0.5 → both 1.0; air=1 → lpGain=0.7 hpGain=1.3
+                float lpGain = 1.0f + (0.5f - air) * 0.6f;
+                float hpGain = 1.0f + (air - 0.5f) * 0.6f;
+                mixL = airFiltL_ * lpGain + hpL * hpGain;
+                mixR = airFiltR_ * lpGain + hpR * hpGain;
+            }
+
             mixL *= level;
             mixR *= level;
 
@@ -703,7 +775,7 @@ public:
     }
 
     //==========================================================================
-    // Parameters (60 total — Wave 2)
+    // Parameters (65 total — Wave 3)
     //==========================================================================
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -818,6 +890,21 @@ public:
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_wtBank", 1 }, "Obrix Wavetable Bank", wtChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_unisonDetune", 1 }, "Obrix Unison Detune",
             juce::NormalisableRange<float> (0.0f, 50.0f, 0.1f), 0.0f));
+
+        // Wave 3: Drift Bus + Journey + Spatial (5 params → 65 total)
+        // Drift Bus: global ultra-slow LFO for Berlin School ensemble pitch wander
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_driftRate", 1 }, "Obrix Drift Rate",
+            juce::NormalisableRange<float> (0.001f, 0.05f, 0.001f, 0.3f), 0.005f)); // 200s period default
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_driftDepth", 1 }, "Obrix Drift Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        // Journey Mode: suppress note-off so sound sustains and evolves indefinitely
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_journeyMode", 1 }, "Obrix Journey Mode",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 1.0f), 0.0f)); // 0=off, 1=on (toggle)
+        // Spatial: DISTANCE (HF rolloff) + AIR (spectral tilt warm/cold)
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_distance", 1 }, "Obrix Distance",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f)); // 0=close/bright, 1=far/dark
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_air", 1 }, "Obrix Air",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f)); // 0=warm/bass, 1=cold/treble
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -886,6 +973,13 @@ public:
         pProc2Fb      = apvts.getRawParameterValue ("obrix_proc2Feedback");
         pWtBank       = apvts.getRawParameterValue ("obrix_wtBank");
         pUnisonDetune = apvts.getRawParameterValue ("obrix_unisonDetune");
+
+        // Wave 3
+        pDriftRate   = apvts.getRawParameterValue ("obrix_driftRate");
+        pDriftDepth  = apvts.getRawParameterValue ("obrix_driftDepth");
+        pJourneyMode = apvts.getRawParameterValue ("obrix_journeyMode");
+        pDistance    = apvts.getRawParameterValue ("obrix_distance");
+        pAir         = apvts.getRawParameterValue ("obrix_air");
     }
 
     //==========================================================================
@@ -1195,6 +1289,12 @@ private:
     float gesturePhase = 0.0f;
     float prevFlashTrig = 0.0f;
 
+    // Wave 3 state
+    float driftPhase_  = 0.0f;    // Drift Bus global LFO phase (0–1)
+    bool  journeyMode_ = false;   // Journey: suppress note-off (cached from param each block)
+    float distFiltL_ = 0.0f, distFiltR_ = 0.0f; // DISTANCE 1-pole LP filter state
+    float airFiltL_  = 0.0f, airFiltR_  = 0.0f; // AIR LP/HP split filter state
+
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
 
@@ -1223,6 +1323,13 @@ private:
     std::atomic<float>* pProc2Fb      = nullptr;
     std::atomic<float>* pWtBank       = nullptr;
     std::atomic<float>* pUnisonDetune = nullptr;
+
+    // Wave 3 parameter pointers
+    std::atomic<float>* pDriftRate   = nullptr; // Drift Bus rate (0.001–0.05 Hz)
+    std::atomic<float>* pDriftDepth  = nullptr; // Drift Bus depth (0=off, 1=full)
+    std::atomic<float>* pJourneyMode = nullptr; // Journey: suppress note-off (0/1 toggle)
+    std::atomic<float>* pDistance    = nullptr; // DISTANCE HF rolloff (0=close, 1=far)
+    std::atomic<float>* pAir         = nullptr; // AIR spectral tilt (0=warm, 1=cold)
 
     // Wavetable banks (Wave 2): 4 banks × 512 samples, built once in prepare()
     static constexpr int kWTSize = 512;

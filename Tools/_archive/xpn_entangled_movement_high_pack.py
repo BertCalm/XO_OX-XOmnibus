@@ -121,7 +121,7 @@ def main():
 
     random.seed(42)
 
-    # Ensure all 34 engines appear and all 12 coupling types are used
+    # Ensure all 34 engines appear and all 13 coupling types are used
     # Build 80 pairs: cycle through coupling types, spread engine pairs widely
     engine_pairs = []
     engines_copy = ENGINES[:]
