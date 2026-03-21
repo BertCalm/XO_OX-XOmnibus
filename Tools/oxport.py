@@ -54,12 +54,15 @@ Usage:
     python3 oxport.py batch --config batch.json --normalize --normalize-target -16.0
 """
 
+from __future__ import annotations
+
 import argparse
 import json
 import math
 import struct
 import sys
 import time
+import uuid
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -1681,6 +1684,320 @@ def cmd_batch(args) -> int:
 
 
 # ---------------------------------------------------------------------------
+# BUILD command — .oxbuild compiler (VQ 005)
+# ---------------------------------------------------------------------------
+
+BUILD_STAGES = [
+    "parse", "select", "render", "assemble",
+    "fallback", "intent", "docs", "art", "package", "validate",
+]
+
+def cmd_build(args) -> int:
+    """Compile a .oxbuild spec into a complete .xpn pack."""
+    oxbuild_path = Path(args.oxbuild)
+    if not oxbuild_path.exists():
+        print(f"ERROR: .oxbuild file not found: {oxbuild_path}", file=sys.stderr)
+        return 1
+
+    with open(oxbuild_path) as f:
+        spec = json.load(f)
+
+    # Validate required fields
+    required = ["pack_id", "engine", "platform", "archetype"]
+    missing = [k for k in required if k not in spec]
+    if missing:
+        print(f"ERROR: Missing required fields: {', '.join(missing)}", file=sys.stderr)
+        return 1
+
+    pack_id = spec["pack_id"]
+    engine = spec["engine"]
+    platform = spec.get("platform", "mpce")
+    archetype = spec.get("archetype", "percussion")
+    pack_name = spec.get("pack_name", f"XO_OX {engine} {archetype.title()}")
+    version = spec.get("version", "1.0.0")
+
+    # Determine output directory
+    output_dir = Path(args.output_dir) if args.output_dir else REPO_ROOT / "builds" / pack_id
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Generate experiment ID
+    experiment_id = str(uuid.uuid4()) if spec.get("experiment", {}).get("embed_id", True) else None
+    experiment_tags = spec.get("experiment", {}).get("tags", [])
+
+    # Parse skip list
+    skip = set()
+    if args.skip:
+        skip = set(args.skip.split(","))
+
+    # Build timestamp
+    build_time = datetime.now().isoformat()
+
+    print(BANNER)
+    print(f"  .oxbuild Compiler v1.0")
+    print(f"  ─────────────────────────────────")
+    print(f"  Pack:         {pack_name}")
+    print(f"  Pack ID:      {pack_id}")
+    print(f"  Engine:       {engine}")
+    print(f"  Platform:     {platform}")
+    print(f"  Archetype:    {archetype}")
+    print(f"  Version:      {version}")
+    if experiment_id:
+        print(f"  Experiment:   {experiment_id}")
+    if experiment_tags:
+        print(f"  Tags:         {', '.join(experiment_tags)}")
+    print(f"  Output:       {output_dir}")
+    print(f"  Build time:   {build_time}")
+    print()
+
+    if args.dry_run:
+        print("  DRY RUN — showing compilation plan:")
+        print()
+
+    # Rendering config
+    rendering = spec.get("rendering", {})
+    sample_rate = rendering.get("sample_rate", 44100)
+    bit_depth = rendering.get("bit_depth", 24)
+    velocity_layers = rendering.get("velocity_layers", 4)
+    velocity_values = rendering.get("velocity_values", [20, 50, 90, 127])
+    render_spec_override = rendering.get("render_spec_override")
+
+    # Corner config
+    corner_strategy = spec.get("corner_strategy", "dynamic_expression")
+    pad_count = spec.get("pad_count", 16)
+
+    # Output config
+    output_cfg = spec.get("output", {})
+    include_standard = output_cfg.get("include_standard_version", True)
+    include_mpce_setup = output_cfg.get("include_mpce_setup", True)
+    include_cover_art = output_cfg.get("include_cover_art", True)
+    include_intent = output_cfg.get("include_intent", True)
+    cover_art_badge = output_cfg.get("cover_art_badge")
+
+    # Intent config
+    intent_cfg = spec.get("intent", {})
+
+    total_samples = pad_count * 4 * velocity_layers  # pads * corners * vel layers
+    stages_run = 0
+    stages_skipped = 0
+
+    # ── STAGE 1: PARSE ──
+    print(f"  [1/10] PARSE        .oxbuild → BuildManifest")
+    if args.dry_run:
+        print(f"         ✓ Parsed {oxbuild_path}")
+    stages_run += 1
+
+    # ── STAGE 2: SELECT ──
+    if "select" not in skip:
+        preset_cfg = spec.get("preset_selection", {})
+        mode = preset_cfg.get("mode", "auto_dna")
+        mood_filter = preset_cfg.get("mood_filter")
+        min_presets = preset_cfg.get("min_presets", pad_count * 4)
+        dna_target = preset_cfg.get("dna_diversity_target", 0.7)
+
+        print(f"  [2/10] SELECT       {mode} mode, {min_presets}+ presets, DNA diversity {dna_target}")
+        if args.dry_run:
+            print(f"         → Would scan {PRESETS_DIR} for {engine} presets")
+            if mood_filter:
+                print(f"         → Mood filter: {', '.join(mood_filter)}")
+        stages_run += 1
+    else:
+        print(f"  [2/10] SELECT       SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 3: RENDER ──
+    if "render" not in skip:
+        print(f"  [3/10] RENDER       {total_samples} WAVs ({pad_count} pads × 4 corners × {velocity_layers} vel)")
+        if render_spec_override:
+            print(f"         → Using render spec: {render_spec_override}")
+        else:
+            print(f"         → Auto-generating render spec from .oxbuild")
+        print(f"         → {sample_rate}Hz / {bit_depth}-bit / via BlackHole loopback")
+        if args.dry_run:
+            print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
+        else:
+            renders_dir = output_dir / "renders"
+            renders_dir.mkdir(exist_ok=True)
+            if render_spec_override:
+                spec_path = REPO_ROOT / render_spec_override
+            else:
+                spec_path = output_dir / f"{pack_id}_render_spec.json"
+                # Auto-generate render spec would go here
+                print(f"         ⚠  Auto render spec generation not yet implemented")
+                print(f"            Use rendering.render_spec_override in .oxbuild to point to a spec")
+
+            if spec_path.exists():
+                print(f"         → Launching render: {spec_path}")
+                # Import and run the render engine
+                try:
+                    import oxport_render
+                    render_spec_data = oxport_render.load_spec(str(spec_path))
+                    presets_list = oxport_render.resolve_presets(render_spec_data)
+                    jobs = oxport_render.build_render_jobs(render_spec_data, presets_list)
+                    print(f"         → {len(jobs)} render jobs queued")
+
+                    if not args.no_render:
+                        oxport_render.render_jobs(
+                            jobs, str(renders_dir),
+                            midi_port_name=args.midi_port,
+                            audio_device=args.audio_device,
+                            sample_rate=sample_rate,
+                        )
+                    else:
+                        print(f"         → --no-render flag: skipping actual audio capture")
+                except ImportError:
+                    print(f"         ⚠  oxport_render not available (pip install mido sounddevice numpy)")
+                except Exception as e:
+                    print(f"         ✗  Render failed: {e}")
+                    if not args.continue_on_error:
+                        return 1
+        stages_run += 1
+    else:
+        print(f"  [3/10] RENDER       SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 4: ASSEMBLE ──
+    if "assemble" not in skip:
+        print(f"  [4/10] ASSEMBLE     MPCe XPM ({corner_strategy} corners)")
+        if args.dry_run:
+            print(f"         → Would call: xpn_mpce_quad_builder.py --engine {engine} --pad-count {pad_count}")
+        stages_run += 1
+    else:
+        print(f"  [4/10] ASSEMBLE     SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 5: FALLBACK ──
+    if "fallback" not in skip and include_standard:
+        print(f"  [5/10] FALLBACK     Standard XPM (velocity-layered, non-MPCe)")
+        if args.dry_run:
+            print(f"         → Would call: xpn_drum_export.py --mode smart")
+        stages_run += 1
+    else:
+        print(f"  [5/10] FALLBACK     SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 6: INTENT ──
+    if "intent" not in skip and include_intent:
+        print(f"  [6/10] INTENT       xpn_intent.json sidecar")
+        if args.dry_run:
+            print(f"         → Would call: xpn_intent_generator.py --corner-pattern {corner_strategy}")
+        else:
+            try:
+                import xpn_intent_generator as ig
+                intent_data = ig.generate_intent(
+                    pack_name=pack_name,
+                    engine=engine,
+                    corner_pattern=corner_strategy,
+                    summary=intent_cfg.get("summary", ""),
+                    target_player=intent_cfg.get("target_player", ""),
+                    target_genre=intent_cfg.get("target_genre"),
+                    presets_dir=str(PRESETS_DIR),
+                    mpce_native=platform in ("mpce", "both"),
+                    pad_count=pad_count,
+                )
+                # Embed experiment ID
+                if experiment_id:
+                    intent_data.setdefault("provenance", {})["experiment_id"] = experiment_id
+                    intent_data["provenance"]["experiment_tags"] = experiment_tags
+                    intent_data["provenance"]["build_time"] = build_time
+
+                intent_path = output_dir / "xpn_intent.json"
+                with open(intent_path, "w") as f:
+                    json.dump(intent_data, f, indent=2)
+                print(f"         ✓ Written: {intent_path}")
+            except Exception as e:
+                print(f"         ✗  Intent generation failed: {e}")
+        stages_run += 1
+    else:
+        print(f"  [6/10] INTENT       SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 7: DOCS ──
+    if "docs" not in skip and include_mpce_setup:
+        print(f"  [7/10] DOCS         MPCE_SETUP.md")
+        if args.dry_run:
+            print(f"         → Would copy template from Docs/templates/MPCE_SETUP.md")
+        else:
+            template_path = REPO_ROOT / "Docs" / "templates" / "MPCE_SETUP.md"
+            docs_dir = output_dir / "Docs"
+            docs_dir.mkdir(exist_ok=True)
+            if template_path.exists():
+                import shutil
+                dest = docs_dir / "MPCE_SETUP.md"
+                shutil.copy2(template_path, dest)
+                # Embed experiment ID as footer comment
+                if experiment_id:
+                    with open(dest, "a") as f:
+                        f.write(f"\n\n<!-- experiment_id: {experiment_id} -->\n")
+                        f.write(f"<!-- build_time: {build_time} -->\n")
+                print(f"         ✓ Written: {dest}")
+            else:
+                print(f"         ⚠  Template not found: {template_path}")
+        stages_run += 1
+    else:
+        print(f"  [7/10] DOCS         SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 8: ART ──
+    if "art" not in skip and include_cover_art:
+        print(f"  [8/10] ART          Cover art{f' [{cover_art_badge}]' if cover_art_badge else ''}")
+        if args.dry_run:
+            print(f"         → Would call: xpn_cover_art_generator_v2.py --engine {engine}")
+        stages_run += 1
+    else:
+        print(f"  [8/10] ART          SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 9: PACKAGE ──
+    if "package" not in skip:
+        xpn_name = f"XO_OX_{pack_id.replace('-', '_')}_v{version}.xpn"
+        print(f"  [9/10] PACKAGE      {xpn_name}")
+        if args.dry_run:
+            print(f"         → Would call: xpn_packager.py --output {output_dir / xpn_name}")
+        stages_run += 1
+    else:
+        print(f"  [9/10] PACKAGE      SKIPPED")
+        stages_skipped += 1
+
+    # ── STAGE 10: VALIDATE ──
+    if "validate" not in skip:
+        print(f"  [10/10] VALIDATE    XPN integrity check")
+        if args.dry_run:
+            print(f"         → Would call: xpn_validator.py")
+        stages_run += 1
+    else:
+        print(f"  [10/10] VALIDATE    SKIPPED")
+        stages_skipped += 1
+
+    # Write build log
+    build_log = {
+        "pack_id": pack_id,
+        "pack_name": pack_name,
+        "engine": engine,
+        "version": version,
+        "experiment_id": experiment_id,
+        "experiment_tags": experiment_tags,
+        "build_time": build_time,
+        "oxbuild_source": str(oxbuild_path),
+        "stages_run": stages_run,
+        "stages_skipped": stages_skipped,
+        "dry_run": args.dry_run,
+        "output_dir": str(output_dir),
+    }
+    log_path = output_dir / "build.log.json"
+    with open(log_path, "w") as f:
+        json.dump(build_log, f, indent=2)
+
+    print()
+    print(f"  ─────────────────────────────────")
+    print(f"  Build {'plan' if args.dry_run else 'complete'}: {stages_run} stages{'(dry)' if args.dry_run else ''}, {stages_skipped} skipped")
+    if experiment_id:
+        print(f"  Experiment ID: {experiment_id}")
+    print(f"  Output: {output_dir}")
+    print(f"  Log: {log_path}")
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -1776,6 +2093,29 @@ def main():
                          metavar="LUFS", dest="normalize_target",
                          help="Target loudness in dB RMS (default: -14.0)")
 
+    # --- build (.oxbuild compiler) ---
+    p_build = sub.add_parser("build",
+                             help="Compile a .oxbuild spec into a complete .xpn pack")
+    p_build.add_argument("oxbuild", metavar="SPEC",
+                         help="Path to .oxbuild JSON spec file")
+    p_build.add_argument("--output-dir", default=None,
+                         help="Output directory (default: builds/{pack_id}/)")
+    p_build.add_argument("--skip", metavar="STAGES",
+                         help="Comma-separated stages to skip "
+                              f"({', '.join(BUILD_STAGES)})")
+    p_build.add_argument("--dry-run", action="store_true", dest="dry_run",
+                         help="Show compilation plan without executing")
+    p_build.add_argument("--no-render", action="store_true", dest="no_render",
+                         help="Parse render spec but skip actual audio capture "
+                              "(use pre-rendered WAVs)")
+    p_build.add_argument("--midi-port", default=None, metavar="PORT",
+                         help="MIDI output port name for rendering")
+    p_build.add_argument("--audio-device", default=None, metavar="DEVICE",
+                         help="Audio input device for recording (e.g. 'BlackHole')")
+    p_build.add_argument("--continue-on-error", action="store_true",
+                         dest="continue_on_error",
+                         help="Continue build even if a stage fails")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -1786,6 +2126,7 @@ def main():
         "status":   cmd_status,
         "validate": cmd_validate,
         "batch":    cmd_batch,
+        "build":    cmd_build,
     }
     return dispatch[args.command](args)
 

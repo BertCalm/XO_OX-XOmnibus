@@ -1,0 +1,51 @@
+{
+  "$schema": "https://xo-ox.org/schemas/oxbuild/v1.json",
+  "schema_version": "1.0",
+
+  "pack_id": "mpce-perc-001",
+  "pack_name": "XO_OX MPCe Percussion Vol. 1",
+  "version": "1.0.0",
+  "author": "XO_OX Designs",
+
+  "engine": "ONSET",
+  "platform": "mpce",
+  "archetype": "percussion",
+
+  "corner_strategy": "dynamic_expression",
+  "pad_count": 16,
+
+  "preset_selection": {
+    "mode": "auto_dna",
+    "mood_filter": ["Foundation", "Kinetic"],
+    "min_presets": 64,
+    "dna_diversity_target": 0.7
+  },
+
+  "rendering": {
+    "sample_rate": 44100,
+    "bit_depth": 24,
+    "velocity_layers": 4,
+    "velocity_values": [20, 50, 90, 127],
+    "render_spec_override": "Docs/render_specs/mpce_perc_001_render.json"
+  },
+
+  "intent": {
+    "summary": "Finger drumming kit designed for MPCe 3D pads. Four articulation corners per drum voice. Designed for expressive performance, not programming.",
+    "target_player": "Live finger drummers and beat performers on MPC Live III / MPC XL",
+    "target_genre": ["hip-hop", "neo-soul", "boom-bap", "electronic"],
+    "not_for": "Step-sequenced programming where articulation variety isn't needed"
+  },
+
+  "output": {
+    "include_standard_version": true,
+    "include_mpce_setup": true,
+    "include_cover_art": true,
+    "include_intent": true,
+    "cover_art_badge": "MPCe Exclusive"
+  },
+
+  "experiment": {
+    "embed_id": true,
+    "tags": ["first-mpce-pack", "competitive-window", "vq-003", "vq-004", "vq-005"]
+  }
+}
