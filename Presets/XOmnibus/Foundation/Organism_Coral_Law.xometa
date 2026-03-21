@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Organism Coral Law",
+  "mood": "Foundation",
+  "engines": ["Organism"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Rule 110 from seed 42 — the default organism. Turing-complete Class IV. Never repeats, never collapses.",
+  "tier": "awakening",
+  "tags": ["foundation", "rule-110", "reference", "generative", "guru-bin-awakening"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.55, "warmth": 0.5, "movement": 0.6, "density": 0.4, "space": 0.25, "aggression": 0.2 },
+  "sonic_dna": { "brightness": 0.55, "warmth": 0.5, "movement": 0.6, "density": 0.4, "space": 0.25, "aggression": 0.2 },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0, "org_seed": 42, "org_stepRate": 6.0, "org_scope": 4,
+      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 0, "org_subLevel": 0.4,
+      "org_filterCutoff": 3200.0, "org_filterRes": 0.35, "org_velCutoff": 0.55,
+      "org_ampAtk": 0.02, "org_ampDec": 0.3, "org_ampSus": 0.72, "org_ampRel": 0.8,
+      "org_lfo1Rate": 0.4, "org_lfo1Depth": 0.15, "org_lfo2Rate": 0.25, "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.18, "org_macroRule": 0.29, "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+    }
+  }
+}

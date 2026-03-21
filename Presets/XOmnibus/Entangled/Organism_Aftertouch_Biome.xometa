@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Organism Aftertouch Biome",
+  "mood": "Entangled",
+  "engines": ["Organism"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Deterministic at rest. Aftertouch = mutation rate. Press softly for order; press hard for biome shift.",
+  "tier": "awakening",
+  "tags": ["entangled", "aftertouch", "mutation", "expressive", "d006", "guru-bin-awakening"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.55, "warmth": 0.45, "movement": 0.6, "density": 0.4, "space": 0.3, "aggression": 0.35 },
+  "sonic_dna": { "brightness": 0.55, "warmth": 0.45, "movement": 0.6, "density": 0.4, "space": 0.3, "aggression": 0.35 },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0, "org_seed": 42, "org_stepRate": 5.0, "org_scope": 5,
+      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 1, "org_subLevel": 0.3,
+      "org_filterCutoff": 3000.0, "org_filterRes": 0.42, "org_velCutoff": 0.55,
+      "org_ampAtk": 0.015, "org_ampDec": 0.32, "org_ampSus": 0.7, "org_ampRel": 0.75,
+      "org_lfo1Rate": 0.45, "org_lfo1Depth": 0.12, "org_lfo2Rate": 0.3, "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.22, "org_macroRule": 0.29, "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+    }
+  }
+}

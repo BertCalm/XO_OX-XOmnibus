@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Organism Sierpinski Gate",
+  "mood": "Prism",
+  "engines": ["Organism"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Rule 90 Sierpinski fractal with square wave. Harmonic sweeps follow the fractal rhythm. Woodwind character.",
+  "tier": "awakening",
+  "tags": ["prism", "rule-90", "fractal", "harmonic", "woodwind", "guru-bin-awakening"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.65, "warmth": 0.35, "movement": 0.65, "density": 0.45, "space": 0.3, "aggression": 0.3 },
+  "sonic_dna": { "brightness": 0.65, "warmth": 0.35, "movement": 0.65, "density": 0.45, "space": 0.3, "aggression": 0.3 },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0, "org_seed": 1024, "org_stepRate": 8.0, "org_scope": 3,
+      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 1, "org_subLevel": 0.25,
+      "org_filterCutoff": 2400.0, "org_filterRes": 0.65, "org_velCutoff": 0.6,
+      "org_ampAtk": 0.012, "org_ampDec": 0.25, "org_ampSus": 0.68, "org_ampRel": 0.7,
+      "org_lfo1Rate": 0.8, "org_lfo1Depth": 0.12, "org_lfo2Rate": 0.5, "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.2, "org_macroRule": 0.14, "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+    }
+  }
+}

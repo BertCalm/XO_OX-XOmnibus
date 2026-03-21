@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "name": "Oware Balafon du Fleuve",
+  "mood": "Foundation",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Buzz + gourd body defines an entire cultural instrument. The buzz at 0.42 with tube body extracts a band centered at 300 Hz — authentic mirliton membrane resonance. Without the buzz, this is a dull marimba. With it, it sounds like something you could record in Accra.",
+  "tier": "awakening",
+  "tags": ["foundation", "balafon", "west-african", "buzz", "percussion", "guru-bin-awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.35, "warmth": 0.75, "movement": 0.20, "density": 0.45, "space": 0.30, "aggression": 0.25 },
+  "sonic_dna": { "brightness": 0.35, "warmth": 0.75, "movement": 0.20, "density": 0.45, "space": 0.30, "aggression": 0.25 },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.04, "owr_malletHardness": 0.38, "owr_bodyType": 0, "owr_bodyDepth": 0.72,
+      "owr_buzzAmount": 0.42, "owr_sympathyAmount": 0.22, "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.10, "owr_brightness": 2800.0, "owr_damping": 0.62, "owr_decay": 0.9,
+      "owr_filterEnvAmount": 0.42, "owr_bendRange": 2
+    }
+  }
+}

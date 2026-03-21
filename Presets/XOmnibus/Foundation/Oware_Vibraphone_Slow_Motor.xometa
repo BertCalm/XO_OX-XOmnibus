@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "name": "Oware Vibraphone Slow Motor",
+  "mood": "Foundation",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "3.5 Hz shimmer is the jazz vibraphone's iconic voice — Milt Jackson's signature slow motor. Material at 0.5 places alpha=1.15 so mode 4 is at 23% amplitude. Aluminum bars of a vibraphone ring to the 4th-5th mode clearly, giving a brighter presence than marimba.",
+  "tier": "awakening",
+  "tags": ["foundation", "vibraphone", "jazz", "shimmer", "percussion", "guru-bin-awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.65, "warmth": 0.55, "movement": 0.35, "density": 0.40, "space": 0.50, "aggression": 0.10 },
+  "sonic_dna": { "brightness": 0.65, "warmth": 0.55, "movement": 0.35, "density": 0.40, "space": 0.50, "aggression": 0.10 },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.50, "owr_malletHardness": 0.45, "owr_bodyType": 0, "owr_bodyDepth": 0.52,
+      "owr_buzzAmount": 0.0, "owr_sympathyAmount": 0.28, "owr_shimmerRate": 3.5,
+      "owr_thermalDrift": 0.07, "owr_brightness": 7200.0, "owr_damping": 0.30, "owr_decay": 3.2,
+      "owr_filterEnvAmount": 0.32, "owr_bendRange": 2
+    }
+  }
+}

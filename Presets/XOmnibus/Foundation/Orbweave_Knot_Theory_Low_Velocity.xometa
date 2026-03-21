@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Orbweave Knot Theory Low Velocity",
+  "mood": "Foundation",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Low filterCutoff + velocity scaling creates a complete timbral arc from whisper to declaration. Pianissimo: dark muffled topology. Mezzo-forte: coupling peaks audible. Fortissimo: full Trefoil character exposed. Play scales at three velocity levels to learn the engine.",
+  "tier": "awakening",
+  "tags": ["foundation", "trefoil", "velocity", "expressive", "d001", "d006", "guru-bin-awakening"],
+  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.30, "warmth": 0.55, "movement": 0.10, "density": 0.50, "space": 0.10, "aggression": 0.15 },
+  "sonic_dna": { "brightness": 0.30, "warmth": 0.55, "movement": 0.10, "density": 0.50, "space": 0.10, "aggression": 0.15 },
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2, "weave_strandTune": 0.0, "weave_knotType": 0, "weave_braidDepth": 0.77,
+      "weave_filterCutoff": 350.0, "weave_filterReso": 0.42, "weave_filterType": 0,
+      "weave_ampA": 0.01, "weave_ampD": 0.5, "weave_ampS": 0.65, "weave_ampR": 0.8,
+      "weave_lfo1Type": 0, "weave_lfo2Type": 0,
+      "weave_fx1Type": 0,
+      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
+      "weave_voiceMode": 3, "weave_pitchBendRange": 2
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Organism Rule 54 Maturation",
+  "mood": "Atmosphere",
+  "engines": ["Organism"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Class IV Rule 54. Short note = chaos. Long note = maturation toward structure. A colony coming of age.",
+  "tier": "awakening",
+  "tags": ["atmosphere", "rule-54", "temporal", "narrative", "maturation", "guru-bin-awakening"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.4, "warmth": 0.55, "movement": 0.5, "density": 0.35, "space": 0.55, "aggression": 0.15 },
+  "sonic_dna": { "brightness": 0.4, "warmth": 0.55, "movement": 0.5, "density": 0.35, "space": 0.55, "aggression": 0.15 },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0, "org_seed": 100, "org_stepRate": 2.0, "org_scope": 8,
+      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 0, "org_subLevel": 0.35,
+      "org_filterCutoff": 2600.0, "org_filterRes": 0.32, "org_velCutoff": 0.5,
+      "org_ampAtk": 0.5, "org_ampDec": 0.8, "org_ampSus": 0.75, "org_ampRel": 3.0,
+      "org_lfo1Rate": 0.08, "org_lfo1Depth": 0.2, "org_lfo2Rate": 0.06, "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.38, "org_macroRule": 0.86, "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+    }
+  }
+}

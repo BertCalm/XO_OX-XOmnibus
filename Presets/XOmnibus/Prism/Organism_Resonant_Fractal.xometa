@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Organism Resonant Fractal",
+  "mood": "Prism",
+  "engines": ["Organism"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Rule 90 fractal density drives a high-Q filter. Melody emerges from resonance sweeps. No sequencer.",
+  "tier": "awakening",
+  "tags": ["prism", "rule-90", "resonance", "emergent-melody", "filterQ", "guru-bin-awakening"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.7, "warmth": 0.35, "movement": 0.75, "density": 0.4, "space": 0.35, "aggression": 0.5 },
+  "sonic_dna": { "brightness": 0.7, "warmth": 0.35, "movement": 0.75, "density": 0.4, "space": 0.35, "aggression": 0.5 },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0, "org_seed": 512, "org_stepRate": 12.0, "org_scope": 1,
+      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 1, "org_subLevel": 0.2,
+      "org_filterCutoff": 1800.0, "org_filterRes": 0.78, "org_velCutoff": 0.7,
+      "org_ampAtk": 0.01, "org_ampDec": 0.2, "org_ampSus": 0.65, "org_ampRel": 0.55,
+      "org_lfo1Rate": 1.2, "org_lfo1Depth": 0.05, "org_lfo2Rate": 0.7, "org_lfo2Depth": 0.08,
+      "org_reverbMix": 0.28, "org_macroRule": 0.14, "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "Overtone Hollow Reed",
+  "mood": "Prism",
+  "engines": ["Overtone"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Phi constant. Alternate partials suppressed (near-zero amplitudes on indices 1, 3, 5, 7). The remaining odd-indexed Fibonacci partials (2/1, 5/3, 13/8, 34/21) create a hollow reed quality — the mathematics of a clarinet's odd-harmonic dominance applied to irrational Fibonacci ratios.",
+  "tier": "awakening",
+  "tags": ["phi", "reed", "hollow", "prism", "guru-bin-awakening", "fibonacci", "woodwind"],
+  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.58, "warmth": 0.55, "movement": 0.20, "density": 0.38, "space": 0.25, "aggression": 0.12 },
+  "sonic_dna": { "brightness": 0.58, "warmth": 0.55, "movement": 0.20, "density": 0.38, "space": 0.25, "aggression": 0.12 },
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2, "over_depth": 1.5,
+      "over_partial0": 1.0, "over_partial1": 0.04, "over_partial2": 0.55, "over_partial3": 0.04,
+      "over_partial4": 0.30, "over_partial5": 0.04, "over_partial6": 0.18, "over_partial7": 0.04,
+      "over_velBright": 0.42, "over_filterCutoff": 10000.0, "over_filterRes": 0.30,
+      "over_ampAtk": 0.025, "over_ampDec": 0.30, "over_ampSus": 0.72, "over_ampRel": 1.2,
+      "over_lfo1Rate": 0.10, "over_lfo1Depth": 0.12, "over_lfo2Rate": 0.06, "over_lfo2Depth": 0.08,
+      "over_resoMix": 0.22, "over_macroDepth": 0.25, "over_macroColor": 0.38,
+      "over_macroCoupling": 0.0, "over_macroSpace": 0.22
+    }
+  }
+}

@@ -1,71 +1,24 @@
 {
-  "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
-  "couplingIntensity": "None",
-  "description": "Staccato metal percussion — hard brass mallets, open body, short decay, kinetic rhythmic rain of metal hits",
-  "dna": {
-    "aggression": 0.6,
-    "brightness": 0.78,
-    "density": 0.62,
-    "movement": 0.82,
-    "space": 0.38,
-    "warmth": 0.2
-  },
-  "engines": [
-    "Oware"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
-  "macros": {
-    "CHARACTER": 0.72,
-    "COUPLING": 0.0,
-    "MOVEMENT": 0.82,
-    "SPACE": 0.35
-  },
+  "schema_version": 1,
+  "name": "Oware Metal Rain",
   "mood": "Flux",
-  "name": "Metal Rain",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard mallet + maximum damping + short decay creates kinetic percussion. High Q from metal material gives spectral richness at attack; high damping rapidly kills amplitude. The combination: brilliantly present then gone — exactly how struck metal bar sounds in live percussion.",
+  "tier": "awakening",
+  "tags": ["flux", "metal", "percussion", "kinetic", "staccato", "guru-bin-awakening"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "dna": { "brightness": 0.80, "warmth": 0.25, "movement": 0.70, "density": 0.30, "space": 0.15, "aggression": 0.65 },
+  "sonic_dna": { "brightness": 0.80, "warmth": 0.25, "movement": 0.70, "density": 0.30, "space": 0.15, "aggression": 0.65 },
   "parameters": {
     "Oware": {
-      "owr_material": 0.75,
-      "owr_malletHardness": 0.85,
-      "owr_bodyType": 3,
-      "owr_bodyDepth": 0.25,
-      "owr_buzzAmount": 0.0,
-      "owr_sympathyAmount": 0.08,
-      "owr_shimmerRate": 0.0,
-      "owr_thermalDrift": 0.05,
-      "owr_brightness": 11000.0,
-      "owr_damping": 0.8,
-      "owr_decay": 0.18,
-      "owr_filterEnvAmount": 0.55,
-      "owr_bendRange": 2,
-      "owr_macroMaterial": 0.72,
-      "owr_macroMallet": 0.72,
-      "owr_macroCoupling": 0.0,
-      "owr_macroSpace": 0.35
+      "owr_material": 0.75, "owr_malletHardness": 0.85, "owr_bodyType": 3, "owr_bodyDepth": 0.25,
+      "owr_buzzAmount": 0.0, "owr_sympathyAmount": 0.08, "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.05, "owr_brightness": 11000.0, "owr_damping": 0.80, "owr_decay": 0.18,
+      "owr_filterEnvAmount": 0.55, "owr_bendRange": 2
     }
-  },
-  "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.6,
-    "brightness": 0.78,
-    "density": 0.62,
-    "movement": 0.82,
-    "space": 0.38,
-    "warmth": 0.2
-  },
-  "tags": [
-    "metal",
-    "staccato",
-    "kinetic",
-    "percussive",
-    "flux"
-  ],
-  "version": "1.0.0"
+  }
 }
