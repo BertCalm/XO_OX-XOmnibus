@@ -285,6 +285,10 @@ struct OperaVoice
     OperaSVF filterL;
     OperaSVF filterR;
 
+    // Portamento glide state
+    float targetFreq  = 440.0f;   // frequency the voice is gliding TO
+    float currentFreq = 440.0f;   // frequency currently used for rendering (glides toward targetFreq)
+
     // Vibrato phase (per-voice for detuned vibrato in unison)
     float vibratoPhase = 0.0f;
 
@@ -308,6 +312,8 @@ struct OperaVoice
         state = State::Idle;
         note  = -1;
         velocity = 0.0f;
+        targetFreq  = 440.0f;
+        currentFreq = 440.0f;
         partialBank.reset();
         kuramotoField.reset();
         breathEngine.reset();
@@ -898,10 +904,24 @@ public:
                 float voiceEffort = std::clamp (effort_eff + velEffortOff, 0.0f, 1.0f);
                 float voiceTilt   = std::clamp (tilt_eff + velTiltOff, -1.0f, 1.0f);
 
-                // Fundamental frequency with pitch bend and fundamental offset
-                float noteFreq = midiNoteToFreq (voice.note + snap_.fundamental,
-                                                  pitchBendSemitones_);
-                float f0 = noteFreq * vibPitchMult;
+                // --- Portamento glide ---
+                // Update targetFreq each sample for pitch bend tracking
+                voice.targetFreq = midiNoteToFreq (voice.note + snap_.fundamental,
+                                                    pitchBendSemitones_);
+
+                if (snap_.portamento > 0.0f)
+                {
+                    // portamento param 0..1 maps to 0..0.5 seconds glide time
+                    float portTime = snap_.portamento * 0.5f;
+                    float glideCoeff = 1.0f - std::exp (-kTwoPi / (sr_ * portTime));
+                    voice.currentFreq += (voice.targetFreq - voice.currentFreq) * glideCoeff;
+                }
+                else
+                {
+                    voice.currentFreq = voice.targetFreq;
+                }
+
+                float f0 = voice.currentFreq * vibPitchMult;
 
                 // Apply coupling FM offset to fundamental
                 if (couplingFM != 0.0f)
@@ -947,12 +967,38 @@ public:
                 // --- Compute Nyquist anti-aliasing gains ---
                 voice.partialBank.computeNyquistGains (f0);
 
-                // --- Render partials ---
+                // --- Render partials (with unison stacking) ---
                 float pL = 0.0f, pR = 0.0f;
                 float monoSample = 0.0f;
 
-                // Render the partial bank for one sample
+                int unisonCount = std::clamp (snap_.unison, 1, 4);
+                float unisonGain = 1.0f / std::sqrt (static_cast<float> (unisonCount));
+                // spread: detune * 2% max total spread
+                float unisonSpread = snap_.detune * 0.02f;
+
+                // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,C,R,C}
+                static constexpr float kUniPan[4][4] = {
+                    { 0.0f,  0.0f,  0.0f, 0.0f },  // 1 voice: center
+                    {-1.0f,  1.0f,  0.0f, 0.0f },  // 2 voices: L, R
+                    {-1.0f,  0.0f,  1.0f, 0.0f },  // 3 voices: L, C, R
+                    {-1.0f,  0.0f,  0.0f, 1.0f }   // 4 voices: L, C, C, R
+                };
+
+                for (int uLayer = 0; uLayer < unisonCount; ++uLayer)
                 {
+                    // Compute frequency offset for this unison layer
+                    float freqMult = 1.0f;
+                    if (unisonCount > 1)
+                    {
+                        // Spread layers symmetrically: -spread..+spread
+                        float layerPos = (static_cast<float> (uLayer) / static_cast<float> (unisonCount - 1)) * 2.0f - 1.0f;
+                        freqMult = 1.0f + unisonSpread * layerPos;
+                    }
+
+                    // Unison layer stereo pan
+                    float uniPan = kUniPan[unisonCount - 1][uLayer] * snap_.width;
+
+                    // Render the partial bank for one sample
                     int np = voice.partialBank.numPartials;
                     float r   = voice.kuramotoField.getOrderParameter();
                     float psi = voice.kuramotoField.getMeanPhase();
@@ -969,10 +1015,13 @@ public:
                                   * voice.partialBank.nyquistGains[i]
                                   * voice.kuramotoField.getClusterBoost (i);
 
+                        amp *= unisonGain;
+
                         if (amp < 1e-8f)
                         {
-                            // Still advance phase
-                            p.theta += p.omega * invSr_;
+                            // Only advance phase on the first unison layer
+                            if (uLayer == 0)
+                                p.theta += p.omega * invSr_;
                             continue;
                         }
 
@@ -981,11 +1030,14 @@ public:
                         if (couplingRing != 0.0f)
                             ringMod = 1.0f + couplingRing;
 
-                        float sample = amp * ringMod * FastMath::fastSin (p.theta);
+                        // Unison layers beyond 0 use a phase offset to avoid identical signals
+                        float uniPhase = p.theta * freqMult + static_cast<float> (uLayer) * 1.618f;
+                        float sample = amp * ringMod * FastMath::fastSin (uniPhase);
 
-                        // Spatial panning from Kuramoto coherence
+                        // Spatial panning from Kuramoto coherence + unison pan offset
                         float pan = OperaPartialBank::computePartialPan (
                             i, p.theta, psi, r, snap_.width);
+                        pan = std::clamp (pan + uniPan, -1.0f, 1.0f);
 
                         // Constant-power pan
                         float angle = (pan + 1.0f) * 0.25f * kPi;
@@ -996,11 +1048,15 @@ public:
                         pR += sample * panR;
                         monoSample += sample;
 
-                        // Advance phase (free-running between Kuramoto updates)
-                        p.theta += p.omega * invSr_;
+                        // Only advance phase on the first unison layer (shared partial bank)
+                        if (uLayer == 0)
+                            p.theta += p.omega * invSr_;
                     }
+                }
 
-                    // Phase wrapping every sample for stability
+                // Phase wrapping every sample for stability
+                {
+                    int np = voice.partialBank.numPartials;
                     for (int i = 0; i < np; ++i)
                     {
                         float& theta = voice.partialBank.partials[i].theta;
@@ -1237,7 +1293,8 @@ private:
         auto& voice = voices_[voiceIdx];
 
         // Store emotional memory from previous note on this voice
-        if (voice.state != OperaVoice::State::Idle && voice.note >= 0)
+        bool wasActive = (voice.state != OperaVoice::State::Idle && voice.note >= 0);
+        if (wasActive)
         {
             float theta[kMaxPartials];
             for (int i = 0; i < voice.partialBank.numPartials; ++i)
@@ -1253,6 +1310,12 @@ private:
 
         // Compute fundamental frequency
         float f0 = midiNoteToFreq (noteNumber + snap_.fundamental, pitchBendSemitones_);
+
+        // --- Portamento: set target freq; keep currentFreq for glide if legato ---
+        voice.targetFreq = f0;
+        if (snap_.portamento <= 0.0f || !wasActive)
+            voice.currentFreq = f0;  // instant: no glide
+        // else: keep voice.currentFreq at its old value so it glides
 
         // Setup partial bank
         voice.partialBank.numPartials = snap_.partials;
