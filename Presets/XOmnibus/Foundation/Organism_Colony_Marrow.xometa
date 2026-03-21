@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Colony Marrow",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 18 produces sparse scattered cells from dense initial states. Here a single-cell seed opens into a wide, sparse pattern — minimal, skeletal, internal.",
+  "tags": [
+    "sparse",
+    "rule-18",
+    "minimal",
+    "bass",
+    "skeletal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 18 sparse propagation from seed 1. Slow step (2 Hz), maximum scope (16 gens). The filter sees long stretches of open cells — a wide, breathing low-mid pad.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.42,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 1,
+      "org_stepRate": 2.0,
+      "org_scope": 16,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.48,
+      "org_filterCutoff": 1600.0,
+      "org_filterRes": 0.15,
+      "org_velCutoff": 0.45,
+      "org_ampAtk": 0.04,
+      "org_ampDec": 0.6,
+      "org_ampSus": 0.78,
+      "org_ampRel": 1.4,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.07,
+      "org_lfo2Rate": 0.06,
+      "org_lfo2Depth": 0.08,
+      "org_reverbMix": 0.25,
+      "org_macroRule": 0.71,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Seed Avalanche",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MACRO:SEED sweeps through all 65535 initial states of Rule 90. Each position produces a completely different Sierpinski fractal — a cascade of emergent structures.",
+  "tags": [
+    "flux",
+    "rule-90",
+    "seed-sweep",
+    "fractal",
+    "avalanche"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 90 at 10 Hz, designed for real-time MACRO:SEED sweeping. Each seed position is a unique Sierpinski variant — a cascade of different fractal avalanches as you turn the knob.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.82,
+    "density": 0.5,
+    "space": 0.42,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 1,
+      "org_stepRate": 10.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.28,
+      "org_filterCutoff": 4000.0,
+      "org_filterRes": 0.55,
+      "org_velCutoff": 0.7,
+      "org_ampAtk": 0.004,
+      "org_ampDec": 0.15,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.32,
+      "org_lfo1Rate": 5.0,
+      "org_lfo1Depth": 0.45,
+      "org_lfo2Rate": 3.8,
+      "org_lfo2Depth": 0.38,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.14,
+      "org_macroSeed": 0.5,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

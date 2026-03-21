@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Halophyte Drone",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 22 nested triangles at sub-Hz step rate. Halophytes survive in salt — an organism adapted to harsh conditions. A low, persistent drone that survives any mix.",
+  "tags": [
+    "drone",
+    "rule-22",
+    "subsonic-rate",
+    "persistent",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 22 at 0.5 Hz step rate — one generation every two seconds. The automaton changes almost imperceptibly. Sub-heavy saw. Dense reverb. Velocity controls timbral revelation.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.68,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 32767,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.002,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.7,
+      "org_filterCutoff": 1400.0,
+      "org_filterRes": 0.15,
+      "org_velCutoff": 0.45,
+      "org_ampAtk": 0.35,
+      "org_ampDec": 1.8,
+      "org_ampSus": 0.9,
+      "org_ampRel": 4.0,
+      "org_lfo1Rate": 0.03,
+      "org_lfo1Depth": 0.12,
+      "org_lfo2Rate": 0.02,
+      "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.82,
+      "org_macroRule": 1.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

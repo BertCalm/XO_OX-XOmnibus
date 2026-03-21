@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "The trefoil knot has rotational symmetry of order 3. A fast triangle LFO on pitch set to 3Hz exploits this: the pitch spin rate matches the symmetry order, creating a subtle resonance that feels like the knot physically spinning. Mono with fast glide.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.75,
+    "density": 0.42,
+    "space": 0.3,
+    "aggression": 0.25
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.42,
+    "TENSION": 0.28,
+    "KNOT": 0.0,
+    "SPACE": 0.25
+  },
+  "mood": "Flux",
+  "name": "Trefoil Spin",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.58,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 8000.0,
+      "weave_filterReso": 0.2,
+      "weave_filterType": 0,
+      "weave_ampA": 0.005,
+      "weave_ampD": 0.3,
+      "weave_ampS": 0.65,
+      "weave_ampR": 0.4,
+      "weave_lfo1Type": 2,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.42,
+      "weave_lfo1Rate": 3.0,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.2,
+      "weave_fx1Param": 0.35,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.42,
+      "weave_macroTension": 0.28,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.25,
+      "weave_level": 0.8,
+      "weave_voiceMode": 0,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.08
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "3Hz pitch vibrato matches Trefoil's order-3 rotational symmetry. A physical spin sensation. Mono with glide for lead performance.",
+  "tags": [
+    "trefoil",
+    "vibrato",
+    "spin",
+    "mono",
+    "lead"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

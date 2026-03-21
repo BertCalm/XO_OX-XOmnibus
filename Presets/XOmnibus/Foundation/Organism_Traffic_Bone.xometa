@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Traffic Bone",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 184 models single-lane traffic flow. Used here for a steady-state bass with predictable rhythmic pockets — cells maintain density without collisions.",
+  "tags": [
+    "bass",
+    "rule-184",
+    "steady",
+    "rhythmic",
+    "traffic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 184 traffic flow at 6 Hz step rate. Conservative scope (6 gens) preserves traffic jam regularity in the filter modulation. Warm saw, full sub.",
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.75,
+    "movement": 0.28,
+    "density": 0.7,
+    "space": 0.25,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 21845,
+      "org_stepRate": 6.0,
+      "org_scope": 6,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.65,
+      "org_filterCutoff": 1600.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.52,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.82,
+      "org_ampRel": 0.7,
+      "org_lfo1Rate": 0.28,
+      "org_lfo1Depth": 0.09,
+      "org_lfo2Rate": 0.18,
+      "org_lfo2Depth": 0.08,
+      "org_reverbMix": 0.15,
+      "org_macroRule": 0.43,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

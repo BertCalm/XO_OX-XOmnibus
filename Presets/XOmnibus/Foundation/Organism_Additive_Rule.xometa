@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Additive Rule",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 150 is an additive (XOR-based) rule — each generation is the XOR of left and right neighbors. Creates pure mathematical lattice patterns. Frozen mode exposes its crystalline static state.",
+  "tags": [
+    "xor",
+    "rule-150",
+    "additive",
+    "mathematical",
+    "frozen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 150 XOR lattice frozen at generation 8. The automaton's cell pattern becomes a static timbral fingerprint — a snapshot of emergence. Tri wave, low verb.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.62,
+    "space": 0.22,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 8,
+      "org_stepRate": 4.0,
+      "org_scope": 8,
+      "org_mutate": 0.0,
+      "org_freeze": 1,
+      "org_oscWave": 2,
+      "org_subLevel": 0.5,
+      "org_filterCutoff": 2000.0,
+      "org_filterRes": 0.22,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.02,
+      "org_ampDec": 0.4,
+      "org_ampSus": 0.78,
+      "org_ampRel": 1.0,
+      "org_lfo1Rate": 0.2,
+      "org_lfo1Depth": 0.08,
+      "org_lfo2Rate": 0.15,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.18,
+      "org_macroRule": 0.57,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

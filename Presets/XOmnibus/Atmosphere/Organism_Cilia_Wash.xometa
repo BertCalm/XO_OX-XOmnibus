@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Cilia Wash",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 184 traffic model at very slow rate — cilia-like strands sweep material in one direction. Reverb-heavy, moving, sweep-like atmosphere with predictable orbital motion.",
+  "tags": [
+    "sweep",
+    "rule-184",
+    "cilia",
+    "motion",
+    "wash"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 184 directional traffic flow at 1.2 Hz. Cells always flow in one direction, giving the atmosphere a sense of movement without turbulence. Tri wave, maximum scope smoothing.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.48,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 43690,
+      "org_stepRate": 1.2,
+      "org_scope": 14,
+      "org_mutate": 0.003,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.28,
+      "org_filterCutoff": 3200.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.22,
+      "org_ampDec": 1.1,
+      "org_ampSus": 0.86,
+      "org_ampRel": 3.2,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.05,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.75,
+      "org_macroRule": 0.43,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.01
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

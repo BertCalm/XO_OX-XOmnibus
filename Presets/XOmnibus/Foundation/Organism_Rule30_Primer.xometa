@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Rule 30 Primer",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 30 is provably chaotic — unpredictable from any initial state. Used here at slow step rate with frozen scope to tame the chaos into a textured lead.",
+  "tags": [
+    "lead",
+    "rule-30",
+    "chaotic",
+    "textured",
+    "cellular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 30 chaos slowed to 4 Hz step rate. Wide scope (10 gens) averages out the storm into a slowly shifting filter texture. Square osc adds edge.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.58,
+    "space": 0.35,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 32768,
+      "org_stepRate": 4.0,
+      "org_scope": 10,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.38,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.32,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.018,
+      "org_ampDec": 0.45,
+      "org_ampSus": 0.72,
+      "org_ampRel": 0.75,
+      "org_lfo1Rate": 0.35,
+      "org_lfo1Depth": 0.12,
+      "org_lfo2Rate": 0.22,
+      "org_lfo2Depth": 0.14,
+      "org_reverbMix": 0.22,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

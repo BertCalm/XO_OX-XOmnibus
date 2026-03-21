@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Turing Substrate",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 110 is the only elementary CA proven Turing-complete. A dry, dense square pad that computes — useful as a harmonic bed under any mix.",
+  "tags": [
+    "pad",
+    "rule-110",
+    "turing",
+    "dense",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 110 Turing-complete computation at medium step rate. Square wave plus sub. Wide scope (12 gens) integrates many generations into stable, thinking harmony.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.78,
+    "space": 0.28,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 1,
+      "org_stepRate": 5.0,
+      "org_scope": 12,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.55,
+      "org_filterCutoff": 2200.0,
+      "org_filterRes": 0.28,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.025,
+      "org_ampDec": 0.5,
+      "org_ampSus": 0.8,
+      "org_ampRel": 1.1,
+      "org_lfo1Rate": 0.22,
+      "org_lfo1Depth": 0.1,
+      "org_lfo2Rate": 0.16,
+      "org_lfo2Depth": 0.12,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Saw strands through Solomon topology. The doubly-linked ring pairs create a thick two-layer harmonic structure. Filter sits dark and low for a serious sub-anchored bass tone.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.78,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.15,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.4,
+    "TENSION": 0.45,
+    "KNOT": 0.0,
+    "SPACE": 0.08
+  },
+  "mood": "Foundation",
+  "name": "Solomon Bass",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.62,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 1800.0,
+      "weave_filterReso": 0.18,
+      "weave_filterType": 0,
+      "weave_ampA": 0.008,
+      "weave_ampD": 0.35,
+      "weave_ampS": 0.58,
+      "weave_ampR": 0.4,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.06,
+      "weave_lfo1Rate": 0.18,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 0,
+      "weave_fx1Mix": 0.0,
+      "weave_fx1Param": 0.3,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.4,
+      "weave_macroTension": 0.45,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.08,
+      "weave_level": 0.8,
+      "weave_voiceMode": 1,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.04
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Legato bass with Solomon doubly-linked coupling — two ring pairs create a thick harmonic body. Dark filter, strong braid depth.",
+  "tags": [
+    "solomon",
+    "bass",
+    "legato",
+    "thick",
+    "dark"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

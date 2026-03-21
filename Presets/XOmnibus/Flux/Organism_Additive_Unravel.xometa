@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Additive Unravel",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 150 additive XOR rule unraveled by mutation — the standing wave patterns dissolve one bit-flip at a time. At high MACRO:MUTATE the symmetry falls apart completely.",
+  "tags": [
+    "flux",
+    "rule-150",
+    "unravel",
+    "mutation",
+    "xor-decay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 150 XOR standing waves at 15 Hz with 10% mutation. The interference pattern breaks up bit by bit. MACRO:MUTATE = live unravel control. Saw wave, high-Q filter tracks the destruction.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.55,
+    "space": 0.38,
+    "aggression": 0.82
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 21845,
+      "org_stepRate": 15.0,
+      "org_scope": 2,
+      "org_mutate": 0.1,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 4800.0,
+      "org_filterRes": 0.68,
+      "org_velCutoff": 0.75,
+      "org_ampAtk": 0.004,
+      "org_ampDec": 0.12,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.28,
+      "org_lfo1Rate": 7.5,
+      "org_lfo1Depth": 0.55,
+      "org_lfo2Rate": 5.5,
+      "org_lfo2Depth": 0.5,
+      "org_reverbMix": 0.28,
+      "org_macroRule": 0.57,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.28
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

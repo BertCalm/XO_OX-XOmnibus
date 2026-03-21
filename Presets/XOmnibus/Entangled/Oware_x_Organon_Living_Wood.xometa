@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Living Wood",
+  "mood": "Entangled",
+  "engines": ["Organon", "Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Organon's variational free-energy metabolism feeds EnvToMorph into Oware — biological oscillation continuously shifts the material blend from wood to metal, the board breathing like living timber.",
+  "tags": ["coupled", "bio-metabolism", "material-morph", "EnvToMorph", "organic"],
+  "macroLabels": ["METABOLISM", "MATERIAL", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.78,
+    "movement": 0.80,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.35,
+      "organon_enzymeSelect": 0.50,
+      "organon_catalystDrive": 0.40,
+      "organon_dampingCoeff": 0.30,
+      "organon_signalFlux": 0.45,
+      "organon_phasonShift": 0.50,
+      "organon_isotopeBalance": 0.50,
+      "organon_lockIn": 0.30,
+      "organon_membrane": 0.55,
+      "organon_noiseColor": 0.40,
+      "organon_macroMetabolism": 0.0,
+      "organon_macroSpectrum": 0.0,
+      "organon_macroCoupling": 0.0,
+      "organon_macroSpace": 0.0
+    },
+    "Oware": {
+      "owr_material": 0.20,
+      "owr_malletHardness": 0.30,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.60,
+      "owr_buzzAmount": 0.30,
+      "owr_sympathyAmount": 0.50,
+      "owr_shimmerRate": 3.5,
+      "owr_thermalDrift": 0.50,
+      "owr_brightness": 5500.0,
+      "owr_damping": 0.35,
+      "owr_decay": 3.0,
+      "owr_filterEnvAmount": 0.35,
+      "owr_bendRange": 2.0,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.0,
+      "owr_lfo1Rate": 0.10,
+      "owr_lfo1Depth": 0.18,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.40,
+      "owr_lfo2Depth": 0.10,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oware",
+        "type": "EnvToMorph",
+        "amount": 0.50
+      }
+    ]
+  },
+  "sequencer": null
+}

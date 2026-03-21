@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Rule 30 Storm",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 30 at maximum step rate — the unpredictable rule pushed to its fastest possible evolution. No scope smoothing, no mutation needed. Pure chaos engine.",
+  "tags": [
+    "flux",
+    "rule-30",
+    "maximum-rate",
+    "raw-chaos",
+    "storm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 30 at 32 Hz step rate — the automaton's maximum evolution speed. Scope 1: every generation is instantly applied. The filter, pitch and FX cells all mutate at 32 Hz.",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.98,
+    "density": 0.52,
+    "space": 0.3,
+    "aggression": 0.92
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 49152,
+      "org_stepRate": 32.0,
+      "org_scope": 1,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.25,
+      "org_filterCutoff": 4500.0,
+      "org_filterRes": 0.62,
+      "org_velCutoff": 0.78,
+      "org_ampAtk": 0.003,
+      "org_ampDec": 0.12,
+      "org_ampSus": 0.55,
+      "org_ampRel": 0.28,
+      "org_lfo1Rate": 8.0,
+      "org_lfo1Depth": 0.6,
+      "org_lfo2Rate": 6.0,
+      "org_lfo2Depth": 0.55,
+      "org_reverbMix": 0.25,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

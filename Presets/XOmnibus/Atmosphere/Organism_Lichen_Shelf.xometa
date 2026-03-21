@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Lichen Shelf",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 18 sparse propagation from a diagonal seed — lichen-like growth across rock. Minimal density, wide pitch roam (cells 8–11 spread pitch ±6 st), slow velvet atmosphere.",
+  "tags": [
+    "sparse",
+    "rule-18",
+    "pitch-drift",
+    "atmospheric",
+    "lichen"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 18 sparse cells. The pitch-modulation band (cells 8–11) drifts the tone ±6 semitones over long arcs. Wide scope smooths this into slow melody. Tri osc, deep reverb.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.62,
+    "movement": 0.38,
+    "density": 0.35,
+    "space": 0.78,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 6553,
+      "org_stepRate": 1.5,
+      "org_scope": 14,
+      "org_mutate": 0.008,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.15,
+      "org_velCutoff": 0.38,
+      "org_ampAtk": 0.18,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.82,
+      "org_ampRel": 3.0,
+      "org_lfo1Rate": 0.05,
+      "org_lfo1Depth": 0.15,
+      "org_lfo2Rate": 0.04,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.78,
+      "org_macroRule": 0.71,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.02
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

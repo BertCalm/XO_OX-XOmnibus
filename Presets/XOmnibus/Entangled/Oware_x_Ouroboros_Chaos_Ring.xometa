@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Ring",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouroboros strange attractor amplitude feeds AmpToFilter into Oware — chaotic orbit energy pumps the bar filter open and closed, unpredictable brightening pulses leashing the tuned percussion to a strange attractor.",
+  "tags": ["coupled", "chaos", "strange-attractor", "AmpToFilter", "unpredictable"],
+  "macroLabels": ["CHARACTER", "MATERIAL", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.84,
+    "density": 0.60,
+    "space": 0.50,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Ouroboros": {
+      "macro_character": 0.60,
+      "macro_movement": 0.70,
+      "macro_coupling": 0.55,
+      "macro_space": 0.40,
+      "ouro_topology": 0.45,
+      "ouro_chaosAmount": 0.60,
+      "ouro_filterCutoff": 0.55,
+      "ouro_outputLevel": 0.75
+    },
+    "Oware": {
+      "owr_material": 0.40,
+      "owr_malletHardness": 0.40,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.50,
+      "owr_buzzAmount": 0.15,
+      "owr_sympathyAmount": 0.55,
+      "owr_shimmerRate": 6.0,
+      "owr_thermalDrift": 0.45,
+      "owr_brightness": 6500.0,
+      "owr_damping": 0.30,
+      "owr_decay": 2.0,
+      "owr_filterEnvAmount": 0.40,
+      "owr_bendRange": 2.0,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.0,
+      "owr_lfo1Rate": 0.30,
+      "owr_lfo1Depth": 0.15,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 1.00,
+      "owr_lfo2Depth": 0.08,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Oware",
+        "type": "AmpToFilter",
+        "amount": 0.50
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Solomon topology at near-maximum braid depth. The two doubly-linked rings produce a dense, pressurized texture like bioluminescent kelp at 4000 meters. Bandpass filter isolates a mid-frequency window.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.42,
+    "movement": 0.45,
+    "density": 0.78,
+    "space": 0.68,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.68,
+    "TENSION": 0.2,
+    "KNOT": 0.0,
+    "SPACE": 0.42
+  },
+  "mood": "Atmosphere",
+  "name": "Abyssal Knotwork",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.88,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 1400.0,
+      "weave_filterReso": 0.25,
+      "weave_filterType": 2,
+      "weave_ampA": 1.8,
+      "weave_ampD": 2.5,
+      "weave_ampS": 0.82,
+      "weave_ampR": 9.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.18,
+      "weave_lfo1Rate": 0.05,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.15,
+      "weave_lfo2Rate": 0.14,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.55,
+      "weave_fx1Param": 0.68,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.68,
+      "weave_macroTension": 0.2,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.42,
+      "weave_level": 0.7,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Deep-pressure Solomon pad through bandpass. Two braid LFOs — one on depth, one on cutoff — create unpredictable phase turbulence.",
+  "tags": [
+    "solomon",
+    "abyssal",
+    "bandpass",
+    "dense",
+    "deep"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

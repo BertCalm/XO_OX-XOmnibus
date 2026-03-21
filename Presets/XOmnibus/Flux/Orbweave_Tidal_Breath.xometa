@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Torus (2,3) — the standard torus knot — with slow complementary LFOs: one on filter (breath in) and one on braid depth (breath out). They run at different rates so the cycle is never quite synchronized. An organic tidal rhythm.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.58,
+    "movement": 0.7,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.4,
+    "TENSION": 0.15,
+    "KNOT": 0.0,
+    "SPACE": 0.42
+  },
+  "mood": "Flux",
+  "name": "Tidal Breath",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.5,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 5000.0,
+      "weave_filterReso": 0.12,
+      "weave_filterType": 0,
+      "weave_ampA": 0.5,
+      "weave_ampD": 1.0,
+      "weave_ampS": 0.82,
+      "weave_ampR": 3.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.28,
+      "weave_lfo1Rate": 0.15,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": -0.25,
+      "weave_lfo2Rate": 0.22,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.38,
+      "weave_fx1Param": 0.52,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.4,
+      "weave_macroTension": 0.15,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.42,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Two offset sine LFOs — one opens filter, one closes braid depth — at different rates. The desync creates an organic tidal rhythm that never repeats.",
+  "tags": [
+    "torus",
+    "tidal",
+    "breathing",
+    "organic",
+    "evolving"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Traffic Jam",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 184 traffic model at high speed with mutation — vehicles randomly appear and disappear, creating stop-and-go chaos. Dense filter modulation and violent LFOs.",
+  "tags": [
+    "flux",
+    "rule-184",
+    "traffic",
+    "mutation",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 184 traffic at 20 Hz with 6% mutation. New vehicles appear randomly — the flow breaks down into gridlock and dissolution. Dense square wave, aggressive LFOs.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.9,
+    "density": 0.68,
+    "space": 0.32,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 30000,
+      "org_stepRate": 20.0,
+      "org_scope": 2,
+      "org_mutate": 0.06,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 4500.0,
+      "org_filterRes": 0.65,
+      "org_velCutoff": 0.78,
+      "org_ampAtk": 0.003,
+      "org_ampDec": 0.1,
+      "org_ampSus": 0.58,
+      "org_ampRel": 0.25,
+      "org_lfo1Rate": 7.0,
+      "org_lfo1Depth": 0.58,
+      "org_lfo2Rate": 5.0,
+      "org_lfo2Depth": 0.52,
+      "org_reverbMix": 0.22,
+      "org_macroRule": 0.43,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.18
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Rule Morph Live",
+  "mood": "Flux",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "MACRO:RULE sweeps the 8 curated rules (30→90→110→184→150→18→54→22) in real time. Each rule has a distinct character — from chaos to symmetry to traffic. A living morphology.",
+  "tags": [
+    "flux",
+    "rule-sweep",
+    "morphing",
+    "performance",
+    "all-rules"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Designed around MACRO:RULE performance sweep. Default position at 50% (near Rule 150). Medium step rate (7 Hz). Scope 6 for mid-averaging. Saw wave reveals rule character most clearly.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.75,
+    "density": 0.52,
+    "space": 0.42,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 12345,
+      "org_stepRate": 7.0,
+      "org_scope": 6,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.32,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.45,
+      "org_velCutoff": 0.65,
+      "org_ampAtk": 0.006,
+      "org_ampDec": 0.2,
+      "org_ampSus": 0.65,
+      "org_ampRel": 0.4,
+      "org_lfo1Rate": 3.5,
+      "org_lfo1Depth": 0.38,
+      "org_lfo2Rate": 2.5,
+      "org_lfo2Depth": 0.32,
+      "org_reverbMix": 0.35,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

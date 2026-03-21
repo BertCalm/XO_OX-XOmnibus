@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Saw strands through Trefoil topology at mid braid depth. The asymmetric 3-strand ring gives a slightly chorused, rolling character. Mild delay adds tail without smear. Sits in the mix like a warm organ.",
+  "dna": {
+    "brightness": 0.46,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.32,
+    "aggression": 0.14
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.3,
+    "TENSION": 0.2,
+    "KNOT": 0.0,
+    "SPACE": 0.25
+  },
+  "mood": "Foundation",
+  "name": "Trefoil Engine",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 3.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.48,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 6800.0,
+      "weave_filterReso": 0.08,
+      "weave_filterType": 0,
+      "weave_ampA": 0.012,
+      "weave_ampD": 0.22,
+      "weave_ampS": 0.72,
+      "weave_ampR": 0.55,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.08,
+      "weave_lfo1Rate": 0.35,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.18,
+      "weave_fx1Param": 0.42,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.3,
+      "weave_macroTension": 0.2,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.25,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Saw-strand Trefoil pad with asymmetric phase roll and gentle braid LFO. Sounds like a warm organ growing sideways.",
+  "tags": [
+    "trefoil",
+    "saw",
+    "organ",
+    "warm",
+    "bread-and-butter"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

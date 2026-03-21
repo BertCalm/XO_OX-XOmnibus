@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Solomon topology with saw strands tuned to -5 semitones (below pitch). The strong 0.8 intra-ring coupling and 0.3 cross-ring links create a four-voice choir effect. Chorus FX widens the bed.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.38,
+    "density": 0.72,
+    "space": 0.65,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.42,
+    "TENSION": 0.12,
+    "KNOT": 0.0,
+    "SPACE": 0.5
+  },
+  "mood": "Atmosphere",
+  "name": "Solomon Choir",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": -5.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.65,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 4200.0,
+      "weave_filterReso": 0.1,
+      "weave_filterType": 0,
+      "weave_ampA": 1.5,
+      "weave_ampD": 1.2,
+      "weave_ampS": 0.88,
+      "weave_ampR": 5.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 4,
+      "weave_lfo1Depth": 0.12,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.42,
+      "weave_fx1Param": 0.55,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.35,
+      "weave_fx2Param": 0.5,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.42,
+      "weave_macroTension": 0.12,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.5,
+      "weave_level": 0.75,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Four-voice choir from Solomon doubly-linked ring pairs. Strand detune at -5 creates harmonic width without actual polyphony. Chorus widens further.",
+  "tags": [
+    "solomon",
+    "choir",
+    "pad",
+    "chorus",
+    "lush"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

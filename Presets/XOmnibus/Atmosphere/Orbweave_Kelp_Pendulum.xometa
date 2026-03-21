@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Triangle strands through Trefoil with a slow triangle-wave LFO on pitch. The result sways like kelp fronds responding to tidal pressure. Very slow, very hypnotic. Best played with long notes.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.48,
+    "space": 0.72,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.38,
+    "TENSION": 0.06,
+    "KNOT": 0.0,
+    "SPACE": 0.48
+  },
+  "mood": "Atmosphere",
+  "name": "Kelp Pendulum",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 5.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.52,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 5500.0,
+      "weave_filterReso": 0.06,
+      "weave_filterType": 0,
+      "weave_ampA": 1.2,
+      "weave_ampD": 1.5,
+      "weave_ampS": 0.85,
+      "weave_ampR": 6.5,
+      "weave_lfo1Type": 2,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.28,
+      "weave_lfo1Rate": 0.09,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 4,
+      "weave_lfo2Depth": 0.1,
+      "weave_lfo2Rate": 0.22,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.45,
+      "weave_fx1Param": 0.55,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.2,
+      "weave_fx2Param": 0.4,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.38,
+      "weave_macroTension": 0.06,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.48,
+      "weave_level": 0.76,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Tidal pitch sway via triangle-LFO. Volume breathes independently at a different rate. Feels like being inside the kelp forest.",
+  "tags": [
+    "trefoil",
+    "vibrato",
+    "kelp",
+    "tidal",
+    "hypnotic"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

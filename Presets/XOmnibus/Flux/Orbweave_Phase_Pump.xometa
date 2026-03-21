@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Solomon topology with a square LFO on volume creates rhythmic gating. The doubly-linked ring pairs provide four-beat harmonic reinforcement. At 4Hz LFO rate, it locks to 240bpm — or transpose the LFO rate for any tempo.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.28,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.5,
+    "TENSION": 0.3,
+    "KNOT": 0.0,
+    "SPACE": 0.2
+  },
+  "mood": "Flux",
+  "name": "Phase Pump",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.6,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 7500.0,
+      "weave_filterReso": 0.22,
+      "weave_filterType": 0,
+      "weave_ampA": 0.01,
+      "weave_ampD": 0.28,
+      "weave_ampS": 0.75,
+      "weave_ampR": 0.35,
+      "weave_lfo1Type": 4,
+      "weave_lfo1Target": 4,
+      "weave_lfo1Depth": 0.85,
+      "weave_lfo1Rate": 4.0,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": 0.25,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.25,
+      "weave_fx1Param": 0.5,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.5,
+      "weave_macroTension": 0.3,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.2,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Square-wave volume LFO gates Solomon topology at 4Hz. Doubly-linked rings create harmonic reinforcement on each gate open. Rhythmic and dense.",
+  "tags": [
+    "solomon",
+    "gating",
+    "rhythmic",
+    "square-lfo",
+    "pumping"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

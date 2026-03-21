@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Triangle strands through Figure-Eight at moderate braid. Fast attack, defined decay, low sustain — behaves like an electric piano with topological character. The crossing-number-4 pattern adds soft intermodulation.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.52,
+    "movement": 0.25,
+    "density": 0.42,
+    "space": 0.28,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.32,
+    "TENSION": 0.18,
+    "KNOT": 0.0,
+    "SPACE": 0.22
+  },
+  "mood": "Foundation",
+  "name": "Figure Eight Keys",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.44,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 9500.0,
+      "weave_filterReso": 0.06,
+      "weave_filterType": 0,
+      "weave_ampA": 0.003,
+      "weave_ampD": 0.55,
+      "weave_ampS": 0.18,
+      "weave_ampR": 0.8,
+      "weave_lfo1Type": 0,
+      "weave_lfo1Target": 0,
+      "weave_lfo1Depth": 0.0,
+      "weave_lfo1Rate": 1.0,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.14,
+      "weave_fx1Param": 0.38,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.32,
+      "weave_macroTension": 0.18,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.22,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Triangle-strand electric-piano response through Figure-Eight topology. Fast snap, decaying sustain, soft crossing-number intermodulation.",
+  "tags": [
+    "figure-eight",
+    "triangle",
+    "keys",
+    "electric-piano",
+    "percussive"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

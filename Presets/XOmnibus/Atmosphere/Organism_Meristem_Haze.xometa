@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Meristem Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 30 chaos with high mutation gently smearing the automaton — like a growing tip (meristem) where cells differentiate unpredictably. Long attack, long release, hazy reverb.",
+  "tags": [
+    "haze",
+    "rule-30",
+    "mutation",
+    "growth",
+    "slow-attack"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 30 with 4% mutation. Very slow attack (0.4s) and release (3s) blurs the automaton's rapid chaos into a gentle, indistinct cloud. Square wave gives edge behind the haze.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.52,
+    "movement": 0.52,
+    "density": 0.48,
+    "space": 0.75,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 55555,
+      "org_stepRate": 6.0,
+      "org_scope": 12,
+      "org_mutate": 0.04,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.42,
+      "org_ampAtk": 0.4,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.82,
+      "org_ampRel": 3.0,
+      "org_lfo1Rate": 0.12,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.09,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.75,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.08
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

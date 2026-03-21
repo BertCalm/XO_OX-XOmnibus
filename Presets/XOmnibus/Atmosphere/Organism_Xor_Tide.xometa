@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "XOR Tide",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 150 XOR-additive rule creates perfectly symmetric wave patterns — like a diffraction pattern in still water. Two slow LFOs create interference with the automaton's own rhythm.",
+  "tags": [
+    "atmospheric",
+    "rule-150",
+    "symmetric",
+    "interference",
+    "tide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 150 XOR symmetry at 2 Hz. LFO1 (0.11 Hz) and LFO2 (0.07 Hz) are incommensurate — creating a slowly beating interference pattern against the 2 Hz automaton tide.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.42,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 43690,
+      "org_stepRate": 2.0,
+      "org_scope": 12,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.32,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.22,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.2,
+      "org_ampDec": 1.0,
+      "org_ampSus": 0.84,
+      "org_ampRel": 2.8,
+      "org_lfo1Rate": 0.11,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.07,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.7,
+      "org_macroRule": 0.57,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

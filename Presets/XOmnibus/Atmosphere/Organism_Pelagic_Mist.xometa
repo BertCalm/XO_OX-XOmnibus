@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Pelagic Mist",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 90 Sierpinski at ultra-slow step (0.8 Hz) with maximum reverb. Each generation is a distant memory — the coral colony dissolves into open water.",
+  "tags": [
+    "pad",
+    "rule-90",
+    "slow",
+    "reverb",
+    "dissolved"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 90 Sierpinski at 0.8 Hz step rate — generations last over a second each. Full reverb wash, very slow LFOs. The automaton becomes tide rather than computation.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 16384,
+      "org_stepRate": 0.8,
+      "org_scope": 16,
+      "org_mutate": 0.005,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.28,
+      "org_filterCutoff": 3200.0,
+      "org_filterRes": 0.18,
+      "org_velCutoff": 0.38,
+      "org_ampAtk": 0.25,
+      "org_ampDec": 1.5,
+      "org_ampSus": 0.88,
+      "org_ampRel": 3.5,
+      "org_lfo1Rate": 0.04,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.03,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.85,
+      "org_macroRule": 0.14,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.01
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

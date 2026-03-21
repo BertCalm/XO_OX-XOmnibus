@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Brine Column",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 54 periodic islands create invisible columns of order floating in chaos. Interpreted here as a dense, dark pad with organic welling — water with weight.",
+  "tags": [
+    "dark",
+    "rule-54",
+    "dense",
+    "underwater",
+    "weight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 54 at 3 Hz step rate, narrow scope (5 gens) lets chaos dominate. Dark filter setting, heavy sub. Slow LFO 2 sweeps the cutoff in waves like a pressure differential.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.4,
+    "density": 0.7,
+    "space": 0.65,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 9999,
+      "org_stepRate": 3.0,
+      "org_scope": 5,
+      "org_mutate": 0.012,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.62,
+      "org_filterCutoff": 1800.0,
+      "org_filterRes": 0.28,
+      "org_velCutoff": 0.48,
+      "org_ampAtk": 0.1,
+      "org_ampDec": 0.8,
+      "org_ampSus": 0.85,
+      "org_ampRel": 2.2,
+      "org_lfo1Rate": 0.1,
+      "org_lfo1Depth": 0.15,
+      "org_lfo2Rate": 0.07,
+      "org_lfo2Depth": 0.3,
+      "org_reverbMix": 0.62,
+      "org_macroRule": 0.86,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.03
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

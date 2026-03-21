@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Symbiont Cloud",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 110 evolving at near-biological step rate with gentle mutation. The coral colony breathes — subtle bit-flips introduce organic imperfection into the computation.",
+  "tags": [
+    "atmospheric",
+    "rule-110",
+    "mutation",
+    "organic",
+    "breathing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 110 Turing computation with 1% mutation rate. Slow LFOs and wide scope (14 gens) smooth the filter into a breathing, living atmospheric pad. Saw, heavy reverb.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.65,
+    "movement": 0.45,
+    "density": 0.55,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 4321,
+      "org_stepRate": 2.5,
+      "org_scope": 14,
+      "org_mutate": 0.01,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.4,
+      "org_ampAtk": 0.12,
+      "org_ampDec": 1.0,
+      "org_ampSus": 0.85,
+      "org_ampRel": 2.5,
+      "org_lfo1Rate": 0.08,
+      "org_lfo1Depth": 0.18,
+      "org_lfo2Rate": 0.06,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.68,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.02
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
