@@ -253,7 +253,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-**44 of 44 engines seanced** (2026-03-21) — All engines complete. OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All 44 engines at 8.0+ target. Full data in:
+**45 of 45 engines seanced** (2026-03-21) — All engines complete. OPERA: 8.7/10 (path to 9.0+ via init state fix + velocity pass — see `Docs/seances/opera-seance-2026-03-21.md`). OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All 44 previous engines at 8.0+ target. OPERA 8.7/10 with no DSP bugs. Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -273,7 +273,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
 | D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### The 34 Blessings
+### The 37 Blessings
 
 | ID | Blessing | Engine |
 |----|----------|--------|
@@ -311,8 +311,11 @@ New engines are designed as standalone instruments first, then integrated into X
 | B032 | Mallet Articulation Stack — Chaigne 1997 contact-time synthesis creates physical pluck/strike/brush modes with academic citation | OWARE |
 | B033 | Living Tuning Grid — 8-mode layout where each mode creates a distinct intonation field via harmonic series + sympathetic resonance combination | OWARE |
 | B034 | Per-Mode Sympathetic Network — 5 sympathetically resonating strings with unique ratios per mode (5×8 = 40 unique resonance profiles) | OWARE |
+| B035 | OperaConductor: Autonomous Dramatic Arc Architecture — 4 arc shapes, configurable arc time/peak, ±5%/±3% jitter, graceful player override via max(conductorK, manualK). First synthesizer in the fleet with autonomous narrative intent. Blessed by Kakehashi, Pearlman, Vangelis, Smith. | OPERA |
+| B036 | Coherence-Driven Spatial Panning — stereo field is a live readout of Kuramoto order parameter R: locked partials spread wide, chaotic partials collapse to center. The stereo field breathes with the dramatic arc. Blessed by Tomita, Buchla. | OPERA |
+| B037 | EmotionalMemory: Phase Persistence Across Note Boundaries — partial phases stored at note-off, recalled within 500ms window. The Kuramoto field wakes up knowing where it was. Named after Vangelis in source code. Blessed by Vangelis. | OPERA |
 
-### The 4 Ongoing Debates
+### The 5 Ongoing Debates
 
 | ID | Tension | Status |
 |----|---------|--------|
@@ -320,10 +323,11 @@ New engines are designed as standalone instruments first, then integrated into X
 | DB002 | Silence as paradigm vs. accessibility (Schulze/Buchla vs. Kakehashi/Pearlman) | UNRESOLVED |
 | DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | RESOLVED for percussion — immediate beauty wins (OSTINATO seance 2026-03-20) |
 | DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | RESOLVED for OSTINATO — expression AND evolution are not in tension; both possible simultaneously |
+| DB005 | Autonomy vs. Agency — machine Conductor arc vs. player expressive control (Kakehashi named; OPERA is the first engine where this tension is architecturally explicit). Current resolution: Conductor + Manual/Both mode is correct; debate is about *degree* not *principle*. | OPEN |
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.8. **All 44 engines seanced and at 8.0+ target.** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
+- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.8. **All 45 engines seanced. OPERA 8.7/10 (no DSP bugs, 3 UX fixes for 9.0+).** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)

@@ -1,8 +1,8 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-03-20 — Seances 31–33: ORBWEAVE, OVERTONE, ORGANISM
-**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 30 seance records
+**Updated:** 2026-03-21 — Seance 45: OPERA
+**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 45 seance records
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
 ---
@@ -190,6 +190,7 @@ Comprehensive synthesis guides have been written for engines with complex or uni
 
 | Engine | Guide | Notes |
 |--------|-------|-------|
+| OPERA | `Docs/seances/opera-seance-2026-03-21.md` | Kuramoto mean-field synthesis, OperaConductor, EmotionalMemory, coherence-driven panning. Score 8.7/10. B035–B037 awarded. DB005 opened. |
 | OBSCURA | `Docs/obscura_synthesis_guide.md` | Scanned synthesis, Verlet physics, full D003 treatment |
 | ORACLE | `Docs/oracle_synthesis_guide.md` | GENDY stochastic synthesis, Maqam tuning |
 | ORGANON | `Docs/organon_vfe_guide.md` | Variational Free Energy metabolism |
