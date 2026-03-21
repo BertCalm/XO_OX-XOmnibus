@@ -13,7 +13,7 @@
 | Engines with formal numeric score | 37 |
 | Engines with non-numeric verdict only | 7 (OBSCURA, OPTIC, ORBITAL, ORGANON, OVERBITE, OSPREY, OSTERIA — all approved) |
 | Engines with NO seance of any kind | 0 |
-| Score range (numeric) | 5.9 → 8.7 |
+| Score range (numeric) | 5.9 → 9.0 (OXBOW post-fix) |
 | Median score (numeric, post-recovery) | ~7.9 |
 
 > NOTE: All 44 engines have now been through at least one seance. OXBOW (engine 43) was seanced 2026-03-20 (score 9.0 post-fix). OWARE (engine 44) was seanced 2026-03-21 (score 8.7/10, verdict: Conditionally Blessed, `Docs/seance-oware-verdict.md`). Both are now included in the tables below. Update applied 2026-03-21.
@@ -172,7 +172,7 @@ Neither appears in the fleet table above. Seance status:
 
 ### TIER 5 — EXCELLENT (9.0+) and Non-Numeric Approvals
 
-No engine has yet achieved a formal ghost council score of 9.0 or above. The closest are OUTWIT and OSTINATO at 8.7/10.
+**OXBOW achieved 9.0/10** after its 2026-03-21 fix session (dead Size param wired, 4 macros added, juce::ParameterID migration, mod wheel CC1). OWARE is projected at 9.2 with two targeted fixes (LFO2 wire + filter env decay). The closest numeric scores otherwise are OUTWIT and OSTINATO at 8.7/10.
 
 The following engines received approval-class verdicts without numeric scoring. Based on ghost testimony and post-sweep doctrine compliance, these are treated as high-quality engines:
 
@@ -207,6 +207,7 @@ The following engines received approval-class verdicts without numeric scoring. 
 | 6 | OSTINATO | 8.7/10 (latest) | Moog 9/10 | Buchla 9/10 | Humanization deterministic; mono reverb; hardcoded breath LFO | `Docs/seances/ostinato_seance_verdict.md` |
 | 7 | OUIE | 8.5/10 | Moog 7.5/10 | Buchla 9/10 | CURRENT macro chorus-only; LOVE harmonic lock unimplemented | `Docs/seances/ouie_seance_verdict.md` |
 | 8 | OUTWIT | 8.7/10 (revised) | Kakehashi 7.0/10 | Buchla 10.0/10 | Pitch wheel unhandled; step rate ceiling; mono reverb | `Docs/seances/outwit_seance_verdict.md` |
+| 8b | OWARE | 8.7/10 | Kakehashi (Reserved) | Moog/Smith/Tomita/Scott (Blessed) | LFO2 dead (3 params); filter env decay hardcoded; sympathetic window pitch-invariant | `Docs/seance-oware-verdict.md` |
 | 9 | OVERLAP | 8.4/10 (revised) | Vangelis 7.5/10 | Buchla 9.5/10 | Global filter env vs. FDN tails; delay cap 50ms; integer pitch stepping | `Docs/seances/overlap_seance_verdict.md` |
 | 10 | OVERTONE | 8.1 (Docs) / 7.6 (re-seance) | — | — | Pi table spectral collapse; no anti-alias Nyquist fadeout (patched 2026-03-20); 1-voice only | `Docs/seances/overtone_seance_verdict.md`; `scripture/seances/overtone-seance-2026-03-20.md` |
 | 11 | OMBRE | 7.8/10 → 8.0 est. | — | — | D002 partial: 1 LFO (2 required) | `Docs/seances/ombre_seance_verdict.md` |
@@ -280,17 +281,17 @@ Based on significant changes since last seance, these engines should be prioriti
 ```
 Score Range  | Count | Engines
 -------------|-------|--------
-9.0+         |   0   | (none scored above 8.7 yet)
-8.5–8.9      |   5   | OUTWIT(8.7), OSTINATO(8.7), ORACLE(8.6), ORCA-est(8.6), OUIE(8.5)
+9.0+         |   1   | OXBOW(9.0 post-fix 2026-03-21)
+8.5–8.9      |   6   | OUTWIT(8.7), OSTINATO(8.7), OWARE(8.7), ORACLE(8.6), ORCA-est(8.6), OUIE(8.5)
 8.0–8.4      |   9   | OVERLAP(8.4), ORBWEAVE(8.4), OCTOPUS(8.3), OBSIDIAN-est(8.2), OPENSKY(8.1), ORGANISM(8.1/7.2), OVERTONE(8.1/7.6), ORCA-init(8.1), ORPHICA(8.0), OSTINATO-init(8.0), OMBRE-est(8.0)
 7.0–7.9      |  15   | OCEANDEEP(7.8), OMBRE(7.8), OBBLIGATO(7.8), OUTWIT-latest(7.9), OVERWORLD(7.6), ODYSSEY(7.6), OHM(7.6), OVERTONE-re(7.6), OBELONG(7.x), OTTONI(7.2), OBRIX(7.2), OBLIQUE-est(7.2), OVERDUB(7.4), OCEANIC(7.1), OWLFISH(7.1)
 Below 7.0    |   6   | ODDOSCAR(6.9), OBESE(6.6), OBSIDIAN-orig(6.6), OCELOT(6.4), ODDFELIX(~7.0 est.), OBLIQUE-orig(5.9)
 Non-numeric  |  11   | ORGANON, ORACLE(num), OUROBOROS, OVERBITE, ONSET, OPTIC, OBSCURA, OSPREY, OSTERIA, ORBITAL, OPAL, ORIGAMI
 ```
 
-**Fleet median score (numeric engines, post-recovery estimates):** ~7.8/10
-**Fleet mean score (numeric engines only, no estimates):** ~7.7/10
-**Highest confirmed score:** OUTWIT 8.7/10, OSTINATO 8.7/10
+**Fleet median score (numeric engines, post-recovery estimates):** ~7.9/10
+**Fleet mean score (numeric engines only, no estimates):** ~7.8/10
+**Highest confirmed score:** OXBOW 9.0/10 (post-fix 2026-03-21); previously OUTWIT/OSTINATO/OWARE at 8.7
 **Lowest confirmed score:** OBLIQUE 5.9/10 (pre-recovery); OCELOT 6.4/10 (post-fix)
 
 ---
@@ -309,9 +310,13 @@ Non-numeric  |  11   | ORGANON, ORACLE(num), OUROBOROS, OVERBITE, ONSET, OPTIC, 
 | OLE | isHusband regression status unclear post-SP7.5 | Correctness |
 | OPENSKY | sky_subWave parameter not dispatched — D004 partial | Dead parameter |
 | OBBLIGATO | FX chain routing misrouted — V2 backlog | Audio routing |
+| OWARE | LFO2 computed but unused — 3 dead params (owr_lfo2Rate/Depth/Shape) | D004 partial |
+| OWARE | Filter envelope decay hardcoded 300ms — no user control over timbral contour | Expressiveness |
 
 ---
 
-*Audit complete. 42 engines surveyed (of 44 total — OXBOW + OWARE were added the same day and are not included). 0 of the 42 surveyed engines had no seance. Data sourced from 19 verdict/seance files across 2 directories + seance knowledge tree.*
+*Audit complete. 44 engines surveyed (all registered engines as of 2026-03-21). 0 engines with no seance. Data sourced from 19+ verdict/seance files across 2 directories + seance knowledge tree. Updated 2026-03-21 to include OXBOW (9.0/10 post-fix) and OWARE (8.7/10 seanced 2026-03-21).*
 
-*Next recommended action: Re-seance ORGANISM and OVERTONE with their 2026-03-20 patches applied — both had critical DSP issues identified and patched in the same session as this audit.*
+*Next recommended actions:*
+*1. Re-seance ORGANISM and OVERTONE with their 2026-03-20 patches applied — both had critical DSP issues patched.*
+*2. Wire OWARE LFO2 → material and expose filter envelope decay (R1+R2 in `Docs/seance-oware-verdict.md`) — projected 9.2/10.*
