@@ -620,6 +620,10 @@ public:
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;  // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;  // LFO2 → material
 
+                // D004 FIX: apply LFO2 modulation to material continuum (per-voice, ±0.3 range).
+                // Use a local voiceMatNow so each voice's LFO2 is independent.
+                float voiceMatNow = std::clamp (matNow + lfo2Val * 0.3f, 0.0f, 1.0f);
+
                 // Improvement #5: apply thermal drift (shared + per-voice personality)
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
                 freq *= fastPow2 (totalThermalCents / 1200.0f);  // BUG-3 FIX: fastPow2 replaces std::pow
@@ -656,17 +660,17 @@ public:
                     float bellR = kBellRatios[m];
 
                     float ratio;
-                    if (matNow < 0.33f)
-                        ratio = woodR + (bellR - woodR) * (matNow / 0.33f);
-                    else if (matNow < 0.66f)
-                        ratio = bellR + (metalR - bellR) * ((matNow - 0.33f) / 0.33f);
+                    if (voiceMatNow < 0.33f)
+                        ratio = woodR + (bellR - woodR) * (voiceMatNow / 0.33f);
+                    else if (voiceMatNow < 0.66f)
+                        ratio = bellR + (metalR - bellR) * ((voiceMatNow - 0.33f) / 0.33f);
                     else
-                        ratio = metalR + (kBowlRatios[m] - metalR) * ((matNow - 0.66f) / 0.34f);
+                        ratio = metalR + (kBowlRatios[m] - metalR) * ((voiceMatNow - 0.66f) / 0.34f);
 
                     float modeFreq = freqWithShimmer * ratio;
 
                     // Q: material-dependent base + mode-dependent falloff
-                    float baseQ = 80.0f + matNow * 1420.0f;
+                    float baseQ = 80.0f + voiceMatNow * 1420.0f;
                     float modeQ = baseQ / (1.0f + static_cast<float> (m) * 0.3f);
 
                     // Improvement #7: apply body-membrane coupling boost to Q
@@ -737,6 +741,9 @@ public:
         float freq = 440.0f * std::pow (2.0f, (static_cast<float> (note) - 69.0f) / 12.0f);
         int bodyType = paramBodyType ? static_cast<int> (paramBodyType->load()) : 0;
 
+        // Read material once — used for filter decay AND body-membrane coupling boosts
+        float matNow = paramMaterial ? paramMaterial->load() : 0.2f;
+
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
@@ -752,7 +759,11 @@ public:
         v.exciter.trigger (vel, hardness, freq, srf);
 
         v.filterEnv.prepare (srf);
-        v.filterEnv.setADSR (0.001f, 0.3f, 0.0f, 0.5f);
+        // D002 FIX: filter envelope decay varies with material position.
+        // Wood (matNow≈0.0) = 100ms (fast, percussive), Bowl (matNow≈1.0) = 800ms (slow, singing).
+        // Metal and Bell map through the continuum between these extremes.
+        float filterDecay = 0.1f + matNow * 0.7f;  // 100ms → 800ms across material
+        v.filterEnv.setADSR (0.001f, filterDecay, 0.0f, 0.5f);
         v.filterEnv.triggerHard();
 
         v.shimmerLFO.reset (static_cast<float> (idx) / static_cast<float> (kMaxVoices));
@@ -762,7 +773,6 @@ public:
         v.buzz.prepare (srf, bodyType);
 
         // Improvement #7: compute body-membrane coupling boosts at note-on
-        float matNow = paramMaterial ? paramMaterial->load() : 0.2f;
         float bodyDepth = paramBodyDepth ? paramBodyDepth->load() : 0.5f;
         for (int m = 0; m < OwareVoice::kMaxModes; ++m)
         {
