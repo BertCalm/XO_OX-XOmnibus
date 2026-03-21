@@ -33,6 +33,7 @@
 #include "OperaConductor.h"
 #include "OperaBreathEngine.h"
 #include "ReactiveStage.h"
+#include "../../DSP/FastMath.h"
 
 #include <cmath>
 #include <cstring>
@@ -229,13 +230,15 @@ struct OperaSVF
     void reset() noexcept { ic1eq = ic2eq = 0.0f; }
 
     /// Process one sample, return lowpass output.
+    /// SRO (2026-03-21): std::tan → FastMath::fastTan — accurate to 0.03% below
+    /// 0.25×sampleRate. Saves ~16 std::tan calls/sample (2 SVFs × 8 voices).
     float process (float input, float cutoffHz, float Q, float sampleRate) noexcept
     {
         // Clamp cutoff to prevent instability
         cutoffHz = std::clamp (cutoffHz, 20.0f, sampleRate * 0.499f);
         Q = std::max (Q, 0.5f);
 
-        float g = std::tan (kPi * cutoffHz / sampleRate);
+        float g = FastMath::fastTan (kPi * cutoffHz / sampleRate);
         float k = 1.0f / Q;
         float a1 = 1.0f / (1.0f + g * (g + k));
         float a2 = g * a1;
