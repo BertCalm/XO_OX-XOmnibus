@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
-  "description": "Designed for coupling. Organic WT with moderate drift feeds brick complexity to partner engines. Coupling macro at 0.5 default — the preset expects conversation. LFO on FX mix lets aftertouch reveal or conceal the reverb space.",
+  "description": "Designed for coupling. Organic WT with moderate drift feeds brick complexity to partner engines. Coupling macro at 0.5 default \u2014 the preset expects conversation. LFO on FX mix lets aftertouch reveal or conceal the reverb space.",
   "tags": [
     "coupling",
     "pad",
@@ -100,5 +100,11 @@
       "obrix_distance": 0.2,
       "obrix_air": 0.45
     }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.0
   }
 }

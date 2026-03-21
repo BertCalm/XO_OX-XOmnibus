@@ -100,5 +100,11 @@
       "obrix_air": 0.55
     }
   },
-  "tier": "awakening"
+  "tier": "awakening",
+  "macros": {
+    "CHARACTER": 0.37,
+    "MOVEMENT": 0.315,
+    "COUPLING": 0.0,
+    "SPACE": 0.44
+  }
 }

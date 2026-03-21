@@ -120,5 +120,11 @@
       "obrix_distance": 0.65,
       "obrix_air": 0.75
     }
+  },
+  "macros": {
+    "CHARACTER": 0.374,
+    "MOVEMENT": 0.342,
+    "COUPLING": 0.0,
+    "SPACE": 0.464
   }
 }

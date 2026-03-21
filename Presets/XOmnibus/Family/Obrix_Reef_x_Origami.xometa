@@ -108,5 +108,11 @@
         "amount": 0.5
       }
     ]
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
   }
 }
