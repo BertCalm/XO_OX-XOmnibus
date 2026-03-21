@@ -1,0 +1,52 @@
+{
+  "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Partial 0 (fundamental) at 0.0, partials 3-6 boosted to 0.8-0.9. The engine with no ground beneath it: floating upper-register shimmer with no bass anchor. Sqrt2 constant at depth 4 (near actual sqrt2) — the partials cluster near 1.414, creating an airborne texture with no harmonic gravity.",
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.2,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.0
+  },
+  "engines": ["Overtone"],
+  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "macros": { "DEPTH": 0.55, "COLOR": 0.8, "COUPLING": 0.0, "SPACE": 0.6 },
+  "mood": "Atmosphere",
+  "name": "Inverted Spectrum",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 3,
+      "over_depth": 4.0,
+      "over_partial0": 0.0,
+      "over_partial1": 0.1,
+      "over_partial2": 0.3,
+      "over_partial3": 0.85,
+      "over_partial4": 0.9,
+      "over_partial5": 0.8,
+      "over_partial6": 0.65,
+      "over_partial7": 0.45,
+      "over_velBright": 0.45,
+      "over_filterCutoff": 16000.0,
+      "over_filterRes": 0.4,
+      "over_ampAtk": 0.6,
+      "over_ampDec": 1.0,
+      "over_ampSus": 0.7,
+      "over_ampRel": 3.0,
+      "over_lfo1Rate": 0.06,
+      "over_lfo1Depth": 0.3,
+      "over_lfo2Rate": 0.04,
+      "over_lfo2Depth": 0.22,
+      "over_resoMix": 0.2,
+      "over_macroDepth": 0.55,
+      "over_macroColor": 0.8,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.6
+    }
+  },
+  "schema_version": 1,
+  "tags": ["atmosphere", "inverted", "airborne", "sqrt2", "upper-partials", "no-bass"],
+  "version": "1.0"
+}

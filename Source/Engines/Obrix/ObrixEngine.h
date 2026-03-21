@@ -14,8 +14,12 @@ namespace xomnibus {
 // ObrixEngine — Ocean Bricks: The Living Reef
 //
 // A runtime-configurable synthesis toy box where you snap "ocean bricks"
-// together to build sound. OBRIX is the baby brother of XOmnibus — a reef
-// that grows over time through periodic brick drops.
+// together to build sound. OBRIX is not an instrument. It is a habitat.
+// Where the other 41 engines are creatures with fixed identities — anglerfish,
+// axolotl, octopus — OBRIX is the reef itself: the place where creatures live,
+// the ecosystem that grows by accretion. It doesn't have a fixed form.
+// It grows. It adapts. It responds to its inhabitants.
+// New coral species (bricks) wash ashore with every Brick Drop.
 //
 // Brick pool per voice (pre-allocated):
 //   2 Sources (Shells)    — oscillators / noise (PolyBLEP anti-aliased)
@@ -80,15 +84,23 @@ enum class ObrixModTarget {
 };
 
 // ObrixGestureType — PlaySurface pad behavior modes (maps to obrix_gestureMode param)
-// Ripple: gentle modulation on pad pressure | Pulse: rhythmic trigger burst
-// Flow: sustained smooth modulation | Tide: slow swell with ocean-sourced wavetables
+// The FLASH chromatophore: rapid light-and-color change, like octopus and cuttlefish
+// signaling, startling, attracting. Four chromatophore patterns:
+//   Ripple         — surface disturbance, quick filter sweep from above
+//   Bioluminescent Pulse — deep-sea light emission, sustained glow, slow bloom
+//   Undertow       — current reversal pulling inward, inverted envelope
+//   Surge          — wave crashing over the reef crest, maximum energy
 enum class ObrixGestureType {
     Ripple = 0, Pulse, Flow, Tide,
     kCount
 };
 
 //==============================================================================
-// ObrixADSR
+// ObrixADSR — The four stages that describe the life of every note
+// Invented by Vladimir Ussachevsky, refined by Robert Moog, carried by
+// every synthesizer since 1965. Attack is urgency. Decay is settling.
+// Sustain is patience. Release is farewell. This implementation uses
+// exponential approach in decay/release for organic, breathing curvature.
 //==============================================================================
 struct ObrixADSR
 {
@@ -542,6 +554,9 @@ public:
                 }
 
                 // --- Route modulation to all targets ---
+                // 4 Currents × 8 destinations = 32 possible routings
+                // This is the reef's nervous system — modulation flows like water
+                // through every brick, touching pitch, timbre, space, and expression
                 float pitchMod = 0.0f, cutoffMod = 0.0f, resoMod = 0.0f;
                 float volMod = 0.0f, wtPosMod = 0.0f, pwMod = 0.0f;
                 float fxMixMod = 0.0f, panMod = 0.0f;
@@ -781,7 +796,12 @@ public:
     {
         if (channel == 0) return lastSampleL;
         if (channel == 1) return lastSampleR;
-        if (channel == 2) return brickComplexity; // Smith: architectural complexity signal
+        // Channel 2: Brick Complexity — 0–1 signal encoding how many bricks are
+        // active in this voice. Blessed by Dave Smith (Seance): "architectural
+        // metadata as coupling." Other engines can modulate their own behavior
+        // based on OBRIX's configuration: a full reef responds differently than
+        // a sparse one. When the reef is crowded, the coupled engine knows.
+        if (channel == 2) return brickComplexity;
         return 0.0f;
     }
 
@@ -820,13 +840,13 @@ public:
         using PF = juce::AudioParameterFloat;
         using PC = juce::AudioParameterChoice;
 
-        auto srcChoices  = juce::StringArray { "Off", "Sine", "Saw", "Square", "Triangle", "Noise", "Wavetable", "Pulse", "Lo-Fi Saw" };
+        auto srcChoices  = juce::StringArray { "Off", "Sine", "Saw", "Square", "Triangle", "Noise", "Wavetable", "Pulse", "Driftwood" };
         auto wtChoices   = juce::StringArray { "Analog", "Vocal", "Metallic", "Organic" };
         auto procChoices = juce::StringArray { "Off", "LP Filter", "HP Filter", "BP Filter", "Wavefolder", "Ring Mod" };
         auto modChoices  = juce::StringArray { "Off", "Envelope", "LFO", "Velocity", "Aftertouch" };
         auto tgtChoices  = juce::StringArray { "None", "Pitch", "Filter Cutoff", "Filter Reso", "Volume", "WT Pos", "Pulse Width", "FX Mix", "Pan" };
         auto fxChoices   = juce::StringArray { "Off", "Delay", "Chorus", "Reverb" };
-        auto gestChoices = juce::StringArray { "Ripple", "Pulse", "Flow", "Tide" };
+        auto gestChoices = juce::StringArray { "Ripple", "Bioluminescent Pulse", "Undertow", "Surge" };
 
         // Sources (7)
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 1)); // 1 = Sine default

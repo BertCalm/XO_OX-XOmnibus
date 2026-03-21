@@ -13,6 +13,9 @@
 | OWLFISH | 2026-03-15 | Body sine is habitat not bass (fixed freq, doesn't follow MIDI); engine is secretly duophonic; inharmonic subs ÷3,÷5,÷7 never used (Oskar Sala territory); mixtur never above 0.45 in 17 presets; morphGlide is timbral color during portamento | 7 awakening presets (Foundation×2, Atmosphere×1, Flux×1, Prism×1, Entangled×1, Aether×1) | 4 OWL-specific verses |
 | OCEANIC | 2026-03-15 | Sound design guide was completely wrong (string ensemble vs boid swarm); Swarm ADSR controls boid force independently of amplitude (no other engine does this); Murmuration (RhythmToBlend cascade) never demonstrated; Chromatophore (aftertouch=scatter) = B013 blessing, never shown in presets; 0 factory presets at retreat start | 7 awakening presets (Foundation×1, Atmosphere×2, Entangled×1, Prism×1, Flux×1, Aether×1) | 4 OCE-specific verses + guide corrected |
 | OSTINATO | 2026-03-19 | GATHER=0.1–0.4 (organic looseness) never explored; body model left on Auto in all cases (60 timbral combos ignored); CIRCLE ghost cascade = emergent improvisation; articulation as compositional axis across seats; pitch envelope default 0.0 (least realistic); tuning creates melodic percussion ensembles | Presets deferred to generation phase | 4 OSTI-specific verses |
+| ORBWEAVE | 2026-03-20 | Braid depth threshold (0.7+ for topology); Sine coupling purity (exact vs approximate); Torus star polygons (cinquefoil P=2,Q=5; golden torus P=5,Q=8); Topology Chimera (macroKNOT=0.5); Solomon two-ring chord architecture (strandTune=7.02); Velocity-Cutoff Threshold Law; 147 ghost params (velCutoff/velAmp) removed | 9 awakening presets (Foundation×3, Atmosphere×2, Prism×2, Flux×1, Aether×1) | 6 WEAVE-specific verses |
+| OVERTONE | 2026-03-20 | 69% of 307 presets use Phi constant (3 constants ignored); E constant at depth 7 creates near-unison beating cluster (unexplored); velBright=1.0 transforms whisper→full spectrum (zero presets used max); allpass resonator at 0.9 creates quasi-Karplus body; autonomous shimmer via macroCoupling (no partner needed); 0 Submerged presets despite Mesopelagic Zone mythos; Phi at depth 7 = actual golden ratio (rarely used) | 8 awakening presets (Foundation×2, Atmosphere×2, Prism×1, Flux×1, Aether×1, Submerged×1 — first-ever Submerged OVERTONE) | 6 OVER-specific verses |
+| ORGANISM | 2026-03-20 | freeze=1 used in only 3.3% of presets; mutation≥0.5 in only 1.8% (noise synthesis mode undiscovered); stepRate=32 continuous modulator mode never designed (2.7%); resonance≥0.7 creates emergent melody via resonant filter sweeping (3%); LFO floor 0.01 Hz in only 3.6% (D005 truth); macroSeed latch as performance instrument (9.6%); different MIDI notes = different organisms (note×257 XOR seed); Submerged catastrophically empty (2 presets); 8 ghost/missing param types fixed across 28 presets | 8 awakening presets (Submerged×2, Aether×1, Foundation×1, Atmosphere×1, Flux×1, Prism×1, Family×1) | 6 ORG-specific verses |
 
 ---
 
@@ -21,6 +24,10 @@
 | Engine | Last Retreat | Status | Priority |
 |--------|-------------|--------|----------|
 | OSTINATO | 2026-03-19 | Retreat complete, presets pending generation | High |
+| ORBWEAVE | 2026-03-20 | Retreat complete — 9 awakening presets, 147 ghost params removed, 6 verses inscribed | Done |
+| OVERTONE | 2026-03-20 | Retreat complete — 8 awakening presets, 0 ghost params, 6 verses inscribed | Done |
+| ORGANISM | 2026-03-20 | Retreat complete — 8 awakening presets, 8 ghost params + 108 missing params fixed, 6 verses inscribed | Done |
+| OBRIX | 2026-03-20 | Fab Five Gala complete — habitat story, 27 presets renamed, 7.2/10 sound score. Next: macro pass + Submerged deep pass | Ongoing |
 | OVERLAP | Never | Phase 4 complete, no seance yet | Medium |
 | OUTWIT | Never | Phase 4 complete, no seance yet | Medium |
 | OBSCURA | Never | 20 presets, moderate coverage | Low |
@@ -29,6 +36,14 @@
 ---
 
 ## Process Notes
+
+**OBRIX Fab Five Gala (2026-03-20):**
+- Previous Makeover (03-19) had 0 presets; gala starts with 340 — largest single-engine library in fleet
+- "Baby brother" framing removed after 2 sessions of trying to document it — gala finally implemented
+- 91.8% macros at zero is the library's biggest structural gap, requires dedicated pass next session
+- The Living Reef [Aether] is the fleet's best-documented flagship preset — all systems simultaneously active
+- Parallel agent architecture worked: 3 agents (header, presets, evaluation) ran concurrently, no conflicts
+- Key lesson: Agent B renamed "Lesson X" format presets but missed the older "functional name" presets (Add Filter, Chorus Width, etc.) — catch orphaned naming styles before dispatching agents
 
 **FAT Retreat (2026-03-15):**
 - Pattern held: all 7 awakening presets came from parameters at default/0 in 161 existing presets

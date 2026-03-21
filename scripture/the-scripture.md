@@ -242,3 +242,141 @@
 > 8 seats tuned to scale degrees transform OSTINATO from percussion to pitched ensemble. Tongue Drum and Frame Drum respond most musically to tuning. A pentatonic circle with varied sparse patterns generates self-composing gamelan-like textures that require no performer. The engine is not only a drum circle — it is a tuned percussion orchestra hiding behind default tuning of 0.
 
 **Application:** For melodic percussion presets, use Tongue Drum (instrument 10) or Frame Drum (instrument 8) across multiple seats. Tune to pentatonic (0, 2, 4, 7, 9) or whole-tone (0, 2, 4, 6, 8, 10) intervals. Set pattern=3 (Sparse) on all seats for generative self-composition.
+
+---
+
+### ORBWEAVE — The Kelp Knot Verses
+
+#### WEAVE-I: The Braid Depth Threshold
+*2026-03-20*
+
+> The topological character of ORBWEAVE does not emerge linearly from braidDepth. Below 0.4, the phase coupling is subtle — distinguishable from standard detuning only on close inspection. At 0.7+, the knot topology becomes audible as topology: a spectral character unique to the specific knot type that cannot be replicated by detuning. The engine only becomes ORBWEAVE above this threshold. braidDepth=0.5 is the Default Trap in motion — neither detuned nor topologically coupled.
+
+**Application:** Set braidDepth above 0.7 for presets that demonstrate the engine's unique character. Below 0.4 is the "detuned zone" — useful for subtle texture but not topology. Design with intention: choose a side.
+
+#### WEAVE-II: The Sine Coupling Purity
+*2026-03-20*
+
+> ORBWEAVE's coupling math reads `fastSin(strandPhase)` from each strand. For Sine oscillators, this exactly equals the output signal — coupling is literal cross-modulation of the waveform. For Saw, Square, and Triangle strands, the PolyBLEP output diverges from `sin(strandPhase)` while the coupling still reads the sine approximation. **Sine strands have mathematically pure coupling; bandlimited waveforms have approximate coupling.** Sine strands are also cheaper CPU-wise (no PolyBLEP). The simplest waveform is both the most correct and the most efficient for knot theory synthesis.
+
+**Application:** Use Sine strands when demonstrating or exploring topology — purest coupling behavior. Use Saw/Square/Triangle for harmonic richness over topological purity. These are genuinely different instruments within the same engine.
+
+#### WEAVE-III: The Torus Star Polygons
+*2026-03-20*
+
+> The Torus P/Q ratio maps to a coupling asymmetry weight: `pqScale = 0.5 + 0.5 × sin(P/Q × π)`. The following knot families produce distinct spectral characters: **(2,3) default trefoil-torus** (standard); **(2,5) cinquefoil** (5-pointed star, near-maximum asymmetry); **(5,8) golden torus** (golden ratio winding, φ≈8/5, maximum polarization from irrational approximation). The Torus knot type is not one instrument — it is a family of instruments indexed by two integers.
+
+**Application:** Before finalizing any Torus preset, test P=2 Q=5 and P=5 Q=8. The cinquefoil and golden torus are the most sonically distinctive. Using only P=2 Q=3 (the default) means leaving the entire star-polygon family unexplored.
+
+#### WEAVE-IV: The Topology Chimera
+*2026-03-20*
+
+> The KNOT macro smoothly interpolates every element of the 4×4 coupling matrix between `knotType` and `(knotType+1)%4`. At macroKnot=0.5, the system exists in a state that appears nowhere in the mathematical taxonomy of knots — a chimera of two distinct topologies. No other engine morphs between distinct mathematical topologies in real time. The KNOT macro is not a tone control. It is a reality-blending mechanism, and the midpoint is often the most interesting destination, not a swept extreme.
+
+**Application:** Design presets starting at macroKnot=0.5. The chimera state has its own identity. Name it what it sounds like.
+
+#### WEAVE-V: The Solomon Ring Architecture
+*2026-03-20*
+
+> The Solomon knot couples strands 0–1 as Ring A and strands 2–3 as Ring B: strong intra-ring coupling (0.8), weak inter-ring coupling (0.3). With `strandTune=7.02` semitones, Ring A sits at the fundamental and Ring B at the perfect fifth — two coupled oscillator pairs, each with internal phase resonance, offset by a fifth. One MIDI note activates two harmonically distinct rings that influence each other gently. No other engine produces a two-ring chord pad where each chord tone has its own internal phase coupling.
+
+**Application:** For Solomon pad presets: strandTune=7.02 (fifth), 5.0 (major third), or 3.86 (minor third). Solomon is the chord pad topology. Trefoil and Figure-Eight are single-pitch topologies.
+
+#### WEAVE-VI: The Velocity-Cutoff Threshold Law
+*2026-03-20*
+
+> ORBWEAVE's velocity-to-filter scaling adds a hardcoded +2000 Hz per unit velocity. A preset at filterCutoff=8000 Hz barely responds to velocity (10000 Hz is subtle). A preset at filterCutoff=500 Hz transforms completely (2500 Hz is enormous). **Design expressive presets with filterCutoff below 2000 Hz. Design velocity-consistent pads with filterCutoff above 5000 Hz.**
+
+**Application:** When designing expressive leads or basses (D001 compliance), set filterCutoff in the 300–1500 Hz range. The velocity offset creates a 2–4× brightness multiplier in this range. Above 5000 Hz, velocity response to timbre becomes negligible.
+
+---
+
+### OVERTONE — The Nautilus Verses
+
+#### OVER-I: The Constant Is the Character
+*2026-03-20*
+
+> Four mathematical constants, four different personalities. Pi creates alien inharmonicity — stretched thirds and wrong octaves. E creates convergence — all partials slowly arriving at the same address. Phi creates Fibonacci architecture — self-similar and golden. Sqrt2 creates tritone logic — every partial a half-octave relationship away from the last. The engine is not one instrument. It is four.
+
+**Application:** Before designing any OVERTONE preset, choose the constant deliberately. Pi for tension and metallicity. E for chorus-from-mathematics. Phi for natural architecture. Sqrt2 for ambiguous, floating harmony. The constant is not a color knob — it is a different physics.
+
+#### OVER-II: Depth Is a Journey, Not a Dial
+*2026-03-20*
+
+> Depth 0 is the rational approximation: the shell's innermost chamber. Depth 7 is the irrational limit: the shell fully extended. Every step between is a new rational approximation — a partial that was almost right becoming slightly more wrong, then more wrong, then arriving at the transcendent. The sound design lives in the journey between 0 and 7, not at either end alone.
+
+**Application:** Use LFO1 with very slow rates (0.01–0.05 Hz) to let the engine walk through its convergent sequence in real time. The listener experiences the Nautilus growing. macroDepth sweep is a macro-scale journey control: the audience should feel the mathematics unfolding, not just hear a parameter change.
+
+#### OVER-III: The Euler Cluster — Convergence as Texture
+*2026-03-20*
+
+> E constant at high depth is unlike any other constant: its convergents cluster toward the same ratio (e/2 ≈ 1.359), and at depth 7 all eight partials inhabit near-identical frequency space. The result is not spread — it is near-unison beating. Eight mathematically related sine waves in a slow, irrational chorus with no LFO, no modulation, no choreography. Pure mathematical consequence as sound.
+
+**Application:** E constant + depth 7 + equal partial amplitudes + no LFO modulation creates a texture that breathes from within. Add high filter resonance (filterRes=0.6–0.7) to emphasize the clustering. Use as an atmosphere layer under melodic material — the beating locks to nothing and everything.
+
+#### OVER-IV: Velocity as Spectral Evolution
+*2026-03-20*
+
+> At velBright=1.0, velocity does not control volume. It controls the entire spectral architecture of the sound. Soft playing produces a pure sine fundamental. Hard playing opens all eight partials simultaneously. The instrument transforms from one thing to another through touch. This is D001 realized at its fullest: velocity shapes timbre, not just amplitude.
+
+**Application:** Design Foundation patches where partials 3–7 are at 0.0 and velBright=1.0. Play pp then fff. The pp version is a whisper. The fff version is a full spectral chord. No filter envelope, no modulation — only the composer's hand.
+
+#### OVER-V: The Resonator Is a Second Instrument
+*2026-03-20*
+
+> The allpass resonator tuned to the fundamental is not a subtle enhancement — it is a second voice. At over_resoMix=0.9, the Schroeder allpass creates a physically-modeled resonant body that sounds before the additive partials have fully bloomed. You hear the cavity, then the overtones fill it. Two synthesis methods — physical resonance and mathematical additivity — in the same note.
+
+**Application:** For pluck and bell textures: fast attack (0.001s), moderate decay (0.3–0.6s), resoMix=0.8–0.9. The attack is dominated by the allpass resonator's ring; the body is the additive partials. The Nautilus shell amplifies sound through its geometry — this is that effect.
+
+#### OVER-VI: The Lonely Shimmer
+*2026-03-20*
+
+> The COUPLING macro activates autonomous partial shimmer even without a coupling partner. Each of partials 4–7 receives an independent amplitude flutter, offset by π/4 radians from its neighbor — spectral iridescence that requires nothing but the parameter. The Nautilus does not need another creature to catch light. Its shell geometry creates iridescence from within.
+
+**Application:** In solo patches, use over_macroCoupling=0.6–0.9 to activate self-shimmer. Set upper partials (4–7) louder than default so the effect is audible. Name these presets to reflect the self-sufficiency.
+
+---
+
+### ORGANISM — The Coral Colony Verses
+
+#### ORG-I: The Biologist's Instrument
+*2026-03-20*
+
+> Every other synth asks what you want it to sound like. ORGANISM asks what rules you want life to follow. The sound that emerges is not designed — it is computed. When you change ORGANISM's rule, you change the law of physics inside a universe of 16 cells. Rule 30 generates cryptographic randomness. Rule 90 draws the Sierpinski triangle. Rule 110 is Turing-complete. Rule 184 models highway traffic.
+
+**Application:** Do not approach ORGANISM as a tone generator. Approach it as a biologist setting up an experiment. Choose a rule based on its mathematical identity, choose a seed as your initial condition, and observe. The sound is what it must be, not what you chose.
+
+#### ORG-II: The Seed-Note Product Space
+*2026-03-20*
+
+> MIDI note C4 and MIDI note D4 are not the same organism with a different pitch. They are different organisms — seed is `param XOR (noteNumber × 257)`, so every semitone begins from a different evolutionary history. A single ORGANISM preset contains 128 distinct organisms, one per MIDI note. The fleet has explored approximately one of them.
+
+**Application:** When evaluating an ORGANISM preset, play across 2+ octaves. You are not checking pitch tracking — you are exploring 128 different cellular evolution trajectories. A preset that sounds mediocre on C4 may be extraordinary on F#3.
+
+#### ORG-III: The Freeze Is Not a Bug
+*2026-03-20*
+
+> When org_freeze=1, the automaton stops. A frozen state is a **timbral coordinate**: the 16-bit cellular state at the moment of freeze defines the filter position, envelope rate, pitch offset, and reverb send simultaneously. Freeze is how ORGANISM holds a posture. It is not a diagnostic mode.
+
+**Application:** Design presets where freeze is the default (org_freeze=1) and aftertouch releases it. The contrast is maximal expression: stable identity punctuated by biological chaos. Do not treat freeze as a fault mode.
+
+#### ORG-IV: Scope and Rate as a Single Surface
+*2026-03-20*
+
+> org_scope and org_stepRate are a 2D timbral character surface, not two independent parameters. Their combination defines four synthesis archetypes: geological drift (low rate + high scope), slow step (low rate + low scope), continuous modulation (high rate + low scope), smooth animation (high rate + high scope). Changing one without the other produces a character that belongs to none of them.
+
+**Application:** Decide the synthesis archetype first (geological, slow step, continuous modulation, smooth animation), then dial scope and rate together to achieve it.
+
+#### ORG-V: Mutation Changes the Synthesis Mode
+*2026-03-20*
+
+> Below org_mutate=0.15, the engine is a rule-governed synthesizer: deterministic patterns with predictable evolution. Above 0.3, the rule shifts from governing behavior to coloring probability. Above 0.5, mutation dominates and ORGANISM becomes a parametric noise synthesizer where different rules produce different noise textures, not different patterns.
+
+**Application:** Rule 90 + mutation 0.6 produces symmetric noise. Rule 30 + mutation 0.6 produces asymmetric noise with right-shifted bias. These are legitimate noise synthesis techniques. High mutation is not "broken" evolution — it is a different synthesis mode.
+
+#### ORG-VI: The macroSeed Latch Is a Performance Instrument
+*2026-03-20*
+
+> When macroSeed crosses 0.01, the engine fires a new LCG-derived 16-bit state — but a latch prevents continuous re-seeding. Hold macroSeed above 0.01 for consistent identity. Drop briefly below 0.005 between notes to reset the latch and get a fresh colony. The macro is not a "randomize" button — it is a life trigger. Controlling when it resets controls when new life begins.
+
+**Application:** Map macroSeed to mod wheel in performance. Near 0 = continuous organism. Swept to 0.7+ = new organism on each note. The entire sonic personality of the preset changes between these two states.

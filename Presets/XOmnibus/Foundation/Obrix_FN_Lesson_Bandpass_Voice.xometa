@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Lesson Bandpass Voice",
+  "name": "Resonant Window",
   "mood": "Foundation",
   "engines": [
     "Obrix"

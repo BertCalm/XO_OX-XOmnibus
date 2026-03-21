@@ -1,18 +1,20 @@
 {
   "schema_version": 1,
-  "name": "Filter Feedback",
+  "name": "Feedback Coral",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Filter output fed back through tanh saturation. Push feedback up to hear self-oscillation.",
+  "description": "Saw with filter feedback engaged. The coral polyp that feeds itself \u2014 a closed loop of resonance, the filter biting its own output. Pull feedback toward self-oscillation and the coral comes alive.",
   "tags": [
     "lesson",
     "feedback",
     "self-oscillation",
-    "saturation"
+    "saturation",
+    "beginner",
+    "resonance"
   ],
   "macroLabels": [
     "CHARACTER",

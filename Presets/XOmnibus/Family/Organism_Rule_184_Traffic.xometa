@@ -1,0 +1,50 @@
+{
+  "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Rule 184 is the traffic flow rule — models car movement on a highway. Particles (bits) move right, pile up at obstacles. The sonic result is rhythmic pulse trains that jam and flow. Sub-heavy with heavy velocity response. A teaching preset: play legato for traffic flow, staccato for gridlock.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.35,
+    "aggression": 0.52
+  },
+  "engines": ["Organism"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "macros": { "RULE": 0.571, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "mood": "Family",
+  "name": "Rule 184 Traffic",
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 21845,
+      "org_stepRate": 7.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.72,
+      "org_filterCutoff": 2200.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.88,
+      "org_ampAtk": 0.004,
+      "org_ampDec": 0.22,
+      "org_ampSus": 0.58,
+      "org_ampRel": 1.618,
+      "org_lfo1Rate": 0.8,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.55,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.22,
+      "org_macroRule": 0.571,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["rule184", "traffic", "rhythmic", "teaching", "sub-heavy", "family", "velocity"],
+  "version": "1.0"
+}

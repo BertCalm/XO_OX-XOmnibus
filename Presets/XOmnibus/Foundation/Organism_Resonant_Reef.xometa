@@ -1,0 +1,50 @@
+{
+  "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "High resonance (0.78) running through Rule 90 (the symmetric Sierpinski rule). The filter shriek at high Q transforms the CA rhythm into harmonic overtone sequences — like coral polyps singing in unison. Each automaton step fires the resonant peak into a new frequency.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.35,
+    "movement": 0.55,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.58
+  },
+  "engines": ["Organism"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "macros": { "RULE": 0.143, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "mood": "Foundation",
+  "name": "Resonant Reef",
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 1,
+      "org_stepRate": 6.0,
+      "org_scope": 3,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.15,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.78,
+      "org_velCutoff": 0.7,
+      "org_ampAtk": 0.005,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.55,
+      "org_ampRel": 0.8,
+      "org_lfo1Rate": 0.25,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.18,
+      "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.143,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["resonance", "rule90", "sierpinski", "shriek", "bright", "harmonic"],
+  "version": "1.0"
+}

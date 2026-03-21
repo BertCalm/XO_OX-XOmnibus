@@ -1,18 +1,20 @@
 {
   "schema_version": 1,
-  "name": "Chorus Width",
+  "name": "Tide Shift",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chorus widens the sound across stereo. A single saw becomes an ensemble.",
+  "description": "Saw through LP, Chorus FX active. The tide shifting \u2014 stereo movement that breathes in and out, the first impression of the ocean being wider than one voice.",
   "tags": [
     "lesson",
     "chorus",
     "stereo",
-    "width"
+    "width",
+    "beginner",
+    "spatial"
   ],
   "macroLabels": [
     "CHARACTER",

@@ -1,0 +1,50 @@
+{
+  "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "SEED macro set to 0.7 — the latch mechanism fires on every note, injecting a new LCG-derived 16-bit state. Each new note is a completely different organism. Same rule, same parameters, infinite timbral variety. The genesis engine: one seed, infinite coral.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.5,
+    "movement": 0.62,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.28
+  },
+  "engines": ["Organism"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "macros": { "RULE": 0.5, "SEED": 0.7, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "mood": "Submerged",
+  "name": "Seed Gesture",
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 12345,
+      "org_stepRate": 5.0,
+      "org_scope": 8,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.55,
+      "org_filterCutoff": 1800.0,
+      "org_filterRes": 0.35,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.05,
+      "org_ampDec": 0.6,
+      "org_ampSus": 0.75,
+      "org_ampRel": 1.618,
+      "org_lfo1Rate": 0.15,
+      "org_lfo1Depth": 0.18,
+      "org_lfo2Rate": 0.22,
+      "org_lfo2Depth": 0.15,
+      "org_reverbMix": 0.45,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.7,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["seed", "generative", "infinite-variety", "latch", "submerged", "coral", "golden-release"],
+  "version": "1.0"
+}

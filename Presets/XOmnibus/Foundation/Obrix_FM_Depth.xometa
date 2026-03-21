@@ -1,18 +1,19 @@
 {
   "schema_version": 1,
-  "name": "FM Depth",
+  "name": "Harmonic Undertow",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Source 1 frequency-modulates Source 2. Velocity controls how much FM.",
+  "description": "Sine source with fmDepth=0.3 \u2014 the undertow beneath the surface frequency. Carrier becomes modulator becomes carrier again, a gentle harmonic current pulling at the fundamental.",
   "tags": [
     "lesson",
     "fm",
-    "frequency-modulation",
-    "harmonic"
+    "harmonic",
+    "beginner",
+    "modulation"
   ],
   "macroLabels": [
     "CHARACTER",

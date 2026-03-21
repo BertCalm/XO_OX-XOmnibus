@@ -1,0 +1,52 @@
+{
+  "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Depth=0, Phi constant: all 8 partials locked to pure Fibonacci integer ratios (1/1, 2/1, 3/2, 5/3, 8/5, 13/8, 21/13, 34/21). The engine in its most rational state — clean harmonic series. A teaching preset: this is the shell before it spirals.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.75,
+    "movement": 0.08,
+    "density": 0.65,
+    "space": 0.15,
+    "aggression": 0.0
+  },
+  "engines": ["Overtone"],
+  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "macros": { "DEPTH": 0.0, "COLOR": 0.35, "COUPLING": 0.0, "SPACE": 0.1 },
+  "mood": "Foundation",
+  "name": "Ratio Zero",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2,
+      "over_depth": 0.0,
+      "over_partial0": 1.0,
+      "over_partial1": 0.5,
+      "over_partial2": 0.333333,
+      "over_partial3": 0.25,
+      "over_partial4": 0.2,
+      "over_partial5": 0.166667,
+      "over_partial6": 0.142857,
+      "over_partial7": 0.125,
+      "over_velBright": 0.3,
+      "over_filterCutoff": 8000.0,
+      "over_filterRes": 0.25,
+      "over_ampAtk": 0.015,
+      "over_ampDec": 0.4,
+      "over_ampSus": 0.72,
+      "over_ampRel": 1.618,
+      "over_lfo1Rate": 0.01,
+      "over_lfo1Depth": 0.05,
+      "over_lfo2Rate": 0.03,
+      "over_lfo2Depth": 0.04,
+      "over_resoMix": 0.2,
+      "over_macroDepth": 0.0,
+      "over_macroColor": 0.35,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.1
+    }
+  },
+  "schema_version": 1,
+  "tags": ["foundation", "rational", "harmonic", "fibonacci", "teaching", "pure"],
+  "version": "1.0"
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Lesson Air Tilt",
+  "name": "Atmosphere Tilt",
   "mood": "Foundation",
   "engines": [
     "Obrix"

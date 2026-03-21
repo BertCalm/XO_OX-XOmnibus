@@ -1,0 +1,50 @@
+{
+  "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Both LFOs at floor rate (0.01 Hz = one cycle per 100 seconds). The automaton breathes over geological time. Rule 18 (sparse, orderly patterns) at maximum scope (16) — every parameter change is a century-long exhale. This is D005 made literal: the engine that cannot breathe is a photograph.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.12,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.03
+  },
+  "engines": ["Organism"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "macros": { "RULE": 0.714, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "mood": "Atmosphere",
+  "name": "Deep Breath",
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 32767,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.65,
+      "org_filterCutoff": 900.0,
+      "org_filterRes": 0.12,
+      "org_velCutoff": 0.35,
+      "org_ampAtk": 2.0,
+      "org_ampDec": 2.5,
+      "org_ampSus": 0.9,
+      "org_ampRel": 5.0,
+      "org_lfo1Rate": 0.01,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.01,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.55,
+      "org_macroRule": 0.714,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["drone", "breathing", "D005", "geological", "rule18", "ambient", "lfo-floor"],
+  "version": "1.0"
+}
