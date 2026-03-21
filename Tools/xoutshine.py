@@ -932,10 +932,75 @@ def create_velocity_layers(channels: List[List[float]], sr: int,
     return layers
 
 
+def generate_round_robin_dna(channels: List[List[float]], sr: int,
+                             num_variations: int = 4,
+                             variation_width: float = 1.0,
+                             saturation_intensity: float = 0.03) -> List[List[List[float]]]:
+    """Generate round-robin variations with DNA-driven parameters.
+
+    variation_width scales the pitch/gain variation range (0.5=subtle, 1.5=wide).
+    saturation_intensity controls the max saturation drive per variation.
+    """
+    variations = [channels]  # original is variation 0
+
+    n = len(channels[0]) if channels and channels[0] else 0
+    step = max(1, n // 16)
+    seed_data = (n,) + tuple(
+        round(channels[0][i * step] * 1_000_000)
+        for i in range(min(16, n // max(1, step)))
+    )
+    rng = random.Random(hash(seed_data))
+
+    for v in range(1, num_variations):
+        varied = []
+        for ch in channels:
+            new_ch = list(ch)
+            n = len(new_ch)
+
+            # Micro-pitch shift scaled by variation_width
+            cents = rng.uniform(-5 * variation_width, 5 * variation_width)
+            ratio = 2 ** (cents / 1200)
+            if abs(ratio - 1.0) > 0.0001:
+                resampled = []
+                for i in range(n):
+                    src_idx = i * ratio
+                    idx0 = int(src_idx)
+                    frac = src_idx - idx0
+                    if idx0 + 1 < n:
+                        resampled.append(new_ch[idx0] * (1 - frac) + new_ch[idx0 + 1] * frac)
+                    elif idx0 < n:
+                        resampled.append(new_ch[idx0])
+                    else:
+                        resampled.append(0.0)
+                new_ch = resampled[:n]
+
+            # Micro-gain variation scaled by variation_width
+            gain_db = rng.uniform(-0.5 * variation_width, 0.5 * variation_width)
+            gain = 10 ** (gain_db / 20)
+            new_ch = [s * gain for s in new_ch]
+
+            # Saturation variation driven by DNA intensity
+            sat_amount = rng.uniform(0.0, saturation_intensity)
+            if sat_amount > 0.005:
+                new_ch = [math.tanh(s * (1.0 + sat_amount)) / math.tanh(1.0 + sat_amount)
+                          for s in new_ch]
+
+            varied.append(new_ch)
+        variations.append(varied)
+
+    return variations
+
+
 def enhance(samples: List[SampleInfo], work_dir: str,
             num_round_robin: int = 4,
-            num_velocity_layers: int = 4) -> Dict[str, dict]:
-    """Stage 4: Generate velocity layers, round-robin, apply fade guards + DC removal."""
+            num_velocity_layers: int = 4,
+            dna_inherit: bool = True) -> Dict[str, dict]:
+    """Stage 4: Generate velocity layers, round-robin, apply fade guards + DC removal.
+
+    When dna_inherit is True and samples have inferred DNA, enhancement decisions
+    (fade length, saturation, round-robin variation width, loop detection) are
+    shaped by the sample's Sonic DNA fingerprint.
+    """
     enhanced_dir = os.path.join(work_dir, "enhanced")
     os.makedirs(enhanced_dir, exist_ok=True)
 
@@ -950,9 +1015,15 @@ def enhance(samples: List[SampleInfo], work_dir: str,
         base_name = os.path.splitext(s.original_name)[0]
         program_name = base_name[:30]  # Max 30 chars
 
+        # Derive DNA-driven enhancement parameters
+        dna_params = None
+        if dna_inherit and s.dna is not None:
+            dna_params = adjust_enhancement_by_dna(s.dna)
+
         # Apply fade guards and DC removal to original
         remove_dc_offset(channels)
-        apply_fade_guards(channels, sr)
+        fade_out = dna_params.fade_out_ms if dna_params else 10.0
+        apply_fade_guards(channels, sr, fade_out_ms=fade_out)
 
         # Generate velocity layers
         vel_layers = create_velocity_layers(channels, sr, num_velocity_layers)
@@ -960,7 +1031,14 @@ def enhance(samples: List[SampleInfo], work_dir: str,
         # For each velocity layer, generate round-robin variations
         layer_files = []
         for vel_idx, layer_channels in enumerate(vel_layers):
-            rr_variations = generate_round_robin(layer_channels, sr, num_round_robin)
+            if dna_params:
+                rr_variations = generate_round_robin_dna(
+                    layer_channels, sr, num_round_robin,
+                    variation_width=dna_params.rr_variation_width,
+                    saturation_intensity=dna_params.saturation_intensity,
+                )
+            else:
+                rr_variations = generate_round_robin(layer_channels, sr, num_round_robin)
             for rr_idx, rr_channels in enumerate(rr_variations):
                 fname = f"{base_name}__v{vel_idx + 1}__c{rr_idx + 1}.wav"
                 fpath = os.path.join(enhanced_dir, fname)
@@ -980,6 +1058,8 @@ def enhance(samples: List[SampleInfo], work_dir: str,
             "num_velocity_layers": num_velocity_layers,
             "num_round_robin": num_round_robin,
             "sample_rate": sr,
+            "dna": s.dna.to_dict() if s.dna else None,
+            "dna_velocity_curve": dna_params.velocity_curve if dna_params else None,
         }
 
     print(f"  Enhanced {len(programs)} programs ({sum(len(p['layers']) for p in programs.values())} total files)")
@@ -1220,17 +1300,27 @@ def build_xpm_keygroup(prog_name: str, prog: dict,
 
 
 def build_programs(programs: Dict[str, dict], work_dir: str,
-                   velocity_curve: str = "musical") -> str:
-    """Stage 6: Build XPM programs for all enhanced samples."""
+                   velocity_curve: str = "musical",
+                   dna_inherit: bool = True) -> str:
+    """Stage 6: Build XPM programs for all enhanced samples.
+
+    When dna_inherit is True, uses the DNA-selected velocity curve per program
+    instead of the global velocity_curve argument.
+    """
     xpm_dir = os.path.join(work_dir, "programs")
     os.makedirs(xpm_dir, exist_ok=True)
 
     for prog_name, prog in programs.items():
         si = prog["sample_info"]
+        # Use DNA-selected velocity curve if available, else global
+        curve = velocity_curve
+        if dna_inherit and prog.get("dna_velocity_curve"):
+            curve = prog["dna_velocity_curve"]
+
         if si.category in DRUM_CATEGORIES:
-            xpm_content = build_xpm_drum(prog_name, prog, velocity_curve)
+            xpm_content = build_xpm_drum(prog_name, prog, curve)
         else:
-            xpm_content = build_xpm_keygroup(prog_name, prog, velocity_curve)
+            xpm_content = build_xpm_keygroup(prog_name, prog, curve)
 
         xpm_path = os.path.join(xpm_dir, f"{prog_name}.xpm")
         with open(xpm_path, "w", encoding="utf-8") as f:
@@ -1239,6 +1329,53 @@ def build_programs(programs: Dict[str, dict], work_dir: str,
 
     print(f"  Built {len(programs)} XPM programs")
     return xpm_dir
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DNA → .xometa export
+# ─────────────────────────────────────────────────────────────────────────────
+
+def write_xometa_files(programs: Dict[str, dict], work_dir: str) -> List[str]:
+    """Write .xometa preset files with inferred Sonic DNA for each program.
+
+    Returns a list of written .xometa file paths.
+    """
+    xometa_dir = os.path.join(work_dir, "presets")
+    os.makedirs(xometa_dir, exist_ok=True)
+    written = []
+
+    for prog_name, prog in programs.items():
+        dna_dict = prog.get("dna")
+        si = prog.get("sample_info")
+        if si is None:
+            continue
+
+        preset = {
+            "format": "xometa",
+            "version": 1,
+            "name": prog_name,
+            "category": si.category if si else "unknown",
+            "source": "XOutshine",
+            "sample_rate": prog.get("sample_rate", 44100),
+            "velocity_layers": prog.get("num_velocity_layers", 4),
+            "round_robin": prog.get("num_round_robin", 4),
+        }
+
+        if dna_dict:
+            preset["dna"] = dna_dict
+
+        if prog.get("dna_velocity_curve"):
+            preset["velocity_curve"] = prog["dna_velocity_curve"]
+
+        xometa_path = os.path.join(xometa_dir, f"{prog_name}.xometa")
+        with open(xometa_path, "w", encoding="utf-8") as f:
+            json.dump(preset, f, indent=2)
+        written.append(xometa_path)
+        prog["xometa_path"] = xometa_path
+
+    if written:
+        print(f"  Wrote {len(written)} .xometa preset files with DNA")
+    return written
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1270,10 +1407,12 @@ def package_xpn(programs: Dict[str, dict], work_dir: str,
         # Manifest
         zf.write(manifest, "Expansions/Manifest.xml")
 
-        # Programs and samples
+        # Programs, presets, and samples
         for prog_name, prog in programs.items():
             if "xpm_path" in prog:
                 zf.write(prog["xpm_path"], f"Programs/{prog_name}.xpm")
+            if "xometa_path" in prog:
+                zf.write(prog["xometa_path"], f"Presets/{prog_name}.xometa")
             for layer in prog["layers"]:
                 zf.write(layer["path"], f"Samples/{prog_name}/{layer['filename']}")
 
@@ -1293,9 +1432,15 @@ def package_folder(programs: Dict[str, dict], work_dir: str,
     samples_dir = os.path.join(output_path, "Samples")
     os.makedirs(programs_dir, exist_ok=True)
 
+    presets_dir = os.path.join(output_path, "Presets")
+
     for prog_name, prog in programs.items():
         if "xpm_path" in prog:
             shutil.copy2(prog["xpm_path"], os.path.join(programs_dir, f"{prog_name}.xpm"))
+
+        if "xometa_path" in prog:
+            os.makedirs(presets_dir, exist_ok=True)
+            shutil.copy2(prog["xometa_path"], os.path.join(presets_dir, f"{prog_name}.xometa"))
 
         prog_samples_dir = os.path.join(samples_dir, prog_name)
         os.makedirs(prog_samples_dir, exist_ok=True)

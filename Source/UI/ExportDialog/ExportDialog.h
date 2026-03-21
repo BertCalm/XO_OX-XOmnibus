@@ -7,6 +7,7 @@
 #include "../../Export/XDrip.h"
 #include "../../Core/PresetManager.h"
 #include "../../Core/EngineRegistry.h"
+#include "../../Core/MegaCouplingMatrix.h"
 #include "../XOmnibusEditor.h"
 
 namespace xomnibus {
@@ -28,8 +29,9 @@ class ExportDialog : public juce::Component,
 {
 public:
     ExportDialog(PresetManager& pm,
-                 juce::AudioProcessorValueTreeState* apvts = nullptr)
-        : presetManager(pm), dialogApvts(apvts)
+                 juce::AudioProcessorValueTreeState* apvts = nullptr,
+                 MegaCouplingMatrix* couplingMatrix = nullptr)
+        : presetManager(pm), dialogApvts(apvts), liveCouplingMatrix(couplingMatrix)
     {
         setWantsKeyboardFocus(true);
         A11y::setup(*this, "XPN Export", "Export presets as MPC-compatible expansion pack");
@@ -37,12 +39,13 @@ public:
         buildPresetSelection();
         buildPreviewSection();
         buildRenderSettings();
+        buildEntangledMode();
         buildBundleConfig();
         buildSizeEstimate();
         buildProgressSection();
         buildActionButtons();
 
-        setSize(520, 740);
+        setSize(520, 780);
     }
 
     ~ExportDialog() override
@@ -235,12 +238,13 @@ public:
 
 private:
 
-    static constexpr int kHeaderH          = 36;
-    static constexpr int kPresetSectionH   = 140;
-    static constexpr int kPreviewSectionH  = 56;
-    static constexpr int kSettingsSectionH  = 100;
-    static constexpr int kBundleSectionH   = 122;
-    static constexpr int kProgressH        = 44;
+    static constexpr int kHeaderH            = 36;
+    static constexpr int kPresetSectionH     = 140;
+    static constexpr int kPreviewSectionH    = 56;
+    static constexpr int kSettingsSectionH   = 100;
+    static constexpr int kEntangledSectionH  = 40;
+    static constexpr int kBundleSectionH     = 122;
+    static constexpr int kProgressH          = 44;
 
     PresetManager& presetManager;
     juce::AudioProcessorValueTreeState* dialogApvts = nullptr;
@@ -887,9 +891,38 @@ private:
             "Cancelling export", juce::AccessibilityHandler::AnnouncementPriority::medium);
     }
 
-    // Timer callback for UI updates during export
+    // Timer callback for UI updates during export and preview
     void timerCallback() override
     {
+        // Poll XDrip preview state
+        auto dripState = previewDrip.getState();
+        if (dripState == XDrip::State::Ready && cachedThumbnail.empty())
+        {
+            cachedThumbnail = previewDrip.getThumbnail();
+            previewPlayBtn.setButtonText(">");
+            repaint();
+
+            juce::AccessibilityHandler::postAnnouncement(
+                "Preview ready", juce::AccessibilityHandler::AnnouncementPriority::medium);
+        }
+        else if (dripState == XDrip::State::Rendering)
+        {
+            repaint(); // Animate the rendering indicator
+        }
+
+        // Repaint during playback for position indicator
+        if (previewPlaying)
+            repaint();
+
+        // Stop timer if nothing is active
+        if (!exporting && !previewPlaying && dripState != XDrip::State::Rendering)
+        {
+            // Only stop if export is also not pending finish
+            if (!exportFinished.load())
+                stopTimer();
+        }
+
+        // Export progress
         {
             std::lock_guard<std::mutex> lock(progressTextMutex);
             progressLabel.setText(lastProgressText, juce::dontSendNotification);
