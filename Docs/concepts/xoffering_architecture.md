@@ -170,6 +170,9 @@ Each voice slot has a fixed drum type but the synthesis parameters shape the cha
 | `ofr_lfo2Depth` | 0.0-1.0 | 0.0 | LFO2 depth → amplitude (for swing/pump) |
 | `ofr_aftertouch` | 0.0-1.0 | 0.3 | Aftertouch → texture intensity |
 | `ofr_modWheel` | 0.0-1.0 | 0.5 | Mod wheel → curiosity drive (twist the dig deeper) |
+| `ofr_envFilterAmt` | -1.0 to 1.0 | 0.5 | Filter envelope amount (positive = brighter on attack). Velocity-scaled via velToSnap. (Mod slot 3) |
+| `ofr_velToAttack` | 0.0-1.0 | 0.2 | Velocity → envelope attack time (harder = snappier). (Mod slot 4) |
+| `ofr_envToPitch` | 0.0-1.0 | 0.0 | Envelope → pitch modulation depth (subtle vibrato/pitch drift on sustained hits). (Mod slot 7) |
 
 ### Master
 
@@ -178,7 +181,22 @@ Each voice slot has a fixed drum type but the synthesis parameters shape the cha
 | `ofr_masterLevel` | 0.0-1.0 | 0.75 | Master output level |
 | `ofr_masterWidth` | 0.0-1.0 | 0.5 | Stereo width (0=mono, 1=wide) |
 
-**Total: 32 global params + 48 per-voice params = 80 params**
+**Total: 35 global params + 48 per-voice params = 83 params**
+
+### 8-Slot Mod Matrix (D002 Compliance)
+
+| Slot | Source | Destination | Param | Doctrine |
+|------|--------|-------------|-------|----------|
+| 1 | LFO1 | Filter Cutoff (city chain) | `ofr_lfo1Rate/Depth` | D002 + D005 |
+| 2 | LFO2 | Amplitude (groove pump) | `ofr_lfo2Rate/Depth` | D002 + D005 |
+| 3 | Envelope | Filter (vel-scaled brightness) | `ofr_envFilterAmt` | D001 + D002 |
+| 4 | Velocity | Attack time (harder = snappier) | `ofr_velToAttack` | D001 |
+| 5 | Mod Wheel | Curiosity drive | `ofr_modWheel` | D006 |
+| 6 | Aftertouch | Texture intensity | `ofr_aftertouch` | D006 |
+| 7 | Envelope | Pitch (vibrato/drift) | `ofr_envToPitch` | D002 |
+| 8 | Velocity | Transient snap + body | `ofr_velToSnap/Body` | D001 |
+
+All 8 slots active. D001, D002, D005, D006 fully covered.
 
 ---
 
@@ -612,6 +630,7 @@ struct OfferingParamSnapshot {
     float lfo1Rate, lfo1Depth, lfo2Rate, lfo2Depth;
     int   lfo1Shape;
     float aftertouch, modWheel;
+    float envFilterAmt, velToAttack, envToPitch;  // mod matrix slots 3, 4, 7
     float masterLevel, masterWidth;
 
     // Per-voice params (6 × 8 = 48) — cached once per processBlock
@@ -620,7 +639,7 @@ struct OfferingParamSnapshot {
         float tune, decay, body, level, pan;
     } voice[8];
 };
-// Total: 80 atomic reads per block, zero per sample.
+// Total: 83 atomic reads per block, zero per sample.
 ```
 
 ### Denormal Flush Map
