@@ -17,6 +17,12 @@ This directory contains Claude Code skill files for working efficiently with the
 | [engine-health-check](./engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine compliance check + coupling quality + known bugs | MEDIUM |
 | [dna-designer](./dna-designer/SKILL.md) | `/dna-designer` | Assign accurate 6D Sonic DNA values — calibrated per dimension per engine | MEDIUM |
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
+| [sro-optimizer](./sro-optimizer/SKILL.md) | `/sro-optimizer` | Spectral Resonance Object CPU optimization — audit, integrate SilenceGate, fleet-wide sweep | MEDIUM |
+| [preset-auditor](./preset-auditor/SKILL.md) | `/preset-auditor` | Quality gate for existing presets — DNA coverage, macro responsiveness, D004 compliance | HIGH |
+| [coupling-debugger](./coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose and fix broken or inaudible coupling routes | HIGH |
+| [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
+| [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
+| [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -45,14 +51,19 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
 | Building a new engine from scratch | `/new-xo-engine` (see `Docs/xomnibus_new_engine_process.md`) |
+| Auditing existing preset quality | `/preset-auditor` |
+| Coupling route not working/inaudible | `/coupling-debugger` |
+| Full fleet QA / pre-release health check | `/master-audit` |
+| Stale counts, broken IDs, governance gaps | `/repo-audit` |
+| CPU optimization for an engine | `/sro-optimizer` |
 
 ---
 
 ## Related Documentation
 
-- `Docs/coupling_audit.md` — Coupling quality scores for all 24 engines
+- `Docs/coupling_audit.md` — Coupling quality scores for all engines
 - `Docs/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
-- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (34 of 34 engines)
+- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (38 of 42 engines; OBRIX/ORBWEAVE/OVERTONE/ORGANISM pending)
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
 - `Docs/how_to_write_a_xomnibus_adapter.md` — Adapter writing guide
 - `Docs/xomnibus_new_engine_process.md` — New engine development process

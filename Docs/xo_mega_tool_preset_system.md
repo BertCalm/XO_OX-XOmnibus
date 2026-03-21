@@ -1,5 +1,9 @@
 # XO_OX Mega-Tool Preset System Specification
 
+> ⚠️ **SUPERSEDED — DO NOT USE**
+> This document was replaced by `Docs/xomnibus_preset_spec_for_builder.md`.
+> Kept for historical reference only. Content may be outdated or incorrect.
+
 **Version:** 1.0
 **Author:** XO_OX Designs
 **Date:** 2026-03-08

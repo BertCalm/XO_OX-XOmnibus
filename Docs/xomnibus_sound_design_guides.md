@@ -1,6 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 38 of 38 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
+*Covers 38 of 42 registered engines: features, key parameters, coupling strategies, and recommended pairings. Engines OBRIX, ORBWEAVE, OVERTONE, ORGANISM (added 2026-03-19 to 2026-03-20) pending guide expansion.*
 
 ---
 

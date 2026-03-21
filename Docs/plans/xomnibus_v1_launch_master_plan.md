@@ -1,3 +1,5 @@
+> **STATUS: ACTIVE** | Operational launch timeline. Pre-launch gates defined; L+0 date TBD.
+
 # XOmnibus V1 — Launch Coordinator's Master Timeline
 
 **Document type:** Operational master plan

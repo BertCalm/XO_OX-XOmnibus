@@ -2,7 +2,7 @@
 
 **A free, open-source multi-engine synthesizer platform by XO_OX Designs.**
 
-43 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
+42 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
 
 ## Engines
 
@@ -59,7 +59,7 @@
 
 - **4-slot engine gallery** — load any combination of engines
 - **Cross-engine coupling** — 14 coupling types (including KnotTopology) let engines modulate each other
-- **~16,000+ factory presets** across 8 mood categories
+- **~21,000+ factory presets** across 8 mood categories
 - **PlaySurface** — unified 4-zone playing interface (Pad, Fretless, Drum modes)
 - **6D Sonic DNA** — every preset tagged with brightness, warmth, movement, density, space, aggression
 - **4 performance macros** per engine
