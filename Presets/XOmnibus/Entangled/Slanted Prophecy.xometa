@@ -58,10 +58,10 @@
       "oblq_refraction": 0.6
     },
     "Oracle": {
-      "orac_ampAttack": 0.03,
-      "orac_ampRelease": 1.5,
-      "orac_filterCutoff": 2800.0,
-      "orac_filterReso": 0.3
+      "oracle_ampAttack": 0.03,
+      "oracle_ampRelease": 1.5,
+      "oracle_filterCutoff": 2800.0,
+      "oracle_filterReso": 0.3
     }
   },
   "schema_version": 1,

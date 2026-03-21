@@ -40,13 +40,13 @@
   "name": "Vision Drum",
   "parameters": {
     "Onset": {
-      "onset_aggression": 0.75,
-      "onset_brightness": 0.572,
-      "onset_density": 0.879,
-      "onset_level": 0.739,
-      "onset_movement": 0.757,
-      "onset_space": 0.387,
-      "onset_warmth": 0.492
+      "perc_aggression": 0.75,
+      "perc_brightness": 0.572,
+      "perc_density": 0.879,
+      "perc_level": 0.739,
+      "perc_movement": 0.757,
+      "perc_space": 0.387,
+      "perc_warmth": 0.492
     },
     "Oracle": {
       "oracle_aggression": 0.381,

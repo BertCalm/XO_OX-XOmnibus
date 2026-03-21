@@ -32,13 +32,13 @@
   "name": "Origami Shadow",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.5,
-      "ori_macro_couple": 0.455,
-      "ori_macro_fold": 0.2661,
-      "ori_macro_space": 0.6785,
-      "ori_macro_tension": 0.7826,
-      "ori_outputLevel": 0.85
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.5,
+      "origami_macro_couple": 0.455,
+      "origami_macro_fold": 0.2661,
+      "origami_macro_space": 0.6785,
+      "origami_macro_tension": 0.7826,
+      "origami_outputLevel": 0.85
     }
   },
   "schema_version": 1,

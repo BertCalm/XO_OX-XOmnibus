@@ -26,13 +26,13 @@
   "name": "White Paper Ignite",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.104,
-      "ori_macro_couple": 0.392,
-      "ori_macro_fold": 0.28,
-      "ori_macro_space": 0.606,
-      "ori_macro_tension": 0.793,
-      "ori_outputLevel": 0.864
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.104,
+      "origami_macro_couple": 0.392,
+      "origami_macro_fold": 0.28,
+      "origami_macro_space": 0.606,
+      "origami_macro_tension": 0.793,
+      "origami_outputLevel": 0.864
     }
   },
   "schema_version": 1,

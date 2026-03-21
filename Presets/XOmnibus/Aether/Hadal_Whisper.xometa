@@ -27,10 +27,10 @@
   "name": "Hadal Whisper",
   "parameters": {
     "Oceanic": {
-      "oceanic_macro_character": 0.36,
-      "oceanic_macro_coupling": 0.41,
-      "oceanic_macro_movement": 0.3,
-      "oceanic_macro_space": 0.97
+      "ocean_macro_character": 0.36,
+      "ocean_macro_coupling": 0.41,
+      "ocean_macro_movement": 0.3,
+      "ocean_macro_space": 0.97
     }
   },
   "schema_version": 1,

@@ -58,10 +58,10 @@
       "oblq_refraction": 0.6
     },
     "Onset": {
-      "onset_ampAttack": 0.03,
-      "onset_ampRelease": 1.5,
-      "onset_filterCutoff": 2800.0,
-      "onset_filterReso": 0.3
+      "perc_ampAttack": 0.03,
+      "perc_ampRelease": 1.5,
+      "perc_filterCutoff": 2800.0,
+      "perc_filterReso": 0.3
     }
   },
   "schema_version": 1,

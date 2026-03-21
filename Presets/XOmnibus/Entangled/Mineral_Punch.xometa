@@ -49,13 +49,13 @@
       "obsidian_warmth": 0.221
     },
     "Onset": {
-      "onset_aggression": 0.716,
-      "onset_brightness": 0.566,
-      "onset_density": 0.821,
-      "onset_level": 0.766,
-      "onset_movement": 0.627,
-      "onset_space": 0.302,
-      "onset_warmth": 0.516
+      "perc_aggression": 0.716,
+      "perc_brightness": 0.566,
+      "perc_density": 0.821,
+      "perc_level": 0.766,
+      "perc_movement": 0.627,
+      "perc_space": 0.302,
+      "perc_warmth": 0.516
     }
   },
   "schema_version": 1,

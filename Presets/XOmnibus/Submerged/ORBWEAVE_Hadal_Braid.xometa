@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Submerged topology: Square strands in a Figure-Eight knot at maximum braid depth, filtered through a Band Pass at 280 Hz with high resonance. The alternating over/under crossing pattern of the Figure-Eight creates asymmetric spectral beating — not the smooth phase drift of detuning but a lurching, uneven rhythm from the coupling matrix's alternating signs (+0.6, -0.4). LFO1 at 0.02 Hz on filter cutoff shifts the resonant peak glacially. The Hadal zone: topology under extreme pressure.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.88,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.65,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Hadal Braid",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 3,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.95,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 280.0,
+      "weave_filterReso": 0.62,
+      "weave_filterType": 2,
+      "weave_ampA": 0.5,
+      "weave_ampD": 1.2,
+      "weave_ampS": 0.85,
+      "weave_ampR": 4.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.22,
+      "weave_lfo1Rate": 0.02,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": 0.12,
+      "weave_lfo2Rate": 0.05,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.55,
+      "weave_fx1Param": 0.85,
+      "weave_fx2Type": 1,
+      "weave_fx2Mix": 0.18,
+      "weave_fx2Param": 0.7,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.72,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "submerged",
+    "figure-eight",
+    "band-pass",
+    "deep",
+    "pressure",
+    "square",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

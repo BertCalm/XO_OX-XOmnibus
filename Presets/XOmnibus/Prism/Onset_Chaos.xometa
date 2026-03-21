@@ -32,13 +32,13 @@
   "name": "Onset Chaos",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.893,
-      "onset_macro_mutate": 0.6267,
-      "onset_macro_punch": 0.885,
-      "onset_macro_space": 0.6347,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.893,
+      "perc_macro_mutate": 0.6267,
+      "perc_macro_punch": 0.885,
+      "perc_macro_space": 0.6347,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

@@ -40,13 +40,13 @@
   "name": "Clear Slant",
   "parameters": {
     "Oblique": {
-      "oblique_aggression": 0.425,
-      "oblique_brightness": 0.545,
-      "oblique_density": 0.615,
-      "oblique_level": 0.822,
-      "oblique_movement": 0.504,
-      "oblique_space": 0.644,
-      "oblique_warmth": 0.579
+      "oblq_aggression": 0.425,
+      "oblq_brightness": 0.545,
+      "oblq_density": 0.615,
+      "oblq_level": 0.822,
+      "oblq_movement": 0.504,
+      "oblq_space": 0.644,
+      "oblq_warmth": 0.579
     },
     "Obsidian": {
       "obsidian_aggression": 0.159,

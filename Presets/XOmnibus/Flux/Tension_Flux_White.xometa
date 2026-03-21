@@ -26,13 +26,13 @@
   "name": "Tension Flux White",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.395,
-      "ori_macro_couple": 0.093,
-      "ori_macro_fold": 0.386,
-      "ori_macro_space": 0.536,
-      "ori_macro_tension": 0.616,
-      "ori_outputLevel": 0.782
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.395,
+      "origami_macro_couple": 0.093,
+      "origami_macro_fold": 0.386,
+      "origami_macro_space": 0.536,
+      "origami_macro_tension": 0.616,
+      "origami_outputLevel": 0.782
     }
   },
   "schema_version": 1,

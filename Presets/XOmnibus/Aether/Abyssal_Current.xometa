@@ -27,10 +27,10 @@
   "name": "Abyssal Current",
   "parameters": {
     "Oceanic": {
-      "oceanic_macro_character": 0.42,
-      "oceanic_macro_coupling": 0.44,
-      "oceanic_macro_movement": 0.3,
-      "oceanic_macro_space": 0.93
+      "ocean_macro_character": 0.42,
+      "ocean_macro_coupling": 0.44,
+      "ocean_macro_movement": 0.3,
+      "ocean_macro_space": 0.93
     }
   },
   "schema_version": 1,

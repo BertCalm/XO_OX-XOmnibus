@@ -36,13 +36,13 @@
   "name": "Snap Crisp",
   "parameters": {
     "Origami": {
-      "ori_aggression": 0.587,
-      "ori_brightness": 0.67,
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.79,
-      "ori_outputLevel": 0.8,
-      "ori_outputPan": 0.02,
-      "ori_warmth": 0.486
+      "origami_aggression": 0.587,
+      "origami_brightness": 0.67,
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.79,
+      "origami_outputLevel": 0.8,
+      "origami_outputPan": 0.02,
+      "origami_warmth": 0.486
     },
     "Overbite": {
       "poss_aggression": 0.672,

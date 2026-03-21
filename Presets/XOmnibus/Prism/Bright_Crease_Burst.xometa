@@ -26,13 +26,13 @@
   "name": "Bright Crease Burst",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.182,
-      "ori_macro_couple": 0.279,
-      "ori_macro_fold": 0.273,
-      "ori_macro_space": 0.662,
-      "ori_macro_tension": 0.627,
-      "ori_outputLevel": 0.848
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.182,
+      "origami_macro_couple": 0.279,
+      "origami_macro_fold": 0.273,
+      "origami_macro_space": 0.662,
+      "origami_macro_tension": 0.627,
+      "origami_outputLevel": 0.848
     }
   },
   "schema_version": 1,

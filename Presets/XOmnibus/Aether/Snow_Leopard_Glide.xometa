@@ -27,10 +27,10 @@
   "name": "Snow Leopard Glide",
   "parameters": {
     "Ocelot": {
-      "ocel_macro_character": 0.33,
-      "ocel_macro_coupling": 0.38,
-      "ocel_macro_movement": 0.28,
-      "ocel_macro_space": 0.87
+      "ocelot_macro_character": 0.33,
+      "ocelot_macro_coupling": 0.38,
+      "ocelot_macro_movement": 0.28,
+      "ocelot_macro_space": 0.87
     }
   },
   "schema_version": 1,

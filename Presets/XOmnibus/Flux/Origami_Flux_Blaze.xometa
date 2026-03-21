@@ -26,13 +26,13 @@
   "name": "Origami Flux Blaze",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.054,
-      "ori_macro_couple": 0.272,
-      "ori_macro_fold": 0.566,
-      "ori_macro_space": 0.33,
-      "ori_macro_tension": 0.73,
-      "ori_outputLevel": 0.812
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.054,
+      "origami_macro_couple": 0.272,
+      "origami_macro_fold": 0.566,
+      "origami_macro_space": 0.33,
+      "origami_macro_tension": 0.73,
+      "origami_outputLevel": 0.812
     }
   },
   "schema_version": 1,

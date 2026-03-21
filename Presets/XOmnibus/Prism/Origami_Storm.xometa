@@ -32,13 +32,13 @@
   "name": "Origami Storm",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.5,
-      "ori_macro_couple": 0.6908,
-      "ori_macro_fold": 0.4382,
-      "ori_macro_space": 0.3934,
-      "ori_macro_tension": 0.7025,
-      "ori_outputLevel": 0.85
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.5,
+      "origami_macro_couple": 0.6908,
+      "origami_macro_fold": 0.4382,
+      "origami_macro_space": 0.3934,
+      "origami_macro_tension": 0.7025,
+      "origami_outputLevel": 0.85
     }
   },
   "schema_version": 1,

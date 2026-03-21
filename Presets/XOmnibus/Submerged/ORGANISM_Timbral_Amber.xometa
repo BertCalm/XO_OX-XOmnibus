@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Rule 150 with freeze=1. The XOR-based symmetric automaton locks at generation 47 — a single beautiful cellular state suspended in time like an insect in amber. Seed 21845 (binary 0101010101010101, perfectly alternating) produces a cellular state that, when frozen, maps cells 0–3 to filter position 0.5, cells 4–7 to amp rate 0.5, cells 8–11 to pitch offset 0.0, cells 12–15 to reverb 0.5. The LFOs breathe alone. The colony is preserved — a timbral photograph of a perfect generation.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.72,
+    "movement": 0.2,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Submerged",
+  "name": "Timbral Amber",
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 21845,
+      "org_stepRate": 4.0,
+      "org_scope": 12,
+      "org_mutate": 0.0,
+      "org_freeze": 1,
+      "org_oscWave": 2,
+      "org_subLevel": 0.52,
+      "org_filterCutoff": 2400.0,
+      "org_filterRes": 0.28,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.55,
+      "org_ampDec": 0.72,
+      "org_ampSus": 0.78,
+      "org_ampRel": 4.2,
+      "org_lfo1Rate": 0.05,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 0.03,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.62,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "submerged",
+    "rule-150",
+    "frozen",
+    "preserved",
+    "amber",
+    "still",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

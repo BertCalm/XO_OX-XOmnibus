@@ -32,13 +32,13 @@
   "name": "Steam Hammer",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.6089,
-      "onset_macro_mutate": 0.62,
-      "onset_macro_punch": 0.9402,
-      "onset_macro_space": 0.7969,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.6089,
+      "perc_macro_mutate": 0.62,
+      "perc_macro_punch": 0.9402,
+      "perc_macro_space": 0.7969,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

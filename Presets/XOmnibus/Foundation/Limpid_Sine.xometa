@@ -32,13 +32,13 @@
   "name": "Limpid Sine",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.9092,
-      "onset_macro_mutate": 0.7616,
-      "onset_macro_punch": 0.4325,
-      "onset_macro_space": 0.8516,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.9092,
+      "perc_macro_mutate": 0.7616,
+      "perc_macro_punch": 0.4325,
+      "perc_macro_space": 0.8516,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

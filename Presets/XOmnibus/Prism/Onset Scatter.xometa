@@ -30,18 +30,18 @@
   "name": "Onset Scatter",
   "parameters": {
     "Onset": {
-      "onset_hihatBrightness": 0.552,
-      "onset_kickTone": 0.325,
-      "onset_level": 0.78,
-      "onset_machine": 0.66,
-      "onset_macroCharacter": 0.455,
-      "onset_macroCoupling": 0.0,
-      "onset_macroMovement": 0.9,
-      "onset_macroSpace": 0.6,
-      "onset_mutate": 0.36,
-      "onset_punch": 0.21,
-      "onset_snareSnap": 0.18,
-      "onset_space": 0.48
+      "perc_hihatBrightness": 0.552,
+      "perc_kickTone": 0.325,
+      "perc_level": 0.78,
+      "perc_machine": 0.66,
+      "perc_macroCharacter": 0.455,
+      "perc_macroCoupling": 0.0,
+      "perc_macroMovement": 0.9,
+      "perc_macroSpace": 0.6,
+      "perc_mutate": 0.36,
+      "perc_punch": 0.21,
+      "perc_snareSnap": 0.18,
+      "perc_space": 0.48
     }
   },
   "schema_version": 1,

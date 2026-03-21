@@ -32,13 +32,13 @@
   "name": "Silt Floor",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.1428,
-      "onset_macro_mutate": 0.6264,
-      "onset_macro_punch": 0.8557,
-      "onset_macro_space": 0.6536,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.1428,
+      "perc_macro_mutate": 0.6264,
+      "perc_macro_punch": 0.8557,
+      "perc_macro_space": 0.6536,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

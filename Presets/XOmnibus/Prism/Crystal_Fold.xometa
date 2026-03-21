@@ -32,13 +32,13 @@
   "name": "Crystal Fold",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.5,
-      "ori_macro_couple": 0.2352,
-      "ori_macro_fold": 0.7135,
-      "ori_macro_space": 0.4654,
-      "ori_macro_tension": 0.5232,
-      "ori_outputLevel": 0.85
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.5,
+      "origami_macro_couple": 0.2352,
+      "origami_macro_fold": 0.7135,
+      "origami_macro_space": 0.4654,
+      "origami_macro_tension": 0.5232,
+      "origami_outputLevel": 0.85
     }
   },
   "schema_version": 1,

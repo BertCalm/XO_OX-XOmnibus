@@ -32,13 +32,13 @@
   "name": "Onset Shimmer",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.8967,
-      "onset_macro_mutate": 0.7947,
-      "onset_macro_punch": 0.5542,
-      "onset_macro_space": 0.4389,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.8967,
+      "perc_macro_mutate": 0.7947,
+      "perc_macro_punch": 0.5542,
+      "perc_macro_space": 0.4389,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

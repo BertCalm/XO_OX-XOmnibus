@@ -27,10 +27,10 @@
   "name": "Glacial Machine",
   "parameters": {
     "Onset": {
-      "onset_macro_character": 0.23,
-      "onset_macro_coupling": 0.37,
-      "onset_macro_movement": 0.55,
-      "onset_macro_space": 0.91
+      "perc_macro_character": 0.23,
+      "perc_macro_coupling": 0.37,
+      "perc_macro_movement": 0.55,
+      "perc_macro_space": 0.91
     }
   },
   "schema_version": 1,

@@ -30,11 +30,11 @@
   "name": "Tectonic Mass",
   "parameters": {
     "Onset": {
-      "onset_kick_decay": 0.5,
-      "onset_kick_punch": 0.85,
-      "onset_kick_sub": 0.95,
-      "onset_kick_tune": 0.25,
-      "onset_sub_drive": 0.6
+      "perc_kick_decay": 0.5,
+      "perc_kick_punch": 0.85,
+      "perc_kick_sub": 0.95,
+      "perc_kick_tune": 0.25,
+      "perc_sub_drive": 0.6
     }
   },
   "schema_version": 1,

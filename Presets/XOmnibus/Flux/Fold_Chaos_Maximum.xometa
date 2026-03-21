@@ -26,13 +26,13 @@
   "name": "Fold Chaos Maximum",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.313,
-      "ori_macro_couple": 0.347,
-      "ori_macro_fold": 0.782,
-      "ori_macro_space": 0.544,
-      "ori_macro_tension": 0.742,
-      "ori_outputLevel": 0.812
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.313,
+      "origami_macro_couple": 0.347,
+      "origami_macro_fold": 0.782,
+      "origami_macro_space": 0.544,
+      "origami_macro_tension": 0.742,
+      "origami_outputLevel": 0.812
     }
   },
   "schema_version": 1,

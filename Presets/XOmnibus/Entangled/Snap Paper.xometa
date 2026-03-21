@@ -36,13 +36,13 @@
   "name": "Snap Paper",
   "parameters": {
     "Origami": {
-      "ori_aggression": 0.561,
-      "ori_brightness": 0.641,
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.59,
-      "ori_outputLevel": 0.77,
-      "ori_outputPan": -0.04,
-      "ori_warmth": 0.505
+      "origami_aggression": 0.561,
+      "origami_brightness": 0.641,
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.59,
+      "origami_outputLevel": 0.77,
+      "origami_outputPan": -0.04,
+      "origami_warmth": 0.505
     },
     "Overbite": {
       "poss_aggression": 0.609,

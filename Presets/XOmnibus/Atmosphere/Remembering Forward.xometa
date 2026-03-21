@@ -69,7 +69,7 @@
       "macro": 2,
       "max": 50.0,
       "min": 0.0,
-      "parameterId": "odyssey_detune"
+      "parameterId": "drift_detune"
     },
     {
       "engineId": "Ombre",
@@ -104,12 +104,12 @@
   "name": "Remembering Forward",
   "parameters": {
     "Odyssey": {
-      "odyssey_attack": 1.5,
-      "odyssey_detune": 15.0,
-      "odyssey_filterCutoff": 3000.0,
-      "odyssey_level": 0.6,
-      "odyssey_release": 3.0,
-      "odyssey_sustain": 0.8
+      "drift_attack": 1.5,
+      "drift_detune": 15.0,
+      "drift_filterCutoff": 3000.0,
+      "drift_level": 0.6,
+      "drift_release": 3.0,
+      "drift_sustain": 0.8
     },
     "Ombre": {
       "ombre_attack": 1.2,

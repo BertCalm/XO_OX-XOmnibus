@@ -66,16 +66,16 @@
       "oblq_phaserMix": 0.2
     },
     "Onset": {
-      "onset_v1_level": 0.85,
-      "onset_v1_tune": 0.0,
-      "onset_v1_decay": 0.5,
-      "onset_v2_level": 0.75,
-      "onset_v2_tune": 0.0,
-      "onset_v2_decay": 0.3,
-      "onset_v3_level": 0.6,
-      "onset_v4_level": 0.5,
-      "onset_macro_punch": 0.6,
-      "onset_macro_space": 0.3
+      "perc_v1_level": 0.85,
+      "perc_v1_tune": 0.0,
+      "perc_v1_decay": 0.5,
+      "perc_v2_level": 0.75,
+      "perc_v2_tune": 0.0,
+      "perc_v2_decay": 0.3,
+      "perc_v3_level": 0.6,
+      "perc_v4_level": 0.5,
+      "perc_macro_punch": 0.6,
+      "perc_macro_space": 0.3
     }
   },
   "coupling": {

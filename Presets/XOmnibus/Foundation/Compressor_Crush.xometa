@@ -32,13 +32,13 @@
   "name": "Compressor Crush",
   "parameters": {
     "Onset": {
-      "onset_couplingBus": 0,
-      "onset_couplingLevel": 0.5,
-      "onset_macro_machine": 0.8146,
-      "onset_macro_mutate": 0.7902,
-      "onset_macro_punch": 0.7173,
-      "onset_macro_space": 0.26,
-      "onset_outputLevel": 0.85
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.5,
+      "perc_macro_machine": 0.8146,
+      "perc_macro_mutate": 0.7902,
+      "perc_macro_punch": 0.7173,
+      "perc_macro_space": 0.26,
+      "perc_outputLevel": 0.85
     }
   },
   "schema_version": 1,

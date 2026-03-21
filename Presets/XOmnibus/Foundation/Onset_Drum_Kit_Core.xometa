@@ -30,11 +30,11 @@
   "name": "Onset Drum Kit Core",
   "parameters": {
     "Onset": {
-      "onset_clap_tone": 0.6,
-      "onset_hat_decay": 0.4,
-      "onset_kick_punch": 0.75,
-      "onset_kick_tune": 0.3,
-      "onset_snare_snap": 0.7
+      "perc_clap_tone": 0.6,
+      "perc_hat_decay": 0.4,
+      "perc_kick_punch": 0.75,
+      "perc_kick_tune": 0.3,
+      "perc_snare_snap": 0.7
     }
   },
   "schema_version": 1,

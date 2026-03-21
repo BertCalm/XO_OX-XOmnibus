@@ -30,11 +30,11 @@
   "name": "Onset 808 Pillar",
   "parameters": {
     "Onset": {
-      "onset_kick_decay": 0.7,
-      "onset_kick_punch": 0.7,
-      "onset_kick_sub": 0.9,
-      "onset_kick_tune": 0.35,
-      "onset_sub_drive": 0.45
+      "perc_kick_decay": 0.7,
+      "perc_kick_punch": 0.7,
+      "perc_kick_sub": 0.9,
+      "perc_kick_tune": 0.35,
+      "perc_sub_drive": 0.45
     }
   },
   "schema_version": 1,

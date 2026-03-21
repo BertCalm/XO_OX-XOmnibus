@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Two LFOs in conflict: LFO1 sweeps macroKNOT target-equivalent braid at 7.2 Hz (near audio rate — too fast for perception as modulation, too slow for FM — creating an aperiodic timbral texture). LFO2 at 0.31 Hz sweeps filter cutoff. The result is a knot that does not know which topology it is. Saw strands with the Solomon coupling matrix: the two-ring architecture is shaken so rapidly that the intra-ring and inter-ring coupling energies blur into a third texture. Name: not epileptic in the medical sense — topological in the mathematical sense. A manifold in crisis.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.38,
+    "movement": 0.92,
+    "density": 0.65,
+    "space": 0.22,
+    "aggression": 0.72
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Topological Seizure",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.72,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 4800.0,
+      "weave_filterReso": 0.3,
+      "weave_filterType": 0,
+      "weave_ampA": 0.005,
+      "weave_ampD": 0.25,
+      "weave_ampS": 0.7,
+      "weave_ampR": 0.4,
+      "weave_lfo1Type": 3,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.65,
+      "weave_lfo1Rate": 7.2,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.45,
+      "weave_lfo2Rate": 0.31,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.28,
+      "weave_fx1Param": 0.4,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "solomon",
+    "chaotic",
+    "fast-lfo",
+    "aperiodic",
+    "aggressive",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

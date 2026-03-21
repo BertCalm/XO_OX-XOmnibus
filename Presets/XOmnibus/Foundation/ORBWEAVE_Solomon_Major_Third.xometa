@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "WEAVE-V extended: Solomon's two-ring architecture with strandTune at +5.0 semitones (major third) instead of the documented fifth (7.02). Ring A sits at the fundamental; Ring B sits a major third above, coupled through the Solomon linking number. A single note produces an automatic major-third dyad where each pitch has its own internal phase coupling. The sound is wider and brighter than the Solomon fifth — a chord pad hiding inside a monophonic instrument.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Solomon Major Third",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 5.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.76,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 7200.0,
+      "weave_filterReso": 0.14,
+      "weave_filterType": 0,
+      "weave_ampA": 0.08,
+      "weave_ampD": 0.5,
+      "weave_ampS": 0.78,
+      "weave_ampR": 2.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.1,
+      "weave_lfo1Rate": 0.12,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.38,
+      "weave_fx1Param": 0.55,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.3,
+      "weave_fx2Param": 0.6,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "foundation",
+    "solomon",
+    "chord-pad",
+    "weave-v",
+    "major-third",
+    "two-ring",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

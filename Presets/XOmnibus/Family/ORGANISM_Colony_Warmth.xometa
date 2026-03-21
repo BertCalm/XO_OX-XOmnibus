@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Rule 18 — produces sparse, isolated towers of activity. Seed 32768 (half-fill) creates balanced initial conditions. Square oscillator at warm mid-register. Slow step rate (2.5 Hz), medium scope (8) — the colony evolves at breathing pace, one visible step at a time. High sub level (0.6) grounds the texture. Low filter cutoff (2000 Hz) with moderate resonance makes each cellular event warm rather than bright. Simple and immediate — the organism as family instrument, accessible to any ear.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.78,
+    "movement": 0.45,
+    "density": 0.62,
+    "space": 0.52,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Family",
+  "name": "Colony Warmth",
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 32768,
+      "org_stepRate": 2.5,
+      "org_scope": 8,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.6,
+      "org_filterCutoff": 2000.0,
+      "org_filterRes": 0.32,
+      "org_velCutoff": 0.48,
+      "org_ampAtk": 0.035,
+      "org_ampDec": 0.55,
+      "org_ampSus": 0.75,
+      "org_ampRel": 1.8,
+      "org_lfo1Rate": 0.28,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.18,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.38,
+      "org_macroRule": 0.625,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "family",
+    "rule-18",
+    "warm",
+    "accessible",
+    "organic",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

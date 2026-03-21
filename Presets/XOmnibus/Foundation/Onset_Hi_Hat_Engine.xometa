@@ -30,10 +30,10 @@
   "name": "Onset Hi Hat Engine",
   "parameters": {
     "Onset": {
-      "onset_hat_decay": 0.3,
-      "onset_hat_level": 0.8,
-      "onset_hat_tone": 0.7,
-      "onset_ohat_decay": 0.6
+      "perc_hat_decay": 0.3,
+      "perc_hat_level": 0.8,
+      "perc_hat_tone": 0.7,
+      "perc_ohat_decay": 0.6
     }
   },
   "schema_version": 1,

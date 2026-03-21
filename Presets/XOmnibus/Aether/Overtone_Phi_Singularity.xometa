@@ -1,0 +1,52 @@
+{
+  "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Phi constant at depth 7 — the final Fibonacci convergent (34/21 ≈ 1.619048) is within 0.005% of the golden ratio. All eight partials now sit at golden proportions from one another: each partial φ times the last. The harmonic series has become a golden spiral made audible. Ultra-slow LFOs at 0.01 Hz provide breathing so slow it registers as drift rather than modulation — each note is its own geological event. macroDepth=1.0 means the DEPTH macro sweeps from depth 7 all the way back to 0, collapsing the golden spiral into a pure unison. Hold a note and slowly turn the DEPTH knob: Fibonacci descends toward silence.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.12,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "engines": ["Overtone"],
+  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "macros": { "DEPTH": 1.0, "COLOR": 0.52, "COUPLING": 0.0, "SPACE": 0.82 },
+  "mood": "Aether",
+  "name": "Phi Singularity",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 2,
+      "over_depth": 7.0,
+      "over_partial0": 1.0,
+      "over_partial1": 0.75,
+      "over_partial2": 0.62,
+      "over_partial3": 0.55,
+      "over_partial4": 0.48,
+      "over_partial5": 0.42,
+      "over_partial6": 0.36,
+      "over_partial7": 0.3,
+      "over_velBright": 0.42,
+      "over_filterCutoff": 13000.0,
+      "over_filterRes": 0.28,
+      "over_ampAtk": 0.8,
+      "over_ampDec": 1.5,
+      "over_ampSus": 0.78,
+      "over_ampRel": 7.5,
+      "over_lfo1Rate": 0.01,
+      "over_lfo1Depth": 0.08,
+      "over_lfo2Rate": 0.01,
+      "over_lfo2Depth": 0.06,
+      "over_resoMix": 0.58,
+      "over_macroDepth": 1.0,
+      "over_macroColor": 0.52,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.82
+    }
+  },
+  "schema_version": 1,
+  "tags": ["awakening", "aether", "phi", "golden-ratio", "fibonacci", "singular", "drift"],
+  "version": "1.0"
+}

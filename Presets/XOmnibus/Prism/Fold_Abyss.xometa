@@ -32,13 +32,13 @@
   "name": "Fold Abyss",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.5,
-      "ori_macro_couple": 0.828,
-      "ori_macro_fold": 0.2187,
-      "ori_macro_space": 0.6618,
-      "ori_macro_tension": 0.7648,
-      "ori_outputLevel": 0.85
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.5,
+      "origami_macro_couple": 0.828,
+      "origami_macro_fold": 0.2187,
+      "origami_macro_space": 0.6618,
+      "origami_macro_tension": 0.7648,
+      "origami_outputLevel": 0.85
     }
   },
   "schema_version": 1,

@@ -26,13 +26,13 @@
   "name": "Diamond Fold",
   "parameters": {
     "Origami": {
-      "ori_couplingBus": 0,
-      "ori_couplingLevel": 0.341,
-      "ori_macro_couple": 0.25,
-      "ori_macro_fold": 0.36,
-      "ori_macro_space": 0.339,
-      "ori_macro_tension": 0.849,
-      "ori_outputLevel": 0.807
+      "origami_couplingBus": 0,
+      "origami_couplingLevel": 0.341,
+      "origami_macro_couple": 0.25,
+      "origami_macro_fold": 0.36,
+      "origami_macro_space": 0.339,
+      "origami_macro_tension": 0.849,
+      "origami_outputLevel": 0.807
     }
   },
   "schema_version": 1,

@@ -30,18 +30,18 @@
   "name": "Machine Scatter",
   "parameters": {
     "Onset": {
-      "onset_hihatBrightness": 0.561,
-      "onset_kickTone": 0.33,
-      "onset_level": 0.78,
-      "onset_machine": 0.664,
-      "onset_macroCharacter": 0.462,
-      "onset_macroCoupling": 0.0,
-      "onset_macroMovement": 0.87,
-      "onset_macroSpace": 0.58,
-      "onset_mutate": 0.348,
-      "onset_punch": 0.224,
-      "onset_snareSnap": 0.192,
-      "onset_space": 0.464
+      "perc_hihatBrightness": 0.561,
+      "perc_kickTone": 0.33,
+      "perc_level": 0.78,
+      "perc_machine": 0.664,
+      "perc_macroCharacter": 0.462,
+      "perc_macroCoupling": 0.0,
+      "perc_macroMovement": 0.87,
+      "perc_macroSpace": 0.58,
+      "perc_mutate": 0.348,
+      "perc_punch": 0.224,
+      "perc_snareSnap": 0.192,
+      "perc_space": 0.464
     }
   },
   "schema_version": 1,

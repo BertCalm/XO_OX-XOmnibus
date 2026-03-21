@@ -1,0 +1,70 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Discovery 3 made audible: stepRate=32 Hz with scope=1. At 32 generations per second, individual CA steps blur into continuous modulation — the one-pole smoother (3ms) cannot track the updates. The automaton ceases to be a rhythmic sequencer and becomes a 4-channel complex modulator: filter, amplitude rate, pitch, reverb all driven simultaneously by Rule 110's Turing-complete evolution. No two seconds are the same. The organism is computing too fast to follow.",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.95,
+    "density": 0.52,
+    "space": 0.38,
+    "aggression": 0.42
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Flux",
+  "name": "Continuous Blur",
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 12345,
+      "org_stepRate": 32.0,
+      "org_scope": 1,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 4200.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.65,
+      "org_ampAtk": 0.008,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.62,
+      "org_ampRel": 0.9,
+      "org_lfo1Rate": 3.5,
+      "org_lfo1Depth": 0.18,
+      "org_lfo2Rate": 2.2,
+      "org_lfo2Depth": 0.22,
+      "org_reverbMix": 0.25,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "rule-110",
+    "ultrafast",
+    "continuous",
+    "modulator",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}
