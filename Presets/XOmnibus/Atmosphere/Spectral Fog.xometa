@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Spectral Fog",
+  "name": "Spectral Fog (Opera)",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense partial cloud with minimal synchrony. 48 partials spread wide through stereo field, each drifting on its own phase trajectory. Very slow LFO1 on formant creates a glacial vowel drift through the fog. High breath adds turbulent air. Like hearing a choir through heavy mist at a great distance.",
-  "tags": ["fog", "dense", "ambient", "diffuse", "texture"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "fog",
+    "dense",
+    "ambient",
+    "diffuse",
+    "texture"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

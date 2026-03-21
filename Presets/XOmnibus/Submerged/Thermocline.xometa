@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Thermocline",
+  "name": "Thermocline (Opera I)",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thermocline — the boundary layer where warm surface water meets cold deep water. Sound refracts at this boundary, bending downward. Two LFOs work against each other: LFO1 slowly sweeps the formant (temperature gradient), LFO2 modulates the filter cutoff (refraction). The result is a restless, layered texture that never quite settles — warm and cold currents interleaving. A liminal space between worlds.",
-  "tags": ["submerged", "oceanic", "layered", "drone", "atmospheric"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "submerged",
+    "oceanic",
+    "layered",
+    "drone",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Sibling Harmony",
+  "name": "Sibling Harmony (Opera)",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "feliX and Oscar singing together in perfect thirds. 2-voice unison creates the sibling interval — one voice bright (high tilt partials), one voice warm (low tilt partials), meeting in the middle. Drama at 0.45 keeps both voices coherent but distinct. Wide stereo field separates the two characters left and right. The Family mood in a single preset.",
-  "tags": ["family", "duet", "harmony", "choir", "warm"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "family",
+    "duet",
+    "harmony",
+    "choir",
+    "warm"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Thermal Vent",
+  "name": "Thermal Vent (OddOscar)",
   "mood": "Submerged",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Near-noise morph zone — axolotl swept by hydrothermal currents. LFO2 arcs the cutoff across minutes while LFO1 creates turbulent surface flutter.",
-  "tags": ["noise", "thermal", "vent", "turbulent", "hydrothermal", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "noise",
+    "thermal",
+    "vent",
+    "turbulent",
+    "hydrothermal",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.58, "movement": 0.72, "density": 0.68, "space": 0.75, "aggression": 0.38},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.58,
+    "movement": 0.72,
+    "density": 0.68,
+    "space": 0.75,
+    "aggression": 0.38
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 2.35,
@@ -38,6 +59,13 @@
       "morph_macroSpace": 0.52
     }
   },
-  "macros": {"CHARACTER": 2.35, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 2.35,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

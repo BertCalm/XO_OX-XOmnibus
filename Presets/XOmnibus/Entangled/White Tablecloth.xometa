@@ -13,7 +13,7 @@
   },
   "couplingIntensity": "Subtle",
   "created": "2026-03-16",
-  "description": "OBSIDIAN's crystal white set against OSTERIA's Porto Wine — formal stillness at the cultural shore, obsidian plates and warm food.",
+  "description": "OBSIDIAN's crystal white set against OSTERIA's Porto Wine \u2014 formal stillness at the cultural shore, obsidian plates and warm food.",
   "dna": {
     "aggression": 0.307,
     "brightness": 0.528,
@@ -38,7 +38,7 @@
     "Obsidian": {
       "obsidian_attack": 0.213,
       "obsidian_depth": 0.583,
-      "obsidian_filterCutoff": 0.551,
+      "obsidian_filterCutoff": 2760.1,
       "obsidian_lfoRate": 0.095,
       "obsidian_macroCharacter": 0.069,
       "obsidian_macroCoupling": 0.106,

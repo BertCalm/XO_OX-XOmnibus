@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Obsidian freed of darkness. The volcanic glass becomes a window — everything that passed through it left its high frequencies behind.",
+  "description": "Obsidian freed of darkness. The volcanic glass becomes a window \u2014 everything that passed through it left its high frequencies behind.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.75,
@@ -31,7 +31,7 @@
       "obsidian_ampRelease": 6.0,
       "obsidian_ampSustain": 0.85,
       "obsidian_delayFeedback": 0.35,
-      "obsidian_filterCutoff": 0.82,
+      "obsidian_filterCutoff": 10331.2,
       "obsidian_filterReso": 0.2,
       "obsidian_macroCoupling": 0.0,
       "obsidian_macroDarkness": 0.0,

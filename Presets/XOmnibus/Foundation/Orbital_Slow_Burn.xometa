@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Slow Burn",
+  "name": "Slow Burn (Orbital)",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm slow burn — gentle harmonic buildup, even groups, full spectral warmth.",
-  "tags": ["slow", "burn", "warm", "harmonic"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "slow",
+    "burn",
+    "warm",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.72, "movement": 0.15, "density": 0.65, "space": 0.45, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.12
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.45,
@@ -46,6 +65,13 @@
       "orb_level": 0.76
     }
   },
-  "macros": {"SPECTRAL": 0.45, "VELOCITY": 0.15, "GROUP": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.45,
+    "VELOCITY": 0.15,
+    "GROUP": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Obsidian ground so fine it becomes translucent. The volcanic glass catches only the highest frequencies — a cathedral of cooled light.",
+  "description": "Obsidian ground so fine it becomes translucent. The volcanic glass catches only the highest frequencies \u2014 a cathedral of cooled light.",
   "dna": {
     "aggression": 0.01,
     "brightness": 0.87,
@@ -31,7 +31,7 @@
       "obsidian_ampRelease": 7.0,
       "obsidian_ampSustain": 0.85,
       "obsidian_delayFeedback": 0.35,
-      "obsidian_filterCutoff": 0.9,
+      "obsidian_filterCutoff": 14082.8,
       "obsidian_filterReso": 0.2,
       "obsidian_macroCoupling": 0.0,
       "obsidian_macroDarkness": 0.0,

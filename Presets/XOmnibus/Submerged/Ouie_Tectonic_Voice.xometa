@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Tectonic Voice",
+  "name": "Tectonic Voice (Ouie)",
   "mood": "Submerged",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub-bass duophonic rumble at tectonic frequency, geological timescale pulse.",
-  "tags": ["submerged", "tectonic", "sub-bass", "rumble"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "submerged",
+    "tectonic",
+    "sub-bass",
+    "rumble"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.55,
     "CURRENT": 0.92
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

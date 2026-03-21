@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The volcanic lake. Black water over black stone. A stillness that contains enormous potential — the obsidian surface holds reflections of stars that no longer exist.",
+  "description": "The volcanic lake. Black water over black stone. A stillness that contains enormous potential \u2014 the obsidian surface holds reflections of stars that no longer exist.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.17,
@@ -31,7 +31,7 @@
       "obsidian_ampRelease": 7.5,
       "obsidian_ampSustain": 0.85,
       "obsidian_delayFeedback": 0.35,
-      "obsidian_filterCutoff": 0.14,
+      "obsidian_filterCutoff": 48.5,
       "obsidian_filterReso": 0.2,
       "obsidian_macroCoupling": 0.0,
       "obsidian_macroDarkness": 0.0,

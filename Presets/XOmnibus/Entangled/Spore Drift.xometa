@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Spore Drift",
+  "name": "Spore Drift (Opera)",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORGANISM coupling. Breathy, atmospheric voice with ORGANISM's automata creating slow, sparse partial activation patterns. Like spores drifting on wind — only a few partials are alive at any moment, and which ones depends on the organism's generational state. High space, low effort, maximum gentleness. The voice is barely there, but what is there is alive.",
-  "tags": ["entangled", "organism", "atmospheric", "sparse", "gentle"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "entangled",
+    "organism",
+    "atmospheric",
+    "sparse",
+    "gentle"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Low",
   "tempo": null,
   "dna": {

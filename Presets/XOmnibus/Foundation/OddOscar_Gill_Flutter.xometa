@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Gill Flutter",
+  "name": "Gill Flutter (OddOscar)",
   "mood": "Foundation",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Feathery gill movement — moderate morph with fluttering drift and warm filter.",
-  "tags": ["gill", "flutter", "warm", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "gill",
+    "flutter",
+    "warm",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.68, "movement": 0.55, "density": 0.5, "space": 0.52, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.52,
+    "aggression": 0.15
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.45,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

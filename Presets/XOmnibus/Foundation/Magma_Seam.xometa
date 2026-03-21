@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OBSIDIAN — dark extreme brightness preset for Foundation.",
+  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Foundation.",
   "dna": {
     "aggression": 0.56,
     "brightness": 0.09,
@@ -34,7 +34,7 @@
       "obsidian_coupling": 0.2,
       "obsidian_darkMatter": 0.43,
       "obsidian_delayMix": 0.81,
-      "obsidian_filterCutoff": 0.79,
+      "obsidian_filterCutoff": 9126.5,
       "obsidian_filterReso": 0.44,
       "obsidian_glassResonance": 0.35,
       "obsidian_lfoDepth": 0.44,

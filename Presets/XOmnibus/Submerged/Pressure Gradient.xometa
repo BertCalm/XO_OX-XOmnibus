@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Pressure Gradient",
+  "name": "Pressure Gradient (Opera)",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "As depth increases, pressure compresses everything. This preset channels that crushing force: very low fundamental, dense partial field, and a slow LFO modulating the filter cutoff downward — the sound darkens as if sinking. Effort is high but the filter is so low that the belt energy manifests as subharmonic rumble rather than brightness. The weight of a mile of water overhead.",
-  "tags": ["submerged", "deep", "pressure", "dark", "drone"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "submerged",
+    "deep",
+    "pressure",
+    "dark",
+    "drone"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

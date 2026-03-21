@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLIQUE's prismatic bounce engine feeds pitch and rhythm into OBSIDIAN's phase distortion architecture — over 32 seconds prism colors rotate through obsidian density layers, creating a stained glass cathedral that rebuilds itself with each new coupling pulse.",
+  "description": "OBLIQUE's prismatic bounce engine feeds pitch and rhythm into OBSIDIAN's phase distortion architecture \u2014 over 32 seconds prism colors rotate through obsidian density layers, creating a stained glass cathedral that rebuilds itself with each new coupling pulse.",
   "tags": [
     "evolution",
     "prismatic",
@@ -54,7 +54,7 @@
       "macro_space": 0.68,
       "obsidian_depth": 0.6,
       "obsidian_pdDepth": 0.52,
-      "obsidian_filterCutoff": 0.55,
+      "obsidian_filterCutoff": 2743.6,
       "obsidian_reverbMix": 0.62,
       "obsidian_outputLevel": 0.78
     }
@@ -87,7 +87,7 @@
     "startAmount": 0.12,
     "endAmount": 0.72,
     "cycleCount": 2,
-    "description": "Two 16-second sawtooth ramps — each ramp builds to full prismatic coupling then resets"
+    "description": "Two 16-second sawtooth ramps \u2014 each ramp builds to full prismatic coupling then resets"
   },
   "sequencer": null
 }

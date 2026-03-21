@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Harmonic content conjured from almost nothing — depth set near zero so the crystal body barely exists, yet the resonance structure persists as a ghost. Dark, cold, barely present. Space swallows it.",
+  "description": "Harmonic content conjured from almost nothing \u2014 depth set near zero so the crystal body barely exists, yet the resonance structure persists as a ghost. Dark, cold, barely present. Space swallows it.",
   "dna": {
     "aggression": 0.04,
     "brightness": 0.15,
@@ -33,7 +33,7 @@
       "obsidian_cascadeBlend": 0.78,
       "obsidian_crossModDepth": 0.12,
       "obsidian_depth": 0.05,
-      "obsidian_filterCutoff": 0.25,
+      "obsidian_filterCutoff": 216.7,
       "obsidian_filterReso": 0.6,
       "obsidian_lfo1Depth": 0.1,
       "obsidian_lfo1Rate": 0.04,

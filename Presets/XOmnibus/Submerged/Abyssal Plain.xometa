@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Plain",
+  "name": "Abyssal Plain (Opera)",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The flat, featureless ocean floor at 4000+ meters. Absolute darkness, near-freezing temperature, crushing pressure. This is the deepest preset in the library: fundamental at -36 semitones, maximum negative tilt, filter cutoff barely above the sub-bass range. Only the lowest partials survive. An ultra-slow LFO at 0.01 Hz breathes the formant over a full minute. Time has no meaning here.",
-  "tags": ["submerged", "deep", "abyssal", "drone", "dark"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "submerged",
+    "deep",
+    "abyssal",
+    "drone",
+    "dark"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

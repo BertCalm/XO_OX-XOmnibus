@@ -33,7 +33,7 @@
       "obsidian_cascadeBlend": 0.72,
       "obsidian_crossModDepth": 0.55,
       "obsidian_depth": 0.68,
-      "obsidian_filterCutoff": 0.6,
+      "obsidian_filterCutoff": 3660.0,
       "obsidian_filterReso": 0.9,
       "obsidian_lfo1Depth": 0.55,
       "obsidian_lfo1Rate": 2.8,

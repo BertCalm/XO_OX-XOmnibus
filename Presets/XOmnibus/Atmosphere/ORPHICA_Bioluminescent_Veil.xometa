@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Bioluminescent Veil",
+  "name": "Bioluminescent Veil (Orphica)",
   "mood": "Atmosphere",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reverse-grain crystal strings shimmer backward through the water column — bioluminescent organisms trailing light as they ascend. Glassy and ethereal.",
-  "tags": ["granular", "reverse", "crystal", "bioluminescent", "shimmer", "glass"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "granular",
+    "reverse",
+    "crystal",
+    "bioluminescent",
+    "shimmer",
+    "glass"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.35, "movement": 0.4, "density": 0.4, "space": 0.92, "aggression": 0.04},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.92,
+    "aggression": 0.04
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 3,
@@ -48,6 +69,13 @@
       "orph_macroDivine": 0.65
     }
   },
-  "macros": {"PLUCK": 0.4, "FRACTURE": 0.2, "SURFACE": 0.65, "DIVINE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.4,
+    "FRACTURE": 0.2,
+    "SURFACE": 0.65,
+    "DIVINE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

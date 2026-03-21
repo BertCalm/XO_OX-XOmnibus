@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Glass Aria",
+  "name": "Glass Aria (Opera)",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High partials only, tilted +0.6 toward upper harmonics. Near-total sync with 2-voice unison creates glass-like purity with gentle beating. Pitched up an octave. E-to-I vowel morph is the most piercing formant trajectory. Fragile, crystalline, soprano.",
-  "tags": ["glass", "crystalline", "soprano", "high", "piercing"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "glass",
+    "crystalline",
+    "soprano",
+    "high",
+    "piercing"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

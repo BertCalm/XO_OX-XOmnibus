@@ -24,7 +24,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Seed Scatter",
+  "name": "Seed Scatter (Organism)",
   "parameters": {
     "Organism": {
       "org_rule": 110.0,

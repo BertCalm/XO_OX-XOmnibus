@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Bioluminescent",
+  "name": "Bioluminescent (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 25.0,
     "ocelot_ampDecay": 500.0,

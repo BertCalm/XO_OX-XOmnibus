@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Transcendence",
+  "name": "Transcendence (Opera)",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening #5 — the Self archetype. Drama=1.0 achieves total Kuramoto synchrony: every partial phase-locks into perfect integer ratios. The result is not a voice — it is the platonic ideal of harmony. Beyond-human formant territory. 32 partials in crystalline alignment. The sound of mathematical perfection made audible.",
-  "tags": ["synchrony", "crystalline", "pure", "transcendent", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "synchrony",
+    "crystalline",
+    "pure",
+    "transcendent",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

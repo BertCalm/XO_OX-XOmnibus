@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Thermocline",
+  "name": "Thermocline (Ocelot)",
   "mood": "Submerged",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The temperature boundary between ocean layers — Underwater biome, log drum thud, canopy pad swells like pressure. Ecosystem depth maximum: full cross-stratum circulation.",
-  "tags": ["submerged", "thermocline", "pressure", "deep", "underwater", "swell"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "tags": [
+    "submerged",
+    "thermocline",
+    "pressure",
+    "deep",
+    "underwater",
+    "swell"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "PROWL": 0.2,
     "FOLIAGE": 0.45,
@@ -24,7 +38,9 @@
     "space": 0.88,
     "aggression": 0.28
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "parameters": {
     "Ocelot": {

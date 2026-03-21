@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Resonance that never fully decays — the crystal keeps ringing long after the hand is lifted. Sparse attack, enormous release tail, reverb at near-unity. The obsidian remembers every frequency it has ever touched.",
+  "description": "Resonance that never fully decays \u2014 the crystal keeps ringing long after the hand is lifted. Sparse attack, enormous release tail, reverb at near-unity. The obsidian remembers every frequency it has ever touched.",
   "dna": {
     "aggression": 0.08,
     "brightness": 0.62,
@@ -33,7 +33,7 @@
       "obsidian_cascadeBlend": 0.55,
       "obsidian_crossModDepth": 0.3,
       "obsidian_depth": 0.9,
-      "obsidian_filterCutoff": 0.7,
+      "obsidian_filterCutoff": 6104.9,
       "obsidian_filterReso": 0.45,
       "obsidian_lfo1Depth": 0.18,
       "obsidian_lfo1Rate": 0.08,

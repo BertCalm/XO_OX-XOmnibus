@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OBSIDIAN — dark extreme brightness preset for Atmosphere.",
+  "description": "OBSIDIAN \u2014 dark extreme brightness preset for Atmosphere.",
   "dna": {
     "aggression": 0.34,
     "brightness": 0.1,
@@ -34,7 +34,7 @@
       "obsidian_coupling": 0.67,
       "obsidian_darkMatter": 0.67,
       "obsidian_delayMix": 0.79,
-      "obsidian_filterCutoff": 0.96,
+      "obsidian_filterCutoff": 17458.1,
       "obsidian_filterReso": 0.14,
       "obsidian_glassResonance": 0.12,
       "obsidian_lfoDepth": 0.8,
