@@ -99,6 +99,9 @@ struct OcelotParamSnapshot
     float couplingLevel    = 0.0f;
     int   couplingBus      = 0;
 
+    // ── Pitch Bend ────────────────────────────────
+    float pitchBendSemitones = 0.0f;  // ±2 semitones (set by engine from MIDI pitch wheel)
+
     // Update all fields from APVTS — call once per processBlock, before any DSP.
     // NOTE: ParamIDs constants have the same names as struct fields, so we must
     // use explicit xocelot::ParamIDs:: qualification to avoid member shadowing.

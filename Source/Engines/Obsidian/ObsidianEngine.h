@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
@@ -403,6 +404,8 @@ public:
             // D006: CC1 mod wheel → filter cutoff brightening (classic brightness control; sensitivity 0.5)
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
+            else if (message.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(message.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -512,7 +515,8 @@ public:
 
 
                 // ---- Phase increment ----
-                float frequency = voice.currentFrequency;
+                float frequency = voice.currentFrequency
+                                  * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
                 float phaseIncrement = frequency / sampleRateFloat;
 
 
@@ -1360,6 +1364,7 @@ private:
 
     // D006: mod wheel — CC1 brightens filter cutoff (classic brightness expression; sensitivity 0.5)
     float modWheelValue = 0.0f;
+    float pitchBendNorm = 0.0f;
 
     // ---- Coupling accumulators ----
     // Reset to zero each block; other engines add their modulation contributions.

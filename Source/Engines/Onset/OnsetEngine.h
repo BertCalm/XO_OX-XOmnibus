@@ -57,6 +57,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -1747,7 +1748,7 @@ public:
 
                 float vel = msg.getFloatVelocity();
                 voices[voiceIdx].triggerVoice (vel, vBlend[voiceIdx], vAlgo[voiceIdx],
-                    vPitch[voiceIdx], vDecay[voiceIdx], vTone[voiceIdx],
+                    vPitch[voiceIdx] + pitchBendNorm * 2.0f, vDecay[voiceIdx], vTone[voiceIdx],
                     vSnap[voiceIdx], vBody[voiceIdx], vChar[voiceIdx],
                     vEnvShape[voiceIdx]);
             }
@@ -1765,6 +1766,8 @@ public:
             // increasingly unpredictable with each trigger.
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -2024,6 +2027,7 @@ private:
 
     // D006: mod wheel (CC#1) — scales MUTATE macro depth
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;
 
     //-- MIDI note to voice mapping ----------------------------------------------
     // Maps incoming MIDI notes to voice indices using the GM drum map.

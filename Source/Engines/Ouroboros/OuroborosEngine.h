@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -882,6 +883,7 @@ public:
             // Wheel down = default free-running chaos. Full wheel adds +0.4 leash.
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelAmount = message.getControllerValue() / 127.0f;
+            else if (message.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(message.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -966,6 +968,7 @@ public:
                     ? midiToFreq (voice.noteNumber)
                     : orbitRate;
                 targetFrequency += couplingPitchModulation * 20.0f;   // +/- 20 Hz pitch mod range
+                targetFrequency *= PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 if (targetFrequency < 20.0f) targetFrequency = 20.0f; // Sub-audible floor
 
                 //--------------------------------------------------------------
@@ -1509,6 +1512,8 @@ private:
     std::vector<float> outputCacheRight;         // Channel 1: Right audio
     std::vector<float> outputCacheVelocityX;     // Channel 2: dx/dt velocity
     std::vector<float> outputCacheVelocityY;     // Channel 3: dy/dt velocity
+
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Coupling accumulators (reset per block) -------------------------------
     float couplingPitchModulation = 0.0f;        // Accumulates LFOToPitch / PitchToPitch

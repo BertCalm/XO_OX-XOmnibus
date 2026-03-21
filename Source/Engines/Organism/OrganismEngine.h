@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -598,7 +599,8 @@ public:
             } else if (msg.isChannelPressure()) {
                 // D006: aftertouch controls mutation rate
                 aftertouchVal = msg.getChannelPressureValue() / 127.f;
-
+            } else if (msg.isPitchWheel()) {
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             } else if (msg.isAftertouch()) {
                 aftertouchVal = msg.getAfterTouchValue() / 127.f;
             }
@@ -709,8 +711,9 @@ public:
         // Resonance → Q factor 0.5 → 12.0
         const float Q = 0.5f + filterRes * 11.5f;
 
-        // Root pitch from MIDI note, with pitch coupling and automaton pitch offset
-        const float rootFreq = midiToFreq(currentNote);
+        // Root pitch from MIDI note, with pitch bend and coupling pitch offset
+        const float rootFreq = midiToFreq(currentNote)
+                               * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
@@ -959,6 +962,7 @@ private:
     // Expression (D006)
     float modWheelVal   = 0.f;
     float aftertouchVal = 0.f;
+    float pitchBendNorm = 0.0f;
 
     // Coupling modulation (consumed each block)
     float couplingFilterMod = 0.f;

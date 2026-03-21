@@ -2,6 +2,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "OwlfishVoice.h"
 #include "OwlfishParamSnapshot.h"
@@ -106,6 +107,7 @@ public:
             // descends deeper, expanding its resonant body. Full wheel adds +0.45 to subMix.
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = xomnibus::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -129,6 +131,10 @@ public:
         couplingGrainMod = 0.0f;
         couplingSubMod = 0.0f;
         couplingPitchMod = 0.0f; // pitch mod would be applied in voice if accessible
+
+        // Apply pitch bend to voice target frequency
+        if (voice.isActive())
+            voice.applyPitchBend (xomnibus::PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f));
 
         // Render the organism
         buffer.clear();
@@ -235,6 +241,8 @@ private:
 
     // D006: mod wheel (CC#1) — deepens mixtur subharmonic mix (+0.45 at full wheel)
     float  modWheelAmount = 0.0f;
+
+    float  pitchBendNorm    = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling modulation accumulators (DSP FIX: was no-op stub)
     float  couplingPitchMod = 0.0f;  // semitones from LFOToPitch

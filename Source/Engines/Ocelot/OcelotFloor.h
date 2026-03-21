@@ -117,6 +117,11 @@ public:
         float level = snap.floorLevel * (1.0f + mod.floorAccentMod * 0.5f);
         float brightness = std::clamp(biome.floorBrightnessBase, -1.0f, 1.0f);
 
+        // Apply pitch bend: temporarily scale baseFreq by bend ratio for this block
+        const float savedBaseFreq = baseFreq;
+        if (snap.pitchBendSemitones != 0.0f)
+            baseFreq *= xomnibus::fastPow2(snap.pitchBendSemitones / 12.0f);
+
         int model = std::clamp(snap.floorModel, 0, 5);
 
         switch (model)
@@ -132,6 +137,9 @@ public:
                 std::fill(outR, outR + numSamples, 0.0f);
                 break;
         }
+
+        // Restore unmodified baseFreq so future noteOn calculations are unaffected
+        baseFreq = savedBaseFreq;
 
         // Compute RMS and auto-silence
         float sumSq = 0.0f;

@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -604,6 +605,8 @@ public:
                 aftertouchVal = msg.getChannelPressureValue() / 127.f; // D006: aftertouch → COLOR
             } else if (msg.isAftertouch()) {
                 aftertouchVal = msg.getAfterTouchValue() / 127.f; // D006
+            } else if (msg.isPitchWheel()) {
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             }
         }
 
@@ -678,8 +681,9 @@ public:
                                         + filterEnvBoost + couplingFilterMod, 1000.f, 20000.f);
         const float Q = 0.5f + filterRes * 5.5f; // map 0-0.8 → Q 0.5-4.9
 
-        // Fundamental frequency (MIDI note + coupling pitch mod)
+        // Fundamental frequency (MIDI note + pitch bend + coupling pitch mod)
         const float fundamentalFreq = midiToFreq(currentNote)
+                                      * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f)
                                       * fastPow2(couplingPitchMod / 12.f);
 
         // Envelope coefficients
@@ -884,6 +888,7 @@ private:
     // D006 expression
     float modWheelVal   = 0.f;
     float aftertouchVal = 0.f;
+    float pitchBendNorm = 0.0f;
 
     // DSP Fix Wave 2B: Filter envelope level (set to velocity on noteOn, decays per block)
     float filterEnvLevel = 0.f;

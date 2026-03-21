@@ -51,6 +51,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -998,6 +999,7 @@ public:
             // spectrum evolves at a higher rate. Full wheel adds +3.0 Hz.
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelAmount = message.getControllerValue() / 127.0f;
+            else if (message.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(message.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -1235,8 +1237,9 @@ public:
                 }
 
                 // ---- ANABOLISM: reconstruct harmonic content ----
-                float fundamental = midiToFreq (voice.noteNumber) +
-                                    externalPitchModulation * 20.0f; // +/-10 semitones at mod +/-0.5
+                float fundamental = (midiToFreq (voice.noteNumber) +
+                                    externalPitchModulation * 20.0f) // +/-10 semitones at mod +/-0.5
+                                    * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 if (fundamental < 20.0f) fundamental = 20.0f; // Below 20Hz is inaudible
 
                 // VFE modulates isotope balance: surprise shifts spectral character.
@@ -1634,6 +1637,8 @@ private:
 
     // Membrane: reverb send level computed per block (read by processor)
     std::atomic<float> reverbSendLevel { 0.0f };
+
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling accumulators (consumed and reset after each render block)
     float externalPitchModulation = 0.0f;

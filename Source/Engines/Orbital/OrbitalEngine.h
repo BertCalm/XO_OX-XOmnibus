@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/Effects/Saturator.h"
@@ -583,7 +584,7 @@ public:
         }
 
         //-- Consume + reset coupling accumulators ------------------------------
-        const float pitchOffset  = externalPitchMod;
+        const float pitchOffset  = externalPitchMod + pitchBendNorm * 2.0f;
         const float morphOffset  = externalMorphMod;
         const float filterOffset = externalFilterMod;
         const float fmAudioAmount = externalFmMod;
@@ -673,6 +674,7 @@ public:
             // D006: CC1 mod wheel → spectral morph drift rate (faster drift with wheel; sensitivity 0.3)
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
+            else if (message.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(message.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -1578,6 +1580,8 @@ private:
     juce::AudioBuffer<float> couplingRingBuffer;
     bool  hasAudioCoupling  = false;
     bool  hasRingCoupling   = false;
+
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Block-level coupling accumulators (reset at top of each renderBlock) ----
     float externalFilterMod = 0.0f;   // Hz offset from AmpToFilter coupling

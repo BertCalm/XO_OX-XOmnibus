@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 
 // XOverworld DSP — included via target_include_directories in CMakeLists.txt
@@ -309,7 +310,7 @@ public:
             // Update FX units from snapshot (cheap, param-only, no alloc)
             filter.setMode  (snap.filterType);
             filter.setCutoff(juce::jlimit(20.0f, 20000.0f,
-                             snap.filterCutoff + externalFilterMod + filterEnvBoost));
+                             snap.filterCutoff * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f) + externalFilterMod + filterEnvBoost));
             filter.setResonance(snap.filterReso);
         }
 
@@ -348,6 +349,7 @@ public:
             // D006: CC#1 mod wheel → glitch mix boost (+0–0.4, introduces chip artifacts progressively)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -602,6 +604,8 @@ private:
     // P0-05 fix: per-sample output cache for getSampleForCoupling
     std::vector<float> outputCacheLeft;
     std::vector<float> outputCacheRight;
+
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Per-block coupling accumulators (reset each renderBlock)
     float externalFilterMod = 0.0f;

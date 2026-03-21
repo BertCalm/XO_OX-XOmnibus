@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -71,6 +72,7 @@ public:
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -164,7 +166,7 @@ public:
 
                 // ---- Drift ----
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f)*PitchBendUtil::semitonesToFreqRatio(pitchBendNorm*2.0f);
 
                 // ---- Aunt 2: Coin press pitch bend ----
                 if (!v.isHusband && v.auntIdx == 1) {
@@ -346,6 +348,8 @@ private:
     static constexpr int kV=18;
     double sr=44100; int nv=0,nhv=0,ac=0; float lastL=0,lastR=0;
     std::array<OleAdapterVoice,kV> voices;
+
+    float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Family coupling ext mods (SP7.3)
     float extPitchMod = 0.f;   // semitones from LFOToPitch

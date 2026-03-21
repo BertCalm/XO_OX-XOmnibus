@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FamilyWaveguide.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -278,6 +279,7 @@ public:
                 for (auto& v : voices)
                     if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
             }
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -368,7 +370,7 @@ public:
                 v.body.setParams(v.freq * bodyFreqMul, bodyQ);
 
                 float ds=v.drift.tick(pDriftR,pDriftD);
-                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod)/12.f)*PitchBendUtil::semitonesToFreqRatio(pitchBendNorm*2.0f);
                 float dlen=v.sr/std::max(df,20.f);
                 float out=v.dl.read(dlen);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
@@ -578,6 +580,8 @@ private:
     int nextV=0, activeCount=0;
     float lastSampleL=0, lastSampleR=0;
     std::vector<float> couplingBuf;
+
+    float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Family coupling ext mods (SP7.3)
     float extPitchMod = 0.f;   // semitones from LFOToPitch

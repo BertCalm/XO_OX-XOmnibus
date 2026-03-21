@@ -3,6 +3,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -304,6 +305,7 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
             else if (msg.isAftertouch() || msg.isChannelPressure())
             {
                 // Aftertouch modulates blend toward Opsis (timbral brightening)
@@ -473,7 +475,7 @@ public:
                 }
 
                 // --- Pitch ---
-                float midiNote = static_cast<float> (voice.noteNumber) + pitchMod;
+                float midiNote = static_cast<float> (voice.noteNumber) + pitchMod + pitchBendNorm * 2.0f;
                 float freq = midiToHz (midiNote);
 
                 // ============================================================
@@ -904,6 +906,8 @@ private:
     int   lfoControlCounter = 0;    // counts samples since last LFO update
     float lfo1Value = 0.0f;         // latest computed LFO1 output (bipolar, already depth-scaled)
     float lfo2Value = 0.0f;         // latest computed LFO2 output (bipolar, already depth-scaled)
+
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling state
     float envelopeOutput = 0.0f;

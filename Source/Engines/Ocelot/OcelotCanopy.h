@@ -58,9 +58,9 @@ public:
             return 0.0f;
         }
 
-        // Base frequency from MIDI note
+        // Base frequency from MIDI note + pitch bend
         float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
-        float baseFreq = 440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f) / 12.0f);
+        float baseFreq = 440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f + snap.pitchBendSemitones) / 12.0f);
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);

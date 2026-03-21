@@ -2,6 +2,7 @@
 
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "OcelotVoicePool.h"
 #include "OcelotParamSnapshot.h"
@@ -65,6 +66,8 @@ public:
             // D006: CC#1 mod wheel → ecosystem depth boost (+0–0.35, stronger cross-stratum modulation)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel())
+                pitchBendNorm = xomnibus::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -77,6 +80,9 @@ public:
         // 12-route EcosystemMatrix cross-feed between ocelot habitat strata.
         // D006: mod wheel also deepens ecosystem (+0–0.35) — strengthens cross-stratum pathways.
         snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + atPressure * 0.3f + modWheelAmount * 0.35f, 0.0f, 1.0f);
+
+        // Pitch bend: ±2 semitones (propagated to strata via snapshot)
+        snapshot.pitchBendSemitones = pitchBendNorm * 2.0f;
 
         // 3. Clear buffer and render
         buffer.clear();
@@ -147,6 +153,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;
 };
 
 } // namespace xocelot

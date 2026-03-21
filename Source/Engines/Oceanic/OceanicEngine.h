@@ -3,6 +3,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
@@ -356,6 +357,8 @@ public:
             // D006: CC#1 mod wheel → boid cohesion boost (+0–0.4, boids school together more)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -503,12 +506,13 @@ public:
                         }
                     }
 
-                    // Attractor targets: MIDI note * sub-flock ratio
+                    // Attractor targets: MIDI note * sub-flock ratio * pitch bend
+                    const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
                     float attractorLogFreq[4];
                     for (int f = 0; f < 4; ++f)
                     {
                         float ratio = kSubFlockRatios[f];
-                        attractorLogFreq[f] = fastLog2 (std::max (kMinFreqHz, voice.currentTargetFreq * ratio));
+                        attractorLogFreq[f] = fastLog2 (std::max (kMinFreqHz, voice.currentTargetFreq * ratio * pitchBendRatio));
                     }
 
                     // Boid rule radii (in log-freq octaves)
@@ -1287,6 +1291,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 boosts boid cohesion (+0–0.4, boids school together more) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

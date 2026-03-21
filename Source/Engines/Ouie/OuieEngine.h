@@ -65,6 +65,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
@@ -916,6 +917,8 @@ public:
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
             else if (msg.isChannelPressure())
                 aftertouch_ = msg.getChannelPressureValue() / 127.0f;
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         // --- Update per-voice MPE expression ---
@@ -982,8 +985,9 @@ public:
                 voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
                 voice.currentFreq = flushDenormal (voice.currentFreq);
 
-                // MPE pitch bend
-                float freq = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                // MPE pitch bend + global channel pitch bend
+                float freq = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                             * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 // Coupling pitch mod
                 freq *= (1.0f + localCouplingPitch * 0.1f);
@@ -1802,6 +1806,7 @@ private:
 
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — morphs algo params (D006)
+    float pitchBendNorm   = 0.0f;
     float aftertouch_ = 0.0f;       // Channel pressure -> HAMMER (D006)
 
     // Voices (2 — duophonic)

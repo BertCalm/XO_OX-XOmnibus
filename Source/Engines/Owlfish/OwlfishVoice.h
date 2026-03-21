@@ -52,6 +52,7 @@ public:
 
         currentFreq  = 440.0f;
         targetFreq   = 440.0f;
+        baseNoteFreq = 440.0f;
         portaCoeff   = 0.0f;
         currentNote  = -1;
         lastVelocity = 0.0f;
@@ -63,7 +64,8 @@ public:
     /// Trigger a note. Handles legato vs retrigger modes.
     void noteOn (int note, float velocity, const OwlfishParamSnapshot& snap)
     {
-        targetFreq   = midiToFreq (note);
+        baseNoteFreq = midiToFreq (note);
+        targetFreq   = baseNoteFreq;
         lastVelocity = velocity;
 
         // Trigger armor check (velocity vs threshold)
@@ -78,6 +80,13 @@ public:
         // Else: legato mode, already playing -- just change target freq (glide only)
 
         currentNote = note;
+    }
+
+    //--------------------------------------------------------------------------
+    /// Apply pitch bend ratio to the target frequency (called per block from engine).
+    void applyPitchBend (float ratio) noexcept
+    {
+        targetFreq = baseNoteFreq * ratio;
     }
 
     //--------------------------------------------------------------------------
@@ -235,6 +244,7 @@ private:
     // ---- SOLITARY GENUS state ----
     float currentFreq  = 440.0f;
     float targetFreq   = 440.0f;
+    float baseNoteFreq = 440.0f;  // un-bent note frequency; pitch bend multiplies this
     float portaCoeff   = 0.0f;   // exponential glide coefficient (0 = instant)
     int   currentNote  = -1;
     float lastVelocity = 0.0f;
