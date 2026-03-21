@@ -420,3 +420,67 @@ The `kEmotionalMemoryWindowMs=500ms` window creates a contract between successiv
 At `resSens=0.0`, the Kuramoto field dynamics are stable and predictable. At `resSens=0.88`, phase clusters form strongly and persist — discrete groups of synchronized partials coalesce, their collective beating creating a texture that no single parameter controls. This is emergence: behavior arising from component interactions that was not designed into any individual component.
 
 **Application:** `resSens=0.0–0.35` for clean vocal synthesis — smooth phase transitions, predictable behavior. `resSens=0.55–0.75` for alive synthesis — clusters emerge, the voice shimmers. `resSens=0.85–0.95` for maximum emergence — self-organizing textures, behavior that surprises even the player. Never use `resSens > 0.9` in init presets — the behavior is too unexpected for first-encounter.
+
+---
+
+### ORBWEAVE — Vol 3 Additions (Transcendental)
+
+#### OBW-VII: The LFO-BraidDepth Axis
+*2026-03-21*
+
+> LFO assigned to BraidDepth (target=5) is the most underexplored modulation route in the fleet. It does not modulate a conventional synthesis parameter — pitch, filter, volume. It modulates the *intensity of topological coupling* itself. At braidDepth LFO depth=0.4 and rate=0.04 Hz, the system cycles between the detuned zone (braidDepth ~0.3) and the locked zone (braidDepth ~0.7) over 25 seconds. The spectral character of the sound is not just evolving — the category of synthesis is evolving. Low depth produces harmonic shimmer; high depth produces knot-locked topology. The LFO is a topology oscillator.
+
+**Application:** LFO2→BraidDepth is the natural choice (LFO1→FilterCutoff provides the conventional layer). Set rate ≤ 0.1 Hz for meditative topology cycling. Set LFO depth to cross the WEAVE-I threshold (0.45) — ensure the waveform sweeps both below and above it, so the listener hears the crossing.
+
+#### OBW-VIII: Full-Lock Synthesis
+*2026-03-21*
+
+> braidDepth=1.0 has been present in the engine's parameter range since day one and has never been used. At maximum braid, the coupling matrix values hit their defined ceiling — the strands are as locked as the topology permits. The sound at braidDepth=1.0 is not "more" of braidDepth=0.9. For Solomon topology, which has asymmetric ring coupling (intra=0.8, inter=0.3), full lock hits the intra-ring ceiling while the inter-ring maximum is structurally lower. Full-lock Trefoil sounds different from full-lock Solomon. They have been unexplored for the same reason: designers stopped at 0.85.
+
+**Application:** Create at least one preset per topology type at braidDepth=1.0. These are reference presets — the maximum coupling state of each topology family. Label them accordingly. They are not performance presets; they are calibration points.
+
+#### OBW-IX: The Solomon Chord Architecture
+*2026-03-21*
+
+> Solomon topology creates two coupled oscillator pairs (Ring A: strands 0–1, Ring B: strands 2–3) with strong intra-ring coupling (0.8) and weak inter-ring coupling (0.3). The `strandTune` parameter offsets Ring B from Ring A. This makes strandTune a **chord interval parameter**: strandTune=7.02 produces a fifth (Ring A root + Ring B fifth), strandTune=4.0 produces a major third, strandTune=3.86 a minor third, strandTune=12.0 an octave. One MIDI note plays a two-voice chord where each voice has its own internal phase resonance. Solomon is ORBWEAVE's dormant polyphony system — not voice allocation but ring-pair harmonic architecture.
+
+**Application:** When a pad preset needs implicit harmony without multiple MIDI notes, use Solomon + strandTune at a musical interval. Design the ring A (root) voicing with filterCutoff in the 2000–3500 Hz range and let the Ring B offset color rather than dominate. For minor tonality: strandTune=3.86. For major tonality: strandTune=4.0. For suspended or modal: strandTune=5.0 (fourth).
+
+#### OBW-X: The macroKnot Fixed Value
+*2026-03-21*
+
+> The fleet uses macroKnot as a sweep control — a performance gesture that moves topology in real time. This is correct. But macroKnot at a fixed nonzero value is also a legitimate design choice: macroKnot=0.5 is the chimera state (WEAVE-IV), a topology that exists nowhere in the mathematical taxonomy of knots. macroKnot=0.25 blends the source topology 75% toward its identity; macroKnot=0.75 blends 75% toward the next topology. These fixed states have their own sonic identities. The chimera at rest is not a transitional state — it is a destination.
+
+**Application:** Before finalizing any ORBWEAVE preset, check the sound at macroKnot=0.0 (pure topology) and macroKnot=0.5 (chimera). If the chimera sounds better, save it there. The macroKnot value in a saved preset defines the engine's resting state, not just its sweep range.
+
+---
+
+### OUTWIT — The Distributed Mind Verses
+
+#### OWT-I: The Rule Is Not the Sound
+*2026-03-21*
+
+> Wolfram's 256 elementary rules describe mathematical behaviors. They do not describe sounds. Rule 110 is computationally universal — but what it produces through OUTWIT's ArmChannel depends on the arm length, the step rate, the chromatophore, the ink cloud, and the synapse contamination from its neighbors. Rule 110 at inkCloud=0.0, stepRate=4 Hz sounds like complex irregular percussion. Rule 110 at inkCloud=0.9, stepRate=0.15 Hz sounds like a slowly evolving ambient cloud. These are not the same instrument. The rule selects a class of behavior. The other parameters choose which expression of that class is heard.
+
+**Application:** When selecting rules for a preset, choose by behavioral class (Class I/II/III/IV) not by rule number. Class determines rhythm: Class I is silent contribution, Class II is periodic pulse, Class III is aperiodic density, Class IV is complex computation. Set the rule numbers within each class based on ecological balance across the 8 arms.
+
+#### OWT-II: High Synapse Is Emergence, Not Unison
+*2026-03-21*
+
+> At synapse=0.0, eight arms run eight rules in perfect isolation. Each arm is a separate organism. At synapse=0.88, the arms are no longer separate. Rule 110 is contaminated by adjacent Rule 30. Rule 30 is pulled toward momentary structure by adjacent Rule 110. Neither arm runs its rule. Both run something that has never been named — a hybrid that exists only at this synapse strength between these two rules in this step-rate context. This is emergence: behavior arising from interaction that was not present in any individual component. Synapse=0.88 is not "louder together." It is a new organism formed from the coupling of eight different organisms.
+
+**Application:** Design presets at two synapse extremes: synapse=0.1 (isolated arms — document each rule's independent character) and synapse=0.75+ (emergent hybrid — document what the coupling creates). The mid-range (0.3–0.5) blends both but commits to neither.
+
+#### OWT-III: SOLVE Defines the Destination
+*2026-03-21*
+
+> The SOLVE macro is not a randomize button. It is a compass. targetBrightness=0.85 means: I have decided this sound should be bright. targetSpace=0.9 means: I have decided this sound should be spacious. targetMovement=0.6 means: I have decided this sound should have moderate motion. SOLVE then applies pressure on chromAmount, denMix, and stepRate to move the current CA ecology toward these specifications. The CA rules provide the raw material. SOLVE decides what that material should become. Set the target DNA before setting SOLVE amount. Know your destination before you navigate.
+
+**Application:** For any preset intended to demonstrate SOLVE: set the six target DNA values first (as sonic specifications), then raise owit_solve to 0.5–0.8. The target DNA values should correspond to the preset's intended mood. Do not leave target DNA at default (0.5 each) — default targets are neutral instructions that produce no net SOLVE pressure.
+
+#### OWT-IV: The Ink Cloud Is Defensive Architecture
+*2026-03-21*
+
+> The Giant Pacific Octopus deploys ink not to attack but to protect — to create a sensory barrier between itself and a threat. OUTWIT's inkCloud operates identically: it does not add information to the CA output; it obscures it. At inkCloud=0.9, the discrete cellular automaton rhythms — the triggers, the pulses, the Class III chaos — are dissolved into a sustained, ambiguous texture. The listener hears the density pattern but not the trigger events. The octopus is present, computing, but protected by the opacity. inkCloud is the engine's most underused parameter because it requires accepting that hiding the CA rhythm is sometimes the right musical choice.
+
+**Application:** Use inkCloud > 0.6 when the CA rhythm is the wrong texture for the context — when you want the CA's density pattern and chromatophore modulation but not its rhythmic character. inkDecay=0.1–0.2 creates a soft blur; inkDecay=0.3–0.5 creates sustained sustain. inkCloud=0.9 + inkDecay=0.4 converts any CA rule into an ambient texture. This is not misuse — it is a legitimate synthesis mode.

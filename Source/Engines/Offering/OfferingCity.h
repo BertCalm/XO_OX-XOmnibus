@@ -52,11 +52,15 @@ struct OfferingCompressor
         envLevel_ = flushDenormal (envLevel_);
 
         // Gain reduction
+        // SRO (2026-03-21): Replace std::log10 + std::pow(10,...) with fast
+        // approximations: log10(x) = log2(x) * 0.30103f;
+        // pow(10, x) = fastExp(x * ln10) where ln10 = 2.302585f.
+        // Accuracy: ~0.1% for compressor gain reduction — perceptually transparent.
         if (envLevel_ > threshold_)
         {
-            float overDb = 20.0f * std::log10 (envLevel_ / threshold_ + 1e-10f);
+            float overDb = 20.0f * fastLog2 (envLevel_ / threshold_ + 1e-10f) * 0.30103f;
             float reductionDb = overDb * (1.0f - 1.0f / ratio_);
-            float gain = std::pow (10.0f, -reductionDb / 20.0f);
+            float gain = fastExp (-reductionDb * (2.302585f / 20.0f));
             return input * gain;
         }
         return input;

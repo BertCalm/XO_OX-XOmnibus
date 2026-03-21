@@ -6,6 +6,7 @@
 #include <vector>
 #include <atomic>
 #include <memory>
+#include <string>
 
 namespace xomnibus {
 
@@ -193,6 +194,63 @@ public:
     {
         auto routes = std::atomic_load(&routeList);
         return routes ? *routes : std::vector<CouplingRoute>{};
+    }
+
+    //-- Hot-swap coupling integrity -------------------------------------------
+
+    // Called by XOmnibusProcessor::loadEngine() after an engine swap on `slot`.
+    //
+    // AudioToBuffer routes require OpalEngine as the destination — any other
+    // engine as dest will silently return nullptr from the dynamic_cast in
+    // processAudioRoute() and produce no coupling signal, with no diagnostic.
+    // This method marks such routes inactive ("orphaned") so the UI can surface
+    // them as dimmed/disconnected and the user can re-route them.
+    //
+    // All other coupling types (AmpToFilter, LFOToPitch, etc.) survive the swap
+    // because every SynthEngine must handle unknown coupling types gracefully
+    // in applyCouplingInput(). They remain active — the new engine will receive
+    // them and may produce different (but never crash-inducing) behaviour.
+    //
+    // If newEngineId is "Opal", any previously suspended AudioToBuffer routes
+    // to this slot are re-activated (OPAL is being restored to the slot).
+    //
+    // Called on the message thread. Uses the same double-buffered atomic swap
+    // pattern as addRoute/removeUserRoute — safe for the audio thread.
+    void notifyCouplingMatrixOfSwap(int slot, const std::string& newEngineId)
+    {
+        auto current = std::atomic_load(&routeList);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+
+        bool changed = false;
+        for (auto& r : *newRoutes)
+        {
+            if (r.type != CouplingType::AudioToBuffer || r.destSlot != slot)
+                continue;
+
+            if (newEngineId == "Opal")
+            {
+                // OPAL is back — re-activate any suspended AudioToBuffer routes to this slot
+                if (!r.active)
+                {
+                    r.active = true;
+                    changed = true;
+                }
+            }
+            else
+            {
+                // Non-OPAL engine cannot receive AudioToBuffer — suspend the route
+                if (r.active)
+                {
+                    r.active = false;
+                    changed = true;
+                }
+            }
+        }
+
+        if (changed)
+            std::atomic_store(&routeList, newRoutes);
+        // If nothing changed, skip the store — avoids an unnecessary atomic_store
+        // + shared_ptr allocation on every swap that doesn't touch AudioToBuffer.
     }
 
 private:

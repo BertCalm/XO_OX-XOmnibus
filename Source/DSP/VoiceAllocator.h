@@ -107,6 +107,60 @@ struct VoiceAllocator
     }
 
     //--------------------------------------------------------------------------
+    // Coupling-aware LRU allocation.
+    //
+    // Identical to findFreeVoice() but prefers voices that are NOT currently
+    // acting as the primary source for a cross-engine coupling route.
+    //
+    // In the current fleet, getSampleForCoupling() reads a block-level cache
+    // (not live voice state), so voice stealing cannot produce a real-time
+    // corruption. Use this variant only when a future engine type exposes live
+    // per-voice audio buffers as coupling sources (direct voice-level sharing).
+    //
+    // Pass isCoupledSource as callable(int voiceIndex) -> bool.
+    //   Returns true  → voice is a coupling source, prefer not to steal it.
+    //   Returns false → voice is safe to steal via normal LRU.
+    //
+    // Falls back to the global oldest voice if all voices are marked as
+    // coupling sources (polyphony exhaustion with no uncoupled voice).
+    //
+    // IsCoupledFn: callable(int voiceIndex) -> bool
+    //--------------------------------------------------------------------------
+    template <typename VoiceArray, typename IsCoupledFn>
+    static int findFreeVoiceCouplingAware (VoiceArray& voices, int maxPolyphony,
+                                            IsCoupledFn isCoupledSource) noexcept
+    {
+        // Pass 1: find inactive voice (no steal needed)
+        for (int i = 0; i < maxPolyphony; ++i)
+            if (!voices[i].active)
+                return i;
+
+        // Pass 2: LRU steal — prefer uncoupled voices; track coupled as fallback
+        int   bestUncoupled     = -1;
+        uint64_t oldestUncoupled = UINT64_MAX;
+        int   bestFallback      = 0;
+        uint64_t oldestFallback  = UINT64_MAX;
+
+        for (int i = 0; i < maxPolyphony; ++i)
+        {
+            if (voices[i].startTime < oldestFallback)
+            {
+                oldestFallback = voices[i].startTime;
+                bestFallback   = i;
+            }
+
+            if (!isCoupledSource(i) && voices[i].startTime < oldestUncoupled)
+            {
+                oldestUncoupled = voices[i].startTime;
+                bestUncoupled   = i;
+            }
+        }
+
+        // Prefer uncoupled voice; fall back to oldest overall if all are coupled
+        return (bestUncoupled >= 0) ? bestUncoupled : bestFallback;
+    }
+
+    //--------------------------------------------------------------------------
     // Count active voices. Useful for polyphony display and CPU budgeting.
     //--------------------------------------------------------------------------
     template <typename VoiceArray>

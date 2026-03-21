@@ -860,6 +860,17 @@ public:
 
         float peakEnv = 0.0f;
 
+        // SRO (2026-03-21): Precompute per-channel pan gains once per block.
+        // channelPans[c] is block-constant — computing cos/sin inside the sample
+        // loop was calling 32 std::cos + 32 std::sin per sample at 8-voice polyphony.
+        float precomputedPanL[4], precomputedPanR[4];
+        for (int c = 0; c < 4; ++c)
+        {
+            float panAngle = (channelPans[c] + 1.0f) * 0.25f * kOsteriaPI;
+            precomputedPanL[c] = std::cos (panAngle);
+            precomputedPanR[c] = std::sin (panAngle);
+        }
+
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
@@ -1099,10 +1110,9 @@ public:
                     // Apply level
                     channelOut *= channelLevels[c];
 
-                    // Stereo panning (constant power)
-                    float panAngle = (channelPans[c] + 1.0f) * 0.25f * kOsteriaPI;
-                    float panL = std::cos (panAngle);
-                    float panR = std::sin (panAngle);
+                    // Stereo panning (constant power) — SRO: use block-precomputed values
+                    float panL = precomputedPanL[c];
+                    float panR = precomputedPanR[c];
 
                     float chL = channelOut * panL;
                     float chR = channelOut * panR;

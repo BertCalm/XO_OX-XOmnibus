@@ -339,6 +339,17 @@ public:
         int safeSamples = std::min (numSamples, 2048);
         std::fill (monoMix, monoMix + safeSamples, 0.0f);
 
+        // SRO (2026-03-21): Precompute per-voice pan gains once per block.
+        // vs.pan comes from param snapshot — block-constant. Moving cos/sin
+        // outside the sample loop eliminates 16 trig calls/sample at 8-voice load.
+        float precomputedPanL[8], precomputedPanR[8];
+        for (int v = 0; v < 8; ++v)
+        {
+            float angle = (snap.voice[v].pan + 1.0f) * 0.25f * 3.14159265f;
+            precomputedPanL[v] = std::cos (angle);
+            precomputedPanR[v] = std::sin (angle);
+        }
+
         for (int s = 0; s < safeSamples; ++s)
         {
             float lfo1Val = lfo1_.process();
@@ -403,11 +414,9 @@ public:
                 // Apply voice level
                 sample *= vs.level;
 
-                // Stereo panning (equal-power)
-                float panL = std::cos ((vs.pan + 1.0f) * 0.25f * 3.14159265f);
-                float panR = std::sin ((vs.pan + 1.0f) * 0.25f * 3.14159265f);
-                sampleL += sample * panL;
-                sampleR += sample * panR;
+                // Stereo panning (equal-power) — SRO: use block-precomputed values
+                sampleL += sample * precomputedPanL[v];
+                sampleR += sample * precomputedPanR[v];
 
                 voices_[v].lastSample = sample;
             }

@@ -35,7 +35,9 @@ public:
     //==========================================================================
     void prepare (double /*sampleRate*/) noexcept
     {
-        // No per-sample state to initialise — coupling acts on Voice phases
+        // Reset control-rate counter and cached mean phase
+        controlCounter_ = 0;
+        cachedMeanPhase_ = 0.0f;
     }
 
     //==========================================================================
@@ -46,6 +48,13 @@ public:
     // voices:     array of 6 Voice objects (phases read/written)
     // entrain:    coupling strength K  [0, 1]
     // pulseRate:  modulates convergence speed [0.01, 8] Hz
+    //
+    // SRO (2026-03-21): std::atan2 moved to control rate (every 64 samples).
+    // Kuramoto synchronization time constant ~0.5s means 1kHz update rate
+    // (64-sample blocks at 44.1kHz = ~689Hz) is perceptually equivalent
+    // to sample-rate precision. Saves ~63/64 atan2 calls per sample.
+    static constexpr int kControlRateDiv = 64;
+
     template <size_t N>
     void process (std::array<Voice, N>& voices,
                   float entrain,
@@ -53,23 +62,30 @@ public:
     {
         if (entrain < 0.001f) return;
 
-        // 1. Compute the circular mean of active voice phases via Kuramoto order param
-        float sinSum = 0.0f;
-        float cosSum = 0.0f;
-        int   count  = 0;
-        for (auto& v : voices)
+        // 1. Update circular mean only at control rate
+        ++controlCounter_;
+        if (controlCounter_ >= kControlRateDiv)
         {
-            if (!v.isActive()) continue;
-            float theta = v.phase * 6.28318530f;
-            sinSum += fastSin (theta);
-            cosSum += fastCos (theta);
-            ++count;
+            controlCounter_ = 0;
+
+            float sinSum = 0.0f;
+            float cosSum = 0.0f;
+            int   count  = 0;
+            for (auto& v : voices)
+            {
+                if (!v.isActive()) continue;
+                float theta = v.phase * 6.28318530f;
+                sinSum += fastSin (theta);
+                cosSum += fastCos (theta);
+                ++count;
+            }
+
+            if (count >= 2)
+                cachedMeanPhase_ = std::atan2 (sinSum, cosSum);  // in [-π, π]
         }
 
-        if (count < 2) return;
-
-        // Mean phase in radians
-        float meanPhase = std::atan2 (sinSum, cosSum);  // in [-π, π]
+        // Bail if fewer than 2 voices have ever been active
+        // (cachedMeanPhase_ remains 0 until first valid computation)
 
         // 2. Coupling rate scales with entrain and pulse rate.
         //    Max shift per sample = entrain * pulseRate / sampleRate
@@ -78,13 +94,13 @@ public:
         //   baseRate ≈ 0.0002 * pulseRate (tuned so full K=1 sync in ~0.5s)
         float nudgeAmt = entrain * 0.0002f * std::max (0.01f, pulseRate);
 
-        // 3. Apply nudge to each active voice
+        // 3. Apply nudge to each active voice using cached mean phase
         for (auto& v : voices)
         {
             if (!v.isActive()) continue;
 
             float theta     = v.phase * 6.28318530f;
-            float phaseDiff = meanPhase - theta;
+            float phaseDiff = cachedMeanPhase_ - theta;
 
             // Wrap to [-π, π]
             while (phaseDiff >  3.14159265f) phaseDiff -= 6.28318530f;
@@ -102,6 +118,10 @@ public:
             if (v.phase <  0.0f) v.phase += 1.0f;
         }
     }
+
+private:
+    int   controlCounter_  = 0;
+    float cachedMeanPhase_ = 0.0f;
 };
 
 } // namespace xoverlap

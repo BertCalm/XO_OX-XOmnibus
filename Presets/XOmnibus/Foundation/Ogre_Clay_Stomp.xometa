@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OGRE — percussive rhythmic sub. Short attack, hard drive, lands and stays landed.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.68,
+    "space": 0.15,
+    "aggression": 0.48
+  },
+  "engines": ["Ogre"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Clay Stomp",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.4,
+      "ogre_drive": 0.65,
+      "ogre_rootDepth": 0.4,
+      "ogre_bodyResonance": 0.5,
+      "ogre_brightness": 2800.0,
+      "ogre_density": 0.55,
+      "ogre_soil": 0.15,
+      "ogre_tectonicRate": 0.05,
+      "ogre_tectonicDepth": 2.0,
+      "ogre_attack": 0.003,
+      "ogre_decay": 0.3,
+      "ogre_sustain": 0.5,
+      "ogre_release": 0.15,
+      "ogre_filterEnvAmount": 0.7,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.45,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["ogre", "percussive", "rhythmic", "stomp"],
+  "version": "1.0.0",
+  "tempo": null
+}
