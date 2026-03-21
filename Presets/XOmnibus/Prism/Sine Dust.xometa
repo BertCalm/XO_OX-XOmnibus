@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Sine Dust",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Minimum partials (4) with maximum detune and zero sync. Four sine waves drift aimlessly through frequency space — no formant structure, no harmonic series, just four independent tones. Stripped to the atomic level. Pure, empty, meditative chaos.",
-  "tags": ["minimal", "sine", "sparse", "drifting", "atomic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Minimum partials (4) with maximum detune and zero sync. Four sine waves drift aimlessly through frequency space \u2014 no formant structure, no harmonic series, just four independent tones. Stripped to the atomic level. Pure, empty, meditative chaos.",
+  "tags": [
+    "minimal",
+    "sine",
+    "sparse",
+    "drifting",
+    "atomic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.15,
       "opera_stage": 0.5,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

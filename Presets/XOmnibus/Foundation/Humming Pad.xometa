@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Humming Pad",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Closed-mouth vowel U with low effort — the sound of humming to yourself. Dark, warm, comforting. 2-voice unison adds gentle width without thickness. A background pad that never intrudes.",
-  "tags": ["pad", "warm", "humming", "background", "gentle"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Closed-mouth vowel U with low effort \u2014 the sound of humming to yourself. Dark, warm, comforting. 2-voice unison adds gentle width without thickness. A background pad that never intrudes.",
+  "tags": [
+    "pad",
+    "warm",
+    "humming",
+    "background",
+    "gentle"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.3,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

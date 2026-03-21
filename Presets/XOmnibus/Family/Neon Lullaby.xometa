@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Neon Lullaby",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX personality — bright and sparkling but gentle. High partials shimmer like neon tetras schooling through warm water. The soprano formant profile sings a lullaby: soft effort, moderate drama, slow LFO sweeping the vowel space from E to I. A bedtime story told in light.",
-  "tags": ["family", "felix", "pad", "gentle", "bright"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "feliX personality \u2014 bright and sparkling but gentle. High partials shimmer like neon tetras schooling through warm water. The soprano formant profile sings a lullaby: soft effort, moderate drama, slow LFO sweeping the vowel space from E to I. A bedtime story told in light.",
+  "tags": [
+    "family",
+    "felix",
+    "pad",
+    "gentle",
+    "bright"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.6,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 1,
       "opera_vowelB": 2,

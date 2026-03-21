@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Golden Ratio",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Partials tuned to emphasize frequency relationships near phi (1.618). At high Kuramoto sync, the partial bank converges on a ratio field that approximates the golden spiral in frequency space. The result is neither consonant nor dissonant — it occupies a third category: mathematically inevitable. Strange beauty from inevitable proportion.",
-  "tags": ["golden", "phi", "mathematical", "irrational", "crystalline"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Partials tuned to emphasize frequency relationships near phi (1.618). At high Kuramoto sync, the partial bank converges on a ratio field that approximates the golden spiral in frequency space. The result is neither consonant nor dissonant \u2014 it occupies a third category: mathematically inevitable. Strange beauty from inevitable proportion.",
+  "tags": [
+    "golden",
+    "phi",
+    "mathematical",
+    "irrational",
+    "crystalline"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.78,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.45,
       "opera_vowelA": 5,
       "opera_vowelB": 2,

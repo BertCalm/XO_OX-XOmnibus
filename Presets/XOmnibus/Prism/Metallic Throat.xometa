@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Metallic Throat",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High filter resonance and bright tilt create metallic formant peaks. Alien vowel with high effort produces a voice that sounds like it is being sung through a sheet of steel. Cold, hard, ringing. The anti-choir.",
-  "tags": ["metallic", "cold", "resonant", "industrial", "harsh"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "metallic",
+    "cold",
+    "resonant",
+    "industrial",
+    "harsh"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.6,
       "opera_voice": 0.8,
-      "opera_chorus": 0.25,
       "opera_stage": 0.2,
       "opera_vowelA": 5,
       "opera_vowelB": 2,

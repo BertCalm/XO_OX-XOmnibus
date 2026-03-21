@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Ensemble Bloom",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "3-voice unison with moderate detune — a small ensemble that blooms outward as you hold the chord. ResSens=0.55 produces occasional harmonic surprises. Wide stereo field for cinematic placement.",
-  "tags": ["ensemble", "pad", "wide", "bloom", "cinematic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "3-voice unison with moderate detune \u2014 a small ensemble that blooms outward as you hold the chord. ResSens=0.55 produces occasional harmonic surprises. Wide stereo field for cinematic placement.",
+  "tags": [
+    "ensemble",
+    "pad",
+    "wide",
+    "bloom",
+    "cinematic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.38,
       "opera_voice": 0.5,
-      "opera_chorus": 0.55,
       "opera_stage": 0.5,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

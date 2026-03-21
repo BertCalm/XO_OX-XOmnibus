@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Anima Breath",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin Awakening #3. Soprano formant profile, bright head-voice territory. Breath=0.6 and Effort=0.3 place the engine in whisper territory where partials shimmer independently like light through gauze. Spectral tilt +0.4 lifts the upper harmonics into a luminous haze. Sounds like someone breathing light into a cathedral.",
-  "tags": ["breath", "soprano", "whisper", "luminous", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "breath",
+    "soprano",
+    "whisper",
+    "luminous",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.7,
-      "opera_chorus": 0.25,
       "opera_stage": 0.65,
       "opera_vowelA": 0,
       "opera_vowelB": 2,

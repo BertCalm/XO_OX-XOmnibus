@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Duet (feliX Sings)",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The neon-tetra half of the duet. Bright soprano formant, high partial emphasis, fast vibrato at 7 Hz — feliX's signature nervous energy rendered as vocal shimmer. Effort 0.7 pushes into belt territory where feliX is most alive. Drama at 0.5 keeps partials dancing at the edge of synchrony — chaotic enough to sparkle, ordered enough to sing. Pair with Oscar Hums for the full OddfeliX/OddOscar experience.",
-  "tags": ["family", "felix", "duet", "soprano", "bright"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The neon-tetra half of the duet. Bright soprano formant, high partial emphasis, fast vibrato at 7 Hz \u2014 feliX's signature nervous energy rendered as vocal shimmer. Effort 0.7 pushes into belt territory where feliX is most alive. Drama at 0.5 keeps partials dancing at the edge of synchrony \u2014 chaotic enough to sparkle, ordered enough to sing. Pair with Oscar Hums for the full OddfeliX/OddOscar experience.",
+  "tags": [
+    "family",
+    "felix",
+    "duet",
+    "soprano",
+    "bright"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.5,
       "opera_voice": 0.7,
-      "opera_chorus": 0.35,
       "opera_stage": 0.3,
       "opera_vowelA": 1,
       "opera_vowelB": 2,

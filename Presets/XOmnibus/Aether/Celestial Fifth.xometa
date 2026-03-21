@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Celestial Fifth",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optimized for perfect fifth intervals. At Drama=0.85, the 3:2 frequency ratio between partials locks with zero beating. The formant is bright E-vowel, emphasizing the clarity of the interval. Play stacked fifths and hear the Pythagorean spiral — the oldest harmony in human music, rendered with digital precision.",
-  "tags": ["fifth", "pythagorean", "interval", "locked", "ancient"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Optimized for perfect fifth intervals. At Drama=0.85, the 3:2 frequency ratio between partials locks with zero beating. The formant is bright E-vowel, emphasizing the clarity of the interval. Play stacked fifths and hear the Pythagorean spiral \u2014 the oldest harmony in human music, rendered with digital precision.",
+  "tags": [
+    "fifth",
+    "pythagorean",
+    "interval",
+    "locked",
+    "ancient"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.85,
       "opera_voice": 0.55,
-      "opera_chorus": 0.25,
       "opera_stage": 0.45,
       "opera_vowelA": 1,
       "opera_vowelB": 1,

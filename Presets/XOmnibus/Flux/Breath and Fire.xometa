@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Breath and Fire",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Double-peak arc over 8 seconds — the breath and the fire. First peak is soft (0.4), breathy, intimate — the inhale. Brief dip. Second peak is aggressive (0.9), belted, bright — the fire. LFO2 modulates breath component so the noise texture evolves throughout. Short enough to retrigger with each new note for rhythmic use.",
-  "tags": ["conductor", "double-peak", "breath", "dynamic", "short"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Double-peak arc over 8 seconds \u2014 the breath and the fire. First peak is soft (0.4), breathy, intimate \u2014 the inhale. Brief dip. Second peak is aggressive (0.9), belted, bright \u2014 the fire. LFO2 modulates breath component so the noise texture evolves throughout. Short enough to retrigger with each new note for rhythmic use.",
+  "tags": [
+    "conductor",
+    "double-peak",
+    "breath",
+    "dynamic",
+    "short"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.3,
       "opera_vowelA": 1,
       "opera_vowelB": 0,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Luminous Void",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High sync in a vast empty space. Drama=0.9 locks partials into crystalline purity while Stage=0.85 places the sound at infinite distance. The result is a single point of harmonic light in an immense darkness — beautiful, isolated, unreachable. The longer you listen, the more detail emerges from the void.",
-  "tags": ["void", "luminous", "vast", "crystalline", "cinematic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "High sync in a vast empty space. Drama=0.9 locks partials into crystalline purity while Stage=0.85 places the sound at infinite distance. The result is a single point of harmonic light in an immense darkness \u2014 beautiful, isolated, unreachable. The longer you listen, the more detail emerges from the void.",
+  "tags": [
+    "void",
+    "luminous",
+    "vast",
+    "crystalline",
+    "cinematic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.9,
       "opera_voice": 0.55,
-      "opera_chorus": 0.2,
       "opera_stage": 0.85,
       "opera_vowelA": 2,
       "opera_vowelB": 3,

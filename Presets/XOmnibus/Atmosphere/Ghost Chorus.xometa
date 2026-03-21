@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ghost Chorus",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The acausal resonance showcase. ResSens=0.85 means small partial clusters spontaneously phase-lock, creating unpredictable harmonic blooms that appear and vanish like ghosts. No two performances are identical. Breathy, ethereal, alive with emergent events that linger in vast reverberant space.",
-  "tags": ["acausal", "ghost", "atmosphere", "emergent", "ethereal", "unpredictable"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "acausal",
+    "ghost",
+    "atmosphere",
+    "emergent",
+    "ethereal",
+    "unpredictable"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +36,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.6,
-      "opera_chorus": 0.3,
       "opera_stage": 0.7,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

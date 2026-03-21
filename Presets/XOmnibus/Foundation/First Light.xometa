@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "First Light",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The discovery preset. Warm, vocal, immediately beautiful. Drama=0.35 places the Kuramoto field in its most musical zone — partials shimmer at the edge of synchrony. Play a chord and hear a choir that dances between independence and alignment. Mod wheel sweeps the dramatic arc.",
-  "tags": ["vocal", "choir", "warm", "init", "kuramoto", "foundation"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The discovery preset. Warm, vocal, immediately beautiful. Drama=0.35 places the Kuramoto field in its most musical zone \u2014 partials shimmer at the edge of synchrony. Play a chord and hear a choir that dances between independence and alignment. Mod wheel sweeps the dramatic arc.",
+  "tags": [
+    "vocal",
+    "choir",
+    "warm",
+    "init",
+    "kuramoto",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +36,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.45,
-      "opera_chorus": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

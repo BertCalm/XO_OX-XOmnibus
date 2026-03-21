@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Overtone Prayer",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Inspired by Tuvan throat singing, where a single voice produces audible overtones. High sync with bright tilt lifts individual harmonics into prominence above the fundamental. The formant position (O-vowel) mimics the throat shape of khoomi technique. Each note is a prayer sung in frequencies, not words.",
-  "tags": ["overtone", "throat", "prayer", "tuvan", "harmonic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "overtone",
+    "throat",
+    "prayer",
+    "tuvan",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.8,
       "opera_voice": 0.35,
-      "opera_chorus": 0.25,
       "opera_stage": 0.5,
       "opera_vowelA": 3,
       "opera_vowelB": 3,

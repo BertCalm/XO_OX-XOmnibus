@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Spring Choir",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OBSCURA coupling. Warm 4-voice unison choir designed to receive mass-spring perturbation across its wide stereo field. Each unison voice responds differently to OBSCURA's spring constants, creating a choir where each singer wobbles at a different rate. The collective is held together by Kuramoto coupling; OBSCURA pulls them apart. The tension is the music.",
-  "tags": ["entangled", "obscura", "choir", "spring", "wide"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "entangled",
+    "obscura",
+    "choir",
+    "spring",
+    "wide"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.5,
-      "opera_chorus": 0.45,
       "opera_stage": 0.45,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

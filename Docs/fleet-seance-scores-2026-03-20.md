@@ -1,7 +1,7 @@
 # XOmnibus Fleet Seance Score Audit
 **Generated:** 2026-03-20
-**Updated:** 2026-03-21 — 5 engines recovered (OBESE/ODDOSCAR/ODDFELIX/OCELOT/ORPHICA); post-fix rescoring applied below.
-**Scope:** All 42 registered engines at time of writing (OXBOW + OWARE added same day — see audit note below)
+**Updated:** 2026-03-21 — 5 engines recovered (OBESE/ODDOSCAR/ODDFELIX/OCELOT/ORPHICA); post-fix rescoring applied below. OPERA full seance added (8.7/10, path to 9.1).
+**Scope:** All 46 registered engines (OXBOW + OWARE + OPERA + OFFERING added 2026-03-21)
 **Sources:** `Docs/seances/*_verdict.md`, `Docs/seances/*_seance*.md`, `scripture/seances/*.md`, `Docs/seance_cross_reference.md`, `Docs/seance_ombre_orca_octopus.md`, `Docs/seance_ostinato_opensky_oceandeep_ouie.md`, `~/.claude/skills/synth-seance/knowledge/index.md`
 
 ---
@@ -10,14 +10,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total engines registered | 44 (42 at time of this audit; OXBOW seanced 2026-03-20 post-fix; OWARE seanced 2026-03-21) |
-| Engines with formal numeric score | 37 |
+| Total engines registered | 46 (OPERA #45 + OFFERING #46 added 2026-03-21) |
+| Engines with formal numeric score | 38 (OPERA added 2026-03-21 full seance) |
 | Engines with non-numeric verdict only | 7 (OBSCURA, OPTIC, ORBITAL, ORGANON, OVERBITE, OSPREY, OSTERIA — all approved) |
-| Engines with NO seance of any kind | 0 |
+| Engines with NO seance of any kind | 1 (OFFERING — post-build seance at 8.8/10, see `Docs/seances/offering-post-build-seance-2026-03-21.md`) |
 | Score range (numeric) | 5.9 → 9.2 (OWARE post-fix) |
-| Median score (numeric, post-recovery) | ~8.5 (updated 2026-03-21 after 5-engine DSP fix session) |
+| Median score (numeric, post-recovery) | ~8.6 (updated 2026-03-21 after OPERA full seance + 5-engine DSP fix session) |
 
-> NOTE: All 44 engines have now been through at least one seance. OXBOW (engine 43) was seanced 2026-03-20 (score 9.0 post-fix). OWARE (engine 44) was seanced 2026-03-21 (score 8.7/10, verdict: Conditionally Blessed, `Docs/seance-oware-verdict.md`). Both are now included in the tables below. Update applied 2026-03-21.
+> NOTE: All 46 engines have now been through at least one seance. OXBOW (engine 43) was seanced 2026-03-20 (score 9.0 post-fix). OWARE (engine 44) was seanced 2026-03-21 (score 8.7/10, full seance, `Docs/seance-oware-verdict.md`). OPERA (engine 45) full seance completed 2026-03-21 (score 8.7/10, path to 9.1, `Docs/seances/opera-seance-full-2026-03-21.md`). OFFERING (engine 46) post-build seance 8.8/10 (`Docs/seances/offering-post-build-seance-2026-03-21.md`). Update applied 2026-03-21.
 
 ---
 
@@ -168,6 +168,7 @@ Neither appears in the fleet table above. Seance status:
 | 4 | OUTWIT (re-seance) | 8.7/10 | Step rate ceiling 40 Hz blocks audio-rate CA synthesis; pitch wheel unhandled | 2026-03-20 |
 | 5 | OSTINATO (re-seance) | 8.7/10 | Humanization deterministic (fastSin hash repeats); mono Schroeder reverb | 2026-03-20 |
 | 6 | OWARE | 8.7/10 | LFO2 computed but not applied (3 dead params); filter envelope decay hardcoded; 50 Hz sympathetic window pitch-invariant | 2026-03-21 |
+| 7 | OPERA | **8.7/10** (full seance) — path to **9.1/10** | arcMode defaults to Manual (Conductor off by default — highest-priority fix); ghost param `opera_chorus` in preset schema (D004-adjacent); 120s arc ceiling too restrictive for geological-time use; per-sample formant recompute is CPU waste. Fix 1 (arcMode default→1) +0.2; Fix 2 (arc ceiling→3600s) +0.1; Fix 3 (opera_chorus removal) +0.05; Fix 4 (velocity audit) +0.1 → **9.1/10**. 3 Blessings: B035 OperaConductor, B036 Coherence Panning, B037 EmotionalMemory. DB005 opened. See `Docs/seances/opera-seance-full-2026-03-21.md` | 2026-03-21 |
 
 ---
 

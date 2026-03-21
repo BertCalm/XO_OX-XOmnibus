@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Choir",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A choir captured at the moment of perfect alignment and held there forever. High sync, 4-voice unison with zero detune — every voice perfectly in tune, every partial perfectly locked. No vibrato, no movement, no breath. Just the pure harmonic structure of massed voices, crystallized in amber.",
-  "tags": ["choir", "frozen", "unison", "crystalline", "static"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "A choir captured at the moment of perfect alignment and held there forever. High sync, 4-voice unison with zero detune \u2014 every voice perfectly in tune, every partial perfectly locked. No vibrato, no movement, no breath. Just the pure harmonic structure of massed voices, crystallized in amber.",
+  "tags": [
+    "choir",
+    "frozen",
+    "unison",
+    "crystalline",
+    "static"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.9,
       "opera_voice": 0.5,
-      "opera_chorus": 0.5,
       "opera_stage": 0.5,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

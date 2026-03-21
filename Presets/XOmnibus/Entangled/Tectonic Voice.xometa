@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Tectonic Voice",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBSCURA coupling. Mass-spring physics perturb partial phases — the voice cracks and reforms like singing through an earthquake. Low drama (0.35) keeps the Kuramoto field near the phase boundary where external perturbation has maximum effect. Each note from OBSCURA sends a seismic wave through the choir.",
-  "tags": ["entangled", "obscura", "physics", "tectonic", "phase-mod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OBSCURA coupling. Mass-spring physics perturb partial phases \u2014 the voice cracks and reforms like singing through an earthquake. Low drama (0.35) keeps the Kuramoto field near the phase boundary where external perturbation has maximum effect. Each note from OBSCURA sends a seismic wave through the choir.",
+  "tags": [
+    "entangled",
+    "obscura",
+    "physics",
+    "tectonic",
+    "phase-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.45,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Acausal Bloom",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ResSens=0.95. Drama=0.3 keeps coupling below global transition. Small clusters of 3-5 partials spontaneously lock, creating unpredictable harmonic flowers that bloom and dissolve. Every performance is unique. The randomness is the feature.",
-  "tags": ["acausal", "generative", "bloom", "unpredictable", "clusters"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "acausal",
+    "generative",
+    "bloom",
+    "unpredictable",
+    "clusters"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.3,
       "opera_voice": 0.5,
-      "opera_chorus": 0.35,
       "opera_stage": 0.5,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

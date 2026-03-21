@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Duende",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The workhorse lead. Full harmonic series, strong fundamental, high sync but not total — there is still life in the partials. Duende is the raw emotional power in flamenco singing. Velocity shapes both brightness and effort — soft keys whisper, hard keys belt. The preset that proves the engine can simply be played.",
-  "tags": ["lead", "vocal", "expressive", "velocity", "hero", "duende"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The workhorse lead. Full harmonic series, strong fundamental, high sync but not total \u2014 there is still life in the partials. Duende is the raw emotional power in flamenco singing. Velocity shapes both brightness and effort \u2014 soft keys whisper, hard keys belt. The preset that proves the engine can simply be played.",
+  "tags": [
+    "lead",
+    "vocal",
+    "expressive",
+    "velocity",
+    "hero",
+    "duende"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +36,6 @@
     "Opera": {
       "opera_drama": 0.55,
       "opera_voice": 0.4,
-      "opera_chorus": 0.25,
       "opera_stage": 0.25,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

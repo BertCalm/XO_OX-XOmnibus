@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Helium Voice",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pitched up 2 octaves with extreme bright tilt and reduced partials. The formants compress into an impossibly high register — a cartoon soprano, a voice from a body the size of a thimble. Absurd, fun, surprisingly musical in the upper register.",
-  "tags": ["high", "pitch-shifted", "cartoon", "fun", "soprano"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Pitched up 2 octaves with extreme bright tilt and reduced partials. The formants compress into an impossibly high register \u2014 a cartoon soprano, a voice from a body the size of a thimble. Absurd, fun, surprisingly musical in the upper register.",
+  "tags": [
+    "high",
+    "pitch-shifted",
+    "cartoon",
+    "fun",
+    "soprano"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.55,
       "opera_voice": 0.7,
-      "opera_chorus": 0.2,
       "opera_stage": 0.3,
       "opera_vowelA": 1,
       "opera_vowelB": 2,

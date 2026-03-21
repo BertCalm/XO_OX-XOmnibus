@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Insect Choir",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "High partial count with fast vibrato at 15 Hz mimics insectoid wing-beat frequencies. Minimal coupling lets each partial buzz independently. Bright tilt with I-vowel creates the chitinous resonance of a thousand wings. Not a choir of humans — a choir of cicadas.",
-  "tags": ["insect", "buzz", "inharmonic", "fast", "creature"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "High partial count with fast vibrato at 15 Hz mimics insectoid wing-beat frequencies. Minimal coupling lets each partial buzz independently. Bright tilt with I-vowel creates the chitinous resonance of a thousand wings. Not a choir of humans \u2014 a choir of cicadas.",
+  "tags": [
+    "insect",
+    "buzz",
+    "inharmonic",
+    "fast",
+    "creature"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.1,
       "opera_voice": 0.75,
-      "opera_chorus": 0.45,
       "opera_stage": 0.2,
       "opera_vowelA": 2,
       "opera_vowelB": 5,

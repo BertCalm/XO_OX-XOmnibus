@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Xenoglossia",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Speaking in tongues from another planet. Alien-to-Alien vowel with fast LFO on formant morph — the voice rapidly cycles through impossible vowel shapes. High detune and 4-voice unison create a chattering, multilingual chorus from beyond.",
-  "tags": ["alien", "vocal", "fast", "chattering", "beyond"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Speaking in tongues from another planet. Alien-to-Alien vowel with fast LFO on formant morph \u2014 the voice rapidly cycles through impossible vowel shapes. High detune and 4-voice unison create a chattering, multilingual chorus from beyond.",
+  "tags": [
+    "alien",
+    "vocal",
+    "fast",
+    "chattering",
+    "beyond"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.25,
       "opera_voice": 0.5,
-      "opera_chorus": 0.6,
       "opera_stage": 0.35,
       "opera_vowelA": 5,
       "opera_vowelB": 5,

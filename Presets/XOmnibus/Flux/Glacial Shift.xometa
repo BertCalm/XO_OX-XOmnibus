@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glacial Shift",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The longest arc in the library: 120 seconds of imperceptible linear ramp from chaos to modest synchrony. Peak at 0.4 — the field never fully resolves. Like watching a glacier move. For installations, ambient sets, and meditative performance. The drama is geological patience.",
-  "tags": ["conductor", "ultra-long", "ambient", "glacial", "linear"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The longest arc in the library: 120 seconds of imperceptible linear ramp from chaos to modest synchrony. Peak at 0.4 \u2014 the field never fully resolves. Like watching a glacier move. For installations, ambient sets, and meditative performance. The drama is geological patience.",
+  "tags": [
+    "conductor",
+    "ultra-long",
+    "ambient",
+    "glacial",
+    "linear"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.4,
-      "opera_chorus": 0.35,
       "opera_stage": 0.7,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

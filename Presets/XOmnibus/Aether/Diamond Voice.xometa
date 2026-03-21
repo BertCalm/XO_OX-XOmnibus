@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Diamond Voice",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum clarity. High drama, bright tilt, soprano formant, open filter. Every partial is visible, every frequency ratio precise, every spectral peak sharp as a cut diamond facet. This is the vocal engine stripped of all softness — pure spectral geometry. Velocity maps to filter for expressive brightness control.",
-  "tags": ["diamond", "clarity", "soprano", "sharp", "precise"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Maximum clarity. High drama, bright tilt, soprano formant, open filter. Every partial is visible, every frequency ratio precise, every spectral peak sharp as a cut diamond facet. This is the vocal engine stripped of all softness \u2014 pure spectral geometry. Velocity maps to filter for expressive brightness control.",
+  "tags": [
+    "diamond",
+    "clarity",
+    "soprano",
+    "sharp",
+    "precise"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.88,
       "opera_voice": 0.7,
-      "opera_chorus": 0.2,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

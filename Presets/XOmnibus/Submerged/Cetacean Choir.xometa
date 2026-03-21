@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cetacean Choir",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A pod of whales singing in loose unison. 2-voice stacking with wide detune creates the sense of multiple animals vocalizing together — close but not identical, synchronized but independent. The Conductor arc runs 35 seconds, gradually bringing the pod into alignment. Deep fundamental, wide vibrato, formant cycling through the dark vowels. The ocean as cathedral, cetaceans as congregation.",
-  "tags": ["submerged", "whale", "choir", "oceanic", "pod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "A pod of whales singing in loose unison. 2-voice stacking with wide detune creates the sense of multiple animals vocalizing together \u2014 close but not identical, synchronized but independent. The Conductor arc runs 35 seconds, gradually bringing the pod into alignment. Deep fundamental, wide vibrato, formant cycling through the dark vowels. The ocean as cathedral, cetaceans as congregation.",
+  "tags": [
+    "submerged",
+    "whale",
+    "choir",
+    "oceanic",
+    "pod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.25,
-      "opera_chorus": 0.4,
       "opera_stage": 0.8,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

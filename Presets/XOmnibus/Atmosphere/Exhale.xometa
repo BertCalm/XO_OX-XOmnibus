@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Exhale",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A single long breath out. Very high breath parameter with formant shaping gives this the quality of an actual human exhalation captured and sustained. LFO1 slowly closes the filter over time, mimicking the natural decay of breath pressure. Each note is a sigh that never quite finishes.",
-  "tags": ["breath", "exhale", "human", "intimate", "organic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "breath",
+    "exhale",
+    "human",
+    "intimate",
+    "organic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.08,
       "opera_voice": 0.45,
-      "opera_chorus": 0.2,
       "opera_stage": 0.6,
       "opera_vowelA": 0,
       "opera_vowelB": 4,

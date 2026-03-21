@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "SOFAR Channel",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The Sound Fixing and Ranging channel — a horizontal layer in the deep ocean where sound velocity reaches its minimum, trapping acoustic energy for thousands of miles. This preset lives there: extremely low fundamental, minimal high-frequency content, vast reverberant space. The slow LFO breathes the formant like pressure waves bending through the thermocline. Patient, infinite, lonely.",
-  "tags": ["submerged", "SOFAR", "deep", "drone", "oceanic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The Sound Fixing and Ranging channel \u2014 a horizontal layer in the deep ocean where sound velocity reaches its minimum, trapping acoustic energy for thousands of miles. This preset lives there: extremely low fundamental, minimal high-frequency content, vast reverberant space. The slow LFO breathes the formant like pressure waves bending through the thermocline. Patient, infinite, lonely.",
+  "tags": [
+    "submerged",
+    "SOFAR",
+    "deep",
+    "drone",
+    "oceanic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.15,
-      "opera_chorus": 0.3,
       "opera_stage": 0.9,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Bubble Rise",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX blowing bubbles. Bright, effervescent — the filter envelope creates a pluck-like onset that fades into a sustained shimmer. High resonance sensitivity means small partial clusters pop in and out of alignment like bubbles catching light. Fast attack, medium release. Playful and immediate — every note feels like opening a present.",
-  "tags": ["family", "felix", "pluck", "bubbly", "playful"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "feliX blowing bubbles. Bright, effervescent \u2014 the filter envelope creates a pluck-like onset that fades into a sustained shimmer. High resonance sensitivity means small partial clusters pop in and out of alignment like bubbles catching light. Fast attack, medium release. Playful and immediate \u2014 every note feels like opening a present.",
+  "tags": [
+    "family",
+    "felix",
+    "pluck",
+    "bubbly",
+    "playful"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.6,
-      "opera_chorus": 0.25,
       "opera_stage": 0.3,
       "opera_vowelA": 1,
       "opera_vowelB": 0,

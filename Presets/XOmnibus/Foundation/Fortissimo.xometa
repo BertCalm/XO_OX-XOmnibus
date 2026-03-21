@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Fortissimo",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full power. Effort=0.9, Drama=0.7, filter wide open. The partials lock hard and the voice belts with everything it has. 48 partials for maximum spectral density. Fast attack for immediate impact. The loudest, proudest preset in Foundation.",
-  "tags": ["lead", "powerful", "belt", "loud", "impact"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "lead",
+    "powerful",
+    "belt",
+    "loud",
+    "impact"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.7,
       "opera_voice": 0.55,
-      "opera_chorus": 0.3,
       "opera_stage": 0.25,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

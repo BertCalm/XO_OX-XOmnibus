@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Abyssal Moan",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pitched down 3 octaves into subsonic territory. 48 partials with dark tilt and maximum detune create a grinding, primordial texture. O-to-U vowel in the lowest register sounds like tectonic plates singing. Slow vibrato with extreme depth.",
-  "tags": ["sub-bass", "dark", "tectonic", "extreme", "drone"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "sub-bass",
+    "dark",
+    "tectonic",
+    "extreme",
+    "drone"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.2,
-      "opera_chorus": 0.5,
       "opera_stage": 0.5,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pillow Talk",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar at his softest. Whisper-effort with high breath content creates an intimate, ASMR-like vocal texture. Low drama means partials drift independently — a gentle haze rather than a defined voice. Dark filter, slow everything. The sound of someone humming while falling asleep. Safe, warm, present.",
-  "tags": ["family", "oscar", "whisper", "intimate", "pad"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Oscar at his softest. Whisper-effort with high breath content creates an intimate, ASMR-like vocal texture. Low drama means partials drift independently \u2014 a gentle haze rather than a defined voice. Dark filter, slow everything. The sound of someone humming while falling asleep. Safe, warm, present.",
+  "tags": [
+    "family",
+    "oscar",
+    "whisper",
+    "intimate",
+    "pad"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.25,
       "opera_voice": 0.35,
-      "opera_chorus": 0.25,
       "opera_stage": 0.45,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

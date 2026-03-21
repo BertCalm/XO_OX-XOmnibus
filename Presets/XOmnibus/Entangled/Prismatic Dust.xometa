@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Prismatic Dust",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL coupling. Alien formant with high tilt — the upper partials dominate and OPAL's granular FM scatters them into prismatic sprays of inharmonic color. The result is not a voice but a spectral dust cloud that retains the memory of vocal formant shapes. Bright, crystalline, and entirely alien. Each grain is a splinter of a vowel.",
-  "tags": ["entangled", "opal", "alien", "prismatic", "spectral"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OPAL coupling. Alien formant with high tilt \u2014 the upper partials dominate and OPAL's granular FM scatters them into prismatic sprays of inharmonic color. The result is not a voice but a spectral dust cloud that retains the memory of vocal formant shapes. Bright, crystalline, and entirely alien. Each grain is a splinter of a vowel.",
+  "tags": [
+    "entangled",
+    "opal",
+    "alien",
+    "prismatic",
+    "spectral"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.6,
-      "opera_chorus": 0.3,
       "opera_stage": 0.5,
       "opera_vowelA": 5,
       "opera_vowelB": 2,

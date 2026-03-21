@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Alien Whisper",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The Alien vowel setting (vowelA=5) produces non-human formant curves — frequencies no throat could produce. Combined with high breath and low effort, this becomes a whisper from a species whose language is made of spectral wind. Slow formant drift between two alien positions.",
-  "tags": ["alien", "whisper", "inhuman", "spectral", "strange"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The Alien vowel setting (vowelA=5) produces non-human formant curves \u2014 frequencies no throat could produce. Combined with high breath and low effort, this becomes a whisper from a species whose language is made of spectral wind. Slow formant drift between two alien positions.",
+  "tags": [
+    "alien",
+    "whisper",
+    "inhuman",
+    "spectral",
+    "strange"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.75,
       "opera_vowelA": 5,
       "opera_vowelB": 5,

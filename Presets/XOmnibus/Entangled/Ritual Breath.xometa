@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Ritual Breath",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO coupling. Breathy, chant-like voice with OSTINATO's rhythmic patterns modulating the breath component and sync timing simultaneously. The voice breathes in time with the rhythm — inhale as sync drops, exhale as it builds. O-to-U vowel morph gives it a ceremonial, ritualistic quality. The choir becomes a breathing circle.",
-  "tags": ["entangled", "ostinato", "ritual", "breath", "chant"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OSTINATO coupling. Breathy, chant-like voice with OSTINATO's rhythmic patterns modulating the breath component and sync timing simultaneously. The voice breathes in time with the rhythm \u2014 inhale as sync drops, exhale as it builds. O-to-U vowel morph gives it a ceremonial, ritualistic quality. The choir becomes a breathing circle.",
+  "tags": [
+    "entangled",
+    "ostinato",
+    "ritual",
+    "breath",
+    "chant"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.4,
-      "opera_chorus": 0.3,
       "opera_stage": 0.5,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

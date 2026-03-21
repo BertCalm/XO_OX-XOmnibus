@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Infinite Sustain",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sustain at absolute maximum. Attack is slow and gentle, sustain is full, release is infinite — notes fade so gradually they seem to persist forever. High sync ensures the sustained tone is harmonically pure. Designed for layering: play one note, let it sustain, add another. Build cathedrals of overlapping crystalline tones.",
-  "tags": ["sustain", "layering", "infinite", "pure", "pad"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Sustain at absolute maximum. Attack is slow and gentle, sustain is full, release is infinite \u2014 notes fade so gradually they seem to persist forever. High sync ensures the sustained tone is harmonically pure. Designed for layering: play one note, let it sustain, add another. Build cathedrals of overlapping crystalline tones.",
+  "tags": [
+    "sustain",
+    "layering",
+    "infinite",
+    "pure",
+    "pad"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.82,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.7,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

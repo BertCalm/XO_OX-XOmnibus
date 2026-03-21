@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Axolotl Choir",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar personality — warm and enveloping. A choir of axolotls humming in unison. Low fundamental, 2-voice unison with gentle detune creates a natural chorus width. Baritone vowel space (O to U) with slow formant drift. The partials synchronize just enough to form chords but keep enough independence to breathe. Comfort food for the ears.",
-  "tags": ["family", "oscar", "choir", "warm", "pad"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Oscar personality \u2014 warm and enveloping. A choir of axolotls humming in unison. Low fundamental, 2-voice unison with gentle detune creates a natural chorus width. Baritone vowel space (O to U) with slow formant drift. The partials synchronize just enough to form chords but keep enough independence to breathe. Comfort food for the ears.",
+  "tags": [
+    "family",
+    "oscar",
+    "choir",
+    "warm",
+    "pad"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.25,
-      "opera_chorus": 0.4,
       "opera_stage": 0.45,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

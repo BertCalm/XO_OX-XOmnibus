@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Volatile",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Random arc, 3-second cycle, peak at 1.0. Maximum volatility. The Kuramoto field whips between total chaos and total synchrony in unpredictable bursts. High ResSens adds acausal cluster events during the chaotic phases. Bright, aggressive, alien vowel morphing. For moments that demand instability.",
-  "tags": ["conductor", "random", "volatile", "aggressive", "fast-arc"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "conductor",
+    "random",
+    "volatile",
+    "aggressive",
+    "fast-arc"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.6,
-      "opera_chorus": 0.3,
       "opera_stage": 0.25,
       "opera_vowelA": 2,
       "opera_vowelB": 5,

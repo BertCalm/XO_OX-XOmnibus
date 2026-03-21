@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Vowel",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A single vowel suspended in amber. No formant modulation, no morph — just the raw spectral shape of an 'O' vowel held perfectly still while 32 partials slowly crystallize around it. LFO1 on tilt creates subtle brightness breathing. The stillness itself becomes the texture.",
-  "tags": ["frozen", "vowel", "static", "meditative", "drone"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "A single vowel suspended in amber. No formant modulation, no morph \u2014 just the raw spectral shape of an 'O' vowel held perfectly still while 32 partials slowly crystallize around it. LFO1 on tilt creates subtle brightness breathing. The stillness itself becomes the texture.",
+  "tags": [
+    "frozen",
+    "vowel",
+    "static",
+    "meditative",
+    "drone"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.25,
       "opera_voice": 0.0,
-      "opera_chorus": 0.3,
       "opera_stage": 0.7,
       "opera_vowelA": 3,
       "opera_vowelB": 3,

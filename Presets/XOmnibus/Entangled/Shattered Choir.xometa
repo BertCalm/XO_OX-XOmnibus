@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Shattered Choir",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPAL coupling. Granular clouds detune the partial bank — the choir shatters into a thousand tiny fragments, each grain carrying a piece of the voice. OPAL's frequency modulation pushes partials off their integer ratios, creating inharmonic spectra that still carry the ghost of the vowel formant. Glass and breath. A stained glass window made of voice.",
-  "tags": ["entangled", "opal", "granular", "shattered", "freq-mod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OPAL coupling. Granular clouds detune the partial bank \u2014 the choir shatters into a thousand tiny fragments, each grain carrying a piece of the voice. OPAL's frequency modulation pushes partials off their integer ratios, creating inharmonic spectra that still carry the ghost of the vowel formant. Glass and breath. A stained glass window made of voice.",
+  "tags": [
+    "entangled",
+    "opal",
+    "granular",
+    "shattered",
+    "freq-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.55,
-      "opera_chorus": 0.35,
       "opera_stage": 0.45,
       "opera_vowelA": 1,
       "opera_vowelB": 0,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Playground",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Both characters at once — feliX and Oscar playing together. Bright upper partials and warm lower partials coexist through a neutral vowel morph. Medium partial count, moderate everything. The preset that says: this engine is fun. Mod wheel sweeps drama from relaxed to excited. Velocity opens the filter for dynamic playing. The sound of two friends making music.",
-  "tags": ["family", "playful", "pad", "colorful", "accessible"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Both characters at once \u2014 feliX and Oscar playing together. Bright upper partials and warm lower partials coexist through a neutral vowel morph. Medium partial count, moderate everything. The preset that says: this engine is fun. Mod wheel sweeps drama from relaxed to excited. Velocity opens the filter for dynamic playing. The sound of two friends making music.",
+  "tags": [
+    "family",
+    "playful",
+    "pad",
+    "colorful",
+    "accessible"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.3,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

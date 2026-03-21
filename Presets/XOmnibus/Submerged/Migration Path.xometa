@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Humpback whales migrate 5000 miles between feeding and breeding grounds. This preset captures the journey: a 60-second Conductor arc that sweeps the entire dramatic range from dispersed partials (open ocean solitude) through gradual synchronization (approaching the pod) to near-total coherence (arrival at the breeding ground). Formant cycles between dark depths and warmer shallows. The longest arc in the library — patience rewarded.",
+  "description": "Humpback whales migrate 5000 miles between feeding and breeding grounds. This preset captures the journey: a 60-second Conductor arc that sweeps the entire dramatic range from dispersed partials (open ocean solitude) through gradual synchronization (approaching the pod) to near-total coherence (arrival at the breeding ground). Formant cycles between dark depths and warmer shallows. The longest arc in the library \u2014 patience rewarded.",
   "tags": [
     "submerged",
     "whale",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.1,
       "opera_voice": 0.25,
-      "opera_chorus": 0.35,
       "opera_stage": 0.8,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

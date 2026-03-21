@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Mezzo Forte",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The confident middle voice. Effort at 0.65 gives this preset projection without aggression. A-to-O morph and neutral tilt make it sit perfectly in a mix. Strong velocity response — play harder for more belt.",
-  "tags": ["lead", "vocal", "confident", "mezzo", "versatile"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The confident middle voice. Effort at 0.65 gives this preset projection without aggression. A-to-O morph and neutral tilt make it sit perfectly in a mix. Strong velocity response \u2014 play harder for more belt.",
+  "tags": [
+    "lead",
+    "vocal",
+    "confident",
+    "mezzo",
+    "versatile"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.5,
       "opera_voice": 0.45,
-      "opera_chorus": 0.25,
       "opera_stage": 0.3,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

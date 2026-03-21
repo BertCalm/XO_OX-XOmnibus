@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glacial Drift",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Immense slow-motion formant morph from O to U over a 100-second LFO cycle. 40 partials at minimal coupling drift like ice sheets — vast, patient, inevitable. Filter cutoff at 3000 Hz creates a muffled warmth as if heard through glacial ice. Stage at maximum for cavernous depth.",
-  "tags": ["glacial", "slow", "drone", "vast", "cinematic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Immense slow-motion formant morph from O to U over a 100-second LFO cycle. 40 partials at minimal coupling drift like ice sheets \u2014 vast, patient, inevitable. Filter cutoff at 3000 Hz creates a muffled warmth as if heard through glacial ice. Stage at maximum for cavernous depth.",
+  "tags": [
+    "glacial",
+    "slow",
+    "drone",
+    "vast",
+    "cinematic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.12,
       "opera_voice": 0.4,
-      "opera_chorus": 0.45,
       "opera_stage": 0.95,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

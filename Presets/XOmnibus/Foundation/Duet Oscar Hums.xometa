@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Duet Oscar Hums",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm axolotl character. Low partial count, slow vibrato at 4 Hz, baritone formant. Effort=0.3 with Drama=0.3 for a gentle, humming voice. Designed to pair with Duet feliX Sings.",
-  "tags": ["pad", "baritone", "warm", "Oscar", "duet"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "pad",
+    "baritone",
+    "warm",
+    "Oscar",
+    "duet"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.3,
       "opera_voice": 0.25,
-      "opera_chorus": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

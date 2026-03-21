@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Harmonic Swarm",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "48 partials with extreme detune and 4-voice unison create a swarming, organic mass of frequencies. Low sync means each partial in each voice drifts independently — 192 oscillators all moving at once. Dense, alive, overwhelming. Reduce CHORUS macro to thin the swarm.",
-  "tags": ["swarm", "organic", "dense", "massive", "living"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "48 partials with extreme detune and 4-voice unison create a swarming, organic mass of frequencies. Low sync means each partial in each voice drifts independently \u2014 192 oscillators all moving at once. Dense, alive, overwhelming. Reduce CHORUS macro to thin the swarm.",
+  "tags": [
+    "swarm",
+    "organic",
+    "dense",
+    "massive",
+    "living"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.5,
-      "opera_chorus": 0.8,
       "opera_stage": 0.3,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

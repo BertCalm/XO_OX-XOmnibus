@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Requiem Haze",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Somber, reverent, enveloped in slow-motion reverb tail. Low-register vowel space (O-U) with dark tilt and maximum release times. Each note hangs in the air like incense smoke. Conductor mode with a 45-second arc provides the gentlest possible crescendo — a requiem that builds so slowly it becomes meditation.",
-  "tags": ["requiem", "somber", "reverent", "cinematic", "slow"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Somber, reverent, enveloped in slow-motion reverb tail. Low-register vowel space (O-U) with dark tilt and maximum release times. Each note hangs in the air like incense smoke. Conductor mode with a 45-second arc provides the gentlest possible crescendo \u2014 a requiem that builds so slowly it becomes meditation.",
+  "tags": [
+    "requiem",
+    "somber",
+    "reverent",
+    "cinematic",
+    "slow"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.08,
       "opera_voice": 0.3,
-      "opera_chorus": 0.4,
       "opera_stage": 0.9,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

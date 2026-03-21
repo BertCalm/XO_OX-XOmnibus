@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Entangled Cathedral",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Guru Bin signature #14. OPERA + OXBOW coupling. Operatic voice feeds into entangled reverb; OXBOW's golden resonance feeds back into the Kuramoto field via KnotTopology. Infinite recursive cathedral. Moderate drama leaves headroom for the coupling to push synchrony. The voice finds architecture; the architecture finds voice.",
-  "tags": ["entangled", "oxbow", "cathedral", "knot-topology", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "entangled",
+    "oxbow",
+    "cathedral",
+    "knot-topology",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.5,
-      "opera_chorus": 0.35,
       "opera_stage": 0.65,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

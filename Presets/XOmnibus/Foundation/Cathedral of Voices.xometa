@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cathedral of Voices",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chorus=0.8, Stage=0.9 — maximum space, maximum ensemble. Medium sync with open A vowel and operatic vibrato. An entire cathedral choir from a single key. Let the reverb do the work.",
-  "tags": ["choir", "cathedral", "reverb", "vast", "foundation"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Chorus=0.8, Stage=0.9 \u2014 maximum space, maximum ensemble. Medium sync with open A vowel and operatic vibrato. An entire cathedral choir from a single key. Let the reverb do the work.",
+  "tags": [
+    "choir",
+    "cathedral",
+    "reverb",
+    "vast",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.35,
-      "opera_chorus": 0.8,
       "opera_stage": 0.9,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

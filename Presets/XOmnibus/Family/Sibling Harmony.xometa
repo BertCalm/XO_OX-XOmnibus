@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX and Oscar singing together in perfect thirds. 2-voice unison creates the sibling interval — one voice bright (high tilt partials), one voice warm (low tilt partials), meeting in the middle. Drama at 0.45 keeps both voices coherent but distinct. Wide stereo field separates the two characters left and right. The Family mood in a single preset.",
+  "description": "feliX and Oscar singing together in perfect thirds. 2-voice unison creates the sibling interval \u2014 one voice bright (high tilt partials), one voice warm (low tilt partials), meeting in the middle. Drama at 0.45 keeps both voices coherent but distinct. Wide stereo field separates the two characters left and right. The Family mood in a single preset.",
   "tags": [
     "family",
     "duet",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.5,
-      "opera_chorus": 0.35,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

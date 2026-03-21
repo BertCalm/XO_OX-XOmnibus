@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glass Aria",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin Awakening #10. High partials only — spectral tilt +0.8 suppresses the fundamental and lifts the overtone series into crystalline prominence. Total synchrony at high register (C5+) produces singing crystal: fragile, precise, otherworldly. Minimal breath, zero detune. Pure mathematics rendered as glass.",
-  "tags": ["glass", "crystal", "high", "pure", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Guru Bin Awakening #10. High partials only \u2014 spectral tilt +0.8 suppresses the fundamental and lifts the overtone series into crystalline prominence. Total synchrony at high register (C5+) produces singing crystal: fragile, precise, otherworldly. Minimal breath, zero detune. Pure mathematics rendered as glass.",
+  "tags": [
+    "glass",
+    "crystal",
+    "high",
+    "pure",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.95,
       "opera_voice": 0.7,
-      "opera_chorus": 0.2,
       "opera_stage": 0.55,
       "opera_vowelA": 2,
       "opera_vowelB": 1,

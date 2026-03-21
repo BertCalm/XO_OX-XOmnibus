@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Vowel Fracture",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO1 at 8 Hz on formant morph fractures the vowel shape into rapid, glitchy fragments. The voice stutters between impossible formant positions. Like a digital recording of a voice being torn apart at the sample level.",
-  "tags": ["glitch", "stutter", "fractured", "digital", "extreme"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "glitch",
+    "stutter",
+    "fractured",
+    "digital",
+    "extreme"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.35,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.2,
       "opera_vowelA": 0,
       "opera_vowelB": 5,

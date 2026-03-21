@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dream Tongue",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid formant morphing between all vowel positions via LFO1, but at extremely slow rate. The voice cycles through A-E-I-O-U over 30 seconds, creating the impression of someone speaking an unknown language in slow motion. Each vowel shape colors the partial cloud differently, so the timbre is constantly evolving.",
-  "tags": ["morphing", "vowel", "dreamlike", "evolving", "language"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "morphing",
+    "vowel",
+    "dreamlike",
+    "evolving",
+    "language"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.7,
       "opera_vowelA": 0,
       "opera_vowelB": 4,

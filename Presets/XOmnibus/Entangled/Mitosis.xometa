@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Mitosis",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM coupling. High partial count with ORGANISM's automata splitting the partial field into two independent populations — the voice divides and recombines. When partials are split, the Kuramoto field operates on two smaller groups, each finding their own sync. When they recombine, the full field snaps together. Cell division as synthesis.",
-  "tags": ["entangled", "organism", "mitosis", "splitting", "cellular"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "ORGANISM coupling. High partial count with ORGANISM's automata splitting the partial field into two independent populations \u2014 the voice divides and recombines. When partials are split, the Kuramoto field operates on two smaller groups, each finding their own sync. When they recombine, the full field snaps together. Cell division as synthesis.",
+  "tags": [
+    "entangled",
+    "organism",
+    "mitosis",
+    "splitting",
+    "cellular"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

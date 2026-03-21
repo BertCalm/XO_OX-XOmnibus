@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "The Summoning",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #15. A 30-second Jungian journey in one held chord. Begins in the Shadow archetype — dark, detuned, subharmonic. First peak transitions to Anima. The dip allows acausal clusters to bloom unpredictably (ResSens=0.7). Second peak arrives at Hero — full synchrony, bright, powerful. A complete archetypal summoning.",
-  "tags": ["conductor", "double-peak", "jungian", "long-form", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Guru Bin signature #15. A 30-second Jungian journey in one held chord. Begins in the Shadow archetype \u2014 dark, detuned, subharmonic. First peak transitions to Anima. The dip allows acausal clusters to bloom unpredictably (ResSens=0.7). Second peak arrives at Hero \u2014 full synchrony, bright, powerful. A complete archetypal summoning.",
+  "tags": [
+    "conductor",
+    "double-peak",
+    "jungian",
+    "long-form",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.05,
       "opera_voice": 0.3,
-      "opera_chorus": 0.35,
       "opera_stage": 0.45,
       "opera_vowelA": 3,
       "opera_vowelB": 0,

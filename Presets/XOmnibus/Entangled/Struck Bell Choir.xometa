@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Struck Bell Choir",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ONSET coupling. High-register voice with bright tilt designed to respond to ONSET's percussive transients like a bell being struck. Each drum hit from ONSET disrupts the phase field, and the high, crystalline partials ring and decay like struck metal. Near-total sync (drama=0.5) means the bell tone is clear, but each impact sends ripples through the harmonic series.",
-  "tags": ["entangled", "onset", "bell", "crystalline", "struck"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "tags": [
+    "entangled",
+    "onset",
+    "bell",
+    "crystalline",
+    "struck"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.5,
       "opera_voice": 0.65,
-      "opera_chorus": 0.25,
       "opera_stage": 0.45,
       "opera_vowelA": 2,
       "opera_vowelB": 1,

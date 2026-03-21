@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Vowel Drift",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "S-curve arc focused on vowel morphing. LFO1 on Voice at medium rate continuously cycles through formant space while the Conductor builds synchrony over 10 seconds. The voice changes what it sings as it finds its power. I-to-O morph — from piercing brightness to warm roundness. The vowels are the drama.",
-  "tags": ["conductor", "vowel-morph", "formant", "s-curve", "evolving"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "S-curve arc focused on vowel morphing. LFO1 on Voice at medium rate continuously cycles through formant space while the Conductor builds synchrony over 10 seconds. The voice changes what it sings as it finds its power. I-to-O morph \u2014 from piercing brightness to warm roundness. The vowels are the drama.",
+  "tags": [
+    "conductor",
+    "vowel-morph",
+    "formant",
+    "s-curve",
+    "evolving"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 2,
       "opera_vowelB": 3,

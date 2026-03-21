@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Quake Threshold",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBSCURA coupling. Drama parked precisely at the Kuramoto critical boundary (0.45). Without OBSCURA, the field hovers at the edge of phase transition. With OBSCURA's mass-spring input, each oscillation pushes the field PAST the threshold and snaps it back — a repeating earthquake of synchrony. The voice locks and breaks, locks and breaks, in time with OBSCURA's physics.",
-  "tags": ["entangled", "obscura", "threshold", "critical", "phase-mod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OBSCURA coupling. Drama parked precisely at the Kuramoto critical boundary (0.45). Without OBSCURA, the field hovers at the edge of phase transition. With OBSCURA's mass-spring input, each oscillation pushes the field PAST the threshold and snaps it back \u2014 a repeating earthquake of synchrony. The voice locks and breaks, locks and breaks, in time with OBSCURA's physics.",
+  "tags": [
+    "entangled",
+    "obscura",
+    "threshold",
+    "critical",
+    "phase-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "High",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

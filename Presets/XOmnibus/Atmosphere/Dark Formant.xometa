@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dark Formant",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Heavy spectral tilt suppresses upper partials, leaving only the deep fundamental and first few harmonics audible. The formant shape is still present — you can hear the vowel character — but it is dark, subterranean, felt more than heard. Filter cutoff at 2000 Hz seals the ceiling. Low drama, high space.",
-  "tags": ["dark", "deep", "subterranean", "formant", "bass"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Heavy spectral tilt suppresses upper partials, leaving only the deep fundamental and first few harmonics audible. The formant shape is still present \u2014 you can hear the vowel character \u2014 but it is dark, subterranean, felt more than heard. Filter cutoff at 2000 Hz seals the ceiling. Low drama, high space.",
+  "tags": [
+    "dark",
+    "deep",
+    "subterranean",
+    "formant",
+    "bass"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.18,
       "opera_voice": 0.25,
-      "opera_chorus": 0.35,
       "opera_stage": 0.75,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

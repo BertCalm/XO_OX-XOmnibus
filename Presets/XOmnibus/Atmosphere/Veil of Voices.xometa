@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Veil of Voices",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Multiple unison voices with high detune create a layered curtain of formant spectra. Each voice carries its own partial cloud, slightly out of phase with the others. The result is a shimmering veil — not quite a choir, not quite noise, but a living membrane of harmonic possibility.",
-  "tags": ["veil", "layered", "unison", "shimmering", "pad"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Multiple unison voices with high detune create a layered curtain of formant spectra. Each voice carries its own partial cloud, slightly out of phase with the others. The result is a shimmering veil \u2014 not quite a choir, not quite noise, but a living membrane of harmonic possibility.",
+  "tags": [
+    "veil",
+    "layered",
+    "unison",
+    "shimmering",
+    "pad"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.55,
-      "opera_chorus": 0.5,
       "opera_stage": 0.7,
       "opera_vowelA": 1,
       "opera_vowelB": 3,

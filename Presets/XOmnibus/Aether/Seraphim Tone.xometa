@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Seraphim Tone",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The angelic register. High drama with bright A-vowel formant, gentle vibrato, maximum purity. Two unison voices — one slightly brighter — create the impression of a single angelic entity with harmonic depth. No breath, no noise, no imperfection. The voice of a being made entirely of light and frequency.",
-  "tags": ["angelic", "seraphim", "pure", "vocal", "transcendent"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The angelic register. High drama with bright A-vowel formant, gentle vibrato, maximum purity. Two unison voices \u2014 one slightly brighter \u2014 create the impression of a single angelic entity with harmonic depth. No breath, no noise, no imperfection. The voice of a being made entirely of light and frequency.",
+  "tags": [
+    "angelic",
+    "seraphim",
+    "pure",
+    "vocal",
+    "transcendent"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.85,
       "opera_voice": 0.65,
-      "opera_chorus": 0.25,
       "opera_stage": 0.6,
       "opera_vowelA": 0,
       "opera_vowelB": 0,

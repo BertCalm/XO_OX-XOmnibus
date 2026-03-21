@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cluster Storm",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ResSens=1.0 with Drama=0.25 and LFO2 modulating ResSens. Acausal clusters form and dissolve in violent, unpredictable waves. 4-voice unison multiplies the chaos. Like a thunderstorm of harmonic events — clusters crash and bloom in every direction.",
-  "tags": ["storm", "acausal", "violent", "chaotic", "dense"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "ResSens=1.0 with Drama=0.25 and LFO2 modulating ResSens. Acausal clusters form and dissolve in violent, unpredictable waves. 4-voice unison multiplies the chaos. Like a thunderstorm of harmonic events \u2014 clusters crash and bloom in every direction.",
+  "tags": [
+    "storm",
+    "acausal",
+    "violent",
+    "chaotic",
+    "dense"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.25,
       "opera_voice": 0.5,
-      "opera_chorus": 0.65,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 5,

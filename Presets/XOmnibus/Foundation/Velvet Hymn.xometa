@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Velvet Hymn",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ultra-warm pad with dark tilt and gentle O-vowel character. Low filter cutoff wraps the partials in velvet. Slow attack, long release — designed for sustained chords that feel like being held.",
-  "tags": ["pad", "warm", "dark", "hymn", "sustain"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Ultra-warm pad with dark tilt and gentle O-vowel character. Low filter cutoff wraps the partials in velvet. Slow attack, long release \u2014 designed for sustained chords that feel like being held.",
+  "tags": [
+    "pad",
+    "warm",
+    "dark",
+    "hymn",
+    "sustain"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.35,
-      "opera_chorus": 0.35,
       "opera_stage": 0.5,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

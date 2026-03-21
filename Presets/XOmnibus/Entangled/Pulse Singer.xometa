@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pulse Singer",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OSTINATO coupling. Rhythmic patterns modulate sync timing — the voice pulses with the drum circle. OSTINATO's phase modulation creates rhythmic swells in the Kuramoto field, making the choir surge and retreat in time with the pattern. The voice becomes a rhythmic instrument while retaining its vocal character. Moderate effort, clean formant, steady foundation.",
-  "tags": ["entangled", "ostinato", "rhythmic", "pulsing", "phase-mod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "OSTINATO coupling. Rhythmic patterns modulate sync timing \u2014 the voice pulses with the drum circle. OSTINATO's phase modulation creates rhythmic swells in the Kuramoto field, making the choir surge and retreat in time with the pattern. The voice becomes a rhythmic instrument while retaining its vocal character. Moderate effort, clean formant, steady foundation.",
+  "tags": [
+    "entangled",
+    "ostinato",
+    "rhythmic",
+    "pulsing",
+    "phase-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.3,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

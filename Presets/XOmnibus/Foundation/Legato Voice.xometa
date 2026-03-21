@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Legato Voice",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Portamento=0.2 enables per-partial glide between notes. Each harmonic slides independently to its new position — the voice never jumps, it flows. Fast attack, moderate sync. Play connected melodic lines.",
-  "tags": ["lead", "legato", "glide", "melodic", "expressive"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Portamento=0.2 enables per-partial glide between notes. Each harmonic slides independently to its new position \u2014 the voice never jumps, it flows. Fast attack, moderate sync. Play connected melodic lines.",
+  "tags": [
+    "lead",
+    "legato",
+    "glide",
+    "melodic",
+    "expressive"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.5,
-      "opera_chorus": 0.25,
       "opera_stage": 0.3,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

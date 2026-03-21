@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin Awakening #5 — the Self archetype. Drama=1.0 achieves total Kuramoto synchrony: every partial phase-locks into perfect integer ratios. The result is not a voice — it is the platonic ideal of harmony. Beyond-human formant territory. 32 partials in crystalline alignment. The sound of mathematical perfection made audible.",
+  "description": "Guru Bin Awakening #5 \u2014 the Self archetype. Drama=1.0 achieves total Kuramoto synchrony: every partial phase-locks into perfect integer ratios. The result is not a voice \u2014 it is the platonic ideal of harmony. Beyond-human formant territory. 32 partials in crystalline alignment. The sound of mathematical perfection made audible.",
   "tags": [
     "synchrony",
     "crystalline",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 1.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.5,
       "opera_vowelA": 5,
       "opera_vowelB": 5,

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Climax",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Press a chord. Wait. Over 10 seconds the engine self-performs: incoherent partials coalesce, the voice strengthens, filter opens, effort builds from mezzo to fortissimo. At the 7-second mark the Kuramoto critical threshold fires — partials snap into synchrony. Climax. The Conductor IS the mathematics.",
-  "tags": ["conductor", "arc", "climax", "dramatic", "self-performing", "kuramoto"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Press a chord. Wait. Over 10 seconds the engine self-performs: incoherent partials coalesce, the voice strengthens, filter opens, effort builds from mezzo to fortissimo. At the 7-second mark the Kuramoto critical threshold fires \u2014 partials snap into synchrony. Climax. The Conductor IS the mathematics.",
+  "tags": [
+    "conductor",
+    "arc",
+    "climax",
+    "dramatic",
+    "self-performing",
+    "kuramoto"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +36,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

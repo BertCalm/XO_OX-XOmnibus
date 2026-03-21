@@ -608,7 +608,7 @@ public:
 
         params.push_back (std::make_unique<FloatParam> (
             juce::ParameterID ("opera_ampR", 1), "Amp Release",
-            NR (0.0f, 1.0f, 0.001f), 0.6f));
+            NR (0.0f, 2.0f, 0.001f), 0.6f));  // 2.0 → ~80s via cubic scale; supports long-tail Flux presets
 
         // --- LFOs (6) ---
         params.push_back (std::make_unique<FloatParam> (
@@ -635,14 +635,14 @@ public:
 
         // --- Conductor (4) ---
         params.push_back (std::make_unique<IntParam> (
-            juce::ParameterID ("opera_arcMode", 1), "Arc Mode", 0, 2, 0));
+            juce::ParameterID ("opera_arcMode", 1), "Arc Mode", 0, 2, 1));  // default=1: Conductor on
 
         params.push_back (std::make_unique<IntParam> (
             juce::ParameterID ("opera_arcShape", 1), "Arc Shape", 0, 3, 1));
 
         params.push_back (std::make_unique<FloatParam> (
             juce::ParameterID ("opera_arcTime", 1), "Arc Time",
-            NR (0.5f, 120.0f, 0.1f), 8.0f));
+            NR (0.5f, 3600.0f, 0.1f), 8.0f));  // extended to 3600s for Schulze-scale arcs
 
         params.push_back (std::make_unique<FloatParam> (
             juce::ParameterID ("opera_arcPeak", 1), "Arc Peak",

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Synchrony",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Total Kuramoto synchrony. Drama=1.0 locks all 32 partials into perfect integer ratios — crystalline, beyond-human purity. The sound of mathematical perfection made audible. Play slow chords and hear the universe hum.",
-  "tags": ["crystalline", "pure", "sync", "pad", "aether"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Total Kuramoto synchrony. Drama=1.0 locks all 32 partials into perfect integer ratios \u2014 crystalline, beyond-human purity. The sound of mathematical perfection made audible. Play slow chords and hear the universe hum.",
+  "tags": [
+    "crystalline",
+    "pure",
+    "sync",
+    "pad",
+    "aether"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 1.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 5,
       "opera_vowelB": 5,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Moth Light",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Delicate high-register texture that flickers. LFO2 on drama creates subtle coupling oscillation — partials drift toward synchrony then scatter, like moths circling a lamp. Bright tilt, low partial count, high resonance sensitivity means small clusters flash into existence and vanish. Fragile and hypnotic.",
-  "tags": ["delicate", "flickering", "bright", "hypnotic", "texture"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Delicate high-register texture that flickers. LFO2 on drama creates subtle coupling oscillation \u2014 partials drift toward synchrony then scatter, like moths circling a lamp. Bright tilt, low partial count, high resonance sensitivity means small clusters flash into existence and vanish. Fragile and hypnotic.",
+  "tags": [
+    "delicate",
+    "flickering",
+    "bright",
+    "hypnotic",
+    "texture"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.65,
-      "opera_chorus": 0.2,
       "opera_stage": 0.7,
       "opera_vowelA": 2,
       "opera_vowelB": 1,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Baritone Anchor",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Deep, grounded voice pitched down 7 semitones. Dark O vowel with low tilt. Strong fundamental, moderate partials. The anchor voice in any ensemble arrangement — reliable, authoritative, warm.",
-  "tags": ["bass", "baritone", "deep", "anchor", "warm"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Deep, grounded voice pitched down 7 semitones. Dark O vowel with low tilt. Strong fundamental, moderate partials. The anchor voice in any ensemble arrangement \u2014 reliable, authoritative, warm.",
+  "tags": [
+    "bass",
+    "baritone",
+    "deep",
+    "anchor",
+    "warm"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.5,
       "opera_voice": 0.3,
-      "opera_chorus": 0.25,
       "opera_stage": 0.3,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

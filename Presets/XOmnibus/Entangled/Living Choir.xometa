@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Living Choir",
   "mood": "Entangled",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM coupling. Cellular automata selectively mutes and activates partials — the voice evolves like a living organism. Some partials are alive, others dormant, and the pattern shifts with every generation. The choir breathes with the biology of the automaton. Moderate sync ensures the living partials still seek each other.",
-  "tags": ["entangled", "organism", "cellular", "evolving", "amplitude-mod"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "ORGANISM coupling. Cellular automata selectively mutes and activates partials \u2014 the voice evolves like a living organism. Some partials are alive, others dormant, and the pattern shifts with every generation. The choir breathes with the biology of the automaton. Moderate sync ensures the living partials still seek each other.",
+  "tags": [
+    "entangled",
+    "organism",
+    "cellular",
+    "evolving",
+    "amplitude-mod"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.5,
-      "opera_chorus": 0.35,
       "opera_stage": 0.4,
       "opera_vowelA": 0,
       "opera_vowelB": 3,

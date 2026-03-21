@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Conductor's Crescendo",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin signature #11. The most dramatic preset in the fleet. Linear ramp, 8 seconds, arc intensity 1.0. Silence to full operatic climax. Formant morphs from Alien to O — inhuman to human. The conductor raises the baton and does not stop until the mathematics become music.",
-  "tags": ["conductor", "linear", "crescendo", "dramatic", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Guru Bin signature #11. The most dramatic preset in the fleet. Linear ramp, 8 seconds, arc intensity 1.0. Silence to full operatic climax. Formant morphs from Alien to O \u2014 inhuman to human. The conductor raises the baton and does not stop until the mathematics become music.",
+  "tags": [
+    "conductor",
+    "linear",
+    "crescendo",
+    "dramatic",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.3,
-      "opera_chorus": 0.35,
       "opera_stage": 0.35,
       "opera_vowelA": 5,
       "opera_vowelB": 3,

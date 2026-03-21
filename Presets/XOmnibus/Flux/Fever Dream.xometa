@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Fever Dream",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Random arc, 8 seconds, peak 0.7. LFO1 rapidly morphs vowels while LFO2 modulates vibrato depth — the voice wobbles and shifts like a hallucination. High ResSens creates phantom clusters during chaotic phases. The arc never fully resolves, leaving the listener in a perpetual state of almost-understanding. A fever dream where the choir speaks in tongues.",
-  "tags": ["conductor", "random", "hallucinatory", "vowel-morph", "surreal"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Random arc, 8 seconds, peak 0.7. LFO1 rapidly morphs vowels while LFO2 modulates vibrato depth \u2014 the voice wobbles and shifts like a hallucination. High ResSens creates phantom clusters during chaotic phases. The arc never fully resolves, leaving the listener in a perpetual state of almost-understanding. A fever dream where the choir speaks in tongues.",
+  "tags": [
+    "conductor",
+    "random",
+    "hallucinatory",
+    "vowel-morph",
+    "surreal"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.1,
       "opera_voice": 0.5,
-      "opera_chorus": 0.35,
       "opera_stage": 0.5,
       "opera_vowelA": 0,
       "opera_vowelB": 5,

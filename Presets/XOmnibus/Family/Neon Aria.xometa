@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Neon Aria",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "feliX performing a solo. Soprano formant with strong effort pushes into operatic belt territory — but the drama stays moderate so partials retain their individual character. Fast vibrato and bright tilt give the classic neon-tetra sparkle. Filter envelope responds to velocity for expressive phrasing. A colorful, confident lead voice with personality.",
-  "tags": ["family", "felix", "lead", "soprano", "aria"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "feliX performing a solo. Soprano formant with strong effort pushes into operatic belt territory \u2014 but the drama stays moderate so partials retain their individual character. Fast vibrato and bright tilt give the classic neon-tetra sparkle. Filter envelope responds to velocity for expressive phrasing. A colorful, confident lead voice with personality.",
+  "tags": [
+    "family",
+    "felix",
+    "lead",
+    "soprano",
+    "aria"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.7,
-      "opera_chorus": 0.25,
       "opera_stage": 0.25,
       "opera_vowelA": 0,
       "opera_vowelB": 2,

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Breath=0.8 dominates the spectrum — the voice is mostly air. LFO on breath creates mechanical inhale-exhale cycles. Minimal partials poke through the noise floor like buried tones. A breathing apparatus with a ghost inside it.",
+  "description": "Breath=0.8 dominates the spectrum \u2014 the voice is mostly air. LFO on breath creates mechanical inhale-exhale cycles. Minimal partials poke through the noise floor like buried tones. A breathing apparatus with a ghost inside it.",
   "tags": [
     "breath",
     "noise",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.4,
-      "opera_chorus": 0.2,
       "opera_stage": 0.45,
       "opera_vowelA": 0,
       "opera_vowelB": 4,

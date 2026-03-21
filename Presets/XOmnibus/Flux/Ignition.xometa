@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Ignition",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Linear ramp, 3 seconds, peak 1.0. The fastest full-range arc. From absolute chaos to absolute synchrony in three seconds flat. High effort, high partials, bright tilt. Like striking a match — the initial noise BECOMES the flame. Formant locks on A for maximum openness at the peak. Pure ignition.",
-  "tags": ["conductor", "linear", "fast", "explosive", "bright"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Linear ramp, 3 seconds, peak 1.0. The fastest full-range arc. From absolute chaos to absolute synchrony in three seconds flat. High effort, high partials, bright tilt. Like striking a match \u2014 the initial noise BECOMES the flame. Formant locks on A for maximum openness at the peak. Pure ignition.",
+  "tags": [
+    "conductor",
+    "linear",
+    "fast",
+    "explosive",
+    "bright"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.2,
       "opera_vowelA": 0,
       "opera_vowelB": 0,

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "As depth increases, pressure compresses everything. This preset channels that crushing force: very low fundamental, dense partial field, and a slow LFO modulating the filter cutoff downward — the sound darkens as if sinking. Effort is high but the filter is so low that the belt energy manifests as subharmonic rumble rather than brightness. The weight of a mile of water overhead.",
+  "description": "As depth increases, pressure compresses everything. This preset channels that crushing force: very low fundamental, dense partial field, and a slow LFO modulating the filter cutoff downward \u2014 the sound darkens as if sinking. Effort is high but the filter is so low that the belt energy manifests as subharmonic rumble rather than brightness. The weight of a mile of water overhead.",
   "tags": [
     "submerged",
     "deep",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.3,
       "opera_voice": 0.2,
-      "opera_chorus": 0.35,
       "opera_stage": 0.7,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

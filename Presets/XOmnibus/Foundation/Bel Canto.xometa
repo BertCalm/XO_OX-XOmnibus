@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Bel Canto",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Beautiful singing — the literal translation. High sync at Drama=0.6 with strong vibrato and full effort. The partials lock into a powerful, resonant voice. Classical technique rendered in additive synthesis. Play legato with portamento.",
-  "tags": ["lead", "vocal", "classical", "legato", "powerful"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Beautiful singing \u2014 the literal translation. High sync at Drama=0.6 with strong vibrato and full effort. The partials lock into a powerful, resonant voice. Classical technique rendered in additive synthesis. Play legato with portamento.",
+  "tags": [
+    "lead",
+    "vocal",
+    "classical",
+    "legato",
+    "powerful"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.6,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.35,
       "opera_vowelA": 0,
       "opera_vowelB": 1,

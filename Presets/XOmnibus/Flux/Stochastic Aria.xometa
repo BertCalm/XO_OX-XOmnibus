@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Stochastic Aria",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Random arc shape over 10 seconds — every performance is a different dramatic trajectory. The Conductor improvises. Peaks arrive unexpectedly, dips create sudden vulnerability. High ResSens means acausal clusters bloom during random dips, adding unpredictable harmonic events. The opera that writes itself differently each night.",
-  "tags": ["conductor", "random", "stochastic", "unpredictable", "arc"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Random arc shape over 10 seconds \u2014 every performance is a different dramatic trajectory. The Conductor improvises. Peaks arrive unexpectedly, dips create sudden vulnerability. High ResSens means acausal clusters bloom during random dips, adding unpredictable harmonic events. The opera that writes itself differently each night.",
+  "tags": [
+    "conductor",
+    "random",
+    "stochastic",
+    "unpredictable",
+    "arc"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.05,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 0,
       "opera_vowelB": 2,

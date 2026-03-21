@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Gill Flutter",
   "mood": "Family",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oscar's external gills as a sound. Breathy, fluttering tremolo from LFO2 modulating the spectral tilt — the sound pulses between dark and bright like gill fronds waving in current. Low effort whisper territory with warm baritone vowels. A rhythmic, organic texture that invites you to slow down and breathe with it.",
-  "tags": ["family", "oscar", "tremolo", "breathy", "organic"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Oscar's external gills as a sound. Breathy, fluttering tremolo from LFO2 modulating the spectral tilt \u2014 the sound pulses between dark and bright like gill fronds waving in current. Low effort whisper territory with warm baritone vowels. A rhythmic, organic texture that invites you to slow down and breathe with it.",
+  "tags": [
+    "family",
+    "oscar",
+    "tremolo",
+    "breathy",
+    "organic"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.3,
       "opera_voice": 0.35,
-      "opera_chorus": 0.25,
       "opera_stage": 0.35,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

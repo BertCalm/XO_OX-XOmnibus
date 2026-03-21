@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.15,
-      "opera_chorus": 0.3,
       "opera_stage": 0.85,
       "opera_vowelA": 4,
       "opera_vowelB": 3,

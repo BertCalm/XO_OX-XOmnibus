@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LFO1 on drama creates a slow tidal oscillation of coupling strength — partials wash toward synchrony, then recede into chaos, then return. The cycle is 50 seconds, roughly the period of ocean swell. Each wave leaves harmonic deposits: clusters that formed during high-sync persist briefly into the recession.",
+  "description": "LFO1 on drama creates a slow tidal oscillation of coupling strength \u2014 partials wash toward synchrony, then recede into chaos, then return. The cycle is 50 seconds, roughly the period of ocean swell. Each wave leaves harmonic deposits: clusters that formed during high-sync persist briefly into the recession.",
   "tags": [
     "tidal",
     "oscillating",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.45,
-      "opera_chorus": 0.35,
       "opera_stage": 0.8,
       "opera_vowelA": 3,
       "opera_vowelB": 0,

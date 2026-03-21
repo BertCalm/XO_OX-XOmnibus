@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Phantom Choir",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "4-voice unison, each voice with 32 partials — 128 total oscillators. Medium sync at Drama=0.4. Vowel morph O-to-U with slow LFO sweep. Rich, full, immediately usable pad. The preset that sells the engine.",
-  "tags": ["choir", "pad", "unison", "warm", "foundation"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "4-voice unison, each voice with 32 partials \u2014 128 total oscillators. Medium sync at Drama=0.4. Vowel morph O-to-U with slow LFO sweep. Rich, full, immediately usable pad. The preset that sells the engine.",
+  "tags": [
+    "choir",
+    "pad",
+    "unison",
+    "warm",
+    "foundation"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.4,
       "opera_voice": 0.55,
-      "opera_chorus": 0.5,
       "opera_stage": 0.45,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

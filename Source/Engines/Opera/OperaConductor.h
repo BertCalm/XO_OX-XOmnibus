@@ -91,10 +91,10 @@ public:
         arcShape = std::clamp (shape, 0, 3);
     }
 
-    /// Set arc duration in seconds (clamped to 0.5-120.0s).
+    /// Set arc duration in seconds (clamped to 0.5-3600.0s).
     void setArcTime (float seconds) noexcept
     {
-        arcTimeSec = std::clamp (seconds, 0.5f, 120.0f);
+        arcTimeSec = std::clamp (seconds, 0.5f, 3600.0f);  // 1-hour max for Schulze-scale arcs
     }
 
     /// Set arc peak intensity (0.0-1.0, maximum coupling K at climax).

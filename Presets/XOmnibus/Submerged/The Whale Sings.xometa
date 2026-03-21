@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "The Whale Sings",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Signature preset #1. Low C1 drone. 32 partials with slow Conductor arc (45s, S-curve). Begins as deep subharmonic breath, gradually synchronizes into a vast harmonic chord. Vibrato 3.0 Hz, depth 0.5. The SOFAR channel made audible. A humpback whale's song carries thousands of miles through the deep sound channel — this preset captures that impossible distance and patience.",
-  "tags": ["submerged", "whale", "deep", "SOFAR", "drone"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Signature preset #1. Low C1 drone. 32 partials with slow Conductor arc (45s, S-curve). Begins as deep subharmonic breath, gradually synchronizes into a vast harmonic chord. Vibrato 3.0 Hz, depth 0.5. The SOFAR channel made audible. A humpback whale's song carries thousands of miles through the deep sound channel \u2014 this preset captures that impossible distance and patience.",
+  "tags": [
+    "submerged",
+    "whale",
+    "deep",
+    "SOFAR",
+    "drone"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.2,
-      "opera_chorus": 0.35,
       "opera_stage": 0.85,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

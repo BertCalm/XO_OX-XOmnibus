@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Bright spectral tilt lifts upper partials into prominence while breath noise fills the gaps between harmonics. The result is a luminous mist — part tone, part air, part light. LFO1 modulates breath amount for organic inhale/exhale rhythm. Acausal clusters occasionally bloom and dissolve like fireflies.",
+  "description": "Bright spectral tilt lifts upper partials into prominence while breath noise fills the gaps between harmonics. The result is a luminous mist \u2014 part tone, part air, part light. LFO1 modulates breath amount for organic inhale/exhale rhythm. Acausal clusters occasionally bloom and dissolve like fireflies.",
   "tags": [
     "mist",
     "bright",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.15,
       "opera_voice": 0.6,
-      "opera_chorus": 0.3,
       "opera_stage": 0.8,
       "opera_vowelA": 1,
       "opera_vowelB": 2,

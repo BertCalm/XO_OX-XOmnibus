@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Throat Geometry",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Filter resonance at 0.4 sculpts the partial bank into sharp formant ridges — like a vocal tract with impossible geometry. Narrow bands ring while others are suppressed. The voice becomes architecture.",
-  "tags": ["formant", "resonant", "architecture", "sculpted", "alien"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Filter resonance at 0.4 sculpts the partial bank into sharp formant ridges \u2014 like a vocal tract with impossible geometry. Narrow bands ring while others are suppressed. The voice becomes architecture.",
+  "tags": [
+    "formant",
+    "resonant",
+    "architecture",
+    "sculpted",
+    "alien"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.65,
-      "opera_chorus": 0.3,
       "opera_stage": 0.25,
       "opera_vowelA": 2,
       "opera_vowelB": 5,

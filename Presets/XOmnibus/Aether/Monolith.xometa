@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Monolith",
   "mood": "Aether",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Inspired by the monolith from 2001. A single, impossibly pure tone with maximum partials in perfect alignment. No formant coloring, no vibrato, no modulation — just the raw harmonic series at total synchrony. The sound is so clean it feels alien. It does not invite interaction. It transmits.",
-  "tags": ["monolith", "alien", "pure", "static", "imposing"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Inspired by the monolith from 2001. A single, impossibly pure tone with maximum partials in perfect alignment. No formant coloring, no vibrato, no modulation \u2014 just the raw harmonic series at total synchrony. The sound is so clean it feels alien. It does not invite interaction. It transmits.",
+  "tags": [
+    "monolith",
+    "alien",
+    "pure",
+    "static",
+    "imposing"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 1.0,
       "opera_voice": 0.5,
-      "opera_chorus": 0.3,
       "opera_stage": 0.3,
       "opera_vowelA": 5,
       "opera_vowelB": 5,

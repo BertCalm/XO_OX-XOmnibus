@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Scream",
   "mood": "Prism",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Maximum effort, maximum filter resonance, zero sync. 40 partials scream independently through a narrow resonant band — the sound of a voice caught mid-shriek and frozen in time. Sustained, terrifying, beautiful.",
-  "tags": ["scream", "resonant", "frozen", "horror", "sustained"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Maximum effort, maximum filter resonance, zero sync. 40 partials scream independently through a narrow resonant band \u2014 the sound of a voice caught mid-shriek and frozen in time. Sustained, terrifying, beautiful.",
+  "tags": [
+    "scream",
+    "resonant",
+    "frozen",
+    "horror",
+    "sustained"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.05,
       "opera_voice": 0.8,
-      "opera_chorus": 0.35,
       "opera_stage": 0.4,
       "opera_vowelA": 0,
       "opera_vowelB": 5,

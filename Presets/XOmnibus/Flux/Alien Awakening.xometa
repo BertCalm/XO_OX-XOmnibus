@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Alien Awakening",
   "mood": "Flux",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "S-curve arc over 20 seconds morphing from Alien formant to human A vowel. The voice begins inhuman — metallic, spectral, unrecognizable. As synchrony builds, the formant traverses the entire vowel space from alien to A. At the peak, a human voice emerges from the machine. The arc is the evolution from code to song.",
-  "tags": ["conductor", "alien", "formant-morph", "s-curve", "transformation"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "S-curve arc over 20 seconds morphing from Alien formant to human A vowel. The voice begins inhuman \u2014 metallic, spectral, unrecognizable. As synchrony builds, the formant traverses the entire vowel space from alien to A. At the peak, a human voice emerges from the machine. The arc is the evolution from code to song.",
+  "tags": [
+    "conductor",
+    "alien",
+    "formant-morph",
+    "s-curve",
+    "transformation"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.0,
       "opera_voice": 0.1,
-      "opera_chorus": 0.3,
       "opera_stage": 0.4,
       "opera_vowelA": 5,
       "opera_vowelB": 0,

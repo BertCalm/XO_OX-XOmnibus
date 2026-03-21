@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Mesopelagic Hymn",
   "mood": "Submerged",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The twilight zone — 200 to 1000 meters deep where sunlight fades to nothing. A dark vocal drone with the Conductor slowly cycling formants over 50 seconds. The S-curve arc mimics the daily vertical migration of deep-sea creatures: rising toward light, retreating to darkness. Subharmonic emphasis, heavy spectral tilt toward the fundamental. A hymn sung in permanent dusk.",
-  "tags": ["submerged", "deep", "mesopelagic", "drone", "dark"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The twilight zone \u2014 200 to 1000 meters deep where sunlight fades to nothing. A dark vocal drone with the Conductor slowly cycling formants over 50 seconds. The S-curve arc mimics the daily vertical migration of deep-sea creatures: rising toward light, retreating to darkness. Subharmonic emphasis, heavy spectral tilt toward the fundamental. A hymn sung in permanent dusk.",
+  "tags": [
+    "submerged",
+    "deep",
+    "mesopelagic",
+    "drone",
+    "dark"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.2,
       "opera_voice": 0.25,
-      "opera_chorus": 0.3,
       "opera_stage": 0.75,
       "opera_vowelA": 3,
       "opera_vowelB": 4,

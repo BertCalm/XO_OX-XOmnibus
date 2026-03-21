@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Alto Warmth",
   "mood": "Foundation",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The middle register voice — neither soprano brightness nor baritone darkness. O-to-A vowel with warm tilt and moderate effort. Sits perfectly in the center of a mix. The reliable alto section.",
-  "tags": ["lead", "alto", "warm", "mid", "reliable"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "The middle register voice \u2014 neither soprano brightness nor baritone darkness. O-to-A vowel with warm tilt and moderate effort. Sits perfectly in the center of a mix. The reliable alto section.",
+  "tags": [
+    "lead",
+    "alto",
+    "warm",
+    "mid",
+    "reliable"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.45,
       "opera_voice": 0.38,
-      "opera_chorus": 0.25,
       "opera_stage": 0.3,
       "opera_vowelA": 3,
       "opera_vowelB": 0,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Whispered Lament",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Almost entirely breath. Effort at minimum pushes the engine into whisper territory where noise dominates and only the faintest harmonic ghosts remain. The formant shape is still there — you can hear the vowel in the breath — but it is a voice remembered, not a voice present. Slow drift between A and I vowels.",
-  "tags": ["whisper", "breath", "intimate", "fragile", "texture"],
-  "macroLabels": ["DRAMA", "VOICE", "CHORUS", "STAGE"],
+  "description": "Almost entirely breath. Effort at minimum pushes the engine into whisper territory where noise dominates and only the faintest harmonic ghosts remain. The formant shape is still there \u2014 you can hear the vowel in the breath \u2014 but it is a voice remembered, not a voice present. Slow drift between A and I vowels.",
+  "tags": [
+    "whisper",
+    "breath",
+    "intimate",
+    "fragile",
+    "texture"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -22,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.1,
       "opera_voice": 0.3,
-      "opera_chorus": 0.2,
       "opera_stage": 0.75,
       "opera_vowelA": 0,
       "opera_vowelB": 2,

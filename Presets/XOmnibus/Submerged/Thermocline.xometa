@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The thermocline — the boundary layer where warm surface water meets cold deep water. Sound refracts at this boundary, bending downward. Two LFOs work against each other: LFO1 slowly sweeps the formant (temperature gradient), LFO2 modulates the filter cutoff (refraction). The result is a restless, layered texture that never quite settles — warm and cold currents interleaving. A liminal space between worlds.",
+  "description": "The thermocline \u2014 the boundary layer where warm surface water meets cold deep water. Sound refracts at this boundary, bending downward. Two LFOs work against each other: LFO1 slowly sweeps the formant (temperature gradient), LFO2 modulates the filter cutoff (refraction). The result is a restless, layered texture that never quite settles \u2014 warm and cold currents interleaving. A liminal space between worlds.",
   "tags": [
     "submerged",
     "oceanic",
@@ -35,7 +35,6 @@
     "Opera": {
       "opera_drama": 0.25,
       "opera_voice": 0.35,
-      "opera_chorus": 0.3,
       "opera_stage": 0.65,
       "opera_vowelA": 3,
       "opera_vowelB": 0,
