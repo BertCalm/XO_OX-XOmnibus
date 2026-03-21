@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Piazzolla Ghost",
+  "mood": "Prism",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon in bisonoric mode — the ghost of Piazzolla's hands moving the bellows. Soft notes pull warm darkness, hard notes push bright intensity. Wide pitch bend range for tango slides. LFO2 gently sweeps the filter for breathing expression.",
+  "tier": "awakening",
+  "tags": [
+    "prism",
+    "bandoneon",
+    "tango",
+    "expressive",
+    "bisonoric",
+    "ghost",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.3,
+      "oleg_brightness": 6000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.75,
+      "oleg_detune": 20.0,
+      "oleg_formant": 0.6,
+      "oleg_attack": 0.015,
+      "oleg_release": 0.25,
+      "oleg_filterEnvAmt": 0.4,
+      "oleg_bendRange": 5,
+      "oleg_glideTime": 0.06,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.4,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 5.0,
+      "oleg_lfo1Depth": 0.1,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.3,
+      "oleg_lfo2Depth": 0.2,
+      "oleg_lfo2Shape": 1
+    }
+  },
+  "tempo": null
+}

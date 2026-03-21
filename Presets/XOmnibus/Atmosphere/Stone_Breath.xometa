@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Stone Breath",
+  "mood": "Atmosphere",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll at minimum registration with deep room resonance \u2014 stone walls breathing.",
+  "tags": [
+    "organ",
+    "ambient",
+    "dark",
+    "pad",
+    "cathedral"
+  ],
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.95,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 1.0,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.15,
+      "oct_chiff": 0.05,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.4,
+      "oct_crosstalk": 0.2,
+      "oct_brightness": 2000.0,
+      "oct_registration": 0.2,
+      "oct_roomDepth": 0.9,
+      "oct_attack": 0.5,
+      "oct_decay": 5.0,
+      "oct_sustain": 0.7,
+      "oct_release": 5.0,
+      "oct_filterEnvAmount": 0.05,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.02,
+      "oct_lfo1Depth": 0.12,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.008,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Amber Chapel",
+  "mood": "Aether",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan with maximum cassotto depth and slow LFO modulation — the amber-walled chapel in Kaliningrad where light filters through fossilized resin. Rich, sustaining, otherworldly. The cassotto chamber transforms the reed sound into something between organ and voice.",
+  "tier": "awakening",
+  "tags": [
+    "aether",
+    "bayan",
+    "sacred",
+    "ethereal",
+    "amber",
+    "chapel",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.1,
+      "oleg_brightness": 4000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.65,
+      "oleg_detune": 22.0,
+      "oleg_formant": 0.5,
+      "oleg_attack": 0.08,
+      "oleg_release": 0.6,
+      "oleg_filterEnvAmt": 0.2,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.1,
+      "oleg_cassottoDepth": 0.95,
+      "oleg_buzzThreshold": 0.5,
+      "oleg_wheelSpeed": 0.2,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 0.03,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.08,
+      "oleg_lfo2Depth": 0.18,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

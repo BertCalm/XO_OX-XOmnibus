@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Oto Four Winds",
+  "mood": "Prism",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with full macros engaged -- CHARACTER opens the partials and chiff, MOVEMENT adds LFO wobble and breath drift. High competition makes polyphonic passages fight for breath. Crosstalk bleeds voices together. The four winds meeting at a crossroads.",
+  "tier": "awakening",
+  "tags": [
+    "prism",
+    "sheng",
+    "organ",
+    "expressive",
+    "dynamic",
+    "crossroads",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.3,
+      "oto_detune": 0.18,
+      "oto_buzz": 0.15,
+      "oto_pressure": 0.3,
+      "oto_crosstalk": 0.25,
+      "oto_filterCutoff": 8000.0,
+      "oto_filterRes": 0.18,
+      "oto_attack": 0.05,
+      "oto_decay": 0.7,
+      "oto_sustain": 0.8,
+      "oto_release": 0.6,
+      "oto_lfo1Rate": 0.4,
+      "oto_lfo1Depth": 0.2,
+      "oto_competition": 0.4
+    }
+  },
+  "tempo": null
+}

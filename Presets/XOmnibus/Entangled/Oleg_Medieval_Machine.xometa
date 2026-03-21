@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Medieval Machine",
+  "mood": "Entangled",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hurdy-gurdy meets industrial — full drone strings, aggressive buzz bridge with low threshold, fast S&H LFO on filter. The sacred and the mechanical collide. Where the wheel meets the factory floor. Couples beautifully with any rhythmic engine.",
+  "tier": "awakening",
+  "tags": [
+    "entangled",
+    "hurdy-gurdy",
+    "industrial",
+    "drone",
+    "buzz",
+    "dark",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.65,
+    "density": 0.8,
+    "space": 0.4,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 1,
+      "oleg_buzz": 0.7,
+      "oleg_brightness": 6500.0,
+      "oleg_drone": 0.9,
+      "oleg_bellows": 0.8,
+      "oleg_detune": 25.0,
+      "oleg_formant": 0.65,
+      "oleg_attack": 0.02,
+      "oleg_release": 0.2,
+      "oleg_filterEnvAmt": 0.4,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.2,
+      "oleg_wheelSpeed": 0.6,
+      "oleg_droneInterval1": -5,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 1.5,
+      "oleg_lfo1Depth": 0.08,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 5.0,
+      "oleg_lfo2Depth": 0.3,
+      "oleg_lfo2Shape": 4
+    }
+  },
+  "tempo": null
+}

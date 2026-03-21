@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Sunken Liturgy",
+  "mood": "Submerged",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan heard through water — deep cassotto resonance, heavy lowpass filtering, slow attack. As if an Orthodox choir's organ fell to the bottom of the Baltic Sea and kept playing. The formant gives a vowel-like quality, as if the instrument is singing underwater prayers.",
+  "tier": "awakening",
+  "tags": [
+    "submerged",
+    "bayan",
+    "dark",
+    "sacred",
+    "underwater",
+    "deep",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.05,
+      "oleg_brightness": 1200.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.5,
+      "oleg_detune": 30.0,
+      "oleg_formant": 0.3,
+      "oleg_attack": 0.15,
+      "oleg_release": 0.8,
+      "oleg_filterEnvAmt": 0.15,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.15,
+      "oleg_cassottoDepth": 0.9,
+      "oleg_buzzThreshold": 0.7,
+      "oleg_wheelSpeed": 0.1,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 0.02,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.05,
+      "oleg_lfo2Depth": 0.2,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

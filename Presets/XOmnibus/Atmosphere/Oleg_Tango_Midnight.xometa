@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Tango Midnight",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon in pull mode — warm, melancholic, the sound of Buenos Aires at 3am. Soft velocity triggers the darker pull bank; harder velocity shifts to the brighter push bank. Wide detune for the characteristic bandoneon beating. Slight glide for expressive legato.",
+  "tier": "awakening",
+  "tags": [
+    "atmosphere",
+    "bandoneon",
+    "tango",
+    "melancholic",
+    "warm",
+    "expressive",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.15,
+      "oleg_brightness": 4500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 25.0,
+      "oleg_formant": 0.55,
+      "oleg_attack": 0.025,
+      "oleg_release": 0.3,
+      "oleg_filterEnvAmt": 0.35,
+      "oleg_bendRange": 3,
+      "oleg_glideTime": 0.08,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.4,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 0.1,
+      "oleg_lfo1Depth": 0.06,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.5,
+      "oleg_lfo2Depth": 0.15,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

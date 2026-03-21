@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Oto Melodica Pablo",
+  "mood": "Foundation",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm melodica inspired by Augustus Pablo's reggae recordings. Sawtooth fundamental through gentle lowpass filter with slow LFO wobble. Intimate, lo-fi, and deeply human. The breath is the instrument.",
+  "tier": "awakening",
+  "tags": [
+    "foundation",
+    "melodica",
+    "organ",
+    "warm",
+    "lo-fi",
+    "intimate",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.3,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.35,
+      "oto_detune": 0.1,
+      "oto_buzz": 0.1,
+      "oto_pressure": 0.35,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 4500.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.04,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.75,
+      "oto_release": 0.35,
+      "oto_lfo1Rate": 0.15,
+      "oto_lfo1Depth": 0.12,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

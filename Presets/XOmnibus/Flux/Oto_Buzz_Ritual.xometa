@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Buzz Ritual",
+  "mood": "Flux",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene at maximum buzz intensity with fast LFO modulation. The reed waveshaping creates an aggressive, distorted drone. High pressure instability makes each note unpredictable. A ritual invocation.",
+  "tier": "awakening",
+  "tags": [
+    "flux",
+    "khene",
+    "organ",
+    "aggressive",
+    "buzzy",
+    "ritual",
+    "drone",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.65,
+    "space": 0.15,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.7,
+      "oto_chiff": 0.5,
+      "oto_detune": 0.5,
+      "oto_buzz": 0.85,
+      "oto_pressure": 0.6,
+      "oto_crosstalk": 0.3,
+      "oto_filterCutoff": 9000.0,
+      "oto_filterRes": 0.3,
+      "oto_attack": 0.03,
+      "oto_decay": 0.3,
+      "oto_sustain": 0.7,
+      "oto_release": 0.2,
+      "oto_lfo1Rate": 3.0,
+      "oto_lfo1Depth": 0.35,
+      "oto_competition": 0.3
+    }
+  },
+  "tempo": null
+}

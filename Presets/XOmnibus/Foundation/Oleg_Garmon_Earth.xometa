@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Garmon Earth",
+  "mood": "Foundation",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Garmon at its most grounded — moderate buzz, earthy formant, steady bellows pressure. The sound of a village square, boots on packed earth, accordion music drifting from an open window. A solid, unpretentious foundation organ tone.",
+  "tier": "awakening",
+  "tags": [
+    "foundation",
+    "garmon",
+    "folk",
+    "earthy",
+    "warm",
+    "simple",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.25,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 3,
+      "oleg_buzz": 0.35,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.7,
+      "oleg_detune": 15.0,
+      "oleg_formant": 0.45,
+      "oleg_attack": 0.01,
+      "oleg_release": 0.12,
+      "oleg_filterEnvAmt": 0.3,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.35,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_lfo1Rate": 0.15,
+      "oleg_lfo1Depth": 0.03,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.6,
+      "oleg_lfo2Depth": 0.08,
+      "oleg_lfo2Shape": 1
+    }
+  },
+  "tempo": null
+}

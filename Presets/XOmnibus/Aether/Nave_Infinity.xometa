@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Nave Infinity",
+  "mood": "Aether",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll with cluster detuning and extreme room \u2014 a cathedral that stretches to infinity.",
+  "tags": [
+    "organ",
+    "ambient",
+    "infinite",
+    "cluster",
+    "ethereal"
+  ],
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.9,
+    "space": 1.0,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.5,
+      "oct_chiff": 0.0,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.6,
+      "oct_crosstalk": 0.3,
+      "oct_brightness": 3000.0,
+      "oct_registration": 0.4,
+      "oct_roomDepth": 1.0,
+      "oct_attack": 1.0,
+      "oct_decay": 8.0,
+      "oct_sustain": 0.8,
+      "oct_release": 8.0,
+      "oct_filterEnvAmount": 0.05,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.01,
+      "oct_lfo1Depth": 0.15,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.005,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}
