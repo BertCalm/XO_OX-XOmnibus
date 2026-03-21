@@ -397,18 +397,31 @@ public:
                     filtered = voice.warmthFilter.processSample (filtered);
                 }
 
-                // Terroir: regional circuit flavor as subtle tonal bias
-                // 0=West Coast cool (darker), 0.33=East Coast grit (more harmonics),
-                // 0.66=UK mid-forward (mid boost), 1.0=Japanese transparent (clean)
+                // Terroir: regional circuit flavor as tonal bias (D004 fix — all 4 regions active).
+                // 0.0=West Coast cool, 0.33=East Coast grit, 0.66=UK mid-forward, 1.0=Japanese transparent.
                 if (pTerroir > 0.01f && pTerroir < 0.4f)
                 {
-                    // West Coast: slight darken
+                    // West Coast (Capitol, Western Recorders): darker, cooler top end
                     filtered *= (1.0f - pTerroir * 0.15f);
                 }
                 else if (pTerroir >= 0.4f && pTerroir < 0.7f)
                 {
-                    // UK: mid boost via LFO2 modulation path
+                    // UK (Abbey Road, Olympic): mid-forward presence via LFO2 path
                     filtered += filtered * lfo2Val * 0.1f;
+                }
+                else if (pTerroir >= 0.7f && pTerroir < 0.98f)
+                {
+                    // East Coast (Bell Sound, RCA): harmonic grit — soft saturation + presence boost
+                    float eastGrit = (pTerroir - 0.7f) / 0.28f;  // 0..1 within region
+                    float driveAmt = 1.0f + eastGrit * 2.0f;
+                    filtered = fastTanh (filtered * driveAmt) / driveAmt;
+                    filtered *= (1.0f + eastGrit * 0.12f);  // subtle presence lift
+                }
+                else if (pTerroir >= 0.98f)
+                {
+                    // Japanese (Nippon Columbia, Victor): ultra-clean, minimal coloration
+                    // Soft gain reduction for pristine headroom — no saturation, no presence
+                    filtered *= 0.88f;
                 }
 
                 // Amplitude envelope
