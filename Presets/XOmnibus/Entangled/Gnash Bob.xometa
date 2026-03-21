@@ -47,13 +47,8 @@
       "bob_lfo1Depth": 0.08
     },
     "Overbite": {
-      "poss_aggression": 0.592,
-      "poss_brightness": 0.467,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.77,
-      "poss_outputLevel": 0.76,
-      "poss_outputPan": 0.01,
-      "poss_warmth": 0.641
+      "poss_level": 0.76,
+      "poss_pan": 0.01
     }
   },
   "schema_version": 1,

@@ -49,13 +49,12 @@
       "obsidian_warmth": 0.258
     },
     "Osprey": {
-      "osprey_aggression": 0.588,
-      "osprey_brightness": 0.692,
-      "osprey_density": 0.603,
-      "osprey_level": 0.88,
-      "osprey_movement": 0.757,
-      "osprey_space": 0.53,
-      "osprey_warmth": 0.452
+      "osprey_brine": 0.588,
+      "osprey_resonatorBright": 0.692,
+      "osprey_foam": 0.603,
+      "osprey_creatureRate": 0.757,
+      "osprey_harborVerb": 0.53,
+      "osprey_hull": 0.452
     }
   },
   "schema_version": 1,

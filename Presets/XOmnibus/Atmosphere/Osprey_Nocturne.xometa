@@ -26,21 +26,17 @@
   "name": "Osprey Nocturne",
   "parameters": {
     "Osprey": {
-      "osp_ampAttack": 544.7,
-      "osp_ampDecay": 46.6,
-      "osp_ampRelease": 271.0,
-      "osp_ampSustain": 0.74,
-      "osp_character": 0.85,
-      "osp_coupling": 0.15,
-      "osp_delayMix": 0.25,
-      "osp_diveSpeed": 1,
-      "osp_filterCutoff": 0.39,
-      "osp_filterReso": 0.77,
-      "osp_lfoDepth": 0.56,
-      "osp_lfoRate": 0.33,
-      "osp_movement": 0.96,
-      "osp_reverbMix": 0.39,
-      "osp_space": 0.6
+      "osprey_ampAttack": 0.5447,
+      "osprey_ampDecay": 0.05,
+      "osprey_ampRelease": 0.271,
+      "osprey_ampSustain": 0.74,
+      "osprey_coherence": 0.85,
+      "osprey_fog": 0.25,
+      "osprey_filterTilt": 0.39,
+      "osprey_depth": 0.56,
+      "osprey_seaState": 0.33,
+      "osprey_creatureRate": 0.96,
+      "osprey_harborVerb": 0.6
     }
   },
   "schema_version": 1,

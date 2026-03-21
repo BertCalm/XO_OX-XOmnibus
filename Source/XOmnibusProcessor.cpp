@@ -1447,6 +1447,16 @@ void XOmnibusProcessor::applyPreset(const PresetData& preset)
                     continue;  // param was removed — skip silently
             }
 
+            // Resolve Overbite (Bite) legacy param aliases before lookup.
+            // Four schema generations coexisted; this maps Gen 2/3 names to their
+            // canonical Gen 4 APVTS IDs and drops params with no equivalent.
+            if (fullId.startsWith("poss_"))
+            {
+                fullId = xomnibus::resolveBiteParamAlias(fullId);
+                if (fullId.isEmpty())
+                    continue;  // param was removed — skip silently
+            }
+
             // Try as-is first (already a full ID like "opal_source"),
             // then with prefix ("source" → "opal_source").
             if (apvts.getParameter(fullId) == nullptr)

@@ -45,13 +45,8 @@
       "ost_warmth": 0.736
     },
     "Overbite": {
-      "poss_aggression": 0.638,
-      "poss_brightness": 0.454,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.73,
-      "poss_outputLevel": 0.85,
-      "poss_outputPan": -0.04,
-      "poss_warmth": 0.638
+      "poss_level": 0.85,
+      "poss_pan": -0.04
     }
   },
   "schema_version": 1,

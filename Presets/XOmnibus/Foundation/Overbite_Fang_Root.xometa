@@ -32,11 +32,10 @@
   "name": "Overbite Fang Root",
   "parameters": {
     "Overbite": {
-      "poss_amp_sustain": 0.85,
-      "poss_drive": 0.6,
-      "poss_filter_cutoff": 0.35,
-      "poss_resonance": 0.5,
-      "poss_sub_osc": 0.75
+      "poss_ampSustain": 0.85,
+      "poss_driveAmount": 0.6,
+      "poss_filterCutoff": 0.35,
+      "poss_filterReso": 0.5
     }
   },
   "schema_version": 1,

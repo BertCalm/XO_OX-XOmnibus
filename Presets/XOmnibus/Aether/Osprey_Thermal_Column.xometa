@@ -26,18 +26,13 @@
   "name": "Thermal Column (Osprey)",
   "parameters": {
     "Osprey": {
-      "osprey_altitude": 0.95,
       "osprey_ampAttack": 2.0,
       "osprey_ampRelease": 7.5,
-      "osprey_delayFeedback": 0.25,
-      "osprey_filterCutoff": 0.82,
-      "osprey_filterReso": 0.1,
+      "osprey_fog": 0.25,
+      "osprey_filterTilt": 0.82,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroDive": 0.0,
-      "osprey_macroLift": 0.0,
       "osprey_macroSpace": 0.0,
-      "osprey_reverbMix": 0.88,
-      "osprey_wingSpan": 0.75
+      "osprey_harborVerb": 0.88
     }
   },
   "schema_version": 1,

@@ -36,18 +36,12 @@
       "osprey_ampDecay": 1.274,
       "osprey_ampRelease": 2.376,
       "osprey_ampSustain": 0.79,
-      "osprey_filterCutoff": 16700.0,
-      "osprey_filterReso": 0.101,
-      "osprey_level": 0.77,
+      "osprey_filterTilt": 0.974,
       "osprey_macroCharacter": 0.72,
       "osprey_macroCoupling": 0.0,
       "osprey_macroMovement": 0.24,
       "osprey_macroSpace": 0.86,
-      "osprey_reverbMix": 0.688,
-      "osprey_soarHeight": 0.765,
-      "osprey_stereoWidth": 0.894,
-      "osprey_thermalDrift": 1.24,
-      "osprey_wingFlutter": 0.12
+      "osprey_harborVerb": 0.688
     }
   },
   "schema_version": 1,

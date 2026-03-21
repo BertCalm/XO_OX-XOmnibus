@@ -38,10 +38,10 @@
   "name": "BRIGHT WARM VAST STILL GENT... (Osprey II)",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.903,
-      "macro_coupling": 0.268,
-      "macro_movement": 0.049,
-      "macro_space": 0.931
+      "osprey_macroCharacter": 0.903,
+      "osprey_macroCoupling": 0.268,
+      "osprey_macroMovement": 0.049,
+      "osprey_macroSpace": 0.931
     },
     "Overdub": {
       "macro_character": 0.875,

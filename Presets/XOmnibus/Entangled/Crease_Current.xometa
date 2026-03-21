@@ -52,12 +52,10 @@
       "origami_valleyDepth": 0.749
     },
     "Osprey": {
-      "osprey_couplingIn": 0.653,
-      "osprey_couplingOut": 0.615,
-      "osprey_macro1": 0.648,
-      "osprey_macro2": 0.548,
-      "osprey_macro3": 0.482,
-      "osprey_macro4": 0.57
+      "osprey_macroCharacter": 0.648,
+      "osprey_macroMovement": 0.548,
+      "osprey_macroCoupling": 0.482,
+      "osprey_macroSpace": 0.57
     }
   },
   "schema_version": 1,

@@ -45,13 +45,8 @@
       "origami_warmth": 0.494
     },
     "Overbite": {
-      "poss_aggression": 0.608,
-      "poss_brightness": 0.498,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.57,
-      "poss_outputLevel": 0.9,
-      "poss_outputPan": 0.04,
-      "poss_warmth": 0.625
+      "poss_level": 0.9,
+      "poss_pan": 0.04
     }
   },
   "schema_version": 1,

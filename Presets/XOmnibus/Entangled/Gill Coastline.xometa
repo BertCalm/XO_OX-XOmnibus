@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OddOscar's envelope contour shapes XOsprey's shore-blend resonance's filter \u2014 axolotl gill warmth breathing in and out through the partner's resonant body.",
+  "description": "OddOscar's envelope contour shapes XOsprey's shore-blend resonance's filter — axolotl gill warmth breathing in and out through the partner's resonant body.",
   "tags": [
     "entangled",
     "coupling",
@@ -53,11 +53,11 @@
       "morph_level": 0.75
     },
     "Osprey": {
-      "osprey_shoreBlend": 0.5,
-      "osprey_filterCutoff": 5000.0,
-      "osprey_lfoRate": 0.15,
-      "osprey_reverbMix": 0.4,
-      "osprey_attack": 0.08
+      "osprey_shore": 2.0,
+      "osprey_filterTilt": 0.799,
+      "osprey_seaState": 0.15,
+      "osprey_harborVerb": 0.4,
+      "osprey_ampAttack": 0.08
     }
   },
   "coupling": {

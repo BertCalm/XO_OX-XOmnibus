@@ -38,10 +38,10 @@
   "name": "Tape Shore",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.82,
-      "macro_coupling": 0.68,
-      "macro_movement": 0.33,
-      "macro_space": 0.38
+      "osprey_macroCharacter": 0.82,
+      "osprey_macroCoupling": 0.68,
+      "osprey_macroMovement": 0.33,
+      "osprey_macroSpace": 0.38
     },
     "Overdub": {
       "macro_character": 0.75,

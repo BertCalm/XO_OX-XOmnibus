@@ -78,7 +78,6 @@
       "osprey_filterTilt": 0.4,
       "osprey_foam": 0.1,
       "osprey_fog": 0.3,
-      "osprey_geoFrequency": 0.55,
       "osprey_harborVerb": 0.5,
       "osprey_hull": 0.4,
       "osprey_macroCharacter": 0.0,

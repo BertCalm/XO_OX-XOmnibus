@@ -50,18 +50,13 @@
       "osteria_outputPan": 0.033
     },
     "Overbite": {
-      "poss_biteDepth": 0.836,
-      "poss_couplingIn": 0.447,
-      "poss_couplingOut": 0.64,
-      "poss_fangAttack": 0.167,
-      "poss_gnashAmt": 0.702,
-      "poss_macro1": 0.475,
-      "poss_macro2": 0.57,
-      "poss_macro3": 0.692,
-      "poss_macro4": 0.427,
-      "poss_outputLevel": 0.779,
-      "poss_outputPan": -0.022,
-      "poss_snapRelease": 0.574
+      "poss_gnashAmount": 0.702,
+      "poss_macroBelly": 0.475,
+      "poss_macroBite": 0.57,
+      "poss_macroScurry": 0.692,
+      "poss_macroTrash": 0.427,
+      "poss_level": 0.779,
+      "poss_pan": -0.022
     }
   },
   "schema_version": 1,

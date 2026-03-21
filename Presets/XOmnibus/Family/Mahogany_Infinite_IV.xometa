@@ -40,10 +40,10 @@
   "name": "Mahogany Infinite IV",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.72,
-      "macro_coupling": 0.72,
-      "macro_movement": 0.79,
-      "macro_space": 0.37
+      "osprey_macroCharacter": 0.72,
+      "osprey_macroCoupling": 0.72,
+      "osprey_macroMovement": 0.79,
+      "osprey_macroSpace": 0.37
     },
     "Overdub": {
       "macro_character": 0.87,

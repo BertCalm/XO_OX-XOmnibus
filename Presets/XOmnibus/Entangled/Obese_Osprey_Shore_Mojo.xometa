@@ -61,8 +61,7 @@
       "fat_subOscLevel": 0.715
     },
     "Osprey": {
-      "osprey_filterCutoff": 7375.8,
-      "osprey_level": 0.676
+      "osprey_filterTilt": 0.856
     }
   },
   "schema_version": 1,

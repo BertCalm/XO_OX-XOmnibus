@@ -50,18 +50,13 @@
       "ocelot_outputPan": -0.02
     },
     "Overbite": {
-      "poss_biteDepth": 0.752,
-      "poss_couplingIn": 0.444,
-      "poss_couplingOut": 0.483,
-      "poss_fangAttack": 0.299,
-      "poss_gnashAmt": 0.552,
-      "poss_macro1": 0.676,
-      "poss_macro2": 0.328,
-      "poss_macro3": 0.39,
-      "poss_macro4": 0.606,
-      "poss_outputLevel": 0.815,
-      "poss_outputPan": 0.023,
-      "poss_snapRelease": 0.45
+      "poss_gnashAmount": 0.552,
+      "poss_macroBelly": 0.676,
+      "poss_macroBite": 0.328,
+      "poss_macroScurry": 0.39,
+      "poss_macroTrash": 0.606,
+      "poss_level": 0.815,
+      "poss_pan": 0.023
     }
   },
   "schema_version": 1,

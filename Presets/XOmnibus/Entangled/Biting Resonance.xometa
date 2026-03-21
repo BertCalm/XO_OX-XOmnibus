@@ -36,13 +36,8 @@
   "name": "Biting Resonance",
   "parameters": {
     "Overbite": {
-      "poss_attack": 0.0,
-      "poss_biteDepth": 0.558,
       "poss_filterCutoff": 0.471,
-      "poss_lfoRate": 0.117,
-      "poss_macroBite": 0.098,
-      "poss_macroCoupling": 0.0,
-      "poss_release": 0.825
+      "poss_macroBite": 0.098
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.483,

@@ -38,10 +38,10 @@
   "name": "Monolith Arctic III",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.06,
-      "macro_coupling": 0.053,
-      "macro_movement": 0.197,
-      "macro_space": 0.042
+      "osprey_macroCharacter": 0.06,
+      "osprey_macroCoupling": 0.053,
+      "osprey_macroMovement": 0.197,
+      "osprey_macroSpace": 0.042
     },
     "Overdub": {
       "macro_character": 0.06,

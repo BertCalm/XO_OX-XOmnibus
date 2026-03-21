@@ -38,10 +38,10 @@
   "name": "Cocoa Massive",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.547,
-      "macro_coupling": 0.954,
-      "macro_movement": 0.456,
-      "macro_space": 0.356
+      "osprey_macroCharacter": 0.547,
+      "osprey_macroCoupling": 0.954,
+      "osprey_macroMovement": 0.456,
+      "osprey_macroSpace": 0.356
     },
     "Overdub": {
       "macro_character": 0.524,

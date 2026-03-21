@@ -38,10 +38,10 @@
   "name": "Warm Wing",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.49,
-      "macro_movement": 0.48,
-      "macro_space": 0.12
+      "osprey_macroCharacter": 0.85,
+      "osprey_macroCoupling": 0.49,
+      "osprey_macroMovement": 0.48,
+      "osprey_macroSpace": 0.12
     },
     "Overdub": {
       "macro_character": 0.92,

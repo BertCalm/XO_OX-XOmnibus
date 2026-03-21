@@ -2,19 +2,37 @@
   "schema_version": 1,
   "name": "Macro Performance Kit",
   "mood": "Entangled",
-  "engines": ["Onset", "Overbite"],
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ONSET to OVERBITE coupling mapped for live performance via all 4 macros: CHARACTER shapes drum character, MOVEMENT drives bass envelope, COUPLING (M3) sweeps coupling depth 0→1 live, SPACE opens reverb field. Designed for the MPCe quad-corner performance system.",
-  "tags": ["coupled", "performance", "macros", "live", "AmpToFilter", "AudioToFM", "advanced", "mpc-performance", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "performance",
+    "macros",
+    "live",
+    "AmpToFilter",
+    "AudioToFM",
+    "advanced",
+    "mpc-performance",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
-    "brightness": 0.60,
+    "brightness": 0.6,
     "warmth": 0.45,
     "movement": 0.72,
-    "density": 0.60,
+    "density": 0.6,
     "space": 0.45,
     "aggression": 0.62
   },
@@ -23,34 +41,29 @@
       "perc_kickLevel": 0.82,
       "perc_kickPunch": 0.68,
       "perc_kickDecay": 0.35,
-      "perc_kickTone": 0.50,
-      "perc_snareLevel": 0.60,
+      "perc_kickTone": 0.5,
+      "perc_snareLevel": 0.6,
       "perc_snareSnap": 0.55,
       "perc_snareDecay": 0.25,
       "perc_hatLevel": 0.42,
       "perc_hatDecay": 0.15,
-      "perc_outputLevel": 0.80,
-      "perc_macroGather": 0.50,
+      "perc_outputLevel": 0.8,
+      "perc_macroGather": 0.5,
       "perc_xvcDepth": 0.42,
       "perc_reverbMix": 0.15
     },
     "Overbite": {
-      "poss_biteDepth": 0.60,
-      "poss_fmDepth": 0.40,
       "poss_filterCutoff": 0.35,
       "poss_filterReso": 0.42,
       "poss_ampAttack": 0.005,
-      "poss_ampDecay": 0.50,
+      "poss_ampDecay": 0.5,
       "poss_ampSustain": 0.65,
-      "poss_ampRelease": 0.90,
-      "poss_oscWave": 0,
-      "poss_outputLevel": 0.75,
-      "poss_reverbMix": 0.25,
-      "poss_delayMix": 0.15,
-      "poss_macroBelly": 0.50,
+      "poss_ampRelease": 0.9,
+      "poss_level": 0.75,
+      "poss_macroBelly": 0.5,
       "poss_macroBite": 0.55,
       "poss_macroScurry": 0.45,
-      "poss_macroTrash": 0.30
+      "poss_macroTrash": 0.3
     }
   },
   "coupling": {
@@ -59,7 +72,7 @@
         "engineA": "Onset",
         "engineB": "Overbite",
         "type": "AmpToFilter",
-        "amount": 0.50
+        "amount": 0.5
       },
       {
         "engineA": "Onset",
@@ -75,7 +88,7 @@
         "slot": 1,
         "active": true,
         "type": 0,
-        "amount": 0.50,
+        "amount": 0.5,
         "sourceSlot": 0,
         "targetSlot": 1,
         "midiCC": 3

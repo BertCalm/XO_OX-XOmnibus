@@ -55,14 +55,10 @@
       "fat_satDrive": 0.887
     },
     "Osprey": {
-      "osprey_couplingIn": 0.415,
-      "osprey_couplingOut": 0.738,
-      "osprey_macro1": 0.606,
-      "osprey_macro2": 0.7,
-      "osprey_macro3": 0.542,
-      "osprey_macro4": 0.474,
-      "osprey_outputLevel": 0.912,
-      "osprey_outputPan": 0.035
+      "osprey_macroCharacter": 0.606,
+      "osprey_macroMovement": 0.7,
+      "osprey_macroCoupling": 0.542,
+      "osprey_macroSpace": 0.474
     }
   },
   "schema_version": 1,

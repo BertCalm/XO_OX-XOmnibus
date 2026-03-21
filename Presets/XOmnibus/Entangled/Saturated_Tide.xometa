@@ -38,10 +38,10 @@
   "name": "Saturated Tide",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.76,
-      "macro_coupling": 0.41,
-      "macro_movement": 0.49,
-      "macro_space": 0.41
+      "osprey_macroCharacter": 0.76,
+      "osprey_macroCoupling": 0.41,
+      "osprey_macroMovement": 0.49,
+      "osprey_macroSpace": 0.41
     },
     "Overdub": {
       "macro_character": 0.92,

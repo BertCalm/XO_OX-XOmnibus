@@ -36,10 +36,7 @@
       "level": 0.653,
       "pan": -0.118
     },
-    "Overbite": {
-      "level": 0.754,
-      "pan": -0.091
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "sequencer": null,

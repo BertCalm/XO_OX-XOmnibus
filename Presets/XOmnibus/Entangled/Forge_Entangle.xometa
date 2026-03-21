@@ -46,10 +46,10 @@
       "bob_lfo1Depth": 0.08
     },
     "Osprey": {
-      "macro_character": 0.85,
-      "macro_coupling": 0.77,
-      "macro_movement": 0.23,
-      "macro_space": 0.56
+      "osprey_macroCharacter": 0.85,
+      "osprey_macroCoupling": 0.77,
+      "osprey_macroMovement": 0.23,
+      "osprey_macroSpace": 0.56
     }
   },
   "schema_version": 1,

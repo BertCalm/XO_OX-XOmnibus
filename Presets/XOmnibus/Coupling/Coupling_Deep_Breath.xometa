@@ -55,21 +55,15 @@
       "opal_lfoDepth": 0.15
     },
     "Osprey": {
-      "osprey_shoreBlend": 0.5,
+      "osprey_shore": 0.0,
       "osprey_seaState": 0.35,
       "osprey_swellPeriod": 0.55,
-      "osprey_resonatorTuning": 0.5,
-      "osprey_excitationLevel": 0.6,
-      "osprey_filterCutoff": 0.5,
-      "osprey_filterReso": 0.18,
+      "osprey_filterTilt": 0.5,
       "osprey_ampAttack": 0.3,
       "osprey_ampDecay": 1.5,
       "osprey_ampSustain": 0.7,
       "osprey_ampRelease": 3.5,
-      "osprey_outputLevel": 0.68,
-      "osprey_reverbMix": 0.55,
-      "osprey_coastlineIndex": 0,
-      "osprey_peakEnvFollower": 0.4
+      "osprey_harborVerb": 0.55
     }
   },
   "coupling": {

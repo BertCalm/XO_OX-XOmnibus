@@ -45,13 +45,8 @@
       "oracle_warmth": 0.443
     },
     "Overbite": {
-      "poss_aggression": 0.568,
-      "poss_brightness": 0.427,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.76,
-      "poss_outputLevel": 0.75,
-      "poss_outputPan": 0.05,
-      "poss_warmth": 0.584
+      "poss_level": 0.75,
+      "poss_pan": 0.05
     }
   },
   "schema_version": 1,

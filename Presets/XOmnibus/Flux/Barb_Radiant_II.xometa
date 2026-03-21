@@ -26,10 +26,7 @@
   "mood": "Flux",
   "name": "Barb Radiant II",
   "parameters": {
-    "Osprey": {
-      "couplingBus": 1,
-      "couplingLevel": 0.951
-    }
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

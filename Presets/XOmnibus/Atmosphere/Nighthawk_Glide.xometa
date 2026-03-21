@@ -26,21 +26,17 @@
   "name": "Nighthawk Glide",
   "parameters": {
     "Osprey": {
-      "osp_ampAttack": 523.2,
-      "osp_ampDecay": 260.6,
-      "osp_ampRelease": 124.9,
-      "osp_ampSustain": 0.63,
-      "osp_character": 0.71,
-      "osp_coupling": 0.25,
-      "osp_delayMix": 0.34,
-      "osp_diveSpeed": 0,
-      "osp_filterCutoff": 0.45,
-      "osp_filterReso": 0.81,
-      "osp_lfoDepth": 0.1,
-      "osp_lfoRate": 0.06,
-      "osp_movement": 0.5,
-      "osp_reverbMix": 0.9,
-      "osp_space": 0.17
+      "osprey_ampAttack": 0.5232,
+      "osprey_ampDecay": 0.2606,
+      "osprey_ampRelease": 0.1249,
+      "osprey_ampSustain": 0.63,
+      "osprey_coherence": 0.71,
+      "osprey_fog": 0.34,
+      "osprey_filterTilt": 0.45,
+      "osprey_depth": 0.1,
+      "osprey_seaState": 0.06,
+      "osprey_creatureRate": 0.5,
+      "osprey_harborVerb": 0.17
     }
   },
   "schema_version": 1,

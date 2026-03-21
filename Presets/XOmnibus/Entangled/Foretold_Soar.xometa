@@ -49,13 +49,12 @@
       "oracle_warmth": 0.481
     },
     "Osprey": {
-      "osprey_aggression": 0.527,
-      "osprey_brightness": 0.626,
-      "osprey_density": 0.624,
-      "osprey_level": 0.864,
-      "osprey_movement": 0.69,
-      "osprey_space": 0.553,
-      "osprey_warmth": 0.553
+      "osprey_brine": 0.527,
+      "osprey_resonatorBright": 0.626,
+      "osprey_foam": 0.624,
+      "osprey_creatureRate": 0.69,
+      "osprey_harborVerb": 0.553,
+      "osprey_hull": 0.553
     }
   },
   "schema_version": 1,

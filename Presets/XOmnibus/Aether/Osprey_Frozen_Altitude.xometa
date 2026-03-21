@@ -26,18 +26,13 @@
   "name": "Frozen Altitude",
   "parameters": {
     "Osprey": {
-      "osprey_altitude": 0.98,
       "osprey_ampAttack": 5.0,
       "osprey_ampRelease": 9.0,
-      "osprey_delayFeedback": 0.25,
-      "osprey_filterCutoff": 0.75,
-      "osprey_filterReso": 0.1,
+      "osprey_fog": 0.25,
+      "osprey_filterTilt": 0.75,
       "osprey_macroCoupling": 0.0,
-      "osprey_macroDive": 0.0,
-      "osprey_macroLift": 0.0,
       "osprey_macroSpace": 0.0,
-      "osprey_reverbMix": 0.95,
-      "osprey_wingSpan": 0.75
+      "osprey_harborVerb": 0.95
     }
   },
   "schema_version": 1,

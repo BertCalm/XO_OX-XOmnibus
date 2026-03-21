@@ -32,13 +32,13 @@
   "name": "Sepia Cloud",
   "parameters": {
     "Osprey": {
-      "osprey_brightness": 0.52,
+      "osprey_resonatorBright": 0.52,
       "osprey_depth": 0.62,
       "osprey_foam": 0.3,
       "osprey_seaState": 0.25,
       "osprey_shore": 0.42,
       "osprey_swellPeriod": 0.65,
-      "osprey_wetMix": 0.94
+      "osprey_harborVerb": 0.94
     }
   },
   "schema_version": 1,

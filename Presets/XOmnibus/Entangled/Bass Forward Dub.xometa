@@ -36,13 +36,8 @@
   "name": "Bass Forward Dub",
   "parameters": {
     "Overbite": {
-      "poss_aggression": 0.573,
-      "poss_brightness": 0.478,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.69,
-      "poss_outputLevel": 0.9,
-      "poss_outputPan": 0.05,
-      "poss_warmth": 0.675
+      "poss_level": 0.9,
+      "poss_pan": 0.05
     },
     "Overdub": {
       "dub_aggression": 0.289,

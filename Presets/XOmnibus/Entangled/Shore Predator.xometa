@@ -73,13 +73,8 @@
       "osteria_warmth": 0.839
     },
     "Overbite": {
-      "poss_attack": 0.089,
-      "poss_biteDepth": 0.633,
       "poss_filterCutoff": 0.434,
-      "poss_lfoRate": 0.182,
-      "poss_macroBite": 0.098,
-      "poss_macroCoupling": 0.104,
-      "poss_release": 0.771
+      "poss_macroBite": 0.098
     }
   },
   "schema_version": 1,

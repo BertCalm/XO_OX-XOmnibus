@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Shore Drift",
   "mood": "Entangled",
-  "engines": ["Osprey", "Osteria"],
+  "engines": [
+    "Osprey",
+    "Osteria"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OSPREY and OSTERIA share the ShoreSystem cultural data — their coupling evolves over 40 seconds as tidal energy from OSPREY modulates the Porto Wine room excitation in OSTERIA, which feeds back swell energy to shift the shore coastline blend.",
-  "tags": ["evolution", "shore", "tidal", "drift", "temporal", "coupled", "entangled", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "evolution",
+    "shore",
+    "tidal",
+    "drift",
+    "temporal",
+    "coupled",
+    "entangled",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -20,20 +37,17 @@
   },
   "parameters": {
     "Osprey": {
-      "macro_character": 0.52,
-      "macro_movement": 0.58,
-      "macro_coupling": 0.50,
-      "macro_space": 0.72,
-      "osprey_shoreBlend": 0.50,
-      "osprey_waveEnergy": 0.45,
-      "osprey_resonatorTuning": 0.52,
-      "osprey_reverbMix": 0.68,
-      "osprey_outputLevel": 0.80
+      "osprey_macroCharacter": 0.52,
+      "osprey_macroMovement": 0.58,
+      "osprey_macroCoupling": 0.5,
+      "osprey_macroSpace": 0.72,
+      "osprey_shore": 2.0,
+      "osprey_harborVerb": 0.68
     },
     "Osteria": {
-      "macro_character": 0.50,
+      "macro_character": 0.5,
       "macro_movement": 0.55,
-      "macro_coupling": 0.50,
+      "macro_coupling": 0.5,
       "macro_space": 0.75,
       "osteria_qBassShore": 0.55,
       "osteria_roomExcitation": 0.48,

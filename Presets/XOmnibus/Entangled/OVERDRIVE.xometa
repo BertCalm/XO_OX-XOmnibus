@@ -38,10 +38,10 @@
   "name": "OVERDRIVE",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.171,
-      "macro_coupling": 0.624,
-      "macro_movement": 0.889,
-      "macro_space": 0.902
+      "osprey_macroCharacter": 0.171,
+      "osprey_macroCoupling": 0.624,
+      "osprey_macroMovement": 0.889,
+      "osprey_macroSpace": 0.902
     },
     "Overdub": {
       "macro_character": 0.641,

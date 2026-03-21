@@ -52,12 +52,10 @@
       "obscura_stiffness": 0.665
     },
     "Osprey": {
-      "osprey_couplingIn": 0.72,
-      "osprey_couplingOut": 0.719,
-      "osprey_macro1": 0.543,
-      "osprey_macro2": 0.582,
-      "osprey_macro3": 0.361,
-      "osprey_macro4": 0.358
+      "osprey_macroCharacter": 0.543,
+      "osprey_macroMovement": 0.582,
+      "osprey_macroCoupling": 0.361,
+      "osprey_macroSpace": 0.358
     }
   },
   "schema_version": 1,

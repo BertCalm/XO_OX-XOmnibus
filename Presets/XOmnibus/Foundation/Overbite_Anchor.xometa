@@ -32,11 +32,10 @@
   "name": "Overbite Anchor",
   "parameters": {
     "Overbite": {
-      "poss_amp_sustain": 0.9,
-      "poss_drive": 0.65,
-      "poss_filter_cutoff": 0.3,
-      "poss_resonance": 0.4,
-      "poss_sub_osc": 0.8
+      "poss_ampSustain": 0.9,
+      "poss_driveAmount": 0.65,
+      "poss_filterCutoff": 0.3,
+      "poss_filterReso": 0.4
     }
   },
   "schema_version": 1,

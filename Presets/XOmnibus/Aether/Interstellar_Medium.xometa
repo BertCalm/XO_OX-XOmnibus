@@ -32,13 +32,13 @@
   "name": "Interstellar Medium II",
   "parameters": {
     "Osprey": {
-      "osprey_brightness": 0.06,
+      "osprey_resonatorBright": 0.06,
       "osprey_depth": 0.97,
       "osprey_foam": 0.03,
       "osprey_seaState": 0.03,
       "osprey_shore": 0.04,
       "osprey_swellPeriod": 0.96,
-      "osprey_wetMix": 0.9
+      "osprey_harborVerb": 0.9
     }
   },
   "schema_version": 1,

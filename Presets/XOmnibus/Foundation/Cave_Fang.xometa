@@ -30,18 +30,8 @@
       "poss_ampDecay": 775.1,
       "poss_ampRelease": 436.0,
       "poss_ampSustain": 0.71,
-      "poss_bite": 0.19,
-      "poss_character": 0.85,
-      "poss_coupling": 0.08,
-      "poss_delayMix": 0.5,
-      "poss_envAmount": 0.15,
       "poss_filterCutoff": 0.56,
-      "poss_filterReso": 0.72,
-      "poss_lfoDepth": 0.06,
-      "poss_lfoRate": 0.75,
-      "poss_movement": 0.16,
-      "poss_reverbMix": 0.58,
-      "poss_space": 0.96
+      "poss_filterReso": 0.72
     }
   },
   "schema_version": 1,

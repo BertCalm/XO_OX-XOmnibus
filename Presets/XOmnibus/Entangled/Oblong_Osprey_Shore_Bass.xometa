@@ -61,8 +61,7 @@
       "bob_curAmount": 0.2
     },
     "Osprey": {
-      "osprey_filterCutoff": 2315.7,
-      "osprey_level": 0.687
+      "osprey_filterTilt": 0.688
     }
   },
   "schema_version": 1,

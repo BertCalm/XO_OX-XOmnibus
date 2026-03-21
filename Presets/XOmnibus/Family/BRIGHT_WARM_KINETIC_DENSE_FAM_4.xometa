@@ -36,10 +36,7 @@
       "level": 0.718,
       "pan": -0.046
     },
-    "Osprey": {
-      "level": 0.771,
-      "pan": -0.073
-    }
+    "Osprey": {}
   },
   "schema_version": 1,
   "sequencer": null,

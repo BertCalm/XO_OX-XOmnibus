@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Drum Teaches Bass",
   "mood": "Entangled",
-  "engines": ["Onset", "Overbite"],
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ONSET kick transients drive OVERBITE filter cutoff and FM depth — percussion rewrites bass character on every hit. The essential XOmnibus coupling demo: drum amplitude shapes predator bite in real time.",
-  "tags": ["coupled", "percussion", "bass", "AmpToFilter", "AudioToFM", "performance-demo", "essential"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "percussion",
+    "bass",
+    "AmpToFilter",
+    "AudioToFM",
+    "performance-demo",
+    "essential"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -24,34 +40,29 @@
       "perc_kickPunch": 0.72,
       "perc_kickDecay": 0.38,
       "perc_kickTone": 0.45,
-      "perc_snareLevel": 0.60,
+      "perc_snareLevel": 0.6,
       "perc_snareSnap": 0.55,
       "perc_snareDecay": 0.28,
-      "perc_hatLevel": 0.40,
+      "perc_hatLevel": 0.4,
       "perc_hatDecay": 0.18,
-      "perc_outputLevel": 0.80,
-      "perc_macroGather": 0.50,
-      "perc_xvcDepth": 0.40,
+      "perc_outputLevel": 0.8,
+      "perc_macroGather": 0.5,
+      "perc_xvcDepth": 0.4,
       "perc_xvcTarget": 1,
-      "perc_reverbMix": 0.10
+      "perc_reverbMix": 0.1
     },
     "Overbite": {
-      "poss_biteDepth": 0.62,
-      "poss_fmDepth": 0.45,
       "poss_filterCutoff": 0.35,
-      "poss_filterReso": 0.40,
+      "poss_filterReso": 0.4,
       "poss_ampAttack": 0.005,
       "poss_ampDecay": 0.45,
       "poss_ampSustain": 0.65,
-      "poss_ampRelease": 0.80,
-      "poss_oscWave": 0,
-      "poss_outputLevel": 0.75,
-      "poss_reverbMix": 0.20,
-      "poss_delayMix": 0.15,
-      "poss_macroBelly": 0.50,
+      "poss_ampRelease": 0.8,
+      "poss_level": 0.75,
+      "poss_macroBelly": 0.5,
       "poss_macroBite": 0.58,
-      "poss_macroScurry": 0.40,
-      "poss_macroTrash": 0.30
+      "poss_macroScurry": 0.4,
+      "poss_macroTrash": 0.3
     }
   },
   "coupling": {
@@ -60,19 +71,19 @@
         "engineA": "Onset",
         "engineB": "Overbite",
         "type": "AmpToFilter",
-        "amount": 0.50
+        "amount": 0.5
       },
       {
         "engineA": "Onset",
         "engineB": "Overbite",
         "type": "AudioToFM",
-        "amount": 0.30
+        "amount": 0.3
       },
       {
         "engineA": "Onset",
         "engineB": "Overbite",
         "type": "EnvToDecay",
-        "amount": 0.20
+        "amount": 0.2
       }
     ]
   },
@@ -82,7 +93,7 @@
         "slot": 1,
         "active": true,
         "type": 0,
-        "amount": 0.50,
+        "amount": 0.5,
         "sourceSlot": 0,
         "targetSlot": 1
       },
@@ -90,7 +101,7 @@
         "slot": 2,
         "active": true,
         "type": 4,
-        "amount": 0.30,
+        "amount": 0.3,
         "sourceSlot": 0,
         "targetSlot": 1
       }

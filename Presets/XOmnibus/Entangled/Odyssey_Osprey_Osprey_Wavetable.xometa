@@ -66,8 +66,7 @@
       "drift_wtPosition": 0.567
     },
     "Osprey": {
-      "osprey_filterCutoff": 9399.1,
-      "osprey_level": 0.658
+      "osprey_filterTilt": 0.891
     }
   },
   "schema_version": 1,

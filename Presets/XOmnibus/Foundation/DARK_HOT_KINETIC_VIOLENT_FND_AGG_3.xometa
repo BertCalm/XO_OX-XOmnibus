@@ -45,12 +45,7 @@
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Overbite": {
-      "macro_character": 0.433,
-      "macro_coupling": 0.639,
-      "macro_movement": 0.868,
-      "macro_space": 0.842
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

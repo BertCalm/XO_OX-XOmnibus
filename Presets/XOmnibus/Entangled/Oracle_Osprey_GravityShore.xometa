@@ -53,14 +53,8 @@
       "oracle_timeStep": 0.38
     },
     "Osprey": {
-      "osprey_coastDepth": 0.42,
-      "osprey_filterCutoff": 0.6,
-      "osprey_filterReso": 0.28,
-      "osprey_masterLevel": 0.75,
-      "osprey_shoreBlend": 0.55,
-      "osprey_thermalDepth": 0.3,
-      "osprey_thermalRate": 0.22,
-      "osprey_windLevel": 0.38
+      "osprey_filterTilt": 0.6,
+      "osprey_shore": 2.2
     }
   },
   "schema_version": 1,

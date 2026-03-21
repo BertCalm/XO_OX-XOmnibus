@@ -35,9 +35,9 @@
   },
   "parameters": {
     "Osprey": {
-      "osprey_character": 0.62,
-      "osprey_movement": 0.406,
-      "osprey_space": 0.749
+      "osprey_coherence": 0.62,
+      "osprey_creatureRate": 0.406,
+      "osprey_harborVerb": 0.749
     },
     "Osteria": {},
     "Oceanic": {}

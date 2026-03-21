@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OddfeliX's electric LFO modulates XOsprey's shore-blend resonance's pitch \u2014 tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
+  "description": "OddfeliX's electric LFO modulates XOsprey's shore-blend resonance's pitch — tetra-blue oscillation locking the pair into a synchronized rhythmic entanglement.",
   "tags": [
     "entangled",
     "coupling",
@@ -52,11 +52,11 @@
       "snap_detune": 8.0
     },
     "Osprey": {
-      "osprey_shoreBlend": 0.5,
-      "osprey_filterCutoff": 5000.0,
-      "osprey_lfoRate": 0.15,
-      "osprey_reverbMix": 0.4,
-      "osprey_attack": 0.08
+      "osprey_shore": 2.0,
+      "osprey_filterTilt": 0.799,
+      "osprey_seaState": 0.15,
+      "osprey_harborVerb": 0.4,
+      "osprey_ampAttack": 0.08
     }
   },
   "coupling": {

@@ -45,13 +45,8 @@
       "fat_warmth": 0.645
     },
     "Overbite": {
-      "poss_aggression": 0.68,
-      "poss_brightness": 0.425,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.59,
-      "poss_outputLevel": 0.85,
-      "poss_outputPan": -0.02,
-      "poss_warmth": 0.621
+      "poss_level": 0.85,
+      "poss_pan": -0.02
     }
   },
   "schema_version": 1,

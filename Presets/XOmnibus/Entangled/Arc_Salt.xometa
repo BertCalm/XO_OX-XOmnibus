@@ -55,14 +55,10 @@
       "orb_resonantPeak": 0.517
     },
     "Osprey": {
-      "osprey_couplingIn": 0.71,
-      "osprey_couplingOut": 0.451,
-      "osprey_macro1": 0.486,
-      "osprey_macro2": 0.399,
-      "osprey_macro3": 0.409,
-      "osprey_macro4": 0.458,
-      "osprey_outputLevel": 0.77,
-      "osprey_outputPan": 0.007
+      "osprey_macroCharacter": 0.486,
+      "osprey_macroMovement": 0.399,
+      "osprey_macroCoupling": 0.409,
+      "osprey_macroSpace": 0.458
     }
   },
   "schema_version": 1,

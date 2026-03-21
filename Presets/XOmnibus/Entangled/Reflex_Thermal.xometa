@@ -50,18 +50,13 @@
       "ocean_outputPan": 0.019
     },
     "Overbite": {
-      "poss_biteDepth": 0.873,
-      "poss_couplingIn": 0.413,
-      "poss_couplingOut": 0.787,
-      "poss_fangAttack": 0.168,
-      "poss_gnashAmt": 0.608,
-      "poss_macro1": 0.321,
-      "poss_macro2": 0.348,
-      "poss_macro3": 0.658,
-      "poss_macro4": 0.38,
-      "poss_outputLevel": 0.774,
-      "poss_outputPan": 0.024,
-      "poss_snapRelease": 0.641
+      "poss_gnashAmount": 0.608,
+      "poss_macroBelly": 0.321,
+      "poss_macroBite": 0.348,
+      "poss_macroScurry": 0.658,
+      "poss_macroTrash": 0.38,
+      "poss_level": 0.774,
+      "poss_pan": 0.024
     }
   },
   "schema_version": 1,

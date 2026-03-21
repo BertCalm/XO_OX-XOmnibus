@@ -27,10 +27,10 @@
   "name": "Osprey Descends",
   "parameters": {
     "Osprey": {
-      "osp_macro_character": 0.39,
-      "osp_macro_coupling": 0.36,
-      "osp_macro_movement": 0.36,
-      "osp_macro_space": 0.97
+      "osprey_macroCharacter": 0.39,
+      "osprey_macroCoupling": 0.36,
+      "osprey_macroMovement": 0.36,
+      "osprey_macroSpace": 0.97
     }
   },
   "schema_version": 1,

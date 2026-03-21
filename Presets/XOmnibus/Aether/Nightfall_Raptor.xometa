@@ -27,10 +27,10 @@
   "name": "Nightfall Raptor",
   "parameters": {
     "Osprey": {
-      "osp_macro_character": 0.48,
-      "osp_macro_coupling": 0.4,
-      "osp_macro_movement": 0.49,
-      "osp_macro_space": 0.75
+      "osprey_macroCharacter": 0.48,
+      "osprey_macroCoupling": 0.4,
+      "osprey_macroMovement": 0.49,
+      "osprey_macroSpace": 0.75
     }
   },
   "schema_version": 1,

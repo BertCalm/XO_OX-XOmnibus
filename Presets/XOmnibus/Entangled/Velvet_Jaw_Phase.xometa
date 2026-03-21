@@ -83,18 +83,13 @@
       "orb_resonantPeak": 0.458
     },
     "Overbite": {
-      "poss_biteDepth": 0.424,
-      "poss_couplingIn": 0.582,
-      "poss_couplingOut": 0.432,
-      "poss_fangAttack": 0.312,
-      "poss_gnashAmt": 0.374,
-      "poss_macro1": 0.55,
-      "poss_macro2": 0.682,
-      "poss_macro3": 0.335,
-      "poss_macro4": 0.581,
-      "poss_outputLevel": 0.855,
-      "poss_outputPan": 0.028,
-      "poss_snapRelease": 0.402
+      "poss_gnashAmount": 0.374,
+      "poss_macroBelly": 0.55,
+      "poss_macroBite": 0.682,
+      "poss_macroScurry": 0.335,
+      "poss_macroTrash": 0.581,
+      "poss_level": 0.855,
+      "poss_pan": 0.028
     }
   },
   "schema_version": 1,

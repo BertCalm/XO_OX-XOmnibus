@@ -55,22 +55,7 @@
       "reverb_mix": 0.7184,
       "reverb_size": 0.8002
     },
-    "Overbite": {
-      "amp_attack": 0.2114,
-      "amp_release": 0.6636,
-      "coupling_level": 0.9082,
-      "density": 0.4174,
-      "drive": 0.8208,
-      "filter_cutoff": 0.8843,
-      "filter_resonance": 0.5778,
-      "macro_character": 0.5974,
-      "macro_coupling": 0.9117,
-      "macro_movement": 0.6324,
-      "macro_space": 0.9926,
-      "output_level": 0.8354,
-      "reverb_mix": 0.6762,
-      "reverb_size": 0.7968
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

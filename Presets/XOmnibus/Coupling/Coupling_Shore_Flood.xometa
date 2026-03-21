@@ -2,12 +2,29 @@
   "schema_version": 1,
   "name": "Shore Flood",
   "mood": "Entangled",
-  "engines": ["Osprey", "Osteria"],
+  "engines": [
+    "Osprey",
+    "Osteria"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OSPREY shore wave energy bleeds through OSTERIA's tavern walls via FM room excitation — the ocean flooding the tavern. Physical fluid dynamics driving a resonant room model. Cinematic/evolving genre showcase.",
-  "tags": ["coupled", "cinematic", "evolving", "physical", "AudioToFM", "AmpToFilter", "genre-cinematic", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "cinematic",
+    "evolving",
+    "physical",
+    "AudioToFM",
+    "AmpToFilter",
+    "genre-cinematic",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -15,42 +32,36 @@
     "warmth": 0.72,
     "movement": 0.65,
     "density": 0.55,
-    "space": 0.80,
+    "space": 0.8,
     "aggression": 0.28
   },
   "parameters": {
     "Osprey": {
-      "osprey_shoreBlend": 0.60,
+      "osprey_shore": 4.0,
       "osprey_seaState": 0.55,
       "osprey_swellPeriod": 0.45,
-      "osprey_resonatorTuning": 0.50,
-      "osprey_excitationLevel": 0.70,
-      "osprey_filterCutoff": 0.55,
-      "osprey_filterReso": 0.20,
+      "osprey_filterTilt": 0.55,
       "osprey_ampAttack": 0.08,
-      "osprey_ampDecay": 1.00,
+      "osprey_ampDecay": 1.0,
       "osprey_ampSustain": 0.68,
-      "osprey_ampRelease": 2.50,
-      "osprey_outputLevel": 0.70,
-      "osprey_reverbMix": 0.42,
-      "osprey_coastlineIndex": 2,
-      "osprey_peakEnvFollower": 0.55
+      "osprey_ampRelease": 2.5,
+      "osprey_harborVerb": 0.42
     },
     "Osteria": {
       "osteria_qBassShore": 0.55,
       "osteria_roomSize": 0.65,
       "osteria_elasticTightness": 0.48,
-      "osteria_shoreDrift": 0.40,
-      "osteria_filterCutoff": 0.50,
+      "osteria_shoreDrift": 0.4,
+      "osteria_filterCutoff": 0.5,
       "osteria_filterReso": 0.22,
       "osteria_ampAttack": 0.12,
-      "osteria_ampDecay": 0.90,
+      "osteria_ampDecay": 0.9,
       "osteria_ampSustain": 0.65,
-      "osteria_ampRelease": 2.20,
+      "osteria_ampRelease": 2.2,
       "osteria_outputLevel": 0.72,
-      "osteria_reverbMix": 0.50,
+      "osteria_reverbMix": 0.5,
       "osteria_lfoRate": 0.04,
-      "osteria_lfoDepth": 0.20
+      "osteria_lfoDepth": 0.2
     }
   },
   "coupling": {
@@ -65,7 +76,7 @@
         "engineA": "Osprey",
         "engineB": "Osteria",
         "type": "AmpToFilter",
-        "amount": 0.30
+        "amount": 0.3
       }
     ]
   },
@@ -83,7 +94,7 @@
         "slot": 2,
         "active": true,
         "type": 0,
-        "amount": 0.30,
+        "amount": 0.3,
         "sourceSlot": 0,
         "targetSlot": 1
       }

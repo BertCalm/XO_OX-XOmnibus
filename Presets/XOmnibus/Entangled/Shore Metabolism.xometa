@@ -58,9 +58,7 @@
       "organon_signalFlux": 0.8
     },
     "Osprey": {
-      "osprey_dive": 0.4,
-      "osprey_shoreBlend": 0.5,
-      "osprey_soar": 0.6
+      "osprey_shore": 2.0
     }
   },
   "schema_version": 1,

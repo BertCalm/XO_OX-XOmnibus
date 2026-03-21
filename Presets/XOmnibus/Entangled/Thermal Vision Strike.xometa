@@ -58,10 +58,9 @@
       "optic_vizSpeed": 0.55
     },
     "Osprey": {
-      "osp_ampAttack": 0.03,
-      "osp_ampRelease": 1.5,
-      "osp_filterCutoff": 2800.0,
-      "osp_filterReso": 0.3
+      "osprey_ampAttack": 0.03,
+      "osprey_ampRelease": 1.5,
+      "osprey_filterTilt": 0.715
     }
   },
   "schema_version": 1,

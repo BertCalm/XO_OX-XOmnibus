@@ -59,13 +59,8 @@
       "orca_wavetableScan": 0.503
     },
     "Overbite": {
-      "poss_attack": 0.081,
-      "poss_biteDepth": 0.71,
       "poss_filterCutoff": 0.459,
-      "poss_lfoRate": 0.139,
-      "poss_macroBite": 0.042,
-      "poss_macroCoupling": 0.0,
-      "poss_release": 0.779
+      "poss_macroBite": 0.042
     }
   },
   "schema_version": 1,

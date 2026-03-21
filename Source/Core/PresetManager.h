@@ -179,6 +179,70 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
     return (it != renamed.end()) ? it->second : paramId;
 }
 
+// Resolve legacy per-parameter aliases for Overbite (Bite) engine.
+// The engine accumulated 4 generations of parameter naming across its life as a
+// standalone plugin (XOppossum) and XOmnibus integration. Returns the canonical
+// param ID (poss_-prefixed, matching BiteEngine.h frozen APVTS IDs), or an empty
+// String if the param has no canonical equivalent and should be dropped silently.
+inline juce::String resolveBiteParamAlias(const juce::String& paramId)
+{
+    // Gen 3 → Gen 4 renames: abbreviated names → full APVTS IDs
+    static const std::map<juce::String, juce::String> renamed {
+        { "poss_fur",                "poss_furAmount"          },
+        { "poss_glide",              "poss_glideTime"          },
+        { "poss_gnash",              "poss_gnashAmount"        },
+        { "poss_gnashAmt",           "poss_gnashAmount"        },
+        { "poss_chew",               "poss_chewAmount"         },
+        { "poss_masterVolume",       "poss_level"              },
+        { "poss_outputLevel",        "poss_level"              },
+        { "poss_outputPan",          "poss_pan"                },
+        { "poss_oscAWave",           "poss_oscAWaveform"       },
+        { "poss_oscBWave",           "poss_oscBWaveform"       },
+        { "poss_subOct",             "poss_subOctave"          },
+        { "poss_filterEnvAmt",       "poss_filterEnvAmount"    },
+        { "poss_filtEnvAttack",      "poss_filterAttack"       },
+        { "poss_filtEnvDecay",       "poss_filterDecay"        },
+        { "poss_filtEnvSustain",     "poss_filterSustain"      },
+        { "poss_filtEnvRelease",     "poss_filterRelease"      },
+        { "poss_filter_cutoff",      "poss_filterCutoff"       },
+        { "poss_amp_sustain",        "poss_ampSustain"         },
+        { "poss_resonance",          "poss_filterReso"         },
+        { "poss_oscInteractionAmt",  "poss_oscInteractAmount"  },
+        { "poss_oscInteractionMode", "poss_oscInteractMode"    },
+        { "poss_drive",              "poss_driveAmount"        },
+        { "poss_weightAmt",          "poss_weightLevel"        },
+        // Numbered macros → named macros (positional: 1=Belly, 2=Bite, 3=Scurry, 4=Trash)
+        { "poss_macro1",             "poss_macroBelly"         },
+        { "poss_macro2",             "poss_macroBite"          },
+        { "poss_macro3",             "poss_macroScurry"        },
+        { "poss_macro4",             "poss_macroTrash"         },
+    };
+    // Params with no canonical equivalent — removed or replaced by new architecture.
+    // Gen 2 concept params, old per-engine coupling, ambiguous LFO/env params, etc.
+    static const std::set<juce::String> removed {
+        // Gen 2 concept params (standalone prototype era)
+        "poss_aggression", "poss_brightness", "poss_warmth",
+        "poss_couplingBus", "poss_couplingLevel", "poss_macroCoupling",
+        "poss_attack", "poss_release",
+        // Gen 2/3 params with no canonical equivalent
+        "poss_biteDepth", "poss_fangAttack", "poss_snapRelease",
+        "poss_couplingIn", "poss_couplingOut", "poss_coupling",
+        "poss_character", "poss_bite", "poss_delayMix",
+        "poss_reverbMix", "poss_space", "poss_movement",
+        "poss_lfoRate", "poss_lfoDepth", "poss_envAmount",
+        "poss_fmDepth", "poss_oscALevel", "poss_oscBLevel",
+        "poss_oscBDetune", "poss_oscBAsymmetry", "poss_oscAPulseWidth",
+        "poss_oscWave", "poss_noiseTransient", "poss_filtEnvVelScale",
+        "poss_sub_osc", "poss_subShape",
+    };
+
+    if (removed.count(paramId))
+        return {};  // empty = drop this param
+
+    auto it = renamed.find(paramId);
+    return (it != renamed.end()) ? it->second : paramId;
+}
+
 // Valid moods — the 8 browsing categories plus User.
 inline const juce::StringArray validMoods {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "User"

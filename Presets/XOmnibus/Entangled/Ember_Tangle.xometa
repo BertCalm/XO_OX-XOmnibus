@@ -38,10 +38,10 @@
   "name": "Ember Tangle",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.87,
-      "macro_coupling": 0.7,
-      "macro_movement": 0.37,
-      "macro_space": 0.39
+      "osprey_macroCharacter": 0.87,
+      "osprey_macroCoupling": 0.7,
+      "osprey_macroMovement": 0.37,
+      "osprey_macroSpace": 0.39
     },
     "Overdub": {
       "macro_character": 0.72,

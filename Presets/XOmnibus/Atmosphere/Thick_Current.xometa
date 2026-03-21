@@ -31,12 +31,7 @@
   "mood": "Atmosphere",
   "name": "Thick Current",
   "parameters": {
-    "Overbite": {
-      "bite": 0.468,
-      "coupling": 0.116,
-      "resonance": 0.368,
-      "space": 0.586
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

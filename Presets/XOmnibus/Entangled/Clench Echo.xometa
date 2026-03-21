@@ -36,13 +36,8 @@
   "name": "Clench Echo",
   "parameters": {
     "Overbite": {
-      "poss_aggression": 0.56,
-      "poss_brightness": 0.459,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.69,
-      "poss_outputLevel": 0.76,
-      "poss_outputPan": 0.02,
-      "poss_warmth": 0.631
+      "poss_level": 0.76,
+      "poss_pan": 0.02
     },
     "Overdub": {
       "dub_aggression": 0.335,

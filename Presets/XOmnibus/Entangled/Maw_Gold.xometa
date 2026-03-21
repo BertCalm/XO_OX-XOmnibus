@@ -40,18 +40,13 @@
   "name": "Maw Gold",
   "parameters": {
     "Overbite": {
-      "poss_biteDepth": 0.811,
-      "poss_couplingIn": 0.707,
-      "poss_couplingOut": 0.694,
-      "poss_fangAttack": 0.186,
-      "poss_gnashAmt": 0.36,
-      "poss_macro1": 0.348,
-      "poss_macro2": 0.361,
-      "poss_macro3": 0.604,
-      "poss_macro4": 0.653,
-      "poss_outputLevel": 0.8,
-      "poss_outputPan": -0.008,
-      "poss_snapRelease": 0.346
+      "poss_gnashAmount": 0.36,
+      "poss_macroBelly": 0.348,
+      "poss_macroBite": 0.361,
+      "poss_macroScurry": 0.604,
+      "poss_macroTrash": 0.653,
+      "poss_level": 0.8,
+      "poss_pan": -0.008
     },
     "Owlfish": {
       "owl_couplingIn": 0.782,

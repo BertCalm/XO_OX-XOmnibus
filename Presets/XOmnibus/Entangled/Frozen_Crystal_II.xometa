@@ -57,22 +57,7 @@
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },
-    "Overbite": {
-      "amp_attack": 0.4301,
-      "amp_release": 0.4542,
-      "coupling_level": 0.704,
-      "density": 0.873,
-      "drive": 0.3311,
-      "filter_cutoff": 0.8932,
-      "filter_resonance": 0.3015,
-      "macro_character": 0.9202,
-      "macro_coupling": 0.7142,
-      "macro_movement": 0.0577,
-      "macro_space": 0.523,
-      "output_level": 0.9135,
-      "reverb_mix": 0.4784,
-      "reverb_size": 0.5066
-    }
+    "Overbite": {}
   },
   "schema_version": 1,
   "tags": [

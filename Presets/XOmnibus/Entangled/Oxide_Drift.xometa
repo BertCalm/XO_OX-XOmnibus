@@ -38,10 +38,10 @@
   "name": "Oxide Drift",
   "parameters": {
     "Osprey": {
-      "macro_character": 0.7,
-      "macro_coupling": 0.74,
-      "macro_movement": 0.63,
-      "macro_space": 0.13
+      "osprey_macroCharacter": 0.7,
+      "osprey_macroCoupling": 0.74,
+      "osprey_macroMovement": 0.63,
+      "osprey_macroSpace": 0.13
     },
     "Overdub": {
       "macro_character": 0.82,

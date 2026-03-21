@@ -26,10 +26,7 @@
   "mood": "Flux",
   "name": "Ember Surge II",
   "parameters": {
-    "Osprey": {
-      "couplingBus": 3,
-      "couplingLevel": 0.626
-    }
+    "Osprey": {}
   },
   "schema_version": 1,
   "tags": [

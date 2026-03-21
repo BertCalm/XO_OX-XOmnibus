@@ -36,13 +36,8 @@
   "name": "Grip Tape",
   "parameters": {
     "Overbite": {
-      "poss_aggression": 0.551,
-      "poss_brightness": 0.465,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.65,
-      "poss_outputLevel": 0.89,
-      "poss_outputPan": -0.02,
-      "poss_warmth": 0.671
+      "poss_level": 0.89,
+      "poss_pan": -0.02
     },
     "Overdub": {
       "dub_aggression": 0.355,

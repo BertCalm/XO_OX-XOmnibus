@@ -40,28 +40,19 @@
   "name": "Gnaw Thermal",
   "parameters": {
     "Osprey": {
-      "osprey_couplingIn": 0.636,
-      "osprey_couplingOut": 0.607,
-      "osprey_macro1": 0.631,
-      "osprey_macro2": 0.57,
-      "osprey_macro3": 0.653,
-      "osprey_macro4": 0.667,
-      "osprey_outputLevel": 0.836,
-      "osprey_outputPan": 0.026
+      "osprey_macroCharacter": 0.631,
+      "osprey_macroMovement": 0.57,
+      "osprey_macroCoupling": 0.653,
+      "osprey_macroSpace": 0.667
     },
     "Overbite": {
-      "poss_biteDepth": 0.52,
-      "poss_couplingIn": 0.794,
-      "poss_couplingOut": 0.617,
-      "poss_fangAttack": 0.274,
-      "poss_gnashAmt": 0.343,
-      "poss_macro1": 0.495,
-      "poss_macro2": 0.459,
-      "poss_macro3": 0.467,
-      "poss_macro4": 0.451,
-      "poss_outputLevel": 0.75,
-      "poss_outputPan": 0.033,
-      "poss_snapRelease": 0.316
+      "poss_gnashAmount": 0.343,
+      "poss_macroBelly": 0.495,
+      "poss_macroBite": 0.459,
+      "poss_macroScurry": 0.467,
+      "poss_macroTrash": 0.451,
+      "poss_level": 0.75,
+      "poss_pan": 0.033
     }
   },
   "schema_version": 1,

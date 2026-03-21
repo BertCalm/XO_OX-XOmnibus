@@ -45,13 +45,8 @@
       "ohm_warmth": 0.747
     },
     "Overbite": {
-      "poss_aggression": 0.575,
-      "poss_brightness": 0.459,
-      "poss_couplingBus": 0,
-      "poss_couplingLevel": 0.76,
-      "poss_outputLevel": 0.76,
-      "poss_outputPan": 0.04,
-      "poss_warmth": 0.653
+      "poss_level": 0.76,
+      "poss_pan": 0.04
     }
   },
   "schema_version": 1,

@@ -32,13 +32,13 @@
   "name": "Hadal Silence",
   "parameters": {
     "Osprey": {
-      "osprey_brightness": 0.05,
+      "osprey_resonatorBright": 0.05,
       "osprey_depth": 0.98,
       "osprey_foam": 0.02,
       "osprey_seaState": 0.02,
       "osprey_shore": 0.02,
       "osprey_swellPeriod": 0.98,
-      "osprey_wetMix": 0.85
+      "osprey_harborVerb": 0.85
     }
   },
   "schema_version": 1,
