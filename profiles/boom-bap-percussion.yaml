@@ -1,0 +1,157 @@
+# Pack Profile: Boom Bap Percussion
+# Defines what "good" looks like for a boom-bap drum pack.
+# Used by: .oxbuild compiler (preset selection), QA pipeline (validation), curation engine (recommendations)
+
+profile_id: boom-bap-percussion
+profile_version: "1.0"
+display_name: "Boom Bap Percussion"
+archetype: percussion
+genre_family: [hip-hop, boom-bap]
+
+# --- GENOTYPE: What the pack IS (drives preset selection) ---
+genotype:
+  engine_primary: ONSET
+  engine_secondary: [OWARE, OSTINATO]  # compatible engines for this profile
+  platform: both  # mpce + standard
+
+  # DNA ranges — presets outside these ranges are rejected during selection
+  dna_ranges:
+    brightness:
+      min: 0.25
+      max: 0.65
+      center: 0.40  # ideal center of gravity
+    warmth:
+      min: 0.50
+      max: 0.85
+      center: 0.70  # boom bap is warm
+    movement:
+      min: 0.05
+      max: 0.35
+      center: 0.15  # minimal movement — drums should be stable
+    density:
+      min: 0.35
+      max: 0.70
+      center: 0.55
+    space:
+      min: 0.05
+      max: 0.30
+      center: 0.10  # dry — producers add their own reverb
+    aggression:
+      min: 0.30
+      max: 0.70
+      center: 0.50  # medium — punchy but not harsh
+
+  # Velocity curve preferences
+  velocity_curve: musical  # Vibe's musical curve (1-20/21-50/51-90/91-127)
+  velocity_character:
+    ghost: warm_filtered      # ghost hits should be dark and muffled
+    light: natural_body       # light hits show the instrument's character
+    medium: full_presence     # medium hits are the workhorse
+    hard: transient_peak      # hard hits emphasize attack transient
+
+  # Corner strategy preferences
+  corner_strategy: dynamic_expression  # articulation corners for drums
+  corner_priorities:
+    NW_ghost: true       # ghost notes are essential for boom bap feel
+    NE_accent: true      # rimshots and alternate articulations
+    SW_standard: true    # the center hit
+    SE_effect: false     # FX variants less important for boom bap (optional)
+
+  # Instrument balance
+  required_voices:
+    - kick        # A01 — must have, warm sub-focused
+    - snare       # A02 — must have, cracky mid presence
+    - closed_hat  # A03 — must have, tight
+    - open_hat    # A04 — must have, sizzle
+    - clap        # A05 — expected
+  optional_voices:
+    - rimshot     # classic boom bap element
+    - shaker      # rhythmic texture
+    - tambourine  # groove filler
+    - cowbell     # funk crossover
+    - tom_low     # fill element
+    - tom_mid     # fill element
+    - crash       # transition
+    - ride        # groove
+
+# --- PHENOTYPE: What the pack SOUNDS LIKE (drives QA validation) ---
+phenotype:
+  # These are assertions the QA system checks after build
+  assertions:
+    - name: "kick_has_sub"
+      check: "kick DNA warmth > 0.6"
+      severity: critical
+      description: "Boom bap kicks need sub weight"
+
+    - name: "snare_has_crack"
+      check: "snare DNA brightness > 0.35"
+      severity: critical
+      description: "Snare needs mid-high crack — not dull"
+
+    - name: "hats_are_tight"
+      check: "closed_hat render duration < 300ms"
+      severity: warning
+      description: "Closed hats should be tight, not ringy"
+
+    - name: "space_is_dry"
+      check: "pack average DNA space < 0.25"
+      severity: critical
+      description: "Boom bap is dry — producers add their own space"
+
+    - name: "ghost_notes_audible"
+      check: "velocity_layer_1 peak > -30dBFS"
+      severity: warning
+      description: "Ghost notes must be audible, not silent"
+
+    - name: "velocity_range_musical"
+      check: "velocity_layer_4_peak - velocity_layer_1_peak > 12dB"
+      severity: warning
+      description: "Dynamic range between ghost and hard should be >12dB"
+
+    - name: "no_clipping"
+      check: "all samples peak < -0.3dBFS"
+      severity: critical
+      description: "No digital clipping in any sample"
+
+    - name: "hat_choke_works"
+      check: "mute_group(closed_hat, open_hat) == same_group"
+      severity: critical
+      description: "Closed hat must choke open hat"
+
+  # Sonic character targets (for Guru Bin refinement)
+  character_targets:
+    overall_vibe: "Dusty, warm, speaker-rattling but never harsh"
+    kick_character: "Round sub with vinyl-like thump, 60-80Hz centered"
+    snare_character: "Cracky mid-presence, slight compression, 200-2kHz"
+    hat_character: "Crispy but not digital, analog brightness"
+    reference_tracks:
+      - "DJ Premier - Classic (the beat, not the song)"
+      - "J Dilla - Donuts (timing feel and texture)"
+      - "Pete Rock - T.R.O.Y. (the warmth)"
+
+# --- CURATION HINTS: For the recommendation engine ---
+curation:
+  # When this profile is active, these factors have higher weight
+  weighted_factors:
+    warmth: 1.5       # boom bap = warm
+    aggression: 1.2   # punchy matters
+    space: 0.5        # space is deprioritized (dry genre)
+    movement: 0.3     # movement is deprioritized (stable drums)
+
+  # Instruments that pair well with boom bap drums
+  complementary_instruments:
+    - engine: OBLONG
+      role: bass
+      description: "Warm analog bass to sit under the kick"
+    - engine: ODYSSEY
+      role: keys
+      description: "Rhodes/Wurli-style keys for chord stabs"
+    - engine: OPAL
+      role: texture
+      description: "Vinyl crackle and ambient texture beds"
+
+  # Anti-patterns — instruments that don't fit this profile
+  avoid:
+    - high_brightness_leads   # too bright for boom bap
+    - aggressive_distortion   # not the right kind of grit
+    - long_reverb_tails       # antithetical to dry aesthetic

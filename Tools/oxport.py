@@ -1776,12 +1776,41 @@ def cmd_build(args) -> int:
     # Intent config
     intent_cfg = spec.get("intent", {})
 
+    # Profile loading
+    profile_id = spec.get("profile")
+    profile = None
+    if profile_id:
+        profile_path = REPO_ROOT / "profiles" / f"{profile_id}.yaml"
+        if profile_path.exists():
+            try:
+                # Try yaml first, fall back to json-compatible parsing
+                import yaml
+                with open(profile_path) as pf:
+                    profile = yaml.safe_load(pf)
+            except ImportError:
+                # Fallback: read as text for display, skip structured access
+                profile = {"_raw": profile_path.read_text(), "profile_id": profile_id}
+            except Exception as e:
+                print(f"  ⚠  Profile load failed: {e}")
+        else:
+            print(f"  ⚠  Profile not found: {profile_path}")
+
     total_samples = pad_count * 4 * velocity_layers  # pads * corners * vel layers
     stages_run = 0
     stages_skipped = 0
 
     # ── STAGE 1: PARSE ──
     print(f"  [1/10] PARSE        .oxbuild → BuildManifest")
+    if profile:
+        pid = profile.get("profile_id", profile_id)
+        pname = profile.get("display_name", pid)
+        print(f"         Profile: {pname} ({pid})")
+        genotype = profile.get("genotype", {})
+        if genotype:
+            dna = genotype.get("dna_ranges", {})
+            if dna:
+                centers = {k: v.get("center", "?") for k, v in dna.items() if isinstance(v, dict)}
+                print(f"         DNA center: {centers}")
     if args.dry_run:
         print(f"         ✓ Parsed {oxbuild_path}")
     stages_run += 1

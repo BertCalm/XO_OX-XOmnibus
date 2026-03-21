@@ -1,0 +1,134 @@
+# Pack Profile: Ambient Texture
+# Defines what "good" looks like for an ambient/atmospheric texture pack.
+# Used by: .oxbuild compiler (preset selection), QA pipeline (validation), curation engine (recommendations)
+
+profile_id: ambient-texture
+profile_version: "1.0"
+display_name: "Ambient Texture"
+archetype: texture
+genre_family: [ambient, drone, cinematic, meditation]
+
+# --- GENOTYPE ---
+genotype:
+  engine_primary: OPAL
+  engine_secondary: [OXBOW, OCEANDEEP, OMBRE, DRIFT]
+  platform: both
+
+  dna_ranges:
+    brightness:
+      min: 0.20
+      max: 0.70
+      center: 0.45
+    warmth:
+      min: 0.50
+      max: 0.90
+      center: 0.75  # ambient is warm, enveloping
+    movement:
+      min: 0.40
+      max: 0.95
+      center: 0.70  # movement is essential — evolving textures
+    density:
+      min: 0.30
+      max: 0.85
+      center: 0.60
+    space:
+      min: 0.50
+      max: 1.00
+      center: 0.80  # ambient lives in space
+    aggression:
+      min: 0.00
+      max: 0.30
+      center: 0.10  # no aggression — gentle, floating
+
+  velocity_curve: gentle  # compressed curve — dynamics matter less
+  velocity_character:
+    ghost: shimmer_whisper
+    light: evolving_pad
+    medium: full_texture
+    hard: harmonic_bloom
+
+  corner_strategy: feliX_oscar_polarity  # dry/wet × bright/warm morphing
+  corner_priorities:
+    NW_feliX_dry: true
+    NE_feliX_wet: true
+    SW_oscar_dry: true
+    SE_oscar_wet: true  # all four corners matter for texture morphing
+
+  required_voices: []  # no required voices — texture packs are freeform
+  optional_voices:
+    - pad_evolving
+    - drone_harmonic
+    - texture_granular
+    - atmosphere_dark
+    - atmosphere_bright
+    - shimmer
+    - noise_filtered
+    - field_recording
+
+# --- PHENOTYPE ---
+phenotype:
+  assertions:
+    - name: "has_movement"
+      check: "pack average DNA movement > 0.5"
+      severity: critical
+      description: "Ambient textures must evolve — static patches fail"
+
+    - name: "has_space"
+      check: "pack average DNA space > 0.5"
+      severity: critical
+      description: "Ambient lives in reverberant space"
+
+    - name: "no_aggression"
+      check: "pack max DNA aggression < 0.35"
+      severity: warning
+      description: "Aggressive elements break the ambient contract"
+
+    - name: "render_length_adequate"
+      check: "average render duration > 5000ms"
+      severity: warning
+      description: "Textures need long renders to capture evolution"
+
+    - name: "stereo_width"
+      check: "average stereo correlation < 0.7"
+      severity: warning
+      description: "Ambient textures should have wide stereo field"
+
+    - name: "no_sharp_transients"
+      check: "average attack_time > 50ms"
+      severity: warning
+      description: "Ambient patches should have soft attacks"
+
+  character_targets:
+    overall_vibe: "Floating, evolving, enveloping — like being inside sound"
+    pad_character: "Slowly shifting harmonic content, never static"
+    drone_character: "Deep, warm, subtly modulated undertone"
+    reference_tracks:
+      - "Brian Eno - Music for Airports (the space)"
+      - "Stars of the Lid - And Their Refinement of the Decline (the warmth)"
+      - "Grouper - Dragging a Dead Deer (the texture)"
+
+# --- CURATION HINTS ---
+curation:
+  weighted_factors:
+    space: 2.0         # space is the defining factor
+    movement: 1.8      # evolution is essential
+    warmth: 1.3        # enveloping warmth matters
+    brightness: 0.8    # neutral
+    aggression: 0.2    # strongly deprioritized
+    density: 1.0       # neutral
+
+  complementary_instruments:
+    - engine: OXBOW
+      role: reverb_bed
+      description: "Entangled reverb creates evolving spatial foundation"
+    - engine: OCEANDEEP
+      role: sub_drone
+      description: "Deep pressure drone for sub-harmonic foundation"
+    - engine: OVERTONE
+      role: harmonic_shimmer
+      description: "Continued fraction harmonics for crystalline upper partials"
+
+  avoid:
+    - percussion        # breaks the ambient flow
+    - high_aggression   # harsh elements destroy the contract
+    - short_one_shots   # ambient needs sustain and evolution

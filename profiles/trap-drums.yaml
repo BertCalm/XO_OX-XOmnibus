@@ -1,0 +1,143 @@
+# Pack Profile: Trap Drums
+# Defines what "good" looks like for a trap/modern hip-hop drum pack.
+# Used by: .oxbuild compiler (preset selection), QA pipeline (validation), curation engine (recommendations)
+
+profile_id: trap-drums
+profile_version: "1.0"
+display_name: "Trap Drums"
+archetype: percussion
+genre_family: [trap, hip-hop, drill, modern-rap]
+
+# --- GENOTYPE ---
+genotype:
+  engine_primary: ONSET
+  engine_secondary: [OBESE, OVERWORLD]
+  platform: both
+
+  dna_ranges:
+    brightness:
+      min: 0.35
+      max: 0.80
+      center: 0.60  # brighter than boom bap — crisp hi-hats
+    warmth:
+      min: 0.40
+      max: 0.75
+      center: 0.55  # warm 808 sub but not vintage-warm
+    movement:
+      min: 0.10
+      max: 0.50
+      center: 0.25  # some movement for hi-hat rolls
+    density:
+      min: 0.40
+      max: 0.80
+      center: 0.60
+    space:
+      min: 0.05
+      max: 0.40
+      center: 0.15  # mostly dry, selective reverb
+    aggression:
+      min: 0.45
+      max: 0.90
+      center: 0.70  # trap is aggressive — hard-hitting
+
+  velocity_curve: hot  # aggressive curve — more gain at lower velocities
+  velocity_character:
+    ghost: tight_filtered
+    light: present_clean
+    medium: punchy_forward
+    hard: distorted_peak  # trap hard hits clip intentionally
+
+  corner_strategy: dynamic_expression
+  corner_priorities:
+    NW_ghost: false      # ghost notes less important in trap
+    NE_accent: true      # alternate articulations (pitch-shifted 808s, etc.)
+    SW_standard: true    # the main hit
+    SE_effect: true      # FX variants important (chopped, pitched, distorted)
+
+  required_voices:
+    - kick_808     # A01 — 808 sub kick is non-negotiable
+    - snare        # A02 — snappy, present snare
+    - closed_hat   # A03 — rapid-fire hat rolls
+    - open_hat     # A04 — accent hat
+    - clap         # A05 — layered clap
+  optional_voices:
+    - perc_snap    # finger snap / perc layer
+    - vox_chop     # vocal chop hit
+    - fx_riser     # transition effect
+    - crash        # cymbal crash
+    - bell         # melodic percussion
+    - rim          # rim click
+
+# --- PHENOTYPE ---
+phenotype:
+  assertions:
+    - name: "808_has_sub"
+      check: "kick DNA warmth > 0.5 AND kick render has energy below 100Hz"
+      severity: critical
+      description: "808 kick must have deep sub — the genre foundation"
+
+    - name: "808_sustains"
+      check: "kick render duration > 1500ms"
+      severity: critical
+      description: "808 kick must sustain — not a short boom bap thump"
+
+    - name: "hats_are_crisp"
+      check: "closed_hat DNA brightness > 0.5"
+      severity: critical
+      description: "Hi-hats must be crisp and bright for rolls"
+
+    - name: "snare_cuts"
+      check: "snare DNA aggression > 0.5"
+      severity: warning
+      description: "Snare should cut through the mix, not sit back"
+
+    - name: "dynamic_range_compressed"
+      check: "velocity_layer_4_peak - velocity_layer_1_peak < 15dB"
+      severity: info
+      description: "Trap has compressed dynamics — not a jazz kit"
+
+    - name: "no_clipping"
+      check: "all samples peak < -0.1dBFS"
+      severity: critical
+      description: "Controlled — even trap shouldn't digitally clip"
+
+    - name: "hat_rapid_fire"
+      check: "closed_hat render duration < 200ms"
+      severity: warning
+      description: "Hats must be short enough for 32nd-note rolls"
+
+  character_targets:
+    overall_vibe: "Hard, modern, speaker-testing — designed for car systems and clubs"
+    kick_character: "Deep 808 sub that sustains and rattles, 30-60Hz centered"
+    snare_character: "Snappy, present, high transient — sits on top of the 808"
+    hat_character: "Bright, metallic, machine-precise — capable of rapid rolls"
+    reference_tracks:
+      - "Metro Boomin - Space Cadet (the 808)"
+      - "Southside - any production (the hi-hat patterns)"
+      - "Wheezy - any production (the snare presence)"
+
+# --- CURATION HINTS ---
+curation:
+  weighted_factors:
+    aggression: 2.0     # trap = aggressive
+    brightness: 1.5     # crisp hats matter
+    warmth: 1.0         # neutral — 808 warmth is specific, not general
+    space: 0.4          # dry genre, selective reverb only
+    movement: 0.6       # hat rolls have movement, everything else is stable
+    density: 1.2        # layered sounds are common
+
+  complementary_instruments:
+    - engine: OBESE
+      role: bass_808
+      description: "Extended 808 bass with saturation control"
+    - engine: OVERWORLD
+      role: chiptune_melody
+      description: "Chip-style melodies for modern trap production"
+    - engine: OPENSKY
+      role: shimmer_lead
+      description: "Euphoric shimmer leads for melodic trap"
+
+  avoid:
+    - warm_vintage_pads    # too retro for modern trap
+    - acoustic_drums       # wrong aesthetic entirely
+    - long_ambient_tails   # muddies the 808 sub

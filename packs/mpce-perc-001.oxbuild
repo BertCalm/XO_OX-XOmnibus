@@ -11,6 +11,7 @@
   "platform": "mpce",
   "archetype": "percussion",
 
+  "profile": "boom-bap-percussion",
   "corner_strategy": "dynamic_expression",
   "pad_count": 16,
 
