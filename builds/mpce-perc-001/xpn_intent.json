@@ -193,7 +193,7 @@
     "quad_builder_version": "1.0",
     "render_spec": "",
     "vision_quest": "VQ 003 + VQ 004",
-    "experiment_id": "6ec863bf-65d4-48b6-8940-b3b6ad2c72b2",
+    "experiment_id": "dffecb08-1f9b-4b12-9e09-6f36833333be",
     "experiment_tags": [
       "first-mpce-pack",
       "competitive-window",
@@ -201,6 +201,6 @@
       "vq-004",
       "vq-005"
     ],
-    "build_time": "2026-03-21T17:47:42.050551"
+    "build_time": "2026-03-21T17:52:22.008600"
   }
 }
