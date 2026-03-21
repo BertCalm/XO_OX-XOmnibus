@@ -400,6 +400,8 @@ public:
         }
         lfoPhase = 0.0;
         lfoOutput = 0.0f;
+        lfo1Phase = 0.0;
+        lfo1Output = 0.0f;
         lfo2Phase = 0.0;
         lfo2Output = 0.0f;
         filterCutoffModulation = 0.0f;
@@ -461,9 +463,28 @@ public:
         const float macroDepth = (paramMacroDepth != nullptr) ? paramMacroDepth->load() : 0.0f;
         const float macroSpace = (paramMacroSpace != nullptr) ? paramMacroSpace->load() : 0.0f;
 
+        // D002: LFO1 — sine wave targeting Moog ladder cutoff (Oscar's gill-membrane flutter).
+        // Rate 0.01–15 Hz covers breath-rate tremolo to audio-rate-adjacent territory.
+        // Mod wheel (CC1) additionally scales LFO1 depth for live expression control.
+        const float lfo1Rate  = (paramLfo1Rate  != nullptr) ? paramLfo1Rate->load()  : 1.5f;
+        // Mod wheel boosts LFO1 depth: depth scales from base value up to 1.0 at full wheel.
+        const float lfo1DepthBase = (paramLfo1Depth != nullptr) ? paramLfo1Depth->load() : 0.25f;
+        const float lfo1Depth = std::min (1.0f, lfo1DepthBase + modWheelLfoDepthBoost);
+
         // D002: 2nd LFO — read once per block (block-constant, safe for filter coefficients)
         const float lfo2Rate  = (paramLfo2Rate  != nullptr) ? paramLfo2Rate->load()  : 0.05f;
         const float lfo2Depth = (paramLfo2Depth != nullptr) ? paramLfo2Depth->load() : 0.3f;
+
+        // Advance LFO1 (sine wave: smooth sinusoidal sweep — Oscar's gill-flutter breathing).
+        // Rate 0.01–15 Hz. D005 floor = 0.01 Hz (one full cycle per 100 seconds).
+        // Sine chosen over triangle for LFO1: sine has softer peak transitions — the axolotl's
+        // gills don't snap; they sway. LFO2 (triangle) provides the contrasting linear sweep.
+        constexpr double kTwoPiD = 6.28318530717958647692;
+        const double lfo1PhaseIncrement = static_cast<double> (lfo1Rate) / cachedSampleRate;
+        lfo1Phase += lfo1PhaseIncrement * static_cast<double> (numSamples);  // block-advance
+        if (lfo1Phase >= 1.0) lfo1Phase -= 1.0;
+        // Sine wave: bipolar [-1, +1]
+        lfo1Output = static_cast<float> (std::sin (kTwoPiD * lfo1Phase));
 
         // Advance 2nd LFO (triangle wave: smooth up-down sweep, no discontinuity).
         // Rate floor 0.005 Hz satisfies D005. Triangle = |frac - 0.5| * 4 - 1 → bipolar [-1, +1].
@@ -479,9 +500,11 @@ public:
         //   DEPTH: opens filter cutoff up to +6000 Hz (surface from the deep).
         //   SPACE: multiplies attack time by 1× to 4× (slow atmospheric bloom).
         const float effectiveDetune  = detuneCents + macroDrift * 30.0f;
-        // D002: LFO2 sweeps filter cutoff ±(depth × 4000 Hz) for autonomous harmonic evolution.
+        // D002: LFO1 sweeps filter cutoff ±(depth × 3000 Hz) — the primary gill-flutter tremolo.
+        // LFO2 (triangle, slow) provides the secondary long-arc cutoff evolution.
+        const float lfo1CutoffMod = lfo1Output * lfo1Depth * 3000.0f;
         const float lfo2CutoffMod = lfo2Output * lfo2Depth * 4000.0f;
-        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f + lfo2CutoffMod);
+        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod);
         const float effectiveAttack  = attackTime  * (1.0f + macroSpace * 3.0f);
 
         // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel)
@@ -536,10 +559,17 @@ public:
                             }
                     }
                 }
-                else if (controllerNumber == 1) // CC1: Mod wheel -> morph sweep
+                else if (controllerNumber == 1) // CC1: Mod wheel -> morph sweep + LFO1 depth
                 {
-                    // Maps 0-127 to 0.0-3.0 morph offset for live timbre sweeping
-                    modWheelMorphOffset = static_cast<float> (controllerValue) / 127.0f * 3.0f;
+                    const float normWheel = static_cast<float> (controllerValue) / 127.0f;
+                    // Primary: Maps 0-127 to 0.0-3.0 morph offset for live timbre sweeping.
+                    modWheelMorphOffset = normWheel * 3.0f;
+                    // D006/D002: Mod wheel also scales LFO1 depth — turning the wheel
+                    // simultaneously sweeps Oscar's timbre AND intensifies his gill flutter,
+                    // creating a compound expression gesture (timbre morph + filter tremolo).
+                    // Boost range: 0.0 at rest → +0.5 at full wheel. Combined with the base
+                    // lfo1Depth param, this keeps LFO1 always present but wheel-intensified.
+                    modWheelLfoDepthBoost = normWheel * 0.5f;
                 }
             }
             else if (msg.isPitchWheel())
@@ -686,7 +716,12 @@ public:
                     modulatedCutoff += filterEnvDepth * voice.velocity * envLevel * kFilterEnvMaxSweep;
                     modulatedCutoff = std::max (20.0f, std::min (20000.0f, modulatedCutoff));
                     voice.filter.setCutoff (modulatedCutoff);
-                    voice.filter.setResonance (filterResonance);
+                    // D006: aftertouch → resonance (axolotl gill membranes responding to pressure).
+                    // Pressing harder tightens the filter resonance — the gill membranes stiffen
+                    // under pressure, creating a more nasal, penetrating tone.
+                    // Boost range: 0.0 at zero pressure → +0.35 at max pressure (capped at 1.0).
+                    const float atResonanceMod = atPressure * 0.35f;
+                    voice.filter.setResonance (std::min (1.0f, filterResonance + atResonanceMod));
                 }
                 float filteredSignal = voice.filter.processSample (rawSignal);
 
@@ -904,7 +939,21 @@ private:
         //   At max: +6000 Hz offset on filterCutoff — axolotl surfaces from cave.
         // M4 SPACE (SPACE): multiplies attack time by up to 4× — slow atmospheric bloom.
         //   At max: attack ×4 — Oscar takes a very long, meditative breath.
-        // D002: 2nd LFO — slow filter sweep modulator.
+        // D002: LFO1 — primary gill-flutter sine LFO targeting Moog ladder cutoff.
+        // Rate 0.01–15 Hz (D005: floor = 0.01 Hz; upper = audio-rate-adjacent territory).
+        // Default 1.5 Hz: a breathing rate that lives in the axolotl's habitat.
+        // Destination: Moog ladder cutoff ±(depth × 3000 Hz).
+        // Sine waveform: Oscar's gills sway, not snap.
+        // Mod wheel (CC1) additionally boosts depth by up to +0.5 for live expression.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo1Rate", 1 }, "Morph LFO1 Rate",
+            juce::NormalisableRange<float> (0.01f, 15.0f, 0.01f, 0.3f), 1.5f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo1Depth", 1 }, "Morph LFO1 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+
+        // D002: LFO2 — secondary slow arc triangle LFO (long-scale cutoff evolution).
         // Rate range 0.005–2.0 Hz (floor ≤ 0.01 Hz satisfies D005).
         // Destination: Moog ladder cutoff ±(depth × 4000 Hz).
         // Triangle waveform for smooth, continuous harmonic evolution.
@@ -953,7 +1002,10 @@ public:
         paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
         paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
         paramMacroSpace      = apvts.getRawParameterValue ("morph_macroSpace");
-        // D002: 2nd LFO
+        // D002: LFO1 (primary gill-flutter sine — filter cutoff)
+        paramLfo1Rate        = apvts.getRawParameterValue ("morph_lfo1Rate");
+        paramLfo1Depth       = apvts.getRawParameterValue ("morph_lfo1Depth");
+        // D002: LFO2 (secondary slow arc triangle — filter cutoff)
         paramLfo2Rate        = apvts.getRawParameterValue ("morph_lfo2Rate");
         paramLfo2Depth       = apvts.getRawParameterValue ("morph_lfo2Depth");
     }
@@ -1147,6 +1199,12 @@ private:
     float lfoOutput = 0.0f;                     // cached LFO value for coupling reads
     static constexpr double kCouplingLfoRateHz = 0.3; // 0.3 Hz: one full breath every ~3.3 seconds
 
+    // D002: LFO1 — primary gill-flutter sine (user-controllable rate/depth).
+    // Sine LFO sweeps Moog ladder cutoff at breathing rates (default 1.5 Hz).
+    // D005: rate floor 0.01 Hz. Mod wheel boosts depth for live expression.
+    double lfo1Phase = 0.0;                     // LFO1 phase accumulator [0, 1)
+    float lfo1Output = 0.0f;                    // cached LFO1 value for cutoff modulation
+
     // D002: 2nd LFO — filter cutoff modulator (user-controllable rate/depth).
     // Slow triangle LFO sweeps the Moog ladder cutoff for autonomous harmonic evolution.
     // Rate floor 0.005 Hz satisfies D005. Default 0.05 Hz = one cutoff sweep per 20 seconds.
@@ -1162,8 +1220,9 @@ private:
 
     //-- MIDI performance state ------------------------------------------------
     bool sustainPedalDown    = false;           // CC64 sustain pedal state
-    float modWheelMorphOffset = 0.0f;           // CC1 mod wheel [0, 3.0] — sweeps morph position
-    float pitchBendNorm      = 0.0f;            // MIDI pitch wheel [-1, +1]; ±2 semitone range
+    float modWheelMorphOffset    = 0.0f;        // CC1 mod wheel [0, 3.0] — sweeps morph position
+    float modWheelLfoDepthBoost  = 0.0f;        // CC1 mod wheel [0, 0.5] — boosts LFO1 depth
+    float pitchBendNorm          = 0.0f;        // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Output cache for coupling reads ---------------------------------------
     std::vector<float> outputCacheLeft;         // left channel output (per-sample, for getSampleForCoupling)
@@ -1193,7 +1252,10 @@ private:
     std::atomic<float>* paramMacroDrift      = nullptr;
     std::atomic<float>* paramMacroDepth      = nullptr;
     std::atomic<float>* paramMacroSpace      = nullptr;
-    // D002: 2nd LFO parameters
+    // D002: LFO1 parameters (primary gill-flutter sine)
+    std::atomic<float>* paramLfo1Rate        = nullptr;
+    std::atomic<float>* paramLfo1Depth       = nullptr;
+    // D002: LFO2 parameters (secondary slow arc triangle)
     std::atomic<float>* paramLfo2Rate        = nullptr;
     std::atomic<float>* paramLfo2Depth       = nullptr;
 };

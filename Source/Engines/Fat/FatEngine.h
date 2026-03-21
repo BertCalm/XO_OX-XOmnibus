@@ -776,6 +776,16 @@ public:
             ? std::array<int,4>{{1,2,4,6}}[std::min (3, static_cast<int> (pPolyphony->load()))]
             : 6;
 
+        // D002: LFO1 — user-controllable BreathingLFO.
+        // Target 0=Filter (breathes filter cutoff), 1=Mojo (B015 dynamic axis), 2=Saturation.
+        // Rate floor 0.005 Hz satisfies D005.
+        const float lfo1Rate   = (pLfo1Rate   != nullptr) ? pLfo1Rate->load()   : 0.07f;
+        const float lfo1Depth  = (pLfo1Depth  != nullptr) ? pLfo1Depth->load()  : 0.15f;
+        const int   lfo1Target = (pLfo1Target != nullptr) ? static_cast<int> (pLfo1Target->load()) : 0;
+        // Update BreathingLFO rate per-block for all voices (rate is block-constant).
+        for (auto& voice : voices)
+            voice.breathingLFO.setRate (lfo1Rate, static_cast<float> (sr));
+
         // D002: 2nd LFO — read once per block, advance block-rate.
         // Saw waveform (rising ramp) creates a characteristic gliding filter sweep.
         // Rate floor 0.005 Hz satisfies D005. Depth scales ±24 semitones at max (×fltCutoff).
@@ -986,14 +996,23 @@ public:
 
                 // Filter envelope
                 float fltEnvVal = voice.filterEnv.process();
-                // D005: breathing LFO — subtle autonomous filter modulation (0.07 Hz, set in prepare)
-                float breathMod = voice.breathingLFO.process() * 2.0f;
+                // D002/D005: LFO1 — user-controllable BreathingLFO (rate set per-block above).
+                // lfo1Target: 0=Filter, 1=Mojo (B015 dynamic axis), 2=Saturation.
+                // Output scaled by lfo1Depth (user control, 0–1).
+                const float lfo1Raw = voice.breathingLFO.process() * lfo1Depth;
+                // When target is Filter (0): add semitone sweep (×2 = ±2 semitones at depth=1).
+                const float breathFilterMod = (lfo1Target == 0) ? lfo1Raw * 2.0f : 0.0f;
+                // When target is Mojo (1): modulate analog amount ±0.35 at depth=1 (B015 dynamic).
+                const float lfo1MojoMod     = (lfo1Target == 1) ? lfo1Raw * 0.35f : 0.0f;
+                // When target is Saturation (2): modulate sat drive ±0.3 at depth=1.
+                const float lfo1SatMod      = (lfo1Target == 2) ? (lfo1Raw * 0.3f + 0.3f * lfo1Depth) : 0.0f;
+
+                // D001: velocity → filter brightness (via fltEnvAmt scaling)
+                // D002: LFO1 filter mode adds semitone sweep; LFO2 adds ±24 semitone sweep
                 float keyTrackOffset = (static_cast<float> (voice.noteNumber) - 60.0f)
                                        * fltKeyTrack;
-                // D001: velocity scales filter envelope depth for timbral expression
-                // D002: LFO2 adds ±24 semitone sweep (lfo2SemitonesMod, block-constant)
                 float cutoff = fltCutoff
-                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod + lfo2SemitonesMod)
+                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathFilterMod + lfo2SemitonesMod)
                                * (0.693147f / 12.0f));
                 cutoff = clamp (cutoff, 20.0f, 18000.0f);
 
@@ -1007,16 +1026,20 @@ public:
                     voice.filters[static_cast<size_t> (gi)].setDrive (fltDrive);
                 }
 
+                // D002: LFO1 Mojo target (B015 dynamic axis) — modulates analogAmount per sample.
+                // lfo1MojoMod is ±0.35 at depth=1; clamped so it never exceeds [0,1].
+                const float voiceAnalogAmount = clamp (analogAmount + lfo1MojoMod, 0.0f, 1.0f);
+
                 // --- Sub oscillator ---
                 // Use precomputed block-constant subRatio instead of per-sample fastExp.
                 float subFreq = freq * subRatio;
-                float subDriftCents = voice.subDrift.process (analogAmount);
+                float subDriftCents = voice.subDrift.process (voiceAnalogAmount);
                 subFreq *= fastExp (subDriftCents * (0.693147f / 1200.0f));
                 voice.subOsc.setFrequency (subFreq);
                 float subSample = voice.subOsc.processSub() * subLevel;
-                // Mojo soft-clip on sub
-                if (analogAmount > 0.001f)
-                    subSample = subSample + analogAmount * (fastTanh (subSample) - subSample);
+                // Mojo soft-clip on sub — uses LFO1-modulated voiceAnalogAmount (B015 dynamic)
+                if (voiceAnalogAmount > 0.001f)
+                    subSample = subSample + voiceAnalogAmount * (fastTanh (subSample) - subSample);
 
                 // --- Group oscillators ---
                 // Use precomputed block-constant octave ratios (hoisted from sample loop).
@@ -1035,12 +1058,12 @@ public:
                     for (int o = 0; o < 3; ++o)
                     {
                         auto idx = static_cast<size_t> (baseIdx + o);
-                        float driftCents = voice.drifts[idx].process (analogAmount);
+                        float driftCents = voice.drifts[idx].process (voiceAnalogAmount);
                         float oscFreq = grpFreqs[o] * fastExp (driftCents * (0.693147f / 1200.0f));
                         voice.oscs[idx].setFrequency (oscFreq);
                         float s = voice.oscs[idx].process (morph, voice.noiseGens[idx]);
-                        if (analogAmount > 0.001f)
-                            s = s + analogAmount * (fastTanh (s) - s);
+                        if (voiceAnalogAmount > 0.001f)
+                            s = s + voiceAnalogAmount * (fastTanh (s) - s);
                         gSum += s;
                     }
                     gSum *= 0.3333f;
@@ -1054,12 +1077,12 @@ public:
                     for (int o = 0; o < 3; ++o)
                     {
                         auto idx = static_cast<size_t> (9 + o);
-                        float driftCents = voice.drifts[idx].process (analogAmount);
+                        float driftCents = voice.drifts[idx].process (voiceAnalogAmount);
                         float oscFreq = grpFreqs[o] * fastExp (driftCents * (0.693147f / 1200.0f));
                         voice.oscs[idx].setFrequency (oscFreq);
                         float s = voice.oscs[idx].process (morph, voice.noiseGens[idx]);
-                        if (analogAmount > 0.001f)
-                            s = s + analogAmount * (fastTanh (s) - s);
+                        if (voiceAnalogAmount > 0.001f)
+                            s = s + voiceAnalogAmount * (fastTanh (s) - s);
                         g4oscs[o] = s;
                     }
                     // Filter the mono sum
@@ -1095,8 +1118,9 @@ public:
                 voiceL *= envVal * voice.velocity;
                 voiceR *= envVal * voice.velocity;
 
-                // Post-voice saturation
-                voice.saturation.setDrive (satDrive);
+                // Post-voice saturation — LFO1 Saturation target adds dynamic drive (B015 side-effect).
+                // lfo1SatMod is non-negative when lfo1Target==2, otherwise 0.
+                voice.saturation.setDrive (clamp (satDrive + lfo1SatMod, 0.0f, 1.0f));
                 voiceL = voice.saturation.process (voiceL);
                 voiceR = voice.saturation.process (voiceR);
 
@@ -1299,6 +1323,19 @@ public:
             juce::ParameterID { "fat_polyphony", 1 }, "Fat Polyphony",
             juce::StringArray { "1", "2", "4", "6" }, 3));
 
+        // D002/D005: LFO1 — user-controllable BreathingLFO (sine wave).
+        // Target: 0=Filter (semitone modulation), 1=Mojo (B015 dynamic axis), 2=Saturation.
+        // Rate floor 0.005 Hz (D005 ≤ 0.01 Hz). Default 0.07 Hz = classic slow breathing.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_lfo1Rate", 1 }, "Fat LFO1 Rate",
+            juce::NormalisableRange<float> (0.005f, 4.0f, 0.005f, 0.3f), 0.07f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_lfo1Depth", 1 }, "Fat LFO1 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.15f));
+        params.push_back (std::make_unique<juce::AudioParameterChoice> (
+            juce::ParameterID { "fat_lfo1Target", 1 }, "Fat LFO1 Target",
+            juce::StringArray { "Filter", "Mojo", "Saturation" }, 0));
+
         // D002: 2nd LFO — dedicated filter sweep modulator.
         // Saw LFO sweeps the ZDF ladder cutoff for slow autonomous harmonic movement.
         // Rate range 0.005–4.0 Hz (floor satisfies D005 ≤ 0.01 Hz).
@@ -1379,6 +1416,10 @@ public:
         pMacroGrit   = apvts.getRawParameterValue ("fat_macroGrit");
         pMacroSize   = apvts.getRawParameterValue ("fat_macroSize");
         pMacroCrush  = apvts.getRawParameterValue ("fat_macroCrush");
+        // D002: LFO1 (user-controllable BreathingLFO)
+        pLfo1Rate    = apvts.getRawParameterValue ("fat_lfo1Rate");
+        pLfo1Depth   = apvts.getRawParameterValue ("fat_lfo1Depth");
+        pLfo1Target  = apvts.getRawParameterValue ("fat_lfo1Target");
         // D002: 2nd LFO
         pLfo2Rate    = apvts.getRawParameterValue ("fat_lfo2Rate");
         pLfo2Depth   = apvts.getRawParameterValue ("fat_lfo2Depth");
@@ -1519,7 +1560,7 @@ private:
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;
 
-    // Cached APVTS parameter pointers (31 params)
+    // Cached APVTS parameter pointers (34 params: +fat_lfo1Rate, +fat_lfo1Depth, +fat_lfo1Target)
     std::atomic<float>* pMorph = nullptr;
     std::atomic<float>* pMojo = nullptr;
     std::atomic<float>* pSubLevel = nullptr;
@@ -1562,6 +1603,12 @@ private:
     std::atomic<float>* pMacroGrit  = nullptr;
     std::atomic<float>* pMacroSize  = nullptr;
     std::atomic<float>* pMacroCrush = nullptr;
+
+    // D002/D005: LFO1 — user-controllable BreathingLFO (sine).
+    // Rate and depth are now user parameters; target routes to Filter/Mojo/Saturation (B015).
+    std::atomic<float>* pLfo1Rate   = nullptr;
+    std::atomic<float>* pLfo1Depth  = nullptr;
+    std::atomic<float>* pLfo1Target = nullptr;
 
     // D002: 2nd LFO — user-routable filter modulator.
     // Saw LFO sweeps ZDF ladder cutoff for autonomous harmonic evolution.

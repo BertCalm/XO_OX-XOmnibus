@@ -70,6 +70,15 @@ public:
                 pitchBendNorm = xomnibus::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
+        // Biome crossfade: trigger BiomeMorph in all voices when biome param changes.
+        // Comparison uses lastBiome so this fires only on the block where biome changed —
+        // not every block — avoiding redundant crossfade resets.
+        if (snapshot.biome != lastBiome)
+        {
+            voicePool.setBiomeTarget(snapshot.biome);
+            lastBiome = snapshot.biome;
+        }
+
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
 
         aftertouch.updateBlock(numSamples);
@@ -204,6 +213,9 @@ private:
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
     float modWheelAmount = 0.0f;
     float pitchBendNorm  = 0.0f;
+
+    // ---- Biome tracking — prevents redundant setBiomeTarget calls each block ----
+    int lastBiome = 0;  // 0=Jungle (matches BiomeMorph::prepare default)
 
     // ---- Coupling accumulators — reset each block, accumulated by applyCouplingInput ----
     // Applied to snapshot in renderBlock before voice rendering.

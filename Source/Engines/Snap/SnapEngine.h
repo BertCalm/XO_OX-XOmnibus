@@ -352,6 +352,12 @@ public:
         const float lfoDepth  = (pLfoDepth  != nullptr) ? pLfoDepth->load()  : 0.08f;
         const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.08f;
 
+        // D005: user-controllable LFO rates with floor ≤ 0.01 Hz.
+        // lfoRate default 4.0 Hz — neon tetra tail-flick energy (fast but user can slow to breathe).
+        // lfo2Rate default 0.08 Hz — preserves legacy stereo-pan wobble speed for old presets.
+        const float lfoRate  = (pLfoRate  != nullptr) ? pLfoRate->load()  : 4.0f;
+        const float lfo2Rate = (pLfo2Rate != nullptr) ? pLfo2Rate->load() : 0.08f;
+
         const float macroDart    = (pMacroDart != nullptr)    ? pMacroDart->load()    : 0.0f;
         const float macroSchool  = (pMacroSchool != nullptr)  ? pMacroSchool->load()  : 0.0f;
         const float macroSurface = (pMacroSurface != nullptr) ? pMacroSurface->load() : 0.0f;
@@ -443,17 +449,25 @@ public:
         // Computing once per block (not per sample) saves significant CPU while
         // being perceptually transparent for block sizes up to ~128 samples.
 
-        // D005 fix: autonomous LFO — BPF center wobble (±8%).
-        // DSP FIX: LFO rate now scales with DART macro (0.15→0.6 Hz) for more
-        // agitated filter movement when feliX is darting harder. Previously fixed 0.15 Hz.
-        double lfoRateHz = 0.15 + static_cast<double> (macroDart) * 0.45;
-        lfoPhase += (lfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
+        // D005: autonomous LFO1 — BPF center wobble.
+        // Rate = user snap_lfoRate (0.01–20 Hz, default 4 Hz for neon tetra dart energy).
+        // D006: aftertouch boosts LFO rate up to +8 Hz — faster tail-flick under pressure.
+        // DART macro adds further speed boost (×2 at max DART) for maximum agitation.
+        const double effectiveLfoRateHz = static_cast<double> (lfoRate)
+                                        + static_cast<double> (atPressure) * 8.0
+                                        + static_cast<double> (macroDart) * static_cast<double> (lfoRate);
+        lfoPhase += (effectiveLfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi) lfoPhase -= juce::MathConstants<double>::twoPi;
 
-        // DSP FIX: Secondary LFO — slow stereo pan wobble (0.08 Hz triangle).
-        // Adds autonomous stereo movement (feliX darting laterally in the shallows).
-        lfo2Phase += 0.08 / sampleRate;
+        // D005: Secondary LFO2 — slow stereo pan wobble (triangle).
+        // Rate = user snap_lfo2Rate (0.01–8 Hz, default 0.08 Hz preserves legacy preset feel).
+        lfo2Phase += static_cast<double> (lfo2Rate) / sampleRate;
         if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
+
+        // D006: mod wheel boosts LFO1 depth (schooling behavior — more shimmer in the school).
+        // Wheel at full adds +0.25 LFO depth on top of lfoDepth; clamped at 0.5.
+        const float effectiveLfoDepth = std::min (0.5f, lfoDepth + modWheelValue * 0.25f);
+
         float lfo2Stereo = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0) * lfo2Depth; // ±lfo2Depth pan offset
 
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
@@ -461,11 +475,12 @@ public:
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
         const float effectiveBpfCenter = std::max (20.0f, std::min (20000.0f,
                                              effectiveCutoff
-                                             * (1.0f + lfoDepth * (float)std::sin(lfoPhase))
+                                             * (1.0f + effectiveLfoDepth * (float)std::sin(lfoPhase))
                                              * cutoffMod
                                              + atPressure * 0.3f * 6000.0f));
 
         // D006: mod wheel adds up to +0.4 resonance — more ring/peak with wheel (sensitivity 0.4)
+        // (mod wheel already contributes to LFO depth above; resonance boost is additive and complementary)
         const float modWheelResonance = std::min (1.0f, effectiveResonance + modWheelValue * 0.4f);
 
         // D001: Filter envelope depth — per-voice BPF center scaled by envelope × velocity.
@@ -871,6 +886,20 @@ public:
             juce::ParameterID { "snap_lfo2Depth", 1 }, "Snap LFO2 Pan Depth",
             juce::NormalisableRange<float> (0.0f, 0.2f, 0.001f), 0.08f));
 
+        // ---- LFO rates — D005: floor ≤ 0.01 Hz so the engine can breathe ----
+        // snap_lfoRate default 4.0 Hz: neon tetra tail-flick default is fast and electric.
+        // Mod wheel adds +0 to +8 Hz on top; aftertouch adds further burst for tail-flick.
+        // Floor 0.01 Hz allows ultra-slow breath for ambient textures.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_lfoRate", 1 }, "Snap LFO Rate",
+            juce::NormalisableRange<float> (0.01f, 20.0f, 0.01f, 0.3f), 4.0f));
+
+        // snap_lfo2Rate default 0.08 Hz: preserves original slow stereo-pan wobble speed.
+        // Can be raised for faster lateral darting across the stereo field.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_lfo2Rate", 1 }, "Snap LFO2 Pan Rate",
+            juce::NormalisableRange<float> (0.01f, 8.0f, 0.01f, 0.4f), 0.08f));
+
         // ---- Macros (the four gestures of the neon tetra) ----
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "snap_macroDart", 1 }, "Snap Dart",
@@ -910,6 +939,8 @@ public:
         pPolyphony    = apvts.getRawParameterValue ("snap_polyphony");
         pLfoDepth     = apvts.getRawParameterValue ("snap_lfoDepth");
         pLfo2Depth    = apvts.getRawParameterValue ("snap_lfo2Depth");
+        pLfoRate      = apvts.getRawParameterValue ("snap_lfoRate");
+        pLfo2Rate     = apvts.getRawParameterValue ("snap_lfo2Rate");
         pMacroDart    = apvts.getRawParameterValue ("snap_macroDart");
         pMacroSchool  = apvts.getRawParameterValue ("snap_macroSchool");
         pMacroSurface = apvts.getRawParameterValue ("snap_macroSurface");
@@ -1102,6 +1133,9 @@ private:
     // D002: user-exposed LFO depth pointers
     std::atomic<float>* pLfoDepth     = nullptr;  // snap_lfoDepth — BPF wobble depth (0–0.5)
     std::atomic<float>* pLfo2Depth    = nullptr;  // snap_lfo2Depth — stereo pan wobble depth (0–0.2)
+    // D005: user-exposed LFO rate pointers (floor 0.01 Hz — engine can breathe)
+    std::atomic<float>* pLfoRate      = nullptr;  // snap_lfoRate — BPF wobble rate (0.01–20 Hz, default 4.0)
+    std::atomic<float>* pLfo2Rate     = nullptr;  // snap_lfo2Rate — stereo pan rate (0.01–8 Hz, default 0.08)
     std::atomic<float>* pMacroDart    = nullptr;
     std::atomic<float>* pMacroSchool  = nullptr;
     std::atomic<float>* pMacroSurface = nullptr;

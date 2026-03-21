@@ -152,18 +152,26 @@ inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParamete
     F(density,        "Density",         0.0f, 1.0f, 0.5f);
 
     // ── Cross-Feed Matrix ─────────────────────────
+    // Default values: the 4 most ecologically expressive routes are pre-wired
+    // at low levels so the EcosystemMatrix has audible default behavior.
+    // Users and macros can deepen or redirect any route.
+    //   Floor→Canopy: percussion transients open the spectral filter (+0.2)
+    //   Floor→Emerg:  loud hits trigger creature calls (+0.25)
+    //   Emerg→Canopy: creature calls add shimmer to the canopy (+0.15)
+    //   Canopy→Floor: spectral brightness slightly damps floor resonance (-0.1)
+    // All others default to 0 (clean slate for sound design).
     F(xfFloorUnder,  "XF Floor->Under",  -1.0f, 1.0f, 0.0f);
-    F(xfFloorCanopy, "XF Floor->Canopy", -1.0f, 1.0f, 0.0f);
-    F(xfFloorEmerg,  "XF Floor->Emerg",  -1.0f, 1.0f, 0.0f);
+    F(xfFloorCanopy, "XF Floor->Canopy", -1.0f, 1.0f, 0.2f);   // audible default: percussion opens canopy filter
+    F(xfFloorEmerg,  "XF Floor->Emerg",  -1.0f, 1.0f, 0.25f);  // audible default: drum hits trigger creature calls
     F(xfUnderFloor,  "XF Under->Floor",  -1.0f, 1.0f, 0.0f);
     F(xfUnderCanopy, "XF Under->Canopy", -1.0f, 1.0f, 0.0f);
     F(xfUnderEmerg,  "XF Under->Emerg",  -1.0f, 1.0f, 0.0f);
-    F(xfCanopyFloor, "XF Canopy->Floor", -1.0f, 1.0f, 0.0f);
+    F(xfCanopyFloor, "XF Canopy->Floor", -1.0f, 1.0f, -0.1f);  // audible default: bright canopy slightly damps floor
     F(xfCanopyUnder, "XF Canopy->Under", -1.0f, 1.0f, 0.0f);
     F(xfCanopyEmerg, "XF Canopy->Emerg", -1.0f, 1.0f, 0.0f);
     F(xfEmergFloor,  "XF Emerg->Floor",  -1.0f, 1.0f, 0.0f);
     F(xfEmergUnder,  "XF Emerg->Under",  -1.0f, 1.0f, 0.0f);
-    F(xfEmergCanopy, "XF Emerg->Canopy", -1.0f, 1.0f, 0.0f);
+    F(xfEmergCanopy, "XF Emerg->Canopy", -1.0f, 1.0f, 0.15f);  // audible default: creature calls add canopy shimmer
 
     // ── Floor ─────────────────────────────────────
     C(floorModel,   "Floor Model",   Enums::floorModel, 3);

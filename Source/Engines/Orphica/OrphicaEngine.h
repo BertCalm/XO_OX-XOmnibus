@@ -21,7 +21,7 @@ namespace xomnibus {
 // capturing it into a small per-voice circular buffer and reading back grains.
 //==============================================================================
 struct OrphicaMicrosound {
-    static constexpr int kBufSize = 16384; // ~371ms @ 44.1k (doubled from 8192 to support slow-attack granular)
+    static constexpr int kBufSize = 44100; // 1 second @ 44.1k — supports lush slow-attack granular textures and freeze pads
     static constexpr int kGrains = 4;
 
     float buffer[kBufSize] {};
@@ -384,8 +384,12 @@ public:
                 float damped=v.df.process(out+exc*pluckGain,voiceDamp);
                 v.dl.write(damped);
 
-                // Body resonance (size controls frequency and Q)
-                float bodyFreq = v.freq * (0.6f + pBS * 0.8f);
+                // Body resonance (size controls frequency and Q).
+                // D001: velocity shapes harmonic content — higher velocity raises the body
+                // resonance frequency toward upper partials (vel=0: fundamental region ×0.6,
+                // vel=1: rises toward ×1.05), making hard hits perceptibly brighter/richer.
+                float velBodyLift = v.vel * 0.45f; // vel 0→1 lifts resonance freq by up to 75%
+                float bodyFreq = v.freq * (0.6f + velBodyLift + pBS * 0.8f);
                 float bodyQ = 2.0f + pBS * 6.0f;
                 v.body.setParams(bodyFreq, bodyQ);
                 float bo=out+v.body.process(out)*(0.1f+pBS*0.2f);

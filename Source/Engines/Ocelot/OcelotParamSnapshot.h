@@ -19,18 +19,19 @@ struct OcelotParamSnapshot
     float density          = 0.5f;
 
     // ── Cross-Feed Matrix ─────────────────────────
+    // Defaults mirror parameter defaults — 4 routes pre-wired for audible ecosystem behavior.
     float xfFloorUnder     = 0.0f;
-    float xfFloorCanopy    = 0.0f;
-    float xfFloorEmerg     = 0.0f;
+    float xfFloorCanopy    = 0.2f;   // percussion opens canopy spectral filter
+    float xfFloorEmerg     = 0.25f;  // drum hits trigger creature calls
     float xfUnderFloor     = 0.0f;
     float xfUnderCanopy    = 0.0f;
     float xfUnderEmerg     = 0.0f;
-    float xfCanopyFloor    = 0.0f;
+    float xfCanopyFloor    = -0.1f;  // bright canopy subtly damps floor resonance
     float xfCanopyUnder    = 0.0f;
     float xfCanopyEmerg    = 0.0f;
     float xfEmergFloor     = 0.0f;
     float xfEmergUnder     = 0.0f;
-    float xfEmergCanopy    = 0.0f;
+    float xfEmergCanopy    = 0.15f;  // creature calls add canopy shimmer
 
     // ── Floor ─────────────────────────────────────
     int   floorModel       = 3;  // kalimba
@@ -230,6 +231,27 @@ struct OcelotParamSnapshot
             canopyLevel          = std::clamp(canopyLevel          + macroCanopy * 0.4f, 0.0f, 1.0f);
             canopyShimmer        = std::clamp(canopyShimmer        + macroCanopy * 0.5f, 0.0f, 1.0f);
             canopySpectralFilter = std::clamp(canopySpectralFilter + macroCanopy * 0.3f, 0.0f, 1.0f);
+        }
+
+        // D004 fix: wire ocelot_density → understory level tilt + canopy breathe depth.
+        // density 0.0 = sparse (quiet understory, slow breathe), 1.0 = dense (loud understory, rapid breathe).
+        // At density=0.5 (default): no offset. At density=1.0: +0.2 understory, +0.15 breathe.
+        // At density=0.0: -0.2 understory, -0.15 breathe (sparse, airy).
+        {
+            float densityOffset = (density - 0.5f); // -0.5 to +0.5
+            understoryLevel     = std::clamp(understoryLevel + densityOffset * 0.4f, 0.0f, 1.0f);
+            canopyBreathe       = std::clamp(canopyBreathe   + densityOffset * 0.3f, 0.0f, 1.0f);
+        }
+
+        // D004 fix: wire ocelot_swing → floor pattern articulation + emergent rate offset.
+        // swing 0.0 = metronomic (no swing), 1.0 = heavy swing (pushes emergent calls off-grid).
+        // Maps swing → chopSwing additive (triplet feel on the understory chop gate) +
+        // small emergent rate nudge (creatures reply to the groove).
+        {
+            float swingAdd = swing * 0.4f; // 0..0.4 additional chop swing
+            chopSwing      = std::clamp(chopSwing + swingAdd, 0.0f, 1.0f);
+            // Small emergent rate lift: swing makes the ecosystem feel more alive
+            creatureRate   = std::clamp(creatureRate + swing * 0.1f, 0.0f, 1.0f);
         }
     }
 };
