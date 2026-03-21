@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reef Builds Itself — OBRIX | XO_OX Field Guide</title>
+<meta name="description" content="Field Guide Post #19: OBRIX — the modular brick synthesis engine. Every other engine in XOmnibus is a creature. OBRIX is the reef. A deep dive into all five waves of development and 81 parameters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --coral:      #C4636E;
+  --obrix:      #1E8B7E;
+  --obrix-glow: rgba(30, 139, 126, 0.12);
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(30, 139, 126, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 15%, rgba(233, 196, 106, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--obrix); color: var(--cream); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(30, 139, 126, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(233, 196, 106, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ ARTICLE HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--obrix);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--obrix);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--obrix); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span {
+  color: var(--text-dim);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+.article-accent { color: var(--obrix); font-weight: 400; }
+.article-gold { color: var(--gold); font-weight: 400; }
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--obrix);
+  background: var(--obrix-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.article blockquote .attribution {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+.article-lore {
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--teal);
+}
+.article-lore p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--obrix), transparent);
+  margin: 3rem 0;
+}
+.article ul {
+  margin-bottom: 1.5rem;
+  padding-left: 1.6rem;
+}
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+
+/* ═══════════ SIGNAL FLOW ═══════════ */
+.signal-flow {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 2.2;
+  overflow-x: auto;
+}
+.signal-flow .src { color: var(--obrix); }
+.signal-flow .proc { color: #C4A44E; }
+.signal-flow .mod { color: #7B9CBF; }
+.signal-flow .fx { color: #9B7BC4; }
+.signal-flow .label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* ═══════════ BRICK GRID ═══════════ */
+.brick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.brick-card {
+  padding: 1.4rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  border-top: 2px solid var(--obrix);
+}
+.brick-card .brick-type {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--obrix);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.brick-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.brick-card p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+.brick-card .variants {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+}
+
+/* ═══════════ WAVE TIMELINE ═══════════ */
+.wave-timeline {
+  margin: 2rem 0;
+  position: relative;
+}
+.wave-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.wave-item:last-child { border-bottom: none; }
+.wave-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--obrix);
+  min-width: 60px;
+  padding-top: 0.2rem;
+  letter-spacing: 0.1em;
+}
+.wave-content h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.wave-content p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ═══════════ RECIPE CARD ═══════════ */
+.recipe-card {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--obrix);
+  border-radius: 0 4px 4px 0;
+}
+.recipe-card.gold { border-left-color: var(--gold); }
+.recipe-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.recipe-card p { font-size: 0.95rem; margin-bottom: 0.8rem; }
+.recipe-card .recipe-tag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--obrix);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.recipe-card.gold .recipe-tag { color: var(--gold); }
+.recipe-card .recipe-params {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  background: var(--bg-deep);
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+  line-height: 1.9;
+}
+
+/* ═══════════ BACK LINK + FOOTER ═══════════ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--obrix); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .brick-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<meta property="og:title" content="The Reef Builds Itself — OBRIX | XO_OX Field Guide">
+<meta property="og:description" content="Every other engine in XOmnibus is a creature. OBRIX is the reef. A deep dive into all five waves of development, 81 parameters, and why constraint is the engine's design principle.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Reef Builds Itself — OBRIX | XO_OX Field Guide">
+<meta name="twitter:description" content="81 params. 5 waves. The only engine that is also an ecosystem.">
+<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; Engine 19</div>
+  <h1>The Reef <em>Builds Itself</em></h1>
+  <p class="article-hero-sub">
+    Every other engine in XOmnibus is a creature. OBRIX is the reef. Not an instrument &mdash; a habitat. 81 parameters, five waves of evolution, and a synthesis architecture that grows by accretion rather than by design. This is the engine that never stops adding bricks.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Engine<span style="color: var(--obrix);">OBRIX &mdash; Modular Brick Synthesis</span></div>
+    <div class="article-meta-item">Read Time<span>25 min</span></div>
+    <div class="article-meta-item">Words<span>~5,000</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--obrix);">Reef Jade #1E8B7E</span></div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<article class="article" id="article-content">
+
+<p class="reveal">
+Every engine in XOmnibus has a creature identity. OddfeliX is a neon tetra &mdash; sharp, quick, bright. OPERA is a bioluminescent siren who sings through 32 partials. OUROBOROS is an eel that eats its own tail. OCEANDEEP is an anglerfish who hunts in darkness so complete that it creates its own light. These are not metaphors. They are design constraints: each engine's architecture was built to serve a specific character, to do one thing with enough depth that the thing becomes inexhaustible.
+</p>
+
+<p class="reveal">
+OBRIX is the reef.
+</p>
+
+<p class="reveal">
+Not an animal that lives in the reef. Not an instrument that makes reef-like sounds. The reef itself &mdash; the three-dimensional calcium carbonate structure built over centuries by millions of tiny organisms, each adding its small contribution to an architecture no single organism designed and no single organism could have built. A coral reef is not the product of intelligence. It is the product of accretion. Every polyp does one small thing. The cumulative structure is a wonder that defies its origins.
+</p>
+
+<p class="reveal">
+OBRIX was built the same way. Five waves of development, each adding new systems to a core that never broke. It began with the simplest possible modular structure. It ended with an engine that can simulate ecosystem dynamics, respond to its own performance history, and allow a coupled external engine to participate as a biological organism in its internal ecology. At 81 parameters, it is the deepest parameter space in the XOmnibus fleet. And it is still growing. Brick Drop events add new source, processor, and effect types. The reef is not finished.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Lineage: Semi-Modular DNA</h2>
+
+<p class="reveal">
+The history of synthesis includes two schools of thought about how much flexibility a synthesizer should give its player. The first school &mdash; call it the Moog school &mdash; argues that a synthesizer should have a fixed, optimized signal path. Oscillator to filter to amplifier. Every sound passes through the same stages in the same order. The flexibility comes not from reconfiguring the path but from the richness of each stage: better filters, more interesting oscillators, deeper envelope options. The Minimoog is the canonical product of this philosophy: one signal path, perfected.
+</p>
+
+<p class="reveal">
+The second school &mdash; call it the modular school &mdash; argues that the signal path should be as reconfigurable as possible. Nothing is normalled. Everything is patched. You decide which oscillator feeds which filter, whether the envelope controls amplitude or pitch or filter cutoff or all three simultaneously, whether signals flow forward or backward through the chain. The trade-off is complexity: a fully open modular system requires you to patch every connection before you hear a sound.
+</p>
+
+<p class="reveal">
+Between these two poles sits the third philosophy, which Don Buchla never fully embraced but Alan Pearlman perfected: the <strong>semi-modular</strong>. The ARP 2600, released in 1971, had a complete, normalled signal path &mdash; you could play it the moment you turned it on, without touching a patch cable. But it also had patch points that broke any normalled connection you chose to override. The Serge Modular, introduced in 1974, went further with its "patch-programmable" philosophy: a fixed set of modules, arranged so that the physical layout suggested natural connections without mandating them. The Korg MS-20, released in 1978, inherited both: two complete synthesizer voices sharing a filter, plus a patch bay that let you route any signal to any destination.
+</p>
+
+<p class="reveal">
+OBRIX is built in this lineage. Its signal path is fixed: two sources, three processors, four modulators, three effects, in a specified arrangement. You can't wire Processor 3 before Processor 1. But within that fixed topology, every stage is a reconfigurable brick. The brick can be any type from the pool. The pool is extensible. The constraint is the creativity. OBRIX doesn't give you a blank canvas. It gives you a reef grid and asks what creatures will grow there.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Brick System</h2>
+
+<p class="reveal">
+OBRIX has 12 bricks per voice, organized into four families. The terminology comes from the mythology: the reef is built from <em>Shells</em> (sources), <em>Coral</em> (processors), <em>Currents</em> (modulators), and <em>Tide Pools</em> (effects). Each brick family has its own type menu. Change a brick's type and the entire signal path changes at that stage. The change is instantaneous and non-destructive &mdash; if you set Source 1 to Saw and then switch it to Wavetable, the wavetable bank and position are waiting, unchanged, whenever you come back.
+</p>
+
+<div class="brick-grid reveal">
+
+  <div class="brick-card">
+    <span class="brick-type">Shells — Sources</span>
+    <h4>The Living Generators</h4>
+    <p>The oscillators. Two independent source bricks, each with its own type and tuning. Source 1 feeds into Processor 1 and also acts as the FM modulator into Source 2 when FM depth is non-zero. Source 2 feeds into Processor 2.</p>
+    <p class="variants">Off · Sine · Saw · Square · Triangle · Noise · Wavetable · Pulse · LoFiSaw</p>
+  </div>
+
+  <div class="brick-card">
+    <span class="brick-type">Coral — Processors</span>
+    <h4>The Filter/Transformer Organisms</h4>
+    <p>Three processor bricks in the signal chain: Proc1 on Source 1, Proc2 on Source 2, Proc3 post-mix on the combined signal. Proc1 and Proc2 have feedback paths (tanh saturation, self-oscillation possible). Proc3 acts as the master shaper.</p>
+    <p class="variants">Off · LP Filter · HP Filter · BP Filter · Wavefolder · Ring Mod</p>
+  </div>
+
+  <div class="brick-card">
+    <span class="brick-type">Currents — Modulators</span>
+    <h4>The Flows Between Bricks</h4>
+    <p>Four modulator bricks, each assignable to a target parameter across any of the other bricks. Targets include pitch, filter cutoff, filter resonance, volume, wavetable position, pulse width, effect mix, and pan. The modulator type determines the shape of the modulation signal.</p>
+    <p class="variants">Off · ADSR Envelope · LFO · Velocity · Aftertouch</p>
+  </div>
+
+  <div class="brick-card">
+    <span class="brick-type">Tide Pools — Effects</span>
+    <h4>The Spatial Environment</h4>
+    <p>Three effect bricks in serial or parallel arrangement (FX Mode parameter). Series: each effect processes the output of the previous one. Parallel: each effect independently processes the dry signal; wet contributions are summed. Both modes produce valid and distinct results.</p>
+    <p class="variants">Off · Delay · Chorus · Reverb</p>
+  </div>
+
+</div>
+
+<h3 class="reveal">The Constructive Collision</h3>
+
+<p class="reveal">
+The signal flow in OBRIX is what the source code calls the "Constructive Collision." The name describes the moment when Src1 meets Src2 after both have been processed independently:
+</p>
+
+<div class="signal-flow reveal">
+<span class="label">OBRIX Signal Flow — The Constructive Collision</span>
+<span class="src">Src1</span> ──[FM mod at audio rate]──→ <span class="src">Src2</span>
+<span class="src">Src1</span> → <span class="proc">Proc1</span>(+feedback) ──┐
+                                    ├── Mix → <span class="proc">Proc3</span> → Amp → <span class="fx">FX1 → FX2 → FX3</span>
+<span class="src">Src2</span> → <span class="proc">Proc2</span>(+feedback) ──┘
+
+<span class="mod">Mod1 · Mod2 · Mod3 · Mod4</span> → target any brick parameter
+</div>
+
+<p class="reveal">
+The FM path is the collision: Src1's output, before it enters Proc1, is also feeding into Src2 as a frequency modulation input. The FM depth parameter controls how strongly Src1 modulates Src2's pitch. At low depths, the modulation adds harmonic richness. At higher depths, it creates complex FM spectra. At extreme depths, you enter chaotic FM territory where the output spectrum bears no simple relationship to either source's fundamental. When Src2 is also set to a complex waveform (Wavetable, Pulse with feedback), the collision multiplies in complexity.
+</p>
+
+<p class="reveal">
+The filter feedback path is equally generative. Proc1 and Proc2 each have a feedback parameter that routes a portion of their output back into their input with tanh saturation. At low feedback values, the filter warms and adds harmonic content. At higher values, the filter begins to self-oscillate at its resonant frequency. At the self-oscillation threshold, a filter configured as a BP filter becomes a sine oscillator. The decay of that oscillation at note-off produces a natural-sounding ringing tail that no envelope shape alone could replicate.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Five Waves</h2>
+
+<p class="reveal">
+OBRIX's development history is documented in its source code as five named waves. Each wave added a layer of capability to the existing architecture without breaking any existing preset compatibility. This is the reef metaphor in practice: each wave of growth added new coral species to the existing reef structure. The original polyps are still there, doing what they always did.
+</p>
+
+<div class="wave-timeline reveal">
+
+  <div class="wave-item">
+    <div class="wave-num">Wave 1</div>
+    <div class="wave-content">
+      <h4>The Core Brick System</h4>
+      <p>Semi-modular architecture established. Two sources (Shells), three processors (Coral), four modulators (Currents), three effects (Tide Pools). Fixed signal path with Constructive Collision FM routing. Gesture system (FLASH: Ripple, Pulse, Flow, Tide) for PlaySurface chromatophore pad behaviors. Basic presets across all 8 moods. The habitat, cleared and ready.</p>
+    </div>
+  </div>
+
+  <div class="wave-item">
+    <div class="wave-num">Wave 2</div>
+    <div class="wave-content">
+      <h4>FM, Feedback, Wavetables, Unison</h4>
+      <p>Source-to-source FM exposed as a controllable parameter. Filter feedback with tanh saturation added to Proc1 and Proc2. Four wavetable banks added (Analog, Vocal, Metallic, Organic) — real sampled waveforms, not mathematically generated. Unison voice stacking up to 8 voices with configurable detune spread. The reef's complexity multiplied.</p>
+    </div>
+  </div>
+
+  <div class="wave-item">
+    <div class="wave-num">Wave 3</div>
+    <div class="wave-content">
+      <h4>Drift, Journey, Spatial</h4>
+      <p>Drift Bus: a global ultra-slow LFO (0.001–0.05 Hz) with per-voice irrational phase offsets modulating pitch and filter cutoff. A single oscillator running through the Drift Bus creates the Berlin School ensemble effect — the subtle, non-synchronized drift of multiple voices around a central pitch. Journey Mode suppresses note-off: sound evolves indefinitely, ignoring key releases. Per-Brick Spatial: Distance (HF rolloff via matched-Z 1-pole low-pass, simulating air absorption) and Air (LP/HP split at 1 kHz for warm/cold atmosphere).</p>
+    </div>
+  </div>
+
+  <div class="wave-item">
+    <div class="wave-num">Wave 4</div>
+    <div class="wave-content">
+      <h4>Biophonic Synthesis — The Reef Comes Alive</h4>
+      <p>Four new systems, all operating at the ecosystem level rather than the individual brick level. Harmonic Field: a global just-intonation attractor/repulsor that continuously nudges all voices' pitch toward or away from 7-limit JI ratios. Environmental Parameters: four thermodynamic state variables (Temperature, Pressure, Current, Turbidity) that modulate drift, LFO rate, filter cutoff bias, and spectral noise respectively. Brick Ecology: Competition (amplitude cross-suppression between Src1 and Src2) and Symbiosis (noise amplitude from Src1 drives FM index into Src2). Stateful Synthesis: Stress Memory (velocity accumulator that slowly changes timbre over time) and Bleaching (sustained high-register play that attenuates harmonics, simulating coral bleaching under stress).</p>
+    </div>
+  </div>
+
+  <div class="wave-item">
+    <div class="wave-num">Wave 5</div>
+    <div class="wave-content">
+      <h4>Reef Residency — The Visitor</h4>
+      <p>Coupling input from any external engine now participates as a third ecological organism in the Brick Ecology system. Three modes: Competitor (coupling RMS suppresses both Src1 and Src2 amplitude with a 0.1 floor), Symbiote (coupling amplitude drives FM depth and boosts Harmonic Field strength), Parasite (coupling energy accumulates into the Stress and Bleach state, changing OBRIX's timbre over time by borrowing energy from the external engine). Default Off, backward compatible. The reef can now be entered by something from outside it.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Biophonic Layer in Detail</h2>
+
+<p class="reveal">
+Wave 4 is where OBRIX stopped being a sophisticated modular synth and became something else entirely. The four Wave 4 systems &mdash; Harmonic Field, Environmental, Brick Ecology, Stateful Synthesis &mdash; don't operate at the individual note level. They operate at the session level. They change the reef over time, in response to how you play it.
+</p>
+
+<h3 class="reveal">Harmonic Field</h3>
+
+<p class="reveal">
+Natural acoustic instruments are not tuned to equal temperament. A violin string doesn't produce exactly 440 Hz when you draw the bow at a specific position &mdash; it produces 440 Hz plus a small deviation that depends on bow speed, rosin distribution, string tension, and several other physical variables. The pitch drifts. What keeps an ensemble in tune is not the absence of these deviations but the continuous, active process of each performer listening to the others and adjusting.
+</p>
+
+<p class="reveal">
+The Harmonic Field simulates a version of this at the synthesis level. All voices in OBRIX share a global just-intonation attractor field that continuously applies small pitch corrections, pulling each voice toward the nearest 3-limit, 5-limit, or 7-limit just ratio relative to the root. The <strong>fieldStrength</strong> parameter controls the intensity of the pull. The <strong>fieldRate</strong> parameter controls how quickly voices converge (it's a 1st-order IIR convergence, not an instantaneous snap). The <strong>fieldPolarity</strong> parameter, when negative, converts the attractor into a repulsor: voices are pushed <em>away</em> from just ratios, producing dissonance that grows more structured over time rather than more random.
+</p>
+
+<p class="reveal">
+At moderate field strength, the Harmonic Field produces exactly what the theory predicts: voices drift toward natural harmonic positions, creating the warmth and organic quality associated with just intonation without the inconvenience of being unable to change key. At high field strength, the convergence is audible as a tuning event &mdash; notes visibly pull into just positions during their sustain phase. At repulsor polarity, the harmonic field creates a controlled form of dissonance that feels intentional rather than random, because it is: the dissonance is the rational approximation <em>inverted</em>, the note trying to be where it isn't supposed to be.
+</p>
+
+<h3 class="reveal">Stateful Synthesis: Stress and Bleaching</h3>
+
+<p class="reveal">
+This is the system that makes OBRIX genuinely unlike any other synthesizer in the fleet &mdash; and unlike any commercial synthesizer we're aware of. Most synthesizers are stateless at the session level: you can clear state by pressing a button (sustain pedal, panic) and return to exact init conditions. The sound you get at 3:00 AM in session twelve is identical to the sound you got in minute one if the parameter values are the same.
+</p>
+
+<p class="reveal">
+OBRIX has two leaky integrators that accumulate over the session timeline and modify the synthesis even if no parameter has changed:
+</p>
+
+<p class="reveal">
+<strong>Stress Memory</strong> accumulates when you play hard &mdash; high-velocity notes add to the stress integrator, while time and low-velocity playing allow it to decay with a time constant of 30 to 60 seconds (controlled by <strong>stressDecay</strong>). When stress is high, the filter cutoff rises by up to +900 Hz from its programmed value. The reef is responding to the energy you've been putting into it. Play an aggressive section and return to quiet playing: the reef is still slightly elevated, still carrying the memory of the previous section. It takes a full minute of gentle playing to fully discharge. This is the synthesis equivalent of a musician whose technique is influenced by what they were playing five minutes ago.
+</p>
+
+<p class="reveal">
+<strong>Bleaching</strong> accumulates when you play in the high register. Sustained high-note playing adds to the bleach integrator (controlled by <strong>bleachRate</strong>), which attenuates harmonics by up to -700 Hz equivalent &mdash; thinning the sound as if the reef is being stressed by elevated temperature. Play bass lines all session and OBRIX stays rich. Play soprano leads all session and OBRIX gradually loses harmonic density, becoming thinner and more fundamental-forward. The sound at the end of the session carries the record of what you played.
+</p>
+
+<p class="reveal">
+The <strong>stateReset</strong> parameter provides an explicit reef reset &mdash; both integrators clear to zero. This is the affordance that makes the system usable: you can always start fresh if you want to. But you don't have to.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Reef Residency: Coupling as Ecology</h2>
+
+<p class="reveal">
+Most synthesizers treat coupling input as a modulation signal: you route Engine A's output to Engine B's filter cutoff and the filter moves when A plays. OBRIX Wave 5 does something different. It treats the coupled engine as a participant in the reef's ecology &mdash; a third organism with a biological relationship to the two existing brick sources.
+</p>
+
+<p class="reveal">
+The relationship has three modes:
+</p>
+
+<p class="reveal">
+<strong>Competitor</strong> mode implements cross-amplitude suppression with a 0.1 floor. The coupling engine's RMS level is computed each block. If it is loud, Src1 and Src2 are suppressed proportionally. The coupled engine is taking resources from the reef. High coupling input makes both OBRIX sources quieter. The reef is being crowded out by the visitor. This produces an interaction that sounds nothing like a sidechain compressor, even though the basic mechanic is similar, because the suppression targets the synthesis sources independently before they reach the mix &mdash; the spectral balance of the collision changes, not just its overall level.
+</p>
+
+<p class="reveal">
+<strong>Symbiote</strong> mode implements a mutualistic relationship. The coupling engine's amplitude drives OBRIX's FM depth and boosts the Harmonic Field strength. A loud coupling engine makes OBRIX's internal FM more active and makes the JI attractor field stronger. The external engine and OBRIX are cooperating: the visitor's energy enriches the reef. This is musically productive when the coupling engine is itself harmonically complex &mdash; a vocal synthesis engine or a physical model whose amplitude carries spectral information that the Harmonic Field can respond to.
+</p>
+
+<p class="reveal">
+<strong>Parasite</strong> mode implements an asymmetric relationship: the coupling engine's energy accumulates into OBRIX's Stress and Bleach state integrators. Playing the coupled engine hard stresses OBRIX. Playing it in the high register bleaches OBRIX. The visitor is taking something from the reef without giving anything back. Over a long session with Parasite mode active, OBRIX gradually degrades &mdash; the filter rises, the harmonics thin &mdash; in direct response to the energy the coupled engine has been generating, not OBRIX's own playing.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Building a Patch: Where to Start</h2>
+
+<p class="reveal">
+81 parameters is a lot. The factory library provides 389 starting points across all eight moods and across all five wave capability levels. But if you want to build from scratch, the architecture suggests a specific sequence.
+</p>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Starting Point — The Basic Collision</span>
+  <h4>Two Sources, One Processor, One Collision</h4>
+  <p>Begin with Src1 set to Saw and Src2 set to Sine. Proc1 to LP Filter. Proc2 Off. Proc3 Off. All effects Off. Set FM depth to 0.2. Play a note. You are now hearing a classic FM timbre where the carrier is a sine wave (Src2, post-Proc2) and the modulator is a sawtooth (Src1). The saw modulator produces a richer FM spectrum than a sine modulator because it has harmonics; each partial of the modulator creates its own sideband family in the carrier.</p>
+  <p>Now add Proc1 as an LP Filter at 2000 Hz with resonance 0.4. The filter is sculpting the saw before it enters the FM path, which means the FM spectrum changes with filter cutoff. Add Mod1 as an ADSR Envelope targeting FilterCutoff with depth 0.5. The filter sweeps on each note. You have a sound. It didn't require designing — it emerged from the collision.</p>
+  <div class="recipe-params">
+Src1: Saw | Src2: Sine | Src1Tune: 0.0 | Src2Tune: 0.0
+obrix_fmDepth: 0.2 | obrix_proc1Type: LP | obrix_proc1Cutoff: 2000 | obrix_proc1Reso: 0.4
+obrix_mod1Type: ADSR | obrix_mod1Target: FilterCutoff | obrix_mod1Depth: 0.5
+Amp: A 0.02, D 0.3, S 0.7, R 0.8
+  </div>
+</div>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Wave 3 — Drift Ensemble</span>
+  <h4>The Berlin School Approach</h4>
+  <p>Wave 3's Drift Bus is the most underused system in OBRIX. To hear what it does: set both sources to Saw, tune Src2 to +7 cents (perfect fifth in cents-equivalent: 7.02 cents = 1200 × log₂(3/2) / 12 ≈ 7). Set polyphony to 3. Set obrix_driftRate to 0.008 Hz and obrix_driftDepth to 0.04. Play a sustained chord.</p>
+  <p>The three voices of each note are drifting at irrational phase offsets from each other — because the Drift Bus uses irrational numbers (π, e, φ, √2) as per-voice phase seeds, no two voices ever drift in synchronized patterns. The result is a naturally evolving ensemble spread that sounds like three players sustaining the same note on the same instrument and each imperceptibly diverging from the others over time. At the Drift Bus's typical rate of 0.008 Hz, one full drift cycle takes two minutes. The sound changes on a geological timescale.</p>
+  <div class="recipe-params">
+Src1: Saw | Src2: Saw | obrix_src2Tune: 7.02
+obrix_driftRate: 0.008 | obrix_driftDepth: 0.04 | obrix_polyphony: 3
+obrix_proc1Type: LP | obrix_proc1Cutoff: 3500 | obrix_proc1Reso: 0.25
+Amp: A 0.3, D 0.0, S 1.0, R 3.0
+  </div>
+</div>
+
+<div class="recipe-card gold reveal">
+  <span class="recipe-tag">Wave 4 + 5 — The Living Reef</span>
+  <h4>Stress Memory + Symbiote Residency</h4>
+  <p>This patch only becomes interesting after you play it. Load it, play some hard attacks in the mid-register, then switch to soft sustained playing. The filter cutoff will not be where you set it. It will be where your performance history left it.</p>
+  <p>With a coupled engine set to Symbiote and the Harmonic Field active, the external engine strengthens OBRIX's JI field as it plays louder. Play the coupled engine a chord and OBRIX's tuning field aligns with the harmonic series. Stop the coupled engine and OBRIX relaxes back toward equal temperament. The symbiosis is musically audible: the visitor brings tuning clarity to the reef, and when the visitor leaves, the reef reverts to its natural drift state.</p>
+  <div class="recipe-params">
+obrix_fieldStrength: 0.45 | obrix_fieldPolarity: 1.0 | obrix_fieldPrimeLimit: 5
+obrix_fieldRate: 0.35
+
+obrix_stressDecay: 45.0 | obrix_bleachRate: 0.0004
+obrix_reefResident: 1 (Symbiote) | obrix_residentStrength: 0.3
+
+obrix_driftRate: 0.01 | obrix_driftDepth: 0.025
+
+Play hard → play soft → observe cutoff evolution
+Couple engine → observe Harmonic Field strengthening
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Gesture System: FLASH</h2>
+
+<p class="reveal">
+OBRIX's PlaySurface behavior is governed by the FLASH gesture system &mdash; named for the chromatophore light-and-color displays that octopus and cuttlefish use to signal, startle, attract, and communicate. Chromatophores are specialized cells that expand and contract in milliseconds, producing rapid full-body patterns of light that travel across the skin in waves. OBRIX's gesture bricks map four of these patterns to synthesis behaviors:
+</p>
+
+<ul class="reveal">
+  <li><strong>Ripple</strong> — a surface disturbance. Quick filter sweep from above the current cutoff, decaying back down. Models the visual pattern of light interference moving across shallow water when a fish passes beneath.</li>
+  <li><strong>Pulse</strong> — bioluminescent. Slow bloom from zero to peak, sustained glow, then gentle fade. The pattern of deep-sea organisms that emit light to attract prey or signal mates across complete darkness.</li>
+  <li><strong>Flow</strong> — current reversal. Inverted envelope: the sound starts louder and decays with the gesture, simulating the pull of an undertow drawing water inward. Useful for creating sounds that feel like they're being drawn into something rather than projecting outward.</li>
+  <li><strong>Tide</strong> — wave crest. Maximum energy at impact, fast decay. The surge of a wave crashing over the reef crest: instantaneous full-force then rapid recession.</li>
+</ul>
+
+<p class="reveal">
+The gesture type interacts with the playing surface's zone assignment to produce different behaviors for pads, fretless, and drum mode. In drum mode, the gesture type determines the transient character of each hit. In fretless mode, the gesture response applies continuously as finger position changes. The same OBRIX preset can feel completely different in pad vs. drum mode because the gesture brick determines how the architecture responds to the physical act of playing.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">A Note on 81 Parameters</h2>
+
+<p class="reveal">
+It is easy to look at 81 parameters and feel that OBRIX is the complicated engine, the one for advanced users, the one you need to study before you can use. This is a reasonable reaction and it is wrong.
+</p>
+
+<p class="reveal">
+The factory library has 389 presets that cover a full range of sonic territory without you touching a single parameter. The four performance macros &mdash; CHARACTER, MOVEMENT, COUPLING, SPACE &mdash; cover most real-time performance needs across any preset. CHARACTER shapes the source blend and FM depth. MOVEMENT controls the modulation rate and drift. COUPLING adjusts the coupling input sensitivity for Reef Residency behaviors. SPACE manages the effect blend and spatial depth.
+</p>
+
+<p class="reveal">
+The 81 parameters are there for the person who wants to understand why a preset sounds the way it does &mdash; or who wants to build something the factory library doesn't contain. OBRIX is deep, not difficult. The distinction matters. Depth rewards time. Difficulty punishes beginners. OBRIX's normalled architecture means that a patch built on Wave 1 parameters &mdash; two sources, one filter, an ADSR, a reverb &mdash; will sound good immediately. The Wave 4 and Wave 5 layers are additions to a platform that works without them. You can use as much of the reef as you want.
+</p>
+
+<p class="reveal">
+The reef will be here when you're ready to go deeper.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
+<em>Engine: OBRIX | Accent: Reef Jade #1E8B7E | Blessing B016-AMENDED</em><br>
+<em>XO_OX Field Guide &mdash; Engine 19 | April 2026</em>
+</p>
+
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
