@@ -1,6 +1,8 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PolyBLEP.h"
 #include <array>
@@ -37,94 +39,11 @@ namespace xomnibus {
 //==============================================================================
 
 //==============================================================================
-// OrbweaveADSR — Identical to ObrixADSR pattern
+// OrbweaveADSR / OrbweaveLFO — Migrated to shared DSP utilities (2026-03-21).
+// Using aliases preserve all call-sites unchanged.
 //==============================================================================
-struct OrbweaveADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float aRate = 0.0f, dRate = 0.0f, sLevel = 1.0f, rRate = 0.0f;
-
-    void setParams (float a, float d, float s, float r, float sr) noexcept
-    {
-        aRate = (a > 0.001f) ? 1.0f / (a * sr) : 1.0f;
-        dRate = (d > 0.001f) ? 1.0f / (d * sr) : 1.0f;
-        sLevel = s;
-        rRate = (r > 0.001f) ? 1.0f / (r * sr) : 1.0f;
-    }
-    void noteOn() noexcept { stage = Stage::Attack; }
-    void noteOff() noexcept { if (stage != Stage::Idle) stage = Stage::Release; }
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle: return 0.0f;
-            case Stage::Attack:
-                level += aRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
-            case Stage::Decay:
-                level -= dRate * (level - sLevel + 0.0001f);
-                level = flushDenormal (level);
-                if (level <= sLevel + 0.0001f) { level = sLevel; stage = Stage::Sustain; }
-                return level;
-            case Stage::Sustain: return level;
-            case Stage::Release:
-                level -= rRate * (level + 0.0001f);
-                level = flushDenormal (level);
-                if (level <= 0.001f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
-        }
-        return 0.0f;
-    }
-};
-
-//==============================================================================
-// OrbweaveLFO — Sine / Triangle / Saw / Square / S&H
-//==============================================================================
-struct OrbweaveLFO
-{
-    static constexpr float kTwoPi = 6.28318530717958647692f;
-
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    int shape = 0;
-    float holdVal = 0.0f;
-    uint32_t rng = 12345u;
-
-    void setRate (float hz, float sr) noexcept { phaseInc = hz / sr; }
-    void reset() noexcept { phase = 0.0f; holdVal = 0.0f; }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-        switch (shape)
-        {
-            case 0: out = fastSin (phase * kTwoPi); break;
-            case 1: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
-            case 2: out = 2.0f * phase - 1.0f; break;
-            case 3: out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case 4:
-            {
-                float prev = phase - phaseInc;
-                if (prev < 0.0f || phase < prev)
-                {
-                    rng = rng * 1664525u + 1013904223u;
-                    holdVal = static_cast<float> (rng & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdVal;
-                break;
-            }
-        }
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-        return out;
-    }
-};
+using OrbweaveADSR = StandardADSR;
+using OrbweaveLFO  = StandardLFO;
 
 //==============================================================================
 // OrbweaveFXState — 3 independent FX slots (Delay / Chorus / Reverb)
