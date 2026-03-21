@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Tibetan Prayer Bowl",
+  "mood": "Atmosphere",
+  "engines": ["Oware"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Singing bowl meditation. Pure bowl material with maximum body depth, gentle Balinese shimmer, and an 8-second decay. LFO breathes so slowly it is felt rather than heard.",
+  "tags": ["tibetan", "bowl", "meditation", "singing", "slow", "spiritual", "shimmer"],
+  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 1.0,
+      "owr_malletHardness": 0.3,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.9,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.5,
+      "owr_shimmerRate": 2.8,
+      "owr_thermalDrift": 0.2,
+      "owr_brightness": 4000.0,
+      "owr_damping": 0.05,
+      "owr_decay": 8.0,
+      "owr_filterEnvAmount": 0.1,
+      "owr_bendRange": 2,
+      "owr_lfo1Rate": 0.01,
+      "owr_lfo1Depth": 0.1,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.005,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0,
+      "owr_macroMaterial": 0.5,
+      "owr_macroMallet": 0.3,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.9
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

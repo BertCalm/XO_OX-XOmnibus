@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Seven Pillars",
+  "mood": "Flux",
+  "engines": ["Oware"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "All 7 pillars active simultaneously — material continuum, mallet physics, sympathetic resonance, resonator body, buzz membrane, Balinese shimmer, and thermal drift. The engine at full expression.",
+  "tags": ["showcase", "complex", "all-pillars", "shimmer", "buzz", "sympathetic", "thermal", "full"],
+  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.75,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.5,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.5,
+      "owr_buzzAmount": 0.3,
+      "owr_sympathyAmount": 0.5,
+      "owr_shimmerRate": 5.0,
+      "owr_thermalDrift": 0.4,
+      "owr_brightness": 7500.0,
+      "owr_damping": 0.25,
+      "owr_decay": 2.8,
+      "owr_filterEnvAmount": 0.3,
+      "owr_bendRange": 2,
+      "owr_lfo1Rate": 0.25,
+      "owr_lfo1Depth": 0.2,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.07,
+      "owr_lfo2Depth": 0.25,
+      "owr_lfo2Shape": 0,
+      "owr_macroMaterial": 0.45,
+      "owr_macroMallet": 0.5,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.6
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

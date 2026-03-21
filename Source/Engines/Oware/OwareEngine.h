@@ -579,7 +579,9 @@ public:
                           * pThermal * 8.0f;  // max ±8 cents
             thermalTimer = 0;
         }
-        thermalState += 0.00001f * (thermalTarget - thermalState);  // very slow approach
+        // Guru Bin: 0.00001 was too slow — drift was frozen during fast passages.
+        // 0.0001 lets the drift breathe audibly within 4-second retarget windows.
+        thermalState += 0.0001f * (thermalTarget - thermalState);
 
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
@@ -825,7 +827,10 @@ public:
                             c.otherVoiceIdx = oi;
                             c.otherModeIdx = om;
                             c.thisModeIdx = m;
-                            c.gain = proximity * 0.03f;
+                            // Guru Bin: gain 0.03 was inaudible. 0.10 makes sympathetic
+                            // resonance justify its CPU cost — you can hear voices singing
+                            // to each other when they share mode frequencies.
+                            c.gain = proximity * 0.10f;
                         }
                     }
                 }
@@ -850,14 +855,18 @@ public:
         params.push_back (std::make_unique<PI> (juce::ParameterID { "owr_bodyType", 1 }, "Oware Body Type", 0, 3, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_bodyDepth", 1 }, "Oware Body Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+        // Guru Bin: buzz defaults to 0.15 — the mirliton is OWARE's most culturally
+        // distinctive feature. Defaulting to 0.0 hid the engine's identity.
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_buzzAmount", 1 }, "Oware Buzz Membrane",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_sympathyAmount", 1 }, "Oware Sympathy",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
 
         // Improvement #3: shimmer as beat frequency in Hz (Balinese gamelan model)
+        // Guru Bin: 6.0 Hz is aggressive. 4.0 Hz sits in the sweet spot for
+        // "ethereal gamelan" — traditional Balinese ombak range is 3-7 Hz.
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_shimmerRate", 1 }, "Oware Shimmer Beat Hz",
-            juce::NormalisableRange<float> (0.0f, 12.0f, 0.1f), 6.0f));
+            juce::NormalisableRange<float> (0.0f, 12.0f, 0.1f), 4.0f));
 
         // Improvement #5: thermal drift
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_thermalDrift", 1 }, "Oware Thermal Drift",

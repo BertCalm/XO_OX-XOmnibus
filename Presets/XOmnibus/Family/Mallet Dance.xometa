@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Mallet Dance",
+  "mood": "Family",
+  "engines": ["Oware"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Playful and velocity-responsive. Wood-bell material with a soft mallet that comes alive under a heavy hand. High filter env amount means soft touch = dark and round, hard touch = bright and sharp.",
+  "tags": ["playful", "velocity", "wood", "bell", "responsive", "dance", "expressive", "family"],
+  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.35,
+    "space": 0.35,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.3,
+      "owr_malletHardness": 0.2,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.35,
+      "owr_buzzAmount": 0.1,
+      "owr_sympathyAmount": 0.3,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.2,
+      "owr_brightness": 6500.0,
+      "owr_damping": 0.45,
+      "owr_decay": 1.2,
+      "owr_filterEnvAmount": 0.6,
+      "owr_bendRange": 2,
+      "owr_lfo1Rate": 0.005,
+      "owr_lfo1Depth": 0.0,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.005,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0,
+      "owr_macroMaterial": 0.3,
+      "owr_macroMallet": 0.2,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.35
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

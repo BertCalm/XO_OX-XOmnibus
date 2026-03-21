@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Bronze Abrammuo",
+  "mood": "Foundation",
+  "engines": ["Oware"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Akan gold weight struck with a metal rod. Full metal material, hard mallet, open body. Bright, ringing, and authoritative — the sound of trade and ceremony.",
+  "tags": ["akan", "bronze", "metal", "bell", "ringing", "bright", "authoritative"],
+  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.8,
+      "owr_malletHardness": 0.7,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.35,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.4,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.1,
+      "owr_brightness": 12000.0,
+      "owr_damping": 0.1,
+      "owr_decay": 4.0,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 2,
+      "owr_lfo1Rate": 0.005,
+      "owr_lfo1Depth": 0.0,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.005,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0,
+      "owr_macroMaterial": 0.8,
+      "owr_macroMallet": 0.7,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.45
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}

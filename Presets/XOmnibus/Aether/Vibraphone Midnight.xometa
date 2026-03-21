@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Vibraphone Midnight",
+  "mood": "Aether",
+  "engines": ["Oware"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Jazz club vibes after midnight. Bell-metal material with soft felt mallet, frame body, no shimmer and no buzz — just clean warm decay. Intimate, resolved, intimate.",
+  "tags": ["vibraphone", "jazz", "bell", "metal", "midnight", "clean", "warm", "intimate"],
+  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.62,
+    "movement": 0.1,
+    "density": 0.3,
+    "space": 0.55,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.55,
+      "owr_malletHardness": 0.35,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.4,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.15,
+      "owr_brightness": 5500.0,
+      "owr_damping": 0.2,
+      "owr_decay": 3.0,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 2,
+      "owr_lfo1Rate": 0.005,
+      "owr_lfo1Depth": 0.0,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.005,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0,
+      "owr_macroMaterial": 0.55,
+      "owr_macroMallet": 0.35,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.5
+    }
+  },
+  "coupling": null,
+  "sequencer": null
+}
