@@ -1252,12 +1252,21 @@ def generate_round_robin_dna(channels: List[List[float]], sr: int,
 def enhance(samples: List[SampleInfo], work_dir: str,
             num_round_robin: int = 4,
             num_velocity_layers: int = 4,
-            dna_inherit: bool = True) -> Dict[str, dict]:
+            dna_inherit: bool = True,
+            rebirth: bool = False,
+            rebirth_engine: str = "OBESE",
+            rebirth_intensity: float = 0.7,
+            rebirth_randomize: bool = True) -> Dict[str, dict]:
     """Stage 4: Generate velocity layers, round-robin, apply fade guards + DC removal.
 
     When dna_inherit is True and samples have inferred DNA, enhancement decisions
     (fade length, saturation, round-robin variation width, loop detection) are
     shaped by the sample's Sonic DNA fingerprint.
+
+    When rebirth is True, samples are reprocessed through XOmnibus-style DSP
+    transforms instead of preserving original character. Each round-robin
+    variation gets different randomized parameters within the engine profile's
+    ranges, creating natural variation like re-recording through analog gear.
     """
     enhanced_dir = os.path.join(work_dir, "enhanced")
     os.makedirs(enhanced_dir, exist_ok=True)
@@ -1289,7 +1298,22 @@ def enhance(samples: List[SampleInfo], work_dir: str,
         # For each velocity layer, generate round-robin variations
         layer_files = []
         for vel_idx, layer_channels in enumerate(vel_layers):
-            if dna_params:
+            if rebirth:
+                # Rebirth Mode: generate round-robin variations by applying
+                # the rebirth engine profile with different randomized params
+                rr_variations = []
+                for rr_idx in range(num_round_robin):
+                    rr_ch = [list(ch) for ch in layer_channels]
+                    # Each round-robin gets a unique seed for parameter randomization
+                    if rebirth_randomize:
+                        seed = hash((base_name, vel_idx, rr_idx))
+                    else:
+                        seed = hash((base_name, vel_idx, 0))
+                    rr_rng = random.Random(seed)
+                    rebirth_transform(s, rr_ch, sr, rebirth_engine, rr_rng,
+                                      intensity=rebirth_intensity)
+                    rr_variations.append(rr_ch)
+            elif dna_params:
                 rr_variations = generate_round_robin_dna(
                     layer_channels, sr, num_round_robin,
                     variation_width=dna_params.rr_variation_width,
@@ -1779,6 +1803,18 @@ def run_pipeline(args):
     resume = getattr(args, "resume", False)
     dna_inherit = getattr(args, "dna_inherit", True)
 
+    # Rebirth Mode
+    rebirth = getattr(args, "rebirth", False)
+    rebirth_engine = getattr(args, "rebirth_engine", "OBESE")
+    rebirth_intensity = getattr(args, "rebirth_intensity", 0.7)
+    rebirth_randomize = getattr(args, "rebirth_randomize", True)
+
+    if rebirth:
+        profile = REBIRTH_PROFILES.get(rebirth_engine)
+        profile_desc = profile["description"] if profile else "unknown"
+        print(f"  REBIRTH MODE: engine={rebirth_engine} ({profile_desc})")
+        print(f"  intensity={rebirth_intensity:.1f}, randomize={rebirth_randomize}")
+
     # Work directory: persistent if --work-dir specified, otherwise temporary
     explicit_work_dir = getattr(args, "work_dir", None)
     if explicit_work_dir:
@@ -1854,7 +1890,11 @@ def run_pipeline(args):
             programs = enhance(samples, work_dir,
                                num_round_robin=args.round_robin,
                                num_velocity_layers=args.velocity_layers,
-                               dna_inherit=dna_inherit)
+                               dna_inherit=dna_inherit,
+                               rebirth=rebirth,
+                               rebirth_engine=rebirth_engine,
+                               rebirth_intensity=rebirth_intensity,
+                               rebirth_randomize=rebirth_randomize)
             _mark_stage(work_dir, 4)
 
         # ── Stage 5: NORMALIZE ───────────────────────────────────────────────
@@ -1915,7 +1955,17 @@ Examples:
   # Resume an interrupted run
   python xoutshine.py --input pack.xpn --output upgraded.xpn --work-dir /tmp/xo_work --resume
 
+  # Rebirth Mode — reprocess through OBESE saturation engine
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth
+
+  # Rebirth with ORIGAMI wavefolding at full intensity
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth --rebirth-engine ORIGAMI --rebirth-intensity 1.0
+
+  # Rebirth with consistent (non-randomized) round-robin params
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth --no-rebirth-randomize
+
 Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
+Rebirth engines: OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB
         """)
 
     parser.add_argument("--input", "-i", required=True,
@@ -1951,6 +2001,21 @@ Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
     parser.add_argument("--no-dna-inherit", action="store_false", dest="dna_inherit",
                         help="Disable DNA Inheritance (use generic enhancement)")
     parser.add_argument("--version", action="version", version=f"XOutshine {VERSION}")
+
+    # Rebirth Mode flags
+    parser.add_argument("--rebirth", action="store_true",
+                        help="Enable Rebirth Mode: reprocess samples through XOmnibus-style "
+                             "DSP transforms instead of preserving original character")
+    parser.add_argument("--rebirth-engine", default="OBESE",
+                        choices=list(REBIRTH_PROFILES.keys()),
+                        help="Which engine profile to apply in Rebirth Mode (default: OBESE)")
+    parser.add_argument("--rebirth-intensity", type=float, default=0.7,
+                        help="Rebirth wet/dry blend: 0.0 = original, 1.0 = fully processed "
+                             "(default: 0.7)")
+    parser.add_argument("--rebirth-randomize", action=argparse.BooleanOptionalAction,
+                        default=True,
+                        help="Randomize transform parameters per round-robin variation "
+                             "(default: enabled)")
 
     args = parser.parse_args()
 
