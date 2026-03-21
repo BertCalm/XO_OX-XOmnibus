@@ -240,13 +240,20 @@ namespace xomnibus {
 XOmnibusProcessor::XOmnibusProcessor()
     : AudioProcessor(BusesProperties()
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
-      apvts(*this, nullptr, "XOmnibusParams", createParameterLayout())
+      apvts(*this, nullptr, "XOmnibusParams", createParameterLayout()),
+      couplingPresetManager(apvts, [this](int slot) -> juce::String {
+          auto* eng = getEngine(slot);
+          return eng ? eng->getEngineId() : juce::String{};
+      })
 {
     cacheParameterPointers();
 
     // Wire MIDI learn manager to the APVTS and install default CC mappings.
     midiLearnManager.setAPVTS(&apvts);
     midiLearnManager.loadDefaultMappings();
+
+    // Scan default coupling presets directory on startup.
+    couplingPresetManager.scanDirectory(CouplingPresetManager::getDefaultDirectory());
 }
 
 XOmnibusProcessor::~XOmnibusProcessor() = default;

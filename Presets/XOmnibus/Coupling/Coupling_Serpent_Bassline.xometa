@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "name": "Serpent Bassline",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Overbite"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS attractor velocity drives OVERBITE filter cutoff and pitch — chaos shapes the bass line. At M3 low the bass leads; at M3 full the attractor possesses the predator. Bass/lead genre showcase.",
+  "tags": ["coupled", "bass", "chaotic", "AmpToFilter", "AmpToPitch", "genre-bass-lead", "performance-demo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.40,
+    "movement": 0.75,
+    "density": 0.58,
+    "space": 0.28,
+    "aggression": 0.70
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_chaosDepth": 0.62,
+      "ouro_attractorType": 1,
+      "ouro_filterCutoff": 0.50,
+      "ouro_filterReso": 0.25,
+      "ouro_ampAttack": 0.005,
+      "ouro_ampDecay": 0.40,
+      "ouro_ampSustain": 0.65,
+      "ouro_ampRelease": 0.70,
+      "ouro_leashDepth": 0.50,
+      "ouro_outputLevel": 0.68,
+      "ouro_lfoRate": 0.18,
+      "ouro_orbitFreq": 1.50,
+      "ouro_reverbMix": 0.10
+    },
+    "Overbite": {
+      "poss_biteDepth": 0.58,
+      "poss_fmDepth": 0.35,
+      "poss_filterCutoff": 0.30,
+      "poss_filterReso": 0.48,
+      "poss_ampAttack": 0.005,
+      "poss_ampDecay": 0.55,
+      "poss_ampSustain": 0.60,
+      "poss_ampRelease": 0.70,
+      "poss_oscWave": 1,
+      "poss_outputLevel": 0.78,
+      "poss_reverbMix": 0.15,
+      "poss_delayMix": 0.10,
+      "poss_macroBelly": 0.55,
+      "poss_macroBite": 0.65,
+      "poss_macroScurry": 0.45,
+      "poss_macroTrash": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "AmpToFilter",
+        "amount": 0.50
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Overbite",
+        "type": "AmpToPitch",
+        "amount": 0.28
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.50,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 1,
+        "amount": 0.28,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -9,6 +9,7 @@
 #include "Core/MPEManager.h"
 #include "Core/MIDILearnManager.h"
 #include "Core/PresetManager.h"
+#include "Core/CouplingPresetManager.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
@@ -78,6 +79,9 @@ public:
     // SRO: CPU profiling and resource optimization report (UI thread safe)
     SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
 
+    // Coupling preset management — bake, save, load coupling presets (UI thread only)
+    CouplingPresetManager& getCouplingPresetManager() { return couplingPresetManager; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -98,6 +102,7 @@ private:
     MPEManager mpeManager;
     MIDILearnManager midiLearnManager;
     PresetManager presetManager;
+    CouplingPresetManager couplingPresetManager;
 
     // Engine slots — shared_ptr for atomic swap between message and audio threads.
     // The audio thread reads via atomic_load; the message thread writes via atomic_store.

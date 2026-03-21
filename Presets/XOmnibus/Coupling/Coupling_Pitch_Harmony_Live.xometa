@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "name": "Pitch Harmony Live",
+  "mood": "Entangled",
+  "engines": ["Odyssey", "Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "ODYSSEY pitch drives OBLONG in harmonic lock via PitchToPitch — play one key and two engines harmonize in real time. COUPLING macro dials from unison to one-octave spread. Live pitch harmony via the coupling system, not a chord machine.",
+  "tags": ["coupled", "pitch", "harmony", "PitchToPitch", "AmpToFilter", "performance", "advanced", "live-pitch", "performance-demo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.50,
+    "space": 0.62,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_level": 0.72,
+      "drift_filterCutoff": 0.58,
+      "drift_filterReso": 0.25,
+      "drift_ampAttack": 0.06,
+      "drift_ampDecay": 0.60,
+      "drift_ampSustain": 0.72,
+      "drift_ampRelease": 1.50,
+      "drift_lfoRate": 0.10,
+      "drift_lfoDepth": 0.20,
+      "drift_lfoShape": 0,
+      "drift_envDepth": 0.45,
+      "drift_outputLevel": 0.72,
+      "drift_reverbMix": 0.28,
+      "drift_journeyDepth": 0.40
+    },
+    "Oblong": {
+      "bob_fltCutoff": 0.55,
+      "bob_fltReso": 0.22,
+      "bob_oscWave": 0,
+      "bob_ampAttack": 0.06,
+      "bob_ampDecay": 0.65,
+      "bob_ampSustain": 0.70,
+      "bob_ampRelease": 1.60,
+      "bob_lfoRate": 0.08,
+      "bob_lfoDepth": 0.18,
+      "bob_envDepth": 0.42,
+      "bob_outputLevel": 0.68,
+      "bob_reverbMix": 0.32,
+      "bob_glide": 0.05,
+      "bob_transpose": 12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "PitchToPitch",
+        "amount": 0.50
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Oblong",
+        "type": "AmpToFilter",
+        "amount": 0.25
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 10,
+        "amount": 0.50,
+        "sourceSlot": 0,
+        "targetSlot": 1,
+        "midiCC": 3
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 0,
+        "amount": 0.25,
+        "sourceSlot": 0,
+        "targetSlot": 1,
+        "midiCC": 9
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "name": "Orbit Collapse",
+  "mood": "Entangled",
+  "engines": ["Ouroboros", "Onset"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OUROBOROS strange attractor amplitude and velocity drive ONSET filter, decay, and rhythm blend — deterministic chaos becomes percussion. The drum pattern is a chaotic orbit that never quite repeats.",
+  "tags": ["coupled", "chaotic", "percussion", "AmpToFilter", "EnvToDecay", "RhythmToBlend", "performance-demo", "essential"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.32,
+    "movement": 0.88,
+    "density": 0.62,
+    "space": 0.30,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosDepth": 0.70,
+      "ouro_attractorType": 0,
+      "ouro_filterCutoff": 0.55,
+      "ouro_filterReso": 0.30,
+      "ouro_ampAttack": 0.01,
+      "ouro_ampDecay": 0.35,
+      "ouro_ampSustain": 0.60,
+      "ouro_ampRelease": 0.80,
+      "ouro_leashDepth": 0.45,
+      "ouro_outputLevel": 0.72,
+      "ouro_lfoRate": 0.15,
+      "ouro_orbitFreq": 1.20,
+      "ouro_reverbMix": 0.15
+    },
+    "Onset": {
+      "perc_kickLevel": 0.80,
+      "perc_kickPunch": 0.65,
+      "perc_kickDecay": 0.30,
+      "perc_kickTone": 0.50,
+      "perc_snareLevel": 0.55,
+      "perc_snareSnap": 0.60,
+      "perc_snareDecay": 0.25,
+      "perc_hatLevel": 0.45,
+      "perc_hatDecay": 0.15,
+      "perc_noiseLevel": 0.35,
+      "perc_outputLevel": 0.78,
+      "perc_macroGather": 0.55,
+      "perc_reverbMix": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "AmpToFilter",
+        "amount": 0.72
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "EnvToDecay",
+        "amount": 0.48
+      },
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.38
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.72,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 9,
+        "amount": 0.48,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 3,
+        "active": true,
+        "type": 8,
+        "amount": 0.38,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

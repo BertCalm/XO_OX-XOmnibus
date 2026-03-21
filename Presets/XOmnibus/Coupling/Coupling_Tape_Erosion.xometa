@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "name": "Tape Erosion",
+  "mood": "Entangled",
+  "engines": ["Opal", "Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "OPAL grain cloud amplitude and rhythm modulate OVERDUB tape delay filter and blend — lo-fi granular decay shapes the echo room. Grain density determines tape brightness; grain rhythm drives delay mix. Lo-fi/textural genre showcase.",
+  "tags": ["coupled", "lo-fi", "textural", "delay", "AmpToFilter", "RhythmToBlend", "genre-lofi", "performance-demo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.45,
+    "space": 0.78,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 0.55,
+      "opal_grainDensity": 0.42,
+      "opal_grainPitch": -0.15,
+      "opal_grainSpread": 0.70,
+      "opal_grainPosition": 0.35,
+      "opal_filterCutoff": 0.45,
+      "opal_filterReso": 0.10,
+      "opal_ampAttack": 0.15,
+      "opal_ampDecay": 0.90,
+      "opal_ampSustain": 0.55,
+      "opal_ampRelease": 2.50,
+      "opal_outputLevel": 0.62,
+      "opal_reverbMix": 0.45,
+      "opal_lfoRate": 0.018,
+      "opal_lfoDepth": 0.28
+    },
+    "Overdub": {
+      "dub_oscWave": 2,
+      "dub_filterCutoff": 0.38,
+      "dub_filterReso": 0.18,
+      "dub_delayTime": 0.65,
+      "dub_delayFeedback": 0.55,
+      "dub_delayMix": 0.60,
+      "dub_reverbMix": 0.42,
+      "dub_ampAttack": 0.05,
+      "dub_ampDecay": 1.20,
+      "dub_ampSustain": 0.55,
+      "dub_ampRelease": 2.00,
+      "dub_outputLevel": 0.65,
+      "dub_sendAmount": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "AmpToFilter",
+        "amount": 0.68
+      },
+      {
+        "engineA": "Opal",
+        "engineB": "Overdub",
+        "type": "RhythmToBlend",
+        "amount": 0.45
+      }
+    ]
+  },
+  "performanceCoupling": {
+    "routes": [
+      {
+        "slot": 1,
+        "active": true,
+        "type": 0,
+        "amount": 0.68,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      },
+      {
+        "slot": 2,
+        "active": true,
+        "type": 8,
+        "amount": 0.45,
+        "sourceSlot": 0,
+        "targetSlot": 1
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -2049,16 +2049,47 @@ public:
 
         addAndMakeVisible (couplingStrip);
 
-        // ── BAKE button (placeholder) ──
+        // ── BAKE button ──
         addAndMakeVisible (bakeBtn);
         bakeBtn.setButtonText ("BAKE");
-        bakeBtn.setTooltip ("Coming soon — bake overlay into preset");
-        bakeBtn.setEnabled (false);
-        A11y::setup (bakeBtn, "Bake Coupling", "Save performance overlay into preset");
+        bakeBtn.setTooltip ("Save current coupling performance state as a reusable preset");
+        bakeBtn.setEnabled (true);
+        A11y::setup (bakeBtn, "Bake Coupling", "Save current coupling overlay as a coupling preset");
         bakeBtn.setColour (juce::TextButton::buttonColourId,
                            GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
         bakeBtn.setColour (juce::TextButton::textColourOffId,
                            GalleryColors::get (GalleryColors::xoGold));
+        bakeBtn.onClick = [this] { handleBake(); };
+
+        // ── CLEAR button — reset overlay to inactive ──
+        addAndMakeVisible (clearBtn);
+        clearBtn.setButtonText ("CLR");
+        clearBtn.setTooltip ("Clear all performance coupling routes");
+        A11y::setup (clearBtn, "Clear Coupling", "Deactivate all performance coupling routes");
+        clearBtn.setColour (juce::TextButton::buttonColourId,
+                            GalleryColors::get (GalleryColors::slotBg()));
+        clearBtn.setColour (juce::TextButton::textColourOffId,
+                            GalleryColors::get (GalleryColors::textMid()));
+        clearBtn.onClick = [this] {
+            processor.getCouplingPresetManager().clearOverlay();
+            couplingStrip.refresh();
+            repaint();
+        };
+
+        // ── Coupling preset selector dropdown ──
+        addAndMakeVisible (couplingPresetBox);
+        couplingPresetBox.setTextWhenNothingSelected ("Coupling Presets...");
+        couplingPresetBox.setTooltip ("Load a saved coupling preset");
+        A11y::setup (couplingPresetBox, "Coupling Preset Selector",
+                     "Choose a saved coupling performance preset to load");
+        couplingPresetBox.setColour (juce::ComboBox::backgroundColourId,
+                                     GalleryColors::get (GalleryColors::shellWhite()));
+        couplingPresetBox.setColour (juce::ComboBox::outlineColourId,
+                                     GalleryColors::get (GalleryColors::borderGray()));
+        couplingPresetBox.setColour (juce::ComboBox::textColourId,
+                                     GalleryColors::get (GalleryColors::textDark()));
+        couplingPresetBox.onChange = [this] { handleCouplingPresetSelected(); };
+        refreshCouplingPresetList();
 
         // ── Route sections (4 routes) ──
         for (int r = 0; r < kNumRoutes; ++r)
@@ -2168,6 +2199,24 @@ public:
         repaint();
     }
 
+    // Refresh the coupling preset dropdown from the CouplingPresetManager library.
+    void refreshCouplingPresetList()
+    {
+        couplingPresetBox.clear (juce::dontSendNotification);
+        auto& cpm = processor.getCouplingPresetManager();
+        auto names = cpm.getPresetNames();
+        if (names.isEmpty())
+        {
+            couplingPresetBox.setTextWhenNothingSelected ("No presets saved");
+        }
+        else
+        {
+            couplingPresetBox.setTextWhenNothingSelected ("Coupling Presets...");
+            for (int i = 0; i < names.size(); ++i)
+                couplingPresetBox.addItem (names[i], i + 1);
+        }
+    }
+
     void paint (juce::Graphics& g) override
     {
         using namespace GalleryColors;
@@ -2182,6 +2231,13 @@ public:
         g.setFont (GalleryFonts::display (14.0f));
         g.drawText ("PERFORMANCE VIEW", headerArea.reduced (12, 0),
                      juce::Justification::centredLeft);
+
+        // ── BAKE flash feedback ──
+        if (bakeFlashAlpha > 0.0f)
+        {
+            g.setColour (get (xoGold).withAlpha (bakeFlashAlpha));
+            g.fillRect (getLocalBounds().toFloat());
+        }
 
         // ── Separator between coupling strip and route panel ──
         auto body = getLocalBounds().withTrimmedTop (kHeaderH).withTrimmedBottom (kMacroStripH);
@@ -2233,7 +2289,10 @@ public:
 
         // ── Header ──
         auto header = area.removeFromTop (kHeaderH);
-        bakeBtn.setBounds (header.removeFromRight (60).reduced (8, 8));
+        bakeBtn.setBounds (header.removeFromRight (60).reduced (8, 6));
+        clearBtn.setBounds (header.removeFromRight (42).reduced (4, 6));
+        header.removeFromRight (4);  // spacing
+        couplingPresetBox.setBounds (header.removeFromRight (160).reduced (4, 6));
 
         // ── Macro strip at bottom ──
         auto macroArea = area.removeFromBottom (kMacroStripH).reduced (8, 4);
@@ -2315,6 +2374,138 @@ private:
         }
     }
 
+    //==========================================================================
+    // BAKE handler — capture overlay, prompt for name, save to disk
+    //==========================================================================
+    void handleBake()
+    {
+        auto& cpm = processor.getCouplingPresetManager();
+
+        // Quick check: is there anything to bake?
+        auto snapshot = cpm.bakeCurrent ("Preview");
+        if (!snapshot.hasActiveRoutes())
+        {
+            // Nothing to bake — flash the button red briefly as feedback
+            bakeBtn.setColour (juce::TextButton::buttonColourId, juce::Colour (0x40FF4444));
+            juce::Timer::callAfterDelay (400, [safeThis = juce::Component::SafePointer<PerformanceViewPanel> (this)] {
+                if (safeThis)
+                {
+                    safeThis->bakeBtn.setColour (juce::TextButton::buttonColourId,
+                        GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
+                    safeThis->repaint();
+                }
+            });
+            return;
+        }
+
+        // Show a name input dialog
+        auto* alertWindow = new juce::AlertWindow (
+            "Bake Coupling Preset",
+            "Enter a name for this coupling configuration:",
+            juce::MessageBoxIconType::NoIcon, this);
+        alertWindow->addTextEditor ("name", "Untitled Coupling", "Preset Name:");
+        alertWindow->addButton ("Save", 1, juce::KeyPress (juce::KeyPress::returnKey));
+        alertWindow->addButton ("Cancel", 0, juce::KeyPress (juce::KeyPress::escapeKey));
+
+        alertWindow->enterModalState (true, juce::ModalCallbackFunction::create (
+            [safeThis = juce::Component::SafePointer<PerformanceViewPanel> (this), alertWindow] (int result)
+            {
+                if (result == 1 && safeThis)
+                {
+                    auto presetName = alertWindow->getTextEditorContents ("name").trim();
+                    if (presetName.isEmpty())
+                        presetName = "Untitled Coupling";
+
+                    safeThis->performBake (presetName);
+                }
+                delete alertWindow;
+            }), false);
+    }
+
+    void performBake (const juce::String& presetName)
+    {
+        auto& cpm = processor.getCouplingPresetManager();
+
+        // Capture the current overlay state
+        auto state = cpm.bakeCurrent (presetName);
+        state.author = "User";
+
+        // Determine file path
+        auto dir = CouplingPresetManager::getDefaultDirectory();
+        auto sanitizedName = presetName.replaceCharacters (" /\\:*?\"<>|", "___________");
+        auto file = dir.getChildFile (sanitizedName + ".xocoupling");
+
+        // Handle name collisions — append a number if needed
+        int suffix = 1;
+        while (file.existsAsFile() && suffix < 100)
+        {
+            file = dir.getChildFile (sanitizedName + "_" + juce::String (suffix) + ".xocoupling");
+            ++suffix;
+        }
+
+        // Save to disk
+        if (cpm.saveToFile (file, state))
+        {
+            // Re-scan the library to pick up the new preset
+            cpm.scanDirectory (CouplingPresetManager::getDefaultDirectory());
+            refreshCouplingPresetList();
+
+            // Visual feedback — XO Gold flash
+            triggerBakeFlash();
+        }
+    }
+
+    //==========================================================================
+    // Coupling preset recall handler
+    //==========================================================================
+    void handleCouplingPresetSelected()
+    {
+        int selectedId = couplingPresetBox.getSelectedId();
+        if (selectedId <= 0)
+            return;
+
+        int index = selectedId - 1;
+        auto& cpm = processor.getCouplingPresetManager();
+        const auto* preset = cpm.getPreset (index);
+        if (preset)
+        {
+            cpm.loadBakedCoupling (*preset);
+            couplingStrip.refresh();
+            updateRouteLabels();
+            repaint();
+        }
+    }
+
+    //==========================================================================
+    // BAKE flash animation — brief XO Gold overlay that fades out
+    //==========================================================================
+    void triggerBakeFlash()
+    {
+        bakeFlashAlpha = 0.3f;
+        repaint();
+
+        // Fade out over 500ms using a timer callback chain
+        fadeOutBakeFlash();
+    }
+
+    void fadeOutBakeFlash()
+    {
+        juce::Timer::callAfterDelay (50, [safeThis = juce::Component::SafePointer<PerformanceViewPanel> (this)] {
+            if (!safeThis) return;
+
+            safeThis->bakeFlashAlpha -= 0.05f;
+            if (safeThis->bakeFlashAlpha <= 0.0f)
+            {
+                safeThis->bakeFlashAlpha = 0.0f;
+                safeThis->repaint();
+                return;
+            }
+
+            safeThis->repaint();
+            safeThis->fadeOutBakeFlash();
+        });
+    }
+
     static constexpr int kHeaderH     = 34;
     static constexpr int kMacroStripH = 80;
     static constexpr int kNumRoutes   = 4;
@@ -2328,6 +2519,11 @@ private:
 
     // Header controls
     juce::TextButton bakeBtn;
+    juce::TextButton clearBtn;
+    juce::ComboBox   couplingPresetBox;
+
+    // BAKE flash animation state
+    float bakeFlashAlpha = 0.0f;
 
     // Per-route controls
     struct RouteSection
