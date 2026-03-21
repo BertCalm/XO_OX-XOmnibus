@@ -237,6 +237,10 @@ XOmnibusProcessor::XOmnibusProcessor()
       apvts(*this, nullptr, "XOmnibusParams", createParameterLayout())
 {
     cacheParameterPointers();
+
+    // Wire MIDI learn manager to the APVTS and install default CC mappings.
+    midiLearnManager.setAPVTS(&apvts);
+    midiLearnManager.loadDefaultMappings();
 }
 
 XOmnibusProcessor::~XOmnibusProcessor() = default;
@@ -260,6 +264,12 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
+
+    cachedParams.mpeEnabled        = apvts.getRawParameterValue("mpe_enabled");
+    cachedParams.mpeZone           = apvts.getRawParameterValue("mpe_zone");
+    cachedParams.mpePitchBendRange = apvts.getRawParameterValue("mpe_pitchBendRange");
+    cachedParams.mpePressureTarget = apvts.getRawParameterValue("mpe_pressureTarget");
+    cachedParams.mpeSlideTarget    = apvts.getRawParameterValue("mpe_slideTarget");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -692,6 +702,24 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_onMix", 1), "Master Oneiric Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // MPE (MIDI Polyphonic Expression) — DAW-automatable per-project settings.
+    // Zone layout, pitch-bend range, and expression routing targets are
+    // exposed as APVTS parameters so hosts can save/recall them with the project.
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("mpe_enabled", 1), "MPE Enabled", false));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_zone", 1), "MPE Zone",
+        juce::StringArray{ "Off", "Lower", "Upper", "Both" }, 0));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mpe_pitchBendRange", 1), "MPE Pitch Bend Range (semitones)",
+        juce::NormalisableRange<float>(1.0f, 96.0f, 1.0f), 48.0f));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_pressureTarget", 1), "MPE Pressure Target",
+        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)", "Macro 2 (MOVEMENT)" }, 0));
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("mpe_slideTarget", 1), "MPE Slide Target",
+        juce::StringArray{ "Filter Cutoff", "Volume", "Wavetable", "FX Send", "Macro 1 (CHARACTER)", "Macro 2 (MOVEMENT)" }, 0));
+
     return { params.begin(), params.end() };
 }
 
@@ -796,6 +824,9 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     couplingMatrix.setEngines(enginePtrs);
 
+    // Process MIDI learn CC → parameter routing (audio thread safe)
+    midiLearnManager.processMidi(midi);
+
     // Sync Chord Machine state from cached parameter pointers (no hash lookups)
     chordMachine.setEnabled(cachedParams.cmEnabled->load() >= 0.5f);
     chordMachine.setPalette(static_cast<PaletteType>(
@@ -812,6 +843,20 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     chordMachine.setHumanize(cachedParams.cmHumanize->load());
     chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
     chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
+
+    // Sync MPE manager from cached APVTS parameters (no hash lookups)
+    if (cachedParams.mpeEnabled)
+    {
+        mpeManager.setMPEEnabled(cachedParams.mpeEnabled->load() >= 0.5f);
+        mpeManager.setZoneLayout(static_cast<MPEZoneLayout>(
+            static_cast<int>(cachedParams.mpeZone->load())));
+        mpeManager.setPitchBendRange(
+            static_cast<int>(cachedParams.mpePitchBendRange->load()));
+        mpeManager.setPressureTarget(static_cast<MPEManager::ExpressionTarget>(
+            static_cast<int>(cachedParams.mpePressureTarget->load())));
+        mpeManager.setSlideTarget(static_cast<MPEManager::ExpressionTarget>(
+            static_cast<int>(cachedParams.mpeSlideTarget->load())));
+    }
 
     // DAW host transport sync
     if (auto* playHead = getPlayHead())
@@ -1088,14 +1133,34 @@ void XOmnibusProcessor::getStateInformation(juce::MemoryBlock& destData)
     auto state = apvts.copyState();
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
+    {
+        // Persist MIDI learn mappings alongside APVTS state so DAW project
+        // recall restores CC → parameter assignments.
+        juce::String mappingsJson = juce::JSON::toString(midiLearnManager.toJSON());
+        xml->setAttribute("midiLearnMappings", mappingsJson);
         copyXmlToBinary(*xml, destData);
+    }
 }
 
 void XOmnibusProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
+    {
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
+
+        // Restore MIDI learn mappings; fall back to defaults if absent
+        // (e.g. projects saved before this feature was added).
+        if (xml->hasAttribute("midiLearnMappings"))
+        {
+            juce::var mappings = juce::JSON::parse(xml->getStringAttribute("midiLearnMappings"));
+            midiLearnManager.fromJSON(mappings);
+        }
+        else
+        {
+            midiLearnManager.loadDefaultMappings();
+        }
+    }
 }
 
 void XOmnibusProcessor::applyPreset(const PresetData& preset)

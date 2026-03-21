@@ -6,6 +6,7 @@
 #include "Core/MasterFXChain.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
+#include "Core/MIDILearnManager.h"
 #include "Core/PresetManager.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
@@ -69,6 +70,9 @@ public:
     // MPE Manager — per-note expression for Roli Seaboard, Linnstrument, Sensel, etc.
     MPEManager& getMPEManager() { return mpeManager; }
 
+    // MIDI Learn Manager — CC → parameter mapping with host automation support
+    MIDILearnManager& getMIDILearnManager() { return midiLearnManager; }
+
     // SRO: CPU profiling and resource optimization report (UI thread safe)
     SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
 
@@ -80,6 +84,7 @@ private:
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
+    MIDILearnManager midiLearnManager;
     PresetManager presetManager;
 
     // Engine slots — shared_ptr for atomic swap between message and audio threads.

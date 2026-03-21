@@ -176,17 +176,12 @@ public:
                 // Map CC value to parameter range
                 float paramValue = m.rangeMin + ccValue * (m.rangeMax - m.rangeMin);
 
-                if (auto* param = apvts->getRawParameterValue(m.paramId))
-                {
-                    // Use beginChangeGesture/endChangeGesture for host automation
-                    if (auto* p = apvts->getParameter(m.paramId))
-                    {
-                        p->beginChangeGesture();
-                        p->setValueNotifyingHost(
-                            p->convertTo0to1(paramValue));
-                        p->endChangeGesture();
-                    }
-                }
+                // Audio-thread safe: setValueNotifyingHost() only.
+                // beginChangeGesture/endChangeGesture are message-thread only
+                // (they signal host automation recording) — calling them here
+                // causes DAW crashes in Pro Tools, Logic, and Reaper.
+                if (auto* p = apvts->getParameter(m.paramId))
+                    p->setValueNotifyingHost(p->convertTo0to1(paramValue));
             }
         }
     }
@@ -263,14 +258,14 @@ public:
 
     void loadDefaultMappings()
     {
-        // CC1 Mod Wheel → M2: MOVEMENT
-        addMapping({ 1, 0, "macro_movement", 0.0f, 1.0f, false });
-        // CC2 Breath → M1: CHARACTER
-        addMapping({ 2, 0, "macro_character", 0.0f, 1.0f, false });
-        // CC11 Expression → M4: SPACE
-        addMapping({ 11, 0, "macro_space", 0.0f, 1.0f, false });
-        // CC74 Brightness → filter cutoff (routed via macro or direct)
-        addMapping({ 74, 0, "macro_character", 0.0f, 1.0f, false });
+        // CC1 Mod Wheel → macro2: MOVEMENT
+        addMapping({ 1, 0, "macro2", 0.0f, 1.0f, false });
+        // CC2 Breath → macro1: CHARACTER
+        addMapping({ 2, 0, "macro1", 0.0f, 1.0f, false });
+        // CC11 Expression → macro4: SPACE
+        addMapping({ 11, 0, "macro4", 0.0f, 1.0f, false });
+        // CC74 Brightness → macro1: CHARACTER (filter brightness proxy)
+        addMapping({ 74, 0, "macro1", 0.0f, 1.0f, false });
     }
 
     void setPerPresetDefault(bool perPreset) { perPresetDefault = perPreset; }
