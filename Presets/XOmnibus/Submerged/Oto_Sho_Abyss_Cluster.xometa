@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sho Abyss Cluster",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho pressed to maximum cluster density in deep water. All 11 aitake partials locked in sustained shimmer, filter barely open at low frequencies, slow pressure drift suggesting fathoms of weight above. A sound that doesn't travel — it presses.",
+  "tier": "awakening",
+  "tags": [
+    "submerged",
+    "sho",
+    "cluster",
+    "dark",
+    "sustained",
+    "deep",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.9,
+    "space": 0.75,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 1.0,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.3,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.45,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 1200.0,
+      "oto_filterRes": 0.25,
+      "oto_attack": 0.35,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.85,
+      "oto_release": 2.5,
+      "oto_lfo1Rate": 0.08,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.0,
+      "oto_macroB": 0.0,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.0
+    }
+  },
+  "tempo": null
+}

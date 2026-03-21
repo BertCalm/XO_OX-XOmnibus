@@ -264,20 +264,26 @@ struct HammondPercussion
 //
 // The Leslie speaker cabinet is inseparable from the Hammond sound. A
 // rotating horn (treble) and rotating drum/baffle (bass) create complex
-// amplitude modulation (tremolo), frequency modulation (Doppler pitch
-// shift), and spatial movement. The Leslie has three speeds: brake
-// (stopped), slow (chorale, ~0.7 Hz), and fast (tremolo, ~6.7 Hz).
-// The transition between speeds is NOT instant — the motor spins up
-// and spins down with physical inertia (ramp time ~1-3 seconds).
+// amplitude modulation (tremolo), true Doppler pitch shift, and spatial
+// movement. The Leslie has three speeds: brake (stopped), slow (chorale,
+// ~0.7 Hz), and fast (tremolo, ~6.7 Hz). The transition between speeds
+// is NOT instant — the motor spins up and spins down with physical
+// inertia (ramp time ~1-3 seconds).
 //
 // DSP model:
-//   - Horn rotation: fast AM (±6 dB) + Doppler pitch mod (±20 cents)
-//   - Drum rotation: slow AM (±3 dB) — bass frequencies, 90° phase offset
-//   - Speed ramping: one-pole smoothing on rotation rate (inertia)
-//   - Stereo imaging: horn and drum at different positions in stereo field
+//   - Frequency split: ~800 Hz crossover. Horn handles highs, drum handles lows.
+//   - Horn: AM (±6 dB) + TRUE Doppler via a short circular delay buffer.
+//     The horn rotation sine drives a time-varying read position. At 48kHz
+//     a 2048-sample buffer covers ~42ms, more than enough for the ±~15 cent
+//     Doppler shift at fast speed. Linear interpolation for fractional reads.
+//   - Drum: AM only (±3 dB), slower, no Doppler needed for low frequencies.
+//   - Speed ramping: one-pole smoothing on rotation rate (physical inertia).
+//   - Stereo imaging: horn and drum 90° phase offset between L/R ears.
 //==============================================================================
 struct LeslieSpeaker
 {
+    static constexpr int kDelayBufferSize = 2048;  // ~42ms at 48kHz, never heap-allocated
+
     void prepare (float sampleRate) noexcept
     {
         sr = sampleRate;
@@ -287,6 +293,19 @@ struct LeslieSpeaker
         currentDrumRate = 0.6f;
         // Speed ramp coefficient: ~1.5 second transition time
         speedRampCoeff = 1.0f - std::exp (-1.0f / (1.5f * sr));
+
+        // Clear delay buffers
+        delayBufL.fill (0.0f);
+        delayBufR.fill (0.0f);
+        delayWritePos = 0;
+
+        // One-pole crossover coefficient for ~800 Hz high-pass on horn path.
+        // Drum gets the low-pass complement.
+        // Using matched-Z: coeff = exp(-2*pi*fc/sr)
+        const float fc = 800.0f;
+        xoverCoeff = std::exp (-6.28318530f * fc / sr);
+        xoverStateL = 0.0f;
+        xoverStateR = 0.0f;
     }
 
     // leslieSpeed: 0.0 = brake, 0.5 = slow (chorale), 1.0 = fast (tremolo)
@@ -323,37 +342,83 @@ struct LeslieSpeaker
         if (depth < 0.001f)
             return { inputL, inputR };
 
-        // Ramp rotation speeds with physical inertia
+        // --- Frequency crossover ---
+        // One-pole low-pass gives the drum (bass) path.
+        // High-pass = input - low-pass gives the horn (treble) path.
+        xoverStateL += (1.0f - xoverCoeff) * (inputL - xoverStateL);
+        xoverStateR += (1.0f - xoverCoeff) * (inputR - xoverStateR);
+        xoverStateL = flushDenormal (xoverStateL);
+        xoverStateR = flushDenormal (xoverStateR);
+
+        float hornInL = inputL - xoverStateL;  // high-pass
+        float hornInR = inputR - xoverStateR;
+        float drumInL = xoverStateL;            // low-pass
+        float drumInR = xoverStateR;
+
+        // --- Ramp rotation speeds with physical inertia ---
         currentHornRate += (targetHornRate - currentHornRate) * speedRampCoeff;
         currentDrumRate += (targetDrumRate - currentDrumRate) * speedRampCoeff;
 
-        // Horn rotation — amplitude modulation + Doppler
+        // --- Horn: write current horn input into circular delay buffer ---
+        delayBufL[delayWritePos] = hornInL;
+        delayBufR[delayWritePos] = hornInR;
+
+        // True Doppler: horn rotation sine drives read position offset.
+        // Maximum delay offset for ±15-20 cents at fast speed:
+        //   20 cents ≈ ratio 1.01157 → fractional speed change ≈ 0.01157
+        //   At f=440 Hz, period ≈ sr/440 ≈ 109 samples at 48kHz.
+        //   We want the delay variation to produce the same pitch shift as
+        //   dd/dt = dopplerDepth → use delay modulation depth in samples.
+        //   At 6.7 Hz rotation: d/dt of delay = dopplerSamples * 2π * rotHz
+        //   For ±15 cents: ratio = pow2(15/1200) ≈ 1.00868
+        //   dopplerDepth = 1.00868 / (2π * 6.7) ≈ 0.02395 * sr / sr = sr * 0.00868 / (2π * 6.7)
+        //   ≈ 48000 * 0.00868 / 42.1 ≈ ~9.9 samples. We use 10 samples as depth.
+        //   This scales with speed (slower rate → same cents but longer period, same depth).
+        const float kDopplerDepthSamples = 10.0f;  // ±10 samples ≈ ±15 cents at fast speed
         float hornSin = fastSin (hornPhase * kTwoPi);
         float hornCos = fastCos (hornPhase * kTwoPi);
 
-        // Amplitude modulation: ±6 dB swing at full depth
-        float hornAM_L = 1.0f + hornSin * 0.5f * depth;  // left ear
-        float hornAM_R = 1.0f + hornCos * 0.5f * depth;  // right ear (90° offset)
+        // Compute fractional read position (delay behind write position)
+        // Base delay = half the buffer so we have room in both directions
+        float basedelay = 20.0f;
+        float dopplerOffset = hornSin * kDopplerDepthSamples * depth;
+        float readOffsetL = basedelay + dopplerOffset;
+        float readOffsetR = basedelay - dopplerOffset;  // 180° for stereo Doppler spread
 
-        // Doppler pitch modulation: stored as phase modulation
-        // ±20 cents at full depth ≈ ±0.012 frequency ratio
-        float dopplerMod = hornSin * 0.012f * depth;
+        // Fractional read via linear interpolation
+        auto readDelay = [&] (const std::array<float, kDelayBufferSize>& buf,
+                               float offset) -> float
+        {
+            float readPosF = static_cast<float> (delayWritePos) - offset;
+            while (readPosF < 0.0f) readPosF += static_cast<float> (kDelayBufferSize);
+            int r0 = static_cast<int> (readPosF) % kDelayBufferSize;
+            int r1 = (r0 + 1) % kDelayBufferSize;
+            float frac = readPosF - static_cast<float> (static_cast<int> (readPosF));
+            return buf[r0] + frac * (buf[r1] - buf[r0]);
+        };
 
-        // Drum rotation — bass AM, slower and less pronounced
+        float hornDopplerL = readDelay (delayBufL, readOffsetL);
+        float hornDopplerR = readDelay (delayBufR, readOffsetR);
+
+        // Advance write position
+        delayWritePos = (delayWritePos + 1) % kDelayBufferSize;
+
+        // Horn AM (added on top of Doppler, not replacing it)
+        // ±6 dB at full depth. L and R are 90° apart using sin/cos.
+        float hornAM_L = 1.0f + hornSin * 0.5f * depth;
+        float hornAM_R = 1.0f + hornCos * 0.5f * depth;
+
+        float hornOutL = hornDopplerL * hornAM_L;
+        float hornOutR = hornDopplerR * hornAM_R;
+
+        // --- Drum: AM only — no Doppler for low frequencies ---
         float drumSin = fastSin (drumPhase * kTwoPi);
         float drumCos = fastCos (drumPhase * kTwoPi);
         float drumAM_L = 1.0f + drumSin * 0.25f * depth;
         float drumAM_R = 1.0f + drumCos * 0.25f * depth;
 
-        // Combine: horn handles treble, drum handles bass
-        // We approximate this split by blending both AM curves
-        float totalAM_L = hornAM_L * 0.6f + drumAM_L * 0.4f;
-        float totalAM_R = hornAM_R * 0.6f + drumAM_R * 0.4f;
-
-        // Apply Doppler as slight allpass-like phase shift
-        // Simple first-order approximation: modulate the mix slightly
-        float dopplerL = inputL * (1.0f + dopplerMod);
-        float dopplerR = inputR * (1.0f - dopplerMod);
+        float drumOutL = drumInL * drumAM_L;
+        float drumOutR = drumInR * drumAM_R;
 
         // Advance phases
         hornPhase += currentHornRate / sr;
@@ -361,11 +426,11 @@ struct LeslieSpeaker
         drumPhase += currentDrumRate / sr;
         if (drumPhase >= 1.0f) drumPhase -= 1.0f;
 
-        float outL = dopplerL * totalAM_L;
-        float outR = dopplerR * totalAM_R;
+        // Recombine horn + drum
+        float outL = hornOutL + drumOutL;
+        float outR = hornOutR + drumOutR;
 
-        // Crossfeed: some of the horn signal leaks between channels
-        // (the Leslie cabinet is an enclosed space with reflections)
+        // Crossfeed: some of the cabinet reflections bleed between channels
         float crossfeed = 0.15f * depth;
         float cfL = outL + outR * crossfeed;
         float cfR = outR + outL * crossfeed;
@@ -379,6 +444,11 @@ struct LeslieSpeaker
         drumPhase = 0.25f;
         currentHornRate = 0.7f;
         currentDrumRate = 0.6f;
+        delayBufL.fill (0.0f);
+        delayBufR.fill (0.0f);
+        delayWritePos = 0;
+        xoverStateL = 0.0f;
+        xoverStateR = 0.0f;
     }
 
     float sr = 48000.0f;
@@ -386,6 +456,15 @@ struct LeslieSpeaker
     float currentHornRate = 0.7f, targetHornRate = 0.7f;
     float currentDrumRate = 0.6f, targetDrumRate = 0.6f;
     float speedRampCoeff = 0.001f;
+
+    // Doppler delay buffers — member-allocated, never on the audio thread heap
+    std::array<float, kDelayBufferSize> delayBufL = {};
+    std::array<float, kDelayBufferSize> delayBufR = {};
+    int delayWritePos = 0;
+
+    // Crossover one-pole state (~800 Hz split)
+    float xoverCoeff = 0.9f;
+    float xoverStateL = 0.0f, xoverStateR = 0.0f;
 
     static constexpr float kTwoPi = 6.28318530717958647692f;
 };
@@ -582,10 +661,13 @@ struct ZydecoReed
         float attackMs = 5.0f + (1.0f - velocity) * 10.0f;
         attackDecay = std::exp (-4.6f / (attackMs * 0.001f * sr));
 
-        // Two reeds detuned by 3-8 cents (musette tuning)
+        // Two reeds detuned symmetrically: Reed1 at -N cents, Reed2 at +N cents.
+        // N is 3-8 cents randomised per trigger. This gives symmetric musette
+        // beating centred on the true pitch, rather than always-sharp Reed2.
         detuneNoiseState = detuneNoiseState * 1664525u + 1013904223u;
-        float detuneCents = 3.0f + (static_cast<float> (detuneNoiseState & 0xFFFF) / 65536.0f) * 5.0f;
-        detuneRatio = fastPow2 (detuneCents / 1200.0f);
+        float halfDetuneCents = 3.0f + (static_cast<float> (detuneNoiseState & 0xFFFF) / 65536.0f) * 5.0f;
+        // detuneRatio stores the half-step ratio; applied as ÷ and × in process()
+        detuneRatio = fastPow2 (halfDetuneCents / 1200.0f);
 
         level = velocity;
     }
@@ -595,10 +677,11 @@ struct ZydecoReed
         if (!active) return 0.0f;
 
         float freq = baseFreq;
-        float phaseInc1 = freq / sr;
-        // Musette parameter scales the detune amount: 0 = unison, 1 = full musette beating
-        float effectiveDetune = 1.0f + (detuneRatio - 1.0f) * musetteAmount * 2.0f;
-        float phaseInc2 = (freq * effectiveDetune) / sr;
+        // Musette: Reed1 at -N cents, Reed2 at +N cents (symmetric around true pitch).
+        // musetteAmount scales the half-detune ratio: 0 = unison, 1 = full spread.
+        float halfRatio = 1.0f + (detuneRatio - 1.0f) * musetteAmount;
+        float phaseInc1 = (freq / halfRatio) / sr;   // flat by halfDetune cents
+        float phaseInc2 = (freq * halfRatio) / sr;   // sharp by halfDetune cents
 
         phase1 += phaseInc1;
         if (phase1 >= 1.0f) phase1 -= 1.0f;
@@ -947,7 +1030,12 @@ public:
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
                 // LFO1 → pitch modulation (vibrato)
-                freq *= PitchBendUtil::semitonesToFreqRatio (lfo1Val * 2.0f);
+                // Gate when harmonica (model 2): BluesHarpVoice has its own
+                // breath vibrato; adding engine LFO1 on top causes dual-vibrato
+                // beating. Reduce to 10% of depth so LFO1 still responds as a
+                // subtle modulation source without competing with breath vibrato.
+                float lfo1PitchVal = (organModel == 2) ? lfo1Val * 0.1f : lfo1Val;
+                freq *= PitchBendUtil::semitonesToFreqRatio (lfo1PitchVal * 2.0f);
 
                 // FM coupling input
                 freq += couplingFMMod * 100.0f;

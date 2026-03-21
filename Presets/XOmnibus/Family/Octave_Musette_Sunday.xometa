@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Musette Sunday",
+  "mood": "Family",
+  "engines": [
+    "Octave"
+  ],
+  "description": "French Musette at the village market — three reeds gently beating, warmth and life in every note. MOVEMENT pushes the bellows harder, COUPLING brings voices closer together into one breath.",
+  "tags": [
+    "organ",
+    "musette",
+    "accordion",
+    "family",
+    "warm",
+    "village",
+    "french"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.8,
+    "movement": 0.45,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.0,
+      "oct_chiff": 0.0,
+      "oct_detune": 0.35,
+      "oct_buzz": 0.08,
+      "oct_pressure": 0.72,
+      "oct_crosstalk": 0.1,
+      "oct_brightness": 7000.0,
+      "oct_registration": 0.45,
+      "oct_roomDepth": 0.15,
+      "oct_attack": 0.015,
+      "oct_decay": 0.8,
+      "oct_sustain": 0.88,
+      "oct_release": 0.4,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.08,
+      "oct_lfo1Depth": 0.07,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.5,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

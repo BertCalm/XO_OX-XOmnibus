@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Bandoneon Lament",
+  "mood": "Foundation",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon pull bellows — soft touch, dark warm triangle voice. The melancholic other side of the tango breath. Low velocity draws the pull bank: rounder, quieter, suffused with longing. The reed chamber whispers.",
+  "tags": [
+    "foundation",
+    "bandoneon",
+    "tango",
+    "pull",
+    "warm",
+    "melancholic",
+    "argentina"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.1,
+      "oleg_brightness": 4500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.55,
+      "oleg_detune": 22.0,
+      "oleg_formant": 0.4,
+      "oleg_attack": 0.025,
+      "oleg_release": 0.35,
+      "oleg_filterEnvAmt": 0.2,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.6,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.07,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.4,
+      "oleg_lfo2Depth": 0.06,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Bayan Depths",
+  "mood": "Submerged",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan concert accordion in the deeps — cassotto chamber at full depth, warm resonance suffused with cold pressure. Slow attack simulates bellows resistance underwater. The Bayan was not built for the ocean, but it adjusts. SPACE adds cassotto depth.",
+  "tags": [
+    "submerged",
+    "bayan",
+    "organ",
+    "dark",
+    "cassotto",
+    "deep",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.05,
+      "oleg_brightness": 3000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 10.0,
+      "oleg_formant": 0.3,
+      "oleg_attack": 0.08,
+      "oleg_release": 0.6,
+      "oleg_filterEnvAmt": 0.15,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.85,
+      "oleg_buzzThreshold": 0.6,
+      "oleg_wheelSpeed": 0.2,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.06,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.15,
+      "oleg_lfo2Depth": 0.08,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

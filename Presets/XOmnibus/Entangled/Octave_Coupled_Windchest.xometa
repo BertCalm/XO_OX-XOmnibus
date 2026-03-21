@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Coupled Windchest",
+  "mood": "Entangled",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Baroque Positiv organ with COUPLING macro at full — registers bleed into each other as if sharing a single windchest. The partial tables morph toward Cavaille-Coll warmth at high coupling values. Every voiced note affects its neighbors.",
+  "tags": [
+    "organ",
+    "baroque",
+    "entangled",
+    "coupling",
+    "crosstalk",
+    "blend"
+  ],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.55,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.2,
+      "oct_chiff": 0.5,
+      "oct_detune": 0.1,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.75,
+      "oct_crosstalk": 0.15,
+      "oct_brightness": 9000.0,
+      "oct_registration": 0.65,
+      "oct_roomDepth": 0.4,
+      "oct_attack": 0.01,
+      "oct_decay": 0.5,
+      "oct_sustain": 0.88,
+      "oct_release": 1.0,
+      "oct_filterEnvAmount": 0.2,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.7,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.1,
+      "oct_lfo1Depth": 0.08,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.008,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

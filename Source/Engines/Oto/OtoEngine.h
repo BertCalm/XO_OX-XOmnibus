@@ -46,6 +46,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PolyBLEP.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/FilterEnvelope.h"
 #include "../../DSP/GlideProcessor.h"
@@ -276,9 +277,18 @@ struct OtoVoice
     CytomicSVF svf;
     StandardLFO lfo1;
 
-    // Crossfade state for seamless organ switching
+    // Crossfade state for seamless organ model switching (~50ms linear crossfade)
     float prevOrganGain = 0.0f;
     int prevOrganModel = -1;
+    int crossfadeCounter = 0;    // counts down from crossfadeSamples to 0
+    int crossfadeSamples = 0;    // set to 50ms worth of samples when model changes
+    std::array<float, kMaxPartials> prevPartialPhases {};  // phase snapshot of old model
+
+    // Sustain pedal hold: voice stays active while CC64 is down
+    bool sustainHeld = false;
+
+    // BUG-2: PolyBLEP oscillator for Melodica fundamental (model 3)
+    PolyBLEP melodicaOsc;
 
     // Per-voice cached pan gains
     float panL = 0.707f, panR = 0.707f;
@@ -289,7 +299,12 @@ struct OtoVoice
         velocity = 0.0f;
         prevOrganGain = 0.0f;
         prevOrganModel = -1;
+        crossfadeCounter = 0;
+        crossfadeSamples = 0;
+        sustainHeld = false;
         partialPhases.fill (0.0f);
+        prevPartialPhases.fill (0.0f);
+        melodicaOsc.reset();
         glide.reset();
         chiff.reset();
         breath.reset();
@@ -353,6 +368,7 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
+        sustainPedalDown = false;
     }
 
     float getSampleForCoupling (int channel, int /*sampleIndex*/) const override
@@ -385,12 +401,59 @@ public:
         for (const auto metadata : midi)
         {
             const auto msg = metadata.getMessage();
-            if (msg.isNoteOn())          { noteOn (msg.getNoteNumber(), msg.getFloatVelocity()); wakeSilenceGate(); }
-            else if (msg.isNoteOff())    noteOff (msg.getNoteNumber());
-            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
-            else if (msg.isChannelPressure()) aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
-            else if (msg.isController() && msg.getControllerNumber() == 1)
-                modWheelAmount = msg.getControllerValue() / 127.0f;
+            if (msg.isNoteOn())
+            {
+                noteOn (msg.getNoteNumber(), msg.getFloatVelocity());
+                wakeSilenceGate();
+            }
+            else if (msg.isNoteOff())
+            {
+                // BUG-3: CC64 sustain pedal — hold voice while pedal is down
+                if (!sustainPedalDown)
+                    noteOff (msg.getNoteNumber());
+                else
+                    sustainNoteOff (msg.getNoteNumber());  // mark sustained, don't release
+            }
+            else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+            {
+                reset();
+                sustainPedalDown = false;
+            }
+            else if (msg.isPitchWheel())
+            {
+                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
+            }
+            else if (msg.isChannelPressure())
+            {
+                aftertouchAmount = msg.getChannelPressureValue() / 127.0f;
+            }
+            else if (msg.isController())
+            {
+                const int cc  = msg.getControllerNumber();
+                const int val = msg.getControllerValue();
+                if (cc == 1)   // mod wheel
+                {
+                    modWheelAmount = static_cast<float> (val) / 127.0f;
+                }
+                else if (cc == 64)  // CC64: Sustain pedal
+                {
+                    bool wasDown = sustainPedalDown;
+                    sustainPedalDown = (val >= 64);
+                    if (wasDown && !sustainPedalDown)
+                    {
+                        // Pedal released: release all voices that were held by the pedal
+                        for (auto& v : voices)
+                        {
+                            if (v.active && v.sustainHeld)
+                            {
+                                v.sustainHeld = false;
+                                v.ampEnv.release();
+                                v.filterEnv.release();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         // ---- SRO: silence gate bypass ----
@@ -542,66 +605,145 @@ public:
                     competitionScale = std::max (competitionScale, 0.2f);
                 }
 
-                // ---- Additive synthesis: sum partials ----
-                float signal = 0.0f;
-                int numPartials = static_cast<int> (1.0f + clusterNow * static_cast<float> (activePartials - 1));
-                numPartials = std::clamp (numPartials, 1, activePartials);
-
-                for (int p = 0; p < numPartials; ++p)
+                // ---- BUG-1: Organ crossfade — detect model change and initiate 50ms fade ----
+                if (voice.prevOrganModel == -1)
                 {
-                    float ratio = ratios[p];
-                    if (ratio < 0.001f) continue;  // skip zero-ratio partials (Melodica)
-
-                    float partialFreq = freq * ratio;
-
-                    // Unison detune: slight beating between partials
-                    if (p > 0 && detuneNow > 0.001f)
-                    {
-                        // Per-partial deterministic detune offset
-                        float detuneOffset = (static_cast<float> (p) - 0.5f * static_cast<float> (numPartials))
-                                           * detuneNow * 0.5f;  // max +/-2.5 Hz at full detune
-                        partialFreq += detuneOffset;
-                    }
-
-                    // Accumulate phase
-                    float phaseInc = partialFreq / srf;
-                    voice.partialPhases[p] += phaseInc;
-                    if (voice.partialPhases[p] >= 1.0f)
-                        voice.partialPhases[p] -= 1.0f;
-
-                    float partialSample;
-                    if (organModel == 3 && p == 0)
-                    {
-                        // Melodica fundamental: use sawtooth for reedier character
-                        partialSample = 2.0f * voice.partialPhases[p] - 1.0f;
-                    }
-                    else
-                    {
-                        partialSample = fastSin (voice.partialPhases[p] * kTwoPi);
-                    }
-
-                    // Apply partial amplitude with cluster density fadeout
-                    float ampScale = amps[p];
-                    if (p >= numPartials - 1 && numPartials < activePartials)
-                    {
-                        // Smooth fade for the last partial based on fractional cluster density
-                        float frac = (clusterNow * static_cast<float> (activePartials - 1))
-                                   - static_cast<float> (numPartials - 1);
-                        ampScale *= std::clamp (frac, 0.0f, 1.0f);
-                    }
-
-                    signal += partialSample * ampScale;
+                    // First sample for this voice: initialise with no crossfade
+                    voice.prevOrganModel = organModel;
+                    voice.crossfadeCounter = 0;
+                    voice.crossfadeSamples = 0;
+                }
+                else if (voice.prevOrganModel != organModel && voice.crossfadeCounter == 0)
+                {
+                    // Model just changed: snapshot prev phases and start crossfade
+                    voice.prevPartialPhases = voice.partialPhases;
+                    voice.crossfadeSamples = static_cast<int> (0.050f * srf);  // 50ms
+                    voice.crossfadeCounter = voice.crossfadeSamples;
+                    voice.prevOrganGain = 1.0f;
                 }
 
-                // Normalize by partial count to prevent clipping
-                if (numPartials > 1)
-                    signal /= std::sqrt (static_cast<float> (numPartials));
-
-                // ---- Buzz / reed waveshaping (Khene gets more) ----
-                if (buzzNow > 0.001f)
+                // Helper lambda: synthesise one model into a signal value.
+                // Uses voice.prevPartialPhases for old model, voice.partialPhases for current.
+                auto synthesiseModel = [&] (int model, bool usePrev) -> float
                 {
-                    float buzzGain = (organModel == 2) ? buzzNow * 8.0f : buzzNow * 4.0f;
-                    signal = fastTanh (signal * (1.0f + buzzGain));
+                    const float* mRatios = nullptr;
+                    const float* mAmps   = nullptr;
+                    int mPartials = 11;
+                    switch (model)
+                    {
+                        case 0: mRatios = kShoAitakeRatios; mAmps = kShoAmps;     mPartials = 11; break;
+                        case 1: mRatios = kShengRatios;      mAmps = kShengAmps;   mPartials = 11; break;
+                        case 2: mRatios = kKheneRatios;      mAmps = kKheneAmps;   mPartials = 11; break;
+                        default: mRatios = kMelodicaRatios;  mAmps = kMelodicaAmps; mPartials = 8; break;
+                    }
+
+                    int nP = static_cast<int> (1.0f + clusterNow * static_cast<float> (mPartials - 1));
+                    nP = std::clamp (nP, 1, mPartials);
+
+                    float sig = 0.0f;
+                    auto& phases = usePrev ? voice.prevPartialPhases : voice.partialPhases;
+
+                    for (int p = 0; p < nP; ++p)
+                    {
+                        float ratio = mRatios[p];
+                        if (ratio < 0.001f) continue;
+
+                        float partialFreq = freq * ratio;
+                        if (p > 0 && detuneNow > 0.001f)
+                        {
+                            float detuneOffset = (static_cast<float> (p) - 0.5f * static_cast<float> (nP))
+                                               * detuneNow * 0.5f;
+                            partialFreq += detuneOffset;
+                        }
+
+                        float phaseInc = partialFreq / srf;
+                        phases[p] += phaseInc;
+                        if (phases[p] >= 1.0f) phases[p] -= 1.0f;
+
+                        float partialSample;
+                        if (model == 3 && p == 0)
+                        {
+                            // BUG-2: Melodica fundamental — PolyBLEP anti-aliased sawtooth
+                            // (only for current model; prev-model phases use simple saw for
+                            //  the brief crossfade window to avoid PolyBLEP state issues)
+                            if (!usePrev)
+                            {
+                                voice.melodicaOsc.setFrequency (partialFreq, srf);
+                                voice.melodicaOsc.setWaveform (PolyBLEP::Waveform::Saw);
+                                partialSample = voice.melodicaOsc.processSample();
+                            }
+                            else
+                            {
+                                // During crossfade out of old Melodica model: simple saw is fine
+                                // (transient is already fading to silence)
+                                partialSample = 2.0f * phases[p] - 1.0f;
+                            }
+                        }
+                        else
+                        {
+                            partialSample = fastSin (phases[p] * kTwoPi);
+                        }
+
+                        float ampScale = mAmps[p];
+                        if (p >= nP - 1 && nP < mPartials)
+                        {
+                            float frac = (clusterNow * static_cast<float> (mPartials - 1))
+                                       - static_cast<float> (nP - 1);
+                            ampScale *= std::clamp (frac, 0.0f, 1.0f);
+                        }
+                        sig += partialSample * ampScale;
+                    }
+                    if (nP > 1) sig /= std::sqrt (static_cast<float> (nP));
+                    return sig;
+                };
+
+                // ---- Synthesise current model ----
+                float signal = synthesiseModel (organModel, false);
+
+                if (voice.crossfadeCounter > 0)
+                {
+                    // Linear crossfade: new model fades in, old model fades out.
+                    // Apply buzz per-branch before blending so timbral character
+                    // of each model is preserved throughout the transition.
+                    float fadeIn  = 1.0f - static_cast<float> (voice.crossfadeCounter)
+                                              / static_cast<float> (voice.crossfadeSamples);
+                    float fadeOut = 1.0f - fadeIn;
+
+                    // Buzz the new-model signal
+                    if (buzzNow > 0.001f)
+                    {
+                        float newBuzzGain = (organModel == 2) ? buzzNow * 8.0f : buzzNow * 4.0f;
+                        signal = fastTanh (signal * (1.0f + newBuzzGain));
+                    }
+
+                    float oldSignal = synthesiseModel (voice.prevOrganModel, true);
+
+                    // Buzz the old-model signal with its own scale
+                    if (buzzNow > 0.001f)
+                    {
+                        float oldBuzzGain = (voice.prevOrganModel == 2) ? buzzNow * 8.0f : buzzNow * 4.0f;
+                        oldSignal = fastTanh (oldSignal * (1.0f + oldBuzzGain));
+                    }
+
+                    signal = oldSignal * fadeOut + signal * fadeIn;
+
+                    --voice.crossfadeCounter;
+                    if (voice.crossfadeCounter == 0)
+                    {
+                        // Crossfade complete: commit new model
+                        voice.prevOrganModel = organModel;
+                        voice.prevOrganGain = 0.0f;
+                    }
+                }
+                else
+                {
+                    // Steady-state: apply buzz to the final signal and keep model in sync
+                    if (buzzNow > 0.001f)
+                    {
+                        float buzzGain = (organModel == 2) ? buzzNow * 8.0f : buzzNow * 4.0f;
+                        signal = fastTanh (signal * (1.0f + buzzGain));
+                    }
+                    voice.prevOrganModel = organModel;
                 }
 
                 // ---- Chiff transient ----
@@ -679,11 +821,26 @@ public:
         organModel = std::clamp (organModel, 0, 3);
 
         v.active = true;
+        v.sustainHeld = false;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
         v.glide.snapTo (freq);
         v.partialPhases.fill (0.0f);
+        v.prevPartialPhases.fill (0.0f);
+        v.crossfadeCounter = 0;
+        v.crossfadeSamples = 0;
+        v.prevOrganGain = 0.0f;
+        v.prevOrganModel = -1;  // will be initialised on first render sample
+
+        // BUG-2: Reset PolyBLEP oscillator for Melodica model (phase continuity per note)
+        v.melodicaOsc.reset();
+        if (organModel == 3)
+        {
+            float freq0 = freq;  // fundamental
+            v.melodicaOsc.setFrequency (freq0, srf);
+            v.melodicaOsc.setWaveform (PolyBLEP::Waveform::Saw);
+        }
 
         // Amp envelope -- organ-specific attack characteristics
         float attack, decay, sustain, release;
@@ -751,11 +908,21 @@ public:
     {
         for (auto& v : voices)
         {
-            if (v.active && v.currentNote == note)
+            if (v.active && v.currentNote == note && !v.sustainHeld)
             {
                 v.ampEnv.release();
                 v.filterEnv.release();
             }
+        }
+    }
+
+    // BUG-3: Mark voice as sustained (pedal held) without releasing envelope
+    void sustainNoteOff (int note) noexcept
+    {
+        for (auto& v : voices)
+        {
+            if (v.active && v.currentNote == note)
+                v.sustainHeld = true;
         }
     }
 
@@ -863,6 +1030,7 @@ private:
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;
     float aftertouchAmount = 0.0f;
+    bool sustainPedalDown = false;  // BUG-3: CC64 sustain pedal state
 
     // Crosstalk: last block's per-voice outputs
     std::array<float, kMaxVoices> lastVoiceOutputs {};

@@ -325,6 +325,10 @@ public:
         smoothBrightness.prepare (srf);
         smoothRegistration.prepare (srf);
 
+        // P2: Post-mix room resonance (single instance replaces per-voice models)
+        postMixRoomL.prepare (srf);
+        postMixRoomR.prepare (srf);
+
         // Organ sustains — long tail
         prepareSilenceGate (sr, 512, 500.0f);
     }
@@ -334,6 +338,8 @@ public:
     void reset() override
     {
         for (auto& v : voices) v.reset();
+        postMixRoomL.reset();
+        postMixRoomR.reset();
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
@@ -435,6 +441,13 @@ public:
                                                 + couplingFilterMod, 200.0f, 20000.0f);
         float effectiveRoomDepth = std::clamp (pRoomDepth + macroSpace * 0.4f, 0.0f, 1.0f);
 
+        // D004-1: COUPLING macro → effective crosstalk amount.
+        // More coupling = more bleed between adjacent-voice registers,
+        // turning the organ into a tighter polyphonic body (like multiple
+        // ranks sharing a single windchest).
+        float effectiveCrosstalk = std::clamp (pCrosstalk + macroCoupling * 0.5f
+                                               + couplingOrganMod * 0.3f, 0.0f, 1.0f);
+
         // Model-dependent attack time weighting:
         // Cavaille-Coll: MASSIVE — slow attack (pAttack * 3)
         // Baroque: medium (pAttack * 1.5)
@@ -451,9 +464,19 @@ public:
         smoothDetune.set (pDetune);
         smoothBuzz.set (pBuzz);
         smoothPressure.set (effectivePressure);
-        smoothCrosstalk.set (pCrosstalk);
+        smoothCrosstalk.set (effectiveCrosstalk);   // D004-1: uses macro + coupling mod
         smoothBrightness.set (effectiveBrightness);
         smoothRegistration.set (effectiveRegistration);
+
+        // D004-2: organ morph blend — interpolates partial tables between
+        // Cavaille-Coll (dark, symphonic) and Baroque (bright, transparent).
+        // EnvToMorph coupling drives this; macroCharacter provides manual control.
+        // Positive = shift toward Baroque, negative = deepen toward CC.
+        // Clamped to [0,1] so it works as a lerp factor.
+        const float organMorphBlend = std::clamp (
+            std::abs (couplingOrganMod) * 1.5f + macroCharacter * 0.3f, 0.0f, 1.0f);
+        // When couplingOrganMod < 0, morph direction reverses (CC→Baroque vs Baroque→CC)
+        const bool morphToBright = (couplingOrganMod >= 0.0f);
 
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -521,8 +544,16 @@ public:
                             float partialFreq = freq * harmonicNum;
                             if (partialFreq > srf * 0.49f) break;
 
+                            // D004-2: organ morph — blend CC partial amps toward Baroque
+                            // when coupling (EnvToMorph) or CHARACTER macro drives morphBlend.
+                            // morphToBright=true: CC→Baroque (lighter, more presence)
+                            // morphToBright=false: CC stays darker (deepens the cave)
+                            float baseAmp = morphToBright
+                                ? lerp (kCCPartialAmps[p], kBaroquePartialAmps[p], organMorphBlend)
+                                : kCCPartialAmps[p] * (1.0f + organMorphBlend * 0.3f); // deepen
+
                             // Registration: blend 8', 4', 2' ranks
-                            float regAmp = kCCPartialAmps[p];
+                            float regAmp = baseAmp;
                             if (p >= 0 && p < 4)  regAmp *= lerp (0.5f, 1.0f, regNow);  // 8' rank
                             if (p >= 4 && p < 8)  regAmp *= regNow * kRegistration4ft;   // 4' rank
                             if (p >= 8 && p < 12) regAmp *= regNow * kRegistration2ft;   // 2' rank
@@ -548,8 +579,7 @@ public:
                         // Chiff transient (subtle for Cavaille-Coll — more of a "bloom")
                         sample += voice.chiff.process() * 0.3f;
 
-                        // Room resonance — cathedral reverb
-                        sample = voice.room.process (sample, effectiveRoomDepth);
+                        // Room resonance moved to post-mix (P2 CPU optimization)
                         break;
                     }
 
@@ -563,7 +593,13 @@ public:
                             float partialFreq = freq * harmonicNum;
                             if (partialFreq > srf * 0.49f) break;
 
-                            float regAmp = kBaroquePartialAmps[p];
+                            // D004-2: organ morph — blend Baroque partial amps toward CC
+                            // morphToBright=false means we deepen Baroque (toward CC)
+                            float baseAmp = (!morphToBright)
+                                ? lerp (kBaroquePartialAmps[p], kCCPartialAmps[p], organMorphBlend)
+                                : kBaroquePartialAmps[p];
+
+                            float regAmp = baseAmp;
                             // Baroque: Principal (8') and Flute (4') blend via registration
                             if (p < 4) regAmp *= lerp (0.6f, 1.0f, regNow);
                             else regAmp *= 0.5f + regNow * 0.5f;
@@ -585,8 +621,7 @@ public:
                         // Prominent chiff — the defining character of Baroque organs
                         sample += voice.chiff.process() * chiffNow * 1.5f;
 
-                        // Lighter room (smaller Positiv case)
-                        sample = voice.room.process (sample, effectiveRoomDepth * 0.5f);
+                        // Room resonance moved to post-mix (P2 CPU optimization)
                         break;
                     }
 
@@ -694,6 +729,21 @@ public:
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
+            }
+
+            // P2: Post-mix room resonance — single cathedral model instead of 8.
+            // Baroque uses half depth (smaller positiv case); Farfisa stays dry.
+            // roomModelScale: 0=CC(full), 1=Baroque(0.5), 2=Musette(0.25), 3=Farfisa(0)
+            static constexpr float kRoomScales[4] = { 1.0f, 0.5f, 0.25f, 0.0f };
+            float roomScale = kRoomScales[std::clamp (organModel, 0, 3)];
+            float roomMix = effectiveRoomDepth * roomScale;
+            if (roomMix > 0.001f)
+            {
+                // Apply same room to both channels (mono room is fine for cathedral)
+                float roomedL = postMixRoomL.process (mixL, roomMix);
+                float roomedR = postMixRoomR.process (mixR, roomMix);
+                mixL = roomedL;
+                mixR = roomedR;
             }
 
             outL[s] = mixL;
@@ -904,6 +954,9 @@ private:
 
     ParameterSmoother smoothCluster, smoothChiff, smoothDetune, smoothBuzz;
     ParameterSmoother smoothPressure, smoothCrosstalk, smoothBrightness, smoothRegistration;
+
+    // P2: Single post-mix room resonance (replaces 8 per-voice instances)
+    OctaveRoomResonance postMixRoomL, postMixRoomR;
 
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;

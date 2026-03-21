@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Oto Khene Drift Macro",
+  "mood": "Flux",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene bamboo pipes in flux — paired-pipe beating drifts with breath instability and an active LFO. MOVEMENT macro raises the flutter toward trance; CHARACTER pushes buzz hard for raw Isan folk energy. The reed has been played for hours. It is exhausted and alive.",
+  "tier": "awakening",
+  "tags": [
+    "flux",
+    "khene",
+    "folk",
+    "buzzy",
+    "macro",
+    "drone",
+    "trance",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.3,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.35,
+      "oto_detune": 0.2,
+      "oto_buzz": 0.15,
+      "oto_pressure": 0.3,
+      "oto_crosstalk": 0.1,
+      "oto_filterCutoff": 6500.0,
+      "oto_filterRes": 0.18,
+      "oto_attack": 0.015,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.7,
+      "oto_release": 0.25,
+      "oto_lfo1Rate": 1.2,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.15,
+      "oto_macroA": 0.0,
+      "oto_macroB": 0.0,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.0
+    }
+  },
+  "tempo": null
+}

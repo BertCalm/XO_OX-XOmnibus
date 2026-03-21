@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Oto Melodica Sunday",
+  "mood": "Family",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Warm melodica on a slow Sunday morning. Gentle sawtooth reed through a dark filter, soft chiff transient, minimal pressure wobble. The kind of instrument left on the kitchen table — picked up, played, set back down. Intimate and unhurried.",
+  "tier": "awakening",
+  "tags": [
+    "family",
+    "melodica",
+    "warm",
+    "intimate",
+    "lo-fi",
+    "gentle",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.88,
+    "movement": 0.18,
+    "density": 0.28,
+    "space": 0.35,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.45,
+      "oto_chiff": 0.25,
+      "oto_detune": 0.08,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.25,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 3800.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.06,
+      "oto_decay": 0.5,
+      "oto_sustain": 0.8,
+      "oto_release": 0.45,
+      "oto_lfo1Rate": 0.12,
+      "oto_lfo1Depth": 0.08,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.0,
+      "oto_macroB": 0.0,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.0
+    }
+  },
+  "tempo": null
+}

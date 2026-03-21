@@ -69,6 +69,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PolyBLEP.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/FilterEnvelope.h"
 #include "../../DSP/GlideProcessor.h"
@@ -278,6 +279,11 @@ struct OlegBuzzBridge
 //==============================================================================
 struct OlegReedOscillator
 {
+    // PolyBLEP oscillators for anti-aliased sawtooth and square waveforms.
+    // Bayan uses saw1/saw2, Garmon uses sq1/sq2, HurdyGurdy melody is saw1.
+    // Drone strings remain as naive phase accumulators (sub-Nyquist at their pitch).
+    PolyBLEP saw1, saw2, sq1, sq2;
+
     void reset() noexcept
     {
         phase1 = 0.0f;
@@ -285,6 +291,8 @@ struct OlegReedOscillator
         phase3 = 0.0f;
         drone1Phase = 0.0f;
         drone2Phase = 0.0f;
+        saw1.reset(); saw2.reset();
+        sq1.reset();  sq2.reset();
     }
 
     // Generate one sample for the given model.
@@ -310,39 +318,43 @@ struct OlegReedOscillator
         {
             case OlegOrganModel::Bayan:
             {
-                // Rich saw + pulse mix, 2 detuned oscillators
-                // Bayan reeds produce a warm, full saw-like wave with
-                // strong low harmonics from the cassotto chamber
-                float saw1 = 2.0f * phase1 - 1.0f;
-                float saw2 = 2.0f * phase2 - 1.0f;
+                // Rich saw + asymmetric pulse mix, 2 detuned oscillators.
+                // PolyBLEP anti-aliased sawtooth fixes aliasing above A4-A5.
+                saw1.setWaveform (PolyBLEP::Waveform::Saw);
+                saw2.setWaveform (PolyBLEP::Waveform::Saw);
+                saw1.setFrequency (freq, sampleRate);
+                saw2.setFrequency (freq * detuneFactor, sampleRate);
+                float sawOut1 = saw1.processSample();
+                float sawOut2 = saw2.processSample();
 
-                // Pulse component (reed opening/closing asymmetry)
-                float pulse1 = (phase1 < 0.45f) ? 1.0f : -1.0f;
-
-                out = (saw1 * 0.4f + saw2 * 0.3f + pulse1 * 0.3f);
-
+                // Pulse component (reed opening/closing asymmetry).
+                // Naive phase accumulator is acceptable here — it provides a low-level
+                // body component that adds reed texture without the sharp discontinuities.
                 phase1 += inc1;
-                phase2 += inc2;
                 if (phase1 >= 1.0f) phase1 -= 1.0f;
-                if (phase2 >= 1.0f) phase2 -= 1.0f;
+                float pulse1 = (phase1 < 0.45f) ? 1.0f : -1.0f; // asymmetric reed gate
+
+                out = sawOut1 * 0.4f + sawOut2 * 0.3f + pulse1 * 0.3f;
                 break;
             }
 
             case OlegOrganModel::HurdyGurdy:
             {
-                // Melody string: sawtooth-like (wheel-bowed string)
-                // The wheel continuously excites the string — no attack transient,
-                // continuous sustain. Slight vibrato from wheel irregularity.
+                // Melody string: wheel-bowed sawtooth with vibrato.
+                // PolyBLEP saw for the melody (main aliasing offender above A4).
+                // Drone strings remain as naive saws — they pitch-track well below Nyquist.
                 float vibRate = 3.0f + wheelSpeed * 8.0f; // 3-11 Hz vibrato
                 float vibDepth = 0.002f + wheelSpeed * 0.008f; // subtle to moderate
                 float vibMod = fastSin (vibratoPhase * 6.28318530718f) * vibDepth;
                 vibratoPhase += vibRate / sampleRate;
                 if (vibratoPhase >= 1.0f) vibratoPhase -= 1.0f;
 
-                float melodyInc = freq * (1.0f + vibMod) / sampleRate;
-                float melodySaw = 2.0f * phase1 - 1.0f;
+                float melodyFreq = freq * (1.0f + vibMod);
+                saw1.setWaveform (PolyBLEP::Waveform::Saw);
+                saw1.setFrequency (melodyFreq, sampleRate);
+                float melodySaw = saw1.processSample();
 
-                // Drone strings: fixed pitch intervals (typically 5th below and octave below)
+                // Drone strings: fixed pitch intervals (naive — sub-Nyquist)
                 float drone1Freq = freq * fastPow2 (droneInterval1 / 12.0f);
                 float drone2Freq = freq * fastPow2 (droneInterval2 / 12.0f);
                 float drone1Inc = drone1Freq / sampleRate;
@@ -355,10 +367,8 @@ struct OlegReedOscillator
                     + drone1Saw * droneLevel * 0.3f
                     + drone2Saw * droneLevel * 0.2f;
 
-                phase1 += melodyInc;
                 drone1Phase += drone1Inc;
                 drone2Phase += drone2Inc;
-                if (phase1 >= 1.0f) phase1 -= 1.0f;
                 if (drone1Phase >= 1.0f) drone1Phase -= 1.0f;
                 if (drone2Phase >= 1.0f) drone2Phase -= 1.0f;
                 break;
@@ -402,22 +412,25 @@ struct OlegReedOscillator
 
             case OlegOrganModel::Garmon:
             {
-                // Simple buzzy reed: square-ish with asymmetric duty cycle
-                // The garmon reed is less refined than the Bayan — rawer,
-                // buzzier, more overtones. Folk character.
-                float duty = 0.35f; // asymmetric duty for garmon character
-                float sq1 = (phase1 < duty) ? 1.0f : -1.0f;
-                float sq2 = (phase2 < duty) ? 1.0f : -1.0f;
+                // Buzzy reed: PolyBLEP asymmetric pulse + saw for grittiness.
+                // Asymmetric duty (0.35) gives garmon's distinctive buzzy character
+                // without aliasing edge artifacts above A4-A5.
+                sq1.setWaveform (PolyBLEP::Waveform::Pulse);
+                sq1.setPulseWidth (0.35f); // asymmetric duty for garmon character
+                sq1.setFrequency (freq, sampleRate);
 
-                // Add a touch of saw for grittiness
-                float saw1 = 2.0f * phase1 - 1.0f;
+                sq2.setWaveform (PolyBLEP::Waveform::Pulse);
+                sq2.setPulseWidth (0.35f);
+                sq2.setFrequency (freq * detuneFactor, sampleRate);
 
-                out = sq1 * 0.45f + sq2 * 0.3f + saw1 * 0.25f;
+                saw1.setWaveform (PolyBLEP::Waveform::Saw);
+                saw1.setFrequency (freq, sampleRate);
 
-                phase1 += inc1;
-                phase2 += inc2;
-                if (phase1 >= 1.0f) phase1 -= 1.0f;
-                if (phase2 >= 1.0f) phase2 -= 1.0f;
+                float sqOut1  = sq1.processSample();
+                float sqOut2  = sq2.processSample();
+                float sawOut1 = saw1.processSample();
+
+                out = sqOut1 * 0.45f + sqOut2 * 0.3f + sawOut1 * 0.25f;
                 break;
             }
         }
@@ -908,8 +921,16 @@ public:
                 float cutoff = std::clamp (brightNow + filterMod + lfo2Val * 2000.0f
                     + voice.pressure * 1500.0f, 200.0f, 20000.0f);
 
+                // Per-model voice filter Q — each instrument has a distinct resonance character:
+                //   Bayan Q=0.4  (concert cassotto chamber, warmly resonant)
+                //   HurdyGurdy Q=0.5 (emphasize buzz overtones through wooden body)
+                //   Bandoneon Q=0.3 (warm tango — keep current, no coloration needed)
+                //   Garmon Q=0.6  (raw, resonant folk accordion character)
+                static constexpr float kModelFilterQ[4] = { 0.4f, 0.5f, 0.3f, 0.6f };
+                float voiceFilterQ = kModelFilterQ[std::clamp (pOrgan, 0, 3)];
+
                 voice.voiceFilter.setMode (CytomicSVF::Mode::LowPass);
-                voice.voiceFilter.setCoefficients (cutoff, 0.3f, srf);
+                voice.voiceFilter.setCoefficients (cutoff, voiceFilterQ, srf);
                 float filtered = voice.voiceFilter.processSample (processed);
 
                 float output = filtered * ampLevel * bellowsAmp * voice.velocity;
