@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Forge Rhythm",
-  "mood": "Kinetic",
-  "engines": ["Ostinato"],
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Multi-seat tom-heavy pattern with tuned toms hitting industrial frequencies. Bodies modeled on cylindrical resonance. Full reverb creates forge echo. Hard and precise.",
-  "tags": ["techno", "toms", "industrial", "forge", "tuned", "genre-spotlight"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "toms",
+    "industrial",
+    "forge",
+    "tuned",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 132,
-  "dna": {"brightness": 0.38, "warmth": 0.45, "movement": 0.82, "density": 0.78, "space": 0.42, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.45,
+    "movement": 0.82,
+    "density": 0.78,
+    "space": 0.42,
+    "aggression": 0.75
+  },
   "parameters": {
     "Ostinato": {
       "osti_macroGather": 0.78,
@@ -92,6 +113,13 @@
       "osti_seat4_bodyModel": 0
     }
   },
-  "macros": {"GATHER": 0.78, "FIRE": 0.82, "CIRCLE": 0.45, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GATHER": 0.78,
+    "FIRE": 0.82,
+    "CIRCLE": 0.45,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

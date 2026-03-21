@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Pi constant at depth 4. The digits of Pi as frequency ratios: 3.14159... create a slow, non-repeating shimmer pattern. LFO1 sweeps the convergent depth slowly — as the index moves, new irrational ratios emerge and dissolve. Very slow LFO2 rotates partial phases. High resonator mix adds chiming tail. Infinite, non-repeating shimmer.",
+  "description": "Pi constant at depth 4. The digits of Pi as frequency ratios: 3.14159... create a slow, non-repeating shimmer pattern. LFO1 sweeps the convergent depth slowly \u2014 as the index moves, new irrational ratios emerge and dissolve. Very slow LFO2 rotates partial phases. High resonator mix adds chiming tail. Infinite, non-repeating shimmer.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.42,
@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Ethereal",
+  "mood": "Aether",
   "name": "Pi Shimmer",
   "parameters": {
     "Overtone": {

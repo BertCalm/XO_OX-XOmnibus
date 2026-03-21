@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Rule 110 — the simplest Turing-complete cellular automaton. From 16 cells and a seed of 42, universal computation emerges. Fast step rate, narrow scope. The automaton's patterns map directly to filter brightness and envelope shape. Each note is a computation. Each held note is a program running. This is the Coral Colony saying hello.",
+  "description": "Rule 110 \u2014 the simplest Turing-complete cellular automaton. From 16 cells and a seed of 42, universal computation emerges. Fast step rate, narrow scope. The automaton's patterns map directly to filter brightness and envelope shape. Each note is a computation. Each held note is a program running. This is the Coral Colony saying hello.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.52,
@@ -23,7 +23,7 @@
     "COUPLING",
     "MUTATE"
   ],
-  "mood": "Luminous",
+  "mood": "Prism",
   "name": "Rule 110",
   "parameters": {
     "Organism": {

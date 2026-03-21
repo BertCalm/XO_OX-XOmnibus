@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Shark Lead",
-  "mood": "Kinetic",
-  "engines": ["Ouie"],
+  "mood": "Flux",
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Monophonic lead mode, V1 dominant, high mod depth and envelope rate. Plays like a distorted acid lead — short attack, snappy decay, resonant filter. The hammerhead as a techno lead voice.",
-  "tags": ["techno", "lead", "acid", "monophonic", "snappy", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "description": "Monophonic lead mode, V1 dominant, high mod depth and envelope rate. Plays like a distorted acid lead \u2014 short attack, snappy decay, resonant filter. The hammerhead as a techno lead voice.",
+  "tags": [
+    "techno",
+    "lead",
+    "acid",
+    "monophonic",
+    "snappy",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.35, "movement": 0.85, "density": 0.68, "space": 0.28, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.35,
+    "movement": 0.85,
+    "density": 0.68,
+    "space": 0.28,
+    "aggression": 0.88
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 5,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.88
     }
   },
-  "macros": {"HAMMER": 0.78, "AMPULLAE": 0.72, "CARTILAGE": 0.78, "CURRENT": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.78,
+    "AMPULLAE": 0.72,
+    "CARTILAGE": 0.78,
+    "CURRENT": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

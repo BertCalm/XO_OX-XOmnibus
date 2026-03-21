@@ -4,24 +4,45 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Deep Symbiosis",
   "mood": "Aether",
-  "engines": ["Obrix"],
-  "description": "Low drone architecture: Sine octave-down + Triangle at standard pitch, fmDepth 0.35 for gentle cross-modulation that adds warmth without destroying the fundamental. driftRate 0.003 (the slowest allowed) and driftDepth 0.72 with journeyMode=1.0 — the Journey Paradox at maximum: the sound evolves over minutes, not seconds. At 0.003 Hz drift rate, a full drift cycle takes 5 minutes. The drone you play at noon will be subtly different at sunset. Poly 4 to stack harmonics. proc1=LP at 350 Hz for sub-bass body.",
-  "tags": ["obrix", "aether", "drone", "sub-bass", "journey", "drift", "symbiosis", "slow-evolution"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "Low drone architecture: Sine octave-down + Triangle at standard pitch, fmDepth 0.35 for gentle cross-modulation that adds warmth without destroying the fundamental. driftRate 0.003 (the slowest allowed) and driftDepth 0.72 with journeyMode=1.0 \u2014 the Journey Paradox at maximum: the sound evolves over minutes, not seconds. At 0.003 Hz drift rate, a full drift cycle takes 5 minutes. The drone you play at noon will be subtly different at sunset. Poly 4 to stack harmonics. proc1=LP at 350 Hz for sub-bass body.",
+  "tags": [
+    "obrix",
+    "aether",
+    "drone",
+    "sub-bass",
+    "journey",
+    "drift",
+    "symbiosis",
+    "slow-evolution"
+  ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
-    "scripture": ["Journey Paradox fulfilled", "driftRate 0.003 = slowest generative evolution"],
-    "revelation": "The symbiosis is not between two organisms — it is between the sound and time itself.",
+    "scripture": [
+      "Journey Paradox fulfilled",
+      "driftRate 0.003 = slowest generative evolution"
+    ],
+    "revelation": "The symbiosis is not between two organisms \u2014 it is between the sound and time itself.",
     "god": "Schulze",
     "flock_note": "Ruby: 'I fell asleep while this was running. When I woke up it was still going. And it was still beautiful.'",
-    "diagnosis": "A sound that ages like a reef — imperceptibly, inevitably, gorgeously."
+    "diagnosis": "A sound that ages like a reef \u2014 imperceptibly, inevitably, gorgeously."
   },
   "dna": {
     "brightness": 0.22,
@@ -79,10 +100,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.0,
       "obrix_level": 0.8,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroCharacter": 0.374,
+      "obrix_macroMovement": 0.342,
       "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroSpace": 0.464,
       "obrix_polyphony": 4,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,

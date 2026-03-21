@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Phi constant at depth 2. The golden ratio partials: 1.618, 2.618, 4.236... These ratios are almost harmonic — close enough for consonance, irrational enough for shimmer. Full 8-partial tower with gentle downward taper. Velocity opens brightness. This is nature's own tuning system made audible. The Nautilus speaks its first word.",
+  "description": "Phi constant at depth 2. The golden ratio partials: 1.618, 2.618, 4.236... These ratios are almost harmonic \u2014 close enough for consonance, irrational enough for shimmer. Full 8-partial tower with gentle downward taper. Velocity opens brightness. This is nature's own tuning system made audible. The Nautilus speaks its first word.",
   "dna": {
     "brightness": 0.75,
     "warmth": 0.55,
@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Luminous",
+  "mood": "Prism",
   "name": "Golden Ratio",
   "parameters": {
     "Overtone": {

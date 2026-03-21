@@ -4,24 +4,44 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "FM Symbiosis",
   "mood": "Aether",
-  "engines": ["Obrix"],
-  "description": "Wavetable (Metallic bank) acts as FM modulator for a Saw carrier at fmDepth 0.55 — the exact ratio where inharmonic partials tip into bell-like shimmer without breaking into noise. Proc2 is a Wavefolder that further sculpts the FM sidebands. The result is a metallic bloom: warm below 800 Hz, crystalline above. An Envelope LFO routes to wtPos so the wavetable position morphs through the FM attack — each note is a different alloy.",
-  "tags": ["obrix", "aether", "fm", "wavetable", "metallic", "symbiosis", "bell-shimmer"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "Wavetable (Metallic bank) acts as FM modulator for a Saw carrier at fmDepth 0.55 \u2014 the exact ratio where inharmonic partials tip into bell-like shimmer without breaking into noise. Proc2 is a Wavefolder that further sculpts the FM sidebands. The result is a metallic bloom: warm below 800 Hz, crystalline above. An Envelope LFO routes to wtPos so the wavetable position morphs through the FM attack \u2014 each note is a different alloy.",
+  "tags": [
+    "obrix",
+    "aether",
+    "fm",
+    "wavetable",
+    "metallic",
+    "symbiosis",
+    "bell-shimmer"
+  ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
-    "scripture": ["Wavetable FM Discovery", "FM Ceiling Rule 0.07-0.55"],
+    "scripture": [
+      "Wavetable FM Discovery",
+      "FM Ceiling Rule 0.07-0.55"
+    ],
     "revelation": "At fmDepth 0.55 the wavetable stops being a modulator and becomes a living partner.",
     "god": "Kakehashi",
     "flock_note": "Raj confirmed that Metallic wtBank + fmDepth 0.55 unlocks partials no additive synth can reach.",
-    "diagnosis": "A bell made of seawater — metallic at the strike, dissolving into shimmer by the release."
+    "diagnosis": "A bell made of seawater \u2014 metallic at the strike, dissolving into shimmer by the release."
   },
   "dna": {
     "brightness": 0.72,
@@ -79,10 +99,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.0,
       "obrix_level": 0.8,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroCharacter": 0.2,
+      "obrix_macroMovement": 0.31,
       "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroSpace": 0.43,
       "obrix_polyphony": 4,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,

@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Ancient Machine",
-  "mood": "Ethereal",
-  "engines": ["Oracle"],
+  "mood": "Aether",
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Gaussian distribution with high barrier elasticity — stochastic events cluster near the center before being repelled into wild territory. Like a machine running an algorithm older than silicon.",
-  "tags": ["cinematic", "ancient", "gaussian", "machine", "algorithmic", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "description": "Gaussian distribution with high barrier elasticity \u2014 stochastic events cluster near the center before being repelled into wild territory. Like a machine running an algorithm older than silicon.",
+  "tags": [
+    "cinematic",
+    "ancient",
+    "gaussian",
+    "machine",
+    "algorithmic",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.58, "movement": 0.55, "density": 0.62, "space": 0.82, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.58,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.82,
+    "aggression": 0.22
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 10.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.48
     }
   },
-  "macros": {"PROPHECY": 0.52, "EVOLUTION": 0.55, "GRAVITY": 0.42, "DRIFT": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.52,
+    "EVOLUTION": 0.55,
+    "GRAVITY": 0.42,
+    "DRIFT": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

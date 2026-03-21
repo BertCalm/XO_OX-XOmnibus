@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Dub Organism",
   "mood": "Entangled",
-  "engines": ["Overdub", "Organism"],
+  "engines": [
+    "Overdub",
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM's cellular automata colony outputs a generative rhythm that modulates OVERDUB's tape delay feedback — the living pattern controls the echo while echo amplitude feeds back to trigger colony generation steps, creating an organic dub machine.",
-  "tags": ["collision", "dub", "cellular-automata", "tape-delay", "organic", "coupled", "entangled"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "ORGANISM's cellular automata colony outputs a generative rhythm that modulates OVERDUB's tape delay feedback \u2014 the living pattern controls the echo while echo amplitude feeds back to trigger colony generation steps, creating an organic dub machine.",
+  "tags": [
+    "collision",
+    "dub",
+    "cellular-automata",
+    "tape-delay",
+    "organic",
+    "coupled",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -20,27 +36,38 @@
   },
   "parameters": {
     "Organism": {
-      "macro_character": 0.52,
-      "macro_movement": 0.70,
-      "macro_coupling": 0.60,
-      "macro_space": 0.50,
-      "org_ruleSet": 0.68,
-      "org_colonyDensity": 0.52,
-      "org_generationRate": 0.58,
-      "org_filterCutoff": 0.50,
-      "org_outputLevel": 0.78
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 18.8,
+      "org_scope": 4,
+      "org_mutate": 0.1,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 4100.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 1.618,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.3,
+      "org_macroRule": 0.68,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.6,
+      "org_macroMutate": 0.0
     },
     "Overdub": {
-      "macro_character": 0.55,
-      "macro_movement": 0.65,
-      "macro_coupling": 0.60,
-      "macro_space": 0.65,
       "dub_oscWave": 1,
       "dub_sendAmount": 0.62,
       "dub_tapeDelayTime": 0.48,
       "dub_springReverbMix": 0.55,
       "dub_filterCutoff": 0.52,
-      "dub_outputLevel": 0.80
+      "dub_outputLevel": 0.8
     }
   },
   "coupling": {
@@ -48,7 +75,7 @@
       {
         "engineA": "Organism",
         "engineB": "Overdub",
-        "type": "RhythmToBlend",
+        "type": "AmpToFilter",
         "amount": 0.58
       },
       {
@@ -59,5 +86,11 @@
       }
     ]
   },
-  "sequencer": null
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.6,
+    "SPACE": 0.5
+  }
 }

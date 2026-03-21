@@ -18,6 +18,9 @@
 #include "../DSP/Effects/Compressor.h"
 #include "../DSP/Effects/fXOsmosis.h"
 #include "../DSP/Effects/fXOneiric.h"
+#include "../DSP/Effects/fXObscura.h"
+#include "../DSP/Effects/fXOratory.h"
+#include "../DSP/Effects/fXOnslaught.h"
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
@@ -86,6 +89,9 @@ public:
         // Stage 5: Transient Designer
         transientDesigner.prepare (sampleRate);
 
+        // Stage 5.5: fXObscura (chiaroscuro — inverse-dynamic degradation)
+        obscura.prepare (sampleRate);
+
         // Stage 6: fXOsmosis (membrane transfer)
         osmosis.prepare (sampleRate);
 
@@ -94,6 +100,9 @@ public:
 
         // Stage 8: Delay
         delay.prepare (sampleRate, samplesPerBlock);
+
+        // Stage 8.5: fXOratory (poetic meter delay)
+        oratory.prepare (sampleRate, samplesPerBlock);
 
         // Stage 9: Combulator
         combulator.prepare (sampleRate);
@@ -113,6 +122,9 @@ public:
 
         // Stage 14: Modulation
         modulation.prepare (sampleRate, samplesPerBlock);
+
+        // Stage 14.5: fXOnslaught (transient-reactive chorus → PM collapse)
+        onslaught.prepare (sampleRate, samplesPerBlock);
 
         // Stage 15: Granular Smear
         granularSmear.prepare (sampleRate);
@@ -184,6 +196,19 @@ public:
         const float tdSustain    = pTDSustain    ? pTDSustain->load()    : 0.0f;
         const float tdMix        = pTDMix        ? pTDMix->load()        : 0.0f;
 
+        // Stage 5.5: fXObscura
+        const float obsThresh    = pObsThresh    ? pObsThresh->load()    : -24.0f;
+        const float obsHold      = pObsHold      ? pObsHold->load()      : -12.0f;
+        const float obsRelease   = pObsRelease   ? pObsRelease->load()   : 100.0f;
+        const float obsErosion   = pObsErosion   ? pObsErosion->load()   : 2.0f;
+        const float obsSubHarm   = pObsSubHarm   ? pObsSubHarm->load()   : 0.5f;
+        const float obsSat       = pObsSat       ? pObsSat->load()       : 0.4f;
+        const float obsDecimate  = pObsDecimate  ? pObsDecimate->load()  : 0.3f;
+        const float obsRes       = pObsRes       ? pObsRes->load()       : 0.5f;
+        const float obsTone      = pObsTone      ? pObsTone->load()      : 3000.0f;
+        const float obsPatina    = pObsPatina    ? pObsPatina->load()    : 0.03f;
+        const float obsMix       = pObsMix       ? pObsMix->load()       : 0.0f;
+
         // Stage 6: fXOsmosis
         const float osmMembrane  = pOsmMembrane  ? pOsmMembrane->load()  : 0.5f;
         const float osmReact     = pOsmReact     ? pOsmReact->load()     : 0.5f;
@@ -203,6 +228,17 @@ public:
         const float delayDamp    = pDelayDamp    ? pDelayDamp->load()    : 0.3f;
         const float delayDiff    = pDelayDiff    ? pDelayDiff->load()    : 0.0f;
         const float delaySync    = pDelaySync    ? pDelaySync->load()    : 0.0f;
+
+        // Stage 8.5: fXOratory
+        const float oraPattern   = pOraPattern   ? pOraPattern->load()   : 6.0f;
+        const float oraSyllable  = pOraSyllable  ? pOraSyllable->load()  : 80.0f;
+        const float oraAccent    = pOraAccent    ? pOraAccent->load()    : 0.7f;
+        const float oraSpread    = pOraSpread    ? pOraSpread->load()    : 0.6f;
+        const float oraFeedback  = pOraFeedback  ? pOraFeedback->load()  : 0.4f;
+        const float oraDamping   = pOraDamping   ? pOraDamping->load()   : 3000.0f;
+        const float oraDampRes   = pOraDampRes   ? pOraDampRes->load()   : 0.2f;
+        const float oraDrift     = pOraDrift     ? pOraDrift->load()     : 0.0f;
+        const float oraMix       = pOraMix       ? pOraMix->load()       : 0.0f;
 
         // Stage 6: Combulator
         const float combMix      = pCombMix      ? pCombMix->load()      : 0.0f;
@@ -236,6 +272,16 @@ public:
         const float onDamping    = pOnDamping    ? pOnDamping->load()    : 0.3f;
         const float onSpread     = pOnSpread     ? pOnSpread->load()     : 0.3f;
         const float onMix        = pOnMix        ? pOnMix->load()        : 0.0f;
+
+        // Stage 14.5: fXOnslaught
+        const float onslFlowRate  = pOnslFlowRate  ? pOnslFlowRate->load()  : 0.8f;
+        const float onslFlowDepth = pOnslFlowDepth ? pOnslFlowDepth->load() : 0.5f;
+        const float onslThresh    = pOnslThresh    ? pOnslThresh->load()    : 4.0f;
+        const float onslModDepth  = pOnslModDepth  ? pOnslModDepth->load()  : 0.6f;
+        const float onslModRate   = pOnslModRate   ? pOnslModRate->load()   : 2.0f;
+        const float onslDecay     = pOnslDecay     ? pOnslDecay->load()     : 300.0f;
+        const float onslSCHP      = pOnslSCHP      ? pOnslSCHP->load()      : 200.0f;
+        const float onslMix       = pOnslMix       ? pOnslMix->load()       : 0.0f;
 
         // Stage 13: Modulation
         const float modRate      = pModRate      ? pModRate->load()      : 0.8f;
@@ -427,6 +473,25 @@ public:
         }
 
         // ====================================================================
+        // Stage 5.5: fXObscura (Chiaroscuro — Inverse-Dynamic Degradation)
+        // ====================================================================
+        if (obsMix > 0.001f)
+        {
+            obscura.setThreshold (obsThresh);
+            obscura.setHoldLevel (obsHold);
+            obscura.setRelease (obsRelease);
+            obscura.setErosionCurve (obsErosion);
+            obscura.setSubHarmonic (obsSubHarm);
+            obscura.setSaturation (obsSat);
+            obscura.setDecimate (obsDecimate);
+            obscura.setResonance (obsRes);
+            obscura.setTone (obsTone);
+            obscura.setPatina (obsPatina);
+            obscura.setMix (obsMix);
+            obscura.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
         // Stage 6: fXOsmosis (Membrane Transfer)
         // ====================================================================
         float effectiveOsmMix = applySeqMod (osmMix,
@@ -471,6 +536,23 @@ public:
             delay.setSyncDiv (static_cast<MasterDelay::SyncDiv> (static_cast<int> (delaySync)));
             delay.setBPM (bpm);
             delay.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 8.5: fXOratory (Poetic Meter Delay)
+        // ====================================================================
+        if (oraMix > 0.001f)
+        {
+            oratory.setPattern (static_cast<int> (oraPattern));
+            oratory.setSyllable (oraSyllable);
+            oratory.setAccent (oraAccent);
+            oratory.setSpread (oraSpread);
+            oratory.setFeedback (oraFeedback);
+            oratory.setDamping (oraDamping);
+            oratory.setDampingResonance (oraDampRes);
+            oratory.setDrift (oraDrift);
+            oratory.setMix (oraMix);
+            oratory.processBlock (L, R, numSamples);
         }
 
         // ====================================================================
@@ -570,6 +652,22 @@ public:
             modulation.setMix (modMix);
             modulation.setFeedback (modFeedback);
             modulation.processBlock (L, R, numSamples);
+        }
+
+        // ====================================================================
+        // Stage 14.5: fXOnslaught (Transient-Reactive Chorus → PM Collapse)
+        // ====================================================================
+        if (onslMix > 0.001f)
+        {
+            onslaught.setFlowRate (onslFlowRate);
+            onslaught.setFlowDepth (onslFlowDepth);
+            onslaught.setThreshold (onslThresh);
+            onslaught.setCollapseDepth (onslModDepth);
+            onslaught.setCollapseRate (onslModRate);
+            onslaught.setCollapseDecay (onslDecay);
+            onslaught.setSidechainHP (onslSCHP);
+            onslaught.setMix (onslMix);
+            onslaught.processBlock (L, R, numSamples);
         }
 
         // ====================================================================
@@ -751,6 +849,19 @@ private:
         pTDSustain    = apvts.getRawParameterValue ("master_tdSustain");
         pTDMix        = apvts.getRawParameterValue ("master_tdMix");
 
+        // Stage 5.5: fXObscura
+        pObsThresh    = apvts.getRawParameterValue ("master_obsThreshold");
+        pObsHold      = apvts.getRawParameterValue ("master_obsHold");
+        pObsRelease   = apvts.getRawParameterValue ("master_obsRelease");
+        pObsErosion   = apvts.getRawParameterValue ("master_obsErosion");
+        pObsSubHarm   = apvts.getRawParameterValue ("master_obsSubHarm");
+        pObsSat       = apvts.getRawParameterValue ("master_obsSaturation");
+        pObsDecimate  = apvts.getRawParameterValue ("master_obsDecimate");
+        pObsRes       = apvts.getRawParameterValue ("master_obsResonance");
+        pObsTone      = apvts.getRawParameterValue ("master_obsTone");
+        pObsPatina    = apvts.getRawParameterValue ("master_obsPatina");
+        pObsMix       = apvts.getRawParameterValue ("master_obsMix");
+
         // Stage 6: fXOsmosis
         pOsmMembrane  = apvts.getRawParameterValue ("master_osmMembrane");
         pOsmReact     = apvts.getRawParameterValue ("master_osmReactivity");
@@ -770,6 +881,17 @@ private:
         pDelayDamp    = apvts.getRawParameterValue ("master_delayDamping");
         pDelayDiff    = apvts.getRawParameterValue ("master_delayDiffusion");
         pDelaySync    = apvts.getRawParameterValue ("master_delaySync");
+
+        // Stage 8.5: fXOratory
+        pOraPattern   = apvts.getRawParameterValue ("master_oraPattern");
+        pOraSyllable  = apvts.getRawParameterValue ("master_oraSyllable");
+        pOraAccent    = apvts.getRawParameterValue ("master_oraAccent");
+        pOraSpread    = apvts.getRawParameterValue ("master_oraSpread");
+        pOraFeedback  = apvts.getRawParameterValue ("master_oraFeedback");
+        pOraDamping   = apvts.getRawParameterValue ("master_oraDamping");
+        pOraDampRes   = apvts.getRawParameterValue ("master_oraDampRes");
+        pOraDrift     = apvts.getRawParameterValue ("master_oraDrift");
+        pOraMix       = apvts.getRawParameterValue ("master_oraMix");
 
         // Stage 6: Combulator
         pCombMix      = apvts.getRawParameterValue ("master_combMix");
@@ -810,6 +932,16 @@ private:
         pModMix       = apvts.getRawParameterValue ("master_modMix");
         pModMode      = apvts.getRawParameterValue ("master_modMode");
         pModFB        = apvts.getRawParameterValue ("master_modFeedback");
+
+        // Stage 14.5: fXOnslaught
+        pOnslFlowRate  = apvts.getRawParameterValue ("master_onslFlowRate");
+        pOnslFlowDepth = apvts.getRawParameterValue ("master_onslFlowDepth");
+        pOnslThresh    = apvts.getRawParameterValue ("master_onslThreshold");
+        pOnslModDepth  = apvts.getRawParameterValue ("master_onslModDepth");
+        pOnslModRate   = apvts.getRawParameterValue ("master_onslModRate");
+        pOnslDecay     = apvts.getRawParameterValue ("master_onslDecay");
+        pOnslSCHP      = apvts.getRawParameterValue ("master_onslSCHP");
+        pOnslMix       = apvts.getRawParameterValue ("master_onslMix");
 
         // Stage 11: Granular Smear
         pSmearAmt     = apvts.getRawParameterValue ("master_smearAmount");
@@ -868,15 +1000,18 @@ private:
     VibeKnob             vibeKnob;           // 3
     SpectralTilt         spectralTilt;       // 4
     TransientDesigner    transientDesigner;  // 5
+    fXObscura            obscura;            // 5.5 — Chiaroscuro
     fXOsmosis            osmosis;            // 6  — Membrane Transfer
     MultibandCompressor  multibandComp;      // 7  — OTT (pre-spatial)
     MasterDelay          delay;              // 8
+    fXOratory            oratory;            // 8.5 — Poetic Meter Delay
     Combulator           combulator;         // 9
     DopplerEffect        doppler;            // 10
     LushReverb           reverb;             // 11
     FrequencyShifter     freqShifter;        // 12
     fXOneiric            oneiric;            // 13 — Dream State
     MasterModulation     modulation;         // 14
+    fXOnslaught          onslaught;          // 14.5 — Wave Function Collapse
     GranularSmear        granularSmear;      // 15
     HarmonicExciter      harmonicExciter;    // 16
     StereoSculptor       stereoSculptor;     // 17
@@ -909,6 +1044,18 @@ private:
     std::atomic<float>* pTDAttack    = nullptr;
     std::atomic<float>* pTDSustain   = nullptr;
     std::atomic<float>* pTDMix       = nullptr;
+    // Stage 5.5: fXObscura
+    std::atomic<float>* pObsThresh   = nullptr;
+    std::atomic<float>* pObsHold     = nullptr;
+    std::atomic<float>* pObsRelease  = nullptr;
+    std::atomic<float>* pObsErosion  = nullptr;
+    std::atomic<float>* pObsSubHarm  = nullptr;
+    std::atomic<float>* pObsSat      = nullptr;
+    std::atomic<float>* pObsDecimate = nullptr;
+    std::atomic<float>* pObsRes      = nullptr;
+    std::atomic<float>* pObsTone     = nullptr;
+    std::atomic<float>* pObsPatina   = nullptr;
+    std::atomic<float>* pObsMix      = nullptr;
     // Stage 6: fXOsmosis
     std::atomic<float>* pOsmMembrane = nullptr;
     std::atomic<float>* pOsmReact    = nullptr;
@@ -926,6 +1073,16 @@ private:
     std::atomic<float>* pDelayDamp   = nullptr;
     std::atomic<float>* pDelayDiff   = nullptr;
     std::atomic<float>* pDelaySync   = nullptr;
+    // Stage 8.5: fXOratory
+    std::atomic<float>* pOraPattern  = nullptr;
+    std::atomic<float>* pOraSyllable = nullptr;
+    std::atomic<float>* pOraAccent   = nullptr;
+    std::atomic<float>* pOraSpread   = nullptr;
+    std::atomic<float>* pOraFeedback = nullptr;
+    std::atomic<float>* pOraDamping  = nullptr;
+    std::atomic<float>* pOraDampRes  = nullptr;
+    std::atomic<float>* pOraDrift    = nullptr;
+    std::atomic<float>* pOraMix      = nullptr;
     // Stage 6: Combulator
     std::atomic<float>* pCombMix     = nullptr;
     std::atomic<float>* pCombFreq    = nullptr;
@@ -960,6 +1117,15 @@ private:
     std::atomic<float>* pModMix      = nullptr;
     std::atomic<float>* pModMode     = nullptr;
     std::atomic<float>* pModFB       = nullptr;
+    // Stage 14.5: fXOnslaught
+    std::atomic<float>* pOnslFlowRate  = nullptr;
+    std::atomic<float>* pOnslFlowDepth = nullptr;
+    std::atomic<float>* pOnslThresh    = nullptr;
+    std::atomic<float>* pOnslModDepth  = nullptr;
+    std::atomic<float>* pOnslModRate   = nullptr;
+    std::atomic<float>* pOnslDecay     = nullptr;
+    std::atomic<float>* pOnslSCHP      = nullptr;
+    std::atomic<float>* pOnslMix       = nullptr;
     // Stage 11: Granular Smear
     std::atomic<float>* pSmearAmt    = nullptr;
     std::atomic<float>* pSmearGrain  = nullptr;

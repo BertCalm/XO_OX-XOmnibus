@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Algorithm War",
-  "mood": "Kinetic",
-  "engines": ["Ouie"],
+  "mood": "Flux",
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Maximum algo divergence between V1 and V2 — one doing phase distortion, one doing waveshaping. CURRENT macro controls the war's intensity. Violent but musical.",
-  "tags": ["techno", "algorithm", "phase-distortion", "waveshape", "violent", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "description": "Maximum algo divergence between V1 and V2 \u2014 one doing phase distortion, one doing waveshaping. CURRENT macro controls the war's intensity. Violent but musical.",
+  "tags": [
+    "techno",
+    "algorithm",
+    "phase-distortion",
+    "waveshape",
+    "violent",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.68, "warmth": 0.28, "movement": 0.82, "density": 0.85, "space": 0.25, "aggression": 0.92},
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.28,
+    "movement": 0.82,
+    "density": 0.85,
+    "space": 0.25,
+    "aggression": 0.92
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 4,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.88
     }
   },
-  "macros": {"HAMMER": 0.92, "AMPULLAE": 0.78, "CARTILAGE": 0.72, "CURRENT": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.92,
+    "AMPULLAE": 0.78,
+    "CARTILAGE": 0.72,
+    "CURRENT": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

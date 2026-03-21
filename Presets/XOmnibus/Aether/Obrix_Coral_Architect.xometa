@@ -4,21 +4,41 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Coral Architect",
   "mood": "Aether",
-  "engines": ["Obrix"],
-  "description": "All three processors active, all four mods routing, all three FX layers — the full modular blueprint of the reef. Saw into LP (proc1) for body, then Wavefold (proc2) for edge, then BP (proc3) as a formant slit. Coprime LFOs at 0.13 and 0.17 Hz weave a perpetual cross-rhythm that never resolves. The architecture self-organizes: every time you listen, a different brick seems loudest.",
-  "tags": ["obrix", "aether", "modular", "architect", "wavefold", "formant", "perpetual-motion"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "All three processors active, all four mods routing, all three FX layers \u2014 the full modular blueprint of the reef. Saw into LP (proc1) for body, then Wavefold (proc2) for edge, then BP (proc3) as a formant slit. Coprime LFOs at 0.13 and 0.17 Hz weave a perpetual cross-rhythm that never resolves. The architecture self-organizes: every time you listen, a different brick seems loudest.",
+  "tags": [
+    "obrix",
+    "aether",
+    "modular",
+    "architect",
+    "wavefold",
+    "formant",
+    "perpetual-motion"
+  ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
-    "scripture": ["Brick Independence B016", "Modulation is the Lifeblood D002"],
-    "revelation": "The reef is not one structure — it is many independent builders whose output becomes inseparable.",
+    "scripture": [
+      "Brick Independence B016",
+      "Modulation is the Lifeblood D002"
+    ],
+    "revelation": "The reef is not one structure \u2014 it is many independent builders whose output becomes inseparable.",
     "god": "Buchla",
     "flock_note": "Ruby noted that coprime LFOs create a horizon that producers never reach but always chase.",
     "diagnosis": "A sound that reveals new rooms every time you walk through it."
@@ -79,10 +99,10 @@
       "obrix_fx3Mix": 0.4,
       "obrix_fx3Param": 0.5,
       "obrix_level": 0.82,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroCharacter": 0.4,
+      "obrix_macroMovement": 0.332,
       "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroSpace": 0.42,
       "obrix_polyphony": 4,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,

@@ -1,17 +1,39 @@
 {
   "schema_version": 1,
   "name": "Midnight Water",
-  "mood": "Deep",
-  "engines": ["Overlap"],
+  "mood": "Submerged",
+  "engines": [
+    "Overlap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "FDN at maximum diffusion — the space becomes the instrument. Tangle depth moderate so individual voices retain identity before dissolving. Played slow, this is the Pacific at midnight.",
-  "tags": ["dark-ambient", "fdn", "diffuse", "space", "oceanic", "midnight", "genre-spotlight"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "description": "FDN at maximum diffusion \u2014 the space becomes the instrument. Tangle depth moderate so individual voices retain identity before dissolving. Played slow, this is the Pacific at midnight.",
+  "tags": [
+    "dark-ambient",
+    "fdn",
+    "diffuse",
+    "space",
+    "oceanic",
+    "midnight",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.72, "movement": 0.12, "density": 0.62, "space": 0.98, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.12,
+    "density": 0.62,
+    "space": 0.98,
+    "aggression": 0.02
+  },
   "parameters": {
     "Overlap": {
       "olap_knot": 0,
@@ -59,6 +81,13 @@
       "olap_atPressureDepth": 0.35
     }
   },
-  "macros": {"KNOT": 0.28, "PULSE": 0.05, "ENTRAIN": 0.08, "BLOOM": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "KNOT": 0.28,
+    "PULSE": 0.05,
+    "ENTRAIN": 0.08,
+    "BLOOM": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

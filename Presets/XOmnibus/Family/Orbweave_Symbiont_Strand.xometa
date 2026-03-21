@@ -61,9 +61,7 @@
       "weave_macroTension": 0.284,
       "weave_macroKnot": 0.519,
       "weave_macroSpace": 0.521,
-      "weave_voiceMode": 3,
-      "weave_velCutoff": 0.505,
-      "weave_velAmp": 0.648
+      "weave_voiceMode": 3
     }
   },
   "schema_version": 1,

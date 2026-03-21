@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "E constant (2.71828...) at depth 0 — the base convergent. Partials heavily weighted to fundamental and second — almost pure, slightly unstable. Filter cutoff kept low to reveal the sub-harmonic weight of Euler's base. Resonator at half mix creates a warm chamber resonance. This is mathematical bedrock as sound.",
+  "description": "E constant (2.71828...) at depth 0 \u2014 the base convergent. Partials heavily weighted to fundamental and second \u2014 almost pure, slightly unstable. Filter cutoff kept low to reveal the sub-harmonic weight of Euler's base. Resonator at half mix creates a warm chamber resonance. This is mathematical bedrock as sound.",
   "dna": {
     "brightness": 0.28,
     "warmth": 0.82,
@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Deep",
+  "mood": "Submerged",
   "name": "Euler Foundation",
   "parameters": {
     "Overtone": {

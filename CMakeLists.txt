@@ -230,6 +230,13 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Overtone/OvertoneEngine.cpp
     Source/Engines/Organism/OrganismEngine.h
     Source/Engines/Organism/OrganismEngine.cpp
+    Source/Engines/Oxbow/OxbowEngine.h
+    Source/Engines/Oxbow/OxbowEngine.cpp
+
+    # Singularity Collection FX
+    Source/DSP/Effects/fXObscura.h
+    Source/DSP/Effects/fXOratory.h
+    Source/DSP/Effects/fXOnslaught.h
 
     # Export pipeline
     Source/Export/XPNCoverArt.h

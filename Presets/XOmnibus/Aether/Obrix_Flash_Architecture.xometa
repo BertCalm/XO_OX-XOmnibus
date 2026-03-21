@@ -4,24 +4,45 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Flash Architecture",
   "mood": "Aether",
-  "engines": ["Obrix"],
-  "description": "gestureType=3 (the FLASH gesture mode) with flashTrigger=0.8 — the FLASH feature activated at high intensity. Every note triggers a structural event: the sound reconfigures itself percussively before settling. Square + Saw (both aggressive, even harmonics from Saw, odd from Square) through proc1=HP (stripping lows for a bright percussive crack), then proc2=LP as envelope shaper. ampAttack 0.002s for brick-fast transients. VelEnv→amp makes velocity a structural force: soft hits build, hard hits detonate.",
-  "tags": ["obrix", "aether", "flash", "gesture", "percussive", "transient", "architecture", "aggressive"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "gestureType=3 (the FLASH gesture mode) with flashTrigger=0.8 \u2014 the FLASH feature activated at high intensity. Every note triggers a structural event: the sound reconfigures itself percussively before settling. Square + Saw (both aggressive, even harmonics from Saw, odd from Square) through proc1=HP (stripping lows for a bright percussive crack), then proc2=LP as envelope shaper. ampAttack 0.002s for brick-fast transients. VelEnv\u2192amp makes velocity a structural force: soft hits build, hard hits detonate.",
+  "tags": [
+    "obrix",
+    "aether",
+    "flash",
+    "gesture",
+    "percussive",
+    "transient",
+    "architecture",
+    "aggressive"
+  ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
-    "scripture": ["FLASH gesture: gestureType=3", "flashTrigger=0.8 = structural event per note"],
-    "revelation": "Architecture is not built slowly — it FLASHES into existence. The reef grew one coral polyp at a time, but each polyp was instantaneous.",
+    "scripture": [
+      "FLASH gesture: gestureType=3",
+      "flashTrigger=0.8 = structural event per note"
+    ],
+    "revelation": "Architecture is not built slowly \u2014 it FLASHES into existence. The reef grew one coral polyp at a time, but each polyp was instantaneous.",
     "god": "Kakehashi",
     "flock_note": "Rufus: 'I set the BPM to 138 and played staccato for 4 minutes. I forgot I was making a preset.'",
-    "diagnosis": "A percussive architecture machine — every note is a construction event."
+    "diagnosis": "A percussive architecture machine \u2014 every note is a construction event."
   },
   "dna": {
     "brightness": 0.82,
@@ -79,10 +100,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.0,
       "obrix_level": 0.78,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroCharacter": 0.406,
+      "obrix_macroMovement": 0.325,
       "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroSpace": 0.325,
       "obrix_polyphony": 2,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,

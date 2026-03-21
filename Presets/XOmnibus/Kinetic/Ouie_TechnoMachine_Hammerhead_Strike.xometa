@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Hammerhead Strike",
-  "mood": "Kinetic",
-  "engines": ["Ouie"],
+  "mood": "Flux",
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Two voices in STRIFE — duophonic tension where V1 and V2 fight each other's filter cutoffs. Short attack, percussive decay. The hammerhead striking at sonic objects.",
-  "tags": ["techno", "duophonic", "percussive", "strife", "hammerhead", "genre-spotlight"],
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "description": "Two voices in STRIFE \u2014 duophonic tension where V1 and V2 fight each other's filter cutoffs. Short attack, percussive decay. The hammerhead striking at sonic objects.",
+  "tags": [
+    "techno",
+    "duophonic",
+    "percussive",
+    "strife",
+    "hammerhead",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.38, "movement": 0.72, "density": 0.75, "space": 0.35, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.38,
+    "movement": 0.72,
+    "density": 0.75,
+    "space": 0.35,
+    "aggression": 0.82
+  },
   "parameters": {
     "Ouie": {
       "ouie_algo1": 2,
@@ -69,6 +90,13 @@
       "ouie_macroCurrent": 0.72
     }
   },
-  "macros": {"HAMMER": 0.82, "AMPULLAE": 0.62, "CARTILAGE": 0.55, "CURRENT": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HAMMER": 0.82,
+    "AMPULLAE": 0.62,
+    "CARTILAGE": 0.55,
+    "CURRENT": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

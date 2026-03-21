@@ -78,7 +78,7 @@
       "obrix_fx3Param": 0.3,
       "obrix_level": 0.8,
       "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroMovement": 0.2,
       "obrix_macroCoupling": 0.0,
       "obrix_macroSpace": 0.0,
       "obrix_polyphony": 0,

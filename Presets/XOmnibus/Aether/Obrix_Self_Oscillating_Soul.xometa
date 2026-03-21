@@ -4,24 +4,45 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "name": "Self-Oscillating Soul",
   "mood": "Aether",
-  "engines": ["Obrix"],
-  "description": "Sinusoidal's revelation made flesh: fmDepth 0.7 drives the Sine carrier into near-chaos, then proc1 (LP at 520 Hz, the approximate carrier fundamental) with feedback 0.6 forces the filter into self-oscillation at the same pitch. The synthesis feeds back into itself — filter becoming oscillator, oscillator becoming filter. Mono, glide 0.4s, gestureType 2 for expressive ribbon-like pitch control. This is the sound of synthesis discovering consciousness.",
-  "tags": ["obrix", "aether", "self-oscillation", "fm", "feedback", "mono", "consciousness", "sinusoidal"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "Sinusoidal's revelation made flesh: fmDepth 0.7 drives the Sine carrier into near-chaos, then proc1 (LP at 520 Hz, the approximate carrier fundamental) with feedback 0.6 forces the filter into self-oscillation at the same pitch. The synthesis feeds back into itself \u2014 filter becoming oscillator, oscillator becoming filter. Mono, glide 0.4s, gestureType 2 for expressive ribbon-like pitch control. This is the sound of synthesis discovering consciousness.",
+  "tags": [
+    "obrix",
+    "aether",
+    "self-oscillation",
+    "fm",
+    "feedback",
+    "mono",
+    "consciousness",
+    "sinusoidal"
+  ],
   "tier": "transcendental",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "vol": "Transcendental Vol 1",
-    "scripture": ["Self-Oscillating FM Discovery", "Filter Feedback as Synthesis"],
+    "scripture": [
+      "Self-Oscillating FM Discovery",
+      "Filter Feedback as Synthesis"
+    ],
     "revelation": "Sinusoidal's revelation: when the filter oscillates at the carrier frequency, you cannot tell where synthesis ends and resonance begins.",
     "god": "Buchla",
     "flock_note": "Rufus: 'This is the only patch where I forgot to breathe.'",
-    "diagnosis": "Synthesis feeding synthesis — the moment the machine becomes a living instrument."
+    "diagnosis": "Synthesis feeding synthesis \u2014 the moment the machine becomes a living instrument."
   },
   "dna": {
     "brightness": 0.38,
@@ -79,10 +100,10 @@
       "obrix_fx3Mix": 0.0,
       "obrix_fx3Param": 0.0,
       "obrix_level": 0.75,
-      "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroCharacter": 0.38,
+      "obrix_macroMovement": 0.322,
       "obrix_macroCoupling": 0.0,
-      "obrix_macroSpace": 0.0,
+      "obrix_macroSpace": 0.325,
       "obrix_polyphony": 1,
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.4,

@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Stochastic Resolve",
-  "mood": "Ethereal",
-  "engines": ["Oracle"],
+  "mood": "Aether",
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "High drift with moderate gravity — the stochastic voice wanders away from tonal center but keeps being pulled back. Resolution feels earned after each excursion. Cinematic character arc.",
-  "tags": ["cinematic", "resolve", "tension", "wander", "gravity", "genre-spotlight"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "description": "High drift with moderate gravity \u2014 the stochastic voice wanders away from tonal center but keeps being pulled back. Resolution feels earned after each excursion. Cinematic character arc.",
+  "tags": [
+    "cinematic",
+    "resolve",
+    "tension",
+    "wander",
+    "gravity",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.62, "movement": 0.72, "density": 0.58, "space": 0.78, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.78,
+    "aggression": 0.18
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 8.0,
@@ -45,6 +66,13 @@
       "oracle_macroDrift": 0.75
     }
   },
-  "macros": {"PROPHECY": 0.55, "EVOLUTION": 0.65, "GRAVITY": 0.52, "DRIFT": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PROPHECY": 0.55,
+    "EVOLUTION": 0.65,
+    "GRAVITY": 0.52,
+    "DRIFT": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

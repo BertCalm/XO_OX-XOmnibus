@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Climax Wall",
-  "mood": "Ethereal",
-  "engines": ["OpenSky"],
+  "mood": "Aether",
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "7-voice maximum width, maximum shimmer feedback, sub bass added — designed for the moment when the orchestral swell peaks. RISE macro controls the buildup velocity.",
-  "tags": ["cinematic", "climax", "wall", "epic", "wide", "genre-spotlight"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "description": "7-voice maximum width, maximum shimmer feedback, sub bass added \u2014 designed for the moment when the orchestral swell peaks. RISE macro controls the buildup velocity.",
+  "tags": [
+    "cinematic",
+    "climax",
+    "wall",
+    "epic",
+    "wide",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.78, "warmth": 0.65, "movement": 0.62, "density": 0.92, "space": 0.88, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.65,
+    "movement": 0.62,
+    "density": 0.92,
+    "space": 0.88,
+    "aggression": 0.22
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.88,
@@ -63,6 +84,13 @@
       "sky_modSlot2Amt": 0.35
     }
   },
-  "macros": {"RISE": 0.88, "WIDTH": 0.98, "GLOW": 0.82, "AIR": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RISE": 0.88,
+    "WIDTH": 0.98,
+    "GLOW": 0.82,
+    "AIR": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

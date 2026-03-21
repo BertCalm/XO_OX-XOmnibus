@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Berlin Floor",
-  "mood": "Kinetic",
-  "engines": ["Ostinato"],
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Classic Berlin techno kick/hat/clap architecture at 133 BPM. Open hats on the offbeat, closed 16ths. No groove, no mercy. This is the floor that doesn't stop for 6 hours.",
-  "tags": ["techno", "berlin", "floor", "kick-hat", "classic", "genre-spotlight"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "tags": [
+    "techno",
+    "berlin",
+    "floor",
+    "kick-hat",
+    "classic",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 133,
-  "dna": {"brightness": 0.48, "warmth": 0.32, "movement": 0.88, "density": 0.82, "space": 0.22, "aggression": 0.85},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.32,
+    "movement": 0.88,
+    "density": 0.82,
+    "space": 0.22,
+    "aggression": 0.85
+  },
   "parameters": {
     "Ostinato": {
       "osti_macroGather": 0.72,
@@ -92,6 +113,13 @@
       "osti_seat4_bodyModel": 0
     }
   },
-  "macros": {"GATHER": 0.72, "FIRE": 0.92, "CIRCLE": 0.28, "SPACE": 0.18},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GATHER": 0.72,
+    "FIRE": 0.92,
+    "CIRCLE": 0.28,
+    "SPACE": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

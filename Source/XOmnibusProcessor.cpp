@@ -42,6 +42,7 @@
 #include "Engines/Orbweave/OrbweaveEngine.h"
 #include "Engines/Overtone/OvertoneEngine.h"
 #include "Engines/Organism/OrganismEngine.h"
+#include "Engines/Oxbow/OxbowEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -221,6 +222,11 @@ static bool registered_Overtone = xomnibus::EngineRegistry::instance().registerE
 static bool registered_Organism = xomnibus::EngineRegistry::instance().registerEngine(
     "Organism", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OrganismEngine>();
+    });
+// Singularity Collection — OXBOW (entangled reverb synth engine)
+static bool registered_Oxbow = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oxbow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OxbowEngine>();
     });
 
 namespace xomnibus {

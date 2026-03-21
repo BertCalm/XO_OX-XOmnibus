@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Formant Choir",
-  "mood": "Ethereal",
-  "engines": ["Orca"],
+  "mood": "Aether",
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Formant intensity at near-maximum with LFO slowly sweeping the formant shift parameter — creates a synthetic choir vowel movement effect. Scoring-ready, highly emotional.",
-  "tags": ["cinematic", "choir", "formant", "vowel", "emotional", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Formant intensity at near-maximum with LFO slowly sweeping the formant shift parameter \u2014 creates a synthetic choir vowel movement effect. Scoring-ready, highly emotional.",
+  "tags": [
+    "cinematic",
+    "choir",
+    "formant",
+    "vowel",
+    "emotional",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.78, "movement": 0.45, "density": 0.62, "space": 0.88, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.78,
+    "movement": 0.45,
+    "density": 0.62,
+    "space": 0.88,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.45,
@@ -57,6 +78,13 @@
       "orca_macroSpace": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

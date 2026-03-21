@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Phi at depth 3 — the third convergent of the golden ratio produces a near-perfect fifth. LFO1 breathes depth at a slow organic rate (0.14 Hz), shifting between convergents like a nautilus shell growing one chamber at a time. LFO2 gently rotates partial phases. Moderate resonator mix. This is growth as timbre.",
+  "description": "Phi at depth 3 \u2014 the third convergent of the golden ratio produces a near-perfect fifth. LFO1 breathes depth at a slow organic rate (0.14 Hz), shifting between convergents like a nautilus shell growing one chamber at a time. LFO2 gently rotates partial phases. Moderate resonator mix. This is growth as timbre.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.65,
@@ -23,7 +23,7 @@
     "COUPLING",
     "SPACE"
   ],
-  "mood": "Organic",
+  "mood": "Atmosphere",
   "name": "Nautilus Breath",
   "parameters": {
     "Overtone": {

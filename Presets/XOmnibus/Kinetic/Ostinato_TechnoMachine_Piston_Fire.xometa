@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Piston Fire",
-  "mood": "Kinetic",
-  "engines": ["Ostinato"],
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "High Fire macro pushes every seat to maximum velocity. Minimal reverb, no space — just mechanical percussion in a tight room. Techno without mercy.",
-  "tags": ["techno", "aggressive", "mechanical", "velocity", "tight", "genre-spotlight"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "description": "High Fire macro pushes every seat to maximum velocity. Minimal reverb, no space \u2014 just mechanical percussion in a tight room. Techno without mercy.",
+  "tags": [
+    "techno",
+    "aggressive",
+    "mechanical",
+    "velocity",
+    "tight",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 140,
-  "dna": {"brightness": 0.52, "warmth": 0.28, "movement": 0.92, "density": 0.88, "space": 0.18, "aggression": 0.92},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.28,
+    "movement": 0.92,
+    "density": 0.88,
+    "space": 0.18,
+    "aggression": 0.92
+  },
   "parameters": {
     "Ostinato": {
       "osti_macroGather": 0.88,
@@ -92,6 +113,13 @@
       "osti_seat4_bodyModel": 0
     }
   },
-  "macros": {"GATHER": 0.88, "FIRE": 0.95, "CIRCLE": 0.35, "SPACE": 0.12},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GATHER": 0.88,
+    "FIRE": 0.95,
+    "CIRCLE": 0.35,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

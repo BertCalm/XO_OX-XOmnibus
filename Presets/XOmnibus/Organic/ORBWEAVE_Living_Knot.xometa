@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Sine strand in a trefoil knot where both LFOs work together — one modulating braid depth at a breath rate, the other sweeping filter resonance at a heartbeat rate. Medium braid depth keeps the structure visible. Slow attack and long release. This preset sounds like a living organism whose topology breathes.",
+  "description": "Sine strand in a trefoil knot where both LFOs work together \u2014 one modulating braid depth at a breath rate, the other sweeping filter resonance at a heartbeat rate. Medium braid depth keeps the structure visible. Slow attack and long release. This preset sounds like a living organism whose topology breathes.",
   "dna": {
     "brightness": 0.52,
     "warmth": 0.68,
@@ -23,7 +23,7 @@
     "KNOT",
     "SPACE"
   ],
-  "mood": "Organic",
+  "mood": "Atmosphere",
   "name": "Living Knot",
   "parameters": {
     "Orbweave": {

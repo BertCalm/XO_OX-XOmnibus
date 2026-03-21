@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **42 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20)
+and mutate into sounds impossible with any single synth. **43 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
@@ -81,6 +81,7 @@ and mutate into sounds impossible with any single synth. **42 engines** are regi
 | ORBWEAVE | XOrbweave | Kelp Knot Purple `#8E4585` |
 | OVERTONE | XOvertone | Spectral Ice `#A8D8EA` |
 | ORGANISM | XOrganism | Emergence Lime `#C6E377` |
+| OXBOW | XOxbow | Oxbow Teal `#1A6B5A` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -131,6 +132,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Orbweave | `weave_` | `weave_knotDepth` |
 | Overtone | `over_` | `over_cfDepth` |
 | Organism | `org_` | `org_ruleSet` |
+| Oxbow | `oxb_` | `oxb_entangle` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -166,6 +168,10 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/DSP/Effects/AquaticFXSuite.h` | Aquatic FX chain (Reef + Fathom + Drift + Tide) |
 | `Source/DSP/Effects/MathFXChain.h` | Mathematical FX chain (Entropy + Voronoi + Quantum + Attractor) |
 | `Source/DSP/Effects/BoutiqueFXChain.h` | Boutique FX chain (Anomaly + Archive + Cathedral + Submersion) |
+| `Source/DSP/Effects/fXOnslaught.h` | Singularity FX: transient-reactive chorus → PM collapse |
+| `Source/DSP/Effects/fXObscura.h` | Singularity FX: inverse-dynamic spectral degradation (chiaroscuro) |
+| `Source/DSP/Effects/fXOratory.h` | Singularity FX: poetic meter-driven multi-tap delay |
+| `Source/Engines/Oxbow/OxbowEngine.h` | Entangled reverb synth engine (Chiasmus FDN + phase erosion + golden resonance) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |

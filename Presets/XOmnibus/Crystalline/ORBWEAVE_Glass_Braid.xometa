@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Triangle strand tuned up an octave (+12 semitones) through a figure-eight knot. High braid depth creates shimmering crystalline interference — the knot topology reveals itself as beating harmonics. Band-pass filter centered high gives an icy, glass-bell quality. Very low LFO1 on pitch adds micro-vibrato only.",
+  "description": "Triangle strand tuned up an octave (+12 semitones) through a figure-eight knot. High braid depth creates shimmering crystalline interference \u2014 the knot topology reveals itself as beating harmonics. Band-pass filter centered high gives an icy, glass-bell quality. Very low LFO1 on pitch adds micro-vibrato only.",
   "dna": {
     "brightness": 0.88,
     "warmth": 0.25,
@@ -23,7 +23,7 @@
     "KNOT",
     "SPACE"
   ],
-  "mood": "Crystalline",
+  "mood": "Prism",
   "name": "Glass Braid",
   "parameters": {
     "Orbweave": {

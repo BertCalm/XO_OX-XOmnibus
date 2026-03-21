@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Cloud Atlas",
-  "mood": "Ethereal",
-  "engines": ["OpenSky"],
+  "mood": "Aether",
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "5-voice supersaw detuned to near-noise, shimmer and chorus fully active. The texture of memory — heard from too far away to identify. Emotional, imprecise, floating.",
-  "tags": ["cinematic", "memory", "shimmer", "detuned", "emotional", "genre-spotlight"],
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "description": "5-voice supersaw detuned to near-noise, shimmer and chorus fully active. The texture of memory \u2014 heard from too far away to identify. Emotional, imprecise, floating.",
+  "tags": [
+    "cinematic",
+    "memory",
+    "shimmer",
+    "detuned",
+    "emotional",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.72, "movement": 0.45, "density": 0.62, "space": 0.92, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.72,
+    "movement": 0.45,
+    "density": 0.62,
+    "space": 0.92,
+    "aggression": 0.05
+  },
   "parameters": {
     "OpenSky": {
       "sky_sawSpread": 0.95,
@@ -63,6 +84,13 @@
       "sky_modSlot2Amt": 0.18
     }
   },
-  "macros": {"RISE": 0.55, "WIDTH": 0.95, "GLOW": 0.75, "AIR": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RISE": 0.55,
+    "WIDTH": 0.95,
+    "GLOW": 0.75,
+    "AIR": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

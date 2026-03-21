@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Iron Circle",
-  "mood": "Kinetic",
-  "engines": ["Ostinato"],
+  "mood": "Flux",
+  "engines": [
+    "Ostinato"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Industrial drum circle at 135 BPM — kick and clap anchoring a polyrhythmic superstructure. Swing at zero. All seats driving. Maximum compressor bite. This is factory floor rhythm.",
-  "tags": ["techno", "industrial", "polyrhythm", "driving", "kick", "genre-spotlight"],
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
+  "description": "Industrial drum circle at 135 BPM \u2014 kick and clap anchoring a polyrhythmic superstructure. Swing at zero. All seats driving. Maximum compressor bite. This is factory floor rhythm.",
+  "tags": [
+    "techno",
+    "industrial",
+    "polyrhythm",
+    "driving",
+    "kick",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 135,
-  "dna": {"brightness": 0.45, "warmth": 0.35, "movement": 0.88, "density": 0.92, "space": 0.28, "aggression": 0.82},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.92,
+    "space": 0.28,
+    "aggression": 0.82
+  },
   "parameters": {
     "Ostinato": {
       "osti_macroGather": 0.72,
@@ -92,6 +113,13 @@
       "osti_seat4_bodyModel": 0
     }
   },
-  "macros": {"GATHER": 0.72, "FIRE": 0.88, "CIRCLE": 0.55, "SPACE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GATHER": 0.72,
+    "FIRE": 0.88,
+    "CIRCLE": 0.55,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

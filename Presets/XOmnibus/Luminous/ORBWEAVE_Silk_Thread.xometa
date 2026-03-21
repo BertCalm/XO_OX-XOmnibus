@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "A single sine strand draped over a trefoil knot. Minimal braid depth lets the fundamental breathe. Slow sine LFO on pitch adds a living pulse. The silk quality comes from the low resonance filter staying wide open. This is Orbweave at its most pure — one strand, one knot, endless presence.",
+  "description": "A single sine strand draped over a trefoil knot. Minimal braid depth lets the fundamental breathe. Slow sine LFO on pitch adds a living pulse. The silk quality comes from the low resonance filter staying wide open. This is Orbweave at its most pure \u2014 one strand, one knot, endless presence.",
   "dna": {
     "brightness": 0.72,
     "warmth": 0.58,
@@ -23,7 +23,7 @@
     "KNOT",
     "SPACE"
   ],
-  "mood": "Luminous",
+  "mood": "Prism",
   "name": "Silk Thread",
   "parameters": {
     "Orbweave": {

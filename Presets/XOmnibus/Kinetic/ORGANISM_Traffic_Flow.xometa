@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Rule 184 — the traffic flow automaton. Cells represent cars; the rule models bumper-to-bumper traffic. Maximum step rate (32 Hz) creates rapid cellular rhythm — individual cars pulsing through the filter. Square oscillator sharpens each traffic burst. Fast ADSR. Medium scope of 6 captures the flow density. Mutation at 0.05 occasionally causes accidents.",
+  "description": "Rule 184 \u2014 the traffic flow automaton. Cells represent cars; the rule models bumper-to-bumper traffic. Maximum step rate (32 Hz) creates rapid cellular rhythm \u2014 individual cars pulsing through the filter. Square oscillator sharpens each traffic burst. Fast ADSR. Medium scope of 6 captures the flow density. Mutation at 0.05 occasionally causes accidents.",
   "dna": {
     "brightness": 0.68,
     "warmth": 0.42,
@@ -23,7 +23,7 @@
     "COUPLING",
     "MUTATE"
   ],
-  "mood": "Kinetic",
+  "mood": "Flux",
   "name": "Traffic Flow",
   "parameters": {
     "Organism": {

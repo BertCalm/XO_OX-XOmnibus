@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
-  "description": "Lo-Fi Saw — the intentionally naive, aliasing oscillator — through dual LP filters with heavy resonance. The aliasing artifacts become musical at low notes, like a voltage-starved circuit singing hymns. Mod wheel opens the filter like a prayer.",
+  "description": "Lo-Fi Saw \u2014 the intentionally naive, aliasing oscillator \u2014 through dual LP filters with heavy resonance. The aliasing artifacts become musical at low notes, like a voltage-starved circuit singing hymns. Mod wheel opens the filter like a prayer.",
   "tags": [
     "lofi",
     "lead",
@@ -81,7 +81,7 @@
       "obrix_fx3Param": 0.3,
       "obrix_level": 0.78,
       "obrix_macroCharacter": 0.0,
-      "obrix_macroMovement": 0.0,
+      "obrix_macroMovement": 0.2,
       "obrix_macroCoupling": 0.0,
       "obrix_macroSpace": 0.0,
       "obrix_polyphony": 0,

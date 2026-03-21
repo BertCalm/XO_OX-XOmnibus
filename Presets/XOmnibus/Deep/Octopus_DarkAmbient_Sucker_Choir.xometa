@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "Sucker Choir",
-  "mood": "Deep",
-  "engines": ["Octopus"],
+  "mood": "Submerged",
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Sucker resonators tuned low and mixed high — creates an organic harmonic shimmer like a choir of pneumatic attachments. Arms at low rate produce slow, inhuman vibrato.",
-  "tags": ["dark-ambient", "resonance", "choir", "organic", "harmonic", "genre-spotlight"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Sucker resonators tuned low and mixed high \u2014 creates an organic harmonic shimmer like a choir of pneumatic attachments. Arms at low rate produce slow, inhuman vibrato.",
+  "tags": [
+    "dark-ambient",
+    "resonance",
+    "choir",
+    "organic",
+    "harmonic",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.22, "warmth": 0.75, "movement": 0.32, "density": 0.72, "space": 0.85, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.32,
+    "density": 0.72,
+    "space": 0.85,
+    "aggression": 0.12
+  },
   "parameters": {
     "Octopus": {
       "octo_armCount": 6,
@@ -60,6 +81,13 @@
       "octo_macroSpace": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.32, "COUPLING": 0.0, "SPACE": 0.75},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

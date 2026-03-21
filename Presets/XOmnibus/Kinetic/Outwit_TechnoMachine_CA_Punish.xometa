@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
   "name": "CA Punish",
-  "mood": "Kinetic",
-  "engines": ["Outwit"],
+  "mood": "Flux",
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
-  "description": "Rule 110 across 8 arms with high step rate — cellular automata running hot. Aggressive filter resonance and Den reverb tight. The machine evolves but never rests.",
-  "tags": ["techno", "cellular-automata", "aggressive", "evolving", "CA", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "description": "Rule 110 across 8 arms with high step rate \u2014 cellular automata running hot. Aggressive filter resonance and Den reverb tight. The machine evolves but never rests.",
+  "tags": [
+    "techno",
+    "cellular-automata",
+    "aggressive",
+    "evolving",
+    "CA",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": 138,
-  "dna": {"brightness": 0.55, "warmth": 0.35, "movement": 0.88, "density": 0.85, "space": 0.32, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.88,
+    "density": 0.85,
+    "space": 0.32,
+    "aggression": 0.88
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 110,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.22
     }
   },
-  "macros": {"SOLVE": 0.55, "SYNAPSE": 0.65, "CHROMATOPHORE": 0.72, "DEN": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.55,
+    "SYNAPSE": 0.65,
+    "CHROMATOPHORE": 0.72,
+    "DEN": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

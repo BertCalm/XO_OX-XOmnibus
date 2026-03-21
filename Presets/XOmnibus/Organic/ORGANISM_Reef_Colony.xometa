@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Rule 150 — the total rule, a symmetric XOR-based automaton that produces wave interference patterns. Medium scope and moderate step rate. LFO1 gently modulates step rate to make the colony breathe. LFO2 sweeps filter with organic timing. Generous reverb simulates the aquatic space around a living reef. Medium sub level for body. This is the default ecosystem.",
+  "description": "Rule 150 \u2014 the total rule, a symmetric XOR-based automaton that produces wave interference patterns. Medium scope and moderate step rate. LFO1 gently modulates step rate to make the colony breathe. LFO2 sweeps filter with organic timing. Generous reverb simulates the aquatic space around a living reef. Medium sub level for body. This is the default ecosystem.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.62,
@@ -23,7 +23,7 @@
     "COUPLING",
     "MUTATE"
   ],
-  "mood": "Organic",
+  "mood": "Atmosphere",
   "name": "Reef Colony",
   "parameters": {
     "Organism": {
