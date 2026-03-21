@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **44 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20)
+and mutate into sounds impossible with any single synth. **45 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
@@ -83,6 +83,7 @@ and mutate into sounds impossible with any single synth. **44 engines** are regi
 | ORGANISM | XOrganism | Emergence Lime `#C6E377` |
 | OXBOW | XOxbow | Oxbow Teal `#1A6B5A` |
 | OWARE | XOware | Akan Goldweight `#B5883E` |
+| OPERA | XOpera | Aria Gold `#D4AF37` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -135,6 +136,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Organism | `org_` | `org_ruleSet` |
 | Oxbow | `oxb_` | `oxb_entangle` |
 | Oware | `owr_` | `owr_material` |
+| Opera | `opera_` | `opera_drama` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -175,6 +177,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/DSP/Effects/fXOratory.h` | Singularity FX: poetic meter-driven multi-tap delay |
 | `Source/Engines/Oxbow/OxbowEngine.h` | Entangled reverb synth engine (Chiasmus FDN + phase erosion + golden resonance) |
 | `Source/Engines/Oware/OwareEngine.h` | Tuned percussion (material continuum + mallet physics + sympathetic resonance + buzz membrane) |
+| `Source/Engines/Opera/OperaAdapter.h` | Additive-vocal Kuramoto synchronicity engine (formant synthesis + phase transition + Conductor arcs) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
@@ -250,7 +253,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-**44 of 44 engines seanced** (2026-03-21) — All engines complete. OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.7/10 (up from ~7.2). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). Full data in:
+**44 of 44 engines seanced** (2026-03-21) — All engines complete. OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.8/10 (up from ~7.2; +0.1 after 5-engine D002/D004 fix pass 2026-03-21). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). **2026-03-21 post-fix rescoring**: OBESE 6.6→~8.5 (LFO1 exposed, B015 Mojo now breathes), ODDOSCAR 6.9→~8.5 (LFO1 added, aftertouch→resonance wired), ODDFELIX ~7.0→~8.5 (LFO rates exposed, aftertouch-rate wired), OCELOT 6.4→~8.5 (biome crossfade was dead — setBiomeTarget() never called — now live), ORPHICA 8.0→~8.7 (buffer extended to 1s, velocity→body resonance frequency wired). All 44 engines at 8.0+ target. Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -320,7 +323,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.7. **All 44 engines seanced and at 8.0+ target.** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
+- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.8. **All 44 engines seanced and at 8.0+ target.** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). 5 additional engines at ~8.5 after 2026-03-21 D002/D004 fixes (OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA ~8.7).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)

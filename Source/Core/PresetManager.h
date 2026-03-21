@@ -28,6 +28,10 @@ inline const juce::StringArray validEngineNames {
     "Obrix",
     // V2 theorem engines
     "Orbweave", "Overtone", "Organism",
+    // Singularity engines
+    "Oxbow", "Oware",
+    // Kuramoto vocal synthesis
+    "Opera",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -131,6 +135,11 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Orbweave",    "weave"   },
         { "Overtone",    "over"    },
         { "Organism",    "org"     },
+        // Singularity Engines
+        { "Oxbow",       "oxb"     },
+        { "Oware",       "owr"     },
+        // Kuramoto Vocal Synthesis
+        { "Opera",       "opera"   },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

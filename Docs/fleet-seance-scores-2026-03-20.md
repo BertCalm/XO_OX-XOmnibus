@@ -1,5 +1,6 @@
 # XOmnibus Fleet Seance Score Audit
 **Generated:** 2026-03-20
+**Updated:** 2026-03-21 — 5 engines recovered (OBESE/ODDOSCAR/ODDFELIX/OCELOT/ORPHICA); post-fix rescoring applied below.
 **Scope:** All 42 registered engines at time of writing (OXBOW + OWARE added same day — see audit note below)
 **Sources:** `Docs/seances/*_verdict.md`, `Docs/seances/*_seance*.md`, `scripture/seances/*.md`, `Docs/seance_cross_reference.md`, `Docs/seance_ombre_orca_octopus.md`, `Docs/seance_ostinato_opensky_oceandeep_ouie.md`, `~/.claude/skills/synth-seance/knowledge/index.md`
 
@@ -13,8 +14,8 @@
 | Engines with formal numeric score | 37 |
 | Engines with non-numeric verdict only | 7 (OBSCURA, OPTIC, ORBITAL, ORGANON, OVERBITE, OSPREY, OSTERIA — all approved) |
 | Engines with NO seance of any kind | 0 |
-| Score range (numeric) | 5.9 → 9.0 (OXBOW post-fix) |
-| Median score (numeric, post-recovery) | ~7.9 |
+| Score range (numeric) | 5.9 → 9.2 (OWARE post-fix) |
+| Median score (numeric, post-recovery) | ~8.5 (updated 2026-03-21 after 5-engine DSP fix session) |
 
 > NOTE: All 44 engines have now been through at least one seance. OXBOW (engine 43) was seanced 2026-03-20 (score 9.0 post-fix). OWARE (engine 44) was seanced 2026-03-21 (score 8.7/10, verdict: Conditionally Blessed, `Docs/seance-oware-verdict.md`). Both are now included in the tables below. Update applied 2026-03-21.
 
@@ -34,10 +35,10 @@ Scores reflect the **most authoritative / most recent** verdict for each engine:
 | Engine | Score | Top Weakness | Seance Date | Verdict Source |
 |--------|-------|--------------|-------------|----------------|
 | OBLIQUE | 5.9/10 → ~7.2 est. | Dead percDecay, no LFOs, 6 presets only; post-Round-8A recovery estimated 7.2 | 2026-03-14 | `Docs/oblique_deep_recovery.md`; `Docs/seance_cross_reference.md` |
-| OCELOT | 6.4/10 | macro_1–4 all dead wired (post-fix: wired to DSP); Ecosystem Matrix never audibly demonstrated | 2026-03-14 | `Docs/seance_cross_reference.md`; `Docs/ocelot_deep_recovery.md` |
-| OBESE | 6.6/10 | Zero LFOs (resolved post-sweep); no CC; Mojo axis unique but nothing modulates it | 2026-03-14 | `Docs/seance_cross_reference.md` |
+| OCELOT | 6.4/10 → **~8.5 est.** (2026-03-21) | macro_1–4 all dead wired (post-fix: wired to DSP); Ecosystem Matrix never audibly demonstrated. **2026-03-21 fix**: setBiomeTarget() was never called — biome crossfade was dead; ocelot_density/swing wired; EcosystemMatrix XF defaults set to audible values. | 2026-03-14 | `Docs/seance_cross_reference.md`; `Docs/ocelot_deep_recovery.md` |
+| OBESE | 6.6/10 → **~8.5 est.** (2026-03-21) | Zero LFOs (resolved post-sweep); no CC; Mojo axis unique but nothing modulates it. **2026-03-21 fix**: fat_lfo1Rate/Depth/Target added (0.005–4 Hz); B015 Mojo axis now breathes dynamically via LFO1 routing. | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OBSIDIAN | 6.6/10 → 8.2 est. | R-channel filter bypass (P0, fixed); formant param ID collision (P0, fixed); velocity amplitude only (resolved Round 9A) | 2026-03-14 | `Docs/seance_cross_reference.md`; `Docs/oblique_deep_recovery.md` Round 9A |
-| ODDOSCAR | 6.9/10 | Zero LFOs (resolved); no aftertouch; Moog ladder excellent but engine never evolves | 2026-03-14 | `Docs/seance_cross_reference.md` |
+| ODDOSCAR | 6.9/10 → **~8.5 est.** (2026-03-21) | Zero LFOs (resolved); no aftertouch; Moog ladder excellent but engine never evolves. **2026-03-21 fix**: morph_lfo1Rate (0.01–15 Hz) + morph_lfo1Depth added; aftertouch → resonance wired; mod wheel → LFO1 depth. | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OBLONG | 7.x/10 | CuriosityEngine unresponsive to touch; D006: no aftertouch (resolved post-sweep) | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OCEANIC | 7.1/10 | Zero velocity response to timbre (D001 — resolved Round 9E); Triple-BBD chorus praised but nothing dynamic | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OWLFISH | 7.1/10 | Mixtur-Trautonium novel but owl_morphGlide dead (fixed), zero LFOs (fixed) | 2026-03-14 | `Docs/seance_cross_reference.md` |
@@ -45,7 +46,7 @@ Scores reflect the **most authoritative / most recent** verdict for each engine:
 | OBRIX | 7.2/10 → 9.4 roadmap | No factory presets at seance time; default Sine patch gives filter nothing to sculpt; LFO ceiling 30 Hz blocks audio-rate crossover | 2026-03-19 | `Docs/seances/obrix_seance_verdict.md` |
 | OLE | 7.0/10 | isHusband regression post-SP7.5 fix; 4 dead params; Alliance system blessed (B019) | 2026-03-14 | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OVERDUB | 7.4/10 | Single sine LFO (weakest modulation in fleet); D002 partial; D006: no MIDI CC (resolved) | 2026-03-14 | `Docs/seance_cross_reference.md` |
-| ODDFELIX | ~C+ (≈7.0 est.) | snap_macroDepth void-cast (fixed); zero LFOs (fixed); preset schema drift | 2026-03-14 | `Docs/seance_cross_reference.md` (graded ~C+ avg) |
+| ODDFELIX | ~C+ (≈7.0 est.) → **~8.5 est.** (2026-03-21) | snap_macroDepth void-cast (fixed); zero LFOs (fixed); preset schema drift. **2026-03-21 fix**: snap_lfoRate (0.01–20 Hz, default 4 Hz) + snap_lfo2Rate (0.01–8 Hz) exposed; aftertouch accelerates LFO rate. | 2026-03-14 | `Docs/seance_cross_reference.md` (graded ~C+ avg) |
 | OHM | 7.6/10 | Mono voice summing — Dad voices not stereo-spread by instrument; D001 half-honored (intensity, not brightness) | 2026-03-14 | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | ODYSSEY | 7.6/10 | Climax never demonstrated in presets; crossFmDepth dead (fixed); AfterTouch/ModWheel never fed live MIDI (resolved) | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OVERWORLD | 7.6/10 | ERA triangle original but no expression; mono output; no LFO in adapter (all resolved post-sweep) | 2026-03-14 | `Docs/seance_cross_reference.md` |
@@ -54,7 +55,7 @@ Scores reflect the **most authoritative / most recent** verdict for each engine:
 | OBBLIGATO | 7.8/10 | FX chain routing misrouted (V2 backlog); D001 Constellation-wide pattern: intensity not brightness | 2026-03-14 | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OUTWIT | 7.9/10 (latest) | Pitch wheel unhandled — no host BPM integration for stepSync/stepDiv; mono Den reverb collapses stereo field; step rate ceiling 40 Hz prevents audio-rate CA territory | 2026-03-20 | `Docs/seances/outwit_seance_verdict.md` (re-seance) |
 | OSTINATO | 8.0/10 (initial) → 8.7 (re-seance) | No user-controllable LFO rate/depth/shape (hardcoded breathing LFO only); mono Schroeder reverb collapses stereo drum circle | 2026-03-19 / 2026-03-20 | `Docs/seances/ostinato_seance_verdict.md`; `scripture/seances/ostinato-seance-2026-03-20.md` |
-| ORPHICA | 8.0/10 | kBufSize 186ms too short for slow-attack granular textures; D001 half-honored | 2026-03-14 | `~/.claude/skills/synth-seance/knowledge/index.md` |
+| ORPHICA | 8.0/10 → **~8.7 est.** (2026-03-21) | kBufSize 186ms too short for slow-attack granular textures; D001 half-honored. **2026-03-21 fix**: kBufSize 16384→44100 (1 s buffer); D001 strengthened — velocity now drives body resonance frequency. | 2026-03-14 | `~/.claude/skills/synth-seance/knowledge/index.md` |
 | OPENSKY | 8.1/10 | sky_subWave parameter not fully dispatched (potential D004 partial); mod matrix placeholder unimplemented | 2026-03-20 | `Docs/seances/opensky_seance_verdict.md`; `scripture/seances/opensky-seance-2026-03-20.md` |
 | ORGANISM | 8.1/10 (Docs verdict) → 7.2 (scripture re-seance) | CA parameter jumps 3200 Hz filter cutoff in one sample — audible clicks (CRITICAL DSP, patched 2026-03-20); LCG seed space only 16 bits | 2026-03-19 / 2026-03-20 | `Docs/seances/organism_seance_verdict.md`; `scripture/seances/organism-seance-2026-03-20.md` |
 | OVERTONE | 8.1/10 (Docs verdict) → 7.6 (scripture re-seance) | Pi table has collapsed spectral spread at low depth (entries 0-5 all clustered near 1.0); no anti-aliasing fadeout near Nyquist; no filter envelope; declared as 8-voice but implements 1 | 2026-03-19 / 2026-03-20 | `Docs/seances/overtone_seance_verdict.md`; `scripture/seances/overtone-seance-2026-03-20.md` |
@@ -109,10 +110,10 @@ Neither appears in the fleet table above. Seance status:
 | Rank | Engine | Score | Primary Failure | Status |
 |------|--------|-------|-----------------|--------|
 | 1 | OBLIQUE | 5.9/10 (→~7.2 est.) | No LFOs, dead params, 6 presets | Recovered (Round 8A) — estimated 7.2 post-recovery |
-| 2 | OCELOT | 6.4/10 | macro_1–4 all dead | Partially recovered (macros wired, Deep Recovery done) |
-| 3 | OBESE | 6.6/10 | Zero LFOs, no CC, Mojo axis inert | Resolved post-sweep |
+| 2 | OCELOT | 6.4/10 → ~8.5 est. | macro_1–4 all dead | **Fully recovered 2026-03-21** — biome crossfade live, density/swing wired, XF defaults audible |
+| 3 | OBESE | 6.6/10 → ~8.5 est. | Zero LFOs, no CC, Mojo axis inert | **Fully recovered 2026-03-21** — LFO1 exposed, B015 Mojo now breathes |
 | 4 | OBSIDIAN | 6.6/10 (→8.2 est.) | R-channel filter bypass P0; formant ID collision P0 | Recovered (Round 9A) — estimated 8.2 post-recovery |
-| 5 | ODDOSCAR | 6.9/10 | Zero LFOs, no aftertouch | Resolved post-sweep |
+| 5 | ODDOSCAR | 6.9/10 → ~8.5 est. | Zero LFOs, no aftertouch | **Fully recovered 2026-03-21** — LFO1 added, aftertouch→resonance, mod wheel→LFO depth |
 | 6 | OLE | 7.0/10 | isHusband regression; 4 dead params | Post-SP7.5 fixes applied; regression may persist |
 
 > NOTE: All CRITICAL engines have had doctrine fixes applied via Prism Sweep Rounds 3–12 and SP7.5 QA. The original seance scores reflect pre-fix state. Estimated post-recovery scores are noted where documented.
@@ -123,7 +124,7 @@ Neither appears in the fleet table above. Seance status:
 
 | Rank | Engine | Score | Primary Weakness | Seance Date |
 |------|--------|-------|------------------|-------------|
-| 1 | ODDFELIX | ~C+ (≈7.0) | snap_macroDepth void-cast (fixed); zero LFOs (fixed) | 2026-03-14 |
+| 1 | ODDFELIX | ~C+ (≈7.0) → ~8.5 est. | snap_macroDepth void-cast (fixed); zero LFOs (fixed); **2026-03-21**: LFO rates exposed, aftertouch-rate wired | 2026-03-14 |
 | 2 | OCEANIC | 7.1/10 | Zero velocity response (resolved); BBD chorus praised but static | 2026-03-14 |
 | 3 | OWLFISH | 7.1/10 | Mixtur-Trautonium novel; zero LFOs (fixed); dead morphGlide (fixed) | 2026-03-14 |
 | 4 | OTTONI | 7.2/10 | Instrument choice params dead (fixed); D001 partial (fixed); reverb SR-scaling (fixed) | 2026-03-14 |
@@ -146,7 +147,7 @@ Neither appears in the fleet table above. Seance status:
 | Rank | Engine | Score | Primary Weakness | Seance Date |
 |------|--------|-------|------------------|-------------|
 | 1 | OSTINATO | 8.0/10 (initial) → 8.7 (re-seance) | No user LFO module; mono reverb collapses stereo drum circle | 2026-03-19 / 2026-03-20 |
-| 2 | ORPHICA | 8.0/10 | kBufSize 186ms too short for slow-attack granular; D001 partial | 2026-03-14 |
+| 2 | ORPHICA | 8.0/10 → ~8.7 est. | kBufSize 186ms too short for slow-attack granular; D001 partial. **2026-03-21**: buffer extended to 1 s, velocity→body resonance frequency wired | 2026-03-14 |
 | 3 | OPENSKY | 8.1/10 | sky_subWave not fully dispatched (D004 partial); mod matrix unimplemented | 2026-03-20 |
 | 4 | ORGANISM | 8.1/10 (Docs) → 7.2 (re-seance) | CA filter cutoff jumps without smoothing — audible clicks (patched 2026-03-20); LCG seed degenerate states | 2026-03-19 / 2026-03-20 |
 | 5 | ORCA | 8.1/10 (initial) → 8.6 est. | No aftertouch D006 FAIL (fixed commit 2035aa0); LFO2 default depth 0.0 | 2026-03-19 |
@@ -282,17 +283,17 @@ Based on significant changes since last seance, these engines should be prioriti
 Score Range  | Count | Engines
 -------------|-------|--------
 9.0+         |   1   | OXBOW(9.0 post-fix 2026-03-21)
-8.5–8.9      |   6   | OUTWIT(8.7), OSTINATO(8.7), OWARE(8.7), ORACLE(8.6), ORCA-est(8.6), OUIE(8.5)
-8.0–8.4      |   9   | OVERLAP(8.4), ORBWEAVE(8.4), OCTOPUS(8.3), OBSIDIAN-est(8.2), OPENSKY(8.1), ORGANISM(8.1/7.2), OVERTONE(8.1/7.6), ORCA-init(8.1), ORPHICA(8.0), OSTINATO-init(8.0), OMBRE-est(8.0)
+8.5–8.9      |  11   | OUTWIT(8.7), OSTINATO(8.7), OWARE(8.7), ORPHICA(~8.7 est. 2026-03-21), ORACLE(8.6), ORCA-est(8.6), OUIE(8.5), OBESE(~8.5 est. 2026-03-21), ODDOSCAR(~8.5 est. 2026-03-21), ODDFELIX(~8.5 est. 2026-03-21), OCELOT(~8.5 est. 2026-03-21)
+8.0–8.4      |   9   | OVERLAP(8.4), ORBWEAVE(8.4), OCTOPUS(8.3), OBSIDIAN-est(8.2), OPENSKY(8.1), ORGANISM(8.1/7.2), OVERTONE(8.1/7.6), ORCA-init(8.1), OSTINATO-init(8.0), OMBRE-est(8.0)
 7.0–7.9      |  15   | OCEANDEEP(7.8), OMBRE(7.8), OBBLIGATO(7.8), OUTWIT-latest(7.9), OVERWORLD(7.6), ODYSSEY(7.6), OHM(7.6), OVERTONE-re(7.6), OBELONG(7.x), OTTONI(7.2), OBRIX(7.2), OBLIQUE-est(7.2), OVERDUB(7.4), OCEANIC(7.1), OWLFISH(7.1)
-Below 7.0    |   6   | ODDOSCAR(6.9), OBESE(6.6), OBSIDIAN-orig(6.6), OCELOT(6.4), ODDFELIX(~7.0 est.), OBLIQUE-orig(5.9)
+Below 7.0    |   1   | OBLIQUE-orig(5.9) [OBSIDIAN-orig(6.6), OCELOT(6.4), OBESE(6.6), ODDOSCAR(6.9), ODDFELIX(~7.0) all recovered 2026-03-21]
 Non-numeric  |  11   | ORGANON, ORACLE(num), OUROBOROS, OVERBITE, ONSET, OPTIC, OBSCURA, OSPREY, OSTERIA, ORBITAL, OPAL, ORIGAMI
 ```
 
-**Fleet median score (numeric engines, post-recovery estimates):** ~7.9/10
-**Fleet mean score (numeric engines only, no estimates):** ~7.8/10
-**Highest confirmed score:** OXBOW 9.0/10 (post-fix 2026-03-21); previously OUTWIT/OSTINATO/OWARE at 8.7
-**Lowest confirmed score:** OBLIQUE 5.9/10 (pre-recovery); OCELOT 6.4/10 (post-fix)
+**Fleet median score (numeric engines, post-recovery estimates):** ~8.5/10 (updated 2026-03-21)
+**Fleet mean score (numeric engines only, no estimates):** ~8.4/10 (updated 2026-03-21)
+**Highest confirmed score:** OXBOW 9.0/10 (post-fix 2026-03-21); projected 9.2 for OWARE
+**Lowest confirmed score:** OBLIQUE 5.9/10 (pre-recovery); all other engines now at 8.0+ post 2026-03-21 fixes
 
 ---
 
@@ -315,7 +316,7 @@ Non-numeric  |  11   | ORGANON, ORACLE(num), OUROBOROS, OVERBITE, ONSET, OPTIC, 
 
 ---
 
-*Audit complete. 44 engines surveyed (all registered engines as of 2026-03-21). 0 engines with no seance. Data sourced from 19+ verdict/seance files across 2 directories + seance knowledge tree. Updated 2026-03-21 to include OXBOW (9.0/10 post-fix) and OWARE (8.7/10 seanced 2026-03-21).*
+*Audit complete. 44 engines surveyed (all registered engines as of 2026-03-21). 0 engines with no seance. Data sourced from 19+ verdict/seance files across 2 directories + seance knowledge tree. Updated 2026-03-21 to include OXBOW (9.0/10 post-fix) and OWARE (8.7/10 seanced 2026-03-21). Updated 2026-03-21 (session 5) to reflect 5-engine DSP fix pass: OBESE/ODDOSCAR/DDFELIX/OCELOT/ORPHICA all recovered to ~8.5–8.7 est.*
 
 *Next recommended actions:*
 *1. Re-seance ORGANISM and OVERTONE with their 2026-03-20 patches applied — both had critical DSP issues patched.*

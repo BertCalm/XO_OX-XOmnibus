@@ -44,6 +44,7 @@
 #include "Engines/Organism/OrganismEngine.h"
 #include "Engines/Oxbow/OxbowEngine.h"
 #include "Engines/Oware/OwareEngine.h"
+#include "Engines/Opera/OperaAdapter.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -233,6 +234,11 @@ static bool registered_Oxbow = xomnibus::EngineRegistry::instance().registerEngi
 static bool registered_Oware = xomnibus::EngineRegistry::instance().registerEngine(
     "Oware", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OwareEngine>();
+    });
+// OPERA — additive-vocal Kuramoto synchronicity engine (Humpback Whale / SOFAR)
+static bool registered_Opera = xomnibus::EngineRegistry::instance().registerEngine(
+    "Opera", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OperaAdapter>();
     });
 
 namespace xomnibus {
