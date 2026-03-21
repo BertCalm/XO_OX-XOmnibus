@@ -2,6 +2,7 @@
 
 **Invoke with:** `/preset-architect`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.2 | **Next Review:** On new engine addition or mood addition
 **Purpose:** Create high-quality `.xometa` presets from scratch — parameter design, DNA assignment, naming, mood selection, macro mapping, and quality gate.
 
 ---
@@ -35,7 +36,7 @@ Before writing a single parameter, know these things:
 
 ## Phase 2: Choose Mood and Sound Goal
 
-### The 7 Moods
+### The 8 Moods
 
 | Mood | Target Sounds | DNA Profile |
 |------|--------------|-------------|
@@ -46,6 +47,7 @@ Before writing a single parameter, know these things:
 | **Flux** | Glitchy, unstable, broken, lo-fi, experimental | High `movement` + `aggression`, lower `warmth` |
 | **Aether** | Cinematic, transcendent, evolving, spiritual | High `space` + `movement`, lower `aggression` |
 | **Family** | Constellation family engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) only | Per-engine |
+| **Submerged** | Deep underwater, abyssal, pressure, bioluminescence | High `density` + `space`, low `brightness`, moderate `warmth` |
 
 ### Mood Coverage Check
 
@@ -235,6 +237,17 @@ Check `Docs/sonic_dna_audit.md` for gaps. When adding a preset:
 | OLE | `Ole` |
 | OVERLAP | `Overlap` |
 | OUTWIT | `Outwit` |
+| OMBRE | `Ombre` |
+| ORCA | `Orca` |
+| OCTOPUS | `Octopus` |
+| OSTINATO | `Ostinato` |
+| OPENSKY | `OpenSky` |
+| OCEANDEEP | `OceanDeep` |
+| OUIE | `Ouie` |
+| OBRIX | `Obrix` |
+| ORBWEAVE | `Orbweave` |
+| OVERTONE | `Overtone` |
+| ORGANISM | `Organism` |
 
 ---
 

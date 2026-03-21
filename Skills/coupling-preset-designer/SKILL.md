@@ -2,6 +2,7 @@
 
 **Invoke with:** `/coupling-preset-designer`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new engine addition or coupling type change
 **Purpose:** Design a coupling preset from scratch — engine pair selection, coupling type mapping, parameter crafting, DNA assignment, and final `.xometa` output.
 
 ---
