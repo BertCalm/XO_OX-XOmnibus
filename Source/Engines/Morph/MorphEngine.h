@@ -4,6 +4,7 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/PitchBendUtil.h"
 #include <array>
 #include <cmath>
 
@@ -526,6 +527,8 @@ public:
                     modWheelMorphOffset = static_cast<float> (controllerValue) / 127.0f * 3.0f;
                 }
             }
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -615,7 +618,8 @@ public:
                 // Use currentFrequency (glide-smoothed) instead of raw MIDI note.
                 // In Poly mode with glideCoefficient=1.0, currentFrequency == targetFrequency
                 // so behavior is identical to the previous per-sample noteNumber lookup.
-                float baseFrequency = voice.currentFrequency;
+                float baseFrequency = voice.currentFrequency
+                                      * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 for (int i = 0; i < 3; ++i)
                 {
@@ -1206,8 +1210,9 @@ private:
     PolyAftertouch aftertouch;
 
     //-- MIDI performance state ------------------------------------------------
-    bool sustainPedalDown = false;              // CC64 sustain pedal state
+    bool sustainPedalDown    = false;           // CC64 sustain pedal state
     float modWheelMorphOffset = 0.0f;           // CC1 mod wheel [0, 3.0] — sweeps morph position
+    float pitchBendNorm      = 0.0f;            // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Output cache for coupling reads ---------------------------------------
     std::vector<float> outputCacheLeft;         // left channel output (per-sample, for getSampleForCoupling)

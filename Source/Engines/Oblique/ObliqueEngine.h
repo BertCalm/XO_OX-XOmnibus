@@ -41,6 +41,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/PitchBendUtil.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -838,6 +839,8 @@ public:
             // D006: channel pressure → aftertouch (applied to prism mix depth below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -977,8 +980,9 @@ public:
                 {
                     voice.currentFrequency = voice.targetFrequency;
                 }
-                // Apply coupling pitch modulation (in semitones, via pow2)
-                float frequency = voice.currentFrequency * fastPow2 (couplingPitchMod);
+                // Apply coupling pitch modulation (in semitones, via pow2) + pitch bend
+                float frequency = voice.currentFrequency * fastPow2 (couplingPitchMod)
+                                  * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // --- Dual Oscillator ---
                 // Primary oscillator at pitch; secondary detuned by oscDetuneCents
@@ -1459,7 +1463,8 @@ private:
     ObliquePhaser phaserEffect;       // 6-stage allpass psychedelic swirl
 
     // D006: mod wheel — CC1 increases prism color spread (more spectral color with wheel; sensitivity 0.3)
-    float modWheelValue = 0.0f;
+    float modWheelValue  = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // D005: Prism LFO — autonomous spectral modulation (D005 compliance).
     // A slow sine LFO at 0.2 Hz modulates prism color spread ±0.15, making the

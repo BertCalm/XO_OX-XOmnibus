@@ -14,6 +14,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/PitchBendUtil.h"
 #include <array>
 #include <vector>
 #include <algorithm>
@@ -911,6 +912,8 @@ public:
                 // D006: CC1 mod wheel → Mojo boost (classic Moog expression axis; sensitivity 0.5)
                 else if (msg.isController() && msg.getControllerNumber() == 1)
                     modWheelValue = msg.getControllerValue() / 127.0f;
+                else if (msg.isPitchWheel())
+                    pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
             }
 
             // Get arp events for this block
@@ -969,6 +972,8 @@ public:
                 // D006: CC1 mod wheel → Mojo boost (classic Moog expression axis; sensitivity 0.5)
                 else if (msg.isController() && msg.getControllerNumber() == 1)
                     modWheelValue = msg.getControllerValue() / 127.0f;
+                else if (msg.isPitchWheel())
+                    pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
             }
         }
 
@@ -1046,8 +1051,9 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // Pitch mod (coupling)
-                float freq = baseFreq * fastExp (pitchMod * (0.693147f / 12.0f));
+                // Pitch mod (coupling) + pitch bend
+                float freq = baseFreq * fastExp (pitchMod * (0.693147f / 12.0f))
+                             * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // Filter envelope
                 float fltEnvVal = voice.filterEnv.process();
@@ -1564,7 +1570,8 @@ private:
     PolyAftertouch aftertouch;
 
     // D006: mod wheel — CC1 boosts Mojo (more analog drift + saturation with wheel; sensitivity 0.5)
-    float modWheelValue = 0.0f;
+    float modWheelValue  = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     float envelopeOutput = 0.0f;
     float externalPitchMod = 0.0f;

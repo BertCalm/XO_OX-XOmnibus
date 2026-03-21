@@ -5,6 +5,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/PitchBendUtil.h"
 #include <array>
 #include <cmath>
 
@@ -395,6 +396,8 @@ public:
             {
                 modWheelValue = message.getControllerValue() / 127.0f;
             }
+            else if (message.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel (message.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -532,7 +535,8 @@ public:
                                       + voice.targetPitch * sweepProgress;
                 currentMidiNote += pitchModulation;
 
-                float frequency = midiToHz (currentMidiNote);
+                float frequency = midiToHz (currentMidiNote)
+                                  * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // ---- Oscillator output with unison --------------------------
                 int activeUnisonCount = std::min (unisonCount, 4);
@@ -1046,6 +1050,7 @@ private:
 
     // ---- D006 Mod wheel — CC1 increases BPF resonance (more ring/peak; sensitivity 0.4) ----
     float modWheelValue = 0.0f;
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // ---- Coupling state ----
     float envelopeOutput = 0.0f;           // Peak envelope for coupling channel 2
