@@ -232,6 +232,19 @@ target_sources(XOmnibus PRIVATE
     Source/Engines/Organism/OrganismEngine.cpp
     Source/Engines/Oxbow/OxbowEngine.h
     Source/Engines/Oxbow/OxbowEngine.cpp
+    Source/Engines/Oware/OwareEngine.h
+    Source/Engines/Oware/OwareEngine.cpp
+
+    # Kuramoto Vocal Synthesis
+    Source/Engines/Opera/OperaConstants.h
+    Source/Engines/Opera/KuramotoField.h
+    Source/Engines/Opera/OperaPartialBank.h
+    Source/Engines/Opera/OperaBreathEngine.h
+    Source/Engines/Opera/OperaConductor.h
+    Source/Engines/Opera/ReactiveStage.h
+    Source/Engines/Opera/OperaEngine.h
+    Source/Engines/Opera/OperaAdapter.h
+    Source/Engines/Opera/OperaAdapter.cpp
 
     # Singularity Collection FX
     Source/DSP/Effects/fXObscura.h
