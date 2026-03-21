@@ -355,6 +355,331 @@ This metadata lets the MPC producer know the DNA of the kit they're loading.
 
 ---
 
+## P0 Resolution: Curiosity Engine Algorithm (Seance Requirement)
+
+The ghosts required defined mathematical functions before B035 ratification. Here they are.
+
+### Berlyne Hedonic Curve → `ofr_digCuriosity`
+
+Berlyne (1960) showed that aesthetic pleasure follows an inverted-U as a function of novelty/complexity. The mapping:
+
+```cpp
+// berlyneCurve: maps curiosity parameter to a hedonic modulation factor
+// x = ofr_digCuriosity [0.0, 1.0]
+// Returns a modulation multiplier applied to transient parameter variation
+float berlyneCurve(float x) {
+    // Inverted-U: peak at x=0.5, zero at x=0 and x=1
+    // 4x(1-x) is the simplest quadratic with this shape
+    // We scale it to [0.2, 1.0] so even at extremes there's *some* variation
+    return 0.2f + 0.8f * (4.0f * x * (1.0f - x));
+}
+```
+
+**DSP effect:** `berlyneCurve(curiosity)` scales the *range* of stochastic variation in the transient generator. At curiosity=0.5 (peak), transients have maximum timbral variety per trigger. At 0.0 or 1.0, variation is minimal (but for different reasons: 0.0 = predictably classic, 1.0 = predictably alien).
+
+At curiosity > 0.7, the *base parameters* themselves shift toward unusual values:
+```cpp
+float alienShift = juce::jmax(0.0f, (curiosity - 0.7f) / 0.3f);  // 0 below 0.7, ramps to 1.0
+// alienShift biases transient body toward noise, pitch envelope toward extremes
+effectiveBody = baseBody * (1.0f - alienShift * 0.6f);  // more noise at high curiosity
+effectivePitchEnv = basePitchEnv * (1.0f + alienShift * 2.0f);  // wilder pitch at high curiosity
+```
+
+### Wundt Hedonic Curve → `ofr_digComplexity`
+
+Wundt (1874) predicted pleasure peaks at moderate stimulus intensity. Maps to variation density:
+
+```cpp
+// wundtDensity: maps complexity to the number of simultaneous timbral variations per trigger
+// x = ofr_digComplexity [0.0, 1.0]
+// Returns a density factor [0.0, 1.0] that controls how many parameters vary per hit
+float wundtDensity(float x) {
+    // Asymmetric curve: slow ramp up, sharper fall after peak at 0.6
+    // Models Wundt's finding that overstimulation drops pleasure faster than understimulation
+    if (x <= 0.6f)
+        return x / 0.6f;  // linear ramp to peak
+    else
+        return 1.0f - ((x - 0.6f) / 0.4f) * 0.7f;  // drops to 0.3 at x=1.0
+}
+```
+
+**DSP effect:** `wundtDensity(complexity)` determines how many of the 6 voice parameters (tune, decay, body, snap, pitch env, sat) are randomly varied per trigger. At complexity=0.6 (peak), all 6 vary. At 0.0, none vary (identical hits). At 1.0, only 2 vary but by extreme amounts (overwhelming simplicity with jarring intensity).
+
+```cpp
+int paramsToVary = juce::roundToInt(wundtDensity(complexity) * 6.0f);
+float variationRange = (complexity > 0.6f) ? (complexity - 0.6f) / 0.4f * 3.0f : 1.0f;
+// High complexity = fewer params but wilder swings. Low = more params, gentler variation.
+```
+
+### Csikszentmihalyi Flow State → `ofr_digFlow`
+
+Flow (1975) occurs when challenge matches skill — in drumming, when patterns are complex enough to engage but predictable enough to groove to:
+
+```cpp
+// flowBalance: maps flow parameter to pattern predictability ratio
+// x = ofr_digFlow [0.0, 1.0]
+// Returns: probability [0.0, 1.0] that the NEXT hit uses the SAME variation as the previous hit
+float flowBalance(float x) {
+    // At flow=0: every hit is different (chaos, no groove)
+    // At flow=0.5: 50% repeat, 50% new (engaged groove)
+    // At flow=1.0: every hit repeats exactly (locked, hypnotic)
+    return x;  // Linear mapping — the simplest is correct here
+}
+```
+
+**DSP effect:** After the Berlyne/Wundt system generates a variation set, `flowBalance` determines whether to *reuse* the previous trigger's parameter set or generate a new one. This creates the groove/chaos axis:
+
+```cpp
+bool reuseLastVariation = (randomFloat01() < flowBalance(flow));
+if (reuseLastVariation) {
+    // Use cached parameter set from last trigger — creates the "locked" Dilla pocket
+    currentParams = lastTriggerParams;
+} else {
+    // Generate new variation set using Berlyne/Wundt
+    currentParams = generateVariation(berlyneCurve(curiosity), wundtDensity(complexity));
+    lastTriggerParams = currentParams;
+}
+```
+
+---
+
+## P0 Resolution: Per-Type Transient Models (Seance Requirement)
+
+Each drum type has a **distinct synthesis topology**, not just different parameter values on a shared oscillator.
+
+### Kick (Type 0)
+```
+Sine oscillator (60-120 Hz base)
+  → Pitch envelope: exponential decay from startFreq (200-800 Hz) to baseFreq
+  → Soft-clip saturation (waveshaping: tanh)
+  → Body resonance: 2nd-order bandpass at baseFreq, Q=2-8
+  → Sub-harmonic: half-frequency sine mixed at -6dB
+  → Amp envelope: AD (attack 0.5ms, decay 50-500ms)
+```
+**Unique DSP:** Pitch envelope with exponential decay. The "boom" comes from the pitch sweep speed.
+
+### Snare (Type 1)
+```
+Dual source:
+  Source A: Triangle oscillator (150-250 Hz) → bandpass
+  Source B: Filtered noise (HP at 2kHz, LP at 12kHz) → noise body
+  → Mix A/B controlled by ofr_voiceBody
+  → Transient click: impulse → HP at 4kHz (the "snap")
+  → Amp envelope: AD (attack 0.1ms, decay 80-400ms)
+```
+**Unique DSP:** Dual-source (tonal + noise) with separate bandpass. Body parameter crossfades.
+
+### Closed Hat (Type 2)
+```
+6-operator metallic network:
+  3 square oscillators at inharmonic ratios (1.0, 1.4471, 1.6818)
+  → Ring-modulated in pairs → summed
+  → Bandpass at 8-12kHz, Q=1
+  → Amp envelope: AD (attack 0.1ms, decay 10-80ms, short)
+```
+**Unique DSP:** Inharmonic metallic FM network (6-op). Ratios from Roland TR-808 analysis.
+
+### Open Hat (Type 3)
+```
+Same metallic network as Closed Hat
+  → Bandpass at 6-10kHz, Q=0.7 (wider)
+  → Amp envelope: AD (attack 0.1ms, decay 200-800ms, longer)
+  → Choke group with Closed Hat (noteOn for Type 2 kills Type 3)
+```
+**Unique DSP:** Shared metallic network with closed hat, different envelope + choke behavior.
+
+### Clap (Type 4)
+```
+Micro-burst generator:
+  3-5 filtered noise bursts spaced 5-15ms apart (the "clap spread")
+  → Each burst: noise → BP at 1-3kHz → AD envelope (0.1ms attack, 5ms decay)
+  → Reverb tail: noise → BP at 1.5kHz → longer decay (100-300ms)
+  → Amp envelope on tail only
+```
+**Unique DSP:** Multi-burst timing. The spread between bursts creates the clap character.
+
+### Rim (Type 5)
+```
+Click + resonance:
+  Click: impulse → HP at 6kHz (ultra-short, < 1ms)
+  Resonance: sine at 400-900 Hz → tight BP, Q=12 → AD (decay 20-60ms)
+  → Mix click at -3dB + resonance
+```
+**Unique DSP:** Extreme Q bandpass for the metallic "ping."
+
+### Tom (Type 6)
+```
+Sine oscillator (80-300 Hz, tunable across range)
+  → Pitch envelope: gentler than kick (200ms decay, shallower)
+  → Soft saturation (mild)
+  → Amp envelope: AD (attack 0.5ms, decay 100-600ms)
+```
+**Unique DSP:** Like kick but with wider pitch range and gentler pitch envelope. Tunable across full tom range.
+
+### Percussion (Type 7)
+```
+Noise + comb filter:
+  White noise → Comb filter (delay time sets pitch, 50-500 Hz range)
+  → Feedback 0.3-0.8 (metallic resonance)
+  → HP at 200 Hz
+  → Amp envelope: AD (attack 0.1ms, decay 30-200ms)
+```
+**Unique DSP:** Comb-filtered noise creates Karplus-Strong-adjacent metallic percussion. Delay time tunes the pitch.
+
+---
+
+## P0 Resolution: City Structural Uniqueness (Seance Requirement for B036)
+
+Per Buchla's critique, each city needs at least one **structurally unique DSP stage** — a different topology, not just different parameter values. Added as Stage 6 per city:
+
+### City 0: New York — Feedback Noise Gate (UNIQUE)
+```cpp
+// After standard 5 stages, NY adds a feedback noise gate:
+// Signal feeds back into a noise gate that opens/closes based on transient energy
+// Creates the "chopped" character of Premier-era production
+float gateThreshold = 0.3f * cityIntensity;
+bool gateOpen = (envelopeFollower > gateThreshold);
+output = gateOpen ? output : output * 0.05f;  // Hard gate with -26dB floor
+```
+**Why unique:** No other city has a dynamics-responsive gate. NY's "chop" is architectural.
+
+### City 1: Detroit — Feedback Saturation Loop (UNIQUE)
+```cpp
+// Detroit adds a feedback saturation loop:
+// Output feeds back through a soft-clip, creating cumulative warmth that builds over repeated hits
+// Models the MPC3000's analog output stage behavior
+feedbackState = feedbackState * 0.95f + output * 0.05f;  // leaky integrator
+float saturated = std::tanh(feedbackState * (1.0f + cityIntensity * 2.0f));
+output = output * 0.7f + saturated * 0.3f * cityIntensity;
+```
+**Why unique:** Stateful saturation that accumulates across hits. Sound gets warmer the more you play.
+
+### City 2: Los Angeles — Parallel Compression (UNIQUE)
+```cpp
+// LA adds parallel (New York-style, ironically) compression:
+// Dry signal + heavily compressed signal mixed in parallel
+// Creates the Madlib "squashed but present" aesthetic
+float compressed = hardCompress(output, ratio=8.0f, threshold=-18dB);
+output = output * (1.0f - cityIntensity * 0.5f) + compressed * cityIntensity * 0.5f;
+```
+**Why unique:** Parallel topology (dry + compressed mixed) vs. serial compression in other cities.
+
+### City 3: Toronto — Sidechain Sub Duck (UNIQUE)
+```cpp
+// Toronto adds sidechain ducking from its own sub-harmonic generator:
+// The sub ducks the mid/high content on transients, creating ultra-clean low-end separation
+float subEnergy = subHarmonicEnvelope;
+float duckAmount = subEnergy * cityIntensity * 0.4f;
+float midHigh = highPass(output, 200.0f);
+float sub = lowPass(output, 200.0f);
+output = sub + midHigh * (1.0f - duckAmount);  // mids duck when sub hits
+```
+**Why unique:** Internal sidechain — the drum's own sub-harmonic ducks its own mid/highs. Self-referential dynamics.
+
+### City 4: Bay Area — Recursive Allpass Fog (UNIQUE, replaces convolution)
+```cpp
+// Bay Area replaces convolution with a recursive allpass fog network:
+// 4 cascaded allpass filters with prime-number delay lengths create diffuse spatial character
+// No IR needed — purely algorithmic. Pre-allocated in prepare().
+float fog = output;
+for (int i = 0; i < 4; ++i) {
+    fog = allpass[i].process(fog);  // delays: 7, 13, 23, 37 samples (prime, short)
+}
+output = output * (1.0f - cityIntensity * 0.4f) + fog * cityIntensity * 0.4f;
+// Feedback between last and first allpass creates the "fog" decay
+allpass[0].addFeedback(fog * 0.3f * cityIntensity);
+```
+**Why unique:** Recursive allpass network with feedback — creates fog without convolution. No IR loading, no audio-thread allocation. Purely algorithmic spatial character.
+
+---
+
+## Architect's Conditions Resolution
+
+### ParamSnapshot Specification
+
+```cpp
+struct OfferingParamSnapshot {
+    // Global params (32) — cached once per processBlock
+    float transientSnap, transientPitch, transientSat;
+    float dustVinyl, dustTape, dustWobble;
+    int   dustBits, dustSampleRate;
+    float flipChop, flipStretch, flipRingMod;
+    int   flipLayers;
+    int   cityMode;
+    float cityBlend, cityIntensity;
+    float digCuriosity, digComplexity, digFlow;
+    float velToSnap, velToBody;
+    float lfo1Rate, lfo1Depth, lfo2Rate, lfo2Depth;
+    int   lfo1Shape;
+    float aftertouch, modWheel;
+    float masterLevel, masterWidth;
+
+    // Per-voice params (6 × 8 = 48) — cached once per processBlock
+    struct VoiceSnap {
+        int   type;
+        float tune, decay, body, level, pan;
+    } voice[8];
+};
+// Total: 80 atomic reads per block, zero per sample.
+```
+
+### Denormal Flush Map
+
+| Location | Why | Implementation |
+|----------|-----|---------------|
+| Kick pitch envelope decay | Exponential approaches zero | `flushDenormal(pitchEnvState)` |
+| Snare noise filter state | IIR filter state variables | `flushDenormal(noiseFilterState)` |
+| Hat metallic network | Ring mod products near zero | `flushDenormal(ringModOutput)` |
+| Clap reverb tail | Long decay approaches zero | `flushDenormal(clapTailState)` |
+| Detroit feedback sat loop | Leaky integrator accumulates | `flushDenormal(feedbackState)` |
+| Bay Area allpass fog | Recursive feedback path | `flushDenormal(allpassState[i])` per allpass |
+| LFO1 at 0.01 Hz | State variable at ultra-low rate | `flushDenormal(lfo1Phase)` |
+| LFO2 amplitude mod | Amplitude near zero | `flushDenormal(lfo2State)` |
+| Compression gain reduction | Envelope follower decay | `flushDenormal(compEnvState)` per city |
+
+**Total: 12+ flush points. All use `flushDenormal()` from `Source/DSP/FastMath.h`.**
+
+### City Blend Morphing Strategy
+
+**Shadow-chain approach with lazy activation:**
+
+```cpp
+void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot& snap) {
+    if (snap.cityBlend < 0.001f) {
+        // Pure city — single chain, no blending overhead
+        cityChains[snap.cityMode].process(buffer, numSamples, snap.cityIntensity);
+    } else {
+        // Blending — run both chains, crossfade outputs
+        float dry[numSamples];  // stack-allocated (small block sizes)
+        std::memcpy(dry, buffer, numSamples * sizeof(float));
+
+        int cityA = snap.cityMode;
+        int cityB = (snap.cityMode + 1) % 5;
+
+        cityChains[cityA].process(buffer, numSamples, snap.cityIntensity);
+        cityChains[cityB].process(dry, numSamples, snap.cityIntensity);
+
+        // Equal-power crossfade
+        float gainA = std::cos(snap.cityBlend * juce::MathConstants<float>::halfPi);
+        float gainB = std::sin(snap.cityBlend * juce::MathConstants<float>::halfPi);
+        for (int i = 0; i < numSamples; ++i)
+            buffer[i] = buffer[i] * gainA + dry[i] * gainB;
+    }
+}
+```
+
+**CPU cost:** 1x at rest (cityBlend=0), 2x during morph. All 5 chains are pre-allocated in `prepare()`. No runtime allocation.
+
+### D003 Dual Pathway Clarification
+
+> **D003 compliance is satisfied via dual pathway:**
+> - **Transient Generator:** Uses physics-based analog drum synthesis (pitch envelope models, resonant bandpass, FM metallic networks). The kick's pitch sweep, snare's dual-source topology, and hat's 6-operator metallic network all derive from published hardware analysis (Roland TR-808/909 circuit analysis).
+> - **Curiosity Engine:** Extends the doctrine to published psychoacoustic research. Berlyne (1960), Wundt (1874), and Csikszentmihalyi (1975) are cited with defined mathematical functions mapping theory to DSP behavior. The psychology IS the generation, as the physics IS the synthesis.
+>
+> D003 applies by analogy to the Curiosity Engine and literally to the Transient Generator.
+
+---
+
 ## V1 vs V2 Scope
 
 ### V1 (Build Now)
@@ -412,12 +737,18 @@ This metadata lets the MPC producer know the DNA of the kit they're loading.
 
 ---
 
+## Completed Phases
+
+1. ~~**Seance**~~ — 7.9/10. B035 conditional (8-0). B036 denied (3-5). 3 P0s identified and RESOLVED above.
+2. ~~**Mythology**~~ — Mantis Shrimp, Rubble Zone (5-15m), 65% feliX / 35% Oscar. First crustacean.
+3. ~~**RAC Review**~~ — Architect APPROVED WITH CONDITIONS (all resolved). Khan: "Most strategic since OBRIX." Ringleader: 4-session plan.
+4. ~~**P0 Resolution**~~ — Curiosity Engine algorithms defined. Per-type transient models specified. City structural uniqueness added. Convolution→allpass fog. ParamSnapshot, denormals, city blend, D003 all resolved.
+
 ## Next Steps
 
-1. **Seance** — Ghost council review of the architecture before build (`/synth-seance`)
-2. **Mythology** — Aquatic identity assignment (`/mythology-keeper`)
-3. **Scaffold** — `/new-xo-project` with name=XOffering, code=XOFR
-4. **Build** — Phase 2: TransientGenerator → TextureLayer → CollageEngine → CityProcessor → CuriosityEngine → Voice → Master
-5. **Presets** — `/exo-meta` for initial 150 presets, then `/preset-audit-checklist` for 9.0+ quality gate
-6. **Retreat** — `/guru-bin` refinement on the V1 presets
-7. **Integrate** — Phase 3-4: Adapter → XOmnibus registration → engine #45
+1. **Scaffold** — `/new-xo-project` with name=XOffering, code=XOFR
+2. **Build** — Phase 2: TransientGenerator → TextureLayer → CollageEngine → CityProcessor → CuriosityEngine → Voice → Master
+3. **Presets** — `/exo-meta` for initial 150 presets, then `/preset-audit-checklist` for 9.0+ quality gate
+4. **Retreat** — `/guru-bin` refinement on the V1 presets
+5. **Integrate** — Phase 3-4: Adapter → XOmnibus registration → engine #45
+6. **Re-seance** — Post-build ghost scoring (target 9.0+ with P0 fixes applied)
