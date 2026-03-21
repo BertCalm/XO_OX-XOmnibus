@@ -50,8 +50,31 @@ namespace xomnibus {
 //                       Coefficients hoisted to block rate for efficiency.
 //                       (obrix_distance, obrix_air)
 //
+// Wave 4 — Biophonic Synthesis (79 params total):
+//   Harmonic Field — global JI attractor/repulsor. Voices are pulled toward or away
+//                    from 7-limit just-intonation ratios (3-limit / 5-limit / 7-limit).
+//                    Per-voice jifiOffset[2] (cents) converges via 1st-order IIR.
+//                    (obrix_fieldStrength, obrix_fieldPolarity, obrix_fieldRate,
+//                     obrix_fieldPrimeLimit)
+//   Environmental Parameters ("The Water") — four thermodynamic state variables:
+//                    Temperature (entropy drift rate), Pressure (LFO rate scaling),
+//                    Current (directional LFO/cutoff bias), Turbidity (spectral noise).
+//                    (obrix_envTemp, obrix_envPressure, obrix_envCurrent, obrix_envTurbidity)
+//   Brick Ecology — Competition (amplitude cross-suppression between src1/src2),
+//                   Symbiosis (noise src1 amplitude → FM index on src2).
+//                   (obrix_competitionStrength, obrix_symbiosisStrength)
+//   Stateful Synthesis — Stress Memory (velocity leaky integrator, τ=30–60s → timbre),
+//                        Bleaching (sustained high-register play → harmonic attenuation),
+//                        State Reset trigger (explicit reef reset affordance).
+//                        (obrix_stressDecay, obrix_bleachRate, obrix_stateReset)
+//   FX Mode — Serial (default, existing behavior) vs Parallel (each slot on dry, summed).
+//             (obrix_fxMode)
+//
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
-// Blessing B016: Brick Independence
+// Blessing B016-AMENDED: MIDI-layer voice independence is inviolable. Synthesis-layer
+//   interdependence (shared attractors, cross-voice amplitude relationships, environmental
+//   globals) is permitted provided no synthesis-layer coupling propagates back to affect
+//   MIDI routing or voice stealing.
 //==============================================================================
 
 //==============================================================================
@@ -274,6 +297,9 @@ struct ObrixVoice
 
     float pan = 0.0f;
 
+    // Biophonic Phase 1 — Harmonic Field JI correction (cents per source, IIR state)
+    float jifiOffset[2] {};
+
     void reset() noexcept
     {
         active = false;
@@ -290,6 +316,7 @@ struct ObrixVoice
         for (auto& f : procFilters) f.reset();
         procFbState[0] = procFbState[1] = 0.0f;
         pan = 0.0f;
+        jifiOffset[0] = jifiOffset[1] = 0.0f;
     }
 };
 
@@ -329,6 +356,11 @@ public:
         journeyMode_ = false;
         distFiltL_ = distFiltR_ = 0.0f;
         airFiltL_  = airFiltR_  = 0.0f;
+
+        // Wave 4 — Biophonic Synthesis state
+        stressLevel_   = 0.0f;
+        bleachLevel_   = 0.0f;
+        prevResetTrig_ = 0.0f;
     }
 
     //==========================================================================
@@ -419,6 +451,55 @@ public:
         const float distance   = loadP (pDistance,   0.0f);   // 0=close, 1=far (HF rolloff)
         const float air        = loadP (pAir,        0.5f);   // 0=warm(bass), 1=cold(treble)
         journeyMode_ = journeyOn; // cached for noteOff suppression in MIDI handler
+
+        // Wave 4 params — Biophonic Synthesis (all default 0 for backward compat)
+        const float fieldStrength      = loadP (pFieldStrength,     0.0f);  // 0=off
+        const float fieldPolarity      = loadP (pFieldPolarity,     1.0f);  // 1=full attractor
+        const float fieldRate          = loadP (pFieldRate,         0.01f); // IIR convergence rate
+        const auto  fieldPrimeLimit    = static_cast<int> (loadP (pFieldPrimeLimit, 1.0f)); // 0=3-limit,1=5-limit,2=7-limit
+        const float envTemp            = loadP (pEnvTemp,           0.0f);  // 0=off
+        const float envPressure        = loadP (pEnvPressure,       0.5f);  // 0.5=neutral
+        const float envCurrent         = loadP (pEnvCurrent,        0.0f);  // 0=no bias
+        const float envTurbidity       = loadP (pEnvTurbidity,      0.0f);  // 0=off
+        const float competitionStrength= loadP (pCompetitionStrength,0.0f); // 0=off
+        const float symbiosisStrength  = loadP (pSymbiosisStrength, 0.0f);  // 0=off
+        const float stressDecay        = loadP (pStressDecay,       0.0f);  // 0=off
+        const float bleachRate         = loadP (pBleachRate,        0.0f);  // 0=off
+        const float newResetTrig       = loadP (pStateReset,        0.0f);
+        const auto  fxMode             = static_cast<int> (loadP (pFxMode, 0.0f)); // 0=Serial
+
+        // State Reset: rising edge triggers hard reef reset
+        if (newResetTrig > 0.5f && prevResetTrig_ <= 0.5f)
+        {
+            stressLevel_ = 0.0f;
+            bleachLevel_ = 0.0f;
+        }
+        prevResetTrig_ = newResetTrig;
+
+        // Stateful Synthesis block-level updates
+        // Stress Memory: leaky integrator τ = 30+stressDecay*30 seconds
+        // Model: RC low-pass filter with time constant τ (exponential moving average)
+        if (stressDecay > 0.001f)
+        {
+            float avgVel = 0.0f; int vcount = 0;
+            for (const auto& v : voices) if (v.active) { avgVel += v.velocity; ++vcount; }
+            if (vcount > 0) avgVel /= static_cast<float> (vcount);
+            float tau   = 30.0f + stressDecay * 30.0f; // 30–60 second time constant
+            float decay = std::exp (-1.0f / (tau * sr));
+            stressLevel_ = stressLevel_ * decay + avgVel * (1.0f - decay);
+            stressLevel_ = flushDenormal (stressLevel_);
+        }
+        // Bleaching: cumulative brightness attenuation from sustained high-register playing
+        if (bleachRate > 0.001f)
+        {
+            float avgBright = 0.0f; int bcount = 0;
+            for (const auto& v : voices)
+                if (v.active && v.note > 60) { avgBright += (v.note - 60) / 48.0f; ++bcount; }
+            if (bcount > 0) avgBright /= static_cast<float> (bcount);
+            bleachLevel_ = std::min (1.0f, bleachLevel_ + avgBright * bleachRate / (sr * 60.0f));
+            bleachLevel_ *= (1.0f - 1.0f / (sr * 300.0f)); // natural recovery ~5 min
+            bleachLevel_ = flushDenormal (bleachLevel_);
+        }
 
         // Pre-compute spatial filter coefficients once per block (not per sample)
         // DISTANCE: fc sweeps 20kHz (close) → ~1kHz (far) via matched-Z 1-pole LP
@@ -519,6 +600,16 @@ public:
             driftPhase_ += driftRate / sr;
             if (driftPhase_ >= 1.0f) driftPhase_ -= 1.0f;
 
+            // === BIOPHONIC: Turbidity noise (computed once per sample, applied per voice) ===
+            // Turbidity adds spectral impurity — subtle noise-floor shimmer on filter cutoff.
+            float turbNoiseThisSample = 0.0f;
+            if (envTurbidity > 0.001f)
+            {
+                turbRng_ = turbRng_ * 1664525u + 1013904223u;
+                turbNoiseThisSample = (static_cast<float> (turbRng_ & 0xFFFF) / 32768.0f - 1.0f)
+                                      * envTurbidity * 1200.0f;
+            }
+
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
                 auto& voice = voices[vi];
@@ -538,7 +629,11 @@ public:
                 // audio-rate crossover by pushing the MOVEMENT macro.
                 // modWheel further scales rate: at full modWheel+MOVEMENT, LFOs
                 // can reach ~1000 Hz for true audio-rate FM/AM territory.
-                float rateMultiplier = 1.0f + macroMove * 10.0f + modWheel_ * 23.0f;
+                // Biophonic Pressure: scales LFO rate (high=fast/tense, low=slow/spacious)
+                float pressureScale = (envPressure > 0.5f)
+                    ? 1.0f + (envPressure - 0.5f) * 2.0f * 3.0f   // 0.5→1: scale 1.0→4.0
+                    : std::max (0.3f, 1.0f - (0.5f - envPressure) * 2.0f * 0.7f); // 0.5→0: scale 1.0→0.3
+                float rateMultiplier = (1.0f + macroMove * 10.0f + modWheel_ * 23.0f) * pressureScale;
                 float modVals[4] {};
                 for (int m = 0; m < 4; ++m)
                 {
@@ -589,6 +684,19 @@ public:
                 // D006: mod wheel intensifies filter sweep
                 cutoffMod += modWheel_ * 4000.0f;
 
+                // === BIOPHONIC: Environmental Parameters (Wave 4) ===
+                // Current: directional bias on filter center and pitch
+                cutoffMod += envCurrent * 2000.0f;
+                pitchMod  += envCurrent * 80.0f;
+                // Turbidity: spectral noise from shared per-sample turbidity RNG
+                cutoffMod += turbNoiseThisSample;
+                // Stress Memory application: high stress → raised cutoff (brighter, harder)
+                if (stressDecay > 0.001f)
+                    cutoffMod += stressLevel_ * 900.0f * stressDecay;
+                // Bleaching application: accumulated bleach → lower cutoff (duller, quieter)
+                if (bleachRate > 0.001f && bleachLevel_ > 0.01f)
+                    cutoffMod -= bleachLevel_ * 700.0f * bleachRate;
+
                 // FLASH gesture → filter cutoff burst
                 cutoffMod += gestureOut * 4000.0f;
 
@@ -608,10 +716,12 @@ public:
                 // offset. 0.23 is irrational relative to 1.0, so no two voice slots
                 // ever phase-lock — producing Berlin School ensemble drift from one
                 // oscillator (Schulze's trick).
-                if (driftDepth > 0.001f)
+                // Temperature amplifies drift (thermal energy → increased entropy)
+                float effectiveDriftDepth = driftDepth * (1.0f + envTemp * 3.0f);
+                if (effectiveDriftDepth > 0.001f)
                 {
                     static constexpr float kDriftSlotOffset = 0.23f; // irrational spacing
-                    float voiceDrift = fastSin ((driftPhase_ + vi * kDriftSlotOffset) * kTwoPi) * driftDepth;
+                    float voiceDrift = fastSin ((driftPhase_ + vi * kDriftSlotOffset) * kTwoPi) * effectiveDriftDepth;
                     pitchMod  += voiceDrift * 50.0f;  // +-50 cents pitch drift at full depth
                     cutoffMod += voiceDrift * 200.0f; // +-200 Hz filter drift (subtle harmonic breathing)
                 }
@@ -626,6 +736,35 @@ public:
                 float effPW1 = clamp (src1PW + pwMod, 0.05f, 0.95f);
                 float effPW2 = clamp (src2PW + pwMod, 0.05f, 0.95f);
 
+                // === HARMONIC FIELD (Biophonic Phase 1) ===
+                // JI attractor/repulsor: each source frequency is pulled toward (or away
+                // from) the nearest just-intonation ratio in the selected prime limit.
+                // Per-voice IIR convergence (jifiOffset) gives smooth magnetic drift.
+                if (fieldStrength > 0.001f)
+                {
+                    float baseFreq = 440.0f * fastPow2 ((static_cast<float> (voice.note) - 69.0f) / 12.0f);
+                    for (int si = 0; si < 2; ++si)
+                    {
+                        if (si == 1 && src2Type == 0) continue;
+                        float srcF = (si == 0) ? freq1 : freq2;
+                        float ratio = srcF / std::max (1.0f, baseFreq);
+                        while (ratio >= 2.0f) ratio *= 0.5f;
+                        while (ratio < 1.0f)  ratio *= 2.0f;
+                        float nearestJI = findNearestJIRatio (ratio, fieldPrimeLimit);
+                        float jiCents = 1200.0f * std::log2 (nearestJI / ratio);
+                        // polarity > 0.5 = attract, < 0.5 = repel
+                        float polFactor = (fieldPolarity >= 0.5f)
+                            ?  (fieldPolarity - 0.5f) * 2.0f
+                            : -(0.5f - fieldPolarity) * 2.0f;
+                        float targetOffset = jiCents * polFactor;
+                        voice.jifiOffset[si] += fieldRate * (targetOffset * fieldStrength - voice.jifiOffset[si]);
+                        voice.jifiOffset[si] = flushDenormal (voice.jifiOffset[si]);
+                    }
+                    freq1 *= fastPow2 (voice.jifiOffset[0] / 1200.0f);
+                    if (src2Type > 0)
+                        freq2 *= fastPow2 (voice.jifiOffset[1] / 1200.0f);
+                }
+
                 // --- Source 1 (rendered first — drives FM into Src2) ---
                 float src1 = renderSourceSample (src1Type, voice, 0, freq1, effPW1, 0.0f, wtBankVal);
 
@@ -634,6 +773,11 @@ public:
                 if (src2Type > 0)
                 {
                     float fmSemitones = src1 * fmDepth * 24.0f; // ±24 st at max depth
+                    // === BRICK ECOLOGY: Symbiosis (Biophonic Phase 3) ===
+                    // When src1 is Noise, its amplitude (spectral density) drives extra FM on
+                    // src2 — noise energy feeds tonal modulation (noise nurtures the oscillator).
+                    if (symbiosisStrength > 0.001f && src1Type == 5)
+                        fmSemitones += std::fabs (src1) * symbiosisStrength * 18.0f;
                     src2 = renderSourceSample (src2Type, voice, 1, freq2, effPW2, fmSemitones, wtBankVal);
                 }
 
@@ -666,6 +810,18 @@ public:
                     float filtOut = voice.procFilters[1].processSample (fbIn);
                     voice.procFbState[1] = flushDenormal (filtOut);
                     sig2 = filtOut;
+                }
+
+                // === BRICK ECOLOGY: Competition (Biophonic Phase 3) ===
+                // Cross-suppression: the louder brick suppresses the quieter one.
+                // Mimics resource competition between coral polyp populations.
+                // 0.1 floor preserves each brick's identity even at max competition.
+                if (competitionStrength > 0.001f && src2Type > 0)
+                {
+                    float env1 = std::fabs (sig1);
+                    float env2 = std::fabs (sig2);
+                    sig1 *= clamp (1.0f - env2 * competitionStrength, 0.1f, 1.0f);
+                    sig2 *= clamp (1.0f - env1 * competitionStrength, 0.1f, 1.0f);
                 }
 
                 // Mix the independently-processed sources
@@ -713,15 +869,41 @@ public:
                 mixR += signal * panR;
             }
 
-            // --- Effects chain (FX1 → FX2 → FX3 in series) ---
-            for (int fx = 0; fx < 3; ++fx)
+            // --- Effects chain: Serial (default) or Parallel (Biophonic Phase 5) ---
+            // Serial: each FX processes the output of the previous (depth layering).
+            // Parallel: each FX processes the dry signal independently; wet outputs summed.
+            if (fxMode == 0) // Serial — existing behavior
             {
-                if (fxType[fx] > 0)
+                for (int fx = 0; fx < 3; ++fx)
                 {
-                    float effMix = clamp (fxMix[fx] + macroSpace * (1.0f - fxMix[fx]), 0.0f, 1.0f);
-                    if (effMix > 0.001f)
-                        applyEffect (fxType[fx], mixL, mixR, effMix, fxParam[fx], macroSpace, fxSlots[fx]);
+                    if (fxType[fx] > 0)
+                    {
+                        float effMix = clamp (fxMix[fx] + macroSpace * (1.0f - fxMix[fx]), 0.0f, 1.0f);
+                        if (effMix > 0.001f)
+                            applyEffect (fxType[fx], mixL, mixR, effMix, fxParam[fx], macroSpace, fxSlots[fx]);
+                    }
                 }
+            }
+            else // Parallel — each slot processes dry independently; wet contributions summed
+            {
+                float dryL = mixL, dryR = mixR;
+                float wetL = dryL, wetR = dryR;
+                for (int fx = 0; fx < 3; ++fx)
+                {
+                    if (fxType[fx] > 0)
+                    {
+                        float slotL = dryL, slotR = dryR;
+                        float effMix = clamp (fxMix[fx] + macroSpace * (1.0f - fxMix[fx]), 0.0f, 1.0f);
+                        if (effMix > 0.001f)
+                        {
+                            applyEffect (fxType[fx], slotL, slotR, 1.0f, fxParam[fx], macroSpace, fxSlots[fx]);
+                            wetL += (slotL - dryL) * effMix;
+                            wetR += (slotR - dryR) * effMix;
+                        }
+                    }
+                }
+                mixL = wetL;
+                mixR = wetR;
             }
 
             // === PER-BRICK SPATIAL (Wave 3) — Tomita's scene-making ===
@@ -820,7 +1002,7 @@ public:
     }
 
     //==========================================================================
-    // Parameters (65 total — Wave 3)
+    // Parameters (79 total — Wave 4: Biophonic Synthesis)
     //==========================================================================
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -950,6 +1132,43 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f)); // 0=close/bright, 1=far/dark
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_air", 1 }, "Obrix Air",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f)); // 0=warm/bass, 1=cold/treble
+
+        // Wave 4: Biophonic Synthesis (14 params → 79 total)
+        // Harmonic Field — JI attractor/repulsor
+        auto fieldPrimeChoices = juce::StringArray { "3-Limit (Pythagorean)", "5-Limit (Extended JI)", "7-Limit (Harmonic)" };
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldStrength", 1 }, "Obrix Field Strength",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldPolarity", 1 }, "Obrix Field Polarity",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 1.0f)); // 1=attractor, 0=repulsor
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_fieldRate", 1 }, "Obrix Field Rate",
+            juce::NormalisableRange<float> (0.001f, 0.1f, 0.001f, 0.3f), 0.01f));
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_fieldPrimeLimit", 1 }, "Obrix Field Prime Limit",
+            fieldPrimeChoices, 1)); // default: 5-limit
+        // Environmental Parameters — thermodynamic synthesis medium
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_envTemp", 1 }, "Obrix Temperature",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_envPressure", 1 }, "Obrix Pressure",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f)); // 0.5=neutral
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_envCurrent", 1 }, "Obrix Current",
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_envTurbidity", 1 }, "Obrix Turbidity",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        // Brick Ecology — competition and symbiosis
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_competitionStrength", 1 }, "Obrix Competition",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_symbiosisStrength", 1 }, "Obrix Symbiosis",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        // Stateful Synthesis — stress, bleaching, reset
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_stressDecay", 1 }, "Obrix Stress Decay",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_bleachRate", 1 }, "Obrix Bleach Rate",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_stateReset", 1 }, "Obrix State Reset",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 1.0f), 0.0f)); // momentary trigger
+        // FX Mode — serial vs parallel routing
+        auto fxModeChoices = juce::StringArray { "Serial", "Parallel" };
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_fxMode", 1 }, "Obrix FX Mode",
+            fxModeChoices, 0)); // default: Serial (existing behavior)
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -1025,6 +1244,22 @@ public:
         pJourneyMode = apvts.getRawParameterValue ("obrix_journeyMode");
         pDistance    = apvts.getRawParameterValue ("obrix_distance");
         pAir         = apvts.getRawParameterValue ("obrix_air");
+
+        // Wave 4 — Biophonic Synthesis
+        pFieldStrength      = apvts.getRawParameterValue ("obrix_fieldStrength");
+        pFieldPolarity      = apvts.getRawParameterValue ("obrix_fieldPolarity");
+        pFieldRate          = apvts.getRawParameterValue ("obrix_fieldRate");
+        pFieldPrimeLimit    = apvts.getRawParameterValue ("obrix_fieldPrimeLimit");
+        pEnvTemp            = apvts.getRawParameterValue ("obrix_envTemp");
+        pEnvPressure        = apvts.getRawParameterValue ("obrix_envPressure");
+        pEnvCurrent         = apvts.getRawParameterValue ("obrix_envCurrent");
+        pEnvTurbidity       = apvts.getRawParameterValue ("obrix_envTurbidity");
+        pCompetitionStrength= apvts.getRawParameterValue ("obrix_competitionStrength");
+        pSymbiosisStrength  = apvts.getRawParameterValue ("obrix_symbiosisStrength");
+        pStressDecay        = apvts.getRawParameterValue ("obrix_stressDecay");
+        pBleachRate         = apvts.getRawParameterValue ("obrix_bleachRate");
+        pStateReset         = apvts.getRawParameterValue ("obrix_stateReset");
+        pFxMode             = apvts.getRawParameterValue ("obrix_fxMode");
     }
 
     //==========================================================================
@@ -1120,6 +1355,50 @@ private:
             }
             default: return 0.0f;
         }
+    }
+
+    //==========================================================================
+    // findNearestJIRatio — returns the ratio in the given prime limit closest to 'r'
+    // Input r should be folded into [1.0, 2.0). Tables sorted ascending within octave.
+    // D001 compliance: all ratios are integer fractions, mathematically exact.
+    //==========================================================================
+    static float findNearestJIRatio (float r, int primeLimit) noexcept
+    {
+        // 3-limit (Pythagorean): only perfect 5ths and octave-equivalents
+        static constexpr float kJI3[] = {
+            1.0f, 9.0f/8.0f, 81.0f/64.0f, 4.0f/3.0f, 3.0f/2.0f,
+            27.0f/16.0f, 243.0f/128.0f, 2.0f/1.0f
+        };
+        // 5-limit (extended JI): adds pure major/minor thirds and sixths
+        static constexpr float kJI5[] = {
+            1.0f, 16.0f/15.0f, 9.0f/8.0f, 6.0f/5.0f, 5.0f/4.0f,
+            4.0f/3.0f, 45.0f/32.0f, 3.0f/2.0f, 8.0f/5.0f, 5.0f/3.0f,
+            9.0f/5.0f, 15.0f/8.0f, 2.0f/1.0f
+        };
+        // 7-limit (harmonic): adds subminor/supermajor intervals and harmonic 7th
+        static constexpr float kJI7[] = {
+            1.0f, 16.0f/15.0f, 9.0f/8.0f, 7.0f/6.0f, 6.0f/5.0f,
+            5.0f/4.0f, 9.0f/7.0f, 4.0f/3.0f, 7.0f/5.0f, 3.0f/2.0f,
+            14.0f/9.0f, 8.0f/5.0f, 5.0f/3.0f, 7.0f/4.0f, 9.0f/5.0f,
+            15.0f/8.0f, 2.0f/1.0f
+        };
+
+        const float* table; int size;
+        switch (primeLimit)
+        {
+            case 0: table = kJI3; size = 8;  break;
+            case 2: table = kJI7; size = 17; break;
+            default: table = kJI5; size = 13; break;
+        }
+
+        float nearest = table[0];
+        float minDist = std::fabs (r - nearest);
+        for (int i = 1; i < size; ++i)
+        {
+            float d = std::fabs (r - table[i]);
+            if (d < minDist) { minDist = d; nearest = table[i]; }
+        }
+        return nearest;
     }
 
     //==========================================================================
@@ -1345,6 +1624,12 @@ private:
     float airFiltL_    = 0.0f;    // AIR LP/HP split filter state (L)
     float airFiltR_    = 0.0f;    // AIR LP/HP split filter state (R)
 
+    // Wave 4 — Biophonic Synthesis
+    float stressLevel_   = 0.0f;  // velocity leaky integrator τ=30–60s (Stress Memory)
+    float bleachLevel_   = 0.0f;  // cumulative brightness attenuation (Bleaching)
+    float prevResetTrig_ = 0.0f;  // edge detector for obrix_stateReset
+    uint32_t turbRng_    = 31415u; // per-engine noise RNG for turbidity fluctuation
+
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
 
@@ -1380,6 +1665,22 @@ private:
     std::atomic<float>* pJourneyMode = nullptr; // Journey: suppress note-off (0/1 toggle)
     std::atomic<float>* pDistance    = nullptr; // DISTANCE HF rolloff (0=close, 1=far)
     std::atomic<float>* pAir         = nullptr; // AIR spectral tilt (0=warm, 1=cold)
+
+    // Wave 4 — Biophonic Synthesis parameter pointers
+    std::atomic<float>* pFieldStrength       = nullptr; // Harmonic Field strength
+    std::atomic<float>* pFieldPolarity       = nullptr; // 1=attractor, 0=repulsor
+    std::atomic<float>* pFieldRate           = nullptr; // IIR convergence rate
+    std::atomic<float>* pFieldPrimeLimit     = nullptr; // 0=3-limit, 1=5-limit, 2=7-limit
+    std::atomic<float>* pEnvTemp             = nullptr; // Temperature (drift amplifier)
+    std::atomic<float>* pEnvPressure         = nullptr; // Pressure (LFO rate scale)
+    std::atomic<float>* pEnvCurrent          = nullptr; // Current (directional bias)
+    std::atomic<float>* pEnvTurbidity        = nullptr; // Turbidity (spectral noise)
+    std::atomic<float>* pCompetitionStrength = nullptr; // Brick competition strength
+    std::atomic<float>* pSymbiosisStrength   = nullptr; // Brick symbiosis strength
+    std::atomic<float>* pStressDecay         = nullptr; // Stress Memory decay scale
+    std::atomic<float>* pBleachRate          = nullptr; // Bleaching accumulation rate
+    std::atomic<float>* pStateReset          = nullptr; // Momentary reef state reset
+    std::atomic<float>* pFxMode              = nullptr; // 0=Serial, 1=Parallel
 
     // Wavetable banks (Wave 2): 4 banks × 512 samples, built once in prepare()
     static constexpr int kWTSize = 512;

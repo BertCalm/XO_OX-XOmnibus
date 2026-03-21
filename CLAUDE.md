@@ -162,7 +162,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
 | `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (34 of 34 engines in unified guide; 5 Constellation engines also have dedicated guides in Docs/) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (38 of 44 engines covered; OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE need entries) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -234,9 +234,23 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
 
+## OBRIX — Wave 4: Biophonic Synthesis (2026-03-21)
+
+**79 params** (was 65). 5 new DSP systems added — all backward-compatible (defaults preserve existing behavior):
+
+| System | Params | Key Behavior |
+|--------|--------|-------------|
+| Harmonic Field | fieldStrength, fieldPolarity, fieldRate, fieldPrimeLimit | Per-voice JI attractor/repulsor. 3-limit/5-limit/7-limit ratio tables. IIR convergence toward nearest just ratio. fieldPolarity=-1 = repulsor mode. |
+| Environmental | envTemp, envPressure, envCurrent, envTurbidity | Temperature scales drift depth. Pressure scales LFO rate. Current biases cutoff ±2000Hz. Turbidity adds engine-level noise per sample. |
+| Brick Ecology | competitionStrength, symbiosisStrength | Competition: cross-amplitude suppression between src1/src2 (0.1 floor). Symbiosis: noise src1 amplitude → FM depth on src2 (requires src1Type=5). |
+| Stateful Synthesis | stressDecay, bleachRate, stateReset | stressLevel_ leaky integrator (velocity accumulator → +900Hz cutoff). bleachLevel_ accumulates from high notes (−700Hz cutoff). stateReset clears both. |
+| FX Mode | fxMode | 0=Serial (existing), 1=Parallel (each FX slot processes dry independently, wet contributions summed). |
+
+**28 new Wave 4 awakening presets** across all 8 moods. B016 AMENDED (synthesis-layer interdependence permitted, MIDI-layer inviolable).
+
 ## Seance Findings
 
-**42 engines seanced** (2026-03-20) — all 42 registered engines have formal numeric or approval-class verdicts. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Three engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0). Full data in:
+**42 of 44 engines seanced** (2026-03-20) — 42 registered engines have formal numeric or approval-class verdicts. OXBOW and OWARE (added 2026-03-20) are pending seance. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Three engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0). Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -275,7 +289,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | B013 | Chromatophore Modulator — praised by Buchla, Schulze, Kakehashi, Tomita | OCEANIC |
 | B014 | Mixtur-Trautonium Oscillator — unanimous praise, genuinely novel | OWLFISH |
 | B015 | Mojo Control — orthogonal analog/digital axis | OBESE |
-| B016 | Brick Independence — bricks must remain individually addressable regardless of coupling state | OBRIX |
+| B016 | Brick Independence (AMENDED 2026-03-21) — MIDI-layer voice independence is inviolable (note allocation, pitch, velocity, aftertouch remain per-voice). Synthesis-layer interdependence (shared JI attractor field, cross-voice amplitude ecology, environmental globals) is explicitly permitted, provided no synthesis-layer coupling propagates back to affect MIDI routing or voice stealing. | OBRIX |
 
 ### The 4 Ongoing Debates
 
@@ -288,7 +302,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-20 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE). Fleet avg ~8.6. All 42 engines at 8.0+ target.
+- **Seance score range (post 2026-03-20 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE). Fleet avg ~8.6. All 42 seanced engines at 8.0+ target (OXBOW + OWARE pending seance).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)
