@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Diffraction Keys",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 150 XOR symmetry creates standing wave patterns — like light through a diffraction grating. Pluck-style envelope, moderate reverb, each key produces a unique spectral snapshot.",
+  "tags": [
+    "keys",
+    "rule-150",
+    "pluck",
+    "diffraction",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 150 XOR standing waves at 7 Hz. Pluck envelope (fast attack, short decay, low sustain). Each seed position gives unique harmonic content — MACRO:SEED explores the spectrum.",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.45,
+    "space": 0.48,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 21845,
+      "org_stepRate": 7.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.2,
+      "org_filterCutoff": 4500.0,
+      "org_filterRes": 0.45,
+      "org_velCutoff": 0.72,
+      "org_ampAtk": 0.003,
+      "org_ampDec": 0.25,
+      "org_ampSus": 0.35,
+      "org_ampRel": 0.6,
+      "org_lfo1Rate": 2.2,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 1.6,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.42,
+      "org_macroRule": 0.57,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

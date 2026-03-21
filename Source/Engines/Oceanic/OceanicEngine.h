@@ -4,6 +4,10 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ParameterSmoother.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -56,156 +60,19 @@ static constexpr float kLogFreqRange = 9.96578f;  // kLogMaxFreq - kLogMinFreq
 static constexpr float kSubFlockRatios[4] = { 1.0f, 2.0f, 1.5f, 3.0f };
 
 //==============================================================================
-// ADSR envelope generator — lightweight, inline, no allocation.
+// OceanicADSR — alias to the shared fleet envelope.
+// StandardADSR provides exponential decay/release (more natural), linear attack
+// (snappy), and the identical setParams/noteOn/noteOff/isActive/reset API.
 //==============================================================================
-struct OceanicADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f)
-                {
-                    level = sustainLevel;
-                    stage = Stage::Sustain;
-                }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-};
+using OceanicADSR = StandardADSR;
 
 //==============================================================================
-// LFO with multiple shapes.
+// OceanicLFO — alias to the shared fleet LFO.
+// StandardLFO provides identical Sine/Triangle/Saw/Square/S&H shapes and the
+// same setRate/setShape/process/reset API. S&H uses the same Knuth TAOCP LCG
+// with default seed 12345u — deterministic output is preserved.
 //==============================================================================
-struct OceanicLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 0;
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (phase * 6.28318530718f);
-                break;
-            case Shape::Triangle:
-                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-            case Shape::Saw:
-                out = 2.0f * phase - 1.0f;
-                break;
-            case Shape::Square:
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-            case Shape::SandH:
-            {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return out;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        holdValue = 0.0f;
-        sampleCounter = 12345u;
-    }
-};
+using OceanicLFO = StandardLFO;
 
 //==============================================================================
 // Particle — a single oscillating element in the swarm.
@@ -342,8 +209,8 @@ public:
         controlRateDiv = std::max (1, static_cast<int> (srf / 2000.0f));
         controlDt = static_cast<float> (controlRateDiv) / srf;
 
-        // Pre-compute smoothing coefficient (5ms time constant)
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
+        // Prepare parameter smoother (5ms time constant)
+        paramSmoother.prepare (srf, 0.005f);
 
         // Pre-compute crossfade rate (5ms)
         crossfadeRate = 1.0f / (0.005f * srf);
@@ -1379,24 +1246,9 @@ private:
     int findFreeVoice (int maxPoly) const
     {
         int poly = std::min (maxPoly, kMaxVoices);
-
-        // Find inactive voice within polyphony limit
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // LRU voice stealing -- find oldest voice
-        int oldest = 0;
-        uint64_t oldestTime = UINT64_MAX;
-        for (int i = 0; i < poly; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
-            {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldest = i;
-            }
-        }
-        return oldest;
+        // Delegate to shared LRU allocator (inactive first, then steal oldest).
+        return VoiceAllocator::findFreeVoice (
+            const_cast<std::array<OceanicVoice, kMaxVoices>&> (voices), poly);
     }
 
     static float midiToHz (float midiNote) noexcept
@@ -1410,7 +1262,7 @@ private:
 
     double sr = 44100.0;
     float srf = 44100.0f;
-    float smoothCoeff = 0.1f;
+    ParameterSmoother paramSmoother;  // 5ms one-pole smoother (replaces inline smoothCoeff)
     float crossfadeRate = 0.01f;
 
     // Control rate decimation

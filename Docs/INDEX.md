@@ -1,5 +1,5 @@
 # Documentation Index
-Generated: 2026-03-19 | Total: 164+ files
+Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ---
 
@@ -272,8 +272,27 @@ Generated: 2026-03-19 | Total: 164+ files
 ## Seance Verdicts (`seances/`)
 
 - [seances/obrix_seance_verdict.md](seances/obrix_seance_verdict.md) — OBRIX seance verdict
-- [seances/overlap_seance_prep.md](seances/overlap_seance_prep.md) — OVERLAP seance prep
+- [seances/obrix_seance_2026_03_19.md](seances/obrix_seance_2026_03_19.md) — OBRIX seance (full)
+- [seances/oceandeep_seance_verdict.md](seances/oceandeep_seance_verdict.md) — OCEANDEEP seance verdict
+- [seances/octopus_seance_verdict.md](seances/octopus_seance_verdict.md) — OCTOPUS seance verdict
+- [seances/ombre_seance_verdict.md](seances/ombre_seance_verdict.md) — OMBRE seance verdict
+- [seances/opensky_seance_verdict.md](seances/opensky_seance_verdict.md) — OPENSKY seance verdict
+- [seances/orbweave_seance_verdict.md](seances/orbweave_seance_verdict.md) — ORBWEAVE seance verdict
+- [seances/orca_seance_verdict.md](seances/orca_seance_verdict.md) — ORCA seance verdict
+- [seances/organism_seance_verdict.md](seances/organism_seance_verdict.md) — ORGANISM seance verdict
+- [seances/ostinato_seance_verdict.md](seances/ostinato_seance_verdict.md) — OSTINATO seance verdict
+- [seances/ouie_seance_verdict.md](seances/ouie_seance_verdict.md) — OUIE seance verdict
+- [seances/outwit_seance_verdict.md](seances/outwit_seance_verdict.md) — OUTWIT seance verdict
 - [seances/outwit_seance_prep.md](seances/outwit_seance_prep.md) — OUTWIT seance prep
+- [seances/overlap_seance_verdict.md](seances/overlap_seance_verdict.md) — OVERLAP seance verdict
+- [seances/overlap_seance_prep.md](seances/overlap_seance_prep.md) — OVERLAP seance prep
+- [seances/overtone_seance_verdict.md](seances/overtone_seance_verdict.md) — OVERTONE seance verdict
+- [seances/oware-seance-2026-03-21.md](seances/oware-seance-2026-03-21.md) — OWARE seance verdict (2026-03-21)
+
+## Post-Completion Checklists (`post-completion/`)
+
+- [post-completion/oxbow-completion-2026-03-21.md](post-completion/oxbow-completion-2026-03-21.md) — OXBOW post-engine completion checklist
+- [post-completion/oware-completion-2026-03-21.md](post-completion/oware-completion-2026-03-21.md) — OWARE post-engine completion checklist
 
 ---
 

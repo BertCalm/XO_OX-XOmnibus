@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Figure-Eight at high braid with sine strands produces a complex inharmonic spectrum — every strand modulates two others in alternating over/under passes. The result is a metallic bell with topological decay. Strand tune -3 adds a minor second shimmer.",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.25,
+    "density": 0.38,
+    "space": 0.52,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.62,
+    "TENSION": 0.08,
+    "KNOT": 0.0,
+    "SPACE": 0.38
+  },
+  "mood": "Prism",
+  "name": "Figure Eight Bell",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": -3.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.82,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 16000.0,
+      "weave_filterReso": 0.0,
+      "weave_filterType": 0,
+      "weave_ampA": 0.001,
+      "weave_ampD": 1.8,
+      "weave_ampS": 0.05,
+      "weave_ampR": 2.5,
+      "weave_lfo1Type": 0,
+      "weave_lfo1Target": 0,
+      "weave_lfo1Depth": 0.0,
+      "weave_lfo1Rate": 1.0,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.32,
+      "weave_fx1Param": 0.38,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.62,
+      "weave_macroTension": 0.08,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.38,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "High-braid Figure-Eight sine bell. Alternating over/under phase coupling creates complex inharmonic partials. Minor-second strand detune adds shimmer.",
+  "tags": [
+    "figure-eight",
+    "bell",
+    "inharmonic",
+    "metallic",
+    "transient"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,7 +1,7 @@
 # XOmnibus 6-Month Content Backlog
 **Generated:** 2026-03-20 | **Khan Sultan Consulting**
 **Window:** April 2026 -- September 2026
-**Fleet:** 42 engines | ~21,918 presets | V1 launch imminent
+**Fleet:** 44 engines | ~21,918 presets | V1 launch imminent
 
 ---
 

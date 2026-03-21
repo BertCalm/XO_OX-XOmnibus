@@ -6,6 +6,9 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
@@ -253,207 +256,13 @@ private:
     int bufferSize = 176400; // default for 44.1k
 };
 
-//==============================================================================
-// OpalADSR — Lightweight ADSR envelope for amp and filter modulation.
-//==============================================================================
-class OpalADSR
-{
-public:
-    enum Stage { Off, Attack, Decay, Sustain, Release };
+// OpalADSR replaced by xomnibus::StandardADSR (Source/DSP/StandardADSR.h).
+// StandardADSR::retriggerFrom() provides the legato retrigger behaviour
+// previously implemented in OpalADSR::retriggerFromCurrent().
 
-    void noteOn (float attack, float decay, float sustain, float release,
-                 double sampleRate) noexcept
-    {
-        sr = sampleRate;
-        sustainLevel = sustain;
-        releaseTime = release;
-        stage = Attack;
-        if (attack < 0.001f)
-        {
-            level = 1.0f;
-            setDecay (decay);
-        }
-        else
-        {
-            attackRate = 1.0f / (static_cast<float> (sr) * attack);
-        }
-        decayTime = decay;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Off)
-        {
-            stage = Release;
-            if (releaseTime < 0.001f)
-                releaseRate = 100.0f;
-            else
-                releaseRate = level / (static_cast<float> (sr) * releaseTime);
-        }
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    setDecay (decayTime);
-                }
-                break;
-
-            case Decay:
-                level -= decayRate;
-                if (level <= sustainLevel)
-                {
-                    level = sustainLevel;
-                    stage = Sustain;
-                }
-                break;
-
-            case Sustain:
-                level = sustainLevel;
-                break;
-
-            case Release:
-                level -= releaseRate;
-                if (level <= 0.0f)
-                {
-                    level = 0.0f;
-                    stage = Off;
-                }
-                break;
-
-            case Off:
-                level = 0.0f;
-                break;
-        }
-        return flushDenormal (level);
-    }
-
-    bool isActive() const noexcept { return stage != Off; }
-    float getLevel() const noexcept { return level; }
-    Stage getStage() const noexcept { return stage; }
-
-    void reset() noexcept
-    {
-        level = 0.0f;
-        stage = Off;
-    }
-
-    // Retrigger from current level (for legato filter envelope)
-    void retriggerFromCurrent (float attack, float decay, float sustain, float release,
-                               double sampleRate) noexcept
-    {
-        sr = sampleRate;
-        sustainLevel = sustain;
-        releaseTime = release;
-        decayTime = decay;
-        stage = Attack;
-        if (attack < 0.001f)
-        {
-            level = std::max (level, 0.5f);
-            setDecay (decay);
-        }
-        else
-        {
-            attackRate = (1.0f - level) / (static_cast<float> (sr) * attack);
-        }
-    }
-
-private:
-    void setDecay (float decay) noexcept
-    {
-        stage = Decay;
-        if (decay < 0.001f)
-            decayRate = 100.0f;
-        else
-            decayRate = (1.0f - sustainLevel) / (static_cast<float> (sr) * decay);
-    }
-
-    double sr = 44100.0;
-    float level = 0.0f;
-    float attackRate = 0.0f;
-    float decayRate = 0.0f;
-    float decayTime = 0.5f;
-    float sustainLevel = 0.8f;
-    float releaseRate = 0.0f;
-    float releaseTime = 1.0f;
-    Stage stage = Off;
-};
-
-//==============================================================================
-// OpalLFO — 6-shape LFO with retrigger and phase control.
-//   0: Sine, 1: Triangle, 2: Saw (down), 3: Square, 4: Random (S&H), 5: Stepped
-//==============================================================================
-class OpalLFO
-{
-public:
-    void prepare (double sampleRate) noexcept { sr = sampleRate; }
-
-    void retrigger (float startPhase) noexcept
-    {
-        phase = startPhase;
-        randomValue = 0.0f;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        randomValue = 0.0f;
-    }
-
-    // Returns bipolar [-1, 1]
-    float process (float rateHz, int shape, OpalPRNG& rng) noexcept
-    {
-        float inc = rateHz / static_cast<float> (sr);
-        float prevPhase = phase;
-        phase += inc;
-
-        bool wrapped = false;
-        if (phase >= 1.0f)
-        {
-            phase -= 1.0f;
-            wrapped = true;
-        }
-
-        float out = 0.0f;
-        switch (shape)
-        {
-            case 0: // Sine
-                out = fastSin (phase * 6.28318530718f);
-                break;
-            case 1: // Triangle
-                out = (phase < 0.5f) ? (4.0f * phase - 1.0f) : (3.0f - 4.0f * phase);
-                break;
-            case 2: // Saw (down)
-                out = 1.0f - 2.0f * phase;
-                break;
-            case 3: // Square
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-            case 4: // Random (S&H) — new value on wrap
-                if (wrapped) randomValue = rng.next();
-                out = randomValue;
-                break;
-            case 5: // Stepped — quantized sine
-            {
-                float raw = fastSin (phase * 6.28318530718f);
-                out = std::round (raw * 4.0f) * 0.25f;
-                break;
-            }
-        }
-        return out;
-    }
-
-private:
-    double sr = 44100.0;
-    float phase = 0.0f;
-    float randomValue = 0.0f;
-};
+// OpalLFO replaced by xomnibus::StandardLFO (Source/DSP/StandardLFO.h).
+// Shape 5 (Stepped = quantized sine) is handled inline in processLFO() below,
+// which wraps StandardLFO and falls back to the stepped formula for shape == 5.
 
 //==============================================================================
 // OpalGrain — A single grain: reads from the grain buffer with pitch shift,
@@ -641,24 +450,25 @@ struct OpalCloudVoice
     float triggerAccum   = 0.0f;
     OpalPRNG rng;
 
-    // Envelopes
-    OpalADSR ampEnv;
-    OpalADSR filterEnv;
+    // Envelopes — StandardADSR (Source/DSP/StandardADSR.h)
+    StandardADSR ampEnv;
+    StandardADSR filterEnv;
 
     // Per-voice filter (Cytomic SVF)
     CytomicSVF filterL;
     CytomicSVF filterR;
 
-    // LFOs (per-voice for retrigger behavior)
-    OpalLFO lfo1;
-    OpalLFO lfo2;
+    // LFOs — StandardLFO (Source/DSP/StandardLFO.h); shape 5 (Stepped) handled
+    // by processLFO() in OpalEngine.
+    StandardLFO lfo1;
+    StandardLFO lfo2;
 
     // Oscillator for grain source
     PolyBLEP osc1;
     PolyBLEP osc2;
 
-    // Age counter for voice stealing
-    uint32_t birthOrder = 0;
+    // Age counter for voice stealing — uint64_t matches VoiceAllocator::findFreeVoice()
+    uint64_t startTime = 0;
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
@@ -688,23 +498,31 @@ struct OpalCloudVoice
             glideRate = 0.0f;
         }
 
+        const float fsr = static_cast<float> (sr);
+
         if (legatoActive)
         {
-            // Legato: don't retrigger amp, retrigger filter from current
-            filterEnv.retriggerFromCurrent (filterA, filterD, filterS, filterR_, sr);
+            // Legato: don't retrigger amp, retrigger filter from current level
+            filterEnv.retriggerFrom (filterEnv.getLevel(), filterA, filterD, filterS, filterR_);
         }
         else
         {
-            ampEnv.noteOn (attack, decay, sustain, release, sr);
-            filterEnv.noteOn (filterA, filterD, filterS, filterR_, sr);
+            ampEnv.prepare (fsr);
+            ampEnv.setADSR (attack, decay, sustain, release);
+            ampEnv.noteOn();
+
+            filterEnv.prepare (fsr);
+            filterEnv.setADSR (filterA, filterD, filterS, filterR_);
+            filterEnv.noteOn();
+
             triggerAccum = 1000.0f; // Force first grain immediately
             filterL.reset();
             filterR.reset();
         }
 
         // LFO retrigger on noteOn (per-voice phase reset)
-        if (lfo1Retrig) lfo1.retrigger (lfo1StartPhase);
-        if (lfo2Retrig) lfo2.retrigger (lfo2StartPhase);
+        if (lfo1Retrig) lfo1.reset (lfo1StartPhase);
+        if (lfo2Retrig) lfo2.reset (lfo2StartPhase);
 
         rng.seed (static_cast<uint32_t> (note * 137 + voiceIndex * 31 + 42));
         osc1.reset();
@@ -1015,8 +833,7 @@ public:
         for (int i = 0; i < kOpalMaxClouds; ++i)
         {
             voices[i].voiceIndex = i;
-            voices[i].lfo1.prepare (sampleRate);
-            voices[i].lfo2.prepare (sampleRate);
+            // StandardLFO has no prepare() — rate is set per-sample via setRate().
         }
 
         scatterReverb.prepare (sampleRate);
@@ -1780,7 +1597,7 @@ public:
                                       legato && legatoGlide,
                                       lfo1Retrig, lfo1StartPh,
                                       lfo2Retrig, lfo2StartPh);
-                    voices[0].birthOrder = ++voiceBirthCounter;
+                    voices[0].startTime = ++voiceStartCounter;
 
                     // Initialize MPE expression for this voice's channel
                     voices[0].mpeExpression.reset();
@@ -1790,7 +1607,7 @@ public:
                 }
                 else
                 {
-                    voiceIdx = findFreeVoice();
+                    voiceIdx = VoiceAllocator::findFreeVoice (voices, kOpalMaxClouds);
                     auto& v = voices[voiceIdx];
                     if (v.active)
                     {
@@ -1803,7 +1620,7 @@ public:
                               prevFreq, glideTime, false,
                               lfo1Retrig, lfo1StartPh,
                               lfo2Retrig, lfo2StartPh);
-                    v.birthOrder = ++voiceBirthCounter;
+                    v.startTime = ++voiceStartCounter;
 
                     // Initialize MPE expression for this voice's channel
                     v.mpeExpression.reset();
@@ -1843,7 +1660,7 @@ public:
                 sustainPedalDown = (m.getControllerValue() >= 64);
                 if (wasDown && !sustainPedalDown)
                     for (auto& v : voices)
-                        if (v.active && v.ampEnv.getStage() == OpalADSR::Sustain)
+                        if (v.active && v.ampEnv.getStage() == StandardADSR::Stage::Sustain)
                             v.noteOff();
             }
             // D006: channel pressure → aftertouch (applied to grain scatter below)
@@ -1996,9 +1813,9 @@ public:
                 float ampLevel = v.ampEnv.process();
                 float filterLevel = v.filterEnv.process();
 
-                // Process LFOs
-                float l1 = v.lfo1.process (lfo1Rate, lfo1Shape, v.rng) * lfo1Depth;
-                float l2 = v.lfo2.process (lfo2Rate, lfo2Shape, v.rng) * lfo2Depth;
+                // Process LFOs via shared StandardLFO; shape 5 (Stepped) post-processed.
+                float l1 = processLFO (v.lfo1, lfo1Rate, lfo1Shape, static_cast<float> (sr)) * lfo1Depth;
+                float l2 = processLFO (v.lfo2, lfo2Rate, lfo2Shape, static_cast<float> (sr)) * lfo2Depth;
 
                 // Velocity scaling
                 float velScale = (1.0f - ampVelSens) + ampVelSens * v.velocity;
@@ -2201,25 +2018,23 @@ private:
         return (p != nullptr) ? p->load() : fallback;
     }
 
-    int findFreeVoice() noexcept
+    /// Advance a StandardLFO by one sample and return its bipolar output,
+    /// handling Opal's 6th shape (5 = Stepped = quantized sine) which does
+    /// not exist in StandardLFO's 5-shape set.
+    static float processLFO (StandardLFO& lfo, float rateHz, int shape, float sampleRate) noexcept
     {
-        // Prefer inactive voice
-        for (int i = 0; i < kOpalMaxClouds; ++i)
-            if (!voices[i].active) return i;
-
-        // Steal oldest (LRU)
-        int oldest = 0;
-        uint32_t oldestBirth = voices[0].birthOrder;
-        for (int i = 1; i < kOpalMaxClouds; ++i)
-        {
-            if (voices[i].birthOrder < oldestBirth)
-            {
-                oldest = i;
-                oldestBirth = voices[i].birthOrder;
-            }
-        }
-        return oldest;
+        // Shape 5 (Stepped): run StandardLFO as sine internally, then quantise output.
+        int stdShape = (shape == 5) ? StandardLFO::Sine : shape;
+        lfo.setRate (rateHz, sampleRate);
+        lfo.setShape (stdShape);
+        float out = lfo.process();
+        if (shape == 5)
+            out = std::round (out * 4.0f) * 0.25f;  // 9-step quantised sine
+        return out;
     }
+
+    // findFreeVoice() replaced by VoiceAllocator::findFreeVoice() (Source/DSP/VoiceAllocator.h).
+    // Call: VoiceAllocator::findFreeVoice (voices, kOpalMaxClouds)
 
     void spawnGrainForVoice (OpalCloudVoice& v, float position, float posScatter,
                               float pitchShift, float pitchScatter, float panScatter,
@@ -2379,7 +2194,7 @@ private:
 
     // Voice pool
     std::array<OpalCloudVoice, kOpalMaxClouds> voices {};
-    uint32_t voiceBirthCounter = 0;
+    uint64_t voiceStartCounter = 0;  // matches VoiceAllocator::startTime field type
     bool sustainPedalDown = false;
 
     // DSP

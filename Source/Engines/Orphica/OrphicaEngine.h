@@ -209,6 +209,10 @@ public:
                 voices[t].noteOn(msg.getNoteNumber(),msg.getVelocity()/127.f);
             } else if (msg.isNoteOff()) {
                 for (auto& v : voices) if (v.active && v.note == msg.getNoteNumber()) v.noteOff();
+            } else if (msg.isPitchWheel()) {
+                // Pitch bend: ±2 semitones, stored as additive semitone offset
+                int raw = msg.getPitchWheelValue(); // 0..16383, centre=8192
+                pitchBendSemitones = ((float)(raw - 8192) / 8192.0f) * 2.0f;
             } else if (msg.isChannelPressure()) {
                 float atPressure = (float)msg.getChannelPressureValue() / 127.f;
                 for (auto& v : voices)
@@ -337,7 +341,7 @@ public:
 
                 // Organic drift
                 float ds=v.drift.tick(pDR,pDD);
-                float df=v.freq*fastPow2((ds+extPitchMod)/12.f);
+                float df=v.freq*fastPow2((ds+extPitchMod+pitchBendSemitones)/12.f);
                 float dlen=v.sr/std::max(df,20.f);
 
                 // Waveguide read
@@ -349,8 +353,14 @@ public:
                 float effIntens = extIntens * velIntens;
                 float exc=v.pluck.tick(posBright*velIntens)*effIntens;
 
+                // D001: velocity shapes brightness, not just amplitude.
+                // Higher velocity = less damping = brighter string (more high-frequency content
+                // retained in the waveguide feedback loop). vel=0 → 0.97x (dull), vel=1 → 1.0x (bright).
+                float velBright = 0.97f + v.vel * 0.03f;
+                float voiceDamp = std::clamp(effDamp * velBright + extDampMod, 0.0f, 0.999f);
+
                 // Damped feedback write
-                float damped=v.df.process(out+exc*pluckGain,std::clamp(effDamp+extDampMod,0.f,1.f));
+                float damped=v.df.process(out+exc*pluckGain,voiceDamp);
                 v.dl.write(damped);
 
                 // Body resonance (size controls frequency and Q)
@@ -573,6 +583,9 @@ private:
     float extPitchMod = 0.f;   // semitones from LFOToPitch
     float extDampMod  = 0.f;   // 0–1 from AmpToFilter
     float extIntens   = 1.f;   // multiplier from EnvToMorph
+
+    // MIDI pitch bend (±2 semitones)
+    float pitchBendSemitones = 0.0f;
     std::array<OrphicaAdapterVoice,kV> voices;
 
     // FX LOW processors

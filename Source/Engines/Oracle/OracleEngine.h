@@ -4,6 +4,10 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/GlideProcessor.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -233,184 +237,21 @@ struct GENDYBreakpoint
 //
 //  ADSR ENVELOPE GENERATOR
 //
-//  Lightweight, inline, zero-allocation envelope for the audio thread.
-//  Uses linear attack and exponential-approximation decay/release curves.
-//  The 0.001s minimum time constant prevents division-by-zero and ensures
-//  even "instant" attack/release takes ~44 samples at 44.1kHz — enough
-//  to avoid discontinuity clicks.
+//  Replaced with fleet-standard implementation. See Source/DSP/StandardADSR.h.
 //
 //==============================================================================
 
-struct OracleADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage         = Stage::Idle;
-    float level         = 0.0f;
-    float attackRate    = 0.0f;
-    float decayRate     = 0.0f;
-    float sustainLevel  = 1.0f;
-    float releaseRate   = 0.0f;
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-
-        // 0.001s minimum prevents division by zero and ensures click-free transitions
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Decay:
-                // 0.0001f bias prevents the exponential from stalling at exactly
-                // the sustain level (asymptotic approach would never arrive)
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f)
-                {
-                    level = sustainLevel;
-                    stage = Stage::Sustain;
-                }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                // 0.0001f bias ensures release curve reaches zero in finite time
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-};
+using OracleADSR = StandardADSR;
 
 //==============================================================================
 //
 //  LOW-FREQUENCY OSCILLATOR
 //
-//  Five shapes for modulating breakpoint evolution and stochastic depth.
-//  Sample-and-Hold uses a linear congruential generator (Numerical Recipes
-//  constants: multiplier 1664525, increment 1013904223) that latches a
-//  new random value at each LFO cycle boundary.
+//  Replaced with fleet-standard implementation. See Source/DSP/StandardLFO.h.
 //
 //==============================================================================
 
-struct OracleLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase         = 0.0f;
-    float phaseIncrement = 0.0f;
-    Shape shape         = Shape::Sine;
-    float holdValue     = 0.0f;
-    uint32_t randomState = 0;  // LCG state for Sample-and-Hold
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseIncrement = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int shapeIndex) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, shapeIndex)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (phase * 6.28318530718f);  // 2*pi
-                break;
-
-            case Shape::Triangle:
-                // Map [0,1) phase to [-1,1] triangle via absolute value
-                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-
-            case Shape::Saw:
-                // Linear ramp from -1 to +1 across one cycle
-                out = 2.0f * phase - 1.0f;
-                break;
-
-            case Shape::Square:
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-
-            case Shape::SandH:
-            {
-                // Latch a new random value when phase wraps around
-                float previousPhase = phase - phaseIncrement;
-                if (previousPhase < 0.0f || phase < previousPhase)
-                {
-                    // LCG with Numerical Recipes constants (period 2^32)
-                    randomState = randomState * 1664525u + 1013904223u;
-                    // Map lower 16 bits to [-1, 1)
-                    holdValue = static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return out;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        holdValue = 0.0f;
-        randomState = 12345u;  // Arbitrary non-zero seed
-    }
-};
+using OracleLFO = StandardLFO;
 
 //==============================================================================
 //
@@ -499,9 +340,7 @@ struct OracleVoice
     float wavePhaseIncrement = 0.0f;  // Frequency / sampleRate (per-sample advance)
 
     // --- Pitch ---
-    float currentFrequency = 440.0f;  // Current frequency (smoothed toward target)
-    float targetFrequency  = 440.0f;  // Destination frequency (set on noteOn)
-    float glideCoefficient = 1.0f;    // Portamento smoothing coefficient
+    GlideProcessor glide;  // Portamento: smoothly approaches targetFreq
 
     // --- Per-voice PRNG for stochastic evolution ---
     Xorshift64 rng;
@@ -542,8 +381,8 @@ struct OracleVoice
         velocity = 0.0f;
         wavePhase = 0.0f;
         wavePhaseIncrement = 0.0f;
-        currentFrequency = 440.0f;
-        targetFrequency = 440.0f;
+        glide.reset();
+        glide.snapTo (440.0f);
         fadeGain = 1.0f;
         fadingOut = false;
         lastOutputL = 0.0f;
@@ -820,8 +659,7 @@ public:
                 }
 
                 // --- Glide (portamento) ---
-                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency)
-                                        * voice.glideCoefficient;
+                float frequency = voice.glide.process();
 
                 // --- Envelopes ---
                 float amplitudeLevel  = voice.amplitudeEnvelope.process();
@@ -851,7 +689,6 @@ public:
                 float stochasticDepth = stochasticLevel * effectiveDrift;
 
                 // --- Phase increment ---
-                float frequency = voice.currentFrequency;
                 voice.wavePhaseIncrement = frequency / sampleRateFloat;
 
                 // --- Advance waveform phase ---
@@ -1605,13 +1442,13 @@ private:
             auto& voice = voices[0];
             bool wasActive = voice.active;
 
-            voice.targetFrequency = frequency;
+            voice.glide.setTarget (frequency);
+            voice.glide.setCoeff (glideCoeff);
 
             if (isLegatoMode && wasActive)
             {
                 // Legato: glide to new note without retriggering envelopes.
                 // The waveform continues its stochastic evolution uninterrupted.
-                voice.glideCoefficient = glideCoeff;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
             }
@@ -1621,8 +1458,8 @@ private:
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
                 voice.startTime = voiceCounter++;
-                voice.currentFrequency = frequency;
-                voice.glideCoefficient = glideCoeff;
+                voice.glide.snapTo (frequency);
+                voice.glide.setCoeff (glideCoeff);
                 voice.wavePhase = 0.0f;
                 voice.fadingOut = false;
                 voice.fadeGain = 1.0f;
@@ -1655,7 +1492,7 @@ private:
         }
 
         // ----- Polyphonic mode -----
-        int voiceIndex = findFreeVoice (maxPolyphony);
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, std::min (maxPolyphony, kMaxVoices));
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // If stealing an active voice, initiate a crossfade to prevent clicks
@@ -1669,9 +1506,7 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
-        voice.currentFrequency = frequency;
-        voice.targetFrequency = frequency;
-        voice.glideCoefficient = 1.0f;  // No glide in poly mode (instant pitch)
+        voice.glide.snapTo (frequency);  // No glide in poly mode (instant pitch)
         voice.wavePhase = 0.0f;
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
@@ -1713,32 +1548,6 @@ private:
                 voice.stochasticEnvelope.noteOff();
             }
         }
-    }
-
-    //--------------------------------------------------------------------------
-    // Voice allocation: find an inactive voice, or steal the oldest (LRU).
-    //--------------------------------------------------------------------------
-    int findFreeVoice (int maxPolyphony) const
-    {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // First pass: find an inactive voice within the polyphony limit
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // LRU voice stealing — find the oldest active voice (lowest startTime)
-        int oldestVoiceIndex = 0;
-        uint64_t oldestStartTime = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestStartTime)
-            {
-                oldestStartTime = voices[static_cast<size_t> (i)].startTime;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
     }
 
     //==========================================================================

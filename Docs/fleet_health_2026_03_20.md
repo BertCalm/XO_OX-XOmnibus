@@ -1,7 +1,7 @@
 # XOmnibus Fleet Health Dashboard
 
 **Generated**: 2026-03-20
-**Scope**: All 42 engine directories in `Source/Engines/`
+**Scope**: 42 engine directories surveyed in `Source/Engines/` — OXBOW and OWARE (engines 43–44, both added 2026-03-20) are not included in this snapshot. Fleet total is 44 engines.
 
 ---
 
@@ -79,9 +79,9 @@ Owlfish, Ocelot, Bite, Osteria, Osprey, Oceanic, Obscura, Obsidian, Ole, Ottoni,
 
 ### Overall Fleet Health Score
 
-**26.2%** -- 11 of 42 engines have all four checkmarks (source lines > 0, presets >= 100, seance verdict, registered).
+**26.2%** -- 11 of 42 engines surveyed have all four checkmarks (source lines > 0, presets >= 100, seance verdict, registered). Fleet is now 44 engines; OXBOW and OWARE (not surveyed here) both have presets (150 each) and are registered, but neither has been seanced.
 
-The primary gap is **seance coverage**: 29 engines have never been through a synth seance. All 42 engines are registered and have source code. Only Orbweave lacks presets entirely.
+The primary gap is **seance coverage**: 29 engines have never been through a synth seance. All 42 surveyed engines are registered and have source code. Only Orbweave lacks presets entirely.
 
 ---
 

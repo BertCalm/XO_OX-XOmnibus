@@ -5,6 +5,8 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -95,104 +97,8 @@ private:
     float decayCoeff = 0.99f;
 };
 
-//==============================================================================
-// DubAdsrEnvelope — ADSR with exponential decay/release curves.
-// Preserves XOverdub's "capacitor discharge" character.
-//==============================================================================
-class DubAdsrEnvelope
-{
-public:
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    void prepare (double sampleRate) noexcept { sr = sampleRate; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-        // Don't reset level — allows retrigger without click
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    void setParams (float attackSec, float decaySec, float sustainLevel, float releaseSec) noexcept
-    {
-        float srf = static_cast<float> (sr);
-        attackRate  = (attackSec  > 0.0001f) ? 1.0f / (srf * attackSec)  : 1.0f;
-        decayRate   = (decaySec   > 0.0001f) ? 1.0f / (srf * decaySec)   : 1.0f;
-        sustain     = std::max (0.0f, std::min (1.0f, sustainLevel));
-        releaseRate = (releaseSec > 0.0001f) ? 1.0f / (srf * releaseSec) : 1.0f;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                break;
-
-            case Stage::Decay:
-                level -= (level - sustain) * decayRate;
-                level = flushDenormal (level);
-                if (level <= sustain + 0.0001f)
-                {
-                    level = sustain;
-                    stage = Stage::Sustain;
-                }
-                break;
-
-            case Stage::Sustain:
-                level = sustain;
-                if (sustain < 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                break;
-
-            case Stage::Release:
-                level -= level * releaseRate;
-                level = flushDenormal (level);
-                if (level < 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                break;
-        }
-        return level;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-    Stage getStage() const noexcept { return stage; }
-
-private:
-    double sr = 44100.0;
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate = 0.01f;
-    float decayRate = 0.001f;
-    float sustain = 0.7f;
-    float releaseRate = 0.001f;
-};
+// DubAdsrEnvelope replaced by StandardADSR (Source/DSP/StandardADSR.h).
+// All call sites updated to use xomnibus::StandardADSR directly.
 
 //==============================================================================
 // DubLFO — Sine LFO with configurable rate, 3-way destination routing.
@@ -514,7 +420,7 @@ struct DubVoice
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t age = 0;
+    uint64_t startTime = 0;   // Voice allocation timestamp for LRU stealing (VoiceAllocator)
 
     // Oscillators
     PolyBLEP mainOsc;
@@ -522,7 +428,7 @@ struct DubVoice
     DubNoiseGen noise;
 
     // Envelopes
-    DubAdsrEnvelope ampEnv;
+    xomnibus::StandardADSR ampEnv;
     DubPitchEnvelope pitchEnv;
 
     // Filter
@@ -586,10 +492,11 @@ public:
         {
             auto& v = voices[static_cast<size_t> (i)];
             v.active = false;
+            v.startTime = 0;
             v.mainOsc.reset();
             v.subOsc.reset();
             v.noise.seed (static_cast<uint32_t> (i * 6271 + 3));
-            v.ampEnv.prepare (sr);
+            v.ampEnv.prepare (static_cast<float> (sr));
             v.ampEnv.reset();
             v.pitchEnv.prepare (sr);
             v.pitchEnv.reset();
@@ -800,10 +707,8 @@ public:
             {
                 if (!voice.active) continue;
 
-                ++voice.age;
-
                 // Update envelope params
-                voice.ampEnv.setParams (attack, decay, sustain, release);
+                voice.ampEnv.setADSR (attack, decay, sustain, release);
                 voice.pitchEnv.setParams (pitchDepth, pitchDecay);
 
                 // Glide: exponential frequency slew
@@ -876,7 +781,6 @@ public:
                 if (!voice.ampEnv.isActive())
                 {
                     voice.active = false;
-                    voice.age = 0;
                 }
 
                 // Mono voice sum → stereo
@@ -1255,7 +1159,7 @@ private:
             v.active = true;
             v.noteNumber = noteNumber;
             v.velocity = velocity;
-            v.age = 0;
+            v.startTime = voiceAllocationCounter++;
 
             if (legatoRetrigger)
             {
@@ -1266,7 +1170,8 @@ private:
         }
 
         // Poly mode: find free voice or steal oldest
-        int idx = findFreeVoice (maxPoly);
+        int poly = std::min (maxPoly, kMaxVoices);
+        int idx = VoiceAllocator::findFreeVoice (voices, poly);
         auto& v = voices[static_cast<size_t> (idx)];
 
         // Glide from previous note if voice was active
@@ -1283,7 +1188,7 @@ private:
         v.active = true;
         v.noteNumber = noteNumber;
         v.velocity = velocity;
-        v.age = 0;
+        v.startTime = voiceAllocationCounter++;
         v.ampEnv.noteOn();
         v.pitchEnv.trigger();
         v.mainOsc.reset();
@@ -1314,28 +1219,7 @@ private:
         externalFilterMod = 0.0f;
     }
 
-    int findFreeVoice (int maxPoly)
-    {
-        int poly = std::min (maxPoly, kMaxVoices);
-
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // Oldest voice stealing — initialize from voice 0
-        int oldest = 0;
-        uint64_t oldestAge = voices[0].age;
-        for (int i = 1; i < poly; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].age > oldestAge)
-            {
-                oldestAge = voices[static_cast<size_t> (i)].age;
-                oldest = i;
-            }
-        }
-        voices[static_cast<size_t> (oldest)].ampEnv.reset();
-        return oldest;
-    }
+    // findFreeVoice() replaced by VoiceAllocator::findFreeVoice() (Source/DSP/VoiceAllocator.h)
 
     static float midiToFreqOct (int midiNote, int octaveChoiceIndex, float tuneCents) noexcept
     {
@@ -1350,6 +1234,7 @@ private:
     double sr = 44100.0;
     float srf = 44100.0f;
     std::array<DubVoice, kMaxVoices> voices;
+    uint64_t voiceAllocationCounter = 0;   // Monotonic counter for LRU voice stealing
 
     // LFO
     DubLFO lfo;

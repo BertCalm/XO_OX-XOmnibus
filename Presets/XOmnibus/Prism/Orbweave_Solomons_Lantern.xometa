@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Solomon topology but filtered wide open and bright — the doubly-linked rings act like a lantern focusing harmonic light outward. Triangle strands, fast S&H LFO on volume creates flickering incandescence.",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.35,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.32,
+    "aggression": 0.18
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.58,
+    "TENSION": 0.25,
+    "KNOT": 0.0,
+    "SPACE": 0.22
+  },
+  "mood": "Prism",
+  "name": "Solomons Lantern",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.7,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 16500.0,
+      "weave_filterReso": 0.1,
+      "weave_filterType": 0,
+      "weave_ampA": 0.003,
+      "weave_ampD": 0.6,
+      "weave_ampS": 0.28,
+      "weave_ampR": 0.7,
+      "weave_lfo1Type": 5,
+      "weave_lfo1Target": 4,
+      "weave_lfo1Depth": 0.22,
+      "weave_lfo1Rate": 6.5,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.25,
+      "weave_fx1Param": 0.3,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.58,
+      "weave_macroTension": 0.25,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.22,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Bright Solomon triangle pad with fast S&H volume flicker. Doubly-linked rings focus harmonic energy outward like a lantern.",
+  "tags": [
+    "solomon",
+    "bright",
+    "flickering",
+    "sample-and-hold",
+    "lantern"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

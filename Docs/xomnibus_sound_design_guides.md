@@ -1,6 +1,7 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 38 of 38 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
+*Covers 38 of 44 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
+*AUDIT NOTE (2026-03-21): 6 engines missing entries — OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE. All were added after this guide was last updated.*
 
 ---
 
@@ -2577,3 +2578,327 @@ OCEANDEEP is a bass instrument first and a synthesis engine second. Approach it 
 
 **Designer Notes**
 OUIE's central insight is that two voices don't need to agree. The HAMMER axis makes the relationship between them the instrument — not either voice in isolation. At LOVE extremes, the voices merge into something more coherent than either: harmonic lock adds intervals that weren't played, spectral blend creates a hybrid timbre. At STRIFE extremes, they fight: cross-FM introduces sidebands between them, ring modulation produces sum-and-difference frequencies that treat both voices as raw signal. The most musically interesting territory is moderate HAMMER values in either direction (±0.3–0.5), where the interaction is audible but not overwhelming. Voice mode shapes how the thermocline is played: Layer makes every note a two-voice interaction; Split gives you two entirely different instruments across the keyboard; Duo makes the most recent note always interact with the previous one — melodic lines that comment on themselves.
+
+---
+
+## 39. OWARE — The Resonant Board
+
+**Gallery code:** OWARE | **Accent:** Akan Goldweight `#B5883E`
+**Parameter prefix:** `owr_`
+**Aquatic mythology:** The sunken oware board — a carved wooden mancala game from the Akan people of Ghana, lost to the Atlantic on a trade route and now encrusted with coral and bronze barnacles on the ocean floor. Strike a hollow and the whole board shimmers with sympathetic resonance.
+
+### Identity
+A tuned percussion synthesizer spanning the entire struck-idiophone family through continuous material morphing. OWARE covers African balafon, Javanese gamelan, Western vibraphone, Tibetan singing bowls, and bronze bells without switching modes — one continuous material continuum from wood to glass to metal to bowl. It is the oldest instrument in the aquarium: carved wood and spilled seeds meeting the sea floor.
+
+### Signal Flow
+Mallet Exciter (Chaigne contact model) → 8 Parallel Mode Resonators (material-ratio tuned) → Sympathetic Resonance Network (per-mode frequency coupling between voices) → Body Resonator (tube/frame/bowl/open) → Buzz Membrane (BPF + tanh for balafon mirliton) → Brightness Filter → Output. Thermal drift and per-voice shimmer LFO run continuously at all times, providing the alive quality even when no notes are playing.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **MATERIAL** | `owr_macroMaterial` — sweeps material continuum from wood toward metal/bowl |
+| M2 | **MALLET** | `owr_macroMallet` — mallet hardness + brightness (soft mallets excite low modes only) |
+| M3 | **COUPLING** | `owr_macroCoupling` — sympathetic resonance depth + coupling send level |
+| M4 | **SPACE** | `owr_macroSpace` — body resonator depth + reverb send |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `owr_material` | 0–1 | 0.0–0.3 (wood), 0.33–0.66 (bell), 0.66–1.0 (metal/bowl) | Material continuum. Uses Rossing mode ratio tables: wood (inharmonic upper modes), bell (compact sub-harmonic cluster), metal (clean upper harmonics), bowl (very low partials). The most important single parameter. |
+| `owr_malletHardness` | 0–1 | 0.2–0.5 | Mallet hardness. Soft (0) = long contact time, low-pass excitation, only low modes excited, plus a physical bounce. Hard (1) = short contact, bright excitation, all modes equally struck. Velocity amplifies this at every note-on. |
+| `owr_bodyType` | 0–3 | 0=Tube, 1=Frame, 2=Bowl | Resonator body shape. Tube: cylindrical bore with delay-line resonance (marimba). Frame: three fixed-mode resonances at 200/580/1100 Hz (balafon wooden frame). Bowl: sub-octave modal resonance (gamelan, singing bowl). Open (3): no body coupling. |
+| `owr_bodyDepth` | 0–1 | 0.3–0.7 | How deeply the body couples with the mode resonators. Gaussian proximity boost: modes whose frequency is near a body resonance ring longer. |
+| `owr_buzzAmount` | 0–1 | 0.0–0.3 | Buzz membrane (balafon mirliton). Extracts 200–800 Hz band, applies tanh nonlinearity, re-injects. Adds the characteristic buzzing rattle of a West African balafon. Off by default — add sparingly. |
+| `owr_sympathyAmount` | 0–1 | 0.2–0.5 | Sympathetic resonance between voices. Frequency-selective: each mode in a new voice couples only to modes in other sounding voices that are close in frequency. Creates the shimmer of a gamelan when multiple notes are held. |
+| `owr_shimmerRate` | 0–12 Hz | 5–8 Hz | Balinese beat-frequency shimmer rate in Hz. Shadow voice is detuned by exactly this Hz — not a ratio — creating the characteristic gamelan shimmer beat. 6 Hz is classic Balinese tuning. |
+| `owr_thermalDrift` | 0–1 | 0.2–0.4 | Shared thermal tuning drift + per-voice personality offsets. The board warms up and cools down; each bar has a slightly different thermal character from manufacture. Makes the engine feel alive even during held notes. |
+| `owr_brightness` | 200–20kHz | 4–12 kHz | High-frequency brightness ceiling. The material exponent alpha already controls per-mode decay differentiation (wood upper modes die fast, metal rings forever); brightness is the final air/warmth shaping. |
+| `owr_damping` | 0–1 | 0.1–0.4 | Mode resonator Q factor reduction. Higher damping = shorter, more percussive sound. Lower = sustaining glass bowl character. |
+| `owr_decay` | 0.05–10 s | 0.5–3.0 | Overall decay time envelope. Scales all mode resonator Q values simultaneously. This is the "room size" for the bar — how long the board remembers each impact. |
+| `owr_filterEnvAmount` | 0–1 | 0.2–0.4 | Filter envelope depth. Velocity-triggered brightening on attack that decays — a velocity-to-brightness arc that follows every note. |
+
+### Sound Design Tips
+1. **Start with material, then add body.** `owr_material` at 0.0 (pure wood) gives marimba-like inharmonic tones. Dial up `owr_bodyType`=0 (tube) and `owr_bodyDepth` to 0.5 to add the cylindrical bore resonance — you are now building a marimba from scratch.
+2. **Gamelan shimmer requires held notes and sympathy.** Set `owr_sympathyAmount` to 0.4+, `owr_shimmerRate` to 6 Hz, `owr_material` around 0.5 (bell range). Hold two or more notes for the characteristic beating shimmer to emerge between voices.
+3. **The buzz membrane is a seasoning, not a main course.** `owr_buzzAmount` above 0.4 dominates; below 0.2 it adds authentic balafon texture. Try material=0.0, bodyType=1 (frame), buzz=0.15–0.2 for a close-miked West African balafon.
+4. **Thermal drift is always on and always helping.** Even at low values (0.2–0.3), `owr_thermalDrift` prevents the engine from sounding mechanical. The shared drift makes all bars feel like they belong to the same physical instrument. Increase it for a beaten-up street instrument feel.
+5. **Soft mallets and long decay make singing bowls.** material=1.0 (bowl), malletHardness=0.1–0.2, bodyType=2 (bowl), decay=6–10s, damping=0.05. The soft mallet excites only low modes; the bowl body couples the sub-octave resonance; the long decay lets everything ring. Rub the rim with a slow note-hold.
+
+### Coupling
+- **Sends:** Stereo audio (ch 0/1) — struck transients plus sustained sympathetic resonance field
+- **Receives:** `AmpToFilter` (external amplitude opens brightness filter — great for sidechain effects), `LFOToPitch` (external pitch drift — adds detuning from another engine's LFO), `AmpToPitch` (env-to-pitch for subtle transient pitch effects), `EnvToMorph` (morphs material via coupling — allows another engine to change what OWARE is made of)
+- **Best as source for:** `AmpToFilter` (transient strikes pumping other engines' filters in rhythm), `LFOToPitch` (slow shimmer drift as pitch source for melodic engines)
+- **Ecosystem role:** The rhythmic-harmonic bridge between percussion and sustain. Sits between ONSET (pure percussion) and ODDOSCAR (pure sustain) — OWARE has both a transient and a long sustaining tail with harmonic content.
+
+### Recommended Pairings
+- **+ ONSET:** The drum circle. ONSET's algorithmic drum voices beneath OWARE's harmonic bars — West African percussion ensemble, or a gamelan with a kit.
+- **+ ODYSSEY:** Struck bar over open-water drift. OWARE's transient excites ODYSSEY's reverb tail — the mallet hit that becomes an ocean.
+- **+ OPAL:** OWARE transients frozen into grain clouds by OPAL. A struck bar refracted into infinite shimmer particles.
+- **+ ODDOSCAR:** OWARE for attack shape, ODDOSCAR for sustained body. Plucked-then-breathed. The struck note blooms into a pad.
+- **+ OXBOW:** OWARE feeding OXBOW's FDN exciter — the struck bar becomes the impulse for an entangled resonance field. Both engines share a love of sympathetic resonance.
+
+### Recommended Presets to Start With
+- **Oware_Kelp_Garden** (Foundation) — classic marimba-range wood bars with body coupling, gentle sympathy shimmer
+- **Oware_Brass_Bowls** (Atmosphere) — metal material, bowl body, long decay; Tibetan bowl character
+- **Oware_Buzz_Ritual** (Flux) — buzz membrane active, frame body, fast decay; West African balafon at speed
+- **Oware_Metal_Rain** (Flux) — metal material, high sympathy, shimmer active; a gamelan in a rainstorm
+- **Oware_Gamelan_Still** (Atmosphere) — bell material, Balinese shimmer, long decay; the suspended chord that never resolves
+
+---
+
+## 40. OXBOW — Entangled Reverb
+
+**Gallery code:** OXBOW | **Accent:** Oxbow Teal `#1A6B5A`
+**Parameter prefix:** `oxb_`
+**Aquatic mythology:** The Oxbow Eel at the twilight zone (200–1000m). An oxbow is a lake formed when a river cuts itself off — sound enters as rushing water, then the current is severed, leaving a suspended pool of resonance that slowly erases itself. What remains are golden standing waves.
+
+### Identity
+A reverb synthesis engine where the reverb is the instrument. OXBOW uses a Chiasmus FDN (8-channel Householder matrix with L/R delay times reversed — the same resonant structure in opposite temporal order) to create genuine structural entanglement between left and right. Every note becomes a pitched impulse that disappears into a resonance field that transforms as it decays. Oscar-dominant (0.3/0.7 feliX-Oscar polarity): mostly sustain, slow emergence.
+
+### Signal Flow
+MIDI Note → Pitched Exciter (sine + noise burst, velocity-scaled brightness) → Pre-Delay → 8-Channel Chiasmus FDN (Householder matrix, reversed L/R delay times, time-varying damping) → Phase Erosion (4 allpass filters per channel, L/R opposite-polarity LFOs) → Golden Resonance (Mid/Side convergence detection → 4 peak filters tuned to golden ratio harmonics of MIDI fundamental) → Dry/Wet Mix → Output.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **CHARACTER** | `oxb_entangle` — L/R cross-coupling amount; the depth of entanglement |
+| M2 | **MOVEMENT** | `oxb_erosionRate` + `oxb_erosionDepth` — how fast and deep the phase erosion breathes |
+| M3 | **COUPLING** | External coupling amount |
+| M4 | **SPACE** | `oxb_decay` + `oxb_resonanceMix` — decay time + golden resonance blend |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `oxb_decay` | 0.1–60 s | 3–12 s | FDN decay time. Above 29s: feedback coefficient = 1.0 (Schulze infinite decay — reverb never dies). The single most dramatic parameter. |
+| `oxb_entangle` | 0–1 | 0.4–0.7 | L/R cross-channel coupling in the FDN. At 0: L and R channels are independent (wide). At 1: fully blended (mono center). Sweet spot creates genuine stereo entanglement — neither stereo nor mono, but woven. Aftertouch pushes this higher in real-time. |
+| `oxb_erosionRate` | 0.01–0.5 Hz | 0.05–0.15 | Rate of phase erosion LFOs. Four allpass stages per channel, L and R modulated with opposite polarity — spectral breathing that creates self-cancellation when summed to mono. This is the engine's primary autonomous modulation (D005 compliant). |
+| `oxb_erosionDepth` | 0–1 | 0.3–0.6 | Depth of phase erosion modulation. Higher = more dramatic spectral sweeping as the reverb tail evolves. |
+| `oxb_convergence` | 1–20 | 3–8 | Mid/Side energy ratio threshold for golden resonance trigger. When Mid >> Side (stereo channels converging), golden ratio peak filters ring out. Lower values = golden resonance activates more easily and often. |
+| `oxb_resonanceMix` | 0–1 | 0.2–0.5 | Blend of golden ratio harmonic peaks into the output. The 4 peak filters are tuned to f, f×φ, f×φ², f×φ³ (weighted -3dB per φ multiple). They ring only when the FDN's L/R channels converge toward mono. |
+| `oxb_resonanceQ` | 0.5–20 | 5–12 | Q factor of the golden ratio peak filters. Higher = narrower, more singing resonances. |
+| `oxb_cantilever` | 0–1 | 0.3–0.6 | Asymmetric time-varying damping depth. Controls how dramatically damping increases as energy drops — bright early reflections become dark late reflections. This is what makes OXBOW transform as it decays. |
+| `oxb_damping` | 200–16kHz | 4–10 kHz | Initial FDN damping frequency. High = bright reverb. Low = dark, submerged. The cantilever system then darkens from here as energy depletes. |
+| `oxb_predelay` | 0–200 ms | 10–40 ms | Pre-delay before FDN input. Creates separation between dry transient and reverb wash. |
+| `oxb_exciterDecay` | 0.001–0.1 s | 0.005–0.02 | Exciter decay time. Short = click/impulse character. Longer = pitched tone feeding the reverb. |
+| `oxb_exciterBright` | 0–1 | 0.4–0.8 | Noise/sine ratio in exciter. 0 = pure pitched sine. 1 = pure noise burst. Velocity also scales brightness — harder hits are brighter excitations. |
+| `oxb_dryWet` | 0–1 | 0.6–0.9 | Dry/wet balance (dry=exciter, wet=reverb). For most use, weight heavily toward wet — OXBOW is a reverb instrument. |
+
+### Sound Design Tips
+1. **Let it decay.** OXBOW's most interesting sounds happen after the attack. Set a long decay (8–20s), hold a note, then release and listen. The golden resonance emerges as the L/R channels converge — you will hear it shift from complex to singing to silence.
+2. **Use aftertouch for entanglement control.** Aftertouch adds directly to `oxb_entangle` in real-time. Begin a note with wide stereo (low entangle), then press harder to pull the sound toward a coherent center — dramatic live performance technique.
+3. **Infinite decay as a drone.** Set `oxb_decay` above 29s (the Schulze threshold). The FDN feedback becomes exactly 1.0. Hold a note and release: the reverb field never decays. Play a second note and the fields superimpose. OXBOW becomes a harmonic drone generator. Use the erosion LFOs to animate the drone.
+4. **Convergence as a beat.** When `oxb_convergence` is set low (2–4) and `oxb_resonanceMix` is audible (0.4+), the golden resonance activates rhythmically each time the stereo image narrows. This creates an organic pulse tied to the reverb's internal dynamics — not tempo-synced, but musically related.
+5. **Bright exciter, dark damping = maximum transformation.** Set `oxb_exciterBright` high, `oxb_damping` low (1–3 kHz), `oxb_cantilever` at 0.7+. The initial strike is noise-bright, but the reverb is immediately dark and the cantilever darkens it further as it decays. Maximum contrast between attack and tail.
+
+### Coupling
+- **Sends:** Stereo audio (ch 0/1) — the full reverb field including golden resonance
+- **Receives:** `AmpToFilter` (external amplitude modulates FDN damping frequency — sidechain the reverb brightness), `EnvToDecay` (external envelope modulates decay time — shorten the reverb tail with transients), `AudioToRing` (ring-modulates the wet output with external audio)
+- **Best as source for:** `AudioToBuffer` (reverb field as convolution source for granular engines), `AmpToFilter` (reverb envelope as slow filter pump)
+- **Ecosystem role:** The entangled pool — OXBOW holds energy in suspension after other engines have moved on. Best positioned as the last processor in a chain.
+
+### Recommended Pairings
+- **+ OWARE:** Struck bar as FDN exciter. OWARE's transient feeds OXBOW's reverb field — the mallet hit becomes an entangled resonance pool. Both engines are physically modeled resonators.
+- **+ ODDFELIX:** feliX's sharp snap as OXBOW exciter. The neon dart disappears into a suspended pool. Extreme contrast — the most percussive engine feeding the most sustained.
+- **+ ODDOSCAR:** Two Oscar-dominant engines layered. OXBOW's entangled space beneath ODDOSCAR's breathing coral. The warmest, most still combination in the gallery.
+- **+ OVERTONE:** Nautilus spectral partials feeding OXBOW's golden resonance detection. The irrational harmonics of OVERTONE converge with OXBOW's golden ratio filters — mathematical resonance stacking.
+- **+ OUROBOROS:** Chaos injection. OUROBOROS's strange attractor feeding OXBOW's FDN exciter — the reverb field becomes chaotic, mutating, never repeating.
+
+### Recommended Presets to Start With
+- **Oxbow_Dried_Riverbed** (Flux) — medium decay, active erosion, moderate entanglement; the classic OXBOW texture
+- **Oxbow_Scientist_Method** (Flux) — golden resonance prominent, convergence set low, long decay; mathematical shimmer
+- **Oxbow_Still_Water** (Atmosphere) — infinite decay (29s+), low erosion, high entanglement; the pool that never drains
+- **Oxbow_Entangled_Bloom** (Entangled) — coupled to OWARE or ODDFELIX; reverb field fed by transients
+- **Oxbow_Golden_Toll** (Aether) — bright exciter, dark damping, cantilever high; bell tone that transforms completely into darkness
+
+---
+
+## 41. ORBWEAVE — Topological Knot Synthesis
+
+**Gallery code:** ORBWEAVE | **Accent:** Kelp Knot Purple `#8E4585`
+**Parameter prefix:** `weave_`
+**Aquatic mythology:** The Kelp Knot — strands of giant kelp braided by current into topological formations on the ocean floor. Each knot type creates a different resonant character; each strand's phase is entangled with the others through a mathematical coupling matrix that cannot be undone.
+
+### Identity
+Phase-braided oscillator synthesis. Four oscillator strands whose phases influence each other's pitch through a configurable knot-topology coupling matrix. Different knot types (Trefoil, Figure-Eight, Torus, Solomon's Seal) produce different braid patterns — timbres that cannot be achieved with standard detuning because the coupling is structural, not just pitch offset. As braid depth increases, the four strands move from independent oscillators toward a single, knotted entity.
+
+### Signal Flow
+4 Strand Oscillators (shared waveform: Sine/Saw/Square/Triangle) → Knot Matrix Phase Coupling (4×4 matrix, L/R averaged to stereo, Torus P/Q dynamic modulation) → per-voice ADSR × 2 LFO slots × SVF Filter → 3 FX Slots (Delay/Chorus/Reverb, in series) → Pan → Output.
+
+The knot coupling happens at the phase increment level: each sample, each strand reads the current phases of all other strands and adds a weighted phase-modulation amount. The matrix coefficients encode the topology — Trefoil has a 3-strand ring with one floating strand; Figure-Eight alternates over/under; Torus has dynamic P/Q winding numbers; Solomon's Seal has two doubly-linked rings.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **WEAVE** | `weave_macroWeave` — braid depth; how tightly the strands are coupled |
+| M2 | **TENSION** | `weave_macroTension` — filter resonance boost + coupling feedback intensity |
+| M3 | **KNOT** | `weave_macroKnot` — morphs between current knot type and the next in sequence |
+| M4 | **SPACE** | `weave_macroSpace` — FX mix depth across all 3 FX slots |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `weave_knotType` | 0–3 | — | Knot topology: 0=Trefoil, 1=Figure-Eight, 2=Torus, 3=Solomon. Each produces a distinct timbral fingerprint from the same four oscillators. |
+| `weave_braidDepth` | 0–1 | 0.3–0.7 | How much each strand's phase modulates the others. At 0: four independent oscillators (standard chord). At 1: fully braided (complex intermodulation). Sweet spot produces audible knot character without chaos. M1 WEAVE maps directly here. |
+| `weave_torusP` | 1–8 | 2–4 | Torus knot P winding (only active with knotType=Torus). P wraps around the torus hole. Different P/Q ratios create different torus knot families (2,3=trefoil knot on torus, 3,5=cinquefoil, etc.). |
+| `weave_torusQ` | 1–8 | 3–5 | Torus knot Q winding (only active with knotType=Torus). Q wraps through the hole. Integer ratios produce closed knots; non-integer ratios would produce open spirals. |
+| `weave_strandType` | 0–4 | 1=Sine, 2=Saw | Waveform for all 4 strands. Sine: purest knot timbres. Saw: knot adds inharmonic sidebands. Square: maximum odd-harmonic content with knot modulation. |
+| `weave_strandTune` | -24–+24 st | -12–+12 | Fine/coarse tuning offset between the strand pair spacing. Spreads the initial frequencies before knot coupling begins. |
+| `weave_filterCutoff` | 20–20kHz | 400–6k | SVF filter cutoff. The four braided strands produce combination tones; filter shapes which frequencies dominate. |
+| `weave_filterReso` | 0–1 | 0.0–0.4 | Filter resonance. M2 TENSION adds to this — useful for animating resonance via macro automation. |
+| `weave_ampA/D/S/R` | varies | — | Standard ADSR. Longer attack with high braid depth produces a knot that slowly ties itself. |
+| `weave_lfo1/2Rate` | 0.01–30 Hz | 0.1–2 Hz | LFO rate. Target=BraidDepth makes the knot tighten and loosen rhythmically. Target=FilterCutoff creates standard filter wobble. |
+
+### Sound Design Tips
+1. **Start with Trefoil, increase braid depth gradually.** Trefoil is the most immediately musical knot — a three-strand ring with one floating overtone. Begin with braidDepth=0 (clean chord), bring it to 0.4–0.6, and listen to the new combination tones emerge that aren't present in any single strand.
+2. **Figure-Eight for rhythmic pulse.** The alternating over/under pattern of Figure-Eight creates natural amplitude beating between strands. Set braidDepth=0.5–0.7 with sine oscillators and a slow LFO targeting BraidDepth — you get rhythmic pulsing without any tempo sync.
+3. **Torus P/Q for pitched inharmonicity.** knotType=Torus with P=2, Q=3 is the trefoil-on-torus (musical, stable); P=3, Q=5 is cinquefoil (more complex); P=3, Q=7 pushes toward chaos. Higher Q values produce combination tones that create apparent new pitches.
+4. **Solomon for two-voice counterpoint.** knotType=Solomon has two coupled ring pairs. With low braidDepth (0.2–0.3), it sounds like two independent instruments sharing a room. With higher depth, the rings start to interfere and produce cross-ring modulation. Useful for duophonic patches.
+5. **M3 KNOT morphing as performance.** Assign KNOT macro to a mod wheel or expression pedal. As you sweep from 0 to 1, the coupling matrix blends from the current knot type toward the next. This is a real-time timbral morph that no standard filter or detuning can produce — the actual topological structure of the sound is changing.
+
+### Coupling
+- **Sends:** Stereo audio (ch 0/1), last rendered L/R sample
+- **Receives:** `AudioToFM` (external audio shifts all strand pitches — feeding ORBWEAVE's strands with another engine's audio creates cross-knot modulation), `AmpToFilter` (external amplitude opens SVF filter), `LFOToPitch` (external pitch drift on all strands), `AmpToChoke` (note-off all active voices)
+- **Best as source for:** `AudioToFM` (ORBWEAVE's knotted audio as FM source into other engines — very unusual harmonic sidebands), `AmpToFilter` (smooth envelope as filter control source)
+- **Ecosystem role:** The topological undercurrent — complex harmonic content that cannot be analyzed as simple intervals. Best combined with engines that have clear harmonic structure (OVERTONE, ODDOSCAR) to create contrast between rational and irrational spectra.
+
+### Recommended Pairings
+- **+ OVERTONE:** Rational (CF convergent) spectral structure vs. topological phase-braid structure. The Nautilus and the Kelp Knot. Mathematical cousins with entirely different timbral languages.
+- **+ OVERLAP:** Both engines work with topological coupling concepts (KnotTopology coupling type). OVERLAP's FDN + ORBWEAVE's phase-braid creates entangled resonance fields.
+- **+ ODDOSCAR:** Oscar's Perlin-breathing pad beneath ORBWEAVE's structural knot tone. Organic drift + structural complexity.
+- **+ OSTINATO:** Rhythmic fire drum beneath knotted spectral content. OSTINATO's transients trigger ORBWEAVE's envelope via AmpToChoke coupling — a percussive gate on the knot.
+- **+ OBLONG:** Two texture-forward engines layered. Bob's curious inquisitive texture and ORBWEAVE's knotted inharmonicity are both "strange but harmonic" — they occupy similar sonic territory from different angles.
+
+### Recommended Presets to Start With
+- **Orbweave_Kelp_Garden** (Foundation) — Trefoil, moderate braid depth, slow SPACE LFO; foundational knotted pad
+- **Orbweave_Knot_Theory** (Foundation) — all four knot types explored via KNOT macro sweep preset
+- **Orbweave_Figure_Eight_Bass** (Foundation) — Figure-Eight with saw oscillators, low filter cutoff; knotted bass
+- **Orbweave_Torus_Embrace** (Atmosphere) — Torus P=2 Q=3, long attack, high reverb; shimmering torus knot pad
+- **Orbweave_Trefoil_Tangle** (Entangled) — Trefoil at high braid depth coupled to ODDOSCAR; knotted texture over breathing coral
+
+---
+
+## 42. OVERTONE — Spectral Additive via Continued Fractions
+
+**Gallery code:** OVERTONE | **Accent:** Spectral Ice `#A8D8EA`
+**Parameter prefix:** `over_`
+**Aquatic mythology:** The Nautilus — mid-column dweller (200–1000m mesopelagic zone). The nautilus shell grows according to a logarithmic spiral: each new chamber is a rational approximation to an irrational proportion. OVERTONE embodies this exactly — 8 additive partials tuned not to integer harmonics but to the continued fraction convergents of π, e, φ, and √2. As depth increases, partials spiral outward from clean integer ratios toward the irrational ideal.
+
+### Identity
+A spectral additive synthesizer where partial frequencies are derived from the continued fraction convergents of mathematical constants. At low depth, the partials are near-integer and the sound is almost harmonic. As depth increases, partials drift toward irrational spacing — metallic, shimmering inharmonicity that no equal-tempered instrument can produce. The engine is monophonic but meditatively deep, perfectly suited to long sustained tones where the spectral evolution becomes the music.
+
+### Signal Flow
+8 Phase-Accumulator Sine Oscillators (CF-ratio tuned, harmonic-series amplitude weighting 1/(n+1)) → Global ADSR Amp Envelope (velocity-scaled) → 2 LFOs (LFO1→depth sweep, LFO2→partial phase rotation) → Allpass Resonator (tuned to fundamental, optional comb effect) → 2-pole Butterworth High-Cut Filter (brightness shaping) → Schroeder Reverb (4 combs + 2 allpass, prime-spaced, bright spectral character) → Output.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **DEPTH** | `over_macroDepth` — convergent index sweep (clean integer → irrational/metallic) |
+| M2 | **COLOR** | `over_macroColor` — partial brightness: boost upper vs lower partials |
+| M3 | **COUPLING** | `over_macroCoupling` — cross-engine coupling send amount |
+| M4 | **SPACE** | `over_macroSpace` — resonator + reverb mix |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `over_constant` | 0–3 | 2=Phi | Mathematical constant for partial ratios. 0=Pi (widely spaced, inharmonic), 1=E (clustered near 1.3–1.5×, unusual resonance), 2=Phi/Fibonacci (most musical — converges naturally), 3=Sqrt2 (closely clustered near √2, narrow metallic shimmer). |
+| `over_depth` | 0–7 | 1–4 | Convergent depth index. Selects which convergent in the table becomes the starting partial. At depth=0, partial 0 is at 1.0× fundamental (clean). As depth increases, partials move to higher convergents — deeper into the irrational. LFO1 sweeps this for animated spectral evolution. |
+| `over_partial0–7` | 0–1 | default 1/(n+1) | Individual partial amplitude weights. Default is harmonic series falloff. Sculpt these to emphasize specific partials — boost partial 3 alone for a strange upper-partial tone, mute lower partials for whistling high texture. |
+| `over_velBright` | 0–1 | 0.3–0.5 | Velocity-to-brightness (D001). Harder velocity = brighter cutoff on the high-cut filter. Gentler notes sound darker and warmer. |
+| `over_filterCutoff` | 1–20kHz | 6–16kHz | Brightness high-cut filter. OVERTONE is bright by nature (spectral ice); this is the ceiling. Lower for warmer, more submerged spectral character. |
+| `over_ampAtk/Dec/Sus/Rel` | varies | atk 0.02, rel 1–3s | Amp envelope. Long attacks let the irrational partials slowly bloom into full spectral complexity. Long releases let the Schroeder reverb develop crystalline tails. |
+| `over_lfo1Rate` | 0.01–10 Hz | 0.1–0.5 | LFO1 rate (targets depth). Slow sweep of the convergent depth makes the spectrum slowly spiral outward and back — the nautilus shell growing. |
+| `over_lfo1Depth` | 0–1 | 0.1–0.4 | LFO1 depth (depth sweep amount). How far the convergent index moves per LFO cycle. |
+| `over_lfo2Rate` | 0.01–10 Hz | 0.05–0.2 | LFO2 rate (targets partial phase rotation). Each partial advances its phase by the LFO amount, creating a slow kaleidoscopic phase shimmer. |
+| `over_resoMix` | 0–1 | 0.1–0.3 | Allpass resonator mix. Adds a comb-filter coloration tuned to the MIDI fundamental — reinforces the spectral identity. |
+
+### Sound Design Tips
+1. **Phi (constant=2) is your home base.** The Fibonacci convergents are the most musical because they are maximally irrational (slowest-converging) — every depth level sounds different but nothing is atonal. Start with Phi, explore depth=1–3 for familiar territory.
+2. **Pi (constant=0) for metallic inharmonicity.** Pi convergents include 22/7 and 355/113 — well-known approximations that create wide, unusual partial spacing. Great for bell and metal timbres. Combine with long decay and high resonator mix.
+3. **LFO1 depth sweep is the engine's signature.** Slowly sweeping the convergent depth with LFO1 at 0.1–0.3 Hz creates the nautilus spiral effect — partials gradually rotating through irrational positions and returning. This is what makes OVERTONE unlike any other additive synth.
+4. **Sculpt the partial amplitude profile for character.** Mute partials 0–2 (set to 0) and boost partials 5–7 for a high spectral shimmer with no fundamental. Add bass by boosting partial 0 and setting upper partials low — an almost sine-wave tone with irrational overtone dust.
+5. **SPACE macro for reverb depth as performance control.** With high SPACE values, the Schroeder reverb builds up over held notes. Pull SPACE down between phrases to clear the reverb field and start fresh — creates natural phrasing structure from a macro gesture.
+
+### Coupling
+- **Sends:** Monophonic stereo audio (ch 0/1)
+- **Receives:** `AmpToFilter` (external amplitude modulates brightness filter cutoff), `LFOToPitch` (external pitch drift shifts all 8 partial frequencies proportionally — maintains their ratios), `AudioToFM` (external audio adds to the depth parameter as FM — modulates the convergent index in real-time)
+- **Best as source for:** `AudioToFM` (OVERTONE's spectral audio used as FM source in other engines — unusual harmonic injection), `AmpToFilter` (smooth spectral envelope driving external filters)
+- **Ecosystem role:** The mathematical shimmer voice — pitched but not harmonic, sustained but not static. Occupies a unique niche between tonal pads and metallic sound effects.
+
+### Recommended Pairings
+- **+ ORBWEAVE:** Mathematical resonance meeting topological phase-braiding. OVERTONE's CF partials and ORBWEAVE's knot matrices both operate through mathematical structure — together they produce spectral complexity that goes far beyond standard synthesis.
+- **+ OXBOW:** OVERTONE spectral partials feed OXBOW's golden resonance detection. When OVERTONE's phi-ratio partials converge with OXBOW's φ-tuned peak filters, resonant harmonic alignment produces unexpected singing tones.
+- **+ ODDOSCAR:** Sustained spectral shimmer over coral breathing. OVERTONE's mesopelagic ice above ODDOSCAR's warm coral pad — the cold and the warm meeting.
+- **+ OPAL:** OVERTONE's partials granularized by OPAL. Irrational partials scattered into grain clouds — the nautilus shell dissolved into particles.
+- **+ ORACLE:** Two mathematically-grounded engines: ORACLE's GENDY stochastic synthesis and OVERTONE's continued fraction partials. Mathematical depth meeting mathematical randomness.
+
+### Recommended Presets to Start With
+- **Overtone_Nautilus_Glide** (Flux) — Phi constant, LFO1 sweeping depth slowly; the spiraling nautilus tone
+- **Overtone_Crystal_Rain** (Flux) — Pi constant, high upper partials, short attack; metallic inharmonic bell cascade
+- **Overtone_Depth_Wander** (Flux) — depth LFO at 0.2 Hz, moderate reverb; slow spectral evolution
+- **Overtone_Euler_Flux** (Flux) — E constant, clustered partials; unusual narrowband shimmer
+- **Overtone_Ratio_Sweep** (Flux) — DEPTH macro automation sweep across all convergents; full engine demonstration
+
+---
+
+## 43. ORGANISM — Cellular Automata Synthesis
+
+**Gallery code:** ORGANISM | **Accent:** Emergence Lime `#C6E377`
+**Parameter prefix:** `org_`
+**Aquatic mythology:** The Coral Colony — millions of polyps following simple local rules, producing emergent architecture that no single polyp could plan. ORGANISM lives in the mid-water column, neither feliX nor Oscar — it is the engine of emergence itself. Simple rules at the cellular level become complex, unpredictable, living sound.
+
+### Identity
+A generative synthesizer driven by a 16-cell 1D elementary cellular automaton (Wolfram rules 0–255). Every N samples, the automaton advances one generation according to the selected rule. The 16-bit cell state maps to four synthesis dimensions simultaneously: cells 0–3 control filter cutoff, cells 4–7 control envelope rate, cells 8–11 control pitch offset (±6 semitones from root), cells 12–15 control reverb send. The result is a synth that generates its own rhythmic and harmonic content from mathematics — alive without randomness, deterministic without being predictable.
+
+### Signal Flow
+MIDI Note (sets root pitch) → Cellular Automaton (16-cell, 256 rules, circular wrap) → CA Output Mapping (cells → filter/amp/pitch/FX) → PolyBLEP Anti-Aliased Oscillator (saw/square/tri) + Sub Oscillator (one octave below, square) → ADSR Amp Envelope (CA-rate modulated) → 2-Pole LP Filter (CA-cutoff modulated) → 2 LFOs (LFO1→step rate, LFO2→filter offset) → Allpass Diffusion Reverb → Output.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **RULE** | `org_macroRule` — sweeps through 8 curated interesting rules (30, 90, 110, 184, 150, 18, 54, 22) |
+| M2 | **SEED** | `org_macroSeed` — randomizes initial 16-bit cell state (new timbral/rhythmic variety from same rule) |
+| M3 | **COUPLING** | `org_macroCoupling` — cross-engine coupling send amount |
+| M4 | **MUTATE** | `org_macroMutate` — random bit-flip mutation rate per step (0=deterministic, 1=full chaos) |
+
+### Key Parameters
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `org_rule` | 0–255 | 30, 90, 110, 184 | Wolfram elementary CA rule. Rule 110 (Turing-complete) and Rule 90 (Sierpinski triangle) are the most musically interesting. Rule 30 is chaotic (good for noise/texture). Rule 184 is traffic-flow (rhythmic, regular). The M1 RULE macro sweeps 8 curated rules without exposing the full 256. |
+| `org_seed` | 0–65535 | 42 (default) | Initial 16-bit cell state. Changing this with the same rule produces an entirely different melodic-rhythmic pattern — the same automaton logic, different data. M2 SEED randomizes this. |
+| `org_stepRate` | 0.5–32 Hz | 2–8 Hz | How many CA generations per second. At 4 Hz: each cell evolution takes 250ms (quarter-note at 60 BPM). At 16 Hz: very fast cellular evolution, quasi-continuous modulation. At 0.5 Hz: slow architectural shifts. |
+| `org_scope` | 1–16 | 4–8 | Moving average window over the last N generations. Scope=1: raw CA output (maximum change per step). Scope=8: smoothed CA output (slower filter sweeps, gentler pitch changes). High scope = smooth; low scope = glitchy. |
+| `org_mutate` | 0–1 | 0–0.1 | Random bit-flip rate per generation. At 0: deterministic (same rule+seed always produces same pattern). At 0.01: occasional random mutations keep the automaton from settling into fixed points. At 0.5: near-random chaos. M4 MUTATE maps here. |
+| `org_freeze` | bool | off | Freeze the CA state — cell evolution stops, current mapping values are held. Use to lock in an interesting filter/pitch/envelope state for performance, then unfreeze to continue evolution. |
+| `org_oscWave` | 0–2 | 0=saw | Oscillator waveform: 0=saw, 1=square, 2=triangle. The CA's pitch modulation applies to whatever wave is selected. Saw has maximum harmonic content to interact with the CA filter sweeps. |
+| `org_subLevel` | 0–1 | 0.2–0.5 | Sub oscillator level (one octave below, square wave). Adds bass foundation to the melodic CA output. Particularly useful when CA pitch sweeps go high — the sub anchors the sound. |
+| `org_filterCutoff` | 200–8kHz | 1–4 kHz | Base filter cutoff. CA cells 0–3 modulate this around the base value. Setting the base higher gives the CA more positive sweep room; lower gives it a darker starting point. |
+| `org_velCutoff` | 0–1 | 0.3–0.6 | Velocity-to-cutoff amount (D001). Harder velocity = brighter initial filter state — the CA then evolves from a brighter starting point. |
+| `org_lfo1Rate` | 0.01–10 Hz | 0.1–1 Hz | LFO1 rate (targets CA step rate). Slowly modulating the step rate creates rhythmic acceleration/deceleration of the cellular evolution — the colony's metabolism changing. |
+| `org_reverbMix` | 0–1 | 0.1–0.4 | Allpass diffusion reverb mix. CA cells 12–15 also modulate this — the colony controls its own reverb depth. |
+
+### Sound Design Tips
+1. **Learn the curated rules before exploring the full 256.** Use M1 RULE macro to sweep through Rules 30, 90, 110, 184, 150, 18, 54, 22. Each has a distinct character: Rule 110 is structured and repetitive with occasional complex bursts; Rule 90 is fractal and symmetric; Rule 30 is irregular and chaotic; Rule 184 has a periodic, traffic-like flow. Choose based on the musical context.
+2. **Seed is your melodic library.** With a fixed rule, sweeping M2 SEED through different values produces an entire library of melodies and rhythmic patterns — all derived from the same automaton logic, all deterministic and reproducible. Record seeds of patterns you like.
+3. **Scope is the smoothness dial.** Low scope (1–2) gives raw CA output: abrupt filter jumps, sudden pitch changes, glitchy. High scope (8–16) gives averaged output: slow filter sweeps, gradual pitch evolution, meditative. Scope is the bridge between glitch and ambient.
+4. **Mutate at low values for living drift.** A mutation rate of 0.01–0.03 occasionally flips a bit, preventing the CA from settling into a fixed point or short cycle. The result sounds like an organic system — mostly deterministic, occasionally surprising. This is the "the colony has a mutation" effect.
+5. **Use freeze as a performance tool.** During a performance, identify a moment where the CA produces an interesting filter/pitch state. Activate `org_freeze` — the evolution stops, but the current modulation values are held. Play melodically over the frozen state, then release freeze to resume evolution. Extremely powerful for live sets.
+
+### Coupling
+- **Sends:** Monophonic audio (ch 0/1) — the CA-evolved synthesis output
+- **Receives:** `AmpToFilter` (external amplitude additionally modulates filter cutoff — sidechain the CA filter with a percussion engine), `LFOToPitch` (external pitch drift offsets ORGANISM's CA-generated pitch), `AudioToFM` (external audio modulates step rate as a clock source — another engine drives the CA's evolution speed)
+- **Best as source for:** `AmpToFilter` (CA filter envelope as modulation source — generative filter modulation for other engines), `LFOToPitch` (CA pitch output as melodic suggestion for pitched engines)
+- **Ecosystem role:** The generative heart — ORGANISM generates its own melody, rhythm, timbre, and reverb from a single mathematical rule. It needs no external modulation to produce music; coupling enhances rather than drives it.
+
+### Recommended Pairings
+- **+ ONSET:** ONSET's drum triggers feed ORGANISM via `AmpToFilter` coupling — the drum pattern modulates the CA's filter cutoff, creating rhythmically synchronized generative melody.
+- **+ ODDFELIX:** feliX's sharp transient triggers ORGANISM's amp envelope via `AmpToChoke` — each dart briefly silences and restarts the colony. Percussive gates on generative texture.
+- **+ OPAL:** ORGANISM's cellular audio frozen into grain clouds. The CA-generated melody becomes source material for granular resampling — deterministic music becoming granular texture.
+- **+ OUROBOROS:** Two generative systems coupled. OUROBOROS's strange attractor feeds ORGANISM's pitch via `LFOToPitch`. Mathematical chaos and mathematical determinism in conversation.
+- **+ ODDOSCAR:** CA-generated melodic motion over Oscar's sustaining coral pad. The colony plays melody; the reef provides harmony. Classic textural pairing.
+
+### Recommended Presets to Start With
+- **Organism_Reef_Colony** (Organic/Submerged) — Rule 110, scope=6, medium step rate; structured colony evolution
+- **Organism_Breathing_Colony** (Atmosphere) — Rule 90, high scope, slow step rate; meditative fractal breathing
+- **Organism_Fractal_Bloom** (Atmosphere) — Rule 90 (Sierpinski), slow scope evolution; fractal harmonic cascade
+- **Organism_Glitch_Colony** (Flux) — Rule 30, scope=1, fast step rate; chaotic rapid-fire CA glitch texture
+- **Organism_Mutation_Drift** (Flux) — any rule with mutate=0.03; slowly mutating deterministic pattern

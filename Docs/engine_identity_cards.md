@@ -447,9 +447,49 @@ Obrix gives configurable modular routing — its brick architecture means it can
 
 ---
 
-*All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
-*Identity cards cover all 39 registered engines. See `Docs/concepts/` for full engine specs.*
+## XOxbow — OXBOW
+
+**Gallery code:** OXBOW | **Accent:** Oxbow Teal `#1A6B5A` | **Prefix:** `oxb_`
+**Thesis:** Entangled reverb synthesis — Chiasmus FDN with phase erosion and golden resonance. Sound enters as rushing water, the current is cut, and what remains is a suspended pool of slowly erasing standing waves.
+**Personality:** Suspended, Entangled, Dissolving
+**Polarity:** Oscar-dominant (Twilight Zone, 30% feliX / 70% Oscar)
+
+### Aquatic Identity
+The oxbow eel — creature of the Twilight Zone (200–1000m), where sunlight still reaches but barely, a perpetual blue dusk. An oxbow lake forms when a river bends so sharply it cuts itself off: the rushing torrent becomes a still, isolated pool. XOxbow does the same with sound. Notes enter as rushing current through the Chiasmus FDN — an 8-channel feedback network whose left and right delay times are exactly reversed, creating structural entanglement. The current is cut. What remains is a pool of resonance that slowly erases itself through phase erosion: four allpass filters per channel, left and right modulated with opposite-polarity LFOs, breathing spectral self-cancellation when summed to mono. As the energy drops and left and right begin to converge, the Golden Resonance awakens — four peak filters tuned to golden ratio harmonics ring briefly from the silence, the standing waves of a pool that remembers the river. The oxbow teal accent is the color of that Twilight Zone water: not the vivid teal of the reef, but the deeper, cooler teal of depth.
+
+### Coupling Thesis
+Oxbow gives suspended, spatially entangled output — reverberant signal with genuine L/R structural difference that cannot be replicated by conventional stereo processing. He receives sustaining engine output (OddOscar, Oracle, Odyssey) that feeds his FDN with rich material to entangle. Feed him ONSET transients and hear them dissolve into standing-wave pools. Aftertouch deepens the entanglement macro, tightening the chiasmus cross-coupling. He is the engine of stillness after motion — what a sound becomes when you let it go.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| Low | Very High | High | Low | Medium | Very High |
 
 ---
 
-*XO_OX Designs | Engine Identity Cards v1.2 | feliX + Oscar — the primordial coupling*
+## XOware — OWARE
+
+**Gallery code:** OWARE | **Accent:** Akan Goldweight `#B5883E` | **Prefix:** `owr_`
+**Thesis:** Tuned percussion synthesis — material continuum, mallet physics, sympathetic resonance, and buzz membrane. The sunken oware board encrusted with coral.
+**Personality:** Resonant, Ceremonial, Living
+**Polarity:** 60% feliX / 40% Oscar (Reef Floor, 15–25m depth)
+
+### Aquatic Identity
+The Oware Coral — *Mancala Calcificata*. A sunken oware board at 15–25m depth on the reef floor, encrusted with coral and colonized by marine life. Oware is one of humanity's oldest games, originating in the Akan tradition of West Africa — seeds moved through carved wooden cups, counting, returning, sustaining. On the reef floor, the board has become part of the reef itself: the cups are now resonators, the seeds now rounded by years of current. The goldweight accent is the beaten gold of Akan ashanti weights — precise, ceremonial, warm. The mallet strikes are the seeds dropping back into cups. The sympathetic resonance is the neighboring cups vibrating in response. The buzz membrane is the colony of tiny creatures living inside the wood, a microscopic chorus on every stroke. XOware is the ritual made sound — a game of redistribution and return, played by the reef itself.
+
+### Coupling Thesis
+Oware gives pitched percussive transients with sustained sympathetic tails — a coupling source of unusual richness, where the attack and the resonance are distinct events. He sends mallet-strike transients that drive ONSET (reinforcing percussion attacks), OVERDUB (sending tuned percussion through dub echo creates gamelan-in-the-reef textures), and ODDOSCAR (the sympathetic resonance feeds Oscar's morph position, breathing coral warmth onto mallet strikes). He receives pitch coupling from ORBITAL (overtone series defines which sympathetic resonators ring) and amplitude coupling from OBLONG (warm coral output deepens his buzz membrane). He is the reef's rhythm keeper — patient, ceremonial, always returning the seeds to the cup.
+
+### Mood Affinity
+| Foundation | Atmosphere | Entangled | Prism | Flux | Aether |
+|-----------|-----------|-----------|-------|------|--------|
+| High | Medium | High | Medium | Low | Medium |
+
+---
+
+*All engines reference the unified mythology in `Docs/xo_ox_aquatic_mythology.md`.*
+*Identity cards cover all 44 registered engines. See `Docs/concepts/` for full engine specs.*
+
+---
+
+*XO_OX Designs | Engine Identity Cards v1.3 | feliX + Oscar — the primordial coupling*

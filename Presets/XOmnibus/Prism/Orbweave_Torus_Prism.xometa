@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Torus (4,7) — rare coprime wrapping numbers that produce 28 distinct partial crossings. At high braid depth with sine strands, the result scatters light like a prism. Bright filter open, short decay. Each note a different spectral angle.",
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.18,
+    "movement": 0.32,
+    "density": 0.45,
+    "space": 0.38,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.55,
+    "TENSION": 0.1,
+    "KNOT": 0.0,
+    "SPACE": 0.28
+  },
+  "mood": "Prism",
+  "name": "Torus Prism",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.78,
+      "weave_torusP": 4.0,
+      "weave_torusQ": 7.0,
+      "weave_filterCutoff": 18000.0,
+      "weave_filterReso": 0.05,
+      "weave_filterType": 0,
+      "weave_ampA": 0.002,
+      "weave_ampD": 0.8,
+      "weave_ampS": 0.0,
+      "weave_ampR": 0.65,
+      "weave_lfo1Type": 0,
+      "weave_lfo1Target": 0,
+      "weave_lfo1Depth": 0.0,
+      "weave_lfo1Rate": 1.0,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.22,
+      "weave_fx1Param": 0.28,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.55,
+      "weave_macroTension": 0.1,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.28,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "Rare (4,7) Torus knot — 28 partial crossings scatter into a pure spectral spray. Instant attack, fast decay, fully open filter.",
+  "tags": [
+    "torus",
+    "spectral",
+    "bright",
+    "pluck",
+    "prism"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

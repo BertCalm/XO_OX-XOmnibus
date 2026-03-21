@@ -5,6 +5,8 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -668,95 +670,10 @@ private:
 };
 
 //==============================================================================
-// BiteAdsrEnvelope -- ADSR with linear attack, exponential decay/release.
-// Reused pattern from BobEngine.
+// BiteAdsrEnvelope -- alias for StandardADSR (shared fleet implementation).
+// Replaced from a local copy to eliminate duplication across the engine fleet.
 //==============================================================================
-class BiteAdsrEnvelope
-{
-public:
-    enum class Stage { Off, Attack, Decay, Sustain, Release };
-
-    void prepare (double sampleRate) noexcept
-    {
-        sr = sampleRate;
-        invSR = 1.0f / static_cast<float> (sr);
-    }
-
-    void reset() noexcept { stage = Stage::Off; level = 0.0f; }
-
-    void setParams (float a, float d, float s, float r) noexcept
-    {
-        if (a == lastA && d == lastD && s == lastS && r == lastR)
-            return;
-        lastA = a; lastD = d; lastS = s; lastR = r;
-        float aClamped = std::max (a, 0.001f);
-        float dClamped = std::max (d, 0.001f);
-        float rClamped = std::max (r, 0.001f);
-        attackRate = invSR / aClamped;
-        decayRate = 1.0f - std::exp (-invSR / dClamped);
-        releaseRate = 1.0f - std::exp (-invSR / rClamped);
-        sustain = clamp (s, 0.0f, 1.0f);
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Off)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Off:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                break;
-
-            case Stage::Decay:
-                level -= (level - sustain) * decayRate;
-                level = flushDenormal (level);
-                if (level <= sustain + 0.0001f)
-                {
-                    level = sustain;
-                    stage = Stage::Sustain;
-                    if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                }
-                break;
-
-            case Stage::Sustain:
-                level = sustain;
-                if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-
-            case Stage::Release:
-                level -= level * releaseRate;
-                level = flushDenormal (level);
-                if (level < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-        }
-        return level;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Off; }
-    float currentLevel() const noexcept { return level; }
-
-private:
-    double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
-    Stage stage = Stage::Off;
-    float level = 0.0f;
-    float sustain = 0.7f;
-    float attackRate = 0.0f;
-    float decayRate = 0.0f;
-    float releaseRate = 0.0f;
-    float lastA = -1.0f, lastD = -1.0f, lastS = -1.0f, lastR = -1.0f;
-};
+using BiteAdsrEnvelope = StandardADSR;
 
 //==============================================================================
 // BiteLFO -- LFO with 7 shapes: Sine, Triangle, Saw, Square, S&H, Random, Stepped.
@@ -853,7 +770,7 @@ struct BiteVoice
     bool active = false;
     int noteNumber = 60;
     float velocity = 0.0f;
-    uint64_t age = 0;
+    uint64_t startTime = 0;  // Monotonic counter for LRU voice stealing (VoiceAllocator)
 
     BiteOscA oscA;
     BiteOscB oscB;
@@ -941,9 +858,9 @@ public:
             v.filter.reset();
             v.filter.setMode (CytomicSVF::Mode::LowPass);
             v.trash.reset();
-            v.ampEnv.prepare (sr);
-            v.filterEnv.prepare (sr);
-            v.modEnv.prepare (sr);
+            v.ampEnv.prepare (static_cast<float> (sr));
+            v.filterEnv.prepare (static_cast<float> (sr));
+            v.modEnv.prepare (static_cast<float> (sr));
             v.lfo1.prepare (sr);
             v.lfo2.prepare (sr);
             v.lfo3.prepare (sr);
@@ -1182,12 +1099,12 @@ public:
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.ampEnv.setParams (ampA, ampD, ampS,
-                                    ampR * playDeadRelMul);
-            voice.filterEnv.setParams (
+            voice.ampEnv.setADSR (ampA, ampD, ampS,
+                                  ampR * playDeadRelMul);
+            voice.filterEnv.setADSR (
                 filtA * scurryEnvMul, filtD * scurryEnvMul, filtS,
                 filtR * scurryEnvMul * playDeadRelMul);
-            voice.modEnv.setParams (modA, modD, modS, modR);
+            voice.modEnv.setADSR (modA, modD, modS, modR);
 
             float targetFreq = midiToFreq (voice.noteNumber);
             // MPE pitch bend
@@ -1221,7 +1138,6 @@ public:
             for (auto& voice : voices)
             {
                 if (!voice.active) continue;
-                ++voice.age;
 
                 // --- Glide ---
                 if (glideCoeff > 0.0f)
@@ -1374,7 +1290,6 @@ public:
                 if (!voice.ampEnv.isActive())
                 {
                     voice.active = false;
-                    voice.age = 0;
                 }
 
                 // Pan (equal-power)
@@ -2191,7 +2106,8 @@ private:
     //--------------------------------------------------------------------------
     void noteOn (int noteNumber, float velocity, int midiChannel, int maxPoly)
     {
-        int idx = findFreeVoice (maxPoly);
+        int poly = std::min (maxPoly, kMaxVoices);
+        int idx = VoiceAllocator::findFreeVoice (voices, poly);
         auto& v = voices[static_cast<size_t> (idx)];
 
         // Store previous frequency for glide
@@ -2200,7 +2116,7 @@ private:
         v.active = true;
         v.noteNumber = noteNumber;
         v.velocity = velocity;
-        v.age = 0;
+        v.startTime = ++voiceCounter;
 
         // Initialize MPE expression for this voice's channel
         v.mpeExpression.reset();
@@ -2262,33 +2178,13 @@ private:
         }
     }
 
-    int findFreeVoice (int maxPoly)
-    {
-        int poly = std::min (maxPoly, kMaxVoices);
-
-        // Find inactive voice within polyphony limit
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // LRU voice stealing -- oldest voice
-        int oldest = 0;
-        uint64_t oldestAge = 0;
-        for (int i = 0; i < poly; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].age > oldestAge)
-            {
-                oldestAge = voices[static_cast<size_t> (i)].age;
-                oldest = i;
-            }
-        }
-        return oldest;
-    }
+    // Voice allocation delegated to VoiceAllocator::findFreeVoice() — called in noteOn().
 
     //--------------------------------------------------------------------------
     double sr = 44100.0;
     float srf = 44100.0f;
     std::array<BiteVoice, kMaxVoices> voices;
+    uint64_t voiceCounter = 0;  // Monotonic counter for VoiceAllocator LRU stealing
 
     // Coupling state
     float envelopeOutput = 0.0f;

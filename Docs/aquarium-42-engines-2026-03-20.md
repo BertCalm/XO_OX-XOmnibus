@@ -1,9 +1,10 @@
-# XO_OX — Water Column Atlas: All 42 Engines
+# XO_OX — Water Column Atlas: All 44 Engines
 *Complete aquatic mythology reference. Every engine is a species. Updated 2026-03-20.*
+*Note: OXBOW and OWARE (engines 43–44, added 2026-03-20) are not yet in the water column map below — they need entries.*
 
 ---
 
-## Water Column Map — 42 Engines
+## Water Column Map — 44 Engines (42 placed; OXBOW + OWARE pending placement)
 
 ```
 ☀  OPEN SKY — light, air, euphoria

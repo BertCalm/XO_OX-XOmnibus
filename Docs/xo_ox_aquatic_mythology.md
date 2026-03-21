@@ -42,6 +42,9 @@ The XO_OX universe is a vertical cross-section of water — from open sky above 
 │   XOblongBob         warm coral textures — soft, living, tactile
 │   XOracle            ancient reef formations — layered geological time
 │
+│   REEF FLOOR (15-25m)
+│   XOware             the sunken oware board — Akan coral ceremony, tuned mallet physics
+│
 │   OPEN WATER
 │   XOdyssey           the open ocean journey — familiar shores to alien depths
 │   XOrbital           circling currents — harmonic overtone series
@@ -59,6 +62,9 @@ The XO_OX universe is a vertical cross-section of water — from open sky above 
 │   XObsidian          volcanic glass — formed under pressure, razor-sharp
 │   XOscillum          phantom sounds — residue pitch echoing in the deep
 │   XOrganon           deep-sea biology — slow, chemical, alien metabolism
+│
+│   TWILIGHT ZONE (200-1000m)
+│   XOxbow             the oxbow eel — entangled reverb, chiasmus standing waves
 │
 │   THE ABYSS
 │   XOuroboros          the hydrothermal vent — self-feeding, recursive, primordial
@@ -81,10 +87,10 @@ Every engine has a polarity — its position on the vertical axis between feliX'
 |----------|-----------|---------|
 | **Pure feliX** | Transient, bright, rhythmic, surface, electric | XOpenSky, OddfeliX, XOnset |
 | **feliX-leaning** | Bright character with depth underneath | XOblique, XOptic, XOrigami |
-| **The Reef** | Oscar's home but feliX visits — warmth with curiosity | OddOscar, XOblongBob, XOracle |
+| **The Reef** | Oscar's home but feliX visits — warmth with curiosity | OddOscar, XOblongBob, XOracle, XOware |
 | **Open Water** | The vast middle — neither surface nor deep | XOdyssey, XOrbital, XOstinato, XObese |
 | **Thermocline** | The boundary where warm meets cold — transformation | XOverdub, XOuïe, XOpal, XOcelot |
-| **Oscar-leaning** | Deep character with surface flash | XOverbite, XObsidian, XOscillum, XOrganon |
+| **Oscar-leaning** | Deep character with surface flash | XOverbite, XObsidian, XOscillum, XOrganon, XOxbow |
 | **Pure Oscar** | Sustained, deep, massive, pressure, ancient | XOuroboros, XObscura, XOccult, XOblivion, XOceanDeep |
 
 The polarity isn't a quality judgment — surface isn't better than deep. It's a *position*. The most interesting sounds often come from coupling engines at different depths. OPENSKY × OCEANDEEP is the full column. ODDFELIX × ODDOSCAR is the original coupling. Every pairing creates a vertical span.
@@ -136,6 +142,12 @@ Species at the edges of what's possible.
 - **XObscura** — The giant squid. Stiff resonant body. Lives deeper than anything was thought to live.
 - **XOccult** — Pattern creatures. Cellular automata shells. Life as algorithm.
 - **XOblivion** — The magnetic core. The force beneath the ocean floor. The pull that holds it all.
+
+### Sixth Generation — The Ritual and the Cut
+Species that found entirely new relationships with time and ceremony.
+
+- **XOware** — The sunken oware board. An ancient game colonized by coral. Tuned percussion as ceremony — seeds returning to cups, sympathetic resonances, the reef's rhythm keeper.
+- **XOxbow** — The oxbow eel. A river that cut itself off and became a still pool. Sound enters as rush, the current is cut, what remains are golden standing waves that slowly erase themselves.
 
 ### The Bookends — Completing the Column
 The final species. The ones that went all the way.
@@ -201,7 +213,7 @@ The six preset moods map to the water column:
 
 ## The Brand Story
 
-XO_OX Designs didn't set out to build 20+ synthesizer engines. It started with two characters — a neon tetra named feliX and an axolotl named Oscar — and a question: *what happens when they couple?*
+XO_OX Designs didn't set out to build 44 synthesizer engines. It started with two characters — a neon tetra named feliX and an axolotl named Oscar — and a question: *what happens when they couple?*
 
 Every engine since has been an answer to that question. Each one explored a new depth in the water column, a new species in the ecosystem, a new way that X and O can interact.
 

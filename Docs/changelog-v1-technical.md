@@ -2,7 +2,7 @@
 
 **Date Range:** March 2026 (2026-03-01 through 2026-03-20)
 **Branch:** main
-**Build Status:** AU + auval PASS (42 engines registered)
+**Build Status:** AU + auval PASS (44 engines registered)
 **Total Presets at V1:** ~21,918 factory presets
 
 ---
@@ -187,7 +187,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 | DSP embedding | `38dc70bf3` | XOverlap/XOutwit/XOverworld DSP copied inline — zero sibling repo dependencies |
 | Oscar Rive gating | per CLAUDE.md | `XO_HAS_RIVE` + `XO_HAS_OSCAR` CMake flags — builds cleanly without rive-cpp |
 | SRO FastMath | `fd8bec718` | FastMath.h added to `Source/DSP/` |
-| **Final build status** | 2026-03-20 | AU PASS + `auval -v aumu Xomn XoOx` PASS; 42 engines; 8.9 MB bundle |
+| **Final build status** | 2026-03-20 | AU PASS + `auval -v aumu Xomn XoOx` PASS; 44 engines (OXBOW + OWARE added same day); 8.9 MB bundle |
 
 ---
 
@@ -221,7 +221,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 
 ## Engine Registration Summary (V1 Final)
 
-**42 engines registered** in `Source/XOmnibusProcessor.cpp`
+**44 engines registered** in `Source/XOmnibusProcessor.cpp`
 
 | Category | Engines |
 |----------|---------|
@@ -230,6 +230,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 | March 15 additions | OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS |
 | March 18 additions | OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX |
 | March 19-20 additions | ORBWEAVE, OVERTONE, ORGANISM |
+| March 20 additions (Singularity) | OXBOW, OWARE |
 
 ---
 

@@ -6,6 +6,8 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 
@@ -183,8 +185,8 @@ struct SnapVoice
     CytomicSVF highPassFilter;
     CytomicSVF bandPassFilter;
 
-    // --- Envelope ---
-    float envelopeLevel = 0.0f;
+    // --- Envelope (AD shape: instant attack, exponential decay to zero) ---
+    StandardADSR ampEnv;
 
     // --- Voice stealing crossfade ---
     float fadeOutLevel = 0.0f;
@@ -257,6 +259,10 @@ public:
             voice.active = false;
             voice.fadeOutLevel = 0.0f;
 
+            voice.ampEnv.prepare (sampleRateFloat);
+            voice.ampEnv.setShape (StandardADSR::Shape::AD);
+            voice.ampEnv.kill();
+
             // Reset oscillators
             voice.sineOscillator.reset();
             voice.noiseOscillator.reset();
@@ -281,7 +287,7 @@ public:
         for (auto& voice : voices)
         {
             voice.active = false;
-            voice.envelopeLevel = 0.0f;
+            voice.ampEnv.kill();
             voice.fadeOutLevel = 0.0f;
 
             voice.sineOscillator.reset();
@@ -374,7 +380,7 @@ public:
             {
                 silenceGate.wake();
                 noteOn (message.getNoteNumber(), message.getFloatVelocity(),
-                        effectiveSnap, pitchLocked, sweepDirection, effectiveDetune, unisonCount,
+                        effectiveSnap, effectiveDecay, pitchLocked, sweepDirection, effectiveDetune, unisonCount,
                         effectiveCutoff, effectiveResonance, maxPolyphony,
                         oscillatorModeIndex);
             }
@@ -424,7 +430,7 @@ public:
         for (int i = maxPolyphony; i < kMaxVoices; ++i)
         {
             if (voices[static_cast<size_t> (i)].active)
-                voices[static_cast<size_t> (i)].envelopeLevel = 0.001f;  // Force quick fade
+                voices[static_cast<size_t> (i)].ampEnv.noteOff();  // Force quick release/fade
         }
 
         // ---- Pre-compute filter coefficients (block-rate) -------------------
@@ -465,11 +471,19 @@ public:
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            float envVelBoost = filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+            float envVelBoost = filterEnvDepth * voice.velocity * voice.ampEnv.getLevel() * kFilterEnvMaxSweep;
             float voiceCutoff = std::max (20.0f, std::min (20000.0f, effectiveBpfCenter + envVelBoost));
             voice.highPassFilter.setCoefficients (voiceCutoff, modWheelResonance, sampleRateFloat);
             voice.bandPassFilter.setCoefficients (voiceCutoff, modWheelResonance, sampleRateFloat);
         }
+
+        // ---- Block-rate envelope decay coefficient update -------------------
+        // effectiveDecay is computed once per block from parameters + DART macro.
+        // Propagate it to all active voice envelopes now, before the sample loop,
+        // so setADSR (which calls exp()) runs at block-rate, not per-sample.
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.ampEnv.setADSR (0.0001f, effectiveDecay, 0.0f, 0.001f);
 
         // ---- Per-sample rendering -------------------------------------------
 
@@ -483,22 +497,13 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- Decay envelope (percussive: no sustain stage) ----------
-                // Rate = 1 / (decayTime * sampleRate), so the envelope
-                // reaches zero after exactly `decayTime` seconds.
-                float decayRate = (effectiveDecay > 0.001f)
-                    ? 1.0f / (effectiveDecay * sampleRateFloat) : 1.0f;
-                voice.envelopeLevel -= decayRate;
+                // ---- Decay envelope (percussive AD shape) -------------------
+                // StandardADSR in AD mode: instant attack at noteOn, then
+                // exponential decay to zero (natural percussive tail).
+                float envLevel = voice.ampEnv.process();
 
-                // Flush denormals: the envelope level approaches zero through
-                // increasingly tiny values. Without flushing, these sub-normal
-                // floats trigger slow software FPU emulation paths on x86/ARM,
-                // wasting CPU cycles on inaudible signal levels.
-                voice.envelopeLevel = flushDenormal (voice.envelopeLevel);
-
-                if (voice.envelopeLevel <= 0.0f)
+                if (!voice.ampEnv.isActive())
                 {
-                    voice.envelopeLevel = 0.0f;
                     voice.active = false;
                     continue;
                 }
@@ -667,13 +672,13 @@ public:
                 }
 
                 // ---- Apply envelope, velocity, and steal fade ---------------
-                float outputLeft  = filteredLeft  * voice.envelopeLevel * voice.velocity * stealFadeGain;
-                float outputRight = filteredRight * voice.envelopeLevel * voice.velocity * stealFadeGain;
+                float outputLeft  = filteredLeft  * envLevel * voice.velocity * stealFadeGain;
+                float outputRight = filteredRight * envLevel * voice.velocity * stealFadeGain;
 
                 mixLeft  += outputLeft;
                 mixRight += outputRight;
 
-                peakEnvelopeLevel = std::max (peakEnvelopeLevel, voice.envelopeLevel);
+                peakEnvelopeLevel = std::max (peakEnvelopeLevel, envLevel);
             }
 
             // ---- Write to output buffer -------------------------------------
@@ -903,16 +908,17 @@ private:
     //  Note Handling
     //==========================================================================
 
-    void noteOn (int noteNumber, float velocity, float snapAmount, bool pitchLocked,
-                 float sweepDir, float detuneCents, int unisonCount, float cutoffFrequency,
-                 float resonance, int maxPolyphony, int oscillatorModeIndex)
+    void noteOn (int noteNumber, float velocity, float snapAmount, float decayTime,
+                 bool pitchLocked, float sweepDir, float detuneCents, int unisonCount,
+                 float cutoffFrequency, float resonance, int maxPolyphony, int oscillatorModeIndex)
     {
-        int voiceIndex = findFreeVoice (maxPolyphony);
+        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, polyphonyLimit);
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // Smooth fade-out if stealing an active voice
         if (voice.active)
-            voice.fadeOutLevel = voice.envelopeLevel;
+            voice.fadeOutLevel = voice.ampEnv.getLevel();
         else
             voice.fadeOutLevel = 0.0f;
 
@@ -920,7 +926,15 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
-        voice.envelopeLevel = 1.0f;
+
+        // Configure and trigger the AD envelope for this hit.
+        // setADSR is also called per-sample in the render loop to track
+        // effectiveDecay changes from the DART macro; this call primes
+        // the decay coefficient before the first sample is processed.
+        voice.ampEnv.prepare (sampleRateFloat);
+        voice.ampEnv.setShape (StandardADSR::Shape::AD);
+        voice.ampEnv.setADSR (0.0001f, decayTime, 0.0f, 0.001f);
+        voice.ampEnv.noteOn();
 
         // Set up pitch snap sweep: start offset from target, sweep toward it.
         // sweepDir = -1.0 → classic downward sweep (starts 2 octaves above).
@@ -987,37 +1001,13 @@ private:
         {
             if (voice.active && voice.noteNumber == noteNumber)
             {
-                // Percussive character: no release stage. Force rapid fade.
-                voice.envelopeLevel = std::min (voice.envelopeLevel, 0.01f);
+                // Percussive character: AD shape has no sustain or release.
+                // noteOff on an AD envelope is a no-op (already decaying),
+                // but calling it correctly signals intent and satisfies the
+                // StandardADSR contract.
+                voice.ampEnv.noteOff();
             }
         }
-    }
-
-    //==========================================================================
-    //  Voice Allocation (LRU Stealing)
-    //==========================================================================
-
-    int findFreeVoice (int maxPolyphony)
-    {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // First pass: find an inactive voice within polyphony limit
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // Second pass: steal the oldest (least-recently-used) voice
-        int oldestVoiceIndex = 0;
-        uint64_t oldestStartTime = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestStartTime)
-            {
-                oldestStartTime = voices[static_cast<size_t> (i)].startTime;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
     }
 
     //==========================================================================

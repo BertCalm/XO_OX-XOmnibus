@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Neon Colony",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 184 traffic model at high step rate becomes an LED strip pulsing in sequence. Bright, punchy, urban — coral colony reimagined as neon signage.",
+  "tags": [
+    "bright",
+    "rule-184",
+    "punchy",
+    "neon",
+    "urban"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 184 at 14 Hz — traffic moves fast, cells blink in sequence. Square wave, high cutoff, medium resonance. Short decay, punchy staccato. Each note is a photon.",
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.22,
+    "movement": 0.82,
+    "density": 0.35,
+    "space": 0.32,
+    "aggression": 0.68
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 43691,
+      "org_stepRate": 14.0,
+      "org_scope": 1,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.1,
+      "org_filterCutoff": 6000.0,
+      "org_filterRes": 0.52,
+      "org_velCutoff": 0.82,
+      "org_ampAtk": 0.002,
+      "org_ampDec": 0.1,
+      "org_ampSus": 0.5,
+      "org_ampRel": 0.18,
+      "org_lfo1Rate": 5.0,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 3.5,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.43,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.8,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

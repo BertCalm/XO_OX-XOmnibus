@@ -50,13 +50,13 @@
 - `Docs/content-backlog-6-month-2026.md` — 60 release items
 - `Docs/producers-guild-fleet-review-2026-03-20.md` — 20 engine analysis
 - `Docs/seance-review-guild-plan-2026-03-20.md` — Ghost council verdict on Guild plan
-- `Docs/fleet-seance-scores-2026-03-20.md` — All 42 engines scored
+- `Docs/fleet-seance-scores-2026-03-20.md` — 42 engines scored (OXBOW + OWARE added same day, not yet seanced)
 - `Docs/field-guide-great-awakening-2026-03-20.md` — Post #15 (~5,460 words)
 - `Docs/changelog-v1-producer.md` + `changelog-v1-technical.md`
 - `Docs/sweep-report-2026-03-20.md` + `sweep-critical-findings-2026-03-20.md`
 - `Docs/sisters-audit-2026-03-20.md` — Process recommendations
 - `Docs/patreon-url-sweep-2026-03-20.md` — 18 placeholder locations
-- `Docs/build-sentinel-2026-03-20.md` — 42-engine build report
+- `Docs/build-sentinel-2026-03-20.md` — 44-engine build report (updated to reflect OXBOW + OWARE)
 - `Docs/oxport-validation-2026-03-20.md` — Pipeline status: NEEDS WAVs
 - `scripture/retreats/overlap-retreat-2026-03-20.md` + `outwit-retreat-2026-03-20.md`
 - `scripture/seances/` — 7+ new verdict files

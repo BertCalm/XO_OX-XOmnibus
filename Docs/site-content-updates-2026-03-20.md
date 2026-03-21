@@ -12,7 +12,7 @@
 - Counts throughout site reference "thirty-four" or "34" — all outdated
 
 ### Target State
-- **42 engines** across all pages
+- **44 engines** across all pages (was 42 when this doc was written; OXBOW + OWARE added same day)
 - **~15,200 presets** (not 10,028)
 - Aquarium updated with all 11 missing engines
 - ORBWEAVE, OVERTONE, ORGANISM marked as "Preview"

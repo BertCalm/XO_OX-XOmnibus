@@ -4,6 +4,9 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -642,94 +645,10 @@ private:
 };
 
 //==============================================================================
-// BobAdsrEnvelope — ADSR (linear attack, exponential decay/release).
+// BobAdsrEnvelope — alias to the shared StandardADSR implementation.
+// Drop-in replacement: same API (prepare/noteOn/noteOff/process/isActive/reset).
 //==============================================================================
-class BobAdsrEnvelope
-{
-public:
-    enum class Stage { Off, Attack, Decay, Sustain, Release };
-
-    void prepare (double sampleRate) noexcept
-    {
-        sr = sampleRate;
-        invSR = 1.0f / static_cast<float> (sr);
-    }
-
-    void reset() noexcept { stage = Stage::Off; level = 0.0f; }
-
-    void setParams (float a, float d, float s, float r) noexcept
-    {
-        if (a == lastA && d == lastD && s == lastS && r == lastR)
-            return;
-        lastA = a; lastD = d; lastS = s; lastR = r;
-        float aClamped = std::max (a, 0.001f);
-        float dClamped = std::max (d, 0.001f);
-        float rClamped = std::max (r, 0.001f);
-        attackRate = invSR / aClamped;
-        decayRate = 1.0f - std::exp (-invSR / dClamped);
-        releaseRate = 1.0f - std::exp (-invSR / rClamped);
-        sustain = clamp (s, 0.0f, 1.0f);
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Off)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Off:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                break;
-
-            case Stage::Decay:
-                level -= (level - sustain) * decayRate;
-                level = flushDenormal (level);
-                if (level <= sustain + 0.0001f)
-                {
-                    level = sustain;
-                    stage = Stage::Sustain;
-                    if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                }
-                break;
-
-            case Stage::Sustain:
-                level = sustain;
-                if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-
-            case Stage::Release:
-                level -= level * releaseRate;
-                level = flushDenormal (level);
-                if (level < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-        }
-        return level;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Off; }
-    float currentLevel() const noexcept { return level; }
-
-private:
-    double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
-    Stage stage = Stage::Off;
-    float level = 0.0f;
-    float sustain = 0.7f;
-    float attackRate = 0.0f;
-    float decayRate = 0.0f;
-    float releaseRate = 0.0f;
-    float lastA = -1.0f, lastD = -1.0f, lastS = -1.0f, lastR = -1.0f;
-};
+using BobAdsrEnvelope = StandardADSR;
 
 //==============================================================================
 // BobCuriosityLFO — Dual LFO + 5 curiosity behavior modes.
@@ -750,16 +669,30 @@ public:
 
     void reset() noexcept
     {
-        lfo1Phase = voiceOffset;
+        // Reset StandardLFO with voice-staggered start phase
+        lfo1.reset (voiceOffset);
+        // LFO2 micro-motion phase
         lfo2Phase = voiceOffset * 0.7f;
         curSmooth = curTarget = curTimer = twitchCool = 0.0f;
         curThreshold = 0.5f;
+        snh1 = smooth1 = 0.0f;
     }
 
     void setVoiceOffset (float offset) noexcept { voiceOffset = offset; }
-    void setLFO1Rate (float hz) noexcept { lfo1Rate = clamp (hz, 0.01f, 20.0f); }
+    void setLFO1Rate (float hz) noexcept
+    {
+        lfo1Rate = clamp (hz, 0.01f, 20.0f);
+        lfo1.setRate (lfo1Rate, 1.0f / invSR);
+    }
     void setLFO1Depth (float d) noexcept { lfo1Depth = clamp (d, 0.0f, 1.0f); }
-    void setLFO1Shape (int s) noexcept { lfo1Shape = s; }
+    void setLFO1Shape (int s) noexcept
+    {
+        lfo1Shape = s;
+        // Shapes 0 (Sine) and 1 (Triangle) map directly to StandardLFO.
+        // Shapes 2 (S&H) and 3 (SmoothRand) are handled by custom curiosity code below.
+        if (s == 0) lfo1.setShape (StandardLFO::Sine);
+        else if (s == 1) lfo1.setShape (StandardLFO::Triangle);
+    }
     void setCurMode (int m) noexcept { curMode = m; }
     void setCurAmount (float a) noexcept { curAmount = clamp (a, 0.0f, 1.0f); }
 
@@ -767,11 +700,36 @@ public:
 
     Output process() noexcept
     {
-        // LFO1
-        float prevPhase = lfo1Phase;
-        lfo1Phase += lfo1Rate * invSR;
-        if (lfo1Phase >= 1.0f) lfo1Phase -= 1.0f;
-        float l1 = tickLFO (lfo1Phase, prevPhase) * lfo1Depth;
+        // LFO1: delegate Sine/Triangle to StandardLFO; keep S&H and SmoothRand custom
+        // (they share state with the curiosity PRNG and must remain correlated).
+        float l1 = 0.0f;
+        if (lfo1Shape == 0 || lfo1Shape == 1)
+        {
+            // StandardLFO handles phase accumulation and waveform generation.
+            // Rate was set via setLFO1Rate; shape was set via setLFO1Shape.
+            l1 = lfo1.process() * lfo1Depth;
+        }
+        else
+        {
+            // S&H (shape 2) and SmoothRand (shape 3): manual phase accumulation
+            // using the same BobNoiseGen rng to keep curiosity correlations intact.
+            float prevPhase1 = lfo1ManualPhase;
+            lfo1ManualPhase += lfo1Rate * invSR;
+            if (lfo1ManualPhase >= 1.0f) lfo1ManualPhase -= 1.0f;
+
+            if (lfo1Shape == 2) // S&H
+            {
+                if (prevPhase1 > lfo1ManualPhase) snh1 = rng.process();
+                l1 = snh1 * lfo1Depth;
+            }
+            else // SmoothRand (shape 3)
+            {
+                if (prevPhase1 > lfo1ManualPhase) snh1 = rng.process();
+                smooth1 += (snh1 - smooth1) * 0.0005f;
+                smooth1 = flushDenormal (smooth1);
+                l1 = smooth1 * lfo1Depth;
+            }
+        }
 
         // LFO2 (micro motion, always smooth random, very slow)
         float prevPhase2 = lfo2Phase;
@@ -795,8 +753,15 @@ private:
     float invSR = 1.0f / 44100.0f;
     float voiceOffset = 0.0f;
 
-    float lfo1Phase = 0.0f, lfo1Rate = 1.0f, lfo1Depth = 0.5f;
+    // StandardLFO handles phase accumulation and waveform generation for
+    // Sine (shape 0) and Triangle (shape 1). Rate is always kept in sync.
+    StandardLFO lfo1;
+    float lfo1Rate = 1.0f, lfo1Depth = 0.5f;
     int lfo1Shape = 0;
+
+    // Manual phase accumulator retained for S&H (shape 2) and SmoothRand (shape 3),
+    // which share state with the BobNoiseGen curiosity PRNG.
+    float lfo1ManualPhase = 0.0f;
 
     float lfo2Phase = 0.0f;
     float snh2 = 0.0f, smooth2 = 0.0f;
@@ -813,37 +778,6 @@ private:
 
     BobNoiseGen rng;
     float snh1 = 0.0f, smooth1 = 0.0f;
-
-    static float bhaskaraSin (float phase) noexcept
-    {
-        constexpr float pi = 3.14159265f;
-        constexpr float twoPi = 6.28318530f;
-        constexpr float fivePi2 = 5.0f * pi * pi;
-        float x = phase * twoPi;
-        bool neg = false;
-        if (x > pi) { x -= pi; neg = true; }
-        float xpx = x * (pi - x);
-        float s = (16.0f * xpx) / (fivePi2 - 4.0f * xpx);
-        return neg ? -s : s;
-    }
-
-    float tickLFO (float phase, float prevPhase) noexcept
-    {
-        switch (lfo1Shape)
-        {
-            case 0: return bhaskaraSin (phase);
-            case 1: return (phase < 0.5f) ? (4.0f * phase - 1.0f) : (3.0f - 4.0f * phase);
-            case 2: // S&H
-                if (prevPhase > phase) snh1 = rng.process();
-                return snh1;
-            case 3: // Smooth random
-                if (prevPhase > phase) snh1 = rng.process();
-                smooth1 += (snh1 - smooth1) * 0.0005f;
-                smooth1 = flushDenormal (smooth1);
-                return smooth1;
-            default: return bhaskaraSin (phase);
-        }
-    }
 
     float tickCuriosity (float lfo1out, float lfo2out) noexcept
     {
@@ -981,6 +915,7 @@ struct BobVoice
     int noteNumber = 60;
     float velocity = 0.0f;
     uint64_t age = 0;
+    uint64_t startTime = 0;  // wall-clock sample count at note-on; used by VoiceAllocator
 
     BobOscA oscA;
     BobOscB oscB;
@@ -1208,8 +1143,8 @@ public:
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.ampEnv.setParams (ampA, ampD, ampS, ampR);
-            voice.motionEnv.setParams (motA, motD, motS, motR);
+            voice.ampEnv.setADSR (ampA, ampD, ampS, ampR);
+            voice.motionEnv.setADSR (motA, motD, motS, motR);
             voice.cachedBaseFreq = midiToFreq (voice.noteNumber);
         }
 
@@ -1643,6 +1578,7 @@ private:
             v.noteNumber = noteNumber;
             v.velocity = velocity;
             v.age = 0;
+            v.startTime = ++noteOnCounter;
 
             // Initialize MPE expression for this voice's channel
             v.mpeExpression.reset();
@@ -1675,6 +1611,7 @@ private:
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.age = 0;
+        v.startTime = ++noteOnCounter;
 
         // Initialize MPE expression for this voice's channel
         v.mpeExpression.reset();
@@ -1726,22 +1663,10 @@ private:
     int findFreeVoice (int maxPoly)
     {
         int poly = std::min (maxPoly, kMaxVoices);
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        int oldest = 0;
-        uint64_t oldestAge = voices[0].age;
-        for (int i = 1; i < poly; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].age > oldestAge)
-            {
-                oldestAge = voices[static_cast<size_t> (i)].age;
-                oldest = i;
-            }
-        }
-        voices[static_cast<size_t> (oldest)].ampEnv.reset();
-        return oldest;
+        int idx = VoiceAllocator::findFreeVoice (voices, poly);
+        if (voices[static_cast<size_t> (idx)].active)
+            voices[static_cast<size_t> (idx)].ampEnv.kill();
+        return idx;
     }
 
     static float midiToFreq (int note) noexcept
@@ -1752,6 +1677,7 @@ private:
     //--------------------------------------------------------------------------
     double sr = 44100.0;
     float srf = 44100.0f;
+    uint64_t noteOnCounter = 0;  // monotonic counter for VoiceAllocator LRU ordering
     std::array<BobVoice, kMaxVoices> voices;
 
     float envelopeOutput = 0.0f;

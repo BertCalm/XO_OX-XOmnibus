@@ -5,6 +5,9 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -611,176 +614,14 @@ private:
     std::array<size_t, 2> apPos {};
 };
 
-//==============================================================================
-// DriftAdsrEnvelope — ADSR with exponential decay/release.
-// Same pattern as DubAdsrEnvelope for consistency across XOmnibus engines.
-//==============================================================================
-class DriftAdsrEnvelope
-{
-public:
-    enum class Stage { Off, Attack, Decay, Sustain, Release };
+// DriftAdsrEnvelope replaced by StandardADSR (Source/DSP/StandardADSR.h).
+// All call sites updated to use xomnibus::StandardADSR directly.
 
-    void prepare (double sampleRate) noexcept { sr = sampleRate; }
-    void reset() noexcept { stage = Stage::Off; level = 0.0f; }
-
-    void setParams (float a, float d, float s, float r) noexcept
-    {
-        attack = std::max (a, 0.001f);
-        attackRate = 1.0f / (static_cast<float> (sr) * attack);
-        decay = std::max (d, 0.001f);
-        // Compute decayRate here so it stays current when the knob changes mid-note.
-        // Previously computed only at Attack→Decay transition, causing stale values.
-        decayRate = static_cast<float> (
-            1.0 - std::exp (-1.0 / (static_cast<double> (decay) * sr)));
-        sustain = clamp (s, 0.0f, 1.0f);
-        release = std::max (r, 0.001f);
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Off)
-        {
-            stage = Stage::Release;
-            releaseRate = static_cast<float> (
-                1.0 - std::exp (-1.0 / (static_cast<double> (release) * sr)));
-        }
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Off:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                    // decayRate is kept current by setParams(); no recompute needed.
-                }
-                break;
-
-            case Stage::Decay:
-                level -= (level - sustain) * decayRate;
-                level = flushDenormal (level);
-                if (level <= sustain + 0.0001f)
-                {
-                    level = sustain;
-                    stage = Stage::Sustain;
-                    if (sustain < 0.0001f)
-                    {
-                        level = 0.0f;
-                        stage = Stage::Off;
-                    }
-                }
-                break;
-
-            case Stage::Sustain:
-                level = sustain;
-                if (sustain < 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Off;
-                }
-                break;
-
-            case Stage::Release:
-                level -= level * releaseRate;
-                level = flushDenormal (level);
-                if (level < 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Off;
-                }
-                break;
-        }
-        return level;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Off; }
-
-private:
-    double sr = 44100.0;
-    Stage stage = Stage::Off;
-    float level = 0.0f;
-    float attack = 0.1f, decay = 0.5f, sustain = 0.7f, release = 0.5f;
-    float attackRate = 0.0f, decayRate = 0.0f, releaseRate = 0.0f;
-};
-
-//==============================================================================
-// DriftLFO — Sine LFO. Same pattern as DubLFO for consistency.
-//==============================================================================
-class DriftLFO
-{
-public:
-    // DSP FIX: 5 shapes matching fleet standard (was sine-only).
-    // Shape selection driven by destination index: Pitch→Sine, Filter→Triangle,
-    // Amp→Sine (default). This gives timbral variety without adding parameters.
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    void prepare (double sampleRate) noexcept { sr = sampleRate; sampleCounter = 54321u; }
-
-    void reset() noexcept { phase = 0.0; holdValue = 0.0f; sampleCounter = 54321u; }
-
-    void setRate (float hz) noexcept { rate = hz; }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::max (0, std::min (4, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (static_cast<float> (phase * 6.28318530717958647692));
-                break;
-            case Shape::Triangle:
-                out = 4.0f * std::fabs (static_cast<float> (phase) - 0.5f) - 1.0f;
-                break;
-            case Shape::Saw:
-                out = 2.0f * static_cast<float> (phase) - 1.0f;
-                break;
-            case Shape::Square:
-                out = (phase < 0.5) ? 1.0f : -1.0f;
-                break;
-            case Shape::SandH:
-            {
-                double prevPhase = phase - static_cast<double> (rate) / sr;
-                if (prevPhase < 0.0 || phase < prevPhase)
-                {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += static_cast<double> (rate) / sr;
-        if (phase >= 1.0) phase -= 1.0;
-        return out;
-    }
-
-private:
-    double sr = 44100.0;
-    double phase = 0.0;
-    float rate = 1.5f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 54321u;
-};
+// DriftLFO replaced by StandardLFO (Source/DSP/StandardLFO.h).
+// Note: DriftLFO used double-precision phase; StandardLFO uses float.
+// This is acceptable for Drift's LFO rate range (0.1–20 Hz).
+// All call sites updated: setRate(hz) → setRate(hz, srf);
+// prepare(sr) calls removed (StandardLFO has no prepare method).
 
 //==============================================================================
 // DriftVoice — Per-voice state for the ODYSSEY engine.
@@ -794,6 +635,7 @@ struct DriftVoice
     int noteNumber = 60;
     float velocity = 0.0f;
     uint64_t age = 0;
+    uint64_t startTime = 0;  // set at note-on; used by VoiceAllocator for LRU stealing
 
     // Osc A: one of three modes active at a time
     PolyBLEP oscA_classic;
@@ -823,7 +665,7 @@ struct DriftVoice
     DriftFormantFilter filterB;   // Formant filter
 
     // Modulation
-    DriftAdsrEnvelope ampEnv;
+    StandardADSR ampEnv;
     DriftVoyagerDrift drift;
 
     // Glide
@@ -901,14 +743,13 @@ public:
             v.filterA2.reset();
             v.filterA2.setMode (CytomicSVF::Mode::LowPass);
             v.filterB.prepare (sr);
-            v.ampEnv.prepare (sr);
+            v.ampEnv.prepare (srf);
             v.ampEnv.reset();
             v.drift.prepare (sr);
             v.drift.seed (static_cast<uint32_t> (i * 8191 + 3));
         }
 
-        lfo.prepare (sr);
-        lfo2.prepare (sr);
+        // StandardLFO has no prepare() — sr is passed directly to setRate() per block.
         reverb.prepare (sr);
     }
 
@@ -1088,7 +929,7 @@ public:
         shimmerAmt = clamp (shimmerAmt + atPressure * 0.35f, 0.0f, 1.0f);
 
         // Setup LFO
-        lfo.setRate (lfoRate);
+        lfo.setRate (lfoRate, srf);
         // DSP FIX: Shape varies by destination for timbral variety (was sine-only).
         // Pitch→Sine (smooth pitch wobble), Filter→Triangle (organic sweep), Amp→Saw (rhythmic pulse).
         static constexpr int kLfoShapeByDest[] = { 0, 1, 2 }; // Sine, Triangle, Saw
@@ -1097,7 +938,7 @@ public:
 
         // DSP FIX: LFO2 — complementary modulation on non-targeted axis.
         // Rate = 1/4 of main (slow organic movement), Triangle shape.
-        lfo2.setRate (std::max (0.05f, lfoRate * 0.25f));
+        lfo2.setRate (std::max (0.05f, lfoRate * 0.25f), srf);
         lfo2.setShape (1); // Triangle
         bool hasLfo2 = lfoDepth > 0.05f;
 
@@ -1154,7 +995,7 @@ public:
 
                 // Update envelope params (cached per-block, not per-sample)
                 if (sample == 0)
-                    voice.ampEnv.setParams (attack, decay, sustain, release);
+                    voice.ampEnv.setParams (attack, decay, sustain, release, srf);
 
                 // --- Glide ---
                 float baseFreqA = voice.cachedBaseFreqA;
@@ -1718,6 +1559,7 @@ private:
             v.noteNumber = noteNumber;
             v.velocity = velocity;
             v.age = 0;
+            v.startTime = ++voiceCounter;
 
             if (legatoRetrigger)
             {
@@ -1727,9 +1569,13 @@ private:
             return;
         }
 
-        // Poly mode
-        int idx = findFreeVoice (maxPoly);
+        // Poly mode — use VoiceAllocator for LRU voice stealing
+        int idx = VoiceAllocator::findFreeVoice (voices, std::min (maxPoly, kMaxVoices));
         auto& v = voices[static_cast<size_t> (idx)];
+
+        // Kill envelope on stolen voice to prevent click
+        if (v.active)
+            v.ampEnv.kill();
 
         if (v.active && glideAmt > 0.001f)
         {
@@ -1745,6 +1591,7 @@ private:
         v.noteNumber = noteNumber;
         v.velocity = velocity;
         v.age = 0;
+        v.startTime = ++voiceCounter;
         v.ampEnv.noteOn();
         resetOscillators (v);
         v.filterA1.reset();
@@ -1787,28 +1634,8 @@ private:
         v.subOsc.reset();
     }
 
-    int findFreeVoice (int maxPoly)
-    {
-        int poly = std::min (maxPoly, kMaxVoices);
-
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // Oldest voice stealing — initialize from voice 0
-        int oldest = 0;
-        uint64_t oldestAge = voices[0].age;
-        for (int i = 1; i < poly; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].age > oldestAge)
-            {
-                oldestAge = voices[static_cast<size_t> (i)].age;
-                oldest = i;
-            }
-        }
-        voices[static_cast<size_t> (oldest)].ampEnv.reset();
-        return oldest;
-    }
+    // findFreeVoice replaced by VoiceAllocator::findFreeVoice (Source/DSP/VoiceAllocator.h).
+    // Voice stealing is now LRU via DriftVoice::startTime (set at note-on).
 
     static float midiToFreqTune (int midiNote, float tuneSemitones) noexcept
     {
@@ -1831,11 +1658,13 @@ private:
     //--------------------------------------------------------------------------
     double sr = 44100.0;
     float srf = 44100.0f;
+    uint64_t voiceCounter = 0;  // monotonic counter for VoiceAllocator LRU startTime
     std::array<DriftVoice, kMaxVoices> voices;
 
     // LFO (global, not per-voice — XOdyssey LFO1 is global)
-    DriftLFO lfo;
-    DriftLFO lfo2;  // DSP FIX: secondary LFO for D002 compliance (complementary axis)
+    // Using StandardLFO (float phase); acceptable for Drift's 0.1–20 Hz range.
+    StandardLFO lfo;
+    StandardLFO lfo2;  // DSP FIX: secondary LFO for D002 compliance (complementary axis)
 
     // Reverb — engine-level, not per-voice (Option B, Round 11B)
     // Buffers pre-allocated in prepare(); safe on audio thread.

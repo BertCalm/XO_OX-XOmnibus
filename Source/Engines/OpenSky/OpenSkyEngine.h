@@ -62,6 +62,9 @@
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -96,63 +99,9 @@ private:
 };
 
 //==============================================================================
-// SkyADSR — Amp envelope with velocity-scaled attack and release.
+// SkyADSR — uses the shared StandardADSR implementation.
 //==============================================================================
-struct SkyADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:    return 0.0f;
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f) { level = sustainLevel; stage = Stage::Sustain; }
-                return level;
-            case Stage::Sustain:
-                return level;
-            case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; }
-};
+using SkyADSR = StandardADSR;
 
 //==============================================================================
 // SkyBreathingLFO — D005: Autonomous breathing modulation.
@@ -176,56 +125,9 @@ struct SkyBreathingLFO
 };
 
 //==============================================================================
-// SkyLFO — Multi-shape LFO for modulation matrix.
+// SkyLFO — uses the shared StandardLFO implementation.
 //==============================================================================
-struct SkyLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t rngState = 54321u;
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-        switch (shape)
-        {
-            case Shape::Sine:     out = fastSin (phase * 6.28318530718f); break;
-            case Shape::Triangle: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
-            case Shape::Saw:      out = 2.0f * phase - 1.0f; break;
-            case Shape::Square:   out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case Shape::SandH:
-            {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    rngState = rngState * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (rngState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-        return out;
-    }
-
-    void reset() noexcept { phase = 0.0f; holdValue = 0.0f; rngState = 54321u; }
-};
+using SkyLFO = StandardLFO;
 
 //==============================================================================
 //
@@ -1414,7 +1316,7 @@ private:
         for (auto& voice : voices)
         {
             if (voice.active && voice.noteNumber == noteNumber
-                && voice.ampEnv.stage != SkyADSR::Stage::Release)
+                && voice.ampEnv.stage != StandardADSR::Stage::Release)
             {
                 voice.ampEnv.noteOff();
             }
@@ -1423,33 +1325,11 @@ private:
 
     int findFreeVoice()
     {
-        // Find inactive voice
-        for (int i = 0; i < kMaxVoices; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // LRU voice stealing — prefer release-stage voices
-        int bestRelease = -1;
-        uint64_t oldestReleaseTime = UINT64_MAX;
-        int bestAny = 0;
-        uint64_t oldestAnyTime = UINT64_MAX;
-
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].ampEnv.stage == SkyADSR::Stage::Release
-                && voices[static_cast<size_t> (i)].startTime < oldestReleaseTime)
-            {
-                oldestReleaseTime = voices[static_cast<size_t> (i)].startTime;
-                bestRelease = i;
-            }
-            if (voices[static_cast<size_t> (i)].startTime < oldestAnyTime)
-            {
-                oldestAnyTime = voices[static_cast<size_t> (i)].startTime;
-                bestAny = i;
-            }
-        }
-
-        return (bestRelease >= 0) ? bestRelease : bestAny;
+        return VoiceAllocator::findFreeVoicePreferRelease (
+            voices, kMaxVoices,
+            [] (const SkyVoice& v) {
+                return v.ampEnv.stage == StandardADSR::Stage::Release;
+            });
     }
 
     //--------------------------------------------------------------------------

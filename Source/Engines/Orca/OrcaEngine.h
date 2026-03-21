@@ -1,5 +1,10 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/GlideProcessor.h"
+#include "../../DSP/ParameterSmoother.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
@@ -57,116 +62,14 @@ namespace xomnibus {
 //==============================================================================
 
 //==============================================================================
-// ADSR envelope generator.
+// ADSR envelope generator — shared fleet implementation.
 //==============================================================================
-struct OrcaADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:    return 0.0f;
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f) { level = sustainLevel; stage = Stage::Sustain; }
-                return level;
-            case Stage::Sustain:
-                return level;
-            case Stage::Release:
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; }
-};
+using OrcaADSR = StandardADSR;
 
 //==============================================================================
-// LFO with multiple shapes.
+// LFO with multiple shapes — shared fleet implementation.
 //==============================================================================
-struct OrcaLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase = 0.0f;
-    float phaseInc = 0.0f;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t rngState = 12345u;
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseInc = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-        switch (shape)
-        {
-            case Shape::Sine:     out = fastSin (phase * 6.28318530718f); break;
-            case Shape::Triangle: out = 4.0f * std::fabs (phase - 0.5f) - 1.0f; break;
-            case Shape::Saw:      out = 2.0f * phase - 1.0f; break;
-            case Shape::Square:   out = (phase < 0.5f) ? 1.0f : -1.0f; break;
-            case Shape::SandH:
-            {
-                float prevPhase = phase - phaseInc;
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    rngState = rngState * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (rngState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-        phase += phaseInc;
-        if (phase >= 1.0f) phase -= 1.0f;
-        return out;
-    }
-
-    void reset() noexcept { phase = 0.0f; holdValue = 0.0f; rngState = 12345u; }
-};
+using OrcaLFO = StandardLFO;
 
 //==============================================================================
 // Comb filter for echolocation — resonant delay line.
@@ -244,9 +147,7 @@ struct OrcaVoice
     MPEVoiceExpression mpeExpression;
 
     // Glide (Pod Dialect — whale song portamento)
-    float currentFreq = 440.0f;
-    float targetFreq = 440.0f;
-    float glideCoeff = 1.0f;
+    GlideProcessor glide;                         // Shared utility: frequency-domain portamento
 
     // Wavetable oscillator (Pod Dialect)
     WavetableOscillator wtOsc;
@@ -287,8 +188,7 @@ struct OrcaVoice
         active = false;
         noteNumber = -1;
         velocity = 0.0f;
-        currentFreq = 440.0f;
-        targetFreq = 440.0f;
+        glide.snapTo (440.0f);
         fadeGain = 1.0f;
         fadingOut = false;
         clickPhase = 0.0f;
@@ -328,8 +228,13 @@ public:
         srf = static_cast<float> (sr);
         silenceGate.prepare (sampleRate, maxBlockSize);
 
-        smoothCoeff = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / srf);
         crossfadeRate = 1.0f / (0.005f * srf);
+
+        // Smoothing for control-rate parameters (shared ParameterSmoother, 5ms)
+        smoothWTPos.prepare (srf);
+        smoothFormant.prepare (srf);
+        smoothEchoMix.prepare (srf);
+        smoothCrushMix.prepare (srf);
 
         outputCacheL.resize (static_cast<size_t> (maxBlockSize), 0.0f);
         outputCacheR.resize (static_cast<size_t> (maxBlockSize), 0.0f);
@@ -375,10 +280,10 @@ public:
         couplingEchoRateMod = 0.0f;
         couplingRingModSrc = 0.0f;
 
-        smoothedWTPos = 0.0f;
-        smoothedFormant = 0.0f;
-        smoothedEchoMix = 0.0f;
-        smoothedCrushMix = 0.0f;
+        smoothWTPos.snapTo (0.0f);
+        smoothFormant.snapTo (0.0f);
+        smoothEchoMix.snapTo (0.0f);
+        smoothCrushMix.snapTo (0.0f);
 
         std::fill (outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill (outputCacheR.begin(), outputCacheR.end(), 0.0f);
@@ -576,7 +481,7 @@ public:
             // Comb filter delay = sampleRate / frequency → resonates at note pitch
             // D001: high velocity slightly compresses the comb delay → higher effective
             // click rate → more frantic echolocation hunting behaviour.
-            float combDelay = srf / std::max (20.0f, voice.currentFreq);
+            float combDelay = srf / std::max (20.0f, voice.glide.getFreq());
             float velEchoDelay = combDelay * (1.0f - pVelCutoffAmt * voice.velocity * 0.3f);
             voice.echoL.setDelay (velEchoDelay);
             voice.echoR.setDelay (velEchoDelay * 1.003f); // slight stereo spread
@@ -589,16 +494,22 @@ public:
             voice.clickPhaseInc = effectiveEchoRate / srf;
         }
 
+        // Set smoother targets for this block
+        smoothWTPos.set (effectiveWTPos);
+        smoothFormant.set (effectiveFormant);
+        smoothEchoMix.set (effectiveEchoMix);
+        smoothCrushMix.set (effectiveCrush);
+
         float peakEnv = 0.0f;
 
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            // Smooth control-rate parameters
-            smoothedWTPos   += (effectiveWTPos - smoothedWTPos) * smoothCoeff;
-            smoothedFormant += (effectiveFormant - smoothedFormant) * smoothCoeff;
-            smoothedEchoMix += (effectiveEchoMix - smoothedEchoMix) * smoothCoeff;
-            smoothedCrushMix += (effectiveCrush - smoothedCrushMix) * smoothCoeff;
+            // Advance smoothed control-rate parameters (shared ParameterSmoother)
+            float smoothedWTPos   = smoothWTPos.process();
+            float smoothedFormant = smoothFormant.process();
+            float smoothedEchoMix = smoothEchoMix.process();
+            float smoothedCrushMix = smoothCrushMix.process();
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -620,8 +531,7 @@ public:
                 }
 
                 // --- Glide (whale song portamento) ---
-                voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
-                voice.currentFreq = flushDenormal (voice.currentFreq);
+                voice.glide.process();
 
                 // --- Envelopes ---
                 float ampLevel = voice.ampEnv.process();
@@ -644,7 +554,7 @@ public:
                 // LFO1 scans wavetable position slowly (the "dialect" evolving)
                 float wtPos = clamp (smoothedWTPos + lfo1Val * 0.3f + modLevel * pWTScanRate * 0.5f, 0.0f, 1.0f);
                 voice.wtOsc.setPosition (wtPos);
-                float mpeFreqOrc = voice.currentFreq * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float mpeFreqOrc = voice.glide.getFreq() * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
                 voice.wtOsc.setFrequency (mpeFreqOrc, srf);
 
                 float wtSample = voice.wtOsc.processSample();
@@ -760,8 +670,8 @@ public:
                 float lowestFreq = 20000.0f;
                 for (const auto& v : voices)
                 {
-                    if (v.active && v.currentFreq < lowestFreq)
-                        lowestFreq = v.currentFreq;
+                    if (v.active && v.glide.getFreq() < lowestFreq)
+                        lowestFreq = v.glide.getFreq();
                 }
 
                 if (lowestFreq < 20000.0f)
@@ -1248,13 +1158,13 @@ private:
             auto& voice = voices[0];
             bool wasActive = voice.active;
 
-            voice.targetFreq = freq;
-            voice.glideCoeff = glideCoeff;
+            voice.glide.setTarget (freq);
+            voice.glide.setCoeff (glideCoeff);
 
             if (!wasActive || !legatoMode)
             {
                 if (!wasActive)
-                    voice.currentFreq = freq;
+                    voice.glide.snapTo (freq);
 
                 voice.ampEnv.setParams (ampA, ampD, ampS, ampR, srf);
                 voice.ampEnv.noteOn();
@@ -1287,28 +1197,10 @@ private:
             return;
         }
 
-        // Polyphonic — find free voice or steal oldest
-        int freeSlot = -1;
-        uint64_t oldest = UINT64_MAX;
-        int oldestSlot = 0;
+        // Polyphonic — find free voice or steal oldest (LRU)
+        int slot = VoiceAllocator::findFreeVoice (voices, std::min (maxPoly, kMaxVoices));
 
-        for (int i = 0; i < maxPoly && i < kMaxVoices; ++i)
-        {
-            if (!voices[i].active)
-            {
-                freeSlot = i;
-                break;
-            }
-            if (voices[i].startTime < oldest)
-            {
-                oldest = voices[i].startTime;
-                oldestSlot = i;
-            }
-        }
-
-        int slot = (freeSlot >= 0) ? freeSlot : oldestSlot;
-
-        if (freeSlot < 0)
+        if (voices[slot].active)
         {
             // Voice stealing: crossfade out the oldest
             voices[slot].fadingOut = true;
@@ -1319,9 +1211,7 @@ private:
         voice.active = true;
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
-        voice.currentFreq = freq;
-        voice.targetFreq = freq;
-        voice.glideCoeff = glideCoeff;
+        voice.glide.snapTo (freq);         // No glide in poly mode (instant pitch)
         voice.startTime = ++voiceCounter;
 
         // Initialize MPE expression for this voice's channel
@@ -1368,7 +1258,6 @@ private:
 
     double sr = 44100.0;
     float srf = 44100.0f;
-    float smoothCoeff = 0.0f;
     float crossfadeRate = 0.0f;
     uint64_t voiceCounter = 0;
 
@@ -1395,11 +1284,11 @@ private:
     float couplingEchoRateMod = 0.0f;
     float couplingRingModSrc = 0.0f;
 
-    // Smoothed control values
-    float smoothedWTPos = 0.0f;
-    float smoothedFormant = 0.0f;
-    float smoothedEchoMix = 0.0f;
-    float smoothedCrushMix = 0.0f;
+    // Smoothed control values (shared ParameterSmoother, 5ms time constant)
+    ParameterSmoother smoothWTPos;
+    ParameterSmoother smoothFormant;
+    ParameterSmoother smoothEchoMix;
+    ParameterSmoother smoothCrushMix;
 
     // Parameter pointers
     std::atomic<float>* paramWTPos = nullptr;

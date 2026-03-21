@@ -15,6 +15,9 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <vector>
 #include <algorithm>
@@ -304,83 +307,8 @@ private:
     }
 };
 
-//==============================================================================
-// FatEnvelope — ADSR with dirty-flag to avoid redundant std::exp calls.
-//==============================================================================
-class FatEnvelope
-{
-public:
-    enum class Stage { Off, Attack, Decay, Sustain, Release };
-
-    void prepare (double sampleRate) noexcept
-    {
-        sr = sampleRate;
-        invSR = 1.0f / static_cast<float> (sr);
-    }
-
-    void reset() noexcept { stage = Stage::Off; level = 0.0f; }
-
-    void setParams (float a, float d, float s, float r) noexcept
-    {
-        if (a == lastA && d == lastD && s == lastS && r == lastR) return;
-        lastA = a; lastD = d; lastS = s; lastR = r;
-
-        float aClamped = std::max (a, 0.001f);
-        float dClamped = std::max (d, 0.001f);
-        float rClamped = std::max (r, 0.001f);
-        attackRate = invSR / aClamped;
-        decayRate = 1.0f - std::exp (-invSR / dClamped);
-        releaseRate = 1.0f - std::exp (-invSR / rClamped);
-        sustain = clamp (s, 0.0f, 1.0f);
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-    void noteOff() noexcept { if (stage != Stage::Off) stage = Stage::Release; }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Off: return 0.0f;
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                break;
-            case Stage::Decay:
-                level -= (level - sustain) * decayRate;
-                level = flushDenormal (level);
-                if (level <= sustain + 0.0001f)
-                {
-                    level = sustain;
-                    stage = Stage::Sustain;
-                    if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                }
-                break;
-            case Stage::Sustain:
-                level = sustain;
-                if (sustain < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-            case Stage::Release:
-                level -= level * releaseRate;
-                level = flushDenormal (level);
-                if (level < 0.0001f) { level = 0.0f; stage = Stage::Off; }
-                break;
-        }
-        return level;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Off; }
-    float currentLevel() const noexcept { return level; }
-
-private:
-    double sr = 44100.0;
-    float invSR = 1.0f / 44100.0f;
-    Stage stage = Stage::Off;
-    float level = 0.0f;
-    float sustain = 0.7f;
-    float attackRate = 0.0f, decayRate = 0.0f, releaseRate = 0.0f;
-    float lastA = -1.0f, lastD = -1.0f, lastS = -1.0f, lastR = -1.0f;
-};
+// FatEnvelope replaced by shared StandardADSR (Source/DSP/StandardADSR.h).
+// FatVoice::ampEnv and FatVoice::filterEnv are now StandardADSR instances.
 
 //==============================================================================
 // FatSaturation — Asymmetric waveshaper + DC blocker.
@@ -670,7 +598,8 @@ struct FatVoice
     bool active = false;
     int noteNumber = 60;
     float velocity = 0.0f;
-    uint64_t age = 0;
+    uint64_t age = 0;           // samples elapsed since note-on (used in render loop)
+    uint64_t startTime = 0;     // monotonic timestamp at note-on (used by VoiceAllocator LRU)
 
     // Sub oscillator
     FatMorphOsc subOsc;
@@ -685,25 +614,12 @@ struct FatVoice
     // 4 ladder filters (one per group)
     std::array<FatLadderFilter, 4> filters;
 
-    // Envelopes
-    FatEnvelope ampEnv;
-    FatEnvelope filterEnv;
+    // Envelopes — shared StandardADSR (Source/DSP/StandardADSR.h)
+    StandardADSR ampEnv;
+    StandardADSR filterEnv;
 
-    // D005: Breathing LFO — autonomous filter modulation (rate floor 0.01 Hz)
-    struct BreathingLFO
-    {
-        float phase = 0.0f;
-        float sr = 44100.0f;
-        void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
-        void reset() noexcept { phase = 0.0f; }
-        float process (float rateHz) noexcept
-        {
-            float out = fastSin (phase * 6.28318530718f);
-            phase += rateHz / sr;
-            if (phase >= 1.0f) phase -= 1.0f;
-            return out;
-        }
-    } breathingLFO;
+    // D005: Breathing LFO — shared BreathingLFO (Source/DSP/StandardLFO.h)
+    BreathingLFO breathingLFO;
 
     // Saturation per voice
     FatSaturation saturation;
@@ -765,9 +681,9 @@ public:
             }
             for (int g = 0; g < 4; ++g)
                 voice.filters[static_cast<size_t> (g)].prepare (sampleRate);
-            voice.ampEnv.prepare (sampleRate);
-            voice.filterEnv.prepare (sampleRate);
-            voice.breathingLFO.prepare (sampleRate);
+            voice.ampEnv.prepare (static_cast<float> (sampleRate));
+            voice.filterEnv.prepare (static_cast<float> (sampleRate));
+            voice.breathingLFO.setRate (0.07f, static_cast<float> (sampleRate));  // D005: 0.07 Hz autonomous breathing
             voice.saturation.prepare (sampleRate);
             voice.crusher.prepare (sampleRate);
         }
@@ -1006,8 +922,8 @@ public:
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
-            voice.ampEnv.setParams (ampA, ampD, ampS, ampR);
-            voice.filterEnv.setParams (fltEnvA, fltEnvD, 0.0f, 0.5f);
+            voice.ampEnv.setADSR (ampA, ampD, ampS, ampR);
+            voice.filterEnv.setADSR (fltEnvA, fltEnvD, 0.0f, 0.5f);
             voice.cachedBaseFreq = midiToFreq (voice.noteNumber);
         }
 
@@ -1057,8 +973,8 @@ public:
 
                 // Filter envelope
                 float fltEnvVal = voice.filterEnv.process();
-                // D005: breathing LFO — subtle autonomous filter modulation (0.07 Hz default)
-                float breathMod = voice.breathingLFO.process (0.07f) * 2.0f;
+                // D005: breathing LFO — subtle autonomous filter modulation (0.07 Hz, set in prepare)
+                float breathMod = voice.breathingLFO.process() * 2.0f;
                 float keyTrackOffset = (static_cast<float> (voice.noteNumber) - 60.0f)
                                        * fltKeyTrack;
                 // D001: velocity scales filter envelope depth for timbral expression
@@ -1479,6 +1395,7 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.age = 0;
+        voice.startTime = ++voiceTimestamp;  // monotonic counter; smaller = older (LRU)
         voice.cachedBaseFreq = midiToFreq (noteNumber);
 
         // Reset oscillator/filter/FX state to prevent clicks from stolen voices
@@ -1533,23 +1450,16 @@ private:
     int findFreeVoice (int maxPoly)
     {
         int poly = std::min (maxPoly, kMaxVoices);
-        for (int i = 0; i < poly; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        int oldest = 0;
-        uint64_t oldestAge = voices[0].age;
-        for (int i = 1; i < poly; ++i)
+        // Delegate to shared VoiceAllocator (Source/DSP/VoiceAllocator.h) — LRU strategy.
+        // VoiceAllocator reads voice.active + voice.startTime; FatVoice has both fields.
+        int idx = VoiceAllocator::findFreeVoice (voices, poly);
+        // Kill stolen voice envelopes to prevent level bleed into new note-on.
+        if (voices[static_cast<size_t> (idx)].active)
         {
-            if (voices[static_cast<size_t> (i)].age > oldestAge)
-            {
-                oldestAge = voices[static_cast<size_t> (i)].age;
-                oldest = i;
-            }
+            voices[static_cast<size_t> (idx)].ampEnv.kill();
+            voices[static_cast<size_t> (idx)].filterEnv.kill();
         }
-        voices[static_cast<size_t> (oldest)].ampEnv.reset();
-        voices[static_cast<size_t> (oldest)].filterEnv.reset();
-        return oldest;
+        return idx;
     }
 
     static float midiToFreq (int note) noexcept
@@ -1563,6 +1473,7 @@ private:
     std::array<FatVoice, kMaxVoices> voices;
     std::atomic<int> activeVoiceCount { 0 };
     bool sustainPedalDown = false;
+    uint64_t voiceTimestamp = 0;   // monotonic counter; assigned to voice.startTime on each note-on
 
     FatArpeggiator arp;
 

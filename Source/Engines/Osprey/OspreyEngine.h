@@ -5,6 +5,9 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -96,185 +99,6 @@ namespace xomnibus {
 //  CPU budget: <10% single-engine @ 44100Hz, 512 block on M1
 //
 //==============================================================================
-
-//==============================================================================
-//  SECTION 1: ADSR Envelope Generator
-//  -------------------------------------------------------------------------
-//  Lightweight, inline, zero-allocation amplitude envelope.
-//  Linear attack, exponential-ish decay/release (one-pole tracking).
-//  The 0.0001f bias terms prevent the exponential curves from stalling
-//  at zero — without them, the multiplier (level + 0) would produce
-//  no movement once level reaches exactly 0.0, leaving the envelope
-//  stuck and the voice perpetually "active."
-//==============================================================================
-struct OspreyADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage  stage        = Stage::Idle;
-    float  level        = 0.0f;
-    float  attackRate   = 0.0f;   // per-sample increment toward 1.0
-    float  decayRate    = 0.0f;   // per-sample coefficient toward sustain
-    float  sustainLevel = 1.0f;
-    float  releaseRate  = 0.0f;   // per-sample coefficient toward 0.0
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        float sr = std::max (1.0f, sampleRate);
-
-        // Convert time-in-seconds to per-sample rate.
-        // Guard: if time < 1ms, snap instantly (rate = 1.0).
-        static constexpr float kMinTimeSec = 0.001f;
-        attackRate   = (attackSec  > kMinTimeSec) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate    = (decaySec   > kMinTimeSec) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate  = (releaseSec > kMinTimeSec) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn()  noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        // 0.0001f = anti-stall bias. Prevents exponential curves from
-        // freezing when level is at or near zero (see header comment).
-        static constexpr float kAntiStallBias = 0.0001f;
-
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + kAntiStallBias);
-                if (level <= sustainLevel + kAntiStallBias)
-                {
-                    level = sustainLevel;
-                    stage = Stage::Sustain;
-                }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                level -= releaseRate * (level + kAntiStallBias);
-                if (level <= kAntiStallBias)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-};
-
-//==============================================================================
-//  SECTION 2: LFO — Low-Frequency Oscillator
-//  -------------------------------------------------------------------------
-//  5 waveshapes for modulation. The Sample-and-Hold mode uses a Numerical
-//  Recipes LCG (Linear Congruential Generator) — the same PRNG used
-//  throughout XOmnibus engines for deterministic, fast random values.
-//  LCG constants: multiplier 1664525, increment 1013904223 (Knuth, TAOCP).
-//==============================================================================
-struct OspreyLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SampleAndHold };
-
-    float    phase            = 0.0f;
-    float    phaseIncrement   = 0.0f;
-    Shape    shape            = Shape::Sine;
-    float    holdValue        = 0.0f;
-    uint32_t randomState      = 0;      // LCG state for Sample-and-Hold
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseIncrement = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int index) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, index)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (phase * kTwoPi);
-                break;
-
-            case Shape::Triangle:
-                // Maps phase [0,1] -> output [-1,+1] via absolute-value fold
-                out = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-
-            case Shape::Saw:
-                out = 2.0f * phase - 1.0f;
-                break;
-
-            case Shape::Square:
-                out = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-
-            case Shape::SampleAndHold:
-            {
-                float prevPhase = phase - phaseIncrement;
-                // Detect phase wrap (new LFO cycle) -> latch a new random value
-                if (prevPhase < 0.0f || phase < prevPhase)
-                {
-                    // LCG: Knuth TAOCP multiplier/increment (fast, deterministic)
-                    randomState = randomState * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return out;
-    }
-
-    void reset() noexcept
-    {
-        phase     = 0.0f;
-        holdValue = 0.0f;
-        randomState = 12345u;  // Deterministic seed for reproducible modulation
-    }
-
-private:
-    static constexpr float kTwoPi = 6.28318530717958647692f;
-};
 
 //==============================================================================
 //  SECTION 3: Modal Resonator
@@ -723,7 +547,7 @@ struct OspreyVoice
     bool     active           = false;
     int      noteNumber       = -1;
     float    velocity         = 0.0f;
-    uint64_t startTimestamp   = 0;       // monotonic counter for LRU stealing
+    uint64_t startTime        = 0;       // monotonic counter for LRU stealing
 
     // --- Pitch tracking ---
     float    targetFrequency        = 440.0f;  // destination frequency (Hz)
@@ -744,7 +568,7 @@ struct OspreyVoice
     std::array<CreatureFormant, kCreaturesPerVoice> creatures;
 
     // --- Amplitude envelope ---
-    OspreyADSR amplitudeEnvelope;
+    StandardADSR amplitudeEnvelope;
 
     // --- Voice stealing crossfade ---
     float    fadeGain   = 1.0f;   // current crossfade level (1.0 = full, 0.0 = silent)
@@ -1934,8 +1758,8 @@ private:
                 // Gate open: active voice that has NOT started fading out and whose
                 // amplitude envelope is NOT in Release or Idle
                 if (v.active && !v.fadingOut
-                    && v.amplitudeEnvelope.stage != OspreyADSR::Stage::Release
-                    && v.amplitudeEnvelope.stage != OspreyADSR::Stage::Idle)
+                    && v.amplitudeEnvelope.stage != StandardADSR::Stage::Release
+                    && v.amplitudeEnvelope.stage != StandardADSR::Stage::Idle)
                 {
                     v.noteNumber = noteNumber;
                     v.velocity   = velocity;
@@ -1990,7 +1814,7 @@ private:
         voice.active                = true;
         voice.noteNumber            = noteNumber;
         voice.velocity              = velocity;
-        voice.startTimestamp         = voiceCounter++;
+        voice.startTime              = voiceCounter++;
         voice.targetFrequency       = frequency;
 
         // Round 10F: Wire glideCoefficient from osprey_glide parameter.
@@ -2099,25 +1923,9 @@ private:
         }
     }
 
-    int findFreeVoice() const
+    int findFreeVoice()
     {
-        // First pass: find an inactive voice
-        for (int i = 0; i < kMaxVoices; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // No free voice — steal the oldest (LRU policy)
-        int oldestVoice = 0;
-        uint64_t oldestTimestamp = UINT64_MAX;
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTimestamp < oldestTimestamp)
-            {
-                oldestTimestamp = voices[static_cast<size_t> (i)].startTimestamp;
-                oldestVoice = i;
-            }
-        }
-        return oldestVoice;
+        return VoiceAllocator::findFreeVoice (voices, kMaxVoices);
     }
 
     static float midiNoteToHz (float midiNote) noexcept
@@ -2154,14 +1962,13 @@ private:
     // ---- D006 Mod wheel — CC#1 boosts sea state / turbulence intensity (+0–0.4) ----
     float modWheelAmount = 0.0f;
 
-    // D005/D004 fix: OspreyLFO instance to modulate sea state (amplitude breathing).
-    // OspreyLFO was fully implemented (Section 2) but never instantiated as a member.
+    // D005/D004 fix: StandardLFO instance to modulate sea state (amplitude breathing).
     // Route: LFO output -> effectiveSeaState modulation (low-frequency wave energy swell).
     // Rate is controlled by M2 MOVEMENT macro (higher MOVEMENT = faster LFO = choppier seas).
-    OspreyLFO seaStateLFO;
+    StandardLFO seaStateLFO;
 
     // D002: Second LFO — targets resonator brightness for timbral shimmer.
-    OspreyLFO brightnessLFO;
+    StandardLFO brightnessLFO;
 
     // --- Coupling accumulators ---
     // Written by applyCouplingInput(), consumed and cleared each renderBlock()

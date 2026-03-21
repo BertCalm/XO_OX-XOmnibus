@@ -62,6 +62,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -160,26 +161,7 @@ private:
     float lastDecay = -1.0f;
 };
 
-//==============================================================================
-// OstiBreathingLFO — D005: Autonomous breathing modulation.
-// Continuous filter modulation with rate floor <= 0.01 Hz.
-//==============================================================================
-struct OstiBreathingLFO
-{
-    float phase = 0.0f;
-    float sr = 44100.0f;
-
-    void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
-    void reset() noexcept { phase = 0.0f; }
-
-    float process (float rateHz) noexcept
-    {
-        float out = fastSin (phase * 6.28318530718f);
-        phase += rateHz / sr;
-        if (phase >= 1.0f) phase -= 1.0f;
-        return out;
-    }
-};
+// OstiBreathingLFO replaced by shared BreathingLFO (Source/DSP/StandardLFO.h)
 
 //==============================================================================
 //
@@ -1337,7 +1319,7 @@ struct OstiSubVoice
     OstiRadiationFilter radiation;
     OstiEnvelope ampEnv;
     CytomicSVF voiceFilter;
-    OstiBreathingLFO breathLFO;
+    BreathingLFO breathLFO;
 
     bool active = false;
     float lastOutput = 0.0f;
@@ -1354,7 +1336,7 @@ struct OstiSubVoice
         radiation.prepare (sampleRate);
         ampEnv.prepare (sampleRate);
         voiceFilter.setMode (CytomicSVF::Mode::LowPass);
-        breathLFO.prepare (sampleRate);
+        breathLFO.setRate (0.06f, static_cast<float> (sampleRate));
     }
 
     void trigger (float vel, int instrument, int articulation,
@@ -1419,7 +1401,7 @@ struct OstiSubVoice
         sample = radiation.process (sample);
 
         // D005: breathing LFO modulates filter cutoff continuously
-        float breathMod = breathLFO.process (0.06f);
+        float breathMod = breathLFO.process();
         float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.12f), 20.0f, sr * 0.45f);
         voiceFilter.setCoefficients_fast (modCutoff, 0.15f, sr);
 

@@ -100,9 +100,10 @@ Frozen parameter prefixes:
 
 ## Engine Count Confirmation
 
-**42 engines registered** in `Source/XOmnibusProcessor.cpp` and listed in `Source/Core/PresetManager.h`.
+**44 engines registered** in `Source/XOmnibusProcessor.cpp` and listed in `Source/Core/PresetManager.h`.
+*(OXBOW and OWARE added 2026-03-20, pushing fleet from 42 → 44. This sentinel was written before those additions.)*
 
-All 42 engines present in `CLAUDE.md` engine table match the registration in code.
+All 44 engines present in `CLAUDE.md` engine table match the registration in code.
 
 ---
 

@@ -1,7 +1,8 @@
 # XOmnibus V1 Launch Plan
 **Status:** ACTIVE PLANNING DOCUMENT
 **Date:** 2026-03-20
-**Product State:** 42 engines | ~21,918 presets | Build PASS | auval PASS
+**Product State:** 44 engines | ~21,918 presets | Build PASS | auval PASS
+*(Note: OXBOW + OWARE were added 2026-03-20, pushing fleet from 42 to 44; counts below referencing 42 are historical and should be read as 44)*
 **Distribution:** XO-OX.org direct download + Patreon
 **Supersedes:** `Docs/plans/v1-launch-plan.md` (written when scope was 34 engines)
 
@@ -464,4 +465,4 @@ These items were identified in existing docs as open before launch. Track them h
 ---
 
 *This document supersedes `Docs/plans/v1-launch-plan.md` (34-engine scope, March 17 decisions).
-The current product has 42 engines and ~21,918 presets. All messaging should reflect the actual state.*
+The current product has 44 engines and ~21,918 presets. All messaging should reflect the actual state.*

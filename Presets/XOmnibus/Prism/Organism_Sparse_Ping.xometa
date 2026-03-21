@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Sparse Ping",
+  "mood": "Prism",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 18 sparse propagation at high step rate makes momentary islands of activity — each island is a ping. Very high resonance turns the filter into a ringing bell whenever a cell cluster fires.",
+  "tags": [
+    "ping",
+    "rule-18",
+    "sparse",
+    "resonant",
+    "bell"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": "Rule 18 sparse cells at 16 Hz. High-Q filter (0.85 resonance) rings at each cell cluster like a tuned metal bar. Short pluck envelope, medium reverb for tail bloom.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.28,
+    "movement": 0.72,
+    "density": 0.28,
+    "space": 0.55,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 18.0,
+      "org_seed": 16384,
+      "org_stepRate": 16.0,
+      "org_scope": 1,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.08,
+      "org_filterCutoff": 5500.0,
+      "org_filterRes": 0.85,
+      "org_velCutoff": 0.78,
+      "org_ampAtk": 0.002,
+      "org_ampDec": 0.18,
+      "org_ampSus": 0.2,
+      "org_ampRel": 0.5,
+      "org_lfo1Rate": 6.0,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 4.5,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.5,
+      "org_macroRule": 0.71,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

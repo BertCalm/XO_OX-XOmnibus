@@ -5,6 +5,8 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 
@@ -284,10 +286,8 @@ struct MorphVoice
     //-- Filter ----------------------------------------------------------------
     MoogLadder filter;                   // 4-pole Moog ladder (Oscar's warmth)
 
-    //-- ADSR Envelope ---------------------------------------------------------
-    enum EnvelopeStage { Attack, Decay, Sustain, Release, Off };
-    EnvelopeStage envelopeStage = Off;
-    float envelopeLevel = 0.0f;
+    //-- Amplitude envelope (shared StandardADSR) ------------------------------
+    StandardADSR ampEnv;
 
     //-- Voice stealing --------------------------------------------------------
     float stealFadeLevel = 0.0f;         // crossfade level during voice stealing
@@ -365,8 +365,8 @@ public:
         {
             voice.active = false;
             voice.releasing = false;
-            voice.envelopeStage = MorphVoice::Off;
-            voice.envelopeLevel = 0.0f;
+            voice.ampEnv.prepare (cachedSampleRateFloat);
+            voice.ampEnv.reset();
             voice.stealFadeLevel = 0.0f;
             voice.driftPhase = 0.0f;
             voice.currentFrequency = 440.0f;
@@ -388,8 +388,7 @@ public:
         {
             voice.active = false;
             voice.releasing = false;
-            voice.envelopeStage = MorphVoice::Off;
-            voice.envelopeLevel = 0.0f;
+            voice.ampEnv.reset();
             voice.stealFadeLevel = 0.0f;
             voice.currentFrequency = 440.0f;
             voice.targetFrequency  = 440.0f;
@@ -517,7 +516,7 @@ public:
                             if (voice.active && !voice.releasing)
                             {
                                 voice.releasing = true;
-                                voice.envelopeStage = MorphVoice::Release;
+                                voice.ampEnv.noteOff();
                             }
                     }
                 }
@@ -560,13 +559,18 @@ public:
             if (voice.active)
             {
                 voice.releasing = true;
-                voice.envelopeStage = MorphVoice::Release;
+                voice.ampEnv.noteOff();
             }
         }
 
         //----------------------------------------------------------------------
         // Per-sample audio rendering
         //----------------------------------------------------------------------
+
+        // Update ADSR coefficients once per block (block-constant parameters).
+        // StandardADSR.setADSR() calls std::exp — avoid calling per-sample.
+        for (auto& voice : voices)
+            voice.ampEnv.setADSR (effectiveAttack, decayTime, sustainLevel, releaseTime);
 
         // Precompute block-constant LFO phase increment (avoids division per sample)
         const double lfoPhaseIncrement = kCouplingLfoRateHz / cachedSampleRate;
@@ -586,9 +590,9 @@ public:
                 if (!voice.active) continue;
 
                 //-- Envelope --------------------------------------------------
-                updateEnvelope (voice, effectiveAttack, decayTime, sustainLevel, releaseTime);
+                float envLevel = voice.ampEnv.process();
 
-                if (voice.envelopeStage == MorphVoice::Off)
+                if (!voice.ampEnv.isActive())
                 {
                     voice.active = false;
                     continue;
@@ -663,7 +667,7 @@ public:
                     // Harder hits push the filter wider at the attack peak, then decay back.
                     // Max sweep: filterEnvDepth × velocity × 6000 Hz.
                     constexpr float kFilterEnvMaxSweep = 6000.0f;
-                    modulatedCutoff += filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+                    modulatedCutoff += filterEnvDepth * voice.velocity * envLevel * kFilterEnvMaxSweep;
                     modulatedCutoff = std::max (20.0f, std::min (20000.0f, modulatedCutoff));
                     voice.filter.setCutoff (modulatedCutoff);
                     voice.filter.setResonance (filterResonance);
@@ -686,7 +690,7 @@ public:
                 }
 
                 //-- Apply envelope and velocity -------------------------------
-                float voiceOutput = filteredSignal * voice.envelopeLevel * voice.velocity * stealFade;
+                float voiceOutput = filteredSignal * envLevel * voice.velocity * stealFade;
 
                 //-- Drift-based stereo spread ---------------------------------
                 // Drift value pans each voice slightly L/R, creating organic
@@ -965,14 +969,13 @@ private:
             }
 
             // Mono retrigger — or Legato first note (voice was silent)
-            voice.stealFadeLevel = voice.active ? voice.envelopeLevel : 0.0f;
+            voice.stealFadeLevel = voice.active ? voice.ampEnv.getLevel() : 0.0f;
             voice.active = true;
             voice.releasing = false;
             voice.noteNumber = noteNumber;
             voice.velocity = velocity;
             voice.startTime = voiceCounter++;
-            voice.envelopeStage = MorphVoice::Attack;
-            voice.envelopeLevel = 0.0f;
+            voice.ampEnv.noteOn();
             voice.currentFrequency = frequency;
             voice.glideCoefficient = glideCoeff;
 
@@ -1001,7 +1004,7 @@ private:
 
         // Preserve outgoing voice's envelope level for crossfade
         if (voice.active)
-            voice.stealFadeLevel = voice.envelopeLevel;
+            voice.stealFadeLevel = voice.ampEnv.getLevel();
         else
             voice.stealFadeLevel = 0.0f;
 
@@ -1010,8 +1013,7 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
-        voice.envelopeStage = MorphVoice::Attack;
-        voice.envelopeLevel = 0.0f;
+        voice.ampEnv.noteOn();
         voice.currentFrequency = frequency;
         voice.targetFrequency  = frequency;
         voice.glideCoefficient = 1.0f;  // No glide in poly mode (instant pitch)
@@ -1047,77 +1049,8 @@ private:
             if (voice.active && !voice.releasing && voice.noteNumber == noteNumber)
             {
                 voice.releasing = true;
-                voice.envelopeStage = MorphVoice::Release;
+                voice.ampEnv.noteOff();
             }
-        }
-    }
-
-    //==========================================================================
-    //  ENVELOPE
-    //==========================================================================
-
-    void updateEnvelope (MorphVoice& voice, float attackTime, float decayTime,
-                         float sustainLevel, float releaseTime) noexcept
-    {
-        switch (voice.envelopeStage)
-        {
-            case MorphVoice::Attack:
-            {
-                // Linear ramp from 0 to 1 over attackTime seconds
-                float rate = 1.0f / (std::max (0.001f, attackTime) * cachedSampleRateFloat);
-                voice.envelopeLevel += rate;
-                if (voice.envelopeLevel >= 1.0f)
-                {
-                    voice.envelopeLevel = 1.0f;
-                    voice.envelopeStage = MorphVoice::Decay;
-                }
-                break;
-            }
-            case MorphVoice::Decay:
-            {
-                // Linear ramp from 1.0 down to sustain level
-                float rate = 1.0f / (std::max (0.01f, decayTime) * cachedSampleRateFloat);
-                voice.envelopeLevel -= rate;
-
-                // Flush denormals: prevents CPU spikes from subnormal arithmetic
-                // during slow decay tails (see MoogLadder comment for details)
-                voice.envelopeLevel = flushDenormal (voice.envelopeLevel);
-
-                if (voice.envelopeLevel <= sustainLevel)
-                {
-                    voice.envelopeLevel = sustainLevel;
-                    voice.envelopeStage = MorphVoice::Sustain;
-                }
-                break;
-            }
-            case MorphVoice::Sustain:
-                voice.envelopeLevel = sustainLevel;
-                // If sustain is effectively zero, skip to Off (prevents stuck silent voices)
-                if (sustainLevel < 0.0001f)
-                {
-                    voice.envelopeLevel = 0.0f;
-                    voice.envelopeStage = MorphVoice::Off;
-                }
-                break;
-
-            case MorphVoice::Release:
-            {
-                // Linear ramp from sustain level to 0 over releaseTime seconds
-                float rate = 1.0f / (std::max (0.01f, releaseTime) * cachedSampleRateFloat);
-                voice.envelopeLevel -= rate;
-
-                // Flush denormals during release tail
-                voice.envelopeLevel = flushDenormal (voice.envelopeLevel);
-
-                if (voice.envelopeLevel <= 0.0f)
-                {
-                    voice.envelopeLevel = 0.0f;
-                    voice.envelopeStage = MorphVoice::Off;
-                }
-                break;
-            }
-            case MorphVoice::Off:
-                break;
         }
     }
 
@@ -1128,26 +1061,7 @@ private:
     int findFreeVoice (int maxPolyphony)
     {
         int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // First pass: find an inactive voice
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // No free voice — steal the oldest (LRU: Least Recently Used).
-        // This ensures the most recently played notes survive, preserving
-        // the musical intent in dense pad voicings.
-        int oldestVoiceIndex = 0;
-        uint64_t oldestStartTime = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestStartTime)
-            {
-                oldestStartTime = voices[static_cast<size_t> (i)].startTime;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
+        return VoiceAllocator::findFreeVoice (voices, polyphonyLimit);
     }
 
     //==========================================================================

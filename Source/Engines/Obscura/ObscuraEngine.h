@@ -4,6 +4,10 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
+#include "../../DSP/ParameterSmoother.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -88,195 +92,24 @@ static constexpr int kChainSize = 128;
 //
 //  ObscuraADSR -- Envelope Generator
 //
-//  Lightweight inline ADSR with no heap allocation. Uses linear ramp for
-//  attack, exponential-approximation decay/release (multiplied by current
-//  distance to target), and a fixed sustain hold. The 0.0001f bias terms
-//  prevent the exponential curves from stalling at zero (ensuring the
-//  envelope always reaches its destination in finite time).
+//  Replaced with fleet-standard StandardADSR (true exponential decay/release,
+//  denormal-safe, sample-rate-aware). Drop-in compatible: same setParams(),
+//  noteOn(), noteOff(), isActive(), reset() API.
 //
 //==============================================================================
-struct ObscuraADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSeconds, float decaySeconds, float sustain,
-                    float releaseSeconds, float sampleRate) noexcept
-    {
-        float safeSampleRate = std::max (1.0f, sampleRate);
-
-        // Minimum segment time: 1ms. Below this, the segment completes
-        // in a single sample (instant attack/release).
-        constexpr float kMinSegmentSeconds = 0.001f;
-
-        attackRate  = (attackSeconds  > kMinSegmentSeconds)
-                          ? (1.0f / (attackSeconds  * safeSampleRate)) : 1.0f;
-        decayRate   = (decaySeconds   > kMinSegmentSeconds)
-                          ? (1.0f / (decaySeconds   * safeSampleRate)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSeconds > kMinSegmentSeconds)
-                          ? (1.0f / (releaseSeconds * safeSampleRate)) : 1.0f;
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        // Small bias added to decay/release curves to prevent asymptotic
-        // stall -- without this, the level would approach but never reach
-        // the target, leaving a DC residue in the signal.
-        constexpr float kAsymptoticBias = 0.0001f;
-
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Decay:
-                level -= decayRate * (level - sustainLevel + kAsymptoticBias);
-                if (level <= sustainLevel + kAsymptoticBias)
-                {
-                    level = sustainLevel;
-                    stage = Stage::Sustain;
-                }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                level -= releaseRate * (level + kAsymptoticBias);
-                if (level <= kAsymptoticBias)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-};
+using ObscuraADSR = StandardADSR;
 
 
 //==============================================================================
 //
 //  ObscuraLFO -- Low-Frequency Oscillator
 //
-//  5 waveform shapes with normalized [0,1) phase accumulator.
-//  The Sample-and-Hold mode uses a linear congruential generator (LCG)
-//  with the Numerical Recipes constants (period 2^32) for fast,
-//  deterministic pseudo-random output.
+//  Replaced with fleet-standard StandardLFO (same 5 shapes, same LCG S&H,
+//  same bipolar [-1,+1] output). Drop-in compatible: same setRate(),
+//  setShape(int), process(), reset() API.
 //
 //==============================================================================
-struct ObscuraLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SampleAndHold };
-
-    float phase = 0.0f;
-    float phaseIncrement = 0.0f;
-    Shape shape = Shape::Sine;
-    float heldValue = 0.0f;
-    uint32_t randomState = 0;
-
-    void setRate (float frequencyHz, float sampleRate) noexcept
-    {
-        phaseIncrement = frequencyHz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int shapeIndex) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, shapeIndex)));
-    }
-
-    float process() noexcept
-    {
-        float output = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                // Two-pi constant for full-cycle sine from [0,1) phase
-                output = fastSin (phase * 6.28318530718f);
-                break;
-
-            case Shape::Triangle:
-                // Triangle: fold [0,1) phase into [-1,+1] bipolar triangle
-                output = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-
-            case Shape::Saw:
-                // Sawtooth: linear ramp from -1 to +1
-                output = 2.0f * phase - 1.0f;
-                break;
-
-            case Shape::Square:
-                // Square: +1 for first half, -1 for second half
-                output = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-
-            case Shape::SampleAndHold:
-            {
-                float previousPhase = phase - phaseIncrement;
-                // Detect phase wrap (new LFO cycle) to trigger a new random value
-                if (previousPhase < 0.0f || phase < previousPhase)
-                {
-                    // Linear congruential generator (Numerical Recipes constants:
-                    // multiplier 1664525, increment 1013904223, modulus 2^32)
-                    randomState = randomState * 1664525u + 1013904223u;
-                    // Extract 16 bits and scale to [-1, +1] bipolar range
-                    heldValue = static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                output = heldValue;
-                break;
-            }
-        }
-
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return output;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        heldValue = 0.0f;
-        // Seed chosen arbitrarily; any nonzero value works for the LCG
-        randomState = 12345u;
-    }
-};
+using ObscuraLFO = StandardLFO;
 
 
 //==============================================================================
@@ -618,12 +451,12 @@ public:
         // This simplifies the Verlet update to: x_new = 2x - x_old + F.
         normalizedDtSquared = 1.0f;
 
-        // Parameter smoothing coefficient: 5ms time constant.
-        // This prevents zipper noise when parameters change mid-block.
-        // Formula: coeff = 1 - exp(-2*pi / (tau * sr)), tau = 5ms.
-        constexpr float kSmoothingTimeSeconds = 0.005f;
-        parameterSmoothingCoefficient = 1.0f - std::exp (
-            -kTwoPi * (1.0f / kSmoothingTimeSeconds) / sampleRateFloat);
+        // Parameter smoothing: 5ms time constant — prevents zipper noise.
+        smoothedStiffness.prepare    (sampleRateFloat);
+        smoothedDamping.prepare      (sampleRateFloat);
+        smoothedNonlinearity.prepare (sampleRateFloat);
+        smoothedScanWidth.prepare    (sampleRateFloat);
+        smoothedSustainForce.prepare (sampleRateFloat);
 
         // Voice-stealing crossfade rate: linear ramp over 5ms.
         // Prevents clicks when a new note steals an active voice.
@@ -656,11 +489,11 @@ public:
         couplingStiffnessModulation = 0.0f;
         couplingImpulseTrigger = 0.0f;
 
-        smoothedStiffness = 0.5f;
-        smoothedDamping = 0.3f;
-        smoothedNonlinearity = 0.0f;
-        smoothedScanWidth = 0.5f;
-        smoothedSustainForce = 0.0f;
+        smoothedStiffness.snapTo    (0.5f);
+        smoothedDamping.snapTo      (0.3f);
+        smoothedNonlinearity.snapTo (0.0f);
+        smoothedScanWidth.snapTo    (0.5f);
+        smoothedSustainForce.snapTo (0.0f);
 
         std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill (outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
@@ -894,6 +727,13 @@ public:
             }
         }
 
+        // Set smoothing targets once per block
+        smoothedStiffness.set    (effectiveStiffness);
+        smoothedDamping.set      (effectiveDamping);
+        smoothedNonlinearity.set (effectiveNonlinearity);
+        smoothedScanWidth.set    (scanWidthInMasses);
+        smoothedSustainForce.set (effectiveSustain);
+
         float peakEnvelopeLevel = 0.0f;
 
         //----------------------------------------------------------------------
@@ -901,17 +741,15 @@ public:
         //----------------------------------------------------------------------
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            // Smooth control parameters to avoid zipper noise
-            smoothedStiffness    += (effectiveStiffness - smoothedStiffness)
-                                  * parameterSmoothingCoefficient;
-            smoothedDamping      += (effectiveDamping - smoothedDamping)
-                                  * parameterSmoothingCoefficient;
-            smoothedNonlinearity += (effectiveNonlinearity - smoothedNonlinearity)
-                                  * parameterSmoothingCoefficient;
-            smoothedScanWidth    += (scanWidthInMasses - smoothedScanWidth)
-                                  * parameterSmoothingCoefficient;
-            smoothedSustainForce += (effectiveSustain - smoothedSustainForce)
-                                  * parameterSmoothingCoefficient;
+            // Advance smoothers one sample to avoid zipper noise.
+            // Stiffness/damping/nonlinearity smoothers are advanced here so that
+            // they track target values and are ready for per-sample use if the
+            // physics hot-path is ever moved inside the sample loop.
+            smoothedStiffness.process();
+            smoothedDamping.process();
+            smoothedNonlinearity.process();
+            const float curSmoothedScanWidth    = smoothedScanWidth.process();
+            const float curSmoothedSustainForce = smoothedSustainForce.process();
 
             float mixLeft = 0.0f, mixRight = 0.0f;
 
@@ -954,7 +792,7 @@ public:
                 constexpr float kLfo1ScanWidthModDepth = 8.0f;
                 constexpr float kLfo2ExcitePositionModDepth = 0.2f;
                 float modulatedScanWidth = std::max (1.0f,
-                    smoothedScanWidth + lfo1Value * kLfo1ScanWidthModDepth);
+                    curSmoothedScanWidth + lfo1Value * kLfo1ScanWidthModDepth);
                 float modulatedExcitePosition = clamp (
                     paramExcitePosition + lfo2Value * kLfo2ExcitePositionModDepth,
                     0.0f, 1.0f);
@@ -976,9 +814,9 @@ public:
                     // a Gaussian centered at the excitation position.
                     constexpr float kBowingForceScale = 0.02f;
                     constexpr float kMinSustainThreshold = 0.001f;
-                    if (smoothedSustainForce > kMinSustainThreshold)
+                    if (curSmoothedSustainForce > kMinSustainThreshold)
                     {
-                        float forceAmplitude = smoothedSustainForce * physicsLevel
+                        float forceAmplitude = curSmoothedSustainForce * physicsLevel
                                              * kBowingForceScale;
                         float centerMass = modulatedExcitePosition
                                          * static_cast<float> (kChainSize - 1);
@@ -1731,7 +1569,7 @@ private:
         }
 
         //-- Polyphonic mode ---------------------------------------------------
-        int voiceIndex = findFreeVoice (maxPolyphony);
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, std::min (maxPolyphony, kMaxVoices));
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // If stealing an active voice, initiate crossfade to prevent click
@@ -1793,33 +1631,6 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    // Find the best voice slot for a new note.
-    // Priority: 1) inactive voice, 2) oldest active voice (LRU stealing).
-    //--------------------------------------------------------------------------
-    int findFreeVoice (int maxPolyphony) const
-    {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // First pass: find an inactive voice within the polyphony limit
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // Second pass: LRU voice stealing -- find the oldest (earliest started) voice
-        int oldestVoiceIndex = 0;
-        uint64_t oldestStartTime = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestStartTime)
-            {
-                oldestStartTime = voices[static_cast<size_t> (i)].startTime;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
-    }
-
-    //--------------------------------------------------------------------------
     // Standard equal-temperament MIDI-to-frequency conversion.
     // A4 = 440 Hz, 12 semitones per octave.
     //--------------------------------------------------------------------------
@@ -1838,7 +1649,6 @@ private:
     float  sampleRateFloat  = 44100.0f;
 
     //-- Timing coefficients ---------------------------------------------------
-    float parameterSmoothingCoefficient = 0.1f;
     float voiceCrossfadeRate = 0.01f;
     float controlStepSamples = 11.025f;  // ~44100 / 4000 (audio samples per physics step)
     float normalizedDtSquared = 1.0f;
@@ -1848,12 +1658,12 @@ private:
     uint64_t voiceCounter = 0;     // monotonic counter for LRU voice stealing
     int activeVoiceCount = 0;
 
-    //-- Smoothed control parameters -------------------------------------------
-    float smoothedStiffness    = 0.5f;
-    float smoothedDamping      = 0.3f;
-    float smoothedNonlinearity = 0.0f;
-    float smoothedScanWidth    = 16.0f;
-    float smoothedSustainForce = 0.0f;
+    //-- Smoothed control parameters (ParameterSmoother — 5ms time constant) ---
+    ParameterSmoother smoothedStiffness;
+    ParameterSmoother smoothedDamping;
+    ParameterSmoother smoothedNonlinearity;
+    ParameterSmoother smoothedScanWidth;
+    ParameterSmoother smoothedSustainForce;
 
     //-- Coupling accumulators -------------------------------------------------
     float envelopeOutput              = 0.0f;

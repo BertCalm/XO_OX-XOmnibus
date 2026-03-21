@@ -4,6 +4,9 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -82,194 +85,8 @@ static constexpr int kLutTiltSteps    = 32;
 static constexpr int kLutPhaseSteps   = 512;
 
 
-//==============================================================================
-//  ObsidianADSR — Lightweight Envelope Generator
-//
-//  Linear-segment ADSR with exponential-approximation decay/release curves.
-//  No heap allocation. Suitable for per-voice instantiation on the audio thread.
-//
-//  The 0.0001f bias constants added during decay and release prevent the
-//  exponential curves from asymptotically stalling near zero (which would
-//  cause the envelope to never truly reach its target and waste CPU on
-//  near-silent voices).
-//==============================================================================
-struct ObsidianADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSeconds, float decaySeconds, float sustain,
-                    float releaseSeconds, float sampleRate) noexcept
-    {
-        float safeSampleRate = std::max (1.0f, sampleRate);
-
-        // Minimum time of 1ms prevents division-by-zero and click artifacts.
-        // Rate = samples-to-traverse-full-range: 1.0 / (time_in_seconds * sample_rate)
-        attackRate  = (attackSeconds  > 0.001f) ? (1.0f / (attackSeconds  * safeSampleRate)) : 1.0f;
-        decayRate   = (decaySeconds   > 0.001f) ? (1.0f / (decaySeconds   * safeSampleRate)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSeconds > 0.001f) ? (1.0f / (releaseSeconds * safeSampleRate)) : 1.0f;
-    }
-
-    void noteOn() noexcept
-    {
-        stage = Stage::Attack;
-    }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:
-                return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f)
-                {
-                    level = 1.0f;
-                    stage = Stage::Decay;
-                }
-                return level;
-
-            case Stage::Decay:
-                // Exponential-approximation decay: multiplying by (level - target + bias)
-                // creates a curve that decelerates as it approaches sustainLevel.
-                // The 0.0001f bias prevents stalling when level == sustainLevel.
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f)
-                {
-                    level = sustainLevel;
-                    stage = Stage::Sustain;
-                }
-                return level;
-
-            case Stage::Sustain:
-                return level;
-
-            case Stage::Release:
-                // Same exponential-approximation as decay, targeting zero.
-                // The 0.0001f bias ensures we always reach the idle threshold.
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f)
-                {
-                    level = 0.0f;
-                    stage = Stage::Idle;
-                }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-
-    void reset() noexcept
-    {
-        stage = Stage::Idle;
-        level = 0.0f;
-    }
-};
-
-
-//==============================================================================
-//  ObsidianLFO — Multi-Shape Low-Frequency Oscillator
-//
-//  Five shapes: Sine, Triangle, Saw, Square, Sample-and-Hold.
-//  Per-voice instantiation allows free-running independence between voices,
-//  creating organic phase drift across the polyphonic field.
-//
-//  The S&H mode uses a Numerical Recipes LCG (Linear Congruential Generator)
-//  with multiplier 1664525 and increment 1013904223 — a well-known PRNG that
-//  provides adequate randomness for audio-rate sample-and-hold without the
-//  cost of a full Mersenne Twister.
-//==============================================================================
-struct ObsidianLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    float phase = 0.0f;
-    float phaseIncrement = 0.0f;
-    Shape shape = Shape::Sine;
-    float heldValue = 0.0f;
-    uint32_t randomState = 12345u;      // LCG seed — arbitrary non-zero initial state
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseIncrement = hz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int shapeIndex) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, shapeIndex)));
-    }
-
-    float process() noexcept
-    {
-        float output = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                // 2*PI = 6.28318530718 — full cycle of the sine function
-                output = fastSin (phase * 6.28318530718f);
-                break;
-
-            case Shape::Triangle:
-                // Maps [0,1) phase to [-1,+1] triangle: peak at phase=0.5
-                output = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-
-            case Shape::Saw:
-                // Linear ramp from -1 to +1 across one cycle
-                output = 2.0f * phase - 1.0f;
-                break;
-
-            case Shape::Square:
-                // Binary: +1 for first half, -1 for second half
-                output = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-
-            case Shape::SandH:
-            {
-                // Detect new cycle: phase wrapped or moved backward
-                float previousPhase = phase - phaseIncrement;
-                if (previousPhase < 0.0f || phase < previousPhase)
-                {
-                    // Numerical Recipes LCG: state = state * 1664525 + 1013904223
-                    randomState = randomState * 1664525u + 1013904223u;
-                    // Extract 16 bits and map to [-1, +1] bipolar range
-                    heldValue = static_cast<float> (randomState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                output = heldValue;
-                break;
-            }
-        }
-
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return output;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        heldValue = 0.0f;
-        randomState = 12345u;
-    }
-};
+// ObsidianADSR and ObsidianLFO have been replaced by StandardADSR and StandardLFO
+// from Source/DSP/. Use xomnibus::StandardADSR and xomnibus::StandardLFO directly.
 
 
 //==============================================================================
@@ -287,7 +104,7 @@ struct ObsidianVoice
     bool active = false;
     int noteNumber = -1;
     float velocity = 0.0f;
-    uint64_t startTimestamp = 0;        // Monotonic counter for LRU voice stealing
+    uint64_t startTime = 0;             // Monotonic counter for LRU voice stealing
 
     // ---- Phase Accumulators ----
     float phaseStage1 = 0.0f;           // Stage 1 master phase [0, 1)
@@ -299,12 +116,12 @@ struct ObsidianVoice
     float glideCoefficient = 1.0f;      // 1.0 = instant (no glide)
 
     // ---- Envelopes ----
-    ObsidianADSR amplitudeEnvelope;
-    ObsidianADSR phaseDistortionEnvelope;
+    StandardADSR amplitudeEnvelope;
+    StandardADSR phaseDistortionEnvelope;
 
     // ---- LFOs (per-voice for free-running phase independence) ----
-    ObsidianLFO lfo1;
-    ObsidianLFO lfo2;
+    StandardLFO lfo1;
+    StandardLFO lfo2;
 
     // ---- 4-Band Formant Resonance Network ----
     // Four bandpass filters at fixed musical frequencies create vowel-like
@@ -1403,7 +1220,7 @@ private:
                 voice.active = true;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
-                voice.startTimestamp = voiceTimestampCounter++;
+                voice.startTime = voiceTimestampCounter++;
                 voice.currentFrequency = frequency;
                 voice.glideCoefficient = glideCoefficient;
                 voice.phaseStage1 = 0.0f;
@@ -1427,7 +1244,7 @@ private:
         }
 
         // ---- Polyphonic mode ----
-        int voiceIndex = findFreeVoice (maxPolyphony);
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, maxPolyphony);
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // If stealing an active voice, initiate crossfade to prevent click
@@ -1440,7 +1257,7 @@ private:
         voice.active = true;
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
-        voice.startTimestamp = voiceTimestampCounter++;
+        voice.startTime = voiceTimestampCounter++;
         voice.currentFrequency = frequency;
         voice.targetFrequency = frequency;
         voice.glideCoefficient = 1.0f;      // No glide in polyphonic mode
@@ -1496,36 +1313,6 @@ private:
             voice.formantFilters[band].setMode (CytomicSVF::Mode::BandPass);
             voice.formantFilters[band].setCoefficients (kFormantCenterFrequencies[band], kFormantQValues[band], sampleRateFloat);
         }
-    }
-
-    //==========================================================================
-    //  Voice Allocation — LRU (Least Recently Used) Stealing
-    //
-    //  First tries to find an inactive voice within the polyphony limit.
-    //  If all voices are active, steals the oldest one (lowest startTimestamp).
-    //==========================================================================
-
-    int findFreeVoice (int maxPolyphony) const
-    {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // Prefer an inactive voice (no stealing needed)
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // All voices active — steal the oldest (LRU)
-        int oldestVoiceIndex = 0;
-        uint64_t oldestTimestamp = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTimestamp < oldestTimestamp)
-            {
-                oldestTimestamp = voices[static_cast<size_t> (i)].startTimestamp;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
     }
 
     //==========================================================================

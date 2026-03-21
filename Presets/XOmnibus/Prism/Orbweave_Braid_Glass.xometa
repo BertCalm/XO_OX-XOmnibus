@@ -1,0 +1,88 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Triangle strands, Torus (1,3) — the simplest torus knot, a trivial trefoil on the surface. At moderate braid with a high-resonance bandpass filter, it sounds like glass rubbed at the exact right angle. Chorus adds stereo spread.",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.35,
+    "density": 0.32,
+    "space": 0.42,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.4,
+    "TENSION": 0.45,
+    "KNOT": 0.0,
+    "SPACE": 0.32
+  },
+  "mood": "Prism",
+  "name": "Braid Glass",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.5,
+      "weave_torusP": 1.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 3800.0,
+      "weave_filterReso": 0.68,
+      "weave_filterType": 2,
+      "weave_ampA": 0.008,
+      "weave_ampD": 0.7,
+      "weave_ampS": 0.4,
+      "weave_ampR": 1.2,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.18,
+      "weave_lfo1Rate": 0.45,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.38,
+      "weave_fx1Param": 0.45,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.4,
+      "weave_macroTension": 0.45,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.32,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "sonicDNA": "High-resonance bandpass on Torus (1,3) triangle strands creates singing glass quality. Slow filter LFO sweeps the resonant peak.",
+  "tags": [
+    "torus",
+    "glass",
+    "resonance",
+    "bandpass",
+    "crystalline"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

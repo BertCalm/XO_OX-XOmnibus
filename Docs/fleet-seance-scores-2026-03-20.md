@@ -1,6 +1,6 @@
 # XOmnibus Fleet Seance Score Audit
 **Generated:** 2026-03-20
-**Scope:** All 42 registered engines
+**Scope:** All 42 registered engines at time of writing (OXBOW + OWARE added same day — see audit note below)
 **Sources:** `Docs/seances/*_verdict.md`, `Docs/seances/*_seance*.md`, `scripture/seances/*.md`, `Docs/seance_cross_reference.md`, `Docs/seance_ombre_orca_octopus.md`, `Docs/seance_ostinato_opensky_oceandeep_ouie.md`, `~/.claude/skills/synth-seance/knowledge/index.md`
 
 ---
@@ -9,14 +9,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total engines registered | 42 |
+| Total engines registered | 44 (42 at time of this audit; OXBOW + OWARE added 2026-03-20, not yet seanced) |
 | Engines with formal numeric score | 35 |
 | Engines with non-numeric verdict only | 7 (OBSCURA, OPTIC, ORBITAL, ORGANON, OVERBITE, OSPREY, OSTERIA — all approved) |
 | Engines with NO seance of any kind | 0 |
 | Score range (numeric) | 5.9 → 8.7 |
 | Median score (numeric, post-recovery) | ~7.8 |
 
-> NOTE: All 42 engines have been through at least one seance. The "UNRATED" classification does not apply to this fleet — seven engines have non-numeric verdicts (see Section 4). Those engines are treated as "approval-class" and noted separately.
+> NOTE: All 42 engines covered by this audit have been through at least one seance. OXBOW and OWARE (engines 43 and 44, both added 2026-03-20) are NOT covered here — they were registered after this document was written. Their seances are pending. The "UNRATED" classification does not apply to the 42 engines surveyed here — seven have non-numeric verdicts (see Section 4). Those engines are treated as "approval-class" and noted separately.
 
 ---
 
@@ -86,6 +86,18 @@ Scores reflect the **most authoritative / most recent** verdict for each engine:
 | OUROBOROS | Production-ready | Most scientifically rigorous engine; Lorenz/Rossler/Chua/Aizawa all cited | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | OPAL | Concept reviewed | Coupling is crown jewel (V008); opal_smear dead (fixed); Time-Telescope vision | 2026-03-14 | `Docs/seance_cross_reference.md` |
 | ORIGAMI | Not formally scored | STFT correct; race condition P0 bug for blockSize < 512 (fixed Round 3A); instantaneousFreq never used | 2026-03-14 | `Docs/seance_cross_reference.md` |
+
+---
+
+## Section 1b: Missing From This Audit — OXBOW and OWARE
+
+OXBOW (engine 43) and OWARE (engine 44) were both registered 2026-03-20, the same date as this audit.
+Neither appears in the fleet table above. Seance status:
+
+| Engine | Seance Status | Notes |
+|--------|--------------|-------|
+| OXBOW | **NOT SEANCED** (as of 2026-03-20) | Entangled reverb synth; 150 presets; seance pending |
+| OWARE | **NOT SEANCED** (as of 2026-03-20) | Tuned percussion; 22 params; see `Docs/seances/oware-seance-2026-03-21.md` for 2026-03-21 verdict |
 
 ---
 
@@ -298,6 +310,6 @@ Non-numeric  |  11   | ORGANON, ORACLE(num), OUROBOROS, OVERBITE, ONSET, OPTIC, 
 
 ---
 
-*Audit complete. 42 engines surveyed. 0 engines with no seance. Data sourced from 19 verdict/seance files across 2 directories + seance knowledge tree.*
+*Audit complete. 42 engines surveyed (of 44 total — OXBOW + OWARE were added the same day and are not included). 0 of the 42 surveyed engines had no seance. Data sourced from 19 verdict/seance files across 2 directories + seance knowledge tree.*
 
 *Next recommended action: Re-seance ORGANISM and OVERTONE with their 2026-03-20 patches applied — both had critical DSP issues identified and patched in the same session as this audit.*

@@ -5,6 +5,9 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/ShoreSystem/ShoreSystem.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/StandardADSR.h"
+#include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
 #include <algorithm>
@@ -105,81 +108,6 @@ static constexpr int kMemoryBufferSize = 32;
 // Quartet roles
 //==============================================================================
 enum class QuartetRole : int { Bass = 0, Harmony = 1, Melody = 2, Rhythm = 3 };
-
-//==============================================================================
-// OsteriaADSR — Lightweight inline ADSR envelope.
-//
-// Linear attack, exponential-like decay/release using multiplicative
-// coefficient approach. The 0.0001f bias terms prevent the envelope from
-// stalling at exactly zero (which would cause the multiplicative decay
-// to produce no change) — a standard technique in envelope generators
-// since the CEM 3310 analog envelope chip.
-//==============================================================================
-struct OsteriaADSR
-{
-    enum class Stage { Idle, Attack, Decay, Sustain, Release };
-
-    Stage stage = Stage::Idle;
-    float level = 0.0f;
-    float attackRate  = 0.0f;
-    float decayRate   = 0.0f;
-    float sustainLevel = 1.0f;
-    float releaseRate = 0.0f;
-
-    void setParams (float attackSec, float decaySec, float sustain, float releaseSec,
-                    float sampleRate) noexcept
-    {
-        // Guard against zero/negative sample rate
-        float sr = std::max (1.0f, sampleRate);
-
-        // Convert time-in-seconds to per-sample increment.
-        // Minimum 1ms (0.001f) prevents division-by-near-zero;
-        // values below 1ms are treated as instantaneous (rate = 1.0).
-        attackRate  = (attackSec  > 0.001f) ? (1.0f / (attackSec  * sr)) : 1.0f;
-        decayRate   = (decaySec   > 0.001f) ? (1.0f / (decaySec   * sr)) : 1.0f;
-        sustainLevel = sustain;
-        releaseRate = (releaseSec > 0.001f) ? (1.0f / (releaseSec * sr)) : 1.0f;
-    }
-
-    void noteOn() noexcept { stage = Stage::Attack; }
-
-    void noteOff() noexcept
-    {
-        if (stage != Stage::Idle)
-            stage = Stage::Release;
-    }
-
-    float process() noexcept
-    {
-        switch (stage)
-        {
-            case Stage::Idle:    return 0.0f;
-
-            case Stage::Attack:
-                level += attackRate;
-                if (level >= 1.0f) { level = 1.0f; stage = Stage::Decay; }
-                return level;
-
-            case Stage::Decay:
-                // 0.0001f bias prevents stall when level == sustainLevel
-                level -= decayRate * (level - sustainLevel + 0.0001f);
-                if (level <= sustainLevel + 0.0001f) { level = sustainLevel; stage = Stage::Sustain; }
-                return level;
-
-            case Stage::Sustain: return level;
-
-            case Stage::Release:
-                // 0.0001f bias prevents stall when level approaches zero
-                level -= releaseRate * (level + 0.0001f);
-                if (level <= 0.0001f) { level = 0.0f; stage = Stage::Idle; }
-                return level;
-        }
-        return 0.0f;
-    }
-
-    bool isActive() const noexcept { return stage != Stage::Idle; }
-    void reset() noexcept { stage = Stage::Idle; level = 0.0f; }
-};
 
 //==============================================================================
 // QuartetChannel — One of four ensemble voices with shore-morphed formants.
@@ -529,7 +457,7 @@ struct OsteriaVoice
     std::array<QuartetChannel, 4> quartet;
 
     // --- Amplitude envelope ---
-    OsteriaADSR ampEnv;
+    StandardADSR ampEnv;
 
     // --- Voice stealing crossfade ---
     float fadeGain = 1.0f;          // 1.0 = full volume, fades to 0 during stealing
@@ -595,34 +523,6 @@ struct OsteriaVoice
 // Companion: OSPREY (together they form "The Diptych" — ocean and shore)
 //==============================================================================
 
-//==============================================================================
-// OsteriaLFO — D005/D002 compliant user-controllable low-frequency oscillator.
-//
-// Provides sine modulation with rate floor of 0.005 Hz (200-second cycle)
-// to satisfy D005's "engines must breathe" requirement. Targets shore blend
-// drift — the quartet slowly wanders between coastlines, creating evolving
-// folk instrument timbres without user intervention.
-//==============================================================================
-struct OsteriaLFO
-{
-    float phase = 0.0f;
-    float phaseIncrement = 0.0f;
-
-    void setRate (float hz, float sampleRate) noexcept
-    {
-        phaseIncrement = hz / std::max (1.0f, sampleRate);
-    }
-
-    float process() noexcept
-    {
-        float out = std::sin (phase * kOsteriaTwoPi);
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-        return out;
-    }
-
-    void reset() noexcept { phase = 0.0f; }
-};
 
 class OsteriaEngine : public SynthEngine
 {
@@ -1771,7 +1671,7 @@ private:
     {
         float freq = midiToHz (static_cast<float> (noteNumber));
 
-        int voiceIndex = findFreeVoice();
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, kMaxVoices);
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // If stealing an active voice, initiate crossfade-out
@@ -1862,28 +1762,6 @@ private:
             if (voice.active && voice.noteNumber == noteNumber && !voice.fadingOut)
                 voice.ampEnv.noteOff();
         }
-    }
-
-    /** Find an inactive voice, or steal the oldest active one (LRU). */
-    int findFreeVoice() const
-    {
-        // First pass: find an inactive voice
-        for (int i = 0; i < kMaxVoices; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // No free voices — steal the oldest (LRU: Least Recently Used)
-        int oldestIndex = 0;
-        uint64_t oldestTime = UINT64_MAX;
-        for (int i = 0; i < kMaxVoices; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTime)
-            {
-                oldestTime = voices[static_cast<size_t> (i)].startTime;
-                oldestIndex = i;
-            }
-        }
-        return oldestIndex;
     }
 
     //==========================================================================
@@ -2015,7 +1893,7 @@ private:
 
     // D005/D002: User-controllable LFO — modulates shore drift for evolving timbres.
     // Rate controlled by M2 MOVEMENT: 0.005 Hz at rest (breathing) to 2 Hz active.
-    OsteriaLFO userLFO;
+    StandardLFO userLFO;
 };
 
 } // namespace xomnibus

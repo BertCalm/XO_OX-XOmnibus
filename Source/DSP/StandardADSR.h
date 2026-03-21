@@ -113,6 +113,30 @@ struct StandardADSR
         stage = Stage::Idle;
     }
 
+    /// Legato retrigger: restart attack from the current level rather than 0.
+    /// Used when a new note overlaps an active voice (monophonic legato).
+    /// Attack rate is adjusted so the rise from currentLevel → 1.0 takes attackSec.
+    void retriggerFrom (float currentLevel,
+                        float attackSec, float decaySec, float sustain, float releaseSec) noexcept
+    {
+        setADSR (attackSec, decaySec, sustain, releaseSec);
+        shape = Shape::ADSR;
+        level = currentLevel;
+        stage = Stage::Attack;
+        // Re-scale attack rate so the rise covers (1 - currentLevel) in attackSec.
+        float range = 1.0f - currentLevel;
+        if (range < 0.001f)
+        {
+            // Already near peak — skip attack, go straight to decay.
+            level = 1.0f;
+            stage = Stage::Decay;
+        }
+        else if (attackSec >= 0.0001f)
+        {
+            attackRate = range / (sr * attackSec);
+        }
+    }
+
     //--------------------------------------------------------------------------
     // Processing
     //--------------------------------------------------------------------------
