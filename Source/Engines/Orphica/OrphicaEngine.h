@@ -21,7 +21,7 @@ namespace xomnibus {
 // capturing it into a small per-voice circular buffer and reading back grains.
 //==============================================================================
 struct OrphicaMicrosound {
-    static constexpr int kBufSize = 44100; // 1 second @ 44.1k — supports lush slow-attack granular textures and freeze pads
+    static constexpr int kBufSize = 131072; // ~2.7 seconds @ 48kHz — supports long slow-attack granular pads and freeze sustains without clipping
     static constexpr int kGrains = 4;
 
     float buffer[kBufSize] {};
