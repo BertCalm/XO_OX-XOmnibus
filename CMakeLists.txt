@@ -331,6 +331,10 @@ add_executable(XOmnibusTests
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
     Tests/DoctrineTests/DoctrineTests.cpp
+)
+
+# FamilyWaveguideTest is a standalone executable (has its own main())
+add_executable(FamilyWaveguideTest
     Tests/FamilyWaveguideTest.cpp
 )
 
