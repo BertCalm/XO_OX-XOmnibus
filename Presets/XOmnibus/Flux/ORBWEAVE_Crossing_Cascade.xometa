@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The MACRO KNOT sweeps dynamically via LFO1 at 0.22 Hz — topology shifts cyclically through the blend between Figure-Eight and Torus. At each crossing point (KNOT=0, 0.25, 0.5, 0.75, 1.0) the spectral character shifts. Saw strands make each crossing audible as a timbral event. The effect is a filter-like sweep but it is not a filter — it is the coupling matrix changing the relationships between oscillator strands. WEAVE-IV applied as motion: the chimera state passes through rather than rests in.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.45,
+    "movement": 0.78,
+    "density": 0.58,
+    "space": 0.35,
+    "aggression": 0.42
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Crossing Cascade",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.88,
+      "weave_torusP": 2,
+      "weave_torusQ": 5,
+      "weave_filterCutoff": 5800.0,
+      "weave_filterReso": 0.2,
+      "weave_filterType": 0,
+      "weave_ampA": 0.01,
+      "weave_ampD": 0.4,
+      "weave_ampS": 0.72,
+      "weave_ampR": 0.8,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.42,
+      "weave_lfo1Rate": 0.22,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.28,
+      "weave_lfo2Rate": 0.38,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.32,
+      "weave_fx1Param": 0.62,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.22,
+      "weave_fx2Param": 0.5,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "topology-sweep",
+    "figure-eight",
+    "weave-iv",
+    "lfo-knot",
+    "saw",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

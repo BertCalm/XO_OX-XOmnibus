@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Rule 54 — produces complex, nested patterns that include both periodic and chaotic regions: some cell groups cycle predictably while others remain permanently active or permanently silent. Fast step rate (12 Hz) with medium scope (5). Square wave for harmonic brightness. filterCutoff bright at 5500 Hz with moderate resonance (0.48) — each Rule 54 cellular event fires a resonant peak that creates a distinctly pulsed melodic character. The nested quality of Rule 54 means this preset has rhythmic structure at multiple simultaneous timescales.",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.35,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Luminous",
+  "name": "Nested Pulsar",
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 8738,
+      "org_stepRate": 12.0,
+      "org_scope": 5,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.22,
+      "org_filterCutoff": 5500.0,
+      "org_filterRes": 0.48,
+      "org_velCutoff": 0.72,
+      "org_ampAtk": 0.005,
+      "org_ampDec": 0.18,
+      "org_ampSus": 0.55,
+      "org_ampRel": 0.55,
+      "org_lfo1Rate": 1.8,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 1.2,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.75,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "luminous",
+    "rule-54",
+    "nested",
+    "rhythmic",
+    "bright",
+    "pulse",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

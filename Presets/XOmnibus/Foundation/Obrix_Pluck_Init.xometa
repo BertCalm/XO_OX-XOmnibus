@@ -1,17 +1,18 @@
 {
   "schema_version": 1,
-  "name": "Pluck Init",
+  "name": "Coral Tap",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Quick attack, fast decay. A basic pluck sound.",
+  "description": "A single tap on the reef — quick attack, instant decay. Percussive and clean. The envelope filter sweep mimics the resonant ring of hollow coral.",
   "tags": [
     "pluck",
+    "percussive",
     "short",
-    "basic"
+    "coral"
   ],
   "macroLabels": [
     "CHARACTER",

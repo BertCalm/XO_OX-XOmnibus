@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "D005 Truth at maximum depth: both LFOs at 0.01 Hz floor rate. LFO1 completes one filter sweep every 100 seconds. LFO2 completes one amplitude shimmer every 100 seconds. Rule 110 evolves at a deliberate 3 Hz — each cellular generation is a full breath held and released. Scope=12 means 12 generations of history are averaged, producing extremely slow, glacial drift. This preset exists outside human tempo. Play a note and wait. The colony breathes — it just breathes slowly.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.45,
+    "space": 0.92,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Aether",
+  "name": "Century Breath",
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 3.0,
+      "org_scope": 12,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.42,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.22,
+      "org_velCutoff": 0.45,
+      "org_ampAtk": 0.8,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.82,
+      "org_ampRel": 5.0,
+      "org_lfo1Rate": 0.01,
+      "org_lfo1Depth": 0.35,
+      "org_lfo2Rate": 0.01,
+      "org_lfo2Depth": 0.28,
+      "org_reverbMix": 0.85,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "aether",
+    "rule-110",
+    "d005",
+    "slow",
+    "meditative",
+    "floor-rate",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

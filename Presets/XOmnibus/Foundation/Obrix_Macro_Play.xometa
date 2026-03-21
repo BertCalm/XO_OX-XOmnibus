@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Macro Play",
+  "name": "Four Currents",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "CHARACTER adds cutoff + fold depth. MOVEMENT adds detune + LFO. SPACE adds reverb.",
+  "description": "All four macros active: CHARACTER shapes the brightness, MOVEMENT adds living detune, COUPLING opens the reef to other engines, SPACE floods the room. A map of the controls.",
   "tags": [
     "lesson",
     "macros",

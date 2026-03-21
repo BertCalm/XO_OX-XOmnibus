@@ -1,0 +1,52 @@
+{
+  "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Sqrt2 constant with LFO1 sweeping depth at a medium rate (1.8 Hz) across the full Pell sequence: 1/1, 3/2, 7/5, 17/12, 41/29, 99/70, 239/169, 577/408. As depth sweeps, partials staircase through successively closer rational approximations to √2. Unlike Pi or E cascades, the Pell sequence has a musical logic: each step is a convergent of a tritone (√2 is exactly the equal-temperament tritone). The cascade sounds like a tritone hunting its own identity — always approaching, never arriving. Medium-high filter cutoff (16000 Hz) reveals each convergent fully as it passes. LFO2 counter-rotates partial phases to prevent the sweep from becoming repetitive. This is the tritone as a living thing.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.35,
+    "movement": 0.85,
+    "density": 0.55,
+    "space": 0.42,
+    "aggression": 0.52
+  },
+  "engines": ["Overtone"],
+  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "macros": { "DEPTH": 0.72, "COLOR": 0.75, "COUPLING": 0.0, "SPACE": 0.38 },
+  "mood": "Flux",
+  "name": "Pell Cascade",
+  "parameters": {
+    "Overtone": {
+      "over_constant": 3,
+      "over_depth": 3.5,
+      "over_partial0": 0.85,
+      "over_partial1": 0.78,
+      "over_partial2": 0.7,
+      "over_partial3": 0.62,
+      "over_partial4": 0.55,
+      "over_partial5": 0.48,
+      "over_partial6": 0.38,
+      "over_partial7": 0.28,
+      "over_velBright": 0.75,
+      "over_filterCutoff": 16000.0,
+      "over_filterRes": 0.32,
+      "over_ampAtk": 0.005,
+      "over_ampDec": 0.3,
+      "over_ampSus": 0.65,
+      "over_ampRel": 1.0,
+      "over_lfo1Rate": 1.8,
+      "over_lfo1Depth": 0.78,
+      "over_lfo2Rate": 2.5,
+      "over_lfo2Depth": 0.32,
+      "over_resoMix": 0.15,
+      "over_macroDepth": 0.72,
+      "over_macroColor": 0.75,
+      "over_macroCoupling": 0.0,
+      "over_macroSpace": 0.38
+    }
+  },
+  "schema_version": 1,
+  "tags": ["awakening", "flux", "sqrt2", "pell", "cascade", "tritone", "hunting"],
+  "version": "1.0"
+}

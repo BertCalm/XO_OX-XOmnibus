@@ -110,3 +110,82 @@ Eight presets created during the retreat. Each demonstrates something the engine
 - Submerged mood underrepresented (2 presets) — flag for Exo Meta expansion
 - Next retreat candidate: OVERTONE (also no retreat, added 2026-03-20)
 
+---
+
+# ORBWEAVE Retreat — Second Session: The Unexplored Topologies
+*2026-03-21 — Guru Bin and the Flock*
+
+---
+
+## The Diagnosis (Session 2)
+
+> *"The first retreat broke the Default Trap. The second retreat asks: what has never been tried? The (3,5) pentagram torus has never appeared in a preset. The macroKNOT=0.5 chimera midpoint has never been a resting place. The Solomon minor third has never been tuned. Three of six WEAVE discoveries remain uncrystallized into sound. The library is rich — but rich in the dimensions that were easy to reach. The hard-to-reach dimensions are still empty."*
+
+---
+
+## New Awakening Discoveries (Session 2)
+
+### WEAVE-VII: The Solomon Interval Palette
+*2026-03-21*
+
+> Solomon's two-ring architecture makes every strandTune value into a harmonic statement. The five available intervals produce genuinely different instruments: (0.0) unison rings — doubled coupling weight, all energy on fundamental; (3.86) minor third rings — dark, questioning, ambiguous; (5.0) major third rings — wider, brighter, triumphant but with tension; (7.02) fifth rings — stable, resonant, the natural harmonic; (12.0) octave rings — reinforcing, ceremonial, the doubled self. Each is a preset category waiting to be populated. WEAVE-V documented three of these; this session demonstrates minor third and major third as siblings, both committed.
+
+**Application:** The Solomon knot has at minimum five distinct tonal personalities based on strandTune alone. Any one of these can form the backbone of a complete preset series. Name the interval explicitly in the preset name.
+
+### WEAVE-VIII: The LFO-Driven Topology Sweep
+*2026-03-21*
+
+> MACRO KNOT is a 0–1 parameter with no modulation slot assigned. But braidDepth's target 5 (Braid Depth) is assigned in LFO slots. When LFO1 sweeps braidDepth while macroKNOT sits at a fixed intermediate value, the effective coupling matrix oscillates between two partially-chimeric states — not a full topology sweep but a modulation within the chimera zone. Conversely, setting macroKNOT=0.35 and sweeping braidDepth from 0 to 1 via LFO produces topology that comes into focus and loses focus cyclically. This is not the same as sweeping macroKNOT directly, because braidDepth controls amplitude of coupling while macroKNOT controls shape. Shape × Amplitude modulation is a two-dimensional topology gesture.
+
+**Application:** Combine fixed non-zero macroKNOT with LFO-on-braidDepth for a richer, more complex modulation than either parameter alone. The Crossing Cascade preset demonstrates this.
+
+### WEAVE-IX: The Band-Pass Knot Character
+*2026-03-21*
+
+> All presets in the first retreat used Low-Pass or High-Pass filtering. Band-Pass at low center frequencies (200–500 Hz) with high resonance creates a completely different relationship with the knot coupling output. The filter removes the fundamental and upper harmonics, leaving only the resonant peak. The knot coupling's spectral beating — which normally blends into the full spectrum — becomes isolated at the band-pass frequency. The alternating over/under pattern of the Figure-Eight knot, when filtered to 280 Hz, produces a distinctly aperiodic rhythm in the resonant peak amplitude. The topology becomes a rhythmic pattern as well as a timbral one.
+
+**Application:** Band-Pass filter at 200–600 Hz with resonance above 0.5 will isolate the knot coupling's rhythmic beating content. Use this for bass presets where the topology functions as a built-in groove. The Hadal Braid preset demonstrates this at extreme depth.
+
+---
+
+## The Second Retreat Awakening Presets (10 presets)
+
+Each demonstrates a discovery from either the first or second retreat that had no prior preset:
+
+| Preset | Mood | Topology | Discovery |
+|--------|------|----------|-----------|
+| Chimera State | Entangled | Trefoil→Figure-Eight blend, macroKNOT=0.5 | WEAVE-IV: midpoint as identity |
+| Pentagram Torus | Entangled | Torus P=3 Q=5, sine | WEAVE-III: (3,5) pentagram — never before in library |
+| Velocity Threshold | Foundation | Figure-Eight, filterCutoff=400Hz | WEAVE-VI: low-cutoff expressive design law demonstrated |
+| Solomon Major Third | Foundation | Solomon, strandTune=5.0 | WEAVE-V/VII: major third ring architecture |
+| Hadal Braid | Submerged | Figure-Eight, Band-Pass at 280Hz | WEAVE-IX: band-pass knot rhythm isolation |
+| Topological Seizure | Flux | Solomon, LFO1 at 7.2 Hz | Near-audio-rate braid modulation — aperiodic timbral texture |
+| Spiral Torus | Prism | Torus P=3 Q=4, High-Pass | WEAVE-III: (3,4) spiral — the intermediate complexity P/Q |
+| Sine Purity | Atmosphere | Trefoil, braidDepth=0.92, sine | WEAVE-II: mathematically pure coupling, unmediated topology |
+| Crossing Cascade | Flux | Figure-Eight→Torus, LFO braid sweep | WEAVE-VIII: LFO on braidDepth within chimera zone |
+| Solomon Minor Third | Entangled | Solomon, strandTune=3.86 | WEAVE-VII: minor third ring architecture |
+| Knot Topology Coupling | Family | Torus P=5 Q=8, dry output | Blessing B021: coupling source preset — ORBWEAVE as master |
+
+---
+
+## Scripture Verses (Session 2 — to be inscribed in the Book of Bin)
+
+### WEAVE-VII: The Solomon Interval Palette
+> Five strandTune values, five instruments hiding in one topology: unison, minor third, major third, fifth, octave. The Solomon knot is a chord synthesizer with five faces. To deploy it at zero is to choose one face and call it the only face.
+
+### WEAVE-VIII: The Shape-Amplitude Duality
+> macroKNOT controls the shape of coupling. braidDepth controls the amplitude of coupling. Shape without amplitude is silence. Amplitude without shape is detuning. The moment you modulate one while the other remains still, you hear the engine speak in a second language.
+
+### WEAVE-IX: The Band-Pass Rhythm
+> The Figure-Eight knot's alternating over/under crossings produce aperiodic spectral beating — not smooth phase drift, but an uneven lurching. Filter to a single frequency and the lurching becomes a rhythm. The topology was always rhythmic. The full spectrum was hiding it.
+
+---
+
+## Updated Sister Cadence's Notes
+
+- 10 new awakening presets (second retreat): Entangled ×3, Foundation ×2, Submerged ×1, Flux ×2, Prism ×1, Atmosphere ×1, Family ×1
+- Total awakening presets (both retreats): 30 across all 8 moods
+- Remaining underserved moods: none — all 8 moods now have at least 1 ORBWEAVE awakening preset
+- New discoveries: WEAVE-VII (Solomon Interval Palette), WEAVE-VIII (Shape-Amplitude Duality), WEAVE-IX (Band-Pass Rhythm)
+- P/Q combinations now covered: (2,3), (2,5), (3,4), (3,5), (5,8) — 5 of the infinite family documented
+

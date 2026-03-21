@@ -17,11 +17,16 @@ namespace xomnibus {
 //
 // A runtime-configurable synthesis toy box where you snap "ocean bricks"
 // together to build sound. OBRIX is not an instrument. It is a habitat.
-// Where the other 41 engines are creatures with fixed identities — anglerfish,
+// Where the other 43 engines are creatures with fixed identities — anglerfish,
 // axolotl, octopus — OBRIX is the reef itself: the place where creatures live,
 // the ecosystem that grows by accretion. It doesn't have a fixed form.
 // It grows. It adapts. It responds to its inhabitants.
 // New coral species (bricks) wash ashore with every Brick Drop.
+//
+// Historical lineage: ARP 2600 (semi-modular with normalled routing, 1971) →
+//   Serge Modular ("patch-programmable" philosophy, 1974) → Korg MS-20 (dual
+//   sources + dual filters, 1978). OBRIX inherits their semi-modular DNA:
+//   a fixed signal path with reconfigurable bricks — constraint as creativity.
 //
 // Brick pool per voice (pre-allocated):
 //   2 Sources (Shells)    — oscillators / noise (PolyBLEP anti-aliased)
@@ -81,23 +86,24 @@ namespace xomnibus {
 
 //==============================================================================
 // Brick Enums — extensible by design (new brick = new enum + new case)
+// Mythology: Shells (sources) · Coral (processors) · Currents (modulators) · Tide Pools (effects)
 //==============================================================================
-enum class ObrixSourceType {
+enum class ObrixSourceType {  // Shells — the living generators
     Off = 0, Sine, Saw, Square, Triangle, Noise, Wavetable, Pulse, LoFiSaw,
     kCount
 };
 
-enum class ObrixProcType {
+enum class ObrixProcType {    // Coral — the filter/transformer organisms
     Off = 0, LPFilter, HPFilter, BPFilter, Wavefolder, RingMod,
     kCount
 };
 
-enum class ObrixModType {
+enum class ObrixModType {     // Currents — the modulators that flow between bricks
     Off = 0, ADSREnvelope, LFO, Velocity, Aftertouch,
     kCount
 };
 
-enum class ObrixEffectType {
+enum class ObrixEffectType {  // Tide Pools — the spatial environment at the reef edge
     Off = 0, Delay, Chorus, Reverb,
     kCount
 };
@@ -290,6 +296,10 @@ public:
 
     //==========================================================================
     // Audio — The Constructive Collision
+    // ARCHITECTURE NOTE (Wave 5 target): This method is intentionally monolithic
+    // to avoid per-sample function call overhead in the inner voice loop.
+    // Future factoring should use JUCE_FORCEINLINE helpers: processGestureEnvelope(),
+    // processVoiceSample(), and processSpatial(). Test with clang -O2 before changing.
     //==========================================================================
 
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
@@ -298,7 +308,7 @@ public:
         if (numSamples <= 0) return;
 
         // === ParamSnapshot ===
-        const auto src1Type   = static_cast<int> (loadP (pSrc1Type, 1.0f));
+        const auto src1Type   = static_cast<int> (loadP (pSrc1Type, 2.0f)); // 2=Saw default
         const auto src2Type   = static_cast<int> (loadP (pSrc2Type, 0.0f));
         const float src1Tune  = loadP (pSrc1Tune, 0.0f);
         const float src2Tune  = loadP (pSrc2Tune, 0.0f);
@@ -599,15 +609,15 @@ public:
 
                 // --- Macro modulation (Guru Bin remapping) ---
                 // CHARACTER: cutoff + exponential fold depth + resonance boost
-                float charFoldScale = 1.0f + macroChar * macroChar * 8.0f;
-                cutoffMod += macroChar * 3000.0f;
-                resoMod   += macroChar * 0.3f;
+                float charFoldScale = 1.0f + macroChar * macroChar * 8.0f; // exponential fold: 1× at zero → 9× drive at full
+                cutoffMod += macroChar * 3000.0f;  // CHARACTER sweeps up to +3 kHz (dark→bright timbral shift)
+                resoMod   += macroChar * 0.3f;     // slight resonance boost preserves filter character at high drive
 
-                // MOVEMENT: stereo detune
-                pitchMod += macroMove * 100.0f;
+                // MOVEMENT: stereo detune (+1 semitone = 100 cents at full)
+                pitchMod += macroMove * 100.0f;    // MOVEMENT: +1 semitone stereo detune spread at maximum
 
                 // D006: mod wheel intensifies filter sweep
-                cutoffMod += modWheel_ * 4000.0f;
+                cutoffMod += modWheel_ * 4000.0f;  // mod wheel sweeps up to +4 kHz (full range of musical interest)
 
                 // === BIOPHONIC: Environmental Parameters (Wave 4) ===
                 // Current: directional bias on filter center and pitch
@@ -961,7 +971,7 @@ public:
         auto gestChoices = juce::StringArray { "Ripple", "Bioluminescent Pulse", "Undertow", "Surge" };
 
         // Sources (7)
-        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 1)); // 1 = Sine default
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src1Type", 1 }, "Obrix Source 1 Type", srcChoices, 2)); // 2 = Saw default (Pearlman/seance: "filter has nothing to sculpt with Sine")
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_src2Type", 1 }, "Obrix Source 2 Type", srcChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src1Tune", 1 }, "Obrix Source 1 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_src2Tune", 1 }, "Obrix Source 2 Tune", juce::NormalisableRange<float> (-24.0f, 24.0f, 0.01f), 0.0f));

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Discovery 6 as performance instrument: macroSeed=0.7. The seed latch fires on note-on, injecting a new LCG-derived 16-bit state from the engine's internal RNG. Every note played triggers a completely different organism from the same Rule 22 law. A single key contains multitudes — a C4 is never the same colony twice. Hold macroSeed at 0.7 for infinite variety. Lower it to 0.0 to commit to the current organism. This is generative improvisation: you are not playing notes, you are summoning organisms.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.58,
+    "movement": 0.52,
+    "density": 0.38,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Infinite Colony",
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 1,
+      "org_stepRate": 4.5,
+      "org_scope": 10,
+      "org_mutate": 0.04,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.32,
+      "org_filterCutoff": 3400.0,
+      "org_filterRes": 0.3,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.28,
+      "org_ampDec": 0.55,
+      "org_ampSus": 0.65,
+      "org_ampRel": 2.5,
+      "org_lfo1Rate": 0.22,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.15,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.55,
+      "org_macroRule": 0.875,
+      "org_macroSeed": 0.7,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "rule-22",
+    "seed-latch",
+    "generative",
+    "performance",
+    "infinite",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

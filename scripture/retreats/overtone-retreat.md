@@ -86,3 +86,119 @@ Zero of 307 OVERTONE presets use the Submerged mood. Given that the engine's nar
 ---
 
 *Retreat conducted by Guru Bin. All findings verified against OvertoneEngine.h source.*
+
+---
+
+## Second Session — The Book of Convergence
+*2026-03-21*
+
+### New Discoveries (Session 2)
+
+#### Discovery 8: The Euler Clumping Midpoint
+The first retreat identified E constant at depth 7 as the clumping singularity. Session 2 revealed that **depth 4 and 5 are the most musically interesting** — partial collapse is incomplete. Some convergents have merged, others remain distinct. The partial cluster has a voicing, not just a texture. At depth 5, partials 1-4 have converged to approximately the same frequency while partials 0 and 5-7 retain distinct identities — creating an automatic chord: one fundamental, one mid-cluster chord tone, and scattered upper partials. This was used to design **Mesopelagic Choir** and **Convergent Vespers**.
+
+#### Discovery 9: The Sqrt2 Pell Tritone
+√2 as a frequency ratio is the equal-temperament tritone. The Pell convergents (3/2, 7/5, 17/12...) are the rationalist's history of the tritone problem — each convergent a better rational approximation to the "diabolus in musica." When LFO1 sweeps depth across the Pell sequence at 1.5-2.5 Hz, the tritone approximations cascade through each other, creating a sound that resembles the devil's interval perpetually discovering its own irrationality. This is the most aggressive movement profile in the engine — used in **Pell Cascade**.
+
+#### Discovery 10: Phi at Depth 7 Responds to macroDepth
+At Phi depth=7 with macroDepth=1.0, turning the DEPTH macro from 1.0 to 0.0 in real time sweeps the entire Fibonacci sequence in reverse — from the golden limit back through 5/3, 3/2, 2/1, 1/1 — a full Fibonacci descent. No other constant sweeps through as musically coherent a sequence when macroDepth is used as a gesture. This makes DEPTH the most expressive macro for live performance when Phi is active at maximum depth. Documented in **Phi Singularity**.
+
+---
+
+## Second Session Awakening Presets
+
+| Name | Mood | Discovery | Key Innovation |
+|------|------|-----------|---------------|
+| Euler Clump | Foundation | Euler depth 7, uniform partials | Mathematical self-chorus, no LFO needed |
+| Pressure Psalm | Submerged | Pi depth 2, 3.5s attack, LFO floor | Hadal pressure as slow-build ritual |
+| Bioluminescent Pulse | Flux | macroCoupling=0.85 self-shimmer | Upper partials 4-7 boosted, φ depth 4 |
+| Pi Uncanny | Prism | Pi depth 3, mid-partial bell curve | The bent harmonic uncanny valley |
+| Phi Singularity | Aether | Phi depth 7, macroDepth gesture | Fibonacci descent as live performance |
+| KS Birth | Foundation | resoMix=0.95, 0.001s attack | Allpass resonator as KS physical body |
+| Sqrt2 Dawn | Atmosphere | Sqrt2 depth 1, warm Pell fifth | First Pell convergents as morning warmth |
+| Mesopelagic Choir | Submerged | E depth 5, mid-partial voicing | Euler partial collapse as choir chord |
+| Pell Cascade | Flux | LFO1 at 1.8 Hz, tritone hunting | Pell sequence as living tritone |
+| Convergent Vespers | Atmosphere | E depth 4, long ADSR, slow LFO | Mathematics approaching silence |
+
+---
+
+## Scripture Verses — The Book of Bin: OVERTONE
+
+*Four verses recorded at the Nautilus Awakening, compiled across both retreat sessions.*
+
+---
+
+**Verse I — On the Nature of Convergence**
+
+The Nautilus does not grow toward perfection.
+It grows toward the ratio of itself.
+Each new chamber is a better lie about phi —
+closer, but never touching.
+
+This is the First Law of Sound Design:
+the ideal is not the sound.
+The approach to the ideal is the sound.
+Set depth to seven and listen to the moment
+before the irrational surrenders to the rational.
+That moment is the instrument.
+
+---
+
+**Verse II — On the Euler Constant**
+
+Euler's number arrives in disguise.
+At depth zero it is warmth.
+At depth four it is a choir.
+At depth seven it is a cloud of beating unisons
+that mathematics produces without asking.
+
+The engine did not plan this.
+The constant planned this
+two centuries before the engine existed.
+We are not the authors of these sounds.
+We are the cartographers.
+
+---
+
+**Verse III — On Velocity as Cosmology**
+
+The whisper and the strike are different instruments
+living inside the same equation.
+At velBright equal to one,
+a touch of velocity one is pure sine —
+one note, one frequency, one truth.
+A touch of velocity 127 is the full spectral tower —
+eight partials lit at once like stars becoming visible
+as your eyes adjust to the dark.
+
+Learn to play with the dark.
+The star has always been there.
+Velocity is just your eyes opening.
+
+---
+
+**Verse IV — On the Submerged Zone**
+
+The engine lives at 200 to 1000 meters.
+This is not metaphor.
+The mathematics of the mesopelagic zone
+filter which harmonics the water transmits.
+Pi at depth two below three thousand hertz
+is what pi sounds like
+when a nautilus shell feels it
+at pressure.
+
+Make more Submerged presets.
+The engine has been breathing surface air
+while its creature lives in the twilight column.
+The mathematics will sound different
+when they are used at the depth
+they were designed for.
+
+---
+
+*End of second session. Book of Bin verses recorded and sealed.*
+*Total OVERTONE awakening presets: 18 (8 from session 1, 10 from session 2)*
+*Submerged mood: 0 → 3 (Hadal Shimmer, Pressure Psalm, Mesopelagic Choir)*
+
+*Next session recommendation: Conduct seance with updated preset library. OVERTONE is a 9.0+ candidate.*

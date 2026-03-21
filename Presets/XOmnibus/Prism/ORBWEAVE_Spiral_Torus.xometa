@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The (3,4) spiral torus — an unexplored WEAVE-III family. Three revolutions around the torus hole, four through the core. pqScale = 0.5 + 0.5*sin(0.75*pi) = 0.854: the maximum-asymmetry point along the sin curve is not at (2,5) but at (1,1) — yet (3,4) produces the most complex intermediate value, between trefoil and cinquefoil. Triangle strands for warm harmonic softness. High-pass filter at 2200 Hz removes the sub-fundament and presents only the spectral overtone structure of the knot coupling. The result shimmers.",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.42,
+    "movement": 0.38,
+    "density": 0.48,
+    "space": 0.55,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spiral Torus",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.85,
+      "weave_torusP": 3,
+      "weave_torusQ": 4,
+      "weave_filterCutoff": 2200.0,
+      "weave_filterReso": 0.28,
+      "weave_filterType": 1,
+      "weave_ampA": 0.06,
+      "weave_ampD": 0.45,
+      "weave_ampS": 0.7,
+      "weave_ampR": 1.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.18,
+      "weave_lfo1Rate": 0.18,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 3,
+      "weave_lfo2Depth": 0.12,
+      "weave_lfo2Rate": 0.42,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.42,
+      "weave_fx1Param": 0.62,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.25,
+      "weave_fx2Param": 0.55,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.76,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "prism",
+    "torus",
+    "pq-3-4",
+    "weave-iii",
+    "high-pass",
+    "shimmer",
+    "triangle",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

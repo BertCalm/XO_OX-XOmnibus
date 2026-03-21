@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Discovery 5, extreme axis: low rate + high scope = geological drift. Step rate 0.5 Hz (one generation every 2 seconds) with scope=16 (averaging 16 generations = 32 seconds of history). The cellular automaton outputs barely move. Rule 150's symmetric XOR patterns produce a slow, almost imperceptible tidal drift in filter cutoff and pitch. Triangle wave for maximum softness. This is ORGANISM at its most patient — a geological process. The colony is evolving; it merely happens at continental-plate speed.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.05,
+    "density": 0.5,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "mood": "Ethereal",
+  "name": "Geological Drift",
+  "parameters": {
+    "Organism": {
+      "org_rule": 150.0,
+      "org_seed": 10922,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.45,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.42,
+      "org_ampAtk": 1.2,
+      "org_ampDec": 1.5,
+      "org_ampSus": 0.85,
+      "org_ampRel": 5.0,
+      "org_lfo1Rate": 0.06,
+      "org_lfo1Depth": 0.3,
+      "org_lfo2Rate": 0.04,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.88,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "ethereal",
+    "rule-150",
+    "geological",
+    "drift",
+    "slow",
+    "pad",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}
