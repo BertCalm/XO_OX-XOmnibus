@@ -57,7 +57,7 @@ namespace xomnibus {
 //                       Coefficients hoisted to block rate for efficiency.
 //                       (obrix_distance, obrix_air)
 //
-// Wave 4 — Biophonic Synthesis (79 params total):
+// Wave 4 — Biophonic Synthesis (79 params):
 //   Harmonic Field — global JI attractor/repulsor. Voices are pulled toward or away
 //                    from 7-limit just-intonation ratios (3-limit / 5-limit / 7-limit).
 //                    Per-voice jifiOffset[2] (cents) converges via 1st-order IIR.
@@ -76,6 +76,14 @@ namespace xomnibus {
 //                        (obrix_stressDecay, obrix_bleachRate, obrix_stateReset)
 //   FX Mode — Serial (default, existing behavior) vs Parallel (each slot on dry, summed).
 //             (obrix_fxMode)
+//
+// Wave 5 — Reef Residency (81 params total):
+//   Reef Residency — coupling input becomes a third ecological organism in the Brick
+//                    Ecology system. Instead of linear pitch/cutoff modulation, the
+//                    coupled engine participates as Competitor (amplitude cross-suppression),
+//                    Symbiote (coupling amplitude drives FM depth + field strength), or
+//                    Parasite (coupling energy accumulates stress and bleaching).
+//                    (obrix_reefResident, obrix_residentStrength)
 //
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
 // Blessing B016-AMENDED: MIDI-layer voice independence is inviolable. Synthesis-layer
@@ -292,6 +300,12 @@ public:
         stressLevel_   = 0.0f;
         bleachLevel_   = 0.0f;
         prevResetTrig_ = 0.0f;
+
+        // Wave 5 — Reef Residency state
+        reefCouplingRms_    = 0.0f;
+        reefCouplingHpFilt_ = 0.0f;
+        reefCouplingHfRms_  = 0.0f;
+        reefCouplingBufLen_ = 0;
     }
 
     //==========================================================================
@@ -403,6 +417,44 @@ public:
         const float newResetTrig       = loadP (pStateReset,        0.0f);
         const auto  fxMode             = static_cast<int> (loadP (pFxMode, 0.0f)); // 0=Serial
 
+        // Wave 5 params — Reef Residency (2 params → 81 total)
+        const auto  reefResident       = static_cast<int> (loadP (pReefResident, 0.0f));      // 0=Off
+        const float residentStrength   = (reefResident != 0) ? loadP (pResidentStrength, 0.3f) : 0.0f;
+
+        // === REEF RESIDENCY: Pre-compute coupling buffer RMS (block-rate) ===
+        // Coupling buffer was stored by applyCouplingInput() before renderBlock() runs.
+        float reefRms = 0.0f;
+        float reefHfRms = 0.0f;
+        if (reefResident != 0 && reefCouplingBufLen_ > 0)
+        {
+            // Full-band RMS of coupling input
+            float sumSq = 0.0f;
+            for (int i = 0; i < reefCouplingBufLen_; ++i)
+                sumSq += reefCouplingBuf_[i] * reefCouplingBuf_[i];
+            reefRms = std::sqrt (sumSq / static_cast<float> (reefCouplingBufLen_));
+            reefCouplingRms_ = reefCouplingRms_ * 0.9f + reefRms * 0.1f; // smooth
+            reefCouplingRms_ = flushDenormal (reefCouplingRms_);
+
+            // Parasite mode: high-frequency content via 1-pole HP at 2kHz
+            if (reefResident == 3)
+            {
+                float hpCoeff = std::exp (-kTwoPi * 2000.0f / sr);
+                float hfSumSq = 0.0f;
+                for (int i = 0; i < reefCouplingBufLen_; ++i)
+                {
+                    float in = reefCouplingBuf_[i];
+                    reefCouplingHpFilt_ = hpCoeff * (reefCouplingHpFilt_ + in - reefCouplingBufPrev_);
+                    reefCouplingBufPrev_ = in;
+                    reefCouplingHpFilt_ = flushDenormal (reefCouplingHpFilt_);
+                    hfSumSq += reefCouplingHpFilt_ * reefCouplingHpFilt_;
+                }
+                reefHfRms = std::sqrt (hfSumSq / static_cast<float> (reefCouplingBufLen_));
+                reefCouplingHfRms_ = reefCouplingHfRms_ * 0.9f + reefHfRms * 0.1f;
+                reefCouplingHfRms_ = flushDenormal (reefCouplingHfRms_);
+            }
+        }
+        reefCouplingBufLen_ = 0; // consumed
+
         // State Reset: rising edge triggers hard reef reset
         if (newResetTrig > 0.5f && prevResetTrig_ <= 0.5f)
         {
@@ -434,6 +486,43 @@ public:
             bleachLevel_ = std::min (1.0f, bleachLevel_ + avgBright * bleachRate / (sr * 60.0f));
             bleachLevel_ *= (1.0f - 1.0f / (sr * 300.0f)); // natural recovery ~5 min
             bleachLevel_ = flushDenormal (bleachLevel_);
+        }
+
+        // === REEF RESIDENCY: Parasite — coupling energy feeds stress and bleach ===
+        // Parasite contributions are additive to existing velocity-driven stress/bleach.
+        // When stressDecay is active, the velocity block above has already updated
+        // stressLevel_ via the leaky integrator. We add the parasite's contribution
+        // as an injection term to avoid double-decaying the state.
+        if (reefResident == 3 && residentStrength > 0.001f && reefCouplingRms_ > 0.001f)
+        {
+            float parasiteStressInput = reefCouplingRms_ * residentStrength;
+            if (stressDecay > 0.001f)
+            {
+                // Velocity stress block already ran — just inject parasite contribution
+                float tau   = 30.0f + stressDecay * 30.0f;
+                float alpha = 1.0f - std::exp (-1.0f / (tau * sr)); // injection scale
+                stressLevel_ += parasiteStressInput * alpha;
+                stressLevel_ = flushDenormal (stressLevel_);
+            }
+            else
+            {
+                // stressDecay=0 means no velocity stress runs — parasite drives the full integrator
+                float tau   = 30.0f;
+                float decay = std::exp (-1.0f / (tau * sr));
+                stressLevel_ = stressLevel_ * decay + parasiteStressInput * (1.0f - decay);
+                stressLevel_ = flushDenormal (stressLevel_);
+            }
+
+            // High-frequency coupling content contributes to bleaching
+            // Same additive pattern: only inject if bleachRate block already ran
+            if (reefCouplingHfRms_ > 0.01f)
+            {
+                float parasiteBleachInput = reefCouplingHfRms_ * residentStrength;
+                bleachLevel_ = std::min (1.0f, bleachLevel_ + parasiteBleachInput / (sr * 60.0f));
+                if (bleachRate <= 0.001f) // no natural recovery from velocity block — apply here
+                    bleachLevel_ *= (1.0f - 1.0f / (sr * 300.0f));
+                bleachLevel_ = flushDenormal (bleachLevel_);
+            }
         }
 
         // Pre-compute spatial filter coefficients once per block (not per sample)
@@ -675,7 +764,12 @@ public:
                 // JI attractor/repulsor: each source frequency is pulled toward (or away
                 // from) the nearest just-intonation ratio in the selected prime limit.
                 // Per-voice IIR convergence (jifiOffset) gives smooth magnetic drift.
-                if (fieldStrength > 0.001f)
+                // === REEF RESIDENCY: Symbiote gently boosts field strength ===
+                float effFieldStrength = fieldStrength;
+                if (reefResident == 2 && residentStrength > 0.001f && reefCouplingRms_ > 0.001f
+                    && fieldStrength > 0.001f)
+                    effFieldStrength = std::min (1.0f, fieldStrength + reefCouplingRms_ * residentStrength * 0.3f);
+                if (effFieldStrength > 0.001f)
                 {
                     float baseFreq = 440.0f * fastPow2 ((static_cast<float> (voice.note) - 69.0f) / 12.0f);
                     for (int si = 0; si < 2; ++si)
@@ -692,7 +786,7 @@ public:
                             ?  (fieldPolarity - 0.5f) * 2.0f
                             : -(0.5f - fieldPolarity) * 2.0f;
                         float targetOffset = jiCents * polFactor;
-                        voice.jifiOffset[si] += fieldRate * (targetOffset * fieldStrength - voice.jifiOffset[si]);
+                        voice.jifiOffset[si] += fieldRate * (targetOffset * effFieldStrength - voice.jifiOffset[si]);
                         voice.jifiOffset[si] = flushDenormal (voice.jifiOffset[si]);
                     }
                     freq1 *= fastPow2 (voice.jifiOffset[0] / 1200.0f);
@@ -713,6 +807,17 @@ public:
                     // src2 — noise energy feeds tonal modulation (noise nurtures the oscillator).
                     if (symbiosisStrength > 0.001f && src1Type == 5)
                         fmSemitones += std::fabs (src1) * symbiosisStrength * 18.0f;
+                    // === REEF RESIDENCY: Symbiote — coupling amplitude drives FM depth ===
+                    // The resident's energy FEEDS cross-modulation: coupling RMS acts as
+                    // an FM depth multiplier. When coupling is active, FM increases — the
+                    // resident's energy nourishes spectral complexity between the sources.
+                    // Uses existing fmDepth as base when available, but guarantees min ±6st
+                    // of resident-driven FM even when fmDepth=0 so the symbiote is never silent.
+                    if (reefResident == 2 && residentStrength > 0.001f && reefCouplingRms_ > 0.001f)
+                    {
+                        float baseFM = std::max (std::fabs (fmDepth), 0.25f); // min 0.25 = ±6st
+                        fmSemitones += reefCouplingRms_ * residentStrength * baseFM * 36.0f;
+                    }
                     src2 = renderSourceSample (src2Type, voice, 1, freq2, effPW2, fmSemitones, wtBankVal);
                 }
 
@@ -757,6 +862,19 @@ public:
                     float env2 = std::fabs (sig2);
                     sig1 *= clamp (1.0f - env2 * competitionStrength, 0.1f, 1.0f);
                     sig2 *= clamp (1.0f - env1 * competitionStrength, 0.1f, 1.0f);
+                }
+                // === REEF RESIDENCY: Competitor — coupling RMS suppresses both sources ===
+                // The coupled engine fights for amplitude space in the reef.
+                // When the resident is loud, the bricks duck. Same 0.1 floor as ecology.
+                // Uses competitionStrength as additional scale when > 0, otherwise
+                // residentStrength alone drives the suppression (resident IS the competitor).
+                if (reefResident == 1 && residentStrength > 0.001f && reefCouplingRms_ > 0.001f)
+                {
+                    float compScale = std::max (0.5f, competitionStrength + 0.5f);
+                    float suppress = reefCouplingRms_ * residentStrength * compScale;
+                    sig1 *= clamp (1.0f - suppress, 0.1f, 1.0f);
+                    if (src2Type > 0)
+                        sig2 *= clamp (1.0f - suppress, 0.1f, 1.0f);
                 }
 
                 // Mix the independently-processed sources
@@ -928,7 +1046,7 @@ public:
     }
 
     void applyCouplingInput (CouplingType type, float amount,
-                             const float*, int) override
+                             const float* sourceBuffer, int numSamples) override
     {
         switch (type)
         {
@@ -939,10 +1057,20 @@ public:
             case CouplingType::AmpToChoke:   for (auto& v : voices) if (v.active) v.ampEnv.noteOff(); break;
             default: break;
         }
+
+        // === REEF RESIDENCY: Store coupling buffer for ecological processing ===
+        // The buffer is consumed in renderBlock() after applyCouplingInput() runs.
+        // We copy into a pre-allocated scratch buffer (no allocation on audio thread).
+        if (sourceBuffer != nullptr && numSamples > 0)
+        {
+            int len = std::min (numSamples, kMaxReefBufSize);
+            std::memcpy (reefCouplingBuf_, sourceBuffer, static_cast<size_t> (len) * sizeof (float));
+            reefCouplingBufLen_ = len;
+        }
     }
 
     //==========================================================================
-    // Parameters (79 total — Wave 4: Biophonic Synthesis)
+    // Parameters (81 total — Wave 5: Reef Residency)
     //==========================================================================
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -1109,6 +1237,14 @@ public:
         auto fxModeChoices = juce::StringArray { "Serial", "Parallel" };
         params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_fxMode", 1 }, "Obrix FX Mode",
             fxModeChoices, 0)); // default: Serial (existing behavior)
+
+        // Wave 5: Reef Residency (2 params → 81 total)
+        // Coupling input becomes a third ecological organism in the Brick Ecology system.
+        auto residentChoices = juce::StringArray { "Off", "Competitor", "Symbiote", "Parasite" };
+        params.push_back (std::make_unique<PC> (juce::ParameterID { "obrix_reefResident", 1 }, "Obrix Reef Resident",
+            residentChoices, 0)); // default: Off (backward compatible)
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "obrix_residentStrength", 1 }, "Obrix Resident Strength",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.3f)); // Guru Bin: 0.3 sweet spot
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -1200,6 +1336,10 @@ public:
         pBleachRate         = apvts.getRawParameterValue ("obrix_bleachRate");
         pStateReset         = apvts.getRawParameterValue ("obrix_stateReset");
         pFxMode             = apvts.getRawParameterValue ("obrix_fxMode");
+
+        // Wave 5 — Reef Residency
+        pReefResident       = apvts.getRawParameterValue ("obrix_reefResident");
+        pResidentStrength   = apvts.getRawParameterValue ("obrix_residentStrength");
     }
 
     //==========================================================================
@@ -1570,6 +1710,15 @@ private:
     float prevResetTrig_ = 0.0f;  // edge detector for obrix_stateReset
     uint32_t turbRng_    = 31415u; // per-engine noise RNG for turbidity fluctuation
 
+    // Wave 5 — Reef Residency (pre-allocated, no audio-thread allocation)
+    static constexpr int kMaxReefBufSize = 4096; // max block size we'll ever see
+    float reefCouplingBuf_[kMaxReefBufSize] {};   // coupling buffer copy from applyCouplingInput
+    int   reefCouplingBufLen_   = 0;              // valid samples in reefCouplingBuf_
+    float reefCouplingRms_     = 0.0f;            // smoothed full-band RMS of coupling input
+    float reefCouplingHpFilt_  = 0.0f;            // 1-pole HP filter state for HF extraction
+    float reefCouplingBufPrev_ = 0.0f;            // previous sample for HP difference equation
+    float reefCouplingHfRms_   = 0.0f;            // smoothed high-frequency RMS (parasite bleach)
+
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
 
@@ -1621,6 +1770,10 @@ private:
     std::atomic<float>* pBleachRate          = nullptr; // Bleaching accumulation rate
     std::atomic<float>* pStateReset          = nullptr; // Momentary reef state reset
     std::atomic<float>* pFxMode              = nullptr; // 0=Serial, 1=Parallel
+
+    // Wave 5 — Reef Residency parameter pointers
+    std::atomic<float>* pReefResident       = nullptr; // 0=Off, 1=Competitor, 2=Symbiote, 3=Parasite
+    std::atomic<float>* pResidentStrength   = nullptr; // 0.0–1.0, Guru Bin default 0.3
 
     // Wavetable banks (Wave 2): 4 banks × 512 samples, built once in prepare()
     static constexpr int kWTSize = 512;

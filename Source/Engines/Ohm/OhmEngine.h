@@ -229,7 +229,7 @@ struct OhmAdapterVoice {
         active=false;ampEnv=0;
     }
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.5f,3);symp.tune(freq);
         if(!bowed)pick.trigger(1.5f); obed.trigger();
         ampEnv=v;releasing=false;active=true;

@@ -26,7 +26,7 @@ struct OttoniAdapterVoice {
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vib.reset();}
     void noteOn(int n,float v){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
         dl.reset();df.reset();body.setParams(freq*0.8f,5);symp.tune(freq);
         ampEnv=v;releasing=false;active=true;vib.reset();
     }

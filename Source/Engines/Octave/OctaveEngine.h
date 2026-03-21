@@ -298,7 +298,7 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
@@ -330,7 +330,7 @@ public:
         postMixRoomR.prepare (srf);
 
         // Organ sustains — long tail
-        prepareSilenceGate (sr, 512, 500.0f);
+        prepareSilenceGate (sr, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}

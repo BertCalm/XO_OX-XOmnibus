@@ -334,7 +334,7 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
@@ -357,7 +357,7 @@ public:
         smoothCutoff.prepare (srf, 0.010f);  // 10ms for filter to avoid clicks
         smoothResonance.prepare (srf);
 
-        prepareSilenceGate (sr, 512, 500.0f);  // sustained organ: 500ms hold
+        prepareSilenceGate (sr, maxBlockSize, 500.0f);  // sustained organ: 500ms hold
     }
 
     void releaseResources() override {}

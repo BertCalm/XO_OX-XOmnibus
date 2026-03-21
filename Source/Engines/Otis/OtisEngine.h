@@ -804,7 +804,7 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
@@ -833,7 +833,7 @@ public:
         smoothDrive.prepare (srf);
 
         // Hammond organ: reverb-tail category (organ sustains + Leslie tail)
-        prepareSilenceGate (sr, 512, 500.0f);
+        prepareSilenceGate (sr, maxBlockSize, 500.0f);
     }
 
     void releaseResources() override {}

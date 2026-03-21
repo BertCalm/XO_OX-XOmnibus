@@ -32,6 +32,8 @@ inline const juce::StringArray validEngineNames {
     "Oxbow", "Oware",
     // Kuramoto vocal synthesis
     "Opera",
+    // Psychology-driven boom bap drums
+    "Offering",
     // Chef Quad Collection
     "Oto", "Octave", "Oleg", "Otis",
     // Legacy aliases (kept for backward preset compatibility)
@@ -142,6 +144,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Oware",       "owr"     },
         // Kuramoto Vocal Synthesis
         { "Opera",       "opera"   },
+        // Psychology-Driven Boom Bap Drums
+        { "Offering",    "ofr"     },
         // Chef Quad Collection
         { "Oto",         "oto"     },
         { "Octave",      "oct"     },

@@ -28,7 +28,7 @@ struct OleAdapterVoice {
     }
     void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloLFO.reset();}
     void noteOn(int n,float v, float strumRateMs=8.0f){
-        note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
+        note=n;vel=v;freq=440*std::pow(2.f,(n-69.f)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
         strum.trigger(3,strumRateMs,1);pluck.trigger(2);
         ampEnv=v;releasing=false;active=true;

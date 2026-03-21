@@ -616,7 +616,7 @@ public:
     // Lifecycle
     //==========================================================================
 
-    void prepare (double sampleRate, int /*maxBlockSize*/) override
+    void prepare (double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
         srf = static_cast<float> (sr);
@@ -640,7 +640,7 @@ public:
         smoothDetune.prepare (srf);
         smoothFormant.prepare (srf);
 
-        prepareSilenceGate (sr, 512, 300.0f); // moderate hold — sustained organ sounds
+        prepareSilenceGate (sr, maxBlockSize, 300.0f); // moderate hold — sustained organ sounds
     }
 
     void releaseResources() override {}

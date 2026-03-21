@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **45 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21)
+and mutate into sounds impossible with any single synth. **46 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
@@ -84,6 +84,7 @@ and mutate into sounds impossible with any single synth. **45 engines** are regi
 | OXBOW | XOxbow | Oxbow Teal `#1A6B5A` |
 | OWARE | XOware | Akan Goldweight `#B5883E` |
 | OPERA | XOpera | Aria Gold `#D4AF37` |
+| OFFERING | XOffering | Crate Wax Yellow `#E5B80B` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -137,6 +138,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oxbow | `oxb_` | `oxb_entangle` |
 | Oware | `owr_` | `owr_material` |
 | Opera | `opera_` | `opera_drama` |
+| Offering | `ofr_` | `ofr_digCuriosity` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -178,6 +180,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Oxbow/OxbowEngine.h` | Entangled reverb synth engine (Chiasmus FDN + phase erosion + golden resonance) |
 | `Source/Engines/Oware/OwareEngine.h` | Tuned percussion (material continuum + mallet physics + sympathetic resonance + buzz membrane) |
 | `Source/Engines/Opera/OperaAdapter.h` | Additive-vocal Kuramoto synchronicity engine (formant synthesis + phase transition + Conductor arcs) |
+| `Source/Engines/Offering/OfferingEngine.h` | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city chains + per-type transient models) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
@@ -237,9 +240,17 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Integration path:** Write a thin adapter implementing `SynthEngine` → `REGISTER_ENGINE()` → copy presets → done.
 
-## OBRIX — Wave 4: Biophonic Synthesis (2026-03-21)
+## OBRIX — Wave 5: Reef Residency (2026-03-21)
 
-**79 params** (was 65). 5 new DSP systems added — all backward-compatible (defaults preserve existing behavior):
+**81 params** (was 79). Coupling input becomes a third ecological organism in the Brick Ecology system.
+
+| System | Params | Key Behavior |
+|--------|--------|-------------|
+| Reef Residency | reefResident, residentStrength | 4-mode coupling ecology (Off/Competitor/Symbiote/Parasite). Competitor: coupling RMS suppresses both sources (0.1 floor). Symbiote: coupling amplitude drives FM depth + boosts Harmonic Field. Parasite: coupling energy feeds stressLevel_ and bleachLevel_ accumulators over time. Default Off (backward compatible). residentStrength default 0.3 (Guru Bin). |
+
+Previous Waves preserved — all existing behavior unchanged when reefResident=Off.
+
+### Wave 4: Biophonic Synthesis (14 params: 65→79)
 
 | System | Params | Key Behavior |
 |--------|--------|-------------|
@@ -249,7 +260,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | Stateful Synthesis | stressDecay, bleachRate, stateReset | stressLevel_ leaky integrator (velocity accumulator → +900Hz cutoff). bleachLevel_ accumulates from high notes (−700Hz cutoff). stateReset clears both. |
 | FX Mode | fxMode | 0=Serial (existing), 1=Parallel (each FX slot processes dry independently, wet contributions summed). |
 
-**28 new Wave 4 awakening presets** across all 8 moods. B016 AMENDED (synthesis-layer interdependence permitted, MIDI-layer inviolable).
+**28 Wave 4 awakening presets** across all 8 moods. B016 AMENDED (synthesis-layer interdependence permitted, MIDI-layer inviolable).
 
 ## Seance Findings
 
