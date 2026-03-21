@@ -907,7 +907,7 @@ public:
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_lfo1Rate", 1 }, "Oware LFO1 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_lfo1Depth", 1 }, "Oware LFO1 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.1f));  // Seance: subtle breathing shimmer on first touch
         params.push_back (std::make_unique<PI> (juce::ParameterID { "owr_lfo1Shape", 1 }, "Oware LFO1 Shape", 0, 4, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_lfo2Rate", 1 }, "Oware LFO2 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
