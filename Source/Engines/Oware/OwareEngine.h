@@ -388,12 +388,27 @@ struct OwareVoice
     // Cached pan gains (BUG-3 FIX: avoid per-sample trig)
     float panL = 0.707f, panR = 0.707f;
 
+    // Sympathetic resonance sparse coupling table (CPU optimization)
+    // Built at note-on, consumed per-sample. Each entry links one of this
+    // voice's modes to one mode of another voice, with a precomputed gain.
+    // Max 32 entries covers worst case (8 voices × ~4 coupled modes each).
+    struct SympathyCoupling {
+        int otherVoiceIdx = -1;   // which voice
+        int otherModeIdx = 0;     // which mode of that voice
+        int thisModeIdx = 0;      // which mode of this voice receives
+        float gain = 0.0f;        // precomputed proximity × scale
+    };
+    static constexpr int kMaxCouplings = 32;
+    std::array<SympathyCoupling, kMaxCouplings> sympathyCouplings {};
+    int sympathyCouplingCount = 0;
+
     void reset() noexcept
     {
         active = false;
         velocity = 0.0f;
         ampLevel = 0.0f;
         sympatheticOut = 0.0f;
+        sympathyCouplingCount = 0;
         glide.reset();
         exciter.reset();
         buzz.reset();
@@ -617,31 +632,17 @@ public:
 
                 float excitation = voice.exciter.process();
 
-                // Improvement #4: per-mode sympathetic resonance (frequency-selective)
+                // CPU-optimized sympathetic resonance: use precomputed sparse table
+                // instead of O(V²×M²) per-sample brute force. Table built at note-on.
                 float sympInputPerMode[OwareVoice::kMaxModes] = {};
                 if (sympNow > 0.001f)
                 {
-                    for (const auto& other : voices)
+                    for (int ci = 0; ci < voice.sympathyCouplingCount; ++ci)
                     {
-                        if (&other == &voice || !other.active) continue;
-                        for (int m = 0; m < OwareVoice::kMaxModes; ++m)
-                        {
-                            // Check if any of other's modes are near this voice's mode m
-                            float thisFreq = voice.modes[m].freq;
-                            if (thisFreq < 20.0f) continue;
-                            for (int om = 0; om < OwareVoice::kMaxModes; ++om)
-                            {
-                                float otherFreq = other.modes[om].freq;
-                                if (otherFreq < 20.0f) continue;
-                                float dist = std::fabs (thisFreq - otherFreq);
-                                if (dist < 50.0f)  // within 50 Hz = sympathetic range
-                                {
-                                    float proximity = 1.0f - dist / 50.0f;
-                                    sympInputPerMode[m] += other.modes[om].lastOutput
-                                                         * proximity * sympNow * 0.03f;
-                                }
-                            }
-                        }
+                        const auto& c = voice.sympathyCouplings[ci];
+                        sympInputPerMode[c.thisModeIdx] +=
+                            voices[c.otherVoiceIdx].modes[c.otherModeIdx].lastOutput
+                            * c.gain * sympNow;
                     }
                 }
 
@@ -771,6 +772,9 @@ public:
             float modeFreq = freq * ratio;
             v.modeDecayBoosts[m] = v.body.getModeDecayBoost (modeFreq, bodyType, bodyDepth);
         }
+
+        // CPU optimization: rebuild sparse sympathetic coupling tables for ALL active voices
+        rebuildSympathyCouplingTables();
     }
 
     void noteOff (int note) noexcept
@@ -781,6 +785,50 @@ public:
             {
                 v.ampLevel *= 0.3f;
                 v.filterEnv.release();
+            }
+        }
+        // Rebuild tables since voice activity changed
+        rebuildSympathyCouplingTables();
+    }
+
+    /// CPU optimization: precompute sparse sympathetic coupling table for each voice.
+    /// Called at note-on and note-off (when voice activity changes).
+    /// Replaces O(V²×M²) per-sample iteration with O(K) lookup where K ≤ 32.
+    void rebuildSympathyCouplingTables() noexcept
+    {
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            auto& v = voices[vi];
+            v.sympathyCouplingCount = 0;
+            if (!v.active) continue;
+
+            for (int oi = 0; oi < kMaxVoices; ++oi)
+            {
+                if (oi == vi || !voices[oi].active) continue;
+                const auto& other = voices[oi];
+
+                for (int m = 0; m < OwareVoice::kMaxModes; ++m)
+                {
+                    float thisFreq = v.modes[m].freq;
+                    if (thisFreq < 20.0f) continue;
+
+                    for (int om = 0; om < OwareVoice::kMaxModes; ++om)
+                    {
+                        float otherFreq = other.modes[om].freq;
+                        if (otherFreq < 20.0f) continue;
+
+                        float dist = std::fabs (thisFreq - otherFreq);
+                        if (dist < 50.0f && v.sympathyCouplingCount < OwareVoice::kMaxCouplings)
+                        {
+                            float proximity = 1.0f - dist / 50.0f;
+                            auto& c = v.sympathyCouplings[v.sympathyCouplingCount++];
+                            c.otherVoiceIdx = oi;
+                            c.otherModeIdx = om;
+                            c.thisModeIdx = m;
+                            c.gain = proximity * 0.03f;
+                        }
+                    }
+                }
             }
         }
     }
