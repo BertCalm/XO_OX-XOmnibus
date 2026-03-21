@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Slow Descent",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Use pitch wheel to glide from note to note — the descent never stops. Slow filter attack mimics the gradual brightening as a creature ascends from the hadal zone.",
+  "tags": [
+    "sub",
+    "bass",
+    "pitch-bend",
+    "slow-attack",
+    "glide",
+    "foundation"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.92,
+    "movement": 0.08,
+    "density": 0.94,
+    "space": 0.65,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.88,
+      "deep_subOctMix": 0.55,
+      "deep_filterCutoff": 250.0,
+      "deep_filterRes": 0.40,
+      "deep_velCutoffAmt": 0.30,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.25,
+      "deep_bodyMix": 0.12,
+      "deep_bioRate": 0.05,
+      "deep_bioMix": 0.0,
+      "deep_bioBrightness": 400.0,
+      "deep_pressureAmt": 0.75,
+      "deep_ampAtk": 0.05,
+      "deep_ampDec": 1.2,
+      "deep_ampSus": 0.88,
+      "deep_ampRel": 2.5,
+      "deep_filterA": 0.8,
+      "deep_filterD": 1.5,
+      "deep_filterS": 0.55,
+      "deep_filterR": 2.0,
+      "deep_filterEnvAmt": 0.60,
+      "deep_lfo1Rate": 0.08,
+      "deep_lfo1Depth": 0.05,
+      "deep_lfo2Rate": 0.03,
+      "deep_lfo2Depth": 0.10,
+      "deep_reverbMix": 0.40,
+      "deep_macroPressure": 0.72,
+      "deep_macroCreature": 0.0,
+      "deep_macroWreck": 0.0,
+      "deep_macroAbyss": 0.55
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.72,
+    "CREATURE": 0.0,
+    "WRECK": 0.0,
+    "ABYSS": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

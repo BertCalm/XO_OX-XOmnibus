@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Tectonic Snap",
+  "mood": "Foundation",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sub bass with a fast filter snap on attack — the tectonic plate shifts, filter cracks open, then seals shut. Classic boom-bap foundation weight.",
+  "tags": [
+    "sub",
+    "bass",
+    "filter-env",
+    "snap",
+    "tectonic",
+    "foundation"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.88,
+    "movement": 0.22,
+    "density": 0.90,
+    "space": 0.50,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.82,
+      "deep_subOctMix": 0.48,
+      "deep_filterCutoff": 280.0,
+      "deep_filterRes": 0.62,
+      "deep_velCutoffAmt": 0.5,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.30,
+      "deep_bodyMix": 0.18,
+      "deep_bioRate": 0.06,
+      "deep_bioMix": 0.03,
+      "deep_bioBrightness": 500.0,
+      "deep_pressureAmt": 0.68,
+      "deep_ampAtk": 0.006,
+      "deep_ampDec": 0.55,
+      "deep_ampSus": 0.80,
+      "deep_ampRel": 1.6,
+      "deep_filterA": 0.002,
+      "deep_filterD": 0.18,
+      "deep_filterS": 0.20,
+      "deep_filterR": 0.6,
+      "deep_filterEnvAmt": 0.85,
+      "deep_lfo1Rate": 0.10,
+      "deep_lfo1Depth": 0.10,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.08,
+      "deep_reverbMix": 0.20,
+      "deep_macroPressure": 0.60,
+      "deep_macroCreature": 0.05,
+      "deep_macroWreck": 0.15,
+      "deep_macroAbyss": 0.40
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.6,
+    "CREATURE": 0.05,
+    "WRECK": 0.15,
+    "ABYSS": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

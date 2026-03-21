@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Whale Song Bass",
+  "mood": "Submerged",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "For expressive bass melodics. Use pitch wheel freely — ±2 semitone range enables whale-call glides and expressive vibrato. Filter env opens slowly on each note, supporting long legato phrases.",
+  "tags": [
+    "submerged",
+    "pitch-bend",
+    "expressive",
+    "melodic",
+    "legato",
+    "whale"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.85,
+    "movement": 0.40,
+    "density": 0.68,
+    "space": 0.75,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.70,
+      "deep_subOctMix": 0.40,
+      "deep_filterCutoff": 340.0,
+      "deep_filterRes": 0.50,
+      "deep_velCutoffAmt": 0.45,
+      "deep_bodyChar": 0,
+      "deep_bodyFeedback": 0.35,
+      "deep_bodyMix": 0.25,
+      "deep_bioRate": 0.07,
+      "deep_bioMix": 0.08,
+      "deep_bioBrightness": 800.0,
+      "deep_pressureAmt": 0.50,
+      "deep_ampAtk": 0.08,
+      "deep_ampDec": 1.5,
+      "deep_ampSus": 0.80,
+      "deep_ampRel": 3.0,
+      "deep_filterA": 0.4,
+      "deep_filterD": 1.8,
+      "deep_filterS": 0.65,
+      "deep_filterR": 2.5,
+      "deep_filterEnvAmt": 0.50,
+      "deep_lfo1Rate": 0.12,
+      "deep_lfo1Depth": 0.20,
+      "deep_lfo2Rate": 0.04,
+      "deep_lfo2Depth": 0.12,
+      "deep_reverbMix": 0.55,
+      "deep_macroPressure": 0.45,
+      "deep_macroCreature": 0.10,
+      "deep_macroWreck": 0.20,
+      "deep_macroAbyss": 0.60
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.45,
+    "CREATURE": 0.1,
+    "WRECK": 0.2,
+    "ABYSS": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

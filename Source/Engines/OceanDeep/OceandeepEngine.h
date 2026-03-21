@@ -455,6 +455,18 @@ public:
         params.push_back(std::make_unique<PF>(P("deep_reverbMix",1),   "Reverb Mix",
             nr(0.f, 1.f), 0.35f));
 
+        // --- Filter ADSR (Week 12 EQ sprint) ---
+        params.push_back(std::make_unique<PF>(P("deep_filterA",1),      "Filter Attack",
+            nr(0.001f, 4.0f, 0.001f), 0.01f));
+        params.push_back(std::make_unique<PF>(P("deep_filterD",1),      "Filter Decay",
+            nr(0.01f,  8.0f, 0.001f), 0.4f));
+        params.push_back(std::make_unique<PF>(P("deep_filterS",1),      "Filter Sustain",
+            nr(0.0f,   1.0f, 0.001f), 0.6f));
+        params.push_back(std::make_unique<PF>(P("deep_filterR",1),      "Filter Release",
+            nr(0.01f,  8.0f, 0.001f), 1.2f));
+        params.push_back(std::make_unique<PF>(P("deep_filterEnvAmt",1), "Filter Env Amount",
+            nr(-1.0f,  1.0f, 0.001f), 0.5f));
+
         // --- 4 Macros ---
         params.push_back(std::make_unique<PF>(P("deep_macroPressure",1),"PRESSURE",
             nr(0.f, 1.f), 0.5f));
@@ -561,6 +573,12 @@ public:
         p_macroCreature  = apvts.getRawParameterValue("deep_macroCreature");
         p_macroWreck     = apvts.getRawParameterValue("deep_macroWreck");
         p_macroAbyss     = apvts.getRawParameterValue("deep_macroAbyss");
+        // Week 12: filter ADSR + env amount
+        p_filterA        = apvts.getRawParameterValue("deep_filterA");
+        p_filterD        = apvts.getRawParameterValue("deep_filterD");
+        p_filterS        = apvts.getRawParameterValue("deep_filterS");
+        p_filterR        = apvts.getRawParameterValue("deep_filterR");
+        p_filterEnvAmt   = apvts.getRawParameterValue("deep_filterEnvAmt");
     }
 
     //--------------------------------------------------------------------------
@@ -644,6 +662,12 @@ public:
         const float lfo2Rate      = p_lfo2Rate->load();
         const float lfo2Depth     = p_lfo2Depth->load();
         const float reverbMix     = p_reverbMix->load();
+        // Week 12: filter ADSR + env amount (guard null in case attached late)
+        const float filterA       = p_filterA      ? p_filterA->load()      : 0.01f;
+        const float filterD       = p_filterD      ? p_filterD->load()      : 0.4f;
+        const float filterS       = p_filterS      ? p_filterS->load()      : 0.6f;
+        const float filterR       = p_filterR      ? p_filterR->load()      : 1.2f;
+        const float filterEnvAmt  = p_filterEnvAmt ? p_filterEnvAmt->load() : 0.5f;
 
         // 4 macros with their coupling behavior:
         const float macroPressure = p_macroPressure->load();
@@ -700,6 +724,10 @@ public:
         const float atkCoeff  = smoothCoeffFromTime(ampAtk,  sr);
         const float decCoeff  = smoothCoeffFromTime(ampDec,  sr);
         const float relCoeff  = smoothCoeffFromTime(ampRel,  sr);
+        // Week 12: filter envelope coefficients (independent ADSR)
+        const float fAtkCoeff = smoothCoeffFromTime(filterA, sr);
+        const float fDecCoeff = smoothCoeffFromTime(filterD, sr);
+        const float fRelCoeff = smoothCoeffFromTime(filterR, sr);
 
         // Compressor one-pole coefficients
         const float compAtk  = smoothCoeffFromTime(0.005f, sr); // 5ms attack
@@ -795,39 +823,36 @@ public:
             float dynamicPressure = clamp(totalPressure + lfo2Out * lfo2Depth * 0.15f, 0.f, 1.f);
             float compressed      = compressor.process(withBody, dynamicPressure, compAtk, compRel);
 
-            // --- DSP Fix Wave 2B: Independent filter ADSR ---
-            // This was the #1 seance finding: bass programming requires an
-            // independent filter envelope separate from the amp ADSR.
-            // filterEnvLevel follows a simple one-pole ADSR that sweeps the
-            // darkness filter cutoff up to +300 Hz on attack, then decays.
+            // --- Independent filter ADSR (Week 12 — parametric) ---
+            // Uses per-block-computed fAtkCoeff/fDecCoeff/fRelCoeff.
+            // filterS controls sustain level; filterEnvAmt ±1 scales the sweep.
             {
                 float fEnvTarget = 0.f;
                 float fEnvCoeff  = 0.f;
                 switch (filterEnvStage) {
                     case EnvStage::Idle:
-                        fEnvTarget = 0.f; fEnvCoeff = relCoeff;
+                        fEnvTarget = 0.f; fEnvCoeff = fRelCoeff;
                         break;
                     case EnvStage::Attack:
-                        fEnvTarget = 1.f; fEnvCoeff = smoothCoeffFromTime(0.005f, sr); // fast attack (5ms)
-                        if (filterEnvLevel >= 0.99f) {
+                        fEnvTarget = 1.f; fEnvCoeff = fAtkCoeff;
+                        if (filterEnvLevel >= 0.999f) {
                             filterEnvLevel = 1.f;
                             filterEnvStage = EnvStage::Decay;
                         }
                         break;
                     case EnvStage::Decay:
-                        fEnvTarget = 0.3f; // sustain at 30%
-                        fEnvCoeff = smoothCoeffFromTime(0.3f, sr); // 300ms decay
-                        if (std::fabs(filterEnvLevel - 0.3f) < 0.01f) {
-                            filterEnvLevel = 0.3f;
+                        fEnvTarget = filterS; fEnvCoeff = fDecCoeff;
+                        if (std::fabs(filterEnvLevel - filterS) < 0.001f) {
+                            filterEnvLevel = filterS;
                             filterEnvStage = EnvStage::Sustain;
                         }
                         break;
                     case EnvStage::Sustain:
-                        fEnvTarget = 0.3f; fEnvCoeff = decCoeff;
+                        fEnvTarget = filterS; fEnvCoeff = fDecCoeff;
                         break;
                     case EnvStage::Release:
-                        fEnvTarget = 0.f; fEnvCoeff = smoothCoeffFromTime(0.5f, sr); // 500ms release
-                        if (filterEnvLevel < 0.001f) {
+                        fEnvTarget = 0.f; fEnvCoeff = fRelCoeff;
+                        if (filterEnvLevel < 0.0001f) {
                             filterEnvLevel = 0.f;
                             filterEnvStage = EnvStage::Idle;
                         }
@@ -836,8 +861,10 @@ public:
                 filterEnvLevel += fEnvCoeff * (fEnvTarget - filterEnvLevel);
                 filterEnvLevel = flushDenormal(filterEnvLevel);
             }
-            // Filter env sweeps cutoff up to +300 Hz, scaled by velocity
-            float filterEnvBoost = filterEnvLevel * currentVel * 300.f;
+            // Filter env modulates cutoff via filterEnvAmt (bipolar ±1 → ±750 Hz)
+            // 750 Hz chosen so that at default amt=0.5 and full env the boost = 375 Hz,
+            // which sits within the 50-1200 Hz dynCutoff clamp below.
+            float filterEnvBoost = filterEnvLevel * filterEnvAmt * 750.f;
 
             // --- Darkness filter ---
             // LFO1 slightly modulates cutoff for alien life feel
@@ -944,6 +971,12 @@ private:
     std::atomic<float>* p_macroCreature  = nullptr;
     std::atomic<float>* p_macroWreck     = nullptr;
     std::atomic<float>* p_macroAbyss     = nullptr;
+    // Week 12: filter ADSR + env amount
+    std::atomic<float>* p_filterA        = nullptr;
+    std::atomic<float>* p_filterD        = nullptr;
+    std::atomic<float>* p_filterS        = nullptr;
+    std::atomic<float>* p_filterR        = nullptr;
+    std::atomic<float>* p_filterEnvAmt   = nullptr;
 };
 
 } // namespace xomnibus

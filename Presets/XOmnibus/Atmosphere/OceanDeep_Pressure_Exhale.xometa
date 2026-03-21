@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Exhale",
+  "mood": "Atmosphere",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A long, slow filter breath — attack opens the darkness filter over 2 seconds, sustains at half brightness, then releases into the deep. Pair with pitch wheel for expressive whale-song-style phrasing.",
+  "tags": [
+    "atmosphere",
+    "pad",
+    "filter-env",
+    "pitch-bend",
+    "breath",
+    "slow"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.82,
+    "movement": 0.35,
+    "density": 0.65,
+    "space": 0.90,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subLevel": 0.60,
+      "deep_subOctMix": 0.30,
+      "deep_filterCutoff": 180.0,
+      "deep_filterRes": 0.35,
+      "deep_velCutoffAmt": 0.20,
+      "deep_bodyChar": 1,
+      "deep_bodyFeedback": 0.45,
+      "deep_bodyMix": 0.40,
+      "deep_bioRate": 0.08,
+      "deep_bioMix": 0.15,
+      "deep_bioBrightness": 900.0,
+      "deep_pressureAmt": 0.45,
+      "deep_ampAtk": 0.50,
+      "deep_ampDec": 3.0,
+      "deep_ampSus": 0.75,
+      "deep_ampRel": 4.0,
+      "deep_filterA": 2.0,
+      "deep_filterD": 3.5,
+      "deep_filterS": 0.50,
+      "deep_filterR": 5.0,
+      "deep_filterEnvAmt": 0.55,
+      "deep_lfo1Rate": 0.04,
+      "deep_lfo1Depth": 0.18,
+      "deep_lfo2Rate": 0.02,
+      "deep_lfo2Depth": 0.12,
+      "deep_reverbMix": 0.70,
+      "deep_macroPressure": 0.40,
+      "deep_macroCreature": 0.20,
+      "deep_macroWreck": 0.35,
+      "deep_macroAbyss": 0.75
+    }
+  },
+  "macros": {
+    "PRESSURE": 0.4,
+    "CREATURE": 0.2,
+    "WRECK": 0.35,
+    "ABYSS": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
