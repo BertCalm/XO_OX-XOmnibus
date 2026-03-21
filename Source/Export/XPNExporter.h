@@ -203,6 +203,14 @@ public:
             snapshot.activeRoutes.push_back(snapRoute);
         }
 
+        // Populate engineIds so getSummary() can label each slot
+        const auto& engines = matrix.getActiveEngines();
+        for (int slot = 0; slot < 4; ++slot)
+        {
+            if (engines[(size_t)slot] != nullptr)
+                snapshot.engineIds[(size_t)slot] = engines[(size_t)slot]->getEngineId().toUpperCase();
+        }
+
         return snapshot;
     }
 

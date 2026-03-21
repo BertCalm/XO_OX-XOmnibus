@@ -78,6 +78,13 @@ try:
 except ImportError:
     HAS_TQDM = False
 
+# Optional numpy — used for fast FFT when available; falls back to pure-Python
+try:
+    import numpy as _np
+    HAS_NUMPY = True
+except ImportError:
+    HAS_NUMPY = False
+
 def tqdm(iterable, **kwargs):
     """Wrap tqdm if available, otherwise iterate transparently."""
     if HAS_TQDM:
@@ -144,6 +151,7 @@ def _magnitude_spectrum(mono: List[float], fft_size: int = 2048) -> List[float]:
     """Compute magnitude spectrum of a signal chunk using radix-2 FFT.
 
     Returns magnitudes for bins 0..fft_size//2 (inclusive).
+    Uses numpy.fft.rfft when numpy is available for much faster batch processing.
     """
     n = len(mono)
     # Zero-pad or truncate to fft_size
@@ -158,8 +166,14 @@ def _magnitude_spectrum(mono: List[float], fft_size: int = 2048) -> List[float]:
         for i in range(fft_size)
     ]
 
-    spectrum = _radix2_fft([complex(s, 0) for s in windowed])
-    return [abs(spectrum[i]) for i in range(fft_size // 2 + 1)]
+    n_bins = fft_size // 2 + 1
+    if HAS_NUMPY:
+        spectrum = _np.abs(_np.fft.rfft(windowed))[:n_bins]
+        return list(spectrum)
+    else:
+        # Pure-Python fallback path
+        spectrum = _radix2_fft([complex(s, 0) for s in windowed])
+        return [abs(spectrum[i]) for i in range(n_bins)]
 
 
 def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
@@ -207,6 +221,7 @@ def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
 
     freq_per_bin = sr / fft_size
     num_bins = fft_size // 2 + 1
+    warmth_per_frame = []
 
     for frame_idx in range(0, num_frames, frame_step):
         offset = frame_idx * hop
@@ -238,6 +253,14 @@ def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
             if arith_mean > 1e-10:
                 flatness_values.append(geo_mean / arith_mean)
 
+        # Warmth: 200-800 Hz band energy ratio (accumulated per frame)
+        bin_200 = max(1, int(200 / freq_per_bin))
+        bin_800 = min(num_bins - 1, int(800 / freq_per_bin))
+        warm_energy = sum(m * m for m in mags[bin_200:bin_800 + 1])
+        total_spectral_energy = sum(m * m for m in mags[1:])  # skip DC
+        if total_spectral_energy > 1e-10:
+            warmth_per_frame.append(max(0.0, min(1.0, warm_energy / total_spectral_energy)))
+
     # Brightness
     nyquist = sr / 2.0
     if centroids:
@@ -246,20 +269,9 @@ def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
     else:
         brightness = 0.5
 
-    # ── Warmth: energy ratio of 200-800 Hz band / total ──
-    # Compute on a representative frame (middle of the sample)
-    mid_offset = max(0, n // 2 - fft_size // 2)
-    mid_chunk = mono[mid_offset:mid_offset + fft_size]
-    if len(mid_chunk) < fft_size:
-        mid_chunk = mid_chunk + [0.0] * (fft_size - len(mid_chunk))
-    mid_mags = _magnitude_spectrum(mid_chunk, fft_size)
-
-    bin_200 = max(1, int(200 / freq_per_bin))
-    bin_800 = min(num_bins - 1, int(800 / freq_per_bin))
-    warm_energy = sum(m * m for m in mid_mags[bin_200:bin_800 + 1])
-    total_spectral_energy = sum(m * m for m in mid_mags[1:])  # skip DC
-    if total_spectral_energy > 1e-10:
-        warmth = max(0.0, min(1.0, warm_energy / total_spectral_energy))
+    # ── Warmth: mean energy ratio of 200-800 Hz band across all analysis frames ──
+    if warmth_per_frame:
+        warmth = sum(warmth_per_frame) / len(warmth_per_frame)
     else:
         warmth = 0.5
 
@@ -269,16 +281,12 @@ def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
         sorted_flux = sorted(flux_values)
         median_flux = sorted_flux[len(sorted_flux) // 2]
         # Scale so median flux maps to ~0.5
-        if median_flux > 1e-10:
-            movement = max(0.0, min(1.0, median_flux / (median_flux * 2.0)))
-        else:
-            movement = 0.0
         # Use coefficient of variation for better discrimination
         mean_flux = sum(flux_values) / len(flux_values)
         if mean_flux > 1e-10:
             std_flux = math.sqrt(sum((f - mean_flux) ** 2 for f in flux_values) / len(flux_values))
             cv = std_flux / mean_flux
-            movement = max(0.0, min(1.0, cv))
+            movement = max(0.0, min(1.0, cv))   # clamp: CV > 1.0 maps to 1.0
         else:
             movement = 0.0
     else:
@@ -987,6 +995,8 @@ def rebirth_spring_reverb(channels: List[List[float]], sr: int,
                 delayed = buf[wp]
                 # Damping filter on feedback path
                 damp_state = delayed * (1.0 - damp_coeff) + damp_state * damp_coeff
+                if abs(damp_state) < 1e-18:
+                    damp_state = 0.0
                 buf[wp] = max(-1.0, min(1.0, ch[i] + comb_fb * damp_state))
                 out[i] = delayed
                 wp = (wp + 1) % max(1, delay)
@@ -1005,7 +1015,10 @@ def rebirth_spring_reverb(channels: List[List[float]], sr: int,
             for i in range(n):
                 delayed = buf[wp]
                 inp = wet[i]
-                buf[wp] = max(-1.0, min(1.0, inp + ap_g * delayed))
+                ap_state = max(-1.0, min(1.0, inp + ap_g * delayed))
+                if abs(ap_state) < 1e-18:
+                    ap_state = 0.0
+                buf[wp] = ap_state
                 wet[i] = delayed - ap_g * inp
                 wp = (wp + 1) % max(1, delay)
 
@@ -1064,8 +1077,8 @@ def rebirth_transform(sample_info, channels: List[List[float]], sr: int,
     """
     profile = REBIRTH_PROFILES.get(profile_name)
     if profile is None:
-        raise ValueError(f"Unknown rebirth profile: {profile_name}. "
-                         f"Available: {', '.join(sorted(REBIRTH_PROFILES.keys()))}")
+        print(f"[rebirth] Warning: no profile for engine '{profile_name}' — returning original", file=sys.stderr)
+        return channels  # unmodified
 
     # Keep dry copy for wet/dry blend
     dry = [list(ch) for ch in channels]

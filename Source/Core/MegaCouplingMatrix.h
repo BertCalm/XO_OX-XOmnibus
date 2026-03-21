@@ -55,6 +55,12 @@ public:
         activeEngines = engines;
     }
 
+    // Get the engine pointers for the active slots (message thread — read-only)
+    const std::array<SynthEngine*, MaxSlots>& getActiveEngines() const
+    {
+        return activeEngines;
+    }
+
     //-- Route mutation (message thread only) ----------------------------------
 
     void clearRoutes()

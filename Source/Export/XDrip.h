@@ -9,6 +9,8 @@
 #include <vector>
 #include <thread>
 #include <cmath>
+#include <string>
+#include <unordered_map>
 
 namespace xomnibus {
 
@@ -32,7 +34,6 @@ public:
     enum class State { Idle, Rendering, Ready, Error };
 
     static constexpr float kPreviewDurationS  = 2.0f;
-    static constexpr int   kPreviewSampleRate  = 44100;
     static constexpr int   kPreviewNote        = 60;  // C3
     static constexpr int   kPreviewVelocity    = 100;
     static constexpr int   kThumbnailPoints    = 100;
@@ -50,19 +51,48 @@ public:
     // Public API
     //==========================================================================
 
-    /// Request a 2-second preview render for the given preset.
+    /// Request a 2-second stereo preview render for the given preset.
     /// Cancels any in-progress render before starting the new one.
     /// apvts may be nullptr (produces silent preview).
+    /// sampleRate should match the host/interface rate (default 48000).
     void requestPreview(const PresetData& preset,
-                        juce::AudioProcessorValueTreeState* apvts)
+                        juce::AudioProcessorValueTreeState* apvts,
+                        double sampleRate = 48000.0)
     {
         // Cancel any existing render
         cancel();
         joinWorker();
 
-        // Snapshot the preset data on the calling thread
-        pendingPreset_ = preset;
-        pendingApvts_  = apvts;
+        // Snapshot the preset data on the calling (message) thread
+        pendingPreset_    = preset;
+        pendingSampleRate_ = sampleRate;
+
+        // Deep-copy all parameter values synchronously here so the worker
+        // thread never touches the APVTS pointer (Fix 3: no dangling pointer).
+        pendingParams_.clear();
+        if (apvts)
+        {
+            for (const auto& engName : preset.engines)
+            {
+                if (auto paramsByEngine = preset.parametersByEngine.find(engName);
+                    paramsByEngine != preset.parametersByEngine.end())
+                {
+                    if (auto* obj = paramsByEngine->second.getDynamicObject())
+                    {
+                        for (const auto& prop : obj->getProperties())
+                        {
+                            juce::String paramId = prop.name.toString();
+                            auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
+                                ? resolveSnapParamAlias(paramId) : paramId;
+                            if (canonical.isEmpty()) continue;
+
+                            if (auto* raw = apvts->getRawParameterValue(canonical))
+                                pendingParams_[canonical.toStdString()] = raw->load();
+                        }
+                    }
+                }
+            }
+        }
 
         state_.store(State::Rendering);
         shouldCancel_.store(false);
@@ -116,7 +146,9 @@ private:
 
     // Snapshot of the request (written on message thread before worker starts)
     PresetData                                pendingPreset_;
-    juce::AudioProcessorValueTreeState*       pendingApvts_ = nullptr;
+    double                                    pendingSampleRate_ = 48000.0;
+    // Deep copy of parameter values — no raw pointer kept (Fix 3)
+    std::unordered_map<std::string, float>    pendingParams_;
 
     std::thread workerThread_;
 
@@ -137,12 +169,13 @@ private:
         pthread_setschedparam(pthread_self(), SCHED_OTHER, nullptr);
 #endif
 
-        const int totalSamples = static_cast<int>(kPreviewDurationS * kPreviewSampleRate);
-        const int holdSamples  = static_cast<int>(1.5f * kPreviewSampleRate); // 1.5s hold, 0.5s tail
-        const int numChannels  = 1; // mono preview
+        const double sr         = pendingSampleRate_;
+        const int totalSamples  = static_cast<int>(kPreviewDurationS * sr);
+        const int holdSamples   = static_cast<int>(1.5 * sr); // 1.5s hold, 0.5s tail
+        const int numChannels   = 2; // stereo preview (Fix 2)
 
         // Build offline engine context
-        auto ctx = buildPreviewContext(pendingPreset_, kPreviewSampleRate);
+        auto ctx = buildPreviewContext(pendingPreset_, sr);
         if (!ctx.valid)
         {
             state_.store(State::Error);
@@ -190,8 +223,9 @@ private:
                 engineBuf.clear();
                 engine->renderBlock(engineBuf, midi, blockSize);
 
-                // Mix into accumulator
+                // Mix both channels into stereo accumulator (Fix 2)
                 buffer.addFrom(0, rendered, engineBuf, 0, 0, blockSize);
+                buffer.addFrom(1, rendered, engineBuf, 1, 0, blockSize);
             }
 
             rendered += blockSize;
@@ -227,26 +261,9 @@ private:
     {
         PreviewContext ctx;
 
-        // Apply preset parameters to shared APVTS if available
-        if (pendingApvts_)
-        {
-            for (const auto& [engName, paramsVar] : preset.parametersByEngine)
-            {
-                if (auto* obj = paramsVar.getDynamicObject())
-                {
-                    for (const auto& prop : obj->getProperties())
-                    {
-                        juce::String paramId = prop.name.toString();
-                        auto canonical = resolveEngineAlias(engName).equalsIgnoreCase("OddfeliX")
-                            ? resolveSnapParamAlias(paramId) : paramId;
-                        if (canonical.isEmpty()) continue;
-
-                        if (auto* raw = pendingApvts_->getRawParameterValue(canonical))
-                            raw->store(static_cast<float>(prop.value));
-                    }
-                }
-            }
-        }
+        // Apply the pre-snapshotted parameter values (Fix 3: no APVTS pointer access)
+        // pendingParams_ was populated synchronously on the message thread.
+        // Nothing here touches the originating APVTS.
 
         // Create engine instances
         for (const auto& engName : preset.engines)
@@ -255,8 +272,10 @@ private:
             auto engine = EngineRegistry::instance().createEngine(canonical.toStdString());
             if (!engine) continue;
 
-            if (pendingApvts_)
-                engine->attachParameters(*pendingApvts_);
+            // Push snapshotted values directly into the engine's parameters
+            // so we never dereference the (potentially destroyed) APVTS (Fix 3).
+            for (const auto& [paramId, value] : pendingParams_)
+                engine->setParameterValue(paramId, value);
 
             engine->prepare(sampleRate, kBlockSize);
             engine->prepareSilenceGate(sampleRate, kBlockSize, 500.0f);
@@ -303,8 +322,8 @@ private:
         if (buffer.getNumSamples() == 0) return thumbnail;
 
         const int totalSamples = buffer.getNumSamples();
+        const int numCh = buffer.getNumChannels();
         const float samplesPerPoint = static_cast<float>(totalSamples) / kThumbnailPoints;
-        const float* data = buffer.getReadPointer(0);
 
         // Find global peak for normalization
         float globalPeak = 0.0f;
@@ -316,10 +335,15 @@ private:
             end = juce::jmin(end, totalSamples);
 
             float peak = 0.0f;
-            for (int s = start; s < end; ++s)
+            // Fix 2: take max absolute value across all channels (L+R) per point
+            for (int ch = 0; ch < numCh; ++ch)
             {
-                float absVal = std::abs(data[s]);
-                if (absVal > peak) peak = absVal;
+                const float* data = buffer.getReadPointer(ch);
+                for (int s = start; s < end; ++s)
+                {
+                    float absVal = std::abs(data[s]);
+                    if (absVal > peak) peak = absVal;
+                }
             }
 
             thumbnail[static_cast<size_t>(i)] = peak;

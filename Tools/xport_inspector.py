@@ -116,6 +116,7 @@ class InspectionReport:
     drip_score: float       = 0.0
     dna_score: float        = 0.0
     coupling_score: float   = 0.0
+    coupling_na: bool       = False  # True when no multi-engine presets exist
     rebirth_score: float    = 0.0
     # XPM compliance
     xpm_violations: List[str] = field(default_factory=list)
@@ -363,15 +364,18 @@ def _score_dna(xmetas: List[XMetaInfo]) -> Tuple[float, List[str]]:
     return score, findings
 
 
-def _score_coupling(xmetas: List[XMetaInfo]) -> Tuple[float, List[str]]:
+def _score_coupling(xmetas: List[XMetaInfo]) -> Tuple[float, List[str], bool]:
     """Score Coupling Snapshot coverage (0.0 – 1.0).
 
     Only multi-engine presets are expected to have coupling data.
     Single-engine presets are excluded from the denominator.
+
+    Returns (score, findings, is_na) where is_na is True when there are no
+    multi-engine presets and the coupling dimension should be redistributed.
     """
     multi_engine = [m for m in xmetas if len(m.engines) > 1]
     if not multi_engine:
-        return 1.0, ["No multi-engine presets — Coupling Snapshot N/A (score: 1.0)"]
+        return 1.0, ["No multi-engine presets — Coupling Snapshot N/A (weight redistributed to other features)"], True
 
     coupled = sum(1 for m in multi_engine if m.has_coupling)
     score = coupled / len(multi_engine)
@@ -380,7 +384,11 @@ def _score_coupling(xmetas: List[XMetaInfo]) -> Tuple[float, List[str]]:
         uncoupled = [m.name for m in multi_engine if not m.has_coupling]
         findings.append(f"Coupling Snapshot: {len(uncoupled)} multi-engine preset(s) missing coupling data: "
                          f"{', '.join(uncoupled[:5])}" + ("…" if len(uncoupled) > 5 else ""))
-    return score, findings
+    if coupled > 0:
+        findings.append(
+            f"ENTANGLED: {coupled} preset(s) have coupling data — export samples reflect baked cross-engine routing"
+        )
+    return score, findings, False
 
 
 def _score_rebirth(programs: List[XPMProgramInfo]) -> Tuple[float, List[str]]:
@@ -443,11 +451,17 @@ def _check_xpm_rules(programs: List[XPMProgramInfo]) -> List[str]:
 # =============================================================================
 
 def _compute_readiness(drip: float, dna: float, coupling: float, rebirth: float,
-                        xpm_violations: List[str]) -> Tuple[int, str]:
+                        xpm_violations: List[str],
+                        coupling_na: bool = False) -> Tuple[int, str]:
     """Compute 0-100 readiness score and GO / NO-GO verdict."""
     # Weighted average: each feature 20%, XPM compliance 20%
     xpm_score = 1.0 if not xpm_violations else max(0.0, 1.0 - len(xpm_violations) * 0.1)
-    raw = (drip * 20 + dna * 20 + coupling * 20 + rebirth * 20 + xpm_score * 20)
+    if coupling_na:
+        # Coupling has no multi-engine presets — redistribute its 20pts evenly
+        # to drip, dna, and rebirth (6.67 each), keeping XPM at 20pts.
+        raw = (drip * 26.67 + dna * 26.67 + rebirth * 26.67 + xpm_score * 20)
+    else:
+        raw = (drip * 20 + dna * 20 + coupling * 20 + rebirth * 20 + xpm_score * 20)
     score = int(round(raw))
     # GO requires >= 80 and zero XPM CRITICAL violations
     verdict = "GO" if score >= 80 and not xpm_violations else "NO-GO"
@@ -465,7 +479,7 @@ def inspect(source: str) -> InspectionReport:
 
     drip_score,    drip_findings    = _score_drip(programs)
     dna_score,     dna_findings     = _score_dna(xmetas)
-    coupling_score, coupling_findings = _score_coupling(xmetas)
+    coupling_score, coupling_findings, coupling_na = _score_coupling(xmetas)
     rebirth_score, rebirth_findings = _score_rebirth(programs)
     xpm_violations                  = _check_xpm_rules(programs)
 
@@ -473,7 +487,8 @@ def inspect(source: str) -> InspectionReport:
     all_warnings = [f"XPM Rule Violation: {v}" for v in xpm_violations]
 
     readiness, verdict = _compute_readiness(
-        drip_score, dna_score, coupling_score, rebirth_score, xpm_violations
+        drip_score, dna_score, coupling_score, rebirth_score, xpm_violations,
+        coupling_na=coupling_na,
     )
 
     return InspectionReport(
@@ -483,6 +498,7 @@ def inspect(source: str) -> InspectionReport:
         drip_score=drip_score,
         dna_score=dna_score,
         coupling_score=coupling_score,
+        coupling_na=coupling_na,
         rebirth_score=rebirth_score,
         xpm_violations=xpm_violations,
         readiness_score=readiness,
@@ -553,7 +569,10 @@ def print_report(report: InspectionReport, verbose: bool = False) -> None:
     print(_c("  ─── Legendary Features ─────────────────────────────", _DIM))
     _feature_row("XDrip (preview WAV)",     report.drip_score,     [])
     _feature_row("DNA Inheritance",         report.dna_score,      [])
-    _feature_row("Coupling Snapshots",      report.coupling_score, [])
+    if report.coupling_na:
+        print(f"  {_c('—', _DIM)} {'Coupling Snapshots':<28s} {_c('[N/A (redistributed)]', _DIM)}")
+    else:
+        _feature_row("Coupling Snapshots",      report.coupling_score, [])
     _feature_row("Rebirth Mode (RR/layers)",report.rebirth_score,  [])
     print()
 
@@ -572,7 +591,10 @@ def print_report(report: InspectionReport, verbose: bool = False) -> None:
     if report.findings:
         print(_c("  ─── Findings ────────────────────────────────────────", _DIM))
         for f in report.findings:
-            print(f"  {_c('●', _YELLOW)} {f}")
+            if f.startswith("ENTANGLED:"):
+                print(f"  {_c('●', _DIM)} {_c(f, _DIM)}")
+            else:
+                print(f"  {_c('●', _YELLOW)} {f}")
         print()
 
     # ── Verbose: program table ────────────────────────────────────────────
@@ -625,6 +647,7 @@ def report_to_dict(report: InspectionReport) -> dict:
             "xdrip_preview":       round(report.drip_score,     3),
             "dna_inheritance":     round(report.dna_score,      3),
             "coupling_snapshots":  round(report.coupling_score, 3),
+            "coupling_na":         report.coupling_na,
             "rebirth_mode":        round(report.rebirth_score,  3),
         },
         "xpm_violations": report.xpm_violations,
