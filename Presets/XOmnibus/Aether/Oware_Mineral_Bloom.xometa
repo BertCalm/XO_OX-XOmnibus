@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Mineral resonance blooming — bell-to-bowl boundary, high sympathetic activation, long tails, aether spatial wash",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.48,
+    "density": 0.52,
+    "movement": 0.28,
+    "space": 0.95,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.95
+  },
+  "mood": "Aether",
+  "name": "Mineral Bloom",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.65,
+      "owr_malletHardness": 0.2,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.88,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.82,
+      "owr_shimmerRate": 1.8,
+      "owr_thermalDrift": 0.32,
+      "owr_brightness": 4500.0,
+      "owr_damping": 0.04,
+      "owr_decay": 10.5,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.4,
+      "owr_macroMallet": 0.4,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.95
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.06,
+    "brightness": 0.48,
+    "density": 0.52,
+    "movement": 0.28,
+    "space": 0.95,
+    "warmth": 0.62
+  },
+  "tags": [
+    "mineral",
+    "bloom",
+    "bell",
+    "long-decay",
+    "aether"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Diamond hardness mallet on crystal glass — maximum brightness, hard attack, ultra-high filter, crystalline purity",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.98,
+    "density": 0.18,
+    "movement": 0.15,
+    "space": 0.78,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.15,
+    "SPACE": 0.78
+  },
+  "mood": "Prism",
+  "name": "Diamond Strike",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.95,
+      "owr_malletHardness": 0.92,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.22,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.05,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.02,
+      "owr_brightness": 20000.0,
+      "owr_damping": 0.08,
+      "owr_decay": 4.0,
+      "owr_filterEnvAmount": 0.12,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.9,
+      "owr_macroMallet": 0.9,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.78
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.98,
+    "density": 0.18,
+    "movement": 0.15,
+    "space": 0.78,
+    "warmth": 0.08
+  },
+  "tags": [
+    "crystal",
+    "bright",
+    "hard",
+    "diamond",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

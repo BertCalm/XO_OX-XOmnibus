@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Glass shard strike — bowl-glass material, maximum brightness, hard mallet, shattering crystalline spectral content",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.95,
+    "density": 0.32,
+    "movement": 0.28,
+    "space": 0.68,
+    "warmth": 0.08
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.68
+  },
+  "mood": "Prism",
+  "name": "Shard Strike",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.92,
+      "owr_malletHardness": 0.88,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.28,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.18,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.03,
+      "owr_brightness": 19500.0,
+      "owr_damping": 0.22,
+      "owr_decay": 2.0,
+      "owr_filterEnvAmount": 0.5,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.88,
+      "owr_macroMallet": 0.88,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.68
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.45,
+    "brightness": 0.95,
+    "density": 0.32,
+    "movement": 0.28,
+    "space": 0.68,
+    "warmth": 0.08
+  },
+  "tags": [
+    "glass",
+    "shard",
+    "bright",
+    "aggressive",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

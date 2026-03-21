@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Resonant void — near-silent attack, maximum space, bowl material at highest depth, pure sympathetic haze",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.35,
+    "density": 0.45,
+    "movement": 0.2,
+    "space": 1.0,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.2,
+    "SPACE": 1.0
+  },
+  "mood": "Aether",
+  "name": "Resonant Void",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.2,
+      "owr_malletHardness": 0.08,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 1.0,
+      "owr_buzzAmount": 0.05,
+      "owr_sympathyAmount": 0.9,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.5,
+      "owr_brightness": 2000.0,
+      "owr_damping": 0.02,
+      "owr_decay": 12.0,
+      "owr_filterEnvAmount": 0.1,
+      "owr_bendRange": 6,
+      "owr_macroMaterial": 0.28,
+      "owr_macroMallet": 0.28,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.03,
+    "brightness": 0.35,
+    "density": 0.45,
+    "movement": 0.2,
+    "space": 1.0,
+    "warmth": 0.65
+  },
+  "tags": [
+    "void",
+    "bowl",
+    "ethereal",
+    "maximum-decay",
+    "aether"
+  ],
+  "version": "1.0.0"
+}

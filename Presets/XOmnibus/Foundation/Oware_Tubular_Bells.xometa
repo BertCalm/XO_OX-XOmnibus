@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Orchestral tubular bells — thick metal tubes, hard wooden mallet, cathedral decay with rich overtone clang",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.72,
+    "density": 0.38,
+    "movement": 0.15,
+    "space": 0.78,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.15,
+    "SPACE": 0.78
+  },
+  "mood": "Foundation",
+  "name": "Tubular Bells",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.78,
+      "owr_malletHardness": 0.72,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.9,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.22,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.05,
+      "owr_brightness": 10000.0,
+      "owr_damping": 0.08,
+      "owr_decay": 7.5,
+      "owr_filterEnvAmount": 0.22,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.6,
+      "owr_macroMallet": 0.6,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.78
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.25,
+    "brightness": 0.72,
+    "density": 0.38,
+    "movement": 0.15,
+    "space": 0.78,
+    "warmth": 0.42
+  },
+  "tags": [
+    "tubular-bells",
+    "metal",
+    "cathedral",
+    "long-decay",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

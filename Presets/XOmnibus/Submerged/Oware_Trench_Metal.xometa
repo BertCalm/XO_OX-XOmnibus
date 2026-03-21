@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Metal at ocean trench pressure — high metal material but crushed dark by extreme damping, bass-heavy low brightness",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.18,
+    "density": 0.7,
+    "movement": 0.22,
+    "space": 0.65,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.62,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.65
+  },
+  "mood": "Submerged",
+  "name": "Trench Metal",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.75,
+      "owr_malletHardness": 0.6,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.75,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.18,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.5,
+      "owr_brightness": 1200.0,
+      "owr_damping": 0.85,
+      "owr_decay": 0.8,
+      "owr_filterEnvAmount": 0.45,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.62,
+      "owr_macroMallet": 0.62,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.22,
+    "brightness": 0.18,
+    "density": 0.7,
+    "movement": 0.22,
+    "space": 0.65,
+    "warmth": 0.45
+  },
+  "tags": [
+    "metal",
+    "deep",
+    "dark",
+    "pressure",
+    "submerged"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Formless humming resonance — wood-bowl blend, whisper-soft mallet, near-silent attack blooming into warm hum",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.3,
+    "density": 0.52,
+    "movement": 0.25,
+    "space": 0.95,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.25,
+    "SPACE": 0.95
+  },
+  "mood": "Aether",
+  "name": "Formless Hum",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.15,
+      "owr_malletHardness": 0.06,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.98,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.88,
+      "owr_shimmerRate": 0.8,
+      "owr_thermalDrift": 0.62,
+      "owr_brightness": 1800.0,
+      "owr_damping": 0.04,
+      "owr_decay": 12.0,
+      "owr_filterEnvAmount": 0.08,
+      "owr_bendRange": 6,
+      "owr_macroMaterial": 0.22,
+      "owr_macroMallet": 0.22,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.95
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.03,
+    "brightness": 0.3,
+    "density": 0.52,
+    "movement": 0.25,
+    "space": 0.95,
+    "warmth": 0.88
+  },
+  "tags": [
+    "formless",
+    "hum",
+    "ambient",
+    "long-decay",
+    "aether"
+  ],
+  "version": "1.0.0"
+}

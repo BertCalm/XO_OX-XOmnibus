@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Swamp reed strikes — organic wood material, heavy buzz membrane, dark warm body, slow thermal like swamp heat",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.22,
+    "density": 0.62,
+    "movement": 0.28,
+    "space": 0.55,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.55
+  },
+  "mood": "Submerged",
+  "name": "Swamp Reed",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.04,
+      "owr_malletHardness": 0.45,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.72,
+      "owr_sympathyAmount": 0.32,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.7,
+      "owr_brightness": 1500.0,
+      "owr_damping": 0.78,
+      "owr_decay": 0.8,
+      "owr_filterEnvAmount": 0.42,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.15,
+      "owr_macroMallet": 0.15,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.22,
+    "density": 0.62,
+    "movement": 0.28,
+    "space": 0.55,
+    "warmth": 0.85
+  },
+  "tags": [
+    "swamp",
+    "reed",
+    "buzz",
+    "dark",
+    "submerged"
+  ],
+  "version": "1.0.0"
+}

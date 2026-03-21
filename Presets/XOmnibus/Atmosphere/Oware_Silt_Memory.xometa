@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sunken relics in river silt — wood-metal continuum midpoint, heavy thermal drift, bowl body, dreamy resonance",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.38,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 0.88,
+    "warmth": 0.8
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.3,
+    "SPACE": 0.88
+  },
+  "mood": "Atmosphere",
+  "name": "Silt Memory",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.25,
+      "owr_malletHardness": 0.12,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.88,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.55,
+      "owr_shimmerRate": 1.5,
+      "owr_thermalDrift": 0.65,
+      "owr_brightness": 2800.0,
+      "owr_damping": 0.08,
+      "owr_decay": 8.2,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.28,
+      "owr_macroMallet": 0.28,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.07,
+    "brightness": 0.38,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 0.88,
+    "warmth": 0.8
+  },
+  "tags": [
+    "silt",
+    "river",
+    "ambient",
+    "thermal-drift",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

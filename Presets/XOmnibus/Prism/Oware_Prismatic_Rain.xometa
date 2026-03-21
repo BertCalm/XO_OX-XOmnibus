@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Rain on a glass roof — high metal-to-glass material, medium-hard mallet, sympathetic resonance blooming bright",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.82,
+    "density": 0.55,
+    "movement": 0.48,
+    "space": 0.75,
+    "warmth": 0.22
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.75
+  },
+  "mood": "Prism",
+  "name": "Prismatic Rain",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.78,
+      "owr_malletHardness": 0.58,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.45,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.72,
+      "owr_shimmerRate": 4.5,
+      "owr_thermalDrift": 0.06,
+      "owr_brightness": 13000.0,
+      "owr_damping": 0.15,
+      "owr_decay": 2.5,
+      "owr_filterEnvAmount": 0.32,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.68,
+      "owr_macroMallet": 0.68,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.18,
+    "brightness": 0.82,
+    "density": 0.55,
+    "movement": 0.48,
+    "space": 0.75,
+    "warmth": 0.22
+  },
+  "tags": [
+    "rain",
+    "glass",
+    "bright",
+    "sympathetic",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

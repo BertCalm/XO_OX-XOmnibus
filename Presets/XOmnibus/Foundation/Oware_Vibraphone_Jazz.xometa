@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Jazz vibraphone — aluminum bars, yarn mallets, motor shimmer at 4 Hz, characteristic motorized tremolo",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.62,
+    "density": 0.38,
+    "movement": 0.48,
+    "space": 0.7,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.7
+  },
+  "mood": "Foundation",
+  "name": "Vibraphone Jazz",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.55,
+      "owr_malletHardness": 0.25,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.7,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 4.0,
+      "owr_thermalDrift": 0.07,
+      "owr_brightness": 7500.0,
+      "owr_damping": 0.12,
+      "owr_decay": 4.8,
+      "owr_filterEnvAmount": 0.25,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.42,
+      "owr_macroMallet": 0.42,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.62,
+    "density": 0.38,
+    "movement": 0.48,
+    "space": 0.7,
+    "warmth": 0.62
+  },
+  "tags": [
+    "vibraphone",
+    "jazz",
+    "aluminum",
+    "shimmer",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

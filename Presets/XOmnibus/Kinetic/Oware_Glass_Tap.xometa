@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Glass tapping rhythm — bowl-glass material, medium-hard mallet, high damping for crisp staccato glass taps",
+  "dna": {
+    "aggression": 0.42,
+    "brightness": 0.82,
+    "density": 0.32,
+    "movement": 0.88,
+    "space": 0.35,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.88,
+    "SPACE": 0.35
+  },
+  "mood": "Kinetic",
+  "name": "Glass Tap",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.9,
+      "owr_malletHardness": 0.72,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.35,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.05,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.02,
+      "owr_brightness": 14000.0,
+      "owr_damping": 0.85,
+      "owr_decay": 0.15,
+      "owr_filterEnvAmount": 0.55,
+      "owr_bendRange": 1,
+      "owr_macroMaterial": 0.75,
+      "owr_macroMallet": 0.75,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.42,
+    "brightness": 0.82,
+    "density": 0.32,
+    "movement": 0.88,
+    "space": 0.35,
+    "warmth": 0.18
+  },
+  "tags": [
+    "glass",
+    "tap",
+    "bright",
+    "staccato",
+    "kinetic"
+  ],
+  "version": "1.0.0"
+}

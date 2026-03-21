@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Waterlogged wood at ocean floor — maximum wood material, heavy damping, ultra-low brightness, thermal drift of deep cold",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.15,
+    "density": 0.62,
+    "movement": 0.2,
+    "space": 0.72,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.08,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.2,
+    "SPACE": 0.72
+  },
+  "mood": "Submerged",
+  "name": "Abyssal Wood",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.02,
+      "owr_malletHardness": 0.28,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.9,
+      "owr_buzzAmount": 0.12,
+      "owr_sympathyAmount": 0.42,
+      "owr_shimmerRate": 0.3,
+      "owr_thermalDrift": 0.6,
+      "owr_brightness": 800.0,
+      "owr_damping": 0.72,
+      "owr_decay": 2.0,
+      "owr_filterEnvAmount": 0.3,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.08,
+      "owr_macroMallet": 0.08,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.72
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.15,
+    "density": 0.62,
+    "movement": 0.2,
+    "space": 0.72,
+    "warmth": 0.75
+  },
+  "tags": [
+    "wood",
+    "deep",
+    "dark",
+    "submerged",
+    "muted"
+  ],
+  "version": "1.0.0"
+}

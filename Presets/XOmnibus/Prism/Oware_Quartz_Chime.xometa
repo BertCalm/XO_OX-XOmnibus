@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Quartz crystal bar — bowl-glass material zone, moderate hardness, cutting high partial bloom with clean decay",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.9,
+    "density": 0.25,
+    "movement": 0.28,
+    "space": 0.88,
+    "warmth": 0.15
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.88
+  },
+  "mood": "Prism",
+  "name": "Quartz Chime",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.88,
+      "owr_malletHardness": 0.55,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.5,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.28,
+      "owr_shimmerRate": 1.5,
+      "owr_thermalDrift": 0.05,
+      "owr_brightness": 16500.0,
+      "owr_damping": 0.07,
+      "owr_decay": 6.8,
+      "owr_filterEnvAmount": 0.16,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.75,
+      "owr_macroMallet": 0.75,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.12,
+    "brightness": 0.9,
+    "density": 0.25,
+    "movement": 0.28,
+    "space": 0.88,
+    "warmth": 0.15
+  },
+  "tags": [
+    "quartz",
+    "crystal",
+    "bright",
+    "pure",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

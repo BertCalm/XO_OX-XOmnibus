@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Shona mbira dzavadzimu — metal tines on wooden board, bottle-cap buzz, meditative interlocking tone",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.48,
+    "density": 0.55,
+    "movement": 0.32,
+    "space": 0.55,
+    "warmth": 0.82
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.32,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.32,
+    "SPACE": 0.55
+  },
+  "mood": "Foundation",
+  "name": "Mbira Classic",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.35,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.65,
+      "owr_buzzAmount": 0.55,
+      "owr_sympathyAmount": 0.42,
+      "owr_shimmerRate": 1.5,
+      "owr_thermalDrift": 0.15,
+      "owr_brightness": 4000.0,
+      "owr_damping": 0.3,
+      "owr_decay": 1.8,
+      "owr_filterEnvAmount": 0.38,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.32,
+      "owr_macroMallet": 0.32,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.15,
+    "brightness": 0.48,
+    "density": 0.55,
+    "movement": 0.32,
+    "space": 0.55,
+    "warmth": 0.82
+  },
+  "tags": [
+    "mbira",
+    "thumb-piano",
+    "buzz",
+    "african",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

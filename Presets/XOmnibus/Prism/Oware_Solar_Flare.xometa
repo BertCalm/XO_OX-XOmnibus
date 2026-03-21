@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Solar metal eruption — bowl material with hard mallet, extreme brightness, short burst of spectral energy",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.92,
+    "density": 0.42,
+    "movement": 0.35,
+    "space": 0.62,
+    "warmth": 0.15
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.62
+  },
+  "mood": "Prism",
+  "name": "Solar Flare",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.78,
+      "owr_malletHardness": 0.88,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.4,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.35,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.04,
+      "owr_brightness": 18000.0,
+      "owr_damping": 0.35,
+      "owr_decay": 0.8,
+      "owr_filterEnvAmount": 0.6,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.82,
+      "owr_macroMallet": 0.82,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.55,
+    "brightness": 0.92,
+    "density": 0.42,
+    "movement": 0.35,
+    "space": 0.62,
+    "warmth": 0.15
+  },
+  "tags": [
+    "solar",
+    "metallic",
+    "bright",
+    "aggressive",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Dark resonance in ocean depths — bell material shrouded in cold dark water, high body depth, slow thermal creep",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.22,
+    "density": 0.58,
+    "movement": 0.18,
+    "space": 0.82,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.18,
+    "SPACE": 0.82
+  },
+  "mood": "Submerged",
+  "name": "Deep Resonance Dark",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.22,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.92,
+      "owr_buzzAmount": 0.1,
+      "owr_sympathyAmount": 0.55,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.65,
+      "owr_brightness": 1800.0,
+      "owr_damping": 0.65,
+      "owr_decay": 3.5,
+      "owr_filterEnvAmount": 0.22,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.3,
+      "owr_macroMallet": 0.3,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.1,
+    "brightness": 0.22,
+    "density": 0.58,
+    "movement": 0.18,
+    "space": 0.82,
+    "warmth": 0.55
+  },
+  "tags": [
+    "deep",
+    "dark",
+    "resonance",
+    "cold",
+    "submerged"
+  ],
+  "version": "1.0.0"
+}

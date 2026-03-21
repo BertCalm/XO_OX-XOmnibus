@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Material continuum in motion — macro sweeps material from wood to glass in real time, kinetic timbral evolution",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.65,
+    "density": 0.52,
+    "movement": 0.88,
+    "space": 0.55,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.88,
+    "SPACE": 0.55
+  },
+  "mood": "Flux",
+  "name": "Material Storm",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.5,
+      "owr_malletHardness": 0.6,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.6,
+      "owr_buzzAmount": 0.2,
+      "owr_sympathyAmount": 0.5,
+      "owr_shimmerRate": 8.0,
+      "owr_thermalDrift": 0.45,
+      "owr_brightness": 8000.0,
+      "owr_damping": 0.35,
+      "owr_decay": 1.5,
+      "owr_filterEnvAmount": 0.55,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.88,
+      "owr_macroMallet": 0.5,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.45,
+    "brightness": 0.65,
+    "density": 0.52,
+    "movement": 0.88,
+    "space": 0.55,
+    "warmth": 0.45
+  },
+  "tags": [
+    "material-sweep",
+    "kinetic",
+    "dynamic",
+    "evolving",
+    "flux"
+  ],
+  "version": "1.0.0"
+}

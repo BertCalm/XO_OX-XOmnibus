@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Metallic spectral spray — high brightness, maximum sympathetic coupling, modes fanning into overtone cascade",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.88,
+    "density": 0.62,
+    "movement": 0.52,
+    "space": 0.82,
+    "warmth": 0.18
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.52,
+    "SPACE": 0.82
+  },
+  "mood": "Prism",
+  "name": "Spectral Spray",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.85,
+      "owr_malletHardness": 0.78,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.3,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.88,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.05,
+      "owr_brightness": 17000.0,
+      "owr_damping": 0.06,
+      "owr_decay": 5.5,
+      "owr_filterEnvAmount": 0.15,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.78,
+      "owr_macroMallet": 0.78,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.28,
+    "brightness": 0.88,
+    "density": 0.62,
+    "movement": 0.52,
+    "space": 0.82,
+    "warmth": 0.18
+  },
+  "tags": [
+    "spectral",
+    "metallic",
+    "overtones",
+    "bright",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

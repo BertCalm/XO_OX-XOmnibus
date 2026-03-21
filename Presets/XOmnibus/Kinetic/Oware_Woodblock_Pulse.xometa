@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Woodblock rhythmic pulse — maximum wood, very hard mallet, maximum damping, ultra-short staccato pattern driver",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.35,
+    "movement": 0.88,
+    "space": 0.28,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.88,
+    "SPACE": 0.28
+  },
+  "mood": "Kinetic",
+  "name": "Woodblock Pulse",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.0,
+      "owr_malletHardness": 0.95,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.4,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.05,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.02,
+      "owr_brightness": 4000.0,
+      "owr_damping": 0.95,
+      "owr_decay": 0.12,
+      "owr_filterEnvAmount": 0.6,
+      "owr_bendRange": 1,
+      "owr_macroMaterial": 0.12,
+      "owr_macroMallet": 0.12,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.28
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.35,
+    "movement": 0.88,
+    "space": 0.28,
+    "warmth": 0.72
+  },
+  "tags": [
+    "woodblock",
+    "staccato",
+    "rhythmic",
+    "kinetic",
+    "percussion"
+  ],
+  "version": "1.0.0"
+}

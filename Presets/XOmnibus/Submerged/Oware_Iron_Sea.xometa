@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Iron sea floor resonance — metal material in cold deep water, high body depth, darkness muffling upper harmonics",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.28,
+    "density": 0.65,
+    "movement": 0.2,
+    "space": 0.75,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.2,
+    "SPACE": 0.75
+  },
+  "mood": "Submerged",
+  "name": "Iron Sea",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.8,
+      "owr_malletHardness": 0.5,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.58,
+      "owr_brightness": 2200.0,
+      "owr_damping": 0.75,
+      "owr_decay": 1.8,
+      "owr_filterEnvAmount": 0.38,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.52,
+      "owr_macroMallet": 0.52,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.25,
+    "brightness": 0.28,
+    "density": 0.65,
+    "movement": 0.2,
+    "space": 0.75,
+    "warmth": 0.42
+  },
+  "tags": [
+    "iron",
+    "sea",
+    "deep",
+    "metal",
+    "submerged"
+  ],
+  "version": "1.0.0"
+}

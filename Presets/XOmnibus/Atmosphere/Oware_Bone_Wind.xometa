@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wind through bone chimes — material midpoint, slow shimmer, thin frame body, ghostly hollow resonance",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.55,
+    "density": 0.28,
+    "movement": 0.42,
+    "space": 0.88,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.88
+  },
+  "mood": "Atmosphere",
+  "name": "Bone Wind",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.15,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.4,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.4,
+      "owr_shimmerRate": 4.5,
+      "owr_thermalDrift": 0.32,
+      "owr_brightness": 5500.0,
+      "owr_damping": 0.12,
+      "owr_decay": 5.5,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.45,
+      "owr_macroMallet": 0.45,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.07,
+    "brightness": 0.55,
+    "density": 0.28,
+    "movement": 0.42,
+    "space": 0.88,
+    "warmth": 0.38
+  },
+  "tags": [
+    "chimes",
+    "wind",
+    "ethereal",
+    "shimmer",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

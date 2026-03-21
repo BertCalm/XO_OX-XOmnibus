@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Middle Eastern finger cymbals (zills) — small brass discs, sharp attack, cutting ring, thin frame body resonance",
+  "dna": {
+    "aggression": 0.38,
+    "brightness": 0.88,
+    "density": 0.2,
+    "movement": 0.15,
+    "space": 0.62,
+    "warmth": 0.22
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.15,
+    "SPACE": 0.62
+  },
+  "mood": "Foundation",
+  "name": "Finger Cymbals",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.85,
+      "owr_malletHardness": 0.9,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.3,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.05,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.03,
+      "owr_brightness": 15000.0,
+      "owr_damping": 0.12,
+      "owr_decay": 1.5,
+      "owr_filterEnvAmount": 0.4,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.75,
+      "owr_macroMallet": 0.75,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.38,
+    "brightness": 0.88,
+    "density": 0.2,
+    "movement": 0.15,
+    "space": 0.62,
+    "warmth": 0.22
+  },
+  "tags": [
+    "finger-cymbals",
+    "zills",
+    "brass",
+    "bright",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

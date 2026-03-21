@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wooden bars in rain — wood body at maximum depth, slow thermal drift like forest air warming after storm",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.32,
+    "density": 0.48,
+    "movement": 0.38,
+    "space": 0.82,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.38,
+    "SPACE": 0.82
+  },
+  "mood": "Atmosphere",
+  "name": "Forest Rain",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.02,
+      "owr_malletHardness": 0.12,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.95,
+      "owr_buzzAmount": 0.05,
+      "owr_sympathyAmount": 0.5,
+      "owr_shimmerRate": 2.2,
+      "owr_thermalDrift": 0.45,
+      "owr_brightness": 2000.0,
+      "owr_damping": 0.1,
+      "owr_decay": 6.5,
+      "owr_filterEnvAmount": 0.22,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.15,
+      "owr_macroMallet": 0.15,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.06,
+    "brightness": 0.32,
+    "density": 0.48,
+    "movement": 0.38,
+    "space": 0.82,
+    "warmth": 0.88
+  },
+  "tags": [
+    "wood",
+    "rain",
+    "ambient",
+    "thermal",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

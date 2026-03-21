@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Japanese stone garden — each strike settles into mineral resonance, low shimmer rate, patient thermal drift",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.45,
+    "density": 0.4,
+    "movement": 0.2,
+    "space": 0.85,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.38,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.2,
+    "SPACE": 0.85
+  },
+  "mood": "Atmosphere",
+  "name": "Stone Garden",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.38,
+      "owr_malletHardness": 0.28,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.75,
+      "owr_buzzAmount": 0.05,
+      "owr_sympathyAmount": 0.45,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.28,
+      "owr_brightness": 3800.0,
+      "owr_damping": 0.12,
+      "owr_decay": 6.5,
+      "owr_filterEnvAmount": 0.25,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.38,
+      "owr_macroMallet": 0.38,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.45,
+    "density": 0.4,
+    "movement": 0.2,
+    "space": 0.85,
+    "warmth": 0.62
+  },
+  "tags": [
+    "stone",
+    "zen",
+    "japanese",
+    "meditative",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}

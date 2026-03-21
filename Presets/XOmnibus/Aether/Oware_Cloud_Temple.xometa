@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Temple bells in clouds — bell material, soft mallet, ghostly sympathetic resonance fading into infinite space",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.55,
+    "density": 0.42,
+    "movement": 0.25,
+    "space": 1.0,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.25,
+    "SPACE": 1.0
+  },
+  "mood": "Aether",
+  "name": "Cloud Temple",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.15,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.82,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.72,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.3,
+      "owr_brightness": 5000.0,
+      "owr_damping": 0.03,
+      "owr_decay": 12.0,
+      "owr_filterEnvAmount": 0.12,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.42,
+      "owr_macroMallet": 0.42,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 1.0
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.04,
+    "brightness": 0.55,
+    "density": 0.42,
+    "movement": 0.25,
+    "space": 1.0,
+    "warmth": 0.48
+  },
+  "tags": [
+    "temple",
+    "bells",
+    "ethereal",
+    "space",
+    "aether"
+  ],
+  "version": "1.0.0"
+}

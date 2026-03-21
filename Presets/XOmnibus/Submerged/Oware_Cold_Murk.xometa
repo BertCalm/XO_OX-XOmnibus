@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Cold murky water resonance — lowest brightness, wood material in still cold water, muffled sympathetic murmur",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.1,
+    "density": 0.55,
+    "movement": 0.15,
+    "space": 0.68,
+    "warmth": 0.78
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.15,
+    "SPACE": 0.68
+  },
+  "mood": "Submerged",
+  "name": "Cold Murk",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.06,
+      "owr_malletHardness": 0.18,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.9,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.38,
+      "owr_shimmerRate": 0.2,
+      "owr_thermalDrift": 0.8,
+      "owr_brightness": 500.0,
+      "owr_damping": 0.88,
+      "owr_decay": 1.5,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.1,
+      "owr_macroMallet": 0.1,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.68
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.1,
+    "density": 0.55,
+    "movement": 0.15,
+    "space": 0.68,
+    "warmth": 0.78
+  },
+  "tags": [
+    "cold",
+    "murk",
+    "wood",
+    "dark",
+    "submerged"
+  ],
+  "version": "1.0.0"
+}

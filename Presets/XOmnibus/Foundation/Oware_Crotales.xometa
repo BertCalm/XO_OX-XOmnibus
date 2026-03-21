@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Orchestral crotales — small bronze cymbal-discs, extremely bright and cutting ring, long shimmer decay",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.95,
+    "density": 0.18,
+    "movement": 0.22,
+    "space": 0.82,
+    "warmth": 0.12
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.82
+  },
+  "mood": "Foundation",
+  "name": "Crotales",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.88,
+      "owr_malletHardness": 0.85,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.2,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.08,
+      "owr_shimmerRate": 0.5,
+      "owr_thermalDrift": 0.02,
+      "owr_brightness": 18000.0,
+      "owr_damping": 0.05,
+      "owr_decay": 8.5,
+      "owr_filterEnvAmount": 0.15,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.82,
+      "owr_macroMallet": 0.82,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.95,
+    "density": 0.18,
+    "movement": 0.22,
+    "space": 0.82,
+    "warmth": 0.12
+  },
+  "tags": [
+    "crotales",
+    "bronze",
+    "bright",
+    "long-decay",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bell bounce rhythm — bell material, soft mallet bounce model, moderate damping, rolling bell pattern driver",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.4,
+    "movement": 0.82,
+    "space": 0.42,
+    "warmth": 0.52
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.82,
+    "SPACE": 0.42
+  },
+  "mood": "Kinetic",
+  "name": "Bell Bounce",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.5,
+      "owr_malletHardness": 0.22,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.45,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.12,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.05,
+      "owr_brightness": 8000.0,
+      "owr_damping": 0.62,
+      "owr_decay": 0.35,
+      "owr_filterEnvAmount": 0.48,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.45,
+      "owr_macroMallet": 0.45,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.4,
+    "movement": 0.82,
+    "space": 0.42,
+    "warmth": 0.52
+  },
+  "tags": [
+    "bell",
+    "bounce",
+    "rhythmic",
+    "kinetic",
+    "staccato"
+  ],
+  "version": "1.0.0"
+}

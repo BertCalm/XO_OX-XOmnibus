@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Himalayan bowl bath — large bronze bowl, heavy sympathetic resonance, slow shimmer drift, meditative space",
+  "dna": {
+    "aggression": 0.04,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.25,
+    "space": 0.92,
+    "warmth": 0.75
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.25,
+    "SPACE": 0.92
+  },
+  "mood": "Atmosphere",
+  "name": "Himalayan Haze",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.35,
+      "owr_malletHardness": 0.15,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.92,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.78,
+      "owr_shimmerRate": 1.8,
+      "owr_thermalDrift": 0.38,
+      "owr_brightness": 3200.0,
+      "owr_damping": 0.05,
+      "owr_decay": 9.5,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.35,
+      "owr_macroMallet": 0.35,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.04,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.25,
+    "space": 0.92,
+    "warmth": 0.75
+  },
+  "tags": [
+    "himalayan",
+    "singing-bowl",
+    "meditative",
+    "long-decay",
+    "atmosphere"
+  ],
+  "version": "1.0.0"
+}
