@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "None",
+    "sourceEngine": "Orca",
+    "targetEngine": null,
+    "type": "Rhythmic"
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 4.",
+  "dna": {
+    "aggression": 0.434,
+    "brightness": 0.918,
+    "density": 0.078,
+    "movement": 0.517,
+    "space": 0.906,
+    "warmth": 0.097
+  },
+  "engines": [
+    "Orca"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Vapor Radiant",
+  "parameters": {
+    "Orca": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

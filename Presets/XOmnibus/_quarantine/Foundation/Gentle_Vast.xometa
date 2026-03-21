@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Obsidian",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.657
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.043,
+    "brightness": 0.522,
+    "density": 0.947,
+    "movement": 0.436,
+    "space": 0.956,
+    "warmth": 0.87
+  },
+  "engines": [
+    "Obese",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.171,
+    "COUPLING": 0.673,
+    "MOVEMENT": 0.201,
+    "SPACE": 0.741
+  },
+  "mood": "Foundation",
+  "name": "Gentle Vast",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.349,
+      "macro_coupling": 0.882,
+      "macro_movement": 0.542,
+      "macro_space": 0.65
+    },
+    "Obsidian": {
+      "macro_character": 0.868,
+      "macro_coupling": 0.302,
+      "macro_movement": 0.7,
+      "macro_space": 0.677
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "hot",
+    "dense",
+    "vast",
+    "gentle",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

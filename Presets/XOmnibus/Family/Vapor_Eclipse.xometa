@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.341,
+      "destination": "OWLFISH",
+      "source": "OBSCURA",
+      "type": "FILTER_MOD"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, dark, still, sparse.",
+  "dna": {
+    "aggression": 0.086,
+    "brightness": 0.055,
+    "density": 0.045,
+    "movement": 0.069,
+    "space": 0.544,
+    "warmth": 0.411
+  },
+  "engines": [
+    "Obscura",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Vapor Eclipse",
+  "parameters": {
+    "Obscura": {
+      "level": 0.786,
+      "pan": 0.08
+    },
+    "Owlfish": {
+      "level": 0.71,
+      "pan": -0.005
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "dark",
+    "still",
+    "sparse",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oracle",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.962
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4329,
+    "brightness": 0.9076,
+    "density": 0.3531,
+    "movement": 0.9301,
+    "space": 0.9178,
+    "warmth": 0.8703
+  },
+  "engines": [
+    "Optic",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9162,
+    "COUPLING": 0.3423,
+    "MOVEMENT": 0.8528,
+    "SPACE": 0.8214
+  },
+  "mood": "Flux",
+  "name": "Surge Horizon",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.9162,
+      "macro_coupling": 0.3423,
+      "macro_movement": 0.8528,
+      "macro_space": 0.8214
+    },
+    "Oracle": {
+      "macro_character": 0.8032,
+      "macro_coupling": 0.3743,
+      "macro_movement": 0.8556,
+      "macro_space": 0.8366
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "high-brightness",
+    "high-warmth",
+    "high-movement",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

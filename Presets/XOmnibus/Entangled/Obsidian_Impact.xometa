@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for ECHO coupling with XOrigami.",
+  "dna": {
+    "aggression": 0.9534,
+    "brightness": 0.045,
+    "density": 0.4142,
+    "movement": 0.906,
+    "space": 0.9342,
+    "warmth": 0.5719
+  },
+  "engines": [
+    "Origami"
+  ],
+  "macroLabels": [
+    "RADIANCE",
+    "CRUSH",
+    "OPEN",
+    "SWEEP"
+  ],
+  "mood": "Flux",
+  "name": "Obsidian Impact",
+  "parameters": {
+    "Origami": {
+      "couplingBus": 2,
+      "couplingLevel": 0.566
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "origami"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

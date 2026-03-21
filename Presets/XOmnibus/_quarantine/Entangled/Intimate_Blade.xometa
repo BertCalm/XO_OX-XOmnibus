@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Orca",
+        "type": "HARMONIC_STACK",
+        "amount": 0.71
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.946,
+    "brightness": 0.553,
+    "density": 0.929,
+    "movement": 0.905,
+    "space": 0.044,
+    "warmth": 0.097
+  },
+  "engines": [
+    "OddOscar",
+    "Orca"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Intimate Blade",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.88,
+      "macro_coupling": 0.73,
+      "macro_movement": 0.87,
+      "macro_space": 0.15
+    },
+    "Orca": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.88,
+      "macro_movement": 0.93,
+      "macro_space": 0.19
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddOscar",
+        "engineB": "Overbite",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.717
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.106,
+    "brightness": 0.974,
+    "density": 0.054,
+    "movement": 0.91,
+    "space": 0.398,
+    "warmth": 0.941
+  },
+  "engines": [
+    "OddOscar",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.958,
+    "COUPLING": 0.252,
+    "MOVEMENT": 0.482,
+    "SPACE": 0.398
+  },
+  "mood": "Foundation",
+  "name": "Shimmer Trace II",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.958,
+      "macro_coupling": 0.252,
+      "macro_movement": 0.482,
+      "macro_space": 0.398
+    },
+    "Overbite": {
+      "macro_character": 0.958,
+      "macro_coupling": 0.252,
+      "macro_movement": 0.482,
+      "macro_space": 0.398
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

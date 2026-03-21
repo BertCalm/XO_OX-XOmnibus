@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8967
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9791,
+    "brightness": 0.1083,
+    "density": 0.9076,
+    "movement": 0.4135,
+    "space": 0.6612,
+    "warmth": 0.9684
+  },
+  "engines": [
+    "Organon",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1159,
+    "COUPLING": 0.8879,
+    "MOVEMENT": 0.4655,
+    "SPACE": 0.5514
+  },
+  "mood": "Flux",
+  "name": "Slash Terracotta",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.2372,
+      "macro_coupling": 0.8523,
+      "macro_movement": 0.3647,
+      "macro_space": 0.6905
+    },
+    "Organon": {
+      "macro_character": 0.1159,
+      "macro_coupling": 0.8879,
+      "macro_movement": 0.4655,
+      "macro_space": 0.5514
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-warmth",
+    "high-density",
+    "high-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Octopus",
+        "type": "AMPLITUDE_SYNC",
+        "amount": 0.79
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.083,
+    "brightness": 0.915,
+    "density": 0.096,
+    "movement": 0.04,
+    "space": 0.932,
+    "warmth": 0.529
+  },
+  "engines": [
+    "Obscura",
+    "Octopus"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Poised Infinite",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.67,
+      "macro_movement": 0.65,
+      "macro_space": 0.14
+    },
+    "Octopus": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.65,
+      "macro_space": 0.22
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

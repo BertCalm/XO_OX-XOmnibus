@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Orbital",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.166
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.048,
+    "density": 0.487,
+    "movement": 0.027,
+    "space": 0.11,
+    "warmth": 0.088
+  },
+  "engines": [
+    "Optic",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.068,
+    "COUPLING": 0.11,
+    "MOVEMENT": 0.257,
+    "SPACE": 0.11
+  },
+  "mood": "Atmosphere",
+  "name": "Anchored Dusk",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.068,
+      "macro_coupling": 0.11,
+      "macro_movement": 0.257,
+      "macro_space": 0.11
+    },
+    "Orbital": {
+      "macro_character": 0.068,
+      "macro_coupling": 0.11,
+      "macro_movement": 0.257,
+      "macro_space": 0.11
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

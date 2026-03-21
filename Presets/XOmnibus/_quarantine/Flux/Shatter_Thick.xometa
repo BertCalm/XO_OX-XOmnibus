@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Temporal",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme cold warmth, extreme violent aggression, extreme dense density. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.954,
+    "brightness": 0.923,
+    "density": 0.947,
+    "movement": 0.47,
+    "space": 0.574,
+    "warmth": 0.054
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Shatter Thick",
+  "parameters": {
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "cold",
+    "aggressive",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Ole",
+        "type": "HARMONIC_STACK",
+        "amount": 0.76
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.912,
+    "brightness": 0.046,
+    "density": 0.936,
+    "movement": 0.468,
+    "space": 0.083,
+    "warmth": 0.073
+  },
+  "engines": [
+    "Obese",
+    "Ole"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Obsidian Layered",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.53,
+      "macro_movement": 0.78,
+      "macro_space": 0.2
+    },
+    "Ole": {
+      "macro_character": 0.71,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.79,
+      "macro_space": 0.17
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

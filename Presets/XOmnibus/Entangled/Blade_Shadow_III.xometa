@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "BIND",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for BIND coupling with XOuroboros.",
+  "dna": {
+    "aggression": 0.959,
+    "brightness": 0.0742,
+    "density": 0.4479,
+    "movement": 0.9154,
+    "space": 0.8978,
+    "warmth": 0.5614
+  },
+  "engines": [
+    "Ouroboros"
+  ],
+  "macroLabels": [
+    "SHRED",
+    "GLEAM",
+    "FLOW",
+    "DEPTH"
+  ],
+  "mood": "Flux",
+  "name": "Blade Shadow III",
+  "parameters": {
+    "Ouroboros": {
+      "couplingBus": 2,
+      "couplingLevel": 0.908
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "ouroboros"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

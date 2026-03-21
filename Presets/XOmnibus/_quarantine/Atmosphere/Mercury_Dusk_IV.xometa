@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Outwit",
+    "targetEngine": null,
+    "type": "Envelope"
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 5.",
+  "dna": {
+    "aggression": 0.562,
+    "brightness": 0.063,
+    "density": 0.556,
+    "movement": 0.929,
+    "space": 0.07,
+    "warmth": 0.052
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Mercury Dusk IV",
+  "parameters": {
+    "Outwit": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

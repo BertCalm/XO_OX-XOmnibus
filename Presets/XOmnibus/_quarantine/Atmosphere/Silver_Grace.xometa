@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Organon",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.033
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.034,
+    "brightness": 0.574,
+    "density": 0.065,
+    "movement": 0.073,
+    "space": 0.097,
+    "warmth": 0.025
+  },
+  "engines": [
+    "Opal",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.299,
+    "COUPLING": 0.066,
+    "MOVEMENT": 0.069,
+    "SPACE": 0.097
+  },
+  "mood": "Atmosphere",
+  "name": "Silver Grace",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.299,
+      "macro_coupling": 0.066,
+      "macro_movement": 0.069,
+      "macro_space": 0.097
+    },
+    "Organon": {
+      "macro_character": 0.299,
+      "macro_coupling": 0.066,
+      "macro_movement": 0.069,
+      "macro_space": 0.097
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

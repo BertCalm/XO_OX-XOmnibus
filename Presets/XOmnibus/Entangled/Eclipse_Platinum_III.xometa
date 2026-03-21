@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "MIRROR",
+  "description": "Ultra-diverse Entangled preset — cold intimate kinetic dark. Designed for MIRROR coupling with XOmbre.",
+  "dna": {
+    "aggression": 0.4664,
+    "brightness": 0.0916,
+    "density": 0.5862,
+    "movement": 0.8917,
+    "space": 0.1017,
+    "warmth": 0.0968
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "macroLabels": [
+    "RADIANCE",
+    "GLOW",
+    "VOID",
+    "DRIFT"
+  ],
+  "mood": "Flux",
+  "name": "Eclipse Platinum III",
+  "parameters": {
+    "Ombre": {
+      "couplingBus": 1,
+      "couplingLevel": 0.936
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "ombre"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

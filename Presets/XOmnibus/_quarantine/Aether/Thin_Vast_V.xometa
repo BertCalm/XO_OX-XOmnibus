@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "OddfeliX",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.8917
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5002,
+    "brightness": 0.0791,
+    "density": 0.0323,
+    "movement": 0.6815,
+    "space": 0.9469,
+    "warmth": 0.902
+  },
+  "engines": [
+    "Obscura",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4906,
+    "COUPLING": 0.8917,
+    "MOVEMENT": 0.6815,
+    "SPACE": 0.9469
+  },
+  "mood": "Aether",
+  "name": "Thin Vast V",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.4238,
+      "macro_coupling": 0.6567,
+      "macro_movement": 0.6792,
+      "macro_space": 0.3146
+    },
+    "OddfeliX": {
+      "macro_character": 0.7719,
+      "macro_coupling": 0.784,
+      "macro_movement": 0.6045,
+      "macro_space": 0.5978
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "vast",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

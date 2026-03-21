@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Obese",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.916
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.033,
+    "density": 0.698,
+    "movement": 0.622,
+    "space": 0.908,
+    "warmth": 0.083
+  },
+  "engines": [
+    "Onset",
+    "Obese"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.529,
+    "COUPLING": 0.695,
+    "MOVEMENT": 0.203,
+    "SPACE": 0.676
+  },
+  "mood": "Foundation",
+  "name": "Obsidian Feather III",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.449,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.425,
+      "macro_space": 0.518
+    },
+    "Onset": {
+      "macro_character": 0.665,
+      "macro_coupling": 0.538,
+      "macro_movement": 0.339,
+      "macro_space": 0.506
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "dark",
+    "cold",
+    "vast",
+    "gentle",
+    "spatial"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

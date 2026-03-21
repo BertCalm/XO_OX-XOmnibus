@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Low",
+  "couplingType": "WEAVE",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for WEAVE coupling with XObscura.",
+  "dna": {
+    "aggression": 0.1089,
+    "brightness": 0.941,
+    "density": 0.0871,
+    "movement": 0.4679,
+    "space": 0.8969,
+    "warmth": 0.4805
+  },
+  "engines": [
+    "Obscura"
+  ],
+  "macroLabels": [
+    "SHIMMER",
+    "WEIGHT",
+    "OPEN",
+    "SHRED"
+  ],
+  "mood": "Atmosphere",
+  "name": "Prismatic Thin II",
+  "parameters": {
+    "Obscura": {
+      "couplingBus": 3,
+      "couplingLevel": 0.724
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "weave",
+    "obscura"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

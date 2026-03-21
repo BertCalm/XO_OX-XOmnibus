@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Onset",
+        "type": "FILTER_SHARE",
+        "amount": 0.71
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.051,
+    "density": 0.903,
+    "movement": 0.503,
+    "space": 0.055,
+    "warmth": 0.097
+  },
+  "engines": [
+    "Oracle",
+    "Onset"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Voltage Charcoal",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.68,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.99,
+      "macro_space": 0.27
+    },
+    "Oracle": {
+      "macro_character": 0.82,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.88,
+      "macro_space": 0.49
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

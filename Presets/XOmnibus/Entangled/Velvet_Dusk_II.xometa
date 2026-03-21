@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9723,
+        "source": "Ombre",
+        "target": "Oblique",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Hot Sparse Gentle character entanglement — OMBRE × OBLIQUE via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.0504,
+    "brightness": 0.0433,
+    "density": 0.1168,
+    "movement": 0.4361,
+    "space": 0.5805,
+    "warmth": 0.9657
+  },
+  "engines": [
+    "Ombre",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "SHADE",
+    "GRADIENT",
+    "FADE",
+    "DRIFT"
+  ],
+  "macros": {
+    "CHARACTER": 0.5045,
+    "COUPLING": 0.9723,
+    "MOVEMENT": 0.4361,
+    "SPACE": 0.5805
+  },
+  "mood": "Entangled",
+  "name": "Velvet Dusk II",
+  "parameters": {
+    "Oblique": {
+      "amp_attack": 0.2453,
+      "amp_release": 0.4237,
+      "coupling_level": 0.5689,
+      "density": 0.0916,
+      "drive": 0.1113,
+      "filter_cutoff": 0.212,
+      "filter_resonance": 0.1053,
+      "macro_character": 0.6933,
+      "macro_coupling": 0.6041,
+      "macro_movement": 0.4558,
+      "macro_space": 0.5967,
+      "output_level": 0.7065,
+      "reverb_mix": 0.4389,
+      "reverb_size": 0.5512
+    },
+    "Ombre": {
+      "amp_attack": 0.299,
+      "amp_release": 0.4157,
+      "coupling_level": 0.5727,
+      "density": 0.1233,
+      "drive": 0.0748,
+      "filter_cutoff": 0.242,
+      "filter_resonance": 0.1245,
+      "macro_character": 0.7169,
+      "macro_coupling": 0.6383,
+      "macro_movement": 0.4352,
+      "macro_space": 0.5957,
+      "output_level": 0.7271,
+      "reverb_mix": 0.447,
+      "reverb_size": 0.5636
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "warm",
+    "sparse",
+    "gentle",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

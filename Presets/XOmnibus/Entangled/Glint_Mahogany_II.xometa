@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — bright hot violent kinetic. Designed for FLOW coupling with XOwlfish.",
+  "dna": {
+    "aggression": 0.9107,
+    "brightness": 0.9586,
+    "density": 0.4605,
+    "movement": 0.9153,
+    "space": 0.5416,
+    "warmth": 0.9483
+  },
+  "engines": [
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "RADIANCE",
+    "HEAT",
+    "FLOW",
+    "SHRED"
+  ],
+  "mood": "Flux",
+  "name": "Glint Mahogany II",
+  "parameters": {
+    "Owlfish": {
+      "couplingBus": 3,
+      "couplingLevel": 0.646
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "owlfish"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

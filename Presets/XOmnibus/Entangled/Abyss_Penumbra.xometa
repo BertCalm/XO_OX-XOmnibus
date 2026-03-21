@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.9736,
+        "source": "Ottoni",
+        "target": "OddOscar",
+        "type": "FORMANT_BRIDGE"
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "description": "Dark Hot Vast Violent character entanglement — OTTONI × ODDOSCAR via Formant Bridge. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.9443,
+    "brightness": 0.0391,
+    "density": 0.3748,
+    "movement": 0.4155,
+    "space": 0.971,
+    "warmth": 0.89
+  },
+  "engines": [
+    "Ottoni",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "BRASS",
+    "GROW",
+    "BLAZE",
+    "BELL"
+  ],
+  "macros": {
+    "CHARACTER": 0.4646,
+    "COUPLING": 0.9736,
+    "MOVEMENT": 0.4155,
+    "SPACE": 0.971
+  },
+  "mood": "Entangled",
+  "name": "Abyss Penumbra",
+  "parameters": {
+    "OddOscar": {
+      "amp_attack": 0.2896,
+      "amp_release": 0.664,
+      "coupling_level": 0.923,
+      "density": 0.3953,
+      "drive": 0.8088,
+      "filter_cutoff": 0.227,
+      "filter_resonance": 0.5731,
+      "macro_character": 0.6508,
+      "macro_coupling": 0.9358,
+      "macro_movement": 0.438,
+      "macro_space": 0.9928,
+      "output_level": 0.8145,
+      "reverb_mix": 0.6875,
+      "reverb_size": 0.8219
+    },
+    "Ottoni": {
+      "amp_attack": 0.3006,
+      "amp_release": 0.6781,
+      "coupling_level": 0.9057,
+      "density": 0.3524,
+      "drive": 0.8291,
+      "filter_cutoff": 0.2201,
+      "filter_resonance": 0.5715,
+      "macro_character": 0.6433,
+      "macro_coupling": 0.9354,
+      "macro_movement": 0.4062,
+      "macro_space": 0.9832,
+      "output_level": 0.7563,
+      "reverb_mix": 0.6575,
+      "reverb_size": 0.7878
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "dark",
+    "warm",
+    "vast",
+    "violent",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

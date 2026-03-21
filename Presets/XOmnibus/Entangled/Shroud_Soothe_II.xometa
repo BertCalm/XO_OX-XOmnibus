@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Extreme",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — dark sparse gentle still. Designed for FLOW coupling with XOrphica.",
+  "dna": {
+    "aggression": 0.0489,
+    "brightness": 0.0411,
+    "density": 0.0586,
+    "movement": 0.0695,
+    "space": 0.4127,
+    "warmth": 0.4227
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "RADIANCE",
+    "SHRED",
+    "PRESS",
+    "FLOW"
+  ],
+  "mood": "Foundation",
+  "name": "Shroud Soothe II",
+  "parameters": {
+    "Orphica": {
+      "couplingBus": 2,
+      "couplingLevel": 0.726
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "orphica"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

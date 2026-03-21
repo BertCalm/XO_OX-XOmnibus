@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.398,
+      "destination": "OVERWORLD",
+      "source": "ODDFELIX",
+      "type": "RESONANCE_SHARE"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
+  "dna": {
+    "aggression": 0.52,
+    "brightness": 0.926,
+    "density": 0.091,
+    "movement": 0.486,
+    "space": 0.892,
+    "warmth": 0.059
+  },
+  "engines": [
+    "OddfeliX",
+    "Overworld"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Ice Glint",
+  "parameters": {
+    "OddfeliX": {
+      "level": 0.754,
+      "pan": 0.136
+    },
+    "Overworld": {
+      "level": 0.674,
+      "pan": -0.039
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

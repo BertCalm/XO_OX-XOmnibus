@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Stacked 4-voice unison, long decay, slow LFO2 pan sweep — feliX as a bright pad. High polyphony layers harmonically to create a shimmering Neon Tetra Blue haze. Not the tetra darting — the whole lit-up tank, holding still.",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.28,
+    "movement": 0.38,
+    "density": 0.78,
+    "space": 0.85,
+    "aggression": 0.12
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 0.05,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "mood": "Prism",
+  "name": "FELIX Blue Prism Pad",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.15,
+      "snap_decay": 4.5,
+      "snap_filterCutoff": 7200.0,
+      "snap_filterReso": 0.22,
+      "snap_filterEnvDepth": 0.28,
+      "snap_detune": 22.0,
+      "snap_level": 0.72,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": -1.0,
+      "snap_unison": 2,
+      "snap_polyphony": 3,
+      "snap_lfoDepth": 0.07,
+      "snap_lfo2Depth": 0.14,
+      "snap_lfoRate": 1.2,
+      "snap_lfo2Rate": 0.06,
+      "snap_macroDart": 0.05,
+      "snap_macroSchool": 0.72,
+      "snap_macroSurface": 0.45,
+      "snap_macroDepth": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["prism", "oddfelix", "pad", "bright", "shimmer", "wide", "dense", "lush"],
+  "tempo": null,
+  "version": "1.0.0"
+}

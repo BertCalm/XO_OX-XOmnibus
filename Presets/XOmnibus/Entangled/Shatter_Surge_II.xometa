@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — hot violent kinetic bright. Designed for ORBIT coupling with XOceanic.",
+  "dna": {
+    "aggression": 0.9577,
+    "brightness": 0.9407,
+    "density": 0.596,
+    "movement": 0.9502,
+    "space": 0.5935,
+    "warmth": 0.8999
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "IMPACT",
+    "DRIFT",
+    "GLEAM",
+    "BURN"
+  ],
+  "mood": "Flux",
+  "name": "Shatter Surge II",
+  "parameters": {
+    "Oceanic": {
+      "couplingBus": 1,
+      "couplingLevel": 0.768
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oceanic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

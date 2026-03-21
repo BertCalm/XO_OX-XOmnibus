@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "Origami",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.673
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.651,
+    "brightness": 0.911,
+    "density": 0.89,
+    "movement": 0.637,
+    "space": 0.311,
+    "warmth": 0.572
+  },
+  "engines": [
+    "Osprey",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.755,
+    "COUPLING": 0.557,
+    "MOVEMENT": 0.713,
+    "SPACE": 0.251
+  },
+  "mood": "Flux",
+  "name": "Blaze Lattice Ii",
+  "parameters": {
+    "Origami": {
+      "macro_character": 0.779,
+      "macro_coupling": 0.418,
+      "macro_movement": 0.858,
+      "macro_space": 0.28
+    },
+    "Osprey": {
+      "macro_character": 0.755,
+      "macro_coupling": 0.557,
+      "macro_movement": 0.713,
+      "macro_space": 0.251
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "bright",
+    "dense",
+    "saturated"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

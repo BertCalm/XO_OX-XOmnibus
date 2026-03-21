@@ -1,0 +1,61 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osprey",
+        "engineB": "OddOscar",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.587
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.618,
+    "brightness": 0.361,
+    "density": 0.985,
+    "movement": 0.949,
+    "space": 0.792,
+    "warmth": 0.224
+  },
+  "engines": [
+    "Osprey",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.494,
+    "COUPLING": 0.361,
+    "MOVEMENT": 0.949,
+    "SPACE": 0.572
+  },
+  "mood": "Entangled",
+  "name": "Massive Drift",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.158,
+      "macro_coupling": 0.71,
+      "macro_movement": 0.951,
+      "macro_space": 0.7
+    },
+    "Osprey": {
+      "macro_character": 0.55,
+      "macro_coupling": 0.29,
+      "macro_movement": 0.947,
+      "macro_space": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "rupture",
+    "intensity"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

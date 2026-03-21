@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Obbligato",
+        "type": "HARMONIC_STACK",
+        "amount": 0.76
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.915,
+    "brightness": 0.488,
+    "density": 0.942,
+    "movement": 0.912,
+    "space": 0.07,
+    "warmth": 0.078
+  },
+  "engines": [
+    "Orbital",
+    "Obbligato"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Layered Chamber",
+  "parameters": {
+    "Obbligato": {
+      "macro_character": 0.99,
+      "macro_coupling": 0.54,
+      "macro_movement": 0.96,
+      "macro_space": 0.35
+    },
+    "Orbital": {
+      "macro_character": 0.89,
+      "macro_coupling": 0.64,
+      "macro_movement": 0.75,
+      "macro_space": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "family"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

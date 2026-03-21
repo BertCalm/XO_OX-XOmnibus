@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "PITCH_FOLLOW",
+        "amount": 0.61
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.046,
+    "brightness": 0.938,
+    "density": 0.557,
+    "movement": 0.069,
+    "space": 0.951,
+    "warmth": 0.916
+  },
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Silk Horizon",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.91,
+      "macro_coupling": 0.9,
+      "macro_movement": 0.83,
+      "macro_space": 0.46
+    },
+    "Opal": {
+      "macro_character": 0.86,
+      "macro_coupling": 0.83,
+      "macro_movement": 0.81,
+      "macro_space": 0.13
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "flux"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

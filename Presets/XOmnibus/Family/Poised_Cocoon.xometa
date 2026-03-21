@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Ole",
+        "type": "PITCH_SYNC",
+        "amount": 0.181
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.052,
+    "brightness": 0.069,
+    "density": 0.098,
+    "movement": 0.03,
+    "space": 0.032,
+    "warmth": 0.59
+  },
+  "engines": [
+    "Oblong",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.33,
+    "COUPLING": 0.042,
+    "MOVEMENT": 0.064,
+    "SPACE": 0.032
+  },
+  "mood": "Family",
+  "name": "Poised Cocoon",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.33,
+      "macro_coupling": 0.042,
+      "macro_movement": 0.064,
+      "macro_space": 0.032,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Ole": {
+      "macro_character": 0.33,
+      "macro_coupling": 0.042,
+      "macro_movement": 0.064,
+      "macro_space": 0.032
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

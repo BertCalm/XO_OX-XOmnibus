@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Optic",
+        "engineB": "Oblong",
+        "type": "ENVELOPE_SLAVE",
+        "amount": 0.94
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.947,
+    "brightness": 0.46,
+    "density": 0.934,
+    "movement": 0.956,
+    "space": 0.068,
+    "warmth": 0.048
+  },
+  "engines": [
+    "Optic",
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Surge Chrome",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.67,
+      "macro_coupling": 0.68,
+      "macro_movement": 0.91,
+      "macro_space": 0.1,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Optic": {
+      "macro_character": 0.69,
+      "macro_coupling": 0.63,
+      "macro_movement": 0.81,
+      "macro_space": 0.41
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

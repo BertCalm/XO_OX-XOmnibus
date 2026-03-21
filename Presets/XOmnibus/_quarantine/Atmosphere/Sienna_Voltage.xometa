@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Oracle",
+        "type": "FILTER_MOD",
+        "amount": 0.822
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.944,
+    "brightness": 0.896,
+    "density": 0.901,
+    "movement": 0.59,
+    "space": 0.909,
+    "warmth": 0.963
+  },
+  "engines": [
+    "Opal",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.929,
+    "COUPLING": 0.926,
+    "MOVEMENT": 0.746,
+    "SPACE": 0.909
+  },
+  "mood": "Atmosphere",
+  "name": "Sienna Voltage",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.926,
+      "macro_movement": 0.746,
+      "macro_space": 0.909
+    },
+    "Oracle": {
+      "macro_character": 0.929,
+      "macro_coupling": 0.926,
+      "macro_movement": 0.746,
+      "macro_space": 0.909
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

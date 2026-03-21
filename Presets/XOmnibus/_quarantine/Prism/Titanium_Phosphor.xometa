@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Extreme",
+    "sourceEngine": "Outwit",
+    "targetEngine": null,
+    "type": "Granular"
+  },
+  "couplingIntensity": "Extreme",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: COLD DRY WIDE VIOLENT PRI 1.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.939,
+    "density": 0.106,
+    "movement": 0.453,
+    "space": 0.893,
+    "warmth": 0.058
+  },
+  "engines": [
+    "Outwit"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Titanium Phosphor",
+  "parameters": {
+    "Outwit": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-high-brightness",
+    "x-low-warmth",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

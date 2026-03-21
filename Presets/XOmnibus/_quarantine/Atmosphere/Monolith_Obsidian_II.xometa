@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.214
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.059,
+    "brightness": 0.032,
+    "density": 0.042,
+    "movement": 0.026,
+    "space": 0.435,
+    "warmth": 0.051
+  },
+  "engines": [
+    "Organon",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.041,
+    "COUPLING": 0.247,
+    "MOVEMENT": 0.034,
+    "SPACE": 0.435
+  },
+  "mood": "Atmosphere",
+  "name": "Monolith Obsidian II",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.041,
+      "macro_coupling": 0.247,
+      "macro_movement": 0.034,
+      "macro_space": 0.435
+    },
+    "Organon": {
+      "macro_character": 0.041,
+      "macro_coupling": 0.247,
+      "macro_movement": 0.034,
+      "macro_space": 0.435
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

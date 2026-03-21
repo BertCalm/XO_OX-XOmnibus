@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Osteria",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.605
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.069,
+    "brightness": 0.936,
+    "density": 0.895,
+    "movement": 0.587,
+    "space": 0.301,
+    "warmth": 0.929
+  },
+  "engines": [
+    "Overworld",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.503,
+    "COUPLING": 0.326,
+    "MOVEMENT": 0.587,
+    "SPACE": 0.301
+  },
+  "mood": "Prism",
+  "name": "Luminous Grace II",
+  "parameters": {
+    "Osteria": {
+      "macro_character": 0.066,
+      "macro_coupling": 0.532,
+      "macro_movement": 0.587,
+      "macro_space": 0.301
+    },
+    "Overworld": {
+      "macro_character": 0.503,
+      "macro_coupling": 0.326,
+      "macro_movement": 0.587,
+      "macro_space": 0.301
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "dense",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

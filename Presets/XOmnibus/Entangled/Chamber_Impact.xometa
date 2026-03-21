@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Extreme",
+  "couplingType": "FLOW",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for FLOW coupling with XOddOscar.",
+  "dna": {
+    "aggression": 0.9249,
+    "brightness": 0.4262,
+    "density": 0.9209,
+    "movement": 0.4576,
+    "space": 0.0587,
+    "warmth": 0.8936
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "VOID",
+    "IMPACT",
+    "PRESS",
+    "GLOW"
+  ],
+  "mood": "Prism",
+  "name": "Chamber Impact",
+  "parameters": {
+    "OddOscar": {
+      "couplingBus": 1,
+      "couplingLevel": 0.855
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "flow",
+    "oddoscar"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

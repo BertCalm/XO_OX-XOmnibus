@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Ombre",
+    "targetEngine": null,
+    "type": "Harmonic"
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: BRIGHT DRY QUIET OPEN ATM 4.",
+  "dna": {
+    "aggression": 0.107,
+    "brightness": 0.929,
+    "density": 0.086,
+    "movement": 0.519,
+    "space": 0.926,
+    "warmth": 0.453
+  },
+  "engines": [
+    "Ombre"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Phosphor Expanse",
+  "parameters": {
+    "Ombre": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-high-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

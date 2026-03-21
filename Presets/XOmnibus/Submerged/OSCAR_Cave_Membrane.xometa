@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Cave Membrane",
+  "mood": "Submerged",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oscar at rest in the deep cave — gill membranes pulse slowly as sine fades to near-silence. LFO1 at near-breath rate flickers the cutoff in darkness.",
+  "tags": ["cave", "deep", "membrane", "breathing", "sine", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.18, "warmth": 0.72, "movement": 0.28, "density": 0.45, "space": 0.82, "aggression": 0.08},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.1,
+      "morph_bloom": 3.2,
+      "morph_decay": 4.5,
+      "morph_sustain": 0.55,
+      "morph_release": 5.0,
+      "morph_filterCutoff": 420.0,
+      "morph_filterReso": 0.28,
+      "morph_filterEnvDepth": 0.18,
+      "morph_drift": 0.42,
+      "morph_sub": 0.65,
+      "morph_detune": 6.0,
+      "morph_level": 0.72,
+      "morph_polyphony": 3,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_lfo1Rate": 0.4,
+      "morph_lfo1Depth": 0.22,
+      "morph_lfo2Rate": 0.012,
+      "morph_lfo2Depth": 0.18,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.65
+    }
+  },
+  "macros": {"CHARACTER": 0.1, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.65},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "couplingType": "PULSE",
+  "description": "Ultra-diverse Entangled preset — dark cold sparse vast. Designed for PULSE coupling with XOceanic.",
+  "dna": {
+    "aggression": 0.5468,
+    "brightness": 0.0845,
+    "density": 0.0895,
+    "movement": 0.5931,
+    "space": 0.9205,
+    "warmth": 0.098
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "EXPANSE",
+    "LUSTER",
+    "LAYER",
+    "EMBER"
+  ],
+  "mood": "Foundation",
+  "name": "Expanse Charcoal V",
+  "parameters": {
+    "Oceanic": {
+      "couplingBus": 2,
+      "couplingLevel": 0.718
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "pulse",
+    "oceanic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

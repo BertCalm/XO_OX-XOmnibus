@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ombre",
+        "type": "CHAOS_INJECT",
+        "amount": 0.8672
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6788,
+    "brightness": 0.0201,
+    "density": 0.1222,
+    "movement": 0.423,
+    "space": 0.8723,
+    "warmth": 0.9089
+  },
+  "engines": [
+    "Oracle",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4645,
+    "COUPLING": 0.8672,
+    "MOVEMENT": 0.423,
+    "SPACE": 0.8723
+  },
+  "mood": "Aether",
+  "name": "Umbra Copper",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.9101,
+      "macro_coupling": 0.5958,
+      "macro_movement": 0.3238,
+      "macro_space": 0.6549
+    },
+    "Oracle": {
+      "macro_character": 0.9335,
+      "macro_coupling": 0.2943,
+      "macro_movement": 0.5995,
+      "macro_space": 0.6948
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "vast",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "None",
+    "sourceEngine": "Organon",
+    "targetEngine": null,
+    "type": "Chaos"
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK COLD DENSE VIOLENT ATM 2.",
+  "dna": {
+    "aggression": 0.951,
+    "brightness": 0.081,
+    "density": 0.925,
+    "movement": 0.427,
+    "space": 0.445,
+    "warmth": 0.107
+  },
+  "engines": [
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Shatter Thick II",
+  "parameters": {
+    "Organon": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-aggression",
+    "x-high-density"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

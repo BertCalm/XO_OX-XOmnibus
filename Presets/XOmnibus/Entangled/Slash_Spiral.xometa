@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "couplingType": "SPARK",
+  "description": "Ultra-diverse Entangled preset — dark vast kinetic violent. Designed for SPARK coupling with XOrganon.",
+  "dna": {
+    "aggression": 0.9489,
+    "brightness": 0.0755,
+    "density": 0.4398,
+    "movement": 0.9338,
+    "space": 0.8974,
+    "warmth": 0.5015
+  },
+  "engines": [
+    "Organon"
+  ],
+  "macroLabels": [
+    "FORCE",
+    "SWEEP",
+    "LUSTER",
+    "VOID"
+  ],
+  "mood": "Flux",
+  "name": "Slash Spiral",
+  "parameters": {
+    "Organon": {
+      "couplingBus": 2,
+      "couplingLevel": 0.799
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "spark",
+    "organon"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

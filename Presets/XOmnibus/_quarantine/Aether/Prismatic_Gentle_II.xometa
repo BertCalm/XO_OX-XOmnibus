@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Odyssey",
+        "engineB": "Owlfish",
+        "type": "FILTER_MOD",
+        "amount": 0.745
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.09,
+    "brightness": 0.964,
+    "density": 0.101,
+    "movement": 0.451,
+    "space": 0.625,
+    "warmth": 0.424
+  },
+  "engines": [
+    "Odyssey",
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.694,
+    "COUPLING": 0.814,
+    "MOVEMENT": 0.451,
+    "SPACE": 0.625
+  },
+  "mood": "Aether",
+  "name": "Prismatic Gentle II",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.814,
+      "macro_movement": 0.451,
+      "macro_space": 0.625
+    },
+    "Owlfish": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.813,
+      "macro_movement": 0.459,
+      "macro_space": 0.602
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

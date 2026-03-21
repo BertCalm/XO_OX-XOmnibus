@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Organon",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.933
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.035,
+    "brightness": 0.931,
+    "density": 0.042,
+    "movement": 0.557,
+    "space": 0.485,
+    "warmth": 0.311
+  },
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.621,
+    "COUPLING": 0.59,
+    "MOVEMENT": 0.557,
+    "SPACE": 0.485
+  },
+  "mood": "Entangled",
+  "name": "Feather Gossamer",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.621,
+      "macro_coupling": 0.59,
+      "macro_movement": 0.557,
+      "macro_space": 0.485
+    },
+    "Organon": {
+      "macro_character": 0.569,
+      "macro_coupling": 0.47,
+      "macro_movement": 0.635,
+      "macro_space": 0.561
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "sparse",
+    "gentle",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

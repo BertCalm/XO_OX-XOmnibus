@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.667,
+      "destination": "ORCA",
+      "source": "OWLFISH",
+      "type": "SPATIAL_COUPLE"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, warm, vast.",
+  "dna": {
+    "aggression": 0.097,
+    "brightness": 0.893,
+    "density": 0.517,
+    "movement": 0.419,
+    "space": 0.939,
+    "warmth": 0.891
+  },
+  "engines": [
+    "Owlfish",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Vast Gentle",
+  "parameters": {
+    "Orca": {
+      "level": 0.683,
+      "pan": -0.093
+    },
+    "Owlfish": {
+      "level": 0.701,
+      "pan": 0.077
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "bright",
+    "warm",
+    "vast",
+    "gentle",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

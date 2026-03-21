@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Orbital",
+    "targetEngine": null,
+    "type": "FM"
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: DARK COLD DRY STILL PRI 1.",
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.047,
+    "density": 0.098,
+    "movement": 0.045,
+    "space": 0.517,
+    "warmth": 0.459
+  },
+  "engines": [
+    "Orbital"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Suspended Charcoal",
+  "parameters": {
+    "Orbital": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-aggression",
+    "x-low-density",
+    "x-low-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

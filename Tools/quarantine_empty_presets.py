@@ -2,9 +2,12 @@
 """
 quarantine_empty_presets.py — Move empty/macro-only .xometa presets to _quarantine/
 
-A preset is "empty" if ANY engine in the parameters dict has:
+A preset is "empty" if ALL engines in the parameters dict have:
   - 0 keys, OR
   - Only keys starting with `macro_` (no actual DSP parameters)
+
+Multi-engine coupling presets where at least one engine has real DSP params
+are valid and are NOT quarantined.
 
 Usage:
     python3 Tools/quarantine_empty_presets.py           # dry run (default)
@@ -37,6 +40,10 @@ def classify_preset(path: Path) -> tuple[bool, list[str]]:
     """
     Parse a .xometa file and determine if it is empty.
 
+    A preset is quarantined only if ALL engines have empty/macro-only params.
+    If at least one engine has real DSP params, the preset is a valid coupling
+    preset and should be kept.
+
     Returns:
         (is_empty: bool, offending_engines: list[str])
     """
@@ -51,14 +58,21 @@ def classify_preset(path: Path) -> tuple[bool, list[str]]:
     if not isinstance(parameters, dict):
         return False, []
 
-    offending = []
-    for engine_name, engine_params in parameters.items():
-        if not isinstance(engine_params, dict):
-            continue
-        if is_empty_engine(engine_params):
-            offending.append(engine_name)
+    engine_entries = [
+        (engine_name, engine_params)
+        for engine_name, engine_params in parameters.items()
+        if isinstance(engine_params, dict)
+    ]
 
-    return bool(offending), offending
+    if not engine_entries:
+        # No engine blocks at all — treat as empty
+        return True, []
+
+    offending = [name for name, params in engine_entries if is_empty_engine(params)]
+
+    # Quarantine only when EVERY engine block is empty/macro-only
+    all_empty = len(offending) == len(engine_entries)
+    return all_empty, offending
 
 
 def main() -> None:
@@ -150,7 +164,7 @@ def main() -> None:
         print()
 
     if engine_tally:
-        print("Breakdown by engine (engine with empty/macro-only params):")
+        print("Breakdown by engine (all engines were empty/macro-only in quarantined presets):")
         for engine in sorted(engine_tally, key=lambda e: -engine_tally[e]):
             print(f"  {engine:<30} {engine_tally[engine]:>5}")
         print()

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Radiant Nebula",
+  "mood": "Entangled",
+  "engines": [
+    "Ottoni",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ottoni × Opal — Filter Mod coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "ottoni",
+    "opal",
+    "filter-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.405,
+    "movement": 0.428,
+    "density": 0.448,
+    "space": 0.902,
+    "aggression": 0.116
+  },
+  "parameters": {
+    "Ottoni": {},
+    "Opal": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ottoni",
+        "engineB": "Opal",
+        "type": "FILTER_MOD",
+        "amount": 0.658
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.616,
+        "engineA": "Ombre",
+        "engineB": "OddfeliX",
+        "type": "TIMBRE_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "description": "Ombre × OddFelix — Timbre Blend coupling at extreme DNA corner.",
+  "dna": {
+    "aggression": 0.624,
+    "brightness": 0.95,
+    "density": 0.931,
+    "movement": 0.429,
+    "space": 0.404,
+    "warmth": 0.904
+  },
+  "engines": [
+    "Ombre",
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "BRIGHTNESS",
+    "WARMTH",
+    "FURY",
+    "DENSITY"
+  ],
+  "mood": "Entangled",
+  "name": "Radiant Packed",
+  "parameters": {
+    "Ombre": {},
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "bright",
+    "ombre",
+    "oddfelix",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

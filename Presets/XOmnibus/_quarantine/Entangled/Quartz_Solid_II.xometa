@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Quartz Solid II",
+  "mood": "Entangled",
+  "engines": [
+    "Ole",
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ole × Optic — Resonance Share coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "ole",
+    "optic",
+    "resonance-share",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.116,
+    "warmth": 0.057,
+    "movement": 0.442,
+    "density": 0.897,
+    "space": 0.533,
+    "aggression": 0.572
+  },
+  "parameters": {
+    "Ole": {},
+    "Optic": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ole",
+        "engineB": "Optic",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.618
+      }
+    ]
+  },
+  "sequencer": null
+}

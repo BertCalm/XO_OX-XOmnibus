@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obsidian",
+        "engineB": "Overdub",
+        "type": "CHAOS_INJECT",
+        "amount": 0.762
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.515,
+    "brightness": 0.889,
+    "density": 0.077,
+    "movement": 0.08,
+    "space": 0.486,
+    "warmth": 0.885
+  },
+  "engines": [
+    "Obsidian",
+    "Overdub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.633,
+    "COUPLING": 0.816,
+    "MOVEMENT": 0.767,
+    "SPACE": 0.307
+  },
+  "mood": "Foundation",
+  "name": "Mist Serene",
+  "parameters": {
+    "Obsidian": {
+      "macro_character": 0.896,
+      "macro_coupling": 0.348,
+      "macro_movement": 0.749,
+      "macro_space": 0.895
+    },
+    "Overdub": {
+      "macro_character": 0.878,
+      "macro_coupling": 0.508,
+      "macro_movement": 0.239,
+      "macro_space": 0.47,
+      "dub_lfoDepth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "extreme",
+    "bright",
+    "warm",
+    "still",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

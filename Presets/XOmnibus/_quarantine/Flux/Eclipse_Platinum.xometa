@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.978
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.927,
+    "brightness": 0.051,
+    "density": 0.321,
+    "movement": 0.37,
+    "space": 0.597,
+    "warmth": 0.059
+  },
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.055,
+    "COUPLING": 0.773,
+    "MOVEMENT": 0.37,
+    "SPACE": 0.597
+  },
+  "mood": "Flux",
+  "name": "Eclipse Platinum",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.138,
+      "macro_coupling": 0.521,
+      "macro_movement": 0.374,
+      "macro_space": 0.598
+    },
+    "Overbite": {
+      "macro_character": 0.055,
+      "macro_coupling": 0.773,
+      "macro_movement": 0.37,
+      "macro_space": 0.597
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

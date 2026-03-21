@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.9592
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.5451,
+    "brightness": 0.0348,
+    "density": 0.633,
+    "movement": 0.1094,
+    "space": 0.9609,
+    "warmth": 0.9761
+  },
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1209,
+    "COUPLING": 0.4818,
+    "MOVEMENT": 0.1367,
+    "SPACE": 0.8335
+  },
+  "mood": "Flux",
+  "name": "Cinnamon Eclipse",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.1555,
+      "macro_coupling": 0.4915,
+      "macro_movement": 0.1623,
+      "macro_space": 0.8821
+    },
+    "Origami": {
+      "macro_character": 0.1209,
+      "macro_coupling": 0.4818,
+      "macro_movement": 0.1367,
+      "macro_space": 0.8335
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-warmth",
+    "low-movement",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

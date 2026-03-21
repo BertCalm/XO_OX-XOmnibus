@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblique",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.6254
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.0445,
+    "brightness": 0.0319,
+    "density": 0.6181,
+    "movement": 0.1144,
+    "space": 0.391,
+    "warmth": 0.9747
+  },
+  "engines": [
+    "Oceanic",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5033,
+    "COUPLING": 0.6254,
+    "MOVEMENT": 0.1144,
+    "SPACE": 0.391
+  },
+  "mood": "Aether",
+  "name": "Mahogany Matte",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.7096,
+      "macro_coupling": 0.4484,
+      "macro_movement": 0.8327,
+      "macro_space": 0.2207
+    },
+    "Oceanic": {
+      "macro_character": 0.2521,
+      "macro_coupling": 0.4634,
+      "macro_movement": 0.78,
+      "macro_space": 0.5821
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "still",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

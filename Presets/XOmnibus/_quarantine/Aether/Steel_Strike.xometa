@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obese",
+        "engineB": "Optic",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.612
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.911,
+    "brightness": 0.105,
+    "density": 0.581,
+    "movement": 0.372,
+    "space": 0.424,
+    "warmth": 0.054
+  },
+  "engines": [
+    "Obese",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.08,
+    "COUPLING": 0.403,
+    "MOVEMENT": 0.372,
+    "SPACE": 0.424
+  },
+  "mood": "Aether",
+  "name": "Steel Strike",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.08,
+      "macro_coupling": 0.403,
+      "macro_movement": 0.372,
+      "macro_space": 0.424
+    },
+    "Optic": {
+      "macro_character": 0.1,
+      "macro_coupling": 0.728,
+      "macro_movement": 0.342,
+      "macro_space": 0.464
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

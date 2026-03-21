@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Obese",
+        "type": "PHASE_LOCK",
+        "amount": 0.64
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.928,
+    "density": 0.454,
+    "movement": 0.088,
+    "space": 0.905,
+    "warmth": 0.954
+  },
+  "engines": [
+    "OddfeliX",
+    "Obese"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Velvet Whisper",
+  "parameters": {
+    "Obese": {
+      "macro_character": 0.64,
+      "macro_coupling": 0.65,
+      "macro_movement": 0.94,
+      "macro_space": 0.38
+    },
+    "OddfeliX": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.61,
+      "macro_movement": 0.93,
+      "macro_space": 0.16
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "aether"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

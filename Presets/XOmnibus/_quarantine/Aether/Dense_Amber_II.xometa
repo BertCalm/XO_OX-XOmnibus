@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.7717
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.8849,
+    "brightness": 0.5799,
+    "density": 0.9526,
+    "movement": 0.5002,
+    "space": 0.9046,
+    "warmth": 0.9383
+  },
+  "engines": [
+    "Oblique",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7591,
+    "COUPLING": 0.7717,
+    "MOVEMENT": 0.5002,
+    "SPACE": 0.9046
+  },
+  "mood": "Aether",
+  "name": "Dense Amber II",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.2194,
+      "macro_coupling": 0.7057,
+      "macro_movement": 0.3717,
+      "macro_space": 0.8454
+    },
+    "Ombre": {
+      "macro_character": 0.6403,
+      "macro_coupling": 0.7736,
+      "macro_movement": 0.2156,
+      "macro_space": 0.8161
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "vast",
+    "violent",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

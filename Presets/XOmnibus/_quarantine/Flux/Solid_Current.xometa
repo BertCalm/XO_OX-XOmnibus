@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Temporal",
+  "description": "Ultra-diverse Flux preset — extreme cold warmth, extreme kinetic movement, extreme dense density, extreme tight space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.596,
+    "brightness": 0.568,
+    "density": 0.953,
+    "movement": 0.927,
+    "space": 0.081,
+    "warmth": 0.104
+  },
+  "engines": [
+    "Onset"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Solid Current",
+  "parameters": {
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "cold",
+    "kinetic",
+    "dense",
+    "tight",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

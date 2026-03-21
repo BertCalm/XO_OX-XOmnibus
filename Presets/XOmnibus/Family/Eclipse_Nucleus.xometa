@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "OddOscar",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.142
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.529,
+    "brightness": 0.031,
+    "density": 0.084,
+    "movement": 0.073,
+    "space": 0.054,
+    "warmth": 0.076
+  },
+  "engines": [
+    "Oblong",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.053,
+    "COUPLING": 0.292,
+    "MOVEMENT": 0.079,
+    "SPACE": 0.054
+  },
+  "mood": "Family",
+  "name": "Eclipse Nucleus",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.053,
+      "macro_coupling": 0.292,
+      "macro_movement": 0.079,
+      "macro_space": 0.054,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "OddOscar": {
+      "macro_character": 0.053,
+      "macro_coupling": 0.292,
+      "macro_movement": 0.079,
+      "macro_space": 0.054
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

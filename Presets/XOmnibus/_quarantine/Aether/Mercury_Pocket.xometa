@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "Ombre",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.074
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.419,
+    "brightness": 0.102,
+    "density": 0.101,
+    "movement": 0.095,
+    "space": 0.09,
+    "warmth": 0.087
+  },
+  "engines": [
+    "Opal",
+    "Ombre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.095,
+    "COUPLING": 0.255,
+    "MOVEMENT": 0.098,
+    "SPACE": 0.09
+  },
+  "mood": "Aether",
+  "name": "Mercury Pocket",
+  "parameters": {
+    "Ombre": {
+      "macro_character": 0.095,
+      "macro_coupling": 0.255,
+      "macro_movement": 0.098,
+      "macro_space": 0.09
+    },
+    "Opal": {
+      "macro_character": 0.095,
+      "macro_coupling": 0.255,
+      "macro_movement": 0.098,
+      "macro_space": 0.09
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "minimal",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

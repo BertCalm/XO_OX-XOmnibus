@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Rhythmic",
+  "description": "Ultra-diverse Flux preset — extreme gentle aggression, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.102,
+    "brightness": 0.43,
+    "density": 0.102,
+    "movement": 0.1,
+    "space": 0.944,
+    "warmth": 0.538
+  },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Horizon Resting",
+  "parameters": {
+    "Ole": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "gentle",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

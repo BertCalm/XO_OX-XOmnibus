@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overbite",
+        "engineB": "Ocelot",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.944
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.933,
+    "brightness": 0.069,
+    "density": 0.39,
+    "movement": 0.348,
+    "space": 0.435,
+    "warmth": 0.077
+  },
+  "engines": [
+    "Overbite",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.073,
+    "COUPLING": 0.515,
+    "MOVEMENT": 0.348,
+    "SPACE": 0.435
+  },
+  "mood": "Foundation",
+  "name": "Barb Eclipse II",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.0,
+      "macro_coupling": 0.429,
+      "macro_movement": 0.387,
+      "macro_space": 0.557
+    },
+    "Overbite": {
+      "macro_character": 0.073,
+      "macro_coupling": 0.515,
+      "macro_movement": 0.348,
+      "macro_space": 0.435
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

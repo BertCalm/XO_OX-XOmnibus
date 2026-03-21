@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Undulation Sting",
+  "mood": "Entangled",
+  "engines": [
+    "Overdub",
+    "Owlfish"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overdub × Owlfish — Amplitude Mod coupling at extreme DNA corner.",
+  "tags": [
+    "dark",
+    "overdub",
+    "owlfish",
+    "amplitude-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.083,
+    "warmth": 0.377,
+    "movement": 0.958,
+    "density": 0.574,
+    "space": 0.403,
+    "aggression": 0.922
+  },
+  "parameters": {
+    "Overdub": {},
+    "Owlfish": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overdub",
+        "engineB": "Owlfish",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.907
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Resonant",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme gentle aggression, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.896,
+    "density": 0.058,
+    "movement": 0.463,
+    "space": 0.937,
+    "warmth": 0.531
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Wisp Horizon",
+  "parameters": {
+    "Overlap": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "gentle",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Temporal",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme hot warmth, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.487,
+    "brightness": 0.064,
+    "density": 0.423,
+    "movement": 0.959,
+    "space": 0.953,
+    "warmth": 0.945
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Cascade Ocean",
+  "parameters": {
+    "Overlap": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "dark",
+    "warm",
+    "kinetic",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

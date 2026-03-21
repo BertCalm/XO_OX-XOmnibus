@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ocelot",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.828
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.477,
+    "brightness": 0.081,
+    "density": 0.065,
+    "movement": 0.091,
+    "space": 0.951,
+    "warmth": 0.512
+  },
+  "engines": [
+    "Oracle",
+    "Ocelot"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.279,
+    "COUPLING": 0.804,
+    "MOVEMENT": 0.091,
+    "SPACE": 0.951
+  },
+  "mood": "Prism",
+  "name": "Abyss Mist II",
+  "parameters": {
+    "Ocelot": {
+      "macro_character": 0.698,
+      "macro_coupling": 0.466,
+      "macro_movement": 0.091,
+      "macro_space": 0.951
+    },
+    "Oracle": {
+      "macro_character": 0.279,
+      "macro_coupling": 0.804,
+      "macro_movement": 0.091,
+      "macro_space": 0.951
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "dark",
+    "still",
+    "sparse",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

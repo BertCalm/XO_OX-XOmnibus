@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Suspended Sienna",
+  "mood": "Entangled",
+  "engines": [
+    "Overworld",
+    "Oblong"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overworld × Oblong — Amplitude Mod coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "overworld",
+    "oblong",
+    "amplitude-mod",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.634,
+    "warmth": 0.914,
+    "movement": 0.069,
+    "density": 0.883,
+    "space": 0.461,
+    "aggression": 0.516
+  },
+  "parameters": {
+    "Overworld": {},
+    "Oblong": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overworld",
+        "engineB": "Oblong",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.937
+      }
+    ]
+  },
+  "sequencer": null
+}

@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Karplus-Strong plucked model with low damping — feliX as a struck glass rod. High snap gives brilliant metallic attack; slow decay lets the note bloom. Use as a marimba-adjacent percussive lead across the full keyboard.",
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.35,
+    "movement": 0.42,
+    "density": 0.28,
+    "space": 0.38,
+    "aggression": 0.3
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "mood": "Foundation",
+  "name": "FELIX Karplus Strike",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.72,
+      "snap_decay": 1.4,
+      "snap_filterCutoff": 8000.0,
+      "snap_filterReso": 0.18,
+      "snap_filterEnvDepth": 0.55,
+      "snap_detune": 6.0,
+      "snap_level": 0.78,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": -1.0,
+      "snap_unison": 1,
+      "snap_polyphony": 2,
+      "snap_lfoDepth": 0.05,
+      "snap_lfo2Depth": 0.06,
+      "snap_lfoRate": 2.5,
+      "snap_lfo2Rate": 0.12,
+      "snap_macroDart": 0.0,
+      "snap_macroSchool": 0.0,
+      "snap_macroSurface": 0.0,
+      "snap_macroDepth": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["foundation", "oddfelix", "karplus", "plucked", "physical", "bright", "melodic"],
+  "tempo": null,
+  "version": "1.0.0"
+}

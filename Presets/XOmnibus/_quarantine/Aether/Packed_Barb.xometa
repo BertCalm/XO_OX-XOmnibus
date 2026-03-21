@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Opal",
+        "engineB": "OddOscar",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.5447
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.9442,
+    "brightness": 0.4522,
+    "density": 0.9631,
+    "movement": 0.4189,
+    "space": 0.9415,
+    "warmth": 0.9199
+  },
+  "engines": [
+    "Opal",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6861,
+    "COUPLING": 0.5447,
+    "MOVEMENT": 0.4189,
+    "SPACE": 0.9415
+  },
+  "mood": "Aether",
+  "name": "Packed Barb",
+  "parameters": {
+    "OddOscar": {
+      "macro_character": 0.3799,
+      "macro_coupling": 0.3174,
+      "macro_movement": 0.614,
+      "macro_space": 0.5064
+    },
+    "Opal": {
+      "macro_character": 0.7721,
+      "macro_coupling": 0.3985,
+      "macro_movement": 0.6691,
+      "macro_space": 0.2609
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "vast",
+    "violent",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

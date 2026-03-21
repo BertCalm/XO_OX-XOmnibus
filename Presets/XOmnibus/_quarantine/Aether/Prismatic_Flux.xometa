@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Oblique",
+        "type": "FILTER_MOD",
+        "amount": 0.8302
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.4839,
+    "brightness": 0.9494,
+    "density": 0.4449,
+    "movement": 0.9477,
+    "space": 0.8715,
+    "warmth": 0.8783
+  },
+  "engines": [
+    "Obscura",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.9139,
+    "COUPLING": 0.8302,
+    "MOVEMENT": 0.9477,
+    "SPACE": 0.8715
+  },
+  "mood": "Aether",
+  "name": "Prismatic Flux",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.5626,
+      "macro_coupling": 0.7483,
+      "macro_movement": 0.5267,
+      "macro_space": 0.4013
+    },
+    "Obscura": {
+      "macro_character": 0.9241,
+      "macro_coupling": 0.8061,
+      "macro_movement": 0.4026,
+      "macro_space": 0.6036
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "bright",
+    "kinetic",
+    "vast"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

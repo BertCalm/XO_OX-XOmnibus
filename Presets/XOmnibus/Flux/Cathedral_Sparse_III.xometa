@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Oblong",
+        "type": "CHAOS_INJECT",
+        "amount": 0.6549
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.3961,
+    "brightness": 0.3437,
+    "density": 0.0571,
+    "movement": 0.9088,
+    "space": 0.9778,
+    "warmth": 0.0837
+  },
+  "engines": [
+    "Oceanic",
+    "Oblong"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1938,
+    "COUPLING": 0.4199,
+    "MOVEMENT": 0.8757,
+    "SPACE": 0.8745
+  },
+  "mood": "Flux",
+  "name": "Cathedral Sparse III",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.4254,
+      "macro_coupling": 0.3448,
+      "macro_movement": 0.9324,
+      "macro_space": 0.9117,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Oceanic": {
+      "macro_character": 0.1938,
+      "macro_coupling": 0.4199,
+      "macro_movement": 0.8757,
+      "macro_space": 0.8745
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-warmth",
+    "high-movement",
+    "low-density",
+    "high-space"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

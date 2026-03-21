@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme hot warmth, extreme kinetic movement, extreme dense density. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.545,
+    "brightness": 0.924,
+    "density": 0.93,
+    "movement": 0.952,
+    "space": 0.449,
+    "warmth": 0.928
+  },
+  "engines": [
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Spiral Rich",
+  "parameters": {
+    "OddOscar": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "warm",
+    "kinetic",
+    "dense",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

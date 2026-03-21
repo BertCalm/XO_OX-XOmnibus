@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Timbral",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme cold warmth, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.572,
+    "brightness": 0.071,
+    "density": 0.093,
+    "movement": 0.49,
+    "space": 0.949,
+    "warmth": 0.051
+  },
+  "engines": [
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Arctic Cosmos",
+  "parameters": {
+    "Obsidian": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "dark",
+    "cold",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

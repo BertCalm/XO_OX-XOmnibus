@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Ottoni",
+    "targetEngine": null,
+    "type": "RingMod"
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 2.",
+  "dna": {
+    "aggression": 0.436,
+    "brightness": 0.04,
+    "density": 0.508,
+    "movement": 0.935,
+    "space": 0.102,
+    "warmth": 0.076
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Penumbra Spiral II",
+  "parameters": {
+    "Ottoni": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

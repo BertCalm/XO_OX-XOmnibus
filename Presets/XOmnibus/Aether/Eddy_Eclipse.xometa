@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.442,
+      "destination": "ODDOSCAR",
+      "source": "OLE",
+      "type": "TIMBRE_BLEND"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — aether, dark, cold, kinetic.",
+  "dna": {
+    "aggression": 0.43,
+    "brightness": 0.086,
+    "density": 0.479,
+    "movement": 0.938,
+    "space": 0.908,
+    "warmth": 0.105
+  },
+  "engines": [
+    "Ole",
+    "OddOscar"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Eddy Eclipse",
+  "parameters": {
+    "OddOscar": {
+      "level": 0.746,
+      "pan": -0.071
+    },
+    "Ole": {
+      "level": 0.655,
+      "pan": -0.067
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "aether",
+    "dark",
+    "cold",
+    "kinetic",
+    "vast",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

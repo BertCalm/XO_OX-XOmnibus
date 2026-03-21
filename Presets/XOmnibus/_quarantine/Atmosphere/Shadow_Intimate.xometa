@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "Medium",
+    "sourceEngine": "Optic",
+    "targetEngine": null,
+    "type": "Chaos"
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: COLD TIGHT KINETIC DARK ATM 3.",
+  "dna": {
+    "aggression": 0.506,
+    "brightness": 0.045,
+    "density": 0.52,
+    "movement": 0.949,
+    "space": 0.048,
+    "warmth": 0.063
+  },
+  "engines": [
+    "Optic"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Shadow Intimate",
+  "parameters": {
+    "Optic": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-low-warmth",
+    "x-high-movement",
+    "x-low-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

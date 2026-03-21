@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Copper Drift",
+  "mood": "Entangled",
+  "engines": [
+    "Ocelot",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ocelot × Octopus — Spatial Couple coupling at extreme DNA corner.",
+  "tags": [
+    "hot",
+    "ocelot",
+    "octopus",
+    "spatial-couple",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.508,
+    "warmth": 0.956,
+    "movement": 0.941,
+    "density": 0.645,
+    "space": 0.366,
+    "aggression": 0.941
+  },
+  "parameters": {
+    "Ocelot": {},
+    "Octopus": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ocelot",
+        "engineB": "Octopus",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.691
+      }
+    ]
+  },
+  "sequencer": null
+}

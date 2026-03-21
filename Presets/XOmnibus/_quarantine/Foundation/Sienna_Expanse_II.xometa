@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Onset",
+        "engineB": "Overbite",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.888
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.561,
+    "brightness": 0.935,
+    "density": 0.926,
+    "movement": 0.906,
+    "space": 0.957,
+    "warmth": 0.973
+  },
+  "engines": [
+    "Onset",
+    "Overbite"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "TRASH"
+  ],
+  "macros": {
+    "CHARACTER": 0.954,
+    "COUPLING": 0.759,
+    "MOVEMENT": 0.916,
+    "SPACE": 0.957
+  },
+  "mood": "Foundation",
+  "name": "Sienna Expanse II",
+  "parameters": {
+    "Onset": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.759,
+      "macro_movement": 0.916,
+      "macro_space": 0.957
+    },
+    "Overbite": {
+      "macro_character": 0.954,
+      "macro_coupling": 0.759,
+      "macro_movement": 0.916,
+      "macro_space": 0.957
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

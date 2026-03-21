@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Optic",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.763
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.396,
+    "brightness": 0.932,
+    "density": 0.946,
+    "movement": 0.99,
+    "space": 0.962,
+    "warmth": 0.986
+  },
+  "engines": [
+    "Orbital",
+    "Optic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.959,
+    "COUPLING": 0.679,
+    "MOVEMENT": 0.968,
+    "SPACE": 0.962
+  },
+  "mood": "Atmosphere",
+  "name": "Eddy Cinnamon",
+  "parameters": {
+    "Optic": {
+      "macro_character": 0.959,
+      "macro_coupling": 0.679,
+      "macro_movement": 0.968,
+      "macro_space": 0.962
+    },
+    "Orbital": {
+      "macro_character": 0.959,
+      "macro_coupling": 0.679,
+      "macro_movement": 0.968,
+      "macro_space": 0.962
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

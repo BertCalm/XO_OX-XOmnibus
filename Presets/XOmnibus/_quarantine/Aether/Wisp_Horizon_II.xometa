@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Oracle",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.7935
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.6232,
+    "brightness": 0.1081,
+    "density": 0.079,
+    "movement": 0.4851,
+    "space": 0.893,
+    "warmth": 0.8831
+  },
+  "engines": [
+    "OddfeliX",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4956,
+    "COUPLING": 0.7935,
+    "MOVEMENT": 0.4851,
+    "SPACE": 0.893
+  },
+  "mood": "Aether",
+  "name": "Wisp Horizon II",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.6054,
+      "macro_coupling": 0.2699,
+      "macro_movement": 0.2111,
+      "macro_space": 0.7652
+    },
+    "Oracle": {
+      "macro_character": 0.3773,
+      "macro_coupling": 0.561,
+      "macro_movement": 0.5048,
+      "macro_space": 0.8485
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "aether",
+    "warm",
+    "dark",
+    "vast",
+    "sparse"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

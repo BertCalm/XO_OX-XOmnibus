@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Ole",
+        "type": "FILTER_MOD",
+        "amount": 0.721
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.116,
+    "brightness": 0.968,
+    "density": 0.456,
+    "movement": 0.301,
+    "space": 0.971,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Osteria",
+    "Ole"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.542,
+    "COUPLING": 0.749,
+    "MOVEMENT": 0.301,
+    "SPACE": 0.971
+  },
+  "mood": "Prism",
+  "name": "Ocean Aurora II",
+  "parameters": {
+    "Ole": {
+      "macro_character": 0.074,
+      "macro_coupling": 0.334,
+      "macro_movement": 0.301,
+      "macro_space": 0.971
+    },
+    "Osteria": {
+      "macro_character": 0.542,
+      "macro_coupling": 0.749,
+      "macro_movement": 0.301,
+      "macro_space": 0.971
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "bright",
+    "warm",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

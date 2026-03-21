@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Solar Horizon II",
+  "mood": "Entangled",
+  "engines": [
+    "Oblong",
+    "Orca"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oblong × Orca — Pitch Sync coupling at extreme DNA corner.",
+  "tags": [
+    "bright",
+    "oblong",
+    "orca",
+    "pitch-sync",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "TEXTURE",
+    "DEPTH",
+    "CHAOS",
+    "MOTION"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.938,
+    "warmth": 0.459,
+    "movement": 0.113,
+    "density": 0.486,
+    "space": 0.933,
+    "aggression": 0.535
+  },
+  "parameters": {
+    "Oblong": {},
+    "Orca": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "PITCH_SYNC",
+        "amount": 0.747
+      }
+    ]
+  },
+  "sequencer": null
+}

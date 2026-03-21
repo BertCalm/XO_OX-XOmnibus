@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Thick Alcove",
+  "mood": "Entangled",
+  "engines": [
+    "Oracle",
+    "Ohm"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oracle × Ohm — Timbre Blend coupling at extreme DNA corner.",
+  "tags": [
+    "intimate",
+    "oracle",
+    "ohm",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.648,
+    "warmth": 0.462,
+    "movement": 0.358,
+    "density": 0.903,
+    "space": 0.103,
+    "aggression": 0.891
+  },
+  "parameters": {
+    "Oracle": {},
+    "Ohm": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oracle",
+        "engineB": "Ohm",
+        "type": "TIMBRE_BLEND",
+        "amount": 0.849
+      }
+    ]
+  },
+  "sequencer": null
+}

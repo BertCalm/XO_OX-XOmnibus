@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Frost Vast",
+  "mood": "Entangled",
+  "engines": [
+    "Overlap",
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Overlap × Oceanic — Chaos Inject coupling at extreme DNA corner.",
+  "tags": [
+    "kinetic",
+    "overlap",
+    "oceanic",
+    "chaos-inject",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "couplingIntensity": "Extreme",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.596,
+    "warmth": 0.068,
+    "movement": 0.892,
+    "density": 0.526,
+    "space": 0.923,
+    "aggression": 0.497
+  },
+  "parameters": {
+    "Overlap": {},
+    "Oceanic": {}
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Overlap",
+        "engineB": "Oceanic",
+        "type": "CHAOS_INJECT",
+        "amount": 0.746
+      }
+    ]
+  },
+  "sequencer": null
+}

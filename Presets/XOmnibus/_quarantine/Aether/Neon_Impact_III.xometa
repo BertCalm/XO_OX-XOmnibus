@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Obscura",
+        "engineB": "Origami",
+        "type": "AMPLITUDE_MOD",
+        "amount": 0.853
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.975,
+    "brightness": 0.986,
+    "density": 0.923,
+    "movement": 0.64,
+    "space": 0.9,
+    "warmth": 0.903
+  },
+  "engines": [
+    "Obscura",
+    "Origami"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.945,
+    "COUPLING": 0.938,
+    "MOVEMENT": 0.782,
+    "SPACE": 0.9
+  },
+  "mood": "Aether",
+  "name": "Neon Impact III",
+  "parameters": {
+    "Obscura": {
+      "macro_character": 0.945,
+      "macro_coupling": 0.938,
+      "macro_movement": 0.782,
+      "macro_space": 0.9
+    },
+    "Origami": {
+      "macro_character": 0.945,
+      "macro_coupling": 0.938,
+      "macro_movement": 0.782,
+      "macro_space": 0.9
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

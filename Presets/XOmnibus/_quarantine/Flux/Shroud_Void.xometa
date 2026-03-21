@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Spatial",
+  "description": "Ultra-diverse Flux preset — extreme dark brightness, extreme violent aggression, extreme kinetic movement, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.924,
+    "brightness": 0.041,
+    "density": 0.472,
+    "movement": 0.92,
+    "space": 0.952,
+    "warmth": 0.484
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Shroud Void",
+  "parameters": {
+    "OddfeliX": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "dark",
+    "aggressive",
+    "kinetic",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Osteria",
+        "engineB": "Odyssey",
+        "type": "FREQUENCY_SHIFT",
+        "amount": 0.851
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.961,
+    "brightness": 0.951,
+    "density": 0.948,
+    "movement": 0.929,
+    "space": 0.426,
+    "warmth": 0.941
+  },
+  "engines": [
+    "Osteria",
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.946,
+    "COUPLING": 0.694,
+    "MOVEMENT": 0.939,
+    "SPACE": 0.426
+  },
+  "mood": "Entangled",
+  "name": "Strike Crystal II",
+  "parameters": {
+    "Odyssey": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.694,
+      "macro_movement": 0.939,
+      "macro_space": 0.426
+    },
+    "Osteria": {
+      "macro_character": 0.946,
+      "macro_coupling": 0.694,
+      "macro_movement": 0.939,
+      "macro_space": 0.426
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

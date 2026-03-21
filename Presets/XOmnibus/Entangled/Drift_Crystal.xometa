@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright hot kinetic dense. Designed for TANGLE coupling with XOverworld.",
+  "dna": {
+    "aggression": 0.5167,
+    "brightness": 0.9421,
+    "density": 0.92,
+    "movement": 0.9423,
+    "space": 0.4724,
+    "warmth": 0.9277
+  },
+  "engines": [
+    "Overworld"
+  ],
+  "macroLabels": [
+    "SWEEP",
+    "FLARE",
+    "HEAT",
+    "MASS"
+  ],
+  "mood": "Flux",
+  "name": "Drift Crystal",
+  "parameters": {
+    "Overworld": {
+      "couplingBus": 1,
+      "couplingLevel": 0.931
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "overworld"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

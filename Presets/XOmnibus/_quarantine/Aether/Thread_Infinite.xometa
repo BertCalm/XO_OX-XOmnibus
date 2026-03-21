@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organon",
+        "engineB": "Oracle",
+        "type": "HARMONIC_FOLD",
+        "amount": 0.737
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.957,
+    "brightness": 0.49,
+    "density": 0.04,
+    "movement": 0.088,
+    "space": 0.958,
+    "warmth": 0.898
+  },
+  "engines": [
+    "Organon",
+    "Oracle"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.694,
+    "COUPLING": 0.958,
+    "MOVEMENT": 0.064,
+    "SPACE": 0.958
+  },
+  "mood": "Aether",
+  "name": "Thread Infinite",
+  "parameters": {
+    "Oracle": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.958,
+      "macro_movement": 0.064,
+      "macro_space": 0.958
+    },
+    "Organon": {
+      "macro_character": 0.694,
+      "macro_coupling": 0.958,
+      "macro_movement": 0.064,
+      "macro_space": 0.958
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "cross-pole",
+    "contrast"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

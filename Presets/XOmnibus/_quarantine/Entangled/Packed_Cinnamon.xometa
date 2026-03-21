@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.837,
+        "engineA": "OddfeliX",
+        "engineB": "Onset",
+        "type": "TIMBRE_BLEND"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "description": "OddFelix × Onset — Timbre Blend coupling at extreme DNA corner.",
+  "dna": {
+    "aggression": 0.517,
+    "brightness": 0.113,
+    "density": 0.891,
+    "movement": 0.591,
+    "space": 0.489,
+    "warmth": 0.89
+  },
+  "engines": [
+    "OddfeliX",
+    "Onset"
+  ],
+  "macroLabels": [
+    "EDGE",
+    "BODY",
+    "FLUX",
+    "FIELD"
+  ],
+  "mood": "Entangled",
+  "name": "Packed Cinnamon",
+  "parameters": {
+    "OddfeliX": {},
+    "Onset": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dark",
+    "oddfelix",
+    "onset",
+    "timbre-blend",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

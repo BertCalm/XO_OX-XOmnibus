@@ -1,0 +1,56 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": [
+    {
+      "amount": 0.66,
+      "destination": "OPAL",
+      "source": "ODDOSCAR",
+      "type": "SPATIAL_COUPLE"
+    }
+  ],
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme DNA corners — family, bright, cold, sparse.",
+  "dna": {
+    "aggression": 0.598,
+    "brightness": 0.895,
+    "density": 0.048,
+    "movement": 0.481,
+    "space": 0.897,
+    "warmth": 0.052
+  },
+  "engines": [
+    "OddOscar",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Trace Quartz II",
+  "parameters": {
+    "OddOscar": {
+      "level": 0.73,
+      "pan": -0.148
+    },
+    "Opal": {
+      "level": 0.689,
+      "pan": -0.071
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "family",
+    "bright",
+    "cold",
+    "sparse",
+    "vast",
+    "ultra-diverse"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

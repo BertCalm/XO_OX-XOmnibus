@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbital",
+        "engineB": "Oblique",
+        "type": "SPECTRAL_MORPH",
+        "amount": 0.452
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.055,
+    "brightness": 0.449,
+    "density": 0.109,
+    "movement": 0.66,
+    "space": 0.916,
+    "warmth": 0.946
+  },
+  "engines": [
+    "Orbital",
+    "Oblique"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.383,
+    "COUPLING": 0.838,
+    "MOVEMENT": 0.643,
+    "SPACE": 0.837
+  },
+  "mood": "Atmosphere",
+  "name": "Cinnamon Balm II",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.365,
+      "macro_coupling": 0.845,
+      "macro_movement": 0.634,
+      "macro_space": 0.749
+    },
+    "Orbital": {
+      "macro_character": 0.383,
+      "macro_coupling": 0.838,
+      "macro_movement": 0.643,
+      "macro_space": 0.837
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "sparse",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

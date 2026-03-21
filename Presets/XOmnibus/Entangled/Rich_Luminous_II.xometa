@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.6873,
+        "source": "Obsidian",
+        "target": "Optic",
+        "type": "RESONANCE_SHARE"
+      }
+    ]
+  },
+  "couplingIntensity": "Moderate",
+  "description": "Bright Warm Still Dense character entanglement — OPTIC × OBSIDIAN via Resonance Share. Extreme DNA zones push sound design to the edges.",
+  "dna": {
+    "aggression": 0.3364,
+    "brightness": 0.9777,
+    "density": 0.9897,
+    "movement": 0.0441,
+    "space": 0.5038,
+    "warmth": 0.9179
+  },
+  "engines": [
+    "Optic",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "LENS",
+    "PRISM",
+    "REFRACT",
+    "RAY"
+  ],
+  "macros": {
+    "CHARACTER": 0.9478,
+    "COUPLING": 0.6873,
+    "MOVEMENT": 0.0441,
+    "SPACE": 0.5038
+  },
+  "mood": "Entangled",
+  "name": "Rich Luminous II",
+  "parameters": {
+    "Obsidian": {
+      "amp_attack": 0.4324,
+      "amp_release": 0.3766,
+      "coupling_level": 0.6568,
+      "density": 1.0,
+      "drive": 0.303,
+      "filter_cutoff": 0.9145,
+      "filter_resonance": 0.2493,
+      "macro_character": 0.9294,
+      "macro_coupling": 0.714,
+      "macro_movement": 0.0389,
+      "macro_space": 0.5401,
+      "output_level": 0.9561,
+      "reverb_mix": 0.4601,
+      "reverb_size": 0.5319
+    },
+    "Optic": {
+      "amp_attack": 0.4701,
+      "amp_release": 0.4312,
+      "coupling_level": 0.6959,
+      "density": 0.9927,
+      "drive": 0.3336,
+      "filter_cutoff": 0.9241,
+      "filter_resonance": 0.2705,
+      "macro_character": 0.9839,
+      "macro_coupling": 0.6828,
+      "macro_movement": 0.0379,
+      "macro_space": 0.4943,
+      "output_level": 0.9287,
+      "reverb_mix": 0.388,
+      "reverb_size": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "still",
+    "dense",
+    "resonant"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

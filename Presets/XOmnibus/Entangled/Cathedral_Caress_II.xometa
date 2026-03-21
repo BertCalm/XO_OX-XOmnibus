@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Low",
+  "couplingType": "MIRROR",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for MIRROR coupling with XOceanic.",
+  "dna": {
+    "aggression": 0.0575,
+    "brightness": 0.9195,
+    "density": 0.0595,
+    "movement": 0.5723,
+    "space": 0.9546,
+    "warmth": 0.4886
+  },
+  "engines": [
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "VOID",
+    "SHRED",
+    "MASS",
+    "GLEAM"
+  ],
+  "mood": "Atmosphere",
+  "name": "Cathedral Caress II",
+  "parameters": {
+    "Oceanic": {
+      "couplingBus": 3,
+      "couplingLevel": 0.963
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "mirror",
+    "oceanic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

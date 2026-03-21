@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Opal",
+    "targetEngine": null,
+    "type": "FM"
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 4.",
+  "dna": {
+    "aggression": 0.532,
+    "brightness": 0.058,
+    "density": 0.468,
+    "movement": 0.893,
+    "space": 0.949,
+    "warmth": 0.952
+  },
+  "engines": [
+    "Opal"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Sienna Expanse III",
+  "parameters": {
+    "Opal": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-low-brightness",
+    "x-high-warmth",
+    "x-high-movement",
+    "x-high-space"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

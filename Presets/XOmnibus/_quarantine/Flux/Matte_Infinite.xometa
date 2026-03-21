@@ -1,0 +1,65 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Opal",
+        "type": "RESONANCE_SHARE",
+        "amount": 0.7476
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.093,
+    "brightness": 0.0371,
+    "density": 0.904,
+    "movement": 0.6079,
+    "space": 0.9424,
+    "warmth": 0.6645
+  },
+  "engines": [
+    "Oceanic",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1412,
+    "COUPLING": 0.2226,
+    "MOVEMENT": 0.6661,
+    "SPACE": 0.8944
+  },
+  "mood": "Flux",
+  "name": "Matte Infinite",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.1412,
+      "macro_coupling": 0.2226,
+      "macro_movement": 0.6661,
+      "macro_space": 0.8944
+    },
+    "Opal": {
+      "macro_character": 0.181,
+      "macro_coupling": 0.188,
+      "macro_movement": 0.5175,
+      "macro_space": 0.9171
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "unstable",
+    "evolving",
+    "low-brightness",
+    "high-density",
+    "high-space",
+    "low-aggression"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

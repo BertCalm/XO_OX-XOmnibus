@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Outwit",
+        "engineB": "Oceanic",
+        "type": "SPATIAL_COUPLE",
+        "amount": 0.916
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.963,
+    "brightness": 0.036,
+    "density": 0.641,
+    "movement": 0.657,
+    "space": 0.585,
+    "warmth": 0.079
+  },
+  "engines": [
+    "Outwit",
+    "Oceanic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.057,
+    "COUPLING": 0.719,
+    "MOVEMENT": 0.657,
+    "SPACE": 0.585
+  },
+  "mood": "Family",
+  "name": "Penumbra Slash III",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.06,
+      "macro_coupling": 0.707,
+      "macro_movement": 0.543,
+      "macro_space": 0.477
+    },
+    "Outwit": {
+      "macro_character": 0.057,
+      "macro_coupling": 0.719,
+      "macro_movement": 0.657,
+      "macro_space": 0.585
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "family",
+    "dark",
+    "cold",
+    "aggressive",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

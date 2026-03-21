@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.718,
+        "engineA": "OddfeliX",
+        "engineB": "Osteria",
+        "type": "SPECTRAL_MORPH"
+      }
+    ]
+  },
+  "couplingIntensity": "Extreme",
+  "description": "OddFelix × Osteria — Spectral Morph coupling at extreme DNA corner.",
+  "dna": {
+    "aggression": 0.081,
+    "brightness": 0.422,
+    "density": 0.119,
+    "movement": 0.549,
+    "space": 0.922,
+    "warmth": 0.475
+  },
+  "engines": [
+    "OddfeliX",
+    "Osteria"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Horizon Silk II",
+  "parameters": {
+    "OddfeliX": {},
+    "Osteria": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "vast",
+    "oddfelix",
+    "osteria",
+    "spectral-morph",
+    "extreme-dna",
+    "diversity-push"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

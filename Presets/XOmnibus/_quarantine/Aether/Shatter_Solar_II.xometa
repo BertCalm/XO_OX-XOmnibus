@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Origami",
+        "engineB": "Opal",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.881
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.987,
+    "brightness": 0.962,
+    "density": 0.396,
+    "movement": 0.955,
+    "space": 0.937,
+    "warmth": 0.931
+  },
+  "engines": [
+    "Origami",
+    "Opal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.947,
+    "COUPLING": 0.962,
+    "MOVEMENT": 0.675,
+    "SPACE": 0.937
+  },
+  "mood": "Aether",
+  "name": "Shatter Solar II",
+  "parameters": {
+    "Opal": {
+      "macro_character": 0.947,
+      "macro_coupling": 0.962,
+      "macro_movement": 0.675,
+      "macro_space": 0.937
+    },
+    "Origami": {
+      "macro_character": 0.947,
+      "macro_coupling": 0.962,
+      "macro_movement": 0.675,
+      "macro_space": 0.937
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "extreme",
+    "pole-fill",
+    "high-energy",
+    "dense"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

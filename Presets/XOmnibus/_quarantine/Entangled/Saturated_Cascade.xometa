@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Overlap",
+        "type": "SPECTRAL_BLEND",
+        "amount": 0.65
+      }
+    ]
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Extreme-DNA diversity anchor. 5 dimensions in maximum zones; 1 dimension midrange. Designed to push fleet cosine diversity above 0.20 threshold.",
+  "dna": {
+    "aggression": 0.903,
+    "brightness": 0.465,
+    "density": 0.952,
+    "movement": 0.927,
+    "space": 0.073,
+    "warmth": 0.095
+  },
+  "engines": [
+    "Octopus",
+    "Overlap"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Saturated Cascade",
+  "parameters": {
+    "Octopus": {
+      "macro_character": 0.79,
+      "macro_coupling": 0.89,
+      "macro_movement": 0.94,
+      "macro_space": 0.31
+    },
+    "Overlap": {
+      "macro_character": 0.65,
+      "macro_coupling": 0.87,
+      "macro_movement": 0.9,
+      "macro_space": 0.46
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "extreme",
+    "diversity",
+    "dark",
+    "kinetic",
+    "dense",
+    "entangled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblong",
+        "engineB": "Orca",
+        "type": "ENVELOPE_LINK",
+        "amount": 0.784
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.368,
+    "brightness": 0.45,
+    "density": 0.931,
+    "movement": 0.078,
+    "space": 0.617,
+    "warmth": 0.893
+  },
+  "engines": [
+    "Oblong",
+    "Orca"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.671,
+    "COUPLING": 0.439,
+    "MOVEMENT": 0.078,
+    "SPACE": 0.617
+  },
+  "mood": "Prism",
+  "name": "Heavy Suspended",
+  "parameters": {
+    "Oblong": {
+      "macro_character": 0.671,
+      "macro_coupling": 0.439,
+      "macro_movement": 0.078,
+      "macro_space": 0.617,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    },
+    "Orca": {
+      "macro_character": 0.707,
+      "macro_coupling": 0.959,
+      "macro_movement": 0.0,
+      "macro_space": 0.51
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "prism",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

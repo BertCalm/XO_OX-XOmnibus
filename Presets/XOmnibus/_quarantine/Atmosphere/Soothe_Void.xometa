@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oceanic",
+        "engineB": "Orbital",
+        "type": "CHAOS_INJECT",
+        "amount": 0.627
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.071,
+    "brightness": 0.443,
+    "density": 0.531,
+    "movement": 0.872,
+    "space": 0.928,
+    "warmth": 0.897
+  },
+  "engines": [
+    "Oceanic",
+    "Orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.482,
+    "COUPLING": 0.863,
+    "MOVEMENT": 0.796,
+    "SPACE": 0.823
+  },
+  "mood": "Atmosphere",
+  "name": "Soothe Void",
+  "parameters": {
+    "Oceanic": {
+      "macro_character": 0.482,
+      "macro_coupling": 0.863,
+      "macro_movement": 0.796,
+      "macro_space": 0.823
+    },
+    "Orbital": {
+      "macro_character": 0.322,
+      "macro_coupling": 0.714,
+      "macro_movement": 0.733,
+      "macro_space": 0.852
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "kinetic",
+    "vast",
+    "gentle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

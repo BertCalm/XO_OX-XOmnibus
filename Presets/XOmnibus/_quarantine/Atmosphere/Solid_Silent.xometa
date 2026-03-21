@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "OddfeliX",
+        "engineB": "Overlap",
+        "type": "FILTER_MOD",
+        "amount": 0.897
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.531,
+    "brightness": 0.591,
+    "density": 0.926,
+    "movement": 0.085,
+    "space": 0.454,
+    "warmth": 0.908
+  },
+  "engines": [
+    "OddfeliX",
+    "Overlap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "COUPLING": 0.527,
+    "MOVEMENT": 0.085,
+    "SPACE": 0.454
+  },
+  "mood": "Atmosphere",
+  "name": "Solid Silent",
+  "parameters": {
+    "OddfeliX": {
+      "macro_character": 0.75,
+      "macro_coupling": 0.527,
+      "macro_movement": 0.085,
+      "macro_space": 0.454
+    },
+    "Overlap": {
+      "macro_character": 0.601,
+      "macro_coupling": 0.766,
+      "macro_movement": 0.213,
+      "macro_space": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "warm",
+    "dense",
+    "static",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

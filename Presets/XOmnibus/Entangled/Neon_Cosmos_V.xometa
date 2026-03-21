@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "TANGLE",
+  "description": "Ultra-diverse Entangled preset — bright sparse gentle vast. Designed for TANGLE coupling with XOptic.",
+  "dna": {
+    "aggression": 0.0948,
+    "brightness": 0.9388,
+    "density": 0.0911,
+    "movement": 0.438,
+    "space": 0.9363,
+    "warmth": 0.4973
+  },
+  "engines": [
+    "Optic"
+  ],
+  "macroLabels": [
+    "GLEAM",
+    "EXPANSE",
+    "PRESS",
+    "IMPACT"
+  ],
+  "mood": "Atmosphere",
+  "name": "Neon Cosmos V",
+  "parameters": {
+    "Optic": {
+      "couplingBus": 3,
+      "couplingLevel": 0.874
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "tangle",
+    "optic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

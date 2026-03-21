@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "intensity": "High",
+    "sourceEngine": "Oblong",
+    "targetEngine": null,
+    "type": "Rhythmic"
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-16",
+  "description": "Ultra-diverse Prism preset: HOT OPEN KINETIC BRIGHT PRI 4.",
+  "dna": {
+    "aggression": 0.94,
+    "brightness": 0.907,
+    "density": 0.506,
+    "movement": 0.931,
+    "space": 0.469,
+    "warmth": 0.942
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Brass Pierce",
+  "parameters": {
+    "Oblong": {}
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "x-high-brightness",
+    "x-high-warmth",
+    "x-high-aggression",
+    "x-high-movement"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

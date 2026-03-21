@@ -1,0 +1,41 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Spectral",
+  "description": "Ultra-diverse Flux preset — extreme bright brightness, extreme static movement, extreme sparse density, extreme vast space. Maximum contrast character design.",
+  "dna": {
+    "aggression": 0.403,
+    "brightness": 0.94,
+    "density": 0.068,
+    "movement": 0.061,
+    "space": 0.907,
+    "warmth": 0.49
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "MACRO1",
+    "MACRO2",
+    "MACRO3",
+    "MACRO4"
+  ],
+  "mood": "Flux",
+  "name": "Prismatic Still",
+  "parameters": {
+    "Odyssey": {}
+  },
+  "schema_version": 1,
+  "tags": [
+    "bright",
+    "static",
+    "sparse",
+    "vast",
+    "flux",
+    "extreme"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

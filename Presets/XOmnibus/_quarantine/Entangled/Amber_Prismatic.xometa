@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Oblique",
+        "engineB": "Obsidian",
+        "type": "VELOCITY_COUPLE",
+        "amount": 0.841
+      }
+    ]
+  },
+  "dna": {
+    "aggression": 0.441,
+    "brightness": 0.943,
+    "density": 0.914,
+    "movement": 0.606,
+    "space": 0.302,
+    "warmth": 0.957
+  },
+  "engines": [
+    "Oblique",
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "COUPLING": 0.777,
+    "MOVEMENT": 0.606,
+    "SPACE": 0.302
+  },
+  "mood": "Entangled",
+  "name": "Amber Prismatic",
+  "parameters": {
+    "Oblique": {
+      "macro_character": 0.95,
+      "macro_coupling": 0.777,
+      "macro_movement": 0.606,
+      "macro_space": 0.302
+    },
+    "Obsidian": {
+      "macro_character": 1.0,
+      "macro_coupling": 0.901,
+      "macro_movement": 0.582,
+      "macro_space": 0.316
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "bright",
+    "warm",
+    "dense",
+    "extreme",
+    "diversity-push"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}
