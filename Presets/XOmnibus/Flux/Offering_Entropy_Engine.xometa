@@ -1,0 +1,31 @@
+{
+  "name": "Entropy Engine",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["chaotic", "high curiosity", "evolving", "complex", "unstable"],
+  "macros": {"M1": 0.95, "M2": 0.4, "M3": 0.25, "M4": 0.2},
+  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.98, "density": 0.6, "space": 0.45, "aggression": 0.65},
+  "parameters": {
+    "ofr_transientSnap": 0.5,
+    "ofr_transientSat": 0.35,
+    "ofr_transientPitch": 0.55,
+    "ofr_digCuriosity": 0.95,
+    "ofr_digComplexity": 0.75,
+    "ofr_digFlow": 0.2,
+    "ofr_cityMode": 1,
+    "ofr_cityBlend": 0.5,
+    "ofr_cityIntensity": 0.7,
+    "ofr_lfo1Rate": 0.3,
+    "ofr_lfo1Depth": 0.25,
+    "ofr_lfo1Shape": 4,
+    "ofr_lfo2Rate": 7.5,
+    "ofr_lfo2Depth": 0.3,
+    "ofr_dustWobble": 0.2,
+    "ofr_flipLayers": 2,
+    "ofr_flipChop": 0.25,
+    "ofr_aftertouch": 0.7,
+    "ofr_envToPitch": 0.25,
+    "ofr_v0_decay": 0.38,
+    "ofr_v1_decay": 0.2
+  }
+}

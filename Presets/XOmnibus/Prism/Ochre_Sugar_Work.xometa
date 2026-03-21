@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Sugar Work",
+  "mood": "Prism",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Named for the art of pulling and shaping caramelized sugar in a copper pot. Bright, precise, crystalline at the top with warm amber body. The moment the sugar threads.",
+  "tags": ["piano", "copper", "crystalline", "precise", "delicate", "sugar", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.4,
+    "space": 0.25,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.7,
+      "ochre_hardness": 0.6,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.35,
+      "ochre_brightness": 13000.0,
+      "ochre_damping": 0.45,
+      "ochre_decay": 0.9,
+      "ochre_caramel": 0.6,
+      "ochre_sympathy": 0.15,
+      "ochre_hfCharacter": 0.45,
+      "ochre_thermalDrift": 0.2,
+      "ochre_filterEnvAmount": 0.55,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.8,
+      "ochre_lfo1Depth": 0.06,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 1.2,
+      "ochre_lfo2Depth": 0.03,
+      "ochre_lfo2Shape": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

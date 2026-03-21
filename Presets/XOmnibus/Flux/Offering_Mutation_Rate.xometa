@@ -1,0 +1,28 @@
+{
+  "name": "Mutation Rate",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["curiosity", "evolving", "unstable", "Detroit", "high movement"],
+  "macros": {"M1": 0.9, "M2": 0.7, "M3": 0.2, "M4": 0.1},
+  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.95, "density": 0.55, "space": 0.4, "aggression": 0.5},
+  "parameters": {
+    "ofr_digCuriosity": 0.9,
+    "ofr_digComplexity": 0.65,
+    "ofr_digFlow": 0.3,
+    "ofr_cityMode": 1,
+    "ofr_cityIntensity": 0.65,
+    "ofr_cityBlend": 0.4,
+    "ofr_lfo1Rate": 0.22,
+    "ofr_lfo1Depth": 0.18,
+    "ofr_lfo1Shape": 1,
+    "ofr_lfo2Rate": 5.5,
+    "ofr_lfo2Depth": 0.2,
+    "ofr_dustWobble": 0.15,
+    "ofr_dustTape": 0.12,
+    "ofr_flipLayers": 2,
+    "ofr_velToSnap": 0.8,
+    "ofr_aftertouch": 0.6,
+    "ofr_v1_decay": 0.15,
+    "ofr_v4_decay": 0.2
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Boom bap played under a highway overpass — sound bouncing off damp concrete. NY gate fighting against natural room reflections. 12-bit, 24kHz, moderate vinyl noise. High aggression hiding inside lo-fi clothing.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.22,
+    "density": 0.62,
+    "movement": 0.3,
+    "space": 0.42,
+    "warmth": 0.75
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Underpass Kit",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.6,
+      "ofr_cityBlend": 0.25,
+      "ofr_transientSnap": 0.62,
+      "ofr_transientPitch": 0.4,
+      "ofr_transientSat": 0.35,
+      "ofr_dustVinyl": 0.38,
+      "ofr_dustTape": 0.28,
+      "ofr_dustBits": 12,
+      "ofr_dustSampleRate": 24000,
+      "ofr_dustWobble": 0.12,
+      "ofr_digCuriosity": 0.4,
+      "ofr_digComplexity": 0.35,
+      "ofr_v0_body": 0.75,
+      "ofr_v0_decay": 0.32,
+      "ofr_v1_body": 0.52,
+      "ofr_masterWidth": 0.48
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["NY", "concrete", "underground", "12-bit", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.4, "M2": 0.2, "M3": 0.0, "M4": 0.78}
+}

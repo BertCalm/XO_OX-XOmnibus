@@ -1,0 +1,30 @@
+{
+  "name": "Entangled Clock",
+  "engine": "Offering",
+  "mood": "Entangled",
+  "tags": ["rhythmic entanglement", "coupling", "NY", "precise", "interlocked"],
+  "macros": {"M1": 0.6, "M2": 0.25, "M3": 0.78, "M4": 0.08},
+  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.7, "density": 0.78, "space": 0.5, "aggression": 0.55},
+  "parameters": {
+    "ofr_flipLayers": 2,
+    "ofr_flipChop": 0.55,
+    "ofr_flipStretch": 1.0,
+    "ofr_flipRingMod": 0.28,
+    "ofr_digCuriosity": 0.68,
+    "ofr_digComplexity": 0.7,
+    "ofr_digFlow": 0.45,
+    "ofr_cityMode": 0,
+    "ofr_cityIntensity": 0.6,
+    "ofr_transientSnap": 0.78,
+    "ofr_lfo1Rate": 0.14,
+    "ofr_lfo1Depth": 0.1,
+    "ofr_lfo1Shape": 0,
+    "ofr_lfo2Rate": 3.2,
+    "ofr_lfo2Depth": 0.12,
+    "ofr_velToSnap": 0.72,
+    "ofr_velToAttack": 0.4,
+    "ofr_v1_decay": 0.22,
+    "ofr_v4_decay": 0.22,
+    "ofr_masterWidth": 0.65
+  }
+}

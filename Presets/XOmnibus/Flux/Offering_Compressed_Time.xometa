@@ -1,0 +1,28 @@
+{
+  "name": "Compressed Time",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["LA", "parallel compression", "punchy", "flux", "controlled"],
+  "macros": {"M1": 0.5, "M2": 0.55, "M3": 0.05, "M4": 0.05},
+  "dna": {"brightness": 0.55, "warmth": 0.5, "movement": 0.65, "density": 0.75, "space": 0.45, "aggression": 0.7},
+  "parameters": {
+    "ofr_transientSnap": 0.88,
+    "ofr_transientSat": 0.18,
+    "ofr_cityMode": 2,
+    "ofr_cityIntensity": 0.8,
+    "ofr_digCuriosity": 0.48,
+    "ofr_digComplexity": 0.5,
+    "ofr_digFlow": 0.55,
+    "ofr_lfo1Rate": 0.09,
+    "ofr_lfo1Depth": 0.07,
+    "ofr_velToSnap": 0.85,
+    "ofr_velToBody": 0.45,
+    "ofr_velToAttack": 0.5,
+    "ofr_v0_decay": 0.25,
+    "ofr_v0_body": 0.9,
+    "ofr_v1_decay": 0.18,
+    "ofr_v1_body": 0.7,
+    "ofr_v4_level": 0.9,
+    "ofr_masterLevel": 0.85
+  }
+}

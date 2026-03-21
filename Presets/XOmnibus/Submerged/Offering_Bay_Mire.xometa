@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Bay Area allpass fog turned to maximum mire. 10-bit resolution, 16kHz sample rate, heavy wobble. The drums sound like they were recorded underwater and left to dry on the shore. Hyphy slowed to a crawl.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.15,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.45,
+    "warmth": 0.85
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Bay Mire",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.65,
+      "ofr_cityBlend": 0.35,
+      "ofr_transientSnap": 0.35,
+      "ofr_transientSat": 0.38,
+      "ofr_dustVinyl": 0.45,
+      "ofr_dustTape": 0.3,
+      "ofr_dustBits": 10,
+      "ofr_dustSampleRate": 16000,
+      "ofr_dustWobble": 0.2,
+      "ofr_digCuriosity": 0.3,
+      "ofr_digFlow": 0.35,
+      "ofr_v0_decay": 0.45,
+      "ofr_v0_body": 0.65,
+      "ofr_masterWidth": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["bay-area", "lo-fi", "10-bit", "fog", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.3, "M2": 0.6, "M3": 0.0, "M4": 0.85}
+}

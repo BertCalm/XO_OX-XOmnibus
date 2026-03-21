@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Practice Room",
+  "mood": "Foundation",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The default copper upright — dry, immediate, honest. The piano in the room where you actually practice. Every dynamic decision transparent.",
+  "tags": ["piano", "copper", "upright", "dry", "intimate", "foundation", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.1,
+    "density": 0.35,
+    "space": 0.2,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.5,
+      "ochre_hardness": 0.4,
+      "ochre_bodyType": 0,
+      "ochre_bodyDepth": 0.35,
+      "ochre_brightness": 10000.0,
+      "ochre_damping": 0.4,
+      "ochre_decay": 1.2,
+      "ochre_caramel": 0.15,
+      "ochre_sympathy": 0.2,
+      "ochre_hfCharacter": 0.25,
+      "ochre_thermalDrift": 0.3,
+      "ochre_filterEnvAmount": 0.4,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.3,
+      "ochre_lfo1Depth": 0.05,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.8,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

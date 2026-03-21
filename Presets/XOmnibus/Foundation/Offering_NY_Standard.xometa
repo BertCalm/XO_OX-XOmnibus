@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The quintessential New York boom bap kit. Tight noise gate, punchy kick, crisp snare. The foundation every producer expects.",
+  "dna": {
+    "aggression": 0.65,
+    "brightness": 0.55,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 0.25,
+    "warmth": 0.5
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "NY Standard",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.55,
+      "ofr_transientSnap": 0.75,
+      "ofr_digCuriosity": 0.4,
+      "ofr_digComplexity": 0.3,
+      "ofr_v0_decay": 0.38,
+      "ofr_v0_body": 0.75,
+      "ofr_v1_decay": 0.2,
+      "ofr_v1_body": 0.55,
+      "ofr_masterWidth": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["boom bap", "new york", "punchy", "classic", "foundation"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.4, "M2": 0.0, "M3": 0.0, "M4": 0.2}
+}

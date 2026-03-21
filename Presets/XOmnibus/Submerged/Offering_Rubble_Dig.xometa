@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The Rubble Zone (5-15m) — what's left after a building comes down. This kit sounds like it was found in that debris. Collage layers are active: two simultaneous layers chopped and ring-modulated into each other. Dust is structural.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.2,
+    "density": 0.7,
+    "movement": 0.4,
+    "space": 0.25,
+    "warmth": 0.78
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Rubble Dig",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.5,
+      "ofr_cityBlend": 0.2,
+      "ofr_transientSnap": 0.5,
+      "ofr_transientSat": 0.4,
+      "ofr_flipLayers": 2,
+      "ofr_flipChop": 0.45,
+      "ofr_flipRingMod": 0.25,
+      "ofr_dustVinyl": 0.45,
+      "ofr_dustTape": 0.4,
+      "ofr_dustBits": 11,
+      "ofr_dustSampleRate": 20000,
+      "ofr_dustWobble": 0.18,
+      "ofr_digCuriosity": 0.5,
+      "ofr_digComplexity": 0.45,
+      "ofr_v0_body": 0.72,
+      "ofr_masterWidth": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["rubble", "collage", "ring-mod", "lo-fi", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.5, "M2": 0.2, "M3": 0.55, "M4": 0.85}
+}

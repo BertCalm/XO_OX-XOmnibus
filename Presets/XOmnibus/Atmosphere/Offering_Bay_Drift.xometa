@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Bay Area allpass fog pushed to its limit. Transients barely surface through the haze. Drums that float rather than punch — texture over attack.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.35,
+    "density": 0.4,
+    "movement": 0.6,
+    "space": 0.85,
+    "warmth": 0.6
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Bay Drift",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.88,
+      "ofr_cityBlend": 0.65,
+      "ofr_transientSnap": 0.25,
+      "ofr_transientPitch": 0.6,
+      "ofr_digCuriosity": 0.75,
+      "ofr_digFlow": 0.85,
+      "ofr_dustVinyl": 0.35,
+      "ofr_dustWobble": 0.18,
+      "ofr_lfo1Depth": 0.12,
+      "ofr_lfo1Rate": 0.03,
+      "ofr_masterWidth": 0.85,
+      "ofr_envFilterAmt": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["ambient", "foggy", "bay area", "floating", "textural"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.75, "M2": 0.9, "M3": 0.0, "M4": 0.35}
+}

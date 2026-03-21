@@ -1,0 +1,45 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Toronto session kit with moderate curiosity. Sidechain duck creates a natural breathing pocket — everything breathes around the kick on beat 1 and 3.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.5,
+    "density": 0.55,
+    "movement": 0.5,
+    "space": 0.5,
+    "warmth": 0.6
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Pocket Session",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.55,
+      "ofr_cityBlend": 0.3,
+      "ofr_digCuriosity": 0.55,
+      "ofr_digFlow": 0.6,
+      "ofr_transientSnap": 0.65,
+      "ofr_velToSnap": 0.65,
+      "ofr_velToBody": 0.35,
+      "ofr_masterWidth": 0.62
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["toronto", "session", "pocket", "breathing", "groove"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.55, "M2": 0.6, "M3": 0.0, "M4": 0.2}
+}

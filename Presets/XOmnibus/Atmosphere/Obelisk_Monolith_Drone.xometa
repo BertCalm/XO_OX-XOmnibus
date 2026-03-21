@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Monolith Drone",
+  "mood": "Atmosphere",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum density, maximum decay, minimum damping. The marble monolith rings indefinitely — cold, dense, unyielding. A single note fills the room with inharmonic partials that sustain for 15 seconds. Slow LFO on brightness creates glacial timbral movement. The 2001 monolith, humming.",
+  "tags": ["drone", "monolith", "sustained", "cold", "atmosphere", "dense", "inharmonic"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.15,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.9,
+      "obel_stoneTone": 0.35,
+      "obel_brightness": 4500.0,
+      "obel_damping": 0.05,
+      "obel_decay": 15.0,
+      "obel_hfNoise": 0.1,
+      "obel_hardness": 0.35,
+      "obel_prepType": 0,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.0,
+      "obel_filterEnvAmount": 0.15,
+      "obel_thermalDrift": 0.35,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.02,
+      "obel_lfo1Depth": 0.15,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.5,
+      "obel_lfo2Depth": 0.0,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Patina Memory",
+  "mood": "Atmosphere",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Low conductivity, long decay, heavy sympathetics. An old copper upright covered in verdigris — green and weathered, remembering every hand that played it. The patina IS the sound.",
+  "tags": ["piano", "copper", "atmospheric", "patina", "aged", "memory", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.8,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.15,
+      "ochre_hardness": 0.2,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.75,
+      "ochre_brightness": 4500.0,
+      "ochre_damping": 0.15,
+      "ochre_decay": 4.0,
+      "ochre_caramel": 0.5,
+      "ochre_sympathy": 0.7,
+      "ochre_hfCharacter": 0.05,
+      "ochre_thermalDrift": 0.6,
+      "ochre_filterEnvAmount": 0.15,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.05,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.02,
+      "ochre_lfo2Depth": 0.08,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

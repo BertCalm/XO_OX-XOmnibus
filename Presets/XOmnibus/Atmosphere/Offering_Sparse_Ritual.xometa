@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Only tom and perc voices at full level — all other voices muted. Maximum space between hits. A percussion ritual for textural ambient production.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.4,
+    "density": 0.2,
+    "movement": 0.4,
+    "space": 0.95,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Sparse Ritual",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.6,
+      "ofr_v0_level": 0.0,
+      "ofr_v1_level": 0.0,
+      "ofr_v2_level": 0.0,
+      "ofr_v4_level": 0.0,
+      "ofr_v5_level": 0.0,
+      "ofr_v6_level": 0.85,
+      "ofr_v7_level": 0.85,
+      "ofr_v6_decay": 0.75,
+      "ofr_v7_decay": 0.55,
+      "ofr_v6_tune": 0.1,
+      "ofr_v7_tune": -0.15,
+      "ofr_digCuriosity": 0.75,
+      "ofr_transientSnap": 0.4,
+      "ofr_masterWidth": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["sparse", "ritual", "percussive", "minimal", "ambient"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.75, "M2": 0.8, "M3": 0.0, "M4": 0.3}
+}

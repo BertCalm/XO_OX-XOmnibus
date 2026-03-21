@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Drum types swapped into unusual configurations. Rim voice becomes kick, kick becomes perc, percs all get high tune offsets. Rhythm from the uncanny valley.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.65,
+    "space": 0.7,
+    "warmth": 0.4
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Alien Percussion",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.7,
+      "ofr_v0_type": 5,
+      "ofr_v5_type": 0,
+      "ofr_v6_type": 4,
+      "ofr_v4_type": 6,
+      "ofr_v7_tune": 0.35,
+      "ofr_v6_tune": -0.22,
+      "ofr_v4_tune": 0.18,
+      "ofr_v2_tune": 0.28,
+      "ofr_transientPitch": 0.75,
+      "ofr_envToPitch": 0.4,
+      "ofr_digCuriosity": 0.8,
+      "ofr_masterWidth": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["alien", "experimental", "detuned", "uncanny", "weird"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.8, "M2": 0.85, "M3": 0.0, "M4": 0.2}
+}

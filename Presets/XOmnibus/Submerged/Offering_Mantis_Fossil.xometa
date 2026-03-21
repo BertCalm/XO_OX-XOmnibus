@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The Mantis Shrimp mythology in amber — a predator preserved in extreme lo-fi. Full DUST macro, 9-bit resolution, 13kHz ceiling. The strike is still there, frozen in crackle. The curiosity engine barely stirs, dreaming of the rubble zone.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.12,
+    "density": 0.58,
+    "movement": 0.18,
+    "space": 0.25,
+    "warmth": 0.85
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Mantis Fossil",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.38,
+      "ofr_cityBlend": 0.12,
+      "ofr_transientSnap": 0.62,
+      "ofr_transientPitch": 0.5,
+      "ofr_transientSat": 0.5,
+      "ofr_dustVinyl": 0.72,
+      "ofr_dustTape": 0.55,
+      "ofr_dustBits": 9,
+      "ofr_dustSampleRate": 13000,
+      "ofr_dustWobble": 0.2,
+      "ofr_digCuriosity": 0.18,
+      "ofr_digComplexity": 0.2,
+      "ofr_digFlow": 0.22,
+      "ofr_v0_body": 0.78,
+      "ofr_v0_decay": 0.28,
+      "ofr_masterWidth": 0.32
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["mantis", "mythology", "9-bit", "extreme-lo-fi", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.18, "M2": 0.1, "M3": 0.0, "M4": 1.0}
+}

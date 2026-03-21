@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Toronto sidechain processing pushed to its knees. Heavy bit crush flattens the dynamics, then the sidechain duck wrestles with the degraded signal. What emerges is a rhythmic static — drums heard through a dying AM radio.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.15,
+    "density": 0.6,
+    "movement": 0.25,
+    "space": 0.3,
+    "warmth": 0.8
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Toronto Static",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.65,
+      "ofr_cityBlend": 0.35,
+      "ofr_transientSnap": 0.4,
+      "ofr_transientSat": 0.42,
+      "ofr_dustVinyl": 0.5,
+      "ofr_dustTape": 0.38,
+      "ofr_dustBits": 10,
+      "ofr_dustSampleRate": 22050,
+      "ofr_dustWobble": 0.15,
+      "ofr_digCuriosity": 0.3,
+      "ofr_digFlow": 0.35,
+      "ofr_v0_decay": 0.35,
+      "ofr_masterWidth": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["toronto", "static", "AM-radio", "10-bit", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.3, "M2": 0.5, "M3": 0.0, "M4": 0.85}
+}

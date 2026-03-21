@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Maximum curiosity engine engagement. High DIG drives the Berlyne algorithm — surprising transient variation on every hit as the kit discovers itself.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.65,
+    "space": 0.3,
+    "warmth": 0.6
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Crate Dig",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_digCuriosity": 0.85,
+      "ofr_digComplexity": 0.6,
+      "ofr_digFlow": 0.7,
+      "ofr_transientSnap": 0.7,
+      "ofr_velToSnap": 0.75,
+      "ofr_dustVinyl": 0.3,
+      "ofr_dustTape": 0.12,
+      "ofr_lfo1Depth": 0.08,
+      "ofr_masterWidth": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["curiosity", "dig", "variation", "boom bap", "dynamic"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.85, "M2": 0.0, "M3": 0.0, "M4": 0.3}
+}

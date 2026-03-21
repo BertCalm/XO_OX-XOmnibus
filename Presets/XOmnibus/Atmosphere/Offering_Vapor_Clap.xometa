@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Clap voice stretched and detuned into a diffuse cloud. When the clap hits, it evaporates. LA parallel compression glues the haze into a cloud.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.5,
+    "density": 0.35,
+    "movement": 0.55,
+    "space": 0.92,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Vapor Clap",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 2,
+      "ofr_cityIntensity": 0.75,
+      "ofr_v4_decay": 0.65,
+      "ofr_v4_body": 0.15,
+      "ofr_v4_tune": -0.08,
+      "ofr_v4_level": 0.6,
+      "ofr_flipStretch": 0.35,
+      "ofr_flipChop": 0.3,
+      "ofr_transientSnap": 0.18,
+      "ofr_envFilterAmt": 0.45,
+      "ofr_digCuriosity": 0.68,
+      "ofr_masterWidth": 0.92
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["vaporwave", "diffuse", "clap", "la", "atmospheric"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.68, "M2": 0.6, "M3": 0.6, "M4": 0.15}
+}

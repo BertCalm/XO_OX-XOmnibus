@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Atlanta-influenced trap kit via NY city chain. Hi-hat voice repurposed as rolling triplet source. Open hat sits wide, clap snaps hard.",
+  "dna": {
+    "aggression": 0.75,
+    "brightness": 0.65,
+    "density": 0.7,
+    "movement": 0.6,
+    "space": 0.3,
+    "warmth": 0.35
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Trap Streets",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.7,
+      "ofr_transientSnap": 0.82,
+      "ofr_transientPitch": 0.5,
+      "ofr_v0_decay": 0.55,
+      "ofr_v0_body": 0.65,
+      "ofr_v2_decay": 0.04,
+      "ofr_v2_level": 0.7,
+      "ofr_v3_decay": 0.55,
+      "ofr_v3_level": 0.75,
+      "ofr_v3_pan": -0.4,
+      "ofr_v4_decay": 0.28,
+      "ofr_v4_body": 0.25,
+      "ofr_v4_level": 0.9,
+      "ofr_digCuriosity": 0.35,
+      "ofr_velToSnap": 0.7,
+      "ofr_masterWidth": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["trap", "hard", "snappy", "atlanta", "808"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.35, "M2": 0.0, "M3": 0.0, "M4": 0.1}
+}

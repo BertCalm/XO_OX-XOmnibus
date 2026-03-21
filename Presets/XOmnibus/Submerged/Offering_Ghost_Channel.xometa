@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "A drum machine channel that was mostly dead on a vintage mixer. The signal barely makes it through — 8-bit floor, 12kHz ceiling, extreme vinyl crackle. The kick is a ghost of itself. You can feel where it used to be.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.08,
+    "density": 0.45,
+    "movement": 0.15,
+    "space": 0.4,
+    "warmth": 0.82
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Ghost Channel",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.25,
+      "ofr_cityBlend": 0.1,
+      "ofr_transientSnap": 0.3,
+      "ofr_transientSat": 0.48,
+      "ofr_dustVinyl": 0.8,
+      "ofr_dustTape": 0.55,
+      "ofr_dustBits": 8,
+      "ofr_dustSampleRate": 12000,
+      "ofr_dustWobble": 0.3,
+      "ofr_digCuriosity": 0.2,
+      "ofr_digFlow": 0.25,
+      "ofr_v0_level": 0.55,
+      "ofr_v0_body": 0.55,
+      "ofr_v1_level": 0.5,
+      "ofr_masterLevel": 0.65,
+      "ofr_masterWidth": 0.3
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["ghost", "8-bit", "12kHz", "extreme-lo-fi", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.2, "M2": 0.1, "M3": 0.0, "M4": 1.0}
+}

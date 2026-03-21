@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Ultra-low bit depth (4-bit) with sample rate crushed to 4kHz. Drums become quantization noise sculptures — aggressive digital ghosts.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.7,
+    "density": 0.4,
+    "movement": 0.5,
+    "space": 0.65,
+    "warmth": 0.15
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Bit Ghost",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.4,
+      "ofr_dustBits": 4,
+      "ofr_dustSampleRate": 4000,
+      "ofr_dustVinyl": 0.15,
+      "ofr_transientSnap": 0.55,
+      "ofr_transientPitch": 0.5,
+      "ofr_digCuriosity": 0.65,
+      "ofr_masterWidth": 0.7,
+      "ofr_lfo1Depth": 0.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["bitcrush", "lo-fi", "digital", "harsh", "texture"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.65, "M2": 0.0, "M3": 0.0, "M4": 0.85}
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Crosstown Shift",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["city blend", "New York", "Toronto", "morphing", "flux"],
+  "macros": {"M1": 0.5, "M2": 0.55, "M3": 0.1, "M4": 0.1},
+  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.78, "density": 0.6, "space": 0.5, "aggression": 0.55},
+  "parameters": {
+    "ofr_transientSnap": 0.7,
+    "ofr_transientPitch": 0.45,
+    "ofr_cityMode": 0,
+    "ofr_cityBlend": 0.5,
+    "ofr_cityIntensity": 0.6,
+    "ofr_digCuriosity": 0.6,
+    "ofr_digComplexity": 0.4,
+    "ofr_digFlow": 0.6,
+    "ofr_lfo1Rate": 0.1,
+    "ofr_lfo1Depth": 0.09,
+    "ofr_lfo2Rate": 3.2,
+    "ofr_lfo2Depth": 0.11,
+    "ofr_velToSnap": 0.65,
+    "ofr_masterWidth": 0.7,
+    "ofr_v0_body": 0.75,
+    "ofr_v1_decay": 0.24,
+    "ofr_v2_pan": 0.35,
+    "ofr_v3_pan": -0.35
+  }
+}

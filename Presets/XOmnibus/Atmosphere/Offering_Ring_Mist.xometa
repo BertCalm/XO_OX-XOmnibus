@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Ring modulation at full intensity creates inharmonic metallic fog. Drum types reassigned to emphasize tonal potential — rim and perc become bell voices.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.65,
+    "density": 0.45,
+    "movement": 0.6,
+    "space": 0.8,
+    "warmth": 0.3
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Ring Mist",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.65,
+      "ofr_flipRingMod": 0.8,
+      "ofr_transientSnap": 0.3,
+      "ofr_transientPitch": 0.7,
+      "ofr_v5_type": 7,
+      "ofr_v7_type": 5,
+      "ofr_v5_tune": 0.15,
+      "ofr_v7_tune": -0.1,
+      "ofr_v5_decay": 0.55,
+      "ofr_v7_decay": 0.38,
+      "ofr_digCuriosity": 0.72,
+      "ofr_envToPitch": 0.25,
+      "ofr_masterWidth": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["ring mod", "metallic", "inharmonic", "ambient", "bell"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.72, "M2": 0.8, "M3": 0.8, "M4": 0.15}
+}

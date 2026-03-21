@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Sonatas Interludes",
+  "mood": "Prism",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Cage's masterpiece configuration: bolt preparation at the 1/3 point with moderate depth. Some partials rattle, some ring pure, some vanish. The result sounds like a gamelan that went to music school — pitched percussion with unexpected timbral turns at every register. Play slowly; let each note reveal its preparation.",
+  "tags": ["prepared", "bolt", "cage", "gamelan", "prism", "pitched-percussion", "sonata"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.55,
+      "obel_stoneTone": 0.5,
+      "obel_brightness": 8500.0,
+      "obel_damping": 0.2,
+      "obel_decay": 3.5,
+      "obel_hfNoise": 0.25,
+      "obel_hardness": 0.55,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.33,
+      "obel_prepDepth": 0.45,
+      "obel_filterEnvAmount": 0.4,
+      "obel_thermalDrift": 0.2,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.06,
+      "obel_lfo1Depth": 0.06,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.4,
+      "obel_lfo2Depth": 0.0,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

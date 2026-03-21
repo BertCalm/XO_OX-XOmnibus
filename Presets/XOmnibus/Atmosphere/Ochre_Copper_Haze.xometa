@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Copper Haze",
+  "mood": "Atmosphere",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Heavy thermal drift and sympathetic resonance create a hazy, breathing copper atmosphere. The upright piano dissolving in afternoon heat.",
+  "tags": ["piano", "copper", "atmospheric", "haze", "drift", "breathing", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.25,
+      "ochre_hardness": 0.2,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.7,
+      "ochre_brightness": 5500.0,
+      "ochre_damping": 0.2,
+      "ochre_decay": 3.5,
+      "ochre_caramel": 0.4,
+      "ochre_sympathy": 0.6,
+      "ochre_hfCharacter": 0.1,
+      "ochre_thermalDrift": 0.85,
+      "ochre_filterEnvAmount": 0.2,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.08,
+      "ochre_lfo1Depth": 0.15,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.03,
+      "ochre_lfo2Depth": 0.1,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

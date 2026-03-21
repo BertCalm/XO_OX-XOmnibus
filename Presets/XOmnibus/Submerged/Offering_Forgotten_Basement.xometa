@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "A kit left running in a basement for thirty years. Extreme bit crush, sub-20kHz sample rate, maximum vinyl crackle. The beats barely surface through the static. You can hear the mold on the tape. Still somehow grooves.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.1,
+    "density": 0.55,
+    "movement": 0.2,
+    "space": 0.35,
+    "warmth": 0.9
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Forgotten Basement",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.35,
+      "ofr_cityBlend": 0.1,
+      "ofr_transientSnap": 0.4,
+      "ofr_transientSat": 0.45,
+      "ofr_dustVinyl": 0.75,
+      "ofr_dustTape": 0.45,
+      "ofr_dustBits": 8,
+      "ofr_dustSampleRate": 18000,
+      "ofr_dustWobble": 0.22,
+      "ofr_digCuriosity": 0.25,
+      "ofr_digFlow": 0.3,
+      "ofr_v0_level": 0.7,
+      "ofr_v0_decay": 0.28,
+      "ofr_v1_level": 0.65,
+      "ofr_masterWidth": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["extreme-lo-fi", "8-bit", "vinyl", "submerged", "dust", "degraded"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.25, "M2": 0.1, "M3": 0.0, "M4": 0.95}
+}

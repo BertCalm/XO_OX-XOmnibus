@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-21",
+  "description": "OFFERING as tidal engine beneath OCEANIC's bioluminescent texture. Kick hits trigger OCEANIC's chromatophore modulator. Toronto sidechain creates a rhythmic tidal pull — each kick opens a window of clarity in the phosphorescent wash.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.45,
+    "density": 0.6,
+    "movement": 0.55,
+    "space": 0.65,
+    "warmth": 0.65
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Family",
+  "name": "OCEANIC Tidal Kick",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.5,
+      "ofr_cityBlend": 0.3,
+      "ofr_transientSnap": 0.6,
+      "ofr_transientPitch": 0.32,
+      "ofr_transientSat": 0.1,
+      "ofr_digCuriosity": 0.55,
+      "ofr_digFlow": 0.6,
+      "ofr_dustVinyl": 0.1,
+      "ofr_v0_decay": 0.38,
+      "ofr_v0_body": 0.72,
+      "ofr_v3_level": 0.75,
+      "ofr_v3_decay": 0.45,
+      "ofr_masterWidth": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["oceanic", "coupling", "tidal", "toronto", "bioluminescent", "family"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.55, "M2": 0.45, "M3": 0.0, "M4": 0.1}
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Fog Machine",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["Bay Area", "allpass", "fog", "evolving", "diffuse"],
+  "macros": {"M1": 0.55, "M2": 0.9, "M3": 0.0, "M4": 0.1},
+  "dna": {"brightness": 0.35, "warmth": 0.5, "movement": 0.82, "density": 0.45, "space": 0.8, "aggression": 0.3},
+  "parameters": {
+    "ofr_transientSnap": 0.55,
+    "ofr_transientSat": 0.1,
+    "ofr_cityMode": 4,
+    "ofr_cityIntensity": 0.8,
+    "ofr_cityBlend": 0.3,
+    "ofr_digCuriosity": 0.65,
+    "ofr_digComplexity": 0.5,
+    "ofr_digFlow": 0.7,
+    "ofr_lfo1Rate": 0.04,
+    "ofr_lfo1Depth": 0.14,
+    "ofr_lfo1Shape": 2,
+    "ofr_lfo2Rate": 0.8,
+    "ofr_lfo2Depth": 0.18,
+    "ofr_masterWidth": 0.8,
+    "ofr_masterLevel": 0.75,
+    "ofr_v3_decay": 0.6,
+    "ofr_v3_body": 0.4,
+    "ofr_v6_pan": 0.5,
+    "ofr_v7_pan": -0.5
+  }
+}

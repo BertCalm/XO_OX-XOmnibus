@@ -1,0 +1,45 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Bay Area allpass fog blurs transients into a hazy groove. Hyphy DNA — loose, rolling, deceptively deep.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.55,
+    "space": 0.55,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Bay Fog",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.5,
+      "ofr_cityBlend": 0.35,
+      "ofr_transientSnap": 0.55,
+      "ofr_transientPitch": 0.45,
+      "ofr_digCuriosity": 0.55,
+      "ofr_digFlow": 0.6,
+      "ofr_dustVinyl": 0.25,
+      "ofr_masterWidth": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["bay area", "hyphy", "foggy", "rolling", "west"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.55, "M2": 0.75, "M3": 0.0, "M4": 0.25}
+}

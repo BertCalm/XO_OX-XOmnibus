@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Chain Buzz",
+  "mood": "Flux",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chain draped over the strings. The chain bounces against the vibrating strings, creating broadband noise bursts that track the fundamental — like a sitar's jawari bridge or a hurdy-gurdy buzz. The stone rings; the chain snarls. Dirty, alive, unpredictable. Cage's kitchen-drawer chaos.",
+  "tags": ["prepared", "chain", "buzz", "sitar", "dirty", "flux", "noise", "nonlinear"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.2,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.5,
+      "obel_stoneTone": 0.5,
+      "obel_brightness": 9000.0,
+      "obel_damping": 0.25,
+      "obel_decay": 2.0,
+      "obel_hfNoise": 0.35,
+      "obel_hardness": 0.65,
+      "obel_prepType": 4,
+      "obel_prepPosition": 0.45,
+      "obel_prepDepth": 0.65,
+      "obel_filterEnvAmount": 0.45,
+      "obel_thermalDrift": 0.2,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.2,
+      "obel_lfo1Depth": 0.12,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.8,
+      "obel_lfo2Depth": 0.15,
+      "obel_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

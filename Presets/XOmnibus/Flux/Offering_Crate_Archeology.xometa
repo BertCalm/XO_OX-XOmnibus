@@ -1,0 +1,28 @@
+{
+  "name": "Crate Archeology",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["vinyl", "lo-fi", "digging", "curiosity", "warmth"],
+  "macros": {"M1": 0.85, "M2": 0.1, "M3": 0.0, "M4": 0.6},
+  "dna": {"brightness": 0.2, "warmth": 0.9, "movement": 0.65, "density": 0.45, "space": 0.3, "aggression": 0.25},
+  "parameters": {
+    "ofr_transientSnap": 0.45,
+    "ofr_transientSat": 0.3,
+    "ofr_dustVinyl": 0.5,
+    "ofr_dustTape": 0.3,
+    "ofr_dustBits": 12,
+    "ofr_dustSampleRate": 22050,
+    "ofr_dustWobble": 0.18,
+    "ofr_cityMode": 0,
+    "ofr_cityIntensity": 0.35,
+    "ofr_digCuriosity": 0.8,
+    "ofr_digComplexity": 0.25,
+    "ofr_digFlow": 0.75,
+    "ofr_lfo1Rate": 0.03,
+    "ofr_lfo1Depth": 0.08,
+    "ofr_masterLevel": 0.7,
+    "ofr_masterWidth": 0.5,
+    "ofr_v0_body": 0.9,
+    "ofr_v0_decay": 0.5
+  }
+}

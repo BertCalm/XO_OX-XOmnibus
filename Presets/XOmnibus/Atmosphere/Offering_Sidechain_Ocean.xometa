@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Toronto sidechain at maximum depth. The entire kit tides against the kick — when kick hits, every other voice ducks to silence, then slowly resurfaces like a wave.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.35,
+    "density": 0.5,
+    "movement": 0.85,
+    "space": 0.88,
+    "warmth": 0.65
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Sidechain Ocean",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 1.0,
+      "ofr_cityBlend": 0.8,
+      "ofr_v0_decay": 1.0,
+      "ofr_v0_body": 0.88,
+      "ofr_v1_decay": 0.65,
+      "ofr_v2_decay": 0.55,
+      "ofr_v3_decay": 0.9,
+      "ofr_transientSnap": 0.2,
+      "ofr_digCuriosity": 0.65,
+      "ofr_masterWidth": 0.8,
+      "ofr_lfo1Rate": 0.04,
+      "ofr_lfo1Depth": 0.12
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["sidechain", "toronto", "ocean", "wave", "breathing"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.65, "M2": 1.0, "M3": 0.0, "M4": 0.25}
+}

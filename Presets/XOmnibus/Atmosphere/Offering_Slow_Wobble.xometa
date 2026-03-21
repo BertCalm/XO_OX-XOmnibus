@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Both LFOs set to ultra-slow rates. The kit slowly morphs over time — what sounds like a snare becomes a clap becomes a rim over many bars.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.45,
+    "density": 0.4,
+    "movement": 0.8,
+    "space": 0.85,
+    "warmth": 0.6
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Slow Wobble",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.65,
+      "ofr_lfo1Rate": 0.005,
+      "ofr_lfo1Depth": 0.25,
+      "ofr_lfo1Shape": 2,
+      "ofr_lfo2Rate": 0.012,
+      "ofr_lfo2Depth": 0.3,
+      "ofr_transientSnap": 0.35,
+      "ofr_transientPitch": 0.55,
+      "ofr_digCuriosity": 0.7,
+      "ofr_digFlow": 0.85,
+      "ofr_masterWidth": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["slow lfo", "morphing", "ambient", "evolving", "bay area"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.7, "M2": 0.8, "M3": 0.0, "M4": 0.3}
+}

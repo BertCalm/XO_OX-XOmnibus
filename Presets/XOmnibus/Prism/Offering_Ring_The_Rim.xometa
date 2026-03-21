@@ -1,0 +1,29 @@
+{
+  "name": "Ring The Rim",
+  "engine": "Offering",
+  "mood": "Prism",
+  "tags": ["rimshot", "bright", "NY", "snappy", "percussive"],
+  "macros": {"M1": 0.65, "M2": 0.2, "M3": 0.1, "M4": 0.1},
+  "dna": {"brightness": 0.82, "warmth": 0.3, "movement": 0.45, "density": 0.68, "space": 0.38, "aggression": 0.78},
+  "parameters": {
+    "ofr_transientSnap": 0.8,
+    "ofr_transientPitch": 0.58,
+    "ofr_transientSat": 0.14,
+    "ofr_dustVinyl": 0.12,
+    "ofr_dustTape": 0.06,
+    "ofr_cityMode": 0,
+    "ofr_cityBlend": 0.15,
+    "ofr_cityIntensity": 0.55,
+    "ofr_digCuriosity": 0.4,
+    "ofr_digComplexity": 0.25,
+    "ofr_digFlow": 0.5,
+    "ofr_masterWidth": 0.5,
+    "ofr_velToSnap": 0.75,
+    "ofr_v5_level": 0.95,
+    "ofr_v5_decay": 0.05,
+    "ofr_v5_tune": 5.0,
+    "ofr_v5_pan": -0.2,
+    "ofr_v1_decay": 0.19,
+    "ofr_v4_decay": 0.2
+  }
+}

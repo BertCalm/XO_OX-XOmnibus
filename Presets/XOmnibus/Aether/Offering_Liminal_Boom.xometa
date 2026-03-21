@@ -1,0 +1,33 @@
+{
+  "name": "Liminal Boom",
+  "engine": "Offering",
+  "mood": "Aether",
+  "tags": ["sub-heavy", "threshold", "transcendent", "Detroit", "deep"],
+  "macros": {"M1": 0.55, "M2": 0.35, "M3": 0.0, "M4": 0.3},
+  "dna": {"brightness": 0.25, "warmth": 0.75, "movement": 0.4, "density": 0.65, "space": 0.85, "aggression": 0.45},
+  "parameters": {
+    "ofr_transientSnap": 0.52,
+    "ofr_transientPitch": 0.25,
+    "ofr_transientSat": 0.24,
+    "ofr_dustVinyl": 0.3,
+    "ofr_dustTape": 0.25,
+    "ofr_dustWobble": 0.14,
+    "ofr_cityMode": 1,
+    "ofr_cityBlend": 0.1,
+    "ofr_cityIntensity": 0.55,
+    "ofr_digCuriosity": 0.78,
+    "ofr_digComplexity": 0.5,
+    "ofr_digFlow": 0.8,
+    "ofr_lfo1Rate": 0.035,
+    "ofr_lfo1Depth": 0.14,
+    "ofr_lfo2Rate": 1.5,
+    "ofr_lfo2Depth": 0.18,
+    "ofr_masterWidth": 0.72,
+    "ofr_v0_decay": 0.75,
+    "ofr_v0_body": 0.9,
+    "ofr_v0_tune": -5.0,
+    "ofr_v1_decay": 0.4,
+    "ofr_v6_decay": 0.8,
+    "ofr_v6_level": 0.85
+  }
+}

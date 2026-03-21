@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Bone dry utility kit. Zero dust, maximum transient snap, mono-friendly. For when the mix needs drums that cut without any color.",
+  "dna": {
+    "aggression": 0.7,
+    "brightness": 0.65,
+    "density": 0.45,
+    "movement": 0.2,
+    "space": 0.15,
+    "warmth": 0.3
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Bone Dry",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.5,
+      "ofr_transientSnap": 0.88,
+      "ofr_transientPitch": 0.5,
+      "ofr_dustVinyl": 0.0,
+      "ofr_dustTape": 0.0,
+      "ofr_dustWobble": 0.0,
+      "ofr_dustBits": 24,
+      "ofr_dustSampleRate": 96000,
+      "ofr_digCuriosity": 0.3,
+      "ofr_masterWidth": 0.4,
+      "ofr_lfo1Depth": 0.0,
+      "ofr_lfo2Depth": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["dry", "utility", "clean", "transient", "cutting"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.3, "M2": 0.0, "M3": 0.0, "M4": 0.0}
+}

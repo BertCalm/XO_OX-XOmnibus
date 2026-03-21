@@ -1,0 +1,29 @@
+{
+  "name": "River Mouth",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["Bay Area", "fluid", "open hats", "wide", "flowing"],
+  "macros": {"M1": 0.5, "M2": 0.85, "M3": 0.0, "M4": 0.0},
+  "dna": {"brightness": 0.65, "warmth": 0.4, "movement": 0.8, "density": 0.4, "space": 0.75, "aggression": 0.35},
+  "parameters": {
+    "ofr_transientSnap": 0.6,
+    "ofr_transientPitch": 0.35,
+    "ofr_transientSat": 0.08,
+    "ofr_cityMode": 4,
+    "ofr_cityIntensity": 0.7,
+    "ofr_cityBlend": 0.35,
+    "ofr_digCuriosity": 0.58,
+    "ofr_digFlow": 0.8,
+    "ofr_lfo1Rate": 0.14,
+    "ofr_lfo1Depth": 0.1,
+    "ofr_lfo1Shape": 2,
+    "ofr_lfo2Rate": 2.0,
+    "ofr_lfo2Depth": 0.14,
+    "ofr_masterWidth": 0.85,
+    "ofr_v3_decay": 0.7,
+    "ofr_v3_body": 0.35,
+    "ofr_v3_level": 0.9,
+    "ofr_v3_pan": -0.4,
+    "ofr_v2_pan": 0.45
+  }
+}

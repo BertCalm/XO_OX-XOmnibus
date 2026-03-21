@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Warm Keys",
+  "mood": "Foundation",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full copper warmth with parlour body. Rich, singing tone for chords and ballads. The upright at its most generous.",
+  "tags": ["piano", "copper", "warm", "keys", "chords", "parlour", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.3,
+      "ochre_hardness": 0.3,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.6,
+      "ochre_brightness": 7000.0,
+      "ochre_damping": 0.3,
+      "ochre_decay": 2.0,
+      "ochre_caramel": 0.35,
+      "ochre_sympathy": 0.35,
+      "ochre_hfCharacter": 0.15,
+      "ochre_thermalDrift": 0.35,
+      "ochre_filterEnvAmount": 0.3,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.15,
+      "ochre_lfo1Depth": 0.08,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.5,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

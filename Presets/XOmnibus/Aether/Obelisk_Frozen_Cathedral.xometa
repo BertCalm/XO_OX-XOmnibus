@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Cathedral",
+  "mood": "Aether",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Glass preparation with extreme cold stone tone and very long decay. The marble rings with glassy overtones that sustain like a frozen church bell. Thermal drift adds micro-detuning that evolves over 30+ seconds. Play a single chord and let the stone cathedral decay into silence. Sacred, alien, geological.",
+  "tags": ["glass", "prepared", "cathedral", "ethereal", "aether", "sustained", "frozen", "sacred"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.1,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.85,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.8,
+      "obel_stoneTone": 0.2,
+      "obel_brightness": 10000.0,
+      "obel_damping": 0.05,
+      "obel_decay": 12.0,
+      "obel_hfNoise": 0.15,
+      "obel_hardness": 0.4,
+      "obel_prepType": 3,
+      "obel_prepPosition": 0.45,
+      "obel_prepDepth": 0.4,
+      "obel_filterEnvAmount": 0.2,
+      "obel_thermalDrift": 0.4,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.01,
+      "obel_lfo1Depth": 0.1,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.02,
+      "obel_lfo2Depth": 0.08,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

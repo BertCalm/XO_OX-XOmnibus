@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Medium",
+  "created": "2026-03-21",
+  "description": "OFFERING feeding ORGANON's metabolic rate via AmpToRate coupling. Kick triggers boost cellular metabolism — the organism responds in real time to the rhythm. Toronto sidechain duck adds a biological breath between drum hits.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.7,
+    "space": 0.5,
+    "warmth": 0.65
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Family",
+  "name": "ORGANON Metabolic",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.45,
+      "ofr_cityBlend": 0.2,
+      "ofr_transientSnap": 0.65,
+      "ofr_transientPitch": 0.35,
+      "ofr_transientSat": 0.12,
+      "ofr_digCuriosity": 0.65,
+      "ofr_digComplexity": 0.45,
+      "ofr_digFlow": 0.6,
+      "ofr_lfo1Rate": 0.05,
+      "ofr_lfo1Depth": 0.06,
+      "ofr_v0_decay": 0.38,
+      "ofr_v0_body": 0.72,
+      "ofr_masterWidth": 0.58
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["organon", "coupling", "amp-to-rate", "toronto", "metabolic", "family"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.65, "M2": 0.4, "M3": 0.0, "M4": 0.1}
+}

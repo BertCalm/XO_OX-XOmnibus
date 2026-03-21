@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Toronto sidechain carves a breathing sub-membrane. Long kick decay creates a tidal low end that pulls other voices in and out of audibility.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.25,
+    "density": 0.45,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.7
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Sub Membrane",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 3,
+      "ofr_cityIntensity": 0.9,
+      "ofr_cityBlend": 0.6,
+      "ofr_v0_decay": 1.5,
+      "ofr_v0_body": 0.9,
+      "ofr_v0_level": 0.88,
+      "ofr_transientSnap": 0.25,
+      "ofr_digCuriosity": 0.6,
+      "ofr_envFilterAmt": 0.5,
+      "ofr_masterWidth": 0.75,
+      "ofr_masterLevel": 0.75
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["sub", "toronto", "tidal", "sidechain", "deep"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.6, "M2": 0.95, "M3": 0.0, "M4": 0.25}
+}

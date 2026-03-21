@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The kit that lived in a cardboard box in a garage for fifteen years. Damp, compressed, degraded. Percussion voices tuned flat from humidity. Collage flip set to occasional chop — fragments of the original kit surface momentarily.",
+  "dna": {
+    "aggression": 0.28,
+    "brightness": 0.15,
+    "density": 0.5,
+    "movement": 0.22,
+    "space": 0.3,
+    "warmth": 0.88
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Damp Cardboard",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.35,
+      "ofr_cityBlend": 0.15,
+      "ofr_transientSnap": 0.4,
+      "ofr_transientSat": 0.42,
+      "ofr_flipLayers": 2,
+      "ofr_flipChop": 0.2,
+      "ofr_dustVinyl": 0.5,
+      "ofr_dustTape": 0.45,
+      "ofr_dustBits": 13,
+      "ofr_dustSampleRate": 20000,
+      "ofr_dustWobble": 0.16,
+      "ofr_digCuriosity": 0.25,
+      "ofr_digFlow": 0.3,
+      "ofr_v0_tune": -0.1,
+      "ofr_v6_tune": -0.08,
+      "ofr_v7_tune": -0.06,
+      "ofr_masterWidth": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["degraded", "damp", "detuned", "lo-fi", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.25, "M2": 0.12, "M3": 0.25, "M4": 0.88}
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "SP-1200 character distilled. 26,040 Hz sample rate, 12-bit depth, maximum vinyl crackle. The kick has that characteristic mid-range honk, the snare a papery bark. Found in a crypt, still playing.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.2,
+    "density": 0.65,
+    "movement": 0.25,
+    "space": 0.3,
+    "warmth": 0.85
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "SP1200 Crypt",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.45,
+      "ofr_cityBlend": 0.15,
+      "ofr_transientSnap": 0.55,
+      "ofr_transientSat": 0.35,
+      "ofr_dustVinyl": 0.55,
+      "ofr_dustTape": 0.25,
+      "ofr_dustBits": 12,
+      "ofr_dustSampleRate": 26040,
+      "ofr_dustWobble": 0.12,
+      "ofr_digCuriosity": 0.35,
+      "ofr_digComplexity": 0.3,
+      "ofr_digFlow": 0.4,
+      "ofr_v0_decay": 0.3,
+      "ofr_v0_body": 0.75,
+      "ofr_v1_decay": 0.18,
+      "ofr_v1_body": 0.45,
+      "ofr_masterWidth": 0.45
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["sp-1200", "lo-fi", "12-bit", "vinyl", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.35, "M2": 0.15, "M3": 0.0, "M4": 0.75}
+}

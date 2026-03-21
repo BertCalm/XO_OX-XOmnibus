@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Berlyne curiosity engine at maximum. Every hit is a discovery — the algorithm explores the full parameter space making no two strikes identical.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.95,
+    "space": 0.6,
+    "warmth": 0.5
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Max Curiosity",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.5,
+      "ofr_digCuriosity": 1.0,
+      "ofr_digComplexity": 0.85,
+      "ofr_digFlow": 0.9,
+      "ofr_transientSnap": 0.6,
+      "ofr_lfo1Depth": 0.15,
+      "ofr_lfo2Depth": 0.2,
+      "ofr_lfo1Rate": 0.15,
+      "ofr_velToSnap": 0.8,
+      "ofr_masterWidth": 0.8
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["curiosity", "variation", "unpredictable", "experimental", "alive"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 1.0, "M2": 0.75, "M3": 0.0, "M4": 0.2}
+}

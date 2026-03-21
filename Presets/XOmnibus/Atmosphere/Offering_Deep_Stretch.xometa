@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Maximum FLIP stretch transforms every drum hit into a sustained tonal event. Kick becomes a bass note, snare becomes a chord cluster.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.4,
+    "density": 0.45,
+    "movement": 0.5,
+    "space": 0.9,
+    "warmth": 0.65
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Deep Stretch",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.6,
+      "ofr_flipStretch": 0.15,
+      "ofr_flipChop": 0.6,
+      "ofr_flipLayers": 2,
+      "ofr_v0_decay": 1.2,
+      "ofr_v1_decay": 0.85,
+      "ofr_v6_decay": 0.95,
+      "ofr_v6_tune": -0.2,
+      "ofr_digCuriosity": 0.7,
+      "ofr_digFlow": 0.8,
+      "ofr_transientSnap": 0.3,
+      "ofr_masterWidth": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["stretched", "tonal", "spacious", "experimental", "ambient"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.7, "M2": 0.75, "M3": 0.9, "M4": 0.2}
+}

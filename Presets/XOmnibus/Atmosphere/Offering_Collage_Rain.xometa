@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Three-layer collage stacking with maximum chop. Each drum trigger fires up to 3 random micro-slices — a rainfall of rhythmic fragments.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.5,
+    "density": 0.75,
+    "movement": 0.8,
+    "space": 0.65,
+    "warmth": 0.5
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Collage Rain",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.55,
+      "ofr_flipLayers": 3,
+      "ofr_flipChop": 0.85,
+      "ofr_flipStretch": 0.5,
+      "ofr_digCuriosity": 0.78,
+      "ofr_digComplexity": 0.65,
+      "ofr_transientSnap": 0.4,
+      "ofr_dustVinyl": 0.2,
+      "ofr_masterWidth": 0.82
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["collage", "layered", "rain", "dense", "experimental"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.78, "M2": 0.7, "M3": 0.95, "M4": 0.2}
+}

@@ -1,0 +1,45 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Multi-layer collage kit. FLIP layering stacks two samples per voice — the foundation sound of a producer who always chops their own breaks.",
+  "dna": {
+    "aggression": 0.55,
+    "brightness": 0.5,
+    "density": 0.7,
+    "movement": 0.5,
+    "space": 0.35,
+    "warmth": 0.6
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Flip Collage",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_flipLayers": 2,
+      "ofr_flipChop": 0.35,
+      "ofr_digCuriosity": 0.55,
+      "ofr_digComplexity": 0.45,
+      "ofr_transientSnap": 0.65,
+      "ofr_dustVinyl": 0.22,
+      "ofr_dustTape": 0.1,
+      "ofr_masterWidth": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["collage", "layers", "flip", "chopped", "complex"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.55, "M2": 0.0, "M3": 0.65, "M4": 0.2}
+}

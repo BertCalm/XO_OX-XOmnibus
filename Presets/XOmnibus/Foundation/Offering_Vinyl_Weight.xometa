@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Heavy vinyl character. Maximum dust across all degradation parameters — the sound of a record played too many times and loved even more.",
+  "dna": {
+    "aggression": 0.4,
+    "brightness": 0.3,
+    "density": 0.5,
+    "movement": 0.45,
+    "space": 0.4,
+    "warmth": 0.9
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Vinyl Weight",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 1,
+      "ofr_cityIntensity": 0.35,
+      "ofr_dustVinyl": 0.65,
+      "ofr_dustTape": 0.45,
+      "ofr_dustBits": 10,
+      "ofr_dustSampleRate": 16000,
+      "ofr_dustWobble": 0.22,
+      "ofr_transientSnap": 0.45,
+      "ofr_transientSat": 0.3,
+      "ofr_digCuriosity": 0.5,
+      "ofr_masterWidth": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["vinyl", "dusty", "degraded", "warm", "lo-fi"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.5, "M2": 0.35, "M3": 0.0, "M4": 0.9}
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Living Stone",
+  "mood": "Flux",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rubber preparation with LFO2 modulating preparation depth. The stone alternates between prepared and unprepared — modes appear and disappear rhythmically as the rubber virtually lifts and presses. A stone that breathes. The LFO triangle wave creates a periodic unmasking of hidden partials.",
+  "tags": ["prepared", "rubber", "lfo", "breathing", "flux", "animated", "morphing"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.3,
+    "movement": 0.7,
+    "density": 0.45,
+    "space": 0.3,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.5,
+      "obel_stoneTone": 0.5,
+      "obel_brightness": 6500.0,
+      "obel_damping": 0.2,
+      "obel_decay": 3.0,
+      "obel_hfNoise": 0.2,
+      "obel_hardness": 0.45,
+      "obel_prepType": 2,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.5,
+      "obel_filterEnvAmount": 0.35,
+      "obel_thermalDrift": 0.15,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.1,
+      "obel_lfo1Depth": 0.06,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.3,
+      "obel_lfo2Depth": 0.6,
+      "obel_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

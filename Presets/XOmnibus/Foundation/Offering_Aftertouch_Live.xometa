@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Expressive live performance kit. Aftertouch and mod wheel at full sensitivity — designed for MPC pad performance where pressure matters.",
+  "dna": {
+    "aggression": 0.5,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.65,
+    "space": 0.4,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Aftertouch Live",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 2,
+      "ofr_cityIntensity": 0.45,
+      "ofr_aftertouch": 0.85,
+      "ofr_modWheel": 0.8,
+      "ofr_velToSnap": 0.9,
+      "ofr_velToBody": 0.6,
+      "ofr_velToAttack": 0.6,
+      "ofr_digCuriosity": 0.6,
+      "ofr_digFlow": 0.7,
+      "ofr_transientSnap": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["expressive", "aftertouch", "live", "mpc", "performance"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.6, "M2": 0.45, "M3": 0.0, "M4": 0.2}
+}

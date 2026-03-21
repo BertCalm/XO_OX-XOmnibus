@@ -1,0 +1,30 @@
+{
+  "name": "Knot Theory",
+  "engine": "Offering",
+  "mood": "Entangled",
+  "tags": ["coupling matrix", "complex", "intertwined", "LA", "mathematical"],
+  "macros": {"M1": 0.65, "M2": 0.6, "M3": 0.92, "M4": 0.0},
+  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.7, "density": 0.9, "space": 0.55, "aggression": 0.6},
+  "parameters": {
+    "ofr_flipLayers": 3,
+    "ofr_flipChop": 0.7,
+    "ofr_flipStretch": 1.25,
+    "ofr_flipRingMod": 0.55,
+    "ofr_digCuriosity": 0.85,
+    "ofr_digComplexity": 0.85,
+    "ofr_digFlow": 0.3,
+    "ofr_cityMode": 2,
+    "ofr_cityIntensity": 0.7,
+    "ofr_cityBlend": 0.4,
+    "ofr_transientSat": 0.28,
+    "ofr_transientPitch": 0.5,
+    "ofr_lfo1Rate": 0.16,
+    "ofr_lfo1Depth": 0.14,
+    "ofr_lfo2Rate": 4.8,
+    "ofr_lfo2Depth": 0.2,
+    "ofr_envFilterAmt": 0.35,
+    "ofr_envToPitch": 0.18,
+    "ofr_masterWidth": 0.78,
+    "ofr_v0_body": 0.85
+  }
+}

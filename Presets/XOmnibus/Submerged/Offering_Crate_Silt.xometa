@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The record store bottom shelf — boxes no one has touched in twenty years. 9-bit crush, 14kHz sample rate, vinyl crackle at therapeutic levels. The curiosity engine is barely awake. These drums are asleep in silt.",
+  "dna": {
+    "aggression": 0.3,
+    "brightness": 0.12,
+    "density": 0.5,
+    "movement": 0.18,
+    "space": 0.38,
+    "warmth": 0.88
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Submerged",
+  "name": "Crate Silt",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.3,
+      "ofr_cityBlend": 0.1,
+      "ofr_transientSnap": 0.35,
+      "ofr_transientSat": 0.5,
+      "ofr_dustVinyl": 0.7,
+      "ofr_dustTape": 0.5,
+      "ofr_dustBits": 9,
+      "ofr_dustSampleRate": 14000,
+      "ofr_dustWobble": 0.25,
+      "ofr_digCuriosity": 0.15,
+      "ofr_digComplexity": 0.2,
+      "ofr_digFlow": 0.2,
+      "ofr_v0_level": 0.65,
+      "ofr_v0_body": 0.6,
+      "ofr_v1_level": 0.6,
+      "ofr_masterWidth": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["crate-dig", "9-bit", "lo-fi", "vinyl", "submerged", "dust"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.15, "M2": 0.1, "M3": 0.0, "M4": 0.95}
+}

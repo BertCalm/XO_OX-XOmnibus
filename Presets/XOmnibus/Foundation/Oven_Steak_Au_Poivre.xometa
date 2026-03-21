@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Steak Au Poivre",
+  "mood": "Foundation",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The culinary archetype: seared at maximum heat in cast iron. Hard hammer strikes create the Maillard crust — bright initial transient with extreme harmonic content. Then the body traps it all and braises it into dark sustain. The sear and the braise in one gesture.",
+  "tags": ["piano", "percussive", "maillard", "sear", "dynamic", "velocity", "character"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.65,
+    "movement": 0.10,
+    "density": 0.70,
+    "space": 0.35,
+    "aggression": 0.50
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 5000.0,
+      "oven_bodyResonance": 0.6,
+      "oven_hfAmount": 0.6,
+      "oven_hardness": 0.7,
+      "oven_density": 0.7,
+      "oven_temperature": 0.5,
+      "oven_sympathetic": 0.35,
+      "oven_bloomTime": 0.0,
+      "oven_sustainTime": 3.5,
+      "oven_filterEnvAmt": 0.8,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 2.0,
+      "oven_ampSustain": 0.2,
+      "oven_ampRelease": 1.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.5,
+      "oven_lfo1Depth": 0.0,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 1.0,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,45 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Time-stretch collage technique. FLIP stretch applied with moderate chop — drum hits pull and push around the grid while still functioning as a usable kit.",
+  "dna": {
+    "aggression": 0.45,
+    "brightness": 0.45,
+    "density": 0.55,
+    "movement": 0.65,
+    "space": 0.4,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Stretch Kit",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.4,
+      "ofr_flipStretch": 0.75,
+      "ofr_flipChop": 0.4,
+      "ofr_flipLayers": 1,
+      "ofr_digCuriosity": 0.6,
+      "ofr_digFlow": 0.65,
+      "ofr_transientSnap": 0.58,
+      "ofr_masterWidth": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["stretched", "collage", "bay area", "rhythmic", "organic"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.6, "M2": 0.7, "M3": 0.55, "M4": 0.2}
+}

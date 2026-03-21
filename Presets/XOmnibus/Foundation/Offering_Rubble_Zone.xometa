@@ -1,0 +1,29 @@
+{
+  "name": "Rubble Zone",
+  "engine": "Offering",
+  "mood": "Foundation",
+  "tags": ["boom bap", "NYC", "kick snare", "SP-1200", "classic"],
+  "macros": {"M1": 0.0, "M2": 0.0, "M3": 0.0, "M4": 0.0},
+  "dna": {"brightness": 0.5, "warmth": 0.4, "movement": 0.3, "density": 0.6, "space": 0.3, "aggression": 0.7},
+  "parameters": {
+    "ofr_transientSnap": 0.65,
+    "ofr_transientPitch": 0.4,
+    "ofr_transientSat": 0.2,
+    "ofr_dustTape": 0.08,
+    "ofr_dustVinyl": 0.15,
+    "ofr_cityMode": 0,
+    "ofr_cityIntensity": 0.55,
+    "ofr_digCuriosity": 0.5,
+    "ofr_digComplexity": 0.3,
+    "ofr_digFlow": 0.7,
+    "ofr_lfo2Rate": 2.17,
+    "ofr_lfo2Depth": 0.08,
+    "ofr_masterLevel": 0.75,
+    "ofr_masterWidth": 0.6,
+    "ofr_velToSnap": 0.6,
+    "ofr_v0_decay": 0.38,
+    "ofr_v0_body": 0.7,
+    "ofr_v1_decay": 0.22,
+    "ofr_v2_decay": 0.055
+  }
+}

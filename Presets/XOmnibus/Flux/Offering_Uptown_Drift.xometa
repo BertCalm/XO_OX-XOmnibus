@@ -1,0 +1,28 @@
+{
+  "name": "Uptown Drift",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["New York", "evolution", "groove", "flux", "movement"],
+  "macros": {"M1": 0.7, "M2": 0.0, "M3": 0.1, "M4": 0.15},
+  "dna": {"brightness": 0.55, "warmth": 0.4, "movement": 0.8, "density": 0.5, "space": 0.45, "aggression": 0.5},
+  "parameters": {
+    "ofr_transientSnap": 0.75,
+    "ofr_transientSat": 0.2,
+    "ofr_cityMode": 0,
+    "ofr_cityIntensity": 0.6,
+    "ofr_digCuriosity": 0.75,
+    "ofr_digComplexity": 0.5,
+    "ofr_digFlow": 0.65,
+    "ofr_lfo1Rate": 0.12,
+    "ofr_lfo1Depth": 0.1,
+    "ofr_lfo2Rate": 3.4,
+    "ofr_lfo2Depth": 0.12,
+    "ofr_flipLayers": 2,
+    "ofr_velToSnap": 0.7,
+    "ofr_v0_decay": 0.4,
+    "ofr_v0_body": 0.8,
+    "ofr_v1_decay": 0.18,
+    "ofr_v1_body": 0.55,
+    "ofr_v2_pan": 0.4
+  }
+}

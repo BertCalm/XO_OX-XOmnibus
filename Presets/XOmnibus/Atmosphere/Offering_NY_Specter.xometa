@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "New York noise gate pushed backwards — gate artifacts become texture as the tight NY chain creates rhythmic silences. The spectre of a boom bap kit.",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.45,
+    "density": 0.4,
+    "movement": 0.6,
+    "space": 0.72,
+    "warmth": 0.5
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "NY Specter",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 0,
+      "ofr_cityIntensity": 0.95,
+      "ofr_cityBlend": 0.7,
+      "ofr_transientSnap": 0.35,
+      "ofr_masterLevel": 0.55,
+      "ofr_v0_level": 0.5,
+      "ofr_v1_level": 0.45,
+      "ofr_v0_decay": 0.6,
+      "ofr_digCuriosity": 0.7,
+      "ofr_dustVinyl": 0.3,
+      "ofr_lfo2Depth": 0.18,
+      "ofr_masterWidth": 0.78
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["new york", "spectral", "gated", "ambient", "ghost"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.7, "M2": 0.2, "M3": 0.0, "M4": 0.4}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "LFO Sermon",
+  "engine": "Offering",
+  "mood": "Flux",
+  "tags": ["LFO", "modulation", "pulsing", "New York", "rhythmic"],
+  "macros": {"M1": 0.6, "M2": 0.15, "M3": 0.0, "M4": 0.0},
+  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.9, "density": 0.5, "space": 0.45, "aggression": 0.55},
+  "parameters": {
+    "ofr_transientSnap": 0.72,
+    "ofr_cityMode": 0,
+    "ofr_cityIntensity": 0.5,
+    "ofr_digCuriosity": 0.7,
+    "ofr_digFlow": 0.6,
+    "ofr_lfo1Rate": 0.25,
+    "ofr_lfo1Depth": 0.22,
+    "ofr_lfo1Shape": 3,
+    "ofr_lfo2Rate": 8.0,
+    "ofr_lfo2Depth": 0.25,
+    "ofr_aftertouch": 0.5,
+    "ofr_modWheel": 0.7,
+    "ofr_envFilterAmt": 0.35,
+    "ofr_envToPitch": 0.2,
+    "ofr_v0_body": 0.75,
+    "ofr_v2_decay": 0.07,
+    "ofr_v3_decay": 0.55
+  }
+}

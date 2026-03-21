@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Amen-era energy through the Offering engine. Aggressive curiosity, high transient snap, Detroit swing timing. Not a loop — a synthesized break.",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.6,
+    "density": 0.65,
+    "movement": 0.6,
+    "space": 0.2,
+    "warmth": 0.45
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Raw Break",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 1,
+      "ofr_cityIntensity": 0.7,
+      "ofr_transientSnap": 0.85,
+      "ofr_transientSat": 0.25,
+      "ofr_digCuriosity": 0.75,
+      "ofr_digComplexity": 0.55,
+      "ofr_digFlow": 0.45,
+      "ofr_v0_body": 0.72,
+      "ofr_v1_decay": 0.19,
+      "ofr_v1_body": 0.65,
+      "ofr_velToSnap": 0.8,
+      "ofr_masterWidth": 0.55
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["break", "aggressive", "detroit", "energetic", "raw"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.75, "M2": 0.35, "M3": 0.0, "M4": 0.15}
+}

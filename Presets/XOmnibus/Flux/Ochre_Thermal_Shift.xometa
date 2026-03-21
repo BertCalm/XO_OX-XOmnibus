@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Shift",
+  "mood": "Flux",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum thermal drift with LFO modulation creates a copper piano that refuses to stay in tune. The instrument warming up in a cold room — pitch drifting, modes shifting, alive.",
+  "tags": ["piano", "copper", "drift", "evolving", "alive", "movement", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.75,
+    "density": 0.4,
+    "space": 0.35,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.4,
+      "ochre_hardness": 0.35,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.5,
+      "ochre_brightness": 8000.0,
+      "ochre_damping": 0.3,
+      "ochre_decay": 2.5,
+      "ochre_caramel": 0.25,
+      "ochre_sympathy": 0.3,
+      "ochre_hfCharacter": 0.2,
+      "ochre_thermalDrift": 1.0,
+      "ochre_filterEnvAmount": 0.35,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.12,
+      "ochre_lfo1Depth": 0.12,
+      "ochre_lfo1Shape": 1,
+      "ochre_lfo2Rate": 0.06,
+      "ochre_lfo2Depth": 0.15,
+      "ochre_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

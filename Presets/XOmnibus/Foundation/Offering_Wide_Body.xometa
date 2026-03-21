@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Maximum stereo width with body-forward tuning. Hats and percs push hard to the edges while kick and snare stay centered and massive.",
+  "dna": {
+    "aggression": 0.6,
+    "brightness": 0.55,
+    "density": 0.55,
+    "movement": 0.35,
+    "space": 0.55,
+    "warmth": 0.55
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Foundation",
+  "name": "Wide Body",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 2,
+      "ofr_cityIntensity": 0.5,
+      "ofr_masterWidth": 0.88,
+      "ofr_transientSnap": 0.7,
+      "ofr_v2_pan": 0.55,
+      "ofr_v3_pan": -0.55,
+      "ofr_v4_pan": 0.4,
+      "ofr_v5_pan": -0.4,
+      "ofr_v6_pan": 0.65,
+      "ofr_v7_pan": -0.65,
+      "ofr_v0_pan": 0.0,
+      "ofr_v1_pan": 0.0,
+      "ofr_digCuriosity": 0.45
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["wide", "stereo", "la", "cinematic", "open"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.45, "M2": 0.5, "M3": 0.0, "M4": 0.2}
+}

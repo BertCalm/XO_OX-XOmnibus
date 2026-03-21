@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Shattered Glass",
+  "mood": "Kinetic",
+  "engines": ["Opaline"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Everything breaks. Maximum fragility on glass harp with high hammer hardness — every note cracks the surface. The noise burst of shattering glass followed by detuned, dying partials. Crystal drive pushes the shards into harmonic distortion. Play hard or go home.",
+  "tags": ["shattered", "glass", "noise", "aggressive", "fragile", "distortion"],
+  "macroLabels": ["HARDNESS", "FRAGILITY", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.1,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.25,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_instrument": 2,
+      "opal2_fragility": 1.0,
+      "opal2_hammerHardness": 0.85,
+      "opal2_brightness": 18000.0,
+      "opal2_damping": 0.2,
+      "opal2_decay": 2.5,
+      "opal2_bodySize": 0.45,
+      "opal2_inharmonicity": 0.35,
+      "opal2_shimmerAmount": 0.15,
+      "opal2_thermalShock": 0.5,
+      "opal2_hfNoise": 0.7,
+      "opal2_filterEnvAmount": 0.7,
+      "opal2_crystalDrive": 0.6,
+      "opal2_sustainPedal": 0.0,
+      "opal2_bendRange": 2.0,
+      "opal2_macroCharacter": 0.0,
+      "opal2_macroMovement": 0.0,
+      "opal2_macroCoupling": 0.0,
+      "opal2_macroSpace": 0.0,
+      "opal2_lfo1Rate": 0.8,
+      "opal2_lfo1Depth": 0.05,
+      "opal2_lfo1Shape": 3,
+      "opal2_lfo2Rate": 2.0,
+      "opal2_lfo2Depth": 0.06,
+      "opal2_lfo2Shape": 4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

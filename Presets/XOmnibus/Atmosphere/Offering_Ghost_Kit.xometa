@@ -1,0 +1,51 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Ghost voices — all levels pulled back, high curiosity creates unpredictable micro-variations. The kit that haunts the background of a track.",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.4,
+    "density": 0.35,
+    "movement": 0.7,
+    "space": 0.8,
+    "warmth": 0.5
+  },
+  "engines": ["Offering"],
+  "legacy": {
+    "sourceCategory": "Drum Kits",
+    "sourceInstrument": "Offering",
+    "sourcePresetName": null
+  },
+  "macroLabels": ["DIG", "CITY", "FLIP", "DUST"],
+  "mood": "Atmosphere",
+  "name": "Ghost Kit",
+  "parameters": {
+    "Offering": {
+      "ofr_cityMode": 4,
+      "ofr_cityIntensity": 0.7,
+      "ofr_digCuriosity": 0.9,
+      "ofr_digComplexity": 0.7,
+      "ofr_digFlow": 0.8,
+      "ofr_transientSnap": 0.2,
+      "ofr_masterLevel": 0.45,
+      "ofr_v0_level": 0.4,
+      "ofr_v1_level": 0.35,
+      "ofr_v2_level": 0.3,
+      "ofr_v3_level": 0.4,
+      "ofr_dustVinyl": 0.4,
+      "ofr_dustWobble": 0.12,
+      "ofr_masterWidth": 0.9,
+      "ofr_lfo2Depth": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["ghost", "subtle", "ambient", "haunting", "background"],
+  "tempo": null,
+  "version": "1.0.0",
+  "macros": {"M1": 0.9, "M2": 0.85, "M3": 0.0, "M4": 0.4}
+}

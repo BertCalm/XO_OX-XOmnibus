@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Bolt Rattle",
+  "mood": "Foundation",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Steel bolt wedged between strings at the midpoint. The bolt adds mass to contacted modes, pulling their frequencies down and introducing a metallic rattle that beats against the stone partials. Cage's most common preparation — the one that turned the piano into a percussion ensemble.",
+  "tags": ["prepared", "bolt", "rattle", "cage", "percussion", "metallic", "foundation"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.25,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.25,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.5,
+      "obel_stoneTone": 0.45,
+      "obel_brightness": 8000.0,
+      "obel_damping": 0.2,
+      "obel_decay": 3.0,
+      "obel_hfNoise": 0.3,
+      "obel_hardness": 0.6,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.6,
+      "obel_filterEnvAmount": 0.4,
+      "obel_thermalDrift": 0.2,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.1,
+      "obel_lfo1Depth": 0.08,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.5,
+      "obel_lfo2Depth": 0.0,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}
