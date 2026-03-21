@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Logistic Edge",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "CA rule 30 (chaotic rule) drives Attractor Drive at bifurcation 0.85 — the system is placed just past the period-doubling cascade, where small changes in the CA pattern produce large changes in the attractor drive character. The Logistic Map at this bifurcation value makes the distortion feel evolutionary rather than static.",
+  "tags": ["flux", "cellular-automata", "attractor", "bifurcation", "chaos", "distortion", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
+  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.45, "movement": 0.82, "density": 0.62, "space": 0.35, "aggression": 0.65},
+  "parameters": {
+    "Organism": {
+      "org_rule": 30.0,
+      "org_seed": 1,
+      "org_stepRate": 8.0,
+      "org_scope": 5,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.42,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.008,
+      "org_ampDec": 0.28,
+      "org_ampSus": 0.55,
+      "org_ampRel": 0.5,
+      "org_lfo1Rate": 0.45,
+      "org_lfo1Depth": 0.25,
+      "org_lfo2Rate": 0.28,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.08,
+      "org_macroRule": 0.35,
+      "org_macroSeed": 0.08,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.02
+    }
+  },
+  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.82, "COUPLING": 0.0, "SPACE": 0.35},
+  "coupling": {"pairs": []},
+  "fx": {
+    "mfx_ecMix": 0.0,
+    "mfx_vsMix": 0.0,
+    "mfx_qsMix": 0.0,
+    "mfx_adBifurcation": 0.85,
+    "mfx_adDriveBase": 0.55,
+    "mfx_adSpeed": 0.72,
+    "mfx_adMix": 0.65
+  }
+}

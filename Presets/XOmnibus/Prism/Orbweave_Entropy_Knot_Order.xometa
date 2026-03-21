@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Knot Order",
+  "mood": "Prism",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Entropy Cooler at maximum stability (0.98) applied to Orbweave's topological chaos — the Maxwell's Demon filter sorts the knot phase signals by energy, constructing order from the coupling matrix's inherent disorder. The result is a crystalline decay where the topology collapses gracefully rather than dissipating randomly.",
+  "tags": ["prism", "knot", "entropy", "order", "topology", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.52, "warmth": 0.42, "movement": 0.42, "density": 0.58, "space": 0.72, "aggression": 0.25},
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.42,
+      "weave_knotRate": 0.05,
+      "weave_knotTopo": 0,
+      "weave_knotDensity": 0.35,
+      "weave_knotFeedback": 0.25,
+      "weave_filterCutoff": 7000,
+      "weave_filterRes": 0.18,
+      "weave_ampAtk": 0.15,
+      "weave_ampDec": 0.55,
+      "weave_ampSus": 0.75,
+      "weave_ampRel": 2.8,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo1Depth": 0.18,
+      "weave_lfo2Rate": 0.04,
+      "weave_lfo2Depth": 0.12,
+      "weave_reverbMix": 0.22,
+      "weave_macroBraid": 0.42,
+      "weave_macroKnot": 0.35,
+      "weave_macroCoupling": 0.0,
+      "weave_macroSpace": 0.72
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.42, "COUPLING": 0.0, "SPACE": 0.72},
+  "coupling": {"pairs": []},
+  "fx": {
+    "mfx_ecStability": 0.98,
+    "mfx_ecCoolRate": 0.22,
+    "mfx_ecThreshold": 0.62,
+    "mfx_ecMix": 0.68,
+    "mfx_vsMix": 0.0,
+    "mfx_qsMix": 0.0,
+    "mfx_adMix": 0.0
+  }
+}

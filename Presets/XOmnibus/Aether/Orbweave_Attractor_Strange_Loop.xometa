@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Strange Loop",
+  "mood": "Aether",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Attractor Drive at high bifurcation (0.92) fed by Orbweave's knot feedback topology — the Lorenz system is given chaotic input from the topological routing matrix. The strange attractor finds orbital paths around the knot's phase states, producing a looping distortion that never repeats exactly.",
+  "tags": ["aether", "knot", "attractor", "lorenz", "chaos", "mathematical", "fx_chain:Mathematical", "math-fx-demo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.32, "movement": 0.78, "density": 0.72, "space": 0.55, "aggression": 0.55},
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.72,
+      "weave_knotRate": 0.25,
+      "weave_knotTopo": 2,
+      "weave_knotDensity": 0.62,
+      "weave_knotFeedback": 0.48,
+      "weave_filterCutoff": 6000,
+      "weave_filterRes": 0.35,
+      "weave_ampAtk": 0.02,
+      "weave_ampDec": 0.45,
+      "weave_ampSus": 0.62,
+      "weave_ampRel": 1.8,
+      "weave_lfo1Rate": 0.38,
+      "weave_lfo1Depth": 0.32,
+      "weave_lfo2Rate": 0.18,
+      "weave_lfo2Depth": 0.22,
+      "weave_reverbMix": 0.15,
+      "weave_macroBraid": 0.72,
+      "weave_macroKnot": 0.62,
+      "weave_macroCoupling": 0.0,
+      "weave_macroSpace": 0.55
+    }
+  },
+  "macros": {"CHARACTER": 0.72, "MOVEMENT": 0.78, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []},
+  "fx": {
+    "mfx_ecMix": 0.0,
+    "mfx_vsMix": 0.0,
+    "mfx_qsMix": 0.0,
+    "mfx_adBifurcation": 0.92,
+    "mfx_adDriveBase": 0.42,
+    "mfx_adSpeed": 0.85,
+    "mfx_adMix": 0.58
+  }
+}
