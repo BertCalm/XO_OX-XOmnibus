@@ -118,6 +118,11 @@ private:
         int fadeSamplesRemaining = 0;
     };
     std::array<CrossfadeState, MaxSlots> crossfades;
+    // Guards crossfades[] against concurrent access between the message thread
+    // (loadEngine/unloadEngine) and the audio thread (processBlock).
+    // Acquired for the crossfade mutation in loadEngine/unloadEngine and for
+    // the crossfade rendering loop in processBlock. Not held during DSP.
+    std::mutex crossfadeMutex;
 
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;

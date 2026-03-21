@@ -1560,10 +1560,47 @@ void XOmnibusProcessor::getStateInformation(juce::MemoryBlock& destData)
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
+        // FIX 4 — State schema version (bump when format changes).
+        // v1 = legacy (no slot/coupling/CM data); v2 = slots + coupling + CM.
+        xml->setAttribute("stateVersion", 2);
+
+        // FIX 1 — Save engine slot selections so DAW session recall restores
+        // the loaded engine layout.  An empty string means the slot is empty.
+        for (int i = 0; i < MaxSlots; ++i)
+        {
+            auto eng = std::atomic_load(&engines[i]);
+            juce::String slotKey = "slot" + juce::String(i) + "Engine";
+            xml->setAttribute(slotKey, eng ? juce::String(eng->getEngineId()) : juce::String{});
+        }
+
+        // FIX 2 — Save baseline coupling routes (user-created routes in the
+        // MegaCouplingMatrix that are NOT stored in the APVTS).
+        auto routes = couplingMatrix.loadRoutes();
+        if (routes && !routes->empty())
+        {
+            auto* routesElem = xml->createNewChildElement("BaselineCouplingRoutes");
+            for (const auto& r : *routes)
+            {
+                auto* re = routesElem->createNewChildElement("Route");
+                re->setAttribute("src",       r.sourceSlot);
+                re->setAttribute("dst",       r.destSlot);
+                re->setAttribute("type",      static_cast<int>(r.type));
+                re->setAttribute("amount",    static_cast<double>(r.amount));
+                re->setAttribute("normalled", r.isNormalled);
+                re->setAttribute("active",    r.active);
+            }
+        }
+
+        // FIX 3 — Save ChordMachine per-step sequencer data.  The APVTS
+        // captures pattern-template selection but not custom per-step edits.
+        juce::String cmStateJson = juce::JSON::toString(chordMachine.serializeState());
+        xml->setAttribute("chordMachineState", cmStateJson);
+
         // Persist MIDI learn mappings alongside APVTS state so DAW project
         // recall restores CC → parameter assignments.
         juce::String mappingsJson = juce::JSON::toString(midiLearnManager.toJSON());
         xml->setAttribute("midiLearnMappings", mappingsJson);
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -1574,6 +1611,70 @@ void XOmnibusProcessor::setStateInformation(const void* data, int sizeInBytes)
     if (xml && xml->hasTagName(apvts.state.getType()))
     {
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
+
+        // FIX 4 — Read schema version so we can gate new restore blocks
+        // against legacy saves that predate v2 (no slot/coupling/CM data).
+        const int stateVersion = xml->getIntAttribute("stateVersion", 1);
+
+        if (stateVersion >= 2)
+        {
+            // FIX 1 — Restore engine slot selections.  Must run AFTER
+            // apvts.replaceState() so parameters are in place when
+            // attachParameters() is called inside loadEngine().
+            // prepareToPlay() always follows setStateInformation and will
+            // re-call eng->prepare() with the correct sample rate / block
+            // size, so using the current defaults here is safe.
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                juce::String slotKey = "slot" + juce::String(i) + "Engine";
+                if (xml->hasAttribute(slotKey))
+                {
+                    juce::String engineId = xml->getStringAttribute(slotKey);
+                    if (engineId.isNotEmpty())
+                    {
+                        // Resolve legacy aliases (e.g. "Snap" → "OddfeliX")
+                        engineId = resolveEngineAlias(engineId);
+                        if (EngineRegistry::instance().isRegistered(engineId.toStdString()))
+                            loadEngine(i, engineId.toStdString());
+                        // Unknown / unregistered IDs are silently skipped
+                        // (slot remains empty) rather than crashing.
+                    }
+                }
+            }
+
+            // FIX 2 — Restore baseline coupling routes.
+            couplingMatrix.clearRoutes();
+            if (auto* routesElem = xml->getChildByName("BaselineCouplingRoutes"))
+            {
+                for (auto* re : routesElem->getChildIterator())
+                {
+                    MegaCouplingMatrix::CouplingRoute r;
+                    r.sourceSlot  = re->getIntAttribute("src", 0);
+                    r.destSlot    = re->getIntAttribute("dst", 1);
+                    r.type        = static_cast<CouplingType>(re->getIntAttribute("type", 0));
+                    r.amount      = static_cast<float>(re->getDoubleAttribute("amount", 0.5));
+                    r.isNormalled = re->getBoolAttribute("normalled", false);
+                    r.active      = re->getBoolAttribute("active", true);
+
+                    // Bounds-check before adding to prevent corrupted saves
+                    // from crashing or creating self-routing loops.
+                    if (r.sourceSlot >= 0 && r.sourceSlot < MaxSlots
+                     && r.destSlot   >= 0 && r.destSlot   < MaxSlots
+                     && r.sourceSlot != r.destSlot)
+                    {
+                        couplingMatrix.addRoute(r);
+                    }
+                }
+            }
+
+            // FIX 3 — Restore ChordMachine per-step sequencer data.
+            if (xml->hasAttribute("chordMachineState"))
+            {
+                juce::var cmState = juce::JSON::parse(
+                    xml->getStringAttribute("chordMachineState"));
+                chordMachine.restoreState(cmState);
+            }
+        }
 
         // Restore MIDI learn mappings; fall back to defaults if absent
         // (e.g. projects saved before this feature was added).
