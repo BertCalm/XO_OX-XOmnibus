@@ -5,6 +5,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -203,8 +204,8 @@ public:
         silenceGate.prepare (sampleRate, maxBlockSize);
 
         // Reset LFO phases
-        lfo1Phase = 0.0f;
-        lfo2Phase = 0.0f;
+        lfo1.reset();
+        lfo2.reset();
         lfoControlCounter = 0;
         lfo1Value = 0.0f;
         lfo2Value = 0.0f;
@@ -245,8 +246,8 @@ public:
         externalFilterMod = 0.0f;
         externalFMMod = 0.0f;
         externalMemoryFeed = 0.0f;
-        lfo1Phase = 0.0f;
-        lfo2Phase = 0.0f;
+        lfo1.reset();
+        lfo2.reset();
         lfoControlCounter = 0;
         lfo1Value = 0.0f;
         lfo2Value = 0.0f;
@@ -327,21 +328,19 @@ public:
             lfoControlCounter = 0;
 
             // LFO1: blend modulation — rate floored at 0.01 Hz for D005 compliance
+            // StandardLFO phaseInc = hz / sampleRate; advancing once per kControlRate
+            // samples is equivalent to setRate(rate * kControlRate, srf).
             float effectiveLfo1Rate = juce::jmax (lfo1Rate, 0.01f);
-            lfo1Phase += effectiveLfo1Rate * static_cast<float> (kControlRate) / srf;
-            if (lfo1Phase > 1.0f) lfo1Phase -= 1.0f;
+            lfo1.setRate (effectiveLfo1Rate * static_cast<float> (kControlRate), srf);
             // CHARACTER macro maps 0→shimmer (high blend, Opsis biased)
             //                      1→darkness (low blend, Oubli biased)
             // lfo1Value is bipolar [-1,+1], scaled by MOVEMENT and lfo1Depth
-            lfo1Value = fastSin (lfo1Phase * 6.2831853f)
-                        * lfo1Depth * macroMovement;
+            lfo1Value = lfo1.process() * lfo1Depth * macroMovement;
 
             // LFO2: filter cutoff modulation — slower, dreamy
             float effectiveLfo2Rate = juce::jmax (lfo2Rate, 0.01f);
-            lfo2Phase += effectiveLfo2Rate * static_cast<float> (kControlRate) / srf;
-            if (lfo2Phase > 1.0f) lfo2Phase -= 1.0f;
-            lfo2Value = fastSin (lfo2Phase * 6.2831853f)
-                        * lfo2Depth * macroMovement;
+            lfo2.setRate (effectiveLfo2Rate * static_cast<float> (kControlRate), srf);
+            lfo2Value = lfo2.process() * lfo2Depth * macroMovement;
         }
 
         // Mod wheel: sweeps blend toward pure Opsis (perception) at full throw.
@@ -901,8 +900,8 @@ private:
     float aftertouchAmount_ = 0.0f; // Channel pressure / poly AT — also sweeps toward Opsis (D006)
 
     // LFO state — control-rate (every 64 samples)
-    float lfo1Phase = 0.0f;         // 0..1 normalized phase
-    float lfo2Phase = 0.0f;
+    StandardLFO lfo1;               // blend modulation (CHARACTER/MOVEMENT axis)
+    StandardLFO lfo2;               // filter cutoff breathing (D005)
     int   lfoControlCounter = 0;    // counts samples since last LFO update
     float lfo1Value = 0.0f;         // latest computed LFO1 output (bipolar, already depth-scaled)
     float lfo2Value = 0.0f;         // latest computed LFO2 output (bipolar, already depth-scaled)

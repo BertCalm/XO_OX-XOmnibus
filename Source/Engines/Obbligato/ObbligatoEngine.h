@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 
@@ -32,9 +33,17 @@ struct ObbligatoAdapterVoice {
 
 class ObbligatoEngine : public SynthEngine {
 public:
-    void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);}
+    void prepare(double sampleRate,int maxBlockSize) override {
+        sr=sampleRate;
+        for(auto&v:voices)v.prepare(sampleRate);
+        silenceGate.prepare(sampleRate,maxBlockSize);
+        chorusLFO.setRate (0.7f, (float)sampleRate);
+        chorusLFO.setShape (StandardLFO::Sine);
+        phaserLFO.setRate (0.3f, (float)sampleRate);
+        phaserLFO.setShape (StandardLFO::Sine);
+    }
     void releaseResources() override {for(auto&v:voices)v.reset();}
-    void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;}
+    void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;chorusLFO.reset();phaserLFO.reset();}
 
     void renderBlock(juce::AudioBuffer<float>&buf,juce::MidiBuffer&midi,int ns) override {
         for(const auto m:midi){
@@ -236,9 +245,7 @@ public:
             // For simplicity in the adapter, apply as parallel wet mix on summed signal
 
             // Chorus: subtle pitch modulation via LFO
-            chorusPhase += 0.7f / (float)sr; // ~0.7Hz chorus LFO
-            if(chorusPhase>=1.0f) chorusPhase-=1.0f;
-            float chorusMod = std::sin(chorusPhase * 6.2831853f) * pChorus * 0.003f;
+            float chorusMod = chorusLFO.process() * pChorus * 0.003f;
             float chorusL = sL * (1.0f + chorusMod);
             float chorusR = sR * (1.0f - chorusMod);
 
@@ -267,9 +274,7 @@ public:
 
             // FX Chain B "The Water": phaser + dark delay + spring + tape sat
             // Phaser: notch sweep
-            phaserPhase += 0.3f / (float)sr; // ~0.3Hz phaser LFO
-            if(phaserPhase>=1.0f) phaserPhase-=1.0f;
-            float phaserMod = std::sin(phaserPhase * 6.2831853f);
+            float phaserMod = phaserLFO.process();
             float notchFreq = 0.1f + phaserMod * 0.05f;
             phaserStateL = flushDenormal(phaserStateL + (chorusL - phaserStateL) * notchFreq);
             phaserStateR = flushDenormal(phaserStateR + (chorusR - phaserStateR) * notchFreq);
@@ -458,8 +463,9 @@ private:
     // BOND smoothing state
     float bondSmoothed=0;
 
-    // FX state: Chorus
-    float chorusPhase=0;
+    // FX LFOs (shared utilities)
+    StandardLFO chorusLFO;  // 0.7 Hz sine — chorus pitch modulation
+    StandardLFO phaserLFO;  // 0.3 Hz sine — phaser notch sweep
 
     // FX state: Bright delay (FX Chain A) — ~15ms at 44100
     static constexpr int kDelayLen=661;
@@ -474,7 +480,6 @@ private:
     float exciterLP=0;
 
     // FX state: Phaser (FX Chain B)
-    float phaserPhase=0;
     float phaserStateL=0, phaserStateR=0;
 
     // FX state: Dark delay — ~35ms at 44100
