@@ -29,7 +29,7 @@
 //                   → Master Character (tape sat + output)
 //                   → getSampleForCoupling()
 //
-//  83 parameters: 35 global + 48 per-voice (6 × 8)
+//  84 parameters: 36 global + 48 per-voice (6 × 8)
 //  4 macros: DIG (M1), CITY (M2), FLIP (M3), DUST (M4)
 //
 //  Accent: Crate Wax Yellow #E5B80B | Prefix: ofr_
@@ -504,18 +504,29 @@ public:
 
     //-- Parameters ---------------------------------------------------------------
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         // ── Per-voice parameters (6 × 8 = 48) ────────────────────────
         static const char* voiceNames[8] = {
             "Kick", "Snare", "CHat", "OHat", "Clap", "Rim", "Tom", "Perc"
         };
         static const int   defTypes[8]  = { 0, 1, 2, 3, 4, 5, 6, 7 };
-        static const float defDecay[8]  = { 0.3f, 0.2f, 0.05f, 0.4f, 0.25f, 0.04f, 0.35f, 0.15f };
+        static const float defDecay[8]  = { 0.35f, 0.22f, 0.05f, 0.4f, 0.25f, 0.04f, 0.35f, 0.15f };
         static const float defBody[8]   = { 0.7f, 0.5f, 0.3f, 0.3f, 0.2f, 0.4f, 0.6f, 0.4f };
         static const float defPan[8]    = { 0.0f, 0.0f, 0.3f, -0.3f, 0.15f, -0.15f, 0.4f, -0.4f };
 
@@ -546,10 +557,10 @@ public:
         // ── Transient Generator (3) ───────────────────────────────────
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_transientSnap", 1 }, "Offering Transient Snap",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.65f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_transientPitch", 1 }, "Offering Transient Pitch",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_transientSat", 1 }, "Offering Transient Sat",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.15f));
@@ -560,7 +571,7 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_dustTape", 1 }, "Offering Dust Tape",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.1f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.08f));
         params.push_back (std::make_unique<PI> (
             juce::ParameterID { "ofr_dustBits", 1 }, "Offering Dust Bits", 4, 16, 16));
         params.push_back (std::make_unique<PF> (
@@ -591,7 +602,7 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_cityIntensity", 1 }, "Offering City Intensity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
 
         // ── Curiosity / DIG (3) ───────────────────────────────────────
         params.push_back (std::make_unique<PF> (
@@ -599,7 +610,7 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_digComplexity", 1 }, "Offering Dig Complexity",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.35f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_digFlow", 1 }, "Offering Dig Flow",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
@@ -607,7 +618,7 @@ public:
         // ── Expression & Modulation (12) ──────────────────────────────
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_velToSnap", 1 }, "Offering Vel→Snap",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_velToBody", 1 }, "Offering Vel→Body",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
@@ -621,10 +632,10 @@ public:
             juce::ParameterID { "ofr_lfo1Shape", 1 }, "Offering LFO1 Shape", 0, 4, 0));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_lfo2Rate", 1 }, "Offering LFO2 Rate",
-            juce::NormalisableRange<float> (0.01f, 20.0f, 0.01f, 0.4f), 2.0f));
+            juce::NormalisableRange<float> (0.01f, 20.0f, 0.01f, 0.4f), 2.17f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_lfo2Depth", 1 }, "Offering LFO2 Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.08f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_aftertouch", 1 }, "Offering Aftertouch Amt",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
@@ -647,7 +658,7 @@ public:
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.75f));
         params.push_back (std::make_unique<PF> (
             juce::ParameterID { "ofr_masterWidth", 1 }, "Offering Master Width",
-            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
 
         // ── Macros (4): DIG, CITY, FLIP, DUST ─────────────────────────
         params.push_back (std::make_unique<PF> (
@@ -663,7 +674,6 @@ public:
             juce::ParameterID { "ofr_macroDust", 1 }, "Offering Macro DUST",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
