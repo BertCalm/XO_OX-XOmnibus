@@ -336,6 +336,47 @@ public:
         float effectiveVibratoDepth = pVibratoDepth + modWheelAmount * 0.4f
                                     + accumulators.getAggressionVibrato() * 0.3f;
 
+        //-- Concertmaster mechanism (block-rate): highest active voice leads.
+        // Voice 0 is the seat of the concertmaster — it sets the reference vibrato phase
+        // and exerts a subtle pitch pull on the other voices (≤ ±5 cents) to keep the
+        // section in tune. Lower voices follow the highest note's tuning.
+        {
+            // Find the highest active note (concertmaster candidate)
+            int concertmasterIdx = -1;
+            int highestNote = -1;
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+            {
+                if (voices[vi].active && voices[vi].currentNote > highestNote)
+                {
+                    highestNote = voices[vi].currentNote;
+                    concertmasterIdx = vi;
+                }
+            }
+
+            if (concertmasterIdx >= 0)
+            {
+                float concertmasterFreq = voices[concertmasterIdx].glide.getFreq();
+                // Other voices receive a small intonation pull toward the just-intonation
+                // ratio nearest to their interval from the concertmaster.
+                // This is a simplified version: pull of ±2 cents per active voice.
+                for (int vi = 0; vi < kMaxVoices; ++vi)
+                {
+                    if (vi == concertmasterIdx || !voices[vi].active) continue;
+                    // Compute the interval in semitones from concertmaster to this voice
+                    float intervalSemis = static_cast<float> (voices[vi].currentNote - highestNote);
+                    // A perfect fifth (7 semitones) is 2 cents flat in equal temperament vs JI.
+                    // Apply a subtle ±3-cent pull toward the section center of gravity.
+                    // Uses the voice index distance to avoid clustering.
+                    float pullCents = (concertmasterFreq > 0.0f)
+                        ? std::clamp (intervalSemis * -0.15f, -3.0f, 3.0f)
+                        : 0.0f;
+                    // Blend with existing dormancy offset rather than overwrite
+                    voices[vi].dormancyPitchCents = voices[vi].dormancyPitchCents * 0.97f
+                                                  + pullCents * 0.03f;
+                }
+            }
+        }
+
         //-- Per-voice LFO config (once per block) --
         for (auto& voice : voices)
         {

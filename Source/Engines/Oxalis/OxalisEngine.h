@@ -76,15 +76,41 @@ struct PhyllotaxisOscBank
     std::array<Partial, kMaxPartials> partials;
     float phiAmount = 0.5f;  // 0 = standard harmonic, 1 = full phyllotaxis
 
+    // Precomputed phyllotaxis ratios (kPhi^i for i=0..kMaxPartials-1).
+    // These are constants — computed once at init, not per sample, so no per-sample pow().
+    float cachedPhyllotaxisRatios[kMaxPartials] = {};
+    float cachedFundamental = 440.0f;
+    float cachedSampleRate = 48000.0f;
+
+    void initPhyllotaxisCache() noexcept
+    {
+        float ratio = 1.0f;
+        for (int i = 0; i < kMaxPartials; ++i)
+        {
+            cachedPhyllotaxisRatios[i] = ratio;
+            ratio *= kPhi;  // iterative multiply avoids std::pow() entirely
+        }
+    }
+
     void setFundamental (float freqHz, float sampleRate, float phi) noexcept
     {
         phiAmount = phi;
+        cachedFundamental = freqHz;
+        cachedSampleRate = sampleRate;
+        // Ensure cache is populated (idempotent after first call)
+        if (cachedPhyllotaxisRatios[0] == 0.0f) initPhyllotaxisCache();
+        updatePartials (freqHz, sampleRate, phi);
+    }
+
+    // Per-note call: fully recalculate all partials. Call this in noteOn.
+    void updatePartials (float freqHz, float sampleRate, float phi) noexcept
+    {
         for (int i = 0; i < kMaxPartials; ++i)
         {
             // Standard harmonic ratio
             float standardRatio = static_cast<float> (i + 1);
-            // Phyllotaxis ratio: fundamental * phi^i (golden spiral)
-            float phyllotaxisRatio = std::pow (kPhi, static_cast<float> (i));
+            // Phyllotaxis ratio from precomputed cache (no std::pow per call)
+            float phyllotaxisRatio = cachedPhyllotaxisRatios[i];
             // Blend between standard and phyllotaxis based on phi parameter
             float ratio = standardRatio + (phyllotaxisRatio - standardRatio) * phi;
 
@@ -219,6 +245,9 @@ public:
             voices[i].filterEnv.prepare (srf);
             voices[i].vibratoLFO.setShape (StandardLFO::Sine);
             voices[i].vibratoLFO.reseed (static_cast<uint32_t> (i * 6271 + 313));
+            // Pre-initialize phyllotaxis ratio cache so per-sample updatePartials
+            // never hits the std::pow path (D004 / CPU fix).
+            voices[i].oscBank.initPhyllotaxisCache();
         }
 
         smoothCutoff.prepare (srf);
@@ -361,7 +390,9 @@ public:
         couplingPhiMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
-        float effectiveVibratoDepth = pVibratoDepth + accumulators.getAggressionVibrato() * 0.2f;
+        // D006: Mod wheel → vibrato depth (standard expression mapping for strings)
+        float effectiveVibratoDepth = pVibratoDepth + modWheelAmount * 0.5f
+                                    + accumulators.getAggressionVibrato() * 0.2f;
 
         for (auto& voice : voices)
         {
@@ -398,8 +429,9 @@ public:
                 float l1 = voice.lfo1.process() * lfo1Depth;
                 float l2 = voice.lfo2.process() * lfo2Depth;
 
-                // Update phyllotaxis spacing — phi modulates harmonic ratios
-                voice.oscBank.setFundamental (freq, srf, phiNow + l2 * 0.2f);
+                // Update phyllotaxis spacing — phi modulates harmonic ratios.
+                // Use updatePartials() (no std::pow — cache already initialized in noteOn).
+                voice.oscBank.updatePartials (freq, srf, phiNow + l2 * 0.2f);
 
                 // Growth Mode: partials emerge at golden angle intervals
                 float growthGain = 1.0f;

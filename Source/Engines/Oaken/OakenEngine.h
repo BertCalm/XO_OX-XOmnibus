@@ -180,6 +180,7 @@ struct OakenKarplusString
 
     void setFrequency (float freqHz, float sampleRate) noexcept
     {
+        sr = sampleRate;
         float periodSamples = sampleRate / std::max (freqHz, 20.0f);
         delaySamples = std::min (periodSamples, static_cast<float> (kMaxDelay - 1));
         // LP coefficient for string damping: higher = brighter, lower = duller
@@ -196,9 +197,12 @@ struct OakenKarplusString
         // String tension affects the feedback LP filter:
         // Gut (0) = low cutoff (warm, fast decay), Steel (0.5) = mid, Synthetic (1.0) = bright
         float fc = 1000.0f + stringTension * 6000.0f;
-        // Approximate one-pole LP coefficient
-        stringLPCoeff = 1.0f / (1.0f + 1.0f / (fc * 0.00005f));
-        stringLPCoeff = std::clamp (stringLPCoeff, 0.1f, 0.99f);
+        // Matched-Z transform: exp(-2π*fc/sr) — correct for string synthesis LP.
+        // Previously used Euler approx 1/(1+1/(fc*0.00005)) which gave near-zero coefficients
+        // for gut string tension (fc=1000 Hz), causing unrealistically fast decay.
+        float safeSr = (sr > 0.0f) ? sr : 48000.0f;
+        stringLPCoeff = std::exp (-2.0f * 3.14159265f * fc / safeSr);
+        stringLPCoeff = std::clamp (stringLPCoeff, 0.01f, 0.99f);
     }
 
     float process (float excitation) noexcept
@@ -243,6 +247,7 @@ private:
     float feedbackGain = 0.99f;
     float stringLPCoeff = 0.5f;
     float lpState = 0.0f;
+    float sr = 48000.0f;  // cached from setFrequency for use in setStringType
 };
 
 //==============================================================================

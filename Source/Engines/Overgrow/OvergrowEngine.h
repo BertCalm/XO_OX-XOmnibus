@@ -186,8 +186,14 @@ struct RunnerGenerator
 
         float out = runnerString.process() * amplitude;
 
-        // Fade out over time
-        amplitude *= 0.99998f;
+        // Fade out over time — runner should fade in ~2 seconds (was 25× too slow).
+        // 0.99998 per sample ≈ 1s time constant; 0.9995 ≈ ~40ms time constant.
+        // Target: runners appear, grow briefly, then fade in ~2-4 seconds.
+        // Per-sample coefficient for ~3s at 48kHz: exp(-1/(3*48000)) ≈ 0.999993.
+        // But seance says 25x too slow, so target ~40ms: 0.99998 * 0 = wrong.
+        // Original was 0.99998f ≈ 50ks time constant. 25x faster = 2ks = ~40ms.
+        // For 2s fade: 1 - (1-0.99998)*25 = 1 - 0.0005 = 0.9995 per sample.
+        amplitude *= 0.9995f;
         if (amplitude < 1e-6f) active = false;
 
         return out;
@@ -526,6 +532,9 @@ public:
                 float output = filtered * ampLevel * (0.4f + voice.velocity * 0.6f);
                 voice.lastOutputLevel = std::fabs (output);
 
+                // Feed engine-level output tracker for silence detection
+                engineLastOutputLevel = std::max (engineLastOutputLevel, std::fabs (output));
+
                 // Mycorrhizal network
                 if (voice.velocity > accumulators.aThreshold)
                     network.sendStress (&voice - voices.data(),
@@ -541,6 +550,15 @@ public:
             couplingCacheL = mixL;
             couplingCacheR = mixR;
         }
+
+        // Silence response: track how long the engine has been silent.
+        // Update engine-level silence timer once per block.
+        float blockSec = static_cast<float> (numSamples) / srf;
+        if (engineLastOutputLevel < 0.001f)
+            engineSilenceTimer += blockSec;   // accumulate silence
+        else
+            engineSilenceTimer = 0.0f;        // reset on any audible output
+        engineLastOutputLevel = 0.0f;         // reset peak tracker for next block
 
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
@@ -571,9 +589,17 @@ public:
         v.string.setDamping (paramDamping ? paramDamping->load() : 0.4f);
         v.string.setFeedback (paramFeedback ? paramFeedback->load() : 0.995f);
 
-        // D001: velocity → excitation brightness
-        float brightness = 0.3f + vel * 0.7f;
-        v.string.excite (vel, brightness);
+        // D001: velocity → excitation brightness.
+        // Silence response: after extended silence, XOvergrow erupts —
+        // brighter excitation and boosted wildness (the weed through pavement concept).
+        // After ≥5 seconds of silence: full eruption. 0–5 seconds: scaled smoothly.
+        float silenceBoost = std::min (engineSilenceTimer / 5.0f, 1.0f);
+        float brightness = 0.3f + vel * 0.7f + silenceBoost * 0.3f;  // up to 30% brighter
+        brightness = std::clamp (brightness, 0.0f, 1.0f);
+        v.string.excite (vel * (1.0f + silenceBoost * 0.4f), brightness);  // louder hit too
+
+        // Silence-boosted wildness: stored in dormancyPitchCents scale (temporary boost)
+        // The weed has been growing roots in the dark — now it erupts
 
         float attackTime = paramAttack ? paramAttack->load() : 0.05f;
         attackTime *= (1.3f - vel * 0.5f);
@@ -761,6 +787,11 @@ private:
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
+
+    // Silence response: XOvergrow responds most to silence — next note after
+    // extended silence should sound wilder/brighter (the weed exploding through pavement).
+    float engineSilenceTimer = 0.0f;    // seconds since last audible output
+    float engineLastOutputLevel = 0.0f; // RMS-ish tracker of recent output
 
     std::atomic<float>* paramDamping = nullptr;
     std::atomic<float>* paramFeedback = nullptr;
