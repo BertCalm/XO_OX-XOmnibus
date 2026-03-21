@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Slow drifting pad with sidechain ducking that ebbs and flows. X's envelope gently pulls O's cutoff creating a hazy pumping atmosphere.",
+  "dna": {
+    "aggression": 0.547,
+    "brightness": 0.906,
+    "density": 0.613,
+    "movement": 0.556,
+    "space": 0.654,
+    "warmth": 0.946
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Atmosphere",
+  "name": "Sidechain Drift",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 8.702,
+      "compRatio": 14.202,
+      "compRelease": 214.045,
+      "compThreshold": -33.202,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.548,
+      "delayEnabled": 1,
+      "delayFeedback": 0.628,
+      "delayMix": 0.446,
+      "delayTime": 0.857,
+      "delayWobble": 0.255,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.496,
+      "macro2": 0.678,
+      "macro3": 0.642,
+      "macro4": 0.564,
+      "masterBalance": 0.048,
+      "oBloom": 6.921,
+      "oDecay": 4.281,
+      "oDetune": 21.405,
+      "oDrift": 0.81,
+      "oFilterCutoff": 5721.358,
+      "oFilterReso": 0.672,
+      "oLevel": 0.846,
+      "oMorph": 2.461,
+      "oPolyphony": 4,
+      "oRelease": 2.961,
+      "oSub": 0.61,
+      "oSustain": 0.792,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.528,
+      "reverbDecay": 0.787,
+      "reverbEnabled": 1,
+      "reverbMix": 0.446,
+      "reverbSize": 1.256,
+      "xDecay": 2.761,
+      "xDetune": 21.405,
+      "xFilterCutoff": 6121.358,
+      "xFilterReso": 0.528,
+      "xLevel": 0.846,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 3,
+      "xSnap": 0.628,
+      "xUnison": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "sidechain",
+    "drift",
+    "pad",
+    "atmospheric",
+    "slow"
+  ],
+  "tempo": 105,
+  "version": "1.0.0"
+}

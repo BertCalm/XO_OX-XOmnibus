@@ -1,0 +1,173 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Sequenced arpeggiation with cross-coupled filter and pitch modulation. Each note triggers a cascade of interaction between X and O.",
+  "dna": {
+    "aggression": 0.268,
+    "brightness": 0.657,
+    "density": 0.243,
+    "movement": 0.201,
+    "space": 0.321,
+    "warmth": 0.234
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Tangled Arp",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 5.852,
+      "compRatio": 2.213,
+      "compRelease": 86.393,
+      "compThreshold": -10.426,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.431,
+      "delayEnabled": 1,
+      "delayFeedback": 0.317,
+      "delayMix": 0.213,
+      "delayTime": 0.36,
+      "delayWobble": 0.061,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.263,
+      "macro2": 0.585,
+      "macro3": 0.5,
+      "macro4": 0.409,
+      "masterBalance": -0.069,
+      "oBloom": 0.628,
+      "oDecay": 1.17,
+      "oDetune": 5.852,
+      "oDrift": 0.117,
+      "oFilterCutoff": 1055.735,
+      "oFilterReso": 0.557,
+      "oLevel": 0.613,
+      "oMorph": 0.128,
+      "oPolyphony": 1,
+      "oRelease": 0.628,
+      "oSub": 0.221,
+      "oSustain": 0.326,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.217,
+      "reverbDecay": 0.515,
+      "reverbEnabled": 1,
+      "reverbMix": 0.213,
+      "reverbSize": 0.634,
+      "xDecay": 0.428,
+      "xDetune": 5.852,
+      "xFilterCutoff": 1455.735,
+      "xFilterReso": 0.217,
+      "xLevel": 0.613,
+      "xOscMode": 0,
+      "xPitchLock": 1,
+      "xPolyphony": 0,
+      "xSnap": 0.317,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 125.0,
+    "swing": 0.009,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      }
+    ]
+  },
+  "tags": [
+    "arpeggio",
+    "sequenced",
+    "cascade",
+    "melodic",
+    "interlocked"
+  ],
+  "tempo": 125,
+  "version": "1.0.0"
+}

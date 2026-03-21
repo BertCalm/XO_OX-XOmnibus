@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Brine Pool",
+  "mood": "Submerged",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Onset at maximum depth — pressure dims every harmonic, only the lowest frequencies survive the descent into the hadal zone.",
+  "tags": [
+    "submerged",
+    "deep",
+    "pressure",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.5,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macroCharacter": 0.3,
+      "perc_macroMovement": 0.2,
+      "perc_macroCoupling": 0.0,
+      "perc_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

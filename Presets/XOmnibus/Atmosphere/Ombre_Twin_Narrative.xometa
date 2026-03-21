@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Twin Narrative",
+  "mood": "Atmosphere",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Preset Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Pair with any engine to create dual narratives — Ombre's memory-forgetting axis against the other engine's character axis. Two stories in counterpoint.",
+  "tags": [
+    "entangled",
+    "twin",
+    "narrative",
+    "dual",
+    "counterpoint",
+    "pair"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.62,
+    "space": 0.68,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.5,
+      "ombre_interference": 0.55,
+      "ombre_memoryDecay": 7.0,
+      "ombre_memoryGrain": 120.0,
+      "ombre_memoryDrift": 0.38,
+      "ombre_oscShape": 1,
+      "ombre_reactivity": 0.58,
+      "ombre_subLevel": 0.28,
+      "ombre_filterCutoff": 4500.0,
+      "ombre_filterReso": 0.32,
+      "ombre_attack": 0.03,
+      "ombre_decay": 0.5,
+      "ombre_sustain": 0.68,
+      "ombre_release": 1.8,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.7,
+      "ombre_lfo1Depth": 0.48,
+      "ombre_lfo2Rate": 0.42,
+      "ombre_lfo2Depth": 0.4,
+      "ombre_macroCharacter": 0.52,
+      "ombre_macroMovement": 0.55,
+      "ombre_macroCoupling": 0.78,
+      "ombre_macroSpace": 0.68
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

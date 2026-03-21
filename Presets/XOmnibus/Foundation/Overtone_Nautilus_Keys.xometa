@@ -60,5 +60,6 @@
     "space": 0.3,
     "aggression": 0.1
   },
-  "tempo": null
+  "tempo": null,
+  "description": "Anchored and grounding, still, gentle keys. Responds expressively to velocity and modulation."
 }

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Bloom Veil",
   "mood": "Atmosphere",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
-  "tags": ["generative", "cellular", "ambient", "emergent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Spacious and ambient, expansive, gentle atmosphere. Let it breathe — the space is the instrument.",
+  "tags": [
+    "generative",
+    "cellular",
+    "ambient",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

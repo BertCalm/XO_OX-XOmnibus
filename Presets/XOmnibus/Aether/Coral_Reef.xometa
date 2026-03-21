@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Multiple small organisms responding to tidal coupling.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.45,
+    "movement": 0.45,
+    "space": 0.35,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Coral Reef",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.45,
+      "organon_dampingCoeff": 0.12,
+      "organon_enzymeSelect": 2000.0,
+      "organon_isotopeBalance": 0.55,
+      "organon_lockIn": 0.5,
+      "organon_membrane": 0.35,
+      "organon_metabolicRate": 0.8,
+      "organon_noiseColor": 0.55,
+      "organon_phasonShift": 0.2,
+      "organon_signalFlux": 0.7
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "coral",
+    "responsive",
+    "tidal",
+    "communal"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

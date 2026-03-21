@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Burst Colony",
   "mood": "Flux",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
-  "tags": ["generative", "cellular", "chaotic", "colony"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Restless and kinetic, evolving texture. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "generative",
+    "cellular",
+    "chaotic",
+    "colony"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

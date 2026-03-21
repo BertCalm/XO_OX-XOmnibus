@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Reactive curious motion motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.146,
+    "brightness": 0.367,
+    "density": 0.254,
+    "movement": 0.72,
+    "space": 0.0,
+    "warmth": 0.485
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Curious Creep",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.2,
+      "bob_ampDecay": 0.8,
+      "bob_ampRelease": 1.8,
+      "bob_ampSustain": 0.7,
+      "bob_bobMode": 0.55,
+      "bob_curAmount": 0.7,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 2000.0,
+      "bob_fltEnvAmt": 0.5,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.45,
+      "bob_lfo1Depth": 0.38,
+      "bob_lfo1Rate": 0.6,
+      "bob_motAttack": 0.8,
+      "bob_motDecay": 1.2,
+      "bob_motDepth": 0.7,
+      "bob_oscA_drift": 0.42,
+      "bob_oscA_shape": 0.6,
+      "bob_oscA_wave": 2.0,
+      "bob_oscB_blend": 0.55,
+      "bob_oscB_detune": 6.0,
+      "bob_oscB_wave": 3.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "curious",
+    "investigate",
+    "creeping"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

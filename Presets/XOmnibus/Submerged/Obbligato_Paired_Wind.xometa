@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Peter interrupts Wolf; Wolf answers back. BOND mid — playful, not yet a fight.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.41,
+    "density": 0.67,
+    "movement": 0.52,
+    "space": 0.48,
+    "warmth": 0.56
+  },
+  "engines": [
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "mood": "Submerged",
+  "name": "Paired Wind",
+  "parameters": {
+    "Obbligato": {
+      "obbl_airFlutterA": 0.142,
+      "obbl_bodySizeA": 0.593,
+      "obbl_bodySizeB": 0.646,
+      "obbl_bondIntensity": 0.639,
+      "obbl_bondRate": 0.298,
+      "obbl_bondStage": 0.196,
+      "obbl_breathA": 0.65,
+      "obbl_breathB": 0.793,
+      "obbl_damping": 0.992,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.091,
+      "obbl_embouchureA": 0.631,
+      "obbl_fxABrightDelay": 0.167,
+      "obbl_fxAChorus": 0.314,
+      "obbl_fxAExciter": 0.178,
+      "obbl_fxAPlate": 0.186,
+      "obbl_fxBDarkDelay": 0.267,
+      "obbl_fxBPhaser": 0.252,
+      "obbl_fxBSpring": 0.206,
+      "obbl_fxBTapeSat": 0.065,
+      "obbl_instrumentA": 3,
+      "obbl_instrumentB": 3,
+      "obbl_macroBond": 0.0,
+      "obbl_macroBreath": 0.579,
+      "obbl_macroMischief": 0.107,
+      "obbl_macroWind": 0.168,
+      "obbl_reedBite": 0.166,
+      "obbl_reedStiffness": 0.58,
+      "obbl_sympatheticAmt": 0.348,
+      "obbl_voiceRouting": 0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

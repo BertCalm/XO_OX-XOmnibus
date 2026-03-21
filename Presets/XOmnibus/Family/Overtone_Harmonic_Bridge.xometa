@@ -60,5 +60,6 @@
     "space": 0.5,
     "aggression": 0.15
   },
-  "tempo": null
+  "tempo": null,
+  "description": "Warm and familiar, gentle sound. Responds expressively to velocity and modulation."
 }

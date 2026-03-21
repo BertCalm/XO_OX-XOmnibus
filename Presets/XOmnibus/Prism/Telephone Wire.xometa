@@ -1,0 +1,202 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Metallic Karplus-Strong coupling where X's wire plucks excite resonances in O's filter, like singing telephone lines.",
+  "dna": {
+    "aggression": 0.559,
+    "brightness": 0.939,
+    "density": 0.53,
+    "movement": 0.395,
+    "space": 0.574,
+    "warmth": 0.551
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Prism",
+  "name": "Telephone Wire",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 17.637,
+      "compRatio": 5.159,
+      "compRelease": 174.78,
+      "compThreshold": -16.319,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.52,
+      "delayEnabled": 1,
+      "delayFeedback": 0.553,
+      "delayMix": 0.39,
+      "delayTime": 0.508,
+      "delayWobble": 0.208,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.44,
+      "macro2": 0.418,
+      "macro3": 0.352,
+      "macro4": 0.526,
+      "masterBalance": 0.026,
+      "oBloom": 2.396,
+      "oDecay": 3.527,
+      "oDetune": 17.637,
+      "oDrift": 0.353,
+      "oFilterCutoff": 4591.199,
+      "oFilterReso": 0.821,
+      "oLevel": 0.79,
+      "oMorph": 1.896,
+      "oPolyphony": 3,
+      "oRelease": 2.396,
+      "oSub": 0.516,
+      "oSustain": 0.679,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.453,
+      "reverbDecay": 0.721,
+      "reverbEnabled": 1,
+      "reverbMix": 0.39,
+      "reverbSize": 1.105,
+      "xDecay": 2.196,
+      "xDetune": 17.637,
+      "xFilterCutoff": 11582.397,
+      "xFilterReso": 0.821,
+      "xLevel": 0.79,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 2,
+      "xSnap": 0.553,
+      "xUnison": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 118.0,
+    "swing": 0.126,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 67,
+            "probability": 1.0,
+            "velocity": 0.8634925210763451
+          },
+          {
+            "active": false,
+            "index": 2,
+            "note": 67,
+            "probability": 1.0,
+            "velocity": 0.6671554965356261
+          },
+          {
+            "active": false,
+            "index": 9,
+            "note": 60,
+            "probability": 1.0,
+            "velocity": 0.7273500315443031
+          },
+          {
+            "active": false,
+            "index": 13,
+            "note": 60,
+            "probability": 1.0,
+            "velocity": 0.6255034301722198
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "metallic",
+    "wire",
+    "karplus-strong",
+    "resonant",
+    "singing"
+  ],
+  "tempo": 118,
+  "version": "1.0.0"
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Polarity Snap",
+  "mood": "Prism",
+  "engines": [
+    "OddfeliX"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure feliX polarity in entangled state — maximum brightness contrasting with partner.",
+  "tags": [
+    "polarity",
+    "snap",
+    "entangled",
+    "contrast"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.95,
+    "warmth": 0.15,
+    "movement": 0.6,
+    "density": 0.32,
+    "space": 0.52,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.9,
+      "snap_decay": 0.16,
+      "snap_detune": 0.04,
+      "snap_filterCutoff": 16000.0,
+      "snap_filterReso": 0.55,
+      "snap_filterEnvDepth": 0.82,
+      "snap_unison": 1,
+      "snap_sweepDirection": 0,
+      "snap_pitchLock": 0.95,
+      "snap_polyphony": 6,
+      "snap_level": 0.78,
+      "snap_macroDart": 0.75,
+      "snap_macroDepth": 0.35,
+      "snap_macroSchool": 0.18,
+      "snap_macroSurface": 0.78
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.85,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Coupled Entrainment",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Two engines coupled at the entrainment level — OVERLAP receives a synchronizing pulse from ONSET's drum trigger, causing the six delay voices to phase-lock with the groove. Topology on the beat.",
+  "tags": [
+    "coupling",
+    "onset",
+    "entrainment",
+    "rhythmic",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.75,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 0,
+      "olap_delayFeedback": 0.58,
+      "olap_diffusion": 0.7,
+      "olap_spread": 0.8,
+      "olap_decay": 5.5,
+      "olap_modDepth": 0.4,
+      "olap_modRate": 0.15,
+      "olap_damping": 0.4,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Strobe Cell",
   "mood": "Prism",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
-  "tags": ["generative", "cellular", "bright", "pattern"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Bright and refractive, shimmering, crystalline lead. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "generative",
+    "cellular",
+    "bright",
+    "pattern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

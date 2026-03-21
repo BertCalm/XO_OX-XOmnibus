@@ -1,0 +1,83 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Heavy chorus and torus coupling create a writhing mass of interlocked harmonic tendrils.",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.4,
+    "density": 0.85,
+    "movement": 0.65,
+    "space": 0.55,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
+  "mood": "Foundation",
+  "name": "Writhing Chorus",
+  "parameters": {
+    "Overlap": {
+      "olap_knot": 3,
+      "olap_tangleDepth": 0.82,
+      "olap_torusP": 7,
+      "olap_torusQ": 4,
+      "olap_pulseRate": 0.6,
+      "olap_entrain": 0.45,
+      "olap_spread": 0.75,
+      "olap_voiceMode": 0,
+      "olap_glide": 0.0,
+      "olap_delayBase": 19.0,
+      "olap_dampening": 0.42,
+      "olap_feedback": 0.86,
+      "olap_brightness": 0.4,
+      "olap_bioluminescence": 0.55,
+      "olap_current": 0.28,
+      "olap_currentRate": 0.045,
+      "olap_attack": 0.15,
+      "olap_decay": 2.5,
+      "olap_sustain": 0.78,
+      "olap_release": 3.5,
+      "olap_filterCutoff": 5500.0,
+      "olap_filterRes": 0.2,
+      "olap_filterEnvAmt": 0.3,
+      "olap_filterEnvDecay": 0.9,
+      "olap_lfo1Rate": 0.6,
+      "olap_lfo1Shape": 0,
+      "olap_lfo1Depth": 0.4,
+      "olap_lfo1Dest": 0,
+      "olap_lfo2Rate": 0.35,
+      "olap_lfo2Shape": 1,
+      "olap_lfo2Depth": 0.32,
+      "olap_lfo2Dest": 1,
+      "olap_chorusMix": 0.55,
+      "olap_chorusRate": 0.12,
+      "olap_diffusion": 0.7,
+      "olap_macroKnot": 0.55,
+      "olap_macroPulse": 0.35,
+      "olap_macroEntrain": 0.4,
+      "olap_macroBloom": 0.6,
+      "olap_modWheelDest": 2,
+      "olap_modWheelDepth": 0.6,
+      "olap_atPressureDest": 0,
+      "olap_atPressureDepth": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "chorus",
+    "writhing",
+    "dense",
+    "coupling"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

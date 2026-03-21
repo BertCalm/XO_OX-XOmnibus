@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for ORBIT coupling with XOdyssey.",
+  "dna": {
+    "aggression": 0.4398,
+    "brightness": 0.0973,
+    "density": 0.4049,
+    "movement": 0.9057,
+    "space": 0.9371,
+    "warmth": 0.9426
+  },
+  "engines": [
+    "Odyssey"
+  ],
+  "macroLabels": [
+    "EMBER",
+    "EXPANSE",
+    "FLOW",
+    "FLARE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Mahogany Infinite III",
+  "parameters": {
+    "Odyssey": {
+      "couplingBus": 3,
+      "couplingLevel": 0.707
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "odyssey"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

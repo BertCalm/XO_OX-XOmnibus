@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — cold sparse vast bright. Designed for PHASE coupling with XObsidian.",
+  "dna": {
+    "aggression": 0.4849,
+    "brightness": 0.9347,
+    "density": 0.0642,
+    "movement": 0.45,
+    "space": 0.9311,
+    "warmth": 0.0709
+  },
+  "engines": [
+    "Obsidian"
+  ],
+  "macroLabels": [
+    "WEIGHT",
+    "FLARE",
+    "DEPTH",
+    "HEAT"
+  ],
+  "mood": "Aether",
+  "name": "Mist Luminous II",
+  "parameters": {
+    "Obsidian": {
+      "couplingBus": 0,
+      "couplingLevel": 0.619
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "obsidian"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

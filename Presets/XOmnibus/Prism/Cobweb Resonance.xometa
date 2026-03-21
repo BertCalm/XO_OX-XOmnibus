@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Fragile resonant coupling where high-Q filter interactions create delicate, web-like harmonic networks between engines.",
+  "dna": {
+    "aggression": 0.41,
+    "brightness": 0.716,
+    "density": 0.268,
+    "movement": 0.254,
+    "space": 0.36,
+    "warmth": 0.284
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Prism",
+  "name": "Cobweb Resonance",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 7.698,
+      "compRatio": 2.675,
+      "compRelease": 100.238,
+      "compThreshold": -11.349,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.445,
+      "delayEnabled": 1,
+      "delayFeedback": 0.354,
+      "delayMix": 0.24,
+      "delayTime": 0.474,
+      "delayWobble": 0.084,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.29,
+      "macro2": 0.461,
+      "macro3": 0.554,
+      "macro4": 0.427,
+      "masterBalance": -0.055,
+      "oBloom": 0.905,
+      "oDecay": 1.54,
+      "oDetune": 7.698,
+      "oDrift": 0.154,
+      "oFilterCutoff": 1609.517,
+      "oFilterReso": 0.647,
+      "oLevel": 0.64,
+      "oMorph": 0.405,
+      "oPolyphony": 1,
+      "oRelease": 0.905,
+      "oSub": 0.267,
+      "oSustain": 0.381,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.254,
+      "reverbDecay": 0.547,
+      "reverbEnabled": 1,
+      "reverbMix": 0.24,
+      "reverbSize": 0.708,
+      "xDecay": 0.705,
+      "xDetune": 7.698,
+      "xFilterCutoff": 2009.517,
+      "xFilterReso": 0.647,
+      "xLevel": 0.64,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.354,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "resonant",
+    "delicate",
+    "harmonic",
+    "fragile",
+    "texture"
+  ],
+  "tempo": 95,
+  "version": "1.0.0"
+}

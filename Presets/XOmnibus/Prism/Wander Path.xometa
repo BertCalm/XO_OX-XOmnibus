@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Reactive curious motion motion with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.081,
+    "brightness": 0.426,
+    "density": 0.13,
+    "movement": 0.738,
+    "space": 0.0,
+    "warmth": 0.511
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Wander Path",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.3,
+      "bob_ampRelease": 1.8,
+      "bob_bobMode": 0.5,
+      "bob_curAmount": 0.78,
+      "bob_curMode": 1.0,
+      "bob_fltCutoff": 4200.0,
+      "bob_fltEnvAmt": 0.38,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.25,
+      "bob_lfo1Depth": 0.45,
+      "bob_lfo1Rate": 0.12,
+      "bob_motDepth": 0.55,
+      "bob_oscA_drift": 0.52,
+      "bob_oscA_shape": 0.5,
+      "bob_oscA_wave": 1.0,
+      "bob_oscB_blend": 0.4,
+      "bob_oscB_detune": -6.0,
+      "bob_oscB_wave": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "curious",
+    "wander",
+    "slow"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

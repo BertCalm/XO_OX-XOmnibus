@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Light Knot",
+  "mood": "Atmosphere",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Spacious and ambient, expansive, gentle pad. Let it breathe — the space is the instrument.",
+  "tags": [
+    "pad",
+    "coupled",
+    "spacious",
+    "dreamy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.58,
+    "movement": 0.45,
+    "density": 0.58,
+    "space": 0.8,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.35,
+      "sky_sawLevel": 0.85,
+      "sky_filterFc": 8000.0,
+      "sky_filterRes": 0.12,
+      "sky_ampAttack": 0.32,
+      "sky_ampDecay": 0.48,
+      "sky_ampSustain": 0.82,
+      "sky_ampRelease": 3.0,
+      "sky_shimmerMix": 0.58,
+      "sky_shimmerDecay": 4.5,
+      "sky_shimmerOct": 0.85,
+      "sky_shimmerBright": 0.7,
+      "sky_lfoRate": 0.08,
+      "sky_lfoDepth": 7.5,
+      "sky_lfoShape": 0.22,
+      "sky_chorusMix": 0.35,
+      "sky_chorusRate": 0.28,
+      "sky_chorusDepth": 10.0,
+      "sky_reverbMix": 0.62,
+      "sky_reverbSize": 0.85,
+      "sky_outputGain": 0.76,
+      "sky_couplingAmt": 0.55,
+      "sky_macroCharacter": 0.55,
+      "sky_macroMovement": 0.42,
+      "sky_macroCoupling": 0.55,
+      "sky_macroSpace": 0.8,
+      "sky_shimmerSpread": 0.62,
+      "sky_shimmerPhase": 0.25,
+      "sky_velSensitivity": 0.78,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.55,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

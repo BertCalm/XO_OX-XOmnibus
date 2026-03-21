@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Reggae-influenced dub pressure with deep filter ducking. X's envelope creates massive sidechain drops on O's cutoff for speaker-shaking pump.",
+  "dna": {
+    "aggression": 0.284,
+    "brightness": 0.705,
+    "density": 0.263,
+    "movement": 0.245,
+    "space": 0.443,
+    "warmth": 0.326
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Pressure Drop",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 7.275,
+      "compRatio": 2.569,
+      "compRelease": 97.059,
+      "compThreshold": -11.137,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.742,
+      "delayEnabled": 1,
+      "delayFeedback": 0.59,
+      "delayMix": 0.34,
+      "delayTime": 0.331,
+      "delayWobble": 0.078,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.284,
+      "macro2": 0.585,
+      "macro3": 0.555,
+      "macro4": 0.423,
+      "masterBalance": -0.077,
+      "oBloom": 0.841,
+      "oDecay": 1.455,
+      "oDetune": 7.275,
+      "oDrift": 0.145,
+      "oFilterCutoff": 1482.357,
+      "oFilterReso": 0.557,
+      "oLevel": 0.634,
+      "oMorph": 0.341,
+      "oPolyphony": 1,
+      "oRelease": 0.841,
+      "oSub": 0.257,
+      "oSustain": 0.368,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.245,
+      "reverbDecay": 0.54,
+      "reverbEnabled": 1,
+      "reverbMix": 0.234,
+      "reverbSize": 0.691,
+      "xDecay": 0.641,
+      "xDetune": 7.275,
+      "xFilterCutoff": 1882.357,
+      "xFilterReso": 0.245,
+      "xLevel": 0.634,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 0,
+      "xSnap": 0.345,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dub",
+    "pressure",
+    "reggae",
+    "speaker-shaking",
+    "drop"
+  ],
+  "tempo": 136,
+  "version": "1.0.0"
+}

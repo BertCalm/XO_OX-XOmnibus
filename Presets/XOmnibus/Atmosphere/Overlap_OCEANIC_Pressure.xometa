@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "OCEANIC Pressure",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "OCEANIC's deep-water pressure modulating the delay base of the trefoil — deeper means longer delay, higher pressure means more crossing energy. A depth map turned into reverb topology.",
+  "tags": [
+    "coupling",
+    "oceanic",
+    "pressure",
+    "depth",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.6,
+    "density": 0.7,
+    "space": 0.82,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.82,
+      "olap_decay": 7.5,
+      "olap_modDepth": 0.28,
+      "olap_modRate": 0.08,
+      "olap_damping": 0.5,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

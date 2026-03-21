@@ -1,0 +1,87 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-20",
+  "description": "Isotopy is continuous deformation without crossing. KNOT macro sweeps through all four knot types — each a different topology, but the sound deforms continuously as if the knot is being isotopically reshaped. WEAVE and KNOT together create the morphological space.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.48,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.2
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.55,
+    "TENSION": 0.2,
+    "KNOT": 0.35,
+    "SPACE": 0.42
+  },
+  "mood": "Atmosphere",
+  "name": "Braid Isotopy",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.65,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 3.0,
+      "weave_filterCutoff": 7000.0,
+      "weave_filterReso": 0.18,
+      "weave_filterType": 0,
+      "weave_ampA": 0.5,
+      "weave_ampD": 1.0,
+      "weave_ampS": 0.8,
+      "weave_ampR": 3.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.28,
+      "weave_lfo1Rate": 0.12,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.22,
+      "weave_lfo2Rate": 0.28,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.42,
+      "weave_fx1Param": 0.55,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.25,
+      "weave_fx2Param": 0.42,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.55,
+      "weave_macroTension": 0.2,
+      "weave_macroKnot": 0.35,
+      "weave_macroSpace": 0.42,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2.0,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "isotopy",
+    "morphing",
+    "all-knots",
+    "entangled",
+    "deformation"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The harp splinters and reassembles in real time. Microsound and string share the same breath.",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.49,
+    "density": 0.57,
+    "movement": 0.51,
+    "space": 0.47,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "mood": "Submerged",
+  "name": "Mirror String",
+  "parameters": {
+    "Orphica": {
+      "orph_bodySize": 0.485,
+      "orph_crossoverBlend": 1,
+      "orph_crossoverNote": 1,
+      "orph_crystalChorusDpth": 0.422,
+      "orph_crystalChorusRate": 1.0,
+      "orph_damping": 0.995,
+      "orph_darkDelayFb": 0.327,
+      "orph_darkDelayTime": 0.272,
+      "orph_deepPlateMix": 0.143,
+      "orph_driftDepth": 1.0,
+      "orph_driftRate": 0.064,
+      "orph_highLevel": 0.727,
+      "orph_lowLevel": 0.839,
+      "orph_macroDivine": 0.0,
+      "orph_macroFracture": 0.087,
+      "orph_macroPluck": 0.619,
+      "orph_macroSurface": 0.349,
+      "orph_microDelayTime": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microMix": 0.0,
+      "orph_microMode": 2,
+      "orph_microRate": 0.0,
+      "orph_microScatter": 0.267,
+      "orph_microSize": 1.0,
+      "orph_pluckBrightness": 0.419,
+      "orph_pluckPosition": 0.422,
+      "orph_shimmerMix": 0.011,
+      "orph_spectralSmear": 0.0,
+      "orph_stringCount": 1,
+      "orph_stringMaterial": 2,
+      "orph_subAmount": 0.0,
+      "orph_sympatheticAmt": 0.234,
+      "orph_tapeSat": 0.14
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "harp",
+    "microsound",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

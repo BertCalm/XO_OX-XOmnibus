@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Intimate unison coupling where both engines sync to near-identical pitches and slowly detune apart, creating beating warmth.",
+  "dna": {
+    "aggression": 0.321,
+    "brightness": 0.822,
+    "density": 0.448,
+    "movement": 0.3,
+    "space": 0.481,
+    "warmth": 0.489
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Oscillator Embrace",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 13.317,
+      "compRatio": 4.079,
+      "compRelease": 142.377,
+      "compThreshold": -14.158,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.787,
+      "delayEnabled": 1,
+      "delayFeedback": 0.466,
+      "delayMix": 0.325,
+      "delayTime": 0.533,
+      "delayWobble": 0.154,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.375,
+      "macro2": 0.666,
+      "macro3": 0.555,
+      "macro4": 0.483,
+      "masterBalance": -0.013,
+      "oBloom": 1.748,
+      "oDecay": 2.663,
+      "oDetune": 27.475,
+      "oDrift": 0.266,
+      "oFilterCutoff": 3295.071,
+      "oFilterReso": 0.657,
+      "oLevel": 0.725,
+      "oMorph": 0.333,
+      "oPolyphony": 2,
+      "oRelease": 1.748,
+      "oSub": 0.408,
+      "oSustain": 0.55,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.666,
+      "reverbDecay": 0.646,
+      "reverbEnabled": 1,
+      "reverbMix": 0.325,
+      "reverbSize": 0.933,
+      "xDecay": 1.548,
+      "xDetune": 13.317,
+      "xFilterCutoff": 3695.071,
+      "xFilterReso": 0.366,
+      "xLevel": 0.725,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.183,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "unison",
+    "beating",
+    "warm",
+    "intimate",
+    "detune"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

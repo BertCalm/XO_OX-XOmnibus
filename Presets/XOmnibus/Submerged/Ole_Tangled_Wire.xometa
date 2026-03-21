@@ -1,0 +1,63 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Alliance shifts phrase by phrase. No single aunt holds command for long.",
+  "dna": {
+    "aggression": 0.26,
+    "brightness": 0.41,
+    "density": 0.49,
+    "movement": 0.41,
+    "space": 0.52,
+    "warmth": 0.54
+  },
+  "engines": [
+    "Ole"
+  ],
+  "macroLabels": [
+    "FUEGO",
+    "DRAMA",
+    "SIDES",
+    "ISLA"
+  ],
+  "mood": "Submerged",
+  "name": "Tangled Wire",
+  "parameters": {
+    "Ole": {
+      "ole_allianceBlend": 0.376,
+      "ole_allianceConfig": 0,
+      "ole_aunt1Brightness": 0.627,
+      "ole_aunt1Level": 0.653,
+      "ole_aunt1StrumRate": 1.0,
+      "ole_aunt2CoinPress": 0.0,
+      "ole_aunt2GourdSize": 0.4,
+      "ole_aunt2Level": 0.823,
+      "ole_aunt3Brightness": 0.476,
+      "ole_aunt3Level": 0.807,
+      "ole_aunt3Tremolo": 1.0,
+      "ole_damping": 0.995,
+      "ole_driftDepth": 1.0,
+      "ole_driftRate": 0.138,
+      "ole_husbandBouzLevel": 0.0,
+      "ole_husbandOudLevel": 0.0,
+      "ole_husbandPinLevel": 0.0,
+      "ole_macroDrama": 0.0,
+      "ole_macroFuego": 0.401,
+      "ole_macroIsla": 0.242,
+      "ole_macroSides": 0.0,
+      "ole_sympatheticAmt": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "latin",
+    "strummed",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

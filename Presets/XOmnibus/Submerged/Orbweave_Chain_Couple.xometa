@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.373,
+    "warmth": 0.429,
+    "movement": 0.524,
+    "density": 0.737,
+    "space": 0.457,
+    "aggression": 0.257
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.834,
+    "TENSION": 0.739,
+    "KNOT": 0.547,
+    "SPACE": 0.689
+  },
+  "mood": "Submerged",
+  "name": "Orbweave Chain Couple",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 1.1,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.758,
+      "weave_torusP": 5.0,
+      "weave_torusQ": 6.0,
+      "weave_filterCutoff": 6875.4,
+      "weave_filterReso": 0.451,
+      "weave_filterType": 1,
+      "weave_ampA": 0.096,
+      "weave_ampD": 0.707,
+      "weave_ampS": 0.752,
+      "weave_ampR": 0.458,
+      "weave_lfo1Type": 3,
+      "weave_lfo1Target": 4,
+      "weave_lfo1Depth": 0.273,
+      "weave_lfo1Rate": 7.08,
+      "weave_lfo2Type": 5,
+      "weave_lfo2Target": 3,
+      "weave_lfo2Depth": 0.35,
+      "weave_lfo2Rate": 7.977,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.298,
+      "weave_fx1Param": 0.191,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.187,
+      "weave_fx2Param": 0.401,
+      "weave_fx3Type": 1,
+      "weave_fx3Mix": 0.248,
+      "weave_fx3Param": 0.294,
+      "weave_macroWeave": 0.834,
+      "weave_macroTension": 0.739,
+      "weave_macroKnot": 0.547,
+      "weave_macroSpace": 0.689,
+      "weave_voiceMode": 1
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "linked",
+    "entangled",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null,
+  "description": "Deep and pressurized, dense, gentle bass. Responds expressively to velocity and modulation."
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Unresolved",
+  "mood": "Foundation",
+  "engines": [
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "HAMMER at midpoint — permanently between STRIFE and LOVE. Musical tension that refuses to resolve. The suspended fourth.",
+  "tags": [
+    "tension",
+    "expressive",
+    "counterpoint",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.5,
+    "aggression": 0.58
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_voiceAAlgo": 0,
+      "ouie_voiceBAlgo": 1,
+      "ouie_voiceAPitch": 0.0,
+      "ouie_voiceBPitch": 5.0,
+      "ouie_voiceALevel": 0.8,
+      "ouie_voiceBLevel": 0.78,
+      "ouie_filterACutoff": 4800.0,
+      "ouie_filterARes": 0.32,
+      "ouie_filterBCutoff": 4200.0,
+      "ouie_filterBRes": 0.3,
+      "ouie_ampAtk": 0.01,
+      "ouie_ampDec": 0.28,
+      "ouie_ampSus": 0.78,
+      "ouie_ampRel": 0.45,
+      "ouie_hammerPos": -0.5,
+      "ouie_hammerDepth": 0.6,
+      "ouie_voiceMode": 1,
+      "ouie_splitPoint": 60.0,
+      "ouie_velCutoffAmt": 0.62,
+      "ouie_portaTime": 0.0,
+      "ouie_portaAuto": 0,
+      "ouie_lfo1Rate": 5.0,
+      "ouie_lfo1Depth": 0.08,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 3.8,
+      "ouie_lfo2Depth": 0.1,
+      "ouie_reverbMix": 0.2,
+      "ouie_macroHammer": 0.5,
+      "ouie_macroAmpullae": 0.0,
+      "ouie_macroCartilage": 0.0,
+      "ouie_macroCurrent": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

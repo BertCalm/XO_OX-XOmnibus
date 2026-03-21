@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Dub siren sound where O's LFO sweeps X's pitch wide while X's envelope rips O's filter open. Classic sound system energy.",
+  "dna": {
+    "aggression": 0.341,
+    "brightness": 0.798,
+    "density": 0.546,
+    "movement": 0.311,
+    "space": 0.539,
+    "warmth": 0.445
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Dub Siren Mesh",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 11.694,
+      "compRatio": 3.674,
+      "compRelease": 130.207,
+      "compThreshold": -13.347,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.775,
+      "delayEnabled": 1,
+      "delayFeedback": 0.667,
+      "delayMix": 0.417,
+      "delayTime": 0.211,
+      "delayWobble": 0.134,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.35,
+      "macro2": 0.608,
+      "macro3": 0.475,
+      "macro4": 0.467,
+      "masterBalance": -0.033,
+      "oBloom": 1.504,
+      "oDecay": 2.339,
+      "oDetune": 11.694,
+      "oDrift": 0.234,
+      "oFilterCutoff": 2808.276,
+      "oFilterReso": 0.584,
+      "oLevel": 0.7,
+      "oMorph": 1.004,
+      "oPolyphony": 2,
+      "oRelease": 1.504,
+      "oSub": 0.367,
+      "oSustain": 0.501,
+      "phaserDepth": 0.567,
+      "phaserEnabled": 1,
+      "phaserMix": 0.434,
+      "phaserRate": 0.769,
+      "reverbDamping": 0.334,
+      "reverbDecay": 0.617,
+      "reverbEnabled": 1,
+      "reverbMix": 0.3,
+      "reverbSize": 0.868,
+      "xDecay": 1.304,
+      "xDetune": 25.041,
+      "xFilterCutoff": 3208.276,
+      "xFilterReso": 0.334,
+      "xLevel": 0.7,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.434,
+      "xUnison": 2
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "dub",
+    "siren",
+    "sound-system",
+    "sweep",
+    "wide"
+  ],
+  "tempo": 142,
+  "version": "1.0.0"
+}

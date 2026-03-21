@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bell resonance web — maximum sympathy network, maximum shimmer, frame body, every voice feeds every other",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.68,
+    "density": 0.88,
+    "movement": 0.95,
+    "space": 0.92,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 1.0,
+    "MOVEMENT": 0.95,
+    "SPACE": 0.92
+  },
+  "mood": "Atmosphere",
+  "name": "Spirit Board",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.33,
+      "owr_malletHardness": 0.5,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.8,
+      "owr_buzzAmount": 0.1,
+      "owr_sympathyAmount": 1.0,
+      "owr_shimmerRate": 12.0,
+      "owr_thermalDrift": 0.35,
+      "owr_brightness": 8000.0,
+      "owr_damping": 0.1,
+      "owr_decay": 6.0,
+      "owr_filterEnvAmount": 0.3,
+      "owr_bendRange": 6,
+      "owr_macroMaterial": 0.5,
+      "owr_macroMallet": 0.5,
+      "owr_macroCoupling": 1.0,
+      "owr_macroSpace": 0.92
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bell",
+    "sympathy",
+    "shimmer",
+    "entangled",
+    "maximal"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

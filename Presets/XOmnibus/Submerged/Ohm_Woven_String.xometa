@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "The meddling and the manatee reach accord. High COMMUNE transforms interference into harmony.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.51,
+    "density": 0.63,
+    "movement": 0.49,
+    "space": 0.52,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Ohm"
+  ],
+  "macroLabels": [
+    "JAM",
+    "MEDDLING",
+    "COMMUNE",
+    "MEADOW"
+  ],
+  "mood": "Submerged",
+  "name": "Woven String",
+  "parameters": {
+    "Ohm": {
+      "ohm_bodyMaterial": 2,
+      "ohm_bowPressure": 0.0,
+      "ohm_bowSpeed": 0.5,
+      "ohm_communeAbsorb": 0.467,
+      "ohm_dadInstrument": 6,
+      "ohm_dadLevel": 0.845,
+      "ohm_damping": 0.99,
+      "ohm_delayFeedback": 0.492,
+      "ohm_delayTime": 0.234,
+      "ohm_driftDepth": 1.0,
+      "ohm_driftRate": 0.099,
+      "ohm_fmAttack": 0.009,
+      "ohm_fmDecay": 0.334,
+      "ohm_fmIndex": 0.931,
+      "ohm_fmRatioPreset": 2,
+      "ohm_glassBrightness": 0.344,
+      "ohm_grainDensity": 1.0,
+      "ohm_grainScatter": 0.305,
+      "ohm_grainSize": 1.0,
+      "ohm_inlawLevel": 0.0,
+      "ohm_macroCommune": 0.203,
+      "ohm_macroJam": 0.327,
+      "ohm_macroMeadow": 0.346,
+      "ohm_macroMeddling": 0.11,
+      "ohm_meddlingThresh": 0.422,
+      "ohm_obedLevel": 0.0,
+      "ohm_pluckBrightness": 0.408,
+      "ohm_reverbMix": 0.183,
+      "ohm_spectralFreeze": 0.122,
+      "ohm_sympatheticAmt": 0.172,
+      "ohm_thereminScale": 1.0,
+      "ohm_thereminWobble": 0.287
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "physical-modeling",
+    "folk",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Fracture and resonance interlock. FRACTURE at mid-sweep — not yet noise, no longer just harp.",
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.41,
+    "density": 0.71,
+    "movement": 0.58,
+    "space": 0.44,
+    "warmth": 0.59
+  },
+  "engines": [
+    "Orphica"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
+  "mood": "Submerged",
+  "name": "Linked Bell",
+  "parameters": {
+    "Orphica": {
+      "orph_bodySize": 0.528,
+      "orph_crossoverBlend": 1,
+      "orph_crossoverNote": 1,
+      "orph_crystalChorusDpth": 0.207,
+      "orph_crystalChorusRate": 1.0,
+      "orph_damping": 0.995,
+      "orph_darkDelayFb": 0.383,
+      "orph_darkDelayTime": 0.514,
+      "orph_deepPlateMix": 0.183,
+      "orph_driftDepth": 1.0,
+      "orph_driftRate": 0.129,
+      "orph_highLevel": 0.743,
+      "orph_lowLevel": 0.89,
+      "orph_macroDivine": 0.26,
+      "orph_macroFracture": 0.093,
+      "orph_macroPluck": 0.669,
+      "orph_macroSurface": 0.509,
+      "orph_microDelayTime": 1.0,
+      "orph_microDensity": 1.0,
+      "orph_microMix": 0.0,
+      "orph_microMode": 3,
+      "orph_microRate": 1.0,
+      "orph_microScatter": 0.174,
+      "orph_microSize": 1.0,
+      "orph_pluckBrightness": 0.595,
+      "orph_pluckPosition": 0.551,
+      "orph_shimmerMix": 0.083,
+      "orph_spectralSmear": 0.0,
+      "orph_stringCount": 1,
+      "orph_stringMaterial": 3,
+      "orph_subAmount": 0.0,
+      "orph_sympatheticAmt": 0.228,
+      "orph_tapeSat": 0.072
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "harp",
+    "microsound",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

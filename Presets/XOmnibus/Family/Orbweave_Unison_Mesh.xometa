@@ -76,5 +76,6 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "description": "Warm and familiar, still, gentle sound. Responds expressively to velocity and modulation."
 }

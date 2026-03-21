@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Predator Prey",
+  "mood": "Flux",
+  "engines": [
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Voice A aggressive (VA, high resonance), Voice B retreating (KS, soft). The fundamental chase dynamic encoded in two voices.",
+  "tags": [
+    "predator",
+    "tension",
+    "movement",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.78
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_voiceAAlgo": 0,
+      "ouie_voiceBAlgo": 3,
+      "ouie_voiceAPitch": -5.0,
+      "ouie_voiceBPitch": 7.0,
+      "ouie_voiceALevel": 0.85,
+      "ouie_voiceBLevel": 0.65,
+      "ouie_filterACutoff": 6500.0,
+      "ouie_filterARes": 0.5,
+      "ouie_filterBCutoff": 9000.0,
+      "ouie_filterBRes": 0.1,
+      "ouie_ampAtk": 0.001,
+      "ouie_ampDec": 0.2,
+      "ouie_ampSus": 0.8,
+      "ouie_ampRel": 0.35,
+      "ouie_hammerPos": -0.6,
+      "ouie_hammerDepth": 0.8,
+      "ouie_voiceMode": 0,
+      "ouie_splitPoint": 60.0,
+      "ouie_velCutoffAmt": 0.75,
+      "ouie_portaTime": 0.08,
+      "ouie_portaAuto": 1,
+      "ouie_lfo1Rate": 5.5,
+      "ouie_lfo1Depth": 0.1,
+      "ouie_lfo1Target": 0,
+      "ouie_lfo2Rate": 4.0,
+      "ouie_lfo2Depth": 0.08,
+      "ouie_reverbMix": 0.15,
+      "ouie_macroHammer": 0.5,
+      "ouie_macroAmpullae": 0.5,
+      "ouie_macroCartilage": 0.0,
+      "ouie_macroCurrent": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

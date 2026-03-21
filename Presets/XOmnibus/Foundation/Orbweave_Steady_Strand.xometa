@@ -76,5 +76,6 @@
   "coupling": {
     "pairs": []
   },
-  "tempo": null
+  "tempo": null,
+  "description": "Anchored and grounding, still sound. Responds expressively to velocity and modulation."
 }

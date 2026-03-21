@@ -60,5 +60,6 @@
     "space": 0.35,
     "aggression": 0.3
   },
-  "tempo": null
+  "tempo": null,
+  "description": "Bright and refractive, shimmering sound. Responds expressively to velocity and modulation."
 }

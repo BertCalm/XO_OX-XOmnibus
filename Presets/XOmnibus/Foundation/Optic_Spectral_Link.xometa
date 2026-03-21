@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Link",
+  "mood": "Foundation",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Spectral analysis feeding modulation to linked engine.",
+  "tags": [
+    "spectral",
+    "link",
+    "feeding",
+    "linked",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.58,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.32
+  },
+  "parameters": {
+    "Optic": {
+      "optic_pulseRate": 1.5,
+      "optic_pulseShape": 0,
+      "optic_pulseAccent": 0.6,
+      "optic_pulseSwing": 0.0,
+      "optic_pulseSubdiv": 2,
+      "optic_pulseEvolve": 0.2,
+      "optic_autoPulse": 1,
+      "optic_reactivity": 0.88,
+      "optic_inputGain": 0.82,
+      "optic_modDepth": 0.72,
+      "optic_modMixPulse": 0.15,
+      "optic_modMixSpec": 0.85,
+      "optic_vizMode": 1,
+      "optic_vizIntensity": 0.85,
+      "optic_vizSpeed": 0.58,
+      "optic_vizFeedback": 0.22
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

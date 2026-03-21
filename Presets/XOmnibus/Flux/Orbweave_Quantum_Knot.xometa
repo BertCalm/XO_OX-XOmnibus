@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.49,
+    "warmth": 0.392,
+    "movement": 0.63,
+    "density": 0.462,
+    "space": 0.375,
+    "aggression": 0.55
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.619,
+    "TENSION": 0.616,
+    "KNOT": 0.877,
+    "SPACE": 0.61
+  },
+  "mood": "Flux",
+  "name": "Orbweave Quantum Knot",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": -4.8,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.603,
+      "weave_torusP": 4.0,
+      "weave_torusQ": 7.0,
+      "weave_filterCutoff": 8006.7,
+      "weave_filterReso": 0.213,
+      "weave_filterType": 2,
+      "weave_ampA": 0.09,
+      "weave_ampD": 0.813,
+      "weave_ampS": 0.754,
+      "weave_ampR": 0.327,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.132,
+      "weave_lfo1Rate": 3.848,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": 0.493,
+      "weave_lfo2Rate": 2.418,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.422,
+      "weave_fx1Param": 0.143,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.331,
+      "weave_fx2Param": 0.641,
+      "weave_fx3Type": 2,
+      "weave_fx3Mix": 0.171,
+      "weave_fx3Param": 0.626,
+      "weave_macroWeave": 0.619,
+      "weave_macroTension": 0.616,
+      "weave_macroKnot": 0.877,
+      "weave_macroSpace": 0.61,
+      "weave_voiceMode": 2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "linked",
+    "interactive",
+    "cross-engine",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null,
+  "description": "Restless and kinetic, balanced sound. Macro sweeps reveal shifting timbral landscapes."
+}

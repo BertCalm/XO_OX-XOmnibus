@@ -1,0 +1,195 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Aggressive cross-modulation where both engines fight for dominance. X hammers O's filter while O destabilizes X's pitch.",
+  "dna": {
+    "aggression": 0.402,
+    "brightness": 0.913,
+    "density": 0.626,
+    "movement": 0.478,
+    "space": 0.674,
+    "warmth": 0.731
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Atmosphere",
+  "name": "Cross Wire",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 22.328,
+      "compRatio": 6.332,
+      "compRelease": 209.959,
+      "compThreshold": -18.664,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.855,
+      "delayEnabled": 1,
+      "delayFeedback": 0.647,
+      "delayMix": 0.46,
+      "delayTime": 0.621,
+      "delayWobble": 0.267,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.51,
+      "macro2": 0.418,
+      "macro3": 0.371,
+      "macro4": 0.573,
+      "masterBalance": 0.073,
+      "oBloom": 3.099,
+      "oDecay": 4.466,
+      "oDetune": 22.328,
+      "oDrift": 0.447,
+      "oFilterCutoff": 5998.359,
+      "oFilterReso": 0.348,
+      "oLevel": 0.86,
+      "oMorph": 2.366,
+      "oPolyphony": 4,
+      "oRelease": 3.099,
+      "oSub": 0.633,
+      "oSustain": 0.82,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.547,
+      "reverbDecay": 0.803,
+      "reverbEnabled": 1,
+      "reverbMix": 0.46,
+      "reverbSize": 1.293,
+      "xDecay": 2.899,
+      "xDetune": 22.328,
+      "xFilterCutoff": 6398.359,
+      "xFilterReso": 0.547,
+      "xLevel": 0.86,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 3,
+      "xSnap": 0.647,
+      "xUnison": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 145.0,
+    "swing": 0.173,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 5,
+            "note": 71,
+            "probability": 1.0,
+            "velocity": 0.7466802444883344
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 83,
+            "probability": 1.0,
+            "velocity": 0.8811655308076101
+          },
+          {
+            "active": false,
+            "index": 13,
+            "note": 81,
+            "probability": 1.0,
+            "velocity": 0.7696975148910884
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "cross-mod",
+    "aggressive",
+    "industrial",
+    "harsh",
+    "experimental"
+  ],
+  "tempo": 145,
+  "version": "1.0.0"
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Mycelial Net",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Anchored and grounding, balanced sound. Responds expressively to velocity and modulation.",
+  "tags": [
+    "colony",
+    "coupled",
+    "generative",
+    "living"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.58,
+    "movement": 0.58,
+    "density": 0.7,
+    "space": 0.52,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 34000,
+      "org_stepRate": 5.0,
+      "org_scope": 9,
+      "org_mutate": 0.015,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.38,
+      "org_filterCutoff": 2800.0,
+      "org_filterRes": 0.38,
+      "org_velCutoff": 0.58,
+      "org_ampAtk": 0.014,
+      "org_ampDec": 0.3,
+      "org_ampSus": 0.68,
+      "org_ampRel": 0.75,
+      "org_lfo1Rate": 1.0,
+      "org_lfo1Depth": 0.35,
+      "org_lfo2Rate": 0.65,
+      "org_lfo2Depth": 0.3,
+      "org_reverbMix": 0.38,
+      "org_macroRule": 0.38,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.78,
+      "org_macroMutate": 0.05
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.78,
+    "SPACE": 0.44
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

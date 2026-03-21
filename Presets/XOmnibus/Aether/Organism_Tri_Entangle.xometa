@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Tri Entangle",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Gentle triangle with ordered rule. Coupling adds warmth from the fleet.",
+  "tags": [
+    "entangled",
+    "triangle",
+    "gentle",
+    "warm"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.2,
+    "space": 0.25,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 184.0,
+      "org_seed": 42,
+      "org_stepRate": 3.0,
+      "org_scope": 8,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.3,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.2,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.4,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.7,
+      "org_ampRel": 1.5,
+      "org_lfo1Rate": 0.5,
+      "org_lfo1Depth": 0.2,
+      "org_lfo2Rate": 0.3,
+      "org_lfo2Depth": 0.2,
+      "org_reverbMix": 0.25,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.6,
+      "org_macroMutate": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

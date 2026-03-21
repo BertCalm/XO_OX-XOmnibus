@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Refraction Grid",
   "mood": "Prism",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
-  "tags": ["cellular", "generative", "bright", "emergent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Bright and refractive, shimmering, crystalline texture. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "cellular",
+    "generative",
+    "bright",
+    "emergent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {

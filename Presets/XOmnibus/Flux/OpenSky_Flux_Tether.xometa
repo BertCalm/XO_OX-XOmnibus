@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Flux Tether",
+  "mood": "Flux",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Restless and kinetic, shimmering, evolving pad. Macro sweeps reveal shifting timbral landscapes.",
+  "tags": [
+    "pad",
+    "coupled",
+    "evolving",
+    "kinetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.38,
+    "movement": 0.75,
+    "density": 0.68,
+    "space": 0.58,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.52,
+      "sky_sawLevel": 0.9,
+      "sky_filterFc": 10500.0,
+      "sky_filterRes": 0.2,
+      "sky_ampAttack": 0.1,
+      "sky_ampDecay": 0.28,
+      "sky_ampSustain": 0.82,
+      "sky_ampRelease": 1.6,
+      "sky_shimmerMix": 0.68,
+      "sky_shimmerDecay": 2.2,
+      "sky_shimmerOct": 0.95,
+      "sky_shimmerBright": 0.85,
+      "sky_lfoRate": 0.28,
+      "sky_lfoDepth": 15.0,
+      "sky_lfoShape": 0.65,
+      "sky_chorusMix": 0.45,
+      "sky_chorusRate": 0.55,
+      "sky_chorusDepth": 14.0,
+      "sky_reverbMix": 0.4,
+      "sky_reverbSize": 0.62,
+      "sky_outputGain": 0.8,
+      "sky_couplingAmt": 0.68,
+      "sky_macroCharacter": 0.58,
+      "sky_macroMovement": 0.72,
+      "sky_macroCoupling": 0.68,
+      "sky_macroSpace": 0.58,
+      "sky_shimmerSpread": 0.75,
+      "sky_shimmerPhase": 0.42,
+      "sky_velSensitivity": 0.86,
+      "sky_glide": 0.02
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.68,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Conch blat, trumpet clarity, and trombone weight overlap. All stages at once.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.4,
+    "space": 0.52,
+    "warmth": 0.59
+  },
+  "engines": [
+    "Ottoni"
+  ],
+  "macroLabels": [
+    "EMBOUCHURE",
+    "GROW",
+    "FOREIGN",
+    "LAKE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Ottoni Var 99",
+  "parameters": {
+    "Ottoni": {
+      "otto_chorusRate": 0.599,
+      "otto_damping": 0.996,
+      "otto_delayMix": 0.29,
+      "otto_driftDepth": 1.0,
+      "otto_driftRate": 0.134,
+      "otto_driveAmount": 0.0,
+      "otto_foreignCold": 0.0,
+      "otto_foreignDrift": 0.0,
+      "otto_foreignStretch": 0.09,
+      "otto_macroEmbouchure": 0.517,
+      "otto_macroForeign": 0.0,
+      "otto_macroGrow": 0.682,
+      "otto_macroLake": 0.088,
+      "otto_reverbSize": 0.194,
+      "otto_sympatheticAmt": 0.227,
+      "otto_teenBore": 0.566,
+      "otto_teenEmbouchure": 0.584,
+      "otto_teenInst": 8,
+      "otto_teenLevel": 0.615,
+      "otto_teenVibratoDepth": 0.153,
+      "otto_teenVibratoRate": 1.0,
+      "otto_toddlerInst": 2,
+      "otto_toddlerLevel": 0.359,
+      "otto_toddlerPressure": 0.19,
+      "otto_tweenEmbouchure": 0.304,
+      "otto_tweenInst": 2,
+      "otto_tweenLevel": 0.581,
+      "otto_tweenValve": 0.324
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "brass",
+    "sax",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

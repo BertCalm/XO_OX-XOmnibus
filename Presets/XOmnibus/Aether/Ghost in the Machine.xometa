@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Eerie autonomous coupling where subtle Perlin modulation makes the engines seem to communicate on their own.",
+  "dna": {
+    "aggression": 0.277,
+    "brightness": 0.816,
+    "density": 0.371,
+    "movement": 0.311,
+    "space": 0.472,
+    "warmth": 0.423
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Ghost in the Machine",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 12.898,
+      "compRatio": 3.974,
+      "compRelease": 139.233,
+      "compThreshold": -13.949,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.484,
+      "delayEnabled": 1,
+      "delayFeedback": 0.458,
+      "delayMix": 0.318,
+      "delayTime": 0.3,
+      "delayWobble": 0.149,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.368,
+      "macro2": 0.36,
+      "macro3": 0.392,
+      "macro4": 0.479,
+      "masterBalance": -0.016,
+      "oBloom": 1.685,
+      "oDecay": 2.58,
+      "oDetune": 12.898,
+      "oDrift": 0.258,
+      "oFilterCutoff": 3169.325,
+      "oFilterReso": 0.275,
+      "oLevel": 0.718,
+      "oMorph": 1.185,
+      "oPolyphony": 2,
+      "oRelease": 1.685,
+      "oSub": 0.397,
+      "oSustain": 0.537,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.358,
+      "reverbDecay": 0.638,
+      "reverbEnabled": 1,
+      "reverbMix": 0.318,
+      "reverbSize": 0.916,
+      "xDecay": 1.485,
+      "xDetune": 12.898,
+      "xFilterCutoff": 3569.325,
+      "xFilterReso": 0.358,
+      "xLevel": 0.718,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.458,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "eerie",
+    "autonomous",
+    "perlin",
+    "ghostly",
+    "generative"
+  ],
+  "tempo": 100,
+  "version": "1.0.0"
+}

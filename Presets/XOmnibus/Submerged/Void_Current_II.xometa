@@ -1,0 +1,45 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Low",
+  "couplingType": "ECHO",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for ECHO coupling with XOblongBob.",
+  "dna": {
+    "aggression": 0.4488,
+    "brightness": 0.0841,
+    "density": 0.5312,
+    "movement": 0.9246,
+    "space": 0.9387,
+    "warmth": 0.9036
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "macroLabels": [
+    "VOID",
+    "DRIFT",
+    "SHIMMER",
+    "GLOW"
+  ],
+  "mood": "Submerged",
+  "name": "Void Current II",
+  "parameters": {
+    "Oblong": {
+      "couplingBus": 3,
+      "couplingLevel": 0.902,
+      "bob_curAmount": 0.2,
+      "bob_lfo1Depth": 0.08
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "echo",
+    "oblong"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

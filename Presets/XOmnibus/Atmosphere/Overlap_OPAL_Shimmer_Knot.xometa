@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "OPAL Shimmer Knot",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "Granular shimmer from OPAL filtered through the OVERLAP figure-eight — the two loops catch different grains. Left loop: long grains, slow fade. Right loop: micro-grains, faster decay. A dual-texture machine.",
+  "tags": [
+    "coupling",
+    "opal",
+    "shimmer",
+    "figure-eight",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.58,
+    "movement": 0.62,
+    "density": 0.72,
+    "space": 0.86,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 2,
+      "olap_delayFeedback": 0.6,
+      "olap_diffusion": 0.8,
+      "olap_spread": 0.88,
+      "olap_decay": 8.5,
+      "olap_modDepth": 0.25,
+      "olap_modRate": 0.07,
+      "olap_damping": 0.35,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

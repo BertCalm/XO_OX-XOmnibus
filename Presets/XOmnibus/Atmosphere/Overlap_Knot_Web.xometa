@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Knot Web",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "OVERLAP at the center of a web of coupling connections — receiving from three engines simultaneously. The torus knot accumulates modulation from multiple sources, creating an emergent topology no single source intended.",
+  "tags": [
+    "web",
+    "multi-source",
+    "torus",
+    "emergent",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.78,
+    "density": 0.78,
+    "space": 0.85,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 3,
+      "olap_delayFeedback": 0.68,
+      "olap_diffusion": 0.78,
+      "olap_spread": 0.88,
+      "olap_decay": 8.0,
+      "olap_modDepth": 0.38,
+      "olap_modRate": 0.09,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

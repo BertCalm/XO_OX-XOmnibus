@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "ORBIT",
+  "description": "Ultra-diverse Entangled preset — still gentle sparse vast. Designed for ORBIT coupling with XOracle.",
+  "dna": {
+    "aggression": 0.0874,
+    "brightness": 0.543,
+    "density": 0.1071,
+    "movement": 0.0618,
+    "space": 0.9178,
+    "warmth": 0.4152
+  },
+  "engines": [
+    "Oracle"
+  ],
+  "macroLabels": [
+    "FLOW",
+    "FIELD",
+    "SHRED",
+    "MASS"
+  ],
+  "mood": "Aether",
+  "name": "Calm Nebula",
+  "parameters": {
+    "Oracle": {
+      "couplingBus": 1,
+      "couplingLevel": 0.898
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "orbit",
+    "oracle"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "name": "Solar Bond",
+  "mood": "Aether",
+  "engines": [
+    "OpenSky"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Vast and otherworldly, shimmering, gentle pad. Let it breathe — the space is the instrument.",
+  "tags": [
+    "pad",
+    "coupled",
+    "shimmer",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.45,
+    "movement": 0.6,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_sawDetune": 0.55,
+      "sky_sawLevel": 0.95,
+      "sky_filterFc": 11000.0,
+      "sky_filterRes": 0.18,
+      "sky_ampAttack": 0.12,
+      "sky_ampDecay": 0.3,
+      "sky_ampSustain": 0.85,
+      "sky_ampRelease": 1.8,
+      "sky_shimmerMix": 0.65,
+      "sky_shimmerDecay": 2.5,
+      "sky_shimmerOct": 0.95,
+      "sky_shimmerBright": 0.82,
+      "sky_lfoRate": 0.15,
+      "sky_lfoDepth": 11.0,
+      "sky_lfoShape": 0.35,
+      "sky_chorusMix": 0.42,
+      "sky_chorusRate": 0.4,
+      "sky_chorusDepth": 12.0,
+      "sky_reverbMix": 0.45,
+      "sky_reverbSize": 0.68,
+      "sky_outputGain": 0.82,
+      "sky_couplingAmt": 0.65,
+      "sky_macroCharacter": 0.75,
+      "sky_macroMovement": 0.55,
+      "sky_macroCoupling": 0.65,
+      "sky_macroSpace": 0.6,
+      "sky_shimmerSpread": 0.7,
+      "sky_shimmerPhase": 0.28,
+      "sky_velSensitivity": 0.85,
+      "sky_glide": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.65,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

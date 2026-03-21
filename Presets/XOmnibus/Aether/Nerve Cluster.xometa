@@ -1,0 +1,209 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Twitchy rapid-fire coupling where micro-envelopes from both engines create nervous, jittering textures.",
+  "dna": {
+    "aggression": 0.369,
+    "brightness": 0.804,
+    "density": 0.36,
+    "movement": 0.296,
+    "space": 0.454,
+    "warmth": 0.369
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Nerve Cluster",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 12.094,
+      "compRatio": 3.774,
+      "compRelease": 133.206,
+      "compThreshold": -13.547,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.778,
+      "delayEnabled": 1,
+      "delayFeedback": 0.442,
+      "delayMix": 0.306,
+      "delayTime": 0.182,
+      "delayWobble": 0.139,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.356,
+      "macro2": 0.682,
+      "macro3": 0.394,
+      "macro4": 0.471,
+      "masterBalance": -0.029,
+      "oBloom": 0.116,
+      "oDecay": 2.419,
+      "oDetune": 12.094,
+      "oDrift": 0.242,
+      "oFilterCutoff": 2928.243,
+      "oFilterReso": 0.677,
+      "oLevel": 0.706,
+      "oMorph": 1.064,
+      "oPolyphony": 2,
+      "oRelease": 1.564,
+      "oSub": 0.377,
+      "oSustain": 0.513,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.342,
+      "reverbDecay": 0.624,
+      "reverbEnabled": 1,
+      "reverbMix": 0.306,
+      "reverbSize": 0.884,
+      "xDecay": 1.364,
+      "xDetune": 12.094,
+      "xFilterCutoff": 3328.243,
+      "xFilterReso": 0.342,
+      "xLevel": 0.706,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.442,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 165.0,
+    "swing": 0.071,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 3,
+            "note": 57,
+            "probability": 1.0,
+            "velocity": 0.8234538515851493
+          },
+          {
+            "active": false,
+            "index": 6,
+            "note": 64,
+            "probability": 1.0,
+            "velocity": 0.6377206846460981
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 54,
+            "probability": 1.0,
+            "velocity": 0.5505341868965268
+          },
+          {
+            "active": false,
+            "index": 11,
+            "note": 54,
+            "probability": 1.0,
+            "velocity": 0.7861838023844603
+          },
+          {
+            "active": false,
+            "index": 14,
+            "note": 64,
+            "probability": 1.0,
+            "velocity": 0.6488609736200563
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "twitchy",
+    "micro",
+    "nervous",
+    "jitter",
+    "fast"
+  ],
+  "tempo": 165,
+  "version": "1.0.0"
+}

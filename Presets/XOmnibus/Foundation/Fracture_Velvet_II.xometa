@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Extreme",
+  "couplingType": "PHASE",
+  "description": "Ultra-diverse Entangled preset — violent dense hot intimate. Designed for PHASE coupling with XOddFelix.",
+  "dna": {
+    "aggression": 0.9579,
+    "brightness": 0.5315,
+    "density": 0.9183,
+    "movement": 0.5085,
+    "space": 0.1092,
+    "warmth": 0.926
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "macroLabels": [
+    "IMPACT",
+    "GLOW",
+    "PRESS",
+    "FIELD"
+  ],
+  "mood": "Foundation",
+  "name": "Fracture Velvet II",
+  "parameters": {
+    "OddfeliX": {
+      "couplingBus": 1,
+      "couplingLevel": 0.811
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "phase",
+    "oddfelix"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

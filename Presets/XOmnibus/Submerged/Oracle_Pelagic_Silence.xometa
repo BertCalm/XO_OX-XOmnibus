@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Pelagic Silence",
+  "mood": "Submerged",
+  "engines": [
+    "Oracle"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oracle at maximum depth — pressure dims every harmonic, only the lowest frequencies survive the descent into the hadal zone.",
+  "tags": [
+    "submerged",
+    "deep",
+    "pressure",
+    "stochastic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.5,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oracle": {
+      "oracle_macroCharacter": 0.3,
+      "oracle_macroMovement": 0.2,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "name": "Symbiotic Pair",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two species in symbiosis — swarm voices dependent on each other, feeding signals across the coupling.",
+  "tags": [
+    "symbiotic",
+    "pair",
+    "dependent",
+    "feeding",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Strong",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.62,
+    "movement": 0.4,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oceanic": {
+      "ocean_waveform": 0,
+      "ocean_subflocks": 5,
+      "ocean_separation": 0.4,
+      "ocean_cohesion": 0.7,
+      "ocean_alignment": 0.7,
+      "ocean_tether": 0.62,
+      "ocean_scatter": 0.38,
+      "ocean_damping": 0.45,
+      "ocean_lfo1Rate": 0.35,
+      "ocean_lfo1Depth": 0.45,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.14,
+      "ocean_lfo2Depth": 0.32,
+      "ocean_lfo2Shape": 1,
+      "ocean_swarmEnvAttack": 0.52,
+      "ocean_swarmEnvDecay": 0.32,
+      "ocean_swarmEnvSustain": 0.85,
+      "ocean_swarmEnvRelease": 0.7,
+      "ocean_ampAttack": 0.55,
+      "ocean_ampDecay": 0.32,
+      "ocean_ampSustain": 0.85,
+      "ocean_ampRelease": 0.72,
+      "ocean_glide": 0.4,
+      "ocean_voiceMode": 0,
+      "ocean_macroCharacter": 0.6,
+      "ocean_macroMovement": 0.4,
+      "ocean_macroCoupling": 0.88,
+      "ocean_macroSpace": 0.6
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.88,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

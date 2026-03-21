@@ -61,5 +61,6 @@
     "organon"
   ],
   "version": "1.0.0",
-  "tempo": null
+  "tempo": null,
+  "description": "Interwoven and coupled, balanced sound. Responds expressively to velocity and modulation."
 }

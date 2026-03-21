@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Tight Canon",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obbligato"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Canon routing with high bond rate and near-locked stage, an extremely tight imitative tangle.",
+  "tags": [
+    "woodwind",
+    "canon",
+    "tight",
+    "imitative",
+    "entangled"
+  ],
+  "macroLabels": [
+    "BOND",
+    "BREATH",
+    "WIND",
+    "MISCHIEF"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.64,
+    "movement": 0.58,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Obbligato": {
+      "obbl_instrumentA": 0,
+      "obbl_instrumentB": 0,
+      "obbl_breathA": 0.63,
+      "obbl_breathB": 0.63,
+      "obbl_embouchureA": 0.54,
+      "obbl_bodySizeA": 0.56,
+      "obbl_bodySizeB": 0.56,
+      "obbl_reedBite": 0.58,
+      "obbl_reedStiffness": 0.56,
+      "obbl_airFlutterA": 0.44,
+      "obbl_bondIntensity": 0.88,
+      "obbl_bondRate": 5.0,
+      "obbl_bondStage": 2,
+      "obbl_damping": 0.25,
+      "obbl_sympatheticAmt": 0.6,
+      "obbl_driftRate": 2.5,
+      "obbl_driftDepth": 0.4,
+      "obbl_voiceRouting": 2,
+      "obbl_fxABrightDelay": 0.22,
+      "obbl_fxAChorus": 0.22,
+      "obbl_fxAExciter": 0.18,
+      "obbl_fxAPlate": 0.4,
+      "obbl_fxBDarkDelay": 0.22,
+      "obbl_fxBPhaser": 0.32,
+      "obbl_fxBSpring": 0.22,
+      "obbl_fxBTapeSat": 0.15,
+      "obbl_macroBond": 0.88,
+      "obbl_macroBreath": 0.63,
+      "obbl_macroWind": 0.52,
+      "obbl_macroMischief": 0.35
+    }
+  },
+  "macros": {
+    "BOND": 0.88,
+    "BREATH": 0.63,
+    "WIND": 0.52,
+    "MISCHIEF": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

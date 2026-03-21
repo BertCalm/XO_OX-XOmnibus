@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Linked Cells",
   "mood": "Family",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "",
-  "tags": ["cellular", "generative", "colony", "pattern"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Warm and familiar, gentle sound. Responds expressively to velocity and modulation.",
+  "tags": [
+    "cellular",
+    "generative",
+    "colony",
+    "pattern"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "dna": {

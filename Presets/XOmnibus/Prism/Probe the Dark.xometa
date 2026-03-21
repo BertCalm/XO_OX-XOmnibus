@@ -1,0 +1,67 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-08",
+  "description": "Cross-modulated curious motion energy with bob character and analog drift.",
+  "dna": {
+    "aggression": 0.13,
+    "brightness": 0.374,
+    "density": 0.213,
+    "movement": 0.764,
+    "space": 0.0,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oblong"
+  ],
+  "legacy": {
+    "sourceCategory": "Curious Motion",
+    "sourceInstrument": "Oblong",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Probe the Dark",
+  "parameters": {
+    "Oblong": {
+      "bob_ampAttack": 0.15,
+      "bob_ampDecay": 0.7,
+      "bob_ampRelease": 1.4,
+      "bob_ampSustain": 0.65,
+      "bob_bobMode": 0.52,
+      "bob_curAmount": 0.8,
+      "bob_curMode": 2.0,
+      "bob_fltCutoff": 2200.0,
+      "bob_fltMode": 0.0,
+      "bob_fltReso": 0.4,
+      "bob_lfo1Depth": 0.45,
+      "bob_lfo1Rate": 0.9,
+      "bob_motAttack": 0.4,
+      "bob_motDecay": 1.0,
+      "bob_motDepth": 0.6,
+      "bob_oscA_drift": 0.38,
+      "bob_oscA_shape": 0.4,
+      "bob_oscA_wave": 0.0,
+      "bob_oscB_blend": 0.5,
+      "bob_oscB_detune": 4.0,
+      "bob_oscB_wave": 3.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "curious",
+    "investigate",
+    "dark"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

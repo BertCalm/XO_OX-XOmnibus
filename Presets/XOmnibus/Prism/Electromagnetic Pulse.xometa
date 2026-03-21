@@ -1,0 +1,202 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Sudden EMP-like bursts where X's transients overload O's filter into self-oscillation, then snap back to silence.",
+  "dna": {
+    "aggression": 0.344,
+    "brightness": 0.98,
+    "density": 0.353,
+    "movement": 0.543,
+    "space": 0.444,
+    "warmth": 0.162
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Prism",
+  "name": "Electromagnetic Pulse",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 11.604,
+      "compRatio": 3.651,
+      "compRelease": 129.533,
+      "compThreshold": -13.302,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.775,
+      "delayEnabled": 1,
+      "delayFeedback": 0.432,
+      "delayMix": 0.299,
+      "delayTime": 0.194,
+      "delayWobble": 0.133,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.349,
+      "macro2": 0.62,
+      "macro3": 0.506,
+      "macro4": 0.466,
+      "masterBalance": -0.034,
+      "oBloom": 1.491,
+      "oDecay": 2.321,
+      "oDetune": 11.604,
+      "oDrift": 0.232,
+      "oFilterCutoff": 2781.332,
+      "oFilterReso": 0.6,
+      "oLevel": 0.699,
+      "oMorph": 0.991,
+      "oPolyphony": 2,
+      "oRelease": 1.491,
+      "oSub": 0.365,
+      "oSustain": 0.498,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.332,
+      "reverbDecay": 0.616,
+      "reverbEnabled": 1,
+      "reverbMix": 0.299,
+      "reverbSize": 0.864,
+      "xDecay": 1.291,
+      "xDetune": 11.604,
+      "xFilterCutoff": 3181.332,
+      "xFilterReso": 0.332,
+      "xLevel": 0.699,
+      "xOscMode": 0,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.432,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 155.0,
+    "swing": 0.066,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 1,
+            "note": 60,
+            "probability": 1.0,
+            "velocity": 0.5654932791519661
+          },
+          {
+            "active": false,
+            "index": 6,
+            "note": 52,
+            "probability": 1.0,
+            "velocity": 0.7367592946246172
+          },
+          {
+            "active": false,
+            "index": 9,
+            "note": 57,
+            "probability": 1.0,
+            "velocity": 0.7809915699718966
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 50,
+            "probability": 1.0,
+            "velocity": 0.5492761688421658
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "emp",
+    "burst",
+    "self-oscillation",
+    "dramatic",
+    "sci-fi"
+  ],
+  "tempo": 155,
+  "version": "1.0.0"
+}

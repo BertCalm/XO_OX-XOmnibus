@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-10",
+  "description": "Near-dormant organism that blooms only when fed.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.3,
+    "density": 0.3,
+    "movement": 0.2,
+    "space": 0.4,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Organon"
+  ],
+  "legacy": {
+    "sourceCategory": null,
+    "sourceInstrument": null,
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Hibernation Cycle",
+  "parameters": {
+    "Organon": {
+      "organon_catalystDrive": 0.5,
+      "organon_dampingCoeff": 0.08,
+      "organon_enzymeSelect": 800.0,
+      "organon_isotopeBalance": 0.4,
+      "organon_lockIn": 0.0,
+      "organon_membrane": 0.4,
+      "organon_metabolicRate": 0.15,
+      "organon_noiseColor": 0.4,
+      "organon_phasonShift": 0.0,
+      "organon_signalFlux": 0.1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "hibernation",
+    "dormant",
+    "bloom",
+    "coupled"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}

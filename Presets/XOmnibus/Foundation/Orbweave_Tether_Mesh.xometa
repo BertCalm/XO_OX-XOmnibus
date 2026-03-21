@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.593,
+    "warmth": 0.605,
+    "movement": 0.725,
+    "density": 0.657,
+    "space": 0.424,
+    "aggression": 0.375
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.662,
+    "TENSION": 0.713,
+    "KNOT": 0.86,
+    "SPACE": 0.367
+  },
+  "mood": "Foundation",
+  "name": "Orbweave Tether Mesh",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 5.1,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.655,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 5.0,
+      "weave_filterCutoff": 9604.1,
+      "weave_filterReso": 0.295,
+      "weave_filterType": 0,
+      "weave_ampA": 0.026,
+      "weave_ampD": 0.548,
+      "weave_ampS": 0.581,
+      "weave_ampR": 1.335,
+      "weave_lfo1Type": 2,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": -0.533,
+      "weave_lfo1Rate": 5.809,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 3,
+      "weave_lfo2Depth": 0.233,
+      "weave_lfo2Rate": 1.269,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.349,
+      "weave_fx1Param": 0.504,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 2,
+      "weave_fx3Mix": 0.342,
+      "weave_fx3Param": 0.263,
+      "weave_macroWeave": 0.662,
+      "weave_macroTension": 0.713,
+      "weave_macroKnot": 0.86,
+      "weave_macroSpace": 0.367,
+      "weave_voiceMode": 2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "coupling",
+    "cross-engine",
+    "linked",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null,
+  "description": "Anchored and grounding, evolving texture. Macro sweeps reveal shifting timbral landscapes."
+}

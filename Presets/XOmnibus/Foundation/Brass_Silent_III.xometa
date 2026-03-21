@@ -1,0 +1,43 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "couplingType": "BIND",
+  "description": "Ultra-diverse Entangled preset — hot dense still violent. Designed for BIND coupling with XOwlfish.",
+  "dna": {
+    "aggression": 0.9086,
+    "brightness": 0.5867,
+    "density": 0.8951,
+    "movement": 0.0549,
+    "space": 0.5762,
+    "warmth": 0.9597
+  },
+  "engines": [
+    "Owlfish"
+  ],
+  "macroLabels": [
+    "BURN",
+    "PULSE",
+    "FORCE",
+    "LAYER"
+  ],
+  "mood": "Foundation",
+  "name": "Brass Silent III",
+  "parameters": {
+    "Owlfish": {
+      "couplingBus": 0,
+      "couplingLevel": 0.917
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "ultra-diverse",
+    "bind",
+    "owlfish"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "OUROBOROS Feed",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overlap"
+  ],
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
+  "version": "1.0.0",
+  "description": "The chaotic output of OUROBOROS driving the tangle depth of a trefoil — the attractor trajectory modulates how tightly the crossing points bind. Chaos becomes topology becomes sound.",
+  "tags": [
+    "coupling",
+    "ouroboros",
+    "chaos",
+    "attractor",
+    "entangled"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "SPACE",
+    "COUPLING",
+    "DECAY"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.82,
+    "density": 0.7,
+    "space": 0.78,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Overlap": {
+      "olap_knotType": 1,
+      "olap_delayFeedback": 0.65,
+      "olap_diffusion": 0.72,
+      "olap_spread": 0.82,
+      "olap_decay": 6.0,
+      "olap_modDepth": 0.42,
+      "olap_modRate": 0.14,
+      "olap_damping": 0.38,
+      "olap_macroCharacter": 0.0,
+      "olap_macroSpace": 0.0,
+      "olap_macroCoupling": 0.0,
+      "olap_macroDecay": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,100 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Moderate",
+  "created": "2026-03-05",
+  "description": "Underground organic coupling where slow filter modulations spread between engines like nutrients through fungal networks.",
+  "dna": {
+    "aggression": 0.411,
+    "brightness": 0.884,
+    "density": 0.547,
+    "movement": 0.491,
+    "space": 0.6,
+    "warmth": 0.729
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Prism",
+  "name": "Mycelium Network",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 18.864,
+      "compRatio": 5.466,
+      "compRelease": 183.982,
+      "compThreshold": -16.932,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.529,
+      "delayEnabled": 1,
+      "delayFeedback": 0.577,
+      "delayMix": 0.408,
+      "delayTime": 0.706,
+      "delayWobble": 0.223,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.458,
+      "macro2": 0.573,
+      "macro3": 0.595,
+      "macro4": 0.539,
+      "masterBalance": 0.029,
+      "oBloom": 6.159,
+      "oDecay": 3.773,
+      "oDetune": 18.864,
+      "oDrift": 0.377,
+      "oFilterCutoff": 4959.261,
+      "oFilterReso": 0.542,
+      "oLevel": 0.808,
+      "oMorph": 2.08,
+      "oPolyphony": 3,
+      "oRelease": 2.58,
+      "oSub": 0.547,
+      "oSustain": 0.716,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.477,
+      "reverbDecay": 0.743,
+      "reverbEnabled": 1,
+      "reverbMix": 0.408,
+      "reverbSize": 1.155,
+      "xDecay": 2.38,
+      "xDetune": 18.864,
+      "xFilterCutoff": 5359.261,
+      "xFilterReso": 0.477,
+      "xLevel": 0.808,
+      "xOscMode": 2,
+      "xPitchLock": 0,
+      "xPolyphony": 2,
+      "xSnap": 0.577,
+      "xUnison": 1
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "organic",
+    "slow",
+    "spreading",
+    "ambient",
+    "nature"
+  ],
+  "tempo": 85,
+  "version": "1.0.0"
+}

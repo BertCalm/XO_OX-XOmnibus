@@ -1,0 +1,81 @@
+{
+  "author": "XO_OX Designs",
+  "dna": {
+    "brightness": 0.613,
+    "warmth": 0.635,
+    "movement": 0.408,
+    "density": 0.772,
+    "space": 0.363,
+    "aggression": 0.383
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.426,
+    "TENSION": 0.65,
+    "KNOT": 0.863,
+    "SPACE": 0.602
+  },
+  "mood": "Foundation",
+  "name": "Orbweave Twin Weave",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 3,
+      "weave_strandTune": 4.7,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.938,
+      "weave_torusP": 2.0,
+      "weave_torusQ": 7.0,
+      "weave_filterCutoff": 9930.6,
+      "weave_filterReso": 0.371,
+      "weave_filterType": 2,
+      "weave_ampA": 0.183,
+      "weave_ampD": 0.906,
+      "weave_ampS": 0.521,
+      "weave_ampR": 1.787,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 3,
+      "weave_lfo1Depth": 0.216,
+      "weave_lfo1Rate": 2.378,
+      "weave_lfo2Type": 3,
+      "weave_lfo2Target": 1,
+      "weave_lfo2Depth": 0.204,
+      "weave_lfo2Rate": 0.111,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.471,
+      "weave_fx1Param": 0.434,
+      "weave_fx2Type": 3,
+      "weave_fx2Mix": 0.131,
+      "weave_fx2Param": 0.516,
+      "weave_fx3Type": 3,
+      "weave_fx3Mix": 0.103,
+      "weave_fx3Param": 0.517,
+      "weave_macroWeave": 0.426,
+      "weave_macroTension": 0.65,
+      "weave_macroKnot": 0.863,
+      "weave_macroSpace": 0.602,
+      "weave_voiceMode": 1
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "linked",
+    "interactive",
+    "orbweave",
+    "topological"
+  ],
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null,
+  "description": "Anchored and grounding, dense sound. Sits warmly in any arrangement without fighting for space."
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Balanced showcase of all Oware pillars — Akan goldweight material, all features moderate, the engine in full voice",
+  "dna": {
+    "aggression": 0.25,
+    "brightness": 0.58,
+    "density": 0.55,
+    "movement": 0.55,
+    "space": 0.65,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "COUPLING": 0.5,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.65
+  },
+  "mood": "Atmosphere",
+  "name": "Akan Gold",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.45,
+      "owr_malletHardness": 0.5,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.6,
+      "owr_buzzAmount": 0.25,
+      "owr_sympathyAmount": 0.5,
+      "owr_shimmerRate": 5.0,
+      "owr_thermalDrift": 0.3,
+      "owr_brightness": 6500.0,
+      "owr_damping": 0.28,
+      "owr_decay": 3.0,
+      "owr_filterEnvAmount": 0.35,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.5,
+      "owr_macroMallet": 0.5,
+      "owr_macroCoupling": 0.5,
+      "owr_macroSpace": 0.65
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "akan",
+    "gold",
+    "balanced",
+    "showcase",
+    "entangled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

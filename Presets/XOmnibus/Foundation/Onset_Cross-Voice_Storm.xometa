@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Cross-Voice Storm",
+  "mood": "Foundation",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All XVC parameters pushed hard for maximum entanglement.",
+  "tags": [
+    "xvc",
+    "maximum",
+    "storm",
+    "entanglement",
+    "extreme"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.44,
+    "movement": 0.56,
+    "density": 0.58,
+    "space": 0.32,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.52,
+      "perc_macro_punch": 0.62,
+      "perc_macro_space": 0.32,
+      "perc_macro_mutate": 0.5,
+      "perc_drive": 0.48,
+      "perc_level": 0.82,
+      "perc_masterTone": 0.56,
+      "perc_char_grit": 0.42,
+      "perc_char_warmth": 0.44,
+      "perc_fx_reverb_size": 0.32,
+      "perc_fx_reverb_decay": 0.44,
+      "perc_fx_reverb_mix": 0.24,
+      "perc_fx_delay_time": 0.28,
+      "perc_fx_delay_feedback": 0.2,
+      "perc_fx_delay_mix": 0.1,
+      "perc_fx_lofi_bits": 12,
+      "perc_fx_lofi_mix": 0.1,
+      "perc_xvc_global_amount": 0.88,
+      "perc_xvc_kick_to_snare_filter": 0.85,
+      "perc_xvc_kick_to_tom_pitch": 0.82,
+      "perc_xvc_snare_to_hat_decay": 0.78,
+      "perc_xvc_snare_to_perc_blend": 0.72,
+      "perc_xvc_hat_choke": 0.78
+    }
+  },
+  "macros": {
+    "MACHINE": 0.52,
+    "PUNCH": 0.62,
+    "SPACE": 0.32,
+    "MUTATE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

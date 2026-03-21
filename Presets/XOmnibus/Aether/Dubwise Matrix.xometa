@@ -1,0 +1,216 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Full coupling matrix engaged for maximum dub energy. Every parameter cross-talks creating a living, breathing dubwise machine.",
+  "dna": {
+    "aggression": 0.327,
+    "brightness": 0.802,
+    "density": 0.358,
+    "movement": 0.336,
+    "space": 0.451,
+    "warmth": 0.452
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Dubwise Matrix",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 11.952,
+      "compRatio": 3.738,
+      "compRelease": 132.142,
+      "compThreshold": -13.476,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.777,
+      "delayEnabled": 1,
+      "delayFeedback": 0.439,
+      "delayMix": 0.304,
+      "delayTime": 0.214,
+      "delayWobble": 0.137,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.354,
+      "macro2": 0.552,
+      "macro3": 0.543,
+      "macro4": 0.47,
+      "masterBalance": -0.03,
+      "oBloom": 1.543,
+      "oDecay": 2.39,
+      "oDetune": 11.952,
+      "oDrift": 0.239,
+      "oFilterCutoff": 2885.685,
+      "oFilterReso": 0.515,
+      "oLevel": 0.704,
+      "oMorph": 1.043,
+      "oPolyphony": 2,
+      "oRelease": 1.543,
+      "oSub": 0.374,
+      "oSustain": 0.509,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.339,
+      "reverbDecay": 0.622,
+      "reverbEnabled": 1,
+      "reverbMix": 0.304,
+      "reverbSize": 0.878,
+      "xDecay": 1.343,
+      "xDetune": 11.952,
+      "xFilterCutoff": 3285.685,
+      "xFilterReso": 0.339,
+      "xLevel": 0.704,
+      "xOscMode": 1,
+      "xPitchLock": 0,
+      "xPolyphony": 1,
+      "xSnap": 0.439,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 140.0,
+    "swing": 0.07,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 16,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 3,
+            "note": 72,
+            "probability": 1.0,
+            "velocity": 0.5446896261639637
+          },
+          {
+            "active": false,
+            "index": 6,
+            "note": 70,
+            "probability": 1.0,
+            "velocity": 0.8688495003545773
+          },
+          {
+            "active": false,
+            "index": 7,
+            "note": 72,
+            "probability": 1.0,
+            "velocity": 0.5290526991777711
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 79,
+            "probability": 1.0,
+            "velocity": 0.5374236743984333
+          },
+          {
+            "active": false,
+            "index": 13,
+            "note": 77,
+            "probability": 1.0,
+            "velocity": 0.645530607492088
+          },
+          {
+            "active": false,
+            "index": 14,
+            "note": 67,
+            "probability": 1.0,
+            "velocity": 0.8708981452442003
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "dubwise",
+    "matrix",
+    "full-coupling",
+    "living",
+    "machine"
+  ],
+  "tempo": 140,
+  "version": "1.0.0"
+}

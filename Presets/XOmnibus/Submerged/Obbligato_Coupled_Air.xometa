@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-14",
+  "description": "Flute and clarinet interlock in close conversation. Their phrasing overlaps by design.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.5,
+    "density": 0.58,
+    "movement": 0.51,
+    "space": 0.51,
+    "warmth": 0.47
+  },
+  "engines": [
+    "Obbligato"
+  ],
+  "macroLabels": [
+    "BREATH",
+    "BOND",
+    "MISCHIEF",
+    "WIND"
+  ],
+  "mood": "Submerged",
+  "name": "Coupled Air",
+  "parameters": {
+    "Obbligato": {
+      "obbl_airFlutterA": 0.211,
+      "obbl_bodySizeA": 0.515,
+      "obbl_bodySizeB": 0.534,
+      "obbl_bondIntensity": 0.659,
+      "obbl_bondRate": 0.136,
+      "obbl_bondStage": 0.379,
+      "obbl_breathA": 0.794,
+      "obbl_breathB": 0.794,
+      "obbl_damping": 0.995,
+      "obbl_driftDepth": 1.0,
+      "obbl_driftRate": 0.07,
+      "obbl_embouchureA": 0.308,
+      "obbl_fxABrightDelay": 0.136,
+      "obbl_fxAChorus": 0.33,
+      "obbl_fxAExciter": 0.148,
+      "obbl_fxAPlate": 0.161,
+      "obbl_fxBDarkDelay": 0.189,
+      "obbl_fxBPhaser": 0.125,
+      "obbl_fxBSpring": 0.141,
+      "obbl_fxBTapeSat": 0.046,
+      "obbl_instrumentA": 6,
+      "obbl_instrumentB": 6,
+      "obbl_macroBond": 0.311,
+      "obbl_macroBreath": 0.525,
+      "obbl_macroMischief": 0.0,
+      "obbl_macroWind": 0.344,
+      "obbl_reedBite": 0.306,
+      "obbl_reedStiffness": 0.495,
+      "obbl_sympatheticAmt": 0.408,
+      "obbl_voiceRouting": 3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "wind",
+    "flute",
+    "entangled",
+    "coupled"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,272 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "Deep",
+  "created": "2026-03-05",
+  "description": "Two intertwining pitch spirals where X and O modulate each other's frequency in a DNA-like ascending/descending dance.",
+  "dna": {
+    "aggression": 0.323,
+    "brightness": 0.722,
+    "density": 0.271,
+    "movement": 0.198,
+    "space": 0.365,
+    "warmth": 0.46
+  },
+  "engines": [
+    "OddfeliX"
+  ],
+  "legacy": {
+    "sourceCategory": "Entangled",
+    "sourceInstrument": "OddfeliX",
+    "sourcePresetName": null
+  },
+  "macroLabels": [
+    "Snap+Morph",
+    "Bloom",
+    "Coupling",
+    "Space"
+  ],
+  "mood": "Aether",
+  "name": "Double Helix",
+  "parameters": {
+    "OddfeliX": {
+      "compAttack": 7.904,
+      "compRatio": 2.726,
+      "compRelease": 101.782,
+      "compThreshold": -11.452,
+      "compressorEnabled": 1,
+      "couplingAmount": 0.747,
+      "delayEnabled": 1,
+      "delayFeedback": 0.358,
+      "delayMix": 0.244,
+      "delayTime": 0.375,
+      "delayWobble": 0.086,
+      "lofiBitDepth": 12.0,
+      "lofiEnabled": 0,
+      "lofiMix": 0.3,
+      "lofiRateReduce": 1.0,
+      "lofiWowFlutter": 0.0,
+      "macro1": 0.294,
+      "macro2": 0.688,
+      "macro3": 0.35,
+      "macro4": 0.429,
+      "masterBalance": -0.053,
+      "oBloom": 2.871,
+      "oDecay": 1.581,
+      "oDetune": 7.904,
+      "oDrift": 0.158,
+      "oFilterCutoff": 1671.281,
+      "oFilterReso": 0.685,
+      "oLevel": 0.644,
+      "oMorph": 0.436,
+      "oPolyphony": 1,
+      "oRelease": 0.936,
+      "oSub": 0.273,
+      "oSustain": 0.387,
+      "phaserDepth": 0.5,
+      "phaserEnabled": 0,
+      "phaserMix": 0.3,
+      "phaserRate": 0.5,
+      "reverbDamping": 0.258,
+      "reverbDecay": 0.551,
+      "reverbEnabled": 1,
+      "reverbMix": 0.244,
+      "reverbSize": 0.716,
+      "xDecay": 0.736,
+      "xDetune": 7.904,
+      "xFilterCutoff": 2071.281,
+      "xFilterReso": 0.258,
+      "xLevel": 0.644,
+      "xOscMode": 0,
+      "xPitchLock": 1,
+      "xPolyphony": 0,
+      "xSnap": 0.358,
+      "xUnison": 0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": {
+    "bpm": 120.0,
+    "swing": 0.029,
+    "tracks": [
+      {
+        "engine": "OddfeliX",
+        "length": 32,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 0,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 4,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 8,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 16,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 20,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 24,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          },
+          {
+            "active": false,
+            "index": 28,
+            "note": 36,
+            "probability": 1.0,
+            "velocity": 0.85
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 32,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 4,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 20,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          },
+          {
+            "active": false,
+            "index": 28,
+            "note": 38,
+            "probability": 1.0,
+            "velocity": 0.8
+          }
+        ]
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 32,
+        "muted": false,
+        "steps": []
+      },
+      {
+        "engine": "OddfeliX",
+        "length": 32,
+        "muted": false,
+        "steps": [
+          {
+            "active": false,
+            "index": 5,
+            "note": 71,
+            "probability": 1.0,
+            "velocity": 0.7402524010837666
+          },
+          {
+            "active": false,
+            "index": 6,
+            "note": 61,
+            "probability": 1.0,
+            "velocity": 0.7538747256281495
+          },
+          {
+            "active": false,
+            "index": 12,
+            "note": 64,
+            "probability": 1.0,
+            "velocity": 0.8453836916818711
+          },
+          {
+            "active": false,
+            "index": 19,
+            "note": 69,
+            "probability": 1.0,
+            "velocity": 0.7881002657786245
+          },
+          {
+            "active": false,
+            "index": 21,
+            "note": 66,
+            "probability": 1.0,
+            "velocity": 0.8962022813959518
+          },
+          {
+            "active": false,
+            "index": 24,
+            "note": 62,
+            "probability": 1.0,
+            "velocity": 0.508790050914695
+          },
+          {
+            "active": false,
+            "index": 25,
+            "note": 59,
+            "probability": 1.0,
+            "velocity": 0.6682005152497907
+          },
+          {
+            "active": false,
+            "index": 27,
+            "note": 59,
+            "probability": 1.0,
+            "velocity": 0.7521173706865212
+          }
+        ]
+      }
+    ]
+  },
+  "tags": [
+    "spiral",
+    "pitch",
+    "intertwined",
+    "melodic",
+    "evolving"
+  ],
+  "tempo": 120,
+  "version": "1.0.0"
+}
