@@ -14,6 +14,7 @@
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
 #include <memory>
+#include <mutex>
 
 namespace xomnibus {
 
