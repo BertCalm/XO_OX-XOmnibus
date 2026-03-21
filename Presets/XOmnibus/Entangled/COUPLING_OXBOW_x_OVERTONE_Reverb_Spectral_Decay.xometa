@@ -1,0 +1,96 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": [
+      {
+        "amount": 0.48,
+        "engineA": "Oxbow",
+        "engineB": "Overtone",
+        "type": "EnvToDecay"
+      }
+    ]
+  },
+  "couplingIntensity": "Dialogue",
+  "created": "2026-03-21",
+  "description": "OXBOW's Chiasmus FDN reverb envelope controls OVERTONE's spectral decay time via EnvToDecay coupling. A long reverb tail in OXBOW extends OVERTONE's continued-fraction spectral sustain; a short, dry room shortens it. The space around the sound and the spectral character of the sound share a single decay law. Two forms of time-domain behavior collapsed into one.",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.55,
+    "density": 0.45,
+    "movement": 0.4,
+    "space": 0.85,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Oxbow",
+    "Overtone"
+  ],
+  "macroLabels": [
+    "SPACE",
+    "SPECTRAL",
+    "COUPLING",
+    "DECAY"
+  ],
+  "mood": "Entangled",
+  "name": "Reverb Spectral Decay",
+  "parameters": {
+    "Oxbow": {
+      "oxb_entangle": 0.5,
+      "oxb_fdnSize": 0.75,
+      "oxb_fdnFeedback": 0.6,
+      "oxb_fdnDamping": 0.5,
+      "oxb_phaseErosion": 0.25,
+      "oxb_goldenRatio": 0.618,
+      "oxb_filterCutoff": 2200.0,
+      "oxb_filterReso": 0.22,
+      "oxb_filterEnvAmt": 0.3,
+      "oxb_ampAttack": 0.02,
+      "oxb_ampDecay": 2.5,
+      "oxb_ampSustain": 0.0,
+      "oxb_ampRelease": 3.5,
+      "oxb_pitchSpread": 0.1,
+      "oxb_modDepth": 0.18,
+      "oxb_modRate": 0.12,
+      "oxb_stereoWidth": 0.8,
+      "oxb_masterVolume": 0.7,
+      "oxb_knotDensity": 0.35,
+      "oxb_knotDecay": 0.8,
+      "oxb_size": 0.85,
+      "oxb_couplingLevel": 0.65
+    },
+    "Overtone": {
+      "over_cfDepth": 0.55,
+      "over_cfSource": 0,
+      "over_partialCount": 12,
+      "over_partialSpread": 0.42,
+      "over_filterCutoff": 5000.0,
+      "over_filterReso": 0.2,
+      "over_filterEnvAmt": 0.35,
+      "over_ampAttack": 0.025,
+      "over_ampDecay": 1.8,
+      "over_ampSustain": 0.55,
+      "over_ampRelease": 2.5,
+      "over_lfo1Rate": 0.08,
+      "over_lfo1Depth": 0.06,
+      "over_pitchSpread": 0.12,
+      "over_shimmerMix": 0.28,
+      "over_masterVolume": 0.73,
+      "over_stereoWidth": 0.72,
+      "over_convergent": 0.65
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "reverb",
+    "spectral",
+    "decay",
+    "space",
+    "oxbow",
+    "overtone",
+    "entangled",
+    "atmospheric"
+  ],
+  "tempo": null,
+  "version": "1.0.0"
+}
