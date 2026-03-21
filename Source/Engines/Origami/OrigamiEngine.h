@@ -3,6 +3,10 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/StandardLFO.h"
+#include "../../DSP/GlideProcessor.h"
+#include "../../DSP/ParameterSmoother.h"
+#include "../../DSP/VoiceAllocator.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -211,89 +215,9 @@ struct OrigamiADSR
 // (LCG) PRNG for deterministic pseudo-random values that trigger on each
 // new LFO cycle, producing classic stepped random modulation.
 //==============================================================================
-struct OrigamiLFO
-{
-    enum class Shape { Sine, Triangle, Saw, Square, SampleAndHold };
-
-    float phase = 0.0f;
-    float phaseIncrement = 0.0f;
-    Shape shape = Shape::Sine;
-    float sampleAndHoldValue = 0.0f;
-
-    // LCG PRNG state for Sample-and-Hold mode.
-    // Initial seed 12345 is arbitrary but deterministic -- ensures identical
-    // S&H sequences across instances for reproducible patch behavior.
-    uint32_t prngState = 12345u;
-
-    void setRate (float frequencyHz, float sampleRate) noexcept
-    {
-        phaseIncrement = frequencyHz / std::max (1.0f, sampleRate);
-    }
-
-    void setShape (int shapeIndex) noexcept
-    {
-        shape = static_cast<Shape> (std::min (4, std::max (0, shapeIndex)));
-    }
-
-    float process() noexcept
-    {
-        float output = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                // Full-cycle sine: phase [0,1] mapped to [0, 2*PI]
-                output = fastSin (phase * 6.28318530718f);
-                break;
-
-            case Shape::Triangle:
-                // Triangle from absolute-value fold: maps [0,1] phase to
-                // [-1,+1] output with linear slopes
-                output = 4.0f * std::fabs (phase - 0.5f) - 1.0f;
-                break;
-
-            case Shape::Saw:
-                // Rising sawtooth: phase [0,1] mapped to [-1,+1]
-                output = 2.0f * phase - 1.0f;
-                break;
-
-            case Shape::Square:
-                // 50% duty cycle square wave
-                output = (phase < 0.5f) ? 1.0f : -1.0f;
-                break;
-
-            case Shape::SampleAndHold:
-            {
-                // Trigger a new random value at each cycle boundary.
-                // LCG constants from Numerical Recipes (Knuth):
-                //   multiplier = 1664525, increment = 1013904223
-                // These produce a full-period sequence over 2^32 values.
-                float previousPhase = phase - phaseIncrement;
-                if (previousPhase < 0.0f || phase < previousPhase)
-                {
-                    prngState = prngState * 1664525u + 1013904223u;
-                    // Extract 16 bits and map to [-1, +1] bipolar range
-                    sampleAndHoldValue = static_cast<float> (prngState & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                output = sampleAndHoldValue;
-                break;
-            }
-        }
-
-        // Advance and wrap phase
-        phase += phaseIncrement;
-        if (phase >= 1.0f) phase -= 1.0f;
-
-        return output;
-    }
-
-    void reset() noexcept
-    {
-        phase = 0.0f;
-        sampleAndHoldValue = 0.0f;
-        prngState = 12345u;
-    }
-};
+// OrigamiLFO replaced by shared StandardLFO (Source/DSP/StandardLFO.h).
+// API-compatible: setRate(), setShape(), process(), reset() all match.
+using OrigamiLFO = StandardLFO;
 
 
 //==============================================================================
@@ -347,9 +271,7 @@ struct OrigamiVoice
     uint32_t noiseGeneratorState = 12345u;
 
     // ---- Portamento / Glide ----
-    float currentFrequency = 440.0f;             // Instantaneous frequency (Hz), smoothed toward target
-    float targetFrequency = 440.0f;              // Destination frequency for glide
-    float glideCoefficient = 1.0f;               // Per-sample interpolation rate (1.0 = instant)
+    GlideProcessor glide;                         // Shared utility: frequency-domain portamento
 
     // ---- Envelopes ----
     OrigamiADSR ampEnvelope;                     // Controls voice amplitude
@@ -395,8 +317,7 @@ struct OrigamiVoice
         sawPhase = 0.0f;
         squarePhase = 0.0f;
         noiseGeneratorState = 12345u;
-        currentFrequency = 440.0f;
-        targetFrequency = 440.0f;
+        glide.snapTo (440.0f);
         crossfadeGain = 1.0f;
         isFadingOut = false;
         inputWritePosition = 0;
@@ -457,11 +378,11 @@ public:
         storedSampleRate = sampleRate;
         sampleRateFloat = static_cast<float> (storedSampleRate);
 
-        // Smoothing coefficient for control-rate parameters.
-        // Derived from a 5ms time constant (200Hz cutoff), which prevents
-        // audible zipper noise on knob movements while remaining responsive
-        // enough for performance gestures.
-        parameterSmoothingCoefficient = 1.0f - std::exp (-kTwoPi * (1.0f / 0.005f) / sampleRateFloat);
+        // Smoothing for control-rate parameters (shared ParameterSmoother, 5ms)
+        smoothFoldPoint.prepare (sampleRateFloat);
+        smoothFoldDepth.prepare (sampleRateFloat);
+        smoothRotate.prepare (sampleRateFloat);
+        smoothStretch.prepare (sampleRateFloat);
 
         // Voice-stealing crossfade rate: 5ms linear ramp.
         // 5ms is short enough to be imperceptible as a click but long enough
@@ -529,10 +450,10 @@ public:
         couplingSourceModulation = 0.0f;
 
         // ---- Reset smoothed parameter states ----
-        smoothedFoldPoint = 0.5f;
-        smoothedFoldDepth = 0.5f;
-        smoothedRotate = 0.0f;
-        smoothedStretch = 0.0f;
+        smoothFoldPoint.snapTo (0.5f);
+        smoothFoldDepth.snapTo (0.5f);
+        smoothRotate.snapTo (0.0f);
+        smoothStretch.snapTo (0.0f);
 
         // ---- Clear output caches ----
         std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
@@ -683,16 +604,22 @@ public:
         // D006: mod wheel also adds up to +0.3 fold depth (sensitivity 0.3)
         effectiveFoldDepth = clamp (effectiveFoldDepth + atPressure * 0.3f + modWheelValue * 0.3f, 0.0f, 1.0f);
 
+        // Set smoother targets for this block
+        smoothFoldPoint.set (effectiveFoldPoint);
+        smoothFoldDepth.set (effectiveFoldDepth);
+        smoothRotate.set (effectiveRotate);
+        smoothStretch.set (effectiveStretch);
+
         float peakEnvelopeLevel = 0.0f;
 
         // ---- Per-Sample Render Loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            // Smooth control-rate parameters toward their targets (5ms time constant)
-            smoothedFoldPoint += (effectiveFoldPoint - smoothedFoldPoint) * parameterSmoothingCoefficient;
-            smoothedFoldDepth += (effectiveFoldDepth - smoothedFoldDepth) * parameterSmoothingCoefficient;
-            smoothedRotate    += (effectiveRotate    - smoothedRotate)    * parameterSmoothingCoefficient;
-            smoothedStretch   += (effectiveStretch   - smoothedStretch)   * parameterSmoothingCoefficient;
+            // Smooth control-rate parameters toward their targets (shared ParameterSmoother, 5ms)
+            float smoothedFoldPoint = smoothFoldPoint.process();
+            float smoothedFoldDepth = smoothFoldDepth.process();
+            float smoothedRotate    = smoothRotate.process();
+            float smoothedStretch   = smoothStretch.process();
 
             float stereoMixLeft = 0.0f, stereoMixRight = 0.0f;
 
@@ -713,7 +640,7 @@ public:
                 }
 
                 // ---- Portamento (exponential glide toward target frequency) ----
-                voice.currentFrequency += (voice.targetFrequency - voice.currentFrequency) * voice.glideCoefficient;
+                voice.glide.process();
 
                 // ---- Process envelopes ----
                 float amplitudeLevel = voice.ampEnvelope.process();
@@ -739,7 +666,7 @@ public:
                 float modulatedFoldDepth = smoothedFoldDepth * foldEnvelopeLevel;
 
                 // ---- Generate source signal ----
-                float frequency = voice.currentFrequency;
+                float frequency = voice.glide.getFreq();
                 float phaseIncrement = frequency / sampleRateFloat;
 
                 // Sawtooth oscillator (naive -- anti-aliasing is handled by the
@@ -1733,12 +1660,12 @@ private:
             auto& voice = voices[0];
             bool wasAlreadyActive = voice.active;
 
-            voice.targetFrequency = frequency;
+            voice.glide.setTarget (frequency);
+            voice.glide.setCoeff (glideCoefficient);
 
             if (legatoMode && wasAlreadyActive)
             {
                 // Legato: glide to new pitch without retriggering envelopes
-                voice.glideCoefficient = glideCoefficient;
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
             }
@@ -1749,8 +1676,8 @@ private:
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
                 voice.startTime = voiceAllocationCounter++;
-                voice.currentFrequency = frequency;
-                voice.glideCoefficient = glideCoefficient;
+                voice.glide.snapTo (frequency);
+                voice.glide.setCoeff (glideCoefficient);
                 voice.sawPhase = 0.0f;
                 voice.squarePhase = 0.0f;
                 voice.isFadingOut = false;
@@ -1770,7 +1697,7 @@ private:
         }
 
         // ---- Polyphonic mode ----
-        int voiceIndex = findFreeVoice (maxPolyphony);
+        int voiceIndex = VoiceAllocator::findFreeVoice (voices, maxPolyphony);
         auto& voice = voices[static_cast<size_t> (voiceIndex)];
 
         // If stealing an active voice, initiate crossfade out
@@ -1785,9 +1712,7 @@ private:
         voice.noteNumber = noteNumber;
         voice.velocity = velocity;
         voice.startTime = voiceAllocationCounter++;
-        voice.currentFrequency = frequency;
-        voice.targetFrequency = frequency;
-        voice.glideCoefficient = 1.0f;      // No glide in poly mode (instant pitch)
+        voice.glide.snapTo (frequency);      // No glide in poly mode (instant pitch)
         voice.sawPhase = 0.0f;
         voice.squarePhase = 0.0f;
         voice.isFadingOut = false;
@@ -1831,30 +1756,7 @@ private:
         }
     }
 
-    // Find the best voice to allocate: prefer inactive voices, then steal
-    // the oldest active voice (Least Recently Used strategy).
-    int findFreeVoice (int maxPolyphony) const
-    {
-        int polyphonyLimit = std::min (maxPolyphony, kMaxVoices);
-
-        // First pass: find an inactive voice within the polyphony limit
-        for (int i = 0; i < polyphonyLimit; ++i)
-            if (!voices[static_cast<size_t> (i)].active)
-                return i;
-
-        // Second pass: LRU voice stealing -- find the oldest active voice
-        int oldestVoiceIndex = 0;
-        uint64_t oldestTimestamp = UINT64_MAX;
-        for (int i = 0; i < polyphonyLimit; ++i)
-        {
-            if (voices[static_cast<size_t> (i)].startTime < oldestTimestamp)
-            {
-                oldestTimestamp = voices[static_cast<size_t> (i)].startTime;
-                oldestVoiceIndex = i;
-            }
-        }
-        return oldestVoiceIndex;
-    }
+    // findFreeVoice() replaced by VoiceAllocator::findFreeVoice() (Source/DSP/VoiceAllocator.h)
 
     // Standard MIDI-to-frequency conversion using equal temperament.
     // A4 (MIDI note 69) = 440 Hz, 12 semitones per octave.
@@ -1871,8 +1773,8 @@ private:
     double storedSampleRate = 44100.0;               // Full-precision sample rate for filter coefficient computation
     float sampleRateFloat = 44100.0f;                // Float-precision sample rate for per-sample DSP
 
-    // ---- Control Smoothing ----
-    float parameterSmoothingCoefficient = 0.1f;      // Per-sample smoothing rate (5ms time constant)
+    // ---- Control Smoothing (shared ParameterSmoother, 5ms) ----
+    ParameterSmoother smoothFoldPoint, smoothFoldDepth, smoothRotate, smoothStretch;
     float voiceCrossfadeRate = 0.01f;                 // Per-sample fade rate for voice stealing (5ms)
     float frequencyPerBin = 44100.0f / static_cast<float> (kFFTSize);   // Hz per FFT bin
 
@@ -1888,10 +1790,7 @@ private:
     std::array<float, kFFTSize / 2> twiddleFactorsImaginary {};     // FFT twiddle factors (sine)
 
     // ---- Smoothed Control Parameters ----
-    float smoothedFoldPoint = 0.5f;
-    float smoothedFoldDepth = 0.5f;
-    float smoothedRotate = 0.0f;
-    float smoothedStretch = 0.0f;
+    // smoothedFoldPoint/Depth/Rotate/Stretch replaced by ParameterSmoother members above
 
     // D006: aftertouch — pressure increases fold depth (more spectral shimmer on pressure)
     PolyAftertouch aftertouch;
