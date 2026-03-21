@@ -2,7 +2,8 @@
 
 **Invoke with:** `/preset-audit-checklist`
 **Status:** LIVE
-**Last Updated:** 2026-03-21 | **Version:** 1.0 | **Next Review:** After next Guru Bin retreat or seance round
+**Last Updated:** 2026-03-21 | **Version:** 2.0 | **Next Review:** After next Guru Bin retreat or seance round
+**Changelog:** v2.0 — 13 friction points resolved from first fleet-wide audit (16,479 presets, 44 engines). Added schema migration health, Blessing-aware exceptions, empty param detection, mood consistency checks, DNA threshold calibration.
 **Purpose:** Systematic preset quality audit — part universal, part engine-specific — designed so Sonnet can audit and adjust presets on demand. Codifies Guru Bin retreat wisdom, seance scoring criteria, and the 6 Doctrines into a repeatable path to 9.0+ preset libraries. The gap between 8.0 and 9.0 is preset curation, not DSP.
 
 ---
@@ -78,20 +79,53 @@ python3 Tools/validate_presets.py {path_to_preset_or_folder}
 
 If the tool isn't available, manually verify:
 
+**REQUIRED fields (P0 — preset non-functional without these):**
 - [ ] JSON parses without error
 - [ ] `schema_version` = 1
-- [ ] All required keys present: `name`, `mood`, `engines`, `author`, `version`, `description`, `tags`, `macroLabels`, `couplingIntensity`, `tempo`, `dna`, `parameters`, `coupling`
+- [ ] `name` present and non-empty
+- [ ] `mood` is one of: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
 - [ ] `engines` array non-empty, engine IDs are canonical (check CLAUDE.md Engine ID table)
 - [ ] `parameters.{EngineID}` keys use correct prefix (check CLAUDE.md Parameter Prefix table)
-- [ ] `author` = `"XO_OX Designs"` for factory presets
-- [ ] `version` = `"1.0.0"` for factory presets
 - [ ] `dna` has all 6 dimensions: `brightness`, `warmth`, `movement`, `density`, `space`, `aggression`
 - [ ] All DNA values in `[0.0, 1.0]`
-- [ ] `mood` is one of: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged
-- [ ] `macroLabels` has exactly 4 entries, all UPPERCASE
-- [ ] `coupling.pairs` is an array (empty is OK for non-Entangled)
+- [ ] `author` = `"XO_OX Designs"` for factory presets
+- [ ] `version` = `"1.0.0"` for factory presets
+- [ ] `macroLabels` present with 4 entries, all UPPERCASE (see **Blessed Exceptions** below for Overbite B008)
+- [ ] `coupling` is an object with a `pairs` array (empty `[]` is OK for non-Entangled). `null` and missing key both fail.
 
-**Flag level:** ERROR — any failure here makes the preset non-functional. Stop and fix before continuing.
+**RECOMMENDED fields (P2 — poor UX without these, but preset loads):**
+- [ ] `description` — 1-3 sentence evocative description
+- [ ] `tags` — at least 3 accurate tags
+- [ ] `tempo` — numeric or `null`
+- [ ] `couplingIntensity` — one of: None, Subtle, Moderate, Deep
+
+**Flag level:** REQUIRED failures = P0 ERROR. RECOMMENDED missing = P2 WARNING.
+
+### 2A+. Structural Integrity Checks (Added v2.0)
+
+These checks catch issues the basic schema validation misses:
+
+- [ ] **Empty parameter blocks**: Each engine listed in `parameters` must have ≥1 non-macro parameter key. A block containing only `macro_*` keys or 0 keys means the preset loads as a silent init patch. **Flag: P0.**
+- [ ] **Mood field/folder consistency**: The `mood` value in JSON must match the parent folder name. A preset in `Presets/XOmnibus/Atmosphere/` with `"mood": "Flux"` is miscategorized. **Flag: P1.**
+- [ ] **No legacy DNA fields**: If `sonic_dna` or `sonicDNA` exists alongside `dna`, the preset has schema migration debt. Strip legacy fields, keep `dna`. **Flag: P1.**
+- [ ] **Coupling state clarity**: Three states exist — distinguish them:
+  - `coupling` key missing entirely → P1 (add `{"pairs": []}`)
+  - `coupling: null` → P0 (potential runtime crash — replace with `{"pairs": []}`)
+  - `coupling: {"pairs": []}` → PASS (explicit empty coupling)
+- [ ] **Intra-engine param consistency**: All presets for the same engine should use the same parameter key names. If Osprey presets split between `osprey_brine` (current) and `osprey_brightness` (legacy), one generation silently fails. **Flag: P0.** Consult engine source to determine canonical params.
+- [ ] **Parameter value domain consistency**: The same parameter should use the same value domain across all presets. If `obsidian_filterCutoff` is normalized [0,1] in some presets and absolute Hz (4200) in others, behavior is unpredictable. **Flag: P1.**
+- [ ] **Non-standard mood folders**: Presets in folders outside the 8 standard moods (e.g., Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic) may be invisible to the preset browser if PresetManager only enumerates standard folders. **Flag: P1.** Move to standard moods or confirm PresetManager scans all subdirectories.
+
+### Blessed Exceptions (Engine-Specific Schema Overrides)
+
+Some engines have Blessings that override default schema rules. Check these before flagging:
+
+| Engine | Blessing | Override |
+|--------|----------|----------|
+| Overbite | B008 (Five-Macro System) | `macroLabels` may have 5 entries: `BELLY/BITE/SCURRY/TRASH/PLAY DEAD`. Do NOT flag as schema error. |
+| Optic | B005 (Zero-Audio Identity) | D001/D006 exemptions — Optic is a visual engine, not MIDI-driven. Do NOT flag missing velocity/expression. |
+| OceanDeep | B031 (Darkness Filter Ceiling) | Brightness DNA ceiling at ~0.6 is architecturally correct. Do NOT flag as DNA gap. |
+| Overtone | Spectral engine | Aggression ceiling at ~0.52 is intentional for spectral synthesis. Do NOT flag as DNA gap. |
 
 ### 2B. The 6 Doctrine Checks
 
@@ -184,11 +218,20 @@ Play the preset and score each DNA dimension by ear, then compare to `.xometa` v
 
 **FAIL indicators:** All 6 values at 0.5 (placeholder). Any value off by >0.2. Brightness=0.9 but sound is dark. DNA contradicts mood assignment.
 
-**Cross-validation rules:**
-- Atmosphere mood: aggression should be < 0.4, space should be > 0.5
-- Foundation mood: density should be > 0.4, space should be < 0.4
-- Submerged mood: brightness should be < 0.4
-- Flux mood: movement should be > 0.5
+**Cross-validation rules (with MARGINAL bands):**
+
+Thresholds have a ±0.1 MARGINAL band. Values outside MARGINAL = FAIL. Fleet audit showed 46% Atmosphere failure at strict thresholds — the MARGINAL band catches "worth reviewing" vs "definitely wrong."
+
+| Mood | Dimension | PASS | MARGINAL | FAIL |
+|------|-----------|------|----------|------|
+| Atmosphere | aggression | < 0.4 | 0.4–0.5 | > 0.5 |
+| Atmosphere | space | > 0.5 | 0.4–0.5 | < 0.4 |
+| Foundation | density | > 0.4 | 0.3–0.4 | < 0.3 |
+| Foundation | space | < 0.4 | 0.4–0.5 | > 0.5 |
+| Submerged | brightness | < 0.4 | 0.4–0.5 | > 0.5 |
+| Flux | movement | > 0.5 | 0.4–0.5 | < 0.4 |
+
+**Note:** Some engines have Blessing-mandated DNA ceilings (see Blessed Exceptions in Phase 2A+). Check those before flagging DNA range issues.
 
 ### Gate 7: Naming Quality
 
@@ -200,6 +243,15 @@ Play the preset and score each DNA dimension by ear, then compare to `.xometa` v
 
 **Good:** "Twilight Entanglement", "Copper Kettle", "Abyssal Meditation", "Neon Tetra Chase"
 **Bad:** "FM Pad 3", "Filter Sweep Bass", "Test Preset", "Warm Dark Slow"
+
+**Debug/pole-fill preset detection (Added v2.0):**
+Names matching these patterns are batch-generated diagnostic presets, not factory-quality:
+- ALL-CAPS descriptor dumps: `BRIGHT_HOT_DENSE_VAST_AET3_4`, `5X DARK COLD KINETIC DENSE`
+- Prefixed with `_ALL`: `_ALLHI_FND_01`, `_ALLLO_ATM_03`
+- Numbered series with mood codes: `ICE FLUX 6`, `WARM DENSE STILL INTIMATE ATM 2`
+- Single-word generic names: "Ascension", "Overcast", "Nocturne" (unless engine-specific)
+
+These should either be renamed to evocative names or quarantined as non-factory presets. **Flag: P2.**
 
 ### Gate 8: Description & Tags
 
@@ -359,6 +411,11 @@ aggression:  min=___ max=___
 **FAIL**: Any dimension with range < 0.4 (e.g., all presets between 0.4 and 0.6 — no extremes).
 **Target**: Each dimension should span at least 0.0-0.3 to 0.7-1.0 across the library.
 
+**Blessing-aware exceptions:** Some engines have intentional DNA ceilings/floors that are features, not bugs:
+- OceanDeep brightness ≤ 0.6 (B031 Darkness Filter Ceiling)
+- Overtone aggression ≤ 0.52 (spectral engine — aggression ceiling is architectural)
+- Check `Blessed Exceptions` table in Phase 2A+ before flagging DNA range issues.
+
 ### 5C. Duplicate Detection
 
 ```bash
@@ -387,6 +444,24 @@ For every Entangled mood preset:
 - [ ] Route uses a non-STUB CouplingType
 - [ ] M3 (COUPLING) audibly changes coupling intensity
 - [ ] Preset name indicates the coupling pair (e.g., "OXBOW+OPAL: Tidal Resonance")
+
+### 5F. Fleet-Level Entangled Integrity (Engine/Fleet Scope Only)
+
+At engine or fleet scope, compute the **Entangled Integrity Rate**:
+
+```
+Entangled Integrity = (Entangled presets WITH coupling pairs) / (Total Entangled presets) × 100%
+```
+
+| Rate | Status | Action |
+|------|--------|--------|
+| 90-100% | HEALTHY | Entangled mood is trustworthy |
+| 50-89% | WARNING | Significant number of solo presets misfiled as Entangled |
+| < 50% | CRITICAL | Entangled mood is structurally fraudulent — mass re-mooding required |
+
+**Fleet baseline (2026-03-21):** 85-94% of Entangled presets fleet-wide had NO coupling pairs. This was the single largest structural issue discovered. When auditing, always report this metric prominently.
+
+An Entangled preset with 1 engine and no coupling pairs should be re-mooded to Foundation, Atmosphere, or Prism based on its DNA profile. This is not a creative judgment — it's a categorization fix.
 
 ---
 
@@ -493,9 +568,55 @@ FIX PRIORITY:
 
 ---
 
+## Phase 8: Schema Migration Health (Fleet Scope Only)
+
+The fleet contains 3 generations of preset schemas. This phase identifies migration debt.
+
+### Schema Generations
+
+| Generation | Characteristics | How to Identify |
+|------------|----------------|-----------------|
+| Gen 1 (early) | `sonic_dna` field, `coupling: null`, `version: "1.0"`, mixed-case macroLabels, no description/tempo/couplingIntensity | Has `sonic_dna` key |
+| Gen 2 (mid) | `sonicDNA` field, partial fields, generic macro names (`MACRO1`/`M1`), some coupling | Has `sonicDNA` key |
+| Gen 3 (current) | `dna` only, full fields, engine-specific macros, `coupling: {"pairs": []}`, descriptions | Has `dna` without legacy variants |
+
+### Migration Health Metrics
+
+For each engine, compute:
+
+```
+Gen 3 Rate = (Gen 3 presets) / (Total presets) × 100%
+```
+
+| Rate | Status | Action |
+|------|--------|--------|
+| 90-100% | HEALTHY | Schema is current |
+| 50-89% | NEEDS MIGRATION | Run `preset_migration_sprint1.py` |
+| < 50% | LEGACY HEAVY | Prioritize migration before quality work — fixes are cheaper at Gen 3 |
+
+### Migration Script
+
+```bash
+# Dry run — see what would change
+python3 Tools/preset_migration_sprint1.py
+
+# Apply fixes
+python3 Tools/preset_migration_sprint1.py --apply
+```
+
+The migration script handles: coupling null→{pairs:[]}, wrong param prefixes, legacy DNA field stripping, version string normalization, missing field addition. Run this BEFORE the audit — it eliminates hundreds of false positives.
+
+---
+
 ## Sonnet Execution Guide
 
 **When running this as an autonomous Sonnet task**, follow this exact workflow:
+
+### Step 0: Run migration script first (fleet scope only)
+```bash
+python3 Tools/preset_migration_sprint1.py --apply
+```
+This eliminates hundreds of false positives from legacy schema debt. Skip for single-preset audits.
 
 ### Step 1: Read the engine's sound design guide section
 ```
@@ -509,29 +630,39 @@ Glob: Presets/XOmnibus/**/*{engine}*.xometa
 Glob: Presets/XOmnibus/**/*.xometa → grep for engine name in "engines" array
 ```
 
-### Step 3: Run schema validation
+### Step 3: Run schema validation + structural integrity
 ```bash
 python3 Tools/validate_presets.py Presets/XOmnibus/
 ```
+Then manually check Phase 2A+ items: empty param blocks, mood/folder consistency, legacy DNA fields, coupling state, intra-engine param consistency. These are the highest-value checks that the validator misses.
 
-### Step 4: For each preset, check Phase 2 (Doctrine) and Phase 3 (Sonic Gate)
+### Step 4: Check Blessed Exceptions
+Before flagging any schema or DNA issue, check the Blessed Exceptions table in Phase 2A+. Overbite 5-macro, Optic D001/D006 exemptions, OceanDeep brightness ceiling, and Overtone aggression ceiling are all intentional.
+
+### Step 5: For each preset, check Phase 2 (Doctrine) and Phase 3 (Sonic Gate)
 - Read the `.xometa` file
 - Check parameter values against the 10-Point Sonic Gate
+- Use MARGINAL bands for DNA cross-validation (not strict thresholds)
 - Flag issues with priority level
 
-### Step 5: Run Phase 5 (Coverage) at engine scope
+### Step 6: Run Phase 5 (Coverage) at engine scope
 - Count presets per mood
-- Compute DNA min/max per dimension
+- Compute DNA min/max per dimension (with Blessing-aware exceptions)
 - Check for duplicates
+- Compute **Entangled Integrity Rate** (Phase 5F)
+- Flag non-standard mood folder presets
 
-### Step 6: Apply Phase 6 (Guru Tricks) to any preset scoring MARGINAL
+### Step 7: Apply Phase 6 (Guru Tricks) to any preset scoring MARGINAL
 - Use the Decision Tree to select appropriate tricks
 - Edit the `.xometa` file with refined values
 - Document what was changed and why
 
-### Step 7: Generate Phase 7 report
+### Step 8: Generate Phase 7 report + Schema Migration Health (Phase 8)
 
 **Sonnet can do all of this autonomously.** The only step requiring human judgment is Gate 1 (First-Keypress Magic) — flag these for human play-testing and move on.
+
+### Fleet Audit Tip: Batch by Engine Groups
+For fleet-wide audits, dispatch parallel agents covering 7-8 engines each. Save per-batch reports to `Docs/fleet-audit/batch{N}-{engines}.md`, then aggregate into a master report at `Docs/fleet-audit/FLEET-BASELINE-{date}.md`. This approach audited 16,479 presets across 44 engines in ~8 minutes using 6 parallel Sonnet agents.
 
 ---
 
