@@ -1015,6 +1015,13 @@
       "file": "xpn_xpm_validator_strict.py",
       "category": "general",
       "status": "active"
+    },
+    {
+      "file": "xport_inspector.py",
+      "category": "xpn-export",
+      "description": "XPort Inspector (5th Legendary Feature) \u2014 inspects exported XPN packs for XDrip preview coverage, DNA Inheritance completeness, Coupling Snapshot presence, Rebirth Mode round-robin variation, and XPM rule compliance. Produces GO/NO-GO readiness score (0-100).",
+      "status": "active",
+      "legendary": true
     }
   ]
 }
