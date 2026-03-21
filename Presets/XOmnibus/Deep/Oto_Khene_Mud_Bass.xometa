@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Khene Mud Bass",
+  "mood": "Deep",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene in the subterranean register — heavy filter, maximum buzz, full paired-pipe beating at low frequencies. The detuned pipe pairs at 1.000/1.003 produce a slow 0.14 Hz beating at A1 (55 Hz), which is not vibrato but physical weight. A drone that doesn't so much play as arrive. Play low. Hold long. Let the crosstalk blur the voices.",
+  "tier": "awakening",
+  "tags": [
+    "deep",
+    "khene",
+    "organ",
+    "bass",
+    "drone",
+    "dark",
+    "buzzy",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.92,
+    "movement": 0.38,
+    "density": 0.72,
+    "space": 0.45,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.85,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.4,
+      "oto_buzz": 0.78,
+      "oto_pressure": 0.35,
+      "oto_crosstalk": 0.45,
+      "oto_filterCutoff": 1800.0,
+      "oto_filterRes": 0.28,
+      "oto_attack": 0.08,
+      "oto_decay": 1.2,
+      "oto_sustain": 0.88,
+      "oto_release": 1.0,
+      "oto_lfo1Rate": 0.07,
+      "oto_lfo1Depth": 0.15,
+      "oto_competition": 0.2
+    }
+  },
+  "tempo": null
+}

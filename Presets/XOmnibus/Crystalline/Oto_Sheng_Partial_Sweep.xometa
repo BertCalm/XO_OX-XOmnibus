@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sheng Partial Sweep",
+  "mood": "Crystalline",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with cluster density at the midpoint — five partials active, the sixth fractionally fading in. The Cluster Density sweep is the engine's most expressive feature: automate it slowly from 0.0 to 1.0 and the Sheng assembles itself partial by partial, each harmonic arriving like a voice joining a conversation. Start sparse. Let it grow.",
+  "tier": "awakening",
+  "tags": [
+    "crystalline",
+    "sheng",
+    "organ",
+    "cluster-sweep",
+    "partial",
+    "additive",
+    "bright",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.28,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.45,
+      "oto_chiff": 0.5,
+      "oto_detune": 0.02,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.08,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 18000.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.008,
+      "oto_decay": 0.5,
+      "oto_sustain": 0.92,
+      "oto_release": 0.6,
+      "oto_lfo1Rate": 0.6,
+      "oto_lfo1Depth": 0.06,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

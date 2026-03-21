@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Partial Morph",
+  "mood": "Prism",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll with CHARACTER macro wired to the partial amplitude blend — sweeping CHARACTER morphs the drawbar harmonic table from dark Romantic (fundamental-heavy) toward bright Baroque (2nd and 4th emphasis). Two organ centuries in one gesture.",
+  "tags": [
+    "organ",
+    "pipe",
+    "prism",
+    "morph",
+    "cavaille-coll",
+    "baroque",
+    "coupling"
+  ],
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.72,
+    "space": 0.48,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.06,
+      "oct_chiff": 0.2,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.78,
+      "oct_crosstalk": 0.08,
+      "oct_brightness": 8500.0,
+      "oct_registration": 0.55,
+      "oct_roomDepth": 0.38,
+      "oct_attack": 0.08,
+      "oct_decay": 0.8,
+      "oct_sustain": 0.92,
+      "oct_release": 1.2,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.06,
+      "oct_lfo1Depth": 0.10,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.5,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

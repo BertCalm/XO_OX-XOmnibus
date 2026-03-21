@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sho Crossfade Study",
+  "mood": "Foundation",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho aitake cluster at maximum density, release extended to 2.5 seconds. Switch to Sheng (organ model 1) mid-performance and hear the crossfade in action — the 50ms linear blend between aitake cluster and Sheng harmonic series. The seance confirmed this is now working. Two families of tuning, one breath, one transition.",
+  "tier": "awakening",
+  "tags": [
+    "foundation",
+    "sho",
+    "organ",
+    "crossfade",
+    "cluster",
+    "study",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.78,
+    "movement": 0.35,
+    "density": 0.95,
+    "space": 0.7,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 1.0,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.28,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.3,
+      "oto_crosstalk": 0.15,
+      "oto_filterCutoff": 5500.0,
+      "oto_filterRes": 0.06,
+      "oto_attack": 0.18,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.95,
+      "oto_release": 2.5,
+      "oto_lfo1Rate": 0.07,
+      "oto_lfo1Depth": 0.18,
+      "oto_competition": 0.1
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sho Pressure Storm",
+  "mood": "Flux",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho under maximum breath pressure instability — the two internal LFOs at full scale, pitches drifting ±8 cents per voice, amplitude tremolo at ±15%. The aitake cluster stops being a chord and starts being weather. High detune reinforces the pitch turbulence. This is what happens when 11 reeds share breath that can't decide where to go.",
+  "tier": "awakening",
+  "tags": [
+    "flux",
+    "sho",
+    "organ",
+    "pressure",
+    "drift",
+    "turbulent",
+    "chaos",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.85,
+    "density": 0.8,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.88,
+      "oto_chiff": 0.2,
+      "oto_detune": 0.55,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.95,
+      "oto_crosstalk": 0.4,
+      "oto_filterCutoff": 6500.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.1,
+      "oto_decay": 1.0,
+      "oto_sustain": 0.88,
+      "oto_release": 1.5,
+      "oto_lfo1Rate": 0.2,
+      "oto_lfo1Depth": 0.28,
+      "oto_competition": 0.3
+    }
+  },
+  "tempo": null
+}

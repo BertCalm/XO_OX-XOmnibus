@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Chiff Cascade",
+  "mood": "Prism",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Baroque Positiv with chiff at full — each note begins with a 5ms air burst before the pipe finds its tone. High registration opens the 4' and 2' ranks. Bright, articulate, transparent. MOVEMENT sweeps the registration from 8-foot warmth toward 2-foot shimmer.",
+  "tags": [
+    "organ",
+    "baroque",
+    "prism",
+    "chiff",
+    "articulate",
+    "bright",
+    "tracker"
+  ],
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.38,
+    "movement": 0.28,
+    "density": 0.55,
+    "space": 0.42,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.08,
+      "oct_chiff": 0.88,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.72,
+      "oct_crosstalk": 0.06,
+      "oct_brightness": 11000.0,
+      "oct_registration": 0.72,
+      "oct_roomDepth": 0.28,
+      "oct_attack": 0.008,
+      "oct_decay": 0.3,
+      "oct_sustain": 0.88,
+      "oct_release": 0.6,
+      "oct_filterEnvAmount": 0.28,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.15,
+      "oct_lfo1Depth": 0.06,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.5,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

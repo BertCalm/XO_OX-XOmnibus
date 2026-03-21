@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sho Breath Field",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho aitake as an atmospheric field — moderate cluster, mid-range pressure, and crosstalk high enough to let adjacent voices hear each other. Sustained chords build an atmospheric haze where individual notes become indistinct from the whole. The breath instability keeps the field alive across time. Play wide voicings and hold.",
+  "tier": "awakening",
+  "tags": [
+    "atmosphere",
+    "sho",
+    "organ",
+    "field",
+    "ambient",
+    "crosstalk",
+    "sustained",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.72,
+    "movement": 0.48,
+    "density": 0.78,
+    "space": 0.82,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.78,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.32,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.5,
+      "oto_crosstalk": 0.38,
+      "oto_filterCutoff": 4800.0,
+      "oto_filterRes": 0.07,
+      "oto_attack": 0.4,
+      "oto_decay": 2.5,
+      "oto_sustain": 0.9,
+      "oto_release": 3.5,
+      "oto_lfo1Rate": 0.05,
+      "oto_lfo1Depth": 0.22,
+      "oto_competition": 0.18
+    }
+  },
+  "tempo": null
+}

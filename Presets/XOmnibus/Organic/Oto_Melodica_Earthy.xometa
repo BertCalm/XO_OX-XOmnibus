@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Melodica Earthy",
+  "mood": "Organic",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica in its most grounded configuration — moderate buzz, low-mid filter, full pressure wobble. This is the melodica left in a humid room overnight: reeds swollen slightly, breath resistance higher, each note a small physical negotiation. Not pristine. Alive in the way only slightly broken things are. Jon Batiste knows this sound.",
+  "tier": "awakening",
+  "tags": [
+    "organic",
+    "melodica",
+    "organ",
+    "warm",
+    "earthy",
+    "lo-fi",
+    "buzzy",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.82,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.22,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.45,
+      "oto_detune": 0.18,
+      "oto_buzz": 0.55,
+      "oto_pressure": 0.5,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 3200.0,
+      "oto_filterRes": 0.22,
+      "oto_attack": 0.035,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.72,
+      "oto_release": 0.28,
+      "oto_lfo1Rate": 0.25,
+      "oto_lfo1Depth": 0.18,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

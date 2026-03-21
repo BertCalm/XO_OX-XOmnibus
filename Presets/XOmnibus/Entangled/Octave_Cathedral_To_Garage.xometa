@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Cathedral to Garage",
+  "mood": "Entangled",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll at rest, COUPLING macro wired to the organ morph pathway — as COUPLING rises, couplingOrganMod pushes the partial amplitude table from dark Romantic toward Baroque brightness, then beyond into transistor immediacy. One macro traverses 400 years of organ history.",
+  "tags": [
+    "organ",
+    "entangled",
+    "morph",
+    "cavaille-coll",
+    "farfisa",
+    "coupling",
+    "contrast"
+  ],
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.62,
+    "movement": 0.42,
+    "density": 0.72,
+    "space": 0.52,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.05,
+      "oct_chiff": 0.32,
+      "oct_detune": 0.05,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.78,
+      "oct_crosstalk": 0.12,
+      "oct_brightness": 7500.0,
+      "oct_registration": 0.5,
+      "oct_roomDepth": 0.42,
+      "oct_attack": 0.15,
+      "oct_decay": 1.0,
+      "oct_sustain": 0.93,
+      "oct_release": 2.0,
+      "oct_filterEnvAmount": 0.16,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.05,
+      "oct_lfo1Depth": 0.09,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.5,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

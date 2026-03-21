@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Milonga Jubilee",
+  "mood": "Flux",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon in push mode — bright, forward, the jubilant side of tango that Piazzolla found in the milonga rhythm. High velocity triggers the push bank: triangle-saw blend that cuts through any mix. Moderate buzz for warm reed saturation. Fast LFO2 on the filter creates the rhythmic pumping urgency of a milonga band at full tempo. Play hard for push energy; soft touch reveals the darker pull bank beneath.",
+  "tier": "awakening",
+  "tags": [
+    "flux",
+    "bandoneon",
+    "tango",
+    "milonga",
+    "bright",
+    "joyful",
+    "rhythmic",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.45,
+    "movement": 0.75,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.4,
+      "oleg_brightness": 9000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.85,
+      "oleg_detune": 22.0,
+      "oleg_formant": 0.7,
+      "oleg_attack": 0.015,
+      "oleg_release": 0.12,
+      "oleg_filterEnvAmt": 0.5,
+      "oleg_bendRange": 3,
+      "oleg_glideTime": 0.03,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.45,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.15,
+      "oleg_lfo1Depth": 0.06,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 5.5,
+      "oleg_lfo2Depth": 0.18,
+      "oleg_lfo2Shape": 2
+    }
+  },
+  "tempo": null
+}

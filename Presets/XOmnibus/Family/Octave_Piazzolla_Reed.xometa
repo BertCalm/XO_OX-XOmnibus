@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Piazzolla Reed",
+  "mood": "Family",
+  "engines": [
+    "Octave"
+  ],
+  "description": "French Musette in its most expressive register — bellows pressure alive with aftertouch, 4 Hz triple-reed beating, trace cassotto warmth from low brightness. Suitable for tango, French chanson, cafe afternoon. MOVEMENT deepens the bellows push; COUPLING tightens the reeds into a single breath.",
+  "tags": [
+    "organ",
+    "musette",
+    "accordion",
+    "family",
+    "tango",
+    "french",
+    "expressive"
+  ],
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.78,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.28,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.0,
+      "oct_chiff": 0.0,
+      "oct_detune": 0.38,
+      "oct_buzz": 0.14,
+      "oct_pressure": 0.78,
+      "oct_crosstalk": 0.08,
+      "oct_brightness": 6500.0,
+      "oct_registration": 0.42,
+      "oct_roomDepth": 0.12,
+      "oct_attack": 0.008,
+      "oct_decay": 0.6,
+      "oct_sustain": 0.92,
+      "oct_release": 0.3,
+      "oct_filterEnvAmount": 0.24,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.06,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.5,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

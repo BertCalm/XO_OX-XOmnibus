@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Khene Spirit Competition",
+  "mood": "Aether",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene with the competition system at threshold. Play chords and feel the voices fight for breath — each additional note slightly diminishes the others, as in the physical instrument. The paired-pipe beating creates an almost celestial shimmer at this density. Spirits competing for the same column of air.",
+  "tier": "awakening",
+  "tags": [
+    "aether",
+    "khene",
+    "organ",
+    "competition",
+    "breath",
+    "polyphonic",
+    "shimmer",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.8,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.3,
+      "oto_buzz": 0.12,
+      "oto_pressure": 0.45,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 5800.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.25,
+      "oto_decay": 1.8,
+      "oto_sustain": 0.88,
+      "oto_release": 2.8,
+      "oto_lfo1Rate": 0.06,
+      "oto_lfo1Depth": 0.22,
+      "oto_competition": 0.55
+    }
+  },
+  "tempo": null
+}

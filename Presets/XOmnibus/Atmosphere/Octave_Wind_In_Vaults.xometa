@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Wind in Vaults",
+  "mood": "Atmosphere",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll at maximum room depth with voice cluster spread — wind noise audible, room resonance at all three cathedral modes. Notes bloom slowly and dissolve into stone. LFO1 at 0.02 Hz breathes the brightness like the organ itself is alive.",
+  "tags": [
+    "organ",
+    "pipe",
+    "atmosphere",
+    "cavaille-coll",
+    "cathedral",
+    "ambient",
+    "slow"
+  ],
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.85,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.92,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.12,
+      "oct_chiff": 0.08,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.85,
+      "oct_crosstalk": 0.22,
+      "oct_brightness": 3500.0,
+      "oct_registration": 0.38,
+      "oct_roomDepth": 0.85,
+      "oct_attack": 0.35,
+      "oct_decay": 3.0,
+      "oct_sustain": 0.96,
+      "oct_release": 3.5,
+      "oct_filterEnvAmount": 0.10,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.02,
+      "oct_lfo1Depth": 0.14,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.008,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

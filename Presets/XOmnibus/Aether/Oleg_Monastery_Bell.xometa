@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Monastery Bell",
+  "mood": "Aether",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan in a monastery — full cassotto depth, drone strings at fifth and octave below, almost no buzz. The cassotto comb filter reinforces the 300 Hz body frequency while two allpass stages diffuse the chamber resonance into a warm cloud. Drones activated (0.5) create an organal structure beneath the melody: sustained, immovable, sacred. Very slow LFOs at 0.03 Hz give a barely perceptible breathing over 33-second cycles. Long release (0.7s). The instrument becomes architecture.",
+  "tier": "awakening",
+  "tags": [
+    "aether",
+    "bayan",
+    "sacred",
+    "drone",
+    "organ",
+    "meditative",
+    "warm",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.75,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.08,
+      "oleg_brightness": 3000.0,
+      "oleg_drone": 0.5,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 8.0,
+      "oleg_formant": 0.35,
+      "oleg_attack": 0.1,
+      "oleg_release": 0.7,
+      "oleg_filterEnvAmt": 0.15,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.08,
+      "oleg_cassottoDepth": 0.9,
+      "oleg_buzzThreshold": 0.7,
+      "oleg_wheelSpeed": 0.2,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.03,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.07,
+      "oleg_lfo2Depth": 0.1,
+      "oleg_lfo2Shape": 1
+    }
+  },
+  "tempo": null
+}

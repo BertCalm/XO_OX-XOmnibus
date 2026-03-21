@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Saint-Sulpice Dawn",
+  "mood": "Aether",
+  "engines": [
+    "Octave"
+  ],
+  "description": "Cavaille-Coll at its most celestial — 1-second attack, LFO1 at 0.01 Hz, maximum room resonance. Notes rise from silence like light finding its angle through leaded glass. 8 voices cluster-detuned at ±12 cents — a choir of pipes breathing as one. SPACE fills the basilica.",
+  "tags": [
+    "organ",
+    "pipe",
+    "aether",
+    "cavaille-coll",
+    "celestial",
+    "drone",
+    "cathedral"
+  ],
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.88,
+    "movement": 0.22,
+    "density": 0.95,
+    "space": 1.0,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.18,
+      "oct_chiff": 0.04,
+      "oct_detune": 0.0,
+      "oct_buzz": 0.0,
+      "oct_pressure": 0.88,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 2800.0,
+      "oct_registration": 0.32,
+      "oct_roomDepth": 0.95,
+      "oct_attack": 1.0,
+      "oct_decay": 5.0,
+      "oct_sustain": 0.97,
+      "oct_release": 6.0,
+      "oct_filterEnvAmount": 0.06,
+      "oct_bendRange": 2.0,
+      "oct_macroCharacter": 0.0,
+      "oct_macroMovement": 0.0,
+      "oct_macroCoupling": 0.0,
+      "oct_macroSpace": 0.0,
+      "oct_lfo1Rate": 0.01,
+      "oct_lfo1Depth": 0.18,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.005,
+      "oct_lfo2Depth": 0.0,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.0
+    }
+  }
+}

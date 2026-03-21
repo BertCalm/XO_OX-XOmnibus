@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Melodica High Register",
+  "mood": "Crystalline",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica with sparse partials and maximum filter openness — the upper register where the plastic body resonance breaks up and each breath becomes visible. Almost a harmonica, almost a toy, completely unique. Play above C5 for the characteristic high-register breathiness. The instrument is at its most naked here.",
+  "tier": "awakening",
+  "tags": [
+    "crystalline",
+    "melodica",
+    "organ",
+    "sparse",
+    "high-register",
+    "intimate",
+    "naked",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.18,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.25,
+      "oto_chiff": 0.6,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.18,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 16000.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.005,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.78,
+      "oto_release": 0.3,
+      "oto_lfo1Rate": 0.4,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

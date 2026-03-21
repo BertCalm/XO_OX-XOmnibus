@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Push Pull",
+  "mood": "Entangled",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon bisonoric showcase — the engine's unique push/pull mechanic made explicit. Velocity threshold at 0.5 divides the keyboard into two timbral worlds: play soft (pull bank) for warm dual triangle oscillators with wide detune; play hard (push bank) for the triangle-saw blend that projects forward. Rapid alternation between soft and hard velocity creates the characteristic bellows-reversal breathing of real bandoneon technique. LFO2 at 0.6 Hz sweeps the filter between the two registers. The entanglement is internal: two instruments in one body.",
+  "tier": "awakening",
+  "tags": [
+    "entangled",
+    "bandoneon",
+    "bisonoric",
+    "velocity",
+    "expressive",
+    "tango",
+    "showcase",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.25,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.7,
+      "oleg_detune": 32.0,
+      "oleg_formant": 0.6,
+      "oleg_attack": 0.018,
+      "oleg_release": 0.28,
+      "oleg_filterEnvAmt": 0.4,
+      "oleg_bendRange": 3,
+      "oleg_glideTime": 0.05,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.5,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.12,
+      "oleg_lfo1Depth": 0.07,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.6,
+      "oleg_lfo2Depth": 0.18,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

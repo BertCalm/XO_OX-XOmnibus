@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sho Dissolving Gate",
+  "mood": "Aether",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho at the edge of silence. Full cluster breathes at maximum pressure instability — the 11-partial aitake chord drifting, separating, nearly dissolving. Long attack and extended release let each note arrive like a memory and depart like a breath held too long. The instrument decides when to let go.",
+  "tier": "awakening",
+  "tags": [
+    "aether",
+    "sho",
+    "organ",
+    "breath",
+    "dissolving",
+    "ambient",
+    "sustained",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.7,
+    "movement": 0.65,
+    "density": 0.85,
+    "space": 0.92,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.92,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.45,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.7,
+      "oto_crosstalk": 0.35,
+      "oto_filterCutoff": 4200.0,
+      "oto_filterRes": 0.06,
+      "oto_attack": 0.8,
+      "oto_decay": 3.0,
+      "oto_sustain": 0.9,
+      "oto_release": 4.5,
+      "oto_lfo1Rate": 0.04,
+      "oto_lfo1Depth": 0.3,
+      "oto_competition": 0.25
+    }
+  },
+  "tempo": null
+}

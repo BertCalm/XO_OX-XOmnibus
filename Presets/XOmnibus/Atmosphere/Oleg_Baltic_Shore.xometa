@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Baltic Shore",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan at the Baltic coast — the cassotto chamber absorbs the wind. Deep cassotto depth (0.8) rounds every harmonic, the wooden chamber eating the upper frequencies the way cold sea air eats sound. Wide detune at 20 cents creates slow beating between the two sawtooth oscillators. LFO1 at 0.06 Hz (a 17-second cycle) breathes the pitch almost imperceptibly. This is the sound of an accordion player standing at the water's edge, playing for no one.",
+  "tier": "awakening",
+  "tags": [
+    "atmosphere",
+    "bayan",
+    "coastal",
+    "meditative",
+    "slow",
+    "warm",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.1,
+      "oleg_brightness": 4000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.65,
+      "oleg_detune": 20.0,
+      "oleg_formant": 0.4,
+      "oleg_attack": 0.05,
+      "oleg_release": 0.45,
+      "oleg_filterEnvAmt": 0.2,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.06,
+      "oleg_cassottoDepth": 0.8,
+      "oleg_buzzThreshold": 0.6,
+      "oleg_wheelSpeed": 0.2,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.06,
+      "oleg_lfo1Depth": 0.07,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.18,
+      "oleg_lfo2Depth": 0.13,
+      "oleg_lfo2Shape": 1
+    }
+  },
+  "tempo": null
+}

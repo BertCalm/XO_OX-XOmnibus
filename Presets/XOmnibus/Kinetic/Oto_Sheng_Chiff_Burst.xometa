@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sheng Chiff Burst",
+  "mood": "Kinetic",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with maximum chiff transient and the fastest possible attack. Each note arrives as a 15ms burst of noise-pitched energy before settling into the harmonic series — the Sheng's characteristic 'air rush' on initial breath. At fast playing speeds the chiff overlaps, creating a percussive texture underneath the melody. The breath visible in the sound.",
+  "tier": "awakening",
+  "tags": [
+    "kinetic",
+    "sheng",
+    "organ",
+    "chiff",
+    "transient",
+    "percussive",
+    "melodic",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.42,
+    "space": 0.28,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.42,
+      "oto_chiff": 0.95,
+      "oto_detune": 0.06,
+      "oto_buzz": 0.08,
+      "oto_pressure": 0.12,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 10000.0,
+      "oto_filterRes": 0.3,
+      "oto_attack": 0.004,
+      "oto_decay": 0.25,
+      "oto_sustain": 0.65,
+      "oto_release": 0.15,
+      "oto_lfo1Rate": 2.0,
+      "oto_lfo1Depth": 0.08,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

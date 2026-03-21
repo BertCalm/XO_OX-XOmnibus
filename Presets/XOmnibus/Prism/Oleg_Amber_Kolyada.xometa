@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Amber Kolyada",
+  "mood": "Prism",
+  "engines": [
+    "Oleg"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan in the Kolyada tradition — Russian Orthodox Christmas caroling. Bright cassotto resonance, deep formant, the instrument filling a cold church vestibule. Two detuned oscillators beat against each other at 25 cents, creating the characteristic Bayan shimmer. LFO2 at medium rate adds a gentle filter undulation like candlelight. SPACE macro deepens the cassotto chamber; CHARACTER brightens toward the celebratory.",
+  "tier": "awakening",
+  "tags": [
+    "prism",
+    "bayan",
+    "orthodox",
+    "bright",
+    "celebratory",
+    "sacred",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.2,
+      "oleg_brightness": 7500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.75,
+      "oleg_detune": 25.0,
+      "oleg_formant": 0.7,
+      "oleg_attack": 0.025,
+      "oleg_release": 0.25,
+      "oleg_filterEnvAmt": 0.3,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.65,
+      "oleg_buzzThreshold": 0.5,
+      "oleg_wheelSpeed": 0.3,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.0,
+      "oleg_macroMovement": 0.0,
+      "oleg_macroCoupling": 0.0,
+      "oleg_macroSpace": 0.0,
+      "oleg_lfo1Rate": 0.08,
+      "oleg_lfo1Depth": 0.05,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 1.2,
+      "oleg_lfo2Depth": 0.12,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}
