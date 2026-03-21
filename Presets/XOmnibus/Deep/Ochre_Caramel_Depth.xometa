@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Caramel Depth",
+  "mood": "Deep",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum caramel saturation with slow decay and Parlour body. The transformation of sucrose into caramel at full expression — harmonic richness piled on warmth, not distortion. The copper piano at its deepest, most alchemical character.",
+  "tags": ["piano", "copper", "caramel", "saturation", "warm", "deep", "parlour", "rich"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.92,
+    "movement": 0.20,
+    "density": 0.70,
+    "space": 0.60,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.35,
+      "ochre_hardness": 0.25,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.70,
+      "ochre_brightness": 5000.0,
+      "ochre_damping": 0.18,
+      "ochre_decay": 5.5,
+      "ochre_caramel": 0.78,
+      "ochre_sympathy": 0.50,
+      "ochre_hfCharacter": 0.12,
+      "ochre_thermalDrift": 0.55,
+      "ochre_filterEnvAmount": 0.25,
+      "ochre_bendRange": 2.0,
+      "ochre_macroCharacter": 0.0,
+      "ochre_macroMovement": 0.0,
+      "ochre_macroCoupling": 0.0,
+      "ochre_macroSpace": 0.0,
+      "ochre_lfo1Rate": 0.07,
+      "ochre_lfo1Depth": 0.06,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.50,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

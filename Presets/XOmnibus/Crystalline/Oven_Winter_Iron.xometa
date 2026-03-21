@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Winter Iron",
+  "mood": "Crystalline",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Low temperature — the iron has been cold all night. Eigenfrequencies slightly elevated, less sympathetic resonance, more brittle character. The feeling of an instrument that hasn't warmed up yet. Young's modulus runs high when the iron is cold.",
+  "tags": ["piano", "cast iron", "cold", "winter", "brittle", "temperature", "crystalline"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.25,
+    "movement": 0.10,
+    "density": 0.60,
+    "space": 0.40,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 4500.0,
+      "oven_bodyResonance": 0.55,
+      "oven_hfAmount": 0.45,
+      "oven_hardness": 0.45,
+      "oven_density": 0.65,
+      "oven_temperature": 0.05,
+      "oven_sympathetic": 0.30,
+      "oven_bloomTime": 0.08,
+      "oven_sustainTime": 3.5,
+      "oven_filterEnvAmt": 0.40,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 1.5,
+      "oven_ampSustain": 0.25,
+      "oven_ampRelease": 1.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.20,
+      "oven_lfo1Depth": 0.04,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.80,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

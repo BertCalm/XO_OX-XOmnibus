@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Position Study",
+  "mood": "Organic",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rubber preparation with LFO1 sweeping prepPosition via the PREPARATION macro — continuously changing which modes are muted. A living demonstration of position sensitivity physics. Turn up PREPARATION to hear the sweep widen and the spectral character shift phrase by phrase.",
+  "tags": ["stone", "prepared", "rubber", "position", "lfo", "organic", "physics", "dynamic"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.25,
+    "movement": 0.55,
+    "density": 0.50,
+    "space": 0.50,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.60,
+      "obel_stoneTone": 0.45,
+      "obel_brightness": 7000.0,
+      "obel_damping": 0.22,
+      "obel_decay": 4.0,
+      "obel_hfNoise": 0.22,
+      "obel_hardness": 0.40,
+      "obel_prepType": 2,
+      "obel_prepPosition": 0.50,
+      "obel_prepDepth": 0.50,
+      "obel_filterEnvAmount": 0.30,
+      "obel_thermalDrift": 0.20,
+      "obel_bendRange": 2,
+      "obel_lfo1Rate": 0.04,
+      "obel_lfo1Depth": 0.45,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.50,
+      "obel_lfo2Depth": 0.0,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

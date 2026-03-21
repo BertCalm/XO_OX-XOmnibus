@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Sugar Crystal",
+  "mood": "Crystalline",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Caramel at medium, conductivity high, HF character elevated. The crystallized-sugar quality — translucent, hard, sweet. Notes ring brightly with a caramel edge, the copper body sharp and clear. Sugar at the moment before it becomes candy.",
+  "tags": ["piano", "copper", "crystal", "caramel", "bright", "sweet", "conductivity"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.40,
+    "space": 0.35,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.72,
+      "ochre_hardness": 0.42,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.45,
+      "ochre_brightness": 12000.0,
+      "ochre_damping": 0.38,
+      "ochre_decay": 2.2,
+      "ochre_caramel": 0.52,
+      "ochre_sympathy": 0.30,
+      "ochre_hfCharacter": 0.55,
+      "ochre_thermalDrift": 0.45,
+      "ochre_filterEnvAmount": 0.40,
+      "ochre_bendRange": 2.0,
+      "ochre_macroCharacter": 0.0,
+      "ochre_macroMovement": 0.0,
+      "ochre_macroCoupling": 0.0,
+      "ochre_macroSpace": 0.0,
+      "ochre_lfo1Rate": 0.25,
+      "ochre_lfo1Depth": 0.06,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 1.0,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

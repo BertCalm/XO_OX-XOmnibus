@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Slow Iron",
+  "mood": "Aether",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum bloom — the cast iron body takes nearly two seconds to fully respond after the hammer strike. Single notes arrive like tidal events. The geological-slow piano. Hold the sustain pedal and let the iron think.",
+  "tags": ["piano", "cast iron", "bloom", "slow", "sustain", "geological", "ambient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.95,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 2200.0,
+      "oven_bodyResonance": 0.75,
+      "oven_hfAmount": 0.30,
+      "oven_hardness": 0.15,
+      "oven_density": 0.80,
+      "oven_temperature": 0.70,
+      "oven_sympathetic": 0.55,
+      "oven_bloomTime": 1.0,
+      "oven_sustainTime": 12.0,
+      "oven_filterEnvAmt": 0.25,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 5.0,
+      "oven_ampSustain": 0.45,
+      "oven_ampRelease": 4.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.04,
+      "oven_lfo1Depth": 0.06,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.12,
+      "oven_lfo2Depth": 0.03,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

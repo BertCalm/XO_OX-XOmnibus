@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "High Conductivity",
+  "mood": "Prism",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full copper character at maximum conductivity — the brightest, most immediate face of the copper upright. High HF transmission, tight decay, Studio body. Every dynamic decision is instantly audible. Nothing is hidden.",
+  "tags": ["piano", "copper", "bright", "immediate", "responsive", "studio", "conductivity"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.50,
+    "movement": 0.20,
+    "density": 0.40,
+    "space": 0.30,
+    "aggression": 0.40
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.88,
+      "ochre_hardness": 0.50,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.50,
+      "ochre_brightness": 14000.0,
+      "ochre_damping": 0.45,
+      "ochre_decay": 1.0,
+      "ochre_caramel": 0.20,
+      "ochre_sympathy": 0.15,
+      "ochre_hfCharacter": 0.45,
+      "ochre_thermalDrift": 0.55,
+      "ochre_filterEnvAmount": 0.45,
+      "ochre_bendRange": 2.0,
+      "ochre_macroCharacter": 0.0,
+      "ochre_macroMovement": 0.0,
+      "ochre_macroCoupling": 0.0,
+      "ochre_macroSpace": 0.0,
+      "ochre_lfo1Rate": 0.30,
+      "ochre_lfo1Depth": 0.08,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 1.0,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

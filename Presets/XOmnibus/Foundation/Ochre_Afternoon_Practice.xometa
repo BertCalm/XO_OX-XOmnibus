@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Afternoon Practice",
+  "mood": "Foundation",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The intimate, real upright piano sound. Practice Room body, all parameters at their honest center. Not flattering — truthful. Every dynamic decision immediately audible because copper gives back exactly what you put in. The foundation patch.",
+  "tags": ["piano", "copper", "upright", "practice", "intimate", "foundation", "honest"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.65,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.50,
+      "ochre_hardness": 0.38,
+      "ochre_bodyType": 0,
+      "ochre_bodyDepth": 0.55,
+      "ochre_brightness": 9000.0,
+      "ochre_damping": 0.40,
+      "ochre_decay": 1.8,
+      "ochre_caramel": 0.28,
+      "ochre_sympathy": 0.25,
+      "ochre_hfCharacter": 0.25,
+      "ochre_thermalDrift": 0.35,
+      "ochre_filterEnvAmount": 0.35,
+      "ochre_bendRange": 2.0,
+      "ochre_macroCharacter": 0.0,
+      "ochre_macroMovement": 0.0,
+      "ochre_macroCoupling": 0.0,
+      "ochre_macroSpace": 0.0,
+      "ochre_lfo1Rate": 0.20,
+      "ochre_lfo1Depth": 0.05,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.80,
+      "ochre_lfo2Depth": 0.0,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

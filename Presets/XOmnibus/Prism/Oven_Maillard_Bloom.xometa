@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Maillard Bloom",
+  "mood": "Prism",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hard initial char strike that slowly blossoms into warm iron resonance. The Maillard reaction as synthesis: the HF noise crust at the onset gives way to the bloom as the cast iron body slowly warms to the note. Attack is dark fire; sustain is warmth.",
+  "tags": ["piano", "cast iron", "bloom", "char", "maillard", "contrast", "transformation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.70,
+    "movement": 0.20,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 5500.0,
+      "oven_bodyResonance": 0.70,
+      "oven_hfAmount": 0.60,
+      "oven_hardness": 0.72,
+      "oven_density": 0.75,
+      "oven_temperature": 0.55,
+      "oven_sympathetic": 0.45,
+      "oven_bloomTime": 0.65,
+      "oven_sustainTime": 6.0,
+      "oven_filterEnvAmt": 0.55,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 2.5,
+      "oven_ampSustain": 0.30,
+      "oven_ampRelease": 2.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.18,
+      "oven_lfo1Depth": 0.05,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.80,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

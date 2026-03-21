@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Mellow Rebound",
+  "mood": "Organic",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The micro-rebound at its most audible. Hardness tuned to exactly where the secondary impulse from the cast iron body's slow reflection is clearest — a subtle double-onset warmth 20-35ms after the primary strike. Only XOven has this. Notes breathe.",
+  "tags": ["piano", "cast iron", "rebound", "organic", "warmth", "natural", "breath"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.85,
+    "movement": 0.20,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 2800.0,
+      "oven_bodyResonance": 0.65,
+      "oven_hfAmount": 0.30,
+      "oven_hardness": 0.30,
+      "oven_density": 0.70,
+      "oven_temperature": 0.50,
+      "oven_sympathetic": 0.45,
+      "oven_bloomTime": 0.10,
+      "oven_sustainTime": 4.0,
+      "oven_filterEnvAmt": 0.35,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 2.0,
+      "oven_ampSustain": 0.32,
+      "oven_ampRelease": 2.0,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.15,
+      "oven_lfo1Depth": 0.04,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.50,
+      "oven_lfo2Depth": 0.0,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

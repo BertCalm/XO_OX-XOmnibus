@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Thermal Swell",
+  "mood": "Flux",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO2 modulating bloom depth via the MOVEMENT macro — the bloom fluctuates, making each phrase dynamically different. Notes from one bar bloom immediately; notes from the next bloom slowly. The thermal mass of the iron changing with every phrase.",
+  "tags": ["piano", "cast iron", "bloom", "lfo", "flux", "movement", "dynamic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.80,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.60,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 3000.0,
+      "oven_bodyResonance": 0.70,
+      "oven_hfAmount": 0.38,
+      "oven_hardness": 0.32,
+      "oven_density": 0.72,
+      "oven_temperature": 0.55,
+      "oven_sympathetic": 0.55,
+      "oven_bloomTime": 0.45,
+      "oven_sustainTime": 7.0,
+      "oven_filterEnvAmt": 0.35,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 3.0,
+      "oven_ampSustain": 0.38,
+      "oven_ampRelease": 2.8,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.0,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.0,
+      "oven_lfo1Rate": 0.22,
+      "oven_lfo1Depth": 0.04,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.18,
+      "oven_lfo2Depth": 0.25,
+      "oven_lfo2Shape": 0,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
