@@ -388,7 +388,7 @@ static void testVelocityLayerRanges()
         settings.velocityLayers = layers;
         settings.renderSeconds = 0.1f;
         settings.tailSeconds = 0.1f;
-        settings.dnaAdaptiveVelocity = false; // deterministic splits for testing
+        // dnaAdaptiveVelocity removed — velocity splits are now always deterministic
 
         std::vector<PresetData> presets = { makeTestPreset("VelCheck") };
         auto result = exporter.exportBundle(config, settings, presets);
