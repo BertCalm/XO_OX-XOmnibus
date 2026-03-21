@@ -835,6 +835,264 @@ def apply_fade_guards(channels: List[List[float]], sr: int,
                 ch[idx] *= gain
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Rebirth Mode — XOmnibus-style DSP Transforms
+# ─────────────────────────────────────────────────────────────────────────────
+
+def rebirth_saturate(channels: List[List[float]], sr: int,
+                     drive: float = 0.7, mojo: float = 0.5):
+    """OBESE-style saturation + mojo chain.
+    drive: 0-1 saturation amount
+    mojo: 0-1 analog warmth (even harmonics)
+    """
+    # Map drive from 0-1 to a useful tanh range (1.0 - 8.0)
+    d = 1.0 + drive * 7.0
+    tanh_d = math.tanh(d)
+    for ch in channels:
+        for i in range(len(ch)):
+            x = ch[i]
+            # Normalized soft clip
+            sat = math.tanh(d * x) / tanh_d
+            # Even harmonic injection via mojo (x^2 preserves sign via abs trick)
+            even = mojo * x * abs(x)
+            ch[i] = max(-1.0, min(1.0, sat + even))
+
+
+def rebirth_feedback_swell(channels: List[List[float]], sr: int,
+                           swell_time: float = 0.05, feedback: float = 0.6):
+    """OUROBOROS-style brief feedback swell on transient.
+    Applies a short feedback delay burst at the attack portion.
+    """
+    swell_samples = int(sr * swell_time)
+    # Delay time: ~5ms for metallic character
+    delay_samples = max(1, int(sr * 0.005))
+    for ch in channels:
+        n = len(ch)
+        region = min(swell_samples, n)
+        # Ring buffer for feedback delay
+        buf = [0.0] * delay_samples
+        write_pos = 0
+        for i in range(region):
+            read_pos = write_pos
+            delayed = buf[read_pos]
+            out = ch[i] + feedback * delayed
+            out = max(-1.0, min(1.0, out))
+            buf[write_pos] = out
+            write_pos = (write_pos + 1) % delay_samples
+            # Fade the effect: full at start, zero at swell_samples
+            fade = 1.0 - (i / region)
+            ch[i] = ch[i] * (1.0 - fade) + out * fade
+
+
+def rebirth_granular_scatter(channels: List[List[float]], sr: int,
+                             grain_size: float = 0.02, scatter: float = 0.3):
+    """OPAL-style granular micro-scatter.
+    Chops audio into grains and applies micro pitch/time shifts.
+    """
+    grain_samples = max(1, int(sr * grain_size))
+    rng = random.Random(42)
+    for ch in channels:
+        n = len(ch)
+        result = [0.0] * n
+        num_grains = (n + grain_samples - 1) // grain_samples
+        for g in range(num_grains):
+            start = g * grain_samples
+            end = min(start + grain_samples, n)
+            grain_len = end - start
+            if grain_len < 2:
+                result[start:end] = ch[start:end]
+                continue
+
+            # Extract grain
+            grain = ch[start:end]
+
+            # Per-grain pitch shift via resampling (scatter controls range in cents)
+            cents = rng.uniform(-scatter * 50, scatter * 50)
+            ratio = 2 ** (cents / 1200)
+            resampled = []
+            for i in range(grain_len):
+                src_idx = i * ratio
+                idx0 = int(src_idx)
+                frac = src_idx - idx0
+                if idx0 + 1 < grain_len:
+                    resampled.append(grain[idx0] * (1 - frac) + grain[idx0 + 1] * frac)
+                elif idx0 < grain_len:
+                    resampled.append(grain[idx0])
+                else:
+                    resampled.append(0.0)
+
+            # Per-grain time offset (shift placement by scatter amount)
+            offset = int(rng.uniform(-scatter * grain_samples * 0.3,
+                                     scatter * grain_samples * 0.3))
+            for i in range(grain_len):
+                dest = start + i + offset
+                if 0 <= dest < n:
+                    # Hann window for smooth overlap
+                    w = 0.5 * (1.0 - math.cos(2.0 * math.pi * i / grain_len))
+                    if i < len(resampled):
+                        result[dest] += resampled[i] * w
+
+        # Replace channel with scattered result
+        for i in range(n):
+            ch[i] = max(-1.0, min(1.0, result[i]))
+
+
+def rebirth_fold(channels: List[List[float]], sr: int,
+                 fold_point: float = 0.7):
+    """ORIGAMI-style wavefolding.
+    Folds audio at the fold point for harmonic enrichment.
+    """
+    fp = max(0.01, fold_point)
+    fp4 = 4.0 * fp
+    fp2 = 2.0 * fp
+    for ch in channels:
+        for i in range(len(ch)):
+            x = ch[i]
+            # Triangle fold: 4*|fmod(x - fp, 4*fp) - 2*fp| - fp
+            shifted = x - fp
+            # fmod that works for negative numbers
+            m = shifted - fp4 * math.floor(shifted / fp4)
+            folded = 4.0 * abs(m - fp2) - fp
+            ch[i] = max(-1.0, min(1.0, folded))
+
+
+def rebirth_spring_reverb(channels: List[List[float]], sr: int,
+                          decay: float = 0.3, brightness: float = 0.6):
+    """OVERDUB-style spring reverb impulse.
+    Short, metallic spring reverb character.
+    Schroeder reverb: 4 comb filters + 2 allpass filters.
+    """
+    # Comb filter delay times (in samples) — prime-ish for metallic character
+    comb_delays = [int(sr * t) for t in (0.0297, 0.0371, 0.0411, 0.0437)]
+    # Allpass delay times
+    ap_delays = [int(sr * t) for t in (0.005, 0.0017)]
+
+    # Comb feedback scaled by decay
+    comb_fb = 0.7 + 0.25 * decay  # range 0.7 - 0.95
+
+    for ch in channels:
+        n = len(ch)
+        dry = list(ch)
+
+        # 4 parallel comb filters
+        comb_outputs = []
+        for delay in comb_delays:
+            buf = [0.0] * max(1, delay)
+            out = [0.0] * n
+            wp = 0
+            # One-pole damping filter state
+            damp_state = 0.0
+            damp_coeff = 1.0 - brightness * 0.7  # higher brightness = less damping
+            for i in range(n):
+                delayed = buf[wp]
+                # Damping filter on feedback path
+                damp_state = delayed * (1.0 - damp_coeff) + damp_state * damp_coeff
+                buf[wp] = max(-1.0, min(1.0, ch[i] + comb_fb * damp_state))
+                out[i] = delayed
+                wp = (wp + 1) % max(1, delay)
+            comb_outputs.append(out)
+
+        # Mix comb outputs
+        wet = [0.0] * n
+        for i in range(n):
+            wet[i] = sum(c[i] for c in comb_outputs) / len(comb_outputs)
+
+        # 2 series allpass filters
+        for delay in ap_delays:
+            buf = [0.0] * max(1, delay)
+            wp = 0
+            ap_g = 0.5
+            for i in range(n):
+                delayed = buf[wp]
+                inp = wet[i]
+                buf[wp] = max(-1.0, min(1.0, inp + ap_g * delayed))
+                wet[i] = delayed - ap_g * inp
+                wp = (wp + 1) % max(1, delay)
+
+        # Mix wet back in (the wet/dry is handled by rebirth_transform, but
+        # we still apply a gentle mix here to keep levels sane)
+        for i in range(n):
+            ch[i] = max(-1.0, min(1.0, dry[i] + 0.5 * wet[i]))
+
+
+# Rebirth engine profiles — each maps to a specific combination of transforms
+REBIRTH_PROFILES = {
+    "OBESE": {
+        "transforms": [("saturate", {"drive": (0.5, 0.9), "mojo": (0.3, 0.8)})],
+        "description": "Fat saturation + analog warmth"
+    },
+    "OUROBOROS": {
+        "transforms": [
+            ("feedback_swell", {"swell_time": (0.02, 0.08), "feedback": (0.4, 0.8)}),
+            ("saturate", {"drive": (0.2, 0.5), "mojo": (0.1, 0.3)})
+        ],
+        "description": "Feedback swell on transient + light saturation"
+    },
+    "OPAL": {
+        "transforms": [("granular_scatter", {"grain_size": (0.01, 0.04), "scatter": (0.1, 0.5)})],
+        "description": "Granular micro-scatter"
+    },
+    "ORIGAMI": {
+        "transforms": [("fold", {"fold_point": (0.5, 0.9)})],
+        "description": "Wavefolding harmonic enrichment"
+    },
+    "OVERDUB": {
+        "transforms": [("spring_reverb", {"decay": (0.2, 0.5), "brightness": (0.4, 0.8)})],
+        "description": "Spring reverb character"
+    },
+}
+
+# Map transform names to functions
+_REBIRTH_TRANSFORMS = {
+    "saturate": rebirth_saturate,
+    "feedback_swell": rebirth_feedback_swell,
+    "granular_scatter": rebirth_granular_scatter,
+    "fold": rebirth_fold,
+    "spring_reverb": rebirth_spring_reverb,
+}
+
+
+def rebirth_transform(sample_info, channels: List[List[float]], sr: int,
+                       profile_name: str, rng: random.Random,
+                       intensity: float = 0.7) -> List[List[float]]:
+    """Apply a rebirth engine profile to audio channels.
+
+    1. Looks up the profile
+    2. For each transform in the profile, randomizes parameters within the specified ranges
+    3. Applies transforms in sequence
+    4. Controls wet/dry mix based on intensity (0.0 = original, 1.0 = fully processed)
+    """
+    profile = REBIRTH_PROFILES.get(profile_name)
+    if profile is None:
+        raise ValueError(f"Unknown rebirth profile: {profile_name}. "
+                         f"Available: {', '.join(sorted(REBIRTH_PROFILES.keys()))}")
+
+    # Keep dry copy for wet/dry blend
+    dry = [list(ch) for ch in channels]
+    # Work on a copy for wet processing
+    wet = [list(ch) for ch in channels]
+
+    for transform_name, param_ranges in profile["transforms"]:
+        func = _REBIRTH_TRANSFORMS.get(transform_name)
+        if func is None:
+            raise ValueError(f"Unknown rebirth transform: {transform_name}")
+
+        # Randomize parameters within specified ranges
+        params = {}
+        for param_name, (lo, hi) in param_ranges.items():
+            params[param_name] = rng.uniform(lo, hi)
+
+        func(wet, sr, **params)
+
+    # Wet/dry blend based on intensity
+    n = len(channels[0])
+    for ch_idx in range(len(channels)):
+        for i in range(n):
+            channels[ch_idx][i] = dry[ch_idx][i] * (1.0 - intensity) + wet[ch_idx][i] * intensity
+
+    return channels
+
+
 def remove_dc_offset(channels: List[List[float]]):
     """Remove DC offset from each channel."""
     for ch in channels:
