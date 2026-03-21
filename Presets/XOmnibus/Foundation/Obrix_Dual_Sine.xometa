@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Dual Sine",
+  "name": "Octave Colony",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Two sines an octave apart. Pure harmonic simplicity.",
+  "description": "Two Shells one octave apart — the Constructive Collision at its quietest. The upper voice blooms with velocity; the lower holds the floor. A small colony, already breathing.",
   "tags": [
     "sine",
     "octave",

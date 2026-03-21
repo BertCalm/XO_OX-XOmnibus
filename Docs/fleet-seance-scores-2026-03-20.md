@@ -70,6 +70,7 @@ Scores reflect the **most authoritative / most recent** verdict for each engine:
 | ORCA (post-fix) | 8.6 est. | D001 FAIL + D006 PARTIAL + AudioToRing resolved commit 2035aa0 | 2026-03-19 | `Docs/seances/orca_seance_verdict.md` |
 | OUTWIT (re-seance) | 8.7/10 | Step rate ceiling 40 Hz (audio-rate CA territory blocked); pitch wheel unhandled; mono Den reverb | 2026-03-20 | `Docs/seances/outwit_seance_verdict.md` |
 | OSTINATO (latest) | 8.7/10 | See OSTINATO re-seance above | 2026-03-20 | `Docs/seances/ostinato_seance_verdict.md` |
+| OWARE | 8.7/10 | LFO2 computed but not applied (3 dead params); filter envelope decay hardcoded 300ms for all materials; sympathetic 50 Hz window pitch-invariant (consistency gap) | 2026-03-21 | `Docs/seance-oware-verdict.md` |
 
 ### Non-Numeric Verdict Engines (all approved, no score assigned)
 
@@ -97,7 +98,7 @@ Neither appears in the fleet table above. Seance status:
 | Engine | Seance Status | Notes |
 |--------|--------------|-------|
 | OXBOW | **NOT SEANCED** (as of 2026-03-20) | Entangled reverb synth; 150 presets; seance pending |
-| OWARE | **NOT SEANCED** (as of 2026-03-20) | Tuned percussion; 22 params; see `Docs/seances/oware-seance-2026-03-21.md` for 2026-03-21 verdict |
+| OWARE | **SEANCED 2026-03-21** — Score: **8.7/10** | Conditionally Blessed. 120 presets, 4 Blessing candidates (Chaigne Mallet Stack, Living Tuning Grid, Sympathetic Network, Buzz Membrane). LFO2 not applied (3 dead params). Fix R1+R2 → 9.2/10. See `Docs/seance-oware-verdict.md` |
 
 ---
 
@@ -165,6 +166,7 @@ Neither appears in the fleet table above. Seance status:
 | 3 | ORCA (post-fix) | 8.6 est. | LFO2 default depth 0.0; chromaFilter morph (resolved separately) | 2026-03-19 |
 | 4 | OUTWIT (re-seance) | 8.7/10 | Step rate ceiling 40 Hz blocks audio-rate CA synthesis; pitch wheel unhandled | 2026-03-20 |
 | 5 | OSTINATO (re-seance) | 8.7/10 | Humanization deterministic (fastSin hash repeats); mono Schroeder reverb | 2026-03-20 |
+| 6 | OWARE | 8.7/10 | LFO2 computed but not applied (3 dead params); filter envelope decay hardcoded; 50 Hz sympathetic window pitch-invariant | 2026-03-21 |
 
 ---
 

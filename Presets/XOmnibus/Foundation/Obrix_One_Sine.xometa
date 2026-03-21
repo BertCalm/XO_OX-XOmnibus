@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "One Sine",
+  "name": "Single Polyp",
   "mood": "Foundation",
   "engines": [
     "Obrix"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A single sine wave. The simplest sound. The starting brick.",
+  "description": "One Shell, one Current, no Coral. A single sine polyp — the smallest living unit of the reef. From here, every other preset grows.",
   "tags": [
     "lesson",
     "sine",
