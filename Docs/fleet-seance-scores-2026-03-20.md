@@ -9,14 +9,14 @@
 
 | Metric | Value |
 |--------|-------|
-| Total engines registered | 44 (42 at time of this audit; OXBOW + OWARE added 2026-03-20, not yet seanced) |
-| Engines with formal numeric score | 35 |
+| Total engines registered | 44 (42 at time of this audit; OXBOW seanced 2026-03-20 post-fix; OWARE seanced 2026-03-21) |
+| Engines with formal numeric score | 37 |
 | Engines with non-numeric verdict only | 7 (OBSCURA, OPTIC, ORBITAL, ORGANON, OVERBITE, OSPREY, OSTERIA — all approved) |
 | Engines with NO seance of any kind | 0 |
 | Score range (numeric) | 5.9 → 8.7 |
-| Median score (numeric, post-recovery) | ~7.8 |
+| Median score (numeric, post-recovery) | ~7.9 |
 
-> NOTE: All 42 engines covered by this audit have been through at least one seance. OXBOW and OWARE (engines 43 and 44, both added 2026-03-20) are NOT covered here — they were registered after this document was written. Their seances are pending. The "UNRATED" classification does not apply to the 42 engines surveyed here — seven have non-numeric verdicts (see Section 4). Those engines are treated as "approval-class" and noted separately.
+> NOTE: All 44 engines have now been through at least one seance. OXBOW (engine 43) was seanced 2026-03-20 (score 9.0 post-fix). OWARE (engine 44) was seanced 2026-03-21 (score 8.7/10, verdict: Conditionally Blessed, `Docs/seance-oware-verdict.md`). Both are now included in the tables below. Update applied 2026-03-21.
 
 ---
 
