@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Drowned Bell",
+  "mood": "Submerged",
+  "engines": ["Opaline"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Porcelain cups half-filled with water — the liquid loading shifts mode frequencies down and darkens the ring. Long sustain pedal engaged. High fragility: the water also weakens the porcelain. Each bell can shatter. Each note costs something.",
+  "tags": ["porcelain", "bell", "submerged", "dark", "fragile", "water", "cups", "opaline"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.2,
+    "density": 0.4,
+    "space": 0.65,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Opaline": {
+      "opal2_instrument": 3,
+      "opal2_fragility": 0.55,
+      "opal2_hammerHardness": 0.3,
+      "opal2_brightness": 5000.0,
+      "opal2_damping": 0.3,
+      "opal2_decay": 5.5,
+      "opal2_bodySize": 0.4,
+      "opal2_inharmonicity": 0.15,
+      "opal2_shimmerAmount": 0.2,
+      "opal2_thermalShock": 0.35,
+      "opal2_hfNoise": 0.2,
+      "opal2_filterEnvAmount": 0.4,
+      "opal2_crystalDrive": 0.05,
+      "opal2_sustainPedal": 1.0,
+      "opal2_bendRange": 2.0,
+      "opal2_macroCharacter": 0.0,
+      "opal2_macroMovement": 0.2,
+      "opal2_macroCoupling": 0.25,
+      "opal2_macroSpace": 0.3,
+      "opal2_lfo1Rate": 0.06,
+      "opal2_lfo1Depth": 0.08,
+      "opal2_lfo1Shape": 0,
+      "opal2_lfo2Rate": 0.1,
+      "opal2_lfo2Depth": 0.1,
+      "opal2_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

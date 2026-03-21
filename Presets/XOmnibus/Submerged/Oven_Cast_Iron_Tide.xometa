@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Cast Iron Tide",
+  "mood": "Submerged",
+  "engines": ["Oven"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The iron grand half-submerged in tidal water. Low brightness, high sympathetic resonance — the water couples the strings. Very long bloom time: the iron heats slowly through cold water. Notes arrive like waves, sustain through tidal cycles.",
+  "tags": ["piano", "cast iron", "submerged", "tide", "slow", "dark", "sustain", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.6,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oven": {
+      "oven_brightness": 1800.0,
+      "oven_bodyResonance": 0.85,
+      "oven_hfAmount": 0.1,
+      "oven_hardness": 0.25,
+      "oven_density": 0.8,
+      "oven_temperature": 0.3,
+      "oven_sympathetic": 0.85,
+      "oven_bloomTime": 0.6,
+      "oven_sustainTime": 12.0,
+      "oven_filterEnvAmt": 0.2,
+      "oven_ampAttack": 0.001,
+      "oven_ampDecay": 7.0,
+      "oven_ampSustain": 0.55,
+      "oven_ampRelease": 5.5,
+      "oven_bendRange": 2.0,
+      "oven_macroCharacter": 0.0,
+      "oven_macroMovement": 0.25,
+      "oven_macroCoupling": 0.0,
+      "oven_macroSpace": 0.6,
+      "oven_lfo1Rate": 0.02,
+      "oven_lfo1Depth": 0.04,
+      "oven_lfo1Shape": 0,
+      "oven_lfo2Rate": 0.015,
+      "oven_lfo2Depth": 0.04,
+      "oven_lfo2Shape": 1,
+      "oven_competition": 0.0,
+      "oven_couplingResonance": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

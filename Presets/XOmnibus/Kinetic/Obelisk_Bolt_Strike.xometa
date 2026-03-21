@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Bolt Strike",
+  "mood": "Kinetic",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum hardness, bolt preparation at position 0.33 — every third mode eliminated. The stone monolith struck with a metal hammer: percussive, sharp, aggressive. The bolt rattle cuts through below. Not for quiet rooms.",
+  "tags": ["stone", "percussive", "bolt", "kinetic", "aggressive", "prepared", "transient", "marble"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.15,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.2,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.5,
+      "obel_stoneTone": 0.3,
+      "obel_brightness": 9000.0,
+      "obel_damping": 0.1,
+      "obel_decay": 1.5,
+      "obel_hfNoise": 0.5,
+      "obel_hardness": 0.9,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.33,
+      "obel_prepDepth": 0.7,
+      "obel_filterEnvAmount": 0.6,
+      "obel_thermalDrift": 0.05,
+      "obel_bendRange": 2,
+      "obel_macroCoupling": 0.0,
+      "obel_macroSpace": 0.3,
+      "obel_lfo1Rate": 0.5,
+      "obel_lfo1Depth": 0.15,
+      "obel_lfo1Shape": 2,
+      "obel_lfo2Rate": 0.8,
+      "obel_lfo2Depth": 0.2,
+      "obel_lfo2Shape": 2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

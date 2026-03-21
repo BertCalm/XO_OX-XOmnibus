@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Copper Bloom",
+  "mood": "Organic",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Caramel saturation animated by slow LFO2 — the sweetness breathes in and out like biological respiration. Medium conductivity, generous body bloom. The copper upright as a living, breathing thing that transforms your touch into something sweeter than you intended.",
+  "tags": ["piano", "copper", "breathing", "organic", "caramel", "warm", "saturation", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.8,
+    "movement": 0.45,
+    "density": 0.4,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.55,
+      "ochre_hardness": 0.45,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.5,
+      "ochre_brightness": 8500.0,
+      "ochre_damping": 0.25,
+      "ochre_decay": 2.2,
+      "ochre_caramel": 0.4,
+      "ochre_sympathy": 0.35,
+      "ochre_hfCharacter": 0.2,
+      "ochre_thermalDrift": 0.35,
+      "ochre_filterEnvAmount": 0.45,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.15,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.08,
+      "ochre_lfo2Depth": 0.3,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

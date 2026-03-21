@@ -635,8 +635,13 @@ public:
         float scaledDecay = pAmpDecay * sustainScale;
         float scaledRelease = pAmpRelease * (0.5f + sustainScale * 0.5f);
 
-        // Competition stub: adversarial coupling for Kitchen quad
-        // When competition > 0, the output is gently saturated (cast iron under stress)
+        // ADVERSARIAL COUPLING PREP STUBS — Kitchen Quad V2 targets.
+        // competition: cast iron's massive acoustic impedance (36.72 MRayl) under duress.
+        //   At max, output saturation = cast iron piano suppressing smaller instruments.
+        //   V2 target: cross-engine amplitude competition (XOven suppresses weaker bodies).
+        // couplingResonance: sympathetic drive boost when coupled to another Kitchen engine.
+        //   V2 target: impedance-transmission coupling (T = 4*Z1*Z2/(Z1+Z2)^2) per engine pair.
+        // Both parameters produce audible DSP output now; behaviour will deepen in V2.
         float competitionLevel = loadP (paramCompetition, 0.0f);
         float couplingResLevel = loadP (paramCouplingRes, 0.0f);
 

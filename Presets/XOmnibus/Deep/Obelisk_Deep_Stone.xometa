@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Deep Stone",
+  "mood": "Deep",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum density, minimum brightness. The monolith buried nine-tenths underground — only the top visible. What you hear is the resonance of millions of tons of compressed stone, filtered through earth. Chain preparation at half depth: something buzzing in the dark below.",
+  "tags": ["stone", "deep", "dark", "chain", "dense", "resonant", "mineral", "underground"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.2,
+    "movement": 0.1,
+    "density": 0.9,
+    "space": 0.35,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.95,
+      "obel_stoneTone": 0.15,
+      "obel_brightness": 2000.0,
+      "obel_damping": 0.08,
+      "obel_decay": 8.0,
+      "obel_hfNoise": 0.08,
+      "obel_hardness": 0.35,
+      "obel_prepType": 4,
+      "obel_prepPosition": 0.6,
+      "obel_prepDepth": 0.5,
+      "obel_filterEnvAmount": 0.2,
+      "obel_thermalDrift": 0.05,
+      "obel_bendRange": 2,
+      "obel_macroCoupling": 0.0,
+      "obel_macroSpace": 0.15,
+      "obel_lfo1Rate": 0.02,
+      "obel_lfo1Depth": 0.04,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.04,
+      "obel_lfo2Depth": 0.08,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

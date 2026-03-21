@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Living Preparation",
+  "mood": "Organic",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO2 animates preparation depth — the rubber mute breathes in and out of contact with the strings. The stone is not static: it is being prepared and unprepared in slow cycles, like a tide placing and removing objects. Cage called this duration.",
+  "tags": ["stone", "prepared", "organic", "breathing", "rubber", "evolving", "kinetic", "cage"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.25,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.4,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.6,
+      "obel_stoneTone": 0.45,
+      "obel_brightness": 5500.0,
+      "obel_damping": 0.25,
+      "obel_decay": 3.5,
+      "obel_hfNoise": 0.2,
+      "obel_hardness": 0.5,
+      "obel_prepType": 2,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.3,
+      "obel_filterEnvAmount": 0.35,
+      "obel_thermalDrift": 0.2,
+      "obel_bendRange": 2,
+      "obel_macroCoupling": 0.0,
+      "obel_macroSpace": 0.3,
+      "obel_lfo1Rate": 0.08,
+      "obel_lfo1Depth": 0.1,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.06,
+      "obel_lfo2Depth": 0.4,
+      "obel_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
+}

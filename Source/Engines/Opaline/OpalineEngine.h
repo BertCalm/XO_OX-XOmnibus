@@ -496,7 +496,11 @@ public:
                                             + aftertouchAmount * 0.4f, 0.0f, 1.0f);
         float effectiveBright = std::clamp (pBrightness + macroCharacter * 4000.0f
                                             + modWheelAmount * 5000.0f + couplingFilterMod, 200.0f, 20000.0f);
-        float effectiveFragility = std::clamp (pFragility + macroMovement * 0.3f, 0.0f, 1.0f);
+        // COUPLING macro → fragility: the more coupled, the more breakable.
+        // Physics: coupling to a neighboring engine transmits additional energy through
+        // the glass/porcelain body, lowering the effective crack threshold. At max coupling,
+        // even moderate velocity will crack the sound. D004: macroCoupling now affects audio.
+        float effectiveFragility = std::clamp (pFragility + macroMovement * 0.3f + macroCoupling * 0.4f, 0.0f, 1.0f);
         float effectiveShimmer = std::clamp (pShimmer + macroSpace * 0.4f, 0.0f, 1.0f);
 
         smoothFragility.set (effectiveFragility);

@@ -657,11 +657,17 @@ public:
         // Apply macros + expression + coupling
         float effectiveDensity = std::clamp (pDensity + macroStone * 0.5f, 0.0f, 1.0f);
         float effectiveHardness = std::clamp (pHardness + aftertouchAmount * 0.4f, 0.0f, 1.0f);
-        float effectivePrepDepth = std::clamp (pPrepDepth + macroPrep * 0.6f + couplingPrepMod, 0.0f, 1.0f);
+        // COUPLING macro → preparation depth (conceptually: coupling a neighboring engine
+        // changes what is inserted into the stone — the more coupled, the deeper the prep).
+        // D004: macroCoupling now modulates effectivePrepDepth.
+        float effectivePrepDepth = std::clamp (pPrepDepth + macroPrep * 0.6f + macroCoupling * 0.4f + couplingPrepMod, 0.0f, 1.0f);
         float effectiveBright = std::clamp (pBrightness + macroStone * 3000.0f
                                             + aftertouchAmount * 2000.0f + couplingFilterMod, 200.0f, 20000.0f);
         // D006: mod wheel → stone tone (cold ↔ warm axis)
         float effectiveStoneTone = std::clamp (pStoneTone + modWheelAmount * 0.5f, 0.0f, 1.0f);
+        // SPACE macro → HF noise amount (more space = more air and transient dust in the attack).
+        // D004: macroSpace now modulates effectiveHFNoise.
+        float effectiveHFNoise = std::clamp (pHFNoiseAmt + macroSpace * 0.5f, 0.0f, 1.0f);
 
         smoothDensity.set (effectiveDensity);
         smoothHardness.set (effectiveHardness);
@@ -826,13 +832,14 @@ public:
                 // HF noise for stone radiation character
                 // Stone radiates noise at impact that sits above the modal frequencies
                 // This gives the "crack" and "mineral dust" character
-                if (pHFNoiseAmt > 0.001f && voice.hammer.active)
+                // effectiveHFNoise includes macroSpace contribution (D004 fix).
+                if (effectiveHFNoise > 0.001f && voice.hammer.active)
                 {
                     voice.noiseState = voice.noiseState * 1664525u + 1013904223u;
                     float noise = (static_cast<float> (voice.noiseState & 0xFFFF) / 32768.0f - 1.0f);
                     // Shape the noise into the stone's HF radiation band
                     float hfNoise = voice.hfNoiseSVF.processSample (noise * voice.velocity);
-                    resonanceSum += hfNoise * pHFNoiseAmt * 0.3f;
+                    resonanceSum += hfNoise * effectiveHFNoise * 0.3f;
                 }
 
                 // Amplitude envelope: stone has long natural decay

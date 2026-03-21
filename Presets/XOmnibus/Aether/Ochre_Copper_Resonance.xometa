@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Copper Resonance",
+  "mood": "Aether",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum sympathetic resonance with long decay. The copper upright left to ring in an empty room — each note feeds the next through the sympathetic string network. Play slowly and let the harmonics accumulate.",
+  "tags": ["piano", "copper", "resonance", "sustained", "aether", "sympathetic", "meditative"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.4,
+      "ochre_hardness": 0.25,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.65,
+      "ochre_brightness": 6500.0,
+      "ochre_damping": 0.15,
+      "ochre_decay": 5.5,
+      "ochre_caramel": 0.2,
+      "ochre_sympathy": 0.75,
+      "ochre_hfCharacter": 0.15,
+      "ochre_thermalDrift": 0.3,
+      "ochre_filterEnvAmount": 0.25,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.04,
+      "ochre_lfo1Depth": 0.08,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.06,
+      "ochre_lfo2Depth": 0.18,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -721,10 +721,18 @@ public:
 
                 float output = filtered * voice.ampLevel;
 
-                // LFO2 → subtle pitch modulation (copper vibrato — intimate)
-                // Applied as micro-detuning via pan position modulation
-                // to create the "breathing" quality of an upright in a room
-                (void) lfo2Val;  // Reserved for future V2 features
+                // LFO2 → caramel saturation amount (breathing warmth)
+                // Copper thermal conductivity makes the caramel sweetness animate
+                // in and out — like heat fluctuating in the saucepan, the saturation
+                // character breathes. lfo2Val range +-lfo2Depth, mapped to +-0.35 caramel.
+                // D004: this wire makes LFO2 audible at any non-zero depth setting.
+                if (lfo2Val != 0.0f && caramelNow > 0.001f)
+                {
+                    float animatedCaramel = std::clamp (caramelNow + lfo2Val * 0.35f, 0.0f, 1.0f);
+                    float driven2 = output * (1.0f + animatedCaramel * 6.0f);
+                    output = output * (1.0f - animatedCaramel * 0.4f)
+                           + fastTanh (driven2) * animatedCaramel * 0.4f;
+                }
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;

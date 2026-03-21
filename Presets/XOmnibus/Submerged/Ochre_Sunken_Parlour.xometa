@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Sunken Parlour",
+  "mood": "Submerged",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A parlour piano heard through water. Low brightness, long decay, body resonance dominant. The copper frame oxidized green-blue in salt air. Dark mid-register character — nothing above 3kHz survives the immersion.",
+  "tags": ["piano", "copper", "dark", "underwater", "submerged", "mid", "ballad", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.35,
+      "ochre_hardness": 0.3,
+      "ochre_bodyType": 1,
+      "ochre_bodyDepth": 0.7,
+      "ochre_brightness": 2800.0,
+      "ochre_damping": 0.35,
+      "ochre_decay": 3.5,
+      "ochre_caramel": 0.35,
+      "ochre_sympathy": 0.4,
+      "ochre_hfCharacter": 0.1,
+      "ochre_thermalDrift": 0.25,
+      "ochre_filterEnvAmount": 0.3,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.08,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.05,
+      "ochre_lfo2Depth": 0.22,
+      "ochre_lfo2Shape": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
