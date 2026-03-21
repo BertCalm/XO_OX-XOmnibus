@@ -1,0 +1,38 @@
+{
+    "schema_version": 1,
+    "name": "Conga Slap",
+    "mood": "Foundation",
+    "engines": ["Onset"],
+    "author": "XO_OX Designs",
+    "version": "1.0.0",
+    "description": "Live Kit. Hand-on-skin articulation — the bright slap that accents without overwhelming.",
+    "tags": ["conga", "boom-bap", "slap", "hand-percussion", "live-kit", "bright"],
+    "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
+    "couplingIntensity": "None",
+    "tempo": null,
+    "dna": {
+        "brightness": 0.55, "warmth": 0.55, "movement": 0.18,
+        "density": 0.48, "space": 0.08, "aggression": 0.48
+    },
+    "parameters": {
+        "Onset": {
+            "perc_macro_machine": 0.30, "perc_macro_punch": 0.62,
+            "perc_macro_space": 0.07, "perc_macro_mutate": 0.06,
+            "perc_drive": 0.42, "perc_level": 0.80, "perc_masterTone": 0.56,
+            "perc_char_grit": 0.20, "perc_char_warmth": 0.58,
+            "perc_fx_reverb_size": 0.14, "perc_fx_reverb_decay": 0.16,
+            "perc_fx_reverb_mix": 0.04,
+            "perc_fx_delay_time": 0.3, "perc_fx_delay_feedback": 0.1,
+            "perc_fx_delay_mix": 0.02,
+            "perc_fx_lofi_bits": 14, "perc_fx_lofi_mix": 0.08,
+            "perc_xvc_global_amount": 0.09,
+            "perc_xvc_kick_to_snare_filter": 0.10,
+            "perc_xvc_kick_to_tom_pitch": 0.14,
+            "perc_xvc_snare_to_hat_decay": 0.10,
+            "perc_xvc_snare_to_perc_blend": 0.09,
+            "perc_xvc_hat_choke": 0.15
+        }
+    },
+    "macros": {"MACHINE": 0.30, "PUNCH": 0.62, "SPACE": 0.07, "MUTATE": 0.06},
+    "coupling": {"pairs": []}
+}

@@ -1,0 +1,38 @@
+{
+    "schema_version": 1,
+    "name": "Finger Snap",
+    "mood": "Foundation",
+    "engines": ["Onset"],
+    "author": "XO_OX Designs",
+    "version": "1.0.0",
+    "description": "Crates Kit. Intimate close-mic snap — small in size, big in pocket, sitting right between the beats.",
+    "tags": ["snap", "boom-bap", "finger-snap", "intimate", "crates-kit", "dry"],
+    "macroLabels": ["MACHINE", "PUNCH", "SPACE", "MUTATE"],
+    "couplingIntensity": "None",
+    "tempo": null,
+    "dna": {
+        "brightness": 0.48, "warmth": 0.55, "movement": 0.06,
+        "density": 0.38, "space": 0.06, "aggression": 0.38
+    },
+    "parameters": {
+        "Onset": {
+            "perc_macro_machine": 0.30, "perc_macro_punch": 0.55,
+            "perc_macro_space": 0.05, "perc_macro_mutate": 0.04,
+            "perc_drive": 0.36, "perc_level": 0.78, "perc_masterTone": 0.50,
+            "perc_char_grit": 0.28, "perc_char_warmth": 0.58,
+            "perc_fx_reverb_size": 0.10, "perc_fx_reverb_decay": 0.12,
+            "perc_fx_reverb_mix": 0.02,
+            "perc_fx_delay_time": 0.3, "perc_fx_delay_feedback": 0.1,
+            "perc_fx_delay_mix": 0.01,
+            "perc_fx_lofi_bits": 12, "perc_fx_lofi_mix": 0.16,
+            "perc_xvc_global_amount": 0.07,
+            "perc_xvc_kick_to_snare_filter": 0.09,
+            "perc_xvc_kick_to_tom_pitch": 0.10,
+            "perc_xvc_snare_to_hat_decay": 0.08,
+            "perc_xvc_snare_to_perc_blend": 0.07,
+            "perc_xvc_hat_choke": 0.15
+        }
+    },
+    "macros": {"MACHINE": 0.30, "PUNCH": 0.55, "SPACE": 0.05, "MUTATE": 0.04},
+    "coupling": {"pairs": []}
+}
