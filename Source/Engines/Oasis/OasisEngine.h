@@ -242,6 +242,15 @@ struct RhodesPickupModel
 //==============================================================================
 struct RhodesAmpStage
 {
+    void prepare (float sampleRate) noexcept
+    {
+        // DC blocker coefficient derived from sample rate (target cutoff ~5 Hz).
+        // At 44100 Hz: 2*pi*5/44100 ≈ 0.000713 — vs hardcoded 0.0001 (was too slow at 96kHz).
+        // Using a leaky integrator: coeff = 2*pi*fc/sr, approximating a 1-pole HP.
+        dcCoeff = 2.0f * 3.14159265f * 5.0f / std::max (sampleRate, 1.0f);
+        dcCoeff = std::clamp (dcCoeff, 0.00001f, 0.01f);
+    }
+
     float process (float input, float warmth, float velocity) noexcept
     {
         // Drive amount scales with both warmth param and velocity
@@ -260,8 +269,9 @@ struct RhodesAmpStage
         // Mix clean and driven based on warmth
         float out = input * (1.0f - warmth * 0.6f) + asymmetric * warmth * 0.6f;
 
-        // Slight DC offset from asymmetric clipping — remove it
-        dcBlock += 0.0001f * (out - dcBlock);
+        // Slight DC offset from asymmetric clipping — remove it.
+        // dcCoeff is derived from sampleRate in prepare() — not hardcoded.
+        dcBlock += dcCoeff * (out - dcBlock);
         out -= dcBlock;
 
         return out;
@@ -270,6 +280,7 @@ struct RhodesAmpStage
     void reset() noexcept { dcBlock = 0.0f; }
 
     float dcBlock = 0.0f;
+    float dcCoeff = 0.000713f;  // default for 44100 Hz (2*pi*5/44100); updated in prepare()
 };
 
 //==============================================================================
@@ -375,6 +386,7 @@ public:
         {
             voices[i].reset();
             voices[i].tine.prepare (srf);
+            voices[i].amp.prepare (srf);   // DC blocker coefficient derived from sampleRate
             voices[i].ampEnv.prepare (srf);
             voices[i].filterEnv.prepare (srf);
             voices[i].tremoloLFO.setShape (StandardLFO::Sine);
@@ -618,6 +630,7 @@ public:
         v.tine.prepare (srf);
         v.tine.trigger (vel, bell);
         v.pickup.reset();
+        v.amp.prepare (srf);  // ensure DC blocker coefficient is current for this sample rate
         v.amp.reset();
 
         // Amp envelope — Rhodes has fast attack, velocity-sensitive decay

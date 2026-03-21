@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Trench Column",
+  "mood": "Aether",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fathom pressure compressor with deep low gain (1.6) and suppressed highs (0.55) sculpts Oxbow's reverb tails into a dense hydrostatic column — the harmonic information gets pressed downward by water pressure. Mid-dominant, low-forward, fundamentally different from the uncompressed reverb signal.",
+  "tags": ["aether", "reverb", "fathom", "pressure", "trench", "deep", "fx_chain:Aquatic", "aquatic-fx-demo"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.18, "warmth": 0.82, "movement": 0.22, "density": 0.78, "space": 0.72, "aggression": 0.2},
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.68,
+      "oxb_decay": 8.5,
+      "oxb_entangle": 0.45,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.2,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 6.0,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.62,
+      "oxb_damping": 3800.0,
+      "oxb_predelay": 6.0,
+      "oxb_dryWet": 0.5,
+      "oxb_exciterDecay": 0.035,
+      "oxb_exciterBright": 0.28
+    }
+  },
+  "macros": {"ENTANGLE": 0.45, "EROSION": 0.08, "CONVERGE": 0.62, "CANTILEVER": 0.62},
+  "coupling": {"pairs": []},
+  "fx": {
+    "aqua_fathom_mix": 0.72,
+    "aqua_fathom_depth": 0.78,
+    "aqua_fathom_lowGain": 1.6,
+    "aqua_fathom_midGain": 1.15,
+    "aqua_fathom_highGain": 0.55,
+    "aqua_fathom_lowXover": 180.0,
+    "aqua_fathom_highXover": 2800.0,
+    "aqua_fathom_character": 0.22,
+    "aqua_reef_mix": 0.0,
+    "aqua_drift_mix": 0.0,
+    "aqua_tide_mix": 0.0
+  }
+}

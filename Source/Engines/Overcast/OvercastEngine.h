@@ -374,8 +374,11 @@ public:
         // Coupling
         pFilterCut = clamp (pFilterCut + extFilterMod, 50.0f, 16000.0f);
 
-        // BROTH: dark spectral mass = dark ice
-        // (Affects crystal amplitudes — handled in noteOn, but we track it)
+        // BROTH: brothSpectralMass affects crystal brightness.
+        // Low spectralMass (reduced broth) = dark ice — reduce upper harmonic amplitudes.
+        // Crystal seeds from a depleted broth produce fewer, darker nucleation sites.
+        // Applied as a per-voice amplitude ceiling on peaks above the first (fundamental).
+        float brothDarkness = 1.0f - brothSpectralMass;  // 0=fresh/bright, 1=dark/spent
 
         lfo1.setRate (pLfo1Rate, srF);
         lfo2.setRate (pLfo2Rate, srF);
@@ -387,11 +390,30 @@ public:
         const float inverseSr = 1.0f / srF;
         const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
+        // Determine if ANY voice is still crystallizing (not yet fully frozen).
+        // LFOs are only active during crystallization — frozen = no evolution (concept).
+        bool anyCrystallizing = false;
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (voices[v].active && !voices[v].crystal.isFrozen)
+            {
+                anyCrystallizing = true;
+                break;
+            }
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
-            float lfo1Val = lfo1.process();
-            float lfo2Val = lfo2.process();
-            float breathVal = breathLfo.process();
+            // Gate LFOs: advance state but output 0 when fully frozen.
+            // Always advance to maintain phase continuity for the next crystallization event.
+            // Frozen state output = 0 (no evolution = no modulation = CPU-equivalent to zero).
+            float lfo1Raw = lfo1.process();
+            float lfo2Raw = lfo2.process();
+            float breathRaw = breathLfo.process();
+            // Only apply LFO output during crystallization (frozen = no movement, per concept)
+            float lfo1Val   = anyCrystallizing ? lfo1Raw   : 0.0f;
+            float lfo2Val   = anyCrystallizing ? lfo2Raw   : 0.0f;
+            float breathVal = anyCrystallizing ? breathRaw : 0.0f;
 
             float sampleL = 0.0f;
             float sampleR = 0.0f;
@@ -479,6 +501,13 @@ public:
 
                     float sine = fastSin (crystal.peakPhases[p] * 6.28318530718f);
                     float amp = crystal.peakAmps[p];
+
+                    // BROTH cooperative coupling: brothSpectralMass affects crystal darkness.
+                    // Reduced broth = depleted spectral energy = darker ice crystals.
+                    // Higher harmonics (p > 0) are attenuated more by darkness.
+                    // Peak 0 (fundamental) is fully preserved even in depleted broth.
+                    if (p > 0)
+                        amp *= (1.0f - brothDarkness * 0.5f * (static_cast<float> (p) / crystal.numPeaks));
 
                     float progress = crystal.crystalProgress[p];
 

@@ -291,6 +291,22 @@ public:
         fp.temperature = fp.rmsLevel;
         fp.harmonicDensity = 0.7f;    // Less harmonic than Rhodes (reed warble)
         fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
+
+        // attackTransience: measure of current attack energy across voices.
+        // Oddfellow has fast, gritty attacks (hammer strike on reed).
+        // A voice in early attack (ampEnv level < 0.5 AND active) represents high transience.
+        float attackEnergy = 0.0f;
+        for (int i = 0; i < kMaxVoices; ++i)
+        {
+            const auto& v = voices[i];
+            if (!v.active) continue;
+            float level = v.ampEnv.getLevel();
+            // Early attack: high energy, fading as level rises past 0.3
+            if (level < 0.3f)
+                attackEnergy += (0.3f - level) / 0.3f * v.velocity;
+        }
+        fp.attackTransience = std::min (attackEnergy, 1.0f);
+
         return fp;
     }
 
@@ -307,6 +323,9 @@ public:
             voices[i].filterEnv.prepare (srf);
             voices[i].tremoloLFO.setShape (StandardLFO::Sine);
             voices[i].tremoloLFO.reset (static_cast<float>(i) / static_cast<float>(kMaxVoices));
+            // Per-voice warble phase offset: spread across 0..1 so voices don't warble in unison.
+            // This is the fix for monophonic warble — each voice starts at a different phase.
+            voices[i].reed.warblePhase = static_cast<float>(i) / static_cast<float>(kMaxVoices);
         }
 
         smoothReed.prepare (srf);
@@ -532,6 +551,13 @@ public:
 
         v.reed.prepare (srf);
         v.reed.trigger (vel, reedStiffness);
+        // Per-note warble phase randomization — prevents all voices warbling in unison.
+        // Each note-on gets a unique phase offset derived from note+voice index.
+        {
+            uint32_t seed = static_cast<uint32_t> (note * 5003u + idx * 7919u + voiceCounter * 1013u);
+            seed ^= seed >> 13; seed ^= seed << 17; seed ^= seed >> 5;
+            v.reed.warblePhase = static_cast<float> (seed & 0xFFFF) / 65536.0f;
+        }
         v.preamp.reset();
 
         // Amp envelope

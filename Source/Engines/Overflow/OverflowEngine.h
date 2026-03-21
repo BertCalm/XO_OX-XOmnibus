@@ -174,6 +174,11 @@ public:
         lfo2.reset();
         breathLfo.setRate (0.009f, srF);
 
+        // Pressure decay: matched-Z per-sample coefficient derived from sample rate.
+        // Time constant ~2.27 sec (tau = 100000 samples at 44100 Hz).
+        // exp(-1/tau_samples) = exp(-sampleRate / (100000 * 44100)) ≈ 1 - sampleRate/4.41e9.
+        pressureDecayCoeff = std::exp (-static_cast<float> (sampleRate) / (100000.0f * 44100.0f));
+
         pressureState.reset();
         noteCounter = 0;
 
@@ -336,8 +341,9 @@ public:
             // === UPDATE PRESSURE STATE ===
             pressureState.pressure = clamp (pressureState.pressure + pressurePerSample, 0.0f, 2.0f);
 
-            // Natural pressure decay (slow bleed)
-            pressureState.pressure *= (1.0f - 0.00001f * inverseSr * 44100.0f);
+            // Natural pressure decay (slow bleed) — sample-rate agnostic.
+            // pressureDecayCoeff precomputed from sampleRate in prepare() (no hardcoded 44100).
+            pressureState.pressure *= pressureDecayCoeff;
             pressureState.pressure = flushDenormal (pressureState.pressure);
 
             // Strain level: 0 at pressure=0, 1 at threshold
@@ -763,6 +769,9 @@ private:
     double sr = 44100.0;
     float srF = 44100.0f;
     int blockSize = 512;
+    // Pressure decay coefficient per sample — precomputed from sampleRate in prepare().
+    // Target time constant: ~2.27 seconds (same as 0.00001 per sample at 44100 Hz).
+    float pressureDecayCoeff = 0.99999f;  // default for 44100 Hz
 
     OverflowVoice voices[kMaxVoices];
     uint64_t noteCounter = 0;

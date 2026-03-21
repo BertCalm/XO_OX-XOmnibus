@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Grotto",
+  "mood": "Atmosphere",
+  "engines": ["Oxbow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oxbow's Chiasmus FDN feeds into the Reef stage to create a double-reverb cave — two entangled reflection networks whose seams are audible as ghost echoes in the mid-range. The Reef predelay at 24ms creates a physical space impression the engine reverb alone cannot shape.",
+  "tags": ["atmosphere", "reverb", "entangled", "cave", "reflection", "fx_chain:Aquatic", "aquatic-fx-demo"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.32, "warmth": 0.72, "movement": 0.28, "density": 0.62, "space": 0.92, "aggression": 0.1},
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 6.8,
+      "oxb_entangle": 0.72,
+      "oxb_erosionRate": 0.15,
+      "oxb_erosionDepth": 0.35,
+      "oxb_convergence": 5.0,
+      "oxb_resonanceQ": 4.5,
+      "oxb_resonanceMix": 0.22,
+      "oxb_cantilever": 0.48,
+      "oxb_damping": 4200.0,
+      "oxb_predelay": 4.0,
+      "oxb_dryWet": 0.35,
+      "oxb_exciterDecay": 0.045,
+      "oxb_exciterBright": 0.38
+    }
+  },
+  "macros": {"ENTANGLE": 0.72, "EROSION": 0.15, "CONVERGE": 0.48, "CANTILEVER": 0.48},
+  "coupling": {"pairs": []},
+  "fx": {
+    "aqua_reef_mix": 0.58,
+    "aqua_reef_size": 0.72,
+    "aqua_reef_decay": 0.62,
+    "aqua_reef_damping": 0.55,
+    "aqua_reef_density": 0.72,
+    "aqua_reef_predelay": 24.0,
+    "aqua_reef_width": 0.85,
+    "aqua_reef_space": 0.92,
+    "aqua_fathom_mix": 0.0,
+    "aqua_drift_mix": 0.0,
+    "aqua_tide_mix": 0.0
+  }
+}

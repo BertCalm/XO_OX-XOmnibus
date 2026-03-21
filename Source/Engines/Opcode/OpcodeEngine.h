@@ -273,6 +273,21 @@ public:
         fp.temperature = fp.rmsLevel;
         fp.harmonicDensity = 0.95f;   // FM: extremely harmonic (mathematical ratios)
         fp.fundamentalFreq = (voiceCount > 0) ? fp.modalFrequencies[0] : 440.0f;
+
+        // attackTransience: FM attacks are bell-like — high transience at onset, fast decay.
+        // Voices with low ampEnv level (just triggered) represent the DX attack bell.
+        float attackEnergy = 0.0f;
+        for (int i = 0; i < kMaxVoices; ++i)
+        {
+            const auto& v = voices[i];
+            if (!v.active) continue;
+            float level = v.ampEnv.getLevel();
+            // DX EP attack: bright bell front in the first ~100ms (level rising)
+            if (level < 0.4f)
+                attackEnergy += (0.4f - level) / 0.4f * v.velocity;
+        }
+        fp.attackTransience = std::min (attackEnergy, 1.0f);
+
         return fp;
     }
 
@@ -475,7 +490,10 @@ public:
                     {
                         float fbAmount = pFeedback * voice.feedbackState;
                         float modOut = voice.modulator.process (modFreq, fbAmount * 0.3f);
-                        voice.feedbackState = modOut;
+                        // Saturation clamp: prevent feedback runaway at high pFeedback values.
+                        // fastTanh soft-clips feedbackState to roughly ±1.0, preserving
+                        // FM character while bounding the signal from growing unbounded.
+                        voice.feedbackState = fastTanh (modOut);
                         float phaseMod = modOut * fmIndex;
                         fmOutput = voice.carrier.process (freq, phaseMod);
                         break;

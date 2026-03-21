@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guru Bin Vol 2 — The Original Six | XO_OX Field Guide</title>
+<meta name="description" content="Field Guide Architecture #15: Guru Bin Vol 2 — the quiet wisdom of six original instruments that knew what they were before the fleet expanded. OBLONG, OVERBITE, OVERDUB, ODYSSEY, ONSET, OPAL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.10);
+  --cream:      #E4EAF0;
+  --text:       #C8D4E0;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+
+  --oblong:     #E9A84A;
+  --oblong-dim: #B07B2C;
+  --oblong-glow: rgba(233, 168, 74, 0.08);
+
+  --overbite:   #F0EDE8;
+  --overbite-dim: #C0BDB8;
+  --overbite-glow: rgba(240, 237, 232, 0.06);
+
+  --overdub:    #6B7B3A;
+  --overdub-dim: #4A5628;
+  --overdub-glow: rgba(107, 123, 58, 0.10);
+
+  --odyssey:    #7B2D8B;
+  --odyssey-dim: #5A2068;
+  --odyssey-glow: rgba(123, 45, 139, 0.10);
+
+  --onset:      #0066FF;
+  --onset-dim:  #0044BB;
+  --onset-glow: rgba(0, 102, 255, 0.08);
+
+  --opal:       #A78BFA;
+  --opal-dim:   #7A5ED4;
+  --opal-glow:  rgba(167, 139, 250, 0.08);
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(233, 196, 106, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 102, 255, 0.02) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--gold-dim); color: var(--bg-deep); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(233, 196, 106, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(167, 139, 250, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ ARTICLE HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold-dim);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--gold); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span { color: var(--text-dim); display: block; margin-top: 0.2rem; }
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--gold-dim);
+  background: var(--gold-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.article blockquote .attribution {
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+  margin: 3rem 0;
+}
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+
+/* ═══════════ BACK LINK ═══════════ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--gold-dim); }
+
+/* ═══════════ ENGINE PROFILE CARDS ═══════════ */
+.engine-profile {
+  margin: 2.5rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.engine-profile-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.engine-accent-bar {
+  width: 4px;
+  min-height: 60px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.engine-profile-title {
+  flex: 1;
+}
+.engine-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+.engine-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.engine-type {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.engine-seance-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.engine-profile-body {
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.engine-profile-section h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+}
+.engine-profile-section p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+.engine-profile-section.full-width {
+  grid-column: 1 / -1;
+}
+.engine-truth {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  background: var(--bg-deep);
+  border-radius: 2px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.7;
+  border-left: 2px solid;
+}
+.engine-preset-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  margin-top: 0.4rem;
+}
+
+/* OVERBITE special — light text on near-white accent */
+.engine-profile.overbite-card .engine-name {
+  color: #1A2230;
+  background: #F0EDE8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* ═══════════ PROCESS BOX ═══════════ */
+.process-box {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  border-left: 3px solid var(--gold-dim);
+}
+.process-box h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.process-box p { font-size: 0.95rem; margin-bottom: 0.8rem; color: var(--text); font-weight: 300; line-height: 1.75; }
+.process-box p:last-child { margin-bottom: 0; }
+.process-box .process-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ═══════════ SCRIPTURE CALLOUT ═══════════ */
+.scripture-callout {
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-glow);
+  border-radius: 0 4px 4px 0;
+}
+.scripture-callout .scripture-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.scripture-callout blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+.scripture-callout blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.85;
+  margin-bottom: 0;
+}
+
+/* ═══════════ VOL 2 CONTENT TABLE ═══════════ */
+.content-table {
+  margin: 1.5rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.content-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+.content-table-row:last-child { border-bottom: none; }
+.content-table-row.header { background: var(--bg-surface); }
+.content-table-cell {
+  padding: 0.8rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  border-right: 1px solid var(--border);
+}
+.content-table-cell:last-child { border-right: none; }
+.content-table-cell.header {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ═══════════ PATREON CTA ═══════════ */
+.cta-block {
+  margin: 3rem 0;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, rgba(233, 196, 106, 0.08) 0%, rgba(167, 139, 250, 0.05) 100%);
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+}
+.cta-block h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.cta-block p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--text); margin-bottom: 1rem; }
+.cta-block p:last-of-type { margin-bottom: 1.5rem; }
+.cta-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.cta-items li {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.cta-items li::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-top: 0.55em;
+  flex-shrink: 0;
+}
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 2px;
+  transition: background 0.3s, color 0.3s;
+}
+.cta-link:hover { background: var(--cream); }
+.cta-note {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-style: italic;
+  margin-left: 1.2rem;
+}
+
+/* ═══════════ RELATED LINKS ═══════════ */
+.related-section {
+  margin: 3rem 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.related-section h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+.related-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.related-link {
+  display: block;
+  background: var(--bg-card);
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.related-link:hover { background: var(--bg-surface); }
+.related-link-label {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.2rem;
+}
+.related-link-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  .engine-profile-body { grid-template-columns: 1fr; }
+  .cta-items { grid-template-columns: 1fr; }
+  .content-table-row { grid-template-columns: 1fr; }
+  .content-table-cell { border-right: none; border-bottom: 1px solid var(--border); }
+  .content-table-cell:last-child { border-bottom: none; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<meta property="og:title" content="Guru Bin Vol 2 — The Original Six | XO_OX Field Guide">
+<meta property="og:description" content="Six original instruments that knew what they were before the fleet expanded. OBLONG, OVERBITE, OVERDUB, ODYSSEY, ONSET, OPAL — their Transcendental chapter.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; Architecture #15</div>
+  <h1>Guru Bin Vol 2 &mdash; <em>The Original Six</em></h1>
+  <p class="article-hero-sub">
+    The quiet wisdom of instruments that knew what they were before the fleet expanded. Six retreat chapters, 90 Transcendental presets, and the scriptures that complete Chapter VII of the Book of Bin.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Series<span style="color: var(--gold);">Guru Bin &mdash; Vol 2</span></div>
+    <div class="article-meta-item">Engines Covered<span>OBLONG, OVERBITE, OVERDUB, ODYSSEY, ONSET, OPAL</span></div>
+    <div class="article-meta-item">Read Time<span>25 min</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--gold);">XO Gold #E9C46A</span></div>
+  </div>
+</header>
+
+<article class="article" id="article-content">
+
+<p class="reveal">
+Before the fleet had 46 engines, it had six. They were not designed as a cohort. They did not share a mythology. They were designed in sequence, each one establishing a dimension of synthesis that XOmnibus would later need: analog warmth, behavioral survival, temporal degradation, harmonic navigation, percussive surface energy, and the patient decomposition of sound into grain. They were the original six, and they knew what they were before anyone named them.
+</p>
+
+<p class="reveal">
+Guru Bin Vol 1 retreated into the engines that arrived later &mdash; the expanded fleet, the Constellation family, the engines designed after the design philosophy was fully articulated. Vol 2 goes back. It retreats into the original six. It asks: what do these instruments reveal when approached as masters rather than as factory-preset generators?
+</p>
+
+<p class="reveal">
+The answer, across six retreat chapters, is: more than the factory library had space to demonstrate. OBLONG has five behavioral curiosity modes; the factory library almost exclusively uses one. OVERBITE's richest sonic territory is its warmest, not its most aggressive. OVERDUB's tape degradation is architecture when pushed to extremes, not seasoning. ODYSSEY's FM and drift, combined, access a synthesis space qualitatively different from either alone. ONSET's Cross-Voice Coupling matrix is a rhythm brain, not an enhancement. And OPAL, the engine with 30% feliX, is the fleet's most selfless synthesizer &mdash; its deepest presets are about what it does to something else.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">What Guru Bin Does</h2>
+
+<p class="reveal">
+Every engine in XOmnibus ships with a factory library. The factory library demonstrates the engine's range. But the factory library is a map, not the territory. Guru Bin is a structured retreat into the territory &mdash; a rigorous, meditative process of finding what the factory library has not yet visited.
+</p>
+
+<div class="process-box reveal">
+  <span class="process-label">The Retreat Process</span>
+  <h4>Six Phases, One Engine at a Time</h4>
+  <p><strong>Phase R1: Opening Meditation.</strong> Close your eyes. The engine's creature mythology is not a branding decision. It is the design brief. Inhabit the creature. The synthesis decisions follow from the biology.</p>
+  <p><strong>Phase R2: Signal Path Journey.</strong> Walk the parameter space from oscillator to output. Find the zones the factory library has not entered. Document the sweet spots that exist outside the comfortable middle.</p>
+  <p><strong>Phase R3: Parameter Refinements.</strong> What defaults could be reconsidered? What range territories are underexplored? What behavioral modes exist that the factory library has not represented?</p>
+  <p><strong>Phase R4: Expression Arcs.</strong> Play the engine across the velocity range. Apply aftertouch. Move the mod wheel. The performance-expression arc is a dimension of the instrument that preset design often ignores.</p>
+  <p><strong>Phase R5: Awakening Presets.</strong> Fifteen Transcendental designs per engine, occupying the territory the factory library has not. These become the Guru Bin library &mdash; the Transcendental tier of Vol 2.</p>
+  <p><strong>Phase R6: Scripture.</strong> The discoveries that cannot be expressed as parameters. The principles that govern the engine's deepest behavior. Written as verses for the Book of Bin, Chapter VII.</p>
+</div>
+
+<p class="reveal">
+Vol 1 established this process. Vol 2 applies it to the engines that were there at the beginning. The question is not "what is new?" The question is "what was always there and has not yet been said?"
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Six Engines</h2>
+
+<!-- ═══ OBLONG ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--oblong);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 05 &mdash; Analog Subtractive</span>
+      <div class="engine-name" style="color: var(--oblong);">OBLONG</div>
+      <div class="engine-type">Bob the clownfish &mdash; warm analog synthesis with OscA/OscB, SnoutFilter, CuriosityLFO, DustTape, BobMode macro</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--oblong); border-color: var(--oblong-dim);">Amber #E9A84A</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>The CuriosityLFO has five behavioral modes (Sniff, Wander, Investigate, Twitch, Nap). The factory library uses Mode 0 in almost every context. Mode 4 (Nap) creates stillness that is alive without being mechanical. Mode 1 (Wander) produces a pad that barely moves but is never frozen. The Curiosity Engine is not a single LFO with a behavior dial &mdash; it is five different relationships between the synthesizer and time.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>The Snout Formant filter (Mode 2) creates dual bandpass formant behavior &mdash; a nasal, vowel-adjacent character no other filter mode in the fleet produces. The factory library almost never uses it. DustTape above 0.15 is a compositional environment, not a subtle polish pass. BobMode above 0.7 activates heavy tape warmth, drift, and texture simultaneously &mdash; no factory preset has lived above 0.4.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">Tentacle Memory</div>
+      <p style="margin-top: 0.6rem;">Atmosphere. Snout Formant filter at mid-character, Wander curiosity at 0.04 Hz, extended release. The anemone's texture without the sting. The formant drifts so slowly the listener hears it as the sound having a personality, not as modulation.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--oblong-dim);">
+        "The anemone is not an effect. It is the address. When you add DustTape at 0.08 and set the filter character to 0.4, you are not processing a clean oscillator. You are describing the room the oscillator has always lived in."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Verse OBL-I &mdash; The Anemone Principle</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ OVERBITE ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--overbite);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 14 &mdash; Bass-Forward Character</span>
+      <div class="engine-name" style="color: var(--overbite);">OVERBITE</div>
+      <div class="engine-type">Virginia opossum &mdash; OscA/OscB/Sub/Weight, BiteFur/BiteGnash/BiteTrash, five behavioral macros: BELLY / BITE / SCURRY / TRASH / PLAY DEAD</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--overbite); border-color: var(--overbite-dim);">9.2 / 10 &mdash; Joint Fleet High</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>OVERBITE's richest sonic territory is its warmest, not its most aggressive. The factory library is approximately 57% BITE/SCURRY territory. The Transcendental chapter occupies the other end: BELLY at 0.92 with BITE at zero &mdash; the opossum foraging, unguarded, entirely warm. And BELLY at 0.85 with PLAY DEAD at 0.7: metabolically warm but externally still. The opossum alive inside its paralysis.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>The mod matrix has 8 slots. The factory library of 77 presets almost never uses them. Routing LFO2 sine at 0.04 Hz to gnash amount makes the asymmetric waveshaper breathe at the Sutra breathing rate &mdash; teeth appearing and disappearing below conscious detection. Routing velocity to fur amount makes the opossum's fur bristle proportional to impact. The mod matrix is the behavioral depth of the engine.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">The Grey Space</div>
+      <p style="margin-top: 0.6rem;">Atmosphere. PLAY DEAD 0.65, BELLY 0.72 &mdash; compound warmth with partial collapse. A sound that exists between alive and pretending not to be. Not two half-behaviors: one compound behavioral state that has no name in the factory library.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--overbite-dim);">
+        "The collapse is complete. But the body is still there. The sub oscillator persists. The metabolic warmth of BELLY continues beneath the paralysis. Design the warm foundation first. Then add PLAY DEAD as the collapsing macro."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Verse OVB-I &mdash; The Involuntary Architecture</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ OVERDUB ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--overdub);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 03 &mdash; Lo-Fi Dub / Tape</span>
+      <div class="engine-name" style="color: var(--overdub);">OVERDUB</div>
+      <div class="engine-type">Tape machine as architecture &mdash; analog drift oscillator, tape delay (wow/flutter/wear), spring reverb, saturation drive (Blessing B004)</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--overdub); border-color: var(--overdub-dim);">Olive #6B7B3A</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>The factory library uses OVERDUB's tape character as seasoning. The Transcendental chapter uses it as architecture. At wow=0.95 and wear=0.88, the delay loop becomes an organism. Each echo cycle loses high-frequency content and pitch accuracy simultaneously. By cycle 8, only the mids survive. This is not degradation as an artifact &mdash; it is degradation as the primary compositional fact of the preset.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>The factory library has no preset with zero send level. The dry tone of OVERDUB &mdash; drive at 1.45, no echo, no reverb &mdash; is distinctive and worth documenting as its own instrument. No factory preset pushes delay feedback above 0.82. At 0.82 with wear=0.72, the loop continues for 25&ndash;30 cycles before becoming nearly inaudible. And at polyphony=3 with long release, OVERDUB creates harmonic sediment &mdash; notes stack, layers accumulate, the groove becomes a place you can stand on.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">Tape Journey</div>
+      <p style="margin-top: 0.6rem;">Aether. All degradation mechanisms at maximum. A single note evolves through 15&ndash;20 audible stages over 3&ndash;4 minutes: initial attack &rarr; first echo (full bandwidth) &rarr; third echo (mids only, drifting) &rarr; reverb tail (low-mid shimmer, extreme wow distortion) &rarr; silence. Press one key. Wait. The machine is the composition.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--overdub-dim);">
+        "At 0.82 feedback, the delay loop continues indefinitely. Each pass costs the signal high-frequency bandwidth. After eight passes, only mids remain. After twenty, barely audible ghosts. The loop cannot stop because it was never instructed to stop &mdash; it was only given a threshold it could never reach."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Scripture VII-4 &mdash; The Loop That Cannot Stop Is Haunted</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ODYSSEY ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--odyssey);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 04 &mdash; Psychedelic Pad</span>
+      <div class="engine-name" style="color: var(--odyssey);">ODYSSEY</div>
+      <div class="engine-type">Drift synthesizer &mdash; dual oscillators (Classic / Supersaw / FM), VoyagerDrift per-voice random walk, TidalPulse, DriftFracture, shimmer reverb</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--odyssey); border-color: var(--odyssey-dim);">Violet #7B2D8B</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>ODYSSEY's 149-preset factory library is comprehensive across individual parameters. What it systematically underexplores is the compound behavior where FM and drift run simultaneously. FM alone gives you timbral position. Drift alone gives you random walk. Together they give you navigation: a system that oscillates around a timbral home while continuously exploring the surrounding territory. FM + drift is not an increment &mdash; it is a qualitatively different synthesis space.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>The tidal filter sweep combined with FM is absent from 149 existing presets. At tidalDepth=0.7 with FM at OscA (fmDepth=0.42), the tidal sweep covers one octave of frequency space over 5 seconds, highlighting different FM sidebands as it moves. The preset requires no performance. It performs itself. And at driftRate=0.008 Hz, one drift cycle takes 125 seconds &mdash; the migration path is longer than the performance. The journey cannot be completed.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">Traverse Arc</div>
+      <p style="margin-top: 0.6rem;">Prism. OscB tuned to the tritone (5 semitones, ratio 1.498x) &mdash; a non-integer FM ratio. Drift moves OscB away from this already-inharmonic position, sweeping through spectral territory that pure integer-ratio FM cannot reach. Colors without names in any Western tuning system.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--odyssey-dim);">
+        "Drift without FM is latitude. FM without drift is longitude. Both together is navigation. A sailor with only latitude cannot find their destination. Navigation requires both coordinates."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Scripture VII-5 &mdash; The Navigation Verse</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ONSET ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--onset);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 07 &mdash; Algorithmic Drum Synthesis</span>
+      <div class="engine-name" style="color: var(--onset);">ONSET</div>
+      <div class="engine-type">Surface event &mdash; 8-voice dual-layer (Circuit / Algorithm), Cross-Voice Coupling matrix (XVC), MACHINE / PUNCH / SPACE / MUTATE macros (Blessings B002, B006)</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--onset); border-color: var(--onset-dim);">Electric Blue #0066FF</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>ONSET is the fleet's percussion event generator &mdash; the engine that tells time and feeds every other engine that responds to rhythm. The Vol 2 retreat recognized that ONSET's most important presets are not those that sound best in isolation. They are presets calibrated as coupling sources: the kick waveform that best disturbs OUROBOROS's strange attractor, the murmuration trigger that sets OCEANIC's formation patterns, the rhythmic event that makes OWARE's sympathetic strings ring. Design for the injection, not just the sound.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>The Cross-Voice Coupling matrix has four routes, all of which operate one audio block later &mdash; memory, not feedback. At high XVC global amounts with all four routes active, the kit develops autonomous rhythmic intelligence: loud passages make the kit brighter and tighter; quiet passages let the hat breathe. The factory library rarely sets XVC global amount above 0.5. The Transcendental presets activate all four routes, treating XVC as a compositional tool. The rhythm brain that speaks backward and forward simultaneously.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">Onset Injection Protocol</div>
+      <p style="margin-top: 0.6rem;">Entangled. Coupling-source kit explicitly calibrated for OUROBOROS Injection routing. Clean transients, minimal reverb tail, kick blend at 0.55 (modal resonator enriching the spectral content), XVC high. Each kick disturbs the strange attractor differently depending on velocity. The kit's sound is secondary to what it sends.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--onset-dim);">
+        "ONSET does not live in the water. It lives at the water's surface &mdash; the boundary where feliX's electric energy escapes into air. The engines below feel the ripple. OUROBOROS adjusts its attractor. OCEANIC changes the spacing in its murmuration. OWARE's membranes ring sympathetically."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Verse ONSET-I &mdash; The Surface Event</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ OPAL ═══ -->
+<div class="engine-profile reveal">
+  <div class="engine-profile-header">
+    <div class="engine-accent-bar" style="background: var(--opal);"></div>
+    <div class="engine-profile-title">
+      <span class="engine-label">Engine 09 &mdash; Granular Synthesis</span>
+      <div class="engine-name" style="color: var(--opal);">OPAL</div>
+      <div class="engine-type">Opal stone &mdash; 12-cloud granular engine, 4-second ring buffer, AudioToBuffer external coupling, freeze mode, shimmer and frost character processing</div>
+    </div>
+    <div class="engine-seance-badge" style="color: var(--opal); border-color: var(--opal-dim);">Lavender #A78BFA</div>
+  </div>
+  <div class="engine-profile-body">
+    <div class="engine-profile-section">
+      <h4>Retreat Discovery</h4>
+      <p>OPAL is the fleet's most selfless engine. When you feed it a source via AudioToBuffer, it does not perform alongside the source &mdash; it effaces itself in service of what it transforms. OBRIX's complex harmonic output, fed into OPAL's grain buffer with externalMix=1.0, becomes a spectral material that carries OBRIX's DNA but has been distributed through time in a way that neither engine could produce alone. The identity of the source is present as DNA, not as form. The factory library of 85 presets has not fully explored this.</p>
+    </div>
+    <div class="engine-profile-section">
+      <h4>Underexplored Territory</h4>
+      <p>At 10ms grain size, OPAL is no longer a time-domain instrument. The ear cannot resolve the temporal structure of a 10ms sound &mdash; it hears the spectral content of the window function. The grain becomes a filter. The granular synthesizer becomes additive. At 800ms grains, individual fragments become audible as elongated time-stretched segments &mdash; the past is present in the present. The factory library lives between 60&ndash;180ms. The Transcendental library begins at the edges.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <h4>Example Transcendental Preset</h4>
+      <div class="engine-preset-tag">Opal Hadal Freeze</div>
+      <p style="margin-top: 0.6rem;">Submerged. Freeze activated at the moment the source reaches its most resonant position, locking a specific spectral snapshot into the grain buffer permanently. All subsequent grains read from that frozen moment. The chord sustains forever, granularly. LFO at 0.067 Hz sweeps the position through the frozen history, making the frozen material feel alive without changing its spectral content.</p>
+    </div>
+    <div class="engine-profile-section full-width">
+      <div class="engine-truth" style="border-color: var(--opal-dim);">
+        "Freeze is not sustain. Freeze is a compositional operation: the decision to declare that this moment is the material. Everything before freeze was preparation. Everything after freeze is performance on a fixed, specific, chosen spectral object. Do not treat freeze as sustain. Treat it as the declaration: this is the stone."
+        <span class="attribution" style="margin-top: 0.6rem; display: block; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-faint);">Verse OPAL-III &mdash; Freeze Is Not Sustain</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Scripture of Chapter VII</h2>
+
+<p class="reveal">
+Guru Bin retreats surface scripture &mdash; principles that cannot be expressed as parameter values. Vol 2 completes Chapter VII of the Book of Bin. The full chapter contains twelve verses, six from the six retreats, organized as the Homecoming Verses: the original instruments discovering what they contain.
+</p>
+
+<div class="scripture-callout reveal">
+  <span class="scripture-label">Scripture VII-2 &mdash; The Echo Serves the Silence</span>
+  <blockquote>
+    <p>"The dub master knows this: silence is not the absence of sound but the space that echo reveals. King Tubby did not drop the fader to remove sound &mdash; he dropped it to make space, and the space spoke. OVERDUB is not an echo machine. It is a silence-designing machine."</p>
+  </blockquote>
+</div>
+
+<div class="scripture-callout reveal">
+  <span class="scripture-label">Scripture VII-7 &mdash; Two Timescales of Motion Make the Sound Feel Like Weather</span>
+  <blockquote>
+    <p>"Weather is not one movement. It is many movements at different scales. When ODYSSEY's tidal pulse runs at 5-second periods and the VoyagerDrift wanders at 12-second cycles, the sound has two meteorological layers. The ear hears these as weather &mdash; as a system rather than a modulation."</p>
+  </blockquote>
+</div>
+
+<div class="scripture-callout reveal">
+  <span class="scripture-label">Scripture VII-8 &mdash; Non-Integer FM Ratios Are Colors Without Names</span>
+  <blockquote>
+    <p>"An FM modulator at exactly 2&times; the carrier frequency produces a clean second harmonic. At 2.37&times;, the FM produces a partial between the minor third and the major third that the harmonic series does not sanction. When drift moves the modulator around this position, the ear hears colors that have no name."</p>
+  </blockquote>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">What Vol 2 Contains</h2>
+
+<p class="reveal">
+Six retreat chapters. Fifteen Transcendental presets per engine. Ninety total presets occupying territory the factory libraries have not visited. Four scripture verses per retreat completing Chapter VII of the Book of Bin. And a PDF booklet documenting the full process &mdash; the meditations, the signal path discoveries, the scripture, and the parameter maps that define each Transcendental tier.
+</p>
+
+<div class="content-table reveal" aria-label="Vol 2 contents by engine">
+  <div class="content-table-row header">
+    <div class="content-table-cell header">Engine</div>
+    <div class="content-table-cell header">Presets</div>
+    <div class="content-table-cell header">Central Discovery</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--oblong); font-weight: 500;">OBLONG</div>
+    <div class="content-table-cell">15 presets + 2 scripture verses</div>
+    <div class="content-table-cell">CuriosityLFO modes 1&ndash;4 / Snout Formant filter / DustTape as environment</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--overbite); font-weight: 500;">OVERBITE</div>
+    <div class="content-table-cell">15 presets + 3 scripture verses</div>
+    <div class="content-table-cell">Pure BELLY / compound macro states / mod matrix behavioral routing</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--overdub); font-weight: 500;">OVERDUB</div>
+    <div class="content-table-cell">15 presets + 4 scripture verses</div>
+    <div class="content-table-cell">Degradation as architecture / dry tone / high-feedback loop behavior</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--odyssey); font-weight: 500;">ODYSSEY</div>
+    <div class="content-table-cell">15 presets + 4 scripture verses</div>
+    <div class="content-table-cell">FM + drift compound / tidal + FM / non-integer ratio territory</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--onset); font-weight: 500;">ONSET</div>
+    <div class="content-table-cell">15 presets + 4 scripture verses</div>
+    <div class="content-table-cell">Coupling-source kits / full XVC routing / all-algorithmic drum synthesis</div>
+  </div>
+  <div class="content-table-row">
+    <div class="content-table-cell" style="color: var(--opal); font-weight: 500;">OPAL</div>
+    <div class="content-table-cell">15 presets + 4 scripture verses</div>
+    <div class="content-table-cell">Grain size extremes / AudioToBuffer coupling / freeze as composition</div>
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<div class="cta-block reveal">
+  <h3>How to Get Guru Bin Vol 2</h3>
+  <p>
+    Vol 2 is a Patreon release. It includes all 90 Transcendental presets, the Scripture Chapter VII PDF booklet, and the XPN pack for MPC hardware. XOmnibus itself remains free and open-source; Guru Bin is the premium expansion for producers who want the full retreat experience.
+  </p>
+  <ul class="cta-items">
+    <li>90 Transcendental presets (15 per engine, all 6 original instruments)</li>
+    <li>Scripture Chapter VII PDF &mdash; 22 pages, 12 verses, 6 meditations</li>
+    <li>XPN pack for MPC X, Live, and Force</li>
+    <li>Parameter maps for all 6 retreat discoveries</li>
+    <li>Signal path diagrams for the compound synthesis territories</li>
+    <li>Vol 1 + Vol 2 bundle option</li>
+  </ul>
+  <a href="https://patreon.com/xo_ox" class="cta-link" target="_blank" rel="noopener">Get Vol 2 on Patreon</a>
+  <span class="cta-note">(Patreon page coming soon &mdash; join the community to be notified)</span>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Engines That Were First</h2>
+
+<p class="reveal">
+There is something particular about instruments designed before the fleet existed. They were not designed to be consistent with anything. OBLONG did not know it would be the warm counterpoint to OBESE's density. ONSET did not know it would be the percussion source for OUROBOROS's strange attractor. OPAL did not know that OBRIX would one day feed it spectral material to decompose. They were designed as complete instruments in their own right, before there was a fleet to be instruments within.
+</p>
+
+<p class="reveal">
+This is why the Vol 2 retreats have a different character from the fleet-era retreats. The fleet-era engines know their place in the water column. OVERDUB knows it lives above the thermocline, that OCEANDEEP lives below it, that OPAL can granularize what it degrades. The original six did not know these things when they were designed. They knew only what they were.
+</p>
+
+<p class="reveal">
+The retreats found that what they were was, in each case, more than the factory library had room to demonstrate. Bob the clownfish has five curiosity behaviors; the factory only used one. The Virginia opossum's warmest state is its most expressive; the factory spent 57% of its presets on aggression. The tape machine teaches most when pushed to extremes; the factory used its degradation as seasoning. The drifting pad synthesizer has a navigation system; the factory mapped its latitude and ignored its longitude. The percussion engine is a rhythm brain and a coupling source; the factory designed it as a sound generator.
+</p>
+
+<p class="reveal">
+And OPAL is the fleet's most selfless engine. Its deepest function is not to sound like OPAL. It is to sound like what it does to something else.
+</p>
+
+<p class="reveal">
+Vol 2 is their Transcendental chapter. The original six, finally visited in depth.
+</p>
+
+<p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
+<em>Architecture Series #15 &mdash; Guru Bin Vol 2 &mdash; The Original Six</em><br>
+<em>OBLONG &bull; OVERBITE &bull; OVERDUB &bull; ODYSSEY &bull; ONSET &bull; OPAL</em><br>
+<em>XO_OX Field Guide &mdash; March 2026</em>
+</p>
+
+<div class="related-section reveal">
+  <h3>Related Reading</h3>
+  <div class="related-links">
+    <a href="guide-coupling.html" class="related-link">
+      <div class="related-link-label">Architecture #10</div>
+      <div class="related-link-title">The Space Between the Engines &mdash; The Coupling System</div>
+    </a>
+    <a href="guide-coupling-obrix-pairs.html" class="related-link">
+      <div class="related-link-label">Architecture #13</div>
+      <div class="related-link-title">Coupling Cookbook: OBRIX Pairs</div>
+    </a>
+    <a href="guide-sdk-engine.html" class="related-link">
+      <div class="related-link-label">Architecture #14</div>
+      <div class="related-link-title">How to Build an XOmnibus Engine in 200 Lines</div>
+    </a>
+  </div>
+</div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
