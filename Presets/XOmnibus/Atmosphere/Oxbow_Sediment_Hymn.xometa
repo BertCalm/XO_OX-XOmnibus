@@ -1,0 +1,39 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Deep, dark ambient space — the sediment at the bottom of the oxbow lake. Very slow erosion, heavy damping, long predelay. Sounds settle like silt. Vangelis at his most contemplative.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.7,
+    "space": 0.9,
+    "aggression": 0.0
+  },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Atmosphere",
+  "name": "Sediment Hymn",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.8,
+      "oxb_decay": 12.0,
+      "oxb_entangle": 0.65,
+      "oxb_erosionRate": 0.02,
+      "oxb_erosionDepth": 0.5,
+      "oxb_convergence": 5.0,
+      "oxb_resonanceQ": 6.0,
+      "oxb_resonanceMix": 0.2,
+      "oxb_cantilever": 0.6,
+      "oxb_damping": 2200.0,
+      "oxb_predelay": 80.0,
+      "oxb_dryWet": 0.65,
+      "oxb_exciterDecay": 0.04,
+      "oxb_exciterBright": 0.25
+    }
+  },
+  "schema_version": 1,
+  "tags": ["ambient", "dark", "deep", "cinematic", "drone"],
+  "version": "1.0.0"
+}

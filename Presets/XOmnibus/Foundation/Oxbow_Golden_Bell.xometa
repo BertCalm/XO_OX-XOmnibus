@@ -1,0 +1,39 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Gamelan-like pitched percussion. Short exciter with bright noise content, moderate golden resonance. Each note rings with golden-ratio harmonics — play a scale and hear the Eel's bioluminescence.",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.35,
+    "density": 0.3,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Foundation",
+  "name": "Golden Bell",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.35,
+      "oxb_decay": 2.5,
+      "oxb_entangle": 0.4,
+      "oxb_erosionRate": 0.1,
+      "oxb_erosionDepth": 0.2,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 12.0,
+      "oxb_resonanceMix": 0.5,
+      "oxb_cantilever": 0.2,
+      "oxb_damping": 9000.0,
+      "oxb_predelay": 5.0,
+      "oxb_dryWet": 0.6,
+      "oxb_exciterDecay": 0.005,
+      "oxb_exciterBright": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": ["bell", "gamelan", "percussion", "golden", "pitched"],
+  "version": "1.0.0"
+}

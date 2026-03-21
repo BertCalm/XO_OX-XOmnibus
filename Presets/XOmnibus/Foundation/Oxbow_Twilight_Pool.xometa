@@ -1,0 +1,39 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Dark, intimate reverb — the twilight zone where the Oxbow Eel dwells. Low damping and moderate entanglement create a space between memory and forgetting.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Foundation",
+  "name": "Twilight Pool",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.6,
+      "oxb_decay": 6.0,
+      "oxb_entangle": 0.55,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.35,
+      "oxb_convergence": 4.0,
+      "oxb_resonanceQ": 7.0,
+      "oxb_resonanceMix": 0.25,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 3500.0,
+      "oxb_predelay": 35.0,
+      "oxb_dryWet": 0.5,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": ["reverb", "dark", "intimate", "twilight", "pad"],
+  "version": "1.0.0"
+}

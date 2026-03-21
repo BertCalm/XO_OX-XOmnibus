@@ -1,0 +1,39 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Medium hall with strong cantilever — bright attacks that sink into dark warmth. The sound bends like a river changing course.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Foundation",
+  "name": "River Bend",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 5.5,
+      "oxb_entangle": 0.45,
+      "oxb_erosionRate": 0.05,
+      "oxb_erosionDepth": 0.25,
+      "oxb_convergence": 6.0,
+      "oxb_resonanceQ": 5.0,
+      "oxb_resonanceMix": 0.15,
+      "oxb_cantilever": 0.55,
+      "oxb_damping": 5500.0,
+      "oxb_predelay": 30.0,
+      "oxb_dryWet": 0.4,
+      "oxb_exciterDecay": 0.015,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": ["reverb", "hall", "warm", "cantilever", "vocal"],
+  "version": "1.0.0"
+}

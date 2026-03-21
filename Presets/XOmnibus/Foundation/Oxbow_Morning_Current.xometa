@@ -1,0 +1,39 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Bright, open reverb with minimal entanglement — clean stereo image. The river before it bends. Works on everything from guitars to synths.",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.35,
+    "space": 0.6,
+    "aggression": 0.05
+  },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Foundation",
+  "name": "Morning Current",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.45,
+      "oxb_decay": 3.0,
+      "oxb_entangle": 0.25,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.15,
+      "oxb_convergence": 8.0,
+      "oxb_resonanceQ": 4.0,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.15,
+      "oxb_damping": 9500.0,
+      "oxb_predelay": 15.0,
+      "oxb_dryWet": 0.35,
+      "oxb_exciterDecay": 0.008,
+      "oxb_exciterBright": 0.7
+    }
+  },
+  "schema_version": 1,
+  "tags": ["reverb", "bright", "clean", "room", "guitar"],
+  "version": "1.0.0"
+}
