@@ -549,10 +549,7 @@ private:
         if (phase_ >= 1.0f) phase_ -= 1.0f;
         float sine = std::sin (phase_ * 6.2831853f);
 
-        // Mild saturation
-        if (sat_ > 0.001f)
-            sine = fastTanh (sine * (1.0f + sat_ * 1.5f));
-
+        // Saturation applied in outer process() — no double-sat
         return sine * env;
     }
 

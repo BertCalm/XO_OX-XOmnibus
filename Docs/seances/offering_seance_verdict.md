@@ -1,7 +1,7 @@
 # The Verdict -- OFFERING
 
 **Seance Date**: 2026-03-21
-**Engine**: OFFERING | Psychology-Driven Boom Bap Drum Synthesis | Engine #45
+**Engine**: OFFERING | Psychology-Driven Boom Bap Drum Synthesis | Engine #46
 **Identity**: The Mantis Shrimp | Rubble Zone (5-15m) | 65% feliX / 35% Oscar
 **Accent**: Crate Wax Yellow `#E5B80B`
 **Parameter Prefix**: `ofr_`

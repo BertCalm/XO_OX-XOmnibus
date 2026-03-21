@@ -1,6 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers all 44 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-21.*
+*Covers all 46 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-21.*
 
 ---
 
@@ -2996,3 +2996,76 @@ MIDI Note → Voice Allocation (8 voices, brick mode) → Source 1 + Source 2 (i
 - **Obrix_Repulsor_Swarm** (Flux) — fieldPolarity -0.9, 5-limit, fast fieldRate; active JI repulsion creates beating, dissonant energy
 - **Obrix_Stressed_Peak** (Prism) — stressDecay 0.002, high velocity sensitivity; filter opens progressively with playing intensity
 - **Obrix_Parallel_Wall** (Aether) — fxMode=parallel, all three FX chains active; maximum FX density from independent processing
+
+---
+
+## 46. OFFERING (XOffering)
+*Psychology-driven boom bap drum synthesis — the Mantis Shrimp*
+
+**Accent:** Crate Wax Yellow `#E5B80B` | **Prefix:** `ofr_` | **Voices:** 8 (one per drum slot)
+**Creature:** The Mantis Shrimp — hyper-perceptive crustacean seeing timbral dimensions other engines cannot
+**Polarity:** 65% feliX / 35% Oscar — surface-weighted but with deep undertow
+**Depth:** Rubble Zone (5–15m)
+
+### What It Does
+The first dedicated boom bap drum synthesis engine in the fleet. OFFERING doesn't play back samples — it *synthesizes* the entire crate-digging process. Each of 8 voices has a distinct drum topology (kick ≠ snare ≠ hat, architecturally), processed through a 4-stage signal chain: **Transient Generator** → **Texture Layer** (vinyl/tape/bit/wobble) → **Collage Engine** (layer/chop/stretch/ring mod) → **City Processing Chain** (5 psychoacoustic archetypes). The Curiosity Engine, driven by published psychology research (Berlyne 1960, Wundt 1874, Csikszentmihalyi 1975), introduces controlled timbral variation on each trigger — the drums evolve as you play them.
+
+**Detroit Drunk Timing** applies per-voice trigger delay (±15ms) when Detroit city mode is active — Dilla's legacy in DSP.
+
+MIDI note mapping follows GM drum positions: C2=Kick, D2=Snare, F#2=CHat, A#2=OHat, D#2=Clap, C#2=Rim, A2=Tom, C#3=Perc.
+
+### Macros
+| Macro | Name | Mapping | What It Controls |
+|-------|------|---------|-----------------|
+| M1 | **DIG** | `ofr_macroDig` → curiosity + complexity + flow | How deep into the crate — familiar vs. alien drum character |
+| M2 | **CITY** | `ofr_macroCity` → cityMode + cityIntensity + cityBlend | Geographic psychoacoustic character — NY/Detroit/LA/Toronto/Bay Area |
+| M3 | **FLIP** | `ofr_macroFlip` → flipLayers + flipChop + flipStretch + flipRingMod | Collage intensity — single hit to fractured assemblage |
+| M4 | **DUST** | `ofr_macroDust` → dustVinyl + dustTape + dustBits + dustWobble | Patina and degradation — pristine to buried-in-a-crate |
+
+### Key Parameters
+| Parameter | Range | Default | Sweet Spot | What It Does |
+|-----------|-------|---------|------------|-------------|
+| `ofr_transientSnap` | 0–1 | 0.5 | 0.3–0.7 | Transient sharpness across all drum types. Higher = crispier attacks. |
+| `ofr_transientPitch` | 0–1 | 0.3 | 0.1–0.5 | Pitch envelope depth — how much the transient sweeps down. Higher = more melodic drums. |
+| `ofr_transientSat` | 0–1 | 0.15 | 0.1–0.4 | Transient saturation — analog warmth on the initial hit. |
+| `ofr_cityMode` | 0–4 | 0 (NY) | — | 0=New York (tight, gated), 1=Detroit (saturated, drunk timing), 2=LA (compressed, wide), 3=Toronto (sub-ducked), 4=Bay Area (allpass fog) |
+| `ofr_cityIntensity` | 0–1 | 0.5 | 0.3–0.8 | How strongly the city chain colors the sound. 0 = dry, 1 = full character. |
+| `ofr_cityBlend` | 0–1 | 0.0 | 0.0–0.5 | Crossfade between current city and the next city in sequence. Creates hybrid geographic character. |
+| `ofr_digCuriosity` | 0–1 | 0.5 | 0.3–0.7 | Berlyne hedonic curve: 0 = predictable hits, 0.5 = optimal novelty, 1.0 = alien mutations. |
+| `ofr_digComplexity` | 0–1 | 0.5 | 0.3–0.6 | Wundt curve: how many parameters are varied per trigger event. |
+| `ofr_digFlow` | 0–1 | 0.5 | 0.4–0.7 | Csikszentmihalyi flow: probability of reusing previous variation (groove memory). |
+| `ofr_dustVinyl` | 0–1 | 0.2 | 0.05–0.3 | Vinyl crackle layer (Poisson impulse process). |
+| `ofr_dustTape` | 0–1 | 0.1 | 0.05–0.2 | Tape hiss and soft-clip compression. |
+| `ofr_dustBits` | 4–16 | 16 | 8–12 | Bit depth reduction. 16 = pristine, 8 = SP-1200 character. |
+| `ofr_flipLayers` | 1–4 | 1 | 1–3 | Number of stacked layers per hit. More layers = denser, collaged sound. |
+| `ofr_flipChop` | 0–1 | 0.0 | 0.0–0.4 | Chop simulation — grain fracturing of the transient. |
+
+### Per-Voice Parameters (×8 voices)
+| Parameter | Range | Default | What It Does |
+|-----------|-------|---------|-------------|
+| `ofr_v{n}_type` | 0–7 | voice-mapped | Drum topology: 0=Kick, 1=Snare, 2=CHat, 3=OHat, 4=Clap, 5=Rim, 6=Tom, 7=Perc |
+| `ofr_v{n}_tune` | -24–+24 st | 0 | Pitch offset in semitones |
+| `ofr_v{n}_decay` | 0.001–2.0s | type-dependent | Envelope decay time (exp, skewed 0.5) |
+| `ofr_v{n}_body` | 0–1 | type-dependent | Body/noise balance — tonal vs. noisy character |
+| `ofr_v{n}_level` | 0–1 | 0.8 | Voice output level |
+| `ofr_v{n}_pan` | -1–+1 | stereo-spread | Stereo position |
+
+### Sound Design Tips
+1. **Start with City = Detroit, DIG at 0.3.** The drunk timing gives immediate Dilla feel. Low curiosity keeps hits recognizable while micro-timing adds humanity.
+2. **Layer sparingly.** `ofr_flipLayers` at 2 thickens without losing transient clarity. At 4, you're in abstract collage territory — use intentionally.
+3. **Bit crush for SP-1200 character.** Set `ofr_dustBits` to 12 and `ofr_dustSampleRate` to 26040. This recreates the frequency response of the E-mu SP-1200's Swyft chip.
+4. **Flow controls groove memory.** High `ofr_digFlow` (0.7+) means the engine remembers and reuses its previous variations — the drums develop a "vocabulary" over time. Low flow (0.2) means every hit is independently varied.
+5. **Per-voice type swapping.** Assign `ofr_v0_type` to something unexpected (like putting a Perc topology on the kick slot). The topology defines the synthesis model, not the MIDI note — any model can live on any pad.
+6. **City blending for hybrid character.** Set `ofr_cityBlend` to 0.3–0.5 with NY mode. The blend crossfades toward Detroit, creating a NY-Detroit hybrid that's tighter than pure Detroit but warmer than pure NY.
+
+### Coupling
+- **Sends:** `AmpToFilter` (drum amplitude as filter mod source), `AmpToChoke` (note-off choke signal), `RhythmToBlend` (trigger rhythm pattern), `EnvToDecay` (envelope shape), `AudioToFM` (audio signal for FM)
+- **Receives:** `RhythmToBlend` (external rhythm drives collage intensity — OSTINATO world rhythms controlling FLIP), `AmpToFilter` (sidechain from another engine)
+- **Best as source for:** `RhythmToBlend` (boom bap groove driving tonal engines), `AudioToFM` (drum transients as FM source)
+
+### Recommended Pairings
+- **+ OSTINATO:** World drum patterns (RhythmToBlend) driving OFFERING's collage engine. Cultural dialogue between OSTINATO's 96 world patterns and OFFERING's boom bap topology.
+- **+ OBESE:** Fat analog bass under OFFERING drums. OBESE's Mojo character complements the crate aesthetic. Use `AmpToFilter` so kick hits duck the bass filter.
+- **+ OXBOW:** OFFERING drums feeding OXBOW's entangled reverb. Boom bap hits dissolving into quantum suspension — the crate becomes infinite.
+- **+ OVERBITE:** Layer OVERBITE's fang-white transients over OFFERING's textured drums. Two percussion engines with completely different characters: OVERBITE for sharp metallic hits, OFFERING for warm dusty drums.
+- **+ OPTIC:** OFFERING's drum triggers driving OPTIC's visual engine. Every hit creates a visual pulse — the crate digging process becomes visible.

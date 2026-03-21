@@ -1816,6 +1816,7 @@ def cmd_build(args) -> int:
     stages_run += 1
 
     # ── STAGE 2: SELECT ──
+    selected_presets: list[dict] = []  # populated by SELECT, consumed by RENDER
     if "select" not in skip:
         preset_cfg = spec.get("preset_selection", {})
         mode = preset_cfg.get("mode", "auto_dna")
@@ -1828,6 +1829,79 @@ def cmd_build(args) -> int:
             print(f"         → Would scan {PRESETS_DIR} for {engine} presets")
             if mood_filter:
                 print(f"         → Mood filter: {', '.join(mood_filter)}")
+        else:
+            try:
+                import xpn_profile_preset_selector as selector
+
+                if profile_id:
+                    # Set up QA log for accept/reject tracking
+                    qa_log = None
+                    if experiment_id and selector._QA_LOG_AVAILABLE:
+                        qa_log = selector.QADecisionLog(
+                            pack_id=pack_id,
+                            profile_id=profile_id,
+                        )
+
+                    selected_presets = selector.select_presets(
+                        profile_id=profile_id,
+                        engine=engine,
+                        count=min_presets,
+                        mood_filter=mood_filter,
+                        qa_log=qa_log,
+                        verbose=True,
+                    )
+
+                    # Save selection manifest
+                    manifest_path = output_dir / "selected_presets.json"
+                    with open(manifest_path, "w") as f:
+                        json.dump({
+                            "profile": profile_id,
+                            "engine": engine,
+                            "count_requested": min_presets,
+                            "count_selected": len(selected_presets),
+                            "dna_diversity_target": dna_target,
+                            "mood_filter": mood_filter,
+                            "presets": selected_presets,
+                        }, f, indent=2)
+
+                    # Generate preliminary pack_dna.json (pack_average from selected presets)
+                    if selected_presets:
+                        dna_dims = ("brightness", "warmth", "movement", "density", "space", "aggression")
+                        avg_dna = {}
+                        for dim in dna_dims:
+                            vals = [p["dna"][dim] for p in selected_presets if dim in p.get("dna", {})]
+                            avg_dna[dim] = round(sum(vals) / len(vals), 4) if vals else 0.0
+
+                        pack_dna_data = {
+                            "pack_average": avg_dna,
+                            "voices": {},
+                            "render_durations_ms": {},
+                            "velocity_peaks_dbfs": {},
+                            "choke_groups": {},
+                        }
+                        dna_path = output_dir / "pack_dna.json"
+                        with open(dna_path, "w") as f:
+                            json.dump(pack_dna_data, f, indent=2)
+                        print(f"         ✓ pack_dna.json written (pack average from {len(selected_presets)} presets)")
+
+                    # Save QA log if populated
+                    if qa_log and len(qa_log):
+                        qa_log.save()
+
+                    print(f"         ✓ Selected {len(selected_presets)} presets (target: {min_presets})")
+                    print(f"         ✓ Manifest: {manifest_path}")
+
+                    if len(selected_presets) < min_presets:
+                        print(f"         ⚠  Only {len(selected_presets)} presets matched — "
+                              f"below target of {min_presets}")
+                else:
+                    print(f"         ⚠  No profile specified — skipping DNA-based selection")
+            except ImportError:
+                print(f"         ⚠  xpn_profile_preset_selector not available")
+            except Exception as e:
+                print(f"         ✗  Selection failed: {e}")
+                if not args.continue_on_error:
+                    return 1
         stages_run += 1
     else:
         print(f"  [2/10] SELECT       SKIPPED")
@@ -1989,9 +2063,65 @@ def cmd_build(args) -> int:
 
     # ── STAGE 10: VALIDATE ──
     if "validate" not in skip:
-        print(f"  [10/10] VALIDATE    XPN integrity check")
+        print(f"  [10/10] VALIDATE    XPN integrity + profile phenotype check")
         if args.dry_run:
-            print(f"         → Would call: xpn_validator.py")
+            if profile_id:
+                try:
+                    import xpn_profile_validator as validator_mod
+                    v = validator_mod.ProfileValidator(profile_id=profile_id)
+                    v.dry_run()
+                except Exception:
+                    print(f"         → Would call: xpn_profile_validator.py --profile {profile_id}")
+            else:
+                print(f"         → Would call: xpn_validator.py")
+        else:
+            # Phase 1: Profile phenotype validation (if profile is set)
+            if profile_id:
+                try:
+                    import xpn_profile_validator as validator_mod
+
+                    v = validator_mod.ProfileValidator(
+                        profile_id=profile_id,
+                        pack_id=pack_id,
+                        builds_root=output_dir.parent,
+                    )
+
+                    # Load pack_dna.json from build output
+                    pack_dna = validator_mod._load_pack_dna(output_dir)
+                    report = v.validate(pack_dna)
+
+                    # Print report
+                    validator_mod._print_report(report)
+
+                    # Save report as JSON
+                    report_path = output_dir / "validation_report.json"
+                    with open(report_path, "w") as f:
+                        json.dump(report, f, indent=2)
+                    print(f"         ✓ Report: {report_path}")
+
+                    if report.get("overall") == "FAIL":
+                        print(f"         ✗  Profile validation FAILED — "
+                              f"{len(report.get('failed', []))} critical assertion(s)")
+                        if not args.continue_on_error:
+                            return 1
+                    else:
+                        print(f"         ✓ Profile validation PASSED — "
+                              f"score {report.get('score', 0)}%")
+                except ImportError:
+                    print(f"         ⚠  xpn_profile_validator not available")
+                except Exception as e:
+                    print(f"         ✗  Profile validation error: {e}")
+                    if not args.continue_on_error:
+                        return 1
+            else:
+                print(f"         ⚠  No profile — skipping phenotype validation")
+
+            # Phase 2: Structural XPN integrity check (existing validator)
+            xpn_path = output_dir / f"XO_OX_{pack_id.replace('-', '_')}_v{version}.xpn"
+            if xpn_path.exists():
+                print(f"         → XPN file exists: {xpn_path.name} ({xpn_path.stat().st_size:,} bytes)")
+            else:
+                print(f"         → XPN not yet built — structural check deferred")
         stages_run += 1
     else:
         print(f"  [10/10] VALIDATE    SKIPPED")

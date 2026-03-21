@@ -380,9 +380,11 @@ public:
                     continue;
                 }
 
-                // Texture layer (DUST + aftertouch modulation)
-                float effectiveVinyl = snap.dustVinyl + atMod * 0.2f;
-                float effectiveTape = snap.dustTape + atMod * 0.15f;
+                // Texture layer (DUST + aftertouch modulation + envFilterAmt)
+                // envFilterAmt: envelope→filter — voice amplitude modulates texture intensity
+                float envMod = std::abs (sample) * snap.envFilterAmt;
+                float effectiveVinyl = snap.dustVinyl + atMod * 0.2f + envMod * 0.15f;
+                float effectiveTape = snap.dustTape + atMod * 0.15f + envMod * 0.1f;
                 sample = voices_[v].texture.process (sample,
                     effectiveVinyl, effectiveTape,
                     snap.dustBits, snap.dustSampleRate, snap.dustWobble);
@@ -759,8 +761,16 @@ private:
         // D001: velocity → timbre (not just volume)
         float velSnap = loadParam (paramVelToSnap_, 0.5f);
         float velBody = loadParam (paramVelToBody_, 0.3f);
+        float velAttack = loadParam (paramVelToAttack_, 0.3f);
         snap = std::clamp (snap + (velocity - 0.5f) * velSnap * 0.6f, 0.0f, 1.0f);
         body = std::clamp (body + (velocity - 0.5f) * velBody * 0.4f, 0.0f, 1.0f);
+
+        // D004: velocity → pitch envelope depth (harder hits = more pitch sweep)
+        pitchEnv = std::clamp (pitchEnv + (velocity - 0.5f) * velAttack * 0.5f, 0.0f, 1.0f);
+
+        // D004: envelope → pitch (adds depth to the transient pitch sweep)
+        float envPitch = loadParam (paramEnvToPitch_, 0.1f);
+        pitchEnv = std::clamp (pitchEnv + envPitch * 0.3f, 0.0f, 1.0f);
 
         // Curiosity variation
         float curiosity = loadParam (paramDigCuriosity_, 0.5f);
