@@ -36,6 +36,8 @@ inline const juce::StringArray validEngineNames {
     "Offering",
     // Chef Quad Collection
     "Oto", "Octave", "Oleg", "Otis",
+    // KITCHEN Quad Collection
+    "Oven", "Ochre", "Obelisk", "Opaline",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -151,6 +153,11 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Octave",      "oct"     },
         { "Oleg",        "oleg"    },
         { "Otis",        "otis"    },
+        // KITCHEN Quad Collection
+        { "Oven",        "oven_"   },
+        { "Ochre",       "ochre_"  },
+        { "Obelisk",     "obel_"   },
+        { "Opaline",     "opal2_"  },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

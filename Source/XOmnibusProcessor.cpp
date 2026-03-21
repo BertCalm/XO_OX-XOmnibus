@@ -50,6 +50,10 @@
 #include "Engines/Octave/OctaveEngine.h"
 #include "Engines/Oleg/OlegEngine.h"
 #include "Engines/Otis/OtisEngine.h"
+#include "Engines/Oven/OvenEngine.h"
+#include "Engines/Ochre/OchreEngine.h"
+#include "Engines/Obelisk/ObeliskEngine.h"
+#include "Engines/Opaline/OpalineEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -270,6 +274,26 @@ static bool registered_Otis = xomnibus::EngineRegistry::instance().registerEngin
     "Otis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OtisEngine>();
     });
+// KITCHEN Quad Collection — OVEN
+static bool registered_Oven = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oven", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvenEngine>();
+    });
+// KITCHEN Quad Collection — OCHRE
+static bool registered_Ochre = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ochre", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OchreEngine>();
+    });
+// KITCHEN Quad Collection — OBELISK
+static bool registered_Obelisk = xomnibus::EngineRegistry::instance().registerEngine(
+    "Obelisk", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::ObeliskEngine>();
+    });
+// KITCHEN Quad Collection — OPALINE
+static bool registered_Opaline = xomnibus::EngineRegistry::instance().registerEngine(
+    "Opaline", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpalineEngine>();
+    });
 
 namespace xomnibus {
 
@@ -424,6 +448,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OctaveEngine::addParameters(params);
     OlegEngine::addParameters(params);
     OtisEngine::addParameters(params);
+    // KITCHEN Quad Collection
+    OvenEngine::addParameters(params);
+    OchreEngine::addParameters(params);
+    ObeliskEngine::addParameters(params);
+    OpalineEngine::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.
