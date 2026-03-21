@@ -18,6 +18,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [dna-designer](./dna-designer/SKILL.md) | `/dna-designer` | Assign accurate 6D Sonic DNA values — calibrated per dimension per engine | MEDIUM |
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
 | [skill-friction-detective](./skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction, frustration, silent failures, and orphaned threads across all skills — then repair, link, and optimize | HIGH |
+| [midi-daw-audit](./midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit — CC thread safety, MIDI learn wiring, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract | HIGH |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -43,6 +44,8 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Adding DNA to existing presets | `/dna-designer` |
 | Building an MPC export bundle | `/xpn-export-specialist` |
 | Optimizing engine CPU / constraint-driven DSP | `/sro-optimizer` |
+| Pre-release MIDI/DAW compatibility check | `/midi-daw-audit` |
+| CC not working in a DAW / automation lost after reopen | `/midi-daw-audit` |
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
