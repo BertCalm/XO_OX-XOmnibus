@@ -347,6 +347,11 @@ public:
 
         // ---- Macro processing -----------------------------------------------
 
+        // D002: LFO depths — user-controllable modulation depth for both LFOs.
+        // Defaults match pre-fix hardcoded values (0.08) for backward compatibility.
+        const float lfoDepth  = (pLfoDepth  != nullptr) ? pLfoDepth->load()  : 0.08f;
+        const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.08f;
+
         const float macroDart    = (pMacroDart != nullptr)    ? pMacroDart->load()    : 0.0f;
         const float macroSchool  = (pMacroSchool != nullptr)  ? pMacroSchool->load()  : 0.0f;
         const float macroSurface = (pMacroSurface != nullptr) ? pMacroSurface->load() : 0.0f;
@@ -449,14 +454,14 @@ public:
         // Adds autonomous stereo movement (feliX darting laterally in the shallows).
         lfo2Phase += 0.08 / sampleRate;
         if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
-        float lfo2Stereo = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0) * 0.08f; // ±8% pan offset
+        float lfo2Stereo = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0) * lfo2Depth; // ±lfo2Depth pan offset
 
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
         const float effectiveBpfCenter = std::max (20.0f, std::min (20000.0f,
                                              effectiveCutoff
-                                             * (1.0f + 0.08f * (float)std::sin(lfoPhase))
+                                             * (1.0f + lfoDepth * (float)std::sin(lfoPhase))
                                              * cutoffMod
                                              + atPressure * 0.3f * 6000.0f));
 
@@ -845,6 +850,19 @@ public:
             juce::ParameterID { "snap_polyphony", 1 }, "Snap Polyphony",
             juce::StringArray { "1", "2", "4", "8" }, 2));
 
+        // ---- LFO depth — D002: user-exposed LFO modulation depth ----
+        // D002 fix: BPF wobble depth was hardcoded at 8%; now user-controllable.
+        // At default (0.08) behaviour is identical to pre-fix presets.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_lfoDepth", 1 }, "Snap LFO Depth",
+            juce::NormalisableRange<float> (0.0f, 0.5f, 0.001f), 0.08f));
+
+        // D002 fix: stereo pan wobble depth (LFO2) was hardcoded at 8%; now user-controllable.
+        // At default (0.08) behaviour is identical to pre-fix presets.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "snap_lfo2Depth", 1 }, "Snap LFO2 Pan Depth",
+            juce::NormalisableRange<float> (0.0f, 0.2f, 0.001f), 0.08f));
+
         // ---- Macros (the four gestures of the neon tetra) ----
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "snap_macroDart", 1 }, "Snap Dart",
@@ -882,6 +900,8 @@ public:
         pSweepDirection  = apvts.getRawParameterValue ("snap_sweepDirection");
         pUnison          = apvts.getRawParameterValue ("snap_unison");
         pPolyphony    = apvts.getRawParameterValue ("snap_polyphony");
+        pLfoDepth     = apvts.getRawParameterValue ("snap_lfoDepth");
+        pLfo2Depth    = apvts.getRawParameterValue ("snap_lfo2Depth");
         pMacroDart    = apvts.getRawParameterValue ("snap_macroDart");
         pMacroSchool  = apvts.getRawParameterValue ("snap_macroSchool");
         pMacroSurface = apvts.getRawParameterValue ("snap_macroSurface");
@@ -1064,6 +1084,9 @@ private:
     std::atomic<float>* pSweepDirection  = nullptr;
     std::atomic<float>* pUnison          = nullptr;
     std::atomic<float>* pPolyphony    = nullptr;
+    // D002: user-exposed LFO depth pointers
+    std::atomic<float>* pLfoDepth     = nullptr;  // snap_lfoDepth — BPF wobble depth (0–0.5)
+    std::atomic<float>* pLfo2Depth    = nullptr;  // snap_lfo2Depth — stereo pan wobble depth (0–0.2)
     std::atomic<float>* pMacroDart    = nullptr;
     std::atomic<float>* pMacroSchool  = nullptr;
     std::atomic<float>* pMacroSurface = nullptr;

@@ -400,6 +400,8 @@ public:
         }
         lfoPhase = 0.0;
         lfoOutput = 0.0f;
+        lfo2Phase = 0.0;
+        lfo2Output = 0.0f;
         filterCutoffModulation = 0.0f;
         morphModulation = 0.0f;
         std::fill (outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
@@ -459,13 +461,27 @@ public:
         const float macroDepth = (paramMacroDepth != nullptr) ? paramMacroDepth->load() : 0.0f;
         const float macroSpace = (paramMacroSpace != nullptr) ? paramMacroSpace->load() : 0.0f;
 
+        // D002: 2nd LFO — read once per block (block-constant, safe for filter coefficients)
+        const float lfo2Rate  = (paramLfo2Rate  != nullptr) ? paramLfo2Rate->load()  : 0.05f;
+        const float lfo2Depth = (paramLfo2Depth != nullptr) ? paramLfo2Depth->load() : 0.3f;
+
+        // Advance 2nd LFO (triangle wave: smooth up-down sweep, no discontinuity).
+        // Rate floor 0.005 Hz satisfies D005. Triangle = |frac - 0.5| * 4 - 1 → bipolar [-1, +1].
+        const double lfo2PhaseIncrement = static_cast<double> (lfo2Rate) / cachedSampleRate;
+        lfo2Phase += lfo2PhaseIncrement * static_cast<double> (numSamples);  // block-advance
+        if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
+        // Triangle wave: bipolar [-1, +1]
+        lfo2Output = static_cast<float> (4.0 * std::fabs (lfo2Phase - 0.5) - 1.0);
+
         // Apply macro offsets to DSP parameters:
         //   BLOOM: shifts morph position up to +1.5 (sine→square character sweep).
         //   DRIFT: widens detune spread up to +30 cents (animated chorus shimmer).
         //   DEPTH: opens filter cutoff up to +6000 Hz (surface from the deep).
         //   SPACE: multiplies attack time by 1× to 4× (slow atmospheric bloom).
         const float effectiveDetune  = detuneCents + macroDrift * 30.0f;
-        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f);
+        // D002: LFO2 sweeps filter cutoff ±(depth × 4000 Hz) for autonomous harmonic evolution.
+        const float lfo2CutoffMod = lfo2Output * lfo2Depth * 4000.0f;
+        const float effectiveCutoff  = std::min (20000.0f, filterCutoff + macroDepth * 6000.0f + lfo2CutoffMod);
         const float effectiveAttack  = attackTime  * (1.0f + macroSpace * 3.0f);
 
         // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel)
@@ -888,6 +904,18 @@ private:
         //   At max: +6000 Hz offset on filterCutoff — axolotl surfaces from cave.
         // M4 SPACE (SPACE): multiplies attack time by up to 4× — slow atmospheric bloom.
         //   At max: attack ×4 — Oscar takes a very long, meditative breath.
+        // D002: 2nd LFO — slow filter sweep modulator.
+        // Rate range 0.005–2.0 Hz (floor ≤ 0.01 Hz satisfies D005).
+        // Destination: Moog ladder cutoff ±(depth × 4000 Hz).
+        // Triangle waveform for smooth, continuous harmonic evolution.
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo2Rate", 1 }, "Morph LFO2 Rate",
+            juce::NormalisableRange<float> (0.005f, 2.0f, 0.005f, 0.3f), 0.05f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "morph_lfo2Depth", 1 }, "Morph LFO2 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.3f));
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { "morph_macroBloom", 1 }, "Morph BLOOM",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.0f));
@@ -925,6 +953,9 @@ public:
         paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
         paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
         paramMacroSpace      = apvts.getRawParameterValue ("morph_macroSpace");
+        // D002: 2nd LFO
+        paramLfo2Rate        = apvts.getRawParameterValue ("morph_lfo2Rate");
+        paramLfo2Depth       = apvts.getRawParameterValue ("morph_lfo2Depth");
     }
 
     //==========================================================================
@@ -1116,6 +1147,12 @@ private:
     float lfoOutput = 0.0f;                     // cached LFO value for coupling reads
     static constexpr double kCouplingLfoRateHz = 0.3; // 0.3 Hz: one full breath every ~3.3 seconds
 
+    // D002: 2nd LFO — filter cutoff modulator (user-controllable rate/depth).
+    // Slow triangle LFO sweeps the Moog ladder cutoff for autonomous harmonic evolution.
+    // Rate floor 0.005 Hz satisfies D005. Default 0.05 Hz = one cutoff sweep per 20 seconds.
+    double lfo2Phase = 0.0;                     // 2nd LFO phase [0, 1)
+    float lfo2Output = 0.0f;                    // cached LFO2 value for filter modulation
+
     //-- Coupling accumulators (reset each block) ------------------------------
     float filterCutoffModulation = 0.0f;        // accumulated filter mod from AmpToFilter coupling
     float morphModulation = 0.0f;               // accumulated morph mod from EnvToMorph coupling
@@ -1156,6 +1193,9 @@ private:
     std::atomic<float>* paramMacroDrift      = nullptr;
     std::atomic<float>* paramMacroDepth      = nullptr;
     std::atomic<float>* paramMacroSpace      = nullptr;
+    // D002: 2nd LFO parameters
+    std::atomic<float>* paramLfo2Rate        = nullptr;
+    std::atomic<float>* paramLfo2Depth       = nullptr;
 };
 
 } // namespace xomnibus

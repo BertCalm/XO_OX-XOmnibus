@@ -69,6 +69,48 @@
 using namespace xomnibus;
 
 //==============================================================================
+// JUCE 8 compatibility: ParameterLayout is not iterable.
+//
+// To inspect parameters from a ParameterLayout we must feed it into an
+// AudioProcessorValueTreeState, then call getParameters() on the underlying
+// AudioProcessor to get the flat list.  MinimalTestProcessor provides the
+// minimum AudioProcessor implementation needed to construct an APVTS.
+//==============================================================================
+
+struct MinimalTestProcessor : juce::AudioProcessor
+{
+    const juce::String getName() const override              { return "TestProcessor"; }
+    void prepareToPlay (double, int) override                {}
+    void releaseResources() override                         {}
+    void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override {}
+    double getTailLengthSeconds() const override             { return 0.0; }
+    bool acceptsMidi() const override                        { return false; }
+    bool producesMidi() const override                       { return false; }
+    juce::AudioProcessorEditor* createEditor() override      { return nullptr; }
+    bool hasEditor() const override                          { return false; }
+    int getNumPrograms() override                            { return 1; }
+    int getCurrentProgram() override                         { return 0; }
+    void setCurrentProgram (int) override                    {}
+    const juce::String getProgramName (int) override         { return {}; }
+    void changeProgramName (int, const juce::String&) override {}
+    void getStateInformation (juce::MemoryBlock&) override   {}
+    void setStateInformation (const void*, int) override     {}
+};
+
+// Build an APVTS from a ParameterLayout and return the flat param list.
+// The returned pointers are owned by `apvtsOut`; keep apvtsOut alive while
+// you use the list.
+static const juce::Array<juce::AudioProcessorParameter*>&
+buildParamList (MinimalTestProcessor& proc,
+                std::unique_ptr<juce::AudioProcessorValueTreeState>& apvtsOut,
+                juce::AudioProcessorValueTreeState::ParameterLayout layout)
+{
+    apvtsOut = std::make_unique<juce::AudioProcessorValueTreeState>(
+        proc, nullptr, "PARAMS", std::move (layout));
+    return proc.getParameters();
+}
+
+//==============================================================================
 // Test infrastructure
 //==============================================================================
 
@@ -285,32 +327,37 @@ static void testD002_ModulationLifeblood()
             continue;
         }
 
-        auto layout = engine->createParameterLayout();
-
         // Count modulation-related parameters
         int modParamCount = 0;
         int lfoParamCount = 0;
 
-        for (auto& param : layout)
         {
-            if (!param) continue;
-            std::string paramId = param->getParameterID().toStdString();
+            MinimalTestProcessor proc;
+            std::unique_ptr<juce::AudioProcessorValueTreeState> apvts;
+            const auto& params = buildParamList(proc, apvts, engine->createParameterLayout());
 
-            // Convert to lowercase for matching
-            std::string lower = paramId;
-            std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+            for (auto* param : params)
+            {
+                auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
+                if (!withId) continue;
+                std::string paramId = withId->getParameterID().toStdString();
 
-            if (lower.find("mod") != std::string::npos ||
-                lower.find("matrix") != std::string::npos ||
-                lower.find("macro") != std::string::npos ||
-                lower.find("aftertouch") != std::string::npos ||
-                lower.find("expression") != std::string::npos)
-            {
-                modParamCount++;
-            }
-            if (lower.find("lfo") != std::string::npos)
-            {
-                lfoParamCount++;
+                // Convert to lowercase for matching
+                std::string lower = paramId;
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+
+                if (lower.find("mod") != std::string::npos ||
+                    lower.find("matrix") != std::string::npos ||
+                    lower.find("macro") != std::string::npos ||
+                    lower.find("aftertouch") != std::string::npos ||
+                    lower.find("expression") != std::string::npos)
+                {
+                    modParamCount++;
+                }
+                if (lower.find("lfo") != std::string::npos)
+                {
+                    lfoParamCount++;
+                }
             }
         }
 
@@ -354,40 +401,44 @@ static void testD004_NoDeadParameters()
             continue;
         }
 
-        auto layout = engine->createParameterLayout();
-
         int totalParams = 0;
         int validRangeParams = 0;
         int degenerateParams = 0;
 
-        for (auto& param : layout)
         {
-            if (!param) continue;
-            totalParams++;
+            MinimalTestProcessor proc;
+            std::unique_ptr<juce::AudioProcessorValueTreeState> apvts;
+            const auto& params = buildParamList(proc, apvts, engine->createParameterLayout());
 
-            // Check that the parameter has a non-degenerate range
-            auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param.get());
-            auto* intParam = dynamic_cast<juce::AudioParameterInt*>(param.get());
-            auto* choiceParam = dynamic_cast<juce::AudioParameterChoice*>(param.get());
-            auto* boolParam = dynamic_cast<juce::AudioParameterBool*>(param.get());
-
-            if (floatParam)
+            for (auto* param : params)
             {
-                auto range = floatParam->getNormalisableRange();
-                if (std::abs(range.end - range.start) > 1e-10f)
+                if (!param) continue;
+                totalParams++;
+
+                // Check that the parameter has a non-degenerate range
+                auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param);
+                auto* intParam = dynamic_cast<juce::AudioParameterInt*>(param);
+                auto* choiceParam = dynamic_cast<juce::AudioParameterChoice*>(param);
+                auto* boolParam = dynamic_cast<juce::AudioParameterBool*>(param);
+
+                if (floatParam)
+                {
+                    auto range = floatParam->getNormalisableRange();
+                    if (std::abs(range.end - range.start) > 1e-10f)
+                        validRangeParams++;
+                    else
+                        degenerateParams++;
+                }
+                else if (intParam || choiceParam || boolParam)
+                {
+                    // These always have a meaningful range
                     validRangeParams++;
+                }
                 else
-                    degenerateParams++;
-            }
-            else if (intParam || choiceParam || boolParam)
-            {
-                // These always have a meaningful range
-                validRangeParams++;
-            }
-            else
-            {
-                // Unknown param type — count as valid (conservative)
-                validRangeParams++;
+                {
+                    // Unknown param type — count as valid (conservative)
+                    validRangeParams++;
+                }
             }
         }
 
@@ -434,41 +485,46 @@ static void testD005_LFOBreathing()
             continue;
         }
 
-        auto layout = engine->createParameterLayout();
-
         bool hasLFORateParam = false;
         bool hasSlowLFO = false;
         bool hasLFOParam = false;
 
-        for (auto& param : layout)
         {
-            if (!param) continue;
-            std::string paramId = param->getParameterID().toStdString();
+            MinimalTestProcessor proc;
+            std::unique_ptr<juce::AudioProcessorValueTreeState> apvts;
+            const auto& params = buildParamList(proc, apvts, engine->createParameterLayout());
 
-            std::string lower = paramId;
-            std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
-
-            // Track any LFO-related parameter
-            if (lower.find("lfo") != std::string::npos)
-                hasLFOParam = true;
-
-            // Look for LFO rate parameters specifically
-            bool isLFORate = (lower.find("lfo") != std::string::npos &&
-                             (lower.find("rate") != std::string::npos ||
-                              lower.find("freq") != std::string::npos ||
-                              lower.find("speed") != std::string::npos));
-
-            if (isLFORate)
+            for (auto* param : params)
             {
-                hasLFORateParam = true;
+                auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
+                if (!withId) continue;
+                std::string paramId = withId->getParameterID().toStdString();
 
-                auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param.get());
-                if (floatParam)
+                std::string lower = paramId;
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+
+                // Track any LFO-related parameter
+                if (lower.find("lfo") != std::string::npos)
+                    hasLFOParam = true;
+
+                // Look for LFO rate parameters specifically
+                bool isLFORate = (lower.find("lfo") != std::string::npos &&
+                                 (lower.find("rate") != std::string::npos ||
+                                  lower.find("freq") != std::string::npos ||
+                                  lower.find("speed") != std::string::npos));
+
+                if (isLFORate)
                 {
-                    auto range = floatParam->getNormalisableRange();
-                    float minHz = range.start;
-                    if (minHz <= 0.01f)
-                        hasSlowLFO = true;
+                    hasLFORateParam = true;
+
+                    auto* floatParam = dynamic_cast<juce::AudioParameterFloat*>(param);
+                    if (floatParam)
+                    {
+                        auto range = floatParam->getNormalisableRange();
+                        float minHz = range.start;
+                        if (minHz <= 0.01f)
+                            hasSlowLFO = true;
+                    }
                 }
             }
         }
@@ -548,30 +604,36 @@ static void testD006_ExpressionInput()
         reportTest(msg1.c_str(), velocityResponse);
 
         // Check 2: Expression parameters exist (aftertouch, mod wheel, expression)
-        auto layout = engine->createParameterLayout();
         bool hasExpressionParam = false;
 
-        for (auto& param : layout)
         {
-            if (!param) continue;
-            std::string lower = param->getParameterID().toStdString();
-            std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+            MinimalTestProcessor proc;
+            std::unique_ptr<juce::AudioProcessorValueTreeState> apvts;
+            const auto& params = buildParamList(proc, apvts, engine->createParameterLayout());
 
-            if (lower.find("aftertouch") != std::string::npos ||
-                lower.find("modwheel") != std::string::npos ||
-                lower.find("mod_wheel") != std::string::npos ||
-                lower.find("expression") != std::string::npos ||
-                lower.find("pressure") != std::string::npos ||
-                lower.find("velocity") != std::string::npos ||
-                lower.find("velscale") != std::string::npos ||
-                lower.find("vel_scale") != std::string::npos ||
-                lower.find("velsens") != std::string::npos ||
-                lower.find("vel_sens") != std::string::npos ||
-                lower.find("at_") != std::string::npos ||
-                lower.find("mw_") != std::string::npos)
+            for (auto* param : params)
             {
-                hasExpressionParam = true;
-                break;
+                auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(param);
+                if (!withId) continue;
+                std::string lower = withId->getParameterID().toStdString();
+                std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
+
+                if (lower.find("aftertouch") != std::string::npos ||
+                    lower.find("modwheel") != std::string::npos ||
+                    lower.find("mod_wheel") != std::string::npos ||
+                    lower.find("expression") != std::string::npos ||
+                    lower.find("pressure") != std::string::npos ||
+                    lower.find("velocity") != std::string::npos ||
+                    lower.find("velscale") != std::string::npos ||
+                    lower.find("vel_scale") != std::string::npos ||
+                    lower.find("velsens") != std::string::npos ||
+                    lower.find("vel_sens") != std::string::npos ||
+                    lower.find("at_") != std::string::npos ||
+                    lower.find("mw_") != std::string::npos)
+                {
+                    hasExpressionParam = true;
+                    break;
+                }
             }
         }
 

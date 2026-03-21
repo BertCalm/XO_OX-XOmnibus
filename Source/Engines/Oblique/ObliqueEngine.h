@@ -795,6 +795,10 @@ public:
         const float phaserFeedback    = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.3f;
         const float phaserMixAmount   = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.4f;
 
+        // D002: 2nd LFO — phaser depth modulator. Read once per block.
+        const float lfo2Rate  = (pLfo2Rate  != nullptr) ? pLfo2Rate->load()  : 0.03f;
+        const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.25f;
+
         // -- XOmnibus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
         // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
         const float macroFold   = (pMacroFold   != nullptr) ? pMacroFold->load()   : 0.0f;
@@ -1063,7 +1067,7 @@ public:
             // Post-voice FX chain
             // ================================================================
 
-            // --- D005: Prism LFO accumulation ---
+            // --- D005: Prism LFO accumulation (LFO1) ---
             // Autonomous sine LFO modulates prism color spread.
             // Base rate 0.2 Hz; COLOR macro accelerates up to 2.0 Hz for faster
             // prismatic shimmer. BOUNCE macro deepens the LFO to ±0.35 at full throw.
@@ -1079,6 +1083,16 @@ public:
             // The prism fish catches a slowly rotating light beam — or fast flutter with macros.
             float lfoDepth = 0.15f + macroBounce * 0.20f;
             float lfoColorMod = obliqueLfoValue * lfoDepth;
+
+            // --- D002: 2nd LFO — phaser swirl modulator ---
+            // User-controlled rate (0.005–2 Hz) and depth (0–0.5).
+            // Modulates phaser depth, creating autonomous breathing of the Tame Impala swirl.
+            // The phase floor at 0.005 Hz satisfies D005 (≤ 0.01 Hz rate floor).
+            obliqueLfo2Phase += static_cast<double> (lfo2Rate) / hostSampleRate;
+            if (obliqueLfo2Phase >= 1.0) obliqueLfo2Phase -= 1.0;
+            float lfo2Value = fastSin (static_cast<float> (obliqueLfo2Phase * kTwoPiD));
+            // Unipolar LFO2 [0, 1] for phaser depth: never goes to zero, adds on top of base
+            float lfo2PhaserMod = lfo2Value * lfo2Depth;
 
             // --- Prism Delay (6-facet spectral delay — the prismatic core) ---
             // D006: mod wheel increases prism color spread up to +0.3 at full wheel (sensitivity 0.3)
@@ -1098,7 +1112,10 @@ public:
             // --- Phaser (Tame Impala psychedelic swirl) ---
             ObliquePhaser::Params phaserParams;
             phaserParams.rate = phaserRate;
-            phaserParams.depth = phaserDepth;
+            // D002: LFO2 modulates phaser depth — bipolar, adds to base depth.
+            // At lfo2Depth=0.25 and full LFO swing: phaser depth breathes ±0.25.
+            // Clamped so it never goes below 0 or above 1.
+            phaserParams.depth = clamp (phaserDepth + lfo2PhaserMod, 0.0f, 1.0f);
             phaserParams.feedback = phaserFeedback;
             phaserParams.mix = effectivePhaserMix;
             phaserEffect.process (postPrismL, postPrismR, phaserParams);
@@ -1353,6 +1370,18 @@ public:
             juce::ParameterID { "oblq_phaserMix", 1 }, "Oblique Phaser Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.4f));
 
+        // D002: 2nd LFO — phaser swirl LFO. Modulates phaser depth for autonomous
+        // Tame Impala-style breathing movement. Rate floor 0.005 Hz satisfies D005.
+        // Default 0.03 Hz = one full phaser depth sweep every ~33 seconds (very slow,
+        // like light gradually shifting angle through the prism).
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_lfo2Rate", 1 }, "Oblique LFO2 Rate",
+            juce::NormalisableRange<float> (0.005f, 2.0f, 0.005f, 0.3f), 0.03f));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_lfo2Depth", 1 }, "Oblique LFO2 Depth",
+            juce::NormalisableRange<float> (0.0f, 0.5f, 0.01f), 0.25f));
+
         // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
         //
@@ -1413,6 +1442,9 @@ public:
         pPhaserDepth    = apvts.getRawParameterValue ("oblq_phaserDepth");
         pPhaserFeedback = apvts.getRawParameterValue ("oblq_phaserFeedback");
         pPhaserMix      = apvts.getRawParameterValue ("oblq_phaserMix");
+        // D002: 2nd LFO
+        pLfo2Rate       = apvts.getRawParameterValue ("oblq_lfo2Rate");
+        pLfo2Depth      = apvts.getRawParameterValue ("oblq_lfo2Depth");
         // XOmnibus macros
         pMacroFold      = apvts.getRawParameterValue ("oblq_macroFold");
         pMacroBounce    = apvts.getRawParameterValue ("oblq_macroBounce");
@@ -1474,6 +1506,12 @@ private:
     // Rate 0.2 Hz = one full spectral sweep every 5 seconds. Depth ±0.15 is
     // perceptible but not distracting — the sound lives and moves.
     double obliqueLfoPhase = 0.0;
+
+    // D002: 2nd LFO — phaser swirl LFO (D002 requires 2+ LFOs).
+    // Rate: user-controlled via oblq_lfo2Rate (0.005–2.0 Hz, floor ≤ 0.01 Hz for D005).
+    // Destination: phaser depth modulation (±lfo2Depth, making the Tame Impala swirl breathe).
+    // This is the second axis of autonomous modulation: LFO1 colors the prism, LFO2 animates the phaser.
+    double obliqueLfo2Phase = 0.0;
 
     //--------------------------------------------------------------------------
     // Coupling state — accumulated between blocks, consumed in renderBlock
@@ -1690,6 +1728,9 @@ private:
     std::atomic<float>* pPhaserDepth    = nullptr;
     std::atomic<float>* pPhaserFeedback = nullptr;
     std::atomic<float>* pPhaserMix      = nullptr;
+    // D002: 2nd LFO (phaser swirl modulator)
+    std::atomic<float>* pLfo2Rate       = nullptr;
+    std::atomic<float>* pLfo2Depth      = nullptr;
     // XOmnibus macros
     std::atomic<float>* pMacroFold      = nullptr;
     std::atomic<float>* pMacroBounce    = nullptr;

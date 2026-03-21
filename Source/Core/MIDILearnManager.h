@@ -266,6 +266,19 @@ public:
         addMapping({ 11, 0, "macro4", 0.0f, 1.0f, false });
         // CC74 Brightness → macro1: CHARACTER (filter brightness proxy)
         addMapping({ 74, 0, "macro1", 0.0f, 1.0f, false });
+
+        // Coupling performance params (spec §6.1 — all undefined/unassigned CCs)
+        // Amount params are bipolar (-1.0 to 1.0); CC centre (64/127 ≈ 0.504) maps to ~0.0 depth.
+        // CC3 → cp_r1_amount: coupling route 1 depth
+        addMapping({ 3, 0, "cp_r1_amount", -1.0f, 1.0f, false });
+        // CC9 → cp_r2_amount: coupling route 2 depth
+        addMapping({ 9, 0, "cp_r2_amount", -1.0f, 1.0f, false });
+        // CC14 → cp_r3_amount: coupling route 3 depth
+        addMapping({ 14, 0, "cp_r3_amount", -1.0f, 1.0f, false });
+        // CC15 → cp_r4_amount: coupling route 4 depth
+        addMapping({ 15, 0, "cp_r4_amount", -1.0f, 1.0f, false });
+        // CC85 → cp_r1_type: coupling type sweep for route 1 (0 = AmpToFilter, 13 = KnotTopology)
+        addMapping({ 85, 0, "cp_r1_type", 0.0f, 13.0f, false });
     }
 
     void setPerPresetDefault(bool perPreset) { perPresetDefault = perPreset; }

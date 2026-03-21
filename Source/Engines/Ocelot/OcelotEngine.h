@@ -84,6 +84,29 @@ public:
         // Pitch bend: ±2 semitones (propagated to strata via snapshot)
         snapshot.pitchBendSemitones = pitchBendNorm * 2.0f;
 
+        // Apply coupling input mods (accumulated by applyCouplingInput since last block).
+        // Each mod is added to the snapshot field and clamped, then reset to zero.
+        if (couplingFilterMod != 0.0f)
+        {
+            snapshot.canopySpectralFilter = std::clamp(snapshot.canopySpectralFilter + couplingFilterMod, 0.0f, 1.0f);
+            couplingFilterMod = 0.0f;
+        }
+        if (couplingEcosystemMod != 0.0f)
+        {
+            snapshot.ecosystemDepth = std::clamp(snapshot.ecosystemDepth + couplingEcosystemMod, 0.0f, 1.0f);
+            couplingEcosystemMod = 0.0f;
+        }
+        if (couplingFloorMod != 0.0f)
+        {
+            snapshot.floorTension = std::clamp(snapshot.floorTension + couplingFloorMod, 0.0f, 1.0f);
+            couplingFloorMod = 0.0f;
+        }
+        if (couplingDensityMod != 0.0f)
+        {
+            snapshot.density = std::clamp(snapshot.density + couplingDensityMod, 0.0f, 1.0f);
+            couplingDensityMod = 0.0f;
+        }
+
         // 3. Clear buffer and render
         buffer.clear();
         auto* outL = buffer.getWritePointer(0);
@@ -112,15 +135,42 @@ public:
 
     void applyCouplingInput(xomnibus::CouplingType type,
                             float amount,
-                            const float* sourceBuffer,
-                            int numSamples) override
+                            const float* /*sourceBuffer*/,
+                            int /*numSamples*/) override
     {
-        // TODO: applyCouplingInput stub — coupling is currently a no-op. Implement engine-specific modulation routing before V1 ships.
-        // Translate XOmnibus CouplingType to XOcelot StrataModulation
-        // These accumulate and are consumed by the next renderBlock via EcosystemMatrix
-        // For now, route supported types to coupling cache
-        // (Full routing wired when running inside XOmnibus)
-        (void)type; (void)amount; (void)sourceBuffer; (void)numSamples;
+        // Ocelot coupling: external modulation accumulates into snapshot fields
+        // and is consumed in the next renderBlock() call. Each type maps to the
+        // most ecologically coherent stratum parameter.
+        switch (type)
+        {
+            case xomnibus::CouplingType::AmpToFilter:
+                // Partner amplitude (e.g. ONSET drum hits) opens canopy spectral filter.
+                // Sensitivity 0.25: prevents filter blow-out from loud percussive partners.
+                couplingFilterMod = std::clamp(couplingFilterMod + amount * 0.25f, -0.5f, 0.5f);
+                break;
+
+            case xomnibus::CouplingType::LFOToPitch:
+            case xomnibus::CouplingType::AmpToPitch:
+            case xomnibus::CouplingType::PitchToPitch:
+                // Partner pitch/LFO modulates ecosystem depth — more signal flow between strata.
+                // Cross-stratum coupling deepens when another engine's melodic content arrives.
+                couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, 0.0f, 0.5f);
+                break;
+
+            case xomnibus::CouplingType::EnvToMorph:
+                // External envelope sweeps floor tension — pluck character changes with
+                // the dynamics of the partner engine (feliX's darts make the floor tighter).
+                couplingFloorMod = std::clamp(couplingFloorMod + amount * 0.2f, -0.3f, 0.3f);
+                break;
+
+            case xomnibus::CouplingType::EnvToDecay:
+                // External envelope decays → density decreases (space opens up between strata).
+                couplingDensityMod = std::clamp(couplingDensityMod - amount * 0.15f, -0.3f, 0.0f);
+                break;
+
+            default:
+                break;
+        }
     }
 
     // ── Parameters ───────────────────────────────────────
@@ -154,6 +204,13 @@ private:
     // ---- D006 Mod wheel — CC#1 deepens ecosystem cross-stratum modulation (+0–0.35) ----
     float modWheelAmount = 0.0f;
     float pitchBendNorm  = 0.0f;
+
+    // ---- Coupling accumulators — reset each block, accumulated by applyCouplingInput ----
+    // Applied to snapshot in renderBlock before voice rendering.
+    float couplingFilterMod    = 0.0f;  // AmpToFilter → canopySpectralFilter ±0.5
+    float couplingEcosystemMod = 0.0f;  // LFO/Amp/PitchToPitch → ecosystemDepth +0–0.5
+    float couplingFloorMod     = 0.0f;  // EnvToMorph → floorTension ±0.3
+    float couplingDensityMod   = 0.0f;  // EnvToDecay → density -0–0.3
 };
 
 } // namespace xocelot

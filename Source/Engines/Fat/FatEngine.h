@@ -776,6 +776,19 @@ public:
             ? std::array<int,4>{{1,2,4,6}}[std::min (3, static_cast<int> (pPolyphony->load()))]
             : 6;
 
+        // D002: 2nd LFO — read once per block, advance block-rate.
+        // Saw waveform (rising ramp) creates a characteristic gliding filter sweep.
+        // Rate floor 0.005 Hz satisfies D005. Depth scales ±24 semitones at max (×fltCutoff).
+        const float lfo2Rate  = (pLfo2Rate  != nullptr) ? pLfo2Rate->load()  : 0.08f;
+        const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.25f;
+        lfo2Phase += static_cast<double> (lfo2Rate) / sr * static_cast<double> (numSamples);
+        if (lfo2Phase >= 1.0) lfo2Phase -= 1.0;
+        // Saw wave: bipolar [-1, +1], rising over the full cycle period
+        lfo2Output = static_cast<float> (2.0 * lfo2Phase - 1.0);
+        // ±24 semitones = factor of 2× at max. Map depth [0,1] → [0, 24st].
+        // Applied as additive semitone offset before the exponential cutoff computation.
+        const float lfo2SemitonesMod = lfo2Output * lfo2Depth * 24.0f;
+
         // Sub octave: -2, -1, 0 → semitone offsets
         const float subSemitones = static_cast<float> ((subOct - 2) * 12); // index 0=-24, 1=-12, 2=0
 
@@ -978,8 +991,9 @@ public:
                 float keyTrackOffset = (static_cast<float> (voice.noteNumber) - 60.0f)
                                        * fltKeyTrack;
                 // D001: velocity scales filter envelope depth for timbral expression
+                // D002: LFO2 adds ±24 semitone sweep (lfo2SemitonesMod, block-constant)
                 float cutoff = fltCutoff
-                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod)
+                    * fastExp ((fltEnvAmt * fltEnvVal * voice.velocity * 48.0f + keyTrackOffset + filterMod * 12.0f + breathMod + lfo2SemitonesMod)
                                * (0.693147f / 12.0f));
                 cutoff = clamp (cutoff, 20.0f, 18000.0f);
 
@@ -1285,6 +1299,17 @@ public:
             juce::ParameterID { "fat_polyphony", 1 }, "Fat Polyphony",
             juce::StringArray { "1", "2", "4", "6" }, 3));
 
+        // D002: 2nd LFO — dedicated filter sweep modulator.
+        // Saw LFO sweeps the ZDF ladder cutoff for slow autonomous harmonic movement.
+        // Rate range 0.005–4.0 Hz (floor satisfies D005 ≤ 0.01 Hz).
+        // Depth up to ±6000 Hz cutoff sweep (in log/semitone space: ±24st at max).
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_lfo2Rate", 1 }, "Fat LFO2 Rate",
+            juce::NormalisableRange<float> (0.005f, 4.0f, 0.005f, 0.3f), 0.08f));
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "fat_lfo2Depth", 1 }, "Fat LFO2 Depth",
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.25f));
+
         // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
         //
@@ -1354,6 +1379,9 @@ public:
         pMacroGrit   = apvts.getRawParameterValue ("fat_macroGrit");
         pMacroSize   = apvts.getRawParameterValue ("fat_macroSize");
         pMacroCrush  = apvts.getRawParameterValue ("fat_macroCrush");
+        // D002: 2nd LFO
+        pLfo2Rate    = apvts.getRawParameterValue ("fat_lfo2Rate");
+        pLfo2Depth   = apvts.getRawParameterValue ("fat_lfo2Depth");
     }
 
 private:
@@ -1534,6 +1562,14 @@ private:
     std::atomic<float>* pMacroGrit  = nullptr;
     std::atomic<float>* pMacroSize  = nullptr;
     std::atomic<float>* pMacroCrush = nullptr;
+
+    // D002: 2nd LFO — user-routable filter modulator.
+    // Saw LFO sweeps ZDF ladder cutoff for autonomous harmonic evolution.
+    // Rate floor 0.005 Hz satisfies D005 (≤ 0.01 Hz).
+    double lfo2Phase = 0.0;    // [0, 1) normalized phase
+    float lfo2Output = 0.0f;   // cached saw output [-1, +1]
+    std::atomic<float>* pLfo2Rate  = nullptr;
+    std::atomic<float>* pLfo2Depth = nullptr;
 };
 
 } // namespace xomnibus

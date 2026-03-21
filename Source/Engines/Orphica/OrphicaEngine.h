@@ -197,6 +197,7 @@ public:
         tapeSatFx.reset();darkDelay.reset();deepPlate.reset();
         shimmerVerb.reset();microDelay.reset();spectralSmear.reset();crystalChorus.reset();
         subPhaseL=subPhaseR=0;
+        atTarget=atSmoothed=modWheelTarget=modWheelSmoothed=0.0f;
     }
 
     void renderBlock(juce::AudioBuffer<float>&buf,juce::MidiBuffer&midi,int ns) override {
@@ -214,19 +215,32 @@ public:
                 int raw = msg.getPitchWheelValue(); // 0..16383, centre=8192
                 pitchBendSemitones = ((float)(raw - 8192) / 8192.0f) * 2.0f;
             } else if (msg.isChannelPressure()) {
-                float atPressure = (float)msg.getChannelPressureValue() / 127.f;
-                for (auto& v : voices)
-                    if (v.active) v.vel = juce::jmax(v.vel, atPressure);
+                // D006: channel pressure → smoothed expression input.
+                // Target value is stored; block-rate smoothing applied below.
+                // Never write to v.vel — that permanently corrupts voice velocity.
+                atTarget = (float)msg.getChannelPressureValue() / 127.f;
             }
             else if (msg.isController() && msg.getControllerNumber() == 1) {
-                float modWheel = (float)msg.getControllerValue() / 127.f;
-                for (auto& v : voices)
-                    if (v.active) v.vel = juce::jmax(v.vel, modWheel * 0.7f);
+                // D006: CC1 mod wheel → expression input (deeper pluck brightness).
+                // Stored as target; smoothed each block. Does NOT modify v.vel.
+                modWheelTarget = (float)msg.getControllerValue() / 127.f;
             }
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
         if(silenceGate.isBypassed() && midi.isEmpty()){buf.clear();return;}
+
+        // D006: Smooth aftertouch and mod wheel expression inputs.
+        // One-pole IIR toward target: coeff ~5ms attack, 50ms release.
+        // These are SEPARATE from v.vel — they never corrupt voice velocity.
+        {
+            const float kUp   = 1.0f - std::exp(-1.0f / (static_cast<float>(sr) * 0.005f));
+            const float kDown = 1.0f - std::exp(-1.0f / (static_cast<float>(sr) * 0.050f));
+            float atCoeff = (atTarget > atSmoothed) ? kUp : kDown;
+            atSmoothed += atCoeff * (atTarget - atSmoothed);
+            float mwCoeff = (modWheelTarget > modWheelSmoothed) ? kUp : kDown;
+            modWheelSmoothed += mwCoeff * (modWheelTarget - modWheelSmoothed);
+        }
 
         // ---- Read all parameters ------------------------------------------------
         // Section A: Harp strings
@@ -348,15 +362,19 @@ public:
                 float out=v.dl.read(dlen);
 
                 // Pluck exciter — position modulates brightness (bridge=bright, nut=dark)
-                float posBright = effBright * (1.0f - pPos * 0.4f);
+                // D006: aftertouch and mod wheel add brightness expression (do NOT touch v.vel).
+                float exprBright = std::clamp(effBright + atSmoothed * 0.2f + modWheelSmoothed * 0.15f, 0.0f, 1.0f);
+                float posBright = exprBright * (1.0f - pPos * 0.4f);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
-                float effIntens = extIntens * velIntens;
+                // D006: aftertouch adds up to +30% pluck intensity (more aggressive bowing)
+                float effIntens = extIntens * velIntens * (1.0f + atSmoothed * 0.3f);
                 float exc=v.pluck.tick(posBright*velIntens)*effIntens;
 
                 // D001: velocity shapes brightness, not just amplitude.
                 // Higher velocity = less damping = brighter string (more high-frequency content
-                // retained in the waveguide feedback loop). vel=0 → 0.97x (dull), vel=1 → 1.0x (bright).
-                float velBright = 0.97f + v.vel * 0.03f;
+                // retained in the waveguide feedback loop).
+                // Widened range: vel=0 → 0.92x (dull/muted), vel=1 → 1.0x (fully bright/open).
+                float velBright = 0.92f + v.vel * 0.08f;
                 float voiceDamp = std::clamp(effDamp * velBright + extDampMod, 0.0f, 0.999f);
 
                 // Damped feedback write
@@ -583,6 +601,12 @@ private:
     float extPitchMod = 0.f;   // semitones from LFOToPitch
     float extDampMod  = 0.f;   // 0–1 from AmpToFilter
     float extIntens   = 1.f;   // multiplier from EnvToMorph
+
+    // D006: Expression state — aftertouch + mod wheel (SEPARATE from v.vel to prevent corruption)
+    float atTarget        = 0.0f;  // raw MIDI channel pressure target [0,1]
+    float atSmoothed      = 0.0f;  // smoothed aftertouch: 5ms attack / 50ms release
+    float modWheelTarget  = 0.0f;  // raw CC1 mod wheel target [0,1]
+    float modWheelSmoothed= 0.0f;  // smoothed mod wheel: 5ms attack / 50ms release
 
     // MIDI pitch bend (±2 semitones)
     float pitchBendSemitones = 0.0f;
