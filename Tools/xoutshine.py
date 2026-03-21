@@ -1519,6 +1519,7 @@ def run_pipeline(args):
     output_format = args.format or ("xpn" if args.output.lower().endswith(".xpn") else "folder")
     dry_run = getattr(args, "dry_run", False)
     resume = getattr(args, "resume", False)
+    dna_inherit = getattr(args, "dna_inherit", True)
 
     # Work directory: persistent if --work-dir specified, otherwise temporary
     explicit_work_dir = getattr(args, "work_dir", None)
@@ -1552,7 +1553,7 @@ def run_pipeline(args):
         if dry_run:
             print("\n[DRY RUN] Classification preview (stages 2–3 only):")
             samples = classify(samples)
-            samples = analyze(samples)
+            samples = analyze(samples, dna_inherit=dna_inherit)
             total_dur = sum(s.duration_s for s in samples)
             # Estimate: 4 vel layers × 4 RR × ~WAV size per file
             est_files = len(samples) * args.velocity_layers * args.round_robin
@@ -1581,7 +1582,7 @@ def run_pipeline(args):
         if resume and _stage_done(work_dir, 3):
             print("  Resuming: stage 3 already complete")
         else:
-            samples = analyze(samples)
+            samples = analyze(samples, dna_inherit=dna_inherit)
             _mark_stage(work_dir, 3)
 
         # ── Stage 4: ENHANCE ─────────────────────────────────────────────────
@@ -1594,7 +1595,8 @@ def run_pipeline(args):
         else:
             programs = enhance(samples, work_dir,
                                num_round_robin=args.round_robin,
-                               num_velocity_layers=args.velocity_layers)
+                               num_velocity_layers=args.velocity_layers,
+                               dna_inherit=dna_inherit)
             _mark_stage(work_dir, 4)
 
         # ── Stage 5: NORMALIZE ───────────────────────────────────────────────
@@ -1610,8 +1612,13 @@ def run_pipeline(args):
         if resume and _stage_done(work_dir, 6):
             print("  Resuming: stage 6 already complete")
         else:
-            build_programs(programs, work_dir, velocity_curve=args.velocity_curve)
+            build_programs(programs, work_dir, velocity_curve=args.velocity_curve,
+                          dna_inherit=dna_inherit)
             _mark_stage(work_dir, 6)
+
+        # ── Write .xometa preset files with DNA ────────────────────────────
+        if dna_inherit:
+            write_xometa_files(programs, work_dir)
 
         # ── Stage 7: PACKAGE ─────────────────────────────────────────────────
         print("[7/8] PACKAGE")
@@ -1679,6 +1686,12 @@ Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
     parser.add_argument("--work-dir",
                         help="Persistent working directory for resume support "
                              "(default: auto-managed temp dir, deleted on completion)")
+    parser.add_argument("--dna-inherit", action="store_true", default=True,
+                        dest="dna_inherit",
+                        help="Enable DNA Inheritance: infer 6D Sonic DNA from audio and "
+                             "use it to shape enhancement decisions (default: enabled)")
+    parser.add_argument("--no-dna-inherit", action="store_false", dest="dna_inherit",
+                        help="Disable DNA Inheritance (use generic enhancement)")
     parser.add_argument("--version", action="version", version=f"XOutshine {VERSION}")
 
     args = parser.parse_args()

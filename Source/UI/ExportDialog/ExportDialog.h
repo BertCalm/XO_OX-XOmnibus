@@ -86,6 +86,9 @@ public:
         sectionY += kSettingsSectionH;
         g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
 
+        sectionY += kEntangledSectionH;
+        g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
+
         sectionY += kBundleSectionH;
         g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
 
@@ -99,7 +102,15 @@ public:
 
         int settingsLabelY = kHeaderH + kPresetSectionH + kPreviewSectionH + 4;
         g.drawText("RENDER SETTINGS", 12, settingsLabelY, 200, 16, juce::Justification::topLeft);
-        g.drawText("BUNDLE", 12, settingsLabelY + kSettingsSectionH, 200, 16, juce::Justification::topLeft);
+
+        int entangledLabelY = settingsLabelY + kSettingsSectionH;
+        // "ENTANGLED" label painted in XO Gold when toggle is active
+        if (entangledToggle.getToggleState() && capturedSnapshot.hasActiveCoupling())
+            g.setColour(GalleryColors::get(GalleryColors::xoGold));
+        g.drawText("ENTANGLED", 12, entangledLabelY, 200, 16, juce::Justification::topLeft);
+        g.setColour(GalleryColors::get(GalleryColors::textMid()));
+
+        g.drawText("BUNDLE", 12, entangledLabelY + kEntangledSectionH, 200, 16, juce::Justification::topLeft);
 
         // Draw preview waveform
         paintPreviewWaveform(g);
@@ -108,7 +119,7 @@ public:
         if (!exporting)
         {
             auto estArea = getLocalBounds().reduced(12, 0);
-            estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH + kBundleSectionH + 4);
+            estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH + kEntangledSectionH + kBundleSectionH + 4);
             estArea = estArea.removeFromTop(20);
             g.setFont(GalleryFonts::label(8.5f));
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
@@ -149,6 +160,13 @@ public:
         profileMPCBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
         profileLightBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
         profileMaxBtn.setBounds(profileRow.removeFromLeft(profileBtnW).reduced(2, 0));
+
+        // Entangled mode section
+        auto entangledArea = area.removeFromTop(kEntangledSectionH).reduced(12, 0);
+        entangledArea.removeFromTop(4);
+        auto entangledRow = entangledArea.removeFromTop(20);
+        entangledToggle.setBounds(entangledRow.removeFromLeft(140));
+        entangledSummaryLabel.setBounds(entangledRow.reduced(4, 0));
 
         // Bundle config section
         auto bundleArea = area.removeFromTop(kBundleSectionH).reduced(12, 0);
@@ -301,6 +319,12 @@ private:
     std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
     std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
     int selectedPresetIndex = -1;
+
+    // Entangled mode — coupling snapshot export
+    MegaCouplingMatrix* liveCouplingMatrix = nullptr;
+    juce::ToggleButton entangledToggle { "Entangled Mode" };
+    juce::Label entangledSummaryLabel;
+    XOriginate::CouplingSnapshot capturedSnapshot;
 
     //==========================================================================
     // Build methods
@@ -594,6 +618,59 @@ private:
         profileMaxBtn.onClick   = [this] { applyProfile(ExportProfile::MaxQuality);   };
     }
 
+    void buildEntangledMode()
+    {
+        entangledToggle.setTooltip("Export with coupling state preserved as composite instrument");
+        A11y::setup(entangledToggle, "Entangled Mode",
+                    "When enabled, renders all engine slots as a single coupled instrument");
+        addAndMakeVisible(entangledToggle);
+
+        // Disable the toggle if no coupling matrix is available
+        entangledToggle.setEnabled(liveCouplingMatrix != nullptr);
+
+        entangledToggle.onClick = [this]
+        {
+            if (entangledToggle.getToggleState() && liveCouplingMatrix != nullptr)
+            {
+                // Capture the live coupling state when the user enables entangled mode
+                capturedSnapshot = XOriginate::captureCouplingState(
+                    EngineRegistry::instance(), *liveCouplingMatrix);
+
+                if (capturedSnapshot.hasActiveCoupling())
+                {
+                    entangledSummaryLabel.setText(capturedSnapshot.getSummary(),
+                                                  juce::dontSendNotification);
+                    juce::AccessibilityHandler::postAnnouncement(
+                        "Entangled mode enabled: " + juce::String(capturedSnapshot.activeRoutes.size())
+                        + " coupling routes captured",
+                        juce::AccessibilityHandler::AnnouncementPriority::medium);
+                }
+                else
+                {
+                    entangledSummaryLabel.setText("No active coupling routes",
+                                                  juce::dontSendNotification);
+                    juce::AccessibilityHandler::postAnnouncement(
+                        "No active coupling routes found",
+                        juce::AccessibilityHandler::AnnouncementPriority::medium);
+                }
+            }
+            else
+            {
+                capturedSnapshot = {};
+                entangledSummaryLabel.setText("", juce::dontSendNotification);
+            }
+            repaint();
+        };
+
+        entangledSummaryLabel.setFont(GalleryFonts::label(7.5f));
+        entangledSummaryLabel.setColour(juce::Label::textColourId,
+                                         GalleryColors::get(GalleryColors::textMid()));
+        entangledSummaryLabel.setMinimumHorizontalScale(0.4f);
+        A11y::setup(entangledSummaryLabel, "Coupling Summary",
+                    "Shows active coupling routes that will be captured in the export");
+        addAndMakeVisible(entangledSummaryLabel);
+    }
+
     void buildBundleConfig()
     {
         bundleNameField.setTextToShowWhenEmpty("Bundle Name...", GalleryColors::get(GalleryColors::textMid()));
@@ -820,16 +897,24 @@ private:
         if (coverEngineBox.getSelectedId() > 1)
             capturedCoverEngine = coverEngineBox.getText();
 
+        // Capture entangled state on the message thread before launching worker
+        bool useEntangled = entangledToggle.getToggleState()
+                            && capturedSnapshot.hasActiveCoupling();
+        auto snapshotCopy = useEntangled ? capturedSnapshot : XOriginate::CouplingSnapshot{};
+
         // Export runs on a worker thread
         struct ExportThread : public juce::Thread
         {
             ExportThread(ExportDialog& d,
                          XOriginate::RenderSettings s,
                          juce::String name,
-                         juce::String coverEng)
+                         juce::String coverEng,
+                         bool entangled,
+                         XOriginate::CouplingSnapshot snap)
                 : juce::Thread("XPN-Export"), dialog(d),
                   settings(std::move(s)), bundleName(std::move(name)),
-                  coverEngine(std::move(coverEng)) {}
+                  coverEngine(std::move(coverEng)),
+                  useEntangled(entangled), snapshot(std::move(snap)) {}
 
             void run() override
             {
@@ -850,24 +935,32 @@ private:
 
                 auto& presets = dialog.presetManager.library;
 
-                auto result = exporter.exportBundle(config, settings, presets,
-                    [this](XOriginate::Progress& p)
+                auto progressCb = [this](XOriginate::Progress& p)
+                {
+                    dialog.progressValue = (double)p.overallProgress;
+
+                    auto text = p.presetName
+                        + (useEntangled ? juce::String(" [Entangled]") : juce::String())
+                        + " — note "
+                        + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes)
+                        + " (" + juce::String(p.currentPreset) + "/"
+                        + juce::String(p.totalPresets) + ")";
+
                     {
-                        dialog.progressValue = (double)p.overallProgress;
+                        std::lock_guard<std::mutex> lock(dialog.progressTextMutex);
+                        dialog.lastProgressText = text;
+                    }
 
-                        auto text = p.presetName + " — note "
-                            + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes)
-                            + " (" + juce::String(p.currentPreset) + "/"
-                            + juce::String(p.totalPresets) + ")";
+                    if (dialog.shouldCancel.load())
+                        p.cancelled = true;
+                };
 
-                        {
-                            std::lock_guard<std::mutex> lock(dialog.progressTextMutex);
-                            dialog.lastProgressText = text;
-                        }
-
-                        if (dialog.shouldCancel.load())
-                            p.cancelled = true;
-                    });
+                XOriginate::ExportResult result;
+                if (useEntangled)
+                    result = exporter.exportCoupledSnapshot(config, settings, snapshot,
+                                                            presets, progressCb);
+                else
+                    result = exporter.exportBundle(config, settings, presets, progressCb);
 
                 dialog.exportResult = result;
                 dialog.exportFinished.store(true);
@@ -877,10 +970,13 @@ private:
             XOriginate::RenderSettings settings;
             juce::String bundleName;
             juce::String coverEngine;
+            bool useEntangled;
+            XOriginate::CouplingSnapshot snapshot;
         };
 
         exportThread = std::make_unique<ExportThread>(*this, capturedSettings,
-                                                         capturedName, capturedCoverEngine);
+                                                         capturedName, capturedCoverEngine,
+                                                         useEntangled, snapshotCopy);
         exportThread->startThread();
     }
 
