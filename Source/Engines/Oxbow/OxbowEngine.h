@@ -210,6 +210,11 @@ public:
                     : msg.getChannelPressureValue() / 127.0f;
                 aftertouch = pressure;
             }
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+            {
+                // Mod wheel → resonance mix scale (D006)
+                modWheel_ = msg.getControllerValue() / 127.0f;
+            }
         }
 
         // 2. Bypass check
@@ -235,6 +240,30 @@ public:
         float pExcDecay   = pExcDecayParam   ? pExcDecayParam->load()   : 0.01f;
         float pExcBright  = pExcBrightParam  ? pExcBrightParam->load()  : 0.7f;
 
+        // Macros
+        float pMacroCharacter = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
+        float pMacroMovement  = pMacroMovementParam  ? pMacroMovementParam->load()  : 0.0f;
+        float pMacroCoupling  = pMacroCouplingParam  ? pMacroCouplingParam->load()  : 0.0f;
+        float pMacroSpace     = pMacroSpaceParam     ? pMacroSpaceParam->load()     : 0.0f;
+
+        // CHARACTER → exciter brightness + resonance timbral focus
+        pExcBright = clamp (pExcBright + pMacroCharacter * 0.3f, 0.0f, 1.0f);
+        pResMix    = clamp (pResMix    + pMacroCharacter * 0.25f, 0.0f, 1.0f);
+
+        // MOVEMENT → phase erosion depth + rate
+        pErosionD = clamp (pErosionD + pMacroMovement * 0.4f, 0.0f, 1.0f);
+        pErosionR = clamp (pErosionR + pMacroMovement * 0.15f, 0.01f, 0.5f);
+
+        // COUPLING → entanglement (summed with aftertouch below)
+        pEntangle = clamp (pEntangle + pMacroCoupling * 0.4f, 0.0f, 1.0f);
+
+        // SPACE → dry/wet mix + room size
+        pDryWet = clamp (pDryWet + pMacroSpace * 0.25f, 0.0f, 1.0f);
+        pSize   = clamp (pSize   + pMacroSpace * 0.3f,  0.0f, 1.0f);
+
+        // Mod wheel → resonance mix (D006)
+        pResMix = clamp (pResMix + modWheel_ * 0.5f, 0.0f, 1.0f);
+
         // Apply aftertouch to entanglement (Vangelis)
         pEntangle = clamp (pEntangle + aftertouch * 0.3f, 0.0f, 1.0f);
 
@@ -249,9 +278,11 @@ public:
         float feedbackCoeff = (pDecay > 29.0f) ? 1.0f
             : fastExp (-6.9078f / (pDecay * srF));
 
-        // Apply size to FDN (scale is read but applied at prepare-time;
-        // for real-time size changes, store and check for changes)
-        (void) pSize;  // Size applied at prepare() — real-time resize is v2
+        // Size → room dimension (D004: dead param resolved)
+        // Size 0 = intimate (short predelay, dark/absorptive)
+        // Size 1 = vast hall (full predelay, bright/reflective)
+        float effectivePredelay = pPredelay * (0.1f + pSize * 0.9f);
+        pDamping = clamp (pDamping * (0.5f + pSize * 1.0f), 200.0f, 16000.0f);
         (void) pResQ;  // Used in updateGoldenFrequencies via note-on
 
         // Velocity → exciter brightness and decay (D001 + Kakehashi)
@@ -260,7 +291,7 @@ public:
         float excDecayFinal = fastExp (-6.9078f / (excLength * srF));
 
         // Pre-delay in samples
-        float predelaySamples = clamp (pPredelay * 0.001f * srF,
+        float predelaySamples = clamp (effectivePredelay * 0.001f * srF,
                                         0.0f, static_cast<float> (predelaySize - 1));
 
         // Convergence envelope coefficients
@@ -500,64 +531,91 @@ public:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl (params);
+        return { params.begin(), params.end() };
+    }
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_size", "Space Size",
+    static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl (params);
+    }
+
+    static void addParametersImpl (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        using PF = juce::AudioParameterFloat;
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_size", 1 }, "Space Size",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_decay", "Decay Time",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_decay", 1 }, "Decay Time",
             juce::NormalisableRange<float> (0.1f, 60.0f, 0.0f, 0.3f), 4.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_entangle", "Entanglement",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_entangle", 1 }, "Entanglement",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_erosionRate", "Erosion Rate",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_erosionRate", 1 }, "Erosion Rate",
             juce::NormalisableRange<float> (0.01f, 0.5f, 0.0f, 0.5f), 0.08f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_erosionDepth", "Erosion Depth",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_erosionDepth", 1 }, "Erosion Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_convergence", "Convergence",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_convergence", 1 }, "Convergence",
             juce::NormalisableRange<float> (1.0f, 20.0f, 0.0f, 0.5f), 4.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_resonanceQ", "Resonance Focus",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_resonanceQ", 1 }, "Resonance Focus",
             juce::NormalisableRange<float> (0.5f, 20.0f, 0.0f, 0.4f), 8.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_resonanceMix", "Resonance Mix",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_resonanceMix", 1 }, "Resonance Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_cantilever", "Cantilever",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_cantilever", 1 }, "Cantilever",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));  // Pearlman: init at 0.3
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_damping", "Damping",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_damping", 1 }, "Damping",
             juce::NormalisableRange<float> (200.0f, 16000.0f, 0.0f, 0.3f), 6000.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_predelay", "Pre-Delay",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_predelay", 1 }, "Pre-Delay",
             juce::NormalisableRange<float> (0.0f, 200.0f, 0.0f, 0.5f), 20.0f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_dryWet", "Dry/Wet",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_dryWet", 1 }, "Dry/Wet",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_exciterDecay", "Exciter Decay",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_exciterDecay", 1 }, "Exciter Decay",
             juce::NormalisableRange<float> (0.001f, 0.1f, 0.0f, 0.5f), 0.01f));
 
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            "oxb_exciterBright", "Exciter Bright",
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_exciterBright", 1 }, "Exciter Bright",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.7f));
 
-        return { params.begin(), params.end() };
+        // Macros (CHARACTER / MOVEMENT / COUPLING / SPACE)
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_macroCharacter", 1 }, "Character",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_macroMovement", 1 }, "Movement",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_macroCoupling", 1 }, "Coupling",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        params.push_back (std::make_unique<PF> (
+            juce::ParameterID { "oxb_macroSpace", 1 }, "Space",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -576,6 +634,10 @@ public:
         pDryWetParam     = apvts.getRawParameterValue ("oxb_dryWet");
         pExcDecayParam   = apvts.getRawParameterValue ("oxb_exciterDecay");
         pExcBrightParam  = apvts.getRawParameterValue ("oxb_exciterBright");
+        pMacroCharacterParam = apvts.getRawParameterValue ("oxb_macroCharacter");
+        pMacroMovementParam  = apvts.getRawParameterValue ("oxb_macroMovement");
+        pMacroCouplingParam  = apvts.getRawParameterValue ("oxb_macroCoupling");
+        pMacroSpaceParam     = apvts.getRawParameterValue ("oxb_macroSpace");
     }
 
     //-- Identity ---------------------------------------------------------------
@@ -672,6 +734,8 @@ private:
     float lastSampleR = 0.0f;
 
     // Parameter pointers
+    float modWheel_ = 0.0f;
+
     std::atomic<float>* pSizeParam       = nullptr;
     std::atomic<float>* pDecayParam      = nullptr;
     std::atomic<float>* pEntangleParam   = nullptr;
@@ -686,6 +750,12 @@ private:
     std::atomic<float>* pDryWetParam     = nullptr;
     std::atomic<float>* pExcDecayParam   = nullptr;
     std::atomic<float>* pExcBrightParam  = nullptr;
+
+    // Macro parameter pointers
+    std::atomic<float>* pMacroCharacterParam = nullptr;
+    std::atomic<float>* pMacroMovementParam  = nullptr;
+    std::atomic<float>* pMacroCouplingParam  = nullptr;
+    std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
 } // namespace xomnibus

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "name": "Infinite Oxbow",
+  "mood": "Aether",
+  "engines": ["Oxbow"],
+  "description": "The river has fully cut itself off. Thirty seconds of decay in a near-maximum room. The Chiasmus FDN accumulates sound and never fully releases it — a sonic oxbow lake suspended in time. SPACE macro opens the room from vast to absolute. Schulze's dream: a sound that grows old while you listen.",
+  "tags": ["oxbow", "aether", "infinite-decay", "vast", "meditative", "generative", "schulze"],
+  "tier": "awakening",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.92,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.9,
+      "oxb_decay": 30.0,
+      "oxb_entangle": 0.6,
+      "oxb_erosionRate": 0.02,
+      "oxb_erosionDepth": 0.2,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 12.0,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 50.0,
+      "oxb_dryWet": 0.6,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.5,
+      "oxb_macroCharacter": 0.0,
+      "oxb_macroMovement": 0.0,
+      "oxb_macroCoupling": 0.0,
+      "oxb_macroSpace": 0.3
+    }
+  }
+}

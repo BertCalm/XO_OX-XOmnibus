@@ -250,7 +250,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-**42 of 44 engines seanced** (2026-03-20) — 42 registered engines have formal numeric or approval-class verdicts. OXBOW and OWARE (added 2026-03-20) are pending seance. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Three engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0). Full data in:
+**43 of 44 engines seanced** (2026-03-20/21) — OXBOW seanced (~8.2/10 pre-fix → 9.0 post-fix: dead Size param wired, 4 macros added, static addParameters pattern, juce::ParameterID migration, mod wheel CC1). OWARE pending. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Four engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`

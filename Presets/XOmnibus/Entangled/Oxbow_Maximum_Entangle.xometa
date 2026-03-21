@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "name": "Maximum Entangle",
+  "mood": "Entangled",
+  "engines": ["Oxbow"],
+  "description": "Entanglement at 0.9 — L and R channels share their temporal DNA completely. The Chiasmus FDN's reversed delay structure becomes audible as a complex stereo weave. COUPLING macro pushes entanglement further, dissolving the boundary between channels.",
+  "tags": ["oxbow", "entangled", "stereo-width", "chiasmus", "immersive", "structural"],
+  "tier": "awakening",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.6,
+      "oxb_decay": 6.0,
+      "oxb_entangle": 0.9,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.5,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 12.0,
+      "oxb_resonanceMix": 0.4,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 25.0,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.012,
+      "oxb_exciterBright": 0.55,
+      "oxb_macroCharacter": 0.0,
+      "oxb_macroMovement": 0.0,
+      "oxb_macroCoupling": 0.5,
+      "oxb_macroSpace": 0.0
+    }
+  }
+}
