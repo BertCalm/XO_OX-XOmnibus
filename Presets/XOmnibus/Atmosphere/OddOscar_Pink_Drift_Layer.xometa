@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Pink Drift Layer",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oscar's gill-pink as atmosphere — a warm mid-register pad with morph at 0.7 (saw-to-square crossfade). Drift at 0.55, detune at 16 cents, wide stereo. LFO2 at 0.1 Hz gently opens and closes the Moog ladder in a breath that synchronizes with the player's phrasing. The architecture of living colour.",
+  "tags": ["atmosphere", "pink", "drift", "layer", "warm", "pad", "lfo", "moog"],
+  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.55, "warmth": 0.72, "movement": 0.4, "density": 0.68, "space": 0.8, "aggression": 0.18},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.7,
+      "morph_bloom": 0.5,
+      "morph_decay": 1.5,
+      "morph_sustain": 0.72,
+      "morph_release": 2.5,
+      "morph_filterCutoff": 2800.0,
+      "morph_filterReso": 0.3,
+      "morph_filterEnvDepth": 0.32,
+      "morph_drift": 0.55,
+      "morph_sub": 0.3,
+      "morph_detune": 16.0,
+      "morph_level": 0.75,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0,
+      "morph_lfo2Rate": 0.1,
+      "morph_lfo2Depth": 0.35
+    }
+  },
+  "macros": {"BLOOM": 0.35, "DRIFT": 0.55, "DEPTH": 0.45, "SPACE": 0.72},
+  "coupling": {"pairs": []}
+}

@@ -21,7 +21,7 @@ namespace xomnibus {
 // capturing it into a small per-voice circular buffer and reading back grains.
 //==============================================================================
 struct OrphicaMicrosound {
-    static constexpr int kBufSize = 8192;  // ~186ms @ 44.1k
+    static constexpr int kBufSize = 16384; // ~371ms @ 44.1k (doubled from 8192 to support slow-attack granular)
     static constexpr int kGrains = 4;
 
     float buffer[kBufSize] {};
@@ -363,7 +363,9 @@ public:
 
                 // Pluck exciter — position modulates brightness (bridge=bright, nut=dark)
                 // D006: aftertouch and mod wheel add brightness expression (do NOT touch v.vel).
-                float exprBright = std::clamp(effBright + atSmoothed * 0.2f + modWheelSmoothed * 0.15f, 0.0f, 1.0f);
+                // D001: velocity also scales pluck brightness — harder velocity = brighter attack timbre.
+                float exprBright = std::clamp(effBright + atSmoothed * 0.2f + modWheelSmoothed * 0.15f
+                                              + v.vel * 0.15f, 0.0f, 1.0f);
                 float posBright = exprBright * (1.0f - pPos * 0.4f);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 // D006: aftertouch adds up to +30% pluck intensity (more aggressive bowing)
@@ -373,8 +375,9 @@ public:
                 // D001: velocity shapes brightness, not just amplitude.
                 // Higher velocity = less damping = brighter string (more high-frequency content
                 // retained in the waveguide feedback loop).
-                // Widened range: vel=0 → 0.92x (dull/muted), vel=1 → 1.0x (fully bright/open).
-                float velBright = 0.92f + v.vel * 0.08f;
+                // D001 fix: widened from 8% to 20% range so the timbral difference is audible.
+                // vel=0 → 0.80x (noticeably dull/muted), vel=1 → 1.0x (fully bright/open).
+                float velBright = 0.80f + v.vel * 0.20f;
                 float voiceDamp = std::clamp(effDamp * velBright + extDampMod, 0.0f, 0.999f);
 
                 // Damped feedback write

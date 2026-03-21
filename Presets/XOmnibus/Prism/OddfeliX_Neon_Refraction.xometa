@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Neon Refraction",
+  "mood": "Prism",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Unison spread at maximum — four sub-voices refracting the same dart through different spectral angles.",
+  "tags": ["prism", "unison", "wide", "refraction", "neon"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.85, "warmth": 0.22, "movement": 0.62, "density": 0.72, "space": 0.88, "aggression": 0.35},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.52,
+      "snap_decay": 0.38,
+      "snap_filterCutoff": 9500.0,
+      "snap_filterReso": 0.42,
+      "snap_filterEnvDepth": 0.48,
+      "snap_detune": 32.0,
+      "snap_unison": 2,
+      "snap_sweepDirection": -1.0,
+      "snap_pitchLock": 0.0,
+      "snap_polyphony": 2,
+      "snap_level": 0.72,
+      "snap_lfoDepth": 0.14,
+      "snap_lfo2Depth": 0.18,
+      "snap_macroDart": 0.38,
+      "snap_macroSchool": 0.85,
+      "snap_macroSurface": 0.62,
+      "snap_macroDepth": 0.78
+    }
+  },
+  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.62, "COUPLING": 0.0, "SPACE": 0.88},
+  "coupling": {"pairs": []}
+}

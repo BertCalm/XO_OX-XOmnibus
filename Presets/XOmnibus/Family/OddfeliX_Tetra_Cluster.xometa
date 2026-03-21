@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "Tetra Cluster",
+  "mood": "Family",
+  "engines": ["OddfeliX"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Tight micro-darts layering into chords — a cluster of neon tetras moving as one body, each voice a separate streak.",
+  "tags": ["family", "cluster", "chord", "layered", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.65, "warmth": 0.55, "movement": 0.58, "density": 0.75, "space": 0.62, "aggression": 0.18},
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.55,
+      "snap_decay": 0.65,
+      "snap_filterCutoff": 6200.0,
+      "snap_filterReso": 0.38,
+      "snap_filterEnvDepth": 0.52,
+      "snap_detune": 12.0,
+      "snap_unison": 1,
+      "snap_sweepDirection": -1.0,
+      "snap_pitchLock": 0.0,
+      "snap_polyphony": 3,
+      "snap_level": 0.78,
+      "snap_lfoDepth": 0.10,
+      "snap_lfo2Depth": 0.12,
+      "snap_macroDart": 0.35,
+      "snap_macroSchool": 0.72,
+      "snap_macroSurface": 0.38,
+      "snap_macroDepth": 0.62
+    }
+  },
+  "macros": {"CHARACTER": 0.42, "MOVEMENT": 0.58, "COUPLING": 0.0, "SPACE": 0.62},
+  "coupling": {"pairs": []}
+}

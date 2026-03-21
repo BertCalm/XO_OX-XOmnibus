@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Cave Current",
+  "mood": "Submerged",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oscar in the cave — the axolotl's natural habitat. Filter at 600 Hz, drift high, morph at 0.3 (sine-to-saw borderland). LFO2 at 0.05 Hz sweeps the Moog ladder with slow tidal patience, like the underground current that feeds the cave system. Eight voices breathe in staggered bloom.",
+  "tags": ["submerged", "cave", "current", "slow", "dark", "axolotl", "lfo", "drift"],
+  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.22, "warmth": 0.75, "movement": 0.18, "density": 0.72, "space": 0.35, "aggression": 0.12},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.3,
+      "morph_bloom": 1.8,
+      "morph_decay": 2.5,
+      "morph_sustain": 0.72,
+      "morph_release": 3.0,
+      "morph_filterCutoff": 600.0,
+      "morph_filterReso": 0.35,
+      "morph_filterEnvDepth": 0.2,
+      "morph_drift": 0.65,
+      "morph_sub": 0.6,
+      "morph_detune": 8.0,
+      "morph_level": 0.72,
+      "morph_polyphony": 3,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0,
+      "morph_lfo2Rate": 0.05,
+      "morph_lfo2Depth": 0.32
+    }
+  },
+  "macros": {"BLOOM": 0.3, "DRIFT": 0.65, "DEPTH": 0.2, "SPACE": 0.5},
+  "coupling": {"pairs": []}
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Gill Shimmer",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The gills catching light at the water surface. Morph at 1.0 — full sawtooth, all harmonics shimmering. Wide detune creates PPG-style chorus shimmer. LFO2 at 0.15 Hz: active enough to perceive as gentle ripple, not drift. BLOOM macro adds morph depth; DRIFT macro activates the full shimmer spread.",
+  "tags": ["atmosphere", "gill", "shimmer", "sawtooth", "chorus", "harmonic", "lfo", "ppg"],
+  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.68, "warmth": 0.55, "movement": 0.55, "density": 0.65, "space": 0.75, "aggression": 0.25},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 1.0,
+      "morph_bloom": 0.3,
+      "morph_decay": 1.0,
+      "morph_sustain": 0.7,
+      "morph_release": 2.0,
+      "morph_filterCutoff": 3500.0,
+      "morph_filterReso": 0.25,
+      "morph_filterEnvDepth": 0.38,
+      "morph_drift": 0.5,
+      "morph_sub": 0.2,
+      "morph_detune": 22.0,
+      "morph_level": 0.72,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0,
+      "morph_lfo2Rate": 0.15,
+      "morph_lfo2Depth": 0.28
+    }
+  },
+  "macros": {"BLOOM": 0.45, "DRIFT": 0.65, "DEPTH": 0.5, "SPACE": 0.7},
+  "coupling": {"pairs": []}
+}

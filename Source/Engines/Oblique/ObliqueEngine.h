@@ -795,7 +795,12 @@ public:
         const float phaserFeedback    = (pPhaserFeedback != nullptr) ? pPhaserFeedback->load() : 0.3f;
         const float phaserMixAmount   = (pPhaserMix      != nullptr) ? pPhaserMix->load()      : 0.4f;
 
-        // D002: 2nd LFO — phaser depth modulator. Read once per block.
+        // D002: LFO1 — prism color spread modulator (now user-controllable rate/depth).
+        // Default 0.2 Hz / 0.15 depth preserves all existing preset behaviour.
+        const float lfo1Rate  = (pLfo1Rate  != nullptr) ? pLfo1Rate->load()  : 0.2f;
+        const float lfo1Depth = (pLfo1Depth != nullptr) ? pLfo1Depth->load() : 0.15f;
+
+        // D002: LFO2 — phaser depth modulator. Read once per block.
         const float lfo2Rate  = (pLfo2Rate  != nullptr) ? pLfo2Rate->load()  : 0.03f;
         const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.25f;
 
@@ -1067,21 +1072,20 @@ public:
             // Post-voice FX chain
             // ================================================================
 
-            // --- D005: Prism LFO accumulation (LFO1) ---
-            // Autonomous sine LFO modulates prism color spread.
-            // Base rate 0.2 Hz; COLOR macro accelerates up to 2.0 Hz for faster
-            // prismatic shimmer. BOUNCE macro deepens the LFO to ±0.35 at full throw.
+            // --- D002/D005: Prism LFO (LFO1) — user-controllable rate and depth ---
+            // Rate: lfo1Rate (user param, 0.005–4 Hz) + COLOR macro boost (up to +2 Hz).
+            // Depth: lfo1Depth (user param, 0–0.5) + BOUNCE macro deepening (up to +0.20).
+            // Default lfo1Rate=0.2, lfo1Depth=0.15 preserves all existing preset behaviour.
             // Double precision phase prevents drift over long performance sessions.
-            static constexpr double kLfoBaseRate = 0.2;   // Hz — one sweep per 5 seconds
-            static constexpr double kLfoMaxRate  = 2.0;   // Hz — fast prismatic flutter
+            static constexpr double kLfo1MacroRateBoost = 2.0;   // Hz added at full COLOR macro
             static constexpr double kTwoPiD  = 6.28318530718;
-            double effectiveLfoRate = kLfoBaseRate + static_cast<double> (macroColor) * (kLfoMaxRate - kLfoBaseRate);
+            double effectiveLfoRate = static_cast<double> (lfo1Rate)
+                                    + static_cast<double> (macroColor) * kLfo1MacroRateBoost;
             obliqueLfoPhase += effectiveLfoRate / hostSampleRate;
             if (obliqueLfoPhase >= 1.0) obliqueLfoPhase -= 1.0;
             float obliqueLfoValue = fastSin (static_cast<float> (obliqueLfoPhase * kTwoPiD));
-            // ±0.15 base spectral spread depth; BOUNCE macro deepens to ±0.35.
-            // The prism fish catches a slowly rotating light beam — or fast flutter with macros.
-            float lfoDepth = 0.15f + macroBounce * 0.20f;
+            // lfo1Depth + BOUNCE macro deepening. The prism fish catches a rotating light beam.
+            float lfoDepth = lfo1Depth + macroBounce * 0.20f;
             float lfoColorMod = obliqueLfoValue * lfoDepth;
 
             // --- D002: 2nd LFO — phaser swirl modulator ---
@@ -1370,6 +1374,21 @@ public:
             juce::ParameterID { "oblq_phaserMix", 1 }, "Oblique Phaser Mix",
             juce::NormalisableRange<float> (0.0f, 1.0f, 0.01f), 0.4f));
 
+        // D002: LFO1 user rate — prism color spread modulator.
+        // Previously hardcoded at 0.2 Hz. Now user-controllable: slow glacial sweep
+        // to fast prismatic flutter. Color macro scales rate toward 2.0 Hz on top of
+        // the base rate set here. Default 0.2 Hz preserves all existing preset behaviour.
+        // Rate floor 0.005 Hz satisfies D005 (≤ 0.01 Hz LFO breathing requirement).
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_lfo1Rate", 1 }, "Oblique LFO1 Rate",
+            juce::NormalisableRange<float> (0.005f, 4.0f, 0.005f, 0.3f), 0.2f));
+
+        // D002: LFO1 depth — prism color spread modulation depth.
+        // Default 0.15 preserves existing behaviour (±0.15 spectral spread).
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { "oblq_lfo1Depth", 1 }, "Oblique LFO1 Depth",
+            juce::NormalisableRange<float> (0.0f, 0.5f, 0.01f), 0.15f));
+
         // D002: 2nd LFO — phaser swirl LFO. Modulates phaser depth for autonomous
         // Tame Impala-style breathing movement. Rate floor 0.005 Hz satisfies D005.
         // Default 0.03 Hz = one full phaser depth sweep every ~33 seconds (very slow,
@@ -1442,7 +1461,9 @@ public:
         pPhaserDepth    = apvts.getRawParameterValue ("oblq_phaserDepth");
         pPhaserFeedback = apvts.getRawParameterValue ("oblq_phaserFeedback");
         pPhaserMix      = apvts.getRawParameterValue ("oblq_phaserMix");
-        // D002: 2nd LFO
+        // D002: LFO1 (prism color) and LFO2 (phaser swirl)
+        pLfo1Rate       = apvts.getRawParameterValue ("oblq_lfo1Rate");
+        pLfo1Depth      = apvts.getRawParameterValue ("oblq_lfo1Depth");
         pLfo2Rate       = apvts.getRawParameterValue ("oblq_lfo2Rate");
         pLfo2Depth      = apvts.getRawParameterValue ("oblq_lfo2Depth");
         // XOmnibus macros
@@ -1728,7 +1749,10 @@ private:
     std::atomic<float>* pPhaserDepth    = nullptr;
     std::atomic<float>* pPhaserFeedback = nullptr;
     std::atomic<float>* pPhaserMix      = nullptr;
-    // D002: 2nd LFO (phaser swirl modulator)
+    // D002: LFO1 (prism color modulator — now user-controllable)
+    std::atomic<float>* pLfo1Rate       = nullptr;
+    std::atomic<float>* pLfo1Depth      = nullptr;
+    // D002: LFO2 (phaser swirl modulator)
     std::atomic<float>* pLfo2Rate       = nullptr;
     std::atomic<float>* pLfo2Depth      = nullptr;
     // XOmnibus macros

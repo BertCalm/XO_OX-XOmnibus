@@ -141,7 +141,18 @@ public:
 
         // ── 6. Update StrataSignals for next block ─────────────────────
         lastStrataSignals.floorAmplitude    = floor.getLastAmplitude();
-        lastStrataSignals.floorTimbre       = 0.5f; // TODO Phase 2: real spectral proxy
+        // Real spectral proxy: model brightness base + tension boost - damping reduction.
+        // Model brightness (0-5): berimbau=0.5, cuica=0.55, agogo=0.78, kalimba=0.42, pandeiro=0.72, log_drum=0.28
+        // Tension lifts brightness (stiffer membrane = more high partials); damping reduces it.
+        {
+            static constexpr float kModelBrightness[6] = { 0.50f, 0.55f, 0.78f, 0.42f, 0.72f, 0.28f };
+            int m = std::clamp(snap.floorModel, 0, 5);
+            float baseTimbre = kModelBrightness[m];
+            float timbreWithMods = baseTimbre
+                                 + snap.floorTension * 0.25f   // tighter membrane = brighter
+                                 - snap.floorDamping * 0.18f;  // more damping = darker
+            lastStrataSignals.floorTimbre = std::clamp(timbreWithMods, 0.0f, 1.0f);
+        }
         lastStrataSignals.understoryEnergy  = understory.getLastEnergy();
         lastStrataSignals.understoryPitch   = understory.getLastPitch();
         lastStrataSignals.canopyAmplitude   = canopy.getLastAmplitude();

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Featherweight Sine",
+  "mood": "Aether",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oscar at his most elemental — pure sine at 0.0 morph, the featherweight. Almost nothing is there, and yet there is life. Sub off. Detune at 3 cents (barely perceptible shimmer). LFO2 at 0.04 Hz creates barely perceptible long-form brightness evolution. Touch BLOOM macro to push toward sawtooth territory.",
+  "tags": ["aether", "featherweight", "sine", "pure", "minimal", "ultra-slow", "lfo", "elemental"],
+  "macroLabels": ["BLOOM", "DRIFT", "DEPTH", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.2, "warmth": 0.55, "movement": 0.08, "density": 0.3, "space": 0.92, "aggression": 0.05},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.0,
+      "morph_bloom": 1.5,
+      "morph_decay": 2.0,
+      "morph_sustain": 0.62,
+      "morph_release": 4.0,
+      "morph_filterCutoff": 4000.0,
+      "morph_filterReso": 0.12,
+      "morph_filterEnvDepth": 0.08,
+      "morph_drift": 0.25,
+      "morph_sub": 0.0,
+      "morph_detune": 3.0,
+      "morph_level": 0.65,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0,
+      "morph_lfo2Rate": 0.04,
+      "morph_lfo2Depth": 0.18
+    }
+  },
+  "macros": {"BLOOM": 0.55, "DRIFT": 0.25, "DEPTH": 0.2, "SPACE": 0.88},
+  "coupling": {"pairs": []}
+}

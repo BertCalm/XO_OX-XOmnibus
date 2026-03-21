@@ -712,6 +712,14 @@ public:
         // Store peak envelope for coupling output (channel 2)
         envelopeOutput = peakEnvelopeLevel;
 
+        // Cache active voice count for getActiveVoiceCount() (message-thread safe).
+        {
+            int count = 0;
+            for (const auto& voice : voices)
+                if (voice.active) ++count;
+            activeVoiceCount.store (count);
+        }
+
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock (buffer.getReadPointer (0),
                                   buffer.getNumChannels() > 1 ? buffer.getReadPointer (1) : nullptr,
@@ -921,6 +929,10 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
+    // Safe to call from message thread — returns a cached count updated at the
+    // end of each renderBlock(), so it is never iterated from the wrong thread.
+    int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
+
 private:
     SilenceGate silenceGate;
 
@@ -1044,6 +1056,9 @@ private:
     //==========================================================================
     //  Member State
     //==========================================================================
+
+    // ---- Active voice count — cached at end of renderBlock(), safe for message thread ----
+    std::atomic<int> activeVoiceCount { 0 };
 
     // ---- Audio engine state ----
     double sampleRate = 44100.0;
