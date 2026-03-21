@@ -32,6 +32,8 @@ inline const juce::StringArray validEngineNames {
     "Oxbow", "Oware",
     // Kuramoto vocal synthesis
     "Opera",
+    // Chef Quad Collection
+    "Oto", "Octave", "Oleg", "Otis",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -140,6 +142,11 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Oware",       "owr"     },
         // Kuramoto Vocal Synthesis
         { "Opera",       "opera"   },
+        // Chef Quad Collection
+        { "Oto",         "oto"     },
+        { "Octave",      "oct"     },
+        { "Oleg",        "oleg"    },
+        { "Otis",        "otis"    },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

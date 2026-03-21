@@ -45,6 +45,10 @@
 #include "Engines/Oxbow/OxbowEngine.h"
 #include "Engines/Oware/OwareEngine.h"
 #include "Engines/Opera/OperaAdapter.h"
+#include "Engines/Oto/OtoEngine.h"
+#include "Engines/Octave/OctaveEngine.h"
+#include "Engines/Oleg/OlegEngine.h"
+#include "Engines/Otis/OtisEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -239,6 +243,26 @@ static bool registered_Oware = xomnibus::EngineRegistry::instance().registerEngi
 static bool registered_Opera = xomnibus::EngineRegistry::instance().registerEngine(
     "Opera", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OperaAdapter>();
+    });
+// Chef Quad Collection — OTO (tape & circuit-bent heritage)
+static bool registered_Oto = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oto", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OtoEngine>();
+    });
+// Chef Quad Collection — OCTAVE (harmonic interval synthesis)
+static bool registered_Octave = xomnibus::EngineRegistry::instance().registerEngine(
+    "Octave", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OctaveEngine>();
+    });
+// Chef Quad Collection — OLEG (folk/modal string synthesis)
+static bool registered_Oleg = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oleg", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OlegEngine>();
+    });
+// Chef Quad Collection — OTIS (soul/funk synthesis)
+static bool registered_Otis = xomnibus::EngineRegistry::instance().registerEngine(
+    "Otis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OtisEngine>();
     });
 
 namespace xomnibus {
