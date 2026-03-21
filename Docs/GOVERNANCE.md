@@ -112,7 +112,7 @@
 ## Naming Conventions
 
 ### Files
-- Engine headers: `{EngineName}Engine.h` (e.g., `OceandeepEngine.h`) — lowercase-first after O-prefix
+- Engine headers: `{ClassName}Engine.h` (e.g., `OpenSkyEngine.h`, `OceandeepEngine.h`) — class name casing varies by engine
 - Seance verdicts: `{lowercase_engine}_seance_verdict.md` (e.g., `orbweave_seance_verdict.md`)
 - Fleet health: `fleet_health_{YYYY-MM-DD}.md` — one per major milestone
 - Guild reviews: `{engine}_{review_type}_{YYYY-MM-DD}.md`
