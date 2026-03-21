@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The body resonance of a koto \u2014 wooden warmth with metallic string overtones. Golden resonance picks out the harmonic series of plucked silk strings in a tatami room.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.65,
+    "movement": 0.18,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Luminous",
+  "name": "Koto Resonance",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.4,
+      "oxb_decay": 4.0,
+      "oxb_entangle": 0.15,
+      "oxb_erosionRate": 0.06,
+      "oxb_erosionDepth": 0.15,
+      "oxb_convergence": 8.0,
+      "oxb_resonanceQ": 12.0,
+      "oxb_resonanceMix": 0.55,
+      "oxb_cantilever": 0.25,
+      "oxb_damping": 8500.0,
+      "oxb_predelay": 3.0,
+      "oxb_dryWet": 0.35,
+      "oxb_exciterDecay": 0.01,
+      "oxb_exciterBright": 0.62
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "gamelan",
+    "koto",
+    "plucked",
+    "wooden",
+    "silk"
+  ],
+  "version": "1.0.0"
+}

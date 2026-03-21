@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Electric discharge from the Oxbow Eel \u2014 rapid erosion cycles create a crackling static field around the reverb tail. Not noise, but the space between coherent reflections.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.25,
+    "movement": 0.98,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.4
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Flux",
+  "name": "Eel Static",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.3,
+      "oxb_decay": 2.0,
+      "oxb_entangle": 0.75,
+      "oxb_erosionRate": 0.5,
+      "oxb_erosionDepth": 0.98,
+      "oxb_convergence": 19.0,
+      "oxb_resonanceQ": 18.0,
+      "oxb_resonanceMix": 0.65,
+      "oxb_cantilever": 0.85,
+      "oxb_damping": 12000.0,
+      "oxb_predelay": 1.0,
+      "oxb_dryWet": 0.4,
+      "oxb_exciterDecay": 0.05,
+      "oxb_exciterBright": 0.8
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "experimental",
+    "electric",
+    "static",
+    "crackling",
+    "discharge"
+  ],
+  "version": "1.0.0"
+}

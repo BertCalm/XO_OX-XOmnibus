@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Marimba bars made of crystal instead of rosewood \u2014 impossibly bright and sustaining. High resonance mix with narrow Q creates the pitched percussion quality with prismatic shimmer.",
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.3,
+    "space": 0.5,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Crystalline",
+  "name": "Crystal Marimba",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.35,
+      "oxb_decay": 3.0,
+      "oxb_entangle": 0.18,
+      "oxb_erosionRate": 0.03,
+      "oxb_erosionDepth": 0.08,
+      "oxb_convergence": 15.0,
+      "oxb_resonanceQ": 18.0,
+      "oxb_resonanceMix": 0.7,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 15000.0,
+      "oxb_predelay": 1.0,
+      "oxb_dryWet": 0.38,
+      "oxb_exciterDecay": 0.012,
+      "oxb_exciterBright": 0.9
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "gamelan",
+    "crystal",
+    "marimba",
+    "bright",
+    "pitched"
+  ],
+  "version": "1.0.0"
+}

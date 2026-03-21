@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The building pressure before a storm breaks \u2014 rumbling low frequencies with eroding high end. Cantilever decay creates an asymmetric darkness that grows over time.",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.3
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Flux",
+  "name": "Storm Approach",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.75,
+      "oxb_decay": 10.0,
+      "oxb_entangle": 0.55,
+      "oxb_erosionRate": 0.18,
+      "oxb_erosionDepth": 0.5,
+      "oxb_convergence": 6.0,
+      "oxb_resonanceQ": 5.0,
+      "oxb_resonanceMix": 0.2,
+      "oxb_cantilever": 0.72,
+      "oxb_damping": 3500.0,
+      "oxb_predelay": 25.0,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.28
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "storm",
+    "tension",
+    "building",
+    "ominous"
+  ],
+  "version": "1.0.0"
+}

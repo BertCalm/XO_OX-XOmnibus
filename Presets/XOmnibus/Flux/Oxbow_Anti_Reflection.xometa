@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Reverb designed to subtract from the source \u2014 erosion and entanglement conspire to create a tail that destructively interferes with the dry signal. Space by removal.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.3,
+    "movement": 0.82,
+    "density": 0.18,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Flux",
+  "name": "Anti Reflection",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.35,
+      "oxb_decay": 2.8,
+      "oxb_entangle": 0.95,
+      "oxb_erosionRate": 0.48,
+      "oxb_erosionDepth": 0.92,
+      "oxb_convergence": 15.0,
+      "oxb_resonanceQ": 16.0,
+      "oxb_resonanceMix": 0.6,
+      "oxb_cantilever": 0.8,
+      "oxb_damping": 9000.0,
+      "oxb_predelay": 2.0,
+      "oxb_dryWet": 0.45,
+      "oxb_exciterDecay": 0.04,
+      "oxb_exciterBright": 0.7
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "experimental",
+    "subtractive",
+    "anti-reverb",
+    "destructive",
+    "negative-space"
+  ],
+  "version": "1.0.0"
+}

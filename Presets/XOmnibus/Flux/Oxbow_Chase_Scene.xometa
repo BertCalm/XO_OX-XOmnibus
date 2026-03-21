@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Adrenaline reverb \u2014 short, bright, with rapid erosion creating a sense of motion. The golden resonance adds metallic edge. Made for percussion and staccato scoring.",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.75,
+    "density": 0.5,
+    "space": 0.35,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Flux",
+  "name": "Chase Scene",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.25,
+      "oxb_decay": 1.5,
+      "oxb_entangle": 0.4,
+      "oxb_erosionRate": 0.3,
+      "oxb_erosionDepth": 0.55,
+      "oxb_convergence": 10.0,
+      "oxb_resonanceQ": 12.0,
+      "oxb_resonanceMix": 0.4,
+      "oxb_cantilever": 0.75,
+      "oxb_damping": 11000.0,
+      "oxb_predelay": 3.0,
+      "oxb_dryWet": 0.3,
+      "oxb_exciterDecay": 0.045,
+      "oxb_exciterBright": 0.75
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "action",
+    "bright",
+    "tense",
+    "percussion"
+  ],
+  "version": "1.0.0"
+}

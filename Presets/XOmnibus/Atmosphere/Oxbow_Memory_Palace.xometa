@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Walking through rooms of memory \u2014 each reflection carries a different emotional weight. Moderate erosion creates the sense of memories degrading at different rates.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Memory Palace",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.7,
+      "oxb_decay": 8.5,
+      "oxb_entangle": 0.35,
+      "oxb_erosionRate": 0.12,
+      "oxb_erosionDepth": 0.4,
+      "oxb_convergence": 5.0,
+      "oxb_resonanceQ": 4.0,
+      "oxb_resonanceMix": 0.15,
+      "oxb_cantilever": 0.35,
+      "oxb_damping": 6000.0,
+      "oxb_predelay": 35.0,
+      "oxb_dryWet": 0.5,
+      "oxb_exciterDecay": 0.015,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "memory",
+    "emotional",
+    "dream",
+    "introspective"
+  ],
+  "version": "1.0.0"
+}

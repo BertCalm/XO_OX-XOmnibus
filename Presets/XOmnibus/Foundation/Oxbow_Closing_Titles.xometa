@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The reverb that plays under the final credits \u2014 warm, generous, nostalgic. Long enough to let emotions linger, controlled enough to keep the mix clear. End of story.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.78,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.82,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Foundation",
+  "name": "Closing Titles",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.78,
+      "oxb_decay": 11.0,
+      "oxb_entangle": 0.18,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 2.5,
+      "oxb_resonanceQ": 3.0,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.22,
+      "oxb_damping": 7500.0,
+      "oxb_predelay": 40.0,
+      "oxb_dryWet": 0.45,
+      "oxb_exciterDecay": 0.012,
+      "oxb_exciterBright": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "closing",
+    "warm",
+    "nostalgic",
+    "generous"
+  ],
+  "version": "1.0.0"
+}

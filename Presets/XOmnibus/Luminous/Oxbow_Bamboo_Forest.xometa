@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Wind through a bamboo grove \u2014 hollow resonances at multiple pitches with natural erosion from the irregular geometry. The golden ratio emerges naturally in bamboo proportions.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.03
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Luminous",
+  "name": "Bamboo Forest",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.52,
+      "oxb_decay": 4.5,
+      "oxb_entangle": 0.22,
+      "oxb_erosionRate": 0.09,
+      "oxb_erosionDepth": 0.25,
+      "oxb_convergence": 9.0,
+      "oxb_resonanceQ": 11.0,
+      "oxb_resonanceMix": 0.5,
+      "oxb_cantilever": 0.18,
+      "oxb_damping": 7000.0,
+      "oxb_predelay": 5.0,
+      "oxb_dryWet": 0.4,
+      "oxb_exciterDecay": 0.014,
+      "oxb_exciterBright": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "gamelan",
+    "bamboo",
+    "hollow",
+    "wind",
+    "natural"
+  ],
+  "version": "1.0.0"
+}

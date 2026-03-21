@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The first bell of the morning \u2014 massive space above, golden resonance ringing through the tower. Bright exciter with long decay creates that authentic bronze-in-stone character.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.6,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.92,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Aether",
+  "name": "Bell Tower Dawn",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.95,
+      "oxb_decay": 22.0,
+      "oxb_entangle": 0.28,
+      "oxb_erosionRate": 0.03,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 6.0,
+      "oxb_resonanceQ": 8.0,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.12,
+      "oxb_damping": 10000.0,
+      "oxb_predelay": 90.0,
+      "oxb_dryWet": 0.52,
+      "oxb_exciterDecay": 0.007,
+      "oxb_exciterBright": 0.78
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cathedral",
+    "bell",
+    "tower",
+    "dawn",
+    "bronze"
+  ],
+  "version": "1.0.0"
+}

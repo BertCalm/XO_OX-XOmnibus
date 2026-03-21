@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A spectral reverb that barely exists \u2014 maximum phase erosion causes the tail to phase-cancel against itself, leaving only fleeting moments of golden resonance. The Eel flickering between dimensions.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.9,
+    "density": 0.2,
+    "space": 0.7,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Entangled",
+  "name": "Phase Ghost",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 5.5,
+      "oxb_entangle": 0.92,
+      "oxb_erosionRate": 0.35,
+      "oxb_erosionDepth": 0.95,
+      "oxb_convergence": 4.0,
+      "oxb_resonanceQ": 8.0,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.2,
+      "oxb_damping": 6000.0,
+      "oxb_predelay": 15.0,
+      "oxb_dryWet": 0.6,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "experimental",
+    "phase",
+    "erasing",
+    "ghostly",
+    "stereo"
+  ],
+  "version": "1.0.0"
+}

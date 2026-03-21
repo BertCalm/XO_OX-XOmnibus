@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The reverb of a chest cavity heard from inside \u2014 deep, rhythmic, primal. Low damping and small size create a dark, intimate pulse. The Eels circulatory system.",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.85,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.12,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Organic",
+  "name": "Heartbeat Close",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.08,
+      "oxb_decay": 0.9,
+      "oxb_entangle": 0.12,
+      "oxb_erosionRate": 0.06,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 2.0,
+      "oxb_resonanceQ": 3.0,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.2,
+      "oxb_damping": 800.0,
+      "oxb_predelay": 0.0,
+      "oxb_dryWet": 0.22,
+      "oxb_exciterDecay": 0.042,
+      "oxb_exciterBright": 0.12
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "intimate",
+    "heartbeat",
+    "primal",
+    "dark",
+    "internal"
+  ],
+  "version": "1.0.0"
+}

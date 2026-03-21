@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Waves of erasure wash through the reverb tail \u2014 each cycle of the phase erosion LFO pulls more energy out. The tide recedes and takes the sound with it.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.45,
+    "movement": 0.95,
+    "density": 0.35,
+    "space": 0.6,
+    "aggression": 0.25
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Flux",
+  "name": "Erasure Tide",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.5,
+      "oxb_decay": 6.0,
+      "oxb_entangle": 0.85,
+      "oxb_erosionRate": 0.38,
+      "oxb_erosionDepth": 0.9,
+      "oxb_convergence": 5.0,
+      "oxb_resonanceQ": 9.0,
+      "oxb_resonanceMix": 0.38,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 5500.0,
+      "oxb_predelay": 12.0,
+      "oxb_dryWet": 0.58,
+      "oxb_exciterDecay": 0.022,
+      "oxb_exciterBright": 0.42
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "experimental",
+    "tidal",
+    "erosion",
+    "rhythmic",
+    "fading"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Subaquatic palace \u2014 heavy low-pass damping creates the muffled quality of sound underwater, while golden resonance adds bioluminescent shimmer. Slow, majestic, deep.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.85,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Submerged",
+  "name": "Underwater Kingdom",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.9,
+      "oxb_decay": 20.0,
+      "oxb_entangle": 0.45,
+      "oxb_erosionRate": 0.06,
+      "oxb_erosionDepth": 0.35,
+      "oxb_convergence": 4.0,
+      "oxb_resonanceQ": 3.0,
+      "oxb_resonanceMix": 0.18,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 2000.0,
+      "oxb_predelay": 45.0,
+      "oxb_dryWet": 0.65,
+      "oxb_exciterDecay": 0.008,
+      "oxb_exciterBright": 0.2
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "underwater",
+    "deep",
+    "majestic",
+    "fantasy"
+  ],
+  "version": "1.0.0"
+}

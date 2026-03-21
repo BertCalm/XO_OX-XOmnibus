@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Deep underground \u2014 the reverb is dark, close, and ancient. Low damping absorbs the highs while the golden resonance adds eerie harmonic undertones to every whisper.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.7,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Catacomb Whisper",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.85,
+      "oxb_decay": 14.0,
+      "oxb_entangle": 0.22,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.25,
+      "oxb_convergence": 4.5,
+      "oxb_resonanceQ": 7.0,
+      "oxb_resonanceMix": 0.22,
+      "oxb_cantilever": 0.45,
+      "oxb_damping": 2500.0,
+      "oxb_predelay": 60.0,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.009,
+      "oxb_exciterBright": 0.25
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cathedral",
+    "underground",
+    "dark",
+    "ancient",
+    "eerie"
+  ],
+  "version": "1.0.0"
+}

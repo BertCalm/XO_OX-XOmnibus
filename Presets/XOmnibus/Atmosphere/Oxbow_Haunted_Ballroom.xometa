@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "An abandoned grand ballroom \u2014 the reverb remembers waltzes. Long decay with gentle erosion creates a ghostly quality, as if the room itself is dreaming of its past.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Haunted Ballroom",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.82,
+      "oxb_decay": 14.0,
+      "oxb_entangle": 0.3,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.28,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 3.5,
+      "oxb_resonanceMix": 0.12,
+      "oxb_cantilever": 0.28,
+      "oxb_damping": 5000.0,
+      "oxb_predelay": 50.0,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.01,
+      "oxb_exciterBright": 0.42
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "haunted",
+    "ghostly",
+    "elegant",
+    "nostalgic"
+  ],
+  "version": "1.0.0"
+}

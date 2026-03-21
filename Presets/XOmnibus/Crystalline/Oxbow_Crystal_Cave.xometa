@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Inside a geode \u2014 crystalline reflections from every surface with the golden resonance creating harmonic overtones. Bright, pure, and magical. For ambient pads and healing music.",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.4,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Crystalline",
+  "name": "Crystal Cave",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.6,
+      "oxb_decay": 7.5,
+      "oxb_entangle": 0.22,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 9.0,
+      "oxb_resonanceQ": 10.0,
+      "oxb_resonanceMix": 0.45,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 13000.0,
+      "oxb_predelay": 8.0,
+      "oxb_dryWet": 0.42,
+      "oxb_exciterDecay": 0.01,
+      "oxb_exciterBright": 0.75
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "new-age",
+    "crystal",
+    "cave",
+    "magical",
+    "healing"
+  ],
+  "version": "1.0.0"
+}

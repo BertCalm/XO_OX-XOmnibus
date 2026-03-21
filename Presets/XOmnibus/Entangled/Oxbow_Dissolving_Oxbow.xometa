@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The meander dissolves \u2014 the river forgets its own path. Extreme erosion depth with moderate entanglement creates a reverb that slowly loses coherence, like a memory fading.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Entangled",
+  "name": "Dissolving Oxbow",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.75,
+      "oxb_decay": 15.0,
+      "oxb_entangle": 0.72,
+      "oxb_erosionRate": 0.2,
+      "oxb_erosionDepth": 1.0,
+      "oxb_convergence": 8.0,
+      "oxb_resonanceQ": 5.0,
+      "oxb_resonanceMix": 0.25,
+      "oxb_cantilever": 0.65,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 40.0,
+      "oxb_dryWet": 0.72,
+      "oxb_exciterDecay": 0.008,
+      "oxb_exciterBright": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "experimental",
+    "dissolving",
+    "memory",
+    "incoherent",
+    "fading"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Background reverb for lo-fi study beats \u2014 unobtrusive, warm, slightly hazy. Gentle erosion adds tape-like degradation. The reverb you dont notice until its gone.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.4,
+    "space": 0.35,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Foundation",
+  "name": "Study Beats",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.22,
+      "oxb_decay": 1.8,
+      "oxb_entangle": 0.08,
+      "oxb_erosionRate": 0.1,
+      "oxb_erosionDepth": 0.25,
+      "oxb_convergence": 2.0,
+      "oxb_resonanceQ": 2.5,
+      "oxb_resonanceMix": 0.08,
+      "oxb_cantilever": 0.35,
+      "oxb_damping": 2800.0,
+      "oxb_predelay": 8.0,
+      "oxb_dryWet": 0.28,
+      "oxb_exciterDecay": 0.032,
+      "oxb_exciterBright": 0.28
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "lo-fi",
+    "study",
+    "warm",
+    "hazy",
+    "background"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Self-similar at every scale \u2014 the reverb creates recursive patterns through high entanglement and convergence. Each reflection spawns sub-reflections. For IDM texture design.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.55,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Kinetic",
+  "name": "Fractal Bend",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.45,
+      "oxb_decay": 3.0,
+      "oxb_entangle": 0.72,
+      "oxb_erosionRate": 0.3,
+      "oxb_erosionDepth": 0.6,
+      "oxb_convergence": 18.0,
+      "oxb_resonanceQ": 16.0,
+      "oxb_resonanceMix": 0.5,
+      "oxb_cantilever": 0.58,
+      "oxb_damping": 8500.0,
+      "oxb_predelay": 4.0,
+      "oxb_dryWet": 0.4,
+      "oxb_exciterDecay": 0.035,
+      "oxb_exciterBright": 0.58
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "idm",
+    "fractal",
+    "recursive",
+    "texture",
+    "complex"
+  ],
+  "version": "1.0.0"
+}

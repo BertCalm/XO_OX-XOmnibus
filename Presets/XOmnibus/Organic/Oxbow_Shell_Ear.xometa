@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Holding a seashell to your ear \u2014 the small cavity resonates with golden overtones, creating the illusion of the ocean. The Oxbow Eels childhood memory.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.28,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Organic",
+  "name": "Shell Ear",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.14,
+      "oxb_decay": 1.8,
+      "oxb_entangle": 0.15,
+      "oxb_erosionRate": 0.07,
+      "oxb_erosionDepth": 0.12,
+      "oxb_convergence": 8.0,
+      "oxb_resonanceQ": 10.0,
+      "oxb_resonanceMix": 0.4,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 6500.0,
+      "oxb_predelay": 0.0,
+      "oxb_dryWet": 0.28,
+      "oxb_exciterDecay": 0.03,
+      "oxb_exciterBright": 0.52
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "intimate",
+    "shell",
+    "ocean",
+    "resonant",
+    "childhood"
+  ],
+  "version": "1.0.0"
+}

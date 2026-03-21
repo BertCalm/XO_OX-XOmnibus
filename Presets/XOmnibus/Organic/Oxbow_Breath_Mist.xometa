@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Breath condensing in cold air \u2014 the briefest reverb with a gentle bright edge from the golden resonance. Like hearing your own breath reflected back to you on a winter morning.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.15,
+    "density": 0.25,
+    "space": 0.18,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Organic",
+  "name": "Breath Mist",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.1,
+      "oxb_decay": 0.5,
+      "oxb_entangle": 0.06,
+      "oxb_erosionRate": 0.05,
+      "oxb_erosionDepth": 0.08,
+      "oxb_convergence": 4.0,
+      "oxb_resonanceQ": 3.5,
+      "oxb_resonanceMix": 0.15,
+      "oxb_cantilever": 0.12,
+      "oxb_damping": 7000.0,
+      "oxb_predelay": 0.0,
+      "oxb_dryWet": 0.15,
+      "oxb_exciterDecay": 0.05,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "intimate",
+    "breath",
+    "cold",
+    "brief",
+    "morning"
+  ],
+  "version": "1.0.0"
+}

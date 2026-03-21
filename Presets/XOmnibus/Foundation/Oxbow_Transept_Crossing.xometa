@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The intersection of nave and transept \u2014 where four acoustic spaces merge. Complex early reflections, moderate decay, golden resonance from the crossing dome above.",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.62,
+    "space": 0.85,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Foundation",
+  "name": "Transept Crossing",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.84,
+      "oxb_decay": 13.0,
+      "oxb_entangle": 0.38,
+      "oxb_erosionRate": 0.05,
+      "oxb_erosionDepth": 0.12,
+      "oxb_convergence": 8.0,
+      "oxb_resonanceQ": 5.0,
+      "oxb_resonanceMix": 0.22,
+      "oxb_cantilever": 0.22,
+      "oxb_damping": 9000.0,
+      "oxb_predelay": 58.0,
+      "oxb_dryWet": 0.47,
+      "oxb_exciterDecay": 0.011,
+      "oxb_exciterBright": 0.62
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cathedral",
+    "crossing",
+    "complex",
+    "dome",
+    "architectural"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Rain-slicked alley at midnight \u2014 short reflections off brick walls with dark damping. The cantilever decay suggests footsteps fading into shadow. Classic noir reverb.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Atmosphere",
+  "name": "Noir Alley",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.35,
+      "oxb_decay": 2.5,
+      "oxb_entangle": 0.15,
+      "oxb_erosionRate": 0.1,
+      "oxb_erosionDepth": 0.3,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 4.0,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.6,
+      "oxb_damping": 3000.0,
+      "oxb_predelay": 8.0,
+      "oxb_dryWet": 0.35,
+      "oxb_exciterDecay": 0.03,
+      "oxb_exciterBright": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "cinematic",
+    "noir",
+    "dark",
+    "urban",
+    "suspense"
+  ],
+  "version": "1.0.0"
+}

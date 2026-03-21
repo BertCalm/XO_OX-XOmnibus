@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Late night at the mixing board \u2014 deep, warm dub reverb with slow erosion creating that classic degrading echo. The bass hits and the room responds with golden warmth.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Foundation",
+  "name": "Kingston Night",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 5.0,
+      "oxb_entangle": 0.35,
+      "oxb_erosionRate": 0.14,
+      "oxb_erosionDepth": 0.45,
+      "oxb_convergence": 3.0,
+      "oxb_resonanceQ": 4.0,
+      "oxb_resonanceMix": 0.15,
+      "oxb_cantilever": 0.4,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 20.0,
+      "oxb_dryWet": 0.42,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.35
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "dub",
+    "warm",
+    "deep",
+    "kingston",
+    "night"
+  ],
+  "version": "1.0.0"
+}

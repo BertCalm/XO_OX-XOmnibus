@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The acoustic space of a single candle flame \u2014 tiny, warm, alive with subtle movement. Minimal erosion creates micro-variations in the reverb like a flame dancing in still air.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.2,
+    "aggression": 0.01
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "mood": "Organic",
+  "name": "Candle Flicker",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.08,
+      "oxb_decay": 0.6,
+      "oxb_entangle": 0.08,
+      "oxb_erosionRate": 0.12,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 2.0,
+      "oxb_resonanceQ": 2.5,
+      "oxb_resonanceMix": 0.08,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 0.0,
+      "oxb_dryWet": 0.18,
+      "oxb_exciterDecay": 0.045,
+      "oxb_exciterBright": 0.35
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "intimate",
+    "candle",
+    "warm",
+    "alive",
+    "micro"
+  ],
+  "version": "1.0.0"
+}
