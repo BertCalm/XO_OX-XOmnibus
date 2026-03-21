@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Rules, Complex Music — ORGANISM | XO_OX Field Guide</title>
+<meta name="description" content="Field Guide Post #20: ORGANISM — the cellular automata generative synthesizer. A 16-cell Wolfram automaton drives filter, pitch, envelope, and reverb in real time. The rule set is the instrument.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --organism:   #C6E377;
+  --organism-dim: #8BAA42;
+  --organism-glow: rgba(198, 227, 119, 0.08);
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 25% 75%, rgba(198, 227, 119, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 20%, rgba(42, 161, 155, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--organism-dim); color: var(--bg-deep); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 75%, rgba(198, 227, 119, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 20%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--organism-dim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--organism-dim);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--organism); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span { color: var(--text-dim); display: block; margin-top: 0.2rem; }
+
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--organism-dim);
+  background: var(--organism-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.article blockquote .attribution {
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--organism-dim), transparent);
+  margin: 3rem 0;
+}
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+
+/* ═══════════ CA VISUALIZATION ═══════════ */
+.ca-demo {
+  margin: 2rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+.ca-demo .ca-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.ca-row {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.ca-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.ca-cell.on  { background: var(--organism); }
+.ca-cell.off { background: rgba(198, 227, 119, 0.08); }
+.ca-mapping {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+.ca-mapping-item {
+  padding: 0.4rem 0.6rem;
+  background: rgba(198, 227, 119, 0.05);
+  border: 1px solid rgba(198, 227, 119, 0.12);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  text-align: center;
+}
+.ca-mapping-item .cells {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--organism);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.ca-mapping-item .param {
+  font-size: 0.65rem;
+  color: var(--text-faint);
+}
+
+/* ═══════════ RULE CARDS ═══════════ */
+.rule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.rule-card {
+  padding: 1.3rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  border-left: 3px solid var(--organism-dim);
+}
+.rule-card .rule-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--organism);
+  margin-bottom: 0.3rem;
+}
+.rule-card .rule-class {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.rule-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.rule-card p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ═══════════ RECIPE CARD ═══════════ */
+.recipe-card {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--organism-dim);
+  border-radius: 0 4px 4px 0;
+}
+.recipe-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.recipe-card p { font-size: 0.95rem; margin-bottom: 0.8rem; }
+.recipe-card .recipe-tag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--organism-dim);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.recipe-card .recipe-params {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  background: var(--bg-deep);
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+  line-height: 1.9;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--organism-dim); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .rule-grid { grid-template-columns: 1fr; }
+  .ca-mapping { grid-template-columns: repeat(2, 1fr); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<meta property="og:title" content="Simple Rules, Complex Music — ORGANISM | XO_OX Field Guide">
+<meta property="og:description" content="ORGANISM uses a 16-cell Wolfram cellular automaton to drive synthesis parameters in real time. The rule set IS the instrument.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; Engine 20</div>
+  <h1>Simple Rules, <em>Complex Music</em></h1>
+  <p class="article-hero-sub">
+    ORGANISM doesn't have an oscillator in the traditional sense. It has a 16-cell Wolfram automaton that evolves according to a rule, and whatever state that automaton produces becomes the synthesis. The rule set is the instrument. Change the rule and you change the physics.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Engine<span style="color: var(--organism);">ORGANISM &mdash; Cellular Automata Synthesis</span></div>
+    <div class="article-meta-item">Read Time<span>20 min</span></div>
+    <div class="article-meta-item">Words<span>~4,500</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--organism);">Emergence Lime #C6E377</span></div>
+  </div>
+</header>
+
+<article class="article" id="article-content">
+
+<p class="reveal">
+In 1982, Stephen Wolfram began a systematic investigation of the simplest possible computational systems. He took a one-dimensional array of cells &mdash; not the two-dimensional grid of Conway's Game of Life, but a single row &mdash; and asked: how many distinct behaviors are possible if each cell's next state depends only on its own current state and the states of its two immediate neighbors?
+</p>
+
+<p class="reveal">
+Three cells. Two possible states (on or off). Eight possible neighborhood configurations. That means the rule that determines the next generation needs to specify the output for 8 inputs, and each output can be 0 or 1. There are 2<sup>8</sup> = 256 possible rules. Wolfram called them Rule 0 through Rule 255, numbered by the binary encoding of their output table. He ran all 256 through a computer and documented what happened.
+</p>
+
+<p class="reveal">
+What he found was disturbing in its implications. Out of these 256 rules &mdash; each of which could be described completely in eight bits of information, simpler than any real-world physics &mdash; emerged four distinct classes of behavior. Some rules produced uniformity: every cell went dead regardless of initial state. Some produced simple repeating patterns: stable structures, fixed oscillators. Some produced fractal self-similar patterns of infinite complexity. And some &mdash; Rule 30 most famously, Rule 110 most importantly &mdash; produced outputs that were genuinely chaotic: sequences of cells that passed every statistical test for randomness while being completely determined by a simple rule applied to an initial state. Not random. <em>Indistinguishable from random.</em>
+</p>
+
+<p class="reveal">
+ORGANISM runs a Wolfram elementary cellular automaton on 16 cells and uses the resulting state to drive a synthesizer in real time. The state of cells 0 through 3 controls filter cutoff. Cells 4 through 7 control envelope rate. Cells 8 through 11 control pitch offset. Cells 12 through 15 control reverb amount. The rule determines which cells light up, which stay dark, and how the pattern evolves over time. The pattern is the synthesis.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">How It Works</h2>
+
+<p class="reveal">
+A single generation of ORGANISM's automaton is a 16-bit integer: sixteen cells, each either 0 or 1. Every <strong>stepRate</strong> samples (controlled by the <code>org_stepRate</code> parameter), the automaton advances to its next generation. For each of the 16 cells, the engine looks at that cell and its two neighbors (with circular wrap: cell 0's left neighbor is cell 15), finds which of the 8 possible three-cell patterns that forms, and reads the output from the rule table. The result is a new 16-bit integer: the next generation.
+</p>
+
+<div class="ca-demo reveal" aria-label="Cellular automaton state diagram">
+  <span class="ca-label">ORGANISM — 16-cell state → synthesis parameter mapping</span>
+  <div class="ca-row" aria-hidden="true">
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+  </div>
+  <div class="ca-row" aria-hidden="true">
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+  </div>
+  <div class="ca-row" aria-hidden="true">
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell on"></div>
+    <div class="ca-cell off"></div>
+  </div>
+  <div class="ca-mapping" aria-label="Cell group to parameter mapping">
+    <div class="ca-mapping-item">
+      <span class="cells">Cells 0–3</span>
+      <span class="param">Filter Cutoff</span>
+    </div>
+    <div class="ca-mapping-item">
+      <span class="cells">Cells 4–7</span>
+      <span class="param">Envelope Rate</span>
+    </div>
+    <div class="ca-mapping-item">
+      <span class="cells">Cells 8–11</span>
+      <span class="param">Pitch ±6st</span>
+    </div>
+    <div class="ca-mapping-item">
+      <span class="cells">Cells 12–15</span>
+      <span class="param">Reverb Amount</span>
+    </div>
+  </div>
+</div>
+
+<p class="reveal">
+This mapping is why ORGANISM sounds nothing like other synthesizers. A conventional synth has its filter cutoff controlled by a parameter you set, or by an LFO that moves back and forth on a schedule, or by an envelope that follows the shape of a note. ORGANISM's filter cutoff is controlled by four bits of a Wolfram automaton. Those four bits don't move on a schedule. They don't have a shape. They follow the rule &mdash; and what the rule produces depends on what all 16 cells are doing simultaneously, which depends on what they were all doing the generation before, which ultimately traces back to the initial 16-bit state you started with (the <strong>Seed</strong>) and how many generations have elapsed.
+</p>
+
+<p class="reveal">
+The <strong>Scope</strong> parameter adds a temporal dimension: instead of reading the raw current generation's cell values, ORGANISM averages the cell populations over the last <em>N</em> generations (up to 16). At scope=1, you get raw cellular automaton behavior: sharp, immediate, potentially chaotic. At scope=8, the average smooths the output &mdash; a cell group needs to be consistently lit for several generations to register as a high value, which converts chaotic Rule 30 behavior into something that still evolves unpredictably but does so more gradually. The scope parameter is the temporal resolution of your instrument.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Eight Curated Rules</h2>
+
+<p class="reveal">
+Of the 256 possible Wolfram rules, most are musically uninteresting: they converge to all-dead states, or they immediately stabilize into fixed patterns that produce constant parameter values. ORGANISM's RULE macro sweeps through eight curated rules that Wolfram himself identified as the most significant representatives of the four behavior classes, plus several that have specific mathematical properties worth hearing.
+</p>
+
+<div class="rule-grid reveal">
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 30</div>
+    <span class="rule-class">Class III — Chaotic</span>
+    <h4>The Random Number Generator</h4>
+    <p>Wolfram's <em>A New Kind of Science</em> uses Rule 30 as a random number generator because its center column passes all statistical tests for randomness. In ORGANISM, Rule 30 produces synthesis behavior that sounds genuinely stochastic: filter, pitch, and reverb change on no discernible schedule. Each generation is influenced by all previous ones, but the influence is so nonlinearly mixed that the output appears random. No LFO sounds like this. No sample-and-hold circuit sounds like this. Rule 30 is the first rule to use and the one that most immediately demonstrates that ORGANISM is fundamentally different from other synthesizers.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 90</div>
+    <span class="rule-class">Class III — Fractal</span>
+    <h4>The Sierpinski Triangle</h4>
+    <p>Rule 90, started from a single center cell, produces the Sierpinski triangle in the cellular automaton space-time diagram. The pattern has perfect self-similarity: zoom into any scale and the same triangular structure repeats. In ORGANISM, Rule 90 produces a synthesis behavior with fractal temporal structure: patterns repeat at multiple timescales simultaneously. You hear something happen, then it happens again half as fast, and again at a quarter speed, all superimposed. The musical result is a complex rhythm that always feels familiar but never exactly repeats.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 110</div>
+    <span class="rule-class">Class IV — Universal Computation</span>
+    <h4>The Turing Machine</h4>
+    <p>In 1994, Matthew Cook proved that Rule 110 is computationally universal &mdash; it can simulate any Turing machine, which means any computation that any computer can perform can be expressed as a Rule 110 automaton. This is the most complex rule in the set. In ORGANISM, Rule 110 produces the most musically interesting behavior: a mixture of Class I stability (regions of the 16-cell lattice that settle into repeating patterns) and Class III chaos (other regions that vary without repetition). The synthesis has areas of relative stability that provide a tonal anchor, interspersed with regions of complexity that provide interest. It is the most "composed" of the curated rules.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 184</div>
+    <span class="rule-class">Class II — Traffic Flow</span>
+    <h4>The Traffic Model</h4>
+    <p>Rule 184 is the cellular automaton model of traffic flow on a single-lane road. Each cell is either a car (1) or empty space (0). Cars move forward one cell per step if the space ahead is empty; otherwise they stay. The resulting behavior models traffic jams: regions of dense-to-sparse density that propagate backward through the automaton even as individual cars move forward. In ORGANISM, Rule 184 produces synthesis behavior that has a characteristic "traffic jam" quality: long periods of stability interrupted by sudden cascades of change as a density wave passes through the 16-cell lattice. Filter sweeps and pitch jumps happen in clusters, not uniformly distributed in time.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 150</div>
+    <span class="rule-class">Class III — Linear</span>
+    <h4>XOR Propagation</h4>
+    <p>Rule 150 computes the XOR of a cell with its two neighbors: a cell is on in the next generation if an odd number of its three-cell neighborhood is currently on. This produces a highly symmetric pattern with exact fractal structure visible at power-of-two scales. In ORGANISM, Rule 150 is the most tonally consistent of the chaotic rules: because XOR is a linear operation, the synthesis parameters vary within a bounded range rather than exploring the full 0–1 space. The filter doesn't go to extremes. The pitch stays relatively centered. Rule 150 is the right choice when you want CA-driven synthesis that doesn't destabilize your mix.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 18 &amp; 54</div>
+    <span class="rule-class">Class II &amp; IV</span>
+    <h4>The Complement Pair</h4>
+    <p>Rules 18 and 54 are both self-complement rules: the pattern produced by Rule 18 inverted (all 0s become 1s and vice versa) is the same as the pattern produced by Rule 54 on the inverted initial state. They produce similar structures with different polarity, which in synthesis terms means similar temporal rhythms with inverted parameter mapping: when Rule 18's filter is open, Rule 54's equivalent filter is closed. In ORGANISM's RULE macro sweep, transitioning between 18 and 54 produces a complementary crossfade that doesn't sound like parameter automation &mdash; it sounds like a mirror being placed in the automaton space.</p>
+  </div>
+
+  <div class="rule-card">
+    <div class="rule-num">Rule 22</div>
+    <span class="rule-class">Class III — Complex</span>
+    <h4>The Persistence Engine</h4>
+    <p>Rule 22 produces a pattern with unusual persistence: isolated regions of activity maintain themselves for many generations before either dying out or merging with other regions. In ORGANISM, Rule 22 creates synthesis behavior that holds its current state for longer periods than most chaotic rules, then changes relatively quickly when it does change. The result is a sound that feels like it has opinions &mdash; it stays where it is until it doesn't, and when it moves, it commits. Filter cutoff holds at a position for several seconds, then sweeps. Pitch sits at an offset for many notes, then jumps.</p>
+  </div>
+
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Four Parameters That Matter Most</h2>
+
+<p class="reveal">
+ORGANISM has approximately 35 parameters, but four of them are the ones that define the instrument's character in most playing contexts. All four are mapped to macros.
+</p>
+
+<h3 class="reveal">RULE — The Physics</h3>
+
+<p class="reveal">
+The RULE macro sweeps through the eight curated rules in order: 30, 90, 110, 184, 150, 18, 54, 22. At macro position 0.0 you are in Rule 30. At 0.5 you are in Rule 110. At 1.0 you are in Rule 22. The transitions between rules are instantaneous &mdash; there is no interpolation between rule tables, because interpolating between automaton physics doesn't make mathematical sense. Instead, when the rule changes, the current 16-bit state is preserved and simply evaluated under the new rule on the next step. The transition is discontinuous by design: changing the rule changes the physics the existing state is subject to.
+</p>
+
+<p class="reveal">
+In performance, this means RULE macro movements have a distinct character: they don't produce smooth parameter sweeps. They produce regime changes. The automaton is in one mode of behavior, the rule changes, and within a few generations the behavior has shifted to the character of the new rule. The rate of that shift depends on the initial state and the rules involved. Sometimes the transition is nearly instantaneous. Sometimes the old pattern persists for several generations while the new rule reshapes it. This is not a flaw &mdash; it is the automaton physics responding to the rule change according to its own dynamics.
+</p>
+
+<h3 class="reveal">SEED — The Initial Condition</h3>
+
+<p class="reveal">
+The SEED parameter randomizes the initial 16-bit state of the automaton. Any two different seeds produce different evolutions under the same rule, and under a deterministic rule those evolutions are completely different for all time &mdash; no two seeds ever converge to the same sequence of states (unless the automaton hits a repeating cycle, which some rules produce). In musical terms, each seed is a different composition. Same rule, same tempo, same filter and pitch range, but a completely different pattern of events. The seed is not a random modifier. It is a selection from an infinite library of deterministic compositions encoded in the rule's dynamics.
+</p>
+
+<p class="reveal">
+Practically: find a rule you like, then sweep the SEED macro slowly while holding a sustained note. You will hear the synthesis behavior reorganize each time you land on a new seed value. Some seeds produce dense activity. Some produce sparse, widely spaced events. Some produce rhythmically regular patterns that sound almost programmed. Some produce what sounds like genuine improvisation. All of them are deterministic.
+</p>
+
+<h3 class="reveal">SCOPE — Temporal Resolution</h3>
+
+<p class="reveal">
+At scope=1, ORGANISM reads each generation's raw cell values and maps them to synthesis parameters. The result is maximally responsive to the automaton: every generation produces a new filter cutoff, a new envelope rate, a new pitch offset. At step rates fast enough to produce audible change (above 4 Hz), this creates a continuously flickering synthesis that is alien and unmusical in most contexts.
+</p>
+
+<p class="reveal">
+Increasing SCOPE to 4–8 smooths the automaton output: a cell group's contribution to the synthesis value is averaged over the last 4–8 generations. This doesn't smooth the underlying automaton (it still evolves at full resolution). It smooths the <em>translation</em> from automaton state to synthesis parameter. The result is that the synthesis parameters change more gradually, tracking the underlying CA dynamics with lower temporal resolution. Rule 30's chaos becomes a slower-moving, still unpredictable sweep. Rule 110's Class IV behavior becomes a gentle evolution between stable regions. The difference between scope=1 and scope=8 on the same rule is the difference between noise and music.
+</p>
+
+<h3 class="reveal">MUTATE — Biological Drift</h3>
+
+<p class="reveal">
+The MUTATE parameter introduces random bit flips in the automaton state at each generation. At low mutation rates, the automaton evolves mostly according to its rule, with occasional single-cell errors that perturb the trajectory. At higher mutation rates, the random flips dominate over the rule, and the synthesis behavior becomes increasingly random. Mutation is the parameter that breaks the strict determinism: a preset with any non-zero mutation will sound different on every playback. More importantly, mutation rescues the automaton from stable cycles. Rules like Rule 184 can settle into repeating patterns; a small mutation probability kicks the state out of the cycle and into fresh territory.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Playing ORGANISM</h2>
+
+<p class="reveal">
+ORGANISM is a generative synthesizer, which means the conventional mental model of "sound design followed by performance" applies differently here. The synthesis parameters are not set by you &mdash; they are generated by the automaton. Your job as a player is to choose the physics (rule), set the initial condition (seed), tune the temporal resolution (scope), and then respond to what the automaton produces. You are not designing a sound. You are cultivating a generative system.
+</p>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Playing Approach — The Sustained Tone</span>
+  <h4>Hold a Note and Listen to the Automaton Think</h4>
+  <p>ORGANISM reveals its character most clearly when you play a single sustained note and let the automaton evolve for 30 or more seconds. Set RULE to 0.25 (Rule 110). Set SCOPE to 5. Set MUTATE to 0.02. Set stepRate to 2 Hz. Play C3 and do nothing.</p>
+  <p>For the first 10 seconds, you will hear the automaton finding its characteristic behavior under Rule 110: regions of stability interspersed with chaotic bursts. The filter will open and close on no schedule. The reverb will swell and recede. Occasionally the pitch will shift by a semitone or two, then return. By 20 seconds you will have heard several "events" that felt like musical phrases &mdash; not because you programmed them, but because the Class IV dynamics of Rule 110 produce structures with compositional character. At 30 seconds, you will be in a genuinely different state than where you started.</p>
+  <div class="recipe-params">
+org_macroRule:    0.25  (Rule 110)
+org_macroSeed:    0.4   (choose any)
+org_scope:        5
+org_stepRate:     2.0   Hz
+org_macroMutate:  0.02
+org_pitchRange:   4.0   semitones
+Amp: A 0.05, D 0.0, S 1.0, R 2.0
+  </div>
+</div>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Playing Approach — Rule as Performance Parameter</span>
+  <h4>Conduct the Automaton with the RULE Macro</h4>
+  <p>Set SCOPE to 6. Set stepRate to 3 Hz. Assign your mod wheel to the RULE macro (or use the RULE macro directly on a MIDI controller). Play a chord and move through the rule space slowly while holding it.</p>
+  <p>The transitions between rules will produce distinct sonic events: the moment Rule 30 becomes Rule 110, the synthesis behavior shifts regime. You can hear the old pattern being evaluated under the new rule for a few generations before the new rule's character takes hold. This is the physics changing. Use the transition as a compositional event — move the RULE macro to a new position at the structural boundary of your phrase, and ORGANISM will mark that boundary with a sonic regime change that no automation curve could produce.</p>
+  <div class="recipe-params">
+org_macroRule:      mod wheel (or assign CC)
+org_scope:          6
+org_stepRate:       3.0 Hz
+org_macroMutate:    0.03
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Coral Colony Mythology</h2>
+
+<p class="reveal">
+ORGANISM's creature identity is the Coral Colony &mdash; millions of tiny polyps, each following simple chemical and physical rules, producing an architecture of extraordinary complexity that no single polyp could have planned or even conceived. The Great Barrier Reef was not designed. It grew. Each polyp was responding only to its immediate local chemical environment, following rules encoded in its DNA. The global pattern &mdash; the miles of branching structure, the specific ecological niches, the self-organizing complexity &mdash; emerged from the interaction of those local rules applied at massive scale.
+</p>
+
+<p class="reveal">
+This is not just a metaphor for ORGANISM. It is a precise description of how the synthesis works. Each of the 16 cells follows its rule: look left, look at yourself, look right, apply the table. The cell doesn't know about the synthesis. It doesn't know there's a filter. It doesn't know there's a pitch offset. It just follows the rule. The sound that emerges from 16 cells following Rule 110 for 300 generations is an architecture that the rule could not have anticipated and that no human could have designed. It emerged.
+</p>
+
+<p class="reveal">
+When you play ORGANISM, you are the reef's environment, not its architect. You set the temperature (seed), the chemical composition (rule), and the nutrient levels (scope and step rate). The colony grows according to its own logic. Your job is to create conditions in which interesting structures emerge &mdash; and then to listen closely enough to hear them.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
+<em>Engine: ORGANISM | Accent: Emergence Lime #C6E377 | Creature: Coral Colony</em><br>
+<em>XO_OX Field Guide &mdash; Engine 20 | May 2026</em>
+</p>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
