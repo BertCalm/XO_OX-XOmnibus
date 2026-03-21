@@ -1,7 +1,7 @@
 # XOmnibus V1 Launch Plan
 **Status:** ACTIVE PLANNING DOCUMENT
 **Date:** 2026-03-20
-**Product State:** 44 engines | ~21,918 presets | Build PASS | auval PASS
+**Product State:** 46 engines | ~22,000+ presets | Build PASS | auval PASS
 *(Note: OXBOW + OWARE were added 2026-03-20, pushing fleet from 42 to 44; counts below referencing 42 are historical and should be read as 44)*
 **Distribution:** XO-OX.org direct download + Patreon
 **Supersedes:** `Docs/plans/v1-launch-plan.md` (written when scope was 34 engines)
@@ -15,7 +15,7 @@ Before the plan: an honest accounting of where the fleet stands today.
 | Asset | State |
 |---|---|
 | Engines registered | 42 / 42 |
-| Total presets | ~21,918 |
+| Total presets | ~22,000+ |
 | Build | PASS |
 | auval | PASS |
 | ORBWEAVE presets | **0 — CRITICAL gap** |
@@ -36,7 +36,7 @@ Define this first. Everything else flows from it.
 
 ### Short Description (1 paragraph)
 
-> XOmnibus is a free plugin for macOS with 42 synthesis engines, ~22,000 factory presets, and a cross-engine coupling system that lets any engine modulate any other. Each engine is a distinct synthesis paradigm — a granular cloud sampler, a dub delay machine, a cellular automaton, a spectral engine driven by continued fractions, a hammerhead duophonic synth. Load four at once, wire them together, and hear what happens when an onset generator drives the filter of a reverb-drenched pad. The core is MIT-licensed and always free. Premium content (Guru Bin Transcendental packs, boutique engines) funds continued development. XO_OX Designs is one person, building in public.
+> XOmnibus is a free plugin for macOS with 46 synthesis engines, ~22,000 factory presets, and a cross-engine coupling system that lets any engine modulate any other. Each engine is a distinct synthesis paradigm — a granular cloud sampler, a dub delay machine, a cellular automaton, a spectral engine driven by continued fractions, a hammerhead duophonic synth. Load four at once, wire them together, and hear what happens when an onset generator drives the filter of a reverb-drenched pad. The core is MIT-licensed and always free. Premium content (Guru Bin Transcendental packs, boutique engines) funds continued development. XO_OX Designs is one person, building in public.
 
 ### Full Press Release Draft
 
@@ -44,7 +44,7 @@ Define this first. Everything else flows from it.
 
 **FOR IMMEDIATE RELEASE**
 
-**XO_OX Designs Ships XOmnibus: 42 Synthesis Engines, ~22,000 Presets, Free**
+**XO_OX Designs Ships XOmnibus: 46 Synthesis Engines, ~22,000 Presets, Free**
 
 *March [DATE], 2026 — XO_OX Designs today released XOmnibus V1.0, a free, open-source multi-engine synthesizer plugin for macOS. XOmnibus brings together 42 distinct synthesis paradigms in a single plugin — from classic subtractive and FM through granular, physical modeling, cellular automata, and spectral synthesis — with a cross-engine coupling system that allows any engine to modulate any other in real time.*
 
@@ -72,9 +72,9 @@ Define this first. Everything else flows from it.
 
 | Competitor | Their strength | XOmnibus answer |
 |---|---|---|
-| Vital / Surge XT | Polished, single-engine free synths | 42 engines, coupling between them — different category |
+| Vital / Surge XT | Polished, single-engine free synths | 46 engines, coupling between them — different category |
 | Omnisphere | Huge preset library, cinematic | Free (Omnisphere is $500), open source, user-extensible |
-| Pigments | Multi-engine, beautiful UI | MIT, 42 engines vs. 4, coupling as core synthesis, not FX |
+| Pigments | Multi-engine, beautiful UI | MIT, 46 engines vs. 4, coupling as core synthesis, not FX |
 | u-he Hive / Diva | Professional analog emulation | XOmnibus is character-driven, not emulation — and free |
 | Native Instruments Kontakt | Ecosystem, sample library | XOmnibus generates synthesis from scratch, no samples needed |
 
@@ -83,7 +83,7 @@ Define this first. Everything else flows from it.
 ### Social Media Templates
 
 **Short (280 chars / Twitter/X):**
-> XOmnibus V1.0 is out. 42 synthesis engines. ~22,000 presets. Cross-engine coupling. MIT license. Free.
+> XOmnibus V1.0 is out. 46 synthesis engines. ~22,000 presets. Cross-engine coupling. MIT license. Free.
 >
 > Download: XO-OX.org
 
@@ -129,7 +129,7 @@ These are non-negotiable blockers from the Board. Check each off:
 | Community infrastructure — README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue templates | PENDING | Solo dev | T-5 |
 | Minimum 5 hero preset audio clips on XO-OX.org (see `site-sample-recordings.md`) | PENDING | Solo dev | T-4 |
 | Download page live at XO-OX.org | PENDING | Solo dev | T-3 |
-| All materials say "42 engines" consistently | PENDING | Solo dev | T-3 |
+| All materials say "46 engines" consistently | PENDING | Solo dev | T-3 |
 | Preset silence audit — spot-check 50 presets across all 8 moods | PENDING | Solo dev | T-3 |
 
 ### Final QA Checklist (T-7 to T-3)
@@ -144,7 +144,7 @@ These are non-negotiable blockers from the Board. Check each off:
 **Preset Library**
 - [ ] ORBWEAVE: write minimum 50 factory presets (target 150) before launch
 - [ ] Spot-check 10 Awakening presets across 5 engines — sound quality + gold border rendering
-- [ ] Verify all 8 mood categories have coverage from 42 engines
+- [ ] Verify all 8 mood categories have coverage from 46 engines
 - [ ] Confirm preset browser loads within 3 seconds on a 2019 MacBook Pro
 
 **Documentation**
@@ -465,4 +465,4 @@ These items were identified in existing docs as open before launch. Track them h
 ---
 
 *This document supersedes `Docs/plans/v1-launch-plan.md` (34-engine scope, March 17 decisions).
-The current product has 44 engines and ~21,918 presets. All messaging should reflect the actual state.*
+The current product has 46 engines and ~22,000+ presets. All messaging should reflect the actual state.*
