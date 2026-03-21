@@ -402,6 +402,9 @@ struct OwareVoice
     std::array<SympathyCoupling, kMaxCouplings> sympathyCouplings {};
     int sympathyCouplingCount = 0;
 
+    // Improvement #5: per-voice thermal personality (fixed offset in cents)
+    float thermalPersonality = 0.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -602,6 +605,7 @@ public:
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
 
+<<<<<<< HEAD
                 // BUG-1 FIX: wire LFO1 → brightness, LFO2 → material
                 float lfo1Rate  = paramLfo1Rate  ? paramLfo1Rate->load()  : 0.5f;
                 float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.0f;
@@ -625,6 +629,15 @@ public:
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
                 // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
                 voice.shimmerLFO.setRate (std::max (0.05f, pShimmerHz * 0.05f), srf);  // modulate shimmer slowly
+=======
+                // Improvement #5: apply thermal drift (shared + per-voice personality)
+                float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
+                freq *= std::pow (2.0f, totalThermalCents / 1200.0f);
+
+                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
+                // Shadow detuning: the shimmer LFO modulates between in-tune and detuned
+                voice.shimmerLFO.setRate (0.3f, srf);  // slow modulation of shimmer depth
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;  // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;  // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
@@ -632,17 +645,43 @@ public:
 
                 float excitation = voice.exciter.process();
 
+<<<<<<< HEAD
                 // CPU-optimized sympathetic resonance: use precomputed sparse table
                 // instead of O(V²×M²) per-sample brute force. Table built at note-on.
+=======
+                // Improvement #4: per-mode sympathetic resonance (frequency-selective)
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
                 float sympInputPerMode[OwareVoice::kMaxModes] = {};
                 if (sympNow > 0.001f)
                 {
                     for (int ci = 0; ci < voice.sympathyCouplingCount; ++ci)
                     {
+<<<<<<< HEAD
                         const auto& c = voice.sympathyCouplings[ci];
                         sympInputPerMode[c.thisModeIdx] +=
                             voices[c.otherVoiceIdx].modes[c.otherModeIdx].lastOutput
                             * c.gain * sympNow;
+=======
+                        if (&other == &voice || !other.active) continue;
+                        for (int m = 0; m < OwareVoice::kMaxModes; ++m)
+                        {
+                            // Check if any of other's modes are near this voice's mode m
+                            float thisFreq = voice.modes[m].freq;
+                            if (thisFreq < 20.0f) continue;
+                            for (int om = 0; om < OwareVoice::kMaxModes; ++om)
+                            {
+                                float otherFreq = other.modes[om].freq;
+                                if (otherFreq < 20.0f) continue;
+                                float dist = std::fabs (thisFreq - otherFreq);
+                                if (dist < 50.0f)  // within 50 Hz = sympathetic range
+                                {
+                                    float proximity = 1.0f - dist / 50.0f;
+                                    sympInputPerMode[m] += other.modes[om].lastOutput
+                                                         * proximity * sympNow * 0.03f;
+                                }
+                            }
+                        }
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
                     }
                 }
 
@@ -674,8 +713,13 @@ public:
                     float modeAmp = 1.0f / (1.0f + static_cast<float> (m) * (1.5f - malletNow * 1.2f));
 
                     // Improvement #1: material exponent alpha — per-mode decay scaling
+<<<<<<< HEAD
                     // BUG-3 FIX: fastExp replaces std::pow (per-sample hot path)
                     float modeDecayScale = fastExp (-materialAlpha * std::log (static_cast<float> (m + 1)));
+=======
+                    // Applied to the mode amplitude envelope, not the resonator Q
+                    float modeDecayScale = std::pow (static_cast<float> (m + 1), -materialAlpha);
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
                     modeAmp *= modeDecayScale;
 
                     voice.modes[m].setFreqAndQ (modeFreq, modeQ, srf);
@@ -697,8 +741,12 @@ public:
                 if (voice.ampLevel < 1e-6f) { voice.active = false; continue; }
 
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
+<<<<<<< HEAD
                 // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp (brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+=======
+                float cutoff = std::clamp (brightNow + envMod, 200.0f, 20000.0f);
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
                 voice.svf.setMode (CytomicSVF::Mode::LowPass);
                 voice.svf.setCoefficients (cutoff, 0.5f, srf);
                 float filtered = voice.svf.processSample (bodied);
@@ -706,9 +754,18 @@ public:
                 float output = filtered * voice.ampLevel;
                 voice.sympatheticOut = output;
 
+<<<<<<< HEAD
                 // BUG-3 FIX: use cached pan gains (computed at noteOn, not per-sample)
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
+=======
+                float pan = static_cast<float> (voice.currentNote - 60) / 36.0f;
+                pan = std::clamp (pan, -1.0f, 1.0f);
+                float gainL = std::cos ((pan + 1.0f) * 0.25f * 3.14159265f);
+                float gainR = std::sin ((pan + 1.0f) * 0.25f * 3.14159265f);
+                mixL += output * gainL;
+                mixR += output * gainR;
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
             }
 
             outL[s] = mixL;
@@ -772,9 +829,12 @@ public:
             float modeFreq = freq * ratio;
             v.modeDecayBoosts[m] = v.body.getModeDecayBoost (modeFreq, bodyType, bodyDepth);
         }
+<<<<<<< HEAD
 
         // CPU optimization: rebuild sparse sympathetic coupling tables for ALL active voices
         rebuildSympathyCouplingTables();
+=======
+>>>>>>> claude/meta-skill-friction-detection-MUTBz
     }
 
     void noteOff (int note) noexcept
