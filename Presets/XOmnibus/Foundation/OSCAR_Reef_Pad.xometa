@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Reef Pad",
+  "mood": "Foundation",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The canonical Oscar pad — saw-sine blend, Moog open at 1800 Hz, 16 voices filling the reef. Dual LFOs create the living, breathing texture Oscar is known for.",
+  "tags": ["pad", "reef", "warm", "lush", "foundational", "saw", "poly"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.48, "warmth": 0.78, "movement": 0.45, "density": 0.62, "space": 0.68, "aggression": 0.12},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.85,
+      "morph_bloom": 1.8,
+      "morph_decay": 3.0,
+      "morph_sustain": 0.72,
+      "morph_release": 3.5,
+      "morph_filterCutoff": 1800.0,
+      "morph_filterReso": 0.32,
+      "morph_filterEnvDepth": 0.35,
+      "morph_drift": 0.45,
+      "morph_sub": 0.55,
+      "morph_detune": 14.0,
+      "morph_level": 0.78,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_lfo1Rate": 1.5,
+      "morph_lfo1Depth": 0.28,
+      "morph_lfo2Rate": 0.05,
+      "morph_lfo2Depth": 0.32,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0
+    }
+  },
+  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.45, "COUPLING": 0.0, "SPACE": 0.0},
+  "coupling": {"pairs": []}
+}

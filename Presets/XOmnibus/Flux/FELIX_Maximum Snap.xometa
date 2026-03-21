@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "snap=1.0, DART=1.0, decay=0.08 — the fastest feliX possible. 24-semitone downward sweep in under 50ms, maximum tanh saturation, fast LFO cutting through a bright BPF. Every hit is a wall of electric blue. For rhythmic percussion programming where impact matters above all else.",
+  "dna": {
+    "brightness": 0.98,
+    "warmth": 0.05,
+    "movement": 0.98,
+    "density": 0.5,
+    "space": 0.15,
+    "aggression": 0.95
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.15
+  },
+  "mood": "Flux",
+  "name": "FELIX Maximum Snap",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 1,
+      "snap_snap": 1.0,
+      "snap_decay": 0.08,
+      "snap_filterCutoff": 7000.0,
+      "snap_filterReso": 0.5,
+      "snap_filterEnvDepth": 0.8,
+      "snap_detune": 0.0,
+      "snap_level": 0.88,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": -1.0,
+      "snap_unison": 0,
+      "snap_polyphony": 1,
+      "snap_lfoDepth": 0.22,
+      "snap_lfo2Depth": 0.05,
+      "snap_lfoRate": 8.5,
+      "snap_lfo2Rate": 0.5,
+      "snap_macroDart": 1.0,
+      "snap_macroSchool": 0.0,
+      "snap_macroSurface": 0.7,
+      "snap_macroDepth": 0.15
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["flux", "oddfelix", "extreme", "snap", "percussion", "aggressive", "impact"],
+  "tempo": null,
+  "version": "1.0.0"
+}

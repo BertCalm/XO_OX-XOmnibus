@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Regenerative Mist",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The cellular mist of regeneration — tissue fog. Morph between sine and saw with high drift and 20-cent detune spreading the timbre into a haze. LFO1 trembles at 1.1 Hz like a healing wound sealing.",
+  "tags": ["mist", "regeneration", "haze", "cellular", "wide", "soft", "healing"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.35, "warmth": 0.7, "movement": 0.48, "density": 0.58, "space": 0.82, "aggression": 0.08},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.5,
+      "morph_bloom": 3.5,
+      "morph_decay": 4.8,
+      "morph_sustain": 0.65,
+      "morph_release": 6.0,
+      "morph_filterCutoff": 820.0,
+      "morph_filterReso": 0.18,
+      "morph_filterEnvDepth": 0.2,
+      "morph_drift": 0.78,
+      "morph_sub": 0.45,
+      "morph_detune": 20.0,
+      "morph_level": 0.7,
+      "morph_polyphony": 4,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_lfo1Rate": 1.1,
+      "morph_lfo1Depth": 0.28,
+      "morph_lfo2Rate": 0.015,
+      "morph_lfo2Depth": 0.42,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.38,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.65
+    }
+  },
+  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.65},
+  "coupling": {"pairs": []}
+}

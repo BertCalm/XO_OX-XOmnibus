@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Xenobranch",
+  "mood": "Aether",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The external gill branches — alien feathery protrusions. High LFO1 rate (6.5 Hz) creates tremolo-like flicker simulating gill-branch vibration in water current. Square morph for odd-harmonic bite.",
+  "tags": ["gill", "branch", "tremolo", "alien", "vibration", "odd-harmonic", "square"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.58, "warmth": 0.55, "movement": 0.78, "density": 0.45, "space": 0.72, "aggression": 0.32},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 1.95,
+      "morph_bloom": 0.65,
+      "morph_decay": 2.8,
+      "morph_sustain": 0.65,
+      "morph_release": 2.2,
+      "morph_filterCutoff": 1600.0,
+      "morph_filterReso": 0.42,
+      "morph_filterEnvDepth": 0.38,
+      "morph_drift": 0.35,
+      "morph_sub": 0.3,
+      "morph_detune": 16.0,
+      "morph_level": 0.76,
+      "morph_polyphony": 3,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_lfo1Rate": 6.5,
+      "morph_lfo1Depth": 0.32,
+      "morph_lfo2Rate": 0.022,
+      "morph_lfo2Depth": 0.28,
+      "morph_macroBloom": 0.15,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.55
+    }
+  },
+  "macros": {"CHARACTER": 1.95, "MOVEMENT": 0.78, "COUPLING": 0.0, "SPACE": 0.55},
+  "coupling": {"pairs": []}
+}

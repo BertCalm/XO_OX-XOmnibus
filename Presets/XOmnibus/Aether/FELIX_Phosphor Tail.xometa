@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Upward sweep direction — feliX breaks from tradition, ascending. Long Karplus-Strong tail with ultra-slow LFO and maximum stereo depth. Each note glows like a phosphorescent trail in dark water. Ethereal, hovering, luminous.",
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.3,
+    "movement": 0.28,
+    "density": 0.45,
+    "space": 0.95,
+    "aggression": 0.05
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.9
+  },
+  "mood": "Aether",
+  "name": "FELIX Phosphor Tail",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.45,
+      "snap_decay": 7.2,
+      "snap_filterCutoff": 6200.0,
+      "snap_filterReso": 0.12,
+      "snap_filterEnvDepth": 0.3,
+      "snap_detune": 32.0,
+      "snap_level": 0.65,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": 1.0,
+      "snap_unison": 2,
+      "snap_polyphony": 2,
+      "snap_lfoDepth": 0.04,
+      "snap_lfo2Depth": 0.18,
+      "snap_lfoRate": 0.18,
+      "snap_lfo2Rate": 0.03,
+      "snap_macroDart": 0.0,
+      "snap_macroSchool": 0.65,
+      "snap_macroSurface": 0.5,
+      "snap_macroDepth": 0.9
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["aether", "oddfelix", "ascending", "ethereal", "luminous", "karplus", "spacious"],
+  "tempo": null,
+  "version": "1.0.0"
+}

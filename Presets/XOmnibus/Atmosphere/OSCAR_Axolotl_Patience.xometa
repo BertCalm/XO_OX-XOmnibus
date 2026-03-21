@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "name": "Axolotl Patience",
+  "mood": "Atmosphere",
+  "engines": ["OddOscar"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oscar waiting — still water, almost no movement. Ultra-slow LFO1 at 0.05 Hz traces patience itself. The axolotl that will outlive the note. Macro SPACE adds bloom for atmospheric sessions.",
+  "tags": ["patience", "still", "waiting", "slow", "meditative", "atmospheric", "bloom"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {"brightness": 0.28, "warmth": 0.8, "movement": 0.15, "density": 0.42, "space": 0.88, "aggression": 0.04},
+  "parameters": {
+    "OddOscar": {
+      "morph_morph": 0.22,
+      "morph_bloom": 5.0,
+      "morph_decay": 7.0,
+      "morph_sustain": 0.72,
+      "morph_release": 7.5,
+      "morph_filterCutoff": 760.0,
+      "morph_filterReso": 0.2,
+      "morph_filterEnvDepth": 0.15,
+      "morph_drift": 0.32,
+      "morph_sub": 0.6,
+      "morph_detune": 7.0,
+      "morph_level": 0.72,
+      "morph_polyphony": 3,
+      "morph_voiceMode": 0,
+      "morph_glide": 0.0,
+      "morph_lfo1Rate": 0.05,
+      "morph_lfo1Depth": 0.18,
+      "morph_lfo2Rate": 0.01,
+      "morph_lfo2Depth": 0.25,
+      "morph_macroBloom": 0.0,
+      "morph_macroDrift": 0.0,
+      "morph_macroDepth": 0.0,
+      "morph_macroSpace": 0.0
+    }
+  },
+  "macros": {"CHARACTER": 0.22, "MOVEMENT": 0.15, "COUPLING": 0.0, "SPACE": 0.0},
+  "coupling": {"pairs": []}
+}

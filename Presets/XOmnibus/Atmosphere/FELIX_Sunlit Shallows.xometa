@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Medium decay, mild snap, 2-unison warmth. Sine+noise mode with a mid-range cutoff and slow filter LFO creates a gently undulating, bright-but-relaxed texture — like watching tetras from above through glass. Evokes gentle light refraction in tropical shallows.",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.52,
+    "movement": 0.45,
+    "density": 0.38,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "mood": "Atmosphere",
+  "name": "FELIX Sunlit Shallows",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 0,
+      "snap_snap": 0.3,
+      "snap_decay": 1.2,
+      "snap_filterCutoff": 3600.0,
+      "snap_filterReso": 0.2,
+      "snap_filterEnvDepth": 0.35,
+      "snap_detune": 12.0,
+      "snap_level": 0.74,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": -1.0,
+      "snap_unison": 1,
+      "snap_polyphony": 2,
+      "snap_lfoDepth": 0.08,
+      "snap_lfo2Depth": 0.09,
+      "snap_lfoRate": 0.8,
+      "snap_lfo2Rate": 0.09,
+      "snap_macroDart": 0.0,
+      "snap_macroSchool": 0.3,
+      "snap_macroSurface": 0.35,
+      "snap_macroDepth": 0.42
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["atmosphere", "oddfelix", "warm", "bright", "gentle", "tropical", "undulating"],
+  "tempo": null,
+  "version": "1.0.0"
+}

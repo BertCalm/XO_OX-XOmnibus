@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "4-voice polyphony, short decay, Karplus-Strong mode with bright cutoff — notes played fast create a natural arpeggio texture. The 7 Hz LFO and moderate resonance add a prismatic shimmer to each step. Neon tetra blue refracted through a crystal prism.",
+  "dna": {
+    "brightness": 0.9,
+    "warmth": 0.2,
+    "movement": 0.82,
+    "density": 0.62,
+    "space": 0.58,
+    "aggression": 0.38
+  },
+  "engines": ["OddfeliX"],
+  "macroLabels": ["DART", "SCHOOL", "SURFACE", "DEPTH"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "mood": "Prism",
+  "name": "FELIX Neon Arpeggio",
+  "parameters": {
+    "OddfeliX": {
+      "snap_oscMode": 2,
+      "snap_snap": 0.62,
+      "snap_decay": 0.35,
+      "snap_filterCutoff": 8500.0,
+      "snap_filterReso": 0.38,
+      "snap_filterEnvDepth": 0.55,
+      "snap_detune": 8.0,
+      "snap_level": 0.78,
+      "snap_pitchLock": 0,
+      "snap_sweepDirection": -1.0,
+      "snap_unison": 1,
+      "snap_polyphony": 2,
+      "snap_lfoDepth": 0.13,
+      "snap_lfo2Depth": 0.08,
+      "snap_lfoRate": 7.0,
+      "snap_lfo2Rate": 0.28,
+      "snap_macroDart": 0.35,
+      "snap_macroSchool": 0.38,
+      "snap_macroSurface": 0.55,
+      "snap_macroDepth": 0.5
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": ["prism", "oddfelix", "arpeggio", "karplus", "bright", "crystalline", "shimmer"],
+  "tempo": null,
+  "version": "1.0.0"
+}
