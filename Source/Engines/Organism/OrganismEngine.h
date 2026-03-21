@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -463,8 +464,8 @@ public:
         noteIsOn    = false;
         currentNote = 60;
         currentVel  = 1.f;
-        lfo1Phase   = 0.f;
-        lfo2Phase   = 0.f;
+        lfo1.reset();
+        lfo2.reset();
         modWheelVal = 0.f;
         aftertouchVal = 0.f;
         couplingFilterMod = 0.f;
@@ -503,8 +504,8 @@ public:
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
         noteIsOn    = false;
-        lfo1Phase   = 0.f;
-        lfo2Phase   = 0.f;
+        lfo1.reset();
+        lfo2.reset();
         rng         = 0xDEADBEEFu;
     }
 
@@ -718,6 +719,12 @@ public:
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
 
+        // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
+        lfo1.setRate (lfo1Rate, sr);
+        lfo1.setShape (StandardLFO::Sine);
+        lfo2.setRate (lfo2Rate, sr);
+        lfo2.setShape (StandardLFO::Sine);
+
         // Consume coupling modulation (resets each block)
         const float savedCouplingFilter = couplingFilterMod;
         const float savedCouplingPitch  = couplingPitchMod;
@@ -752,16 +759,11 @@ public:
             cellPitchOut  += kSmoothCoeff * (cellPitchTarget  - cellPitchOut);
             cellFXOut     += kSmoothCoeff * (cellFXTarget     - cellFXOut);
 
-            // --- LFO 1: modulates step rate (but step timing uses block-level stepRate param)
-            //     Here LFO1 modulates filter cutoff for additional movement
-            lfo1Phase += lfo1Rate / sr;
-            if (lfo1Phase >= 1.f) lfo1Phase -= 1.f;
-            float lfo1Val = fastSin(lfo1Phase * 6.2831853f);
+            // --- LFO 1: modulates filter cutoff for additional movement ---
+            float lfo1Val = lfo1.process(); // StandardLFO sine [-1, +1]
 
             // --- LFO 2: filter cutoff offset ---
-            lfo2Phase += lfo2Rate / sr;
-            if (lfo2Phase >= 1.f) lfo2Phase -= 1.f;
-            float lfo2Val = fastSin(lfo2Phase * 6.2831853f);
+            float lfo2Val = lfo2.process(); // StandardLFO sine [-1, +1]
 
             // --- Amp envelope ---
             float envTarget = 0.f;
@@ -956,8 +958,8 @@ private:
     float currentVel  = 1.f;
 
     // LFO phases
-    float lfo1Phase = 0.f;
-    float lfo2Phase = 0.f;
+    StandardLFO lfo1;  // D002: filter cutoff modulation (sine)
+    StandardLFO lfo2;  // D002: secondary filter modulation (sine)
 
     // Expression (D006)
     float modWheelVal   = 0.f;

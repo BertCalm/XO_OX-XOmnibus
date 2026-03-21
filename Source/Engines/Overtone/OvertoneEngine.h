@@ -2,6 +2,7 @@
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -491,8 +492,8 @@ public:
         noteIsOn      = false;
         currentNote   = 60;
         currentVel    = 1.f;
-        lfo1Phase     = 0.f;
-        lfo2Phase     = 0.f;
+        lfo1.reset();
+        lfo2.reset();
         modWheelVal   = 0.f;
         aftertouchVal = 0.f;
 
@@ -517,8 +518,8 @@ public:
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
         noteIsOn    = false;
-        lfo1Phase   = 0.f;
-        lfo2Phase   = 0.f;
+        lfo1.reset();
+        lfo2.reset();
     }
 
     //--------------------------------------------------------------------------
@@ -703,6 +704,12 @@ public:
         const float fadeStart = nyquist * 0.8f; // begin fade at 80% of Nyquist
         const float fadeRange = nyquist - fadeStart; // denominator for fade calc
 
+        // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
+        lfo1.setRate (lfo1Rate, sr);
+        lfo1.setShape (StandardLFO::Sine);
+        lfo2.setRate (lfo2Rate, sr);
+        lfo2.setShape (StandardLFO::Sine);
+
         // Reset coupling mods (consumed each block)
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
@@ -746,16 +753,12 @@ public:
             ampEnvLevel = flushDenormal(ampEnvLevel);
 
             // --- D002: LFO 1 — sweeps convergent depth index ---
-            // Floor D005: 0.01 Hz minimum
-            lfo1Phase += lfo1Rate / sr;
-            if (lfo1Phase >= 1.f) lfo1Phase -= 1.f;
-            float lfo1Val = fastSin(lfo1Phase * 6.2831853f);
+            // D005 floor: 0.01 Hz minimum enforced by StandardLFO.setRate()
+            float lfo1Val = lfo1.process(); // StandardLFO sine [-1, +1]
             float lfo1Out = lfo1Val * lfo1Depth;
 
             // --- D002: LFO 2 — modulates partial phase rotation ---
-            lfo2Phase += lfo2Rate / sr;
-            if (lfo2Phase >= 1.f) lfo2Phase -= 1.f;
-            float lfo2Val = fastSin(lfo2Phase * 6.2831853f);
+            float lfo2Val = lfo2.process(); // StandardLFO sine [-1, +1]
             float lfo2Out = lfo2Val * lfo2Depth;
 
             // LFO1 sweeps effective depth (±1.5 depth units at full lfo1Depth)
@@ -797,7 +800,7 @@ public:
                     // without a coupling partner. Scale kept small (0.1) so at low
                     // COUPLING settings the effect is nearly inaudible; at full it
                     // adds ±0.1 amplitude flutter — noticeable but not overwhelming.
-                    float shimmerPhase = lfo1Phase * 6.2831853f
+                    float shimmerPhase = lfo1.phase * 6.2831853f
                                        + (float)(i - 4) * 0.7853982f; // π/4 per partial
                     float shimmer = macroCoupling * 0.1f * fastSin(shimmerPhase);
                     amp = clamp(amp + colorUpperBoost + velUpperBoost + atColorBoost + shimmer,
@@ -882,8 +885,8 @@ private:
     float currentVel  = 1.f;
 
     // LFO phases
-    float lfo1Phase = 0.f;
-    float lfo2Phase = 0.f;
+    StandardLFO lfo1;  // D002/D005: convergent depth sweep (sine)
+    StandardLFO lfo2;  // D002: partial phase rotation (sine)
 
     // D006 expression
     float modWheelVal   = 0.f;

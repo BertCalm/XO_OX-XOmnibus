@@ -7,6 +7,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardADSR.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
@@ -101,69 +102,10 @@ private:
 // DubAdsrEnvelope replaced by StandardADSR (Source/DSP/StandardADSR.h).
 // All call sites updated to use xomnibus::StandardADSR directly.
 
-//==============================================================================
-// DubLFO — Sine LFO with configurable rate, 3-way destination routing.
-//==============================================================================
-class DubLFO
-{
-public:
-    // Shape enum: 5 shapes matching fleet standard (D002 compliance)
-    enum class Shape { Sine, Triangle, Saw, Square, SandH };
-
-    void prepare (double sampleRate) noexcept { sr = sampleRate; sampleCounter = 12345u; }
-    void reset() noexcept { phase = 0.0; holdValue = 0.0f; sampleCounter = 12345u; }
-
-    void setRate (float hz) noexcept { rate = static_cast<double> (hz); }
-
-    void setShape (int idx) noexcept
-    {
-        shape = static_cast<Shape> (std::max (0, std::min (4, idx)));
-    }
-
-    float process() noexcept
-    {
-        float out = 0.0f;
-
-        switch (shape)
-        {
-            case Shape::Sine:
-                out = fastSin (static_cast<float> (phase * 6.28318530717958647692));
-                break;
-            case Shape::Triangle:
-                out = 4.0f * std::fabs (static_cast<float> (phase) - 0.5f) - 1.0f;
-                break;
-            case Shape::Saw:
-                out = 2.0f * static_cast<float> (phase) - 1.0f;
-                break;
-            case Shape::Square:
-                out = (phase < 0.5) ? 1.0f : -1.0f;
-                break;
-            case Shape::SandH:
-            {
-                double prevPhase = phase - rate / sr;
-                if (prevPhase < 0.0 || phase < prevPhase)
-                {
-                    sampleCounter = sampleCounter * 1664525u + 1013904223u;
-                    holdValue = static_cast<float> (sampleCounter & 0xFFFF) / 32768.0f - 1.0f;
-                }
-                out = holdValue;
-                break;
-            }
-        }
-
-        phase += rate / sr;
-        if (phase >= 1.0) phase -= 1.0;
-        return out;
-    }
-
-private:
-    double sr = 44100.0;
-    double phase = 0.0;
-    double rate = 2.0;
-    Shape shape = Shape::Sine;
-    float holdValue = 0.0f;
-    uint32_t sampleCounter = 12345u;
-};
+// DubLFO replaced by StandardLFO (Source/DSP/StandardLFO.h).
+// StandardLFO has identical waveforms (Sine=0, Triangle=1, Saw=2, Square=3, S&H=4)
+// and the same Knuth TAOCP LCG for S&H. setRate() now takes (hz, sampleRate).
+// prepare(sr) calls removed — StandardLFO has no prepare(); SR is passed to setRate().
 
 //==============================================================================
 // DubTapeDelay — Tape delay with wow & flutter, bandpass feedback, Hermite interp.
@@ -507,8 +449,7 @@ public:
             v.drift.seed (static_cast<uint32_t> (i * 7919 + 1));
         }
 
-        lfo.prepare (sr);
-        lfo2.prepare (sr);
+        // lfo.prepare() not needed — StandardLFO has no prepare(); SR passed to setRate()
         tapeDelay.prepare (sr);
         springReverb.prepare (sr);
         aftertouch.prepare (sr);  // D006: 5ms attack / 20ms release smoothing
@@ -656,7 +597,7 @@ public:
         externalFilterMod = 0.0f;
 
         // Setup LFO — main LFO rate/depth from params
-        lfo.setRate (lfoRate);
+        lfo.setRate (lfoRate, srf);
         bool hasLfo = lfoDepth > 0.001f;
 
         // DSP FIX: Secondary LFO — autonomous triangle modulation on the
@@ -664,8 +605,8 @@ public:
         // gentle filter movement; when main targets filter/amp, LFO2 adds
         // slow pitch drift. Rate = 1/3 of main (organic breathing rate).
         // This addresses the "weakest modulation in fleet" seance finding.
-        lfo2.setRate (std::max (0.05f, lfoRate * 0.333f));
-        lfo2.setShape (1); // Triangle — softer movement than sine
+        lfo2.setRate (std::max (0.05f, lfoRate * 0.333f), srf);
+        lfo2.setShape (1); // Triangle — softer movement than sine (StandardLFO::Triangle=1)
         bool hasLfo2 = lfoDepth > 0.05f; // only when main LFO is meaningfully active
 
         float peakEnv = 0.0f;
@@ -1239,9 +1180,9 @@ private:
     std::array<DubVoice, kMaxVoices> voices;
     uint64_t voiceAllocationCounter = 0;   // Monotonic counter for LRU voice stealing
 
-    // LFO
-    DubLFO lfo;
-    DubLFO lfo2;  // DSP FIX: secondary LFO for complementary modulation
+    // LFO — replaced by StandardLFO (Source/DSP/StandardLFO.h)
+    StandardLFO lfo;
+    StandardLFO lfo2;  // DSP FIX: secondary LFO for complementary modulation
 
     // FX chain
     DubTapeDelay tapeDelay;

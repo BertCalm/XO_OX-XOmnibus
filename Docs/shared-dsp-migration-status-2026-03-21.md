@@ -11,8 +11,8 @@
 |--------|-------|
 | Total engines audited | 44 |
 | Total possible migrations (44 × 7) | 308 |
-| Total adopted | 71 |
-| **Overall coverage** | **23.1%** |
+| Total adopted | 73 |
+| **Overall coverage** | **23.7%** |
 | Engines with zero migrations | 21 |
 | Engines fully migrated (6–7/7) | 2 (Oware 6/7, Orca 5/7) |
 | Estimated removable LOC (inline duplication) | **~367 lines** |
@@ -25,7 +25,7 @@
 
 | Utility | Path | Adopters | Coverage | Notes |
 |---------|------|----------|----------|-------|
-| `StandardLFO.h` | `Source/DSP/StandardLFO.h` | 18/44 | **41%** | Best-adopted utility |
+| `StandardLFO.h` | `Source/DSP/StandardLFO.h` | 19/44 | **43%** | Best-adopted utility |
 | `StandardADSR.h` | `Source/DSP/StandardADSR.h` | 18/44 | **41%** | Tied for best |
 | `VoiceAllocator.h` | `Source/DSP/VoiceAllocator.h` | 20/44 | **45%** | Highest absolute adoption |
 | `GlideProcessor.h` | `Source/DSP/GlideProcessor.h` | 4/44 | **9%** | Critical gap — glide is inline in 26 engines |
@@ -46,7 +46,7 @@
 | **Bite** | 2372 | N | Y | N | Y | N(18) | N | N | 2/7 |
 | **Bob** | 1740 | Y | Y | N | Y | N(4) | N | N | 3/7 |
 | **Drift** | 1736 | Y | Y | N | Y | N(3) | N(3) | N | 3/7 |
-| **Dub** | 1327 | N(12) | Y | N | Y | N(4) | N | N | 2/7 |
+| **Dub** | 1327 | **Y** *(was N(12))* | Y | N | Y | N(4) | N | Y | **4/7** *(was 2/7)* |
 | **Fat** | 1544 | Y | Y | N | Y | N(4) | N | Y | 4/7 |
 | **Morph** | 1245 | N(10) | Y | N | Y | N(16) | N | Y | 3/7 |
 | **Obbligato** | 510 | N | N | N | N | N | N | N | 0/7 |
