@@ -71,7 +71,7 @@
       "opera_modWheelAmt": 0.6,
       "opera_atDest": 3,
       "opera_atAmt": 0.4,
-      "opera_velToFilter": 0.2,
+      "opera_velToFilter": 0.35,
       "opera_velToEffort": 0.15,
       "opera_detune": 0.15,
       "opera_portamento": 0.1,

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Shadow Opera",
   "mood": "Atmosphere",
-  "engines": ["Opera"],
+  "engines": [
+    "Opera"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.1",
   "description": "Guru Bin Awakening #8 (relocated from Prism). Shadow archetype in full atmospheric bloom. Subharmonic-heavy with odd partials emphasized and a dark throat formant. Effort=0.8 drives the belt while Drama=0.15 keeps partials in anarchic independence. A voice from beneath the stage floor, resonating through stone.",
-  "tags": ["shadow", "dark", "subharmonic", "belt", "guru-bin"],
-  "macroLabels": ["DRAMA", "VOICE", "BREATHE", "STAGE"],
+  "tags": [
+    "shadow",
+    "dark",
+    "subharmonic",
+    "belt",
+    "guru-bin"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "BREATHE",
+    "STAGE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -58,7 +71,7 @@
       "opera_modWheelAmt": 0.5,
       "opera_atDest": 3,
       "opera_atAmt": 0.5,
-      "opera_velToFilter": 0.2,
+      "opera_velToFilter": 0.25,
       "opera_velToEffort": 0.25,
       "opera_detune": 0.15,
       "opera_portamento": 0.0,
