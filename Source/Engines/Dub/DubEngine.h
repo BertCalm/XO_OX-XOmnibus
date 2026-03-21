@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
@@ -634,6 +635,7 @@ public:
             // D006: CC#1 mod wheel → send VCA boost (+0–0.35, more signal into echo/reverb chain)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -726,11 +728,12 @@ public:
                     baseFreq = voice.glideSourceFreq;
                 }
 
-                // Pitch modulation: pitch env + drift + LFO + coupling
+                // Pitch modulation: pitch env + drift + LFO + coupling + pitch bend
                 float pitchOffset = voice.pitchEnv.process();
                 float driftCents = voice.drift.process (driftAmt);
                 float totalSemitones = pitchOffset + driftCents / 100.0f
-                                     + lfoPitchMod * 2.0f + pitchMod;
+                                     + lfoPitchMod * 2.0f + pitchMod
+                                     + pitchBendNorm * 2.0f;
                 float freq = baseFreq * fastExp (totalSemitones * (0.693147f / 12.0f));
 
                 // Generate oscillators
@@ -1249,6 +1252,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 boosts send VCA amount (+0–0.35, more echo send) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling state
     float envelopeOutput = 0.0f;

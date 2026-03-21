@@ -59,6 +59,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -669,6 +670,7 @@ public:
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;  // D006: mod wheel -> filter
             else if (msg.isChannelPressure())
                 aftertouch_ = msg.getChannelPressureValue() / 127.0f; // D006: aftertouch -> shimmer
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // D006: Mod wheel opens filter, aftertouch increases shimmer
@@ -760,7 +762,8 @@ public:
                                + voice.pitchEnvLevel
                                + pitchMod
                                + lfo1Val * 2.0f   // LFO1 -> pitch (±2 semitones)
-                               + lfo2Val * 0.5f;  // LFO2 -> subtle pitch vibrato
+                               + lfo2Val * 0.5f   // LFO2 -> subtle pitch vibrato
+                               + pitchBendNorm * 2.0f;
 
                 // FM coupling modulation
                 float fmModPitch = fmMod * 4.0f;  // ±4 semitones at full FM
@@ -1352,6 +1355,7 @@ private:
 
     // MIDI expression (D006)
     float modWheelAmount_ = 0.0f;
+    float pitchBendNorm   = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
     float aftertouch_     = 0.0f;
 
     // Coupling state

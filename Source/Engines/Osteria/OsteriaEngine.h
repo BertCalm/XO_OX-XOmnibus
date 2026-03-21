@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -842,6 +843,7 @@ public:
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -997,7 +999,8 @@ public:
                 // content for the resonators to shape.
                 // ==========================================================
                 float voiceL = 0.0f, voiceR = 0.0f;
-                float freq = voice.currentTargetFreq;
+                float freq = voice.currentTargetFreq
+                             * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 float phaseInc = freq / srf;
 
                 for (int c = 0; c < 4; ++c)
@@ -1789,6 +1792,7 @@ private:
     // the woodfire warmth of the tavern. Full wheel drops smoke cutoff by up
     // to 4 kHz, thickening the air between the listener and the quartet.
     float modWheelAmount_ = 0.0f;
+    float pitchBendNorm   = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // --- Coupling accumulators ---
     // These accumulate coupling input between renderBlock calls and are

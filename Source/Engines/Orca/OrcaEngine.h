@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
@@ -437,6 +438,7 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -554,7 +556,8 @@ public:
                 // LFO1 scans wavetable position slowly (the "dialect" evolving)
                 float wtPos = clamp (smoothedWTPos + lfo1Val * 0.3f + modLevel * pWTScanRate * 0.5f, 0.0f, 1.0f);
                 voice.wtOsc.setPosition (wtPos);
-                float mpeFreqOrc = voice.glide.getFreq() * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+                float mpeFreqOrc = voice.glide.getFreq() * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                                                         * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 voice.wtOsc.setFrequency (mpeFreqOrc, srf);
 
                 float wtSample = voice.wtOsc.processSample();
@@ -1263,6 +1266,7 @@ private:
 
     // MIDI expression
     float modWheelAmount_ = 0.0f;   // CC#1 — scans wavetable position (D006)
+    float pitchBendNorm   = 0.0f;   // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Voices
     std::array<OrcaVoice, kMaxVoices> voices {};

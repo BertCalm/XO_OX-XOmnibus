@@ -62,6 +62,7 @@
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
@@ -1662,7 +1663,7 @@ public:
                     int inst = static_cast<int> (sInstr[s]);
                     int art = static_cast<int> (sArtic[s]);
                     float ghostVel = neighborPeak * gCircleAmt * 0.25f;
-                    seats[s].triggerSeat (ghostVel, inst, art, sTune[s], sDecay[s],
+                    seats[s].triggerSeat (ghostVel, inst, art, sTune[s] + pitchBendNorm * 2.0f, sDecay[s],
                         sBright[s], sBody[s], static_cast<int> (sBodyModel[s]),
                         sExcMix[s], sPitchEnv[s], sVelSens[s]);
                 }
@@ -1716,7 +1717,7 @@ public:
                     int inst = static_cast<int> (sInstr[seatIdx]);
 
                     seats[seatIdx].triggerSeat (vel, inst, artOverride,
-                        sTune[seatIdx], sDecay[seatIdx], sBright[seatIdx],
+                        sTune[seatIdx] + pitchBendNorm * 2.0f, sDecay[seatIdx], sBright[seatIdx],
                         sBody[seatIdx], static_cast<int> (sBodyModel[seatIdx]),
                         sExcMix[seatIdx], sPitchEnv[seatIdx], sVelSens[seatIdx]);
 
@@ -1732,6 +1733,7 @@ public:
             {
                 modWheelAmount = msg.getControllerValue() / 127.0f;
             }
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // ---- 3. Advance pattern sequencers and trigger ----
@@ -1745,7 +1747,7 @@ public:
             {
                 int inst = static_cast<int> (sInstr[s]);
                 seats[s].triggerSeat (patVel, inst, patArt,
-                    sTune[s], sDecay[s], sBright[s],
+                    sTune[s] + pitchBendNorm * 2.0f, sDecay[s], sBright[s],
                     sBody[s], static_cast<int> (sBodyModel[s]),
                     sExcMix[s], sPitchEnv[s], sVelSens[s]);
             }
@@ -1954,6 +1956,7 @@ private:
 
     // D006: mod wheel (CC#1) -> CIRCLE macro depth
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Cached parameter pointers (ParamSnapshot pattern)
     struct SeatParameterPointers {

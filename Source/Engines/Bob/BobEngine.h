@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/FastMath.h"
@@ -1105,6 +1106,7 @@ public:
             // D006: CC#1 mod wheel → filter cutoff boost (+0–4000 Hz, opens filter progressively)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -1194,9 +1196,10 @@ public:
                 // Curiosity modulates filter cutoff
                 lfoCutoffMod += curOut.curiosity * 0.5f;
 
-                // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE
+                // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE + pitch bend
                 float totalPitch = lfoPitchMod * 2.0f + pitchMod
-                                 + voice.mpeExpression.pitchBendSemitones;
+                                 + voice.mpeExpression.pitchBendSemitones
+                                 + pitchBendNorm * 2.0f;
                 float freq = baseFreq * fastExp (totalPitch * (0.693147f / 12.0f));
 
                 // OscA
@@ -1689,6 +1692,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 opens bob_fltCutoff progressively (+0–4000 Hz) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     std::vector<float> outputCacheL;
     std::vector<float> outputCacheR;

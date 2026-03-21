@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -593,6 +594,7 @@ public:
             // D006: CC1 mod wheel → STFT fold depth (more spectral processing with wheel; sensitivity 0.3)
             else if (message.isController() && message.getControllerNumber() == 1)
                 modWheelValue = message.getControllerValue() / 127.0f;
+            else if (message.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (message.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -666,7 +668,8 @@ public:
                 float modulatedFoldDepth = smoothedFoldDepth * foldEnvelopeLevel;
 
                 // ---- Generate source signal ----
-                float frequency = voice.glide.getFreq();
+                float frequency = voice.glide.getFreq()
+                                  * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 float phaseIncrement = frequency / sampleRateFloat;
 
                 // Sawtooth oscillator (naive -- anti-aliasing is handled by the
@@ -1797,6 +1800,7 @@ private:
 
     // D006: mod wheel — CC1 increases STFT fold depth (more spectral processing with wheel; sensitivity 0.3)
     float modWheelValue = 0.0f;
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // ---- Coupling State ----
     float envelopeOutput = 0.0f;                      // Peak envelope level for amplitude coupling output

@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -689,6 +690,7 @@ public:
             // Full wheel adds +0.4 to sustainForce (sensitivity 0.4).
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -904,7 +906,9 @@ public:
                 // The scanner reads the chain's shape at audio rate, producing
                 // the output waveform. Scanner frequency = MIDI note frequency,
                 // so the chain's displacement pattern becomes the waveform.
-                float scannerIncrement = voice.currentFrequency / sampleRateFloat;
+                float scannerFreq = voice.currentFrequency
+                                    * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+                float scannerIncrement = scannerFreq / sampleRateFloat;
 
                 // Left channel: forward scan
                 float scanPositionLeft = voice.scannerPhase;
@@ -1680,6 +1684,7 @@ private:
 
     // D006: mod wheel (CC#1) — bow speed / excitation intensity (+0.4 sustainForce at full wheel)
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     //-- Cached APVTS parameter pointers (ParamSnapshot pattern) ---------------
     // Core physics

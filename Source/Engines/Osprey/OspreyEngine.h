@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -990,6 +991,7 @@ public:
             // D006: CC#1 mod wheel → sea state / turbulence intensity boost (+0–0.4)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -1073,7 +1075,8 @@ public:
                 {
                     voice.controlCounter = 0;
 
-                    float baseFrequency = voice.currentGlideFrequency;
+                    float baseFrequency = voice.currentGlideFrequency
+                                          * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                     // Apply pitch coupling modulation (+/- half octave range)
                     if (std::fabs (pitchMod) > 0.001f)
@@ -1961,6 +1964,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 boosts sea state / turbulence intensity (+0–0.4) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // D005/D004 fix: StandardLFO instance to modulate sea state (amplitude breathing).
     // Route: LFO output -> effectiveSeaState modulation (low-frequency wave energy swell).

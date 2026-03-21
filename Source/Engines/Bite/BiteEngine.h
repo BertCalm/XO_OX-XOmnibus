@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
@@ -1052,6 +1053,7 @@ public:
             // D006: CC#1 mod wheel → BITE macro depth boost (+0–0.4, increases feral bite edge)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -1167,6 +1169,7 @@ public:
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
                 freq *= (1.0f + pitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // --- OscA (Belly) ---
                 voice.oscA.setFrequency (freq);
@@ -2198,6 +2201,7 @@ private:
 
     // ---- D006 Mod wheel — CC#1 adds to BITE macro depth (+0–0.4, feral bite edge) ----
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Output cache for coupling reads
     std::vector<float> outputCacheL;

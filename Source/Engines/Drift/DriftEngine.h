@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/PolyBLEP.h"
 #include "../../DSP/CytomicSVF.h"
@@ -903,6 +904,7 @@ public:
             // D006: channel pressure → aftertouch (applied to Prism Shimmer below)
             else if (msg.isChannelPressure())
                 aftertouch.setChannelPressure (msg.getChannelPressureValue() / 127.0f);
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -1019,8 +1021,9 @@ public:
                 float driftVal = voice.drift.process (driftRate, driftDepth);
                 float driftSemitones = driftVal * 0.5f;  // ±0.5 semitones max
 
-                // Total pitch modulation: drift + LFO + coupling
-                float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod;
+                // Total pitch modulation: drift + LFO + coupling + pitch bend
+                float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod
+                                     + pitchBendNorm * 2.0f;
                 float pitchMul = fastExp (totalPitchSemi * (0.693147f / 12.0f));
 
                 float freqA = baseFreqA * pitchMul;
@@ -1676,6 +1679,7 @@ private:
     float externalFilterMod = 0.0f;
     float externalMorphMod = 0.0f;
     float modWheelAmount = 0.0f; // CC1 [0,1]
+    float pitchBendNorm  = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // ---- D006 Aftertouch — pressure deepens Prism Shimmer (JOURNEY analog) ----
     PolyAftertouch aftertouch;

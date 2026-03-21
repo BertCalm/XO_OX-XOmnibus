@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
@@ -192,7 +193,8 @@ public:
                 exciterPhase = 0.0;
 
                 // Update golden resonance fundamentals from MIDI note (Moog)
-                float fundamental = midiToFreq (static_cast<float> (currentNote));
+                float fundamental = midiToFreq (static_cast<float> (currentNote))
+                                    * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 updateGoldenFrequencies (fundamental);
 
                 // Reset peak energy tracker for new cantilever arc
@@ -215,6 +217,7 @@ public:
                 // Mod wheel → resonance mix scale (D006)
                 modWheel_ = msg.getControllerValue() / 127.0f;
             }
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         // 2. Bypass check
@@ -307,15 +310,18 @@ public:
         float* outR = buffer.getNumChannels() > 1
                         ? buffer.getWritePointer (1) : nullptr;
 
+        // Pre-compute pitch-bent exciter frequency for this block
+        const float exciterFreqHz = midiToFreq (static_cast<float> (currentNote))
+                                    * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
+
         for (int i = 0; i < numSamples; ++i)
         {
             // === EXCITER: pitched impulse + noise burst ===
             float exciterSample = 0.0f;
             if (exciterActive && exciterEnv > 0.0001f)
             {
-                float freq = midiToFreq (static_cast<float> (currentNote));
                 float sine = fastSin (static_cast<float> (exciterPhase) * 6.28318530718f);
-                exciterPhase += freq / sr;
+                exciterPhase += exciterFreqHz / sr;
                 if (exciterPhase >= 1.0) exciterPhase -= 1.0;
 
                 // Noise component (brightness controls noise amount)
@@ -734,7 +740,8 @@ private:
     float lastSampleR = 0.0f;
 
     // Parameter pointers
-    float modWheel_ = 0.0f;
+    float modWheel_    = 0.0f;
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     std::atomic<float>* pSizeParam       = nullptr;
     std::atomic<float>* pDecayParam      = nullptr;

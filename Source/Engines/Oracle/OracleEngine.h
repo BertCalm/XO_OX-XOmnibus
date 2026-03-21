@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
@@ -618,6 +619,7 @@ public:
             // D006: CC1 mod wheel → Maqam gravity (stronger scale attraction with wheel; sensitivity 0.4)
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelValue = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -659,7 +661,8 @@ public:
                 }
 
                 // --- Glide (portamento) ---
-                float frequency = voice.glide.process();
+                float frequency = voice.glide.process()
+                                  * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
                 // --- Envelopes ---
                 float amplitudeLevel  = voice.amplitudeEnvelope.process();
@@ -1577,6 +1580,7 @@ private:
 
     // D006: mod wheel — CC1 increases Maqam gravity (stronger scale attraction with wheel; sensitivity 0.4)
     float modWheelValue = 0.0f;
+    float pitchBendNorm = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // --- Coupling accumulators (reset each block) ---
     float envelopeOutput            = 0.0f;   // Peak envelope for sidechain coupling

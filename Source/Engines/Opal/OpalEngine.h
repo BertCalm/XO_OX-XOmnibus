@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../Core/AudioRingBuffer.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
@@ -1672,6 +1673,7 @@ public:
             // producing a diffuse, shimmering iridescent cloud.
             else if (m.isController() && m.getControllerNumber() == 1)
                 modWheelAmount = m.getControllerValue() / 127.0f;
+            else if (m.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (m.getPitchWheelValue());
         }
 
         // --- Update per-voice MPE expression from MPEManager ---
@@ -1752,8 +1754,9 @@ public:
                     }
                 }
 
-                // Set oscillator frequencies for this voice (with MPE pitch bend)
-                float voiceFreq = v.glideFreq * std::pow (2.0f, v.mpeExpression.pitchBendSemitones / 12.0f);
+                // Set oscillator frequencies for this voice (with MPE + channel pitch bend)
+                float voiceFreq = v.glideFreq * std::pow (2.0f, v.mpeExpression.pitchBendSemitones / 12.0f)
+                                             * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 v.osc1.setFrequency (voiceFreq, static_cast<float> (sr));
                 v.osc2.setFrequency (voiceFreq * std::pow (2.0f, osc2Detune / 12.0f),
                                      static_cast<float> (sr));
@@ -2237,6 +2240,7 @@ private:
 
     // D006: mod wheel (CC#1) — widens posScatter + pitchScatter for iridescent grain cloud
     float modWheelAmount = 0.0f;
+    float pitchBendNorm  = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Cached coupling output (scalar fallback for block-level coupling)
     float lastSampleL = 0.0f;

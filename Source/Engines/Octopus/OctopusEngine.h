@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/WavetableOscillator.h"
 #include "../../DSP/FastMath.h"
@@ -474,6 +475,7 @@ public:
                 reset();
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel()) pitchBendNorm = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -569,11 +571,12 @@ public:
                 voice.currentFreq += (voice.targetFreq - voice.currentFreq) * voice.glideCoeff;
                 voice.currentFreq = flushDenormal (voice.currentFreq);
 
-                // Apply microtonal offset + arm pitch modulation + coupling pitch + MPE pitch bend
+                // Apply microtonal offset + arm pitch modulation + coupling pitch + MPE + pitch bend
                 float pitchCents = pShiftMicro + voice.microtonalOffset
                                  + armMods[ArmPitch] * 50.0f  // arm 3 modulates pitch +/-50 cents
                                  + couplingPitchMod * 100.0f
-                                 + voice.mpeExpression.pitchBendSemitones * 100.0f;  // MPE pitch bend in cents
+                                 + voice.mpeExpression.pitchBendSemitones * 100.0f  // MPE pitch bend in cents
+                                 + pitchBendNorm * 200.0f;  // channel pitch bend in cents (±2 semitones)
                 float freqMod = voice.currentFreq * fastPow2 (pitchCents / 1200.0f);
 
                 // --- Envelopes ---
@@ -1375,6 +1378,7 @@ private:
     // adds up to +0.4 to effectiveChromaDepth — the octopus flares its
     // full chromatophore palette in response to the performer's expression.
     float modWheelAmount_ = 0.0f;
+    float pitchBendNorm   = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling modulation accumulators
     float couplingWTPosMod = 0.0f;
