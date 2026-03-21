@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Harsh, caged metallic reverb with near-maximum resonance Q. Sound is trapped inside ringing golden harmonics — a Faraday cage for audio.",
+  "dna": { "brightness": 0.8, "warmth": 0.2, "movement": 0.45, "density": 0.4, "space": 0.3, "aggression": 0.5 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Flux",
+  "name": "Resonant Cage",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.3,
+      "oxb_decay": 2.0,
+      "oxb_entangle": 0.45,
+      "oxb_erosionRate": 0.2,
+      "oxb_erosionDepth": 0.4,
+      "oxb_convergence": 1.5,
+      "oxb_resonanceQ": 19,
+      "oxb_resonanceMix": 0.6,
+      "oxb_cantilever": 0.25,
+      "oxb_damping": 13000,
+      "oxb_predelay": 5,
+      "oxb_dryWet": 0.6,
+      "oxb_exciterDecay": 0.003,
+      "oxb_exciterBright": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": ["metallic", "cage", "resonant", "trapped", "harsh"],
+  "version": "1.0.0"
+}

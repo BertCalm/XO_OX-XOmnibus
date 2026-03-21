@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Extreme, white-hot metallic reverb. Maximum resonance Q and brightness create searing harmonics. Very short exciter and high erosion produce sparking, unstable resonance.",
+  "dna": { "brightness": 0.95, "warmth": 0.05, "movement": 0.65, "density": 0.3, "space": 0.15, "aggression": 0.8 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Flux",
+  "name": "Welding Arc",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.2,
+      "oxb_decay": 0.8,
+      "oxb_entangle": 0.5,
+      "oxb_erosionRate": 0.4,
+      "oxb_erosionDepth": 0.7,
+      "oxb_convergence": 1.5,
+      "oxb_resonanceQ": 20,
+      "oxb_resonanceMix": 0.7,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 15000,
+      "oxb_predelay": 1,
+      "oxb_dryWet": 0.7,
+      "oxb_exciterDecay": 0.001,
+      "oxb_exciterBright": 1.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["metallic", "extreme", "bright", "spark", "industrial"],
+  "version": "1.0.0"
+}

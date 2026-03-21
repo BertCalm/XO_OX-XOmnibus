@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Dark, lonely reverb evoking an empty train station at midnight. Long decay with heavy damping swallows the signal into submerged darkness.",
+  "dna": { "brightness": 0.15, "warmth": 0.7, "movement": 0.3, "density": 0.55, "space": 0.75, "aggression": 0.0 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Submerged",
+  "name": "Midnight Station",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 6.0,
+      "oxb_entangle": 0.5,
+      "oxb_erosionRate": 0.03,
+      "oxb_erosionDepth": 0.4,
+      "oxb_convergence": 6,
+      "oxb_resonanceQ": 4,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.6,
+      "oxb_damping": 2000,
+      "oxb_predelay": 40,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.025,
+      "oxb_exciterBright": 0.25
+    }
+  },
+  "schema_version": 1,
+  "tags": ["lo-fi", "dark", "late-night", "submerged", "lonely"],
+  "version": "1.0.0"
+}

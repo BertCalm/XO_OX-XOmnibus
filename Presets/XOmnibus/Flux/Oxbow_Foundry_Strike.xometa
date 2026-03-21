@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Sharp, percussive metallic impact. Maximum exciter brightness with tight decay creates the sound of a hammer striking molten metal in a foundry.",
+  "dna": { "brightness": 0.9, "warmth": 0.15, "movement": 0.35, "density": 0.35, "space": 0.35, "aggression": 0.65 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Flux",
+  "name": "Foundry Strike",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.35,
+      "oxb_decay": 1.5,
+      "oxb_entangle": 0.4,
+      "oxb_erosionRate": 0.15,
+      "oxb_erosionDepth": 0.35,
+      "oxb_convergence": 2,
+      "oxb_resonanceQ": 16,
+      "oxb_resonanceMix": 0.55,
+      "oxb_cantilever": 0.2,
+      "oxb_damping": 12000,
+      "oxb_predelay": 3,
+      "oxb_dryWet": 0.65,
+      "oxb_exciterDecay": 0.002,
+      "oxb_exciterBright": 1.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["metallic", "percussion", "strike", "industrial", "bright"],
+  "version": "1.0.0"
+}

@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Massive metallic reverb with extreme golden resonance. Very high Q filters ring like struck girders in a vast iron nave. Bright exciter ignites the harmonics.",
+  "dna": { "brightness": 0.85, "warmth": 0.2, "movement": 0.5, "density": 0.5, "space": 0.55, "aggression": 0.55 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Flux",
+  "name": "Iron Cathedral",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.6,
+      "oxb_decay": 3.0,
+      "oxb_entangle": 0.6,
+      "oxb_erosionRate": 0.18,
+      "oxb_erosionDepth": 0.5,
+      "oxb_convergence": 2,
+      "oxb_resonanceQ": 18,
+      "oxb_resonanceMix": 0.6,
+      "oxb_cantilever": 0.3,
+      "oxb_damping": 14000,
+      "oxb_predelay": 8,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.003,
+      "oxb_exciterBright": 0.95
+    }
+  },
+  "schema_version": 1,
+  "tags": ["metallic", "industrial", "bright", "harsh", "resonant"],
+  "version": "1.0.0"
+}

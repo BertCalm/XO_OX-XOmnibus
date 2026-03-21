@@ -1,0 +1,32 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "Infinite reverb processor. Feed any source and it sustains forever, breathing with erosion.",
+  "dna": { "brightness": 0.35, "warmth": 0.65, "movement": 0.5, "density": 0.65, "space": 1.0, "aggression": 0.0 },
+  "engines": ["Oxbow"],
+  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "mood": "Atmosphere",
+  "name": "Infinite Hold",
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.75,
+      "oxb_decay": 60.0,
+      "oxb_entangle": 0.65,
+      "oxb_erosionRate": 0.025,
+      "oxb_erosionDepth": 0.5,
+      "oxb_convergence": 3,
+      "oxb_resonanceQ": 10,
+      "oxb_resonanceMix": 0.35,
+      "oxb_cantilever": 0.15,
+      "oxb_damping": 4000,
+      "oxb_predelay": 40,
+      "oxb_dryWet": 0.9,
+      "oxb_exciterDecay": 0.001,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": ["coupling", "infinite", "hold", "freeze", "sustain"],
+  "version": "1.0.0"
+}
