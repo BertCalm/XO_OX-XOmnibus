@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Sheng Silk",
+  "mood": "Luminous",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pure sheng with minimal partials and high filter cutoff for crystalline clarity. No buzz, no pressure drift -- just clean, bright harmonics like sunlight through silk. Perfect for melody and counterpoint.",
+  "tier": "awakening",
+  "tags": [
+    "luminous",
+    "sheng",
+    "organ",
+    "bright",
+    "clean",
+    "crystalline",
+    "melody",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.35,
+    "movement": 0.15,
+    "density": 0.25,
+    "space": 0.3,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.3,
+      "oto_chiff": 0.4,
+      "oto_detune": 0.03,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.05,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 16000.0,
+      "oto_filterRes": 0.15,
+      "oto_attack": 0.005,
+      "oto_decay": 0.6,
+      "oto_sustain": 0.9,
+      "oto_release": 0.4,
+      "oto_lfo1Rate": 0.8,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

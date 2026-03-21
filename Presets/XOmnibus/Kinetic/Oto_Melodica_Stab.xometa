@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "name": "Oto Melodica Stab",
+  "mood": "Kinetic",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Percussive melodica with sharp chiff transient and fast decay. Reduced sustain creates staccato stabs. High velocity sensitivity on the filter makes it responsive to playing dynamics. Dub-style keyboard hits.",
+  "tier": "awakening",
+  "tags": [
+    "kinetic",
+    "melodica",
+    "organ",
+    "staccato",
+    "percussive",
+    "stab",
+    "dub",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.2,
+    "space": 0.1,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.4,
+      "oto_chiff": 0.7,
+      "oto_detune": 0.05,
+      "oto_buzz": 0.2,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.0,
+      "oto_filterCutoff": 6000.0,
+      "oto_filterRes": 0.25,
+      "oto_attack": 0.003,
+      "oto_decay": 0.15,
+      "oto_sustain": 0.3,
+      "oto_release": 0.1,
+      "oto_lfo1Rate": 1.0,
+      "oto_lfo1Depth": 0.0,
+      "oto_competition": 0.0
+    }
+  },
+  "tempo": null
+}

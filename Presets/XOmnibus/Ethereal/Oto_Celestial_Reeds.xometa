@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Oto Celestial Reeds",
+  "mood": "Ethereal",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho with maximum cluster density, high detune for ethereal beating, and very slow LFO. The sound of reeds breathing in an infinite space. Long attack and release create a pad-like quality. Competition adds voice interaction.",
+  "tier": "awakening",
+  "tags": [
+    "ethereal",
+    "sho",
+    "organ",
+    "pad",
+    "celestial",
+    "ambient",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.8,
+    "movement": 0.5,
+    "density": 0.9,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 1.0,
+      "oto_chiff": 0.0,
+      "oto_detune": 0.4,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.4,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 5000.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.6,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.95,
+      "oto_release": 3.0,
+      "oto_lfo1Rate": 0.03,
+      "oto_lfo1Depth": 0.25,
+      "oto_competition": 0.2
+    }
+  },
+  "tempo": null
+}
