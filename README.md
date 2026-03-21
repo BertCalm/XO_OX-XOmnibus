@@ -2,56 +2,69 @@
 
 **A free, open-source multi-engine synthesizer platform by XO_OX Designs.**
 
-34 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
+43 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
 
 ## Engines
 
 | Engine | Character | Creature |
 |--------|-----------|----------|
 | OddfeliX | Neon analog character | Neon Tetra |
-| OddOscar | Morphing axolotl | Axolotl |
-| Overdub | Dub synth + performance FX | Olive Rockfish |
+| OddOscar | Morphing axolotl synthesis | Axolotl |
+| Overdub | Dub synth + spring reverb | Olive Rockfish |
 | Odyssey | Drift synthesis, nautilus journey | Nautilus |
 | Oblong | Coral reef warmth | Brain Coral |
-| Obese | Fat analog saturation | Blobfish |
-| Overbite | Bass-forward character | Fangtooth |
-| Onset | 8-voice percussion | Pistol Shrimp |
-| Overworld | Chip synth (NES/Genesis/SNES) | Pixel Reef |
+| Obese | Fat analog saturation + Mojo axis | Blobfish |
+| Overbite | Bass-forward character, 5 macros | Fangtooth |
+| Onset | 8-voice percussion + XVC coupling | Pistol Shrimp |
+| Overworld | Chip synth (NES/Genesis/SNES/Neo Geo) | Pixel Reef |
 | Opal | Granular synthesis | Opal Squid |
 | Orbital | Group envelope orbits | Moon Jellyfish |
-| Organon | Metabolic synthesis | Hydrothermal Worm |
-| Ouroboros | Chaotic feedback loops | Ouroboros Eel |
-| Obsidian | Crystal resonance | Obsidian Sponge |
+| Organon | Metabolic variational synthesis | Hydrothermal Worm |
+| Ouroboros | Chaotic feedback + leash mechanism | Ouroboros Eel |
+| Obsidian | Crystal resonance synthesis | Obsidian Sponge |
 | Origami | Wavefold synthesis | Paper Nautilus |
-| Oracle | Stochastic + GENDY | Oracle Fish |
+| Oracle | GENDY stochastic + maqam | Oracle Fish |
 | Obscura | Physical string modeling | Coelacanth |
 | Oceanic | Boid swarm synthesis | Sardine School |
 | Ocelot | Biome ecosystem engine | Ocelot Catfish |
-| Optic | Visual modulation (no audio) | Firefly Squid |
+| Optic | Visual modulation (Zero-Audio Identity) | Firefly Squid |
 | Oblique | Prismatic bounce synthesis | Prism Shrimp |
-| Osprey | ShoreSystem cultural engine | Osprey |
+| Osprey | ShoreSystem 5-coastline engine | Osprey |
 | Osteria | ShoreSystem culinary engine | Harbor Seal |
 | Owlfish | Mixtur-Trautonium + subharmonic | Owlfish |
-| Ohm | Hippy jam resistance | Electric Eel |
-| Orphica | Microsound harp | Siphonophore |
+| Ohm | Resistance synthesis | Electric Eel |
+| Orphica | Microsound harp plucking | Siphonophore |
 | Obbligato | Dual wind synthesis | Pilot Fish Pair |
-| Ottoni | Triple brass | Trumpet Fish |
-| Ole | Afro-Latin trio | Flamenco Cuttlefish |
+| Ottoni | Triple brass synthesis | Trumpet Fish |
+| Ole | Afro-Latin trio synthesis | Flamenco Cuttlefish |
 | Ombre | Dual narrative (memory/forgetting) | Shadow Octopus |
-| Orca | Apex predator wavetable | Orca |
+| Orca | Apex predator wavetable + echolocation | Orca |
 | Octopus | 8-arm decentralized intelligence | Giant Pacific Octopus |
-| Overlap | Knot-topology FDN | Lion's Mane Jellyfish |
-| Outwit | 8-arm Wolfram CA | Giant Pacific Octopus |
+| Overlap | Knot-topology FDN reverb | Lion's Mane Jellyfish |
+| Outwit | 8-arm Wolfram CA synthesis | Mimic Octopus |
+| Ombre | Shadow gradient synthesis | Shadow Octopus |
+| Orca | Echolocation + breach synthesis | Orca |
+| Octopus | Chromatophore + ink cloud | Giant Pacific Octopus |
+| Ostinato | Physically-modeled world instruments (12 cultures) | Seahorse Drummer |
+| OpenSky | Euphoric shimmer supersaw | Flying Fish |
+| OceanDeep | Pressure synthesis, deep field | Anglerfish |
+| Ouïe | Duophonic hammerhead synthesis | Hammerhead Shark |
+| Obrix | Modular brick synthesis (coral reef habitat) | The Reef Itself |
+| Orbweave | Topological knot coupling synthesis | Kelp Knot Spider |
+| Overtone | Continued fraction spectral engine | Nautilus Shell |
+| Organism | Cellular automata generative synthesis | Coral Colony |
+| Oxbow | Entangled reverb synth (Chiasmus FDN) | Oxbow Lake |
 
 ## Features
 
 - **4-slot engine gallery** — load any combination of engines
-- **Cross-engine coupling** — 13 coupling types let engines modulate each other
-- **10,000+ factory presets** across 7 mood categories
-- **PlaySurface** — unified 4-zone playing interface
+- **Cross-engine coupling** — 14 coupling types (including KnotTopology) let engines modulate each other
+- **~16,000+ factory presets** across 8 mood categories
+- **PlaySurface** — unified 4-zone playing interface (Pad, Fretless, Drum modes)
 - **6D Sonic DNA** — every preset tagged with brightness, warmth, movement, density, space, aggression
 - **4 performance macros** per engine
-- **MPE support** — per-note expression across all engines
+- **MPE support** — per-note velocity, aftertouch, and expression across all engines
+- **Guru Bin Awakening Presets** — curated hero presets for ORBWEAVE, OVERTONE, ORGANISM, and more
 
 ## Build
 
@@ -61,22 +74,19 @@ Requires [JUCE](https://juce.com/) (included as submodule in `Libs/JUCE`).
 # macOS (AU + Standalone)
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
-
-# Run tests
-./build/XOmnibusTests
 ```
 
 ## Formats
 
-- **AU** — macOS (shipping)
-- **Standalone** — macOS (shipping)
-- **AUv3** — iOS (planned)
+- **AU** — macOS (shipping V1)
+- **Standalone** — macOS (shipping V1)
+- **AUv3** — iOS (planned V1.1)
 - **VST3** — V2
 
 ## Presets
 
 Factory presets live in `Presets/XOmnibus/` organized by mood:
-Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family.
+Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged.
 
 Preset format is `.xometa` (JSON). See `Docs/xomnibus_master_specification.md` for the schema.
 
@@ -84,6 +94,7 @@ Preset format is `.xometa` (JSON). See `Docs/xomnibus_master_specification.md` f
 
 - `Docs/xomnibus_master_specification.md` — the single source of truth
 - `Docs/xomnibus_sound_design_guides.md` — per-engine sound design guides
+- `scripture/the-scripture.md` — Guru Bin's accumulated DSP wisdom (Book of Bin)
 - `Docs/seance_cross_reference.md` — ghost council verdicts for all engines
 
 ## License
