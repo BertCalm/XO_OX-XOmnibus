@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Phase Velocity Rhythm",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Onset",
+        "type": "RhythmToBlend",
+        "amount": 0.6
+      }
+    ]
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.8,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 2,
+      "ouro_chaosIndex": 0.65,
+      "ouro_leash": 0.5,
+      "ouro_theta": 0.3,
+      "ouro_phi": 0.2,
+      "ouro_damping": 0.15,
+      "ouro_injection": 0.0,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.7,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.5
+    },
+    "Onset": {
+      "perc_noiseLevel": 0.5
+    }
+  },
+  "tags": [
+    "entangled",
+    "ouroboros",
+    "onset",
+    "b007",
+    "velocity",
+    "rhythm",
+    "chua",
+    "percussion",
+    "transcendental"
+  ],
+  "description": "B007: Chua at chaosIndex=0.65 fires rapid irregular bifurcation events (dx/dt spikes). RhythmToBlend coupling drives ONSET percussion texture. Drums that fire when the chaos tells them to."
+}

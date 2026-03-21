@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Ouroboros Complete",
+  "mood": "Aether",
+  "engines": [
+    "Ouroboros"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosIndex": 0.6,
+      "ouro_leash": 0.65,
+      "ouro_theta": 0.6,
+      "ouro_phi": 0.5,
+      "ouro_damping": 0.35,
+      "ouro_injection": 0.3,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.6,
+      "ouro_macroSpace": 0.5
+    }
+  },
+  "tags": [
+    "aether",
+    "ouroboros",
+    "lorenz",
+    "injection",
+    "full-range",
+    "expressive",
+    "b003",
+    "transcendental"
+  ],
+  "description": "Full expressive range: injection=0.3 (external audio perturbs attractor), macroCoup=0.6 (tighter leash + more injection). CHARACTER sweeps near-stable to maximum chaos. The complete OUROBOROS in one preset."
+}

@@ -391,13 +391,16 @@ public:
                     else if (hasSlash)
                     {
                         // Ratio "numerator/denominator"
-                        long long num = 0, den = 1;
+                        // den MUST start at 0 — the accumulation loop is
+                        //   den = den * 10 + digit
+                        // so a non-zero seed would corrupt the result (e.g. 1→12 for "2").
+                        long long num = 0, den = 0;
                         const char* p = buf + start;
                         while (*p >= '0' && *p <= '9') { num = num * 10 + (*p - '0'); ++p; }
                         if (*p != '/') return false;
                         ++p;
                         while (*p >= '0' && *p <= '9') { den = den * 10 + (*p - '0'); ++p; }
-                        if (den == 0) return false;
+                        if (den == 0) return false;  // malformed or zero denominator
                         ratio = static_cast<double> (num) / static_cast<double> (den);
                     }
                     else
@@ -454,12 +457,23 @@ public:
         if (state != 2 || notesExpected == 0)
             return false;  // incomplete file
 
-        // Commit parsed result
-        // Degree 0 = unison (1/1) is always present; degrees 1..N are parsed.
-        scaleDegreeCount = notesExpected;   // the N non-unison degrees form the scale
+        // Commit parsed result.
+        // scaleDegrees[0] = unison (1/1, implicit), degrees[1..N] = parsed pitches.
+        // scaleDegreeCount = N (number of non-unison entries = degrees per octave).
+        scaleDegreeCount = notesExpected;
         for (int i = 0; i <= notesExpected; ++i)
             scaleDegrees[i] = tempDegrees[i];
         scaleOctaveRatio = tempOctave;
+
+        // When no .kbm has been loaded, reset the keyboard map to match this
+        // scale's degree count so the default identity mapping is correct.
+        // A subsequent loadKeyboardMapping() call will override this.
+        kbm.setDefault();
+        kbm.mapSize     = scaleDegreeCount;
+        kbm.scaleOctave = scaleDegreeCount;
+        kbm.degreeCount = scaleDegreeCount;
+        for (int i = 0; i < scaleDegreeCount && i < kMaxScaleDegrees; ++i)
+            kbm.degrees[i] = i;
 
         buildTable();
         return true;

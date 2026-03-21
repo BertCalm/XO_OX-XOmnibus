@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Central Brain Off",
+  "mood": "Foundation",
+  "engines": [
+    "Octopus"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.8,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 8,
+      "octo_armSpread": 1.0,
+      "octo_armBaseRate": 0.6,
+      "octo_armDepth": 0.8,
+      "octo_chromaSens": 0.5,
+      "octo_chromaSpeed": 0.5,
+      "octo_chromaMorph": 0.0,
+      "octo_chromaDepth": 0.0,
+      "octo_chromaFreq": 2000.0,
+      "octo_inkThreshold": 0.9,
+      "octo_inkDensity": 0.8,
+      "octo_inkDecay": 5.0,
+      "octo_inkMix": 0.0,
+      "octo_shiftMicro": 0.0,
+      "octo_shiftGlide": 0.3,
+      "octo_shiftDrift": 0.0,
+      "octo_suckerReso": 0.6,
+      "octo_suckerFreq": 2000.0,
+      "octo_suckerDecay": 0.05,
+      "octo_suckerMix": 0.0,
+      "octo_wtPosition": 0.3,
+      "octo_wtScanRate": 0.3,
+      "octo_filterCutoff": 6000.0,
+      "octo_filterReso": 0.1,
+      "octo_level": 0.8,
+      "octo_ampAttack": 0.01,
+      "octo_ampDecay": 0.3,
+      "octo_ampSustain": 0.8,
+      "octo_ampRelease": 2.5,
+      "octo_modAttack": 0.01,
+      "octo_modDecay": 0.5,
+      "octo_modSustain": 0.5,
+      "octo_modRelease": 0.5,
+      "octo_lfo1Rate": 0.4,
+      "octo_lfo1Depth": 0.0,
+      "octo_lfo1Shape": 0,
+      "octo_lfo2Rate": 2.0,
+      "octo_lfo2Depth": 0.0,
+      "octo_lfo2Shape": 0,
+      "octo_polyphony": 2,
+      "octo_macroCharacter": 0.0,
+      "octo_macroMovement": 0.0,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "foundation",
+    "octopus",
+    "arms",
+    "polyrhythmic",
+    "alien",
+    "transcendental"
+  ],
+  "description": "Eight arms at full prime-ratio independence, no chromatophore — pure polyrhythmic modulation as a polyphonic pad. All eight dimensions moving at irrational rates simultaneously."
+}

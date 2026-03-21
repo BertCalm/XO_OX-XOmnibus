@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is a Collection? — Vision #1 | XO_OX Field Guide</title>
+<meta name="description" content="Field Guide Vision #1: What XOmnibus Collections are, why they exist, and what the 5th Slot means for V2. The problem with infinite flexibility and the creative power of a bounded sonic world.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 25% 80%, rgba(233, 196, 106, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 15%, rgba(42, 161, 155, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--gold-dim); color: var(--bg-deep); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 80%, rgba(233, 196, 106, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 20%, rgba(42, 161, 155, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ ARTICLE HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold-dim);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--gold); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span { color: var(--text-dim); display: block; margin-top: 0.2rem; }
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+.article code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--gold);
+  background: rgba(233, 196, 106, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  border: 1px solid rgba(233, 196, 106, 0.15);
+}
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--gold-dim);
+  background: var(--gold-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.article blockquote .attribution {
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+  margin: 3rem 0;
+}
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+.article a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(233, 196, 106, 0.3);
+  transition: border-color 0.2s, color 0.2s;
+}
+.article a:hover { color: var(--cream); border-bottom-color: var(--gold); }
+
+/* ═══════════ EXAMPLE CARD ═══════════ */
+.example-card {
+  margin: 2.5rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.example-card-header {
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(233, 196, 106, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.example-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.example-card-header h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin: 0;
+}
+.example-card-body { padding: 1.5rem 1.8rem; }
+.example-card-body p {
+  font-size: 1.0rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.example-card-body p:last-child { margin-bottom: 0; }
+.engine-slots {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.engine-slot {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  background: var(--bg-surface);
+}
+.engine-slot.fifth {
+  color: var(--gold);
+  background: rgba(233, 196, 106, 0.08);
+  border-color: rgba(233, 196, 106, 0.25);
+}
+.slot-connector {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+}
+
+/* ═══════════ WHAT-IS / WHAT-NOT GRIDS ═══════════ */
+.contrast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.contrast-col {
+  padding: 1.3rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.contrast-col-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: block;
+}
+.contrast-col.is-col { border-top: 2px solid var(--gold); }
+.contrast-col.is-col .contrast-col-label { color: var(--gold-dim); }
+.contrast-col.not-col { border-top: 2px solid var(--text-faint); }
+.contrast-col.not-col .contrast-col-label { color: var(--text-faint); }
+.contrast-col ul { list-style: none; padding: 0; margin: 0; }
+.contrast-col li {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.contrast-col li::before { position: absolute; left: 0; }
+.is-col li::before { content: '+'; color: var(--gold); }
+.not-col li::before { content: '–'; color: var(--text-faint); }
+
+/* ═══════════ FIFTH SLOT CARD ═══════════ */
+.fifth-slot-card {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.fifth-slot-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent 80%);
+}
+.fifth-slot-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 1rem;
+}
+.fifth-slot-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.fifth-slot-card p {
+  font-size: 1.0rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.fifth-slot-card p:last-child { margin-bottom: 0; }
+
+/* ═══════════ TIMELINE BLOCK ═══════════ */
+.timeline-block {
+  margin: 2rem 0;
+  padding: 1.5rem 1.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  text-align: center;
+}
+.timeline-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.timeline-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.timeline-note {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+/* ═══════════ BACK LINK ═══════════ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--gold); }
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ ACCESSIBILITY ═══════════ */
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contrast-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .engine-slots { gap: 0.35rem; }
+}
+</style>
+<meta property="og:title" content="What Is a Collection? — Vision #1 | XO_OX Field Guide">
+<meta property="og:description" content="The V2 expansion concept: curated engine sets built around a single sonic world, with a fusion engine at the intersection. Why bounded contexts make music easier. Winter 2026.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; Vision #1</div>
+  <h1>What Is a <em>Collection?</em></h1>
+  <p class="article-hero-sub">
+    XOmnibus V1 gives you seventy engines and the freedom to combine any of them. Collections are the opposite proposal: four engines, one world, no wrong answers. This is the first post in a new series about where XOmnibus is going and why.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Category<span style="color: var(--gold);">Vision &mdash; Product Philosophy</span></div>
+    <div class="article-meta-item">Read Time<span>12 min</span></div>
+    <div class="article-meta-item">Series<span style="color: var(--gold);">Vision &mdash; First in series</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--gold);">XO Gold #E9C46A</span></div>
+  </div>
+</header>
+
+<article class="article" id="article-content">
+
+<p class="reveal">
+XOmnibus V1 is seventy engines that couple. That is the premise and the promise: take any two engines from a fleet of character instruments with radically different synthesis approaches, connect them through fourteen coupling types, and find the sound that lives at their intersection. The number of possible pairings is not large. It is astronomical.
+</p>
+
+<p class="reveal">
+This is intentional. The fleet was designed this way. Every engine has a distinct identity &mdash; a synthesis approach, a mythology, an accent color, a characteristic response &mdash; because the coupling system only produces interesting results when the two things being coupled are genuinely different. OVERDUB into OPAL sounds unlike OVERWORLD into ORGANISM. The diversity is the point.
+</p>
+
+<p class="reveal">
+But there is a problem that shows up about three hours into a session with a new instrument.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Problem with Infinite Flexibility</h2>
+
+<p class="reveal">
+Too many choices produce paralysis, not creativity. This is not a new observation &mdash; Barry Schwartz documented it in 2004, Brian Eno built an entire career around constraints as a creative tool, and every experienced synthesizer player eventually develops a ruthless practice of reducing their palette before a session, not expanding it.
+</p>
+
+<p class="reveal">
+The problem with XOmnibus&rsquo;s seventy engines is not that any of them are bad. The problem is that <em>seven thousand possible pairings produce seven thousand possible starting points</em>, and a blank starting point is the enemy of a finished track. The synthesizer that can do anything is, in the first fifteen minutes, the synthesizer that does nothing.
+</p>
+
+<p class="reveal">
+Experienced players solve this through habit. You come back to the five engines you know. You develop a vocabulary of two or three coupling routes that reliably produce something you can use. The fleet becomes a personal instrument through the process of reduction &mdash; not through the process of exploration that the full palette invites.
+</p>
+
+<p class="reveal">
+A new player sits down with XOmnibus and faces the full catalogue. Seventy names. Forty-six accents. Fourteen coupling types. The <a href="guide.html">Field Guide</a> exists to shorten the time between &ldquo;first load&rdquo; and &ldquo;working patch,&rdquo; and the <a href="guide-coupling.html">coupling cookbook posts</a> document the best pairings. But the deeper solution isn&rsquo;t documentation. It&rsquo;s curation.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">What a Collection Is</h2>
+
+<p class="reveal">
+A Collection is a curated set of engines, presets, and coupling routes built around a single sonic world. Not a genre. A <em>world</em>. The distinction matters.
+</p>
+
+<p class="reveal">
+A genre is a description of what something sounds like when it&rsquo;s finished. A world is a description of the aesthetic decisions that constrain what you make while you&rsquo;re making it. A genre says &ldquo;this sounds like jazz.&rdquo; A world says &ldquo;everything in this space is slightly dusty, slightly warm, and has no sharp transients.&rdquo; The world is a creative context. The genre is a retrospective label.
+</p>
+
+<p class="reveal">
+Collections define worlds. The simplest way to understand one is through an example.
+</p>
+
+<div class="example-card reveal">
+  <div class="example-card-header">
+    <span class="example-label">Example Collection</span>
+    <h3>Kitchen Essentials</h3>
+  </div>
+  <div class="example-card-body">
+    <p><em>70s analog warmth. The production aesthetic of the records that sold thirty million copies because they sounded warm even through bad speakers. Drums with weight. Keys with grit. Bass with presence. No digital glare. Everything slightly imperfect in ways that feel alive rather than sloppy.</em></p>
+    <p>Kitchen Essentials includes four engines selected because they collectively cover the full frequency range of this aesthetic &mdash; low, low-mid, mid, and high &mdash; and because each engine&rsquo;s character fits the world. Not because they are the &ldquo;best&rdquo; engines, but because they are the <em>right</em> engines for this context. Every preset in the Collection was written with the same aesthetic target. Every coupling route was designed to produce interactions that feel like 70s analog production, not like contemporary digital synthesis.</p>
+    <p>You load Kitchen Essentials. You see four engines in the rack. You pick one. You play a chord. It sounds like it belongs. You pick another. They sound like they were made for each other, because they were. The blank-starting-point problem disappears because the world makes a thousand decisions for you before you touch a knob.</p>
+    <div class="engine-slots">
+      <span class="engine-slot">Engine A</span>
+      <span class="slot-connector">+</span>
+      <span class="engine-slot">Engine B</span>
+      <span class="slot-connector">+</span>
+      <span class="engine-slot">Engine C</span>
+      <span class="slot-connector">+</span>
+      <span class="engine-slot">Engine D</span>
+      <span class="slot-connector">+</span>
+      <span class="engine-slot fifth">The 5th Slot</span>
+    </div>
+  </div>
+</div>
+
+<p class="reveal">
+Four engines. But collections have five slots.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The 5th Slot</h2>
+
+<div class="fifth-slot-card reveal">
+  <span class="fifth-slot-label">The Fusion Engine</span>
+  <h3>The sound that only exists inside this Collection.</h3>
+  <p>Every Collection includes a fifth engine that was not designed for general use in XOmnibus. It was designed specifically for this world. Its parameters were chosen because they interact with the other four engines in ways that are only meaningful in this context. Its presets assume that the other four engines are present. Its coupling routes reference things that only exist inside this Collection.</p>
+  <p>The 5th Slot engine is the sound that lives at the intersection of the four. It is what the world sounds like when you combine all of its elements &mdash; not a blend of the four engines, but a synthesis of their aesthetics that could not exist as a standalone instrument. It requires the context to make sense.</p>
+  <p>This is the part of Collections we are most excited about. The 5th Slot is a new way to think about synthesis: not an engine that makes sounds, but an engine that <em>completes a space</em>. The architectural details of how this works are not ready to share yet. But the concept is settled, and it is one of the things that makes Collections structurally different from anything else in the synthesizer market.</p>
+</div>
+
+<p class="reveal">
+The 5th Slot is not a bonus engine. It is the engine that makes the other four into a system.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">What Collections Are Not</h2>
+
+<div class="contrast-grid reveal">
+  <div class="contrast-col is-col">
+    <span class="contrast-col-label">A Collection is</span>
+    <ul>
+      <li>A curated sonic world with four engines and a fusion engine at the intersection</li>
+      <li>A set of presets designed to work together, not just individually</li>
+      <li>A set of coupling routes pre-built for the world&rsquo;s aesthetic</li>
+      <li>A creative context that makes decisions on your behalf</li>
+      <li>A complete instrument made from five smaller instruments</li>
+    </ul>
+  </div>
+  <div class="contrast-col not-col">
+    <span class="contrast-col-label">A Collection is not</span>
+    <ul>
+      <li>A sample pack (no audio files, no loops, no one-shots)</li>
+      <li>An expansion to a specific engine (not &ldquo;100 new OBRIX presets&rdquo;)</li>
+      <li>A genre restriction (you can make anything inside a world)</li>
+      <li>A locked-down product (all engines remain available for general use)</li>
+      <li>A replacement for XOmnibus V1 (V1 remains free and unchanged)</li>
+    </ul>
+  </div>
+</div>
+
+<p class="reveal">
+Collections are not expansions in the traditional synthesizer sense. An expansion typically adds content to an existing instrument: new presets, new wavetables, new samples. A Collection adds a new <em>context</em>. The engines it includes are not new engines in most cases &mdash; some you may already have in V1. What is new is the curatorial decision about which engines belong together, and the 5th Slot engine that could only exist inside that curation.
+</p>
+
+<p class="reveal">
+This also means Collections are not about restriction. You are not being told you can only use these four engines. XOmnibus V1 remains exactly as it is, with all seventy engines accessible. A Collection is something you <em>put on</em> when you want a bounded context. It is a filter, not a wall.
+</p>
+
+<blockquote class="reveal">
+  <p>&ldquo;Constraints are not limitations. They are the shape of the creative space. A drum kit is a constraint. A twelve-bar blues progression is a constraint. A piano is a constraint. All of them are also freedoms.&rdquo;</p>
+  <span class="attribution">On why bounded tools produce more music</span>
+</blockquote>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">When</h2>
+
+<div class="timeline-block reveal">
+  <span class="timeline-label">Target Window</span>
+  <div class="timeline-value">Winter 2026</div>
+  <div class="timeline-note">Details subject to change. First Collection announcement will come with full engine names, the 5th Slot concept, and pricing.</div>
+</div>
+
+<p class="reveal">
+We are not announcing specific engine names yet. The curation decisions for the first Collections are in progress, and announcing four engines before the 5th Slot is designed would give an incomplete picture of what the Collection actually is. The 5th Slot changes the meaning of the four.
+</p>
+
+<p class="reveal">
+What we can say: the first Collections will come with a complete set of presets that span all eight XOmnibus moods, coupling routes that are ready to use out of the box, and documentation specific to the world rather than to the individual engines. The Field Guide will get Collection-specific posts in the Vision series when each Collection is announced.
+</p>
+
+<p class="reveal">
+If you want to be notified when the first Collection is announced, the <a href="updates.html">Signal</a> page is the right place to watch. That&rsquo;s where all product announcements go first.
+</p>
+
+<p class="reveal">
+This is Vision #1. The series is about where XOmnibus is going. More to follow.
+</p>
+
+</article>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ═══════════ SCROLL REVEAL ═══════════
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

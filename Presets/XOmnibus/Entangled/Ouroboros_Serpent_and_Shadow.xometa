@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Serpent and Shadow",
+  "mood": "Entangled",
+  "engines": [
+    "Ouroboros",
+    "Obsidian"
+  ],
+  "couplingIntensity": "Subtle",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Ouroboros",
+        "engineB": "Obsidian",
+        "type": "AudioToFM",
+        "amount": 0.3
+      }
+    ]
+  },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 1,
+      "ouro_chaosIndex": 0.4,
+      "ouro_leash": 0.8,
+      "ouro_theta": 0.2,
+      "ouro_phi": 0.15,
+      "ouro_damping": 0.5,
+      "ouro_injection": 0.3,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.5
+    },
+    "Obsidian": {
+      "obsidian_depth": 0.5
+    }
+  },
+  "tags": [
+    "entangled",
+    "ouroboros",
+    "obsidian",
+    "coupling",
+    "rossler",
+    "physical-model",
+    "mathematical",
+    "transcendental"
+  ],
+  "description": "Rossler's soft trajectory (leash=0.8) FM-perturbs OBSIDIAN's physical model via AudioToFM. Chaos adds slow non-repeating modulation to a resonating body — the crystal's room temperature changing randomly."
+}

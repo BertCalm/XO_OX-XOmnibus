@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Chaos Spectrum",
+  "mood": "Prism",
+  "engines": [
+    "Ouroboros"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.85,
+    "density": 0.85,
+    "space": 0.5,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosIndex": 0.9,
+      "ouro_leash": 0.55,
+      "ouro_theta": 0.4,
+      "ouro_phi": 0.3,
+      "ouro_damping": 0.2,
+      "ouro_injection": 0.0,
+      "ouro_macroChar": 0.7,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.4
+    }
+  },
+  "tags": [
+    "prism",
+    "ouroboros",
+    "lorenz",
+    "maximum-chaos",
+    "broad-spectrum",
+    "rho-30",
+    "transcendental"
+  ],
+  "description": "chaosIndex=0.9 — Rayleigh number 30.8, deep fully ergodic Lorenz chaos. damping=0.2 (near-minimum). macroChar=0.7 adds further chaos depth. Broadest possible OUROBOROS harmonic spectrum."
+}

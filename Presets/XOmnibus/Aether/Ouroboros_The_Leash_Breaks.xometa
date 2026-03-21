@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "The Leash Breaks",
+  "mood": "Aether",
+  "engines": [
+    "Ouroboros"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.3,
+    "movement": 0.8,
+    "density": 0.8,
+    "space": 0.7,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosIndex": 0.85,
+      "ouro_leash": 0.05,
+      "ouro_theta": 0.5,
+      "ouro_phi": 1.0,
+      "ouro_damping": 0.3,
+      "ouro_injection": 0.0,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.6
+    }
+  },
+  "tags": [
+    "aether",
+    "ouroboros",
+    "lorenz",
+    "near-free",
+    "pitch-gesture",
+    "chaos",
+    "b003",
+    "transcendental"
+  ],
+  "description": "leash=0.05 at chaosIndex=0.85 — 95% free-running chaos. Pitch is a spectral peak, not a clear fundamental. phi=1.0 exposes lower-wing Lorenz trajectory. Notes gesture toward pitches without committing."
+}

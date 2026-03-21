@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Chromatic Grip",
+  "mood": "Entangled",
+  "engines": [
+    "Octopus",
+    "Ouroboros"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Octopus",
+        "engineB": "Ouroboros",
+        "type": "AudioToFM",
+        "amount": 0.5
+      }
+    ]
+  },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.3,
+    "movement": 0.7,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 4,
+      "octo_armSpread": 0.5,
+      "octo_armBaseRate": 1.0,
+      "octo_armDepth": 0.3,
+      "octo_chromaSens": 0.4,
+      "octo_chromaSpeed": 0.4,
+      "octo_chromaMorph": 0.2,
+      "octo_chromaDepth": 0.2,
+      "octo_chromaFreq": 2000.0,
+      "octo_inkThreshold": 0.9,
+      "octo_inkDensity": 0.8,
+      "octo_inkDecay": 5.0,
+      "octo_inkMix": 0.0,
+      "octo_shiftMicro": 0.0,
+      "octo_shiftGlide": 0.3,
+      "octo_shiftDrift": 0.0,
+      "octo_suckerReso": 0.95,
+      "octo_suckerFreq": 1200.0,
+      "octo_suckerDecay": 0.08,
+      "octo_suckerMix": 0.6,
+      "octo_wtPosition": 0.3,
+      "octo_wtScanRate": 0.3,
+      "octo_filterCutoff": 6000.0,
+      "octo_filterReso": 0.15,
+      "octo_level": 0.75,
+      "octo_ampAttack": 0.002,
+      "octo_ampDecay": 0.3,
+      "octo_ampSustain": 0.6,
+      "octo_ampRelease": 1.5,
+      "octo_modAttack": 0.01,
+      "octo_modDecay": 0.4,
+      "octo_modSustain": 0.5,
+      "octo_modRelease": 0.5,
+      "octo_lfo1Rate": 0.5,
+      "octo_lfo1Depth": 0.15,
+      "octo_lfo1Shape": 0,
+      "octo_lfo2Rate": 2.0,
+      "octo_lfo2Depth": 0.0,
+      "octo_lfo2Shape": 0,
+      "octo_polyphony": 2,
+      "octo_macroCharacter": 0.0,
+      "octo_macroMovement": 0.0,
+      "octo_macroCoupling": 0.5,
+      "octo_macroSpace": 0.0
+    },
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosIndex": 0.45,
+      "ouro_leash": 0.6,
+      "ouro_theta": 0.0,
+      "ouro_phi": 0.0,
+      "ouro_damping": 0.4,
+      "ouro_injection": 0.5,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.5
+    }
+  },
+  "tags": [
+    "entangled",
+    "octopus",
+    "ouroboros",
+    "sucker",
+    "chaos",
+    "injection",
+    "perturbation",
+    "transcendental"
+  ],
+  "description": "OCTOPUS sucker transients (suckerReso=0.95, suckerMix=0.6) inject perturbation forces into OUROBOROS's RK4 integrator via AudioToFM. Each adhesion grip kicks the attractor. Rhythmic chaos perturbation."
+}

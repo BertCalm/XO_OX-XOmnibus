@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Sucker Grip Foundation",
+  "mood": "Foundation",
+  "engines": [
+    "Octopus"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.4,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 2,
+      "octo_armSpread": 0.2,
+      "octo_armBaseRate": 0.5,
+      "octo_armDepth": 0.1,
+      "octo_chromaSens": 0.3,
+      "octo_chromaSpeed": 0.3,
+      "octo_chromaMorph": 0.0,
+      "octo_chromaDepth": 0.0,
+      "octo_chromaFreq": 2000.0,
+      "octo_inkThreshold": 0.9,
+      "octo_inkDensity": 0.8,
+      "octo_inkDecay": 5.0,
+      "octo_inkMix": 0.0,
+      "octo_shiftMicro": 0.0,
+      "octo_shiftGlide": 0.2,
+      "octo_shiftDrift": 0.0,
+      "octo_suckerReso": 0.99,
+      "octo_suckerFreq": 800.0,
+      "octo_suckerDecay": 0.12,
+      "octo_suckerMix": 0.85,
+      "octo_wtPosition": 0.2,
+      "octo_wtScanRate": 0.2,
+      "octo_filterCutoff": 4000.0,
+      "octo_filterReso": 0.15,
+      "octo_level": 0.8,
+      "octo_ampAttack": 0.002,
+      "octo_ampDecay": 0.4,
+      "octo_ampSustain": 0.5,
+      "octo_ampRelease": 1.0,
+      "octo_modAttack": 0.01,
+      "octo_modDecay": 0.3,
+      "octo_modSustain": 0.4,
+      "octo_modRelease": 0.4,
+      "octo_lfo1Rate": 0.5,
+      "octo_lfo1Depth": 0.15,
+      "octo_lfo1Shape": 0,
+      "octo_lfo2Rate": 2.0,
+      "octo_lfo2Depth": 0.0,
+      "octo_lfo2Shape": 0,
+      "octo_polyphony": 2,
+      "octo_macroCharacter": 0.0,
+      "octo_macroMovement": 0.0,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "foundation",
+    "octopus",
+    "sucker",
+    "transient",
+    "pluck",
+    "adhesion",
+    "transcendental"
+  ],
+  "description": "Maximum sucker resonance at suckerMix=0.85 — the high-Q bandpass adhesion transient dominates every attack. OCTOPUS as a physical plucking instrument; each note is a tentacle grip."
+}

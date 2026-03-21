@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Total Intelligence",
+  "mood": "Aether",
+  "engines": [
+    "Octopus"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.35,
+    "movement": 0.95,
+    "density": 0.9,
+    "space": 0.65,
+    "aggression": 0.75
+  },
+  "parameters": {
+    "Octopus": {
+      "octo_armCount": 8,
+      "octo_armSpread": 1.0,
+      "octo_armBaseRate": 1.0,
+      "octo_armDepth": 0.9,
+      "octo_chromaSens": 0.9,
+      "octo_chromaSpeed": 0.8,
+      "octo_chromaMorph": 0.7,
+      "octo_chromaDepth": 0.8,
+      "octo_chromaFreq": 2000.0,
+      "octo_inkThreshold": 0.5,
+      "octo_inkDensity": 0.9,
+      "octo_inkDecay": 10.0,
+      "octo_inkMix": 0.6,
+      "octo_shiftMicro": 0.0,
+      "octo_shiftGlide": 2.0,
+      "octo_shiftDrift": 0.5,
+      "octo_suckerReso": 0.95,
+      "octo_suckerFreq": 1500.0,
+      "octo_suckerDecay": 0.07,
+      "octo_suckerMix": 0.5,
+      "octo_wtPosition": 0.4,
+      "octo_wtScanRate": 0.5,
+      "octo_filterCutoff": 7000.0,
+      "octo_filterReso": 0.2,
+      "octo_level": 0.75,
+      "octo_ampAttack": 0.005,
+      "octo_ampDecay": 0.5,
+      "octo_ampSustain": 0.7,
+      "octo_ampRelease": 4.0,
+      "octo_modAttack": 0.05,
+      "octo_modDecay": 1.0,
+      "octo_modSustain": 0.6,
+      "octo_modRelease": 1.5,
+      "octo_lfo1Rate": 0.5,
+      "octo_lfo1Depth": 0.3,
+      "octo_lfo1Shape": 0,
+      "octo_lfo2Rate": 2.0,
+      "octo_lfo2Depth": 0.3,
+      "octo_lfo2Shape": 0,
+      "octo_polyphony": 2,
+      "octo_macroCharacter": 0.8,
+      "octo_macroMovement": 0.7,
+      "octo_macroCoupling": 0.0,
+      "octo_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "aether",
+    "octopus",
+    "all-systems",
+    "arms",
+    "chromatophore",
+    "ink",
+    "sucker",
+    "shapeshifter",
+    "alien",
+    "transcendental"
+  ],
+  "description": "All five OCTOPUS subsystems simultaneously at full expression: 8 arms (1.0 spread), chromatophore HP/Notch zone, ink cloud firing above velocity 0.5, 2-second glide + drift, maximum sucker. The organism fully alive."
+}

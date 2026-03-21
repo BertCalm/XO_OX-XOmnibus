@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Theta Rotation Sweep",
+  "mood": "Prism",
+  "engines": [
+    "Ouroboros"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.4
+  },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_chaosIndex": 0.45,
+      "ouro_leash": 0.75,
+      "ouro_theta": 2.0,
+      "ouro_phi": 0.5,
+      "ouro_damping": 0.4,
+      "ouro_injection": 0.0,
+      "ouro_macroChar": 0.5,
+      "ouro_macroMove": 0.5,
+      "ouro_macroCoup": 0.5,
+      "ouro_macroSpace": 0.55
+    }
+  },
+  "tags": [
+    "prism",
+    "ouroboros",
+    "lorenz",
+    "theta",
+    "projection",
+    "spectral",
+    "harmonic",
+    "transcendental"
+  ],
+  "description": "theta=2.0 rad (~115 degrees) as a spectral parameter — exposing the Lorenz upper-wing cross-section. Different theta values are audibly different harmonically. The rotation matrix as a filter."
+}
