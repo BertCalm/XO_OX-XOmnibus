@@ -1,3 +1,5 @@
+> **STATUS: ACTIVE** | V1 launch criteria defined and ratified. Prism Sweep complete (2026-03-20). Awaiting final launch gates.
+
 # XOmnibus V1 Launch Plan
 
 *Drafted: 2026-03-17 | Updated: 2026-03-17 (RAC review + owner ratification)*

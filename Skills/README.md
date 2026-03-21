@@ -19,6 +19,12 @@ This directory contains Claude Code skill files for working efficiently with the
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
 | [skill-friction-detective](./skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction, frustration, silent failures, and orphaned threads across all skills — then repair, link, and optimize | HIGH |
 | [midi-daw-audit](./midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit — CC thread safety, MIDI learn wiring, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract | HIGH |
+| [sro-optimizer](./sro-optimizer/SKILL.md) | `/sro-optimizer` | Spectral Resonance Object CPU optimization — audit, integrate SilenceGate, fleet-wide sweep | MEDIUM |
+| [preset-auditor](./preset-auditor/SKILL.md) | `/preset-auditor` | Quality gate for existing presets — DNA coverage, macro responsiveness, D004 compliance | HIGH |
+| [coupling-debugger](./coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose and fix broken or inaudible coupling routes | HIGH |
+| [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
+| [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
+| [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -53,14 +59,19 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | A skill produced confusion, loops, or silent failures | `/skill-friction-detective` |
 | Auditing the skill library for stale content or orphaned skills | `/skill-friction-detective audit` |
 | Finding cross-skill linking opportunities | `/skill-friction-detective link` |
+| Auditing existing preset quality | `/preset-auditor` |
+| Coupling route not working/inaudible | `/coupling-debugger` |
+| Full fleet QA / pre-release health check | `/master-audit` |
+| Stale counts, broken IDs, governance gaps | `/repo-audit` |
+| CPU optimization for an engine | `/sro-optimizer` |
 
 ---
 
 ## Related Documentation
 
-- `Docs/coupling_audit.md` — Coupling quality scores for all 24 engines
+- `Docs/coupling_audit.md` — Coupling quality scores for all engines
 - `Docs/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
-- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (34 of 34 engines)
+- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (38 of 42 engines; OBRIX/ORBWEAVE/OVERTONE/ORGANISM pending)
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
 - `Docs/how_to_write_a_xomnibus_adapter.md` — Adapter writing guide
 - `Docs/xomnibus_new_engine_process.md` — New engine development process

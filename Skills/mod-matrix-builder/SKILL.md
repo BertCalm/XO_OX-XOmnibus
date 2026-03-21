@@ -2,6 +2,7 @@
 
 **Invoke with:** `/mod-matrix-builder`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On doctrine update (D002/D005/D006)
 **Purpose:** Provide a reusable, doctrine-compliant 8-slot modulation matrix template for any XO_OX engine — covering D002 (modulation depth), D005 (breathing), and D006 (expression) requirements in one pass.
 
 ---

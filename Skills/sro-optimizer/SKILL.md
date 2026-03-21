@@ -2,6 +2,7 @@
 
 **Invoke with:** `/sro-optimizer [engine-name | audit | integrate]`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new engine addition or platform target change
 **Purpose:** Sustainability & Resource Optimization — make constraint the accelerator that drives creative DSP solutions, ensures the platform stays accessible to every user's machine, and keeps XOmnibus sustainable for the long haul.
 
 ---

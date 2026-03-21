@@ -2,6 +2,7 @@
 
 **Invoke with:** `/engine-health-check [engine-name]`
 **Status:** LIVE
+**Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new doctrine addition or engine addition
 **Purpose:** Quick doctrine compliance check for any XOmnibus engine — covers D001–D006, coupling quality, and known bugs. Produces a pass/fail table with remediation notes.
 
 ---

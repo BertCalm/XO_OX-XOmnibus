@@ -270,7 +270,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
 | D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### The 16 Blessings
+### The 31 Blessings
 
 | ID | Blessing | Engine |
 |----|----------|--------|
@@ -290,15 +290,30 @@ New engines are designed as standalone instruments first, then integrated into X
 | B014 | Mixtur-Trautonium Oscillator — unanimous praise, genuinely novel | OWLFISH |
 | B015 | Mojo Control — orthogonal analog/digital axis | OBESE |
 | B016 | Brick Independence (AMENDED 2026-03-21) — MIDI-layer voice independence is inviolable (note allocation, pitch, velocity, aftertouch remain per-voice). Synthesis-layer interdependence (shared JI attractor field, cross-voice amplitude ecology, environmental globals) is explicitly permitted, provided no synthesis-layer coupling propagates back to affect MIDI routing or voice stealing. | OBRIX |
+| B017 | Modal Membrane Synthesis with Academic Citation — Bessel zeros sourced from physics papers | OSTINATO |
+| B018 | Circular Topology Coupling (CIRCLE) — adjacent seats trigger sympathetic ghost responses | OSTINATO |
+| B019 | 96 Hand-Authored World Rhythm Patterns — 8 instruments × 8 patterns, ethnomusicologically sourced | OSTINATO |
+| B020 | Live Override with Graceful Yield — machine suppresses for one bar when live MIDI arrives | OSTINATO |
+| B021 | Knot Phase Coupling Matrix — topological routing via Trefoil/Figure-Eight/Torus/Solomon matrices | ORBWEAVE |
+| B022 | MACRO KNOT: Continuous Topology Morphing — real-time traversal of topological space as gesture | ORBWEAVE |
+| B023 | Shepard Shimmer Architecture — dual-interval reverb creates endlessly ascending shimmer tail | OPENSKY |
+| B024 | RISE Macro: Single-Gesture Ascension — simultaneously sweeps pitch env, filter, shimmer | OPENSKY |
+| B025 | HAMMER Interaction Axis — bipolar axis from STRIFE (ring mod / hard sync) to LOVE (harmonic convergence) | OUIE |
+| B026 | Interval-as-Parameter — musical interval between two voices is a first-class timbral parameter | OUIE |
+| B027 | 8-Algorithm Palette — each voice selects independently from 8 synthesis algorithms (64 combinations) | OUIE |
+| B028 | Continued Fraction Convergent Synthesis — timbre derived from rational approximations to π, e, φ, √2 | OVERTONE |
+| B029 | Hydrostatic Compressor — pressure as environment, not utility; simulates depth-of-water physics | OCEANDEEP |
+| B030 | Bioluminescent Exciter — complete micro-synthesis engine generating organic alien texture | OCEANDEEP |
+| B031 | Darkness Filter Ceiling — creative restriction 50–800 Hz; constraint as identity declaration | OCEANDEEP |
 
 ### The 4 Ongoing Debates
 
 | ID | Tension | Status |
 |----|---------|--------|
-| DB001 | Mutual exclusivity vs. effect chaining (Buchla vs. field) | UNRESOLVED |
+| DB001 | Mutual exclusivity vs. effect chaining (Buchla vs. field) | EXPANDED — OSTINATO introduces behavioral chaining as a new axis; fleet-level unresolved |
 | DB002 | Silence as paradigm vs. accessibility (Schulze/Buchla vs. Kakehashi/Pearlman) | UNRESOLVED |
-| DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | UNRESOLVED |
-| DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | UNRESOLVED |
+| DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | RESOLVED for percussion — immediate beauty wins (OSTINATO seance 2026-03-20) |
+| DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | RESOLVED for OSTINATO — expression AND evolution are not in tension; both possible simultaneously |
 
 ### Critical Fleet-Wide Findings
 
@@ -316,7 +331,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 - All 6 doctrines resolved fleet-wide (D001–D006)
 - 22/22 engines with mod wheel | 23/23 engines with aftertouch (Optic intentionally exempt — visual engine)
-- ~15,200 presets (was 10,028 at sweep completion), 0 duplicates, 100% DNA coverage, health score ~92/100
+- ~15,500 presets (was 10,028 at sweep completion), 0 duplicates, 100% DNA coverage, health score ~92/100
 - Build PASS + auval PASS
 - **Full history**: `Docs/prism_sweep_final_report.md` | Master index: `Docs/prism_sweep_index.md`
 
@@ -336,12 +351,46 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
 | [midi-daw-audit](Skills/midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit (CC thread safety, MIDI learn, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract) |
+| [sro-optimizer](Skills/sro-optimizer/SKILL.md) | `/sro-optimizer` | CPU optimization via Spectral Resonance Objects |
+| [preset-auditor](Skills/preset-auditor/SKILL.md) | `/preset-auditor` | Preset quality gate — DNA, macros, D004, naming |
+| [coupling-debugger](Skills/coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose broken or inaudible coupling routes |
+| [master-audit](Skills/master-audit/SKILL.md) | `/master-audit` | Fleet-wide QA orchestration — pre-release health check |
+| [repo-audit](Skills/repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene + doc currency — stale counts, broken IDs, governance gaps |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
 | [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills, then repair and link |
 
 Full index: `Skills/README.md`
+
+---
+
+## Adding a New Engine — CLAUDE.md Checklist
+
+When a new engine is registered, update **all four** of these sections in CLAUDE.md:
+
+1. **Product Identity header** — add the engine name to the `**Engine modules (registered):**` comma list and update the parenthetical note with the date added
+2. **Engine Modules table** — add a row: `| SHORTNAME | Source Instrument | Accent Color `#RRGGBB` |`
+3. **Parameter Prefix table** — add a row: `| EngineName | \`prefix_\` | \`prefix_exampleParam\` |`
+4. **Key Files table** (if the engine has a notable architecture worth linking) — add `| Source/Engines/Name/NameEngine.h | Brief description |`
+
+Then update these external files:
+- `Docs/xomnibus_master_specification.md` section 3.1 engine table (add row)
+- `Docs/seance_cross_reference.md` (add seance row after the seance is run)
+- `Source/XOmnibusProcessor.cpp` (register the engine)
+- `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
+
+Full process: `Docs/xomnibus_new_engine_process.md`
+
+---
+
+## Documentation Index
+
+- Full doc inventory: `Docs/MANIFEST.md`
+- Documentation governance: `Docs/GOVERNANCE.md`
+- Documentation improvement plan: `Docs/documentation_health_plan.md`
+- Master specification: `Docs/xomnibus_master_specification.md`
+- Discovery index: `Docs/INDEX.md`
 
 ---
 

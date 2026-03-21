@@ -557,6 +557,12 @@ struct OuieInteraction
     static void process (float& v1, float& v2, float hammerAmount,
                          float v1Phase, float v2Phase) noexcept
     {
+        // v1Phase / v2Phase are reserved for a future true hard-sync implementation
+        // where Voice 1's phase is reset at Voice 2's zero crossings. For now the
+        // sync effect is approximated at sample level below.
+        (void) v1Phase;
+        (void) v2Phase;
+
         if (hammerAmount < -0.01f)
         {
             // === STRIFE ===

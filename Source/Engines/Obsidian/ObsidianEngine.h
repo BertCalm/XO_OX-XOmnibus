@@ -390,8 +390,8 @@ public:
                         maxPolyphony, monoMode, legatoMode, glideCoefficient,
                         paramAmpAttack, paramAmpDecay, paramAmpSustain, paramAmpRelease,
                         paramPdAttack, paramPdDecay, paramPdSustain, paramPdRelease,
-                        paramLfo1Rate, paramLfo1Depth, paramLfo1Shape,
-                        paramLfo2Rate, paramLfo2Depth, paramLfo2Shape,
+                        paramLfo1Rate, paramLfo1Shape,
+                        paramLfo2Rate, paramLfo2Shape,
                         effectiveCutoff, paramFilterResonance, stiffnessCoefficient);
             }
             else if (message.isNoteOff())
@@ -623,12 +623,13 @@ public:
                         clamp (stage2Tilt + stereoOffset, 0.0f, 1.0f),
                         voice.phaseStage2);
 
-                    // Apply cross-modulation: Stage 1 output increases Stage 2 PD depth
-                    float stage2Depth = depthEnvelopeAmount * (1.0f + crossModLeft);
-                    stage2Depth = clamp (stage2Depth, 0.0f, 1.0f);
+                    // Apply cross-modulation: Stage 1 output increases Stage 2 PD depth.
+                    // Each channel uses its own cross-mod signal for true stereo interaction.
+                    float stage2DepthLeft  = clamp (depthEnvelopeAmount * (1.0f + crossModLeft),  0.0f, 1.0f);
+                    float stage2DepthRight = clamp (depthEnvelopeAmount * (1.0f + crossModRight), 0.0f, 1.0f);
 
-                    float stage2PhaseLeft  = voice.phaseStage2 + stage2Depth * (distortedPhase2Left - voice.phaseStage2);
-                    float stage2PhaseRight = voice.phaseStage2 + stage2Depth * (distortedPhase2Right - voice.phaseStage2);
+                    float stage2PhaseLeft  = voice.phaseStage2 + stage2DepthLeft  * (distortedPhase2Left  - voice.phaseStage2);
+                    float stage2PhaseRight = voice.phaseStage2 + stage2DepthRight * (distortedPhase2Right - voice.phaseStage2);
 
                     float stage2OutputLeft  = lookupCosine (stage2PhaseLeft);
                     float stage2OutputRight = lookupCosine (stage2PhaseRight);
@@ -1198,8 +1199,8 @@ private:
                  bool monoMode, bool legatoMode, float glideCoefficient,
                  float ampAttack, float ampDecay, float ampSustain, float ampRelease,
                  float pdAttack, float pdDecay, float pdSustain, float pdRelease,
-                 float lfo1Rate, float lfo1Depth, int lfo1Shape,
-                 float lfo2Rate, float lfo2Depth, int lfo2Shape,
+                 float lfo1Rate, int lfo1Shape,
+                 float lfo2Rate, int lfo2Shape,
                  float cutoff, float resonance, float stiffnessB)
     {
         float frequency = midiNoteToFrequencyHz (static_cast<float> (noteNumber));
