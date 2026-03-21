@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Drawer of Letters",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oxbow"
+  ],
+  "description": "Old paper and faded ink resonating inside a mahogany drawer \u2014 warm nostalgia in miniature.",
+  "tags": [
+    "intimate",
+    "nostalgic",
+    "dark",
+    "warm",
+    "lo-fi"
+  ],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.4,
+    "space": 0.25,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.15,
+      "oxb_decay": 1.5,
+      "oxb_entangle": 0.4,
+      "oxb_erosionRate": 0.03,
+      "oxb_erosionDepth": 0.25,
+      "oxb_convergence": 5,
+      "oxb_resonanceQ": 5,
+      "oxb_resonanceMix": 0.15,
+      "oxb_cantilever": 0.35,
+      "oxb_damping": 3500,
+      "oxb_predelay": 5,
+      "oxb_dryWet": 0.35,
+      "oxb_exciterDecay": 0.02,
+      "oxb_exciterBright": 0.35
+    }
+  }
+}

@@ -18,7 +18,7 @@
   "parameters": {
     "Oxbow": {
       "oxb_size": 0.75,
-      "oxb_decay": 45.0,
+      "oxb_decay": 60.0,
       "oxb_entangle": 0.7,
       "oxb_erosionRate": 0.03,
       "oxb_erosionDepth": 0.6,

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Water Kalimba",
+  "mood": "Foundation",
+  "engines": [
+    "Oxbow"
+  ],
+  "description": "Kalimba tines plucked over water \u2014 delicate pitched resonance with liquid undertones.",
+  "tags": [
+    "kalimba",
+    "water",
+    "pluck",
+    "pitched",
+    "delicate"
+  ],
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.25,
+    "density": 0.25,
+    "space": 0.3,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.15,
+      "oxb_decay": 1.0,
+      "oxb_entangle": 0.35,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.2,
+      "oxb_convergence": 2.5,
+      "oxb_resonanceQ": 14,
+      "oxb_resonanceMix": 0.5,
+      "oxb_cantilever": 0.15,
+      "oxb_damping": 8500,
+      "oxb_predelay": 2,
+      "oxb_dryWet": 0.6,
+      "oxb_exciterDecay": 0.006,
+      "oxb_exciterBright": 0.7
+    }
+  }
+}

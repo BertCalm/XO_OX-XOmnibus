@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Closet Whisper",
+  "mood": "Foundation",
+  "engines": [
+    "Oxbow"
+  ],
+  "description": "A tiny closet-sized space barely larger than the sound itself \u2014 intimate and impossibly close.",
+  "tags": [
+    "intimate",
+    "room",
+    "close",
+    "whisper"
+  ],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.1,
+    "density": 0.3,
+    "space": 0.15,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.08,
+      "oxb_decay": 0.5,
+      "oxb_entangle": 0.2,
+      "oxb_erosionRate": 0.04,
+      "oxb_erosionDepth": 0.1,
+      "oxb_convergence": 8,
+      "oxb_resonanceQ": 4,
+      "oxb_resonanceMix": 0.1,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 5000,
+      "oxb_predelay": 3,
+      "oxb_dryWet": 0.3,
+      "oxb_exciterDecay": 0.008,
+      "oxb_exciterBright": 0.5
+    }
+  }
+}

@@ -18,7 +18,7 @@
   "parameters": {
     "Oxbow": {
       "oxb_size": 0.35,
-      "oxb_decay": 2.5,
+      "oxb_decay": 1.8,
       "oxb_entangle": 0.4,
       "oxb_erosionRate": 0.1,
       "oxb_erosionDepth": 0.2,
@@ -28,7 +28,7 @@
       "oxb_cantilever": 0.2,
       "oxb_damping": 9000.0,
       "oxb_predelay": 5.0,
-      "oxb_dryWet": 0.6,
+      "oxb_dryWet": 0.7,
       "oxb_exciterDecay": 0.005,
       "oxb_exciterBright": 0.85
     }

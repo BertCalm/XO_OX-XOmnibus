@@ -26,7 +26,7 @@
       "oxb_resonanceQ": 8.0,
       "oxb_resonanceMix": 0.2,
       "oxb_cantilever": 1.0,
-      "oxb_damping": 12000.0,
+      "oxb_damping": 8000.0,
       "oxb_predelay": 10.0,
       "oxb_dryWet": 0.5,
       "oxb_exciterDecay": 0.005,

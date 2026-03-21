@@ -22,7 +22,7 @@
       "oxb_entangle": 0.5,
       "oxb_erosionRate": 0.06,
       "oxb_erosionDepth": 0.3,
-      "oxb_convergence": 5.0,
+      "oxb_convergence": 3.5,
       "oxb_resonanceQ": 6.0,
       "oxb_resonanceMix": 0.2,
       "oxb_cantilever": 0.3,

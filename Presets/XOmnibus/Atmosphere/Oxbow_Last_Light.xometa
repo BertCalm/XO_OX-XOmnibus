@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Last Light",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oxbow"
+  ],
+  "description": "The final rays of sunset dissolving into a vast emotional space \u2014 fading warmth and long decay.",
+  "tags": [
+    "cinematic",
+    "sunset",
+    "emotional",
+    "dark",
+    "fading"
+  ],
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.65,
+      "oxb_decay": 10.0,
+      "oxb_entangle": 0.55,
+      "oxb_erosionRate": 0.03,
+      "oxb_erosionDepth": 0.4,
+      "oxb_convergence": 3.5,
+      "oxb_resonanceQ": 9,
+      "oxb_resonanceMix": 0.3,
+      "oxb_cantilever": 0.7,
+      "oxb_damping": 4500,
+      "oxb_predelay": 80,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.025,
+      "oxb_exciterBright": 0.45
+    }
+  }
+}

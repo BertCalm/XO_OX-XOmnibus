@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "name": "Teacup Gamelan",
+  "mood": "Prism",
+  "engines": [
+    "Oxbow"
+  ],
+  "description": "A gamelan orchestra shrunk to fit inside a teacup \u2014 bright pitched chimes at impossibly small scale.",
+  "tags": [
+    "gamelan",
+    "miniature",
+    "chime",
+    "bright",
+    "pitched"
+  ],
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.3,
+    "movement": 0.25,
+    "density": 0.25,
+    "space": 0.1,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.06,
+      "oxb_decay": 0.6,
+      "oxb_entangle": 0.35,
+      "oxb_erosionRate": 0.08,
+      "oxb_erosionDepth": 0.2,
+      "oxb_convergence": 2,
+      "oxb_resonanceQ": 16,
+      "oxb_resonanceMix": 0.6,
+      "oxb_cantilever": 0.1,
+      "oxb_damping": 11000,
+      "oxb_predelay": 1,
+      "oxb_dryWet": 0.65,
+      "oxb_exciterDecay": 0.003,
+      "oxb_exciterBright": 0.9
+    }
+  }
+}
