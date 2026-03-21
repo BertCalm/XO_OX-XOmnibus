@@ -362,10 +362,17 @@ public:
         const float inverseSr = 1.0f / srF;
         const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
 
-        // Count active voices for reduction acceleration
+        // Count active non-infusion voices for reduction acceleration.
+        // Infusion voices (soft long tones, velocity < 0.3 && held > 8s) do NOT accelerate
+        // reduction — they add character without burning off spectral mass (isInfusion fix).
         int activeVoiceCount = 0;
+        int infusionVoiceCount = 0;
         for (int v = 0; v < kMaxVoices; ++v)
-            if (voices[v].active) ++activeVoiceCount;
+        {
+            if (!voices[v].active) continue;
+            if (voices[v].isInfusion) ++infusionVoiceCount;
+            else                      ++activeVoiceCount;
+        }
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -540,6 +547,12 @@ public:
             outL[i] += sampleL;
             if (outR) outR[i] += sampleR;
         }
+
+        // Write sessionAge back to APVTS so host can display it (D004 fix).
+        // The pSessionAgeParam is a read-only parameter the host/UI can observe.
+        // Use relaxed ordering — this is a display value, not a sync barrier.
+        if (pSessionAgeParam)
+            pSessionAgeParam->store (reduction.sessionAge, std::memory_order_relaxed);
 
         // Reset coupling mods
         extFilterMod = 0.0f;

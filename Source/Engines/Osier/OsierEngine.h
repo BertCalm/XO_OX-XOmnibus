@@ -553,8 +553,13 @@ public:
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        // Role stays fixed to voice index (quartet seating is permanent)
-        v.role = static_cast<OsierQuartetRole> (idx);
+        // Role assigned by pitch so soprano always plays high notes, bass plays low notes.
+        // Thresholds: Soprano ≥ G4 (67), Alto = D4–F#4 (62–66), Tenor = G3–C#4 (55–61), Bass < G3 (54).
+        // This ensures tonal character matches the musical register being played.
+        if      (note >= 67) v.role = OsierQuartetRole::Soprano;
+        else if (note >= 62) v.role = OsierQuartetRole::Alto;
+        else if (note >= 55) v.role = OsierQuartetRole::Tenor;
+        else                 v.role = OsierQuartetRole::Bass;
         v.glide.setTargetOrSnap (freq);
 
         float attackTime = paramAttack ? paramAttack->load() : 0.1f;

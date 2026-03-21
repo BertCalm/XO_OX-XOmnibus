@@ -432,8 +432,41 @@ public:
                     // Warmth: attenuate higher partials more
                     float warmthAtten = 1.0f / (1.0f + (1.0f - pWarmth) * static_cast<float> (p) * 0.3f);
 
-                    voiceSample += sine * partial.amplitude * diffusionAttenuation
-                                   * warmthAtten * velBright;
+                    float partialContrib = sine * partial.amplitude * diffusionAttenuation
+                                          * warmthAtten * velBright;
+
+                    // Accumulate partial energy into spectral field for cross-note interference.
+                    // Map frequency to one of 32 bins (log-spaced 20Hz–20kHz).
+                    if (pInterference > 0.01f)
+                    {
+                        float logFreq = std::log2 (partialFreq / 20.0f) / std::log2 (1000.0f); // 0..1
+                        int bin = std::min (static_cast<int> (logFreq * 32.0f), 31);
+                        if (bin >= 0)
+                            spectralField[static_cast<size_t> (bin)] += std::fabs (partialContrib) * 0.05f;
+                    }
+
+                    voiceSample += partialContrib;
+                }
+
+                // Interference: where diffusion fronts from different notes overlap,
+                // add subtle beating (amplitude modulation from neighbor bins).
+                // wash_interference controls how much cross-note energy affects this voice.
+                if (pInterference > 0.01f)
+                {
+                    // Map this voice's fundamental to a spectral bin
+                    float logFund = std::log2 (fundamental / 20.0f) / std::log2 (1000.0f);
+                    int fundBin = std::min (static_cast<int> (logFund * 32.0f), 31);
+                    if (fundBin >= 0)
+                    {
+                        // Sum energy in neighboring bins (interference fringes from other voices)
+                        float neighborEnergy = 0.0f;
+                        for (int nb = std::max (0, fundBin - 2); nb <= std::min (31, fundBin + 2); ++nb)
+                            neighborEnergy += spectralField[static_cast<size_t> (nb)];
+                        neighborEnergy = clamp (neighborEnergy, 0.0f, 1.0f);
+                        // Interference fringes: slight amplitude modulation proportional to neighbor energy
+                        float interferenceAmt = neighborEnergy * pInterference * 0.3f;
+                        voiceSample *= (1.0f - interferenceAmt + interferenceAmt * lfo1Val);
+                    }
                 }
 
                 // Normalize by partial count
@@ -475,6 +508,11 @@ public:
             outL[i] += sampleL;
             if (outR) outR[i] += sampleR;
         }
+
+        // Decay spectral field accumulator (slow diffusion of the field itself)
+        // This prevents stale energy from dominating and makes interference fade naturally.
+        for (auto& bin : spectralField)
+            bin *= 0.98f;  // ~50ms half-life at typical block rates
 
         // Reset coupling mods
         extFilterMod = 0.0f;
