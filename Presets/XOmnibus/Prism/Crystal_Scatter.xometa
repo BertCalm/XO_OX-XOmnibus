@@ -28,14 +28,6 @@
     "Oblique": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.106,
-    "brightness": 0.679,
-    "density": 0.079,
-    "movement": 0.189,
-    "space": 0.78,
-    "warmth": 0.081
-  },
   "tags": [
     "prism",
     "cold",
@@ -44,5 +36,6 @@
     "airy",
     "spacious"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

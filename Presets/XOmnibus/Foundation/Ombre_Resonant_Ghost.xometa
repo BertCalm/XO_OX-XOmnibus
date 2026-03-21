@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Resonant Ghost",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "High resonance filter on a memory-heavy patch. The filter rings on the ghost frequencies. Play single notes to hear individual resonant ghosts of each previous pitch.",
-  "tags": ["foundation", "resonant", "filter", "ghost", "ringing"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "resonant",
+    "filter",
+    "ghost",
+    "ringing"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.6
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

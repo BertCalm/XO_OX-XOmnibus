@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Communal resonance bending through shared medium — ohmic refraction, warm and wide.",

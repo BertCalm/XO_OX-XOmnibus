@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Pure self-resonant ring from a simple loop \u2014 crystalline FDN bell tones with long decay.",
+  "description": "Pure self-resonant ring from a simple loop — crystalline FDN bell tones with long decay.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.8,
@@ -77,5 +77,6 @@
     "ring",
     "metallic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

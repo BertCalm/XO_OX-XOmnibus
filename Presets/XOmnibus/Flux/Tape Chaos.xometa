@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-08",
   "description": "Evolving tape chaos texture with self-oscillating delay and driven saturation.",

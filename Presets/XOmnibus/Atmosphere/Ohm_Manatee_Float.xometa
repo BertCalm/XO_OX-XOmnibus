@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The manatee surfaces. Dad's organic warmth meets Obed's spectral shimmer in slow, deliberate motion.",
@@ -66,5 +68,6 @@
     "atmosphere",
     "pad"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Accelerating Drift",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "LFO rates set high with high drift — the motion never settles. Memory heads spiral away from their anchors. A continually accelerating departure from the original note.",
-  "tags": ["flux", "acceleration", "drift", "spiral", "departure", "motion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "acceleration",
+    "drift",
+    "spiral",
+    "departure",
+    "motion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.68
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

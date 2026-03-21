@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Owlfish subharmonic series tunes Bob's chord stack \u2014 deep-sea harmony.",
+  "description": "Owlfish subharmonic series tunes Bob's chord stack — deep-sea harmony.",
   "dna": {
     "aggression": 0.414,
     "brightness": 0.622,
@@ -74,5 +74,5 @@
     "owlfish"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

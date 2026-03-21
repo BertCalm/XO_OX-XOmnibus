@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Ampullae Sense",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High velocity sensitivity — AMPULLAE macro wired to filter brightness. Like the shark's electroreceptors detecting faint signals.",
-  "tags": ["duophonic", "expressive", "focused", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "duophonic",
+    "expressive",
+    "focused",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.5,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

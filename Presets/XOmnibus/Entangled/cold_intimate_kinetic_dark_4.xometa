@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.4499,
-    "brightness": 0.0547,
-    "density": 0.4206,
-    "movement": 0.9529,
-    "space": 0.1002,
-    "warmth": 0.0957
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "weave",
     "ole"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

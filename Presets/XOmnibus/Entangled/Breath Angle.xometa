@@ -68,14 +68,6 @@
     "oblq_rtjAggression": 0.479
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.458,
-    "brightness": 0.665,
-    "density": 0.638,
-    "movement": 0.609,
-    "space": 0.548,
-    "warmth": 0.426
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -89,5 +81,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

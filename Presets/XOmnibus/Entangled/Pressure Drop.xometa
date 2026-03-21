@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Reggae-influenced dub pressure with deep filter ducking. X's envelope creates massive sidechain drops on O's cutoff for speaker-shaking pump.",

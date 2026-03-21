@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Two brothers playing at opposite ends of a covered market. BOND keeps them in step without making them identical. Each carries its own crowd noise in the breath noise.",
@@ -66,5 +68,6 @@
     "bond",
     "world"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

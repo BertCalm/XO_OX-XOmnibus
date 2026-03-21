@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-10",
   "description": "Lorenz attractor with moderate injection and loose leash. Two engines feeding each other in mutual chaotic symbiosis.",

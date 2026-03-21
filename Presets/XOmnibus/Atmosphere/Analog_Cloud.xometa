@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Analog Cloud",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-attack pad with maximum Mojo drift and wide stereo. 13 oscillators drifting like analog fog.",
-  "tags": ["pad", "atmosphere", "analog", "drift", "wide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "atmosphere",
+    "analog",
+    "drift",
+    "wide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -53,6 +66,8 @@
       "fat_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Pulse wave with narrow width \u2014 nasal, reedy, like a clarinet. Adjust pulse width to hear the timbre shift.",
+  "description": "Pulse wave with narrow width — nasal, reedy, like a clarinet. Adjust pulse width to hear the timbre shift.",
   "tags": [
     "lesson",
     "pulse",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

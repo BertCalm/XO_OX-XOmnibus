@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Atmosphere",
-  "description": "Biome 3 (Mangrove). Floor \u2192 Canopy crossfeed with slow canopy breathe. Tape age adds wetland haze. The intertidal ecosystem where salt and fresh water meet \u2014 thick, humid, alive.",
+  "description": "Biome 3 (Mangrove). Floor → Canopy crossfeed with slow canopy breathe. Tape age adds wetland haze. The intertidal ecosystem where salt and fresh water meet — thick, humid, alive.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.4,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

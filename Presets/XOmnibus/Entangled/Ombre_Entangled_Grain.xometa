@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Entangled Grain",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "AudioToWavetable coupling at maximum — external audio continuously feeds Oubli memory. The engine forgets its own past and replaces it with the other engine's audio.",
-  "tags": ["entangled", "grain", "audio-feed", "coupling", "replacement", "absorbed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "grain",
+    "audio-feed",
+    "coupling",
+    "replacement",
+    "absorbed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.8
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

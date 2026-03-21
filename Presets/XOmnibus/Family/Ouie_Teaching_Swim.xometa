@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Teaching Swim",
   "mood": "Family",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Duo mode with slow portamento. The elder shows the path; the younger follows slightly behind. Knowledge passing through movement.",
-  "tags": ["movement", "expressive", "duophonic", "counterpoint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "movement",
+    "expressive",
+    "duophonic",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.52,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Short, pitched, delicate strikes — the inner world of a wound-up music box. Eight voices tuned to upper octaves, minimal snap, low body weight. MACHINE macro parked low, PUNCH barely breathing. A gentle percussion kit safe for every listener in the room.",

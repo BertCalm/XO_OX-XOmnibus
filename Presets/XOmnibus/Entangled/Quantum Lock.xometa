@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Two oscillators phase-locked through deep coupling. X's envelope clamps O's filter while O's LFO bends X's pitch in tight sync.",

@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Phi constant at depth 7: the final convergent 34/21 ≈ 1.619048 — one step from the golden ratio itself. All 8 partials are locked to the 8 Fibonacci convergents spread across the spiral. This is the Nautilus fully grown, all chambers complete. The sound is maximally irrational but still self-similar, alive with internal golden logic.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.7,
     "aggression": 0.0
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 1.0, "COLOR": 0.65, "COUPLING": 0.0, "SPACE": 0.65 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 1.0,
+    "COLOR": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
   "mood": "Aether",
   "name": "Golden Moment",
   "parameters": {
@@ -47,6 +61,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["aether", "golden-ratio", "fibonacci", "phi", "maximum-depth", "self-similar"],
-  "version": "1.0"
+  "tags": [
+    "aether",
+    "golden-ratio",
+    "fibonacci",
+    "phi",
+    "maximum-depth",
+    "self-similar"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

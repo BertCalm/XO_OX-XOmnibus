@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Entropy",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "All systems tending toward disorder. Max interference and drift create a gradually destabilizing state. Each note adds more chaos to the memory pool. Inevitable decay.",
-  "tags": ["aether", "entropy", "chaos", "disorder", "inevitable", "decay"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "entropy",
+    "chaos",
+    "disorder",
+    "inevitable",
+    "decay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Two intertwining pitch spirals where X and O modulate each other's frequency in a DNA-like ascending/descending dance.",

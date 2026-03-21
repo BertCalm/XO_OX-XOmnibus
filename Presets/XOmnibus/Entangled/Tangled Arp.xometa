@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Sequenced arpeggiation with cross-coupled filter and pitch modulation. Each note triggers a cascade of interaction between X and O.",

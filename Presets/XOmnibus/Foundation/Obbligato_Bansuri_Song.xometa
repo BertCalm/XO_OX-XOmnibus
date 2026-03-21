@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Peter and Wolf play together without argument. BOND centered, the brothers in harmony.",
@@ -64,5 +66,6 @@
     "foundation",
     "clean"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

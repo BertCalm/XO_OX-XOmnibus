@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Haunted Frequency",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The pitch modulation from Oubli haunting Opsis. At high interference, the memory frequency bleeds back into the oscillator. Ghost pitches haunt each new note.",
-  "tags": ["aether", "haunted", "pitch", "frequency", "ghost-pitch", "interference"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "haunted",
+    "pitch",
+    "frequency",
+    "ghost-pitch",
+    "interference"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

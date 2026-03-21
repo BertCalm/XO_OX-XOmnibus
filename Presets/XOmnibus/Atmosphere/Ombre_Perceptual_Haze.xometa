@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Perceptual Haze",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "High blend (Opsis dominant) with maximum LFO movement. The filter and blend both oscillate. What you perceive wavers — a haze of active, immediate sensation.",
-  "tags": ["atmosphere", "haze", "shimmer", "movement", "opsis", "oscillation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "haze",
+    "shimmer",
+    "movement",
+    "opsis",
+    "oscillation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

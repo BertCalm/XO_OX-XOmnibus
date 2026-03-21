@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Rossler at high leash (0.9), low chaos (0.15), projection rotated to the spiral's tonal axis (theta=0.8, phi=1.2). OUROBOROS as a pitched instrument. The vent as a singing thing. Sounds like nothing else in the fleet.",
   "dna": {

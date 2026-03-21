@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "High formant resonance with slow cascade blend. The 0.1 Hz stone breathing LFO shifts the vowel character across notes. The PD depth envelope keeps the attack harmonic-free then blooms into complexity.",

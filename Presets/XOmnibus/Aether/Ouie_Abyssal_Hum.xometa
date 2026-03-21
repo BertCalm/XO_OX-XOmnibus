@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Abyssal Hum",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice A at a sub-bass register, Voice B a minor seventh above — low drone with a ghost of tension. The sound the abyss makes when it breathes.",
-  "tags": ["dark", "evolving", "steel", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark",
+    "evolving",
+    "steel",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.2,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC ADVANCED 1: Tom-to-kick feedback via kick_to_tom_pitch at 0.9 + MUTATE 0.3. The tom (V6) sits a perfect 5th above the kick; each kick hit yanks tom pitch down up to 6 semitones, creating a resonant physical symbiosis. High density, organic — like two drums sharing the same membrane. Snare and hats recede; the kick-tom relationship dominates.",

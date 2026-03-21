@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.411,
-    "brightness": 0.417,
-    "density": 0.653,
-    "movement": 0.539,
-    "space": 0.605,
-    "warmth": 0.655
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "overdub",
     "bite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

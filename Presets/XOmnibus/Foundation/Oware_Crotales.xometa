@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.95,
-    "density": 0.18,
-    "movement": 0.22,
-    "space": 0.82,
-    "warmth": 0.12
-  },
   "tags": [
     "crotales",
     "bronze",
@@ -67,5 +59,6 @@
     "long-decay",
     "foundation"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The house fills with harmonic fog. Dad strums, the in-laws shimmer just out of sight. 'Slow River' finds the quietest expression of this voice.",
@@ -66,5 +68,6 @@
     "atmosphere",
     "pad"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

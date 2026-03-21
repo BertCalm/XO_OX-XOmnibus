@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "stressDecay=0.7 \u2014 velocity accumulates over ~51 seconds via leaky integrator, progressively brightening the filter cutoff. Play harder and the reef tightens. Saw source through LP. The stateful system is the instrument: hard playing builds thermal tension in the reef's timbre over time.",
+  "description": "stressDecay=0.7 — velocity accumulates over ~51 seconds via leaky integrator, progressively brightening the filter cutoff. Play harder and the reef tightens. Saw source through LP. The stateful system is the instrument: hard playing builds thermal tension in the reef's timbre over time.",
   "tags": [
     "stress",
     "stateful",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.35,
     "COUPLING": 0.0,
     "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
   }
 }

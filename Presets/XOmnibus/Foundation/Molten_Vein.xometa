@@ -28,14 +28,6 @@
     "Overbite": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.438,
-    "brightness": 0.434,
-    "density": 0.827,
-    "movement": 0.47,
-    "space": 0.317,
-    "warmth": 0.835
-  },
   "tags": [
     "foundation",
     "warm",
@@ -43,5 +35,6 @@
     "analog",
     "thick"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

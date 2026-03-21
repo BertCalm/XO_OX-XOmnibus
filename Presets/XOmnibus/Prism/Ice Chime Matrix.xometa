@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Prism",
-  "description": "Winter biome kalimba becomes ice chimes. The Ecosystem Matrix routes canopy shimmer back to emergent formants \u2014 wolf calls bend pitch toward the harmonic partials above. Crystalline interlocking feedback.",
+  "description": "Winter biome kalimba becomes ice chimes. The Ecosystem Matrix routes canopy shimmer back to emergent formants — wolf calls bend pitch toward the harmonic partials above. Crystalline interlocking feedback.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.8,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

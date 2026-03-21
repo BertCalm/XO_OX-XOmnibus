@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Pulse Divide",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LFO1 at 4Hz, LFO2 at 3Hz — near-polyrhythmic LFO interaction creates evolving cross-beat filter animation.",
-  "tags": ["movement", "evolving", "counterpoint", "tension"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "movement",
+    "evolving",
+    "counterpoint",
+    "tension"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

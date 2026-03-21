@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Figure-8 in dark extreme \u2014 deep, haunting bell from the deep ocean.",
+  "description": "Figure-8 in dark extreme — deep, haunting bell from the deep ocean.",
   "dna": {
     "brightness": 0.15,
     "warmth": 0.7,
@@ -78,5 +78,6 @@
     "bell",
     "haunting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

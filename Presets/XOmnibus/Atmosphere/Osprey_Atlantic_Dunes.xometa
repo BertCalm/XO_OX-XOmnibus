@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Cape Hatteras barrier dunes — flat Atlantic coastline where sand reshapes overnight. ShoreSystem tuned to East Coast shallow-water resonances and sea oat frequencies. Wind angles the sound rather than driving it. Longing, lateral, forever eastward.",

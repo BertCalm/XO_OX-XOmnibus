@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Dry woodblock click from bandpass-filtered noise with subtle dub delay echo tail. Minimal and precise.",

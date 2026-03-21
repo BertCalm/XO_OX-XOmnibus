@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Bonded Pair",
   "mood": "Family",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LOVE mode at high depth — two voices inseparable, each reinforcing the other. The complementary harmony of longtime companions.",
-  "tags": ["expressive", "counterpoint", "powerful", "duophonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "expressive",
+    "counterpoint",
+    "powerful",
+    "duophonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.58,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

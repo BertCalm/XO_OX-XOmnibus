@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "A teenager leads two younger cousins. GROW is locked at the tween-to-teen crossover. The sound has forward motion — not triumphant, but purposeful. The brass family on patrol.",
@@ -64,5 +66,6 @@
     "purposeful",
     "family"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

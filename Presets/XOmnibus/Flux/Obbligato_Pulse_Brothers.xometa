@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Brothers harmonize, fight, cry, return. The full emotional arc in one preset. 'Pulse Brothers' keeps nothing still.",
@@ -64,5 +66,6 @@
     "flux",
     "movement"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

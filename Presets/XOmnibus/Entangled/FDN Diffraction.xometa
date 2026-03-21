@@ -68,14 +68,6 @@
     "olap_lfo1Rate": 1.1
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.549,
-    "brightness": 0.639,
-    "density": 0.62,
-    "movement": 0.728,
-    "space": 0.693,
-    "warmth": 0.494
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -89,5 +81,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Strife Love War",
   "mood": "Entangled",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both macro HAMMER and LFO on HAMMER axis — chaotic, constantly shifting between states. Unresolvable tension/resolution oscillation.",
-  "tags": ["tension", "dark", "predator", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tension",
+    "dark",
+    "predator",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

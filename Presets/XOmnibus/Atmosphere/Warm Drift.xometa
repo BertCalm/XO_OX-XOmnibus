@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Slowly evolving pad with Perlin drift modulation. Lush wavetable morphing between sine and saw.",

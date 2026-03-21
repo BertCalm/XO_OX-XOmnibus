@@ -68,14 +68,6 @@
     "osprey_lfo1Rate": 2.74
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.539,
-    "brightness": 0.773,
-    "density": 0.64,
-    "movement": 0.782,
-    "space": 0.736,
-    "warmth": 0.488
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -89,5 +81,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

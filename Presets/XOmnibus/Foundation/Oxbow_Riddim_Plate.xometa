@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Pure riddim reverb \u2014 tight plate with just enough golden resonance to give the snare character. Quick decay, minimal erosion, no nonsense. The backbone.",
+  "description": "Pure riddim reverb — tight plate with just enough golden resonance to give the snare character. Quick decay, minimal erosion, no nonsense. The backbone.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "tight",
     "snare"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

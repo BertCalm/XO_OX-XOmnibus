@@ -28,14 +28,6 @@
     "Ouroboros": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.28,
-    "brightness": 0.11,
-    "density": 0.78,
-    "movement": 0.3,
-    "space": 0.38,
-    "warmth": 0.76
-  },
   "tags": [
     "aether",
     "dark",
@@ -44,5 +36,6 @@
     "underground",
     "system"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

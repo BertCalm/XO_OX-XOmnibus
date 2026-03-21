@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-08",
   "description": "Deep log drums presence with warm character.",

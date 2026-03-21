@@ -45,24 +45,16 @@
       "fat_warmth": 0.648
     },
     "Onset": {
-      "ons_aggression": 0.709,
-      "ons_brightness": 0.541,
-      "ons_couplingBus": 0,
-      "ons_couplingLevel": 0.57,
-      "ons_outputLevel": 0.84,
-      "ons_outputPan": 0.01,
-      "ons_warmth": 0.536
+      "perc_aggression": 0.709,
+      "perc_brightness": 0.541,
+      "perc_couplingBus": 0,
+      "perc_couplingLevel": 0.57,
+      "perc_outputLevel": 0.84,
+      "perc_outputPan": 0.01,
+      "perc_warmth": 0.536
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.736,
-    "brightness": 0.486,
-    "density": 0.815,
-    "movement": 0.587,
-    "space": 0.447,
-    "warmth": 0.646
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "onset",
     "fat"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

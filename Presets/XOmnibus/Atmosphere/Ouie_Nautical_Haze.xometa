@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Nautical Haze",
   "mood": "Atmosphere",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slightly detuned VA saws, heavy reverb, very slow LFO filter sweep. The ambiguity of open sea navigation.",
-  "tags": ["steel", "evolving", "expressive", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "steel",
+    "evolving",
+    "expressive",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.42,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

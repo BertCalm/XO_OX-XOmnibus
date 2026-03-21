@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.22,
-    "brightness": 0.62,
-    "density": 0.3,
-    "movement": 0.18,
-    "space": 0.42,
-    "warmth": 0.72
-  },
   "tags": [
     "xylophone",
     "wood",
@@ -67,5 +59,6 @@
     "bright",
     "foundation"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

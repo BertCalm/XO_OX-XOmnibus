@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The Breathing Reef. LFO1 at 0.067 Hz routed to FX Depth — the entire effects chain inhales and exhales every 15 seconds. CuriosityEngine in Nap mode for near-static drift. The coral breathes with you.",

@@ -75,7 +75,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonicDNA": "Tidal pitch sway via triangle-LFO. Volume breathes independently at a different rate. Feels like being inside the kelp forest.",
   "tags": [
     "trefoil",
     "vibrato",

@@ -26,37 +26,30 @@
   "name": "Omen Atmosphere",
   "parameters": {
     "Oracle": {
-      "orc_ampAttack": 563.6,
-      "orc_ampDecay": 250.6,
-      "orc_ampRelease": 9.9,
-      "orc_ampSustain": 0.54,
-      "orc_character": 0.63,
-      "orc_coupling": 0.22,
-      "orc_delayMix": 0.14,
-      "orc_filterCutoff": 0.27,
-      "orc_filterReso": 0.18,
-      "orc_lfoDepth": 0.57,
-      "orc_lfoRate": 0.87,
-      "orc_movement": 0.03,
-      "orc_prophecyDepth": 0.83,
-      "orc_reverbMix": 0.4,
-      "orc_space": 0.75,
-      "orc_vision": 0.42
+      "oracle_ampAttack": 563.6,
+      "oracle_ampDecay": 250.6,
+      "oracle_ampRelease": 9.9,
+      "oracle_ampSustain": 0.54,
+      "oracle_character": 0.63,
+      "oracle_coupling": 0.22,
+      "oracle_delayMix": 0.14,
+      "oracle_filterCutoff": 0.27,
+      "oracle_filterReso": 0.18,
+      "oracle_lfoDepth": 0.57,
+      "oracle_lfoRate": 0.87,
+      "oracle_movement": 0.03,
+      "oracle_prophecyDepth": 0.83,
+      "oracle_reverbMix": 0.4,
+      "oracle_space": 0.75,
+      "oracle_vision": 0.42
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.84,
-    "brightness": 0.1,
-    "density": 0.22,
-    "movement": 0.61,
-    "space": 0.66,
-    "warmth": 0.63
-  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

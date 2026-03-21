@@ -96,14 +96,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1,
-    "brightness": 0.4,
-    "density": 0.7,
-    "movement": 0.65,
-    "space": 0.75,
-    "warmth": 0.8
-  },
   "tags": [
     "ocelot",
     "jungle",
@@ -113,5 +105,6 @@
     "rain",
     "humid"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

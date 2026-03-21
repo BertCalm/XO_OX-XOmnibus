@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Atlantic shore mid-rotation — wind direction in transition, sea state building. Sympathy between resonators shifts as the wind veers. A system in continuous re-alignment.",

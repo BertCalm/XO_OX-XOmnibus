@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "A long, warm reverb that slowly loses definition like a photograph left in the sun. Gentle erosion bleeds the edges while cantilever darkens the tail.",
-  "dna": { "brightness": 0.25, "warmth": 0.8, "movement": 0.3, "density": 0.5, "space": 0.7, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Atmosphere",
   "name": "Faded Photograph",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "faded", "nostalgic", "ambient", "warm"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "faded",
+    "nostalgic",
+    "ambient",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Solomon knot. strandTune=7.02 semitones (perfect fifth interval). Triangle waves. braidDepth=0.72. Ring A (strands 0-1) sits at root pitch, Ring B (strands 2-3) sits at the fifth — two interlocked rings, each with 0.8 internal coupling. You play one note; two harmonically resonant rings wake up. Each ring has its own internal phase life.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.6,
     "aggression": 0.0
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.72, "TENSION": 0.1, "KNOT": 0.0, "SPACE": 0.5 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.72,
+    "TENSION": 0.1,
+    "KNOT": 0.0,
+    "SPACE": 0.5
+  },
   "mood": "Aether",
   "name": "Solomon Chord",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["solomon", "chord-pad", "fifth-interval", "aether", "rings"],
-  "version": "1.0"
+  "tags": [
+    "solomon",
+    "chord-pad",
+    "fifth-interval",
+    "aether",
+    "rings"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

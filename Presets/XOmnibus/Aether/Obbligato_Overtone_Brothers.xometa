@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Each brother has learned circular breathing. The interval between them is no longer a harmony — it is a standing wave. Mischief has become ritual. Extended overtone flute technique.",
@@ -66,5 +68,6 @@
     "ritual",
     "abstract"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

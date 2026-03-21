@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Feral Growl",
   "mood": "Flux",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full character chain engaged — fur, chew, drive, gnash. A wild mono bass that bites back.",
-  "tags": ["bass", "feral", "aggressive", "character", "wild"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "bass",
+    "feral",
+    "aggressive",
+    "character",
+    "wild"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

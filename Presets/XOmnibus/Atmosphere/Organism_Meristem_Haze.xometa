@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 30 with 4% mutation. Very slow attack (0.4s) and release (3s) blurs the automaton's rapid chaos into a gentle, indistinct cloud. Square wave gives edge behind the haze.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.52,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The point where two opposing currents meet and cancel \u2014 maximum convergence with extreme entanglement creates a standing wave of nothingness punctuated by golden resonance blooms.",
+  "description": "The point where two opposing currents meet and cancel — maximum convergence with extreme entanglement creates a standing wave of nothingness punctuated by golden resonance blooms.",
   "dna": {
     "brightness": 0.2,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "entangled",
     "convergence"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

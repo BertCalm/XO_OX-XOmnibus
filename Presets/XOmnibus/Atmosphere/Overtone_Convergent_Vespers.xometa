@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "E constant at depth 4 — midpoint of convergence, where partials have tightened from a wide spread to a narrowing cluster but have not yet unified. The partial amplitudes form a descending staircase with a deliberate pause at partial 3 (boosted to 0.72) — one convergent caught in the last moment of distinction before it dissolves into its neighbors. Vespers: the evening prayer sung at the threshold between day and night. Long attack (0.7s), long release (4.5s), moderate sustain. Slow LFO1 at 0.06 Hz breathes depth slowly, pulling the Euler convergents together and apart like monks in canon. High resonator mix (0.55) adds the stone acoustic of a chapel. This is the mathematics of approaching silence.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.75,
     "aggression": 0.04
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.52, "COLOR": 0.42, "COUPLING": 0.0, "SPACE": 0.72 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.52,
+    "COLOR": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
   "mood": "Atmosphere",
   "name": "Convergent Vespers",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "atmosphere", "euler", "vespers", "convergent", "chapel", "threshold"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "euler",
+    "vespers",
+    "convergent",
+    "chapel",
+    "threshold"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

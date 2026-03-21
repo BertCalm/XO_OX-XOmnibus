@@ -28,14 +28,6 @@
     "Orphica": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.487,
-    "brightness": 0.053,
-    "density": 0.561,
-    "movement": 0.926,
-    "space": 0.938,
-    "warmth": 0.893
-  },
   "tags": [
     "dark",
     "warm",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

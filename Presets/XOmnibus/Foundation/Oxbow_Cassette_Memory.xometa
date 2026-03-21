@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Lo-fi tape reverb with warm, nostalgic character. Low damping and gentle erosion evoke degraded cassette recordings slowly losing their memory.",
-  "dna": { "brightness": 0.3, "warmth": 0.75, "movement": 0.2, "density": 0.45, "space": 0.5, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.75,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Foundation",
   "name": "Cassette Memory",
   "parameters": {
@@ -27,6 +43,12 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "tape", "warm", "nostalgic"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "tape",
+    "warm",
+    "nostalgic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

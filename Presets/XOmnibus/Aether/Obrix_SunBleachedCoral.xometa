@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "bleachRate=0.6 \u2014 sustained high-register playing gradually attenuates output via leaky integrator. Wavetable (Analog bank) source begins bright and slowly dulls. The name tells the story: this preset bleaches itself. Intentional dull = earned quiet.",
+  "description": "bleachRate=0.6 — sustained high-register playing gradually attenuates output via leaky integrator. Wavetable (Analog bank) source begins bright and slowly dulls. The name tells the story: this preset bleaches itself. Intentional dull = earned quiet.",
   "tags": [
     "bleach",
     "stateful",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.15,
     "COUPLING": 0.0,
     "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Belly Growl",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep plush bass with gentle fur saturation. The Belly macro opens sub weight; Bite adds snarl.",
-  "tags": ["bass", "sub", "warm", "foundation", "mono"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "bass",
+    "sub",
+    "warm",
+    "foundation",
+    "mono"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

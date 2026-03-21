@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Pitched metallic reverb with very high resonance creating choir-like harmonics from each impulse. Low convergence tunes the golden peaks to near-musical intervals.",
-  "dna": { "brightness": 0.8, "warmth": 0.3, "movement": 0.3, "density": 0.35, "space": 0.25, "aggression": 0.35 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.3,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.25,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Prism",
   "name": "Anvil Choir",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["metallic", "anvil", "choir", "pitched", "harmonic"],
-  "version": "1.0.0"
+  "tags": [
+    "metallic",
+    "anvil",
+    "choir",
+    "pitched",
+    "harmonic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

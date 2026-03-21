@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Eight arms each hold a phase of Bob's bass oscillator \u2014 decentralized low end.",
+  "description": "Eight arms each hold a phase of Bob's bass oscillator — decentralized low end.",
   "dna": {
     "aggression": 0.569,
     "brightness": 0.619,
@@ -74,5 +74,5 @@
     "octopus"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

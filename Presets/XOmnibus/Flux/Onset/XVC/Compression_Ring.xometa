@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC ADVANCED 4: Hat choke active + kick_to_snare_filter at 1.0 with global_amount 0.95. The kick physically compresses the snare's tonal brightness — a strong kick hit pushes snare tone to maximum, mimicking sidechain compression as timbral coupling. Not volume ducking: the snare filter opens on kick, closes between kicks. The kit breathes through brightness rather than amplitude.",

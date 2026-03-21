@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Bioluminescent shimmer rising through trefoil topology \u2014 light particles suspended in current.",
+  "description": "Bioluminescent shimmer rising through trefoil topology — light particles suspended in current.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.75,
@@ -78,5 +78,6 @@
     "bioluminescent",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

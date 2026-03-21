@@ -1,9 +1,11 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
-  "description": "The possum with its claws retracted. Warmth forward, sub beneath, no bite or trash. Long release lets every chord breathe. Family-safe \u2014 BELLY at zero, BITE silent.",
+  "description": "The possum with its claws retracted. Warmth forward, sub beneath, no bite or trash. Long release lets every chord breathe. Family-safe — BELLY at zero, BITE silent.",
   "dna": {
     "aggression": 0.06,
     "brightness": 0.35,

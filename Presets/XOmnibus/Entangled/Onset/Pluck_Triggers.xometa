@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-10",
   "description": "Designed for ONSET x SNAP coupling. Karplus-Strong pluck envelopes drive drum filter and decay.",

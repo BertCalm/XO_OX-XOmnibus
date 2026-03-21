@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9541,
-    "brightness": 0.8944,
-    "density": 0.5648,
-    "movement": 0.9055,
-    "space": 0.5819,
-    "warmth": 0.9293
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "pulse",
     "optic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

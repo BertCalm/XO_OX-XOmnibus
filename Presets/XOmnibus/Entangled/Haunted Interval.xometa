@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "High interference — each note feeds into the memory of the last. Play slowly and listen to the ghosts of previous intervals haunt the current pitch.",

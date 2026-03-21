@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Mediterranean shore — Greek rembetika at its most combustible. All four voices driven hard, porto fully lit. The bouzouki attacks slap against tile floors. Bright aggression with deep warmth underneath.",

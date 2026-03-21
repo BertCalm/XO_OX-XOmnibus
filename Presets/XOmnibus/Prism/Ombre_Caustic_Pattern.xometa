@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Caustic Pattern",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Caustics: light patterns created when light passes through water. Fast LFOs, mid-drift grain, resonant filter. Notes create watery light patterns on the sonic surface.",
-  "tags": ["prism", "caustic", "water", "pattern", "light", "watery"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "caustic",
+    "water",
+    "pattern",
+    "light",
+    "watery"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

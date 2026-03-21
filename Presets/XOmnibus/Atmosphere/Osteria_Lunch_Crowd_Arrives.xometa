@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Afternoon: the harbor workers come in, chairs scrape, glasses clink. Shore at 0.5 — mid-Atlantic meeting mid-Pacific in the rhythm section. Everything mid-everything. smokeCutoff moderate. The music is incidental, almost accidental.",

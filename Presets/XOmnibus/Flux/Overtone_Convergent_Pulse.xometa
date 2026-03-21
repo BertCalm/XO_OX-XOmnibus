@@ -1,7 +1,7 @@
 {
   "name": "Convergent Pulse",
   "schema_version": 1,
-  "version": "1.0",
+  "version": "1.0.0",
   "mood": "Flux",
   "macros": {
     "CHARACTER": 0.45,
@@ -39,14 +39,6 @@
       "over_macroSpace": 0.42
     }
   },
-  "sonicDNA": {
-    "brightness": 0.6,
-    "warmth": 0.42,
-    "movement": 0.9,
-    "density": 0.58,
-    "space": 0.45,
-    "aggression": 0.22
-  },
   "tags": [
     "e-constant",
     "pulse",
@@ -67,5 +59,6 @@
     "density": 0.56,
     "space": 0.42,
     "aggression": 0.25
-  }
+  },
+  "tempo": null
 }

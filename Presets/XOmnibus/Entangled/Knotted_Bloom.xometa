@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.735,
-    "brightness": 0.295,
-    "density": 1.0,
-    "movement": 0.53,
-    "space": 0.435,
-    "warmth": 0.56
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -67,5 +59,6 @@
     "obsidian",
     "overbite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

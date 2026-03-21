@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Short, bright exciter with maximum golden resonance — each keystroke produces a burst of φ-harmonic chimes that cascade and fade. The Oxbow Eel's bioluminescence made audible. Play staccato chords for shimmering harmonic clouds.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "aggression": 0.15
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Prism",
   "name": "Bioluminescent Chime",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["chime", "golden", "bright", "harmonic", "percussive"],
-  "version": "1.0.0"
+  "tags": [
+    "chime",
+    "golden",
+    "bright",
+    "harmonic",
+    "percussive"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

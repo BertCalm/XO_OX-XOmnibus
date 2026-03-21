@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Seven Pillars",
   "mood": "Flux",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "All 7 pillars active simultaneously — material continuum, mallet physics, sympathetic resonance, resonator body, buzz membrane, Balinese shimmer, and thermal drift. The engine at full expression.",
-  "tags": ["showcase", "complex", "all-pillars", "shimmer", "buzz", "sympathetic", "thermal", "full"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "showcase",
+    "complex",
+    "all-pillars",
+    "shimmer",
+    "buzz",
+    "sympathetic",
+    "thermal",
+    "full"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,8 @@
       "owr_macroSpace": 0.6
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

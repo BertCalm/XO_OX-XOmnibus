@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 5: All 4 XVC routes maximized plus hat choke active. The kit is fully entangled — kick brightens snare, snare tightens hats, kick bends toms, snare pulls perc into algorithm. Every voice modulates another. The rhythm brain firing on all neurons.",

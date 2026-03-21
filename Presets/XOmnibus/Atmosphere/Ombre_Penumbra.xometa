@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Penumbra",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The partial shadow. Blend at 0.35 — between the dark center and the full light. Penumbra is softer than umbra, and this patch reflects that ambiguity.",
-  "tags": ["atmosphere", "penumbra", "shadow", "partial", "soft"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "penumbra",
+    "shadow",
+    "partial",
+    "soft"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

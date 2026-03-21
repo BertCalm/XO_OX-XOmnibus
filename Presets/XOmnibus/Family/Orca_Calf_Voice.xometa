@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Calf Voice",
   "mood": "Family",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The young animal learning its dialect — high formant shift for the lighter vocal tract, shorter decay as the call is still being shaped. Playful, incomplete, reaching. Learning through repetition what it means to be of this pod.",
-  "tags": ["family", "calf", "young", "learning", "high"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "calf",
+    "young",
+    "learning",
+    "high"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.65,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

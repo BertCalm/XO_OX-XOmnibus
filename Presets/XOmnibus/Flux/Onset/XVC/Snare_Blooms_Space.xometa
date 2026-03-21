@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 2: Snare amplitude pushes Perc A into the algorithmic layer — each snare hit pulls the textural percussion toward complex FM territory. The kit transforms in real-time: snare triggers a timbre mutation in the percussion voices.",

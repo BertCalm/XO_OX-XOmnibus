@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "theta=1.571 (pi/2), phi=0.785 (pi/4) — projects the Z-axis of the Lorenz attractor to stereo. The Z-axis is always positive in Lorenz, producing a fundamentally different harmonic balance. Same chaos, different face.",
   "dna": {

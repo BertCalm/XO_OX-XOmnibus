@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Background reverb for lo-fi study beats \u2014 unobtrusive, warm, slightly hazy. Gentle erosion adds tape-like degradation. The reverb you dont notice until its gone.",
+  "description": "Background reverb for lo-fi study beats — unobtrusive, warm, slightly hazy. Gentle erosion adds tape-like degradation. The reverb you dont notice until its gone.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.75,
@@ -50,5 +50,6 @@
     "hazy",
     "background"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

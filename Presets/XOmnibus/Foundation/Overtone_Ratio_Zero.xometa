@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Depth=0, Phi constant: all 8 partials locked to pure Fibonacci integer ratios (1/1, 2/1, 3/2, 5/3, 8/5, 13/8, 21/13, 34/21). The engine in its most rational state — clean harmonic series. A teaching preset: this is the shell before it spirals.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.15,
     "aggression": 0.0
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.0, "COLOR": 0.35, "COUPLING": 0.0, "SPACE": 0.1 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.0,
+    "COLOR": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
   "mood": "Foundation",
   "name": "Ratio Zero",
   "parameters": {
@@ -47,6 +61,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["foundation", "rational", "harmonic", "fibonacci", "teaching", "pure"],
-  "version": "1.0"
+  "tags": [
+    "foundation",
+    "rational",
+    "harmonic",
+    "fibonacci",
+    "teaching",
+    "pure"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

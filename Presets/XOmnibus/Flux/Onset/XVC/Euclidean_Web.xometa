@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC ADVANCED 5: MUTATE at 0.6 + snare_to_hat_decay 0.85 inverts the usual flow direction — hat patterns now drive snare tightness indirectly through MUTATE-amplified feedback loops. The hat's stochastic drift propagates into hat decay (via snare coupling), which creates unusual reverse causality where the upper register shapes the backbeat rather than vice versa. Program irregular hat patterns and watch the snare respond.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-16",
   "description": "Ultra-diverse Atmosphere preset: DARK HOT WIDE KINETIC ATM 5.",

@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 184 traffic flow at 6 Hz step rate. Conservative scope (6 gens) preserves traffic jam regularity in the filter modulation. Warm saw, full sub.",
   "dna": {
     "brightness": 0.32,
     "warmth": 0.75,

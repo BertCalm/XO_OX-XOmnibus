@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.495,
-    "brightness": 0.425,
-    "density": 0.685,
-    "movement": 0.526,
-    "space": 0.599,
-    "warmth": 0.71
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "ohm",
     "bite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

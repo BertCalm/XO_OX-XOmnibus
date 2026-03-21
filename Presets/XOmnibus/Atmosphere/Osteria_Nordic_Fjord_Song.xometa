@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Nordic shore — Hardingfele and Kulning voices across a cold-stone hall. High memory and extreme stretch — notes ghost into each other like overtones in a fjord valley. Sparse, massive space.",

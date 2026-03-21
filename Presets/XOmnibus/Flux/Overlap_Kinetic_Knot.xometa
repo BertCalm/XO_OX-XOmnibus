@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Figure-8 with S&H LFO on brightness \u2014 unpredictable timbral jumps.",
+  "description": "Figure-8 with S&H LFO on brightness — unpredictable timbral jumps.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.35,
@@ -78,5 +78,6 @@
     "unpredictable",
     "performance"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

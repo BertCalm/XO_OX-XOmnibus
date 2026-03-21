@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A bedroom producer's room heard through a vinyl record \u2014 warm, slightly degraded, with the golden resonance adding that nostalgic color. Perfect for lo-fi piano and Rhodes.",
+  "description": "A bedroom producer's room heard through a vinyl record — warm, slightly degraded, with the golden resonance adding that nostalgic color. Perfect for lo-fi piano and Rhodes.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.82,
@@ -50,5 +50,6 @@
     "nostalgic",
     "bedroom"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

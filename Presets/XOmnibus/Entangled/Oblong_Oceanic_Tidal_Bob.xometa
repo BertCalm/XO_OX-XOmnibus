@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Oceanic separation vector modulates Bob's filter sweep \u2014 tidal bass motion.",
+  "description": "Oceanic separation vector modulates Bob's filter sweep — tidal bass motion.",
   "dna": {
     "aggression": 0.415,
     "brightness": 0.63,
@@ -74,5 +74,5 @@
     "oceanic"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

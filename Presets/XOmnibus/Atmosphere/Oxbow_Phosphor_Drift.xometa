@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Slow-motion shimmer. Moderate decay with high golden resonance — every note leaves a trail of φ-tuned harmonics that drift through the stereo field like bioluminescent plankton. The erosion breathes gently.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.85,
     "aggression": 0.0
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Atmosphere",
   "name": "Phosphor Drift",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["shimmer", "golden", "ambient", "ethereal", "cinematic"],
-  "version": "1.0.0"
+  "tags": [
+    "shimmer",
+    "golden",
+    "ambient",
+    "ethereal",
+    "cinematic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

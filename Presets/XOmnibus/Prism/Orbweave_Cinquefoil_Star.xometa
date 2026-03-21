@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Torus knot P=2, Q=5: the cinquefoil — a five-pointed star wound on a torus surface. braidDepth=0.82. Saw strands for harmonic richness. Fast square LFO on braid depth creates pulsed topology. The (2,5) torus knot has a different P/Q asymmetry scale (pqScale=0.976) than the default (2,3) — maximum coupling contrast between strand pairs.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.25,
     "aggression": 0.5
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.82, "TENSION": 0.2, "KNOT": 0.0, "SPACE": 0.2 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.82,
+    "TENSION": 0.2,
+    "KNOT": 0.0,
+    "SPACE": 0.2
+  },
   "mood": "Prism",
   "name": "Cinquefoil Star",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["cinquefoil", "torus", "star-polygon", "prism", "high-braid"],
-  "version": "1.0"
+  "tags": [
+    "cinquefoil",
+    "torus",
+    "star-polygon",
+    "prism",
+    "high-braid"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

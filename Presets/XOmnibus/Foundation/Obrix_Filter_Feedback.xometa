@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Saw with filter feedback engaged. The coral polyp that feeds itself \u2014 a closed loop of resonance, the filter biting its own output. Pull feedback toward self-oscillation and the coral comes alive.",
+  "description": "Saw with filter feedback engaged. The coral polyp that feeds itself — a closed loop of resonance, the filter biting its own output. Pull feedback toward self-oscillation and the coral comes alive.",
   "tags": [
     "lesson",
     "feedback",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

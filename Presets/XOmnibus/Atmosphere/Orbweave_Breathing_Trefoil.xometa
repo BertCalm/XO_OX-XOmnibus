@@ -2,27 +2,65 @@
   "schema_version": 1,
   "name": "Orbweave Breathing Trefoil",
   "mood": "Atmosphere",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Autonomous LFO on braid depth at 15-second cycle creates a living topology. BraidDepth cycles from 0.07 (decoupled) to 0.83 (deep topology) — the knot emerges and retreats as if being tied and loosened. A different kind of breathing than vibrato or tremolo.",
   "tier": "awakening",
-  "tags": ["atmosphere", "trefoil", "breathing", "autonomous", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "atmosphere",
+    "trefoil",
+    "breathing",
+    "autonomous",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.50, "warmth": 0.50, "movement": 0.45, "density": 0.40, "space": 0.70, "aggression": 0.05 },
-  "sonic_dna": { "brightness": 0.50, "warmth": 0.50, "movement": 0.45, "density": 0.40, "space": 0.70, "aggression": 0.05 },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.45,
+    "density": 0.4,
+    "space": 0.7,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 2.0, "weave_knotType": 0, "weave_braidDepth": 0.45,
-      "weave_filterCutoff": 6500.0, "weave_filterReso": 0.1, "weave_filterType": 0,
-      "weave_ampA": 0.30, "weave_ampD": 0.5, "weave_ampS": 0.78, "weave_ampR": 3.0,
-      "weave_lfo1Type": 1, "weave_lfo1Target": 5, "weave_lfo1Depth": 0.38, "weave_lfo1Rate": 0.067,
+      "weave_strandType": 1,
+      "weave_strandTune": 2.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.45,
+      "weave_filterCutoff": 6500.0,
+      "weave_filterReso": 0.1,
+      "weave_filterType": 0,
+      "weave_ampA": 0.3,
+      "weave_ampD": 0.5,
+      "weave_ampS": 0.78,
+      "weave_ampR": 3.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.38,
+      "weave_lfo1Rate": 0.067,
       "weave_lfo2Type": 0,
-      "weave_fx1Type": 3, "weave_fx1Mix": 0.40, "weave_fx1Param": 0.60,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.4,
+      "weave_fx1Param": 0.6,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
       "weave_voiceMode": 3
     }
-  }
+  },
+  "tempo": null
 }

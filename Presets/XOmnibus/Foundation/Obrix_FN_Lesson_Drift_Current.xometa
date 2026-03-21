@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Drift Bus \u2014 ultra-slow LFO that gives each voice a unique phase offset. One note, many voices, slow organic movement. Berlin School ensemble.",
+  "description": "Drift Bus — ultra-slow LFO that gives each voice a unique phase offset. One note, many voices, slow organic movement. Berlin School ensemble.",
   "tags": [
     "lesson",
     "drift",
@@ -107,5 +107,8 @@
     "MOVEMENT": 0.31,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Thin as a single silk thread \u2014 the narrowest, most delicate reverb possible. Almost no space, but the golden resonance adds a subtle harmonic richness to the dry signal.",
+  "description": "Thin as a single silk thread — the narrowest, most delicate reverb possible. Almost no space, but the golden resonance adds a subtle harmonic richness to the dry signal.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "silk",
     "subtle"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

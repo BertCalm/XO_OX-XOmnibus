@@ -67,14 +67,6 @@
     "optic_lfo1Rate": 2.737
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.373,
-    "brightness": 0.687,
-    "density": 0.592,
-    "movement": 0.538,
-    "space": 0.532,
-    "warmth": 0.489
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

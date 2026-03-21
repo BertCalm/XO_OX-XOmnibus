@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Humid Canopy Veil",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.4,
-    "warmth": 0.75,
-    "movement": 0.55,
-    "density": 0.7,
-    "space": 0.75,
-    "aggression": 0.05
-  },
-  "sonic_dna": {
     "brightness": 0.4,
     "warmth": 0.75,
     "movement": 0.55,
@@ -103,6 +104,13 @@
       "ocelot_couplingBus": 1
     }
   },
-  "tags": ["ocelot", "atmosphere", "pad", "jungle", "humid", "lush"],
+  "tags": [
+    "ocelot",
+    "atmosphere",
+    "pad",
+    "jungle",
+    "humid",
+    "lush"
+  ],
   "description": "Canopy shimmer veiled in humidity — understory feeds back into spectral shimmer, bird trills ghost the peaks."
 }

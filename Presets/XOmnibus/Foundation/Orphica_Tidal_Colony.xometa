@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Three strings, two zooids, one colony. The siphonophore arranges itself into a chord each time you play a note. The swarm is not random — it has a memory.",
@@ -69,5 +71,6 @@
     "swarm",
     "organic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

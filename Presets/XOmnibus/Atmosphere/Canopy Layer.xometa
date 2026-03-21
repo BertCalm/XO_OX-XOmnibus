@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Atmosphere",
-  "description": "Air-dominant pad with canopy-to-floor feedback loop. The shimmer pad dims the floor percussion as spectral brightness rises \u2014 too much light reaches the ground. CANOPY macro opens the treetops.",
+  "description": "Air-dominant pad with canopy-to-floor feedback loop. The shimmer pad dims the floor percussion as spectral brightness rises — too much light reaches the ground. CANOPY macro opens the treetops.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.6,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

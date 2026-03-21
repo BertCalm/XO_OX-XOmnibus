@@ -42,19 +42,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.1524,
-    "brightness": 0.0601,
-    "density": 0.6912,
-    "movement": 0.3407,
-    "space": 0.4111,
-    "warmth": 0.6334
-  },
   "tags": [
     "foundation",
     "dark",
     "extreme",
     "anchor"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

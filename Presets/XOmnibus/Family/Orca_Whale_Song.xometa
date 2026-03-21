@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The Orca at its most nurturing — wavetable parked in the vocal-warm pocket, scan rate glacial, formant high and soft. A slow LFO breathes the pitch gently as if the whole pod is singing together in deep water. No hunting, no breach. Pure whale song.",

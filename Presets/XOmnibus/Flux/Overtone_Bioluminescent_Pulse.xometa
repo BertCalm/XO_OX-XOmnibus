@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The autonomous shimmer mechanism fully engaged: macroCoupling at 0.85 activates independent sine-modulated amplitude flutter on upper partials 4-7, each offset by π/4 radians from its neighbors. Partials 4-7 boosted to 0.85-0.95 so the bioluminescent flutter is the primary sound, not an accent. Phi constant at depth 4 (8/5 = 1.6) places the upper partials in the overtone region where flicker is most audible. LFO2 at moderate rate rotates phase to reinforce the iridescence. No coupling partner required — the Nautilus generates its own light. Macros: COUPLING knob sweeps the bioluminescence depth in real time.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.55,
     "aggression": 0.22
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.45, "COLOR": 0.7, "COUPLING": 0.85, "SPACE": 0.52 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.45,
+    "COLOR": 0.7,
+    "COUPLING": 0.85,
+    "SPACE": 0.52
+  },
   "mood": "Flux",
   "name": "Bioluminescent Pulse",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "flux", "bioluminescent", "shimmer", "phi", "self-modulating", "living"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "flux",
+    "bioluminescent",
+    "shimmer",
+    "phi",
+    "self-modulating",
+    "living"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

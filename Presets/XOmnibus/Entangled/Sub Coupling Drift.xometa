@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Massive slow-moving coupling where deep sub interactions between engines create ground-shaking tectonic movements.",

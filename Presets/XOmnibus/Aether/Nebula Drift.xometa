@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Slowly evolving pad textures with ping-pong dub delay and vast FDN reverb. Like floating through interstellar gas clouds.",

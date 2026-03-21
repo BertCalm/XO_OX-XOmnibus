@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "A gentle kick and hat relationship — no snare snap, warm transients, bodies padded with felt. The rhythm you'd hear from the next room and feel safe. MACHINE macro at rest, PUNCH low, tone warm across all eight voices. Approachable for all ages.",

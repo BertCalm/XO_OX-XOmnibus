@@ -43,14 +43,6 @@
     "Oblique": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
-    "brightness": 0.89,
-    "density": 0.7,
-    "movement": 0.84,
-    "space": 0.2,
-    "warmth": 0.1
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "oblique",
     "neon"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Close-miked orbital presence. Dry and immediate — space locked at 0.06. No reverb needed. The room is your ears.",
@@ -54,5 +56,5 @@
     "orbital"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

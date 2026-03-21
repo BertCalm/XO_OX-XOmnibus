@@ -44,6 +44,8 @@
       "snap_polyphony": 2
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

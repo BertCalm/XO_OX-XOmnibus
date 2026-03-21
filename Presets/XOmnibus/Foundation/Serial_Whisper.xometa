@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "All four character stages at 0.1 each. The Serial Chain Compound — four whispers that together create a voice warmer than any single stage at 0.4. Velocity at 0.6 opens the filter dramatically. The proof that subtlety compounds.",

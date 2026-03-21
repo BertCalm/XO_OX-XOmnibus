@@ -37,14 +37,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.662,
-    "brightness": 0.911,
-    "density": 0.633,
-    "movement": 0.73,
-    "space": 0.294,
-    "warmth": 0.127
-  },
   "tags": [
     "flux",
     "ultra-bright",

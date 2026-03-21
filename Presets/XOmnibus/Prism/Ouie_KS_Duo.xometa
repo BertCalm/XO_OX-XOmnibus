@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "KS Duo",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Both voices KS Pluck in STRIFE — ring modulation creates metallic, inharmonic pluck timbres. Exploring the physical string under tension.",
-  "tags": ["tension", "cutting", "counterpoint", "predator"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tension",
+    "cutting",
+    "counterpoint",
+    "predator"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.68,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

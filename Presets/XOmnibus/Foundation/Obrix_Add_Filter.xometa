@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "A raw Sine source meets a low-pass filter for the first time. The filter is the reef wall \u2014 the first boundary between sound and silence. Pull CUTOFF and the wall opens. Add resonance and the wall sings back.",
+  "description": "A raw Sine source meets a low-pass filter for the first time. The filter is the reef wall — the first boundary between sound and silence. Pull CUTOFF and the wall opens. Add resonance and the wall sings back.",
   "tags": [
     "lesson",
     "filter",
@@ -105,5 +105,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

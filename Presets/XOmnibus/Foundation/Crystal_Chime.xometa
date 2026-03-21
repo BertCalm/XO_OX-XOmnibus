@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crystal Chime",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystalline FM bell with gentle drift and shimmer. Clean, pure, and musical.",
-  "tags": ["fm", "bell", "crystal", "clean", "harmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "fm",
+    "bell",
+    "crystal",
+    "clean",
+    "harmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,6 +73,8 @@
       "drift_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

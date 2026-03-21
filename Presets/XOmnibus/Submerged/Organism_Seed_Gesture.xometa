@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "SEED macro set to 0.7 — the latch mechanism fires on every note, injecting a new LCG-derived 16-bit state. Each new note is a completely different organism. Same rule, same parameters, infinite timbral variety. The genesis engine: one seed, infinite coral.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.6,
     "aggression": 0.28
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.5, "SEED": 0.7, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.5,
+    "SEED": 0.7,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
   "mood": "Submerged",
   "name": "Seed Gesture",
   "parameters": {
@@ -45,6 +59,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["seed", "generative", "infinite-variety", "latch", "submerged", "coral", "golden-release"],
-  "version": "1.0"
+  "tags": [
+    "seed",
+    "generative",
+    "infinite-variety",
+    "latch",
+    "submerged",
+    "coral",
+    "golden-release"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

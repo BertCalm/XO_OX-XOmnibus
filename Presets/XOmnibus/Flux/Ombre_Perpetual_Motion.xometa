@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Perpetual Motion",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The blend never stops oscillating. LFO1 depth near maximum, rate at a comfortable tempo-aligned speed. The motion between memory and perception is steady and perpetual.",
-  "tags": ["flux", "perpetual", "motion", "steady", "oscillating", "cyclic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "perpetual",
+    "motion",
+    "steady",
+    "oscillating",
+    "cyclic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.62
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

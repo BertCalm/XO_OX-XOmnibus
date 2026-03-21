@@ -42,6 +42,8 @@
     "Orbital": {},
     "Origami": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

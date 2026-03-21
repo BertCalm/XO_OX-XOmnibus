@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Cinquefoil knot with high brightness and delicate pluck \u2014 frozen jellyfish stingers.",
+  "description": "Cinquefoil knot with high brightness and delicate pluck — frozen jellyfish stingers.",
   "dna": {
     "brightness": 0.95,
     "warmth": 0.15,
@@ -78,5 +78,6 @@
     "delicate",
     "cinquefoil"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

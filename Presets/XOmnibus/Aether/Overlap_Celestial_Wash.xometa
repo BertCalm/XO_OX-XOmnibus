@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus with extreme brightness and long release \u2014 heavenly shimmer.",
+  "description": "Torus with extreme brightness and long release — heavenly shimmer.",
   "dna": {
     "brightness": 0.92,
     "warmth": 0.3,
@@ -78,5 +78,6 @@
     "wash",
     "shimmer"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

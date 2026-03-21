@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Long airborne sustain from both brothers. Space fills between flute and reed.",
@@ -64,5 +66,6 @@
     "atmosphere",
     "pad"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

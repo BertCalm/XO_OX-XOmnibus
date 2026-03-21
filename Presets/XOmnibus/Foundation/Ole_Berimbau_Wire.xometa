@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Berimbau's bow sets the pulse. The other aunts orbit its percussive arc.",
@@ -56,5 +58,6 @@
     "foundation",
     "clean"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

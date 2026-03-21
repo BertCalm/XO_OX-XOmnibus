@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Double Exposure",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Two images on the same film. High interference creates a ghostly double of each note from the memory buffer that overlays the new note. Photographic, melancholy, bright.",
-  "tags": ["prism", "double-exposure", "photography", "overlay", "ghostly", "melancholy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "double-exposure",
+    "photography",
+    "overlay",
+    "ghostly",
+    "melancholy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

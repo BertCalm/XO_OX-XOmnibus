@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-16",
   "description": "OVERWORLD chip voice + ORIGAMI paper fold — NES geometry meeting Japanese precision. Pixel and crease. The unlikely duo that works.",

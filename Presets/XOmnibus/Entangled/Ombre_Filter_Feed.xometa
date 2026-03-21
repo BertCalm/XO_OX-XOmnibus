@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Filter Feed",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Envelope-to-filter coupling target. External engine's envelope modulates Ombre's filter cutoff. As the other engine breathes, Ombre's filter opens and closes in response.",
-  "tags": ["entangled", "filter", "envelope", "coupling", "responsive", "breath"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "filter",
+    "envelope",
+    "coupling",
+    "responsive",
+    "breath"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

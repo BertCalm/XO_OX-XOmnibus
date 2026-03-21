@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Rich, saturated pad with lush detuning and low-pass filter sweep. Evokes late evening stillness.",

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus with maximum feedback and diffusion \u2014 sound that never dies.",
+  "description": "Torus with maximum feedback and diffusion — sound that never dies.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.55,
@@ -78,5 +78,6 @@
     "diffusion",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

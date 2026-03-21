@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Flux",
-  "description": "Biome 2 (Savanna). High understory chop rate \u2014 the nervous energy of a hunting cat. Emergent triggers snap with creatureType 2 (insect) at maximum rate. Floor\u2192emergent feedback drives attack accent.",
+  "description": "Biome 2 (Savanna). High understory chop rate — the nervous energy of a hunting cat. Emergent triggers snap with creatureType 2 (insect) at maximum rate. Floor→emergent feedback drives attack accent.",
   "dna": {
     "aggression": 0.8,
     "brightness": 0.55,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

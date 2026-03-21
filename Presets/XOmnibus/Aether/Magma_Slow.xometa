@@ -28,14 +28,6 @@
     "Obsidian": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.35,
-    "brightness": 0.09,
-    "density": 0.95,
-    "movement": 0.08,
-    "space": 0.15,
-    "warmth": 0.88
-  },
   "tags": [
     "aether",
     "dark",
@@ -44,5 +36,6 @@
     "slow",
     "molten"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

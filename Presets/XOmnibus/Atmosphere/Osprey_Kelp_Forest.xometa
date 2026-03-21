@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Enclosed kelp forest off the Pacific coast — warm water, calm surface, dense biological activity below. High brine content thickening the resonators, multiple creature voices layering, harbor verb simulating the enclosed forest canopy. Rich and warm and full.",

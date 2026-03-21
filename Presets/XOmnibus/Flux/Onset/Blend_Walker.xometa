@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "MUTATE drifts the blend axis. Each hit wanders between circuit and algorithm unpredictably.",

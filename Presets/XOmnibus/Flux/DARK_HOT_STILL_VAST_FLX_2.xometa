@@ -61,5 +61,6 @@
     "low-movement",
     "high-space"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

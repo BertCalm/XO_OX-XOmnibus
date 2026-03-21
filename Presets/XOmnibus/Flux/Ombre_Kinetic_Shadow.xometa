@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Kinetic Shadow",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "A shadow in motion — dark Oubli character but fast LFOs that keep it kinetic. The memory grain chases the note, never quite catching up. Dark, alive, pursuing.",
-  "tags": ["flux", "kinetic", "shadow", "chase", "dark", "motion"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "kinetic",
+    "shadow",
+    "chase",
+    "dark",
+    "motion"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.6
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

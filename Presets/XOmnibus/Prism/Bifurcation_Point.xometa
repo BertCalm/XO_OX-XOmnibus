@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Lorenz attractor balanced exactly at the edge of chaos. Unpredictable shifts between order and turbulence.",

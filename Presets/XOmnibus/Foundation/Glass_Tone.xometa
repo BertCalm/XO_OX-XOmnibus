@@ -42,14 +42,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.0516,
-    "brightness": 0.9251,
-    "density": 0.1981,
-    "movement": 0.2835,
-    "space": 0.7462,
-    "warmth": 0.2759
-  },
   "tags": [
     "foundation",
     "bright",
@@ -57,5 +49,6 @@
     "crystalline",
     "anchor"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

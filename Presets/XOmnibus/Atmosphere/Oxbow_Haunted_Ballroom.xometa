@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "An abandoned grand ballroom \u2014 the reverb remembers waltzes. Long decay with gentle erosion creates a ghostly quality, as if the room itself is dreaming of its past.",
+  "description": "An abandoned grand ballroom — the reverb remembers waltzes. Long decay with gentle erosion creates a ghostly quality, as if the room itself is dreaming of its past.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "elegant",
     "nostalgic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

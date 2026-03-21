@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Suspended Animation",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "All motion nearly frozen — LFOs at minimal rate, long grain, slow attack and release. The note exists in a kind of suspended temporal state. Neither beginning nor ending.",
-  "tags": ["aether", "suspended", "frozen", "static", "temporal", "minimal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "suspended",
+    "frozen",
+    "static",
+    "temporal",
+    "minimal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.92
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

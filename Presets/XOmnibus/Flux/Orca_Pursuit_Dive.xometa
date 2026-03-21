@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Pursuit Dive",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The sudden vertical dive at speed — pursuing prey into the deep. Pitch tracking drops an octave as attack sequence initiates. Legato with aggressive glide, hunt macro surging, breach compressor maximized.",
-  "tags": ["flux", "pursuit", "dive", "vertical", "surge"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "pursuit",
+    "dive",
+    "vertical",
+    "surge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.52, "warmth": 0.42, "movement": 0.82, "density": 0.72, "space": 0.32, "aggression": 0.78},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.82,
+    "density": 0.72,
+    "space": 0.32,
+    "aggression": 0.78
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.62, "orca_wtScanRate": 0.72, "orca_formantIntensity": 0.62, "orca_formantShift": 0.55, "orca_glide": 0.18,
-      "orca_echoRate": 18.0, "orca_echoReso": 0.88, "orca_echoDamp": 0.16, "orca_echoMix": 0.48, "orca_huntMacro": 0.68,
-      "orca_breachSub": 0.82, "orca_breachShape": 0.0, "orca_breachThreshold": -11.0, "orca_breachRatio": 11.0,
-      "orca_crushBits": 10.0, "orca_crushDownsample": 2.2, "orca_crushMix": 0.38, "orca_crushSplitFreq": 850.0,
-      "orca_filterCutoff": 8000.0, "orca_filterReso": 0.52, "orca_level": 0.89,
-      "orca_ampAttack": 0.002, "orca_ampDecay": 0.22, "orca_ampSustain": 0.75, "orca_ampRelease": 0.22,
-      "orca_modAttack": 0.002, "orca_modDecay": 0.18, "orca_modSustain": 0.62, "orca_modRelease": 0.18,
-      "orca_lfo1Rate": 0.8, "orca_lfo1Depth": 0.42, "orca_lfo1Shape": 2.0, "orca_lfo2Rate": 15.0, "orca_lfo2Depth": 0.45, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 1, "orca_velCutoffAmt": 0.75, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.62,
+      "orca_wtScanRate": 0.72,
+      "orca_formantIntensity": 0.62,
+      "orca_formantShift": 0.55,
+      "orca_glide": 0.18,
+      "orca_echoRate": 18.0,
+      "orca_echoReso": 0.88,
+      "orca_echoDamp": 0.16,
+      "orca_echoMix": 0.48,
+      "orca_huntMacro": 0.68,
+      "orca_breachSub": 0.82,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -11.0,
+      "orca_breachRatio": 11.0,
+      "orca_crushBits": 10.0,
+      "orca_crushDownsample": 2.2,
+      "orca_crushMix": 0.38,
+      "orca_crushSplitFreq": 850.0,
+      "orca_filterCutoff": 8000.0,
+      "orca_filterReso": 0.52,
+      "orca_level": 0.89,
+      "orca_ampAttack": 0.002,
+      "orca_ampDecay": 0.22,
+      "orca_ampSustain": 0.75,
+      "orca_ampRelease": 0.22,
+      "orca_modAttack": 0.002,
+      "orca_modDecay": 0.18,
+      "orca_modSustain": 0.62,
+      "orca_modRelease": 0.18,
+      "orca_lfo1Rate": 0.8,
+      "orca_lfo1Depth": 0.42,
+      "orca_lfo1Shape": 2.0,
+      "orca_lfo2Rate": 15.0,
+      "orca_lfo2Depth": 0.45,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 1,
+      "orca_velCutoffAmt": 0.75,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

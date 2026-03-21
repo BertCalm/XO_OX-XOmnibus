@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The acoustic impact of a single tear hitting skin \u2014 impossibly small, impossibly tender. The tiniest space OXBOW can create, with just a breath of golden warmth.",
+  "description": "The acoustic impact of a single tear hitting skin — impossibly small, impossibly tender. The tiniest space OXBOW can create, with just a breath of golden warmth.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.7,
@@ -50,5 +50,6 @@
     "emotional",
     "minimal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 90 Sierpinski automaton feeding a warm saw bass. Cells 0–3 shape filter brightness; slow step rate (3 Hz) gives measured, structural movement.",
   "dna": {
     "brightness": 0.28,
     "warmth": 0.78,

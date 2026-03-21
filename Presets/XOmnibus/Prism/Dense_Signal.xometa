@@ -32,24 +32,16 @@
   "name": "Dense Signal",
   "parameters": {
     "Oracle": {
-      "orc_couplingBus": 0,
-      "orc_couplingLevel": 0.5,
-      "orc_macro_couple": 0.4238,
-      "orc_macro_drift": 0.3902,
-      "orc_macro_signal": 0.1346,
-      "orc_macro_space": 0.6578,
-      "orc_outputLevel": 0.85
+      "oracle_couplingBus": 0,
+      "oracle_couplingLevel": 0.5,
+      "oracle_macro_couple": 0.4238,
+      "oracle_macro_drift": 0.3902,
+      "oracle_macro_signal": 0.1346,
+      "oracle_macro_space": 0.6578,
+      "oracle_outputLevel": 0.85
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.6655,
-    "brightness": 0.1138,
-    "density": 0.894,
-    "movement": 0.5064,
-    "space": 0.2686,
-    "warmth": 0.5915
-  },
   "tags": [
     "prism",
     "dark",
@@ -57,5 +49,6 @@
     "extreme",
     "anchor"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

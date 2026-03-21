@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Figure-8 with high diffusion \u2014 dense spectral cloud that envelops.",
+  "description": "Figure-8 with high diffusion — dense spectral cloud that envelops.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.55,
@@ -78,5 +78,6 @@
     "dense",
     "cloud"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

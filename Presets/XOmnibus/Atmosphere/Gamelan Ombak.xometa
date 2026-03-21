@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Gamelan Ombak",
   "mood": "Atmosphere",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Pure Balinese shimmer. Ombak means 'wave' — the paired-instrument beating of gamelan tuning. Bowl body, 4.2 Hz shimmer, long decay, and a slow LFO breathing on brightness.",
-  "tags": ["gamelan", "balinese", "shimmer", "bell", "bowl", "sympathetic", "atmosphere"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "gamelan",
+    "balinese",
+    "shimmer",
+    "bell",
+    "bowl",
+    "sympathetic",
+    "atmosphere"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +60,8 @@
       "owr_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

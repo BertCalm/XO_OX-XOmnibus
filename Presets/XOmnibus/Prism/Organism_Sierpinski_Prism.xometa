@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Rule 90 is the Sierpinski triangle rule — it generates perfect fractal self-similarity. Scope=1 means each generation fires unaveraged. Triangle wave through high-Q filter with velocity fully opening the spectrum. Every note reveals a new column in the fractal tapestry.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.45,
     "aggression": 0.45
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.143, "SEED": 0.3, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.143,
+    "SEED": 0.3,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
   "mood": "Prism",
   "name": "Sierpinski Prism",
   "parameters": {
@@ -45,6 +59,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["rule90", "sierpinski", "fractal", "bright", "high-vel", "prism", "triangle-wave"],
-  "version": "1.0"
+  "tags": [
+    "rule90",
+    "sierpinski",
+    "fractal",
+    "bright",
+    "high-vel",
+    "prism",
+    "triangle-wave"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

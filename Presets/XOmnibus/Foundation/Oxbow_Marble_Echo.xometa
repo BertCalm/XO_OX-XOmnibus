@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Dense, warm reflections off polished marble walls \u2014 every footstep becomes a symphony. A classically proportioned reverb for orchestral strings and solo piano.",
+  "description": "Dense, warm reflections off polished marble walls — every footstep becomes a symphony. A classically proportioned reverb for orchestral strings and solo piano.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.8,
@@ -50,5 +50,6 @@
     "orchestral",
     "classical"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

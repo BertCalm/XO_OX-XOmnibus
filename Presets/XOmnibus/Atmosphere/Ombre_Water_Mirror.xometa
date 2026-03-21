@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Water Mirror",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Perfect reflection — blend at 0.5, interference at 0.5. Memory mirrors perception exactly. The surface reflects what you play with a delay and distortion.",
-  "tags": ["atmosphere", "mirror", "water", "reflection", "perfect", "surface"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "mirror",
+    "water",
+    "reflection",
+    "perfect",
+    "surface"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

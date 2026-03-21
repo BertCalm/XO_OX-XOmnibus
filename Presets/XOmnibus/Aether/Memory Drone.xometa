@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Almost entirely Oubli. Triangle wave barely audible as source — the memory buffer IS the instrument. 25-second decay means memories persist for ages. Play one note and wait.",

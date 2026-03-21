@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Current Shift",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "HAMMER sweeping slowly from STRIFE to LOVE. The ocean current changing direction — two voices reconfiguring their relationship over time.",
-  "tags": ["evolving", "movement", "expressive", "counterpoint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "evolving",
+    "movement",
+    "expressive",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

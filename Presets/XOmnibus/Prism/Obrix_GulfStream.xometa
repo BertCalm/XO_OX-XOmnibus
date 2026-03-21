@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "envCurrent=0.7 \u2014 strong positive directional bias pushes the filter center +1400Hz and pitch +56 cents upward. Wavetable (Vocal bank) source rides the current with vocal formant character. Warm, propulsive, carried.",
+  "description": "envCurrent=0.7 — strong positive directional bias pushes the filter center +1400Hz and pitch +56 cents upward. Wavetable (Vocal bank) source rides the current with vocal formant character. Warm, propulsive, carried.",
   "tags": [
     "current",
     "directional",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.35,
     "COUPLING": 0.0,
     "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
   }
 }

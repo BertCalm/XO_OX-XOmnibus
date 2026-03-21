@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "ORPHICA microsound colony — SCATTER wide, SHIMMER present. Each grain a polyp. The organism that thinks it is a single being.",

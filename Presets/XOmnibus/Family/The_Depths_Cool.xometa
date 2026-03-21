@@ -42,6 +42,8 @@
     "Owlfish": {},
     "Organon": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

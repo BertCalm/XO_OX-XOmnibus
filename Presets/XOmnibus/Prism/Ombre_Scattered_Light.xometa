@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Scattered Light",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Maximum drift with moderate memory — light scattered by particles. Each grain read head wanders to a unique position, creating a diffuse haze of the original note.",
-  "tags": ["prism", "scatter", "diffuse", "haze", "particle", "light"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "scatter",
+    "diffuse",
+    "haze",
+    "particle",
+    "light"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.78
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

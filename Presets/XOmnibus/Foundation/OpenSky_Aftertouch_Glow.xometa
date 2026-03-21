@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Press into the keys. Aftertouch adds shimmer \u2014 more pressure, more glow.",
+  "description": "Press into the keys. Aftertouch adds shimmer — more pressure, more glow.",
   "tags": [
     "aftertouch",
     "shimmer",
@@ -79,5 +79,8 @@
       "sky_modSlot2Dst": 0.0,
       "sky_modSlot2Amt": 0.0
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

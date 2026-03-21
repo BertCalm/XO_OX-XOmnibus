@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Warm, glowing pad that floats upward with gentle pitch drift. Delicate and luminous like paper lanterns rising.",

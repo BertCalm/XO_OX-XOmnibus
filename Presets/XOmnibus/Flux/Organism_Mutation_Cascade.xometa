@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 110 at medium-fast rate (8 Hz) with 12% mutation. The Turing-complete computation falls apart — gliders dissolve, order collapses. Real-time entropy at full expression.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.38,

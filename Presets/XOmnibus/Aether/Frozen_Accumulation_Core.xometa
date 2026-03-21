@@ -28,14 +28,6 @@
     "Owlfish": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.514,
-    "brightness": 0.496,
-    "density": 0.972,
-    "movement": 0.381,
-    "space": 0.518,
-    "warmth": 0.077
-  },
   "tags": [
     "aether",
     "cold",
@@ -44,5 +36,6 @@
     "pressure",
     "aggressive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

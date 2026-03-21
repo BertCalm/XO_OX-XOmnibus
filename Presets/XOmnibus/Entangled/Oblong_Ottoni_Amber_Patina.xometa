@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Triple-brass formant shifts tune Bob's mid register \u2014 patina over amber.",
+  "description": "Triple-brass formant shifts tune Bob's mid register — patina over amber.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.702,
@@ -74,5 +74,5 @@
     "ottoni"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

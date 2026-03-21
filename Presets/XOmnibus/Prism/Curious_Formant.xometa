@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Curious Formant",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vowel-like textures from Snout Form filter with Investigate curiosity. Playful, evolving timbres.",
-  "tags": ["formant", "vowel", "curious", "evolving", "character"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "vowel",
+    "curious",
+    "evolving",
+    "character"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

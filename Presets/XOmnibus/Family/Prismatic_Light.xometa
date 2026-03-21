@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OPTIC at full spectrum — REFRACT open, brightness maximum. Light through a prism: every frequency present, each in its place.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Minimum PD density — the glass stone before it absorbs any heat. A single, thin, transparent tone with enormous reverberant space around it. Low density, maximum space. The absence of material as a sound.",

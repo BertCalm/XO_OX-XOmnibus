@@ -2,13 +2,26 @@
   "schema_version": 1,
   "name": "Overtone Fibonacci Shell",
   "mood": "Foundation",
-  "engines": ["Overtone"],
+  "engines": [
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Phi constant, shallow depth. Partials tuned to Fibonacci convergents: octave, fifth, sixth. The most harmonic the engine can sound. DEPTH macro sweeps toward the golden ratio; COLOR brightens the upper Fibonacci spectrum.",
   "tier": "awakening",
-  "tags": ["fibonacci", "harmonic", "foundation", "guru-bin-awakening", "phi"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
+  "tags": [
+    "fibonacci",
+    "harmonic",
+    "foundation",
+    "guru-bin-awakening",
+    "phi"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
   "coupling": {
     "pairs": []
   },
@@ -17,16 +30,8 @@
     "brightness": 0.55,
     "warmth": 0.62,
     "movement": 0.25,
-    "density": 0.50,
-    "space": 0.30,
-    "aggression": 0.08
-  },
-  "sonic_dna": {
-    "brightness": 0.55,
-    "warmth": 0.62,
-    "movement": 0.25,
-    "density": 0.50,
-    "space": 0.30,
+    "density": 0.5,
+    "space": 0.3,
     "aggression": 0.08
   },
   "parameters": {
@@ -58,5 +63,6 @@
       "over_macroCoupling": 0.0,
       "over_macroSpace": 0.28
     }
-  }
+  },
+  "tempo": null
 }

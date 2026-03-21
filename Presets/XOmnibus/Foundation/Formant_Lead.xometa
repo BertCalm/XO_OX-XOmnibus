@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Formant Lead",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vowel-morphing lead with formant filter sweeping through ah-eh-ee. Monophonic with glide.",
-  "tags": ["lead", "formant", "vocal", "mono", "glide"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lead",
+    "formant",
+    "vocal",
+    "mono",
+    "glide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,6 +73,8 @@
       "drift_polyphony": 0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

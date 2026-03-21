@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 150 XOR symmetry at 2 Hz. LFO1 (0.11 Hz) and LFO2 (0.07 Hz) are incommensurate — creating a slowly beating interference pattern against the 2 Hz automaton tide.",
   "dna": {
     "brightness": 0.38,
     "warmth": 0.6,

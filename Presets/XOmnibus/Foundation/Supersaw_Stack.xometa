@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Supersaw Stack",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Massive 7-voice detuned supersaw through warm filter. Classic trance/EDM foundation.",
-  "tags": ["supersaw", "lead", "trance", "big", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "supersaw",
+    "lead",
+    "trance",
+    "big",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,6 +73,8 @@
       "drift_polyphony": 2
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

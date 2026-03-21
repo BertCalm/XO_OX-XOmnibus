@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Maximum bioluminescence through tangled unknot \u2014 light refracts through knotted delay paths.",
+  "description": "Maximum bioluminescence through tangled unknot — light refracts through knotted delay paths.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.75,
@@ -78,5 +78,6 @@
     "bright",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

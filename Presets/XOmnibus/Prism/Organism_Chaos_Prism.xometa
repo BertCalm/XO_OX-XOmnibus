@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 30 chaos at 12 Hz through a high-Q filter. The resonance peak tracks the automaton's filter cells — randomness becomes bright, shifting spectral color. Triangle osc.",
   "dna": {
     "brightness": 0.82,
     "warmth": 0.28,

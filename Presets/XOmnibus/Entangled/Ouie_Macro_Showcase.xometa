@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Macro Showcase",
   "mood": "Entangled",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All four macros set to expressive positions. Showcases HAMMER (strife/love), AMPULLAE (velocity), CARTILAGE (filter), CURRENT (LFO).",
-  "tags": ["expressive", "movement", "counterpoint", "duophonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "expressive",
+    "movement",
+    "counterpoint",
+    "duophonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.58,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The OSTERIA quartet at maximum elastic stretch across four conflicting shore positions — Atlantic storm violence meets Southern Ocean swell. Patina harmonic fold at full drive, Porto saturation heavy, elastic coupling stretched to breaking. Murmur crowd-noise pushed high. The fisherman's osteria after the worst night at sea — not grief, pure release.",

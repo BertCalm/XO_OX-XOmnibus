@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 30 chaos slowed to 4 Hz step rate. Wide scope (10 gens) averages out the storm into a slowly shifting filter texture. Square osc adds edge.",
   "dna": {
     "brightness": 0.48,
     "warmth": 0.55,

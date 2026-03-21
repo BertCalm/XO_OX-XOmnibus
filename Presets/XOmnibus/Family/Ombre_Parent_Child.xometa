@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Parent Child",
   "mood": "Family",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Each note is both the parent (Oubli echo) and the child (new Opsis note). The memory carries forward like parentage — each generation shaped by and distinct from the previous.",
-  "tags": ["family", "parent", "child", "lineage", "shaped", "generation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "parent",
+    "child",
+    "lineage",
+    "shaped",
+    "generation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

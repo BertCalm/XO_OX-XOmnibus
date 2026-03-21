@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Oscar alone — axolotl breathing slow. Morph at mid, bloom unhurried, every filter frequency soft as riverbed clay. This is the sound of regeneration.",

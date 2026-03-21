@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "All five macros at maximum simultaneously: BELLY 1.0, BITE 1.0, SCURRY 1.0, TRASH 1.0, PLAY DEAD 1.0. The B008 Five-Macro Blessing pushed to its logical extreme — all dimensions of possum existence erupting at once. Warmth, aggression, instability, noise, and paralysis occupying the same space. Theoretically contradictory. Sonically: the most honest possum possible. Everything at once, nothing resolved.",
   "dna": {

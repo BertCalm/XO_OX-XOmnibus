@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Classic steppers dub plate reverb \u2014 tight, rhythmic, snapping to the offbeat. Short decay keeps the space focused while the golden resonance adds character to snare hits.",
+  "description": "Classic steppers dub plate reverb — tight, rhythmic, snapping to the offbeat. Short decay keeps the space focused while the golden resonance adds character to snare hits.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "tight",
     "snare"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

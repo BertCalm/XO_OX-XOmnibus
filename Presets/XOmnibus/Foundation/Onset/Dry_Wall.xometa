@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Zero reverb, zero delay. Every voice tight and dry. Maximum density, minimum space. A wall.",

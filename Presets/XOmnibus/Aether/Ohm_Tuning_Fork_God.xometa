@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "FM ratio pushed to the irrational. Obed arrives from outside the diatonic system. Glass harmonics ring at intervals no one planned. The commune tunes to a note that does not exist yet.",
@@ -68,5 +70,6 @@
     "experimental",
     "irrational"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

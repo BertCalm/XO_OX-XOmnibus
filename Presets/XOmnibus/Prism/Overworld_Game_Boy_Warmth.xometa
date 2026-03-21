@@ -47,14 +47,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.22,
-    "brightness": 0.48,
-    "density": 0.56,
-    "movement": 0.43,
-    "space": 0.61,
-    "warmth": 0.77
-  },
   "tags": [
     "game-boy",
     "dmg",

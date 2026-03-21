@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Spectral and metallic — high PD depth, high density, stiffness adds Euler-Bernoulli inharmonic partials for bell/metallic character. Formant at vowel positions adds periodic shimmer. Velocity drives razor-sharp harmonic transients.",

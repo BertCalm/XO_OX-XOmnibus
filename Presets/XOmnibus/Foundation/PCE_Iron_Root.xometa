@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "PC Engine at vertex A — the first PCE bass in the fleet. Mono voice mode, tight envelope. The PC Engine's raw oscillator is the hardest-hitting chip in the triangle.",
   "dna": {

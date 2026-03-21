@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Fast figure-8 with aggressive entrainment \u2014 snappy, reactive performance tone.",
+  "description": "Fast figure-8 with aggressive entrainment — snappy, reactive performance tone.",
   "dna": {
     "brightness": 0.58,
     "warmth": 0.3,
@@ -78,5 +78,6 @@
     "aggressive",
     "fast"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

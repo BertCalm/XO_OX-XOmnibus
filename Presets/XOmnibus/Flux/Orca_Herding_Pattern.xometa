@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Herding Pattern",
   "mood": "Flux",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Systematic sweep movement — not the full attack but the phase before it. LFO shapes shifting the wavetable slowly but purposefully, echo rate at medium, hunting macro just above the threshold of intent.",
-  "tags": ["flux", "herding", "systematic", "preparation", "sweeping"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "herding",
+    "systematic",
+    "preparation",
+    "sweeping"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.45,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

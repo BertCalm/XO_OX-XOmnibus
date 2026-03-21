@@ -26,36 +26,29 @@
   "name": "Gradient Dusk",
   "parameters": {
     "Ombre": {
-      "ombr_ampAttack": 595.1,
-      "ombr_ampDecay": 127.8,
-      "ombr_ampRelease": 83.7,
-      "ombr_ampSustain": 0.59,
-      "ombr_character": 0.37,
-      "ombr_coupling": 0.86,
-      "ombr_delayMix": 0.03,
-      "ombr_fadeDepth": 0.74,
-      "ombr_filterCutoff": 0.95,
-      "ombr_filterReso": 0.42,
-      "ombr_lfoDepth": 0.41,
-      "ombr_lfoRate": 0.49,
-      "ombr_movement": 0.44,
-      "ombr_reverbMix": 0.95,
-      "ombr_space": 0.95
+      "ombre_ampAttack": 595.1,
+      "ombre_ampDecay": 127.8,
+      "ombre_ampRelease": 83.7,
+      "ombre_ampSustain": 0.59,
+      "ombre_character": 0.37,
+      "ombre_coupling": 0.86,
+      "ombre_delayMix": 0.03,
+      "ombre_fadeDepth": 0.74,
+      "ombre_filterCutoff": 0.95,
+      "ombre_filterReso": 0.42,
+      "ombre_lfoDepth": 0.41,
+      "ombre_lfoRate": 0.49,
+      "ombre_movement": 0.44,
+      "ombre_reverbMix": 0.95,
+      "ombre_space": 0.95
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.62,
-    "brightness": 0.05,
-    "density": 0.54,
-    "movement": 0.21,
-    "space": 0.56,
-    "warmth": 0.82
-  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

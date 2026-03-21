@@ -62,14 +62,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.175,
-    "brightness": 0.5,
-    "density": 0.6,
-    "movement": 0.4,
-    "space": 0.875,
-    "warmth": 0.625
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -77,5 +69,6 @@
     "oceanic",
     "deep"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

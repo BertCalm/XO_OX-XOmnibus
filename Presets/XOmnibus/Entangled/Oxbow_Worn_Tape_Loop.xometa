@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Cycling, entangled reverb that mimics a worn tape loop feeding back on itself. Moderate erosion degrades the signal with each pass through the FDN.",
-  "dna": { "brightness": 0.25, "warmth": 0.65, "movement": 0.5, "density": 0.45, "space": 0.55, "aggression": 0.1 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.65,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Entangled",
   "name": "Worn Tape Loop",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "tape-loop", "entangled", "worn", "cycling"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "tape-loop",
+    "entangled",
+    "worn",
+    "cycling"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

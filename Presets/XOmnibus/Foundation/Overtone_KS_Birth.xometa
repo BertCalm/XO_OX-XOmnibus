@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Allpass resonator at maximum (resoMix=0.95): the quasi-Karplus-Strong effect fully engaged. Instantaneous attack (0.001s) means the allpass resonator begins ringing before the additive partials bloom — you hear the physical cavity first, then spectral overtones emerge from within it. Phi constant at depth 2 (3/2 = 1.5, a perfect fifth above fundamental) so the resonator cavity reinforces a musically consonant interval. Short decay, low sustain: this is a pluck, not a pad. The Nautilus shell as a resonating body struck once and left to decay. velBright=0.9 makes soft plucks warm and dark, hard plucks crystalline.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.32,
     "aggression": 0.28
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.25, "COLOR": 0.55, "COUPLING": 0.0, "SPACE": 0.32 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.25,
+    "COLOR": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.32
+  },
   "mood": "Foundation",
   "name": "KS Birth",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "foundation", "pluck", "karplus-strong", "resonator", "phi", "physical"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "foundation",
+    "pluck",
+    "karplus-strong",
+    "resonator",
+    "phi",
+    "physical"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The quartet sits mid-shore, Porto warmth already rising. Mod wheel (CC#1) rolls the smoke LPF darker — at full throw, a 4kHz additional roll-off buries the ensemble in a back-room Porto Wine haze. Wheel at zero: open room, bright folk strings. Wheel at full: cigarette smoke and candlelight.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Infinite decay with deep phase erosion. Play a single note and the Oxbow sustains forever, breathing and self-erasing, golden harmonics appearing and vanishing like bioluminescent pulses in still water. Schulze's hour-long dream.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.95,
     "aggression": 0.0
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Atmosphere",
   "name": "Infinite Meander",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["infinite", "ambient", "generative", "drone", "evolving"],
-  "version": "1.0.0"
+  "tags": [
+    "infinite",
+    "ambient",
+    "generative",
+    "drone",
+    "evolving"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

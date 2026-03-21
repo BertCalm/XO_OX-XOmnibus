@@ -71,6 +71,8 @@
       "dub_polyphony": 0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 150 XOR standing waves at 7 Hz. Pluck envelope (fast attack, short decay, low sustain). Each seed position gives unique harmonic content — MACRO:SEED explores the spectrum.",
   "dna": {
     "brightness": 0.68,
     "warmth": 0.42,

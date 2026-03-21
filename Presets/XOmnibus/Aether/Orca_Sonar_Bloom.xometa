@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Echo resonance pushed to 0.95 — the echolocation filter bank becomes a pitch resonator. At high formant shift the click-train from the hunt macro folds into harmonic partials, and the echo tail blooms into a resonant cloud. The source note is unrecognizable. Only the geometry of the hunt pattern remains: rhythm without time.",
   "dna": {

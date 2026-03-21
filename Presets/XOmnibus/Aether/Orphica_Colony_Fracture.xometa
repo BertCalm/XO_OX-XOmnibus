@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "A siphonophore torn apart by current. Each zooid carries a fragment of the original pitch. Micro-grains scatter at maximum. The harp body has become a diffraction grating.",
@@ -69,5 +71,6 @@
     "grain",
     "abstract"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

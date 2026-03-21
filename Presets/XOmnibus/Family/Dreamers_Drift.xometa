@@ -42,6 +42,8 @@
     "Opal": {},
     "Oracle": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

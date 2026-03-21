@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Pack Leader",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Legato mono with heavy glide — the matriarch's voice carrying the pod. Rich formants, moderate hunt engagement, sub presence that announces authority. Portamento slides like a whale song phrase.",
-  "tags": ["foundation", "lead", "mono", "legato", "glide", "authority"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "lead",
+    "mono",
+    "legato",
+    "glide",
+    "authority"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.45,
@@ -62,6 +76,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

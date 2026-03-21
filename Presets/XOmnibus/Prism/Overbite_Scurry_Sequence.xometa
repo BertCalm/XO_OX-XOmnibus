@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "SCURRY macro drives rapid oscillator instability that makes held notes feel like short, nervous runs. The possum crossing open ground in a hurry — no time to pause, each footfall a slightly different weight. Weight oscillator at half-octave tuning creates an involuntary countermelody. BITE controlled — this is urgency, not aggression.",

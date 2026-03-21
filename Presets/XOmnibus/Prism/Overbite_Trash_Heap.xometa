@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "TRASH macro at maximum. Every filth algorithm running at once — gnash, chew, drive all elevated. The possum's natural habitat at its most abundant and chaotic. Maximum possum chaos.",
   "dna": {

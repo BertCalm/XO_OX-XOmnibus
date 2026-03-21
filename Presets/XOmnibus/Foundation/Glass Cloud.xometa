@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Glass Cloud",
   "mood": "Foundation",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.1.0",
   "description": "The signature Opal sound. Large saw grains with gentle shimmer create a warm translucent cloud. Sounds full and musical completely dry — add SPACE macro for depth.",
-  "tags": ["pad", "warm", "cloud", "signature", "foundation"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "warm",
+    "cloud",
+    "signature",
+    "foundation"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -108,6 +121,8 @@
       "opal_level": 0.78
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

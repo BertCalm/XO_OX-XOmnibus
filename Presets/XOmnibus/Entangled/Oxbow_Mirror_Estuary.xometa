@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Where the river meets itself. High entanglement with fast erosion creates a stereo field that constantly rebalances — reflections swap sides, phase relationships shift, the space breathes like tidal water entering an estuary.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.75,
     "aggression": 0.15
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Entangled",
   "name": "Mirror Estuary",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["entangled", "tidal", "stereo", "breathing", "movement"],
-  "version": "1.0.0"
+  "tags": [
+    "entangled",
+    "tidal",
+    "stereo",
+    "breathing",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

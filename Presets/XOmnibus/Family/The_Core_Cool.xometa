@@ -39,6 +39,8 @@
     },
     "OddOscar": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

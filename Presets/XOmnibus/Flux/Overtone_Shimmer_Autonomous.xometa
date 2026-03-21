@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "macroCoupling=0.85 without a coupling partner activates the engine's autonomous shimmer: each of partials 4-7 receives an independent sine-modulated amplitude flutter offset by pi/4, producing spectral iridescence from within. The Nautilus shimmering in the dark — no partner required.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.5,
     "aggression": 0.05
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.5, "COLOR": 0.7, "COUPLING": 0.85, "SPACE": 0.45 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.5,
+    "COLOR": 0.7,
+    "COUPLING": 0.85,
+    "SPACE": 0.45
+  },
   "mood": "Flux",
   "name": "Shimmer Autonomous",
   "parameters": {
@@ -47,6 +61,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["flux", "shimmer", "autonomous", "iridescence", "upper-partials", "movement"],
-  "version": "1.0"
+  "tags": [
+    "flux",
+    "shimmer",
+    "autonomous",
+    "iridescence",
+    "upper-partials",
+    "movement"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

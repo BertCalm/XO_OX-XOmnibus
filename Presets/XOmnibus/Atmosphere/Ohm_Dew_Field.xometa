@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Interference patterns hover at the edge of hearing. MEDDLING low — just a suggestion of company.",
@@ -66,5 +68,6 @@
     "atmosphere",
     "pad"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

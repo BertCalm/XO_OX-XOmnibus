@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The acoustic space of a single candle flame \u2014 tiny, warm, alive with subtle movement. Minimal erosion creates micro-variations in the reverb like a flame dancing in still air.",
+  "description": "The acoustic space of a single candle flame — tiny, warm, alive with subtle movement. Minimal erosion creates micro-variations in the reverb like a flame dancing in still air.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.85,
@@ -50,5 +50,6 @@
     "alive",
     "micro"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

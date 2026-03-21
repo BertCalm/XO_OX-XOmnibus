@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Phase distortion on every voice. CZ-series inspired with shifting harmonic spectra.",

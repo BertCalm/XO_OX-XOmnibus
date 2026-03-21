@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Harmonic Lock",
   "mood": "Foundation",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "HAMMER at full LOVE — Voice B locks to nearest harmonic of Voice A. Spectral crossfade creates a rich, fused unison.",
-  "tags": ["duophonic", "expressive", "movement", "powerful"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "duophonic",
+    "expressive",
+    "movement",
+    "powerful"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crystal Fur",
   "mood": "Prism",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bright crystalline pluck with fur saturation adding warmth to the attack. Filter envelope creates sparkle.",
-  "tags": ["pluck", "bright", "crystal", "fur", "sparkle"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "pluck",
+    "bright",
+    "crystal",
+    "fur",
+    "sparkle"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

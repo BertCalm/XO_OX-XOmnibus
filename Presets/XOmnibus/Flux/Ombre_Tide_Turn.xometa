@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Tide Turn",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The moment the tide reverses. LFO1 paused at its turning point — blend at center, then swept in the new direction. A pivot between memory and presence.",
-  "tags": ["flux", "tide", "turning", "pivot", "reversal", "transition"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "tide",
+    "turning",
+    "pivot",
+    "reversal",
+    "transition"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.68
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

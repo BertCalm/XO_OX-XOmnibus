@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "SCURRY 0.65 as the live performance axis — poss_oscADrift and poss_oscBInstability pushed into nervous territory. Mod wheel extends instability further in real time: heel is a slightly unstable bass, toe is a trembling, pitch-drifting animal under predator pressure. BELLY at 0.4 keeps it grounded. The B008 Blessing expressed as embodied fear. Play it at night.",
   "dna": {

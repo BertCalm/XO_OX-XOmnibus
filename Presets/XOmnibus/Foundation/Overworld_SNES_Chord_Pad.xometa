@@ -47,14 +47,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.12,
-    "brightness": 0.49,
-    "density": 0.72,
-    "movement": 0.38,
-    "space": 0.68,
-    "warmth": 0.79
-  },
   "tags": [
     "snes",
     "spc700",

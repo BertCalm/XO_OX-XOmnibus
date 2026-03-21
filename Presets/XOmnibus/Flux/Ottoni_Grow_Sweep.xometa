@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "GROW is the whole narrative. Sweep from toddler blat to teen precision in a single motion.",
@@ -62,5 +64,6 @@
     "flux",
     "movement"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

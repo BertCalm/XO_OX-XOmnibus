@@ -32,24 +32,16 @@
   "name": "Photon Root",
   "parameters": {
     "OddOscar": {
-      "oscar_couplingBus": 0,
-      "oscar_couplingLevel": 0.5,
-      "oscar_macro_breath": 0.3037,
-      "oscar_macro_couple": 0.2892,
-      "oscar_macro_space": 0.4158,
-      "oscar_macro_weight": 0.9197,
-      "oscar_outputLevel": 0.85
+      "morph_couplingBus": 0,
+      "morph_couplingLevel": 0.5,
+      "morph_macro_breath": 0.3037,
+      "morph_macro_couple": 0.2892,
+      "morph_macro_space": 0.4158,
+      "morph_macro_weight": 0.9197,
+      "morph_outputLevel": 0.85
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2169,
-    "brightness": 0.8015,
-    "density": 0.1856,
-    "movement": 0.3649,
-    "space": 0.7137,
-    "warmth": 0.1188
-  },
   "tags": [
     "foundation",
     "bright",
@@ -57,5 +49,6 @@
     "crystalline",
     "anchor"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

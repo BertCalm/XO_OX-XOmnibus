@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Pure Oubli",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The most memory-dominant state possible. Blend at minimum, decay maximum, grain large. Only the ghost of the ghost. Abstract sound that barely remembers it was ever a note.",
-  "tags": ["aether", "pure", "oubli", "memory", "abstract", "ghost"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "pure",
+    "oubli",
+    "memory",
+    "abstract",
+    "ghost"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 1.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

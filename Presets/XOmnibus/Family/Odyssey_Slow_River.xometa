@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "DRIFT at its most patient. Long swells, gentle haze, shimmer underneath. Play two notes and let the river carry them. No hurry, no edge.",

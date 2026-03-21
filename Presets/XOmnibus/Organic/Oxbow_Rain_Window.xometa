@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Listening to rain through a window \u2014 the glass creates a bright, thin reflection while the room absorbs everything else. Intimate and contemplative with gentle golden shimmer.",
+  "description": "Listening to rain through a window — the glass creates a bright, thin reflection while the room absorbs everything else. Intimate and contemplative with gentle golden shimmer.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "contemplative",
     "gentle"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -78,14 +78,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.36,
-    "brightness": 0.07,
-    "density": 0.63,
-    "movement": 0.76,
-    "space": 0.51,
-    "warmth": 0.39
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -94,5 +86,6 @@
     "chaotic",
     "generative"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

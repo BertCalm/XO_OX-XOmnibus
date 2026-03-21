@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The argument dissolved. What remains is pure wind, two voices breathing as one.",
@@ -64,5 +66,6 @@
     "aether",
     "experimental"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

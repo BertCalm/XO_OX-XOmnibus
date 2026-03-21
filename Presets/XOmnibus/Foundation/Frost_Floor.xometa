@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Frost Floor",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.55,
-    "warmth": 0.2,
-    "movement": 0.2,
-    "density": 0.5,
-    "space": 0.6,
-    "aggression": 0.15
-  },
-  "sonic_dna": {
     "brightness": 0.55,
     "warmth": 0.2,
     "movement": 0.2,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 0
     }
   },
-  "tags": ["ocelot", "foundation", "winter", "cold", "sparse"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "winter",
+    "cold",
+    "sparse"
+  ],
   "description": "Winter biome ground layer — frozen kalimba tines ringing against silent white. Minimal cross-feed preserves stark clarity."
 }

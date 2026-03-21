@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "All modulation sources at maximum \u2014 the full complexity of an entangled jellyfish crown.",
+  "description": "All modulation sources at maximum — the full complexity of an entangled jellyfish crown.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.6,
@@ -78,5 +78,6 @@
     "crown",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

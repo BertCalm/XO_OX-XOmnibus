@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Magnetic Pull",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "HAMMER at moderate STRIFE, cross-FM creating harmonic interference. The pull between opposing magnetic fields — voices orbiting each other, never quite converging.",
-  "tags": ["dark", "movement", "evolving", "counterpoint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "dark",
+    "movement",
+    "evolving",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.45,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

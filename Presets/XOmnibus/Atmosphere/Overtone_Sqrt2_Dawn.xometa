@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Sqrt2 constant at depth 0 — the first Pell convergent is simply 1/1, the pure fundamental. At depth 1 (3/2), the first partial arrives at a perfect fifth. These are the most consonant intervals in Western music expressed through the lens of an irrational number. Medium attack (0.35s) mimics an organ pipe slowly pressurizing. LFO1 at 0.12 Hz applies slow depth modulation that gently toggles the fifth partial in and out as new convergents pass through — the dawn light revealing more of the Pell series as it rises. High filter cutoff lets the full spectrum breathe. The first Pell convergents are the engine's warmest territory: rationality emerging from the irrational.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.62,
     "aggression": 0.08
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.18, "COLOR": 0.62, "COUPLING": 0.0, "SPACE": 0.55 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.18,
+    "COLOR": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
   "mood": "Atmosphere",
   "name": "Sqrt2 Dawn",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "atmosphere", "sqrt2", "pell", "warm", "consonant", "dawn"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "sqrt2",
+    "pell",
+    "warm",
+    "consonant",
+    "dawn"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

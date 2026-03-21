@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Cinquefoil signal tone \u2014 designed as coupling sender for group performances.",
+  "description": "Cinquefoil signal tone — designed as coupling sender for group performances.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.45,
@@ -87,5 +87,6 @@
     "sender",
     "group"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "A sheltered cala on the Costa Brava — wind offshore, swell almost zero, water the color of dissolved limestone. ShoreSystem reads Mediterranean shore data: small fetch, warm salinity, Flamenco resonator harmonics. Beginner-ideal — every note sounds like an afternoon.",

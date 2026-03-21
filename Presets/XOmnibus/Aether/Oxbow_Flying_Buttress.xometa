@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The structural miracle that lets walls become windows \u2014 this reverb is impossibly large yet structurally clear. Each reflection is distinct within the vast decay.",
+  "description": "The structural miracle that lets walls become windows — this reverb is impossibly large yet structurally clear. Each reflection is distinct within the vast decay.",
   "dna": {
     "brightness": 0.7,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "structural",
     "gothic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

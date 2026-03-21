@@ -26,37 +26,30 @@
   "name": "Punch Horizon",
   "parameters": {
     "Onset": {
-      "ons_aggression": 0.35,
-      "ons_character": 0.51,
-      "ons_coupling": 0.05,
-      "ons_delayMix": 0.95,
-      "ons_density": 0.22,
-      "ons_filterCutoff": 0.31,
-      "ons_hihatDecay": 401.5,
-      "ons_kickTune": 0.5,
-      "ons_machine": 0.33,
-      "ons_movement": 0.97,
-      "ons_mutate": 0.76,
-      "ons_outputLevel": 0.49,
-      "ons_punch": 0.58,
-      "ons_reverbMix": 0.02,
-      "ons_snareTone": 0.51,
-      "ons_space": 0.31
+      "perc_aggression": 0.35,
+      "perc_character": 0.51,
+      "perc_coupling": 0.05,
+      "perc_delayMix": 0.95,
+      "perc_density": 0.22,
+      "perc_filterCutoff": 0.31,
+      "perc_hihatDecay": 401.5,
+      "perc_kickTune": 0.5,
+      "perc_machine": 0.33,
+      "perc_movement": 0.97,
+      "perc_mutate": 0.76,
+      "perc_outputLevel": 0.49,
+      "perc_punch": 0.58,
+      "perc_reverbMix": 0.02,
+      "perc_snareTone": 0.51,
+      "perc_space": 0.31
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.19,
-    "brightness": 0.93,
-    "density": 0.42,
-    "movement": 0.3,
-    "space": 0.75,
-    "warmth": 0.63
-  },
   "tags": [
     "atmosphere",
     "bright",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

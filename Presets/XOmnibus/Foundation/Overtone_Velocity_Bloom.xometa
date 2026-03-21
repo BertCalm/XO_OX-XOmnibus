@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "velBright at maximum (1.0): a whisper is pure sine, a strike opens all upper partials. The engine transforms from a single tone into a full spectral constellation through touch alone. No velocity sculpting like this exists elsewhere in the fleet.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.3,
     "aggression": 0.0
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.25, "COLOR": 0.5, "COUPLING": 0.0, "SPACE": 0.3 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.25,
+    "COLOR": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  },
   "mood": "Foundation",
   "name": "Velocity Bloom",
   "parameters": {
@@ -47,6 +61,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["foundation", "velocity", "expressive", "dynamic", "bloom", "touch-sensitive"],
-  "version": "1.0"
+  "tags": [
+    "foundation",
+    "velocity",
+    "expressive",
+    "dynamic",
+    "bloom",
+    "touch-sensitive"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

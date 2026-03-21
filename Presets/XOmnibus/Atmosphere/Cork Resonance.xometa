@@ -22,14 +22,6 @@
     "Ohm": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.095,
-    "brightness": 0.459,
-    "density": 0.72,
-    "movement": 0.136,
-    "space": 0.693,
-    "warmth": 0.985
-  },
   "tags": [
     "atmosphere",
     "drone",
@@ -37,7 +29,7 @@
     "warm",
     "thick"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

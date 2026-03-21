@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Bright Fragment",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "A shard of something larger. High Opsis, fast attack, short grain — just the bright fragment of a memory. Quick, glassy, percussive but with a lingering halo.",
-  "tags": ["prism", "bright", "fragment", "shard", "percussive", "glassy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "bright",
+    "fragment",
+    "shard",
+    "percussive",
+    "glassy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.52
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

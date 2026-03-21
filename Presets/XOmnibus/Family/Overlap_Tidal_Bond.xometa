@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Subtle",
-  "description": "Torus bond with slow current \u2014 ebbing and flowing in sync with coupled engine.",
+  "description": "Torus bond with slow current — ebbing and flowing in sync with coupled engine.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.55,
@@ -87,5 +87,6 @@
     "ebb",
     "flow"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

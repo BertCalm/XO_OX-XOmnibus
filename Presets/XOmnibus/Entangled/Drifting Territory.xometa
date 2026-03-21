@@ -67,14 +67,6 @@
     "ocelot_territorialRange": 0.808
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.382,
-    "brightness": 0.601,
-    "density": 0.718,
-    "movement": 0.712,
-    "space": 0.504,
-    "warmth": 0.593
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

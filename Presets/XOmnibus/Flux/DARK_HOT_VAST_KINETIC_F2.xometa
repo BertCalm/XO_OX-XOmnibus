@@ -28,14 +28,6 @@
     "Origami": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.536,
-    "brightness": 0.065,
-    "density": 0.466,
-    "movement": 0.949,
-    "space": 0.892,
-    "warmth": 0.926
-  },
   "tags": [
     "dark",
     "warm",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

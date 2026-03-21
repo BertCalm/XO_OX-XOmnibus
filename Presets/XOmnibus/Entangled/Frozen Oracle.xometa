@@ -34,14 +34,6 @@
     "Oracle": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.91,
-    "density": 0.4,
-    "movement": 0.3,
-    "space": 0.82,
-    "warmth": 0.06
-  },
   "strategy": "Bright Dark",
   "tags": [
     "entangled",
@@ -50,7 +42,7 @@
     "sparse",
     "oracular"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

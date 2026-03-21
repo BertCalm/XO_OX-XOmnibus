@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Two tingsha cymbals ringing together \u2014 the golden resonance creates beating between their slightly detuned overtones. Pure, bright, meditative. Convergence is the key.",
+  "description": "Two tingsha cymbals ringing together — the golden resonance creates beating between their slightly detuned overtones. Pure, bright, meditative. Convergence is the key.",
   "dna": {
     "brightness": 0.8,
     "warmth": 0.35,
@@ -50,5 +50,6 @@
     "beating",
     "meditative"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

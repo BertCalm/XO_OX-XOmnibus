@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Warm, vintage piano reverb with the character of an old upright in a wood-paneled room. Gentle resonance and moderate cantilever create nostalgic warmth.",
-  "dna": { "brightness": 0.35, "warmth": 0.8, "movement": 0.15, "density": 0.45, "space": 0.55, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Foundation",
   "name": "Grandpa's Piano",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "piano", "warm", "vintage", "nostalgic"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "piano",
+    "warm",
+    "vintage",
+    "nostalgic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

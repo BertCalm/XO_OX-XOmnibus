@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Mallet Dance",
   "mood": "Family",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Playful and velocity-responsive. Wood-bell material with a soft mallet that comes alive under a heavy hand. High filter env amount means soft touch = dark and round, hard touch = bright and sharp.",
-  "tags": ["playful", "velocity", "wood", "bell", "responsive", "dance", "expressive", "family"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "playful",
+    "velocity",
+    "wood",
+    "bell",
+    "responsive",
+    "dance",
+    "expressive",
+    "family"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,8 @@
       "owr_macroSpace": 0.35
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

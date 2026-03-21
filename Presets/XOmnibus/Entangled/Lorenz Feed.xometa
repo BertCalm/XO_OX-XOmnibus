@@ -42,6 +42,8 @@
       "ouro_injection": 1.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

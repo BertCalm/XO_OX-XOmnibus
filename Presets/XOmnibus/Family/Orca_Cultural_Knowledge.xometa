@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cultural Knowledge",
   "mood": "Family",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orca culture: the transmission of hunting techniques, routes, and behaviors across generations. Slow formant scan embodying the gradual accumulation of wisdom. Deep, patient, teaching.",
-  "tags": ["family", "culture", "knowledge", "tradition", "teaching"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "culture",
+    "knowledge",
+    "tradition",
+    "teaching"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.35,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

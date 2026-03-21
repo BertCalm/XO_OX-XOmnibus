@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Figure-eight with high tangle and saw LFOs \u2014 systematic modulation across all crossings.",
+  "description": "Figure-eight with high tangle and saw LFOs — systematic modulation across all crossings.",
   "dna": {
     "aggression": 0.4,
     "brightness": 0.55,
@@ -78,5 +78,6 @@
     "modulated",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

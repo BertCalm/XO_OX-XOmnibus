@@ -118,6 +118,8 @@
       "perc_masterTone": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

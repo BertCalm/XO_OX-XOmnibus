@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dual Identity",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Interference at maximum — Oubli and Opsis fully coupled to each other. Memory haunts pitch; pitch feeds memory. The two voices are indistinguishable at equilibrium.",
-  "tags": ["foundation", "interference", "dual", "coupled", "identity"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "interference",
+    "dual",
+    "coupled",
+    "identity"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.5
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

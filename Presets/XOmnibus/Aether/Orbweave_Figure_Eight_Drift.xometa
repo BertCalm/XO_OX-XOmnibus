@@ -2,29 +2,74 @@
   "schema_version": 1,
   "name": "Orbweave Figure Eight Drift",
   "mood": "Aether",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Two LFOs at coprime rates (7.7s and 12s) create a non-repeating coupling texture with ~92-second combined period. Figure-Eight chimera state. Hold a chord for a minute and listen to the patch evolve — no two measures sound the same.",
   "tier": "awakening",
-  "tags": ["aether", "figure-eight", "drift", "coprime", "non-repeating", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "aether",
+    "figure-eight",
+    "drift",
+    "coprime",
+    "non-repeating",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.55, "warmth": 0.42, "movement": 0.60, "density": 0.38, "space": 0.80, "aggression": 0.05 },
-  "sonic_dna": { "brightness": 0.55, "warmth": 0.42, "movement": 0.60, "density": 0.38, "space": 0.80, "aggression": 0.05 },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.42,
+    "movement": 0.6,
+    "density": 0.38,
+    "space": 0.8,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 9.0, "weave_knotType": 1, "weave_braidDepth": 0.73,
-      "weave_torusP": 2, "weave_torusQ": 3,
-      "weave_filterCutoff": 7500.0, "weave_filterReso": 0.15, "weave_filterType": 0,
-      "weave_ampA": 0.50, "weave_ampD": 1.0, "weave_ampS": 0.85, "weave_ampR": 5.5,
-      "weave_lfo1Type": 1, "weave_lfo1Target": 5, "weave_lfo1Depth": 0.20, "weave_lfo1Rate": 0.13,
-      "weave_lfo2Type": 1, "weave_lfo2Target": 2, "weave_lfo2Depth": 0.22, "weave_lfo2Rate": 0.083,
-      "weave_fx1Type": 3, "weave_fx1Mix": 0.58, "weave_fx1Param": 0.78,
-      "weave_fx2Type": 2, "weave_fx2Mix": 0.28, "weave_fx2Param": 0.35,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
+      "weave_strandType": 1,
+      "weave_strandTune": 9.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.73,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 7500.0,
+      "weave_filterReso": 0.15,
+      "weave_filterType": 0,
+      "weave_ampA": 0.5,
+      "weave_ampD": 1.0,
+      "weave_ampS": 0.85,
+      "weave_ampR": 5.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.2,
+      "weave_lfo1Rate": 0.13,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.22,
+      "weave_lfo2Rate": 0.083,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.58,
+      "weave_fx1Param": 0.78,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.28,
+      "weave_fx2Param": 0.35,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
       "weave_voiceMode": 3
     }
-  }
+  },
+  "tempo": null
 }

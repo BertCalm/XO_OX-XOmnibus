@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The automaton frozen mid-generation. A still frame of life — one moment of cellular pattern suspended in reverb. Aftertouch re-animates the colony briefly before returning to ice.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.8,
     "aggression": 0.08
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.375, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.375,
+    "SEED": 0.0,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
   "mood": "Submerged",
   "name": "Frozen Coral",
   "parameters": {
@@ -45,6 +59,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["freeze", "suspended", "submerged", "cellular", "drone", "still"],
-  "version": "1.0"
+  "tags": [
+    "freeze",
+    "suspended",
+    "submerged",
+    "cellular",
+    "drone",
+    "still"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

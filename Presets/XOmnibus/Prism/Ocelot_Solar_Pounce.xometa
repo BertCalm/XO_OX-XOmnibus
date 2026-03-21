@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Ocelot pushed to extreme brightness \u2014 brightness 0.93, movement 0.68, aggression 0.76. Ultra-bright Prism zone filler.",
+  "description": "Ocelot pushed to extreme brightness — brightness 0.93, movement 0.68, aggression 0.76. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.928,
-    "warmth": 0.244,
-    "movement": 0.677,
-    "density": 0.315,
-    "space": 0.544,
-    "aggression": 0.762
-  },
-  "sonic_dna": {
     "brightness": 0.928,
     "warmth": 0.244,
     "movement": 0.677,

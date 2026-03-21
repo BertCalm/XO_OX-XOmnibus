@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Metallic Screech",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High wavetable position with maximum echo resonance — the jagged metallic upper harmonics of an orca's distress or excitement call. Countershading fully active in the dorsal band. A sound with edges.",
-  "tags": ["prism", "metallic", "harsh", "high", "texture"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "metallic",
+    "harsh",
+    "high",
+    "texture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.9,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

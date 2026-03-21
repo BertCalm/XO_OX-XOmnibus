@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Osteria Q-bass shores up Bob's low-mid \u2014 two depth systems, one groove.",
+  "description": "Osteria Q-bass shores up Bob's low-mid — two depth systems, one groove.",
   "dna": {
     "aggression": 0.418,
     "brightness": 0.597,
@@ -74,5 +74,5 @@
     "osteria"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OLE DRAMA macro at peak — Afro-Latin trio in full voice. The circle that drives itself. Nobody sitting down.",

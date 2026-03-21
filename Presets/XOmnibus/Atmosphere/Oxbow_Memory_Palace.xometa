@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Walking through rooms of memory \u2014 each reflection carries a different emotional weight. Moderate erosion creates the sense of memories degrading at different rates.",
+  "description": "Walking through rooms of memory — each reflection carries a different emotional weight. Moderate erosion creates the sense of memories degrading at different rates.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.7,
@@ -50,5 +50,6 @@
     "dream",
     "introspective"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

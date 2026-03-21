@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Fast pulse rate with strong entrainment \u2014 voices synchronize like symbiotic organisms.",
+  "description": "Fast pulse rate with strong entrainment — voices synchronize like symbiotic organisms.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.45,
@@ -78,5 +78,6 @@
     "symbiotic",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

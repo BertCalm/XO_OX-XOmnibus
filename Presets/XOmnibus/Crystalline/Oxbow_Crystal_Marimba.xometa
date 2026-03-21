@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Marimba bars made of crystal instead of rosewood \u2014 impossibly bright and sustaining. High resonance mix with narrow Q creates the pitched percussion quality with prismatic shimmer.",
+  "description": "Marimba bars made of crystal instead of rosewood — impossibly bright and sustaining. High resonance mix with narrow Q creates the pitched percussion quality with prismatic shimmer.",
   "dna": {
     "brightness": 0.85,
     "warmth": 0.3,
@@ -50,5 +50,6 @@
     "bright",
     "pitched"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

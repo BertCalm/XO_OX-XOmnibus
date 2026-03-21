@@ -26,37 +26,30 @@
   "name": "Oscar Midnight",
   "parameters": {
     "OddOscar": {
-      "oddo_ampAttack": 126.3,
-      "oddo_ampDecay": 738.8,
-      "oddo_ampRelease": 666.3,
-      "oddo_ampSustain": 0.35,
-      "oddo_character": 0.56,
-      "oddo_coupling": 0.33,
-      "oddo_delayMix": 0.81,
-      "oddo_filterCutoff": 0.67,
-      "oddo_filterReso": 0.37,
-      "oddo_lfoDepth": 0.1,
-      "oddo_lfoRate": 0.09,
-      "oddo_movement": 0.59,
-      "oddo_oscAwave": 1,
-      "oddo_oscBwave": 1,
-      "oddo_reverbMix": 0.74,
-      "oddo_space": 0.56
+      "morph_ampAttack": 126.3,
+      "morph_ampDecay": 738.8,
+      "morph_ampRelease": 666.3,
+      "morph_ampSustain": 0.35,
+      "morph_character": 0.56,
+      "morph_coupling": 0.33,
+      "morph_delayMix": 0.81,
+      "morph_filterCutoff": 0.67,
+      "morph_filterReso": 0.37,
+      "morph_lfoDepth": 0.1,
+      "morph_lfoRate": 0.09,
+      "morph_movement": 0.59,
+      "morph_oscAwave": 1,
+      "morph_oscBwave": 1,
+      "morph_reverbMix": 0.74,
+      "morph_space": 0.56
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.13,
-    "brightness": 0.06,
-    "density": 0.54,
-    "movement": 0.33,
-    "space": 0.41,
-    "warmth": 0.44
-  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

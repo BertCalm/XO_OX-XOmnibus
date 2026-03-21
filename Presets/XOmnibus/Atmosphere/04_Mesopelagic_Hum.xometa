@@ -79,19 +79,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.05,
-    "brightness": 0.2,
-    "density": 0.8,
-    "movement": 0.4,
-    "space": 1.0,
-    "warmth": 0.85
-  },
   "tags": [
     "drone",
     "ambient",
     "sub",
     "evolving"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Late night at the mixing board \u2014 deep, warm dub reverb with slow erosion creating that classic degrading echo. The bass hits and the room responds with golden warmth.",
+  "description": "Late night at the mixing board — deep, warm dub reverb with slow erosion creating that classic degrading echo. The bass hits and the room responds with golden warmth.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.85,
@@ -50,5 +50,6 @@
     "kingston",
     "night"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

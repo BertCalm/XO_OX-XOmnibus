@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Foraging Party",
   "mood": "Family",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A small group heading out to hunt — not the full pod, just 3-4 individuals. Poly mode, moderate hunt macro, good energy but family context maintained. The sub-group within the family operating as a unit.",
-  "tags": ["family", "foraging", "group", "cooperative", "moderate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "foraging",
+    "group",
+    "cooperative",
+    "moderate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.48, "warmth": 0.55, "movement": 0.5, "density": 0.6, "space": 0.45, "aggression": 0.42},
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.42
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.52, "orca_wtScanRate": 0.38, "orca_formantIntensity": 0.65, "orca_formantShift": 0.52, "orca_glide": 0.1,
-      "orca_echoRate": 8.0, "orca_echoReso": 0.78, "orca_echoDamp": 0.3, "orca_echoMix": 0.38, "orca_huntMacro": 0.32,
-      "orca_breachSub": 0.58, "orca_breachShape": 0.0, "orca_breachThreshold": -16.0, "orca_breachRatio": 5.0,
-      "orca_crushBits": 15.0, "orca_crushDownsample": 1.1, "orca_crushMix": 0.12, "orca_crushSplitFreq": 1100.0,
-      "orca_filterCutoff": 5500.0, "orca_filterReso": 0.35, "orca_level": 0.82,
-      "orca_ampAttack": 0.007, "orca_ampDecay": 0.35, "orca_ampSustain": 0.68, "orca_ampRelease": 0.45,
-      "orca_modAttack": 0.006, "orca_modDecay": 0.28, "orca_modSustain": 0.55, "orca_modRelease": 0.36,
-      "orca_lfo1Rate": 0.2, "orca_lfo1Depth": 0.28, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 3.0, "orca_lfo2Depth": 0.22, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 3, "orca_velCutoffAmt": 0.55, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.52,
+      "orca_wtScanRate": 0.38,
+      "orca_formantIntensity": 0.65,
+      "orca_formantShift": 0.52,
+      "orca_glide": 0.1,
+      "orca_echoRate": 8.0,
+      "orca_echoReso": 0.78,
+      "orca_echoDamp": 0.3,
+      "orca_echoMix": 0.38,
+      "orca_huntMacro": 0.32,
+      "orca_breachSub": 0.58,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -16.0,
+      "orca_breachRatio": 5.0,
+      "orca_crushBits": 15.0,
+      "orca_crushDownsample": 1.1,
+      "orca_crushMix": 0.12,
+      "orca_crushSplitFreq": 1100.0,
+      "orca_filterCutoff": 5500.0,
+      "orca_filterReso": 0.35,
+      "orca_level": 0.82,
+      "orca_ampAttack": 0.007,
+      "orca_ampDecay": 0.35,
+      "orca_ampSustain": 0.68,
+      "orca_ampRelease": 0.45,
+      "orca_modAttack": 0.006,
+      "orca_modDecay": 0.28,
+      "orca_modSustain": 0.55,
+      "orca_modRelease": 0.36,
+      "orca_lfo1Rate": 0.2,
+      "orca_lfo1Depth": 0.28,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 3.0,
+      "orca_lfo2Depth": 0.22,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 3,
+      "orca_velCutoffAmt": 0.55,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

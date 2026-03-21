@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Pi constant at depth 1: partials locked to 1.0, 3.0, 7/3, 22/7, 15/7, 113/106 — the Nautilus at maximum mathematical tension. Pi's first convergents sound alien and bent against pure harmonic series. Add slow attack, high space, and low filter: pressure from the hadal zone compresses the overtone series into something barely recognizable as music.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.85,
     "aggression": 0.15
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.1, "COLOR": 0.2, "COUPLING": 0.0, "SPACE": 0.85 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.1,
+    "COLOR": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.85
+  },
   "mood": "Submerged",
   "name": "Hadal Shimmer",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["submerged", "pi", "hadal", "pressure", "deep", "alien", "mathematical"],
-  "version": "1.0"
+  "tags": [
+    "submerged",
+    "pi",
+    "hadal",
+    "pressure",
+    "deep",
+    "alien",
+    "mathematical"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

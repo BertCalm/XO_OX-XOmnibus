@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Low-frequency pad with heavy sub oscillator and Moog filter warmth. Oceanic depth with slow harmonic shifts.",

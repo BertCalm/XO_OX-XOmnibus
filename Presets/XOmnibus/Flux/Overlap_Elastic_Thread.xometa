@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Cinquefoil mono with heavy glide \u2014 elastic bending between notes.",
+  "description": "Cinquefoil mono with heavy glide — elastic bending between notes.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.5,
@@ -78,5 +78,6 @@
     "mono",
     "expressive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

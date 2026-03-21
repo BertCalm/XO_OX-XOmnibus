@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "ODYSSEY on a wide horizon — drift macro open, depth resonant. An exploratory wander that never rushes. The engine at its most ODYSSEY.",

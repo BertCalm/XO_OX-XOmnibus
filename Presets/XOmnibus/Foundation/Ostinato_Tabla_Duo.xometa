@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tabla and bayan \u2014 the bright dayan and deep bayan pair.",
+  "description": "Tabla and bayan — the bright dayan and deep bayan pair.",
   "tags": [
     "foundation",
     "tabla",
@@ -166,5 +166,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

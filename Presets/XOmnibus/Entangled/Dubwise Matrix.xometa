@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Full coupling matrix engaged for maximum dub energy. Every parameter cross-talks creating a living, breathing dubwise machine.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OUROBOROS tail-biting — Lorenz attractor spiraling at medium chaos. The self-devouring pattern at its most hypnotic.",

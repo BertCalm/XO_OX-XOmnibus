@@ -18,7 +18,10 @@
   "guru_bin": {
     "retreat": "OSTINATO — The Circle",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 2: Thunder From a Single Drum", "Doctrine D003: The Physics IS the Synthesis"],
+    "scripture": [
+      "Verse 2: Thunder From a Single Drum",
+      "Doctrine D003: The Physics IS the Synthesis"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt the taiko's body resonance through the monitoring system — deep, singular, not decorative.",
@@ -175,5 +178,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

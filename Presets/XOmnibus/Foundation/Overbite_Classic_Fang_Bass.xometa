@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "BITE 0.65 + BELLY 0.4 — the classic fang position. Warmth present but subordinate to the attack transient. poss_biteDepth carves a mid-range ridge into every onset; sub oscillator keeps the foundation stable. No SCURRY, no noise. The possum with its fangs out, body still. This is the foundational OVERBITE character: defined by the thing in its teeth.",
   "dna": {

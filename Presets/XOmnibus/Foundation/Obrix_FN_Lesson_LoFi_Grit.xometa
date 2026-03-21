@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "LoFi Saw \u2014 aliased on purpose. The gritty, digital character of early samplers. Imperfection as aesthetic.",
+  "description": "LoFi Saw — aliased on purpose. The gritty, digital character of early samplers. Imperfection as aesthetic.",
   "tags": [
     "lesson",
     "lofi",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

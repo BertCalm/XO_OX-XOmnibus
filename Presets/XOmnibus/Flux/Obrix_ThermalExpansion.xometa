@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "The reef is overheating. envTemp=0.8 amplifies drift 4\u00d7 into chaotic thermal energy. Saw source through LP filter with LFO-driven cutoff sweep. High temperature = fractured, restless timbre.",
+  "description": "The reef is overheating. envTemp=0.8 amplifies drift 4× into chaotic thermal energy. Saw source through LP filter with LFO-driven cutoff sweep. High temperature = fractured, restless timbre.",
   "tags": [
     "thermal",
     "drift",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.75,
     "COUPLING": 0.0,
     "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
   }
 }

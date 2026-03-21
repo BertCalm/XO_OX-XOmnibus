@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Everything becomes fog \u2014 the reverb is so dense and long that individual sounds lose identity and merge into a hypnotic wash. For ambient techno breakdowns and intros.",
+  "description": "Everything becomes fog — the reverb is so dense and long that individual sounds lose identity and merge into a hypnotic wash. For ambient techno breakdowns and intros.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "hypnotic",
     "wash"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

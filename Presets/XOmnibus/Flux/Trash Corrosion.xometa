@@ -156,6 +156,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

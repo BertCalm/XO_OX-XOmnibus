@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The meddling and the manatee reach accord. High COMMUNE transforms interference into harmony. 'Tangled Roots' holds the moment without wavering.",
@@ -66,5 +68,6 @@
     "entangled",
     "coupled"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

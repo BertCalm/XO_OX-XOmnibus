@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.074,
-    "brightness": 0.9494,
-    "density": 0.0516,
-    "movement": 0.4117,
-    "space": 0.905,
-    "warmth": 0.4802
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "surge",
     "ocelot"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

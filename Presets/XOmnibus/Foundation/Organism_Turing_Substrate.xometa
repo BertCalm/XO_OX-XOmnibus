@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 110 Turing-complete computation at medium step rate. Square wave plus sub. Wide scope (12 gens) integrates many generations into stable, thinking harmony.",
   "dna": {
     "brightness": 0.38,
     "warmth": 0.65,

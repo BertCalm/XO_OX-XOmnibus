@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The first bell of the morning \u2014 massive space above, golden resonance ringing through the tower. Bright exciter with long decay creates that authentic bronze-in-stone character.",
+  "description": "The first bell of the morning — massive space above, golden resonance ringing through the tower. Bright exciter with long decay creates that authentic bronze-in-stone character.",
   "dna": {
     "brightness": 0.75,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "dawn",
     "bronze"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Blend at the middle — memory and perception balanced, 80ms grain, gentle drift. Each new note has a subtle shadow of the previous one. Not disorienting, just warm and cohesive, like hearing music in a room where the walls remember the last phrase. Suitable for chords, leads, and lo-fi textures.",
   "dna": {

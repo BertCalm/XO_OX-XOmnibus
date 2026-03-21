@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Eight beatbox voices \u2014 every articulation, every pattern. Full machine.",
+  "description": "Eight beatbox voices — every articulation, every pattern. Full machine.",
   "tags": [
     "aether",
     "beatbox",
@@ -18,7 +18,10 @@
   "guru_bin": {
     "retreat": "OSTINATO — The Circle",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 8: Eight Voices, Eight Articulations, Full Machine", "Canon 3: The Beatbox as Ensemble"],
+    "scripture": [
+      "Verse 8: Eight Voices, Eight Articulations, Full Machine",
+      "Canon 3: The Beatbox as Ensemble"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Finger activated all 8 seats simultaneously — The Ear confirmed the full beatbox ensemble as rhythmically self-sufficient.",
@@ -175,5 +178,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

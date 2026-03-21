@@ -28,14 +28,6 @@
     "Organon": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.15,
-    "brightness": 0.05,
-    "density": 0.6,
-    "movement": 0.08,
-    "space": 0.65,
-    "warmth": 0.65
-  },
   "tags": [
     "aether",
     "dark",
@@ -44,5 +36,6 @@
     "formal",
     "minimal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

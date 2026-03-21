@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three congas \u2014 quinto, tres, tumba. The conversation of rumba.",
+  "description": "Three congas — quinto, tres, tumba. The conversation of rumba.",
   "tags": [
     "prism",
     "latin",
@@ -165,5 +165,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -67,14 +67,6 @@
     "ombre_lfo1Rate": 0.982
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.249,
-    "brightness": 0.511,
-    "density": 0.489,
-    "movement": 0.435,
-    "space": 0.593,
-    "warmth": 0.531
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

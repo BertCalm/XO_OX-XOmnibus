@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "All three processors active with high resonance creating a network of resonant nodes. Perfect coupling donor \u2014 partner engines modulate the resonance peaks.",
+  "description": "All three processors active with high resonance creating a network of resonant nodes. Perfect coupling donor — partner engines modulate the resonance peaks.",
   "tags": [
     "entangled",
     "coupling",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.305,
     "COUPLING": 0.575,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

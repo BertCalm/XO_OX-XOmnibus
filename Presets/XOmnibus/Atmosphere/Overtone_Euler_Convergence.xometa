@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "E constant at depth 7: the convergents 1.0, 1.5, 1.333, 1.375, 1.357, 1.359, 1.359, 1.359 — all partials converging toward e/2 ≈ 1.359 in near-unison. The result is a shimmering cluster of near-identical frequencies beating against each other in slow, living iridescence. No other constant achieves this clumping.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.55,
     "aggression": 0.0
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.8, "COLOR": 0.6, "COUPLING": 0.0, "SPACE": 0.55 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.8,
+    "COLOR": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
   "mood": "Atmosphere",
   "name": "Euler Convergence",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["atmosphere", "euler", "convergence", "shimmer", "cluster", "beating", "mathematical"],
-  "version": "1.0"
+  "tags": [
+    "atmosphere",
+    "euler",
+    "convergence",
+    "shimmer",
+    "cluster",
+    "beating",
+    "mathematical"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A spectral reverb that barely exists \u2014 maximum phase erosion causes the tail to phase-cancel against itself, leaving only fleeting moments of golden resonance. The Eel flickering between dimensions.",
+  "description": "A spectral reverb that barely exists — maximum phase erosion causes the tail to phase-cancel against itself, leaving only fleeting moments of golden resonance. The Eel flickering between dimensions.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.4,
@@ -50,5 +50,6 @@
     "ghostly",
     "stereo"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

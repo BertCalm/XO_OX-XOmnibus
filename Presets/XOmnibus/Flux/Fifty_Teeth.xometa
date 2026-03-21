@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The full arsenal. All five character stages engaged, all five macros at their starting positions, ready for the player to ride. BELLY for warmth, BITE for aggression, SCURRY for chaos, TRASH for destruction, PLAY DEAD for collapse. Fifty teeth bared — the opossum's full threat display. Every macro changes the creature's survival strategy in real time.",

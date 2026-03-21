@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.495,
-    "brightness": 0.465,
-    "density": 0.965,
-    "movement": 0.5,
-    "space": 0.57,
-    "warmth": 0.565
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -67,5 +59,6 @@
     "ottoni",
     "owlfish"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

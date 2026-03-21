@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Cinquefoil companion \u2014 warm mid-range presence that supports lead engines.",
+  "description": "Cinquefoil companion — warm mid-range presence that supports lead engines.",
   "dna": {
     "brightness": 0.42,
     "warmth": 0.6,
@@ -87,5 +87,6 @@
     "support",
     "mid-range"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

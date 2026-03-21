@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Where digital meets analog \u2014 rapid erosion cycles create glitch-like artifacts in the reverb tail. High convergence adds pitched resonance to percussive input. For IDM drum processing.",
+  "description": "Where digital meets analog — rapid erosion cycles create glitch-like artifacts in the reverb tail. High convergence adds pitched resonance to percussive input. For IDM drum processing.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.3,
@@ -50,5 +50,6 @@
     "percussive",
     "estuary"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

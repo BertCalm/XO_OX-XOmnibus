@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The B-side version where the engineer goes wild \u2014 heavy erosion and entanglement create a psychedelic dub space where sounds melt into their own reflections.",
+  "description": "The B-side version where the engineer goes wild — heavy erosion and entanglement create a psychedelic dub space where sounds melt into their own reflections.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "melting",
     "experimental"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

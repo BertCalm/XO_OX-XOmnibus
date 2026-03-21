@@ -41,9 +41,9 @@
       "perc_macro_punch": 0.65
     },
     "Oracle": {
-      "orc_prophecy": 0.6,
-      "orc_morphRate": 0.5,
-      "orc_resonance": 0.55
+      "oracle_prophecy": 0.6,
+      "oracle_morphRate": 0.5,
+      "oracle_resonance": 0.55
     }
   },
   "coupling": {

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The smallest room imaginable \u2014 blankets absorbing everything above 2kHz. Warm, muffled, and impossibly close. The reverb of whispering secrets under covers.",
+  "description": "The smallest room imaginable — blankets absorbing everything above 2kHz. Warm, muffled, and impossibly close. The reverb of whispering secrets under covers.",
   "dna": {
     "brightness": 0.15,
     "warmth": 0.9,
@@ -50,5 +50,6 @@
     "warm",
     "whisper"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

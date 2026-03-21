@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "CuriosityEngine in full Investigate mode. Each voice explores the filter space independently — hold a chord and watch it become something alive. The preset that makes keyboard players stop and ask what they're hearing. For Sofia and Emma.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The family argument ebbs and swells. Sweep MEDDLING to watch the in-laws arrive. 'Shifting Ground' keeps nothing still.",
@@ -66,5 +68,6 @@
     "flux",
     "movement"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

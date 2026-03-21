@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OBSCURA at full veil — frequencies shadowed, depth active. The beauty that lives behind the curtain. Patient, interior, true.",

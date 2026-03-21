@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A small alcove lined with books \u2014 the paper absorbs most of the sound but the wood shelf resonates softly. Warm, dead, perfect for close-miked vocals and acoustic guitar.",
+  "description": "A small alcove lined with books — the paper absorbs most of the sound but the wood shelf resonates softly. Warm, dead, perfect for close-miked vocals and acoustic guitar.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.78,
@@ -50,5 +50,6 @@
     "warm",
     "acoustic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Resonant Flux",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "High filter resonance responding to LFO2's sweeping. The resonant peak moves through the grain field creating a singing, quivering flux that feels alive.",
-  "tags": ["flux", "resonant", "singing", "quivering", "alive", "sweep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "resonant",
+    "singing",
+    "quivering",
+    "alive",
+    "sweep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.62
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

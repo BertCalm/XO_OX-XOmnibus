@@ -42,6 +42,8 @@
     "Oblique": {},
     "Overworld": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

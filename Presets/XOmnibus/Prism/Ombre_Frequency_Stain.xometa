@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Frequency Stain",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Each note leaves a frequency stain from the resonant filter. Play melody lines and hear each note's resonant peak linger as a distinct color in the memory grain.",
-  "tags": ["prism", "stain", "frequency", "resonant", "melodic", "color"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "stain",
+    "frequency",
+    "resonant",
+    "melodic",
+    "color"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.68
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

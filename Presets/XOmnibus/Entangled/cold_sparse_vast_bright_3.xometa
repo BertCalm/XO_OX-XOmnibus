@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.5604,
-    "brightness": 0.9061,
-    "density": 0.1032,
-    "movement": 0.4438,
-    "space": 0.9443,
-    "warmth": 0.0983
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "spark",
     "origami"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

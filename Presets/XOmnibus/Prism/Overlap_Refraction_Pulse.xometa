@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rhythmic pulsing through cinquefoil \u2014 each note refracts into spectral bursts.",
+  "description": "Rhythmic pulsing through cinquefoil — each note refracts into spectral bursts.",
   "dna": {
     "brightness": 0.78,
     "warmth": 0.28,
@@ -78,5 +78,6 @@
     "refraction",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

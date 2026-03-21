@@ -56,5 +56,8 @@
       "org_macroCoupling": 0.0,
       "org_macroMutate": 0.0
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

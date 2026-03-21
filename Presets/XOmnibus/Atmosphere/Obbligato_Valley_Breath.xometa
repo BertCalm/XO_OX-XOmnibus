@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Breath sustains through long phrases. WIND high — the air path reverbs into wide space.",
@@ -64,5 +66,6 @@
     "atmosphere",
     "pad"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

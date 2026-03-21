@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Atlantic shore — the plucked mandolin-family tang of Lisbon. Bright, fast-attacking, with characteristic fast decay ring. The sound of fado before the voice enters.",

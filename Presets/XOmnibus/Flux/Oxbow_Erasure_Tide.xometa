@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Waves of erasure wash through the reverb tail \u2014 each cycle of the phase erosion LFO pulls more energy out. The tide recedes and takes the sound with it.",
+  "description": "Waves of erasure wash through the reverb tail — each cycle of the phase erosion LFO pulls more energy out. The tide recedes and takes the sound with it.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.45,
@@ -50,5 +50,6 @@
     "rhythmic",
     "fading"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

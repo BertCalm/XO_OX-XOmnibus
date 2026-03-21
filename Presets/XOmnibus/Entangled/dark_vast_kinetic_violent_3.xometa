@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9362,
-    "brightness": 0.1085,
-    "density": 0.433,
-    "movement": 0.8988,
-    "space": 0.9273,
-    "warmth": 0.5894
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "drift",
     "obsidian"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

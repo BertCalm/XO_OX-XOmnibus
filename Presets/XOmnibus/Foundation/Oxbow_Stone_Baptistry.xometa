@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A small circular stone room with a perfect acoustic \u2014 every whisper carries. Intimate yet resonant, with the golden ratio tuning adding subtle harmonic reinforcement.",
+  "description": "A small circular stone room with a perfect acoustic — every whisper carries. Intimate yet resonant, with the golden ratio tuning adding subtle harmonic reinforcement.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.75,
@@ -50,5 +50,6 @@
     "resonant",
     "sacred"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

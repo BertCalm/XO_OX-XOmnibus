@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Shimmering harmonic streams with phaser modulation and tape-wobble delay. Bright particles cascading through the void.",

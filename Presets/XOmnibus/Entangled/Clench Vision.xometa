@@ -36,13 +36,13 @@
   "name": "Clench Vision",
   "parameters": {
     "Oracle": {
-      "orc_aggression": 0.474,
-      "orc_brightness": 0.493,
-      "orc_couplingBus": 0,
-      "orc_couplingLevel": 0.63,
-      "orc_outputLevel": 0.86,
-      "orc_outputPan": -0.02,
-      "orc_warmth": 0.467
+      "oracle_aggression": 0.474,
+      "oracle_brightness": 0.493,
+      "oracle_couplingBus": 0,
+      "oracle_couplingLevel": 0.63,
+      "oracle_outputLevel": 0.86,
+      "oracle_outputPan": -0.02,
+      "oracle_warmth": 0.467
     },
     "Overbite": {
       "poss_aggression": 0.575,
@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.524,
-    "brightness": 0.445,
-    "density": 0.707,
-    "movement": 0.556,
-    "space": 0.61,
-    "warmth": 0.504
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "oracle",
     "bite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

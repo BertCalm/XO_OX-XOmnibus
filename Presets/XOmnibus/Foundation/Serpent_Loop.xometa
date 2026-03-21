@@ -26,37 +26,30 @@
   "name": "Serpent Loop",
   "parameters": {
     "Ouroboros": {
-      "uro_ampAttack": 309.5,
-      "uro_ampDecay": 126.5,
-      "uro_ampRelease": 334.8,
-      "uro_ampSustain": 0.45,
-      "uro_character": 0.39,
-      "uro_coupling": 0.02,
-      "uro_cycle": 0.88,
-      "uro_delayMix": 0.83,
-      "uro_feedbackLoop": 0.89,
-      "uro_filterCutoff": 0.08,
-      "uro_filterReso": 0.15,
-      "uro_lfoDepth": 0.47,
-      "uro_lfoRate": 0.33,
-      "uro_movement": 0.77,
-      "uro_reverbMix": 0.06,
-      "uro_space": 0.95
+      "ouro_ampAttack": 309.5,
+      "ouro_ampDecay": 126.5,
+      "ouro_ampRelease": 334.8,
+      "ouro_ampSustain": 0.45,
+      "ouro_character": 0.39,
+      "ouro_coupling": 0.02,
+      "ouro_cycle": 0.88,
+      "ouro_delayMix": 0.83,
+      "ouro_feedbackLoop": 0.89,
+      "ouro_filterCutoff": 0.08,
+      "ouro_filterReso": 0.15,
+      "ouro_lfoDepth": 0.47,
+      "ouro_lfoRate": 0.33,
+      "ouro_movement": 0.77,
+      "ouro_reverbMix": 0.06,
+      "ouro_space": 0.95
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.34,
-    "brightness": 0.08,
-    "density": 0.94,
-    "movement": 0.5,
-    "space": 0.28,
-    "warmth": 0.7
-  },
   "tags": [
     "foundation",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

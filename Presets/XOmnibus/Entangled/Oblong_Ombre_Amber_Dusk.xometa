@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Shadow mauve gradient dims Bob's amber warmth \u2014 the bass cooling toward night.",
+  "description": "Shadow mauve gradient dims Bob's amber warmth — the bass cooling toward night.",
   "dna": {
     "aggression": 0.302,
     "brightness": 0.514,
@@ -74,5 +74,5 @@
     "ombre"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

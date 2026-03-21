@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 10: XVC + MUTATE creates apparent polyrhythm not programmed into the sequence. The snare's tightening of hat decay creates a slight temporal feeling of compound rhythm. The kick's pitch-bending of toms makes the toms feel like they belong to a different rhythmic grid. Not fake — truly emergent from interaction.",

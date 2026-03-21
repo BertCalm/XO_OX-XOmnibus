@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The aunts warming up before the crowd arrives. DRAMA is at a third — present but not yet unleashed. The charango is already bright, the berimbau still half-asleep. The day's character is forming.",
@@ -58,5 +60,6 @@
     "drama",
     "afro-latin"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

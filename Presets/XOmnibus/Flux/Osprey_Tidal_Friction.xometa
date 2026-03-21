@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Mediterranean shore with active sea state — short swell period, variable wind direction, creature voices in rhythmic chatter. The energy of the sea neither calm nor storm: tidal flux.",

@@ -75,7 +75,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonicDNA": "Deep-pressure Solomon pad through bandpass. Two braid LFOs — one on depth, one on cutoff — create unpredictable phase turbulence.",
   "tags": [
     "solomon",
     "abyssal",

@@ -43,14 +43,6 @@
     "Onset": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.91,
-    "brightness": 0.7,
-    "density": 0.69,
-    "movement": 0.9,
-    "space": 0.18,
-    "warmth": 0.26
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "onset",
     "fold"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

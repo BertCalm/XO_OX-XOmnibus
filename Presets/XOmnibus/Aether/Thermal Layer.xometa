@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Aether",
-  "description": "Inverse threshold route: canopy brightness silences the floor \u2014 as the pad opens, percussion retreats into the mist. Understory grain position floats with canopy amplitude. The FOLIAGE macro thickens the reverb until it swallows everything.",
+  "description": "Inverse threshold route: canopy brightness silences the floor — as the pad opens, percussion retreats into the mist. Understory grain position floats with canopy amplitude. The FOLIAGE macro thickens the reverb until it swallows everything.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.55,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

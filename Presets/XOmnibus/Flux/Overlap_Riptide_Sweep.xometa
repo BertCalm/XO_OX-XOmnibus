@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Trefoil with aggressive filter sweeps \u2014 like being caught in a current.",
+  "description": "Trefoil with aggressive filter sweeps — like being caught in a current.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.38,
@@ -78,5 +78,6 @@
     "aggressive",
     "filter"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

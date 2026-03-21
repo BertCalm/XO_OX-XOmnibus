@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OCEANIC at maximum depth — the extended family portrait taken at the bottom of the water column. Pressure, beauty, silence between waves.",

@@ -28,14 +28,6 @@
     "Ombre": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.902,
-    "brightness": 0.072,
-    "density": 0.53,
-    "movement": 0.927,
-    "space": 0.933,
-    "warmth": 0.431
-  },
   "tags": [
     "dark",
     "aggressive",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

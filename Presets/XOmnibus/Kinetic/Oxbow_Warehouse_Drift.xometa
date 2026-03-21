@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Deep in an abandoned warehouse at 4am \u2014 the reverb stretches kicks into drones and hi-hats into shimmering clouds. Long tail with rhythmic erosion for ambient techno textures.",
+  "description": "Deep in an abandoned warehouse at 4am — the reverb stretches kicks into drones and hi-hats into shimmering clouds. Long tail with rhythmic erosion for ambient techno textures.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "stretching",
     "4am"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

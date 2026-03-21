@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "OHM community warmth amplifies Bob's amber glow \u2014 hippy-dad bass council.",
+  "description": "OHM community warmth amplifies Bob's amber glow — hippy-dad bass council.",
   "dna": {
     "aggression": 0.287,
     "brightness": 0.618,
@@ -74,5 +74,5 @@
     "ohm"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

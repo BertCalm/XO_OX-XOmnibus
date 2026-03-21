@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The reverb of a chest cavity heard from inside \u2014 deep, rhythmic, primal. Low damping and small size create a dark, intimate pulse. The Eels circulatory system.",
+  "description": "The reverb of a chest cavity heard from inside — deep, rhythmic, primal. Low damping and small size create a dark, intimate pulse. The Eels circulatory system.",
   "dna": {
     "brightness": 0.15,
     "warmth": 0.85,
@@ -50,5 +50,6 @@
     "dark",
     "internal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

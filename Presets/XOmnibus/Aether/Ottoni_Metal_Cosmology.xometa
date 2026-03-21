@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "GROW is maximal — all three age-voices bloom simultaneously. The patina has oxidized to bronze, then to something that has no name. Brass as geological event. The cousins have become minerals.",
@@ -64,5 +66,6 @@
     "maximal",
     "geological"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

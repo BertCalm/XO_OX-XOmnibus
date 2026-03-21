@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Bass line follows the oblique bounce axis \u2014 each reflection a syncopated groove.",
+  "description": "Bass line follows the oblique bounce axis — each reflection a syncopated groove.",
   "dna": {
     "aggression": 0.519,
     "brightness": 0.638,
@@ -74,5 +74,5 @@
     "oblique"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

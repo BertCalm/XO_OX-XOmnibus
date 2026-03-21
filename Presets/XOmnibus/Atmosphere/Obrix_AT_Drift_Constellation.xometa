@@ -107,5 +107,8 @@
     "MOVEMENT": 0.33,
     "COUPLING": 0.0,
     "SPACE": 0.43
+  },
+  "coupling": {
+    "pairs": []
   }
 }

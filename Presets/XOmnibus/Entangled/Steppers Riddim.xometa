@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Roots steppers rhythm with deep filter ducking. X drives a four-on-the-floor pump on O's cutoff, O modulates X's pitch for wobble.",

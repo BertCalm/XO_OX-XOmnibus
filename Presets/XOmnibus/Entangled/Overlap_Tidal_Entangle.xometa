@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Rhythmic pulse-driven figure-eight with strong entrainment \u2014 voices lock and release in waves.",
+  "description": "Rhythmic pulse-driven figure-eight with strong entrainment — voices lock and release in waves.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.55,
@@ -78,5 +78,6 @@
     "entrained",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

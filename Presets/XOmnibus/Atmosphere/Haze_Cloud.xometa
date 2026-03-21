@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Haze Cloud",
   "mood": "Atmosphere",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dense, saturated pad cloud. Heavy Haze saturation through low filter creates a warm fog of sound.",
-  "tags": ["pad", "ambient", "saturated", "warm", "haze"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "ambient",
+    "saturated",
+    "warm",
+    "haze"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -60,6 +73,8 @@
       "drift_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OMBRE SHADE to FADE — tonal gradient drifting. A watercolor bleeding at the edges. The in-between as destination.",

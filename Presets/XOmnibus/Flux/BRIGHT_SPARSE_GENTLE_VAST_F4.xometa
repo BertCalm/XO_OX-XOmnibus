@@ -28,14 +28,6 @@
     "Overlap": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.08,
-    "brightness": 0.896,
-    "density": 0.058,
-    "movement": 0.463,
-    "space": 0.937,
-    "warmth": 0.531
-  },
   "tags": [
     "bright",
     "gentle",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

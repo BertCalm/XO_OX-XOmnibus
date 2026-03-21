@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Dusty lo-fi percussion with vinyl crackle textures and soft transients. Head-nod ready.",

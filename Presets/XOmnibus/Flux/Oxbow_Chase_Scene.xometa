@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Adrenaline reverb \u2014 short, bright, with rapid erosion creating a sense of motion. The golden resonance adds metallic edge. Made for percussion and staccato scoring.",
+  "description": "Adrenaline reverb — short, bright, with rapid erosion creating a sense of motion. The golden resonance adds metallic edge. Made for percussion and staccato scoring.",
   "dna": {
     "brightness": 0.7,
     "warmth": 0.3,
@@ -50,5 +50,6 @@
     "tense",
     "percussion"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

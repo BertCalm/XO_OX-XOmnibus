@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Chua circuit with mid chaos and nearly free leash. Mysterious, drifting darkness that moves through deep harmonic space.",

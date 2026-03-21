@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Journey mode engaged. Notes never die \u2014 they evolve into an ever-shifting reef. FM modulation breathes life into wavetables.",
+  "description": "Journey mode engaged. Notes never die — they evolve into an ever-shifting reef. FM modulation breathes life into wavetables.",
   "tags": [
     "awakening",
     "hero",
@@ -107,5 +107,8 @@
     "MOVEMENT": 0.34,
     "COUPLING": 0.0,
     "SPACE": 0.46
+  },
+  "coupling": {
+    "pairs": []
   }
 }

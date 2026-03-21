@@ -63,14 +63,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.5,
-    "brightness": 0.6,
-    "density": 0.675,
-    "movement": 0.725,
-    "space": 0.525,
-    "warmth": 0.45
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -79,5 +71,6 @@
     "brass",
     "growth"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

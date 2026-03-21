@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The colony detaches from the seafloor and rises. Grain clouds follow the string body upward. Shimmer is maximal. At this depth, the siren's voice and the zooids' motion are the same event.",
@@ -69,5 +71,6 @@
     "swarm",
     "extended-technique"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

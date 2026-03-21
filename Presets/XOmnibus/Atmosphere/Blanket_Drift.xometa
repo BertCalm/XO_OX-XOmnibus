@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Blanket Drift",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Evolving texture pad with Blanket noise and Wander curiosity. Slow, organic movement.",
-  "tags": ["atmosphere", "texture", "evolving", "organic", "drift"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "texture",
+    "evolving",
+    "organic",
+    "drift"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

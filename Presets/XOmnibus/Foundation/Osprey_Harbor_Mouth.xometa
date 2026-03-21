@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Where the protected harbor meets the open ocean — hull dampening high, harbor verb thick, creature voices silent. The shelter of enclosed water. A patch that grounds but breathes.",

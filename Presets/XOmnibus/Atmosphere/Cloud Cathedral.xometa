@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-11",
   "description": "Vast slow-moving grain clouds. Large grains stretched into cathedral-scale reverberant pads.",

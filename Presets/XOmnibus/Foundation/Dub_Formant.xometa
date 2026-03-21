@@ -22,7 +22,9 @@
     "COUPLING": 0.0,
     "SPACE": 0.4
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.55,

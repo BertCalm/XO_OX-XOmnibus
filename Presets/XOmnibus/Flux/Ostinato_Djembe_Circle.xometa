@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Six djembes in conversation. Tone, slap, bass, mute \u2014 the full language.",
+  "description": "Six djembes in conversation. Tone, slap, bass, mute — the full language.",
   "tags": [
     "flux",
     "djembe",
@@ -165,5 +165,8 @@
       "osti_humanize": 0.4,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

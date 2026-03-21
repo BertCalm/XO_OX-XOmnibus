@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "mojo=0.0. The digital wall — 13 perfectly tuned oscillators, zero drift. Clinical, precise, immovable. Use as reference for what Mojo removes. The contrast makes the living presets more alive.",
   "dna": {

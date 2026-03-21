@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "SnoutFilter in Form mode — two formant bands at 1x and 2x cutoff. Character macro morphs between lower and upper mouth. CuriosityEngine in Investigate mode adds purposeful wandering. The coral feeds through two mouths simultaneously.",

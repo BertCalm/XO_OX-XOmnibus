@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.06,
-    "brightness": 0.32,
-    "density": 0.48,
-    "movement": 0.38,
-    "space": 0.82,
-    "warmth": 0.88
-  },
   "tags": [
     "wood",
     "rain",
@@ -67,5 +59,6 @@
     "thermal",
     "atmosphere"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

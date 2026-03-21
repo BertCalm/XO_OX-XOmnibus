@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "CIRCLE active \u2014 seats trigger sympathetic resonance in neighbors.",
+  "description": "CIRCLE active — seats trigger sympathetic resonance in neighbors.",
   "tags": [
     "foundation",
     "circle",
@@ -166,5 +166,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

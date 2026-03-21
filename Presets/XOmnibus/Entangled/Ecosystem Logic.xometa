@@ -56,10 +56,10 @@
       "ocelot_warmth": 0.65
     },
     "Organon": {
-      "org_ampAttack": 0.03,
-      "org_ampRelease": 1.5,
-      "org_filterCutoff": 2800.0,
-      "org_filterReso": 0.3
+      "organon_ampAttack": 0.03,
+      "organon_ampRelease": 1.5,
+      "organon_filterCutoff": 2800.0,
+      "organon_filterReso": 0.3
     }
   },
   "schema_version": 1,

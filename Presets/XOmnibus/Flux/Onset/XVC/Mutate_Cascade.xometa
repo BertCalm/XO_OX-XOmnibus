@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 7: High MUTATE macro + full XVC mesh. MUTATE drifts blend and character every block; XVC routes those drifting voices into each other. Each hit is slightly different — not random noise but an evolving organism. The kick's character drift feeds into the snare filter, which feeds into the hat timing. Cascading stochastic evolution.",

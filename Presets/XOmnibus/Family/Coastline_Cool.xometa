@@ -42,6 +42,8 @@
     "Osteria": {},
     "Oceanic": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

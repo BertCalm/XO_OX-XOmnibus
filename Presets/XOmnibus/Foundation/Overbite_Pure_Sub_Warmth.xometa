@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "BELLY dominant at 0.7 — the possum weighted down with warmth. BITE zero, SCURRY zero, TRASH zero. No fang, no instability, no noise. Sub oscillator forward, filter barely touching, slow attack to let the warmth bloom. What the animal sounds like when it is not threatened. Pure sub-bass comfort. The B008 Blessing stripped to its warmest dimension.",
   "dna": {

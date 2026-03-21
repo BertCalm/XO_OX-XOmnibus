@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC ADVANCED 2: Maximum snare_to_hat_decay (0.95) + snare_to_perc_blend (0.9) + hat choke active. Every snare hit simultaneously tightens the closed hat to near-zero decay AND pushes Perc A deep into algorithm FM territory. The entire upper register reshapes on every backbeat. Snare lands — the kit's ceiling collapses and rebuilds.",

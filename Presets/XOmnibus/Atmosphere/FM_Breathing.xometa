@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "FM LFO at 0.08 Hz + ERA drift at 0.067 Hz. The FM engine breathes at ocean-wave tempo. The Living FM — first preset to use fmLfoDepth expressively alongside ERA drift.",
   "dna": {

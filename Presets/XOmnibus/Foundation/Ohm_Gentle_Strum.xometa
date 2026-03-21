@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "A rooted pluck with no argument in sight. The in-laws haven't arrived yet. 'Gentle Strum' finds the quietest expression of this voice.",
@@ -66,5 +68,6 @@
     "foundation",
     "clean"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

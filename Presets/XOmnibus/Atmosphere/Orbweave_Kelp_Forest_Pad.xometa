@@ -2,28 +2,71 @@
   "schema_version": 1,
   "name": "Orbweave Kelp Forest Pad",
   "mood": "Atmosphere",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dual LFO on braid depth and filter cutoff at different rates (15s vs 9s) creates polyrhythmic breathing. Solomon at major third interval implies a chord within each note. Deep reverb puts coupling texture inside an imagined space.",
   "tier": "awakening",
-  "tags": ["atmosphere", "solomon", "pad", "kelp", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "atmosphere",
+    "solomon",
+    "pad",
+    "kelp",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.45, "warmth": 0.55, "movement": 0.40, "density": 0.60, "space": 0.75, "aggression": 0.04 },
-  "sonic_dna": { "brightness": 0.45, "warmth": 0.55, "movement": 0.40, "density": 0.60, "space": 0.75, "aggression": 0.04 },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.04
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 5.0, "weave_knotType": 3, "weave_braidDepth": 0.72,
-      "weave_filterCutoff": 5200.0, "weave_filterReso": 0.08, "weave_filterType": 0,
-      "weave_ampA": 0.55, "weave_ampD": 0.8, "weave_ampS": 0.88, "weave_ampR": 4.5,
-      "weave_lfo1Type": 1, "weave_lfo1Target": 5, "weave_lfo1Depth": 0.22, "weave_lfo1Rate": 0.067,
-      "weave_lfo2Type": 1, "weave_lfo2Target": 2, "weave_lfo2Depth": 0.18, "weave_lfo2Rate": 0.11,
-      "weave_fx1Type": 3, "weave_fx1Mix": 0.52, "weave_fx1Param": 0.72,
-      "weave_fx2Type": 2, "weave_fx2Mix": 0.22, "weave_fx2Param": 0.4,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
+      "weave_strandType": 1,
+      "weave_strandTune": 5.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.72,
+      "weave_filterCutoff": 5200.0,
+      "weave_filterReso": 0.08,
+      "weave_filterType": 0,
+      "weave_ampA": 0.55,
+      "weave_ampD": 0.8,
+      "weave_ampS": 0.88,
+      "weave_ampR": 4.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.22,
+      "weave_lfo1Rate": 0.067,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.18,
+      "weave_lfo2Rate": 0.11,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.52,
+      "weave_fx1Param": 0.72,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.22,
+      "weave_fx2Param": 0.4,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
       "weave_voiceMode": 3
     }
-  }
+  },
+  "tempo": null
 }

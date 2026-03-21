@@ -42,9 +42,9 @@
       "ow_arpRate": 100.0
     },
     "Optic": {
-      "opt_lensFlare": 0.6,
-      "opt_aberration": 0.4,
-      "opt_filterCut": 8000.0
+      "optic_lensFlare": 0.6,
+      "optic_aberration": 0.4,
+      "optic_filterCut": 8000.0
     }
   },
   "coupling": {

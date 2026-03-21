@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Orphica dissolved into infinite space. Space dimension at 0.99 — cavernous and unbound. The sound arrives from everywhere and nowhere.",
@@ -55,5 +57,5 @@
     "orphica"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

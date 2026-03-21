@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Current State",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "In flux — neither here nor there, neither remembered nor present. Fast LFOs sweep both parameters simultaneously, creating a constantly evolving midpoint state.",
-  "tags": ["flux", "motion", "midpoint", "evolving", "continuous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "motion",
+    "midpoint",
+    "evolving",
+    "continuous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.6
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

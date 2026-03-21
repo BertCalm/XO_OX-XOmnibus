@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Grain Bed",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Oubli maximal — a granular bed made from accumulated memory. Play slow chords to build the texture over time. Grain size at 400ms creates cloud-like density.",
-  "tags": ["foundation", "granular", "bed", "cloud", "texture", "oubli"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "granular",
+    "bed",
+    "cloud",
+    "texture",
+    "oubli"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.85
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

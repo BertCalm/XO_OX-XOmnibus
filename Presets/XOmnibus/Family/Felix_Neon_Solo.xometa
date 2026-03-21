@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "feliX at full presence — the neon tetra in its tank. Snap crisp, bloom lit, digital shimmer riding a warm sub. This is what feliX sounds like when nobody else is in the room.",

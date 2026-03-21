@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "TRASH macro maxed — the possum has found an overflowing bin and is absolutely destroying it. BITE full, SCURRY at maximum instability. The filter cascades through modes mid-note, drive saturating everything below 200Hz into clipped grime. Noise routed to filter for added chaos. This preset should feel like something being torn apart.",

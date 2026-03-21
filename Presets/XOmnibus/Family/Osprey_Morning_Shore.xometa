@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The shoreline at first light — seaState minimal, swell period long and slow, shoreBlend tilted toward sand warmth. Hull dampening wraps the sound in safety. No foam, no brine, no creatures. B012 ShoreSystem at its most nurturing: the beach before the world arrives.",

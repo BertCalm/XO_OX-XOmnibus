@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The family drifts between argument and commune. MEDDLING never settles — the in-laws are restless.",
@@ -66,5 +68,6 @@
     "aether",
     "experimental"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

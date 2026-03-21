@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Outwit pushed to extreme brightness \u2014 brightness 0.98, movement 0.79, aggression 0.65. Ultra-bright Flux zone filler.",
+  "description": "Outwit pushed to extreme brightness — brightness 0.98, movement 0.79, aggression 0.65. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.984,
-    "warmth": 0.053,
-    "movement": 0.789,
-    "density": 0.553,
-    "space": 0.269,
-    "aggression": 0.654
-  },
-  "sonic_dna": {
     "brightness": 0.984,
     "warmth": 0.053,
     "movement": 0.789,

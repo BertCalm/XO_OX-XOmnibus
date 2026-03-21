@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Mixtur-Trautonium subharmonics lock Bob's oscillator register \u2014 abyssal bass depth.",
+  "description": "Mixtur-Trautonium subharmonics lock Bob's oscillator register — abyssal bass depth.",
   "dna": {
     "aggression": 0.407,
     "brightness": 0.578,
@@ -74,5 +74,5 @@
     "owlfish"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

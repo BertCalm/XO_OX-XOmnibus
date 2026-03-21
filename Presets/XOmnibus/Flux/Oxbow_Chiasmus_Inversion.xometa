@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The X-crossing inverted \u2014 what enters left exits right, but eroded beyond recognition. A mirror that distorts rather than reflects. The Eels antisymmetric twin.",
+  "description": "The X-crossing inverted — what enters left exits right, but eroded beyond recognition. A mirror that distorts rather than reflects. The Eels antisymmetric twin.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.35,
@@ -50,5 +50,6 @@
     "antisymmetric",
     "distorted"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

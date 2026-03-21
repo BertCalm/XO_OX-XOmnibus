@@ -28,14 +28,6 @@
     "Osteria": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.478,
-    "brightness": 0.455,
-    "density": 0.946,
-    "movement": 0.937,
-    "space": 0.091,
-    "warmth": 0.074
-  },
   "tags": [
     "cold",
     "kinetic",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

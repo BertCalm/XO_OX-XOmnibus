@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Love Lock",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum LOVE — spectral crossfade at 1.0, harmonic lock engaged. The fullest resolution state. Harmonics fuse.",
-  "tags": ["expressive", "powerful", "movement", "counterpoint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "expressive",
+    "powerful",
+    "movement",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.65,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

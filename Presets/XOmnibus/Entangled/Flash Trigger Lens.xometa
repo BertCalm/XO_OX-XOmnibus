@@ -41,9 +41,9 @@
       "perc_macro_punch": 0.7
     },
     "Optic": {
-      "opt_lensFlare": 0.65,
-      "opt_aberration": 0.45,
-      "opt_filterCut": 7000.0
+      "optic_lensFlare": 0.65,
+      "optic_aberration": 0.45,
+      "optic_filterCut": 7000.0
     }
   },
   "coupling": {

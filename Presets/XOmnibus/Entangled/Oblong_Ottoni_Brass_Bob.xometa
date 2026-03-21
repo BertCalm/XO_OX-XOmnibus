@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Ottoni GROW macro swells Bob's harmonic density \u2014 bass section expanding.",
+  "description": "Ottoni GROW macro swells Bob's harmonic density — bass section expanding.",
   "dna": {
     "aggression": 0.418,
     "brightness": 0.593,
@@ -74,5 +74,5 @@
     "ottoni"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

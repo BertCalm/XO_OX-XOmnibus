@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The body resonance of a koto \u2014 wooden warmth with metallic string overtones. Golden resonance picks out the harmonic series of plucked silk strings in a tatami room.",
+  "description": "The body resonance of a koto — wooden warmth with metallic string overtones. Golden resonance picks out the harmonic series of plucked silk strings in a tatami room.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "wooden",
     "silk"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

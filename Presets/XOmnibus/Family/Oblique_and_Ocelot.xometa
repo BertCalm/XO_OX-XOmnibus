@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OBLIQUE off-axis + OCELOT feline precision — the unexpected angle and the precise strike. Two ways of not going straight.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-16",
   "description": "feliX and Oscar at peace. Coupling gentle, bloom long, snap quiet. The neon tetra and the axolotl sharing the tank on a Sunday morning. No glitch — just warmth in stereo.",

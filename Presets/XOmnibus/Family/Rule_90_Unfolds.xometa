@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OUTWIT RULE 90 — the octopus outmaneuvering logic itself. Eight arms of cellular automata solving what shouldn't be solvable.",

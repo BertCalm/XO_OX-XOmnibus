@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Pi constant at depth 2 — the second convergent (22/7) sits a fraction above the natural third harmonic, creating a bent, pressurized sound unlike any pure harmonic series. Filter cutoff at 2800 Hz removes all shimmer; only the tonal mass remains. Very long attack (3.5s) means the sound builds from silence like hydrostatic pressure increasing with depth. LFOs at their floor rate (0.01 Hz) so movement is geological rather than musical. High resonator reinforces the fundamental against the pressure of Pi's ratios above it. This is the mathematics of constraint — a psalm sung at depth where the water column decides which partials survive.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.62,
     "aggression": 0.35
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.2, "COLOR": 0.12, "COUPLING": 0.0, "SPACE": 0.65 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.2,
+    "COLOR": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
   "mood": "Submerged",
   "name": "Pressure Psalm",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "submerged", "pi", "pressure", "dark", "slow", "deep"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "submerged",
+    "pi",
+    "pressure",
+    "dark",
+    "slow",
+    "deep"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

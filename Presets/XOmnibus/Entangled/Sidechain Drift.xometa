@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Slow drifting pad with sidechain ducking that ebbs and flows. X's envelope gently pulls O's cutoff creating a hazy pumping atmosphere.",

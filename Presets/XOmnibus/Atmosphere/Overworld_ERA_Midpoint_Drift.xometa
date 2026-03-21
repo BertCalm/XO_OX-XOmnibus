@@ -47,14 +47,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.14,
-    "brightness": 0.55,
-    "density": 0.51,
-    "movement": 0.47,
-    "space": 0.79,
-    "warmth": 0.58
-  },
   "tags": [
     "era",
     "midpoint",

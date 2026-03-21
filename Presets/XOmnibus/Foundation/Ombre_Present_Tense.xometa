@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Blend fully in the Opsis direction — all perception, no memory grain. Fast reactivity, low interference. A clear, present-forward pad that responds instantly to velocity and dynamics. Minimal memory blur means every note is heard exactly as played: honest, stable, immediate. The instrument that listens.",
   "dna": {

@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9444,
-    "brightness": 0.488,
-    "density": 0.0739,
-    "movement": 0.9094,
-    "space": 0.9067,
-    "warmth": 0.5427
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "mirror",
     "overworld"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

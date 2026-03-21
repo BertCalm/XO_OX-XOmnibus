@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Atlantic shore — Kora harp harmonics in active elastic coupling. Voices stretch and rebound against each other in metabolic rhythm. The sympathy network turns every note into a living system response.",

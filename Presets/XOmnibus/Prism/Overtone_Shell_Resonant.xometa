@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "resoMix=0.9, the allpass resonator at near-maximum. The fundamental is reinforced through a comb delay that creates quasi-Karplus-Strong pluck character — a mathematically tuned resonant body layered under the additive partials. Phi constant, mid-depth: spectral shimmer on a resonant shell.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.4,
     "aggression": 0.1
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.4, "COLOR": 0.55, "COUPLING": 0.0, "SPACE": 0.35 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.4,
+    "COLOR": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
   "mood": "Prism",
   "name": "Shell Resonant",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["prism", "resonant", "allpass", "shell", "pluck", "fibonacci", "karplus"],
-  "version": "1.0"
+  "tags": [
+    "prism",
+    "resonant",
+    "allpass",
+    "shell",
+    "pluck",
+    "fibonacci",
+    "karplus"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

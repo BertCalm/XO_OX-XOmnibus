@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The reverb that disappears. Extreme erosion depth with moderate entanglement — sounds enter rich and full, then the phase erosion systematically cancels frequencies until only ghost harmonics remain. The channel vanishes.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.85,
     "aggression": 0.2
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Entangled",
   "name": "Vanishing Channel",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["entangled", "disappearing", "erosion", "ghost", "experimental"],
-  "version": "1.0.0"
+  "tags": [
+    "entangled",
+    "disappearing",
+    "erosion",
+    "ghost",
+    "experimental"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

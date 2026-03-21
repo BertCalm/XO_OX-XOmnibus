@@ -80,5 +80,8 @@
       "sky_modSlot2Dst": 2.0,
       "sky_modSlot2Amt": 0.4
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

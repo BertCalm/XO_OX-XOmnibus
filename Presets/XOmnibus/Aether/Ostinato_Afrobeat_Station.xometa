@@ -181,5 +181,8 @@
       "osti_humanize": 0.5,
       "osti_masterLevel": 0.85
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

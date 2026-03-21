@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 22 nested triangles at 9 Hz. Tri osc (triangle matching the geometry). LFOs slightly detuned from each other — produces organic beating against the CA's own rhythm.",
   "dna": {
     "brightness": 0.7,
     "warmth": 0.38,

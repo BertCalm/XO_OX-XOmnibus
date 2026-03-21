@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique pushed to extreme brightness \u2014 brightness 0.93, movement 0.61, aggression 0.63. Ultra-bright Prism zone filler.",
+  "description": "Oblique pushed to extreme brightness — brightness 0.93, movement 0.61, aggression 0.63. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.932,
-    "warmth": 0.163,
-    "movement": 0.608,
-    "density": 0.46,
-    "space": 0.573,
-    "aggression": 0.633
-  },
-  "sonic_dna": {
     "brightness": 0.932,
     "warmth": 0.163,
     "movement": 0.608,

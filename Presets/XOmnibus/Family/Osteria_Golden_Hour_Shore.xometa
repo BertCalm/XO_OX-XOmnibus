@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Dusk over the Algarve. The shore is fully coastward — all five cultural data sets singing together. warmth at 0.85. smokeCutoff open as the evening crowd exhales. The wine is poured, the first fado verse has not yet begun.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Sub Fifth mode — frequency × 2/3 gives a perfect fifth below. The power chord weight of a guitar without the guitar. Belly macro up for warm sub. One note, two intervals, infinite weight. The discovery that no other engine has this harmonic relationship in its sub oscillator.",

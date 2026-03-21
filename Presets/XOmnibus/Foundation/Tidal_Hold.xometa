@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Tidal Hold",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.45,
-    "warmth": 0.6,
-    "movement": 0.4,
-    "density": 0.7,
-    "space": 0.65,
-    "aggression": 0.1
-  },
-  "sonic_dna": {
     "brightness": 0.45,
     "warmth": 0.6,
     "movement": 0.4,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 1
     }
   },
-  "tags": ["ocelot", "foundation", "underwater", "sustained", "slow"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "underwater",
+    "sustained",
+    "slow"
+  ],
   "description": "Underwater biome at rest — pandeiro shimmer barely reaching the surface. Whale calls emerge on canopy peaks."
 }

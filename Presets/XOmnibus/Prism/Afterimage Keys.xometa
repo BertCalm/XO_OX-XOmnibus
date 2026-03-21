@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "A playable keys patch where each note leaves a ghostly afterimage. Fast attack, moderate blend — you hear the note clearly, then its memory trails behind like a shadow.",

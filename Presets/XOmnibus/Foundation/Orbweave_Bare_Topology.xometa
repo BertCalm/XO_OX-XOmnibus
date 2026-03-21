@@ -2,27 +2,66 @@
   "schema_version": 1,
   "name": "Orbweave Bare Topology",
   "mood": "Foundation",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The reference state — what coupling sounds like in isolation. Pure sustained tone whose partials shift between notes. Minimal preset demonstrating what ORBWEAVE is. Sweep WEAVE macro from 0 to 1.0 while holding a note.",
   "tier": "awakening",
-  "tags": ["foundation", "reference", "trefoil", "topology", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "foundation",
+    "reference",
+    "trefoil",
+    "topology",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.55, "warmth": 0.45, "movement": 0.15, "density": 0.35, "space": 0.20, "aggression": 0.10 },
-  "sonic_dna": { "brightness": 0.55, "warmth": 0.45, "movement": 0.15, "density": 0.35, "space": 0.20, "aggression": 0.10 },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.2,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 0.0, "weave_knotType": 0, "weave_braidDepth": 0.80,
-      "weave_torusP": 2, "weave_torusQ": 3,
-      "weave_filterCutoff": 6000.0, "weave_filterReso": 0.05, "weave_filterType": 0,
-      "weave_ampA": 0.01, "weave_ampD": 0.5, "weave_ampS": 0.75, "weave_ampR": 1.5,
-      "weave_lfo1Type": 0, "weave_lfo2Type": 0,
-      "weave_fx1Type": 0, "weave_fx2Type": 0, "weave_fx3Type": 0,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
-      "weave_voiceMode": 3, "weave_pitchBendRange": 2, "weave_glideTime": 0.0
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.8,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 6000.0,
+      "weave_filterReso": 0.05,
+      "weave_filterType": 0,
+      "weave_ampA": 0.01,
+      "weave_ampD": 0.5,
+      "weave_ampS": 0.75,
+      "weave_ampR": 1.5,
+      "weave_lfo1Type": 0,
+      "weave_lfo2Type": 0,
+      "weave_fx1Type": 0,
+      "weave_fx2Type": 0,
+      "weave_fx3Type": 0,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
     }
-  }
+  },
+  "tempo": null
 }

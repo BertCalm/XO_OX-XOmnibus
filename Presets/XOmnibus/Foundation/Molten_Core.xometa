@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Hot sub pressure from the earth's center outward.",
@@ -30,11 +32,11 @@
   "name": "Molten Core",
   "parameters": {
     "Obese": {
-      "ob_low_shelf": 0.8,
-      "ob_presence": 0.15,
-      "ob_saturation": 0.55,
-      "ob_sub_gain": 0.9,
-      "ob_warmth": 0.85
+      "fat_low_shelf": 0.8,
+      "fat_presence": 0.15,
+      "fat_saturation": 0.55,
+      "fat_sub_gain": 0.9,
+      "fat_warmth": 0.85
     }
   },
   "schema_version": 1,

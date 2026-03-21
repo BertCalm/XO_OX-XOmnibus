@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Shadow Twin",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Interference at 0.6 with equal blend — both Oubli and Opsis feedback into each other in perfect tension. Every note has a shadow companion that modulates it slightly.",
-  "tags": ["foundation", "twin", "shadow", "interference", "modulation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "twin",
+    "shadow",
+    "interference",
+    "modulation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.5
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

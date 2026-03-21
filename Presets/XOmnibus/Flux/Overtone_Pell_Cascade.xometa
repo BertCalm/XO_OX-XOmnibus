@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Sqrt2 constant with LFO1 sweeping depth at a medium rate (1.8 Hz) across the full Pell sequence: 1/1, 3/2, 7/5, 17/12, 41/29, 99/70, 239/169, 577/408. As depth sweeps, partials staircase through successively closer rational approximations to √2. Unlike Pi or E cascades, the Pell sequence has a musical logic: each step is a convergent of a tritone (√2 is exactly the equal-temperament tritone). The cascade sounds like a tritone hunting its own identity — always approaching, never arriving. Medium-high filter cutoff (16000 Hz) reveals each convergent fully as it passes. LFO2 counter-rotates partial phases to prevent the sweep from becoming repetitive. This is the tritone as a living thing.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.42,
     "aggression": 0.52
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.72, "COLOR": 0.75, "COUPLING": 0.0, "SPACE": 0.38 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.72,
+    "COLOR": 0.75,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
   "mood": "Flux",
   "name": "Pell Cascade",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "flux", "sqrt2", "pell", "cascade", "tritone", "hunting"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "flux",
+    "sqrt2",
+    "pell",
+    "cascade",
+    "tritone",
+    "hunting"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

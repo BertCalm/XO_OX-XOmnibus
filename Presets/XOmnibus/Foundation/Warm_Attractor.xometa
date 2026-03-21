@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Aizawa attractor with gentle chaos and heavy damping. Warm analog-like pad with smooth, rounded character.",

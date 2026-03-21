@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orbital pushed to extreme brightness \u2014 brightness 0.89, movement 0.74, aggression 0.75. Ultra-bright Prism zone filler.",
+  "description": "Orbital pushed to extreme brightness — brightness 0.89, movement 0.74, aggression 0.75. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.889,
-    "warmth": 0.188,
-    "movement": 0.741,
-    "density": 0.623,
-    "space": 0.379,
-    "aggression": 0.753
-  },
-  "sonic_dna": {
     "brightness": 0.889,
     "warmth": 0.188,
     "movement": 0.741,

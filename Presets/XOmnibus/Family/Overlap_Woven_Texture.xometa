@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Figure-8 texture with moderate density \u2014 layers beautifully under lead sounds.",
+  "description": "Figure-8 texture with moderate density — layers beautifully under lead sounds.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.55,
@@ -87,5 +87,6 @@
     "layer",
     "supporting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

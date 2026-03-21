@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Oblique pushed to extreme brightness \u2014 brightness 0.91, movement 0.93, aggression 0.59. Ultra-bright Flux zone filler.",
+  "description": "Oblique pushed to extreme brightness — brightness 0.91, movement 0.93, aggression 0.59. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.912,
-    "warmth": 0.252,
-    "movement": 0.931,
-    "density": 0.528,
-    "space": 0.393,
-    "aggression": 0.594
-  },
-  "sonic_dna": {
     "brightness": 0.912,
     "warmth": 0.252,
     "movement": 0.931,

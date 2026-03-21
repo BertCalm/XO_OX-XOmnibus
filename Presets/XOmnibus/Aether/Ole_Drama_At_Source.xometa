@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "DRAMA is not a macro any longer — it is the fundamental frequency. All three aunts have gone to the origin of their instruments. The charango sounds like the tree it came from. Rhythm has become continental drift.",
@@ -58,5 +60,6 @@
     "afro-latin",
     "transcendent"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

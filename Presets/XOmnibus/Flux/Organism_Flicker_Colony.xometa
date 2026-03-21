@@ -2,26 +2,66 @@
   "schema_version": 1,
   "name": "Organism Flicker Colony",
   "mood": "Flux",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Scope=1 + rate=24Hz. No averaging, near-audio-rate chaos. Rule 30 pseudorandom. Granular filter flicker.",
   "tier": "awakening",
-  "tags": ["flux", "chaos", "granular", "rule-30", "fast", "guru-bin-awakening"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "flux",
+    "chaos",
+    "granular",
+    "rule-30",
+    "fast",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.6, "warmth": 0.3, "movement": 0.95, "density": 0.5, "space": 0.2, "aggression": 0.65 },
-  "sonic_dna": { "brightness": 0.6, "warmth": 0.3, "movement": 0.95, "density": 0.5, "space": 0.2, "aggression": 0.65 },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.3,
+    "movement": 0.95,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.65
+  },
   "parameters": {
     "Organism": {
-      "org_rule": 30.0, "org_seed": 32767, "org_stepRate": 24.0, "org_scope": 1,
-      "org_mutate": 0.0, "org_freeze": 0, "org_oscWave": 0, "org_subLevel": 0.2,
-      "org_filterCutoff": 3500.0, "org_filterRes": 0.55, "org_velCutoff": 0.5,
-      "org_ampAtk": 0.01, "org_ampDec": 0.15, "org_ampSus": 0.6, "org_ampRel": 0.4,
-      "org_lfo1Rate": 2.5, "org_lfo1Depth": 0.08, "org_lfo2Rate": 1.8, "org_lfo2Depth": 0.1,
-      "org_reverbMix": 0.2, "org_macroRule": 0.0, "org_macroSeed": 0.0,
-      "org_macroCoupling": 0.0, "org_macroMutate": 0.0
+      "org_rule": 30.0,
+      "org_seed": 32767,
+      "org_stepRate": 24.0,
+      "org_scope": 1,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.2,
+      "org_filterCutoff": 3500.0,
+      "org_filterRes": 0.55,
+      "org_velCutoff": 0.5,
+      "org_ampAtk": 0.01,
+      "org_ampDec": 0.15,
+      "org_ampSus": 0.6,
+      "org_ampRel": 0.4,
+      "org_lfo1Rate": 2.5,
+      "org_lfo1Depth": 0.08,
+      "org_lfo2Rate": 1.8,
+      "org_lfo2Depth": 0.1,
+      "org_reverbMix": 0.2,
+      "org_macroRule": 0.0,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
     }
-  }
+  },
+  "tempo": null
 }

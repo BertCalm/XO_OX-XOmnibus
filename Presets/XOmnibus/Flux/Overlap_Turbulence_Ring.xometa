@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus with high current and S&H \u2014 turbulent water surface.",
+  "description": "Torus with high current and S&H — turbulent water surface.",
   "dna": {
     "brightness": 0.48,
     "warmth": 0.42,
@@ -78,5 +78,6 @@
     "current",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

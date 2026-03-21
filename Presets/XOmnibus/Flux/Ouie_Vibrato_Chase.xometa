@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Vibrato Chase",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice A with strong vibrato, Voice B dry. HAMMER at mild LOVE — Voice B follows A's harmony while A shakes expressively.",
-  "tags": ["expressive", "movement", "counterpoint", "duophonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "expressive",
+    "movement",
+    "counterpoint",
+    "duophonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.58,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Dad picks a single chord on the dobro and holds. The commune absorbs it slowly. Meddling is at rest. The field listens before it speaks.",
@@ -68,5 +70,6 @@
     "warm",
     "communal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

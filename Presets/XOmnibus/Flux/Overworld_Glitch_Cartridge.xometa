@@ -47,14 +47,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.81,
-    "brightness": 0.78,
-    "density": 0.71,
-    "movement": 0.88,
-    "space": 0.42,
-    "warmth": 0.22
-  },
   "tags": [
     "glitch",
     "flux",

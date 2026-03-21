@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "braidDepth=0.0. No coupling. Four sine strands at the same pitch — pure reference. This is what the engine sounds like before topology. Play it, then raise WEAVE macro to hear the knot wake up. The distance between this and full braid is the engine's entire soul.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.2,
     "aggression": 0.0
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.0, "TENSION": 0.0, "KNOT": 0.0, "SPACE": 0.0 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.0,
+    "TENSION": 0.0,
+    "KNOT": 0.0,
+    "SPACE": 0.0
+  },
   "mood": "Foundation",
   "name": "The Naked Braid",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["reference", "naked", "no-coupling", "educational", "foundation"],
-  "version": "1.0"
+  "tags": [
+    "reference",
+    "naked",
+    "no-coupling",
+    "educational",
+    "foundation"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

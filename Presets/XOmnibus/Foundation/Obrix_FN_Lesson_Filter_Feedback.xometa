@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Filter feedback loops the output back into the input. At high values, the filter self-oscillates \u2014 singing on its own.",
+  "description": "Filter feedback loops the output back into the input. At high values, the filter self-oscillates — singing on its own.",
   "tags": [
     "lesson",
     "feedback",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

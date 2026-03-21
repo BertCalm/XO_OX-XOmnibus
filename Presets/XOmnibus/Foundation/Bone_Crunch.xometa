@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Bone Crunch",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aggressive mono bass with gnash distortion and weight sub. Bite macro pushes into feral territory.",
-  "tags": ["bass", "aggressive", "mono", "gnash", "distortion"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "bass",
+    "aggressive",
+    "mono",
+    "gnash",
+    "distortion"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

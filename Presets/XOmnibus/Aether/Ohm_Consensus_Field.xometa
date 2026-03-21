@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Every voice in the commune has voted. The result is not a sound but a pressure — warm, unanimous, infinite. Meddling dissolved into agreement. There is no dad left. Only the field.",
@@ -68,5 +70,6 @@
     "extended-technique",
     "transcendent"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

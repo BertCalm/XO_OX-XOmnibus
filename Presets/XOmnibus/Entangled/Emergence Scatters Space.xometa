@@ -65,14 +65,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.42,
-    "brightness": 0.64,
-    "density": 0.63,
-    "movement": 0.78,
-    "space": 0.76,
-    "warmth": 0.5
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -84,7 +76,7 @@
     "scatter",
     "fm"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.394,
     "warmth": 0.5,
@@ -92,5 +84,6 @@
     "density": 0.749,
     "space": 0.17,
     "aggression": 0.121
-  }
+  },
+  "tempo": null
 }

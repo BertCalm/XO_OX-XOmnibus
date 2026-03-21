@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Melancholic, music-box-like pad with soft filter envelope. Dreamy and slightly detuned for nostalgic warmth.",

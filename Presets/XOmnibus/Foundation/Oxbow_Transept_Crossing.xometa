@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The intersection of nave and transept \u2014 where four acoustic spaces merge. Complex early reflections, moderate decay, golden resonance from the crossing dome above.",
+  "description": "The intersection of nave and transept — where four acoustic spaces merge. Complex early reflections, moderate decay, golden resonance from the crossing dome above.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.68,
@@ -50,5 +50,6 @@
     "dome",
     "architectural"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

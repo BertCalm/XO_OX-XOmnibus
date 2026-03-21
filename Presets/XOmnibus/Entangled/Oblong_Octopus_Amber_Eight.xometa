@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Chromatophore pulses trigger Bob's filter modulation \u2014 skin colour driving bass colour.",
+  "description": "Chromatophore pulses trigger Bob's filter modulation — skin colour driving bass colour.",
   "dna": {
     "aggression": 0.577,
     "brightness": 0.685,
@@ -74,5 +74,5 @@
     "octopus"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

@@ -79,19 +79,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3,
-    "brightness": 0.3,
-    "density": 0.4,
-    "movement": 0.65,
-    "space": 0.7,
-    "warmth": 0.75
-  },
   "tags": [
     "percussive",
     "armor",
     "explosive",
     "dynamic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

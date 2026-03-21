@@ -75,7 +75,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonicDNA": "Two offset sine LFOs — one opens filter, one closes braid depth — at different rates. The desync creates an organic tidal rhythm that never repeats.",
   "tags": [
     "torus",
     "tidal",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The 5-macro demonstration. BELLY macro → warm round sub. BITE macro → aggressive gnash. One patch, two instruments. Ride the macros through a song — verse is warm, chorus bites. B008 blessed by all 8 ghosts.",

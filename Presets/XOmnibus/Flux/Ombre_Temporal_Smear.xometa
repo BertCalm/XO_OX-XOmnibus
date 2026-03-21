@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Temporal Smear",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Time smears across the notes. High interference and drift blur the edges between present and past. Notes feel temporally extended — beginning and ending simultaneously.",
-  "tags": ["flux", "smear", "temporal", "blur", "extended", "time"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "smear",
+    "temporal",
+    "blur",
+    "extended",
+    "time"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

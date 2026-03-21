@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Forgotten Bass",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Deep filter bass using sine wave Opsis with enormous sub presence. The memory grain builds resonant low-frequency echoes. Notes accumulate a thick sub layer.",
-  "tags": ["foundation", "bass", "sub", "deep", "sine", "low-frequency"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "bass",
+    "sub",
+    "deep",
+    "sine",
+    "low-frequency"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.45
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

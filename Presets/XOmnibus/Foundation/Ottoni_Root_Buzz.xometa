@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The Tween cousin at attention. Trumpet and sax balanced — GROW at center, control earned. 'Root Buzz' holds the moment without wavering.",
@@ -62,5 +64,6 @@
     "foundation",
     "clean"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

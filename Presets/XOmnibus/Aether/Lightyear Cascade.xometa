@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Arpeggiated glints dissolving into cascading ping-pong delays and expansive reverb. Light stretched across impossible distances.",

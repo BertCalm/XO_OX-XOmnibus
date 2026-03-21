@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 90 at 10 Hz, designed for real-time MACRO:SEED sweeping. Each seed position is a unique Sierpinski variant — a cascade of different fractal avalanches as you turn the knob.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.4,

@@ -43,9 +43,9 @@
       "bob_lfo1Depth": 0.08
     },
     "Optic": {
-      "opt_lensFlare": 0.5,
-      "opt_aberration": 0.3,
-      "opt_filterCut": 5500.0
+      "optic_lensFlare": 0.5,
+      "optic_aberration": 0.3,
+      "optic_filterCut": 5500.0
     }
   },
   "coupling": {

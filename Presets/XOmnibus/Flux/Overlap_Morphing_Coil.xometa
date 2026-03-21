@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Trefoil with both LFOs sweeping filter \u2014 constantly evolving timbre.",
+  "description": "Trefoil with both LFOs sweeping filter — constantly evolving timbre.",
   "dna": {
     "brightness": 0.52,
     "warmth": 0.48,
@@ -78,5 +78,6 @@
     "evolving",
     "filter"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

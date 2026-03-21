@@ -111,6 +111,8 @@
       "ow_colorTheme": 8
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

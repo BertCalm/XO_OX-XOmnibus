@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Seamount Halo",
   "mood": "Aether",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The acoustic halo around an undersea mountain — the zone where currents and geography create unique resonances. Echolocation returns faster here as the rock wall reflects. Space with a center.",
-  "tags": ["aether", "seamount", "halo", "reflection", "center"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "seamount",
+    "halo",
+    "reflection",
+    "center"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.28, "warmth": 0.45, "movement": 0.12, "density": 0.38, "space": 0.82, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.45,
+    "movement": 0.12,
+    "density": 0.38,
+    "space": 0.82,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.22, "orca_wtScanRate": 0.04, "orca_formantIntensity": 0.38, "orca_formantShift": 0.48, "orca_glide": 1.8,
-      "orca_echoRate": 1.2, "orca_echoReso": 0.86, "orca_echoDamp": 0.62, "orca_echoMix": 0.52, "orca_huntMacro": 0.0,
-      "orca_breachSub": 0.3, "orca_breachShape": 0.0, "orca_breachThreshold": -32.0, "orca_breachRatio": 2.0,
-      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 1000.0,
-      "orca_filterCutoff": 2800.0, "orca_filterReso": 0.12, "orca_level": 0.65,
-      "orca_ampAttack": 2.2, "orca_ampDecay": 2.8, "orca_ampSustain": 0.5, "orca_ampRelease": 5.5,
-      "orca_modAttack": 1.8, "orca_modDecay": 2.2, "orca_modSustain": 0.38, "orca_modRelease": 4.5,
-      "orca_lfo1Rate": 0.02, "orca_lfo1Depth": 0.15, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.04, "orca_lfo2Depth": 0.08, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 2, "orca_velCutoffAmt": 0.2, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.22,
+      "orca_wtScanRate": 0.04,
+      "orca_formantIntensity": 0.38,
+      "orca_formantShift": 0.48,
+      "orca_glide": 1.8,
+      "orca_echoRate": 1.2,
+      "orca_echoReso": 0.86,
+      "orca_echoDamp": 0.62,
+      "orca_echoMix": 0.52,
+      "orca_huntMacro": 0.0,
+      "orca_breachSub": 0.3,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -32.0,
+      "orca_breachRatio": 2.0,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 1000.0,
+      "orca_filterCutoff": 2800.0,
+      "orca_filterReso": 0.12,
+      "orca_level": 0.65,
+      "orca_ampAttack": 2.2,
+      "orca_ampDecay": 2.8,
+      "orca_ampSustain": 0.5,
+      "orca_ampRelease": 5.5,
+      "orca_modAttack": 1.8,
+      "orca_modDecay": 2.2,
+      "orca_modSustain": 0.38,
+      "orca_modRelease": 4.5,
+      "orca_lfo1Rate": 0.02,
+      "orca_lfo1Depth": 0.15,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 0.04,
+      "orca_lfo2Depth": 0.08,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2,
+      "orca_velCutoffAmt": 0.2,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

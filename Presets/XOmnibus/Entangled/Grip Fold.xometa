@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.626,
-    "brightness": 0.63,
-    "density": 0.581,
-    "movement": 0.558,
-    "space": 0.542,
-    "warmth": 0.544
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "origami",
     "bite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

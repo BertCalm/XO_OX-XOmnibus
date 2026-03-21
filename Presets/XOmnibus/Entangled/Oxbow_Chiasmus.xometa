@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Maximum entanglement — L and R are so deeply coupled that the reverb erases itself when summed to mono, leaving only the golden moments. The Chiasmus topology made audible. Check in stereo, then collapse to mono — two completely different experiences.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.8,
     "aggression": 0.1
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Entangled",
   "name": "Chiasmus",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["entangled", "stereo", "phase", "erasing", "experimental"],
-  "version": "1.0.0"
+  "tags": [
+    "entangled",
+    "stereo",
+    "phase",
+    "erasing",
+    "experimental"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

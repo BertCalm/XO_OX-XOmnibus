@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Hazy lo-fi beat with warbled pitch instability and soft noise hiss. Sounds like a tape left in the sun.",

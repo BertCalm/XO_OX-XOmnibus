@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The deepest point of the ocean \u2014 no light reaches here. Extremely dark damping with long decay creates a crushing, bottomless reverb. The Oxbow Eels true home.",
+  "description": "The deepest point of the ocean — no light reaches here. Extremely dark damping with long decay creates a crushing, bottomless reverb. The Oxbow Eels true home.",
   "dna": {
     "brightness": 0.05,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "crushing",
     "bottomless"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

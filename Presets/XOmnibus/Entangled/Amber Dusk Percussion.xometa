@@ -44,9 +44,9 @@
       "bob_lfo1Depth": 0.08
     },
     "Ombre": {
-      "ombr_gradient": 0.55,
-      "ombr_shadow": 0.4,
-      "ombr_filterCut": 4000.0
+      "ombre_gradient": 0.55,
+      "ombre_shadow": 0.4,
+      "ombre_filterCut": 4000.0
     }
   },
   "coupling": {

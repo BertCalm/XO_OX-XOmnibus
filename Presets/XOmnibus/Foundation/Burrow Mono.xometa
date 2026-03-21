@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-11",
   "description": "Classic mono bass with filter envelope pluck. Saw bite through Burrow LP. Glide enabled.",

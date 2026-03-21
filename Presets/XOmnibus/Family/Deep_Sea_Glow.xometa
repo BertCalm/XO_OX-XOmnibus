@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OWLFISH in the dark — GLOW macro lit, DEPTH resonant. Bioluminescence at 3000 meters. Patient. Necessary.",

@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The engine's home terrain made explicit: the Mesopelagic Zone, 200-1000m depth, twilight diffusion. E constant at depth 5 — convergents have tightened toward e/2 but not yet clumped — produces a narrow spectral band, three or four partials audibly distinct. Partial amplitudes weighted toward the middle (1, 2, 3 boosted; 0 and 7 reduced) so the sound occupies a choir-like mid-register rather than a sub drone. Attack 1.8s — the water column takes time to pressurize. Very slow LFOs at 0.03 Hz give each note a barely-audible swell. Filter at 5500 Hz filters out the upper mathematicality, leaving only the pressure. Resonator at 0.65 adds the cave-choir resonance of deep water.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.78,
     "aggression": 0.12
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.62, "COLOR": 0.25, "COUPLING": 0.0, "SPACE": 0.72 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.62,
+    "COLOR": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  },
   "mood": "Submerged",
   "name": "Mesopelagic Choir",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "submerged", "euler", "choir", "mesopelagic", "pressure", "deep"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "submerged",
+    "euler",
+    "choir",
+    "mesopelagic",
+    "pressure",
+    "deep"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

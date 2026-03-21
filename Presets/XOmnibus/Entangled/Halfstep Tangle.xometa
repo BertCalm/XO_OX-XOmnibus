@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Deep halfstep groove with tangled cross-modulation. Sparse hits from X carve deep filter ducks in O, with slow pitch wobble feedback.",

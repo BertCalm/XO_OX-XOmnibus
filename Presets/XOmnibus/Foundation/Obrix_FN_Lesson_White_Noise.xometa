@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Pure white noise \u2014 every frequency at once. The raw material for percussion, wind, and texture.",
+  "description": "Pure white noise — every frequency at once. The raw material for percussion, wind, and texture.",
   "tags": [
     "lesson",
     "noise",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "First preset to use ERA Memory. eraMemMix 0.4 blends current triangle position with the remembered position — the sound echoes its own past. Play slowly. Let the memory accumulate.",
   "dna": {

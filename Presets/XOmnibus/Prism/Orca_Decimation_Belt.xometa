@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Decimation Belt",
   "mood": "Prism",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Countershading pushed to extremes — the dorsal band brutally decimated at 4 bits while the belly stays pristine. The spectral contrast is maximum: silky below the split, industrial pixel-crunch above it.",
-  "tags": ["prism", "bitcrush", "decimation", "contrast", "lo-fi"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "bitcrush",
+    "decimation",
+    "contrast",
+    "lo-fi"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

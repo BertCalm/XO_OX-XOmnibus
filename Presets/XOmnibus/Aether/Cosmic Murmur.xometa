@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-05",
   "description": "Whispered tonal fragments with subtle dub delay and warm lo-fi saturation. Distant transmissions from unknown origins.",

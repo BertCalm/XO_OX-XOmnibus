@@ -67,14 +67,6 @@
     "otto_lfo1Rate": 1.185
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.556,
-    "brightness": 0.674,
-    "density": 0.72,
-    "movement": 0.512,
-    "space": 0.448,
-    "warmth": 0.673
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

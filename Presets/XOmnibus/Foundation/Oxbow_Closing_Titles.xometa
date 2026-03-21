@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The reverb that plays under the final credits \u2014 warm, generous, nostalgic. Long enough to let emotions linger, controlled enough to keep the mix clear. End of story.",
+  "description": "The reverb that plays under the final credits — warm, generous, nostalgic. Long enough to let emotions linger, controlled enough to keep the mix clear. End of story.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.78,
@@ -50,5 +50,6 @@
     "nostalgic",
     "generous"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

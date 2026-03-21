@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Log Drum Steady",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.3,
-    "warmth": 0.75,
-    "movement": 0.35,
-    "density": 0.65,
-    "space": 0.3,
-    "aggression": 0.25
-  },
-  "sonic_dna": {
     "brightness": 0.3,
     "warmth": 0.75,
     "movement": 0.35,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 2
     }
   },
-  "tags": ["ocelot", "foundation", "log_drum", "rhythmic", "jungle"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "log_drum",
+    "rhythmic",
+    "jungle"
+  ],
   "description": "Log drum heartbeat — steady floor pattern with frog-call accent on high strikes. Understory responds to every hit."
 }

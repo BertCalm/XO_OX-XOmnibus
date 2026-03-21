@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Flukes",
   "mood": "Foundation",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The tail flukes — massive, powerful, the primary driver. Low-frequency dominant with percussive onset representing each fluke stroke. The engine of locomotion made sonic.",
-  "tags": ["foundation", "flukes", "propulsion", "percussive", "low"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "flukes",
+    "propulsion",
+    "percussive",
+    "low"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.22, "warmth": 0.75, "movement": 0.55, "density": 0.72, "space": 0.28, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.55,
+    "density": 0.72,
+    "space": 0.28,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.18, "orca_wtScanRate": 0.1, "orca_formantIntensity": 0.32, "orca_formantShift": 0.35, "orca_glide": 0.08,
-      "orca_echoRate": 3.0, "orca_echoReso": 0.62, "orca_echoDamp": 0.48, "orca_echoMix": 0.12, "orca_huntMacro": 0.28,
-      "orca_breachSub": 0.82, "orca_breachShape": 1.0, "orca_breachThreshold": -14.0, "orca_breachRatio": 8.0,
-      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 700.0,
-      "orca_filterCutoff": 2200.0, "orca_filterReso": 0.2, "orca_level": 0.88,
-      "orca_ampAttack": 0.001, "orca_ampDecay": 0.3, "orca_ampSustain": 0.45, "orca_ampRelease": 0.4,
-      "orca_modAttack": 0.001, "orca_modDecay": 0.24, "orca_modSustain": 0.36, "orca_modRelease": 0.32,
-      "orca_lfo1Rate": 0.08, "orca_lfo1Depth": 0.08, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.5, "orca_lfo2Depth": 0.06, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 1, "orca_velCutoffAmt": 0.55, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.18,
+      "orca_wtScanRate": 0.1,
+      "orca_formantIntensity": 0.32,
+      "orca_formantShift": 0.35,
+      "orca_glide": 0.08,
+      "orca_echoRate": 3.0,
+      "orca_echoReso": 0.62,
+      "orca_echoDamp": 0.48,
+      "orca_echoMix": 0.12,
+      "orca_huntMacro": 0.28,
+      "orca_breachSub": 0.82,
+      "orca_breachShape": 1.0,
+      "orca_breachThreshold": -14.0,
+      "orca_breachRatio": 8.0,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 700.0,
+      "orca_filterCutoff": 2200.0,
+      "orca_filterReso": 0.2,
+      "orca_level": 0.88,
+      "orca_ampAttack": 0.001,
+      "orca_ampDecay": 0.3,
+      "orca_ampSustain": 0.45,
+      "orca_ampRelease": 0.4,
+      "orca_modAttack": 0.001,
+      "orca_modDecay": 0.24,
+      "orca_modSustain": 0.36,
+      "orca_modRelease": 0.32,
+      "orca_lfo1Rate": 0.08,
+      "orca_lfo1Depth": 0.08,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 0.5,
+      "orca_lfo2Depth": 0.06,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 1,
+      "orca_velCutoffAmt": 0.55,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

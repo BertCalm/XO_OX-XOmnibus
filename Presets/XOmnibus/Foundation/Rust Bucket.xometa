@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Industrial metallic percussion from FM synthesis. Clanking, gritty, and physical.",

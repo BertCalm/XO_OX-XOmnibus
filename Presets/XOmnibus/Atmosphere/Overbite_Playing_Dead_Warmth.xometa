@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "PLAY DEAD 0.85 + BELLY 0.6 — the possum playing dead in a warm space. Slow filter sweep over long attack, body still, sub oscillator persisting below the threshold of threat. This is not absence — it is suspension. The animal is alive inside its stillness. Room reverb keeps the warmth from evaporating. TRASH and BITE both zero: no teeth, no noise, only held breath.",
   "dna": {

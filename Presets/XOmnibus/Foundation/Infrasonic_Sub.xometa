@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "subOct=-2 — two octaves below. The heartbeat before sound. High saturation, tight filter. The first preset to use the deepest suboctave.",
   "dna": {

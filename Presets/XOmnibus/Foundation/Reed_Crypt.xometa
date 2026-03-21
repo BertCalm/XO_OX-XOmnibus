@@ -26,37 +26,30 @@
   "name": "Reed Crypt",
   "parameters": {
     "Organon": {
-      "org_ampAttack": 33.6,
-      "org_ampDecay": 298.5,
-      "org_ampRelease": 346.7,
-      "org_ampSustain": 0.69,
-      "org_character": 0.04,
-      "org_coupling": 0.67,
-      "org_delayMix": 0.97,
-      "org_drawbar1": 0.11,
-      "org_drawbar2": 0.95,
-      "org_drawbar3": 0.69,
-      "org_filterCutoff": 0.15,
-      "org_movement": 0.36,
-      "org_reverbMix": 0.93,
-      "org_rotaryDepth": 0.36,
-      "org_rotarySpeed": 0.04,
-      "org_space": 0.68
+      "organon_ampAttack": 33.6,
+      "organon_ampDecay": 298.5,
+      "organon_ampRelease": 346.7,
+      "organon_ampSustain": 0.69,
+      "organon_character": 0.04,
+      "organon_coupling": 0.67,
+      "organon_delayMix": 0.97,
+      "organon_drawbar1": 0.11,
+      "organon_drawbar2": 0.95,
+      "organon_drawbar3": 0.69,
+      "organon_filterCutoff": 0.15,
+      "organon_movement": 0.36,
+      "organon_reverbMix": 0.93,
+      "organon_rotaryDepth": 0.36,
+      "organon_rotarySpeed": 0.04,
+      "organon_space": 0.68
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.53,
-    "brightness": 0.12,
-    "density": 0.53,
-    "movement": 0.23,
-    "space": 0.63,
-    "warmth": 0.69
-  },
   "tags": [
     "foundation",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

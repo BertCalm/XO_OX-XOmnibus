@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Thousand-year-old trees absorbing sound \u2014 soft, diffuse, with occasional golden shimmer where light breaks through the canopy. Natural, organic reverb for documentary scoring.",
+  "description": "Thousand-year-old trees absorbing sound — soft, diffuse, with occasional golden shimmer where light breaks through the canopy. Natural, organic reverb for documentary scoring.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.72,
@@ -50,5 +50,6 @@
     "natural",
     "documentary"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

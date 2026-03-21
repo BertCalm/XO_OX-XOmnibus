@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "morph=0.66 (pure square). 13 square oscillators = the whale as pipe organ. Hollow, warm, architectural. The unexplored character between saw and noise.",
   "dna": {

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A ghost river flowing through the stereo field \u2014 high entanglement maps a phantom channel that weaves left to right with each erosion cycle. The Eel swimming through walls.",
+  "description": "A ghost river flowing through the stereo field — high entanglement maps a phantom channel that weaves left to right with each erosion cycle. The Eel swimming through walls.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "spatial",
     "weaving"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

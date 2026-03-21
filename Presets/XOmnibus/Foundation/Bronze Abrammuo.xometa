@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Bronze Abrammuo",
   "mood": "Foundation",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Akan gold weight struck with a metal rod. Full metal material, hard mallet, open body. Bright, ringing, and authoritative — the sound of trade and ceremony.",
-  "tags": ["akan", "bronze", "metal", "bell", "ringing", "bright", "authoritative"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "akan",
+    "bronze",
+    "metal",
+    "bell",
+    "ringing",
+    "bright",
+    "authoritative"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +60,8 @@
       "owr_macroSpace": 0.45
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

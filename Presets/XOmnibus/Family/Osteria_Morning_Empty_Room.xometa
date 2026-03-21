@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The tavern before anyone arrives. Cold stone floors, chairs still on tables, first pale light through the shutters. smokeCutoff low — the smoke from last night has not been opened out. Shore at its most withdrawn. warmth high because the room still holds the memory of warmth.",

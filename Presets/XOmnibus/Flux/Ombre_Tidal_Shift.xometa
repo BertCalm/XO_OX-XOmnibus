@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Tidal Shift",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The tide moves between memory and perception. Slow LFO1 with high depth carries the blend from Oubli to Opsis and back over many seconds. The player rides the tide.",
-  "tags": ["flux", "tidal", "slow", "blend", "drift", "cyclic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "tidal",
+    "slow",
+    "blend",
+    "drift",
+    "cyclic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

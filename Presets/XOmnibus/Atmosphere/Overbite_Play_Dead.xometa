@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "PLAY DEAD macro at maximum. All other survival instincts suppressed. The possum goes still — maximum release, no movement, long reverb tail. A frozen animal breathing slow, waiting for the threat to pass.",
   "dna": {

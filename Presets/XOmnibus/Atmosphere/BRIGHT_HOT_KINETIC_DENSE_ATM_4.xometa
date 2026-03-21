@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Low",
   "created": "2026-03-16",
   "description": "Ultra-diverse Atmosphere preset: BRIGHT HOT KINETIC DENSE ATM 4.",

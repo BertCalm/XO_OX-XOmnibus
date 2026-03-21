@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The husband's oud, bouzouki, and pin join. The aunts accept them. The alliance is no longer political — it is acoustic. Eight strings from three cultures, one drone. DRAMA has become a civilization.",
@@ -58,5 +60,6 @@
     "drone",
     "abstract"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

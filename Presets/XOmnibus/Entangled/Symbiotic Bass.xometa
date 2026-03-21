@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Heavy sub bass that lives and breathes through coupling. X's envelope drives O's low-pass cutoff for massive pumping bass weight.",

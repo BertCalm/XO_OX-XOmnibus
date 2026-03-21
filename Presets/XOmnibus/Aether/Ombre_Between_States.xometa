@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Blend oscillating at mid-point with maximum interference — the engine cannot decide whether it is memory or perception. The interference modulates both channels simultaneously into a flickering identity crisis. Neither grain nor direct signal is stable. What emerges is a third thing: the moment of forgetting, sustained as music.",
   "dna": {

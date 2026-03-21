@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 11: The entry point. Only hat choke enabled, XVC global low. Hear what XVC sounds like at minimum — the single hat choke behavior where closed hat naturally cuts off open hat. Compare to the same pattern without XVC. This preset is the before/after reference: load it, disable hat choke, hear the difference.",

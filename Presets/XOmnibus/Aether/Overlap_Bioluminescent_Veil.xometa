@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Cinquefoil with maximum bioluminescence \u2014 glowing ethereal curtain.",
+  "description": "Cinquefoil with maximum bioluminescence — glowing ethereal curtain.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.5,
@@ -78,5 +78,6 @@
     "veil",
     "ethereal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

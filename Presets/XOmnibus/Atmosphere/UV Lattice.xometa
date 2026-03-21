@@ -22,14 +22,6 @@
     "Onset": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.162,
-    "brightness": 0.97,
-    "density": 0.406,
-    "movement": 0.692,
-    "space": 0.447,
-    "warmth": 0.234
-  },
   "tags": [
     "atmosphere",
     "pad",
@@ -37,7 +29,7 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

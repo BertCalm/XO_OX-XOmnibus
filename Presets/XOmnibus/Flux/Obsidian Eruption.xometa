@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Evolving and unstable — LFO1 at mid-rate sweeping PD depth, LFO2 at slow rate shifting density. PD depth envelope has a long attack that blooms into harmonic complexity mid-note. CHARACTER macro pushes the instability further.",

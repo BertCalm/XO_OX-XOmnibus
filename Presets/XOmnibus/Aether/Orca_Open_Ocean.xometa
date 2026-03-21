@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Open Ocean",
   "mood": "Aether",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The vastness of open water — 10,000 feet of nothing in any direction. Very slow LFO, maximum attack and release, echolocation mix returning nothing but its own echo from nowhere. Space as a physical presence.",
-  "tags": ["aether", "vast", "open", "ocean", "space"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "vast",
+    "open",
+    "ocean",
+    "space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.2,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

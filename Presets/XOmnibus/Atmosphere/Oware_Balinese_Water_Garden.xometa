@@ -2,23 +2,55 @@
   "schema_version": 1,
   "name": "Oware Balinese Water Garden",
   "mood": "Atmosphere",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All three shimmer mechanisms simultaneously: shimmer (6.2 Hz), sympathy (inter-voice resonance), and thermal drift (slow pitch variation). Three physical mechanisms at three different timescales. A chord becomes a living thing. This is not a synthesizer effect — it is the sound of an instrument outdoors.",
   "tier": "awakening",
-  "tags": ["atmosphere", "gamelan", "balinese", "outdoor", "living", "guru-bin-awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "atmosphere",
+    "gamelan",
+    "balinese",
+    "outdoor",
+    "living",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.55, "warmth": 0.62, "movement": 0.65, "density": 0.60, "space": 0.70, "aggression": 0.08 },
-  "sonic_dna": { "brightness": 0.55, "warmth": 0.62, "movement": 0.65, "density": 0.60, "space": 0.70, "aggression": 0.08 },
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.62,
+    "movement": 0.65,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.08
+  },
   "parameters": {
     "Oware": {
-      "owr_material": 0.35, "owr_malletHardness": 0.42, "owr_bodyType": 1, "owr_bodyDepth": 0.58,
-      "owr_buzzAmount": 0.15, "owr_sympathyAmount": 0.65, "owr_shimmerRate": 6.2,
-      "owr_thermalDrift": 0.40, "owr_brightness": 5800.0, "owr_damping": 0.15, "owr_decay": 4.0,
-      "owr_filterEnvAmount": 0.32, "owr_bendRange": 4
+      "owr_material": 0.35,
+      "owr_malletHardness": 0.42,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.58,
+      "owr_buzzAmount": 0.15,
+      "owr_sympathyAmount": 0.65,
+      "owr_shimmerRate": 6.2,
+      "owr_thermalDrift": 0.4,
+      "owr_brightness": 5800.0,
+      "owr_damping": 0.15,
+      "owr_decay": 4.0,
+      "owr_filterEnvAmount": 0.32,
+      "owr_bendRange": 4
     }
-  }
+  },
+  "tempo": null
 }

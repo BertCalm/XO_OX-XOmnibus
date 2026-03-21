@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Venetian Glass",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Ornate and fragile. High resonance filter on mostly-Opsis content, minimal memory. The resonance gives it color — each velocity a different tint in the glass.",
-  "tags": ["prism", "glass", "ornate", "fragile", "resonant", "venetian"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "glass",
+    "ornate",
+    "fragile",
+    "resonant",
+    "venetian"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.55
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

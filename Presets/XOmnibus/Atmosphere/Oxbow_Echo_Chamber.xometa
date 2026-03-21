@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A dedicated echo chamber fed by sends \u2014 the sound bounces between concrete walls with increasing degradation. Each repeat erodes a little more, like tape wearing thin.",
+  "description": "A dedicated echo chamber fed by sends — the sound bounces between concrete walls with increasing degradation. Each repeat erodes a little more, like tape wearing thin.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "concrete",
     "sends"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

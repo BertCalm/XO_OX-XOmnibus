@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Torus with moderate settings \u2014 clean coupling carrier. Pairs with textural engines.",
+  "description": "Torus with moderate settings — clean coupling carrier. Pairs with textural engines.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.45,
@@ -87,5 +87,6 @@
     "clean",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

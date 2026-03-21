@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Slowly inhaling and exhaling pad with Moog filter opening and closing in a long, meditative breath cycle.",

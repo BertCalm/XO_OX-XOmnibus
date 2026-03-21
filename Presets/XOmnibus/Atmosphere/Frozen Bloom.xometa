@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Frozen Bloom",
   "mood": "Atmosphere",
-  "engines": ["Opal"],
+  "engines": [
+    "Opal"
+  ],
   "author": "XO_OX Designs",
   "version": "1.1.0",
   "description": "A bloom frozen at its peak. Saw material captured mid-sweep by high freeze. Slow LFO drifts through the frozen landscape while filter envelope shapes each note with gentle warmth. Compelling completely dry — SPACE macro opens into vast reverb.",
-  "tags": ["frozen", "bloom", "atmosphere", "evolving", "pad"],
-  "macroLabels": ["SCATTER", "DRIFT", "COUPLING", "SPACE"],
+  "tags": [
+    "frozen",
+    "bloom",
+    "atmosphere",
+    "evolving",
+    "pad"
+  ],
+  "macroLabels": [
+    "SCATTER",
+    "DRIFT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -108,6 +121,8 @@
       "opal_level": 0.76
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

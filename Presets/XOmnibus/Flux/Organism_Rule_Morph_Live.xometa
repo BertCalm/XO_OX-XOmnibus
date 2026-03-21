@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Designed around MACRO:RULE performance sweep. Default position at 50% (near Rule 150). Medium step rate (7 Hz). Scope 6 for mid-averaging. Saw wave reveals rule character most clearly.",
   "dna": {
     "brightness": 0.58,
     "warmth": 0.45,

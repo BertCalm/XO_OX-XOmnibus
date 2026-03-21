@@ -32,24 +32,16 @@
   "name": "Growl Machine",
   "parameters": {
     "OddOscar": {
-      "oscar_couplingBus": 0,
-      "oscar_couplingLevel": 0.5,
-      "oscar_macro_breath": 0.7177,
-      "oscar_macro_couple": 0.3611,
-      "oscar_macro_space": 0.7578,
-      "oscar_macro_weight": 0.4367,
-      "oscar_outputLevel": 0.85
+      "morph_couplingBus": 0,
+      "morph_couplingLevel": 0.5,
+      "morph_macro_breath": 0.7177,
+      "morph_macro_couple": 0.3611,
+      "morph_macro_space": 0.7578,
+      "morph_macro_weight": 0.4367,
+      "morph_outputLevel": 0.85
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.7882,
-    "brightness": 0.5483,
-    "density": 0.8035,
-    "movement": 0.5314,
-    "space": 0.2363,
-    "warmth": 0.595
-  },
   "tags": [
     "foundation",
     "aggressive",
@@ -57,5 +49,6 @@
     "anchor",
     "drive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Air jet and reed refract separately. The brothers in prism, each color revealed.",
@@ -64,5 +66,6 @@
     "prism",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

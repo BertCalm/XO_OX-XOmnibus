@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
-  "description": "Organic wavetable woven through parallel chorus and reverb simultaneously. Neither FX slot colors the other \u2014 chorus spreads the living texture sideways while reverb suspends it in open air. Drift adds slow biological breath to the whole structure.",
+  "description": "Organic wavetable woven through parallel chorus and reverb simultaneously. Neither FX slot colors the other — chorus spreads the living texture sideways while reverb suspends it in open air. Drift adds slow biological breath to the whole structure.",
   "tags": [
     "wavetable",
     "parallel-fx",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.3,
     "COUPLING": 0.0,
     "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
   }
 }

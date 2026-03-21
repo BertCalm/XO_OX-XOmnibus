@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The building pressure before a storm breaks \u2014 rumbling low frequencies with eroding high end. Cantilever decay creates an asymmetric darkness that grows over time.",
+  "description": "The building pressure before a storm breaks — rumbling low frequencies with eroding high end. Cantilever decay creates an asymmetric darkness that grows over time.",
   "dna": {
     "brightness": 0.25,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "building",
     "ominous"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

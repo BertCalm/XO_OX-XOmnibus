@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Tremolo-picked guitars in a cathedral \u2014 the golden resonance reinforces the harmonic content of rapid picking while the space creates an overwhelming emotional weight.",
+  "description": "Tremolo-picked guitars in a cathedral — the golden resonance reinforces the harmonic content of rapid picking while the space creates an overwhelming emotional weight.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "emotional",
     "overwhelming"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

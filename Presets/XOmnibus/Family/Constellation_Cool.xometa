@@ -48,6 +48,8 @@
     "Ottoni": {},
     "Ole": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

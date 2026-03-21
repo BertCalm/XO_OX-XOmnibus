@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Time-bending cross-modulation with rapid envelope-to-filter coupling and pitch flux. Both engines feed each other in a spiraling loop.",

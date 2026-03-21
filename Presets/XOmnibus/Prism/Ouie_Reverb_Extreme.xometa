@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Reverb Extreme",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reverb at maximum — any note played becomes a vast underwater cathedral resonance. Duophonic chords bloom endlessly.",
-  "tags": ["evolving", "expressive", "steel", "movement"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "evolving",
+    "expressive",
+    "steel",
+    "movement"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.48,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

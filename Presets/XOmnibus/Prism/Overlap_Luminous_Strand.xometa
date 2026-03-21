@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Trefoil with high bioluminescence \u2014 bright, sustained, glowing tone.",
+  "description": "Trefoil with high bioluminescence — bright, sustained, glowing tone.",
   "dna": {
     "brightness": 0.87,
     "warmth": 0.4,
@@ -78,5 +78,6 @@
     "sustained",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

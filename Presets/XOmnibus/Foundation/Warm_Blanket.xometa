@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Warm Blanket",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Thick, sustaining bass-pad with Soft Tri and Blanket texture. Snout Soft filter for maximum warmth.",
-  "tags": ["bass", "pad", "warm", "thick", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bass",
+    "pad",
+    "warm",
+    "thick",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.565,
-    "brightness": 0.471,
-    "density": 0.693,
-    "movement": 0.497,
-    "space": 0.569,
-    "warmth": 0.713
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "ohm",
     "fat"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

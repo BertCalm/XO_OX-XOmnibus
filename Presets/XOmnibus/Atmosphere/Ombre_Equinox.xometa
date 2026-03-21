@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Equinox",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Balance — equal parts Oubli and Opsis, LFO1 slowly shifting between them at dawn-to-dusk pace. The day passes within the sustained note. Memory and perception trade places.",
-  "tags": ["atmosphere", "equinox", "balance", "transition", "slow", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "equinox",
+    "balance",
+    "transition",
+    "slow",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.78
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

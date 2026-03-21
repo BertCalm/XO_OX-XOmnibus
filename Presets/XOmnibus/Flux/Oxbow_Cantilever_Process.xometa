@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Extreme cantilever processor. Source enters bright, reverb tail sinks into darkness. Dramatic arc.",
-  "dna": { "brightness": 0.5, "warmth": 0.45, "movement": 0.45, "density": 0.45, "space": 0.6, "aggression": 0.2 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.45,
+    "movement": 0.45,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "Cantilever Process",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["coupling", "cantilever", "dramatic", "arc", "processing"],
-  "version": "1.0.0"
+  "tags": [
+    "coupling",
+    "cantilever",
+    "dramatic",
+    "arc",
+    "processing"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

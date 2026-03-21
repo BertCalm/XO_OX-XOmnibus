@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Saw with Delay FX. A note bounces from coral wall to coral wall \u2014 each repetition softer, the sound finding its way through the reef architecture.",
+  "description": "Saw with Delay FX. A note bounces from coral wall to coral wall — each repetition softer, the sound finding its way through the reef architecture.",
   "tags": [
     "lesson",
     "delay",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

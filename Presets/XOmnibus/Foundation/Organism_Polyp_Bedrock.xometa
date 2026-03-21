@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 22 nested triangular geometry maps to a tri-wave oscillator with strong sub. Low scope (4 gens) keeps the filter movement tight and predictable.",
   "dna": {
     "brightness": 0.22,
     "warmth": 0.82,

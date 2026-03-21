@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "PLAY DEAD macro at maximum — the possum goes completely limp, breath slowing, body still. What remains: the faintest sub-oscillator heartbeat, a barely-open filter with enormous reverb tail, and near-silence. The preset lives in the space between sound and absence. Hold any note and hear the animal playing dead — the world around it continues without noticing.",

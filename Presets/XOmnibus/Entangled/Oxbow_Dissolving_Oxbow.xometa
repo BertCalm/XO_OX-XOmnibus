@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The meander dissolves \u2014 the river forgets its own path. Extreme erosion depth with moderate entanglement creates a reverb that slowly loses coherence, like a memory fading.",
+  "description": "The meander dissolves — the river forgets its own path. Extreme erosion depth with moderate entanglement creates a reverb that slowly loses coherence, like a memory fading.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "incoherent",
     "fading"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

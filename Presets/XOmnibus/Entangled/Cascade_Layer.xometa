@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.56,
-    "brightness": 0.335,
-    "density": 1.0,
-    "movement": 0.63,
-    "space": 0.635,
-    "warmth": 0.5
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -67,5 +59,6 @@
     "orca",
     "owlfish"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

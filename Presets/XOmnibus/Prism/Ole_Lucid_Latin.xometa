@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "One aunt stands apart in prismatic clarity. The other two strum together.",
@@ -56,5 +58,6 @@
     "prism",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

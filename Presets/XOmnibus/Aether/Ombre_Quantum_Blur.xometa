@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Quantum Blur",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Position and momentum cannot both be known. Moderate interference and drift ensure that neither the note's pitch nor its temporal position can be precisely determined.",
-  "tags": ["aether", "quantum", "blur", "uncertain", "probability", "abstract"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "quantum",
+    "blur",
+    "uncertain",
+    "probability",
+    "abstract"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.8
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

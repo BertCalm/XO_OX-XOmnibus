@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Velvet Keys",
   "mood": "Foundation",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Soft, percussive keys with the Velvet Saw. Snappy decay, warm filter character.",
-  "tags": ["keys", "pluck", "velvet", "warm", "percussive"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "keys",
+    "pluck",
+    "velvet",
+    "warm",
+    "percussive"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

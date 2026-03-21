@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Classic dub delay feel with coupled filter pumping. Each hit from X opens O's filter, creating cascading echo-like interactions.",

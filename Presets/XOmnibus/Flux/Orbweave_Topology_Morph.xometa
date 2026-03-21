@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "knotType=Torus (P=3, Q=4). macroKNOT at 0.5 = halfway between Torus and Solomon — a topological chimera with interpolated coupling matrix. Pull KNOT macro from 0 to 1 while playing: you sweep from (3,4) torus topology through the chimera state into Solomon's interlocked rings. No other engine morphs between distinct mathematical topologies in real time.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.2,
     "aggression": 0.35
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.65, "TENSION": 0.15, "KNOT": 0.5, "SPACE": 0.15 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.65,
+    "TENSION": 0.15,
+    "KNOT": 0.5,
+    "SPACE": 0.15
+  },
   "mood": "Flux",
   "name": "Topology Morph",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["topology-morph", "knot-macro", "chimera", "flux", "real-time-topology"],
-  "version": "1.0"
+  "tags": [
+    "topology-morph",
+    "knot-macro",
+    "chimera",
+    "flux",
+    "real-time-topology"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

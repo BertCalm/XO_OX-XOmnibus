@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Reunion Call",
   "mood": "Family",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The greeting ceremony when pods from different territories meet — intense vocalization at high energy. Hunt macro low (no aggression), but echolocation and formant intensity both elevated. Recognition and excitement.",
-  "tags": ["family", "reunion", "greeting", "ceremony", "recognition"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "reunion",
+    "greeting",
+    "ceremony",
+    "recognition"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

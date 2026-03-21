@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Outdoor sound system at midnight \u2014 the bass bounces off concrete walls while the highs scatter into the night air. Warm, powerful, with that unmistakable yard energy.",
+  "description": "Outdoor sound system at midnight — the bass bounces off concrete walls while the highs scatter into the night air. Warm, powerful, with that unmistakable yard energy.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.82,
@@ -50,5 +50,6 @@
     "bass",
     "powerful"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

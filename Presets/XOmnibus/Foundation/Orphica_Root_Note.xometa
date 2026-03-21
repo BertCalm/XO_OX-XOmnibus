@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Clean harp pluck, register centered. SURFACE holds the middle ground between bass warmth and treble air. 'Root Note' holds the moment without wavering.",
@@ -67,5 +69,6 @@
     "foundation",
     "clean"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Wobbling, unstable reverb inspired by VHS tracking errors. High erosion rate creates pitch drift while entanglement smears the stereo field.",
-  "dna": { "brightness": 0.3, "warmth": 0.55, "movement": 0.6, "density": 0.4, "space": 0.35, "aggression": 0.2 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.4,
+    "space": 0.35,
+    "aggression": 0.2
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "VHS Tracking",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "vhs", "tracking", "wobble", "glitch"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "vhs",
+    "tracking",
+    "wobble",
+    "glitch"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

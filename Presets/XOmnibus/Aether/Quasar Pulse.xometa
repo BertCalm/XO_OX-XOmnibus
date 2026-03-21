@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Rhythmic energy bursts through ping-pong delay with lo-fi grain and deep reverb. A beacon at the edge of the universe.",

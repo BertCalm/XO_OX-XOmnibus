@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "R\u00f6ssler chaos with heavy damping. Warm chaotic breathing.",
+  "description": "Rössler chaos with heavy damping. Warm chaotic breathing.",
   "tags": [
     "chaos",
     "warm",
@@ -42,6 +42,8 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

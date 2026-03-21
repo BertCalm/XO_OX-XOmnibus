@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wind through a bamboo grove \u2014 hollow resonances at multiple pitches with natural erosion from the irregular geometry. The golden ratio emerges naturally in bamboo proportions.",
+  "description": "Wind through a bamboo grove — hollow resonances at multiple pitches with natural erosion from the irregular geometry. The golden ratio emerges naturally in bamboo proportions.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "wind",
     "natural"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

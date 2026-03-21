@@ -121,6 +121,8 @@
       "opal_level": 0.74
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

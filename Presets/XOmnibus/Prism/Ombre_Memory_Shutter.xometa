@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Blend sits at 0.4 — leaning into memory, each note a reconstruction of dissolving grain traces. Mod wheel (CC#1) opens the shutter toward full perception: at full throw, the blend pushes to 0.4 + offset toward present-tense Opsis. The past recedes in real time as your hand rises. A gesture that decides how much you remember.",

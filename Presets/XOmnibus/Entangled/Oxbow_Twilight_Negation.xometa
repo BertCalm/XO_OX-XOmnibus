@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The twilight zone where signal and reverb negate each other \u2014 moments of complete silence punctuate the decay. The Eel hunting in the space between sound and silence.",
+  "description": "The twilight zone where signal and reverb negate each other — moments of complete silence punctuate the decay. The Eel hunting in the space between sound and silence.",
   "dna": {
     "brightness": 0.28,
     "warmth": 0.48,
@@ -50,5 +50,6 @@
     "silence",
     "hunting"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

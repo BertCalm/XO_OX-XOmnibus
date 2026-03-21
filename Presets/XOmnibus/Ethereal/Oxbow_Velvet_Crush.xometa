@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Wall of sound compressed to velvet \u2014 massive reverb with heavy entanglement creating the classic shoegaze wash. Guitars become clouds, vocals become ghosts.",
+  "description": "Wall of sound compressed to velvet — massive reverb with heavy entanglement creating the classic shoegaze wash. Guitars become clouds, vocals become ghosts.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "velvet",
     "ethereal"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Trefoil with bloom macro maxed \u2014 sound unfurls endlessly like jellyfish tendrils.",
+  "description": "Trefoil with bloom macro maxed — sound unfurls endlessly like jellyfish tendrils.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.55,
@@ -78,5 +78,6 @@
     "unfurling",
     "vast"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

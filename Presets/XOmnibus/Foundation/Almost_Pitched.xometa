@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "leash=0.5, chaosIndex=0.45 — the uncanny middle. The attractor holds a note but harmonics scramble unpredictably each cycle. Not noise. Not a tone. Something in between that has no other name.",
   "dna": {

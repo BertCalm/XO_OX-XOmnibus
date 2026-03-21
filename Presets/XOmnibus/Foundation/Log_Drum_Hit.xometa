@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Log Drum Hit",
   "mood": "Foundation",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep, resonant log drum using pitch envelope. The classic Nyahbinghi percussion tone.",
-  "tags": ["log", "drum", "percussive", "pitch", "nyahbinghi"],
-  "macroLabels": ["DEPTH", "DECAY", "COUPLING", "SPACE"],
+  "tags": [
+    "log",
+    "drum",
+    "percussive",
+    "pitch",
+    "nyahbinghi"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "DECAY",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -37,7 +50,7 @@
       "dub_sustain": 0.0,
       "dub_release": 0.3,
       "dub_pitchEnvDepth": 24.0,
-      "dub_pitchEnvDecay": 0.020,
+      "dub_pitchEnvDecay": 0.02,
       "dub_lfoRate": 2.0,
       "dub_lfoDepth": 0.0,
       "dub_lfoDest": 0,
@@ -58,6 +71,8 @@
       "dub_polyphony": 2
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ancestral Voice",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Deep memory — like a voice from the deep past. Maximum decay, minimal present. The grain reads heads find traces of notes played long before, reconstructing them as ancestors.",
-  "tags": ["aether", "ancestral", "deep", "past", "voice", "ancient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "ancestral",
+    "deep",
+    "past",
+    "voice",
+    "ancient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.98
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

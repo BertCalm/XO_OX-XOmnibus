@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A bronze bell ringing from a pagoda tower \u2014 high resonance mix and convergence create the complex overtone series of hammered bronze. Bright attack fading to golden warmth.",
+  "description": "A bronze bell ringing from a pagoda tower — high resonance mix and convergence create the complex overtone series of hammered bronze. Bright attack fading to golden warmth.",
   "dna": {
     "brightness": 0.7,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "pagoda",
     "overtones"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

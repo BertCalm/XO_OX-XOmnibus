@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Long Exposure",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Photography term: all movement compressed into one image. Maximum memory decay and large grain creates a cloud of accumulated note-motion. Hold a chord and watch time compress.",
-  "tags": ["atmosphere", "photography", "long-exposure", "cloud", "time", "accumulation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "photography",
+    "long-exposure",
+    "cloud",
+    "time",
+    "accumulation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.98
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

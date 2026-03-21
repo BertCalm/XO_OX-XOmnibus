@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.512,
-    "brightness": 0.443,
-    "density": 0.683,
-    "movement": 0.443,
-    "space": 0.535,
-    "warmth": 0.703
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "osteria",
     "bite"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

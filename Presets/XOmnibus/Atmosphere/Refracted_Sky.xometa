@@ -26,37 +26,30 @@
   "name": "Refracted Sky",
   "parameters": {
     "Optic": {
-      "opt_ampAttack": 338.8,
-      "opt_ampDecay": 636.1,
-      "opt_ampRelease": 93.1,
-      "opt_ampSustain": 0.62,
-      "opt_character": 0.24,
-      "opt_coupling": 0.61,
-      "opt_delayMix": 0.52,
-      "opt_filterCutoff": 0.3,
-      "opt_filterReso": 0.05,
-      "opt_lfoDepth": 0.6,
-      "opt_lfoRate": 0.91,
-      "opt_movement": 0.14,
-      "opt_prismAngle": 0.11,
-      "opt_reverbMix": 0.02,
-      "opt_space": 0.43,
-      "opt_spectralShift": 0.29
+      "optic_ampAttack": 338.8,
+      "optic_ampDecay": 636.1,
+      "optic_ampRelease": 93.1,
+      "optic_ampSustain": 0.62,
+      "optic_character": 0.24,
+      "optic_coupling": 0.61,
+      "optic_delayMix": 0.52,
+      "optic_filterCutoff": 0.3,
+      "optic_filterReso": 0.05,
+      "optic_lfoDepth": 0.6,
+      "optic_lfoRate": 0.91,
+      "optic_movement": 0.14,
+      "optic_prismAngle": 0.11,
+      "optic_reverbMix": 0.02,
+      "optic_space": 0.43,
+      "optic_spectralShift": 0.29
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.5,
-    "brightness": 0.92,
-    "density": 0.41,
-    "movement": 0.54,
-    "space": 0.65,
-    "warmth": 0.78
-  },
   "tags": [
     "atmosphere",
     "bright",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

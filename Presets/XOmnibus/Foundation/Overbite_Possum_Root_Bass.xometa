@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "BELLY anchors the foundation — sub oscillator prominent, sawtooth warm and centered. BITE at zero, SCURRY minimal. A production-ready foundation bass: punchy attack, held sustain, clean sub reinforcement. The possum in confident territory with nothing to prove. Keygroup-ready for MPC deployment.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Massive encompassing drone that surrounds the listener. Sub-bass foundation with harmonic shell of detuned oscillators and infinite reverb.",

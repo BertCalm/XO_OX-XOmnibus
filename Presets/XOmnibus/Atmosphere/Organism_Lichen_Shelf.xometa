@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 18 sparse cells. The pitch-modulation band (cells 8–11) drifts the tone ±6 semitones over long arcs. Wide scope smooths this into slow melody. Tri osc, deep reverb.",
   "dna": {
     "brightness": 0.28,
     "warmth": 0.62,

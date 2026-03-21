@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Obed's atomic ratios shimmer beneath Dad's physical warmth. MEDDLING unlocks a second voice.",
@@ -66,5 +68,6 @@
     "prism",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

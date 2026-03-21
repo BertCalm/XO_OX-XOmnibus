@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "tier": "transcendental",
   "version": "1.0.0",
-  "description": "Analog wavetable with FM at 0.35 into a HP filter \u2014 only the spectral skeleton survives. The removed frequencies leave a hollow, ancient impression of what the sound used to be. Delay echoes create geological time.",
+  "description": "Analog wavetable with FM at 0.35 into a HP filter — only the spectral skeleton survives. The removed frequencies leave a hollow, ancient impression of what the sound used to be. Delay echoes create geological time.",
   "tags": [
     "experimental",
     "hollow",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.41
+  },
+  "coupling": {
+    "pairs": []
   }
 }

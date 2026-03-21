@@ -34,14 +34,6 @@
     "Oracle": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.96,
-    "brightness": 0.35,
-    "density": 0.75,
-    "movement": 0.05,
-    "space": 0.48,
-    "warmth": 0.55
-  },
   "strategy": "Still Aggressive",
   "tags": [
     "entangled",
@@ -50,7 +42,7 @@
     "bass",
     "oracle"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

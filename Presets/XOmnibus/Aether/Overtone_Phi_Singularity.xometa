@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Phi constant at depth 7 — the final Fibonacci convergent (34/21 ≈ 1.619048) is within 0.005% of the golden ratio. All eight partials now sit at golden proportions from one another: each partial φ times the last. The harmonic series has become a golden spiral made audible. Ultra-slow LFOs at 0.01 Hz provide breathing so slow it registers as drift rather than modulation — each note is its own geological event. macroDepth=1.0 means the DEPTH macro sweeps from depth 7 all the way back to 0, collapsing the golden spiral into a pure unison. Hold a note and slowly turn the DEPTH knob: Fibonacci descends toward silence.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.88,
     "aggression": 0.04
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 1.0, "COLOR": 0.52, "COUPLING": 0.0, "SPACE": 0.82 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 1.0,
+    "COLOR": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
   "mood": "Aether",
   "name": "Phi Singularity",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "aether", "phi", "golden-ratio", "fibonacci", "singular", "drift"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "aether",
+    "phi",
+    "golden-ratio",
+    "fibonacci",
+    "singular",
+    "drift"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

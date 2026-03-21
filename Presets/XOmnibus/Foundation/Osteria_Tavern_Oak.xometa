@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Atlantic shore anchor — the fundamental warmth of weathered oak tables and low-lit candles. Bass and harmony in full voice, the tavern just filling up.",

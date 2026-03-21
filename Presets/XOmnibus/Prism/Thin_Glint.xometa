@@ -28,14 +28,6 @@
     "Optic": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.088,
-    "brightness": 0.88,
-    "density": 0.093,
-    "movement": 0.234,
-    "space": 0.731,
-    "warmth": 0.163
-  },
   "tags": [
     "prism",
     "cold",
@@ -45,5 +37,6 @@
     "spacious",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

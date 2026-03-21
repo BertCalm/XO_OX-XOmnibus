@@ -51,14 +51,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.225,
-    "brightness": 0.675,
-    "density": 0.625,
-    "movement": 0.625,
-    "space": 0.825,
-    "warmth": 0.525
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -67,5 +59,6 @@
     "fdn",
     "reverb"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

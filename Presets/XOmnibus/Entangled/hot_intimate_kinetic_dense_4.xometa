@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.5123,
-    "brightness": 0.5173,
-    "density": 0.9289,
-    "movement": 0.9468,
-    "space": 0.0917,
-    "warmth": 0.8968
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "echo",
     "orca"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

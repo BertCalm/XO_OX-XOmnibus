@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A cathedral built entirely of glass \u2014 bright, shimmering reflections cascade from every surface. Long predelay places the listener at the far end of a crystalline nave.",
+  "description": "A cathedral built entirely of glass — bright, shimmering reflections cascade from every surface. Long predelay places the listener at the far end of a crystalline nave.",
   "dna": {
     "brightness": 0.85,
     "warmth": 0.4,
@@ -50,5 +50,6 @@
     "shimmering",
     "sacred"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

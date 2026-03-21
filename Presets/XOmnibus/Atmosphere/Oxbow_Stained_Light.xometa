@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sunlight filtering through stained glass \u2014 warm, colored, and gently diffused. The reverb adds a soft glow to everything it touches, like afternoon light in a stone chapel.",
+  "description": "Sunlight filtering through stained glass — warm, colored, and gently diffused. The reverb adds a soft glow to everything it touches, like afternoon light in a stone chapel.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.85,
@@ -50,5 +50,6 @@
     "gentle",
     "chapel"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

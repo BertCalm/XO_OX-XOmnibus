@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OVERWORLD full ERA mode — NES square waves in the room. The pixelated nostalgia of a cartridge that still boots. Warmth through 8-bit limitation.",

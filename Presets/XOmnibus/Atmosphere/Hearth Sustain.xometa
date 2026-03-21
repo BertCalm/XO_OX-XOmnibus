@@ -22,14 +22,6 @@
     "Osteria": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.029,
-    "brightness": 0.307,
-    "density": 0.607,
-    "movement": 0.066,
-    "space": 0.609,
-    "warmth": 0.947
-  },
   "tags": [
     "atmosphere",
     "drone",
@@ -37,7 +29,7 @@
     "warm",
     "thick"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

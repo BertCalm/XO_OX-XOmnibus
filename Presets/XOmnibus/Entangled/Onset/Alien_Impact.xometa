@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-10",
   "description": "ONSET x DRIFT coupling. Drift's alien textures modulate drum character. Familiar hits, alien tails.",

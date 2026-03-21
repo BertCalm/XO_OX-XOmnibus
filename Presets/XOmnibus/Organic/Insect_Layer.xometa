@@ -33,14 +33,6 @@
     "space": 0.55,
     "aggression": 0.1
   },
-  "sonic_dna": {
-    "brightness": 0.45,
-    "warmth": 0.65,
-    "movement": 0.58,
-    "density": 0.7,
-    "space": 0.55,
-    "aggression": 0.1
-  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -117,5 +109,5 @@
     "organic",
     "biome"
   ],
-  "description": "Insect layer composition \u2014 high understory with bit-crush grain. Emergent scatter creates complex organic rhythm."
+  "description": "Insect layer composition — high understory with bit-crush grain. Emergent scatter creates complex organic rhythm."
 }

@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Whale Fall",
   "mood": "Aether",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "When a whale dies, its body falls to the seafloor and creates a thriving ecosystem lasting decades. The long release represents the ongoing sustenance — death as the beginning of another kind of abundance.",
-  "tags": ["aether", "fall", "death", "sustenance", "ecosystem"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "fall",
+    "death",
+    "sustenance",
+    "ecosystem"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.18, "warmth": 0.6, "movement": 0.08, "density": 0.42, "space": 0.82, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.6,
+    "movement": 0.08,
+    "density": 0.42,
+    "space": 0.82,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.2, "orca_wtScanRate": 0.04, "orca_formantIntensity": 0.5, "orca_formantShift": 0.3, "orca_glide": 2.0,
-      "orca_echoRate": 0.7, "orca_echoReso": 0.82, "orca_echoDamp": 0.68, "orca_echoMix": 0.4, "orca_huntMacro": 0.0,
-      "orca_breachSub": 0.5, "orca_breachShape": 0.0, "orca_breachThreshold": -32.0, "orca_breachRatio": 2.0,
-      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 800.0,
-      "orca_filterCutoff": 1400.0, "orca_filterReso": 0.1, "orca_level": 0.68,
-      "orca_ampAttack": 3.0, "orca_ampDecay": 4.0, "orca_ampSustain": 0.55, "orca_ampRelease": 8.0,
-      "orca_modAttack": 2.5, "orca_modDecay": 3.0, "orca_modSustain": 0.4, "orca_modRelease": 6.0,
-      "orca_lfo1Rate": 0.01, "orca_lfo1Depth": 0.18, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.02, "orca_lfo2Depth": 0.09, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 2, "orca_velCutoffAmt": 0.2, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.2,
+      "orca_wtScanRate": 0.04,
+      "orca_formantIntensity": 0.5,
+      "orca_formantShift": 0.3,
+      "orca_glide": 2.0,
+      "orca_echoRate": 0.7,
+      "orca_echoReso": 0.82,
+      "orca_echoDamp": 0.68,
+      "orca_echoMix": 0.4,
+      "orca_huntMacro": 0.0,
+      "orca_breachSub": 0.5,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -32.0,
+      "orca_breachRatio": 2.0,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 800.0,
+      "orca_filterCutoff": 1400.0,
+      "orca_filterReso": 0.1,
+      "orca_level": 0.68,
+      "orca_ampAttack": 3.0,
+      "orca_ampDecay": 4.0,
+      "orca_ampSustain": 0.55,
+      "orca_ampRelease": 8.0,
+      "orca_modAttack": 2.5,
+      "orca_modDecay": 3.0,
+      "orca_modSustain": 0.4,
+      "orca_modRelease": 6.0,
+      "orca_lfo1Rate": 0.01,
+      "orca_lfo1Depth": 0.18,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 0.02,
+      "orca_lfo2Depth": 0.09,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2,
+      "orca_velCutoffAmt": 0.2,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

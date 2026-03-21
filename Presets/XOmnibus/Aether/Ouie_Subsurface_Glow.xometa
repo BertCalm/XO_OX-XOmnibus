@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Subsurface Glow",
   "mood": "Aether",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm LOVE-axis harmonic lock with soft attack and very long release. Bioluminescent shimmer seen from above — depth rendered as warmth and light.",
-  "tags": ["evolving", "expressive", "movement", "steel"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "evolving",
+    "expressive",
+    "movement",
+    "steel"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

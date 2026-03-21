@@ -41,9 +41,9 @@
       "perc_macro_space": 0.5
     },
     "Ombre": {
-      "ombr_gradient": 0.6,
-      "ombr_shadow": 0.5,
-      "ombr_filterCut": 4500.0
+      "ombre_gradient": 0.6,
+      "ombre_shadow": 0.5,
+      "ombre_filterCut": 4500.0
     }
   },
   "coupling": {

@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Ombre narrative arc shapes Bob's filter envelope \u2014 memory and bass, fading together.",
+  "description": "Ombre narrative arc shapes Bob's filter envelope — memory and bass, fading together.",
   "dna": {
     "aggression": 0.382,
     "brightness": 0.511,
@@ -74,5 +74,5 @@
     "ombre"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

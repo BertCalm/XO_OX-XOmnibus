@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Polarized Duo",
   "mood": "Entangled",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice A extremely bright, Voice B extremely dark. HAMMER at midpoint holds both extremes in tension — polar opposition.",
-  "tags": ["tension", "counterpoint", "dark", "cutting"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tension",
+    "counterpoint",
+    "dark",
+    "cutting"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.5,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.0
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

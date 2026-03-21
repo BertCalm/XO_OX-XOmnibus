@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OHM COMMUNE axis — drone warmth sustained, MEDDLING at peace. The hippy dad who knows when to stop talking and just hum.",

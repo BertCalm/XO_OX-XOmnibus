@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Half Life",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Radioactive metaphor: memory decay set to 5 seconds — the half-life of this sound. After 5 seconds, half the memory remains. After 10, a quarter. The tail never truly ends.",
-  "tags": ["atmosphere", "half-life", "decay", "mathematical", "slow-release"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "half-life",
+    "decay",
+    "mathematical",
+    "slow-release"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.82
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

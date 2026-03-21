@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "CuriosityEngine in Twitch mode — nervous random jumps every 0.3-2.3 seconds, 20ms snap to target. The coral is anxious. Velocity opens the filter dramatically. Play hard and the nervousness bites.",

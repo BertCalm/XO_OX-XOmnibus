@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sound resonating inside a turned wooden bowl \u2014 small, warm, with a clear fundamental frequency from the golden resonance. The organic version of a plate reverb.",
+  "description": "Sound resonating inside a turned wooden bowl — small, warm, with a clear fundamental frequency from the golden resonance. The organic version of a plate reverb.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.75,
@@ -50,5 +50,6 @@
     "organic",
     "craft"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

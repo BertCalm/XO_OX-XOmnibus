@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Big Sur at storm tide — NE Pacific shore blend, high sea state, long swell period, deep resonators tuned to Pacific Rim gamelan frequencies. The cliff face turns surge into tonality. A wall of water becomes a wall of harmonic content.",

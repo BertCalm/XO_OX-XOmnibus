@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Electric discharge from the Oxbow Eel \u2014 rapid erosion cycles create a crackling static field around the reverb tail. Not noise, but the space between coherent reflections.",
+  "description": "Electric discharge from the Oxbow Eel — rapid erosion cycles create a crackling static field around the reverb tail. Not noise, but the space between coherent reflections.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.25,
@@ -50,5 +50,6 @@
     "crackling",
     "discharge"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

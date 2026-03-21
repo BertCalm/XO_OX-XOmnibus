@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Immersed in the overtone bath of a massive gong \u2014 the golden resonance peaks create a shimmering harmonic field that evolves over the long decay. Healing frequencies.",
+  "description": "Immersed in the overtone bath of a massive gong — the golden resonance peaks create a shimmering harmonic field that evolves over the long decay. Healing frequencies.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.7,
@@ -50,5 +50,6 @@
     "overtones",
     "healing"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Mixtur-Trautonium subharmonics lock the FM ratio \u2014 depth-pressure tuning the overtone series.",
+  "description": "Mixtur-Trautonium subharmonics lock the FM ratio — depth-pressure tuning the overtone series.",
   "dna": {
     "aggression": 0.411,
     "brightness": 0.465,
@@ -79,5 +79,5 @@
     "owlfish"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

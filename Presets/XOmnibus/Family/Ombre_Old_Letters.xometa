@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Old Letters",
   "mood": "Family",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Faded handwriting on yellowed paper — warm, analog, imprecise. Low-pass filter with warm memory grain. Notes feel like reading someone else's handwriting from the past.",
-  "tags": ["family", "letters", "handwriting", "faded", "warm", "analog"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "letters",
+    "handwriting",
+    "faded",
+    "warm",
+    "analog"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

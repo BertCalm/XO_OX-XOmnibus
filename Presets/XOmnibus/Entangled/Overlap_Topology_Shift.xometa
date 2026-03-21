@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus T(5,2) with S&H LFO creating unpredictable topology mutations \u2014 morph via macros.",
+  "description": "Torus T(5,2) with S&H LFO creating unpredictable topology mutations — morph via macros.",
   "dna": {
     "aggression": 0.35,
     "brightness": 0.6,
@@ -78,5 +78,6 @@
     "complex",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Glitchy, unstable reverb with heavy erosion and entanglement. Like tuning through static to find fragments of a lost signal.",
-  "dna": { "brightness": 0.35, "warmth": 0.5, "movement": 0.5, "density": 0.35, "space": 0.3, "aggression": 0.25 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.35,
+    "space": 0.3,
+    "aggression": 0.25
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "Broken Radio",
   "parameters": {
@@ -27,6 +43,12 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "broken", "glitch", "experimental"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "broken",
+    "glitch",
+    "experimental"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

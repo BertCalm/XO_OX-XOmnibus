@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "SCURRY at full. Rapid nervous oscillation — dual LFOs at mismatched rates create the jittery, unpredictable motion of a possum caught in the open. Nothing is still. Nothing is safe.",
   "dna": {

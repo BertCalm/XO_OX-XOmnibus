@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Breakbeat-inspired shattered transients with rapid noise bursts and pitched sine chaos.",

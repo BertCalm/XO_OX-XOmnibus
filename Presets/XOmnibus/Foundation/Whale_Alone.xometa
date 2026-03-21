@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Mono voice, Mojo=0.85. One whale alone in the ocean. 13 oscillators drifting independently — the beating between them IS the modulation. The most intimate FAT preset.",
   "dna": {

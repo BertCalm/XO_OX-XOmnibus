@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Fading Signal",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "High memory decay rate creates a signal that thins as the key is held. As if a transmission is slowly losing its source. Notes start clear and become ghostly.",
-  "tags": ["foundation", "fade", "decay", "ghost", "transmission"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "fade",
+    "decay",
+    "ghost",
+    "transmission"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.55
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

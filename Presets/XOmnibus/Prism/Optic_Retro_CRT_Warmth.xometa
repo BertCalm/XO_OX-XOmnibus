@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Trinitron tube warming up — magnetic deflection yoke hum, convergence drift, shadow-mask bloom at bright peaks. OPTIC models the physical warmup curve: brightness evolves over held note duration, vizFeedback simulates magnetic retention. The aesthetics of a technology that loved you imperfectly.",

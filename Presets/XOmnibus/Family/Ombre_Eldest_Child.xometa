@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Eldest Child",
   "mood": "Family",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The first note shapes all subsequent ones. Long memory, low drift — the original has the strongest presence. Later notes are shaped by but distinct from the eldest's character.",
-  "tags": ["family", "eldest", "first", "original", "dominant", "shaping"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "eldest",
+    "first",
+    "original",
+    "dominant",
+    "shaping"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

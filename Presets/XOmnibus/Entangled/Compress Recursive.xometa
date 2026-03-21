@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.75,
-    "brightness": 0.464,
-    "density": 0.734,
-    "movement": 0.709,
-    "space": 0.445,
-    "warmth": 0.536
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "ouroboros",
     "fat"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

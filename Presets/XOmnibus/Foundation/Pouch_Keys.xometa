@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Pouch Keys",
   "mood": "Foundation",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm electric piano with chew character and soft velocity response. Play Dead macro fades to ghostly sustain.",
-  "tags": ["keys", "electric piano", "warm", "chew", "velocity"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "keys",
+    "electric piano",
+    "warm",
+    "chew",
+    "velocity"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

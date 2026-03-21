@@ -58,10 +58,10 @@
       "oblq_refraction": 0.6
     },
     "Obsidian": {
-      "obs_ampAttack": 0.03,
-      "obs_ampRelease": 1.5,
-      "obs_filterCutoff": 2800.0,
-      "obs_filterReso": 0.3
+      "obsidian_ampAttack": 0.03,
+      "obsidian_ampRelease": 1.5,
+      "obsidian_filterCutoff": 2800.0,
+      "obsidian_filterReso": 0.3
     }
   },
   "schema_version": 1,

@@ -43,14 +43,6 @@
     "Orca": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.97,
-    "brightness": 0.08,
-    "density": 0.92,
-    "movement": 0.68,
-    "space": 0.08,
-    "warmth": 0.1
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "orca",
     "frost"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

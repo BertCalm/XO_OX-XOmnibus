@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Coral Marimba",
   "mood": "Entangled",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Wood bars with an ocean coating — the coral is growing. LFO2 at 0.05 Hz slowly morphs material, introducing tiny inharmonic variations over time as if barnacles are accreting.",
-  "tags": ["marimba", "wood", "coral", "ocean", "morphing", "sympathetic", "organic"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "marimba",
+    "wood",
+    "coral",
+    "ocean",
+    "morphing",
+    "sympathetic",
+    "organic"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +60,8 @@
       "owr_macroSpace": 0.55
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.03,
-    "brightness": 0.35,
-    "density": 0.45,
-    "movement": 0.2,
-    "space": 1.0,
-    "warmth": 0.65
-  },
   "tags": [
     "void",
     "bowl",
@@ -67,5 +59,6 @@
     "maximum-decay",
     "aether"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

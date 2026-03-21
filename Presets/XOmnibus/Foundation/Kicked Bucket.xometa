@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-05",
   "description": "Found-sound percussion emulating the satisfying resonance of kicking a metal bucket. Karplus-Strong with short, bright decay.",

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Dense fog of figure-eight resonances \u2014 high diffusion smears topology into soft cloud.",
+  "description": "Dense fog of figure-eight resonances — high diffusion smears topology into soft cloud.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.35,
@@ -78,5 +78,6 @@
     "soft",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

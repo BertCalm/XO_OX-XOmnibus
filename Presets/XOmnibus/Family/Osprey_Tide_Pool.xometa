@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "A protected alcove of still water at the edge of the shore — seaState near zero, swell period very long, coherence maximum. Tethered firmly to the sand. A gentle shimmer from the resonator is the only motion: the surface tension of a world held quietly in place. Safe and still for all who listen.",

@@ -26,37 +26,30 @@
   "name": "Optic Aurora",
   "parameters": {
     "Optic": {
-      "opt_ampAttack": 672.1,
-      "opt_ampDecay": 521.7,
-      "opt_ampRelease": 114.4,
-      "opt_ampSustain": 0.85,
-      "opt_character": 0.71,
-      "opt_coupling": 0.08,
-      "opt_delayMix": 0.14,
-      "opt_filterCutoff": 0.03,
-      "opt_filterReso": 0.93,
-      "opt_lfoDepth": 0.83,
-      "opt_lfoRate": 0.29,
-      "opt_movement": 0.45,
-      "opt_prismAngle": 0.99,
-      "opt_reverbMix": 0.7,
-      "opt_space": 0.01,
-      "opt_spectralShift": 0.37
+      "optic_ampAttack": 672.1,
+      "optic_ampDecay": 521.7,
+      "optic_ampRelease": 114.4,
+      "optic_ampSustain": 0.85,
+      "optic_character": 0.71,
+      "optic_coupling": 0.08,
+      "optic_delayMix": 0.14,
+      "optic_filterCutoff": 0.03,
+      "optic_filterReso": 0.93,
+      "optic_lfoDepth": 0.83,
+      "optic_lfoRate": 0.29,
+      "optic_movement": 0.45,
+      "optic_prismAngle": 0.99,
+      "optic_reverbMix": 0.7,
+      "optic_space": 0.01,
+      "optic_spectralShift": 0.37
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.25,
-    "brightness": 0.92,
-    "density": 0.58,
-    "movement": 0.14,
-    "space": 0.88,
-    "warmth": 0.22
-  },
   "tags": [
     "atmosphere",
     "bright",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

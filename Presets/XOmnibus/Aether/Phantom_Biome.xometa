@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Aether",
-  "description": "Biome 3 (Mangrove). Maximum reverb, low density, floor barely present. The ghost biome \u2014 ecology at the edge of silence. Canopy shimmer and creature voices the only audible life.",
+  "description": "Biome 3 (Mangrove). Maximum reverb, low density, floor barely present. The ghost biome — ecology at the edge of silence. Canopy shimmer and creature voices the only audible life.",
   "dna": {
     "aggression": 0.02,
     "brightness": 0.5,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

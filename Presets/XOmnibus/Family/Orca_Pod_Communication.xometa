@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Two gentle tones calling across distance — slow portamento, wavetable drifting between two harmonic positions, formant soft and conversational. Dynamics compressed into safety. The sound of family members checking in across the water. Hunting instinct fully dissolved.",

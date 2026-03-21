@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A metalophone played in a dream \u2014 each note blooms into a cloud of golden overtones. High resonance mix with slow erosion creates the languorous quality of half-sleep.",
+  "description": "A metalophone played in a dream — each note blooms into a cloud of golden overtones. High resonance mix with slow erosion creates the languorous quality of half-sleep.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "blooming",
     "overtones"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

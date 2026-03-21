@@ -28,14 +28,6 @@
     "Obese": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.705,
-    "brightness": 0.365,
-    "density": 0.9,
-    "movement": 0.312,
-    "space": 0.339,
-    "warmth": 0.946
-  },
   "tags": [
     "foundation",
     "warm",
@@ -44,5 +36,6 @@
     "thick",
     "aggressive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

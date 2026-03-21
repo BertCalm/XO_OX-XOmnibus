@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Self-similar at every scale \u2014 the reverb creates recursive patterns through high entanglement and convergence. Each reflection spawns sub-reflections. For IDM texture design.",
+  "description": "Self-similar at every scale — the reverb creates recursive patterns through high entanglement and convergence. Each reflection spawns sub-reflections. For IDM texture design.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.4,
@@ -50,5 +50,6 @@
     "texture",
     "complex"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

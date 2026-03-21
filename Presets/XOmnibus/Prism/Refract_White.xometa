@@ -42,14 +42,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.3244,
-    "brightness": 0.9018,
-    "density": 0.2587,
-    "movement": 0.5184,
-    "space": 0.8214,
-    "warmth": 0.2049
-  },
   "tags": [
     "prism",
     "bright",
@@ -57,5 +49,6 @@
     "spectral",
     "anchor"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

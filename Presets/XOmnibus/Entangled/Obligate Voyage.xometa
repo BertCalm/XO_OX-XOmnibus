@@ -34,14 +34,6 @@
     "Obbligato": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.39,
-    "brightness": 0.55,
-    "density": 0.59,
-    "movement": 0.63,
-    "space": 0.6,
-    "warmth": 0.56
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -50,7 +42,7 @@
     "obbligato",
     "wavetable"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

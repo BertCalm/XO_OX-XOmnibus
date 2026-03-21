@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The silence of a sanctuary \u2014 not empty, but full of absorbed prayer. Soft damping and gentle cantilever create a reverb that holds sound tenderly before releasing it to darkness.",
+  "description": "The silence of a sanctuary — not empty, but full of absorbed prayer. Soft damping and gentle cantilever create a reverb that holds sound tenderly before releasing it to darkness.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.78,
@@ -50,5 +50,6 @@
     "tender",
     "prayer"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

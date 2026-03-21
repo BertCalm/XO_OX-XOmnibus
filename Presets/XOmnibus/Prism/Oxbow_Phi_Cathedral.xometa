@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "A cathedral built on the golden ratio. Low convergence threshold and high Q means the golden harmonics ring constantly — every note excites a cascade of φ-tuned overtones that ring like bells in a vast stone space. The architecture IS the instrument.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.9,
     "aggression": 0.1
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Prism",
   "name": "Phi Cathedral",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["golden", "harmonic", "cathedral", "resonant", "pitched"],
-  "version": "1.0.0"
+  "tags": [
+    "golden",
+    "harmonic",
+    "cathedral",
+    "resonant",
+    "pitched"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

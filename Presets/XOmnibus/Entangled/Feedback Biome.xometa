@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Entangled",
-  "description": "Full circular ecosystem feedback. All eight strata routes active with high ecosystemDepth. The 14-second drift LFO cycles the coupling intensity up and down like tides \u2014 the whole system alternates between chaos and relative calm.",
+  "description": "Full circular ecosystem feedback. All eight strata routes active with high ecosystemDepth. The 14-second drift LFO cycles the coupling intensity up and down like tides — the whole system alternates between chaos and relative calm.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.45,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

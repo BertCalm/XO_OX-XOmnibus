@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OVERDUB in its element — drive warm, wobble riding the 2, send VCA open. Tape hiss present, spring reverb trailing. The machine breathes.",

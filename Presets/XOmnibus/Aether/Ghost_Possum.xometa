@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Ghost Possum",
   "mood": "Aether",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Ethereal whisper built from Play Dead macro at full range. The possum plays dead and becomes a ghost.",
-  "tags": ["ethereal", "ghost", "play dead", "whisper", "fragile"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "ethereal",
+    "ghost",
+    "play dead",
+    "whisper",
+    "fragile"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

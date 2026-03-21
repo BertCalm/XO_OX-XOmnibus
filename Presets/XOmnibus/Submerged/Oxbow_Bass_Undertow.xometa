@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Feed a bass engine through OXBOW. Dark, submerged reverb that pulls the bass into depth.",
-  "dna": { "brightness": 0.15, "warmth": 0.8, "movement": 0.25, "density": 0.6, "space": 0.7, "aggression": 0.05 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.8,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Submerged",
   "name": "Bass Undertow",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["coupling", "bass", "deep", "submerged", "dark"],
-  "version": "1.0.0"
+  "tags": [
+    "coupling",
+    "bass",
+    "deep",
+    "submerged",
+    "dark"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -60,5 +60,8 @@
       "over_macroCoupling": 0.0,
       "over_macroSpace": 0.15
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

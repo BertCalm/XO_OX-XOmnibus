@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Memory Fog",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Long decay, high drift, fine grain — a fog of memory. Notes dissolve into the air and linger as particulate. Good for sustained backgrounds and texture layers.",
-  "tags": ["atmosphere", "fog", "ambient", "drift", "dissolve"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "fog",
+    "ambient",
+    "drift",
+    "dissolve"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.88
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

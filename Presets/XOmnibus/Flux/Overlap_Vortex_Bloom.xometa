@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Unison torus with all macros engaged \u2014 maximum flux state.",
+  "description": "Unison torus with all macros engaged — maximum flux state.",
   "dna": {
     "brightness": 0.58,
     "warmth": 0.45,
@@ -78,5 +78,6 @@
     "maximum",
     "all-macros"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

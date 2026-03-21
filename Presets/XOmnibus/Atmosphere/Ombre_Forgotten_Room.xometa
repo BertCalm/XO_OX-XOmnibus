@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Forgotten Room",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Maximum memory, minimum Opsis. A room where sounds linger for 20 seconds after played. Almost entirely the reverberant ghost of the previous note. Enter quietly.",
-  "tags": ["atmosphere", "room", "reverb", "ghost", "lingering"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "room",
+    "reverb",
+    "ghost",
+    "lingering"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.95
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

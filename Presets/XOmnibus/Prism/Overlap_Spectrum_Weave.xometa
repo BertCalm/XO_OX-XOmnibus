@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus knot weaving bright harmonics together \u2014 spectral braid.",
+  "description": "Torus knot weaving bright harmonics together — spectral braid.",
   "dna": {
     "brightness": 0.82,
     "warmth": 0.35,
@@ -78,5 +78,6 @@
     "bright",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

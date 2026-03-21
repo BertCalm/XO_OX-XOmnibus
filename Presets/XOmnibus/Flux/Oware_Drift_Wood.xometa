@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.2,
-    "brightness": 0.42,
-    "density": 0.4,
-    "movement": 0.72,
-    "space": 0.55,
-    "warmth": 0.72
-  },
   "tags": [
     "wood",
     "drift",
@@ -67,5 +59,6 @@
     "evolving",
     "flux"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "The brothers have been playing so long they no longer hear where one ends and the other begins. BOND is beyond stage — it is molecular. Breath has become one substance.",
@@ -66,5 +68,6 @@
     "transcendent",
     "extended-technique"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

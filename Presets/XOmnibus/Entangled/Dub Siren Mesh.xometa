@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Dub siren sound where O's LFO sweeps X's pitch wide while X's envelope rips O's filter open. Classic sound system energy.",

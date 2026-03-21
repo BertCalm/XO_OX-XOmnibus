@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Light through a rose window \u2014 circular diffusion pattern with golden resonance creating spectral color in the reverb tail. Bright, prismatic, and devotional.",
+  "description": "Light through a rose window — circular diffusion pattern with golden resonance creating spectral color in the reverb tail. Bright, prismatic, and devotional.",
   "dna": {
     "brightness": 0.78,
     "warmth": 0.52,
@@ -50,5 +50,6 @@
     "spectral",
     "devotional"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

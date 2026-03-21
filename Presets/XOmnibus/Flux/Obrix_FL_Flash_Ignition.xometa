@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "FLASH macro fires a burst of filtered energy. Pulse source with wavefolder edge. Designed for performance \u2014 hit FLASH and feel the reef respond.",
+  "description": "FLASH macro fires a burst of filtered energy. Pulse source with wavefolder edge. Designed for performance — hit FLASH and feel the reef respond.",
   "tags": [
     "awakening",
     "hero",
@@ -107,5 +107,8 @@
     "MOVEMENT": 0.32,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

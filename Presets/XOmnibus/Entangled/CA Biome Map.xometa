@@ -67,14 +67,6 @@
     "owit_lfo1Rate": 0.724
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.579,
-    "brightness": 0.569,
-    "density": 0.632,
-    "movement": 0.728,
-    "space": 0.505,
-    "warmth": 0.575
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

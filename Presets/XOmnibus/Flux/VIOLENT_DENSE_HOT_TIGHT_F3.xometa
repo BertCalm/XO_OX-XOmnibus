@@ -28,14 +28,6 @@
     "Optic": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.916,
-    "brightness": 0.493,
-    "density": 0.957,
-    "movement": 0.521,
-    "space": 0.09,
-    "warmth": 0.908
-  },
   "tags": [
     "warm",
     "aggressive",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

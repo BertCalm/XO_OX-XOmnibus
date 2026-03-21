@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The semicircular apse focuses sound like a lens \u2014 a warm, concentrated reverb with natural golden ratio proportions. Ideal for solo voice or cello in a sacred context.",
+  "description": "The semicircular apse focuses sound like a lens — a warm, concentrated reverb with natural golden ratio proportions. Ideal for solo voice or cello in a sacred context.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.82,
@@ -50,5 +50,6 @@
     "solo",
     "voice"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

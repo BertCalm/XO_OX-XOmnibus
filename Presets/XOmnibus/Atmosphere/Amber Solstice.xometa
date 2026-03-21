@@ -22,14 +22,6 @@
     "Osprey": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.038,
-    "brightness": 0.69,
-    "density": 0.504,
-    "movement": 0.237,
-    "space": 0.663,
-    "warmth": 0.763
-  },
   "tags": [
     "atmosphere",
     "pad",
@@ -37,7 +29,7 @@
     "dawn",
     "gentle"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

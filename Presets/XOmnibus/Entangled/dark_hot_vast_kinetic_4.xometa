@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "Low",
   "couplingType": "ECHO",
-  "description": "Ultra-diverse Entangled preset \u2014 dark hot vast kinetic. Designed for ECHO coupling with XOblongBob.",
+  "description": "Ultra-diverse Entangled preset — dark hot vast kinetic. Designed for ECHO coupling with XOblongBob.",
   "dna": {
     "aggression": 0.4488,
     "brightness": 0.0841,
@@ -34,19 +34,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.4488,
-    "brightness": 0.0841,
-    "density": 0.5312,
-    "movement": 0.9246,
-    "space": 0.9387,
-    "warmth": 0.9036
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "echo",
     "oblong"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

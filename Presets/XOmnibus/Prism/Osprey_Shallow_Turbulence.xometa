@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Southern shore — Gamelan-style resonators driven by turbulent shallow water. High foam, maximum sympathy, very low coherence. Each note shatters into inharmonic fragments like light through broken wave faces.",

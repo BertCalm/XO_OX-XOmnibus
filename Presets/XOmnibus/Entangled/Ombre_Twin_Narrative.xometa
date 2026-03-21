@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Twin Narrative",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Pair with any engine to create dual narratives — Ombre's memory-forgetting axis against the other engine's character axis. Two stories in counterpoint.",
-  "tags": ["entangled", "twin", "narrative", "dual", "counterpoint", "pair"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "twin",
+    "narrative",
+    "dual",
+    "counterpoint",
+    "pair"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.68
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

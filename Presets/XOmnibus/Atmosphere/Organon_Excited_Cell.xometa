@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Metabolic excitation — the organism encounters unexpected reward. Prediction error positive: reality is better than modeled. Enzyme activity accelerates, membrane permeability increases to intake new information. VFE rises not from distress but from delight. The cell opens like a flower that didn't know it was waiting for sun.",

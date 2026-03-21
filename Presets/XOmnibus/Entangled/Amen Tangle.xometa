@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Breakbeat-driven coupling at jungle tempo. Chopped envelope triggers from X rip through O's filter while pitch modulation adds chaos.",

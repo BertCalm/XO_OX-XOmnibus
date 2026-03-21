@@ -2,27 +2,65 @@
   "schema_version": 1,
   "name": "Orbweave Golden Torus Bells",
   "mood": "Prism",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The golden ratio winding number (5,8 torus approximating phi=1.618) creates coupling that never settles. Irrational periodicity produces a bell timbre with subtle non-repeating shimmer — as if the bell were made of an alloy with irrational molecular structure.",
   "tier": "awakening",
-  "tags": ["prism", "golden-ratio", "bells", "torus", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "prism",
+    "golden-ratio",
+    "bells",
+    "torus",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.72, "warmth": 0.38, "movement": 0.30, "density": 0.40, "space": 0.55, "aggression": 0.20 },
-  "sonic_dna": { "brightness": 0.72, "warmth": 0.38, "movement": 0.30, "density": 0.40, "space": 0.55, "aggression": 0.20 },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.2
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 0.0, "weave_knotType": 2, "weave_braidDepth": 0.74,
-      "weave_torusP": 5, "weave_torusQ": 8,
-      "weave_filterCutoff": 18000.0, "weave_filterReso": 0.0, "weave_filterType": 0,
-      "weave_ampA": 0.003, "weave_ampD": 1.2, "weave_ampS": 0.0, "weave_ampR": 2.0,
-      "weave_lfo1Type": 0, "weave_lfo2Type": 0,
-      "weave_fx1Type": 3, "weave_fx1Mix": 0.30, "weave_fx1Param": 0.45,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
-      "weave_voiceMode": 3, "weave_pitchBendRange": 2
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.74,
+      "weave_torusP": 5,
+      "weave_torusQ": 8,
+      "weave_filterCutoff": 18000.0,
+      "weave_filterReso": 0.0,
+      "weave_filterType": 0,
+      "weave_ampA": 0.003,
+      "weave_ampD": 1.2,
+      "weave_ampS": 0.0,
+      "weave_ampR": 2.0,
+      "weave_lfo1Type": 0,
+      "weave_lfo2Type": 0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.3,
+      "weave_fx1Param": 0.45,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2
     }
-  }
+  },
+  "tempo": null
 }

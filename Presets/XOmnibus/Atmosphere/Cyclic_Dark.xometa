@@ -26,37 +26,30 @@
   "name": "Cyclic Dark",
   "parameters": {
     "Ouroboros": {
-      "uro_ampAttack": 208.1,
-      "uro_ampDecay": 265.9,
-      "uro_ampRelease": 598.9,
-      "uro_ampSustain": 0.31,
-      "uro_character": 0.83,
-      "uro_coupling": 0.86,
-      "uro_cycle": 0.04,
-      "uro_delayMix": 0.5,
-      "uro_feedbackLoop": 0.3,
-      "uro_filterCutoff": 0.21,
-      "uro_filterReso": 0.14,
-      "uro_lfoDepth": 0.38,
-      "uro_lfoRate": 0.18,
-      "uro_movement": 0.81,
-      "uro_reverbMix": 0.7,
-      "uro_space": 0.07
+      "ouro_ampAttack": 208.1,
+      "ouro_ampDecay": 265.9,
+      "ouro_ampRelease": 598.9,
+      "ouro_ampSustain": 0.31,
+      "ouro_character": 0.83,
+      "ouro_coupling": 0.86,
+      "ouro_cycle": 0.04,
+      "ouro_delayMix": 0.5,
+      "ouro_feedbackLoop": 0.3,
+      "ouro_filterCutoff": 0.21,
+      "ouro_filterReso": 0.14,
+      "ouro_lfoDepth": 0.38,
+      "ouro_lfoRate": 0.18,
+      "ouro_movement": 0.81,
+      "ouro_reverbMix": 0.7,
+      "ouro_space": 0.07
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.06,
-    "brightness": 0.09,
-    "density": 0.5,
-    "movement": 0.54,
-    "space": 0.55,
-    "warmth": 0.23
-  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

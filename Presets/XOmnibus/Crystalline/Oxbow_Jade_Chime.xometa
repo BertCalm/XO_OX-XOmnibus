@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "A single jade chime struck in a stone courtyard \u2014 the golden resonance tuned to reinforce the fundamental and fifth. Pure, ringing, with gentle erosion adding age.",
+  "description": "A single jade chime struck in a stone courtyard — the golden resonance tuned to reinforce the fundamental and fifth. Pure, ringing, with gentle erosion adding age.",
   "dna": {
     "brightness": 0.75,
     "warmth": 0.45,
@@ -50,5 +50,6 @@
     "ringing",
     "pure"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

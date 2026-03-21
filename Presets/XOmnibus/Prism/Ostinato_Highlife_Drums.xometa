@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Highlife percussion \u2014 conga lead with bell and ghost cajon.",
+  "description": "Highlife percussion — conga lead with bell and ghost cajon.",
   "tags": [
     "prism",
     "afrobeat",
@@ -165,5 +165,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

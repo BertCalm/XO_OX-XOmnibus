@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 8: The kick is the sun of this kit's solar system. Massive kick body and level, all XVC routes set so the kick's amplitude sculpts everything around it. Kick brightens snare filter maximally, kick bends toms maximally. The whole kit orbits the kick — when it hits, everything is shaped by its force.",

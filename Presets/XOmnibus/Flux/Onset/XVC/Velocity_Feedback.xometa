@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC ADVANCED 6: All XVC amounts moderate (0.45–0.65) + MUTATE 0.2 + global_amount 0.78. Because XVC peak values scale with output amplitude, velocity directly scales all coupling. Soft hits: near-zero coupling, clean isolated sounds. Hard hits: full-mesh modulation, the kit self-entangles. The same pattern sounds mechanical at low velocity, organic and coupled at high velocity. Velocity becomes a coupling depth macro.",

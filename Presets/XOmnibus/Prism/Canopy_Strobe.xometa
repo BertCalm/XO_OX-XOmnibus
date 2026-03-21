@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Prism",
-  "description": "High canopy shimmer with fast emergent trigger cycle. Biome 1 (Cloud Forest). Canopy wavefold at peak + maximum spectral filter brightness \u2014 light through forest canopy accelerated to strobe.",
+  "description": "High canopy shimmer with fast emergent trigger cycle. Biome 1 (Cloud Forest). Canopy wavefold at peak + maximum spectral filter brightness — light through forest canopy accelerated to strobe.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.8,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

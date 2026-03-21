@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The reverb for the build \u2014 starts intimate, swells to enormous. Large size with moderate decay allows the post-rock crescendo to fill the space naturally without washing out.",
+  "description": "The reverb for the build — starts intimate, swells to enormous. Large size with moderate decay allows the post-rock crescendo to fill the space naturally without washing out.",
   "dna": {
     "brightness": 0.55,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "dynamic",
     "enormous"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Looking up from the nave into a vaulted ceiling painted with stars \u2014 the reverb opens upward, bright and infinite. Golden resonance adds celestial shimmer to the decay.",
+  "description": "Looking up from the nave into a vaulted ceiling painted with stars — the reverb opens upward, bright and infinite. Golden resonance adds celestial shimmer to the decay.",
   "dna": {
     "brightness": 0.8,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "infinite",
     "stars"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -28,14 +28,6 @@
     "Oblique": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.927,
-    "brightness": 0.08,
-    "density": 0.414,
-    "movement": 0.936,
-    "space": 0.935,
-    "warmth": 0.408
-  },
   "tags": [
     "dark",
     "aggressive",
@@ -44,5 +36,6 @@
     "flux",
     "extreme"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

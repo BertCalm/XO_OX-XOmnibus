@@ -22,14 +22,6 @@
     "Overworld": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.119,
-    "brightness": 0.878,
-    "density": 0.324,
-    "movement": 0.583,
-    "space": 0.491,
-    "warmth": 0.185
-  },
   "tags": [
     "atmosphere",
     "pad",
@@ -37,7 +29,7 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Spectral Presence",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The engine at its most spiritual — Oubli-dominant, long decay, near-maximum space. Each note sends its essence into the buffer where it hovers, spectral and present.",
-  "tags": ["aether", "spectral", "presence", "spiritual", "essence", "hovering"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "spectral",
+    "presence",
+    "spiritual",
+    "essence",
+    "hovering"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.98
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

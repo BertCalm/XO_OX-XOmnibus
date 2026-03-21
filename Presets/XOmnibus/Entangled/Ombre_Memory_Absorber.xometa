@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Memory Absorber",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Maximum coupling — Ombre absorbs external audio deeply into its memory buffer. All external audio becomes Oubli material. The engine remembers everything sent to it.",
-  "tags": ["entangled", "absorber", "memory", "input", "maximum-coupling"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "absorber",
+    "memory",
+    "input",
+    "maximum-coupling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.85
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

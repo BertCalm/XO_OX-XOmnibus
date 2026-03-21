@@ -47,14 +47,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.46,
-    "brightness": 0.74,
-    "density": 0.67,
-    "movement": 0.52,
-    "space": 0.33,
-    "warmth": 0.38
-  },
   "tags": [
     "nes",
     "triangle",

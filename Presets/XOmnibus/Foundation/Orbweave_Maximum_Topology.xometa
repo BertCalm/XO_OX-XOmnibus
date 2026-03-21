@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "braidDepth=1.0, Sine strands, Figure-Eight knot. Maximum coupling through the alternating over/under topology. This is pure knot mathematics — no harmonic complexity, just phase entanglement at full depth. Sine strands have mathematically pure coupling: the coupling input IS the output signal.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.2,
     "aggression": 0.1
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 1.0, "TENSION": 0.0, "KNOT": 0.0, "SPACE": 0.0 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 1.0,
+    "TENSION": 0.0,
+    "KNOT": 0.0,
+    "SPACE": 0.0
+  },
   "mood": "Foundation",
   "name": "Maximum Topology",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["reference", "maximum", "figure-eight", "pure-coupling", "foundation"],
-  "version": "1.0"
+  "tags": [
+    "reference",
+    "maximum",
+    "figure-eight",
+    "pure-coupling",
+    "foundation"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

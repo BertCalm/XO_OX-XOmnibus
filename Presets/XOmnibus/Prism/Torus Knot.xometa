@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "R\u00f6ssler quasi-periodic orbit. Interleaving patterns.",
+  "description": "Rössler quasi-periodic orbit. Interleaving patterns.",
   "tags": [
     "chaos",
     "rossler",
@@ -42,6 +42,8 @@
       "ouro_injection": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

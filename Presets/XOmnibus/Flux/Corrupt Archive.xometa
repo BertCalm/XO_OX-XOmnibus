@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Square wave aggressively fed into a short, rapidly drifting memory buffer. The result sounds like a corrupted data stream — digital artifacts from a failing hard drive of sound.",

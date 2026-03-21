@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus T(4,3) creating harmonic meridian lines \u2014 warm glow radiating through diffuse space.",
+  "description": "Torus T(4,3) creating harmonic meridian lines — warm glow radiating through diffuse space.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.5,
@@ -78,5 +78,6 @@
     "torus",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

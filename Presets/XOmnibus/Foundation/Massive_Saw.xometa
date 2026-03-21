@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Massive Saw",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic fat supersaw. 13 oscillators detuned across 4 stereo groups. Pure analog character.",
-  "tags": ["supersaw", "fat", "massive", "unison", "foundation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "supersaw",
+    "fat",
+    "massive",
+    "unison",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -53,6 +66,8 @@
       "fat_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

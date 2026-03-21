@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Explosive rhythmic coupling at high intensity. X's envelope slams O's filter with each hit and O retaliates with pitch warps on X.",

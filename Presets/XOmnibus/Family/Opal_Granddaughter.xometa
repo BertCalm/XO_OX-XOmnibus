@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OPAL in its softest register. Small grains, long envelope, gentle scatter. The granular engine as lullaby — grains just big enough to feel, small enough to float.",

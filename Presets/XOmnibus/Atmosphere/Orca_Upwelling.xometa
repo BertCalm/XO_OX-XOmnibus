@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Upwelling",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cold nutrient-rich water rising from depth to surface — an upwelling zone. The formant shift rising slowly from low to high represents the acoustic character changing from deep to shallow. Life-giving, cold, vertical.",
-  "tags": ["atmosphere", "upwelling", "vertical", "rising", "nutrient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "upwelling",
+    "vertical",
+    "rising",
+    "nutrient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.38, "warmth": 0.38, "movement": 0.25, "density": 0.48, "space": 0.72, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.38,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.72,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.3, "orca_wtScanRate": 0.12, "orca_formantIntensity": 0.5, "orca_formantShift": 0.38, "orca_glide": 0.7,
-      "orca_echoRate": 2.0, "orca_echoReso": 0.76, "orca_echoDamp": 0.52, "orca_echoMix": 0.4, "orca_huntMacro": 0.0,
-      "orca_breachSub": 0.38, "orca_breachShape": 0.0, "orca_breachThreshold": -26.0, "orca_breachRatio": 2.5,
-      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 1000.0,
-      "orca_filterCutoff": 3800.0, "orca_filterReso": 0.16, "orca_level": 0.74,
-      "orca_ampAttack": 0.25, "orca_ampDecay": 0.8, "orca_ampSustain": 0.55, "orca_ampRelease": 1.5,
-      "orca_modAttack": 0.2, "orca_modDecay": 0.65, "orca_modSustain": 0.44, "orca_modRelease": 1.2,
-      "orca_lfo1Rate": 0.04, "orca_lfo1Depth": 0.22, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.08, "orca_lfo2Depth": 0.11, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 2, "orca_velCutoffAmt": 0.32, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.3,
+      "orca_wtScanRate": 0.12,
+      "orca_formantIntensity": 0.5,
+      "orca_formantShift": 0.38,
+      "orca_glide": 0.7,
+      "orca_echoRate": 2.0,
+      "orca_echoReso": 0.76,
+      "orca_echoDamp": 0.52,
+      "orca_echoMix": 0.4,
+      "orca_huntMacro": 0.0,
+      "orca_breachSub": 0.38,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -26.0,
+      "orca_breachRatio": 2.5,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 1000.0,
+      "orca_filterCutoff": 3800.0,
+      "orca_filterReso": 0.16,
+      "orca_level": 0.74,
+      "orca_ampAttack": 0.25,
+      "orca_ampDecay": 0.8,
+      "orca_ampSustain": 0.55,
+      "orca_ampRelease": 1.5,
+      "orca_modAttack": 0.2,
+      "orca_modDecay": 0.65,
+      "orca_modSustain": 0.44,
+      "orca_modRelease": 1.2,
+      "orca_lfo1Rate": 0.04,
+      "orca_lfo1Depth": 0.22,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 0.08,
+      "orca_lfo2Depth": 0.11,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2,
+      "orca_velCutoffAmt": 0.32,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

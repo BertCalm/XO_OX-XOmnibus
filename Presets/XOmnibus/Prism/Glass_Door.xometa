@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The preset that opens the glass door between the player and the CuriosityEngine. vel_filter at 0.7 — play soft and the filter closes to a whisper, play hard and it opens to full brightness. Investigate mode responds to the LFO but your fingers control the light. Named for the Seance ghost's lament: 'the soul is locked behind glass.' This preset is the key.",

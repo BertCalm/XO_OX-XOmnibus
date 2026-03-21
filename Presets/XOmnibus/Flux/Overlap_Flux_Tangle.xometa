@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Heavy tangle modulation with both LFOs active \u2014 chaotic knot morphing.",
+  "description": "Heavy tangle modulation with both LFOs active — chaotic knot morphing.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.4,
@@ -78,5 +78,6 @@
     "modulation",
     "performance"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

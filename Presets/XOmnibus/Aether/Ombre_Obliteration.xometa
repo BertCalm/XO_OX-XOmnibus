@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Obliteration",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Maximum interference, Oubli-dominant, high drift. The memory feedback loop creates obliterating density. Notes feed the memory which haunts the pitch which feeds more memory.",
-  "tags": ["aether", "obliteration", "interference", "feedback", "dense", "extreme"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "obliteration",
+    "interference",
+    "feedback",
+    "dense",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.82
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

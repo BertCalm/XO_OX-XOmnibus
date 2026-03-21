@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANON's rule-based intelligence structures ONSET output. Every drum hit has a grammatical role \u2014 subject, predicate, object.",
+  "description": "ORGANON's rule-based intelligence structures ONSET output. Every drum hit has a grammatical role — subject, predicate, object.",
   "tags": [
     "coupling",
     "entangled",
@@ -41,9 +41,9 @@
       "perc_macro_punch": 0.65
     },
     "Organon": {
-      "org_logic": 0.6,
-      "org_density": 0.65,
-      "org_filterCut": 5500.0
+      "organon_logic": 0.6,
+      "organon_density": 0.65,
+      "organon_filterCut": 5500.0
     }
   },
   "coupling": {

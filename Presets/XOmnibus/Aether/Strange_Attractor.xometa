@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Lorenz attractor at default rate with high chaos, loose leash, and both projections at pi/4. The pure mathematical object, raw and alien.",

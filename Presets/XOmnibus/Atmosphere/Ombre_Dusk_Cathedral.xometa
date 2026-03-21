@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Dusk Cathedral",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Large space, long release, reverberant character from the memory grain. The engine's natural reverb — each note decays into a resonant space that the next note inherits.",
-  "tags": ["atmosphere", "cathedral", "reverb", "space", "dusk", "sacred"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "cathedral",
+    "reverb",
+    "space",
+    "dusk",
+    "sacred"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.92
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

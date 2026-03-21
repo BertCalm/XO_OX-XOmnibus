@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Bright trefoil harmonics floating on slow current \u2014 bioluminescent particles in motion.",
+  "description": "Bright trefoil harmonics floating on slow current — bioluminescent particles in motion.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.65,
@@ -78,5 +78,6 @@
     "bright",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -43,14 +43,6 @@
     "Ouroboros": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.98,
-    "brightness": 0.42,
-    "density": 0.91,
-    "movement": 0.74,
-    "space": 0.08,
-    "warmth": 0.18
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "ouroboros",
     "predator"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Journey mode suppresses note-off \u2014 the sound never dies. Play a chord and let it evolve forever. Perfect for ambient installations.",
+  "description": "Journey mode suppresses note-off — the sound never dies. Play a chord and let it evolve forever. Perfect for ambient installations.",
   "tags": [
     "lesson",
     "journey",
@@ -107,5 +107,8 @@
     "MOVEMENT": 0.32,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

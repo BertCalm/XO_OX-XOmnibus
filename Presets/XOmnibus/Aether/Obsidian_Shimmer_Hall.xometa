@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Phase distortion at medium density but with wide stereo and maximum reverberant depth. The stone surface catching hall reflections — angular but vast. The missing high-space Obsidian character.",

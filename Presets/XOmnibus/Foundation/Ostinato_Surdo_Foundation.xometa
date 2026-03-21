@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Three surdos \u2014 low, mid, high. The heartbeat of samba.",
+  "description": "Three surdos — low, mid, high. The heartbeat of samba.",
   "tags": [
     "foundation",
     "surdo",
@@ -166,5 +166,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

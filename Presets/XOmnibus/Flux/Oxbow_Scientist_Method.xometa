@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Methodical dub deconstruction \u2014 the reverb strips elements away one by one using erosion. Each repeat reveals less of the original, like a scientist isolating variables.",
+  "description": "Methodical dub deconstruction — the reverb strips elements away one by one using erosion. Each repeat reveals less of the original, like a scientist isolating variables.",
   "dna": {
     "brightness": 0.42,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "stripping",
     "analytical"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

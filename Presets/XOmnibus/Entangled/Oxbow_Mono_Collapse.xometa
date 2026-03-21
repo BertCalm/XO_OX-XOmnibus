@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Summing to mono reveals nothing \u2014 the reverb exists only in the stereo field. Full entanglement with deep erosion creates a phantom that vanishes when the listener moves to center.",
+  "description": "Summing to mono reveals nothing — the reverb exists only in the stereo field. Full entanglement with deep erosion creates a phantom that vanishes when the listener moves to center.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "phase-cancel",
     "disappearing"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

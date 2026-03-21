@@ -28,14 +28,6 @@
     "Orca": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.482,
-    "brightness": 0.293,
-    "density": 0.878,
-    "movement": 0.52,
-    "space": 0.222,
-    "warmth": 0.917
-  },
   "tags": [
     "foundation",
     "warm",
@@ -43,5 +35,6 @@
     "analog",
     "thick"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

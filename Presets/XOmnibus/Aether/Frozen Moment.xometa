@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-11",
   "description": "Buffer frozen mid-phrase. Time suspended. Minimal movement, maximum space.",

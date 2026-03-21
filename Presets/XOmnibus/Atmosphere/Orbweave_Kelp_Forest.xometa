@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Solomon knot, Triangle strands, strandTune=5.0 semitones (major third), braidDepth=0.60. Long attack (2.5s). LFO1 breathes braid depth at 0.05 Hz. LFO2 drifts filter cutoff at 0.12 Hz. Heavy reverb. The two Solomon rings drift apart and together like kelp fronds responding to a deep current. Slow, patient, alive.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.75,
     "aggression": 0.0
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.6, "TENSION": 0.05, "KNOT": 0.0, "SPACE": 0.7 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.6,
+    "TENSION": 0.05,
+    "KNOT": 0.0,
+    "SPACE": 0.7
+  },
   "mood": "Atmosphere",
   "name": "Kelp Forest",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["kelp", "solomon", "atmosphere", "slow", "drift"],
-  "version": "1.0"
+  "tags": [
+    "kelp",
+    "solomon",
+    "atmosphere",
+    "slow",
+    "drift"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

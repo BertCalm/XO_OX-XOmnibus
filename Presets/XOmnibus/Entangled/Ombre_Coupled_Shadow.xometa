@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Coupled Shadow",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Ombre as the shadow partner — designed to follow another engine's lead. Oubli-dominant, high coupling, ready to absorb the other engine's audio into its memory buffer.",
-  "tags": ["entangled", "shadow", "follower", "coupling", "partner", "absorbed"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "shadow",
+    "follower",
+    "coupling",
+    "partner",
+    "absorbed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.8
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

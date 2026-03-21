@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Step rate at maximum (32 steps/sec). The automaton evolves so rapidly that individual generation outputs blur into continuous modulation — the CA becomes a complex modulator rather than a rhythmic event generator. Rule 110 (universal computation) at this speed produces pseudo-random continuous timbral variation.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.4,
     "aggression": 0.72
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.25, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.25,
+    "SEED": 0.0,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
   "mood": "Flux",
   "name": "Ultrafast Colony",
   "parameters": {
@@ -45,6 +59,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["ultrafast", "continuous", "modulator", "rule110", "turing-complete", "flux"],
-  "version": "1.0"
+  "tags": [
+    "ultrafast",
+    "continuous",
+    "modulator",
+    "rule110",
+    "turing-complete",
+    "flux"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

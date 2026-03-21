@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OCTOPUS distributed intelligence + OPTIC prismatic light — the problem solver and the spectrum. Eight arms catching every frequency.",

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Orphica pushed to extreme brightness \u2014 brightness 0.92, movement 0.73, aggression 0.78. Ultra-bright Prism zone filler.",
+  "description": "Orphica pushed to extreme brightness — brightness 0.92, movement 0.73, aggression 0.78. Ultra-bright Prism zone filler.",
   "tags": [
     "prism",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.92,
-    "warmth": 0.174,
-    "movement": 0.731,
-    "density": 0.598,
-    "space": 0.529,
-    "aggression": 0.779
-  },
-  "sonic_dna": {
     "brightness": 0.92,
     "warmth": 0.174,
     "movement": 0.731,

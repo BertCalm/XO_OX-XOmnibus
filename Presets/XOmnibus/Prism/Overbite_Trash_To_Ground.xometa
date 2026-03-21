@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "TRASH 0.8 + BELLY 0.4 — noisy but grounded. Noise routing through the filter with enough sub oscillator to keep it from becoming formless. Mod wheel transitions TRASH from 0.0 (clean, warm bass) to 0.8 (noise-saturated animal) in real time. At heel: a foundation bass with grain. At toe: the possum rummaging through a dumpster. BELLY holds the floor throughout.",
   "dna": {

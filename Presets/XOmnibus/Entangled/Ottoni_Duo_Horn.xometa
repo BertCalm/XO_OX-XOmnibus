@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "All three ages play simultaneously. GROW at midpoint — toddler raw, teen precise.",
@@ -62,5 +64,6 @@
     "entangled",
     "coupled"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

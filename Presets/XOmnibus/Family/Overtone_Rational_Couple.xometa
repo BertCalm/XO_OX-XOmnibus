@@ -1,7 +1,7 @@
 {
   "name": "Rational Couple",
   "schema_version": 1,
-  "version": "1.0",
+  "version": "1.0.0",
   "mood": "Family",
   "macros": {
     "CHARACTER": 0.42,
@@ -39,14 +39,6 @@
       "over_macroSpace": 0.46
     }
   },
-  "sonicDNA": {
-    "brightness": 0.62,
-    "warmth": 0.48,
-    "movement": 0.36,
-    "density": 0.62,
-    "space": 0.51,
-    "aggression": 0.1
-  },
   "tags": [
     "mathematical",
     "harmonic",
@@ -67,5 +59,6 @@
     "density": 0.55,
     "space": 0.5,
     "aggression": 0.15
-  }
+  },
+  "tempo": null
 }

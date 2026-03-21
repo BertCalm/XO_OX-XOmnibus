@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Twitch Sync",
   "mood": "Flux",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aggressive sync lead with Twitch curiosity. Sharp, unpredictable gestures over hard-synced oscillators.",
-  "tags": ["sync", "lead", "aggressive", "twitch", "glitch"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sync",
+    "lead",
+    "aggressive",
+    "twitch",
+    "glitch"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

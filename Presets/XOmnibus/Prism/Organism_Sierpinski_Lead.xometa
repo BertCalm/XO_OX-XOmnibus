@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 90 Sierpinski at 8 Hz step rate, minimal scope (2 gens) for maximum responsiveness. Bright saw, boosted resonance, hard velocity scaling. Clean and cutting.",
   "dna": {
     "brightness": 0.78,
     "warmth": 0.35,

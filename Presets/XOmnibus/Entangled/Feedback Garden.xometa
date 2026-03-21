@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Organic evolving patch where coupling grows like vines. X's envelope slowly opens O's filter while O's LFO gently bends X upward.",

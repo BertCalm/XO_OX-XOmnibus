@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Inside a geode \u2014 crystalline reflections from every surface with the golden resonance creating harmonic overtones. Bright, pure, and magical. For ambient pads and healing music.",
+  "description": "Inside a geode — crystalline reflections from every surface with the golden resonance creating harmonic overtones. Bright, pure, and magical. For ambient pads and healing music.",
   "dna": {
     "brightness": 0.75,
     "warmth": 0.4,
@@ -50,5 +50,6 @@
     "magical",
     "healing"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

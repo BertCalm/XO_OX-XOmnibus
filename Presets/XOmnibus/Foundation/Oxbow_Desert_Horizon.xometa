@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Vast open space with nothing to reflect off but the sky itself \u2014 extremely long predelay and gentle decay. The reverb of emptiness, for wide-angle establishing shots.",
+  "description": "Vast open space with nothing to reflect off but the sky itself — extremely long predelay and gentle decay. The reverb of emptiness, for wide-angle establishing shots.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.6,
@@ -50,5 +50,6 @@
     "open",
     "panoramic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

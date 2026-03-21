@@ -2,23 +2,55 @@
   "schema_version": 1,
   "name": "Oware Tibetan Singing Bowl",
   "mood": "Prism",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bowl body + maximum drift + minimal damping = the instrument plays itself. Bowl body resonator at depth 0.85 feeds a sub-octave resonator that is essentially undamped. Thermal drift at 0.55 creates slow pitch wander — the note is always in transit, never arriving.",
   "tier": "awakening",
-  "tags": ["prism", "singing-bowl", "tibetan", "meditation", "drone", "guru-bin-awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "prism",
+    "singing-bowl",
+    "tibetan",
+    "meditation",
+    "drone",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.40, "warmth": 0.70, "movement": 0.30, "density": 0.55, "space": 0.75, "aggression": 0.04 },
-  "sonic_dna": { "brightness": 0.40, "warmth": 0.70, "movement": 0.30, "density": 0.55, "space": 0.75, "aggression": 0.04 },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.75,
+    "aggression": 0.04
+  },
   "parameters": {
     "Oware": {
-      "owr_material": 0.66, "owr_malletHardness": 0.35, "owr_bodyType": 2, "owr_bodyDepth": 0.85,
-      "owr_buzzAmount": 0.0, "owr_sympathyAmount": 0.48, "owr_shimmerRate": 2.0,
-      "owr_thermalDrift": 0.55, "owr_brightness": 4000.0, "owr_damping": 0.10, "owr_decay": 8.5,
-      "owr_filterEnvAmount": 0.20, "owr_bendRange": 4
+      "owr_material": 0.66,
+      "owr_malletHardness": 0.35,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.48,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.55,
+      "owr_brightness": 4000.0,
+      "owr_damping": 0.1,
+      "owr_decay": 8.5,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 4
     }
-  }
+  },
+  "tempo": null
 }

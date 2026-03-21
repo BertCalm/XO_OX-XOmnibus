@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ghost Season",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Autumnal atmosphere — memory decay calibrated to 8 seconds, grain at 200ms. Notes leave translucent season-shaped impressions. Haunted but not unnerving.",
-  "tags": ["atmosphere", "autumn", "ghost", "season", "haunted", "impressionistic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "autumn",
+    "ghost",
+    "season",
+    "haunted",
+    "impressionistic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.82
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

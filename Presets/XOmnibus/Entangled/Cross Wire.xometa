@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Deep",
   "created": "2026-03-05",
   "description": "Aggressive cross-modulation where both engines fight for dominance. X hammers O's filter while O destabilizes X's pitch.",

@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 18 sparse propagation from seed 1. Slow step (2 Hz), maximum scope (16 gens). The filter sees long stretches of open cells — a wide, breathing low-mid pad.",
   "dna": {
     "brightness": 0.2,
     "warmth": 0.72,

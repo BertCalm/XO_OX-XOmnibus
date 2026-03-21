@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Play Dead at 0.7. The creature collapses: pitch sags, teeth retract (Gnash reduced internally), oscillators dim, release extends. Not silence — the metabolic aftermath of aggression being dismantled from within. Scurry at 0.2 adds the muscle twitch of a body that hasn't quite stopped fighting.",

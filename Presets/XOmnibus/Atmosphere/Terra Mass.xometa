@@ -22,14 +22,6 @@
     "Ottoni": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.064,
-    "brightness": 0.27,
-    "density": 0.66,
-    "movement": 0.052,
-    "space": 0.508,
-    "warmth": 0.966
-  },
   "tags": [
     "atmosphere",
     "drone",
@@ -37,7 +29,7 @@
     "warm",
     "thick"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

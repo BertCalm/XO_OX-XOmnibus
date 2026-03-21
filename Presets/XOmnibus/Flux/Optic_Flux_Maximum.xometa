@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Optic pushed to extreme brightness \u2014 brightness 0.90, movement 0.81, aggression 0.76. Ultra-bright Flux zone filler.",
+  "description": "Optic pushed to extreme brightness — brightness 0.90, movement 0.81, aggression 0.76. Ultra-bright Flux zone filler.",
   "tags": [
     "flux",
     "ultra-bright",
@@ -24,14 +24,6 @@
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
-    "brightness": 0.895,
-    "warmth": 0.181,
-    "movement": 0.806,
-    "density": 0.315,
-    "space": 0.648,
-    "aggression": 0.761
-  },
-  "sonic_dna": {
     "brightness": 0.895,
     "warmth": 0.181,
     "movement": 0.806,

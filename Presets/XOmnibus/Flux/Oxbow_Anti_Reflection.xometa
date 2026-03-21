@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Reverb designed to subtract from the source \u2014 erosion and entanglement conspire to create a tail that destructively interferes with the dry signal. Space by removal.",
+  "description": "Reverb designed to subtract from the source — erosion and entanglement conspire to create a tail that destructively interferes with the dry signal. Space by removal.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.3,
@@ -50,5 +50,6 @@
     "destructive",
     "negative-space"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

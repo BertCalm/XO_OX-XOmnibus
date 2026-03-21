@@ -2,27 +2,66 @@
   "schema_version": 1,
   "name": "Orbweave Solomon Chord Pad",
   "mood": "Atmosphere",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Each MIDI note produces a two-ring chord with internal dynamics. Ring A at root, Ring B at fifth. Slow LFO on braid depth breathes the coupling strength over an 11-second cycle. Play open fifth intervals in left hand with top voice melody for three-layer texture.",
   "tier": "awakening",
-  "tags": ["atmosphere", "solomon", "chord", "pad", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "atmosphere",
+    "solomon",
+    "chord",
+    "pad",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.45, "warmth": 0.60, "movement": 0.35, "density": 0.55, "space": 0.65, "aggression": 0.05 },
-  "sonic_dna": { "brightness": 0.45, "warmth": 0.60, "movement": 0.35, "density": 0.55, "space": 0.65, "aggression": 0.05 },
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 1, "weave_strandTune": 7.02, "weave_knotType": 3, "weave_braidDepth": 0.78,
-      "weave_filterCutoff": 4500.0, "weave_filterReso": 0.12, "weave_filterType": 0,
-      "weave_ampA": 0.35, "weave_ampD": 0.6, "weave_ampS": 0.82, "weave_ampR": 3.5,
-      "weave_lfo1Type": 1, "weave_lfo1Target": 5, "weave_lfo1Depth": 0.15, "weave_lfo1Rate": 0.09,
+      "weave_strandType": 1,
+      "weave_strandTune": 7.02,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.78,
+      "weave_filterCutoff": 4500.0,
+      "weave_filterReso": 0.12,
+      "weave_filterType": 0,
+      "weave_ampA": 0.35,
+      "weave_ampD": 0.6,
+      "weave_ampS": 0.82,
+      "weave_ampR": 3.5,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.15,
+      "weave_lfo1Rate": 0.09,
       "weave_lfo2Type": 0,
-      "weave_fx1Type": 3, "weave_fx1Mix": 0.32, "weave_fx1Param": 0.55,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
-      "weave_voiceMode": 3, "weave_glideTime": 0.0
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.32,
+      "weave_fx1Param": 0.55,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_voiceMode": 3,
+      "weave_glideTime": 0.0
     }
-  }
+  },
+  "tempo": null
 }

@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Entangled",
-  "description": "Cascading strata: Floor drives Understory, Understory drives Canopy, Canopy drives Emergent in a unidirectional chain. The ECOSYSTEM macro amplifies all four cascade links simultaneously \u2014 twist it and feel the whole structure reorganize.",
+  "description": "Cascading strata: Floor drives Understory, Understory drives Canopy, Canopy drives Emergent in a unidirectional chain. The ECOSYSTEM macro amplifies all four cascade links simultaneously — twist it and feel the whole structure reorganize.",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.5,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

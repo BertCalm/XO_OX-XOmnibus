@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Deep Canopy Chord",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.5,
-    "warmth": 0.7,
-    "movement": 0.3,
-    "density": 0.75,
-    "space": 0.55,
-    "aggression": 0.1
-  },
-  "sonic_dna": {
     "brightness": 0.5,
     "warmth": 0.7,
     "movement": 0.3,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 1
     }
   },
-  "tags": ["ocelot", "foundation", "pad", "lush", "harmonic"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "pad",
+    "lush",
+    "harmonic"
+  ],
   "description": "Canopy-dominant pad with maximum partials — wavefold gives warmth, breathe animates the hold."
 }

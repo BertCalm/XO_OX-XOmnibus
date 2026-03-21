@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Foundation",
-  "description": "Floor-only, Biome 0 (Tropical Rainforest). KS resonator model with thick strike and slow damping \u2014 the foundational pulse of the forest floor. Understory off, canopy dormant. Just the earth.",
+  "description": "Floor-only, Biome 0 (Tropical Rainforest). KS resonator model with thick strike and slow damping — the foundational pulse of the forest floor. Understory off, canopy dormant. Just the earth.",
   "dna": {
     "aggression": 0.25,
     "brightness": 0.35,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

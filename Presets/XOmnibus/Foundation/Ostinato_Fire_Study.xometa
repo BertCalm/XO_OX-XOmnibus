@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "FIRE at zero \u2014 gentle and quiet. Push the macro to hear intensity build.",
+  "description": "FIRE at zero — gentle and quiet. Push the macro to hear intensity build.",
   "tags": [
     "foundation",
     "fire",
@@ -165,5 +165,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

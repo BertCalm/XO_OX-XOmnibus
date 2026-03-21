@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 150 XOR standing waves at 15 Hz with 10% mutation. The interference pattern breaks up bit by bit. MACRO:MUTATE = live unravel control. Saw wave, high-Q filter tracks the destruction.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.35,

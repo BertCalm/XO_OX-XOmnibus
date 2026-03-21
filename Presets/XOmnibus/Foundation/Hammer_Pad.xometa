@@ -42,14 +42,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.8637,
-    "brightness": 0.2801,
-    "density": 0.7142,
-    "movement": 0.6579,
-    "space": 0.2714,
-    "warmth": 0.6716
-  },
   "tags": [
     "foundation",
     "aggressive",
@@ -57,5 +49,6 @@
     "anchor",
     "drive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

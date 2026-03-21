@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Fracture and resonance interlock. FRACTURE at mid-sweep — not yet noise, no longer just harp.",
@@ -67,5 +69,6 @@
     "entangled",
     "coupled"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

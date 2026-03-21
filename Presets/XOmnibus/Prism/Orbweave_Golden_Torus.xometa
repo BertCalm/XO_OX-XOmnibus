@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORBWEAVE Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Torus P=5, Q=8: the golden ratio torus knot. pqScale=0.962 — maximum coupling asymmetry from an irrational number approximation. Even strands and odd strands couple at dramatically different strengths. No other P/Q combination produces this specific spectral polarization. Saw strands, braidDepth=0.78. The mathematical signature of phi, woven into topology.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.3,
     "aggression": 0.3
   },
-  "engines": ["Orbweave"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "macros": { "WEAVE": 0.78, "TENSION": 0.12, "KNOT": 0.0, "SPACE": 0.25 },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "macros": {
+    "WEAVE": 0.78,
+    "TENSION": 0.12,
+    "KNOT": 0.0,
+    "SPACE": 0.25
+  },
   "mood": "Prism",
   "name": "Golden Torus",
   "parameters": {
@@ -59,6 +73,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["golden-ratio", "torus", "phi", "prism", "spectral-polarizer"],
-  "version": "1.0"
+  "tags": [
+    "golden-ratio",
+    "torus",
+    "phi",
+    "prism",
+    "spectral-polarizer"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

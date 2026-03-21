@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Maximum cantilever. Attacks are blindingly bright — then the decay plunges into near-silence as the damping slams shut. The sound extends like a cantilever bridge and then the far end drops. Aggressive, architectural, visceral.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.65,
     "aggression": 0.6
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "Cantilever Collapse",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["aggressive", "cantilever", "architectural", "sound-design", "impact"],
-  "version": "1.0.0"
+  "tags": [
+    "aggressive",
+    "cantilever",
+    "architectural",
+    "sound-design",
+    "impact"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Mediterranean shoreline in high summer — sun-warmed rock, dense biological noise in the shallows, thick warm brine. Sea state calm but the water is full. High warmth, dense coastal presence. The ShoreSystem at its most lush.",

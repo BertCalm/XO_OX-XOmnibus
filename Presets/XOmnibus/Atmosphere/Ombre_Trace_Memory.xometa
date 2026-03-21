@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Trace Memory",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Fine grain (15ms), high drift — memory granulized to the tiniest fragments. Notes leave traces that scatter and diffuse. A texture of fractured recollections.",
-  "tags": ["atmosphere", "trace", "scatter", "diffuse", "fine-grain", "fractured"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "trace",
+    "scatter",
+    "diffuse",
+    "fine-grain",
+    "fractured"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.75
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

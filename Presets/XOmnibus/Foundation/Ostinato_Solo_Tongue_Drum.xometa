@@ -7,7 +7,7 @@
   ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Steel tongue drum \u2014 harmonic series rings clean and long.",
+  "description": "Steel tongue drum — harmonic series rings clean and long.",
   "tags": [
     "foundation",
     "tongue-drum",
@@ -178,5 +178,8 @@
       "osti_humanize": 0.3,
       "osti_masterLevel": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

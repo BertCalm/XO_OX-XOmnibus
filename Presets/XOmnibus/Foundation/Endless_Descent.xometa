@@ -26,37 +26,30 @@
   "name": "Endless Descent",
   "parameters": {
     "Ouroboros": {
-      "uro_ampAttack": 589.0,
-      "uro_ampDecay": 640.9,
-      "uro_ampRelease": 393.1,
-      "uro_ampSustain": 0.93,
-      "uro_character": 0.8,
-      "uro_coupling": 0.92,
-      "uro_cycle": 0.98,
-      "uro_delayMix": 0.67,
-      "uro_feedbackLoop": 0.89,
-      "uro_filterCutoff": 0.84,
-      "uro_filterReso": 0.54,
-      "uro_lfoDepth": 0.49,
-      "uro_lfoRate": 0.27,
-      "uro_movement": 0.72,
-      "uro_reverbMix": 0.39,
-      "uro_space": 0.84
+      "ouro_ampAttack": 589.0,
+      "ouro_ampDecay": 640.9,
+      "ouro_ampRelease": 393.1,
+      "ouro_ampSustain": 0.93,
+      "ouro_character": 0.8,
+      "ouro_coupling": 0.92,
+      "ouro_cycle": 0.98,
+      "ouro_delayMix": 0.67,
+      "ouro_feedbackLoop": 0.89,
+      "ouro_filterCutoff": 0.84,
+      "ouro_filterReso": 0.54,
+      "ouro_lfoDepth": 0.49,
+      "ouro_lfoRate": 0.27,
+      "ouro_movement": 0.72,
+      "ouro_reverbMix": 0.39,
+      "ouro_space": 0.84
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.38,
-    "brightness": 0.09,
-    "density": 0.42,
-    "movement": 0.85,
-    "space": 0.33,
-    "warmth": 0.53
-  },
   "tags": [
     "foundation",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

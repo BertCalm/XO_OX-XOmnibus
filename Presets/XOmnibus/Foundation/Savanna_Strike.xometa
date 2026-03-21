@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Foundation",
-  "description": "Biome 2 (Savanna). Modal resonator floor \u2014 open prairie acoustic. Hard velocity, fast damping, percussion pattern 1. The foundational rhythm of the open grassland, minimal decay.",
+  "description": "Biome 2 (Savanna). Modal resonator floor — open prairie acoustic. Hard velocity, fast damping, percussion pattern 1. The foundational rhythm of the open grassland, minimal decay.",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.55,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

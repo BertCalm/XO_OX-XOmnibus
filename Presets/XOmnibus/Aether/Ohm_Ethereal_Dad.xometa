@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Dad holds the low end with physical certainty. The in-laws are background noise today.",
@@ -66,5 +68,6 @@
     "aether",
     "experimental"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

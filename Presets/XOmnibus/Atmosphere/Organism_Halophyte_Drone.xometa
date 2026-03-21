@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 22 at 0.5 Hz step rate — one generation every two seconds. The automaton changes almost imperceptibly. Sub-heavy saw. Dense reverb. Velocity controls timbral revelation.",
   "dna": {
     "brightness": 0.18,
     "warmth": 0.8,

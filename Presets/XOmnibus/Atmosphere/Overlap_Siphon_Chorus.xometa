@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Colony of voices pulled through a torus siphon \u2014 chorus-heavy with entrainment sync.",
+  "description": "Colony of voices pulled through a torus siphon — chorus-heavy with entrainment sync.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.4,
@@ -78,5 +78,6 @@
     "sync",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

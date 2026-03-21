@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Sound trapped beneath ice \u2014 bright, crystalline reflections with nowhere to go. The convergence filter creates resonant peaks like stress fractures in the ice sheet.",
+  "description": "Sound trapped beneath ice — bright, crystalline reflections with nowhere to go. The convergence filter creates resonant peaks like stress fractures in the ice sheet.",
   "dna": {
     "brightness": 0.7,
     "warmth": 0.2,
@@ -50,5 +50,6 @@
     "trapped",
     "cold"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

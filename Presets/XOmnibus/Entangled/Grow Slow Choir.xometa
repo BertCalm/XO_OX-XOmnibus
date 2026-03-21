@@ -34,14 +34,6 @@
     "Organon": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.12,
-    "brightness": 0.45,
-    "density": 0.08,
-    "movement": 0.45,
-    "space": 0.8,
-    "warmth": 0.91
-  },
   "strategy": "Warm Sparse",
   "tags": [
     "entangled",
@@ -50,7 +42,7 @@
     "choral",
     "evolving"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

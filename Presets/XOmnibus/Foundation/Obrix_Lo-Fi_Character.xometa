@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The naive saw \u2014 intentionally aliased for lo-fi warmth. Not a bug, a feature.",
+  "description": "The naive saw — intentionally aliased for lo-fi warmth. Not a bug, a feature.",
   "tags": [
     "lesson",
     "lofi",
@@ -104,5 +104,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

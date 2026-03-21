@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "59.94Hz CRT horizontal sweep translated into slow musical pulse — the electron gun's traversal as rhythm generator. AutoPulse locked to scanline frequency subdivision. VizSpeed mimics interlace flicker. The atmosphere of watching a screen in a dark room: not content but carrier.",

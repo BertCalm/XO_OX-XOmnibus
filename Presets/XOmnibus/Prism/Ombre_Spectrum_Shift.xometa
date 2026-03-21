@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Spectrum Shift",
   "mood": "Prism",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "LFO2 sweeps the filter across a wide spectrum while LFO1 oscillates between Oubli and Opsis. The timbre shifts color across the memory-perception axis continuously.",
-  "tags": ["prism", "spectrum", "sweep", "color", "shifting", "lfo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "spectrum",
+    "sweep",
+    "color",
+    "shifting",
+    "lfo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

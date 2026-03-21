@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Deep Root",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Heavy sub presence, Oubli-biased. Memory accumulates slowly across notes, thickening the low end with ghosted harmonics. A foundation that remembers.",
-  "tags": ["foundation", "sub", "deep", "oubli", "bass", "memory"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sub",
+    "deep",
+    "oubli",
+    "bass",
+    "memory"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.45
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

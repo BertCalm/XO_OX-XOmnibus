@@ -28,14 +28,6 @@
     "Ottoni": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.633,
-    "brightness": 0.566,
-    "density": 0.901,
-    "movement": 0.611,
-    "space": 0.413,
-    "warmth": 0.937
-  },
   "tags": [
     "foundation",
     "warm",
@@ -45,5 +37,6 @@
     "aggressive",
     "evolving"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

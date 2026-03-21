@@ -2,12 +2,28 @@
   "schema_version": 1,
   "name": "Deep Plate Reverb",
   "mood": "Submerged",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "As if the oware board sank to the deepest ocean trench. Metal-bowl material, maximum body depth, 10-second decay, high sympathy. Everything resonates with everything. Pressure and distance.",
-  "tags": ["deep", "metal", "bowl", "slow", "long-decay", "sympathetic", "submerged", "trench"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "metal",
+    "bowl",
+    "slow",
+    "long-decay",
+    "sympathetic",
+    "submerged",
+    "trench"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +61,8 @@
       "owr_macroSpace": 0.95
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 3: Classic hat choke enabled plus high snare-to-hat decay coupling. Closed hat physically chokes open hat (V3 triggers V4 choke). Snare events tighten the hat timing. A naturalistic kit interaction — the way a real drummer's hand closes the hihat to accent a snare.",

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Frozen curtain of torus harmonics \u2014 high feedback and minimal dampening create icy sustain.",
+  "description": "Frozen curtain of torus harmonics — high feedback and minimal dampening create icy sustain.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.7,
@@ -78,5 +78,6 @@
     "sustain",
     "ambient"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

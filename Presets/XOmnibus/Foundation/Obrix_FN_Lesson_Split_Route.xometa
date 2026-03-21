@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Two sources, two processors \u2014 each path independent. Src1 through LP, Src2 through HP. Hear the collision when they mix.",
+  "description": "Two sources, two processors — each path independent. Src1 through LP, Src2 through HP. Hear the collision when they mix.",
   "tags": [
     "lesson",
     "split",
@@ -106,5 +106,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

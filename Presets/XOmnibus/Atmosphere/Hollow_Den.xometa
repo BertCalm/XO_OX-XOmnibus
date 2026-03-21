@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Hollow Den",
   "mood": "Atmosphere",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Breathy hollow texture with brown noise and notch filter. A living space that breathes with velocity.",
-  "tags": ["texture", "breathy", "hollow", "noise", "atmospheric"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "texture",
+    "breathy",
+    "hollow",
+    "noise",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

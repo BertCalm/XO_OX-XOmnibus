@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
-  "description": "Two sines tuned 5 cents apart create slow underwater beating. Delay and reverb process the dry signal simultaneously \u2014 neither muddies the other. The tidal pulse exists in deep space and close quarters at once. Long attack lets the sound emerge like pressure equalising at depth.",
+  "description": "Two sines tuned 5 cents apart create slow underwater beating. Delay and reverb process the dry signal simultaneously — neither muddies the other. The tidal pulse exists in deep space and close quarters at once. Long attack lets the sound emerge like pressure equalising at depth.",
   "tags": [
     "tidal",
     "parallel-fx",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.15,
     "COUPLING": 0.0,
     "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "OPAL in full scatter — grain size micro, scatter wide, luminous cloud diffuse. The gem at rest, refracting quietly.",

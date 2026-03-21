@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "OLE rhythm patterns clock Bob's arpeggiator \u2014 polyrhythm in the low end.",
+  "description": "OLE rhythm patterns clock Bob's arpeggiator — polyrhythm in the low end.",
   "dna": {
     "aggression": 0.541,
     "brightness": 0.621,
@@ -74,5 +74,5 @@
     "ole"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

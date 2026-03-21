@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Osprey's cultural data tunes Bob's formant \u2014 coastal character in the low end.",
+  "description": "Osprey's cultural data tunes Bob's formant — coastal character in the low end.",
   "dna": {
     "aggression": 0.372,
     "brightness": 0.677,
@@ -74,5 +74,5 @@
     "osprey"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

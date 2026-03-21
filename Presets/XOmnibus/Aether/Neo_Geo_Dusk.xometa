@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Neo Geo at vertex A, SNES at B, FM at C. The first Neo Geo preset in the fleet. FIR shaped for warmth.",
   "dna": {

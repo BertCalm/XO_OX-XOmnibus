@@ -28,14 +28,6 @@
     "Orbital": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.08,
-    "brightness": 0.94,
-    "density": 0.2,
-    "movement": 0.55,
-    "space": 0.85,
-    "warmth": 0.1
-  },
   "tags": [
     "prism",
     "bright",
@@ -44,5 +36,6 @@
     "orbit",
     "luminous"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

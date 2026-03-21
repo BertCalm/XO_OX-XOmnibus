@@ -28,14 +28,6 @@
     "Obscura": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.108,
-    "brightness": 0.571,
-    "density": 0.085,
-    "movement": 0.309,
-    "space": 0.805,
-    "warmth": 0.006
-  },
   "tags": [
     "prism",
     "cold",
@@ -44,5 +36,6 @@
     "airy",
     "spacious"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

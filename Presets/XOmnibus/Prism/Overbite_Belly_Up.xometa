@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "BELLY macro at full — the possum at its most rotund and warm. Low filter, round oscillators, virtually no aggression. A bass character instrument that sits in the gut of the mix and breathes.",
   "dna": {

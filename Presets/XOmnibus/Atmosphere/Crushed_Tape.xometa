@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Crushed Tape",
   "mood": "Atmosphere",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lo-fi crushed atmosphere with bitcrusher reducing to 8-bit at half sample rate. Warm saturation.",
-  "tags": ["lofi", "crushed", "bitcrush", "atmosphere", "vintage"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lofi",
+    "crushed",
+    "bitcrush",
+    "atmosphere",
+    "vintage"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -53,6 +66,8 @@
       "fat_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

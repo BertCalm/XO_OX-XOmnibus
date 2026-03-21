@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus T(6,5) lattice with high density and diffusion \u2014 coral structure of interwoven resonance.",
+  "description": "Torus T(6,5) lattice with high density and diffusion — coral structure of interwoven resonance.",
   "dna": {
     "aggression": 0.2,
     "brightness": 0.5,
@@ -78,5 +78,6 @@
     "coral",
     "coupling"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

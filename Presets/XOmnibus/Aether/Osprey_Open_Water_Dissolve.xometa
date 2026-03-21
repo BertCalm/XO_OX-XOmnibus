@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Maximum depth, maximum harbor verb, sea state near-zero. The resonators dissolve into the space — no coast, no creature voice, only the resonant body of open ocean. Extremely long release, fog at full.",

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "BobMode at 0.85 — deep in the storm surge. Full oscillator drift, heavy tape saturation, texture hiss, FX drowning in reverb. The sound of a synth pad recorded to cassette at 2 AM, played back through salt-damaged speakers. Lo-fi as an instrument, not a filter.",

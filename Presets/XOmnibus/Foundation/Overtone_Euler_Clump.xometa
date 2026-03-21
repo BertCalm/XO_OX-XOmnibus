@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "E constant at depth 7 — the Euler clumping effect fully realized. All eight convergents collapse toward e/2 ≈ 1.359, so every partial occupies nearly the same frequency band. The result is not noise but mathematics chorusing with itself: eight near-identical sine waves beating at sub-Hz rates, creating an internal shimmer that requires no LFO. Even partial amplitudes (0.75 across all 8) so no single convergent dominates. Filter cutoff at 6500 Hz reveals the beating cluster without upper aliasing. This is the most unique texture in the engine — one irrational number generating its own slow chorus.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.42,
     "aggression": 0.06
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.9, "COLOR": 0.35, "COUPLING": 0.0, "SPACE": 0.42 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.9,
+    "COLOR": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
   "mood": "Foundation",
   "name": "Euler Clump",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "foundation", "euler", "beating", "chorus", "clump", "internal-shimmer"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "foundation",
+    "euler",
+    "beating",
+    "chorus",
+    "clump",
+    "internal-shimmer"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Holding a seashell to your ear \u2014 the small cavity resonates with golden overtones, creating the illusion of the ocean. The Oxbow Eels childhood memory.",
+  "description": "Holding a seashell to your ear — the small cavity resonates with golden overtones, creating the illusion of the ocean. The Oxbow Eels childhood memory.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.55,
@@ -50,5 +50,6 @@
     "resonant",
     "childhood"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

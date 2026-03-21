@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The summit preset. GB at A, PCE at B, Neo Geo at C — the three unvisited consoles in one triangle. ERA portamento slides between them. The engine shows its full range for the first time. Use the ERA macro to navigate all six consoles.",
   "dna": {

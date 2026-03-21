@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Route ONSET drums through OXBOW. Each hit excites golden harmonics — tuned percussion reverb.",
-  "dna": { "brightness": 0.7, "warmth": 0.4, "movement": 0.3, "density": 0.35, "space": 0.45, "aggression": 0.1 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Prism",
   "name": "Drum Shimmer",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["coupling", "drums", "shimmer", "golden", "percussion"],
-  "version": "1.0.0"
+  "tags": [
+    "coupling",
+    "drums",
+    "shimmer",
+    "golden",
+    "percussion"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

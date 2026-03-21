@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Harmonic Web",
   "mood": "Entangled",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Deep LOVE at maximum depth — harmonic lock creates a dense web of shared overtones. Voices inseparably intertwined.",
-  "tags": ["counterpoint", "expressive", "powerful", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "counterpoint",
+    "expressive",
+    "powerful",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.62,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.3
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

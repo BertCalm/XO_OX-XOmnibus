@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Full communion reached. The manatee and the in-laws breathe as a single organism. 'Full Pentagon' pushes every parameter toward its extreme.",
@@ -66,5 +68,6 @@
     "aether",
     "experimental"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

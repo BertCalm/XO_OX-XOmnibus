@@ -52,14 +52,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.12,
-    "brightness": 0.15,
-    "density": 0.62,
-    "movement": 0.2,
-    "space": 0.72,
-    "warmth": 0.75
-  },
   "tags": [
     "wood",
     "deep",
@@ -67,5 +59,6 @@
     "submerged",
     "muted"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

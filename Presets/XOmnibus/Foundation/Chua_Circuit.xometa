@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Chua topology (topology=2) — the first real electronic circuit proven to exhibit chaos (1983). Low chaos, mid leash. The buzzing circuit before it breaks. Most electronic-sounding of the four attractors.",
   "dna": {

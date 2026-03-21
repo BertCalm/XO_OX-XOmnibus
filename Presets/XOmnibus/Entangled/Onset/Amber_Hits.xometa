@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-10",
   "description": "ONSET x BOB coupling. Bob's warm analog textures color the drum hits. Amber-tinted percussion.",

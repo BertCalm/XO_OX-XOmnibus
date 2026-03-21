@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Route noise/texture engines through OXBOW for infinite evolving washes.",
-  "dna": { "brightness": 0.35, "warmth": 0.6, "movement": 0.5, "density": 0.7, "space": 0.95, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.7,
+    "space": 0.95,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Atmosphere",
   "name": "Noise Wash",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["coupling", "noise", "wash", "infinite", "ambient"],
-  "version": "1.0.0"
+  "tags": [
+    "coupling",
+    "noise",
+    "wash",
+    "infinite",
+    "ambient"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

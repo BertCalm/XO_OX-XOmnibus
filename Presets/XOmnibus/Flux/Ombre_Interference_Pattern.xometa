@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Interference Pattern",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Maximum interference — Opsis and Oubli create a standing wave between them. The modulation pattern is as important as the note. Complex, rhythmic, unpredictable.",
-  "tags": ["flux", "interference", "standing-wave", "complex", "rhythmic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "interference",
+    "standing-wave",
+    "complex",
+    "rhythmic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.58
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

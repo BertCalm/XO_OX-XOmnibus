@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 18 sparse cells at 16 Hz. High-Q filter (0.85 resonance) rings at each cell cluster like a tuned metal bar. Short pluck envelope, medium reverb for tail bloom.",
   "dna": {
     "brightness": 0.75,
     "warmth": 0.28,

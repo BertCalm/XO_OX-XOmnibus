@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Tense, structural metallic reverb with high cantilever asymmetry. The bright attack flexes into a dark, groaning tail — steel under load.",
-  "dna": { "brightness": 0.55, "warmth": 0.4, "movement": 0.5, "density": 0.5, "space": 0.5, "aggression": 0.35 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.4,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "Girder Flex",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["metallic", "structural", "flex", "tension", "industrial"],
-  "version": "1.0.0"
+  "tags": [
+    "metallic",
+    "structural",
+    "flex",
+    "tension",
+    "industrial"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

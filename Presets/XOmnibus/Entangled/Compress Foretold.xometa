@@ -45,24 +45,16 @@
       "fat_warmth": 0.642
     },
     "Oracle": {
-      "orc_aggression": 0.472,
-      "orc_brightness": 0.535,
-      "orc_couplingBus": 0,
-      "orc_couplingLevel": 0.76,
-      "orc_outputLevel": 0.82,
-      "orc_outputPan": -0.04,
-      "orc_warmth": 0.451
+      "oracle_aggression": 0.472,
+      "oracle_brightness": 0.535,
+      "oracle_couplingBus": 0,
+      "oracle_couplingLevel": 0.76,
+      "oracle_outputLevel": 0.82,
+      "oracle_outputPan": -0.04,
+      "oracle_warmth": 0.451
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.593,
-    "brightness": 0.493,
-    "density": 0.77,
-    "movement": 0.515,
-    "space": 0.563,
-    "warmth": 0.522
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -70,5 +62,6 @@
     "oracle",
     "fat"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Blend pushed hard into memory — 0.05, nearly all grain, almost no present-tense signal. Long memory decay (18s), maximum drift. Each note spawns a spectral ghost that outlasts the original by seconds, drifting in pitch and position. The instrument plays the room's memory of itself. The performer hears an echo of a thought they haven't had yet.",
   "dna": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "A square wave \u2014 hollow, woody, with only odd harmonics. Compare with saw to hear the missing partials.",
+  "description": "A square wave — hollow, woody, with only odd harmonics. Compare with saw to hear the missing partials.",
   "tags": [
     "lesson",
     "square",
@@ -105,5 +105,8 @@
     "MOVEMENT": 0.0,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

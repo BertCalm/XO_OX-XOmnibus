@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "BITE macro at maximum. The overbite is showing — filter driven hard, gnash and chew fully active, oscillator interaction pushing harmonic edge. Controlled aggression; the teeth without the chaos.",
   "dna": {

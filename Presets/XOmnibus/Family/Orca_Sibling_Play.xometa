@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Sibling Play",
   "mood": "Family",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Juveniles playing at the surface — breaching, spy-hopping, tail slapping for fun not hunting. Higher wavetable position, faster LFO, playful formant movement. Hunt macro absent; pure energy without intent.",
-  "tags": ["family", "play", "juvenile", "surface", "energetic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "play",
+    "juvenile",
+    "surface",
+    "energetic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.6,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

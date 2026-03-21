@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Sea state maximum — the bird creature voice dominates at high depth, foam and brine stripped raw. Atlantic gale-force, resonators screaming in low coherence. This is the osprey in the plunge.",

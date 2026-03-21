@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Slow-attack sub swell. Pressure builds like a diving bell.",
@@ -30,11 +32,11 @@
   "name": "Obese Slow Pressure",
   "parameters": {
     "Obese": {
-      "ob_low_shelf": 0.9,
-      "ob_presence": 0.1,
-      "ob_saturation": 0.4,
-      "ob_sub_gain": 0.85,
-      "ob_warmth": 0.9
+      "fat_low_shelf": 0.9,
+      "fat_presence": 0.1,
+      "fat_saturation": 0.4,
+      "fat_sub_gain": 0.85,
+      "fat_warmth": 0.9
     }
   },
   "schema_version": 1,

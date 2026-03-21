@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Maximum mutation: every generation, bits randomly flip. The colony becomes noise — but organized noise. Rule 30 (the chaos rule) underneath full mutation produces emergent rhythmic disorder, never repeating. Aftertouch raises mutation further into pure stochastic territory.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.55,
     "aggression": 0.65
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.0, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.9 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.0,
+    "SEED": 0.0,
+    "COUPLING": 0.0,
+    "MUTATE": 0.9
+  },
   "mood": "Aether",
   "name": "Entropy Bloom",
   "parameters": {
@@ -45,6 +59,14 @@
     }
   },
   "schema_version": 1,
-  "tags": ["entropy", "chaos", "mutation", "rule30", "stochastic", "generative"],
-  "version": "1.0"
+  "tags": [
+    "entropy",
+    "chaos",
+    "mutation",
+    "rule30",
+    "stochastic",
+    "generative"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

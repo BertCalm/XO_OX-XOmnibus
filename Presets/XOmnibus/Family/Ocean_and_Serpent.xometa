@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "OCEANIC pressure swell + OWLFISH bioluminescence — the column and the creature. The deep ocean meeting the thing that lives in it.",

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Cross Memory",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Ombre primed for coupling input — macroCoupling high, interference high. External audio fed into Oubli memory via AudioToWavetable coupling creates cross-engine memories.",
-  "tags": ["entangled", "coupling", "memory", "cross-engine", "interference"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "coupling",
+    "memory",
+    "cross-engine",
+    "interference"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.72
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Gyil Spider Silk",
   "mood": "Prism",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "African gyil balafon with full spider-silk buzz membrane. Deep wood resonating through a tube body, short and highly damped. The mirliton is the star — that rattling membrane is the whole identity.",
-  "tags": ["gyil", "balafon", "wood", "buzz", "mirliton", "african", "percussive"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "gyil",
+    "balafon",
+    "wood",
+    "buzz",
+    "mirliton",
+    "african",
+    "percussive"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +60,8 @@
       "owr_macroSpace": 0.25
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

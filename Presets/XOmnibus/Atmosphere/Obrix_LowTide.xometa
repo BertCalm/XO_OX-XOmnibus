@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "The pressure is so low that everything slows to near-stillness. envPressure=0.15 yields 0.3\u00d7 LFO rate. Sine source, long attack and release, deep reverb. A tidal zone exhaling.",
+  "description": "The pressure is so low that everything slows to near-stillness. envPressure=0.15 yields 0.3× LFO rate. Sine source, long attack and release, deep reverb. A tidal zone exhaling.",
   "tags": [
     "tide",
     "gentle",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.1,
     "COUPLING": 0.0,
     "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
   }
 }

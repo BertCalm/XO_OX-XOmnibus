@@ -37,14 +37,6 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "sonic_dna": {
-    "aggression": 0.57,
-    "brightness": 0.938,
-    "density": 0.584,
-    "movement": 0.737,
-    "space": 0.493,
-    "warmth": 0.265
-  },
   "tags": [
     "prism",
     "ultra-bright",

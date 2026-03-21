@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 1: Kick amplitude opens the hihat filter. Every kick hit brightens the hats — internal sidechain without an external routing table. The rhythm breathes as one organism.",

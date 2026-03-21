@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The pedalboard ocean \u2014 stacked reverbs creating an infinite shimmer. Bright exciter with long decay and moderate entanglement for that classic dream pop sustain.",
+  "description": "The pedalboard ocean — stacked reverbs creating an infinite shimmer. Bright exciter with long decay and moderate entanglement for that classic dream pop sustain.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "shimmer",
     "pedals"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

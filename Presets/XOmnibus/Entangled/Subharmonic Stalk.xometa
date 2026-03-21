@@ -67,14 +67,6 @@
     "owl_lfo1Rate": 1.992
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.404,
-    "brightness": 0.64,
-    "density": 0.598,
-    "movement": 0.597,
-    "space": 0.467,
-    "warmth": 0.696
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -88,5 +80,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

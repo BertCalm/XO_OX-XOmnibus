@@ -58,5 +58,8 @@
       "deep_macroWreck": 0.4,
       "deep_macroAbyss": 0.8
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

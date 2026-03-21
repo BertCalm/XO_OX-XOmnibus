@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Gnash at 0.6, Scurry at 0.5. The creature bares its teeth while nervously sniffing the air. Micro-pitch drift from Scurry makes the bass feel feral. Asymmetric snarl from Gnash means the aggression is literally louder than the warmth. OscInteraction Phase Push at 0.15 adds shimmer.",

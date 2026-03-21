@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "T(3,2) torus knot harmonic locking \u2014 the mathematical beauty of co-prime resonance.",
+  "description": "T(3,2) torus knot harmonic locking — the mathematical beauty of co-prime resonance.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.55,
@@ -77,5 +77,6 @@
     "harmonic",
     "locked"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

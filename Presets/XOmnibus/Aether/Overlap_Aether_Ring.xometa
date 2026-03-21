@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Trefoil with extreme feedback \u2014 self-resonating FDN sustains into infinity.",
+  "description": "Trefoil with extreme feedback — self-resonating FDN sustains into infinity.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -78,5 +78,6 @@
     "infinite",
     "sustain"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

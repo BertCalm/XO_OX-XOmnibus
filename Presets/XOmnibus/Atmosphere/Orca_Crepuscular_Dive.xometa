@@ -2,26 +2,82 @@
   "schema_version": 1,
   "name": "Crepuscular Dive",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The deep dive at dusk — hunting the vertical migration of prey that rises toward the surface in evening. The formant network tracking from bright surface to dark depth as the dive progresses.",
-  "tags": ["atmosphere", "crepuscular", "dive", "dusk", "vertical"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "crepuscular",
+    "dive",
+    "dusk",
+    "vertical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
-  "dna": {"brightness": 0.28, "warmth": 0.5, "movement": 0.22, "density": 0.52, "space": 0.72, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.5,
+    "movement": 0.22,
+    "density": 0.52,
+    "space": 0.72,
+    "aggression": 0.28
+  },
   "parameters": {
     "Orca": {
-      "orca_wtPosition": 0.28, "orca_wtScanRate": 0.09, "orca_formantIntensity": 0.48, "orca_formantShift": 0.38, "orca_glide": 0.9,
-      "orca_echoRate": 2.5, "orca_echoReso": 0.78, "orca_echoDamp": 0.5, "orca_echoMix": 0.4, "orca_huntMacro": 0.12,
-      "orca_breachSub": 0.48, "orca_breachShape": 0.0, "orca_breachThreshold": -24.0, "orca_breachRatio": 3.5,
-      "orca_crushBits": 16.0, "orca_crushDownsample": 1.0, "orca_crushMix": 0.0, "orca_crushSplitFreq": 900.0,
-      "orca_filterCutoff": 2800.0, "orca_filterReso": 0.18, "orca_level": 0.74,
-      "orca_ampAttack": 0.2, "orca_ampDecay": 0.85, "orca_ampSustain": 0.55, "orca_ampRelease": 1.8,
-      "orca_modAttack": 0.16, "orca_modDecay": 0.68, "orca_modSustain": 0.44, "orca_modRelease": 1.4,
-      "orca_lfo1Rate": 0.04, "orca_lfo1Depth": 0.2, "orca_lfo1Shape": 0.0, "orca_lfo2Rate": 0.09, "orca_lfo2Depth": 0.1, "orca_lfo2Shape": 0.0,
-      "orca_polyphony": 2, "orca_velCutoffAmt": 0.34, "orca_macroCharacter": 0.0, "orca_macroMovement": 0.0, "orca_macroCoupling": 0.0, "orca_macroSpace": 0.0
+      "orca_wtPosition": 0.28,
+      "orca_wtScanRate": 0.09,
+      "orca_formantIntensity": 0.48,
+      "orca_formantShift": 0.38,
+      "orca_glide": 0.9,
+      "orca_echoRate": 2.5,
+      "orca_echoReso": 0.78,
+      "orca_echoDamp": 0.5,
+      "orca_echoMix": 0.4,
+      "orca_huntMacro": 0.12,
+      "orca_breachSub": 0.48,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -24.0,
+      "orca_breachRatio": 3.5,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 900.0,
+      "orca_filterCutoff": 2800.0,
+      "orca_filterReso": 0.18,
+      "orca_level": 0.74,
+      "orca_ampAttack": 0.2,
+      "orca_ampDecay": 0.85,
+      "orca_ampSustain": 0.55,
+      "orca_ampRelease": 1.8,
+      "orca_modAttack": 0.16,
+      "orca_modDecay": 0.68,
+      "orca_modSustain": 0.44,
+      "orca_modRelease": 1.4,
+      "orca_lfo1Rate": 0.04,
+      "orca_lfo1Depth": 0.2,
+      "orca_lfo1Shape": 0.0,
+      "orca_lfo2Rate": 0.09,
+      "orca_lfo2Depth": 0.1,
+      "orca_lfo2Shape": 0.0,
+      "orca_polyphony": 2,
+      "orca_velCutoffAmt": 0.34,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
     }
   },
-  "coupling": null, "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

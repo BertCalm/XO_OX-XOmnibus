@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Agogo Backbone",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.6,
-    "warmth": 0.55,
-    "movement": 0.45,
-    "density": 0.55,
-    "space": 0.35,
-    "aggression": 0.4
-  },
-  "sonic_dna": {
     "brightness": 0.6,
     "warmth": 0.55,
     "movement": 0.45,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 2
     }
   },
-  "tags": ["ocelot", "foundation", "agogo", "percussive", "bright"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "agogo",
+    "percussive",
+    "bright"
+  ],
   "description": "Agogo bell spine with swing-driven understory chop — a rhythmic backbone for tropical groove contexts."
 }

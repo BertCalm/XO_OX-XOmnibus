@@ -26,36 +26,29 @@
   "name": "Twilight Fade",
   "parameters": {
     "Ombre": {
-      "ombr_ampAttack": 451.3,
-      "ombr_ampDecay": 732.6,
-      "ombr_ampRelease": 55.3,
-      "ombr_ampSustain": 0.45,
-      "ombr_character": 0.14,
-      "ombr_coupling": 0.49,
-      "ombr_delayMix": 0.41,
-      "ombr_fadeDepth": 0.23,
-      "ombr_filterCutoff": 0.03,
-      "ombr_filterReso": 0.88,
-      "ombr_lfoDepth": 0.91,
-      "ombr_lfoRate": 0.82,
-      "ombr_movement": 0.95,
-      "ombr_reverbMix": 0.3,
-      "ombr_space": 0.3
+      "ombre_ampAttack": 451.3,
+      "ombre_ampDecay": 732.6,
+      "ombre_ampRelease": 55.3,
+      "ombre_ampSustain": 0.45,
+      "ombre_character": 0.14,
+      "ombre_coupling": 0.49,
+      "ombre_delayMix": 0.41,
+      "ombre_fadeDepth": 0.23,
+      "ombre_filterCutoff": 0.03,
+      "ombre_filterReso": 0.88,
+      "ombre_lfoDepth": 0.91,
+      "ombre_lfoRate": 0.82,
+      "ombre_movement": 0.95,
+      "ombre_reverbMix": 0.3,
+      "ombre_space": 0.3
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.14,
-    "brightness": 0.08,
-    "density": 0.82,
-    "movement": 0.31,
-    "space": 0.81,
-    "warmth": 0.51
-  },
   "tags": [
     "atmosphere",
     "dark",
     "extreme-brightness"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "tempo": null
 }

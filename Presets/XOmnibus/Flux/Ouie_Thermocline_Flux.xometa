@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Thermocline Flux",
   "mood": "Flux",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Voice filters at opposing temperature zones, oscillating LFOs creating the micro-turbulence at the thermal boundary.",
-  "tags": ["tension", "movement", "evolving", "counterpoint"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "tension",
+    "movement",
+    "evolving",
+    "counterpoint"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.52,
@@ -52,5 +64,8 @@
       "ouie_macroCurrent": 0.3
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

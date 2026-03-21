@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Each algo mode represented. FM kick, Modal snare, KS hats, PhaseDist perc. Full algorithm spectrum.",

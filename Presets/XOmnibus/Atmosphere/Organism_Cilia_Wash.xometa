@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 184 directional traffic flow at 1.2 Hz. Cells always flow in one direction, giving the atmosphere a sense of movement without turbulence. Tri wave, maximum scope smoothing.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.62,

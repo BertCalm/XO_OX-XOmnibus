@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Two engines syncing like neural pathways. Tight envelope-to-filter coupling with subtle pitch modulation creates an organic pulsing texture.",

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Footsteps echoing down a covered stone corridor \u2014 the reverb has a directional quality, long but focused. Each reflection carries the warmth of centuries-old walls.",
+  "description": "Footsteps echoing down a covered stone corridor — the reverb has a directional quality, long but focused. Each reflection carries the warmth of centuries-old walls.",
   "dna": {
     "brightness": 0.45,
     "warmth": 0.7,
@@ -50,5 +50,6 @@
     "warm",
     "medieval"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Warm, dreamy reverb with the soft saturation character of early transistor circuits. Gentle entanglement creates subtle stereo drift.",
-  "dna": { "brightness": 0.3, "warmth": 0.7, "movement": 0.25, "density": 0.45, "space": 0.6, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.25,
+    "density": 0.45,
+    "space": 0.6,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Atmosphere",
   "name": "Transistor Dream",
   "parameters": {
@@ -27,6 +43,12 @@
     }
   },
   "schema_version": 1,
-  "tags": ["lo-fi", "warm", "dreamy", "transistor"],
-  "version": "1.0.0"
+  "tags": [
+    "lo-fi",
+    "warm",
+    "dreamy",
+    "transistor"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

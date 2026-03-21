@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Winter Pulse",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.6,
-    "warmth": 0.25,
-    "movement": 0.4,
-    "density": 0.5,
-    "space": 0.55,
-    "aggression": 0.2
-  },
-  "sonic_dna": {
     "brightness": 0.6,
     "warmth": 0.25,
     "movement": 0.4,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 0
     }
   },
-  "tags": ["ocelot", "foundation", "winter", "cuica", "cold"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "winter",
+    "cuica",
+    "cold"
+  ],
   "description": "Winter biome cuica friction — canopy shimmer crystallizes above sparse floor pattern. Wolf call on MIDI trigger."
 }

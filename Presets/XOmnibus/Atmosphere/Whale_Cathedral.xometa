@@ -33,14 +33,6 @@
     "space": 0.95,
     "aggression": 0.05
   },
-  "sonic_dna": {
-    "brightness": 0.35,
-    "warmth": 0.55,
-    "movement": 0.45,
-    "density": 0.65,
-    "space": 0.95,
-    "aggression": 0.05
-  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -120,5 +112,5 @@
     "vast",
     "deep"
   ],
-  "description": "Underwater biome cathedral \u2014 whale calls emerge from canopy peaks into infinite reverb. Maximum space."
+  "description": "Underwater biome cathedral — whale calls emerge from canopy peaks into infinite reverb. Maximum space."
 }

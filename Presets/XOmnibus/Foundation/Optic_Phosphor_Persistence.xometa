@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "P39 phosphor afterglow at the lowest usable brightness — a held note that doesn't know it should have faded. Pulse rate minimal, feedback just above the decay floor. The sound is the color of a terminal screen at 2am: green, patient, inevitable. Foundation-tier: OPTIC at its simplest and most honest.",

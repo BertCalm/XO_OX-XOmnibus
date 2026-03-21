@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
   "description": "ORGANON biological logic + OUROBOROS Lorenz spiral — the organism and its shadow. Metabolism meeting entropy. The system and its undoing.",

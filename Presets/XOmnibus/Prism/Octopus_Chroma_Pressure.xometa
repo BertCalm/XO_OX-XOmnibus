@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Eight arms already twitching at moderate depth. Mod wheel (CC#1) boosts chromatophore depth by up to +0.4 — at full throw, the filter bank shifts at maximum skin-shift violence, the envelope follower snapping the morph topology with every transient. Wheel at zero: alien but readable. Wheel at full: full chromatophore panic.",

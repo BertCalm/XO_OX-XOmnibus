@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — OVERTONE Retreat 2026-03-21",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Pi constant at depth 3 — the uncanny valley of harmony. The 22/7 partial sits at 3.1429 × fundamental, a stretched third harmonic that sounds just sharp enough to feel wrong. Partial amplitudes follow a middle-heavy bell curve (fundamentals and upper partials reduced, middle partials 3-5 boosted) to center attention on the bent harmonic region. Fast attack lets the strangeness land immediately. Filter cutoff at 9000 Hz keeps the bent quality audible but not strident. LFO1 at 1.5 Hz creates a slow vibrato on the depth parameter, gently rocking between Pi convergents — the note seems to question its own tuning. This is the sound of almost-right.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.38,
     "aggression": 0.42
   },
-  "engines": ["Overtone"],
-  "macroLabels": ["DEPTH", "COLOR", "COUPLING", "SPACE"],
-  "macros": { "DEPTH": 0.38, "COLOR": 0.62, "COUPLING": 0.0, "SPACE": 0.35 },
+  "engines": [
+    "Overtone"
+  ],
+  "macroLabels": [
+    "DEPTH",
+    "COLOR",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "DEPTH": 0.38,
+    "COLOR": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
   "mood": "Prism",
   "name": "Pi Uncanny",
   "parameters": {
@@ -47,6 +61,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["awakening", "prism", "pi", "uncanny", "bent", "inharmonic", "questioning"],
-  "version": "1.0"
+  "tags": [
+    "awakening",
+    "prism",
+    "pi",
+    "uncanny",
+    "bent",
+    "inharmonic",
+    "questioning"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

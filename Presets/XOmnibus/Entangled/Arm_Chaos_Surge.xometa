@@ -43,14 +43,6 @@
     "Ouroboros": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.97,
-    "brightness": 0.58,
-    "density": 0.72,
-    "movement": 0.96,
-    "space": 0.16,
-    "warmth": 0.25
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "ouroboros",
     "kinetic"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

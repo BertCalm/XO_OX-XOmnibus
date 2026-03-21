@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Both stateful systems active: stressDecay=0.5 accumulates velocity tension; bleachRate=0.4 dulls sustained high notes. stateReset=0 sits ready as a momentary trigger \u2014 engage it to return the reef to its initial state. Poly8, slow attack, full reverb. Demonstrates the reset affordance.",
+  "description": "Both stateful systems active: stressDecay=0.5 accumulates velocity tension; bleachRate=0.4 dulls sustained high notes. stateReset=0 sits ready as a momentary trigger — engage it to return the reef to its initial state. Poly8, slow attack, full reverb. Demonstrates the reset affordance.",
   "tags": [
     "stateful",
     "reset",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.25,
     "COUPLING": 0.0,
     "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Breath condensing in cold air \u2014 the briefest reverb with a gentle bright edge from the golden resonance. Like hearing your own breath reflected back to you on a winter morning.",
+  "description": "Breath condensing in cold air — the briefest reverb with a gentle bright edge from the golden resonance. Like hearing your own breath reflected back to you on a winter morning.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "brief",
     "morning"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

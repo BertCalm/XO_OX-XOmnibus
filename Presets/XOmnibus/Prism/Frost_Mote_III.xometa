@@ -28,14 +28,6 @@
     "Overworld": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.193,
-    "brightness": 0.737,
-    "density": 0.159,
-    "movement": 0.137,
-    "space": 0.873,
-    "warmth": 0.119
-  },
   "tags": [
     "prism",
     "cold",
@@ -45,5 +37,6 @@
     "spacious",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

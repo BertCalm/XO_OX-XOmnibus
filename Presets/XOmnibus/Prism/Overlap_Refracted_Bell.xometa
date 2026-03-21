@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus knot bell with slow spectral shimmer \u2014 light splitting through glass.",
+  "description": "Torus knot bell with slow spectral shimmer — light splitting through glass.",
   "dna": {
     "brightness": 0.85,
     "warmth": 0.3,
@@ -78,5 +78,6 @@
     "spectral",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sine source with fmDepth=0.3 \u2014 the undertow beneath the surface frequency. Carrier becomes modulator becomes carrier again, a gentle harmonic current pulling at the fundamental.",
+  "description": "Sine source with fmDepth=0.3 — the undertow beneath the surface frequency. Carrier becomes modulator becomes carrier again, a gentle harmonic current pulling at the fundamental.",
   "tags": [
     "lesson",
     "fm",
@@ -105,5 +105,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
   }
 }

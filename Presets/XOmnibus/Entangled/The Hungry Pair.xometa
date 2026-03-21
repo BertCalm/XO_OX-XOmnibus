@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.718,
-    "brightness": 0.515,
-    "density": 0.779,
-    "movement": 0.513,
-    "space": 0.411,
-    "warmth": 0.677
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -71,5 +63,6 @@
     "bidirectional",
     "hungry"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

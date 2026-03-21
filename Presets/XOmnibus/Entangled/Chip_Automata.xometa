@@ -63,14 +63,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.525,
-    "brightness": 0.65,
-    "density": 0.6,
-    "movement": 0.75,
-    "space": 0.425,
-    "warmth": 0.35
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -79,5 +71,6 @@
     "chip",
     "era"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

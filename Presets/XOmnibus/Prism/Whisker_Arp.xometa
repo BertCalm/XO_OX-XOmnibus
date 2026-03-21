@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Whisker Arp",
   "mood": "Prism",
-  "engines": ["Overbite"],
+  "engines": [
+    "Overbite"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Staccato sequence-ready tone with snappy envelope and motion chorus. Designed for fast melodic runs.",
-  "tags": ["arp", "staccato", "sequence", "snappy", "melodic"],
-  "macroLabels": ["BELLY", "BITE", "SCURRY", "SPACE"],
+  "tags": [
+    "arp",
+    "staccato",
+    "sequence",
+    "snappy",
+    "melodic"
+  ],
+  "macroLabels": [
+    "BELLY",
+    "BITE",
+    "SCURRY",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 130,
   "dna": {
@@ -144,6 +157,8 @@
       "poss_pan": 0.0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

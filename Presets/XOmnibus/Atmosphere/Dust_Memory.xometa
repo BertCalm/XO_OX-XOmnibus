@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Dust Memory",
   "mood": "Atmosphere",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Lo-fi atmosphere with Dust texture, tape saturation, and Nap curiosity. Old analog warmth.",
-  "tags": ["lofi", "tape", "dust", "atmosphere", "vintage"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lofi",
+    "tape",
+    "dust",
+    "atmosphere",
+    "vintage"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -63,6 +76,8 @@
       "bob_polyphony": 3
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

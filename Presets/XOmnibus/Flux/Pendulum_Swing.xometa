@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-10",
   "description": "Rössler attractor with low chaos and high leash. Predictable, rhythmic, warm swinging motion like a driven pendulum.",

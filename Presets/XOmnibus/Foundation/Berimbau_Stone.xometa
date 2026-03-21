@@ -4,27 +4,28 @@
   "version": "1.0.0",
   "name": "Berimbau Stone",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
   "macros": {
     "M1": "PROWL",
     "M2": "FOLIAGE",
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
-    "brightness": 0.35,
-    "warmth": 0.7,
-    "movement": 0.3,
-    "density": 0.6,
-    "space": 0.4,
-    "aggression": 0.3
-  },
-  "sonic_dna": {
     "brightness": 0.35,
     "warmth": 0.7,
     "movement": 0.3,
@@ -103,6 +104,12 @@
       "ocelot_couplingBus": 2
     }
   },
-  "tags": ["ocelot", "foundation", "berimbau", "rhythmic", "percussive"],
+  "tags": [
+    "ocelot",
+    "foundation",
+    "berimbau",
+    "rhythmic",
+    "percussive"
+  ],
   "description": "Berimbau bow-string click as structural spine — each strike echoes upward through damp understory into a muted canopy."
 }

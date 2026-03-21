@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus knot with chorus shimmer \u2014 iridescent surface catching light.",
+  "description": "Torus knot with chorus shimmer — iridescent surface catching light.",
   "dna": {
     "brightness": 0.83,
     "warmth": 0.38,
@@ -78,5 +78,6 @@
     "chorus",
     "torus"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

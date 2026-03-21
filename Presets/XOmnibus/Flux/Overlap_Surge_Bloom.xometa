@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Torus knot with macro-driven bloom \u2014 mod wheel opens the knot topology.",
+  "description": "Torus knot with macro-driven bloom — mod wheel opens the knot topology.",
   "dna": {
     "brightness": 0.6,
     "warmth": 0.45,
@@ -78,5 +78,6 @@
     "expressive",
     "macro"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

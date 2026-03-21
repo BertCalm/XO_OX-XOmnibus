@@ -28,14 +28,6 @@
     "Osprey": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.125,
-    "brightness": 0.775,
-    "density": 0.119,
-    "movement": 0.585,
-    "space": 0.643,
-    "warmth": 0.888
-  },
   "tags": [
     "atmosphere",
     "warm",
@@ -45,5 +37,6 @@
     "evolving",
     "bright"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

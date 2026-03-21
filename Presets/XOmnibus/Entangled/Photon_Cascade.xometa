@@ -43,14 +43,6 @@
     "Onset": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.95,
-    "brightness": 0.9,
-    "density": 0.65,
-    "movement": 0.96,
-    "space": 0.18,
-    "warmth": 0.08
-  },
   "tags": [
     "entangled",
     "brutal",
@@ -59,5 +51,6 @@
     "onset",
     "photon"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

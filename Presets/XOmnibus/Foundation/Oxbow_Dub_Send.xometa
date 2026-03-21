@@ -1,11 +1,27 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Dub reverb send — dark, filtered, warm. Feed any source for instant dub wash.",
-  "dna": { "brightness": 0.25, "warmth": 0.8, "movement": 0.2, "density": 0.5, "space": 0.65, "aggression": 0.0 },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.0
+  },
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Foundation",
   "name": "Dub Send",
   "parameters": {
@@ -27,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["coupling", "dub", "send", "dark", "warm"],
-  "version": "1.0.0"
+  "tags": [
+    "coupling",
+    "dub",
+    "send",
+    "dark",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

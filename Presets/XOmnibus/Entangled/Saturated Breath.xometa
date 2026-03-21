@@ -34,14 +34,6 @@
     "Obese": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.49,
-    "brightness": 0.59,
-    "density": 0.69,
-    "movement": 0.55,
-    "space": 0.44,
-    "warmth": 0.63
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -50,7 +42,7 @@
     "obese",
     "wind"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

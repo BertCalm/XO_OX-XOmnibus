@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Ancestor Drift",
   "mood": "Family",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The ancestral memory drifts into each note from a great distance. High drift, long decay — by the time the memory reaches the current note, it's changed. Family seen across time.",
-  "tags": ["family", "ancestor", "drift", "distant", "time", "change"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "ancestor",
+    "drift",
+    "distant",
+    "time",
+    "change"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.8
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

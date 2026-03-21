@@ -55,14 +55,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.735,
-    "brightness": 0.486,
-    "density": 0.727,
-    "movement": 0.465,
-    "space": 0.431,
-    "warmth": 0.664
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -71,5 +63,6 @@
     "mojo",
     "gnash"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

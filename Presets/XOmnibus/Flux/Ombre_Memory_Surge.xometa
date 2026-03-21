@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Memory Surge",
   "mood": "Flux",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "A sudden upsurge of memory — LFO1 set to push hard toward Oubli at irregular intervals. You'll be in Opsis and suddenly the memory floods in from the past.",
-  "tags": ["flux", "surge", "flood", "memory", "sudden", "irregular"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "surge",
+    "flood",
+    "memory",
+    "sudden",
+    "irregular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.7
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "The engine-level 0.1 Hz formant LFO front and center. High formant intensity means the slow vowel drift (A→E→O cycle) is fully audible — like listening to stone breathe. Hypnotic and slow.",

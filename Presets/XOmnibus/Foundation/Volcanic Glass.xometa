@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Dark, warm, immediate. The obsidian stone character — low PD density, moderate depth, slow formant LFO breathing. Hits with weight and clarity. Hard velocity brings harmonic edge.",

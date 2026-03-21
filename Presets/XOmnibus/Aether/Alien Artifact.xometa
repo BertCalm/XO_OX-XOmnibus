@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Mysterious metallic resonance from an unknown source. FM harmonics with extreme reverb and slow phaser create otherworldly texture.",

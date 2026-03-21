@@ -2,27 +2,67 @@
   "schema_version": 1,
   "name": "Orbweave Topology Drift",
   "mood": "Flux",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The KNOT macro at 0.5 creates a topological chimera — halfway between Torus (3,4) and Solomon. Sweep KNOT from 0 to 1 while holding a chord to hear the topological transition in real time. Pre-positioned macros invite immediate exploration.",
   "tier": "awakening",
-  "tags": ["flux", "chimera", "torus", "solomon", "drift", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "flux",
+    "chimera",
+    "torus",
+    "solomon",
+    "drift",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.52, "warmth": 0.42, "movement": 0.55, "density": 0.48, "space": 0.35, "aggression": 0.22 },
-  "sonic_dna": { "brightness": 0.52, "warmth": 0.42, "movement": 0.55, "density": 0.48, "space": 0.35, "aggression": 0.22 },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.35,
+    "aggression": 0.22
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 2, "weave_strandTune": 3.86, "weave_knotType": 2, "weave_braidDepth": 0.68,
-      "weave_torusP": 3, "weave_torusQ": 4,
-      "weave_filterCutoff": 5000.0, "weave_filterReso": 0.18, "weave_filterType": 0,
-      "weave_ampA": 0.04, "weave_ampD": 0.35, "weave_ampS": 0.72, "weave_ampR": 0.8,
-      "weave_lfo1Type": 1, "weave_lfo1Target": 5, "weave_lfo1Depth": 0.12, "weave_lfo1Rate": 0.18,
-      "weave_fx1Type": 2, "weave_fx1Mix": 0.22, "weave_fx1Param": 0.45,
-      "weave_macroWeave": 0.65, "weave_macroTension": 0.15, "weave_macroKnot": 0.50, "weave_macroSpace": 0.15,
+      "weave_strandType": 2,
+      "weave_strandTune": 3.86,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.68,
+      "weave_torusP": 3,
+      "weave_torusQ": 4,
+      "weave_filterCutoff": 5000.0,
+      "weave_filterReso": 0.18,
+      "weave_filterType": 0,
+      "weave_ampA": 0.04,
+      "weave_ampD": 0.35,
+      "weave_ampS": 0.72,
+      "weave_ampR": 0.8,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.12,
+      "weave_lfo1Rate": 0.18,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.22,
+      "weave_fx1Param": 0.45,
+      "weave_macroWeave": 0.65,
+      "weave_macroTension": 0.15,
+      "weave_macroKnot": 0.5,
+      "weave_macroSpace": 0.15,
       "weave_voiceMode": 2
     }
-  }
+  },
+  "tempo": null
 }

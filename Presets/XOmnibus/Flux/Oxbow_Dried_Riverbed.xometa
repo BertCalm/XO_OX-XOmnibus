@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "What happens when the water leaves. Extreme cantilever + high erosion = a reverb that transforms from lush to barren in seconds. Play a chord and listen as it weathers from crystal to dust. The oxbow after the drought.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "aggression": 0.45
   },
-  "engines": ["Oxbow"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "engines": [
+    "Oxbow"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "mood": "Flux",
   "name": "Dried Riverbed",
   "parameters": {
@@ -34,6 +43,13 @@
     }
   },
   "schema_version": 1,
-  "tags": ["sound-design", "decay", "erosion", "weathered", "cinematic"],
-  "version": "1.0.0"
+  "tags": [
+    "sound-design",
+    "decay",
+    "erosion",
+    "weathered",
+    "cinematic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

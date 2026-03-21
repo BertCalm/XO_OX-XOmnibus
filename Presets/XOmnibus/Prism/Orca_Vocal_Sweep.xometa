@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "Wavetable position starts at 0.25 — early in the vocal palette, warm and chest-forward. Mod wheel (CC#1) scans +0.5 through the 64-frame table: at full throw, the pod dialect crosses into metallic, clicking echolocation territory. A single gesture drags the orca from song to sonar.",

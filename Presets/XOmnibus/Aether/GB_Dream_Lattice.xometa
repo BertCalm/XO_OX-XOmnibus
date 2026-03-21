@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "First preset to place Game Boy at vertex A. GB pulse + ERA drift at breathing rate. The unvisited console, finally heard.",
   "dna": {

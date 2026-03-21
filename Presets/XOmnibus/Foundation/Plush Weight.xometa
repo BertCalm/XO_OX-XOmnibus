@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-11",
   "description": "Clean warm bass. Sine belly with sub octave. Soft fur saturation. The anchor.",

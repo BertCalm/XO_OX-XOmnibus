@@ -13,7 +13,7 @@
     ]
   },
   "couplingIntensity": "Moderate",
-  "description": "Figure-8 bridge tone \u2014 connects two engines with harmonic glue.",
+  "description": "Figure-8 bridge tone — connects two engines with harmonic glue.",
   "dna": {
     "brightness": 0.48,
     "warmth": 0.52,
@@ -87,5 +87,6 @@
     "glue",
     "connector"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

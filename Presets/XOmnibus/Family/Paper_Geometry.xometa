@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-16",
   "description": "ORIGAMI at rest — the perfect fold. Tension geometric, air between planes. Delicate structure that holds its shape without effort.",

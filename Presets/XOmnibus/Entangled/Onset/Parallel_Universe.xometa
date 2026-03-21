@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Subtle",
   "created": "2026-03-10",
   "description": "Two kits in one. Odd voices circuit, even voices algorithm. Play them together or apart.",

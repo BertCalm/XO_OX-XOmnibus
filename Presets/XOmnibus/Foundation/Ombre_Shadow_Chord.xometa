@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Shadow Chord",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Square wave Opsis with strong sub. Good for chords — the memory buffer thickens voicings with ghost harmonics from the previous note. Dense and warm.",
-  "tags": ["foundation", "chords", "dense", "warm", "square", "sub"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "chords",
+    "dense",
+    "warm",
+    "square",
+    "sub"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.4
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

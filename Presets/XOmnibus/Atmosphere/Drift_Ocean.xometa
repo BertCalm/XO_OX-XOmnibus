@@ -32,20 +32,22 @@
   },
   "parameters": {
     "OddfeliX": {
-      "morph_morph": 0.4,
-      "morph_bloom": 4.0,
-      "morph_decay": 5.0,
-      "morph_sustain": 0.6,
-      "morph_release": 6.0,
-      "morph_filterCutoff": 900.0,
-      "morph_filterReso": 0.5,
-      "morph_drift": 0.85,
-      "morph_sub": 0.4,
-      "morph_detune": 25.0,
-      "morph_level": 0.7,
-      "morph_polyphony": 4
+      "snap_morph": 0.4,
+      "snap_bloom": 4.0,
+      "snap_decay": 5.0,
+      "snap_sustain": 0.6,
+      "snap_release": 6.0,
+      "snap_filterCutoff": 900.0,
+      "snap_filterReso": 0.5,
+      "snap_drift": 0.85,
+      "snap_sub": 0.4,
+      "snap_detune": 25.0,
+      "snap_level": 0.7,
+      "snap_polyphony": 4
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

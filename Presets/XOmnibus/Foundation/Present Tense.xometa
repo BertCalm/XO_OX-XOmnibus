@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Opsis-forward lead with sharp transient response. The saw oscillator bites, the sub anchors. Memories barely whisper underneath.",

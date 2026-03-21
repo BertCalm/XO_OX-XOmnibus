@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Wavetable parked in the warm vocal pocket (0.2), formant forward, low echo resonance. A clean, communicative lead that cuts through a mix like a whale call through deep water. Bitcrusher off, breach sub low, hunt macro resting. The Orca at rest: powerful, focused, expressive. Ready to move.",
   "dna": {

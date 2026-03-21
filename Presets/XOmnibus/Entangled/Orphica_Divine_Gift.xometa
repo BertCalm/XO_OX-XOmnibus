@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "DIVINE at peak — shimmer transcends the harp itself. Something sacred in the upper partials.",
@@ -67,5 +69,6 @@
     "entangled",
     "coupled"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

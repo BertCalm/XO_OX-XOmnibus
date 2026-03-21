@@ -22,14 +22,6 @@
     "Oblique": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.113,
-    "brightness": 0.926,
-    "density": 0.551,
-    "movement": 0.555,
-    "space": 0.487,
-    "warmth": 0.201
-  },
   "tags": [
     "atmosphere",
     "pad",
@@ -37,7 +29,7 @@
     "electric",
     "phosphor"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -45,5 +37,9 @@
     "density": 0.3,
     "space": 0.7,
     "aggression": 0.2
-  }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

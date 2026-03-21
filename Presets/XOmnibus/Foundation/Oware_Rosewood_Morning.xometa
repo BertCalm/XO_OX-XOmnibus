@@ -2,23 +2,54 @@
   "schema_version": 1,
   "name": "Oware Rosewood Morning",
   "mood": "Foundation",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Pure wood concert marimba. Material exponent at 0.05 means mode 8 receives only 1/82 amplitude of mode 1 — almost entirely fundamental. Tube resonator reinforces that fundamental. This is why marimba sounds warm: the physics of wood does not sustain upper partials.",
   "tier": "awakening",
-  "tags": ["foundation", "marimba", "wood", "percussion", "guru-bin-awakening"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "foundation",
+    "marimba",
+    "wood",
+    "percussion",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.40, "warmth": 0.80, "movement": 0.15, "density": 0.35, "space": 0.40, "aggression": 0.10 },
-  "sonic_dna": { "brightness": 0.40, "warmth": 0.80, "movement": 0.15, "density": 0.35, "space": 0.40, "aggression": 0.10 },
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.8,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.4,
+    "aggression": 0.1
+  },
   "parameters": {
     "Oware": {
-      "owr_material": 0.05, "owr_malletHardness": 0.22, "owr_bodyType": 0, "owr_bodyDepth": 0.65,
-      "owr_buzzAmount": 0.0, "owr_sympathyAmount": 0.20, "owr_shimmerRate": 0.0,
-      "owr_thermalDrift": 0.05, "owr_brightness": 3000.0, "owr_damping": 0.55, "owr_decay": 1.6,
-      "owr_filterEnvAmount": 0.40, "owr_bendRange": 2
+      "owr_material": 0.05,
+      "owr_malletHardness": 0.22,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.65,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.2,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.05,
+      "owr_brightness": 3000.0,
+      "owr_damping": 0.55,
+      "owr_decay": 1.6,
+      "owr_filterEnvAmount": 0.4,
+      "owr_bendRange": 2
     }
-  }
+  },
+  "tempo": null
 }

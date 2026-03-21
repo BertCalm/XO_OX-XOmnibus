@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Nocturne",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Night atmosphere — low filter, slow breathing LFO2, long grain. The kind of ambient that works when sleep is nearby. Oubli weighs heavier than Opsis.",
-  "tags": ["atmosphere", "nocturne", "night", "sleep", "slow", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "nocturne",
+    "night",
+    "sleep",
+    "slow",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.88
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

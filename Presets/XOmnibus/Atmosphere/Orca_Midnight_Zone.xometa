@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Midnight Zone",
   "mood": "Atmosphere",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The bathypelagic — 1000 to 4000 meters. Total darkness, crushing pressure, occasional flashes of sound. Near silence punctuated by brief echolocation events. Maximum space and minimal aggression.",
-  "tags": ["atmosphere", "midnight", "bathypelagic", "dark", "sparse"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "midnight",
+    "bathypelagic",
+    "dark",
+    "sparse"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.05,
@@ -62,6 +75,9 @@
       "orca_macroSpace": 0.0
     }
   },
-  "coupling": null,
-  "sequencer": null
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "tempo": null
 }

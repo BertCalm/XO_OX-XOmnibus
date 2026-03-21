@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 6: Inverse coupling logic. XVC global is maxed but kick-to-snare-filter is near zero — the kick suppresses nothing, allowing the snare's natural tone to bloom freely after the kick dies. Snare-to-hat decay is inverted in spirit: hat decay is long, snare does not tighten it. The kit breathes in opposition — when the kick lands heavy, the hats stay open and airy.",

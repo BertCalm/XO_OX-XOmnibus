@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Pitch Ghost",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Primed for LFOToPitch coupling input. External pitch modulation from another engine causes Opsis frequency to drift. The ghost of another engine's pitch haunts this one.",
-  "tags": ["entangled", "pitch", "ghost", "coupling", "lfo", "modulation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "pitch",
+    "ghost",
+    "coupling",
+    "lfo",
+    "modulation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

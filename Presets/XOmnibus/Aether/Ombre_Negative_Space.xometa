@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Negative Space",
   "mood": "Aether",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "The sound around the absence of sound. Oubli-dominant with high-pass HPF emphasis from the hpf internal path. A skeletal, airy presence defined by what isn't there.",
-  "tags": ["aether", "negative-space", "absence", "skeletal", "airy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "aether",
+    "negative-space",
+    "absence",
+    "skeletal",
+    "airy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.92
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

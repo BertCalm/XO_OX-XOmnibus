@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Opsis Shimmer",
   "mood": "Atmosphere",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "Perception-side shimmer with fast LFO1 oscillating blend between 0.7-1.0. The notes feel like sunlight on water — present and scintillating, never still.",
-  "tags": ["atmosphere", "shimmer", "opsis", "perception", "sunlight", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmosphere",
+    "shimmer",
+    "opsis",
+    "perception",
+    "sunlight",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +60,8 @@
       "ombre_macroSpace": 0.62
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

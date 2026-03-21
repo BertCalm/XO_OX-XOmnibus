@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 150 XOR lattice frozen at generation 8. The automaton's cell pattern becomes a static timbral fingerprint — a snapshot of emergence. Tri wave, low verb.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.6,

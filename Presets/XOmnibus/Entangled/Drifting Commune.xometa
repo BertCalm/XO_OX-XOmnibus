@@ -34,14 +34,6 @@
     "Odyssey": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.24,
-    "brightness": 0.5,
-    "density": 0.5,
-    "movement": 0.62,
-    "space": 0.68,
-    "warmth": 0.67
-  },
   "tags": [
     "entangled",
     "coupling",
@@ -50,7 +42,7 @@
     "odyssey",
     "hippy"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

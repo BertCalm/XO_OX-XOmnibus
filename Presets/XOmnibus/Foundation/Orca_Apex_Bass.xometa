@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Wavetable at position 0.5 for a chest-heavy mid-table timbral anchor. Breach sub high, hunt macro active at 0.4 — the predator logic adds rhythmic compression and weight to the low end. Echo resonance adds tail without muddying the attack. A bass that has presence and authority in any mix.",
   "dna": {

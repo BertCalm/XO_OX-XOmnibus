@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Symmetric amphichiral resonance \u2014 balanced harmonic crossing with mirror-image character.",
+  "description": "Symmetric amphichiral resonance — balanced harmonic crossing with mirror-image character.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.6,
@@ -77,5 +77,6 @@
     "resonant",
     "balanced"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -1,7 +1,7 @@
 {
   "author": "XO_OX Designs",
   "category": "Flux",
-  "description": "All four strata cross-modulating at maximum depth \u2014 floor drives understory and emergent, canopy drives floor damping, emergent feedback into canopy shimmer. Maximum ecosystem chaos.",
+  "description": "All four strata cross-modulating at maximum depth — floor drives understory and emergent, canopy drives floor damping, emergent feedback into canopy shimmer. Maximum ecosystem chaos.",
   "dna": {
     "aggression": 0.75,
     "brightness": 0.6,
@@ -98,5 +98,9 @@
   "tags": [],
   "engines": [
     "Ocelot"
-  ]
+  ],
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

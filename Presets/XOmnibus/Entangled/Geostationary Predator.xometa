@@ -34,14 +34,6 @@
     "Orca": {}
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.97,
-    "brightness": 0.4,
-    "density": 0.78,
-    "movement": 0.04,
-    "space": 0.45,
-    "warmth": 0.3
-  },
   "strategy": "Still Aggressive",
   "tags": [
     "entangled",
@@ -50,7 +42,7 @@
     "orbital",
     "predator"
   ],
-  "version": "1.0",
+  "version": "1.0.0",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.5,
@@ -58,5 +50,6 @@
     "density": 0.6,
     "space": 0.5,
     "aggression": 0.4
-  }
+  },
+  "tempo": null
 }

@@ -8,7 +8,7 @@
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "tier": "awakening",
-  "description": "Sine pad floating in three simultaneous spatial dimensions. Delay, chorus, and reverb each process the dry signal independently \u2014 parallel FX routing creates a spatial image impossible in serial chains. The wave lives in all three places at once.",
+  "description": "Sine pad floating in three simultaneous spatial dimensions. Delay, chorus, and reverb each process the dry signal independently — parallel FX routing creates a spatial image impossible in serial chains. The wave lives in all three places at once.",
   "tags": [
     "ambient",
     "parallel-fx",
@@ -121,5 +121,8 @@
     "MOVEMENT": 0.2,
     "COUPLING": 0.0,
     "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
   }
 }

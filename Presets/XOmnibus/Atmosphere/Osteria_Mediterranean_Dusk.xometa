@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Mediterranean shore at closing time — Oud and Ney shimmer fade into the evening. High sympathy across all four voices, the hall reverb a whitewashed stone room. Warm murmur of the last conversation.",

@@ -12,7 +12,7 @@
   },
   "couplingIntensity": "Moderate",
   "created": "2026-03-16",
-  "description": "Oblique prismatic refraction bends Bob's harmonic content \u2014 warm amber through a prism.",
+  "description": "Oblique prismatic refraction bends Bob's harmonic content — warm amber through a prism.",
   "dna": {
     "aggression": 0.521,
     "brightness": 0.648,
@@ -74,5 +74,5 @@
     "oblique"
   ],
   "tempo": null,
-  "version": "1.0"
+  "version": "1.0.0"
 }

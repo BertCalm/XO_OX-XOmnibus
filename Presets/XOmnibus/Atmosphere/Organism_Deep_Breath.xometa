@@ -1,6 +1,8 @@
 {
   "author": "Guru Bin — ORGANISM Retreat 2026-03-20",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Both LFOs at floor rate (0.01 Hz = one cycle per 100 seconds). The automaton breathes over geological time. Rule 18 (sparse, orderly patterns) at maximum scope (16) — every parameter change is a century-long exhale. This is D005 made literal: the engine that cannot breathe is a photograph.",
   "dna": {
@@ -11,9 +13,21 @@
     "space": 0.9,
     "aggression": 0.03
   },
-  "engines": ["Organism"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
-  "macros": { "RULE": 0.714, "SEED": 0.0, "COUPLING": 0.0, "MUTATE": 0.0 },
+  "engines": [
+    "Organism"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
+  "macros": {
+    "RULE": 0.714,
+    "SEED": 0.0,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
   "mood": "Atmosphere",
   "name": "Deep Breath",
   "parameters": {
@@ -45,6 +59,15 @@
     }
   },
   "schema_version": 1,
-  "tags": ["drone", "breathing", "D005", "geological", "rule18", "ambient", "lfo-floor"],
-  "version": "1.0"
+  "tags": [
+    "drone",
+    "breathing",
+    "D005",
+    "geological",
+    "rule18",
+    "ambient",
+    "lfo-floor"
+  ],
+  "version": "1.0.0",
+  "tempo": null
 }

@@ -62,14 +62,6 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.325,
-    "brightness": 0.575,
-    "density": 0.6,
-    "movement": 0.55,
-    "space": 0.675,
-    "warmth": 0.55
-  },
   "tags": [
     "coupling",
     "entangled",
@@ -78,5 +70,6 @@
     "latin",
     "expressive"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

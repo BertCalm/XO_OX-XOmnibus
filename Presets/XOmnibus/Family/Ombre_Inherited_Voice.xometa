@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Inherited Voice",
   "mood": "Family",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "A voice that resembles another. The memory grain carries forward characteristics of the previous note into the next. Melodic lines inherit timbral qualities from each other.",
-  "tags": ["family", "inherited", "resemblance", "lineage", "timbral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "family",
+    "inherited",
+    "resemblance",
+    "lineage",
+    "timbral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.65
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

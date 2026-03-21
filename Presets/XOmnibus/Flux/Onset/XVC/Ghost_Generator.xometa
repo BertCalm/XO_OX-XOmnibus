@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "XVC DEMO 9: Sub-threshold XVC ghost notes. Low levels on tom, perc A, and perc B — they rarely trigger directly, but when the snare hits, snare-to-perc-blend pushes them into FM algorithm territory which self-resonates at low levels. The snare creates ghost hits on the percussion voices. Not programmed, not random — emergent from coupling.",

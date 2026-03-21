@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "LFO2 at 0.01 Hz \u2014 one cycle every 100 seconds. Geological patience.",
+  "description": "LFO2 at 0.01 Hz — one cycle every 100 seconds. Geological patience.",
   "tags": [
     "aether",
     "eternity",
@@ -58,5 +58,8 @@
       "deep_macroWreck": 0.4,
       "deep_macroAbyss": 0.5
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Maximum PD density and depth — the distortion LUT at full complexity with cascade cross-modulation for sideband complexity. High tilt pushes energy into the upper harmonics. Razor-edged, spectral, cuts through any mix.",

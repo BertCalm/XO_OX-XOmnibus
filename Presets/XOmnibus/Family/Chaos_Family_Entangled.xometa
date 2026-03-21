@@ -42,6 +42,8 @@
     "Oracle": {},
     "Outwit": {}
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

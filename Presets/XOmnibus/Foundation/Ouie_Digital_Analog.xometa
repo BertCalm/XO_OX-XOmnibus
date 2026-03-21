@@ -85,5 +85,8 @@
       "ouie_macroCartilage": 0.5,
       "ouie_macroCurrent": 0.0
     }
+  },
+  "coupling": {
+    "pairs": []
   }
 }

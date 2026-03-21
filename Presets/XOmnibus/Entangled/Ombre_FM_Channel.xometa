@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "FM Channel",
   "mood": "Entangled",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "AudioToFM coupling target. Another engine's audio modulates Opsis oscillator frequency. The result is cross-engine FM synthesis — Ombre's tone shaped by external audio.",
-  "tags": ["entangled", "FM", "coupling", "audio-to-fm", "modulation"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "FM",
+    "coupling",
+    "audio-to-fm",
+    "modulation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Strong",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.62
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

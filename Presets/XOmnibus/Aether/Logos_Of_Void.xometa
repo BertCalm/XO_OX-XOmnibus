@@ -27,10 +27,10 @@
   "name": "Logos Of Void",
   "parameters": {
     "Organon": {
-      "org_macro_character": 0.36,
-      "org_macro_coupling": 0.31,
-      "org_macro_movement": 0.41,
-      "org_macro_space": 0.92
+      "organon_macro_character": 0.36,
+      "organon_macro_coupling": 0.31,
+      "organon_macro_movement": 0.41,
+      "organon_macro_space": 0.92
     }
   },
   "schema_version": 1,
@@ -40,5 +40,9 @@
     "void",
     "logos"
   ],
-  "version": "1.0"
+  "version": "1.0.0",
+  "coupling": {
+    "pairs": []
+  },
+  "tempo": null
 }

@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Oubli Chord",
   "mood": "Foundation",
-  "engines": ["Ombre"],
+  "engines": [
+    "Ombre"
+  ],
   "author": "XO_OX Preset Expansion 2026-03-17",
   "version": "1.0.0",
   "description": "A chord preset built around Oubli dominance. Each note in the chord feeds the memory differently — hold chords and listen to the grain cloud build from the interplay of voices.",
-  "tags": ["foundation", "oubli", "chords", "cloud", "interplay"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "oubli",
+    "chords",
+    "cloud",
+    "interplay"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -46,6 +59,8 @@
       "ombre_macroSpace": 0.62
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

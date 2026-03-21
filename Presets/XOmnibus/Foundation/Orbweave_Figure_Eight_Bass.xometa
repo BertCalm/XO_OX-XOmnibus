@@ -2,26 +2,62 @@
   "schema_version": 1,
   "name": "Orbweave Figure Eight Bass",
   "mood": "Foundation",
-  "engines": ["Orbweave"],
+  "engines": [
+    "Orbweave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mono + glide through the Figure-Eight alternating over/under topology creates unique portamento. Low filterCutoff + velocity arc (400-2400 Hz). Ghost notes dark and buried; accents topology-snapped bright.",
   "tier": "awakening",
-  "tags": ["foundation", "figure-eight", "bass", "mono", "guru-bin-awakening"],
-  "macroLabels": ["WEAVE", "TENSION", "KNOT", "SPACE"],
-  "coupling": { "pairs": [] },
+  "tags": [
+    "foundation",
+    "figure-eight",
+    "bass",
+    "mono",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "dna": { "brightness": 0.35, "warmth": 0.65, "movement": 0.30, "density": 0.55, "space": 0.10, "aggression": 0.50 },
-  "sonic_dna": { "brightness": 0.35, "warmth": 0.65, "movement": 0.30, "density": 0.55, "space": 0.10, "aggression": 0.50 },
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.1,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orbweave": {
-      "weave_strandType": 2, "weave_strandTune": 0.0, "weave_knotType": 1, "weave_braidDepth": 0.85,
-      "weave_filterCutoff": 400.0, "weave_filterReso": 0.35, "weave_filterType": 0,
-      "weave_ampA": 0.005, "weave_ampD": 0.45, "weave_ampS": 0.55, "weave_ampR": 0.4,
-      "weave_lfo1Type": 0, "weave_lfo2Type": 0,
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.85,
+      "weave_filterCutoff": 400.0,
+      "weave_filterReso": 0.35,
+      "weave_filterType": 0,
+      "weave_ampA": 0.005,
+      "weave_ampD": 0.45,
+      "weave_ampS": 0.55,
+      "weave_ampR": 0.4,
+      "weave_lfo1Type": 0,
+      "weave_lfo2Type": 0,
       "weave_fx1Type": 0,
-      "weave_macroWeave": 0.0, "weave_macroTension": 0.0, "weave_macroKnot": 0.0, "weave_macroSpace": 0.0,
-      "weave_voiceMode": 0, "weave_pitchBendRange": 5, "weave_glideTime": 0.15
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.0,
+      "weave_macroSpace": 0.0,
+      "weave_voiceMode": 0,
+      "weave_pitchBendRange": 5,
+      "weave_glideTime": 0.15
     }
-  }
+  },
+  "tempo": null
 }

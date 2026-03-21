@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Deep underground \u2014 the reverb is dark, close, and ancient. Low damping absorbs the highs while the golden resonance adds eerie harmonic undertones to every whisper.",
+  "description": "Deep underground — the reverb is dark, close, and ancient. Low damping absorbs the highs while the golden resonance adds eerie harmonic undertones to every whisper.",
   "dna": {
     "brightness": 0.2,
     "warmth": 0.65,
@@ -50,5 +50,6 @@
     "ancient",
     "eerie"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

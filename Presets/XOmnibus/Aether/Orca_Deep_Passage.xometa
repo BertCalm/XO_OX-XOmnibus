@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Wavetable scan rate elevated, the table streaming through all 64 frames over the note duration. Formant shift pushed to +0.5 — the voice has emigrated to an alien dialect. High echo resonance transforms the tail into a resonant cave. Hunt macro at 0.7 sculpts rhythmic compression into the held note, so the sound breathes like a pod in formation. Below the thermocline.",
   "dna": {

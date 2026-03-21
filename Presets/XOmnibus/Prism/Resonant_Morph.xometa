@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Resonant Morph",
   "mood": "Prism",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-resonance lead morphing from sine to square. Self-oscillating ladder filter at the edge.",
-  "tags": ["lead", "resonant", "morph", "filter", "edge"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "lead",
+    "resonant",
+    "morph",
+    "filter",
+    "edge"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -53,6 +66,8 @@
       "fat_polyphony": 0
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

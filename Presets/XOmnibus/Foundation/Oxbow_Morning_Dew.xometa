@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "The first sound of the day \u2014 barely there, glistening, new. A tiny bright reverb like sunlight catching a dewdrop. Minimal processing, maximum clarity.",
+  "description": "The first sound of the day — barely there, glistening, new. A tiny bright reverb like sunlight catching a dewdrop. Minimal processing, maximum clarity.",
   "dna": {
     "brightness": 0.65,
     "warmth": 0.5,
@@ -50,5 +50,6 @@
     "clear",
     "fresh"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

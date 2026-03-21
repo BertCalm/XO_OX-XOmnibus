@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "Moderate",
   "created": "2026-03-05",
   "description": "Warm analog-style coupling where O's Moog filter warmth bleeds into X's transients, softening attacks into velvet thuds.",

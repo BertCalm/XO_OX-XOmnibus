@@ -2,12 +2,27 @@
   "schema_version": 1,
   "name": "Akan Sunken Board",
   "mood": "Foundation",
-  "engines": ["Oware"],
+  "engines": [
+    "Oware"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The signature sound. A carved oware board found on the ocean floor — warm wood-bell transition with a faint mirliton buzz and living thermal drift. Macro MATERIAL sweeps wood to metal.",
-  "tags": ["akan", "wood", "percussion", "tuned", "warm", "drift", "signature"],
-  "macroLabels": ["MATERIAL", "MALLET", "COUPLING", "SPACE"],
+  "tags": [
+    "akan",
+    "wood",
+    "percussion",
+    "tuned",
+    "warm",
+    "drift",
+    "signature"
+  ],
+  "macroLabels": [
+    "MATERIAL",
+    "MALLET",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -45,6 +60,8 @@
       "owr_macroSpace": 0.4
     }
   },
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

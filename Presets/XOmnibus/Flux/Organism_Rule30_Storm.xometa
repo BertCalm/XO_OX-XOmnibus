@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 30 at 32 Hz step rate — the automaton's maximum evolution speed. Scope 1: every generation is instantly applied. The filter, pitch and FX cells all mutate at 32 Hz.",
   "dna": {
     "brightness": 0.72,
     "warmth": 0.28,

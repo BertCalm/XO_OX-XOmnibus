@@ -32,19 +32,12 @@
     }
   },
   "schema_version": 1,
-  "sonic_dna": {
-    "aggression": 0.9177,
-    "brightness": 0.5343,
-    "density": 0.9401,
-    "movement": 0.0567,
-    "space": 0.46,
-    "warmth": 0.9043
-  },
   "tags": [
     "entangled",
     "ultra-diverse",
     "spark",
     "osteria"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }

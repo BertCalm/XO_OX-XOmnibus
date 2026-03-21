@@ -23,7 +23,6 @@
   ],
   "couplingIntensity": "None",
   "tempo": null,
-  "sonicDNA": "Rule 90 Sierpinski at 0.8 Hz step rate — generations last over a second each. Full reverb wash, very slow LFOs. The automaton becomes tide rather than computation.",
   "dna": {
     "brightness": 0.3,
     "warmth": 0.7,

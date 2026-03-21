@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "morph=1.0 (full noise). 13 noise oscillators through 4 resonant ZDF ladders. The ocean filtering itself. This is not synthesis — it is the sea.",
   "dna": {

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": null,
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-14",
   "description": "Peter interrupts Wolf; Wolf answers back. BOND mid — playful, not yet a fight. 'Duo Flow' keeps nothing still.",
@@ -64,5 +66,6 @@
     "entangled",
     "coupled"
   ],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "tempo": null
 }
