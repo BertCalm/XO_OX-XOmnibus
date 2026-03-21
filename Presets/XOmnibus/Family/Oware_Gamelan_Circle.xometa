@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A Balinese gamelan circle — instruments tuned deliberately against each other for the 6 Hz shimmer. High sympathy, frame body, bell-zone material. Eight voices shimmering in unison.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.62,
+    "density": 0.72,
+    "movement": 0.55,
+    "space": 0.75,
+    "warmth": 0.58
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.25,
+    "COUPLING": 0.45,
+    "MOVEMENT": 0.55,
+    "SPACE": 0.75
+  },
+  "mood": "Family",
+  "name": "Gamelan Circle",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.38,
+      "owr_malletHardness": 0.38,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.58,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.62,
+      "owr_shimmerRate": 6.0,
+      "owr_thermalDrift": 0.18,
+      "owr_brightness": 5500.0,
+      "owr_damping": 0.22,
+      "owr_decay": 3.2,
+      "owr_filterEnvAmount": 0.28,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.25,
+      "owr_macroMallet": 0.25,
+      "owr_macroCoupling": 0.45,
+      "owr_macroSpace": 0.75
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "gamelan",
+    "shimmer",
+    "bell",
+    "ensemble",
+    "family",
+    "oware",
+    "balinese"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

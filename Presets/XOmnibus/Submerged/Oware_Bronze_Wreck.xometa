@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bronze percussion salvaged from a shipwreck — metal-bowl boundary (0.72), trace barnacle buzz (0.12), bowl body with deep resonance, low damping and long decay. Cold water killed the shimmer. The sympathetic network lets every cup remember every other.",
+  "dna": {
+    "aggression": 0.10,
+    "brightness": 0.32,
+    "density": 0.70,
+    "movement": 0.16,
+    "space": 0.85,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.16,
+    "SPACE": 0.85
+  },
+  "mood": "Submerged",
+  "name": "Bronze Wreck",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.72,
+      "owr_malletHardness": 0.25,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.12,
+      "owr_sympathyAmount": 0.68,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.58,
+      "owr_brightness": 2000.0,
+      "owr_damping": 0.10,
+      "owr_decay": 6.5,
+      "owr_filterEnvAmount": 0.16,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.45,
+      "owr_macroMallet": 0.16,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "bronze",
+    "wreck",
+    "metal",
+    "deep",
+    "submerged",
+    "oware",
+    "ocean"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

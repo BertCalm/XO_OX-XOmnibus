@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Mancala seeds scattered — unstable pitch via high thermal drift, bell material in flux toward metal, medium buzz adding texture to each ricocheting hit, no rest between voices",
+  "dna": {
+    "aggression": 0.48,
+    "brightness": 0.65,
+    "density": 0.65,
+    "movement": 0.80,
+    "space": 0.48,
+    "warmth": 0.38
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.60,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.80,
+    "SPACE": 0.48
+  },
+  "mood": "Flux",
+  "name": "Errant Seeds",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.38,
+      "owr_malletHardness": 0.50,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.50,
+      "owr_buzzAmount": 0.20,
+      "owr_sympathyAmount": 0.40,
+      "owr_shimmerRate": 9.5,
+      "owr_thermalDrift": 0.68,
+      "owr_brightness": 7500.0,
+      "owr_damping": 0.42,
+      "owr_decay": 1.2,
+      "owr_filterEnvAmount": 0.44,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.60,
+      "owr_macroMallet": 0.60,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.48
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "mancala",
+    "seeds",
+    "drift",
+    "bell",
+    "flux"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

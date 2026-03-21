@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Akan goldweight suspended in amber light — metal-bowl midpoint, medium sympathy, 7.5 Hz wind-chime shimmer glittering at the top of a long decay",
+  "dna": {
+    "aggression": 0.07,
+    "brightness": 0.55,
+    "density": 0.62,
+    "movement": 0.48,
+    "space": 0.88,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.48,
+    "SPACE": 0.88
+  },
+  "mood": "Aether",
+  "name": "Gilt Haze",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.78,
+      "owr_malletHardness": 0.20,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.80,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 7.5,
+      "owr_thermalDrift": 0.28,
+      "owr_brightness": 4500.0,
+      "owr_damping": 0.07,
+      "owr_decay": 7.0,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.42,
+      "owr_macroMallet": 0.42,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "akan",
+    "gold",
+    "shimmer",
+    "bowl",
+    "aether"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The oware board lost on a trade ship — two centuries of saltwater hardening the wood, barnacles fusing bronze to grain. Material at bell transition, bowl body with high depth, long decay, almost no damping. The board remembers every impact.",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.28,
+    "density": 0.65,
+    "movement": 0.15,
+    "space": 0.88,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.15,
+    "SPACE": 0.88
+  },
+  "mood": "Submerged",
+  "name": "Sunken Board",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.34,
+      "owr_malletHardness": 0.20,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.88,
+      "owr_buzzAmount": 0.06,
+      "owr_sympathyAmount": 0.58,
+      "owr_shimmerRate": 1.2,
+      "owr_thermalDrift": 0.62,
+      "owr_brightness": 2200.0,
+      "owr_damping": 0.12,
+      "owr_decay": 5.5,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.28,
+      "owr_macroMallet": 0.15,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "deep",
+    "submerged",
+    "wood",
+    "bell",
+    "long-decay",
+    "oware",
+    "ocean"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

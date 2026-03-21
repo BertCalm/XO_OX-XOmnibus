@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Crystal-glass monastery bells — material deep in bowl territory, very low damping, slow 1.2 Hz beat frequency evoking Tibetan glass harmonica",
+  "dna": {
+    "aggression": 0.03,
+    "brightness": 0.42,
+    "density": 0.52,
+    "movement": 0.22,
+    "space": 0.94,
+    "warmth": 0.68
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.94
+  },
+  "mood": "Aether",
+  "name": "Glass Monastery",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.88,
+      "owr_malletHardness": 0.15,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.22,
+      "owr_shimmerRate": 1.2,
+      "owr_thermalDrift": 0.38,
+      "owr_brightness": 3600.0,
+      "owr_damping": 0.05,
+      "owr_decay": 8.0,
+      "owr_filterEnvAmount": 0.10,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.22,
+      "owr_macroMallet": 0.22,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.94
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "crystal-glass",
+    "monastery",
+    "long-decay",
+    "bowl",
+    "aether"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

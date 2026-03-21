@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The gyil — a Ghanaian xylophone with wax-sealed spider-sac membranes — played at a feast. Heavy authentic buzz (0.38), wood material, tube resonators, strong sympathy for the communal resonance of multiple instruments played simultaneously.",
+  "dna": {
+    "aggression": 0.22,
+    "brightness": 0.50,
+    "density": 0.60,
+    "movement": 0.32,
+    "space": 0.55,
+    "warmth": 0.80
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "COUPLING": 0.35,
+    "MOVEMENT": 0.32,
+    "SPACE": 0.55
+  },
+  "mood": "Family",
+  "name": "Gyil Feast",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.08,
+      "owr_malletHardness": 0.40,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.55,
+      "owr_buzzAmount": 0.38,
+      "owr_sympathyAmount": 0.52,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.16,
+      "owr_brightness": 4800.0,
+      "owr_damping": 0.32,
+      "owr_decay": 1.5,
+      "owr_filterEnvAmount": 0.45,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.15,
+      "owr_macroMallet": 0.32,
+      "owr_macroCoupling": 0.35,
+      "owr_macroSpace": 0.55
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "gyil",
+    "wood",
+    "buzz",
+    "feast",
+    "family",
+    "oware",
+    "ghanaian"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

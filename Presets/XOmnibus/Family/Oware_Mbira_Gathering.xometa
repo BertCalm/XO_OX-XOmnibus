@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Mbira at the family gathering — kalimba-zone material (0.15), soft mallet, trace buzz, open body lets the tine decay ring free. The buzzing is barely there, just enough organic character for the instrument to feel lived-in.",
+  "dna": {
+    "aggression": 0.10,
+    "brightness": 0.45,
+    "density": 0.38,
+    "movement": 0.22,
+    "space": 0.62,
+    "warmth": 0.82
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.10,
+    "COUPLING": 0.18,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.62
+  },
+  "mood": "Family",
+  "name": "Mbira Gathering",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.15,
+      "owr_malletHardness": 0.28,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.55,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.28,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.12,
+      "owr_brightness": 3800.0,
+      "owr_damping": 0.35,
+      "owr_decay": 2.2,
+      "owr_filterEnvAmount": 0.35,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.10,
+      "owr_macroMallet": 0.22,
+      "owr_macroCoupling": 0.18,
+      "owr_macroSpace": 0.62
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "mbira",
+    "kalimba",
+    "wood",
+    "warm",
+    "family",
+    "oware",
+    "african"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

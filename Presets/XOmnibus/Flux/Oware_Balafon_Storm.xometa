@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "West African balafon caught in a wind storm — pure wood material, heavy authentic buzz, hard mallet, short decay, maximum thermal drift as if the bars are vibrating in unpredictable turbulence",
+  "dna": {
+    "aggression": 0.58,
+    "brightness": 0.52,
+    "density": 0.48,
+    "movement": 0.70,
+    "space": 0.42,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.70,
+    "SPACE": 0.42
+  },
+  "mood": "Flux",
+  "name": "Balafon Storm",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.06,
+      "owr_malletHardness": 0.65,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.55,
+      "owr_buzzAmount": 0.40,
+      "owr_sympathyAmount": 0.18,
+      "owr_shimmerRate": 11.0,
+      "owr_thermalDrift": 0.78,
+      "owr_brightness": 5500.0,
+      "owr_damping": 0.60,
+      "owr_decay": 0.65,
+      "owr_filterEnvAmount": 0.52,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.48,
+      "owr_macroMallet": 0.48,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.42
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "balafon",
+    "buzz",
+    "wood",
+    "storm",
+    "flux"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

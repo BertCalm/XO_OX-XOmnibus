@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "An outdoor courtyard balafon — wood material with authentic mirliton buzz, tube resonators tuned to the fundamental, gentle sympathy between voices like bars mounted on a shared wooden frame. The gathering has begun.",
+  "dna": {
+    "aggression": 0.14,
+    "brightness": 0.48,
+    "density": 0.52,
+    "movement": 0.28,
+    "space": 0.58,
+    "warmth": 0.88
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "COUPLING": 0.22,
+    "MOVEMENT": 0.28,
+    "SPACE": 0.58
+  },
+  "mood": "Family",
+  "name": "Courtyard Balafon",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.06,
+      "owr_malletHardness": 0.32,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.62,
+      "owr_buzzAmount": 0.32,
+      "owr_sympathyAmount": 0.38,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.14,
+      "owr_brightness": 4200.0,
+      "owr_damping": 0.38,
+      "owr_decay": 1.8,
+      "owr_filterEnvAmount": 0.42,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.12,
+      "owr_macroMallet": 0.28,
+      "owr_macroCoupling": 0.22,
+      "owr_macroSpace": 0.58
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "balafon",
+    "wood",
+    "buzz",
+    "communal",
+    "family",
+    "oware",
+    "african"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Intertidal basin of resonant bronze — medium sympathy feeds voices into each other across a near-infinite decay, shimmer barely perceptible like wave recession",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.35,
+    "density": 0.65,
+    "movement": 0.30,
+    "space": 0.98,
+    "warmth": 0.76
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.30,
+    "COUPLING": 0.25,
+    "MOVEMENT": 0.30,
+    "SPACE": 0.98
+  },
+  "mood": "Aether",
+  "name": "Infinite Tide",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.72,
+      "owr_malletHardness": 0.10,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.90,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.35,
+      "owr_shimmerRate": 0.9,
+      "owr_thermalDrift": 0.55,
+      "owr_brightness": 2600.0,
+      "owr_damping": 0.03,
+      "owr_decay": 10.0,
+      "owr_filterEnvAmount": 0.12,
+      "owr_bendRange": 5,
+      "owr_macroMaterial": 0.30,
+      "owr_macroMallet": 0.30,
+      "owr_macroCoupling": 0.25,
+      "owr_macroSpace": 0.98
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "tidal",
+    "long-decay",
+    "bowl",
+    "sympathetic",
+    "aether"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

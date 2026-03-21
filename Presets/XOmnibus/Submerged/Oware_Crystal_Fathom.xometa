@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Crystal glass singing bowls at depth — bowl material zone (0.82), open body, extremely long decay and minimal damping. The slow shimmer (1.5 Hz) turns each strike into a gradual swell. The thermal drift simulates hydrostatic pressure shifting the pitch over minutes.",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.35,
+    "density": 0.55,
+    "movement": 0.20,
+    "space": 0.92,
+    "warmth": 0.48
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.20,
+    "SPACE": 0.92
+  },
+  "mood": "Submerged",
+  "name": "Crystal Fathom",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.82,
+      "owr_malletHardness": 0.18,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.92,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.65,
+      "owr_shimmerRate": 1.5,
+      "owr_thermalDrift": 0.68,
+      "owr_brightness": 1600.0,
+      "owr_damping": 0.08,
+      "owr_decay": 7.5,
+      "owr_filterEnvAmount": 0.15,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.55,
+      "owr_macroMallet": 0.20,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.92
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "crystal",
+    "bowl",
+    "deep",
+    "long-decay",
+    "submerged",
+    "oware",
+    "glass"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

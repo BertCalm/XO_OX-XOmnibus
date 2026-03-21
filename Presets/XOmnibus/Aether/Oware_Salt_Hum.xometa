@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The salt-encrusted oware board humming with two centuries of ocean — near-bowl material, high sympathy, 6.0 Hz shimmer as if tidal current stirs the resonance",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.40,
+    "density": 0.70,
+    "movement": 0.42,
+    "space": 0.91,
+    "warmth": 0.72
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.36,
+    "COUPLING": 0.20,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.91
+  },
+  "mood": "Aether",
+  "name": "Salt Hum",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.82,
+      "owr_malletHardness": 0.16,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.87,
+      "owr_buzzAmount": 0.15,
+      "owr_sympathyAmount": 0.38,
+      "owr_shimmerRate": 6.0,
+      "owr_thermalDrift": 0.50,
+      "owr_brightness": 3100.0,
+      "owr_damping": 0.04,
+      "owr_decay": 9.0,
+      "owr_filterEnvAmount": 0.14,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.36,
+      "owr_macroMallet": 0.36,
+      "owr_macroCoupling": 0.20,
+      "owr_macroSpace": 0.91
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "salt",
+    "ocean",
+    "bowl",
+    "buzz",
+    "aether"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

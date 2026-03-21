@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Upper partials in constant flux — metal material with dense sympathetic network, 12 Hz maximum shimmer, frame body adding three unstable resonance peaks that feed on each other",
+  "dna": {
+    "aggression": 0.52,
+    "brightness": 0.78,
+    "density": 0.72,
+    "movement": 0.85,
+    "space": 0.50,
+    "warmth": 0.30
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.55,
+    "COUPLING": 0.38,
+    "MOVEMENT": 0.85,
+    "SPACE": 0.50
+  },
+  "mood": "Flux",
+  "name": "Spectral Churn",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.62,
+      "owr_malletHardness": 0.60,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.65,
+      "owr_buzzAmount": 0.28,
+      "owr_sympathyAmount": 0.58,
+      "owr_shimmerRate": 12.0,
+      "owr_thermalDrift": 0.40,
+      "owr_brightness": 8000.0,
+      "owr_damping": 0.28,
+      "owr_decay": 1.8,
+      "owr_filterEnvAmount": 0.48,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.55,
+      "owr_macroMallet": 0.55,
+      "owr_macroCoupling": 0.38,
+      "owr_macroSpace": 0.50
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "metal",
+    "sympathetic",
+    "shimmer",
+    "frame",
+    "flux"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

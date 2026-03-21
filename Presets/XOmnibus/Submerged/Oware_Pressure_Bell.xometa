@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A bronze diving bell struck at ocean floor — metal zone (0.68), hard frame body holds the structural resonances, moderate mallet, long decay with minimal damping. The bell cannot breathe — the pressure seals it. Slow 2 Hz shimmer like depth gradients.",
+  "dna": {
+    "aggression": 0.12,
+    "brightness": 0.38,
+    "density": 0.62,
+    "movement": 0.22,
+    "space": 0.85,
+    "warmth": 0.42
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.85
+  },
+  "mood": "Submerged",
+  "name": "Pressure Bell",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.68,
+      "owr_malletHardness": 0.35,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.48,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.55,
+      "owr_brightness": 2800.0,
+      "owr_damping": 0.10,
+      "owr_decay": 6.0,
+      "owr_filterEnvAmount": 0.20,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.42,
+      "owr_macroMallet": 0.22,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.85
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "metal",
+    "bell",
+    "deep",
+    "pressure",
+    "submerged",
+    "oware",
+    "bronze"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

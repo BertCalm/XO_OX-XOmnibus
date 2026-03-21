@@ -1,0 +1,66 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "A handpan passed around a fire circle — vibraphone-zone material (0.50), soft palm strike, bowl body sings the sub-octave, sympathy in the natural gamelan range. Clean and warm and present.",
+  "dna": {
+    "aggression": 0.11,
+    "brightness": 0.52,
+    "density": 0.55,
+    "movement": 0.30,
+    "space": 0.72,
+    "warmth": 0.78
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.20,
+    "COUPLING": 0.32,
+    "MOVEMENT": 0.30,
+    "SPACE": 0.72
+  },
+  "mood": "Family",
+  "name": "Warm Handpan",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.50,
+      "owr_malletHardness": 0.30,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.72,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.48,
+      "owr_shimmerRate": 3.5,
+      "owr_thermalDrift": 0.18,
+      "owr_brightness": 5000.0,
+      "owr_damping": 0.18,
+      "owr_decay": 3.8,
+      "owr_filterEnvAmount": 0.30,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.20,
+      "owr_macroMallet": 0.30,
+      "owr_macroCoupling": 0.32,
+      "owr_macroSpace": 0.72
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "handpan",
+    "warm",
+    "bowl",
+    "sympathy",
+    "family",
+    "oware",
+    "meditative"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

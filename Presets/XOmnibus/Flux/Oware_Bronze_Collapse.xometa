@@ -1,0 +1,64 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Metal bars struck hard and released fast — high material in metal territory, heavy damping, aggressive mallet, rapid decay with strong velocity-to-brightness response",
+  "dna": {
+    "aggression": 0.68,
+    "brightness": 0.72,
+    "density": 0.55,
+    "movement": 0.62,
+    "space": 0.40,
+    "warmth": 0.28
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.62,
+    "SPACE": 0.40
+  },
+  "mood": "Flux",
+  "name": "Bronze Collapse",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.68,
+      "owr_malletHardness": 0.72,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.20,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.10,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.08,
+      "owr_brightness": 9500.0,
+      "owr_damping": 0.75,
+      "owr_decay": 0.35,
+      "owr_filterEnvAmount": 0.58,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.65,
+      "owr_macroMallet": 0.65,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.40
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "metal",
+    "kinetic",
+    "staccato",
+    "flux",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}
