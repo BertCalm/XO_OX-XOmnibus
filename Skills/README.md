@@ -24,6 +24,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [coupling-debugger](./coupling-debugger/SKILL.md) | `/coupling-debugger` | Diagnose and fix broken or inaudible coupling routes | HIGH |
 | [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
 | [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
+| [preset-audit-checklist](./preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — 10-point sonic gate, engine-specific depth, coverage gaps, Guru tricks. Path to 9.0+ preset libraries. | HIGH |
 | [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
@@ -59,7 +60,9 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | A skill produced confusion, loops, or silent failures | `/skill-friction-detective` |
 | Auditing the skill library for stale content or orphaned skills | `/skill-friction-detective audit` |
 | Finding cross-skill linking opportunities | `/skill-friction-detective link` |
-| Auditing existing preset quality | `/preset-auditor` |
+| Auditing existing preset quality (quick) | `/preset-auditor` |
+| Full preset audit targeting 9.0+ quality | `/preset-audit-checklist` |
+| Guru-informed preset refinement | `/preset-audit-checklist` + `/guru-bin` |
 | Coupling route not working/inaudible | `/coupling-debugger` |
 | Full fleet QA / pre-release health check | `/master-audit` |
 | Stale counts, broken IDs, governance gaps | `/repo-audit` |

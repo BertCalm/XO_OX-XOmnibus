@@ -359,6 +359,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
+| [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — path to 9.0+ libraries (supersedes ad-hoc preset QA) |
 | [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills, then repair and link |
 
 Full index: `Skills/README.md`
