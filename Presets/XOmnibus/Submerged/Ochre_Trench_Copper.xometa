@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Trench Copper",
+  "mood": "Submerged",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Copper strings at crush depth. The metal has oxidized completely — every harmonic above 2kHz eaten by salt pressure. Body resonance is dominant; the instrument sounds more like the ocean floor than a piano. Thermal drift is maximal: pitch wavers like light through deep water.",
+  "tags": ["piano", "copper", "dark", "submerged", "deep", "pressure", "trench", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.8,
+    "movement": 0.2,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.55,
+      "ochre_hardness": 0.2,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.85,
+      "ochre_brightness": 1800.0,
+      "ochre_damping": 0.55,
+      "ochre_decay": 5.0,
+      "ochre_caramel": 0.5,
+      "ochre_sympathy": 0.65,
+      "ochre_hfCharacter": 0.05,
+      "ochre_thermalDrift": 0.45,
+      "ochre_filterEnvAmount": 0.2,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.04,
+      "ochre_lfo1Depth": 0.08,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.03,
+      "ochre_lfo2Depth": 0.18,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

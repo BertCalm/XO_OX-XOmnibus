@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Deep Chromatophore",
+  "mood": "Submerged",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Chromatophore cells at depth \u2014 color cells responding to pressure and sound, but slowly, as if the nervous system has been slowed by cold water. AutoPulse at 0.15 Hz creates slow color-shifts across a very dark spectrum.",
+  "tags": [
+    "submerged",
+    "chromatophore",
+    "deep",
+    "dark",
+    "visual",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.4,
+      "optic_inputGain": 0.55,
+      "optic_autoPulse": 0.15,
+      "optic_pulseRate": 0.15,
+      "optic_pulseShape": 0.4,
+      "optic_pulseSwing": 0.12,
+      "optic_pulseEvolve": 0.3,
+      "optic_pulseSubdiv": 2,
+      "optic_filterCutoff": 0.22,
+      "optic_filterReso": 0.35,
+      "optic_drive": 0.3,
+      "optic_outputLevel": 0.62,
+      "optic_couplingLevel": 0.06,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

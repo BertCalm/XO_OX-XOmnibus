@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Ensemble",
+  "mood": "Submerged",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The full Osteria ensemble at benthic depth \u2014 4000-6000m. All five voices are present but compressed by pressure into a single mass of dark harmonic energy. Ocean bleed at maximum. Memory at 0.95.",
+  "tags": [
+    "ensemble",
+    "benthic",
+    "submerged",
+    "dark",
+    "deep",
+    "pressure",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.7,
+    "movement": 0.08,
+    "density": 0.78,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.08,
+      "osteria_patina": 0.18,
+      "osteria_murmur": 0.55,
+      "osteria_oceanBleed": 0.95,
+      "osteria_blendMode": 1,
+      "osteria_bassLevel": 0.72,
+      "osteria_melLevel": 0.42,
+      "osteria_harmLevel": 0.42,
+      "osteria_rhythmLevel": 0.1,
+      "osteria_qBassShore": 0.9,
+      "osteria_qMelShore": 0.6,
+      "osteria_qHarmShore": 0.55,
+      "osteria_qRhythmShore": 0.2,
+      "osteria_qElastic": 0.45,
+      "osteria_qMemory": 0.95,
+      "osteria_qStretch": 0.85,
+      "osteria_qSympathy": 0.8,
+      "osteria_attack": 0.3,
+      "osteria_decay": 1.5,
+      "osteria_sustain": 0.68,
+      "osteria_release": 4.0,
+      "osteria_chorus": 0.02,
+      "osteria_hall": 0.65,
+      "osteria_ensWidth": 0.4,
+      "osteria_tape": 0.25,
+      "osteria_sessionDelay": 0.05,
+      "osteria_filterEnvDepth": 0.04,
+      "osteria_warmth": 0.7,
+      "osteria_smoke": 0.0,
+      "osteria_tavernMix": 0.08,
+      "osteria_tavernShore": 0.9,
+      "osteria_macroCharacter": 0.1,
+      "osteria_macroMovement": 0.08,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

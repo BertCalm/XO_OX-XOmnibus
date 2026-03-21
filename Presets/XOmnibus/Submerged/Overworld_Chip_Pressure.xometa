@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Chip Pressure",
+  "mood": "Submerged",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The 2D timbral crossfade of the ERA parameter as metaphor for pressure: ERA at 0.0 is the surface (clean), ERA at 1.0 is the deep (crushed vintage). This preset lives at 0.85 \u2014 deep, dark, barely recognizable as chip music.",
+  "tags": [
+    "chip",
+    "pressure",
+    "vintage",
+    "submerged",
+    "dark",
+    "abstract"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "COUPLE",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.5,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHAOS": 0.2,
+    "COUPLE": 0.04,
+    "ERA": 0.85,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.04,
+      "ow_macro_chaos": 0.2,
+      "ow_macro_couple": 0.04,
+      "ow_macro_era": 0.85,
+      "ow_macro_space": 0.6,
+      "ow_outputLevel": 0.76
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

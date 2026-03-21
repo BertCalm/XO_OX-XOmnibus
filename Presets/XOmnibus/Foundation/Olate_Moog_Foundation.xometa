@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 fat Moog-era bass. Round, heavy, authoritative.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.8,
+    "space": 0.15,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Moog Foundation",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.0,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2500.0,
+      "olate_resonance": 0.2,
+      "olate_drive": 0.35,
+      "olate_filterEnvAmount": 0.4,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.4,
+      "olate_vintage": 0.35,
+      "olate_warmth": 0.7,
+      "olate_terroir": 0.0,
+      "olate_ageRate": 0.4,
+      "olate_attack": 0.005,
+      "olate_decay": 0.5,
+      "olate_sustain": 0.75,
+      "olate_release": 0.3,
+      "olate_gravity": 0.6
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "moog",
+    "fat",
+    "classic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

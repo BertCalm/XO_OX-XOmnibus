@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "Pixel Kelp",
+  "mood": "Submerged",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "8-bit kelp forest: NES-era chip music in a submarine canyon. Chaos at 0.35 creates the organic pixel-flicker of bioluminescent creatures. ERA stays at 0.8 \u2014 vintage and dark. This is underwater game music.",
+  "tags": [
+    "chip",
+    "kelp",
+    "submerged",
+    "NES",
+    "organic",
+    "forest",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "COUPLE",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.52,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHAOS": 0.35,
+    "COUPLE": 0.08,
+    "ERA": 0.8,
+    "SPACE": 0.65
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.08,
+      "ow_macro_chaos": 0.35,
+      "ow_macro_couple": 0.08,
+      "ow_macro_era": 0.8,
+      "ow_macro_space": 0.65,
+      "ow_outputLevel": 0.77
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Algorithm Entangle",
+  "mood": "Entangled",
+  "engines": [
+    "Ouie"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ouie with both voices running algorithm 8 (complex FM) at different pitches: voice A root, voice B minor 9th (+13 semitones). Hammer at 0.5: perfectly balanced STRIFE-LOVE. The FM algorithms create an internally entangled spectral mass.",
+  "tags": [
+    "duophonic",
+    "FM",
+    "entangled",
+    "algorithm",
+    "complex",
+    "spectral"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.48,
+    "movement": 0.48,
+    "density": 0.72,
+    "space": 0.58,
+    "aggression": 0.38
+  },
+  "macros": {
+    "HAMMER": 0.45,
+    "AMPULLAE": 0.48,
+    "CARTILAGE": 0.0,
+    "CURRENT": 0.58
+  },
+  "parameters": {
+    "Ouie": {
+      "ouie_voiceAAlgo": 8,
+      "ouie_voiceBAlgo": 8,
+      "ouie_voiceAPitch": 0.0,
+      "ouie_voiceBPitch": 13.0,
+      "ouie_voiceALevel": 0.75,
+      "ouie_voiceBLevel": 0.7,
+      "ouie_filterACutoff": 6000.0,
+      "ouie_filterARes": 0.45,
+      "ouie_filterBCutoff": 7000.0,
+      "ouie_filterBRes": 0.4,
+      "ouie_ampAtk": 0.03,
+      "ouie_ampDec": 0.35,
+      "ouie_ampSus": 0.75,
+      "ouie_ampRel": 0.6,
+      "ouie_hammerPos": 0.5,
+      "ouie_hammerDepth": 0.75,
+      "ouie_voiceMode": 0,
+      "ouie_splitPoint": 60.0,
+      "ouie_velCutoffAmt": 0.58,
+      "ouie_portaTime": 0.0,
+      "ouie_portaAuto": 0,
+      "ouie_lfo1Rate": 5.0,
+      "ouie_lfo1Depth": 0.15,
+      "ouie_lfo1Target": 2,
+      "ouie_lfo2Rate": 3.0,
+      "ouie_lfo2Depth": 0.12,
+      "ouie_reverbMix": 0.28,
+      "ouie_macroHammer": 0.5,
+      "ouie_macroAmpullae": 0.0,
+      "ouie_macroCartilage": 0.0,
+      "ouie_macroCurrent": 0.38
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

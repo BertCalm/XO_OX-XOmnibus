@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Quick geometric pluck \u2014 crisp attack, precise harmonics, playful three-leaf character",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.7,
+    "density": 0.35,
+    "movement": 0.35,
+    "space": 0.25,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Clover Pluck",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.003,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.7,
+      "oxal_cutoff": 10000,
+      "oxal_decay": 0.15,
+      "oxal_filterEnvAmt": 0.55,
+      "oxal_growthMode": 0,
+      "oxal_growthTime": 10,
+      "oxal_phi": 0.4,
+      "oxal_release": 0.35,
+      "oxal_resonance": 0.3,
+      "oxal_spread": 0.5,
+      "oxal_sustain": 0.5,
+      "oxal_symmetry": 0.6,
+      "oxal_vibratoDepth": 0.1,
+      "oxal_vibratoRate": 6
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Pulse",
+  "mood": "Submerged",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "AutoPulse in the abyss: bioluminescent rhythmic flash at 0.08 Hz \u2014 barely visible, barely present. Reactivity low so only the strongest transients trigger visual output. FilterCutoff dark, drive compressed. The pulse is barely alive.",
+  "tags": [
+    "submerged",
+    "bioluminescent",
+    "pulse",
+    "dark",
+    "abyss",
+    "visual"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.25,
+      "optic_inputGain": 0.5,
+      "optic_autoPulse": 0.08,
+      "optic_pulseRate": 0.08,
+      "optic_pulseShape": 0.3,
+      "optic_pulseSwing": 0.1,
+      "optic_pulseEvolve": 0.2,
+      "optic_pulseSubdiv": 1,
+      "optic_filterCutoff": 0.2,
+      "optic_filterReso": 0.3,
+      "optic_drive": 0.25,
+      "optic_outputLevel": 0.6,
+      "optic_couplingLevel": 0.05,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 sustained low hum like the cellar itself breathing.",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.9,
+    "movement": 0.3,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Root Cellar Hum",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.0,
+      "ogre_drive": 0.1,
+      "ogre_rootDepth": 0.5,
+      "ogre_bodyResonance": 0.2,
+      "ogre_brightness": 800.0,
+      "ogre_density": 0.5,
+      "ogre_soil": 0.2,
+      "ogre_tectonicRate": 0.008,
+      "ogre_tectonicDepth": 8.0,
+      "ogre_attack": 0.5,
+      "ogre_decay": 2.0,
+      "ogre_sustain": 0.95,
+      "ogre_release": 2.0,
+      "ogre_filterEnvAmount": 0.1,
+      "ogre_glide": 0.2,
+      "ogre_gravity": 0.3,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "drone",
+    "sub",
+    "organic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

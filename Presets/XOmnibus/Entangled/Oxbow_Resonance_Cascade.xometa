@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Resonance Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oxbow resonance Q at 14.0 (near maximum) \u2014 tonal peaks cascade as different notes excite different resonant frequencies. With high entangle, each note feeds into the residual resonant mass from previous notes. Rich internal complexity.",
+  "tags": [
+    "reverb",
+    "entangled",
+    "resonance",
+    "cascade",
+    "tonal",
+    "complex"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.42,
+    "density": 0.75,
+    "space": 0.78,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.55,
+      "oxb_decay": 5.0,
+      "oxb_entangle": 0.82,
+      "oxb_erosionRate": 0.4,
+      "oxb_erosionDepth": 0.65,
+      "oxb_convergence": 9.0,
+      "oxb_resonanceQ": 14.0,
+      "oxb_resonanceMix": 0.6,
+      "oxb_cantilever": 0.65,
+      "oxb_damping": 5000.0,
+      "oxb_predelay": 8.0,
+      "oxb_dryWet": 0.5,
+      "oxb_exciterDecay": 0.035,
+      "oxb_exciterBright": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

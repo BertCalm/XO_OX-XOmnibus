@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Trench Membrane",
+  "mood": "Submerged",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A membrane drum at 8000m depth: pressure has reduced stiffness to near zero. The excite position is centered. Init shape 3 creates a complex initial deformation pattern. The result is a dark, bowed-metal texture.",
+  "tags": [
+    "membrane",
+    "physical",
+    "dark",
+    "trench",
+    "pressure",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.6,
+    "movement": 0.12,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_ampAttack": 0.8,
+      "obscura_ampDecay": 0.4,
+      "obscura_ampRelease": 4.0,
+      "obscura_ampSustain": 0.75,
+      "obscura_boundary": 2,
+      "obscura_damping": 0.65,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.6,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_level": 0.72,
+      "obscura_lfo1Depth": 0.08,
+      "obscura_lfo1Rate": 0.03,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Depth": 0.06,
+      "obscura_lfo2Rate": 0.025,
+      "obscura_lfo2Shape": 1,
+      "obscura_macroCharacter": 0.15,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroMovement": 0.12,
+      "obscura_macroSpace": 0.6,
+      "obscura_nonlinear": 0.4,
+      "obscura_physEnvAttack": 0.6,
+      "obscura_physEnvDecay": 0.6,
+      "obscura_physEnvRelease": 3.5,
+      "obscura_physEnvSustain": 0.7,
+      "obscura_scanWidth": 0.5,
+      "obscura_stiffness": 0.15,
+      "obscura_sustain": 0.75,
+      "obscura_voiceMode": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

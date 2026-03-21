@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Phase Memory",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opera with EmotionalMemory active \u2014 Blessing B037. Drama at 0.5, arc in Both mode. Each note recalls the phase state of the previous note within 500ms. The Kuramoto field 'wakes up knowing where it was' \u2014 continuity of consciousness.",
+  "tags": [
+    "vocal",
+    "memory",
+    "entangled",
+    "phase",
+    "continuity",
+    "evolving"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.62,
+    "movement": 0.4,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.22
+  },
+  "macros": {
+    "DRAMA": 0.38,
+    "VOICE": 0.4,
+    "CHORUS": 0.0,
+    "STAGE": 0.7
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.5,
+      "opera_voice": 0.5,
+      "opera_stage": 0.6,
+      "opera_vowelA": 3,
+      "opera_vowelB": 3,
+      "opera_breath": 0.32,
+      "opera_effort": 0.32,
+      "opera_partials": 24,
+      "opera_resSens": 0.52,
+      "opera_arcMode": 3,
+      "opera_arcShape": 1,
+      "opera_arcTime": 60.0,
+      "opera_arcPeak": 0.55,
+      "opera_fundamental": 0,
+      "opera_vibRate": 4.0,
+      "opera_vibDepth": 0.22,
+      "opera_tilt": -0.08,
+      "opera_filterCutoff": 5800.0,
+      "opera_filterRes": 0.07,
+      "opera_filterEnvAmt": 0.28,
+      "opera_filterA": 0.012,
+      "opera_filterD": 0.42,
+      "opera_filterS": 0.68,
+      "opera_filterR": 1.0,
+      "opera_ampA": 0.18,
+      "opera_ampD": 0.15,
+      "opera_ampS": 0.88,
+      "opera_ampR": 2.0,
+      "opera_lfo1Rate": 0.03,
+      "opera_lfo1Depth": 0.18,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 1.5,
+      "opera_lfo2Depth": 0.1,
+      "opera_lfo2Dest": 0,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.42,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.38,
+      "opera_velToFilter": 0.42,
+      "opera_velToEffort": 0.22,
+      "opera_detune": 0.1,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

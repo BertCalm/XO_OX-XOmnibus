@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Near-full phi \u2014 the nautilus logarithmic spiral in sound. Otherworldly strings.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.2,
+    "density": 0.55,
+    "movement": 0.15,
+    "space": 0.85,
+    "warmth": 0.55
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Ethereal",
+  "name": "Nautilus Shell",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.2,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.2,
+      "oxal_cutoff": 3000,
+      "oxal_decay": 0.6,
+      "oxal_filterEnvAmt": 0.1,
+      "oxal_growthMode": 0,
+      "oxal_growthTime": 10,
+      "oxal_phi": 0.9,
+      "oxal_release": 3.0,
+      "oxal_resonance": 0.12,
+      "oxal_spread": 0.9,
+      "oxal_sustain": 0.85,
+      "oxal_symmetry": 0.6,
+      "oxal_vibratoDepth": 0.08,
+      "oxal_vibratoRate": 2.5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,62 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 ultra-slow evolving sub with tectonic LFO.",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.88,
+    "movement": 0.65,
+    "density": 0.75,
+    "space": 0.4,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Continental Drift",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.1,
+      "ogre_drive": 0.15,
+      "ogre_rootDepth": 0.7,
+      "ogre_bodyResonance": 0.25,
+      "ogre_brightness": 1000.0,
+      "ogre_density": 0.6,
+      "ogre_soil": 0.1,
+      "ogre_tectonicRate": 0.005,
+      "ogre_tectonicDepth": 15.0,
+      "ogre_attack": 1.0,
+      "ogre_decay": 3.0,
+      "ogre_sustain": 0.9,
+      "ogre_release": 3.0,
+      "ogre_filterEnvAmount": 0.2,
+      "ogre_glide": 0.5,
+      "ogre_gravity": 0.7,
+      "ogre_lfo1Rate": 0.02,
+      "ogre_lfo1Depth": 0.3,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "evolving",
+    "sub",
+    "slow"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

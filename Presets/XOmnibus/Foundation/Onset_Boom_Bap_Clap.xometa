@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "name": "Boom Bap Clap",
+  "mood": "Foundation",
+  "engines": [
+    "Onset"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Layered handclap with tape warmth. Not a snare substitute. The human in the machine.",
+  "tags": [
+    "clap",
+    "handclap",
+    "layered",
+    "warm",
+    "boom-bap"
+  ],
+  "macroLabels": [
+    "MACHINE",
+    "PUNCH",
+    "SPACE",
+    "MUTATE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.10,
+    "density": 0.55,
+    "space": 0.12,
+    "aggression": 0.50
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macro_machine": 0.40,
+      "perc_macro_punch": 0.68,
+      "perc_macro_space": 0.12,
+      "perc_macro_mutate": 0.06,
+      "perc_drive": 0.46,
+      "perc_level": 0.82,
+      "perc_masterTone": 0.52,
+      "perc_char_grit": 0.35,
+      "perc_char_warmth": 0.65,
+      "perc_fx_reverb_size": 0.12,
+      "perc_fx_reverb_decay": 0.14,
+      "perc_fx_reverb_mix": 0.07,
+      "perc_fx_delay_time": 0.0,
+      "perc_fx_delay_feedback": 0.0,
+      "perc_fx_delay_mix": 0.03,
+      "perc_fx_lofi_bits": 12,
+      "perc_fx_lofi_mix": 0.14,
+      "perc_xvc_global_amount": 0.08,
+      "perc_xvc_kick_to_snare_filter": 0.12,
+      "perc_xvc_kick_to_tom_pitch": 0.05,
+      "perc_xvc_snare_to_hat_decay": 0.10,
+      "perc_xvc_snare_to_perc_blend": 0.10,
+      "perc_xvc_hat_choke": 0.05
+    }
+  },
+  "macros": {
+    "MACHINE": 0.40,
+    "PUNCH": 0.68,
+    "SPACE": 0.12,
+    "MUTATE": 0.06
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

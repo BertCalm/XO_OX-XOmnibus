@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Fado Abyssal",
+  "mood": "Submerged",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fado heard from underwater: melancholia amplified to its extreme. The murmur of conversation is the sound of bubbles rising. Bass level dominant. Memory and sympathy parameters maximized for long, resonant decay.",
+  "tags": [
+    "fado",
+    "ensemble",
+    "dark",
+    "submerged",
+    "melancholy",
+    "portuguese",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.75,
+    "movement": 0.12,
+    "density": 0.68,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.1,
+      "osteria_patina": 0.2,
+      "osteria_murmur": 0.45,
+      "osteria_oceanBleed": 0.85,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.7,
+      "osteria_melLevel": 0.5,
+      "osteria_harmLevel": 0.45,
+      "osteria_rhythmLevel": 0.2,
+      "osteria_qBassShore": 0.8,
+      "osteria_qMelShore": 0.5,
+      "osteria_qHarmShore": 0.45,
+      "osteria_qRhythmShore": 0.3,
+      "osteria_qElastic": 0.55,
+      "osteria_qMemory": 0.85,
+      "osteria_qStretch": 0.75,
+      "osteria_qSympathy": 0.7,
+      "osteria_attack": 0.2,
+      "osteria_decay": 1.0,
+      "osteria_sustain": 0.75,
+      "osteria_release": 3.0,
+      "osteria_chorus": 0.05,
+      "osteria_hall": 0.55,
+      "osteria_ensWidth": 0.5,
+      "osteria_tape": 0.18,
+      "osteria_sessionDelay": 0.1,
+      "osteria_filterEnvDepth": 0.06,
+      "osteria_warmth": 0.75,
+      "osteria_smoke": 0.0,
+      "osteria_tavernMix": 0.25,
+      "osteria_tavernShore": 0.72,
+      "osteria_macroCharacter": 0.15,
+      "osteria_macroMovement": 0.12,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

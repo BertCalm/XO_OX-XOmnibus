@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Kuramoto Lock",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opera at the moment of Kuramoto phase-locking: drama at 0.7, 32 partials converging. The OperaConductor arc in Rising mode creates mounting synchrony. As coherence approaches 1.0, the stereo field widens per Blessing B036.",
+  "tags": [
+    "vocal",
+    "kuramoto",
+    "entangled",
+    "synchrony",
+    "phase",
+    "complex"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.7,
+    "space": 0.72,
+    "aggression": 0.3
+  },
+  "macros": {
+    "DRAMA": 0.45,
+    "VOICE": 0.55,
+    "CHORUS": 0.0,
+    "STAGE": 0.72
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.7,
+      "opera_voice": 0.55,
+      "opera_stage": 0.7,
+      "opera_vowelA": 2,
+      "opera_vowelB": 5,
+      "opera_breath": 0.4,
+      "opera_effort": 0.45,
+      "opera_partials": 32,
+      "opera_resSens": 0.6,
+      "opera_arcMode": 1,
+      "opera_arcShape": 0,
+      "opera_arcTime": 45.0,
+      "opera_arcPeak": 0.7,
+      "opera_fundamental": 0,
+      "opera_vibRate": 5.0,
+      "opera_vibDepth": 0.3,
+      "opera_tilt": 0.0,
+      "opera_filterCutoff": 6500.0,
+      "opera_filterRes": 0.1,
+      "opera_filterEnvAmt": 0.35,
+      "opera_filterA": 0.02,
+      "opera_filterD": 0.5,
+      "opera_filterS": 0.7,
+      "opera_filterR": 1.0,
+      "opera_ampA": 0.15,
+      "opera_ampD": 0.2,
+      "opera_ampS": 0.85,
+      "opera_ampR": 2.0,
+      "opera_lfo1Rate": 0.04,
+      "opera_lfo1Depth": 0.25,
+      "opera_lfo1Dest": 1,
+      "opera_lfo2Rate": 2.0,
+      "opera_lfo2Depth": 0.15,
+      "opera_lfo2Dest": 2,
+      "opera_modWheelDest": 0,
+      "opera_modWheelAmt": 0.5,
+      "opera_atDest": 3,
+      "opera_atAmt": 0.45,
+      "opera_velToFilter": 0.5,
+      "opera_velToEffort": 0.3,
+      "opera_detune": 0.15,
+      "opera_portamento": 0.0,
+      "opera_unison": 2,
+      "opera_width": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

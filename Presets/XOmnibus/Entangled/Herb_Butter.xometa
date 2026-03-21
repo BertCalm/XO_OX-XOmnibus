@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Maximum companion planting \u2014 voices fully entangled, individually present, collectively one",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.5,
+    "density": 0.5,
+    "movement": 0.35,
+    "space": 0.45,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Herb Butter",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.12,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.5,
+      "osier_companion": 0.95,
+      "osier_cutoff": 5500,
+      "osier_decay": 0.4,
+      "osier_detune": 6,
+      "osier_filterEnvAmt": 0.35,
+      "osier_growthMode": 0,
+      "osier_growthTime": 20,
+      "osier_intimacy": 1.0,
+      "osier_release": 1.0,
+      "osier_resonance": 0.2,
+      "osier_sustain": 0.8,
+      "osier_vibratoDepth": 0.25,
+      "osier_vibratoRate": 5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

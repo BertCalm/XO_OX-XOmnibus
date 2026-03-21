@@ -1,0 +1,53 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Maximum wildness percussive pluck \u2014 thorns and runners everywhere, aggressive",
+  "dna": {
+    "aggression": 0.8,
+    "brightness": 0.75,
+    "density": 0.3,
+    "movement": 0.8,
+    "space": 0.2,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Kinetic",
+  "name": "Thorn Runner",
+  "parameters": {
+    "Overgrow": {
+      "grow_attack": 0.002,
+      "grow_bendRange": 4,
+      "grow_bowNoise": 0.1,
+      "grow_brightness": 0.75,
+      "grow_cutoff": 9000,
+      "grow_damping": 0.25,
+      "grow_decay": 0.15,
+      "grow_feedback": 0.992,
+      "grow_filterEnvAmt": 0.6,
+      "grow_growthMode": 0,
+      "grow_growthTime": 15,
+      "grow_release": 0.5,
+      "grow_resonance": 0.35,
+      "grow_sustain": 0.4,
+      "grow_vibratoDepth": 0.1,
+      "grow_vibratoRate": 7,
+      "grow_wildness": 0.9
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

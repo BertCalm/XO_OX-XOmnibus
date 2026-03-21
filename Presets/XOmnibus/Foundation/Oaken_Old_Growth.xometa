@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 century-old dark wood. Deep, resonant, wise.",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.9,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Old Growth",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.2,
+      "oaken_bodyDepth": 0.7,
+      "oaken_woodAge": 0.9,
+      "oaken_room": 0.4,
+      "oaken_brightness": 3000.0,
+      "oaken_damping": 0.2,
+      "oaken_curingRate": 0.5,
+      "oaken_filterEnvAmount": 0.2,
+      "oaken_attack": 0.01,
+      "oaken_decay": 1.5,
+      "oaken_sustain": 0.5,
+      "oaken_release": 0.8,
+      "oaken_gravity": 0.6
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "acoustic",
+    "dark",
+    "aged"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

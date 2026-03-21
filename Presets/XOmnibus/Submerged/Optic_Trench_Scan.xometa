@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Trench Scan",
+  "mood": "Submerged",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sonar sweep at trench depth. AutoPulse off; instead, input reactivity drives the scan. Very low filter, slow evolution. The scan appears like a ghost \u2014 you see it once every few seconds and wonder if you imagined it.",
+  "tags": [
+    "submerged",
+    "sonar",
+    "trench",
+    "dark",
+    "visual",
+    "scan"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.45,
+    "movement": 0.15,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.35,
+      "optic_inputGain": 0.6,
+      "optic_autoPulse": 0.0,
+      "optic_pulseRate": 0.05,
+      "optic_pulseShape": 0.2,
+      "optic_pulseSwing": 0.05,
+      "optic_pulseEvolve": 0.1,
+      "optic_pulseSubdiv": 1,
+      "optic_filterCutoff": 0.15,
+      "optic_filterReso": 0.25,
+      "optic_drive": 0.2,
+      "optic_outputLevel": 0.55,
+      "optic_couplingLevel": 0.04,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

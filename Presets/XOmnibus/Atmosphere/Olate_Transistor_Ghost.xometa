@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 early transistor grainy character, ghostly warmth.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.2
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Transistor Ghost",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.6,
+      "olate_pulseWidth": 0.45,
+      "olate_cutoff": 2200.0,
+      "olate_resonance": 0.2,
+      "olate_drive": 0.45,
+      "olate_filterEnvAmount": 0.4,
+      "olate_filterAttack": 0.005,
+      "olate_filterDecay": 0.5,
+      "olate_vintage": 0.1,
+      "olate_warmth": 0.4,
+      "olate_terroir": 0.5,
+      "olate_ageRate": 0.5,
+      "olate_attack": 0.01,
+      "olate_decay": 0.5,
+      "olate_sustain": 0.6,
+      "olate_release": 0.5,
+      "olate_gravity": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "vintage",
+    "grainy",
+    "ghost"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

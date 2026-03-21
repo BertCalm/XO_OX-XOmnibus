@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Massive, wide orchestral pad \u2014 a cathedral of old-growth trees",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.2,
+    "density": 0.9,
+    "movement": 0.15,
+    "space": 0.95,
+    "warmth": 0.85
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Cathedral Grove",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.4,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.2,
+      "orch_cutoff": 3500,
+      "orch_decay": 0.7,
+      "orch_detune": 18,
+      "orch_ensembleWidth": 1.0,
+      "orch_filterEnvAmt": 0.15,
+      "orch_formant": 0.65,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 4.0,
+      "orch_resonance": 0.12,
+      "orch_season": -1,
+      "orch_sustain": 0.9,
+      "orch_vibratoDepth": 0.1,
+      "orch_vibratoRate": 3,
+      "orch_warmth": 0.85
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

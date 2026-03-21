@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Sunken Pipes",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Oto sho organ underwater \u2014 pipes filled with seawater instead of air. Organ type 0 (lowest register), cluster high for reed instability, buzz dominant. Filter almost closed. The water makes the reeds buzz at low frequency.",
+  "tags": [
+    "organ",
+    "underwater",
+    "dark",
+    "submerged",
+    "pipes",
+    "bass",
+    "reed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.2,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.25
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.8,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.7,
+      "oto_buzz": 0.9,
+      "oto_pressure": 0.75,
+      "oto_crosstalk": 0.4,
+      "oto_filterCutoff": 2000.0,
+      "oto_filterRes": 0.4,
+      "oto_attack": 0.1,
+      "oto_decay": 0.5,
+      "oto_sustain": 0.75,
+      "oto_release": 1.5,
+      "oto_lfo1Rate": 0.04,
+      "oto_lfo1Depth": 0.15,
+      "oto_competition": 0.2
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Full phi, maximum spread \u2014 the mathematical cathedral. Inhuman, beautiful, too orderly.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.3,
+    "density": 0.7,
+    "movement": 0.1,
+    "space": 0.95,
+    "warmth": 0.45
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Golden Cathedral",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.15,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.3,
+      "oxal_cutoff": 4500,
+      "oxal_decay": 0.7,
+      "oxal_filterEnvAmt": 0.1,
+      "oxal_growthMode": 0,
+      "oxal_growthTime": 10,
+      "oxal_phi": 1.0,
+      "oxal_release": 4.0,
+      "oxal_resonance": 0.1,
+      "oxal_spread": 1.0,
+      "oxal_sustain": 0.9,
+      "oxal_symmetry": 0.9,
+      "oxal_vibratoDepth": 0.05,
+      "oxal_vibratoRate": 2
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

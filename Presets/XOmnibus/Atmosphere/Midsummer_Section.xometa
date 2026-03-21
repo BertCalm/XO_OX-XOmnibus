@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Full summer orchestra \u2014 deep warmth, wide ensemble, lush sustained pads",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.3,
+    "density": 0.8,
+    "movement": 0.4,
+    "space": 0.7,
+    "warmth": 0.9
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Midsummer Section",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.3,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.3,
+      "orch_cutoff": 4000,
+      "orch_decay": 0.8,
+      "orch_detune": 12,
+      "orch_ensembleWidth": 0.9,
+      "orch_filterEnvAmt": 0.2,
+      "orch_formant": 0.7,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 2.0,
+      "orch_resonance": 0.15,
+      "orch_season": 1,
+      "orch_sustain": 0.85,
+      "orch_vibratoDepth": 0.3,
+      "orch_vibratoRate": 4.5,
+      "orch_warmth": 0.8
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 sandy soil character, medium brightness sub.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.7,
+    "space": 0.3,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Sandy Bottom",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.2,
+      "ogre_drive": 0.25,
+      "ogre_rootDepth": 0.5,
+      "ogre_bodyResonance": 0.35,
+      "ogre_brightness": 2200.0,
+      "ogre_density": 0.5,
+      "ogre_soil": 0.5,
+      "ogre_tectonicRate": 0.015,
+      "ogre_tectonicDepth": 3.0,
+      "ogre_attack": 0.01,
+      "ogre_decay": 0.4,
+      "ogre_sustain": 0.7,
+      "ogre_release": 0.35,
+      "ogre_filterEnvAmount": 0.4,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "bass",
+    "sandy",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

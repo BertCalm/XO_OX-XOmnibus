@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Dark Accordion",
+  "mood": "Submerged",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The wavefolder as a deep-sea accordion \u2014 an instrument that shouldn't exist below 200m but somehow does. Fold operation 0: clean symmetrical folds. The 'accordion' bellows at 0.08 Hz. Notes sustain long with slow attack.",
+  "tags": [
+    "fold",
+    "accordion",
+    "submerged",
+    "dark",
+    "sustain",
+    "slow"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.18
+  },
+  "macros": {
+    "FOLD": 0.25,
+    "MOTION": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.35,
+      "origami_foldDepth": 0.82,
+      "origami_foldCount": 5,
+      "origami_operation": 0,
+      "origami_freeze": 0.0,
+      "origami_foldEnvAttack": 0.5,
+      "origami_foldEnvDecay": 2.0,
+      "origami_foldEnvSustain": 0.6,
+      "origami_foldEnvRelease": 3.0,
+      "origami_ampAttack": 0.4,
+      "origami_ampDecay": 1.2,
+      "origami_ampSustain": 0.72,
+      "origami_ampRelease": 3.0,
+      "origami_level": 0.78,
+      "origami_glide": 0.0,
+      "origami_lfo1Rate": 0.08,
+      "origami_lfo1Depth": 0.2,
+      "origami_lfo1Shape": 1,
+      "origami_lfo2Rate": 0.06,
+      "origami_lfo2Depth": 0.14,
+      "origami_lfo2Shape": 0,
+      "origami_macroFold": 0.35,
+      "origami_macroMotion": 0.28,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

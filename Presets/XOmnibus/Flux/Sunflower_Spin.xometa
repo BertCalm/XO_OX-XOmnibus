@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Asymmetric synth strings \u2014 low symmetry adds organic waveshaping to math",
+  "dna": {
+    "aggression": 0.2,
+    "brightness": 0.55,
+    "density": 0.45,
+    "movement": 0.5,
+    "space": 0.35,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Sunflower Spin",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.01,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.55,
+      "oxal_cutoff": 7000,
+      "oxal_decay": 0.25,
+      "oxal_filterEnvAmt": 0.4,
+      "oxal_growthMode": 0,
+      "oxal_growthTime": 10,
+      "oxal_phi": 0.6,
+      "oxal_release": 0.5,
+      "oxal_resonance": 0.2,
+      "oxal_spread": 0.4,
+      "oxal_sustain": 0.75,
+      "oxal_symmetry": 0.3,
+      "oxal_vibratoDepth": 0.2,
+      "oxal_vibratoRate": 5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

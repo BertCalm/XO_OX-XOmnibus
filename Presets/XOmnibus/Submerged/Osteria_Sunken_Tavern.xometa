@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Sunken Tavern",
+  "mood": "Submerged",
+  "engines": [
+    "Osteria"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A Portuguese taverna at the bottom of the Tagus estuary. Porto wine mixed with estuarine silt. Ocean bleed at 0.9 \u2014 the shore mix is almost entirely water. Memory stretch is long. Smoke gone; salt replaces it.",
+  "tags": [
+    "ensemble",
+    "tavern",
+    "submerged",
+    "dark",
+    "warm",
+    "portuguese",
+    "silt"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Osteria": {
+      "osteria_porto": 0.15,
+      "osteria_patina": 0.25,
+      "osteria_murmur": 0.35,
+      "osteria_oceanBleed": 0.9,
+      "osteria_blendMode": 0,
+      "osteria_bassLevel": 0.6,
+      "osteria_melLevel": 0.45,
+      "osteria_harmLevel": 0.5,
+      "osteria_rhythmLevel": 0.3,
+      "osteria_qBassShore": 0.75,
+      "osteria_qMelShore": 0.45,
+      "osteria_qHarmShore": 0.55,
+      "osteria_qRhythmShore": 0.4,
+      "osteria_qElastic": 0.6,
+      "osteria_qMemory": 0.75,
+      "osteria_qStretch": 0.65,
+      "osteria_qSympathy": 0.65,
+      "osteria_attack": 0.15,
+      "osteria_decay": 0.8,
+      "osteria_sustain": 0.72,
+      "osteria_release": 2.5,
+      "osteria_chorus": 0.08,
+      "osteria_hall": 0.5,
+      "osteria_ensWidth": 0.55,
+      "osteria_tape": 0.12,
+      "osteria_sessionDelay": 0.15,
+      "osteria_filterEnvDepth": 0.08,
+      "osteria_warmth": 0.72,
+      "osteria_smoke": 0.02,
+      "osteria_tavernMix": 0.35,
+      "osteria_tavernShore": 0.65,
+      "osteria_macroCharacter": 0.18,
+      "osteria_macroMovement": 0.15,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.6
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

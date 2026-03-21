@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Waltz",
+  "mood": "Submerged",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A Viennese waltz at hadal depth. The 3/4 elegance is still present but smeared through 11km of water — notes arrive late, overlap each other, the left hand has no definition. Caramel pedaling sustains everything into a dark mush of aristocratic decay.",
+  "tags": ["piano", "waltz", "hadal", "dark", "submerged", "sustain", "pedal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.7,
+    "movement": 0.25,
+    "density": 0.75,
+    "space": 0.7,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.6,
+      "ochre_hardness": 0.18,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.88,
+      "ochre_brightness": 1600.0,
+      "ochre_damping": 0.5,
+      "ochre_decay": 8.0,
+      "ochre_caramel": 0.75,
+      "ochre_sympathy": 0.72,
+      "ochre_hfCharacter": 0.04,
+      "ochre_thermalDrift": 0.38,
+      "ochre_filterEnvAmount": 0.12,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.03,
+      "ochre_lfo1Depth": 0.05,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.025,
+      "ochre_lfo2Depth": 0.15,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

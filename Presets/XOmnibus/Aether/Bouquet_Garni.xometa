@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Herbs tied together \u2014 high companion planting, individually present, collectively transformed",
+  "dna": {
+    "aggression": 0.05,
+    "brightness": 0.4,
+    "density": 0.55,
+    "movement": 0.3,
+    "space": 0.7,
+    "warmth": 0.65
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Bouquet Garni",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.25,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.4,
+      "osier_companion": 0.8,
+      "osier_cutoff": 4500,
+      "osier_decay": 0.6,
+      "osier_detune": 7,
+      "osier_filterEnvAmt": 0.25,
+      "osier_growthMode": 0,
+      "osier_growthTime": 20,
+      "osier_intimacy": 0.75,
+      "osier_release": 2.5,
+      "osier_resonance": 0.2,
+      "osier_sustain": 0.85,
+      "osier_vibratoDepth": 0.25,
+      "osier_vibratoRate": 4
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

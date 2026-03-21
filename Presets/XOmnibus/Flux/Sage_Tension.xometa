@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Tense quartet \u2014 wide vibrato, voices drifting apart then correcting",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.55,
+    "density": 0.4,
+    "movement": 0.6,
+    "space": 0.35,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Sage Tension",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.08,
+      "osier_bendRange": 3,
+      "osier_brightness": 0.55,
+      "osier_companion": 0.3,
+      "osier_cutoff": 6000,
+      "osier_decay": 0.35,
+      "osier_detune": 10,
+      "osier_filterEnvAmt": 0.4,
+      "osier_growthMode": 0,
+      "osier_growthTime": 20,
+      "osier_intimacy": 0.4,
+      "osier_release": 0.6,
+      "osier_resonance": 0.3,
+      "osier_sustain": 0.7,
+      "osier_vibratoDepth": 0.4,
+      "osier_vibratoRate": 5.5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

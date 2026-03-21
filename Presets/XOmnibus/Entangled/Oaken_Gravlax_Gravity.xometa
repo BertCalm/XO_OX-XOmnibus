@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 salt-cured bass with maximum gravitational pull.",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.8,
+    "movement": 0.22,
+    "density": 0.62,
+    "space": 0.35,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Entangled",
+  "name": "Gravlax Gravity",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.4,
+      "oaken_bodyDepth": 0.5,
+      "oaken_woodAge": 0.5,
+      "oaken_room": 0.3,
+      "oaken_brightness": 4000.0,
+      "oaken_damping": 0.25,
+      "oaken_curingRate": 0.4,
+      "oaken_filterEnvAmount": 0.3,
+      "oaken_attack": 0.005,
+      "oaken_decay": 0.8,
+      "oaken_sustain": 0.5,
+      "oaken_release": 0.5,
+      "oaken_gravity": 1.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "entangled",
+    "coupling",
+    "gravity",
+    "cured"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

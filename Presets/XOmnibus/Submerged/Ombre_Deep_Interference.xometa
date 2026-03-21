@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Deep Interference",
+  "mood": "Submerged",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ombre interference patterns at maximum depth: two wave-memories colliding and canceling in a dark water column. Interference at 0.8. Filter resonance high to amplify the cancellation nodes. Sub level dominant.",
+  "tags": [
+    "pad",
+    "interference",
+    "dark",
+    "submerged",
+    "resonance",
+    "wave",
+    "collision"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.45,
+      "ombre_interference": 0.8,
+      "ombre_memoryDecay": 5.0,
+      "ombre_memoryGrain": 80.0,
+      "ombre_memoryDrift": 0.6,
+      "ombre_oscShape": 2,
+      "ombre_reactivity": 0.45,
+      "ombre_subLevel": 0.45,
+      "ombre_filterCutoff": 3000.0,
+      "ombre_filterReso": 0.85,
+      "ombre_attack": 0.5,
+      "ombre_decay": 1.2,
+      "ombre_sustain": 0.68,
+      "ombre_release": 3.0,
+      "ombre_level": 0.7,
+      "ombre_velCutoffScale": 0.4,
+      "ombre_lfo1Rate": 0.06,
+      "ombre_lfo1Depth": 0.25,
+      "ombre_lfo2Rate": 0.05,
+      "ombre_lfo2Depth": 0.3,
+      "ombre_macroCharacter": 0.22,
+      "ombre_macroMovement": 0.25,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

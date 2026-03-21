@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Reed",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oto sho at abyssal depth. The instrument has been compressed completely \u2014 chiff is gone, only buzz and cluster remain. Organ 2 (mid register) for maximum reed density. Very dark filter at 1800Hz.",
+  "tags": [
+    "organ",
+    "abyss",
+    "dark",
+    "submerged",
+    "compressed",
+    "reed",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.45,
+    "aggression": 0.22
+  },
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.85,
+      "oto_chiff": 0.0,
+      "oto_detune": 0.65,
+      "oto_buzz": 0.95,
+      "oto_pressure": 0.85,
+      "oto_crosstalk": 0.6,
+      "oto_filterCutoff": 1800.0,
+      "oto_filterRes": 0.45,
+      "oto_attack": 0.12,
+      "oto_decay": 0.6,
+      "oto_sustain": 0.7,
+      "oto_release": 2.0,
+      "oto_lfo1Rate": 0.03,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.12
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

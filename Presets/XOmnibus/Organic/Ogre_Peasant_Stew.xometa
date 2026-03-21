@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 hearty, warm, unglamorous bass. Deeply satisfying.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.82,
+    "movement": 0.2,
+    "density": 0.78,
+    "space": 0.25,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Peasant Stew",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.35,
+      "ogre_drive": 0.35,
+      "ogre_rootDepth": 0.55,
+      "ogre_bodyResonance": 0.4,
+      "ogre_brightness": 2000.0,
+      "ogre_density": 0.65,
+      "ogre_soil": 0.3,
+      "ogre_tectonicRate": 0.02,
+      "ogre_tectonicDepth": 4.0,
+      "ogre_attack": 0.008,
+      "ogre_decay": 0.5,
+      "ogre_sustain": 0.75,
+      "ogre_release": 0.4,
+      "ogre_filterEnvAmount": 0.4,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "organic",
+    "bass",
+    "warm",
+    "hearty"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

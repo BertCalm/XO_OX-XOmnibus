@@ -1,0 +1,60 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 massive saturated sub with rocky character.",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.95,
+    "space": 0.15,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Granite Slab",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.3,
+      "ogre_drive": 0.7,
+      "ogre_rootDepth": 0.9,
+      "ogre_bodyResonance": 0.5,
+      "ogre_brightness": 2500.0,
+      "ogre_density": 0.9,
+      "ogre_soil": 0.8,
+      "ogre_tectonicRate": 0.005,
+      "ogre_tectonicDepth": 1.0,
+      "ogre_attack": 0.001,
+      "ogre_decay": 0.6,
+      "ogre_sustain": 0.9,
+      "ogre_release": 0.2,
+      "ogre_filterEnvAmount": 0.3,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.8,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "sub",
+    "saturated",
+    "heavy"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

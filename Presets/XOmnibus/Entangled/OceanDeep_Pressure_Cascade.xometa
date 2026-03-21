@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Cascade",
+  "mood": "Entangled",
+  "engines": [
+    "OceanDeep"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Pressure and darkness both at maximum \u2014 the Darkness Filter Ceiling (Blessing B031) doing its work, 50-800Hz only. Rumble and creature synthesis creating a dense mass of low-frequency entangled modulation.",
+  "tags": [
+    "deep",
+    "pressure",
+    "entangled",
+    "dark",
+    "rumble",
+    "dense",
+    "cascade"
+  ],
+  "macroLabels": [
+    "PRESSURE",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.8,
+    "space": 0.6,
+    "aggression": 0.4
+  },
+  "macros": {
+    "PRESSURE": 0.1,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "OceanDeep": {
+      "deep_subShape": 3,
+      "deep_subOctave": -2,
+      "deep_harmonicLevel": 0.6,
+      "deep_pressure": 0.95,
+      "deep_bodyType": 2,
+      "deep_bodySize": 0.9,
+      "deep_bodyDamp": 0.6,
+      "deep_flashRate": 0.6,
+      "deep_flashBright": 0.9,
+      "deep_creatureSpeed": 0.75,
+      "deep_creatureDepth": 0.8,
+      "deep_darkness": 0.95,
+      "deep_filterReso": 0.7,
+      "deep_reverbMix": 0.55,
+      "deep_reverbSize": 0.85,
+      "deep_delayMix": 0.2,
+      "deep_rumble": 0.9,
+      "deep_attack": 0.01,
+      "deep_decay": 1.5,
+      "deep_sustain": 0.75,
+      "deep_release": 4.0,
+      "deep_velCutoffAmt": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

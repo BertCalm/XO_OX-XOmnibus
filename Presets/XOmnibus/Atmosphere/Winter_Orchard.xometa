@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Sparse winter strings \u2014 cold, interior, dormant. The bare branches.",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.1,
+    "density": 0.3,
+    "movement": 0.15,
+    "space": 0.8,
+    "warmth": 0.3
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Winter Orchard",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.5,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.1,
+      "orch_cutoff": 2500,
+      "orch_decay": 1.0,
+      "orch_detune": 4,
+      "orch_ensembleWidth": 0.3,
+      "orch_filterEnvAmt": 0.1,
+      "orch_formant": 0.2,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 3.0,
+      "orch_resonance": 0.1,
+      "orch_season": 3,
+      "orch_sustain": 0.6,
+      "orch_vibratoDepth": 0.1,
+      "orch_vibratoRate": 3,
+      "orch_warmth": 0.3
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

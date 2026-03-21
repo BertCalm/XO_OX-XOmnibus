@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Trench Fold",
+  "mood": "Submerged",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Wavefolder at crush depth: fold point lowered to 0.25 to produce crushed, dense harmonics before the filter eats them. Very slow attack \u2014 the fold geometry unfolds like a sea creature uncoiling. Freeze at 0.1 adds spectral smear.",
+  "tags": [
+    "fold",
+    "dark",
+    "submerged",
+    "trench",
+    "dense",
+    "slow"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.35
+  },
+  "macros": {
+    "FOLD": 0.22,
+    "MOTION": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.25,
+      "origami_foldDepth": 0.9,
+      "origami_foldCount": 8,
+      "origami_operation": 2,
+      "origami_freeze": 0.1,
+      "origami_foldEnvAttack": 0.8,
+      "origami_foldEnvDecay": 2.0,
+      "origami_foldEnvSustain": 0.6,
+      "origami_foldEnvRelease": 3.0,
+      "origami_ampAttack": 0.6,
+      "origami_ampDecay": 1.5,
+      "origami_ampSustain": 0.7,
+      "origami_ampRelease": 3.5,
+      "origami_level": 0.78,
+      "origami_glide": 0.0,
+      "origami_lfo1Rate": 0.04,
+      "origami_lfo1Depth": 0.18,
+      "origami_lfo1Shape": 0,
+      "origami_lfo2Rate": 0.03,
+      "origami_lfo2Depth": 0.12,
+      "origami_lfo2Shape": 1,
+      "origami_macroFold": 0.25,
+      "origami_macroMotion": 0.2,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

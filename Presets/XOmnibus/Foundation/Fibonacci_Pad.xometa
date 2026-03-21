@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Init synth strings \u2014 golden ratio harmonic spacing, geometric precision",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.3,
+    "space": 0.4,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Fibonacci Pad",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.01,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.6,
+      "oxal_cutoff": 8000,
+      "oxal_decay": 0.3,
+      "oxal_filterEnvAmt": 0.3,
+      "oxal_growthMode": 0,
+      "oxal_growthTime": 10,
+      "oxal_phi": 0.5,
+      "oxal_release": 0.6,
+      "oxal_resonance": 0.15,
+      "oxal_spread": 0.5,
+      "oxal_sustain": 0.85,
+      "oxal_symmetry": 0.5,
+      "oxal_vibratoDepth": 0.15,
+      "oxal_vibratoRate": 4.5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Growth Mode \u2014 companion plants germinate together, voices enter sequentially",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.4,
+    "density": 0.4,
+    "movement": 0.25,
+    "space": 0.65,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Companion Garden",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.15,
+      "osier_bendRange": 2,
+      "osier_brightness": 0.4,
+      "osier_companion": 0.9,
+      "osier_cutoff": 4000,
+      "osier_decay": 0.5,
+      "osier_detune": 6,
+      "osier_filterEnvAmt": 0.2,
+      "osier_growthMode": 1,
+      "osier_growthTime": 30,
+      "osier_intimacy": 0.9,
+      "osier_release": 2.0,
+      "osier_resonance": 0.15,
+      "osier_sustain": 0.85,
+      "osier_vibratoDepth": 0.2,
+      "osier_vibratoRate": 4
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

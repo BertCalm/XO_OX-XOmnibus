@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Visualizer",
+  "mood": "Submerged",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The visual engine as pressure sensor: high reactivity reads the weight of the water column as amplitude. FilterCutoff very low \u2014 only the deepest bass energies trigger the visual. Subdivision 4 creates a dense grid that compresses under weight.",
+  "tags": [
+    "submerged",
+    "pressure",
+    "visual",
+    "reactive",
+    "dark",
+    "bass",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.55,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.72,
+      "optic_inputGain": 0.65,
+      "optic_autoPulse": 0.05,
+      "optic_pulseRate": 0.2,
+      "optic_pulseShape": 0.5,
+      "optic_pulseSwing": 0.2,
+      "optic_pulseEvolve": 0.4,
+      "optic_pulseSubdiv": 4,
+      "optic_filterCutoff": 0.18,
+      "optic_filterReso": 0.4,
+      "optic_drive": 0.35,
+      "optic_outputLevel": 0.65,
+      "optic_couplingLevel": 0.08,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,57 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 303-era acid bass with screaming resonance.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.15,
+    "aggression": 0.7
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Acid Cellar",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.8,
+      "olate_pulseWidth": 0.3,
+      "olate_cutoff": 2000.0,
+      "olate_resonance": 0.7,
+      "olate_drive": 0.5,
+      "olate_filterEnvAmount": 0.8,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.15,
+      "olate_vintage": 0.6,
+      "olate_warmth": 0.2,
+      "olate_terroir": 0.3,
+      "olate_ageRate": 0.1,
+      "olate_attack": 0.001,
+      "olate_decay": 0.2,
+      "olate_sustain": 0.0,
+      "olate_release": 0.1,
+      "olate_gravity": 0.3
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "flux",
+    "acid",
+    "analog",
+    "aggressive"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

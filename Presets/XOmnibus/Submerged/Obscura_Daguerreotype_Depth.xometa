@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Daguerreotype Depth",
+  "mood": "Submerged",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obscura's daguerreotype silver character immersed in development fluid \u2014 the chemical bath is actually brine. High damping, boundary condition 2. Scan width narrow to focus on the center frequency, avoiding the dark edges.",
+  "tags": [
+    "string",
+    "silver",
+    "chemical",
+    "submerged",
+    "dark",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.58,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_ampAttack": 0.6,
+      "obscura_ampDecay": 0.35,
+      "obscura_ampRelease": 3.0,
+      "obscura_ampSustain": 0.78,
+      "obscura_boundary": 2,
+      "obscura_damping": 0.58,
+      "obscura_excitePos": 0.28,
+      "obscura_exciteWidth": 0.38,
+      "obscura_glide": 0.02,
+      "obscura_initShape": 1,
+      "obscura_level": 0.74,
+      "obscura_lfo1Depth": 0.12,
+      "obscura_lfo1Rate": 0.05,
+      "obscura_lfo1Shape": 1,
+      "obscura_lfo2Depth": 0.09,
+      "obscura_lfo2Rate": 0.035,
+      "obscura_lfo2Shape": 0,
+      "obscura_macroCharacter": 0.18,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroMovement": 0.18,
+      "obscura_macroSpace": 0.5,
+      "obscura_nonlinear": 0.45,
+      "obscura_physEnvAttack": 0.5,
+      "obscura_physEnvDecay": 0.5,
+      "obscura_physEnvRelease": 2.8,
+      "obscura_physEnvSustain": 0.72,
+      "obscura_scanWidth": 0.45,
+      "obscura_stiffness": 0.28,
+      "obscura_sustain": 0.78,
+      "obscura_voiceMode": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

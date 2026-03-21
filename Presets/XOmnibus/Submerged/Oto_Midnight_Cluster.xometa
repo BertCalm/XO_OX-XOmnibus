@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Midnight Cluster",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oto cluster mode as deep-sea bioluminescent organisms \u2014 each reed a single light, pulsing in loose synchrony. Low filter, high buzz, competition creates predator-prey dynamics between the reed voices.",
+  "tags": [
+    "organ",
+    "cluster",
+    "dark",
+    "submerged",
+    "bioluminescent",
+    "tidal",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.62,
+    "movement": 0.32,
+    "density": 0.68,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.32,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.72,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.52,
+      "oto_buzz": 0.78,
+      "oto_pressure": 0.68,
+      "oto_crosstalk": 0.5,
+      "oto_filterCutoff": 2400.0,
+      "oto_filterRes": 0.32,
+      "oto_attack": 0.05,
+      "oto_decay": 0.38,
+      "oto_sustain": 0.7,
+      "oto_release": 1.4,
+      "oto_lfo1Rate": 0.07,
+      "oto_lfo1Depth": 0.2,
+      "oto_competition": 0.28
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

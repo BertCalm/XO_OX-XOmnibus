@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Oceanic Mode",
+  "mood": "Submerged",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obscura in mode 1 (polyphonic) \u2014 each new note adds a resonant string layer, building a dense cloud of physical string sound. High nonlinear for wave interactions. The 'oceanic' texture comes from accumulated voices.",
+  "tags": [
+    "string",
+    "physical",
+    "oceanic",
+    "submerged",
+    "dark",
+    "poly",
+    "dense"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.62,
+    "movement": 0.22,
+    "density": 0.8,
+    "space": 0.6,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_ampAttack": 0.4,
+      "obscura_ampDecay": 0.4,
+      "obscura_ampRelease": 3.5,
+      "obscura_ampSustain": 0.82,
+      "obscura_boundary": 1,
+      "obscura_damping": 0.48,
+      "obscura_excitePos": 0.35,
+      "obscura_exciteWidth": 0.55,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 2,
+      "obscura_level": 0.76,
+      "obscura_lfo1Depth": 0.15,
+      "obscura_lfo1Rate": 0.06,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Depth": 0.1,
+      "obscura_lfo2Rate": 0.045,
+      "obscura_lfo2Shape": 1,
+      "obscura_macroCharacter": 0.22,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroMovement": 0.22,
+      "obscura_macroSpace": 0.6,
+      "obscura_nonlinear": 0.62,
+      "obscura_physEnvAttack": 0.35,
+      "obscura_physEnvDecay": 0.45,
+      "obscura_physEnvRelease": 3.0,
+      "obscura_physEnvSustain": 0.78,
+      "obscura_scanWidth": 0.7,
+      "obscura_stiffness": 0.32,
+      "obscura_sustain": 0.82,
+      "obscura_voiceMode": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

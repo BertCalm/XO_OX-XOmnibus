@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "name": "Reed Feedback Loop",
+  "mood": "Entangled",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oto reeds creating an internal feedback loop via crosstalk. Crosstalk at 0.8 routes each reed into its neighbors \u2014 a self-sustaining oscillation that sounds like drone music. Competition set to 0.5 creates predator-prey reed oscillation.",
+  "tags": [
+    "organ",
+    "feedback",
+    "entangled",
+    "dark",
+    "drone",
+    "loop"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.62,
+    "movement": 0.45,
+    "density": 0.72,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.15,
+      "oto_detune": 0.45,
+      "oto_buzz": 0.7,
+      "oto_pressure": 0.65,
+      "oto_crosstalk": 0.8,
+      "oto_filterCutoff": 3500.0,
+      "oto_filterRes": 0.5,
+      "oto_attack": 0.05,
+      "oto_decay": 0.3,
+      "oto_sustain": 0.8,
+      "oto_release": 1.2,
+      "oto_lfo1Rate": 0.1,
+      "oto_lfo1Depth": 0.3,
+      "oto_competition": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

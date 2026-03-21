@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Brine Reed",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Reed organ corroded by salt water. Cluster at 0.7 creates organic reed interaction. Buzz dominant. High crosstalk as brine bridges the gap between pipes. Dark filter, long release, medium attack.",
+  "tags": [
+    "organ",
+    "reed",
+    "brine",
+    "submerged",
+    "corroded",
+    "dark",
+    "organic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.7,
+      "oto_chiff": 0.15,
+      "oto_detune": 0.6,
+      "oto_buzz": 0.85,
+      "oto_pressure": 0.65,
+      "oto_crosstalk": 0.55,
+      "oto_filterCutoff": 2500.0,
+      "oto_filterRes": 0.35,
+      "oto_attack": 0.06,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.72,
+      "oto_release": 1.8,
+      "oto_lfo1Rate": 0.05,
+      "oto_lfo1Depth": 0.12,
+      "oto_competition": 0.15
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

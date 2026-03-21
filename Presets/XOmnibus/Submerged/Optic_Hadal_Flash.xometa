@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Flash",
+  "mood": "Submerged",
+  "engines": [
+    "Optic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Single bioluminescent flash in the hadal zone. AutoPulse triggers once every ~30 seconds \u2014 so rare it shocks you. High evolve value means the visual pattern mutates significantly between each flash. Very dark between pulses.",
+  "tags": [
+    "submerged",
+    "flash",
+    "hadal",
+    "bioluminescent",
+    "rare",
+    "dark",
+    "visual"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.4,
+    "movement": 0.1,
+    "density": 0.35,
+    "space": 0.6,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Optic": {
+      "optic_reactivity": 0.15,
+      "optic_inputGain": 0.4,
+      "optic_autoPulse": 0.033,
+      "optic_pulseRate": 0.033,
+      "optic_pulseShape": 0.6,
+      "optic_pulseSwing": 0.05,
+      "optic_pulseEvolve": 0.85,
+      "optic_pulseSubdiv": 1,
+      "optic_filterCutoff": 0.12,
+      "optic_filterReso": 0.2,
+      "optic_drive": 0.18,
+      "optic_outputLevel": 0.5,
+      "optic_couplingLevel": 0.03,
+      "optic_couplingBus": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

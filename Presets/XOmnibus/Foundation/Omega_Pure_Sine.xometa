@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OMEGA \u2014 maximum purity. Pure mathematical sine bass.",
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.5,
+    "movement": 0.02,
+    "density": 0.4,
+    "space": 0.1,
+    "aggression": 0.02
+  },
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Pure Sine",
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 0,
+      "omega_ratio": 1.0,
+      "omega_modIndex": 0.5,
+      "omega_feedback": 0.0,
+      "omega_purity": 1.0,
+      "omega_distillRate": 0.8,
+      "omega_brightness": 2000.0,
+      "omega_filterEnvAmount": 0.2,
+      "omega_filterAttack": 0.001,
+      "omega_filterDecay": 0.2,
+      "omega_attack": 0.005,
+      "omega_decay": 0.3,
+      "omega_sustain": 0.8,
+      "omega_release": 0.2,
+      "omega_gravity": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "pure",
+    "sine",
+    "minimal"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

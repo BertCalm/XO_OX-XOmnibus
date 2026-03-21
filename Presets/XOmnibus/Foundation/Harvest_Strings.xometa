@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Init orchestral strings \u2014 warm detuned ensemble with seasonal evolution",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.5,
+    "density": 0.6,
+    "movement": 0.3,
+    "space": 0.5,
+    "warmth": 0.7
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Harvest Strings",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.15,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.5,
+      "orch_cutoff": 6000,
+      "orch_decay": 0.5,
+      "orch_detune": 7,
+      "orch_ensembleWidth": 0.7,
+      "orch_filterEnvAmt": 0.4,
+      "orch_formant": 0.5,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 1.0,
+      "orch_resonance": 0.2,
+      "orch_season": -1,
+      "orch_sustain": 0.8,
+      "orch_vibratoDepth": 0.2,
+      "orch_vibratoRate": 5,
+      "orch_warmth": 0.5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

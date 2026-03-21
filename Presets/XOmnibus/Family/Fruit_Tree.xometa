@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bright, playful orchestral strings \u2014 the fruit tree in full leaf",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.6,
+    "density": 0.5,
+    "movement": 0.4,
+    "space": 0.4,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Family",
+  "name": "Fruit Tree",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.1,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.6,
+      "orch_cutoff": 7500,
+      "orch_decay": 0.35,
+      "orch_detune": 8,
+      "orch_ensembleWidth": 0.6,
+      "orch_filterEnvAmt": 0.5,
+      "orch_formant": 0.45,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 0.6,
+      "orch_resonance": 0.18,
+      "orch_season": -1,
+      "orch_sustain": 0.8,
+      "orch_vibratoDepth": 0.2,
+      "orch_vibratoRate": 5,
+      "orch_warmth": 0.5
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

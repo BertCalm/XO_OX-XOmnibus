@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 new bright wood. Fresh, resonant, youthful.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.12,
+    "density": 0.45,
+    "space": 0.3,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Luminous",
+  "name": "Fresh Spruce",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.7,
+      "oaken_bodyDepth": 0.5,
+      "oaken_woodAge": 0.1,
+      "oaken_room": 0.3,
+      "oaken_brightness": 8000.0,
+      "oaken_damping": 0.4,
+      "oaken_curingRate": 0.1,
+      "oaken_filterEnvAmount": 0.4,
+      "oaken_attack": 0.003,
+      "oaken_decay": 0.6,
+      "oaken_sustain": 0.4,
+      "oaken_release": 0.3,
+      "oaken_gravity": 0.4
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "luminous",
+    "acoustic",
+    "bright",
+    "fresh"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

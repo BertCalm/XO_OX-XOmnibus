@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OMEGA \u2014 classic DX bass distilled to its purest form.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.4,
+    "movement": 0.1,
+    "density": 0.55,
+    "space": 0.15,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Omega"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "DX Essence",
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 2,
+      "omega_ratio": 3.0,
+      "omega_modIndex": 3.0,
+      "omega_feedback": 0.0,
+      "omega_purity": 0.9,
+      "omega_distillRate": 0.3,
+      "omega_brightness": 6000.0,
+      "omega_filterEnvAmount": 0.5,
+      "omega_filterAttack": 0.001,
+      "omega_filterDecay": 0.3,
+      "omega_attack": 0.001,
+      "omega_decay": 0.3,
+      "omega_sustain": 0.6,
+      "omega_release": 0.2,
+      "omega_gravity": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "foundation",
+    "fm",
+    "dx",
+    "classic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

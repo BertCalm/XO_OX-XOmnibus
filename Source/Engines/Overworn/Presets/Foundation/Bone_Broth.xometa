@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Bone Broth",
+  "mood": "Foundation",
+  "engines": [
+    "Overworn"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two-hour slow simmer. Deep fundamentals build gradually. Collagen-thick.",
+  "tags": [
+    "pad",
+    "slow",
+    "deep",
+    "fundamental",
+    "long"
+  ],
+  "macroLabels": [
+    "RICHNESS",
+    "REDUCTION",
+    "CONCENTRATE",
+    "DEPTH"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.9,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.2,
+      "worn_heat": 0.5,
+      "worn_richness": 1.0,
+      "worn_maillard": 0.3,
+      "worn_umamiDepth": 0.8,
+      "worn_concentrate": 0.5,
+      "worn_sessionTarget": 120.0,
+      "worn_sessionAge": 0.0,
+      "worn_stateReset": 0.0,
+      "worn_stereoWidth": 0.5,
+      "worn_filterCutoff": 3000.0,
+      "worn_filterRes": 0.15,
+      "worn_filtEnvAmount": 0.3,
+      "worn_ampAttack": 0.5,
+      "worn_ampDecay": 1.0,
+      "worn_ampSustain": 0.9,
+      "worn_ampRelease": 3.0,
+      "worn_filtAttack": 0.2,
+      "worn_filtDecay": 0.8,
+      "worn_filtSustain": 0.5,
+      "worn_filtRelease": 1.5,
+      "worn_lfo1Rate": 0.08,
+      "worn_lfo1Depth": 0.15,
+      "worn_lfo2Rate": 0.03,
+      "worn_lfo2Depth": 0.1,
+      "worn_level": 0.8,
+      "worn_macroCharacter": 0.0,
+      "worn_macroMovement": 0.0,
+      "worn_macroCoupling": 0.0,
+      "worn_macroSpace": 0.0,
+      "worn_warmth": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "starterFor": null
+}

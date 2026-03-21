@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Genesis Deep",
+  "mood": "Submerged",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sega Genesis FM at bathypelagic depth. ERA macro at 0.7 \u2014 Genesis territory. Chaos at 0.3 gives the FM operators slight detuning as if pressure has shifted their pitch. Space high for submarine echo.",
+  "tags": [
+    "chip",
+    "Genesis",
+    "FM",
+    "submerged",
+    "deep",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "COUPLE",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHAOS": 0.3,
+    "COUPLE": 0.06,
+    "ERA": 0.7,
+    "SPACE": 0.65
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.06,
+      "ow_macro_chaos": 0.3,
+      "ow_macro_couple": 0.06,
+      "ow_macro_era": 0.7,
+      "ow_macro_space": 0.65,
+      "ow_outputLevel": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

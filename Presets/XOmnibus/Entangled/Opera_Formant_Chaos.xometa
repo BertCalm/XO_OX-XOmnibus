@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Formant Chaos",
+  "mood": "Entangled",
+  "engines": [
+    "Opera"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Opera with drama at 0.9 \u2014 deep into chaotic territory. Vowel A and B are maximally distant (0 and 6). Formant transitions happen rapidly. With 48 partials and high coherence sensitivity, the vocal chaos is spectacular.",
+  "tags": [
+    "vocal",
+    "formant",
+    "entangled",
+    "chaos",
+    "drama",
+    "complex"
+  ],
+  "macroLabels": [
+    "DRAMA",
+    "VOICE",
+    "CHORUS",
+    "STAGE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.65,
+    "density": 0.68,
+    "space": 0.6,
+    "aggression": 0.5
+  },
+  "macros": {
+    "DRAMA": 0.55,
+    "VOICE": 0.65,
+    "CHORUS": 0.0,
+    "STAGE": 0.6
+  },
+  "parameters": {
+    "Opera": {
+      "opera_drama": 0.9,
+      "opera_voice": 0.65,
+      "opera_stage": 0.8,
+      "opera_vowelA": 0,
+      "opera_vowelB": 6,
+      "opera_breath": 0.5,
+      "opera_effort": 0.55,
+      "opera_partials": 48,
+      "opera_resSens": 0.7,
+      "opera_arcMode": 2,
+      "opera_arcShape": 2,
+      "opera_arcTime": 30.0,
+      "opera_arcPeak": 0.8,
+      "opera_fundamental": 0,
+      "opera_vibRate": 6.0,
+      "opera_vibDepth": 0.35,
+      "opera_tilt": 0.1,
+      "opera_filterCutoff": 7000.0,
+      "opera_filterRes": 0.15,
+      "opera_filterEnvAmt": 0.4,
+      "opera_filterA": 0.01,
+      "opera_filterD": 0.4,
+      "opera_filterS": 0.65,
+      "opera_filterR": 0.8,
+      "opera_ampA": 0.1,
+      "opera_ampD": 0.15,
+      "opera_ampS": 0.88,
+      "opera_ampR": 1.5,
+      "opera_lfo1Rate": 0.05,
+      "opera_lfo1Depth": 0.3,
+      "opera_lfo1Dest": 2,
+      "opera_lfo2Rate": 2.5,
+      "opera_lfo2Depth": 0.2,
+      "opera_lfo2Dest": 1,
+      "opera_modWheelDest": 1,
+      "opera_modWheelAmt": 0.55,
+      "opera_atDest": 0,
+      "opera_atAmt": 0.5,
+      "opera_velToFilter": 0.55,
+      "opera_velToEffort": 0.35,
+      "opera_detune": 0.2,
+      "opera_portamento": 0.0,
+      "opera_unison": 1,
+      "opera_width": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,55 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 bowed upright bass, sustained and singing.",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.3,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Arco Sustain",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.6,
+      "oaken_stringTension": 0.5,
+      "oaken_bodyDepth": 0.5,
+      "oaken_woodAge": 0.5,
+      "oaken_room": 0.5,
+      "oaken_brightness": 4000.0,
+      "oaken_damping": 0.2,
+      "oaken_curingRate": 0.2,
+      "oaken_filterEnvAmount": 0.2,
+      "oaken_attack": 0.1,
+      "oaken_decay": 1.5,
+      "oaken_sustain": 0.8,
+      "oaken_release": 0.8,
+      "oaken_gravity": 0.5
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "atmosphere",
+    "bowed",
+    "sustained",
+    "acoustic"
+  ],
+  "version": "1.0.0",
+  "tempo": null
+}

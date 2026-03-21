@@ -1,0 +1,52 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Growth Mode \u2014 partials emerge at golden angle intervals, geometric germination",
+  "dna": {
+    "aggression": 0.0,
+    "brightness": 0.35,
+    "density": 0.4,
+    "movement": 0.2,
+    "space": 0.65,
+    "warmth": 0.5
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Phyllotaxis Bloom",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.1,
+      "oxal_bendRange": 2,
+      "oxal_brightness": 0.35,
+      "oxal_cutoff": 4000,
+      "oxal_decay": 0.5,
+      "oxal_filterEnvAmt": 0.15,
+      "oxal_growthMode": 1,
+      "oxal_growthTime": 15,
+      "oxal_phi": 0.7,
+      "oxal_release": 2.0,
+      "oxal_resonance": 0.1,
+      "oxal_spread": 0.7,
+      "oxal_sustain": 0.9,
+      "oxal_symmetry": 0.5,
+      "oxal_vibratoDepth": 0.1,
+      "oxal_vibratoRate": 3
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

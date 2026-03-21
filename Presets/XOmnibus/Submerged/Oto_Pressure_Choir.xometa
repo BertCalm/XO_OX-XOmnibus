@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Choir",
+  "mood": "Submerged",
+  "engines": [
+    "Oto"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Multiple Oto reeds vibrating in unison under pressure. Cluster creates the choir effect \u2014 many voices slightly detuned, pressed together by water weight. Crosstalk high \u2014 every pipe affects every other.",
+  "tags": [
+    "organ",
+    "choir",
+    "pressure",
+    "submerged",
+    "dark",
+    "cluster",
+    "ensemble"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.68,
+    "movement": 0.28,
+    "density": 0.72,
+    "space": 0.6,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.75,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.55,
+      "oto_buzz": 0.8,
+      "oto_pressure": 0.7,
+      "oto_crosstalk": 0.65,
+      "oto_filterCutoff": 2200.0,
+      "oto_filterRes": 0.38,
+      "oto_attack": 0.08,
+      "oto_decay": 0.45,
+      "oto_sustain": 0.75,
+      "oto_release": 1.6,
+      "oto_lfo1Rate": 0.06,
+      "oto_lfo1Depth": 0.18,
+      "oto_competition": 0.18
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

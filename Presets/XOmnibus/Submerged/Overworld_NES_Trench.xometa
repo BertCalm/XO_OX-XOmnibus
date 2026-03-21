@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "NES Trench",
+  "mood": "Submerged",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "8-bit submarine: NES era but submerged. ERA macro at maximum vintage. The chip sound is muffled by depth, chaos is low \u2014 the CPU can't process pressure. SPACE high for cave reverb simulation.",
+  "tags": [
+    "chip",
+    "NES",
+    "submerged",
+    "vintage",
+    "dark",
+    "8-bit",
+    "trench"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "COUPLE",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.55,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.7,
+    "aggression": 0.25
+  },
+  "macros": {
+    "CHAOS": 0.15,
+    "COUPLE": 0.05,
+    "ERA": 0.95,
+    "SPACE": 0.7
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.05,
+      "ow_macro_chaos": 0.15,
+      "ow_macro_couple": 0.05,
+      "ow_macro_era": 0.95,
+      "ow_macro_space": 0.7,
+      "ow_outputLevel": 0.78
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Bright spring strings \u2014 new growth, sparkling, slightly uneven vibrato",
+  "dna": {
+    "aggression": 0.15,
+    "brightness": 0.7,
+    "density": 0.5,
+    "movement": 0.5,
+    "space": 0.4,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spring Awakening",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.08,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.7,
+      "orch_cutoff": 8000,
+      "orch_decay": 0.3,
+      "orch_detune": 9,
+      "orch_ensembleWidth": 0.6,
+      "orch_filterEnvAmt": 0.5,
+      "orch_formant": 0.4,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 0.8,
+      "orch_resonance": 0.25,
+      "orch_season": 0,
+      "orch_sustain": 0.7,
+      "orch_vibratoDepth": 0.25,
+      "orch_vibratoRate": 5.5,
+      "orch_warmth": 0.4
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

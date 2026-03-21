@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Abyssal Crease",
+  "mood": "Submerged",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A single crease at the ocean floor. Fold count maximized (10) but fold depth is gentle \u2014 the paper has been pressed flat by ten kilometers of water. The sound is dense and dark, harmonics crushed into a fundamental mass.",
+  "tags": [
+    "fold",
+    "abyss",
+    "submerged",
+    "dark",
+    "dense",
+    "pressure"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.7,
+    "movement": 0.12,
+    "density": 0.8,
+    "space": 0.5,
+    "aggression": 0.3
+  },
+  "macros": {
+    "FOLD": 0.15,
+    "MOTION": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.4,
+      "origami_foldDepth": 0.6,
+      "origami_foldCount": 10,
+      "origami_operation": 1,
+      "origami_freeze": 0.05,
+      "origami_foldEnvAttack": 1.2,
+      "origami_foldEnvDecay": 3.0,
+      "origami_foldEnvSustain": 0.5,
+      "origami_foldEnvRelease": 4.0,
+      "origami_ampAttack": 1.0,
+      "origami_ampDecay": 2.0,
+      "origami_ampSustain": 0.65,
+      "origami_ampRelease": 4.0,
+      "origami_level": 0.8,
+      "origami_glide": 0.0,
+      "origami_lfo1Rate": 0.03,
+      "origami_lfo1Depth": 0.1,
+      "origami_lfo1Shape": 0,
+      "origami_lfo2Rate": 0.025,
+      "origami_lfo2Depth": 0.08,
+      "origami_lfo2Shape": 0,
+      "origami_macroFold": 0.4,
+      "origami_macroMotion": 0.12,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

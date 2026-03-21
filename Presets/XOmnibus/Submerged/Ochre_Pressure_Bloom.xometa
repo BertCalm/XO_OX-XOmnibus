@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Bloom",
+  "mood": "Submerged",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Ochre piano under pressure: body resonance swells with each note like a deep-sea creature inhaling. LFO2 at 0.06 Hz modulates body depth in slow tidal cycles. Notes bloom three seconds after attack — the instrument breathes before it speaks.",
+  "tags": ["piano", "bloom", "pressure", "submerged", "slow", "dark", "tidal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.45,
+      "ochre_hardness": 0.22,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.8,
+      "ochre_brightness": 2000.0,
+      "ochre_damping": 0.45,
+      "ochre_decay": 6.0,
+      "ochre_caramel": 0.45,
+      "ochre_sympathy": 0.7,
+      "ochre_hfCharacter": 0.06,
+      "ochre_thermalDrift": 0.32,
+      "ochre_filterEnvAmount": 0.25,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.06,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.06,
+      "ochre_lfo2Depth": 0.2,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

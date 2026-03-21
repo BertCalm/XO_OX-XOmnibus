@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Perception",
+  "mood": "Submerged",
+  "engines": [
+    "Ombre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ombre's dual-narrative axis: memory vs. forgetting becomes pressure vs. vacuum. At depth, memory is compressed. Blend at 0.25 (slightly more memory than forgetting). Grain at 50ms \u2014 small bubbles of recollection.",
+  "tags": [
+    "pad",
+    "pressure",
+    "perception",
+    "dark",
+    "submerged",
+    "memory",
+    "compressed"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.62,
+    "movement": 0.18,
+    "density": 0.68,
+    "space": 0.58,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "parameters": {
+    "Ombre": {
+      "ombre_blend": 0.25,
+      "ombre_interference": 0.45,
+      "ombre_memoryDecay": 4.0,
+      "ombre_memoryGrain": 50.0,
+      "ombre_memoryDrift": 0.55,
+      "ombre_oscShape": 0,
+      "ombre_reactivity": 0.35,
+      "ombre_subLevel": 0.25,
+      "ombre_filterCutoff": 2800.0,
+      "ombre_filterReso": 0.7,
+      "ombre_attack": 0.6,
+      "ombre_decay": 1.0,
+      "ombre_sustain": 0.72,
+      "ombre_release": 3.5,
+      "ombre_level": 0.74,
+      "ombre_velCutoffScale": 0.35,
+      "ombre_lfo1Rate": 0.05,
+      "ombre_lfo1Depth": 0.2,
+      "ombre_lfo2Rate": 0.04,
+      "ombre_lfo2Depth": 0.22,
+      "ombre_macroCharacter": 0.2,
+      "ombre_macroMovement": 0.18,
+      "ombre_macroCoupling": 0.0,
+      "ombre_macroSpace": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

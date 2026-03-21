@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "name": "Phase Erosion Loop",
+  "mood": "Entangled",
+  "engines": [
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oxbow phase erosion creating a slow spectral loop \u2014 erosion rate at 0.5 creates predictable phase drift cycles. Cantilever parameter high for resonant build-up. The golden resonance convergence creating beatings as overtones approach harmonic ratios.",
+  "tags": [
+    "reverb",
+    "entangled",
+    "phase",
+    "erosion",
+    "loop",
+    "golden"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.58,
+    "movement": 0.48,
+    "density": 0.68,
+    "space": 0.8,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "parameters": {
+    "Oxbow": {
+      "oxb_size": 0.65,
+      "oxb_decay": 6.0,
+      "oxb_entangle": 0.75,
+      "oxb_erosionRate": 0.5,
+      "oxb_erosionDepth": 0.75,
+      "oxb_convergence": 10.0,
+      "oxb_resonanceQ": 8.0,
+      "oxb_resonanceMix": 0.45,
+      "oxb_cantilever": 0.8,
+      "oxb_damping": 4000.0,
+      "oxb_predelay": 10.0,
+      "oxb_dryWet": 0.55,
+      "oxb_exciterDecay": 0.04,
+      "oxb_exciterBright": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "name": "SNES Abyss",
+  "mood": "Submerged",
+  "engines": [
+    "Overworld"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Super Nintendo sound engine at 4000m. SNES era is slightly warmer than NES \u2014 those 16-bit voices have more body. Chaos 0.1 keeps it stable, space 0.75 for the underwater cave ambiance.",
+  "tags": [
+    "chip",
+    "SNES",
+    "submerged",
+    "abyss",
+    "16-bit",
+    "warm",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "COUPLE",
+    "ERA",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.18,
+    "density": 0.5,
+    "space": 0.75,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHAOS": 0.1,
+    "COUPLE": 0.04,
+    "ERA": 0.5,
+    "SPACE": 0.75
+  },
+  "parameters": {
+    "Overworld": {
+      "ow_couplingBus": 0,
+      "ow_couplingLevel": 0.04,
+      "ow_macro_chaos": 0.1,
+      "ow_macro_couple": 0.04,
+      "ow_macro_era": 0.5,
+      "ow_macro_space": 0.75,
+      "ow_outputLevel": 0.8
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

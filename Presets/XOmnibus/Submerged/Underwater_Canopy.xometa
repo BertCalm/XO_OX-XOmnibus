@@ -1,0 +1,54 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Strings heard through water \u2014 muffled formants, slow vibrato, deep winter",
+  "dna": {
+    "aggression": 0.1,
+    "brightness": 0.1,
+    "density": 0.6,
+    "movement": 0.5,
+    "space": 0.9,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Underwater Canopy",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.6,
+      "orch_bendRange": 2,
+      "orch_brightness": 0.1,
+      "orch_cutoff": 2000,
+      "orch_decay": 0.8,
+      "orch_detune": 20,
+      "orch_ensembleWidth": 0.8,
+      "orch_filterEnvAmt": 0.1,
+      "orch_formant": 0.8,
+      "orch_growthMode": 0,
+      "orch_growthTime": 20,
+      "orch_release": 2.5,
+      "orch_resonance": 0.3,
+      "orch_season": 3,
+      "orch_sustain": 0.7,
+      "orch_vibratoDepth": 0.4,
+      "orch_vibratoRate": 2.5,
+      "orch_warmth": 0.4
+    }
+  },
+  "tags": [
+    "Garden",
+    "Strings"
+  ],
+  "version": "1.0"
+}

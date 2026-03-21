@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Cold Scan",
+  "mood": "Submerged",
+  "engines": [
+    "Obscura"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Obscura in cold scan mode: scan width maximized, excite position 0.1 (near edge, like a bow at the bridge). Very low temperature = high damping. The string vibrates slowly, the wave barely propagates before being absorbed by cold.",
+  "tags": [
+    "string",
+    "cold",
+    "scan",
+    "submerged",
+    "dark",
+    "physical"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.5,
+    "movement": 0.1,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_ampAttack": 1.0,
+      "obscura_ampDecay": 0.5,
+      "obscura_ampRelease": 4.5,
+      "obscura_ampSustain": 0.7,
+      "obscura_boundary": 0,
+      "obscura_damping": 0.72,
+      "obscura_excitePos": 0.1,
+      "obscura_exciteWidth": 0.3,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 0,
+      "obscura_level": 0.7,
+      "obscura_lfo1Depth": 0.06,
+      "obscura_lfo1Rate": 0.025,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Depth": 0.05,
+      "obscura_lfo2Rate": 0.02,
+      "obscura_lfo2Shape": 1,
+      "obscura_macroCharacter": 0.12,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroMovement": 0.1,
+      "obscura_macroSpace": 0.65,
+      "obscura_nonlinear": 0.35,
+      "obscura_physEnvAttack": 0.8,
+      "obscura_physEnvDecay": 0.7,
+      "obscura_physEnvRelease": 4.0,
+      "obscura_physEnvSustain": 0.65,
+      "obscura_scanWidth": 0.9,
+      "obscura_stiffness": 0.18,
+      "obscura_sustain": 0.7,
+      "obscura_voiceMode": 0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}

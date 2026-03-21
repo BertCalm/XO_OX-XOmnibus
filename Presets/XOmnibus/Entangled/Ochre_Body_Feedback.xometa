@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Body Feedback",
+  "mood": "Entangled",
+  "engines": [
+    "Ochre"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ochre body resonance feeding back into itself: body depth at 0.9, body type 2. Every note excites the body which excites the next note. High caramel for pedal sustain overlap. The instrument amplifies its own resonance in slow loops.",
+  "tags": [
+    "piano",
+    "body",
+    "entangled",
+    "feedback",
+    "resonance",
+    "sustain"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.72,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.7,
+      "ochre_hardness": 0.2,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.9,
+      "ochre_brightness": 3800.0,
+      "ochre_damping": 0.15,
+      "ochre_decay": 6.0,
+      "ochre_caramel": 0.8,
+      "ochre_sympathy": 0.75,
+      "ochre_hfCharacter": 0.12,
+      "ochre_thermalDrift": 0.35,
+      "ochre_filterEnvAmount": 0.28,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.06,
+      "ochre_lfo1Depth": 0.15,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.04,
+      "ochre_lfo2Depth": 0.2,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null
+}
