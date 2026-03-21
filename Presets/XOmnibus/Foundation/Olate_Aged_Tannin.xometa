@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OLATE — slow fermentation. Hold 20+ seconds. The tannin note dries at the start, deepens by release.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.82,
+    "movement": 0.15,
+    "density": 0.68,
+    "space": 0.28,
+    "aggression": 0.12
+  },
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Aged Tannin",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.05,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2200.0,
+      "olate_resonance": 0.25,
+      "olate_drive": 0.25,
+      "olate_filterEnvAmount": 0.4,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.35,
+      "olate_vintage": 0.35,
+      "olate_warmth": 0.75,
+      "olate_terroir": 0.15,
+      "olate_ageRate": 0.2,
+      "olate_attack": 0.008,
+      "olate_decay": 0.5,
+      "olate_sustain": 0.75,
+      "olate_release": 0.45,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["olate", "analog", "bass", "foundation", "slow", "fermentation", "warm"],
+  "version": "1.0.0",
+  "tempo": null
+}

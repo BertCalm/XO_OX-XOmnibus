@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — maximum formant for violin-register brilliance. Wide ensemble at brightest Spring character.",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.42,
+    "movement": 0.28,
+    "density": 0.72,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Prism",
+  "name": "Formant Character",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.1,
+      "orch_decay": 0.7,
+      "orch_sustain": 0.85,
+      "orch_release": 1.5,
+      "orch_cutoff": 7000.0,
+      "orch_resonance": 0.15,
+      "orch_filterEnvAmt": 0.2,
+      "orch_detune": 12.0,
+      "orch_ensembleWidth": 0.9,
+      "orch_formant": 0.85,
+      "orch_vibratoRate": 6.0,
+      "orch_vibratoDepth": 0.25,
+      "orch_season": 0,
+      "orch_brightness": 0.6,
+      "orch_warmth": 0.4,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_lfo1Rate": 0.3,
+      "orch_lfo1Depth": 0.07,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "prism", "formant", "bright", "violin"],
+  "version": "1.0.0",
+  "tempo": null
+}

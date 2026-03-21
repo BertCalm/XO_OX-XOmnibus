@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — full summer orchestral lushness. Wide ensemble, Summer season. The cinematic string pad.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.05
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Summer Section",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.15,
+      "orch_decay": 1.0,
+      "orch_sustain": 0.9,
+      "orch_release": 2.0,
+      "orch_cutoff": 5500.0,
+      "orch_resonance": 0.12,
+      "orch_filterEnvAmt": 0.1,
+      "orch_detune": 10.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_formant": 0.55,
+      "orch_vibratoRate": 5.0,
+      "orch_vibratoDepth": 0.22,
+      "orch_season": 1,
+      "orch_brightness": 0.5,
+      "orch_warmth": 0.65,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "atmosphere", "summer", "pad", "cinematic"],
+  "version": "1.0.0",
+  "tempo": null
+}

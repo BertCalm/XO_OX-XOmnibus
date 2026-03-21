@@ -1,0 +1,47 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — precise, clean chamber. Low detune: individual presence per voice. For melodic passage clarity.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Herbalist",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.05,
+      "osier_decay": 0.5,
+      "osier_sustain": 0.82,
+      "osier_release": 1.0,
+      "osier_cutoff": 6000.0,
+      "osier_resonance": 0.1,
+      "osier_filterEnvAmt": 0.22,
+      "osier_detune": 3.5,
+      "osier_companion": 0.45,
+      "osier_intimacy": 0.4,
+      "osier_brightness": 0.5,
+      "osier_vibratoRate": 5.3,
+      "osier_vibratoDepth": 0.2,
+      "osier_glide": 0.02,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "organic", "melodic", "legato", "clean"],
+  "version": "1.0.0",
+  "tempo": null
+}

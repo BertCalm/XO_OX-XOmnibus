@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — historically-informed performance: minimal vibrato, faster attack, lower companion. Clean and formal.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.18,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Crystalline",
+  "name": "Baroque Precision",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.03,
+      "osier_decay": 0.35,
+      "osier_sustain": 0.75,
+      "osier_release": 0.7,
+      "osier_cutoff": 6500.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.3,
+      "osier_detune": 4.0,
+      "osier_companion": 0.35,
+      "osier_intimacy": 0.3,
+      "osier_brightness": 0.55,
+      "osier_vibratoRate": 3.5,
+      "osier_vibratoDepth": 0.08,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "crystalline", "baroque", "historically-informed", "precise"],
+  "version": "1.0.0",
+  "tempo": null
+}

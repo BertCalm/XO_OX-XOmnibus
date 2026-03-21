@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — as melodic instrument. Shorter attack, glide for legato lines, focused ensemble width.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.52,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Harvest Gold",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.08,
+      "orch_decay": 0.5,
+      "orch_sustain": 0.8,
+      "orch_release": 1.2,
+      "orch_cutoff": 5800.0,
+      "orch_resonance": 0.12,
+      "orch_filterEnvAmt": 0.25,
+      "orch_detune": 7.0,
+      "orch_ensembleWidth": 0.65,
+      "orch_formant": 0.45,
+      "orch_vibratoRate": 5.0,
+      "orch_vibratoDepth": 0.2,
+      "orch_season": 1,
+      "orch_brightness": 0.5,
+      "orch_warmth": 0.5,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_glide": 0.03,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "foundation", "melodic", "legato"],
+  "version": "1.0.0",
+  "tempo": null
+}

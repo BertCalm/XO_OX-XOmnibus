@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OXALIS — full phi, growth 20s. 7 partials emerge sequentially at golden-angle positions. No other synth does this.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.55,
+    "movement": 0.38,
+    "density": 0.7,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "engines": ["Oxalis"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Phyllotaxis Germination",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.12,
+      "oxal_decay": 0.8,
+      "oxal_sustain": 0.92,
+      "oxal_release": 3.0,
+      "oxal_cutoff": 3800.0,
+      "oxal_resonance": 0.08,
+      "oxal_filterEnvAmt": 0.1,
+      "oxal_phi": 1.0,
+      "oxal_spread": 0.65,
+      "oxal_symmetry": 0.45,
+      "oxal_brightness": 0.3,
+      "oxal_vibratoRate": 3.5,
+      "oxal_vibratoDepth": 0.12,
+      "oxal_growthMode": 1.0,
+      "oxal_growthTime": 20.0,
+      "oxal_bendRange": 2.0,
+      "oxal_macroCharacter": 0.0,
+      "oxal_macroMovement": 0.0,
+      "oxal_macroCoupling": 0.0,
+      "oxal_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["oxalis", "synth", "strings", "organic", "phi", "growth", "germination", "showcase"],
+  "version": "1.0.0",
+  "tempo": null
+}

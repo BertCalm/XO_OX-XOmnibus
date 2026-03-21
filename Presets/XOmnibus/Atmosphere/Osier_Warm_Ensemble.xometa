@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — the quartet after many sessions. High companion and intimacy: the voices pull toward each other.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.22,
+    "density": 0.7,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Warm Ensemble",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.1,
+      "osier_decay": 0.8,
+      "osier_sustain": 0.88,
+      "osier_release": 1.8,
+      "osier_cutoff": 5200.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.12,
+      "osier_detune": 5.5,
+      "osier_companion": 0.75,
+      "osier_intimacy": 0.7,
+      "osier_brightness": 0.42,
+      "osier_vibratoRate": 4.8,
+      "osier_vibratoDepth": 0.17,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "atmosphere", "strings", "ensemble", "settled"],
+  "version": "1.0.0",
+  "tempo": null
+}

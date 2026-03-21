@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — play this after an extended session. Cold: four individuals. 30 minutes in: ensemble lock.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Entangled",
+  "name": "Long Session Quartet",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.1,
+      "osier_decay": 0.8,
+      "osier_sustain": 0.87,
+      "osier_release": 2.0,
+      "osier_cutoff": 5100.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.1,
+      "osier_detune": 5.5,
+      "osier_companion": 0.65,
+      "osier_intimacy": 0.72,
+      "osier_brightness": 0.4,
+      "osier_vibratoRate": 4.8,
+      "osier_vibratoDepth": 0.18,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.055,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.1,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "entangled", "session", "companion", "affinity"],
+  "version": "1.0.0",
+  "tempo": null
+}

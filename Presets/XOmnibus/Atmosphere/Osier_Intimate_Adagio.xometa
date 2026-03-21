@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — maximum intimacy for adagio quartet. Slow, locked, settled. The ensemble intonation is the movement.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.15,
+    "density": 0.72,
+    "space": 0.78,
+    "aggression": 0.04
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Intimate Adagio",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.15,
+      "osier_decay": 1.0,
+      "osier_sustain": 0.9,
+      "osier_release": 2.5,
+      "osier_cutoff": 5000.0,
+      "osier_resonance": 0.07,
+      "osier_filterEnvAmt": 0.1,
+      "osier_detune": 4.5,
+      "osier_companion": 0.7,
+      "osier_intimacy": 0.85,
+      "osier_brightness": 0.38,
+      "osier_vibratoRate": 4.6,
+      "osier_vibratoDepth": 0.16,
+      "osier_lfo1Rate": 0.06,
+      "osier_lfo1Depth": 0.05,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "atmosphere", "adagio", "slow", "locked"],
+  "version": "1.0.0",
+  "tempo": null
+}

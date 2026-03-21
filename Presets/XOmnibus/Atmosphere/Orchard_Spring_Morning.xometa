@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — orchard at season start, bright and fresh. Standard orchestral string pad with Spring character.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Atmosphere",
+  "name": "Spring Morning",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.12,
+      "orch_decay": 0.8,
+      "orch_sustain": 0.85,
+      "orch_release": 1.5,
+      "orch_cutoff": 6500.0,
+      "orch_resonance": 0.1,
+      "orch_filterEnvAmt": 0.15,
+      "orch_detune": 8.0,
+      "orch_ensembleWidth": 0.75,
+      "orch_formant": 0.4,
+      "orch_vibratoRate": 5.5,
+      "orch_vibratoDepth": 0.18,
+      "orch_season": 0,
+      "orch_brightness": 0.45,
+      "orch_warmth": 0.35,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "atmosphere", "spring", "pad"],
+  "version": "1.0.0",
+  "tempo": null
+}

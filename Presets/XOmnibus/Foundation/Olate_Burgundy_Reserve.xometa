@@ -1,57 +1,48 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {
-    "pairs": []
-  },
+  "coupling": { "pairs": [] },
   "couplingIntensity": "None",
-  "description": "OLATE \u2014 classic warm analog bass, aged to perfection.",
+  "description": "OLATE — Moog-era vintage, moderate fermentation. Hold 8 seconds: the bass thickens from beneath.",
   "dna": {
-    "brightness": 0.25,
-    "warmth": 0.85,
-    "movement": 0.15,
-    "density": 0.65,
-    "space": 0.2,
-    "aggression": 0.15
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.22,
+    "aggression": 0.25
   },
-  "engines": [
-    "Olate"
-  ],
-  "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
-  ],
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
   "mood": "Foundation",
   "name": "Burgundy Reserve",
   "parameters": {
     "Olate": {
-      "olate_oscMix": 0.3,
+      "olate_oscMix": 0.1,
       "olate_pulseWidth": 0.5,
-      "olate_cutoff": 3000.0,
-      "olate_resonance": 0.3,
-      "olate_drive": 0.25,
-      "olate_filterEnvAmount": 0.5,
+      "olate_cutoff": 2800.0,
+      "olate_resonance": 0.35,
+      "olate_drive": 0.3,
+      "olate_filterEnvAmount": 0.55,
       "olate_filterAttack": 0.001,
-      "olate_filterDecay": 0.3,
-      "olate_vintage": 0.35,
+      "olate_filterDecay": 0.35,
+      "olate_vintage": 0.4,
       "olate_warmth": 0.6,
-      "olate_terroir": 0.0,
-      "olate_ageRate": 0.3,
+      "olate_terroir": 0.2,
+      "olate_ageRate": 0.4,
       "olate_attack": 0.005,
-      "olate_decay": 0.4,
+      "olate_decay": 0.35,
       "olate_sustain": 0.7,
-      "olate_release": 0.3,
-      "olate_gravity": 0.5
+      "olate_release": 0.35,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
     }
   },
   "schema_version": 1,
-  "tags": [
-    "foundation",
-    "analog",
-    "warm",
-    "bass"
-  ],
+  "tags": ["olate", "analog", "bass", "foundation", "vintage", "fermentation"],
   "version": "1.0.0",
   "tempo": null
 }

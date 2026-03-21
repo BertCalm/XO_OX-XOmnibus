@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — Bass voice darkness in lower registers. Low cutoff, slow vibrato. The quartet anchor.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.06
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Cello Foundation",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.12,
+      "osier_decay": 0.75,
+      "osier_sustain": 0.85,
+      "osier_release": 1.5,
+      "osier_cutoff": 3800.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.12,
+      "osier_detune": 6.5,
+      "osier_companion": 0.55,
+      "osier_intimacy": 0.5,
+      "osier_brightness": 0.32,
+      "osier_vibratoRate": 4.2,
+      "osier_vibratoDepth": 0.15,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "foundation", "cello", "bass-role", "dark"],
+  "version": "1.0.0",
+  "tempo": null
+}

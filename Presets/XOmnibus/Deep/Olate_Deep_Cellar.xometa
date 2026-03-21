@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OLATE — maximum warmth, very low cutoff. A sub-bass pad felt more than heard. The deep cellar.",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.92,
+    "movement": 0.12,
+    "density": 0.8,
+    "space": 0.38,
+    "aggression": 0.05
+  },
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Deep",
+  "name": "Deep Cellar",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.2,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 1400.0,
+      "olate_resonance": 0.15,
+      "olate_drive": 0.2,
+      "olate_filterEnvAmount": 0.25,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.35,
+      "olate_vintage": 0.3,
+      "olate_warmth": 0.85,
+      "olate_terroir": 0.1,
+      "olate_ageRate": 0.3,
+      "olate_attack": 0.015,
+      "olate_decay": 1.0,
+      "olate_sustain": 0.9,
+      "olate_release": 1.5,
+      "olate_glide": 0.05,
+      "olate_gravity": 0.5,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["olate", "sub-bass", "deep", "pad", "ambient", "cellar"],
+  "version": "1.0.0",
+  "tempo": null
+}

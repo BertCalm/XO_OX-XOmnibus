@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — growth mode 8s. The quartet entering one voice at a time. Chamber bloom: Bass, Tenor, Alto, Soprano.",
+  "dna": {
+    "brightness": 0.43,
+    "warmth": 0.62,
+    "movement": 0.32,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Chamber Bloom",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.1,
+      "osier_decay": 0.8,
+      "osier_sustain": 0.88,
+      "osier_release": 2.0,
+      "osier_cutoff": 5200.0,
+      "osier_resonance": 0.09,
+      "osier_filterEnvAmt": 0.12,
+      "osier_detune": 6.0,
+      "osier_companion": 0.6,
+      "osier_intimacy": 0.55,
+      "osier_brightness": 0.43,
+      "osier_vibratoRate": 4.9,
+      "osier_vibratoDepth": 0.18,
+      "osier_growthMode": 1.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "organic", "growth", "swell", "entry"],
+  "version": "1.0.0",
+  "tempo": null
+}

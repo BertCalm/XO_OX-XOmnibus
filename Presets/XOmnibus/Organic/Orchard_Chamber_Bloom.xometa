@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — growth mode at 12 seconds, Fall season. Chamber-scale bloom: intimate growth, not cinematic expansion.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.32,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Chamber Bloom",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.12,
+      "orch_decay": 0.8,
+      "orch_sustain": 0.87,
+      "orch_release": 2.2,
+      "orch_cutoff": 4200.0,
+      "orch_resonance": 0.09,
+      "orch_filterEnvAmt": 0.1,
+      "orch_detune": 8.5,
+      "orch_ensembleWidth": 0.7,
+      "orch_formant": 0.38,
+      "orch_vibratoRate": 4.8,
+      "orch_vibratoDepth": 0.19,
+      "orch_season": 2,
+      "orch_brightness": 0.38,
+      "orch_warmth": 0.65,
+      "orch_growthMode": 1.0,
+      "orch_growthTime": 12.0,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "organic", "growth", "fall", "intimate"],
+  "version": "1.0.0",
+  "tempo": null
+}

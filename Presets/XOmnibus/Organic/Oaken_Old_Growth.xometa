@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OAKEN — an old instrument. Body peaks shifted down by woodAge. Sound of decades in a warm room.",
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.82,
+    "movement": 0.18,
+    "density": 0.68,
+    "space": 0.38,
+    "aggression": 0.08
+  },
+  "engines": ["Oaken"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Organic",
+  "name": "Old Growth",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.0,
+      "oaken_bodyDepth": 0.75,
+      "oaken_woodAge": 0.9,
+      "oaken_room": 0.6,
+      "oaken_brightness": 0.45,
+      "oaken_damping": 0.5,
+      "oaken_curingRate": 0.25,
+      "oaken_filterEnvAmount": 0.35,
+      "oaken_attack": 0.002,
+      "oaken_decay": 0.65,
+      "oaken_sustain": 0.65,
+      "oaken_release": 0.55,
+      "oaken_glide": 0.0,
+      "oaken_gravity": 0.5,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["oaken", "acoustic", "bass", "organic", "aged", "wood", "vintage"],
+  "version": "1.0.0",
+  "tempo": null
+}

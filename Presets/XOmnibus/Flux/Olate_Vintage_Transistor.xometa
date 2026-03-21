@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OLATE — early transistor era. Grainy, raw, less smooth than Moog. For funk and rock bass contexts.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.35,
+    "movement": 0.48,
+    "density": 0.6,
+    "space": 0.18,
+    "aggression": 0.52
+  },
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Flux",
+  "name": "Vintage Transistor",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.15,
+      "olate_pulseWidth": 0.4,
+      "olate_cutoff": 2600.0,
+      "olate_resonance": 0.1,
+      "olate_drive": 0.5,
+      "olate_filterEnvAmount": 0.7,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.15,
+      "olate_vintage": 0.15,
+      "olate_warmth": 0.35,
+      "olate_terroir": 0.25,
+      "olate_ageRate": 0.5,
+      "olate_attack": 0.003,
+      "olate_decay": 0.25,
+      "olate_sustain": 0.55,
+      "olate_release": 0.2,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_lfo2Rate": 0.3,
+      "olate_lfo2Depth": 0.1,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["olate", "transistor", "vintage", "flux", "bass", "grit", "funk"],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,48 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OLATE — for coupling contexts. High resonance + fast fermentation pours into whatever container is offered.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.58,
+    "movement": 0.52,
+    "density": 0.68,
+    "space": 0.28,
+    "aggression": 0.38
+  },
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Entangled",
+  "name": "Resonant Wine",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.35,
+      "olate_pulseWidth": 0.35,
+      "olate_cutoff": 2000.0,
+      "olate_resonance": 0.6,
+      "olate_drive": 0.3,
+      "olate_filterEnvAmount": 0.75,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.3,
+      "olate_vintage": 0.55,
+      "olate_warmth": 0.55,
+      "olate_terroir": 0.45,
+      "olate_ageRate": 0.6,
+      "olate_attack": 0.004,
+      "olate_decay": 0.3,
+      "olate_sustain": 0.6,
+      "olate_release": 0.3,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.4,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["olate", "resonant", "coupling", "entangled", "bass", "fermentation"],
+  "version": "1.0.0",
+  "tempo": null
+}

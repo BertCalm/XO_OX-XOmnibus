@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OAKEN — maximum curing. Arrives bright, darkens dramatically within 3-4 seconds. Each note a mini arc.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.55,
+    "movement": 0.38,
+    "density": 0.58,
+    "space": 0.28,
+    "aggression": 0.22
+  },
+  "engines": ["Oaken"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Rapid Cure",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 0,
+      "oaken_bowPressure": 0.5,
+      "oaken_stringTension": 0.5,
+      "oaken_bodyDepth": 0.6,
+      "oaken_woodAge": 0.3,
+      "oaken_room": 0.45,
+      "oaken_brightness": 0.8,
+      "oaken_damping": 0.3,
+      "oaken_curingRate": 1.0,
+      "oaken_filterEnvAmount": 0.5,
+      "oaken_attack": 0.001,
+      "oaken_decay": 0.4,
+      "oaken_sustain": 0.55,
+      "oaken_release": 0.3,
+      "oaken_glide": 0.0,
+      "oaken_gravity": 0.5,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["oaken", "acoustic", "bass", "foundation", "curing", "showcase"],
+  "version": "1.0.0",
+  "tempo": null
+}

@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — maximum sustain. Very slow attack, extremely long release. Overlapping string layers in sequence.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.62,
+    "movement": 0.18,
+    "density": 0.75,
+    "space": 0.85,
+    "aggression": 0.03
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Entangled",
+  "name": "Orchestral Sustain",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.25,
+      "orch_decay": 2.0,
+      "orch_sustain": 0.95,
+      "orch_release": 4.5,
+      "orch_cutoff": 4800.0,
+      "orch_resonance": 0.07,
+      "orch_filterEnvAmt": 0.06,
+      "orch_detune": 11.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_formant": 0.4,
+      "orch_vibratoRate": 4.8,
+      "orch_vibratoDepth": 0.22,
+      "orch_season": 1,
+      "orch_brightness": 0.42,
+      "orch_warmth": 0.6,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_lfo2Rate": 0.04,
+      "orch_lfo2Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "entangled", "cinematic", "sustain", "underscore"],
+  "version": "1.0.0",
+  "tempo": null
+}

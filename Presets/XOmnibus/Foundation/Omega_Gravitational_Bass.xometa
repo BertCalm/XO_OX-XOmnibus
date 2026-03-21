@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OMEGA — gravitational partner in the CELLAR quad. High gravity for coupling. FM precision meets organic warmth.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.28,
+    "aggression": 0.28
+  },
+  "engines": ["Omega"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Gravitational Bass",
+  "parameters": {
+    "Omega": {
+      "omega_algorithm": 1,
+      "omega_ratio": 2.0,
+      "omega_modIndex": 5.5,
+      "omega_feedback": 0.15,
+      "omega_purity": 0.95,
+      "omega_distillRate": 0.65,
+      "omega_brightness": 2800.0,
+      "omega_filterEnvAmount": 0.6,
+      "omega_filterAttack": 0.001,
+      "omega_filterDecay": 0.35,
+      "omega_attack": 0.002,
+      "omega_decay": 0.35,
+      "omega_sustain": 0.72,
+      "omega_release": 0.35,
+      "omega_glide": 0.0,
+      "omega_gravity": 0.75,
+      "omega_macroCharacter": 0.0,
+      "omega_macroMovement": 0.0,
+      "omega_macroCoupling": 0.2,
+      "omega_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["omega", "fm", "bass", "foundation", "coupling", "cellar", "gravitational"],
+  "version": "1.0.0",
+  "tempo": null
+}

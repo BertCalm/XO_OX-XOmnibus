@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OLATE — acid bass via 303 vintage and UK mid presence. Fermentation adds grit as the note sustains.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.62,
+    "density": 0.7,
+    "space": 0.18,
+    "aggression": 0.58
+  },
+  "engines": ["Olate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Flux",
+  "name": "303 Terroir UK",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.5,
+      "olate_pulseWidth": 0.3,
+      "olate_cutoff": 1800.0,
+      "olate_resonance": 0.7,
+      "olate_drive": 0.35,
+      "olate_filterEnvAmount": 0.85,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.2,
+      "olate_vintage": 0.65,
+      "olate_warmth": 0.4,
+      "olate_terroir": 0.55,
+      "olate_ageRate": 0.7,
+      "olate_attack": 0.002,
+      "olate_decay": 0.2,
+      "olate_sustain": 0.4,
+      "olate_release": 0.15,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_lfo1Rate": 0.4,
+      "olate_lfo1Depth": 0.15,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["olate", "acid", "303", "flux", "uk", "resonant", "bass"],
+  "version": "1.0.0",
+  "tempo": null
+}

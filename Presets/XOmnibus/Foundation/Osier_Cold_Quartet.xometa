@@ -1,0 +1,46 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OSIER — the quartet at its first rehearsal. Minimum companion: four individual voices without affinity.",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.48,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "engines": ["Osier"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Cold Quartet",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.06,
+      "osier_decay": 0.5,
+      "osier_sustain": 0.8,
+      "osier_release": 1.0,
+      "osier_cutoff": 5800.0,
+      "osier_resonance": 0.12,
+      "osier_filterEnvAmt": 0.2,
+      "osier_detune": 7.5,
+      "osier_companion": 0.1,
+      "osier_intimacy": 0.1,
+      "osier_brightness": 0.5,
+      "osier_vibratoRate": 5.2,
+      "osier_vibratoDepth": 0.2,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["osier", "chamber", "quartet", "foundation", "strings", "individual"],
+  "version": "1.0.0",
+  "tempo": null
+}

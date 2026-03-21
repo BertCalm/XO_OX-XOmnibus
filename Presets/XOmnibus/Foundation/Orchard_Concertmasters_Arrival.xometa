@@ -1,0 +1,50 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "ORCHARD — maximum detune, maximum width. 16 simultaneous oscillators. The full string section taking position.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.28,
+    "density": 0.82,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "engines": ["Orchard"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Foundation",
+  "name": "Concertmaster's Arrival",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.15,
+      "orch_decay": 0.9,
+      "orch_sustain": 0.88,
+      "orch_release": 2.0,
+      "orch_cutoff": 5000.0,
+      "orch_resonance": 0.1,
+      "orch_filterEnvAmt": 0.12,
+      "orch_detune": 15.0,
+      "orch_ensembleWidth": 0.9,
+      "orch_formant": 0.5,
+      "orch_vibratoRate": 5.5,
+      "orch_vibratoDepth": 0.24,
+      "orch_season": 1,
+      "orch_brightness": 0.5,
+      "orch_warmth": 0.58,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 20.0,
+      "orch_glide": 0.0,
+      "orch_gravity": 0.3,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.15,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["orchard", "strings", "orchestral", "foundation", "ensemble", "full", "grand"],
+  "version": "1.0.0",
+  "tempo": null
+}

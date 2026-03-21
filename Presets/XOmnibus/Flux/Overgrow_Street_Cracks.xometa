@@ -1,0 +1,49 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": { "pairs": [] },
+  "couplingIntensity": "None",
+  "description": "OVERGROW — maximum wildness. Pitch jitter ±4.5 cents. Runner probability high. The weed at full growth.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.45,
+    "movement": 0.68,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.52
+  },
+  "engines": ["Overgrow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "mood": "Flux",
+  "name": "Street Cracks",
+  "parameters": {
+    "Overgrow": {
+      "grow_damping": 0.55,
+      "grow_feedback": 0.975,
+      "grow_bowNoise": 0.35,
+      "grow_wildness": 0.9,
+      "grow_cutoff": 4000.0,
+      "grow_resonance": 0.12,
+      "grow_filterEnvAmt": 0.35,
+      "grow_brightness": 0.5,
+      "grow_attack": 0.005,
+      "grow_decay": 0.5,
+      "grow_sustain": 0.65,
+      "grow_release": 0.6,
+      "grow_vibratoRate": 5.2,
+      "grow_vibratoDepth": 0.22,
+      "grow_lfo1Rate": 0.4,
+      "grow_lfo1Depth": 0.1,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 12.0,
+      "grow_bendRange": 2.0,
+      "grow_macroCharacter": 0.0,
+      "grow_macroMovement": 0.0,
+      "grow_macroCoupling": 0.0,
+      "grow_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": ["overgrow", "string", "flux", "wild", "chaotic", "experimental"],
+  "version": "1.0.0",
+  "tempo": null
+}
