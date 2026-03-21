@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Nautilus Emergence",
+  "mood": "Entangled",
+  "engines": [
+    "Organism",
+    "Overtone"
+  ],
+  "couplingIntensity": "High",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.88,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Organism",
+        "engineB": "Overtone",
+        "type": "AmpToFilter",
+        "amount": 0.8
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.44,
+    "movement": 0.75,
+    "density": 0.7,
+    "space": 0.62,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 110.0,
+      "org_stepRate": 6.0,
+      "org_scope": 6.0,
+      "org_seed": 0.45,
+      "org_filterCutoff": 900.0,
+      "org_filterQ": 1.5,
+      "org_ampAttack": 0.03,
+      "org_ampDec": 0.45,
+      "org_ampSus": 0.55,
+      "org_ampRel": 1.1,
+      "org_macroRule": 0.5,
+      "org_macroSeed": 0.45,
+      "org_macroCoupling": 0.88,
+      "org_macroMutate": 0.25
+    },
+    "Overtone": {
+      "over_constant": 3.0,
+      "over_depth": 6.0,
+      "over_partialCount": 8.0,
+      "over_color": 0.5,
+      "over_resoMix": 0.55,
+      "over_ampAttack": 0.08,
+      "over_ampDec": 0.7,
+      "over_ampSus": 0.6,
+      "over_ampRel": 1.8,
+      "over_macroDepth": 0.72,
+      "over_macroColor": 0.5,
+      "over_macroCoupling": 0.88,
+      "over_macroSpace": 0.6
+    }
+  },
+  "tags": [
+    "entangled",
+    "organism",
+    "overtone",
+    "cellular-automata",
+    "spectral",
+    "additive",
+    "sqrt2",
+    "emergence",
+    "nautilus",
+    "generative"
+  ],
+  "description": "Rule 110 coral colony (ORGANISM, near-universal computation) filter cell drives OVERTONE Sqrt2 spectral brightness. Colony growth sculpts the Nautilus shell."
+}

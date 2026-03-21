@@ -68,7 +68,326 @@ import xml.etree.ElementTree as ET
 import zipfile
 from collections import defaultdict
 from pathlib import Path
+from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Tuple
+
+# Optional tqdm progress bars — degrade gracefully if not installed
+try:
+    from tqdm import tqdm as _tqdm
+    HAS_TQDM = True
+except ImportError:
+    HAS_TQDM = False
+
+def tqdm(iterable, **kwargs):
+    """Wrap tqdm if available, otherwise iterate transparently."""
+    if HAS_TQDM:
+        return _tqdm(iterable, **kwargs)
+    desc = kwargs.get("desc", "")
+    total = kwargs.get("total", None)
+    if desc:
+        print(f"  {desc}...")
+    return iterable
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Sonic DNA — 6-dimensional audio fingerprint
+# ─────────────────────────────────────────────────────────────────────────────
+
+@dataclass
+class SonicDNA:
+    """6D Sonic DNA fingerprint inferred from audio analysis."""
+    brightness: float = 0.5   # spectral centroid / (sr/2), 0-1
+    warmth: float = 0.5       # energy ratio of 200-800 Hz band / total
+    movement: float = 0.5     # spectral flux (frame-to-frame change)
+    density: float = 0.5      # spectral flatness (geometric/arithmetic mean)
+    space: float = 0.5        # reverb tail ratio (energy in last 30%)
+    aggression: float = 0.5   # crest factor normalized: >12dB=1.0, <3dB=0.0
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+def _radix2_fft(x: List[complex]) -> List[complex]:
+    """In-place radix-2 Cooley-Tukey FFT. Input length must be a power of 2."""
+    n = len(x)
+    if n <= 1:
+        return x
+
+    # Bit-reversal permutation
+    result = list(x)
+    bits = int(math.log2(n))
+    for i in range(n):
+        j = 0
+        for b in range(bits):
+            j = (j << 1) | ((i >> b) & 1)
+        if j > i:
+            result[i], result[j] = result[j], result[i]
+
+    # Butterfly stages
+    length = 2
+    while length <= n:
+        half = length // 2
+        w_base = -2.0 * math.pi / length
+        for start in range(0, n, length):
+            for k in range(half):
+                angle = w_base * k
+                w = complex(math.cos(angle), math.sin(angle))
+                even = result[start + k]
+                odd = result[start + k + half] * w
+                result[start + k] = even + odd
+                result[start + k + half] = even - odd
+        length *= 2
+
+    return result
+
+
+def _magnitude_spectrum(mono: List[float], fft_size: int = 2048) -> List[float]:
+    """Compute magnitude spectrum of a signal chunk using radix-2 FFT.
+
+    Returns magnitudes for bins 0..fft_size//2 (inclusive).
+    """
+    n = len(mono)
+    # Zero-pad or truncate to fft_size
+    if n >= fft_size:
+        segment = mono[:fft_size]
+    else:
+        segment = mono + [0.0] * (fft_size - n)
+
+    # Apply Hann window
+    windowed = [
+        segment[i] * 0.5 * (1.0 - math.cos(2.0 * math.pi * i / (fft_size - 1)))
+        for i in range(fft_size)
+    ]
+
+    spectrum = _radix2_fft([complex(s, 0) for s in windowed])
+    return [abs(spectrum[i]) for i in range(fft_size // 2 + 1)]
+
+
+def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
+    """Infer 6D Sonic DNA from audio characteristics.
+
+    Uses spectral analysis (radix-2 FFT) to compute brightness, warmth,
+    movement, density, space, and aggression.
+    """
+    if not channels or not channels[0]:
+        return SonicDNA()
+
+    # Work with mono (first channel)
+    mono = channels[0]
+    n = len(mono)
+    fft_size = 2048
+
+    if n < fft_size:
+        # Too short for meaningful spectral analysis — return defaults
+        # but still compute space and aggression which don't need FFT
+        dna = SonicDNA()
+        # Aggression from crest factor
+        rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
+        peak = max(abs(s) for s in mono) if mono else 0
+        if rms > 1e-10:
+            crest_db = 20 * math.log10(max(peak, 1e-10) / rms)
+            dna.aggression = max(0.0, min(1.0, (crest_db - 3.0) / 9.0))
+        # Space from tail energy
+        tail_start = int(n * 0.7)
+        total_energy = sum(s * s for s in mono)
+        tail_energy = sum(s * s for s in mono[tail_start:])
+        if total_energy > 1e-10:
+            dna.space = max(0.0, min(1.0, tail_energy / total_energy / 0.3))
+        return dna
+
+    # ── Brightness: spectral centroid / (sr/2) ──
+    # Average centroid over multiple frames
+    hop = fft_size // 2
+    num_frames = max(1, (n - fft_size) // hop + 1)
+    # Limit to ~20 frames for performance
+    frame_step = max(1, num_frames // 20)
+    centroids = []
+    prev_magnitudes = None
+    flux_values = []
+    flatness_values = []
+
+    freq_per_bin = sr / fft_size
+    num_bins = fft_size // 2 + 1
+
+    for frame_idx in range(0, num_frames, frame_step):
+        offset = frame_idx * hop
+        if offset + fft_size > n:
+            break
+        chunk = mono[offset:offset + fft_size]
+        mags = _magnitude_spectrum(chunk, fft_size)
+
+        # Spectral centroid
+        mag_sum = sum(mags)
+        if mag_sum > 1e-10:
+            weighted_sum = sum(mags[i] * i * freq_per_bin for i in range(num_bins))
+            centroid_hz = weighted_sum / mag_sum
+            centroids.append(centroid_hz)
+
+        # Spectral flux (frame-to-frame change)
+        if prev_magnitudes is not None:
+            flux = sum((mags[i] - prev_magnitudes[i]) ** 2 for i in range(num_bins))
+            flux_values.append(math.sqrt(flux))
+        prev_magnitudes = mags
+
+        # Spectral flatness (geometric mean / arithmetic mean)
+        # Use log-domain for geometric mean to avoid underflow
+        positive_mags = [m for m in mags if m > 1e-10]
+        if len(positive_mags) > num_bins * 0.5:
+            log_sum = sum(math.log(m) for m in positive_mags)
+            geo_mean = math.exp(log_sum / len(positive_mags))
+            arith_mean = sum(positive_mags) / len(positive_mags)
+            if arith_mean > 1e-10:
+                flatness_values.append(geo_mean / arith_mean)
+
+    # Brightness
+    nyquist = sr / 2.0
+    if centroids:
+        avg_centroid = sum(centroids) / len(centroids)
+        brightness = max(0.0, min(1.0, avg_centroid / nyquist))
+    else:
+        brightness = 0.5
+
+    # ── Warmth: energy ratio of 200-800 Hz band / total ──
+    # Compute on a representative frame (middle of the sample)
+    mid_offset = max(0, n // 2 - fft_size // 2)
+    mid_chunk = mono[mid_offset:mid_offset + fft_size]
+    if len(mid_chunk) < fft_size:
+        mid_chunk = mid_chunk + [0.0] * (fft_size - len(mid_chunk))
+    mid_mags = _magnitude_spectrum(mid_chunk, fft_size)
+
+    bin_200 = max(1, int(200 / freq_per_bin))
+    bin_800 = min(num_bins - 1, int(800 / freq_per_bin))
+    warm_energy = sum(m * m for m in mid_mags[bin_200:bin_800 + 1])
+    total_spectral_energy = sum(m * m for m in mid_mags[1:])  # skip DC
+    if total_spectral_energy > 1e-10:
+        warmth = max(0.0, min(1.0, warm_energy / total_spectral_energy))
+    else:
+        warmth = 0.5
+
+    # ── Movement: spectral flux (normalized) ──
+    if flux_values:
+        # Normalize: typical flux range varies widely, use median-based scaling
+        sorted_flux = sorted(flux_values)
+        median_flux = sorted_flux[len(sorted_flux) // 2]
+        # Scale so median flux maps to ~0.5
+        if median_flux > 1e-10:
+            movement = max(0.0, min(1.0, median_flux / (median_flux * 2.0)))
+        else:
+            movement = 0.0
+        # Use coefficient of variation for better discrimination
+        mean_flux = sum(flux_values) / len(flux_values)
+        if mean_flux > 1e-10:
+            std_flux = math.sqrt(sum((f - mean_flux) ** 2 for f in flux_values) / len(flux_values))
+            cv = std_flux / mean_flux
+            movement = max(0.0, min(1.0, cv))
+        else:
+            movement = 0.0
+    else:
+        movement = 0.0
+
+    # ── Density: spectral flatness ──
+    if flatness_values:
+        density = max(0.0, min(1.0, sum(flatness_values) / len(flatness_values)))
+    else:
+        density = 0.5
+
+    # ── Space: reverb tail ratio (energy in last 30% / total) ──
+    tail_start = int(n * 0.7)
+    total_energy = sum(s * s for s in mono)
+    tail_energy = sum(s * s for s in mono[tail_start:])
+    if total_energy > 1e-10:
+        # 30% of length should contain 30% of energy for flat signals
+        # Reverb tails have disproportionate tail energy relative to their amplitude
+        raw_ratio = tail_energy / total_energy
+        # Normalize: 0.3 ratio = 0.5 (flat), higher = more space
+        space = max(0.0, min(1.0, raw_ratio / 0.6))
+    else:
+        space = 0.5
+
+    # ── Aggression: crest factor (peak / RMS), normalized ──
+    rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
+    peak = max(abs(s) for s in mono) if mono else 0
+    if rms > 1e-10:
+        crest_db = 20 * math.log10(max(peak, 1e-10) / rms)
+        # >12dB = 1.0 (very dynamic/aggressive), <3dB = 0.0 (compressed/flat)
+        aggression = max(0.0, min(1.0, (crest_db - 3.0) / 9.0))
+    else:
+        aggression = 0.5
+
+    return SonicDNA(
+        brightness=round(brightness, 3),
+        warmth=round(warmth, 3),
+        movement=round(movement, 3),
+        density=round(density, 3),
+        space=round(space, 3),
+        aggression=round(aggression, 3),
+    )
+
+
+def select_velocity_curve_by_dna(dna: SonicDNA) -> str:
+    """Select the best velocity curve based on DNA aggression."""
+    if dna.aggression > 0.7:
+        return "trap-hard"
+    elif dna.aggression > 0.4:
+        return "boom-bap"
+    elif dna.aggression > 0.2:
+        return "musical"
+    else:
+        return "neo-soul"
+
+
+@dataclass
+class DNAEnhancementParams:
+    """Enhancement parameters derived from Sonic DNA."""
+    velocity_curve: str = "musical"
+    fade_out_ms: float = 10.0
+    saturation_intensity: float = 0.03  # max tanh drive for round-robin
+    loop_priority: bool = True          # whether to prioritize loop detection
+    loop_crossfade_multiplier: float = 1.0  # multiplier for loop crossfade length
+    rr_variation_width: float = 1.0     # multiplier for round-robin variation range
+    apply_soft_lowpass: bool = False     # gentle low-pass on soft velocity layers
+
+
+def adjust_enhancement_by_dna(dna: SonicDNA) -> DNAEnhancementParams:
+    """Derive enhancement parameters from inferred Sonic DNA."""
+    params = DNAEnhancementParams()
+
+    # 1. Velocity curve from aggression
+    params.velocity_curve = select_velocity_curve_by_dna(dna)
+
+    # 2. Fade guard length from space
+    if dna.space > 0.6:
+        params.fade_out_ms = 50.0
+        params.apply_soft_lowpass = True
+    elif dna.space < 0.3:
+        params.fade_out_ms = 5.0
+    else:
+        params.fade_out_ms = 10.0
+
+    # 3. Saturation intensity from aggression + warmth
+    if dna.aggression > 0.6 and dna.warmth < 0.4:
+        params.saturation_intensity = 0.08  # harder saturation
+    elif dna.warmth > 0.6:
+        params.saturation_intensity = 0.015  # gentler, preserve warmth
+    else:
+        params.saturation_intensity = 0.03
+
+    # 4. Loop detection priority from space + movement
+    if dna.space > 0.5 and dna.movement > 0.5:
+        params.loop_priority = True
+        params.loop_crossfade_multiplier = 2.0  # longer crossfade
+    elif dna.space < 0.3:
+        params.loop_priority = False  # skip loop detection for one-shots
+
+    # 5. Round-robin variation character from density
+    if dna.density > 0.6:
+        params.rr_variation_width = 0.5  # subtle micro-variations
+    elif dna.density < 0.3:
+        params.rr_variation_width = 1.5  # wider variations for simple sounds
+    else:
+        params.rr_variation_width = 1.0
+
+    return params
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Constants
@@ -158,6 +477,11 @@ VELOCITY_CURVES = {
 
 # Default pad colors (used when no engine color available)
 DEFAULT_PAD_COLOR = "#E9C46A"  # XO Gold
+
+# Loop crossfade applied at the loop splice point.
+# MPC interprets this as a number of samples (not milliseconds).
+# 100 samples ≈ 2.3 ms @ 44.1 kHz — short enough to avoid audible pre-echo.
+LOOP_CROSSFADE_SAMPLES = 100
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -256,6 +580,7 @@ class SampleInfo:
         self.loop_start: int = 0
         self.loop_end: int = 0
         self.tail_length_s: float = 0.0
+        self.dna: Optional[SonicDNA] = None
 
     def __repr__(self):
         return f"<Sample '{self.original_name}' cat={self.category} rms={self.rms_db:.1f}dB>"
@@ -335,18 +660,27 @@ def classify_by_name(name: str) -> str:
 
 
 def classify_by_audio(channels: List[List[float]], sr: int, duration: float) -> str:
-    """Classify by audio characteristics when filename doesn't help."""
+    """Classify by audio characteristics when filename doesn't help.
+
+    Uses ZCR for spectral proxy (low ZCR → low-frequency / bass content,
+    high ZCR → noise / hat content) and decay shape to distinguish sustained
+    pads from plucked one-shots.
+    """
     if not channels or not channels[0]:
         return CATEGORY_UNKNOWN
 
     mono = channels[0]
     n = len(mono)
 
-    # Short = percussive
+    # Zero-crossing rate — cheap spectral proxy used across all duration ranges
+    zc = sum(1 for i in range(1, n) if (mono[i] >= 0) != (mono[i - 1] >= 0))
+    zcr = zc / n * sr
+
+    # Short = percussive (< 500 ms)
     if duration < 0.5:
-        # Analyze spectral content roughly via zero-crossing rate
-        zc = sum(1 for i in range(1, n) if (mono[i] >= 0) != (mono[i - 1] >= 0))
-        zcr = zc / n * sr
+        # Low ZCR → mostly low-frequency energy → kick / bass-drum
+        # Very high ZCR → mostly high-frequency noise → closed hi-hat
+        # Mid ZCR → broadband transient → snare / clap / tom
         if zcr < 500:
             return CATEGORY_KICK
         elif zcr > 3000:
@@ -354,17 +688,22 @@ def classify_by_audio(channels: List[List[float]], sr: int, duration: float) -> 
         else:
             return CATEGORY_SNARE
 
-    # Medium = melodic one-shot or percussion
+    # Medium = one-shot melodic or long percussion (0.5 s – 3 s)
     if duration < 3.0:
-        # Check for sustained energy (pad vs pluck)
+        # Decay shape: compare RMS of first quarter-second vs mid quarter-second
         mid = n // 2
         rms_start = math.sqrt(sum(s * s for s in mono[:sr // 4]) / max(1, sr // 4))
         rms_mid = math.sqrt(sum(s * s for s in mono[mid:mid + sr // 4]) / max(1, sr // 4))
-        if rms_mid > rms_start * 0.5:
-            return CATEGORY_BASS  # sustained
-        return CATEGORY_PLUCK  # decaying
+        sustained = rms_mid > rms_start * 0.5
 
-    # Long = pad or texture
+        if sustained:
+            # Sustained sound in this range: use ZCR to guess pitch register.
+            # Bass fundamentals (< ~200 Hz) cross zero fewer times per second
+            # than mid/high melodic material.
+            return CATEGORY_BASS if zcr < 200 else CATEGORY_LEAD
+        return CATEGORY_PLUCK  # fast-decaying one-shot
+
+    # Long = pad or ambient texture (>= 3 s)
     return CATEGORY_PAD
 
 
@@ -397,8 +736,12 @@ def classify(samples: List[SampleInfo]) -> List[SampleInfo]:
 # Stage 3: ANALYZE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def analyze(samples: List[SampleInfo]) -> List[SampleInfo]:
-    """Stage 3: Measure pitch, RMS, peak, DC offset, tail length, loop points."""
+def analyze(samples: List[SampleInfo], dna_inherit: bool = True) -> List[SampleInfo]:
+    """Stage 3: Measure pitch, RMS, peak, DC offset, tail length, loop points.
+
+    When dna_inherit is True, also infers 6D Sonic DNA from each sample's
+    spectral characteristics for use in DNA-driven enhancement.
+    """
     for s in samples:
         try:
             channels, sr, bd = read_wav(s.path)
@@ -455,9 +798,16 @@ def analyze(samples: List[SampleInfo]) -> List[SampleInfo]:
                 s.loop_start = loop_start
                 s.loop_end = loop_end
 
+        # Infer Sonic DNA from spectral characteristics
+        if dna_inherit:
+            s.dna = infer_dna(channels, sr)
+
     analyzed = sum(1 for s in samples if s.rms_db > -100)
     loopable = sum(1 for s in samples if s.is_loopable)
+    dna_count = sum(1 for s in samples if s.dna is not None)
     print(f"  Analyzed {analyzed} samples, {loopable} loopable")
+    if dna_inherit:
+        print(f"  DNA inferred for {dna_count} samples")
     return samples
 
 
@@ -485,6 +835,264 @@ def apply_fade_guards(channels: List[List[float]], sr: int,
                 ch[idx] *= gain
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Rebirth Mode — XOmnibus-style DSP Transforms
+# ─────────────────────────────────────────────────────────────────────────────
+
+def rebirth_saturate(channels: List[List[float]], sr: int,
+                     drive: float = 0.7, mojo: float = 0.5):
+    """OBESE-style saturation + mojo chain.
+    drive: 0-1 saturation amount
+    mojo: 0-1 analog warmth (even harmonics)
+    """
+    # Map drive from 0-1 to a useful tanh range (1.0 - 8.0)
+    d = 1.0 + drive * 7.0
+    tanh_d = math.tanh(d)
+    for ch in channels:
+        for i in range(len(ch)):
+            x = ch[i]
+            # Normalized soft clip
+            sat = math.tanh(d * x) / tanh_d
+            # Even harmonic injection via mojo (x^2 preserves sign via abs trick)
+            even = mojo * x * abs(x)
+            ch[i] = max(-1.0, min(1.0, sat + even))
+
+
+def rebirth_feedback_swell(channels: List[List[float]], sr: int,
+                           swell_time: float = 0.05, feedback: float = 0.6):
+    """OUROBOROS-style brief feedback swell on transient.
+    Applies a short feedback delay burst at the attack portion.
+    """
+    swell_samples = int(sr * swell_time)
+    # Delay time: ~5ms for metallic character
+    delay_samples = max(1, int(sr * 0.005))
+    for ch in channels:
+        n = len(ch)
+        region = min(swell_samples, n)
+        # Ring buffer for feedback delay
+        buf = [0.0] * delay_samples
+        write_pos = 0
+        for i in range(region):
+            read_pos = write_pos
+            delayed = buf[read_pos]
+            out = ch[i] + feedback * delayed
+            out = max(-1.0, min(1.0, out))
+            buf[write_pos] = out
+            write_pos = (write_pos + 1) % delay_samples
+            # Fade the effect: full at start, zero at swell_samples
+            fade = 1.0 - (i / region)
+            ch[i] = ch[i] * (1.0 - fade) + out * fade
+
+
+def rebirth_granular_scatter(channels: List[List[float]], sr: int,
+                             grain_size: float = 0.02, scatter: float = 0.3):
+    """OPAL-style granular micro-scatter.
+    Chops audio into grains and applies micro pitch/time shifts.
+    """
+    grain_samples = max(1, int(sr * grain_size))
+    rng = random.Random(42)
+    for ch in channels:
+        n = len(ch)
+        result = [0.0] * n
+        num_grains = (n + grain_samples - 1) // grain_samples
+        for g in range(num_grains):
+            start = g * grain_samples
+            end = min(start + grain_samples, n)
+            grain_len = end - start
+            if grain_len < 2:
+                result[start:end] = ch[start:end]
+                continue
+
+            # Extract grain
+            grain = ch[start:end]
+
+            # Per-grain pitch shift via resampling (scatter controls range in cents)
+            cents = rng.uniform(-scatter * 50, scatter * 50)
+            ratio = 2 ** (cents / 1200)
+            resampled = []
+            for i in range(grain_len):
+                src_idx = i * ratio
+                idx0 = int(src_idx)
+                frac = src_idx - idx0
+                if idx0 + 1 < grain_len:
+                    resampled.append(grain[idx0] * (1 - frac) + grain[idx0 + 1] * frac)
+                elif idx0 < grain_len:
+                    resampled.append(grain[idx0])
+                else:
+                    resampled.append(0.0)
+
+            # Per-grain time offset (shift placement by scatter amount)
+            offset = int(rng.uniform(-scatter * grain_samples * 0.3,
+                                     scatter * grain_samples * 0.3))
+            for i in range(grain_len):
+                dest = start + i + offset
+                if 0 <= dest < n:
+                    # Hann window for smooth overlap
+                    w = 0.5 * (1.0 - math.cos(2.0 * math.pi * i / grain_len))
+                    if i < len(resampled):
+                        result[dest] += resampled[i] * w
+
+        # Replace channel with scattered result
+        for i in range(n):
+            ch[i] = max(-1.0, min(1.0, result[i]))
+
+
+def rebirth_fold(channels: List[List[float]], sr: int,
+                 fold_point: float = 0.7):
+    """ORIGAMI-style wavefolding.
+    Folds audio at the fold point for harmonic enrichment.
+    """
+    fp = max(0.01, fold_point)
+    fp4 = 4.0 * fp
+    fp2 = 2.0 * fp
+    for ch in channels:
+        for i in range(len(ch)):
+            x = ch[i]
+            # Triangle fold: 4*|fmod(x - fp, 4*fp) - 2*fp| - fp
+            shifted = x - fp
+            # fmod that works for negative numbers
+            m = shifted - fp4 * math.floor(shifted / fp4)
+            folded = 4.0 * abs(m - fp2) - fp
+            ch[i] = max(-1.0, min(1.0, folded))
+
+
+def rebirth_spring_reverb(channels: List[List[float]], sr: int,
+                          decay: float = 0.3, brightness: float = 0.6):
+    """OVERDUB-style spring reverb impulse.
+    Short, metallic spring reverb character.
+    Schroeder reverb: 4 comb filters + 2 allpass filters.
+    """
+    # Comb filter delay times (in samples) — prime-ish for metallic character
+    comb_delays = [int(sr * t) for t in (0.0297, 0.0371, 0.0411, 0.0437)]
+    # Allpass delay times
+    ap_delays = [int(sr * t) for t in (0.005, 0.0017)]
+
+    # Comb feedback scaled by decay
+    comb_fb = 0.7 + 0.25 * decay  # range 0.7 - 0.95
+
+    for ch in channels:
+        n = len(ch)
+        dry = list(ch)
+
+        # 4 parallel comb filters
+        comb_outputs = []
+        for delay in comb_delays:
+            buf = [0.0] * max(1, delay)
+            out = [0.0] * n
+            wp = 0
+            # One-pole damping filter state
+            damp_state = 0.0
+            damp_coeff = 1.0 - brightness * 0.7  # higher brightness = less damping
+            for i in range(n):
+                delayed = buf[wp]
+                # Damping filter on feedback path
+                damp_state = delayed * (1.0 - damp_coeff) + damp_state * damp_coeff
+                buf[wp] = max(-1.0, min(1.0, ch[i] + comb_fb * damp_state))
+                out[i] = delayed
+                wp = (wp + 1) % max(1, delay)
+            comb_outputs.append(out)
+
+        # Mix comb outputs
+        wet = [0.0] * n
+        for i in range(n):
+            wet[i] = sum(c[i] for c in comb_outputs) / len(comb_outputs)
+
+        # 2 series allpass filters
+        for delay in ap_delays:
+            buf = [0.0] * max(1, delay)
+            wp = 0
+            ap_g = 0.5
+            for i in range(n):
+                delayed = buf[wp]
+                inp = wet[i]
+                buf[wp] = max(-1.0, min(1.0, inp + ap_g * delayed))
+                wet[i] = delayed - ap_g * inp
+                wp = (wp + 1) % max(1, delay)
+
+        # Mix wet back in (the wet/dry is handled by rebirth_transform, but
+        # we still apply a gentle mix here to keep levels sane)
+        for i in range(n):
+            ch[i] = max(-1.0, min(1.0, dry[i] + 0.5 * wet[i]))
+
+
+# Rebirth engine profiles — each maps to a specific combination of transforms
+REBIRTH_PROFILES = {
+    "OBESE": {
+        "transforms": [("saturate", {"drive": (0.5, 0.9), "mojo": (0.3, 0.8)})],
+        "description": "Fat saturation + analog warmth"
+    },
+    "OUROBOROS": {
+        "transforms": [
+            ("feedback_swell", {"swell_time": (0.02, 0.08), "feedback": (0.4, 0.8)}),
+            ("saturate", {"drive": (0.2, 0.5), "mojo": (0.1, 0.3)})
+        ],
+        "description": "Feedback swell on transient + light saturation"
+    },
+    "OPAL": {
+        "transforms": [("granular_scatter", {"grain_size": (0.01, 0.04), "scatter": (0.1, 0.5)})],
+        "description": "Granular micro-scatter"
+    },
+    "ORIGAMI": {
+        "transforms": [("fold", {"fold_point": (0.5, 0.9)})],
+        "description": "Wavefolding harmonic enrichment"
+    },
+    "OVERDUB": {
+        "transforms": [("spring_reverb", {"decay": (0.2, 0.5), "brightness": (0.4, 0.8)})],
+        "description": "Spring reverb character"
+    },
+}
+
+# Map transform names to functions
+_REBIRTH_TRANSFORMS = {
+    "saturate": rebirth_saturate,
+    "feedback_swell": rebirth_feedback_swell,
+    "granular_scatter": rebirth_granular_scatter,
+    "fold": rebirth_fold,
+    "spring_reverb": rebirth_spring_reverb,
+}
+
+
+def rebirth_transform(sample_info, channels: List[List[float]], sr: int,
+                       profile_name: str, rng: random.Random,
+                       intensity: float = 0.7) -> List[List[float]]:
+    """Apply a rebirth engine profile to audio channels.
+
+    1. Looks up the profile
+    2. For each transform in the profile, randomizes parameters within the specified ranges
+    3. Applies transforms in sequence
+    4. Controls wet/dry mix based on intensity (0.0 = original, 1.0 = fully processed)
+    """
+    profile = REBIRTH_PROFILES.get(profile_name)
+    if profile is None:
+        raise ValueError(f"Unknown rebirth profile: {profile_name}. "
+                         f"Available: {', '.join(sorted(REBIRTH_PROFILES.keys()))}")
+
+    # Keep dry copy for wet/dry blend
+    dry = [list(ch) for ch in channels]
+    # Work on a copy for wet processing
+    wet = [list(ch) for ch in channels]
+
+    for transform_name, param_ranges in profile["transforms"]:
+        func = _REBIRTH_TRANSFORMS.get(transform_name)
+        if func is None:
+            raise ValueError(f"Unknown rebirth transform: {transform_name}")
+
+        # Randomize parameters within specified ranges
+        params = {}
+        for param_name, (lo, hi) in param_ranges.items():
+            params[param_name] = rng.uniform(lo, hi)
+
+        func(wet, sr, **params)
+
+    # Wet/dry blend based on intensity
+    n = len(channels[0])
+    for ch_idx in range(len(channels)):
+        for i in range(n):
+            channels[ch_idx][i] = dry[ch_idx][i] * (1.0 - intensity) + wet[ch_idx][i] * intensity
+
+    return channels
+
+
 def remove_dc_offset(channels: List[List[float]]):
     """Remove DC offset from each channel."""
     for ch in channels:
@@ -500,7 +1108,17 @@ def generate_round_robin(channels: List[List[float]], sr: int,
                          num_variations: int = 4) -> List[List[List[float]]]:
     """Generate round-robin variations via micro-variation."""
     variations = [channels]  # original is variation 0
-    rng = random.Random(hash(str(len(channels[0]))))
+
+    # Content-sensitive seed: length alone causes seed collisions for same-duration
+    # samples (e.g. all 1-bar loops at the same BPM). Mix in 16 evenly-spaced
+    # sample values so each unique waveform gets a unique RNG stream.
+    n = len(channels[0]) if channels and channels[0] else 0
+    step = max(1, n // 16)
+    seed_data = (n,) + tuple(
+        round(channels[0][i * step] * 1_000_000)
+        for i in range(min(16, n // max(1, step)))
+    )
+    rng = random.Random(hash(seed_data))
 
     for v in range(1, num_variations):
         varied = []
@@ -572,16 +1190,90 @@ def create_velocity_layers(channels: List[List[float]], sr: int,
     return layers
 
 
+def generate_round_robin_dna(channels: List[List[float]], sr: int,
+                             num_variations: int = 4,
+                             variation_width: float = 1.0,
+                             saturation_intensity: float = 0.03) -> List[List[List[float]]]:
+    """Generate round-robin variations with DNA-driven parameters.
+
+    variation_width scales the pitch/gain variation range (0.5=subtle, 1.5=wide).
+    saturation_intensity controls the max saturation drive per variation.
+    """
+    variations = [channels]  # original is variation 0
+
+    n = len(channels[0]) if channels and channels[0] else 0
+    step = max(1, n // 16)
+    seed_data = (n,) + tuple(
+        round(channels[0][i * step] * 1_000_000)
+        for i in range(min(16, n // max(1, step)))
+    )
+    rng = random.Random(hash(seed_data))
+
+    for v in range(1, num_variations):
+        varied = []
+        for ch in channels:
+            new_ch = list(ch)
+            n = len(new_ch)
+
+            # Micro-pitch shift scaled by variation_width
+            cents = rng.uniform(-5 * variation_width, 5 * variation_width)
+            ratio = 2 ** (cents / 1200)
+            if abs(ratio - 1.0) > 0.0001:
+                resampled = []
+                for i in range(n):
+                    src_idx = i * ratio
+                    idx0 = int(src_idx)
+                    frac = src_idx - idx0
+                    if idx0 + 1 < n:
+                        resampled.append(new_ch[idx0] * (1 - frac) + new_ch[idx0 + 1] * frac)
+                    elif idx0 < n:
+                        resampled.append(new_ch[idx0])
+                    else:
+                        resampled.append(0.0)
+                new_ch = resampled[:n]
+
+            # Micro-gain variation scaled by variation_width
+            gain_db = rng.uniform(-0.5 * variation_width, 0.5 * variation_width)
+            gain = 10 ** (gain_db / 20)
+            new_ch = [s * gain for s in new_ch]
+
+            # Saturation variation driven by DNA intensity
+            sat_amount = rng.uniform(0.0, saturation_intensity)
+            if sat_amount > 0.005:
+                new_ch = [math.tanh(s * (1.0 + sat_amount)) / math.tanh(1.0 + sat_amount)
+                          for s in new_ch]
+
+            varied.append(new_ch)
+        variations.append(varied)
+
+    return variations
+
+
 def enhance(samples: List[SampleInfo], work_dir: str,
             num_round_robin: int = 4,
-            num_velocity_layers: int = 4) -> Dict[str, dict]:
-    """Stage 4: Generate velocity layers, round-robin, apply fade guards + DC removal."""
+            num_velocity_layers: int = 4,
+            dna_inherit: bool = True,
+            rebirth: bool = False,
+            rebirth_engine: str = "OBESE",
+            rebirth_intensity: float = 0.7,
+            rebirth_randomize: bool = True) -> Dict[str, dict]:
+    """Stage 4: Generate velocity layers, round-robin, apply fade guards + DC removal.
+
+    When dna_inherit is True and samples have inferred DNA, enhancement decisions
+    (fade length, saturation, round-robin variation width, loop detection) are
+    shaped by the sample's Sonic DNA fingerprint.
+
+    When rebirth is True, samples are reprocessed through XOmnibus-style DSP
+    transforms instead of preserving original character. Each round-robin
+    variation gets different randomized parameters within the engine profile's
+    ranges, creating natural variation like re-recording through analog gear.
+    """
     enhanced_dir = os.path.join(work_dir, "enhanced")
     os.makedirs(enhanced_dir, exist_ok=True)
 
     programs = {}  # program_name → {category, samples: [{path, vel_layer, rr_idx, ...}]}
 
-    for s in samples:
+    for s in tqdm(samples, desc="Enhancing samples", unit="sample"):
         try:
             channels, sr, bd = read_wav(s.path)
         except Exception:
@@ -590,9 +1282,15 @@ def enhance(samples: List[SampleInfo], work_dir: str,
         base_name = os.path.splitext(s.original_name)[0]
         program_name = base_name[:30]  # Max 30 chars
 
+        # Derive DNA-driven enhancement parameters
+        dna_params = None
+        if dna_inherit and s.dna is not None:
+            dna_params = adjust_enhancement_by_dna(s.dna)
+
         # Apply fade guards and DC removal to original
         remove_dc_offset(channels)
-        apply_fade_guards(channels, sr)
+        fade_out = dna_params.fade_out_ms if dna_params else 10.0
+        apply_fade_guards(channels, sr, fade_out_ms=fade_out)
 
         # Generate velocity layers
         vel_layers = create_velocity_layers(channels, sr, num_velocity_layers)
@@ -600,7 +1298,29 @@ def enhance(samples: List[SampleInfo], work_dir: str,
         # For each velocity layer, generate round-robin variations
         layer_files = []
         for vel_idx, layer_channels in enumerate(vel_layers):
-            rr_variations = generate_round_robin(layer_channels, sr, num_round_robin)
+            if rebirth:
+                # Rebirth Mode: generate round-robin variations by applying
+                # the rebirth engine profile with different randomized params
+                rr_variations = []
+                for rr_idx in range(num_round_robin):
+                    rr_ch = [list(ch) for ch in layer_channels]
+                    # Each round-robin gets a unique seed for parameter randomization
+                    if rebirth_randomize:
+                        seed = hash((base_name, vel_idx, rr_idx))
+                    else:
+                        seed = hash((base_name, vel_idx, 0))
+                    rr_rng = random.Random(seed)
+                    rebirth_transform(s, rr_ch, sr, rebirth_engine, rr_rng,
+                                      intensity=rebirth_intensity)
+                    rr_variations.append(rr_ch)
+            elif dna_params:
+                rr_variations = generate_round_robin_dna(
+                    layer_channels, sr, num_round_robin,
+                    variation_width=dna_params.rr_variation_width,
+                    saturation_intensity=dna_params.saturation_intensity,
+                )
+            else:
+                rr_variations = generate_round_robin(layer_channels, sr, num_round_robin)
             for rr_idx, rr_channels in enumerate(rr_variations):
                 fname = f"{base_name}__v{vel_idx + 1}__c{rr_idx + 1}.wav"
                 fpath = os.path.join(enhanced_dir, fname)
@@ -620,6 +1340,8 @@ def enhance(samples: List[SampleInfo], work_dir: str,
             "num_velocity_layers": num_velocity_layers,
             "num_round_robin": num_round_robin,
             "sample_rate": sr,
+            "dna": s.dna.to_dict() if s.dna else None,
+            "dna_velocity_curve": dna_params.velocity_curve if dna_params else None,
         }
 
     print(f"  Enhanced {len(programs)} programs ({sum(len(p['layers']) for p in programs.values())} total files)")
@@ -631,23 +1353,32 @@ def enhance(samples: List[SampleInfo], work_dir: str,
 # ─────────────────────────────────────────────────────────────────────────────
 
 def lufs_approximate(channels: List[List[float]], sr: int) -> float:
-    """Simplified LUFS measurement (ITU-R BS.1770 approximation)."""
+    """Simplified LUFS measurement (ITU-R BS.1770 approximation).
+
+    Averages all channels before gating — critical for stereo files.
+    Channel 0 alone under-reports loudness by ~3 dB on balanced stereo material.
+    """
     if not channels or not channels[0]:
         return -100.0
 
-    mono = channels[0]
-    n = len(mono)
+    n = len(channels[0])
+    nch = len(channels)
     window = int(0.4 * sr)  # 400ms windows
 
+    # Mix to mono by averaging squared values across all channels (BS.1770 §2.1)
+    mixed_sq = [
+        sum(channels[ch][i] ** 2 for ch in range(nch)) / nch
+        for i in range(n)
+    ]
+
     if n < window:
-        rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
-        return 20 * math.log10(max(rms, 1e-10)) - 0.691
+        ms = sum(mixed_sq) / max(1, n)
+        return 10 * math.log10(max(ms, 1e-10)) - 0.691
 
     # Compute gated mean square over 400ms windows
     powers = []
     for i in range(0, n - window, window // 4):  # 75% overlap
-        chunk = mono[i:i + window]
-        ms = sum(s * s for s in chunk) / window
+        ms = sum(mixed_sq[i:i + window]) / window
         powers.append(ms)
 
     if not powers:
@@ -672,7 +1403,7 @@ def lufs_approximate(channels: List[List[float]], sr: int) -> float:
 
 def normalize_programs(programs: Dict[str, dict], target_lufs: float = -14.0):
     """Stage 5: LUFS normalize all samples in each program."""
-    for prog_name, prog in programs.items():
+    for prog_name, prog in tqdm(programs.items(), desc="Normalizing programs", unit="prog"):
         # Find the loudest layer (highest velocity, first round-robin)
         loudest_layer = None
         for layer in prog["layers"]:
@@ -837,7 +1568,7 @@ def build_xpm_keygroup(prog_name: str, prog: dict,
             if si.is_loopable:
                 ET.SubElement(layer, "LoopStart").text = str(si.loop_start)
                 ET.SubElement(layer, "LoopEnd").text = str(si.loop_end)
-                ET.SubElement(layer, "LoopCrossfade").text = "100"
+                ET.SubElement(layer, "LoopCrossfade").text = str(LOOP_CROSSFADE_SAMPLES)
             else:
                 ET.SubElement(layer, "LoopStart").text = "-1"
                 ET.SubElement(layer, "LoopEnd").text = "-1"
@@ -851,17 +1582,27 @@ def build_xpm_keygroup(prog_name: str, prog: dict,
 
 
 def build_programs(programs: Dict[str, dict], work_dir: str,
-                   velocity_curve: str = "musical") -> str:
-    """Stage 6: Build XPM programs for all enhanced samples."""
+                   velocity_curve: str = "musical",
+                   dna_inherit: bool = True) -> str:
+    """Stage 6: Build XPM programs for all enhanced samples.
+
+    When dna_inherit is True, uses the DNA-selected velocity curve per program
+    instead of the global velocity_curve argument.
+    """
     xpm_dir = os.path.join(work_dir, "programs")
     os.makedirs(xpm_dir, exist_ok=True)
 
     for prog_name, prog in programs.items():
         si = prog["sample_info"]
+        # Use DNA-selected velocity curve if available, else global
+        curve = velocity_curve
+        if dna_inherit and prog.get("dna_velocity_curve"):
+            curve = prog["dna_velocity_curve"]
+
         if si.category in DRUM_CATEGORIES:
-            xpm_content = build_xpm_drum(prog_name, prog, velocity_curve)
+            xpm_content = build_xpm_drum(prog_name, prog, curve)
         else:
-            xpm_content = build_xpm_keygroup(prog_name, prog, velocity_curve)
+            xpm_content = build_xpm_keygroup(prog_name, prog, curve)
 
         xpm_path = os.path.join(xpm_dir, f"{prog_name}.xpm")
         with open(xpm_path, "w", encoding="utf-8") as f:
@@ -870,6 +1611,53 @@ def build_programs(programs: Dict[str, dict], work_dir: str,
 
     print(f"  Built {len(programs)} XPM programs")
     return xpm_dir
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DNA → .xometa export
+# ─────────────────────────────────────────────────────────────────────────────
+
+def write_xometa_files(programs: Dict[str, dict], work_dir: str) -> List[str]:
+    """Write .xometa preset files with inferred Sonic DNA for each program.
+
+    Returns a list of written .xometa file paths.
+    """
+    xometa_dir = os.path.join(work_dir, "presets")
+    os.makedirs(xometa_dir, exist_ok=True)
+    written = []
+
+    for prog_name, prog in programs.items():
+        dna_dict = prog.get("dna")
+        si = prog.get("sample_info")
+        if si is None:
+            continue
+
+        preset = {
+            "format": "xometa",
+            "version": 1,
+            "name": prog_name,
+            "category": si.category if si else "unknown",
+            "source": "XOutshine",
+            "sample_rate": prog.get("sample_rate", 44100),
+            "velocity_layers": prog.get("num_velocity_layers", 4),
+            "round_robin": prog.get("num_round_robin", 4),
+        }
+
+        if dna_dict:
+            preset["dna"] = dna_dict
+
+        if prog.get("dna_velocity_curve"):
+            preset["velocity_curve"] = prog["dna_velocity_curve"]
+
+        xometa_path = os.path.join(xometa_dir, f"{prog_name}.xometa")
+        with open(xometa_path, "w", encoding="utf-8") as f:
+            json.dump(preset, f, indent=2)
+        written.append(xometa_path)
+        prog["xometa_path"] = xometa_path
+
+    if written:
+        print(f"  Wrote {len(written)} .xometa preset files with DNA")
+    return written
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -901,10 +1689,12 @@ def package_xpn(programs: Dict[str, dict], work_dir: str,
         # Manifest
         zf.write(manifest, "Expansions/Manifest.xml")
 
-        # Programs and samples
+        # Programs, presets, and samples
         for prog_name, prog in programs.items():
             if "xpm_path" in prog:
                 zf.write(prog["xpm_path"], f"Programs/{prog_name}.xpm")
+            if "xometa_path" in prog:
+                zf.write(prog["xometa_path"], f"Presets/{prog_name}.xometa")
             for layer in prog["layers"]:
                 zf.write(layer["path"], f"Samples/{prog_name}/{layer['filename']}")
 
@@ -924,9 +1714,15 @@ def package_folder(programs: Dict[str, dict], work_dir: str,
     samples_dir = os.path.join(output_path, "Samples")
     os.makedirs(programs_dir, exist_ok=True)
 
+    presets_dir = os.path.join(output_path, "Presets")
+
     for prog_name, prog in programs.items():
         if "xpm_path" in prog:
             shutil.copy2(prog["xpm_path"], os.path.join(programs_dir, f"{prog_name}.xpm"))
+
+        if "xometa_path" in prog:
+            os.makedirs(presets_dir, exist_ok=True)
+            shutil.copy2(prog["xometa_path"], os.path.join(presets_dir, f"{prog_name}.xometa"))
 
         prog_samples_dir = os.path.join(samples_dir, prog_name)
         os.makedirs(prog_samples_dir, exist_ok=True)
@@ -986,53 +1782,156 @@ def validate(programs: Dict[str, dict], output_path: str) -> int:
 # Main Pipeline
 # ─────────────────────────────────────────────────────────────────────────────
 
+_STAGE_MARKER_PREFIX = ".xoutshine_stage_"
+
+
+def _stage_done(work_dir: str, stage: int) -> bool:
+    return os.path.exists(os.path.join(work_dir, f"{_STAGE_MARKER_PREFIX}{stage}"))
+
+
+def _mark_stage(work_dir: str, stage: int):
+    open(os.path.join(work_dir, f"{_STAGE_MARKER_PREFIX}{stage}"), "w").close()
+
+
 def run_pipeline(args):
     """Run the full XOutshine pipeline."""
     print(BANNER)
 
     pack_name = args.name or os.path.splitext(os.path.basename(args.input))[0]
     output_format = args.format or ("xpn" if args.output.lower().endswith(".xpn") else "folder")
+    dry_run = getattr(args, "dry_run", False)
+    resume = getattr(args, "resume", False)
+    dna_inherit = getattr(args, "dna_inherit", True)
 
-    with tempfile.TemporaryDirectory(prefix="xoutshine_") as work_dir:
-        # Stage 1: INGEST
+    # Rebirth Mode
+    rebirth = getattr(args, "rebirth", False)
+    rebirth_engine = getattr(args, "rebirth_engine", "OBESE")
+    rebirth_intensity = getattr(args, "rebirth_intensity", 0.7)
+    rebirth_randomize = getattr(args, "rebirth_randomize", True)
+
+    if rebirth:
+        profile = REBIRTH_PROFILES.get(rebirth_engine)
+        profile_desc = profile["description"] if profile else "unknown"
+        print(f"  REBIRTH MODE: engine={rebirth_engine} ({profile_desc})")
+        print(f"  intensity={rebirth_intensity:.1f}, randomize={rebirth_randomize}")
+
+    # Work directory: persistent if --work-dir specified, otherwise temporary
+    explicit_work_dir = getattr(args, "work_dir", None)
+    if explicit_work_dir:
+        os.makedirs(explicit_work_dir, exist_ok=True)
+        work_dir = explicit_work_dir
+        _cleanup = False
+    else:
+        _tmp = tempfile.mkdtemp(prefix="xoutshine_")
+        work_dir = _tmp
+        _cleanup = True
+
+    try:
+        # ── Stage 1: INGEST ──────────────────────────────────────────────────
         print("[1/8] INGEST")
-        samples = ingest(args.input, work_dir)
-        if not samples:
-            print("  ERROR: No samples found.")
-            return 1
+        state_path = os.path.join(work_dir, "samples_state.json")
+        if resume and _stage_done(work_dir, 1) and os.path.exists(state_path):
+            print("  Resuming: stage 1 already complete")
+            with open(state_path) as f:
+                state = json.load(f)
+            samples = [SampleInfo(s["path"], s["original_name"]) for s in state]
+            for s_obj, s_dict in zip(samples, state):
+                s_obj.__dict__.update(s_dict)
+        else:
+            samples = ingest(args.input, work_dir)
+            if not samples:
+                print("  ERROR: No samples found.")
+                return 1
+            _mark_stage(work_dir, 1)
 
-        # Stage 2: CLASSIFY
+        if dry_run:
+            print("\n[DRY RUN] Classification preview (stages 2–3 only):")
+            samples = classify(samples)
+            samples = analyze(samples, dna_inherit=dna_inherit)
+            total_dur = sum(s.duration_s for s in samples)
+            # Estimate: 4 vel layers × 4 RR × ~WAV size per file
+            est_files = len(samples) * args.velocity_layers * args.round_robin
+            # Rough size: avg duration × sr × channels × bytes (16-bit) with 0.8× compression
+            avg_dur = total_dur / max(1, len(samples))
+            est_bytes = est_files * avg_dur * 44100 * 2 * 3 * 0.8
+            est_mb = est_bytes / (1024 * 1024)
+            print(f"\n  Would process : {len(samples)} samples → {est_files} output files")
+            print(f"  Est. pack size: ~{est_mb:.0f} MB")
+            dist = defaultdict(int)
+            for s in samples:
+                dist[s.category] += 1
+            print(f"  Category dist : {dict(dist)}")
+            return 0
+
+        # ── Stage 2: CLASSIFY ────────────────────────────────────────────────
         print("[2/8] CLASSIFY")
-        samples = classify(samples)
+        if resume and _stage_done(work_dir, 2):
+            print("  Resuming: stage 2 already complete")
+        else:
+            samples = classify(samples)
+            _mark_stage(work_dir, 2)
 
-        # Stage 3: ANALYZE
+        # ── Stage 3: ANALYZE ─────────────────────────────────────────────────
         print("[3/8] ANALYZE")
-        samples = analyze(samples)
+        if resume and _stage_done(work_dir, 3):
+            print("  Resuming: stage 3 already complete")
+        else:
+            samples = analyze(samples, dna_inherit=dna_inherit)
+            _mark_stage(work_dir, 3)
 
-        # Stage 4: ENHANCE
+        # ── Stage 4: ENHANCE ─────────────────────────────────────────────────
         print("[4/8] ENHANCE")
-        programs = enhance(samples, work_dir,
-                          num_round_robin=args.round_robin,
-                          num_velocity_layers=args.velocity_layers)
+        programs_path = os.path.join(work_dir, "programs_state.json")
+        if resume and _stage_done(work_dir, 4) and os.path.exists(programs_path):
+            print("  Resuming: stage 4 already complete")
+            with open(programs_path) as f:
+                programs = json.load(f)
+        else:
+            programs = enhance(samples, work_dir,
+                               num_round_robin=args.round_robin,
+                               num_velocity_layers=args.velocity_layers,
+                               dna_inherit=dna_inherit,
+                               rebirth=rebirth,
+                               rebirth_engine=rebirth_engine,
+                               rebirth_intensity=rebirth_intensity,
+                               rebirth_randomize=rebirth_randomize)
+            _mark_stage(work_dir, 4)
 
-        # Stage 5: NORMALIZE
+        # ── Stage 5: NORMALIZE ───────────────────────────────────────────────
         print("[5/8] NORMALIZE")
-        normalize_programs(programs, target_lufs=args.lufs_target)
+        if resume and _stage_done(work_dir, 5):
+            print("  Resuming: stage 5 already complete")
+        else:
+            normalize_programs(programs, target_lufs=args.lufs_target)
+            _mark_stage(work_dir, 5)
 
-        # Stage 6: MAP
+        # ── Stage 6: MAP ─────────────────────────────────────────────────────
         print("[6/8] MAP")
-        build_programs(programs, work_dir, velocity_curve=args.velocity_curve)
+        if resume and _stage_done(work_dir, 6):
+            print("  Resuming: stage 6 already complete")
+        else:
+            build_programs(programs, work_dir, velocity_curve=args.velocity_curve,
+                          dna_inherit=dna_inherit)
+            _mark_stage(work_dir, 6)
 
-        # Stage 7: PACKAGE
+        # ── Write .xometa preset files with DNA ────────────────────────────
+        if dna_inherit:
+            write_xometa_files(programs, work_dir)
+
+        # ── Stage 7: PACKAGE ─────────────────────────────────────────────────
         print("[7/8] PACKAGE")
         if output_format == "xpn":
             package_xpn(programs, work_dir, args.output, pack_name)
         else:
             package_folder(programs, work_dir, args.output, pack_name)
 
-        # Stage 8: VALIDATE
+        # ── Stage 8: VALIDATE ────────────────────────────────────────────────
         print("[8/8] VALIDATE")
         issues = validate(programs, args.output)
+
+    finally:
+        if _cleanup:
+            shutil.rmtree(work_dir, ignore_errors=True)
 
     print(f"\nXOutshine complete. {len(programs)} programs upgraded.")
     print("Outshine the original. ✧")
@@ -1050,7 +1949,23 @@ Examples:
   python xoutshine.py --input pack.xpn --output upgraded.xpn --velocity-curve boom-bap
   python xoutshine.py --input ./drums/ --output drums.xpn --round-robin 4 --velocity-layers 5
 
+  # Preview what would be processed (no files written)
+  python xoutshine.py --input ./samples/ --output out.xpn --dry-run
+
+  # Resume an interrupted run
+  python xoutshine.py --input pack.xpn --output upgraded.xpn --work-dir /tmp/xo_work --resume
+
+  # Rebirth Mode — reprocess through OBESE saturation engine
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth
+
+  # Rebirth with ORIGAMI wavefolding at full intensity
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth --rebirth-engine ORIGAMI --rebirth-intensity 1.0
+
+  # Rebirth with consistent (non-randomized) round-robin params
+  python xoutshine.py --input pack.xpn --output reborn.xpn --rebirth --no-rebirth-randomize
+
 Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
+Rebirth engines: OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB
         """)
 
     parser.add_argument("--input", "-i", required=True,
@@ -1072,7 +1987,35 @@ Velocity curves: musical (default), boom-bap, neo-soul, trap-hard, linear
                         help="Target LUFS level (default: -14)")
     parser.add_argument("--no-round-robin", action="store_true",
                         help="Disable round-robin generation")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Preview classification and estimated output size without processing")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume an interrupted run (requires --work-dir)")
+    parser.add_argument("--work-dir",
+                        help="Persistent working directory for resume support "
+                             "(default: auto-managed temp dir, deleted on completion)")
+    parser.add_argument("--dna-inherit", action="store_true", default=True,
+                        dest="dna_inherit",
+                        help="Enable DNA Inheritance: infer 6D Sonic DNA from audio and "
+                             "use it to shape enhancement decisions (default: enabled)")
+    parser.add_argument("--no-dna-inherit", action="store_false", dest="dna_inherit",
+                        help="Disable DNA Inheritance (use generic enhancement)")
     parser.add_argument("--version", action="version", version=f"XOutshine {VERSION}")
+
+    # Rebirth Mode flags
+    parser.add_argument("--rebirth", action="store_true",
+                        help="Enable Rebirth Mode: reprocess samples through XOmnibus-style "
+                             "DSP transforms instead of preserving original character")
+    parser.add_argument("--rebirth-engine", default="OBESE",
+                        choices=list(REBIRTH_PROFILES.keys()),
+                        help="Which engine profile to apply in Rebirth Mode (default: OBESE)")
+    parser.add_argument("--rebirth-intensity", type=float, default=0.7,
+                        help="Rebirth wet/dry blend: 0.0 = original, 1.0 = fully processed "
+                             "(default: 0.7)")
+    parser.add_argument("--rebirth-randomize", action=argparse.BooleanOptionalAction,
+                        default=True,
+                        help="Randomize transform parameters per round-robin variation "
+                             "(default: enabled)")
 
     args = parser.parse_args()
 

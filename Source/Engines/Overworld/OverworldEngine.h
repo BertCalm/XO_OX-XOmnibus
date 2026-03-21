@@ -111,6 +111,14 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID { "ow_filterEnvDepth", 1 }, "Overworld Filter Env Depth",
             juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.25f));
+
+        // Drum kit mode — when 1.0, forces one-shot chip percussion behaviour:
+        // ampSustain → 0, ampRelease → 50 ms so each hit plays out without sustain.
+        // Enables correct Rhythmic classification in SoundShapeClassifier.
+        // Default 0.0: existing melodic presets are unaffected.
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID { "ow_drumMode", 1 }, "Overworld Drum Mode",
+            juce::NormalisableRange<float>(0.0f, 1.0f, 1.0f), 0.0f));
     }
 
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
@@ -228,6 +236,8 @@ public:
 
         // D001: filter envelope depth
         p_filterEnvDepth = apvts.getRawParameterValue("ow_filterEnvDepth");
+
+        p_drumMode = apvts.getRawParameterValue("ow_drumMode");
     }
 
     //-- Audio -----------------------------------------------------------------
@@ -243,6 +253,15 @@ public:
 
         // Build ParamSnapshot from cached atomics
         auto snap = buildSnapshot();
+
+        // Drum kit mode: force one-shot chip percussion behaviour.
+        // Sustain=0 ensures the voice starts releasing immediately after decay;
+        // Release=50ms gives a crisp chip hit tail consistent with NES/FM percussion.
+        if (snap.drumMode)
+        {
+            snap.ampSustain = 0.0f;
+            snap.ampRelease = 0.05f;
+        }
 
         // -- Apply XOmnibus macros -------------------------------------------
         // M1 ERA: sweep ERA X-axis by up to 1.0 (full chip engine cross-fade).
@@ -551,6 +570,8 @@ private:
         s.gbPulseDuty = static_cast<int>(p_gbPulseDuty->load());
         s.pceWaveSlot = static_cast<int>(p_pceWaveSlot->load());
 
+        s.drumMode = p_drumMode ? p_drumMode->load() > 0.5f : false;
+
         return s;
     }
 
@@ -681,6 +702,8 @@ private:
     // D001: filter envelope depth + per-block envelope level tracker
     std::atomic<float>* p_filterEnvDepth = nullptr;
     float filterEnvLevel = 0.0f;   // decays per-block, set to velocity on noteOn
+
+    std::atomic<float>* p_drumMode = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverworldEngine)
 };

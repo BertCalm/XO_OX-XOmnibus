@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0",
+  "name": "Kelp Spectral Braid",
+  "mood": "Entangled",
+  "engines": [
+    "Orbweave",
+    "Overtone"
+  ],
+  "couplingIntensity": "Deep",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.82,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orbweave",
+        "engineB": "Overtone",
+        "type": "EnvToMorph",
+        "amount": 0.72
+      }
+    ]
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.38,
+    "movement": 0.72,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotType": 0.0,
+      "weave_braidDepth": 0.7,
+      "weave_strandDetune": 0.35,
+      "weave_filterCutoff": 3200.0,
+      "weave_filterReso": 0.5,
+      "weave_ampAttack": 0.04,
+      "weave_ampDecay": 0.4,
+      "weave_ampSustain": 0.65,
+      "weave_ampRelease": 0.8,
+      "weave_macroCoupling": 0.82
+    },
+    "Overtone": {
+      "over_constant": 2.0,
+      "over_depth": 4.0,
+      "over_partialCount": 8.0,
+      "over_color": 0.6,
+      "over_resoMix": 0.4,
+      "over_ampAttack": 0.06,
+      "over_ampDec": 0.5,
+      "over_ampSus": 0.7,
+      "over_ampRel": 1.2,
+      "over_macroDepth": 0.55,
+      "over_macroColor": 0.6,
+      "over_macroCoupling": 0.82,
+      "over_macroSpace": 0.45
+    }
+  },
+  "tags": [
+    "entangled",
+    "orbweave",
+    "overtone",
+    "knot",
+    "spectral",
+    "additive",
+    "braid",
+    "irrational",
+    "kelp"
+  ],
+  "description": "Trefoil knot phase braid (ORBWEAVE) drives Phi-series spectral depth (OVERTONE) via EnvToMorph. Topological geometry shapes irrational partials."
+}

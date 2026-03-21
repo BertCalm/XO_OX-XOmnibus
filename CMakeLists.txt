@@ -239,7 +239,9 @@ target_sources(XOmnibus PRIVATE
     Source/DSP/Effects/fXOnslaught.h
 
     # Export pipeline
+    Source/Export/XPNVelocityCurves.h
     Source/Export/XPNCoverArt.h
+    Source/Export/XOriginate.h
     Source/Export/XPNExporter.h
     Source/Export/XOutshine.h
     Source/Export/XPNDrumExporter.h
