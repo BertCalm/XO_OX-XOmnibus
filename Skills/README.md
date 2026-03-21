@@ -17,6 +17,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [engine-health-check](./engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine compliance check + coupling quality + known bugs | MEDIUM |
 | [dna-designer](./dna-designer/SKILL.md) | `/dna-designer` | Assign accurate 6D Sonic DNA values — calibrated per dimension per engine | MEDIUM |
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
+| [skill-friction-detective](./skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction, frustration, silent failures, and orphaned threads across all skills — then repair, link, and optimize | HIGH |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -41,10 +42,14 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Quick engine QA before release | `/engine-health-check` |
 | Adding DNA to existing presets | `/dna-designer` |
 | Building an MPC export bundle | `/xpn-export-specialist` |
+| Optimizing engine CPU / constraint-driven DSP | `/sro-optimizer` |
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
 | Building a new engine from scratch | `/new-xo-engine` (see `Docs/xomnibus_new_engine_process.md`) |
+| A skill produced confusion, loops, or silent failures | `/skill-friction-detective` |
+| Auditing the skill library for stale content or orphaned skills | `/skill-friction-detective audit` |
+| Finding cross-skill linking opportunities | `/skill-friction-detective link` |
 
 ---
 
