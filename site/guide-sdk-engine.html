@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build an XOmnibus Engine in 200 Lines | XO_OX Field Guide</title>
+<meta name="description" content="Developer Guide: every engine in XOmnibus implements one C++ interface. This tutorial builds a minimal working engine from scratch — one oscillator, one filter, four parameters — and walks through the full integration path.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --sdk-color:  #E9C46A;
+  --sdk-dim:    #C4A44E;
+  --sdk-glow:   rgba(233, 196, 106, 0.12);
+  --code-bg:    #0A0F1A;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(233, 196, 106, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 15%, rgba(42, 161, 155, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--sdk-dim); color: var(--bg-deep); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(233, 196, 106, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 15%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--sdk-dim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--sdk-dim);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--sdk-color); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span { color: var(--text-dim); display: block; margin-top: 0.2rem; }
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: var(--sdk-color);
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+.article code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--sdk-color);
+  background: rgba(233, 196, 106, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--sdk-dim);
+  background: var(--sdk-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sdk-dim), transparent);
+  margin: 3rem 0;
+}
+
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article ol { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+
+/* ═══════════ CODE BLOCKS ═══════════ */
+.code-block {
+  margin: 1.5rem 0;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sdk-dim);
+  border-radius: 0 4px 4px 0;
+  overflow-x: auto;
+}
+.code-block .code-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.7rem 1.2rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  display: block;
+}
+.code-block pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--text);
+  padding: 1.1rem 1.4rem 1.2rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+.code-block pre .kw  { color: #7EC8E3; }   /* keywords: class, virtual, return, etc. */
+.code-block pre .ty  { color: #B8E0B8; }   /* types: float, int, std::string, void */
+.code-block pre .cm  { color: var(--text-faint); font-style: italic; } /* comments */
+.code-block pre .st  { color: #DDB97E; }   /* string literals */
+.code-block pre .nm  { color: var(--sdk-color); }  /* important identifiers */
+.code-block pre .pp  { color: #A890D0; }   /* preprocessor / macros */
+.code-block pre .nu  { color: #A0D0B0; }   /* numeric literals */
+
+/* ═══════════ STEP CARDS ═══════════ */
+.step-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.step-card {
+  background: var(--bg-card);
+  padding: 1.4rem 1.6rem;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--sdk-color);
+  line-height: 1;
+  padding-top: 0.1rem;
+}
+.step-content h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin: 0 0 0.4rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ═══════════ DOCTRINE TABLE ═══════════ */
+.doctrine-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+.doctrine-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: left;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+}
+.doctrine-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text);
+  line-height: 1.6;
+}
+.doctrine-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--sdk-color);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.doctrine-table td:nth-child(2) {
+  color: var(--cream);
+  font-weight: 400;
+}
+.doctrine-table tr:hover td { background: rgba(233, 196, 106, 0.03); }
+
+/* ═══════════ CHECKLIST ═══════════ */
+.checklist {
+  margin: 2rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sdk-dim);
+  border-radius: 0 4px 4px 0;
+  padding: 1.4rem 1.6rem;
+}
+.checklist-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sdk-dim);
+  margin-bottom: 1rem;
+  display: block;
+}
+.checklist ul {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 0;
+}
+.checklist li {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 0.35rem;
+  padding-left: 1.4rem;
+  position: relative;
+}
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--sdk-dim);
+  font-size: 0.85rem;
+}
+
+/* ═══════════ CALLOUT ═══════════ */
+.callout {
+  margin: 2rem 0;
+  padding: 1.3rem 1.5rem;
+  background: var(--sdk-glow);
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 4px;
+}
+.callout-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sdk-color);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.callout p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 0;
+}
+
+/* ═══════════ BACK LINK ═══════════ */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--sdk-dim); }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .step-card { grid-template-columns: 36px 1fr; gap: 0.8rem; }
+  .doctrine-table { font-size: 0.82rem; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<meta property="og:title" content="How to Build an XOmnibus Engine in 200 Lines | XO_OX Field Guide">
+<meta property="og:description" content="Developer Guide: build a minimal working XOmnibus engine from scratch — one oscillator, one filter, four parameters — and walk through the full integration path.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">SDK Guide &mdash; Architecture #14</div>
+  <h1>How to Build an XOmnibus Engine <em>in 200 Lines</em></h1>
+  <p class="article-hero-sub">
+    Every engine in XOmnibus &mdash; all 46 of them &mdash; is a standalone DSP module that implements one C++ interface.
+    The SDK removes JUCE as a dependency at the boundary. You can write a new engine with a text editor, a C++17 compiler, and this tutorial.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Category<span style="color: var(--sdk-color);">SDK &mdash; Developer Tutorial</span></div>
+    <div class="article-meta-item">Read Time<span>25 min</span></div>
+    <div class="article-meta-item">Words<span>~5,000</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--sdk-color);">XO Gold #E9C46A</span></div>
+  </div>
+</header>
+
+<article class="article" id="article-content">
+
+<p class="reveal">
+Every engine in XOmnibus implements the same interface. ODDFELIX, with its snapshot synthesis and neon-tetra personality, implements it. ORGANISM, with its Wolfram automaton driving 16 cells of DSP, implements it. OPERA, with Kuramoto oscillator networks and an autonomous dramatic conductor, implements it. The interface is short. The surface area a third-party developer needs to understand is small. This tutorial builds a complete working engine &mdash; one sawtooth oscillator, one one-pole lowpass filter, four parameters, one macro &mdash; and integrates it into XOmnibus in about 200 lines.
+</p>
+
+<p class="reveal">
+The XOmnibus SDK lives in <code>SDK/include/xomnibus/</code>. It has three headers: <code>SynthEngine.h</code> (the interface), <code>CouplingTypes.h</code> (the cross-engine modulation enum), and <code>EngineModule.h</code> (the export macro for compiled shared libraries). None of them include JUCE. JUCE types &mdash; <code>juce::AudioBuffer</code>, <code>juce::MidiBuffer</code>, <code>juce::String</code> &mdash; are replaced at the boundary with plain C++ equivalents: <code>StereoBuffer</code>, <code>MidiEventList</code>, <code>std::string</code>. The adapter layer inside XOmnibus translates between them. If you are building an engine that will ship as a compiled module, you never touch JUCE at all.
+</p>
+
+<p class="reveal">
+If you are building inside the XOmnibus source tree &mdash; contributing to the main repo or adding a private engine to your fork &mdash; you implement the JUCE-coupled <code>Source/Core/SynthEngine.h</code> interface instead. The structure is identical. The difference is only at the type boundary. This tutorial uses the SDK interface throughout, but all the patterns translate directly.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 1: The Interface</h2>
+
+<p class="reveal">
+The full <code>xomnibus::SynthEngine</code> class is in <code>SDK/include/xomnibus/SynthEngine.h</code>. Here are the pure-virtual methods every engine must implement, each with its contract:
+</p>
+
+<div class="code-block reveal" aria-label="SynthEngine pure-virtual interface">
+  <span class="code-label">SDK/include/xomnibus/SynthEngine.h &mdash; required interface</span>
+  <pre><span class="kw">namespace</span> xomnibus {
+
+<span class="kw">class</span> <span class="nm">SynthEngine</span> {
+<span class="kw">public</span>:
+    <span class="kw">virtual</span> ~SynthEngine() = <span class="kw">default</span>;
+
+    <span class="cm">// ── Lifecycle ────────────────────────────────────────────────────────</span>
+
+    <span class="cm">// Allocate buffers, initialize state. Called once before audio starts.</span>
+    <span class="cm">// Memory allocation IS allowed here. Never in renderBlock().</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> prepare(<span class="ty">double</span> sampleRate, <span class="ty">int</span> maxBlockSize) = <span class="nu">0</span>;
+
+    <span class="cm">// Free non-essential resources when audio stops.</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> releaseResources() {}
+
+    <span class="cm">// Reset oscillator phases, filter state, envelopes — without reallocating.</span>
+    <span class="cm">// Called on preset change and transport reset.</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> reset() = <span class="nu">0</span>;
+
+    <span class="cm">// ── Audio ────────────────────────────────────────────────────────────</span>
+
+    <span class="cm">// Render a block of audio. Process MIDI. Real-time safe: no allocation,</span>
+    <span class="cm">// no blocking, no exceptions. Write into buffer additively.</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> renderBlock(<span class="nm">StereoBuffer</span>&amp; buffer, <span class="kw">const</span> <span class="nm">MidiEventList</span>&amp; midi) = <span class="nu">0</span>;
+
+    <span class="cm">// ── Coupling ─────────────────────────────────────────────────────────</span>
+
+    <span class="cm">// Return a cached output sample for coupling reads. O(1) — just read</span>
+    <span class="cm">// from a pre-filled member array. channel: 0=left, 1=right, 2=env level.</span>
+    <span class="kw">virtual</span> <span class="ty">float</span> getSampleForCoupling(<span class="ty">int</span> channel, <span class="ty">int</span> sampleIndex) <span class="kw">const</span>
+        { <span class="kw">return</span> <span class="nu">0.0f</span>; } <span class="cm">// default: no coupling output</span>
+
+    <span class="cm">// Receive modulation from another engine. Accumulate; consume in renderBlock().</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> applyCouplingInput(<span class="nm">CouplingType</span> type, <span class="ty">float</span> amount,
+                                     <span class="kw">const</span> <span class="ty">float</span>* sourceBuffer, <span class="ty">int</span> numSamples) {}
+
+    <span class="cm">// ── Parameters ───────────────────────────────────────────────────────</span>
+
+    <span class="cm">// Return all parameter definitions. Called once at startup.</span>
+    <span class="kw">virtual</span> std::vector&lt;<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> = <span class="nu">0</span>;
+
+    <span class="cm">// Set / get a parameter by ID. Called from non-audio thread.</span>
+    <span class="kw">virtual</span> <span class="ty">void</span> setParameter(<span class="kw">const</span> std::string&amp; id, <span class="ty">float</span> value) {}
+    <span class="kw">virtual</span> <span class="ty">float</span> getParameter(<span class="kw">const</span> std::string&amp; id) <span class="kw">const</span> { <span class="kw">return</span> <span class="nu">0.0f</span>; }
+
+    <span class="cm">// ── Identity ─────────────────────────────────────────────────────────</span>
+
+    <span class="cm">// Unique identifier — use an O-word (e.g. "Minimal", "Oscillum").</span>
+    <span class="kw">virtual</span> std::string getEngineId() <span class="kw">const</span> = <span class="nu">0</span>;
+
+    <span class="cm">// Accent colour for UI theming. Return an RGBA struct.</span>
+    <span class="kw">virtual</span> <span class="nm">Colour</span> getAccentColour() <span class="kw">const</span> { <span class="kw">return</span> { <span class="nu">128</span>, <span class="nu">128</span>, <span class="nu">128</span> }; }
+
+    <span class="kw">virtual</span> <span class="ty">int</span> getMaxVoices() <span class="kw">const</span> { <span class="kw">return</span> <span class="nu">1</span>; }
+    <span class="kw">virtual</span> <span class="ty">int</span> getActiveVoiceCount() <span class="kw">const</span> { <span class="kw">return</span> <span class="nu">0</span>; }
+};
+
+} <span class="cm">// namespace xomnibus</span></pre>
+</div>
+
+<p class="reveal">
+Six pure virtuals are mandatory: <code>prepare()</code>, <code>reset()</code>, <code>renderBlock()</code>, <code>getParameterDefs()</code>, and <code>getEngineId()</code>. Everything else has a default implementation you can override when you need it. Coupling output, coupling input, and parameter get/set are all optional until you want them.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 2: Building MinimalEngine Step by Step</h2>
+
+<p class="reveal">
+MinimalEngine has one sawtooth oscillator, a one-pole lowpass filter, an amplitude envelope, and four parameters. It uses the <code>min_</code> parameter prefix. Each step below adds one capability, building to a complete working engine.
+</p>
+
+<h3 class="reveal">Step 1 &mdash; The Shell</h3>
+
+<p class="reveal">
+Start with the class declaration and identity methods. Pick an O-word engine ID and a parameter prefix you will never change.
+</p>
+
+<div class="code-block reveal" aria-label="MinimalEngine class declaration">
+  <span class="code-label">Step 1 — class declaration and identity</span>
+  <pre><span class="pp">#pragma once</span>
+<span class="pp">#include</span> <span class="st">&lt;xomnibus/SynthEngine.h&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;cmath&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;atomic&gt;</span>
+
+<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xomnibus::SynthEngine {
+<span class="kw">public</span>:
+    std::string getEngineId() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="st">"Minimal"</span>; }
+
+    xomnibus::Colour getAccentColour() <span class="kw">const</span> <span class="kw">override</span>
+    {
+        <span class="cm">// XO Gold — use your own accent colour here</span>
+        <span class="kw">return</span> { <span class="nu">0xE9</span>, <span class="nu">0xC4</span>, <span class="nu">0x6A</span> };
+    }
+
+    <span class="ty">int</span> getMaxVoices() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="nu">1</span>; }
+    <span class="ty">int</span> getActiveVoiceCount() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> gate_ ? <span class="nu">1</span> : <span class="nu">0</span>; }
+
+<span class="kw">private</span>:
+    <span class="cm">// DSP state — all initialized in prepare() / reset()</span>
+    <span class="ty">double</span> sampleRate_ = <span class="nu">48000.0</span>;
+    <span class="ty">float</span>  phase_  = <span class="nu">0.0f</span>;   <span class="cm">// oscillator phase [0, 1)</span>
+    <span class="ty">float</span>  freq_   = <span class="nu">440.0f</span>; <span class="cm">// current note frequency</span>
+    <span class="ty">float</span>  vel_    = <span class="nu">0.0f</span>;   <span class="cm">// note velocity [0, 1]</span>
+    <span class="ty">bool</span>   gate_   = <span class="nu">false</span>;
+    <span class="ty">float</span>  filterState_ = <span class="nu">0.0f</span>; <span class="cm">// one-pole filter memory</span>
+    <span class="ty">float</span>  ampEnv_      = <span class="nu">0.0f</span>; <span class="cm">// amplitude envelope follower</span>
+
+    <span class="cm">// Param values — written by setParameter(), read in renderBlock()</span>
+    std::atomic&lt;<span class="ty">float</span>&gt; pCutoff_  { <span class="nu">0.5f</span> }; <span class="cm">// min_cutoff [0,1]</span>
+    std::atomic&lt;<span class="ty">float</span>&gt; pReso_    { <span class="nu">0.0f</span> }; <span class="cm">// min_reso   [0,1]</span>
+    std::atomic&lt;<span class="ty">float</span>&gt; pAttack_  { <span class="nu">0.01f</span>}; <span class="cm">// min_attack seconds</span>
+    std::atomic&lt;<span class="ty">float</span>&gt; pRelease_ { <span class="nu">0.3f</span> }; <span class="cm">// min_release seconds</span>
+};</pre>
+</div>
+
+<h3 class="reveal">Step 2 &mdash; Parameters</h3>
+
+<p class="reveal">
+<code>getParameterDefs()</code> declares all parameters with their ID, display name, range, default, and skew. IDs must follow the <code>{prefix}_{name}</code> convention and are frozen after the first release &mdash; changing them breaks saved patches.
+</p>
+
+<div class="code-block reveal" aria-label="getParameterDefs implementation">
+  <span class="code-label">Step 2 — parameter declarations</span>
+  <pre>std::vector&lt;xomnibus::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
+{
+    <span class="cm">// ParameterDef: { id, name, min, max, default, step, skew }</span>
+    <span class="cm">// skew &lt; 1.0 = log-like curve (good for frequency/time params)</span>
+    <span class="kw">return</span> {
+        { <span class="st">"min_cutoff"</span>,  <span class="st">"Filter Cutoff"</span>,  <span class="nu">0.0f</span>, <span class="nu">1.0f</span>, <span class="nu">0.5f</span>,  <span class="nu">0.001f</span>, <span class="nu">0.4f</span> },
+        { <span class="st">"min_reso"</span>,    <span class="st">"Resonance"</span>,      <span class="nu">0.0f</span>, <span class="nu">1.0f</span>, <span class="nu">0.0f</span>,  <span class="nu">0.001f</span>, <span class="nu">1.0f</span> },
+        { <span class="st">"min_attack"</span>,  <span class="st">"Attack"</span>,         <span class="nu">0.001f</span>,<span class="nu">4.0f</span>, <span class="nu">0.01f</span>, <span class="nu">0.001f</span>, <span class="nu">0.35f</span>},
+        { <span class="st">"min_release"</span>, <span class="st">"Release"</span>,        <span class="nu">0.01f</span>, <span class="nu">8.0f</span>, <span class="nu">0.3f</span>,  <span class="nu">0.001f</span>, <span class="nu">0.35f</span>},
+    };
+}
+
+<span class="cm">// Called from non-audio thread when host automates a parameter.</span>
+<span class="kw">void</span> setParameter(<span class="kw">const</span> std::string&amp; id, <span class="ty">float</span> v) <span class="kw">override</span>
+{
+    <span class="kw">if</span>      (id == <span class="st">"min_cutoff"</span>)  pCutoff_.store(v);
+    <span class="kw">else if</span> (id == <span class="st">"min_reso"</span>)    pReso_.store(v);
+    <span class="kw">else if</span> (id == <span class="st">"min_attack"</span>)  pAttack_.store(v);
+    <span class="kw">else if</span> (id == <span class="st">"min_release"</span>) pRelease_.store(v);
+}
+
+<span class="ty">float</span> getParameter(<span class="kw">const</span> std::string&amp; id) <span class="kw">const</span> <span class="kw">override</span>
+{
+    <span class="kw">if</span>      (id == <span class="st">"min_cutoff"</span>)  <span class="kw">return</span> pCutoff_.load();
+    <span class="kw">else if</span> (id == <span class="st">"min_reso"</span>)    <span class="kw">return</span> pReso_.load();
+    <span class="kw">else if</span> (id == <span class="st">"min_attack"</span>)  <span class="kw">return</span> pAttack_.load();
+    <span class="kw">else if</span> (id == <span class="st">"min_release"</span>) <span class="kw">return</span> pRelease_.load();
+    <span class="kw">return</span> <span class="nu">0.0f</span>;
+}</pre>
+</div>
+
+<div class="callout reveal">
+  <span class="callout-label">Doctrine D004 — Dead Parameters Are Broken Promises</span>
+  <p>Every parameter you declare in <code>getParameterDefs()</code> must affect audio output. An engine with a declared parameter that does nothing fails D004. The seance will find it. Your users will notice it. Audit your parameter list before submitting.</p>
+</div>
+
+<h3 class="reveal">Step 3 &mdash; Prepare</h3>
+
+<p class="reveal">
+<code>prepare()</code> is called once before audio starts. It is the only place allocation is permitted. Store the sample rate and clear all DSP state. The sample rate comes from the host &mdash; never hardcode 44100 or 48000.
+</p>
+
+<div class="code-block reveal" aria-label="prepare and reset implementation">
+  <span class="code-label">Step 3 — prepare() and reset()</span>
+  <pre><span class="ty">void</span> prepare(<span class="ty">double</span> sampleRate, <span class="ty">int</span> <span class="cm">/*maxBlockSize*/</span>) <span class="kw">override</span>
+{
+    sampleRate_ = sampleRate;
+    reset();
+    <span class="cm">// Allocate any per-block scratch buffers here if needed.</span>
+    <span class="cm">// This engine is simple enough to need none.</span>
+}
+
+<span class="ty">void</span> reset() <span class="kw">override</span>
+{
+    phase_       = <span class="nu">0.0f</span>;
+    filterState_ = <span class="nu">0.0f</span>;
+    ampEnv_      = <span class="nu">0.0f</span>;
+    gate_        = <span class="nu">false</span>;
+    vel_         = <span class="nu">0.0f</span>;
+}</pre>
+</div>
+
+<h3 class="reveal">Step 4 &mdash; Note Handling</h3>
+
+<p class="reveal">
+MIDI events arrive in the <code>MidiEventList</code> parameter of <code>renderBlock()</code>. The <code>MidiEvent</code> struct provides helpers: <code>isNoteOn()</code>, <code>isNoteOff()</code>, <code>getNoteNumber()</code>, <code>getFloatVelocity()</code>. Parse them at the correct sample offset within the block.
+</p>
+
+<div class="code-block reveal" aria-label="MIDI note handling">
+  <span class="code-label">Step 4 — MIDI-to-frequency conversion and note gate</span>
+  <pre><span class="cm">// Convert MIDI note number to Hz using equal temperament.</span>
+<span class="cm">// Standard formula: 440 Hz * 2^((note - 69) / 12)</span>
+<span class="kw">static</span> <span class="ty">float</span> midiToHz(<span class="ty">int</span> note) <span class="kw">noexcept</span>
+{
+    <span class="kw">return</span> <span class="nu">440.0f</span> * std::pow(<span class="nu">2.0f</span>, (note - <span class="nu">69</span>) / <span class="nu">12.0f</span>);
+}
+
+<span class="cm">// Call this per-event before the DSP loop</span>
+<span class="kw">void</span> handleEvent(<span class="kw">const</span> xomnibus::<span class="nm">MidiEvent</span>&amp; e)
+{
+    <span class="kw">if</span> (e.isNoteOn()) {
+        freq_ = midiToHz(e.getNoteNumber());
+        vel_  = e.getFloatVelocity();
+        gate_ = <span class="kw">true</span>;
+        <span class="cm">// Don't reset phase — legato re-trigger sounds better</span>
+    }
+    <span class="kw">else if</span> (e.isNoteOff()) {
+        gate_ = <span class="kw">false</span>;
+    }
+}</pre>
+</div>
+
+<h3 class="reveal">Step 5 &mdash; The Render Loop</h3>
+
+<p class="reveal">
+<code>renderBlock()</code> is called on the audio thread at the host's buffer rate. It must complete within the buffer duration. Read all parameter atomics once at the top of the function &mdash; the ParamSnapshot pattern &mdash; then use the captured values per-sample. This avoids data races and costs nothing.
+</p>
+
+<div class="code-block reveal" aria-label="renderBlock implementation">
+  <span class="code-label">Step 5 — renderBlock() with ParamSnapshot pattern</span>
+  <pre><span class="ty">void</span> renderBlock(xomnibus::<span class="nm">StereoBuffer</span>&amp; buf, <span class="kw">const</span> xomnibus::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
+{
+    <span class="cm">// ── ParamSnapshot: read atomics once per block ─────────────────────</span>
+    <span class="kw">const</span> <span class="ty">float</span> cutoff  = pCutoff_.load();
+    <span class="kw">const</span> <span class="ty">float</span> attack  = pAttack_.load();
+    <span class="kw">const</span> <span class="ty">float</span> release = pRelease_.load();
+
+    <span class="cm">// One-pole filter coefficient from normalised cutoff [0,1]</span>
+    <span class="cm">// Map to 20 Hz – 18 kHz, then compute matched-Z coefficient:</span>
+    <span class="cm">// coeff = exp(-2π * fc / sr)   — the correct IIR formula</span>
+    <span class="kw">const</span> <span class="ty">float</span> fc    = <span class="nu">20.0f</span> * std::pow(<span class="nu">900.0f</span>, cutoff);
+    <span class="kw">const</span> <span class="ty">float</span> coeff = std::exp(<span class="nu">-2.0f</span> * <span class="nu">3.14159265f</span> * fc / (<span class="ty">float</span>)sampleRate_);
+
+    <span class="cm">// Amplitude envelope time constants in samples</span>
+    <span class="kw">const</span> <span class="ty">float</span> attackCoeff  = std::exp(<span class="nu">-1.0f</span> / (attack  * (<span class="ty">float</span>)sampleRate_));
+    <span class="kw">const</span> <span class="ty">float</span> releaseCoeff = std::exp(<span class="nu">-1.0f</span> / (release * (<span class="ty">float</span>)sampleRate_));
+
+    <span class="kw">const</span> <span class="ty">float</span> phaseInc = freq_ / (<span class="ty">float</span>)sampleRate_;
+
+    <span class="ty">int</span> eventIdx = <span class="nu">0</span>;
+
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nu">0</span>; i &lt; buf.numSamples; ++i)
+    {
+        <span class="cm">// ── MIDI events at their correct sample offset ─────────────────</span>
+        <span class="kw">while</span> (eventIdx &lt; midi.numEvents &amp;&amp; midi.events[eventIdx].sampleOffset == i)
+            handleEvent(midi.events[eventIdx++]);
+
+        <span class="cm">// ── Sawtooth oscillator ────────────────────────────────────────</span>
+        <span class="kw">const</span> <span class="ty">float</span> saw = phase_ * <span class="nu">2.0f</span> - <span class="nu">1.0f</span>; <span class="cm">// [-1, +1]</span>
+        phase_ += phaseInc;
+        <span class="kw">if</span> (phase_ >= <span class="nu">1.0f</span>) phase_ -= <span class="nu">1.0f</span>;
+
+        <span class="cm">// ── One-pole lowpass ───────────────────────────────────────────</span>
+        filterState_ = coeff * filterState_ + (<span class="nu">1.0f</span> - coeff) * saw;
+
+        <span class="cm">// ── Amplitude envelope (gate-driven exponential) ───────────────</span>
+        <span class="kw">const</span> <span class="ty">float</span> envTarget = gate_ ? vel_ : <span class="nu">0.0f</span>;
+        <span class="kw">const</span> <span class="ty">float</span> envCoeff  = (envTarget &gt; ampEnv_) ? attackCoeff : releaseCoeff;
+        ampEnv_ = envCoeff * ampEnv_ + (<span class="nu">1.0f</span> - envCoeff) * envTarget;
+
+        <span class="cm">// ── Write output (additive — host may have mixed other engines) ─</span>
+        <span class="kw">const</span> <span class="ty">float</span> out = filterState_ * ampEnv_;
+        buf.left [i] += out;
+        buf.right[i] += out;
+    }
+
+    <span class="cm">// Denormal protection: flush subnormals that accumulate in filter memory</span>
+    <span class="kw">if</span> (std::abs(filterState_) &lt; <span class="nu">1e-18f</span>) filterState_ = <span class="nu">0.0f</span>;
+    <span class="kw">if</span> (std::abs(ampEnv_)      &lt; <span class="nu">1e-18f</span>) ampEnv_      = <span class="nu">0.0f</span>;
+}</pre>
+</div>
+
+<div class="callout reveal">
+  <span class="callout-label">Critical: use matched-Z IIR coefficients</span>
+  <p>The correct one-pole coefficient is <code>exp(-2&pi;f<sub>c</sub>/sr)</code>. The Euler approximation <code>w/(w+1)</code> is wrong above 1 kHz and produces audible frequency error. Always derive the sample rate from the <code>sampleRate</code> argument to <code>prepare()</code> &mdash; never hardcode 44100 or 48000. Users with 96 kHz interfaces will hear broken filters otherwise.</p>
+</div>
+
+<h3 class="reveal">The Complete 200-Line Engine</h3>
+
+<p class="reveal">
+The six steps above assemble into a single header file. Here is the complete <code>MinimalEngine.h</code>:
+</p>
+
+<div class="code-block reveal" aria-label="Complete MinimalEngine.h">
+  <span class="code-label">MinimalEngine.h — complete implementation (~200 lines)</span>
+  <pre><span class="pp">#pragma once</span>
+<span class="pp">#include</span> <span class="st">&lt;xomnibus/SynthEngine.h&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;cmath&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;atomic&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;string&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;vector&gt;</span>
+
+<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xomnibus::<span class="nm">SynthEngine</span> {
+<span class="kw">public</span>:
+
+    <span class="cm">// ── Identity ─────────────────────────────────────────────────────────</span>
+    std::string getEngineId() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="st">"Minimal"</span>; }
+    xomnibus::<span class="nm">Colour</span> getAccentColour() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> {<span class="nu">0xE9</span>,<span class="nu">0xC4</span>,<span class="nu">0x6A</span>}; }
+    <span class="ty">int</span> getMaxVoices() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="nu">1</span>; }
+    <span class="ty">int</span> getActiveVoiceCount() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> gate_ ? <span class="nu">1</span> : <span class="nu">0</span>; }
+
+    <span class="cm">// ── Parameters ───────────────────────────────────────────────────────</span>
+    std::vector&lt;xomnibus::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
+    {
+        <span class="kw">return</span> {
+            { <span class="st">"min_cutoff"</span>,  <span class="st">"Filter Cutoff"</span>,  <span class="nu">0.0f</span>,  <span class="nu">1.0f</span>,  <span class="nu">0.5f</span>,  <span class="nu">0.001f</span>, <span class="nu">0.4f</span>  },
+            { <span class="st">"min_reso"</span>,    <span class="st">"Resonance"</span>,      <span class="nu">0.0f</span>,  <span class="nu">1.0f</span>,  <span class="nu">0.0f</span>,  <span class="nu">0.001f</span>, <span class="nu">1.0f</span>  },
+            { <span class="st">"min_attack"</span>,  <span class="st">"Attack"</span>,         <span class="nu">0.001f</span>,<span class="nu">4.0f</span>,  <span class="nu">0.01f</span>, <span class="nu">0.001f</span>, <span class="nu">0.35f</span> },
+            { <span class="st">"min_release"</span>, <span class="st">"Release"</span>,        <span class="nu">0.01f</span>, <span class="nu">8.0f</span>,  <span class="nu">0.3f</span>,  <span class="nu">0.001f</span>, <span class="nu">0.35f</span> },
+        };
+    }
+
+    <span class="ty">void</span> setParameter(<span class="kw">const</span> std::string&amp; id, <span class="ty">float</span> v) <span class="kw">override</span>
+    {
+        <span class="kw">if</span>      (id == <span class="st">"min_cutoff"</span>)  pCutoff_.store(v);
+        <span class="kw">else if</span> (id == <span class="st">"min_reso"</span>)    pReso_.store(v);
+        <span class="kw">else if</span> (id == <span class="st">"min_attack"</span>)  pAttack_.store(v);
+        <span class="kw">else if</span> (id == <span class="st">"min_release"</span>) pRelease_.store(v);
+    }
+
+    <span class="ty">float</span> getParameter(<span class="kw">const</span> std::string&amp; id) <span class="kw">const</span> <span class="kw">override</span>
+    {
+        <span class="kw">if</span>      (id == <span class="st">"min_cutoff"</span>)  <span class="kw">return</span> pCutoff_.load();
+        <span class="kw">else if</span> (id == <span class="st">"min_reso"</span>)    <span class="kw">return</span> pReso_.load();
+        <span class="kw">else if</span> (id == <span class="st">"min_attack"</span>)  <span class="kw">return</span> pAttack_.load();
+        <span class="kw">else if</span> (id == <span class="st">"min_release"</span>) <span class="kw">return</span> pRelease_.load();
+        <span class="kw">return</span> <span class="nu">0.0f</span>;
+    }
+
+    <span class="cm">// ── Lifecycle ────────────────────────────────────────────────────────</span>
+    <span class="ty">void</span> prepare(<span class="ty">double</span> sampleRate, <span class="ty">int</span>) <span class="kw">override</span>
+    {
+        sampleRate_ = sampleRate;
+        reset();
+    }
+
+    <span class="ty">void</span> reset() <span class="kw">override</span>
+    {
+        phase_ = filterState_ = ampEnv_ = <span class="nu">0.0f</span>;
+        gate_  = <span class="kw">false</span>;
+        vel_   = <span class="nu">0.0f</span>;
+    }
+
+    <span class="cm">// ── Audio ────────────────────────────────────────────────────────────</span>
+    <span class="ty">void</span> renderBlock(xomnibus::<span class="nm">StereoBuffer</span>&amp; buf,
+                     <span class="kw">const</span> xomnibus::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
+    {
+        <span class="cm">// ParamSnapshot — read atomics once, use captured values per sample</span>
+        <span class="kw">const</span> <span class="ty">float</span> cutoff  = pCutoff_.load();
+        <span class="kw">const</span> <span class="ty">float</span> attack  = pAttack_.load();
+        <span class="kw">const</span> <span class="ty">float</span> release = pRelease_.load();
+        <span class="kw">const</span> <span class="ty">float</span> sr      = (<span class="ty">float</span>)sampleRate_;
+
+        <span class="cm">// One-pole lowpass: matched-Z coefficient</span>
+        <span class="kw">const</span> <span class="ty">float</span> fc    = <span class="nu">20.0f</span> * std::pow(<span class="nu">900.0f</span>, cutoff);
+        <span class="kw">const</span> <span class="ty">float</span> coeff = std::exp(-<span class="nu">2.0f</span> * <span class="nu">3.14159265f</span> * fc / sr);
+
+        <span class="cm">// Envelope time constants in samples</span>
+        <span class="kw">const</span> <span class="ty">float</span> aCoeff = std::exp(-<span class="nu">1.0f</span> / (attack  * sr));
+        <span class="kw">const</span> <span class="ty">float</span> rCoeff = std::exp(-<span class="nu">1.0f</span> / (release * sr));
+        <span class="kw">const</span> <span class="ty">float</span> phInc  = freq_ / sr;
+
+        <span class="ty">int</span> evIdx = <span class="nu">0</span>;
+
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nu">0</span>; i &lt; buf.numSamples; ++i)
+        {
+            <span class="kw">while</span> (evIdx &lt; midi.numEvents &amp;&amp; midi.events[evIdx].sampleOffset == i)
+                handleEvent(midi.events[evIdx++]);
+
+            <span class="cm">// Sawtooth: phase sweeps [0, 1) → sample in [-1, +1]</span>
+            <span class="kw">const</span> <span class="ty">float</span> saw = phase_ * <span class="nu">2.0f</span> - <span class="nu">1.0f</span>;
+            phase_ += phInc;
+            <span class="kw">if</span> (phase_ >= <span class="nu">1.0f</span>) phase_ -= <span class="nu">1.0f</span>;
+
+            <span class="cm">// One-pole lowpass (D001: velocity shapes filter — add vel_ offset)</span>
+            filterState_ = coeff * filterState_ + (<span class="nu">1.0f</span> - coeff) * saw;
+
+            <span class="cm">// Amplitude envelope</span>
+            <span class="kw">const</span> <span class="ty">float</span> envTarget = gate_ ? vel_ : <span class="nu">0.0f</span>;
+            <span class="kw">const</span> <span class="ty">float</span> envC = (envTarget &gt; ampEnv_) ? aCoeff : rCoeff;
+            ampEnv_ = envC * ampEnv_ + (<span class="nu">1.0f</span> - envC) * envTarget;
+
+            <span class="kw">const</span> <span class="ty">float</span> out = filterState_ * ampEnv_;
+            buf.left [i] += out;
+            buf.right[i] += out;
+        }
+
+        <span class="cm">// Denormal protection</span>
+        <span class="kw">if</span> (std::abs(filterState_) &lt; <span class="nu">1e-18f</span>) filterState_ = <span class="nu">0.0f</span>;
+        <span class="kw">if</span> (std::abs(ampEnv_)      &lt; <span class="nu">1e-18f</span>) ampEnv_      = <span class="nu">0.0f</span>;
+    }
+
+<span class="kw">private</span>:
+    <span class="ty">double</span> sampleRate_ = <span class="nu">48000.0</span>;
+    <span class="ty">float</span>  phase_  = <span class="nu">0.0f</span>;
+    <span class="ty">float</span>  freq_   = <span class="nu">440.0f</span>;
+    <span class="ty">float</span>  vel_    = <span class="nu">0.0f</span>;
+    <span class="ty">bool</span>   gate_   = <span class="kw">false</span>;
+    <span class="ty">float</span>  filterState_ = <span class="nu">0.0f</span>;
+    <span class="ty">float</span>  ampEnv_      = <span class="nu">0.0f</span>;
+
+    std::atomic&lt;<span class="ty">float</span>&gt; pCutoff_  { <span class="nu">0.5f</span>  };
+    std::atomic&lt;<span class="ty">float</span>&gt; pReso_    { <span class="nu">0.0f</span>  };
+    std::atomic&lt;<span class="ty">float</span>&gt; pAttack_  { <span class="nu">0.01f</span> };
+    std::atomic&lt;<span class="ty">float</span>&gt; pRelease_ { <span class="nu">0.3f</span>  };
+
+    <span class="kw">void</span> handleEvent(<span class="kw">const</span> xomnibus::<span class="nm">MidiEvent</span>&amp; e) <span class="kw">noexcept</span>
+    {
+        <span class="kw">if</span>      (e.isNoteOn())  { freq_ = midiToHz(e.getNoteNumber());
+                                   vel_  = e.getFloatVelocity(); gate_ = <span class="kw">true</span>; }
+        <span class="kw">else if</span> (e.isNoteOff()) { gate_ = <span class="kw">false</span>; }
+    }
+
+    <span class="kw">static</span> <span class="ty">float</span> midiToHz(<span class="ty">int</span> note) <span class="kw">noexcept</span>
+    { <span class="kw">return</span> <span class="nu">440.0f</span> * std::pow(<span class="nu">2.0f</span>, (note - <span class="nu">69</span>) / <span class="nu">12.0f</span>); }
+};</pre>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 3: The XOMNIBUS_EXPORT_ENGINE Macro</h2>
+
+<p class="reveal">
+When you ship an engine as a compiled shared library (<code>.dylib</code> / <code>.so</code> / <code>.dll</code>), one macro in your <code>.cpp</code> file exports the two C functions XOmnibus expects at the module boundary: <code>xomnibus_create_engine()</code>, which returns a new instance, and <code>xomnibus_engine_info()</code>, which fills metadata without instantiating the engine.
+</p>
+
+<div class="code-block reveal" aria-label="XOMNIBUS_EXPORT_ENGINE macro usage">
+  <span class="code-label">MinimalEngine.cpp — the only .cpp file you need</span>
+  <pre><span class="pp">#include</span> <span class="st">"MinimalEngine.h"</span>
+<span class="pp">#include</span> <span class="st">&lt;xomnibus/EngineModule.h&gt;</span>
+
+<span class="cm">// Arguments: ClassName, ID, DisplayName, Prefix, R, G, B, Version, Author</span>
+<span class="nm">XOMNIBUS_EXPORT_ENGINE</span>(
+    <span class="nm">MinimalEngine</span>,         <span class="cm">// your C++ class</span>
+    <span class="st">"Minimal"</span>,             <span class="cm">// engine ID — use an O-word for fleet engines</span>
+    <span class="st">"Minimal Engine"</span>,      <span class="cm">// display name shown in UI</span>
+    <span class="st">"min_"</span>,               <span class="cm">// parameter prefix — FROZEN after first release</span>
+    <span class="nu">0xE9</span>, <span class="nu">0xC4</span>, <span class="nu">0x6A</span>,       <span class="cm">// accent colour RGB (XO Gold here)</span>
+    <span class="st">"1.0.0"</span>,               <span class="cm">// semver string</span>
+    <span class="st">"Your Name"</span>            <span class="cm">// author / studio</span>
+)</pre>
+</div>
+
+<p class="reveal">
+That is the entire public API surface. XOmnibus loads the shared library, calls <code>xomnibus_engine_info()</code> to read metadata without allocating anything, then calls <code>xomnibus_create_engine()</code> to get a live instance. The <code>EngineMetadata</code> struct also carries the SDK version integer &mdash; if a future XOmnibus version introduces a breaking ABI change, the version field allows the host to reject incompatible modules gracefully.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 4: Integration Checklist</h2>
+
+<p class="reveal">
+Whether you are building inside the XOmnibus source tree or shipping a compiled module, the integration path is the same four steps:
+</p>
+
+<div class="checklist reveal">
+  <span class="checklist-title">Integration Steps</span>
+  <ul>
+    <li>Copy <code>MinimalEngine.h</code> to <code>Source/Engines/Minimal/MinimalEngine.h</code></li>
+    <li>Add <code>#include "Engines/Minimal/MinimalEngine.h"</code> to <code>Source/Core/EngineRegistry.h</code> and register the engine in the registry constructor</li>
+    <li>Add a row to the engine table in <code>CLAUDE.md</code> and <code>Docs/xomnibus_master_specification.md</code> (engine ID, parameter prefix, accent colour)</li>
+    <li>Copy any preset <code>.xometa</code> files to <code>Presets/XOmnibus/{mood}/</code></li>
+    <li>Run <code>cmake --build build</code> and verify zero errors</li>
+    <li>Run <code>auval -v aumu XOmn XOOX</code> and verify PASS</li>
+    <li>Run the engine health check skill (<code>/engine-health-check</code>) against the new engine</li>
+  </ul>
+</div>
+
+<p class="reveal">
+For a compiled third-party module, skip the registry step and drop the compiled <code>.xomodule</code> into the XOmnibus modules folder (<code>~/Library/Application Support/XO_OX/Modules/</code> on macOS). XOmnibus scans this folder at startup, loads every valid module, and registers its engines automatically.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 5: The Six Doctrines &mdash; Minimum Viable</h2>
+
+<p class="reveal">
+Every engine in the fleet is evaluated against six doctrines. Here is what minimum viable compliance looks like for a new engine. Meeting these thresholds is the baseline for integration. The seance process evaluates whether you have met the spirit, not just the letter.
+</p>
+
+<table class="doctrine-table reveal" aria-label="Six Doctrines minimum viable implementations">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Doctrine</th>
+      <th>Minimum Viable Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>D001</td>
+      <td>Velocity Must Shape Timbre</td>
+      <td>Velocity should scale filter cutoff, not just amplitude. In MinimalEngine, add <code>vel_ * 0.3f</code> to the cutoff before computing <code>fc</code>. Higher velocity = brighter sound.</td>
+    </tr>
+    <tr>
+      <td>D002</td>
+      <td>Modulation is the Lifeblood</td>
+      <td>At minimum: 2 LFOs with rate and depth parameters, mod wheel mapped to filter or pitch, 4 working macros, at least 4 mod matrix slots. Static engines fail this doctrine.</td>
+    </tr>
+    <tr>
+      <td>D003</td>
+      <td>The Physics IS the Synthesis</td>
+      <td>If your engine models a physical system (string, membrane, room), cite the paper in a source comment. No citation requirement for purely abstract synthesis.</td>
+    </tr>
+    <tr>
+      <td>D004</td>
+      <td>Dead Parameters Are Broken Promises</td>
+      <td>Run a manual check: zero every parameter that is not the one you are testing. Verify each parameter produces audible change in isolation. No declared parameter may be a no-op.</td>
+    </tr>
+    <tr>
+      <td>D005</td>
+      <td>An Engine That Cannot Breathe Is a Photograph</td>
+      <td>At least one LFO must have a rate floor at or below 0.01 Hz (one full cycle per 100 seconds). This allows the engine to self-modulate over very long timescales.</td>
+    </tr>
+    <tr>
+      <td>D006</td>
+      <td>Expression Input Is Not Optional</td>
+      <td>Velocity must modulate timbre (D001 above). At least one additional expression input: aftertouch, mod wheel CC1, or expression pedal CC11. Engines without any CC response fail this doctrine.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="reveal">
+MinimalEngine as shown above passes D004 (all four params wired), partially satisfies D001 (velocity modulates amplitude; adding cutoff offset fully satisfies it), and fails D002, D005, and D006 out of the box. That is expected &mdash; MinimalEngine is a scaffold, not a production engine. A fleet engine needs at least 2 LFOs before it ships.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Section 6: Going Further</h2>
+
+<h3 class="reveal">Adding Coupling</h3>
+
+<p class="reveal">
+To accept modulation from other engines, override <code>applyCouplingInput()</code>. The <code>CouplingType</code> enum in <code>SDK/include/xomnibus/CouplingTypes.h</code> has 14 types. The most common for a filter-and-oscillator engine are <code>AmpToFilter</code> (another engine's amplitude modulates your cutoff) and <code>LFOToPitch</code> (another engine's LFO modulates your pitch). Accumulate the coupling signal in a member variable and consume it during <code>renderBlock()</code>:
+</p>
+
+<div class="code-block reveal" aria-label="Coupling input implementation">
+  <span class="code-label">Accepting coupling input</span>
+  <pre><span class="cm">// Member: float couplingFilterMod_ = 0.0f;</span>
+
+<span class="ty">void</span> applyCouplingInput(xomnibus::<span class="nm">CouplingType</span> type, <span class="ty">float</span> amount,
+                         <span class="kw">const</span> <span class="ty">float</span>*, <span class="ty">int</span>) <span class="kw">override</span>
+{
+    <span class="kw">if</span> (type == xomnibus::<span class="nm">CouplingType</span>::<span class="nm">AmpToFilter</span>)
+        couplingFilterMod_ = amount; <span class="cm">// added to cutoff in renderBlock()</span>
+}
+
+<span class="cm">// Then in the renderBlock() ParamSnapshot section:</span>
+<span class="kw">const</span> <span class="ty">float</span> cutoff = pCutoff_.load() + couplingFilterMod_;
+couplingFilterMod_ = <span class="nu">0.0f</span>; <span class="cm">// reset each block</span></pre>
+</div>
+
+<p class="reveal">
+To <em>send</em> coupling output (allowing other engines to read your audio), populate a small cache array during <code>renderBlock()</code> and return values from <code>getSampleForCoupling()</code>. The array only needs to hold one block &mdash; typically 64 to 2048 samples depending on host buffer size.
+</p>
+
+<h3 class="reveal">The 6D Sonic DNA System</h3>
+
+<p class="reveal">
+Every preset in XOmnibus carries a 6D Sonic DNA fingerprint: brightness, warmth, movement, density, space, and aggression &mdash; each on a 0&ndash;1 scale. When you write presets for your engine, fill in the <code>"dna"</code> field in the <code>.xometa</code> JSON. The preset browser uses these values for filtering and recommendation. An engine with no DNA values will appear in search results but will not surface through the mood browser. A preset JSON with DNA looks like this:
+</p>
+
+<div class="code-block reveal" aria-label="Example preset xometa with Sonic DNA">
+  <span class="code-label">example-preset.xometa — Sonic DNA field</span>
+  <pre>{
+  <span class="st">"name"</span>: <span class="st">"Bright Dawn"</span>,
+  <span class="st">"engine"</span>: <span class="st">"Minimal"</span>,
+  <span class="st">"mood"</span>: <span class="st">"Atmosphere"</span>,
+  <span class="st">"parameters"</span>: {
+    <span class="st">"min_cutoff"</span>:  <span class="nu">0.78</span>,
+    <span class="st">"min_reso"</span>:    <span class="nu">0.12</span>,
+    <span class="st">"min_attack"</span>:  <span class="nu">0.04</span>,
+    <span class="st">"min_release"</span>: <span class="nu">1.2</span>
+  },
+  <span class="st">"dna"</span>: {
+    <span class="st">"brightness"</span>: <span class="nu">0.82</span>,
+    <span class="st">"warmth"</span>:     <span class="nu">0.35</span>,
+    <span class="st">"movement"</span>:   <span class="nu">0.10</span>,
+    <span class="st">"density"</span>:    <span class="nu">0.20</span>,
+    <span class="st">"space"</span>:      <span class="nu">0.40</span>,
+    <span class="st">"aggression"</span>: <span class="nu">0.15</span>
+  },
+  <span class="st">"macros"</span>: [<span class="nu">0.5</span>, <span class="nu">0.5</span>, <span class="nu">0.5</span>, <span class="nu">0.5</span>],
+  <span class="st">"version"</span>: <span class="st">"1.0.0"</span>
+}</pre>
+</div>
+
+<h3 class="reveal">Shared DSP Utilities</h3>
+
+<p class="reveal">
+The <code>Source/DSP/</code> directory contains six shared utilities extracted from the fleet that cover the most common engine requirements: <code>StandardLFO.h</code> (5-shape LFO with D005 rate floor), <code>FilterEnvelope.h</code> (general-purpose ADSR), <code>PitchBendUtil.h</code> (MIDI pitch wheel to frequency ratio), <code>VoiceAllocator.h</code> (LRU voice stealing), <code>GlideProcessor.h</code> (frequency-domain portamento), and <code>ParameterSmoother.h</code> (one-pole zipper-noise-free parameter smoothing). Before writing your own LFO or ADSR, check whether one of these covers your use case. Engines built inside the source tree can include them directly. Compiled SDK modules should copy the relevant utility header into their own source.
+</p>
+
+<h3 class="reveal">Read More</h3>
+
+<ul class="reveal">
+  <li><strong>Coupling deep dive</strong> &mdash; <a href="guide-coupling.html" style="color: var(--teal); text-decoration: none;">The Space Between the Engines</a> covers all 14 coupling types with audio examples and signal flow diagrams.</li>
+  <li><strong>Architecture overview</strong> &mdash; <a href="guide-coupling-obrix-pairs.html" style="color: var(--teal); text-decoration: none;">OBRIX Pairs</a> shows how a complex engine connects to three other engines through the coupling matrix, with full preset recipes.</li>
+  <li><strong>Engine table</strong> &mdash; <code>CLAUDE.md</code> in the repository root contains the full table of all 46 engines, parameter prefixes, and accent colours. Use it as a reference when choosing a prefix for your engine.</li>
+  <li><strong>Full integration process</strong> &mdash; <code>Docs/xomnibus_new_engine_process.md</code> walks through the complete post-build pipeline: Doc Lock, Guru Bin, Presets, and Seance.</li>
+</ul>
+
+<div class="callout reveal" style="margin-top: 3rem;">
+  <span class="callout-label">The goal of the interface</span>
+  <p>XOmnibus has 46 engines because each one started as an independent instrument. The interface is short by design. The constraint that matters is not the API surface &mdash; it is the doctrines. An engine that passes D001&ndash;D006 can be trusted to sound like it has a point of view. That is what makes a character instrument rather than a feature matrix.</p>
+</div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
