@@ -54,6 +54,26 @@
 #include "Engines/Ochre/OchreEngine.h"
 #include "Engines/Obelisk/ObeliskEngine.h"
 #include "Engines/Opaline/OpalineEngine.h"
+// CELLAR Quad Collection
+#include "Engines/Ogre/OgreEngine.h"
+#include "Engines/Olate/OlateEngine.h"
+#include "Engines/Oaken/OakenEngine.h"
+#include "Engines/Omega/OmegaEngine.h"
+// GARDEN Quad Collection
+#include "Engines/Orchard/OrchardEngine.h"
+#include "Engines/Overgrow/OvergrowEngine.h"
+#include "Engines/Osier/OsierEngine.h"
+#include "Engines/Oxalis/OxalisEngine.h"
+// BROTH Quad Collection
+#include "Engines/Overwash/OverwashEngine.h"
+#include "Engines/Overworn/OverwornEngine.h"
+#include "Engines/Overflow/OverflowEngine.h"
+#include "Engines/Overcast/OvercastEngine.h"
+// FUSION Quad Collection
+#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Oddfellow/OddfellowEngine.h"
+#include "Engines/Onkolo/OnkoloEngine.h"
+#include "Engines/Opcode/OpcodeEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -294,6 +314,86 @@ static bool registered_Opaline = xomnibus::EngineRegistry::instance().registerEn
     "Opaline", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpalineEngine>();
     });
+// CELLAR Quad Collection — OGRE
+static bool registered_Ogre = xomnibus::EngineRegistry::instance().registerEngine(
+    "Ogre", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OgreEngine>();
+    });
+// CELLAR Quad Collection — OLATE
+static bool registered_Olate = xomnibus::EngineRegistry::instance().registerEngine(
+    "Olate", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OlateEngine>();
+    });
+// CELLAR Quad Collection — OAKEN
+static bool registered_Oaken = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oaken", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OakenEngine>();
+    });
+// CELLAR Quad Collection — OMEGA
+static bool registered_Omega = xomnibus::EngineRegistry::instance().registerEngine(
+    "Omega", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OmegaEngine>();
+    });
+// GARDEN Quad Collection — ORCHARD
+static bool registered_Orchard = xomnibus::EngineRegistry::instance().registerEngine(
+    "Orchard", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OrchardEngine>();
+    });
+// GARDEN Quad Collection — OVERGROW
+static bool registered_Overgrow = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overgrow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvergrowEngine>();
+    });
+// GARDEN Quad Collection — OSIER
+static bool registered_Osier = xomnibus::EngineRegistry::instance().registerEngine(
+    "Osier", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OsierEngine>();
+    });
+// GARDEN Quad Collection — OXALIS
+static bool registered_Oxalis = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oxalis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OxalisEngine>();
+    });
+// BROTH Quad Collection — OVERWASH
+static bool registered_Overwash = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overwash", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OverwashEngine>();
+    });
+// BROTH Quad Collection — OVERWORN
+static bool registered_Overworn = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overworn", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OverwornEngine>();
+    });
+// BROTH Quad Collection — OVERFLOW
+static bool registered_Overflow = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overflow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OverflowEngine>();
+    });
+// BROTH Quad Collection — OVERCAST
+static bool registered_Overcast = xomnibus::EngineRegistry::instance().registerEngine(
+    "Overcast", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OvercastEngine>();
+    });
+// FUSION Quad Collection — OASIS
+static bool registered_Oasis = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oasis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OasisEngine>();
+    });
+// FUSION Quad Collection — ODDFELLOW
+static bool registered_Oddfellow = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oddfellow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OddfellowEngine>();
+    });
+// FUSION Quad Collection — ONKOLO
+static bool registered_Onkolo = xomnibus::EngineRegistry::instance().registerEngine(
+    "Onkolo", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OnkoloEngine>();
+    });
+// FUSION Quad Collection — OPCODE
+static bool registered_Opcode = xomnibus::EngineRegistry::instance().registerEngine(
+    "Opcode", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OpcodeEngine>();
+    });
 
 namespace xomnibus {
 
@@ -453,6 +553,26 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OchreEngine::addParameters(params);
     ObeliskEngine::addParameters(params);
     OpalineEngine::addParameters(params);
+    // CELLAR Quad Collection
+    OgreEngine::addParameters(params);
+    OlateEngine::addParameters(params);
+    OakenEngine::addParameters(params);
+    OmegaEngine::addParameters(params);
+    // GARDEN Quad Collection
+    OrchardEngine::addParameters(params);
+    OvergrowEngine::addParameters(params);
+    OsierEngine::addParameters(params);
+    OxalisEngine::addParameters(params);
+    // BROTH Quad Collection
+    OverwashEngine::addParameters(params);
+    OverwornEngine::addParameters(params);
+    OverflowEngine::addParameters(params);
+    OvercastEngine::addParameters(params);
+    // FUSION Quad Collection
+    OasisEngine::addParameters(params);
+    OddfellowEngine::addParameters(params);
+    OnkoloEngine::addParameters(params);
+    OpcodeEngine::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.

@@ -38,6 +38,14 @@ inline const juce::StringArray validEngineNames {
     "Oto", "Octave", "Oleg", "Otis",
     // KITCHEN Quad Collection
     "Oven", "Ochre", "Obelisk", "Opaline",
+    // CELLAR Quad Collection
+    "Ogre", "Olate", "Oaken", "Omega",
+    // GARDEN Quad Collection
+    "Orchard", "Overgrow", "Osier", "Oxalis",
+    // BROTH Quad Collection
+    "Overwash", "Overworn", "Overflow", "Overcast",
+    // FUSION Quad Collection
+    "Oasis", "Oddfellow", "Onkolo", "Opcode",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -158,6 +166,26 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Ochre",       "ochre_"  },
         { "Obelisk",     "obel_"   },
         { "Opaline",     "opal2_"  },
+        // CELLAR Quad Collection
+        { "Ogre",        "ogre_"   },
+        { "Olate",       "olate_"  },
+        { "Oaken",       "oaken_"  },
+        { "Omega",       "omega_"  },
+        // GARDEN Quad Collection
+        { "Orchard",     "orch_"   },
+        { "Overgrow",    "grow_"   },
+        { "Osier",       "osier_"  },
+        { "Oxalis",      "oxal_"   },
+        // BROTH Quad Collection
+        { "Overwash",    "wash_"   },
+        { "Overworn",    "worn_"   },
+        { "Overflow",    "flow_"   },
+        { "Overcast",    "cast_"   },
+        // FUSION Quad Collection
+        { "Oasis",       "oasis_"  },
+        { "Oddfellow",   "oddf_"   },
+        { "Onkolo",      "onko_"   },
+        { "Opcode",      "opco_"   },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
