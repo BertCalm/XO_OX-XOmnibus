@@ -2,60 +2,62 @@
 
 ## Session Summary
 
-Session 2026-03-21 (continued across two context windows).
+Session 2026-03-21 (continued across three context windows).
 
 ### What Was Accomplished
 
 **OWARE Engine — Final Fix + Re-Seance → 9.2/10**
-- All 3 seance-required fixes were applied by overnight agents: LFO1+LFO2 real StandardLFO objects wired to `owr_lfo1Rate/Depth/Shape` and `owr_lfo2Rate/Depth/Shape`; shimmerRate reads `owr_shimmerRate` param (4.0 Hz default); buzzAmount default 0.0 → 0.15
-- This session applied the final 1-line fix: `owr_lfo1Depth` default 0.0 → 0.1 (seance finding from 6/8 ghosts)
-- Re-seance confirmed: **9.2/10** with 3 Blessings awarded (B032, B033, B034)
-- OWARE presets: 120 → **150** (30 new: Family×8, Submerged×7, Aether×8, Flux×7)
+- All 3 seance-required fixes: LFO1+LFO2 real StandardLFO objects; shimmerRate reads `owr_shimmerRate`; buzzAmount default 0.15; lfo1Depth 0.1 default
+- Re-seance confirmed: **9.2/10** with Blessings B032, B033, B034
 
 **ORBWEAVE — Default Trap Fixed**
-- `weave_braidDepth` default: 0.5 → 0.2 (below WEAVE-I threshold; engine now decoupled on init)
-- 13 new presets added (all topologies: Trefoil, Solomon, Pentagram, Cinquefoil, Figure-Eight, Torus)
-- Build + auval PASS after change
+- `weave_braidDepth` default: 0.5 → 0.2 (below WEAVE-I threshold)
+- 13 new presets (all topologies)
 
-**OXBOW — Guru Bin Retreat Written**
-- `Docs/guru-bin-retreats/oxbow-retreat-2026-03-21.md` (854 lines)
-- 10 phases, 5 recipe categories (Still Pool, Twilight Hall, Oxbow Pool, Erosion Wave, Chiasmus Showcase), 10 Awakenings, traps + CPU profile
+**Fleet — 44/44 Seanced, All Engines at 8.0+**
+- 5 weakest engines fixed: OBESE 6.6→8.5, ODDOSCAR 6.9→8.5, ODDFELIX ~7.0→8.5, OCELOT 6.4→8.5, ORPHICA 8.0→8.7
+- Fleet avg: ~8.8/10 (up from ~8.7)
 
-**Test Build Fixed**
-- `CMakeLists.txt`: `FamilyWaveguideTest.cpp` moved to its own `add_executable(FamilyWaveguideTest ...)` — eliminates duplicate `main()` linker error
-- `XOmnibusTests` now compiles cleanly
+**OPERA Engine — Engine #45 Integrated**
+- Kuramoto vocal synthesis: additive partials + phase synchrony + formant breath
+- Files: KuramotoField.h, OperaPartialBank.h, OperaBreathEngine.h, OperaConductor.h, ReactiveStage.h, OperaEngine.h, OperaAdapter.h/.cpp
+- Registered in XOmnibusProcessor.cpp + PresetManager.h
+- 180 factory presets across 8 moods (macros: DRAMA/VOICE/CHORUS/STAGE)
+- **Build + auval PASS** (45 engines)
 
-**Fleet — 44/44 Seanced**
-- All 44 engines now seanced. OWARE was the last.
-- Fleet avg: ~8.7/10 (up from ~8.6)
-- 5 engines at 9.0+: **OVERBITE 9.2, OWARE 9.2**, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0
-- Blessings total: 31 → **34** (B032/B033/B034 for OWARE)
+**Coupling Phase D — Tutorial + Demo Presets**
+- `Docs/tutorials/playing-the-space-between.md` — full producer's guide
+- 8 COUPLING_* demo presets in Entangled mood
+- Support docs: recipe-design-process.md, xpn_intent_schema.md, templates, render_specs
 
-**Preset Annotation Pass**
-- 1021 existing presets annotated with `(EngineName)` suffix in name field
-- Format: `"name": "DESCRIPTION ... (EngineName)"`
-- Improves preset browser discoverability outside engine context
+**DSP Migrations — 8 Engines Complete**
+- Obbligato, Ombre → StandardLFO/ParameterSmoother
+- Bite, Ohm, Ole, Onset, Orbital, Ottoni → GlideProcessor
+- Remaining with inline patterns: Organon, Ottoni (done), Ouroboros, Overworld, Optic
 
-**Shared DSP Migrations (prior overnight agents, confirmed committed)**
-- Sprint 1 migration: 10,044 presets migrated across 44 engines
-- OceanDeep migrated to StandardLFO + PitchBendUtil
+**Guru Bin Retreats — 4 New (all V2 Theorem engines)**
+- OWARE: `Docs/guru-bin-retreats/oware-retreat-2026-03-21.md` (7 Pillars)
+- ORBWEAVE: `Docs/guru-bin-retreats/orbweave-retreat-2026-03-21.md`
+- OVERTONE: `Docs/guru-bin-retreats/overtone-retreat-2026-03-21.md`
+- ORGANISM: `Docs/guru-bin-retreats/organism-retreat-2026-03-21.md`
+
+**Build + auval: PASS** (verified after OPERA integration)
 
 ### Commits This Session
 
 ```
-1a381c67e  CLAUDE.md: OWARE 9.2, fleet 44/44 seanced, add B032-B034 Blessings
-f33548f08  Add docs, tools, mythology, visionary journal
-44d978c4e  Presets: annotate multi-engine presets with primary engine suffix
-ebcd7178b  OWARE: expand to 150 presets — add 30 (Family, Submerged, Aether, Flux)
-b21d91018  ORBWEAVE: add 13 new presets across 8 moods
-ce868ff51  ORBWEAVE: fix Default Trap — braidDepth 0.5→0.2
-9078cf598  Fix test build: move FamilyWaveguideTest to its own executable
-5f10fd838  OWARE: set lfo1Depth default 0.0 → 0.1 (seance re-score 9.0 → 9.2)
+3ad43d0ff  Add OCELOT preset: Kalimba and Rain (Foundation)
+a838500e9  DSP migration batches 1-3: 6 engines → shared GlideProcessor/StandardLFO
+5a8d09134  OPERA: 180 factory presets across 8 moods
+69b42cf9d  Coupling Phase D: 8 demo presets for 'Playing the Space Between'
+f7481de19  Coupling Phase D: 'Playing the Space Between' tutorial + support docs
+b38eed9ab  DSP migration batch 1-2: Obbligato + Ombre → shared DSP utilities
+f3d724e03  OPERA: integrate engine #45 — Kuramoto vocal synthesis (Aria Gold)
+a863d4088  Add Oware to CMakeLists.txt + Opera engine scaffold
+5e5377f12  Sprint 3 preset quality: mood fixes, descriptions, Submerged coverage
+75aa9448e  Add 60 new Awakening presets across 6 engines
+85302b0a0  Fix D002/D004/D005 across 5 weak engines: OBESE, ODDOSCAR, ODDFELIX, OCELOT, ORPHICA
 ```
-
-### Build Status
-
-**AU + auval PASS** (2026-03-21, verified after ORBWEAVE engine change)
 
 ---
 
@@ -63,96 +65,77 @@ ce868ff51  ORBWEAVE: fix Default Trap — braidDepth 0.5→0.2
 
 | Metric | Value |
 |--------|-------|
-| Engines integrated | 44 |
-| Engines seanced | 44/44 ✅ |
-| Fleet avg score | ~8.7/10 |
+| Engines integrated | 45 |
+| Engines seanced | 44/44 ✅ (OPERA unseanced — built this session) |
+| Fleet avg score | ~8.8/10 |
 | Engines at 9.0+ | 5 (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0) |
 | Total Blessings | 34 |
-| Presets | ~17,500+ |
-| OWARE presets | 150 |
-| ORBWEAVE presets | 150+ (13 new this session) |
+| Presets | ~18,000+ |
+| OPERA presets | 180 (first-pass factory library) |
 | Build | AU PASS, auval PASS |
 
 ---
 
 ## Immediate Next Actions
 
-### Priority 1 — Sound Quality
+### Priority 1 — OPERA Engine
 
-1. **Guru Bin retreat: OWARE** — 7 Pillars parameter refinement (Material Continuum, Mallet Physics, Sympathetic Resonance, Resonator Body, Buzz Membrane, Breathing Gamelan, Thermal Drift). Retreat doc doesn't exist yet; write it.
+1. **Seance OPERA** — Engine #45 needs initial seance evaluation. DSP is complex (Kuramoto synchrony + additive + breath). Target: 8.5+.
 
-2. **Guru Bin retreats: ORBWEAVE, OVERTONE, ORGANISM** — no retreats yet. These three are the remaining un-retreated V2 engines.
+2. **OPERA Guru Bin Retreat** — No retreat yet. 7 parameters to refine: drama arc, voice quality, chorus coupling, stage depth.
 
-3. **Push 6 weakest engines to 8.0+**: OBLIQUE, OCELOT, OBESE, ODDOSCAR, ODDFELIX, ORPHICA. All scored below 8.5 last seance.
+### Priority 2 — Sound Quality
 
-### Priority 2 — Documentation
+3. **Guru Bin retreat: OWARE** — 7 Pillars parameter refinement doc written (`oware-retreat-2026-03-21.md`). Preset expansion target: 150 (currently 150 ✅).
 
-4. **Sound design guide**: Add entries for OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE to `Docs/xomnibus_sound_design_guides.md` (6 engines missing)
+4. **Fab Five on OBRIX** — Style pass before launch.
 
-5. **Update fleet seance scores doc**: `Docs/fleet-seance-scores-2026-03-20.md` — add OWARE 9.2 post-fix row
+### Priority 3 — Engineering
 
-### Priority 3 — Release & Content
+5. **Complete DSP migrations** — Remaining engines still using inline patterns:
+   - Organon, Ouroboros, Overworld (batch 3 partially complete)
+   - Optic (confirmed not migrated)
+   - MorphEngine, SnapEngine, OrphicaEngine (modified this session — defer)
 
-6. **Execute Week 1 of 6-month release calendar** — see `Docs/content-backlog-6-month-2026.md`
+6. **OWARE V2 backlog** (from seance):
+   - Asymmetric buzz nonlinearity (upper vs lower partial density)
+   - Expose `thermalRetargetRate` as tweakable param (currently 0.001f hardcoded)
+   - Document shimmer runs at Hz-domain rate (4Hz = musical vibrato)
+   - Rename COUPLING macro → SYMPATHY in UI
 
-7. **Record 20 hero audio clips** — see `Docs/site-sample-recordings.md`
+### Priority 4 — Release & Content
 
-8. **Create Patreon account** — 18 placeholder URLs in `Docs/patreon-url-sweep-2026-03-20.md`
+7. **Execute Week 1 of 6-month release calendar** — `Docs/content-backlog-6-month-2026.md`
 
-9. **Render WAVs for Oxport** — pipeline complete, needs audio renders
+8. **Record 20 hero audio clips** — `Docs/site-sample-recordings.md`
 
-### Priority 4 — Engineering
+9. **Create Patreon account** — 18 placeholder URLs in `Docs/patreon-url-sweep-2026-03-20.md`
 
-10. **Migrate remaining engines to shared DSP utilities** — Sonnet/medium work. Most engines still use inline LFO/envelope patterns instead of StandardLFO/FilterEnvelope from `Source/DSP/`
-
-11. **OWARE V2 backlog** (from seance):
-    - Asymmetric buzz nonlinearity (upper partials vs. lower partials different density)
-    - Expose `thermalRetargetRate` as a tweakable param (currently hardcoded 0.001f)
-    - Document that shimmer runs at Hz-domain rate (4Hz ≈ musical vibrato, not 0.3Hz breath)
-    - Consider renaming COUPLING macro to SYMPATHY in the UI
-
-12. **Fab Five on OBRIX** — style pass before launch
-
----
-
-## Key Files Modified This Session
-
-| File | Change |
-|------|--------|
-| `Source/Engines/Oware/OwareEngine.h` | lfo1Depth default 0.0→0.1 |
-| `Source/Engines/Orbweave/OrbweaveEngine.h` | braidDepth default 0.5→0.2 |
-| `CMakeLists.txt` | FamilyWaveguideTest separated into own executable |
-| `CLAUDE.md` | 44/44 seanced, OWARE 9.2, B032-B034, 34 total blessings |
-| `Docs/guru-bin-retreats/oxbow-retreat-2026-03-21.md` | NEW — OXBOW retreat (854 lines) |
-| `Presets/XOmnibus/*/Oware_*.xometa` | 30 new presets |
-| `Presets/XOmnibus/*/ORBWEAVE_*.xometa` | 13 new presets |
-| 1021 existing presets | (EngineName) suffix added to name field |
+10. **Render WAVs for Oxport** — pipeline complete, needs audio renders
 
 ---
 
 ## Technical Notes
 
-### git Gotchas Learned This Session
+### Git Gotchas
+- **macOS case-insensitive staging**: `git diff HEAD -- "Path/File.h" | git apply --cached`
+- **auval codes are case-sensitive**: Always `aumu Xomn XoOx`
+- **Duplicate main() linker error**: Test files with own `main()` need separate `add_executable()`
+- **New engines need CMakeLists.txt entry**: Both .h and .cpp (one-line `#include` stub) required
 
-- **macOS case-insensitive staging**: If git tracks `OceanDeepEngine.h` (uppercase D) but file is `OceandeepEngine.h` (lowercase), `git add` silently fails. Fix: `git diff HEAD -- "Path/To/File.h" | git apply --cached`
-- **auval codes are case-sensitive**: Always `aumu Xomn XoOx` (read from Info.plist). NOT `XOMn Xa_X` or any variant.
-- **Duplicate main() linker error**: If a test file has its own `main()`, it must be its own `add_executable()` target, not included in `XOmnibusTests`.
+### OPERA Architecture Reference
+Engine: `Source/Engines/Opera/OperaAdapter.h`
+Prefix: `opera_`
+Color: Aria Gold `#D4AF37`
+Key files: KuramotoField.h (phase coupling), OperaPartialBank.h (additive), OperaBreathEngine.h (breath), OperaConductor.h (arc system), ReactiveStage.h (stage reverb)
+Macros: DRAMA / VOICE / CHORUS / STAGE
+Seance score: unseanced (built 2026-03-21)
 
-### OWARE Architecture Reference
-
-Engine: `Source/Engines/Oware/OwareEngine.h`
-Prefix: `owr_`
-Color: Akan Goldweight `#B5883E`
-Voices: 8 | Modes: 8
-Seance score: 9.2/10 (2026-03-21)
-
-**7 Pillars:**
-1. Material Continuum (wood↔metal↔bell↔bowl) — `owr_material`
-2. Mallet Physics (Chaigne 1997) — `owr_malletHardness`, `owr_malletMass`
-3. Sympathetic Resonance Network — `owr_sympathy` (SYMPATHY macro M3)
-4. Resonator Body — `owr_bodyResonance`, `owr_bodyDecay`
-5. Buzz Membrane (balafon mirliton) — `owr_buzzAmount` (default 0.15)
-6. Breathing Gamelan (shimmer) — `owr_shimmerRate` (default 4.0 Hz)
-7. Thermal Drift — `owr_thermalDrift`
-
-**Blessings:** B032 (Mallet Articulation Stack), B033 (Living Tuning Grid), B034 (Per-Mode Sympathetic Network)
+### Untracked Files to Ignore
+These untracked files are experiment stubs — not part of any current sprint:
+- `Source/Engines/Octave/`, `Source/Engines/Oleg/` (empty/stub)
+- `Source/Engines/Oto/OtoEngine.h` (Kitchen Collection concept)
+- `Docs/octave-engine-architecture.md`, `Docs/oleg-engine-architecture.md`
+- `Docs/cookbooks/`, `Docs/kitchen-collection-release-calendar.md` (V2 concept docs)
+- `Presets/XOmnibus/Deep/`, `Presets/XOmnibus/Ethereal/`, `Presets/XOmnibus/Kinetic/`, `Presets/XOmnibus/Luminous/`, `Presets/XOmnibus/Organic/` (non-standard mood dirs)
+- `Docs/playing-the-space-between-tutorial.md` (duplicate of `Docs/tutorials/` version)
