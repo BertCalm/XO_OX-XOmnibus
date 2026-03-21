@@ -1,0 +1,14 @@
+{
+  "pack_average": {
+    "brightness": 0.4549,
+    "warmth": 0.6026,
+    "movement": 0.1709,
+    "density": 0.5084,
+    "space": 0.0934,
+    "aggression": 0.423
+  },
+  "voices": {},
+  "render_durations_ms": {},
+  "velocity_peaks_dbfs": {},
+  "choke_groups": {}
+}

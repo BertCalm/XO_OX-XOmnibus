@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "name": "Stone Bowl",
+  "mood": "Foundation",
+  "engines": ["Oware"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aquatic Chain showcase: OWARE in bowl mode (owr_material near 1.0) through Fathom at Character 0.0 creates an instrument that sounds like stone bowls filled with water. The Fathom dark character emphasizes the bowl's resonant low modes. Tide in AutoFilter at 0.08 Hz sweeps the filter very slowly, giving each struck note a gradual tonal evolution as if the bowl is still ringing. Reef at moderate size 0.5 provides the stone room acoustic. The result is a foundation texture with pitched percussion character.",
+  "tags": ["oware", "bowl", "stone", "aquatic-chain", "fathom", "tide", "reef", "foundation", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.92,
+      "owr_malletHardness": 0.35,
+      "owr_malletContact": 0.55,
+      "owr_mode": 3,
+      "owr_sympatheticAmount": 0.48,
+      "owr_buzzAmount": 0.05,
+      "owr_tuning": 0.0,
+      "owr_thermalDrift": 0.05,
+      "owr_lfo1Rate": 0.03,
+      "owr_lfo1Depth": 0.08,
+      "owr_lfo2Rate": 0.01,
+      "owr_lfo2Depth": 0.05,
+      "owr_ampAttack": 0.004,
+      "owr_ampDecay": 2.8,
+      "owr_ampSustain": 0.0,
+      "owr_ampRelease": 3.5,
+      "owr_macroCharacter": 0.15,
+      "owr_macroMovement": 0.08,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.62
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.10,
+    "density": 0.48,
+    "space": 0.75,
+    "aggression": 0.10
+  }
+}

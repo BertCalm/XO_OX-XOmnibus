@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "name": "Surface Shimmer",
+  "mood": "Aether",
+  "engines": ["Opal"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aquatic Chain showcase: OPAL granular with small grain sizes (25ms) and high density — the surface sparkle of light on water rather than depth. Fathom Character 0.72 (bright emphasis) pushes the high-frequency grain content. Drift at 4 voices with moderate depth creates the lateral scatter of surface reflections. Tide in AutoFilter mode at 0.35 Hz with sine shape creates a breathing filter sweep that mimics the approach and retreat of a surface wave. Reef at modest size 0.35 gives early reflections without adding depth to what should feel luminous and weightless.",
+  "tags": ["opal", "granular", "aquatic-chain", "bright", "shimmer", "surface", "aether", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Opal": {
+      "opal_grainSize": 22.0,
+      "opal_grainDensity": 0.88,
+      "opal_grainPitch": 0.0,
+      "opal_grainSpread": 0.55,
+      "opal_grainScan": 0.25,
+      "opal_grainReverse": 0.05,
+      "opal_filterCutoff": 6500.0,
+      "opal_filterRes": 0.15,
+      "opal_filterEnvAmt": 0.22,
+      "opal_ampAttack": 0.28,
+      "opal_ampDecay": 0.45,
+      "opal_ampSustain": 0.85,
+      "opal_ampRelease": 1.8,
+      "opal_lfo1Rate": 0.25,
+      "opal_lfo1Depth": 0.20,
+      "opal_lfo1Shape": 0,
+      "opal_lfo2Rate": 0.08,
+      "opal_lfo2Depth": 0.10,
+      "opal_lfo2Shape": 0,
+      "opal_macroCharacter": 0.62,
+      "opal_macroMovement": 0.40,
+      "opal_macroCoupling": 0.0,
+      "opal_macroSpace": 0.55
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.35,
+    "movement": 0.50,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.08
+  }
+}

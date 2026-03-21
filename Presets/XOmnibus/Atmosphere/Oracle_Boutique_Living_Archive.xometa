@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Living Archive",
+  "mood": "Atmosphere",
+  "engines": ["Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase: ORACLE's GENDY stochastic synthesis through the Dissolving Archive stage. Anomaly at TextureBlend 0.55 and ReverbSize 0.40 creates an initial instability in the signal before it enters Archive memory. Dissolving Archive with Chance 0.12 (not everything is stored) and Dissolve 0.45 (medium lifespan) means past GENDY events resurface at random intervals, decaying in quality as they age. Cathedral with moderate BitCrush 0.18 and DarkMix 0.60 gives the reverb a worn, archival quality. Submersion at 4 stages with slow LFO 0.2 Hz provides a gently rotating spatial field. The result is a sound that remembers itself.",
+  "tags": ["oracle", "gendy", "boutique-chain", "archive", "memory", "atmosphere", "stochastic", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 7,
+      "oracle_stochastic": 0.55,
+      "oracle_maqamMode": 1,
+      "oracle_filterCutoff": 3200.0,
+      "oracle_filterRes": 0.25,
+      "oracle_lfo1Rate": 0.07,
+      "oracle_lfo1Depth": 0.22,
+      "oracle_lfo2Rate": 0.02,
+      "oracle_lfo2Depth": 0.15,
+      "oracle_ampAttack": 0.50,
+      "oracle_ampDecay": 0.75,
+      "oracle_ampSustain": 0.80,
+      "oracle_ampRelease": 2.8,
+      "oracle_macroCharacter": 0.40,
+      "oracle_macroMovement": 0.30,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.75
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.40,
+    "density": 0.62,
+    "space": 0.82,
+    "aggression": 0.15
+  }
+}

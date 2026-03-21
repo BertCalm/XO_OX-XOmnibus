@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Kelp Drift",
+  "mood": "Submerged",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aquatic Chain showcase: ORBWEAVE's topological knot coupling through the Aquatic Chain. Drift at 6 voices with maximum diffusion matches the knot topology's structural complexity — both systems add internal voices that relate geometrically. Fathom at Character 0.3 preserves the mid-range knot resonances. Tide in Both mode (tremolo + filter) at 0.18 Hz gives the topological surface a breathing quality — as if the knot itself is inhaling and exhaling. Reef at high density provides the physical anchor for an otherwise weightless topological structure.",
+  "tags": ["orbweave", "knot", "aquatic-chain", "drift", "fathom", "tide", "reef", "kelp", "submerged", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.62,
+      "weave_knotType": 0,
+      "weave_couplingPhase": 0.45,
+      "weave_resonance": 0.52,
+      "weave_voiceSpread": 0.68,
+      "weave_filterCutoff": 2400.0,
+      "weave_filterRes": 0.32,
+      "weave_lfo1Rate": 0.10,
+      "weave_lfo1Depth": 0.30,
+      "weave_lfo2Rate": 0.03,
+      "weave_lfo2Depth": 0.15,
+      "weave_ampAttack": 0.50,
+      "weave_ampDecay": 0.85,
+      "weave_ampSustain": 0.75,
+      "weave_ampRelease": 2.0,
+      "weave_macroCharacter": 0.45,
+      "weave_macroMovement": 0.25,
+      "weave_macroCoupling": 0.0,
+      "weave_macroSpace": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.58,
+    "movement": 0.32,
+    "density": 0.75,
+    "space": 0.85,
+    "aggression": 0.12
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "pack_id": "mpce-perc-001",
+  "profile_id": "boom-bap-percussion",
+  "entry_count": 8,
+  "entries": [
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[kick_has_sub]",
+      "action": "rejected",
+      "reason": "Assertion failed (critical): voice 'kick' not present in DNA data",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[snare_has_crack]",
+      "action": "rejected",
+      "reason": "Assertion failed (critical): voice 'snare' not present in DNA data",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[hats_are_tight]",
+      "action": "rejected",
+      "reason": "Assertion failed (warning): render_durations_ms has no entry for 'closed_hat'",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[space_is_dry]",
+      "action": "accepted",
+      "reason": "Assertion passed: pack average space=0.093 < 0.25",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[ghost_notes_audible]",
+      "action": "rejected",
+      "reason": "Assertion failed (warning): velocity_peaks_dbfs has no entry for 'layer_1'",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[velocity_range_musical]",
+      "action": "rejected",
+      "reason": "Assertion failed (warning): velocity_peaks_dbfs has no entry for 'layer_4'",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[no_clipping]",
+      "action": "rejected",
+      "reason": "Assertion failed (critical): velocity_peaks_dbfs is empty — cannot evaluate all-samples peak",
+      "substitution": null
+    },
+    {
+      "timestamp": "2026-03-21T22:47:48Z",
+      "pack_id": "mpce-perc-001",
+      "profile_id": "boom-bap-percussion",
+      "stage": "validate",
+      "preset_name": "[hat_choke_works]",
+      "action": "rejected",
+      "reason": "Assertion failed (critical): 'closed_hat' not found in choke_groups",
+      "substitution": null
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Rule 110 Order",
+  "mood": "Aether",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mathematical Chain showcase demonstrating how the Mathematical Chain can create musical order from chaotic material. ORGANISM Rule 110 at scope 8 (maximum temporal averaging) produces slowly-evolving synthesis parameters. Entropy Cooler at Stability 0.70 (strong ordering pressure) further constrains the spectral output. Voronoi Shatter at low Crystallize 0.15 adds minimal geometric texture. Quantum Smear at Observation 0.65 (near-collapsed) creates a clean, pitched echo rather than diffuse reverb. Attractor Drive at Bifurcation 0.18 (deep stable, minimal distortion). The combination takes a cellular automaton source and applies mathematical structure that transforms it into something close to composed music.",
+  "tags": ["organism", "rule110", "math-chain", "entropy", "ordered", "aether", "composed", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 2,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.6,
+      "org_scope": 8,
+      "org_stepRate": 1.8,
+      "org_macroMutate": 0.008,
+      "org_pitchRange": 2.5,
+      "org_ampAttack": 0.08,
+      "org_ampDecay": 0.0,
+      "org_ampSustain": 1.0,
+      "org_ampRelease": 2.2,
+      "org_macroCharacter": 0.35,
+      "org_macroMovement": 0.30,
+      "org_macroCoupling": 0.0,
+      "org_macroSpace": 0.75
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.50,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.80,
+    "aggression": 0.15
+  }
+}

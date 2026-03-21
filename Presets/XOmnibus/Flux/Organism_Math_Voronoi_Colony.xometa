@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "Voronoi Colony",
+  "mood": "Flux",
+  "engines": ["Organism"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mathematical Chain showcase emphasizing Voronoi Shatter. ORGANISM Rule 110 (Class IV, universal computation) produces a synthesis pattern with regions of stability interspersed with chaotic bursts. Voronoi Shatter at Crystallize 0.65 and GrainSize 45ms fragments this pattern into geometric grain clusters whose Fibonacci spiral layout gives the cellular automaton output an additional layer of spatial structure. Entropy Cooler at Stability 0.45 (near-neutral) measures but does not strongly reshape. Quantum Smear at Observation 0.3 adds modest reverb. Attractor Drive at Bifurcation 0.28 (stable regime) adds harmonic density without instability.",
+  "tags": ["organism", "cellular-automata", "math-chain", "voronoi", "rule110", "colony", "flux", "geometric", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Organism": {
+      "org_ruleSet": 2,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.5,
+      "org_scope": 5,
+      "org_stepRate": 2.5,
+      "org_macroMutate": 0.015,
+      "org_pitchRange": 3.0,
+      "org_ampAttack": 0.05,
+      "org_ampDecay": 0.0,
+      "org_ampSustain": 1.0,
+      "org_ampRelease": 1.8,
+      "org_macroCharacter": 0.42,
+      "org_macroMovement": 0.55,
+      "org_macroCoupling": 0.0,
+      "org_macroSpace": 0.62
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.70,
+    "aggression": 0.35
+  }
+}

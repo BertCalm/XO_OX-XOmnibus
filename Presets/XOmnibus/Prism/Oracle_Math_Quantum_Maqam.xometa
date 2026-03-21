@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Quantum Maqam",
+  "mood": "Prism",
+  "engines": ["Oracle"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mathematical Chain showcase emphasizing Quantum Smear. ORACLE's GENDY stochastic synthesis produces tones that are already spectrally indeterminate. Quantum Smear at Observation 0.12 (heavily uncollapsed superposition) wraps these tones in a dense reverb where the delay time itself is uncertain — adding another layer of spectral indeterminacy on top of the engine's own. Entropy Cooler at Stability 0.55 provides a mild ordering force. Voronoi Shatter at Crystallize 0.3 adds geometric fragmentation to the sustained tones. Attractor Drive minimal — the engine provides enough distortion character already.",
+  "tags": ["oracle", "gendy", "maqam", "math-chain", "quantum-smear", "prism", "stochastic", "indeterminate", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Oracle": {
+      "oracle_breakpoints": 8,
+      "oracle_stochastic": 0.65,
+      "oracle_maqamMode": 2,
+      "oracle_filterCutoff": 3500.0,
+      "oracle_filterRes": 0.30,
+      "oracle_lfo1Rate": 0.08,
+      "oracle_lfo1Depth": 0.25,
+      "oracle_lfo2Rate": 0.025,
+      "oracle_lfo2Depth": 0.18,
+      "oracle_ampAttack": 0.35,
+      "oracle_ampDecay": 0.65,
+      "oracle_ampSustain": 0.80,
+      "oracle_ampRelease": 2.5,
+      "oracle_macroCharacter": 0.48,
+      "oracle_macroMovement": 0.42,
+      "oracle_macroCoupling": 0.0,
+      "oracle_macroSpace": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.58,
+    "density": 0.68,
+    "space": 0.80,
+    "aggression": 0.28
+  }
+}

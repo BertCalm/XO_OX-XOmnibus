@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Entropy Metabolism",
+  "mood": "Prism",
+  "engines": ["Organon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mathematical Chain showcase: ORGANON's Variational Free Energy Metabolism paired with Entropy Cooler creates a conceptual resonance — the engine models biological information processing (variational free energy minimization) while the Entropy Cooler models thermodynamic information processing (heat equilibrium toward a stability target). Both systems are attempting to reach an equilibrium; the audible interaction is a spectral shaping that responds to what the metabolic model produces. Voronoi Shatter at low Crystallize 0.2 adds subtle geometric texture. Quantum Smear at Observation 0.35 provides a warm middle-distance reverb. Attractor Drive at Bifurcation 0.22 (deeply stable) adds tonal thickness.",
+  "tags": ["organon", "metabolism", "math-chain", "entropy", "variational", "free-energy", "prism", "biological", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Organon": {
+      "organon_metabolicRate": 0.55,
+      "organon_energyBudget": 0.65,
+      "organon_precision": 0.42,
+      "organon_prediction": 0.58,
+      "organon_filterCutoff": 2800.0,
+      "organon_filterRes": 0.25,
+      "organon_lfo1Rate": 0.10,
+      "organon_lfo1Depth": 0.28,
+      "organon_lfo2Rate": 0.03,
+      "organon_lfo2Depth": 0.15,
+      "organon_ampAttack": 0.45,
+      "organon_ampDecay": 0.70,
+      "organon_ampSustain": 0.82,
+      "organon_ampRelease": 2.8,
+      "organon_macroCharacter": 0.45,
+      "organon_macroMovement": 0.38,
+      "organon_macroCoupling": 0.0,
+      "organon_macroSpace": 0.68
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.55,
+    "movement": 0.50,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.20
+  }
+}

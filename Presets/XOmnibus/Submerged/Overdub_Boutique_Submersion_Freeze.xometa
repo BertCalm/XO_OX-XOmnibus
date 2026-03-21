@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Submersion Freeze",
+  "mood": "Submerged",
+  "engines": ["Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase emphasizing Artifact Cathedral's Freeze function. OVERDUB produces a held note; Cathedral is triggered to Freeze the reverb tail at a musically interesting moment, capturing and holding that tail indefinitely. The held tail then becomes the environment through which subsequent OVERDUB notes are played. PacketLoss 0.15 adds slight digital degradation to the frozen tail so it sounds aged rather than pristine. DarkMix 0.75. Submersion at 6 stages and LFO 0.08 Hz slowly rotates the frozen spatial field. Anomaly off. Archive Chance 0.0. The Freeze creates an environmental capture — a snapshot of a moment.",
+  "tags": ["overdub", "boutique-chain", "cathedral", "freeze", "submerged", "held", "environment", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 0,
+      "dub_oscTune": 0.0,
+      "dub_filterCutoff": 1600.0,
+      "dub_filterRes": 0.35,
+      "dub_sendAmount": 0.55,
+      "dub_springMetal": 0.55,
+      "dub_springDecay": 0.90,
+      "dub_lfo1Rate": 0.05,
+      "dub_lfo1Depth": 0.15,
+      "dub_lfo2Rate": 0.015,
+      "dub_lfo2Depth": 0.10,
+      "dub_ampAttack": 0.55,
+      "dub_ampDecay": 1.0,
+      "dub_ampSustain": 0.88,
+      "dub_ampRelease": 3.5,
+      "dub_macroCharacter": 0.38,
+      "dub_macroMovement": 0.15,
+      "dub_macroCoupling": 0.0,
+      "dub_macroSpace": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.65,
+    "movement": 0.12,
+    "density": 0.72,
+    "space": 0.90,
+    "aggression": 0.10
+  }
+}

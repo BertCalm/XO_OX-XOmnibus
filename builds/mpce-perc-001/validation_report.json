@@ -1,0 +1,77 @@
+{
+  "profile_id": "boom-bap-percussion",
+  "pack_id": "mpce-perc-001",
+  "passed": [
+    {
+      "name": "space_is_dry",
+      "check": "pack average DNA space < 0.25",
+      "severity": "critical",
+      "description": "Boom bap is dry \u2014 producers add their own space",
+      "outcome": "passed",
+      "detail": "pack average space=0.093 < 0.25"
+    }
+  ],
+  "failed": [
+    {
+      "name": "kick_has_sub",
+      "check": "kick DNA warmth > 0.6",
+      "severity": "critical",
+      "description": "Boom bap kicks need sub weight",
+      "outcome": "failed",
+      "detail": "voice 'kick' not present in DNA data"
+    },
+    {
+      "name": "snare_has_crack",
+      "check": "snare DNA brightness > 0.35",
+      "severity": "critical",
+      "description": "Snare needs mid-high crack \u2014 not dull",
+      "outcome": "failed",
+      "detail": "voice 'snare' not present in DNA data"
+    },
+    {
+      "name": "no_clipping",
+      "check": "all samples peak < -0.3dBFS",
+      "severity": "critical",
+      "description": "No digital clipping in any sample",
+      "outcome": "failed",
+      "detail": "velocity_peaks_dbfs is empty \u2014 cannot evaluate all-samples peak"
+    },
+    {
+      "name": "hat_choke_works",
+      "check": "mute_group(closed_hat, open_hat) == same_group",
+      "severity": "critical",
+      "description": "Closed hat must choke open hat",
+      "outcome": "failed",
+      "detail": "'closed_hat' not found in choke_groups"
+    }
+  ],
+  "warnings": [
+    {
+      "name": "hats_are_tight",
+      "check": "closed_hat render duration < 300ms",
+      "severity": "warning",
+      "description": "Closed hats should be tight, not ringy",
+      "outcome": "failed",
+      "detail": "render_durations_ms has no entry for 'closed_hat'"
+    },
+    {
+      "name": "ghost_notes_audible",
+      "check": "velocity_layer_1 peak > -30dBFS",
+      "severity": "warning",
+      "description": "Ghost notes must be audible, not silent",
+      "outcome": "failed",
+      "detail": "velocity_peaks_dbfs has no entry for 'layer_1'"
+    },
+    {
+      "name": "velocity_range_musical",
+      "check": "velocity_layer_4_peak - velocity_layer_1_peak > 12dB",
+      "severity": "warning",
+      "description": "Dynamic range between ghost and hard should be >12dB",
+      "outcome": "failed",
+      "detail": "velocity_peaks_dbfs has no entry for 'layer_4'"
+    }
+  ],
+  "errors": [],
+  "overall": "FAIL",
+  "score": 12.5
+}

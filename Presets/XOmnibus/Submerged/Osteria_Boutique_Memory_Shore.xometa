@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Memory Shore",
+  "mood": "Submerged",
+  "engines": ["Osteria"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase: OSTERIA's shore-system cultural acoustics through the full Boutique Chain at deep-immersion settings. Anomaly with TextureBlend 0.7 (maximum alternate texture layer) and ReverbSize 0.6 creates a large initial spatial context. Dissolving Archive at Chance 0.18 and Dissolve 0.55 — shore memories that dissolve at medium rate. Cathedral with DarkMix 0.80 and no BitCrush — the cathedral is clean but extremely dark, like a space deep below the shoreline. Submersion at maximum 8 stages and LFO 0.1 Hz for maximum all-pass phase rotation — the submersion envelope wraps everything in slow-moving phase water.",
+  "tags": ["osteria", "shore", "boutique-chain", "memory", "cathedral", "submersion", "submerged", "deep", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.58,
+      "osteria_coastlineMix": 0.72,
+      "osteria_warmth": 0.80,
+      "osteria_filterCutoff": 1200.0,
+      "osteria_filterRes": 0.28,
+      "osteria_lfo1Rate": 0.04,
+      "osteria_lfo1Depth": 0.18,
+      "osteria_lfo2Rate": 0.012,
+      "osteria_lfo2Depth": 0.10,
+      "osteria_ampAttack": 0.55,
+      "osteria_ampDecay": 1.0,
+      "osteria_ampSustain": 0.88,
+      "osteria_ampRelease": 3.5,
+      "osteria_macroCharacter": 0.45,
+      "osteria_macroMovement": 0.15,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.88
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.78,
+    "movement": 0.15,
+    "density": 0.70,
+    "space": 0.90,
+    "aggression": 0.08
+  }
+}

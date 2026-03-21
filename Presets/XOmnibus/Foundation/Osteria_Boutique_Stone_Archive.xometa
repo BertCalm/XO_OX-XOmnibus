@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Stone Archive",
+  "mood": "Foundation",
+  "engines": ["Osteria"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase for Foundation mood. OSTERIA's Porto Wine warmth (low-mid resonance from the ShoreSystem) through Boutique Chain at maximum-weight settings. Anomaly TextureBlend 0.4 and ReverbSize 0.70 (large initial spatial context). Dissolving Archive Chance 0.10 and Dissolve 0.30 (long-lasting memories) — old material resurfaces rarely but persists. Cathedral DarkMix 0.85 (maximum darkness), Decay 0.85 (very long reverb). Submersion 6 stages, LFORate 0.08 Hz — extremely slow rotation. The combined effect is OSTERIA as the foundation of an ancient archive: warm, dark, deep, with occasional unexpected retrievals from the past.",
+  "tags": ["osteria", "boutique-chain", "archive", "cathedral", "foundation", "warm", "dark", "weight", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Osteria": {
+      "osteria_qBassShore": 0.65,
+      "osteria_coastlineMix": 0.48,
+      "osteria_warmth": 0.85,
+      "osteria_filterCutoff": 900.0,
+      "osteria_filterRes": 0.22,
+      "osteria_lfo1Rate": 0.03,
+      "osteria_lfo1Depth": 0.12,
+      "osteria_lfo2Rate": 0.008,
+      "osteria_lfo2Depth": 0.08,
+      "osteria_ampAttack": 0.70,
+      "osteria_ampDecay": 1.5,
+      "osteria_ampSustain": 0.90,
+      "osteria_ampRelease": 4.0,
+      "osteria_macroCharacter": 0.30,
+      "osteria_macroMovement": 0.08,
+      "osteria_macroCoupling": 0.0,
+      "osteria_macroSpace": 0.85
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.20,
+    "warmth": 0.82,
+    "movement": 0.10,
+    "density": 0.75,
+    "space": 0.88,
+    "aggression": 0.06
+  }
+}

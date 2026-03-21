@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "name": "Entropy Storm",
+  "mood": "Flux",
+  "engines": ["Ouroboros"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Mathematical Chain showcase: OUROBOROS Lorenz attractor in high-chaos mode through the full Mathematical Chain. Entropy Cooler at Stability 0.2 (disorder target) lets the chaotic signal through while adding spectral measurement pressure. Voronoi Shatter at Crystallize 0.55 fragments the continuous attractor output into geometric grain clusters — topology meeting geometry. Quantum Smear at Observation 0.15 (heavily uncollapsed) creates a dense diffuse reverb that smears the chaotic events across time. Attractor Drive at Bifurcation 0.72 (above threshold, chaotic distortion regime) matches the engine's own attractor dynamics. The full chain amplifies and formalizes OUROBOROS's inherent mathematical character.",
+  "tags": ["ouroboros", "lorenz", "math-chain", "entropy", "voronoi", "quantum", "attractor", "flux", "chaos", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Ouroboros": {
+      "ouro_topology": 0,
+      "ouro_rate": 0.78,
+      "ouro_chaosIndex": 0.80,
+      "ouro_leash": 0.20,
+      "ouro_theta": 0.35,
+      "ouro_phi": 0.65,
+      "ouro_damping": 0.15,
+      "ouro_injection": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.38,
+    "movement": 0.85,
+    "density": 0.72,
+    "space": 0.68,
+    "aggression": 0.78
+  }
+}

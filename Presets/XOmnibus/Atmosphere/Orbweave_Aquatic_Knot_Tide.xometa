@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Knot Tide",
+  "mood": "Atmosphere",
+  "engines": ["Orbweave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Aquatic Chain showcase emphasizing the Tide stage's Sample-and-Hold shape. ORBWEAVE's trefoil knot topology generates internal phase relationships that, when filtered through Tide's S&H LFO at 0.25 Hz, create stepped spectral windows — as if the knot is rotating into and out of different aspects of itself. Fathom at Character 0.4 neutral. Drift at 4 voices. Reef at moderate size 0.5 and density 0.6. The S&H Tide is the defining feature: it makes topology audible as rhythm.",
+  "tags": ["orbweave", "knot", "aquatic-chain", "tide", "sample-hold", "atmosphere", "topological", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Orbweave": {
+      "weave_knotDepth": 0.75,
+      "weave_knotType": 1,
+      "weave_couplingPhase": 0.55,
+      "weave_resonance": 0.45,
+      "weave_voiceSpread": 0.72,
+      "weave_filterCutoff": 2800.0,
+      "weave_filterRes": 0.28,
+      "weave_lfo1Rate": 0.12,
+      "weave_lfo1Depth": 0.35,
+      "weave_lfo2Rate": 0.04,
+      "weave_lfo2Depth": 0.20,
+      "weave_ampAttack": 0.42,
+      "weave_ampDecay": 0.90,
+      "weave_ampSustain": 0.78,
+      "weave_ampRelease": 2.2,
+      "weave_macroCharacter": 0.50,
+      "weave_macroMovement": 0.35,
+      "weave_macroCoupling": 0.0,
+      "weave_macroSpace": 0.68
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.78,
+    "aggression": 0.15
+  }
+}

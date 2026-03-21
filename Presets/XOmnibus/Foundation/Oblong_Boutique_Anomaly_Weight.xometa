@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "name": "Anomaly Weight",
+  "mood": "Foundation",
+  "engines": ["Oblong"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase: OBLONG with heavy filter (low cutoff, higher resonance) through Anomaly as the dominant effect. Anomaly TextureBlend 0.78 (maximum alternate texture) gives OBLONG a dense secondary timbral layer that adds mass to an already bass-heavy engine. ReverbSize 0.55. TremoloRate 0.8 Hz (slow but audible pulse). TimeSlip off — the weight should be stable. Archive Chance 0.05. Cathedral minimal DarkMix 0.45 — the Cathedral is present but not dominant. Submersion 4 stages at 0.12 Hz. The result is OBLONG as a heavy architectural element with Anomaly-derived depth and density.",
+  "tags": ["oblong", "boutique-chain", "anomaly", "heavy", "foundation", "weight", "texture", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Oblong": {
+      "bob_fltCutoff": 800.0,
+      "bob_fltRes": 0.45,
+      "bob_fltEnvAmt": 0.38,
+      "bob_oscWave": 3,
+      "bob_oscDetune": 0.06,
+      "bob_lfo1Rate": 0.05,
+      "bob_lfo1Depth": 0.22,
+      "bob_lfo2Rate": 0.015,
+      "bob_lfo2Depth": 0.12,
+      "bob_ampAttack": 0.60,
+      "bob_ampDecay": 1.2,
+      "bob_ampSustain": 0.88,
+      "bob_ampRelease": 3.5,
+      "bob_macroCharacter": 0.25,
+      "bob_macroMovement": 0.15,
+      "bob_macroCoupling": 0.0,
+      "bob_macroSpace": 0.72
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.80,
+    "movement": 0.18,
+    "density": 0.80,
+    "space": 0.72,
+    "aggression": 0.22
+  }
+}

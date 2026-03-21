@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Tape Cathedral",
+  "mood": "Atmosphere",
+  "engines": ["Overdub"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Boutique Chain showcase emphasizing Artifact Cathedral. OVERDUB's spring reverb character (its defining feature — Blessing B004) fed through Cathedral creates a reverb-of-a-reverb that takes the metallic spring quality and passes it through packet-loss and bit-crush degradation. BitCrush 0.25 and DarkMix 0.72 gives the Cathedral a heavy, aged tape character — like spring reverb played through a degraded tape machine. Anomaly with mild TextureBlend 0.4 and TimeSlip off. Dissolving Archive minimal (Chance 0.05). Submersion at 3 stages with LFO 0.15 Hz. The result is OVERDUB's spring character amplified into a decayed cathedral space.",
+  "tags": ["overdub", "spring-reverb", "boutique-chain", "cathedral", "tape", "atmosphere", "vintage", "fx-showcase"],
+  "macroLabels": ["CHARACTER", "FX DEPTH", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "created": "2026-03-21",
+  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "parameters": {
+    "Overdub": {
+      "dub_oscWave": 1,
+      "dub_oscTune": 0.0,
+      "dub_filterCutoff": 2400.0,
+      "dub_filterRes": 0.28,
+      "dub_sendAmount": 0.65,
+      "dub_springMetal": 0.72,
+      "dub_springDecay": 0.80,
+      "dub_lfo1Rate": 0.08,
+      "dub_lfo1Depth": 0.22,
+      "dub_lfo2Rate": 0.025,
+      "dub_lfo2Depth": 0.15,
+      "dub_ampAttack": 0.45,
+      "dub_ampDecay": 0.70,
+      "dub_ampSustain": 0.80,
+      "dub_ampRelease": 2.5,
+      "dub_macroCharacter": 0.52,
+      "dub_macroMovement": 0.28,
+      "dub_macroCoupling": 0.0,
+      "dub_macroSpace": 0.80
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.85,
+    "aggression": 0.18
+  }
+}

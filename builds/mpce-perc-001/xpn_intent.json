@@ -1,0 +1,206 @@
+{
+  "$schema": "https://xo-ox.org/schemas/xpn-intent/v1.json",
+  "schema_version": "1.0",
+  "pack": {
+    "name": "XO_OX MPCe Percussion Vol. 1",
+    "id": "xo-ox-mpce-percussion-vol-1",
+    "version": "1.0.0",
+    "author": "XO_OX Designs",
+    "date": "2026-03-21",
+    "engine": "ONSET",
+    "engine_family": [
+      "ONSET"
+    ],
+    "mpce_native": true
+  },
+  "intent": {
+    "summary": "Finger drumming kit designed for MPCe 3D pads. Four articulation corners per drum voice. Designed for expressive performance, not programming.",
+    "target_player": "Live finger drummers and beat performers on MPC Live III / MPC XL",
+    "target_genre": [
+      "hip-hop",
+      "neo-soul",
+      "boom-bap",
+      "electronic"
+    ],
+    "design_philosophy": "Each pad is a complete instrument with four dynamic expression corners. Designed for expressive performance.",
+    "creative_direction": "",
+    "not_for": "Step-sequenced programming where articulation variety isn't needed"
+  },
+  "pad_architecture": {
+    "type": "mpce_quad_corner",
+    "corner_pattern": "dynamic_expression",
+    "corner_assignments": {
+      "NW": {
+        "role": "ghost_note",
+        "description": "Quiet, muted, brush-adjacent",
+        "sonic_character": "Low velocity, filtered, short decay"
+      },
+      "NE": {
+        "role": "accent",
+        "description": "Alternate strike \u2014 rimshot, edge hit",
+        "sonic_character": "Bright, sharp attack, full body"
+      },
+      "SW": {
+        "role": "standard",
+        "description": "Center hit. Default voice.",
+        "sonic_character": "Balanced, natural, full range"
+      },
+      "SE": {
+        "role": "effect",
+        "description": "Processed variant \u2014 flam, buzz, FX",
+        "sonic_character": "Textured, layered, characterful"
+      }
+    },
+    "xy_modulation": {
+      "x_axis": {
+        "target": "pan_or_reverb_send",
+        "description": "Horizontal = spatial width"
+      },
+      "y_axis": {
+        "target": "decay_or_release",
+        "description": "Vertical = sustain length"
+      }
+    },
+    "z_axis": {
+      "target": "filter_cutoff",
+      "description": "Pressure after strike opens filter."
+    }
+  },
+  "experience_arc": {
+    "description": "How the pads tell a story when played together.",
+    "pad_groups": [
+      {
+        "pads": [
+          "A01",
+          "A02",
+          "A03",
+          "A04"
+        ],
+        "role": "core_kit",
+        "description": "Foundation instruments. The heartbeat."
+      },
+      {
+        "pads": [
+          "A05",
+          "A06",
+          "A07",
+          "A08"
+        ],
+        "role": "color",
+        "description": "Accent instruments. Fills and punctuation."
+      },
+      {
+        "pads": [
+          "A09",
+          "A10",
+          "A11",
+          "A12"
+        ],
+        "role": "texture",
+        "description": "Rhythmic detail. Shakers, bells, percussion."
+      },
+      {
+        "pads": [
+          "A13",
+          "A14",
+          "A15",
+          "A16"
+        ],
+        "role": "atmosphere",
+        "description": "Space and transition. FX, sweeps, ambience."
+      }
+    ]
+  },
+  "sonic_dna_range": {
+    "brightness": {
+      "min": 0.01,
+      "max": 0.98
+    },
+    "warmth": {
+      "min": 0.02,
+      "max": 0.99
+    },
+    "movement": {
+      "min": 0.02,
+      "max": 1.0
+    },
+    "density": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "space": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "aggression": {
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "rendering": {
+    "sample_rate": 44100,
+    "bit_depth": 24,
+    "velocity_layers": 4,
+    "velocity_splits": [
+      {
+        "layer": 1,
+        "vel_start": 1,
+        "vel_end": 20,
+        "character": "ghost"
+      },
+      {
+        "layer": 2,
+        "vel_start": 21,
+        "vel_end": 50,
+        "character": "light"
+      },
+      {
+        "layer": 3,
+        "vel_start": 51,
+        "vel_end": 90,
+        "character": "medium"
+      },
+      {
+        "layer": 4,
+        "vel_start": 91,
+        "vel_end": 127,
+        "character": "hard"
+      }
+    ],
+    "corner_variants": 4,
+    "total_samples_per_pad": 16,
+    "total_samples": 256
+  },
+  "compatibility": {
+    "mpce_required": false,
+    "mpce_enhanced": true,
+    "standard_version_included": true,
+    "minimum_firmware": "3.7",
+    "hardware": [
+      "MPC Live III",
+      "MPC XL"
+    ],
+    "fallback_hardware": [
+      "MPC Live II",
+      "MPC One",
+      "MPC Key 61"
+    ],
+    "fallback_description": "Standard version included for non-MPCe hardware."
+  },
+  "provenance": {
+    "xomnibus_version": "1.0",
+    "source_presets": [],
+    "quad_builder_version": "1.0",
+    "render_spec": "",
+    "vision_quest": "VQ 003 + VQ 004",
+    "experiment_id": "6ec863bf-65d4-48b6-8940-b3b6ad2c72b2",
+    "experiment_tags": [
+      "first-mpce-pack",
+      "competitive-window",
+      "vq-003",
+      "vq-004",
+      "vq-005"
+    ],
+    "build_time": "2026-03-21T17:47:42.050551"
+  }
+}

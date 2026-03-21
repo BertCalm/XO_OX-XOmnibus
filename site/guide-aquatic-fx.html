@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Three Chains — V1.1 FX Suite Documentation | XO_OX Field Guide</title>
+<meta name="description" content="Field Guide Architecture #15: Three FX chain architectures — Aquatic, Mathematical, and Boutique — plus the Singularity three. Every stage documented. When to use each chain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --reef:       #1E8B7E;
+  --reef-dim:   #157066;
+  --reef-glow:  rgba(30, 139, 126, 0.08);
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 25% 75%, rgba(30, 139, 126, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 20%, rgba(0, 180, 160, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--reef-dim); color: var(--bg-deep); }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 75%, rgba(30, 139, 126, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 20%, rgba(42, 161, 155, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.article-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--reef-dim);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.article-hero-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--reef-dim);
+  opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--reef); }
+.article-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+}
+.article-meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.article-meta-item span { color: var(--text-dim); display: block; margin-top: 0.2rem; }
+
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+
+.article blockquote {
+  margin: 2rem 0;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--reef-dim);
+  background: var(--reef-glow);
+  border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+.article blockquote .attribution {
+  font-size: 0.7rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 0.8rem;
+  display: block;
+}
+.article-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--reef-dim), transparent);
+  margin: 3rem 0;
+}
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.95;
+  margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+
+/* ═══════════ CHAIN DIAGRAM ═══════════ */
+.chain-diagram {
+  margin: 2rem 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+.chain-diagram .chain-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+  display: block;
+}
+.chain-flow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.chain-stage {
+  padding: 0.5rem 0.9rem;
+  background: var(--reef-glow);
+  border: 1px solid rgba(30, 139, 126, 0.25);
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--reef);
+  white-space: nowrap;
+}
+.chain-stage.math {
+  background: rgba(255, 45, 45, 0.06);
+  border-color: rgba(255, 45, 45, 0.2);
+  color: #FF6B6B;
+}
+.chain-stage.boutique {
+  background: rgba(138, 155, 168, 0.08);
+  border-color: rgba(138, 155, 168, 0.25);
+  color: #8A9BA8;
+}
+.chain-stage.singularity {
+  background: rgba(233, 196, 106, 0.06);
+  border-color: rgba(233, 196, 106, 0.2);
+  color: var(--gold);
+}
+.chain-arrow {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ═══════════ STAGE CARDS ═══════════ */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.stage-card {
+  padding: 1.3rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  border-left: 3px solid var(--reef-dim);
+}
+.stage-card.math { border-left-color: #FF6B6B; }
+.stage-card.boutique { border-left-color: #8A9BA8; }
+.stage-card.singularity { border-left-color: var(--gold); }
+.stage-card .stage-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.stage-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.stage-card .stage-params {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--reef-dim);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.stage-card.math .stage-params { color: #CC4444; }
+.stage-card.boutique .stage-params { color: #6B7F8E; }
+.stage-card.singularity .stage-params { color: #C8A84A; }
+.stage-card p {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ═══════════ DECISION MATRIX ═══════════ */
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.decision-card {
+  padding: 1.3rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.decision-card .decision-use {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.decision-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.0rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.decision-card ul {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+.decision-card li {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin-bottom: 0.2rem;
+}
+.decision-card li strong { color: var(--text); }
+
+/* ═══════════ RECIPE CARD ═══════════ */
+.recipe-card {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--reef-dim);
+  border-radius: 0 4px 4px 0;
+}
+.recipe-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+}
+.recipe-card p { font-size: 0.95rem; margin-bottom: 0.8rem; }
+.recipe-card .recipe-tag {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--reef-dim);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.recipe-card .recipe-params {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  background: var(--bg-deep);
+  padding: 0.8rem 1rem;
+  border-radius: 3px;
+  line-height: 1.9;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.3s;
+  margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--reef-dim); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .stage-grid { grid-template-columns: 1fr; }
+  .decision-grid { grid-template-columns: 1fr; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+<meta property="og:title" content="The Three Chains — V1.1 FX Suite | XO_OX Field Guide">
+<meta property="og:description" content="Three parallel FX architectures in XOmnibus V1.1 — Aquatic, Mathematical, and Boutique — plus the Singularity three. Every stage documented.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html" class="active">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="article-hero-label">Field Guide &mdash; Architecture 15 &mdash; V1.1 Feature</div>
+  <h1>The <em>Three Chains</em></h1>
+  <p class="article-hero-sub">
+    XOmnibus ships with three parallel FX chain architectures &mdash; Aquatic, Mathematical, and Boutique &mdash; plus three Singularity effects. Each chain has four stages. You can route any engine through any chain. This post documents what each stage actually does, what it sounds like, and when to use it.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Feature<span style="color: var(--reef);">V1.1 &mdash; Three FX Chain Architectures</span></div>
+    <div class="article-meta-item">Read Time<span>18 min</span></div>
+    <div class="article-meta-item">Words<span>~3,800</span></div>
+    <div class="article-meta-item">Accent<span style="color: var(--reef);">Reef Jade #1E8B7E</span></div>
+  </div>
+</header>
+
+<article class="article" id="article-content">
+
+<p class="reveal">
+The effects question in synthesizer design is almost never about the effects themselves. It is about their relationship to what came before them. A reverb that follows a string pad has a different job than the same reverb following a distorted sawtooth. The architecture of the effects chain &mdash; the order of stages, the character of each stage, the decisions about what parameter to expose and what to hide &mdash; encodes a theory about what the instrument is for and who is expected to use it.
+</p>
+
+<p class="reveal">
+XOmnibus V1.1 ships three distinct FX chain architectures. The Aquatic Chain was designed with the instrument's water mythology in mind: pressure, drift, turbulence, and early reflections. The Mathematical Chain was built around formal mathematical concepts: entropy, Voronoi geometry, quantum indeterminacy, and chaotic attractors. The Boutique Chain takes its inspiration from the Chase Bliss / Old Blood Noise Endeavors boutique pedal tradition &mdash; effects that create entire environments rather than processing audio within one. The three Singularity effects operate outside the chain architecture entirely, as standalone processors that react to the signal dynamics in ways the chain stages do not.
+</p>
+
+<p class="reveal">
+This document describes all twelve chain stages and all three Singularity effects in technical and sonic terms. The goal is not to tell you what settings to use &mdash; it is to give you enough understanding of what each stage is doing that you can make informed decisions about when a stage is worth turning up and when it should stay at zero.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Aquatic Chain</h2>
+
+<p class="reveal">
+The Aquatic Chain's four stages move roughly from compression to movement to shimmer to space, in the physical order in which you would experience descent into the ocean: the pressure that changes everything, the drift of the water column, the tide rhythms on the surface, and the early reflections of the reef structure itself. The chain's parameter prefix is <code>aqua_</code>.
+</p>
+
+<div class="chain-diagram reveal" aria-label="Aquatic FX chain signal flow">
+  <span class="chain-label">Aquatic Chain — signal flow</span>
+  <div class="chain-flow">
+    <div class="chain-stage">Fathom</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage">Drift</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage">Tide</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage">Reef</div>
+    <span class="chain-arrow">&#8594;</span>
+    <span style="font-size:0.75rem;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">output</span>
+  </div>
+</div>
+
+<div class="stage-grid reveal">
+
+  <div class="stage-card">
+    <span class="stage-num">Stage 1</span>
+    <h4>Fathom &mdash; Pressure Compression</h4>
+    <div class="stage-params">aqua_fathomMix &middot; aqua_fathomDepth &middot; aqua_fathomCharacter</div>
+    <p>A three-band multiband compressor with a <strong>Character</strong> parameter that morphs the band-gain balance between two modes: at 0.0, it is deep and dark (low band boosted 40%, highs attenuated 30%); at 1.0, it is bright and present (highs boosted 40%, lows attenuated 30%). The analogy is hydrostatic pressure: deeper means darker and more compressed, shallower means present and open. Use Fathom to correct frequency imbalances in engines that are either too top-heavy or too bass-dominant, or to add the particular density that multiband compression gives without obvious pumping. The Character parameter alone is worth a macro assignment on any Fathom-heavy preset.</p>
+  </div>
+
+  <div class="stage-card">
+    <span class="stage-num">Stage 2</span>
+    <h4>Drift &mdash; Brownian Chorus</h4>
+    <div class="stage-params">aqua_driftVoices &middot; aqua_driftDepth &middot; aqua_driftRate &middot; aqua_driftDiffusion &middot; aqua_driftFeedback &middot; aqua_driftMix</div>
+    <p>Six-voice chorus where each voice's delay modulation follows an <strong>Ornstein-Uhlenbeck stochastic process</strong> &mdash; Brownian motion with mean-reverting drift rather than a regular LFO. The result is a chorus that sounds organic and non-repetitive without being random: each voice wanders within a bounded range, pulled back toward its center when it drifts too far, but never on a predictable schedule. The left and right channels use slightly offset base delay times (8&ndash;38ms vs 9&ndash;39ms) for a natural stereo spread without obvious panning artifacts. A one-pole HP filter on each voice's feedback path prevents mud at high feedback settings. Drift is the right choice when you want ensemble thickness that breathes rather than oscillates.</p>
+  </div>
+
+  <div class="stage-card">
+    <span class="stage-num">Stage 3</span>
+    <h4>Tide &mdash; Tremolo / Auto-Filter</h4>
+    <div class="stage-params">aqua_tideMix &middot; aqua_tideMode &middot; aqua_tideRate &middot; aqua_tideDepth &middot; aqua_tideShape &middot; aqua_tideSync</div>
+    <p>A unified tremolo / auto-filter / both-simultaneously processor with three LFO shapes (Sine, Triangle, Sample-and-Hold) and optional tempo sync. In Tremolo mode, the gain sweeps from unity down to (1 &minus; depth), floor at 0.05. In AutoFilter mode, a Cytomic TPT state variable filter sweeps exponentially &#177;2 octaves around a center frequency, driven by the LFO. In Both mode, tremolo and filter modulation occur simultaneously, which is the most extreme and the most useful for engines that need rhythmic character injection. The Sample-and-Hold shape with a slow rate produces stepped filter sweeps that sound nothing like conventional tremolo. Tide is the right chain stage when you want movement that is rhythmically defined rather than smoothly continuous.</p>
+  </div>
+
+  <div class="stage-card">
+    <span class="stage-num">Stage 4</span>
+    <h4>Reef &mdash; Householder FDN Reverb</h4>
+    <div class="stage-params">aqua_reefMix &middot; aqua_reefSize &middot; aqua_reefDecay &middot; aqua_reefDamping &middot; aqua_reefDensity &middot; aqua_reefPredelay</div>
+    <p>An 8-channel Feedback Delay Network using prime-number delay lengths (1153, 1627, 2053, 2503, 3079, 3637, 4093, 4799 samples at 48kHz) with a Householder reflection matrix for channel mixing. Two allpass diffusers per channel (at ~29ms and ~53ms) pre-diffuse the input before the FDN, giving the early reflections a complex initial density that sounds like the hard and irregular surfaces of a coral reef rather than a smooth plate. A Density parameter controls the allpass coefficient (0.1&ndash;0.6), trading between a more transparent early reflection tail and a more opaque diffused one. Reef is the terminal stage of the Aquatic Chain and should be treated as the spatial envelope for everything that precedes it.</p>
+  </div>
+
+</div>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Aquatic Chain Signature Sound</span>
+  <h4>The Pressure-Drift Pad</h4>
+  <p>OPAL or OCEANIC through the full Aquatic Chain at modest settings. Fathom Character 0.2 gives the dark-and-deep balance. Drift at 3 voices with depth 4ms and diffusion 0.5. Tide in AutoFilter mode at 0.2 Hz, a gentle 40% depth sweep. Reef at size 0.6 and decay 0.7. This combination sounds like something alive and unhurried &mdash; the Drift gives organic width, Tide provides a slow respiratory quality, and Reef roots the whole pad in a physical space that has walls.</p>
+  <div class="recipe-params">
+aqua_fathomMix:     0.35    Character: 0.2
+aqua_driftVoices:   3       driftDepth: 4ms   driftDiffusion: 0.5
+aqua_tideMode:      AutoFilter   tideRate: 0.2Hz   tideDepth: 0.4
+aqua_reefMix:       0.5     reefSize: 0.6     reefDecay: 0.7
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Mathematical Chain</h2>
+
+<p class="reveal">
+The Mathematical Chain's four stages each embody a different domain of formal mathematics applied to audio processing: statistical thermodynamics, computational geometry, quantum mechanics, and nonlinear dynamics. The chain's parameter prefix is <code>mfx_</code>. The MIDI CC assignments are CC30&ndash;CC33.
+</p>
+
+<p class="reveal">
+Where the Aquatic Chain processes audio with physics as a metaphor, the Mathematical Chain treats formal mathematical structures as DSP operations literally. The Voronoi Shatter does not merely sound like a shattered texture &mdash; it uses Fibonacci spiral and Voronoi geometry to determine how granular fragments are arranged in time. The Attractor Drive does not merely distort &mdash; it uses the Lorenz attractor and the logistic map to determine the character and timing of that distortion. This distinction produces a different sonic result: the Mathematical Chain processes audio in ways that respond to mathematical attractors and bifurcations, which means the chain's behavior changes character nonlinearly as parameters cross critical thresholds.
+</p>
+
+<div class="chain-diagram reveal" aria-label="Mathematical FX chain signal flow">
+  <span class="chain-label">Mathematical Chain — signal flow</span>
+  <div class="chain-flow">
+    <div class="chain-stage math">Entropy Cooler</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage math">Voronoi Shatter</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage math">Quantum Smear</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage math">Attractor Drive</div>
+    <span class="chain-arrow">&#8594;</span>
+    <span style="font-size:0.75rem;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">output</span>
+  </div>
+</div>
+
+<div class="stage-grid reveal">
+
+  <div class="stage-card math">
+    <span class="stage-num">Stage 1</span>
+    <h4>Entropy Cooler &mdash; Heat Equilibrium Filter</h4>
+    <div class="stage-params">mfx_ecStability &middot; mfx_ecCoolRate &middot; mfx_ecThreshold &middot; mfx_ecMix</div>
+    <p>Models the thermodynamic concept of heat equilibrium via three sub-processors: a Heat Equalizer that redistributes spectral energy toward a target distribution, a Shannon Entropy analyzer that measures the spectral disorder of the input, and a Maxwell's Demon gate that selectively passes high-energy spectral components while blocking lower-energy ones. The <strong>Stability</strong> parameter sets the target entropy level: at low values the processor pulls signal toward order (compressed spectral energy); at high values it allows disorder. <strong>Cool Rate</strong> controls how quickly the equalization converges to the target. The sonic character is a dynamic spectral shaping that responds to the actual information content of the input rather than its amplitude &mdash; dense, complex signals are treated differently from sparse, tonal ones.</p>
+  </div>
+
+  <div class="stage-card math">
+    <span class="stage-num">Stage 2</span>
+    <h4>Voronoi Shatter &mdash; Granular Geometry</h4>
+    <div class="stage-params">mfx_vsCrystallize &middot; mfx_vsTension &middot; mfx_vsGrainSize &middot; mfx_vsMix</div>
+    <p>A granular processor where grain timing and spatial arrangement follow Voronoi tessellation geometry derived from a Fibonacci spiral seed. The <strong>Crystallize</strong> parameter controls how strongly the Voronoi regions are enforced: at 0.0 the granulation is essentially free; at 1.0 each grain is precisely positioned according to its Voronoi cell's centroid. <strong>Tension</strong> controls the tensegrity between adjacent Voronoi cells &mdash; effectively the inter-grain coherence. <strong>Grain Size</strong> ranges from 5 to 100ms with a logarithmic response. The result is a granular texture that has geometric order even at high fragmentation: the scattered grains are not random, they are following a mathematical pattern that produces a recognizable spatial coherence in the stereo field. Voronoi Shatter is most useful as a texture injection device rather than a primary effect.</p>
+  </div>
+
+  <div class="stage-card math">
+    <span class="stage-num">Stage 3</span>
+    <h4>Quantum Smear &mdash; Schr&#246;dinger Delay</h4>
+    <div class="stage-params">mfx_qsObservation &middot; mfx_qsFeedback &middot; mfx_qsDelayCenter &middot; mfx_qsMix</div>
+    <p>A delay/reverb unit where the delay time is not a fixed value but exists in a <em>superposition</em> determined by the <strong>Observation</strong> parameter. At Observation 0.0, the delay spreads across a wide range of times centered on DelayCenter (the "wave function uncollapsed"), producing a dense reverberant tail. At Observation 1.0, the delay collapses to the specific value set by DelayCenter (the "wave function measured"), producing a clean, pitched echo. Intermediate values produce a continuum between diffuse reverb and discrete echo. Airy function patterns and Peano curve geometry determine the distribution of delay times in the superposition state. The Feedback parameter works normally: 0 is a single-tap delay, 0.95 is near-infinite sustain. Quantum Smear is the most versatile stage in the Mathematical Chain, functioning as everything from a bright slapback to a hall reverb depending on Observation and Feedback settings.</p>
+  </div>
+
+  <div class="stage-card math">
+    <span class="stage-num">Stage 4</span>
+    <h4>Attractor Drive &mdash; Lorenz Distortion</h4>
+    <div class="stage-params">mfx_adBifurcation &middot; mfx_adDriveBase &middot; mfx_adSpeed &middot; mfx_adMix</div>
+    <p>A distortion unit where the drive curve is modulated by the Lorenz strange attractor and the logistic map bifurcation. <strong>Bifurcation</strong> controls the logistic map parameter r: below 3.0 (normalized as &lt;0.5) the map converges to a fixed point and the distortion is smooth and consistent; above 3.57 (normalized &gt;0.7) the map enters the chaotic regime and the drive amount fluctuates nonlinearly with the signal. The sonic result at high Bifurcation is a distortion that is dynamically unstable &mdash; the same input level produces different harmonic content depending on the attractor's current position. <strong>Speed</strong> controls the rate at which the Lorenz system evolves, determining how quickly the attractor-modulated drive changes character. Attractor Drive is the most aggressive stage in the Mathematical Chain and should be used sparingly against complex, harmonically rich engines.</p>
+  </div>
+
+</div>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Mathematical Chain Signature Sound</span>
+  <h4>The Entropy Cascade</h4>
+  <p>OUROBOROS or ORGANISM through the Mathematical Chain. Entropy Cooler at Stability 0.3 and CoolRate 0.4 creates a spectral ordering effect that flattens the complex attractor timbres into a more uniform spectral shape &mdash; which paradoxically makes the mathematical character of those engines more audible. Voronoi Shatter at Crystallize 0.4 and GrainSize 30ms adds geometric fragmentation to sustained notes. Quantum Smear at Observation 0.2 and Feedback 0.5 gives a diffuse, smeared reverb tail. Attractor Drive at Bifurcation 0.35 keeps the distortion in the stable regime &mdash; just adding harmonic density without unpredictability.</p>
+  <div class="recipe-params">
+mfx_ecStability:   0.3    ecCoolRate: 0.4    ecMix: 0.4
+mfx_vsCrystallize: 0.4    vsGrainSize: 30    vsMix: 0.25
+mfx_qsObservation: 0.2    qsFeedback: 0.5    qsMix: 0.45
+mfx_adBifurcation: 0.35   adDriveBase: 0.3   adMix: 0.2
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Boutique Chain</h2>
+
+<p class="reveal">
+The Boutique Chain takes its entire conceptual framework from the Chase Bliss / Old Blood Noise Endeavors hardware tradition &mdash; pedals that function as environment generators rather than processors, each named after the mood it creates rather than the algorithm it implements. The design principle is that effects at this level of complexity are not tools for a specific task but <em>instruments within the instrument</em>: they transform the signal into a different sonic context rather than modifying it within the same context.
+</p>
+
+<p class="reveal">
+The chain's MIDI CC assignments are CC40&ndash;CC47. The parameter prefix is <code>bfx_</code>.
+</p>
+
+<div class="chain-diagram reveal" aria-label="Boutique FX chain signal flow">
+  <span class="chain-label">Boutique Chain — signal flow</span>
+  <div class="chain-flow">
+    <div class="chain-stage boutique">Anomaly</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage boutique">Dissolving Archive</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage boutique">Artifact Cathedral</div>
+    <span class="chain-arrow">&#8594;</span>
+    <div class="chain-stage boutique">Submersion</div>
+    <span class="chain-arrow">&#8594;</span>
+    <span style="font-size:0.75rem;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">output</span>
+  </div>
+</div>
+
+<div class="stage-grid reveal">
+
+  <div class="stage-card boutique">
+    <span class="stage-num">Stage 1</span>
+    <h4>Anomaly Engine &mdash; Texture + Reverse</h4>
+    <div class="stage-params">bfx_anTextureBlend &middot; bfx_anReverbSize &middot; bfx_anTremoloRate &middot; bfx_anTimeSlip &middot; bfx_anSlipSpeed &middot; bfx_anMix</div>
+    <p>Inspired by the Chase Bliss Lost+Found and OBNE Minim, Anomaly combines three simultaneous processors: a texture generator that crossfades between two timbral layers (controlled by <strong>TextureBlend</strong>), a simple convolution-style reverb (<strong>ReverbSize</strong>), and a tremolo (<strong>TremoloRate</strong>). The defining feature is the <strong>TimeSlip</strong> toggle: when enabled, a <strong>SlipSpeed</strong>-controlled pitch shift is applied, creating a slow detune effect reminiscent of tape flutter. Anomaly is most useful as a pre-processing stage that adds instability and texture before the more structured stages that follow it &mdash; a way of saying to the rest of the chain that what arrived here was already imperfect.</p>
+  </div>
+
+  <div class="stage-card boutique">
+    <span class="stage-num">Stage 2</span>
+    <h4>Dissolving Archive &mdash; Memory Well + Grains</h4>
+    <div class="stage-params">bfx_daChance &middot; bfx_daDissolve &middot; bfx_daGrainMix &middot; bfx_daReverbMix &middot; bfx_daMix</div>
+    <p>Inspired by the Chase Bliss Habit and OBNE Parting, the Dissolving Archive is a stochastic memory processor. <strong>Chance</strong> controls the probability that the current input is added to the memory well on any given cycle. <strong>Dissolve</strong> controls how quickly stored material degrades &mdash; at 0.0 memories persist indefinitely; at 1.0 they dissolve within a few cycles. The memory output is granulated (GrainMix) and convolved with a reverb (ReverbMix) before being mixed back into the signal path. The sonic identity is a processor that can play back fragments of what happened earlier in the performance at random, decaying in quality as they age. This is the stage that makes the Boutique Chain capable of generating apparent improvisation from stored material.</p>
+  </div>
+
+  <div class="stage-card boutique">
+    <span class="stage-num">Stage 3</span>
+    <h4>Artifact Cathedral &mdash; Data-Rot Reverb</h4>
+    <div class="stage-params">bfx_acPacketLoss &middot; bfx_acBitCrush &middot; bfx_acDarkMix &middot; bfx_acSunMix &middot; bfx_acModDepth &middot; bfx_acDecay &middot; bfx_acFreeze &middot; bfx_acMix</div>
+    <p>Inspired by the Chase Bliss Lossy and OBNE Dark Light, the Artifact Cathedral is a reverb that has been deliberately degraded. <strong>PacketLoss</strong> randomly zeroes blocks of the reverb tail, creating the sonic equivalent of digital packet loss in a streaming protocol. <strong>BitCrush</strong> reduces the bit depth of the reverb signal, adding quantization noise that becomes more prominent as the reverb decays. The <strong>Dark/Sun Mix</strong> pair crossfades between a dark, low-passed reverb character (Dark) and a brighter, harmonically enriched one (Sun). <strong>Freeze</strong> is a hold function: when toggled, the current reverb tail is captured and held indefinitely. Artifact Cathedral is the architectural core of the Boutique Chain &mdash; the stage that most transforms the signal's spatial context into something uncanny.</p>
+  </div>
+
+  <div class="stage-card boutique">
+    <span class="stage-num">Stage 4</span>
+    <h4>Submersion Engine &mdash; All-Pass + Clock</h4>
+    <div class="stage-params">bfx_smStages &middot; bfx_smLFORate &middot; bfx_smLFODepth &middot; bfx_smLoopFB &middot; bfx_smClock &middot; bfx_smMix</div>
+    <p>Inspired by the Chase Bliss MOOD MKII and OBNE Bathing, the Submersion Engine combines a cascaded all-pass filter (<strong>Stages</strong>: 2&ndash;8) with an LFO-modulated looper and a master clock parameter. The all-pass cascade creates phase rotation without amplitude change &mdash; the sound becomes submerged without becoming darker. <strong>LoopFB</strong> controls a feedback path through the loop, creating sustained reverberant tails at higher settings. The <strong>Clock</strong> parameter influences the loop division, allowing rhythmic entrainment between the loop and host BPM when tempo sync is active. Submersion is the final stage of the Boutique Chain and defines the chain's terminal spatial character: at low Stage counts it adds subtle phase movement; at high Stage counts with moderate LFO depth it creates a rich, slowly rotating spatial texture.</p>
+  </div>
+
+</div>
+
+<div class="recipe-card reveal">
+  <span class="recipe-tag">Boutique Chain Signature Sound</span>
+  <h4>The Living Archive</h4>
+  <p>ORACLE or OVERDUB through the full Boutique Chain at low-to-medium mix values. Anomaly with TextureBlend 0.6, ReverbSize 0.45, TremoloRate 2.5Hz, TimeSlip off. Dissolving Archive with Chance 0.15 and Dissolve 0.4 &mdash; low chance means not everything is stored; medium dissolve means what is stored has a reasonable lifespan. Cathedral with BitCrush 0.2 and DarkMix 0.65 &mdash; just enough data-rot to feel like age rather than damage. Submersion at 4 stages, LFORate 0.3Hz, moderate LoopFB. The result is a signal that plays with its own memory.</p>
+  <div class="recipe-params">
+bfx_anTextureBlend: 0.6    anReverbSize: 0.45   anTremoloRate: 2.5
+bfx_daChance:       0.15   daDissolve: 0.4      daGrainMix: 0.5
+bfx_acBitCrush:     0.2    acDarkMix: 0.65      acDecay: 0.6
+bfx_smStages:       4      smLFORate: 0.3       smLoopFB: 0.35
+  </div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">The Singularity Three</h2>
+
+<p class="reveal">
+The three Singularity effects stand outside the chain architecture. They are standalone processors that can be inserted at specific points in the master FX path. Unlike the chain stages, which affect the signal continuously at their Mix setting, the Singularity effects respond to signal dynamics: they change character based on what the signal is doing rather than what you have set their parameters to.
+</p>
+
+<div class="stage-grid reveal">
+
+  <div class="stage-card singularity">
+    <span class="stage-num">Singularity FX 1</span>
+    <h4>fXOnslaught &mdash; Wave Function Collapse</h4>
+    <div class="stage-params">FlowRate &middot; FlowDepth &middot; Threshold &middot; CollapseDepth &middot; CollapseRate &middot; CollapseDecay &middot; SidechainHP</div>
+    <p>A two-state machine: a lush allpass chorus (Flow) that collapses into aggressive phase modulation (Collapse) when a transient is detected. The transient is the observer &mdash; the quantum measurement that shatters the wave function. In the Flow state, four cascaded Cytomic TPT all-pass filters create a liquid, chorus-like texture with Moog-style resonance feedback from the cascade output. On transient detection, the last 50ms of audio is captured and used as a phase modulation source, with Buchla-style grain rotation that slowly evolves the captured grain's waveform during the collapse. A Tomita recovery shimmer &mdash; a brief bloom of increased APF depth &mdash; marks the transition back to Flow. The Sidechain HP parameter (default 200Hz) filters bass frequencies from the transient detector, allowing percussive mid/high transients to trigger collapse while ignoring kick drums. The result is an effect that is serene between hits and violent on impact: smooth pads shatter into industrial texture on a snare, then recover. The recovery itself is audible as a brief shimmer.</p>
+  </div>
+
+  <div class="stage-card singularity">
+    <span class="stage-num">Singularity FX 2</span>
+    <h4>fXObscura &mdash; Chiaroscuro</h4>
+    <div class="stage-params">Threshold &middot; HoldLevel &middot; Release &middot; ErosionCurve &middot; SubHarmonic &middot; Saturation &middot; Decimate &middot; Resonance &middot; Tone &middot; Patina</div>
+    <p>Inverse-dynamic spectral degradation. Loud signals pass through clean. Quiet signals sink into a dark path where sub-harmonic ring modulation (f/2 with Buchla-style stochastic jitter creating occasional f/3 and f/5 undertones), tanh saturation, dynamic sample-rate reduction, a resonant bandpass that sweeps downward as the signal fades, and a tone lowpass filter accumulate until what was a quiet note becomes a corroded, weathered artifact of itself. The <strong>ErosionCurve</strong> parameter sets the exponent of the crossfade between clean and dark &mdash; at 1.0 the degradation is linear with amplitude; at 4.0 signals need to be very quiet before the dark path activates at all, then it activates suddenly. A Tomita-inspired <strong>Patina</strong> LFO (0.005&ndash;0.15 Hz) breathes through the erosion curve, giving the degradation a living quality rather than a static one. A Vangelis-inspired HoldLevel parameter keeps the clean path active above a set threshold regardless of Threshold, preserving musical peaks from the dark path during performances where loud notes should remain pristine.</p>
+  </div>
+
+  <div class="stage-card singularity">
+    <span class="stage-num">Singularity FX 3</span>
+    <h4>fXOratory &mdash; Poetic Meter Delay</h4>
+    <div class="stage-params">Pattern &middot; Syllable &middot; Accent &middot; Spread &middot; Feedback &middot; Damping &middot; DampingResonance &middot; Drift</div>
+    <p>A twelve-tap delay where tap timing and gain follow one of eight poetic meter patterns: Iambic, Trochee, Anapest, Dactyl, Spondee, Haiku, Fibonacci, Free Verse. Each pattern assigns stress weights to its taps (stressed = 1.0, unstressed = 0.15), and the <strong>Accent</strong> parameter controls how much this contrast is audible: at 0.0 all taps are equal, at 1.0 unstressed taps are nearly silent. Each tap has its own Cytomic TPT lowpass filter, with earlier taps brighter (12kHz) and later taps darker (3.6kHz). The spatial panning follows a narrative unique to each pattern: Iambic marches taps left-to-right (a procession), Haiku positions taps in three spatial pillars, Fibonacci places taps along a nautilus spiral. A Kakehashi-inspired <strong>Drift</strong> parameter slowly evolves the tap gain pattern over a 20-second LFO cycle, making the stress pattern breathe over time. The Fibonacci pattern (the default) is the most musically useful starting point: taps distributed along a golden-ratio spiral produce a delay that sounds like memory rather than repetition.</p>
+  </div>
+
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal">Choosing Your Chain</h2>
+
+<p class="reveal">
+The three chains are not meant to be interchangeable. They encode different philosophies about what effects are for. Here is a decision guide based on the sonic context rather than the engine.
+</p>
+
+<div class="decision-grid reveal">
+
+  <div class="decision-card">
+    <span class="decision-use">Use Aquatic When</span>
+    <h4>The Aquatic Chain</h4>
+    <ul>
+      <li>You want <strong>enhancement</strong> rather than transformation</li>
+      <li>The engine has a clear tonal identity you want to preserve</li>
+      <li>You are building a pad, drone, or ambient texture</li>
+      <li>The signal needs width (Drift) and space (Reef) but not drama</li>
+      <li>You are working with OCEANIC, OPAL, OXBOW, ORBWEAVE, OWARE</li>
+      <li>The mix context is dense and you need each element to sit without interfering</li>
+    </ul>
+  </div>
+
+  <div class="decision-card">
+    <span class="decision-use">Use Mathematical When</span>
+    <h4>The Mathematical Chain</h4>
+    <ul>
+      <li>You want the FX to have <strong>structural complexity</strong> of their own</li>
+      <li>The engine is generative or chaotic (OUROBOROS, ORGANISM, ORACLE, ORGANON)</li>
+      <li>You want the chain to respond dynamically to signal content, not just amplitude</li>
+      <li>Granular fragmentation (Voronoi) is part of the intended texture</li>
+      <li>You are willing to push Attractor Drive into unstable territory for character</li>
+      <li>The preset is in the Flux, Prism, or Entangled mood categories</li>
+    </ul>
+  </div>
+
+  <div class="decision-card">
+    <span class="decision-use">Use Boutique When</span>
+    <h4>The Boutique Chain</h4>
+    <ul>
+      <li>You want the FX to <strong>transform the signal's identity</strong>, not just its space</li>
+      <li>The signal should feel like it exists in a specific environment</li>
+      <li>Archive/memory behavior is a compositional feature (Dissolving Archive)</li>
+      <li>You are working with character engines: ORACLE, OVERDUB, OSTERIA, OBLONG</li>
+      <li>Degradation and imperfection are desired qualities (Cathedral's data-rot)</li>
+      <li>The preset is in Atmosphere, Submerged, or Aether moods</li>
+    </ul>
+  </div>
+
+  <div class="decision-card">
+    <span class="decision-use">Use Singularity When</span>
+    <h4>The Singularity Three</h4>
+    <ul>
+      <li>The FX should <strong>react to what the signal does</strong>, not parameters you set</li>
+      <li>Onslaught: you want a transient to shatter the texture, then recover</li>
+      <li>Obscura: you want quiet notes to decay in a completely different sonic space than loud ones</li>
+      <li>Oratory: you want delay that sounds like a compositional process rather than a repetition</li>
+      <li>Any of the three can be combined with any chain; they are independent processors</li>
+    </ul>
+  </div>
+
+</div>
+
+<blockquote class="reveal">
+  <p>The chain you choose is a statement about how the instrument relates to the room it occupies. The Aquatic Chain says: this sound is of the water. The Mathematical Chain says: this sound is a theorem. The Boutique Chain says: this sound was somewhere before it arrived here.</p>
+</blockquote>
+
+<div class="article-divider reveal"></div>
+
+<p class="reveal">
+The six new preset packs released alongside this documentation &mdash; 10 presets per chain, plus 10 OBRIX FX chain presets &mdash; are the fastest path to hearing what each chain is capable of. Find them in the Aquatic FX, Mathematical FX, and Boutique FX folders within each mood category.
+</p>
+
+<p class="reveal">
+For further reading on the engines that pair most naturally with each chain, see the <a href="guide-coupling.html" style="color: var(--reef); text-decoration: none;">Coupling System guide</a> for routing strategies, and the <a href="guide-obrix.html" style="color: var(--reef); text-decoration: none;">OBRIX guide</a> for the engine that benefits most dramatically from all three chains in sequence.
+</p>
+
+<p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
+<em>Architecture #15 &mdash; V1.1 Feature Documentation &mdash; Three FX Chain Architectures</em><br>
+<em>Aquatic Chain: Reef Jade #1E8B7E &middot; Mathematical Chain: Strange Attractor Red #FF2D2D &middot; Boutique Chain: Daguerreotype Silver #8A9BA8</em><br>
+<em>XO_OX Field Guide &mdash; March 2026</em>
+</p>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

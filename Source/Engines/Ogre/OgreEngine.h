@@ -369,29 +369,37 @@ public:
                 // LFO1 -> brightness
                 velBright = std::clamp (velBright + lfo1Val * 2000.0f, 100.0f, 20000.0f);
 
-                // Body resonance filter — soil character determines filter Q and mode
-                // Clay (0) = tight LP, Sandy (0.5) = wider LP, Rocky (1.0) = some HP mixed in
+                // Body resonance filter — soil character determines filter mode, base cutoff, and Q.
+                // Clay (0) = tight LP, Sandy (0.5) = wider LP, Rocky (1.0) = BandPass notch character.
+                // The filter envelope then modulates the soil-derived cutoff.
+                // Both soil character AND envelope affect the single filter pass (D004 fix).
                 float soilQ = 0.2f + bodyRNow * 0.6f;
+
+                // Filter envelope — compute first so it feeds into soil cutoff calculation
+                float envMod = voice.filterEnv.process() * pFiltEnvAmt * 3000.0f;
+                float lfo2FilterMod = lfo2Val * 1500.0f;
+
+                float filtered;
                 if (pSoil < 0.5f)
                 {
                     voice.bodyFilter.setMode (CytomicSVF::Mode::LowPass);
-                    float soilCutoff = velBright * (0.6f + pSoil * 0.8f);
-                    voice.bodyFilter.setCoefficients (soilCutoff, soilQ, srf);
+                    // Soil sets base character: clay = darker, sandy = brighter
+                    float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
+                    // Envelope and LFO2 modulate on top of soil base
+                    float finalCutoff = std::clamp (soilBaseCutoff + envMod + lfo2FilterMod,
+                                                    100.0f, 20000.0f);
+                    voice.bodyFilter.setCoefficients (finalCutoff, soilQ, srf);
                 }
                 else
                 {
-                    // Rocky: blend LP and HP for a notched character
+                    // Rocky: BandPass for notched character — soil pSoil > 0.5 means rock
                     voice.bodyFilter.setMode (CytomicSVF::Mode::BandPass);
-                    float soilCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
-                    voice.bodyFilter.setCoefficients (soilCutoff, soilQ + 0.2f, srf);
+                    float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
+                    float finalCutoff = std::clamp (soilBaseCutoff + envMod + lfo2FilterMod,
+                                                    100.0f, 20000.0f);
+                    voice.bodyFilter.setCoefficients (finalCutoff, soilQ + 0.2f, srf);
                 }
-                float filtered = voice.bodyFilter.processSample (saturated);
-
-                // Filter envelope
-                float envMod = voice.filterEnv.process() * pFiltEnvAmt * 3000.0f;
-                // LFO2 -> filter env amount modulation
-                float envCutoff = std::clamp (velBright + envMod + lfo2Val * 1500.0f, 100.0f, 20000.0f);
-                voice.bodyFilter.setCoefficients (envCutoff, soilQ, srf);
+                // Single filter pass — soil character AND envelope both shape the result
                 filtered = voice.bodyFilter.processSample (saturated);
 
                 // Amplitude envelope

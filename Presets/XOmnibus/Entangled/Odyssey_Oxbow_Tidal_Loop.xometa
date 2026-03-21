@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Loop Migration",
+  "mood": "Entangled",
+  "engines": ["Odyssey", "Oxbow"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "ODYSSEY's tidal pulse couples with OXBOW's entangled reverb — the tidal filter sweep in ODYSSEY modulates OXBOW's feedback entanglement. When the tide rises, the reverb deepens. When the tide falls, the reverb releases. Two water systems in phase with each other.",
+  "tags": ["odyssey", "oxbow", "tidal", "entangled", "reverb", "migration", "coupling", "transcendental"],
+  "tier": "transcendental",
+  "guru_bin": {
+    "retreat": "ODYSSEY — FM+Drift Compound Migration",
+    "retreat_date": "2026-03-21",
+    "scripture": ["Scripture VII-7: Two Timescales of Motion Make the Sound Feel Like Weather"],
+    "revelation": "The tidal pulse in ODYSSEY and the entanglement feedback in OXBOW are both slow-oscillating systems. When coupled, they create a unified tidal behavior across the synthesis and the reverb simultaneously.",
+    "diagnosis": "Tidal Loop Migration uses ODYSSEY tidalDepth=0.55 feeding OXBOW's entanglement via PhaseSync coupling. The ODYSSEY tidal sweep has a 5-second period; the OXBOW entanglement responds with a slow feedback depth modulation. Water above and below the thermocline, synchronized."
+  },
+  "macroLabels": ["TIDAL DEPTH", "OXBOW ENTANGLE", "FM TEXTURE", "REVERB COUPLING"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Odyssey": {
+      "drift_oscA_mode": 0,
+      "drift_oscA_shape": 0,
+      "drift_oscA_tune": 0.0,
+      "drift_oscA_level": 0.75,
+      "drift_oscA_detune": 0.18,
+      "drift_oscA_pw": 0.5,
+      "drift_oscA_fmDepth": 0.0,
+      "drift_oscB_mode": 2,
+      "drift_oscB_shape": 1,
+      "drift_oscB_tune": 0.0,
+      "drift_oscB_level": 0.55,
+      "drift_oscB_detune": 0.22,
+      "drift_oscB_pw": 0.5,
+      "drift_oscB_fmDepth": 0.28,
+      "drift_subLevel": 0.15,
+      "drift_noiseLevel": 0.0,
+      "drift_hazeAmount": 0.22,
+      "drift_filterCutoff": 5000.0,
+      "drift_filterReso": 0.22,
+      "drift_filterSlope": 0,
+      "drift_filterEnvAmt": 0.15,
+      "drift_formantMorph": 0.5,
+      "drift_formantMix": 0.05,
+      "drift_shimmerAmount": 0.42,
+      "drift_shimmerTone": 0.62,
+      "drift_attack": 2.0,
+      "drift_decay": 5.0,
+      "drift_sustain": 0.65,
+      "drift_release": 7.0,
+      "drift_lfoRate": 0.04,
+      "drift_lfoDepth": 0.05,
+      "drift_lfoDest": 0,
+      "drift_driftDepth": 0.35,
+      "drift_driftRate": 0.08,
+      "drift_tidalDepth": 0.55,
+      "drift_tidalRate": 0.2,
+      "drift_fractureEnable": 0,
+      "drift_fractureIntensity": 0.0,
+      "drift_fractureRate": 1.0,
+      "drift_reverbMix": 0.48,
+      "drift_reverbSize": 0.85,
+      "drift_level": 0.7,
+      "drift_voiceMode": 0,
+      "drift_glide": 0.0,
+      "drift_polyphony": 4
+    },
+    "Oxbow": {
+      "oxb_entangle": 0.62,
+      "oxb_level": 0.58
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "source": "Odyssey",
+        "target": "Oxbow",
+        "type": "PhaseSync",
+        "amount": 0.5
+      }
+    ]
+  },
+  "sequencer": null
+}
