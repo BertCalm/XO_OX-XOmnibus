@@ -1,22 +1,21 @@
 {
   "schema_version": 1,
-  "name": "Overtone Pell Number Cloud",
+  "name": "Pell Number Cloud",
   "mood": "Flux",
   "engines": [
     "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sqrt2 constant at depth 6-7. Pell convergents have converged: all 8 partials are packed within 0.01 of each other near the tritone. Maximum spectral density for this engine. A slow, throbbing unison cloud. LFO1 at 0.25 Hz creates gentle amplitude beating between nearly-identical partials.",
-  "tier": "awakening",
+  "description": "Sqrt2 constant at depth 6 — Pell convergents fully converged near 1.41421. All 8 partials cluster within 0.01 of each other near the tritone. Maximum density for this engine. LFO2 phase rotation provides the only motion available in this converged state.",
   "tags": [
     "sqrt2",
     "cloud",
     "dense",
     "flux",
-    "guru-bin-awakening",
+    "awakening",
     "pell",
-    "tritone"
+    "converged"
   ],
   "macroLabels": [
     "DEPTH",
@@ -24,16 +23,14 @@
     "COUPLING",
     "SPACE"
   ],
-  "coupling": {
-    "pairs": []
-  },
   "couplingIntensity": "None",
+  "tempo": null,
   "dna": {
     "brightness": 0.48,
     "warmth": 0.45,
     "movement": 0.58,
     "density": 0.82,
-    "space": 0.5,
+    "space": 0.50,
     "aggression": 0.18
   },
   "parameters": {
@@ -42,22 +39,22 @@
       "over_depth": 6.0,
       "over_partial0": 0.75,
       "over_partial1": 0.72,
-      "over_partial2": 0.7,
+      "over_partial2": 0.70,
       "over_partial3": 0.68,
       "over_partial4": 0.66,
       "over_partial5": 0.64,
       "over_partial6": 0.62,
-      "over_partial7": 0.6,
-      "over_velBright": 0.3,
+      "over_partial7": 0.60,
+      "over_velBright": 0.30,
       "over_filterCutoff": 9500.0,
       "over_filterRes": 0.45,
-      "over_ampAtk": 0.1,
-      "over_ampDec": 0.4,
-      "over_ampSus": 0.7,
+      "over_ampAtk": 0.10,
+      "over_ampDec": 0.40,
+      "over_ampSus": 0.70,
       "over_ampRel": 2.5,
       "over_lfo1Rate": 0.25,
-      "over_lfo1Depth": 0.3,
-      "over_lfo2Rate": 0.1,
+      "over_lfo1Depth": 0.30,
+      "over_lfo2Rate": 0.10,
       "over_lfo2Depth": 0.25,
       "over_resoMix": 0.32,
       "over_macroDepth": 0.22,
@@ -66,5 +63,7 @@
       "over_macroSpace": 0.45
     }
   },
-  "tempo": null
+  "coupling": {
+    "pairs": []
+  }
 }

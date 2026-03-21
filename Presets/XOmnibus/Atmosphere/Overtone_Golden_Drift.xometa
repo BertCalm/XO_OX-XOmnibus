@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "name": "Overtone Golden Drift",
+  "name": "Golden Drift",
   "mood": "Atmosphere",
   "engines": [
     "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Phi constant at depth 6-7. Convergents tightening toward 1.61803 from both sides. Upper partials beat at irrational intervals. Slow LFO1 sweeps depth, orbiting the golden ratio limit. Meditation on the unreachable.",
-  "tier": "awakening",
+  "description": "Phi constant near the golden limit (depth 5.5). Convergents 21/13 and 34/21 converge on 1.61803 from alternating sides. Very slow LFO orbits the limit. A meditation on the unreachable — the shell approaching its own proportion forever.",
   "tags": [
     "phi",
     "golden-ratio",
     "atmospheric",
-    "guru-bin-awakening",
+    "awakening",
     "irrational",
-    "drift"
+    "drift",
+    "meditation"
   ],
   "macroLabels": [
     "DEPTH",
@@ -23,13 +23,11 @@
     "COUPLING",
     "SPACE"
   ],
-  "coupling": {
-    "pairs": []
-  },
   "couplingIntensity": "None",
+  "tempo": null,
   "dna": {
-    "brightness": 0.6,
-    "warmth": 0.5,
+    "brightness": 0.60,
+    "warmth": 0.50,
     "movement": 0.55,
     "density": 0.58,
     "space": 0.45,
@@ -42,28 +40,30 @@
       "over_partial0": 0.85,
       "over_partial1": 0.52,
       "over_partial2": 0.38,
-      "over_partial3": 0.3,
+      "over_partial3": 0.30,
       "over_partial4": 0.25,
       "over_partial5": 0.22,
-      "over_partial6": 0.2,
+      "over_partial6": 0.20,
       "over_partial7": 0.18,
-      "over_velBright": 0.5,
+      "over_velBright": 0.50,
       "over_filterCutoff": 13500.0,
       "over_filterRes": 0.35,
       "over_ampAtk": 0.12,
-      "over_ampDec": 0.5,
+      "over_ampDec": 0.50,
       "over_ampSus": 0.68,
       "over_ampRel": 2.2,
       "over_lfo1Rate": 0.04,
       "over_lfo1Depth": 0.35,
       "over_lfo2Rate": 0.02,
-      "over_lfo2Depth": 0.2,
+      "over_lfo2Depth": 0.20,
       "over_resoMix": 0.28,
       "over_macroDepth": 0.35,
       "over_macroColor": 0.52,
       "over_macroCoupling": 0.22,
-      "over_macroSpace": 0.4
+      "over_macroSpace": 0.40
     }
   },
-  "tempo": null
+  "coupling": {
+    "pairs": []
+  }
 }

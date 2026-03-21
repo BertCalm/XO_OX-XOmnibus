@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Calcium Archive",
+  "mood": "Aether",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Scope 16, stepRate 0.5 — ORGANISM as geological instrument. Rule 22 symmetric branching. A significant arc in modulation takes 32 seconds. The patience parameter.",
+  "tags": [
+    "ambient",
+    "slow",
+    "generative",
+    "meditative",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.78,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 22.0,
+      "org_seed": 512,
+      "org_stepRate": 0.5,
+      "org_scope": 16,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.55,
+      "org_filterCutoff": 1500.0,
+      "org_filterRes": 0.25,
+      "org_velCutoff": 0.35,
+      "org_ampAtk": 0.80,
+      "org_ampDec": 1.2,
+      "org_ampSus": 0.70,
+      "org_ampRel": 4.0,
+      "org_lfo1Rate": 0.01,
+      "org_lfo1Depth": 0.08,
+      "org_lfo2Rate": 0.02,
+      "org_lfo2Depth": 0.06,
+      "org_reverbMix": 0.55,
+      "org_macroRule": 0.875,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

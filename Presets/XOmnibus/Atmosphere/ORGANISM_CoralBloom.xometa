@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Coral Bloom",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow emergence pad — Rule 110 at geological stepRate. A note held for 20 seconds blooms gradually as the colony builds its architecture.",
+  "tags": [
+    "generative",
+    "slow",
+    "evolving",
+    "pad",
+    "ambient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.32,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 1.2,
+      "org_scope": 10,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 2,
+      "org_subLevel": 0.40,
+      "org_filterCutoff": 1800.0,
+      "org_filterRes": 0.30,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.45,
+      "org_ampDec": 0.80,
+      "org_ampSus": 0.65,
+      "org_ampRel": 2.5,
+      "org_lfo1Rate": 0.03,
+      "org_lfo1Depth": 0.12,
+      "org_lfo2Rate": 0.08,
+      "org_lfo2Depth": 0.08,
+      "org_reverbMix": 0.38,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

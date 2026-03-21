@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Rule of Life",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All parameters at their exact defaults — Rule 110, seed 42, stepRate 4, scope 4. The honest init patch. Play this for five minutes before touching anything else.",
+  "tags": [
+    "generative",
+    "cellular",
+    "init",
+    "evolving",
+    "foundation"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.50,
+    "movement": 0.50,
+    "density": 0.50,
+    "space": 0.35,
+    "aggression": 0.20
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 110.0,
+      "org_seed": 42,
+      "org_stepRate": 4.0,
+      "org_scope": 4,
+      "org_mutate": 0.0,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.35,
+      "org_filterCutoff": 3000.0,
+      "org_filterRes": 0.30,
+      "org_velCutoff": 0.50,
+      "org_ampAtk": 0.015,
+      "org_ampDec": 0.35,
+      "org_ampSus": 0.70,
+      "org_ampRel": 0.60,
+      "org_lfo1Rate": 0.50,
+      "org_lfo1Depth": 0.20,
+      "org_lfo2Rate": 0.30,
+      "org_lfo2Depth": 0.25,
+      "org_reverbMix": 0.20,
+      "org_macroRule": 0.25,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

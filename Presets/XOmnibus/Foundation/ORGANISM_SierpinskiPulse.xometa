@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Sierpinski Pulse",
+  "mood": "Foundation",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 90 at rhythmic stepRate — the Sierpinski fractal as a precise generative sequencer. At 120 BPM, stepRate 8 Hz aligns with 16th notes.",
+  "tags": [
+    "rhythmic",
+    "generative",
+    "structured",
+    "pulsing",
+    "fractal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.38,
+    "movement": 0.78,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 90.0,
+      "org_seed": 1,
+      "org_stepRate": 8.0,
+      "org_scope": 2,
+      "org_mutate": 0.04,
+      "org_freeze": 0,
+      "org_oscWave": 1,
+      "org_subLevel": 0.45,
+      "org_filterCutoff": 3800.0,
+      "org_filterRes": 0.55,
+      "org_velCutoff": 0.65,
+      "org_ampAtk": 0.003,
+      "org_ampDec": 0.18,
+      "org_ampSus": 0.25,
+      "org_ampRel": 0.20,
+      "org_lfo1Rate": 2.0,
+      "org_lfo1Depth": 0.22,
+      "org_lfo2Rate": 3.0,
+      "org_lfo2Depth": 0.30,
+      "org_reverbMix": 0.18,
+      "org_macroRule": 0.12,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.10
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

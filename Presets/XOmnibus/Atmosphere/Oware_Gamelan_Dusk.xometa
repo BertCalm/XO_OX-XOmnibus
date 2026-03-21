@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Gamelan Dusk",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bell-to-metal crossfade with frame resonator and high sympathy creates an ensemble bronze field. The frame body's fixed mechanical resonances (200, 580, 1100 Hz) color all notes identically. Ombak shimmer at 4.8 Hz, slow material LFO for continuous timbral drift.",
+  "tier": "awakening",
+  "tags": [
+    "atmosphere",
+    "gamelan",
+    "bronze",
+    "balinese",
+    "ensemble",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.60,
+    "warmth": 0.58,
+    "movement": 0.45,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.52,
+      "owr_malletHardness": 0.45,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.50,
+      "owr_buzzAmount": 0.08,
+      "owr_sympathyAmount": 0.55,
+      "owr_shimmerRate": 4.8,
+      "owr_thermalDrift": 0.38,
+      "owr_brightness": 9000.0,
+      "owr_damping": 0.22,
+      "owr_decay": 3.8,
+      "owr_filterEnvAmount": 0.35,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.0,
+      "owr_lfo1Rate": 0.5,
+      "owr_lfo1Depth": 0.10,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 0.35,
+      "owr_lfo2Depth": 0.12,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

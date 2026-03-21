@@ -1,20 +1,19 @@
 {
   "schema_version": 1,
-  "name": "Overtone Pi Metal",
+  "name": "Pi Metal",
   "mood": "Prism",
   "engines": [
     "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pi constant. Bell-curve partial weighting: fundamental and partial 2 (Pi ratio 2.333x) are prominent; adjacent partials suppressed. Produces a metallic, bell-like attack. Short decay, no sustain. Pi's wide ratio spread creates inharmonic overtones that read as physical metal resonance.",
-  "tier": "awakening",
+  "description": "Pi constant. Bell-curve partial weighting: fundamental and partial 2 (Pi ratio 7/3 = 2.333x) dominate; adjacent partials suppressed. Metallic inharmonic bell attack — the characteristic 'clang' partial of physical metal, derived from continued fractions of pi.",
   "tags": [
     "pi",
     "metallic",
     "bell",
     "prism",
-    "guru-bin-awakening",
+    "awakening",
     "percussive",
     "inharmonic"
   ],
@@ -24,10 +23,8 @@
     "COUPLING",
     "SPACE"
   ],
-  "coupling": {
-    "pairs": []
-  },
   "couplingIntensity": "None",
+  "tempo": null,
   "dna": {
     "brightness": 0.72,
     "warmth": 0.35,
@@ -40,13 +37,13 @@
     "Overtone": {
       "over_constant": 0,
       "over_depth": 2.0,
-      "over_partial0": 0.9,
+      "over_partial0": 0.90,
       "over_partial1": 0.08,
       "over_partial2": 0.65,
       "over_partial3": 0.12,
       "over_partial4": 0.35,
       "over_partial5": 0.08,
-      "over_partial6": 0.2,
+      "over_partial6": 0.20,
       "over_partial7": 0.06,
       "over_velBright": 0.55,
       "over_filterCutoff": 15000.0,
@@ -55,16 +52,18 @@
       "over_ampDec": 0.45,
       "over_ampSus": 0.0,
       "over_ampRel": 1.8,
-      "over_lfo1Rate": 0.3,
+      "over_lfo1Rate": 0.30,
       "over_lfo1Depth": 0.15,
       "over_lfo2Rate": 0.12,
-      "over_lfo2Depth": 0.1,
-      "over_resoMix": 0.3,
-      "over_macroDepth": 0.3,
-      "over_macroColor": 0.6,
+      "over_lfo2Depth": 0.10,
+      "over_resoMix": 0.30,
+      "over_macroDepth": 0.30,
+      "over_macroColor": 0.60,
       "over_macroCoupling": 0.15,
       "over_macroSpace": 0.35
     }
   },
-  "tempo": null
+  "coupling": {
+    "pairs": []
+  }
 }

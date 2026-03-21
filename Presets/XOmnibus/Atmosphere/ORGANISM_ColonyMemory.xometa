@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Colony Memory",
+  "mood": "Atmosphere",
+  "engines": [
+    "Organism"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rule 54 at medium speed with scope 12 — high memory integration creates smooth arcs from complex cellular patterns. The colony remembers its last twelve generations.",
+  "tags": [
+    "ambient",
+    "evolving",
+    "generative",
+    "smooth",
+    "cellular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.42,
+    "density": 0.55,
+    "space": 0.58,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Organism": {
+      "org_rule": 54.0,
+      "org_seed": 3333,
+      "org_stepRate": 3.0,
+      "org_scope": 12,
+      "org_mutate": 0.02,
+      "org_freeze": 0,
+      "org_oscWave": 0,
+      "org_subLevel": 0.42,
+      "org_filterCutoff": 2200.0,
+      "org_filterRes": 0.50,
+      "org_velCutoff": 0.55,
+      "org_ampAtk": 0.30,
+      "org_ampDec": 0.70,
+      "org_ampSus": 0.62,
+      "org_ampRel": 2.2,
+      "org_lfo1Rate": 0.06,
+      "org_lfo1Depth": 0.15,
+      "org_lfo2Rate": 0.12,
+      "org_lfo2Depth": 0.18,
+      "org_reverbMix": 0.42,
+      "org_macroRule": 0.75,
+      "org_macroSeed": 0.0,
+      "org_macroCoupling": 0.0,
+      "org_macroMutate": 0.04
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

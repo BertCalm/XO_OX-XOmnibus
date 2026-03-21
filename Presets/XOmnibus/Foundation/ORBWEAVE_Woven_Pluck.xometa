@@ -1,0 +1,84 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Figure-Eight topology at braidDepth 0.68 — well above WEAVE-I — interrogated by a sharp pluck envelope. The alternating over-under polarity of the Figure-Eight matrix creates woven string resonance in the 180ms decay window: strands argue briefly in four directions simultaneously. macroKnot 0.15 bleeds slight Torus surface geometry into the Figure-Eight, softening the hardest polarity reversals without removing the woven character. Saw strands provide harmonic content for the intermodulation to work against. Velocity shapes filter from 1500 Hz (soft) to 3500 Hz (hard).",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.32,
+    "density": 0.44,
+    "space": 0.35,
+    "aggression": 0.38
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Woven Pluck",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.68,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 3500.0,
+      "weave_filterReso": 0.28,
+      "weave_filterType": 0,
+      "weave_ampA": 0.004,
+      "weave_ampD": 0.18,
+      "weave_ampS": 0.15,
+      "weave_ampR": 1.2,
+      "weave_lfo1Type": 0,
+      "weave_lfo1Target": 0,
+      "weave_lfo1Depth": 0.0,
+      "weave_lfo1Rate": 1.0,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.35,
+      "weave_fx1Param": 0.55,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.15,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.82,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "foundation",
+    "figure-eight",
+    "pluck",
+    "velocity-sensitive",
+    "topology",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

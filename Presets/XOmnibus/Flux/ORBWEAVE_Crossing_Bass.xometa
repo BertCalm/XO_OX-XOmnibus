@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Figure-Eight topology at braidDepth 0.72 — well above WEAVE-I — in the bass register. The alternating polarity coupling creates internal motion that no standard bass synthesis approach can produce: the four strands argue in four directions simultaneously, their over/under crossings creating a woven low-end texture. The 700 Hz filter removes the high-frequency intermodulation products, leaving only the topology's effect on the fundamental and its immediate harmonics. macroKnot=0.28 bleeds Torus surface symmetry into the Figure-Eight polarity, softening the most extreme reversals. A bass that breathes from the inside.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.70,
+    "movement": 0.42,
+    "density": 0.65,
+    "space": 0.22,
+    "aggression": 0.52
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Crossing Bass",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.72,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 700.0,
+      "weave_filterReso": 0.22,
+      "weave_filterType": 0,
+      "weave_ampA": 0.006,
+      "weave_ampD": 0.3,
+      "weave_ampS": 0.70,
+      "weave_ampR": 0.6,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.20,
+      "weave_lfo1Rate": 0.12,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 0,
+      "weave_fx1Mix": 0.0,
+      "weave_fx1Param": 0.3,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.28,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.85,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "figure-eight",
+    "bass",
+    "low-end",
+    "topology",
+    "woven",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

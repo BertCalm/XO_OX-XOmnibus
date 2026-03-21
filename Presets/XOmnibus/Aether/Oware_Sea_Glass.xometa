@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Sea Glass",
+  "mood": "Aether",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bowl material at maximum Q, 9-second decay, thermal drift at 0.80. An 8-voice chord spreads across nearly 32 cents — not in tune, but in natural, living disagreement. The glass is adrift in Atlantic water. Play slowly. Let the voices dissolve into each other.",
+  "tier": "awakening",
+  "tags": [
+    "aether",
+    "bowl",
+    "ambient",
+    "drift",
+    "sustain",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.58,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.95,
+      "owr_malletHardness": 0.12,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.80,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.65,
+      "owr_shimmerRate": 2.5,
+      "owr_thermalDrift": 0.80,
+      "owr_brightness": 7000.0,
+      "owr_damping": 0.06,
+      "owr_decay": 9.0,
+      "owr_filterEnvAmount": 0.08,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.5,
+      "owr_macroSpace": 0.6,
+      "owr_lfo1Rate": 0.03,
+      "owr_lfo1Depth": 0.35,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 1.0,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

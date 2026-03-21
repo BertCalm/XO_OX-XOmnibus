@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "name": "Bell Meditation",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Near-maximum bowl material with bowl resonator creates Tibetan singing bowl character. High-Q modes sustain all partials equally. 7-second decay allows the full resonance arc to develop. The sub-octave reinforcement from the bowl body gives each note physical depth.",
+  "tier": "awakening",
+  "tags": [
+    "atmosphere",
+    "bowl",
+    "tibetan",
+    "crystal",
+    "sustain",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.20,
+    "density": 0.42,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.88,
+      "owr_malletHardness": 0.30,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.72,
+      "owr_buzzAmount": 0.05,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 1.8,
+      "owr_thermalDrift": 0.15,
+      "owr_brightness": 11000.0,
+      "owr_damping": 0.10,
+      "owr_decay": 7.0,
+      "owr_filterEnvAmount": 0.15,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.0,
+      "owr_lfo1Rate": 0.08,
+      "owr_lfo1Depth": 0.20,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 1.0,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

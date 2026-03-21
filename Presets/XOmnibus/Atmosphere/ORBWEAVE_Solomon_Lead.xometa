@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Solomon's two-ring architecture with strandTune at 7.02 semitones — Ring A carries the root, Ring B carries the fifth. The strong intra-ring coupling (0.8) gives each ring a built-in phase coherence, while the cross-ring coupling (0.3) creates a subtle gravitational pull between root and fifth. In legato mode, the glide carries both rings simultaneously through frequency space: the brief topological portamento of two braided power chords sliding together. macroKnot=0.22 bleeds gentle Trefoil asymmetry into Ring A — the root acquires a slight directional character, a lean into the melody.",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.62,
+    "movement": 0.35,
+    "density": 0.52,
+    "space": 0.42,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Solomon Lead",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 7.02,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.55,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 2800.0,
+      "weave_filterReso": 0.18,
+      "weave_filterType": 0,
+      "weave_ampA": 0.012,
+      "weave_ampD": 0.45,
+      "weave_ampS": 0.72,
+      "weave_ampR": 1.8,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.15,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.30,
+      "weave_fx1Param": 0.45,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.22,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.80,
+      "weave_voiceMode": 1,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.35
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "solomon",
+    "lead",
+    "legato",
+    "glide",
+    "power-chord",
+    "topology-morph",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

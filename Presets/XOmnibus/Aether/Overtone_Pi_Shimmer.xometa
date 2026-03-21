@@ -1,19 +1,18 @@
 {
   "schema_version": 1,
-  "name": "Overtone Pi Shimmer",
+  "name": "Pi Shimmer",
   "mood": "Aether",
   "engines": [
     "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Pi constant. Slow LFO1 at 0.12 Hz sweeps convergent depth — because depth and LFO are irrational relative to each other, the shimmer pattern never repeats. High resonator mix adds a chiming tail at the fundamental. The digits of Pi as a spectral event horizon.",
-  "tier": "awakening",
+  "description": "Pi constant at mid-depth. Slow LFO1 at 0.12 Hz sweeps convergent depth — because Pi's convergents are derived from a normal number, the shimmer pattern never exactly repeats. High resonator adds a chiming tail. The digits of pi as a spectral event horizon.",
   "tags": [
     "pi",
     "shimmer",
     "aether",
-    "guru-bin-awakening",
+    "awakening",
     "non-repeating",
     "irrational",
     "meditative"
@@ -24,16 +23,14 @@
     "COUPLING",
     "SPACE"
   ],
-  "coupling": {
-    "pairs": []
-  },
   "couplingIntensity": "None",
+  "tempo": null,
   "dna": {
     "brightness": 0.65,
     "warmth": 0.42,
     "movement": 0.52,
     "density": 0.48,
-    "space": 0.7,
+    "space": 0.70,
     "aggression": 0.08
   },
   "parameters": {
@@ -41,9 +38,9 @@
       "over_constant": 0,
       "over_depth": 3.5,
       "over_partial0": 0.88,
-      "over_partial1": 0.6,
+      "over_partial1": 0.60,
       "over_partial2": 0.42,
-      "over_partial3": 0.3,
+      "over_partial3": 0.30,
       "over_partial4": 0.22,
       "over_partial5": 0.16,
       "over_partial6": 0.12,
@@ -60,11 +57,13 @@
       "over_lfo2Rate": 0.05,
       "over_lfo2Depth": 0.22,
       "over_resoMix": 0.48,
-      "over_macroDepth": 0.5,
+      "over_macroDepth": 0.50,
       "over_macroColor": 0.45,
       "over_macroCoupling": 0.0,
       "over_macroSpace": 0.58
     }
   },
-  "tempo": null
+  "coupling": {
+    "pairs": []
+  }
 }

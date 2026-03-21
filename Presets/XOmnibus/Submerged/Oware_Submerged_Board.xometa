@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "name": "Submerged Board",
+  "mood": "Submerged",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The oware board on the ocean floor. Low brightness simulates the water column's lowpass. Bowl body adds deep sub-octave mass. Buzz at 0.35 evokes the coral-encrusted membrane of a board that has been underwater for decades. High sympathy and long decay — notes persist and mingle. The thermal drift is the slow drift of ocean current.",
+  "tier": "awakening",
+  "tags": [
+    "submerged",
+    "underwater",
+    "ambient",
+    "metal",
+    "bowl",
+    "drift",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.4,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.75,
+    "movement": 0.40,
+    "density": 0.68,
+    "space": 0.82,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.62,
+      "owr_malletHardness": 0.20,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.75,
+      "owr_buzzAmount": 0.35,
+      "owr_sympathyAmount": 0.55,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.65,
+      "owr_brightness": 4000.0,
+      "owr_damping": 0.20,
+      "owr_decay": 5.5,
+      "owr_filterEnvAmount": 0.20,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.4,
+      "owr_macroSpace": 0.7,
+      "owr_lfo1Rate": 0.05,
+      "owr_lfo1Depth": 0.40,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 1.0,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}

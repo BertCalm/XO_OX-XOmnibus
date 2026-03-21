@@ -1,4 +1,4 @@
-# ORBWEAVE Retreat Chapter — The Kelp Knot
+# ORBWEAVE Retreat Chapter
 *Guru Bin — 2026-03-21*
 
 ---
@@ -7,21 +7,23 @@
 
 - **Gallery code:** ORBWEAVE | **Accent:** Kelp Knot Purple `#8E4585`
 - **Parameter prefix:** `weave_`
-- **Creature mythology:** The Kelp Knot — oscillators braided together like kelp fronds in a tidal current, their phases coupled through the geometry of knots
-- **feliX-Oscar polarity:** Ambivalent — ORBWEAVE is the fleet's most topologically rigorous engine. It can be feliX-bright (Sine strands through a (2,5) cinquefoil) or Oscar-deep (Solomon chord pads with low cutoff and slow LFOs). The knot type is the polarity dial.
-- **Synthesis type:** Phase-braided oscillator synthesis — 4 oscillator strands per voice, phases coupled per-sample through a configurable 4×4 knot-topology matrix
-- **Polyphony:** Up to 8 voices (Mono / Legato / Poly4 / Poly8)
-- **Macros:** WEAVE (braid depth push), TENSION (resonance + coupling feedback), KNOT (topology morph to next type), SPACE (FX wet blend)
+- **Creature mythology:** The Kelp Knot — A kelp forest is not a passive backdrop. Its fronds braid and unbraid in current, each strand influencing the movement of the strands beside it. Where two fronds press against each other, they bend — a force applied at one junction travels through the weave and emerges as motion somewhere distant and unexpected. The entire forest is a coupled system. Touch one strand and you have touched them all. XOrbweave maps this to four oscillator strands whose phases are not independent. Each sample, each strand reads the current phase of its neighbors through a matrix that encodes a specific knot topology. The Trefoil routes coupling in a ring of three, with the fourth strand floating free. The Figure-Eight alternates over-under like the crossings in a bowline. The Torus wraps coupling around two orthogonal axes simultaneously, its character shaped by two integers P and Q. Solomon links two doubly-interpenetrating rings. These are not metaphors. They are coupling matrices — specific numbers in specific cells — and the timbre they produce is a direct consequence of the topology they encode.
+- **Synthesis type:** Phase-braided oscillator synthesis — 4 oscillator strands coupled through a configurable knot-topology matrix (Trefoil / Figure-Eight / Torus / Solomon). Each strand's phase increment is modified each sample by the weighted phase states of its neighbors.
+- **Polyphony:** Up to 8 voices (Mono / Legato / Poly4 / Poly8 modes)
+- **feliX/Oscar polarity:** Balanced (0.5/0.5) — the knot has no inherent polarity; structure and freedom are always present simultaneously
+- **Blessings:** B021 (Knot Phase Coupling Matrix), B022 (MACRO KNOT: Continuous Topology Morphing)
+- **Macros:** M1 WEAVE (braid depth push), M2 TENSION (resonance + coupling feedback), M3 KNOT (topology morphing), M4 SPACE (FX mix expansion)
+- **Expression:** Velocity → filter cutoff (+2000 Hz at full velocity). Aftertouch → braid depth (+0.3). Mod wheel CC1 → filter cutoff (+4000 Hz).
 
 ---
 
 ## Pre-Retreat State
 
-**Seance score: 8.3/10.** Added to the fleet 2026-03-20. A prior retreat session (see `scripture/retreats/orbweave-retreat.md`) established the canonical 6 WEAVE scripture verses and remediated 147 ghost parameters. All six Doctrines satisfied. The `Docs/guru-bin-retreats/` chapter is the formal Awakening document for student distribution.
+ORBWEAVE arrived in XOmnibus on 2026-03-20, one of three engines added in the same session as OVERTONE and ORGANISM. It carries two Blessings — B021 and B022 — a concentration of novel insight rare even by XOmnibus standards. The Knot Phase Coupling Matrix (B021) is an original DSP design: no commercial synthesizer uses topological braid theory as a coupling architecture. The MACRO KNOT system (B022) extends this further by allowing real-time morphing between topologies, treating the traversal of knot space as a first-class performance gesture.
 
-The engine is mathematically coherent and musically underexplored. The seance revealed the Default Trap in motion: braidDepth sitting at 0.5 where neither the coupled nor decoupled character is heard. The Torus P/Q parameters were almost exclusively (2,3). The KNOT macro — a topology morpher unique in the fleet — sat at 0.0 in half the library.
+The engine arrived with a factory library spanning all major mood categories and a corrected default for `weave_braidDepth` — originally 0.5, now 0.2. This correction is not cosmetic. At default, ORBWEAVE sounds almost like four independent oscillators. The coupling is present but subtle. A producer must deliberately raise braid depth to engage the full character of the topology. This is correct behavior: the knot structure is something you enter, not something you are dropped into.
 
-The engine is not being explored. It is being decorated.
+This retreat's purpose is to make that entry legible. The topology mathematics are real and the timbral consequences follow from them with internal logic. Once the logic is understood, every knot type becomes a tool rather than a mystery, and every braidDepth sweep becomes a predictable journey rather than a lucky accident.
 
 ---
 
@@ -29,637 +31,673 @@ The engine is not being explored. It is being decorated.
 
 Close your eyes. Breathe.
 
-Imagine four threads of kelp anchored at the ocean floor, rising toward the light. They start as separate strands. Then the current finds them. Each one begins to move — not arbitrarily, but according to its relationship to its neighbors. The first strand bends toward the second. The second follows the third. The third loops around the first. The fourth watches, tethered loosely to the whole.
+You have four ropes laid out on the floor in front of you. Each rope is a sine wave oscillator — a phase accumulator advancing through 0 to 1 at its note frequency, generating a sine each sample. Left alone, the four ropes make four independent sine waves. Detuned slightly via `weave_strandTune`, they produce beats. That is standard. That is what every synthesizer does.
 
-This is not vibrato. This is not chorus. This is not detuning. Each strand's frequency does not shift independently — each strand's frequency is *influenced per sample* by the current phase of its neighbor through a matrix of coupling coefficients that depends on the shape of a mathematical knot.
+Now pick up the ropes and begin to braid them.
 
-The four knot types in ORBWEAVE are not tonal modes or filter characters. They are four different theories about how oscillators can be related to each other. The Trefoil says: three strands form a directed ring, and the fourth floats free. The Figure-Eight says: every strand crosses two others in alternating over-under pattern. The Torus says: two axes of winding define the coupling geometry, and you choose the winding numbers. The Solomon says: two pairs form separate rings, weakly linked at the crossing.
+In a standard braid, you cross strand A over strand B, then strand B over strand C, and so on — alternating, mechanical, symmetric. What ORBWEAVE does is different. It defines the braid in terms of a topological knot, and the knot has a specific mathematical character. The Trefoil knot has writhe +3 — coupling flows preferentially in one direction around the three-strand loop, asymmetrically. The Figure-Eight knot has crossing number 4 — each strand crosses two others, with alternating over-under polarity. The Solomon is two rings doubly linked — Ring A (strands 0–1) and Ring B (strands 2–3) interpenetrate twice, with strong intra-ring coupling (0.8) and weaker cross-ring coupling (0.3).
 
-When you play ORBWEAVE, you are not choosing a timbre. You are choosing a topology. And the topology becomes sound.
+The `weave_braidDepth` parameter controls how tightly the ropes are pulled together. At 0.0, they lie on the floor: four independent oscillators. At 1.0, the coupling is maximum — the phase of each strand is strongly deflected by the phases of its neighbors each sample, producing coupling artifacts, phase locking, and emergent timbres that no individual strand could produce alone.
 
-Sit with that. The kelp breathes. The braid tightens. The current changes nothing about the notes you play — and changes everything about what those notes become.
+The WEAVE-I threshold is the perceptual crossing point where the coupling begins to dominate the dry detuning. It lives around braidDepth 0.35–0.45 for most knot types. Below it: rich, natural chorus and beating. Above it: the phases begin to mutually entrain, locking into topologically determined relationships. The sound becomes structured. The structure is the knot.
 
 ---
 
 ## Phase R2: The Signal Path Journey
 
-### I. The Strand Frequencies — Four Voices in One Voice
+### I. The Four Strands
 
-Every MIDI note produces a single voice with four internal oscillators. Their frequencies are not independent — they are derived from the same base note through `weave_strandTune`:
+Each of the 8 voices runs 4 oscillator strands. All four strands share the same waveform type, selected globally by `weave_strandType`:
 
-- Strand 0: base note (root)
-- Strand 1: base note + strandTune semitones (the interval above)
-- Strand 2: base note − strandTune semitones (the interval below)
-- Strand 3: base note + (strandTune × 2) semitones (the interval displaced by two steps)
+- **Off** (0): No oscillation
+- **Sine** (1): Manual phase accumulator. The sine output is direct: `sin(phase × 2π)`. The strandPhase is what the coupling matrix reads — coupling is most "pure" with sine because the phase-to-output relationship is linear and continuous
+- **Saw** (2): PolyBLEP anti-aliased sawtooth. Phase accumulated in parallel for coupling reads
+- **Square** (3): PolyBLEP square — rich in odd harmonics; coupling creates complex intermodulation
+- **Triangle** (4): PolyBLEP triangle — gentle, narrow harmonic content; coupling artifacts are subtle
 
-At strandTune = 0, all four strands are at the same pitch. They are indistinguishable until the knot coupling separates them. At strandTune = 7.02 (the perfect fifth), strands 1 and 3 sit at the fifth and the octave+fifth — the four strands are now a chord voice built into the single MIDI note. Every note you play is already a chord. The knot determines how that chord's internal voices speak to each other.
+**Waveform sonic character through the knot:**
 
-This is the strand architecture's deepest insight: **the four strands are not an oscillator stack. They are the voices of a topological system.** The number 4 is chosen because the Solomon knot requires exactly two pairs. Four is the minimum for full topology expression.
+Sine strands make the topology the entire story. There is no additional harmonic content — only the coupling artifacts, phase modulations, and emergent beating created by the matrix. Best for understanding knot character in isolation.
 
-### II. The Knot Phase Coupling — The Novel DSP
+Saw strands bring harmonic density. The coupling matrix now modulates harmonically rich content — phase coupling creates intermodulation between the harmonics of different strands, not just the fundamentals. The result is denser and more complex. The Trefoil asymmetry becomes audible as a directional harmonic emphasis.
 
-Every sample, before the strands output audio, the engine computes coupling offsets:
+Square strands bring the odd harmonic stack into the coupling. The intermodulation creates combination tones at odd-harmonic intervals. Figure-Eight with square strands produces a grinding, woven quality — the alternating over-under crossings produce audible phase reversals in the harmonic content.
 
-```
-phaseOffset[i] = sum(matrix[i][j] × fastSin(strandPhase[j] × 2π) × braidDepth)
-coupledFreq[i] = strandFreq[i] + phaseOffset[i] × 200 Hz
-```
+Triangle strands are the softest expression of coupling. The narrow harmonic content means coupling artifacts are gentle — closest to the sine character but with a second partial present.
 
-The coupling scale is 200 Hz — meaning a full sine swing (−1 to +1) from a neighbor strand can push or pull the target strand's instantaneous frequency by up to 200 Hz × braidDepth. At braidDepth = 0.0, there is no coupling — four independent oscillators, possibly detuned. At braidDepth = 1.0, the full 200 Hz influence is applied — the strands are maximally entangled.
-
-The matrix coefficients encode the knot's geometric character:
-
-**Trefoil** [crossing number 3, writhe +3]:
-- Strand 0 is strongly pulled by Strand 1 (coefficient 0.7), weakly pulled against by Strand 3 (−0.3)
-- Strand 1 is pulled by Strand 2
-- Strand 2 is pulled by Strand 0, completing the ring
-- Strand 3 is gently tethered to Strand 0 (0.2) — the "floating" fourth strand
-
-The coupling flows in one direction around the three-strand ring. Energy circulates. Strand 3 drifts at the edge. The sound is asymmetric, alive with directional energy.
-
-**Figure-Eight** [crossing number 4, all strands]:
-- Coefficient pattern: over (+0.6), under (−0.4), alternating per row
-- Every strand crosses two others — there are no free strands
-- The alternating signs create interference: constructive on some phase relationships, destructive on others
-- The result is more dense and anxious than the Trefoil — four-way mutual interference rather than a three-strand ring with an observer
-
-**Torus** [parameterized by P/Q winding]:
-- Base matrix: symmetric pairing (0.5 coefficients, adjacent-strand coupling)
-- P/Q modulation applied asymmetrically: even-sum index pairs get `pqScale`, odd-sum pairs get `1 − pqScale×0.5`
-- `pqScale = 0.5 + 0.5 × sin(P/Q × π)` — a coupling-asymmetry weight derived from the winding ratio
-- (2,3) gives pqScale = 0.933. (2,5) gives 0.976. (5,8) gives 0.962. Each is a different spectral character.
-
-**Solomon** [two doubly-linked rings]:
-- Strands 0–1 = Ring A: strong intra-ring coupling (0.8), weak cross-ring coupling (0.3 to Ring B)
-- Strands 2–3 = Ring B: strong intra-ring coupling (0.8), weak cross-ring coupling (0.3 to Ring A)
-- When strandTune = 7.02, Ring A is at the root and Ring B is at the fifth — two tonally distinct rings, each with its own internal resonant character, gently linked
-
-### III. Waveform × Topology Interaction — The Purity Principle
-
-ORBWEAVE's coupling reads `fastSin(strandPhase)` regardless of waveform. For Sine strands, this equals the actual output — coupling is literal cross-modulation of the oscillator output. For Saw, Square, and Triangle, `strandPhase` is kept synchronized with the PolyBLEP oscillator but the waveforms diverge from sine.
-
-This creates two genuinely different instruments:
-
-- **Sine strands**: mathematically pure coupling. The coupling reads exactly what the oscillator outputs. This is correct knot-theory analog computation. The result is clear, inharmonic spectra shaped entirely by the topology. Use Sine when the knot structure should be the foreground.
-- **Saw/Square/Triangle strands**: harmonic-rich coupling. The PolyBLEP waveforms add harmonic content that the coupling matrix does not see. The result is a textured, gritty sound where the topology provides movement and the waveform provides timbral weight. Use these when you want the knot to animate a harmonically dense source.
-
-The simplest waveform is the most topologically rigorous. This is counterintuitive — and it is true.
-
-### IV. The Torus P/Q Topology — Hidden Instrument Families
-
-The Torus knot type contains multiple instruments:
-
-| P | Q | pqScale | Character |
-|---|---|---------|-----------|
-| 2 | 3 | 0.933 | Trefoil cousin. Default. Slightly asymmetric coupling. |
-| 2 | 5 | 0.976 | Cinquefoil. Near-maximum coupling asymmetry. 5-pointed star geometry. |
-| 3 | 4 | 0.854 | Spiral. Lower pqScale than default — more balanced coupling. |
-| 3 | 5 | 0.975 | Pentagram. 5-crossing winding. Rich interference structure. |
-| 5 | 8 | 0.962 | Golden Torus. Fibonacci ratio approximates φ. Maximum spectral polarization. |
-| 1 | 6 | 0.707 | The (1,6) unknot-like. Minimal asymmetry. Almost symmetric coupling. |
-
-Each P/Q combination is a different coupling architecture. Most of the preset library uses (2,3). The cinquefoil and golden torus are the most sonically distinctive — almost no presets use them. They are instruments hiding inside the Torus knot type, waiting.
-
-### V. The KNOT Macro — Topology Morphing
-
-`macroKnot` linearly interpolates the entire 4×4 coupling matrix between `knotType` and `knotType+1` (with wrap-around at Solomon→Trefoil). At macroKnot = 0.5, every matrix element is halfway between two topologically distinct mathematical structures.
-
-This creates a state that no mathematical knot theory describes. A coupling matrix that is the average of Trefoil and Figure-Eight coupling coefficients does not correspond to any named knot. It is a topological chimera — an entity between topologies.
-
-**No other synthesizer in the fleet morphs between distinct mathematical topologies in real time.** Most synthesis parameters blend between two timbres (filter open/closed, wet/dry mix). The KNOT macro blends between two theories of oscillator relationship. The sound is not just between two timbres — it is between two kinds of logic.
-
-The chimera state is often more interesting than either endpoint. Design presets where macroKnot = 0.5 is the *starting position*, not a swept extreme.
-
-### VI. The Amp Envelope — Velocity and Filter Expression
-
-The 2000 Hz/velocity scaling law shapes how expressive ORBWEAVE is:
-
-- `filterCutoff` = 8000 Hz: velocity adds at most +2000 Hz (8000→10000). Barely perceptible.
-- `filterCutoff` = 500 Hz: velocity adds up to +2000 Hz (500→2500). A 5× frequency transformation.
-
-**WEAVE-VI in practice:** Design velocity-expressive presets with filterCutoff below 2000 Hz. The low-cutoff zone is where ORBWEAVE becomes a velocity instrument. The high-cutoff zone is where it becomes a consistent pad. This is not a bug — it is a design constraint that should be used intentionally.
-
-Aftertouch pushes braidDepth by up to +0.3 — at the threshold boundary (braidDepth = 0.7 to 1.0), aftertouch transitions the knot from the detuned zone into full topology. If you want aftertouch to feel transformative rather than cosmetic, set braidDepth between 0.5 and 0.7 and let aftertouch drive the engine across the WEAVE-I threshold.
+**The strandTune parameter** (`weave_strandTune`, range −24 to +24 semitones) offsets the pitch of Strands 2 and 3 relative to Strands 0 and 1. At 0.0, all four strands run at the fundamental frequency — pure unison, coupling only. At +7.02 semitones (a perfect fifth), Strands 2–3 run at the fifth above the played note — the Solomon knot then creates a doubly-linked power chord structure where Ring A plays root and Ring B plays fifth. This is ORBWEAVE's built-in harmony system: topology-braided chords.
 
 ---
 
-## Phase R3: The Five Meditations
+### II. The Knot Topology Matrix — The Soul of the Engine
 
-### Meditation 1 — The Braid Depth Threshold (WEAVE-I)
+The coupling is computed once per sample per voice. For each strand i, the engine reads the current phase of every other strand j, converts to a sine value, multiplies by the matrix coefficient `matrix[i][j]`, and scales by `braidDepth`. The result modifies strand i's frequency increment for that sample. The 200 Hz coupling scale means that a maximum coupling signal (coefficient 0.8, braidDepth 1.0, sine peak 1.0) perturbs a strand's frequency by up to ±160 Hz — a major-third span in either direction at 440 Hz.
 
-Set braidDepth to 0.1. Play a chord. Listen.
+#### Trefoil (knotType = 0)
 
-Increase to 0.5. Play the chord again. Is anything different?
+The trefoil is the simplest non-trivial knot. It cannot be untied without cutting. It has three crossings, writhe +3, and no chirality mirror image equivalent.
 
-Increase to 0.8. Play the chord again.
+Matrix structure: Strand 0 is influenced strongly by Strand 1 (+0.7) and weakly by Strand 3 (−0.3). Strand 1 is influenced by Strand 2 (+0.7). Strand 2 is influenced by Strand 0 (+0.7), completing the ring. Strand 3 is gently tethered to Strand 0 (+0.2) but otherwise floats free.
 
-At 0.1, you have four detuned oscillators. At 0.5, you have something slightly unusual. At 0.8, you have something impossible with standard synthesis — a spectral character that shifts dynamically per-sample based on the instantaneous phase relationships between strands. The braid depth threshold is approximately 0.65–0.7. Below this, ORBWEAVE sounds like a detuned synthesizer with an interesting name. Above it, ORBWEAVE sounds like ORBWEAVE.
+**Sonic character:** A directed ring circuit with a floating passenger. The writhe (+3) gives the coupling a directional flow, like water moving through a curved pipe — Strand 1 pulls Strand 0 forward while Strand 2 pulls Strand 1. Strand 3 floats above this ring, gently anchored to Strand 0, providing a harmonic satellite. At braidDepth 0.3–0.5, Trefoil sounds like a detuned pad with personality. Above 0.6, the directional chasing becomes audible as a cyclic harmonic pumping. Above 0.8, the three-strand ring begins to phase-lock into a stable ratio — the pad crystallizes into a topology.
 
-**The lesson:** braidDepth is not a mix control. It is a threshold control. The choice is: below the threshold (detuned zone) or above it (topology zone). Both are valid. Neither is a compromise.
+**Best uses:** Pads, meditation textures, any context where you want coupling with a natural asymmetric feel rather than mechanical alternation. Trefoil + Sine = cleanest knot character. Trefoil + Saw = rich directional harmonic sweep for leads.
 
-### Meditation 2 — The Sine Purity Experiment
-
-Load any Saw-strand preset. Play a note. Listen.
-
-Switch strandType to Sine. Play the same note at the same pitch and velocity.
-
-The knot structure becomes transparent. With Saw strands, the harmonic content of the waveform is louder than the topology. With Sine strands, there is nothing else to hear — the topology is the entire sound.
-
-**The lesson:** When you cannot hear the knot type, switch to Sine and listen again. Then switch back to Saw with knowledge of what you are shaping.
-
-### Meditation 3 — The P/Q Archaeology
-
-Set knotType to Torus. Set P=2, Q=3. Play a sustained note. Listen for two full seconds.
-
-Change Q to 5 (keeping P=2). Listen again.
-
-Change to P=5, Q=8. Listen again.
-
-These are different instruments. The P/Q parameter is not a tone control — it is a geometry selector. The cinquefoil (2,5) has a five-pointed star winding. The golden torus (5,8) approximates the irrational golden ratio, creating coupling that never settles into a periodic pattern.
-
-**The lesson:** Before you finalize any Torus preset, test at least three P/Q combinations. The default (2,3) is rarely the most interesting.
-
-### Meditation 4 — The Solomon Chord Architecture
-
-Set knotType to Solomon. Set strandTune to 7.02. Set braidDepth to 0.78.
-
-Play a single MIDI note. What do you hear?
-
-You hear two simultaneous pitch identities — the root and the fifth — each with its own internal resonant character. Ring A (strands 0–1) couples internally at 0.8 strength and bleeds into Ring B (strands 2–3) at 0.3. The two rings are harmonically distinct but not independent. They share a crossing.
-
-**The lesson:** The Solomon knot is the chord pad topology. When you play a single note into Solomon, you are playing an implied chord structure with built-in internal dynamics. The other three knots are single-pitch topologies. Solomon is a two-pitch system by design.
-
-### Meditation 5 — The Velocity Architecture Experiment
-
-Set filterCutoff to 600 Hz. Set filterReso to 0.3. Play at minimum velocity (pianissimo). Listen.
-
-Play at maximum velocity (fortissimo). Listen.
-
-The difference should be dramatic — 600 Hz versus 2600 Hz of filter cutoff. The same note becomes a completely different instrument at different velocities.
-
-Now increase filterCutoff to 8000 Hz. Repeat the velocity experiment.
-
-The difference collapses. Both velocities sound similar. The 2000 Hz offset is small relative to 8000 Hz.
-
-**The lesson:** Velocity expression lives in the low-cutoff zone. If a preset is meant to be velocity-expressive, its filterCutoff must be low enough for 2000 Hz to matter. If a preset should be velocity-neutral (consistent pads, predictable leads), set filterCutoff above 6000 Hz.
+**Trap:** At braidDepth above 0.85, the three-strand lock can produce a static, organ-like tone at strandTune=0.0. Add a slow LFO on braidDepth (rate 0.03 Hz, depth 0.10) to keep the lock from becoming permanent.
 
 ---
 
-## Phase R4: The Four Macros — Four Questions
+#### Figure-Eight (knotType = 1)
 
-| Macro | Question it asks | What it controls |
-|-------|-----------------|-----------------|
-| WEAVE | *How deeply are we bound?* | Pushes braidDepth toward 1.0 from its current value. `effBraidDepth = braidDepth + WEAVE × (1 − braidDepth)`. Never reduces coupling — only increases it. |
-| TENSION | *How tightly does the knot hold?* | Adds up to 0.4 of filter resonance. Boosts the standing resonance of the low-pass filter, making the coupling's spectral peaks sharper and more prominent. |
-| KNOT | *What kind of knot are we?* | Blends the current knotType's coupling matrix toward knotType+1. At 0.5, maximum chimera. At 1.0, the next topology in sequence. |
-| SPACE | *Where in the world are we?* | Scales FX wet amounts from current values toward 1.0. Also modulates chorus LFO rate and reverb input gain — more SPACE = wider, longer, more diffuse. |
+The figure-eight is the simplest knot with a crossing number of 4. It is amphicheiral — its mirror image is topologically identical. It has alternating over-under crossings through all four strands.
 
-### WEAVE — Performance Wisdom
+Matrix structure: Each strand alternates between strong positive coupling (+0.6) from one neighbor and strong negative coupling (−0.4) from another. The cycle continues around all four strands with opposite polarity.
 
-WEAVE never decreases the braidDepth. It only pushes it upward. This means WEAVE is a one-way control: it can only entangle, never separate. Design presets with braidDepth in the 0.3–0.5 range and use the WEAVE macro to dynamically push into the topology zone (0.7+) during performance. The performer's left hand is the entanglement dial. Pulling back on WEAVE does not untangle — it stops the push. Use this asymmetry deliberately.
+**Sonic character:** Alternating polarity coupling creates tension and opposition. Some strand pairs attract, others repel — a constant dance of mutual reinforcement and cancellation. At low braidDepth: rich natural chorus with inharmonic texture from the polarity alternation. At moderate braidDepth (0.4–0.6): the over-under crossings become audible as a "woven" spectral quality. At high braidDepth: temporary phase locking between attracted pairs, followed by rapid uncoupling as repelled pairs force movement — audible as tension and release in the harmonic structure.
 
-### TENSION — When to Use It
+**Best uses:** Textures that need internal movement. Excellent for evolving pads and sequences where the harmony should feel organic. At high braidDepth with Triangle waveforms, produces a spectral breathing quality resembling a living organism.
 
-TENSION adds resonance to the filter. At macroTension = 1.0, filter resonance increases by +0.4. This is substantial — at filterReso = 0.0, TENSION brings the filter to 0.4 resonance. The coupling peaks become self-resonant ridges. Use TENSION when you want the knot's spectral peaks to ring — for leads, for accents, for moments of harmonic emphasis. Use TENSION sparingly for pads and consistently-voiced textures where you do not want spectral peaks to dominate.
-
-### KNOT — The Fleet's Most Unique Single Control
-
-There is no equivalent of the KNOT macro in any other synthesizer in the fleet or in most commercial synthesizers. It sweeps through mathematically distinct topologies in real time. The motion from Trefoil to Figure-Eight is not a timbre crossfade — it is a transition between two theories of oscillator relationship.
-
-At macroKnot = 0.0: pure knotType, pure topology.
-At macroKnot = 0.5: chimera state — between two topologies, at neither.
-At macroKnot = 1.0: the next knotType, fully.
-
-The chimera at 0.5 is an instrument that does not exist in mathematics. It exists only in ORBWEAVE. Name the chimera state. Give it its own identity. The macroKnot = 0.5 point deserves its own preset documentation — it is not a transition, it is a destination.
-
-### SPACE — Spatial Architecture
-
-SPACE controls how environmental ORBWEAVE sounds. At 0.0, the knot coupling is the spatial architecture — the phase interference between strands creates apparent stereo width from a purely monophonic coupling process. At 1.0 (with active FX slots), the coupling texture sits inside a defined room. The best ORBWEAVE presets choose: either the knot IS the space (no FX, SPACE=0), or the space enhances the knot (FX active, SPACE used as a room-size control).
+**Trap:** The negative coupling coefficients (−0.4) at very high braidDepth can drive opposite-polarity strands into a rapid push-pull oscillation — an unintended fast tremolo. Lower braidDepth to 0.55–0.65 if this occurs.
 
 ---
 
-## Phase R5: Coupling Wisdom
+#### Torus (knotType = 2)
 
-ORBWEAVE accepts coupling inputs through four routes:
+A torus knot wraps around a torus surface P times longitudinally and Q times meridionally. The base coupling matrix uses symmetric adjacent coupling (0.5 each), with `weave_torusP` and `weave_torusQ` applying a scale factor that modulates inter-strand coupling asymmetry according to harmonic relationships derived from the P/Q winding ratio.
 
-| Coupling Type | ORBWEAVE's Interpretation |
-|--------------|--------------------------|
-| AudioToFM | Adds to couplingPitchMod — modulates the effective pitch of all strands via external audio |
-| AmpToFilter | Adds to couplingCutoffMod — external amplitude controls filter brightness |
-| LFOToPitch | Same pathway as AudioToFM at 0.5× scaling |
-| AmpToPitch | Adds to couplingPitchMod at 0.3× scaling |
-| AmpToChoke | Triggers note-off on all active voices — external amplitude gates ORBWEAVE |
+Key Torus configurations:
+- **(2,3)** — Trefoil torus knot (baseline coupling asymmetry)
+- **(2,5)** — Cinquefoil, five-lobed, pqScale ≈ 0.976 (near-maximum asymmetry)
+- **(3,5)** — Star torus knot, pqScale ≈ 0.958
+- **(5,8)** — Fibonacci golden winding, pqScale ≈ 0.962 (non-repeating beat pattern)
+- **(2,7)** — Seven-pointed, pqScale ≈ 0.988
 
-The most powerful coupling route is **AmpToFilter from a rhythmic engine (ONSET, OBRIX) to ORBWEAVE**. The drum hits pump the filter on ORBWEAVE's voices — the knot coupling's spectral peaks flash bright with each hit and decay into the coupling texture. This turns ORBWEAVE into a rhythmically animated topology — the knot breathes to the kick drum.
+**Sonic character:** The Torus is the most parametrically flexible topology. The symmetric base matrix gives it naturally balanced coupling — neither the directional flow of Trefoil nor the polarity tension of Figure-Eight. Every strand touches its neighbors equally. The P/Q modulation breaks this symmetry in mathematically determined ways. The golden ratio approximations (5,8) produce a beat pattern that never fully resolves into a periodic cycle — the winding is incommensurate, giving the sound a floating, non-repeating quality.
 
-The **AmpToChoke** coupling creates an inverse gate: ORBWEAVE sounds only in the spaces between another engine's loud moments. Route ONSET's amplitude to ORBWEAVE via AmpToChoke at high depth — ORBWEAVE speaks in the gaps between drum hits. A counterpoint instrument driven by the inverse of a rhythmic gate.
+**Best uses:** Melodic leads, tonal pads, any application where you want parametric variety without changing the basic character. Torus (5,8) is exceptional for meditation pads where the non-repeating winding creates slow organic transformation.
 
-**ORBWEAVE as coupling source:** Its audio output contains phase coupling artifacts — sidebands, aliased partials, sub-harmonics — that are rich modulation material when routed to another engine via AudioToFM. The coupling output has more spectral energy in unexpected frequency regions than a standard oscillator, making it a particularly interesting FM source.
-
----
-
-## Phase R6: The Awakening Preset Table
-
-Ten presets for the Awakening tier. Gold star quality. Each teaches one thing the engine does that no other engine does.
+**Trap:** When P and Q share a common factor (e.g., P=2, Q=4), the coupling symmetry collapses unexpectedly. Always use coprime P/Q pairs. If a torus preset sounds flat, check that P and Q are coprime.
 
 ---
 
-### 1. Bare Topology
+#### Solomon (knotType = 3)
 
-**Mood:** Foundation | **Knot:** Trefoil | **Discovery:** The reference state — what coupling sounds like in isolation
+The Solomon's knot is technically a link of two interlocked rings, each passing through the other twice (linking number 2). Strands 0–1 form Ring A (strong internal coupling 0.8), Strands 2–3 form Ring B (strong internal coupling 0.8), with cross-ring coupling of 0.3.
+
+**Sonic character:** Two distinct internal voices that talk across a weaker bridge. Ring A and Ring B each form tight internal coupling — each ring pair moves together. The cross-ring coupling creates a link that is present but subordinate. At moderate braidDepth, Solomon sounds like a two-voice chord where each voice has subtle internal coupling. At high braidDepth, the two rings can synchronize across their cross-links, collapsing the two-voice structure into an entangled mass.
+
+With `weave_strandTune` at 7.02 semitones (perfect fifth), Ring A plays root and Ring B plays fifth — two internally coupled oscillators braided together at a musical interval. The Solomon coupling gives this power chord a slightly "breathing" quality: subtle phase pulling between root and fifth that no standard detuning can produce.
+
+**Best uses:** Bass pads, power chord textures, any application where two distinct harmonic identities should be loosely coupled. Solomon maps naturally to chord structure — excellent with `weave_strandTune` at musical intervals: thirds, fourths, fifths.
+
+**Trap:** At braidDepth above 0.85, the strong intra-ring coupling (0.8) can cause ring pairs to phase-lock into unison, losing the ring character. Keep braidDepth at 0.5–0.70 for Solomon to preserve the two-ring architecture.
+
+---
+
+#### Cinquefoil and Pentagram — The Extended Torus Family
+
+In ORBWEAVE, "Cinquefoil" and "Pentagram" refer to specific Torus P/Q configurations rather than separate topology modes:
+- **Cinquefoil**: knotType=2, P=2, Q=5 — five-petaled, pqScale ≈ 0.976, highest common asymmetry
+- **Pentagram torus**: knotType=2, P=3, Q=5 — five-pointed star winding, pqScale ≈ 0.958
+
+Cinquefoil is the most asymmetrically coupled torus configuration in the P/Q range. At moderate braidDepth, Cinquefoil produces a harmonic shimmer with more internal layers than the raw strand count would predict — the five-fold phase structure creates beating patterns at non-octave, non-fifth intervals.
+
+---
+
+### III. The braidDepth Parameter — The WEAVE-I Threshold
+
+`weave_braidDepth` (range 0.0–1.0, **default 0.2**) scales every coupling coefficient simultaneously.
+
+The default is deliberately below the WEAVE-I threshold — the perceptual crossover point where coupling moves from "sounds like detuning" to "sounds like topology":
+
+- **Trefoil WEAVE-I**: ~0.40
+- **Figure-Eight WEAVE-I**: ~0.35 (polarity alternation crosses earlier)
+- **Torus WEAVE-I**: ~0.45 (symmetric coupling crosses later)
+- **Solomon WEAVE-I**: ~0.38 (strong intra-ring coupling crosses early)
+
+**Below WEAVE-I (0.0–0.35):** Coupling shapes beating patterns and phase relationships without dominating them. Topology-flavored chorus. Each knot type produces slightly different beating characteristics. The most usable range for general music production — familiar enough to sit in mixes, unusual enough to be worth using.
+
+**Above WEAVE-I (0.40–0.75):** The coupling becomes the primary sonic character. Each knot type produces a distinctly different timbre: Trefoil sounds like a three-phase rotating system; Figure-Eight sounds woven and contested; Torus sounds like surface contact harmonics; Solomon sounds like two magnets.
+
+**High braidDepth (0.75–1.0):** Phase locking, temporary unisons, brief glitch artifacts from rapid phase perturbations. The engine's most expressive and least predictable territory. The WEAVE macro operates here — it pushes braidDepth from its preset value toward 1.0 as a performance gesture.
+
+**braidDepth sweet spots:**
+- 0.0–0.10: Near-zero coupling. Almost pure unison/detune.
+- 0.15–0.30: Gentle braiding. Topology present as spectral coloring. Default territory.
+- 0.35–0.50: WEAVE-I crossing. Topologies become clearly distinguishable. Most educational zone.
+- 0.55–0.70: Full topology character. Coupling artifacts are primary sound.
+- 0.75–0.90: High coupling. Phase locking events. Best with LFO on braidDepth.
+- 0.90–1.0: Maximum coupling. WEAVE macro fully activated territory.
+
+---
+
+### IV. The MACRO KNOT — Continuous Topology Morphing (Blessing B022)
+
+`weave_macroKnot` (range 0.0–1.0, default 0.0) morphs the effective coupling matrix from the base knot type toward the next knot type in the sequence:
+
+- knotType=0 (Trefoil) + macroKnot → morphs toward Figure-Eight
+- knotType=1 (Figure-Eight) + macroKnot → morphs toward Torus
+- knotType=2 (Torus) + macroKnot → morphs toward Solomon
+- knotType=3 (Solomon) + macroKnot → morphs toward Trefoil (wraps)
+
+The interpolation is sample-by-sample: `matrix[i][j] = matrixA[i][j] × (1 − macroKnot) + matrixB[i][j] × macroKnot`. The resulting matrix is a genuine topological blend — not a real physical knot, but a coupling pattern carrying mathematical characteristics of both endpoints.
+
+**macroKnot 0.0:** Pure base knot. Matrix coefficients are exactly the designed values.
+**macroKnot 0.5:** The midpoint chimera. Both topologies contribute equally. Trefoil at macroKnot=0.5 creates a three-ring asymmetric flow crossed with Figure-Eight polarity alternation — a topology that exists nowhere in knot tables. This is the territory Blessing B022 exists to name.
+**macroKnot 1.0:** Pure destination knot.
+
+**Performance uses:**
+- Sweep macroKnot from 0.0 to 0.5 over 8 bars: slow topological evolution without changing pitch, rhythm, or filter
+- macroKnot fixed at 0.3–0.4: stable chimera with partial characteristics of both topologies
+- macroKnot sudden jump (automation): instant timbral transition as a structural moment
+- macroKnot as LFO2 target: oscillating topology generates movement no other parameter can produce
+
+**The critical insight for preset design:** Preset `weave_macroKnot` is not always zero. A preset can be shipped with macroKnot at 0.3 or 0.5, placing the matrix permanently in a chimera state. Design presets at macroKnot values that represent interesting stable landing points, not just endpoints.
+
+---
+
+### V. Filter, Amplitude, and Voice Architecture
+
+The filter is a CytomicSVF in three modes: Low Pass (0), High Pass (1), Band Pass (2).
+
+`weave_filterCutoff` (range 20–20000 Hz, default 8000 Hz). Velocity adds up to +2000 Hz. Mod wheel adds up to +4000 Hz. The TENSION macro adds up to +0.4 resonance. The filter shapes the output of the braiding — coupling artifacts, intermodulation products, and phase-locked partials all pass through it post-mixing.
+
+**Amplitude envelope:** Standard ADSR. The topology continues running through the release — long releases let the coupling artifacts fade naturally. `weave_ampD` at 0.05–0.25s creates pluck characters; `weave_ampA` at 0.4–2.5s creates kelp forest blooms.
+
+**Voice modes:**
+- Mono (0): Single voice, strictly monophonic
+- Legato (1): Single voice, no retrigger on legato playing, glide active
+- Poly4 (2): Up to 4 simultaneous voices
+- Poly8 (3): Up to 8 simultaneous voices
+
+---
+
+### VI. LFO System
+
+Two LFO slots: Type (Off/Sine/Triangle/Saw/Square/S&H), Target (None/Pitch/Filter Cutoff/Filter Reso/Volume/Braid Depth), Depth (−1.0 to +1.0), Rate (0.01–30 Hz, D005 floor at 0.01 Hz).
+
+**Target 5 (Braid Depth)** is ORBWEAVE's unique LFO destination. An LFO on braid depth creates cyclic topology traversal — the coupling strength oscillates above and below WEAVE-I. A slow sine LFO (rate 0.03 Hz, depth 0.15) breathes the topology on a 33-second cycle: most listeners never consciously identify the modulation, but the sound feels alive in a way that pitch or filter vibrato cannot produce.
+
+**Aftertouch → braid depth (+0.3):** At `weave_braidDepth = 0.3`, maximum aftertouch pushes effective depth to 0.6 — crossing WEAVE-I expressively. This is ORBWEAVE's primary expressive axis: press harder to enter deeper topology.
+
+---
+
+### VII. FX System — Three Serial Slots
+
+Three FX slots run in series (FX1 → FX2 → FX3). Each slot: Type (Off/Delay/Chorus/Reverb), Mix, Param. The SPACE macro pushes all three FX mixes toward 1.0 simultaneously.
+
+- **Delay** (Type 1): Param controls delay time. Moderate mix (0.3–0.5) for space without wash.
+- **Chorus** (Type 2): Param controls depth/rate. Low Param + moderate mix = gentle width enhancement. High Param = dramatic spatial treatment.
+- **Reverb** (Type 3): Param controls room size/tail. Post-topology reverb is extremely effective — the coupling artifacts have the sonic character of a complex acoustic space and respond beautifully to spatial treatment. Mix 0.7–0.9 + high Param = kelp forest environment: vast, reverberant.
+
+---
+
+## Phase R3: Parameter Map — Sweet Spots Summary
+
+| Parameter | ID | Range | Default | Conservative | Musical Core | Expressive | Extreme |
+|-----------|-----|-------|---------|--------------|--------------|-----------|---------|
+| Braid Depth | `weave_braidDepth` | 0.0–1.0 | 0.2 | 0.10–0.25 | 0.30–0.55 | 0.55–0.75 | 0.80–1.0 |
+| Macro KNOT | `weave_macroKnot` | 0.0–1.0 | 0.0 | 0.0–0.15 | 0.20–0.60 | 0.60–0.80 | 0.85–1.0 |
+| Torus P | `weave_torusP` | 1–8 | 2 | 2–3 | 2–5 | 3–7 | 5–8 |
+| Torus Q | `weave_torusQ` | 1–8 | 3 | 3–4 | 3–7 | 5–8 | 7–8 |
+| Filter Cutoff | `weave_filterCutoff` | 20–20000 Hz | 8000 Hz | 2000–6000 | 4000–10000 | 800–4000 | 200–800 or 12000+ |
+| Filter Reso | `weave_filterReso` | 0.0–1.0 | 0.0 | 0.0–0.10 | 0.10–0.30 | 0.30–0.55 | 0.55–1.0 |
+| Strand Tune | `weave_strandTune` | −24 to +24 st | 0.0 | 0.0–0.5 | 0.0–5.0 | 5.0–12.0 | 12.0–24.0 |
+| Amp Attack | `weave_ampA` | 0.0–10.0s | 0.01s | 0.0–0.02 | 0.03–0.3 | 0.3–2.0 | 2.0–10.0 |
+| Amp Release | `weave_ampR` | 0.0–20.0s | 0.5s | 0.1–0.5 | 0.5–4.0 | 4.0–10.0 | 10.0–20.0 |
+| LFO1 Rate | `weave_lfo1Rate` | 0.01–30 Hz | 1.0 | 0.01–0.04 | 0.05–0.3 | 0.3–3.0 | 3.0–30 |
+| FX Reverb Param | `weave_fx1Param` | 0.0–1.0 | 0.3 | 0.20–0.45 | 0.45–0.75 | 0.75–0.90 | 0.90–1.0 |
+
+---
+
+## Phase R4: Macro Architecture
+
+| Macro | ID | Effect | Performance Use |
+|-------|-----|--------|----------------|
+| WEAVE | `weave_macroWeave` | Pushes braidDepth from preset value toward 1.0: `clamp(braidDepth + macro × (1 − braidDepth))` | The hand that tightens the braid — enter deeper topology |
+| TENSION | `weave_macroTension` | Adds up to +0.4 to filter resonance | Drive spectral edge and coupling feedback simultaneously |
+| KNOT | `weave_macroKnot` | Morphs matrix from base knot toward next knot type | Real-time topology morphing — the central performance gesture |
+| SPACE | `weave_macroSpace` | Pushes all three FX mixes toward 1.0 simultaneously | Expand the reverb/chorus/delay environment in performance |
+
+**Macro philosophy:** WEAVE controls coupling intensity. TENSION controls spectral edge. KNOT controls topological identity. SPACE controls acoustic environment. A producer with all four macros on hardware knobs can traverse the entire character space of the engine without touching the keyboard.
+
+**The critical preset design insight:** Preset `weave_macroKnot` is not always zero. Ship presets with macroKnot at 0.3 or 0.5 to represent interesting chimera states. The macro then allows further morphing from that chimera toward the destination topology.
+
+**Aftertouch stacking:** Effective braid depth = preset value + WEAVE contribution + LFO contribution + aftertouch (up to +0.3). All stack and clamp at 1.0. A preset at braidDepth=0.25 with WEAVE=0.3 and full aftertouch reaches approximately 0.77 — well above WEAVE-I. Design for the worst case: always verify the sound at maximum macro and aftertouch simultaneously.
+
+---
+
+## Phase R5: The Five Recipe Categories
+
+### Recipe Category 1: Kelp Forest Pads — Ambient Topology
+
+**Identity:** Slow-moving, reverb-heavy, braidDepth below or just crossing WEAVE-I. The knot type provides spectral character without demanding attention. Long attacks, long releases, high reverb mix, low to moderate braidDepth, sine or triangle strands. These are environment presets — sounds that establish a space rather than a melodic identity.
+
+**Parameter ranges:**
+- `weave_strandType`: Sine (1) or Triangle (4)
+- `weave_braidDepth`: 0.25–0.55
+- `weave_macroKnot`: 0.0–0.5 (stable chimera territory)
+- `weave_filterCutoff`: 3000–7000 Hz
+- `weave_filterReso`: 0.0–0.15
+- `weave_ampA`: 0.4–2.5s
+- `weave_ampR`: 4.0–12.0s
+- LFO1 Target 5 (Braid Depth), Rate 0.02–0.06 Hz, Depth 0.10–0.20
+- FX1 Type 3 (Reverb), Mix 0.65–0.90, Param 0.75–0.95
+- FX2 Type 2 (Chorus), Mix 0.25–0.50
+
+**Target preset names:** Kelp Shore, Tidal Drift, Braided Current, Knot Meadow, Deep Weave, Solomon Drift, Torus Cloud, Trefoil Mist, Floating Braid, Topology Fog, Figure Haze, Entangled Kelp, Winding Dark, Strand Garden, Coastal Topol, Knot Horizon, Cinquefoil Cloud, Linked Rings, Winding Pad, Braid Bloom
+
+**Why the category works:** Long attacks and long reverb give the coupling time to establish itself before the sound peaks. The topology shapes the spectral character of the reverb tail — a Torus pad and a Solomon pad in the same reverb mix sound meaningfully different because the coupling creates different harmonic content for the reverb to sustain.
+
+**Trap to avoid:** Resist going above braidDepth 0.65 in this category. High braidDepth with long attacks and reverb creates a dense, indistinct wall of coupling artifacts. The kelp forest character comes from the coupling being audible but not overwhelming — structure inside the ambience, not ambience collapsed into structure.
+
+---
+
+### Recipe Category 2: Topological Lead — Coupled Melody
+
+**Identity:** Monophonic or legato, saw or square strands, braidDepth in the WEAVE-I zone (0.35–0.60), no reverb or light reverb, moderate filter cutoff with velocity sensitivity. A Trefoil lead in legato mode with glide carries each note through a brief topology modulation as the frequency changes — the coupling matrix stays constant but the strand frequencies slide, creating a topological portamento effect where the four strands briefly settle into a new topological equilibrium at each note.
+
+**Parameter ranges:**
+- `weave_strandType`: Saw (2) or Square (3)
+- `weave_voiceMode`: Mono (0) or Legato (1)
+- `weave_braidDepth`: 0.35–0.62
+- `weave_macroKnot`: 0.0–0.4
+- `weave_filterCutoff`: 1500–5000 Hz
+- `weave_filterReso`: 0.10–0.25
+- `weave_ampA`: 0.005–0.05s
+- `weave_ampR`: 0.2–1.5s
+- `weave_glideTime`: 0.15–0.65 (legato) or 0.0 (mono)
+- LFO1: filter cutoff (Rate 1.0–8.0 Hz) or braid depth (Rate 0.5–3.0 Hz)
+- FX: minimal — light delay at moderate mix
+
+**Why the category works:** Monophonic ORBWEAVE in legato mode creates a lead with natural topology — the glide carries coupling through a continuously changing frequency ratio, creating brief inharmonic sweeps between notes that settle into new topological equilibria at destination pitches. No other synthesis approach produces this effect.
+
+**Trap:** Too much glideTime (above 0.75) causes the coupling to spend most of its time in transitional frequency ratios, making the lead sound smeared. Keep glideTime at 0.15–0.50.
+
+---
+
+### Recipe Category 3: Knot Bass — Low-End Topology
+
+**Identity:** Saw strands, low filter cutoff (300–900 Hz), moderate to high braidDepth, Solomon or Trefoil topology, strandTune at 0.0 or small values. The knot coupling creates a rich, internally moving low end — not a flat, static fundamental but one with coupling artifacts moving above it. At low cutoff frequencies, the high-frequency coupling artifacts are filtered away, leaving topology's effect on the fundamental and its immediate harmonics.
+
+**Parameter ranges:**
+- `weave_strandType`: Saw (2) or Square (3)
+- `weave_knotType`: Solomon (3) or Trefoil (0) preferred
+- `weave_braidDepth`: 0.50–0.78
+- `weave_macroKnot`: 0.0–0.35
+- `weave_strandTune`: 0.0–7.02 (0.0 for pure bass, 7.02 for power bass with ring architecture)
+- `weave_filterCutoff`: 300–1200 Hz
+- `weave_filterReso`: 0.12–0.30
+- `weave_ampA`: 0.002–0.015s
+- `weave_ampR`: 0.3–1.2s
+- LFO1: slow filter cutoff sweep (Rate 0.08–0.3 Hz, Target 2)
+
+**Why the category works:** The Solomon bass at moderate-to-high braidDepth has a particular internal pulse — the two-ring structure creates subtle periodic push-pull between Ring A and Ring B that sounds like the bass is breathing from the inside. A characteristic no standard bass synthesis approach can produce.
+
+**Trap:** High braidDepth in the bass register can cause unwanted phase cancellation between strands at coupling peaks. If the bass seems to drop out briefly at regular intervals, lower braidDepth to 0.55–0.65.
+
+---
+
+### Recipe Category 4: Entangled Sequence — Rhythmic Topology
+
+**Identity:** Poly mode, short attack, short to moderate release, braidDepth varied across WEAVE-I by LFO, figure-eight or torus topology. The LFO on braid depth creates rhythmic coupling accents — notes played at the LFO's peak have richer coupling artifacts; notes at the trough are cleaner. This rhythmic variation in coupling character creates accents that move through the sequenced pattern independently of velocity or pitch.
+
+**Parameter ranges:**
+- `weave_strandType`: Sine (1), Saw (2), or Triangle (4)
+- `weave_knotType`: Figure-Eight (1) or Torus (2) preferred
+- `weave_voiceMode`: Poly4 (2) or Poly8 (3)
+- `weave_braidDepth`: 0.30–0.55
+- `weave_macroKnot`: 0.1–0.7 (varied)
+- `weave_ampA`: 0.005–0.04s
+- `weave_ampR`: 0.15–0.8s
+- LFO1 Target 5 (Braid Depth), Rate 0.5–4.0 Hz, Depth 0.12–0.25
+- FX: light chorus and reverb for space
+
+**Why the category works:** Two simultaneous notes in Poly8 mode with Figure-Eight both carry independent four-strand coupling systems — two independent topological objects sounding simultaneously. The LFO creates rhythmic coupling accent patterns that move through sequences independently of pitch or velocity.
+
+**Trap:** LFO on braid depth at rates above 5 Hz starts creating audio-rate coupling modulation with aliasing artifacts. Keep braid depth LFO below 4 Hz for rhythmic applications.
+
+---
+
+### Recipe Category 5: Trefoil Pluck — Coupling as Resonator
+
+**Identity:** Very short attack, short decay, low sustain, moderate release, high braidDepth, trefoil or figure-eight topology, high filter resonance. The pluck exposes the knot's resonant character in isolation — the coupling only has the duration of the decay to assert itself. Different knot types produce different pluck tonalities: Trefoil plucks have a rotating three-strand resonance; Figure-Eight plucks sound like a woven string; Solomon plucks have a two-voice harmonic character.
+
+**Parameter ranges:**
+- `weave_strandType`: Sine (1) or Saw (2)
+- `weave_knotType`: Trefoil (0) or Figure-Eight (1) preferred
+- `weave_braidDepth`: 0.55–0.80
+- `weave_macroKnot`: 0.0–0.3
+- `weave_filterCutoff`: 2000–6000 Hz
+- `weave_filterReso`: 0.25–0.50
+- `weave_ampA`: 0.001–0.008s
+- `weave_ampD`: 0.08–0.35s
+- `weave_ampS`: 0.0–0.25
+- `weave_ampR`: 0.4–2.0s
+- FX: Reverb at moderate mix (0.25–0.50) to extend the pluck tail
+
+**Why the category works:** A pluck sound interrogates the resonant character of the synthesis system rather than its sustained behavior. ORBWEAVE's knot topology creates resonances that are not harmonic series resonances — the coupling creates emergent frequency relationships that do not follow integer ratios. A Trefoil pluck at high braidDepth rings with a characteristic asymmetric three-voice decay that decays as a rotating system rather than a standard exponential tail.
+
+**Trap:** High filter resonance (above 0.55) in pluck mode can create self-oscillating feedback that overwhelms the pluck at moderate-to-high velocities. Verify at maximum velocity before shipping a pluck preset.
+
+---
+
+## Phase R6: The Ten Awakenings — Preset Table
+
+Each preset is a discovery. The parameter values are derived from the logic above. These are reference presets — use them as starting points for new preset files.
+
+---
+
+### Preset 1: Kelp Shore (Foundation)
+
+**Mood:** Foundation | **Category:** Kelp Forest Pad | **Discovery:** Default territory mastered — braidDepth just below WEAVE-I, Trefoil, sine, reverb
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Purest coupling math — reads strandPhase exactly as oscillator output |
-| `weave_strandTune` | 0.0 | All four strands at identical pitch — coupling creates spectral separation, not interval spreading |
-| `weave_knotType` | 0 (Trefoil) | Three-strand directed ring — the simplest named knot |
-| `weave_braidDepth` | 0.80 | Above the WEAVE-I threshold (0.65–0.7) — topology audible as topology |
-| `weave_torusP/Q` | 2/3 | Default; not relevant at Trefoil |
-| `weave_filterCutoff` | 6000 Hz | Bright enough to hear coupling partials; not so bright it exposes aliasing |
-| `weave_filterReso` | 0.05 | Minimal — let the coupling be the only spectral shaping |
-| `weave_filterType` | 0 (LP) | Standard |
-| `weave_ampA` | 0.01 | Fast attack — immediate entry |
-| `weave_ampD` | 0.5 | Medium decay |
-| `weave_ampS` | 0.75 | Sustain at 75% — audible hold |
-| `weave_ampR` | 1.5 | Long release — hear coupling decay naturally |
-| `weave_lfo1Type` | 0 (Off) | No modulation — static topology reference |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 0 (Off) | No FX — bare topology in the room |
-| `weave_fx2Type` | 0 (Off) | — |
-| `weave_fx3Type` | 0 (Off) | — |
-| `weave_macroWeave` | 0.0 | Macro demonstrates coupling push when swept |
-| `weave_macroTension` | 0.0 | — |
-| `weave_macroKnot` | 0.0 | — |
-| `weave_macroSpace` | 0.0 | — |
-| `weave_voiceMode` | 3 (Poly8) | Polyphonic — hear coupling per voice |
-| `weave_pitchBendRange` | 2 | Standard |
-| `weave_glideTime` | 0.0 | — |
+| `weave_strandType` | 1 (Sine) | Pure topology — the knot is the entire sound |
+| `weave_knotType` | 0 (Trefoil) | Most musical topology — directional ring coupling |
+| `weave_braidDepth` | 0.30 | Just below WEAVE-I — coupling present, not dominant |
+| `weave_macroKnot` | 0.0 | Pure Trefoil |
+| `weave_filterCutoff` | 6500.0 Hz | Open but shaped |
+| `weave_ampA` | 0.35s | Slow bloom |
+| `weave_ampR` | 5.0s | Long release |
+| LFO1 | Sine, Target: Braid, Rate 0.04 Hz, Depth 0.14 | 25-second braid breath |
+| FX1 | Reverb, Mix 0.72, Param 0.82 | Large reverb environment |
 
-**Sonic character:** A pure sustained tone whose partials shift slightly between notes — not vibrato, not detuning. The topology creates a spectral character that is unique to this engine. Play intervals and observe how the coupling between strands interacts with the interval between notes. This is the reference preset — the minimal demonstration of what ORBWEAVE is.
-
-**Macro use:** Sweep WEAVE from 0 to 1.0 while holding a note. Hear the coupling engage as braidDepth approaches 1.0.
+**Why this works:** The Trefoil at braidDepth 0.30 creates rich, naturally asymmetric chorus that is immediately musical without revealing full topology character. The braid LFO at 0.04 Hz crosses WEAVE-I twice per 25 seconds — barely perceptible, but the sound feels alive. The WEAVE macro allows deliberate entry into the knot.
 
 ---
 
-### 2. Solomon Chord Pad
+### Preset 2: Figure Eight Pluck (Foundation)
 
-**Mood:** Atmosphere | **Knot:** Solomon | **Discovery:** Each MIDI note produces a two-ring chord with internal dynamics
+**Mood:** Foundation | **Category:** Trefoil Pluck | **Discovery:** Short envelope + high braidDepth + Figure-Eight = a pluck with woven internal texture
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Pure coupling between the two rings |
-| `weave_strandTune` | 7.02 | Perfect fifth — Ring A at root, Ring B at fifth |
-| `weave_knotType` | 3 (Solomon) | The doubly-linked two-ring topology |
-| `weave_braidDepth` | 0.78 | Above threshold — intra-ring coupling audible |
-| `weave_filterCutoff` | 4500 Hz | Warm — reduces bright coupling harmonics |
-| `weave_filterReso` | 0.12 | Slight resonance amplifies coupling peaks in the mid-range |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.35 | Slow attack — pads bloom |
-| `weave_ampD` | 0.6 | Medium decay |
-| `weave_ampS` | 0.82 | High sustain — the chord rings |
-| `weave_ampR` | 3.5 | Very long release — ring pairs decay independently |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 5 (Braid Depth) | LFO gently breathes the coupling strength |
-| `weave_lfo1Depth` | 0.15 | Subtle — audible ring variation without instability |
-| `weave_lfo1Rate` | 0.09 | Below 0.1 Hz — ocean-breath tempo |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 3 (Reverb) | Space for the rings to exist in |
-| `weave_fx1Mix` | 0.32 | Moderate reverb |
-| `weave_fx1Param` | 0.55 | Medium-long reverb tail |
-| `weave_macroWeave` | 0.0 | WEAVE pushes into tighter ring coupling on performance |
-| `weave_macroTension` | 0.0 | TENSION accents the ring resonances |
-| `weave_macroKnot` | 0.0 | KNOT morphs toward a hybrid Solomon-Trefoil state |
-| `weave_macroSpace` | 0.0 | SPACE widens the reverb |
-| `weave_voiceMode` | 3 (Poly8) | — |
-| `weave_glideTime` | 0.0 | — |
+| `weave_strandType` | 2 (Saw) | Harmonic content for coupling intermodulation |
+| `weave_knotType` | 1 (Figure-Eight) | Alternating polarity = woven string character |
+| `weave_braidDepth` | 0.68 | Above WEAVE-I — full topology in the pluck |
+| `weave_macroKnot` | 0.15 | Slight Torus bleed — softens Figure-Eight tension |
+| `weave_filterCutoff` | 3500.0 Hz | Mid-bright character |
+| `weave_filterReso` | 0.28 | Resonant peak adds to pluck character |
+| `weave_ampA` | 0.004s | Percussive attack |
+| `weave_ampD` | 0.18s | Decay defines the pluck length |
+| `weave_ampS` | 0.15 | Low sustain — mostly pluck |
+| `weave_ampR` | 1.2s | Moderate tail |
+| FX1 | Reverb, Mix 0.35, Param 0.55 | Light reverb extends pluck tail |
 
-**Sonic character:** Each note is a chord. Ring A at the root breathes with Ring B at the fifth, the two rings coupling gently (0.3 cross-link) while each ring has its own internal resonance (0.8 intra-ring). The slow LFO on braid depth creates a living ring structure — coupling is slightly stronger and weaker over the 11-second LFO cycle. Playing open fifth intervals in the left hand while adding top voice melody creates a three-layer texture: the implicit chord from strandTune, the harmonic content from coupling, and the melody.
-
-**Macro use:** WEAVE increases coupling depth into a more tightly interlocked ring structure. TENSION adds resonance to the coupling peaks, making the ring architecture more prominent. KNOT begins morphing the Solomon matrix toward Trefoil — the two rings lose their independence and begin to form a single loop.
+**Why this works:** The Figure-Eight matrix at braidDepth 0.68 produces alternating polarity coupling in the pluck's 180ms decay — the four strands argue in the brief moment of the pluck, creating a woven string resonance.
 
 ---
 
-### 3. Cinquefoil Lead
+### Preset 3: Torus Cloud (Atmosphere)
 
-**Mood:** Prism | **Knot:** Torus (2,5) | **Discovery:** The cinquefoil — five-pointed star geometry, near-maximum coupling asymmetry
+**Mood:** Atmosphere | **Category:** Kelp Forest Pad | **Discovery:** Torus (5,8) = Fibonacci golden winding = a pad that never fully repeats
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 2 (Saw) | Harmonic richness — the cinquefoil's asymmetry is more audible with harmonic content |
-| `weave_strandTune` | 0.0 | All strands at root — coupling creates the spectral identity |
-| `weave_knotType` | 2 (Torus) | — |
-| `weave_braidDepth` | 0.82 | High coupling — cinquefoil at full strength |
-| `weave_torusP` | 2 | — |
-| `weave_torusQ` | 5 | Cinquefoil winding. pqScale = 0.976 — near-maximum asymmetry |
-| `weave_filterCutoff` | 3500 Hz | D001 active: velocity maps 3500→5500 Hz with full velocity swing |
-| `weave_filterReso` | 0.25 | Prominent resonance — coupling peaks more audible |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.005 | Snappy attack — lead response |
-| `weave_ampD` | 0.35 | Fast decay |
-| `weave_ampS` | 0.60 | Moderate sustain |
-| `weave_ampR` | 0.4 | Short release — staccato capable |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 2 (Filter Cutoff) | Classic filter modulation, but the coupling is doing deeper modulation simultaneously |
-| `weave_lfo1Depth` | 0.25 | Moderate filter LFO — harmonic animation |
-| `weave_lfo1Rate` | 0.45 | Mid-rate — noticeable but not frenetic |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 1 (Delay) | Short delay for lead definition |
-| `weave_fx1Mix` | 0.18 | Subtle echo — lead emphasis |
-| `weave_fx1Param` | 0.35 | Medium delay time |
-| `weave_macroWeave` | 0.0 | Performance: pushes deeper into cinquefoil coupling |
-| `weave_macroTension` | 0.0 | Performance: adds resonance — transitions toward self-oscillation character |
-| `weave_macroKnot` | 0.0 | Performance: morphs cinquefoil-Torus toward Solomon |
-| `weave_macroSpace` | 0.0 | — |
-| `weave_voiceMode` | 3 (Poly8) | — |
-| `weave_pitchBendRange` | 7 | Wider bend range for lead expression |
+| `weave_strandType` | 1 (Sine) | Clean topology expression |
+| `weave_knotType` | 2 (Torus) | Parametric topology |
+| `weave_braidDepth` | 0.48 | At WEAVE-I — coupling is primary character |
+| `weave_torusP` | 5 | Fibonacci winding |
+| `weave_torusQ` | 8 | Fibonacci pair — pqScale ≈ 0.962, non-repeating |
+| `weave_macroKnot` | 0.35 | Partial Solomon blend — ring character begins to emerge |
+| `weave_filterCutoff` | 4800.0 Hz | Warm, open |
+| `weave_ampA` | 0.8s | Slow bloom |
+| `weave_ampR` | 8.0s | Very long release |
+| LFO1 | Sine, Target: Braid, Rate 0.025 Hz, Depth 0.18 | 40-second braid cycle |
+| LFO2 | Triangle, Target: Filter Cutoff, Rate 0.06 Hz, Depth 0.22 | Gentle filter wander |
+| FX1 | Reverb, Mix 0.78, Param 0.88 | Vast reverb |
+| FX2 | Chorus, Mix 0.30, Param 0.55 | Width |
 
-**Sonic character:** The (2,5) cinquefoil has a five-pointed star cross-section on the torus surface, creating a coupling asymmetry (pqScale = 0.976) that is noticeably different from the default (2,3). Fast notes at low velocity have a tight, percussive cinquefoil click. Hard strikes at high velocity open the filter into a bright, inharmonic lead tone. The LFO animates the filter over the coupling's static spectral character. This is a topology you can feel under your fingers — faster playing yields different coupling phase relationships than slow playing.
-
-**Macro use:** TENSION brings up resonance — the cinquefoil's coupling peaks become self-resonant. At TENSION = 0.6 or above, the coupling peaks begin to sing on sustained notes.
+**Why this works:** The (5,8) Fibonacci winding creates coupling asymmetry approaching the golden ratio — the beat pattern between strands never resolves into a simple periodic cycle. Two incommensurate LFOs at 0.025 and 0.06 Hz create a micro-polyrhythm in the modulation layer with a combined period of approximately 2.5 minutes.
 
 ---
 
-### 4. Kelp Forest Pad
+### Preset 4: Solomon Lead (Atmosphere)
 
-**Mood:** Atmosphere | **Knot:** Solomon | **Discovery:** Dual LFO on braid + cutoff creates a breathing spatial texture
+**Mood:** Atmosphere | **Category:** Topological Lead | **Discovery:** Solomon + strandTune 7.02 + legato = two-ring power glide
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Pure coupling — minimal timbre, maximum topology |
-| `weave_strandTune` | 5.0 | Major third — Ring A at root, Ring B at major third. Softer than fifth. |
-| `weave_knotType` | 3 (Solomon) | Two-ring architecture for the pad's chord structure |
-| `weave_braidDepth` | 0.72 | Just above WEAVE-I threshold — topology audible, not overwhelming |
-| `weave_filterCutoff` | 5200 Hz | Open filter — pads need to breathe |
-| `weave_filterReso` | 0.08 | Minimal resonance — no peaks cutting through the pad |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.55 | Slow attack — the forest takes time to appear |
-| `weave_ampD` | 0.8 | Long decay |
-| `weave_ampS` | 0.88 | Very high sustain — pads should hang |
-| `weave_ampR` | 4.5 | Very long release — notes leave trails |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 5 (Braid Depth) | The coupling breathes |
-| `weave_lfo1Depth` | 0.22 | Moderate — audible breathing |
-| `weave_lfo1Rate` | 0.067 | 15-second cycle — ocean breath (from WEAVE-III) |
-| `weave_lfo2Type` | 1 (Sine) | — |
-| `weave_lfo2Target` | 2 (Filter Cutoff) | Separate filter drift — asynchronous with coupling breath |
-| `weave_lfo2Depth` | 0.18 | Subtle filter movement |
-| `weave_lfo2Rate` | 0.11 | 9-second cycle — out of phase with braid LFO creates polyrhythmic breathing |
-| `weave_fx1Type` | 3 (Reverb) | — |
-| `weave_fx1Mix` | 0.52 | Deep reverb — the forest has distance |
-| `weave_fx1Param` | 0.72 | Long reverb tail |
-| `weave_fx2Type` | 2 (Chorus) | Spreading the pad width |
-| `weave_fx2Mix` | 0.22 | Moderate chorus width |
-| `weave_fx2Param` | 0.4 | Medium chorus depth |
-| `weave_macroWeave` | 0.0 | Performance: deepens coupling into a tighter ring structure |
-| `weave_macroTension` | 0.0 | Performance: adds resonance to the ring coupling peaks |
-| `weave_macroKnot` | 0.0 | Performance: morphs the forest into a different topology |
-| `weave_macroSpace` | 0.0 | Performance: opens the reverb and chorus wet amounts |
-| `weave_voiceMode` | 3 (Poly8) | — |
+| `weave_strandType` | 2 (Saw) | Harmonic content for the ring architecture |
+| `weave_knotType` | 3 (Solomon) | Two-ring structure — built-in fifth harmony |
+| `weave_braidDepth` | 0.55 | Ring coupling dominant above WEAVE-I |
+| `weave_strandTune` | 7.02 | Ring A = root, Ring B = fifth |
+| `weave_macroKnot` | 0.22 | Gentle Trefoil asymmetry — Ring A gets directional pull |
+| `weave_filterCutoff` | 2800.0 Hz | Mid-range, warm |
+| `weave_filterReso` | 0.18 | Resonant presence |
+| `weave_ampA` | 0.012s | Fast but not percussive |
+| `weave_ampR` | 1.8s | Moderate release |
+| `weave_voiceMode` | 1 (Legato) | Portamento for topology glide |
+| `weave_glideTime` | 0.35 | Topology transition between notes |
+| LFO1 | Sine, Target: Filter, Rate 0.08 Hz, Depth 0.15 | Slow filter breath |
+| FX1 | Delay, Mix 0.30, Param 0.45 | Subtle delay |
 
-**Sonic character:** A slow-moving, spatially rich pad where the coupling and filter breathe at different rates (15s vs. 9s), creating a polyrhythmic expansion and contraction with a 45-second combined period before the pattern repeats. The Solomon structure at a major third interval creates a harmonic pad that implies a chord within each note. The deep reverb puts the coupling texture inside an imagined space. Close your eyes and there are four strands of kelp in a forest, each with its own current.
+**Why this works:** In legato mode, the glide carries both Ring A (root) and Ring B (fifth) simultaneously through frequency space. The Solomon coupling creates a brief phase pulling between root and fifth during the slide — a characteristic topological portamento.
 
 ---
 
-### 5. Figure-Eight Bass
+### Preset 5: Writhe Sequence (Entangled)
 
-**Mood:** Foundation | **Knot:** Figure-Eight | **Discovery:** Mono + glide through the alternating over/under topology creates a unique portamento character
+**Mood:** Entangled | **Category:** Entangled Sequence | **Discovery:** Figure-Eight + poly + fast braid LFO = rhythmic coupling accents
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 2 (Saw) | Bass needs harmonic weight |
-| `weave_strandTune` | 0.0 | All strands at root — no chord spreading for a bass instrument |
-| `weave_knotType` | 1 (Figure-Eight) | Alternating-sign crossing: over (+0.6), under (−0.4) per strand pair |
-| `weave_braidDepth` | 0.85 | Full coupling — the figure-eight creates audible alternating interference |
-| `weave_filterCutoff` | 400 Hz | D001 active — velocity opens filter from 400→2400 Hz. Powerful timbre arc. |
-| `weave_filterReso` | 0.35 | Resonance at the cutoff creates a growling mid-peak |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.005 | Snappy bass attack |
-| `weave_ampD` | 0.45 | Decay shapes the punch |
-| `weave_ampS` | 0.55 | Moderate sustain |
-| `weave_ampR` | 0.4 | Short release — bass notes end cleanly |
-| `weave_lfo1Type` | 0 (Off) | — |
-| `weave_lfo2Type` | 0 (Off) | Static topology — no modulation on the bass coupling |
-| `weave_fx1Type` | 0 (Off) | Dry bass — effects on the send bus |
-| `weave_macroWeave` | 0.0 | Performance: pushes into maximum coupling |
-| `weave_macroTension` | 0.0 | Performance: adds resonance peak for accent |
-| `weave_macroKnot` | 0.0 | — |
-| `weave_macroSpace` | 0.0 | — |
-| `weave_voiceMode` | 0 (Mono) | Bass is monophonic |
-| `weave_pitchBendRange` | 5 | Wide bend for bass slides |
-| `weave_glideTime` | 0.15 | Short glide — bass portamento through topology |
+| `weave_strandType` | 1 (Sine) | Clean — coupling character drives the texture |
+| `weave_knotType` | 1 (Figure-Eight) | Alternating polarity creates inherent tension |
+| `weave_braidDepth` | 0.40 | At WEAVE-I |
+| `weave_macroKnot` | 0.50 | Chimera: Figure-Eight + Torus midpoint |
+| `weave_filterCutoff` | 5200.0 Hz | Open, present |
+| `weave_filterReso` | 0.12 | Slight resonance accent |
+| `weave_ampA` | 0.008s | Fast attack |
+| `weave_ampR` | 0.55s | Short release |
+| `weave_voiceMode` | 3 (Poly8) | Full polyphony |
+| LFO1 | Sine, Target: Braid, Rate 1.8 Hz, Depth 0.18 | Sub-2Hz rhythmic coupling accent |
+| FX1 | Chorus, Mix 0.38, Param 0.50 | Spatial width |
+| FX2 | Reverb, Mix 0.22, Param 0.60 | Light reverb |
 
-**Sonic character:** Low filterCutoff makes velocity an expressive bass control: ghost notes at 30% velocity are dark and quiet (400 Hz), accents at 100% velocity are bright and cutting (2400 Hz). The Figure-Eight's alternating over/under coupling (+0.6/−0.4 per strand pair) creates a slightly nasal, growling tone quality that is different from standard bass synthesis — the alternating interference creates a throatier spectral character. Glide between notes passes the topology through intermediate phase states — the portamento slides through the Figure-Eight's crossing structure.
-
-**Velocity use:** Ghost notes → dark and buried. Accents → topology snaps bright. The 2000 Hz arc is the most expressive at 400 Hz base cutoff in the entire engine.
+**Why this works:** The LFO at 1.8 Hz crosses WEAVE-I roughly every two 16th notes at 120 BPM. Notes at the LFO peak have full Figure-Eight polarity tension; notes at the trough have gentle chorus. The macroKnot chimera at 0.5 adds Torus surface geometry to the alternating character, creating more complex coupling modulation.
 
 ---
 
-### 6. Topology Drift
+### Preset 6: Cinquefoil Dawn (Prism)
 
-**Mood:** Flux | **Knot:** Torus → Solomon chimera | **Discovery:** The KNOT macro at 0.5 creates a topological chimera — an instrument between two mathematical structures
+**Mood:** Prism | **Category:** Kelp Forest Pad / Topology Showcase | **Discovery:** Torus (2,5) + high macroKnot + slow LFO = five-petaled topology in motion
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 2 (Saw) | Harmonic content makes the chimera transitions audible |
-| `weave_strandTune` | 3.86 | Minor third — slightly dark interval for the drift character |
-| `weave_knotType` | 2 (Torus) | knotB = Solomon (knotType+1). Chimera is Torus←→Solomon halfway point. |
-| `weave_braidDepth` | 0.68 | Just above threshold — topology active |
-| `weave_torusP` | 3 | — |
-| `weave_torusQ` | 4 | (3,4) spiral torus — pqScale = 0.854. Less asymmetric than (2,3). |
-| `weave_filterCutoff` | 5000 Hz | — |
-| `weave_filterReso` | 0.18 | Slight resonance |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.04 | Fast attack |
-| `weave_ampD` | 0.35 | — |
-| `weave_ampS` | 0.72 | — |
-| `weave_ampR` | 0.8 | — |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 5 (Braid Depth) | Coupling slowly breathes |
-| `weave_lfo1Depth` | 0.12 | Subtle — braid variation |
-| `weave_lfo1Rate` | 0.18 | 5-second cycle |
-| `weave_fx1Type` | 2 (Chorus) | — |
-| `weave_fx1Mix` | 0.22 | — |
-| `weave_fx1Param` | 0.45 | — |
-| `weave_macroWeave` | 0.65 | Pre-positioned: braid depth pushed up significantly |
-| `weave_macroTension` | 0.15 | Light resonance already present |
-| `weave_macroKnot` | 0.50 | **Pre-positioned at chimera state** — halfway between Torus and Solomon |
-| `weave_macroSpace` | 0.15 | Light chorus active |
-| `weave_voiceMode` | 2 (Poly4) | Moderate polyphony for the drift character |
+| `weave_strandType` | 1 (Sine) | Pure topology showcase |
+| `weave_knotType` | 2 (Torus) | Torus for P/Q control |
+| `weave_braidDepth` | 0.60 | Full topology character |
+| `weave_torusP` | 2 | Cinquefoil winding |
+| `weave_torusQ` | 5 | Cinquefoil — pqScale ≈ 0.976 |
+| `weave_macroKnot` | 0.65 | Deep toward Solomon — cinquefoil geometry in two-ring blend |
+| `weave_filterCutoff` | 5500.0 Hz | Open, bright |
+| `weave_filterReso` | 0.10 | Trace resonance |
+| `weave_ampA` | 0.55s | Bloom attack |
+| `weave_ampR` | 7.0s | Long release |
+| LFO1 | Sine, Target: Braid, Rate 0.03 Hz, Depth 0.22 | 33-second WEAVE-I crossing |
+| FX1 | Reverb, Mix 0.82, Param 0.90 | Vast reverb |
+| FX2 | Chorus, Mix 0.42, Param 0.60 | Width |
 
-**Sonic character:** This preset opens in the chimera state. The coupling matrix is the 50/50 average of (3,4)-Torus and Solomon matrix coefficients — a state that cannot be named by knot theory. The preset is designed to be swept: pull KNOT left toward 0.0 (pure (3,4) torus) or right toward 1.0 (pure Solomon) during performance. Sweeping KNOT while playing a sustained chord reveals the topological transition: the crossing character changes from symmetric-torus to two-ring-Solomon in real time.
-
-**Macro use:** This is the only preset in the library designed with macroKnot = 0.5 as the starting position. The recommended performance: hold a chord, sweep KNOT slowly from left to right over 4 bars. The harmonic character shifts in a way that no filter sweep or oscillator parameter produces.
+**Why this works:** The (2,5) Cinquefoil torus knot has near-maximum coupling asymmetry. With macroKnot at 0.65, the matrix blends Cinquefoil Torus geometry into Solomon ring architecture — the five-petaled winding passes through the two-ring link structure. The LFO at 0.03 Hz crosses WEAVE-I on each breath.
 
 ---
 
-### 7. Golden Torus Bells
+### Preset 7: Crossing Bass (Flux)
 
-**Mood:** Prism | **Knot:** Torus (5,8) | **Discovery:** The golden ratio winding number creates coupling that never settles — irrational periodicity
+**Mood:** Flux | **Category:** Knot Bass | **Discovery:** Figure-Eight + low cutoff + high braidDepth = a bass with woven internal motion
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Pure coupling — bell tones need spectral clarity |
-| `weave_strandTune` | 0.0 | All strands at root — coupling creates the bell character |
-| `weave_knotType` | 2 (Torus) | — |
-| `weave_braidDepth` | 0.74 | Above threshold |
-| `weave_torusP` | 5 | — |
-| `weave_torusQ` | 8 | Golden torus — 8/5 approximates φ = 1.618. pqScale = 0.962. |
-| `weave_filterCutoff` | 18000 Hz | Very bright — bell tones |
-| `weave_filterReso` | 0.0 | No resonance — coupling creates its own spectral peaks |
-| `weave_filterType` | 0 (LP) | Minimal filter involvement |
-| `weave_ampA` | 0.003 | Instant attack — bell strike |
-| `weave_ampD` | 1.2 | Long decay — bell ring |
-| `weave_ampS` | 0.0 | No sustain — bell envelope |
-| `weave_ampR` | 2.0 | Long release — bell reverberance |
-| `weave_lfo1Type` | 0 (Off) | — |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 3 (Reverb) | — |
-| `weave_fx1Mix` | 0.30 | Space for the bells |
-| `weave_fx1Param` | 0.45 | Medium reverb |
-| `weave_macroWeave` | 0.0 | WEAVE increases bell coupling depth — deeper φ-ratio interlocking |
-| `weave_macroTension` | 0.0 | — |
-| `weave_macroKnot` | 0.0 | KNOT morphs toward Solomon — bells become pad |
-| `weave_macroSpace` | 0.0 | SPACE opens the reverb |
-| `weave_voiceMode` | 3 (Poly8) | Chord bells |
-| `weave_pitchBendRange` | 2 | — |
+| `weave_strandType` | 2 (Saw) | Harmonic density in the bass register |
+| `weave_knotType` | 1 (Figure-Eight) | Alternating polarity creates internal bass motion |
+| `weave_braidDepth` | 0.72 | High coupling — topology dominant |
+| `weave_macroKnot` | 0.28 | Partial Torus bleed — softens polarity tension |
+| `weave_filterCutoff` | 700.0 Hz | Low, bass-focused |
+| `weave_filterReso` | 0.22 | Resonant low-end character |
+| `weave_ampA` | 0.006s | Punchy attack |
+| `weave_ampR` | 0.6s | Short release — rhythmic |
+| `weave_voiceMode` | 3 (Poly8) | Poly for chords |
+| LFO1 | Sine, Target: Filter, Rate 0.12 Hz, Depth 0.20 | Slow filter movement |
 
-**Sonic character:** The (5,8) golden torus coupling weight (pqScale = 0.962) creates phase coupling that approximates an irrational winding ratio — no two oscillation cycles have exactly the same coupling relationship. Over time, the spectral character of sustained notes shifts almost imperceptibly, never settling into a fully periodic pattern. This is mathematically correct: the golden ratio is the most irrational number (least well approximated by rationals), creating the maximum variation in the coupling asymmetry between even and odd strand pairs. The result is a bell timbre with subtle, non-repeating shimmer — as if the bell were made of an alloy with irrational molecular structure.
-
-**The φ insight:** The golden ratio appears in shell spirals, phyllotaxis, and optimal packing. Here it controls how oscillator pairs couple asymmetrically. The (5,8) torus is the closest integer approximation available in the P/Q range. It sounds different from (2,3). Play both. The difference is subtle but real — the golden torus has more long-term spectral variation.
+**Why this works:** The Figure-Eight's alternating polarity at braidDepth 0.72 creates a woven bass texture. The low filter cutoff (700 Hz) removes coupling's high-frequency intermodulation, leaving only topology's effect on the fundamental region: a bass that breathes internally.
 
 ---
 
-### 8. Breathing Trefoil
+### Preset 8: Solomon Meditation (Aether)
 
-**Mood:** Atmosphere | **Knot:** Trefoil | **Discovery:** Autonomous LFO on braid depth at very slow rate creates a living topology
+**Mood:** Aether | **Category:** Kelp Forest Pad | **Discovery:** Solomon + extreme reverb + macroKnot 0.5 + very slow LFO = topology as meditation object
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Pure coupling — the breathing topology is the sound |
-| `weave_strandTune` | 2.0 | Minor second — subtle interval spreading. Strands close but not unison. |
-| `weave_knotType` | 0 (Trefoil) | Directed three-strand ring with floating fourth strand |
-| `weave_braidDepth` | 0.45 | Below the WEAVE-I threshold on purpose — the LFO will breathe it above |
-| `weave_filterCutoff` | 6500 Hz | — |
-| `weave_filterReso` | 0.1 | Slight resonance |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.30 | Slow attack — atmospheric |
-| `weave_ampD` | 0.5 | — |
-| `weave_ampS` | 0.78 | High sustain |
-| `weave_ampR` | 3.0 | Long release |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 5 (Braid Depth) | — |
-| `weave_lfo1Depth` | 0.38 | Strong modulation: braidDepth cycles from 0.45−0.38=0.07 to 0.45+0.38=0.83 |
-| `weave_lfo1Rate` | 0.067 | 15-second cycle (≈ 0.067 Hz) — the ocean breath rate from retreat notes |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 3 (Reverb) | — |
-| `weave_fx1Mix` | 0.40 | Deep reverb |
-| `weave_fx1Param` | 0.60 | Long tail |
-| `weave_macroWeave` | 0.0 | WEAVE raises the floor — minimum braid depth increases |
-| `weave_macroTension` | 0.0 | — |
-| `weave_macroKnot` | 0.0 | — |
-| `weave_macroSpace` | 0.0 | SPACE opens the reverb |
-| `weave_voiceMode` | 3 (Poly8) | — |
+| `weave_strandType` | 1 (Sine) | Pure topology, no harmonic noise |
+| `weave_knotType` | 3 (Solomon) | Two-ring architecture |
+| `weave_braidDepth` | 0.45 | At WEAVE-I — coupling just dominant |
+| `weave_strandTune` | 4.0 | Ring B at major third above root — two-ring major third pad |
+| `weave_macroKnot` | 0.50 | Trefoil chimera — one ring gets directional asymmetry |
+| `weave_filterCutoff` | 4200.0 Hz | Warm, open |
+| `weave_filterReso` | 0.05 | Minimal — pure topology sound |
+| `weave_ampA` | 1.2s | Very slow bloom |
+| `weave_ampR` | 10.0s | Notes drift away |
+| `weave_voiceMode` | 1 (Legato) | Single lingering voice |
+| `weave_glideTime` | 0.55 | Slow glide |
+| LFO1 | Sine, Target: Braid, Rate 0.02 Hz, Depth 0.15 | 50-second topology breath |
+| FX1 | Reverb, Mix 0.88, Param 0.94 | Immersive reverb |
+| FX2 | Chorus, Mix 0.35, Param 0.65 | Slight width |
 
-**Sonic character:** The braidDepth LFO depth of 0.38 with a center of 0.45 means the braid depth cycles from ~0.07 (decoupled zone) to ~0.83 (deep topology zone) over 15 seconds. The topology literally breathes: every 7.5 seconds, the knot structure emerges from near-silence and recedes again. When braidDepth is at the peak, Trefoil coupling is fully audible — the directed ring, the floating fourth strand. When at the trough, it sounds like four independent oscillators with a minor-second spread.
-
-This is a different kind of breathing than vibrato or tremolo. The spectral character of the tone is changing, not just the pitch or volume. The Trefoil's topology emerges and retreats as if the knot were being tied and loosened.
+**Why this works:** Solomon at strandTune=4.0 creates two rings a major third apart — a built-in harmonic dyad coupled through the Solomon cross-link matrix. At macroKnot=0.5, one ring receives gentle directional asymmetry from the Trefoil blend — the major third relationship is lopsided in a subtle, mathematical way that makes it feel alive. The 50-second LFO cycle crosses WEAVE-I so slowly that the modulation is never consciously perceived, only felt.
 
 ---
 
-### 9. Figure-Eight Drift
+### Preset 9: Knot Threshold (Submerged)
 
-**Mood:** Aether | **Knot:** Figure-Eight → Solomon chimera | **Discovery:** Two LFOs at coprime rates create a non-repeating coupling texture
+**Mood:** Submerged | **Category:** Topology Showcase | **Discovery:** The WEAVE-I threshold as a performance axis — preset lives exactly at the crossover
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 1 (Sine) | Pure coupling for the aether mood |
-| `weave_strandTune` | 9.0 | Major sixth — wide interval, strands cover more tonal space |
-| `weave_knotType` | 1 (Figure-Eight) | knotB = Torus. Figure-Eight chimera is the FE→Torus halfway state. |
-| `weave_braidDepth` | 0.73 | Above threshold |
-| `weave_torusP` | 2 | — |
-| `weave_torusQ` | 3 | — |
-| `weave_filterCutoff` | 7500 Hz | Bright — aether mood |
-| `weave_filterReso` | 0.15 | — |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.50 | Very slow attack — aether emerges |
-| `weave_ampD` | 1.0 | Long decay |
-| `weave_ampS` | 0.85 | — |
-| `weave_ampR` | 5.5 | Very long release — notes float in space |
-| `weave_lfo1Type` | 1 (Sine) | — |
-| `weave_lfo1Target` | 5 (Braid Depth) | — |
-| `weave_lfo1Depth` | 0.20 | Moderate braid breathing |
-| `weave_lfo1Rate` | 0.13 | 7.7-second cycle |
-| `weave_lfo2Type` | 1 (Sine) | — |
-| `weave_lfo2Target` | 2 (Filter Cutoff) | Separate filter drift |
-| `weave_lfo2Depth` | 0.22 | ±0.22 × 6000 Hz = ±1320 Hz filter drift |
-| `weave_lfo2Rate` | 0.083 | 12-second cycle — 13 and 7.7 second periods are coprime-like, combining for ~100s total cycle |
-| `weave_fx1Type` | 3 (Reverb) | — |
-| `weave_fx1Mix` | 0.58 | Deep reverb for aether |
-| `weave_fx1Param` | 0.78 | Very long reverb tail |
-| `weave_fx2Type` | 2 (Chorus) | — |
-| `weave_fx2Mix` | 0.28 | — |
-| `weave_fx2Param` | 0.35 | — |
-| `weave_macroWeave` | 0.0 | — |
-| `weave_macroTension` | 0.0 | — |
-| `weave_macroKnot` | 0.0 | KNOT sweeps from FE toward Torus |
-| `weave_macroSpace` | 0.0 | SPACE opens the reverb and chorus |
-| `weave_voiceMode` | 3 (Poly8) | — |
+| `weave_strandType` | 4 (Triangle) | Soft coupling — artifacts are gentle but present |
+| `weave_knotType` | 0 (Trefoil) | Ring topology — directional flow |
+| `weave_braidDepth` | 0.38 | Exactly at Trefoil WEAVE-I threshold |
+| `weave_macroKnot` | 0.10 | Trace Figure-Eight blend |
+| `weave_filterCutoff` | 3800.0 Hz | Mid-warm |
+| `weave_filterReso` | 0.15 | Moderate resonance |
+| `weave_ampA` | 0.02s | Fast enough for chords |
+| `weave_ampR` | 2.5s | Moderate release |
+| `weave_voiceMode` | 3 (Poly8) | Poly mode |
+| LFO1 | Sine, Target: Braid, Rate 0.08 Hz, Depth 0.12 | Crosses WEAVE-I on each cycle (12.5s period) |
+| FX1 | Chorus, Mix 0.35, Param 0.50 | Gentle width |
+| FX2 | Reverb, Mix 0.45, Param 0.68 | Moderate reverb |
 
-**Sonic character:** The Figure-Eight's four-strand mutual interference is animated by two LFOs at approximately 7.7s and 12s cycles. Their periods are not integer multiples of each other (~7.7 × 1.56 ≈ 12), so the combined pattern repeats approximately every 7.7 × 12 / gcd ≈ 92 seconds. In practice, no two measures of this preset sound the same — the braid depth and filter cutoff drift asynchronously across a ~90-second combined cycle. An aether instrument by definition. Hold a chord for a minute and listen to the patch evolve.
+**Why this works:** The preset lives exactly at the Trefoil WEAVE-I threshold. The braid LFO at 0.08 Hz crosses into topology-dominant territory on each upswing and returns to detuning-dominant territory on each downswing — a 12.5-second cycle of entering and exiting the knot. The WEAVE macro locks the coupling above WEAVE-I permanently. The KNOT macro can morph topology while at the threshold. This preset is a teaching instrument.
 
 ---
 
-### 10. Knot Theory at Low Velocity
+### Preset 10: Torus Sequence (Prism)
 
-**Mood:** Foundation | **Knot:** Trefoil | **Discovery:** Low filterCutoff + velocity scaling creates a complete timbral arc from whisper to declaration
+**Mood:** Prism | **Category:** Entangled Sequence | **Discovery:** Torus (3,5) + poly + macroKnot 0.80 = rhythmic pad with shifting topology accents
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `weave_strandType` | 2 (Saw) | Harmonic weight for the dark timbre |
-| `weave_strandTune` | 0.0 | All strands at root — velocity should move the timbre, not the intervals |
-| `weave_knotType` | 0 (Trefoil) | — |
-| `weave_braidDepth` | 0.77 | Above threshold |
-| `weave_filterCutoff` | 350 Hz | Maximum velocity expressivity: 350→2350 Hz arc |
-| `weave_filterReso` | 0.42 | High resonance at the low cutoff — the coupling peaks ring inside the filter resonance |
-| `weave_filterType` | 0 (LP) | — |
-| `weave_ampA` | 0.01 | Fast attack |
-| `weave_ampD` | 0.5 | Medium decay |
-| `weave_ampS` | 0.65 | — |
-| `weave_ampR` | 0.8 | — |
-| `weave_lfo1Type` | 0 (Off) | Velocity expression is the performance dimension — no LFO needed |
-| `weave_lfo2Type` | 0 (Off) | — |
-| `weave_fx1Type` | 0 (Off) | Dry — the timbre arc is the demonstration |
-| `weave_macroWeave` | 0.0 | WEAVE increases coupling |
-| `weave_macroTension` | 0.0 | TENSION adds resonance to the filter peak |
-| `weave_macroKnot` | 0.0 | — |
-| `weave_macroSpace` | 0.0 | — |
-| `weave_voiceMode` | 3 (Poly8) | — |
-| `weave_pitchBendRange` | 2 | — |
+| `weave_strandType` | 2 (Saw) | Harmonic richness |
+| `weave_knotType` | 2 (Torus) | P/Q control |
+| `weave_braidDepth` | 0.45 | At WEAVE-I |
+| `weave_torusP` | 3 | Star torus family |
+| `weave_torusQ` | 5 | Star — pqScale ≈ 0.958 |
+| `weave_macroKnot` | 0.80 | Deep toward Solomon — torus passes through ring architecture |
+| `weave_filterCutoff` | 4500.0 Hz | Open mid |
+| `weave_filterReso` | 0.18 | Present resonance |
+| `weave_ampA` | 0.010s | Quick attack |
+| `weave_ampR` | 0.90s | Short-moderate release |
+| `weave_voiceMode` | 3 (Poly8) | Poly |
+| LFO1 | Sine, Target: Braid, Rate 2.5 Hz, Depth 0.16 | Rhythmic braid accent |
+| LFO2 | Triangle, Target: Filter, Rate 0.10 Hz, Depth 0.25 | Slow filter sweep |
+| FX1 | Reverb, Mix 0.38, Param 0.62 | Moderate reverb |
+| FX2 | Delay, Mix 0.28, Param 0.50 | Rhythmic delay |
 
-**Sonic character:** At pianissimo velocity: dark, muffled, with a barely-audible resonance peak at 350 Hz. The topology is present but obscured. At mezzo-forte: filter opens to ~1350 Hz, resonance peak audible and prominent, topology clearly visible in the spectrum. At fortissimo: filter at 2350 Hz, the Trefoil coupling's spectral character fully exposed in the mid-range. The player's touch velocity is a direct control over how much of the knot they expose.
-
-**Teaching use:** This is the WEAVE-VI teaching preset. Play scales at three velocity levels. Listen to the same pitch become three different instruments under velocity. Then explain: the velocity maps to 2000 Hz of filter offset. At low cutoff, 2000 Hz is everything.
+**Why this works:** The (3,5) star torus at macroKnot=0.80 is predominantly Solomon ring architecture with star winding contribution. The 2.5 Hz braid LFO at 120 BPM accents approximately every dotted eighth note. The slow filter LFO at 0.10 Hz adds a 10-second timbral arc across the rhythmic texture.
 
 ---
 
-## Phase R7: The Six Laws (Quick Reference)
+## Phase R7: Parameter Interactions and Traps
 
-| Law | Rule | Application |
-|-----|------|-------------|
-| WEAVE-I | BraidDepth below 0.65 = detuned zone. Above 0.7 = topology zone. Choose a side. | Never park braidDepth at 0.5 without intention. |
-| WEAVE-II | Sine strands = mathematically pure coupling. Saw/Square/Triangle = approximate coupling. | Use Sine to hear the knot. Use Saw/Sq/Tri to add harmonic weight. |
-| WEAVE-III | Torus P/Q is a geometry selector, not a tone control. Test (2,5) and (5,8) before finalizing any Torus preset. | Never default to (2,3) without trying at least two other P/Q pairs. |
-| WEAVE-IV | KNOT macro 0.5 = topological chimera — a state that no mathematical knot theory describes. | The chimera midpoint is a destination, not a transition. |
-| WEAVE-V | Solomon at strandTune=7.02: each MIDI note is two coupled rings at root and fifth. The chord pad topology. | For Solomon pads, always consider strandTune 7.02, 5.0, or 3.86. |
-| WEAVE-VI | Velocity → +2000 Hz. Expressive at cutoff below 2000 Hz. Negligible above 6000 Hz. | Match cutoff range to desired velocity response before finalizing. |
+### The braidDepth Creep Trap
+
+The most common error with ORBWEAVE is accumulating too much braid depth through multiple sources simultaneously:
+
+`effectiveBraid = clamp(presetBraidDepth + macroWeave × (1 − presetBraidDepth) + lfoContribution + aftertouch × 0.3, 0.0, 1.0)`
+
+A preset with braidDepth=0.45 + WEAVE macro at 0.5 + full aftertouch can easily reach 1.0 — maximum coupling. Above WEAVE-I, additional braidDepth increases coupling artifact intensity and can introduce phase cancellation events and unintended harshness.
+
+**The rule:** Design for the macro fully open. Set preset braidDepth to the value you want at WEAVE macro zero. Then open WEAVE fully and verify the result is still musical.
 
 ---
 
-## Sister Cadence's Notes
+### The torusP/Q Integer Ratio Trap
 
-- The `Docs/guru-bin-retreats/` directory was empty before this chapter — this is the inaugural formal Guru Bin entry for ORBWEAVE.
-- The `scripture/retreats/orbweave-retreat.md` (2026-03-20) contains the original seance retreat with 6 WEAVE verses and 9 awakening preset concepts. This chapter (2026-03-21) is the student-facing version with 10 fully specified presets and pedagogical structure.
-- Three moods are underrepresented in the current ORBWEAVE library: Submerged (2 presets), Aether (fewer than 5), and Family (coupling presets). Flag for next expansion pass.
-- The Solomon + strandTune chord architecture has no dedicated Transcendental tier content yet. The two-ring chord behavior, combined with cross-engine coupling, is the strongest candidate for a deep-dive Transcendental chapter.
-- The KNOT macro as a topology morpher is the most unique single control in the entire fleet. Document it prominently in marketing copy and in the Field Guide post scheduled for this engine.
-- The golden torus (5,8) and cinquefoil (2,5) P/Q configurations are the least used in the preset library and the most sonically distinctive. Consider a focused mini-preset pass (10 presets) that exhausts all meaningful P/Q combinations: (2,3), (2,5), (2,7), (3,4), (3,5), (3,7), (4,5), (4,7), (5,7), (5,8).
+When P and Q share a common factor, the torus knot degenerates: (2,4) = two copies of (1,2), a torus link rather than a knot. The coupling matrix does not crash, but the pqScale modulation produces a symmetry collapse that feels broken rather than intentional.
+
+**The rule:** Always use coprime P/Q pairs. Safest choices: (2,3), (2,5), (2,7), (3,5), (3,7), (5,7), (5,8). If a torus preset sounds wrong, check for common factors.
+
+---
+
+### The macroKnot Destination Trap
+
+macroKnot morphs from the base knot toward the *next* knot type (knotType+1 mod 4):
+- Solomon (knotType=3) + macroKnot=1.0 → pure Trefoil (wraps around)
+- Trefoil (knotType=0) + macroKnot=1.0 → pure Figure-Eight
+
+A preset with knotType=3 and macroKnot=0.9 is predominantly Trefoil, not Solomon. This is a common design error.
+
+**The rule:** macroKnot 0.0 = pure base knot. macroKnot 0.5 = chimera. macroKnot 1.0 = pure next knot. Name presets by their topological destination, not their knotType setting.
+
+---
+
+### The Shimmer Saturation Trap
+
+Very high reverb mix (above 0.90) with high braidDepth creates a feedback-like shimmer buildup. The reverb input is the coupled strand mix — at high braidDepth, this contains strong coupling artifacts. The reverb sustains them. On the next note, reverb tail artifacts feed into the new coupling calculation. Artifacts build progressively, especially in legato mode.
+
+**The rule:** When reverb mix is above 0.80, keep braidDepth below 0.60. Or use the SPACE macro only for performance peaks rather than setting FX mix high in the preset.
+
+---
+
+### The Polyphony Coupling Architecture
+
+In Poly8 mode, each voice runs its own independent 4-strand coupling system. Two simultaneous notes in Poly8 with knotType=Solomon do NOT share ring architecture between voices — each voice has its own independent two-ring structure. This is correct behavior per B016 (MIDI-layer voice independence is inviolable).
+
+**The design implication:** Poly ORBWEAVE presets should be designed for individual voice character, not imagined cross-voice coupling. Interesting polyphonic behavior arises from multiple independent topological systems sounding simultaneously, each with its own coupling dynamics.
+
+---
+
+## Phase R8: CPU Profile
+
+ORBWEAVE's DSP load is moderate by XOmnibus standards. The primary cost is the per-sample phase coupling computation: for each active voice, the inner loop computes 12 multiply-adds (4 strands × 3 non-self coefficients) plus 4 fastSin calls per sample. With 8 voices active in Poly8 mode at 48kHz: approximately 1,600 such operations per millisecond of audio per active voice.
+
+Comparative estimate: ORBWEAVE at 8 voices ≈ 8–12% CPU on an Apple M-series chip — approximately 1.5× the load of a standard 4-oscillator polyphonic synth at the same polyphony. Three FX slots active with reverb add approximately 2–3% additional load.
+
+**CPU management guidance:**
+- Use Poly4 (4 voices) for most pad and atmospheric applications — halves the per-voice cost without affecting coupling character
+- Keep FX3 Type at Off unless a third serial FX is genuinely needed
+- In sequences, Poly4 with shorter release times uses significantly less CPU than Poly8 with long releases
+- Legato mode (voiceMode=1) is effectively Mono — lowest possible CPU, one voice at a time
+
+---
+
+## Phase R9: Coupling Synergy — B021 in the Fleet
+
+ORBWEAVE as a **coupling source** provides stereo output from the coupled strand mix — available for AudioToFM, AmpToFilter, LFOToPitch, AmpToPitch, and AmpToChoke routing to destination engines. The coupling output carries the topology's harmonic character. Routing ORBWEAVE's Figure-Eight output as AudioToFM to a pad engine modulates that engine's pitch with alternating-polarity coupling artifacts — a topology-flavored FM modulation impossible through standard LFO paths.
+
+ORBWEAVE as a **coupling destination** accepts pitch, filter, and amp signals. Aftertouch routing from a physically expressive instrument to ORBWEAVE's braid depth creates an organic coupling: the breath of one instrument tightens the knot of another.
+
+**Recommended coupling pairs:**
+- ORBWEAVE → OXBOW (AudioToFM): Topology shapes the reverb exciter — coupling artifacts become the exciter waveform feeding OXBOW's Chiasmus FDN
+- ORBWEAVE → OPENSKY (LFOToPitch): Figure-Eight's alternating pitch modulation creates a topology-flavored shimmer on OPENSKY's supersaw stack
+- OPAL → ORBWEAVE (AmpToFilter): Granular density modulates ORBWEAVE's filter, linking grain cloud density to topological brightness
+- OUROBOROS → ORBWEAVE (AmpToPitch): The chaotic attractor's amplitude drives ORBWEAVE's pitch modulation — chaos shapes topology
+
+The Knot Phase Coupling Matrix (B021) is the architectural foundation for the KnotTopology coupling type in the XOmnibus SDK — allowing third-party engines to receive topology-routed signals as a formal coupling interface. ORBWEAVE is the reference implementation.
+
+---
+
+*End of ORBWEAVE Retreat Chapter. The knot does not untie.*

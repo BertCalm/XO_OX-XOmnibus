@@ -1,20 +1,19 @@
 {
   "schema_version": 1,
-  "name": "Overtone Tritone Suspension",
+  "name": "Tritone Suspension",
   "mood": "Flux",
   "engines": [
     "Overtone"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sqrt2 constant. Pell number convergents cluster at the tritone (1.41421... = 2^(1/2)). Near-equal partial amplitudes produce a dense, unresolved harmonic suspension — neither consonant nor chaotic. The rational approximations to sqrt(2) as perpetual harmonic tension.",
-  "tier": "awakening",
+  "description": "Sqrt2 constant at depth 1.5. Pell convergents 3/2 and 7/5 span from fifth to near-tritone. Near-equal partial amplitudes expose the unresolved harmonic suspension — neither consonant nor chaotic. The rational approximations to sqrt(2) as perpetual tension.",
   "tags": [
     "sqrt2",
     "tritone",
     "tension",
     "flux",
-    "guru-bin-awakening",
+    "awakening",
     "pell",
     "suspension"
   ],
@@ -24,33 +23,31 @@
     "COUPLING",
     "SPACE"
   ],
-  "coupling": {
-    "pairs": []
-  },
   "couplingIntensity": "None",
+  "tempo": null,
   "dna": {
     "brightness": 0.52,
-    "warmth": 0.4,
+    "warmth": 0.40,
     "movement": 0.38,
-    "density": 0.7,
-    "space": 0.4,
+    "density": 0.70,
+    "space": 0.40,
     "aggression": 0.22
   },
   "parameters": {
     "Overtone": {
       "over_constant": 3,
       "over_depth": 1.5,
-      "over_partial0": 0.8,
+      "over_partial0": 0.80,
       "over_partial1": 0.72,
       "over_partial2": 0.68,
       "over_partial3": 0.65,
       "over_partial4": 0.62,
-      "over_partial5": 0.6,
+      "over_partial5": 0.60,
       "over_partial6": 0.58,
       "over_partial7": 0.55,
       "over_velBright": 0.35,
       "over_filterCutoff": 10000.0,
-      "over_filterRes": 0.4,
+      "over_filterRes": 0.40,
       "over_ampAtk": 0.08,
       "over_ampDec": 0.35,
       "over_ampSus": 0.65,
@@ -59,12 +56,14 @@
       "over_lfo1Depth": 0.25,
       "over_lfo2Rate": 0.08,
       "over_lfo2Depth": 0.18,
-      "over_resoMix": 0.2,
+      "over_resoMix": 0.20,
       "over_macroDepth": 0.28,
       "over_macroColor": 0.48,
       "over_macroCoupling": 0.35,
       "over_macroSpace": 0.38
     }
   },
-  "tempo": null
+  "coupling": {
+    "pairs": []
+  }
 }

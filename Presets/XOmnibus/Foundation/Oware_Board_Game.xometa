@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "name": "Board Game",
+  "mood": "Foundation",
+  "engines": [
+    "Oware"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The reference neutral — every parameter in its most functional zone. Wood character, soft felt mallet, tube resonator, trace mirliton buzz. The instrument at rest, before any commitment. Play for five minutes before touching any parameter.",
+  "tier": "awakening",
+  "tags": [
+    "foundation",
+    "neutral",
+    "wood",
+    "balafon",
+    "guru-bin-awakening"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.25,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.20,
+      "owr_malletHardness": 0.30,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.50,
+      "owr_buzzAmount": 0.15,
+      "owr_sympathyAmount": 0.30,
+      "owr_shimmerRate": 4.0,
+      "owr_thermalDrift": 0.30,
+      "owr_brightness": 8000.0,
+      "owr_damping": 0.30,
+      "owr_decay": 2.0,
+      "owr_filterEnvAmount": 0.30,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.0,
+      "owr_macroMallet": 0.0,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.0,
+      "owr_lfo1Rate": 0.5,
+      "owr_lfo1Depth": 0.10,
+      "owr_lfo1Shape": 0,
+      "owr_lfo2Rate": 1.0,
+      "owr_lfo2Depth": 0.0,
+      "owr_lfo2Shape": 0
+    }
+  },
+  "tempo": null
+}
