@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Concert glockenspiel — hard brass mallets on steel bars, open body, cutting brightness, precision attack",
+  "dna": {
+    "aggression": 0.35,
+    "brightness": 0.88,
+    "density": 0.3,
+    "movement": 0.25,
+    "space": 0.5,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.22,
+    "SPACE": 0.48
+  },
+  "mood": "Prism",
+  "name": "Glockenspiel",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.8,
+      "owr_malletHardness": 0.88,
+      "owr_bodyType": 3,
+      "owr_bodyDepth": 0.28,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.1,
+      "owr_shimmerRate": 0.0,
+      "owr_thermalDrift": 0.02,
+      "owr_brightness": 14000.0,
+      "owr_damping": 0.35,
+      "owr_decay": 1.8,
+      "owr_filterEnvAmount": 0.45,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.65,
+      "owr_macroMallet": 0.65,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.48
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.35,
+    "brightness": 0.88,
+    "density": 0.3,
+    "movement": 0.25,
+    "space": 0.5,
+    "warmth": 0.25
+  },
+  "tags": [
+    "glockenspiel",
+    "metal",
+    "bright",
+    "hard-mallet",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

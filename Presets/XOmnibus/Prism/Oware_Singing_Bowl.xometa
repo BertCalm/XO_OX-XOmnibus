@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Tibetan singing bowl — bowl material, bowl body, very long singing decay, slow thermal breath",
+  "dna": {
+    "aggression": 0.06,
+    "brightness": 0.45,
+    "density": 0.35,
+    "movement": 0.42,
+    "space": 0.9,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.42,
+    "SPACE": 0.88
+  },
+  "mood": "Prism",
+  "name": "Singing Bowl",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.66,
+      "owr_malletHardness": 0.35,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.85,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.45,
+      "owr_shimmerRate": 2.0,
+      "owr_thermalDrift": 0.55,
+      "owr_brightness": 4200.0,
+      "owr_damping": 0.1,
+      "owr_decay": 8.5,
+      "owr_filterEnvAmount": 0.2,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.48,
+      "owr_macroMallet": 0.48,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.88
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.06,
+    "brightness": 0.45,
+    "density": 0.35,
+    "movement": 0.42,
+    "space": 0.9,
+    "warmth": 0.62
+  },
+  "tags": [
+    "singing-bowl",
+    "tibetan",
+    "long-decay",
+    "thermal",
+    "prism"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Jazz vibraphone — aluminium bars, tube resonators, medium shimmer, Milt Jackson sweetness",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.62,
+    "density": 0.3,
+    "movement": 0.38,
+    "space": 0.65,
+    "warmth": 0.6
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.4,
+    "SPACE": 0.6
+  },
+  "mood": "Foundation",
+  "name": "Vibraphone",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.5,
+      "owr_malletHardness": 0.45,
+      "owr_bodyType": 0,
+      "owr_bodyDepth": 0.5,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.25,
+      "owr_shimmerRate": 3.5,
+      "owr_thermalDrift": 0.06,
+      "owr_brightness": 7000.0,
+      "owr_damping": 0.3,
+      "owr_decay": 3.2,
+      "owr_filterEnvAmount": 0.3,
+      "owr_bendRange": 2,
+      "owr_macroMaterial": 0.35,
+      "owr_macroMallet": 0.35,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.6
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.62,
+    "density": 0.3,
+    "movement": 0.38,
+    "space": 0.65,
+    "warmth": 0.6
+  },
+  "tags": [
+    "vibraphone",
+    "jazz",
+    "metal",
+    "shimmer",
+    "foundation"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "The Visionary showcase — between wood and metal, Balinese shimmer, high sympathy, ceremonial buzz, long cosmic ring",
+  "dna": {
+    "aggression": 0.18,
+    "brightness": 0.58,
+    "density": 0.55,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.62
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.45,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.65,
+    "SPACE": 0.78
+  },
+  "mood": "Atmosphere",
+  "name": "Mbira Constellation",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.35,
+      "owr_malletHardness": 0.42,
+      "owr_bodyType": 1,
+      "owr_bodyDepth": 0.58,
+      "owr_buzzAmount": 0.15,
+      "owr_sympathyAmount": 0.65,
+      "owr_shimmerRate": 6.2,
+      "owr_thermalDrift": 0.4,
+      "owr_brightness": 5800.0,
+      "owr_damping": 0.15,
+      "owr_decay": 4.0,
+      "owr_filterEnvAmount": 0.32,
+      "owr_bendRange": 4,
+      "owr_macroMaterial": 0.45,
+      "owr_macroMallet": 0.45,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.78
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.18,
+    "brightness": 0.58,
+    "density": 0.55,
+    "movement": 0.65,
+    "space": 0.8,
+    "warmth": 0.62
+  },
+  "tags": [
+    "mbira",
+    "balinese",
+    "shimmer",
+    "sympathy",
+    "atmosphere",
+    "showcase"
+  ],
+  "version": "1.0.0"
+}

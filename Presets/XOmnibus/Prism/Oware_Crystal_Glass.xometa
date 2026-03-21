@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "Crystal glass harmonic — metal-to-bowl transition, ultra-high brightness, glassy singing partials",
+  "dna": {
+    "aggression": 0.08,
+    "brightness": 0.92,
+    "density": 0.28,
+    "movement": 0.35,
+    "space": 0.85,
+    "warmth": 0.2
+  },
+  "engines": [
+    "Oware"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.72,
+    "COUPLING": 0.0,
+    "MOVEMENT": 0.35,
+    "SPACE": 0.85
+  },
+  "mood": "Prism",
+  "name": "Crystal Glass",
+  "parameters": {
+    "Oware": {
+      "owr_material": 0.82,
+      "owr_malletHardness": 0.4,
+      "owr_bodyType": 2,
+      "owr_bodyDepth": 0.55,
+      "owr_buzzAmount": 0.0,
+      "owr_sympathyAmount": 0.35,
+      "owr_shimmerRate": 1.2,
+      "owr_thermalDrift": 0.08,
+      "owr_brightness": 16000.0,
+      "owr_damping": 0.08,
+      "owr_decay": 7.0,
+      "owr_filterEnvAmount": 0.18,
+      "owr_bendRange": 3,
+      "owr_macroMaterial": 0.72,
+      "owr_macroMallet": 0.72,
+      "owr_macroCoupling": 0.0,
+      "owr_macroSpace": 0.85
+    }
+  },
+  "schema_version": 1,
+  "sonic_dna": {
+    "aggression": 0.08,
+    "brightness": 0.92,
+    "density": 0.28,
+    "movement": 0.35,
+    "space": 0.85,
+    "warmth": 0.2
+  },
+  "tags": [
+    "crystal",
+    "glass",
+    "bright",
+    "long-decay",
+    "prism"
+  ],
+  "version": "1.0.0"
+}
