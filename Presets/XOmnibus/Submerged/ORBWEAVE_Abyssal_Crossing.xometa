@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "A Torus knot at (1,6) — the near-unknot. pqScale=0.707, the lowest asymmetry of any standard torus winding, approaching symmetric coupling. The (1,6) torus is one crossing away from an unknot — barely knotted, almost free. macroKnot=0.8 pushes through Torus toward Solomon, but the near-unknot starting topology means the interpolated matrix never fully entangles. What results is a strange deep pressure: partial coupling from a near-unknot blending into two-ring Solomon architecture. Low filter, slow LFO on braid depth at 0.01 Hz — a breathing cycle so slow it barely registers as motion. The abyssal zone where pressure distorts topology.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.22
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Abyssal Crossing",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.68,
+      "weave_torusP": 1,
+      "weave_torusQ": 6,
+      "weave_filterCutoff": 800.0,
+      "weave_filterReso": 0.28,
+      "weave_filterType": 0,
+      "weave_ampA": 2.0,
+      "weave_ampD": 3.5,
+      "weave_ampS": 0.58,
+      "weave_ampR": 10.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.3,
+      "weave_lfo1Rate": 0.01,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.62,
+      "weave_fx1Param": 0.92,
+      "weave_fx2Type": 1,
+      "weave_fx2Mix": 0.28,
+      "weave_fx2Param": 0.65,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.8,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.76,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "submerged",
+    "torus",
+    "pq-1-6",
+    "near-unknot",
+    "topology-morph",
+    "deep",
+    "pressure",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

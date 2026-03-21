@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The (3,5) pentagram torus: five crossings in the winding, pqScale=0.975, second only to the cinquefoil in coupling asymmetry. The five-crossing geometry creates a more complex interference structure than the three-crossing trefoil — more modes of resonance are active simultaneously. macroKnot=0.55 holds the matrix just past the Torus midpoint toward Solomon, keeping the five-star winding energy while introducing the two-ring paired architecture. Slow attack into a long sustain pad. LFO1 on filter at 0.04 Hz, LFO2 on braid depth at 0.07 Hz — two overlapping slow cycles that make the pad breathe without any discernible meter.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.74,
+    "movement": 0.32,
+    "density": 0.42,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Pentagram Drift",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.77,
+      "weave_torusP": 3,
+      "weave_torusQ": 5,
+      "weave_filterCutoff": 3800.0,
+      "weave_filterReso": 0.12,
+      "weave_filterType": 0,
+      "weave_ampA": 0.9,
+      "weave_ampD": 1.8,
+      "weave_ampS": 0.7,
+      "weave_ampR": 8.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.25,
+      "weave_lfo1Rate": 0.04,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": 0.18,
+      "weave_lfo2Rate": 0.07,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.68,
+      "weave_fx1Param": 0.85,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.38,
+      "weave_fx2Param": 0.55,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.55,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.72,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "atmosphere",
+    "pentagram",
+    "torus",
+    "pq-3-5",
+    "topology-morph",
+    "pad",
+    "sine",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

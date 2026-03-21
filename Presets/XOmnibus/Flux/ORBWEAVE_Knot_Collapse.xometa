@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "macroKnot=0.9 sits almost entirely in the Solomon topology with only a sliver of Trefoil influence from the wrap-around interpolation. The coupling matrix is almost entirely the two-ring Solomon architecture — but 10% of the Trefoil's directed three-strand ring persists as an asymmetric ghost, injecting directional energy into the Solomon pairs. S&H LFO on braid depth at 2.4 Hz: the topology suddenly lunges between depths, a stochastic wrenching of the coupling coefficients. Square strands add hard edge. This is what a knot sounds like when it cannot decide whether to untie itself.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.28,
+    "movement": 0.88,
+    "density": 0.68,
+    "space": 0.25,
+    "aggression": 0.78
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Knot Collapse",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 3,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.76,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 2800.0,
+      "weave_filterReso": 0.62,
+      "weave_filterType": 0,
+      "weave_ampA": 0.01,
+      "weave_ampD": 0.35,
+      "weave_ampS": 0.58,
+      "weave_ampR": 0.5,
+      "weave_lfo1Type": 5,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.72,
+      "weave_lfo1Rate": 2.4,
+      "weave_lfo2Type": 3,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.38,
+      "weave_lfo2Rate": 0.55,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.18,
+      "weave_fx1Param": 0.3,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.9,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.78,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "solomon",
+    "trefoil",
+    "topology-morph",
+    "s&h",
+    "square",
+    "chaotic",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Trefoil knot as a lead voice: the asymmetric three-strand ring with Strand 4 floating free creates a pitch identity that is almost-but-not-quite a simple tone. At braidDepth=0.78, the coupling is deep enough that the topology is the foreground — note attacks are clean (short decay, fast response) but the sustain has a slow topological shimmer. macroKnot=0.4 pulls toward Figure-Eight's four-way interference, brightening the upper partials on held notes. strandTune=5.0 (just over a major third) gives the four strands a chordal spread that the Trefoil knot then weaves into a single melodic voice.",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.48,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.28,
+    "aggression": 0.3
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Trefoil Lead",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 5.0,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.78,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 9500.0,
+      "weave_filterReso": 0.15,
+      "weave_filterType": 0,
+      "weave_ampA": 0.015,
+      "weave_ampD": 0.45,
+      "weave_ampS": 0.55,
+      "weave_ampR": 1.2,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.08,
+      "weave_lfo1Rate": 5.5,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.22,
+      "weave_fx1Param": 0.5,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.4,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.8,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "prism",
+    "trefoil",
+    "lead",
+    "topology-morph",
+    "sine",
+    "melodic",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

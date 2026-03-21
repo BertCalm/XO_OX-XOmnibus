@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Figure-Eight topology at a kinetic tempo. The four-way alternating coupling pattern has an inherent rhythmic quality — each strand's over-under relationship with its neighbors creates natural interference cycles. macroKnot=0.5 sits exactly halfway between Figure-Eight and Torus: the alternating pattern gains the symmetric surface coupling of the Torus, producing a denser interference pattern with no free strands and no dominant direction. Saw strands. LFO1 on braid depth at 1.2 Hz creates a rhythmic surge in the coupling depth — the topology tightens and releases at a dance tempo. Short attack, medium release.",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.72,
+    "density": 0.62,
+    "space": 0.25,
+    "aggression": 0.55
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Kinetic",
+  "name": "Braid Surge",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.79,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 5500.0,
+      "weave_filterReso": 0.35,
+      "weave_filterType": 0,
+      "weave_ampA": 0.01,
+      "weave_ampD": 0.3,
+      "weave_ampS": 0.65,
+      "weave_ampR": 0.65,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.42,
+      "weave_lfo1Rate": 1.2,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.3,
+      "weave_lfo2Rate": 0.6,
+      "weave_fx1Type": 1,
+      "weave_fx1Mix": 0.28,
+      "weave_fx1Param": 0.42,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.22,
+      "weave_fx2Param": 0.38,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.5,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.82,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "kinetic",
+    "figure-eight",
+    "topology-morph",
+    "rhythmic",
+    "saw",
+    "movement",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

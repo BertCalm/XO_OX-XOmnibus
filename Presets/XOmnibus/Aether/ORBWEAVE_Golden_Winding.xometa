@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The (5,8) Fibonacci torus approximates the golden ratio — P/Q approaches φ as you climb the Fibonacci sequence. The pqScale at (5,8) is 0.962, producing coupling asymmetry that never fully resolves into a periodic pattern. macroKnot=0.5 sits the matrix exactly halfway between Torus and Solomon: the golden winding bleeds into the two-ring linked architecture. LFO2 on filter at 0.05 Hz, LFO1 on braid depth at 0.02 Hz — two slow modulations at incommensurate rates, a micro-polyrhythm in topology space. Legato glide carries the golden ratio through intervals.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.76,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.94,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Aether",
+  "name": "Golden Winding",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 0.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.81,
+      "weave_torusP": 5,
+      "weave_torusQ": 8,
+      "weave_filterCutoff": 4200.0,
+      "weave_filterReso": 0.1,
+      "weave_filterType": 0,
+      "weave_ampA": 0.65,
+      "weave_ampD": 1.5,
+      "weave_ampS": 0.68,
+      "weave_ampR": 9.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.16,
+      "weave_lfo1Rate": 0.02,
+      "weave_lfo2Type": 2,
+      "weave_lfo2Target": 2,
+      "weave_lfo2Depth": 0.2,
+      "weave_lfo2Rate": 0.05,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.88,
+      "weave_fx1Param": 0.95,
+      "weave_fx2Type": 1,
+      "weave_fx2Mix": 0.38,
+      "weave_fx2Param": 0.72,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.5,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.70,
+      "weave_voiceMode": 1,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.68
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "aether",
+    "golden-ratio",
+    "torus",
+    "pq-5-8",
+    "fibonacci",
+    "topology-morph",
+    "legato",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

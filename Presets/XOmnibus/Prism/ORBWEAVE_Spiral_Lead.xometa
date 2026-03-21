@@ -1,0 +1,86 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The (3,4) spiral torus has pqScale=0.854 — below the default (2,3) at 0.933, meaning the coupling is more balanced than the default Torus. This produces a more even, four-strand interference pattern compared to the cinquefoil or default torus knots. macroKnot=0.3 tilts the matrix toward Figure-Eight, adding the alternating over/under crossing pattern to the spiral surface geometry. The result: a bright, articulate lead with a dense inner texture that shifts slightly with each note. Sine strands. Subtle vibrato LFO at 5.2 Hz. Play legato — glide reveals the spiral changing pitch.",
+  "dna": {
+    "brightness": 0.76,
+    "warmth": 0.45,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.22,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spiral Lead",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 1,
+      "weave_strandTune": 3.0,
+      "weave_knotType": 2,
+      "weave_braidDepth": 0.82,
+      "weave_torusP": 3,
+      "weave_torusQ": 4,
+      "weave_filterCutoff": 12000.0,
+      "weave_filterReso": 0.1,
+      "weave_filterType": 0,
+      "weave_ampA": 0.012,
+      "weave_ampD": 0.35,
+      "weave_ampS": 0.6,
+      "weave_ampR": 1.0,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 1,
+      "weave_lfo1Depth": 0.07,
+      "weave_lfo1Rate": 5.2,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.18,
+      "weave_fx1Param": 0.48,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.3,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.78,
+      "weave_voiceMode": 2,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.22
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "prism",
+    "torus",
+    "pq-3-4",
+    "spiral",
+    "topology-morph",
+    "lead",
+    "sine",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

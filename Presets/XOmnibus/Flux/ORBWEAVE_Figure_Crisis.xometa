@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "Figure-Eight at maximum braid depth: all four strands crossing two others simultaneously, alternating over/under. The Figure-Eight knot has crossing number 4 — every strand is simultaneously over and under two of its neighbors. macroKnot=0.75 pushes the matrix beyond the Figure-Eight endpoint into Torus territory, but the Figure-Eight interference pattern persists as a ghost. Saw strands. LFO2 at 3.1 Hz on resonance: the filter self-oscillates rhythmically against the crossing topology. The result is a distorted, arrhythmic cutting texture — a manifold biting itself.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.32,
+    "movement": 0.85,
+    "density": 0.72,
+    "space": 0.18,
+    "aggression": 0.82
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Figure Crisis",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 2.0,
+      "weave_knotType": 1,
+      "weave_braidDepth": 0.88,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 3600.0,
+      "weave_filterReso": 0.55,
+      "weave_filterType": 0,
+      "weave_ampA": 0.005,
+      "weave_ampD": 0.18,
+      "weave_ampS": 0.62,
+      "weave_ampR": 0.3,
+      "weave_lfo1Type": 4,
+      "weave_lfo1Target": 5,
+      "weave_lfo1Depth": 0.55,
+      "weave_lfo1Rate": 4.8,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 3,
+      "weave_lfo2Depth": 0.48,
+      "weave_lfo2Rate": 3.1,
+      "weave_fx1Type": 2,
+      "weave_fx1Mix": 0.22,
+      "weave_fx1Param": 0.35,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.75,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.82,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "flux",
+    "figure-eight",
+    "chaotic",
+    "saw",
+    "topology-morph",
+    "dense",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The Solomon knot as a foundation voice. At strandTune=7.02, Ring A (root) and Ring B (fifth) form a built-in power chord. Low filter cutoff (600 Hz) with velocity sensitivity — play hard and the filter rises to 2600 Hz, transforming the bass from sub-thickness to mid-cut power. macroKnot=0.3 brings in a gentle Trefoil asymmetry — Ring A gets a directional pull that gives the low end a subtle pumping character rather than pure symmetry. Saw strands provide harmonic weight for the filter to work against.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.72,
+    "movement": 0.25,
+    "density": 0.68,
+    "space": 0.12,
+    "aggression": 0.45
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Solomon Anchor",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 2,
+      "weave_strandTune": 7.02,
+      "weave_knotType": 3,
+      "weave_braidDepth": 0.72,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 600.0,
+      "weave_filterReso": 0.18,
+      "weave_filterType": 0,
+      "weave_ampA": 0.008,
+      "weave_ampD": 0.4,
+      "weave_ampS": 0.75,
+      "weave_ampR": 0.55,
+      "weave_lfo1Type": 1,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.15,
+      "weave_lfo1Rate": 0.08,
+      "weave_lfo2Type": 0,
+      "weave_lfo2Target": 0,
+      "weave_lfo2Depth": 0.0,
+      "weave_lfo2Rate": 1.0,
+      "weave_fx1Type": 0,
+      "weave_fx1Mix": 0.0,
+      "weave_fx1Param": 0.3,
+      "weave_fx2Type": 0,
+      "weave_fx2Mix": 0.0,
+      "weave_fx2Param": 0.3,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.3,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.88,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "foundation",
+    "solomon",
+    "bass",
+    "topology-morph",
+    "saw",
+    "velocity-sensitive",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}

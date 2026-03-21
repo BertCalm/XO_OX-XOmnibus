@@ -1,0 +1,85 @@
+{
+  "author": "XO_OX",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "created": "2026-03-21",
+  "description": "The Trefoil knot has writhe +3 — energy flows in one directed direction around the three-strand ring, never reversing. Strand 3 floats free, tethered gently to Strand 0. This is the most organic topology in ORBWEAVE: three strands circling, one watching. macroKnot=0.6 draws the matrix toward Figure-Eight, beginning to involve Strand 3 in the crossing pattern — the floating watcher starts to be pulled in, unwillingly. strandTune=2.5 gives the four strands a minor-third spread. Slow triangle LFO on filter mimics the slow drag of kelp in a tidal current. Triangle waveform retains harmonic warmth while leaving the topology audible.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.78,
+    "movement": 0.38,
+    "density": 0.48,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Orbweave"
+  ],
+  "macroLabels": [
+    "WEAVE",
+    "TENSION",
+    "KNOT",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Kelp Writhe",
+  "parameters": {
+    "Orbweave": {
+      "weave_strandType": 4,
+      "weave_strandTune": 2.5,
+      "weave_knotType": 0,
+      "weave_braidDepth": 0.75,
+      "weave_torusP": 2,
+      "weave_torusQ": 3,
+      "weave_filterCutoff": 2800.0,
+      "weave_filterReso": 0.22,
+      "weave_filterType": 0,
+      "weave_ampA": 0.15,
+      "weave_ampD": 0.8,
+      "weave_ampS": 0.72,
+      "weave_ampR": 4.0,
+      "weave_lfo1Type": 2,
+      "weave_lfo1Target": 2,
+      "weave_lfo1Depth": 0.28,
+      "weave_lfo1Rate": 0.06,
+      "weave_lfo2Type": 1,
+      "weave_lfo2Target": 5,
+      "weave_lfo2Depth": 0.14,
+      "weave_lfo2Rate": 0.09,
+      "weave_fx1Type": 3,
+      "weave_fx1Mix": 0.45,
+      "weave_fx1Param": 0.7,
+      "weave_fx2Type": 2,
+      "weave_fx2Mix": 0.28,
+      "weave_fx2Param": 0.45,
+      "weave_fx3Type": 0,
+      "weave_fx3Mix": 0.0,
+      "weave_fx3Param": 0.3,
+      "weave_macroWeave": 0.0,
+      "weave_macroTension": 0.0,
+      "weave_macroKnot": 0.6,
+      "weave_macroSpace": 0.0,
+      "weave_level": 0.74,
+      "weave_voiceMode": 3,
+      "weave_pitchBendRange": 2,
+      "weave_glideTime": 0.0
+    }
+  },
+  "schema_version": 1,
+  "sequencer": null,
+  "tags": [
+    "awakening",
+    "organic",
+    "trefoil",
+    "topology-morph",
+    "triangle",
+    "warm",
+    "kelp",
+    "hero"
+  ],
+  "tempo": null,
+  "tier": "awakening",
+  "version": "1.0.0"
+}
