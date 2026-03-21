@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Light Column",
+  "name": "Light Column (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

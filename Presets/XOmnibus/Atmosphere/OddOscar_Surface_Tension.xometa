@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Surface Tension",
+  "name": "Surface Tension (OddOscar)",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The atmospheric boundary layer — morph hovering at the water-air interface.",
-  "tags": ["surface", "tension", "boundary", "hover"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "surface",
+    "tension",
+    "boundary",
+    "hover"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.58, "movement": 0.5, "density": 0.55, "space": 0.82, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.58,
+    "movement": 0.5,
+    "density": 0.55,
+    "space": 0.82,
+    "aggression": 0.12
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.55,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

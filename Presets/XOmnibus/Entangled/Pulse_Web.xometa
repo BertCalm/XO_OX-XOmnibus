@@ -37,7 +37,7 @@
     "SPACE": 0.485
   },
   "mood": "Entangled",
-  "name": "Pulse Web",
+  "name": "Pulse Web (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

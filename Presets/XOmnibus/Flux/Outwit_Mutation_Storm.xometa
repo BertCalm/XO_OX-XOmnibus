@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Mutation Storm",
+  "name": "Mutation Storm (Outwit)",
   "mood": "Flux",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 110 at maximum mutation rate \u2014 the canonical complex rule destabilizing in real time. Arms shift between class 3 and class 4 behavior, pulling the fabric of the sound apart.",
+  "description": "Rule 110 at maximum mutation rate — the canonical complex rule destabilizing in real time. Arms shift between class 3 and class 4 behavior, pulling the fabric of the sound apart.",
   "tags": [
     "flux",
     "mutation",

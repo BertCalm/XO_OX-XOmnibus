@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Void Percussion",
+  "name": "Void Percussion (Onset)",
   "mood": "Aether",
   "engines": [
     "Onset"

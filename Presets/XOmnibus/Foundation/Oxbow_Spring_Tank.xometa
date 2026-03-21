@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Spring Tank",
+  "name": "Spring Tank (Oxbow)",
   "mood": "Foundation",
   "engines": [
     "Oxbow"
   ],
-  "description": "Classic spring reverb tank vibrating with metallic warmth \u2014 vintage dub hardware character.",
+  "description": "Classic spring reverb tank vibrating with metallic warmth — vintage dub hardware character.",
   "tags": [
     "spring",
     "metallic",

@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Bloom Drift",
+  "name": "Bloom Drift (OddOscar)",
   "mood": "Atmosphere",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Equal-weight bloom and drift merging into a single rolling aquatic texture.",
-  "tags": ["bloom", "drift", "rolling", "texture"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "bloom",
+    "drift",
+    "rolling",
+    "texture"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.68, "movement": 0.62, "density": 0.65, "space": 0.78, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.62,
+    "density": 0.65,
+    "space": 0.78,
+    "aggression": 0.1
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.52,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.62, "COUPLING": 0.0, "SPACE": 0.78},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Frozen Colony",
+  "name": "Frozen Colony (Organism)",
   "mood": "Aether",
   "engines": [
     "Organism"

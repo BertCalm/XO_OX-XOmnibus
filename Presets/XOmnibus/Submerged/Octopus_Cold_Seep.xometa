@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Cold Seep",
+  "name": "Cold Seep (Octopus I)",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Cold methane and hydrogen sulfide seeping from the ocean floor — an alien chemical ecosystem that supports life without sunlight. A cold, bubbling submerged texture with active sucker transients.",
-  "tags": ["octopus", "submerged", "cold", "seep", "chemical", "alien", "bubbling"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "cold",
+    "seep",
+    "chemical",
+    "alien",
+    "bubbling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 4.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.25,

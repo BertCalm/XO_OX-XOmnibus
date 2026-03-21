@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Midnight Zone",
+  "name": "Midnight Zone (Overlap I)",
   "mood": "Submerged",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The midnight zone \u2014 200m-1000m depth, no sunlight, high pressure. A torus knot at the exact acoustic parameters of this zone: specific absorption rates, specific propagation characteristics. Dark science.",
+  "description": "The midnight zone — 200m-1000m depth, no sunlight, high pressure. A torus knot at the exact acoustic parameters of this zone: specific absorption rates, specific propagation characteristics. Dark science.",
   "tags": [
     "midnight-zone",
     "torus",

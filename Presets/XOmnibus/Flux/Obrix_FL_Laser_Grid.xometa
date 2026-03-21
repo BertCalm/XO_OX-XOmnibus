@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Laser Grid",
+  "name": "Laser Grid (Obrix)",
   "mood": "Flux",
   "engines": [
     "Obrix"

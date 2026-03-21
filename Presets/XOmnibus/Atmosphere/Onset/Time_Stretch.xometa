@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Atmosphere",
-  "name": "Time Stretch",
+  "name": "Time Stretch (Onset)",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Phase Cascade",
+  "name": "Phase Cascade (Overtone)",
   "mood": "Flux",
   "engines": [
     "Overtone"

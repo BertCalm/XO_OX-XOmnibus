@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Glitch Colony",
+  "name": "Glitch Colony (Organism)",
   "mood": "Prism",
   "engines": [
     "Organism"

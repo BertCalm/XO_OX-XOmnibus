@@ -1,23 +1,40 @@
 {
   "schema_version": 1,
-  "name": "Stratosphere",
+  "name": "Stratosphere (OpenSky)",
   "mood": "Atmosphere",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The breathing pad. LFO1 at the sacred 0.067 Hz — one full breath every 15 seconds — modulates filter cutoff for a living, respiratory texture. Wide stereo with unison spread at 0.8. Shimmer tail adds altitude. The Guru says: the physiological LFO is the oldest trick in synthesis because it maps to the oldest rhythm in the body.",
-  "tags": ["opensky", "breathing", "pad", "wide", "atmospheric", "guru-bin"],
+  "tags": [
+    "opensky",
+    "breathing",
+    "pad",
+    "wide",
+    "atmospheric",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 2: The Physiological LFO Is the Oldest Rhythm in the Body", "Canon 3: 0.067 Hz — One Full Breath Every 15 Seconds"],
+    "scripture": [
+      "Verse 2: The Physiological LFO Is the Oldest Rhythm in the Body",
+      "Canon 3: 0.067 Hz — One Full Breath Every 15 Seconds"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Breath held still and felt the pad breathing at exactly the body's own rate — The Ear confirmed synchronization was physiological, not musical.",
     "diagnosis": "Stratosphere demonstrates OPENSKY's breathing pad architecture — LFO1 at 0.067 Hz modulating filter cutoff creates respiratory texture. It reveals the engine's capacity for somatic, body-synchronized sound design."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.15
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Bioluminescence",
+  "name": "Bioluminescence (Organism I)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

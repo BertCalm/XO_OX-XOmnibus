@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Abyssal Plain",
+  "name": "Abyssal Plain (Obrix I)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Minimum aggression, maximum spatial expanse — the horizontal vastness of the deep-sea floor. Triangle src1 (smooth harmonics) with srcMix=0.0 (pure src1, undiluted). proc1=LP (560 Hz) with zero resonance and zero feedback — no drama, only filtering. Full spatial chain: fx1=Delay (long, 0.72 param), fx2=Reverb (0.72 mix, cavernous), fx3=Chorus (subtle width). Four mods at low depth: LFO->Pan (slow stereo survey, 0.01 Hz), Env->FilterCutoff (gentle), Velocity->Volume, Aftertouch->FXMix. aggression=0.05 is the floor. This is the sound of enormous horizontal distance, not depth.",
-  "tags": ["obrix", "submerged", "minimal", "spatial", "vast", "abyssal", "plain", "triangle"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "minimal",
+    "spatial",
+    "vast",
+    "abyssal",
+    "plain",
+    "triangle"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.1,

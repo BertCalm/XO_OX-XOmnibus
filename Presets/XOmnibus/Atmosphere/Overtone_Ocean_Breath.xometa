@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Ocean Breath",
+  "name": "Ocean Breath (Overtone)",
   "mood": "Atmosphere",
   "engines": [
     "Overtone"

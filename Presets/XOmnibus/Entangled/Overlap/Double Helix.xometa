@@ -1,14 +1,30 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Figure-eight at tangle 0.65, pulse 2.0 Hz — the two symmetric loops of the matrix act like a double helix: two interweaving signal paths that never quite occupy the same space. Square LFO on filter creates sharp rhythmic punctuation while the helix rotates. High aggression, wide spread.",
-  "dna": { "aggression": 0.52, "brightness": 0.65, "density": 0.58, "movement": 0.72, "space": 0.5, "warmth": 0.35 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.52,
+    "brightness": 0.65,
+    "density": 0.58,
+    "movement": 0.72,
+    "space": 0.5,
+    "warmth": 0.35
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Entangled",
-  "name": "Double Helix",
+  "name": "Double Helix (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 2,
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["entangled", "rhythmic", "figure-eight", "helix", "interweaving", "aggressive", "movement"],
+  "tags": [
+    "entangled",
+    "rhythmic",
+    "figure-eight",
+    "helix",
+    "interweaving",
+    "aggressive",
+    "movement"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

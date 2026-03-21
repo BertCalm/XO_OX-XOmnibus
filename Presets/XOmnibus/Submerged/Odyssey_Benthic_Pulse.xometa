@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Benthic Pulse",
+  "name": "Benthic Pulse (Odyssey I)",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Low pulse at the benthic boundary — rhythmic sub oscillation, heavy low drift, violet depth.",
-  "tags": ["benthic", "pulse", "sub", "rhythmic", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "benthic",
+    "pulse",
+    "sub",
+    "rhythmic",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.5, "movement": 0.25, "density": 0.85, "space": 0.55, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.85,
+    "space": 0.55,
+    "aggression": 0.15
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 1,
@@ -54,6 +74,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.15, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

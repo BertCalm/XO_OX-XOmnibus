@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Feeding Frenzy",
+  "name": "Feeding Frenzy (Orca)",
   "mood": "Flux",
   "engines": [
     "Orca"

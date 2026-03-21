@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermal Layer",
+  "name": "Thermal Layer (Orca I)",
   "mood": "Foundation",
   "engines": [
     "Orca"

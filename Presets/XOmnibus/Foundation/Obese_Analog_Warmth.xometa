@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Analog Warmth",
+  "name": "Analog Warmth (Obese)",
   "mood": "Foundation",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mojo pulled fully analog — warm, rounded low-end with moderate saturation and a ladder filter sweep that breathes with every note, classic analog bass character.",
-  "tags": ["foundation", "analog", "warm", "ladder", "classic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "analog",
+    "warm",
+    "ladder",
+    "classic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.3, "warmth": 0.9, "movement": 0.2, "density": 0.75, "space": 0.2, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.9,
+    "movement": 0.2,
+    "density": 0.75,
+    "space": 0.2,
+    "aggression": 0.3
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.2,
@@ -46,6 +66,13 @@
       "fat_level": 0.85
     }
   },
-  "macros": {"CHARACTER": 0.2, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.2},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

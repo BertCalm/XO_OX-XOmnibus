@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "EDM Pluck",
+  "name": "EDM Pluck (Overtone)",
   "mood": "Prism",
   "engines": [
     "Overtone"

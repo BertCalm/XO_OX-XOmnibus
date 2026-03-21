@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drift",
+  "name": "Pressure Drift (Odyssey)",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drift engine under crushing pressure — slowed to a crawl, dense low-pass, massive sub presence.",
-  "tags": ["pressure", "drift", "slow", "dense", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pressure",
+    "drift",
+    "slow",
+    "dense",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.55, "movement": 0.12, "density": 0.9, "space": 0.58, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.55,
+    "movement": 0.12,
+    "density": 0.9,
+    "space": 0.58,
+    "aggression": 0.08
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.1, "MOVEMENT": 0.12, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

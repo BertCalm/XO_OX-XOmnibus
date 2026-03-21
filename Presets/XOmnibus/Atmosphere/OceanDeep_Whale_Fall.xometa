@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Whale Fall",
+  "name": "Whale Fall (OceanDeep)",
   "mood": "Atmosphere",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns", "Verse: The Depth Column"],
+    "scripture": [
+      "Sutra 3: Coprime LFO Rates Create Non-Repeating Patterns",
+      "Verse: The Depth Column"
+    ],
     "revelation": "Tempora and Sinusoidal spoke together: LFO2 at 0.015 Hz takes 66.7 seconds per cycle. Over one minute, the pitch wobble creates a slow downward pull — the fundamental frequency drifts lower then returns. Combined with ABYSS macro at 0.7, the filter closes over the course of the note. The sound descends through the water column in real time. Patience is the instrument.",
     "god": "Tempora",
     "flock_note": "The Ear heard the full descent arc: bright and present at note-on, then gradually dimming over 30 seconds as pressure increases and darkness envelops. The Breath confirmed: this is a one-note composition. Play C2 and the next 60 seconds write themselves.",

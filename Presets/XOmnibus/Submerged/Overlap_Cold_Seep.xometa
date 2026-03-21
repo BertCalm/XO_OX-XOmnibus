@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Cold Seep",
+  "name": "Cold Seep (Overlap I)",
   "mood": "Submerged",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A cold seep vent \u2014 brine and methane escaping slowly from the seafloor. A trefoil knot at very low temperature: slow, viscous, cold. The brine absorbs everything above 800 Hz.",
+  "description": "A cold seep vent — brine and methane escaping slowly from the seafloor. A trefoil knot at very low temperature: slow, viscous, cold. The brine absorbs everything above 800 Hz.",
   "tags": [
     "cold-seep",
     "brine",

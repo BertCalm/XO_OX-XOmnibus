@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "FM Surge",
+  "name": "FM Surge (Overworld)",
   "parameters": {
     "Overworld": {
       "ow_couplingBus": 0,

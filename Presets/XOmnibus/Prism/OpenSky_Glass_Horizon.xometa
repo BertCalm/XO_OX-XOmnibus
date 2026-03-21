@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Glass Horizon",
+  "name": "Glass Horizon (OpenSky)",
   "mood": "Prism",
   "engines": [
     "OpenSky"

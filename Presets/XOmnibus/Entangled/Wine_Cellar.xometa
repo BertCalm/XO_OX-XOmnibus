@@ -37,7 +37,7 @@
     "SPACE": 0.53
   },
   "mood": "Entangled",
-  "name": "Wine Cellar",
+  "name": "Wine Cellar (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Hum",
+  "name": "Abyssal Hum (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

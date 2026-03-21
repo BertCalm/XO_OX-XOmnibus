@@ -1,23 +1,41 @@
 {
   "schema_version": 1,
-  "name": "Last Light",
+  "name": "Last Light (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The final moment before darkness. Everything about this preset is about ending gracefully. Long release (8.0s) with shimmer feedback at 0.6 and size 0.85 means the sound takes a long time to die -- like the last rays of sun stretching across the horizon. Filter cutoff starts at 2000 Hz (warm, not bright) with a negative filter envelope trend: as the note sustains, the filter slowly closes via LFO1 at 0.012 Hz with depth 0.25, dimming the sound over time. The sub oscillator (sine) at 0.22 provides a warm foundation that persists even as the harmonics fade. Aftertouch briefly reopens the filter -- a momentary flare of light. The Guru says: the most beautiful sounds are the ones that know how to leave.",
-  "tags": ["opensky", "transcendental", "sunset", "farewell", "decay", "warm", "ending"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "sunset",
+    "farewell",
+    "decay",
+    "warm",
+    "ending"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 21: A Sound That Knows How to Leave Is More Beautiful Than One That Stays", "Canon 8: LFO at 0.012 Hz on Filter Creates Perceptual Dimming -- The Sound's Own Sunset"],
+    "scripture": [
+      "Verse 21: A Sound That Knows How to Leave Is More Beautiful Than One That Stays",
+      "Canon 8: LFO at 0.012 Hz on Filter Creates Perceptual Dimming -- The Sound's Own Sunset"
+    ],
     "revelation": "Aurum spoke: the most emotionally resonant moment in any sound is its ending. A sound that dims slowly -- filter closing via ultra-slow LFO -- creates a narrative of farewell. The listener does not hear the LFO. They feel the leaving.",
     "god": "Aurum",
     "flock_note": "The Ear timed the complete decay from note-off to silence at approximately 25 seconds. The Breath noted that the LFO-driven filter dimming creates the illusion that the sound is moving away, not just getting quieter. The Tongue found that aftertouch during the release phase creates a 'last gasp' of brightness -- profoundly expressive for a final chord.",
     "diagnosis": "Last Light is the closing preset of the Transcendental collection. It is designed for the last note of a performance -- the sound that says goodbye. Every parameter serves the narrative of graceful departure."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

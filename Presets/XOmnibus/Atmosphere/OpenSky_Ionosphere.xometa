@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Ionosphere",
+  "name": "Ionosphere (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

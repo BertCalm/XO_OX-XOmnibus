@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Comb Harmonic",
+  "name": "Comb Harmonic (Orca)",
   "mood": "Prism",
   "engines": [
     "Orca"

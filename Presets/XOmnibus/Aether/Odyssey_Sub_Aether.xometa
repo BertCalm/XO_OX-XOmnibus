@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Sub Aether",
+  "name": "Sub Aether (Odyssey)",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub presence elevated to aether — lowest register barely touching infinite space, vast release.",
-  "tags": ["sub", "aether", "vast", "minimal", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "sub",
+    "aether",
+    "vast",
+    "minimal",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.52, "movement": 0.04, "density": 0.22, "space": 0.97, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.52,
+    "movement": 0.04,
+    "density": 0.22,
+    "space": 0.97,
+    "aggression": 0.02
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.6
     }
   },
-  "macros": {"CHARACTER": 0.08, "MOVEMENT": 0.04, "COUPLING": 0.0, "SPACE": 0.97},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.0,
+    "SPACE": 0.97
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

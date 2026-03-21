@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coupling Receiver",
+  "name": "Coupling Receiver (Organism)",
   "mood": "Entangled",
   "engines": [
     "Organism"

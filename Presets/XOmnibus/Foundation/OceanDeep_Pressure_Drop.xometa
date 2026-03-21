@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drop",
+  "name": "Pressure Drop (OceanDeep)",
   "mood": "Foundation",
   "engines": [
     "OceanDeep"

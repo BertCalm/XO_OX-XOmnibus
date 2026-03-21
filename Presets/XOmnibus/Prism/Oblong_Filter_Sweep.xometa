@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Filter Sweep",
+  "name": "Filter Sweep (Oblong I)",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "LP filter sweeping through the amber spectrum — classic synth prism effect.",
-  "tags": ["prism", "filter-sweep", "classic", "spectral"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "filter-sweep",
+    "classic",
+    "spectral"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.58, "movement": 0.65, "density": 0.5, "space": 0.58, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.58,
+    "movement": 0.65,
+    "density": 0.5,
+    "space": 0.58,
+    "aggression": 0.35
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.52, "MOVEMENT": 0.65, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

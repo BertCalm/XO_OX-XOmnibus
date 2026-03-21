@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Grain Cloud",
+  "name": "Grain Cloud (Orphica)",
   "mood": "Atmosphere",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Granular cloud mode dissolves plucked strings into floating particle swarms.",
-  "tags": ["harp", "granular", "cloud", "particles", "ambient"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "granular",
+    "cloud",
+    "particles",
+    "ambient"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.55, "movement": 0.55, "density": 0.55, "space": 0.8, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 5,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.35
     }
   },
-  "macros": {"PLUCK": 0.35, "SURFACE": 0.6, "FRACTURE": 0.2, "DIVINE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.35,
+    "SURFACE": 0.6,
+    "FRACTURE": 0.2,
+    "DIVINE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

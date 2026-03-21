@@ -1,12 +1,24 @@
 {
   "schema_version": 1,
-  "name": "Pressure Drop",
+  "name": "Pressure Drop (OceanDeep I)",
   "mood": "Submerged",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The dub step — not the genre, the physical act. ampAtk=0.001: instantaneous. ampRel=1.618 seconds (the golden ratio release, as all great dub engineers know). pressureAmt=0.6: the pressure compresses the attack into a click, and the release is the drop into silence. One note. One moment. The pressure holds.",
-  "tags": ["bass", "submerged", "dub", "pressure drop", "attack", "golden ratio", "click", "percussive", "step"],
+  "tags": [
+    "bass",
+    "submerged",
+    "dub",
+    "pressure drop",
+    "attack",
+    "golden ratio",
+    "click",
+    "percussive",
+    "step"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
@@ -22,7 +34,12 @@
     "flock_note": "Play staccato for maximum effect — each note is a pressure event. The 1.618s golden ratio release means consecutive notes form a specific rhythmic relationship at most tempos. PRESSURE macro adds compression to the click-attack character. At full PRESSURE, the attack vanishes entirely.",
     "diagnosis": "ampAtk=0.001: instantaneous — the note is already there when you press the key. ampRel=1.618: golden ratio, a deliberate choice. pressureAmt=0.6: significant compression that shapes the attack transient into a deep click. filterCutoff=220: warm enough for the body of the note to feel physical. This is a rhythmic tool as much as a tonal one."
   },
-  "macroLabels": ["PRESSURE", "CREATURE", "WRECK", "ABYSS"],
+  "macroLabels": [
+    "PRESSURE",
+    "CREATURE",
+    "WRECK",
+    "ABYSS"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -68,5 +85,7 @@
     "WRECK": 0.0,
     "ABYSS": 0.45
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

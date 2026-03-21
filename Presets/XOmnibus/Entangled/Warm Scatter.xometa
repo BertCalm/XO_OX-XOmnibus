@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Warm Scatter",
+  "name": "Warm Scatter (Opal)",
   "mood": "Entangled",
   "engines": [
     "Opal",

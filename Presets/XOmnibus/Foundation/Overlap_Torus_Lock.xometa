@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Foundation",
-  "name": "Torus Lock",
+  "name": "Torus Lock (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 3,

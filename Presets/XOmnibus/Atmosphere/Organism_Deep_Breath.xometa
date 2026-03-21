@@ -29,7 +29,7 @@
     "MUTATE": 0.0
   },
   "mood": "Atmosphere",
-  "name": "Deep Breath",
+  "name": "Deep Breath (Organism I)",
   "parameters": {
     "Organism": {
       "org_rule": 18.0,

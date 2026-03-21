@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Surface Strike",
+  "name": "Surface Strike (Oblong)",
   "parameters": {
     "Oblong": {
       "bob_ampAttack": 0.003,

@@ -1,16 +1,38 @@
 {
   "schema_version": 1,
-  "name": "Pressure Ridge",
+  "name": "Pressure Ridge (Obese)",
   "mood": "Submerged",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Thirteen oscillators compressed under miles of water. Mojo at 0.7 — the analog-digital boundary dissolves under pressure. LFO2 at 0.04 Hz slowly opens the ladder filter from dark to mid-dark, simulating the crush of the deep water column.",
-  "tags": ["submerged", "pressure", "deep", "dark", "analog", "lfo", "slow"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "submerged",
+    "pressure",
+    "deep",
+    "dark",
+    "analog",
+    "lfo",
+    "slow"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.72, "movement": 0.15, "density": 0.9, "space": 0.25, "aggression": 0.28},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.9,
+    "space": 0.25,
+    "aggression": 0.28
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.35,
@@ -47,6 +69,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.7, "GRIT": 0.3, "SIZE": 0.35, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.7,
+    "GRIT": 0.3,
+    "SIZE": 0.35,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

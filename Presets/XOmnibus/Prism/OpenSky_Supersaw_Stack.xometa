@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Supersaw Stack",
+  "name": "Supersaw Stack (OpenSky)",
   "mood": "Prism",
   "engines": [
     "OpenSky"

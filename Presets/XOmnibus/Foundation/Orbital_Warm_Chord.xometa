@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Warm Chord",
+  "name": "Warm Chord (Orbital)",
   "mood": "Foundation",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Classic harmonic chord pad — warm red identity, balanced odd/even, gentle group envelopes.",
-  "tags": ["chord", "warm", "harmonic", "pad"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "chord",
+    "warm",
+    "harmonic",
+    "pad"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.75, "movement": 0.3, "density": 0.6, "space": 0.5, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.3,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.5
     }
   },
-  "macros": {"SPECTRUM": 0.5, "EVOLVE": 0.3, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.5,
+    "EVOLVE": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

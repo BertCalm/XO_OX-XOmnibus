@@ -1,23 +1,41 @@
 {
   "schema_version": 1,
-  "name": "Thermocline",
+  "name": "Thermocline (Ouie I)",
   "mood": "Prism",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "Where warm meets cold. FM voice 1 and Karplus-Strong voice 2 cross the STRIFE/LOVE boundary continuously — LFO1 at 0.13 Hz sweeps the HAMMER axis, never settling. The signature OUIE sound: plucked metallic strings dissolving into FM harmonics, then clashing, then merging again. Coprime LFO2 at 0.17 Hz on filter for non-repeating evolution.",
-  "tags": ["prism", "thermocline", "fm", "karplus-strong", "sweep", "evolving", "guru-bin"],
+  "tags": [
+    "prism",
+    "thermocline",
+    "fm",
+    "karplus-strong",
+    "sweep",
+    "evolving",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OUIE — The Hammerhead",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 10: Where Warm Meets Cold — The Signature OUIE Sound", "Canon 7: LFO1 at 0.13 Hz Sweeps the HAMMER Axis, Never Settling"],
+    "scripture": [
+      "Verse 10: Where Warm Meets Cold — The Signature OUIE Sound",
+      "Canon 7: LFO1 at 0.13 Hz Sweeps the HAMMER Axis, Never Settling"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Ear followed the HAMMER sweep across minutes and identified the three states — clash, dissolve, merge — cycling perpetually without repetition.",
     "diagnosis": "Thermocline is OUIE's signature evolving preset — FM and Karplus-Strong with LFO sweeping the HAMMER axis, creating a perpetual cycle of clashing, dissolving, and merging. Reveals the engine's character at its most living and dimensional."
   },
-  "macroLabels": ["HAMMER", "AMPULLAE", "CARTILAGE", "CURRENT"],
+  "macroLabels": [
+    "HAMMER",
+    "AMPULLAE",
+    "CARTILAGE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -91,5 +109,7 @@
     "CARTILAGE": 0.5,
     "CURRENT": 0.4
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

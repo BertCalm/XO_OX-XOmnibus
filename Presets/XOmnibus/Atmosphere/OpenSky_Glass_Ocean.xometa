@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Glass Ocean",
+  "name": "Glass Ocean (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

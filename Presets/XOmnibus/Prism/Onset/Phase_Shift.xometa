@@ -29,7 +29,7 @@
     "MUTATE"
   ],
   "mood": "Prism",
-  "name": "Phase Shift",
+  "name": "Phase Shift (Onset I)",
   "parameters": {
     "Onset": {
       "perc_char_grit": 0.0,

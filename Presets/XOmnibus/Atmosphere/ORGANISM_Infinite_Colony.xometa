@@ -24,7 +24,7 @@
     "MUTATE"
   ],
   "mood": "Atmosphere",
-  "name": "Infinite Colony",
+  "name": "Infinite Colony (Organism)",
   "parameters": {
     "Organism": {
       "org_rule": 22.0,

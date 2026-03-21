@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermocline Drift",
+  "name": "Thermocline Drift (Ouie I)",
   "mood": "Atmosphere",
   "engines": [
     "Ouie"

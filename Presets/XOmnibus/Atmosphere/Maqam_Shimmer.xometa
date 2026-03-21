@@ -1,17 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Maqam Shimmer",
+  "name": "Maqam Shimmer (Oracle)",
   "mood": "Atmosphere",
-  "engines": ["Oracle"],
+  "engines": [
+    "Oracle"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Hijaz maqam with maximum gravity pull — quarter tones bend each note toward ancient Arabic intonation. Slow LFO shimmer over sustained poly voices. Like hearing the reef through prayer.",
-  "tags": ["gendy", "maqam", "hijaz", "microtonal", "atmosphere", "quarter-tone"],
-  "macroLabels": ["PROPHECY", "EVOLUTION", "GRAVITY", "DRIFT"],
+  "tags": [
+    "gendy",
+    "maqam",
+    "hijaz",
+    "microtonal",
+    "atmosphere",
+    "quarter-tone"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "EVOLUTION",
+    "GRAVITY",
+    "DRIFT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-14",
-  "legacy": { "sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null },
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Oracle": {
       "oracle_breakpoints": 20,
@@ -45,7 +63,9 @@
       "oracle_macroDrift": 0.2
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.6,

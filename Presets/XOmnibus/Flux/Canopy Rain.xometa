@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Canopy Rain",
+  "name": "Canopy Rain (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 15.0,
     "ocelot_ampDecay": 400.0,

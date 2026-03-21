@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Warmth",
+  "name": "Abyssal Warmth (Orbital)",
   "mood": "Submerged",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm red identity sunk to the abyss — spectral richness smothered by pressure, deep low glow.",
-  "tags": ["abyssal", "warm", "red", "deep", "submerged"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "abyssal",
+    "warm",
+    "red",
+    "deep",
+    "submerged"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.2, "warmth": 0.72, "movement": 0.08, "density": 0.88, "space": 0.55, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.72,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.55,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.2,
@@ -46,6 +66,13 @@
       "orb_level": 0.78
     }
   },
-  "macros": {"SPECTRAL": 0.28, "VELOCITY": 0.08, "GROUP": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.28,
+    "VELOCITY": 0.08,
+    "GROUP": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Crepuscular Ray",
+  "name": "Crepuscular Ray (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

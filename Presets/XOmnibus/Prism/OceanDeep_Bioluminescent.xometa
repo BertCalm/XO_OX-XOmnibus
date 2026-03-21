@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Bioluminescent",
+  "name": "Bioluminescent (OceanDeep I)",
   "mood": "Prism",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 8: The Anglerfish Lure — Intermittent Alien Pulses in Darkness", "Canon 7: Bio Exciter at 0.08 Hz Creates Slow Bioluminescent Flashes"],
+    "scripture": [
+      "Verse 8: The Anglerfish Lure — Intermittent Alien Pulses in Darkness",
+      "Canon 7: Bio Exciter at 0.08 Hz Creates Slow Bioluminescent Flashes"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Eye watched the bioluminescent flash at 0.08 Hz — The Ear confirmed the bandpass noise pulse as the most alien-sounding element in the OCEANDEEP engine.",

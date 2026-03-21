@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Crystal Torus",
+  "name": "Crystal Torus (Overlap)",
   "mood": "Prism",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "A torus knot with zero damping \u2014 perfectly clear, perfectly resonant. Each traversal of the torus surface adds brightness. By the fifth traversal, high frequencies are visibly in charge. Brilliant.",
+  "description": "A torus knot with zero damping — perfectly clear, perfectly resonant. Each traversal of the torus surface adds brightness. By the fifth traversal, high frequencies are visibly in charge. Brilliant.",
   "tags": [
     "crystal",
     "torus",

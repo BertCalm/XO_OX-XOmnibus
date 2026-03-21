@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Morph Flux",
+  "name": "Morph Flux (Orbital)",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Oscillating morph flux — maximum inharmonicity variation with fast evolving group envelopes.",
-  "tags": ["morph", "flux", "inharmonic", "oscillating"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "morph",
+    "flux",
+    "inharmonic",
+    "oscillating"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.6, "warmth": 0.4, "movement": 0.85, "density": 0.6, "space": 0.42, "aggression": 0.65},
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.4,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.42,
+    "aggression": 0.65
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.7,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.42
     }
   },
-  "macros": {"SPECTRUM": 0.6, "EVOLVE": 0.85, "COUPLING": 0.0, "SPACE": 0.42},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.6,
+    "EVOLVE": 0.85,
+    "COUPLING": 0.0,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Slow Morph",
+  "name": "Slow Morph (Overtone)",
   "mood": "Flux",
   "engines": [
     "Overtone"

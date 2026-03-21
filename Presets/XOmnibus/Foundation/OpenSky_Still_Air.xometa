@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Still Air",
+  "name": "Still Air (OpenSky)",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

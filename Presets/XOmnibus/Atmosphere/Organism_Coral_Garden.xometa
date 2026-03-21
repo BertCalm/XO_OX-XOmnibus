@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coral Garden",
+  "name": "Coral Garden (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

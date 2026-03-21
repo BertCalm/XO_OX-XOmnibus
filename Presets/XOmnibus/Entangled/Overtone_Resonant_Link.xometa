@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Resonant Link",
+  "name": "Resonant Link (Overtone)",
   "mood": "Entangled",
   "engines": [
     "Overtone"

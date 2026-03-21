@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Resting State",
+  "name": "Resting State (Organon)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.08,

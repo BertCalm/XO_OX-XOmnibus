@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Ember Glow",
+  "name": "Ember Glow (Opal)",
   "mood": "Foundation",
   "engines": [
     "Opal"

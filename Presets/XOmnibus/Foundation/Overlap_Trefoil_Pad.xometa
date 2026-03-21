@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Foundation",
-  "name": "Trefoil Pad",
+  "name": "Trefoil Pad (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 1,

@@ -1,57 +1,75 @@
 {
   "schema_version": 1,
-  "name": "Deep Breath",
+  "name": "Deep Breath (Opal I)",
   "mood": "Entangled",
-  "engines": ["Opal", "Osprey"],
+  "engines": [
+    "Opal",
+    "Osprey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OPAL grain density envelope modulates OSPREY sea state and swell period — particle cloud breathing shapes ocean excitation. Slow crossfader sweeps from scattered grains to open coastal resonance. Ambient/pad showcase.",
-  "tags": ["coupled", "ambient", "pad", "granular", "AmpToFilter", "EnvToMorph", "slow", "genre-ambient", "performance-demo"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "coupled",
+    "ambient",
+    "pad",
+    "granular",
+    "AmpToFilter",
+    "EnvToMorph",
+    "slow",
+    "genre-ambient",
+    "performance-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Subtle",
   "tempo": null,
   "dna": {
     "brightness": 0.35,
     "warmth": 0.75,
-    "movement": 0.50,
+    "movement": 0.5,
     "density": 0.42,
     "space": 0.88,
-    "aggression": 0.10
+    "aggression": 0.1
   },
   "parameters": {
     "Opal": {
-      "opal_grainSize": 0.60,
+      "opal_grainSize": 0.6,
       "opal_grainDensity": 0.38,
       "opal_grainPitch": 0.0,
       "opal_grainSpread": 0.65,
-      "opal_grainPosition": 0.50,
+      "opal_grainPosition": 0.5,
       "opal_filterCutoff": 0.55,
       "opal_filterReso": 0.12,
       "opal_ampAttack": 0.25,
-      "opal_ampDecay": 1.20,
+      "opal_ampDecay": 1.2,
       "opal_ampSustain": 0.65,
-      "opal_ampRelease": 3.00,
+      "opal_ampRelease": 3.0,
       "opal_outputLevel": 0.65,
-      "opal_reverbMix": 0.50,
+      "opal_reverbMix": 0.5,
       "opal_lfoRate": 0.02,
       "opal_lfoDepth": 0.15
     },
     "Osprey": {
-      "osprey_shoreBlend": 0.50,
+      "osprey_shoreBlend": 0.5,
       "osprey_seaState": 0.35,
       "osprey_swellPeriod": 0.55,
-      "osprey_resonatorTuning": 0.50,
-      "osprey_excitationLevel": 0.60,
-      "osprey_filterCutoff": 0.50,
+      "osprey_resonatorTuning": 0.5,
+      "osprey_excitationLevel": 0.6,
+      "osprey_filterCutoff": 0.5,
       "osprey_filterReso": 0.18,
-      "osprey_ampAttack": 0.30,
-      "osprey_ampDecay": 1.50,
-      "osprey_ampSustain": 0.70,
-      "osprey_ampRelease": 3.50,
+      "osprey_ampAttack": 0.3,
+      "osprey_ampDecay": 1.5,
+      "osprey_ampSustain": 0.7,
+      "osprey_ampRelease": 3.5,
       "osprey_outputLevel": 0.68,
       "osprey_reverbMix": 0.55,
       "osprey_coastlineIndex": 0,
-      "osprey_peakEnvFollower": 0.40
+      "osprey_peakEnvFollower": 0.4
     }
   },
   "coupling": {

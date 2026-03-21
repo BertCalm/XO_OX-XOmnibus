@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sub Foundation",
+  "name": "Sub Foundation (OpenSky)",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

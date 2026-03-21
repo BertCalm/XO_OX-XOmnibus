@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Formant Prism",
+  "name": "Formant Prism (Odyssey)",
   "mood": "Prism",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Formant vowels through prism — morph at maximum, vocal color scatter, wide spectrum.",
-  "tags": ["formant", "prism", "vocal", "morph"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "formant",
+    "prism",
+    "vocal",
+    "morph"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.7, "warmth": 0.5, "movement": 0.48, "density": 0.52, "space": 0.55, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.32
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.74
     }
   },
-  "macros": {"CHARACTER": 0.7, "MOVEMENT": 0.48, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

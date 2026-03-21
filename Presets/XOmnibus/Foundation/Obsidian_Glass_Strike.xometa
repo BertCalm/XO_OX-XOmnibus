@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Glass Strike",
+  "name": "Glass Strike (Obsidian)",
   "mood": "Foundation",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Instant attack glass-percussion hit with bright ring and fast decay.",
-  "tags": ["percussive", "glass", "bright", "transient"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "percussive",
+    "glass",
+    "bright",
+    "transient"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.85, "warmth": 0.1, "movement": 0.2, "density": 0.3, "space": 0.25, "aggression": 0.6},
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.1,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.25,
+    "aggression": 0.6
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.3,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.25
     }
   },
-  "macros": {"CHARACTER": 0.85, "MOVEMENT": 0.2, "COUPLING": 0.0, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

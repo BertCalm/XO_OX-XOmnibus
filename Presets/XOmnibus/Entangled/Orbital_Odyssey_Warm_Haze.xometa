@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Warm Haze",
+  "name": "Warm Haze (Orbital II)",
   "mood": "Entangled",
-  "engines": ["Orbital", "Odyssey"],
+  "engines": [
+    "Orbital",
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "ORBITAL's warm density filtering through ODYSSEY's haze engine — red warmth softening into violet mist, harmonic body dissolving into atmospheric depth.",
-  "tags": ["warm", "haze", "filter", "depth", "entangled"],
-  "macroLabels": ["WARMTH", "HAZE", "SPECTRAL", "SPACE"],
+  "tags": [
+    "warm",
+    "haze",
+    "filter",
+    "depth",
+    "entangled"
+  ],
+  "macroLabels": [
+    "WARMTH",
+    "HAZE",
+    "SPECTRAL",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.7, "movement": 0.32, "density": 0.6, "space": 0.72, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.32,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.45,
@@ -87,11 +108,26 @@
       "drift_level": 0.7
     }
   },
-  "macros": {"WARMTH": 0.7, "HAZE": 0.55, "SPECTRAL": 0.55, "SPACE": 0.72},
+  "macros": {
+    "WARMTH": 0.7,
+    "HAZE": 0.55,
+    "SPECTRAL": 0.55,
+    "SPACE": 0.72
+  },
   "coupling": {
     "pairs": [
-      {"engineA": "Orbital", "engineB": "Odyssey", "type": "AmpToFilter", "amount": 0.5},
-      {"engineA": "Odyssey", "engineB": "Orbital", "type": "LFOToFilter", "amount": 0.38}
+      {
+        "engineA": "Orbital",
+        "engineB": "Odyssey",
+        "type": "AmpToFilter",
+        "amount": 0.5
+      },
+      {
+        "engineA": "Odyssey",
+        "engineB": "Orbital",
+        "type": "LFOToFilter",
+        "amount": 0.38
+      }
     ]
   }
 }

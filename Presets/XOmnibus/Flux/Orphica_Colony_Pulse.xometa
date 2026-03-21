@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Colony Pulse",
+  "name": "Colony Pulse (Orphica)",
   "mood": "Flux",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rhythmic micro-density pulses animate the colony like a heartbeat through the siphonophore.",
-  "tags": ["harp", "pulse", "rhythmic", "colony", "heartbeat"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "pulse",
+    "rhythmic",
+    "colony",
+    "heartbeat"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.6, "movement": 0.7, "density": 0.55, "space": 0.68, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.3
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 6,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.25
     }
   },
-  "macros": {"PLUCK": 0.55, "SURFACE": 0.55, "FRACTURE": 0.45, "DIVINE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.55,
+    "SURFACE": 0.55,
+    "FRACTURE": 0.45,
+    "DIVINE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

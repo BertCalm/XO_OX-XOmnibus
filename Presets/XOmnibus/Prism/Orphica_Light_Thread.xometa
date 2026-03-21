@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Light Thread",
+  "name": "Light Thread (Orphica)",
   "mood": "Prism",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Etheric strings in Freeze mode — a held grain of light, very slow drift. The goddess suspended mid-pluck.",
-  "tags": ["prism", "freeze", "ethereal", "light", "sustained"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "prism",
+    "freeze",
+    "ethereal",
+    "light",
+    "sustained"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.72, "warmth": 0.38, "movement": 0.22, "density": 0.35, "space": 0.92, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.22,
+    "density": 0.35,
+    "space": 0.92,
+    "aggression": 0.08
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 3,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.72
     }
   },
-  "macros": {"PLUCK": 0.55, "FRACTURE": 0.35, "SURFACE": 0.62, "DIVINE": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.55,
+    "FRACTURE": 0.35,
+    "SURFACE": 0.62,
+    "DIVINE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

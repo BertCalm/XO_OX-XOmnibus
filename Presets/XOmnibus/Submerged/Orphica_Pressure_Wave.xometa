@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Pressure Wave",
+  "name": "Pressure Wave (Orphica I)",
   "mood": "Submerged",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sub-bass pressure waves beneath dark clouds of grain, string identity nearly dissolved.",
-  "tags": ["harp", "pressure", "sub", "dark", "submerged"],
-  "macroLabels": ["PLUCK", "SURFACE", "FRACTURE", "DIVINE"],
+  "tags": [
+    "harp",
+    "pressure",
+    "sub",
+    "dark",
+    "submerged"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "SURFACE",
+    "FRACTURE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.7, "movement": 0.35, "density": 0.6, "space": 0.85, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.85,
+    "aggression": 0.25
+  },
   "parameters": {
     "Orphica": {
       "orph_stringCount": 6,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.22
     }
   },
-  "macros": {"PLUCK": 0.12, "SURFACE": 0.68, "FRACTURE": 0.18, "DIVINE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.12,
+    "SURFACE": 0.68,
+    "FRACTURE": 0.18,
+    "DIVINE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

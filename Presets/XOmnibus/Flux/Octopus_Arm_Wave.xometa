@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Arm Wave",
+  "name": "Arm Wave (Octopus)",
   "mood": "Flux",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Arms cycling at medium rate with spread create a sequential wave of modulation — octopus arms moving in procession like a wave rippling outward from the mantle.",
-  "tags": ["flux", "wave", "sequential", "arms", "cyclic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "wave",
+    "sequential",
+    "arms",
+    "cyclic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": 100,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.7, "density": 0.55, "space": 0.45, "aggression": 0.3},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.7,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.3
+  },
   "parameters": {
     "Octopus": {
       "octo_wtPosition": 0.45,
@@ -59,6 +79,13 @@
       "octo_macroSpace": 0.45
     }
   },
-  "macros": {"CHARACTER": 0.5, "MOVEMENT": 0.7, "COUPLING": 0.0, "SPACE": 0.45},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,14 +1,30 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "The OVERLAP library at its most elemental. Unknot at near-zero tangle (0.05), feedback at 0.94, 45ms delay base — the 6 FDN lines are essentially 6 long resonant chambers in a void. Maximum space (0.95 spread), no bioluminescence, no current. Pure resonance in empty space. 10-second release.",
-  "dna": { "aggression": 0.02, "brightness": 0.28, "density": 0.2, "movement": 0.05, "space": 0.95, "warmth": 0.4 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.02,
+    "brightness": 0.28,
+    "density": 0.2,
+    "movement": 0.05,
+    "space": 0.95,
+    "warmth": 0.4
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Aether",
-  "name": "Void Resonance",
+  "name": "Void Resonance (Overlap I)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,
@@ -58,7 +74,16 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["aether", "drone", "unknot", "sparse", "void", "crystalline", "minimal", "space"],
+  "tags": [
+    "aether",
+    "drone",
+    "unknot",
+    "sparse",
+    "void",
+    "crystalline",
+    "minimal",
+    "space"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

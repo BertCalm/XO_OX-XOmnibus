@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tectonic Shift",
+  "name": "Tectonic Shift (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

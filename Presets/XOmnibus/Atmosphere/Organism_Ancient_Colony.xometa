@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Ancient Colony",
+  "name": "Ancient Colony (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

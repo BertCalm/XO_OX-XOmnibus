@@ -1,17 +1,42 @@
 {
   "schema_version": 1,
-  "name": "Canopy Layer",
+  "name": "Canopy Layer (Ocelot)",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High canopy atmospheric pad — canopy negative-damps the floor (brightness dims percussion), whale song creature calls. Stratospheric.",
-  "tags": ["atmosphere", "pad", "canopy", "whale", "ethereal"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "atmosphere",
+    "pad",
+    "canopy",
+    "whale",
+    "ethereal"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.62, "warmth": 0.58, "movement": 0.3, "density": 0.42, "space": 0.75, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.58,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.75,
+    "aggression": 0.08
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 1,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.55
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

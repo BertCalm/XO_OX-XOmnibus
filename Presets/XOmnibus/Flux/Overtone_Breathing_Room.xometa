@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Breathing Room",
+  "name": "Breathing Room (Overtone)",
   "mood": "Flux",
   "engines": [
     "Overtone"

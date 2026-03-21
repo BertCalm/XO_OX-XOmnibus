@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Tectonic Drone",
+  "name": "Tectonic Drone (Owlfish)",
   "mood": "Foundation",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow-attack continental shelf tone — inharmonic partials drift like tectonic plates above a 40 Hz body frequency.",
-  "tags": ["foundation", "drone", "slow-attack", "sub-bass", "inharmonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "drone",
+    "slow-attack",
+    "sub-bass",
+    "inharmonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +79,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.12, "COUPLING": 0.35, "SPACE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.35,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

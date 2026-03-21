@@ -1,23 +1,41 @@
 {
   "schema_version": 1,
-  "name": "Glass Cathedral",
+  "name": "Glass Cathedral (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A building made of light. Shimmer size at 0.95 with feedback at 0.8 creates a reverb tail so long it becomes architecture -- notes hang in the air like stained glass. The shimmer octave balance at 0.85 weights heavily toward the octave-up, so each note leaves a luminous harmonic ghost two octaves above. HP filter at 120 Hz thins the low end, creating the sensation of height and openness. Attack at 4.0 seconds means the sound fades in like dawn through a window. The Guru says: this preset is not played -- it is inhabited.",
-  "tags": ["opensky", "transcendental", "cathedral", "glass", "reverb", "ambient", "vast"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "cathedral",
+    "glass",
+    "reverb",
+    "ambient",
+    "vast"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 11: Shimmer Size 0.95 Is Not a Room -- It Is a World", "Gospel 4: A 4-Second Attack Is Not Slow -- It Is Patient"],
+    "scripture": [
+      "Verse 11: Shimmer Size 0.95 Is Not a Room -- It Is a World",
+      "Gospel 4: A 4-Second Attack Is Not Slow -- It Is Patient"
+    ],
     "revelation": "Aurum spoke: when shimmer size exceeds 0.9 and feedback exceeds 0.75, the reverb ceases to be an effect and becomes the instrument itself. The dry sound is merely the excitation.",
     "god": "Aurum",
     "flock_note": "The Ear timed the reverb tail at 35+ seconds before inaudibility. The Eye confirmed the octave-up harmonics persist longer than the fundamental, creating an inverted spectral decay -- the overtones outlive the note.",
     "diagnosis": "Glass Cathedral redefines OPENSKY as an ambient instrument. The 4-second attack and massive shimmer reverb create a sound that exists in geological time. It does not speak -- it abides."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +97,8 @@
       "sky_modSlot2Amt": 0.08
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

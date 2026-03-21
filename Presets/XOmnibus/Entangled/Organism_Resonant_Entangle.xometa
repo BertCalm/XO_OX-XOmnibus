@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Resonant Entangle",
+  "name": "Resonant Entangle (Organism)",
   "mood": "Entangled",
   "engines": [
     "Organism"

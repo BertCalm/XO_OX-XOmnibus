@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
-  "name": "Void Pattern",
+  "name": "Void Pattern (Organism)",
   "mood": "Submerged",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "All-zeros rule (Rule 0) creates silence between bursts — scope 7 with FREEZE applied manually. A cellular automata that composes silence. The most experimental preset: nothing is the work.",
-  "tags": ["experimental", "silence", "rule-0", "void", "conceptual", "genre-spotlight"],
-  "macroLabels": ["RULE", "SEED", "COUPLING", "MUTATE"],
+  "tags": [
+    "experimental",
+    "silence",
+    "rule-0",
+    "void",
+    "conceptual",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "RULE",
+    "SEED",
+    "COUPLING",
+    "MUTATE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.35, "movement": 0.08, "density": 0.18, "space": 0.95, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.35,
+    "movement": 0.08,
+    "density": 0.18,
+    "space": 0.95,
+    "aggression": 0.05
+  },
   "parameters": {
     "Organism": {
       "org_rule": 0.0,
@@ -40,6 +61,13 @@
       "org_macroMutate": 0.0
     }
   },
-  "macros": {"RULE": 0.0, "SEED": 0.08, "COUPLING": 0.0, "MUTATE": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "RULE": 0.0,
+    "SEED": 0.08,
+    "COUPLING": 0.0,
+    "MUTATE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -4,14 +4,30 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Hadal Pressure",
+  "name": "Hadal Pressure (Oxbow I)",
   "mood": "Submerged",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "description": "Thirty seconds of decay. Maximum size. Golden resonance filters triggered at near-instant convergence — the standing waves that only exist under crushing pressure. A single note becomes a slow-motion earthquake.",
-  "tags": ["oxbow", "submerged", "infinite-decay", "golden-resonance", "vast", "geological"],
+  "tags": [
+    "oxbow",
+    "submerged",
+    "infinite-decay",
+    "golden-resonance",
+    "vast",
+    "geological"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.25,

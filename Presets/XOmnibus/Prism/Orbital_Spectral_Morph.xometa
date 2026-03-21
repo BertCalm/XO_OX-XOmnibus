@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Spectral Morph",
+  "name": "Spectral Morph (Orbital)",
   "mood": "Prism",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mid-morph spectral sweep — harmonic to inharmonic crossfade with formant animation.",
-  "tags": ["morph", "spectral", "crossfade", "animated"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "morph",
+    "spectral",
+    "crossfade",
+    "animated"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.45, "movement": 0.55, "density": 0.5, "space": 0.5, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.45,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.6,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.5
     }
   },
-  "macros": {"SPECTRUM": 0.65, "EVOLVE": 0.55, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.65,
+    "EVOLVE": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

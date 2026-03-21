@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Negative Space",
+  "name": "Negative Space (Obsidian I)",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Subtractive crystal tone — low density with strong negative tilt and hollow resonance.",
-  "tags": ["hollow", "subtractive", "sparse", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "hollow",
+    "subtractive",
+    "sparse",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.35, "movement": 0.25, "density": 0.2, "space": 0.65, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.35,
+    "movement": 0.25,
+    "density": 0.2,
+    "space": 0.65,
+    "aggression": 0.15
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.5,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.65
     }
   },
-  "macros": {"CHARACTER": 0.25, "MOVEMENT": 0.25, "COUPLING": 0.0, "SPACE": 0.65},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

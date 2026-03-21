@@ -1,17 +1,42 @@
 {
   "schema_version": 1,
-  "name": "Ice Chime Matrix",
+  "name": "Ice Chime Matrix (Ocelot)",
   "mood": "Prism",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Full upper cascade: Floor-to-Canopy, Canopy-to-Emergent, Emergent-to-Canopy feedback loop. Kalimba floor with bird-trill creatures shimmer the canopy into prism.",
-  "tags": ["prism", "spectral", "chime", "kalimba", "matrix"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "prism",
+    "spectral",
+    "chime",
+    "kalimba",
+    "matrix"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.42, "movement": 0.55, "density": 0.52, "space": 0.65, "aggression": 0.22},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.42,
+    "movement": 0.55,
+    "density": 0.52,
+    "space": 0.65,
+    "aggression": 0.22
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 2,
@@ -83,6 +108,7 @@
       "ocelot_xf_emergCanopy": 0.65
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

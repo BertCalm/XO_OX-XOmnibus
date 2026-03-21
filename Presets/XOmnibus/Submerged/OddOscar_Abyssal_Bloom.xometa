@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Bloom",
+  "name": "Abyssal Bloom (OddOscar)",
   "mood": "Submerged",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Bloom at abyssal depth — dense sub bloom with high drift and extreme low-pass.",
-  "tags": ["abyssal", "bloom", "deep", "bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "abyssal",
+    "bloom",
+    "deep",
+    "bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.78, "movement": 0.52, "density": 0.75, "space": 0.7, "aggression": 0.25},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.78,
+    "movement": 0.52,
+    "density": 0.75,
+    "space": 0.7,
+    "aggression": 0.25
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.55,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.7
     }
   },
-  "macros": {"CHARACTER": 0.62, "MOVEMENT": 0.52, "COUPLING": 0.0, "SPACE": 0.7},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

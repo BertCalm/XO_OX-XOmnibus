@@ -1,16 +1,38 @@
 {
   "schema_version": 1,
-  "name": "Benthic Pulse",
+  "name": "Benthic Pulse (Obese)",
   "mood": "Submerged",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Life at the bottom of the world — arpeggiator at 1/16 with just two held notes, short gate. LFO2 at 0.06 Hz sweeps the filter open and closed in slow tidal rhythm while the arp traces the benthic outline. Mojo at 0.6: half-remembered warmth.",
-  "tags": ["submerged", "benthic", "arp", "tidal", "pulse", "lfo", "bottom"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "submerged",
+    "benthic",
+    "arp",
+    "tidal",
+    "pulse",
+    "lfo",
+    "bottom"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.28, "warmth": 0.6, "movement": 0.65, "density": 0.7, "space": 0.4, "aggression": 0.45},
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.6,
+    "movement": 0.65,
+    "density": 0.7,
+    "space": 0.4,
+    "aggression": 0.45
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.45,
@@ -52,6 +74,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.6, "GRIT": 0.25, "SIZE": 0.55, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.6,
+    "GRIT": 0.25,
+    "SIZE": 0.55,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

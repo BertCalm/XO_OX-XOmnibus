@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pack Leader",
+  "name": "Pack Leader (Orca)",
   "mood": "Foundation",
   "engines": [
     "Orca"

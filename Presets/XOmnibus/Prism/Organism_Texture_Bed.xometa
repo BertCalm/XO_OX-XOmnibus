@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Texture Bed",
+  "name": "Texture Bed (Organism)",
   "mood": "Prism",
   "engines": [
     "Organism"

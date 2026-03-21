@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Haze",
+  "name": "Abyssal Haze (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

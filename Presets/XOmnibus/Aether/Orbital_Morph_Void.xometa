@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Morph Void",
+  "name": "Morph Void (Orbital)",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Morph crossfade state reaching void — slow morph at 0.5, neither profile dominant, perfect timbral uncertainty in infinite space.",
-  "tags": ["morph", "void", "crossfade", "uncertain", "aether"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "morph",
+    "void",
+    "crossfade",
+    "uncertain",
+    "aether"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.48, "movement": 0.18, "density": 0.42, "space": 0.92, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.48,
+    "movement": 0.18,
+    "density": 0.42,
+    "space": 0.92,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.35,
@@ -46,6 +66,13 @@
       "orb_level": 0.68
     }
   },
-  "macros": {"SPECTRAL": 0.52, "VELOCITY": 0.18, "GROUP": 0.45, "SPACE": 0.92},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.52,
+    "VELOCITY": 0.18,
+    "GROUP": 0.45,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Drum Chaos",
+  "name": "Drum Chaos (Onset)",
   "mood": "Flux",
   "engines": [
     "Onset"

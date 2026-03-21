@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Resonant Colony",
+  "name": "Resonant Colony (Organism)",
   "mood": "Foundation",
   "engines": [
     "Organism"

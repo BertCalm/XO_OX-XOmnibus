@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-20",
-  "description": "Rule 30 \u2014 chaotic, unpredictable, used in Wolfram's random number generator. High mutation rate adds evolutionary noise to an already chaotic rule. Dense seed (32767 = half-full 16-bit register). Slow step rate, maximum scope \u2014 the chaos unfolds slowly across all 16 cells. Sub level high. Filter dark. This is life before it learned to breathe.",
+  "description": "Rule 30 — chaotic, unpredictable, used in Wolfram's random number generator. High mutation rate adds evolutionary noise to an already chaotic rule. Dense seed (32767 = half-full 16-bit register). Slow step rate, maximum scope — the chaos unfolds slowly across all 16 cells. Sub level high. Filter dark. This is life before it learned to breathe.",
   "dna": {
     "brightness": 0.22,
     "warmth": 0.78,
@@ -24,7 +24,7 @@
     "MUTATE"
   ],
   "mood": "Submerged",
-  "name": "Primordial Soup",
+  "name": "Primordial Soup (Organism I)",
   "parameters": {
     "Organism": {
       "org_rule": 30.0,

@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Feeding Frenzy",
+  "name": "Feeding Frenzy (Owlfish I)",
   "mood": "Flux",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Rapid creature-like attack bursts with sub floor and punchy compression — schooling owlfish descending on a food column.",
-  "tags": ["flux", "feeding", "frenzy", "fast", "burst", "abyssal"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "feeding",
+    "frenzy",
+    "fast",
+    "burst",
+    "abyssal"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.42, "movement": 0.88, "density": 0.75, "space": 0.25, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.42,
+    "movement": 0.88,
+    "density": 0.75,
+    "space": 0.25,
+    "aggression": 0.75
+  },
   "parameters": {
     "Owlfish": {
       "owl_filterCutoff": 0.58,
@@ -59,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.78, "MOVEMENT": 0.88, "COUPLING": 0.4, "SPACE": 0.25},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.88,
+    "COUPLING": 0.4,
+    "SPACE": 0.25
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

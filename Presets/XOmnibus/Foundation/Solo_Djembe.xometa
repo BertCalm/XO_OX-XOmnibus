@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["GATHER", "FIRE", "CIRCLE", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "GATHER",
+    "FIRE",
+    "CIRCLE",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Solo Djembe",
+  "name": "Solo Djembe (Ostinato)",
   "mood": "Foundation",
-  "engines": ["Ostinato"],
+  "engines": [
+    "Ostinato"
+  ],
   "description": "One djembe, center of the circle. All 4 articulations across velocity layers. Pure physics — modal membrane, cylindrical body, Bessel zeros. The fire starts with one voice.",
-  "tags": ["ostinato", "djembe", "solo", "acoustic", "foundation"],
+  "tags": [
+    "ostinato",
+    "djembe",
+    "solo",
+    "acoustic",
+    "foundation"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OSTINATO — The Circle",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 1: The Fire Starts With One Voice", "Canon 1: Modal Membrane, Cylindrical Body, Bessel Zeros"],
+    "scripture": [
+      "Verse 1: The Fire Starts With One Voice",
+      "Canon 1: Modal Membrane, Cylindrical Body, Bessel Zeros"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt the djembe's modal membrane physics immediately — all 4 articulations confirmed across velocity layers by The Finger.",

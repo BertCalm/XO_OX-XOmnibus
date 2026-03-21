@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Shimmer Drift",
+  "name": "Shimmer Drift (OddOscar)",
   "mood": "Flux",
-  "engines": ["OddOscar"],
+  "engines": [
+    "OddOscar"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Drifting shimmer in flux state — delicate high-drift morph with sustained bloom.",
-  "tags": ["shimmer", "drift", "flux", "delicate"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "shimmer",
+    "drift",
+    "flux",
+    "delicate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.58, "movement": 0.72, "density": 0.58, "space": 0.58, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.58,
+    "movement": 0.72,
+    "density": 0.58,
+    "space": 0.58,
+    "aggression": 0.18
+  },
   "parameters": {
     "OddOscar": {
       "morph_morph": 0.62,
@@ -34,6 +53,13 @@
       "morph_macroSpace": 0.58
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.72, "COUPLING": 0.0, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.0,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

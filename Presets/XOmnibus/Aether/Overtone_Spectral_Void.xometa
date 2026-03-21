@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Spectral Void",
+  "name": "Spectral Void (Overtone)",
   "mood": "Aether",
   "engines": [
     "Overtone"

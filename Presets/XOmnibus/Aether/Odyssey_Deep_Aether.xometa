@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Deep Aether",
+  "name": "Deep Aether (Odyssey)",
   "mood": "Aether",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum drift depth at aether space — deep oscillation barely audible, enormous reverb body.",
-  "tags": ["deep", "aether", "drift", "vast", "aether"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "aether",
+    "drift",
+    "vast",
+    "aether"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.18, "warmth": 0.42, "movement": 0.04, "density": 0.18, "space": 0.97, "aggression": 0.02},
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.42,
+    "movement": 0.04,
+    "density": 0.18,
+    "space": 0.97,
+    "aggression": 0.02
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.18, "MOVEMENT": 0.04, "COUPLING": 0.0, "SPACE": 0.97},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.0,
+    "SPACE": 0.97
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

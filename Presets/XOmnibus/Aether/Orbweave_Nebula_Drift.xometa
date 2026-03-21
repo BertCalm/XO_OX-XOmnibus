@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Triangle strands with Figure-Eight coupling and dual slow LFOs. The sound drifts like a nebula \u2014 massive, slow, beautiful. Maximum space.",
+  "description": "Triangle strands with Figure-Eight coupling and dual slow LFOs. The sound drifts like a nebula — massive, slow, beautiful. Maximum space.",
   "dna": {
     "brightness": 0.4,
     "warmth": 0.6,
@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Nebula Drift",
+  "name": "Nebula Drift (Orbweave)",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 4,

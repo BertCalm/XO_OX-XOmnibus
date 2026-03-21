@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Predator Pulse",
+  "name": "Predator Pulse (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 0.003,
     "ocelot_ampDecay": 0.25,

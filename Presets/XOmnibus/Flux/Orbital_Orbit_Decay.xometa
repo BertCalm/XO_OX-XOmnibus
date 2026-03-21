@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Orbit Decay",
+  "name": "Orbit Decay (Orbital)",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Orbital decay — spiraling inward, spectral degradation, chaotic final pass.",
-  "tags": ["orbit", "decay", "spiral", "chaotic"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "orbit",
+    "decay",
+    "spiral",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.58, "warmth": 0.45, "movement": 0.82, "density": 0.62, "space": 0.28, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.82,
+    "density": 0.62,
+    "space": 0.28,
+    "aggression": 0.75
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.58,
@@ -46,6 +65,13 @@
       "orb_level": 0.74
     }
   },
-  "macros": {"SPECTRAL": 0.58, "VELOCITY": 0.82, "GROUP": 0.0, "SPACE": 0.28},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.58,
+    "VELOCITY": 0.82,
+    "GROUP": 0.0,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

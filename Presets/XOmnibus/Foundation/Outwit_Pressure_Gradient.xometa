@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Gradient",
+  "name": "Pressure Gradient (Outwit)",
   "mood": "Foundation",
   "engines": [
     "Outwit"
   ],
-  "author": "Guru Bin \u2014 OUTWIT Expansion 2026-03-17",
+  "author": "Guru Bin — OUTWIT Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "Rule 240 \u2014 Class I, all cells align to same state. Arms build a pressure gradient from left to right: low filter on the left, open on the right. A sonic gradient.",
+  "description": "Rule 240 — Class I, all cells align to same state. Arms build a pressure gradient from left to right: low filter on the left, open on the right. A sonic gradient.",
   "tags": [
     "foundation",
     "gradient",

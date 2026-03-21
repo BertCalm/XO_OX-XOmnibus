@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Black Smoker",
+  "name": "Black Smoker (Obrix)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Hydrothermal vent activity — Noise src1 carries the mineral turbulence, LoFiSaw src2 provides the industrial register, FM (fmDepth=0.38) adds the metallic harmonic distortion of superheated minerals. proc1=BP filter (650 Hz, reso=0.58) sculpts the vent roar; proc2=LP (1200 Hz) attenuates the harsh highs. This is the most aggressive Submerged preset by design: aggression=0.35, still well below Flux territory but energized by the thermal field. Journey Mode lets the vent evolve its chemistry. Four mods bring the vent to life: LFO->FilterCutoff shimmers, Env->FXMix surges, Velocity->Volume strikes like pressure release, Aftertouch->FilterReso tightens the jet.",
-  "tags": ["obrix", "submerged", "noise", "fm", "journey", "hydrothermal", "aggressive", "vent"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "noise",
+    "fm",
+    "journey",
+    "hydrothermal",
+    "aggressive",
+    "vent"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.18,

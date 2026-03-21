@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sub Coupling",
+  "name": "Sub Coupling (Organism)",
   "mood": "Entangled",
   "engines": [
     "Organism"

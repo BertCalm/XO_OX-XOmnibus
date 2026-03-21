@@ -1,12 +1,23 @@
 {
   "schema_version": 1,
-  "name": "Infinite Rise",
+  "name": "Infinite Rise (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The Shepard reverb — shimmer feedback at 0.85 with octave shift at 0.8 creates a reverb tail that perpetually ascends. Each reflection feeds back through the pitch-up processor, constructing an infinite staircase of light. You play a note and it climbs forever. The ceiling does not exist. This is Aurum's revelation, fully committed: the moment shimmer feedback crosses 0.80, the decay becomes a direction rather than a diminishment.",
-  "tags": ["opensky", "infinite", "shimmer", "transcendent", "aether", "guru-bin", "shepard", "ascension"],
+  "tags": [
+    "opensky",
+    "infinite",
+    "shimmer",
+    "transcendent",
+    "aether",
+    "guru-bin",
+    "shepard",
+    "ascension"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
@@ -22,7 +33,12 @@
     "flock_note": "The Ear followed the shimmer into the stratosphere — the tail climbed without stopping. The Eye watched the spectrum analyzer confirm infinite ascent. Play any note and release it. Wait. The sound does not die; it continues upward until you can no longer hear it, replaced by a new layer climbing behind it.",
     "diagnosis": "Infinite Rise is the OPENSKY transcendence preset — shimmer feedback at the Shepard threshold (0.85) with strong octave shift creates a feedback loop that continually climbs. The physiological LFO at 0.067 Hz adds one barely-perceptible breath over fifteen seconds. Reserve this for moments requiring spiritual altitude."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -84,6 +100,8 @@
       "sky_modSlot2Amt": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

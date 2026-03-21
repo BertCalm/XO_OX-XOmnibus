@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Flux",
-  "name": "Tidal Lock",
+  "name": "Tidal Lock (Orbital)",
   "parameters": {
     "Orbital": {
       "orb_ampAttack": 0.05,

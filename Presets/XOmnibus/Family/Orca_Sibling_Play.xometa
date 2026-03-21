@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sibling Play",
+  "name": "Sibling Play (Orca)",
   "mood": "Family",
   "engines": [
     "Orca"

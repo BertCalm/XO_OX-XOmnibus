@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Macro Dance",
+  "name": "Macro Dance (Overtone)",
   "mood": "Flux",
   "engines": [
     "Overtone"

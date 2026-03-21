@@ -24,7 +24,7 @@
     "M3": "ECOSYSTEM",
     "M4": "CANOPY"
   },
-  "name": "Whale Cathedral",
+  "name": "Whale Cathedral (Ocelot)",
   "parameters": {
     "ocelot_ampAttack": 40.0,
     "ocelot_ampDecay": 700.0,

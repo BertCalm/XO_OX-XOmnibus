@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Salinity Gradient",
+  "name": "Salinity Gradient (Orca)",
   "mood": "Atmosphere",
   "engines": [
     "Orca"

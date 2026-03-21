@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hadal Pressure",
+  "name": "Hadal Pressure (OceanDeep)",
   "mood": "Foundation",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — The Abyssal Zone",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 5: 11km of Water Column Speaks in Compression", "Canon 1: Filter at 200Hz, Hydrostatic Compressor Near Maximum"],
+    "scripture": [
+      "Verse 5: 11km of Water Column Speaks in Compression",
+      "Canon 1: Filter at 200Hz, Hydrostatic Compressor Near Maximum"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Bone felt the sub as pressure rather than pitch — The Ear confirmed the hydrostatic compressor communicates weight, not movement.",

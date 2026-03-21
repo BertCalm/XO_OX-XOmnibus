@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Warm Wing",
+  "name": "Warm Wing (OpenSky)",
   "mood": "Family",
   "engines": [
     "OpenSky"

@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Very fast micro-LFO on braid depth at near-audio rate (25 Hz). The rapid coupling changes create a foam-like texture \u2014 effervescent and otherworldly.",
+  "description": "Very fast micro-LFO on braid depth at near-audio rate (25 Hz). The rapid coupling changes create a foam-like texture — effervescent and otherworldly.",
   "dna": {
     "brightness": 0.5,
     "warmth": 0.4,
@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Quantum Foam",
+  "name": "Quantum Foam (Orbweave)",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 1,

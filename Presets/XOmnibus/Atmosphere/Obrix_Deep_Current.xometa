@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Deep Current",
+  "name": "Deep Current (Obrix)",
   "mood": "Atmosphere",
   "engines": [
     "Obrix"

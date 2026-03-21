@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Crystal Prism",
+  "name": "Crystal Prism (Obsidian)",
   "mood": "Prism",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Refracting crystal tones with strong cross-mod — spectral shimmer through mineral facets.",
-  "tags": ["crystal", "spectral", "prism", "bright"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "crystal",
+    "spectral",
+    "prism",
+    "bright"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.2, "movement": 0.5, "density": 0.45, "space": 0.55, "aggression": 0.4},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.5,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.4
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.4,
@@ -47,6 +66,13 @@
       "obsidian_macroSpace": 0.55
     }
   },
-  "macros": {"CHARACTER": 0.75, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

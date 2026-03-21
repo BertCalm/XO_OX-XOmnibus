@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Torus Prism",
+  "name": "Torus Prism (Overlap)",
   "mood": "Prism",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The torus surface acts as a three-dimensional prism \u2014 sound enters at one orientation and exits at another, refracted. Harmonics that were in phase arrive out of phase. A natural phaser made from geometry.",
+  "description": "The torus surface acts as a three-dimensional prism — sound enters at one orientation and exits at another, refracted. Harmonics that were in phase arrive out of phase. A natural phaser made from geometry.",
   "tags": [
     "torus",
     "refracted",

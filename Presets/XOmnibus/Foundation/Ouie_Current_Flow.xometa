@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Current Flow",
+  "name": "Current Flow (Ouie)",
   "mood": "Foundation",
   "engines": [
     "Ouie"

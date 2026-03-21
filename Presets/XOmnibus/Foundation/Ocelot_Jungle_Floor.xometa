@@ -1,17 +1,42 @@
 {
   "schema_version": 1,
-  "name": "Jungle Floor",
+  "name": "Jungle Floor (Ocelot)",
   "mood": "Foundation",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Forest floor percussion — berimbau model, active floor-to-understory rhythm coupling, creature calls triggered by floor energy. A genre-agnostic rhythmic foundation.",
-  "tags": ["foundation", "percussion", "rhythm", "jungle", "floor"],
-  "macroLabels": ["PROWL", "FOLIAGE", "ECOSYSTEM", "CANOPY"],
-  "macros": {"M1": "PROWL", "M2": "FOLIAGE", "M3": "ECOSYSTEM", "M4": "CANOPY"},
+  "tags": [
+    "foundation",
+    "percussion",
+    "rhythm",
+    "jungle",
+    "floor"
+  ],
+  "macroLabels": [
+    "PROWL",
+    "FOLIAGE",
+    "ECOSYSTEM",
+    "CANOPY"
+  ],
+  "macros": {
+    "M1": "PROWL",
+    "M2": "FOLIAGE",
+    "M3": "ECOSYSTEM",
+    "M4": "CANOPY"
+  },
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.55, "movement": 0.65, "density": 0.55, "space": 0.3, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.65,
+    "density": 0.55,
+    "space": 0.3,
+    "aggression": 0.35
+  },
   "parameters": {
     "Ocelot": {
       "ocelot_biome": 0,
@@ -83,7 +108,7 @@
       "ocelot_xf_emergCanopy": 0.0
     }
   },
-  "engines": ["Ocelot"],
-  "coupling": {"pairs": []},
-  "tags": ["foundation", "percussion", "rhythm", "jungle", "floor"]
+  "coupling": {
+    "pairs": []
+  }
 }

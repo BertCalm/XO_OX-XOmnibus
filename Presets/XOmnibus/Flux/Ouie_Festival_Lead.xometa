@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Festival Lead",
+  "name": "Festival Lead (Ouie)",
   "mood": "Flux",
   "engines": [
     "Ouie"

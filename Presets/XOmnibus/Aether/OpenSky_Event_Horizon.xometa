@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Event Horizon",
+  "name": "Event Horizon (OpenSky)",
   "mood": "Aether",
   "engines": [
     "OpenSky"

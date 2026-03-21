@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Pressure Wave",
+  "name": "Pressure Wave (OddfeliX I)",
   "mood": "Submerged",
-  "engines": ["OddfeliX"],
+  "engines": [
+    "OddfeliX"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sine+Noise at low frequency — the shockwave of something large moving past in the dark.",
-  "tags": ["submerged", "pressure", "low", "dark", "sine"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "submerged",
+    "pressure",
+    "low",
+    "dark",
+    "sine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.15, "warmth": 0.72, "movement": 0.28, "density": 0.62, "space": 0.88, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.72,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.88,
+    "aggression": 0.32
+  },
   "parameters": {
     "OddfeliX": {
       "snap_oscMode": 0,
@@ -33,6 +53,13 @@
       "snap_macroDepth": 0.92
     }
   },
-  "macros": {"CHARACTER": 0.15, "MOVEMENT": 0.28, "COUPLING": 0.0, "SPACE": 0.88},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.0,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

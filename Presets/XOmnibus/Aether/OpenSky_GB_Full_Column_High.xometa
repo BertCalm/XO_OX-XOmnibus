@@ -1,23 +1,40 @@
 {
   "schema_version": 1,
-  "name": "Full Column High",
+  "name": "Full Column High (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
   "description": "The sky half of The Full Column — designed for coupling with OCEANDEEP. HP filter at 200 Hz leaves room for the abyss below. Bright, airy, shimmer-heavy with wide stereo presence. When coupled with OceanDeep's 'Full Column Low', the two engines span the entire mythological water column from trench to stratosphere. The Guru says: the flying fish does not compete with the anglerfish — they share the column.",
-  "tags": ["opensky", "coupling", "full-column", "bright", "airy", "guru-bin"],
+  "tags": [
+    "opensky",
+    "coupling",
+    "full-column",
+    "bright",
+    "airy",
+    "guru-bin"
+  ],
   "tier": "awakening",
   "guru_bin": {
     "retreat": "OPENSKY — Above the Cloud Line",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 6: The Flying Fish Does Not Compete With the Anglerfish", "Canon 2: HP Filter at 200 Hz Leaves Room for the Abyss"],
+    "scripture": [
+      "Verse 6: The Flying Fish Does Not Compete With the Anglerfish",
+      "Canon 2: HP Filter at 200 Hz Leaves Room for the Abyss"
+    ],
     "revelation": null,
     "god": null,
     "flock_note": "The Ear confirmed the 200 Hz HP filter leaves perfect sonic space for OCEANDEEP's sub — designed for coupling, revealed The Full Column architecture.",
     "diagnosis": "Full Column High is the sky half of a dual-engine Full Column preset — bright shimmer from 200 Hz upward, designed explicitly for coupling with OCEANDEEP. Reveals the engine's role as the water column's upper register."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

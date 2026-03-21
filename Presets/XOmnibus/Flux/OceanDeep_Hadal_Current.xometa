@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Hadal Current",
+  "name": "Hadal Current (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

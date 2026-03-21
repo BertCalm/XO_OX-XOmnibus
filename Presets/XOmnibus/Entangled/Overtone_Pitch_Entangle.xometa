@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pitch Entangle",
+  "name": "Pitch Entangle (Overtone I)",
   "mood": "Entangled",
   "engines": [
     "Overtone"

@@ -1,13 +1,27 @@
 {
   "schema_version": 1,
-  "name": "Thermal Vent",
+  "name": "Thermal Vent (Owlfish I)",
   "mood": "Flux",
-  "engines": ["Owlfish"],
+  "engines": [
+    "Owlfish"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Turbulent inharmonic eruption from the seafloor — filter sweeps model superheated mineral venting, unpredictable and alive.",
-  "tags": ["flux", "turbulent", "filter-sweep", "volcanic", "inharmonic", "eruption"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "turbulent",
+    "filter-sweep",
+    "volcanic",
+    "inharmonic",
+    "eruption"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -66,6 +80,13 @@
       "owl_couplingBus": 0
     }
   },
-  "macros": {"CHARACTER": 0.65, "MOVEMENT": 0.75, "COUPLING": 0.4, "SPACE": 0.4},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.4,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

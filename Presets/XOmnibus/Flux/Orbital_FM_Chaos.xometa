@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "FM Chaos",
+  "name": "FM Chaos (Orbital)",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM ratio chaos — unstable modulation index, sideband explosion, inharmonic turbulence.",
-  "tags": ["FM", "chaos", "inharmonic", "turbulent"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "FM",
+    "chaos",
+    "inharmonic",
+    "turbulent"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.65, "warmth": 0.4, "movement": 0.9, "density": 0.68, "space": 0.22, "aggression": 0.88},
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.9,
+    "density": 0.68,
+    "space": 0.22,
+    "aggression": 0.88
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.65,
@@ -46,6 +65,13 @@
       "orb_level": 0.73
     }
   },
-  "macros": {"SPECTRAL": 0.65, "VELOCITY": 0.9, "GROUP": 0.0, "SPACE": 0.22},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.65,
+    "VELOCITY": 0.9,
+    "GROUP": 0.0,
+    "SPACE": 0.22
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Thermal Vent",
+  "name": "Thermal Vent (Obsidian I)",
   "mood": "Submerged",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Mineral formation at a thermal vent — warm crystal body emerging from cold deep water, formant glow.",
-  "tags": ["thermal", "vent", "warm", "crystal", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "thermal",
+    "vent",
+    "warm",
+    "crystal",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.38, "warmth": 0.68, "movement": 0.18, "density": 0.72, "space": 0.52, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.68,
+    "movement": 0.18,
+    "density": 0.72,
+    "space": 0.52,
+    "aggression": 0.18
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.68,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.38, "MOVEMENT": 0.18, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

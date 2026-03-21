@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
-  "name": "Bloom Collapse",
+  "name": "Bloom Collapse (Overlap)",
   "mood": "Submerged",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Bioluminescent bloom in deep water suddenly extinguished. The BLOOM macro fades a shimmer layer down to nothing — a kind of sonic extinction. Hold a note and wait.",
-  "tags": ["dark-ambient", "bioluminescence", "fade", "atmospheric", "meditation", "genre-spotlight"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "tags": [
+    "dark-ambient",
+    "bioluminescence",
+    "fade",
+    "atmospheric",
+    "meditation",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.25, "warmth": 0.58, "movement": 0.15, "density": 0.65, "space": 0.85, "aggression": 0.03},
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.58,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.85,
+    "aggression": 0.03
+  },
   "parameters": {
     "Overlap": {
       "olap_knot": 0,
@@ -59,6 +80,13 @@
       "olap_atPressureDepth": 0.25
     }
   },
-  "macros": {"KNOT": 0.22, "PULSE": 0.12, "ENTRAIN": 0.15, "BLOOM": 0.72},
-  "coupling": {"pairs": []}
+  "macros": {
+    "KNOT": 0.22,
+    "PULSE": 0.12,
+    "ENTRAIN": 0.15,
+    "BLOOM": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Entangled",
-  "name": "Knot Garden",
+  "name": "Knot Garden (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 1,

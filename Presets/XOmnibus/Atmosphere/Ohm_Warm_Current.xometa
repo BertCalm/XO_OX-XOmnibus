@@ -24,7 +24,7 @@
     "MEADOW"
   ],
   "mood": "Atmosphere",
-  "name": "Warm Current",
+  "name": "Warm Current (Ohm)",
   "parameters": {
     "Ohm": {
       "ohm_bodyMaterial": 3,

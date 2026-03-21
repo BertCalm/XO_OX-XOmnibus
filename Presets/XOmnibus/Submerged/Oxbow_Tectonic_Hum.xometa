@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Tectonic Hum",
+  "name": "Tectonic Hum (Oxbow I)",
   "mood": "Submerged",
   "engines": [
     "Oxbow"
   ],
-  "description": "The earth itself humming at maximum scale \u2014 subterranean drone with infinite decay and total darkness.",
+  "description": "The earth itself humming at maximum scale — subterranean drone with infinite decay and total darkness.",
   "tags": [
     "drone",
     "deep",

@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Haze Chord",
+  "name": "Haze Chord (Odyssey)",
   "mood": "Foundation",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Polyphonic haze chord — haze amount high, warm filter, lush reverb blend.",
-  "tags": ["chord", "haze", "lush", "polyphonic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "chord",
+    "haze",
+    "lush",
+    "polyphonic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.45, "warmth": 0.7, "movement": 0.3, "density": 0.65, "space": 0.55, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.55,
+    "aggression": 0.1
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.78
     }
   },
-  "macros": {"CHARACTER": 0.45, "MOVEMENT": 0.3, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

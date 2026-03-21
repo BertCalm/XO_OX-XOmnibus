@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Prism",
-  "name": "Spectral Ring",
+  "name": "Spectral Ring (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 2,

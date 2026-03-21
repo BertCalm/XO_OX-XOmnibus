@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Pelagic Mist",
+  "name": "Pelagic Mist (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

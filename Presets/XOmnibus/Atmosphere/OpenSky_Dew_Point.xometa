@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Dew Point",
+  "name": "Dew Point (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

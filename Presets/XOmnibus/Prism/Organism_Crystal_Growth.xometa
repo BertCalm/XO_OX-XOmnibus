@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Crystal Growth",
+  "name": "Crystal Growth (Organism)",
   "mood": "Prism",
   "engines": [
     "Organism"

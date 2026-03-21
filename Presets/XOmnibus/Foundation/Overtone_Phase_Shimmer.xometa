@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Phase Shimmer",
+  "name": "Phase Shimmer (Overtone)",
   "mood": "Foundation",
   "engines": [
     "Overtone"

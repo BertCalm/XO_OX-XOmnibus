@@ -14,12 +14,12 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Harmonic Series",
+  "name": "Harmonic Series (OddOscar)",
   "mood": "Prism",
   "engines": [
     "OddOscar"
   ],
-  "description": "Morph sweeps through the harmonic series \u2014 tuned, purposeful, spectral.",
+  "description": "Morph sweeps through the harmonic series — tuned, purposeful, spectral.",
   "tags": [
     "morph",
     "harmonic",

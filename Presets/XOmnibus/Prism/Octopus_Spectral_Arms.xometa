@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Spectral Arms",
+  "name": "Spectral Arms (Octopus)",
   "mood": "Prism",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Eight arms each targeting a different spectral dimension simultaneously — pitch, filter, wavetable, pan, chromatophore center, sucker frequency, level, formant. A full-spectrum color display rendered in audio.",
-  "tags": ["octopus", "prism", "spectrum", "arms", "bright", "colorful", "full-spectrum"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "prism",
+    "spectrum",
+    "arms",
+    "bright",
+    "colorful",
+    "full-spectrum"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.85,

@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Drift Storm",
+  "name": "Drift Storm (Odyssey)",
   "mood": "Flux",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High drift depth and rate in storm conditions — oscillators pitching wildly.",
-  "tags": ["drift", "storm", "pitch", "wild"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "drift",
+    "storm",
+    "pitch",
+    "wild"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.35, "movement": 0.95, "density": 0.6, "space": 0.38, "aggression": 0.75},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.35,
+    "movement": 0.95,
+    "density": 0.6,
+    "space": 0.38,
+    "aggression": 0.75
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +73,13 @@
       "drift_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.95, "COUPLING": 0.0, "SPACE": 0.38},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.0,
+    "SPACE": 0.38
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Atmosphere",
-  "name": "Tentacle Haze",
+  "name": "Tentacle Haze (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 2,

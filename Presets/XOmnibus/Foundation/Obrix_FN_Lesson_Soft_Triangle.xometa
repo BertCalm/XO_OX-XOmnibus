@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Warm Current",
+  "name": "Warm Current (Obrix I)",
   "mood": "Foundation",
   "engines": [
     "Obrix"

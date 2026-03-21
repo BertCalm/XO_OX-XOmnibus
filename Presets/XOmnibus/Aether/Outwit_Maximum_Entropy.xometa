@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Maximum Entropy",
+  "name": "Maximum Entropy (Outwit)",
   "parameters": {
     "Outwit": {
       "owit_ampAttack": 0.0,

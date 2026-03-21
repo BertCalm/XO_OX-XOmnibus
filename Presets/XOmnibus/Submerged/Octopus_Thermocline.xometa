@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Thermocline",
+  "name": "Thermocline (Octopus I)",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The thermocline — the boundary layer between warm surface water and cold deep water. The filter morph hovers at the transition point between lowpass and bandpass. Arms moving through the temperature gradient.",
-  "tags": ["octopus", "submerged", "thermocline", "transition", "layered", "depth", "temperature"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "thermocline",
+    "transition",
+    "layered",
+    "depth",
+    "temperature"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.3,

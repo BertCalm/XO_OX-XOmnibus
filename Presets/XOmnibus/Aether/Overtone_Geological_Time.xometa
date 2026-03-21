@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Geological Time",
+  "name": "Geological Time (Overtone)",
   "mood": "Aether",
   "engines": [
     "Overtone"

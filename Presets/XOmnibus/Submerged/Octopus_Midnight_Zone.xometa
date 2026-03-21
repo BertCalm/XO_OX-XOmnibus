@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Midnight Zone",
+  "name": "Midnight Zone (Octopus I)",
   "mood": "Submerged",
-  "engines": ["Octopus"],
+  "engines": [
+    "Octopus"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The midnight zone — 1000 to 4000 meters, permanent darkness, crushing pressure. The octopus adapted to perpetual night. Arms active in complete darkness, guided only by chemoreception. No light, no color, just intelligence.",
-  "tags": ["octopus", "submerged", "midnight", "zone", "darkness", "deep", "pressure"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "octopus",
+    "submerged",
+    "midnight",
+    "zone",
+    "darkness",
+    "deep",
+    "pressure"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
@@ -54,7 +69,9 @@
       "octo_lfo2Shape": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "dna": {
     "brightness": 0.1,

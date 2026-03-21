@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Slow Prism",
+  "name": "Slow Prism (Oblique)",
   "mood": "Family",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prismatic violet at rest — slow bounce, warm color fold, comfortable and familiar.",
-  "tags": ["prism", "slow", "warm", "violet", "family"],
-  "macroLabels": ["BOUNCE", "COLOR", "FOLD", "SPACE"],
+  "tags": [
+    "prism",
+    "slow",
+    "warm",
+    "violet",
+    "family"
+  ],
+  "macroLabels": [
+    "BOUNCE",
+    "COLOR",
+    "FOLD",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.55, "warmth": 0.68, "movement": 0.22, "density": 0.48, "space": 0.58, "aggression": 0.08},
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.68,
+    "movement": 0.22,
+    "density": 0.48,
+    "space": 0.58,
+    "aggression": 0.08
+  },
   "parameters": {
     "Oblique": {
       "oblq_prismColor": 0.62,
@@ -41,6 +61,13 @@
       "oblq_level": 0.77
     }
   },
-  "macros": {"BOUNCE": 0.35, "COLOR": 0.62, "FOLD": 0.32, "SPACE": 0.58},
-  "coupling": {"pairs": []}
+  "macros": {
+    "BOUNCE": 0.35,
+    "COLOR": 0.62,
+    "FOLD": 0.32,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

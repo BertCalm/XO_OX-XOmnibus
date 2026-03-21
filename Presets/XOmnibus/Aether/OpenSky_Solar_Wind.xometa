@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Solar Wind",
+  "name": "Solar Wind (OpenSky)",
   "mood": "Aether",
   "engines": [
     "OpenSky"

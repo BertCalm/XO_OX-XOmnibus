@@ -32,7 +32,7 @@
     "BLOOM"
   ],
   "mood": "Family",
-  "name": "Entangled Pad",
+  "name": "Entangled Pad (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 0,

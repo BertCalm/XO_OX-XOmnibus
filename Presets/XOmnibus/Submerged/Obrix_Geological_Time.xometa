@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Geological Time",
+  "name": "Geological Time (Obrix I)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "A single Sine source — nothing else. Time is the instrument. Envelope parameters are maximized: attack=4.5 seconds, decay=6.0 seconds, sustain=0.98, release=8.0 seconds — the longest release in this collection. Journey Mode means notes have no end; the 8-second release is purely hypothetical. drift ultra-slow (0.004 Hz) allows the frequency to migrate over minutes of play. Four mods are present but all operate glacially: LFO->Pitch at 0.004 Hz (tuning drift), Env->Volume (the long bloom), Velocity->FilterCutoff (the only variable in this stone garden), Aftertouch->FXMix (going deeper into reverb). This preset measures time in strata, not beats.",
-  "tags": ["obrix", "submerged", "sine", "journey", "slow", "geological", "long-release", "minimal"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "sine",
+    "journey",
+    "slow",
+    "geological",
+    "long-release",
+    "minimal"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.08,

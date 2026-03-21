@@ -1,17 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Drive Prism",
+  "name": "Drive Prism (Overdub)",
   "mood": "Prism",
-  "engines": ["Overdub"],
+  "engines": [
+    "Overdub"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Heavy overdrive splits the harmonics, creating natural prism-like spectral dispersion.",
-  "tags": ["prism", "drive", "overdrive", "harmonics", "spectral", "grit"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "drive",
+    "overdrive",
+    "harmonics",
+    "spectral",
+    "grit"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "created": "2026-03-17",
-  "legacy": {"sourceInstrument": null, "sourceCategory": null, "sourcePresetName": null},
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
   "parameters": {
     "Overdub": {
       "dub_oscWave": 3,
@@ -52,7 +70,21 @@
       "dub_polyphony": 1
     }
   },
-  "macros": {"CHARACTER": 0.88, "MOVEMENT": 0.18, "COUPLING": 0.45, "SPACE": 0.3},
-  "coupling": {"pairs": []},
-  "dna": {"brightness": 0.6, "warmth": 0.62, "movement": 0.25, "density": 0.65, "space": 0.32, "aggression": 0.82}
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.45,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.62,
+    "movement": 0.25,
+    "density": 0.65,
+    "space": 0.32,
+    "aggression": 0.82
+  }
 }

@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-19",
-  "description": "Very low level, long attack. The sound exists at the threshold of hearing \u2014 a liminal space between silence and sound where coupling harmonics flicker in and out.",
+  "description": "Very low level, long attack. The sound exists at the threshold of hearing — a liminal space between silence and sound where coupling harmonics flicker in and out.",
   "dna": {
     "brightness": 0.35,
     "warmth": 0.65,
@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Aether",
-  "name": "Liminal Space",
+  "name": "Liminal Space (Orbweave I)",
   "parameters": {
     "Orbweave": {
       "weave_strandType": 1,

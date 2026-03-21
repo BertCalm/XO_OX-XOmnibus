@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Orbital Decay",
+  "name": "Orbital Decay (Orbital I)",
   "mood": "Flux",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow orbital decay — long decaying group envelopes pulling into spectral collapse.",
-  "tags": ["decay", "orbital", "slow", "collapse"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "decay",
+    "orbital",
+    "slow",
+    "collapse"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.5, "movement": 0.6, "density": 0.6, "space": 0.5, "aggression": 0.5},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.6,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.5
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.5,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.5
     }
   },
-  "macros": {"SPECTRUM": 0.5, "EVOLVE": 0.6, "COUPLING": 0.0, "SPACE": 0.5},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.5,
+    "EVOLVE": 0.6,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

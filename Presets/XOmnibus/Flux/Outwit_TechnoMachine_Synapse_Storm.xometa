@@ -1,17 +1,38 @@
 {
   "schema_version": 1,
-  "name": "Synapse Storm",
+  "name": "Synapse Storm (Outwit I)",
   "mood": "Flux",
-  "engines": ["Outwit"],
+  "engines": [
+    "Outwit"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "created": "2026-03-20",
   "description": "Maximum synapse coupling between all 8 arms — states bleed into each other, creating unpredictable rhythmic bursts. High ink cloud adds noise transients. Controlled chaos.",
-  "tags": ["techno", "chaos", "synapse", "noise", "unpredictable", "genre-spotlight"],
-  "macroLabels": ["SOLVE", "SYNAPSE", "CHROMATOPHORE", "DEN"],
+  "tags": [
+    "techno",
+    "chaos",
+    "synapse",
+    "noise",
+    "unpredictable",
+    "genre-spotlight"
+  ],
+  "macroLabels": [
+    "SOLVE",
+    "SYNAPSE",
+    "CHROMATOPHORE",
+    "DEN"
+  ],
   "couplingIntensity": "None",
   "tempo": 130,
-  "dna": {"brightness": 0.62, "warmth": 0.32, "movement": 0.92, "density": 0.88, "space": 0.28, "aggression": 0.92},
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.32,
+    "movement": 0.92,
+    "density": 0.88,
+    "space": 0.28,
+    "aggression": 0.92
+  },
   "parameters": {
     "Outwit": {
       "owit_arm0Rule": 110,
@@ -112,6 +133,13 @@
       "owit_macroDen": 0.18
     }
   },
-  "macros": {"SOLVE": 0.72, "SYNAPSE": 0.88, "CHROMATOPHORE": 0.82, "DEN": 0.18},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SOLVE": 0.72,
+    "SYNAPSE": 0.88,
+    "CHROMATOPHORE": 0.82,
+    "DEN": 0.18
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

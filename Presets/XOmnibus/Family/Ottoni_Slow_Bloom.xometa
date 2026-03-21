@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Slow Bloom",
+  "name": "Slow Bloom (Ottoni I)",
   "mood": "Family",
-  "engines": ["Ottoni"],
+  "engines": [
+    "Ottoni"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Three voices entering one by one and blossoming together — the GROW macro rising like a slow gathering.",
-  "tags": ["brass", "family", "bloom", "layered", "swell"],
-  "macroLabels": ["GROW", "EMBOUCHURE", "LAKE", "FOREIGN"],
+  "tags": [
+    "brass",
+    "family",
+    "bloom",
+    "layered",
+    "swell"
+  ],
+  "macroLabels": [
+    "GROW",
+    "EMBOUCHURE",
+    "LAKE",
+    "FOREIGN"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.5, "warmth": 0.72, "movement": 0.38, "density": 0.65, "space": 0.62, "aggression": 0.18},
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.72,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.62,
+    "aggression": 0.18
+  },
   "parameters": {
     "Ottoni": {
       "otto_toddlerInst": 0,
@@ -43,6 +63,13 @@
       "otto_macroForeign": 0.1
     }
   },
-  "macros": {"GROW": 0.65, "EMBOUCHURE": 0.58, "LAKE": 0.68, "FOREIGN": 0.1},
-  "coupling": {"pairs": []}
+  "macros": {
+    "GROW": 0.65,
+    "EMBOUCHURE": 0.58,
+    "LAKE": 0.68,
+    "FOREIGN": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

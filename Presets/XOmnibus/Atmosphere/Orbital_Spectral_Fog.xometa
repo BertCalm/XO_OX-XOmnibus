@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Spectral Fog",
+  "name": "Spectral Fog (Orbital)",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Noise-blended spectral fog — morph near noise profile, soft filter, ambient diffuse.",
-  "tags": ["fog", "noise", "diffuse", "ambient"],
-  "macroLabels": ["SPECTRUM", "EVOLVE", "COUPLING", "SPACE"],
+  "tags": [
+    "fog",
+    "noise",
+    "diffuse",
+    "ambient"
+  ],
+  "macroLabels": [
+    "SPECTRUM",
+    "EVOLVE",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.4, "warmth": 0.5, "movement": 0.2, "density": 0.5, "space": 0.82, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.5,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.82,
+    "aggression": 0.05
+  },
   "parameters": {
     "Orbital": {
       "orb_morph": 0.75,
@@ -49,6 +68,13 @@
       "orb_macroSpace": 0.82
     }
   },
-  "macros": {"SPECTRUM": 0.4, "EVOLVE": 0.2, "COUPLING": 0.0, "SPACE": 0.82},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRUM": 0.4,
+    "EVOLVE": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

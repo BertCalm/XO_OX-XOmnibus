@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Filter Sweep",
+  "name": "Filter Sweep (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

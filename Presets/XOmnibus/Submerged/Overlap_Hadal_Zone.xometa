@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Hadal Zone",
+  "name": "Hadal Zone (Overlap I)",
   "mood": "Submerged",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The deepest possible OVERLAP configuration \u2014 torus knot, maximum damping, ultra-long decay. Sound pressure at the hadal zone warps every frequency. The FDN simulates acoustic propagation through extreme depth.",
+  "description": "The deepest possible OVERLAP configuration — torus knot, maximum damping, ultra-long decay. Sound pressure at the hadal zone warps every frequency. The FDN simulates acoustic propagation through extreme depth.",
   "tags": [
     "hadal",
     "depth",

@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "FM Void",
+  "name": "FM Void (Orbital)",
   "mood": "Aether",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "FM modulation fading into void — moderate FM ratio with long group attack, metallic harmonic shimmer dissolving into infinite space.",
-  "tags": ["fm", "void", "metallic", "dissolve", "aether"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "fm",
+    "void",
+    "metallic",
+    "dissolve",
+    "aether"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.42, "warmth": 0.45, "movement": 0.25, "density": 0.48, "space": 0.9, "aggression": 0.12},
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.45,
+    "movement": 0.25,
+    "density": 0.48,
+    "space": 0.9,
+    "aggression": 0.12
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.42,
@@ -46,6 +66,13 @@
       "orb_level": 0.7
     }
   },
-  "macros": {"SPECTRAL": 0.58, "VELOCITY": 0.25, "GROUP": 0.45, "SPACE": 0.9},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.58,
+    "VELOCITY": 0.25,
+    "GROUP": 0.45,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

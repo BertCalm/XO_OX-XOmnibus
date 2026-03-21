@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Amber Prism",
+  "name": "Amber Prism (Oblong)",
   "mood": "Prism",
-  "engines": ["Oblong"],
+  "engines": [
+    "Oblong"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Amber light split through two-oscillator prism — warm spectral separation.",
-  "tags": ["prism", "amber", "spectral", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "amber",
+    "spectral",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.75, "warmth": 0.6, "movement": 0.55, "density": 0.5, "space": 0.6, "aggression": 0.32},
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.6,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.6,
+    "aggression": 0.32
+  },
   "parameters": {
     "Oblong": {
       "bob_oscA_wave": 1,
@@ -56,6 +75,13 @@
       "bob_level": 0.82
     }
   },
-  "macros": {"CHARACTER": 0.55, "MOVEMENT": 0.55, "COUPLING": 0.0, "SPACE": 0.6},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

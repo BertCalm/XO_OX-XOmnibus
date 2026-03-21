@@ -1,16 +1,37 @@
 {
   "schema_version": 1,
-  "name": "Trench Weight",
+  "name": "Trench Weight (Obese)",
   "mood": "Submerged",
-  "engines": ["Obese"],
+  "engines": [
+    "Obese"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "The weight of the trench — sub at full, mojo at 0.9 for maximum organic smear. LFO2 at 0.018 Hz: barely moving, like bioluminescence pulsing at 20,000 feet. Filter stays below 300 Hz. GRIT macro opens the ladder drive into the darkness.",
-  "tags": ["submerged", "trench", "sub", "heavy", "bioluminescent", "ultra-slow"],
-  "macroLabels": ["MOJO", "GRIT", "SIZE", "CRUSH"],
+  "tags": [
+    "submerged",
+    "trench",
+    "sub",
+    "heavy",
+    "bioluminescent",
+    "ultra-slow"
+  ],
+  "macroLabels": [
+    "MOJO",
+    "GRIT",
+    "SIZE",
+    "CRUSH"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.85, "movement": 0.06, "density": 0.95, "space": 0.15, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.85,
+    "movement": 0.06,
+    "density": 0.95,
+    "space": 0.15,
+    "aggression": 0.35
+  },
   "parameters": {
     "Obese": {
       "fat_morph": 0.2,
@@ -47,6 +68,13 @@
       "fat_macroCrush": 0.0
     }
   },
-  "macros": {"MOJO": 0.9, "GRIT": 0.45, "SIZE": 0.5, "CRUSH": 0.0},
-  "coupling": {"pairs": []}
+  "macros": {
+    "MOJO": 0.9,
+    "GRIT": 0.45,
+    "SIZE": 0.5,
+    "CRUSH": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

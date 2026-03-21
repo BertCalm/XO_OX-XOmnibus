@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Golden Hour",
+  "name": "Golden Hour (OpenSky)",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

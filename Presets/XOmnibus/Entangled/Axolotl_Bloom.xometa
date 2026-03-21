@@ -37,7 +37,7 @@
     "SPACE": 0.404
   },
   "mood": "Entangled",
-  "name": "Axolotl Bloom",
+  "name": "Axolotl Bloom (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_couplingBus": 0,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Morning Haze",
+  "name": "Morning Haze (OpenSky)",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

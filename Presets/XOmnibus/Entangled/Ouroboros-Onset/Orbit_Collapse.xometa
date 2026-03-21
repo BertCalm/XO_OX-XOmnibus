@@ -1,13 +1,29 @@
 {
   "schema_version": 1,
-  "name": "Orbit Collapse",
+  "name": "Orbit Collapse (Ouroboros)",
   "mood": "Entangled",
-  "engines": ["Ouroboros", "Onset"],
+  "engines": [
+    "Ouroboros",
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Aizawa attractor fully possesses Onset — chaos seizes drum filter, decay, and rhythm blend. The percussion pattern is no longer human; it is the strange attractor's orbit made audible.",
-  "tags": ["coupling", "Ouroboros-pair", "chaos", "drums", "possession", "Aizawa", "extreme"],
-  "macroLabels": ["CHAOS", "PUNCH", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Ouroboros-pair",
+    "chaos",
+    "drums",
+    "possession",
+    "Aizawa",
+    "extreme"
+  ],
+  "macroLabels": [
+    "CHAOS",
+    "PUNCH",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Deep",
   "tempo": null,
   "created": "2026-03-14",

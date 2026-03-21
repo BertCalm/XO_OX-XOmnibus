@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Breath Gate",
+  "name": "Breath Gate (OpenSky)",
   "mood": "Flux",
   "engines": [
     "OpenSky"

@@ -1,13 +1,28 @@
 {
   "schema_version": 1,
-  "name": "Prophecy Fed",
+  "name": "Prophecy Fed (Oracle)",
   "mood": "Entangled",
-  "engines": ["Oracle", "Organon"],
+  "engines": [
+    "Oracle",
+    "Organon"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "GENDY stochastic audio and barrier envelope co-shape Organon's metabolic filter and decay — the organism ingests prophecy as nutrition, its growth patterns altered by chance.",
-  "tags": ["coupling", "Oracle-pair", "stochastic", "organic", "dialogue", "metabolism"],
-  "macroLabels": ["PROPHECY", "METABOLISM", "COUPLING", "SPACE"],
+  "tags": [
+    "coupling",
+    "Oracle-pair",
+    "stochastic",
+    "organic",
+    "dialogue",
+    "metabolism"
+  ],
+  "macroLabels": [
+    "PROPHECY",
+    "METABOLISM",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Moderate",
   "tempo": null,
   "created": "2026-03-14",

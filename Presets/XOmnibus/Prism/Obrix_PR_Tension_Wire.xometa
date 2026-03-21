@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Tension Wire",
+  "name": "Tension Wire (Obrix)",
   "mood": "Prism",
   "engines": [
     "Obrix"

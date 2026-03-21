@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Iridescent Film",
+  "name": "Iridescent Film (Overtone)",
   "mood": "Atmosphere",
   "engines": [
     "Overtone"

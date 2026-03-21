@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Anoxic Layer",
+  "name": "Anoxic Layer (Odyssey)",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Dead water layer — oxygen-depleted zone, minimal motion, thick stagnant harmonic mass.",
-  "tags": ["anoxic", "dead", "stagnant", "still", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "anoxic",
+    "dead",
+    "stagnant",
+    "still",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.08, "warmth": 0.38, "movement": 0.05, "density": 0.92, "space": 0.48, "aggression": 0.05},
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.38,
+    "movement": 0.05,
+    "density": 0.92,
+    "space": 0.48,
+    "aggression": 0.05
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.75
     }
   },
-  "macros": {"CHARACTER": 0.08, "MOVEMENT": 0.05, "COUPLING": 0.0, "SPACE": 0.48},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.08,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.0,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

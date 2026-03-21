@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Prism",
-  "name": "Spectrum Scan",
+  "name": "Spectrum Scan (Organon)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.5,

@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Three Voices",
+  "name": "Three Voices (Ohm)",
   "mood": "Family",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "All three family members at balanced levels in a Sunday afternoon porch session.",
-  "tags": ["family", "balanced", "porch", "trio"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "family",
+    "balanced",
+    "porch",
+    "trio"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.45,
     "MEADOW": 0.5
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

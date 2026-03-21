@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Air Current",
+  "name": "Air Current (OpenSky)",
   "mood": "Flux",
   "engines": [
     "OpenSky"

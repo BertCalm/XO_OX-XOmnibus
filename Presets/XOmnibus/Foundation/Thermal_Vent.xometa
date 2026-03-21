@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Thermal Vent",
+  "name": "Thermal Vent (Organon I)",
   "parameters": {
     "Organon": {
       "organon_catalystDrive": 0.7,

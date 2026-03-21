@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Drift Haze",
+  "name": "Drift Haze (Ohm)",
   "mood": "Atmosphere",
-  "engines": ["Ohm"],
+  "engines": [
+    "Ohm"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High-drift bowed tone dissolving into haze, free-floating organic texture.",
-  "tags": ["atmosphere", "drift", "hazy", "floating"],
-  "macroLabels": ["MEDDLING", "COMMUNE", "JAM", "MEADOW"],
+  "tags": [
+    "atmosphere",
+    "drift",
+    "hazy",
+    "floating"
+  ],
+  "macroLabels": [
+    "MEDDLING",
+    "COMMUNE",
+    "JAM",
+    "MEADOW"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -61,5 +73,7 @@
     "JAM": 0.55,
     "MEADOW": 0.78
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

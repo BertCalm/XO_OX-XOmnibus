@@ -24,7 +24,7 @@
     "SPACE"
   ],
   "mood": "Foundation",
-  "name": "Contact Mic",
+  "name": "Contact Mic (Overworld)",
   "parameters": {
     "Overworld": {
       "ow_dpcmEnable": 0,

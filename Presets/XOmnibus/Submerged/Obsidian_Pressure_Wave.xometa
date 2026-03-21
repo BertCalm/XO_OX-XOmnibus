@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Pressure Wave",
+  "name": "Pressure Wave (Obsidian I)",
   "mood": "Submerged",
-  "engines": ["Obsidian"],
+  "engines": [
+    "Obsidian"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow pressure wave rolling through deep stone — massive low-frequency pulse, minimal attack.",
-  "tags": ["pressure", "wave", "slow", "massive", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pressure",
+    "wave",
+    "slow",
+    "massive",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.1, "warmth": 0.58, "movement": 0.18, "density": 0.88, "space": 0.52, "aggression": 0.2},
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.58,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.52,
+    "aggression": 0.2
+  },
   "parameters": {
     "Obsidian": {
       "obsidian_depth": 0.95,
@@ -47,6 +67,13 @@
       "obsidian_macroSpace": 0.52
     }
   },
-  "macros": {"CHARACTER": 0.1, "MOVEMENT": 0.18, "COUPLING": 0.0, "SPACE": 0.52},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

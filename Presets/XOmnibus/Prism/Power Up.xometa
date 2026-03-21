@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Power Up",
+  "name": "Power Up (Overworld)",
   "mood": "Prism",
   "engines": [
     "Overworld"

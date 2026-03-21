@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Halo Drift",
+  "name": "Halo Drift (OpenSky)",
   "mood": "Atmosphere",
   "engines": [
     "OpenSky"

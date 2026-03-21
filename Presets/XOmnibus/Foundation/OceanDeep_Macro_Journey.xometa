@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Macro Journey",
+  "name": "Macro Journey (OceanDeep)",
   "mood": "Foundation",
   "engines": [
     "OceanDeep"
@@ -21,7 +21,10 @@
   "guru_bin": {
     "retreat": "OCEANDEEP — Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["D002: Modulation is the Lifeblood", "D006: Expression Input Is Not Optional"],
+    "scripture": [
+      "D002: Modulation is the Lifeblood",
+      "D006: Expression Input Is Not Optional"
+    ],
     "revelation": "Pressura spoke: this preset has no fixed identity. Its identity is whatever the performer makes it through the macros. All four macros start at 0 — the sound is a clean, open, dry sine bass. As each macro rises, a different dimension of the abyss opens. At all macros at 1.0, every system is active: maximum pressure, maximum creature, full wreck mode, total darkness with reverb. The journey from (0,0,0,0) to (1,1,1,1) IS the performance.",
     "god": "Pressura",
     "flock_note": "The Tongue mapped the macro arc: (0,0,0,0) = clean sine at 750 Hz. (1,0,0,0) = crushed sub. (0,1,0,0) = alien choir. (0,0,1,0) = wreck hull. (0,0,0,1) = dark reverb drone. (1,1,1,1) = the complete abyss. 16 combinations, 16 distinct sounds from one preset.",

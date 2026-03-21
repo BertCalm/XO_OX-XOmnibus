@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Contrail",
+  "name": "Contrail (OpenSky)",
   "mood": "Atmosphere",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "A thin white line drawn across the sky that slowly widens, blurs, and joins the clouds.",
-  "tags": ["atmospheric", "fading", "bright", "trail"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "atmospheric",
+    "fading",
+    "bright",
+    "trail"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -51,5 +63,7 @@
     "COUPLING": 0.0,
     "SPACE": 0.85
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }

@@ -1,23 +1,40 @@
 {
   "schema_version": 1,
-  "name": "Absolute Zero",
+  "name": "Absolute Zero (OpenSky)",
   "mood": "Aether",
-  "engines": ["OpenSky"],
+  "engines": [
+    "OpenSky"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Sound frozen in crystal. All modulation removed: LFO depths at 0.0, no pitch envelope, no filter envelope. The supersaw stack at spread 0.15 creates a nearly static harmonic column. Shimmer at 0.55 with high feedback (0.75) and maximum damping (0.85) creates a reverb tail that is dark and frozen -- the high harmonics are absorbed, leaving only a warm, motionless resonance. The sound does not breathe, does not move, does not evolve. It simply exists. Poly count reduced to 2 voices for efficiency. The Guru says: stillness is not the absence of motion -- it is motion's destination.",
-  "tags": ["opensky", "transcendental", "static", "frozen", "minimal", "motionless"],
+  "tags": [
+    "opensky",
+    "transcendental",
+    "static",
+    "frozen",
+    "minimal",
+    "motionless"
+  ],
   "tier": "transcendental",
   "guru_bin": {
     "retreat": "OPENSKY Transcendental Vol 1",
     "retreat_date": "2026-03-19",
-    "scripture": ["Verse 17: Maximum Damping Plus High Feedback Creates Dark Resonance", "Canon 7: Stillness in a Shimmer Engine Is a Radical Act"],
+    "scripture": [
+      "Verse 17: Maximum Damping Plus High Feedback Creates Dark Resonance",
+      "Canon 7: Stillness in a Shimmer Engine Is a Radical Act"
+    ],
     "revelation": "Parsimonia spoke: removing ALL modulation from a synth engine is the ultimate CPU gift -- zero modulation processing. And the resulting sound has a presence that moving sounds lack: it occupies its frequency space completely, without wavering.",
     "god": "Parsimonia",
     "flock_note": "The Ear described the sound as 'a warm glass column.' The Bone confirmed: with all LFO depths at 0, the per-sample modulation math is bypassed entirely. The Eye measured the spectrum and found it perfectly static -- no frequency movement at all across a 60-second sustain.",
     "diagnosis": "Absolute Zero is OPENSKY's contemplative extreme. In an engine designed for shimmer and movement, perfect stillness becomes the most surprising sound. The frozen shimmer reverb (high damping + high feedback) creates a paradox: a reverb that does not decay but does not ring."
   },
-  "macroLabels": ["RISE", "WIDTH", "GLOW", "AIR"],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -79,6 +96,8 @@
       "sky_modSlot2Amt": 0.0
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null
 }

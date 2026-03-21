@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Open Water",
+  "name": "Open Water (Overlap II)",
   "mood": "Atmosphere",
   "engines": [
     "Overlap"
   ],
-  "author": "Guru Bin \u2014 OVERLAP Expansion 2026-03-17",
+  "author": "Guru Bin — OVERLAP Expansion 2026-03-17",
   "version": "1.0.0",
-  "description": "The sound of open water column \u2014 unknot topology, maximum spread, gentle modulation. No knot crossings, just six lines spaced evenly across an infinite open space. A different kind of loneliness.",
+  "description": "The sound of open water column — unknot topology, maximum spread, gentle modulation. No knot crossings, just six lines spaced evenly across an infinite open space. A different kind of loneliness.",
   "tags": [
     "open",
     "water",

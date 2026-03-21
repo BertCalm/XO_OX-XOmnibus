@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Crystal Cave",
+  "name": "Crystal Cave (Overworld)",
   "mood": "Prism",
   "engines": [
     "Overworld"

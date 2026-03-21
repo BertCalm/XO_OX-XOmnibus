@@ -23,7 +23,7 @@
     "BLOOM"
   ],
   "mood": "Flux",
-  "name": "Pulse Drift",
+  "name": "Pulse Drift (Overlap)",
   "parameters": {
     "Overlap": {
       "olap_knot": 3,

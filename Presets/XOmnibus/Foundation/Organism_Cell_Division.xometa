@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Cell Division",
+  "name": "Cell Division (Organism)",
   "mood": "Foundation",
   "engines": [
     "Organism"

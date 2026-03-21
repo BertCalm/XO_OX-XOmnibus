@@ -1,14 +1,30 @@
 {
   "author": "XO_OX Designs",
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "created": "2026-03-18",
   "description": "Torus T(5,2) with high feedback (0.9) and tangle (0.8) — the 5:2 ratio orbits are losing coherence. What began as a stable torus knot is decaying: the harmonic locks still partially hold but chaos intrudes at every pulse. LFO1 S&H randomly disturbs the filter, breaking the orbital stability.",
-  "dna": { "aggression": 0.82, "brightness": 0.78, "density": 0.48, "movement": 0.88, "space": 0.32, "warmth": 0.25 },
-  "engines": ["Overlap"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "dna": {
+    "aggression": 0.82,
+    "brightness": 0.78,
+    "density": 0.48,
+    "movement": 0.88,
+    "space": 0.32,
+    "warmth": 0.25
+  },
+  "engines": [
+    "Overlap"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "mood": "Flux",
-  "name": "Orbital Decay",
+  "name": "Orbital Decay (Overlap I)",
   "parameters": {
     "Overlap": {
       "olap_knot": 3,
@@ -58,7 +74,15 @@
   },
   "schema_version": 1,
   "sequencer": null,
-  "tags": ["flux", "chaotic", "torus", "orbital", "decay", "unstable", "dramatic"],
+  "tags": [
+    "flux",
+    "chaotic",
+    "torus",
+    "orbital",
+    "decay",
+    "unstable",
+    "dramatic"
+  ],
   "tempo": null,
   "version": "1.0.0"
 }

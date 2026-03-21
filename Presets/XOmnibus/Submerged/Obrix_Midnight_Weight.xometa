@@ -4,14 +4,32 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Midnight Weight",
+  "name": "Midnight Weight (Obrix)",
   "mood": "Submerged",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "description": "Square wave monophony at maximum density — proc1=LP at 320 Hz with aggressive feedback (0.68) creates dense self-filtering resonance. The sub content is monumental. src2=Sine at -24 semitones provides pure sub reinforcement with srcMix 0.28. No Journey Mode: this weight lands and stays, held. Four mods enforce the heaviness: Env->FilterCutoff opens with a slow dark bloom (attack 1.2s), LFO->Volume pulses at 0.008 Hz with enormous depth, Velocity->FilterReso escalates the resonance with force, Aftertouch->FXMix pulls you deeper into the reverb. The square wave's odd harmonics are eaten alive by the filter.",
-  "tags": ["obrix", "submerged", "square", "feedback", "dense", "dark", "mono", "heavy"],
+  "tags": [
+    "obrix",
+    "submerged",
+    "square",
+    "feedback",
+    "dense",
+    "dark",
+    "mono",
+    "heavy"
+  ],
   "tier": "transcendental",
   "dna": {
     "brightness": 0.1,

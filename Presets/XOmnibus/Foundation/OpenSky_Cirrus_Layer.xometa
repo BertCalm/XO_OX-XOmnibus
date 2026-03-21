@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Cirrus Layer",
+  "name": "Cirrus Layer (OpenSky)",
   "mood": "Foundation",
   "engines": [
     "OpenSky"

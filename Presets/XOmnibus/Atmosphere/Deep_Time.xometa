@@ -29,7 +29,7 @@
     "SPACE"
   ],
   "mood": "Atmosphere",
-  "name": "Deep Time",
+  "name": "Deep Time (Overworld)",
   "parameters": {
     "Overworld": {
       "ow_ampAttack": 2.5,

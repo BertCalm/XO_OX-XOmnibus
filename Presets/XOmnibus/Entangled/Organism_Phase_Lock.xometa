@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Phase Lock",
+  "name": "Phase Lock (Organism)",
   "mood": "Entangled",
-  "engines": ["Organism"],
+  "engines": [
+    "Organism"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "",
-  "tags": ["cellular", "coupled", "pattern", "generative"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "cellular",
+    "coupled",
+    "pattern",
+    "generative"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "High",
   "tempo": null,
   "dna": {

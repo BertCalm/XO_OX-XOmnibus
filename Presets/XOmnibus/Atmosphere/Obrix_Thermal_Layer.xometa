@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Thermal Layer",
+  "name": "Thermal Layer (Obrix I)",
   "mood": "Atmosphere",
   "engines": [
     "Obrix"

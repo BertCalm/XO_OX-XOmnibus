@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Thermocline Crossing",
+  "name": "Thermocline Crossing (Orca)",
   "mood": "Submerged",
-  "engines": ["Orca"],
+  "engines": [
+    "Orca"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Slow wavetable sweep mimicking the acoustic boundary between warm and cold water layers — formant shift glides from negative to positive across the thermal divide.",
-  "tags": ["submerged", "thermocline", "transition", "slow", "ambient"],
-  "macroLabels": ["HUNT", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "submerged",
+    "thermocline",
+    "transition",
+    "slow",
+    "ambient"
+  ],
+  "macroLabels": [
+    "HUNT",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.35, "warmth": 0.5, "movement": 0.5, "density": 0.4, "space": 0.8, "aggression": 0.15},
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.4,
+    "space": 0.8,
+    "aggression": 0.15
+  },
   "parameters": {
     "Orca": {
       "orca_wtPosition": 0.45,
@@ -48,6 +68,13 @@
       "orca_macroSpace": 0.8
     }
   },
-  "macros": {"HUNT": 0.2, "MOVEMENT": 0.5, "COUPLING": 0.0, "SPACE": 0.8},
-  "coupling": {"pairs": []}
+  "macros": {
+    "HUNT": 0.2,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

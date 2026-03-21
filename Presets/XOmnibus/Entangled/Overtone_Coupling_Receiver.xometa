@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Coupling Receiver",
+  "name": "Coupling Receiver (Overtone I)",
   "mood": "Entangled",
   "engines": [
     "Overtone"

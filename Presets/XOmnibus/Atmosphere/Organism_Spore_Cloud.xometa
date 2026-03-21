@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Spore Cloud",
+  "name": "Spore Cloud (Organism)",
   "mood": "Atmosphere",
   "engines": [
     "Organism"

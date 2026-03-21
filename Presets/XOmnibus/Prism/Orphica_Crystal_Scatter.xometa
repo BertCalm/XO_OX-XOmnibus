@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Crystal Scatter",
+  "name": "Crystal Scatter (Orphica)",
   "mood": "Prism",
-  "engines": ["Orphica"],
+  "engines": [
+    "Orphica"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Crystal strings in Scatter microsound — each pluck explodes into granular fragments, pitches dispersed across the octave.",
-  "tags": ["prism", "crystal", "scatter", "granular", "bright"],
-  "macroLabels": ["PLUCK", "FRACTURE", "SURFACE", "DIVINE"],
+  "tags": [
+    "prism",
+    "crystal",
+    "scatter",
+    "granular",
+    "bright"
+  ],
+  "macroLabels": [
+    "PLUCK",
+    "FRACTURE",
+    "SURFACE",
+    "DIVINE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.88, "warmth": 0.22, "movement": 0.75, "density": 0.62, "space": 0.72, "aggression": 0.35},
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.22,
+    "movement": 0.75,
+    "density": 0.62,
+    "space": 0.72,
+    "aggression": 0.35
+  },
   "parameters": {
     "Orphica": {
       "orph_stringMaterial": 2,
@@ -48,6 +68,13 @@
       "orph_macroDivine": 0.35
     }
   },
-  "macros": {"PLUCK": 0.78, "FRACTURE": 0.62, "SURFACE": 0.72, "DIVINE": 0.35},
-  "coupling": {"pairs": []}
+  "macros": {
+    "PLUCK": 0.78,
+    "FRACTURE": 0.62,
+    "SURFACE": 0.72,
+    "DIVINE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

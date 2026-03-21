@@ -1,16 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Warm Haze",
+  "name": "Warm Haze (Orbital I)",
   "mood": "Atmosphere",
-  "engines": ["Orbital"],
+  "engines": [
+    "Orbital"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Warm atmospheric haze — gentle harmonic saturation, slow drift, golden tone.",
-  "tags": ["warm", "haze", "golden", "atmospheric"],
-  "macroLabels": ["SPECTRAL", "VELOCITY", "GROUP", "SPACE"],
+  "tags": [
+    "warm",
+    "haze",
+    "golden",
+    "atmospheric"
+  ],
+  "macroLabels": [
+    "SPECTRAL",
+    "VELOCITY",
+    "GROUP",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.52, "warmth": 0.78, "movement": 0.28, "density": 0.55, "space": 0.62, "aggression": 0.1},
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.78,
+    "movement": 0.28,
+    "density": 0.55,
+    "space": 0.62,
+    "aggression": 0.1
+  },
   "parameters": {
     "Orbital": {
       "orb_brightness": 0.52,
@@ -46,6 +65,13 @@
       "orb_level": 0.72
     }
   },
-  "macros": {"SPECTRAL": 0.52, "VELOCITY": 0.28, "GROUP": 0.0, "SPACE": 0.62},
-  "coupling": {"pairs": []}
+  "macros": {
+    "SPECTRAL": 0.52,
+    "VELOCITY": 0.28,
+    "GROUP": 0.0,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

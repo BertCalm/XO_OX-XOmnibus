@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Bright Lead",
+  "name": "Bright Lead (Overtone)",
   "mood": "Foundation",
   "engines": [
     "Overtone"

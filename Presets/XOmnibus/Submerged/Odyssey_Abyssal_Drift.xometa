@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Drift",
+  "name": "Abyssal Drift (Odyssey II)",
   "mood": "Submerged",
-  "engines": ["Odyssey"],
+  "engines": [
+    "Odyssey"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Wavetable drift at abyssal depth — maximum drift depth, near-zero rate, crushing pressure.",
-  "tags": ["abyssal", "drift", "deep", "slow", "submerged"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "abyssal",
+    "drift",
+    "deep",
+    "slow",
+    "submerged"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
-  "dna": {"brightness": 0.12, "warmth": 0.48, "movement": 0.08, "density": 0.88, "space": 0.55, "aggression": 0.06},
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.48,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.55,
+    "aggression": 0.06
+  },
   "parameters": {
     "Odyssey": {
       "drift_oscA_mode": 0,
@@ -54,6 +74,13 @@
       "drift_level": 0.72
     }
   },
-  "macros": {"CHARACTER": 0.12, "MOVEMENT": 0.08, "COUPLING": 0.0, "SPACE": 0.55},
-  "coupling": {"pairs": []}
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  }
 }

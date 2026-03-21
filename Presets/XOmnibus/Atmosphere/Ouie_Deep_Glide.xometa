@@ -1,13 +1,25 @@
 {
   "schema_version": 1,
-  "name": "Deep Glide",
+  "name": "Deep Glide (Ouie)",
   "mood": "Atmosphere",
-  "engines": ["Ouie"],
+  "engines": [
+    "Ouie"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "High portamento with deep low-pass filters, slow gliding in darkness.",
-  "tags": ["atmosphere", "deep", "gliding", "slow"],
-  "macroLabels": ["HAMMER", "CARTILAGE", "AMPULLAE", "CURRENT"],
+  "tags": [
+    "atmosphere",
+    "deep",
+    "gliding",
+    "slow"
+  ],
+  "macroLabels": [
+    "HAMMER",
+    "CARTILAGE",
+    "AMPULLAE",
+    "CURRENT"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -48,5 +60,7 @@
     "AMPULLAE": 0.4,
     "CURRENT": 0.82
   },
-  "coupling": {"pairs": []}
+  "coupling": {
+    "pairs": []
+  }
 }
