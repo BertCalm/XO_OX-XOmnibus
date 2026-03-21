@@ -2,6 +2,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../XOmnibusProcessor.h"
 #include "../Core/EngineRegistry.h"
+#include "CouplingStrip/CouplingStripEditor.h"
 
 namespace xomnibus {
 
@@ -2007,6 +2008,356 @@ private:
 };
 
 //==============================================================================
+// PerformanceViewPanel — real-time coupling performance interface.
+//
+// Layout:
+//   ┌──────────────────────────────────────────────────────┐
+//   │  [P] PERFORMANCE VIEW                   [BAKE] [X]  │
+//   ├───────────────────────┬──────────────────────────────┤
+//   │                       │  Route Detail Panel          │
+//   │  CouplingStripEditor  │  Route 1: [Src] → [Tgt]     │
+//   │  (node + arc viz)     │  Type: [dropdown]  Depth: ═  │
+//   │                       │  Route 2 / 3 / 4 ...         │
+//   ├───────────────────────┴──────────────────────────────┤
+//   │  ◉ CHARACTER  ◉ MOVEMENT  ◉ COUPLING  ◉ SPACE       │
+//   └──────────────────────────────────────────────────────┘
+//
+// Fills the same bounds as OverviewPanel / EngineDetailPanel / ChordMachinePanel.
+// Toggle via "P" header button, using the same fade animation pattern.
+//
+class PerformanceViewPanel : public juce::Component
+{
+public:
+    PerformanceViewPanel (XOmnibusProcessor& proc)
+        : processor (proc),
+          apvts (proc.getAPVTS()),
+          couplingStrip (proc.getCouplingMatrix(),
+                         [&proc] (int slot) -> juce::String
+                         {
+                             auto* eng = proc.getEngine (slot);
+                             return eng ? eng->getEngineId() : juce::String{};
+                         },
+                         [&proc] (int slot) -> juce::Colour
+                         {
+                             auto* eng = proc.getEngine (slot);
+                             return eng ? eng->getAccentColour()
+                                        : juce::Colour (0xFF555555);
+                         })
+    {
+        setTitle ("Performance View");
+        setDescription ("Real-time coupling performance interface with route controls and macro knobs");
+
+        addAndMakeVisible (couplingStrip);
+
+        // ── BAKE button (placeholder) ──
+        addAndMakeVisible (bakeBtn);
+        bakeBtn.setButtonText ("BAKE");
+        bakeBtn.setTooltip ("Coming soon — bake overlay into preset");
+        bakeBtn.setEnabled (false);
+        A11y::setup (bakeBtn, "Bake Coupling", "Save performance overlay into preset");
+        bakeBtn.setColour (juce::TextButton::buttonColourId,
+                           GalleryColors::get (GalleryColors::xoGold).withAlpha (0.15f));
+        bakeBtn.setColour (juce::TextButton::textColourOffId,
+                           GalleryColors::get (GalleryColors::xoGold));
+
+        // ── Route sections (4 routes) ──
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            auto& section = routes[r];
+            juce::String prefix = "cp_r" + juce::String (r + 1) + "_";
+
+            // Active toggle
+            section.activeBtn.setButtonText ("ON");
+            section.activeBtn.setClickingTogglesState (true);
+            A11y::setup (section.activeBtn, "Route " + juce::String (r + 1) + " Enable");
+            section.activeBtn.setColour (juce::TextButton::buttonColourId,
+                                         GalleryColors::get (GalleryColors::slotBg()));
+            section.activeBtn.setColour (juce::TextButton::buttonOnColourId,
+                                         GalleryColors::get (GalleryColors::xoGold));
+            section.activeBtn.setColour (juce::TextButton::textColourOffId,
+                                         GalleryColors::get (GalleryColors::textMid()));
+            section.activeBtn.setColour (juce::TextButton::textColourOnId,
+                                         GalleryColors::get (GalleryColors::textDark()));
+            section.activeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment> (
+                apvts, prefix + "active", section.activeBtn);
+            addAndMakeVisible (section.activeBtn);
+
+            // Coupling type combo (14 types from CouplingType enum)
+            section.typeBox.addItemList ({
+                "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
+                "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
+                "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
+                "AudioToBuffer", "KnotTopology"
+            }, 1);
+            A11y::setup (section.typeBox, "Route " + juce::String (r + 1) + " Coupling Type");
+            section.typeAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment> (
+                apvts, prefix + "type", section.typeBox);
+            addAndMakeVisible (section.typeBox);
+
+            // Depth slider (bipolar -1.0 to 1.0)
+            section.depthSlider.setSliderStyle (juce::Slider::LinearHorizontal);
+            section.depthSlider.setTextBoxStyle (juce::Slider::TextBoxRight, false, 44, 16);
+            section.depthSlider.setColour (juce::Slider::thumbColourId,
+                                           GalleryColors::get (GalleryColors::xoGold));
+            section.depthSlider.setColour (juce::Slider::trackColourId,
+                                           GalleryColors::get (GalleryColors::borderGray()));
+            section.depthSlider.setTooltip ("Route " + juce::String (r + 1) + " depth (bipolar)");
+            A11y::setup (section.depthSlider, "Route " + juce::String (r + 1) + " Depth");
+            section.depthAttach = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (
+                apvts, prefix + "amount", section.depthSlider);
+            addAndMakeVisible (section.depthSlider);
+
+            // Source slot selector
+            section.sourceBox.addItemList ({ "Slot 1", "Slot 2", "Slot 3", "Slot 4" }, 1);
+            A11y::setup (section.sourceBox, "Route " + juce::String (r + 1) + " Source Slot");
+            section.sourceAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment> (
+                apvts, prefix + "source", section.sourceBox);
+            addAndMakeVisible (section.sourceBox);
+
+            // Target slot selector
+            section.targetBox.addItemList ({ "Slot 1", "Slot 2", "Slot 3", "Slot 4" }, 1);
+            A11y::setup (section.targetBox, "Route " + juce::String (r + 1) + " Target Slot");
+            section.targetAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment> (
+                apvts, prefix + "target", section.targetBox);
+            addAndMakeVisible (section.targetBox);
+
+            // Route label
+            section.label.setFont (GalleryFonts::heading (9.0f));
+            section.label.setColour (juce::Label::textColourId,
+                                     GalleryColors::get (GalleryColors::textDark()));
+            section.label.setJustificationType (juce::Justification::centredLeft);
+            addAndMakeVisible (section.label);
+        }
+
+        // ── Macro knobs (performance context duplicate) ──
+        struct MacroDef { const char* id; const char* label; };
+        static constexpr MacroDef macroDefs[4] = {
+            { "macro1", "CHARACTER" }, { "macro2", "MOVEMENT" },
+            { "macro3", "COUPLING" }, { "macro4", "SPACE" }
+        };
+        for (int i = 0; i < 4; ++i)
+        {
+            macroKnobs[i].setSliderStyle (juce::Slider::RotaryVerticalDrag);
+            macroKnobs[i].setTextBoxStyle (juce::Slider::NoTextBox, false, 0, 0);
+            macroKnobs[i].setColour (juce::Slider::rotarySliderFillColourId,
+                                     GalleryColors::get (GalleryColors::xoGold));
+            macroKnobs[i].setTooltip (juce::String ("Macro ") + juce::String (i + 1)
+                                      + ": " + macroDefs[i].label);
+            A11y::setup (macroKnobs[i], juce::String ("Macro ") + juce::String (i + 1)
+                                        + " " + macroDefs[i].label);
+            addAndMakeVisible (macroKnobs[i]);
+            macroAttach[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment> (
+                apvts, macroDefs[i].id, macroKnobs[i]);
+
+            macroLabels[i].setText (macroDefs[i].label, juce::dontSendNotification);
+            macroLabels[i].setFont (GalleryFonts::heading (8.0f));
+            macroLabels[i].setColour (juce::Label::textColourId,
+                                      GalleryColors::get (GalleryColors::textMid()));
+            macroLabels[i].setJustificationType (juce::Justification::centred);
+            addAndMakeVisible (macroLabels[i]);
+        }
+
+        updateRouteLabels();
+    }
+
+    // Call from editor timer or on engine change to keep route labels current.
+    void refresh()
+    {
+        couplingStrip.refresh();
+        updateRouteLabels();
+        repaint();
+    }
+
+    void paint (juce::Graphics& g) override
+    {
+        using namespace GalleryColors;
+        g.fillAll (get (slotBg()));
+
+        // ── Header bar ──
+        auto headerArea = getLocalBounds().removeFromTop (kHeaderH).toFloat();
+        g.setColour (get (xoGold));
+        g.fillRect (headerArea);
+
+        g.setColour (juce::Colours::white);
+        g.setFont (GalleryFonts::display (14.0f));
+        g.drawText ("PERFORMANCE VIEW", headerArea.reduced (12, 0),
+                     juce::Justification::centredLeft);
+
+        // ── Separator between coupling strip and route panel ──
+        auto body = getLocalBounds().withTrimmedTop (kHeaderH).withTrimmedBottom (kMacroStripH);
+        int sepX = body.getX() + (int) (body.getWidth() * kStripRatio);
+        g.setColour (get (borderGray()));
+        g.drawVerticalLine (sepX, (float) body.getY(), (float) body.getBottom());
+
+        // ── Route section backgrounds ──
+        auto routeArea = body.withTrimmedLeft ((int) (body.getWidth() * kStripRatio) + 1)
+                             .reduced (6, 4);
+        int routeH = routeArea.getHeight() / kNumRoutes;
+
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            auto sectionRect = routeArea.withY (routeArea.getY() + r * routeH)
+                                        .withHeight (routeH).reduced (0, 2).toFloat();
+
+            // Subtle rounded rect background per route
+            g.setColour (get (shellWhite()).withAlpha (0.5f));
+            g.fillRoundedRectangle (sectionRect, 4.0f);
+            g.setColour (get (borderGray()).withAlpha (0.4f));
+            g.drawRoundedRectangle (sectionRect, 4.0f, 0.5f);
+        }
+
+        // ── Macro strip separator ──
+        auto macroStripArea = getLocalBounds().removeFromBottom (kMacroStripH).toFloat();
+        g.setColour (get (borderGray()));
+        g.drawHorizontalLine ((int) macroStripArea.getY(), 0.0f, (float) getWidth());
+
+        // ── Macro strip background ──
+        g.setColour (get (shellWhite()));
+        g.fillRect (macroStripArea);
+
+        // ── XO Gold accent at top of macro strip ──
+        g.setColour (get (xoGold));
+        g.fillRect (macroStripArea.removeFromTop (2.0f));
+
+        // ── Macro strip header ──
+        g.setColour (get (textMid()));
+        g.setFont (GalleryFonts::heading (8.0f));
+        g.drawText ("MACROS", getLocalBounds().removeFromBottom (kMacroStripH)
+                                              .removeFromTop (14),
+                     juce::Justification::centred);
+    }
+
+    void resized() override
+    {
+        auto area = getLocalBounds();
+
+        // ── Header ──
+        auto header = area.removeFromTop (kHeaderH);
+        bakeBtn.setBounds (header.removeFromRight (60).reduced (8, 8));
+
+        // ── Macro strip at bottom ──
+        auto macroArea = area.removeFromBottom (kMacroStripH).reduced (8, 4);
+        macroArea.removeFromTop (14); // space for "MACROS" label
+        int macroKnobW = macroArea.getWidth() / 4;
+        for (int i = 0; i < 4; ++i)
+        {
+            auto col = macroArea.removeFromLeft (macroKnobW);
+            int kh = 44;
+            int kx = col.getCentreX() - kh / 2;
+            macroKnobs[i].setBounds (kx, col.getY(), kh, kh);
+            macroLabels[i].setBounds (kx, col.getY() + kh + 1, kh, 12);
+        }
+
+        // ── Body: coupling strip (left 40%) + route panel (right 60%) ──
+        auto body = area;
+        int stripW = (int) (body.getWidth() * kStripRatio);
+        couplingStrip.setBounds (body.removeFromLeft (stripW));
+
+        // ── Route sections ──
+        auto routePanel = body.reduced (6, 4);
+        int routeH = routePanel.getHeight() / kNumRoutes;
+
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            auto section = routePanel.withY (routePanel.getY() + r * routeH)
+                                     .withHeight (routeH).reduced (4, 4);
+
+            auto& rt = routes[r];
+
+            // Row 1: label + active toggle
+            auto row1 = section.removeFromTop (20);
+            rt.activeBtn.setBounds (row1.removeFromRight (36).reduced (0, 1));
+            rt.label.setBounds (row1);
+
+            section.removeFromTop (2);
+
+            // Row 2: source → target selectors
+            auto row2 = section.removeFromTop (22);
+            int halfW = (row2.getWidth() - 16) / 2;
+            rt.sourceBox.setBounds (row2.removeFromLeft (halfW).reduced (0, 1));
+            row2.removeFromLeft (16); // arrow spacing
+            rt.targetBox.setBounds (row2.removeFromLeft (halfW).reduced (0, 1));
+
+            section.removeFromTop (2);
+
+            // Row 3: type dropdown + depth slider
+            auto row3 = section.removeFromTop (22);
+            rt.typeBox.setBounds (row3.removeFromLeft (row3.getWidth() * 2 / 5).reduced (0, 1));
+            row3.removeFromLeft (4);
+            rt.depthSlider.setBounds (row3.reduced (0, 1));
+        }
+    }
+
+private:
+    void updateRouteLabels()
+    {
+        for (int r = 0; r < kNumRoutes; ++r)
+        {
+            juce::String prefix = "cp_r" + juce::String (r + 1) + "_";
+
+            // Read source/target slot from APVTS to display engine names
+            int srcSlot = 0, tgtSlot = 1;
+            if (auto* srcParam = apvts.getRawParameterValue (prefix + "source"))
+                srcSlot = juce::roundToInt (srcParam->load());
+            if (auto* tgtParam = apvts.getRawParameterValue (prefix + "target"))
+                tgtSlot = juce::roundToInt (tgtParam->load());
+
+            juce::String srcName = "\xe2\x80\x94";
+            juce::String tgtName = "\xe2\x80\x94";
+            if (auto* eng = processor.getEngine (srcSlot))
+                srcName = eng->getEngineId().toUpperCase();
+            if (auto* eng = processor.getEngine (tgtSlot))
+                tgtName = eng->getEngineId().toUpperCase();
+
+            routes[r].label.setText (
+                "Route " + juce::String (r + 1) + ":  " + srcName + "  \xe2\x86\x92  " + tgtName,
+                juce::dontSendNotification);
+        }
+    }
+
+    static constexpr int kHeaderH     = 34;
+    static constexpr int kMacroStripH = 80;
+    static constexpr int kNumRoutes   = 4;
+    static constexpr float kStripRatio = 0.40f;
+
+    XOmnibusProcessor& processor;
+    juce::AudioProcessorValueTreeState& apvts;
+
+    // Left panel: coupling arc visualization
+    CouplingStripEditor couplingStrip;
+
+    // Header controls
+    juce::TextButton bakeBtn;
+
+    // Per-route controls
+    struct RouteSection
+    {
+        juce::Label      label;
+        juce::TextButton activeBtn;
+        juce::ComboBox   typeBox;
+        juce::Slider     depthSlider;
+        juce::ComboBox   sourceBox;
+        juce::ComboBox   targetBox;
+
+        // APVTS attachments — must be destroyed before the controls they reference.
+        // Declared after controls so they are destroyed first (reverse declaration order).
+        std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>   activeAttach;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> typeAttach;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>   depthAttach;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> sourceAttach;
+        std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> targetAttach;
+    };
+    std::array<RouteSection, kNumRoutes> routes;
+
+    // Bottom macro strip
+    std::array<juce::Slider, 4> macroKnobs;
+    std::array<juce::Label, 4>  macroLabels;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> macroAttach;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PerformanceViewPanel)
+};
+
+//==============================================================================
 // XOmnibusEditor — Gallery Model plugin window.
 //
 // Layout:
@@ -2034,6 +2385,7 @@ public:
           overview(proc),
           detail(proc),
           chordPanel(proc),
+          performancePanel(proc),
           macros(proc.getAPVTS()),
           masterFXStrip(proc.getAPVTS()),
           presetBrowser(proc)
@@ -2051,6 +2403,7 @@ public:
         addAndMakeVisible(overview);
         addAndMakeVisible(detail);
         addAndMakeVisible(chordPanel);
+        addAndMakeVisible(performancePanel);
         addAndMakeVisible(macros);
         addAndMakeVisible(masterFXStrip);
         addAndMakeVisible(presetBrowser);
@@ -2059,6 +2412,8 @@ public:
         detail.setAlpha(0.0f);
         chordPanel.setVisible(false);
         chordPanel.setAlpha(0.0f);
+        performancePanel.setVisible(false);
+        performancePanel.setAlpha(0.0f);
 
         // "CM" toggle button in header area
         addAndMakeVisible(cmToggleBtn);
@@ -2069,7 +2424,27 @@ public:
         cmToggleBtn.onClick = [this]
         {
             if (cmToggleBtn.getToggleState())
+            {
+                perfToggleBtn.setToggleState(false, juce::dontSendNotification);
                 showChordMachine();
+            }
+            else
+                showOverview();
+        };
+
+        // "P" toggle button in header area — Performance View
+        addAndMakeVisible(perfToggleBtn);
+        perfToggleBtn.setButtonText("P");
+        perfToggleBtn.setTooltip("Performance View — real-time coupling control");
+        A11y::setup (perfToggleBtn, "Performance View Toggle", "Toggle the coupling performance panel");
+        perfToggleBtn.setClickingTogglesState(true);
+        perfToggleBtn.onClick = [this]
+        {
+            if (perfToggleBtn.getToggleState())
+            {
+                cmToggleBtn.setToggleState(false, juce::dontSendNotification);
+                showPerformanceView();
+            }
             else
                 showOverview();
         };
@@ -2090,6 +2465,7 @@ public:
             overview.repaint();
             detail.repaint();
             chordPanel.repaint();
+            performancePanel.repaint();
             macros.repaint();
             masterFXStrip.repaint();
             presetBrowser.repaint();
@@ -2109,6 +2485,8 @@ public:
             if (slot >= 0 && slot < XOmnibusProcessor::MaxSlots)
                 tiles[slot]->refresh();
             overview.refresh();
+            if (performancePanel.isVisible())
+                performancePanel.refresh();
         };
 
         setSize(880, 562);
@@ -2202,10 +2580,11 @@ public:
     {
         auto area = getLocalBounds();
 
-        // Header: reserve space for CM button and preset browser (right side)
+        // Header: reserve space for toggle buttons and preset browser (right side)
         auto header = area.removeFromTop(kHeaderH);
         presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
         themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
+        perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
 
         // Bottom strips (from bottom up)
@@ -2222,6 +2601,7 @@ public:
         overview.setBounds(area);
         detail.setBounds(area);
         chordPanel.setBounds(area);
+        performancePanel.setBounds(area);
     }
 
 private:
@@ -2236,10 +2616,13 @@ private:
 
         selectedSlot = slot;
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
+        perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
-        // Hide chord panel if it's visible
+        // Hide chord/performance panels if visible
         if (chordPanel.isVisible())
             chordPanel.setVisible(false);
+        if (performancePanel.isVisible())
+            performancePanel.setVisible(false);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
 
@@ -2297,10 +2680,12 @@ private:
         for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
             tiles[i]->setSelected(false);
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
+        perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
         juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
                                   : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
+                                  : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
                                   : nullptr;
         if (outgoing)
         {
@@ -2326,6 +2711,7 @@ private:
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
         juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
+                                  : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
                                   : overview.isVisible() ? static_cast<juce::Component*>(&overview)
                                   : nullptr;
         if (outgoing)
@@ -2350,12 +2736,49 @@ private:
         }
     }
 
+    void showPerformanceView()
+    {
+        selectedSlot = -1;
+        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+            tiles[i]->setSelected(false);
+
+        performancePanel.refresh();
+
+        auto& anim = juce::Desktop::getInstance().getAnimator();
+        juce::Component* outgoing = detail.isVisible() ? static_cast<juce::Component*>(&detail)
+                                  : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
+                                  : overview.isVisible() ? static_cast<juce::Component*>(&overview)
+                                  : nullptr;
+        if (outgoing)
+        {
+            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
+            anim.fadeOut(outgoing, kFadeMs);
+            juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
+            {
+                if (safeThis == nullptr) return;
+                if (safeOutgoing != nullptr) safeOutgoing->setVisible(false);
+                safeThis->performancePanel.setAlpha(0.0f);
+                safeThis->performancePanel.setVisible(true);
+                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->performancePanel, kFadeMs);
+            });
+        }
+        else
+        {
+            performancePanel.setAlpha(0.0f);
+            performancePanel.setVisible(true);
+            anim.fadeIn(&performancePanel, kFadeMs);
+        }
+    }
+
     void timerCallback() override
     {
         for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
             tiles[i]->refresh();
         if (!detail.isVisible())
             overview.refresh();
+        if (performancePanel.isVisible())
+            performancePanel.refresh();
     }
 
     static constexpr int kHeaderH   = 50;
@@ -2368,14 +2791,16 @@ private:
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, XOmnibusProcessor::MaxSlots> tiles;
-    OverviewPanel      overview;
-    EngineDetailPanel  detail;
-    ChordMachinePanel  chordPanel;
-    MacroSection       macros;
-    MasterFXSection    masterFXStrip;
-    PresetBrowserStrip presetBrowser;
-    juce::TextButton   cmToggleBtn;
-    juce::TextButton   themeToggleBtn;
+    OverviewPanel          overview;
+    EngineDetailPanel      detail;
+    ChordMachinePanel      chordPanel;
+    PerformanceViewPanel   performancePanel;
+    MacroSection           macros;
+    MasterFXSection        masterFXStrip;
+    PresetBrowserStrip     presetBrowser;
+    juce::TextButton       cmToggleBtn;
+    juce::TextButton       perfToggleBtn;
+    juce::TextButton       themeToggleBtn;
 
     int selectedSlot = -1;
 

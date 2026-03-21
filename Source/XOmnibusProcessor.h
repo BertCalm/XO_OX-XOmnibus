@@ -3,6 +3,7 @@
 #include "Core/SynthEngine.h"
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
+#include "Core/CouplingCrossfader.h"
 #include "Core/MasterFXChain.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
@@ -58,8 +59,9 @@ public:
     // The editor registers this to refresh only the affected tile immediately.
     std::function<void(int /*slot*/)> onEngineChanged;
 
-    // Coupling matrix — read-only access for the UI visualization (message thread)
+    // Coupling matrix — access for the UI visualization (message thread)
     const MegaCouplingMatrix& getCouplingMatrix() const { return couplingMatrix; }
+    MegaCouplingMatrix& getCouplingMatrix() { return couplingMatrix; }
     void addCouplingRoute(MegaCouplingMatrix::CouplingRoute route) { couplingMatrix.addRoute(route); }
     void removeCouplingRoute(int srcSlot, int dstSlot, CouplingType type) { couplingMatrix.removeUserRoute(srcSlot, dstSlot, type); }
 
@@ -77,6 +79,16 @@ private:
 
     juce::AudioProcessorValueTreeState apvts;
     MegaCouplingMatrix couplingMatrix;
+    CouplingCrossfader couplingCrossfader;
+
+    // Pre-allocated route buffer for performance coupling overlay — avoids
+    // heap allocation (make_shared/vector) on the audio thread each block.
+    // mergedRoutePtr wraps a pre-reserved vector (capacity set in prepareToPlay);
+    // processBlock clears and refills it from the baseline + perf routes.
+    // The shared_ptr itself is created once in prepareToPlay; the inner vector
+    // never reallocates because its capacity >= MaxRoutes.
+    std::shared_ptr<std::vector<MegaCouplingMatrix::CouplingRoute>> mergedRoutePtr;
+
     MasterFXChain masterFX;
     ChordMachine chordMachine;
     MPEManager mpeManager;
@@ -136,6 +148,17 @@ private:
         std::atomic<float>* mpePitchBendRange = nullptr;
         std::atomic<float>* mpePressureTarget = nullptr;
         std::atomic<float>* mpeSlideTarget = nullptr;
+
+        // Coupling performance overlay — 4 route slots × 5 params = 20 params
+        // Cached for audio-thread access (no string lookups in processBlock)
+        struct CouplingRouteParams {
+            std::atomic<float>* active = nullptr;   // cp_rN_active
+            std::atomic<float>* type   = nullptr;   // cp_rN_type
+            std::atomic<float>* amount = nullptr;   // cp_rN_amount
+            std::atomic<float>* source = nullptr;   // cp_rN_source
+            std::atomic<float>* target = nullptr;   // cp_rN_target
+        };
+        std::array<CouplingRouteParams, CouplingCrossfader::MaxRouteSlots> cpRoutes;
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer;  // MPE-processed MIDI (expression stripped)

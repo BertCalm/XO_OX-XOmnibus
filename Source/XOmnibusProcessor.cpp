@@ -266,6 +266,24 @@ void XOmnibusProcessor::cacheParameterPointers()
     cachedParams.ohmCommune      = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond        = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama        = apvts.getRawParameterValue("ole_macroDrama");
+
+    // Coupling performance overlay — cache all 20 params for audio-thread access
+    for (int r = 0; r < CouplingCrossfader::MaxRouteSlots; ++r)
+    {
+        const auto prefix = "cp_r" + juce::String(r + 1) + "_";
+        cachedParams.cpRoutes[static_cast<size_t>(r)].active = apvts.getRawParameterValue(prefix + "active");
+        cachedParams.cpRoutes[static_cast<size_t>(r)].type   = apvts.getRawParameterValue(prefix + "type");
+        cachedParams.cpRoutes[static_cast<size_t>(r)].amount = apvts.getRawParameterValue(prefix + "amount");
+        cachedParams.cpRoutes[static_cast<size_t>(r)].source = apvts.getRawParameterValue(prefix + "source");
+        cachedParams.cpRoutes[static_cast<size_t>(r)].target = apvts.getRawParameterValue(prefix + "target");
+
+        // B3: Assert that all parameter pointers resolved — catches typos in param IDs.
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].active != nullptr);
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].type   != nullptr);
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].amount != nullptr);
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].source != nullptr);
+        jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].target != nullptr);
+    }
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout
@@ -340,6 +358,70 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OrbweaveEngine::addParameters(params);
     OvertoneEngine::addParameters(params);
     OrganismEngine::addParameters(params);
+
+    // ── Coupling Performance Overlay ──────────────────────────────────────────
+    // 4 route slots × 5 params = 20 new APVTS parameters.
+    // These are ephemeral live-performance controls that overlay preset coupling.
+    // See Docs/specs/coupling_performance_spec.md §2.2.
+    {
+        // CouplingType enum labels (0–13) — must match CouplingType order in SynthEngine.h
+        const juce::StringArray couplingTypeLabels {
+            "AmpToFilter",      // 0
+            "AmpToPitch",       // 1
+            "LFOToPitch",       // 2
+            "EnvToMorph",       // 3
+            "AudioToFM",        // 4
+            "AudioToRing",      // 5
+            "FilterToFilter",   // 6
+            "AmpToChoke",       // 7
+            "RhythmToBlend",    // 8
+            "EnvToDecay",       // 9
+            "PitchToPitch",     // 10
+            "AudioToWavetable", // 11
+            "AudioToBuffer",    // 12
+            "KnotTopology"      // 13
+        };
+
+        const juce::StringArray slotLabels { "Slot 1", "Slot 2", "Slot 3", "Slot 4" };
+
+        // Default target for each route: r1→1, r2→1, r3→2, r4→3
+        const int defaultTargets[4] = { 1, 1, 2, 3 };
+
+        for (int r = 0; r < 4; ++r)
+        {
+            const auto prefix = "cp_r" + juce::String(r + 1) + "_";
+
+            // Active (bool, default off)
+            params.push_back(std::make_unique<juce::AudioParameterBool>(
+                juce::ParameterID(prefix + "active", 1),
+                "CP Route " + juce::String(r + 1) + " Active",
+                false));
+
+            // Type (int choice 0-13, default 0 = AmpToFilter)
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(
+                juce::ParameterID(prefix + "type", 1),
+                "CP Route " + juce::String(r + 1) + " Type",
+                couplingTypeLabels, 0));
+
+            // Amount (float, bipolar -1.0 to 1.0, default 0.0)
+            params.push_back(std::make_unique<juce::AudioParameterFloat>(
+                juce::ParameterID(prefix + "amount", 1),
+                "CP Route " + juce::String(r + 1) + " Amount",
+                juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+
+            // Source (int choice 0-3, default 0 = Slot 1)
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(
+                juce::ParameterID(prefix + "source", 1),
+                "CP Route " + juce::String(r + 1) + " Source",
+                slotLabels, 0));
+
+            // Target (int choice 0-3, default varies per route)
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(
+                juce::ParameterID(prefix + "target", 1),
+                "CP Route " + juce::String(r + 1) + " Target",
+                slotLabels, defaultTargets[r]));
+        }
+    }
 
     // Chord Machine parameters
     params.push_back(std::make_unique<juce::AudioParameterBool>(
@@ -740,6 +822,13 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     currentBlockSize = samplesPerBlock;
 
     couplingMatrix.prepare(samplesPerBlock);
+    couplingCrossfader.prepare(sampleRate, samplesPerBlock);
+
+    // Pre-allocate the merged route vector so the audio thread never allocates.
+    // MaxRoutes is the upper bound; reserve once, reuse every block via clear + assign.
+    mergedRoutePtr = std::make_shared<std::vector<MegaCouplingMatrix::CouplingRoute>>();
+    mergedRoutePtr->reserve(static_cast<size_t>(MegaCouplingMatrix::MaxRoutes));
+
     chordMachine.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
@@ -882,6 +971,130 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // Routes are loaded once here to avoid repeated atomic ref-count operations
     // inside processBlock (each atomic_load on a shared_ptr costs a LOCK prefix).
     auto couplingRoutes = couplingMatrix.loadRoutes();
+
+    // -------------------------------------------------------------------
+    // Performance coupling overlay — merge APVTS performance routes into
+    // the baseline route list. Performance routes can override baseline
+    // routes (same source->dest pair) or append new ones.
+    //
+    // Audio-thread safe: reads only from cached atomic pointers. Uses
+    // mergedRoutePtr (a pre-allocated shared_ptr<vector> reserved to
+    // MaxRoutes capacity in prepareToPlay). Each block we clear + assign
+    // into it — no heap allocation because capacity >= MaxRoutes.
+    // -------------------------------------------------------------------
+    {
+        bool anyPerfRouteActive = false;
+
+        // Quick scan — avoid the copy entirely when no perf routes are active.
+        for (int i = 0; i < CouplingCrossfader::MaxRouteSlots; ++i)
+        {
+            auto& cp = cachedParams.cpRoutes[static_cast<size_t>(i)];
+            if (cp.active && cp.active->load() > 0.5f)
+            {
+                anyPerfRouteActive = true;
+                break;
+            }
+        }
+
+        if (anyPerfRouteActive && couplingRoutes)
+        {
+            // Copy baseline routes into pre-allocated storage — no heap allocation.
+            // mergedRoutePtr's vector was reserved to MaxRoutes in prepareToPlay,
+            // so clear + assign won't reallocate.
+            auto& merged = *mergedRoutePtr;
+            merged.clear();
+            merged.assign(couplingRoutes->begin(), couplingRoutes->end());
+
+            for (int i = 0; i < CouplingCrossfader::MaxRouteSlots; ++i)
+            {
+                auto& cp = cachedParams.cpRoutes[static_cast<size_t>(i)];
+
+                // B2: Null guard — if any param pointer failed to resolve,
+                // skip this slot entirely. jassertfalse fires in debug builds
+                // to catch the misconfiguration early.
+                if (!cp.type || !cp.amount || !cp.source || !cp.target)
+                {
+                    jassertfalse;
+                    continue;
+                }
+
+                if (!cp.active || cp.active->load() <= 0.5f)
+                {
+                    // Inactive slot — reset crossfader state so the next
+                    // activation starts clean (no stale previousType).
+                    couplingCrossfader.resetSlot(i);
+                    continue;
+                }
+
+                // B4: Clamp raw enum value to valid CouplingType range to prevent
+                // undefined behavior from out-of-range parameter values.
+                const int rawType = juce::jlimit(0,
+                    static_cast<int>(CouplingType::KnotTopology),
+                    juce::roundToInt(cp.type->load()));
+                const auto perfType = static_cast<CouplingType>(rawType);
+
+                const float perfAmount = cp.amount->load();
+                const int perfSource   = static_cast<int>(cp.source->load());
+                const int perfTarget   = static_cast<int>(cp.target->load());
+
+                // Bounds-check slot indices to prevent OOB
+                if (perfSource < 0 || perfSource >= MaxSlots
+                 || perfTarget < 0 || perfTarget >= MaxSlots
+                 || perfSource == perfTarget)
+                    continue;
+
+                // Detect coupling type changes and trigger crossfade if needed.
+                // updateRouteType() returns true when a crossfade is in progress
+                // (audio-rate types like FM/Ring/Wavetable/Buffer/Knot need smooth
+                // transitions). The crossfade state lives inside couplingCrossfader
+                // and is consumed by MegaCouplingMatrix during processBlock via
+                // the route's type field — the crossfader manages which type(s)
+                // to evaluate, so we always pass the current (target) type here.
+                couplingCrossfader.updateRouteType(i, perfType);
+
+                // Build the route struct
+                MegaCouplingMatrix::CouplingRoute perfRoute;
+                perfRoute.sourceSlot  = perfSource;
+                perfRoute.destSlot    = perfTarget;
+                perfRoute.type        = perfType;
+                perfRoute.amount      = perfAmount;
+                perfRoute.isNormalled = false;
+                perfRoute.active      = true;
+
+                // Override or append: if a baseline route targets the same
+                // source->dest pair, the performance route wins.
+                bool overridden = false;
+                for (auto& baseRoute : merged)
+                {
+                    if (baseRoute.sourceSlot == perfSource
+                     && baseRoute.destSlot   == perfTarget)
+                    {
+                        baseRoute.type   = perfRoute.type;
+                        baseRoute.amount = perfRoute.amount;
+                        baseRoute.active = true;
+                        overridden = true;
+                        break;
+                    }
+                }
+
+                if (!overridden)
+                {
+                    // Append — guard against exceeding MaxRoutes
+                    if (static_cast<int>(merged.size()) < MegaCouplingMatrix::MaxRoutes)
+                        merged.push_back(perfRoute);
+                }
+            }
+
+            couplingRoutes = mergedRoutePtr;
+        }
+        else if (!anyPerfRouteActive)
+        {
+            // No perf routes active — reset all crossfader slots so stale
+            // state doesn't linger across preset loads.
+            couplingCrossfader.resetAll();
+        }
+    }
+
     couplingMatrix.processBlock(numSamples, couplingRoutes);
 
     // Apply family bleed between Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE)

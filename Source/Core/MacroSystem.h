@@ -11,12 +11,23 @@ namespace xomnibus {
 // Each macro can drive multiple targets simultaneously with independent ranges.
 // The `inverted` flag flips the mapping so macro-at-max yields minValue.
 //
+// Coupling route targets:
+// When `isCouplingTarget` is true, the macro writes to a coupling route
+// amount parameter (`cp_rN_amount`) instead of a regular engine parameter.
+// The `parameterId` field is ignored for coupling targets — the target
+// parameter is resolved from `couplingRouteSlot` at cache time.
+// See coupling_performance_spec.md Section 4 for the design rationale.
+//
 struct MacroTarget {
     juce::String engineId;           // Which engine this targets (e.g., "OddfeliX", "Overdub")
     juce::String parameterId;        // The APVTS parameter to modulate
     float minValue = 0.0f;           // Macro at 0 → this value
     float maxValue = 1.0f;           // Macro at 1 → this value
     bool inverted = false;           // If true, macro at 1 → minValue
+
+    // Coupling route targeting (see coupling_performance_spec.md §4.1)
+    bool isCouplingTarget = false;   // True → writes to cp_rN_amount instead of parameterId
+    int couplingRouteSlot = -1;      // 0-3, maps to cp_r{slot+1}_amount
 };
 
 //==============================================================================
@@ -34,15 +45,28 @@ struct MacroTarget {
 // SmoothedValue provides ~20ms smoothing to eliminate zipper noise during
 // macro sweeps.
 //
+// Coupling route amount targets:
+// Macros can also drive coupling route amounts (cp_r1_amount through
+// cp_r4_amount) for real-time coupling depth control. Use
+// addCouplingTarget() to wire a macro to a coupling route slot.
+// macro3 ("COUPLING") is the natural home for coupling depth control,
+// mapping to the MPCe quad-corner right axis (see spec §4.2).
+//
 // Usage:
 //   MacroSystem macros(apvts);
 //   macros.setTargets(0, { {"OddfeliX", "snap_morphPosition", 0.0f, 1.0f} });
+//   macros.addCouplingTarget(2, 0, 0.0f, 1.0f);  // macro3 → route 1 depth
 //   // In processBlock:
 //   macros.processBlock();
 //
 class MacroSystem {
 public:
     static constexpr int NumMacros = 4;
+    static constexpr int NumCouplingRoutes = 4;
+
+    // Macro index for the COUPLING knob — natural home for coupling depth.
+    // Maps to MPCe quad-corner right axis (see coupling_performance_spec.md §4.2).
+    static constexpr int CouplingMacroIndex = 2;  // macro3 (0-based)
 
     // Default labels matching the XOmnibus spec
     static constexpr std::array<const char*, 4> DefaultLabels = {
@@ -68,6 +92,18 @@ public:
 
             // Initialize smoothed values — will be reset in prepare()
             smoothedValues[static_cast<size_t>(i)].setCurrentAndTargetValue(0.0f);
+        }
+
+        // Cache raw pointers to coupling route amount parameters.
+        // These may be nullptr if the coupling performance params haven't been
+        // added to the APVTS yet (Phase A dependency). processBlock() checks
+        // for nullptr before writing.
+        for (int i = 0; i < NumCouplingRoutes; ++i)
+        {
+            auto paramId = juce::String("cp_r") + juce::String(i + 1) + "_amount";
+            couplingAmountParams[static_cast<size_t>(i)] = apvtsRef.getRawParameterValue(paramId);
+            // Note: may be nullptr — coupling APVTS params are added in Phase A
+            // of the coupling performance system. This is intentionally not asserted.
         }
     }
 
@@ -110,9 +146,19 @@ public:
         newCached.reserve(targets.size());
         for (const auto& target : targets)
         {
-            newCached.push_back(apvtsRef.getRawParameterValue(target.parameterId));
-            // rawParam may be nullptr if the target engine isn't loaded —
-            // processBlock() handles this gracefully.
+            if (target.isCouplingTarget && isValidCouplingSlot(target.couplingRouteSlot))
+            {
+                // Coupling targets use the pre-cached coupling amount pointer
+                // instead of looking up parameterId in the APVTS.
+                newCached.push_back(couplingAmountParams[static_cast<size_t>(target.couplingRouteSlot)]);
+            }
+            else
+            {
+                newCached.push_back(apvtsRef.getRawParameterValue(target.parameterId));
+            }
+            // rawParam may be nullptr if the target engine isn't loaded or
+            // coupling params aren't registered yet — processBlock() handles
+            // this gracefully.
         }
 
         // Hold the lock only while swapping the vectors.
@@ -147,6 +193,53 @@ public:
     {
         if (isValidIndex(macroIndex))
             labels[static_cast<size_t>(macroIndex)] = label;
+    }
+
+    //--------------------------------------------------------------------------
+    // Coupling route targeting
+    //--------------------------------------------------------------------------
+
+    // Add a coupling route amount as a target for a macro knob.
+    //
+    // This creates a MacroTarget that writes to the coupling route's amount
+    // parameter (cp_rN_amount) instead of an engine parameter. The coupling
+    // amount is bipolar (-1.0 to 1.0), so min/max should be set accordingly.
+    //
+    // macroIndex: 0-3 (which macro knob drives the coupling depth)
+    // routeSlot:  0-3 (which coupling performance route to control)
+    // min/max:    the range to interpolate within (e.g., 0.0 to 1.0 for
+    //             unipolar sweep, or -1.0 to 1.0 for full bipolar sweep)
+    //
+    // macro3 ("COUPLING", index 2) is the natural home for coupling depth.
+    // See coupling_performance_spec.md §4 for design rationale.
+    //
+    // Example: sweep route 1 depth from 0 to full as macro3 rises:
+    //   addCouplingTarget(2, 0, 0.0f, 1.0f);
+    //
+    void addCouplingTarget(int macroIndex, int routeSlot, float min, float max)
+    {
+        if (!isValidIndex(macroIndex) || !isValidCouplingSlot(routeSlot))
+            return;
+
+        // Build the coupling MacroTarget — engineId and parameterId are left
+        // empty since the target is resolved from couplingRouteSlot.
+        MacroTarget couplingTarget;
+        couplingTarget.isCouplingTarget = true;
+        couplingTarget.couplingRouteSlot = routeSlot;
+        couplingTarget.minValue = min;
+        couplingTarget.maxValue = max;
+
+        // Append to existing targets for this macro (don't replace them).
+        auto& slot = macroSlots[static_cast<size_t>(macroIndex)];
+
+        // Cache the coupling amount parameter pointer.
+        auto* cachedParam = couplingAmountParams[static_cast<size_t>(routeSlot)];
+
+        {
+            juce::SpinLock::ScopedLockType lock(slot.lock);
+            slot.targets.push_back(std::move(couplingTarget));
+            slot.cachedParams.push_back(cachedParam);
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -192,9 +285,11 @@ public:
 
                 const auto& target = slot.targets[t];
 
-                // Compute interpolated value in normalized [0,1] range.
-                // minValue/maxValue represent normalized parameter range
-                // (matching what APVTS stores internally).
+                // Compute interpolated value between minValue and maxValue.
+                // For engine targets: min/max are normalized [0,1] matching
+                // APVTS internal storage.
+                // For coupling targets: min/max are in [-1,1] range matching
+                // the bipolar cp_rN_amount parameter range.
                 float value;
                 if (target.inverted)
                     value = target.maxValue + (target.minValue - target.maxValue) * smoothedMacroValue;
@@ -202,9 +297,9 @@ public:
                     value = target.minValue + (target.maxValue - target.minValue) * smoothedMacroValue;
 
                 // Write to the target parameter's atomic float.
-                // The min/max values must be in normalized [0,1] range to match
-                // APVTS internal storage. Engine adapters are responsible for
-                // specifying normalized ranges in their MacroTarget definitions.
+                // Engine adapters are responsible for specifying correct ranges
+                // in their MacroTarget definitions. Coupling targets use the
+                // pre-cached cp_rN_amount pointer resolved in setTargets().
                 targetParam->store(value);
             }
         }
@@ -233,6 +328,11 @@ public:
     const std::vector<MacroTarget>& getTargets(int macroIndex) const
     {
         jassert(isValidIndex(macroIndex));
+        if (!isValidIndex(macroIndex))
+        {
+            static const std::vector<MacroTarget> empty;
+            return empty;
+        }
         return macroSlots[static_cast<size_t>(macroIndex)].targets;
     }
 
@@ -246,8 +346,13 @@ public:
     // macroTargetsVar: JSON array of target objects (from "macroTargets" in .xometa)
     //
     // Each target object in the JSON array:
+    //   Engine target:
     //   { "macro": 1, "engineId": "OddfeliX", "parameterId": "snap_morph",
     //     "min": 0.0, "max": 1.0, "inverted": false }
+    //
+    //   Coupling route target:
+    //   { "macro": 3, "coupling": true, "routeSlot": 0,
+    //     "min": 0.0, "max": 1.0 }
     //
     void loadFromPreset(const juce::StringArray& macroLabels,
                         const juce::var& macroTargetsVar)
@@ -282,14 +387,33 @@ public:
                 continue;
 
             MacroTarget target;
-            target.engineId   = entry.getProperty("engineId", "").toString();
+            target.engineId    = entry.getProperty("engineId", "").toString();
             target.parameterId = entry.getProperty("parameterId", "").toString();
-            target.minValue   = static_cast<float>(entry.getProperty("min", 0.0));
-            target.maxValue   = static_cast<float>(entry.getProperty("max", 1.0));
-            target.inverted   = static_cast<bool>(entry.getProperty("inverted", false));
+            target.minValue    = static_cast<float>(entry.getProperty("min", 0.0));
+            target.maxValue    = static_cast<float>(entry.getProperty("max", 1.0));
+            target.inverted    = static_cast<bool>(entry.getProperty("inverted", false));
 
-            if (target.parameterId.isNotEmpty())
+            // Coupling route targets: { "coupling": true, "routeSlot": 0-3 }
+            target.isCouplingTarget  = static_cast<bool>(entry.getProperty("coupling", false));
+            target.couplingRouteSlot = static_cast<int>(entry.getProperty("routeSlot", -1));
+
+            // Validate: coupling targets need a valid route slot; regular
+            // targets need a non-empty parameterId.
+            if (target.isCouplingTarget)
+            {
+                if (isValidCouplingSlot(target.couplingRouteSlot))
+                    grouped[static_cast<size_t>(macroIdx)].push_back(std::move(target));
+                else
+                    DBG("MacroSystem: Dropping invalid coupling target — routeSlot " + juce::String(target.couplingRouteSlot));
+            }
+            else if (target.parameterId.isNotEmpty())
+            {
                 grouped[static_cast<size_t>(macroIdx)].push_back(std::move(target));
+            }
+            else
+            {
+                DBG("MacroSystem: Dropping target with empty parameterId for macro " + juce::String(macroIdx + 1));
+            }
         }
 
         // Assign all grouped targets (this caches the parameter pointers)
@@ -319,11 +443,17 @@ private:
     };
 
     static bool isValidIndex(int idx) { return idx >= 0 && idx < NumMacros; }
+    static bool isValidCouplingSlot(int slot) { return slot >= 0 && slot < NumCouplingRoutes; }
 
     juce::AudioProcessorValueTreeState& apvtsRef;
 
     // Cached raw parameter pointers for "macro1" through "macro4"
     std::array<std::atomic<float>*, NumMacros> macroParams = {};
+
+    // Cached raw parameter pointers for coupling route amounts
+    // ("cp_r1_amount" through "cp_r4_amount"). May contain nullptrs if
+    // coupling performance params haven't been registered in the APVTS yet.
+    std::array<std::atomic<float>*, NumCouplingRoutes> couplingAmountParams = {};
 
     // Smoothed macro values to eliminate zipper noise (~20ms ramp)
     std::array<juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear>, NumMacros> smoothedValues;
