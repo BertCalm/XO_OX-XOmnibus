@@ -250,7 +250,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ## Seance Findings
 
-**43 of 44 engines seanced** (2026-03-20/21) — OXBOW seanced (~8.2/10 pre-fix → 9.0 post-fix: dead Size param wired, 4 macros added, static addParameters pattern, juce::ParameterID migration, mod wheel CC1). OWARE pending. 22 engines received DSP fixes this session; fleet average estimated at ~8.6/10 (up from ~7.2). Four engines at 9.0+ (OVERBITE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). Full data in:
+**44 of 44 engines seanced** (2026-03-21) — All engines complete. OXBOW: ~8.2/10 pre-fix → 9.0 post-fix. OWARE: 8.4/10 initial → 9.2 post-fix (LFO1/LFO2 wired, shimmerRate param wired, buzzAmount 0.15 default, lfo1Depth 0.1 default). 22 engines received DSP fixes this session; fleet average ~8.7/10 (up from ~7.2). Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). Full data in:
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md`
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
@@ -270,7 +270,7 @@ New engines are designed as standalone instruments first, then integrated into X
 | D005 | An Engine That Cannot Breathe Is a Photograph | Every engine needs at least one LFO with rate floor ≤ 0.01 Hz |
 | D006 | Expression Input Is Not Optional | Velocity→timbre + at least one CC (aftertouch / mod wheel / expression) |
 
-### The 31 Blessings
+### The 34 Blessings
 
 | ID | Blessing | Engine |
 |----|----------|--------|
@@ -305,6 +305,9 @@ New engines are designed as standalone instruments first, then integrated into X
 | B029 | Hydrostatic Compressor — pressure as environment, not utility; simulates depth-of-water physics | OCEANDEEP |
 | B030 | Bioluminescent Exciter — complete micro-synthesis engine generating organic alien texture | OCEANDEEP |
 | B031 | Darkness Filter Ceiling — creative restriction 50–800 Hz; constraint as identity declaration | OCEANDEEP |
+| B032 | Mallet Articulation Stack — Chaigne 1997 contact-time synthesis creates physical pluck/strike/brush modes with academic citation | OWARE |
+| B033 | Living Tuning Grid — 8-mode layout where each mode creates a distinct intonation field via harmonic series + sympathetic resonance combination | OWARE |
+| B034 | Per-Mode Sympathetic Network — 5 sympathetically resonating strings with unique ratios per mode (5×8 = 40 unique resonance profiles) | OWARE |
 
 ### The 4 Ongoing Debates
 
@@ -317,7 +320,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 ### Critical Fleet-Wide Findings
 
-- **Seance score range (post 2026-03-20 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE). Fleet avg ~8.6. All 42 seanced engines at 8.0+ target (OXBOW + OWARE pending seance).
+- **Seance score range (post 2026-03-21 fixes)**: ~8.0 (ORIGAMI) to 9.2 (OVERBITE / OWARE). Fleet avg ~8.7. **All 44 engines seanced and at 8.0+ target.** Five engines at 9.0+ (OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
 - **Preset expansion ongoing**: all engines now have at least 1 preset; thin coverage engines expanded in Rounds 8–11
 - **D006 aftertouch coverage**: 23/23 engines have aftertouch (Optic intentionally exempt — visual engine)
 - **D006 mod wheel coverage**: **22/22 MIDI-capable engines — FULLY RESOLVED** (Round 12C completed the last 7 engines)
