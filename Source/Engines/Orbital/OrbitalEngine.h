@@ -6,6 +6,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/Effects/Saturator.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 #include <vector>
@@ -593,12 +594,12 @@ public:
 
         // D005 fix: minimal LFO added — 0.03 Hz spectral morph breathing (±0.05)
         // D006: mod wheel increases drift rate up to +0.3 Hz at full wheel (sensitivity 0.3)
-        const double spectralDriftRate = 0.03 + modWheelValue * 0.3;
-        spectralDriftPhase += (spectralDriftRate * juce::MathConstants<double>::twoPi) / cachedSampleRate;
-        if (spectralDriftPhase >= juce::MathConstants<double>::twoPi) spectralDriftPhase -= juce::MathConstants<double>::twoPi;
+        // Replaced inline radians accumulator with shared BreathingLFO (Source/DSP/StandardLFO.h).
+        const float spectralDriftRate = 0.03f + modWheelValue * 0.3f;
+        spectralDriftLFO.setRate (spectralDriftRate, cachedSampleRateFloat);
         // D006: aftertouch added below — atPressure resolved after MIDI loop
         float effectiveMorph  = juce::jlimit (0.0f, 1.0f,
-            morphPosition + morphOffset + 0.05f * (float)std::sin(spectralDriftPhase));
+            morphPosition + morphOffset + 0.05f * spectralDriftLFO.process());
         // D001: compute peak velocity × envLevel across all active voices this block.
         // The post-mix SVF filter receives a boost proportional to how hard the notes
         // are playing — louder/harder hits open the filter, satisfying D001 (velocity
@@ -1556,7 +1557,8 @@ private:
     float    envelopeOutput     = 0.0f;     // peak envelope level this block (for coupling output)
 
     // D005 fix: minimal LFO added — spectral morph drift at 0.03 Hz
-    double spectralDriftPhase = 0.0;
+    // Replaced inline double-precision radians accumulator with shared BreathingLFO.
+    BreathingLFO spectralDriftLFO;
 
     //-- Spectral state ---------------------------------------------------------
     FormantFilter formantFilter;

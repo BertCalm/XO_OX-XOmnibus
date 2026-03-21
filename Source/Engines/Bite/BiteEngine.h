@@ -7,6 +7,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/StandardADSR.h"
+#include "../../DSP/GlideProcessor.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
 #include <cmath>
@@ -795,8 +796,7 @@ struct BiteVoice
     bool oscAWrapped = false;
 
     // Glide state
-    float glideFreq = 261.63f;    // current glide frequency
-    float glideTarget = 261.63f;  // target frequency
+    GlideProcessor glide;         // shared utility: frequency-domain portamento
     bool hasPlayedBefore = false;
 
     // Cached per-block
@@ -888,6 +888,7 @@ public:
             v.lfo1.reset();
             v.lfo2.reset();
             v.lfo3.reset();
+            v.glide.reset();
             v.hasPlayedBefore = false;
         }
         envelopeOutput = 0.0f;
@@ -1028,9 +1029,10 @@ public:
         // Combined effective resonance
         const float effFilterReso = clamp (filterReso + biteResoMod + trashResoMod, 0.0f, 0.95f);
 
-        // Glide coefficient (once per block)
-        const float glideCoeff = (glideTime > 0.001f)
-            ? std::exp (-1.0f / (srf * glideTime)) : 0.0f;
+        // Glide: update time on all active voices (once per block)
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.glide.setTime (glideTime, srf);
 
         // =====================================================================
         // Process MIDI events
@@ -1112,16 +1114,10 @@ public:
             // MPE pitch bend
             targetFreq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
             // Glide
-            if (glideMode > 0 && glideCoeff > 0.0f && voice.hasPlayedBefore)
-            {
-                voice.glideTarget = targetFreq;
-                // Glide processing happens per-sample below
-            }
+            if (glideMode > 0 && glideTime > 0.001f && voice.hasPlayedBefore)
+                voice.glide.setTarget (targetFreq);
             else
-            {
-                voice.glideFreq = targetFreq;
-                voice.glideTarget = targetFreq;
-            }
+                voice.glide.snapTo (targetFreq);
             voice.cachedBaseFreq = targetFreq;
             voice.filter.setMode (svfMode);
         }
@@ -1142,12 +1138,7 @@ public:
                 if (!voice.active) continue;
 
                 // --- Glide ---
-                if (glideCoeff > 0.0f)
-                {
-                    voice.glideFreq = voice.glideFreq * glideCoeff
-                                    + voice.glideTarget * (1.0f - glideCoeff);
-                }
-                float freq = voice.glideFreq;
+                float freq = voice.glide.process();
 
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
@@ -2114,7 +2105,7 @@ private:
         auto& v = voices[static_cast<size_t> (idx)];
 
         // Store previous frequency for glide
-        float prevFreq = v.hasPlayedBefore ? v.glideTarget : midiToFreq (noteNumber);
+        float prevFreq = v.hasPlayedBefore ? v.glide.getFreq() : midiToFreq (noteNumber);
 
         v.active = true;
         v.noteNumber = noteNumber;
@@ -2143,8 +2134,11 @@ private:
         v.lfo3.reset();
 
         // Glide: start from previous note frequency
-        v.glideTarget = freq;
-        v.glideFreq = v.hasPlayedBefore ? prevFreq : freq;
+        v.glide.setTarget (freq);
+        if (v.hasPlayedBefore)
+            v.glide.currentFreq = prevFreq;  // continue gliding from where the voice was
+        else
+            v.glide.snapTo (freq);           // first note: no portamento
         v.hasPlayedBefore = true;
 
         v.ampEnv.noteOn();

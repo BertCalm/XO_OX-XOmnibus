@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 
@@ -16,19 +17,23 @@ struct OleAdapterVoice {
     FamilyDelayLine dl; FamilyDampingFilter df; FamilyBodyResonance body;
     FamilySympatheticBank symp; FamilyOrganicDrift drift;
     StrumExciter strum; PluckExciter pluck;
-    float tremoloPhase=0; // per-voice tremolo phase for Aunt 3 (Charango)
+    StandardLFO tremoloLFO; // per-voice tremolo LFO for Aunt 3 (Charango) — replaces inline tremoloPhase
 
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);
         strum.prepare(s);pluck.prepare(s);
+        tremoloLFO.setShape(StandardLFO::Sine);
+        // Rate will be set per-block from the ole_aunt3Tremolo param (5-25 Hz)
     }
-    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloPhase=0;}
+    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();strum.reset();pluck.reset();active=false;ampEnv=0;tremoloLFO.reset();}
     void noteOn(int n,float v, float strumRateMs=8.0f){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*1.1f,3);symp.tune(freq);
         strum.trigger(3,strumRateMs,1);pluck.trigger(2);
-        ampEnv=v;releasing=false;active=true;tremoloPhase=0;
+        ampEnv=v;releasing=false;active=true;
+        tremoloLFO.setShape(StandardLFO::Sine);
+        tremoloLFO.reset();
     }
     void noteOff(){releasing=true;}
 };
@@ -139,6 +144,11 @@ public:
         // ---- Husband level lookup ----
         float husbandLvl[3] = {pHOud, pHBouz, pHPin};
 
+        // Update tremolo LFO rate once per block for all active Aunt 3 voices
+        for(auto&v:voices)
+            if(v.active && !v.isHusband && v.auntIdx==2)
+                v.tremoloLFO.setRate(pA3Tr, v.sr);
+
         auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
@@ -207,9 +217,7 @@ public:
                 float tremoloMod = 1.0f;
                 if (!v.isHusband && v.auntIdx == 2) {
                     // Rapid tremolo oscillation (5-25 Hz) modulates amplitude
-                    v.tremoloPhase += pA3Tr / v.sr;
-                    if (v.tremoloPhase >= 1.0f) v.tremoloPhase -= 1.0f;
-                    tremoloMod = 0.7f + 0.3f * std::sin(v.tremoloPhase * 6.2831853f);
+                    tremoloMod = 0.7f + 0.3f * v.tremoloLFO.process();
                 }
 
                 float bo=out+v.body.process(out)*bodyGain;

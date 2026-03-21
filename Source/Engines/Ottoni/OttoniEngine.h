@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 
@@ -15,19 +16,19 @@ struct OttoniAdapterVoice {
     FamilyDelayLine dl; FamilyDampingFilter df; FamilyBodyResonance body;
     FamilySympatheticBank symp; FamilyOrganicDrift drift; LipBuzzExciter lipBuzz;
 
-    // Per-voice vibrato phase (teen vibrato)
-    float vibPhase=0;
+    // Per-voice vibrato LFO (teen vibrato) — replaces inline vibPhase accumulator
+    StandardLFO vib;
 
     void prepare(double s){
         sr=(float)s;int md=(int)(sr/20)+8;
         dl.prepare(md);df.prepare();body.prepare(s);symp.prepare(s,512);drift.prepare(s);lipBuzz.prepare(s);
-        vibPhase=0;
+        vib.reset();
     }
-    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vibPhase=0;}
+    void reset(){dl.reset();df.reset();body.reset();symp.reset();drift.reset();lipBuzz.reset();active=false;ampEnv=0;vib.reset();}
     void noteOn(int n,float v){
         note=n;vel=v;freq=440*std::pow(2.f,(n-69)/12.f);
         dl.reset();df.reset();body.setParams(freq*0.8f,5);symp.tune(freq);
-        ampEnv=v;releasing=false;active=true;vibPhase=0;
+        ampEnv=v;releasing=false;active=true;vib.reset();
     }
     void noteOff(){releasing=true;}
 };
@@ -37,14 +38,15 @@ public:
     void prepare(double sampleRate,int maxBlockSize) override {sr=sampleRate;for(auto&v:voices)v.prepare(sampleRate);silenceGate.prepare(sampleRate,maxBlockSize);
         // Reset FX state
         revState[0]=revState[1]=revState[2]=revState[3]=0;
-        choPhase=0; delWr=0;
+        choLFO.reset(); delWr=0;
+        choLFO.setShape(StandardLFO::Sine);
         std::fill(delBufL,delBufL+kDelMax,0.f);
         std::fill(delBufR,delBufR+kDelMax,0.f);
     }
     void releaseResources() override {for(auto&v:voices)v.reset();}
     void reset() override {for(auto&v:voices)v.reset();lastL=lastR=0;
         revState[0]=revState[1]=revState[2]=revState[3]=0;
-        choPhase=0; delWr=0;
+        choLFO.reset(); delWr=0;
         std::fill(delBufL,delBufL+kDelMax,0.f);
         std::fill(delBufR,delBufR+kDelMax,0.f);
     }
@@ -170,6 +172,10 @@ public:
         int srMul=std::max(1,(int)(sr/44100.0+0.5));
         int combLens[4]={1117*srMul,1277*srMul,1423*srMul,1559*srMul};
 
+        // Pre-compute LFO rates once per block (params stable within block)
+        choLFO.setRate(pChoR, (float)sr);
+        for(auto&v:voices) v.vib.setRate(pTnVibR, v.sr);
+
         auto*oL=buf.getWritePointer(0);auto*oR=buf.getWritePointer(1);
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
@@ -183,10 +189,9 @@ public:
                 float ds=v.drift.tick(pDR,pDD);
                 float df=v.freq*fastPow2((ds+extPitchMod)/12.f)*PitchBendUtil::semitonesToFreqRatio(pitchBendNorm*2.0f);
 
-                // --- Teen vibrato ---
-                v.vibPhase+=pTnVibR/v.sr;
-                if(v.vibPhase>=1.f)v.vibPhase-=1.f;
-                float vibrato=fastSin(v.vibPhase*6.2831853f)*pTnVibD*growTeen;
+                // --- Teen vibrato (StandardLFO replaces inline vibPhase accumulator) ---
+                v.vib.process(); // advance phase; use v.vib.phase for multi-frequency reads
+                float vibrato=fastSin(v.vib.phase*6.2831853f)*pTnVibD*growTeen;
                 df*=fastPow2(vibrato*0.5f/12.f); // vibrato in semitone cents
 
                 // --- Foreign harmonics: overtone stretch ---
@@ -194,7 +199,7 @@ public:
                 float dlen=v.sr/std::max(df*stretch,20.f);
 
                 // --- Foreign drift: microtonal pitch drift ---
-                float microDrift=effFDr*std::sin(v.vibPhase*3.7f)*0.02f;
+                float microDrift=effFDr*std::sin(v.vib.phase*3.7f)*0.02f;
                 dlen*=(1.f+microDrift);
 
                 float out=v.dl.read(dlen);
@@ -207,7 +212,7 @@ public:
                 // Toddler: loose lips, low pressure, simple
                 float excToddler=v.lipBuzz.tick(df*0.998f, effTodPres*0.4f*velIntens, 0.0f)*toddlerMix;
                 // Tween: moderate embouchure, valve modulates pitch slightly
-                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vibPhase*2.1f);
+                float tweenPitchMod=1.f+pTwValve*0.003f*std::sin(v.vib.phase*2.1f);
                 float excTween=v.lipBuzz.tick(df*tweenPitchMod, effTwEmb*0.7f*velIntens, 0.5f)*tweenMix;
                 // Teen: full virtuosity, bore width affects body
                 float excTeen=v.lipBuzz.tick(df, std::min(1.f,effTnEmb*velIntens), ageScale)*teenMix;
@@ -243,11 +248,9 @@ public:
                 sR=fastTanh(sR*dGain)/dGain;
             }
 
-            // --- Chorus (simple stereo modulated delay) ---
+            // --- Chorus (StandardLFO replaces inline choPhase accumulator) ---
             if(pChoR>0.001f){
-                choPhase+=pChoR/(float)sr;
-                if(choPhase>=1.f)choPhase-=1.f;
-                float choMod=std::sin(choPhase*6.2831853f);
+                float choMod=choLFO.process();
                 float choDelay=0.005f*(float)sr*(1.f+choMod*0.3f); // ~5ms center
                 // Use delay buffer for chorus (read from delay line with modulated offset)
                 int choIdx=((delWr-(int)choDelay)%kDelMax+kDelMax)%kDelMax;
@@ -454,8 +457,8 @@ private:
     float revComb[4][kRevMax]={};
     int   revPos[4]={};
     float revState[4]={};
-    // Chorus phase
-    float choPhase=0;
+    // Chorus LFO (replaces inline choPhase accumulator)
+    StandardLFO choLFO;
     // Delay buffer (stereo, ~1s at 48kHz)
     static constexpr int kDelMax=96000; // V011: extended for 2000ms at 48kHz
     float delBufL[kDelMax]={};

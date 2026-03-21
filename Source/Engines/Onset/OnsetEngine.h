@@ -59,6 +59,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 #include <cstring>
@@ -1345,20 +1346,9 @@ struct OnsetVoice
     CytomicSVF voiceFilter;
 
     // D005: Breathing LFO — continuous autonomous filter modulation
-    struct BreathingLFO
-    {
-        float phase = 0.0f;
-        float sr = 44100.0f;
-        void prepare (double sampleRate) noexcept { sr = static_cast<float> (sampleRate); }
-        void reset() noexcept { phase = 0.0f; }
-        float process (float rateHz) noexcept
-        {
-            float out = fastSin (phase * 6.28318530718f);
-            phase += rateHz / sr;
-            if (phase >= 1.0f) phase -= 1.0f;
-            return out;
-        }
-    } breathingLFO;
+    // Replaced inline struct with shared BreathingLFO (Source/DSP/StandardLFO.h).
+    // Rate is fixed at 0.08 Hz; set once in prepare(), then call process() per sample.
+    BreathingLFO breathingLFO;
     float baseCutoff = 1000.0f;  // stored at trigger for LFO modulation
 
     // State
@@ -1379,7 +1369,7 @@ struct OnsetVoice
         phaseDist.prepare (sampleRate);
         ampEnv.prepare (sampleRate);
         transient.prepare (sampleRate);
-        breathingLFO.prepare (sampleRate);
+        breathingLFO.setRate (0.08f, static_cast<float> (sampleRate));
         voiceFilter.setMode (CytomicSVF::Mode::LowPass);
     }
 
@@ -1468,7 +1458,7 @@ struct OnsetVoice
         blended += transient.process();
 
         // D005: breathing LFO modulates filter cutoff continuously (0.08 Hz)
-        float breathMod = breathingLFO.process (0.08f);
+        float breathMod = breathingLFO.process();
         float modCutoff = clamp (baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
         voiceFilter.setCoefficients (modCutoff, 0.1f, sr);
 

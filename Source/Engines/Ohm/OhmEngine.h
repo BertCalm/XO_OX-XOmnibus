@@ -4,6 +4,7 @@
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include "../../DSP/StandardLFO.h"
 #include <array>
 #include <cmath>
 
@@ -246,11 +247,15 @@ public:
         // Prepare master FX
         delay.prepare(sampleRate, (int)(sampleRate * 2.5)); // max 2.5s delay buffer
         reverb.prepare(sampleRate);
+        // Sides breathing LFO: 0.12 Hz triangle — ~8 second cycle
+        sidesLFO.setRate (0.12f, (float)sampleRate);
+        sidesLFO.setShape (StandardLFO::Triangle);
     }
     void releaseResources() override { for(auto&v:voices)v.reset(); }
     void reset() override {
         for(auto&v:voices)v.reset();
         delay.reset(); reverb.reset();
+        sidesLFO.reset();
         lastSampleL=lastSampleR=0;
     }
 
@@ -352,10 +357,7 @@ public:
         // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).
         // 0.12 Hz triangle = ~8 second cycle. Modulates in-law interference level
         // so the SIDES of the family breathe even with static macro settings.
-        sidesLfoPhase += 0.12 / sr;
-        if (sidesLfoPhase >= 1.0) sidesLfoPhase -= 1.0;
-        float sidesLfo = 4.0f * std::fabs((float)sidesLfoPhase - 0.5f) - 1.0f; // triangle [-1,1]
-        float sidesLfoMod = sidesLfo * 0.15f; // ±15% modulation on in-law level
+        float sidesLfoMod = sidesLFO.process() * 0.15f; // ±15% modulation on in-law level
 
         for(int i=0;i<ns;++i){
             float sL=0,sR=0;
@@ -592,7 +594,7 @@ private:
     float atCommune = 0.f;
 
     // DSP FIX: autonomous LFO for SIDES breathing (in-law interference modulation)
-    double sidesLfoPhase = 0.0;
+    StandardLFO sidesLFO;  // 0.12 Hz triangle — replaces inline sidesLfoPhase
 
     // Master FX
     OhmDelay delay;
