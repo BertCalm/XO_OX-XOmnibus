@@ -2,7 +2,7 @@
 
 **Seance Date**: 2026-03-21
 **Engine**: OFFERING | Psychology-Driven Boom Bap Drum Synthesis | Engine #45
-**Identity**: TBD (pending `/mythology-keeper`)
+**Identity**: The Mantis Shrimp | Rubble Zone (5-15m) | 65% feliX / 35% Oscar
 **Accent**: Crate Wax Yellow `#E5B80B`
 **Parameter Prefix**: `ofr_`
 **Proposed Param Count**: 32 global + 48 per-voice = 80 parameters
@@ -54,9 +54,9 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 
 **Moog**: The concept has rigor. Berlyne, Wundt, and Csikszentmihalyi are foundational researchers in experimental aesthetics and positive psychology. Their work is peer-reviewed and widely cited. The question is not whether the citations are valid -- they are -- but whether the translation from theory to DSP is rigorous. If `ofr_digCuriosity` maps to a specific, deterministic function that modulates drum generation parameters along a defined curve (e.g., Berlyne's inverted-U maps to a parameter-deviation envelope where deviation peaks at 0.5 and falls at both extremes), then yes, this is Blessing-worthy. If it is a label for a random modulation amount, it is not.
 
-**Buchla**: Psychology-as-DSP is a paradigm, not a feature. If the implementation is rigorous, this is not B032 -- it is a philosophical position on par with "physics is synthesis" (D003). It could become a new Doctrine: **D007: The Mind IS the Interface.** But only if the Curiosity Engine is a real algorithm with defined behavior, not a metaphor.
+**Buchla**: Psychology-as-DSP is a paradigm, not a feature. If the implementation is rigorous, this is not B035 -- it is a philosophical position on par with "physics is synthesis" (D003). It could become a new Doctrine: **D007: The Mind IS the Interface.** But only if the Curiosity Engine is a real algorithm with defined behavior, not a metaphor.
 
-**Smith**: I vote conditional yes. The Blessing requires a defined algorithm before ratification. Proposed B032 name: **Psychology-as-DSP: Berlyne Hedonic Curve as Generation Parameter**. The Blessing text must include the specific mapping function.
+**Smith**: I vote conditional yes. The Blessing requires a defined algorithm before ratification. Proposed B035 name: **Psychology-as-DSP: Berlyne Hedonic Curve as Generation Parameter**. The Blessing text must include the specific mapping function.
 
 **Schulze**: I vote yes with the strongest possible emphasis on the condition. If the algorithm is real, this is the most important conceptual innovation in the fleet since ONSET's XVC Cross-Voice Coupling. If the algorithm is not real, this is the most dangerous precedent -- labeling parameters with academic citations without implementing the cited theory.
 
@@ -68,7 +68,7 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 
 **Pearlman**: I vote yes with conditions. The Fairlight's waveform drawing was psychology-as-DSP before anyone named it -- you drew the shape that felt right, and the machine made it real. XOffering intellectualizes that process, which is both its strength and its risk.
 
-**BLESSING B032 VOTE: 8-0 CONDITIONAL YES.** Unanimous contingent on the Curiosity Engine having a defined, deterministic DSP algorithm before build. The algorithm must be specified in the architecture doc as a mathematical function before B032 is ratified.
+**BLESSING B035 VOTE: 8-0 CONDITIONAL YES.** Unanimous contingent on the Curiosity Engine having a defined, deterministic DSP algorithm before build. The algorithm must be specified in the architecture doc as a mathematical function before B035 is ratified.
 
 ### Q2: Are the 5 city processing chains genuinely distinct topologies?
 
@@ -149,23 +149,23 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 
 ## Blessing Candidates
 
-### BC-OFFERING-01: Psychology-as-DSP (Proposed B032)
+### BC-OFFERING-01: Psychology-as-DSP (Proposed B035)
 
 **What it proposes**: Three DSP parameters derived from published experimental aesthetics research: `ofr_digCuriosity` (Berlyne 1960 -- inverted-U hedonic curve maps to parameter-deviation amount), `ofr_digComplexity` (Wundt 1874 -- stimulus intensity maps to variation density), `ofr_digFlow` (Csikszentmihalyi 1975 -- challenge/skill balance maps to pattern predictability). The first synthesizer parameters derived from psychological research rather than physical modeling, signal processing theory, or musical tradition.
 
 **Ghost reaction**: Moog: "If the algorithm is defined, this is a new paradigm." Buchla: "Could become D007." Smith: "Conditional yes -- the algorithm IS the Blessing." Schulze: "The most important conceptual innovation since XVC, or the most dangerous precedent. No middle ground." Vangelis: "An instrument with taste." Kakehashi: "Immediately understandable regardless of theory." Tomita: "Formalized orchestration psychology." Pearlman: "The Fairlight drew waveforms by feel. This intellectualizes the feel."
 
-**Status**: **8-0 CONDITIONAL YES.** Blessing is contingent on a defined, deterministic algorithm being specified before build. The algorithm must be documented as a mathematical function mapping parameter values to DSP operations. Without this, B032 is withdrawn.
+**Status**: **8-0 CONDITIONAL YES.** Blessing is contingent on a defined, deterministic algorithm being specified before build. The algorithm must be documented as a mathematical function mapping parameter values to DSP operations. Without this, B035 is withdrawn.
 
 **Proposed Blessing name**: Psychology-as-DSP -- Berlyne/Wundt/Csikszentmihalyi Aesthetic Parameters
 
-### BC-OFFERING-02: City-as-Processing-Chain (Proposed B033)
+### BC-OFFERING-02: City-as-Processing-Chain (Proposed B036)
 
 **What it proposes**: Five geographically-named processing chains, each representing a psychoacoustic archetype of a hip hop scene's sonic DNA. The processing chain is not an effect applied after synthesis -- it is part of the voice's identity, applied per-voice before the mixer. The city is a first-class synthesis parameter, not a preset label.
 
 **Ghost reaction**: Buchla: "Not yet. Five presets of the same chain is not five architectures." Tomita: "Missing spatial dimension. Cities need rooms." Smith: "Sufficient parametric distinction for V1, insufficient topological distinction for a Blessing." Moog: "Audible differentiation must be demonstrated, not assumed."
 
-**Status**: **3-5 AGAINST (Buchla, Tomita, Moog, Smith, Pearlman against; Vangelis, Kakehashi, Schulze in favor).** B033 is NOT granted at architecture stage. Revisit after build if the cities gain structural uniqueness and spatial character.
+**Status**: **3-5 AGAINST (Buchla, Tomita, Moog, Smith, Pearlman against; Vangelis, Kakehashi, Schulze in favor).** B036 is NOT granted at architecture stage. Revisit after build if the cities gain structural uniqueness and spatial character.
 
 ---
 
@@ -173,7 +173,7 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 
 | Priority | Issue | Detail | Recommendation |
 |----------|-------|--------|----------------|
-| **P0** | Curiosity Engine has no DSP specification | `ofr_digCuriosity`, `ofr_digComplexity`, `ofr_digFlow` are described in psychological terms but have zero DSP implementation detail. What does the engine actually DO when curiosity = 0.7? Without an algorithm, these are dead parameters (D004 violation), the B032 Blessing is void, and the engine's core innovation is marketing, not synthesis. | **Before build**: define the Curiosity Engine as a mathematical function. Example: `curiosity` maps to a deviation envelope applied to the transient generator's per-type parameters (pitch, decay, body) via `deviation = berlyneCurve(curiosity) * paramRange`, where `berlyneCurve(x) = 4x(1-x)` (inverted-U, peaks at x=0.5). `complexity` maps to the number of simultaneous parameter deviations. `flow` maps to the temporal autocorrelation of deviations (high flow = gradual change, low flow = abrupt change). Document the functions. |
+| **P0** | Curiosity Engine has no DSP specification | `ofr_digCuriosity`, `ofr_digComplexity`, `ofr_digFlow` are described in psychological terms but have zero DSP implementation detail. What does the engine actually DO when curiosity = 0.7? Without an algorithm, these are dead parameters (D004 violation), the B035 Blessing is void, and the engine's core innovation is marketing, not synthesis. | **Before build**: define the Curiosity Engine as a mathematical function. Example: `curiosity` maps to a deviation envelope applied to the transient generator's per-type parameters (pitch, decay, body) via `deviation = berlyneCurve(curiosity) * paramRange`, where `berlyneCurve(x) = 4x(1-x)` (inverted-U, peaks at x=0.5). `complexity` maps to the number of simultaneous parameter deviations. `flow` maps to the temporal autocorrelation of deviations (high flow = gradual change, low flow = abrupt change). Document the functions. |
 | **P0** | Bay Area convolution must become algorithmic | Convolution requires impulse response storage, violates fleet no-sample ethos, and creates a static spatial character. | Replace with algorithmic allpass fog: 4-stage recursive allpass chain with feedback, tuned to create dense, non-decaying diffusion. `cityIntensity` scales both allpass feedback amount and damping cutoff (more intensity = denser fog, darker). |
 | **P0** | Transient generator underspecified | Three parameters (`ofr_transientSnap`, `ofr_transientPitch`, `ofr_transientSat`) across 8 drum types. A kick and a hi-hat cannot share a synthesis topology. | Specify per-type synthesis models within `TransientGenerator.h`. Each `ofr_voiceType` value selects a distinct synthesis topology. The three transient params function as type-appropriate modifiers (e.g., `transientPitch` controls pitch envelope depth on kick but metallic frequency ratio on hat). Document the 8 topologies. |
 | **P1** | City chains lack topological distinction | All five cities share the same serial processing topology with different parameter values. | Per Q2 consensus: add at least one structurally unique stage per city (feedback saturation for Detroit, parallel compression for LA, recursive allpass for Bay Area, sidechain ducking for Toronto, feedback noise gate for NY). |
@@ -193,7 +193,7 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 
 4. **The OSTINATO coupling is the fleet's most culturally meaningful pairing.** (Vangelis, Schulze, Buchla, Kakehashi, Smith, Pearlman) World percussion driving boom bap collage intensity is not just signal routing -- it is a statement about the relationship between musical traditions. This should be a flagship Entangled preset.
 
-5. **The Curiosity Engine is the highest-risk, highest-reward feature.** (All 8) If implemented with a real algorithm, it establishes a new paradigm (psychology-as-DSP) and earns B032. If left undefined, it is the fleet's first D004 violation at the architecture stage and damages the credibility of future academic citations.
+5. **The Curiosity Engine is the highest-risk, highest-reward feature.** (All 8) If implemented with a real algorithm, it establishes a new paradigm (psychology-as-DSP) and earns B035. If left undefined, it is the fleet's first D004 violation at the architecture stage and damages the credibility of future academic citations.
 
 ---
 
@@ -237,10 +237,10 @@ The spec's thesis: "Psychology IS generation." Published research citations mapp
 The ghosts identify five specific actions that would elevate OFFERING from 7.9 to 9.0+:
 
 ### 1. Define the Curiosity Engine Algorithm (7.9 -> 8.4)
-The single most impactful improvement. Specify `berlyneCurve(x) = 4x(1-x)` (or a more sophisticated function) that maps `ofr_digCuriosity` to a parameter-deviation envelope applied to the transient generator. Define `complexity` as the number of simultaneous parameter axes being deviated. Define `flow` as the temporal smoothing coefficient on deviation changes (high flow = slow drift, low flow = sharp jumps). Document the functions in the architecture spec. This resolves the P0 concern, enables B032 ratification, and transforms D003 from CONDITIONAL to PASS.
+The single most impactful improvement. Specify `berlyneCurve(x) = 4x(1-x)` (or a more sophisticated function) that maps `ofr_digCuriosity` to a parameter-deviation envelope applied to the transient generator. Define `complexity` as the number of simultaneous parameter axes being deviated. Define `flow` as the temporal smoothing coefficient on deviation changes (high flow = slow drift, low flow = sharp jumps). Document the functions in the architecture spec. This resolves the P0 concern, enables B035 ratification, and transforms D003 from CONDITIONAL to PASS.
 
 ### 2. Add Structural Uniqueness to City Chains (8.4 -> 8.7)
-Per Buchla's recommendations: each city gets one structurally unique processing stage. Detroit: feedback saturation loop. LA: parallel compression. Bay Area: recursive allpass fog (replacing convolution). Toronto: sidechain ducking from sub-harmonic. NY: feedback noise gate. The parametrically distinct stages remain. The structural additions create genuine topological identity. This resolves the P1 city concern and reopens B033 candidacy.
+Per Buchla's recommendations: each city gets one structurally unique processing stage. Detroit: feedback saturation loop. LA: parallel compression. Bay Area: recursive allpass fog (replacing convolution). Toronto: sidechain ducking from sub-harmonic. NY: feedback noise gate. The parametrically distinct stages remain. The structural additions create genuine topological identity. This resolves the P1 city concern and reopens B036 candidacy.
 
 ### 3. Add Spatial Character to Cities (8.7 -> 8.9)
 Per Tomita: each city gets a short early-reflection stage with distinct timing (NY: 3-5ms tight, Detroit: 8-12ms warm, LA: 15-20ms spacious, Toronto: 5-8ms clean, Bay Area: 20-30ms diffuse). High-frequency rolloff per city to suggest material surfaces. Minimal CPU cost (one allpass or short delay per city), maximum perceptual impact. This makes cities sound like places, not just processing presets.
