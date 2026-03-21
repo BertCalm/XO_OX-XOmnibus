@@ -1,7 +1,6 @@
 # XOmnibus — Sound Design Guide
 *Per-engine reference for sound designers, preset builders, and performers.*
-*Covers 38 of 44 registered engines: features, key parameters, coupling strategies, and recommended pairings.*
-*AUDIT NOTE (2026-03-21): 6 engines missing entries — OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE. All were added after this guide was last updated.*
+*Covers all 44 registered engines: features, key parameters, coupling strategies, and recommended pairings. Updated 2026-03-21.*
 
 ---
 
@@ -2902,3 +2901,98 @@ MIDI Note (sets root pitch) → Cellular Automaton (16-cell, 256 rules, circular
 - **Organism_Fractal_Bloom** (Atmosphere) — Rule 90 (Sierpinski), slow scope evolution; fractal harmonic cascade
 - **Organism_Glitch_Colony** (Flux) — Rule 30, scope=1, fast step rate; chaotic rapid-fire CA glitch texture
 - **Organism_Mutation_Drift** (Flux) — any rule with mutate=0.03; slowly mutating deterministic pattern
+
+---
+
+## 44. OBRIX — Modular Brick Synthesis
+
+**Gallery code:** OBRIX | **Accent:** Reef Jade `#1E8B7E`
+**Parameter prefix:** `obrix_`
+**Aquatic mythology:** The Coral Reef — billions of individual polyps (bricks) building complex three-dimensional structure through simple local chemistry. OBRIX sits in the shallow productive zone (0–50m): where light, nutrients, and competition create the most complex ecosystems. Every brick is an independent sound source; the reef is their aggregate.
+
+### Identity
+A modular synthesis engine built from discrete "bricks" — independent oscillator/filter/amplifier units that can be combined, competed, and coupled. OBRIX has 79 parameters organized into five DSP layers: core brick synthesis, Harmonic Field (just intonation attraction/repulsion), Environmental parameters (temperature/pressure/current/turbidity), Brick Ecology (competition/symbiosis between bricks), and Stateful Synthesis (cumulative stress/bleaching history). No other XOmnibus engine models the *history* of notes played — OBRIX has memory.
+
+### Signal Flow
+MIDI Note → Voice Allocation (8 voices, brick mode) → Source 1 + Source 2 (independent oscillator units: saw/square/tri/noise/sine/FM) → Harmonic Field (per-voice JI attractor/repulsor: 3-limit/5-limit/7-limit ratio tables, IIR convergence) → Brick Ecology (competition: cross-amplitude suppression; symbiosis: noise→FM cross-coupling) → Filter Envelope (velocity-scaled D001 path, stress/bleach offset) → State Layer (stress accumulator +900Hz, bleach accumulator -700Hz — both persist across notes) → FX Chain (serial or parallel: AquaticFX + MathFX + BoutiqueFX slots) → Output.
+
+### Macros
+| Macro | Name | Mapping |
+|-------|------|---------|
+| M1 | **CHARACTER** | `obrix_macroBrightness` — sweeps filter cutoff + harmonic field strength simultaneously |
+| M2 | **MOVEMENT** | `obrix_macroLFO` — LFO rate + depth across both source oscillators |
+| M3 | **COUPLING** | Cross-engine coupling send amount |
+| M4 | **ECOLOGY** | `obrix_macroEcology` — competition + symbiosis strengths simultaneously |
+
+### Key Parameters — Core
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `obrix_src1Type` | 0–5 | 0–2 | Source 1 waveform: 0=saw, 1=square, 2=tri, 3=noise, 4=sine, 5=FM. FM (5) enables the symbiosis ecology (noise in src1 modulates FM depth in src2). |
+| `obrix_src2Type` | 0–5 | 1–4 | Source 2 waveform. Running different types on src1/src2 creates brick-level timbral layering. |
+| `obrix_src1Level` | 0–1 | 0.5–0.8 | Source 1 volume. The competition ecology scales this down when src2 amplitude is high. |
+| `obrix_src2Level` | 0–1 | 0.4–0.7 | Source 2 volume. Start lower than src1; competition ecology will balance dynamically. |
+| `obrix_filterCutoff` | 80–18kHz | 600–4000 Hz | Filter cutoff before all modulations. Velocity, stress, bleach, current, and LFOs all offset this. With 5 independent modulation sources, cutoff is rarely static. |
+| `obrix_filterRes` | 0–1 | 0.2–0.6 | Filter resonance. The stress accumulator raises cutoff; high resonance at high stress creates self-filtering squeals. |
+
+### Key Parameters — Harmonic Field (Wave 4)
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `obrix_fieldStrength` | 0–1 | 0.2–0.5 | IIR convergence rate toward the nearest just-ratio. 0 = equal temperament (no attraction). 0.5 = strong pull toward JI. The field slowly bends pitch toward consonance or dissonance depending on polarity. |
+| `obrix_fieldPolarity` | -1 to 1 | ±0.3–0.8 | +1 = attractor (voices converge toward just ratios — warm, pure). -1 = repulsor (voices pushed away from just ratios — dissonant, beating). 0 = no field. This single parameter transforms the engine from consonant to chaotic. |
+| `obrix_fieldRate` | 0.01–10 Hz | 0.05–0.5 | How fast the IIR field convergence updates. Slow rates create gentle pitch drift. Fast rates create audible vibrato-like warping toward/away from JI. |
+| `obrix_fieldPrimeLimit` | 3/5/7 | 5 | Prime limit of the just intonation system: 3-limit (perfect 5ths only), 5-limit (major/minor thirds), 7-limit (include septimal ratios). Higher = richer harmonic gravity field. |
+
+### Key Parameters — Environmental (Wave 4)
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `obrix_envTemp` | 0–1 | 0.3–0.5 | Water temperature. Scales thermal drift depth — high temperature = more organic pitch instability. |
+| `obrix_envPressure` | 0–1 | 0.3–0.6 | Depth pressure. Scales LFO rate — higher pressure = faster internal modulation (the reef's metabolism). |
+| `obrix_envCurrent` | -1 to 1 | ±0.2–0.5 | Water current direction and speed. Biases filter cutoff ±2000Hz. Positive = warm current brightening. Negative = cold current darkening. Automates slowly for tidal shift effect. |
+| `obrix_envTurbidity` | 0–1 | 0–0.15 | Particulate matter in water. Adds engine-level noise per sample — a granular texture above the synthesis. Above 0.2 becomes a cloud; above 0.5 dominates. |
+
+### Key Parameters — Ecology (Wave 4)
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `obrix_competitionStrength` | 0–1 | 0.2–0.5 | Cross-amplitude suppression between src1 and src2. When src2 is loud, src1 is attenuated (and vice versa). Creates natural timbral alternation — bricks competing for spectral space. Floor at 0.1 (neither source can be fully silenced by the other). |
+| `obrix_symbiosisStrength` | 0–1 | 0.3–0.6 | When src1Type=noise (3), src1 amplitude drives FM depth on src2. The two sources become mutually dependent — noise fuels FM. More symbiosis = noisier FM = richer but less pitched timbre. Requires src1Type=5 on src2 to activate. |
+
+### Key Parameters — State (Wave 4)
+| Parameter | Range | Sweet Spot | What It Does |
+|-----------|-------|------------|-------------|
+| `obrix_stressDecay` | 0.001–0.1 | 0.005–0.02 | How fast the stress accumulator decays between notes. Fast = stress dissipates quickly. Slow = each note adds more stress, gradually brightening the filter. Playing rapid passages pushes stress to max (+900Hz cutoff boost). |
+| `obrix_bleachRate` | 0–1 | 0.1–0.3 | Rate at which high notes (above C5) accumulate bleach. Bleach simulates coral bleaching — sustained high-note playing lowers the filter ceiling (-700Hz over time). The engine literally changes as you play it. |
+| `obrix_stateReset` | bool | off | Clears both stress and bleach accumulators. Essential between takes. |
+| `obrix_fxMode` | 0–1 | 0 | 0=Serial FX (each slot processes previous output — traditional chain). 1=Parallel FX (each slot processes dry signal independently, wet contributions summed — dramatically different FX interaction). |
+
+### Sound Design Tips
+1. **Start with fieldPolarity = 0, then move it.** Begin with no harmonic field. As you add polarity (positive or negative), the engine transforms from a standard subtractive synth into a JI-attractor or dissonance-repulsor. The shift is gradual and musical — this is the engine's primary personality control.
+2. **Competition creates organic timbral rhythm.** Set src1=saw, src2=square, competitionStrength=0.4. As you play chords, the two sources naturally alternate prominence based on their amplitude dynamics. The result sounds like two players competing for a microphone — neither fully wins.
+3. **Stress as an arc.** Set `obrix_stressDecay` slow (0.002). Play ascending lines. The filter gradually brightens with each note (+900Hz per strong velocity hit). After 8–10 notes, the engine is wide open. This models a performance arc — the reef "heating up" as the musician plays harder.
+4. **Parallel FX for dense textures.** Switch `obrix_fxMode` to 1. Each FX slot now processes the dry signal independently — AquaticFX, MathFX, and BoutiqueFX blend together rather than chaining. The result is denser, less coherent, more "reef ecosystem" than "signal chain."
+5. **Turbidity as glue.** Set `obrix_envTurbidity` to 0.05–0.1. This adds a constant particulate noise floor that makes OBRIX sit in a mix like a room microphone — every note has a living space around it. Use sparingly.
+6. **7-limit field for jazz.** Set `obrix_fieldPrimeLimit` to 7 and `obrix_fieldPolarity` to +0.6. The harmonic field pulls toward septimal ratios — the engine gravitates toward the ♭7 and augmented 5th as natural consonances. Unusual and compelling for jazz or modal contexts.
+
+### Coupling
+- **Sends:** Stereo audio (ch 0/1), plus state signals (stress level, bleach level available as modulation sources)
+- **Receives:** `AmpToFilter` (external amplitude modulates cutoff — sidechain OBRIX with a kick to pump the reef), `EnvToLFO` (external envelope modulates LFO rate — sync reef metabolism to another engine's timing), `AudioToFM` (external audio feeds src2 FM depth — another engine's timbre drives OBRIX's internal FM synthesis)
+- **Best as source for:** `AmpToFilter` (stress accumulator as slow rising filter pump), `LFOToPitch` (competition dynamics as pitch modulation)
+- **Ecosystem role:** The layered reef — OBRIX provides the most complex DSP environment in the fleet. Best used as a primary voice with other engines providing motion, percussion, or atmospheric layering.
+
+### Recommended Pairings
+- **+ ONSET:** ONSET's drum transients feed OBRIX's stress accumulator via `AmpToFilter` — drum hits brighten the reef filter in real time. The reef responds to percussion.
+- **+ ORGANISM:** CA generative melody over OBRIX's stateful harmonic field. ORGANISM provides evolving pitch; OBRIX provides the timbral environment that changes with the history of notes played.
+- **+ OXBOW:** OBRIX's complex brick synthesis feeding OXBOW's Chiasmus FDN reverb. The reef dissolves into an entangled reverb pool — complexity becoming suspension.
+- **+ OWARE:** Two physically-aware engines. OWARE's mallet physics feeds OBRIX's FM via `AudioToFM`. Struck bars driving FM bricks.
+- **+ OUROBOROS:** OUROBOROS's strange attractor drives OBRIX's harmonic field rate via `EnvToLFO`. Mathematical chaos controls how fast the reef's JI attractor updates — fast attractor motion sounds like pitch vibrato; slow motion sounds like tidal tuning shift.
+
+### Recommended Presets to Start With
+- **Obrix_Reef_Init** (Foundation) — default patch: all 5 systems at conservative settings, fieldPolarity neutral; learn the core brick character before engaging ecology
+- **Obrix_JI_Attractor** (Foundation) — fieldPolarity +0.8, 5-limit, slow fieldRate; gentle convergence toward just intonation on every note
+- **Obrix_Competition_Bass** (Foundation) — src1=saw, src2=square, high competition; fat competitive bass with natural timbral alternation
+- **Obrix_Bleaching_Lead** (Flux) — stressDecay slow, bleachRate high; lead that gradually darkens as you play higher — the performance arc
+- **Obrix_Turbid_Texture** (Atmosphere) — turbidity 0.08, parallel FX, low current; immersive particulate ambient texture
+- **Obrix_Symbiosis_Cloud** (Atmosphere) — src1=noise, src2=FM, symbiosis 0.6; noise-fueled FM cloud with ecology-driven timbral animation
+- **Obrix_Septimal_Chord** (Entangled) — 7-limit field, fieldPolarity +0.7, moderate strength; chords that pull toward septimal consonances
+- **Obrix_Repulsor_Swarm** (Flux) — fieldPolarity -0.9, 5-limit, fast fieldRate; active JI repulsion creates beating, dissonant energy
+- **Obrix_Stressed_Peak** (Prism) — stressDecay 0.002, high velocity sensitivity; filter opens progressively with playing intensity
+- **Obrix_Parallel_Wall** (Aether) — fxMode=parallel, all three FX chains active; maximum FX density from independent processing
