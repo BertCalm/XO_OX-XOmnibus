@@ -17,8 +17,8 @@
 
   "preset_selection": {
     "mode": "auto_dna",
-    "mood_filter": ["Foundation", "Kinetic"],
-    "min_presets": 64,
+    "mood_filter": null,
+    "min_presets": 50,
     "dna_diversity_target": 0.7
   },
 
