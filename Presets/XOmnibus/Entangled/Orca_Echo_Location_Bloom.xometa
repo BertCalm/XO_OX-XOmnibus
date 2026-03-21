@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "name": "Echo-Location Bloom",
+  "mood": "Entangled",
+  "engines": ["Orca", "Opal"],
+  "author": "Guru Bin — ORCA Vol 3 Transcendental 2026-03-21",
+  "version": "1.0.0",
+  "description": "ORCA echolocation click train (28 Hz, resonance 0.95) fires into OPAL's granular engine via EnvToMorph coupling. OPAL's grain pitch follows ORCA's mod envelope arc. The sonar locates acoustic space; OPAL samples what the sonar found and holds it in granular suspension. Every ORCA note search generates an OPAL memory.",
+  "tags": ["orca", "opal", "entangled", "echolocation", "granular", "sonar", "transcendental"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.65,
+    "SPACE": 0.78
+  },
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.42,
+    "movement": 0.62,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Orca": {
+      "orca_wtPosition": 0.25,
+      "orca_wtScanRate": 0.32,
+      "orca_formantIntensity": 0.22,
+      "orca_formantShift": 0.52,
+      "orca_glide": 0.18,
+      "orca_echoRate": 28.0,
+      "orca_echoReso": 0.95,
+      "orca_echoDamp": 0.05,
+      "orca_echoMix": 0.78,
+      "orca_huntMacro": 0.18,
+      "orca_breachSub": 0.18,
+      "orca_breachShape": 0.0,
+      "orca_breachThreshold": -30.0,
+      "orca_breachRatio": 4.0,
+      "orca_crushBits": 16.0,
+      "orca_crushDownsample": 1.0,
+      "orca_crushMix": 0.0,
+      "orca_crushSplitFreq": 800.0,
+      "orca_filterCutoff": 11000.0,
+      "orca_filterReso": 0.18,
+      "orca_level": 0.75,
+      "orca_ampAttack": 0.05,
+      "orca_ampDecay": 0.8,
+      "orca_ampSustain": 0.55,
+      "orca_ampRelease": 2.5,
+      "orca_modAttack": 0.05,
+      "orca_modDecay": 0.6,
+      "orca_modSustain": 0.45,
+      "orca_modRelease": 1.8,
+      "orca_lfo1Rate": 0.12,
+      "orca_lfo1Depth": 0.22,
+      "orca_lfo1Shape": 0,
+      "orca_lfo2Rate": 0.18,
+      "orca_lfo2Depth": 0.28,
+      "orca_lfo2Shape": 0,
+      "orca_polyphony": 2,
+      "orca_velCutoffAmt": 0.62,
+      "orca_macroCharacter": 0.0,
+      "orca_macroMovement": 0.0,
+      "orca_macroCoupling": 0.0,
+      "orca_macroSpace": 0.0
+    },
+    "Opal": {
+      "opal_grainSize": 0.08,
+      "opal_grainDensity": 0.72,
+      "opal_scatter": 0.55,
+      "opal_freeze": 0.0,
+      "opal_pitch": 0.0,
+      "opal_feedback": 0.35,
+      "opal_mix": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": [
+      {
+        "engineA": "Orca",
+        "engineB": "Opal",
+        "type": "EnvToMorph",
+        "amount": 0.65
+      }
+    ]
+  },
+  "sequencer": null
+}
