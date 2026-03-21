@@ -1,0 +1,671 @@
+{
+  "pack_name": "XO_OX MPCe Percussion Vol. 1",
+  "pack_id": "xoox-mpce-perc-001",
+  "engine": "ONSET",
+  "description": "First MPCe-native drum pack. 16 pads x 4 corners x 4 velocity layers = 256 WAVs.",
+
+  "defaults": {
+    "velocities": [20, 50, 90, 127],
+    "duration_ms": 2000,
+    "release_tail_ms": 1000,
+    "channel": 0
+  },
+
+  "presets": [
+    {
+      "name": "Kick",
+      "slug": "A01_Kick_SW",
+      "notes": [36],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Kick Ghost",
+      "slug": "A01_Kick_NW",
+      "notes": [36],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 500,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Kick Accent",
+      "slug": "A01_Kick_NE",
+      "notes": [36],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Kick Effect",
+      "slug": "A01_Kick_SE",
+      "notes": [36],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2500,
+      "release_tail_ms": 1000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Snare",
+      "slug": "A02_Snare_SW",
+      "notes": [38],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 1000,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Snare Ghost",
+      "slug": "A02_Snare_NW",
+      "notes": [38],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Snare Rimshot",
+      "slug": "A02_Snare_NE",
+      "notes": [38],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 1000,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Snare Buzz",
+      "slug": "A02_Snare_SE",
+      "notes": [38],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Closed Hat",
+      "slug": "A03_CHat_SW",
+      "notes": [42],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 200,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Closed Hat Tick",
+      "slug": "A03_CHat_NW",
+      "notes": [42],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 300,
+      "release_tail_ms": 100,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Closed Hat Pedal",
+      "slug": "A03_CHat_NE",
+      "notes": [42],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 600,
+      "release_tail_ms": 300,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Closed Hat Shaker",
+      "slug": "A03_CHat_SE",
+      "notes": [42],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 800,
+      "release_tail_ms": 300,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Open Hat",
+      "slug": "A04_OHat_SW",
+      "notes": [46],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 1000,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Open Hat Half",
+      "slug": "A04_OHat_NW",
+      "notes": [46],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 800,
+      "release_tail_ms": 500,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Open Hat Crash Bleed",
+      "slug": "A04_OHat_NE",
+      "notes": [46],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1500,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Open Hat Sizzle",
+      "slug": "A04_OHat_SE",
+      "notes": [46],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Clap",
+      "slug": "A05_Clap_SW",
+      "notes": [39],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Finger Snap",
+      "slug": "A05_Clap_NW",
+      "notes": [39],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 200,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Double Clap",
+      "slug": "A05_Clap_NE",
+      "notes": [39],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1200,
+      "release_tail_ms": 500,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Reverb Clap",
+      "slug": "A05_Clap_SE",
+      "notes": [39],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1500,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Low Tom",
+      "slug": "A06_LTom_SW",
+      "notes": [45],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 800,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Low Tom Muted",
+      "slug": "A06_LTom_NW",
+      "notes": [45],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 600,
+      "release_tail_ms": 200,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Low Tom Rim",
+      "slug": "A06_LTom_NE",
+      "notes": [45],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Low Tom Sweep",
+      "slug": "A06_LTom_SE",
+      "notes": [45],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2500,
+      "release_tail_ms": 1000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Rimshot",
+      "slug": "A07_Rim_SW",
+      "notes": [37],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 800,
+      "release_tail_ms": 300,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Side Stick",
+      "slug": "A07_Rim_NW",
+      "notes": [37],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 400,
+      "release_tail_ms": 200,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Cross Stick",
+      "slug": "A07_Rim_NE",
+      "notes": [37],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 600,
+      "release_tail_ms": 300,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Flam",
+      "slug": "A07_Rim_SE",
+      "notes": [37],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Crash",
+      "slug": "A08_Crash_SW",
+      "notes": [49],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 3000,
+      "release_tail_ms": 2000,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Crash Choke",
+      "slug": "A08_Crash_NW",
+      "notes": [49],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 100,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Crash Bell",
+      "slug": "A08_Crash_NE",
+      "notes": [49],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Crash Reversed",
+      "slug": "A08_Crash_SE",
+      "notes": [49],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 3000,
+      "release_tail_ms": 500,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Ride",
+      "slug": "A09_Ride_SW",
+      "notes": [51],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1500,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Ride Tip",
+      "slug": "A09_Ride_NW",
+      "notes": [51],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Ride Bell",
+      "slug": "A09_Ride_NE",
+      "notes": [51],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2500,
+      "release_tail_ms": 1500,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Ride Swell",
+      "slug": "A09_Ride_SE",
+      "notes": [51],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 3000,
+      "release_tail_ms": 2000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Mid Tom",
+      "slug": "A10_MTom_SW",
+      "notes": [47],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1200,
+      "release_tail_ms": 600,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Mid Tom Muted",
+      "slug": "A10_MTom_NW",
+      "notes": [47],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 200,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Mid Tom Rim",
+      "slug": "A10_MTom_NE",
+      "notes": [47],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 800,
+      "release_tail_ms": 400,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Mid Tom Roll",
+      "slug": "A10_MTom_SE",
+      "notes": [47],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 800,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "High Tom",
+      "slug": "A11_HTom_SW",
+      "notes": [50],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "High Tom Muted",
+      "slug": "A11_HTom_NW",
+      "notes": [50],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 400,
+      "release_tail_ms": 150,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "High Tom Rim",
+      "slug": "A11_HTom_NE",
+      "notes": [50],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 700,
+      "release_tail_ms": 300,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "High Tom Ruff",
+      "slug": "A11_HTom_SE",
+      "notes": [50],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 600,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Floor Tom",
+      "slug": "A12_FTom_SW",
+      "notes": [43],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 2000,
+      "release_tail_ms": 1000,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Floor Tom Muted",
+      "slug": "A12_FTom_NW",
+      "notes": [43],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 600,
+      "release_tail_ms": 200,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Floor Tom Rim",
+      "slug": "A12_FTom_NE",
+      "notes": [43],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1200,
+      "release_tail_ms": 600,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Floor Tom Thunder",
+      "slug": "A12_FTom_SE",
+      "notes": [43],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 3000,
+      "release_tail_ms": 1500,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Tambourine",
+      "slug": "A13_Tamb_SW",
+      "notes": [54],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 800,
+      "release_tail_ms": 400,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Tambourine Single",
+      "slug": "A13_Tamb_NW",
+      "notes": [54],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 300,
+      "release_tail_ms": 150,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Tambourine Shake",
+      "slug": "A13_Tamb_NE",
+      "notes": [54],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 500,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Tambourine Filtered",
+      "slug": "A13_Tamb_SE",
+      "notes": [54],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Cowbell",
+      "slug": "A14_Cow_SW",
+      "notes": [56],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Cowbell Muted",
+      "slug": "A14_Cow_NW",
+      "notes": [56],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 400,
+      "release_tail_ms": 150,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Cowbell Open",
+      "slug": "A14_Cow_NE",
+      "notes": [56],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 800,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Cowbell Pitched",
+      "slug": "A14_Cow_SE",
+      "notes": [56],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1200,
+      "release_tail_ms": 600,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Clave",
+      "slug": "A15_Clave_SW",
+      "notes": [75],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 200,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Clave Soft",
+      "slug": "A15_Clave_NW",
+      "notes": [75],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 300,
+      "release_tail_ms": 100,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Clave Hard",
+      "slug": "A15_Clave_NE",
+      "notes": [75],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 600,
+      "release_tail_ms": 250,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Clave Delayed",
+      "slug": "A15_Clave_SE",
+      "notes": [75],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1500,
+      "release_tail_ms": 1000,
+      "corner": "SE",
+      "corner_role": "effect"
+    },
+
+    {
+      "name": "Wood Block",
+      "slug": "A16_WBlk_SW",
+      "notes": [76],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 500,
+      "release_tail_ms": 200,
+      "corner": "SW",
+      "corner_role": "standard"
+    },
+    {
+      "name": "Wood Block Low",
+      "slug": "A16_WBlk_NW",
+      "notes": [76],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 400,
+      "release_tail_ms": 150,
+      "corner": "NW",
+      "corner_role": "ghost"
+    },
+    {
+      "name": "Wood Block High",
+      "slug": "A16_WBlk_NE",
+      "notes": [76],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 400,
+      "release_tail_ms": 150,
+      "corner": "NE",
+      "corner_role": "accent"
+    },
+    {
+      "name": "Wood Block Resonant",
+      "slug": "A16_WBlk_SE",
+      "notes": [76],
+      "velocities": [20, 50, 90, 127],
+      "duration_ms": 1000,
+      "release_tail_ms": 500,
+      "corner": "SE",
+      "corner_role": "effect"
+    }
+  ]
+}

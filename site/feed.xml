@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>XOmnibus Signal</title>
-    <link>https://xo-ox.com/updates.html</link>
+    <link>https://xo-ox.org/updates.html</link>
     <description>Updates from XO_OX Designs — XOmnibus multi-engine synthesizer</description>
     <language>en-us</language>
-    <atom:link href="https://xo-ox.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://xo-ox.org/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>XOmnibus v1.0 — Launch</title>
-      <link>https://xo-ox.com/updates.html</link>
-      <description>34 engines, 10,028 presets, XPN export. Free and open-source.</description>
+      <link>https://xo-ox.org/updates.html</link>
+      <description>44 engines, 16,400+ presets, XPN export. Free and open-source.</description>
       <pubDate>Tue, 18 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://xo-ox.com/updates.html#v1.0</guid>
+      <guid>https://xo-ox.org/updates.html#v1.0</guid>
     </item>
   </channel>
 </rss>
