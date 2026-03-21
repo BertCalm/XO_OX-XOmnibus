@@ -1301,11 +1301,22 @@ public:
     // Parameters — 36 total
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         // Organ model selector
         params.push_back (std::make_unique<PI> (juce::ParameterID { "otis_organ", 1 },
@@ -1403,7 +1414,6 @@ public:
         params.push_back (std::make_unique<PI> (juce::ParameterID { "otis_lfo2Shape", 1 },
             "Otis LFO2 Shape", 0, 4, 0));
 
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override

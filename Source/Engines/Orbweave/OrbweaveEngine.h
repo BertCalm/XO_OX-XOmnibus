@@ -6,6 +6,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/PolyBLEP.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 #include <cstring>
@@ -226,7 +227,7 @@ public:
     {
         for (auto& v : voices) v.reset();
         for (auto& fx : fxSlots) fx.reset();
-        activeVoices = 0;
+        activeVoices.store(0, std::memory_order_relaxed);
         lastSampleL = lastSampleR = 0.0f;
     }
 
@@ -506,7 +507,7 @@ public:
 
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
     }
 
     //==========================================================================
@@ -712,7 +713,7 @@ public:
     juce::String getEngineId() const override { return "Orbweave"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF8E4585); }
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
     static constexpr float kTwoPi = 6.28318530717958647692f;
@@ -1011,7 +1012,7 @@ private:
     float sr = 44100.0f;
     uint64_t voiceCounter = 0;
     std::array<OrbweaveVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
     float modWheel_ = 0.0f;
     float pitchBend_ = 0.0f;
     int polyLimit_ = 8;

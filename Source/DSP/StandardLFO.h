@@ -102,8 +102,9 @@ struct StandardLFO
             {
                 // Detect phase wrap: generate new random value on each cycle.
                 // Uses Knuth TAOCP Vol. 2 LCG — deterministic, fast, no alloc.
-                float prev = phase - phaseInc;
-                if (prev < 0.0f || phase < prev)
+                // Track lastPhase explicitly — safe at audio-rate LFO speeds where
+                // phaseInc can be large (0.02+) and the old prev<0 check was fragile.
+                if (phase < lastPhase)
                 {
                     rngState = rngState * 1664525u + 1013904223u;
                     holdValue = static_cast<float> (rngState & 0xFFFF) / 32768.0f - 1.0f;
@@ -117,7 +118,9 @@ struct StandardLFO
                 break;
         }
 
-        // Advance phase accumulator
+        // Advance phase accumulator — record lastPhase before wrapping so
+        // S&H wrap detection sees the pre-wrap value next sample.
+        lastPhase = phase;
         phase += phaseInc;
         if (phase >= 1.0f) phase -= 1.0f;
 
@@ -132,6 +135,7 @@ struct StandardLFO
     void reset() noexcept
     {
         phase     = 0.0f;
+        lastPhase = 0.0f;
         holdValue = 0.0f;
     }
 
@@ -140,6 +144,7 @@ struct StandardLFO
     void reset (float startPhase) noexcept
     {
         phase     = startPhase;
+        lastPhase = startPhase;
         holdValue = 0.0f;
     }
 
@@ -157,6 +162,7 @@ struct StandardLFO
     // State — public for snapshot/restore in undo system
     //--------------------------------------------------------------------------
     float    phase       = 0.0f;
+    float    lastPhase   = 0.0f;  // Previous phase — used for S&H wrap detection
     float    phaseInc    = 0.0f;
     int      shape       = 0;
     float    phaseOffset = 0.0f;

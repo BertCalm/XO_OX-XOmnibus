@@ -211,7 +211,7 @@ struct OwareBuzzMembrane
 
         // Nonlinear: tanh on the extracted band (membrane only activates above threshold)
         float sensitivity = 5.0f + amount * 15.0f;
-        float buzzed = buzzBand * (1.0f + amount * std::tanh (buzzBand * sensitivity));
+        float buzzed = buzzBand * (1.0f + amount * xomnibus::fastTanh (buzzBand * sensitivity));
 
         // Re-inject buzz artifacts
         return input + buzzed * amount;
@@ -259,6 +259,10 @@ struct OwareBodyResonator
         frameMode3.setFreqAndQ (1100.0f, 12.0f, sr);
         bowlFreq = freqHz * 0.5f;
         fundamentalHz = freqHz;
+        // Cache bowl trig once per block (bowlFreq only changes here, not per-sample)
+        float w = 2.0f * 3.14159265f * std::max (bowlFreq, 20.0f) / sr;
+        bowlCosW = xomnibus::fastCos (w);
+        bowlSinW = xomnibus::fastSin (w);
     }
 
     // Improvement #7: compute per-mode decay boost based on proximity to body resonances
@@ -324,10 +328,10 @@ struct OwareBodyResonator
                 break;
             case 2:
             {
-                float w = 2.0f * 3.14159265f * std::max (bowlFreq, 20.0f) / sr;
-                float r = 0.999f;
-                float newY1 = bowlY1 * 2.0f * r * std::cos (w) - bowlY2 * r * r
-                            + input * (1.0f - r * r) * std::sin (w);
+                // bowlCosW and bowlSinW are cached in setFundamental() — no per-sample trig
+                constexpr float r = 0.999f;
+                float newY1 = bowlY1 * 2.0f * r * bowlCosW - bowlY2 * r * r
+                            + input * (1.0f - r * r) * bowlSinW;
                 bowlY2 = bowlY1;
                 bowlY1 = flushDenormal (newY1);
                 bodyOut = bowlY1;
@@ -352,6 +356,7 @@ struct OwareBodyResonator
     float tubeDelaySamples = 100.0f;
     OwareMode frameMode1, frameMode2, frameMode3;
     float bowlFreq = 220.0f, bowlY1 = 0.0f, bowlY2 = 0.0f;
+    float bowlCosW = 1.0f, bowlSinW = 0.0f;  // cached per-block to avoid per-sample trig
 };
 
 //==============================================================================
@@ -457,6 +462,9 @@ public:
         smoothBodyDepth.prepare (srf);
         smoothSympathy.prepare (srf);
         smoothBrightness.prepare (srf);
+
+        // ~0.5 second thermal drift time constant, sample-rate scaled
+        thermalCoeff = 1.0f - std::exp (-1.0f / (0.5f * srf));
 
         prepareSilenceGate (sr, maxBlockSize, 500.0f);
     }
@@ -579,12 +587,30 @@ public:
                           * pThermal * 8.0f;  // max ±8 cents
             thermalTimer = 0;
         }
-        // Guru Bin: 0.00001 was too slow — drift was frozen during fast passages.
-        // 0.0001 lets the drift breathe audibly within 4-second retarget windows.
-        thermalState += 0.0001f * (thermalTarget - thermalState);
+        // thermalCoeff is sample-rate-scaled (~0.5s time constant, computed in prepare()).
+        // Replaces the old hardcoded 0.0001f which ran 2× faster at 96kHz.
+        thermalState += thermalCoeff * (thermalTarget - thermalState);
 
         float* outL = buffer.getWritePointer (0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : nullptr;
+
+        // Read LFO params once per block — rate/shape don't change sample-to-sample
+        const float lfo1Rate  = paramLfo1Rate  ? paramLfo1Rate->load()  : 0.5f;
+        const float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.0f;
+        const int   lfo1Shape = paramLfo1Shape ? static_cast<int> (paramLfo1Shape->load()) : 0;
+        const float lfo2Rate  = paramLfo2Rate  ? paramLfo2Rate->load()  : 1.0f;
+        const float lfo2Depth = paramLfo2Depth ? paramLfo2Depth->load() : 0.0f;
+        const int   lfo2Shape = paramLfo2Shape ? static_cast<int> (paramLfo2Shape->load()) : 0;
+
+        // Apply LFO rate/shape once per block per voice — not per sample
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.lfo1.setRate (lfo1Rate, srf);
+            voice.lfo1.setShape (lfo1Shape);
+            voice.lfo2.setRate (lfo2Rate, srf);
+            voice.lfo2.setShape (lfo2Shape);
+        }
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -603,19 +629,6 @@ public:
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
-
-                // BUG-1 FIX: wire LFO1 → brightness, LFO2 → material
-                float lfo1Rate  = paramLfo1Rate  ? paramLfo1Rate->load()  : 0.5f;
-                float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.0f;
-                int   lfo1Shape = paramLfo1Shape ? static_cast<int> (paramLfo1Shape->load()) : 0;
-                float lfo2Rate  = paramLfo2Rate  ? paramLfo2Rate->load()  : 1.0f;
-                float lfo2Depth = paramLfo2Depth ? paramLfo2Depth->load() : 0.0f;
-                int   lfo2Shape = paramLfo2Shape ? static_cast<int> (paramLfo2Shape->load()) : 0;
-
-                voice.lfo1.setRate (lfo1Rate, srf);
-                voice.lfo1.setShape (lfo1Shape);
-                voice.lfo2.setRate (lfo2Rate, srf);
-                voice.lfo2.setShape (lfo2Shape);
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;  // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;  // LFO2 → material
@@ -852,11 +865,22 @@ public:
     // Parameters — 26 total (23 original + thermal drift + shimmer Hz rename + LFOs)
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_material", 1 }, "Oware Material",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.2f));
@@ -914,8 +938,6 @@ public:
         params.push_back (std::make_unique<PF> (juce::ParameterID { "owr_lfo2Depth", 1 }, "Oware LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
         params.push_back (std::make_unique<PI> (juce::ParameterID { "owr_lfo2Shape", 1 }, "Oware LFO2 Shape", 0, 4, 0));
-
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -962,6 +984,7 @@ private:
 
     // Improvement #5: thermal drift state
     float thermalState = 0.0f, thermalTarget = 0.0f;
+    float thermalCoeff = 0.0001f;  // sample-rate-scaled in prepare(); fallback matches old 48kHz value
     int thermalTimer = 0;
     uint32_t thermalNoiseState = 54321u;
 

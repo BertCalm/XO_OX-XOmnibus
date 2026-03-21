@@ -112,7 +112,7 @@ struct FilterEnvelope
             case Stage::Decay:
                 level -= (level - susLvl) * decayCoeff;
                 level = flushDenormal (level);
-                if (level <= susLvl + 0.001f)
+                if (std::abs(level - susLvl) < 0.001f || level <= susLvl)
                 {
                     level = susLvl;
                     stage = Stage::Sustain;
@@ -150,7 +150,7 @@ struct FilterEnvelope
     float level = 0.0f;
 
 private:
-    float sr       = 48000.0f;
+    float sr       = 44100.0f;  // Default — overwritten by prepare()
     float atkTime   = 0.005f;
     float decTime   = 0.3f;
     float susLvl    = 0.0f;

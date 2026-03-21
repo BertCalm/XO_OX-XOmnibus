@@ -70,6 +70,7 @@
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <cstring>
 #include <vector>
@@ -1263,7 +1264,7 @@ public:
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
     }
 
     //==========================================================================
@@ -1626,7 +1627,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
     //==========================================================================
@@ -1817,7 +1818,7 @@ private:
 
     // Voices (2 — duophonic)
     std::array<OuieVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
 
     // Output cache for coupling
     std::vector<float> outputCacheL;

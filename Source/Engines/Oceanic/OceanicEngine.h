@@ -10,6 +10,7 @@
 #include "../../DSP/VoiceAllocator.h"
 #include "../../DSP/ParameterSmoother.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 
@@ -839,7 +840,7 @@ public:
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1068,7 +1069,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
 
@@ -1275,7 +1276,7 @@ private:
 
     std::array<OceanicVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
 
     // Coupling accumulators
     float envelopeOutput = 0.0f;

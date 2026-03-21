@@ -130,7 +130,7 @@ struct DeepWaveguideBody {
         if (bodyChar == 2) tuneOffset = -0.025f; // wreck — hull harmonic shift
 
         float f = clamp(freq * (1.f + tuneOffset), 20.f, sr * 0.48f);
-        int delaySamples = (int)(sr / f);
+        int delaySamples = (int)(sr / f + 0.5f);
         if (delaySamples < 2)   delaySamples = 2;
         if (delaySamples >= kMaxDelay) delaySamples = kMaxDelay - 1;
 
@@ -145,7 +145,9 @@ struct DeepWaveguideBody {
         // For wreck mode: light allpass diffusion inside the comb
         if (bodyChar == 2) {
             float g = 0.3f;
-            out = (out - g * delayed) / (1.f - g * out);
+            float denom = 1.f - g * out;
+            if (std::abs(denom) < 1e-6f) denom = 1e-6f;
+            out = (out - g * delayed) / denom;
             out = flushDenormal(out);
         }
 

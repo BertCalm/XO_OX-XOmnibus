@@ -412,6 +412,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OrbweaveEngine::addParameters(params);
     OvertoneEngine::addParameters(params);
     OrganismEngine::addParameters(params);
+    // Singularity Engines
+    OxbowEngine::addParameters(params);
+    OwareEngine::addParameters(params);
+    // Kuramoto Vocal Synthesis
+    opera::OperaEngine::addParameters(params);
+    // Psychology-Driven Drum Synthesis
+    OfferingEngine::addParameters(params);
+    // Chef Quad Collection
+    OtoEngine::addParameters(params);
+    OctaveEngine::addParameters(params);
+    OlegEngine::addParameters(params);
+    OtisEngine::addParameters(params);
 
     // ── Coupling Performance Overlay ──────────────────────────────────────────
     // 4 route slots × 5 params = 20 new APVTS parameters.

@@ -930,11 +930,22 @@ public:
     // Parameters -- 20 total
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         // Organ select (0=Sho, 1=Sheng, 2=Khene, 3=Melodica)
         params.push_back (std::make_unique<PI> (juce::ParameterID { "oto_organ", 1 }, "Oto Organ Model", 0, 3, 0));
@@ -989,7 +1000,6 @@ public:
         params.push_back (std::make_unique<PF> (juce::ParameterID { "oto_macroD", 1 }, "Oto Macro SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override

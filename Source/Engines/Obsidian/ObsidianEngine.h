@@ -9,6 +9,7 @@
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 
@@ -720,7 +721,7 @@ public:
         int count = 0;
         for (const auto& voice : voices)
             if (voice.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1003,7 +1004,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 
 private:
@@ -1346,7 +1347,7 @@ private:
     // ---- Voice pool ----
     std::array<ObsidianVoice, kMaxVoices> voices;
     uint64_t voiceTimestampCounter = 0;          // Monotonic counter for LRU voice stealing
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
 
     // ---- Smoothed control parameters ----
     // These interpolate toward target values each sample to prevent zipper noise.

@@ -14,6 +14,13 @@ namespace xomnibus {
 // track knob movements without latency, but slow enough to prevent zipper
 // noise on stepped parameter changes.
 //
+// Note: the coefficient uses angular frequency (2π/T) rather than the
+// standard one-pole formula (1/T). This produces faster convergence suited
+// to parameter smoothing (~6× faster than a true 5ms RC). The labeled time
+// constant is an approximate -60dB settling time guide, not a strict RC
+// constant. timeSec is the approximate settling time; actual -3dB point is
+// ~timeSec / (2π) ≈ 0.8ms for the 5ms default.
+//
 // Usage:
 //   ParameterSmoother cutoff;
 //   cutoff.prepare (sampleRate);              // default 5ms
@@ -35,7 +42,10 @@ struct ParameterSmoother
             coeff = 1.0f;
             return;
         }
-        coeff = 1.0f - std::exp (-kTwoPi * (1.0f / timeSec) / sampleRate);
+        // One-pole smoother using angular frequency for faster convergence.
+        // timeSec is the approximate settling time label, not a strict RC constant.
+        // See class comment above for full explanation.
+        coeff = 1.0f - std::exp (-kTwoPi / (timeSec * sampleRate));
     }
 
     /// Set the target value. The smoother will approach this over time.

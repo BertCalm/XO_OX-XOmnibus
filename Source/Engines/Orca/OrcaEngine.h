@@ -12,6 +12,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/Compressor.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 #include <cstring>
@@ -556,7 +557,7 @@ public:
                 // LFO1 scans wavetable position slowly (the "dialect" evolving)
                 float wtPos = clamp (smoothedWTPos + lfo1Val * 0.3f + modLevel * pWTScanRate * 0.5f, 0.0f, 1.0f);
                 voice.wtOsc.setPosition (wtPos);
-                float mpeFreqOrc = voice.glide.getFreq() * std::pow (2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f)
+                float mpeFreqOrc = voice.glide.getFreq() * xomnibus::fastPow2 (voice.mpeExpression.pitchBendSemitones / 12.0f)
                                                          * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 voice.wtOsc.setFrequency (mpeFreqOrc, srf);
 
@@ -742,7 +743,7 @@ public:
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock (buffer.getReadPointer (0),
@@ -1056,7 +1057,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
     SilenceGate silenceGate;
@@ -1270,7 +1271,7 @@ private:
 
     // Voices
     std::array<OrcaVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
 
     // Breach sub-bass state
     float breachSubPhase = 0.0f;

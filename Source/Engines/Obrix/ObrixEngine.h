@@ -6,6 +6,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 #include <cstring>
@@ -285,7 +286,7 @@ public:
     {
         for (auto& v : voices) v.reset();
         for (auto& fx : fxSlots) fx.reset();
-        activeVoices = 0;
+        activeVoices.store(0, std::memory_order_relaxed);
         lastSampleL = lastSampleR = 0.0f;
         gestureLevel = 0.0f;
         gesturePhase = 0.0f;
@@ -1015,7 +1016,7 @@ public:
 
         int count = 0;
         for (const auto& v : voices) if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         // Brick complexity for coupling metadata (0–1 normalized)
         // Smith: architectural complexity signal — how many bricks are active
@@ -1023,7 +1024,7 @@ public:
         int numActiveBricks = (src1Type > 0 ? 1 : 0) + (src2Type > 0 ? 1 : 0)
                             + (proc1Type > 0 ? 1 : 0) + (proc2Type > 0 ? 1 : 0) + (proc3Type > 0 ? 1 : 0)
                             + (fxType[0] > 0 ? 1 : 0) + (fxType[1] > 0 ? 1 : 0) + (fxType[2] > 0 ? 1 : 0);
-        float voiceGate = (activeVoices > 0) ? 1.0f : 0.0f;
+        float voiceGate = (activeVoices.load(std::memory_order_relaxed) > 0) ? 1.0f : 0.0f;
         brickComplexity = voiceGate * static_cast<float> (std::max (1, numActiveBricks))
                         / static_cast<float> (kMaxBricks);
     }
@@ -1349,7 +1350,7 @@ public:
     juce::String getEngineId() const override { return "Obrix"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF1E8B7E); }
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
     static constexpr float kTwoPi = 6.28318530717958647692f;
@@ -1679,7 +1680,7 @@ private:
     float sr = 44100.0f;
     uint64_t voiceCounter = 0;
     std::array<ObrixVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
     float modWheel_ = 0.0f;
     float pitchBend_ = 0.0f;
     int polyLimit_ = 8;

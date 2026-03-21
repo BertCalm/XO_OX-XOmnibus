@@ -4,6 +4,7 @@
 #include "../../DSP/EngineProfiler.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -795,6 +796,13 @@ public:
         profiler.setCpuBudgetFraction (0.22f);  // 22% CPU budget — generous for RK4 at 4x oversample
         aftertouch.prepare (sampleRate);
 
+        // D005: breathing LFO — sub-Hz sine modulates leash ±0.05.
+        // 0.08 Hz = ~12.5 second cycle. Slow enough to be felt as organic drift
+        // rather than audible vibrato, satisfying the "cannot breathe = photograph" doctrine.
+        breathingLFO.setRate (0.08f, static_cast<float> (sampleRate));
+        breathingLFO.setShape (StandardLFO::Sine);
+        breathingLFO.reset();
+
         silenceGate.prepare (sampleRate, maxBlockSize);
         silenceGate.setHoldTime (1000.0f);  // Ouroboros has infinite-sustain attractor voices
     }
@@ -845,6 +853,56 @@ public:
         const float projectionPhi     = paramPhi          ? paramPhi->load()          : 0.0f;
         const float dampingAmount     = paramDamping      ? paramDamping->load()      : 0.3f;
         const float injectionDepth    = paramInjection    ? paramInjection->load()    : 0.0f;
+
+        //----------------------------------------------------------------------
+        // D004: Read macro values (centered at 0.5 = no effect).
+        // Each macro offsets/scales 3+ core parameters before the ODE solver.
+        //----------------------------------------------------------------------
+        const float macroChar  = paramMacroChar  ? paramMacroChar->load()  : 0.5f;
+        const float macroMove  = paramMacroMove  ? paramMacroMove->load()  : 0.5f;
+        const float macroCoup  = paramMacroCoup  ? paramMacroCoup->load()  : 0.5f;
+        const float macroSpace = paramMacroSpace ? paramMacroSpace->load() : 0.5f;
+
+        // Bipolar macro offsets: (macro - 0.5) * 2 gives [-1, +1] from [0, 1].
+        const float charBipolar  = (macroChar  - 0.5f) * 2.0f;
+        const float moveBipolar  = (macroMove  - 0.5f) * 2.0f;
+        const float coupBipolar  = (macroCoup  - 0.5f) * 2.0f;
+        const float spaceBipolar = (macroSpace - 0.5f) * 2.0f;
+
+        // D005: tick breathing LFO once per block (controls leash micro-drift).
+        const float breathLFO = breathingLFO.process();  // [-1, +1] sine at 0.08 Hz
+
+        // Apply macros as additive offsets to core params before use:
+        //   CHARACTER:  chaosIndex ±0.3, theta ±15° (0.2618 rad), leash ±0.1
+        //   MOVEMENT:   rate ×(0.6..1.4), phi ±20° (0.3491 rad), injection ±0.15
+        //   COUPLING:   leash ±0.3, injection ±0.2, theta ±10° (0.1745 rad)
+        //   SPACE:      damping ±0.3, rate ×(0.5..1.0 range applied as ×(0.75-spaceBipolar*0.25)), phi ±15°
+        //   D005 BREATH: leash subtle ±0.05 organic drift
+        const float effectiveRate = clamp (orbitRate
+            * (1.0f + moveBipolar * 0.4f)
+            * (1.0f - spaceBipolar * 0.25f),
+            0.01f, 20000.0f);
+        const float effectiveChaosRaw = clamp (chaosIndex
+            + charBipolar * 0.3f,
+            0.0f, 1.0f);
+        const float effectiveLeashRaw = clamp (leashAmount
+            + charBipolar * (-0.1f)     // CHARACTER loosens leash as chaos rises
+            + coupBipolar * 0.3f        // COUPLING tightens leash (more musical)
+            + breathLFO  * 0.05f,       // D005 breathing: gentle organic drift
+            0.0f, 1.0f);
+        const float effectiveThetaRaw = projectionTheta
+            + charBipolar  * 0.2618f    // CHARACTER: ±15°
+            + coupBipolar  * 0.1745f;   // COUPLING:  ±10°
+        const float effectivePhiRaw = projectionPhi
+            + moveBipolar  * 0.3491f    // MOVEMENT: ±20°
+            + spaceBipolar * 0.2618f;   // SPACE:    ±15°
+        const float effectiveDampingRaw = clamp (dampingAmount
+            + spaceBipolar * 0.3f,
+            0.0f, 1.0f);
+        const float effectiveInjectionRaw = clamp (injectionDepth
+            + moveBipolar  * 0.15f      // MOVEMENT: ±0.15
+            + coupBipolar  * 0.2f,      // COUPLING: ±0.2
+            0.0f, 1.0f);
 
         const auto newTopology = static_cast<AttractorTopology> (
             clamp (static_cast<float> (topologySelection), 0.0f, 3.0f));
@@ -899,27 +957,31 @@ public:
         // Full pressure adds up to +0.3 chaos and reduces leash by up to -0.3
         // D006: mod wheel tightens leash (sensitivity 0.4) — wheel up = more musical pitch control
         // Wheel creates counterpoint to aftertouch: one loosens chaos, the other reins it in.
-        float effectiveChaos = clamp (chaosIndex + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
-        float effectiveLeash = clamp (leashAmount - atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
+        // D004 macros feed into effectiveChaos/effectiveLeash via the *Raw intermediates
+        // computed above. Aftertouch and coupling accumulators layer on top.
+        float effectiveChaos = clamp (effectiveChaosRaw + couplingChaosModulation + atPressure * 0.3f, 0.0f, 1.0f);
+        float effectiveLeash = clamp (effectiveLeashRaw - atPressure * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
 
         //----------------------------------------------------------------------
         // Precompute 3D-to-stereo projection rotation matrix.
         // Rx(theta) * Ry(phi) projects the 3D attractor trajectory to L/R.
         // Theta rotates around X-axis (tilts Y/Z plane),
         // Phi rotates around Y-axis (tilts X/Z plane).
+        // effectiveThetaRaw / effectivePhiRaw already include macro offsets.
         //----------------------------------------------------------------------
-        float cosTheta = std::cos (projectionTheta + couplingThetaModulation);
-        float sinTheta = std::sin (projectionTheta + couplingThetaModulation);
-        float cosPhi   = std::cos (projectionPhi);
-        float sinPhi   = std::sin (projectionPhi);
+        float cosTheta = std::cos (effectiveThetaRaw + couplingThetaModulation);
+        float sinTheta = std::sin (effectiveThetaRaw + couplingThetaModulation);
+        float cosPhi   = std::cos (effectivePhiRaw);
+        float sinPhi   = std::sin (effectivePhiRaw);
 
         //----------------------------------------------------------------------
         // Damping coefficient for LP accumulator.
         // dampAlpha near 1.0 = no damping (raw chaos passes through).
         // dampAlpha near 0.05 = heavy damping (only slow evolution survives).
         // The 0.95 multiplier ensures we never reach alpha=0 (frozen state).
+        // effectiveDampingRaw already includes SPACE macro offset.
         //----------------------------------------------------------------------
-        float dampAlpha = 1.0f - (dampingAmount + couplingDampingModulation) * 0.95f;
+        float dampAlpha = 1.0f - (effectiveDampingRaw + couplingDampingModulation) * 0.95f;
         dampAlpha = clamp (dampAlpha, 0.05f, 1.0f);
 
         //----------------------------------------------------------------------
@@ -964,9 +1026,10 @@ public:
                 // If noteNumber is valid, use MIDI pitch; otherwise fall back
                 // to the rate parameter (drone/modular mode).
                 //--------------------------------------------------------------
+                // effectiveRate includes MOVEMENT and SPACE macro scaling
                 float targetFrequency = (voice.noteNumber >= 0)
                     ? midiToFreq (voice.noteNumber)
-                    : orbitRate;
+                    : effectiveRate;
                 targetFrequency += couplingPitchModulation * 20.0f;   // +/- 20 Hz pitch mod range
                 targetFrequency *= PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 if (targetFrequency < 20.0f) targetFrequency = 20.0f; // Sub-audible floor
@@ -974,10 +1037,11 @@ public:
                 //--------------------------------------------------------------
                 // Coupling injection (external audio perturbs the attractor)
                 //--------------------------------------------------------------
+                // effectiveInjectionRaw includes MOVEMENT (+0.15) and COUPLING (+0.2) macro offsets
                 float injectionForceX = 0.0f, injectionForceY = 0.0f;
-                if (couplingAudioActive && injectionDepth > 0.001f)
+                if (couplingAudioActive && effectiveInjectionRaw > 0.001f)
                 {
-                    float injectionScale = injectionDepth;
+                    float injectionScale = effectiveInjectionRaw;
 
                     // Velocity injection boost: 50ms transient that decays
                     // from note-on, adding percussive onset energy
@@ -1383,6 +1447,10 @@ public:
         paramPhi        = apvts.getRawParameterValue ("ouro_phi");
         paramDamping    = apvts.getRawParameterValue ("ouro_damping");
         paramInjection  = apvts.getRawParameterValue ("ouro_injection");
+        paramMacroChar  = apvts.getRawParameterValue ("ouro_macroChar");
+        paramMacroMove  = apvts.getRawParameterValue ("ouro_macroMove");
+        paramMacroCoup  = apvts.getRawParameterValue ("ouro_macroCoup");
+        paramMacroSpace = apvts.getRawParameterValue ("ouro_macroSpace");
     }
 
 private:
@@ -1438,6 +1506,33 @@ private:
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID ("ouro_injection", 1), "Injection",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
+
+        // D004: Four standard macros — centered at 0.5 (no effect at default).
+        // Each macro affects 3+ parameters to satisfy the D004 doctrine.
+
+        // M1: CHARACTER — shapes the timbral identity (chaos + theta + leash)
+        //     0.5 = neutral | <0.5 = calmer/more ordered | >0.5 = wilder/more chaotic
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_macroChar", 1), "CHARACTER",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // M2: MOVEMENT — shapes orbital dynamics (rate + phi + injection)
+        //     0.5 = neutral | <0.5 = slower/less perturbed | >0.5 = faster/more perturbed
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_macroMove", 1), "MOVEMENT",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // M3: COUPLING — shapes coupling sensitivity (leash + injection + theta)
+        //     0.5 = neutral | <0.5 = isolated/free | >0.5 = coupled/reactive
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_macroCoup", 1), "COUPLING",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
+
+        // M4: SPACE — shapes spatial/temporal character (damping + rate + phi)
+        //     0.5 = neutral | <0.5 = bright/fast | >0.5 = dark/spacious
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID ("ouro_macroSpace", 1), "SPACE",
+            juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
     }
 
     //==========================================================================
@@ -1537,6 +1632,9 @@ private:
     // D006: mod wheel (CC#1) — tightens leash tension (+0.4 at full wheel)
     float modWheelAmount = 0.0f;
 
+    //-- D005: Breathing LFO — 0.08 Hz sine applied to leash (±0.05 modulation depth) --
+    StandardLFO breathingLFO;
+
     //-- Cached parameter pointers (attached once, read per-block) -------------
     std::atomic<float>* paramTopology   = nullptr;
     std::atomic<float>* paramRate       = nullptr;
@@ -1546,6 +1644,12 @@ private:
     std::atomic<float>* paramPhi        = nullptr;
     std::atomic<float>* paramDamping    = nullptr;
     std::atomic<float>* paramInjection  = nullptr;
+
+    // D004: four standard macro parameter pointers
+    std::atomic<float>* paramMacroChar  = nullptr;  // CHARACTER: chaos + theta + leash
+    std::atomic<float>* paramMacroMove  = nullptr;  // MOVEMENT:  rate + phi + injection
+    std::atomic<float>* paramMacroCoup  = nullptr;  // COUPLING:  leash + injection + theta
+    std::atomic<float>* paramMacroSpace = nullptr;  // SPACE:     damping + rate + phi
 };
 
 } // namespace xomnibus

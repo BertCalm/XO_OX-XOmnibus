@@ -10,6 +10,7 @@
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 
@@ -1347,7 +1348,7 @@ public:
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1602,7 +1603,7 @@ public:
     juce::String getEngineId() const override { return "Osteria"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFF722F37); } // Porto Wine #722F37
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
 
@@ -1783,7 +1784,7 @@ private:
     // --- Voice pool ---
     std::array<OsteriaVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;         // Monotonic counter for LRU voice stealing
-    int activeVoices = 0;              // Current active voice count (reported to UI)
+    std::atomic<int> activeVoices{0};  // Current active voice count (reported to UI)
 
     // D006: aftertouch handler — CS-80-style channel pressure → tavern mix depth
     PolyAftertouch aftertouch;

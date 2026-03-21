@@ -10,6 +10,7 @@
 #include "../../DSP/SRO/SilenceGate.h"
 #include "../../DSP/Effects/LushReverb.h"
 #include <array>
+#include <atomic>
 #include <cmath>
 #include <algorithm>
 #include <cstring>
@@ -760,7 +761,7 @@ public:
         int count = 0;
         for (const auto& v : voices)
             if (v.active) ++count;
-        activeVoices = count;
+        activeVoices.store(count, std::memory_order_relaxed);
 
         silenceGate.analyzeBlock (buffer.getReadPointer (0), buffer.getReadPointer (1), numSamples);
     }
@@ -1087,7 +1088,7 @@ public:
 
     int getMaxVoices() const override { return kMaxVoices; }
 
-    int getActiveVoiceCount() const override { return activeVoices; }
+    int getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
 private:
 
@@ -1366,7 +1367,7 @@ private:
 
     // Voices
     std::array<OctoVoice, kMaxVoices> voices {};
-    int activeVoices = 0;
+    std::atomic<int> activeVoices{0};
 
     // Output cache for coupling
     std::vector<float> outputCacheL;

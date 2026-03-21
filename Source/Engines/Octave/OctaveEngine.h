@@ -835,11 +835,22 @@ public:
     // Parameters — 27 total
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         // Organ model selector (0-3)
         params.push_back (std::make_unique<PI> (juce::ParameterID { "oct_organ", 1 }, "Octave Organ Model", 0, 3, 0));
@@ -909,8 +920,6 @@ public:
         // Competition param (coupling awareness)
         params.push_back (std::make_unique<PF> (juce::ParameterID { "oct_competition", 1 }, "Octave Competition",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override

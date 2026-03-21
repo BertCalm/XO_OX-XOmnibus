@@ -235,7 +235,7 @@ struct OperaSVF
         cutoffHz = std::clamp (cutoffHz, 20.0f, sampleRate * 0.499f);
         Q = std::max (Q, 0.5f);
 
-        float g = std::tan (kPi * cutoffHz / sampleRate);
+        float g = FastMath::fastTan (kPi * cutoffHz / sampleRate);
         float k = 1.0f / Q;
         float a1 = 1.0f / (1.0f + g * (g + k));
         float a2 = g * a1;
@@ -478,9 +478,20 @@ public:
     // Parameter Layout — 45 parameters with opera_ prefix
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     static juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
     {
         std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
 
         using FloatParam = juce::AudioParameterFloat;
         using IntParam   = juce::AudioParameterInt;
@@ -660,8 +671,6 @@ public:
         params.push_back (std::make_unique<FloatParam> (
             juce::ParameterID ("opera_velToEffort", 1), "Vel->Effort",
             NR (0.0f, 1.0f, 0.001f), 0.3f));
-
-        return { params.begin(), params.end() };
     }
 
     //==========================================================================

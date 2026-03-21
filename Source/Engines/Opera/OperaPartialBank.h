@@ -135,6 +135,16 @@ inline float fastExp(float x) noexcept
     return result;
 }
 
+//------------------------------------------------------------------------------
+/// Fast tan(x) via Padé [3/2] approximant. Accurate to ~0.03% for |x| < π/4
+/// (i.e. cutoff < 0.25 × sampleRate). Suitable for TPT/SVF filter prewarping.
+//------------------------------------------------------------------------------
+inline float fastTan(float x) noexcept
+{
+    float x2 = x * x;
+    return x * (15.0f - x2) / (15.0f - 6.0f * x2);
+}
+
 } // namespace FastMath
 
 //==============================================================================

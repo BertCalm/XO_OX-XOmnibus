@@ -1043,11 +1043,22 @@ public:
     // Parameters — 30 total
     //==========================================================================
 
+    static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+    {
+        addParametersImpl(params);
+    }
+
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return { params.begin(), params.end() };
+    }
+
+    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
-        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
         // Core organ selector
         params.push_back (std::make_unique<PI> (juce::ParameterID { "oleg_organ", 1 }, "Oleg Organ Model",
@@ -1117,8 +1128,6 @@ public:
         params.push_back (std::make_unique<PF> (juce::ParameterID { "oleg_lfo2Depth", 1 }, "Oleg LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
         params.push_back (std::make_unique<PI> (juce::ParameterID { "oleg_lfo2Shape", 1 }, "Oleg LFO2 Shape", 0, 4, 0));
-
-        return { params.begin(), params.end() };
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
