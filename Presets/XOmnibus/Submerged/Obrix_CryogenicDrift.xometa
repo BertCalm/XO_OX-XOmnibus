@@ -13,7 +13,8 @@
     "drift",
     "slow",
     "submerged",
-    "environmental"
+    "environmental",
+    "wave4"
   ],
   "macroLabels": [
     "CHARACTER",

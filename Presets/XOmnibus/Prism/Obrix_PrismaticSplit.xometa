@@ -7,7 +7,8 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Narrow pulse wave refracted through three independent FX paths simultaneously. Parallel routing lets delay shimmer, chorus widen, and reverb bloom at exactly the same frequency without interfering — a prism splitting one beam into three distinct spatial planes.",
+  "tier": "awakening",
+  "description": "Narrow pulse wave refracted through three independent FX paths simultaneously. Parallel routing lets delay shimmer, chorus widen, and reverb bloom at exactly the same frequency without interfering \u2014 a prism splitting one beam into three distinct spatial planes.",
   "tags": [
     "pulse",
     "parallel-fx",

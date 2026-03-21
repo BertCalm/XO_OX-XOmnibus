@@ -886,8 +886,11 @@ public:
             }
             else // Parallel — each slot processes dry independently; wet contributions summed
             {
+                // Accumulate wet-above-dry from each active slot, then normalize by slot
+                // count to prevent energy inflation when multiple slots are active.
                 float dryL = mixL, dryR = mixR;
-                float wetL = dryL, wetR = dryR;
+                float wetSumL = 0.0f, wetSumR = 0.0f;
+                int activeSlots = 0;
                 for (int fx = 0; fx < 3; ++fx)
                 {
                     if (fxType[fx] > 0)
@@ -897,13 +900,15 @@ public:
                         if (effMix > 0.001f)
                         {
                             applyEffect (fxType[fx], slotL, slotR, 1.0f, fxParam[fx], macroSpace, fxSlots[fx]);
-                            wetL += (slotL - dryL) * effMix;
-                            wetR += (slotR - dryR) * effMix;
+                            wetSumL += (slotL - dryL) * effMix;
+                            wetSumR += (slotR - dryR) * effMix;
+                            ++activeSlots;
                         }
                     }
                 }
-                mixL = wetL;
-                mixR = wetR;
+                float normGain = activeSlots > 1 ? 1.0f / static_cast<float> (activeSlots) : 1.0f;
+                mixL = dryL + wetSumL * normGain;
+                mixR = dryR + wetSumR * normGain;
             }
 
             // === PER-BRICK SPATIAL (Wave 3) — Tomita's scene-making ===

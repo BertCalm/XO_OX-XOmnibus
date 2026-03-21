@@ -10,7 +10,7 @@
   "name": "Inharmonic Cloud",
   "mood": "Submerged",
   "engines": ["Obrix"],
-  "description": "Noise src1 plus Sine src2 run through a 7-limit repulsor (fieldPolarity=0.0) — the field actively repels all voices away from pure ratios, creating maximum inharmonicity. What would naturally want to resolve into consonance is constantly pushed outward. The result is a dense, harmonically unstable cloud that never settles. Biophonics at its most abyssal.",
+  "description": "Noise src1 plus Sine src2 run through a 7-limit repulsor (fieldPolarity=-1.0) — the field actively repels all voices away from pure ratios, creating maximum inharmonicity. What would naturally want to resolve into consonance is constantly pushed outward. The result is a dense, harmonically unstable cloud that never settles. Biophonics at its most abyssal.",
   "tags": ["obrix", "submerged", "noise", "sine", "harmonic-field", "7-limit", "repulsor", "inharmonic", "wave4"],
   "tier": "awakening",
   "dna": {
@@ -95,7 +95,7 @@
       "obrix_distance": 0.4,
       "obrix_air": 0.6,
       "obrix_fieldStrength": 0.5,
-      "obrix_fieldPolarity": 0.0,
+      "obrix_fieldPolarity": -1.0,
       "obrix_fieldRate": 0.015,
       "obrix_fieldPrimeLimit": 2,
       "obrix_envTemp": 0.0,

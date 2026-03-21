@@ -7,13 +7,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "envTurbidity=0.7 injects spectral noise into the cutoff, creating shimmer-like randomness without explicit noise source. Sine through LP with slow attack and deep reverb. The cutoff trembles — not noise, just the water thinking.",
+  "description": "envTurbidity=0.7 injects spectral noise into the cutoff, creating shimmer-like randomness without explicit noise source. Sine through LP with slow attack and deep reverb. The cutoff trembles \u2014 not noise, just the water thinking.",
   "tags": [
     "turbidity",
     "shimmer",
     "murky",
     "aether",
-    "environmental"
+    "environmental",
+    "wave4"
   ],
   "macroLabels": [
     "CHARACTER",

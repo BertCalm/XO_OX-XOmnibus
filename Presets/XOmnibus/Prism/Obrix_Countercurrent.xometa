@@ -7,13 +7,14 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "envCurrent=-0.8 — strong negative directional bias pulls the filter center down and pitch flat. Saw source through HP filter creates tension: the current fights the brightness. Dark, contrary, resistant.",
+  "description": "envCurrent=-0.8 \u2014 strong negative directional bias pulls the filter center down and pitch flat. Saw source through HP filter creates tension: the current fights the brightness. Dark, contrary, resistant.",
   "tags": [
     "current",
     "negative",
     "tension",
     "prism",
-    "environmental"
+    "environmental",
+    "wave4"
   ],
   "macroLabels": [
     "CHARACTER",
