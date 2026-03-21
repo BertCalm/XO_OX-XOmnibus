@@ -235,7 +235,7 @@ struct OperaSVF
         cutoffHz = std::clamp (cutoffHz, 20.0f, sampleRate * 0.499f);
         Q = std::max (Q, 0.5f);
 
-        float g = FastMath::fastTan (kPi * cutoffHz / sampleRate);
+        float g = std::tan (kPi * cutoffHz / sampleRate);
         float k = 1.0f / Q;
         float a1 = 1.0f / (1.0f + g * (g + k));
         float a2 = g * a1;
@@ -492,7 +492,6 @@ public:
 
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
-
         using FloatParam = juce::AudioParameterFloat;
         using IntParam   = juce::AudioParameterInt;
         using NR = juce::NormalisableRange<float>;
@@ -838,6 +837,20 @@ public:
         // Clear output buffer
         buffer.clear (0, numSamples);
 
+        // ------------------------------------------------------------------
+        // STEP 6 PRE-BLOCK: Update formant weights & Nyquist gains per voice
+        // (block-rate — these don't depend on per-sample state)
+        // ------------------------------------------------------------------
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            auto& voice = voices_[v];
+            if (voice.state == OperaVoice::State::Idle) continue;
+
+            float f0Block = voice.currentFreq;
+            voice.partialBank.updateFormants (f0Block, snap_.vowelA, snap_.vowelB, snap_.voice);
+            voice.partialBank.computeNyquistGains (f0Block);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             // 6a. Accumulate modulation offsets for this sample
@@ -969,14 +982,8 @@ public:
                         voice.partialBank.partials[i].theta = theta[i];
                 }
 
-                // --- Update formant weights for this block sample ---
-                // (Lightweight: only recomputes when morph changes significantly)
-                voice.partialBank.updateFormants (f0, snap_.vowelA, snap_.vowelB, voice_eff);
-
-                // --- Compute Nyquist anti-aliasing gains ---
-                voice.partialBank.computeNyquistGains (f0);
-
                 // --- Render partials (with unison stacking) ---
+                // (Formant weights & Nyquist gains already computed at block rate above)
                 float pL = 0.0f, pR = 0.0f;
                 float monoSample = 0.0f;
 
