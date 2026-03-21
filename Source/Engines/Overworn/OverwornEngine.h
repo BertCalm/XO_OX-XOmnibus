@@ -418,6 +418,20 @@ public:
                 // Volatile aromatics (high-freq shimmer) track band 6+7
                 reduction.volatileAromatics = (reduction.spectralMass[6]
                                              + reduction.spectralMass[7]) * 0.5f;
+
+                // Infusion: soft long tones add back spectral character to the top bands.
+                // When infusion voices are active, gently re-energize bands 6 and 7
+                // (high-frequency shimmer) — like adding a splash of water at low heat.
+                // This consumes the isInfusion flag (D004 / concept fix).
+                if (infusionVoiceCount > 0)
+                {
+                    float infuseRate = baseRate * static_cast<float> (infusionVoiceCount) * 0.3f;
+                    reduction.spectralMass[6] = clamp (reduction.spectralMass[6] + infuseRate, 0.0f, 1.0f);
+                    reduction.spectralMass[7] = clamp (reduction.spectralMass[7] + infuseRate * 0.5f, 0.0f, 1.0f);
+                    // Also refresh volatile aromatics from the infusion
+                    reduction.volatileAromatics = (reduction.spectralMass[6]
+                                                 + reduction.spectralMass[7]) * 0.5f;
+                }
             }
 
             // === SYNTHESIZE VOICES ===
