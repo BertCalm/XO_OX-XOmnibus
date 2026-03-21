@@ -378,11 +378,15 @@ struct OwareVoice
     float sympatheticOut = 0.0f;
     float ampLevel = 0.0f;
 
-    // Per-voice shimmer
+    // Per-voice shimmer + D002 LFOs
     StandardLFO shimmerLFO;
+    StandardLFO lfo1, lfo2;       // BUG-1 FIX: engine-level LFOs now backed by real objects
 
     // Improvement #5: per-voice thermal personality (fixed offset in cents)
     float thermalPersonality = 0.0f;
+
+    // Cached pan gains (BUG-3 FIX: avoid per-sample trig)
+    float panL = 0.707f, panR = 0.707f;
 
     void reset() noexcept
     {
@@ -583,13 +587,29 @@ public:
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio (bendSemitones + couplingPitchMod);
 
+                // BUG-1 FIX: wire LFO1 → brightness, LFO2 → material
+                float lfo1Rate  = paramLfo1Rate  ? paramLfo1Rate->load()  : 0.5f;
+                float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.0f;
+                int   lfo1Shape = paramLfo1Shape ? static_cast<int> (paramLfo1Shape->load()) : 0;
+                float lfo2Rate  = paramLfo2Rate  ? paramLfo2Rate->load()  : 1.0f;
+                float lfo2Depth = paramLfo2Depth ? paramLfo2Depth->load() : 0.0f;
+                int   lfo2Shape = paramLfo2Shape ? static_cast<int> (paramLfo2Shape->load()) : 0;
+
+                voice.lfo1.setRate (lfo1Rate, srf);
+                voice.lfo1.setShape (lfo1Shape);
+                voice.lfo2.setRate (lfo2Rate, srf);
+                voice.lfo2.setShape (lfo2Shape);
+
+                float lfo1Val = voice.lfo1.process() * lfo1Depth;  // LFO1 → brightness
+                float lfo2Val = voice.lfo2.process() * lfo2Depth;  // LFO2 → material
+
                 // Improvement #5: apply thermal drift (shared + per-voice personality)
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
-                freq *= std::pow (2.0f, totalThermalCents / 1200.0f);
+                freq *= fastPow2 (totalThermalCents / 1200.0f);  // BUG-3 FIX: fastPow2 replaces std::pow
 
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
-                // Shadow detuning: the shimmer LFO modulates between in-tune and detuned
-                voice.shimmerLFO.setRate (0.3f, srf);  // slow modulation of shimmer depth
+                // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
+                voice.shimmerLFO.setRate (std::max (0.05f, pShimmerHz * 0.05f), srf);  // modulate shimmer slowly
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;  // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;  // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
@@ -653,8 +673,8 @@ public:
                     float modeAmp = 1.0f / (1.0f + static_cast<float> (m) * (1.5f - malletNow * 1.2f));
 
                     // Improvement #1: material exponent alpha — per-mode decay scaling
-                    // Applied to the mode amplitude envelope, not the resonator Q
-                    float modeDecayScale = std::pow (static_cast<float> (m + 1), -materialAlpha);
+                    // BUG-3 FIX: fastExp replaces std::pow (per-sample hot path)
+                    float modeDecayScale = fastExp (-materialAlpha * std::log (static_cast<float> (m + 1)));
                     modeAmp *= modeDecayScale;
 
                     voice.modes[m].setFreqAndQ (modeFreq, modeQ, srf);
@@ -676,7 +696,8 @@ public:
                 if (voice.ampLevel < 1e-6f) { voice.active = false; continue; }
 
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp (brightNow + envMod, 200.0f, 20000.0f);
+                // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
+                float cutoff = std::clamp (brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 voice.svf.setMode (CytomicSVF::Mode::LowPass);
                 voice.svf.setCoefficients (cutoff, 0.5f, srf);
                 float filtered = voice.svf.processSample (bodied);
@@ -684,12 +705,9 @@ public:
                 float output = filtered * voice.ampLevel;
                 voice.sympatheticOut = output;
 
-                float pan = static_cast<float> (voice.currentNote - 60) / 36.0f;
-                pan = std::clamp (pan, -1.0f, 1.0f);
-                float gainL = std::cos ((pan + 1.0f) * 0.25f * 3.14159265f);
-                float gainR = std::sin ((pan + 1.0f) * 0.25f * 3.14159265f);
-                mixL += output * gainL;
-                mixR += output * gainR;
+                // BUG-3 FIX: use cached pan gains (computed at noteOn, not per-sample)
+                mixL += output * voice.panL;
+                mixR += output * voice.panR;
             }
 
             outL[s] = mixL;
