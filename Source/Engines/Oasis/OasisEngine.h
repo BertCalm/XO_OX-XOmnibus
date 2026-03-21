@@ -68,6 +68,8 @@ namespace xomnibus {
 // The coupling engine uses these to model energy transfer (PLATE coupling)
 // without running audio through the coupled engine's processing chain.
 //==============================================================================
+#ifndef XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
+#define XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
 struct SpectralFingerprint
 {
     float modalFrequencies[8] = {};   // Top 8 modal frequencies (Hz)
@@ -82,6 +84,7 @@ struct SpectralFingerprint
     float attackTransience    = 0.0f;   // Recent transient energy (decays over ~50ms)
     float padding[2]          = {};     // Reserve for future fields (total: 152 bytes)
 };
+#endif
 
 //==============================================================================
 // RhodesToneGenerator — Tine + pickup physical model.

@@ -56,7 +56,7 @@ namespace xomnibus {
 //==============================================================================
 // Quartet role identity — each voice has distinct tonal character
 //==============================================================================
-enum class QuartetRole : int
+enum class OsierQuartetRole : int
 {
     Soprano = 0,  // Bright, narrow vibrato, highest register
     Alto    = 1,  // Warm, medium vibrato, mezzo register
@@ -64,7 +64,7 @@ enum class QuartetRole : int
     Bass    = 3   // Dark, slow vibrato, lowest register — the nutrient provider
 };
 
-struct QuartetRoleConfig
+struct OsierQuartetRoleConfig
 {
     float vibratoRateMult;     // multiplier on global vibrato rate
     float vibratoDepthMult;    // multiplier on global vibrato depth
@@ -73,7 +73,7 @@ struct QuartetRoleConfig
     float detuneCents;         // slight per-role detuning for individuality
 };
 
-static constexpr QuartetRoleConfig kRoleConfigs[4] = {
+static constexpr OsierQuartetRoleConfig kRoleConfigs[4] = {
     { 1.1f,  0.7f,  800.0f,  0.3f,  1.5f },   // Soprano: fast, narrow, bright
     { 1.0f,  0.9f,  200.0f,  0.0f,  0.5f },   // Alto: medium, warm
     { 0.9f,  1.1f, -200.0f, -0.1f, -0.5f },   // Tenor: wider, neutral
@@ -179,7 +179,7 @@ struct OsierVoice
     uint64_t startTime = 0;
     int currentNote = 60;
     float velocity = 0.0f;
-    QuartetRole role = QuartetRole::Soprano;
+    OsierQuartetRole role = OsierQuartetRole::Soprano;
 
     GlideProcessor glide;
     std::array<OsierSaw, kNumOscs> oscs;
@@ -244,7 +244,7 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
         {
             voices[i].reset();
-            voices[i].role = static_cast<QuartetRole> (i);
+            voices[i].role = static_cast<OsierQuartetRole> (i);
             voices[i].ampEnv.prepare (srf);
             voices[i].filterEnv.prepare (srf);
             voices[i].vibratoLFO.setShape (StandardLFO::Sine);
@@ -515,7 +515,7 @@ public:
                 float output = filtered * ampLevel * (0.5f + voice.velocity * 0.5f);
 
                 // Bass voice (nutrient provider): its warmth feeds the upper voices
-                if (voice.role == QuartetRole::Bass && accumulators.W > 0.3f)
+                if (voice.role == OsierQuartetRole::Bass && accumulators.W > 0.3f)
                 {
                     // Bass warmth boosts upper voices' sustain via accumulator
                     // (effect is in the companion planting, not direct audio)
@@ -554,7 +554,7 @@ public:
         v.velocity = vel;
         v.startTime = ++voiceCounter;
         // Role stays fixed to voice index (quartet seating is permanent)
-        v.role = static_cast<QuartetRole> (idx);
+        v.role = static_cast<OsierQuartetRole> (idx);
         v.glide.setTargetOrSnap (freq);
 
         float attackTime = paramAttack ? paramAttack->load() : 0.1f;

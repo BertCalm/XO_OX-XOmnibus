@@ -63,9 +63,9 @@
 namespace xomnibus {
 
 //==============================================================================
-// FMOperator — Single sine-wave FM operator with phase accumulation and feedback.
+// OmegaFMOperator — Single sine-wave FM operator with phase accumulation and feedback.
 //==============================================================================
-struct FMOperator
+struct OmegaFMOperator
 {
     void setFrequency (float freqHz, float sampleRate) noexcept
     {
@@ -153,8 +153,8 @@ struct OmegaVoice
     float velocity = 0.0f;
 
     GlideProcessor glide;
-    FMOperator carrier;
-    FMOperator modulator;
+    OmegaFMOperator carrier;
+    OmegaFMOperator modulator;
     DistillationModel distill;
     FilterEnvelope ampEnv;
     FilterEnvelope filterEnv;

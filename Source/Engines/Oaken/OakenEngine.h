@@ -170,10 +170,11 @@ struct OakenExciter
 };
 
 //==============================================================================
-// KarplusStrongString — Delay line with filtered feedback for string synthesis.
+// OakenKarplusString — Delay line with filtered feedback for string synthesis.
 // The core of the acoustic bass model.
+// Named with Oaken prefix to avoid collision with OvergrowEngine's KarplusStrongString.
 //==============================================================================
-struct KarplusStrongString
+struct OakenKarplusString
 {
     static constexpr int kMaxDelay = 4096;
 
@@ -350,7 +351,7 @@ struct OakenVoice
 
     GlideProcessor glide;
     OakenExciter exciter;
-    KarplusStrongString string;
+    OakenKarplusString string;
     OakenBodyResonator body;
     CuringModel curing;
     FilterEnvelope ampEnv;
