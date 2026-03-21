@@ -43,6 +43,7 @@
 #include "Engines/Overtone/OvertoneEngine.h"
 #include "Engines/Organism/OrganismEngine.h"
 #include "Engines/Oxbow/OxbowEngine.h"
+#include "Engines/Oware/OwareEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -227,6 +228,11 @@ static bool registered_Organism = xomnibus::EngineRegistry::instance().registerE
 static bool registered_Oxbow = xomnibus::EngineRegistry::instance().registerEngine(
     "Oxbow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OxbowEngine>();
+    });
+// OWARE — tuned percussion synthesizer (wood/metal material continuum)
+static bool registered_Oware = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oware", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OwareEngine>();
     });
 
 namespace xomnibus {
