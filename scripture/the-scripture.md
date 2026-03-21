@@ -380,3 +380,43 @@
 > When macroSeed crosses 0.01, the engine fires a new LCG-derived 16-bit state — but a latch prevents continuous re-seeding. Hold macroSeed above 0.01 for consistent identity. Drop briefly below 0.005 between notes to reset the latch and get a fresh colony. The macro is not a "randomize" button — it is a life trigger. Controlling when it resets controls when new life begins.
 
 **Application:** Map macroSeed to mod wheel in performance. Near 0 = continuous organism. Swept to 0.7+ = new organism on each note. The entire sonic personality of the preset changes between these two states.
+
+---
+
+### OPERA — The Kuramoto Verses
+
+#### OPERA-I: Detune Ignition
+*2026-03-21*
+
+> Partials at harmonic unison cannot couple. Their natural frequencies are identical; the mean field is trivially R=1 from the start; the synthesis is inert. Detuning is not error. It is ignition.
+
+`opera_detune` activates the entire synthesis paradigm. At detune=0.0, you have static additive synthesis. At detune=0.08, you have a living physical model. The transition is categorical. The sweet window 0.08–0.28 is the engine's usable range. Below 0.08, the field locks before DRAMA reaches 0.5. Above 0.28, individual partials are audibly mistuned.
+
+**Application:** Set any OPERA preset's minimum `opera_detune` to 0.10. Any preset with `opera_detune` < 0.08 is not using OPERA — it is using a static additive synthesizer that happens to have OPERA's interface.
+
+#### OPERA-II: The Conductor Is Not Automation
+*2026-03-21*
+
+> The OperaConductor does not automate the music. It constructs the room the musician performs in.
+
+Automation is deterministic playback — a stored sequence of parameter values. The Conductor is a *physical arc system* with jitter: ±5% timing and ±3% peak variation per cycle. No two arcs are identical. And the `max(conductorK, manualK)` override means the player is never locked out. At any moment, the player can push DRAMA above the Conductor's current position and take control. The Conductor yields instantly and resumes from the player's new position when the player releases.
+
+**Application:** `arcMode=2` (Both) should be the default for all OPERA presets designed for expressive performance. `arcMode=0` (Manual) is for full player control. `arcMode=1` (Conductor) is for installation, drone, and unattended use. `arcMode=2` (Both) is for music.
+
+#### OPERA-III: The EmotionalMemory Contract
+*2026-03-21*
+
+> A note that begins in context is not the same note that begins from silence. The Kuramoto field remembers.
+
+The `kEmotionalMemoryWindowMs=500ms` window creates a contract between successive notes: if a new note arrives within 500 milliseconds of the previous note's release, the new note's Kuramoto field begins from the previous note's phase state. The *synchronization history* of the field transfers. Rapid melodic playing accumulates field state — each note richer than the one before. A phrase with a gap > 500ms resets to zero.
+
+**Application:** The 500ms window is sized for human music-making. 120 BPM quarter notes land exactly on the boundary. Semiquaver passages (250ms) are well within it. Whole notes are outside it. The window rewards legato melodic playing — the voice rewards continuity.
+
+#### OPERA-IV: ResSens Is Emergence Control
+*2026-03-21*
+
+> `opera_resSens` does not change the sound. It changes what the sound is *allowed to become*.
+
+At `resSens=0.0`, the Kuramoto field dynamics are stable and predictable. At `resSens=0.88`, phase clusters form strongly and persist — discrete groups of synchronized partials coalesce, their collective beating creating a texture that no single parameter controls. This is emergence: behavior arising from component interactions that was not designed into any individual component.
+
+**Application:** `resSens=0.0–0.35` for clean vocal synthesis — smooth phase transitions, predictable behavior. `resSens=0.55–0.75` for alive synthesis — clusters emerge, the voice shimmers. `resSens=0.85–0.95` for maximum emergence — self-organizing textures, behavior that surprises even the player. Never use `resSens > 0.9` in init presets — the behavior is too unexpected for first-encounter.
