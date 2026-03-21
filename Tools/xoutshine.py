@@ -68,6 +68,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 from collections import defaultdict
 from pathlib import Path
+from dataclasses import dataclass, asdict
 from typing import Dict, List, Optional, Tuple
 
 # Optional tqdm progress bars — degrade gracefully if not installed
@@ -86,6 +87,307 @@ def tqdm(iterable, **kwargs):
     if desc:
         print(f"  {desc}...")
     return iterable
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Sonic DNA — 6-dimensional audio fingerprint
+# ─────────────────────────────────────────────────────────────────────────────
+
+@dataclass
+class SonicDNA:
+    """6D Sonic DNA fingerprint inferred from audio analysis."""
+    brightness: float = 0.5   # spectral centroid / (sr/2), 0-1
+    warmth: float = 0.5       # energy ratio of 200-800 Hz band / total
+    movement: float = 0.5     # spectral flux (frame-to-frame change)
+    density: float = 0.5      # spectral flatness (geometric/arithmetic mean)
+    space: float = 0.5        # reverb tail ratio (energy in last 30%)
+    aggression: float = 0.5   # crest factor normalized: >12dB=1.0, <3dB=0.0
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+def _radix2_fft(x: List[complex]) -> List[complex]:
+    """In-place radix-2 Cooley-Tukey FFT. Input length must be a power of 2."""
+    n = len(x)
+    if n <= 1:
+        return x
+
+    # Bit-reversal permutation
+    result = list(x)
+    bits = int(math.log2(n))
+    for i in range(n):
+        j = 0
+        for b in range(bits):
+            j = (j << 1) | ((i >> b) & 1)
+        if j > i:
+            result[i], result[j] = result[j], result[i]
+
+    # Butterfly stages
+    length = 2
+    while length <= n:
+        half = length // 2
+        w_base = -2.0 * math.pi / length
+        for start in range(0, n, length):
+            for k in range(half):
+                angle = w_base * k
+                w = complex(math.cos(angle), math.sin(angle))
+                even = result[start + k]
+                odd = result[start + k + half] * w
+                result[start + k] = even + odd
+                result[start + k + half] = even - odd
+        length *= 2
+
+    return result
+
+
+def _magnitude_spectrum(mono: List[float], fft_size: int = 2048) -> List[float]:
+    """Compute magnitude spectrum of a signal chunk using radix-2 FFT.
+
+    Returns magnitudes for bins 0..fft_size//2 (inclusive).
+    """
+    n = len(mono)
+    # Zero-pad or truncate to fft_size
+    if n >= fft_size:
+        segment = mono[:fft_size]
+    else:
+        segment = mono + [0.0] * (fft_size - n)
+
+    # Apply Hann window
+    windowed = [
+        segment[i] * 0.5 * (1.0 - math.cos(2.0 * math.pi * i / (fft_size - 1)))
+        for i in range(fft_size)
+    ]
+
+    spectrum = _radix2_fft([complex(s, 0) for s in windowed])
+    return [abs(spectrum[i]) for i in range(fft_size // 2 + 1)]
+
+
+def infer_dna(channels: List[List[float]], sr: int) -> SonicDNA:
+    """Infer 6D Sonic DNA from audio characteristics.
+
+    Uses spectral analysis (radix-2 FFT) to compute brightness, warmth,
+    movement, density, space, and aggression.
+    """
+    if not channels or not channels[0]:
+        return SonicDNA()
+
+    # Work with mono (first channel)
+    mono = channels[0]
+    n = len(mono)
+    fft_size = 2048
+
+    if n < fft_size:
+        # Too short for meaningful spectral analysis — return defaults
+        # but still compute space and aggression which don't need FFT
+        dna = SonicDNA()
+        # Aggression from crest factor
+        rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
+        peak = max(abs(s) for s in mono) if mono else 0
+        if rms > 1e-10:
+            crest_db = 20 * math.log10(max(peak, 1e-10) / rms)
+            dna.aggression = max(0.0, min(1.0, (crest_db - 3.0) / 9.0))
+        # Space from tail energy
+        tail_start = int(n * 0.7)
+        total_energy = sum(s * s for s in mono)
+        tail_energy = sum(s * s for s in mono[tail_start:])
+        if total_energy > 1e-10:
+            dna.space = max(0.0, min(1.0, tail_energy / total_energy / 0.3))
+        return dna
+
+    # ── Brightness: spectral centroid / (sr/2) ──
+    # Average centroid over multiple frames
+    hop = fft_size // 2
+    num_frames = max(1, (n - fft_size) // hop + 1)
+    # Limit to ~20 frames for performance
+    frame_step = max(1, num_frames // 20)
+    centroids = []
+    prev_magnitudes = None
+    flux_values = []
+    flatness_values = []
+
+    freq_per_bin = sr / fft_size
+    num_bins = fft_size // 2 + 1
+
+    for frame_idx in range(0, num_frames, frame_step):
+        offset = frame_idx * hop
+        if offset + fft_size > n:
+            break
+        chunk = mono[offset:offset + fft_size]
+        mags = _magnitude_spectrum(chunk, fft_size)
+
+        # Spectral centroid
+        mag_sum = sum(mags)
+        if mag_sum > 1e-10:
+            weighted_sum = sum(mags[i] * i * freq_per_bin for i in range(num_bins))
+            centroid_hz = weighted_sum / mag_sum
+            centroids.append(centroid_hz)
+
+        # Spectral flux (frame-to-frame change)
+        if prev_magnitudes is not None:
+            flux = sum((mags[i] - prev_magnitudes[i]) ** 2 for i in range(num_bins))
+            flux_values.append(math.sqrt(flux))
+        prev_magnitudes = mags
+
+        # Spectral flatness (geometric mean / arithmetic mean)
+        # Use log-domain for geometric mean to avoid underflow
+        positive_mags = [m for m in mags if m > 1e-10]
+        if len(positive_mags) > num_bins * 0.5:
+            log_sum = sum(math.log(m) for m in positive_mags)
+            geo_mean = math.exp(log_sum / len(positive_mags))
+            arith_mean = sum(positive_mags) / len(positive_mags)
+            if arith_mean > 1e-10:
+                flatness_values.append(geo_mean / arith_mean)
+
+    # Brightness
+    nyquist = sr / 2.0
+    if centroids:
+        avg_centroid = sum(centroids) / len(centroids)
+        brightness = max(0.0, min(1.0, avg_centroid / nyquist))
+    else:
+        brightness = 0.5
+
+    # ── Warmth: energy ratio of 200-800 Hz band / total ──
+    # Compute on a representative frame (middle of the sample)
+    mid_offset = max(0, n // 2 - fft_size // 2)
+    mid_chunk = mono[mid_offset:mid_offset + fft_size]
+    if len(mid_chunk) < fft_size:
+        mid_chunk = mid_chunk + [0.0] * (fft_size - len(mid_chunk))
+    mid_mags = _magnitude_spectrum(mid_chunk, fft_size)
+
+    bin_200 = max(1, int(200 / freq_per_bin))
+    bin_800 = min(num_bins - 1, int(800 / freq_per_bin))
+    warm_energy = sum(m * m for m in mid_mags[bin_200:bin_800 + 1])
+    total_spectral_energy = sum(m * m for m in mid_mags[1:])  # skip DC
+    if total_spectral_energy > 1e-10:
+        warmth = max(0.0, min(1.0, warm_energy / total_spectral_energy))
+    else:
+        warmth = 0.5
+
+    # ── Movement: spectral flux (normalized) ──
+    if flux_values:
+        # Normalize: typical flux range varies widely, use median-based scaling
+        sorted_flux = sorted(flux_values)
+        median_flux = sorted_flux[len(sorted_flux) // 2]
+        # Scale so median flux maps to ~0.5
+        if median_flux > 1e-10:
+            movement = max(0.0, min(1.0, median_flux / (median_flux * 2.0)))
+        else:
+            movement = 0.0
+        # Use coefficient of variation for better discrimination
+        mean_flux = sum(flux_values) / len(flux_values)
+        if mean_flux > 1e-10:
+            std_flux = math.sqrt(sum((f - mean_flux) ** 2 for f in flux_values) / len(flux_values))
+            cv = std_flux / mean_flux
+            movement = max(0.0, min(1.0, cv))
+        else:
+            movement = 0.0
+    else:
+        movement = 0.0
+
+    # ── Density: spectral flatness ──
+    if flatness_values:
+        density = max(0.0, min(1.0, sum(flatness_values) / len(flatness_values)))
+    else:
+        density = 0.5
+
+    # ── Space: reverb tail ratio (energy in last 30% / total) ──
+    tail_start = int(n * 0.7)
+    total_energy = sum(s * s for s in mono)
+    tail_energy = sum(s * s for s in mono[tail_start:])
+    if total_energy > 1e-10:
+        # 30% of length should contain 30% of energy for flat signals
+        # Reverb tails have disproportionate tail energy relative to their amplitude
+        raw_ratio = tail_energy / total_energy
+        # Normalize: 0.3 ratio = 0.5 (flat), higher = more space
+        space = max(0.0, min(1.0, raw_ratio / 0.6))
+    else:
+        space = 0.5
+
+    # ── Aggression: crest factor (peak / RMS), normalized ──
+    rms = math.sqrt(sum(s * s for s in mono) / max(1, n))
+    peak = max(abs(s) for s in mono) if mono else 0
+    if rms > 1e-10:
+        crest_db = 20 * math.log10(max(peak, 1e-10) / rms)
+        # >12dB = 1.0 (very dynamic/aggressive), <3dB = 0.0 (compressed/flat)
+        aggression = max(0.0, min(1.0, (crest_db - 3.0) / 9.0))
+    else:
+        aggression = 0.5
+
+    return SonicDNA(
+        brightness=round(brightness, 3),
+        warmth=round(warmth, 3),
+        movement=round(movement, 3),
+        density=round(density, 3),
+        space=round(space, 3),
+        aggression=round(aggression, 3),
+    )
+
+
+def select_velocity_curve_by_dna(dna: SonicDNA) -> str:
+    """Select the best velocity curve based on DNA aggression."""
+    if dna.aggression > 0.7:
+        return "trap-hard"
+    elif dna.aggression > 0.4:
+        return "boom-bap"
+    elif dna.aggression > 0.2:
+        return "musical"
+    else:
+        return "neo-soul"
+
+
+@dataclass
+class DNAEnhancementParams:
+    """Enhancement parameters derived from Sonic DNA."""
+    velocity_curve: str = "musical"
+    fade_out_ms: float = 10.0
+    saturation_intensity: float = 0.03  # max tanh drive for round-robin
+    loop_priority: bool = True          # whether to prioritize loop detection
+    loop_crossfade_multiplier: float = 1.0  # multiplier for loop crossfade length
+    rr_variation_width: float = 1.0     # multiplier for round-robin variation range
+    apply_soft_lowpass: bool = False     # gentle low-pass on soft velocity layers
+
+
+def adjust_enhancement_by_dna(dna: SonicDNA) -> DNAEnhancementParams:
+    """Derive enhancement parameters from inferred Sonic DNA."""
+    params = DNAEnhancementParams()
+
+    # 1. Velocity curve from aggression
+    params.velocity_curve = select_velocity_curve_by_dna(dna)
+
+    # 2. Fade guard length from space
+    if dna.space > 0.6:
+        params.fade_out_ms = 50.0
+        params.apply_soft_lowpass = True
+    elif dna.space < 0.3:
+        params.fade_out_ms = 5.0
+    else:
+        params.fade_out_ms = 10.0
+
+    # 3. Saturation intensity from aggression + warmth
+    if dna.aggression > 0.6 and dna.warmth < 0.4:
+        params.saturation_intensity = 0.08  # harder saturation
+    elif dna.warmth > 0.6:
+        params.saturation_intensity = 0.015  # gentler, preserve warmth
+    else:
+        params.saturation_intensity = 0.03
+
+    # 4. Loop detection priority from space + movement
+    if dna.space > 0.5 and dna.movement > 0.5:
+        params.loop_priority = True
+        params.loop_crossfade_multiplier = 2.0  # longer crossfade
+    elif dna.space < 0.3:
+        params.loop_priority = False  # skip loop detection for one-shots
+
+    # 5. Round-robin variation character from density
+    if dna.density > 0.6:
+        params.rr_variation_width = 0.5  # subtle micro-variations
+    elif dna.density < 0.3:
+        params.rr_variation_width = 1.5  # wider variations for simple sounds
+    else:
+        params.rr_variation_width = 1.0
+
+    return params
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Constants
@@ -278,6 +580,7 @@ class SampleInfo:
         self.loop_start: int = 0
         self.loop_end: int = 0
         self.tail_length_s: float = 0.0
+        self.dna: Optional[SonicDNA] = None
 
     def __repr__(self):
         return f"<Sample '{self.original_name}' cat={self.category} rms={self.rms_db:.1f}dB>"
@@ -433,8 +736,12 @@ def classify(samples: List[SampleInfo]) -> List[SampleInfo]:
 # Stage 3: ANALYZE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def analyze(samples: List[SampleInfo]) -> List[SampleInfo]:
-    """Stage 3: Measure pitch, RMS, peak, DC offset, tail length, loop points."""
+def analyze(samples: List[SampleInfo], dna_inherit: bool = True) -> List[SampleInfo]:
+    """Stage 3: Measure pitch, RMS, peak, DC offset, tail length, loop points.
+
+    When dna_inherit is True, also infers 6D Sonic DNA from each sample's
+    spectral characteristics for use in DNA-driven enhancement.
+    """
     for s in samples:
         try:
             channels, sr, bd = read_wav(s.path)
@@ -491,9 +798,16 @@ def analyze(samples: List[SampleInfo]) -> List[SampleInfo]:
                 s.loop_start = loop_start
                 s.loop_end = loop_end
 
+        # Infer Sonic DNA from spectral characteristics
+        if dna_inherit:
+            s.dna = infer_dna(channels, sr)
+
     analyzed = sum(1 for s in samples if s.rms_db > -100)
     loopable = sum(1 for s in samples if s.is_loopable)
+    dna_count = sum(1 for s in samples if s.dna is not None)
     print(f"  Analyzed {analyzed} samples, {loopable} loopable")
+    if dna_inherit:
+        print(f"  DNA inferred for {dna_count} samples")
     return samples
 
 

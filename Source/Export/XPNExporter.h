@@ -133,6 +133,80 @@ class XOriginate {
 public:
 
     //==========================================================================
+    // Coupling Snapshot — freezes a live coupling state for composite export
+    //==========================================================================
+
+    struct CouplingSnapshot {
+        struct CouplingRoute {
+            int sourceSlot = -1;
+            int destSlot = -1;
+            int couplingType = 0;  // maps to CouplingType enum
+            float amount = 0.0f;
+        };
+
+        std::vector<CouplingRoute> activeRoutes;
+        std::array<juce::String, 4> engineIds;  // engines in each slot
+        juce::String snapshotName;
+
+        bool hasActiveCoupling() const { return !activeRoutes.empty(); }
+
+        // Brief human-readable summary of active routes for UI display
+        juce::String getSummary() const
+        {
+            if (activeRoutes.empty())
+                return "No active coupling";
+
+            static const char* typeNames[] = {
+                "Amp>Filter", "Amp>Pitch", "LFO>Pitch", "Env>Morph",
+                "Audio>FM", "Audio>Ring", "Filter>Filter", "Amp>Choke",
+                "Rhythm>Blend", "Env>Decay", "Pitch>Pitch", "Audio>WT",
+                "Audio>Buffer", "Knot"
+            };
+
+            juce::String summary;
+            for (size_t i = 0; i < activeRoutes.size(); ++i)
+            {
+                const auto& r = activeRoutes[i];
+                if (i > 0) summary += "; ";
+
+                auto srcName = (r.sourceSlot >= 0 && r.sourceSlot < 4)
+                    ? engineIds[(size_t)r.sourceSlot] : juce::String("?");
+                auto dstName = (r.destSlot >= 0 && r.destSlot < 4)
+                    ? engineIds[(size_t)r.destSlot] : juce::String("?");
+
+                int typeIdx = juce::jlimit(0, 13, r.couplingType);
+                summary += srcName + " " + typeNames[typeIdx] + " " + dstName;
+            }
+            return summary;
+        }
+    };
+
+    // Capture the current coupling state from the live matrix and registry.
+    // Call from the message thread before starting an export.
+    static CouplingSnapshot captureCouplingState(
+        const EngineRegistry& registry,
+        const MegaCouplingMatrix& matrix)
+    {
+        CouplingSnapshot snapshot;
+        auto matrixRoutes = matrix.getRoutes();
+
+        for (const auto& route : matrixRoutes)
+        {
+            if (!route.active || route.amount < 0.001f)
+                continue;
+
+            CouplingSnapshot::CouplingRoute snapRoute;
+            snapRoute.sourceSlot = route.sourceSlot;
+            snapRoute.destSlot = route.destSlot;
+            snapRoute.couplingType = static_cast<int>(route.type);
+            snapRoute.amount = route.amount;
+            snapshot.activeRoutes.push_back(snapRoute);
+        }
+
+        return snapshot;
+    }
+
+    //==========================================================================
     // Configuration
     //==========================================================================
 
@@ -425,6 +499,204 @@ public:
     }
 
     //==========================================================================
+    // Entangled export — renders coupled engine system as single composite
+    //==========================================================================
+
+    ExportResult exportCoupledSnapshot(
+        const BundleConfig& config,
+        const RenderSettings& settings,
+        const CouplingSnapshot& snapshot,
+        const std::vector<PresetData>& presets,
+        ProgressCallback progressCb = nullptr)
+    {
+        ExportResult result;
+        Progress progress;
+        progress.totalPresets = (int)presets.size();
+
+        if (presets.empty())
+        {
+            result.errorMessage = "No presets to export";
+            return result;
+        }
+
+        if (!snapshot.hasActiveCoupling())
+        {
+            // Fall back to standard export if no coupling is active
+            return exportBundle(config, settings, presets, progressCb);
+        }
+
+        // Atomic export: write to temp dir first, rename on success
+        auto finalBundleDir = config.outputDir.getChildFile(config.name.replace(" ", "_"));
+        auto tempBundleDir = config.outputDir.getChildFile(
+            "." + config.name.replace(" ", "_") + "_tmp_" +
+            juce::String(juce::Time::currentTimeMillis()));
+
+        if (!tempBundleDir.createDirectory())
+        {
+            result.errorMessage = "Failed to create temp directory: " + tempBundleDir.getFullPathName();
+            return result;
+        }
+
+        auto keyGroupDir = tempBundleDir.getChildFile("Keygroups");
+        if (!keyGroupDir.createDirectory())
+        {
+            tempBundleDir.deleteRecursively();
+            result.errorMessage = "Failed to create Keygroups directory";
+            return result;
+        }
+
+        std::atomic<bool> cancelled { false };
+
+        for (int pi = 0; pi < (int)presets.size() && !cancelled.load(); ++pi)
+        {
+            const auto& preset = presets[(size_t)pi];
+            progress.currentPreset = pi + 1;
+            progress.presetName = preset.name;
+
+            // Sound Shape classification
+            RenderSettings effectiveSettings = settings;
+            if (settings.useSoundShapes)
+            {
+                auto shape = SoundShapeClassifier::classify(preset);
+                effectiveSettings.renderSeconds = shape.holdSeconds;
+                effectiveSettings.tailSeconds = shape.tailSeconds;
+                effectiveSettings.velocityLayers = shape.velocityLayers;
+                progress.soundShapeLabel = shape.label;
+            }
+
+            // Create preset directory for WAV files
+            juce::String entangledName = "Entangled_" + sanitizeFilename(preset.name);
+            auto presetDir = keyGroupDir.getChildFile(entangledName);
+            if (!presetDir.createDirectory())
+            {
+                result.errorMessage = "Failed to create preset directory: " + entangledName;
+                tempBundleDir.deleteRecursively();
+                return result;
+            }
+
+            auto notes = getNotesToRender(effectiveSettings);
+            int totalNotesForPreset = (int)notes.size() * effectiveSettings.velocityLayers;
+            progress.totalNotes = totalNotesForPreset;
+
+            // Build offline context with coupling — creates all engines AND
+            // restores coupling routes so the composite render captures interactions.
+            auto ctx = buildCoupledOfflineContext(preset, snapshot, effectiveSettings.sampleRate);
+
+            int notesDone = 0;
+            bool renderFailed = false;
+            juce::String renderError;
+
+            for (int ni = 0; ni < (int)notes.size() && !cancelled.load(); ++ni)
+            {
+                int note = notes[(size_t)ni];
+                for (int vel = 0; vel < effectiveSettings.velocityLayers && !cancelled.load(); ++vel)
+                {
+                    float velocity = velocityForLayer(vel, effectiveSettings.velocityLayers);
+                    auto wavFile = presetDir.getChildFile(
+                        wavFilename(entangledName, note, vel));
+
+                    // Render with coupling active — all engines interact,
+                    // producing a single composite output
+                    auto wavResult = renderCoupledNoteToWav(
+                        ctx, note, velocity, effectiveSettings, wavFile);
+
+                    if (!wavResult.success)
+                    {
+                        renderFailed = true;
+                        renderError = wavResult.error;
+                        break;
+                    }
+
+                    result.samplesRendered++;
+                    result.totalSizeBytes += wavFile.getSize();
+                    ++notesDone;
+
+                    if (progressCb)
+                    {
+                        progress.currentNote = notesDone;
+                        progress.overallProgress =
+                            ((float)pi + (float)notesDone / (float)totalNotesForPreset)
+                            / (float)presets.size();
+                        progressCb(progress);
+                        if (progress.cancelled)
+                            cancelled.store(true);
+                    }
+                }
+                if (renderFailed) break;
+            }
+
+            if (renderFailed)
+            {
+                result.errorMessage = "WAV render failed for " + preset.name + ": " + renderError;
+                tempBundleDir.deleteRecursively();
+                return result;
+            }
+
+            if (!cancelled)
+            {
+                // Single composite XPM — "Entangled" prefix signals coupling snapshot
+                auto xpmFile = keyGroupDir.getChildFile(entangledName + ".xpm");
+                auto xpmResult = writeXPM(xpmFile, preset, notes, effectiveSettings);
+                if (!xpmResult.success)
+                {
+                    result.errorMessage = "XPM write failed for " + preset.name + ": " + xpmResult.error;
+                    tempBundleDir.deleteRecursively();
+                    return result;
+                }
+
+                result.presetsExported++;
+            }
+        }
+
+        if (cancelled)
+        {
+            tempBundleDir.deleteRecursively();
+            result.errorMessage = "Export cancelled by user";
+            return result;
+        }
+
+        // Generate cover art
+        auto coverEngine = config.coverEngine.isNotEmpty()
+            ? config.coverEngine
+            : (presets[0].engines.isEmpty() ? juce::String("DEFAULT")
+               : presets[0].engines[0]);
+
+        auto coverResult = XPNCoverArt::generate(
+            coverEngine, config.name, tempBundleDir,
+            result.presetsExported, config.version, config.coverSeed);
+
+        if (coverResult.success)
+            coverResult.cover1000.copyFileTo(tempBundleDir.getChildFile("Preview.png"));
+
+        auto manifestResult = writeManifest(tempBundleDir, config, result.presetsExported);
+        if (!manifestResult.success)
+        {
+            result.errorMessage = "Manifest write failed: " + manifestResult.error;
+            tempBundleDir.deleteRecursively();
+            return result;
+        }
+
+        // Atomic swap
+        if (finalBundleDir.exists())
+            finalBundleDir.deleteRecursively();
+
+        if (!tempBundleDir.moveFileTo(finalBundleDir))
+        {
+            if (tempBundleDir.copyDirectoryTo(finalBundleDir))
+                tempBundleDir.deleteRecursively();
+            else
+            {
+                result.errorMessage = "Failed to finalize bundle directory";
+                return result;
+            }
+        }
+
+        result.success = true;
+        result.outputFile = finalBundleDir;
+        return result;
+    }
+
+    //==========================================================================
     // Validation
     //==========================================================================
 
@@ -523,6 +795,9 @@ private:
     struct OfflineRenderContext
     {
         std::vector<std::unique_ptr<SynthEngine>> engines;
+        // Coupling matrix for entangled renders — nullptr for standard renders.
+        // Owned by the context, prepared with the same block size.
+        std::unique_ptr<MegaCouplingMatrix> couplingMatrix;
         bool valid = false;
     };
 
@@ -698,6 +973,129 @@ private:
                 for (int ch = 0; ch < settings.numChannels; ++ch)
                     buffer.addFrom(ch, rendered, engineBuf, ch, 0, blockSize);
             }
+
+            rendered += blockSize;
+        }
+
+        normalizeBuffer(buffer, settings.normCeiling);
+        return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+    }
+
+    //==========================================================================
+    // Coupled offline render context — creates engines + coupling matrix
+    //==========================================================================
+
+    OfflineRenderContext buildCoupledOfflineContext(
+        const PresetData& preset,
+        const CouplingSnapshot& snapshot,
+        double sampleRate)
+    {
+        // Start with the standard context (creates engines, applies params)
+        OfflineRenderContext ctx = buildOfflineContext(preset, sampleRate);
+        if (!ctx.valid || !snapshot.hasActiveCoupling())
+            return ctx;
+
+        // Create an offline coupling matrix and prepare its scratch buffers
+        ctx.couplingMatrix = std::make_unique<MegaCouplingMatrix>();
+        ctx.couplingMatrix->prepare(kOfflineBlockSize);
+
+        // Wire engine pointers into the matrix's slot array
+        std::array<SynthEngine*, MegaCouplingMatrix::MaxSlots> enginePtrs = {};
+        for (size_t i = 0; i < ctx.engines.size() && i < 4; ++i)
+            enginePtrs[i] = ctx.engines[i].get();
+        ctx.couplingMatrix->setEngines(enginePtrs);
+
+        // Restore the captured coupling routes into the offline matrix
+        for (const auto& snapRoute : snapshot.activeRoutes)
+        {
+            MegaCouplingMatrix::CouplingRoute route;
+            route.sourceSlot = snapRoute.sourceSlot;
+            route.destSlot = snapRoute.destSlot;
+            route.type = static_cast<CouplingType>(snapRoute.couplingType);
+            route.amount = snapRoute.amount;
+            route.isNormalled = false;  // user-captured state
+            route.active = true;
+            ctx.couplingMatrix->addRoute(route);
+        }
+
+        return ctx;
+    }
+
+    //==========================================================================
+    // Coupled WAV rendering — all engines interact via the coupling matrix,
+    // producing a single composite output per note.
+    //==========================================================================
+
+    IOResult renderCoupledNoteToWav(OfflineRenderContext& ctx, int note, float velocity,
+                                    const RenderSettings& settings, const juce::File& outputFile)
+    {
+        // If no coupling matrix, fall back to standard render
+        if (!ctx.couplingMatrix)
+            return renderNoteToWav(ctx, note, velocity, settings, outputFile);
+
+        int totalSamples = (int)((settings.renderSeconds + settings.tailSeconds) * settings.sampleRate);
+        int holdSamples  = (int)(settings.renderSeconds * settings.sampleRate);
+
+        juce::AudioBuffer<float> buffer(settings.numChannels, totalSamples);
+        buffer.clear();
+
+        if (!ctx.valid)
+            return writeWav(outputFile, buffer, settings.sampleRate, settings.bitDepth);
+
+        // Reset all engine voices for a clean note render
+        for (auto& engine : ctx.engines)
+        {
+            engine->reset();
+            engine->wakeSilenceGate();
+        }
+
+        int rendered = 0;
+        bool noteOffSent = false;
+
+        juce::MidiBuffer noteOnMsg;
+        noteOnMsg.addEvent(
+            juce::MidiMessage::noteOn(1, note, (uint8_t)juce::roundToInt(velocity * 127.0f)), 0);
+
+        while (rendered < totalSamples)
+        {
+            int blockSize = juce::jmin(kOfflineBlockSize, totalSamples - rendered);
+
+            juce::MidiBuffer midi;
+            if (rendered == 0)
+            {
+                midi = noteOnMsg;
+            }
+            else if (!noteOffSent && rendered >= holdSamples)
+            {
+                int offsetInBlock = holdSamples - (rendered - blockSize);
+                offsetInBlock = juce::jlimit(0, blockSize - 1, offsetInBlock);
+                midi.addEvent(juce::MidiMessage::noteOff(1, note), offsetInBlock);
+                noteOffSent = true;
+            }
+
+            // Phase 1: Render each engine into its own buffer
+            // This populates each engine's per-sample coupling output cache
+            // (used by getSampleForCoupling in the matrix).
+            juce::AudioBuffer<float> engineBuf(settings.numChannels, blockSize);
+
+            for (auto& engine : ctx.engines)
+            {
+                engineBuf.clear();
+                engine->renderBlock(engineBuf, midi, blockSize);
+                engine->analyzeForSilenceGate(engineBuf, blockSize);
+
+                // Mix into the composite output buffer
+                for (int ch = 0; ch < settings.numChannels; ++ch)
+                    buffer.addFrom(ch, rendered, engineBuf, ch, 0, blockSize);
+            }
+
+            // Phase 2: Process coupling routes — engines modulate each other.
+            // This runs AFTER all engines have rendered for the block, so
+            // getSampleForCoupling() returns valid data. The coupling effects
+            // will manifest in the NEXT block's render (1-block latency,
+            // inaudible at 512 samples / 48kHz = ~10.7ms).
+            auto routes = ctx.couplingMatrix->loadRoutes();
+            ctx.couplingMatrix->processBlock(blockSize, routes);
 
             rendered += blockSize;
         }

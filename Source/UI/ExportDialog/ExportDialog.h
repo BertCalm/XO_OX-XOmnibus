@@ -2,7 +2,9 @@
 #include <mutex>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include <juce_audio_formats/juce_audio_formats.h>
+#include <juce_audio_devices/juce_audio_devices.h>
 #include "../../Export/XPNExporter.h"
+#include "../../Export/XDrip.h"
 #include "../../Core/PresetManager.h"
 #include "../../Core/EngineRegistry.h"
 #include "../XOmnibusEditor.h"
@@ -33,18 +35,21 @@ public:
         A11y::setup(*this, "XPN Export", "Export presets as MPC-compatible expansion pack");
 
         buildPresetSelection();
+        buildPreviewSection();
         buildRenderSettings();
         buildBundleConfig();
         buildSizeEstimate();
         buildProgressSection();
         buildActionButtons();
 
-        setSize(520, 680);
+        setSize(520, 740);
     }
 
     ~ExportDialog() override
     {
         stopTimer();
+        previewDrip.cancel();
+        stopPreviewPlayback();
     }
 
     //==========================================================================
@@ -72,6 +77,9 @@ public:
         int sectionY = kHeaderH + kPresetSectionH;
         g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
 
+        sectionY += kPreviewSectionH;
+        g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
+
         sectionY += kSettingsSectionH;
         g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
 
@@ -82,14 +90,22 @@ public:
         g.setFont(GalleryFonts::heading(9.0f));
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
         g.drawText("PRESETS", 12, kHeaderH + 4, 200, 16, juce::Justification::topLeft);
-        g.drawText("RENDER SETTINGS", 12, kHeaderH + kPresetSectionH + 4, 200, 16, juce::Justification::topLeft);
-        g.drawText("BUNDLE", 12, kHeaderH + kPresetSectionH + kSettingsSectionH + 4, 200, 16, juce::Justification::topLeft);
+
+        int previewLabelY = kHeaderH + kPresetSectionH + 4;
+        g.drawText("PREVIEW", 12, previewLabelY, 200, 16, juce::Justification::topLeft);
+
+        int settingsLabelY = kHeaderH + kPresetSectionH + kPreviewSectionH + 4;
+        g.drawText("RENDER SETTINGS", 12, settingsLabelY, 200, 16, juce::Justification::topLeft);
+        g.drawText("BUNDLE", 12, settingsLabelY + kSettingsSectionH, 200, 16, juce::Justification::topLeft);
+
+        // Draw preview waveform
+        paintPreviewWaveform(g);
 
         // Size estimate label
         if (!exporting)
         {
             auto estArea = getLocalBounds().reduced(12, 0);
-            estArea.removeFromTop(kHeaderH + kPresetSectionH + kSettingsSectionH + kBundleSectionH + 4);
+            estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH + kBundleSectionH + 4);
             estArea = estArea.removeFromTop(20);
             g.setFont(GalleryFonts::label(8.5f));
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
@@ -105,6 +121,15 @@ public:
         // Preset selection section
         auto presetArea = area.removeFromTop(kPresetSectionH).reduced(12, 20);
         presetList.setBounds(presetArea);
+
+        // Preview section — play button + waveform display
+        auto previewArea = area.removeFromTop(kPreviewSectionH).reduced(12, 0);
+        previewArea.removeFromTop(18); // section label space
+        auto previewRow = previewArea.removeFromTop(32);
+        previewPlayBtn.setBounds(previewRow.removeFromLeft(32));
+        previewRow.removeFromLeft(6);
+        // Waveform display area is painted directly (no child component)
+        previewWaveformBounds = previewRow.reduced(0, 2);
 
         // Render settings section — row 1: combo boxes, row 2: quick-profile buttons
         auto settingsArea = area.removeFromTop(kSettingsSectionH).reduced(12, 0);
@@ -212,6 +237,7 @@ private:
 
     static constexpr int kHeaderH          = 36;
     static constexpr int kPresetSectionH   = 140;
+    static constexpr int kPreviewSectionH  = 56;
     static constexpr int kSettingsSectionH  = 100;
     static constexpr int kBundleSectionH   = 122;
     static constexpr int kProgressH        = 44;
@@ -260,6 +286,18 @@ private:
     std::atomic<bool> shouldCancel { false };
     std::unique_ptr<juce::FileChooser> fileChooser;
 
+    // XDrip preview
+    XDrip previewDrip;
+    juce::TextButton previewPlayBtn { ">" };
+    juce::Rectangle<int> previewWaveformBounds;
+    std::vector<float> cachedThumbnail;
+    bool previewPlaying = false;
+    int  previewPlaybackPos = 0;
+    juce::AudioBuffer<float> previewAudioBuffer;
+    std::unique_ptr<juce::AudioDeviceManager> previewDeviceManager;
+    std::unique_ptr<juce::AudioSourcePlayer> previewPlayer;
+    int selectedPresetIndex = -1;
+
     //==========================================================================
     // Build methods
     //==========================================================================
@@ -268,6 +306,224 @@ private:
     {
         addAndMakeVisible(presetList);
         A11y::setup(presetList, "Preset List", "Select presets to include in export");
+    }
+
+    //==========================================================================
+    // Preview section (XDrip)
+    //==========================================================================
+
+    void buildPreviewSection()
+    {
+        previewPlayBtn.setColour(juce::TextButton::buttonColourId,
+                                  GalleryColors::get(GalleryColors::xoGold));
+        previewPlayBtn.setColour(juce::TextButton::textColourOffId,
+                                  juce::Colour(GalleryColors::Light::textDark));
+        A11y::setup(previewPlayBtn, "Preview Play",
+                    "Play a 2-second audio preview of the selected preset");
+        addAndMakeVisible(previewPlayBtn);
+
+        previewPlayBtn.onClick = [this]
+        {
+            if (previewPlaying)
+            {
+                stopPreviewPlayback();
+            }
+            else if (previewDrip.getState() == XDrip::State::Ready)
+            {
+                startPreviewPlayback();
+            }
+            else
+            {
+                triggerPreviewForSelectedPreset();
+            }
+        };
+    }
+
+    void triggerPreviewForSelectedPreset()
+    {
+        if (presetManager.library.empty()) return;
+
+        // Use the selected preset, or the first one
+        int idx = (selectedPresetIndex >= 0 &&
+                   selectedPresetIndex < (int)presetManager.library.size())
+                      ? selectedPresetIndex : 0;
+
+        const auto& preset = presetManager.library[static_cast<size_t>(idx)];
+        previewDrip.requestPreview(preset, dialogApvts);
+        cachedThumbnail.clear();
+        previewPlayBtn.setButtonText("...");
+        repaint();
+
+        // Start polling for render completion
+        if (!isTimerRunning())
+            startTimerHz(15);
+    }
+
+    void startPreviewPlayback()
+    {
+        previewAudioBuffer = previewDrip.getPreviewBuffer();
+        if (previewAudioBuffer.getNumSamples() == 0) return;
+
+        previewPlaybackPos = 0;
+        previewPlaying = true;
+        previewPlayBtn.setButtonText("||");
+
+        // Use a simple timer-based playback via AudioDeviceManager
+        if (!previewDeviceManager)
+        {
+            previewDeviceManager = std::make_unique<juce::AudioDeviceManager>();
+            previewDeviceManager->initialiseWithDefaultDevices(0, 2);
+            previewPlayer = std::make_unique<juce::AudioSourcePlayer>();
+            previewDeviceManager->addAudioCallback(previewPlayer.get());
+        }
+
+        // Create a simple playback source
+        auto* src = new PreviewAudioSource(*this);
+        previewPlayer->setSource(src);
+
+        if (!isTimerRunning())
+            startTimerHz(15);
+
+        juce::AccessibilityHandler::postAnnouncement(
+            "Playing preview", juce::AccessibilityHandler::AnnouncementPriority::medium);
+    }
+
+    void stopPreviewPlayback()
+    {
+        previewPlaying = false;
+        previewPlaybackPos = 0;
+
+        if (previewPlayer)
+            previewPlayer->setSource(nullptr);
+
+        if (previewDrip.getState() == XDrip::State::Ready)
+            previewPlayBtn.setButtonText(">");
+        else
+            previewPlayBtn.setButtonText(">");
+
+        repaint();
+    }
+
+    //==========================================================================
+    // Simple AudioSource for preview playback
+    //==========================================================================
+
+    struct PreviewAudioSource : public juce::AudioSource
+    {
+        PreviewAudioSource(ExportDialog& d) : dialog(d) {}
+
+        void prepareToPlay(int, double) override {}
+        void releaseResources() override {}
+
+        void getNextAudioBlock(const juce::AudioSourceChannelInfo& info) override
+        {
+            info.clearActiveBufferRegion();
+            if (!dialog.previewPlaying) return;
+
+            auto& src = dialog.previewAudioBuffer;
+            int srcChannels = src.getNumChannels();
+            int srcSamples  = src.getNumSamples();
+            int pos = dialog.previewPlaybackPos;
+
+            if (pos >= srcSamples)
+            {
+                // Playback finished — schedule stop on message thread
+                juce::MessageManager::callAsync([&dialog = dialog]
+                {
+                    dialog.stopPreviewPlayback();
+                });
+                return;
+            }
+
+            int samplesToRead = juce::jmin(info.numSamples, srcSamples - pos);
+
+            for (int ch = 0; ch < info.buffer->getNumChannels(); ++ch)
+            {
+                int srcCh = juce::jmin(ch, srcChannels - 1);
+                info.buffer->copyFrom(ch, info.startSample, src, srcCh, pos, samplesToRead);
+            }
+
+            dialog.previewPlaybackPos += samplesToRead;
+        }
+
+        ExportDialog& dialog;
+    };
+
+    //==========================================================================
+    // Preview waveform painting
+    //==========================================================================
+
+    void paintPreviewWaveform(juce::Graphics& g)
+    {
+        if (previewWaveformBounds.isEmpty()) return;
+
+        auto area = previewWaveformBounds;
+
+        // Background
+        g.setColour(GalleryColors::get(GalleryColors::shellWhite()).darker(0.03f));
+        g.fillRoundedRectangle(area.toFloat(), 3.0f);
+
+        // Border
+        g.setColour(GalleryColors::get(GalleryColors::borderGray()));
+        g.drawRoundedRectangle(area.toFloat(), 3.0f, 0.5f);
+
+        auto dripState = previewDrip.getState();
+
+        if (dripState == XDrip::State::Rendering)
+        {
+            // Pulsing dots animation
+            g.setColour(GalleryColors::get(GalleryColors::xoGold));
+            g.setFont(GalleryFonts::label(9.0f));
+            g.drawText("Rendering preview...", area, juce::Justification::centred);
+        }
+        else if (dripState == XDrip::State::Ready && !cachedThumbnail.empty())
+        {
+            // Draw waveform in XO Gold
+            g.setColour(GalleryColors::get(GalleryColors::xoGold));
+
+            float w = static_cast<float>(area.getWidth());
+            float h = static_cast<float>(area.getHeight());
+            float x0 = static_cast<float>(area.getX());
+            float yMid = static_cast<float>(area.getCentreY());
+            float halfH = h * 0.45f;
+
+            int points = static_cast<int>(cachedThumbnail.size());
+            float barWidth = w / static_cast<float>(points);
+
+            for (int i = 0; i < points; ++i)
+            {
+                float val = cachedThumbnail[static_cast<size_t>(i)];
+                float barH = val * halfH;
+                float xPos = x0 + i * barWidth;
+
+                // Symmetric waveform (mirrored top/bottom)
+                g.fillRect(xPos, yMid - barH, juce::jmax(1.0f, barWidth - 0.5f), barH * 2.0f);
+            }
+
+            // Draw playback position indicator
+            if (previewPlaying && previewAudioBuffer.getNumSamples() > 0)
+            {
+                float progress = static_cast<float>(previewPlaybackPos)
+                                 / static_cast<float>(previewAudioBuffer.getNumSamples());
+                float lineX = x0 + progress * w;
+                g.setColour(juce::Colour(GalleryColors::Light::textDark));
+                g.drawLine(lineX, static_cast<float>(area.getY()),
+                           lineX, static_cast<float>(area.getBottom()), 1.5f);
+            }
+        }
+        else if (dripState == XDrip::State::Error)
+        {
+            g.setColour(GalleryColors::get(GalleryColors::textMid()));
+            g.setFont(GalleryFonts::label(8.5f));
+            g.drawText("Preview failed", area, juce::Justification::centred);
+        }
+        else
+        {
+            // Idle — show hint
+            g.setColour(GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
+            g.setFont(GalleryFonts::label(8.5f));
+            g.drawText("Click > to preview selected preset", area, juce::Justification::centred);
+        }
     }
 
     void buildRenderSettings()
