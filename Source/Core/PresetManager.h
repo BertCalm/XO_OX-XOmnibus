@@ -75,6 +75,7 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         { "XOverlap",    "Overlap"   },
         { "XOutwit",     "Outwit"    },
+        { "Oceandeep",   "OceanDeep" },
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;

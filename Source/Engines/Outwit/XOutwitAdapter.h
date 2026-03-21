@@ -489,7 +489,7 @@ public:
     // Identity
     //==========================================================================
 
-    juce::String getEngineId()    const override { return "XOutwit"; }
+    juce::String getEngineId()    const override { return "Outwit"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFCC6600); } // Chromatophore Amber
     int getMaxVoices()            const override { return 1; }
     int getActiveVoiceCount()     const override { return activeCount; }
