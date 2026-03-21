@@ -1,6 +1,8 @@
 #pragma once
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/FastMath.h"
+#include "../../DSP/PitchBendUtil.h"
+#include "../../DSP/StandardLFO.h"
 #include "../../DSP/SRO/SilenceGate.h"
 #include <array>
 #include <cmath>
@@ -492,8 +494,8 @@ public:
         noteIsOn    = false;
         currentNote = 60;
         currentVel  = 1.f;
-        lfo1Phase   = 0.f;
-        lfo2Phase   = 0.f;
+        lfo1.reset();
+        lfo2.reset();
         modWheelVal = 0.f;
         aftertouchVal= 0.f;
 
@@ -517,8 +519,8 @@ public:
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
         noteIsOn    = false;
-        lfo1Phase   = 0.f;
-        lfo2Phase   = 0.f;
+        lfo1.reset();
+        lfo2.reset();
     }
 
     //--------------------------------------------------------------------------
@@ -606,7 +608,7 @@ public:
                 aftertouchVal = msg.getAfterTouchValue() / 127.f;      // D006
             // DSP Fix Wave 2B: Wire pitch bend to pitch (was missing entirely)
             } else if (msg.isPitchWheel()) {
-                pitchBendVal = (msg.getPitchWheelValue() - 8192) / 8192.f; // -1..+1
+                pitchBendVal = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue()); // -1..+1
             }
         }
 
@@ -704,6 +706,12 @@ public:
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
 
+        // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
+        lfo1.setRate (lfo1Rate, sr);
+        lfo1.setShape (StandardLFO::Sine);
+        lfo2.setRate (lfo2Rate, sr);
+        lfo2.setShape (StandardLFO::Sine);
+
         // Reset coupling modulation (consumed each block)
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
@@ -746,14 +754,10 @@ public:
             ampEnvLevel = flushDenormal(ampEnvLevel);
 
             // --- LFO 1: creature modulation (0.01-2 Hz) ---
-            lfo1Phase += lfo1Rate / sr;
-            if (lfo1Phase >= 1.f) lfo1Phase -= 1.f;
-            float lfo1Val = fastSin(lfo1Phase * 6.2831853f); // sine LFO
+            float lfo1Val = lfo1.process(); // StandardLFO sine output [-1, +1]
 
             // --- LFO 2: pressure wobble (0.01-0.5 Hz) ---
-            lfo2Phase += lfo2Rate / sr;
-            if (lfo2Phase >= 1.f) lfo2Phase -= 1.f;
-            float lfo2Val = fastSin(lfo2Phase * 6.2831853f); // sine LFO
+            float lfo2Val = lfo2.process(); // StandardLFO sine output [-1, +1]
 
             // Apply LFO depth
             float lfo1Out = lfo1Val * lfo1Depth;
@@ -897,9 +901,9 @@ private:
     int   currentNote = 60;
     float currentVel  = 1.f;
 
-    // LFO phases
-    float lfo1Phase = 0.f;
-    float lfo2Phase = 0.f;
+    // LFOs — shared StandardLFO (sine-only, D005-compliant floor)
+    StandardLFO lfo1;
+    StandardLFO lfo2;
 
     // Expression
     float modWheelVal   = 0.f;
