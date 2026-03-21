@@ -571,7 +571,7 @@ public:
         // Knot topology (4)
         params.push_back (std::make_unique<PC> (juce::ParameterID { "weave_knotType", 1 }, "Orbweave Knot Type", knotChoices, 0));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "weave_braidDepth", 1 }, "Orbweave Braid Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.5f));
+            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.2f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "weave_torusP", 1 }, "Orbweave Torus P",
             juce::NormalisableRange<float> (1.0f, 8.0f, 1.0f), 2.0f));
         params.push_back (std::make_unique<PF> (juce::ParameterID { "weave_torusQ", 1 }, "Orbweave Torus Q",
