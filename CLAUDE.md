@@ -318,6 +318,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [engine-health-check](Skills/engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine check on any engine |
 | [dna-designer](Skills/dna-designer/SKILL.md) | `/dna-designer` | Assigning accurate 6D Sonic DNA to presets |
 | [xpn-export-specialist](Skills/xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | Full XPN/MPC export pipeline |
+| [midi-daw-audit](Skills/midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit (CC thread safety, MIDI learn, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract) |
 | synth-seance (`~/.claude/skills/`) | `/synth-seance` | Ghost council full engine quality evaluation |
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |

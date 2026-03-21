@@ -17,6 +17,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [engine-health-check](./engine-health-check/SKILL.md) | `/engine-health-check` | Quick D001–D006 doctrine compliance check + coupling quality + known bugs | MEDIUM |
 | [dna-designer](./dna-designer/SKILL.md) | `/dna-designer` | Assign accurate 6D Sonic DNA values — calibrated per dimension per engine | MEDIUM |
 | [xpn-export-specialist](./xpn-export-specialist/SKILL.md) | `/xpn-export-specialist` | End-to-end XPN/MPC export — render specs, WAV rendering, XPM rules, bundle assembly | MEDIUM |
+| [midi-daw-audit](./midi-daw-audit/SKILL.md) | `/midi-daw-audit` | MIDI/DAW compatibility audit — CC thread safety, MIDI learn wiring, APVTS exposure, state persistence, MPE, pitch bend, sustain, transport sync, plugin contract | HIGH |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
 
@@ -41,6 +42,8 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Quick engine QA before release | `/engine-health-check` |
 | Adding DNA to existing presets | `/dna-designer` |
 | Building an MPC export bundle | `/xpn-export-specialist` |
+| Pre-release MIDI/DAW compatibility check | `/midi-daw-audit` |
+| CC not working in a DAW / automation lost after reopen | `/midi-daw-audit` |
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
