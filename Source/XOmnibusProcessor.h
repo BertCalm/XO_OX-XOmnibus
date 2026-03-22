@@ -27,6 +27,7 @@ public:
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
     void processBlock(juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
+    bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
 
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
@@ -128,6 +129,10 @@ private:
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
     std::array<juce::MidiBuffer, MaxSlots> slotMidi;  // per-slot MIDI from ChordMachine
+
+    // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
+    // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
+    juce::AudioBuffer<float> externalInputBuffer;
 
     double currentSampleRate = 44100.0;
     int currentBlockSize = 512;

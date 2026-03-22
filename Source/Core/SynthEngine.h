@@ -118,6 +118,9 @@ public:
     // or just return a cached counter updated at the end of each renderBlock().
     virtual int getActiveVoiceCount() const { return 0; }
 
+    // Override in analysis engines (Osmosis) to receive external audio without RTTI.
+    virtual bool isAnalysisEngine() const { return false; }
+
     //-- MPE Expression --------------------------------------------------------
 
     // Set the MPE manager reference for per-note expression queries.

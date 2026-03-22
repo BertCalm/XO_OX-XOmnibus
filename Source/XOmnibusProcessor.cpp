@@ -399,6 +399,7 @@ namespace xomnibus {
 
 XOmnibusProcessor::XOmnibusProcessor()
     : AudioProcessor(BusesProperties()
+                     .withInput("Input", juce::AudioChannelSet::stereo(), false)
                      .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
       apvts(*this, nullptr, "XOmnibusParams", createParameterLayout()),
       couplingPresetManager(apvts, [this](int slot) -> juce::String {
@@ -417,6 +418,17 @@ XOmnibusProcessor::XOmnibusProcessor()
 }
 
 XOmnibusProcessor::~XOmnibusProcessor() = default;
+
+bool XOmnibusProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+{
+    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+        return false;
+    const auto& inputSet = layouts.getMainInputChannelSet();
+    if (inputSet != juce::AudioChannelSet::disabled()
+        && inputSet != juce::AudioChannelSet::stereo())
+        return false;
+    return true;
+}
 
 void XOmnibusProcessor::cacheParameterPointers()
 {
@@ -1074,6 +1086,7 @@ void XOmnibusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         buf.setSize(2, samplesPerBlock);
 
     crossfadeBuffer.setSize(2, samplesPerBlock);
+    externalInputBuffer.setSize(2, samplesPerBlock);
 
     for (int i = 0; i < MaxSlots; ++i)
     {
@@ -1103,6 +1116,21 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 {
     juce::ScopedNoDenormals noDenormals;
     const int numSamples = buffer.getNumSamples();
+
+    // Capture external audio input before clearing the buffer.
+    // externalInputBuffer was pre-allocated in prepareToPlay — no setSize here.
+    // ORDERING CONTRACT: setExternalInput() on Osmosis must be called AFTER this
+    // and BEFORE renderBlock() in the same processBlock call.
+    const int totalInputChannels = getTotalNumInputChannels();
+    if (totalInputChannels >= 2)
+    {
+        for (int ch = 0; ch < 2; ++ch)
+            externalInputBuffer.copyFrom(ch, 0, buffer, ch, 0, numSamples);
+    }
+    else
+    {
+        externalInputBuffer.clear();
+    }
 
     buffer.clear();
 
