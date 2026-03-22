@@ -25,6 +25,7 @@ This directory contains Claude Code skill files for working efficiently with the
 | [master-audit](./master-audit/SKILL.md) | `/master-audit` | Orchestrate all QA checks into a fleet-wide health report | HIGH |
 | [repo-audit](./repo-audit/SKILL.md) | `/repo-audit` | Repo hygiene and documentation currency — stale counts, broken IDs, ODR hazards, governance gaps | HIGH |
 | [preset-audit-checklist](./preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — 10-point sonic gate, engine-specific depth, coverage gaps, Guru tricks. Path to 9.0+ preset libraries. | HIGH |
+| [new-xo-engine](./new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation — concept brief, scaffold, integration, verification | HIGH |
 | [session-start-hook](./session-start-hook/SKILL.md) | `/session-start-hook` | Configure Claude Code SessionStart hook for web sessions — tests, linters, project context | LOW |
 
 ### Referenced Elsewhere (`~/.claude/skills/`)
@@ -56,7 +57,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Deep engine quality evaluation | `/synth-seance` |
 | After finishing an engine | `/post-engine-completion-checklist` |
 | Product direction / market review | `/producers-guild` |
-| Building a new engine from scratch | `/new-xo-engine` (see `Docs/xomnibus_new_engine_process.md`) |
+| Building a new engine from scratch | `/new-xo-engine` |
 | A skill produced confusion, loops, or silent failures | `/skill-friction-detective` |
 | Auditing the skill library for stale content or orphaned skills | `/skill-friction-detective audit` |
 | Finding cross-skill linking opportunities | `/skill-friction-detective link` |

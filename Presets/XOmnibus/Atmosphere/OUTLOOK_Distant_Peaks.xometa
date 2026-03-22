@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Distant Peaks",
+  "mood": "Atmosphere",
+  "engines": ["Outlook"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Saw-based vista pad with slow aurora modulation — mountains at dusk",
+  "tags": ["pad", "saw", "cinematic", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.45,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.6,
+      "look_horizonScan": 0.35,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.5,
+      "look_resonance": 0.2,
+      "look_filterEnvAmt": 0.4,
+      "look_attack": 1.5,
+      "look_decay": 1.0,
+      "look_sustain": 0.65,
+      "look_release": 3.5,
+      "look_lfo1Rate": 0.04,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.015,
+      "look_lfo2Depth": 0.3,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.35,
+      "look_reverbMix": 0.6,
+      "look_delayMix": 0.15,
+      "look_macroCharacter": 0.35,
+      "look_macroMovement": 0.0,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.6
+    }
+  },
+  "coupling": { "pairs": [] }
+}
