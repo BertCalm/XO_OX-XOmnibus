@@ -3,669 +3,1170 @@
   "pack_id": "xoox-mpce-perc-001",
   "engine": "ONSET",
   "description": "First MPCe-native drum pack. 16 pads x 4 corners x 4 velocity layers = 256 WAVs.",
-
   "defaults": {
-    "velocities": [20, 50, 90, 127],
+    "velocities": [
+      20,
+      50,
+      90,
+      127
+    ],
     "duration_ms": 2000,
     "release_tail_ms": 1000,
     "channel": 0
   },
-
   "presets": [
     {
       "name": "Kick",
       "slug": "A01_Kick_SW",
-      "notes": [36],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        36
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Kick Ghost",
       "slug": "A01_Kick_NW",
-      "notes": [36],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        36
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 500,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Kick Accent",
       "slug": "A01_Kick_NE",
-      "notes": [36],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        36
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Kick Effect",
       "slug": "A01_Kick_SE",
-      "notes": [36],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        36
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2500,
       "release_tail_ms": 1000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Snare",
       "slug": "A02_Snare_SW",
-      "notes": [38],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        38
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 1000,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Snare Ghost",
       "slug": "A02_Snare_NW",
-      "notes": [38],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        38
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Snare Rimshot",
       "slug": "A02_Snare_NE",
-      "notes": [38],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        38
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 1000,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Snare Buzz",
       "slug": "A02_Snare_SE",
-      "notes": [38],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        38
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Closed Hat",
       "slug": "A03_CHat_SW",
-      "notes": [42],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        42
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 200,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Closed Hat Tick",
       "slug": "A03_CHat_NW",
-      "notes": [42],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        42
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 300,
       "release_tail_ms": 100,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Closed Hat Pedal",
       "slug": "A03_CHat_NE",
-      "notes": [42],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        42
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 600,
       "release_tail_ms": 300,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Closed Hat Shaker",
       "slug": "A03_CHat_SE",
-      "notes": [42],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        42
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 800,
       "release_tail_ms": 300,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Open Hat",
       "slug": "A04_OHat_SW",
-      "notes": [46],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        46
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 1000,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Open Hat Half",
       "slug": "A04_OHat_NW",
-      "notes": [46],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        46
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 800,
       "release_tail_ms": 500,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Open Hat Crash Bleed",
       "slug": "A04_OHat_NE",
-      "notes": [46],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        46
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1500,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Open Hat Sizzle",
       "slug": "A04_OHat_SE",
-      "notes": [46],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        46
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Clap",
       "slug": "A05_Clap_SW",
-      "notes": [39],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        39
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Finger Snap",
       "slug": "A05_Clap_NW",
-      "notes": [39],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        39
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 200,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Double Clap",
       "slug": "A05_Clap_NE",
-      "notes": [39],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        39
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1200,
       "release_tail_ms": 500,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Reverb Clap",
       "slug": "A05_Clap_SE",
-      "notes": [39],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        39
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Low Tom",
       "slug": "A06_LTom_SW",
-      "notes": [45],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        45
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 800,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Low Tom Muted",
       "slug": "A06_LTom_NW",
-      "notes": [45],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        45
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 600,
       "release_tail_ms": 200,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Low Tom Rim",
       "slug": "A06_LTom_NE",
-      "notes": [45],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        45
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Low Tom Sweep",
       "slug": "A06_LTom_SE",
-      "notes": [45],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        45
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2500,
       "release_tail_ms": 1000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Rimshot",
       "slug": "A07_Rim_SW",
-      "notes": [37],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        37
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 800,
       "release_tail_ms": 300,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Side Stick",
       "slug": "A07_Rim_NW",
-      "notes": [37],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        37
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 400,
       "release_tail_ms": 200,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Cross Stick",
       "slug": "A07_Rim_NE",
-      "notes": [37],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        37
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 600,
       "release_tail_ms": 300,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Flam",
       "slug": "A07_Rim_SE",
-      "notes": [37],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        37
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Crash",
       "slug": "A08_Crash_SW",
-      "notes": [49],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        49
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 3000,
       "release_tail_ms": 2000,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Crash Choke",
       "slug": "A08_Crash_NW",
-      "notes": [49],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        49
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 100,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Crash Bell",
       "slug": "A08_Crash_NE",
-      "notes": [49],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        49
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Crash Reversed",
       "slug": "A08_Crash_SE",
-      "notes": [49],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        49
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 3000,
       "release_tail_ms": 500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Ride",
       "slug": "A09_Ride_SW",
-      "notes": [51],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        51
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1500,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Ride Tip",
       "slug": "A09_Ride_NW",
-      "notes": [51],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        51
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Ride Bell",
       "slug": "A09_Ride_NE",
-      "notes": [51],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        51
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2500,
       "release_tail_ms": 1500,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Ride Swell",
       "slug": "A09_Ride_SE",
-      "notes": [51],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        51
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 3000,
       "release_tail_ms": 2000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Mid Tom",
       "slug": "A10_MTom_SW",
-      "notes": [47],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        47
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1200,
       "release_tail_ms": 600,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Mid Tom Muted",
       "slug": "A10_MTom_NW",
-      "notes": [47],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        47
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 200,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Mid Tom Rim",
       "slug": "A10_MTom_NE",
-      "notes": [47],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        47
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 800,
       "release_tail_ms": 400,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Mid Tom Roll",
       "slug": "A10_MTom_SE",
-      "notes": [47],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        47
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 800,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "High Tom",
       "slug": "A11_HTom_SW",
-      "notes": [50],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        50
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "High Tom Muted",
       "slug": "A11_HTom_NW",
-      "notes": [50],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        50
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 400,
       "release_tail_ms": 150,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "High Tom Rim",
       "slug": "A11_HTom_NE",
-      "notes": [50],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        50
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 700,
       "release_tail_ms": 300,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "High Tom Ruff",
       "slug": "A11_HTom_SE",
-      "notes": [50],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        50
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 600,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Floor Tom",
       "slug": "A12_FTom_SW",
-      "notes": [43],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        43
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 2000,
       "release_tail_ms": 1000,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Floor Tom Muted",
       "slug": "A12_FTom_NW",
-      "notes": [43],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        43
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 600,
       "release_tail_ms": 200,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Floor Tom Rim",
       "slug": "A12_FTom_NE",
-      "notes": [43],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        43
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1200,
       "release_tail_ms": 600,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Floor Tom Thunder",
       "slug": "A12_FTom_SE",
-      "notes": [43],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        43
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 3000,
       "release_tail_ms": 1500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Tambourine",
       "slug": "A13_Tamb_SW",
-      "notes": [54],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        54
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 800,
       "release_tail_ms": 400,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Tambourine Single",
       "slug": "A13_Tamb_NW",
-      "notes": [54],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        54
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 300,
       "release_tail_ms": 150,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Tambourine Shake",
       "slug": "A13_Tamb_NE",
-      "notes": [54],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        54
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 500,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Tambourine Filtered",
       "slug": "A13_Tamb_SE",
-      "notes": [54],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        54
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Cowbell",
       "slug": "A14_Cow_SW",
-      "notes": [56],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        56
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Cowbell Muted",
       "slug": "A14_Cow_NW",
-      "notes": [56],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        56
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 400,
       "release_tail_ms": 150,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Cowbell Open",
       "slug": "A14_Cow_NE",
-      "notes": [56],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        56
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 800,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Cowbell Pitched",
       "slug": "A14_Cow_SE",
-      "notes": [56],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        56
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1200,
       "release_tail_ms": 600,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Clave",
       "slug": "A15_Clave_SW",
-      "notes": [75],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        75
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 200,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Clave Soft",
       "slug": "A15_Clave_NW",
-      "notes": [75],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        75
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 300,
       "release_tail_ms": 100,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Clave Hard",
       "slug": "A15_Clave_NE",
-      "notes": [75],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        75
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 600,
       "release_tail_ms": 250,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Clave Delayed",
       "slug": "A15_Clave_SE",
-      "notes": [75],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        75
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1500,
       "release_tail_ms": 1000,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     },
-
     {
       "name": "Wood Block",
       "slug": "A16_WBlk_SW",
-      "notes": [76],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        76
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 500,
       "release_tail_ms": 200,
       "corner": "SW",
-      "corner_role": "standard"
+      "corner_role": "standard",
+      "program": 0
     },
     {
       "name": "Wood Block Low",
       "slug": "A16_WBlk_NW",
-      "notes": [76],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        76
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 400,
       "release_tail_ms": 150,
       "corner": "NW",
-      "corner_role": "ghost"
+      "corner_role": "ghost",
+      "program": 0
     },
     {
       "name": "Wood Block High",
       "slug": "A16_WBlk_NE",
-      "notes": [76],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        76
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 400,
       "release_tail_ms": 150,
       "corner": "NE",
-      "corner_role": "accent"
+      "corner_role": "accent",
+      "program": 0
     },
     {
       "name": "Wood Block Resonant",
       "slug": "A16_WBlk_SE",
-      "notes": [76],
-      "velocities": [20, 50, 90, 127],
+      "notes": [
+        76
+      ],
+      "velocities": [
+        20,
+        50,
+        90,
+        127
+      ],
       "duration_ms": 1000,
       "release_tail_ms": 500,
       "corner": "SE",
-      "corner_role": "effect"
+      "corner_role": "effect",
+      "program": 0
     }
-  ]
+  ],
+  "_program_wiring_note": "program field = 0-indexed preset position in XOmnibus bank. When building from .oxbuild, cmd_build RENDER stage injects per-preset program numbers from selected_presets.json into a clone of this note-layout spec. program=0 here is the smoke-test default (first loaded preset)."
 }

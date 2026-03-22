@@ -1915,8 +1915,26 @@ def cmd_build(args) -> int:
         else:
             print(f"         → Auto-generating render spec from .oxbuild")
         print(f"         → {sample_rate}Hz / {bit_depth}-bit / via BlackHole loopback")
+
+        # SELECT → RENDER wiring: inject program numbers from selected_presets.
+        # When SELECT produced a preset list, each preset is rendered as a separate program:
+        # program number = 0-based index of that preset in the XOmnibus bank as loaded.
+        # The render spec defines the note-layout (which MIDI note → which drum voice).
+        # We clone that layout once per selected preset, patching in the program number
+        # so oxport_render sends the correct MIDI PC before recording each preset's voices.
+        if selected_presets:
+            print(f"         → SELECT wired: {len(selected_presets)} preset(s) → program 0..{len(selected_presets)-1}")
+        else:
+            print(f"         → SELECT not run (or skipped) — will render with spec program numbers as-is")
+
         if args.dry_run:
-            print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
+            if selected_presets:
+                total_jobs = len(selected_presets) * pad_count * 4 * velocity_layers
+                print(f"         → Would render {len(selected_presets)} presets × {pad_count} pads × 4 corners "
+                      f"× {velocity_layers} vel = {total_jobs} WAVs total")
+                print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
+            else:
+                print(f"         → Would call: oxport_render.py --spec <spec> --output-dir {output_dir / 'renders'}")
         else:
             renders_dir = output_dir / "renders"
             renders_dir.mkdir(exist_ok=True)
@@ -1934,9 +1952,46 @@ def cmd_build(args) -> int:
                 try:
                     import oxport_render
                     render_spec_data = oxport_render.load_spec(str(spec_path))
-                    presets_list = oxport_render.resolve_presets(render_spec_data)
-                    jobs = oxport_render.build_render_jobs(render_spec_data, presets_list)
-                    print(f"         → {len(jobs)} render jobs queued")
+                    note_layout = oxport_render.resolve_presets(render_spec_data)
+
+                    if selected_presets:
+                        # SELECT → RENDER: expand note-layout × selected presets.
+                        # Each selected preset gets program number = its 0-based index.
+                        # Slug prefix = preset name (slugified) so WAVs are organized per preset.
+                        all_jobs: list[dict] = []
+                        for prog_num, sel_preset in enumerate(selected_presets):
+                            preset_slug_prefix = sel_preset["name"].replace(" ", "_")
+                            # Clone note-layout entries with the correct program number injected
+                            patched_layout = []
+                            for entry in note_layout:
+                                patched = dict(entry)
+                                patched["program"] = prog_num
+                                # Prefix slug so WAV filenames are unique across presets
+                                patched["slug"] = f"{preset_slug_prefix}__{entry.get('slug', entry.get('name', 'voice'))}"
+                                patched_layout.append(patched)
+                            preset_jobs = oxport_render.build_render_jobs(render_spec_data, patched_layout)
+                            all_jobs.extend(preset_jobs)
+
+                        # Save the wired render manifest for auditability
+                        wired_manifest_path = output_dir / "render_manifest.json"
+                        with open(wired_manifest_path, "w") as _wm:
+                            json.dump({
+                                "source_spec": str(spec_path),
+                                "selected_presets_count": len(selected_presets),
+                                "total_jobs": len(all_jobs),
+                                "presets": [
+                                    {"name": p["name"], "program": i, "path": p.get("path", "")}
+                                    for i, p in enumerate(selected_presets)
+                                ],
+                            }, _wm, indent=2)
+                        print(f"         ✓ Render manifest: {wired_manifest_path}")
+                        print(f"         → {len(all_jobs)} total render jobs "
+                              f"({len(selected_presets)} presets × {len(note_layout)} voices × {velocity_layers} vel)")
+                        jobs = all_jobs
+                    else:
+                        # No SELECT data — render spec as-is (program numbers from the spec file)
+                        jobs = oxport_render.build_render_jobs(render_spec_data, note_layout)
+                        print(f"         → {len(jobs)} render jobs queued (no SELECT override)")
 
                     if not args.no_render:
                         oxport_render.render_jobs(

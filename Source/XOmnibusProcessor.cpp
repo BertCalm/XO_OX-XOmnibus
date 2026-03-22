@@ -1261,12 +1261,20 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             continue;
 
         // SRO: Wake silence gate on note-on events (BEFORE bypass check)
-        for (const auto metadata : slotMidi[i])
+        // Field Map: push note events into the lock-free queue for UI-thread drain.
         {
-            if (metadata.getMessage().isNoteOn())
+            bool gateWoken = false;
+            for (const auto metadata : slotMidi[i])
             {
-                enginePtrs[i]->wakeSilenceGate();
-                break;  // One wake per block is sufficient
+                if (metadata.getMessage().isNoteOn())
+                {
+                    if (!gateWoken) { enginePtrs[i]->wakeSilenceGate(); gateWoken = true; }
+                    // Push to Field Map queue (lock-free, drops if full — no block)
+                    const auto& msg = metadata.getMessage();
+                    pushNoteEvent(msg.getNoteNumber(),
+                                  msg.getFloatVelocity(),
+                                  i);
+                }
             }
         }
 

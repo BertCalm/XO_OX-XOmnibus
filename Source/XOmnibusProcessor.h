@@ -63,6 +63,42 @@ public:
     // The editor registers this to refresh only the affected tile immediately.
     std::function<void(int /*slot*/)> onEngineChanged;
 
+    // ── Field Map note event queue ─────────────────────────────────────────────
+    // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
+    // (drainNoteEvents). Both ends use only std::atomic<size_t> indices — no mutex,
+    // no heap allocation after init. Power-of-two size for fast modulo.
+    struct NoteMapEvent {
+        int   midiNote;   // 0–127
+        float velocity;   // 0.0–1.0
+        int   slot;       // 0–3 (which engine slot played the note)
+    };
+    static constexpr size_t kNoteQueueSize = 1024; // power-of-two
+
+    // Push from audio thread (non-blocking; drops event if queue is full)
+    void pushNoteEvent(int midiNote, float velocity, int slot) noexcept
+    {
+        size_t head = noteQueueHead.load(std::memory_order_relaxed);
+        size_t tail = noteQueueTail.load(std::memory_order_acquire);
+        size_t nextHead = (head + 1) & (kNoteQueueSize - 1);
+        if (nextHead == tail) return; // full — drop event rather than block
+        noteQueue[head] = { midiNote, velocity, slot };
+        noteQueueHead.store(nextHead, std::memory_order_release);
+    }
+
+    // Drain from UI/message thread — calls visitor for each pending event
+    template <typename Fn>
+    void drainNoteEvents(Fn&& visitor)
+    {
+        size_t tail = noteQueueTail.load(std::memory_order_relaxed);
+        size_t head = noteQueueHead.load(std::memory_order_acquire);
+        while (tail != head)
+        {
+            visitor(noteQueue[tail]);
+            tail = (tail + 1) & (kNoteQueueSize - 1);
+        }
+        noteQueueTail.store(tail, std::memory_order_release);
+    }
+
     // Coupling matrix — access for the UI visualization (message thread)
     const MegaCouplingMatrix& getCouplingMatrix() const { return couplingMatrix; }
     MegaCouplingMatrix& getCouplingMatrix() { return couplingMatrix; }
@@ -183,6 +219,11 @@ private:
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer;  // MPE-processed MIDI (expression stripped)
+
+    // Field Map SPSC queue storage (audio-thread write / UI-thread read)
+    std::array<NoteMapEvent, kNoteQueueSize> noteQueue {};
+    std::atomic<size_t> noteQueueHead { 0 };
+    std::atomic<size_t> noteQueueTail { 0 };
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);

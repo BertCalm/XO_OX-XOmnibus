@@ -822,6 +822,134 @@ private:
 };
 
 //==============================================================================
+// FieldMapPanel — sonic cartography of the current session.
+//
+// Every note played deposits a glowing point in a 2D canvas:
+//   X = session time (recent = right, scrolling left continuously)
+//   Y = pitch (C1=bottom, C7=top), with depth zone bands as background
+//
+// Points: radius proportional to velocity, color from engine accent,
+// alpha = 1 - (age / 240s). Fades over 4 minutes.
+// Background: warm dark wash with Sunlit/Twilight/Midnight zone bands.
+// Live cursor: thin vertical line at right edge (current moment).
+//
+class FieldMapPanel : public juce::Component, private juce::Timer
+{
+public:
+    struct NoteEvent {
+        float sessionTimeS;     // seconds since session start
+        float normalizedPitch;  // 0.0 (C1) to 1.0 (C7)
+        float velocity;         // 0.0–1.0, drives dot radius
+        juce::Colour engineColor;
+    };
+
+    FieldMapPanel()
+    {
+        sessionStart = juce::Time::getCurrentTime();
+        startTimerHz(30);
+    }
+
+    ~FieldMapPanel() override { stopTimer(); }
+
+    // Called from the message thread (timer drain) when a note fires.
+    void addNote(int midiNote, float velocity, juce::Colour engineColor)
+    {
+        NoteEvent ev;
+        ev.sessionTimeS    = static_cast<float>((juce::Time::getCurrentTime() - sessionStart).inSeconds());
+        ev.normalizedPitch = juce::jmap(static_cast<float>(juce::jlimit(24, 96, midiNote)), 24.0f, 96.0f, 0.0f, 1.0f);
+        ev.velocity        = velocity;
+        ev.engineColor     = engineColor;
+
+        // Append to ring buffer (overwrite oldest)
+        events[headIdx % kMaxEvents] = ev;
+        ++headIdx;
+    }
+
+    void timerCallback() override { repaint(); }
+
+    void paint(juce::Graphics& g) override
+    {
+        auto b = getLocalBounds().toFloat();
+        float now = static_cast<float>((juce::Time::getCurrentTime() - sessionStart).inSeconds());
+        const float kWindowS = 240.0f; // 4-minute display window
+
+        // ── Background — dark wash with zone bands ───────────────────────────
+        g.setColour(juce::Colour(0xFF0D0D1A));
+        g.fillRect(b);
+
+        // Zone bands (bottom=Midnight, top=Sunlit — matching XOmnibus ecology)
+        struct ZoneBand { float yNormStart, yNormEnd; juce::uint32 rgba; float alpha; };
+        const ZoneBand bands[] = {
+            { 0.80f, 1.00f, 0xFF48CAE4, 0.04f },  // Sunlit   — top 20%
+            { 0.45f, 0.80f, 0xFF0096C7, 0.03f },  // Twilight — middle
+            { 0.00f, 0.45f, 0xFF7B2FBE, 0.04f },  // Midnight — bottom
+        };
+        for (const auto& band : bands)
+        {
+            float yTop    = b.getBottom() - band.yNormEnd   * b.getHeight();
+            float yBottom = b.getBottom() - band.yNormStart * b.getHeight();
+            g.setColour(juce::Colour(band.rgba).withAlpha(band.alpha));
+            g.fillRect(b.getX(), yTop, b.getWidth(), yBottom - yTop);
+        }
+
+        // ── Zone boundary lines ───────────────────────────────────────────────
+        auto drawBand = [&](float yNorm, juce::uint32 col) {
+            float y = b.getBottom() - yNorm * b.getHeight();
+            g.setColour(juce::Colour(col).withAlpha(0.12f));
+            g.drawHorizontalLine(static_cast<int>(y), b.getX(), b.getRight());
+        };
+        drawBand(0.80f, 0xFF48CAE4);
+        drawBand(0.45f, 0xFF0096C7);
+
+        // ── Note points ──────────────────────────────────────────────────────
+        int total = static_cast<int>(std::min(headIdx, kMaxEvents));
+        for (int i = 0; i < total; ++i)
+        {
+            const auto& ev = events[i % kMaxEvents];
+            float age = now - ev.sessionTimeS;
+            if (age > kWindowS || age < 0.0f) continue;
+
+            float alpha = 1.0f - (age / kWindowS);
+            alpha = alpha * alpha; // quadratic fade — lingers bright then drops off
+            if (alpha < 0.02f) continue;
+
+            // X: map session time within window to pixel X
+            float xNorm = (ev.sessionTimeS - (now - kWindowS)) / kWindowS;
+            float x     = b.getX() + xNorm * b.getWidth();
+            // Y: pitch (0=bottom C1, 1=top C7)
+            float y     = b.getBottom() - ev.normalizedPitch * b.getHeight();
+            // Radius: 2.5 base + velocity * 4
+            float r     = 2.5f + ev.velocity * 4.0f;
+
+            // Glow pass (wider, dimmer)
+            g.setColour(ev.engineColor.withAlpha(alpha * 0.15f));
+            g.fillEllipse(x - r * 2.0f, y - r * 2.0f, r * 4.0f, r * 4.0f);
+            // Core dot
+            g.setColour(ev.engineColor.withAlpha(alpha * 0.80f));
+            g.fillEllipse(x - r, y - r, r * 2.0f, r * 2.0f);
+        }
+
+        // ── Live time cursor ─────────────────────────────────────────────────
+        float cursorX = b.getRight() - 1.0f;
+        g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.40f)); // XO Gold
+        g.drawVerticalLine(static_cast<int>(cursorX), b.getY(), b.getBottom());
+
+        // ── Label ────────────────────────────────────────────────────────────
+        g.setFont(juce::Font(8.0f));
+        g.setColour(juce::Colours::white.withAlpha(0.20f));
+        g.drawText("FIELD MAP", b.reduced(6.0f, 4.0f), juce::Justification::topLeft);
+    }
+
+private:
+    static constexpr size_t kMaxEvents = 4096;
+    std::array<NoteEvent, kMaxEvents> events {};
+    size_t headIdx = 0;
+    juce::Time sessionStart;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(FieldMapPanel)
+};
+
+//==============================================================================
 // Coupling type → short label, used by both OverviewPanel and CouplingPanel.
 inline juce::String couplingTypeLabel(CouplingType t)
 {
@@ -868,44 +996,135 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(slotBg()));
 
-        // Centre content
         auto b = getLocalBounds().toFloat();
-
-        // XO Gold logo mark
-        g.setColour(get(xoGold).withAlpha(0.18f));
-        float markR = 48.0f;
-        float markX = b.getCentreX() - markR;
-        float markY = b.getHeight() * 0.30f - markR;
-        g.fillEllipse(markX, markY, markR * 2, markR * 2);
-        g.setColour(get(xoGold).withAlpha(0.55f));
-        g.drawEllipse(markX, markY, markR * 2, markR * 2, 2.0f);
-        g.setFont(GalleryFonts::display(22.0f));
-        g.drawText("XO", (int)markX, (int)markY, (int)markR * 2, (int)markR * 2,
-                   juce::Justification::centred);
-
-        // Instruction
-        g.setColour(get(textMid()));
-        g.setFont(GalleryFonts::body(12.0f));
-        float instrY = b.getHeight() * 0.30f + markR + 16.0f;
-        g.drawText("Click an engine tile to edit parameters",
-                   b.withY(instrY).withHeight(20.0f).toNearestInt(),
-                   juce::Justification::centred);
+        float w = b.getWidth();
+        float h = b.getHeight();
 
         // Active engine chain (cached in refresh() — no allocation in paint())
         const auto& active = cachedActiveEngines;
 
         if (active.empty())
         {
+            // ── Empty state: XO Gold logo mark + instruction ──────────────────
+            g.setColour(get(xoGold).withAlpha(0.18f));
+            float markR = 48.0f;
+            float markX = b.getCentreX() - markR;
+            float markY = h * 0.30f - markR;
+            g.fillEllipse(markX, markY, markR * 2, markR * 2);
+            g.setColour(get(xoGold).withAlpha(0.55f));
+            g.drawEllipse(markX, markY, markR * 2, markR * 2, 2.0f);
+            g.setFont(GalleryFonts::display(22.0f));
+            g.drawText("XO", (int)markX, (int)markY, (int)markR * 2, (int)markR * 2,
+                       juce::Justification::centred);
+
+            g.setColour(get(textMid()));
+            g.setFont(GalleryFonts::body(12.0f));
+            float instrY = h * 0.30f + markR + 16.0f;
+            g.drawText("Click an engine tile to edit parameters",
+                       b.withY(instrY).withHeight(20.0f).toNearestInt(),
+                       juce::Justification::centred);
+
             g.setColour(get(textMid()).withAlpha(0.55f));
             g.setFont(GalleryFonts::body(10.0f));
             g.drawText("No engines loaded — use the tiles on the left",
-                       b.withY(b.getHeight() * 0.65f).withHeight(20.0f).toNearestInt(),
+                       b.withY(h * 0.65f).withHeight(20.0f).toNearestInt(),
                        juce::Justification::centred);
             return;
         }
 
+        // ── Character portrait (first active engine) ──────────────────────────
+        const juce::String& engineId = active[0].first;
+        const juce::Colour  accent   = active[0].second;
+
+        // Diagonal gradient wash — accent colour left edge, transparent at 70%
+        juce::ColourGradient wash(accent.withAlpha(0.12f), 0.0f, 0.0f,
+                                  juce::Colours::transparentBlack, w * 0.70f, 0.0f, false);
+        g.setGradientFill(wash);
+        g.fillAll();
+
+        // 4 px left accent stripe
+        g.setColour(accent.withAlpha(0.60f));
+        g.fillRect(0.0f, 0.0f, 4.0f, h);
+
+        // Portrait zone: top 38% of the panel
+        float portraitH = h * 0.38f;
+
+        // Engine name — large display font, anchored to bottom of portrait zone
+        g.setColour(accent);
+        g.setFont(GalleryFonts::display(28.0f));
+        g.drawFittedText(engineId.toUpperCase(),
+                         juce::Rectangle<int>(12, 0, (int)w - 20, (int)(portraitH * 0.72f)),
+                         juce::Justification::centredBottom, 1);
+
+        // Engine archetype tagline lookup
+        static const std::pair<const char*, const char*> kArchetypes[] = {
+            {"Opera",     "Additive-vocal Kuramoto — autonomous dramatic arcs"},
+            {"Offering",  "Psychology-as-DSP boom bap — Berlyne curiosity engine"},
+            {"Oware",     "Mallet physics + sympathetic resonance — material continuum"},
+            {"Oxbow",     "Entangled reverb — chiasmus FDN + phase erosion"},
+            {"Overbite",  "Five-macro apex predator — fang white silence"},
+            {"Oceandeep", "Hydrostatic compression + bioluminescent exciter"},
+            {"Orbweave",  "Topological knot coupling — trefoil/figure-eight matrices"},
+            {"Overtone",  "Continued fraction spectral — \xcf\x80, e, \xcf\x86, \xe2\x88\x9a\x32 timbres"},
+            {"Organism",  "Cellular automata generative — coral colony growth"},
+            {"Ostinato",  "Modal membrane synthesis — world rhythm engine"},
+            {"Opensky",   "Euphoric shimmer + Shepard ascension geometry"},
+            {"Ouie",      "Duophonic hammerhead — 8-algorithm STRIFE/LOVE axis"},
+            {"Obrix",     "Modular brick synthesis — coral reef ecology"},
+            {"Oracle",    "GENDY stochastic + Maqam microtonal synthesis"},
+            {"Organon",   "Variational free energy — metabolism as modulation"},
+            {"Ouroboros", "Strange attractor — chaotic feedback with leash"},
+            {"Obsidian",  "Crystal-clear subtractive — precision cutting tool"},
+            {"Origami",   "Fold-point waveshaping — Vermillion geometry engine"},
+            {"Oceanic",   "Chromatophore modulator — bioluminescent sea texture"},
+            {"Ocelot",    "Biome crossfade — adaptive timbral territory"},
+            {"Oblique",   "Prismatic bounce — RTJ x Funk x Tame Impala"},
+            {"Osprey",    "Shore-system cultural fusion — 5 coastline identities"},
+            {"Osteria",   "Porto Wine resonance — warmth-saturated harmonic mesh"},
+            {"Orbital",   "Group envelope system — 8-voice dynamic architecture"},
+            {"Oblong",    "Resonant string model — warm acoustic character"},
+            {"Obese",     "Saturated poly — Mojo analog/digital axis"},
+            {"Orphica",   "Plucked string body — velocity-brightened resonance"},
+            {"Obbligato", "Breath-driven formant — obligatory melodic voice"},
+            {"Ottoni",    "Patinated brass — Patina spectral character"},
+            {"Onset",     "XVC cross-voice coupling — multi-circuit percussion"},
+            {"Ole",       "Hibiscus drama — flamenco attack articulation engine"},
+            {"Ohm",       "Sage meddling — zen macro drift and calm oscillation"},
+            {"Optic",     "Zero-audio identity — visual AutoPulse modulator"},
+            {"Overworld", "ERA triangle — 2D Buchla/Schulze/Vangelis crossfade"},
+            {"Overdub",   "Spring reverb core — Vangelis metallic depth tail"},
+            {"Opal",      "Granular clouds — textural time-stretch synthesis"},
+            {"Owlfish",   "Mixtur-Trautonium oscillator — abyssal depth tones"},
+            {"Odyssey",   "Wavetable drift — evolving spectral morphology"},
+            {"OddOscar",  "Axolotl regeneration — morphing algorithm crossfade"},
+            {"OddfeliX",  "Neon tetra filter — quick-change timbral snap"},
+            {"Osmosis",   "External audio membrane — permeability coupling source"},
+            {"Ombre",     "Dual-narrative blend — memory meets perception"},
+            {"Orca",      "Apex predator wavetable — echolocation + breach"},
+            {"Octopus",   "Decentralized alien intelligence — 8-arm chromatophore"},
+            {"XOverlap",  "KnotMatrix FDN — biorthogonal voice entanglement"},
+            {"XOutwit",   "Chromatophore ambush — rapid-fire spectral surprise"},
+        };
+        juce::String tag;
+        for (const auto& [id, desc] : kArchetypes)
+            if (engineId.containsIgnoreCase(id)) { tag = desc; break; }
+
+        if (tag.isNotEmpty())
+        {
+            g.setColour(get(textMid()));
+            g.setFont(GalleryFonts::body(9.0f));
+            g.drawFittedText(tag,
+                             juce::Rectangle<int>(12, (int)(portraitH * 0.74f), (int)w - 20, 28),
+                             juce::Justification::centredTop, 2);
+        }
+
+        // Subtle separator line below portrait zone
+        g.setColour(accent.withAlpha(0.18f));
+        g.drawHorizontalLine((int)portraitH, 12.0f, w - 12.0f);
+
+        // ── Engine chain pills + coupling routes (below portrait) ─────────────
         // Draw engine chain pills with XO Gold connectors
-        float chainY = b.getHeight() * 0.62f;
+        float chainY = portraitH + (h - portraitH) * 0.28f;
         float pillW  = 80.0f, pillH = 24.0f;
         float totalW = active.size() * pillW + (active.size() - 1) * 24.0f;
         float startX = (b.getWidth() - totalW) * 0.5f;
@@ -3235,6 +3454,7 @@ public:
             addAndMakeVisible(*tiles[i]);
         }
 
+        addAndMakeVisible(fieldMap);
         addAndMakeVisible(overview);
         addAndMakeVisible(detail);
         addAndMakeVisible(chordPanel);
@@ -3446,7 +3666,12 @@ public:
         for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
             tiles[i]->setBounds(sidebar.removeFromTop(tileH));
 
-        // Right panels (stacked, only one visible at a time)
+        // Field Map — fixed strip at the bottom of the right-panel area.
+        // Always visible beneath the panel stack. Height matches ~2 octaves of screen.
+        auto fieldMapArea = area.removeFromBottom(kFieldMapH);
+        fieldMap.setBounds(fieldMapArea);
+
+        // Right panels (stacked, only one visible at a time — above Field Map)
         overview.setBounds(area);
         detail.setBounds(area);
         chordPanel.setBounds(area);
@@ -3643,6 +3868,21 @@ private:
             overview.refresh();
         if (performancePanel.isVisible())
             performancePanel.refresh();
+
+        // Drain Field Map note events from the lock-free audio-thread queue.
+        // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
+        // XO Gold is used as fallback when no engine occupies the slot.
+        static const juce::Colour kXOGold = juce::Colour(0xFFE9C46A);
+        processor.drainNoteEvents([&](const XOmnibusProcessor::NoteMapEvent& ev)
+        {
+            juce::Colour colour = kXOGold;
+            if (ev.slot >= 0 && ev.slot < XOmnibusProcessor::MaxSlots)
+            {
+                if (auto* eng = processor.getEngine(ev.slot))
+                    colour = eng->getAccentColour();
+            }
+            fieldMap.addNote(ev.midiNote, ev.velocity, colour);
+        });
     }
 
     static constexpr int kHeaderH   = 50;
@@ -3650,11 +3890,13 @@ private:
     static constexpr int kMasterFXH = 68;
     static constexpr int kSidebarW  = 155;
     static constexpr int kFadeMs    = 150;
+    static constexpr int kFieldMapH = 110; // Field Map panel height (pixels)
 
     XOmnibusProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, XOmnibusProcessor::MaxSlots> tiles;
+    FieldMapPanel          fieldMap;
     OverviewPanel          overview;
     EngineDetailPanel      detail;
     ChordMachinePanel      chordPanel;
