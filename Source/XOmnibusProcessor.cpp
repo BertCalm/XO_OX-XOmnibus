@@ -1007,6 +1007,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("mfx_formantMix", 1), "Formant Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Stage 5.7: fXBreath (Membrane Collection — Breath Texture)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_breathAmount", 1), "Breath Amount",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_breathTilt", 1), "Breath Tilt",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_breathSens", 1), "Breath Sensitivity",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_breathMix", 1), "Breath Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
     // Stage 12: fXOneiric (Dream State)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",

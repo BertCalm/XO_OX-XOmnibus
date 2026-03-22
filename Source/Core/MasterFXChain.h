@@ -22,6 +22,7 @@
 #include "../DSP/Effects/fXOratory.h"
 #include "../DSP/Effects/fXOnslaught.h"
 #include "../DSP/Effects/fXFormant.h"
+#include "../DSP/Effects/fXBreath.h"
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
@@ -95,6 +96,9 @@ public:
 
         // Stage 5.6: fXFormant (Membrane Collection — formant filter)
         formantFX_.prepare (sampleRate, samplesPerBlock);
+
+        // Stage 5.7: fXBreath (Membrane Collection — breath texture)
+        breathFX_.prepare (sampleRate, samplesPerBlock);
 
         // Stage 6: fXOsmosis (membrane transfer)
         osmosis.prepare (sampleRate);
@@ -513,6 +517,23 @@ public:
         }
 
         // ====================================================================
+        // Stage 5.7: fXBreath (Membrane Collection — Breath Texture)
+        // ====================================================================
+        {
+            const float brMix = pBreathMix_ ? pBreathMix_->load() : 0.0f;
+            if (brMix > 0.001f)
+            {
+                breathFX_.setBreathAmount (pBreathAmount_ ? pBreathAmount_->load() : 0.0f);
+                breathFX_.setTilt         (pBreathTilt_   ? pBreathTilt_->load()   : 0.5f);
+                breathFX_.setSensitivity  (pBreathSens_   ? pBreathSens_->load()   : 0.5f);
+                breathFX_.setMix          (brMix);
+                breathFX_.processBlock (buffer.getWritePointer (0),
+                                        buffer.getWritePointer (1),
+                                        numSamples);
+            }
+        }
+
+        // ====================================================================
         // Stage 6: fXOsmosis (Membrane Transfer)
         // ====================================================================
         float effectiveOsmMix = applySeqMod (osmMix,
@@ -889,6 +910,12 @@ private:
         pFormantQ_     = apvts.getRawParameterValue ("mfx_formantQ");
         pFormantMix_   = apvts.getRawParameterValue ("mfx_formantMix");
 
+        // Stage 5.7: fXBreath (Membrane Collection)
+        pBreathAmount_ = apvts.getRawParameterValue ("mfx_breathAmount");
+        pBreathTilt_   = apvts.getRawParameterValue ("mfx_breathTilt");
+        pBreathSens_   = apvts.getRawParameterValue ("mfx_breathSens");
+        pBreathMix_    = apvts.getRawParameterValue ("mfx_breathMix");
+
         // Stage 6: fXOsmosis
         pOsmMembrane  = apvts.getRawParameterValue ("master_osmMembrane");
         pOsmReact     = apvts.getRawParameterValue ("master_osmReactivity");
@@ -1029,6 +1056,7 @@ private:
     TransientDesigner    transientDesigner;  // 5
     fXObscura            obscura;            // 5.5 — Chiaroscuro
     fXFormant            formantFX_;         // 5.6 — Membrane Collection: Formant Filter
+    fXBreath             breathFX_;          // 5.7 — Membrane Collection: Breath Texture
     fXOsmosis            osmosis;            // 6  — Membrane Transfer
     MultibandCompressor  multibandComp;      // 7  — OTT (pre-spatial)
     MasterDelay          delay;              // 8
@@ -1089,6 +1117,11 @@ private:
     std::atomic<float>* pFormantVowel_ = nullptr;
     std::atomic<float>* pFormantQ_     = nullptr;
     std::atomic<float>* pFormantMix_   = nullptr;
+    // Stage 5.7: fXBreath (Membrane Collection)
+    std::atomic<float>* pBreathAmount_ = nullptr;
+    std::atomic<float>* pBreathTilt_   = nullptr;
+    std::atomic<float>* pBreathSens_   = nullptr;
+    std::atomic<float>* pBreathMix_    = nullptr;
     // Stage 6: fXOsmosis
     std::atomic<float>* pOsmMembrane = nullptr;
     std::atomic<float>* pOsmReact    = nullptr;
