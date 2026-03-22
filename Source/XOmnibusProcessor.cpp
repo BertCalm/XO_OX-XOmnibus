@@ -74,6 +74,7 @@
 #include "Engines/Oddfellow/OddfellowEngine.h"
 #include "Engines/Onkolo/OnkoloEngine.h"
 #include "Engines/Opcode/OpcodeEngine.h"
+#include "Engines/Osmosis/OsmosisEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -393,6 +394,11 @@ static bool registered_Onkolo = xomnibus::EngineRegistry::instance().registerEng
 static bool registered_Opcode = xomnibus::EngineRegistry::instance().registerEngine(
     "Opcode", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OpcodeEngine>();
+    });
+// Membrane Collection — OSMOSIS (engine #47, external audio membrane)
+static bool registered_Osmosis = xomnibus::EngineRegistry::instance().registerEngine(
+    "Osmosis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OsmosisEngine>();
     });
 
 namespace xomnibus {
@@ -1206,6 +1212,19 @@ void XOmnibusProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // When disabled, each slot gets a copy of the input MIDI (previous behavior).
     // When enabled, each slot gets its own chord-distributed note.
     chordMachine.processBlock(midi, slotMidi, numSamples);
+
+    // Feed external audio to Osmosis if loaded in any slot.
+    // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.
+    for (int slot = 0; slot < MaxSlots; ++slot)
+    {
+        if (enginePtrs[slot] && enginePtrs[slot]->isAnalysisEngine())
+        {
+            static_cast<OsmosisEngine*>(enginePtrs[slot])->setExternalInput(
+                externalInputBuffer.getReadPointer(0),
+                externalInputBuffer.getReadPointer(1),
+                numSamples);
+        }
+    }
 
     // Render each active engine into its own buffer using slot-specific MIDI
     for (int i = 0; i < MaxSlots; ++i)
