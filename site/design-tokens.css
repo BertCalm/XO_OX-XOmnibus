@@ -1,0 +1,270 @@
+/**
+ * XO_OX Design Tokens
+ * ===================
+ * Single source of truth for the entire XO_OX UI system.
+ *
+ * Sections:
+ *   1. Global Brand
+ *   2. Ecological Depth Zones
+ *   3. Engine Accent Colors (47 engines)
+ *   4. Ecological Instrument Anatomy
+ *   5. Glass / Porthole Formula
+ *   6. PlaySurface Tokens
+ *   7. Typography
+ *   8. Animation
+ */
+
+
+/* ============================================================
+   SECTION 1 — Global Brand
+   Core palette for all surfaces, borders, text, and gold.
+   Light mode shell (#F8F6F3) frames engine accent colors per
+   the Gallery Model — dark panels live inside the shell.
+   ============================================================ */
+
+:root {
+  /* Backgrounds — dark panel hierarchy */
+  --xo-bg:          #0E0E10;   /* deepest layer: app background */
+  --xo-bg-panel:    #141416;   /* panel background */
+  --xo-bg-card:     #1A1A1E;   /* card / tile background */
+  --xo-bg-raised:   #1F1F24;   /* raised element (button, knob ring) */
+
+  /* Borders */
+  --xo-border: rgba(255, 255, 255, 0.07);
+
+  /* Text */
+  --xo-text-primary: #F0EDE8;
+  --xo-text-muted:   rgba(240, 237, 232, 0.45);
+  --xo-text-dim:     rgba(240, 237, 232, 0.20);
+
+  /* Accent */
+  --xo-gold:  #E9C46A;   /* global highlight / setpoint color */
+
+  /* Light mode shell */
+  --xo-shell: #F8F6F3;   /* warm white outer frame (Gallery Model) */
+}
+
+
+/* ============================================================
+   SECTION 2 — Ecological Depth Zones
+   Three vertical ocean zones used for spatial navigation,
+   gradient stops in the Fretless surface, and zone arc coloring.
+   ============================================================ */
+
+:root {
+  /* Sunlit zone — 0–55% depth: tropical surface, warm blues */
+  --zone-sunlit:      #48CAE4;
+  --zone-sunlit-glow: rgba(72, 202, 228, 0.25);
+
+  /* Twilight zone — 55–80% depth: deep ocean, cooler blues */
+  --zone-twilight:      #0096C7;
+  --zone-twilight-glow: rgba(0, 150, 199, 0.25);
+
+  /* Midnight zone — 80–100% depth: bioluminescent abyss, violet */
+  --zone-midnight:      #7B2FBE;
+  --zone-midnight-glow: rgba(123, 47, 190, 0.35);
+}
+
+
+/* ============================================================
+   SECTION 3 — Engine Accent Colors (47 engines)
+   One custom property per registered engine.
+   Property name matches the Engine ID (all-caps).
+   Source: CLAUDE.md Engine Modules table.
+   ============================================================ */
+
+:root {
+  /* --- Odd Family --- */
+  --engine-ODDFELIX:  #00A6D6;   /* Neon Tetra Blue       — feliX the neon tetra */
+  --engine-ODDOSCAR:  #E8839B;   /* Axolotl Gill Pink     — Oscar the axolotl */
+
+  /* --- X-Series (original fleet) --- */
+  --engine-OVERDUB:   #6B7B3A;   /* Olive                 — XOverdub */
+  --engine-ODYSSEY:   #7B2D8B;   /* Violet                — XOdyssey */
+  --engine-OBLONG:    #E9A84A;   /* Amber                 — XOblong */
+  --engine-OBESE:     #FF1493;   /* Hot Pink              — XObese */
+  --engine-ONSET:     #0066FF;   /* Electric Blue         — XOnset */
+  --engine-OVERWORLD: #39FF14;   /* Neon Green            — XOverworld */
+  --engine-OPAL:      #A78BFA;   /* Lavender              — XOpal */
+  --engine-ORGANON:   #00CED1;   /* Bioluminescent Cyan   — XOrganon */
+  --engine-OUROBOROS: #FF2D2D;   /* Strange Attractor Red — XOuroboros */
+  --engine-OBSIDIAN:  #E8E0D8;   /* Crystal White         — XObsidian */
+  --engine-ORIGAMI:   #E63946;   /* Vermillion Fold       — XOrigami */
+  --engine-ORACLE:    #4B0082;   /* Prophecy Indigo       — XOracle */
+  --engine-OBSCURA:   #8A9BA8;   /* Daguerreotype Silver  — XObscura */
+  --engine-OCEANIC:   #00B4A0;   /* Phosphorescent Teal   — XOceanic */
+  --engine-OCELOT:    #C5832B;   /* Ocelot Tawny          — XOcelot */
+  --engine-OVERBITE:  #F0EDE8;   /* Fang White            — XOverbite */
+  --engine-ORBITAL:   #FF6B6B;   /* Warm Red              — XOrbital */
+  --engine-OPTIC:     #00FF41;   /* Phosphor Green        — XOptic */
+  --engine-OBLIQUE:   #BF40FF;   /* Prism Violet          — XOblique */
+  --engine-OSPREY:    #1B4F8A;   /* Azulejo Blue          — XOsprey */
+  --engine-OSTERIA:   #722F37;   /* Porto Wine            — XOsteria */
+  --engine-OWLFISH:   #B8860B;   /* Abyssal Gold          — XOwlfish */
+  --engine-OHM:       #87AE73;   /* Sage                  — XOhm */
+  --engine-ORPHICA:   #7FDBCA;   /* Siren Seafoam         — XOrphica */
+  --engine-OBBLIGATO: #FF8A7A;   /* Rascal Coral          — XObbligato */
+  --engine-OTTONI:    #5B8A72;   /* Patina                — XOttoni */
+  --engine-OLE:       #C9377A;   /* Hibiscus              — XOlé */
+
+  /* --- Constellation / extended family --- */
+  --engine-OVERLAP:    #00FFB4;   /* Bioluminescent Cyan-Green — XOverlap */
+  --engine-OUTWIT:     #CC6600;   /* Chromatophore Amber       — XOutwit */
+  --engine-OMBRE:      #7B6B8A;   /* Shadow Mauve              — XOmbre */
+  --engine-ORCA:       #1B2838;   /* Deep Ocean                — XOrca */
+  --engine-OCTOPUS:    #E040FB;   /* Chromatophore Magenta     — XOctopus */
+
+  /* --- 2026-03 additions --- */
+  --engine-OSTINATO:  #E8701A;   /* Firelight Orange         — XOstinato */
+  --engine-OPENSKY:   #FF8C00;   /* Sunburst                 — XOpenSky */
+  --engine-OCEANDEEP: #2D0A4E;   /* Trench Violet            — XOceanDeep */
+  --engine-OUIE:      #708090;   /* Hammerhead Steel         — XOuïe */
+  --engine-OBRIX:     #1E8B7E;   /* Reef Jade                — XObrix */
+  --engine-ORBWEAVE:  #8E4585;   /* Kelp Knot Purple         — XOrbweave */
+  --engine-OVERTONE:  #A8D8EA;   /* Spectral Ice             — XOvertone */
+  --engine-ORGANISM:  #C6E377;   /* Emergence Lime           — XOrganism */
+  --engine-OXBOW:     #1A6B5A;   /* Oxbow Teal               — XOxbow */
+  --engine-OWARE:     #B5883E;   /* Akan Goldweight          — XOware */
+  --engine-OPERA:     #D4AF37;   /* Aria Gold                — XOpera */
+  --engine-OFFERING:  #E5B80B;   /* Crate Wax Yellow         — XOffering */
+  --engine-OSMOSIS:   #C0C0C0;   /* Surface Tension Silver   — XOsmosis */
+}
+
+
+/* ============================================================
+   SECTION 4 — Ecological Instrument Anatomy
+   Token set for the radial knob/instrument components.
+   All knobs share a common arc geometry: 140° start, 260° sweep.
+   Four size tiers: sm (inline label), md (default), lg (panel), hero (full-bleed).
+   ============================================================ */
+
+:root {
+  /* Instrument container diameter */
+  --instrument-sm:   40px;
+  --instrument-md:   64px;
+  --instrument-lg:   96px;
+  --instrument-hero: 280px;
+
+  /* Track arc — background ring showing full sweep range */
+  --track-width-sm:   4px;
+  --track-width-md:   6px;
+  --track-width-lg:   8px;
+  --track-width-hero: 16px;
+
+  /* Zone arc — tinted background region (e.g. danger zone, resonance zone) */
+  --zone-arc-opacity:          0.22;
+  --zone-arc-critical-opacity: 0.28;
+
+  /* Value arc — foreground arc showing current parameter value */
+  --value-arc-width-sm:   2px;
+  --value-arc-width-md:   3px;
+  --value-arc-width-lg:   4px;
+  --value-arc-width-hero: 8px;
+
+  /* Setpoint marker — small tick showing default / target value */
+  --setpoint-color: #E9C46A;   /* matches --xo-gold */
+
+  /* Arc sweep geometry — shared by all instrument sizes.
+     Knobs sweep 260° starting at the 7-o'clock position (140°).
+     End = 140 + 260 = 400° (equivalent to 40°, i.e. 5-o'clock). */
+  --arc-start-deg:  140;
+  --arc-sweep-deg:  260;
+
+  /* Value display smoothing — interpolation lag for live-readout text */
+  --value-smooth-ms: 80;
+}
+
+
+/* ============================================================
+   SECTION 5 — Glass / Porthole Formula
+   Reusable tokens for frosted-glass panels, engine portholes,
+   and vignette overlays. Porthole = circular framed viewport
+   through which an engine's visual field is rendered.
+   ============================================================ */
+
+:root {
+  /* Frosted glass surface */
+  --glass-bg:     rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Top/bottom vignette — darkens edges of glass panels */
+  --glass-vignette: linear-gradient(
+    to bottom,
+    rgba(14, 14, 16, 0.4)   0%,
+    transparent             30%,
+    transparent             70%,
+    rgba(14, 14, 16, 0.4) 100%
+  );
+
+  /* Circular porthole frame */
+  --porthole-radius:       50%;
+  --porthole-border-width: 2px;
+  --porthole-glow-blur:    12px;   /* box-shadow blur for accent color glow */
+}
+
+
+/* ============================================================
+   SECTION 6 — PlaySurface Tokens
+   Tokens for the 4-zone unified playing interface:
+   Pad mode, Fretless mode, and Drum mode.
+   ============================================================ */
+
+:root {
+  /* Pad grid */
+  --pad-size:             64px;
+  --pad-gap:              4px;
+  --pad-radius:           8px;
+  --pad-bg:               rgba(255, 255, 255, 0.04);
+  --pad-active-glow-spread: 12px;   /* box-shadow spread on note-on */
+
+  /* Fretless strip */
+  --fretless-height: 280px;
+
+  /* Fretless gradient — maps ocean zones top to bottom */
+  --fretless-gradient: linear-gradient(
+    to bottom,
+    var(--zone-sunlit)   0%,
+    var(--zone-twilight) 55%,
+    var(--zone-midnight) 100%
+  );
+}
+
+
+/* ============================================================
+   SECTION 7 — Typography
+   Two-family system: Nebulica for display/UI chrome,
+   Inter for body/readouts, JetBrains Mono for values/code,
+   Chrys (ChrysDistorted) for emphasis marks and em-style accents.
+   ============================================================ */
+
+:root {
+  --font-display: 'Nebulica', system-ui;
+  --font-body:    'Inter', system-ui;
+  --font-mono:    'JetBrains Mono', monospace;
+  --font-accent:  'Chrys', system-ui;   /* ChrysDistorted variant for <em> */
+
+  /* Type scale */
+  --text-label:           9px;    /* parameter labels below knobs */
+  --text-value:           13px;   /* live readout values */
+  --text-value-lg:        16px;   /* hero readouts, large display fields */
+
+  /* Label tracking — all-caps parameter labels use wide letter-spacing */
+  --text-label-tracking:  0.18em;
+}
+
+
+/* ============================================================
+   SECTION 8 — Animation
+   Timing values used across UI state transitions, note events,
+   coupling pulse animations, and creature ambient behaviour.
+   --anim-coupling-pulse-hz is a raw Hz value; convert to ms in
+   JavaScript: (1000 / var(--anim-coupling-pulse-hz)).
+   ============================================================ */
+
+:root {
+  --anim-state-ms:           150ms;    /* hover / focus / active state transitions */
+  --anim-note-on-ms:          50ms;    /* pad light-up on MIDI note-on */
+  --anim-note-off-ms:        300ms;    /* pad fade on MIDI note-off */
+  --anim-coupling-pulse-hz:    2;      /* Hz — coupling route arc pulse rate; overridden per-route */
+  --anim-creature-blink-ms: 2000ms;   /* ambient blink cycle for engine creature illustrations */
+}

@@ -1,0 +1,568 @@
+{
+  "engines": [
+    {
+      "id": "ODDFELIX",
+      "accent": "#00A6D6",
+      "creature": {
+        "source": "pixelgnome-freshwater",
+        "file": "Neon Tetra.png",
+        "path": "img/fish/freshwater/Neon Tetra.png",
+        "spritesheetRow": null,
+        "name": "Neon Tetra",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ODDOSCAR",
+      "accent": "#E8839B",
+      "creature": {
+        "source": "pixelgnome-freshwater",
+        "file": "Goldfish.png",
+        "path": "img/fish/freshwater/Goldfish.png",
+        "spritesheetRow": null,
+        "name": "Goldfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERDUB",
+      "accent": "#6B7B3A",
+      "creature": {
+        "source": "bagatan-freshwater",
+        "file": "arowana.png",
+        "path": "img/fish/freshwater/arowana.png",
+        "spritesheetRow": null,
+        "name": "Arowana",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ODYSSEY",
+      "accent": "#7B2D8B",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 17,
+        "name": "Purple Fish",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBLONG",
+      "accent": "#E9A84A",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "oarfish.png",
+        "path": "img/fish/saltwater/oarfish.png",
+        "spritesheetRow": null,
+        "name": "Oarfish",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBESE",
+      "accent": "#FF1493",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Pufferfish.png",
+        "path": "img/fish/saltwater/Pufferfish.png",
+        "spritesheetRow": null,
+        "name": "Pufferfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ONSET",
+      "accent": "#0066FF",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "mantis_shrimp.png",
+        "path": "img/fish/saltwater/mantis_shrimp.png",
+        "spritesheetRow": null,
+        "name": "Mantis Shrimp",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERWORLD",
+      "accent": "#39FF14",
+      "creature": {
+        "source": "bagatan-freshwater",
+        "file": "arapaima.png",
+        "path": "img/fish/freshwater/arapaima.png",
+        "spritesheetRow": null,
+        "name": "Arapaima",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OPAL",
+      "accent": "#A78BFA",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 1,
+        "name": "Jellyfish",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "ORGANON",
+      "accent": "#00CED1",
+      "creature": {
+        "source": "bagatan-abyss",
+        "file": "dragon_fish.png",
+        "path": "img/fish/abyss/dragon_fish.png",
+        "spritesheetRow": null,
+        "name": "Dragon Fish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OUROBOROS",
+      "accent": "#FF2D2D",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 24,
+        "name": "Orange Snake Eel",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBSIDIAN",
+      "accent": "#E8E0D8",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 10,
+        "name": "Dark Fish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "ORIGAMI",
+      "accent": "#E63946",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "flatfish.png",
+        "path": "img/fish/saltwater/flatfish.png",
+        "spritesheetRow": null,
+        "name": "Flatfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ORACLE",
+      "accent": "#4B0082",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 25,
+        "name": "Blue Nautilus",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OBSCURA",
+      "accent": "#8A9BA8",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "cuttlefish.png",
+        "path": "img/fish/saltwater/cuttlefish.png",
+        "spritesheetRow": null,
+        "name": "Cuttlefish",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OCEANIC",
+      "accent": "#00B4A0",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "whaleshark.png",
+        "path": "img/fish/saltwater/whaleshark.png",
+        "spritesheetRow": null,
+        "name": "Whale Shark",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OCELOT",
+      "accent": "#C5832B",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "giant_trevally.png",
+        "path": "img/fish/saltwater/giant_trevally.png",
+        "spritesheetRow": null,
+        "name": "Giant Trevally",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERBITE",
+      "accent": "#F0EDE8",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "barracuda.png",
+        "path": "img/fish/saltwater/barracuda.png",
+        "spritesheetRow": null,
+        "name": "Barracuda",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ORBITAL",
+      "accent": "#FF6B6B",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "moonfish.png",
+        "path": "img/fish/saltwater/moonfish.png",
+        "spritesheetRow": null,
+        "name": "Moonfish",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OPTIC",
+      "accent": "#00FF41",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 9,
+        "name": "Bioluminescent Fish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OBLIQUE",
+      "accent": "#BF40FF",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Purple Tang.png",
+        "path": "img/fish/saltwater/Purple Tang.png",
+        "spritesheetRow": null,
+        "name": "Purple Tang",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OSPREY",
+      "accent": "#1B4F8A",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Blue Angelfish.png",
+        "path": "img/fish/saltwater/Blue Angelfish.png",
+        "spritesheetRow": null,
+        "name": "Blue Angelfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OSTERIA",
+      "accent": "#722F37",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "red_snapper.png",
+        "path": "img/fish/saltwater/red_snapper.png",
+        "spritesheetRow": null,
+        "name": "Red Snapper",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OWLFISH",
+      "accent": "#B8860B",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "football_fish.png",
+        "path": "img/fish/saltwater/football_fish.png",
+        "spritesheetRow": null,
+        "name": "Football Fish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OHM",
+      "accent": "#87AE73",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "sea_cucumber.png",
+        "path": "img/fish/saltwater/sea_cucumber.png",
+        "spritesheetRow": null,
+        "name": "Sea Cucumber",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "ORPHICA",
+      "accent": "#7FDBCA",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 30,
+        "name": "Purple Seahorse",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBBLIGATO",
+      "accent": "#FF8A7A",
+      "creature": {
+        "source": "pixelgnome-saltwater",
+        "file": "Clownfish.png",
+        "path": "img/fish/saltwater/Clownfish.png",
+        "spritesheetRow": null,
+        "name": "Clownfish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OTTONI",
+      "accent": "#5B8A72",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "napoleon_fish.png",
+        "path": "img/fish/saltwater/napoleon_fish.png",
+        "spritesheetRow": null,
+        "name": "Napoleon Fish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OLE",
+      "accent": "#C9377A",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "betta.png",
+        "path": "img/fish/saltwater/betta.png",
+        "spritesheetRow": null,
+        "name": "Betta",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OVERLAP",
+      "accent": "#00FFB4",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 27,
+        "name": "Sea Dragon",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OUTWIT",
+      "accent": "#CC6600",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "octopus.png",
+        "path": "img/fish/saltwater/octopus.png",
+        "spritesheetRow": null,
+        "name": "Octopus",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OMBRE",
+      "accent": "#7B6B8A",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 18,
+        "name": "Gray Creature",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "ORCA",
+      "accent": "#1B2838",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 19,
+        "name": "Large Shark",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OCTOPUS",
+      "accent": "#E040FB",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 4,
+        "name": "Dark Squid",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OSTINATO",
+      "accent": "#E8701A",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "skipjack_tuna.png",
+        "path": "img/fish/saltwater/skipjack_tuna.png",
+        "spritesheetRow": null,
+        "name": "Skipjack Tuna",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OPENSKY",
+      "accent": "#FF8C00",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "mahi-mahi.png",
+        "path": "img/fish/saltwater/mahi-mahi.png",
+        "spritesheetRow": null,
+        "name": "Mahi-Mahi",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OCEANDEEP",
+      "accent": "#2D0A4E",
+      "creature": {
+        "source": "bagatan-abyss",
+        "file": "black_seadevil.png",
+        "path": "img/fish/abyss/black_seadevil.png",
+        "spritesheetRow": null,
+        "name": "Black Sea Devil",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OUIE",
+      "accent": "#708090",
+      "creature": {
+        "source": "bagatan-saltwater",
+        "file": "hammerhead_shark.png",
+        "path": "img/fish/saltwater/hammerhead_shark.png",
+        "spritesheetRow": null,
+        "name": "Hammerhead Shark",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OBRIX",
+      "accent": "#1E8B7E",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 8,
+        "name": "Red-Orange Crab",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ORBWEAVE",
+      "accent": "#8E4585",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 12,
+        "name": "Purple Nautilus",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OVERTONE",
+      "accent": "#A8D8EA",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 11,
+        "name": "Striped Blue Fish",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "ORGANISM",
+      "accent": "#C6E377",
+      "creature": {
+        "source": "bagatan-abyss",
+        "file": "worm_pompeii.png",
+        "path": "img/fish/abyss/worm_pompeii.png",
+        "spritesheetRow": null,
+        "name": "Pompeii Worm",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OXBOW",
+      "accent": "#1A6B5A",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 13,
+        "name": "Green Sea Creature",
+        "zone": "twilight"
+      }
+    },
+    {
+      "id": "OWARE",
+      "accent": "#B5883E",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 16,
+        "name": "Spider Crab",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OPERA",
+      "accent": "#D4AF37",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 2,
+        "name": "Anglerfish",
+        "zone": "midnight"
+      }
+    },
+    {
+      "id": "OFFERING",
+      "accent": "#E5B80B",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 14,
+        "name": "Golden Seahorse",
+        "zone": "sunlit"
+      }
+    },
+    {
+      "id": "OSMOSIS",
+      "accent": "#C0C0C0",
+      "creature": {
+        "source": "spritesheet",
+        "file": "creatures.png",
+        "path": "img/creatures.png",
+        "spritesheetRow": 22,
+        "name": "White Coral Anemone",
+        "zone": "sunlit"
+      }
+    }
+  ]
+}
