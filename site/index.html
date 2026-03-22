@@ -29,7 +29,72 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Chrys';
+  src: url('fonts/Chrys-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Chrys';
+  src: url('fonts/Chrys-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ChrysDistorted';
+  src: url('fonts/Chrys-Distorted.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+</style>
 <style>
 /* ═══════════════════════════════════════════════════════════
    XO_OX Designs — Brand Site
@@ -77,6 +142,14 @@
   --coral:      #C4636E;
   --coral-glow: rgba(196, 99, 110, 0.06);
   --depth:      0;
+
+  /* Ecological depth zones — three vertical water column bands */
+  --zone-sunlit:        #48CAE4;
+  --zone-sunlit-glow:   rgba(72, 202, 228, 0.12);
+  --zone-twilight:      #0096C7;
+  --zone-twilight-glow: rgba(0, 150, 199, 0.12);
+  --zone-midnight:      #7B2FBE;
+  --zone-midnight-glow: rgba(123, 47, 190, 0.14);
 }
 
 html {
@@ -262,7 +335,7 @@ body::after {
 }
 
 .nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -428,7 +501,7 @@ body::after {
 }
 
 .hero-logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   letter-spacing: 0.15em;
@@ -449,7 +522,7 @@ body::after {
 
 /* Mirror reflection under logo */
 .hero-logo-reflection {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 300;
   letter-spacing: 0.15em;
@@ -502,6 +575,112 @@ body::after {
   50%      { transform: translateY(8px); }
 }
 
+/* ── Hero stats bar (Stacks-inspired above-fold metrics) ── */
+.hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.2rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.hero-stat-num {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.57rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.hero-stat-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  align-self: center;
+}
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Engine spectrum strip (47 colored pips — Stacks client-bar pattern) ── */
+.engine-strip {
+  width: 100%;
+  max-width: 100% !important;
+  padding: 1.75rem clamp(1.5rem, 5vw, 6rem) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
+  overflow: visible;
+}
+.engine-strip-inner {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+}
+.engine-pip {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), opacity 0.2s, box-shadow 0.25s;
+  opacity: 0.6;
+  position: relative;
+}
+.engine-pip:hover {
+  transform: scale(2.1);
+  opacity: 1;
+  z-index: 5;
+}
+.engine-pip::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52rem;
+  color: var(--cream);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.engine-pip:hover::after {
+  opacity: 1;
+}
+
 /* ═══════════ SECTION LAYOUT ═══════════ */
 section {
   padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem);
@@ -530,7 +709,7 @@ section {
 }
 
 h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 300;
   color: var(--cream);
@@ -539,7 +718,9 @@ h2 {
 }
 
 h2 em {
-  font-style: italic;
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  font-weight: 400;
   color: var(--gold);
 }
 
@@ -578,7 +759,7 @@ h2 em {
 }
 
 .principle-number {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 2.5rem;
   font-weight: 300;
   color: var(--gold);
@@ -680,7 +861,7 @@ h2 em {
 }
 
 .instrument-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--cream);
@@ -709,6 +890,35 @@ h2 em {
   position: relative;
   z-index: 1;
 }
+
+/* ── Ecological creature sprite (top-right corner of card) ── */
+.instrument-creature {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 44px;
+  height: 44px;
+  opacity: 0.45;
+  transition: opacity 0.4s, transform 0.4s;
+  pointer-events: none;
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.instrument-card:hover .instrument-creature {
+  opacity: 0.9;
+  transform: scale(1.08) translateY(-2px);
+}
+
+/* Zone-tinted card backgrounds — subtle habitat coloring */
+.instrument-card[data-zone="sunlit"]   { background: linear-gradient(160deg, rgba(72,202,228,0.05) 0%, var(--bg-card) 55%); }
+.instrument-card[data-zone="twilight"] { background: linear-gradient(160deg, rgba(0,150,199,0.06) 0%, var(--bg-card) 55%); }
+.instrument-card[data-zone="midnight"] { background: linear-gradient(160deg, rgba(123,47,190,0.08) 0%, var(--bg-card) 55%); }
+
+/* Zone depth ring on engine pips */
+.engine-pip[data-zone="sunlit"]:hover   { box-shadow: 0 0 0 2px rgba(72,202,228,0.5),  0 0 12px rgba(72,202,228,0.25); }
+.engine-pip[data-zone="twilight"]:hover { box-shadow: 0 0 0 2px rgba(0,150,199,0.5),   0 0 12px rgba(0,150,199,0.25); }
+.engine-pip[data-zone="midnight"]:hover { box-shadow: 0 0 0 2px rgba(123,47,190,0.5),  0 0 12px rgba(123,47,190,0.25); }
 
 /* Audio preview indicator */
 .instrument-card .preview-hint {
@@ -1005,7 +1215,7 @@ h2 em {
 }
 
 .aquarium-lore {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.15rem;
   font-style: italic;
   font-weight: 300;
@@ -1077,7 +1287,7 @@ h2 em {
 }
 
 .aqua-fx-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--cream);
@@ -1143,7 +1353,7 @@ h2 em {
 }
 
 .aqua-pair-names {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--cream);
@@ -1300,7 +1510,7 @@ h2 em {
 }
 
 .community-card h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   color: var(--cream);
   font-size: 1.3rem;
   font-weight: 400;
@@ -1337,7 +1547,7 @@ h2 em {
 }
 
 .showcase-wall h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   color: var(--cream);
   font-size: 1.5rem;
   font-weight: 400;
@@ -1378,7 +1588,7 @@ h2 em {
 }
 
 .showcase-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   color: var(--cream);
   font-size: 1rem;
   font-weight: 400;
@@ -1577,7 +1787,7 @@ h2 em {
 }
 
 .quickstart-step-num {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.8rem;
   font-weight: 300;
   color: var(--gold);
@@ -1697,7 +1907,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.4rem;
   font-weight: 300;
   color: var(--text-dim);
@@ -1814,7 +2024,7 @@ footer {
 }
 
 .engine-modal-name {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 3rem;
   font-weight: 300;
   color: var(--cream);
@@ -1867,7 +2077,7 @@ footer {
 }
 
 .engine-modal-synth-type {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Nebulica', sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--cream);
@@ -2094,7 +2304,35 @@ footer {
     <span style="color:var(--gold)">X</span>O<span style="color:var(--text-faint)">_</span>O<span style="color:var(--gold)">X</span>
   </div>
   <p class="hero-tagline">Character Synthesis</p>
+
+  <div class="hero-stats" aria-label="XOmnibus at a glance">
+    <div class="hero-stat">
+      <span class="hero-stat-num">47</span>
+      <span class="hero-stat-label">Engines</span>
+    </div>
+    <div class="hero-stat-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">14</span>
+      <span class="hero-stat-label">Coupling Types</span>
+    </div>
+    <div class="hero-stat-divider" aria-hidden="true"></div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">22K+</span>
+      <span class="hero-stat-label">Presets</span>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#download" class="cta-btn primary">Download Free</a>
+    <a href="#instruments" class="cta-btn">Explore Engines</a>
+  </div>
+
   <div class="hero-scroll">Scroll<br></div>
+</section>
+
+<!-- ═══════════ ENGINE SPECTRUM ═══════════ -->
+<section class="engine-strip" aria-label="All 47 engine characters — click to explore">
+  <div class="engine-strip-inner" id="engineStrip"></div>
 </section>
 
 <!-- ═══════════ PHILOSOPHY ═══════════ -->
@@ -2137,7 +2375,7 @@ footer {
 <!-- ═══════════ INSTRUMENTS ═══════════ -->
 <section class="instruments reveal" id="instruments">
   <div class="section-label">The Instruments</div>
-  <h2>Forty-four engines.<br>Forty-four <em>characters.</em></h2>
+  <h2>Forty-seven engines.<br>Forty-seven <em>characters.</em></h2>
   <p class="section-text">
     Each began as a standalone instrument with its own identity, voice, and reason to exist.
     Together in XOmnibus, they couple, collide, and mutate into sounds impossible with any single synth.
@@ -2958,6 +3196,69 @@ engines.forEach((eng, i) => {
 
   grid.appendChild(card);
 });
+
+// ═══════════ RENDER ENGINE SPECTRUM STRIP ═══════════
+const stripEl = document.getElementById('engineStrip');
+if (stripEl) {
+  engines.forEach(eng => {
+    const pip = document.createElement('div');
+    pip.className = 'engine-pip';
+    pip.title = eng.name;
+    pip.style.background = eng.color;
+    pip.addEventListener('click', () => openEngineModal(eng));
+    stripEl.appendChild(pip);
+  });
+}
+
+// ═══════════ INJECT CREATURE SPRITES (progressive enhancement) ═══════════
+// Load engine-creature-map.json and overlay creature sprites on rendered cards.
+// Uses spritesheet (img/creatures.png) or individual fish images depending on map entry.
+fetch('engine-creature-map.json')
+  .then(r => r.json())
+  .then(data => {
+    // Build lookup: engine ID → creature entry
+    const byId = {};
+    data.engines.forEach(e => { byId[e.id] = e; });
+
+    // Inject creature sprites into instrument cards
+    document.querySelectorAll('#instrumentGrid .instrument-card').forEach(card => {
+      const codeEl = card.querySelector('.instrument-code');
+      if (!codeEl) return;
+      const code = codeEl.textContent.trim().toUpperCase();
+      const entry = byId[code];
+      if (!entry) return;
+
+      // Set zone data attribute for CSS depth-tinting
+      card.dataset.zone = entry.creature.zone;
+
+      // Build sprite element
+      const sprite = document.createElement('div');
+      sprite.className = 'instrument-creature';
+      const c = entry.creature;
+      if (c.spritesheetRow !== null && c.spritesheetRow !== undefined) {
+        // Spritesheet: 96×1488px, 31 creatures × 48px rows, 2 frames per row
+        sprite.style.backgroundImage = `url(img/creatures.png)`;
+        sprite.style.backgroundPosition = `0px -${c.spritesheetRow * 48}px`;
+        sprite.style.backgroundSize = `96px 1488px`;
+      } else if (c.path) {
+        // Individual fish image
+        sprite.style.backgroundImage = `url(${c.path})`;
+        sprite.style.backgroundPosition = 'center';
+        sprite.style.backgroundSize = 'contain';
+      }
+      card.appendChild(sprite);
+    });
+
+    // Set zone data attributes on engine strip pips
+    const pips = document.querySelectorAll('#engineStrip .engine-pip');
+    pips.forEach(pip => {
+      const engObj = engines.find(e => e.name === pip.title);
+      if (!engObj) return;
+      const entry = byId[engObj.code];
+      if (entry) pip.dataset.zone = entry.creature.zone;
+    });
+  })
+  .catch(() => {}); // fail silently — creature sprites are progressive enhancement
 
 function drawMiniWaveform(canvas, eng) {
   const ctx = canvas.getContext('2d');
