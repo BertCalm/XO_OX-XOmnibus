@@ -557,26 +557,41 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(slotBg()));
 
-        // Accent header bar
-        g.setColour(accentColour);
-        g.fillRect(0, 0, getWidth(), kHeaderH);
+        // ── Ecological header: accent → midnight depth gradient ────────────
+        {
+            juce::ColourGradient grad(accentColour, 0.0f, 0.0f,
+                                      juce::Colour(0xFF1A0A2E), (float)getWidth(), 0.0f, false);
+            grad.addColour(0.55, accentColour.interpolatedWith(juce::Colour(0xFF0096C7), 0.5f));
+            g.setGradientFill(grad);
+            g.fillRect(0, 0, getWidth(), kHeaderH);
+        }
 
-        // Engine name
+        // ── Zone depth bands — three 2px horizontal strips at header bottom ─
+        // Visualizes Sunlit / Twilight / Midnight split across the header width
+        {
+            const int stripH = 2;
+            const int stripY = kHeaderH - stripH;
+            const float zoneW = getWidth() / 3.0f;
+            const uint32_t zoneColors[3] = { 0xFF48CAE4, 0xFF0096C7, 0xFF7B2FBE };
+            for (int z = 0; z < 3; ++z)
+            {
+                g.setColour(juce::Colour(zoneColors[z]).withAlpha(0.55f));
+                g.fillRect((int)(z * zoneW), stripY, (int)zoneW, stripH);
+            }
+        }
+
+        // ── Engine name ────────────────────────────────────────────────────
         g.setColour(juce::Colours::white);
         g.setFont(GalleryFonts::display(16.0f));
         g.drawText(engineId.toUpperCase(),
-                   kHeaderH + 8, 0, getWidth() - kHeaderH - 90, kHeaderH,
+                   12, 0, getWidth() - 100, kHeaderH,
                    juce::Justification::centredLeft);
 
-        // Slot label
-        g.setColour(juce::Colours::white.withAlpha(0.6f));
-        g.setFont(GalleryFonts::body(9.0f));
-        g.drawText("PARAMETERS", 0, 0, getWidth() - 16, kHeaderH,
+        // ── "PARAMETERS" right label ────────────────────────────────────────
+        g.setColour(juce::Colours::white.withAlpha(0.45f));
+        g.setFont(GalleryFonts::body(8.5f));
+        g.drawText("PARAMETERS", 0, 0, getWidth() - 10, kHeaderH,
                    juce::Justification::centredRight);
-
-        // Subtle separator below header
-        g.setColour(get(borderGray()));
-        g.drawHorizontalLine(kHeaderH, 0.0f, (float)getWidth());
     }
 
     void resized() override
@@ -1174,12 +1189,22 @@ public:
         auto b = getLocalBounds().toFloat();
         g.setColour(get(shellWhite()));
         g.fillRoundedRectangle(b, 6.0f);
-        g.setColour(get(xoGold));
-        g.fillRoundedRectangle(b.removeFromTop(3.0f), 0.0f);
         g.setColour(get(borderGray()));
-        g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 6.0f, 1.0f);
+        g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
-        g.setColour(get(textMid()));
+        // XO Gold top stripe + three depth zone segments
+        auto stripe = b.removeFromTop(3.0f);
+        float segW = stripe.getWidth() / 3.0f;
+        const juce::Colour zones[3] = { juce::Colour(0xFF48CAE4), juce::Colour(0xFF0096C7),
+                                         juce::Colour(0xFF7B2FBE) };
+        for (int z = 0; z < 3; ++z)
+        {
+            g.setColour(zones[z].withAlpha(0.7f));
+            g.fillRect(stripe.withX(stripe.getX() + z * segW).withWidth(segW));
+        }
+
+        // MACROS label
+        g.setColour(get(xoGoldText()));
         g.setFont(GalleryFonts::heading(8.0f));
         g.drawText("MACROS", getLocalBounds().removeFromTop(20), juce::Justification::centred);
     }

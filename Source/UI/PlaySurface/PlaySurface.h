@@ -220,12 +220,22 @@ private:
         }
     }
 
+    // Pad grid with ecological depth zone coloring.
+    // Row 3 (top/high notes) = Sunlit zone (cyan), Row 0 (bottom/low) = Midnight (violet).
     void paintPadGrid(juce::Graphics& g)
     {
         using namespace PS;
         auto b = getLocalBounds().toFloat();
         float padW = b.getWidth() / kPadCols;
         float padH = b.getHeight() / kPadRows;
+
+        // Depth zone colors mapped to rows (displayRow 0=top=sunlit, 3=bottom=midnight)
+        const juce::Colour kZoneColors[4] = {
+            juce::Colour(0xFF48CAE4),  // row 0 display (top — Sunlit)
+            juce::Colour(0xFF0096C7),  // row 1 (Twilight upper)
+            juce::Colour(0xFF0070AA),  // row 2 (Twilight lower)
+            juce::Colour(0xFF7B2FBE),  // row 3 (Midnight)
+        };
 
         for (int row = 0; row < kPadRows; ++row)
         {
@@ -237,16 +247,26 @@ private:
                 float y = displayRow * padH;
                 auto padRect = juce::Rectangle<float>(x, y, padW, padH).reduced(2.0f);
 
-                // Base color
-                g.setColour(juce::Colour(kSurfaceCard));
+                juce::Colour zoneCol = kZoneColors[displayRow];
+
+                // Base color — very dark, with zone tint
+                g.setColour(juce::Colour(kSurfaceBg).interpolatedWith(zoneCol, 0.06f));
                 g.fillRoundedRectangle(padRect, 4.0f);
 
-                // Velocity heatmap glow
+                // Zone border — subtle color classification
+                g.setColour(zoneCol.withAlpha(0.18f));
+                g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
+
+                // Velocity heatmap glow — zone-colored
                 float vel = padVelocity[(size_t)pad];
                 if (vel > 0.01f)
                 {
-                    g.setColour(juce::Colour(kAmber).withAlpha(vel * 0.6f));
+                    g.setColour(zoneCol.withAlpha(vel * 0.65f));
                     g.fillRoundedRectangle(padRect, 4.0f);
+                    // Inner glow highlight
+                    g.setColour(juce::Colours::white.withAlpha(vel * 0.25f));
+                    g.fillRoundedRectangle(padRect.reduced(padRect.getWidth() * 0.25f,
+                                                           padRect.getHeight() * 0.35f), 3.0f);
                 }
 
                 // Warm memory ghost circles
@@ -280,63 +300,112 @@ private:
                     label = juce::String(noteNames[note % 12]) + juce::String(note / 12 - 1);
                 }
 
-                g.setColour(juce::Colour(kTextLight).withAlpha(0.7f));
+                // Note label — zone-tinted
+                g.setColour(zoneCol.withAlpha(vel > 0.01f ? 0.95f : 0.55f));
                 g.setFont(juce::Font(9.0f));
                 g.drawText(label, padRect, juce::Justification::centred);
-
-                // Border
-                g.setColour(juce::Colour(kTextDim).withAlpha(0.2f));
-                g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
             }
         }
     }
 
+    // Zone-aware fretless paintFretless:
+    //   bottom (low notes) = Midnight zone (violet)
+    //   middle             = Twilight zone (deep blue)
+    //   top (high notes)   = Sunlit zone (cyan)
+    // Matches the web PlaySurface ocean depth gradient.
     void paintFretless(juce::Graphics& g)
     {
         using namespace PS;
         auto b = getLocalBounds().toFloat();
 
-        // Background gradient
-        g.setGradientFill(juce::ColourGradient(
-            juce::Colour(kSurfaceCard), 0, b.getBottom(),
-            juce::Colour(kSurfaceBg), 0, b.getY(), false));
-        g.fillRect(b);
+        // ── Ocean depth background gradient (bottom=midnight, top=sunlit) ───
+        {
+            juce::ColourGradient grad(juce::Colour(0xFF150820), b.getX(), b.getBottom(),  // Midnight base
+                                       juce::Colour(0xFF0A1F30), b.getX(), b.getY(), false);
+            grad.addColour(0.20, juce::Colour(0xFF7B2FBE).withAlpha(0.35f));   // Midnight zone
+            grad.addColour(0.45, juce::Colour(0xFF0D2744));                     // Twilight zone base
+            grad.addColour(0.72, juce::Colour(0xFF0096C7).withAlpha(0.5f));    // Twilight zone top
+            grad.addColour(0.85, juce::Colour(0xFF0D3550));                     // Sunlit base
+            g.setGradientFill(grad);
+            g.fillRect(b);
+        }
 
-        // Fret lines
+        // Zone boundary lines — visual landmarks for depth zones
+        {
+            float sunlitY   = b.getBottom() - b.getHeight() * 0.45f;  // 45% up = twilight boundary
+            float twilightY = b.getBottom() - b.getHeight() * 0.80f;  // 80% up = sunlit boundary
+            g.setColour(juce::Colour(0xFF0096C7).withAlpha(0.18f));
+            g.drawHorizontalLine((int)sunlitY,   b.getX(), b.getRight());
+            g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.18f));
+            g.drawHorizontalLine((int)twilightY, b.getX(), b.getRight());
+        }
+
+        // ── Zone-colored fret lines ──────────────────────────────────────────
         auto& intervals = scales[(size_t)currentScale].intervals;
         int totalSemitones = 72; // C1-C7
         for (int semi = 0; semi <= totalSemitones; ++semi)
         {
             float y = b.getBottom() - (float)semi / totalSemitones * b.getHeight();
+            float normY = 1.0f - (float)semi / totalSemitones;  // 0=top/sunlit, 1=bottom/midnight
+
+            // Choose zone color for this position
+            juce::Colour zoneColor;
+            if (normY < 0.20f)      zoneColor = juce::Colour(0xFF48CAE4);   // Sunlit — cyan
+            else if (normY < 0.55f) zoneColor = juce::Colour(0xFF0096C7);   // Twilight — blue
+            else                     zoneColor = juce::Colour(0xFF7B2FBE);   // Midnight — violet
+
             bool isOctave = (semi % 12 == 0);
             bool isScaleNote = (currentScale == 0) ||
                 std::find(intervals.begin(), intervals.end(), semi % 12) != intervals.end();
 
             if (isOctave)
             {
-                g.setColour(juce::Colour(kTextLight).withAlpha(0.25f));
+                g.setColour(zoneColor.withAlpha(0.35f));
                 g.drawHorizontalLine((int)y, b.getX(), b.getRight());
-                // Octave label
                 int octNum = (24 + semi) / 12 - 1;
                 g.setFont(juce::Font(8.0f));
+                g.setColour(zoneColor.withAlpha(0.55f));
                 g.drawText("C" + juce::String(octNum),
                     juce::Rectangle<float>(4, y - 10, 24, 12),
                     juce::Justification::centredLeft);
             }
             else if (isScaleNote)
             {
-                g.setColour(juce::Colour(kTextDim).withAlpha(0.1f));
+                g.setColour(zoneColor.withAlpha(0.12f));
                 g.drawHorizontalLine((int)y, b.getX(), b.getRight());
             }
         }
 
-        // Touch crosshair
+        // ── Touch cursor — XO Gold ring + zone-colored glow ─────────────────
         if (lastNote >= 0)
         {
             float noteY = b.getBottom() - (float)(lastNote - 24) / totalSemitones * b.getHeight();
-            g.setColour(juce::Colour(0xFFE8839B).withAlpha(0.6f)); // Pink
+            float normY = 1.0f - (float)(lastNote - 24) / totalSemitones;
+
+            juce::Colour zoneColor;
+            if (normY < 0.20f)      zoneColor = juce::Colour(0xFF48CAE4);
+            else if (normY < 0.55f) zoneColor = juce::Colour(0xFF0096C7);
+            else                     zoneColor = juce::Colour(0xFF7B2FBE);
+
+            // Zone-colored guide line across the strip
+            g.setColour(zoneColor.withAlpha(0.22f));
             g.drawHorizontalLine((int)noteY, b.getX(), b.getRight());
-            g.fillEllipse(b.getCentreX() - 8, noteY - 8, 16, 16);
+
+            // XO Gold ring cursor (28pt equivalent on desktop)
+            const float ringR = 14.0f;
+            float cx = b.getCentreX();
+
+            // Zone glow behind ring
+            g.setColour(zoneColor.withAlpha(0.20f));
+            g.fillEllipse(cx - ringR - 4, noteY - ringR - 4, (ringR + 4) * 2, (ringR + 4) * 2);
+
+            // XO Gold ring
+            g.setColour(juce::Colour(0xFFE9C46A));
+            g.drawEllipse(cx - ringR, noteY - ringR, ringR * 2, ringR * 2, 2.0f);
+
+            // Center dot
+            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.7f));
+            g.fillEllipse(cx - 3, noteY - 3, 6, 6);
         }
     }
 
