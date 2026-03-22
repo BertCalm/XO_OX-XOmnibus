@@ -295,40 +295,106 @@ public:
         setColour(juce::Label::textColourId,                     get(textDark()));
     }
 
+    // Ecological Instrument paradigm — zone arcs + setpoint marker + value arc.
+    // Visual language mirrors the web PlaySurface:
+    //   Track ring   : faint full-sweep baseline
+    //   Zone arcs    : Sunlit/Twilight/Midnight depth bands at 0.22 opacity
+    //   Value arc    : engine accent color, shows current parameter value
+    //   Setpoint ▲   : XO Gold triangle pointing outward at current position
+    //   Center disc  : warm white inner field (Gallery Model shell)
     void drawRotarySlider(juce::Graphics& g, int x, int y, int w, int h,
                           float sliderPos, float startAngle, float endAngle,
                           juce::Slider& slider) override
     {
         auto bounds = juce::Rectangle<float>((float)x, (float)y, (float)w, (float)h).reduced(6.0f);
-        float r  = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f;
-        float cx = bounds.getCentreX(), cy = bounds.getCentreY();
-        float fillAngle = startAngle + sliderPos * (endAngle - startAngle);
+        float r     = juce::jmin(bounds.getWidth(), bounds.getHeight()) * 0.5f;
+        float cx    = bounds.getCentreX();
+        float cy    = bounds.getCentreY();
+        float sweep = endAngle - startAngle;
+        float fillAngle = startAngle + sliderPos * sweep;
+        float arcR  = r - 2.0f;
 
         // Focus ring (WCAG 2.4.7)
-        if (slider.hasKeyboardFocus (true))
-            A11y::drawCircularFocusRing (g, cx, cy, r + 2.0f);
+        if (slider.hasKeyboardFocus(true))
+            A11y::drawCircularFocusRing(g, cx, cy, r + 2.0f);
 
-        juce::Path track;
-        track.addCentredArc(cx, cy, r - 2, r - 2, 0, startAngle, endAngle, true);
-        g.setColour(GalleryColors::get(GalleryColors::borderGray()));
-        g.strokePath(track, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
-                                                  juce::PathStrokeType::rounded));
+        // ── 1. Ecological depth zone arcs ────────────────────────────────
+        // Wider than the track so they create a soft halo behind it.
+        // Sunlit 0–55% | Twilight 55–80% | Midnight 80–100% of sweep.
+        struct ZoneBand { float normStart, normEnd; uint32_t rgba; };
+        constexpr ZoneBand kZones[3] = {
+            { 0.00f, 0.55f, 0xFF48CAE4 },   // Sunlit  — tropical cyan
+            { 0.55f, 0.80f, 0xFF0096C7 },   // Twilight — deep blue
+            { 0.80f, 1.00f, 0xFF7B2FBE }    // Midnight — bioluminescent violet
+        };
+        for (const auto& z : kZones)
+        {
+            float a0 = startAngle + z.normStart * sweep;
+            float a1 = startAngle + z.normEnd   * sweep;
+            juce::Path zp;
+            zp.addCentredArc(cx, cy, arcR, arcR, 0.0f, a0, a1, true);
+            g.setColour(juce::Colour(z.rgba).withAlpha(0.22f));
+            g.strokePath(zp, juce::PathStrokeType(4.5f, juce::PathStrokeType::curved,
+                                                    juce::PathStrokeType::rounded));
+        }
 
-        juce::Path fill;
-        fill.addCentredArc(cx, cy, r - 2, r - 2, 0, startAngle, fillAngle, true);
-        auto accent = slider.findColour(juce::Slider::rotarySliderFillColourId);
-        g.setColour(accent);
-        g.strokePath(fill, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
-                                                  juce::PathStrokeType::rounded));
+        // ── 2. Track ring — full-sweep baseline ──────────────────────────
+        {
+            juce::Path track;
+            track.addCentredArc(cx, cy, arcR, arcR, 0.0f, startAngle, endAngle, true);
+            g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.40f));
+            g.strokePath(track, juce::PathStrokeType(1.5f, juce::PathStrokeType::curved,
+                                                      juce::PathStrokeType::rounded));
+        }
 
-        float tx = cx + (r - 6.0f) * std::sin(fillAngle);
-        float ty = cy - (r - 6.0f) * std::cos(fillAngle);
-        g.fillEllipse(tx - 3.5f, ty - 3.5f, 7.0f, 7.0f);
+        // ── 3. Value arc — engine accent color ───────────────────────────
+        if (sliderPos > 0.001f)
+        {
+            juce::Path fill;
+            fill.addCentredArc(cx, cy, arcR, arcR, 0.0f, startAngle, fillAngle, true);
+            auto accent = slider.findColour(juce::Slider::rotarySliderFillColourId);
+            g.setColour(accent);
+            g.strokePath(fill, juce::PathStrokeType(3.0f, juce::PathStrokeType::curved,
+                                                      juce::PathStrokeType::rounded));
+        }
 
-        g.setColour(GalleryColors::get(GalleryColors::shellWhite()));
-        g.fillEllipse(cx - r * 0.46f, cy - r * 0.46f, r * 0.92f, r * 0.92f);
-        g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.5f));
-        g.drawEllipse(cx - r * 0.46f, cy - r * 0.46f, r * 0.92f, r * 0.92f, 1.0f);
+        // ── 4. Center disc — Gallery Model warm white inner field ────────
+        {
+            float discR = r * 0.44f;
+            g.setColour(GalleryColors::get(GalleryColors::shellWhite()));
+            g.fillEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f);
+            g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.35f));
+            g.drawEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f, 1.0f);
+        }
+
+        // ── 5. Setpoint triangle ▲ — XO Gold marker at player's intent ──
+        // Tip at the arc edge, base pointing inward. Screen coords: Y increases downward,
+        // so point at angle θ = (cx + arcR·sin θ, cy − arcR·cos θ).
+        {
+            float tipR   = arcR + 1.5f;
+            float tipX   = cx + tipR * std::sin(fillAngle);
+            float tipY   = cy - tipR * std::cos(fillAngle);
+
+            // Unit vectors: radial outward (rdx,rdy) and perpendicular (pdx,pdy)
+            float rdx =  std::sin(fillAngle);
+            float rdy = -std::cos(fillAngle);
+            float pdx = -rdy;   // rotate radial 90° CCW in screen space
+            float pdy =  rdx;
+
+            constexpr float kTriH = 5.5f;   // height (depth into arc)
+            constexpr float kTriW = 3.2f;   // half-width of base
+
+            juce::Path tri;
+            tri.startNewSubPath(tipX, tipY);
+            tri.lineTo(tipX - rdx * kTriH + pdx * kTriW,
+                       tipY - rdy * kTriH + pdy * kTriW);
+            tri.lineTo(tipX - rdx * kTriH - pdx * kTriW,
+                       tipY - rdy * kTriH - pdy * kTriW);
+            tri.closeSubPath();
+
+            g.setColour(juce::Colour(GalleryColors::xoGold));
+            g.fillPath(tri);
+        }
     }
 
     void drawButtonBackground(juce::Graphics& g, juce::Button& btn,
@@ -789,72 +855,125 @@ public:
         }
     }
 
+    // Ecological tile: porthole circle + accent strip + depth-zone gradient on select.
+    // Voice-reactive: porthole ring brightens and strip glows when voices are playing.
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
         auto b = getLocalBounds().toFloat().reduced(3.0f, 2.0f);
-
         bool hovered = isMouseOver();
 
-        g.setColour(isSelected ? accent.withAlpha(0.12f)
-                               : hovered ? get(slotBg()).brighter(0.02f)
-                               : get(slotBg()));
-        g.fillRoundedRectangle(b, 8.0f);
+        // ── Tile background ───────────────────────────────────────────────
+        if (isSelected && hasEngine)
+        {
+            // Depth-zone gradient: engine accent (sunlit) → midnight violet
+            juce::ColourGradient grad(accent.withAlpha(0.10f), b.getX(), b.getCentreY(),
+                                      juce::Colour(0xFF7B2FBE).withAlpha(0.04f),
+                                      b.getRight(), b.getCentreY(), false);
+            g.setGradientFill(grad);
+            g.fillRoundedRectangle(b, 8.0f);
+        }
+        else
+        {
+            g.setColour(hovered ? get(slotBg()).brighter(0.025f) : get(slotBg()));
+            g.fillRoundedRectangle(b, 8.0f);
+        }
 
-        g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.4f) : get(borderGray())));
-        g.drawRoundedRectangle(b, 8.0f, isSelected ? 2.5f : 1.0f);
+        // Border — accent when selected, subtle otherwise
+        g.setColour(isSelected ? accent : (hovered ? accent.withAlpha(0.35f) : get(borderGray())));
+        g.drawRoundedRectangle(b, 8.0f, isSelected ? 2.0f : 1.0f);
 
         if (isLoading)
         {
             g.setColour(get(xoGold).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));
             g.drawText("LOADING...", b.toNearestInt(), juce::Justification::centred);
+            if (hasKeyboardFocus(true)) A11y::drawFocusRing(g, b, 8.0f);
+            return;
         }
-        else if (hasEngine)
-        {
-            // Accent dot
-            g.setColour(accent);
-            g.fillEllipse(b.getX() + 10.0f, b.getCentreY() - 5.0f, 10.0f, 10.0f);
 
-            // Engine name
+        if (hasEngine)
+        {
+            // ── Left accent strip — voice activity indicator ───────────────
+            float stripX = b.getX() + 1.5f;
+            float stripH = b.getHeight() * 0.55f;
+            float stripY = b.getCentreY() - stripH * 0.5f;
+            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.88f : 0.38f));
+            g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
+
+            // ── Porthole circle ────────────────────────────────────────────
+            const float porW = 30.0f;
+            float porCx = b.getX() + 20.0f + porW * 0.5f;
+            float porCy = b.getCentreY();
+            float porR  = porW * 0.5f;
+
+            // Inner fill — brightest when voices active
+            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.22f : 0.09f));
+            g.fillEllipse(porCx - porR, porCy - porR, porW, porW);
+
+            // Porthole ring
+            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.80f : 0.38f));
+            g.drawEllipse(porCx - porR, porCy - porR, porW, porW,
+                          voiceCount > 0 ? 1.8f : 1.0f);
+
+            // Glass highlight arc — top-left arc (porthole glass illusion)
+            {
+                float hR = porR - 2.0f;
+                juce::Path hl;
+                hl.addCentredArc(porCx, porCy, hR, hR, 0,
+                                  -juce::MathConstants<float>::pi * 1.15f,
+                                  -juce::MathConstants<float>::pi * 0.45f, true);
+                g.setColour(juce::Colours::white.withAlpha(0.20f));
+                g.strokePath(hl, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
+                                                       juce::PathStrokeType::rounded));
+            }
+
+            // Slot number inside porthole
+            g.setFont(GalleryFonts::value(9.0f));
+            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.75f : 0.38f));
+            g.drawText(juce::String(slot + 1),
+                       (int)(porCx - porR), (int)(porCy - porR),
+                       (int)porW, (int)porW, juce::Justification::centred);
+
+            // ── Engine name ────────────────────────────────────────────────
+            float nameX = porCx + porR + 7.0f;
+            float nameW = b.getRight() - nameX - 18.0f;
             g.setFont(GalleryFonts::heading(11.0f));
             g.setColour(isSelected ? accent : get(textDark()));
             g.drawText(engineId.toUpperCase(),
-                       (int)b.getX() + 26, (int)b.getY(), (int)b.getWidth() - 48, (int)b.getHeight(),
+                       (int)nameX, (int)b.getY(), (int)nameW, (int)b.getHeight(),
                        juce::Justification::centredLeft);
 
-            // Voice count dots — right edge, one dot per active voice
+            // ── Voice activity dots — right edge ───────────────────────────
             if (voiceCount > 0)
             {
-                const float dotR = 3.0f, dotSpacing = 7.0f;
-                float dotX = b.getRight() - 6.0f;
+                const float dotR = 2.5f, dotSpacing = 5.5f;
+                float dotX = b.getRight() - 7.0f;
                 float dotY = b.getCentreY() - dotR;
-                int maxDots = std::min(voiceCount, 6);
+                int maxDots = std::min(voiceCount, 4);
                 for (int d = 0; d < maxDots; ++d)
                 {
-                    g.setColour(accent.withAlpha(0.7f + 0.3f * (d == 0 ? 1.0f : 0.0f)));
-                    g.fillEllipse(dotX - static_cast<float>(d) * dotSpacing, dotY, dotR * 2.0f, dotR * 2.0f);
+                    float alpha = d == 0 ? 0.88f : juce::jmax(0.30f, 0.7f - d * 0.2f);
+                    g.setColour(accent.withAlpha(alpha));
+                    g.fillEllipse(dotX - static_cast<float>(d) * dotSpacing,
+                                  dotY, dotR * 2.0f, dotR * 2.0f);
                 }
             }
         }
         else
         {
-            g.setColour(get(textMid()).withAlpha(0.55f));
+            // Empty slot — minimal label
+            g.setColour(get(textMid()).withAlpha(0.40f));
             g.setFont(GalleryFonts::body(9.0f));
-            g.drawText("SLOT " + juce::String(slot + 1) + " — empty",
-                       b.toNearestInt(), juce::Justification::centred);
+            g.drawText("SLOT " + juce::String(slot + 1),
+                       (int)(b.getX() + 16), (int)b.getY(),
+                       (int)(b.getWidth() - 20), (int)b.getHeight(),
+                       juce::Justification::centredLeft);
         }
 
-        // Slot number badge — top-right corner, always visible for quick navigation
-        g.setFont(GalleryFonts::heading(8.0f));
-        g.setColour(get(textMid()).withAlpha(hasEngine ? 0.35f : 0.2f));
-        g.drawText(juce::String(slot + 1),
-                   (int)b.getRight() - 14, (int)b.getY() + 2, 12, 12,
-                   juce::Justification::centredRight);
-
         // Focus ring (WCAG 2.4.7)
-        if (hasKeyboardFocus (true))
-            A11y::drawFocusRing (g, b, 8.0f);
+        if (hasKeyboardFocus(true))
+            A11y::drawFocusRing(g, b, 8.0f);
     }
 
     void mouseEnter(const juce::MouseEvent&) override { repaint(); }
