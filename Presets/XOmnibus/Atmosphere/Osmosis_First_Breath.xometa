@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "name": "Osmosis First Breath",
+  "mood": "Atmosphere",
+  "engines": ["Osmosis", "Origami", "", ""],
+  "parameters": {
+    "osmo_permeability": 0.6,
+    "osmo_selectivity": 0.7,
+    "osmo_reactivity": 0.5,
+    "osmo_memory": 0.4,
+    "osmo_macro1": 0.6,
+    "osmo_macro2": 0.7,
+    "osmo_macro3": 0.5,
+    "osmo_macro4": 0.4,
+    "mfx_formantMix": 0.3,
+    "mfx_formantShift": 0.1,
+    "mfx_formantVowel": 0.0,
+    "mfx_formantQ": 6.0,
+    "mfx_breathMix": 0.15,
+    "mfx_breathAmount": 0.4,
+    "mfx_breathTilt": 0.6,
+    "mfx_breathSens": 0.5
+  },
+  "coupling": [],
+  "macros": {
+    "M1": "PERMEABILITY",
+    "M2": "SELECTIVITY",
+    "M3": "REACTIVITY",
+    "M4": "MEMORY"
+  },
+  "sonicDNA": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "tags": ["membrane", "voice", "external", "air"],
+  "description": "The membrane breathes. External audio passes through with gentle formant coloring and organic breath texture. Origami in slot 2 loaded with defaults — ready for coupling."
+}

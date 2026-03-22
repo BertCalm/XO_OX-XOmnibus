@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **46 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21)
+and mutate into sounds impossible with any single synth. **47 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (14 coupling types incl. KnotTopology)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~16,000+ factory presets in `.xometa` format, 8 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged), 6D Sonic DNA
@@ -85,6 +85,7 @@ and mutate into sounds impossible with any single synth. **46 engines** are regi
 | OWARE | XOware | Akan Goldweight `#B5883E` |
 | OPERA | XOpera | Aria Gold `#D4AF37` |
 | OFFERING | XOffering | Crate Wax Yellow `#E5B80B` |
+| OSMOSIS | XOsmosis | Surface Tension Silver `#C0C0C0` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -139,6 +140,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oware | `owr_` | `owr_material` |
 | Opera | `opera_` | `opera_drama` |
 | Offering | `ofr_` | `ofr_digCuriosity` |
+| Osmosis | `osmo_` | `osmo_permeability` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -181,6 +183,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Oware/OwareEngine.h` | Tuned percussion (material continuum + mallet physics + sympathetic resonance + buzz membrane) |
 | `Source/Engines/Opera/OperaAdapter.h` | Additive-vocal Kuramoto synchronicity engine (formant synthesis + phase transition + Conductor arcs) |
 | `Source/Engines/Offering/OfferingEngine.h` | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city chains + per-type transient models) |
+| `Source/Engines/Osmosis/OsmosisEngine.h` | External audio membrane engine (envelope follower, pitch detect, coupling source) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
