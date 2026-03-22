@@ -750,7 +750,7 @@ public:
         : processor(proc), slot(slotIndex)
     {
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
-                     "Click to select engine, right-click to swap");
+                     "Click to select engine, right-click for options");
         setExplicitFocusOrder (slotIndex + 1);
         refresh();
         startTimerHz(10); // poll voice count at 10Hz (sufficient for visual feedback)
@@ -771,7 +771,7 @@ public:
         isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
         engineId  = newId;
-        setTooltip(hasEngine ? "Slot " + juce::String(slot + 1) + ": " + engineId + " — click to edit, right-click to swap"
+        setTooltip(hasEngine ? "Click to edit parameters. Right-click for options."
                              : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
         accent    = hasEngine ? eng->getAccentColour()
                               : GalleryColors::get(GalleryColors::emptySlot());
@@ -878,10 +878,57 @@ public:
         return false;
     }
 
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        if (!e.mods.isPopupMenu() || !hasEngine)
+            return;
+
+        juce::PopupMenu menu;
+        menu.addSectionHeader("SLOT " + juce::String(slot + 1) + ": " + engineId.toUpperCase());
+        menu.addSeparator();
+        menu.addItem(100, "Change Engine...");
+        menu.addItem(101, "Remove Engine");
+        menu.addSeparator();
+
+        juce::PopupMenu moveMenu;
+        for (int i = 0; i < 4; ++i)
+        {
+            if (i != slot)
+                moveMenu.addItem(200 + i, "Move to Slot " + juce::String(i + 1));
+        }
+        menu.addSubMenu("Move to Slot", moveMenu);
+
+        menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(this),
+            [this](int result)
+            {
+                if (result == 100)
+                    showLoadMenu();
+                else if (result == 101)
+                {
+                    processor.unloadEngine(slot);
+                }
+                else if (result >= 200 && result < 204)
+                {
+                    int targetSlot = result - 200;
+                    // Get current engine ID before unloading
+                    auto* eng = processor.getEngine(slot);
+                    if (eng != nullptr)
+                    {
+                        auto currentId = eng->getEngineId().toStdString();
+                        processor.loadEngine(targetSlot, currentId);
+                        processor.unloadEngine(slot);
+                    }
+                }
+            });
+    }
+
     void mouseUp(const juce::MouseEvent& e) override
     {
-        if (!e.mods.isLeftButtonDown() || e.mouseWasDraggedSinceMouseDown())
+        if (e.mouseWasDraggedSinceMouseDown())
             return;
+
+        if (e.mods.isPopupMenu())
+            return;  // right-click handled by mouseDown
 
         if (hasEngine)
         {
@@ -912,9 +959,21 @@ private:
             menu.addColouredItem(i + 1, id, colour, true, false);
         }
 
+        if (hasEngine)
+        {
+            menu.addSeparator();
+            menu.addItem(9999, "Remove Engine from Slot " + juce::String(slot + 1));
+        }
+
         menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(this),
             [this, registeredIds](int result)
             {
+                if (result == 9999)
+                {
+                    processor.unloadEngine(slot);
+                    return;
+                }
+
                 if (result >= 1 && result <= (int)registeredIds.size())
                 {
                     isLoading = true;
@@ -1418,9 +1477,9 @@ public:
         searchField.onTextChange = [this] { updateFilter(); };
         addAndMakeVisible(searchField);
 
-        // Mood filter buttons (ALL = index 0, then 6 moods)
+        // Mood filter buttons (ALL = index 0, then 8 moods)
         static const char* moodLabels[] = {
-            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether"
+            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"
         };
         for (int i = 0; i < kNumMoods; ++i)
         {
@@ -1491,12 +1550,14 @@ public:
             juce::Colour(0xFF0066FF), // Prism      → Onset/Blue
             juce::Colour(0xFFE9A84A), // Flux       → Bob/Amber
             juce::Colour(0xFFA78BFA), // Aether     → Opal/Lavender
+            juce::Colour(0xFFFF8A7A), // Family     → Rascal Coral
+            juce::Colour(0xFF2D0A4E), // Submerged  → Trench Violet
         };
         static const char* moodIds[] = {
-            "Foundation","Atmosphere","Entangled","Prism","Flux","Aether"
+            "Foundation","Atmosphere","Entangled","Prism","Flux","Aether","Family","Submerged"
         };
         juce::Colour dot = get(borderGray());
-        for (int mi = 0; mi < 6; ++mi)
+        for (int mi = 0; mi < 8; ++mi)
             if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
 
         g.setColour(dot.withAlpha(0.7f));
@@ -1573,7 +1634,7 @@ private:
     void updateFilter()
     {
         static const char* moodNames[] = {
-            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether"
+            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"
         };
 
         auto query = searchField.getText().trim();
@@ -1603,7 +1664,7 @@ private:
                            juce::dontSendNotification);
     }
 
-    static constexpr int kNumMoods = 7;
+    static constexpr int kNumMoods = 9;
 
     const PresetManager& presetManager;
     std::function<void(const PresetData&)> onPresetSelected;
@@ -2810,7 +2871,17 @@ public:
 
             juce::String routeLabel = (activeRoutes > 0)
                 ? juce::String(activeRoutes) + " coupling route" + (activeRoutes > 1 ? "s" : "") + " active"
-                : "21 Engines · 12 Coupling Types · 1600+ Presets";
+                : ([this]() -> juce::String {
+                      int numEngines = (int)EngineRegistry::instance().getRegisteredIds().size();
+                      int numCoupling = 14;
+                      int numPresets = (int)processor.getPresetManager().getLibrary().size();
+                      juce::String presetStr = (numPresets > 0)
+                          ? juce::String(numPresets) + "+"
+                          : "18000+";
+                      return juce::String(numEngines) + " Engines \xc2\xb7 "
+                           + juce::String(numCoupling) + " Coupling Types \xc2\xb7 "
+                           + presetStr + " Presets";
+                  }());
 
             g.setColour(activeRoutes > 0 ? get(xoGoldText()) : get(textMid()).withAlpha(0.5f));
             g.setFont(GalleryFonts::body(9.0f));
