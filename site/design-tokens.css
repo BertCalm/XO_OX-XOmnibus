@@ -6,7 +6,7 @@
  * Sections:
  *   1. Global Brand
  *   2. Ecological Depth Zones
- *   3. Engine Accent Colors (47 engines)
+ *   3. Engine Accent Colors (70 engines)
  *   4. Ecological Instrument Anatomy
  *   5. Glass / Porthole Formula
  *   6. PlaySurface Tokens
@@ -67,7 +67,7 @@
 
 
 /* ============================================================
-   SECTION 3 — Engine Accent Colors (47 engines)
+   SECTION 3 — Engine Accent Colors (70 engines)
    One custom property per registered engine.
    Property name matches the Engine ID (all-caps).
    Source: CLAUDE.md Engine Modules table.

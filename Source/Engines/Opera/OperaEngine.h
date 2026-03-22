@@ -227,22 +227,44 @@ struct OperaSVF
     float ic1eq = 0.0f;
     float ic2eq = 0.0f;
 
+    // Cached SVF coefficients — recomputed only when cutoff/Q change by > 0.001.
+    // Eliminates per-sample FastMath::fastTan calls (critical for iOS CPU budget).
+    float svfG_       = 0.0f;
+    float svfK_       = 0.0f;
+    float svfA1_      = 0.0f;
+    float svfA2_      = 0.0f;
+    float svfA3_      = 0.0f;
+    float lastCutoff_ = -1.0f;
+    float lastRes_    = -1.0f;
+
     void reset() noexcept { ic1eq = ic2eq = 0.0f; }
 
     /// Process one sample, return lowpass output.
     /// SRO (2026-03-21): std::tan → FastMath::fastTan — accurate to 0.03% below
     /// 0.25×sampleRate. Saves ~16 std::tan calls/sample (2 SVFs × 8 voices).
+    /// SRO (2026-03-22): block-rate coefficient cache — recompute only when cutoff
+    /// or Q drift by > 0.001. Eliminates fastTan on iOS hot path.
     float process (float input, float cutoffHz, float Q, float sampleRate) noexcept
     {
         // Clamp cutoff to prevent instability
         cutoffHz = std::clamp (cutoffHz, 20.0f, sampleRate * 0.499f);
         Q = std::max (Q, 0.5f);
 
-        float g = FastMath::fastTan (kPi * cutoffHz / sampleRate);
-        float k = 1.0f / Q;
-        float a1 = 1.0f / (1.0f + g * (g + k));
-        float a2 = g * a1;
-        float a3 = g * a2;
+        // Recompute g/k and derived coefficients only when parameters change.
+        if (std::abs (cutoffHz - lastCutoff_) > 0.001f || std::abs (Q - lastRes_) > 0.001f)
+        {
+            svfG_       = FastMath::fastTan (kPi * cutoffHz / sampleRate);
+            svfK_       = 1.0f / Q;
+            svfA1_      = 1.0f / (1.0f + svfG_ * (svfG_ + svfK_));
+            svfA2_      = svfG_ * svfA1_;
+            svfA3_      = svfG_ * svfA2_;
+            lastCutoff_ = cutoffHz;
+            lastRes_    = Q;
+        }
+
+        const float a1 = svfA1_;
+        const float a2 = svfA2_;
+        const float a3 = svfA3_;
 
         float v3 = input - ic2eq;
         float v1 = a1 * ic1eq + a2 * v3;
