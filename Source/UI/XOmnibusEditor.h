@@ -3017,7 +3017,7 @@ public:
         for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
         {
             tiles[i] = std::make_unique<CompactEngineTile>(proc, i);
-            tiles[i]->onSelect = [this, i](int slot) { selectSlot(slot); };
+            tiles[i]->onSelect = [this](int slot) { selectSlot(slot); };
             addAndMakeVisible(*tiles[i]);
         }
 
