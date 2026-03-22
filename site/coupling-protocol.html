@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XO_OX Coupling Protocol v0.1 — Inter-Synth Communication Standard</title>
+<meta name="description" content="The XO_OX Coupling Protocol defines a standard for inter-engine modulation. MIDI says 'play this note.' Coupling says 'relate to this voice like this.'">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta property="og:title" content="XO_OX Coupling Protocol v0.1">
+<meta property="og:description" content="An open standard for inter-synth communication. MIDI says 'play this note.' Coupling says 'relate to this voice like this.'">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="XO_OX Coupling Protocol v0.1">
+<meta name="twitter:description" content="Three coupling types. One standard. Infinite relationships.">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute; top: -100%; left: 1rem; z-index: 100000;
+  padding: 0.75rem 1.5rem; background: var(--gold); color: var(--bg-deep);
+  font-weight: 600; border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none; transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+  --coupling:   #2AA19B;
+  --coupling-glow: rgba(42, 161, 155, 0.12);
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(233, 196, 106, 0.02) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.12) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--coupling); color: var(--cream); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999;
+}
+
+/* Ambient glow */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 80%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 20%, rgba(233, 196, 106, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 20, 50, 0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: 9998;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem); height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem; font-weight: 300; letter-spacing: 0.12em;
+  color: var(--cream); text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links a {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-dim); text-decoration: none;
+  transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+
+/* ═══════════ ARTICLE HERO ═══════════ */
+.article-hero {
+  padding: clamp(8rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4rem);
+  max-width: 820px; margin: 0 auto; position: relative;
+}
+.article-hero-label {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--coupling);
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;
+}
+.article-hero-label::before {
+  content: ''; width: 30px; height: 1px;
+  background: var(--coupling); opacity: 0.6;
+}
+.article-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 300;
+  color: var(--cream); line-height: 1.15; margin-bottom: 1rem;
+}
+.article-hero h1 em { font-style: italic; color: var(--coupling); }
+.article-hero-sub {
+  font-size: 1.05rem; font-weight: 300; color: var(--text);
+  line-height: 1.8; max-width: 620px;
+}
+.article-meta {
+  display: flex; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--border); flex-wrap: wrap;
+}
+.article-meta-item {
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.article-meta-item span {
+  color: var(--text-dim); display: block; margin-top: 0.2rem;
+}
+
+/* ═══════════ ARTICLE BODY ═══════════ */
+.article {
+  max-width: 780px; margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+}
+.article p {
+  font-size: 1.05rem; font-weight: 300; color: var(--text);
+  line-height: 1.95; margin-bottom: 1.5rem;
+}
+.article h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 400;
+  color: var(--cream); line-height: 1.3;
+  margin-top: 3.5rem; margin-bottom: 1.5rem;
+}
+.article h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 400;
+  color: var(--cream); line-height: 1.3;
+  margin-top: 2.5rem; margin-bottom: 1rem;
+}
+.article h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; font-weight: 500; color: var(--cream);
+  margin-top: 1.5rem; margin-bottom: 0.75rem;
+}
+.article strong { font-weight: 500; color: var(--cream); }
+.article em { font-style: italic; color: var(--text); }
+.article-accent { color: var(--coupling); font-weight: 400; }
+.article-gold { color: var(--gold); font-weight: 400; }
+
+.article blockquote {
+  margin: 2rem 0; padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 3px solid var(--coupling);
+  background: var(--coupling-glow); border-radius: 0 4px 4px 0;
+}
+.article blockquote p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem; font-style: italic; font-weight: 300;
+  color: var(--cream); line-height: 1.8; margin-bottom: 0;
+}
+
+.article-divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--coupling), transparent);
+  margin: 3rem 0;
+}
+
+.article ul { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article li {
+  font-size: 1.05rem; font-weight: 300; color: var(--text);
+  line-height: 1.95; margin-bottom: 0.5rem;
+}
+.article li strong { color: var(--cream); }
+.article ol { margin-bottom: 1.5rem; padding-left: 1.6rem; }
+.article ol li {
+  font-size: 1.05rem; font-weight: 300; color: var(--text);
+  line-height: 1.95; margin-bottom: 0.5rem;
+}
+
+/* ═══════════ CODE BLOCK ═══════════ */
+.code-block {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem; line-height: 1.8;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 3px solid var(--coupling);
+  border-radius: 0 4px 4px 0; padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0; color: var(--text-dim); overflow-x: auto;
+  white-space: pre;
+}
+.code-block .c-comment { color: var(--text-faint); }
+.code-block .c-keyword { color: var(--gold); }
+.code-block .c-type { color: var(--coupling); }
+.code-block .c-string { color: var(--coral); }
+.code-block .c-num { color: #A8D8EA; }
+
+/* ═══════════ COUPLING TYPE CARDS ═══════════ */
+.coupling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem; margin: 2rem 0;
+}
+.coupling-card {
+  padding: 1.6rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 4px;
+  border-top: 2px solid var(--coupling);
+  transition: border-color 0.3s, background 0.3s;
+}
+.coupling-card:hover {
+  background: rgba(14, 22, 32, 0.9);
+  border-top-color: var(--teal);
+}
+.coupling-card .type-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+  color: var(--coupling); margin-bottom: 0.4rem; display: block;
+}
+.coupling-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem; font-weight: 400; color: var(--cream);
+  margin-bottom: 0.6rem; line-height: 1.3; margin-top: 0;
+}
+.coupling-card p {
+  font-size: 0.9rem; line-height: 1.75; color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+.coupling-card .musical {
+  font-size: 0.8rem; color: var(--text-faint);
+  font-style: italic; line-height: 1.6; margin-top: 0.5rem;
+}
+
+/* ═══════════ SIGNAL FLOW DIAGRAM ═══════════ */
+.signal-flow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem; line-height: 2;
+  background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0; color: var(--text-dim);
+  overflow-x: auto; white-space: pre;
+}
+.signal-flow .sf-source { color: var(--gold); }
+.signal-flow .sf-arrow { color: var(--coupling); }
+.signal-flow .sf-target { color: var(--cream); }
+.signal-flow .sf-label { color: var(--text-faint); }
+
+/* ═══════════ SPEC TABLE ═══════════ */
+.spec-table {
+  width: 100%; border-collapse: collapse;
+  margin: 1.5rem 0; font-size: 0.88rem;
+}
+.spec-table th {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-faint);
+  text-align: left; padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.spec-table td {
+  padding: 0.7rem 1rem; color: var(--text);
+  border-bottom: 1px solid rgba(21, 35, 48, 0.6); line-height: 1.7;
+}
+.spec-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem; color: var(--coupling); white-space: nowrap;
+}
+.spec-table tr:last-child td { border-bottom: none; }
+
+/* ═══════════ PACKET DIAGRAM ═══════════ */
+.packet-diagram {
+  margin: 2rem 0; overflow-x: auto;
+}
+.packet-row {
+  display: flex; gap: 2px; min-width: 600px;
+}
+.packet-field {
+  padding: 0.75rem 0.5rem; text-align: center;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 2px;
+}
+.packet-field.wide { flex: 2; }
+.packet-field.wider { flex: 3; }
+.packet-field .field-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; font-weight: 500; color: var(--coupling);
+  display: block; margin-bottom: 0.3rem;
+}
+.packet-field .field-type {
+  font-size: 0.6rem; color: var(--text-faint); display: block;
+}
+.packet-label {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-faint);
+  margin-top: 0.5rem; text-align: center;
+}
+
+/* ═══════════ COMPLIANCE CARDS ═══════════ */
+.compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin: 2rem 0;
+}
+.compliance-card {
+  padding: 1.5rem; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 4px;
+}
+.compliance-card .level-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px; margin-bottom: 0.75rem;
+}
+.compliance-card.l1 { border-top: 2px solid var(--teal); }
+.compliance-card.l1 .level-badge { background: rgba(42, 161, 155, 0.15); color: var(--coupling); }
+.compliance-card.l2 { border-top: 2px solid var(--gold-dim); }
+.compliance-card.l2 .level-badge { background: rgba(233, 196, 106, 0.12); color: var(--gold); }
+.compliance-card.l3 { border-top: 2px solid var(--cream); }
+.compliance-card.l3 .level-badge { background: rgba(228, 234, 240, 0.08); color: var(--cream); }
+.compliance-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem; font-weight: 400; color: var(--cream);
+  margin-bottom: 0.5rem; margin-top: 0;
+}
+.compliance-card p {
+  font-size: 0.85rem; color: var(--text-dim); line-height: 1.7;
+}
+
+/* ═══════════ TOC ═══════════ */
+.toc {
+  padding: 1.5rem 1.75rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 3px solid var(--coupling); border-radius: 0 4px 4px 0;
+  margin: 2rem 0;
+}
+.toc-label {
+  font-size: 0.6rem; font-weight: 500; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--coupling);
+  margin-bottom: 1rem; display: block;
+}
+.toc ol { padding-left: 1.2rem; counter-reset: none; }
+.toc li {
+  font-size: 0.88rem; color: var(--text-dim); line-height: 1.8;
+  margin-bottom: 0.2rem;
+}
+.toc li a {
+  color: var(--text-dim); text-decoration: none;
+  transition: color 0.2s;
+}
+.toc li a:hover { color: var(--coupling); }
+
+/* ═══════════ FAQ ═══════════ */
+.faq-item {
+  margin-bottom: 2rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 500; color: var(--cream);
+  margin-bottom: 0.75rem; display: flex; gap: 0.75rem; align-items: flex-start;
+}
+.faq-q::before {
+  content: 'Q';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; color: var(--coupling);
+  background: var(--coupling-glow);
+  padding: 0.2rem 0.4rem; border-radius: 2px;
+  flex-shrink: 0; margin-top: 0.15rem;
+}
+.faq-a { font-size: 0.95rem; color: var(--text); line-height: 1.85; }
+
+/* ═══════════ BACK LINK ═══════════ */
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-faint);
+  text-decoration: none; transition: color 0.3s; margin-bottom: 2rem;
+}
+.back-link:hover { color: var(--coupling); }
+
+/* ═══════════ VERSION BADGE ═══════════ */
+.version-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; padding: 0.35rem 0.8rem;
+  background: var(--coupling-glow);
+  border: 1px solid rgba(42, 161, 155, 0.25);
+  border-radius: 2px; color: var(--coupling);
+  margin-bottom: 1.5rem; display: inline-block;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px; margin: 0 auto;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem; font-weight: 300; color: var(--text-dim); letter-spacing: 0.1em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em;
+  color: var(--text-faint); text-decoration: none;
+  text-transform: uppercase; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem; color: var(--text-faint); width: 100%;
+  text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ REVEAL ═══════════ */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ FOCUS ═══════════ */
+:focus-visible { outline: 2px solid #0066CC; outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .nav-links { gap: 1.5rem; }
+  .nav-links a { font-size: 0.6rem; }
+  .article-meta { gap: 1rem; }
+  .coupling-grid { grid-template-columns: 1fr; }
+  .compliance-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .packet-row { min-width: 480px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#article-content" class="skip-link">Skip to article</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <div class="nav-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<!-- ═══════════ ARTICLE HERO ═══════════ -->
+<header class="article-hero">
+  <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
+  <div class="version-badge">v0.1 &mdash; 2026-03-22 &mdash; Public Draft</div>
+  <div class="article-hero-label">Open Standard &mdash; XO_OX Coupling Protocol</div>
+  <h1>How Engines <em>Relate</em></h1>
+  <p class="article-hero-sub">
+    MIDI says &ldquo;play this note.&rdquo; Coupling says &ldquo;relate to this voice like this.&rdquo; The XO_OX Coupling Protocol is an open standard for inter-engine modulation &mdash; a shared contract for what it means when one synthesis engine continuously shapes another&rsquo;s behavior in real time.
+  </p>
+  <div class="article-meta">
+    <div class="article-meta-item">Version<span style="color: var(--coupling);">0.1 — Public Draft</span></div>
+    <div class="article-meta-item">Published<span>2026-03-22</span></div>
+    <div class="article-meta-item">Public Types<span>3 (Sympathetic / Complementary / Responsive)</span></div>
+    <div class="article-meta-item">Reference Implementation<span>XOmnibus — 14 types</span></div>
+  </div>
+</header>
+
+<!-- ═══════════ ARTICLE CONTENT ═══════════ -->
+<article class="article" id="article-content">
+
+<nav class="toc reveal" aria-label="Table of contents">
+  <span class="toc-label">Contents</span>
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#terminology">Terminology</a></li>
+    <li><a href="#core-types">Core Types</a>
+      <ol style="padding-left:1.2rem;margin-top:0.2rem;">
+        <li><a href="#sympathetic">0x01 — Sympathetic</a></li>
+        <li><a href="#complementary">0x02 — Complementary</a></li>
+        <li><a href="#responsive">0x03 — Responsive</a></li>
+      </ol>
+    </li>
+    <li><a href="#message-format">Message Format</a></li>
+    <li><a href="#compliance">Compliance Levels</a></li>
+    <li><a href="#reference">Reference Implementation</a></li>
+    <li><a href="#extension">Extension Mechanism</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#version-history">Version History</a></li>
+  </ol>
+</nav>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="abstract">Abstract</h2>
+
+<p class="reveal">
+The XO_OX Coupling Protocol defines a lightweight standard for <strong>inter-engine modulation</strong> &mdash; a way for one synthesis engine to influence another&rsquo;s behavior in real time, at control rate, without replacing MIDI or audio routing.
+</p>
+
+<p class="reveal">
+Where MIDI describes <em>what</em> to play and audio busses carry <em>what was played</em>, coupling carries the relationship. An ongoing, continuously-updated signal that says: <em>while this engine is doing that, this other engine should respond like this.</em>
+</p>
+
+<blockquote class="reveal">
+  <p>&ldquo;MIDI says &lsquo;play this note.&rsquo; Coupling says &lsquo;relate to this voice like this.&rsquo;&rdquo;</p>
+</blockquote>
+
+<p class="reveal">
+Version 0.1 of this specification defines three public coupling types, a binary message format for transmitting coupling data between engines, and a three-tier compliance model for implementors. The reference implementation is <strong>XOmnibus</strong> &mdash; a free open-source multi-engine synthesizer by XO_OX Designs implementing all three public types plus eleven extended types (14 total).
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="motivation">Motivation</h2>
+
+<h3 class="reveal">The gap between MIDI and music</h3>
+
+<p class="reveal">
+MIDI is good at discrete events: a note starts at this pitch, with this velocity, and stops here. DAW automation extends this to parameter curves. Neither describes the <em>relationship</em> between simultaneously-playing voices.
+</p>
+
+<p class="reveal">
+When a jazz guitarist comps behind a horn player, something more subtle is happening than MIDI note events. The guitarist listens to the horn&rsquo;s dynamics and pulls back. The horn player hears the chord voicing and adjusts inflection. They are <em>coupled</em> &mdash; each voice actively shaping how the other behaves.
+</p>
+
+<p class="reveal">
+Layering two synthesizers on the same MIDI bus gives you additive sound. Coupling them gives you a conversation.
+</p>
+
+<h3 class="reveal">Why this is not modulation</h3>
+
+<p class="reveal">
+Conventional modulation (LFOs, envelopes, mod matrix slots) is self-contained. Engine A modulates its own parameters according to its own internal state. Coupling is different: the source of modulation is <em>another engine&rsquo;s output or internal state</em>, observed externally and applied across a relationship boundary.
+</p>
+
+<p class="reveal">
+The distinction matters architecturally. Modulation is monologue. Coupling is dialogue.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="terminology">Terminology</h2>
+
+<p class="reveal">
+These terms have precise meanings throughout this specification.
+</p>
+
+<div class="spec-table reveal" style="overflow-x:auto;">
+  <table class="spec-table" style="min-width:480px;">
+    <thead>
+      <tr>
+        <th>Term</th>
+        <th>Definition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Source Engine</td>
+        <td>The engine whose output or internal state drives a coupling route. Also called the <em>speaker</em>.</td>
+      </tr>
+      <tr>
+        <td>Target Engine</td>
+        <td>The engine whose parameters are modulated by coupling input. Also called the <em>listener</em>.</td>
+      </tr>
+      <tr>
+        <td>Coupling Type</td>
+        <td>An enum value identifying the semantic relationship. Tells the target how to interpret the incoming signal.</td>
+      </tr>
+      <tr>
+        <td>Amount</td>
+        <td>A float in [0.0, 1.0] encoding the depth of the coupling relationship. Scales linearly.</td>
+      </tr>
+      <tr>
+        <td>Route</td>
+        <td>A complete relationship: one source, one target, one type, one amount. Multiple routes between a pair are permitted.</td>
+      </tr>
+      <tr>
+        <td>Control Rate</td>
+        <td>Coupling updates are delivered at block boundaries (64&ndash;512 samples). Not per-sample unless explicitly specified by type.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="core-types">Core Types &mdash; Version 0.1</h2>
+
+<p class="reveal">
+Version 0.1 publishes three coupling types, assigned permanent type IDs in the <code>0x01</code>&ndash;<code>0x03</code> range. Implementations claiming v0.1 compliance must support at least one of these types at the appropriate compliance level.
+</p>
+
+<div class="coupling-grid reveal">
+
+  <div class="coupling-card">
+    <span class="type-id">type = 0x01</span>
+    <h4>Sympathetic Coupling</h4>
+    <p>Two engines reinforce each other&rsquo;s harmonic content. The source engine&rsquo;s pitch and filter characteristics are mirrored (or harmonically related) to the target, creating parallel resonance. Neither engine dominates &mdash; both bloom together.</p>
+    <p class="musical">Like two wine glasses vibrating in sympathetic resonance when one is struck.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-id">type = 0x02</span>
+    <h4>Complementary Coupling</h4>
+    <p>One engine recedes where the other is active. Not mixing-level ducking &mdash; timbral and rhythmic complementarity. When the source is loud, the target pulls back or shifts to fill the gap.</p>
+    <p class="musical">Call and response. The rhythm guitarist drops out for the solo because the two players are listening to each other.</p>
+  </div>
+
+  <div class="coupling-card">
+    <span class="type-id">type = 0x03</span>
+    <h4>Responsive Coupling</h4>
+    <p>One engine&rsquo;s dynamics shape the other&rsquo;s timbre. The source&rsquo;s envelope trajectory &mdash; attack transient, sustain decay, release tail &mdash; modulates the target&rsquo;s filter, wavetable position, or morph parameter.</p>
+    <p class="musical">A pianist&rsquo;s touch on one note affecting the resonance character of adjacent strings through sympathetic mechanical influence.</p>
+  </div>
+
+</div>
+
+<!-- ══ SYMPATHETIC ══ -->
+<h3 class="reveal" id="sympathetic">0x01 &mdash; Sympathetic Coupling</h3>
+
+<p class="reveal">
+The target engine does not copy the source pitch verbatim. It receives the source pitch as a <em>bias</em> &mdash; in semitones relative to its own current pitch &mdash; and applies it additively. This preserves the target&rsquo;s independent voice while pulling it into harmonic alignment.
+</p>
+
+<div class="signal-flow reveal"><span class="sf-source">Source Engine</span>
+  ├── Pitch (fundamental Hz)   <span class="sf-arrow">────────────────►</span>  <span class="sf-target">Target pitch bias (+semitones)</span>
+  └── Filter center frequency  <span class="sf-arrow">────────────────►</span>  <span class="sf-target">Target filter resonance boost</span>
+                                        <span class="sf-label">↑
+                                    amount [0,1]
+                                    scales both paths</span></div>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Range</th><th>Unit</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>amount</td><td>0.0 &ndash; 1.0</td><td>scalar</td><td>0 = no effect; 1.0 = full sympathetic pull</td></tr>
+      <tr><td>pitch_range</td><td>&plusmn;24 semitones</td><td>st</td><td>Max pitch deviation at amount=1.0 (target declares)</td></tr>
+      <tr><td>filter_range</td><td>&plusmn;4000 Hz</td><td>Hz</td><td>Max filter shift at amount=1.0 (target declares)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">
+<strong>Musical uses:</strong> Pad + lead where the pad brightens as the lead ascends. Two harmonic voices that need to track each other without hard sync. Drone engines that bloom when another voice enters their overtone series.
+</p>
+
+<!-- ══ COMPLEMENTARY ══ -->
+<h3 class="reveal" id="complementary">0x02 &mdash; Complementary Coupling</h3>
+
+<p class="reveal">
+The target receives the source&rsquo;s amplitude as a choke signal. At <code>amount=1.0</code>, when the source is at full amplitude, the target attenuates to its declared floor. When the source is silent, the target returns to full presence. A <code>floor_level</code> parameter prevents complete disappearance &mdash; the target remains audible even when fully choked.
+</p>
+
+<div class="signal-flow reveal"><span class="sf-source">Source Engine</span>
+  └── Amplitude envelope (RMS)  <span class="sf-arrow">────────────────►</span>  <span class="sf-target">Target amplitude attenuation</span>
+                                                          <span class="sf-target">Target blend inversion</span>
+                                        <span class="sf-label">↑
+                                    amount [0,1]
+                                    0 = no choke; 1.0 = full inverse</span></div>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Range</th><th>Unit</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>amount</td><td>0.0 &ndash; 1.0</td><td>scalar</td><td>0 = no choke; 1.0 = full complementary relationship</td></tr>
+      <tr><td>floor_level</td><td>0.0 &ndash; 0.5</td><td>scalar</td><td>Minimum target level when fully choked (default: 0.1)</td></tr>
+      <tr><td>response_time</td><td>1 &ndash; 500 ms</td><td>ms</td><td>Attack/release time for choke envelope (default: 20ms)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">
+<strong>Musical uses:</strong> Percussion + sustained pad where the pad opens in the spaces between hits. Two drums that create a groove by occupying opposite moments. Rhythm engine + melody engine with organic push/pull dynamic.
+</p>
+
+<!-- ══ RESPONSIVE ══ -->
+<h3 class="reveal" id="responsive">0x03 &mdash; Responsive Coupling</h3>
+
+<p class="reveal">
+The source engine provides a smoothed envelope following its own amplitude. The target maps this envelope to a declared timbral parameter. The specific parameter mapped is the target&rsquo;s choice &mdash; the source only provides the envelope signal and the scaling amount. Envelope following is performed by the host matrix; the source engine does not need to implement it directly.
+</p>
+
+<div class="signal-flow reveal"><span class="sf-source">Source Engine</span>
+  └── Envelope follower output  <span class="sf-arrow">────────────────►</span>  <span class="sf-target">Target filter cutoff modulation</span>
+  └── (optional) LFO phase      <span class="sf-arrow">────────────────►</span>  <span class="sf-target">Target morph / wavetable position</span>
+                                        <span class="sf-label">↑
+                                    amount [0,1]
+                                    scales modulation depth</span></div>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Parameter</th><th>Range</th><th>Unit</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>amount</td><td>0.0 &ndash; 1.0</td><td>scalar</td><td>0 = no effect; 1.0 = full timbral response</td></tr>
+      <tr><td>env_range</td><td>&plusmn;8000 Hz</td><td>Hz</td><td>Max filter deviation when source envelope = 1.0</td></tr>
+      <tr><td>morph_range</td><td>0.0 &ndash; 1.0</td><td>0&ndash;1</td><td>Max morph position shift when source envelope = 1.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">
+<strong>Musical uses:</strong> Drums driving a pad&rsquo;s filter without the compression artifact. Lead melody shaping a textural layer&rsquo;s wavetable position. A rhythmic engine whose attack shape animates a sustained engine&rsquo;s timbre in real time.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="message-format">Message Format</h2>
+
+<p class="reveal">
+Coupling data is transmitted as a <strong>control-rate update packet</strong> &mdash; a 14-byte binary structure delivered to target engines at block boundaries. The format is minimal, host-independent, and extensible.
+</p>
+
+<div class="code-block reveal"><span class="c-keyword">struct</span> <span class="c-type">CouplingPacket</span> {
+    <span class="c-type">uint8_t</span>  version;    <span class="c-comment">// Protocol version. 0x01 for this spec.</span>
+    <span class="c-type">uint8_t</span>  type;       <span class="c-comment">// CouplingType (0x01, 0x02, 0x03 for v0.1)</span>
+    <span class="c-type">uint16_t</span> source_id;  <span class="c-comment">// Opaque source engine identifier (host-assigned)</span>
+    <span class="c-type">uint16_t</span> target_id;  <span class="c-comment">// Opaque target engine identifier (host-assigned)</span>
+    <span class="c-type">float</span>    amount;     <span class="c-comment">// Coupling depth [0.0, 1.0]</span>
+    <span class="c-type">float</span>    signal;     <span class="c-comment">// Current coupling signal value [0.0, 1.0]</span>
+    <span class="c-type">uint8_t</span>  flags;      <span class="c-comment">// Reserved. Set to 0x00.</span>
+    <span class="c-type">uint8_t</span>  reserved;   <span class="c-comment">// Alignment padding. Set to 0x00.</span>
+};
+<span class="c-comment">// Total: 14 bytes per packet</span></div>
+
+<div class="packet-diagram reveal" aria-label="Coupling packet byte layout">
+  <div class="packet-row">
+    <div class="packet-field"><span class="field-name">version</span><span class="field-type">u8</span></div>
+    <div class="packet-field"><span class="field-name">type</span><span class="field-type">u8</span></div>
+    <div class="packet-field wide"><span class="field-name">source_id</span><span class="field-type">u16</span></div>
+    <div class="packet-field wide"><span class="field-name">target_id</span><span class="field-type">u16</span></div>
+    <div class="packet-field wider"><span class="field-name">amount</span><span class="field-type">f32</span></div>
+    <div class="packet-field wider"><span class="field-name">signal</span><span class="field-type">f32</span></div>
+    <div class="packet-field"><span class="field-name">flags</span><span class="field-type">u8</span></div>
+    <div class="packet-field"><span class="field-name">rsv</span><span class="field-type">u8</span></div>
+  </div>
+  <p class="packet-label">14 bytes &mdash; delivered at block boundary, before target engine renders</p>
+</div>
+
+<h4 class="reveal">Field semantics</h4>
+
+<p class="reveal">
+<strong>signal</strong> is the live value &mdash; updated every block from the source engine. For Sympathetic, it encodes the source&rsquo;s normalized pitch deviation. For Complementary, it is the source amplitude RMS. For Responsive, it is the source envelope follower output. Always <code>[0.0, 1.0]</code>.
+</p>
+
+<p class="reveal">
+<strong>amount</strong> is the configured depth of the relationship &mdash; set at route definition time, typically a user-controlled knob. The target multiplies <code>amount &times; signal</code> to determine the actual modulation applied.
+</p>
+
+<p class="reveal">
+A target receiving a packet with an unknown <strong>type</strong> must silently ignore it. A packet with <code>amount = 0.0</code> is a valid no-op and may be used to signal route deactivation without removing the route.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="compliance">Compliance Levels</h2>
+
+<p class="reveal">
+Implementations may declare compliance at one of three levels. Higher levels include all capabilities of lower levels.
+</p>
+
+<div class="compliance-grid reveal">
+  <div class="compliance-card l1">
+    <span class="level-badge">Level 1</span>
+    <h4>Listener</h4>
+    <p>Can receive coupling input for at least one public type and apply meaningful modulation in response. Minimum requirement to claim v0.1 compatibility.</p>
+  </div>
+  <div class="compliance-card l2">
+    <span class="level-badge">Level 2</span>
+    <h4>Speaker</h4>
+    <p>Can emit coupling data for at least one public type. Provides a stable output signal (RMS, envelope, or pitch) normalized to [0.0, 1.0] for the host matrix to route.</p>
+  </div>
+  <div class="compliance-card l3">
+    <span class="level-badge">Level 3</span>
+    <h4>Full v0.1</h4>
+    <p>Both listener and speaker. All three public types implemented for both input and output. The highest compliance tier for this specification.</p>
+  </div>
+</div>
+
+<h4 class="reveal">Declaration syntax</h4>
+
+<div class="code-block reveal"><span class="c-comment">// Declare in engine metadata, README, or plugin descriptor:</span>
+
+COUPLING_COMPLIANCE: Listener
+SUPPORTED_TYPES: <span class="c-num">0x01</span>, <span class="c-num">0x02</span>       <span class="c-comment">// list which types you listen to</span>
+
+COUPLING_COMPLIANCE: Speaker
+EMITTED_TYPES: <span class="c-num">0x01</span>, <span class="c-num">0x03</span>          <span class="c-comment">// list which types you emit</span>
+
+COUPLING_COMPLIANCE: Full-v0.1   <span class="c-comment">// all 3 types, listen + emit</span></div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="reference">Reference Implementation</h2>
+
+<p class="reveal">
+<strong>XOmnibus</strong> is the reference implementation of this protocol. All 47 engines are Level 3 compliant for the three public types. The C++ contract lives in <code>Source/Core/SynthEngine.h</code>:
+</p>
+
+<div class="code-block reveal"><span class="c-comment">// Speaker interface — emit coupling signal</span>
+<span class="c-keyword">virtual</span> <span class="c-type">float</span> getSampleForCoupling(<span class="c-type">int</span> channel, <span class="c-type">int</span> sampleIndex) <span class="c-keyword">const</span> = <span class="c-num">0</span>;
+
+<span class="c-comment">// Listener interface — receive coupling modulation</span>
+<span class="c-keyword">virtual</span> <span class="c-type">void</span> applyCouplingInput(<span class="c-type">CouplingType</span> type,
+                               <span class="c-type">float</span> amount,
+                               <span class="c-keyword">const</span> <span class="c-type">float</span>* sourceBuffer,
+                               <span class="c-type">int</span> numSamples) = <span class="c-num">0</span>;</div>
+
+<p class="reveal">
+XOmnibus implements 14 coupling types: the 3 public types defined here plus 11 extended types. The three public types map to underlying XOmnibus mechanisms as follows:
+</p>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Public Type</th><th>XOmnibus Mechanism</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>0x01 Sympathetic</td><td>PitchToPitch + FilterToFilter</td><td>Applied bilaterally</td></tr>
+      <tr><td>0x02 Complementary</td><td>AmpToChoke + RhythmToBlend</td><td>Applied inversely</td></tr>
+      <tr><td>0x03 Responsive</td><td>AmpToFilter + EnvToMorph</td><td>Applied unilaterally</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">
+This mapping is informational. Third-party implementations are not required to use these mechanisms &mdash; the protocol specifies the <em>semantic contract</em>, not the implementation strategy.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="extension">Extension Mechanism</h2>
+
+<p class="reveal">
+The protocol is designed to grow. Type IDs are allocated from reserved ranges; future public types do not break existing compliant implementations.
+</p>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Range</th><th>Designation</th></tr></thead>
+    <tbody>
+      <tr><td>0x01 &ndash; 0x03</td><td>Public v0.1 types (this spec)</td></tr>
+      <tr><td>0x04 &ndash; 0x7F</td><td>Reserved for future public spec versions</td></tr>
+      <tr><td>0x80 &ndash; 0xEF</td><td>Available for private / extended implementations</td></tr>
+      <tr><td>0xF0 &ndash; 0xFF</td><td>Experimental / vendor-specific (no compatibility guarantees)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="reveal">
+Future packet extensions must preserve the 14-byte v0.1 header. Additional fields are appended after <code>reserved</code>. Receivers should process the first 14 bytes and ignore the remainder when a packet is larger than expected.
+</p>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="faq">FAQ</h2>
+
+<div class="faq-item reveal">
+  <div class="faq-q">Is this a replacement for MIDI?</div>
+  <div class="faq-a">No. MIDI describes what notes to play and what control values to send. Coupling describes relationships between simultaneously-playing voices. They operate at different semantic levels and are complementary.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">Does the source engine need to know who is listening?</div>
+  <div class="faq-a">No. The source engine exposes a coupling output and has no knowledge of which engines, if any, are receiving it. The host matrix manages routing. Engines are relationship-capable, not relationship-aware.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">What happens if a target engine doesn&rsquo;t support a received type?</div>
+  <div class="faq-a">The target should silently ignore packets with unsupported type IDs. It must not crash or produce undefined behavior. No response is a valid and correct response.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">Can coupling routes be bidirectional?</div>
+  <div class="faq-a">Yes &mdash; via two separate routes, one from A to B and one from B to A, each with its own type and amount. The XOmnibus <code>KnotTopology</code> extended type implements a special case where bidirectionality is architecturally enforced: neither engine can be decoupled without destroying both routes.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">How does Complementary coupling differ from sidechain compression?</div>
+  <div class="faq-a">Sidechain compression acts on the mixed output signal through gain reduction. Complementary coupling acts on the target engine&rsquo;s <em>parameter space</em> before audio is generated &mdash; it influences how the engine synthesizes sound, not how loud the result is. The timbral character of the receding engine changes, not just its volume.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">Is this open source?</div>
+  <div class="faq-a">The protocol specification is published under CC BY 4.0. The reference implementation (XOmnibus) is open source under its own repository license. Third parties may implement the protocol without restriction.</div>
+</div>
+
+<div class="faq-item reveal">
+  <div class="faq-q">Can amount be negative?</div>
+  <div class="faq-a">The v0.1 spec constrains <code>amount</code> to <code>[0.0, 1.0]</code>. Extended implementations may use the signed float range <code>[-1.0, 1.0]</code> &mdash; negative amounts typically invert the coupling polarity (Sympathetic becomes dissonant instead of reinforcing). This is not part of v0.1 compliance.</div>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<h2 class="reveal" id="version-history">Version History</h2>
+
+<div style="overflow-x:auto;" class="reveal">
+  <table class="spec-table">
+    <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>0.1</td>
+        <td style="color:var(--text-dim); font-family:inherit; font-size:0.88rem; white-space:nowrap;">2026-03-22</td>
+        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 14-byte packet format. Three compliance levels. Reference implementation: XOmnibus v1.x (47 engines, 14 types).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="article-divider reveal"></div>
+
+<div class="reveal" style="padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; border-left: 3px solid var(--gold);">
+  <p style="font-size:0.8rem; color:var(--text-faint); margin-bottom:0.5rem; font-family:'JetBrains Mono',monospace; letter-spacing:0.05em;">XO_OX Coupling Protocol v0.1</p>
+  <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:0.75rem;">Specification licensed under CC BY 4.0. Reference implementation at <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener" style="color:var(--coupling); text-decoration:none;">github.com/BertCalm/XO_OX-XOmnibus</a>.</p>
+  <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:0;">Published 2026-03-22 by XO_OX Designs.</p>
+</div>
+
+</article>
+
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#community">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ONSET",
+  "engine_prefix": "perc_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "8 fixed voices (kick, snare, hat, tom, clap, perc, FX1, FX2), each with two synthesis layers crossfadeable via BLEND: Layer X (Circuit) models TR-808/909 analog circuits (bridged-T resonators, noise burst, 6-oscillator metallic hi-hat network) and Layer O (Algorithm) offers DX7-style FM, modal resonators, Karplus-Strong, and Casio CZ-style phase distortion; Cross-Voice Coupling (XVC) creates rhythmic inter-voice modulation"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "ahd",
+    "stages": 3,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 1,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.85,
+    "velocity_targets": ["amplitude", "transient", "brightness", "filter"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "custom",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "MACHINE",
+      "behavior": "Biases all 8 voice BLEND parameters simultaneously toward Circuit (analog, 808/909 character) at minimum or toward Algorithm (digital, FM/modal) at maximum — a fleet-wide timbral axis from analog warmth to algorithmic complexity."
+    },
+    "macro2": {
+      "name": "PUNCH",
+      "behavior": "Simultaneously biases all voice snap (transient attack sharpness) and body (sustain resonance) parameters toward aggressive; also responds to channel aftertouch (pressure adds up to +0.3 punch), making ONSET's hits physically responsive to touch."
+    },
+    "macro3": {
+      "name": "SPACE",
+      "behavior": "Drives the FX rack wet mix — delay time, reverb size, and LoFi bit-crush simultaneously — transforming the kit from a dry studio close-mic to an expansive room or degraded lo-fi aesthetic."
+    },
+    "macro4": {
+      "name": "MUTATE",
+      "behavior": "Applies per-block random drift to each voice's BLEND and character parameters (±20% range), scaled further by mod wheel; creates organic kit variation where no two hits are exactly alike — from subtle humanization to full kit chaos."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "drums",
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.5,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "RhythmToBlend", "AmpToChoke", "EnvToDecay"],
+    "best_as_target": ["AmpToFilter", "RhythmToBlend", "EnvToDecay", "AmpToPitch"],
+    "recommended_partners": ["OWARE", "OSTINATO", "ORGANON", "OBRIX", "ONSET"],
+    "coupling_personality": "A rhythmic anchor and pattern generator; its kick, snare, and hat amplitude peaks are ideal AmpToFilter sources that animate melodic engines, while RhythmToBlend coupling allows a second engine to reactively follow ONSET's groove."
+  },
+
+  "mythology": {
+    "creature": "The surface splash — feliX's electric transients rippling outward at the water's meniscus, a stone skipping across the boundary where air meets ocean",
+    "depth_zone": "surface",
+    "felix_oscar_polarity": 0.1,
+    "accent_color": "#0066FF"
+  },
+
+  "metadata": {
+    "param_count": 111,
+    "preset_count": 636,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

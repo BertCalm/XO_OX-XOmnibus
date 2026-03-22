@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ORIGAMI",
+  "engine_prefix": "origami_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "spectral_stft",
+    "polyphony": 8,
+    "architecture": "Internal oscillator bank (saw + square + noise, variable mix) feeds a 2048-point STFT with 4× overlap and Hann window; four cascaded spectral operations — FOLD (mirrors magnitude bins at a fold point), MIRROR (left-right bin reversal), ROTATE (cyclic bin shift), STRETCH (spectral expansion/compression) — sculpt the magnitude spectrum; phase vocoder tracks instantaneous frequencies; IFFT + overlap-add resynthesis; post-filter brightness controlled by velocity"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass"],
+    "resonance_range": [0.0, 0.5],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "mixed"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.65,
+    "velocity_targets": ["amplitude", "brightness", "filter"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "filter",
+    "dynamic_range_db": 54
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "FOLD",
+      "behavior": "Adds up to 40% to the spectral fold point position and 30% to fold depth — the primary harmonic transformation control; at minimum the spectrum is unfolded and clean, at maximum dense metallic interference patterns and inharmonic textures emerge as bins mirror back on themselves."
+    },
+    "macro2": {
+      "name": "MOTION",
+      "behavior": "Simultaneously increases the rotate parameter by 50% of range and deepens LFO1 depth by 30%, creating spectral motion — the fold point and bin rotation oscillate together, making the sound shimmer, rotate, and animate continuously without any note change."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Blends in up to 50% of the external coupling source audio as the STFT input, replacing or mixing with the internal oscillator bank; the coupled engine's spectral content is then processed by ORIGAMI's fold operations, creating a spectral fusion."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Steps fold count from 1 to 3 (additional cascade passes) and stretches the spectrum by up to 40%, multiplying spectral density and creating a wider, more diffuse spectral image — from clean single-fold to a galaxy of stretched spectral copies."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "spectral",
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.55,
+    "density": 0.65,
+    "transient_character": "complex"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AudioToWavetable", "AudioToFM", "FilterToFilter", "AudioToRing"],
+    "best_as_target": ["AudioToWavetable", "AudioToBuffer", "EnvToMorph", "RhythmToBlend"],
+    "recommended_partners": ["OBRIX", "OXBOW", "OPAL", "OPENSKY", "ORBWEAVE"],
+    "coupling_personality": "A spectral transformer that converts any audio input into folded metallic textures; ideal as a target for AudioToWavetable (the coupled engine's spectrum becomes ORIGAMI's oscillator source), and as a source for AudioToWavetable pairing downstream."
+  },
+
+  "mythology": {
+    "creature": "Paper boats folding on the current — surface tension made audible; spectral light refracting through moving water surfaces in the sunlit shallows",
+    "depth_zone": "shallows",
+    "felix_oscar_polarity": 0.25,
+    "accent_color": "#E63946"
+  },
+
+  "metadata": {
+    "param_count": 30,
+    "preset_count": 598,
+    "seance_score": 8.0,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

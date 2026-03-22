@@ -1959,10 +1959,56 @@ def cmd_build(args) -> int:
         stages_skipped += 1
 
     # ── STAGE 4: ASSEMBLE ──
+    assembled_xpm_paths: list[Path] = []  # populated here, consumed by PACKAGE
     if "assemble" not in skip:
         print(f"  [4/10] ASSEMBLE     MPCe XPM ({corner_strategy} corners)")
         if args.dry_run:
             print(f"         → Would call: xpn_mpce_quad_builder.py --engine {engine} --pad-count {pad_count}")
+        else:
+            try:
+                import xpn_mpce_quad_builder as qb
+
+                # Determine where to load presets from.
+                # Use the Presets/XOmnibus tree (search all mood subdirs for this engine).
+                presets_search_dir = PRESETS_DIR
+                presets = qb.load_presets(str(presets_search_dir), engine)
+
+                if not presets:
+                    print(f"         ⚠  No .xometa presets found for engine '{engine}' "
+                          f"in {presets_search_dir}")
+                else:
+                    assignments = qb.assign_corners(presets, pad_count)
+                    programs_dir = output_dir / "Programs"
+                    programs_dir.mkdir(exist_ok=True)
+                    xpm_path = qb.generate_xpm(engine, assignments, str(programs_dir))
+                    assembled_xpm_paths.append(Path(xpm_path))
+                    print(f"         ✓ {len(assignments)} pad(s) assigned "
+                          f"({len(presets)} presets loaded)")
+                    print(f"         ✓ Written: {xpm_path}")
+
+                    # Also copy renders/ WAVs into the expected Samples/ location
+                    # so the packager can include them in the archive.
+                    renders_dir = output_dir / "renders"
+                    if renders_dir.exists():
+                        import shutil as _shutil
+                        program_slug = Path(xpm_path).stem
+                        samples_dest = output_dir / "Samples" / program_slug
+                        samples_dest.mkdir(parents=True, exist_ok=True)
+                        wav_count = 0
+                        for wav in sorted(renders_dir.glob("*.WAV")) + \
+                                   sorted(renders_dir.glob("*.wav")):
+                            dest_wav = samples_dest / wav.name
+                            if not dest_wav.exists():
+                                _shutil.copy2(wav, dest_wav)
+                            wav_count += 1
+                        print(f"         ✓ {wav_count} WAV(s) staged → Samples/{program_slug}/")
+
+            except ImportError:
+                print(f"         ⚠  xpn_mpce_quad_builder not available")
+            except Exception as e:
+                print(f"         ✗  Assemble failed: {e}")
+                if not args.continue_on_error:
+                    return 1
         stages_run += 1
     else:
         print(f"  [4/10] ASSEMBLE     SKIPPED")
@@ -2045,6 +2091,55 @@ def cmd_build(args) -> int:
         print(f"  [8/10] ART          Cover art{f' [{cover_art_badge}]' if cover_art_badge else ''}")
         if args.dry_run:
             print(f"         → Would call: xpn_cover_art_generator_v2.py --engine {engine}")
+        else:
+            try:
+                import xpn_cover_art_generator_v2 as art_gen
+
+                # Build a best-effort sonic DNA from pack_dna.json if available,
+                # otherwise use neutral defaults.
+                sonic_dna: dict = {
+                    "brightness": 0.5, "warmth": 0.5, "movement": 0.5,
+                    "density": 0.5, "space": 0.5, "aggression": 0.5,
+                }
+                pack_dna_path = output_dir / "pack_dna.json"
+                if pack_dna_path.exists():
+                    try:
+                        with open(pack_dna_path) as _f:
+                            _pd = json.load(_f)
+                        _avg = _pd.get("pack_average", {})
+                        sonic_dna.update({k: v for k, v in _avg.items()
+                                         if k in sonic_dna})
+                    except Exception:
+                        pass
+
+                png_bytes = art_gen.generate_cover_art(
+                    engine=engine,
+                    pack_name=pack_name,
+                    sonic_dna=sonic_dna,
+                    size=400,
+                )
+                art_path = output_dir / "artwork.png"
+                art_path.write_bytes(png_bytes)
+                print(f"         ✓ artwork.png written ({len(png_bytes):,} bytes)")
+
+                # Also write 2000×2000 hi-res variant
+                try:
+                    png_2000 = art_gen.generate_cover_art(
+                        engine=engine,
+                        pack_name=pack_name,
+                        sonic_dna=sonic_dna,
+                        size=2000,
+                    )
+                    art_2000_path = output_dir / "artwork_2000.png"
+                    art_2000_path.write_bytes(png_2000)
+                    print(f"         ✓ artwork_2000.png written ({len(png_2000):,} bytes)")
+                except Exception:
+                    pass  # hi-res is optional
+
+            except ImportError:
+                print(f"         ⚠  xpn_cover_art_generator_v2 not available")
+            except Exception as e:
+                print(f"         ✗  Art generation failed: {e}")
         stages_run += 1
     else:
         print(f"  [8/10] ART          SKIPPED")
@@ -2056,6 +2151,50 @@ def cmd_build(args) -> int:
         print(f"  [9/10] PACKAGE      {xpn_name}")
         if args.dry_run:
             print(f"         → Would call: xpn_packager.py --output {output_dir / xpn_name}")
+        else:
+            try:
+                from xpn_packager import package_xpn, XPNMetadata
+
+                # Verify we have at least one .xpm to package.
+                existing_xpms = list((output_dir / "Programs").glob("*.xpm")) \
+                    if (output_dir / "Programs").exists() else []
+                existing_xpms += list(output_dir.glob("*.xpm"))
+                # Also count assembled paths from STAGE 4 that weren't moved yet
+                all_xpms = existing_xpms + [p for p in assembled_xpm_paths
+                                            if p not in existing_xpms]
+
+                if not all_xpms:
+                    print(f"         ⚠  No .xpm programs found — skipping package")
+                else:
+                    xpn_path_out = output_dir / xpn_name
+                    meta = XPNMetadata(
+                        name=pack_name,
+                        version=version,
+                        author=spec.get("author", "XO_OX Designs"),
+                        description=(
+                            f"{pack_name} — {archetype.title()} pack for "
+                            f"{platform.upper()} — XO_OX Designs"
+                        ),
+                        pack_id=pack_id,
+                        cover_engine=engine.upper(),
+                    )
+                    result_path = package_xpn(
+                        build_dir=output_dir,
+                        output_path=xpn_path_out,
+                        metadata=meta,
+                        include_artwork=include_cover_art,
+                        verbose=True,
+                    )
+                    size_mb = result_path.stat().st_size / (1024 * 1024) \
+                        if result_path.exists() else 0
+                    print(f"         ✓ {result_path.name} ({size_mb:.2f} MB)")
+
+            except ImportError:
+                print(f"         ⚠  xpn_packager not available")
+            except Exception as e:
+                print(f"         ✗  Package failed: {e}")
+                if not args.continue_on_error:
+                    return 1
         stages_run += 1
     else:
         print(f"  [9/10] PACKAGE      SKIPPED")
