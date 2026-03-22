@@ -52,6 +52,19 @@ else()
     set(XO_HAS_OSCAR OFF)
 endif()
 
+# Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values).
+# All OFL-licensed. Embedded as C++ binary data via JUCE.
+juce_add_binary_data(XOmnibusFont
+    NAMESPACE "FontData"
+    SOURCES
+    Assets/fonts/SpaceGrotesk-Bold.otf
+    Assets/fonts/SpaceGrotesk-Medium.otf
+    Assets/fonts/Inter-Regular.ttf
+    Assets/fonts/Inter-Medium.ttf
+    Assets/fonts/Inter-Bold.ttf
+    Assets/fonts/JetBrainsMono-Regular.ttf
+)
+
 juce_add_plugin(XOmnibus
     COMPANY_NAME "XO_OX Designs"
     PLUGIN_MANUFACTURER_CODE XoOx
@@ -318,6 +331,7 @@ target_link_libraries(XOmnibus PRIVATE
     juce::juce_audio_processors
     juce::juce_dsp
     juce::juce_gui_extra
+    XOmnibusFont
 )
 if(XO_HAS_RIVE)
     target_link_libraries(XOmnibus PRIVATE rive)

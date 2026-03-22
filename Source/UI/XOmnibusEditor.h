@@ -3,6 +3,7 @@
 #include "../XOmnibusProcessor.h"
 #include "../Core/EngineRegistry.h"
 #include "CouplingStrip/CouplingStripEditor.h"
+#include "BinaryData.h"  // FontData:: namespace (embedded fonts)
 
 namespace xomnibus {
 
@@ -122,36 +123,88 @@ namespace GalleryColors {
 //==============================================================================
 // GalleryFonts — centralized typography matching the design system.
 //
-// Design spec: Space Grotesk (display), Inter (body), JetBrains Mono (values).
-// Falls back to system sans-serif / monospace when custom fonts aren't embedded.
-// When font files are added to Assets/fonts/ and built via juce_add_binary_data,
-// update the typeface names below.
+// Space Grotesk (display), Inter (body), JetBrains Mono (values).
+// All OFL-licensed. Embedded via juce_add_binary_data in CMakeLists.txt.
+// Typefaces are loaded once on first access and cached as shared pointers.
 //
 namespace GalleryFonts {
 
-    // Font family names — update these when embedding real typefaces
-    inline const juce::String& displayFamily()
+    // ── Typeface loading (cached singletons) ──────────────────────────
+    // Font data comes from FontData:: namespace (juce_add_binary_data with NAMESPACE "FontData")
+
+    inline juce::Typeface::Ptr loadTypeface(const char* data, int size)
     {
-        static juce::String name = "Space Grotesk";  // fallback: system sans
-        return name;
-    }
-    inline const juce::String& bodyFamily()
-    {
-        static juce::String name = "Inter";           // fallback: system sans
-        return name;
-    }
-    inline const juce::String& monoFamily()
-    {
-        static juce::String name = "JetBrains Mono";  // fallback: system mono
-        return name;
+        return juce::Typeface::createSystemTypefaceFor(data, static_cast<size_t>(size));
     }
 
-    // Pre-built font accessors for common roles
-    inline juce::Font display (float size)  { return juce::Font (displayFamily(), size, juce::Font::bold); }
-    inline juce::Font heading (float size)  { return juce::Font (bodyFamily(), size, juce::Font::bold); }
-    inline juce::Font body (float size)     { return juce::Font (bodyFamily(), size, juce::Font::plain); }
-    inline juce::Font label (float size)    { return juce::Font (bodyFamily(), size, juce::Font::plain); }
-    inline juce::Font value (float size)    { return juce::Font (monoFamily(), size, juce::Font::plain); }
+    inline juce::Typeface::Ptr spaceGroteskBold()
+    {
+        static auto tf = loadTypeface(FontData::SpaceGroteskBold_otf,
+                                       FontData::SpaceGroteskBold_otfSize);
+        return tf;
+    }
+
+    inline juce::Typeface::Ptr spaceGroteskMedium()
+    {
+        static auto tf = loadTypeface(FontData::SpaceGroteskMedium_otf,
+                                       FontData::SpaceGroteskMedium_otfSize);
+        return tf;
+    }
+
+    inline juce::Typeface::Ptr interRegular()
+    {
+        static auto tf = loadTypeface(FontData::InterRegular_ttf,
+                                       FontData::InterRegular_ttfSize);
+        return tf;
+    }
+
+    inline juce::Typeface::Ptr interMedium()
+    {
+        static auto tf = loadTypeface(FontData::InterMedium_ttf,
+                                       FontData::InterMedium_ttfSize);
+        return tf;
+    }
+
+    inline juce::Typeface::Ptr interBold()
+    {
+        static auto tf = loadTypeface(FontData::InterBold_ttf,
+                                       FontData::InterBold_ttfSize);
+        return tf;
+    }
+
+    inline juce::Typeface::Ptr jetBrainsMono()
+    {
+        static auto tf = loadTypeface(FontData::JetBrainsMonoRegular_ttf,
+                                       FontData::JetBrainsMonoRegular_ttfSize);
+        return tf;
+    }
+
+    // ── Font accessors for common roles ───────────────────────────────
+
+    inline juce::Font display (float size)
+    {
+        return juce::Font(spaceGroteskBold()).withHeight(size);
+    }
+
+    inline juce::Font heading (float size)
+    {
+        return juce::Font(interBold()).withHeight(size);
+    }
+
+    inline juce::Font body (float size)
+    {
+        return juce::Font(interRegular()).withHeight(size);
+    }
+
+    inline juce::Font label (float size)
+    {
+        return juce::Font(interMedium()).withHeight(size);
+    }
+
+    inline juce::Font value (float size)
+    {
+        return juce::Font(jetBrainsMono()).withHeight(size);
+    }
 }
 
 //==============================================================================
