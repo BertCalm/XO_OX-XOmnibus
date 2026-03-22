@@ -993,6 +993,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout
         juce::ParameterID("master_osmMix", 1), "Master Osmosis Mix",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // Stage 5.6: fXFormant (Membrane Collection — Formant Filter)
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_formantShift", 1), "Formant Shift",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_formantVowel", 1), "Formant Vowel",
+        juce::NormalisableRange<float>(0.0f, 4.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_formantQ", 1), "Formant Resonance",
+        juce::NormalisableRange<float>(0.5f, 20.0f, 0.0f, 0.4f), 8.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("mfx_formantMix", 1), "Formant Mix",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
     // Stage 12: fXOneiric (Dream State)
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_onDelayTime", 1), "Master Oneiric Delay",

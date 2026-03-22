@@ -21,6 +21,7 @@
 #include "../DSP/Effects/fXObscura.h"
 #include "../DSP/Effects/fXOratory.h"
 #include "../DSP/Effects/fXOnslaught.h"
+#include "../DSP/Effects/fXFormant.h"
 #include "../DSP/Effects/BrickwallLimiter.h"
 #include "../DSP/Effects/DCBlocker.h"
 #include "MasterFXSequencer.h"
@@ -91,6 +92,9 @@ public:
 
         // Stage 5.5: fXObscura (chiaroscuro — inverse-dynamic degradation)
         obscura.prepare (sampleRate);
+
+        // Stage 5.6: fXFormant (Membrane Collection — formant filter)
+        formantFX_.prepare (sampleRate, samplesPerBlock);
 
         // Stage 6: fXOsmosis (membrane transfer)
         osmosis.prepare (sampleRate);
@@ -492,6 +496,23 @@ public:
         }
 
         // ====================================================================
+        // Stage 5.6: fXFormant (Membrane Collection — Formant Filter)
+        // ====================================================================
+        {
+            const float fmtMix = pFormantMix_ ? pFormantMix_->load() : 0.0f;
+            if (fmtMix > 0.001f)
+            {
+                formantFX_.setShift     (pFormantShift_ ? pFormantShift_->load() : 0.0f);
+                formantFX_.setVowel     (pFormantVowel_ ? pFormantVowel_->load() : 0.0f);
+                formantFX_.setResonance (pFormantQ_     ? pFormantQ_->load()     : 8.0f);
+                formantFX_.setMix       (fmtMix);
+                formantFX_.processBlock (buffer.getWritePointer (0),
+                                         buffer.getWritePointer (1),
+                                         numSamples);
+            }
+        }
+
+        // ====================================================================
         // Stage 6: fXOsmosis (Membrane Transfer)
         // ====================================================================
         float effectiveOsmMix = applySeqMod (osmMix,
@@ -862,6 +883,12 @@ private:
         pObsPatina    = apvts.getRawParameterValue ("master_obsPatina");
         pObsMix       = apvts.getRawParameterValue ("master_obsMix");
 
+        // Stage 5.6: fXFormant (Membrane Collection)
+        pFormantShift_ = apvts.getRawParameterValue ("mfx_formantShift");
+        pFormantVowel_ = apvts.getRawParameterValue ("mfx_formantVowel");
+        pFormantQ_     = apvts.getRawParameterValue ("mfx_formantQ");
+        pFormantMix_   = apvts.getRawParameterValue ("mfx_formantMix");
+
         // Stage 6: fXOsmosis
         pOsmMembrane  = apvts.getRawParameterValue ("master_osmMembrane");
         pOsmReact     = apvts.getRawParameterValue ("master_osmReactivity");
@@ -1001,6 +1028,7 @@ private:
     SpectralTilt         spectralTilt;       // 4
     TransientDesigner    transientDesigner;  // 5
     fXObscura            obscura;            // 5.5 — Chiaroscuro
+    fXFormant            formantFX_;         // 5.6 — Membrane Collection: Formant Filter
     fXOsmosis            osmosis;            // 6  — Membrane Transfer
     MultibandCompressor  multibandComp;      // 7  — OTT (pre-spatial)
     MasterDelay          delay;              // 8
@@ -1056,6 +1084,11 @@ private:
     std::atomic<float>* pObsTone     = nullptr;
     std::atomic<float>* pObsPatina   = nullptr;
     std::atomic<float>* pObsMix      = nullptr;
+    // Stage 5.6: fXFormant (Membrane Collection)
+    std::atomic<float>* pFormantShift_ = nullptr;
+    std::atomic<float>* pFormantVowel_ = nullptr;
+    std::atomic<float>* pFormantQ_     = nullptr;
+    std::atomic<float>* pFormantMix_   = nullptr;
     // Stage 6: fXOsmosis
     std::atomic<float>* pOsmMembrane = nullptr;
     std::atomic<float>* pOsmReact    = nullptr;
