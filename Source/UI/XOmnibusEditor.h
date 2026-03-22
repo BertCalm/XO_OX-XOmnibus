@@ -561,7 +561,6 @@ public:
         {
             juce::ColourGradient grad(accentColour, 0.0f, 0.0f,
                                       juce::Colour(0xFF1A0A2E), (float)getWidth(), 0.0f, false);
-            grad.addColour(0.55, accentColour.interpolatedWith(juce::Colour(0xFF0096C7), 0.5f));
             g.setGradientFill(grad);
             g.fillRect(0, 0, getWidth(), kHeaderH);
         }
@@ -977,13 +976,13 @@ public:
         }
         else
         {
-            // Empty slot — minimal label
-            g.setColour(get(textMid()).withAlpha(0.40f));
-            g.setFont(GalleryFonts::body(9.0f));
-            g.drawText("SLOT " + juce::String(slot + 1),
-                       (int)(b.getX() + 16), (int)b.getY(),
-                       (int)(b.getWidth() - 20), (int)b.getHeight(),
-                       juce::Justification::centredLeft);
+            // Empty slot — soft "+" affordance (warmer invite than a slot number)
+            float cx = b.getCentreX(), cy = b.getCentreY();
+            float armLen = 7.0f, armW = 1.5f;
+            juce::Colour plusCol = get(textMid()).withAlpha(0.28f);
+            g.setColour(plusCol);
+            g.fillRoundedRectangle(cx - armLen, cy - armW * 0.5f, armLen * 2.0f, armW, armW * 0.5f);
+            g.fillRoundedRectangle(cx - armW * 0.5f, cy - armLen, armW, armLen * 2.0f, armW * 0.5f);
         }
 
         // Focus ring (WCAG 2.4.7)
@@ -1192,16 +1191,9 @@ public:
         g.setColour(get(borderGray()));
         g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
 
-        // XO Gold top stripe + three depth zone segments
-        auto stripe = b.removeFromTop(3.0f);
-        float segW = stripe.getWidth() / 3.0f;
-        const juce::Colour zones[3] = { juce::Colour(0xFF48CAE4), juce::Colour(0xFF0096C7),
-                                         juce::Colour(0xFF7B2FBE) };
-        for (int z = 0; z < 3; ++z)
-        {
-            g.setColour(zones[z].withAlpha(0.7f));
-            g.fillRect(stripe.withX(stripe.getX() + z * segW).withWidth(segW));
-        }
+        // XO Gold top stripe — macros are brand constants, not ocean-depth values
+        g.setColour(get(xoGold));
+        g.fillRect(b.removeFromTop(3.0f));
 
         // MACROS label
         g.setColour(get(xoGoldText()));

@@ -257,16 +257,12 @@ private:
                 g.setColour(zoneCol.withAlpha(0.18f));
                 g.drawRoundedRectangle(padRect, 4.0f, 1.0f);
 
-                // Velocity heatmap glow — zone-colored
+                // Velocity heatmap glow — zone-colored fill only (no competing highlight layer)
                 float vel = padVelocity[(size_t)pad];
                 if (vel > 0.01f)
                 {
                     g.setColour(zoneCol.withAlpha(vel * 0.65f));
                     g.fillRoundedRectangle(padRect, 4.0f);
-                    // Inner glow highlight
-                    g.setColour(juce::Colours::white.withAlpha(vel * 0.25f));
-                    g.fillRoundedRectangle(padRect.reduced(padRect.getWidth() * 0.25f,
-                                                           padRect.getHeight() * 0.35f), 3.0f);
                 }
 
                 // Warm memory ghost circles
@@ -330,13 +326,14 @@ private:
             g.fillRect(b);
         }
 
-        // Zone boundary lines — visual landmarks for depth zones
+        // Zone boundary lines — 0.30 alpha: more prominent than octave fret lines (0.35) to read as
+        // structural zone dividers rather than just another fret line.
         {
             float sunlitY   = b.getBottom() - b.getHeight() * 0.45f;  // 45% up = twilight boundary
             float twilightY = b.getBottom() - b.getHeight() * 0.80f;  // 80% up = sunlit boundary
-            g.setColour(juce::Colour(0xFF0096C7).withAlpha(0.18f));
+            g.setColour(juce::Colour(0xFF0096C7).withAlpha(0.30f));
             g.drawHorizontalLine((int)sunlitY,   b.getX(), b.getRight());
-            g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.18f));
+            g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.30f));
             g.drawHorizontalLine((int)twilightY, b.getX(), b.getRight());
         }
 
@@ -399,9 +396,9 @@ private:
             g.setColour(zoneColor.withAlpha(0.20f));
             g.fillEllipse(cx - ringR - 4, noteY - ringR - 4, (ringR + 4) * 2, (ringR + 4) * 2);
 
-            // XO Gold ring
+            // XO Gold ring — 2.5px for Retina clarity
             g.setColour(juce::Colour(0xFFE9C46A));
-            g.drawEllipse(cx - ringR, noteY - ringR, ringR * 2, ringR * 2, 2.0f);
+            g.drawEllipse(cx - ringR, noteY - ringR, ringR * 2, ringR * 2, 2.5f);
 
             // Center dot
             g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.7f));
