@@ -365,6 +365,26 @@ public:
             g.fillEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f);
             g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.35f));
             g.drawEllipse(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f, 1.0f);
+
+            // Live value readout during interaction — center disc becomes the face
+            if (slider.isMouseButtonDown() || slider.isMouseOverOrDragging())
+            {
+                juce::String valStr;
+                double val = slider.getValue();
+                // Integers for whole-number ranges (e.g. semitones, MIDI CCs);
+                // one decimal place for continuous parameters.
+                if (slider.getInterval() >= 1.0 && slider.getMaximum() <= 127.0)
+                    valStr = juce::String((int)val);
+                else
+                    valStr = juce::String(val, 1);
+
+                float fontSize = juce::jmax(7.0f, discR * 0.7f);
+                g.setFont(GalleryFonts::value(fontSize));
+                g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.85f));
+                g.drawText(valStr,
+                           juce::Rectangle<float>(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f),
+                           juce::Justification::centred);
+            }
         }
 
         // ── 5. Setpoint triangle ▲ — XO Gold marker at player's intent ──
@@ -521,12 +541,176 @@ private:
 };
 
 //==============================================================================
+// MacroHeroStrip — full-width "character portrait" panel showing 4 tall pillar
+// sliders for an engine's macro parameters. Appears at the top of EngineDetailPanel
+// when an engine with macro params is selected.
+//
+// Macro param discovery: iterates APVTS for params matching "{prefix}_macro*"
+// (up to 4 collected in declaration order). If fewer than 4 are found the
+// remaining pillars are hidden. If none are found the strip hides itself.
+class MacroHeroStrip : public juce::Component
+{
+public:
+    explicit MacroHeroStrip(XOmnibusProcessor& proc) : processor(proc) {}
+
+    // Call after an engine slot is selected. Returns true if at least one
+    // macro param was found and the strip should be shown.
+    bool loadEngine(const juce::String& engId, const juce::String& paramPrefix,
+                    juce::Colour accent)
+    {
+        engineName   = engId;
+        accentColour = accent;
+
+        // Clear previous attachments (must happen before slider rebuild)
+        for (auto& att : attachments)
+            att.reset();
+
+        // Determine the full prefix used for param lookup (some prefixes already
+        // contain a trailing underscore in the frozen table, normalise here).
+        juce::String pfx = paramPrefix;
+        if (!pfx.endsWithChar('_'))
+            pfx += "_";
+        juce::String macroPrefix = pfx + "macro"; // e.g. "oasis_macro"
+
+        // Collect up to 4 macro param IDs from the APVTS in declaration order.
+        auto& apvts = processor.getAPVTS();
+        juce::StringArray foundIds, foundNames;
+
+        for (auto* p : processor.getParameters())
+        {
+            if (foundIds.size() >= 4)
+                break;
+            if (auto* rp = dynamic_cast<juce::RangedAudioParameter*>(p))
+            {
+                if (rp->getParameterID().startsWithIgnoreCase(macroPrefix))
+                {
+                    foundIds.add(rp->getParameterID());
+                    // Derive short label: everything after "_macro" → uppercase
+                    juce::String raw = rp->getParameterID().substring(macroPrefix.length());
+                    foundNames.add(raw.isEmpty() ? juce::String("M" + juce::String(foundIds.size()))
+                                                 : raw.toUpperCase());
+                }
+            }
+        }
+
+        numMacros = foundIds.size();
+        if (numMacros == 0)
+        {
+            setVisible(false);
+            return false;
+        }
+
+        // Configure visible pillars and attach to found params
+        for (int i = 0; i < 4; ++i)
+        {
+            bool active = (i < numMacros);
+            pillars[i].setVisible(active);
+            pillarLabels[i].setVisible(active);
+
+            if (active)
+            {
+                pillars[i].setSliderStyle(juce::Slider::LinearVertical);
+                pillars[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+                pillars[i].setColour(juce::Slider::trackColourId,
+                                     accent.withAlpha(0.18f));
+                pillars[i].setColour(juce::Slider::thumbColourId, accent);
+                pillars[i].setColour(juce::Slider::backgroundColourId,
+                                     GalleryColors::get(GalleryColors::borderGray()));
+                pillars[i].setTooltip(foundNames[i]);
+                A11y::setup(pillars[i], foundNames[i]);
+
+                pillarLabels[i].setText(foundNames[i], juce::dontSendNotification);
+                pillarLabels[i].setFont(GalleryFonts::heading(8.0f));
+                pillarLabels[i].setColour(juce::Label::textColourId, accent.darker(0.2f));
+                pillarLabels[i].setJustificationType(juce::Justification::centred);
+
+                attachments[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+                    apvts, foundIds[i], pillars[i]);
+            }
+        }
+
+        setVisible(true);
+        resized();
+        repaint();
+        return true;
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        if (numMacros == 0)
+            return;
+
+        using namespace GalleryColors;
+        auto b = getLocalBounds().toFloat();
+
+        // Background — slightly tinted with accent
+        g.setColour(get(shellWhite()));
+        g.fillRoundedRectangle(b, 4.0f);
+
+        // Accent top strip
+        g.setColour(accentColour);
+        g.fillRect(b.removeFromTop(3.0f));
+
+        // Engine name header line
+        g.setColour(accentColour.darker(0.2f));
+        g.setFont(GalleryFonts::display(11.0f));
+        g.drawText(engineName.toUpperCase() + "  —  MACROS",
+                   8, 3, getWidth() - 16, kHeaderH - 3,
+                   juce::Justification::centredLeft);
+
+        // Thin separator under header
+        g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.45f));
+        g.drawHorizontalLine(kHeaderH, 8.0f, (float)(getWidth() - 8));
+    }
+
+    void resized() override
+    {
+        if (numMacros == 0)
+            return;
+
+        const int labelH  = 14;
+        const int sliderY = kHeaderH + 4;
+        const int sliderH = getHeight() - sliderY - labelH - 4;
+        const int colW    = getWidth() / 4;
+
+        for (int i = 0; i < numMacros; ++i)
+        {
+            int x = i * colW;
+            pillars[i].setBounds(x + 4, sliderY, colW - 8, juce::jmax(8, sliderH));
+            pillarLabels[i].setBounds(x, getHeight() - labelH - 2, colW, labelH);
+        }
+    }
+
+private:
+    static constexpr int kHeaderH = 22;
+
+    XOmnibusProcessor& processor;
+    juce::String       engineName;
+    juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
+    int                numMacros = 0;
+
+    std::array<juce::Slider, 4> pillars;
+    std::array<juce::Label,  4> pillarLabels;
+    // Destruction order: attachments must be destroyed before sliders.
+    // Declared after sliders/labels so they are destroyed first (reverse order).
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attachments;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroHeroStrip)
+};
+
+//==============================================================================
 // EngineDetailPanel — right-side parameter view for one engine slot.
-// Contains a scrollable ParameterGrid plus header with engine identity.
+// Contains a MacroHeroStrip (4 pillar sliders for engine macros) plus a
+// scrollable ParameterGrid showing all remaining params.
 class EngineDetailPanel : public juce::Component
 {
 public:
-    explicit EngineDetailPanel(XOmnibusProcessor& proc) : processor(proc) {}
+    explicit EngineDetailPanel(XOmnibusProcessor& proc)
+        : processor(proc), macroHero(proc)
+    {
+        addAndMakeVisible(macroHero);
+        addAndMakeVisible(viewport);
+    }
 
     // Called when the user selects an engine slot to inspect.
     // Returns false if the slot is empty.
@@ -538,8 +722,11 @@ public:
         engineId     = eng->getEngineId();
         accentColour = eng->getAccentColour();
 
-        // Rebuild parameter grid for this engine
+        // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
+        macroHero.loadEngine(engineId, prefix, accentColour);
+
+        // Rebuild parameter grid for this engine
         auto* newGrid = new ParameterGrid(processor, prefix, accentColour);
         viewport.setViewedComponent(newGrid, /*takeOwnership=*/true);
 
@@ -548,6 +735,7 @@ public:
         newGrid->setSize(gridW, newGrid->getRequiredHeight(gridW));
         viewport.setViewPosition(0, 0);
 
+        resized();
         repaint();
         return true;
     }
@@ -595,7 +783,20 @@ public:
 
     void resized() override
     {
-        viewport.setBounds(0, kHeaderH, getWidth(), getHeight() - kHeaderH);
+        auto area = getLocalBounds();
+        area.removeFromTop(kHeaderH);
+
+        // Place macro hero strip below the header (120px tall if visible)
+        if (macroHero.isVisible())
+        {
+            macroHero.setBounds(area.removeFromTop(kHeroH).reduced(4, 2));
+        }
+        else
+        {
+            macroHero.setBounds(0, 0, 0, 0);
+        }
+
+        viewport.setBounds(area);
 
         // Resize grid content if it exists
         if (auto* grid = viewport.getViewedComponent())
@@ -609,8 +810,10 @@ public:
 
 private:
     static constexpr int kHeaderH = 38;
+    static constexpr int kHeroH   = 120; // height of the macro hero strip
 
     XOmnibusProcessor& processor;
+    MacroHeroStrip     macroHero;
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
@@ -908,11 +1111,23 @@ public:
 
         if (hasEngine)
         {
+            // Voice density: smooth sqrt ramp 0 (silent) → 1 (full polyphony)
+            const float kMaxVoices = 8.0f;
+            float voiceDensity = (voiceCount > 0)
+                ? juce::jmin(1.0f, std::sqrt((float)voiceCount / kMaxVoices))
+                : 0.0f;
+
+            // Derived alphas / stroke — replace binary ternaries with smooth curves
+            float fillAlpha  = 0.09f + voiceDensity * 0.19f;  // 0.09 (silent) → 0.28 (full)
+            float ringAlpha  = 0.38f + voiceDensity * 0.52f;  // 0.38 → 0.90
+            float ringStroke = 1.0f  + voiceDensity * 1.0f;   // 1.0  → 2.0
+            float stripAlpha = 0.38f + voiceDensity * 0.50f;  // 0.38 → 0.88
+
             // ── Left accent strip — voice activity indicator ───────────────
             float stripX = b.getX() + 1.5f;
             float stripH = b.getHeight() * 0.55f;
             float stripY = b.getCentreY() - stripH * 0.5f;
-            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.88f : 0.38f));
+            g.setColour(accent.withAlpha(stripAlpha));
             g.fillRoundedRectangle(stripX, stripY, 3.0f, stripH, 1.5f);
 
             // ── Porthole circle ────────────────────────────────────────────
@@ -922,13 +1137,12 @@ public:
             float porR  = porW * 0.5f;
 
             // Inner fill — brightest when voices active
-            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.22f : 0.09f));
+            g.setColour(accent.withAlpha(fillAlpha));
             g.fillEllipse(porCx - porR, porCy - porR, porW, porW);
 
             // Porthole ring
-            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.80f : 0.38f));
-            g.drawEllipse(porCx - porR, porCy - porR, porW, porW,
-                          voiceCount > 0 ? 1.8f : 1.0f);
+            g.setColour(accent.withAlpha(ringAlpha));
+            g.drawEllipse(porCx - porR, porCy - porR, porW, porW, ringStroke);
 
             // Glass highlight arc — top-left arc (porthole glass illusion)
             {
@@ -944,7 +1158,7 @@ public:
 
             // Slot number inside porthole
             g.setFont(GalleryFonts::value(9.0f));
-            g.setColour(accent.withAlpha(voiceCount > 0 ? 0.75f : 0.38f));
+            g.setColour(accent.withAlpha(0.38f + voiceDensity * 0.37f));  // 0.38 → 0.75
             g.drawText(juce::String(slot + 1),
                        (int)(porCx - porR), (int)(porCy - porR),
                        (int)porW, (int)porW, juce::Justification::centred);
