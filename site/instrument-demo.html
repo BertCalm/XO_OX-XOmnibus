@@ -592,7 +592,7 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   background: rgba(255,255,255,0.04);
   border-radius: 10px;
   padding: 3px;
-  margin-bottom: 4px;
+  margin-bottom: 16px;
 }
 .ps-mode-tab {
   font-size: 9px;
@@ -616,6 +616,31 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   opacity: 0.35;
   cursor: default;
   pointer-events: none;
+}
+/* On wide screens, both panels show — light both non-disabled tabs */
+@media (min-width: 641px) {
+  .ps-mode-tab:not(.ps-tab-disabled) {
+    background: rgba(255,255,255,0.07);
+    color: var(--text-primary);
+  }
+}
+/* Touch devices: remove crosshair cursors (confusing on mobile) */
+@media (pointer: coarse) {
+  .ps-fretless-wrap { cursor: default; }
+  .ps-pad           { cursor: default; }
+}
+/* Responsive pad grid — shrink on narrow screens */
+@media (max-width: 480px) {
+  .ps-pad-grid {
+    grid-template-columns: repeat(4, 48px);
+    gap: 4px;
+  }
+  .ps-pad {
+    width: 48px;
+    height: 48px;
+    border-radius: 7px;
+  }
+  .ps-fretless-strip { width: 64px; }
 }
 
 /* ─── Pad Active State — note held ─────────────────────────── */
@@ -660,7 +685,7 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   animation: pad-strike 90ms ease-out forwards;
 }
 @keyframes pad-strike {
-  0%   { opacity: 0.28; }
+  0%   { opacity: 0.52; }
   100% { opacity: 0;    }
 }
 
@@ -672,10 +697,10 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   pointer-events: none;
   border-radius: 10px;
   background: linear-gradient(90deg,
-    rgba(30,60,160,0.22) 0%,
-    transparent          35%,
-    transparent          65%,
-    rgba(233,196,106,0.15) 100%
+    rgba(50,90,240,0.38) 0%,
+    transparent          30%,
+    transparent          70%,
+    rgba(233,196,106,0.28) 100%
   );
   z-index: 1;
 }
@@ -993,7 +1018,7 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
 
   <!-- ── Design notes ── -->
   <div class="gap-callout" style="background:rgba(255,255,255,0.02); border-color:var(--border);">
-    <p style="margin-bottom:10px; color:var(--text-primary); font-weight:500;">Design Anatomy — OpenBridge 6.1 + Apple CarPlay + XO_OX Ecology</p>
+    <p style="margin-bottom:10px; color:var(--text-primary); font-weight:500;">Design Anatomy — Ecological Instrument Paradigm v1</p>
     <p>Each instrument is composed of: <strong>Track ring</strong> (full range base) → <strong>Advice zone arcs</strong> (habitat/stress/critical, always visible at reduced opacity) → <strong>Value arc</strong> (live DSP output in engine accent color) → <strong>Setpoint marker</strong> (gold triangle, player intent) → <strong>Center face</strong> (engine creature icon + live value readout). The gap between setpoint and value arc is visible as the dashed gold line. This is the 9.8 interface.</p>
   </div>
 
@@ -1688,7 +1713,11 @@ function drawPsCouplingArcs() {
 }
 
 setTimeout(drawPsCouplingArcs, 150);
-window.addEventListener('resize', drawPsCouplingArcs);
+let _arcResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_arcResizeTimer);
+  _arcResizeTimer = setTimeout(drawPsCouplingArcs, 180);
+});
 
 // ─── PlaySurface: Fretless strip ─────────────────────────────
 // Vertical = pitch (top = high, bottom = low)
@@ -1753,16 +1782,26 @@ function updateFretlessCursor(normX, normY) {
   psCursorDot.style.background   = zone.color;
   psCursorDot.style.boxShadow    = `0 0 8px ${zone.color}, 0 0 16px ${zone.color}`;
 
-  // Timbre line — tracks X position as a vertical marker across the full strip height
+  // Timbre line — vertical marker across full strip height, tracks X (timbre) position.
+  // Color: blue (0) → bright white peak (0.5) → XO gold (1).
+  // 3-stop path avoids the muddy gray midpoint of linear RGB blue→gold.
   if (psTimbreLine) {
     psTimbreLine.style.left = (fretlessNormX * stripW - 1).toFixed(1) + 'px';
-    // Color shifts from cool (left) to warm-gold (right)
-    const warmMix = fretlessNormX;
-    const r = Math.round(100 + warmMix * 133);
-    const g = Math.round(140 + warmMix * 57);
-    const b = Math.round(220 - warmMix * 150);
-    psTimbreLine.style.background  = `rgba(${r},${g},${b},0.65)`;
-    psTimbreLine.style.boxShadow   = `0 0 5px rgba(${r},${g},${b},0.5)`;
+    const w = fretlessNormX;
+    let r, g, b;
+    if (w < 0.5) {
+      const s = w * 2;                          // 0→1 over first half
+      r = Math.round(80  + s * 175);            // 80→255  (blue→white)
+      g = Math.round(120 + s * 135);            // 120→255
+      b = 255;                                  // stays full blue channel
+    } else {
+      const s = (w - 0.5) * 2;                 // 0→1 over second half
+      r = Math.round(255 - s * 22);            // 255→233 (white→gold)
+      g = Math.round(255 - s * 59);            // 255→196
+      b = Math.round(255 - s * 149);           // 255→106
+    }
+    psTimbreLine.style.background = `rgba(${r},${g},${b},0.78)`;
+    psTimbreLine.style.boxShadow  = `0 0 6px rgba(${r},${g},${b},0.58)`;
   }
 
   // Phosphor trail — spawn a dot every ~5% vertical travel when held
