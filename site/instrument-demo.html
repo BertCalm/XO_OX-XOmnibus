@@ -490,7 +490,7 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
 }
 
 .ps-fretless-strip {
-  width: 60px;
+  width: 80px;
   height: 280px;
   border-radius: 10px;
   background: linear-gradient(180deg, #48CAE4 0%, #0096C7 55%, #7B2FBE 80%, #3D1563 100%);
@@ -583,6 +583,150 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   line-height: 1.7;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* ─── PlaySurface Mode Tabs ─────────────────────────────────── */
+.ps-mode-tabs {
+  display: flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 4px;
+}
+.ps-mode-tab {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 7px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+.ps-mode-tab:hover { color: var(--text-primary); }
+.ps-mode-tab.ps-tab-active {
+  background: rgba(255,255,255,0.09);
+  color: var(--text-primary);
+}
+.ps-mode-tab.ps-tab-disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─── Pad Active State — note held ─────────────────────────── */
+.ps-pad.ps-active[data-zone="sunlit"] {
+  border-color: rgba(72,202,228,0.80);
+  box-shadow:
+    0 0 0 1px rgba(72,202,228,0.30),
+    0 0 20px rgba(72,202,228,0.50),
+    inset 0 0 22px rgba(72,202,228,0.22);
+  background: linear-gradient(180deg, rgba(72,202,228,0.30) 0%, rgba(72,202,228,0.12) 100%);
+}
+.ps-pad.ps-active[data-zone="twilight"] {
+  border-color: rgba(0,150,199,0.80);
+  box-shadow:
+    0 0 0 1px rgba(0,150,199,0.30),
+    0 0 20px rgba(0,150,199,0.50),
+    inset 0 0 22px rgba(0,150,199,0.22);
+  background: linear-gradient(180deg, rgba(0,150,199,0.30) 0%, rgba(0,150,199,0.12) 100%);
+}
+.ps-pad.ps-active[data-zone="midnight"] {
+  border-color: rgba(123,47,190,0.80);
+  box-shadow:
+    0 0 0 1px rgba(123,47,190,0.30),
+    0 0 20px rgba(123,47,190,0.50),
+    inset 0 0 22px rgba(123,47,190,0.28);
+  background: linear-gradient(180deg, rgba(123,47,190,0.38) 0%, rgba(123,47,190,0.16) 100%);
+}
+/* Active creature — held note freezes and brightens the creature */
+.ps-pad.ps-active .ps-creature-svg {
+  animation-play-state: paused;
+  filter: brightness(1.4) saturate(1.5);
+  opacity: 1 !important;
+  transform: scale(1.07) translateY(-1px);
+  transition: transform 0.1s ease, opacity 0.06s ease;
+}
+/* Strike flash — brief full-pad brighten on note-on event */
+.ps-strike-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 7px;
+  pointer-events: none;
+  animation: pad-strike 90ms ease-out forwards;
+}
+@keyframes pad-strike {
+  0%   { opacity: 0.28; }
+  100% { opacity: 0;    }
+}
+
+/* ─── Fretless Enhancements ─────────────────────────────────── */
+/* Temperature overlay — X axis (timbre/brightness) visual cue */
+.ps-fretless-temp-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg,
+    rgba(30,60,160,0.22) 0%,
+    transparent          35%,
+    transparent          65%,
+    rgba(233,196,106,0.15) 100%
+  );
+  z-index: 1;
+}
+/* Timbre line — vertical indicator showing current X (temperature) position */
+.ps-timbre-line {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 0 5px rgba(255,255,255,0.5);
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 4;
+  will-change: left;
+}
+/* Cursor glow enhancement when actively playing */
+.ps-cursor-dot.fretless-held {
+  width: 18px;
+  height: 18px;
+  margin: -2px;
+  box-shadow: 0 0 12px currentColor, 0 0 28px currentColor, 0 0 0 2px rgba(255,255,255,0.5);
+}
+/* Phosphor trail dot — brief afterglow at prior position */
+.ps-trail-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  animation: trail-fade 450ms ease-out forwards;
+}
+@keyframes trail-fade {
+  0%   { opacity: 0.55; transform: translate(-50%,-50%) scale(1);   }
+  100% { opacity: 0;    transform: translate(-50%,-50%) scale(0.4); }
+}
+/* Fretless timbre label pair */
+.ps-fretless-timbre-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  margin-top: 2px;
+}
+.ps-timbre-label {
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1;
 }
 </style>
 </head>
@@ -784,11 +928,18 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
   <!-- PlaySurface Section -->
   <span class="header-tag" style="margin-top:32px;">PlaySurface — Ecological Habitat Map</span>
 
+  <!-- Mode tabs -->
+  <div class="ps-mode-tabs" id="psModeTabs">
+    <div class="ps-mode-tab ps-tab-active" data-mode="pad">Pad Mode</div>
+    <div class="ps-mode-tab" data-mode="fretless">Fretless</div>
+    <div class="ps-mode-tab ps-tab-disabled" data-mode="drum">Drum ›</div>
+  </div>
+
   <div class="playsurface-section">
     <div class="playsurface-panels">
 
       <!-- Panel A: Pad Mode -->
-      <div class="ps-panel">
+      <div class="ps-panel" id="psPadPanel">
         <div class="ps-panel-title">Pad Mode — Reef Quadrant Map</div>
         <div style="position:relative; display:inline-block;">
           <div class="ps-pad-grid" id="psPadGrid"></div>
@@ -797,15 +948,24 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
       </div>
 
       <!-- Panel B: Fretless -->
-      <div class="ps-fretless-panel">
+      <div class="ps-fretless-panel" id="psFretlessPanel">
         <div class="ps-panel-title">Fretless — Water Column</div>
         <div class="ps-fretless-wrap" id="psFretlessWrap">
           <div class="ps-fretless-strip" id="psFretlessStrip">
             <span class="ps-depth-label" style="top:6px;">SUNLIT</span>
             <span class="ps-depth-label" style="top:149px;">TWILIGHT</span>
             <span class="ps-depth-label" style="top:216px;">MIDNIGHT</span>
+            <!-- Temperature overlay — X axis (timbre) visual cue -->
+            <div class="ps-fretless-temp-overlay"></div>
+            <!-- Timbre line — tracks horizontal (X) position -->
+            <div class="ps-timbre-line" id="psTimbreLine"></div>
             <div class="ps-cursor-dot" id="psCursorDot" style="left:50%; top:50%;"></div>
           </div>
+        </div>
+        <!-- Timbre cold/warm axis labels -->
+        <div class="ps-fretless-timbre-labels">
+          <span class="ps-timbre-label" style="color:rgba(100,140,220,0.5);">◂ cool</span>
+          <span class="ps-timbre-label" style="color:rgba(233,196,106,0.5);">warm ▸</span>
         </div>
         <div class="ps-fretless-readout">
           <div class="ps-readout-row">
@@ -1221,6 +1381,46 @@ function makeMiniInstrument(eng) {
 const miniGrid = document.getElementById('miniGrid');
 MINI_ENGINES.forEach(eng => miniGrid.appendChild(makeMiniInstrument(eng)));
 
+// ─── PlaySurface: Mode Tabs ───────────────────────────────────
+(function setupModeTabs() {
+  const tabs    = document.querySelectorAll('#psModeTabs .ps-mode-tab');
+  const padPnl  = document.getElementById('psPadPanel');
+  const fretPnl = document.getElementById('psFretlessPanel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const mode = tab.dataset.mode;
+      tabs.forEach(t => t.classList.toggle('ps-tab-active', t === tab));
+      // On narrow screens: show one panel at a time
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        if (padPnl)  padPnl.style.display  = mode === 'pad'      ? '' : 'none';
+        if (fretPnl) fretPnl.style.display = mode === 'fretless' ? '' : 'none';
+      }
+    });
+  });
+})();
+
+// ─── PlaySurface: Pad Active States (note-on / note-off) ──────
+const PS_HELD_PADS = new Set();
+
+function padNoteOn(padEl, padData) {
+  // Strike flash — accent-colored brief full-pad flash on note-on
+  const flash = document.createElement('div');
+  flash.className = 'ps-strike-layer';
+  flash.style.background = padData.accent;
+  padEl.appendChild(flash);
+  flash.addEventListener('animationend', () => flash.remove());
+  // Held glow — stays until note-off
+  padEl.classList.add('ps-active');
+  PS_HELD_PADS.add(padEl);
+  // Ripple
+  spawnRipple(padEl, padData.zone);
+}
+
+function padNoteOff(padEl) {
+  padEl.classList.remove('ps-active');
+  PS_HELD_PADS.delete(padEl);
+}
+
 // ─── PlaySurface: Pad Mode ────────────────────────────────────
 // 4×4 grid: rows 0-1 = sunlit, row 2 = twilight, row 3 = midnight
 // Each pad shows a creature from creatures.png spritesheet.
@@ -1350,12 +1550,18 @@ PS_PADS.forEach((padData, i) => {
 
   padEl.appendChild(creatureSvg);
 
-  padEl.addEventListener('mousedown', () => spawnRipple(padEl, padData.zone));
+  padEl.addEventListener('mousedown', e => {
+    padNoteOn(padEl, padData);
+    e.preventDefault();
+  });
+  padEl.addEventListener('mouseup',   () => padNoteOff(padEl));
+  padEl.addEventListener('mouseleave', () => { if (PS_HELD_PADS.has(padEl)) padNoteOff(padEl); });
   padEl.addEventListener('touchstart', e => {
     e.preventDefault();
-    // 30ms delay syncs ripple with visible finger contact (Xavier UIX fix)
-    setTimeout(() => spawnRipple(padEl, padData.zone), 30);
+    // 30ms delay syncs with visible finger contact (Xavier UIX fix)
+    setTimeout(() => padNoteOn(padEl, padData), 30);
   }, { passive: false });
+  padEl.addEventListener('touchend', () => padNoteOff(padEl));
 
   const noteLabel = document.createElement('div');
   noteLabel.className = 'ps-note-label';
@@ -1506,19 +1712,33 @@ function fretlessZoneFromY(normY) {
 const psFretlessWrap  = document.getElementById('psFretlessWrap');
 const psFretlessStrip = document.getElementById('psFretlessStrip');
 const psCursorDot     = document.getElementById('psCursorDot');
+const psTimbreLine    = document.getElementById('psTimbreLine');
 const psPitchVal      = document.getElementById('psPitchVal');
 const psTimbреVal     = document.getElementById('psTimbреVal');
 const psDepthZone     = document.getElementById('psDepthZone');
 
 let fretlessActive = false;
-let fretlessNormX = 0.5;
-let fretlessNormY = 0.5;
+let fretlessNormX  = 0.5;
+let fretlessNormY  = 0.5;
+let prevTrailY     = null;   // for phosphor trail spacing
+
+function spawnTrailDot(normX, normY, zoneColor) {
+  const stripW = psFretlessStrip.offsetWidth  || 80;
+  const stripH = psFretlessStrip.offsetHeight || 280;
+  const dot = document.createElement('div');
+  dot.className = 'ps-trail-dot';
+  dot.style.left       = (normX * stripW) + 'px';
+  dot.style.top        = (normY * stripH) + 'px';
+  dot.style.background = zoneColor;
+  psFretlessStrip.appendChild(dot);
+  dot.addEventListener('animationend', () => dot.remove());
+}
 
 function updateFretlessCursor(normX, normY) {
   fretlessNormX = Math.max(0, Math.min(1, normX));
   fretlessNormY = Math.max(0, Math.min(1, normY));
 
-  const stripW = psFretlessStrip.offsetWidth  || 60;
+  const stripW = psFretlessStrip.offsetWidth  || 80;
   const stripH = psFretlessStrip.offsetHeight || 280;
 
   // Cursor position — GPU-composited transform. Subtract 7px (half of 14px dot) to center.
@@ -1532,6 +1752,30 @@ function updateFretlessCursor(normX, normY) {
   const zone = fretlessZoneFromY(fretlessNormY);
   psCursorDot.style.background   = zone.color;
   psCursorDot.style.boxShadow    = `0 0 8px ${zone.color}, 0 0 16px ${zone.color}`;
+
+  // Timbre line — tracks X position as a vertical marker across the full strip height
+  if (psTimbreLine) {
+    psTimbreLine.style.left = (fretlessNormX * stripW - 1).toFixed(1) + 'px';
+    // Color shifts from cool (left) to warm-gold (right)
+    const warmMix = fretlessNormX;
+    const r = Math.round(100 + warmMix * 133);
+    const g = Math.round(140 + warmMix * 57);
+    const b = Math.round(220 - warmMix * 150);
+    psTimbreLine.style.background  = `rgba(${r},${g},${b},0.65)`;
+    psTimbreLine.style.boxShadow   = `0 0 5px rgba(${r},${g},${b},0.5)`;
+  }
+
+  // Phosphor trail — spawn a dot every ~5% vertical travel when held
+  if (fretlessActive) {
+    if (prevTrailY === null || Math.abs(fretlessNormY - prevTrailY) > 0.05) {
+      spawnTrailDot(fretlessNormX, fretlessNormY, zone.color);
+      prevTrailY = fretlessNormY;
+    }
+    psCursorDot.classList.add('fretless-held');
+  } else {
+    psCursorDot.classList.remove('fretless-held');
+    prevTrailY = null;
+  }
 
   // Readout — batched via RAF to prevent jank on 30fps touch devices
   if (!updateFretlessCursor._pending) {
@@ -1558,12 +1802,14 @@ function fretlessPointerToNorm(e) {
 
 psFretlessStrip.addEventListener('mousedown', e => {
   fretlessActive = true;
+  prevTrailY = null;
   const n = fretlessPointerToNorm(e);
   updateFretlessCursor(n.x, n.y);
   e.preventDefault();
 });
 psFretlessStrip.addEventListener('touchstart', e => {
   fretlessActive = true;
+  prevTrailY = null;
   const n = fretlessPointerToNorm(e);
   updateFretlessCursor(n.x, n.y);
   e.preventDefault();
@@ -1581,8 +1827,16 @@ document.addEventListener('touchmove', e => {
     updateFretlessCursor(n.x, n.y);
   }
 }, { passive: false });
-document.addEventListener('mouseup',  () => fretlessActive = false);
-document.addEventListener('touchend', () => fretlessActive = false);
+document.addEventListener('mouseup', () => {
+  fretlessActive = false;
+  prevTrailY = null;
+  psCursorDot.classList.remove('fretless-held');
+});
+document.addEventListener('touchend', () => {
+  fretlessActive = false;
+  prevTrailY = null;
+  psCursorDot.classList.remove('fretless-held');
+});
 
 // Init fretless at center
 updateFretlessCursor(0.5, 0.5);
