@@ -156,10 +156,22 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 16px;
   font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
-.readout-cell .val.accent { color: var(--accent-bright); }
-.readout-cell .val.setpoint { color: var(--xo-gold); }
+.readout-cell .val.accent {
+  color: var(--accent-bright);
+  text-shadow: 0 0 14px rgba(47,184,168,0.4);
+}
+.readout-cell .val.setpoint {
+  color: var(--xo-gold);
+  text-shadow: 0 0 14px rgba(233,196,106,0.4);
+}
+/* Gap cell activates when gap is significant — gold border pulse */
+.readout-cell.gap-active {
+  border-color: rgba(233,196,106,0.30);
+  box-shadow: 0 0 0 1px rgba(233,196,106,0.15), 0 0 16px rgba(233,196,106,0.10);
+}
 
 /* ─── Zone legend ───────────────────────────────────────────── */
 .zone-legend {
@@ -380,6 +392,12 @@ body {
 }
 /* Override the SVG filter= attribute approach — CSS animation adds a living layer */
 path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
+
+/* Coupling arc live pulse — bioluminescent signal flow between engines */
+@keyframes arc-pulse {
+  0%, 100% { opacity: var(--arc-base-op, 0.5); }
+  50%       { opacity: calc(var(--arc-base-op, 0.5) * 1.55); }
+}
 
 /* Zone text — letter-spacing entrance on zone change */
 @keyframes zone-text-enter {
@@ -618,14 +636,18 @@ path#valueArc { animation: breathe-glow 3s ease-in-out infinite; }
           <!-- ── Tick marks ── -->
           <g id="ticks" opacity="0.3"></g>
 
+          <!-- ── Setpoint trail (comet shadow — fades after player moves) ── -->
+          <polygon id="setpointTrail" points="0,-8 6,4 -6,4" fill="#E9C46A" opacity="0"/>
+
           <!-- ── Setpoint marker (triangle, gold) ── -->
           <g id="setpointMarker" filter="url(#goldGlow)">
             <polygon id="setpointTri" points="0,-8 6,4 -6,4" fill="#E9C46A"/>
           </g>
 
-          <!-- ── Center face ── -->
+          <!-- ── Center face — triple-depth rings ── -->
           <circle cx="140" cy="140" r="72" fill="#0E0E10" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
           <circle cx="140" cy="140" r="68" fill="rgba(255,255,255,0.015)"/>
+          <circle cx="140" cy="140" r="62" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="0.6"/>
 
           <!-- Clip circle for creature sprite -->
           <defs>
@@ -891,6 +913,10 @@ let heroValue    = 0.15;
 const SMOOTH_COEFF = 0.03;  // ~80ms lag at 60fps
 let lastFrame = null;
 
+// Setpoint trail — comet tail tracking player gesture
+let prevSetpointAngle = null;
+let trailOpacity = 0;
+
 function getZoneInfo(v) {
   if (v < 0.55) return { name: 'SUNLIT',   color: '#48CAE4', label: 'Sunlit Zone'   };
   if (v < 0.80) return { name: 'TWILIGHT', color: '#0096C7', label: 'Twilight Zone' };
@@ -929,6 +955,22 @@ function updateHero(timestamp) {
   // Rotate triangle to point toward center
   const rotAngle = angle + 90;
   tri.setAttribute('transform', `translate(${pt.x.toFixed(2)},${pt.y.toFixed(2)}) rotate(${rotAngle.toFixed(1)})`);
+
+  // Setpoint trail — comet tail when player moves (decays over ~400ms)
+  const trail = svg.getElementById('setpointTrail');
+  if (trail) {
+    if (prevSetpointAngle !== null && Math.abs(angle - prevSetpointAngle) > 0.5) {
+      // Player just moved — stamp trail at old position
+      const trailPt = polarToXY(prevSetpointAngle, R + 14);
+      trail.setAttribute('transform', `translate(${trailPt.x.toFixed(2)},${trailPt.y.toFixed(2)}) rotate(${(prevSetpointAngle + 90).toFixed(1)})`);
+      trailOpacity = 0.48;
+    }
+    prevSetpointAngle = angle;
+    if (trailOpacity > 0) {
+      trailOpacity = Math.max(0, trailOpacity - 0.016 * dt);
+      trail.setAttribute('opacity', trailOpacity.toFixed(3));
+    }
+  }
 
   // Show gap line when gap is significant
   const gap = Math.abs(heroSetpoint - heroValue);
@@ -971,6 +1013,9 @@ function updateHero(timestamp) {
   document.getElementById('readoutZone').style.color    = zone.color;
   document.getElementById('readoutGap').textContent     = gap.toFixed(3);
   document.getElementById('readoutGap').style.color     = gap > 0.05 ? '#E9C46A' : 'rgba(240,237,232,0.45)';
+  // Gap cell gold pulse when gap is large
+  const gapCell = document.getElementById('readoutGap').closest('.readout-cell');
+  if (gapCell) gapCell.classList.toggle('gap-active', gap > 0.10);
 
   requestAnimationFrame(updateHero);
 }
@@ -1365,6 +1410,7 @@ function drawPsCouplingArcs() {
     line.setAttribute('y1', String(y)); line.setAttribute('y2', String(y));
     line.setAttribute('stroke', `url(#${gradId})`);
     line.setAttribute('stroke-width', '0.8');
+    line.style.filter = `drop-shadow(0 0 3px ${colorB}44)`;
     arcsSvg.appendChild(line);
 
     const lbl = document.createElementNS(svgNSA, 'text');
@@ -1407,14 +1453,20 @@ function drawPsCouplingArcs() {
     glow.style.filter = 'blur(4px)';
     arcsSvg.appendChild(glow);
 
-    // Main arc
+    // Main arc — with living pulse animation
+    const baseOp = (0.42 + strength * 0.45).toFixed(3);
     const arc = document.createElementNS(svgNSA, 'path');
     arc.setAttribute('d', d); arc.setAttribute('fill', 'none');
     arc.setAttribute('stroke', color);
     arc.setAttribute('stroke-width', String(0.9 + strength * 1.8));
     arc.setAttribute('stroke-linecap', 'round');
-    arc.setAttribute('opacity', String(0.42 + strength * 0.45));
+    arc.setAttribute('opacity', baseOp);
     if (style === 'dash') arc.setAttribute('stroke-dasharray', '4 3');
+    // Bioluminescent pulse — each arc gets a unique rate and phase stagger
+    const pulseDur = (2000 + Math.random() * 1000).toFixed(0);
+    const pulseDelay = (-(Math.random() * 2000)).toFixed(0);
+    arc.style.setProperty('--arc-base-op', baseOp);
+    arc.style.animation = `arc-pulse ${pulseDur}ms ease-in-out infinite ${pulseDelay}ms`;
     arcsSvg.appendChild(arc);
 
     // Endpoint dots
