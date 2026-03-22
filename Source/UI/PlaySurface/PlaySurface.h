@@ -145,6 +145,7 @@ private:
     int  currentScale = 0;
     int  rootKey = 0;
     int  lastNote = -1;
+    float lastFretlessVelocity_ = 0.75f;  // updated on each fretless touch; drives ring glow
     std::vector<ScaleDef> scales;
     std::array<float, PS::kNumPads> padVelocity {};
     std::array<WarmMemoryEntry, 8> warmMemory {};
@@ -212,11 +213,20 @@ private:
         int note = 24 + (int)(yNorm * 72.0f); // C1-C7
         note = juce::jlimit(24, 96, quantizeToScale(note));
 
+        // Y-axis expression mapping:
+        //   bottom 20% of strip  → velocity 0.35f (softest touch zone)
+        //   top 20% of strip     → velocity 1.00f (brightest touch zone)
+        //   middle 60%           → linear interpolation across full strip height
+        float velocity = juce::jmap(yNorm, 0.0f, 1.0f, 0.35f, 1.0f);
+        velocity = juce::jlimit(0.35f, 1.0f, velocity);
+
+        lastFretlessVelocity_ = velocity;
+
         if (isDown || note != lastNote)
         {
             if (lastNote >= 0 && onNoteOff) onNoteOff(lastNote);
             lastNote = note;
-            if (onNoteOn) onNoteOn(note, 0.8f);
+            if (onNoteOn) onNoteOn(note, velocity);
         }
     }
 
@@ -392,9 +402,12 @@ private:
             const float ringR = 14.0f;
             float cx = b.getCentreX();
 
-            // Zone glow behind ring
+            // Glow radius scales with velocity: softest touch = tight glow, hardest = wide halo
+            float glowR = ringR + 4.0f + lastFretlessVelocity_ * 6.0f;
+
+            // Zone glow behind ring — radius driven by expression
             g.setColour(zoneColor.withAlpha(0.20f));
-            g.fillEllipse(cx - ringR - 4, noteY - ringR - 4, (ringR + 4) * 2, (ringR + 4) * 2);
+            g.fillEllipse(cx - glowR, noteY - glowR, glowR * 2, glowR * 2);
 
             // XO Gold ring — 2.5px for Retina clarity
             g.setColour(juce::Colour(0xFFE9C46A));
@@ -403,6 +416,19 @@ private:
             // Center dot
             g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.7f));
             g.fillEllipse(cx - 3, noteY - 3, 6, 6);
+
+            // Velocity arc indicator — 60° sweep at top of ring, alpha proportional to velocity
+            {
+                const float arcSweepDeg = 60.0f;
+                const float startDeg    = 270.0f - arcSweepDeg * 0.5f; // centred at top (270° = 12 o'clock)
+                juce::Path arcPath;
+                arcPath.addArc(cx - ringR, noteY - ringR, ringR * 2, ringR * 2,
+                               juce::degreesToRadians(startDeg),
+                               juce::degreesToRadians(startDeg + arcSweepDeg),
+                               true);
+                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(lastFretlessVelocity_ * 0.9f));
+                g.strokePath(arcPath, juce::PathStrokeType(3.0f));
+            }
         }
     }
 

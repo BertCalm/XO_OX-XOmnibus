@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<!--
+  XOmnibus — Main UI Mockup v3
+  Rounds 51–100: Data-driven, interactive, production-ready
+  Rounds 101–120: Behavioral completeness + production feel
+
+  R51-60:   Engine data model — all 4 engines with full param sets
+  R61-70:   Engine card click → detail panel updates dynamically
+  R71-75:   Knob drag interaction + value tooltip
+  R76-80:   Dark mode toggle (fully implemented via data-theme)
+  R81-85:   Oscilloscope canvas in coupling matrix center
+  R86-90:   ADSR path generated from engine data
+  R91-95:   Coupling route click → select + footer update
+  R96-100:  Recording workflow indicator, preset engine tag, final polish
+  R101:     Pad click → selectSlot sync (pads drive detail panel)
+  R102-105: Oscilloscope waveform morphs per selected engine
+  R106-108: Double-click knob to reset to default value
+  R109-111: Keyboard: ↑↓ navigate presets, Esc clears search
+  R112-115: Status bar with contextual hints
+  R116-118: Coupling route click highlights corresponding SVG arc
+  R119-120: Preset active-state persistence + preset name in detail header
+-->
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>XOmnibus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ══ Design tokens — light mode ══════════════════════════════════════ */
+    :root {
+      --shell:      #F7F5F2;
+      --shell-hi:   #FAF9F6;
+      --slot-bg:    #FDFCFA;
+      --empty:      #EAE8E4;
+      --border:     #DDD9D9;
+      --border-hi:  #EDEAE7;
+      --t1:   #141414;
+      --t2:   #6E6B68;
+      --t3:   #ADADAA;
+      --t4:   #C8C5C2;
+      --gold:       #E9C46A;
+      --gold-dim:   rgba(233,196,106,0.16);
+      --gold-glow:  rgba(233,196,106,0.32);
+      --mx:     #1A1A1C;
+      --mx-s:   #222224;
+      --mx-l:   #2C2C2E;
+      --knob:       #232325;
+      --knob-track: #363638;
+      --pad:        #1E1E20;
+      --e1: #7B9E87;
+      --e2: #5C8FAD;
+      --e3: #C9A227;
+      --e4: #9C7A52;
+      --f-display: 'Space Grotesk', -apple-system, sans-serif;
+      --f-body:    'Inter', -apple-system, sans-serif;
+      --f-mono:    'JetBrains Mono', 'Fira Code', monospace;
+      --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --dur:  150ms;
+    }
+
+    /* ══ Dark mode overrides ════════════════════════════════════════════ */
+    [data-theme='dark'] {
+      --shell:      #1C1C1E;
+      --shell-hi:   #242426;
+      --slot-bg:    #1A1A1C;
+      --empty:      #2C2C2E;
+      --border:     #3A3A3C;
+      --border-hi:  #3C3C3E;
+      --t1: #F0EEEC;
+      --t2: #9E9B97;
+      --t3: #6E6B68;
+      --t4: #4A4847;
+      --gold-dim:   rgba(233,196,106,0.20);
+      --gold-glow:  rgba(233,196,106,0.40);
+    }
+    [data-theme='dark'] body { background: #0A0A0C; }
+    [data-theme='dark'] .pp-search { background: rgba(255,255,255,0.04); }
+
+    /* ══ Status bar — R112-115 ══════════════════════════════════════════ */
+    .status-bar {
+      height: 24px; min-height: 24px;
+      display: flex; align-items: center; padding: 0 16px;
+      background: var(--shell);
+      border-top: 1px solid var(--border);
+      gap: 20px; flex-shrink: 0;
+    }
+    .sb-hint {
+      font-family: var(--f-mono); font-size: 8px; color: var(--t3);
+      letter-spacing: 0.06em; transition: color 0.3s;
+    }
+    .sb-hint.active { color: var(--t2); }
+    .sb-right {
+      margin-left: auto; display: flex; align-items: center; gap: 14px;
+    }
+    .sb-version { font-family: var(--f-mono); font-size: 8px; color: var(--t4); }
+    .sb-key {
+      display: inline-flex; align-items: center;
+      background: var(--empty); border: 1px solid var(--border);
+      border-radius: 3px; padding: 1px 4px;
+      font-family: var(--f-mono); font-size: 7px; color: var(--t3);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: #B5B2AE;
+      background-image:
+        radial-gradient(ellipse at 30% 30%, #C2BFBB 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, #A8A5A1 0%, transparent 60%);
+      padding: 30px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══ Plugin window ═══════════════════════════════════════════════════ */
+    .plugin {
+      width: 1200px; height: 824px;
+      background: var(--shell);
+      border-radius: 11px; overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow:
+        0 0 0 0.5px rgba(0,0,0,0.20),
+        0 2px 4px rgba(0,0,0,0.12),
+        0 8px 24px rgba(0,0,0,0.18),
+        0 32px 80px rgba(0,0,0,0.24);
+      user-select: none; position: relative;
+    }
+
+    /* ══ Top bar ═════════════════════════════════════════════════════════ */
+    .top-bar {
+      height: 46px; min-height: 46px;
+      display: flex; align-items: center; padding: 0 18px;
+      background: linear-gradient(180deg, var(--shell-hi) 0%, var(--shell) 100%);
+      border-bottom: 1px solid var(--border);
+      position: relative; flex-shrink: 0; gap: 0;
+    }
+    .tb-logo { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
+    .tb-logomark { width: 20px; height: 20px; }
+    .tb-logomark svg { width: 100%; height: 100%; }
+    .tb-logotype {
+      font-family: var(--f-display); font-weight: 700; font-size: 10px;
+      letter-spacing: 0.18em; color: var(--t2);
+    }
+    .tb-title {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      font-family: var(--f-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.30em; color: var(--t1); pointer-events: none;
+    }
+    .tb-transport {
+      margin-left: auto; display: flex; align-items: center; gap: 12px;
+    }
+    .tb-bpm {
+      display: flex; align-items: baseline; gap: 3px; cursor: pointer;
+      padding: 4px 7px; border-radius: 5px;
+      transition: background var(--dur) var(--ease);
+    }
+    .tb-bpm:hover { background: rgba(0,0,0,0.05); }
+    .tb-bpm-val {
+      font-family: var(--f-mono); font-size: 14px; font-weight: 400;
+      color: var(--t1); letter-spacing: -0.02em;
+    }
+    .tb-bpm-label { font-family: var(--f-mono); font-size: 8px; color: var(--t3); letter-spacing: 0.08em; }
+    .tb-voices {
+      display: flex; align-items: baseline; gap: 3px;
+    }
+    .tb-voices-val { font-family: var(--f-mono); font-size: 11px; color: var(--t2); }
+    .tb-voices-label { font-family: var(--f-mono); font-size: 7px; color: var(--t3); letter-spacing: 0.06em; }
+    .tb-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; }
+    .tb-cpu { display: flex; align-items: center; gap: 5px; }
+    .tb-cpu-bar { width: 36px; height: 4px; background: var(--empty); border-radius: 2px; overflow: hidden; }
+    .tb-cpu-fill { height: 100%; width: 23%; background: var(--e1); border-radius: 2px; transition: width 0.5s var(--ease), background 0.5s var(--ease); }
+    .tb-cpu-label { font-family: var(--f-mono); font-size: 8px; color: var(--t3); }
+
+    /* Recording indicator */
+    .tb-rec {
+      display: flex; align-items: center; gap: 5px;
+      padding: 4px 9px; border-radius: 5px; cursor: pointer;
+      border: 1px solid var(--border);
+      transition: all var(--dur) var(--ease);
+    }
+    .tb-rec:hover { border-color: var(--t2); }
+    .tb-rec.active { border-color: #E53E3E; background: rgba(229,62,62,0.08); }
+    .rec-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--t3);
+      transition: background var(--dur) var(--ease);
+    }
+    .tb-rec.active .rec-dot { background: #E53E3E; animation: recPulse 1s ease-in-out infinite; }
+    @keyframes recPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .rec-label { font-family: var(--f-mono); font-size: 8px; color: var(--t2); letter-spacing: 0.08em; }
+    .tb-rec.active .rec-label { color: #E53E3E; }
+
+    .tb-icons { display: flex; gap: 2px; }
+    .tb-icon {
+      width: 30px; height: 30px; border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--t3); cursor: pointer;
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .tb-icon:hover { color: var(--t1); background: rgba(0,0,0,0.05); }
+    .tb-icon.on { color: var(--gold); }
+
+    /* ══ Body — 3-column layout ══════════════════════════════════════════ */
+    .body {
+      flex: 1; overflow: hidden;
+      display: grid;
+      grid-template-columns: 250px 1fr 355px;
+    }
+    .slabel {
+      font-family: var(--f-body); font-size: 8.5px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--t2);
+    }
+
+    /* ══ LEFT COLUMN ═════════════════════════════════════════════════════ */
+    .left-col { display: flex; flex-direction: column; border-right: 1px solid var(--border); overflow: hidden; }
+
+    /* ── Preset panel ── */
+    .preset-panel {
+      flex: 0 0 340px; display: flex; flex-direction: column;
+      padding: 14px 13px 12px; border-bottom: 1px solid var(--border);
+    }
+    .pp-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 9px; }
+    .pp-count { font-family: var(--f-mono); font-size: 9px; color: var(--t3); }
+    .pp-search {
+      width: 100%; height: 28px;
+      background: rgba(0,0,0,0.035); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0 10px;
+      font-family: var(--f-body); font-size: 11px; color: var(--t1);
+      outline: none; margin-bottom: 8px;
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .pp-search:focus { border-color: rgba(233,196,106,0.4); box-shadow: 0 0 0 2px rgba(233,196,106,0.12); }
+    .pp-search::placeholder { color: var(--t4); font-size: 11px; }
+    .mood-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 9px; }
+    .chip {
+      font-family: var(--f-body); font-size: 8.5px; font-weight: 500;
+      padding: 2.5px 7px; border-radius: 10px; cursor: pointer;
+      border: 1px solid var(--border); color: var(--t2);
+      transition: all var(--dur) var(--ease);
+    }
+    .chip:hover:not(.on) { border-color: var(--t2); color: var(--t1); }
+    .chip.on { background: var(--gold); border-color: var(--gold); color: #111; }
+    .preset-list { flex: 1; overflow-y: auto; }
+    .preset-list::-webkit-scrollbar { width: 3px; }
+    .preset-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .pi {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 7px; border-radius: 5px; cursor: pointer; position: relative;
+      transition: background var(--dur) var(--ease);
+    }
+    .pi:hover { background: rgba(0,0,0,0.03); }
+    .pi.on { background: var(--gold-dim); }
+    .pi.on::before {
+      content: ''; position: absolute; left: 0; top: 5px; bottom: 5px;
+      width: 2px; background: var(--gold); border-radius: 2px;
+    }
+    .pi-name {
+      font-family: var(--f-body); font-size: 11px; font-weight: 500;
+      color: var(--t1); flex: 1; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .pi-tag {
+      font-family: var(--f-mono); font-size: 7px; color: var(--t3);
+      letter-spacing: 0.06em; flex-shrink: 0;
+    }
+    .pi-dna { display: flex; align-items: flex-end; gap: 1.5px; flex-shrink: 0; }
+    .pi-dna-bar { width: 3px; border-radius: 1px; background: var(--t4); }
+    .pi.on .pi-dna-bar { background: rgba(233,196,106,0.6); }
+    .pi-eq { display: flex; align-items: flex-end; gap: 1.5px; flex-shrink: 0; }
+    .pi-eq-bar { width: 2.5px; border-radius: 1px; background: var(--gold); }
+    @keyframes eq1 { 0%,100%{height:4px} 50%{height:10px} }
+    @keyframes eq2 { 0%,100%{height:8px} 50%{height:3px} }
+    @keyframes eq3 { 0%,100%{height:5px} 40%{height:11px} }
+    .pi-eq-bar:nth-child(1) { animation: eq1 1.1s ease-in-out infinite; }
+    .pi-eq-bar:nth-child(2) { animation: eq2 0.9s ease-in-out infinite; }
+    .pi-eq-bar:nth-child(3) { animation: eq3 1.3s ease-in-out infinite; }
+
+    /* ── Play surface ── */
+    .play-panel {
+      flex: 1; display: flex; flex-direction: column;
+      padding: 13px 13px 14px;
+    }
+    .play-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .pad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex: 1; }
+    .pad {
+      background: var(--pad); border-radius: 8px; position: relative; overflow: hidden;
+      cursor: pointer; min-height: 60px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 2px 12px rgba(0,0,0,0.5);
+      transition: transform 0.08s var(--ease), box-shadow 0.08s var(--ease);
+    }
+    .pad:active { transform: scale(0.965); }
+    .pad::after {
+      content: ''; position: absolute; bottom: 0; right: 0;
+      width: 65%; height: 65%; border-radius: 8px 0 8px 0; pointer-events: none;
+    }
+    .p1::after { background: radial-gradient(at bottom right, rgba(123,158,135,0.28), transparent 70%); }
+    .p2::after { background: radial-gradient(at bottom right, rgba(92,143,173,0.28), transparent 70%); }
+    .p3::after { background: radial-gradient(at bottom right, rgba(201,162,39,0.28), transparent 70%); }
+    .p4::after { background: radial-gradient(at bottom right, rgba(156,122,82,0.28), transparent 70%); }
+    @keyframes padGlow {
+      0%,100% { box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 2px 12px rgba(0,0,0,0.5); }
+      50%      { box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 2px 12px rgba(0,0,0,0.5), inset 0 0 0 1.5px rgba(201,162,39,0.4); }
+    }
+    .pad.on { animation: padGlow 3s ease-in-out infinite; }
+    .pad-corner {
+      position: absolute; display: flex;
+      font-family: var(--f-mono); font-size: 5.5px;
+      color: rgba(255,255,255,0.14); letter-spacing: 0.04em; line-height: 1;
+    }
+    .pc-tl { top: 5px; left: 6px; } .pc-tr { top: 5px; right: 6px; }
+    .pc-bl { bottom: 5px; left: 6px; } .pc-br { bottom: 5px; right: 6px; }
+    .pad.on .pad-corner { color: rgba(255,255,255,0.28); }
+    .pad-num {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: var(--f-mono); font-size: 18px; font-weight: 300;
+      color: rgba(255,255,255,0.07); pointer-events: none;
+    }
+    .pad-eng {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: center; padding: 0 0 5px;
+      font-family: var(--f-mono); font-size: 6.5px; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.22);
+    }
+    .mode-toggle {
+      margin-top: 8px; background: rgba(0,0,0,0.06); border-radius: 6px; padding: 2px; display: flex;
+    }
+    .mbtn {
+      flex: 1; height: 22px; border-radius: 4px; cursor: pointer;
+      font-family: var(--f-body); font-size: 8.5px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--t2);
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--dur) var(--ease);
+    }
+    .mbtn.on { background: var(--gold); color: #111; font-weight: 600; }
+    .mbtn:hover:not(.on) { color: var(--t1); }
+
+    /* ══ CENTER COLUMN ═══════════════════════════════════════════════════ */
+    .center-col { display: flex; flex-direction: column; overflow: hidden; }
+
+    /* ── Engine grid ── */
+    .engine-panel {
+      flex: 0 0 328px; padding: 14px 15px 12px; border-bottom: 1px solid var(--border);
+    }
+    .ep-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .hs-group { display: flex; align-items: center; gap: 7px; }
+    .hs-track {
+      width: 28px; height: 16px; background: var(--empty); border-radius: 8px;
+      position: relative; cursor: pointer; transition: background var(--dur) var(--ease);
+    }
+    .hs-track.on { background: var(--gold); }
+    .hs-thumb {
+      width: 12px; height: 12px; background: white; border-radius: 50%;
+      position: absolute; top: 2px; left: 2px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.24); transition: left var(--dur) var(--ease);
+    }
+    .hs-track.on .hs-thumb { left: 14px; }
+    .engine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .ecard {
+      background: var(--slot-bg); border: 1px solid var(--border);
+      border-radius: 9px; padding: 10px 11px 10px 15px;
+      position: relative; overflow: hidden; cursor: pointer;
+      transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease), transform 0.08s var(--ease);
+    }
+    .ecard:active:not(.sel) { transform: scale(0.99); }
+    .ecard::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+      border-radius: 9px 0 0 9px;
+    }
+    .ec1::before { background: var(--e1); }
+    .ec2::before { background: var(--e2); }
+    .ec3::before { background: var(--e3); }
+    .ec4::before { background: var(--e4); }
+    .ecard::after {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 50%; height: 50%; border-radius: 0 9px 0 100%;
+      opacity: 0.05; pointer-events: none;
+    }
+    .ec1::after { background: var(--e1); }
+    .ec2::after { background: var(--e2); }
+    .ec3::after { background: var(--e3); }
+    .ec4::after { background: var(--e4); }
+    .ecard:hover:not(.sel) { box-shadow: 0 2px 12px rgba(0,0,0,0.10); }
+    .ecard.sel { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold-glow), 0 4px 16px var(--gold-dim); }
+    .ec-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 5px; }
+    .ec-badge {
+      width: 17px; height: 17px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--f-mono); font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.95);
+    }
+    .b1{background:var(--e1)} .b2{background:var(--e2)} .b3{background:var(--e3)} .b4{background:var(--e4)}
+    .ec-swap { font-size: 12px; color: var(--border); cursor: pointer; transition: color var(--dur) var(--ease); }
+    .ecard:hover .ec-swap { color: var(--t2); }
+    .ec-name { font-family: var(--f-display); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em; color: var(--t1); margin-bottom: 1px; }
+    .ec-cat { font-family: var(--f-body); font-size: 9px; color: var(--t2); letter-spacing: 0.03em; margin-bottom: 10px; }
+    .ec-sig { display: flex; flex-direction: column; gap: 3px; }
+    .sig-row { display: flex; align-items: center; gap: 5px; }
+    .sig-name { font-family: var(--f-mono); font-size: 6px; color: var(--t4); width: 18px; letter-spacing: 0.04em; }
+    .sig-track { flex: 1; height: 2.5px; background: rgba(0,0,0,0.07); border-radius: 2px; overflow: hidden; }
+    .sig-fill { height: 100%; border-radius: 2px; opacity: 0.7; transition: width 0.4s var(--ease); }
+    .sf1{background:var(--e1)} .sf2{background:var(--e2)} .sf3{background:var(--e3)} .sf4{background:var(--e4)}
+
+    /* ── Coupling matrix ── */
+    .coupling {
+      flex: 1; background: var(--mx);
+      display: flex; flex-direction: column;
+      padding: 12px 14px 11px; overflow: hidden; position: relative;
+    }
+    .coupling::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 20px 20px; background-position: 10px 10px;
+    }
+    .cx-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px; position: relative; z-index: 2; flex-shrink: 0;
+    }
+    .cx-title {
+      font-family: var(--f-display); font-weight: 700; font-size: 10px;
+      letter-spacing: 0.20em; text-transform: uppercase; color: var(--gold);
+    }
+    .cx-meta { display: flex; align-items: center; gap: 10px; }
+    .cx-routes { font-family: var(--f-mono); font-size: 8px; color: #484848; letter-spacing: 0.05em; }
+    .cx-add {
+      font-family: var(--f-body); font-size: 8px; font-weight: 500;
+      color: rgba(255,255,255,0.35); border: 1px solid #333;
+      padding: 3px 8px; border-radius: 4px; cursor: pointer;
+      transition: all var(--dur) var(--ease);
+    }
+    .cx-add:hover { border-color: #555; color: rgba(255,255,255,0.7); }
+    .cx-viz { flex: 1; position: relative; z-index: 2; min-height: 0; }
+    .cx-viz svg { width: 100%; height: 100%; }
+    .oscope-wrap {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+      width: 120px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 4px; overflow: hidden;
+      background: rgba(0,0,0,0.3);
+    }
+    .oscope-wrap canvas { width: 100%; height: 100%; display: block; }
+    .cx-footer {
+      display: flex; align-items: center; gap: 10px;
+      padding-top: 9px; border-top: 1px solid rgba(255,255,255,0.04);
+      position: relative; z-index: 2; flex-shrink: 0;
+    }
+    .cx-fl { font-family: var(--f-mono); font-size: 8px; color: #484848; letter-spacing: 0.06em; }
+    .cx-type-tag {
+      font-family: var(--f-mono); font-size: 9px; color: var(--gold);
+      background: rgba(233,196,106,0.09); padding: 2px 7px; border-radius: 3px;
+      border: 1px solid rgba(233,196,106,0.15);
+    }
+    .cx-amt-val { font-family: var(--f-mono); font-size: 9px; color: #666; }
+    .cx-route-list { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+    .cx-route {
+      font-family: var(--f-mono); font-size: 7.5px; color: #555;
+      display: flex; align-items: center; gap: 3px; cursor: pointer;
+      padding: 2px 5px; border-radius: 3px; transition: background var(--dur) var(--ease);
+    }
+    .cx-route:hover { background: rgba(255,255,255,0.04); }
+    .cx-route.on { color: rgba(255,255,255,0.7); }
+    .cx-route-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+    /* Arc breathing */
+    @keyframes arcBreath { 0%,100%{opacity:0.5} 50%{opacity:0.9} }
+    .arc-a { animation: arcBreath 3.8s ease-in-out infinite; }
+    .arc-b { animation: arcBreath 4.2s ease-in-out infinite 2.1s; }
+    .arc-c { animation: arcBreath 3.2s ease-in-out infinite 1.0s; }
+
+    /* ══ RIGHT COLUMN ════════════════════════════════════════════════════ */
+    .right-col { display: flex; flex-direction: column; border-left: 1px solid var(--border); overflow: hidden; }
+
+    /* ── Engine detail ── */
+    .detail-panel {
+      flex: 0 0 462px; display: flex; flex-direction: column;
+      padding: 13px 14px 11px; border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .dp-head { display: flex; align-items: center; gap: 8px; margin-bottom: 11px; }
+    .dp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--e1); flex-shrink: 0; transition: background 0.3s var(--ease); }
+    .dp-engine {
+      font-family: var(--f-display); font-weight: 600; font-size: 12px;
+      letter-spacing: 0.03em; color: var(--t1); transition: color 0.2s var(--ease);
+    }
+    .dp-sep { color: var(--border); margin: 0 3px; }
+    .dp-mode { font-family: var(--f-body); font-size: 9.5px; color: var(--t2); }
+    .dp-preset { margin-left: auto; font-family: var(--f-mono); font-size: 8px; color: var(--t3); letter-spacing: 0.04em; }
+
+    /* ADSR visualization */
+    .dp-env {
+      height: 36px; background: rgba(0,0,0,0.025); border-radius: 5px;
+      margin-bottom: 11px; overflow: hidden; padding: 4px 8px; flex-shrink: 0;
+    }
+    .dp-env svg { width: 100%; height: 100%; }
+
+    /* Knob grid */
+    .knob-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px 4px; }
+    .kw {
+      display: flex; flex-direction: column; align-items: center; gap: 3.5px;
+      cursor: ns-resize; position: relative;
+    }
+    .kw-svg { pointer-events: none; }
+    .kw-label {
+      font-family: var(--f-body); font-size: 7px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--t2);
+      text-align: center; line-height: 1.2; transition: color var(--dur) var(--ease);
+    }
+    .kw:hover .kw-label { color: var(--t1); }
+    .kw.dragging .kw-label { color: var(--gold); }
+
+    /* Mod matrix */
+    .mod-matrix { margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border-hi); }
+    .mm-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .mm-add { font-family: var(--f-mono); font-size: 7.5px; color: var(--t3); cursor: pointer; }
+    .mm-add:hover { color: var(--t2); }
+    .mm-row { display: flex; align-items: center; padding: 2.5px 0; gap: 6px; }
+    .mm-pip { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .mm-route { font-family: var(--f-mono); font-size: 8.5px; color: var(--t2); flex: 1; }
+    .mm-amt { font-family: var(--f-mono); font-size: 8.5px; color: var(--t3); }
+
+    /* ── Performance strip ── */
+    .perf-panel { flex: 1; display: flex; flex-direction: column; padding: 11px 14px 13px; }
+    .pp2-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
+    .macro-strip { display: flex; justify-content: space-around; flex: 1; align-items: center; }
+    .mw { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: ns-resize; }
+    .mw-name {
+      font-family: var(--f-display); font-weight: 500; font-size: 8px;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--t1);
+    }
+    .mw-led {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--t4);
+      transition: all 0.3s var(--ease);
+    }
+    .mw-led.on { background: var(--gold); box-shadow: 0 0 7px rgba(233,196,106,0.6); }
+    .midi-footer {
+      margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .midi-cc { font-family: var(--f-mono); font-size: 7.5px; color: var(--t3); letter-spacing: 0.08em; }
+    .midi-btn {
+      font-family: var(--f-body); font-size: 8px; color: var(--t2);
+      padding: 3px 8px; border: 1px solid var(--border); border-radius: 4px;
+      cursor: pointer; transition: all var(--dur) var(--ease);
+    }
+    .midi-btn:hover { border-color: var(--t2); color: var(--t1); }
+
+    /* ══ Tooltip ══════════════════════════════════════════════════════════ */
+    #knob-tooltip {
+      position: fixed; pointer-events: none;
+      background: rgba(20,20,20,0.9); color: #fff;
+      font-family: var(--f-mono); font-size: 10px; font-weight: 400;
+      padding: 3px 8px; border-radius: 4px;
+      opacity: 0; transition: opacity 0.1s;
+      white-space: nowrap; z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+<div class="plugin">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="tb-logo">
+      <div class="tb-logomark">
+        <svg viewBox="0 0 20 20" fill="none">
+          <circle cx="7" cy="10" r="5.5" stroke="#9E9B97" stroke-width="1.2"/>
+          <circle cx="13" cy="10" r="5.5" stroke="#9E9B97" stroke-width="1.2"/>
+          <path d="M 10 6.5 A 5.5 5.5 0 0 1 10 13.5 A 5.5 5.5 0 0 1 10 6.5" fill="#ADAAA6" opacity="0.3"/>
+        </svg>
+      </div>
+      <span class="tb-logotype">XO_OX</span>
+    </div>
+
+    <span class="tb-title">XOMNIBUS</span>
+
+    <div class="tb-transport">
+      <div class="tb-bpm" id="bpm-tap" title="Tap for BPM">
+        <span class="tb-bpm-val" id="bpm-val">120</span>
+        <span class="tb-bpm-label">BPM</span>
+      </div>
+      <div class="tb-divider"></div>
+      <div class="tb-voices">
+        <span class="tb-voices-val" id="voice-count">4</span>
+        <span class="tb-voices-label">VOX</span>
+      </div>
+      <div class="tb-divider"></div>
+      <div class="tb-cpu">
+        <div class="tb-cpu-bar"><div class="tb-cpu-fill" id="cpu-fill"></div></div>
+        <span class="tb-cpu-label" id="cpu-label">CPU 23%</span>
+      </div>
+      <div class="tb-divider"></div>
+      <div class="tb-rec" id="rec-btn">
+        <div class="rec-dot"></div>
+        <span class="rec-label">REC</span>
+      </div>
+      <div class="tb-divider"></div>
+      <div class="tb-icons">
+        <div class="tb-icon" title="MIDI Learn">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <rect x="1.5" y="5.5" width="13" height="6" rx="2" stroke="currentColor" stroke-width="1.25"/>
+            <circle cx="5" cy="8.5" r="0.9" fill="currentColor"/>
+            <circle cx="8" cy="8.5" r="0.9" fill="currentColor"/>
+            <circle cx="11" cy="8.5" r="0.9" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="tb-icon" title="Settings">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.25"/>
+            <path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.2 3.2l1.27 1.27M11.53 11.53l1.27 1.27M3.2 12.8l1.27-1.27M11.53 4.47l1.27-1.27" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="tb-icon" id="dark-toggle" title="Light/Dark">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2a6 6 0 1 0 6 6A6 6 0 0 0 8 2zm0 10V4a4 4 0 0 1 0 8z" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-col">
+      <div class="preset-panel">
+        <div class="pp-head">
+          <span class="slabel">Presets</span>
+          <span class="pp-count" id="pp-count">—</span>
+        </div>
+        <input class="pp-search" type="text" placeholder="Search presets…" id="pp-search">
+        <div class="mood-chips" id="mood-chips">
+          <div class="chip on" data-mood="All">All</div>
+          <div class="chip" data-mood="Atmosphere">Atmosphere</div>
+          <div class="chip" data-mood="Entangled">Entangled</div>
+          <div class="chip" data-mood="Foundation">Foundation</div>
+          <div class="chip" data-mood="Flux">Flux</div>
+        </div>
+        <div class="preset-list" id="preset-list"></div>
+      </div>
+
+      <div class="play-panel">
+        <div class="play-head">
+          <span class="slabel">Play Surface</span>
+          <span style="font-family:var(--f-mono);font-size:8px;color:var(--t3)">MPCe ready</span>
+        </div>
+        <div class="pad-grid">
+          <div class="pad p1" data-pad="1">
+            <div class="pad-corner pc-tl">CPL</div><div class="pad-corner pc-tr">CHR</div>
+            <div class="pad-corner pc-bl">DRY</div><div class="pad-corner pc-br">SPC</div>
+            <div class="pad-num">1</div><div class="pad-eng">OPERA</div>
+          </div>
+          <div class="pad p2" data-pad="2">
+            <div class="pad-corner pc-tl">CPL</div><div class="pad-corner pc-tr">DRV</div>
+            <div class="pad-corner pc-bl">FLT</div><div class="pad-corner pc-br">SPC</div>
+            <div class="pad-num">2</div><div class="pad-eng">OBRIX</div>
+          </div>
+          <div class="pad p3 on" data-pad="3">
+            <div class="pad-corner pc-tl">CPL</div><div class="pad-corner pc-tr">SNP</div>
+            <div class="pad-corner pc-bl">DCY</div><div class="pad-corner pc-br">TRN</div>
+            <div class="pad-num">3</div><div class="pad-eng">ONSET</div>
+          </div>
+          <div class="pad p4" data-pad="4">
+            <div class="pad-corner pc-tl">CPL</div><div class="pad-corner pc-tr">MAT</div>
+            <div class="pad-corner pc-bl">RES</div><div class="pad-corner pc-br">SPC</div>
+            <div class="pad-num">4</div><div class="pad-eng">OWARE</div>
+          </div>
+        </div>
+        <div class="mode-toggle">
+          <div class="mbtn on">Pad</div>
+          <div class="mbtn">Fretless</div>
+          <div class="mbtn">Drum</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER COLUMN -->
+    <div class="center-col">
+      <div class="engine-panel">
+        <div class="ep-head">
+          <span class="slabel">Engines</span>
+          <div class="hs-group">
+            <span class="slabel">Hot Swap</span>
+            <div class="hs-track" id="hs-track"><div class="hs-thumb"></div></div>
+          </div>
+        </div>
+        <div class="engine-grid" id="engine-grid"></div>
+      </div>
+
+      <!-- COUPLING MATRIX -->
+      <div class="coupling">
+        <div class="cx-head">
+          <span class="cx-title">Coupling Matrix</span>
+          <div class="cx-meta">
+            <span class="cx-routes" id="cx-routes">2 active / 14 types</span>
+            <div class="cx-add">+ Route</div>
+          </div>
+        </div>
+        <div class="cx-viz" style="position:relative">
+          <svg id="cx-svg" viewBox="0 0 550 230" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
+            <defs>
+              <filter id="node-glow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <path id="ap1" d="M 88 78 C 172 22 378 22 462 78"/>
+              <path id="ap2" d="M 88 152 C 172 208 378 208 462 152"/>
+              <path id="ap3" d="M 88 78 C 88 115 462 115 462 152"/>
+            </defs>
+
+            <!-- Rail guides -->
+            <line x1="88" y1="102" x2="88" y2="128" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+            <line x1="462" y1="102" x2="462" y2="128" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+
+            <!-- ARC 1: OPERA → OBRIX (gold, AmpToFilter) -->
+            <use href="#ap1" fill="none" stroke="#E9C46A" stroke-width="9" opacity="0.05"/>
+            <use href="#ap1" class="arc-a" fill="none" stroke="#E9C46A" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="275" y="13" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#E9C46A" opacity="0.5" letter-spacing="0.10em">AMP → FILTER</text>
+            <circle r="2.6" fill="#E9C46A" opacity="0.95">
+              <animateMotion dur="2.6s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.6 1">
+                <mpath href="#ap1"/>
+              </animateMotion>
+            </circle>
+
+            <!-- ARC 2: ONSET → OWARE (blue, RhythmToPitch) -->
+            <use href="#ap2" fill="none" stroke="#5C8FAD" stroke-width="9" opacity="0.05"/>
+            <use href="#ap2" class="arc-b" fill="none" stroke="#5C8FAD" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="275" y="226" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#5C8FAD" opacity="0.5" letter-spacing="0.10em">RHYTHM → PITCH</text>
+            <circle r="2.6" fill="#5C8FAD" opacity="0.95">
+              <animateMotion dur="3.1s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines="0.4 0 0.6 1" begin="1.55s">
+                <mpath href="#ap2"/>
+              </animateMotion>
+            </circle>
+
+            <!-- ARC 3: OPERA → OWARE (walnut, dashed potential route) -->
+            <use href="#ap3" fill="none" stroke="rgba(156,122,82,0.18)" stroke-width="1" stroke-dasharray="4 5"/>
+
+            <!-- NODE: OPERA (S1) -->
+            <circle cx="88" cy="78" r="30" fill="#1A1A1C" stroke="#7B9E87" stroke-width="1.5"/>
+            <circle cx="88" cy="78" r="22" fill="#7B9E87" opacity="0.07"/>
+            <text x="88" y="74" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" fill="#7B9E87" letter-spacing="0.07em">OPERA</text>
+            <text x="88" y="86" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" fill="rgba(123,158,135,0.4)">S1</text>
+
+            <!-- NODE: OBRIX (S2) -->
+            <circle cx="462" cy="78" r="30" fill="#1A1A1C" stroke="#5C8FAD" stroke-width="1.5"/>
+            <circle cx="462" cy="78" r="22" fill="#5C8FAD" opacity="0.07"/>
+            <text x="462" y="74" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" fill="#5C8FAD" letter-spacing="0.07em">OBRIX</text>
+            <text x="462" y="86" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" fill="rgba(92,143,173,0.4)">S2</text>
+
+            <!-- NODE: ONSET (S3 — SELECTED) -->
+            <circle cx="88" cy="152" r="34" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.35"/>
+            <circle cx="88" cy="152" r="30" fill="#1A1A1C" stroke="#C9A227" stroke-width="2"/>
+            <circle cx="88" cy="152" r="22" fill="#C9A227" opacity="0.09"/>
+            <text x="88" y="148" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" fill="#C9A227" letter-spacing="0.07em">ONSET</text>
+            <text x="88" y="160" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" fill="rgba(201,162,39,0.45)">S3</text>
+
+            <!-- NODE: OWARE (S4) -->
+            <circle cx="462" cy="152" r="30" fill="#1A1A1C" stroke="#9C7A52" stroke-width="1.5"/>
+            <circle cx="462" cy="152" r="22" fill="#9C7A52" opacity="0.07"/>
+            <text x="462" y="148" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8" font-weight="700" fill="#9C7A52" letter-spacing="0.07em">OWARE</text>
+            <text x="462" y="160" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="6" fill="rgba(156,122,82,0.4)">S4</text>
+
+            <!-- Destination dots -->
+            <circle cx="462" cy="78" r="5" fill="#E9C46A" opacity="0.85"/>
+            <circle cx="462" cy="152" r="5" fill="#5C8FAD" opacity="0.85"/>
+          </svg>
+
+          <!-- Oscilloscope in center -->
+          <div class="oscope-wrap">
+            <canvas id="oscope" width="240" height="88"></canvas>
+          </div>
+        </div>
+
+        <div class="cx-footer">
+          <span class="cx-fl">AMOUNT</span>
+          <svg width="22" height="22" viewBox="0 0 22 22" style="flex-shrink:0">
+            <circle cx="11" cy="11" r="10" fill="#232325"/>
+            <path d="M 5.5 17.5 A 7.5 7.5 0 1 1 16.5 17.5" stroke="#363638" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <path d="M 5.5 17.5 A 7.5 7.5 0 0 1 14.5 5.1" stroke="#E9C46A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+            <circle cx="14.5" cy="5.1" r="1.6" fill="#E9C46A"/>
+          </svg>
+          <span class="cx-amt-val" id="cx-amt">0.65</span>
+          <div class="cx-type-tag" id="cx-type">AmpToFilter</div>
+          <div class="cx-route-list">
+            <div class="cx-route on" data-route="0">
+              <div class="cx-route-dot" style="background:#E9C46A"></div>1→2
+            </div>
+            <div class="cx-route" data-route="1">
+              <div class="cx-route-dot" style="background:#5C8FAD"></div>3→4
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+      <div class="detail-panel">
+        <div class="dp-head">
+          <div class="dp-dot" id="dp-dot"></div>
+          <span class="dp-engine" id="dp-engine">—</span>
+          <span class="dp-sep">—</span>
+          <span class="dp-mode" id="dp-mode">Detail</span>
+          <span class="dp-preset" id="dp-preset"></span>
+        </div>
+        <div class="dp-env" id="dp-env"></div>
+        <div class="knob-grid" id="knob-grid"></div>
+        <div class="mod-matrix" id="mod-matrix"></div>
+      </div>
+
+      <div class="perf-panel">
+        <div class="pp2-head">
+          <span class="slabel">Performance Macros</span>
+        </div>
+        <div class="macro-strip" id="macro-strip"></div>
+        <div class="midi-footer">
+          <span class="midi-cc" id="midi-cc">CC 1 · CC 2 · CC 3 · CC 4</span>
+          <div class="midi-btn">MIDI LEARN</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATUS BAR — R112-115 -->
+  <div class="status-bar">
+    <span class="sb-hint" id="sb-hint">Click an engine card to edit · Shift+drag for precision</span>
+    <div class="sb-right">
+      <span class="sb-hint"><span class="sb-key">↑↓</span> Navigate presets</span>
+      <span class="sb-hint"><span class="sb-key">⌘K</span> Search</span>
+      <span class="sb-hint"><span class="sb-key">Dbl-click</span> Reset knob</span>
+      <span class="sb-version">XOmnibus v1.0 · 47 engines</span>
+    </div>
+  </div>
+</div>
+
+<!-- Value tooltip -->
+<div id="knob-tooltip"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+//  ENGINE DATA MODEL — R51-60
+// ═══════════════════════════════════════════════════════════════════════════
+const ENGINE_DATA = {
+  OPERA: {
+    color: '#7B9E87', colorRGB: '123,158,135',
+    cat: 'Additive Vocal · Kuramoto',
+    macros: ['DRAMA', 'VOICE', 'BREATHE', 'STAGE'],
+    adsr: { a: 0.35, d: 0.15, s: 0.85, r: 1.0 },
+    params: [
+      { lbl:'DRAMA',    v:0.15 }, { lbl:'VOICE',    v:0.20 },
+      { lbl:'BREATHE',  v:0.35 }, { lbl:'STAGE',    v:0.70 },
+      { lbl:'EFFORT',   v:0.80 }, { lbl:'PARTIALS', v:0.56 },
+      { lbl:'VIB RATE', v:0.20 }, { lbl:'TILT',     v:0.25 },
+      { lbl:'FILTER',   v:0.74 }, { lbl:'RESONANCE',v:0.15 },
+      { lbl:'AMP ATK',  v:0.35 }, { lbl:'AMP REL',  v:0.65 },
+    ],
+    sig: [['DRM',0.15],['VCE',0.70],['BRE',0.35],['STG',0.70]],
+    mod: [
+      { src:'LFO 1',      dst:'FILTER CUTOFF', amt:0.20 },
+      { src:'MOD WHL',    dst:'DRAMA',         amt:0.50 },
+      { src:'AFTERTOUCH', dst:'STAGE',         amt:0.50 },
+    ]
+  },
+  OBRIX: {
+    color: '#5C8FAD', colorRGB: '92,143,173',
+    cat: 'Modular Brick Synthesis',
+    macros: ['MACHINE', 'REEF', 'COUPLING', 'SPACE'],
+    adsr: { a: 0.01, d: 0.3, s: 0.6, r: 0.4 },
+    params: [
+      { lbl:'SRC 1',   v:0.75 }, { lbl:'SRC 2',   v:0.50 },
+      { lbl:'FIELD',   v:0.55 }, { lbl:'CUTOFF',  v:0.40 },
+      { lbl:'RESO',    v:0.40 }, { lbl:'ENV AMT', v:0.55 },
+      { lbl:'DRIVE',   v:0.08 }, { lbl:'FM DEPTH',v:0.20 },
+      { lbl:'SYMB',    v:0.00 }, { lbl:'COMP',    v:0.00 },
+      { lbl:'VOLUME',  v:0.78 }, { lbl:'ENV TEMP',v:0.50 },
+    ],
+    sig: [['FLD',0.55],['DRV',0.40],['FLT',0.65],['SYM',0.30]],
+    mod: [
+      { src:'LFO 1',      dst:'CUTOFF',         amt:0.12 },
+      { src:'MOD WHL',    dst:'FIELD STRENGTH',  amt:0.40 },
+      { src:'COUPLING',   dst:'FILTER',          amt:0.65 },
+    ]
+  },
+  ONSET: {
+    color: '#C9A227', colorRGB: '201,162,39',
+    cat: 'Percussion Synthesis Engine',
+    macros: ['MACHINE', 'IMPACT', 'CRACK', 'SPACE'],
+    adsr: { a: 0.001, d: 0.65, s: 0.0, r: 0.05 },
+    params: [
+      { lbl:'DRIVE',   v:0.10 }, { lbl:'LEVEL',   v:0.82 },
+      { lbl:'TONE',    v:0.50 }, { lbl:'PITCH',   v:0.45 },
+      { lbl:'SNAP',    v:0.65 }, { lbl:'BODY',    v:0.88 },
+      { lbl:'DECAY',   v:0.65 }, { lbl:'BLEND',   v:0.12 },
+      { lbl:'CHAR',    v:0.20 }, { lbl:'PAN',     v:0.50 },
+      { lbl:'VEL→F',   v:0.30 }, { lbl:'CPL LVL', v:0.75 },
+    ],
+    sig: [['MCH',0.80],['IMP',0.50],['CRK',0.20],['SPC',0.60]],
+    mod: [
+      { src:'VELOCITY',   dst:'SNAP',     amt:0.65 },
+      { src:'VELOCITY',   dst:'BODY',     amt:0.40 },
+      { src:'COUPLING',   dst:'TONE',     amt:0.30 },
+    ]
+  },
+  OWARE: {
+    color: '#9C7A52', colorRGB: '156,122,82',
+    cat: 'Tuned Percussion · Mallet Physics',
+    macros: ['MATERIAL', 'MALLET', 'RESONANCE', 'SPACE'],
+    adsr: { a: 0.001, d: 0.8, s: 0.1, r: 1.2 },
+    params: [
+      { lbl:'MATERIAL', v:0.45 }, { lbl:'MALLET',  v:0.75 },
+      { lbl:'MODE',     v:0.40 }, { lbl:'BUZZ',    v:0.15 },
+      { lbl:'SYMPATH',  v:0.50 }, { lbl:'THERMAL', v:0.20 },
+      { lbl:'SHIMMER',  v:0.30 }, { lbl:'SPREAD',  v:0.40 },
+      { lbl:'FILTER',   v:0.55 }, { lbl:'RESO',    v:0.25 },
+      { lbl:'AMP ATK',  v:0.001}, { lbl:'AMP REL', v:0.70 },
+    ],
+    sig: [['MAT',0.45],['MAL',0.75],['RES',0.30],['TMP',0.55]],
+    mod: [
+      { src:'VELOCITY',   dst:'MALLET',   amt:0.80 },
+      { src:'LFO 1',      dst:'SHIMMER',  amt:0.15 },
+      { src:'AFTERTOUCH', dst:'SYMPATH',  amt:0.35 },
+    ]
+  }
+};
+
+const SLOTS = ['OPERA', 'OBRIX', 'ONSET', 'OWARE'];
+
+const COUPLING_ROUTES = [
+  { from:1, to:2, type:'AmpToFilter',    amount:0.65, color:'#E9C46A' },
+  { from:3, to:4, type:'RhythmToPitch',  amount:0.18, color:'#5C8FAD' },
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  KNOB RENDERER — R11-15 (carried from v1, improved IDs)
+// ═══════════════════════════════════════════════════════════════════════════
+let knobIdCounter = 0;
+function polar(deg, r, cx, cy) {
+  const rad = (deg - 90) * Math.PI / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+function arcPath(cx, cy, r, a0, a1) {
+  const s = polar(a0, r, cx, cy), e = polar(a1, r, cx, cy);
+  const lg = (a1 - a0) > 180 ? 1 : 0;
+  return `M${s.x.toFixed(2)} ${s.y.toFixed(2)} A${r} ${r} 0 ${lg} 1 ${e.x.toFixed(2)} ${e.y.toFixed(2)}`;
+}
+
+function knobSVG(value, size, color) {
+  const id = 'kg' + (knobIdCounter++);
+  const cx = size / 2, cy = size / 2;
+  const rOuter = size / 2 - 1;
+  const rTrack = size / 2 - 3.5;
+  const rInner = size / 2 - 7;
+  const START = 213, SWEEP = 294;
+  const end = START + value * SWEEP;
+  const track = arcPath(cx, cy, rTrack, START, START + SWEEP);
+  const val   = arcPath(cx, cy, rTrack, START, end);
+  const tip   = polar(end, rTrack, cx, cy);
+  const lineStart = polar(end, rInner - 2, cx, cy);
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="kw-svg">
+    <defs>
+      <radialGradient id="${id}-g" cx="38%" cy="32%" r="65%">
+        <stop offset="0%" stop-color="#323234"/>
+        <stop offset="100%" stop-color="#1C1C1E"/>
+      </radialGradient>
+    </defs>
+    <circle cx="${cx}" cy="${cy+0.5}" r="${rOuter}" fill="rgba(0,0,0,0.4)" opacity="0.5"/>
+    <circle cx="${cx}" cy="${cy}" r="${rOuter}" fill="url(#${id}-g)"/>
+    <circle cx="${cx}" cy="${cy}" r="${rInner}" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    <path d="${track}" stroke="#3A3A3C" stroke-width="${size > 50 ? 2.8 : 2.2}" fill="none" stroke-linecap="round"/>
+    <path d="${val}"   stroke="${color}" stroke-width="${size > 50 ? 2.8 : 2.2}" fill="none" stroke-linecap="round" opacity="0.9"/>
+    <line x1="${lineStart.x.toFixed(2)}" y1="${lineStart.y.toFixed(2)}"
+          x2="${tip.x.toFixed(2)}" y2="${tip.y.toFixed(2)}"
+          stroke="${color}" stroke-width="${size > 50 ? 1.5 : 1.2}" stroke-linecap="round" opacity="0.85"/>
+    <circle cx="${tip.x.toFixed(2)}" cy="${tip.y.toFixed(2)}" r="${size > 50 ? 2.5 : 1.8}" fill="${color}" opacity="0.9"/>
+    <circle cx="${cx}" cy="${cy}" r="1.5" fill="rgba(255,255,255,0.06)"/>
+  </svg>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ADSR PATH GENERATOR — R86-90
+// ═══════════════════════════════════════════════════════════════════════════
+function buildADSRPath(a, d, s, r, W, H) {
+  const pad = 3;
+  const pw = W - pad * 2;
+  const ph = H - pad * 2;
+  const bot = H - pad;
+  const top = pad;
+
+  // Time sections: A=22%, D=18%, S=36%, R=24%
+  const aX  = pad + pw * 0.22 * (0.2 + 0.8 * Math.sqrt(a));
+  const dX  = aX  + pw * 0.18 * (0.2 + 0.8 * Math.sqrt(d));
+  const sX  = dX  + pw * 0.36;
+  const rX  = sX  + pw * 0.24 * (0.2 + 0.8 * Math.sqrt(r));
+
+  const sY  = top + (1 - s) * ph;
+
+  return {
+    fill: `M ${pad} ${bot} L ${aX.toFixed(1)} ${top} L ${dX.toFixed(1)} ${sY.toFixed(1)} L ${sX.toFixed(1)} ${sY.toFixed(1)} L ${rX.toFixed(1)} ${bot} Z`,
+    line: `M ${pad} ${bot} L ${aX.toFixed(1)} ${top} L ${dX.toFixed(1)} ${sY.toFixed(1)} L ${sX.toFixed(1)} ${sY.toFixed(1)} L ${rX.toFixed(1)} ${bot}`,
+    aX, dX, sX, rX, sY
+  };
+}
+
+function renderADSR(container, adsr, color) {
+  const W = 310, H = 28;
+  const { a, d, s, r } = adsr;
+  const paths = buildADSRPath(a, d, s, r, W, H);
+  const gradId = 'env-fill-' + (knobIdCounter++);
+  container.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:100%">
+      <defs>
+        <linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${color}" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="${color}" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <path d="${paths.fill}" fill="url(#${gradId})"/>
+      <path d="${paths.line}" stroke="${color}" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="${paths.aX/2+3}" y="${H-2}" font-family="'JetBrains Mono',monospace" font-size="6" fill="${color}" opacity="0.45">A</text>
+      <text x="${(paths.aX+paths.dX)/2}" y="${H-2}" font-family="'JetBrains Mono',monospace" font-size="6" fill="${color}" opacity="0.45">D</text>
+      <text x="${(paths.dX+paths.sX)/2}" y="${H-2}" font-family="'JetBrains Mono',monospace" font-size="6" fill="${color}" opacity="0.45">S</text>
+      <text x="${(paths.sX+paths.rX)/2}" y="${H-2}" font-family="'JetBrains Mono',monospace" font-size="6" fill="${color}" opacity="0.45">R</text>
+    </svg>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  KNOB DRAG — R71-75
+// ═══════════════════════════════════════════════════════════════════════════
+const knobValues = {}; // key → value 0-1
+let activeDrag = null;
+
+// initialValue = current value (may be persisted from previous interaction)
+// defaultValue = designed default from ENGINE_DATA (for double-click reset)
+function makeKnobInteractive(el, key, defaultValue, color, size) {
+  // Only set knobValues if this key hasn't been touched yet
+  if (!(key in knobValues)) knobValues[key] = defaultValue;
+
+  el.addEventListener('mousedown', (e) => {
+    activeDrag = { el, key, color, size, startY: e.clientY, startVal: knobValues[key] };
+    el.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  // R106-108: Double-click → reset to designed default
+  el.addEventListener('dblclick', (e) => {
+    e.preventDefault();
+    knobValues[key] = defaultValue;
+    const svgEl = el.querySelector('.kw-svg');
+    if (svgEl) svgEl.outerHTML = knobSVG(defaultValue, size, color);
+    setStatus(`${key.split('_').pop().toUpperCase()} reset to default`);
+  });
+}
+
+document.addEventListener('mousemove', (e) => {
+  if (!activeDrag) return;
+  const { el, key, color, size, startY, startVal } = activeDrag;
+  const sensitivity = e.shiftKey ? 0.003 : 0.008;
+  const delta = (startY - e.clientY) * sensitivity;
+  const newVal = Math.max(0, Math.min(1, startVal + delta));
+  knobValues[key] = newVal;
+
+  const wrap = el.querySelector('.kw-svg')?.parentElement || el;
+  const svgEl = el.querySelector('.kw-svg');
+  if (svgEl) svgEl.outerHTML = knobSVG(newVal, size, color);
+
+  const tooltip = document.getElementById('knob-tooltip');
+  tooltip.textContent = Math.round(newVal * 100) + '%';
+  tooltip.style.left = (e.clientX + 14) + 'px';
+  tooltip.style.top  = (e.clientY - 10) + 'px';
+  tooltip.style.opacity = '1';
+});
+
+document.addEventListener('mouseup', () => {
+  if (activeDrag) {
+    activeDrag.el.classList.remove('dragging');
+    activeDrag = null;
+    document.getElementById('knob-tooltip').style.opacity = '0';
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ENGINE GRID RENDER — static (R51)
+// ═══════════════════════════════════════════════════════════════════════════
+function renderEngineGrid() {
+  const grid = document.getElementById('engine-grid');
+  grid.innerHTML = '';
+  SLOTS.forEach((name, i) => {
+    const eng = ENGINE_DATA[name];
+    const slot = i + 1;
+    const card = document.createElement('div');
+    card.className = `ecard ec${slot}`;
+    card.dataset.slot = slot;
+    card.innerHTML = `
+      <div class="ec-top">
+        <div class="ec-badge b${slot}">${slot}</div>
+        <span class="ec-swap">⇌</span>
+      </div>
+      <div class="ec-name">${name}</div>
+      <div class="ec-cat">${eng.cat.split('·')[0].trim()}</div>
+      <div class="ec-sig">
+        ${eng.sig.map(([lbl, v]) => `
+          <div class="sig-row">
+            <span class="sig-name">${lbl}</span>
+            <div class="sig-track"><div class="sig-fill sf${slot}" style="width:${v*100}%"></div></div>
+          </div>`).join('')}
+      </div>`;
+    card.addEventListener('click', () => selectSlot(slot));
+    grid.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  DETAIL PANEL UPDATE — R61-70
+// ═══════════════════════════════════════════════════════════════════════════
+let currentSlot = 3;
+
+function selectSlot(slot) {
+  currentSlot = slot;
+  const engineName = SLOTS[slot - 1];
+  const eng = ENGINE_DATA[engineName];
+
+  // Update engine cards
+  document.querySelectorAll('.ecard').forEach((c, i) => {
+    c.classList.toggle('sel', i + 1 === slot);
+  });
+
+  // Update detail header
+  document.getElementById('dp-dot').style.background    = eng.color;
+  document.getElementById('dp-engine').textContent       = engineName;
+  document.getElementById('dp-engine').style.color       = eng.color;
+  document.getElementById('dp-mode').textContent         = eng.cat.split('·')[0].trim();
+
+  // ADSR
+  renderADSR(document.getElementById('dp-env'), eng.adsr, eng.color);
+
+  // Knob grid
+  renderKnobGrid(engineName, eng);
+
+  // Mod matrix
+  renderModMatrix(eng);
+
+  // Macros
+  renderMacros(eng);
+
+  // R101: Sync pad glow with selected slot
+  document.querySelectorAll('.pad').forEach(p => {
+    p.classList.toggle('on', parseInt(p.dataset.pad) === slot);
+  });
+
+  // R116-118: Update coupling matrix selection ring
+  const nodePos = { 1:[88,78], 2:[462,78], 3:[88,152], 4:[462,152] };
+  const svg = document.getElementById('cx-svg');
+  if (svg) {
+    const prev = svg.querySelector('.sel-ring');
+    if (prev) prev.remove();
+    const [nx, ny] = nodePos[slot];
+    const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('cx', nx); ring.setAttribute('cy', ny);
+    ring.setAttribute('r', '35'); ring.setAttribute('class', 'sel-ring');
+    ring.setAttribute('fill', 'none');
+    ring.setAttribute('stroke', eng.color);
+    ring.setAttribute('stroke-width', '1.5');
+    ring.setAttribute('opacity', '0.50');
+    svg.insertBefore(ring, svg.firstChild);
+  }
+
+  // R112-115: Update status bar
+  if (typeof setStatus === 'function') {
+    setStatus(`${engineName}  ·  ${eng.cat}`);
+  }
+}
+
+function renderKnobGrid(engineName, eng) {
+  const grid = document.getElementById('knob-grid');
+  grid.innerHTML = '';
+  eng.params.forEach((p, i) => {
+    const key = `${engineName}_k${i}`;
+    if (!(key in knobValues)) knobValues[key] = p.v;
+    const kw = document.createElement('div');
+    kw.className = 'kw';
+    kw.innerHTML = knobSVG(knobValues[key], 44, eng.color) + `<div class="kw-label">${p.lbl}</div>`;
+    grid.appendChild(kw);
+    // Pass p.v as initialValue so double-click always resets to the designed default
+    makeKnobInteractive(kw, key, p.v, eng.color, 44);
+  });
+}
+
+function renderModMatrix(eng) {
+  const mm = document.getElementById('mod-matrix');
+  mm.innerHTML = `
+    <div class="mm-head">
+      <span class="slabel">Mod Matrix</span>
+      <span class="mm-add">+ Route</span>
+    </div>` +
+    eng.mod.map((r, i) => `
+      <div class="mm-row">
+        <div class="mm-pip" style="background:${eng.color};opacity:${0.75 - i*0.2}"></div>
+        <span class="mm-route">${r.src}  ·  ${r.dst}</span>
+        <span class="mm-amt">${r.amt.toFixed(2)}</span>
+      </div>`).join('');
+}
+
+function renderMacros(eng) {
+  const strip = document.getElementById('macro-strip');
+  strip.innerHTML = '';
+  eng.macros.forEach((name, i) => {
+    const key = `macro_${name}`;
+    const defaultV = [0.45, 0.30, 0.65, 0.55][i];
+    if (!(key in knobValues)) knobValues[key] = defaultV;
+    const mw = document.createElement('div');
+    mw.className = 'mw';
+    mw.innerHTML = knobSVG(knobValues[key], 62, '#E9C46A') +
+      `<div class="mw-name">${name}</div>` +
+      `<div class="mw-led${i === 2 ? ' on' : ''}"></div>`;
+    strip.appendChild(mw);
+    makeKnobInteractive(mw, key, defaultV, '#E9C46A', 62);
+  });
+
+  document.getElementById('midi-cc').textContent =
+    eng.macros.map((n, i) => `CC ${i+1}`).join(' · ');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  PRESET DATA + RENDER — R91-95
+// ═══════════════════════════════════════════════════════════════════════════
+const PRESET_DATA = [
+  { name:'Aria Ascendant',  engine:'OPERA', mood:'Atmosphere', dna:[0.3,0.8,0.4,0.6,0.7] },
+  { name:'Coral Memory',    engine:'OBRIX', mood:'Atmosphere', dna:[0.5,0.5,0.7,0.8,0.3] },
+  { name:'Drift Cascade',   engine:'OBRIX', mood:'Flux',       dna:[0.2,0.7,0.5,0.5,0.9] },
+  { name:'Fog Bank Delta',  engine:'OWARE', mood:'Foundation', dna:[0.6,0.7,0.2,0.5,0.8] },
+  { name:'Loom Protocol',   engine:'OWARE', mood:'Entangled',  dna:[0.4,0.5,0.6,0.7,0.4] },
+  { name:'Reef Pump',       engine:'OBRIX', mood:'Entangled',  dna:[0.5,0.45,0.75,0.7,0.3] },
+  { name:'Shadow Opera',    engine:'OPERA', mood:'Atmosphere', dna:[0.2,0.75,0.3,0.6,0.7], active: true },
+  { name:'Stone Formant',   engine:'OPERA', mood:'Foundation', dna:[0.15,0.9,0.2,0.7,0.6] },
+  { name:'Tidal Breath',    engine:'ONSET', mood:'Flux',       dna:[0.4,0.6,0.8,0.4,0.5] },
+  { name:'Void Chorus',     engine:'OPERA', mood:'Atmosphere', dna:[0.1,0.6,0.3,0.8,0.9] },
+];
+
+let activeMood = 'All';
+let activePresetIdx = 6;
+
+function renderPresets(filter = '') {
+  const list = document.getElementById('preset-list');
+  const lc = filter.toLowerCase();
+  const filtered = PRESET_DATA.filter(p =>
+    (activeMood === 'All' || p.mood === activeMood) &&
+    (p.name.toLowerCase().includes(lc) || p.engine.toLowerCase().includes(lc))
+  );
+  document.getElementById('pp-count').textContent = filtered.length + ' presets';
+  list.innerHTML = '';
+  filtered.forEach((p, fi) => {
+    const isActive = p.active;
+    const div = document.createElement('div');
+    div.className = 'pi' + (isActive ? ' on' : '');
+    const dnaHTML = p.dna.map(v =>
+      `<div class="pi-dna-bar" style="height:${Math.max(3, v * 10)}px"></div>`
+    ).join('');
+    const indicator = isActive
+      ? `<div class="pi-eq"><div class="pi-eq-bar"></div><div class="pi-eq-bar"></div><div class="pi-eq-bar"></div></div>`
+      : `<div class="pi-dna">${dnaHTML}</div>`;
+    div.innerHTML = `<span class="pi-name">${p.name}</span><span class="pi-tag">${p.engine}</span>${indicator}`;
+    div.addEventListener('click', () => {
+      document.querySelectorAll('.pi').forEach(x => x.classList.remove('on'));
+      div.classList.add('on');
+      document.getElementById('dp-preset').textContent = p.name;
+      // Load engine for this preset
+      const slotIdx = SLOTS.indexOf(p.engine);
+      if (slotIdx !== -1) selectSlot(slotIdx + 1);
+    });
+    list.appendChild(div);
+  });
+}
+
+// Mood chip interaction
+document.getElementById('mood-chips').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+  chip.classList.add('on');
+  activeMood = chip.dataset.mood;
+  renderPresets(document.getElementById('pp-search').value);
+});
+
+document.getElementById('pp-search').addEventListener('input', (e) => {
+  renderPresets(e.target.value);
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  COUPLING ROUTE SELECTION — R91-95 + R116-118 (arc highlight)
+// ═══════════════════════════════════════════════════════════════════════════
+const COUPLING_INFO = [
+  { type:'AmpToFilter',   amount:0.65, arcClass:'arc-a', arcId:'ap1', color:'#E9C46A' },
+  { type:'RhythmToPitch', amount:0.18, arcClass:'arc-b', arcId:'ap2', color:'#5C8FAD' },
+];
+
+document.querySelectorAll('.cx-route').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.cx-route').forEach(r => r.classList.remove('on'));
+    el.classList.add('on');
+    const idx = parseInt(el.dataset.route);
+    const info = COUPLING_INFO[idx];
+    document.getElementById('cx-type').textContent = info.type;
+    document.getElementById('cx-amt').textContent  = info.amount.toFixed(2);
+
+    // R116-118: Highlight the selected arc in SVG — pulse opacity
+    document.querySelectorAll('.arc-a, .arc-b').forEach(a => {
+      a.style.opacity = '0.35';
+      a.style.strokeWidth = '1.5';
+    });
+    const activeArc = document.querySelector(`.${info.arcClass}`);
+    if (activeArc) {
+      activeArc.style.opacity = '1';
+      activeArc.style.strokeWidth = '2.2';
+    }
+    setStatus(`Route ${idx + 1}: ${info.type} · amount ${info.amount.toFixed(2)}`);
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  OSCILLOSCOPE — R81-85 + R102-105 (per-engine waveform)
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Waveform shape functions per slot — all take normalized t[0,1] + phase
+const OSCOPE_SHAPES = {
+  1: { // OPERA: harmonic-rich vocal sine
+    f1: (t, p) => (Math.sin(t*Math.PI*5+p)*0.6 + Math.sin(t*Math.PI*10+p*1.4)*0.2 + Math.sin(t*Math.PI*15+p*0.7)*0.12),
+    f2: (t, p) => (Math.sin(t*Math.PI*8+p*1.2+0.8)*0.35 + Math.sin(t*Math.PI*3+p*0.5)*0.15),
+  },
+  2: { // OBRIX: modular brick — clipped, filtered, dense
+    f1: (t, p) => { const s = Math.sin(t*Math.PI*4+p)*1.4; return Math.max(-0.75,Math.min(0.75,s))*0.8; },
+    f2: (t, p) => (Math.sin(t*Math.PI*12+p*0.8)*0.18 + Math.sin(t*Math.PI*6+p)*0.20),
+  },
+  3: { // ONSET: percussive spike — exponential decay transient
+    f1: (t, p) => Math.exp(-t*7) * Math.sin(t*Math.PI*18+p) * 0.9,
+    f2: (t, p) => Math.exp(-t*3.5) * Math.sin(t*Math.PI*6+p*0.6) * 0.35,
+  },
+  4: { // OWARE: resonant bell decay — two overlapping partials
+    f1: (t, p) => Math.exp(-t*1.6)*(Math.sin(t*Math.PI*10+p)*0.75 + Math.sin(t*Math.PI*17.5+p*0.9)*0.2),
+    f2: (t, p) => Math.exp(-t*0.7)*Math.sin(t*Math.PI*3.5+p*1.1)*0.3,
+  },
+};
+
+function startOscilloscope() {
+  const canvas = document.getElementById('oscope');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let phase = 0;
+  let displaySlot = currentSlot; // track for smooth transition
+  let targetAlpha = 1.0;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const slot = currentSlot;
+    const eng = ENGINE_DATA[SLOTS[slot - 1]];
+    const [r, g, b] = eng.colorRGB.split(',');
+    const shape = OSCOPE_SHAPES[slot];
+
+    // Primary waveform — engine color
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(${r},${g},${b},0.70)`;
+    ctx.lineWidth = 1.5;
+    for (let x = 0; x <= W; x++) {
+      const t = x / W;
+      const y = H/2 + shape.f1(t, phase) * H * 0.36;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Secondary (coupling response) — dimmer
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(${r},${g},${b},0.30)`;
+    ctx.lineWidth = 1.1;
+    for (let x = 0; x <= W; x++) {
+      const t = x / W;
+      const y = H/2 + shape.f2(t, phase) * H * 0.36;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    phase += 0.022;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  DARK MODE — R76-80
+// ═══════════════════════════════════════════════════════════════════════════
+document.getElementById('dark-toggle').addEventListener('click', function() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  this.classList.toggle('on', !isDark);
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  RECORDING INDICATOR — R96-100
+// ═══════════════════════════════════════════════════════════════════════════
+document.getElementById('rec-btn').addEventListener('click', function() {
+  this.classList.toggle('active');
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  MISC INTERACTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+// R101: Pad click → selectSlot sync
+document.querySelectorAll('.pad').forEach(p => {
+  p.addEventListener('mousedown', () => {
+    document.querySelectorAll('.pad').forEach(x => x.classList.remove('on'));
+    p.classList.add('on');
+    const padNum = parseInt(p.dataset.pad);
+    if (padNum >= 1 && padNum <= 4) selectSlot(padNum);
+  });
+});
+
+document.querySelectorAll('.mbtn').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.mbtn').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  });
+});
+
+document.getElementById('hs-track').addEventListener('click', function() {
+  this.classList.toggle('on');
+});
+
+// BPM tap tempo
+let tapTimes = [];
+document.getElementById('bpm-tap').addEventListener('click', () => {
+  const now = Date.now();
+  tapTimes.push(now);
+  if (tapTimes.length > 4) tapTimes.shift();
+  if (tapTimes.length >= 2) {
+    const diffs = tapTimes.slice(1).map((t, i) => t - tapTimes[i]);
+    const avg = diffs.reduce((a, b) => a + b, 0) / diffs.length;
+    const bpm = Math.round(60000 / avg);
+    if (bpm >= 20 && bpm <= 320) document.getElementById('bpm-val').textContent = bpm;
+  }
+});
+
+// CPU meter
+let cpuBase = 23;
+setInterval(() => {
+  const jitter = (Math.random() - 0.5) * 6;
+  const cpu = Math.max(8, Math.min(85, cpuBase + jitter));
+  const fill = document.getElementById('cpu-fill');
+  const label = document.getElementById('cpu-label');
+  if (fill && label) {
+    fill.style.width = cpu + '%';
+    fill.style.background = cpu > 60 ? '#C9A227' : cpu > 40 ? '#E9C46A' : '#7B9E87';
+    label.textContent = `CPU ${Math.round(cpu)}%`;
+  }
+}, 2400);
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  STATUS BAR — R112-115
+// ═══════════════════════════════════════════════════════════════════════════
+let statusTimer = null;
+function setStatus(msg) {
+  const el = document.getElementById('sb-hint');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('active');
+  clearTimeout(statusTimer);
+  statusTimer = setTimeout(() => {
+    el.textContent = 'Click an engine card to edit · Shift+drag for precision';
+    el.classList.remove('active');
+  }, 2800);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  KEYBOARD NAVIGATION — R109-111
+// ═══════════════════════════════════════════════════════════════════════════
+let focusedPresetIdx = 6; // tracks keyboard-highlighted preset
+
+document.addEventListener('keydown', (e) => {
+  const searchEl = document.getElementById('pp-search');
+  const isTyping = document.activeElement === searchEl;
+
+  if (e.key === 'Escape') {
+    searchEl.value = '';
+    renderPresets('');
+    searchEl.blur();
+    return;
+  }
+
+  // ⌘K / Ctrl+K → focus search
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    searchEl.focus();
+    searchEl.select();
+    return;
+  }
+
+  if (isTyping) return; // don't intercept arrows when typing
+
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const items = document.querySelectorAll('.pi');
+    if (!items.length) return;
+    const idxArr = Array.from(items);
+    let cur = idxArr.findIndex(x => x.classList.contains('on'));
+    if (e.key === 'ArrowDown') cur = Math.min(cur + 1, items.length - 1);
+    else cur = Math.max(cur - 1, 0);
+    idxArr.forEach(x => x.classList.remove('on'));
+    idxArr[cur].classList.add('on');
+    idxArr[cur].scrollIntoView({ block: 'nearest' });
+    // Trigger preset selection
+    idxArr[cur].click();
+    setStatus(`↑↓ Navigate · ${cur + 1} of ${items.length}`);
+  }
+});
+
+// ⌘K shortcut hint in status bar on search focus
+document.getElementById('pp-search').addEventListener('focus', () => {
+  setStatus('Type to search · Esc to clear');
+});
+
+// NOTE: selectSlot was extended in-place (see the function definition above)
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════════════════════════
+renderEngineGrid();
+renderPresets();
+selectSlot(3); // ONSET (pad 3) — matches coupling matrix SVG selection ring
+startOscilloscope();
+</script>
+</body>
+</html>
