@@ -84,6 +84,13 @@ public:
         // LFOs (D005: rate floor 0.01 Hz)
         lfo1.reset();
         lfo2.reset();
+
+        // FX buffers
+        delayBufL.fill (0.0f);
+        delayBufR.fill (0.0f);
+        delayWritePos = 0;
+        reverbBuf.fill (0.0f);
+        reverbWritePos = 0;
     }
 
     void releaseResources() override {}
@@ -215,8 +222,8 @@ public:
                 const float freq = v.baseFreq * PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f);
                 const double phaseInc = freq / sr;
 
-                // Macro CHARACTER modulates horizon scan position
-                const float horizonPos = std::clamp (pHorizon + pMacroChar * 0.5f - 0.25f, 0.0f, 1.0f);
+                // Macro CHARACTER + coupling modulates horizon scan position
+                const float horizonPos = std::clamp (pHorizon + pMacroChar * 0.5f - 0.25f + couplingHorizonMod, 0.0f, 1.0f);
 
                 // Panorama oscillator: dual wavetable scanning in opposite directions
                 const float scan1 = horizonPos;
@@ -233,7 +240,8 @@ public:
                 const float oscMix = osc1 * (1.0f - pOscMix) + osc2 * pOscMix;
 
                 // Vista filter: horizon line opens/closes spectral view
-                const float baseCutoff = 200.0f + pVistaOpen * 18000.0f;
+                // Coupling input modulates filter cutoff and horizon scan
+                const float baseCutoff = 200.0f + pVistaOpen * 18000.0f + couplingFilterMod;
                 const float envCutoff = baseCutoff * (1.0f + filtEnvVal * pFiltEnvAmt * velFilterMod);
                 const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * (pMacroMov + modWheel * pModWheelDep) * 0.3f);
                 const float finalCutoff = std::clamp (modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
@@ -250,25 +258,48 @@ public:
                 const float luminosity = 1.0f + (auroraLuminosity - 0.5f) * pLfo2Dep * 0.4f;
                 const float monoOut = cleaned * ampEnvVal * luminosity * v.velocity;
 
-                // Parallax stereo: high notes spread wider
+                // Parallax stereo: high notes spread wider (+ coupling modulation)
                 const float noteNorm = (v.note - 36.0f) / 60.0f; // 0=C2, 1=C7
-                const float spread = std::clamp (noteNorm * pParallax, 0.0f, 1.0f);
-                const float panL = 0.5f + spread * 0.4f * (1.0f + lfo2Val * 0.1f);
-                const float panR = 1.0f - panL + 1.0f; // Complementary
+                const float parallaxTotal = std::clamp (pParallax + couplingParallaxMod, 0.0f, 1.0f);
+                const float spread = std::clamp (noteNorm * parallaxTotal, 0.0f, 1.0f);
+                // Equal-power complementary panning
+                const float panAngle = spread * 0.4f * (1.0f + lfo2Val * 0.1f);
+                const float gainL = std::cos (panAngle * juce::MathConstants<float>::halfPi);
+                const float gainR = std::sin (panAngle * juce::MathConstants<float>::halfPi + juce::MathConstants<float>::halfPi * 0.5f);
 
-                mixL += monoOut * std::sqrt (panL);
-                mixR += monoOut * std::sqrt (2.0f - panL);
+                mixL += monoOut * gainL;
+                mixR += monoOut * gainR;
             }
 
             // Macro SPACE → reverb/delay depth
             const float spaceAmt = std::clamp (pMacroSpc + pReverb, 0.0f, 1.0f);
+            const float delayAmt = std::clamp (pDelay + pMacroCouple * 0.3f, 0.0f, 1.0f);
 
-            // Simple diffusion reverb (placeholder — production would use full reverb)
-            reverbState = FastMath::flushDenormal (reverbState * 0.9985f + mixL * spaceAmt * 0.15f);
-            const float reverbOut = reverbState;
+            // Ping-pong delay (0.375s L, 0.25s R at 48kHz)
+            const int delayWriteIdx = delayWritePos % kDelayBufSize;
+            const int delayReadL = (delayWritePos - static_cast<int> (0.375 * sr) + kDelayBufSize * 4) % kDelayBufSize;
+            const int delayReadR = (delayWritePos - static_cast<int> (0.25 * sr) + kDelayBufSize * 4) % kDelayBufSize;
+            const float delayOutL = FastMath::flushDenormal (delayBufL[static_cast<size_t> (delayReadL)]);
+            const float delayOutR = FastMath::flushDenormal (delayBufR[static_cast<size_t> (delayReadR)]);
+            delayBufL[static_cast<size_t> (delayWriteIdx)] = mixR * 0.5f + delayOutR * 0.35f; // Cross-feed for ping-pong
+            delayBufR[static_cast<size_t> (delayWriteIdx)] = mixL * 0.5f + delayOutL * 0.35f;
+            delayWritePos = (delayWritePos + 1) % kDelayBufSize;
 
-            outL[s] = mixL + reverbOut * 0.5f;
-            outR[s] = mixR + reverbOut * 0.5f;
+            // Diffusion reverb (4-tap allpass with feedback)
+            const int revIdx = reverbWritePos % kReverbBufSize;
+            const float revIn = (mixL + mixR) * 0.5f;
+            float revOut = 0.0f;
+            for (int t = 0; t < 4; ++t)
+            {
+                static constexpr int tapOffsets[4] = { 1117, 1543, 2371, 3079 };
+                const int readIdx = (reverbWritePos - tapOffsets[t] + kReverbBufSize * 4) % kReverbBufSize;
+                revOut += reverbBuf[static_cast<size_t> (readIdx)] * 0.25f;
+            }
+            reverbBuf[static_cast<size_t> (revIdx)] = FastMath::flushDenormal (revIn + revOut * 0.45f);
+            reverbWritePos = (reverbWritePos + 1) % kReverbBufSize;
+
+            outL[s] = mixL + revOut * spaceAmt + delayOutL * delayAmt;
+            outR[s] = mixR + revOut * spaceAmt + delayOutR * delayAmt;
 
             // Denormal protection
             outL[s] = FastMath::flushDenormal (outL[s]);
@@ -607,7 +638,17 @@ private:
     float modWheel = 0.0f;
     float aftertouch = 0.0f;
     float pitchBendNorm = 0.0f;
-    float reverbState = 0.0f;
+
+    // Delay buffers (ping-pong, ~0.5s at 48kHz)
+    static constexpr int kDelayBufSize = 24000;
+    std::array<float, kDelayBufSize> delayBufL {};
+    std::array<float, kDelayBufSize> delayBufR {};
+    int delayWritePos = 0;
+
+    // Reverb buffer (4-tap allpass diffusion)
+    static constexpr int kReverbBufSize = 4096;
+    std::array<float, kReverbBufSize> reverbBuf {};
+    int reverbWritePos = 0;
 
     // Coupling modulation accumulators
     float couplingFilterMod = 0.0f;
