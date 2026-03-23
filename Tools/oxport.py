@@ -1760,6 +1760,10 @@ def cmd_build(args) -> int:
     velocity_layers = rendering.get("velocity_layers", 4)
     velocity_values = rendering.get("velocity_values", [20, 50, 90, 127])
     render_spec_override = rendering.get("render_spec_override")
+    # preset_load_ms: how long to wait after MIDI program change before recording.
+    # 200ms default is too tight for XOmnibus with 50+ presets — use 400ms or set
+    # rendering.preset_load_ms in the .oxbuild spec.
+    preset_load_ms = rendering.get("preset_load_ms", 400)
 
     # Corner config
     corner_strategy = spec.get("corner_strategy", "dynamic_expression")
@@ -1849,6 +1853,24 @@ def cmd_build(args) -> int:
                         mood_filter=mood_filter,
                         qa_log=qa_log,
                         verbose=True,
+                    )
+
+                    # ── BANK ORDERING FIX ──────────────────────────────────────
+                    # select_presets() returns presets in farthest-point-sampling
+                    # (diversity) order.  MIDI program change N must load the Nth
+                    # preset in XOmnibus's preset browser, which lists them in
+                    # alphabetical-path order (same as Python sorted() on the
+                    # .xometa file paths — matching JUCE File::findChildFiles).
+                    # Re-sort selected_presets by path so program N == browser N.
+                    # Mood folder order: Aether < Atmosphere < Entangled < Family
+                    #   < Flux < Foundation < Prism < Submerged (alphabetical).
+                    selected_presets = sorted(
+                        selected_presets,
+                        key=lambda p: p.get("path", ""),
+                    )
+                    print(
+                        f"         ✓ Bank order aligned to XOmnibus browser "
+                        f"(alphabetical by preset path)"
                     )
 
                     # Save selection manifest
@@ -1999,6 +2021,7 @@ def cmd_build(args) -> int:
                             midi_port_name=args.midi_port,
                             audio_device=args.audio_device,
                             sample_rate=sample_rate,
+                            preset_load_ms=preset_load_ms,
                         )
                     else:
                         print(f"         → --no-render flag: skipping actual audio capture")
@@ -2074,6 +2097,8 @@ def cmd_build(args) -> int:
         print(f"  [5/10] FALLBACK     Standard XPM (velocity-layered, non-MPCe)")
         if args.dry_run:
             print(f"         → Would call: xpn_drum_export.py --mode smart")
+        else:
+            print(f"         ⚠  Standard XPM fallback not yet implemented")
         stages_run += 1
     else:
         print(f"  [5/10] FALLBACK     SKIPPED")
@@ -2108,8 +2133,12 @@ def cmd_build(args) -> int:
                 with open(intent_path, "w") as f:
                     json.dump(intent_data, f, indent=2)
                 print(f"         ✓ Written: {intent_path}")
+            except ImportError:
+                print(f"         ⚠  xpn_intent_generator not available")
             except Exception as e:
                 print(f"         ✗  Intent generation failed: {e}")
+                if not args.continue_on_error:
+                    return 1
         stages_run += 1
     else:
         print(f"  [6/10] INTENT       SKIPPED")

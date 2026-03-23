@@ -1,7 +1,7 @@
 # XO_OX Coupling Protocol — Specification v0.1
 
 **Version:** 0.1
-**Status:** Published
+**Status:** Release Candidate
 **Date:** 2026-03-22
 **Author:** XO_OX Designs
 **Repository:** https://github.com/BertCalm/XO_OX-XOmnibus
@@ -192,7 +192,7 @@ Unlike Sympathetic (which reinforces) or Complementary (which inverts), Responsi
 
 Coupling data is transmitted as a **control-rate packet** delivered by the host matrix to target engines at block boundaries, before each render call.
 
-### 4.1 CouplingPacket (14 bytes)
+### 4.1 CouplingPacket (16 bytes)
 
 ```
 Offset  Type    Field       Description
@@ -219,6 +219,8 @@ Total: 16 bytes per packet.
 
 **`signal`** — The current normalized output of the source engine's coupling extraction, updated each block. For Sympathetic and Complementary, this is the source RMS. For Responsive, this is the envelope follower output. Always `[0.0, 1.0]`.
 
+The `type` field in `CouplingPacket` is a protocol-level identifier distinct from the C++ `CouplingType` enum used in the reference implementation. The host is responsible for mapping between the two.
+
 ### 4.2 Transmission Model
 
 The host matrix delivers packets to each target engine before its render block is called each processing cycle. This guarantees coupling state is available at the start of synthesis. Per-block delivery is sufficient for all three v0.1 types; implementations requiring sample-accurate coupling must document the deviation.
@@ -230,6 +232,28 @@ A target engine may receive multiple packets per block. Targets accumulate all i
 ### 4.4 No-Op Packets
 
 A packet with `amount = 0.0` or `signal = 0.0` is a valid no-op and may signal route deactivation without removing the route. Receivers must handle it without error.
+
+### 4.5 Host Dispatch
+
+The `CouplingPacket` carries a single scalar `signal` value representing the source engine's
+normalized output at control rate. The reference implementation's C++ interface accepts a
+per-sample audio buffer:
+
+    void applyCouplingInput(CouplingType type, float amount,
+                            const float* sourceBuffer, int numSamples);
+
+The host is responsible for converting between these representations. For control-rate
+coupling types (Sympathetic, Complementary, Responsive), the host fills a block-sized
+buffer with the scalar value:
+
+    float buffer[blockSize];
+    std::fill(buffer, buffer + blockSize, packet.signal);
+    engine->applyCouplingInput(mapType(packet.type), packet.amount, buffer, blockSize);
+
+For audio-rate coupling types (extended, not part of this v0.1 spec), the host passes
+the source engine's raw audio buffer directly, bypassing the packet format entirely.
+The `CouplingPacket` is a control-rate protocol; audio-rate coupling is an internal
+optimization within the reference implementation.
 
 ---
 
@@ -292,7 +316,7 @@ COUPLING_COMPLIANCE: Full-v0.1
 
 **XOmnibus** (https://github.com/BertCalm/XO_OX-XOmnibus) is the reference implementation of this protocol.
 
-All 47 engines in XOmnibus are L3-compliant for the three v0.1 public types. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
+XOmnibus implements 71 engines across the original fleet, Kitchen Collection, and Singularity Collection. The three v0.1 public types are supported across the fleet; individual engine compliance declarations are available in engine metadata. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
 
 ```cpp
 // Speaker interface — emit coupling signal
@@ -307,7 +331,7 @@ virtual void applyCouplingInput (CouplingType type,
 
 The `MegaCouplingMatrix` in `Source/Core/MegaCouplingMatrix.h` is the host matrix: it manages routes, performs envelope following on source audio, and delivers packets to target engines at block boundaries.
 
-XOmnibus implements 14 coupling types internally. Three are published in this v0.1 specification. The remaining eleven are extended types used within XOmnibus and available as examples for implementors building on the `0x80`–`0xEF` private range.
+XOmnibus implements 14 coupling types internally. Three are published in this v0.1 specification. The extended types within XOmnibus are not part of this specification and are not documented here. Implementors may develop their own types in the `0x80`–`0xEF` private range using the extension mechanism defined in Section 7.
 
 ---
 
@@ -379,6 +403,6 @@ COUPLING_COMPLIANCE: Full-v0.1     // both, all 3 types; L3
 
 ---
 
-*XO_OX Coupling Protocol v0.1 — Published 2026-03-22 by XO_OX Designs*
+*XO_OX Coupling Protocol v0.1 — Release Candidate 2026-03-22 by XO_OX Designs*
 *Specification licensed under CC BY 4.0*
 *Reference implementation: https://github.com/BertCalm/XO_OX-XOmnibus*

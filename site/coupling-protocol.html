@@ -629,7 +629,7 @@ These terms have precise meanings throughout this specification.
       </tr>
       <tr>
         <td>Control Rate</td>
-        <td>Coupling updates are delivered at block boundaries (64&ndash;512 samples). Not per-sample unless explicitly specified by type.</td>
+        <td>Coupling updates are delivered at block boundaries (32&ndash;512 samples). Not per-sample unless explicitly specified by type.</td>
       </tr>
     </tbody>
   </table>
@@ -760,7 +760,7 @@ The source engine provides a smoothed envelope following its own amplitude. The 
 <h2 class="reveal" id="message-format">Message Format</h2>
 
 <p class="reveal">
-Coupling data is transmitted as a <strong>control-rate update packet</strong> &mdash; a 14-byte binary structure delivered to target engines at block boundaries. The format is minimal, host-independent, and extensible.
+Coupling data is transmitted as a <strong>control-rate update packet</strong> &mdash; a 16-byte binary structure delivered to target engines at block boundaries. The format is minimal, host-independent, and extensible.
 </p>
 
 <div class="code-block reveal"><span class="c-keyword">struct</span> <span class="c-type">CouplingPacket</span> {
@@ -773,7 +773,7 @@ Coupling data is transmitted as a <strong>control-rate update packet</strong> &m
     <span class="c-type">uint8_t</span>  flags;      <span class="c-comment">// Reserved. Set to 0x00.</span>
     <span class="c-type">uint8_t</span>  reserved;   <span class="c-comment">// Alignment padding. Set to 0x00.</span>
 };
-<span class="c-comment">// Total: 14 bytes per packet</span></div>
+<span class="c-comment">// Total: 16 bytes per packet</span></div>
 
 <div class="packet-diagram reveal" aria-label="Coupling packet byte layout">
   <div class="packet-row">
@@ -786,13 +786,13 @@ Coupling data is transmitted as a <strong>control-rate update packet</strong> &m
     <div class="packet-field"><span class="field-name">flags</span><span class="field-type">u8</span></div>
     <div class="packet-field"><span class="field-name">rsv</span><span class="field-type">u8</span></div>
   </div>
-  <p class="packet-label">14 bytes &mdash; delivered at block boundary, before target engine renders</p>
+  <p class="packet-label">16 bytes &mdash; delivered at block boundary, before target engine renders</p>
 </div>
 
 <h4 class="reveal">Field semantics</h4>
 
 <p class="reveal">
-<strong>signal</strong> is the live value &mdash; updated every block from the source engine. For Sympathetic, it encodes the source&rsquo;s normalized pitch deviation. For Complementary, it is the source amplitude RMS. For Responsive, it is the source envelope follower output. Always <code>[0.0, 1.0]</code>.
+<strong>signal</strong> is the live value &mdash; updated every block from the source engine. For Sympathetic, it is the source amplitude RMS. For Complementary, it is the source amplitude RMS. For Responsive, it is the source envelope follower output. Always <code>[0.0, 1.0]</code>.
 </p>
 
 <p class="reveal">
@@ -898,7 +898,7 @@ The protocol is designed to grow. Type IDs are allocated from reserved ranges; f
 </div>
 
 <p class="reveal">
-Future packet extensions must preserve the 14-byte v0.1 header. Additional fields are appended after <code>reserved</code>. Receivers should process the first 14 bytes and ignore the remainder when a packet is larger than expected.
+Future packet extensions must preserve the 16-byte v0.1 header. Additional fields are appended after <code>reserved</code>. Receivers should process the first 16 bytes and ignore the remainder when a packet is larger than expected.
 </p>
 
 <div class="article-divider reveal"></div>
@@ -951,7 +951,7 @@ Future packet extensions must preserve the 14-byte v0.1 header. Additional field
       <tr>
         <td>0.1</td>
         <td style="color:var(--text-dim); font-family:inherit; font-size:0.88rem; white-space:nowrap;">2026-03-22</td>
-        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 14-byte packet format. Three compliance levels. Reference implementation: XOmnibus v1.x (47 engines, 14 types).</td>
+        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 16-byte packet format. Three compliance levels. Reference implementation: XOmnibus v1.x (47 engines, 14 types).</td>
       </tr>
     </tbody>
   </table>
