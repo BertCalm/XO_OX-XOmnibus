@@ -56,6 +56,47 @@
 #include "Engines/Orca/OrcaEngine.h"
 #include "Engines/Octopus/OctopusEngine.h"
 
+// Engines added post-Octopus (original fleet)
+#include "Engines/Ostinato/OstinatoEngine.h"
+#include "Engines/OpenSky/OpenSkyEngine.h"
+#include "Engines/OceanDeep/OceandeepEngine.h"
+#include "Engines/Ouie/OuieEngine.h"
+#include "Engines/Obrix/ObrixEngine.h"
+#include "Engines/Orbweave/OrbweaveEngine.h"
+#include "Engines/Overtone/OvertoneEngine.h"
+#include "Engines/Organism/OrganismEngine.h"
+#include "Engines/Oxbow/OxbowEngine.h"
+#include "Engines/Oware/OwareEngine.h"
+#include "Engines/Opera/OperaEngine.h"
+#include "Engines/Offering/OfferingEngine.h"
+#include "Engines/Osmosis/OsmosisEngine.h"
+
+// Kitchen Collection — V2 paid expansion (Chef / Kitchen / Cellar / Garden / Broth / Fusion)
+#include "Engines/Oto/OtoEngine.h"
+#include "Engines/Octave/OctaveEngine.h"
+#include "Engines/Oleg/OlegEngine.h"
+#include "Engines/Otis/OtisEngine.h"
+#include "Engines/Oven/OvenEngine.h"
+#include "Engines/Ochre/OchreEngine.h"
+#include "Engines/Obelisk/ObeliskEngine.h"
+#include "Engines/Opaline/OpalineEngine.h"
+#include "Engines/Ogre/OgreEngine.h"
+#include "Engines/Olate/OlateEngine.h"
+#include "Engines/Oaken/OakenEngine.h"
+#include "Engines/Omega/OmegaEngine.h"
+#include "Engines/Orchard/OrchardEngine.h"
+#include "Engines/Overgrow/OvergrowEngine.h"
+#include "Engines/Osier/OsierEngine.h"
+#include "Engines/Oxalis/OxalisEngine.h"
+#include "Engines/Overwash/OverwashEngine.h"
+#include "Engines/Overworn/OverwornEngine.h"
+#include "Engines/Overflow/OverflowEngine.h"
+#include "Engines/Overcast/OvercastEngine.h"
+#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Oddfellow/OddfellowEngine.h"
+#include "Engines/Onkolo/OnkoloEngine.h"
+#include "Engines/Opcode/OpcodeEngine.h"
+
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <cmath>

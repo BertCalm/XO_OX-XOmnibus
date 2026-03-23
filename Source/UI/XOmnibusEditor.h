@@ -4,6 +4,7 @@
 #include "../Core/EngineRegistry.h"
 #include "CouplingStrip/CouplingStripEditor.h"
 #include "BinaryData.h"  // FontData:: namespace (embedded fonts)
+#include "EngineVocabulary.h"
 
 namespace xomnibus {
 
@@ -446,6 +447,7 @@ class ParameterGrid : public juce::Component
 {
 public:
     ParameterGrid(XOmnibusProcessor& proc,
+                  const juce::String& engId,
                   const juce::String& enginePrefix,
                   juce::Colour accentColour)
     {
@@ -462,7 +464,9 @@ public:
                     continue;
 
                 auto inner = pid.substring(pfx.length()); // e.g. "filterCutoff"
-                juce::String shortLabel = makeShortLabel(inner);
+                // Use vocabulary override if one exists; fall back to makeShortLabel.
+                juce::String shortLabel = EngineVocabulary::labelFor(
+                    engId, pid, makeShortLabel(inner));
 
                 auto slider = std::make_unique<juce::Slider>();
                 slider->setSliderStyle(juce::Slider::RotaryVerticalDrag);
@@ -585,10 +589,14 @@ public:
                 if (rp->getParameterID().startsWithIgnoreCase(macroPrefix))
                 {
                     foundIds.add(rp->getParameterID());
-                    // Derive short label: everything after "_macro" → uppercase
+                    // Derive short label: vocabulary override first, then
+                    // everything after "_macro" → uppercase as fallback.
                     juce::String raw = rp->getParameterID().substring(macroPrefix.length());
-                    foundNames.add(raw.isEmpty() ? juce::String("M" + juce::String(foundIds.size()))
-                                                 : raw.toUpperCase());
+                    juce::String defaultLabel = raw.isEmpty()
+                        ? juce::String("M" + juce::String(foundIds.size()))
+                        : raw.toUpperCase();
+                    foundNames.add(EngineVocabulary::labelFor(
+                        engineName, rp->getParameterID(), defaultLabel));
                 }
             }
         }
@@ -727,7 +735,7 @@ public:
         macroHero.loadEngine(engineId, prefix, accentColour);
 
         // Rebuild parameter grid for this engine
-        auto* newGrid = new ParameterGrid(processor, prefix, accentColour);
+        auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour);
         viewport.setViewedComponent(newGrid, /*takeOwnership=*/true);
 
         int gridW = juce::jmax(200, viewport.getWidth()
