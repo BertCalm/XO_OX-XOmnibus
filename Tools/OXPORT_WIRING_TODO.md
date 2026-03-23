@@ -37,24 +37,22 @@
 
 ## Remaining TODOs
 
-### 2. ASSEMBLE stage does not consume render_manifest.json
-- The ASSEMBLE stage (Stage 4) calls `xpn_mpce_quad_builder.load_presets()` independently,
-  re-scanning the preset directory. It does not use `selected_presets.json` to know
-  which presets were actually rendered.
-- **Action needed**: pass `selected_presets` into ASSEMBLE so the XPM only references
-  WAVs that were rendered, in the same order.
+### 2. ASSEMBLE stage — RESOLVED (2026-03-22)
+- When `selected_presets` is populated (SELECT ran), ASSEMBLE now builds `qb.PresetInfo`
+  objects directly from the selected_presets dicts instead of calling `qb.load_presets()`.
+- Fallback: when SELECT did not run, still scans full presets tree (backward compatible).
+- Dry-run output shows the source: "N selected presets" or "all {engine} presets".
 
-### 3. renders/ WAV staging for multi-preset packs
-- With SELECT wired, renders/ now contains `N × 256` WAVs organized as
-  `{preset_name}__{slug}__{note}__{vel}.WAV`.
-- The ASSEMBLE stage's WAV staging loop (copies renders/ → Samples/) needs to
-  handle subdirectory organization per preset.
+### 3. WAV staging for multi-preset packs — RESOLVED (2026-03-22)
+- When `selected_presets` is populated, WAVs are staged per preset into
+  `Samples/{program_slug}/{preset_name}/` (using the `{preset_name}__` prefix in WAV names).
+- When SELECT did not run, flat staging into `Samples/{program_slug}/` is preserved.
 
-### 4. Profile validator not called from RENDER
-- `xpn_profile_validator.py` should run after render to verify the rendered WAVs
-  match the profile phenotype assertions (e.g., kick_has_sub).
-- Currently the VALIDATE stage runs at the end but does not check audio content,
-  only XPM/XPN structure.
+### 4. WAV content audit in VALIDATE — RESOLVED (2026-03-22)
+- VALIDATE Phase 2 now audits renders/ WAVs: count, total size, zero-byte check.
+- Compares actual WAV count against `render_manifest.json` total_jobs.
+- Zero-byte WAVs cause VALIDATE failure (render likely silently failed).
+- Gated behind `continue_on_error` like other critical checks.
 
 ---
 

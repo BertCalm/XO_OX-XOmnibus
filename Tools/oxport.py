@@ -2043,19 +2043,46 @@ def cmd_build(args) -> int:
     if "assemble" not in skip:
         print(f"  [4/10] ASSEMBLE     MPCe XPM ({corner_strategy} corners)")
         if args.dry_run:
-            print(f"         → Would call: xpn_mpce_quad_builder.py --engine {engine} --pad-count {pad_count}")
+            src = f"{len(selected_presets)} selected presets" if selected_presets else f"all {engine} presets"
+            print(f"         → Would call: xpn_mpce_quad_builder.py --engine {engine} "
+                  f"--pad-count {pad_count} (source: {src})")
         else:
             try:
                 import xpn_mpce_quad_builder as qb
+                import shutil as _shutil
 
-                # Determine where to load presets from.
-                # Use the Presets/XOmnibus tree (search all mood subdirs for this engine).
-                presets_search_dir = PRESETS_DIR
-                presets = qb.load_presets(str(presets_search_dir), engine)
+                # TODO #2 fix: when SELECT ran, build PresetInfo from selected_presets
+                # dicts rather than re-scanning the entire presets tree. This guarantees
+                # the XPM only references presets that actually got rendered.
+                if selected_presets:
+                    presets = []
+                    for sp in selected_presets:
+                        dna = sp.get("dna", {})
+                        macros = sp.get("macros", {})
+                        presets.append(qb.PresetInfo(
+                            name=sp.get("name", ""),
+                            filepath=sp.get("path", ""),
+                            engine=engine,
+                            brightness=float(dna.get("brightness", 0.5)),
+                            warmth=float(dna.get("warmth", 0.5)),
+                            movement=float(dna.get("movement", 0.5)),
+                            density=float(dna.get("density", 0.5)),
+                            space=float(dna.get("space", 0.5)),
+                            aggression=float(dna.get("aggression", 0.5)),
+                            character=float(macros.get("character", 0.5)),
+                            movement_macro=float(macros.get("movement", 0.5)),
+                            coupling=float(macros.get("coupling", 0.5)),
+                            space_macro=float(macros.get("space", 0.5)),
+                            mood=sp.get("mood", ""),
+                            tags=sp.get("tags", []),
+                        ))
+                    print(f"         → SELECT wired: using {len(presets)} preset(s) from SELECT stage")
+                else:
+                    # Fallback: no SELECT ran — scan the full presets tree.
+                    presets = qb.load_presets(str(PRESETS_DIR), engine)
 
                 if not presets:
-                    print(f"         ⚠  No .xometa presets found for engine '{engine}' "
-                          f"in {presets_search_dir}")
+                    print(f"         ⚠  No presets found for engine '{engine}'")
                 else:
                     assignments = qb.assign_corners(presets, pad_count)
                     programs_dir = output_dir / "Programs"
@@ -2063,25 +2090,48 @@ def cmd_build(args) -> int:
                     xpm_path = qb.generate_xpm(engine, assignments, str(programs_dir))
                     assembled_xpm_paths.append(Path(xpm_path))
                     print(f"         ✓ {len(assignments)} pad(s) assigned "
-                          f"({len(presets)} presets loaded)")
+                          f"({len(presets)} presets)")
                     print(f"         ✓ Written: {xpm_path}")
 
-                    # Also copy renders/ WAVs into the expected Samples/ location
-                    # so the packager can include them in the archive.
+                    # TODO #3 fix: stage WAVs from renders/ into Samples/.
+                    # For multi-preset packs (SELECT wired), WAVs are named
+                    # {preset_name}__{slug}__{note}__{vel}.WAV — group them per
+                    # preset name into Samples/{program_slug}/{safe_preset_name}/
+                    # so the packager can include them without collision.
                     renders_dir = output_dir / "renders"
                     if renders_dir.exists():
-                        import shutil as _shutil
                         program_slug = Path(xpm_path).stem
-                        samples_dest = output_dir / "Samples" / program_slug
-                        samples_dest.mkdir(parents=True, exist_ok=True)
+                        samples_root = output_dir / "Samples" / program_slug
                         wav_count = 0
-                        for wav in sorted(renders_dir.glob("*.WAV")) + \
-                                   sorted(renders_dir.glob("*.wav")):
-                            dest_wav = samples_dest / wav.name
-                            if not dest_wav.exists():
-                                _shutil.copy2(wav, dest_wav)
-                            wav_count += 1
-                        print(f"         ✓ {wav_count} WAV(s) staged → Samples/{program_slug}/")
+                        if selected_presets:
+                            # Multi-preset: each preset has its own sample subdir.
+                            # WAV names: {preset_name}__{rest}.WAV
+                            for wav in sorted(renders_dir.glob("*.WAV")) + \
+                                       sorted(renders_dir.glob("*.wav")):
+                                parts = wav.stem.split("__", maxsplit=1)
+                                if len(parts) == 2:
+                                    preset_slug = parts[0]
+                                    dest_dir = samples_root / preset_slug
+                                else:
+                                    dest_dir = samples_root
+                                dest_dir.mkdir(parents=True, exist_ok=True)
+                                dest_wav = dest_dir / wav.name
+                                if not dest_wav.exists():
+                                    _shutil.copy2(wav, dest_wav)
+                                wav_count += 1
+                            print(f"         ✓ {wav_count} WAV(s) staged → "
+                                  f"Samples/{program_slug}/{{preset}}/")
+                        else:
+                            # Single-preset: flat staging.
+                            samples_root.mkdir(parents=True, exist_ok=True)
+                            for wav in sorted(renders_dir.glob("*.WAV")) + \
+                                       sorted(renders_dir.glob("*.wav")):
+                                dest_wav = samples_root / wav.name
+                                if not dest_wav.exists():
+                                    _shutil.copy2(wav, dest_wav)
+                                wav_count += 1
+                            print(f"         ✓ {wav_count} WAV(s) staged → "
+                                  f"Samples/{program_slug}/")
 
             except ImportError:
                 print(f"         ⚠  xpn_mpce_quad_builder not available")
@@ -2341,7 +2391,45 @@ def cmd_build(args) -> int:
             else:
                 print(f"         ⚠  No profile — skipping phenotype validation")
 
-            # Phase 2: Structural XPN integrity check (existing validator)
+            # Phase 2: WAV content audit (TODO #4 fix)
+            # Check that rendered WAVs exist, are non-empty, and count matches expectation.
+            renders_dir = output_dir / "renders"
+            if renders_dir.exists():
+                all_wavs = sorted(renders_dir.glob("*.WAV")) + \
+                           sorted(renders_dir.glob("*.wav"))
+                empty_wavs = [w for w in all_wavs if w.stat().st_size == 0]
+                total_bytes = sum(w.stat().st_size for w in all_wavs)
+                print(f"         → WAV audit: {len(all_wavs)} file(s), "
+                      f"{total_bytes / 1024 / 1024:.1f} MB total")
+                if empty_wavs:
+                    print(f"         ✗  {len(empty_wavs)} zero-byte WAV(s) — render likely failed:")
+                    for w in empty_wavs[:5]:
+                        print(f"              {w.name}")
+                    if len(empty_wavs) > 5:
+                        print(f"              ... and {len(empty_wavs) - 5} more")
+                    if not args.continue_on_error:
+                        return 1
+                else:
+                    print(f"         ✓ All {len(all_wavs)} WAV(s) non-empty")
+                    # Check expected count when selected_presets count is known.
+                    manifest_path = output_dir / "render_manifest.json"
+                    if manifest_path.exists():
+                        try:
+                            with open(manifest_path) as _mf:
+                                _manifest = json.load(_mf)
+                            expected = _manifest.get("total_jobs", 0)
+                            if expected and len(all_wavs) != expected:
+                                print(f"         ⚠  Expected {expected} WAV(s) per manifest, "
+                                      f"got {len(all_wavs)}")
+                            elif expected:
+                                print(f"         ✓ WAV count matches manifest ({expected})")
+                        except Exception:
+                            pass
+            else:
+                print(f"         → No renders/ directory — WAV audit skipped "
+                      f"(run RENDER stage first)")
+
+            # Phase 3: Structural XPN integrity check (existing validator)
             xpn_path = output_dir / f"XO_OX_{pack_id.replace('-', '_')}_v{version}.xpn"
             if xpn_path.exists():
                 print(f"         → XPN file exists: {xpn_path.name} ({xpn_path.stat().st_size:,} bytes)")
