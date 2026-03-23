@@ -204,6 +204,8 @@ public:
                 if (!v.active && v.ampEnv.getState() == EnvState::Idle)
                     continue;
 
+                ++v.age; // Track voice age for oldest-voice stealing
+
                 // Amp envelope
                 const float ampEnvVal = v.ampEnv.tick (pAtt, pDec, pSus, pRel, sr);
                 if (ampEnvVal < 1e-7f && v.ampEnv.getState() == EnvState::Idle)
@@ -223,7 +225,8 @@ public:
                 const double phaseInc = freq / sr;
 
                 // Macro CHARACTER + coupling modulates horizon scan position
-                const float horizonPos = std::clamp (pHorizon + pMacroChar * 0.5f - 0.25f + couplingHorizonMod, 0.0f, 1.0f);
+                const float cplScaleH = 1.0f + pMacroCouple * 3.0f;
+                const float horizonPos = std::clamp (pHorizon + pMacroChar * 0.5f - 0.25f + couplingHorizonMod * cplScaleH, 0.0f, 1.0f);
 
                 // Panorama oscillator: dual wavetable scanning in opposite directions
                 const float scan1 = horizonPos;
@@ -240,10 +243,13 @@ public:
                 const float oscMix = osc1 * (1.0f - pOscMix) + osc2 * pOscMix;
 
                 // Vista filter: horizon line opens/closes spectral view
-                // Coupling input modulates filter cutoff and horizon scan
-                const float baseCutoff = 200.0f + pVistaOpen * 18000.0f + couplingFilterMod;
+                // COUPLING macro scales all coupling input sensitivity
+                const float cplScale = 1.0f + pMacroCouple * 3.0f; // 0→1x, 1→4x
+                const float baseCutoff = 200.0f + pVistaOpen * 18000.0f + couplingFilterMod * cplScale;
                 const float envCutoff = baseCutoff * (1.0f + filtEnvVal * pFiltEnvAmt * velFilterMod);
-                const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * (pMacroMov + modWheel * pModWheelDep) * 0.3f);
+                // MOVEMENT macro directly scales LFO→filter depth (no triple attenuation)
+                const float movementAmt = pMacroMov + modWheel * pModWheelDep;
+                const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * std::max (movementAmt, 0.1f));
                 const float finalCutoff = std::clamp (modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
 
                 v.filterLP.setCoefficients_fast (finalCutoff, pFilterRes, static_cast<float> (sr));
@@ -260,7 +266,8 @@ public:
 
                 // Parallax stereo: high notes spread wider (+ coupling modulation)
                 const float noteNorm = (v.note - 36.0f) / 60.0f; // 0=C2, 1=C7
-                const float parallaxTotal = std::clamp (pParallax + couplingParallaxMod, 0.0f, 1.0f);
+                const float cplScaleP = 1.0f + pMacroCouple * 3.0f;
+                const float parallaxTotal = std::clamp (pParallax + couplingParallaxMod * cplScaleP, 0.0f, 1.0f);
                 const float spread = std::clamp (noteNorm * parallaxTotal, 0.0f, 1.0f);
                 // Equal-power complementary panning
                 const float panAngle = spread * 0.4f * (1.0f + lfo2Val * 0.1f);
@@ -511,6 +518,7 @@ private:
         float velocity = 0.0f;
         float baseFreq = 440.0f;
         double phase1 = 0.0, phase2 = 0.0;
+        uint32_t age = 0; // For oldest-voice stealing
         SimpleEnvelope ampEnv, filterEnv;
         CytomicSVF filterLP, filterHP;
     };
@@ -533,7 +541,20 @@ private:
                 break;
             }
         }
-        if (idx == -1) idx = 0; // Steal first voice
+        if (idx == -1)
+        {
+            // Steal oldest voice
+            uint32_t maxAge = 0;
+            idx = 0;
+            for (int i = 0; i < kMaxVoices; ++i)
+            {
+                if (voices[static_cast<size_t> (i)].age > maxAge)
+                {
+                    maxAge = voices[static_cast<size_t> (i)].age;
+                    idx = i;
+                }
+            }
+        }
 
         auto& v = voices[static_cast<size_t> (idx)];
         v.active = true;
@@ -542,8 +563,10 @@ private:
         v.baseFreq = 440.0f * std::pow (2.0f, (noteNumber - 69.0f) / 12.0f);
         v.phase1 = 0.0;
         v.phase2 = 0.0;
+        v.age = 0;
         v.ampEnv.gate (true);
         v.filterEnv.gate (true);
+        ++voiceCounter;
     }
 
     void releaseVoice (int noteNumber)
@@ -571,18 +594,36 @@ private:
         float base = 0.0f;
         switch (shape)
         {
-            case 0: // Sine
-                base = std::sin (p * juce::MathConstants<float>::twoPi);
+            case 0: // Sine → scan adds odd harmonics (sine→square continuum)
+            {
+                const float sine = std::sin (p * juce::MathConstants<float>::twoPi);
+                const float h3 = std::sin (p * juce::MathConstants<float>::twoPi * 3.0f) * 0.333f;
+                const float h5 = std::sin (p * juce::MathConstants<float>::twoPi * 5.0f) * 0.2f;
+                base = sine + s * (h3 + h5);
+                base /= (1.0f + s * 0.533f); // Normalize
                 break;
-            case 1: // Triangle
-                base = 4.0f * std::abs (p - 0.5f) - 1.0f;
+            }
+            case 1: // Triangle → scan morphs toward saw
+            {
+                const float tri = 4.0f * std::abs (p - 0.5f) - 1.0f;
+                const float saw = 2.0f * p - 1.0f;
+                base = tri * (1.0f - s) + saw * s;
                 break;
-            case 2: // Saw
-                base = 2.0f * p - 1.0f;
+            }
+            case 2: // Saw → scan adds 2nd harmonic (brightness)
+            {
+                const float saw = 2.0f * p - 1.0f;
+                const float h2 = std::sin (p * juce::MathConstants<float>::twoPi * 2.0f) * 0.5f;
+                base = saw + s * h2;
+                base /= (1.0f + s * 0.5f);
                 break;
-            case 3: // Square
-                base = p < 0.5f ? 1.0f : -1.0f;
+            }
+            case 3: // Square → scan morphs pulse width (50%→10%)
+            {
+                const float pw = 0.5f - s * 0.4f;
+                base = p < pw ? 1.0f : -1.0f;
                 break;
+            }
             case 4: // Pulse (variable width via scan)
             {
                 float pw = 0.1f + s * 0.8f;
@@ -638,6 +679,7 @@ private:
     float modWheel = 0.0f;
     float aftertouch = 0.0f;
     float pitchBendNorm = 0.0f;
+    uint32_t voiceCounter = 0;
 
     // Delay buffers (ping-pong, ~0.5s at 48kHz)
     static constexpr int kDelayBufSize = 24000;
