@@ -11,7 +11,9 @@
  *   5. Glass / Porthole Formula
  *   6. PlaySurface Tokens
  *   7. Typography
- *   8. Animation
+ *   8. Typography Scale (10 Named Tokens)
+ *   9. Spacing Scale
+ *  10. Animation
  */
 
 
@@ -23,24 +25,51 @@
    ============================================================ */
 
 :root {
-  /* Backgrounds — dark panel hierarchy */
+  /* Backgrounds — dark panel hierarchy
+     When to use: Layer these top-to-bottom. --xo-bg is the
+     deepest layer (app window behind all panels). --xo-bg-panel
+     is the standard panel background — use for any floating or
+     docked panel. --xo-bg-card is for cards, tiles, and list
+     items that sit inside a panel. --xo-bg-raised is for
+     interactive elements (buttons, knob rings, toggle tracks)
+     that need to appear physically lifted off the panel surface. */
   --xo-bg:          #0E0E10;   /* deepest layer: app background */
   --xo-bg-panel:    #141416;   /* panel background */
   --xo-bg-card:     #1A1A1E;   /* card / tile background */
   --xo-bg-raised:   #1F1F24;   /* raised element (button, knob ring) */
 
-  /* Borders */
+  /* Borders
+     When to use: Use --xo-border for every dividing line, panel
+     edge, and card outline in dark surfaces. Do not use solid
+     color borders — this single token ensures consistent
+     translucency across all surfaces. */
   --xo-border: rgba(255, 255, 255, 0.07);
 
-  /* Text */
+  /* Text
+     When to use: --xo-text-primary for all primary labels,
+     values, and headings. --xo-text-muted for secondary
+     descriptors, metadata, disabled states, and placeholder text.
+     --xo-text-dim for the lowest-priority text — timestamps,
+     inactive UI hints, decorative dividers. Never invent custom
+     opacity values for text; always use one of these three. */
   --xo-text-primary: #F0EDE8;
   --xo-text-muted:   rgba(240, 237, 232, 0.45);
   --xo-text-dim:     rgba(240, 237, 232, 0.20);
 
-  /* Accent */
+  /* Accent
+     When to use: --xo-gold for the single global accent — active
+     states, setpoint markers, coupling strip highlights, macro
+     labels, selected tab indicators, and focus rings. Never use
+     an engine accent color in place of XO Gold for global UI
+     chrome. Engine colors are reserved for per-engine identity
+     surfaces (porthole rings, value arcs, active pad glow). */
   --xo-gold:  #E9C46A;   /* global highlight / setpoint color */
 
-  /* Light mode shell */
+  /* Light mode shell
+     When to use: --xo-shell is the warm white outer frame of the
+     app window in the Gallery Model. Apply it to the top-level
+     app chrome, window title bar, and any surface that wraps
+     around the dark panel interior. Never use it inside panels. */
   --xo-shell: #F8F6F3;   /* warm white outer frame (Gallery Model) */
 }
 
@@ -52,15 +81,33 @@
    ============================================================ */
 
 :root {
-  /* Sunlit zone — 0–55% depth: tropical surface, warm blues */
+  /* Sunlit zone — 0–55% depth: tropical surface, warm blues
+     When to use: --zone-sunlit and --zone-sunlit-glow for the
+     top portion of the Fretless strip (high-pitch / high-energy
+     region), zone arc backgrounds at shallow depth, and any UI
+     element that metaphorically represents surface / brightness /
+     high frequency. Do not use for brand accent — use --xo-gold
+     for brand moments. Use the zone colors only in contexts
+     that map spatially to ocean depth. */
   --zone-sunlit:      #48CAE4;
   --zone-sunlit-glow: rgba(72, 202, 228, 0.25);
 
-  /* Twilight zone — 55–80% depth: deep ocean, cooler blues */
+  /* Twilight zone — 55–80% depth: deep ocean, cooler blues
+     When to use: Mid-register Fretless strip, mid-depth zone arc
+     backgrounds, navigation markers representing the middle range
+     of a parameter or the middle third of a vertical layout.
+     Prefer this over --zone-sunlit for elements that sit in the
+     middle of a spatial hierarchy. */
   --zone-twilight:      #0096C7;
   --zone-twilight-glow: rgba(0, 150, 199, 0.25);
 
-  /* Midnight zone — 80–100% depth: bioluminescent abyss, violet */
+  /* Midnight zone — 80–100% depth: bioluminescent abyss, violet
+     When to use: Bottom of the Fretless strip (sub / bass /
+     low-frequency region), deepest zone arc backgrounds, any
+     element that represents extreme depth, darkness, or the
+     lowest end of a parameter range. The glow variant is more
+     opaque than sunlit/twilight — intentional, as bioluminescence
+     is brighter against deeper darkness. */
   --zone-midnight:      #7B2FBE;
   --zone-midnight-glow: rgba(123, 47, 190, 0.35);
 }
@@ -71,6 +118,17 @@
    One custom property per registered engine.
    Property name matches the Engine ID (all-caps).
    Source: CLAUDE.md Engine Modules table.
+
+   When to use engine accent colors vs. XO Gold:
+   • Use the engine accent color on any surface that is
+     OWNED by that engine: porthole ring, value arc, active
+     pad glow, engine name badge, preset chip border.
+   • Use --xo-gold for GLOBAL UI chrome that is engine-agnostic:
+     setpoint markers, coupling strip, macro labels, focus rings,
+     active tab underlines, and any element shared across engines.
+   • Never tint shared structural elements (borders, backgrounds,
+     scrollbars) with engine accent colors — they would clash when
+     multiple engines are visible simultaneously.
    ============================================================ */
 
 :root {
@@ -139,38 +197,72 @@
    ============================================================ */
 
 :root {
-  /* Instrument container diameter */
+  /* Instrument container diameter
+     When to use: --instrument-sm for dense parameter grids where
+     labels appear below the knob (e.g. 8+ knobs in a row).
+     --instrument-md for the standard single-parameter control in
+     any panel. --instrument-lg for prominent primary parameters
+     (filter cutoff, master pitch). --instrument-hero for the
+     large single-control focal point on a full-bleed engine view
+     or the site's instrument demo section. */
   --instrument-sm:   40px;
   --instrument-md:   64px;
   --instrument-lg:   96px;
   --instrument-hero: 280px;
 
-  /* Track arc — background ring showing full sweep range */
+  /* Track arc — background ring showing full sweep range
+     When to use: Always present on every knob. This is the gray
+     ghost arc showing the full 260° sweep. Width scales with
+     instrument size — always use the matching -sm/-md/-lg/-hero
+     suffix; never mix sizes. */
   --track-width-sm:   4px;
   --track-width-md:   6px;
   --track-width-lg:   8px;
   --track-width-hero: 16px;
 
-  /* Zone arc — tinted background region (e.g. danger zone, resonance zone) */
+  /* Zone arc — tinted background region (e.g. danger zone, resonance zone)
+     When to use: --zone-arc-opacity for standard zone highlights
+     such as the resonance peak region or a safe operating range.
+     --zone-arc-critical-opacity for danger/warning zones (e.g.
+     the self-oscillation region on a filter knob, or clipping
+     threshold on a drive control). Never exceed 0.28 — zone arcs
+     must not compete with the value arc for visual attention. */
   --zone-arc-opacity:          0.22;
   --zone-arc-critical-opacity: 0.28;
 
-  /* Value arc — foreground arc showing current parameter value */
+  /* Value arc — foreground arc showing current parameter value
+     When to use: Always present; this is the colored arc that
+     moves with the parameter. Color it with the active engine's
+     accent color (--engine-XXXX). Width scales with instrument
+     size — always use the matching suffix. */
   --value-arc-width-sm:   2px;
   --value-arc-width-md:   3px;
   --value-arc-width-lg:   4px;
   --value-arc-width-hero: 8px;
 
-  /* Setpoint marker — small tick showing default / target value */
+  /* Setpoint marker — small tick showing default / target value
+     When to use: Render a small radial tick at the parameter's
+     default or target setpoint. Always use --setpoint-color
+     (#E9C46A / XO Gold) — never use the engine accent color for
+     the setpoint. This ensures the setpoint is always
+     distinguishable from the value arc regardless of engine. */
   --setpoint-color: #E9C46A;   /* matches --xo-gold */
 
   /* Arc sweep geometry — shared by all instrument sizes.
      Knobs sweep 260° starting at the 7-o'clock position (140°).
-     End = 140 + 260 = 400° (equivalent to 40°, i.e. 5-o'clock). */
+     End = 140 + 260 = 400° (equivalent to 40°, i.e. 5-o'clock).
+     When to use: Use these raw degree values in JavaScript/SVG
+     arc calculations. Do not hardcode 140 or 260 anywhere — read
+     from these tokens so all knobs stay in sync if the geometry
+     ever changes. */
   --arc-start-deg:  140;
   --arc-sweep-deg:  260;
 
-  /* Value display smoothing — interpolation lag for live-readout text */
+  /* Value display smoothing — interpolation lag for live-readout text
+     When to use: Apply as the animation/transition duration for
+     the numeric value label that sits inside or below a knob.
+     80ms gives a perceptible but non-laggy smoothing effect that
+     prevents the readout from flickering on fast automation. */
   --value-smooth-ms: 80;
 }
 
@@ -183,11 +275,23 @@
    ============================================================ */
 
 :root {
-  /* Frosted glass surface */
+  /* Frosted glass surface
+     When to use: --glass-bg as the background-color for any
+     floating overlay panel (tooltips, context menus, popovers,
+     modal sheets) that sits above the main dark panel layer.
+     --glass-border as the border on those same elements. This
+     formula gives the translucent "floating card" appearance.
+     Do not use glass tokens on structural panels (sidebars,
+     footers, main content areas) — those use --xo-bg-panel. */
   --glass-bg:     rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
 
-  /* Top/bottom vignette — darkens edges of glass panels */
+  /* Top/bottom vignette — darkens edges of glass panels
+     When to use: Apply as a pseudo-element (::after) overlay on
+     glass panels and porthole viewports to add depth and focus
+     attention toward the center. Required on all engine portholes.
+     Optional on flat glass panels — use when the panel content
+     is rich enough that edge darkening aids readability. */
   --glass-vignette: linear-gradient(
     to bottom,
     rgba(14, 14, 16, 0.4)   0%,
@@ -196,7 +300,15 @@
     rgba(14, 14, 16, 0.4) 100%
   );
 
-  /* Circular porthole frame */
+  /* Circular porthole frame
+     When to use: --porthole-radius (50%) creates the circular
+     clip for the engine's visual viewport — always apply this.
+     --porthole-border-width for the ring border drawn around the
+     porthole circle; color it with the engine's accent color.
+     --porthole-glow-blur for the box-shadow on the porthole ring
+     when the engine is active or hovered; spread the shadow
+     using the engine accent color at reduced opacity. Together
+     these three tokens define every engine porthole in the fleet. */
   --porthole-radius:       50%;
   --porthole-border-width: 2px;
   --porthole-glow-blur:    12px;   /* box-shadow blur for accent color glow */
@@ -210,17 +322,37 @@
    ============================================================ */
 
 :root {
-  /* Pad grid */
+  /* Pad grid
+     When to use: --pad-size for the fixed width and height of
+     every pad cell (maintain square aspect ratio). --pad-gap for
+     the gap property on the CSS grid container. --pad-radius for
+     the border-radius on each pad cell. --pad-bg for the default
+     (resting) pad cell background. --pad-active-glow-spread as
+     the box-shadow spread radius when a MIDI note-on arrives —
+     combine with the engine's accent color and a short
+     --anim-note-on-ms transition. Never increase pad size beyond
+     this token in dense grids; scale the container instead. */
   --pad-size:             64px;
   --pad-gap:              4px;
   --pad-radius:           8px;
   --pad-bg:               rgba(255, 255, 255, 0.04);
   --pad-active-glow-spread: 12px;   /* box-shadow spread on note-on */
 
-  /* Fretless strip */
+  /* Fretless strip
+     When to use: --fretless-height for the fixed height of the
+     continuous pitch strip. This height is tuned to give enough
+     vertical resolution for expressive pitch gestures. Never
+     make this shorter than 200px — gesture accuracy degrades. */
   --fretless-height: 280px;
 
-  /* Fretless gradient — maps ocean zones top to bottom */
+  /* Fretless gradient — maps ocean zones top to bottom
+     When to use: Apply as the background of the Fretless strip
+     element. This gradient uses the three ecological depth zone
+     colors (sunlit → twilight → midnight) to give the strip its
+     spatial identity. High pitches are at the top (sunlit);
+     low pitches are at the bottom (midnight). Do not substitute
+     arbitrary gradient colors here — the zone metaphor is
+     load-bearing for the product's visual language. */
   --fretless-gradient: linear-gradient(
     to bottom,
     var(--zone-sunlit)   0%,
@@ -232,29 +364,265 @@
 
 /* ============================================================
    SECTION 7 — Typography
-   Two-family system: Nebulica for display/UI chrome,
+   Two-family system: Space Grotesk for display/UI chrome,
    Inter for body/readouts, JetBrains Mono for values/code,
    Chrys (ChrysDistorted) for emphasis marks and em-style accents.
+
+   When to use font families:
+   --font-display: Use for all UI chrome text — panel headers,
+     section titles, engine names, preset names, tab labels,
+     button text, and any text that is part of the structural
+     frame of the interface. Space Grotesk's geometric weight
+     anchors the UI hierarchy.
+   --font-body: Use for all descriptive, instructional, and
+     narrative text — Outshine descriptions, help text, tutorial
+     content, error messages, and any text longer than ~6 words.
+   --font-mono: Use exclusively for numeric values, parameter
+     readouts, file paths, MIDI note names, frequencies, and code.
+     Monospaced digits prevent layout shift as values update.
+   --font-accent: Use sparingly for decorative <em> marks,
+     pull-quote stylization, and brand moments where distortion
+     adds character. Never use for functional text.
    ============================================================ */
 
 :root {
-  --font-display: 'Nebulica', system-ui;
+  --font-display: 'Space Grotesk', system-ui;
   --font-body:    'Inter', system-ui;
   --font-mono:    'JetBrains Mono', monospace;
   --font-accent:  'Chrys', system-ui;   /* ChrysDistorted variant for <em> */
 
-  /* Type scale */
-  --text-label:           9px;    /* parameter labels below knobs */
-  --text-value:           13px;   /* live readout values */
-  --text-value-lg:        16px;   /* hero readouts, large display fields */
+  /* Legacy type scale — prefer Section 8 named tokens for new work.
+     These three properties remain for backward compatibility with
+     existing components that already reference them. */
 
-  /* Label tracking — all-caps parameter labels use wide letter-spacing */
+  /* --text-label: Use for all-caps parameter labels directly
+     below or beside a knob/slider — these are rendered at 9px
+     with wide letter-spacing (--text-label-tracking).
+     When to use: Only for knob labels. Use --xo-type-label-sm
+     from Section 8 for all other annotation text. */
+  --text-label:           9px;
+
+  /* --text-value: Use for the live numeric readout inside or
+     below a knob, or in any parameter value display field.
+     When to use: Standard readout size in panels. For hero
+     readouts on the main display, use --text-value-lg. */
+  --text-value:           13px;
+
+  /* --text-value-lg: Use for the large central readout field
+     (e.g. the pitch display, the BPM counter, or any hero
+     numeric value that is the focal point of a view).
+     When to use: One per view maximum. */
+  --text-value-lg:        16px;
+
+  /* Label tracking — all-caps parameter labels use wide letter-spacing
+     When to use: Apply to any text using --text-label size that
+     is rendered in uppercase. Do not apply to mixed-case text —
+     wide tracking degrades legibility for sentence-case labels. */
   --text-label-tracking:  0.18em;
 }
 
 
+/* ═══════════════════════════════════════════════════════
+   SECTION 8 — TYPOGRAPHY SCALE — 10 Named Tokens
+   Derived from Game UX Kit 5-level hierarchy, mapped to XO_OX fonts.
+   These tokens replace ad-hoc font-size/weight/line-height
+   combinations. Every text element in the UI should use exactly
+   one of these tokens via the CSS shorthand `font` property.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* Display: Window titles, app chrome. Space Grotesk SemiBold.
+     When to use: The largest text on any screen. One per view
+     maximum. Use for the main window title, the name of the
+     currently active engine in the hero header, or the top-level
+     page title on the marketing site. Never use more than once
+     per screen — it defines the apex of the hierarchy. */
+  --xo-type-display: 600 20px/1.2 'Space Grotesk', sans-serif;
+
+  /* Header Large: Section headers that divide major UI areas.
+     When to use: PlaySurface section labels, Outshine panel
+     titles, site section headers (e.g. "Engines", "Presets",
+     "Coupling"). Use when you need to divide the screen into
+     named major regions. Can appear 2–4 times per view. */
+  --xo-type-header-lg: 600 14px/1.3 'Space Grotesk', sans-serif;
+
+  /* Header Small: Sub-section headers within panels.
+     When to use: "Velocity Strategy", "FX Routing", "Expression"
+     tab headers, group labels within a settings panel. Use when
+     you need a second level of heading below a Header Large, or
+     when a single panel has multiple named subsections. */
+  --xo-type-header-sm: 600 12px/1.3 'Space Grotesk', sans-serif;
+
+  /* Title Large: Engine names, preset names, prominent labels.
+     When to use: The name of the currently selected engine or
+     preset displayed at standard size. Card titles in the engine
+     browser. The label on a large interactive element (e.g. a
+     mode selector). Use when a single item needs to be named
+     with moderate visual weight. */
+  --xo-type-title-lg: 400 13px/1.4 'Space Grotesk', sans-serif;
+
+  /* Title Small: Secondary identifiers, card titles.
+     When to use: Mood tags, category labels, card headers in
+     compact grids, engine short names in the coupling strip.
+     Use for names that are secondary to a Title Large above them,
+     or for names in dense list/grid contexts. */
+  --xo-type-title-sm: 400 12px/1.4 'Space Grotesk', sans-serif;
+
+  /* Body Large: Primary descriptive text, instructions.
+     When to use: Outshine classification descriptions, help text,
+     tutorial content, preset description fields, any paragraph
+     of 2+ sentences. This is the default reading size for the
+     Field Guide and Signal blog on the marketing site. */
+  --xo-type-body-lg: 400 13px/1.5 'Inter', sans-serif;
+
+  /* Body Small: Secondary text, captions, metadata.
+     When to use: "Last modified", sample duration, file size,
+     status messages, image captions, footnotes. Use when the
+     information is genuinely secondary and should recede behind
+     primary content. Pair with --xo-text-muted color. */
+  --xo-type-body-sm: 400 11px/1.5 'Inter', sans-serif;
+
+  /* Label Large: Form labels, control names.
+     When to use: "Attack", "Decay", "Cutoff" — the name above
+     or beside a control. Button text in standard-size buttons.
+     Navigation tab labels. Any functional label that names a
+     control the user will interact with. */
+  --xo-type-label-lg: 500 11px/1.3 'Inter', sans-serif;
+
+  /* Label Small: Tiny annotations, badge text, tooltip content.
+     When to use: Unit suffixes (ms, Hz, %), tooltip text, badge
+     counts, keyboard shortcut hints, legend labels in small
+     charts. This is the smallest text in the system — use
+     sparingly and only when the information cannot be conveyed
+     at a larger size. Pair with --xo-text-muted for low-priority
+     annotations. */
+  --xo-type-label-sm: 400 10px/1.3 'Inter', sans-serif;
+
+  /* Mono: Numeric values, data readouts, code.
+     When to use: Parameter values (0.50), frequencies (440 Hz),
+     file paths, MIDI note names (C4), BPM values, sample lengths,
+     hex color codes, any string where character alignment matters
+     or where the value changes live and must not cause layout
+     shift. Always use this for readout fields — never Inter. */
+  --xo-type-mono: 400 11px/1.4 'JetBrains Mono', monospace;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 9 — SPACING SCALE — 4px Base, 12 Named Multipliers
+   Visual reference (each █ = 4px):
+
+   --xo-space-05:   2px  ▌         Hairline gaps, icon-to-text
+   --xo-space-1:    4px  █         Minimum padding, inline spacing
+   --xo-space-2:    8px  ██        Standard gap between related items
+   --xo-space-25:  10px  ██▌       Compact padding (buttons, badges)
+   --xo-space-3:   12px  ███       Standard padding (cards, inputs)
+   --xo-space-4:   16px  ████      Panel padding, section gaps
+   --xo-space-5:   20px  █████     Group separation
+   --xo-space-6:   24px  ██████    Major section gaps
+   --xo-space-8:   32px  ████████  Panel-to-panel spacing
+   --xo-space-10:  40px  ██████████  Large section breaks
+   --xo-space-12:  48px  ████████████  Page-level spacing
+   --xo-space-16:  64px  ████████████████  Maximum spacing token
+
+   When to use spacing tokens:
+   Never write raw px values for margin, padding, or gap.
+   Always use the nearest token. If a layout requires a gap
+   that falls exactly between two tokens, use the smaller one
+   and revisit whether the design needs adjustment. This keeps
+   all whitespace mathematically consistent across the system.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* 2px — Hairline gaps, icon-to-text nudges.
+     When to use: The smallest perceivable gap. Use between an
+     icon and its accompanying label text, between a badge and
+     the element it annotates, or between a unit suffix and a
+     value. Not a padding value — too small to breathe. */
+  --xo-space-05: 2px;
+
+  /* 4px — Minimum internal padding, tight inline spacing.
+     When to use: The smallest padding that creates a visible
+     breathing space. Use for compact chip/badge padding, the
+     gap between a radio button and its label, or the internal
+     padding of a very dense tooltip. */
+  --xo-space-1: 4px;
+
+  /* 8px — Standard gap between related items.
+     When to use: The workhorse spacing token. Use as the gap
+     between items in a horizontal toolbar, between icon rows,
+     between a knob and its label, and as padding inside small
+     interactive controls (toggle, small button). Related items
+     that belong to the same group should be 8px apart. */
+  --xo-space-2: 8px;
+
+  /* 10px — Compact padding for buttons and badges.
+     When to use: Horizontal padding inside standard-size buttons,
+     compact list item padding, badge/chip internal horizontal
+     padding. Provides slightly more room than 8px without the
+     weight of 12px. */
+  --xo-space-25: 10px;
+
+  /* 12px — Standard internal padding for cards and inputs.
+     When to use: Internal padding for text input fields, card
+     bodies, dropdown items, and form rows. The standard "room
+     to breathe" for any container the user reads content from. */
+  --xo-space-3: 12px;
+
+  /* 16px — Panel padding, section gaps.
+     When to use: The standard padding from the edge of a panel
+     to its content. Vertical spacing between labeled sections
+     within a panel. Horizontal padding of the main content area.
+     This is the most common panel-edge token. */
+  --xo-space-4: 16px;
+
+  /* 20px — Group separation within a panel.
+     When to use: The vertical gap between two distinct parameter
+     groups within the same panel (e.g. between the "Oscillator"
+     group and the "Filter" group). Larger than section gaps but
+     smaller than panel-edge padding. */
+  --xo-space-5: 20px;
+
+  /* 24px — Major section gaps, between-panel breathing room.
+     When to use: The gap between two major sections of a panel
+     that have visual dividers between them, the vertical spacing
+     between a section header and the first item in that section,
+     or the internal vertical padding of a modal/sheet header. */
+  --xo-space-6: 24px;
+
+  /* 32px — Panel-to-panel spacing.
+     When to use: The gap between two adjacent panels in a
+     multi-panel layout (e.g. engine panel and effects panel),
+     the top/bottom margin of a major UI zone, or the spacing
+     between hero elements on the marketing site. */
+  --xo-space-8: 32px;
+
+  /* 40px — Large section breaks.
+     When to use: The vertical spacing between major sections
+     on marketing pages (e.g. between the hero and the engine
+     grid), or between two top-level UI zones that need clear
+     visual separation. Rarely used inside the instrument UI. */
+  --xo-space-10: 40px;
+
+  /* 48px — Page-level spacing.
+     When to use: Top/bottom page padding on the marketing site,
+     the spacing above a page-level section heading, or the
+     vertical clearance below the navigation bar. Almost never
+     used inside the instrument UI — use for site layout only. */
+  --xo-space-12: 48px;
+
+  /* 64px — Maximum spacing token.
+     When to use: Hero section vertical padding on the marketing
+     site, full-bleed section dividers, or any layout that
+     requires the maximum available breathing room. If you need
+     more than 64px, use a multiplier of this token in code rather
+     than introducing a new token. */
+  --xo-space-16: 64px;
+}
+
+
 /* ============================================================
-   SECTION 8 — Animation
+   SECTION 10 — Animation
    Timing values used across UI state transitions, note events,
    coupling pulse animations, and creature ambient behaviour.
    --anim-coupling-pulse-hz is a raw Hz value; convert to ms in
@@ -262,9 +630,40 @@
    ============================================================ */
 
 :root {
-  --anim-state-ms:           150ms;    /* hover / focus / active state transitions */
-  --anim-note-on-ms:          50ms;    /* pad light-up on MIDI note-on */
-  --anim-note-off-ms:        300ms;    /* pad fade on MIDI note-off */
+  /* --anim-state-ms: Use as the transition duration for ALL
+     hover, focus, and active state changes on interactive
+     elements (buttons, knobs, pads, tabs, toggles). 150ms is
+     fast enough to feel snappy without being jarring. Never
+     use a faster transition for state changes — it will feel
+     glitchy rather than responsive. */
+  --anim-state-ms:           150ms;
+
+  /* --anim-note-on-ms: Use as the transition duration for the
+     pad glow animation that triggers on a MIDI note-on event.
+     50ms is near-instant, matching the perceptual threshold for
+     "simultaneous" feedback. Use only for note-on; never for
+     other state transitions. */
+  --anim-note-on-ms:          50ms;
+
+  /* --anim-note-off-ms: Use as the transition duration for the
+     pad glow fade that follows a MIDI note-off event. 300ms
+     gives a short natural decay that mirrors the acoustic tail
+     of a percussive sound without feeling sluggish. Use only
+     for note-off; never for other state transitions. */
+  --anim-note-off-ms:        300ms;
+
+  /* --anim-coupling-pulse-hz: Use as the base pulse rate for
+     coupling route arc animations in the Coupling Performance
+     view. Value is in Hz — convert to ms for CSS animations via
+     JavaScript. Individual routes may override this value;
+     treat it as the default "resting" pulse rate. */
   --anim-coupling-pulse-hz:    2;      /* Hz — coupling route arc pulse rate; overridden per-route */
+
+  /* --anim-creature-blink-ms: Use as the full cycle duration
+     for ambient blink animations on engine creature illustrations
+     in the aquarium view and engine browser. 2000ms produces a
+     slow, natural blink rhythm. Vary per engine by offsetting
+     the animation-delay — never set all creatures to the same
+     phase or they will blink in unison and look robotic. */
   --anim-creature-blink-ms: 2000ms;   /* ambient blink cycle for engine creature illustrations */
 }

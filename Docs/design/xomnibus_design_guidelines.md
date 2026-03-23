@@ -176,7 +176,7 @@ The PlaySurface (performance interface) uses a **dark background** even in light
 Surface background:  #1A1A1A
 Surface card:        #2D2D2D
 Text light:          #EEEEEE
-Text dim:            #888888
+Text dim:            #A0A0A0
 Amber (XOSEND pad):  #F5C97A
 Terracotta (accent): #E07A5F
 Teal (OddOscar ref): #2A9D8F

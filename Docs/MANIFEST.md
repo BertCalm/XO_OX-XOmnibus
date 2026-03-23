@@ -32,6 +32,7 @@ For the detailed documentation improvement plan, see `documentation_health_plan.
 
 | Document | Purpose | Audience | Authority For | Status |
 |----------|---------|----------|---------------|--------|
+| `xoutshine-forge-spec.md` | XOutshine universal instrument forge format spec | Export engineers, pipeline devs | SampleCategory enum, multi-source keygroups, velocity strategies, RR spec, formant metadata, FX routing, 9-stage pipeline, XPM examples, MPC constraints | ✅ Current (2026-03-22, v1.0) |
 | `xomnibus_sound_design_guides.md` | Per-engine sonic reference | Sound designers | Per-engine parameters, coupling, pairings | ⚠️ 38/42 engines (OBRIX, ORBWEAVE, OVERTONE, ORGANISM pending) |
 | `xomnibus_name_migration_reference.md` | Legacy → canonical engine name map | Agents, engineers | Name aliases, gotchas | ✅ Current |
 | `xomnibus_landscape_2026.md` | Grand fleet survey | Sound designers, engineers | Pre-sweep baseline metrics | ⚠️ Dated 2026-03-14 (pre-sweep), not updated after Round 12 |

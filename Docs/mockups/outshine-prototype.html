@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUTSHINE — Sample Instrument Forge</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --xo-bg-base: #1A1A1A;
+    --xo-bg-panel: #242424;
+    --xo-bg-card: #2E2E2E;
+    --xo-bg-input: #2A2A2A;
+    --xo-gold: #E9C46A;
+    --xo-gold-hover: #F0D080;
+    --xo-gold-press: #D4A84A;
+    --xo-gold-glow: rgba(233, 196, 106, 0.15);
+    --xo-text-primary: #E0E0E0;
+    --xo-text-secondary: #A0A0A0;
+    --xo-text-tertiary: #666666;
+    --xo-border: #444444;
+    --xo-border-focus: #E9C46A;
+    --xo-success: #4CAF50;
+    --xo-warning: #FF9800;
+    --xo-error: #F44336;
+    --xo-info: #4ECDC4;
+    --xo-neutral: #9E9E9E;
+    --zone-1: #1E8B7E; /* Reef Jade */
+    --zone-2: #E5B80B; /* Crate Yellow */
+    --zone-3: #E8839B; /* Axolotl Pink */
+    --zone-4: #4ECDC4; /* Neon Tetra */
+    --zone-5: #D4AF37; /* Aria Gold */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-lift: 0 4px 16px rgba(0,0,0,0.4);
+    --shadow-gold: 0 2px 12px rgba(233,196,106,0.2);
+    --transition-fast: 150ms ease-out;
+    --transition-normal: 250ms ease-out;
+    --transition-slow: 350ms ease-out;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #111;
+    color: var(--xo-text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* ═══ WINDOW CHROME ═══ */
+  .window {
+    width: 940px;
+    height: 640px;
+    background: var(--xo-bg-base);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
+    position: relative;
+  }
+
+  .header-bar {
+    height: 40px;
+    background: linear-gradient(180deg, #EDD08A 0%, var(--xo-gold) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .traffic-lights {
+    display: flex;
+    gap: 8px;
+  }
+  .traffic-lights span {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  .tl-close { background: #FF5F57; }
+  .tl-min { background: #FFBD2E; }
+  .tl-max { background: #28C840; }
+
+  .header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1A1A1A;
+    letter-spacing: 0.5px;
+  }
+
+  .header-subtitle {
+    position: absolute;
+    right: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: rgba(26,26,26,0.5);
+    font-weight: 500;
+  }
+
+  .content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ═══ VIEW STATES ═══ */
+  .view {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+    display: flex;
+  }
+  .view.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ═══ EMPTY STATE ═══ */
+  .empty-state {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .empty-state .drop-border {
+    position: absolute;
+    inset: 16px;
+    border: 2px dashed transparent;
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+    pointer-events: none;
+  }
+
+  .empty-state:hover .drop-border,
+  .empty-state.drag-over .drop-border {
+    border-color: var(--xo-gold);
+    background: rgba(233, 196, 106, 0.03);
+  }
+
+  .forge-icon {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .forge-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ember {
+    animation: ember-pulse 3s ease-in-out infinite;
+  }
+  .ember-2 {
+    animation: ember-pulse 3s ease-in-out infinite;
+    animation-delay: -1.5s;
+  }
+
+  @keyframes ember-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .empty-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--xo-text-primary);
+    margin-bottom: 8px;
+  }
+
+  .empty-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--xo-text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .empty-hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--xo-text-tertiary);
+    margin-bottom: 24px;
+  }
+
+  /* ═══ BUTTONS ═══ */
+  .btn {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .btn-primary {
+    background: linear-gradient(180deg, #EDD08A 0%, var(--xo-gold) 100%);
+    color: #1A1A1A;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, #F0D080 0%, #EDD08A 100%);
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    background: linear-gradient(180deg, #D4A84A 0%, #C89830 100%);
+    box-shadow: none;
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    background: var(--xo-bg-card);
+    color: var(--xo-text-primary);
+    border: 1px solid #555;
+  }
+  .btn-secondary:hover {
+    background: #444;
+    border-color: #777;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--xo-text-secondary);
+  }
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.05);
+    color: #CCC;
+  }
+
+  .btn-lg { height: 44px; padding: 0 24px; font-size: 12px; }
+  .btn-md { height: 36px; padding: 0 16px; font-size: 11px; }
+  .btn-sm { height: 28px; padding: 0 12px; font-size: 10px; }
+  .btn-xs { height: 24px; padding: 0 8px; font-size: 10px; }
+
+  /* ═══ AUTO MODE ═══ */
+  .auto-mode {
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .auto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .auto-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--xo-text-primary);
+  }
+
+  .source-panel {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .sample-card {
+    background: var(--xo-bg-card);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--radius-lg);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-fast);
+  }
+  .sample-card:hover {
+    border-color: #666;
+    box-shadow: var(--shadow-lift);
+  }
+
+  .sample-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .sample-info {
+    flex: 1;
+  }
+  .sample-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--xo-text-primary);
+  }
+  .sample-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--xo-text-tertiary);
+    margin-top: 2px;
+  }
+  .sample-type {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ═══ KEYBOARD ZONE MAP ═══ */
+  .keyboard-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .keyboard-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--xo-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .zone-map {
+    flex: 1;
+    background: var(--xo-bg-panel);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--xo-border);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .zone-row {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+  }
+
+  .zone-key {
+    flex: 1;
+    border-radius: 3px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 4px 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 100ms;
+    position: relative;
+    min-height: 32px;
+  }
+  .zone-key:hover {
+    filter: brightness(1.3);
+    transform: scaleY(1.05);
+    transform-origin: bottom;
+  }
+  .zone-key:active {
+    filter: brightness(0.8);
+    transform: scaleY(0.98);
+  }
+  .zone-key.black {
+    min-height: 20px;
+    flex: 0.6;
+    margin: 0 -2px;
+    z-index: 1;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .zone-label {
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 7px;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+  }
+
+  .crossfade-indicator {
+    height: 4px;
+    display: flex;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .crossfade-indicator > div {
+    flex: 1;
+    transition: all var(--transition-fast);
+  }
+
+  /* ═══ DESIGN MODE ═══ */
+  .design-mode {
+    display: flex;
+  }
+
+  .side-panel {
+    width: 200px;
+    background: var(--xo-bg-panel);
+    border-right: 1px solid var(--xo-border);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+  }
+
+  .side-panel-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--xo-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ═══ TABS ═══ */
+  .tab-bar {
+    height: 36px;
+    display: flex;
+    background: var(--xo-bg-panel);
+    border-bottom: 1px solid var(--xo-border);
+    padding: 0 12px;
+    gap: 0;
+  }
+
+  .tab {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--xo-text-tertiary);
+    padding: 0 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  .tab:hover { color: var(--xo-text-secondary); }
+  .tab.active {
+    color: var(--xo-gold);
+    border-bottom-color: var(--xo-gold);
+  }
+
+  .tab-content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+  }
+
+  /* ═══ CONTROLS ═══ */
+  .control-group {
+    margin-bottom: 16px;
+  }
+
+  .control-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--xo-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .control-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--xo-gold);
+    float: right;
+  }
+
+  .slider-track {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    margin: 8px 0;
+  }
+
+  .slider-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--xo-gold), var(--xo-gold-hover));
+    border-radius: 3px;
+    transition: width 50ms;
+  }
+
+  .slider-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--xo-gold);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    transition: transform 100ms;
+    cursor: grab;
+  }
+  .slider-thumb:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 4px;
+  }
+
+  .radio-pill {
+    flex: 1;
+    height: 28px;
+    background: var(--xo-bg-input);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--xo-text-tertiary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .radio-pill:hover {
+    border-color: #666;
+    color: var(--xo-text-secondary);
+  }
+  .radio-pill.active {
+    background: rgba(233, 196, 106, 0.1);
+    border-color: var(--xo-gold);
+    color: var(--xo-gold);
+  }
+
+  /* ═══ VELOCITY VISUALIZER ═══ */
+  .velocity-viz {
+    height: 80px;
+    background: var(--xo-bg-input);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--xo-border);
+    display: flex;
+    align-items: flex-end;
+    padding: 8px;
+    gap: 2px;
+    margin: 8px 0;
+  }
+
+  .vel-bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+    transition: all var(--transition-fast);
+    min-height: 4px;
+  }
+
+  /* ═══ FX CHAIN ═══ */
+  .fx-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .fx-slot {
+    background: var(--xo-bg-input);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .fx-slot:hover {
+    border-color: #666;
+    background: var(--xo-bg-card);
+  }
+  .fx-slot.active {
+    border-color: var(--xo-gold);
+    background: rgba(233, 196, 106, 0.05);
+  }
+
+  .fx-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--xo-text-tertiary);
+  }
+  .fx-slot.active .fx-dot {
+    background: var(--xo-gold);
+    box-shadow: 0 0 6px var(--xo-gold);
+  }
+
+  .fx-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    flex: 1;
+  }
+  .fx-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--xo-text-tertiary);
+  }
+
+  /* ═══ EXPRESSION PANEL ═══ */
+  .expression-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .expr-card {
+    background: var(--xo-bg-input);
+    border: 1px solid var(--xo-border);
+    border-radius: var(--radius-md);
+    padding: 10px;
+  }
+
+  .expr-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--xo-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .rr-dots {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .rr-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--xo-text-tertiary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .rr-dot.active {
+    background: var(--xo-gold);
+    border-color: var(--xo-gold);
+  }
+
+  /* ═══ PREVIEW KEYBOARD ═══ */
+  .preview-bar {
+    height: 48px;
+    background: var(--xo-bg-panel);
+    border-top: 1px solid var(--xo-border);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .preview-keys {
+    display: flex;
+    flex: 1;
+    height: 32px;
+    gap: 1px;
+  }
+
+  .preview-key {
+    flex: 1;
+    background: #444;
+    border-radius: 0 0 2px 2px;
+    cursor: pointer;
+    transition: all 80ms;
+    position: relative;
+  }
+  .preview-key:hover { filter: brightness(1.4); }
+  .preview-key:active {
+    filter: brightness(0.7);
+    transform: scaleY(0.95);
+    transform-origin: top;
+  }
+  .preview-key.white { background: #555; }
+  .preview-key.black { background: #2A2A2A; height: 20px; flex: 0.6; margin: 0 -1px; z-index: 1; }
+
+  /* ═══ TOAST SYSTEM ═══ */
+  .toast-container {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .toast {
+    background: var(--xo-bg-card);
+    border-radius: var(--radius-lg);
+    padding: 10px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 280px;
+    box-shadow: var(--shadow-lift);
+    border-left: 3px solid;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all var(--transition-normal);
+    pointer-events: all;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .toast.success { border-left-color: var(--xo-success); }
+  .toast.warning { border-left-color: var(--xo-warning); }
+  .toast.error { border-left-color: var(--xo-error); }
+  .toast.info { border-left-color: var(--xo-info); }
+  .toast.neutral { border-left-color: var(--xo-neutral); }
+
+  .toast-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .toast.success .toast-icon { background: var(--xo-success); color: white; }
+  .toast.warning .toast-icon { background: var(--xo-warning); color: white; }
+  .toast.error .toast-icon { background: var(--xo-error); color: white; }
+  .toast.info .toast-icon { background: var(--xo-info); color: white; }
+  .toast.neutral .toast-icon { background: var(--xo-neutral); color: white; }
+
+  .toast-body { flex: 1; }
+  .toast-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--xo-text-primary);
+  }
+  .toast-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--xo-text-secondary);
+    margin-top: 2px;
+  }
+  .toast-dismiss {
+    background: none;
+    border: none;
+    color: var(--xo-text-tertiary);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    line-height: 1;
+  }
+  .toast-dismiss:hover { color: var(--xo-text-primary); }
+
+  /* ═══ STATE SWITCHER (demo controls) ═══ */
+  .demo-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: rgba(0,0,0,0.8);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .demo-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: var(--xo-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .demo-btn:hover { border-color: var(--xo-gold); color: var(--xo-gold); }
+  .demo-btn.active {
+    background: var(--xo-gold);
+    color: #1A1A1A;
+    border-color: var(--xo-gold);
+    font-weight: 500;
+  }
+
+  /* ═══ PROGRESS BAR ═══ */
+  .progress-bar {
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--xo-gold), var(--xo-gold-hover));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 200ms;
+  }
+
+  /* Formant lock toggle */
+  .toggle {
+    width: 32px;
+    height: 18px;
+    background: #444;
+    border-radius: 9px;
+    cursor: pointer;
+    position: relative;
+    transition: background var(--transition-fast);
+  }
+  .toggle.on { background: var(--xo-gold); }
+  .toggle::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform var(--transition-fast);
+  }
+  .toggle.on::after { transform: translateX(14px); }
+
+  .inline-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ═══ RENDERING STATE ═══ */
+  .rendering-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,26,26,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+  }
+  .rendering-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .render-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--xo-text-primary);
+    margin-bottom: 8px;
+  }
+
+  .render-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--xo-text-secondary);
+    margin-bottom: 24px;
+  }
+
+  .render-progress {
+    width: 300px;
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .render-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--xo-gold), var(--xo-gold-hover));
+    border-radius: 2px;
+    transition: width 100ms;
+  }
+
+  .render-percent {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--xo-gold);
+    margin-top: 12px;
+  }
+
+  .render-stage {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: var(--xo-text-tertiary);
+    margin-top: 4px;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -300px 0; }
+    100% { background-position: 300px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="window">
+  <!-- Header Bar -->
+  <div class="header-bar">
+    <div class="traffic-lights">
+      <span class="tl-close"></span>
+      <span class="tl-min"></span>
+      <span class="tl-max"></span>
+    </div>
+    <span class="header-title">OUTSHINE</span>
+    <span class="header-subtitle">Sample Instrument Forge</span>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content">
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- VIEW 1: Empty State -->
+    <div class="view empty-state active" id="emptyState" onclick="switchView('auto')">
+      <div class="drop-border"></div>
+      <div class="forge-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 48 L48 48 L44 32 L20 32 Z" stroke="#666" stroke-width="2" fill="none"/>
+          <path d="M20 32 L22 20 L42 20 L44 32" stroke="#666" stroke-width="2" fill="none"/>
+          <line x1="32" y1="48" x2="32" y2="56" stroke="#666" stroke-width="2"/>
+          <line x1="24" y1="56" x2="40" y2="56" stroke="#666" stroke-width="2"/>
+          <circle cx="26" cy="26" r="3" fill="#E9C46A" class="ember"/>
+          <circle cx="38" cy="26" r="3" fill="#E9C46A" class="ember-2"/>
+        </svg>
+      </div>
+      <div class="empty-title">The forge is ready.</div>
+      <div class="empty-subtitle">Drop samples here to begin.</div>
+      <div class="empty-hint">WAV files, folders, or XPN archives.</div>
+      <button class="btn btn-ghost btn-md" onclick="event.stopPropagation(); switchView('auto')">Browse Files...</button>
+    </div>
+
+    <!-- VIEW 2: Auto Mode -->
+    <div class="view auto-mode" id="autoMode">
+      <div class="auto-header">
+        <h3>3 sources classified</h3>
+        <div style="display:flex; gap:6px;">
+          <button class="btn btn-ghost btn-sm" onclick="switchView('empty')">Clear</button>
+          <button class="btn btn-secondary btn-sm" onclick="switchView('design')">Design Mode</button>
+          <button class="btn btn-primary btn-sm" onclick="startRender()">Forge Instrument</button>
+        </div>
+      </div>
+
+      <!-- Source Cards -->
+      <div class="source-panel">
+        <div class="sample-card">
+          <div class="sample-dot" style="background: var(--zone-1)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Warm_Pad_C3.wav</div>
+            <div class="sample-meta">C3 · 4.2s · 48kHz</div>
+          </div>
+          <span class="sample-type" style="background: rgba(30,139,126,0.2); color: var(--zone-1)">Pad</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-dot" style="background: var(--zone-2)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Organ_Bb3.wav</div>
+            <div class="sample-meta">Bb3 · 2.1s · 44.1kHz</div>
+          </div>
+          <span class="sample-type" style="background: rgba(229,184,11,0.2); color: var(--zone-2)">Keys</span>
+        </div>
+        <div class="sample-card">
+          <div class="sample-dot" style="background: var(--zone-3)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Horn_Stab_F4.wav</div>
+            <div class="sample-meta">F4 · 0.8s · 48kHz</div>
+          </div>
+          <span class="sample-type" style="background: rgba(232,131,155,0.2); color: var(--zone-3)">Brass</span>
+        </div>
+      </div>
+
+      <!-- Zone Map Keyboard -->
+      <div class="keyboard-section">
+        <div class="keyboard-label">Zone Map — Auto-assigned</div>
+        <div class="zone-map" id="zoneMap"></div>
+        <div class="crossfade-indicator" id="crossfadeBar"></div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: Design Mode -->
+    <div class="view design-mode" id="designMode">
+      <!-- Side Panel -->
+      <div class="side-panel">
+        <div class="side-panel-title">Sources</div>
+        <div class="sample-card" style="min-width: auto;">
+          <div class="sample-dot" style="background: var(--zone-1)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Warm_Pad</div>
+            <div class="sample-meta">Pad · C3</div>
+          </div>
+        </div>
+        <div class="sample-card" style="min-width: auto;">
+          <div class="sample-dot" style="background: var(--zone-2)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Organ</div>
+            <div class="sample-meta">Keys · Bb3</div>
+          </div>
+        </div>
+        <div class="sample-card" style="min-width: auto;">
+          <div class="sample-dot" style="background: var(--zone-3)"></div>
+          <div class="sample-info">
+            <div class="sample-name">Horn_Stab</div>
+            <div class="sample-meta">Brass · F4</div>
+          </div>
+        </div>
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: 6px;">
+          <button class="btn btn-ghost btn-sm" onclick="switchView('auto')">Back to Auto</button>
+          <button class="btn btn-primary btn-md" onclick="startRender()">Forge</button>
+        </div>
+      </div>
+
+      <!-- Main Area -->
+      <div class="main-area">
+        <div class="tab-bar">
+          <button class="tab active" onclick="switchTab(this, 'zoneTab')">Zones</button>
+          <button class="tab" onclick="switchTab(this, 'velocityTab')">Velocity</button>
+          <button class="tab" onclick="switchTab(this, 'fxTab')">FX</button>
+          <button class="tab" onclick="switchTab(this, 'expressionTab')">Expression</button>
+        </div>
+
+        <!-- Zone Tab -->
+        <div class="tab-content" id="zoneTab">
+          <div class="zone-map" id="designZoneMap" style="height: 120px;"></div>
+          <div style="margin-top:12px; display:flex; gap:12px;">
+            <div style="flex:1;" class="control-group">
+              <div class="control-label">Pad Range <span class="control-value">C1 — E3</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:45%"></div><div class="slider-thumb" style="left:45%"></div></div>
+            </div>
+            <div style="flex:1;" class="control-group">
+              <div class="control-label">Crossfade Width <span class="control-value">4 st</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:33%"></div><div class="slider-thumb" style="left:33%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Velocity Tab -->
+        <div class="tab-content" id="velocityTab" style="display:none;">
+          <div class="control-group">
+            <div class="control-label">Strategy</div>
+            <div class="radio-group">
+              <div class="radio-pill" onclick="setVelocity(this, 'layer')">Layer</div>
+              <div class="radio-pill active" onclick="setVelocity(this, 'crossfade')">Crossfade</div>
+              <div class="radio-pill" onclick="setVelocity(this, 'switch')">Switch</div>
+              <div class="radio-pill" onclick="setVelocity(this, 'generate')">Generate</div>
+            </div>
+          </div>
+          <div class="velocity-viz" id="velocityViz"></div>
+          <div style="display:flex; gap:12px;">
+            <div style="flex:1;" class="control-group">
+              <div class="control-label">Layer Count <span class="control-value">3</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:50%"></div><div class="slider-thumb" style="left:50%"></div></div>
+            </div>
+            <div style="flex:1;" class="control-group">
+              <div class="control-label">Curve <span class="control-value">Musical</span></div>
+              <div class="radio-group">
+                <div class="radio-pill active" style="font-size:9px">Musical</div>
+                <div class="radio-pill" style="font-size:9px">Boom-Bap</div>
+                <div class="radio-pill" style="font-size:9px">Linear</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FX Tab -->
+        <div class="tab-content" id="fxTab" style="display:none;">
+          <div class="control-group">
+            <div class="control-label">FX Routing — Per-Layer</div>
+          </div>
+          <div class="fx-chain">
+            <div class="fx-slot active" onclick="this.classList.toggle('active')">
+              <div class="fx-dot"></div>
+              <span class="fx-name">fXObscura</span>
+              <span class="fx-type">Chiaroscuro</span>
+            </div>
+            <div class="fx-slot" onclick="this.classList.toggle('active')">
+              <div class="fx-dot"></div>
+              <span class="fx-name">fXOnslaught</span>
+              <span class="fx-type">Chorus→PM</span>
+            </div>
+            <div class="fx-slot active" onclick="this.classList.toggle('active')">
+              <div class="fx-dot"></div>
+              <span class="fx-name">fXOratory</span>
+              <span class="fx-type">Meter Delay</span>
+            </div>
+            <div class="fx-slot" onclick="this.classList.toggle('active')">
+              <div class="fx-dot"></div>
+              <span class="fx-name">SpectralTilt</span>
+              <span class="fx-type">Tilt EQ</span>
+            </div>
+            <div class="fx-slot" onclick="this.classList.toggle('active')">
+              <div class="fx-dot"></div>
+              <span class="fx-name">Saturation</span>
+              <span class="fx-type">Transformer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expression Tab -->
+        <div class="tab-content" id="expressionTab" style="display:none;">
+          <div class="expression-grid">
+            <div class="expr-card">
+              <div class="expr-card-title">Round Robin</div>
+              <div class="rr-dots">
+                <div class="rr-dot active"></div>
+                <div class="rr-dot active"></div>
+                <div class="rr-dot active"></div>
+                <div class="rr-dot active"></div>
+                <div class="rr-dot" onclick="this.classList.toggle('active')"></div>
+                <div class="rr-dot" onclick="this.classList.toggle('active')"></div>
+                <div class="rr-dot" onclick="this.classList.toggle('active')"></div>
+                <div class="rr-dot" onclick="this.classList.toggle('active')"></div>
+              </div>
+              <div style="margin-top:8px;" class="control-label">Variation <span class="control-value">65%</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:65%"></div><div class="slider-thumb" style="left:65%"></div></div>
+            </div>
+            <div class="expr-card">
+              <div class="expr-card-title">Formant</div>
+              <div class="inline-row" style="margin-top:4px;">
+                <span style="font-size:10px; color: var(--xo-text-secondary);">Lock</span>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+              </div>
+              <div style="margin-top:8px;" class="control-label">Safe Range <span class="control-value">±12 st</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:50%"></div><div class="slider-thumb" style="left:50%"></div></div>
+            </div>
+            <div class="expr-card">
+              <div class="expr-card-title">Aftertouch → Filter</div>
+              <div class="control-label" style="margin-top:4px;">Amount <span class="control-value">30%</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:30%"></div><div class="slider-thumb" style="left:30%"></div></div>
+            </div>
+            <div class="expr-card">
+              <div class="expr-card-title">Mod Wheel → Vibrato</div>
+              <div class="control-label" style="margin-top:4px;">Depth <span class="control-value">70%</span></div>
+              <div class="slider-track"><div class="slider-fill" style="width:70%"></div><div class="slider-thumb" style="left:70%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Keyboard -->
+        <div class="preview-bar">
+          <span style="font-size:9px; color: var(--xo-text-tertiary); font-family: 'Inter';">Preview</span>
+          <div class="preview-keys" id="previewKeys"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rendering Overlay -->
+    <div class="rendering-overlay" id="renderOverlay">
+      <div class="forge-icon" style="margin-bottom: 16px;">
+        <svg viewBox="0 0 64 64" fill="none">
+          <path d="M16 48 L48 48 L44 32 L20 32 Z" stroke="#E9C46A" stroke-width="2" fill="none"/>
+          <path d="M20 32 L22 20 L42 20 L44 32" stroke="#E9C46A" stroke-width="2" fill="none"/>
+          <circle cx="26" cy="26" r="3" fill="#E9C46A" class="ember"/>
+          <circle cx="38" cy="26" r="3" fill="#E9C46A" class="ember-2"/>
+        </svg>
+      </div>
+      <div class="render-title">FORGING YOUR INSTRUMENT</div>
+      <div class="render-subtitle" id="renderStage">Analyzing sources...</div>
+      <div class="render-progress"><div class="render-progress-fill" id="renderFill"></div></div>
+      <div class="render-percent" id="renderPercent">0%</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Demo Controls -->
+<div class="demo-controls">
+  <button class="demo-btn active" onclick="switchView('empty')">Empty State</button>
+  <button class="demo-btn" onclick="switchView('auto')">Auto Mode</button>
+  <button class="demo-btn" onclick="switchView('design')">Design Mode</button>
+  <button class="demo-btn" onclick="startRender()">Render</button>
+  <button class="demo-btn" onclick="showToastDemo()">Toasts</button>
+</div>
+
+<script>
+  // ═══ STATE ═══
+  const state = {
+    currentView: 'empty',
+    velocityStrategy: 'crossfade',
+    rendering: false,
+    renderProgress: 0
+  };
+
+  const zones = [
+    { name: 'Pad', color: 'var(--zone-1)', start: 0, end: 16 },
+    { name: 'Organ', color: 'var(--zone-2)', start: 14, end: 30 },
+    { name: 'Horn', color: 'var(--zone-3)', start: 28, end: 36 }
+  ];
+
+  const noteNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+
+  // ═══ VIEW SWITCHING ═══
+  function switchView(view) {
+    if (state.rendering) return;
+    state.currentView = view;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.demo-btn').forEach(b => b.classList.remove('active'));
+
+    const el = document.getElementById(view === 'empty' ? 'emptyState' : view === 'auto' ? 'autoMode' : 'designMode');
+    el.classList.add('active');
+
+    const idx = view === 'empty' ? 0 : view === 'auto' ? 1 : 2;
+    document.querySelectorAll('.demo-btn')[idx].classList.add('active');
+  }
+
+  // ═══ BUILD KEYBOARDS ═══
+  function buildZoneMap(containerId, octaves) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    const totalKeys = octaves * 12;
+
+    const whiteRow = document.createElement('div');
+    whiteRow.className = 'zone-row';
+    const blackRow = document.createElement('div');
+    blackRow.className = 'zone-row';
+    blackRow.style.position = 'absolute';
+    blackRow.style.top = '0';
+    blackRow.style.left = '0';
+    blackRow.style.right = '0';
+    blackRow.style.height = '55%';
+    blackRow.style.display = 'flex';
+    blackRow.style.gap = '0';
+    blackRow.style.padding = '0 8px';
+
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    wrapper.style.flex = '1';
+
+    for (let i = 0; i < totalKeys; i++) {
+      const noteIdx = i % 12;
+      const octave = Math.floor(i / 12) + 1;
+      const isBlack = [1,3,6,8,10].includes(noteIdx);
+      const noteName = noteNames[noteIdx] + octave;
+
+      // Determine zone color
+      let color = '#3A3A3A';
+      let alpha = 0.7;
+      for (const z of zones) {
+        if (i >= z.start && i <= z.end) {
+          color = z.color;
+          // Check crossfade region
+          const overlapZone = zones.find(oz => oz !== z && i >= oz.start && i <= oz.end);
+          if (overlapZone) alpha = 0.5;
+          break;
+        }
+      }
+
+      const key = document.createElement('div');
+      key.className = 'zone-key' + (isBlack ? ' black' : '');
+      key.style.background = isBlack ? `color-mix(in srgb, ${color} 60%, #1A1A1A)` : color;
+      key.style.opacity = alpha;
+
+      if (!isBlack && i % 12 === 0) {
+        const label = document.createElement('span');
+        label.className = 'zone-label';
+        label.textContent = noteName;
+        key.appendChild(label);
+      }
+
+      key.addEventListener('mousedown', () => playNote(key));
+
+      if (isBlack) {
+        const spacer = document.createElement('div');
+        spacer.style.flex = [2,4,9,11].includes(noteIdx) ? '0.5' : '1';
+        if ([0,5].includes(noteIdx)) {
+          const sp2 = document.createElement('div');
+          sp2.style.flex = '0.3';
+          blackRow.appendChild(sp2);
+        }
+        key.style.flex = '0.7';
+        blackRow.appendChild(key);
+      } else {
+        whiteRow.appendChild(key);
+      }
+    }
+
+    wrapper.appendChild(whiteRow);
+    container.appendChild(wrapper);
+
+    // Crossfade bar
+    if (containerId === 'zoneMap') {
+      const cfBar = document.getElementById('crossfadeBar');
+      cfBar.innerHTML = '';
+      for (let i = 0; i < totalKeys; i++) {
+        let color = '#333';
+        for (const z of zones) {
+          if (i >= z.start && i <= z.end) { color = z.color; break; }
+        }
+        const seg = document.createElement('div');
+        seg.style.background = color;
+        seg.style.opacity = 0.6;
+        cfBar.appendChild(seg);
+      }
+    }
+  }
+
+  function buildPreviewKeys() {
+    const container = document.getElementById('previewKeys');
+    for (let i = 0; i < 24; i++) {
+      const isBlack = [1,3,6,8,10].includes(i % 12);
+      const key = document.createElement('div');
+      key.className = 'preview-key' + (isBlack ? ' black' : ' white');
+
+      let color = '#555';
+      for (const z of zones) {
+        if (i + 12 >= z.start && i + 12 <= z.end) {
+          color = z.color;
+          break;
+        }
+      }
+      key.style.background = isBlack ? `color-mix(in srgb, ${color} 40%, #222)` : `color-mix(in srgb, ${color} 50%, #444)`;
+
+      key.addEventListener('mousedown', () => playNote(key));
+      container.appendChild(key);
+    }
+  }
+
+  function playNote(keyEl) {
+    keyEl.style.filter = 'brightness(1.8)';
+    keyEl.style.transform = keyEl.classList.contains('black') ? 'scaleY(0.95)' : 'scaleY(0.97)';
+    setTimeout(() => {
+      keyEl.style.filter = '';
+      keyEl.style.transform = '';
+    }, 150);
+  }
+
+  // ═══ VELOCITY VISUALIZATION ═══
+  function buildVelocityViz() {
+    const container = document.getElementById('velocityViz');
+    container.innerHTML = '';
+    for (let i = 0; i < 32; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'vel-bar';
+      const vel = i / 31;
+      let h, color;
+
+      if (state.velocityStrategy === 'crossfade') {
+        const padAmt = Math.max(0, 1 - vel * 2.5);
+        const organAmt = Math.max(0, 1 - Math.abs(vel - 0.5) * 3);
+        const hornAmt = Math.max(0, (vel - 0.5) * 2.5);
+        color = `color-mix(in srgb, var(--zone-1) ${padAmt * 100}%, color-mix(in srgb, var(--zone-2) ${organAmt * 100}%, var(--zone-3)))`;
+        h = 20 + vel * 80;
+      } else if (state.velocityStrategy === 'layer') {
+        color = vel < 0.33 ? 'var(--zone-1)' : vel < 0.66 ? 'var(--zone-2)' : 'var(--zone-3)';
+        h = 20 + vel * 80;
+      } else if (state.velocityStrategy === 'switch') {
+        color = vel < 0.33 ? 'var(--zone-1)' : vel < 0.66 ? 'var(--zone-2)' : 'var(--zone-3)';
+        h = vel < 0.33 ? 30 : vel < 0.66 ? 55 : 90;
+      } else {
+        color = 'var(--xo-gold)';
+        h = 20 + vel * 80;
+      }
+
+      bar.style.height = h + '%';
+      bar.style.background = color;
+      bar.style.opacity = 0.7 + vel * 0.3;
+      container.appendChild(bar);
+    }
+  }
+
+  function setVelocity(el, strategy) {
+    state.velocityStrategy = strategy;
+    el.parentElement.querySelectorAll('.radio-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    buildVelocityViz();
+  }
+
+  // ═══ TABS ═══
+  function switchTab(tabEl, contentId) {
+    tabEl.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    document.getElementById(contentId).style.display = '';
+  }
+
+  // ═══ TOAST SYSTEM ═══
+  let toastId = 0;
+  function showToast(type, title, desc, duration = 3000) {
+    const container = document.getElementById('toastContainer');
+    const icons = { success: '✓', warning: '!', error: '✕', info: 'i', neutral: '○' };
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <div class="toast-icon">${icons[type]}</div>
+      <div class="toast-body">
+        <div class="toast-title">${title}</div>
+        <div class="toast-desc">${desc}</div>
+      </div>
+      <button class="toast-dismiss" onclick="this.parentElement.remove()">×</button>
+    `;
+    container.appendChild(toast);
+    requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+
+    if (type !== 'error') {
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+  }
+
+  function showToastDemo() {
+    showToast('info', 'Classification complete', '3 sources analyzed in 0.4s', 4000);
+    setTimeout(() => showToast('success', 'Instrument forged', 'Pad+Organ+Horn — 36 zones, 4 velocity layers', 3000), 800);
+    setTimeout(() => showToast('warning', 'Formant shift detected', 'Horn sample exceeds safe transposition range above C6', 6000), 1600);
+  }
+
+  // ═══ RENDER ANIMATION ═══
+  const renderStages = [
+    'Analyzing sources...',
+    'Detecting pitch & formants...',
+    'Computing zone boundaries...',
+    'Generating velocity layers...',
+    'Applying FX chain...',
+    'Building round-robin variants...',
+    'Normalizing (LUFS -14)...',
+    'Assembling XPM program...',
+    'Validating...',
+    'Complete!'
+  ];
+
+  function startRender() {
+    if (state.rendering) return;
+    state.rendering = true;
+    state.renderProgress = 0;
+
+    const overlay = document.getElementById('renderOverlay');
+    overlay.classList.add('active');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 4 + 1;
+      if (progress > 100) progress = 100;
+
+      document.getElementById('renderFill').style.width = progress + '%';
+      document.getElementById('renderPercent').textContent = Math.round(progress) + '%';
+
+      const stageIdx = Math.min(Math.floor(progress / 11), renderStages.length - 1);
+      document.getElementById('renderStage').textContent = renderStages[stageIdx];
+
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          overlay.classList.remove('active');
+          state.rendering = false;
+          showToast('success', 'Instrument forged!', '36 zones · 4 velocity layers · 4× round-robin');
+        }, 600);
+      }
+    }, 120);
+  }
+
+  // ═══ INIT ═══
+  buildZoneMap('zoneMap', 3);
+  buildZoneMap('designZoneMap', 3);
+  buildPreviewKeys();
+  buildVelocityViz();
+</script>
+
+</body>
+</html>
