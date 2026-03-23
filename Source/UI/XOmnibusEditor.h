@@ -1154,81 +1154,92 @@ public:
             }
         }
 
-        // Coupling route visualization (uses cachedRoutes — no alloc inside paint)
-        if (!cachedRoutes.empty())
+        // ── Mini arc node diagram — replaces text-row coupling route list ────────
         {
             const auto& routes = cachedRoutes;
-            float matY = chainY + pillH * 0.5f + 18.0f;
-            float cellW = 88.0f, cellH = 18.0f;
+            float routeY = chainY + pillH * 0.5f + 12.0f;
+            float padding = 16.0f;
+
+            // Count active routes for the summary text below the diagram
             int numActive = (int)std::count_if(routes.begin(), routes.end(),
-                                               [](const auto& r){ return r.active; });
-            if (numActive > 0)
-            {
-                g.setColour(get(xoGold).withAlpha(0.55f));
-                g.setFont(GalleryFonts::heading(8.0f));
-                g.drawText("COUPLING ROUTES (" + juce::String(numActive) + ")",
-                           b.withY(matY).withHeight(12.0f).toNearestInt(),
-                           juce::Justification::centred);
-                matY += 14.0f;
+                                               [](const auto& r){ return r.active && r.amount >= 0.005f; });
 
-                for (const auto& route : routes)
+            // 4 engine nodes at corners of an 80×60 sub-rect in the panel bottom
+            auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
+            juce::Point<float> nodePos[4] = {
+                nodeArea.getTopLeft().translated(8.0f, 8.0f),
+                nodeArea.getTopRight().translated(-8.0f, 8.0f),
+                nodeArea.getBottomLeft().translated(8.0f, -8.0f),
+                nodeArea.getBottomRight().translated(-8.0f, -8.0f),
+            };
+
+            // Draw Bézier arcs for each active coupling route
+            for (const auto& route : routes)
+            {
+                if (!route.active || route.amount < 0.005f) continue;
+                if (route.sourceSlot < 0 || route.sourceSlot >= 4) continue;
+                if (route.destSlot   < 0 || route.destSlot   >= 4) continue;
+
+                auto from = nodePos[route.sourceSlot];
+                auto to   = nodePos[route.destSlot];
+                float midX = (from.x + to.x) * 0.5f;
+                float midY = (from.y + to.y) * 0.5f - 12.0f; // bow upward
+
+                juce::Path arc;
+                arc.startNewSubPath(from);
+                arc.quadraticTo(juce::Point<float>(midX, midY), to);
+
+                // Color by coupling type — mirrors CouplingArcOverlay palette
+                juce::Colour arcCol;
+                switch (route.type)
                 {
-                    if (!route.active) continue;
-                    auto* src = processor.getEngine(route.sourceSlot);
-                    auto* dst = processor.getEngine(route.destSlot);
-                    if (!src || !dst) continue;
-
-                    juce::String rowText = src->getEngineId().substring(0, 4).toUpperCase()
-                                          + " -> "
-                                          + dst->getEngineId().substring(0, 4).toUpperCase()
-                                          + "  " + couplingTypeLabel(route.type)
-                                          + "  (" + juce::String(route.amount, 2) + ")";
-
-                    auto rowBounds = b.withY(matY).withHeight(cellH).toNearestInt();
-                    rowBounds = rowBounds.withLeft(rowBounds.getCentreX() - (int)(cellW * 1.4f))
-                                        .withWidth((int)(cellW * 2.8f));
-
-                    juce::Colour routeColor = route.isNormalled
-                        ? get(borderGray()).darker(0.1f)
-                        : get(xoGold).withAlpha(0.8f);
-
-                    g.setColour(routeColor.withAlpha(0.12f));
-                    g.fillRoundedRectangle(rowBounds.toFloat(), 4.0f);
-                    g.setColour(routeColor.withAlpha(0.45f));
-                    g.drawRoundedRectangle(rowBounds.toFloat().reduced(0.5f), 4.0f, 1.0f);
-
-                    g.setColour(routeColor);
-                    g.setFont(GalleryFonts::body(9.0f));
-                    g.drawText(rowText, rowBounds.reduced(6, 0),
-                               juce::Justification::centredLeft, true);
-
-                    matY += cellH + 2.0f;
-                    if (matY + cellH > b.getBottom() - 20.0f)
-                    {
-                        // Count remaining routes and show overflow indicator
-                        int remaining = 0;
-                        for (const auto& r2 : routes)
-                            if (r2.active && &r2 > &route) ++remaining;
-                        if (remaining > 0)
-                        {
-                            g.setColour(get(textMid()).withAlpha(0.55f));
-                            g.setFont(GalleryFonts::label(8.5f));
-                            g.drawText("+ " + juce::String(remaining) + " more route" + (remaining > 1 ? "s" : ""),
-                                       b.withY(matY).withHeight(14.0f).toNearestInt(),
-                                       juce::Justification::centred);
-                        }
+                    case CouplingType::AudioToFM:
+                    case CouplingType::AudioToRing:
+                    case CouplingType::AudioToWavetable:
+                    case CouplingType::AudioToBuffer:
+                        arcCol = juce::Colour(0xFF0096C7); // Twilight Blue — audio-rate
                         break;
-                    }
+                    case CouplingType::KnotTopology:
+                        arcCol = juce::Colour(0xFF7B2FBE); // Midnight Violet — bidirectional
+                        break;
+                    default:
+                        arcCol = juce::Colour(0xFFE9C46A); // XO Gold — modulation
+                        break;
                 }
+
+                g.setColour(arcCol.withAlpha(0.35f + route.amount * 0.45f));
+                g.strokePath(arc, juce::PathStrokeType(1.5f));
             }
-            else
+
+            // Draw engine node circles (4 corner positions)
+            for (int i = 0; i < 4; ++i)
             {
-                g.setColour(get(textMid()).withAlpha(0.55f));
-                g.setFont(GalleryFonts::body(9.0f));
-                g.drawText("No active coupling routes",
-                           b.withY(chainY + pillH * 0.5f + 10.0f).withHeight(16.0f).toNearestInt(),
+                bool hasEng = (i < (int)cachedActiveEngines.size());
+                juce::Colour nodeCol = hasEng ? cachedActiveEngines[static_cast<size_t>(i)].second
+                                              : get(emptySlot());
+                g.setColour(nodeCol.withAlpha(0.70f));
+                g.fillEllipse(nodePos[i].x - 6.0f, nodePos[i].y - 6.0f, 12.0f, 12.0f);
+                g.setColour(nodeCol);
+                g.drawEllipse(nodePos[i].x - 6.0f, nodePos[i].y - 6.0f, 12.0f, 12.0f, 1.0f);
+
+                // Slot number label
+                g.setFont(juce::Font(7.0f));
+                g.setColour(juce::Colours::white.withAlpha(0.70f));
+                g.drawText(juce::String(i + 1),
+                           (int)(nodePos[i].x - 6.0f), (int)(nodePos[i].y - 6.0f), 12, 12,
                            juce::Justification::centred);
             }
+
+            // Route count summary line below the diagram
+            float summaryY = nodeArea.getBottom() + 6.0f;
+            g.setColour(get(textMid()).withAlpha(0.70f));
+            g.setFont(GalleryFonts::body(9.0f));
+            juce::String summaryText = numActive > 0
+                ? juce::String(numActive) + " active route" + (numActive > 1 ? "s" : "")
+                : "No active coupling routes";
+            g.drawText(summaryText,
+                       b.withY(summaryY).withHeight(14.0f).toNearestInt(),
+                       juce::Justification::centred);
         }
     }
 

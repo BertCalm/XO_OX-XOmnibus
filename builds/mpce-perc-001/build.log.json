@@ -3,7 +3,7 @@
   "pack_name": "XO_OX MPCe Percussion Vol. 1",
   "engine": "ONSET",
   "version": "1.0.0",
-  "experiment_id": "786481da-58a5-445b-a283-10f24b4dfc65",
+  "experiment_id": "c0232fe8-7f91-47d9-b047-409345a0eb40",
   "experiment_tags": [
     "first-mpce-pack",
     "competitive-window",
@@ -11,10 +11,10 @@
     "vq-004",
     "vq-005"
   ],
-  "build_time": "2026-03-22T17:29:17.697122",
+  "build_time": "2026-03-22T17:47:45.743194",
   "oxbuild_source": "packs/mpce-perc-001.oxbuild",
-  "stages_run": 6,
-  "stages_skipped": 4,
-  "dry_run": false,
+  "stages_run": 10,
+  "stages_skipped": 0,
+  "dry_run": true,
   "output_dir": "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/builds/mpce-perc-001"
 }

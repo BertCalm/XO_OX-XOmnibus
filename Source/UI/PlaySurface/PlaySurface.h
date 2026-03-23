@@ -445,17 +445,46 @@ public:
 
     std::function<void(float x, float y)> onPositionChanged;
 
-    void setPhysicsMode(PhysicsMode m) { physMode = m; }
+    void setPhysicsMode(PhysicsMode m) { physMode = m; repaint(); }
 
     void paint(juce::Graphics& g) override
     {
         using namespace PS;
-        auto b = getLocalBounds().toFloat();
-        float cx = b.getCentreX(), cy = b.getCentreY();
+
+        // ── Tab strip (18px) ──────────────────────────────────────────────
+        static constexpr float kTabH = 18.0f;
+        // Chromatophore Amber (OUTWIT accent) for active tab
+        static constexpr uint32_t kTabActive    = 0xFFCC6600;
+        static constexpr uint32_t kTabActiveTxt = 0xFF1A1A1A;
+        static constexpr uint32_t kTabInactive  = 0xFF2D2D2D;  // kSurfaceCard
+        static constexpr uint32_t kTabBorder    = 0xFF444444;
+        static constexpr uint32_t kTabInactTxt  = 0xFF888888;  // kTextDim
+
+        const char* tabLabels[3] = { "FREE", "LOCK", "SNAP" };
+        float tabW = (float)getWidth() / 3.0f;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            bool active = (int)physMode == i;
+            auto tabR = juce::Rectangle<float>(i * tabW, 0.0f, tabW, kTabH);
+            g.setColour(juce::Colour(active ? kTabActive : kTabInactive));
+            g.fillRect(tabR);
+            g.setColour(juce::Colour(kTabBorder));
+            g.drawRect(tabR, 0.5f);
+            g.setFont(juce::Font(7.0f).boldened());
+            g.setColour(juce::Colour(active ? kTabActiveTxt : kTabInactTxt));
+            g.drawText(tabLabels[i], tabR, juce::Justification::centred);
+        }
+
+        // ── Orbit area (below tab strip) ─────────────────────────────────
+        auto orbitBounds = getLocalBounds().withTrimmedTop((int)kTabH).toFloat();
+        float cx = orbitBounds.getCentreX();
+        float cy = orbitBounds.getCentreY();
         float radius = kOrbitDiameter * 0.5f;
 
         // Background
-        g.fillAll(juce::Colour(kSurfaceBg));
+        g.setColour(juce::Colour(kSurfaceBg));
+        g.fillRect(orbitBounds);
 
         // Boundary ring
         g.setColour(juce::Colours::white.withAlpha(0.1f));
@@ -490,6 +519,44 @@ public:
         g.setColour(juce::Colour(kAmber));
         g.fillEllipse(cursorX - 6, cursorY - 6, 12, 12);
 
+        // ── LOCK mode: amber anchor dot at center ─────────────────────────
+        if (physMode == PhysicsMode::Lock)
+        {
+            g.setColour(juce::Colour(kTabActive).withAlpha(0.9f));
+            g.fillEllipse(cx - 4.0f, cy - 4.0f, 8.0f, 8.0f);
+            g.setColour(juce::Colour(kTabActive).withAlpha(0.35f));
+            g.drawEllipse(cx - 8.0f, cy - 8.0f, 16.0f, 16.0f, 1.0f);
+        }
+
+        // ── SNAP mode: faint dotted arc from cursor toward center ─────────
+        if (physMode == PhysicsMode::Snap)
+        {
+            float dx = cx - cursorX;
+            float dy = cy - cursorY;
+            float dist = std::sqrt(dx * dx + dy * dy);
+            if (dist > 2.0f)
+            {
+                juce::Path springPath;
+                int steps = 12;
+                for (int s = 0; s <= steps; ++s)
+                {
+                    float t = (float)s / (float)steps;
+                    float px = cursorX + dx * t;
+                    float py = cursorY + dy * t;
+                    if (s == 0) springPath.startNewSubPath(px, py);
+                    else         springPath.lineTo(px, py);
+                }
+                juce::PathStrokeType stroke(1.0f);
+                float dashLengths[] = { 3.0f, 3.0f };
+                stroke.createDashedStroke(springPath, springPath, dashLengths, 2);
+                g.setColour(juce::Colour(kTabActive).withAlpha(0.4f));
+                g.strokePath(springPath, stroke);
+                // Small spring-return target dot at center
+                g.setColour(juce::Colour(kTabActive).withAlpha(0.6f));
+                g.fillEllipse(cx - 3.0f, cy - 3.0f, 6.0f, 6.0f);
+            }
+        }
+
         // Axis labels
         g.setColour(juce::Colour(kTextDim).withAlpha(0.5f));
         g.setFont(juce::Font(7.0f));
@@ -499,7 +566,19 @@ public:
                    juce::Justification::centredLeft);
     }
 
-    void mouseDown(const juce::MouseEvent& e) override { updateFromMouse(e); dragging = true; }
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        // Tab strip click (top 18px)
+        if (e.y < 18)
+        {
+            int tab = (int)(e.x / ((float)getWidth() / 3.0f));
+            physMode = (PhysicsMode)juce::jlimit(0, 2, tab);
+            repaint();
+            return;
+        }
+        updateFromMouse(e);
+        dragging = true;
+    }
     void mouseDrag(const juce::MouseEvent& e) override { if (dragging) updateFromMouse(e); }
     void mouseUp(const juce::MouseEvent&) override { dragging = false; }
 
@@ -553,8 +632,10 @@ private:
 
     void updateFromMouse(const juce::MouseEvent& e)
     {
-        auto b = getLocalBounds().toFloat();
-        float cx = b.getCentreX(), cy = b.getCentreY();
+        // Orbit area sits below the 18px tab strip
+        auto orbitBounds = getLocalBounds().withTrimmedTop(18).toFloat();
+        float cx = orbitBounds.getCentreX();
+        float cy = orbitBounds.getCentreY();
         float radius = PS::kOrbitDiameter * 0.5f;
 
         float newX = (e.x - cx) / radius;

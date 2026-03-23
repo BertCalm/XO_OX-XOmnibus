@@ -1858,19 +1858,21 @@ def cmd_build(args) -> int:
                     # ── BANK ORDERING FIX ──────────────────────────────────────
                     # select_presets() returns presets in farthest-point-sampling
                     # (diversity) order.  MIDI program change N must load the Nth
-                    # preset in XOmnibus's preset browser, which lists them in
-                    # alphabetical-path order (same as Python sorted() on the
-                    # .xometa file paths — matching JUCE File::findChildFiles).
-                    # Re-sort selected_presets by path so program N == browser N.
-                    # Mood folder order: Aether < Atmosphere < Entangled < Family
-                    #   < Flux < Foundation < Prism < Submerged (alphabetical).
+                    # preset in XOmnibus's preset browser.  XOmnibus loads presets
+                    # via JUCE File::findChildFiles (alphabetical path order on
+                    # macOS HFS+/APFS).  The selector's scan_presets() also uses
+                    # sorted(Path.rglob()), which sorts by Path parts (part-wise
+                    # lexicographic, NOT raw string comparison) — matching JUCE.
+                    # Re-sort here using the same Path.__lt__ key so program N in
+                    # the render exactly matches browser position N.
+                    # Authoritative reference: Docs/render_specs/mpce_perc_001_bank_index.json
                     selected_presets = sorted(
                         selected_presets,
-                        key=lambda p: p.get("path", ""),
+                        key=lambda p: Path(p.get("path", "")),
                     )
                     print(
                         f"         ✓ Bank order aligned to XOmnibus browser "
-                        f"(alphabetical by preset path)"
+                        f"(Path-part sort, matches selector + JUCE findChildFiles)"
                     )
 
                     # Save selection manifest

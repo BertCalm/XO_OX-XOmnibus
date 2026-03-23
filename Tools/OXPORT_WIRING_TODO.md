@@ -16,17 +16,26 @@
   with per-preset program numbers at runtime.
 - `"_program_wiring_note"` field documents the design.
 
+### 1. Bank ordering — RESOLVED (2026-03-22)
+- `select_presets()` was returning presets in farthest-point-sampling (diversity)
+  order, not XOmnibus browser order.
+- **Fix**: After `selector.select_presets()` returns, `oxport.py` now re-sorts
+  `selected_presets` by `path` (ascending) — identical to Python `sorted()` on
+  `.xometa` paths, which matches JUCE `File::findChildFiles` alphabetical ordering.
+- This guarantees MIDI program change `N` loads the same preset that the XOmnibus
+  browser shows at position `N`.
+- Bank authoritative reference: `Docs/render_specs/mpce_perc_001_bank_index.json`
+  (633 ONSET presets, programs 0–632, alphabetical path order).
+
+### 5. Preset load wait time — RESOLVED (2026-03-22)
+- `preset_load_ms` is now read from `rendering.preset_load_ms` in the `.oxbuild`
+  spec and passed through to `oxport_render.render_jobs()`.
+- Default in `oxport.py` changed from 200 to 400ms.
+- `packs/mpce-perc-001.oxbuild` now sets `"preset_load_ms": 400` explicitly.
+
 ---
 
 ## Remaining TODOs
-
-### 1. Bank ordering must match XOmnibus preset browser order
-- MIDI program change `program=N` loads the Nth preset in the currently loaded bank.
-- XOmnibus must be configured with ONSET presets loaded in the same order as
-  `selected_presets.json` produces them (sorted by distance_from_center, then name).
-- **Action needed**: verify the XOmnibus preset browser sort order matches the
-  selector's output order, OR use bank_msb/bank_lsb to address presets by absolute
-  position in the XOmnibus bank file.
 
 ### 2. ASSEMBLE stage does not consume render_manifest.json
 - The ASSEMBLE stage (Stage 4) calls `xpn_mpce_quad_builder.load_presets()` independently,
@@ -46,11 +55,6 @@
   match the profile phenotype assertions (e.g., kick_has_sub).
 - Currently the VALIDATE stage runs at the end but does not check audio content,
   only XPM/XPN structure.
-
-### 5. Preset load wait time
-- `oxport_render.render_jobs()` uses `preset_load_ms=200` (hardcoded default).
-- For XOmnibus with 50+ ONSET presets, preset switching may need longer settle time.
-- **Action needed**: expose `preset_load_ms` in .oxbuild spec under `rendering:`.
 
 ---
 

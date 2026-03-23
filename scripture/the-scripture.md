@@ -484,3 +484,36 @@ At `resSens=0.0`, the Kuramoto field dynamics are stable and predictable. At `re
 > The Giant Pacific Octopus deploys ink not to attack but to protect — to create a sensory barrier between itself and a threat. OUTWIT's inkCloud operates identically: it does not add information to the CA output; it obscures it. At inkCloud=0.9, the discrete cellular automaton rhythms — the triggers, the pulses, the Class III chaos — are dissolved into a sustained, ambiguous texture. The listener hears the density pattern but not the trigger events. The octopus is present, computing, but protected by the opacity. inkCloud is the engine's most underused parameter because it requires accepting that hiding the CA rhythm is sometimes the right musical choice.
 
 **Application:** Use inkCloud > 0.6 when the CA rhythm is the wrong texture for the context — when you want the CA's density pattern and chromatophore modulation but not its rhythmic character. inkDecay=0.1–0.2 creates a soft blur; inkDecay=0.3–0.5 creates sustained sustain. inkCloud=0.9 + inkDecay=0.4 converts any CA rule into an ambient texture. This is not misuse — it is a legitimate synthesis mode.
+
+---
+
+### OCELOT — The Ecosystem Verses
+*Revealed during Guru Bin Retreat — 2026-03-22*
+
+#### OCL-I: The Negative Threshold
+*2026-03-21*
+
+> When a route amount is negative, the ecosystem does not grow quieter — it inverts. Silence becomes the trigger. The absence of the floor activates the forest. The rest is not empty; it is when the animals speak. Design presets around the silences as deliberately as around the beats. A negative `xfFloorEmerg` value produces creature calls in the gaps between percussion hits — the ecosystem reacts to what is not there.
+
+**Application:** Set `ocelot_xf_floorEmerg` to -0.4 to -0.7 and choose a sparse floor pattern. The creature calls will fire in the silences. The more sparse the floor, the more the forest speaks. This is the engine's most underused capability.
+
+#### OCL-II: The Biome Is Not a Tone Control
+*2026-03-22*
+
+> A biome is not an EQ preset. It transforms the physical models, the breathe rate, the reverberation character, the creature pitch range, and the partial balance simultaneously. Changing biome mid-performance changes what kind of world the instrument believes it is in. Use it as a dramaturgy tool, not a timbre tool. The ocelot in the jungle and the ocelot in the winter are different animals. The Kalimba in Winter becomes ice chimes — doubled frequency, Q×1.5. The Cuica in Underwater becomes sonar.
+
+**Application:** Perform biome changes as scene transitions, not timbral adjustments. Map `ocelot_biome` to a controller and change it at structural points in the composition. Use a slow ecosystem depth (0.6+) before the transition so the matrix has time to re-establish its new ecology.
+
+#### OCL-III: The Ecosystem Remembers One Block Behind
+*2026-03-22*
+
+> The EcosystemMatrix operates on a one-block lag — it reads signals from the previous block and writes modulations for the current block. This is not a bug; it is the physics of the forest. No animal responds instantaneously. The one-block lag creates causality: each stratum acts, the matrix observes, and only then do the other strata respond. Sound designers should design cross-feed routes as ecological laws, not real-time controls.
+
+**Application:** When designing feedback loops (e.g., Emergent→Canopy shimmer + Canopy→Emergent formant), expect the feedback cycle to complete over 2–4 blocks (~5–10ms). The resulting enrichment is organic, not instantaneous. This makes OCELOT's feedback ecology stable where a zero-latency loop would blow up.
+
+#### OCL-IV: Three Biomes Are Three Engines
+*2026-03-22*
+
+> The Kalimba in Winter is not the same instrument as the Kalimba in Jungle. It becomes ice chimes: doubled frequency, Q×1.5 ring, brittle brightness. The Cuica in Underwater stops bending and resonates like sonar. The Agogo in Winter grows a third partial at 4.5x. When you choose a floor model, you choose six instruments, not one. When you choose a biome, you choose three of those six. OCELOT is not one synthesizer with a biome setting. It is a taxonomy: 6 models × 3 biomes = 18 distinct physical instruments, all accessible by two parameters.
+
+**Application:** Before designing any OCELOT preset, state explicitly: which model × which biome. "Kalimba in Winter" is a different starting point from "Kalimba in Jungle." Design from the intersection, not from the model alone.
