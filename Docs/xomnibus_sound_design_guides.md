@@ -3069,3 +3069,55 @@ MIDI note mapping follows GM drum positions: C2=Kick, D2=Snare, F#2=CHat, A#2=OH
 - **+ OXBOW:** OFFERING drums feeding OXBOW's entangled reverb. Boom bap hits dissolving into quantum suspension — the crate becomes infinite.
 - **+ OVERBITE:** Layer OVERBITE's fang-white transients over OFFERING's textured drums. Two percussion engines with completely different characters: OVERBITE for sharp metallic hits, OFFERING for warm dusty drums.
 - **+ OPTIC:** OFFERING's drum triggers driving OPTIC's visual engine. Every hit creates a visual pulse — the crate digging process becomes visible.
+
+## 47. OUTLOOK (XOutlook)
+*Panoramic visionary synth — the Albatross*
+
+**Accent:** Horizon Indigo `#4169E1` | **Prefix:** `look_` | **Voices:** 8
+**Creature:** The Albatross — Surface Soarer
+**Polarity:** 25% feliX / 75% Oscar — atmospheric, wide, expressive
+**Depth:** Surface (open sky)
+
+### What It Does
+OUTLOOK is a pad/lead synthesizer that sees across the horizon. It combines panoramic wavetable scanning with a parallax stereo field that shifts perspective as you play — low notes produce narrow, grounded images while high notes spread wide with micro-detuned parallax layers.
+
+Four interlocking systems:
+1. **PANORAMA OSCILLATOR:** Dual wavetable with horizon scanning — a single control sweeps both tables in opposite directions, creating evolving interference patterns. 8 wave shapes per table (Sine, Triangle, Saw, Square, Pulse, Super, Noise, Formant).
+2. **PARALLAX STEREO FIELD:** Note pitch controls stereo depth. Low notes narrow, high notes spread wide. Creates natural depth perspective without reverb.
+3. **VISTA FILTER:** Dual SVF (LP + HP in series) with a "horizon line" parameter — sweeping it opens or closes the spectral vista. Velocity-scaled for D001 compliance.
+4. **AURORA MOD:** Two LFOs feed a luminosity modulator. When both LFOs align (conjunction), brightness peaks. When opposed, the sound darkens. Organic breathing that follows celestial logic.
+
+### Macros
+| Macro | Name | Mapping | What It Controls |
+|-------|------|---------|-----------------|
+| M1 | **CHARACTER** | `look_macroCharacter` → horizon scan position | How far across the horizon — familiar center vs. extreme scanning |
+| M2 | **MOVEMENT** | `look_macroMovement` → LFO depth modulation | Aurora breathing intensity — still vs. living |
+| M3 | **COUPLING** | `look_macroCoupling` → internal coupling depth | Cross-oscillator interaction strength |
+| M4 | **SPACE** | `look_macroSpace` → reverb/delay mix | Spatial depth — intimate vs. cathedral |
+
+### Key Parameters
+| Parameter | Range | Default | Sweet Spot | What It Does |
+|-----------|-------|---------|------------|-------------|
+| `look_horizonScan` | 0–1 | 0.5 | 0.3–0.7 | Panoramic scan position — sweeps both oscillators in opposite directions. Center = balanced, extremes = interference. |
+| `look_parallaxAmount` | 0–1 | 0.5 | 0.4–0.8 | How much pitch affects stereo width. Low = mono, high = extreme parallax depth. |
+| `look_vistaLine` | 0–1 | 0.7 | 0.3–0.9 | Filter horizon aperture. Low = dark/closed, high = bright/open vista. |
+| `look_resonance` | 0–1 | 0.3 | 0.2–0.5 | Vista filter resonance. Higher values add harmonic ringing at the horizon line. |
+| `look_filterEnvAmt` | 0–1 | 0.5 | 0.3–0.7 | How much the filter envelope opens the vista on each note. Velocity-scaled (D001). |
+| `look_waveShape1` | 0–7 | Sine | — | Oscillator 1 wave: Sine, Triangle, Saw, Square, Pulse, Super, Noise, Formant |
+| `look_waveShape2` | 0–7 | Saw | — | Oscillator 2 wave (scans in opposite direction to Osc 1) |
+| `look_oscMix` | 0–1 | 0.5 | 0.3–0.7 | Blend between the two panoramic oscillators |
+| `look_lfo1Rate` | 0.01–20 | 0.5 | 0.02–2.0 | Aurora LFO 1 rate. Below 0.1 Hz for deep breathing (D005). |
+| `look_lfo1Depth` | 0–1 | 0.3 | 0.1–0.5 | Aurora LFO 1 → filter cutoff modulation depth |
+| `look_lfo2Rate` | 0.01–20 | 0.3 | 0.01–1.0 | Aurora LFO 2 rate. Conjunction with LFO1 creates luminosity peaks. |
+| `look_lfo2Depth` | 0–1 | 0.2 | 0.1–0.4 | Aurora LFO 2 → amplitude luminosity modulation |
+
+### Coupling Interface
+- **Sends:** Post-filter stereo output via `getSampleForCoupling()` — smooth pad/lead signal
+- **Receives:** `AmpToFilter` (amplitude → vista filter cutoff), `LFOToPitch` (LFO → parallax depth), `EnvToMorph` (envelope → horizon scan position)
+- **Best as source for:** `AmpToFilter` (smooth pad swells modulating other engines' filters), `EnvToMorph` (gradual horizon shifts as morph source)
+
+### Recommended Pairings
+- **+ OPENSKY:** Shimmer stacking — OUTLOOK's parallax width combined with OPENSKY's Shepard shimmer reverb. Use `AmpToFilter` to let OUTLOOK swells open OPENSKY's brightness.
+- **+ OMBRE:** Memory/vision dialogue — OUTLOOK's panoramic present combined with OMBRE's dual-narrative memory/forgetting engine. `EnvToMorph` to link vista position to OMBRE's blend axis.
+- **+ OPAL:** Granular parallax — OPAL's grain clouds diffusing OUTLOOK's panoramic oscillators. `AudioToFM` for metallic grain interference.
+- **+ OXBOW:** Entangled reverb tail — OUTLOOK pads feeding OXBOW's chiasmus FDN. The panoramic vista dissolving into golden standing waves.

@@ -76,12 +76,14 @@ public:
             v.ampEnv.reset();
             v.filterEnv.reset();
             v.filterLP.reset();
+            v.filterLP.setMode (CytomicSVF::Mode::LowPass);
             v.filterHP.reset();
+            v.filterHP.setMode (CytomicSVF::Mode::HighPass);
         }
 
         // LFOs (D005: rate floor 0.01 Hz)
-        lfo1.prepare (sampleRate);
-        lfo2.prepare (sampleRate);
+        lfo1.reset();
+        lfo2.reset();
     }
 
     void releaseResources() override {}
@@ -172,8 +174,8 @@ public:
         const float pAfterDep     = pAftertouchDep ? pAftertouchDep->load() : 0.5f;
 
         // ---- LFO tick (block-rate) ----
-        lfo1.setRate (pLfo1Rate);
-        lfo2.setRate (pLfo2Rate);
+        lfo1.setRate (pLfo1Rate, static_cast<float> (sr));
+        lfo2.setRate (pLfo2Rate, static_cast<float> (sr));
 
         // ---- Render per-sample ----
         auto* outL = buffer.getWritePointer (0);
@@ -181,8 +183,8 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const float lfo1Val = lfo1.tick();
-            const float lfo2Val = lfo2.tick();
+            const float lfo1Val = lfo1.process();
+            const float lfo2Val = lfo2.process();
 
             // Aurora mod: conjunction brightness
             const float conjunction = (lfo1Val + lfo2Val) * 0.5f;
@@ -236,13 +238,13 @@ public:
                 const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * (pMacroMov + modWheel * pModWheelDep) * 0.3f);
                 const float finalCutoff = std::clamp (modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
 
-                v.filterLP.setFrequency (finalCutoff, pFilterRes, sr);
-                const float filtered = v.filterLP.processLP (oscMix);
+                v.filterLP.setCoefficients_fast (finalCutoff, pFilterRes, static_cast<float> (sr));
+                const float filtered = v.filterLP.processSample (oscMix);
 
                 // HP for clearing low mud based on horizon
                 const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
-                v.filterHP.setFrequency (hpCutoff, 0.5f, sr);
-                const float cleaned = v.filterHP.processHP (filtered);
+                v.filterHP.setCoefficients_fast (hpCutoff, 0.5f, static_cast<float> (sr));
+                const float cleaned = v.filterHP.processSample (filtered);
 
                 // Aurora luminosity modulates amplitude
                 const float luminosity = 1.0f + (auroraLuminosity - 0.5f) * pLfo2Dep * 0.4f;
@@ -262,7 +264,7 @@ public:
             const float spaceAmt = std::clamp (pMacroSpc + pReverb, 0.0f, 1.0f);
 
             // Simple diffusion reverb (placeholder — production would use full reverb)
-            reverbState = reverbState * 0.9985f + mixL * spaceAmt * 0.15f;
+            reverbState = FastMath::flushDenormal (reverbState * 0.9985f + mixL * spaceAmt * 0.15f);
             const float reverbOut = reverbState;
 
             outL[s] = mixL + reverbOut * 0.5f;
@@ -569,9 +571,13 @@ private:
                 base = sum / 3.0f;
                 break;
             }
-            case 6: // Noise
-                base = (static_cast<float> (std::rand()) / RAND_MAX) * 2.0f - 1.0f;
+            case 6: // Noise (lock-free xorshift32 PRNG)
+            {
+                static thread_local uint32_t rng = 2463534242u;
+                rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
+                base = static_cast<float> (rng) / static_cast<float> (0xFFFFFFFFu) * 2.0f - 1.0f;
                 break;
+            }
             case 7: // Formant-ish
             {
                 float formantFreq = 1.0f + s * 4.0f;

@@ -42,6 +42,7 @@
 | XOrbweave | ORBWEAVE | 8.4/10 | MACRO KNOT continuous topological traversal (paradigm contribution) | None | None (all D001–D006 PASS) | "The Torus P/Q parameter lets the player navigate knot theory in real time. This is what synthesis should aspire to." — Buchla |
 | XOvertone | OVERTONE | 8.1/10 | Continued fraction convergent synthesis — no other engine derives timbre from rational approximations to irrational constants | P0: reverb comb lengths hardcoded (halve room at 96kHz) | None (all D001–D006 PASS) | "The convergent tables are not decoration — they ARE the synthesis." — Buchla |
 | XOrganism | ORGANISM | 8.1/10 | OrgScopeHistory moving-average system — performance depth through CA scope control | None | None (all D001–D006 PASS) | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
+| XOutlook | OUTLOOK | Pending | Parallax stereo field + aurora LFO conjunction + dual horizon-scanning wavetable | None | None (all D001–D006 PASS) | Seance pending — 2026-03-23 |
 
 ---
 

@@ -41,7 +41,7 @@
       "look_reverbMix": 0.35,
       "look_delayMix": 0.25,
       "look_macroCharacter": 0.4,
-      "look_macroMovement": 0.0,
+      "look_macroMovement": 0.35,
       "look_macroCoupling": 0.0,
       "look_macroSpace": 0.35
     }
