@@ -291,7 +291,7 @@ def build_pack_spec():
             "[ ] Pin to top of Patreon page",
             "[ ] Link from XO-OX.org index hero section",
             "[ ] Add to XO-OX.org /packs page as featured free pack",
-            "[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page",
+            "[ ] Update www.patreon.com/cw/XO_OX bio link to point to TIDE TABLES landing page",
         ],
         "build_notes": {
             "preset_references": (

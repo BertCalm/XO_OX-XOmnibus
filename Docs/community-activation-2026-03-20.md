@@ -283,7 +283,7 @@ The conversion moment happens when a user:
 Structure the conversion invitation around these moments:
 
 - After someone shares a track they made: "Glad this worked for your track. If you want to go deeper on the engine, patrons get monthly Studio Sessions. No pressure — just mentioning it."
-- After resolving a bug: "Fixed in [version]. If you want to support the project, patreon.com/xoox — patrons vote on what gets built next."
+- After resolving a bug: "Fixed in [version]. If you want to support the project, www.patreon.com/cw/XO_OX — patrons vote on what gets built next."
 - In the weekly Engine of the Week post: a single line at the bottom — "The Studio Session walkthrough for [ENGINE] is on Patreon."
 
 Never lead with Patreon. Never end a post with a Patreon pitch. Let it be one more thing available, not the point.
@@ -422,7 +422,7 @@ One response maximum, then silence. The response should be neutral and factual: 
 > **Start here:** XO-OX.org — download, Field Guide, engine guide
 > **Bugs:** #bugs channel, or GitHub Issues (links above)
 > **Presets:** Share .xometa files in #presets — we listen to everything
-> **Patreon:** patreon.com/xoox — Studio Sessions, early access, vote on what comes next
+> **Patreon:** www.patreon.com/cw/XO_OX — Studio Sessions, early access, vote on what comes next
 >
 > The server is small and real. Ask questions, share what you make, be direct about what isn't working.
 

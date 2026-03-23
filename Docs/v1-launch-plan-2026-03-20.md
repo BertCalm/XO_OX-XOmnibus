@@ -124,7 +124,7 @@ These are non-negotiable blockers from the Board. Check each off:
 | Gate | Status | Owner | Due |
 |---|---|---|---|
 | Security audit — git history clean, no secrets exposed | PENDING | Solo dev | T-7 |
-| Patreon URL fixed from placeholder `patreon.com/xoox` | PENDING | Solo dev | T-7 |
+| Patreon URL fixed from placeholder `www.patreon.com/cw/XO_OX` | PENDING | Solo dev | T-7 |
 | ORBWEAVE preset gap filled (currently 0 — only engine with zero presets) | PENDING | Solo dev | T-6 |
 | Community infrastructure — README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue templates | PENDING | Solo dev | T-5 |
 | Minimum 5 hero preset audio clips on XO-OX.org (see `site-sample-recordings.md`) | PENDING | Solo dev | T-4 |

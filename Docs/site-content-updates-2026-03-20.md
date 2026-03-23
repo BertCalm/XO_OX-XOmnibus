@@ -412,8 +412,8 @@ Add a new section between the packs grid and the support section in packs.html:
       <span>&#10003; PDF lore booklet — aquatic mythology for all 5 engines</span>
       <span>&#10003; XPN format — MPC-compatible</span>
     </div>
-    <!-- TODO: Replace patreon.com/xoox with real Patreon URL when account is set up -->
-    <a href="https://patreon.com/xoox" class="transcendental-btn" target="_blank" rel="noopener">
+    <!-- TODO: Replace www.patreon.com/cw/XO_OX with real Patreon URL when account is set up -->
+    <a href="https://www.patreon.com/cw/XO_OX" class="transcendental-btn" target="_blank" rel="noopener">
       Support on Patreon to access Transcendental Vol 1
     </a>
     <div style="font-size:0.75rem;color:var(--text-faint);text-align:center;margin-top:0.5rem;">

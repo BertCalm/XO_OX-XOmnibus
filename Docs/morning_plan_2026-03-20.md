@@ -91,7 +91,7 @@ Updates MEMORY.md, satellite files, CLAUDE.md engine counts, preset gap analysis
 | **Guru Bin retreats** | `/guru-bin OVERTONE` then ORGANISM, ORBWEAVE | Find sweet spots, write Scripture |
 | **XPN packs** | `/oxport` | XObese .xpn bundle still pending |
 | **Hero audio clips** | Manual recording session | 20 clips needed for site (see site-sample-recordings.md) |
-| **Patreon URL** | Manual | Still placeholder `patreon.com/xoox` |
+| **Patreon URL** | Manual | Still placeholder `www.patreon.com/cw/XO_OX` |
 | **OSTINATO/OPENSKY/OCEANDEEP/OUIE Guru Bin** | `/guru-bin [engine]` | Sweet spots + Scripture for the 4 new engines |
 
 ---

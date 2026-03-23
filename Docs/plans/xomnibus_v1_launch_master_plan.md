@@ -45,7 +45,7 @@
 
 ### Packs — gaps
 
-- Patreon URL is placeholder `patreon.com/xoox` across site, README, inserts (BLOCKER #1 in existing checklist)
+- ~~Patreon URL is placeholder~~ RESOLVED 2026-03-22 — https://www.patreon.com/cw/XO_OX live, all placeholders updated
 - Audio demos not recorded (hardware MPC required)
 - TIDE TABLES QA score not confirmed against release candidate
 - MACHINE GUN REEF not yet finalized
@@ -100,7 +100,7 @@ Everything in this phase is a prerequisite to any public-facing action. Do not a
 
 ### Accounts and infrastructure
 
-- [ ] **[BLOCKER] Patreon URL.** Set up real Patreon account, update the URL everywhere: `site/index.html`, any pack inserts, README. Search the entire repo for `patreon.com/xoox` and replace all occurrences. Verify the real URL resolves on mobile and desktop.
+- [x] **[BLOCKER] Patreon URL.** DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX live. All placeholder URLs replaced across site, Docs, Tools. Verify the real URL resolves on mobile and desktop.
 - [ ] **[BLOCKER] Gumroad account set up, payment processing verified.** Create account, connect bank/payout, run a test purchase with a personal card. Confirm receipt email arrives and download link works.
 - [ ] **[IMPORTANT] Discord server created and configured.** Channel structure per `xomnibus_brand_identity_and_launch.md` §11.4: announcements, general, preset-sharing, sound-design-tips, coupling-experiments, feature-requests, bug-reports, show-your-work, developer-chat. Set up roles: Visitor, Artist, Curator, Architect. Add invite link to README, CONTRIBUTING.md, and XO-OX.org.
 - [ ] **[IMPORTANT] Email capture mechanism active.** Gumroad auto-captures on purchase for paid packs. For TIDE TABLES (free), either route through a Gumroad "free product" checkout or add a separate sign-up. Test the full flow end-to-end.

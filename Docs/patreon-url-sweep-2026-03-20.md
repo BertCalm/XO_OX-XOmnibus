@@ -3,7 +3,7 @@
 Sweep of all XO_OX repos and config files for Patreon references.
 Placeholder URL in use: `patreon.com/xoox` (not live — account not yet created).
 
-**Action required:** Create the Patreon account, get the real URL, then run a find-and-replace across the files in Section 1 (live site files) first, then Section 2 (docs/specs). Section 3 and 4 are reference-only (no URL to replace).
+**COMPLETED 2026-03-22.** Patreon account live at https://www.patreon.com/cw/XO_OX. All placeholder URLs replaced across all sections.
 
 ---
 

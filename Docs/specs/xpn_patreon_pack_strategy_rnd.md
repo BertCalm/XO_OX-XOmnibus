@@ -8,7 +8,7 @@
 
 Define how XPN expansion packs are tiered, produced, released, and delivered to Patreon subscribers. This is the operational backbone of the creator economy: free plugin drives discovery, paid packs drive recurring revenue.
 
-Patreon URL: `patreon.com/xoox` (placeholder — not live)
+Patreon URL: https://www.patreon.com/cw/XO_OX (live as of 2026-03-22)
 
 ---
 
@@ -138,6 +138,6 @@ Monthly cadence, after each pack drop:
 
 ## Open Questions
 
-- **Patreon URL activation:** `patreon.com/xoox` must be claimed and configured before any public announcement. Priority: high.
+- **Patreon URL activation:** DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX is live and configured.
 - **File delivery method:** Patreon native file attachments vs. Gumroad private link embedded in post. Gumroad is preferable for file size and download reliability.
 - **iOS timing:** XOmnibus AUv3 is in scope for V1. If iOS ships before Patreon launch, consider whether XPN packs load cleanly on MPC app — validate before promoting iOS support to subscribers.

@@ -367,7 +367,7 @@ XPN packs. Revenue model: community packs are a Patreon-tier benefit.
 
 **Complexity:** XL
 
-**Blocking dependencies:** Patreon API access (currently placeholder `patreon.com/xoox`);
+**Blocking dependencies:** Patreon API access (currently placeholder `www.patreon.com/cw/XO_OX`);
 server infrastructure; legal/IP review of community submissions; XPN quality gate automation
 must be production-hardened before accepting untrusted inputs
 

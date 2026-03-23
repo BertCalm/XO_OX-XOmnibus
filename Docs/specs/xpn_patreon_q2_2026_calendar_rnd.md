@@ -11,7 +11,7 @@
 
 This document defines the concrete Patreon content calendar for Q2 2026 (April, May, June). Each month is built around one featured engine and one flagship XPN expansion pack release, with behind-the-scenes content laddered across tiers and Field Guide articles timed to the pack launch cycle.
 
-**Patreon URL:** patreon.com/xoox (placeholder — update before April 1 launch post)
+**Patreon URL:** https://www.patreon.com/cw/XO_OX (live as of 2026-03-22)
 
 **Tier structure:**
 - **Free** — public announcements, Field Guide links
@@ -208,7 +208,7 @@ Post title: "AMBER WEIGHT — OBLONG Vol. 1 Is Here (Producer Early Access)"
 
 ## Pre-Launch Dependencies (Before April 1)
 
-- Confirm and update Patreon URL (patreon.com/xoox is placeholder)
+- ~~Confirm and update Patreon URL~~ DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX live
 - Render MACHINE GUN REEF: 8 kits × LIVE + SEQUENCE = 16 XPN files. Requires ONSET render session.
 - Record 30-second ONSET audio demo clip for April 1 tease post
 - Write ONSET character brief document (Architect April 4 deliverable)

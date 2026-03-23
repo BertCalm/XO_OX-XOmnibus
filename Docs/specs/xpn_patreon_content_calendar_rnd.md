@@ -245,7 +245,7 @@ These are public commitments, posted on the Patreon page at launch.
 
 ## Open Questions
 
-- **Patreon URL:** Currently placeholder `patreon.com/xoox` — finalize and update all site references before April launch
+- **Patreon URL:** Currently placeholder `www.patreon.com/cw/XO_OX` — finalize and update all site references before April launch
 - **SIGNAL vs. standalone store:** Decide whether monthly SIGNAL packs go to the public store 90 days after patron release, or remain Patreon-exclusive indefinitely
 - **1:1 office hours scaling:** At 250+ Architects, quarterly 1:1s become a significant time commitment — define a cap (e.g., 20 slots per quarter) and waitlist process
 - **Beta build access logistics:** Determine whether Architect betas are distributed via Patreon message, email, or a private GitHub release

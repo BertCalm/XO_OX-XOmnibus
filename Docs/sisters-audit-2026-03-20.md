@@ -136,7 +136,7 @@ The 2026-03-16 code quality sprint found 3 wrong prefixes in CLAUDE.md and 6 eng
 
 The hero audio clips (20 clips for XO-OX.org) and the WAV stems for TIDE TABLES and MACHINE GUN REEF require a manual recording session on hardware. This blocker appeared on 2026-03-14 ("tomorrow"), 2026-03-15, 2026-03-17, 2026-03-18, and 2026-03-20. It has never been scheduled as a concrete calendar block.
 
-**Impact:** TIDE TABLES spec complete. MACHINE GUN REEF spec complete. Neither can ship. Site conversion rate is depressed without audio clips. Patreon URL is still a placeholder (`patreon.com/xoox`).
+**Impact:** TIDE TABLES spec complete. MACHINE GUN REEF spec complete. Neither can ship. Site conversion rate is depressed without audio clips. Patreon URL is still a placeholder (`www.patreon.com/cw/XO_OX`).
 
 **Fix:** These are not AI tasks. They are owner tasks requiring specific hardware time. The session-close template should track them as "owner blockers" with a date field. If no date is set, the Historical Society flags them at arc start.
 

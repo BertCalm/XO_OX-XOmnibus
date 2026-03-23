@@ -85,7 +85,7 @@ git status            # Check for uncommitted files
 ```
 
 ### 2. Owner Tasks (Only You Can Do These)
-- **Create Patreon account** → then run: `grep -rn "patreon.com/xoox" site/ Docs/ Tools/` and replace all 18 URLs
+- **Create Patreon account** → then run: `grep -rn "www.patreon.com/cw/XO_OX" site/ Docs/ Tools/` and replace all 18 URLs
 - **Record 20 hero audio clips** — see `Docs/site-sample-recordings` for checklist
 - **Render WAV samples** for Oxport XPN pipeline (blocks all .xpn shipping)
 

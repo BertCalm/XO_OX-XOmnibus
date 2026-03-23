@@ -147,7 +147,7 @@ These are V1 scope. Identity cards + 150 presets each exist. DSP scaffold is nex
 First boutique engine: **OSTINATO** (top candidate — Voice + custom FX in 5th slot = paid product, fundraiser-connected). 150 presets + concept brief exist. Scaffold + DSP build is next major work.
 
 ### Other Pending
-- Patreon URL placeholder (`patreon.com/xoox`) — needs real URL before launch
+- Patreon URL placeholder (`www.patreon.com/cw/XO_OX`) — needs real URL before launch
 - 20 hero preset audio recordings for XO-OX.org
 - Field Guide posts for new engines (OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS + V1 concepts)
 - Guru Bin retreats pending: OPAL, ODYSSEY, ORBITAL + Tier 2 engines

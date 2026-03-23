@@ -9,7 +9,7 @@ V1 is the first public XO_OX expansion pack release. The flagship pack is **TIDE
 
 ## BLOCKERS — Must be done before any pack goes live
 
-- [ ] **1. Patreon URL updated.** Replace placeholder `patreon.com/xoox` with the real URL across the site, README files, and any pack inserts. Verify the link resolves on mobile and desktop.
+- [x] **1. Patreon URL updated.** DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX live. All placeholders replaced across site, Docs, Tools.
 - [ ] **2. XO-OX.org pack download page live and tested.** Gumroad embed or direct download link functional. Test the full flow: land on page → click download → file arrives intact.
 - [ ] **3. TIDE TABLES passes `full_qa_runner.py` with score ≥ 70.** Run against the release candidate, not the dev copy. Log the score and attach output to this spec.
 - [ ] **4. TIDE TABLES recorded audio demos.** Minimum 3 programs demoed on hardware MPC. Captures must be from the actual `.xpn` file loaded on device — not a DAW render. At least one demo should showcase velocity expression.
