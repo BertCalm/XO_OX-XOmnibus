@@ -75,6 +75,9 @@
 #include "Engines/Onkolo/OnkoloEngine.h"
 #include "Engines/Opcode/OpcodeEngine.h"
 #include "Engines/Osmosis/OsmosisEngine.h"
+// Dual Engine Integration — OASIS + OUTFLOW
+#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Outflow/OutflowEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -399,6 +402,16 @@ static bool registered_Opcode = xomnibus::EngineRegistry::instance().registerEng
 static bool registered_Osmosis = xomnibus::EngineRegistry::instance().registerEngine(
     "Osmosis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OsmosisEngine>();
+    });
+// Dual Engine Integration — OASIS (Bioluminescent Ecosystem, engine #48)
+static bool registered_Oasis = xomnibus::EngineRegistry::instance().registerEngine(
+    "Oasis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OasisEngine>();
+    });
+// Dual Engine Integration — OUTFLOW (Predictive Spatial Vacuum, engine #49)
+static bool registered_Outflow = xomnibus::EngineRegistry::instance().registerEngine(
+    "Outflow", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OutflowEngine>();
     });
 
 namespace xomnibus {

@@ -48,6 +48,8 @@ inline const juce::StringArray validEngineNames {
     "Okeanos", "Oddfellow", "Onkolo", "Opcode",
     // Membrane Collection
     "Osmosis",
+    // Dual Engine Integration
+    "Oasis", "Outflow",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -192,6 +194,9 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Opcode",      "opco_"   },
         // Membrane Collection
         { "Osmosis",     "osmo_"   },
+        // Dual Engine Integration
+        { "Oasis",       "oas_"    },
+        { "Outflow",     "out_"    },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();
