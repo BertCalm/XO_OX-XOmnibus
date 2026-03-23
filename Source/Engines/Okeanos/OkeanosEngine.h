@@ -1,11 +1,11 @@
 #pragma once
 //==============================================================================
 //
-//  OasisEngine.h — XOasis | "The Spice Route Rhodes"
+//  OkeanosEngine.h — XOkeanos | "The Spice Route Rhodes"
 //  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
-//      XOasis is the Rhodes electric piano that traveled the Spice Route —
+//      XOkeanos is the Rhodes electric piano that traveled the Spice Route —
 //      from Harold Rhodes' Army rehabilitation workshop through Chicago jazz
 //      clubs, across the Atlantic to Tokyo kissaten, down to Lagos Afrobeat
 //      sessions, and back through neo-soul and lo-fi. Every note carries
@@ -284,9 +284,9 @@ struct RhodesAmpStage
 };
 
 //==============================================================================
-// OasisVoice
+// OkeanosVoice
 //==============================================================================
-struct OasisVoice
+struct OkeanosVoice
 {
     bool active = false;
     uint64_t startTime = 0;
@@ -323,14 +323,14 @@ struct OasisVoice
 };
 
 //==============================================================================
-// OasisEngine — "The Spice Route Rhodes"
+// OkeanosEngine — "The Spice Route Rhodes"
 //==============================================================================
-class OasisEngine : public SynthEngine
+class OkeanosEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
 
-    juce::String getEngineId() const override { return "Oasis"; }
+    juce::String getEngineId() const override { return "Okeanos"; }
     juce::Colour getAccentColour() const override { return juce::Colour (0xFFC49B3F); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
@@ -692,64 +692,64 @@ public:
         using PI = juce::AudioParameterInt;
 
         // Core tone
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_warmth", 1 }, "Oasis Warmth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_warmth", 1 }, "Okeanos Warmth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.3f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bell", 1 }, "Oasis Bell",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bell", 1 }, "Okeanos Bell",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_brightness", 1 }, "Oasis Brightness",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_brightness", 1 }, "Okeanos Brightness",
             juce::NormalisableRange<float> (200.0f, 20000.0f, 0.0f, 0.3f), 6000.0f));
 
         // Tremolo (Rhodes vibrato circuit)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremRate", 1 }, "Oasis Tremolo Rate",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremRate", 1 }, "Okeanos Tremolo Rate",
             juce::NormalisableRange<float> (0.5f, 12.0f, 0.01f), 4.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremDepth", 1 }, "Oasis Tremolo Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_tremDepth", 1 }, "Okeanos Tremolo Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
         // Amp envelope
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_attack", 1 }, "Oasis Attack",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_attack", 1 }, "Okeanos Attack",
             juce::NormalisableRange<float> (0.001f, 0.5f, 0.0f, 0.3f), 0.005f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_decay", 1 }, "Oasis Decay",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_decay", 1 }, "Okeanos Decay",
             juce::NormalisableRange<float> (0.05f, 5.0f, 0.0f, 0.4f), 0.8f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_sustain", 1 }, "Oasis Sustain",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_sustain", 1 }, "Okeanos Sustain",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.6f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_release", 1 }, "Oasis Release",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_release", 1 }, "Okeanos Release",
             juce::NormalisableRange<float> (0.01f, 5.0f, 0.0f, 0.4f), 0.5f));
 
         // Filter
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_filterEnvAmt", 1 }, "Oasis Filter Env Amount",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_filterEnvAmt", 1 }, "Okeanos Filter Env Amount",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.4f));
 
         // FUSION
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_migration", 1 }, "Oasis Migration",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_migration", 1 }, "Okeanos Migration",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_stereoWidth", 1 }, "Oasis Stereo Width",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_stereoWidth", 1 }, "Okeanos Stereo Width",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f));
 
         // Pitch
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bendRange", 1 }, "Oasis Pitch Bend Range",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_bendRange", 1 }, "Okeanos Pitch Bend Range",
             juce::NormalisableRange<float> (1.0f, 24.0f, 1.0f), 2.0f));
 
         // Macros
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCharacter", 1 }, "Oasis Macro CHARACTER",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCharacter", 1 }, "Okeanos Macro CHARACTER",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroMovement", 1 }, "Oasis Macro MOVEMENT",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroMovement", 1 }, "Okeanos Macro MOVEMENT",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCoupling", 1 }, "Oasis Macro COUPLING",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroCoupling", 1 }, "Okeanos Macro COUPLING",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroSpace", 1 }, "Oasis Macro SPACE",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_macroSpace", 1 }, "Okeanos Macro SPACE",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
 
         // LFOs (D002/D005)
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Rate", 1 }, "Oasis LFO1 Rate",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Rate", 1 }, "Okeanos LFO1 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Depth", 1 }, "Oasis LFO1 Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo1Depth", 1 }, "Okeanos LFO1 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo1Shape", 1 }, "Oasis LFO1 Shape", 0, 4, 0));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Rate", 1 }, "Oasis LFO2 Rate",
+        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo1Shape", 1 }, "Okeanos LFO1 Shape", 0, 4, 0));
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Rate", 1 }, "Okeanos LFO2 Rate",
             juce::NormalisableRange<float> (0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
-        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Depth", 1 }, "Oasis LFO2 Depth",
+        params.push_back (std::make_unique<PF> (juce::ParameterID { "oasis_lfo2Depth", 1 }, "Okeanos LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 1.0f), 0.0f));
-        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo2Shape", 1 }, "Oasis LFO2 Shape", 0, 4, 0));
+        params.push_back (std::make_unique<PI> (juce::ParameterID { "oasis_lfo2Shape", 1 }, "Okeanos LFO2 Shape", 0, 4, 0));
     }
 
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
@@ -783,7 +783,7 @@ private:
     double sr = 48000.0;
     float srf = 48000.0f;
 
-    std::array<OasisVoice, kMaxVoices> voices;
+    std::array<OkeanosVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
     std::atomic<int> activeVoiceCount { 0 };
 

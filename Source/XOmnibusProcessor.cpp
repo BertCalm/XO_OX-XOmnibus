@@ -70,7 +70,7 @@
 #include "Engines/Overflow/OverflowEngine.h"
 #include "Engines/Overcast/OvercastEngine.h"
 // FUSION Quad Collection
-#include "Engines/Oasis/OasisEngine.h"
+#include "Engines/Okeanos/OkeanosEngine.h"
 #include "Engines/Oddfellow/OddfellowEngine.h"
 #include "Engines/Onkolo/OnkoloEngine.h"
 #include "Engines/Opcode/OpcodeEngine.h"
@@ -375,10 +375,10 @@ static bool registered_Overcast = xomnibus::EngineRegistry::instance().registerE
     "Overcast", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OvercastEngine>();
     });
-// FUSION Quad Collection — OASIS
-static bool registered_Oasis = xomnibus::EngineRegistry::instance().registerEngine(
-    "Oasis", []() -> std::unique_ptr<xomnibus::SynthEngine> {
-        return std::make_unique<xomnibus::OasisEngine>();
+// FUSION Quad Collection — OKEANOS (formerly Oasis, renamed to free ID for ecosystem engine)
+static bool registered_Okeanos = xomnibus::EngineRegistry::instance().registerEngine(
+    "Okeanos", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OkeanosEngine>();
     });
 // FUSION Quad Collection — ODDFELLOW
 static bool registered_Oddfellow = xomnibus::EngineRegistry::instance().registerEngine(
@@ -587,7 +587,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout
     OverflowEngine::addParameters(params);
     OvercastEngine::addParameters(params);
     // FUSION Quad Collection
-    OasisEngine::addParameters(params);
+    OkeanosEngine::addParameters(params);
     OddfellowEngine::addParameters(params);
     OnkoloEngine::addParameters(params);
     OpcodeEngine::addParameters(params);

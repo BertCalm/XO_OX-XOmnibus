@@ -53,7 +53,7 @@
 
 namespace xomnibus {
 
-// Forward declaration — SpectralFingerprint defined in OasisEngine.h
+// Forward declaration — SpectralFingerprint defined in OkeanosEngine.h
 // All FUSION engines share the same struct definition.
 #ifndef XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
 #define XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
