@@ -286,8 +286,8 @@ public:
             const int delayWriteIdx = delayWritePos % kDelayBufSize;
             const int delayReadL = (delayWritePos - static_cast<int> (0.375 * sr) + kDelayBufSize * 4) % kDelayBufSize;
             const int delayReadR = (delayWritePos - static_cast<int> (0.25 * sr) + kDelayBufSize * 4) % kDelayBufSize;
-            const float delayOutL = FastMath::flushDenormal (delayBufL[static_cast<size_t> (delayReadL)]);
-            const float delayOutR = FastMath::flushDenormal (delayBufR[static_cast<size_t> (delayReadR)]);
+            const float delayOutL = flushDenormal (delayBufL[static_cast<size_t> (delayReadL)]);
+            const float delayOutR = flushDenormal (delayBufR[static_cast<size_t> (delayReadR)]);
             delayBufL[static_cast<size_t> (delayWriteIdx)] = mixR * 0.5f + delayOutR * 0.35f; // Cross-feed for ping-pong
             delayBufR[static_cast<size_t> (delayWriteIdx)] = mixL * 0.5f + delayOutL * 0.35f;
             delayWritePos = (delayWritePos + 1) % kDelayBufSize;
@@ -302,15 +302,15 @@ public:
                 const int readIdx = (reverbWritePos - tapOffsets[t] + kReverbBufSize * 4) % kReverbBufSize;
                 revOut += reverbBuf[static_cast<size_t> (readIdx)] * 0.25f;
             }
-            reverbBuf[static_cast<size_t> (revIdx)] = FastMath::flushDenormal (revIn + revOut * 0.45f);
+            reverbBuf[static_cast<size_t> (revIdx)] = flushDenormal (revIn + revOut * 0.45f);
             reverbWritePos = (reverbWritePos + 1) % kReverbBufSize;
 
             outL[s] = mixL + revOut * spaceAmt + delayOutL * delayAmt;
             outR[s] = mixR + revOut * spaceAmt + delayOutR * delayAmt;
 
             // Denormal protection
-            outL[s] = FastMath::flushDenormal (outL[s]);
-            outR[s] = FastMath::flushDenormal (outR[s]);
+            outL[s] = flushDenormal (outL[s]);
+            outR[s] = flushDenormal (outR[s]);
         }
 
         // Coupling buffer
