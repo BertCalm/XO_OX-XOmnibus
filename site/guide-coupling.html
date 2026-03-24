@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Space Between the Engines — Coupling System | XO_OX Field Guide</title>
-<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOlokun's 14-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
+<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOlokun's 15-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -589,13 +589,13 @@ footer {
 }
 </style>
 <meta property="og:title" content="The Space Between the Engines — XO_OX Field Guide">
-<meta property="og:description" content="A complete walkthrough of XOlokun's 14-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
-<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:description" content="A complete walkthrough of XOlokun's 15-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Space Between the Engines — XO_OX Field Guide">
 <meta name="twitter:description" content="15 coupling types. Any engine can drive any other. Here is how.">
-<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 </head>
 <body>
@@ -605,16 +605,17 @@ footer {
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <a href="index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" aria-label="Toggle navigation">☰</button>
   <div class="nav-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html" class="active">Field Guide</a>
+    <a href="learn.html">Academy</a>
+    <a href="community.html">Community</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
     <a href="updates.html">Signal</a>
-    <a href="index.html#aquarium">Aquarium</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -695,14 +696,14 @@ The matrix supports up to <strong>64 concurrent routes</strong> across all four 
 
 <div class="article-divider reveal"></div>
 
-<h2 class="reveal">All Fourteen Coupling Types</h2>
+<h2 class="reveal">All Fifteen Coupling Types</h2>
 
 <p class="reveal">
 The CouplingType enum is the vocabulary of interaction. Each type defines what part of Engine A's behavior becomes the input signal, and what part of Engine B it enters. Understanding these types is the difference between patching randomly and designing interactions with intention.
 </p>
 
 <p class="reveal">
-The fourteen types fall into four natural categories. Control-rate types extract a continuous value from Engine A and use it to modulate a parameter in Engine B. Audio-rate types inject Engine A's audio signal directly into Engine B's synthesis process. Structural types modify Engine B's architectural behavior in ways that only make sense given another engine's specific DSP topology. And KnotTopology, which is in a category entirely its own.
+The fifteen types fall into four natural categories. Control-rate types extract a continuous value from Engine A and use it to modulate a parameter in Engine B. Audio-rate types inject Engine A's audio signal directly into Engine B's synthesis process. Structural types modify Engine B's architectural behavior in ways that only make sense given another engine's specific DSP topology. And KnotTopology, which is in a category entirely its own.
 </p>
 
 <h3 class="reveal">Control-Rate: Amplitude-Driven</h3>
@@ -1024,22 +1025,16 @@ The aquarium metaphor that runs through XOlokun's design is not just aesthetic. 
 </article>
 
 <!-- ═══════════ FOOTER ═══════════ -->
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="guide.html">Field Guide</a>
-    <a href="updates.html">Signal</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+  document.querySelector('.nav-links')?.classList.toggle('open');
+});
+
 // ═══════════ SCROLL REVEAL ═══════════
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {

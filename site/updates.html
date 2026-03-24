@@ -152,8 +152,8 @@ body::before {
   transform: translateY(0);
 }
 
-/* ═══════════ STICKY NAV ═══════════ */
-.sticky-nav {
+/* ═══════════ NAV ═══════════ */
+.site-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -225,6 +225,52 @@ body::before {
 .nav-links a.active::after {
   width: 100%;
   background: var(--gold);
+}
+
+/* ── Hamburger menu (mobile) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
 }
 
 /* ═══════════ SIGNAL HERO ═══════════ */
@@ -578,12 +624,12 @@ footer {
 </style>
 <meta property="og:title" content="XOlokun — Free Multi-Engine Synthesizer">
 <meta property="og:description" content="73 engines. Thousands of presets. Free and open-source. By XO_OX Designs.">
-<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="XOlokun — Free Multi-Engine Synthesizer">
 <meta name="twitter:description" content="73 engines. Thousands of presets. Free and open-source.">
-<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
 <link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 </head>
 <body>
@@ -600,16 +646,20 @@ footer {
 <a href="#feed" class="skip-link">Skip to updates</a>
 
 <!-- ═══════════ STICKY NAV ═══════════ -->
-<nav class="sticky-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
-  <div class="nav-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
     <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html">Field Guide</a>
+    <a href="learn.html">Academy</a>
+    <a href="community.html">Community</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
     <a href="updates.html" class="active">Signal</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -790,18 +840,9 @@ footer {
 </section>
 
 <!-- ═══════════ FOOTER ═══════════ -->
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="aquarium.html">Aquarium</a>
-    <a href="guide.html">Field Guide</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="updates.html">Signal</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>
@@ -816,6 +857,11 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ═══════════ HAMBURGER MENU ═══════════
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+  document.querySelector('.nav-links')?.classList.toggle('open');
+});
 
 // ═══════════ AQUATIC PAGE TRANSITIONS ═══════════
 document.querySelectorAll('a[href$=".html"]').forEach(link => {

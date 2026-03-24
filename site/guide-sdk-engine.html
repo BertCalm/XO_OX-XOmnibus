@@ -536,7 +536,7 @@ footer {
 </style>
 <meta property="og:title" content="How to Build an XOlokun Engine in 200 Lines | XO_OX Field Guide">
 <meta property="og:description" content="Developer Guide: build a minimal working XOlokun engine from scratch — one oscillator, one filter, four parameters — and walk through the full integration path.">
-<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
@@ -546,16 +546,17 @@ footer {
 <a href="#article-content" class="skip-link">Skip to article</a>
 
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <a href="index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" aria-label="Toggle navigation">☰</button>
   <div class="nav-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html" class="active">Field Guide</a>
+    <a href="learn.html">Academy</a>
+    <a href="community.html">Community</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
     <a href="updates.html">Signal</a>
-    <a href="index.html#aquarium">Aquarium</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -564,7 +565,7 @@ footer {
   <div class="article-hero-label">SDK Guide &mdash; Architecture #14</div>
   <h1>How to Build an XOlokun Engine <em>in 200 Lines</em></h1>
   <p class="article-hero-sub">
-    Every engine in XOlokun &mdash; all 46 of them &mdash; is a standalone DSP module that implements one C++ interface.
+    Every engine in XOlokun &mdash; all 73 of them &mdash; is a standalone DSP module that implements one C++ interface.
     The SDK removes JUCE as a dependency at the boundary. You can write a new engine with a text editor, a C++17 compiler, and this tutorial.
   </p>
   <div class="article-meta">
@@ -1136,7 +1137,7 @@ MinimalEngine as shown above passes D004 (all four params wired), partially sati
 <h3 class="reveal">Adding Coupling</h3>
 
 <p class="reveal">
-To accept modulation from other engines, override <code>applyCouplingInput()</code>. The <code>CouplingType</code> enum in <code>SDK/include/xolokun/CouplingTypes.h</code> has 14 types. The most common for a filter-and-oscillator engine are <code>AmpToFilter</code> (another engine's amplitude modulates your cutoff) and <code>LFOToPitch</code> (another engine's LFO modulates your pitch). Accumulate the coupling signal in a member variable and consume it during <code>renderBlock()</code>:
+To accept modulation from other engines, override <code>applyCouplingInput()</code>. The <code>CouplingType</code> enum in <code>SDK/include/xolokun/CouplingTypes.h</code> has 15 types. The most common for a filter-and-oscillator engine are <code>AmpToFilter</code> (another engine's amplitude modulates your cutoff) and <code>LFOToPitch</code> (another engine's LFO modulates your pitch). Accumulate the coupling signal in a member variable and consume it during <code>renderBlock()</code>:
 </p>
 
 <div class="code-block reveal" aria-label="Coupling input implementation">
@@ -1212,22 +1213,16 @@ The <code>Source/DSP/</code> directory contains six shared utilities extracted f
 
 </article>
 
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="guide.html">Field Guide</a>
-    <a href="updates.html">Signal</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+  document.querySelector('.nav-links')?.classList.toggle('open');
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('visible');

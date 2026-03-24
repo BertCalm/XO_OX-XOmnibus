@@ -290,7 +290,8 @@ h2 em {
 .learn-hero::before {
   content: '';
   position: absolute;
-  width: 900px;
+  max-width: 900px;
+  width: 100%;
   height: 600px;
   top: 50%;
   left: 50%;
@@ -878,7 +879,24 @@ footer {
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 </style>
+<meta property="og:title" content="Professor Oscar's Academy | XOlokun">
+<meta property="og:description" content="Five depth levels of synthesis education. From first sounds to building engines. Free for everyone.">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Professor Oscar's Academy | XOlokun">
+<meta name="twitter:description" content="Five depth levels of synthesis education. From first sounds to building engines. Free for everyone.">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
 </head>
 <body>
 
@@ -891,15 +909,14 @@ footer {
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html">Field Guide</a>
     <a href="learn.html" class="active">Academy</a>
-    <a href="updates.html">Signal</a>
     <a href="community.html">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-    <a href="index.html#download" class="nav-download-btn">Download</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
+    <a href="updates.html">Signal</a>
   </div>
 </nav>
 
@@ -1156,19 +1173,9 @@ footer {
 </main>
 
 <!-- ═══════════ FOOTER ═══════════ -->
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="guide.html">Field Guide</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="updates.html">Signal</a>
-    <a href="community.html">Community</a>
-    <a href="learn.html">Academy</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Omnibus — for all.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>

@@ -12,10 +12,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <meta property="og:title" content="XO_OX Coupling Protocol v0.1">
 <meta property="og:description" content="An open standard for inter-synth communication. MIDI says 'play this note.' Coupling says 'relate to this voice like this.'">
+<meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="XO_OX Coupling Protocol v0.1">
 <meta name="twitter:description" content="Three coupling types. One standard. Infinite relationships.">
+<meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -488,15 +490,17 @@ footer {
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav class="site-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <a href="index.html" class="nav-logo">XO_OX</a>
+  <button class="hamburger" aria-label="Toggle navigation">☰</button>
   <div class="nav-links">
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
+    <a href="aquarium.html">Aquarium</a>
     <a href="packs.html">Sound Packs</a>
     <a href="guide.html">Field Guide</a>
+    <a href="learn.html">Academy</a>
+    <a href="community.html">Community</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html">Expedition</a>
     <a href="updates.html">Signal</a>
-    <a href="index.html#aquarium">Aquarium</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -513,7 +517,7 @@ footer {
     <div class="article-meta-item">Version<span style="color: var(--coupling);">0.1 — Public Draft</span></div>
     <div class="article-meta-item">Published<span>2026-03-22</span></div>
     <div class="article-meta-item">Public Types<span>3 (Sympathetic / Complementary / Responsive)</span></div>
-    <div class="article-meta-item">Reference Implementation<span>XOlokun — 14 types</span></div>
+    <div class="article-meta-item">Reference Implementation<span>XOlokun — 15 types</span></div>
   </div>
 </header>
 
@@ -846,7 +850,7 @@ COUPLING_COMPLIANCE: Full-v0.1   <span class="c-comment">// all 3 types, listen 
 <h2 class="reveal" id="reference">Reference Implementation</h2>
 
 <p class="reveal">
-<strong>XOlokun</strong> is the reference implementation of this protocol. All 47 engines are Level 3 compliant for the three public types. The C++ contract lives in <code>Source/Core/SynthEngine.h</code>:
+<strong>XOlokun</strong> is the reference implementation of this protocol. All 73 engines are Level 3 compliant for the three public types. The C++ contract lives in <code>Source/Core/SynthEngine.h</code>:
 </p>
 
 <div class="code-block reveal"><span class="c-comment">// Speaker interface — emit coupling signal</span>
@@ -951,7 +955,7 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
       <tr>
         <td>0.1</td>
         <td style="color:var(--text-dim); font-family:inherit; font-size:0.88rem; white-space:nowrap;">2026-03-22</td>
-        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 16-byte packet format. Three compliance levels. Reference implementation: XOlokun v1.x (47 engines, 14 types).</td>
+        <td style="font-family:inherit; color:var(--text); font-size:0.88rem;">Initial public specification. Three core types (Sympathetic 0x01, Complementary 0x02, Responsive 0x03). 16-byte packet format. Three compliance levels. Reference implementation: XOlokun v1.x (73 engines, 15 types).</td>
       </tr>
     </tbody>
   </table>
@@ -967,22 +971,16 @@ Future packet extensions must preserve the 16-byte v0.1 header. Additional field
 
 </article>
 
-<footer>
-  <div class="footer-logo">XO_OX</div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="manifesto.html">Manifesto</a>
-    <a href="index.html#instruments">Instruments</a>
-    <a href="packs.html">Sound Packs</a>
-    <a href="guide.html">Field Guide</a>
-    <a href="updates.html">Signal</a>
-    <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+<footer class="footer">
+  <p>© 2026 XO_OX. Free &amp; open-source. Synthesis from the deepest place.</p>
+  <p><a href="https://github.com/BertCalm/XO_OX-XOlokun">GitHub</a> · <a href="https://www.patreon.com/cw/XO_OX">Patreon</a> · <a href="expedition.html">Join the Expedition</a></p>
 </footer>
 
 <script>
+document.querySelector('.hamburger')?.addEventListener('click', function() {
+  document.querySelector('.nav-links')?.classList.toggle('open');
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
