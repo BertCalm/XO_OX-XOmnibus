@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Parallax Dreams",
   "mood": "Entangled",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Rich dual-osc pad ready for coupling — M3 opens internal cross-mod, high parallax creates ghostly stereo depth",
-  "tags": ["pad", "coupling", "stereo", "dreamy"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Rich dual-osc pad ready for coupling \u2014 M3 opens internal cross-mod, high parallax creates ghostly stereo depth",
+  "tags": [
+    "pad",
+    "coupling",
+    "stereo",
+    "dreamy"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.4
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

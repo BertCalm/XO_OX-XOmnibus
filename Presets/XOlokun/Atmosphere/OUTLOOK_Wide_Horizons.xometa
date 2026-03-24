@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Wide Horizons",
   "mood": "Atmosphere",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
   "description": "Expansive pad that breathes slowly, with parallax stereo spreading high notes wide across the field",
-  "tags": ["pad", "ambient", "wide", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "pad",
+    "ambient",
+    "wide",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.45
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

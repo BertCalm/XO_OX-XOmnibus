@@ -20,10 +20,11 @@
   },
   "dna": {
     "warmth": 0.4,
-    "complexity": 0.65,
     "movement": 0.7,
     "brightness": 0.65,
-    "aggression": 0.55
+    "aggression": 0.55,
+    "density": 0.39,
+    "space": 0.26
   },
   "params": {
     "flow_threshold": 0.55,
@@ -45,5 +46,6 @@
     "flow_lfo2Depth": 0.22,
     "flow_stereoWidth": 0.72,
     "flow_level": 0.8
-  }
+  },
+  "schema_version": 1
 }

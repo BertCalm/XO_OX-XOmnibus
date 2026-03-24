@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Shimmer Stack",
   "mood": "Entangled",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Shimmer formation — super-saw width ready for OPENSKY AmpToFilter coupling. M3 at 0.5 amplifies coupling input 2.5x. Pair with OPENSKY for ascending luminosity.",
-  "tags": ["coupling", "shimmer", "entangled", "stacked"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Shimmer formation \u2014 super-saw width ready for OPENSKY AmpToFilter coupling. M3 at 0.5 amplifies coupling input 2.5x. Pair with OPENSKY for ascending luminosity.",
+  "tags": [
+    "coupling",
+    "shimmer",
+    "entangled",
+    "stacked"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.35
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

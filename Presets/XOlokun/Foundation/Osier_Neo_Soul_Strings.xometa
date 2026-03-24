@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "Short attack (40ms), high brightness (0.75), high cutoff (6000 Hz), moderate release. Intimacy=0.8 — voices pull together harmonically. A neo-soul/jazz string character: tight, bright, personally expressive.",
+  "description": "Short attack (40ms), high brightness (0.75), high cutoff (6000 Hz), moderate release. Intimacy=0.8 \u2014 voices pull together harmonically. A neo-soul/jazz string character: tight, bright, personally expressive.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.75,
@@ -11,8 +13,15 @@
     "space": 0.5,
     "warmth": 0.45
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Neo-Soul Strings",
   "parameters": {
@@ -41,6 +50,12 @@
       "osier_vibratoRate": 5.5
     }
   },
-  "tags": ["Garden", "Strings", "Chamber", "Neo-Soul"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Chamber",
+    "Neo-Soul"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

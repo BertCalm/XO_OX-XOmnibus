@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Refracted Vista",
   "mood": "Prism",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bright, colorful lead-pad hybrid with fast horizon scanning and wide parallax — light through a prism",
-  "tags": ["lead", "bright", "colorful", "prismatic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Bright, colorful lead-pad hybrid with fast horizon scanning and wide parallax \u2014 light through a prism",
+  "tags": [
+    "lead",
+    "bright",
+    "colorful",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.25
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

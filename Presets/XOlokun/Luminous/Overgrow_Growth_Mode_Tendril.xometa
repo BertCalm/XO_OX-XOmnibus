@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Growth Mode at 12 seconds. The KS model begins as seed (noise burst), amplitude fading in via quadratic growthGain. Bow noise provides continuous excitation during growth. Slowly emerging string texture.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.65,
     "warmth": 0.5
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Growth Mode Tendril",
   "parameters": {
@@ -42,6 +51,12 @@
       "grow_wildness": 0.15
     }
   },
-  "tags": ["Garden", "Strings", "GrowthMode", "Texture"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "GrowthMode",
+    "Texture"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

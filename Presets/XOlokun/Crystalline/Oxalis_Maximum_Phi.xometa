@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "phi=1.0 — full phyllotaxis harmonic spacing. All seven partials at golden ratio intervals (1:1.618:2.618:4.236:6.854:11.09:17.94). The sunflower seed head made sound. Inharmonic, crystalline, distinctly non-string.",
+  "description": "phi=1.0 \u2014 full phyllotaxis harmonic spacing. All seven partials at golden ratio intervals (1:1.618:2.618:4.236:6.854:11.09:17.94). The sunflower seed head made sound. Inharmonic, crystalline, distinctly non-string.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.7,
@@ -56,5 +56,6 @@
     "Pioneer",
     "Mathematical"
   ],
-  "version": "1.0"
+  "version": "1.0",
+  "schema_version": 1
 }

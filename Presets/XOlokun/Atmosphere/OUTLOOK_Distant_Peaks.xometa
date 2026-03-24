@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Distant Peaks",
   "mood": "Atmosphere",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Saw-based vista pad with slow aurora modulation — mountains at dusk",
-  "tags": ["pad", "saw", "cinematic", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Saw-based vista pad with slow aurora modulation \u2014 mountains at dusk",
+  "tags": [
+    "pad",
+    "saw",
+    "cinematic",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.6
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

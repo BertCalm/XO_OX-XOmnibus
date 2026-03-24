@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "The definitive film score orchestral string pad. Slow attack (250ms), very long release (3.5s), Summer season, medium formant (0.45), wide ensemble (0.85). Under dialogue, under establishing shots. Timeless.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.75,
     "warmth": 0.75
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Film Score Strings",
   "parameters": {
@@ -43,6 +52,12 @@
       "orch_warmth": 0.62
     }
   },
-  "tags": ["Garden", "Strings", "Orchestral", "Cinematic"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Orchestral",
+    "Cinematic"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

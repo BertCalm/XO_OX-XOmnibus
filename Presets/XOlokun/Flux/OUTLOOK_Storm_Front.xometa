@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Storm Front",
   "mood": "Flux",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "The albatross feeds on the storm — closed resonant filter with square-pulse and noise chaos. Fast LFO pumping drives the vista. Dark, aggressive, untamed.",
-  "tags": ["dark", "aggressive", "storm", "resonant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "The albatross feeds on the storm \u2014 closed resonant filter with square-pulse and noise chaos. Fast LFO pumping drives the vista. Dark, aggressive, untamed.",
+  "tags": [
+    "dark",
+    "aggressive",
+    "storm",
+    "resonant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.15
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

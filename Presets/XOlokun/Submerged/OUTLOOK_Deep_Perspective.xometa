@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "Deep Perspective",
   "mood": "Submerged",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Dark underwater vista — closed filter, slow breath, narrow parallax. Looking up from below.",
-  "tags": ["dark", "submerged", "slow", "deep"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Dark underwater vista \u2014 closed filter, slow breath, narrow parallax. Looking up from below.",
+  "tags": [
+    "dark",
+    "submerged",
+    "slow",
+    "deep"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.5
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

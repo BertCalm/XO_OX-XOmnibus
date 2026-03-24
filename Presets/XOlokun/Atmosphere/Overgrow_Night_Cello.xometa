@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Slow attack (150ms), long release (3s), high bow noise (0.4), low wildness (0.1), dark cutoff (2500 Hz). Deep, resonant, night-time solo cello. Slow vibrato (3.5 Hz) for expressive classical character.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.55,
     "warmth": 0.8
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Night Cello",
   "parameters": {
@@ -42,6 +51,12 @@
       "grow_wildness": 0.1
     }
   },
-  "tags": ["Garden", "Strings", "Cello", "Dark"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Cello",
+    "Dark"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

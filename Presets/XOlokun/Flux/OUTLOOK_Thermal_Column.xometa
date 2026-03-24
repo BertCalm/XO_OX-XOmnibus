@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Thermal Column",
   "mood": "Flux",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Rising thermals — aggressive filter pumping from fast coprime LFOs. Triangle-to-saw morphing against narrowing square pulse creates churning, kinetic texture.",
-  "tags": ["kinetic", "restless", "movement", "textural"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Rising thermals \u2014 aggressive filter pumping from fast coprime LFOs. Triangle-to-saw morphing against narrowing square pulse creates churning, kinetic texture.",
+  "tags": [
+    "kinetic",
+    "restless",
+    "movement",
+    "textural"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.2
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

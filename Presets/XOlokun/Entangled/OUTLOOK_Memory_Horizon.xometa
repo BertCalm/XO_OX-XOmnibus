@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Memory Horizon",
   "mood": "Entangled",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Looking backward and forward — sine foundation with formant vowels. Designed for OMBRE EnvToMorph coupling: OMBRE's memory shifts OUTLOOK's horizon, changing its voice.",
-  "tags": ["coupling", "memory", "meditative", "formant"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Looking backward and forward \u2014 sine foundation with formant vowels. Designed for OMBRE EnvToMorph coupling: OMBRE's memory shifts OUTLOOK's horizon, changing its voice.",
+  "tags": [
+    "coupling",
+    "memory",
+    "meditative",
+    "formant"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Medium",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.35
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Coastal Lead",
   "mood": "Foundation",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Skimming the wave tops — fast, responsive lead with saw-pulse brightness. Mod wheel and aftertouch open the vista. Proves OUTLOOK has teeth beyond pads.",
-  "tags": ["lead", "plucky", "expressive", "focused"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Skimming the wave tops \u2014 fast, responsive lead with saw-pulse brightness. Mod wheel and aftertouch open the vista. Proves OUTLOOK has teeth beyond pads.",
+  "tags": [
+    "lead",
+    "plucky",
+    "expressive",
+    "focused"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.1
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

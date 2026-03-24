@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "High companion (0.8), high intimacy (0.85). Play chords for 5 minutes and hear it change — companion affinity accumulates and voices pull harmonically together. The preset rewards patience.",
+  "description": "High companion (0.8), high intimacy (0.85). Play chords for 5 minutes and hear it change \u2014 companion affinity accumulates and voices pull harmonically together. The preset rewards patience.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.5,
@@ -11,8 +13,15 @@
     "space": 0.6,
     "warmth": 0.7
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Organic",
   "name": "Warm Ensemble",
   "parameters": {
@@ -41,6 +50,12 @@
       "osier_vibratoRate": 5.0
     }
   },
-  "tags": ["Garden", "Strings", "Chamber", "Warm"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Chamber",
+    "Warm"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

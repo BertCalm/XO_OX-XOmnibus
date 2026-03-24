@@ -20,10 +20,11 @@
   },
   "dna": {
     "warmth": 0.72,
-    "complexity": 0.3,
     "movement": 0.15,
     "brightness": 0.3,
-    "aggression": 0.05
+    "aggression": 0.05,
+    "density": 0.18,
+    "space": 0.12
   },
   "params": {
     "wash_diffusionRate": 0.15,
@@ -46,5 +47,6 @@
     "wash_lfo2Depth": 0.08,
     "wash_stereoWidth": 0.5,
     "wash_level": 0.8
-  }
+  },
+  "schema_version": 1
 }

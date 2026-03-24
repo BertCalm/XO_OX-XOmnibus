@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "companion=0.9, intimacy=0.9. Not impressive at first. Play chords for 3-4 minutes and the companion affinity accumulates — voices pull together harmonically. The preset that rewards sustained playing.",
+  "description": "companion=0.9, intimacy=0.9. Not impressive at first. Play chords for 3-4 minutes and the companion affinity accumulates \u2014 voices pull together harmonically. The preset that rewards sustained playing.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.48,
@@ -11,8 +13,15 @@
     "space": 0.6,
     "warmth": 0.65
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Organic",
   "name": "Long Session Quartet",
   "parameters": {
@@ -41,6 +50,12 @@
       "osier_vibratoRate": 5.0
     }
   },
-  "tags": ["Garden", "Strings", "Chamber", "CompanionPlanting"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Chamber",
+    "CompanionPlanting"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Growth Mode at 8 seconds. Seven partials emerge sequentially at golden angle intervals. Partial 1 immediately, partial 2 at ~1.1s, through partial 7 at ~6.8s. The sunflower seed head building outward in sound.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.7,
     "warmth": 0.3
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Organic",
   "name": "Pioneer Growth",
   "parameters": {
@@ -41,6 +50,12 @@
       "oxal_vibratoRate": 4.5
     }
   },
-  "tags": ["Garden", "Strings", "Pioneer", "GrowthMode"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pioneer",
+    "GrowthMode"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

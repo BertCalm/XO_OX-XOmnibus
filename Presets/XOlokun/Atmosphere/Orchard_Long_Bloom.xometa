@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "Growth Mode at 60 seconds — maximum germination time. The full orchestral ensemble does not arrive until 60 seconds have elapsed. For ambient, installation, or drone contexts where the orchestra is a slow architectural process.",
+  "description": "Growth Mode at 60 seconds \u2014 maximum germination time. The full orchestral ensemble does not arrive until 60 seconds have elapsed. For ambient, installation, or drone contexts where the orchestra is a slow architectural process.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.45,
@@ -11,8 +13,15 @@
     "space": 0.8,
     "warmth": 0.55
   },
-  "engines": ["Orchard"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Atmosphere",
   "name": "Long Bloom",
   "parameters": {
@@ -43,6 +52,13 @@
       "orch_warmth": 0.6
     }
   },
-  "tags": ["Garden", "Strings", "Orchestral", "GrowthMode", "Ambient"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Orchestral",
+    "GrowthMode",
+    "Ambient"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

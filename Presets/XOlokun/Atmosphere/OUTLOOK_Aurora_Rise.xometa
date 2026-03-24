@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Aurora Rise",
   "mood": "Atmosphere",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Dawn over the Southern Ocean — deep coprime LFO breathing with aurora conjunction surges every 60 seconds. Wide parallax, long tails.",
-  "tags": ["atmosphere", "aurora", "breathing", "luminous"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Dawn over the Southern Ocean \u2014 deep coprime LFO breathing with aurora conjunction surges every 60 seconds. Wide parallax, long tails.",
+  "tags": [
+    "atmosphere",
+    "aurora",
+    "breathing",
+    "luminous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.4
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

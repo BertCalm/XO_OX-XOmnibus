@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "phi=0.85, cutoff=3500 Hz. Phyllotaxis partials with a dark filter — the geometry becomes ominous rather than precise. Long release for lingering inharmonic tails.",
+  "description": "phi=0.85, cutoff=3500 Hz. Phyllotaxis partials with a dark filter \u2014 the geometry becomes ominous rather than precise. Long release for lingering inharmonic tails.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.2,
@@ -11,8 +13,15 @@
     "space": 0.65,
     "warmth": 0.7
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Deep",
   "name": "Dark Geometry",
   "parameters": {
@@ -41,6 +50,12 @@
       "oxal_vibratoRate": 3.5
     }
   },
-  "tags": ["Garden", "Strings", "Pioneer", "Dark"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pioneer",
+    "Dark"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

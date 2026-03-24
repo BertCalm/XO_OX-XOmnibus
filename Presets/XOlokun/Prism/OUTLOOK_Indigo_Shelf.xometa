@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "OUTLOOK Indigo Shelf",
   "mood": "Prism",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "Guru Bin",
   "version": "1.0.0",
-  "description": "Light hitting the thermocline — saw and formant counter-scanning creates vowel-like timbral shifts. Resonant shelf gives the sound a voice. Ping-pong delay adds rhythmic width.",
-  "tags": ["formant", "resonant", "vocal", "prismatic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Light hitting the thermocline \u2014 saw and formant counter-scanning creates vowel-like timbral shifts. Resonant shelf gives the sound a voice. Ping-pong delay adds rhythmic width.",
+  "tags": [
+    "formant",
+    "resonant",
+    "vocal",
+    "prismatic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.25
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

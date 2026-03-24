@@ -2,12 +2,24 @@
   "schema_version": 1,
   "name": "First Light",
   "mood": "Foundation",
-  "engines": ["Outlook"],
+  "engines": [
+    "Outlook"
+  ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Clean, balanced init-style pad — the view from sunrise. Warm sine/triangle blend with moderate space.",
-  "tags": ["pad", "init", "clean", "warm"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Clean, balanced init-style pad \u2014 the view from sunrise. Warm sine/triangle blend with moderate space.",
+  "tags": [
+    "pad",
+    "init",
+    "clean",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "sonicDNA": {
@@ -46,5 +58,15 @@
       "look_macroSpace": 0.25
     }
   },
-  "coupling": { "pairs": [] }
+  "coupling": {
+    "pairs": []
+  },
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.5
+  }
 }

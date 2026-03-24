@@ -45,5 +45,6 @@
     "Offering"
   ],
   "author": "XO_OX Designs",
-  "description": ""
+  "description": "",
+  "schema_version": 1
 }

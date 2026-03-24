@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "phi=0.0 — standard harmonic series. Seven partials at integer ratios. XOxalis as a conventional supersaw synth string — the baseline before phi transforms it.",
+  "description": "phi=0.0 \u2014 standard harmonic series. Seven partials at integer ratios. XOxalis as a conventional supersaw synth string \u2014 the baseline before phi transforms it.",
   "dna": {
     "aggression": 0.15,
     "brightness": 0.7,
@@ -13,8 +13,15 @@
     "space": 0.65,
     "warmth": 0.35
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Supersaw Baseline",
   "parameters": {
@@ -43,6 +50,11 @@
       "oxal_vibratoRate": 4.5
     }
   },
-  "tags": ["Garden", "Strings", "Pioneer"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pioneer"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

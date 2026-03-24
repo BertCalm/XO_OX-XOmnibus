@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Play in low register to trigger Bass role (dark, slow vibrato, -600 Hz filter bias). Low cutoff (3000 Hz), slow vibrato. The bass voice of the quartet as a solo instrument. Deep and warm.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.5,
     "warmth": 0.8
   },
-  "engines": ["Osier"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Cello Foundation",
   "parameters": {
@@ -41,6 +50,12 @@
       "osier_vibratoRate": 3.5
     }
   },
-  "tags": ["Garden", "Strings", "Chamber", "Cello"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Chamber",
+    "Cello"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

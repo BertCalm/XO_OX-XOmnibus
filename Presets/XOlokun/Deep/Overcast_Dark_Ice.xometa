@@ -21,10 +21,11 @@
   },
   "dna": {
     "warmth": 0.3,
-    "complexity": 0.3,
     "movement": 0.05,
     "brightness": 0.2,
-    "aggression": 0.08
+    "aggression": 0.08,
+    "density": 0.18,
+    "space": 0.12
   },
   "params": {
     "cast_freezeRate": 0.1,
@@ -44,5 +45,6 @@
     "cast_lfo1Rate": 0.1,
     "cast_lfo1Depth": 0.1,
     "cast_level": 0.8
-  }
+  },
+  "schema_version": 1
 }

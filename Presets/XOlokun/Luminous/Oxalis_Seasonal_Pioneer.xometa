@@ -1,8 +1,10 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
-  "description": "Auto season (accumulator-derived). phi=0.45. As W accumulates, seasonal brightness shifts the filter. The pioneer species adapting to the session — begins bright (Spring) and evolves.",
+  "description": "Auto season (accumulator-derived). phi=0.45. As W accumulates, seasonal brightness shifts the filter. The pioneer species adapting to the session \u2014 begins bright (Spring) and evolves.",
   "dna": {
     "aggression": 0.0,
     "brightness": 0.65,
@@ -11,8 +13,15 @@
     "space": 0.6,
     "warmth": 0.4
   },
-  "engines": ["Oxalis"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Luminous",
   "name": "Seasonal Pioneer",
   "parameters": {
@@ -41,6 +50,12 @@
       "oxal_vibratoRate": 4.5
     }
   },
-  "tags": ["Garden", "Strings", "Pioneer", "Seasonal"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pioneer",
+    "Seasonal"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

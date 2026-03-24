@@ -1,6 +1,8 @@
 {
   "author": "XO_OX Designs",
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "description": "Short attack (5ms), short decay (0.15s), low sustain (0.1). Damping=0.7, feedback=0.988 for fast natural decay. XOxalis as pizzicato: plucked, not bowed. Physical string without envelope sustain.",
   "dna": {
@@ -11,8 +13,15 @@
     "space": 0.45,
     "warmth": 0.35
   },
-  "engines": ["Overgrow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "mood": "Foundation",
   "name": "Solo Pizzicato",
   "parameters": {
@@ -42,6 +51,12 @@
       "grow_wildness": 0.15
     }
   },
-  "tags": ["Garden", "Strings", "Pizzicato", "Physical"],
-  "version": "1.0"
+  "tags": [
+    "Garden",
+    "Strings",
+    "Pizzicato",
+    "Physical"
+  ],
+  "version": "1.0",
+  "schema_version": 1
 }

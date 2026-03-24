@@ -20,10 +20,11 @@
   },
   "dna": {
     "warmth": 0.65,
-    "complexity": 0.7,
     "movement": 0.55,
     "brightness": 0.5,
-    "aggression": 0.3
+    "aggression": 0.3,
+    "density": 0.42,
+    "space": 0.27999999999999997
   },
   "params": {
     "worn_reductionRate": 0.85,
@@ -41,5 +42,6 @@
     "worn_lfo1Depth": 0.18,
     "worn_stereoWidth": 0.46,
     "worn_level": 0.8
-  }
+  },
+  "schema_version": 1
 }
