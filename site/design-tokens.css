@@ -14,7 +14,10 @@
  *   8. Typography Scale (10 Named Tokens)
  *   9. Spacing Scale
  *  10. Animation
+ *  11. XOlokun Depth System
  */
+
+/* XOlokun — Synthesis from the deepest place. Depth palette added 2026-03-24. */
 
 
 /* ============================================================
@@ -707,4 +710,48 @@
      the animation-delay — never set all creatures to the same
      phase or they will blink in unison and look robotic. */
   --anim-creature-blink-ms: 2000ms;   /* ambient blink cycle for engine creature illustrations */
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 11 — XOlokun Depth System
+   Brand palette: depth-themed colors for the deep ocean identity
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  /* Primary Triad */
+  --xo-abyssal: #080B1A;          /* Deep ocean floor — primary dark background */
+  --xo-pelagic: #111B33;          /* Twilight zone — card/panel backgrounds */
+  /* --xo-gold: #E9C46A — Olokun's treasure — defined in Section 1 */
+
+  /* Depth Gradient (surface → trench) */
+  --depth-surface:       #1E2D4D;  /* Navigation, chrome, shallow UI */
+  --depth-mesopelagic:   #111B33;  /* Cards, panels, content containers */
+  --depth-bathypelagic:  #0A0F22;  /* Primary canvas, deep content areas */
+  --depth-abyssal:       #080B1A;  /* Full background, immersive states */
+  --depth-hadal:         #050711;  /* Modals, overlays, focus states — the trench */
+
+  /* Bioluminescent System */
+  --bio-cyan:     #00E5FF;         /* Interactive elements, links, hover — most common deep-sea bioluminescence */
+  --bio-violet:   #9B5DE5;         /* Secondary accent, premium indicators */
+  --bio-phosphor: #00F5A0;         /* Success states, confirmations — dinoflagellate bloom */
+  --bio-coral:    #E76F51;         /* Warnings, destructive actions — reef boundary */
+
+  /* Text on dark backgrounds */
+  --xo-pearl:       #E8E4DC;       /* Abyssal Pearl — primary text on dark */
+  --xo-pearl-muted: #9BA3AE;       /* Muted text on dark backgrounds */
+
+  /* Depth-aware shadows */
+  --shadow-surface: 0 2px 8px rgba(8, 11, 26, 0.15);
+  --shadow-deep:    0 4px 16px rgba(8, 11, 26, 0.3);
+  --shadow-hadal:   0 8px 32px rgba(8, 11, 26, 0.5);
+
+  /* Bioluminescent glow effects */
+  --glow-cyan:   0 0 20px rgba(0, 229, 255, 0.3);
+  --glow-gold:   0 0 20px rgba(233, 196, 106, 0.3);
+  --glow-violet: 0 0 20px rgba(155, 93, 229, 0.3);
+
+  /* Tagline */
+  --xo-tagline: "Synthesis from the deepest place.";
+  --xo-motto:   "Omnibus — For All";
 }

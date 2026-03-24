@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free presets, recipes, tutorials, art, XPN packs, and lore from XOlokun. No login required. Updated weekly.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>Gifts from the Deep — XOlokun Free Downloads</title>
+<meta property="og:title" content="Gifts from the Deep — Free XOlokun Downloads">
+<meta property="og:description" content="Free presets, recipes, tutorials, XPN packs, and lore. No email. No account. Just download.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gifts from the Deep — Free XOlokun Downloads">
+<meta name="twitter:description" content="Free presets, recipes, tutorials, XPN packs, and lore. No email. No account. Just download.">
+<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ChrysDistorted';
+  src: url('fonts/Chrys-Distorted.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+</style>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   XO_OX — Gifts from the Deep / freebies.html
+   Aesthetic: Treasure chest on the ocean floor. Gold light
+   filtering through dark water. Bioluminescent rewards.
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --gold-glow-strong: rgba(233, 196, 106, 0.25);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.08);
+  --coral:      #C4636E;
+  --bio-cyan:   #00D4C8;
+  --bio-cyan-glow: rgba(0, 212, 200, 0.15);
+
+  /* XOlokun depth palette */
+  --xo-abyssal:   #060A10;
+  --xo-pelagic:   #0A1824;
+  --xo-hadal:     #08101A;
+
+  --zone-sunlit:        #48CAE4;
+  --zone-sunlit-glow:   rgba(72, 202, 228, 0.12);
+  --zone-twilight:      #0096C7;
+  --zone-twilight-glow: rgba(0, 150, 199, 0.12);
+  --zone-midnight:      #7B2FBE;
+  --zone-midnight-glow: rgba(123, 47, 190, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 10% 80%, rgba(42, 161, 155, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(233, 196, 106, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.18) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+
+/* ── Noise texture ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Ambient shimmer ── */
+.ambient-shimmer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(600px circle at 20% 80%, rgba(42, 161, 155, 0.03) 0%, transparent 100%),
+    radial-gradient(500px circle at 80% 20%, rgba(233, 196, 106, 0.025) 0%, transparent 100%);
+  background-size: 200% 200%, 200% 200%;
+  animation: ambient-caustic 22s ease-in-out infinite;
+}
+
+@keyframes ambient-caustic {
+  0%   { background-position: 0% 50%, 100% 50%; }
+  50%  { background-position: 100% 30%, 0% 70%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ NAV ═══════════ */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.92);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+  user-select: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-links a.active {
+  color: var(--gold);
+}
+.nav-links a.active::after {
+  width: 100%;
+  background: var(--gold);
+}
+
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover {
+  background: var(--cream) !important;
+  color: var(--bg-deep) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .sticky-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sticky-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+}
+
+/* ═══════════ HERO ═══════════ */
+.page-hero {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem clamp(1.5rem, 5vw, 6rem) 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Treasure chest glow — gold from below, bioluminescent cyan from the sides */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(233, 196, 106, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 60%, rgba(0, 212, 200, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 60%, rgba(0, 212, 200, 0.06) 0%, transparent 45%);
+  pointer-events: none;
+  animation: chest-breathe 8s ease-in-out infinite;
+}
+
+@keyframes chest-breathe {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50%       { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(6, 10, 16, 0.0) 60%,
+    rgba(6, 10, 16, 0.6) 100%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.page-hero h1 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero h1 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.page-hero .hero-sub {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 300;
+  color: var(--text);
+  max-width: 540px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+
+.no-wall-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(42, 161, 155, 0.3);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  background: rgba(42, 161, 155, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.no-wall-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 6px var(--teal);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--teal); }
+  50%       { opacity: 0.6; box-shadow: 0 0 12px var(--teal), 0 0 24px rgba(42, 161, 155, 0.3); }
+}
+
+/* ═══════════ FILTER BAR ═══════════ */
+.filter-section {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-warm);
+  padding: 1rem clamp(1.5rem, 5vw, 6rem);
+  position: sticky;
+  top: 60px;
+  z-index: 500;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.filter-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-right: 0.6rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.filter-btn:hover {
+  color: var(--cream);
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.filter-btn.active {
+  color: var(--bg-deep);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.filter-btn[data-filter="presets"].active  { background: #48CAE4; border-color: #48CAE4; }
+.filter-btn[data-filter="recipes"].active  { background: #2AA19B; border-color: #2AA19B; }
+.filter-btn[data-filter="tutorials"].active { background: #7B2FBE; border-color: #7B2FBE; }
+.filter-btn[data-filter="art"].active      { background: #C4636E; border-color: #C4636E; }
+.filter-btn[data-filter="xpn"].active      { background: #0066FF; border-color: #0066FF; }
+.filter-btn[data-filter="lore"].active     { background: #E9A84A; border-color: #E9A84A; }
+
+/* ═══════════ MAIN CONTENT ═══════════ */
+.freebies-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5vw, 6rem);
+}
+
+/* ═══════════ EMPTY STATE ═══════════ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.empty-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 400px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(0, 212, 200, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  animation: bio-pulse 4s ease-in-out infinite;
+}
+
+@keyframes bio-pulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -55%) scale(1); }
+  50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.15); }
+}
+
+.empty-creature {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+}
+
+.empty-jellyfish {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+  animation: jellyfish-float 5s ease-in-out infinite;
+}
+
+@keyframes jellyfish-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-12px) scale(1.04); }
+}
+
+.empty-state h3 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  max-width: 420px;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.empty-bio-ring {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bio-cyan);
+  position: relative;
+  z-index: 1;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(0, 212, 200, 0.2);
+  border-radius: 100px;
+  background: rgba(0, 212, 200, 0.04);
+}
+
+.bio-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bio-cyan);
+  box-shadow: 0 0 8px var(--bio-cyan);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ═══════════ PLACEHOLDER CARDS GRID ═══════════ */
+.cards-section-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.cards-section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.freebies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (max-width: 1100px) {
+  .freebies-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .freebies-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Freebie card ── */
+.freebie-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.4s, transform 0.4s, background 0.4s;
+  cursor: pointer;
+}
+
+/* Accent bar on top */
+.freebie-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--card-accent, var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glow from top */
+.freebie-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--card-glow, rgba(233, 196, 106, 0.04)), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.freebie-card:hover {
+  border-color: rgba(42, 161, 155, 0.25);
+  background: var(--bg-surface);
+  transform: translateY(-4px);
+}
+
+.freebie-card:hover::before { transform: scaleX(1); }
+.freebie-card:hover::after  { opacity: 1; }
+
+/* ── Card type badge ── */
+.card-type {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-type-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.card-type-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--card-accent, var(--gold));
+}
+
+/* ── Card content ── */
+.card-title {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.card-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+.card-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--card-accent, var(--gold));
+  color: var(--card-accent, var(--gold));
+  background: transparent;
+  border-radius: 2px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.card-download-btn:hover {
+  background: var(--card-accent, var(--gold));
+  color: var(--bg-deep);
+}
+
+/* Download arrow icon */
+.card-download-btn svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s;
+}
+.card-download-btn:hover svg {
+  transform: translateY(2px);
+}
+
+/* ── COMING SOON badge overlay ── */
+.card-coming-soon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(6, 10, 16, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.coming-badge {
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(233, 196, 106, 0.25);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(233, 196, 106, 0.6);
+  background: rgba(6, 10, 16, 0.8);
+  border-radius: 2px;
+}
+
+/* ── Card color variants ── */
+.freebie-card[data-type="preset"] {
+  --card-accent: #48CAE4;
+  --card-glow: rgba(72, 202, 228, 0.05);
+}
+.freebie-card[data-type="recipe"] {
+  --card-accent: #2AA19B;
+  --card-glow: rgba(42, 161, 155, 0.05);
+}
+.freebie-card[data-type="tutorial"] {
+  --card-accent: #A78BFA;
+  --card-glow: rgba(167, 139, 250, 0.05);
+}
+.freebie-card[data-type="art"] {
+  --card-accent: #C4636E;
+  --card-glow: rgba(196, 99, 110, 0.05);
+}
+.freebie-card[data-type="xpn"] {
+  --card-accent: #0066FF;
+  --card-glow: rgba(0, 102, 255, 0.05);
+}
+.freebie-card[data-type="lore"] {
+  --card-accent: #E9A84A;
+  --card-glow: rgba(233, 168, 74, 0.05);
+}
+
+/* ═══════════ FOOTER CTA ═══════════ */
+.footer-cta {
+  border-top: 1px solid var(--border);
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 5vw, 6rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(to bottom, transparent, rgba(233, 196, 106, 0.02));
+}
+
+.footer-cta-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-cta h2 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.25;
+}
+
+.footer-cta p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  max-width: 480px;
+  line-height: 1.8;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.cta-btn:hover {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+.cta-btn.primary {
+  background: var(--gold);
+  color: var(--bg-deep);
+  border-color: var(--gold);
+}
+.cta-btn.primary:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+/* ═══════════ SITE FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .footer { flex-direction: column; }
+  .footer-links { justify-content: center; }
+  .filter-section { top: 60px; }
+  .freebies-grid { gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="ambient-shimmer"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="sticky-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="freebies.html" class="active">Freebies</a>
+    <a href="expedition.html">Expedition</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="page-hero" id="top">
+  <div class="hero-eyebrow">Free Downloads</div>
+  <h1>Gifts from the <em>Deep</em></h1>
+  <p class="hero-sub">
+    Free presets, recipes, tutorials, and more.
+    Updated weekly. No login required.
+  </p>
+  <div class="no-wall-badge">
+    <span class="bio-dot"></span>
+    Everything here is free. No email. No account. Just download.
+  </div>
+</header>
+
+<!-- ═══════════ FILTER BAR ═══════════ -->
+<div class="filter-section" role="navigation" aria-label="Filter by type">
+  <div class="filter-inner">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="presets">Presets</button>
+    <button class="filter-btn" data-filter="recipes">Recipes</button>
+    <button class="filter-btn" data-filter="tutorials">Tutorials</button>
+    <button class="filter-btn" data-filter="art">Art</button>
+    <button class="filter-btn" data-filter="xpn">XPN Packs</button>
+    <button class="filter-btn" data-filter="lore">Lore</button>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN CONTENT ═══════════ -->
+<main id="main" class="freebies-main">
+
+  <!-- EMPTY STATE — shown when no content yet -->
+  <div class="empty-state reveal" id="emptyState">
+    <div class="empty-glow"></div>
+    <div class="empty-creature">
+      <!-- Bioluminescent jellyfish SVG -->
+      <svg class="empty-jellyfish" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Bell -->
+        <ellipse cx="40" cy="30" rx="26" ry="20" fill="rgba(0,212,200,0.08)" stroke="rgba(0,212,200,0.3)" stroke-width="1.5"/>
+        <!-- Inner glow ring -->
+        <ellipse cx="40" cy="30" rx="18" ry="13" fill="rgba(0,212,200,0.04)" stroke="rgba(0,212,200,0.15)" stroke-width="1"/>
+        <!-- Core bio dot -->
+        <circle cx="40" cy="27" r="4" fill="rgba(0,212,200,0.25)" stroke="rgba(0,212,200,0.6)" stroke-width="1"/>
+        <circle cx="40" cy="27" r="2" fill="rgba(0,212,200,0.6)"/>
+        <!-- Tentacles -->
+        <path d="M28 49 Q25 58 27 66" stroke="rgba(0,212,200,0.25)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M33 51 Q31 61 34 70" stroke="rgba(0,212,200,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M40 52 Q40 62 40 72" stroke="rgba(0,212,200,0.35)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M47 51 Q49 61 46 70" stroke="rgba(0,212,200,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M52 49 Q55 58 53 66" stroke="rgba(0,212,200,0.25)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <!-- Gold accent dots -->
+        <circle cx="32" cy="25" r="1.5" fill="rgba(233,196,106,0.5)"/>
+        <circle cx="48" cy="25" r="1.5" fill="rgba(233,196,106,0.5)"/>
+      </svg>
+    </div>
+    <h3>The first gifts surface soon.</h3>
+    <p>
+      The deep holds many treasures. Check back weekly —
+      free presets, coupling recipes, field guides, and XPN packs
+      rise to the surface on their own schedule.
+    </p>
+    <div class="empty-bio-ring">
+      <span class="bio-dot"></span>
+      Updated weekly — no subscription needed
+    </div>
+  </div>
+
+  <!-- PLACEHOLDER CARDS — demonstrate the layout -->
+  <div id="cardsGrid" style="display: none;">
+    <div class="cards-section-label">Latest Gifts</div>
+    <div class="freebies-grid" role="list">
+
+      <!-- Card 1: Preset Pack -->
+      <article class="freebie-card reveal" data-type="preset" role="listitem" aria-label="DEPTH SESSIONS — Preset Pack">
+        <div class="card-type">
+          <div class="card-type-icon" aria-hidden="true">◈</div>
+          <span class="card-type-label">Preset Pack</span>
+        </div>
+        <h3 class="card-title">DEPTH SESSIONS VOL. 1</h3>
+        <p class="card-description">
+          24 presets across OCEANIC, OXBOW, and OCEANDEEP. Deep pressure pads,
+          bioluminescent leads, and abyssal drones. Designed for the bottom of the mix.
+        </p>
+        <div class="card-meta">
+          <span class="card-date">Coming Soon</span>
+          <a href="#" class="card-download-btn" aria-label="Download DEPTH SESSIONS VOL. 1">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8.5L2 4.5h2.5V1h3v3.5H10L6 8.5zm-4 2h8v1H2v-1z"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="card-coming-soon" aria-hidden="true">
+          <span class="coming-badge">Surfacing Soon</span>
+        </div>
+      </article>
+
+      <!-- Card 2: Recipe -->
+      <article class="freebie-card reveal" data-type="recipe" role="listitem" aria-label="Knot + Organism Coupling Recipe">
+        <div class="card-type">
+          <div class="card-type-icon" aria-hidden="true">⟳</div>
+          <span class="card-type-label">Coupling Recipe</span>
+        </div>
+        <h3 class="card-title">KNOT × ORGANISM</h3>
+        <p class="card-description">
+          A topological coupling route between ORBWEAVE and ORGANISM. The Knot Phase
+          Matrix feeds the cellular automaton — structured chaos that evolves over time.
+        </p>
+        <div class="card-meta">
+          <span class="card-date">Coming Soon</span>
+          <a href="#" class="card-download-btn" aria-label="Download KNOT × ORGANISM recipe">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8.5L2 4.5h2.5V1h3v3.5H10L6 8.5zm-4 2h8v1H2v-1z"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="card-coming-soon" aria-hidden="true">
+          <span class="coming-badge">Surfacing Soon</span>
+        </div>
+      </article>
+
+      <!-- Card 3: Tutorial -->
+      <article class="freebie-card reveal" data-type="tutorial" role="listitem" aria-label="Understanding Coupling tutorial">
+        <div class="card-type">
+          <div class="card-type-icon" aria-hidden="true">▷</div>
+          <span class="card-type-label">Tutorial</span>
+        </div>
+        <h3 class="card-title">UNDERSTANDING COUPLING</h3>
+        <p class="card-description">
+          A visual walkthrough of all 15 coupling types. Learn when to use
+          Gravitational vs. Topological vs. Triangular coupling, with audio examples
+          and practical routing guides.
+        </p>
+        <div class="card-meta">
+          <span class="card-date">Coming Soon</span>
+          <a href="#" class="card-download-btn" aria-label="Download Understanding Coupling tutorial">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8.5L2 4.5h2.5V1h3v3.5H10L6 8.5zm-4 2h8v1H2v-1z"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="card-coming-soon" aria-hidden="true">
+          <span class="coming-badge">Surfacing Soon</span>
+        </div>
+      </article>
+
+      <!-- Card 4: XPN Pack -->
+      <article class="freebie-card reveal" data-type="xpn" role="listitem" aria-label="ONSET PERCUSSION XPN Pack">
+        <div class="card-type">
+          <div class="card-type-icon" aria-hidden="true">▣</div>
+          <span class="card-type-label">XPN Pack</span>
+        </div>
+        <h3 class="card-title">ONSET PERCUSSION 001</h3>
+        <p class="card-description">
+          48 drum textures from XOnset, rendered for MPC compatibility.
+          Kick, snare, hi-hat, and percussion across 4 octaves. Ready to load.
+        </p>
+        <div class="card-meta">
+          <span class="card-date">Coming Soon</span>
+          <a href="#" class="card-download-btn" aria-label="Download ONSET PERCUSSION 001 XPN Pack">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M6 8.5L2 4.5h2.5V1h3v3.5H10L6 8.5zm-4 2h8v1H2v-1z"/></svg>
+            Download
+          </a>
+        </div>
+        <div class="card-coming-soon" aria-hidden="true">
+          <span class="coming-badge">Surfacing Soon</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══════════ FOOTER CTA ═══════════ -->
+<section class="footer-cta reveal" aria-labelledby="expedition-cta-heading">
+  <div class="footer-cta-label">Go Deeper</div>
+  <h2 id="expedition-cta-heading">Want them first?</h2>
+  <p>
+    Join the Expedition. Supporters get early access to every free drop
+    before it surfaces publicly — and unlock exclusive content no one else sees.
+  </p>
+  <a href="expedition.html" class="cta-btn primary">Join the Expedition</a>
+  <p style="font-size:0.72rem; color: var(--text-faint); letter-spacing: 0.08em; font-style: italic;">
+    Synthesis from the deepest place.
+  </p>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="updates.html">Signal</a>
+    <a href="expedition.html">Expedition</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">Patreon</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
+</footer>
+
+<script>
+// ─── Hamburger ───
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+if (hamburgerBtn && navLinks) {
+  hamburgerBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    hamburgerBtn.classList.toggle('open', open);
+    hamburgerBtn.setAttribute('aria-expanded', String(open));
+  });
+}
+
+// ─── Scroll reveal ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── Filter buttons ───
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    const cards = document.querySelectorAll('.freebie-card');
+    cards.forEach(card => {
+      if (filter === 'all' || card.dataset.type === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

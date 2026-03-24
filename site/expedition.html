@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Join the XOlokun Expedition. A Patreon community that unlocks the Kitchen Collection together. The deeper the descent, the more we reveal.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>The Expedition — XOlokun Community</title>
+<meta property="og:title" content="The Expedition — XOlokun Community">
+<meta property="og:description" content="Join the descent. Unlock the deep. A milestone-driven community unlocking the Kitchen Collection together.">
+<meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Expedition — XOlokun Community">
+<meta name="twitter:description" content="Join the descent. Unlock the deep. Once unlocked, always free.">
+<meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nebulica';
+  src: url('fonts/Nebulica-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ChrysDistorted';
+  src: url('fonts/Chrys-Distorted.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+</style>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   XO_OX — The Expedition / expedition.html
+   Aesthetic: Full ocean depth gradient. Surface to trench.
+   Gold for achieved. Cyan for next. Dark, immersive, earned.
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --gold-glow-strong: rgba(233, 196, 106, 0.28);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.1);
+  --coral:      #C4636E;
+  --bio-cyan:   #00D4C8;
+  --bio-cyan-glow: rgba(0, 212, 200, 0.12);
+
+  --zone-sunlit:        #48CAE4;
+  --zone-sunlit-glow:   rgba(72, 202, 228, 0.18);
+  --zone-twilight:      #0096C7;
+  --zone-twilight-glow: rgba(0, 150, 199, 0.15);
+  --zone-midnight:      #7B2FBE;
+  --zone-midnight-glow: rgba(123, 47, 190, 0.18);
+
+  /* Depth zone backgrounds — progressively darker */
+  --depth-surface:     #07111C;
+  --depth-twilight:    #060E18;
+  --depth-meso:        #050C16;
+  --depth-bathy:       #040A13;
+  --depth-abyssal:     #030810;
+  --depth-hadal:       #02060E;
+  --depth-trench:      #01040B;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-deep);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 5%, rgba(72, 202, 228, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 95%, rgba(123, 47, 190, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(6, 10, 16, 0.8) 0%, transparent 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+
+/* ── Noise ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Depth gradient (full page) ── */
+.depth-wash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(to bottom,
+    rgba(72, 202, 228, 0.025)  0%,
+    rgba(0, 150, 199, 0.02)   20%,
+    rgba(0, 100, 150, 0.015)  40%,
+    rgba(50, 0, 100, 0.02)    65%,
+    rgba(80, 0, 140, 0.03)    85%,
+    rgba(30, 0, 60, 0.05)    100%);
+}
+
+/* ── Ambient shimmer ── */
+.ambient-shimmer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(700px circle at 15% 10%, rgba(72, 202, 228, 0.04) 0%, transparent 100%),
+    radial-gradient(600px circle at 85% 90%, rgba(123, 47, 190, 0.04) 0%, transparent 100%);
+  background-size: 200% 200%, 200% 200%;
+  animation: ambient-drift 25s ease-in-out infinite;
+}
+@keyframes ambient-drift {
+  0%   { background-position: 0% 0%, 100% 100%; }
+  50%  { background-position: 20% 30%, 80% 70%; }
+  100% { background-position: 0% 0%, 100% 100%; }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ NAV ═══════════ */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.92);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+  user-select: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; background: var(--gold); }
+
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover { background: var(--cream) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .sticky-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sticky-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+}
+
+/* ═══════════ HERO ═══════════ */
+.expedition-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem clamp(1.5rem, 5vw, 6rem) 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ocean surface light from above */
+.expedition-hero::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(72, 202, 228, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 20%, rgba(233, 196, 106, 0.06) 0%, transparent 45%);
+  pointer-events: none;
+  animation: surface-shimmer 10s ease-in-out infinite;
+}
+
+@keyframes surface-shimmer {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+/* Depth gradient fade at bottom of hero */
+.expedition-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--bg-deep));
+  pointer-events: none;
+}
+
+.hero-depth-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--zone-sunlit);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.hero-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.expedition-hero h1 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.expedition-hero h1 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.expedition-hero .hero-sub {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-weight: 300;
+  color: var(--text);
+  max-width: 520px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════ BUTTONS ═══════════ */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+}
+.cta-btn:hover {
+  background: var(--teal);
+  color: var(--bg-deep);
+}
+.cta-btn.primary {
+  background: var(--gold);
+  color: var(--bg-deep);
+  border-color: var(--gold);
+  animation: cta-pulse 3s ease-in-out infinite;
+}
+.cta-btn.primary:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  animation: none;
+}
+
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233, 196, 106, 0); }
+  50%       { box-shadow: 0 0 0 8px rgba(233, 196, 106, 0.12), 0 0 24px rgba(233, 196, 106, 0.08); }
+}
+
+/* ═══════════ SECTION WRAPPER ═══════════ */
+.expedition-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 6rem);
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.section-label.centered {
+  justify-content: center;
+}
+.section-label.centered::before,
+.section-label.centered::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+/* ═══════════ DEPTH GAUGE ═══════════ */
+.gauge-section {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(to bottom,
+    rgba(6, 10, 16, 0) 0%,
+    rgba(6, 10, 16, 0.3) 100%);
+}
+
+.gauge-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .gauge-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.gauge-intro h2 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.gauge-intro h2 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.gauge-intro p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  max-width: 440px;
+}
+
+.current-progress {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-left: 3px solid var(--gold);
+  background: rgba(233, 196, 106, 0.04);
+  border-radius: 0 2px 2px 0;
+}
+.current-progress p {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+.current-progress strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ── The Depth Gauge Timeline ── */
+.depth-gauge-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* Vertical line */
+.depth-gauge-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: 12px;
+  width: 1px;
+  background: linear-gradient(to bottom,
+    var(--zone-sunlit) 0%,
+    var(--zone-twilight) 25%,
+    rgba(0, 80, 160, 0.8) 45%,
+    rgba(80, 20, 160, 0.8) 65%,
+    var(--zone-midnight) 82%,
+    rgba(40, 0, 80, 0.6) 100%);
+}
+
+.depth-node {
+  position: relative;
+  padding: 0 0 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: opacity 0.3s;
+}
+
+.depth-node:last-child {
+  padding-bottom: 0;
+}
+
+/* Node dot */
+.depth-node::before {
+  content: '';
+  position: absolute;
+  left: -1.3rem;
+  top: 6px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--node-color, var(--border));
+  background: var(--bg-deep);
+  transition: box-shadow 0.5s, border-color 0.5s, background 0.5s;
+  z-index: 1;
+}
+
+/* Active node: LIVE milestone */
+.depth-node.live::before {
+  border-color: var(--gold);
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(233, 196, 106, 0.15), 0 0 16px rgba(233, 196, 106, 0.3);
+  animation: node-live 2.5s ease-in-out infinite;
+}
+
+@keyframes node-live {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(233, 196, 106, 0.15), 0 0 16px rgba(233, 196, 106, 0.25); }
+  50%       { box-shadow: 0 0 0 8px rgba(233, 196, 106, 0.08), 0 0 28px rgba(233, 196, 106, 0.35); }
+}
+
+/* Next unlockable node */
+.depth-node.next::before {
+  border-color: var(--bio-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 212, 200, 0.12), 0 0 12px rgba(0, 212, 200, 0.15);
+  animation: node-next 3s ease-in-out infinite;
+}
+
+@keyframes node-next {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(0, 212, 200, 0.1), 0 0 10px rgba(0, 212, 200, 0.1); }
+  50%       { box-shadow: 0 0 0 5px rgba(0, 212, 200, 0.06), 0 0 20px rgba(0, 212, 200, 0.2); }
+}
+
+/* Locked future nodes */
+.depth-node.locked {
+  opacity: 0.45;
+}
+.depth-node.locked::before {
+  border-color: var(--text-faint);
+  opacity: 0.4;
+}
+
+.node-zone {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--node-zone-color, var(--text-faint));
+}
+
+.node-milestone {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.node-count {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--node-color, var(--text-dim));
+  line-height: 1;
+}
+
+.node-label {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.node-unlock {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--node-unlock-color, var(--text-faint));
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  display: inline-block;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Depth node color overrides by zone ── */
+.depth-node[data-zone="surface"] {
+  --node-color: var(--gold);
+  --node-zone-color: var(--gold);
+  --node-unlock-color: var(--gold);
+}
+.depth-node[data-zone="twilight"] {
+  --node-color: var(--bio-cyan);
+  --node-zone-color: var(--bio-cyan);
+  --node-unlock-color: var(--bio-cyan);
+}
+.depth-node[data-zone="meso"] {
+  --node-color: var(--zone-sunlit);
+  --node-zone-color: var(--zone-sunlit);
+  --node-unlock-color: var(--zone-sunlit);
+}
+.depth-node[data-zone="bathy"] {
+  --node-color: var(--zone-twilight);
+  --node-zone-color: var(--zone-twilight);
+  --node-unlock-color: var(--zone-twilight);
+}
+.depth-node[data-zone="abyssal"] {
+  --node-color: var(--zone-midnight);
+  --node-zone-color: rgba(167, 139, 250, 0.8);
+  --node-unlock-color: rgba(167, 139, 250, 0.8);
+}
+.depth-node[data-zone="hadal"] {
+  --node-color: #9B5DE5;
+  --node-zone-color: rgba(155, 93, 229, 0.7);
+  --node-unlock-color: rgba(155, 93, 229, 0.7);
+}
+.depth-node[data-zone="trench"] {
+  --node-color: #6B2FBE;
+  --node-zone-color: rgba(107, 47, 190, 0.6);
+  --node-unlock-color: rgba(107, 47, 190, 0.6);
+}
+
+/* ═══════════ TIERS SECTION ═══════════ */
+.tiers-section {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(to bottom,
+    rgba(6, 10, 16, 0.0) 0%,
+    rgba(3, 8, 20, 0.4) 100%);
+}
+
+.tiers-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.tiers-intro h2 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.tiers-intro h2 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.tiers-intro p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+/* ── Tier cards ── */
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .tiers-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+.tier-card {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s, border-color 0.4s, background 0.4s;
+}
+
+/* Depth shading: deeper tiers = darker background */
+.tier-card[data-tier="explorer"]  { background: var(--depth-twilight); }
+.tier-card[data-tier="diver"]     { background: var(--depth-bathy); }
+.tier-card[data-tier="abyssal"]   { background: var(--depth-abyssal); border-color: rgba(233, 196, 106, 0.18); }
+
+.tier-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(42, 161, 155, 0.3);
+}
+
+.tier-card[data-tier="abyssal"]:hover {
+  border-color: rgba(233, 196, 106, 0.4);
+}
+
+/* Top accent bar */
+.tier-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--tier-accent, var(--teal));
+  opacity: 0.8;
+}
+
+/* Subtle glow from top */
+.tier-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--tier-glow, rgba(42, 161, 155, 0.04)), transparent);
+  pointer-events: none;
+}
+
+.tier-card[data-tier="explorer"] {
+  --tier-accent: var(--bio-cyan);
+  --tier-glow: rgba(0, 212, 200, 0.04);
+}
+.tier-card[data-tier="diver"] {
+  --tier-accent: var(--zone-twilight);
+  --tier-glow: rgba(0, 150, 199, 0.05);
+}
+.tier-card[data-tier="abyssal"] {
+  --tier-accent: var(--gold);
+  --tier-glow: rgba(233, 196, 106, 0.05);
+}
+
+/* FEATURED badge for middle tier */
+.tier-featured {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--zone-twilight);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(0, 150, 199, 0.3);
+  border-radius: 2px;
+  background: rgba(0, 150, 199, 0.05);
+}
+
+/* GOLD badge for top tier */
+.tier-gold {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid rgba(233, 196, 106, 0.3);
+  border-radius: 2px;
+  background: rgba(233, 196, 106, 0.05);
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; box-shadow: 0 0 8px rgba(233, 196, 106, 0.2); }
+}
+
+.tier-depth-zone {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--tier-accent, var(--teal));
+  opacity: 0.7;
+}
+
+.tier-name {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--cream);
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+.tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.tier-price-amount {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--tier-accent, var(--teal));
+  line-height: 1;
+}
+.tier-price-period {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.tier-description {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.7;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tier-perks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+.tier-perks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+}
+.tier-perks li::before {
+  content: '—';
+  color: var(--tier-accent, var(--teal));
+  font-weight: 400;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+.tier-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--tier-accent, var(--teal));
+  color: var(--tier-accent, var(--teal));
+  background: transparent;
+  border-radius: 2px;
+  margin-top: auto;
+  transition: all 0.35s;
+}
+.tier-cta:hover {
+  background: var(--tier-accent, var(--teal));
+  color: var(--bg-deep);
+}
+.tier-card[data-tier="abyssal"] .tier-cta {
+  background: var(--gold);
+  color: var(--bg-deep);
+}
+.tier-card[data-tier="abyssal"] .tier-cta:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+/* ═══════════ PROMISE SECTION ═══════════ */
+.promise-section {
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.promise-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem;
+  border: 1px solid rgba(233, 196, 106, 0.15);
+  border-radius: 2px;
+  background: rgba(233, 196, 106, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.promise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0.5;
+}
+
+.promise-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(233, 196, 106, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.promise-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin: 0 auto 1.5rem;
+  opacity: 0.7;
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.promise-card h2 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.promise-card h2 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.promise-card p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.85;
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.promise-card .promise-emphasis {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+/* ═══════════ MAIN JOIN CTA ═══════════ */
+.join-section {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(to bottom,
+    rgba(3, 8, 20, 0.4) 0%,
+    rgba(1, 4, 11, 0.6) 100%);
+  text-align: center;
+}
+
+.join-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.join-content h2 {
+  font-family: 'Nebulica', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+}
+
+.join-content h2 em {
+  font-family: 'ChrysDistorted', sans-serif;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.join-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.join-patreon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  transition: all 0.4s;
+  animation: patreon-pulse 3.5s ease-in-out infinite;
+  position: relative;
+}
+.join-patreon-btn:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  animation: none;
+  transform: scale(1.02);
+}
+
+@keyframes patreon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(233, 196, 106, 0),
+                0 4px 24px rgba(233, 196, 106, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(233, 196, 106, 0.06),
+                0 4px 40px rgba(233, 196, 106, 0.22);
+  }
+}
+
+/* Patreon "P" icon inline */
+.patreon-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.join-tagline {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+}
+
+.join-motto {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  opacity: 0.6;
+}
+
+/* ═══════════ SITE FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Nebulica', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .gauge-layout { grid-template-columns: 1fr; }
+  .tiers-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .footer-links { justify-content: center; }
+  .promise-card { padding: 2rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="depth-wash"></div>
+<div class="ambient-shimmer"></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="sticky-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="expedition.html" class="active">Expedition</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="expedition-hero" id="top">
+  <div class="hero-depth-label">Depth: Surface → Trench</div>
+  <div class="hero-eyebrow">The Expedition</div>
+  <h1>Join the <em>Descent.</em><br>Unlock the <em>Deep.</em></h1>
+  <p class="hero-sub">
+    A depth-milestone community. The deeper we go together,
+    the more of the Kitchen Collection unlocks — free, for everyone, permanently.
+  </p>
+  <div class="hero-cta-group">
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener" class="cta-btn primary">
+      Join on Patreon
+    </a>
+    <a href="#depth-gauge" class="cta-btn">See the Depth Gauge</a>
+  </div>
+</header>
+
+<!-- ═══════════ DEPTH GAUGE ═══════════ -->
+<section class="gauge-section" id="depth-gauge" aria-labelledby="gauge-heading">
+  <div class="expedition-section">
+    <div class="gauge-layout">
+
+      <!-- Left: intro -->
+      <div class="gauge-intro reveal">
+        <div class="section-label">The Depth Gauge</div>
+        <h2>Every explorer<br>lowers the <em>pressure.</em></h2>
+        <p>
+          As the expedition grows, we unlock the Kitchen Collection together.
+          Reach a depth milestone and the corresponding quad surfaces — free,
+          forever, for every XOlokun user worldwide.
+        </p>
+        <p>
+          No one gets left behind. Once a tier unlocks, it stays unlocked.
+          The community descends together.
+        </p>
+        <div class="current-progress" role="status" aria-live="polite">
+          <p>
+            <strong>We are 10 explorers</strong> from unlocking the Chef Quad.
+            The expedition begins with you.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: depth gauge timeline -->
+      <div class="depth-gauge-timeline reveal" aria-label="Milestone depth gauge">
+
+        <div class="depth-node live" data-zone="surface" role="listitem">
+          <span class="node-zone">Surface — 0m</span>
+          <div class="node-milestone">
+            <span class="node-count">V1 Launch</span>
+          </div>
+          <div class="node-label">XOlokun is live. 73 engines, 22K presets.<br>Free and open-source, forever.</div>
+          <span class="node-unlock" style="background: rgba(233,196,106,0.08); border-color: rgba(233,196,106,0.2); color: var(--gold);">LIVE NOW</span>
+        </div>
+
+        <div class="depth-node next" data-zone="twilight" role="listitem">
+          <span class="node-zone">Twilight Zone — 200m</span>
+          <div class="node-milestone">
+            <span class="node-count">10 Explorers</span>
+            <span class="node-label">($3+/mo)</span>
+          </div>
+          <div class="node-label">Reaching this depth unlocks the first quad.</div>
+          <span class="node-unlock">Unlocks: Chef Quad — XOto, XOctave, XOleg, XOtis</span>
+        </div>
+
+        <div class="depth-node locked" data-zone="meso" role="listitem">
+          <span class="node-zone">Mesopelagic — 500m</span>
+          <div class="node-milestone">
+            <span class="node-count">25 Divers</span>
+            <span class="node-label">($8+/mo)</span>
+          </div>
+          <div class="node-label">The thermocline breaks. The temperature drops.</div>
+          <span class="node-unlock">Unlocks: Kitchen Quad — XOven, XOchre, XObelisk, XOpaline</span>
+        </div>
+
+        <div class="depth-node locked" data-zone="bathy" role="listitem">
+          <span class="node-zone">Bathypelagic — 1,000m</span>
+          <div class="node-milestone">
+            <span class="node-count">50 Bathynauts</span>
+            <span class="node-label">($8+/mo)</span>
+          </div>
+          <div class="node-label">Perpetual darkness begins. Only bioluminescence.</div>
+          <span class="node-unlock">Unlocks: Cellar Quad — XOgre, XOlate, XOaken, XOmega</span>
+        </div>
+
+        <div class="depth-node locked" data-zone="abyssal" role="listitem">
+          <span class="node-zone">Abyssal Plain — 3,000m</span>
+          <div class="node-milestone">
+            <span class="node-count">100 Abyssals</span>
+            <span class="node-label">($8+/mo)</span>
+          </div>
+          <div class="node-label">The flat silence of the deep ocean floor.</div>
+          <span class="node-unlock">Unlocks: Garden Quad — XOrchard, XOvergrow, XOsier, XOxalis</span>
+        </div>
+
+        <div class="depth-node locked" data-zone="hadal" role="listitem">
+          <span class="node-zone">Hadal Zone — 6,000m</span>
+          <div class="node-milestone">
+            <span class="node-count">250 Hadals</span>
+            <span class="node-label">($8+/mo)</span>
+          </div>
+          <div class="node-label">The trenches. Where pressure reshapes everything.</div>
+          <span class="node-unlock">Unlocks: Broth Quad — XOverwash, XOverworn, XOverflow, XOvercast</span>
+        </div>
+
+        <div class="depth-node locked" data-zone="trench" role="listitem">
+          <span class="node-zone">Challenger Deep — 11,000m</span>
+          <div class="node-milestone">
+            <span class="node-count">500 Trench Walkers</span>
+            <span class="node-label">($8+/mo)</span>
+          </div>
+          <div class="node-label">The absolute bottom. Total darkness. Total synthesis.</div>
+          <span class="node-unlock">Unlocks: Fusion Quad — XOasis, XOddfellow, XOnkolo, XOpcode</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TIERS ═══════════ -->
+<section class="tiers-section" id="tiers" aria-labelledby="tiers-heading">
+  <div class="expedition-section">
+    <div class="tiers-intro reveal">
+      <div class="section-label centered">Choose Your Depth</div>
+      <h2 id="tiers-heading">Three tiers.<br><em>One expedition.</em></h2>
+      <p>
+        Every tier advances the gauge. Choose the depth
+        that feels right — you can always go deeper.
+      </p>
+    </div>
+
+    <div class="tiers-grid">
+
+      <!-- Explorer tier -->
+      <article class="tier-card reveal" data-tier="explorer" aria-labelledby="tier-explorer-name">
+        <div class="tier-depth-zone">Twilight Zone</div>
+        <h3 class="tier-name" id="tier-explorer-name">Explorer</h3>
+        <div class="tier-price">
+          <span class="tier-price-amount">$3</span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <p class="tier-description">
+          Step off the surface. The first depth tier —
+          early access and a name on the wall.
+        </p>
+        <ul class="tier-perks">
+          <li>Early access to weekly free drops before public release</li>
+          <li>Behind-the-scenes: engine design notes, DSP stories</li>
+          <li>Name on the Expedition Wall in the site footer</li>
+          <li>Your depth advances the milestone gauge</li>
+        </ul>
+        <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener" class="tier-cta" aria-label="Join as Explorer on Patreon">
+          Begin the Descent
+        </a>
+      </article>
+
+      <!-- Diver tier -->
+      <article class="tier-card reveal" data-tier="diver" aria-labelledby="tier-diver-name">
+        <span class="tier-featured" aria-label="Most popular tier">Most Popular</span>
+        <div class="tier-depth-zone">Mesopelagic Zone</div>
+        <h3 class="tier-name" id="tier-diver-name">Diver</h3>
+        <div class="tier-price">
+          <span class="tier-price-amount">$8</span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <p class="tier-description">
+          Into the twilight. Monthly preset packs and
+          coupling recipes from the deep.
+        </p>
+        <ul class="tier-perks">
+          <li>Everything in Explorer</li>
+          <li>Monthly preset pack (10–15 presets, hand-authored)</li>
+          <li>Coupling recipe PDFs with routing diagrams</li>
+          <li>Engine previews before public announcement</li>
+          <li>Vote on which engines enter the Guru Bin next</li>
+        </ul>
+        <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener" class="tier-cta" aria-label="Join as Diver on Patreon">
+          Dive Deeper
+        </a>
+      </article>
+
+      <!-- Abyssal tier -->
+      <article class="tier-card reveal" data-tier="abyssal" aria-labelledby="tier-abyssal-name">
+        <span class="tier-gold" aria-label="Premium tier">Gold Standard</span>
+        <div class="tier-depth-zone">Abyssal Plain</div>
+        <h3 class="tier-name" id="tier-abyssal-name">Abyssal</h3>
+        <div class="tier-price">
+          <span class="tier-price-amount">$20</span>
+          <span class="tier-price-period">/ month</span>
+        </div>
+        <p class="tier-description">
+          The flat silence of total depth. Direct access.
+          Shape the fleet itself.
+        </p>
+        <ul class="tier-perks">
+          <li>Everything in Diver</li>
+          <li>Name a future engine (from the naming vault)</li>
+          <li>Monthly 1-on-1 session — ask anything about the DSP</li>
+          <li>Gold Standard preset pack (20+ presets monthly)</li>
+          <li>Early beta access to new engines before release</li>
+          <li>Listed in the product credits as an Abyssal supporter</li>
+        </ul>
+        <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener" class="tier-cta" aria-label="Join as Abyssal on Patreon">
+          Enter the Abyss
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE PROMISE ═══════════ -->
+<section class="promise-section" id="promise" aria-labelledby="promise-heading">
+  <div class="expedition-section">
+    <div class="promise-card reveal">
+      <span class="promise-icon" aria-hidden="true">⊕</span>
+      <h2 id="promise-heading">Once <em>unlocked,</em><br>always free.</h2>
+      <p>
+        Every milestone unlocked by this community becomes permanently free
+        for every XOlokun user — present and future. No one who comes later
+        misses out. The community descends together; the light stays on.
+      </p>
+      <p>
+        XOlokun will never go behind a paywall. The Expedition is not a subscription
+        to the synth — it is fuel for the descent itself.
+      </p>
+      <p class="promise-emphasis">
+        "Omnibus — For All"
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JOIN CTA ═══════════ -->
+<section class="join-section" id="join" aria-labelledby="join-heading">
+  <div class="expedition-section">
+    <div class="join-content reveal">
+      <div class="section-label centered">The Descent Begins</div>
+      <h2 id="join-heading">The expedition begins<br>with <em>you.</em></h2>
+      <p>
+        We are 10 explorers from unlocking the Chef Quad.
+        Join at any tier and your name becomes part of the depth.
+      </p>
+      <a
+        href="https://www.patreon.com/cw/XO_OX"
+        target="_blank"
+        rel="noopener"
+        class="join-patreon-btn"
+        aria-label="Join the XOlokun Expedition on Patreon"
+      >
+        <!-- Patreon P glyph -->
+        <svg class="patreon-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M14.82 2.41C10.52 2.41 7 5.93 7 10.24c0 4.29 3.52 7.79 7.82 7.79 4.29 0 7.77-3.5 7.77-7.79 0-4.31-3.48-7.83-7.77-7.83zM2 21.6h3.5V2.41H2V21.6z"/>
+        </svg>
+        Join the Expedition on Patreon
+      </a>
+      <p class="join-tagline">Synthesis from the deepest place.</p>
+      <p class="join-motto">Omnibus — For All</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="freebies.html">Freebies</a>
+    <a href="updates.html">Signal</a>
+    <a href="expedition.html">Expedition</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">Patreon</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis. Omnibus — for all.</div>
+</footer>
+
+<script>
+// ─── Hamburger ───
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+if (hamburgerBtn && navLinks) {
+  hamburgerBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    hamburgerBtn.classList.toggle('open', open);
+    hamburgerBtn.setAttribute('aria-expanded', String(open));
+  });
+}
+
+// ─── Scroll reveal ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── Stagger tier card reveals ───
+const tierCards = document.querySelectorAll('.tier-card.reveal');
+tierCards.forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.12}s`;
+});
+
+// ─── Stagger depth node reveals ───
+// The entire timeline is one reveal; nodes animate individually via CSS nth-child delay
+document.querySelectorAll('.depth-node').forEach((node, i) => {
+  node.style.setProperty('--node-delay', `${i * 0.08}s`);
+});
+</script>
+</body>
+</html>

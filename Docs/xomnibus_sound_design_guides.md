@@ -2542,3 +2542,1166 @@ Four interlocking systems:
 - **+ OMBRE:** Memory/vision dialogue — OUTLOOK's panoramic present combined with OMBRE's dual-narrative memory/forgetting engine. `EnvToMorph` to link vista position to OMBRE's blend axis.
 - **+ OPAL:** Granular parallax — OPAL's grain clouds diffusing OUTLOOK's panoramic oscillators. `AudioToFM` for metallic grain interference.
 - **+ OXBOW:** Entangled reverb tail — OUTLOOK pads feeding OXBOW's chiasmus FDN. The panoramic vista dissolving into golden standing waves.
+
+---
+
+## 45. OTO — XOto
+**Bamboo Green `#7BA05B` · Prefix: `oto_` · 8 voices · Chef Quad (Organs)**
+
+Mouth organ synthesis — models four reed-based wind instruments: Sho (Japanese, 17-pipe vertical cluster), Sheng (Chinese, 17-pipe circular cluster), Khene (Lao, 14-pipe linear cluster), and Melodica (Western, horizontal chromatic). Additive synthesis uses instrument-specific partial ratios per model. OtoChiffGenerator adds breath transient bursts at note-on. Breath pressure instability (low-frequency noise on the amplitude envelope) gives continuous organic variation.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oto_macroA` (CHARACTER) | 0–1 | Crossfades organ model character: Sho → Melodica spectrum |
+| `oto_macroB` (MOVEMENT) | 0–1 | Breath instability depth — still air to turbulent bellows |
+| `oto_macroC` (COUPLING) | 0–1 | Crosstalk amount — how much adjacent pipe partials bleed |
+| `oto_macroD` (SPACE) | 0–1 | Filter cutoff + reverb tail — closed room to open air |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oto_organ` | 0–3 | 0 | — | Model: 0=Sho, 1=Sheng, 2=Khene, 3=Melodica |
+| `oto_cluster` | 0–1 | 0.5 | 0.3–0.7 | Partial density. High values stack more harmonics |
+| `oto_chiff` | 0–1 | 0.3 | 0.1–0.6 | Breath transient burst at note-on. 0 = keyboardist's touch |
+| `oto_detune` | 0–1 | 0.15 | 0.05–0.3 | Micro-detuning between partials — organic vs. electronic |
+| `oto_buzz` | 0–1 | 0.2 | 0–0.5 | Reed buzz distortion. Keep low for Sho purity |
+| `oto_pressure` | 0–1 | 0.5 | 0.4–0.7 | Breath pressure → amplitude + spectral tilt |
+| `oto_crosstalk` | 0–1 | 0.1 | 0.05–0.25 | Adjacent-pipe bleed. Creates sympathetic resonance |
+| `oto_filterCutoff` | 20–18000 | 4000 | 800–6000 | LP filter cutoff |
+| `oto_filterRes` | 0–1 | 0.2 | 0.1–0.5 | Resonance — adds pipe-body formant coloring |
+| `oto_attack` | 0.001–2 | 0.08 | 0.02–0.3 | Sho has a slow, diffuse attack. Melodica is snappier |
+| `oto_lfo1Rate` | 0.01–8 | 0.5 | 0.05–2 | Pressure LFO — simulates player breath rhythm |
+| `oto_lfo1Depth` | 0–1 | 0.15 | 0.05–0.35 | Depth of breath modulation |
+| `oto_competition` | 0–1 | 0.0 | 0–0.3 | Coupling ecology competition strength |
+
+### Coupling Interface
+- **Sends:** Breath pressure envelope via `EnvToFilter`, partial cluster signal via `AudioToFM`
+- **Receives:** `AmpToFilter` (swells from pads breathing through the filter), `LFOToPitch` (subtle pitch drift from coupled LFOs)
+- **Best as source for:** Pad layers — OTO's slow breath pressure envelope makes an excellent low-frequency amplitude modulator
+
+### Sound Design Tips
+- **Sho clusters:** Set `oto_cluster` high (0.7+), `oto_detune` at 0.2, slow attack. Stack 3–4 notes for traditional Sho chord clusters.
+- **Melodica solos:** Model 3, `oto_chiff` 0.5, `oto_buzz` 0.3, fast attack. Velocity drives `oto_pressure` for expressive lines.
+- **Evolving pad beds:** Set `oto_lfo1Rate` to 0.02–0.05 Hz for very slow breath cycle. Pair `oto_cluster` with `oto_macroA` for gradual timbre shift over a phrase.
+- **Crosstalk shimmer:** `oto_crosstalk` 0.2+ creates subtle pitch shimmer between voices. Sounds especially rich on Sheng model with dense chords.
+
+### Recommended Pairings
+- **+ OCTAVE (pipe organ):** Mouth organ + pipe organ breath resonance. Route OTO `EnvToFilter` into OCTAVE for pressure-driven organ swell.
+- **+ OVERWASH (diffusion pad):** OTO's clustering partials diffuse beautifully into OVERWASH's Fick's Law spreading.
+- **+ OPERA (vocal):** Breath pressure from OTO coupled to OPERA's dramatic arc creates an accompanied-voice texture.
+
+---
+
+## 46. OCTAVE — XOctave
+**Bordeaux `#6B2D3E` · Prefix: `oct_` · 8 voices · Chef Quad (Organs)**
+
+European pipe organ synthesis — models four historic instrument types: Cavaillé-Coll Romantic (French cathedral, rich reeds), Baroque Positiv (German chamber, bright principals), French Musette (folk/hurdy-gurdy tuning with close detuning), and Farfisa Compact (transistor, buzzy square tones). OctaveChiffGenerator handles pipe speech transients. OctaveWindNoise adds continuous chiff between notes. OctaveRoomResonance applies three formant bands (120 Hz body, 380 Hz midroom, 1200 Hz air) to simulate the acoustic space around the instrument.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oct_macroCharacter` | 0–1 | Organ character sweep: Baroque clarity → Romantic warmth |
+| `oct_macroMovement` | 0–1 | Wind noise + chiff instability |
+| `oct_macroCoupling` | 0–1 | Competition coupling sensitivity |
+| `oct_macroSpace` | 0–1 | Room resonance depth + reverb tail |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oct_organ` | 0–3 | 0 | — | 0=Cavaillé-Coll, 1=Baroque Positiv, 2=French Musette, 3=Farfisa |
+| `oct_cluster` | 0–1 | 0.5 | 0.3–0.7 | Partial density — stops registration emulation |
+| `oct_chiff` | 0–1 | 0.25 | 0.1–0.5 | Pipe speech transient burst |
+| `oct_detune` | 0–1 | 0.08 | 0.02–0.2 | Musette model tuning spread. Keep low for baroque purity |
+| `oct_buzz` | 0–1 | 0.15 | 0–0.4 | Reed buzz (more natural on Cavaillé-Coll) |
+| `oct_pressure` | 0–1 | 0.6 | 0.4–0.8 | Wind chest pressure — drives amplitude + brightness |
+| `oct_brightness` | 0–1 | 0.5 | 0.3–0.7 | Principal/mixture register balance |
+| `oct_registration` | 0–1 | 0.5 | 0–1 | Drawbar-like stop registration blend |
+| `oct_roomDepth` | 0–1 | 0.4 | 0.2–0.7 | Room resonance mix. Cathedral reverb territory above 0.6 |
+| `oct_filterEnvAmount` | -1–1 | 0.3 | 0.1–0.5 | Velocity → filter brightness scaling |
+| `oct_lfo1Rate` | 0.01–8 | 0.3 | 0.02–1 | Tremulant LFO. 0.02–0.08 Hz is period flutter |
+| `oct_lfo1Depth` | 0–1 | 0.2 | 0.05–0.4 | Tremulant depth — French Romantic organs used 0.15–0.3 |
+| `oct_competition` | 0–1 | 0.0 | 0–0.3 | Coupling ecology |
+
+### Coupling Interface
+- **Sends:** Room resonance signal (formant-shaped) for `AudioToFM`, amplitude envelope for `AmpToFilter`
+- **Receives:** `LFOToPitch` for coupled tremulant sync, `EnvToFilter` from pad engines for pressure-responsive registration
+
+### Sound Design Tips
+- **Cathedral Romantic:** Cavaillé-Coll model, `oct_roomDepth` 0.7, `oct_brightness` 0.6, `oct_lfo1Rate` 0.05 Hz. Sustained chords fill the room naturally.
+- **Baroque chamber:** Baroque Positiv, low `oct_detune`, low `oct_buzz`, `oct_roomDepth` 0.2. Sharp articulation, no tremulant.
+- **Musette folk:** Model 2, `oct_detune` 0.4+, `oct_buzz` 0.3. Paired with OTO (Sho) for East/West reed texture.
+- **Farfisa lead:** Model 3, `oct_cluster` low, velocity-sensitive `oct_filterEnvAmount` 0.6. Cut through a full mix.
+
+### Recommended Pairings
+- **+ OTO:** Reed + pipe breath coupling. Two organ families in the same air column.
+- **+ ORGANON:** Metabolic pressure from ORGANON modulating OCTAVE's wind chest pressure creates a living-organism pipe organ.
+- **+ OSTINATO:** Rhythmic pattern driving OCTAVE's registration shifts via coupling.
+
+---
+
+## 47. OLEG — XOleg
+**Orthodox Gold `#C5A036` · Prefix: `oleg_` · 8 voices · Chef Quad (Organs)**
+
+Eastern European bellow-driven organ synthesis — models Bayan (Russian concert accordion), Hurdy-Gurdy (French vielle à roue with drone wheel), Bandoneon (Argentine tango accordion), and Garmon (Russian folk accordion). OlegCassotto processes sound through a simulated resonance chamber (comb filter + allpass network) replicating the cassotto reed block found in high-end accordions. OlegBuzzBridge applies a BPF + waveshaper to emulate the trompette string resonance of the hurdy-gurdy.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oleg_macroCharacter` | 0–1 | Character sweep: accordion fold depth → hurdy drone prominence |
+| `oleg_macroMovement` | 0–1 | Bellows speed + detune instability |
+| `oleg_macroCoupling` | 0–1 | Drone interval resonance depth |
+| `oleg_macroSpace` | 0–1 | Cassotto depth + room resonance |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oleg_organ` | 0–3 | 0 | — | 0=Bayan, 1=HurdyGurdy, 2=Bandoneon, 3=Garmon |
+| `oleg_buzz` | 0–1 | 0.25 | 0.1–0.5 | Trompette buzz bridge. Essential for hurdy-gurdy model |
+| `oleg_brightness` | 0–1 | 0.5 | 0.3–0.7 | Reed air gap / brightness balance |
+| `oleg_drone` | 0–1 | 0.0 | 0–0.6 | Drone string level. Hurdy-gurdy's bourdon drones |
+| `oleg_bellows` | 0–1 | 0.5 | 0.3–0.7 | Bellows speed → amplitude + pressure dynamics |
+| `oleg_detune` | 0–1 | 0.12 | 0.05–0.25 | Reed detuning (Bandoneon has natural spread) |
+| `oleg_formant` | 0–1 | 0.4 | 0.2–0.7 | Cassotto resonance chamber depth |
+| `oleg_droneInterval1` | 0–24 | 0 | 0, 7, 12 | Drone 1 interval in semitones |
+| `oleg_droneInterval2` | 0–24 | 7 | 7, 12, 19 | Drone 2 interval in semitones |
+| `oleg_glideTime` | 0–2 | 0.0 | 0–0.3 | Portamento — natural on hurdy-gurdy |
+| `oleg_cassottoDepth` | 0–1 | 0.5 | 0.3–0.8 | Cassotto resonance amount. High = warm, boxed-in tone |
+| `oleg_wheelSpeed` | 0–1 | 0.5 | 0.3–0.8 | Hurdy-gurdy wheel rotation speed → pitch vibrato rate |
+| `oleg_lfo1Rate` | 0.01–8 | 0.4 | 0.02–2 | Bellows LFO — simulates player bellows rhythm |
+| `oleg_lfo1Depth` | 0–1 | 0.2 | 0.1–0.4 | Bellows amplitude modulation depth |
+
+### Coupling Interface
+- **Sends:** Drone frequency data via `LFOToPitch` (drones as pitch reference for other engines), envelope via `AmpToFilter`
+- **Receives:** `AudioToFM` for external signal driving cassotto resonance, `LFOToPitch` for wheel-speed synchronization
+
+### Sound Design Tips
+- **Hurdy-gurdy folk:** Model 1, `oleg_drone` 0.4, `oleg_buzz` 0.5, `oleg_droneInterval1=0`, `oleg_droneInterval2=7`. Add `oleg_wheelSpeed` LFO for continuous wheel vibrato.
+- **Tango Bandoneon:** Model 2, `oleg_detune` 0.2, `oleg_cassottoDepth` 0.7, slow `oleg_bellows`. Velocity controls bellows pressure for expressive phrasing.
+- **Russian folk accordion:** Model 3 or 0, `oleg_formant` 0.6, `oleg_droneInterval1=12` for bass octave. Pairs with OTIS for accordion + harmonica duet.
+- **Drone meditation:** Any model, `oleg_drone` 0.6+, long attack/release, slow LFO. Route drone frequencies to OVERWASH for diffusion pad.
+
+### Recommended Pairings
+- **+ OTIS (American organs):** Eastern European + American accordion/harmonica. `oleg_macroCharacter` crossfaded against `otis_macroCharacter` creates global accordion history.
+- **+ OVERGROW (Karplus-Strong string):** OLEG's trompette drones as bow-pressure source for OVERGROW's string resonance.
+- **+ OVERCAST (crystallization):** OLEG sustained chord → OVERCAST flash-freeze captures the exact spectral state.
+
+---
+
+## 48. OTIS — XOtis
+**Soul Gold `#DAA520` · Prefix: `otis_` · 8 voices · Chef Quad (Organs)**
+
+American organ synthesis — models Hammond B3 (tonewheel, 9 drawbars, Leslie), Calliope (steam whistles, chromatic carnival/circus), Blues Harmonica (diatonic, bending), and Zydeco Accordion (Louisiana French creole). TonewheelCrosstalk bleeds harmonics between adjacent drawbars (authentic B3 behavior). KeyClick adds the percussive transient of Hammond key contacts closing. Leslie simulation applies amplitude + pitch modulation with rotation-speed switching. Nine-drawbar registration with harmonic footage controls (16', 8', 5⅓', 4', 2⅔', 2', 1⅗', 1⅓', 1').
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `otis_macroCharacter` | 0–1 | Soul character: clean gospel → saturated funk |
+| `otis_macroMovement` | 0–1 | Leslie speed + instability depth |
+| `otis_macroCoupling` | 0–1 | Tonewheel crosstalk (ecological competition) |
+| `otis_macroSpace` | 0–1 | Room ambience + Leslie cabinet depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `otis_organ` | 0–3 | 0 | — | 0=Hammond B3, 1=Calliope, 2=Blues Harmonica, 3=Zydeco Accordion |
+| `otis_drawbar1`–`otis_drawbar9` | 0–8 | varies | — | 9 drawbar footages. Classic gospel: all 8 except 4' at 6 |
+| `otis_leslie` | 0–1 | 0.5 | 0.3–0.8 | Leslie mix. 0=no cabinet, 1=full rotating speaker |
+| `otis_keyClick` | 0–1 | 0.3 | 0.1–0.5 | Hammond key click level. 0.3 is natural; 0.8 is vintage worn contacts |
+| `otis_percussion` | 0–1 | 0.4 | 0.2–0.6 | Second/third harmonic percussion decay |
+| `otis_percHarmonic` | 0–1 | 0 | 0, 1 | 0=2nd harmonic perc, 1=3rd harmonic perc |
+| `otis_percDecay` | 0–1 | 0.5 | 0.3–0.8 | Percussion decay time |
+| `otis_crosstalk` | 0–1 | 0.1 | 0.05–0.2 | Tonewheel harmonic bleed between drawbars |
+| `otis_brightness` | 0–1 | 0.5 | 0.3–0.7 | High-frequency presence |
+| `otis_drive` | 0–1 | 0.3 | 0.1–0.7 | Tube overdrive / preamp saturation |
+| `otis_instability` | 0–1 | 0.05 | 0–0.15 | Tonewheel motor speed instability (wow/flutter) |
+| `otis_musette` | 0–1 | 0.0 | 0–0.5 | Zydeco/Musette detuning amount |
+| `otis_lfo1Rate` | 0.01–8 | 1.2 | 0.5–5 | Leslie rotation rate (fast = 6 Hz, slow = 0.7 Hz) |
+| `otis_lfo1Depth` | 0–1 | 0.3 | 0.2–0.5 | Leslie modulation depth |
+
+### Coupling Interface
+- **Sends:** Tonewheel harmonic spectrum via `AudioToFM`, key-click transient via `EnvToFilter`
+- **Receives:** `AmpToFilter` for volume swell automation, `LFOToPitch` for synchronized Leslie speed from external LFOs
+
+### Sound Design Tips
+- **Classic gospel B3:** Model 0, drawbars 888000000, `otis_leslie` 0.6, `otis_keyClick` 0.35, `otis_percussion` 0.4 with 2nd harmonic. Sustain pedal opens full drawbar spread.
+- **Funky comping:** Same registration, `otis_drive` 0.5–0.7, short chords. `otis_crosstalk` 0.15 adds vintage grit.
+- **Calliope circus:** Model 1, `otis_brightness` 0.8, fast attack, no Leslie. Pair with OPENSKY for fairground shimmer.
+- **Blues harp bends:** Model 2, mono mode, `otis_glide` enabled, velocity → `otis_drive`. Essential: mod wheel controls bend amount.
+- **Zydeco floor:** Model 3, `otis_musette` 0.3, `otis_brightness` 0.6, medium `otis_drive`. Pairs with OLEG for a full accordion orchestra.
+
+### Recommended Pairings
+- **+ OLEG:** American + Eastern European organ families. Gospel/zydeco vs. bayan/bandoneon creates unexpected global reed texture.
+- **+ OFFERING (boom bap drums):** B3 comping with OFFERING drum patterns. Route `otis_keyClick` transients to OFFERING via `EnvToFilter` for click-locked drum triggers.
+- **+ ORGANON (metabolic):** ORGANON's metabolic rate modulating OTIS's drawbar blend creates an organ that breathes with biological rhythm.
+
+---
+
+## 49. OVEN — XOven
+**Steinway Ebony `#1C1C1C` · Prefix: `oven_` · 8 voices · Kitchen Quad (Pianos)**
+
+Cast iron concert grand piano — 16 IIR modal resonators tuned to cast iron physical properties (density ρ=7200 kg/m³, wave speed c=5100 m/s, acoustic impedance Z=36.72 MRayl, inharmonicity B≈0.0004). Hunt-Crossley hammer contact model generates the velocity-dependent strike transient. Sympathetic string network adds cross-voice resonance. Temperature parameter models thermal expansion effects on tuning and damping.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oven_macroCharacter` | 0–1 | Hammer hardness + body resonance brightness |
+| `oven_macroMovement` | 0–1 | Temperature drift + sympathetic string activity |
+| `oven_macroCoupling` | 0–1 | Coupling resonance depth |
+| `oven_macroSpace` | 0–1 | Bloom time + reverb tail |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oven_brightness` | 0–1 | 0.5 | 0.3–0.7 | Modal filter cutoff — more partials at higher values |
+| `oven_bodyResonance` | 0–1 | 0.5 | 0.3–0.8 | Iron body resonance Q — sustain length |
+| `oven_hfAmount` | 0–1 | 0.3 | 0.1–0.5 | High-frequency content from hammer strike |
+| `oven_hardness` | 0–1 | 0.5 | 0.2–0.8 | Hammer felt hardness → attack brightness + strike duration |
+| `oven_density` | 0–1 | 0.5 | 0.3–0.7 | Material density → sustain time scaling |
+| `oven_temperature` | 0–1 | 0.5 | 0.3–0.7 | Thermal expansion — high values flatten tuning, extend decay |
+| `oven_sympathetic` | 0–1 | 0.3 | 0.1–0.5 | Sympathetic string resonance level |
+| `oven_bloomTime` | 0–4 | 0.8 | 0.3–2.0 | Post-attack resonance bloom — iron's characteristic slow build |
+| `oven_sustainTime` | 0–10 | 3.0 | 1–6 | Overall sustain duration at note-off |
+| `oven_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.6 | Velocity → filter brightness scaling |
+| `oven_competition` | 0–1 | 0.0 | 0–0.3 | Coupling ecology competition |
+| `oven_couplingResonance` | 0–1 | 0.3 | 0.1–0.6 | How much incoming coupling signal activates resonators |
+
+### Coupling Interface
+- **Sends:** Modal resonator output (formant-rich) via `AudioToFM`, sustain envelope via `AmpToFilter`
+- **Receives:** `AmpToFilter` for sympathetic resonance triggering, `EnvToFilter` for velocity-mapped brightness changes from coupled engines
+
+### Sound Design Tips
+- **Cast iron concert grand:** Default settings. `oven_hardness` 0.6 for bright concert tone, `oven_bodyResonance` 0.7 for long sustain. `oven_bloomTime` 1.0 — that slow bloom is the iron signature.
+- **Prepared iron:** `oven_temperature` 0.8+ for detuned, stretched tuning. Pairs with OBELISK for prepared piano territory.
+- **Minimal modern piano:** `oven_brightness` 0.4, `oven_hfAmount` 0.2, short `oven_bloomTime`. Clean, precise, Nils Frahm territory.
+- **Industrial pad source:** `oven_sustainTime` 8+, `oven_bodyResonance` 0.9, `oven_bloomTime` 3.0. Notes bloom into dense harmonic clusters.
+
+### Recommended Pairings
+- **+ OCHRE (copper upright):** Two material pianos in the same harmonic space. OVEN's iron formants vs. OCHRE's copper conductivity.
+- **+ OBELISK (marble prepared):** Iron + stone physics. Route OVEN's sympathetic sustain into OBELISK's inharmonic marble partials.
+- **+ OXBOW (entangled reverb):** Iron bloom feeding OXBOW's chiasmus FDN. The modal resonances become standing-wave reverb tails.
+
+---
+
+## 50. OCHRE — XOchre
+**Copper Patina `#B87333` · Prefix: `ochre_` · 8 voices · Kitchen Quad (Pianos)**
+
+Copper upright piano — 7 pillars: upright hammer model (wooden shank + felt tip), copper modal bank (16 IIR resonators tuned to copper acoustics ρ=8960, c=4600), conductivity control (thermal routing of harmonics), caramel saturation waveshaping (soft-clip analog warmth), intimate body resonance (small upright soundboard), sympathetic string network, copper thermal drift (pitch/tuning variation from heat buildup over the session).
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `ochre_macroCharacter` | 0–1 | Character: raw copper clang → warmed caramel tone |
+| `ochre_macroMovement` | 0–1 | Thermal drift speed + sympathetic activity |
+| `ochre_macroCoupling` | 0–1 | Conductivity routing depth |
+| `ochre_macroSpace` | 0–1 | Intimate body depth + reverb |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `ochre_brightness` | 0–1 | 0.5 | 0.3–0.7 | Modal resonator spectral tilt |
+| `ochre_conductivity` | 0–1 | 0.5 | 0.3–0.8 | Copper thermal conductivity → harmonic decay rate |
+| `ochre_saturation` | 0–1 | 0.3 | 0.1–0.6 | Caramel waveshaper drive — warmth without harshness |
+| `ochre_bodySize` | 0–3 | 1 | 0–2 | Soundboard type: 0=small, 1=medium, 2=large, 3=open |
+| `ochre_sympathetic` | 0–1 | 0.3 | 0.1–0.5 | Sympathetic string level |
+| `ochre_thermalDrift` | 0–1 | 0.15 | 0.05–0.3 | Pitch drift from copper heat accumulation |
+| `ochre_hammerWeight` | 0–1 | 0.5 | 0.3–0.7 | Hammer mass → strike duration + spectral brightness |
+| `ochre_attack` | 0.001–0.5 | 0.02 | 0.01–0.1 | Envelope attack time |
+| `ochre_filterEnvAmt` | -1–1 | 0.35 | 0.2–0.6 | Velocity → brightness |
+| `ochre_lfo1Rate` | 0.01–8 | 0.1 | 0.01–0.5 | Thermal drift LFO — very slow for organic drift |
+| `ochre_lfo1Depth` | 0–1 | 0.1 | 0.05–0.2 | Drift depth |
+
+### Coupling Interface
+- **Sends:** Copper resonator signal (warm formant-colored), thermal drift LFO for `LFOToPitch`
+- **Receives:** `AmpToFilter` for sympathetic activation, `EnvToMorph` for conductivity level changes
+
+### Sound Design Tips
+- **Intimate upright:** `ochre_bodySize` 0, `ochre_saturation` 0.3, `ochre_thermalDrift` 0.15. This is the corner-of-the-room practice piano at 2am.
+- **Lo-fi copper:** `ochre_saturation` 0.6, `ochre_thermalDrift` 0.3, velocity low. The copper ages and droops in pitch. Layer with noise.
+- **Jazz comping:** Medium `ochre_conductivity`, `ochre_hammerWeight` 0.6, bright `ochre_brightness`. Sharp attack, medium sustain. Works as main comping piano.
+- **Session buildup:** Record a long take — `ochre_thermalDrift` gradually shifts the instrument over 20 minutes, like a real upright warming up.
+
+### Recommended Pairings
+- **+ OVEN (cast iron grand):** Two material pianos — iron precision vs. copper warmth. OVEN as lead, OCHRE as harmonic body.
+- **+ OLATE (analog bass):** OCHRE's caramel warmth paired with OLATE's fermentation bass for a full jazz piano trio sound.
+- **+ OVERWORN (reduction pad):** OCHRE's session-age drift conceptually mirrors OVERWORN's session-long reduction. Two instruments aging together.
+
+---
+
+## 51. OBELISK — XObelisk
+**Obsidian Slate `#4A4A4A` · Prefix: `obel_` · 8 voices · Kitchen Quad (Pianos)**
+
+Prepared piano on stone and marble physics — 5 preparation types applied to marble modal resonators (η≈0.001, very high Q, extreme sustain). Preparation types: None (pure marble partials), Bolt (metal bolt on string → inharmonic clang), Rubber (muted, percussive thud), Glass (crystalline interference, see OPALINE crossover), Chain (chaotic rattle + harmonic density). Preparation position and depth parameters control where the damping/resonance object contacts the string. 12 sympathetic resonators add cross-register coupling.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `obel_macroCharacter` | 0–1 | Preparation material: stone purity → chaotic chain rattle |
+| `obel_macroMovement` | 0–1 | Sympathetic resonance activity + inharmonic density |
+| `obel_macroCoupling` | 0–1 | Cross-resonator coupling strength |
+| `obel_macroSpace` | 0–1 | Marble reverb tail + sympathetic decay |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `obel_prepType` | 0–4 | 0 | — | 0=None, 1=Bolt, 2=Rubber, 3=Glass, 4=Chain |
+| `obel_prepPosition` | 0–1 | 0.3 | 0.1–0.7 | Position along string — node placement |
+| `obel_prepDepth` | 0–1 | 0.5 | 0.2–0.8 | Contact depth → damping amount |
+| `obel_brightness` | 0–1 | 0.5 | 0.3–0.7 | Modal resonator spectral tilt |
+| `obel_stoneQ` | 0–1 | 0.8 | 0.5–0.95 | Marble Q factor — sustain length (very high by default) |
+| `obel_inharmonicity` | 0–1 | 0.3 | 0.1–0.6 | Additional inharmonic partial spread |
+| `obel_sympathetic` | 0–1 | 0.4 | 0.2–0.7 | 12-resonator sympathetic network level |
+| `obel_attack` | 0.001–0.5 | 0.01 | 0.005–0.05 | Strike attack time |
+| `obel_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.6 | Velocity → brightness |
+| `obel_lfo1Rate` | 0.01–8 | 0.2 | 0.01–1 | Slow inharmonic drift |
+| `obel_lfo1Depth` | 0–1 | 0.1 | 0.05–0.25 | Drift depth |
+
+### Coupling Interface
+- **Sends:** Inharmonic partial spectrum via `AudioToFM`, sympathetic resonance via `AmpToFilter`
+- **Receives:** `AudioToFM` for preparation noise source, `EnvToFilter` for preparation depth modulation
+
+### Sound Design Tips
+- **Bolt preparation:** `obel_prepType=1`, `obel_prepPosition` 0.25, medium depth. Classic John Cage prepared piano — metallic clang over marble sustain.
+- **Rubber mute:** `obel_prepType=2`, high `obel_prepDepth`. Percussive, dry thud. Pairs with drum layers for pitched percussion textures.
+- **Glass spectral:** `obel_prepType=3`, `obel_inharmonicity` 0.5. Crystalline interference between stone and glass physics. Unique alien quality.
+- **Chain chaos:** `obel_prepType=4`, `obel_prepPosition` randomized, high `obel_stoneQ`. Rattle sustains for seconds. Sound design gold.
+- **Pure marble:** `obel_prepType=0`, `obel_stoneQ` 0.95, long sympathetic decay. Architectural, monolithic tones.
+
+### Recommended Pairings
+- **+ OVERCAST (crystallization):** OBELISK's stone sustain frozen in time by OVERCAST's Wilson nucleation. Architectural ice.
+- **+ OPALINE (glass):** Stone and glass co-resonating. OBELISK's inharmonic marble partials interfering with OPALINE's fragile crystalline tone.
+- **+ OSMOSIS (analysis):** Route OBELISK's chain chaos through OSMOSIS for envelope-following. Feed the analysis into other engines.
+
+---
+
+## 52. OPALINE — XOpaline
+**Crystal Blue `#B8D4E3` · Prefix: `opal2_` · 8 voices · Kitchen Quad (Pianos)**
+
+Glass and porcelain modal synthesis — four instruments: Celesta (hammered struck tone bars), Toy Piano (small metal tines, thinly resonant), Glass Harp (friction-activated wine glasses, pure sustain), and Porcelain Cups (struck ceramic, warm mid-heavy). Material physics: borosilicate glass (ρ=2230, c=5640, Z=12.6 MRayl). Fragility mechanic: when velocity exceeds the `opal2_fragility` threshold, a noise burst fires and modal partials detune asymmetrically — simulating a glass cracking or chipping. Thermal shock: rapid temperature changes (fast note sequences at high velocity) accumulate damage state, shifting the instrument's tuning over the session.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `opal2_macroCharacter` | 0–1 | Crystalline purity → cracked fragility |
+| `opal2_macroMovement` | 0–1 | Thermal shock accumulation rate |
+| `opal2_macroCoupling` | 0–1 | Resonance coupling depth |
+| `opal2_macroSpace` | 0–1 | Crystalline reverb + glass shimmer tail |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `opal2_instrument` | 0–3 | 0 | — | 0=Celesta, 1=ToyPiano, 2=GlassHarp, 3=PorcelainCups |
+| `opal2_fragility` | 0–1 | 0.7 | 0.5–0.9 | Velocity threshold for crack noise burst. Lower = more fragile |
+| `opal2_brightness` | 0–1 | 0.6 | 0.4–0.8 | Spectral tilt — glass is naturally bright |
+| `opal2_thermalShock` | 0–1 | 0.15 | 0.05–0.3 | Thermal damage accumulation rate |
+| `opal2_stateReset` | 0–1 | 0 | — | Trigger: resets accumulated thermal damage to baseline |
+| `opal2_crystalline` | 0–1 | 0.5 | 0.3–0.8 | Crystalline envelope — slow build, sharp decay |
+| `opal2_sympathetic` | 0–1 | 0.3 | 0.1–0.5 | Sympathetic glass resonance |
+| `opal2_attack` | 0.001–0.3 | 0.01 | 0.005–0.05 | Attack time |
+| `opal2_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.6 | Velocity → brightness |
+| `opal2_lfo1Rate` | 0.01–8 | 0.3 | 0.05–2 | Glass shimmer LFO |
+| `opal2_lfo1Depth` | 0–1 | 0.15 | 0.05–0.3 | Shimmer depth |
+
+### Coupling Interface
+- **Sends:** Crystalline partial spectrum for `AudioToFM`, fragility noise bursts for `EnvToFilter`
+- **Receives:** `AmpToFilter` for sympathetic glass activation, `EnvToMorph` for thermal shock triggering
+
+### Sound Design Tips
+- **Celesta melody:** Model 0, `opal2_fragility` 0.85, play gently. High velocities crack — use that intentionally for accented notes.
+- **Glass harp meditation:** Model 2, `opal2_brightness` 0.7, `opal2_crystalline` 0.8, slow attack. Long tones only — the friction bow takes time.
+- **Fragility dynamics:** `opal2_fragility` 0.5, play a melody with varying velocity. Soft notes sing clearly; hard notes crack and detune. Expressive mechanical of the material.
+- **Damaged glass:** `opal2_thermalShock` 0.4, play aggressively. Watch the tuning drift over the session. Reset with `opal2_stateReset` to start fresh.
+- **Toy piano texture:** Model 1, very thin resonance, pair with a bass engine. The toy piano's weakness is its compositional strength — contrast.
+
+### Recommended Pairings
+- **+ OBELISK (marble prepared):** Stone and glass in sympathy. Route OBELISK's marble sustain into OPALINE's crystalline resonance.
+- **+ OVERCAST (flash-freeze):** OPALINE's crystalline shimmer captured at peak by OVERCAST. The glass harp frozen in time.
+- **+ OPENSKY (shimmer):** Glass partials feeding OPENSKY's Shepard shimmer reverb. Endless ascending crystalline shimmer.
+
+---
+
+## 53. OGRE — XOgre
+**Sub Bass Black `#0D0D0D` · Prefix: `ogre_` · 8 voices · Cellar Quad (Bass)**
+
+Sub bass synthesizer — dual oscillator (sine + triangle PolyBLEP), OgreSubHarmonicGen (zero-crossing flip-flop octave divider generating -1 and -2 octave sub harmonics), thick tanh saturation for controlled harmonic distortion, body resonance filter (BPF centered around 60–120 Hz for cabinet simulation), tectonic LFO (very slow 0.01–0.5 Hz movement in the fundamentals). MIDI-domain gravitational coupling: bass frequencies from other Cellar engines attract or repel OGRE's sub harmonics, creating shared bass gravity wells.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `ogre_macroCharacter` | 0–1 | Sub purity → saturated harmonic density |
+| `ogre_macroMovement` | 0–1 | Tectonic LFO depth + sub harmonic activity |
+| `ogre_macroCoupling` | 0–1 | Gravitational coupling strength (Cellar MIDI domain) |
+| `ogre_macroSpace` | 0–1 | Body resonance + low-frequency room |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `ogre_subLevel` | 0–1 | 0.5 | 0.3–0.8 | Sub harmonic generator level |
+| `ogre_subOctave` | 0–1 | 0 | 0, 1 | 0=-1 octave sub, 1=-2 octave (earthquake sub) |
+| `ogre_saturation` | 0–1 | 0.4 | 0.2–0.7 | Tanh saturation drive |
+| `ogre_bodyRes` | 0–1 | 0.5 | 0.3–0.7 | Cabinet body resonance BPF Q |
+| `ogre_bodyFreq` | 20–200 | 80 | 50–120 | Cabinet resonance center frequency |
+| `ogre_tectonicRate` | 0.01–0.5 | 0.05 | 0.01–0.2 | Tectonic LFO rate — plate drift speed |
+| `ogre_tectonicDepth` | 0–1 | 0.2 | 0.1–0.4 | Tectonic pitch modulation depth |
+| `ogre_gravity` | 0–1 | 0.3 | 0.1–0.6 | Gravitational coupling pull to other Cellar engines |
+| `ogre_attack` | 0.001–0.5 | 0.01 | 0.005–0.05 | Envelope attack |
+| `ogre_release` | 0.01–4 | 0.3 | 0.1–1.0 | Envelope release |
+| `ogre_filterCutoff` | 20–800 | 200 | 80–400 | Low-pass filter cutoff |
+| `ogre_filterEnvAmt` | 0–1 | 0.3 | 0.1–0.5 | Velocity → filter opening |
+| `ogre_lfo1Rate` | 0.01–8 | 0.05 | 0.01–0.3 | Tectonic main LFO |
+| `ogre_lfo1Depth` | 0–1 | 0.2 | 0.1–0.4 | Tectonic depth |
+
+### Coupling Interface
+- **Sends:** Sub frequency signal for gravitational coupling, tectonic LFO for `LFOToPitch` (slow pitch modulation of other Cellar engines)
+- **Receives:** Gravitational pull from other Cellar engines' bass frequencies via MIDI-domain coupling
+
+### Sound Design Tips
+- **Pure earthquake sub:** `ogre_subOctave=1`, `ogre_subLevel` 0.7, `ogre_saturation` low. The -2 octave sub harmonic only audible on large speakers/subs.
+- **Saturated 808-style:** `ogre_saturation` 0.6+, pitch envelope with fast attack and slow release. `ogre_bodyRes` shapes the "thwap."
+- **Tectonic bass bed:** Very slow tectonic LFO (0.01 Hz), `ogre_gravity` 0.5. Combined with OAKEN above in the mix — OGRE forms the earth beneath OAKEN's strings.
+- **Gravitational coupling:** With two Cellar engines active, `ogre_gravity` creates sub harmonic locking — basses naturally align or diverge based on their frequency relationship.
+
+### Recommended Pairings
+- **+ OAKEN (acoustic bass):** Sub + acoustic. OGRE's gravity wells support OAKEN's upright bass. Classic jazz bass + synth sub layering.
+- **+ OLATE (analog bass):** Sub + analog bass. OGRE handles fundamental; OLATE handles the musical bass line above it.
+- **+ OMEGA (FM bass):** Sub + FM. OGRE's tectonic LFO modulating OMEGA's modulation index creates a FM sub that breathes.
+
+---
+
+## 54. OLATE — XOlate
+**Burgundy `#6B1A2A` · Prefix: `olate_` · 8 voices · Cellar Quad (Bass)**
+
+Analog bass synthesizer — dual PolyBLEP oscillators (sawtooth + pulse), vintage-scaled ladder filter (Moog-style 24dB/oct resonant LP), FermentationIntegrator (harmonic complexity grows over the duration of a held note — like wine fermentation, longer notes develop more character), session-age accumulator (the instrument "warms up" over the session, subtly changing its character), terroir system (four regional circuit flavor profiles).
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `olate_macroCharacter` | 0–1 | Analog character: clean ladder → saturated vintage |
+| `olate_macroMovement` | 0–1 | Fermentation rate + session-age depth |
+| `olate_macroCoupling` | 0–1 | Gravitational coupling strength |
+| `olate_macroSpace` | 0–1 | Filter resonance width + room depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `olate_osc1Wave` | 0–1 | 0 | — | 0=saw, 1=pulse |
+| `olate_osc2Wave` | 0–1 | 0 | — | Second oscillator waveform |
+| `olate_detune` | 0–1 | 0.1 | 0.05–0.25 | Oscillator detuning for thickness |
+| `olate_filterCutoff` | 20–8000 | 600 | 200–2000 | Ladder filter cutoff |
+| `olate_filterRes` | 0–1 | 0.4 | 0.2–0.7 | Ladder filter resonance |
+| `olate_filterEnvAmt` | -1–1 | 0.5 | 0.2–0.8 | Filter envelope amount — velocity drives brightness |
+| `olate_terroir` | 0–3 | 0 | — | 0=Bordeaux, 1=Burgundy, 2=Rioja, 3=Barolo (circuit flavors) |
+| `olate_fermentRate` | 0–1 | 0.3 | 0.1–0.6 | How fast harmonic complexity grows on held notes |
+| `olate_fermentDepth` | 0–1 | 0.4 | 0.2–0.7 | Maximum fermentation complexity |
+| `olate_sessionAge` | 0–1 | 0.2 | 0.1–0.4 | Session warmup accumulation rate |
+| `olate_drive` | 0–1 | 0.3 | 0.1–0.6 | Pre-filter drive / saturation |
+| `olate_glide` | 0–2 | 0.0 | 0–0.3 | Portamento time |
+| `olate_attack` | 0.001–1 | 0.01 | 0.005–0.1 | Envelope attack |
+| `olate_decay` | 0.01–4 | 0.4 | 0.1–1.0 | Envelope decay |
+
+### Coupling Interface
+- **Sends:** Ladder filter output for `AudioToFM`, fermentation harmonic content for spectral coupling
+- **Receives:** Gravitational pull from OGRE for sub locking, `EnvToFilter` from rhythm engines for sidechain-style filter ducking
+
+### Sound Design Tips
+- **Classic analog bass:** Bordeaux terroir, saw osc, `olate_filterEnvAmt` 0.6, filter cutoff 400 Hz. Play short staccato for tight modern bass; held notes ferment into richer harmonics.
+- **Fermented lead bass:** `olate_fermentRate` 0.6, `olate_fermentDepth` 0.7. Short notes sound simple; whole notes bloom into complex harmonic content. Musical expression built into the physics.
+- **Session warmup arc:** Record a long session — by track 8, OLATE sounds subtly different from track 1. `olate_sessionAge` 0.3 for gentle warming.
+- **Rioja distorted:** Rioja terroir, `olate_drive` 0.6, filter resonance high. Aggressive distorted bass with Spanish-circuit character.
+
+### Recommended Pairings
+- **+ OGRE (sub):** Analog bass + sub harmonic foundation. OLATE plays the musical bass line; OGRE sits underneath.
+- **+ OMEGA (FM):** Analog warmth + FM precision. OLATE's fermentation vs. OMEGA's distillation — both are note-duration synthesis, but in opposite directions (complexity increasing vs. complexity decreasing).
+- **+ OFFERING (drums):** Bass + drum machine coupling. Route OFFERING's kick envelope to `olate_filterCutoff` for sidechained bass pumping.
+
+---
+
+## 55. OAKEN — XOaken
+**Upright Oak `#9C6B30` · Prefix: `oaken_` · 8 voices · Cellar Quad (Bass)**
+
+Karplus-Strong acoustic and upright bass — OakenExciter provides three excitation modes: pluck (impulse + noise burst), bow (continuous noise through comb filter delay line), and slap (clicky transient + bass thump). Three-mode BPF body resonator (modes at 200/580/1100 Hz) shapes the acoustic enclosure character. Curing model slowly removes high-frequency content during sustained notes, simulating wood absorbing vibration. String tension material selection (gut/steel/synthetic nylon) affects modal decay curve and inharmonicity.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oaken_macroCharacter` | 0–1 | String material: gut warmth → steel brightness |
+| `oaken_macroMovement` | 0–1 | Bowing pressure + string vibration intensity |
+| `oaken_macroCoupling` | 0–1 | Body resonance coupling depth |
+| `oaken_macroSpace` | 0–1 | Body resonance width + room ambience |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oaken_exciteMode` | 0–2 | 0 | — | 0=pluck, 1=bow, 2=slap |
+| `oaken_stringTension` | 0–2 | 1 | — | 0=gut, 1=steel, 2=synthetic |
+| `oaken_bowPressure` | 0–1 | 0.5 | 0.3–0.8 | Bow contact pressure → brightness + bow noise |
+| `oaken_bodyMode` | 0–2 | 1 | — | 0=small/hollow, 1=medium/oak, 2=large/spruce |
+| `oaken_bodyResonance` | 0–1 | 0.5 | 0.3–0.8 | Body resonance BPF Q — sustain within the body |
+| `oaken_curingRate` | 0–1 | 0.2 | 0.05–0.4 | HF removal during sustain — old wood absorption |
+| `oaken_inharmonicity` | 0–1 | 0.15 | 0.05–0.3 | String inharmonicity — slight detuning of overtones |
+| `oaken_pluckPos` | 0–1 | 0.15 | 0.05–0.5 | Pluck position — node placement affects harmonic content |
+| `oaken_filterEnvAmt` | -1–1 | 0.35 | 0.2–0.6 | Velocity → brightness |
+| `oaken_glide` | 0–2 | 0.0 | 0–0.2 | Portamento time |
+| `oaken_attack` | 0.001–0.5 | 0.005 | 0.002–0.02 | Attack time — pluck is very fast |
+| `oaken_release` | 0.01–8 | 1.5 | 0.5–3.0 | Release / string decay tail |
+
+### Coupling Interface
+- **Sends:** Body resonance output (warm formant-shaped) via `AudioToFM`, bow pressure envelope via `AmpToFilter`
+- **Receives:** `LFOToPitch` for vibrato from external LFO sources, gravitational pull from OGRE for sub frequency anchoring
+
+### Sound Design Tips
+- **Upright pluck:** Excite=pluck, gut strings, `oaken_pluckPos` 0.12, medium body. Classic jazz bass tone. Velocity controls brightness.
+- **Bowed cello register:** Excite=bow, `oaken_bowPressure` 0.5, steel strings, slow attack. OAKEN's lowest notes in bow mode overlap with cello range.
+- **Slap bass:** Excite=slap, steel strings, fast `oaken_bodyResonance`, short decay. `oaken_pluckPos` matters a lot for slap tone.
+- **Session curing:** Record with `oaken_curingRate` 0.3 — the instrument gets progressively darker and more focused, like an old instrument opening up.
+
+### Recommended Pairings
+- **+ OGRE (sub):** Acoustic upright + sub bass. OAKEN plays the musical line; OGRE's sub harmonic sits 2 octaves below.
+- **+ ORCHARD (strings):** Bass + orchestral strings from the same Garden/Cellar family. The wood physics connect them.
+- **+ OVERCAST (freeze):** OAKEN bow mode sustain flash-frozen by OVERCAST. Sustained bowed bass becoming an infinite drone.
+
+---
+
+## 56. OMEGA — XOmega
+**Synth Bass Blue `#003366` · Prefix: `omega_` · 8 voices · Cellar Quad (Bass)**
+
+2-operator FM bass synthesis — OmegaFMOperator (sine carrier + sine modulator with self-feedback), distillation model (modulation index decreases over note sustain — complex FM → pure sine, like distilling spirit to essence), purity parameter (0=maximum noise/instability, 1=mathematical precision), algorithm selector (three FM routing modes: Series/Parallel/Feedback). The distillation is the conceptual inverse of OLATE's fermentation — where OLATE grows more complex, OMEGA resolves toward purity.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `omega_macroCharacter` | 0–1 | FM character: pure sine → complex modulated spectrum |
+| `omega_macroMovement` | 0–1 | Distillation speed + modulation decay rate |
+| `omega_macroCoupling` | 0–1 | Gravitational coupling + FM cross-modulation |
+| `omega_macroSpace` | 0–1 | FM feedback loop size + spatial width |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `omega_modRatio` | 0.25–8 | 1.0 | 0.5–4 | Modulator-to-carrier frequency ratio |
+| `omega_modIndex` | 0–10 | 3.0 | 1–6 | Initial FM modulation index — sidebands at note-on |
+| `omega_distillRate` | 0–1 | 0.3 | 0.1–0.6 | How fast modIndex decays toward zero |
+| `omega_purity` | 0–1 | 0.5 | 0.2–0.8 | Pure sine ratio vs. noisy algorithm state |
+| `omega_algorithm` | 0–2 | 0 | — | 0=Series, 1=Parallel, 2=Feedback |
+| `omega_feedback` | 0–1 | 0.2 | 0–0.5 | Operator self-feedback (creates noise, metallic quality) |
+| `omega_filterCutoff` | 20–8000 | 800 | 300–3000 | Post-FM filter |
+| `omega_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.7 | Velocity → filter brightness |
+| `omega_attack` | 0.001–0.5 | 0.01 | 0.005–0.05 | Attack |
+| `omega_decay` | 0.01–4 | 0.5 | 0.2–2.0 | Decay — where most distillation happens |
+| `omega_sustain` | 0–1 | 0.7 | 0.4–0.9 | Sustain level |
+| `omega_gravity` | 0–1 | 0.2 | 0–0.4 | Gravitational coupling to Cellar engines |
+
+### Coupling Interface
+- **Sends:** FM sideband spectrum for `AudioToFM`, distillation state for `EnvToMorph`
+- **Receives:** Gravitational pull from OGRE/OAKEN for frequency anchoring, `EnvToFilter` for FM index modulation
+
+### Sound Design Tips
+- **DX7-style E.Piano bass:** `omega_modRatio` 1.0, `omega_modIndex` 4, Series algorithm. Classic DX7 bass register tone with OMEGA's distillation making long notes resolve to pure sine.
+- **Metallic attack bass:** `omega_feedback` 0.4, Series, high initial modIndex. Aggressive metallic attack that resolves into clean sub. Very effective.
+- **FM glide bass:** Enable glide, Parallel algorithm, moderate distillation. The FM spectrum morphs during pitch transition.
+- **Sub-only through distillation:** `omega_distillRate` 0.8 — complex attack becomes pure sub in under 0.5s. The attack is the instrument, the sustain is silence almost.
+
+### Recommended Pairings
+- **+ OLATE (analog):** FM precision + analog warmth — opposing note-duration synthesis philosophies. Pair for full-spectrum bass layer.
+- **+ OPCODE (FM EP):** Cellar FM bass + Fusion FM electric piano. Both use 2-op FM at different registers.
+- **+ OGRE (sub):** FM harmonic complexity above OGRE's pure sub fundamental.
+
+---
+
+## 57. ORCHARD — XOrchard
+**Orchard Blossom `#FFB7C5` · Prefix: `orch_` · 4 voices · Garden Quad (Strings)**
+
+Orchestral strings — four detuned PolyBLEP sawtooth oscillators per voice (16 oscillators total across 4 voices), formant-resonant CytomicSVF filter for bow resonance, Concertmaster mechanism (the highest-pitched active voice leads the ensemble — its vibrato and bow pressure parameters influence the other voices via GardenAccumulators.h), seasonal tonal shift (Spring/Summer/Autumn/Winter timbral characters loaded from GardenAccumulators), Growth Mode (ensemble density grows when sustained). GardenAccumulators.h shared DSP provides session-state persistence across all Garden engines.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `orch_macroCharacter` | 0–1 | Ensemble character: chamber warmth → full orchestra brightness |
+| `orch_macroMovement` | 0–1 | Bow pressure + vibrato depth across ensemble |
+| `orch_macroCoupling` | 0–1 | Concertmaster influence strength + cross-Garden coupling |
+| `orch_macroSpace` | 0–1 | Stereo width + hall reverb depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `orch_bowPressure` | 0–1 | 0.5 | 0.3–0.8 | Bow pressure → brightness + bow noise |
+| `orch_detuneAmount` | 0–1 | 0.3 | 0.1–0.5 | Oscillator detuning — ensemble spread |
+| `orch_vibratoRate` | 0.01–8 | 5.5 | 3–7 | Vibrato rate (classical string vibrato ≈ 5–7 Hz) |
+| `orch_vibratoDepth` | 0–1 | 0.2 | 0.05–0.4 | Vibrato depth |
+| `orch_filterCutoff` | 200–12000 | 3000 | 800–6000 | SVF filter cutoff for bow formant shaping |
+| `orch_filterRes` | 0–1 | 0.3 | 0.1–0.5 | SVF resonance |
+| `orch_season` | 0–3 | 0 | — | 0=Spring, 1=Summer, 2=Autumn, 3=Winter tonal character |
+| `orch_growthRate` | 0–1 | 0.3 | 0.1–0.6 | Growth Mode accumulation speed |
+| `orch_concertmaster` | 0–1 | 0.5 | 0.2–0.8 | Concertmaster influence on ensemble |
+| `orch_attack` | 0.001–2 | 0.15 | 0.05–0.5 | Ensemble bow attack |
+| `orch_release` | 0.01–8 | 1.0 | 0.5–3.0 | Ensemble release |
+| `orch_filterEnvAmt` | -1–1 | 0.3 | 0.1–0.5 | Velocity → brightness |
+
+### Coupling Interface
+- **Sends:** Concertmaster vibrato data via `LFOToPitch` (other Garden engines synchronize vibrato), ensemble energy via `AmpToFilter`
+- **Receives:** Seasonal state from GardenAccumulators, pitch attractor from OSIER's companion planting
+
+### Sound Design Tips
+- **Lush orchestral pads:** High `orch_detuneAmount`, slow attack, `orch_season=1` (Summer). Full chord = rich detuned wall of strings.
+- **Chamber ensemble:** Low `orch_detuneAmount` (0.1), `orch_concertmaster` 0.7, moderate vibrato. Tighter, more precise — three violins rather than thirty.
+- **Growth Mode composition:** `orch_growthRate` 0.5 — start sparse and let the ensemble fill in. One sustained chord builds to full density.
+- **Winter stark:** `orch_season=3` (Winter) — the tonal character is stripped and cold. Works for tension and avant-garde string writing.
+- **Concertmaster sync:** With OSIER and OVERGROW also loaded, ORCHARD's Concertmaster drives the pitch relationships for all three. The highest note you play on ORCHARD becomes the harmonic reference for the Garden.
+
+### Recommended Pairings
+- **+ OSIER (quartet):** Orchestra + chamber quartet. ORCHARD provides full ensemble; OSIER defines harmonic roles. Concertmaster bridges them.
+- **+ OVERWASH (diffusion):** String ensemble dissolving into Fick's diffusion pad. `AmpToFilter` coupling.
+- **+ OXBOW (entangled reverb):** Orchestral strings into chiasmus FDN. The Golden Spiral reverb preserves harmonic content from ORCHARD's formant filter.
+
+---
+
+## 58. OVERGROW — XOvergrow
+**Forest Green `#228B22` · Prefix: `grow_` · 4 voices · Garden Quad (Strings)**
+
+Solo Karplus-Strong string — single primary voice with GardenAccumulators.h for session-state ecosystem, silence detection (after sustained notes, harmonic evolution occurs in the string tail — notes reverberate differently each time depending on the accumulated harmonic state), runner generation (stressed notes — high velocity, long duration — generate harmonic runners that persist into subsequent notes), wildness parameter (0=disciplined string, 1=organic growth where notes leave permanent spectral residue). The contrast to ORCHARD: one plant, not an orchard.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `grow_macroCharacter` | 0–1 | String character: refined solo → wild overgrowth |
+| `grow_macroMovement` | 0–1 | Runner generation rate + tail evolution speed |
+| `grow_macroCoupling` | 0–1 | Cross-Garden runner sharing |
+| `grow_macroSpace` | 0–1 | Decay tail length + harmonic tail density |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `grow_excitation` | 0–1 | 0.5 | 0.3–0.7 | KS excitation energy |
+| `grow_damping` | 0–1 | 0.4 | 0.2–0.6 | String damping coefficient — decay speed |
+| `grow_wildness` | 0–1 | 0.3 | 0.1–0.7 | Harmonic residue accumulation. High = overgrown |
+| `grow_runnerRate` | 0–1 | 0.2 | 0.05–0.5 | Runner generation threshold |
+| `grow_runnerDecay` | 0–1 | 0.5 | 0.2–0.8 | How long runners persist |
+| `grow_tailEvolution` | 0–1 | 0.3 | 0.1–0.6 | Post-silence harmonic evolution rate |
+| `grow_pluckPos` | 0–1 | 0.15 | 0.05–0.4 | Pluck position on string |
+| `grow_brightness` | 0–1 | 0.5 | 0.3–0.7 | String brightness (KS filter coefficient) |
+| `grow_attack` | 0.001–0.2 | 0.005 | 0.002–0.05 | Attack time |
+| `grow_release` | 0.01–8 | 2.0 | 0.5–5.0 | String release decay |
+| `grow_filterEnvAmt` | -1–1 | 0.3 | 0.1–0.5 | Velocity → brightness |
+| `grow_vibratoRate` | 0.01–8 | 4.5 | 2–7 | Solo string vibrato |
+| `grow_vibratoDepth` | 0–1 | 0.15 | 0.05–0.3 | Vibrato depth |
+
+### Coupling Interface
+- **Sends:** Runner harmonic content for `AudioToFM`, tail evolution state for `EnvToMorph` (other Garden engines incorporate OVERGROW's runners)
+- **Receives:** Concertmaster influence from ORCHARD, companion planting pitch attractor from OSIER
+
+### Sound Design Tips
+- **Expressive solo cello:** Medium `grow_wildness`, slow `grow_runnerRate`, `grow_pluckPos` 0.12. Velocity nuance → bright/dark tone. Each long note leaves a slight harmonic residue in the next.
+- **Wild overgrowth:** `grow_wildness` 0.8, `grow_runnerRate` 0.6. After a few high-velocity long notes, the instrument is covered in harmonic runners — every subsequent note triggers accumulated partials.
+- **Post-silence mystery:** Play a phrase, then rest — `grow_tailEvolution` 0.5 causes the string to continue harmonically evolving after you stop playing. Silent composition.
+- **Minimal KS pluck:** `grow_wildness` 0.0, `grow_damping` 0.6 — no accumulation, just clean Karplus-Strong guitar pluck in bass register.
+
+### Recommended Pairings
+- **+ ORCHARD (ensemble):** Solo vine growing in the middle of the orchard. OVERGROW's runners feeding into ORCHARD's ensemble via GardenAccumulators.
+- **+ OVERCAST (freeze):** Freeze OVERGROW's harmonic tail mid-evolution. The overgrowth crystallized.
+- **+ OSMOSIS (analysis):** Route OVERGROW through OSMOSIS analysis — the runner generation mapped to coupling outputs.
+
+---
+
+## 59. OSIER — XOsier
+**Willow Green `#6B8E23` · Prefix: `osier_` · 4 voices · Garden Quad (Strings)**
+
+Four-voice chamber string quartet — voice roles assigned via OsierQuartetRole enum (soprano/alto/tenor/bass), each with distinct tonal shaping: soprano (bright, airborne), alto (warm, middle body), tenor (dark, focused), bass (resonant, foundational). Two detuned sawtooth oscillators per voice. Companion planting: a frequency-domain pitch attractor operates over the session — repeated MIDI note clusters cause OSIER to learn your harmonic language and gently attract subsequent pitches toward those preferred intervals. GardenAccumulators.h shared session state.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `osier_macroCharacter` | 0–1 | Quartet character: clean ensemble → deeply voiced tonal warmth |
+| `osier_macroMovement` | 0–1 | Companion planting learning rate + voice activity |
+| `osier_macroCoupling` | 0–1 | Pitch attractor strength across Garden ecosystem |
+| `osier_macroSpace` | 0–1 | Stereo voice spread + room depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `osier_voiceRole` | 0–3 | auto | — | 0=soprano, 1=alto, 2=tenor, 3=bass (auto-assigns by pitch) |
+| `osier_companionRate` | 0–1 | 0.2 | 0.05–0.4 | Learning rate for harmonic language attractor |
+| `osier_attractorStrength` | 0–1 | 0.3 | 0.1–0.6 | Pitch attraction strength toward learned intervals |
+| `osier_detuneAmount` | 0–1 | 0.15 | 0.05–0.3 | Per-voice oscillator detuning |
+| `osier_bowPressure` | 0–1 | 0.5 | 0.3–0.7 | Bow pressure → brightness |
+| `osier_vibratoRate` | 0.01–8 | 5.0 | 3–7 | Vibrato rate |
+| `osier_vibratoDepth` | 0–1 | 0.15 | 0.05–0.35 | Vibrato depth |
+| `osier_filterCutoff` | 200–12000 | 2500 | 600–5000 | Per-voice role filter — different defaults per role |
+| `osier_attack` | 0.001–2 | 0.12 | 0.05–0.4 | Bow attack |
+| `osier_release` | 0.01–6 | 0.8 | 0.3–2.0 | Release |
+| `osier_filterEnvAmt` | -1–1 | 0.3 | 0.1–0.5 | Velocity → brightness |
+| `osier_windDensity` | 0–1 | 0.1 | 0.05–0.3 | Bow noise / string wind sound |
+
+### Coupling Interface
+- **Sends:** Companion planting pitch attractor data via `LFOToPitch` (other Garden engines drift toward OSIER's preferred intervals), voice-role tonal shaping for `AudioToFM`
+- **Receives:** Concertmaster leadership from ORCHARD, runner harmonic residue from OVERGROW
+
+### Sound Design Tips
+- **True quartet texture:** Four-voice chord where OSIER assigns roles by register. Soprano melody, alto harmony, tenor inner voice, bass support. The roles automatically shape the timbral balance.
+- **Companion planting over a session:** `osier_companionRate` 0.3, `osier_attractorStrength` 0.4. Play the same riff repeatedly — OSIER learns your intervals and the tones begin to gravitate toward your harmonic language. Natural tuning emerges.
+- **Pure chamber:** Low `osier_detuneAmount`, moderate `osier_companionRate`. Precision ensemble with gradual harmonic warmth.
+- **Free improvisation:** `osier_attractorStrength` 0.0 — no learning, no attractor. Clean, uninfluenced chamber ensemble for session-to-session consistency.
+
+### Recommended Pairings
+- **+ ORCHARD (ensemble):** Quartet + orchestra. OSIER's companion planting teaches ORCHARD's Concertmaster which intervals are central.
+- **+ OMBRE (memory):** OSIER learns your intervals; OMBRE's memory architecture retains them at a different timescale. Two forms of musical memory.
+- **+ OPERA (vocal):** Chamber strings + operatic vocal ensemble. OSIER's companion planting shapes the harmonic language; OPERA's Conductor follows it.
+
+---
+
+## 60. OXALIS — XOxalis
+**Wood Sorrel Lilac `#9B59B6` · Prefix: `oxal_` · 4 voices · Garden Quad (Strings)**
+
+Phyllotaxis supersaw strings — sawtooth oscillators tuned to intervals derived from the golden angle (137.5°, arising from φ = (1+√5)/2). Phi parameter continuously morphs between standard supersaw tuning (equal intervals) and full phyllotaxis (intervals derived from golden-angle harmonic series). GardenAccumulators.h shared session state. Pioneer species behavior: OXALIS is the fastest to respond to changes in the Garden's shared state — its phyllotaxis tuning adjusts before ORCHARD/OSIER/OVERGROW adapt. When all four Garden engines are loaded, OXALIS seeds the harmonic space that the others fill in.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oxal_macroCharacter` | 0–1 | Phi: standard supersaw → golden-angle phyllotaxis |
+| `oxal_macroMovement` | 0–1 | Pioneer adaptation speed + LFO depth |
+| `oxal_macroCoupling` | 0–1 | Phyllotaxis influence on other Garden engines |
+| `oxal_macroSpace` | 0–1 | Stereo spread + golden-angle reverb tail |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oxal_phi` | 0–1 | 0.5 | 0–1 | Golden ratio interpolation. 0=supersaw, 1=phyllotaxis |
+| `oxal_pioneerRate` | 0–1 | 0.7 | 0.4–0.9 | How quickly OXALIS adapts to Garden state changes |
+| `oxal_oscillators` | 2–8 | 4 | 3–6 | Number of phi-spaced oscillators |
+| `oxal_spread` | 0–1 | 0.4 | 0.2–0.7 | Frequency spread range for phi spacing |
+| `oxal_filterCutoff` | 200–12000 | 3500 | 1000–7000 | Filter cutoff |
+| `oxal_filterRes` | 0–1 | 0.2 | 0.1–0.4 | Filter resonance |
+| `oxal_bowPressure` | 0–1 | 0.5 | 0.3–0.7 | Bow pressure |
+| `oxal_vibratoRate` | 0.01–8 | 5.0 | 3–7 | Vibrato |
+| `oxal_vibratoDepth` | 0–1 | 0.15 | 0.05–0.3 | Vibrato depth |
+| `oxal_attack` | 0.001–2 | 0.08 | 0.02–0.4 | Attack |
+| `oxal_release` | 0.01–6 | 0.8 | 0.3–2.0 | Release |
+| `oxal_filterEnvAmt` | -1–1 | 0.3 | 0.1–0.5 | Velocity → brightness |
+
+### Coupling Interface
+- **Sends:** Phyllotaxis interval data as harmonic seed for `LFOToPitch` and `AudioToFM` — other Garden engines can tune to OXALIS's golden-angle harmonic space
+- **Receives:** Garden ecosystem state from GardenAccumulators, Concertmaster influence from ORCHARD
+
+### Sound Design Tips
+- **Pure phi strings:** `oxal_phi` 1.0, `oxal_oscillators` 6. Unusual, airy harmonic structure — not quite a chord, not quite noise. The golden ratio in frequency space.
+- **Standard supersaw:** `oxal_phi` 0.0 — conventional supersaw string pad. Still useful when you want OXALIS as a Garden ecosystem pioneer without the phi character.
+- **Phi sweep:** Automate `oxal_phi` from 0→1 over a phrase. Hear the harmonic structure morph from familiar to golden-ratio-spaced. Educational and musical simultaneously.
+- **Pioneer seeding:** With all four Garden engines loaded, set `oxal_pioneerRate` high. OXALIS shapes the harmonic space first; the other three adapt to it. Compose the ecosystem character by controlling OXALIS.
+
+### Recommended Pairings
+- **+ ORCHARD + OSIER + OVERGROW:** Full Garden ecosystem — all four in one preset. OXALIS seeds, ORCHARD leads, OSIER roles, OVERGROW grows wild.
+- **+ OVERTONE (continued fractions):** OXALIS's golden-ratio intervals + OVERTONE's irrational-number convergents. Two forms of mathematically derived harmony.
+- **+ OPENSKY (shimmer):** Phi-spaced strings feeding OPENSKY's Shepard shimmer. The golden-angle harmonics become an endlessly-ascending shimmer texture.
+
+---
+
+## 61. OVERWASH — XOverwash
+**Tide Foam White `#F0F8FF` · Prefix: `wash_` · up to 8 voices · Broth Quad (Pads)**
+
+Fick's Law diffusion pad — 16 partials per voice spread over time according to Fick's diffusion equation: frequency offset grows as √(2·D·t) where D is the diffusion coefficient and t is time. Partials start clustered at the fundamental and spread outward over 3–30 seconds. Viscosity filter controls spectral spreading resistance. Cross-note interference: partials from different simultaneous notes interfere, creating beating patterns where diffusing frequency clouds overlap. Time scale: whole phrases. Works best with long sustained notes.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `wash_macroCharacter` | 0–1 | CHARACTER: viscosity + density (how thick the diffusion medium is) |
+| `wash_macroMovement` | 0–1 | MOVEMENT: diffusion rate + LFO depth |
+| `wash_macroCoupling` | 0–1 | COUPLING: cross-note interference depth |
+| `wash_macroSpace` | 0–1 | SPACE: stereo width + reverb depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `wash_diffRate` | 0.01–1 | 0.3 | 0.05–0.5 | Diffusion coefficient D — how fast partials spread |
+| `wash_viscosity` | 0–1 | 0.5 | 0.2–0.8 | High viscosity = slow spread + spectral density |
+| `wash_density` | 0–1 | 0.5 | 0.3–0.7 | Partial density in the diffusion field |
+| `wash_interference` | 0–1 | 0.3 | 0.1–0.6 | Cross-note partial interference depth |
+| `wash_distance` | 3–30 | 12 | 5–20 | Time in seconds for full diffusion spread |
+| `wash_attack` | 0.001–5 | 0.5 | 0.2–2.0 | Envelope attack — slow for diffusion pads |
+| `wash_release` | 0.1–20 | 5.0 | 2–10 | Release — diffusing partials continue after note-off |
+| `wash_filterCutoff` | 100–12000 | 3000 | 500–6000 | Viscosity filter cutoff |
+| `wash_filterRes` | 0–1 | 0.2 | 0.1–0.4 | Filter resonance |
+| `wash_lfo1Rate` | 0.01–1 | 0.05 | 0.01–0.2 | Very slow ambient LFO (D005 floor honored) |
+| `wash_lfo1Depth` | 0–1 | 0.2 | 0.1–0.4 | LFO depth |
+
+### Coupling Interface
+- **Sends:** Diffusion envelope (gradually spreading amplitude cloud) via `AmpToFilter`, partial spread state for `EnvToMorph`
+- **Receives:** `AmpToFilter` from melody engines (note amplitude drives diffusion density), `EnvToFilter` from drums (transients trigger diffusion bursts)
+
+### Sound Design Tips
+- **Slow diffusion wash:** `wash_distance` 20+, `wash_viscosity` 0.7, slow attack. Hold a chord and listen to the partials migrate outward over 20 seconds. Meditative, spatial.
+- **Dense interference:** `wash_interference` 0.6 with 3–4 simultaneous notes. The crossing diffusion clouds beat against each other — complex, alive texture.
+- **Ambient pad bed:** `wash_diffRate` 0.1, `wash_density` 0.6, set-and-forget sustained chord. Background texture that evolves slowly without drawing attention.
+- **Paired with melody:** Route melody engine's `AmpToFilter` to `wash_filterCutoff` — melody notes trigger diffusion density bursts, giving the pad a rhythmic responsiveness without hard sync.
+
+### Recommended Pairings
+- **+ OTO (mouth organs):** Breath pressure partials from OTO diffusing through OVERWASH. Physical reeds dissolving into frequency space.
+- **+ ORCHARD (strings):** Orchestral strings seeding OVERWASH's diffusion field. String formants become the initial partial clusters.
+- **+ OVERCAST (freeze):** Capture a mid-diffusion spectral state with OVERCAST's flash-freeze. The diffusion paused in space.
+
+---
+
+## 62. OVERWORN — XOverworn
+**Worn Felt Grey `#808080` · Prefix: `worn_` · up to 8 voices · Broth Quad (Pads)**
+
+Reduction/evaporation integral pad — 16 harmonics begin at full amplitude and progressively reduce over 30+ minutes of session time. High frequencies evaporate first, then mid-range, leaving fundamentals concentrating as the session ages. Maillard reaction: as reduction deepens, harmonic distortion increases (like caramelization in cooking — complex flavors develop through reduction). ReductionState persists across notes and is irreversible within a session. `worn_stateReset` clears accumulated reduction and restores initial spectral fullness.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `worn_macroCharacter` | 0–1 | CHARACTER: initial spectral fullness → reduced essence |
+| `worn_macroMovement` | 0–1 | MOVEMENT: evaporation rate + Maillard distortion depth |
+| `worn_macroCoupling` | 0–1 | COUPLING: shared reduction state with other Broth engines |
+| `worn_macroSpace` | 0–1 | SPACE: reverb depth (changes quality as reduction proceeds) |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `worn_reductionRate` | 0–1 | 0.15 | 0.05–0.3 | How fast the spectral reduction proceeds per minute |
+| `worn_maillardDepth` | 0–1 | 0.4 | 0.2–0.7 | Harmonic distortion that develops during reduction |
+| `worn_evapCurve` | 0–3 | 0 | — | 0=linear, 1=exponential, 2=logarithmic, 3=sigmoid |
+| `worn_stateReset` | 0–1 | 0 | — | Trigger: resets ReductionState to initial full spectrum |
+| `worn_attack` | 0.001–5 | 0.3 | 0.1–2.0 | Envelope attack |
+| `worn_release` | 0.1–20 | 4.0 | 1–8 | Release — long, as reduction state persists |
+| `worn_filterCutoff` | 100–12000 | 4000 | varies | Cutoff shifts downward automatically with reduction |
+| `worn_density` | 0–1 | 0.5 | 0.3–0.7 | Harmonic density at each time step |
+| `worn_lfo1Rate` | 0.01–0.5 | 0.03 | 0.01–0.1 | Very slow ambient LFO (reduction pads breathe slowly) |
+| `worn_lfo1Depth` | 0–1 | 0.15 | 0.05–0.25 | LFO depth |
+
+### Coupling Interface
+- **Sends:** Reduction state (session time percentage complete) via `EnvToMorph` for other engines to track the reduction arc
+- **Receives:** `AmpToFilter` for reduction-state triggering (loud passages accelerate reduction), shared state from Broth ecosystem
+
+### Sound Design Tips
+- **Session arc composition:** Set up OVERWORN at the start of a session. Play freely. By 20–30 minutes in, your pad character has fundamentally changed. Use this for extended compositions where the instrument itself is a temporal arc.
+- **Maillard flavor:** `worn_maillardDepth` 0.7 — as reduction proceeds, harmonics become richer and more saturated, like a sauce thickening. The distortion is part of the reduction's "flavor."
+- **Reset for contrast:** Play through a full reduction arc, then use `worn_stateReset`. The contrast between a "worn" state and the fresh initial state is dramatic — use it compositionally.
+- **Morning vs. evening sessions:** OVERWORN as a genuine session-length instrument. A morning session and an afternoon session have different characters even with the same preset.
+
+### Recommended Pairings
+- **+ OCHRE (copper piano):** OCHRE also ages over a session via thermal drift. Two instruments with session-length memory playing together create an arc.
+- **+ OVERWASH (diffusion):** Both operate on long time scales. OVERWASH spreads spatially; OVERWORN reduces harmonically. Layered, they create complex spectral-temporal movement.
+- **+ OXBOW (entangled reverb):** OVERWORN's reduced spectral content feeding OXBOW's chiasmus reverb — the reverb becomes more resonant as the pad simplifies.
+
+---
+
+## 63. OVERFLOW — XOverflow
+**Deep Current Blue `#1A3A5C` · Prefix: `flow_` · up to 8 voices · Broth Quad (Pads)**
+
+Pressure cooker pad — Clausius-Clapeyron thermodynamic physics. A pressure accumulator tracks MIDI density (notes per second), velocity, and simultaneous note count. As pressure builds: pre-release strain (high-frequency grating and low-frequency tightening appear). Valve release modes: Gradual (pressure bleeds slowly — filter opens smoothly), Explosive (pressure drops suddenly — bright burst then dark reduction), Whistle (pitched harmonic whistle at the valve opening frequency). Over-pressure mode: when accumulator exceeds maximum, catastrophic spectral distortion occurs.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `flow_macroCharacter` | 0–1 | CHARACTER: atmospheric pressure → over-pressure catastrophe |
+| `flow_macroMovement` | 0–1 | MOVEMENT: pressure accumulation rate + valve timing |
+| `flow_macroCoupling` | 0–1 | COUPLING: pressure sharing with other Broth engines |
+| `flow_macroSpace` | 0–1 | SPACE: pressure vessel resonance + spatial depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `flow_pressureRate` | 0–1 | 0.4 | 0.2–0.7 | How fast MIDI density builds pressure |
+| `flow_velSensitivity` | 0–1 | 0.5 | 0.3–0.8 | Velocity contribution to pressure buildup |
+| `flow_valveMode` | 0–2 | 0 | — | 0=Gradual, 1=Explosive, 2=Whistle |
+| `flow_maxPressure` | 0–1 | 0.8 | 0.5–0.95 | Pressure ceiling before catastrophic release |
+| `flow_valveFreq` | 200–4000 | 800 | — | Whistle mode valve frequency |
+| `flow_strainDepth` | 0–1 | 0.4 | 0.2–0.7 | Pre-release strain audibility |
+| `flow_attack` | 0.001–2 | 0.1 | 0.05–0.5 | Envelope attack |
+| `flow_release` | 0.1–20 | 3.0 | 1–8 | Release |
+| `flow_filterCutoff` | 100–12000 | 2000 | varies | Baseline filter — modified by pressure state |
+| `flow_density` | 0–1 | 0.5 | 0.3–0.7 | Harmonic density |
+| `flow_lfo1Rate` | 0.01–2 | 0.1 | 0.02–0.5 | Pressure-cycle LFO |
+| `flow_lfo1Depth` | 0–1 | 0.25 | 0.1–0.5 | Pressure oscillation depth |
+
+### Coupling Interface
+- **Sends:** Pressure state as modulation signal via `AmpToFilter` (pressure level driving other engines), valve-release transient via `EnvToFilter`
+- **Receives:** MIDI density input from other engines (coupling routes MIDI note density from neighboring engines into OVERFLOW's pressure accumulator)
+
+### Sound Design Tips
+- **Gradual pressure build:** Play a sparse pad. Increase density over 16 bars. Feel the strain develop. Valve opens — pressure releases into open filter. Musical arc built from physics.
+- **Explosive climax:** `flow_valveMode=1`. Build pressure through a verse/chorus. At the chorus peak, the accumulated pressure releases explosively — bright burst then sudden reduction. Compositional punctuation.
+- **Whistle pressure valve:** `flow_valveMode=2`, `flow_valveFreq` 1200 Hz. Play dense chords — when pressure peaks, a pitched whistle harmonic appears at the valve frequency. Strange, unique sound design element.
+- **Over-pressure as effect:** `flow_maxPressure` 0.5 — easier to reach catastrophic state. Use sparingly for extreme moments.
+
+### Recommended Pairings
+- **+ OFFERING (drums):** Drum density drives OVERFLOW's pressure accumulator. Drum fills build pressure; drops release it. Rhythmic pressure arc.
+- **+ OPENSKY (shimmer):** OVERFLOW's explosive valve release feeding OPENSKY's Shepard shimmer reverb. Pressure release → ascending shimmer.
+- **+ OVERCAST (freeze):** Capture the OVERFLOW spectral state mid-strain (just before valve release) with OVERCAST — the tension crystallized.
+
+---
+
+## 64. OVERCAST — XOvercast
+**Light Slate Gray `#778899` · Prefix: `cast_` · up to 8 voices · Broth Quad (Pads)**
+
+Crystallization / flash-freeze pad — Wilson's nucleation theory. On note-on: captures the current spectral state of all active partials, identifies nucleation sites (spectral peaks), then locks partial amplitudes and frequencies. Three crystallization modes: Instant (all partials lock simultaneously on note-on), Crystal (partials lock progressively, slowest-moving first — like ice forming from outside in), Shatter (locked state held until extreme velocity input causes catastrophic re-seeding). Frozen state: LFO modulation stops, envelope evolution halts, harmonics stay permanently fixed until the next crystallization event.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `cast_macroCharacter` | 0–1 | CHARACTER: fluid spectral state → frozen crystalline lock |
+| `cast_macroMovement` | 0–1 | MOVEMENT: crystal formation speed + nucleation depth |
+| `cast_macroCoupling` | 0–1 | COUPLING: crystallization capturing other engines' spectra |
+| `cast_macroSpace` | 0–1 | SPACE: crystal reverb tail + frozen partial diffusion |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `cast_crystalMode` | 0–2 | 1 | — | 0=Instant, 1=Crystal (progressive), 2=Shatter |
+| `cast_nucleationDepth` | 0–1 | 0.6 | 0.3–0.9 | How deeply spectral peaks are locked at crystallization |
+| `cast_formationRate` | 0–1 | 0.3 | 0.1–0.6 | Crystal mode: rate of progressive lock |
+| `cast_shatterThreshold` | 0–1 | 0.85 | 0.7–0.95 | Velocity threshold to shatter crystallized state |
+| `cast_attack` | 0.001–5 | 0.05 | 0.01–1.0 | Attack before crystallization |
+| `cast_release` | 0.1–20 | 6.0 | 2–12 | Release — frozen partials decay very slowly |
+| `cast_filterCutoff` | 100–12000 | 3000 | 800–6000 | Pre-crystallization filter |
+| `cast_density` | 0–1 | 0.5 | 0.3–0.7 | Partial density at crystallization moment |
+| `cast_nucleationSites` | 1–16 | 6 | 3–10 | Number of spectral peaks captured as nucleation sites |
+| `cast_lfo1Rate` | 0.01–2 | 0.15 | 0.05–0.5 | Pre-freeze LFO (stops after crystallization in frozen state) |
+| `cast_lfo1Depth` | 0–1 | 0.2 | 0.1–0.4 | LFO depth (active only before freeze) |
+
+### Coupling Interface
+- **Sends:** Frozen spectral state data (crystallized frequencies) via `AudioToFM` for other engines to tune to the crystallized partials
+- **Receives:** Pre-freeze spectral input from any engine via `AmpToFilter` — OVERCAST can crystallize another engine's output, not just its own partials
+
+### Sound Design Tips
+- **Snapshot drone:** Play a complex evolving pad. Then play a note with OVERCAST in Crystal mode — it captures the spectral state and locks it. You now have a static drone of that moment, while the other pad continues evolving. Counterpoint between frozen and fluid.
+- **Shatter dynamics:** `cast_crystalMode=2`, `cast_shatterThreshold` 0.8. Build a frozen crystalline texture, then a single hard hit shatters it and re-seeds. Dramatic re-crystallization transient.
+- **Progressive freeze:** Crystal mode, `cast_formationRate` 0.1 — the lock happens very slowly, partials crystallizing one by one over 10 seconds. Beautiful slow-motion freezing.
+- **Capture other engines:** Route OVERWASH's diffusion output into OVERCAST via coupling. Freeze a mid-diffusion spectral moment. Now you have OVERWASH's Fick spread locked in amber.
+
+### Recommended Pairings
+- **+ OVERWASH (diffusion):** Capture mid-diffusion state — Fick spreading frozen in time.
+- **+ OVERFLOW (pressure):** Capture pre-release strain state — the pressure crystallized before the valve.
+- **+ OBELISK (marble):** Stone and ice — OBELISK's very high Q marble sustain crystallized by OVERCAST. Architectural frozen monument.
+
+---
+
+## 65. OASIS — XOasis
+**Cardamom Gold `#C49B3F` · Prefix: `oasis_` · 8 voices · Fusion Quad (Electric Pianos)**
+
+Rhodes tine electric piano physical model — tine resonator (vibrating steel tine) coupled with electromagnetic pickup induction model. SpectralFingerprint struct (152 bytes, shared across all Fusion engines) captures tonal fingerprint that other Fusion engines can read. Migration parameter: opens the Rhodes tone to cultural influences from the Spice Route — African kora tuning, Indian shruti inflections, Persian dastgah intervals blend into the tine character. Velocity-sensitive tine brightness (hard strikes activate higher harmonics from the tine's bending mode).
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oasis_macroCharacter` | 0–1 | Tine character: pure bell → worn, overdriven vintage |
+| `oasis_macroMovement` | 0–1 | Tremolo speed + migration depth |
+| `oasis_macroCoupling` | 0–1 | SpectralFingerprint sharing + Fusion cross-pollination |
+| `oasis_macroSpace` | 0–1 | Pickup proximity + spring reverb depth |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oasis_tineBrightness` | 0–1 | 0.5 | 0.3–0.7 | Tine bending mode harmonic content |
+| `oasis_pickupProximity` | 0–1 | 0.5 | 0.3–0.8 | Pickup proximity → tone color (close=more odd harmonics) |
+| `oasis_drive` | 0–1 | 0.2 | 0.05–0.5 | Preamp saturation — classic overdriven Rhodes territory |
+| `oasis_tineDecay` | 0–1 | 0.5 | 0.3–0.8 | Tine resonance decay time |
+| `oasis_tremRate` | 0.1–8 | 5.0 | 0.5–7 | Tremolo rate — classic Rhodes effect |
+| `oasis_tremDepth` | 0–1 | 0.3 | 0.1–0.6 | Tremolo depth |
+| `oasis_migration` | 0–1 | 0.0 | 0–0.4 | Spice Route cultural tuning influence |
+| `oasis_attack` | 0.001–0.2 | 0.005 | 0.002–0.02 | Attack — tine strike is very fast |
+| `oasis_release` | 0.01–8 | 1.5 | 0.5–4.0 | Tine decay release |
+| `oasis_filterCutoff` | 200–12000 | 5000 | 2000–8000 | Post-pickup filter |
+| `oasis_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.6 | Velocity → brightness |
+| `oasis_fingerprintShare` | 0–1 | 0.5 | 0.2–0.8 | SpectralFingerprint output to Fusion siblings |
+
+### Coupling Interface
+- **Sends:** SpectralFingerprint (152 bytes) — tine harmonic identity for other Fusion engines to read; tremolo LFO for `LFOToPitch` sync
+- **Receives:** SpectralFingerprint from other Fusion engines for cultural cross-pollination, `AmpToFilter` for velocity-controlled pickup proximity
+
+### Sound Design Tips
+- **Classic Rhodes:** `oasis_drive` 0.3, `oasis_tremRate` 5.5, `oasis_tremDepth` 0.4. Velocity-sensitive brightness via `oasis_filterEnvAmt`. The archetypal electric piano.
+- **Overdriven funk:** `oasis_drive` 0.6+, high `oasis_pickupProximity`. Short staccato hits with heavy velocity. The overdrive adds the "bark" that defines funk Rhodes comping.
+- **Spice Route melodic:** `oasis_migration` 0.3 — the tuning subtly inflects toward Persian/Indian scales without abandoning Western pitch. Useful for world-fusion production.
+- **5th-slot fingerprint:** When ODDFELLOW, ONKOLO, and OPCODE are also loaded, OASIS shares its tine harmonic identity. The other three EPs resonate slightly in sympathy with OASIS's tonal character.
+
+### Recommended Pairings
+- **+ ODDFELLOW (Wurlitzer):** Rhodes + Wurlitzer in the same Fusion ecosystem. Their SpectralFingerprints exchange, creating a hybrid electric piano character that neither has alone.
+- **+ OLATE (analog bass):** Rhodes melody + analog bass. OLATE's fermentation mirrors OASIS's tine decay character.
+- **+ OVERWASH (diffusion):** Rhodes tine partials diffusing via Fick's Law. The instrument dissolving into its own spectral space.
+
+---
+
+## 66. ODDFELLOW — XOddfellow
+**Fusion Copper `#B87333` · Prefix: `oddf_` · 8 voices · Fusion Quad (Electric Pianos)**
+
+Wurlitzer reed electric piano physical model — vibrating metal reed coupled with electrostatic pickup capacitance model. Built-in drive/preamp (essential to the Wurlitzer sound — the output stage distortion is characteristic, not optional). Tremolo circuit modeled after the internal Wurlitzer tremolo (uses an LDR optocoupler for amplitude modulation, giving a slightly compressed, rounded tremolo character distinct from Rhodes's harder chop). Night market / busker economy theme — Oddfellow is the itinerant performer, playing outside taverns on a battered instrument. Reuses SpectralFingerprint struct.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oddf_macroCharacter` | 0–1 | Character: clean Wurlitzer bell → saturated preamp grunge |
+| `oddf_macroMovement` | 0–1 | Tremolo depth + reed vibration character |
+| `oddf_macroCoupling` | 0–1 | SpectralFingerprint sharing depth |
+| `oddf_macroSpace` | 0–1 | Pickup proximity + cabinet resonance |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oddf_reedBrightness` | 0–1 | 0.5 | 0.3–0.7 | Reed harmonic content — Wurlitzer is darker than Rhodes |
+| `oddf_drive` | 0–1 | 0.4 | 0.2–0.7 | Output stage preamp drive — essential Wurlitzer character |
+| `oddf_pickupCap` | 0–1 | 0.5 | 0.3–0.7 | Pickup capacitance → tonal brightness |
+| `oddf_reedDecay` | 0–1 | 0.4 | 0.2–0.6 | Reed resonance decay |
+| `oddf_tremRate` | 0.1–8 | 4.5 | 0.5–6 | Optocoupler tremolo rate |
+| `oddf_tremDepth` | 0–1 | 0.35 | 0.1–0.6 | Tremolo depth (LDR character — softer than Rhodes) |
+| `oddf_age` | 0–1 | 0.2 | 0–0.5 | Instrument age → worn reed + old capacitor character |
+| `oddf_attack` | 0.001–0.2 | 0.008 | 0.003–0.03 | Attack |
+| `oddf_release` | 0.01–8 | 1.2 | 0.4–3.0 | Release |
+| `oddf_filterCutoff` | 200–12000 | 4000 | 1500–7000 | Post-pickup filter |
+| `oddf_filterEnvAmt` | -1–1 | 0.4 | 0.2–0.6 | Velocity → brightness |
+| `oddf_fingerprintShare` | 0–1 | 0.5 | 0.2–0.8 | SpectralFingerprint to Fusion siblings |
+
+### Coupling Interface
+- **Sends:** SpectralFingerprint (152 bytes) of Wurlitzer reed identity, optocoupler tremolo LFO for sync
+- **Receives:** SpectralFingerprint from OASIS, ONKOLO, OPCODE for cross-pollination
+
+### Sound Design Tips
+- **Classic 200A:** `oddf_drive` 0.5, `oddf_tremRate` 4.5, `oddf_tremDepth` 0.35. The Wurlitzer signature — woolly, organic, warm overdrive.
+- **Battered busker:** `oddf_age` 0.5, `oddf_drive` 0.6. Worn reeds and aging capacitors. Each note slightly unpredictable. Authentic character you can't fake with a clean model.
+- **Contrast with Rhodes:** With OASIS also loaded, play the same part on both. OASIS is bright and bell-like; ODDFELLOW is dark and woolly. Layer them for full electric piano spectrum.
+- **Songwriting tool:** ODDFELLOW's inherent warmth and drive makes it self-completing — minimal processing needed. Goes to tape without EQ.
+
+### Recommended Pairings
+- **+ OASIS (Rhodes):** Full Fusion EP ecosystem — tine + reed SpectralFingerprints cross-pollinate.
+- **+ OCHRE (copper piano):** Copper warmth of both instruments creates a golden acoustic-electric piano layer.
+- **+ OVERCAST (freeze):** Freeze ODDFELLOW's Wurlitzer sustain mid-tremolo. The LDR optocoupler tremolo crystallized at peak.
+
+---
+
+## 67. ONKOLO — XOnkolo
+**Spectral Amber `#FFBF00` · Prefix: `onko_` · 8 voices · Fusion Quad (Electric Pianos)**
+
+Clavinet D6 physical model — rubber pad strikes a tensioned string, dual magnetic pickups (bridge pickup = bright and cutting; neck pickup = warm and full), key-off damper clunk (the physical percussive sound of the damper returning). Auto-wah envelope follower: velocity and amplitude trigger a bandpass-resonant filter sweep, replicating the classic clav-into-wah effect. West African diaspora theme — the name honors *nkolo* (ancestor) in Kikongo, acknowledging the African rhythmic heritage central to clavinet music (funk, reggae, Afrobeat). Reuses SpectralFingerprint struct.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `onko_macroCharacter` | 0–1 | Pickup blend: neck warmth → bridge attack |
+| `onko_macroMovement` | 0–1 | Auto-wah sensitivity + clunk character |
+| `onko_macroCoupling` | 0–1 | SpectralFingerprint sharing + wah sync |
+| `onko_macroSpace` | 0–1 | String resonance depth + cabinet tone |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `onko_pickupBlend` | 0–1 | 0.5 | 0–1 | 0=neck only, 1=bridge only, 0.5=both |
+| `onko_stringTension` | 0–1 | 0.5 | 0.3–0.7 | String tension → fundamental brightness |
+| `onko_rubberPad` | 0–1 | 0.5 | 0.3–0.7 | Rubber pad hardness → attack transient |
+| `onko_wahSensitivity` | 0–1 | 0.5 | 0.2–0.8 | Auto-wah envelope follower sensitivity |
+| `onko_wahFreqBase` | 200–3000 | 800 | 400–1500 | Wah filter base frequency |
+| `onko_wahQuality` | 0–1 | 0.6 | 0.4–0.8 | Wah BPF resonance |
+| `onko_damperClunk` | 0–1 | 0.3 | 0.1–0.5 | Key-off damper clunk level |
+| `onko_drive` | 0–1 | 0.3 | 0.1–0.6 | Pre-amp drive |
+| `onko_attack` | 0.001–0.1 | 0.003 | 0.001–0.01 | Very fast attack — Clavinet strikes are percussive |
+| `onko_release` | 0.01–4 | 0.4 | 0.1–1.0 | String decay |
+| `onko_filterEnvAmt` | -1–1 | 0.5 | 0.3–0.7 | Velocity → brightness (very audible on Clavinet) |
+| `onko_fingerprintShare` | 0–1 | 0.5 | 0.2–0.8 | SpectralFingerprint to Fusion siblings |
+
+### Coupling Interface
+- **Sends:** SpectralFingerprint (clav harmonic identity), auto-wah filter state for `AmpToFilter` (wah envelope as modulation source)
+- **Receives:** SpectralFingerprint from OASIS/ODDFELLOW/OPCODE, `LFOToPitch` for wah rate synchronization
+
+### Sound Design Tips
+- **Classic funk clav:** Bridge pickup, `onko_wahSensitivity` 0.6, `onko_drive` 0.4. Short staccato notes for percussive funk rhythm. The auto-wah opens on each hit.
+- **Stevie Wonder:** Neck + bridge blend, `onko_wahSensitivity` 0.7, moderate `onko_stringTension`. That immediately recognizable rhythmic clavinet chop.
+- **Afrobeat lead:** Bridge pickup, `onko_wahFreqBase` 600, `onko_wahQuality` 0.7. The Fela Kuti clavinet sound — punchy, vocal, rhythmically insistent.
+- **Damper clunk as percussion:** `onko_damperClunk` 0.6 — use the key-off sound rhythmically. Play 16th notes; the upstroke clunk becomes part of the pattern.
+
+### Recommended Pairings
+- **+ OASIS + ODDFELLOW (full Fusion EP):** Three electric pianos with SpectralFingerprint cross-pollination.
+- **+ OFFERING (drums):** Clavinet + drum machine. Route OFFERING's kick envelope to `onko_wahSensitivity` for kick-triggered wah sweeps.
+- **+ ORGANISM (cellular automata):** ONKOLO's rhythmic patterns as cellular automata seed — the clavinet rhythm becomes a generative rule.
+
+---
+
+## 68. OPCODE — XOpcode
+**Dark Turquoise `#00CED1` · Prefix: `opco_` · 8 voices · Fusion Quad (Electric Pianos)**
+
+2-operator FM electric piano — sine carrier plus sine modulator, ratio control, three algorithm modes (Series/Parallel/Feedback), velocity-sensitive modulation index targeting the DX7 "E. Piano 1" sound. City Pop / Silicon Valley → Tokyo theme: the digital clarity of FM synthesis as a cultural artifact of 1980s Japan (Yamaha DX7, Roland D-50, FM synthesis as aesthetic). Reuses SpectralFingerprint struct. Fifth-slot mechanic: OPCODE's SpectralFingerprint encodes the FM operator ratios and modulation index state — other Fusion engines can "read" this digital imprint and add FM-character to their physical models.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `opco_macroCharacter` | 0–1 | FM character: bright digital bell → warm rounded FM mellow |
+| `opco_macroMovement` | 0–1 | Modulation index animation + vibrato |
+| `opco_macroCoupling` | 0–1 | SpectralFingerprint sharing + FM cross-modulation |
+| `opco_macroSpace` | 0–1 | FM reverb character + stereo width |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `opco_modRatio` | 0.5–8 | 1.0 | 0.5–3 | Modulator:carrier frequency ratio |
+| `opco_modIndex` | 0–10 | 3.5 | 1–6 | FM modulation index — sideband density |
+| `opco_algorithm` | 0–2 | 0 | — | 0=Series, 1=Parallel, 2=Feedback |
+| `opco_feedback` | 0–1 | 0.1 | 0–0.4 | Operator self-feedback — metallic quality |
+| `opco_velModIndex` | 0–1 | 0.5 | 0.3–0.8 | Velocity → modulation index scaling |
+| `opco_attack` | 0.001–0.5 | 0.005 | 0.002–0.02 | Attack |
+| `opco_decay` | 0.01–4 | 0.6 | 0.2–2.0 | Decay (most character here with FM) |
+| `opco_sustain` | 0–1 | 0.6 | 0.3–0.8 | Sustain level |
+| `opco_release` | 0.01–6 | 1.0 | 0.3–3.0 | Release |
+| `opco_filterCutoff` | 200–12000 | 6000 | 2000–10000 | Post-FM filter |
+| `opco_filterEnvAmt` | -1–1 | 0.3 | 0.1–0.5 | Velocity → brightness |
+| `opco_vibRate` | 0.01–8 | 5.0 | 3–7 | Vibrato rate |
+| `opco_vibDepth` | 0–1 | 0.1 | 0.05–0.25 | Vibrato depth |
+| `opco_fingerprintShare` | 0–1 | 0.5 | 0.2–0.8 | SpectralFingerprint FM identity sharing |
+
+### Coupling Interface
+- **Sends:** SpectralFingerprint (FM operator ratios + modulation index) — other Fusion engines read this to add FM character to physical models; modulation index envelope for `EnvToFilter`
+- **Receives:** SpectralFingerprint from OASIS/ODDFELLOW/ONKOLO — physical model harmonics influencing FM operator behavior
+
+### Sound Design Tips
+- **DX7 E. Piano 1:** `opco_modRatio` 1.0, `opco_modIndex` 3.5, Series algorithm, `opco_velModIndex` 0.6. Canonical DX7 electric piano — velocity sensitivity gives the characteristic "pop" on hard notes.
+- **City Pop keys:** `opco_modRatio` 1.5, moderate index, light filter. The archetypal 1980s Japanese city pop keyboard sound. Pairs naturally with `oasis_tremolo` for Rhodes+FM layering.
+- **Metallic Bell:** `opco_feedback` 0.3, `opco_modRatio` 3.0–4.0. Metallic, bell-like FM tones. Short decay. The DX7 sounds that didn't sound like pianos.
+- **FM fingerprint diffusion:** With all four Fusion EPs loaded, OPCODE's FM fingerprint diffuses into OASIS/ODDFELLOW/ONKOLO — the physical models gain FM artifacts, the FM gains physical warmth. The 5th-slot mechanic at full capacity.
+
+### Recommended Pairings
+- **+ OMEGA (FM bass):** FM piano + FM bass. Both 2-op, both FM. OMEGA's distillation from complex to pure is a good counterpoint to OPCODE's velocity-sensitive modulation.
+- **+ OASIS + ODDFELLOW + ONKOLO (full Fusion):** Complete Fusion Quad — all SpectralFingerprints active. The five-slot EP ecosystem.
+- **+ OXBOW (entangled reverb):** FM partials feeding chiasmus FDN. The FM sideband spectrum becomes golden-ratio-spaced reverb resonances.

@@ -19,7 +19,7 @@
 
 ### Why This Name
 
-- **XOlokun** meant "everything bus" — a transportation metaphor. Utilitarian. Accurate but soulless.
+- **The old name** meant "everything bus" — a transportation metaphor. Utilitarian. Accurate but soulless.
 - **XOlokun** means "the deep place where treasure lives" — a mythological claim. It doesn't describe a feature; it promises an experience.
 - The aquatic mythology was always there (creature identities, water column placement, depth-as-complexity). XOlokun doesn't add mythology — it admits that the mythology was the product all along.
 
