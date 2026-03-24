@@ -9,8 +9,8 @@
 ## Identity
 
 - **Name:** The Aquarium (Aquatic Master FX Suite)
-- **Thesis:** Six master effects themed around water phenomena — the sonic environment that every XOmnibus engine passes through. The aquatic mythology that connects feliX (neon tetra) and Oscar (axolotl) to the entire platform becomes *audible* through the master bus.
-- **Purpose:** Brand-defining master FX chain that makes all XOmnibus output sound cohesive — "that sounds like XO_OX" regardless of which engine is active.
+- **Thesis:** Six master effects themed around water phenomena — the sonic environment that every XOlokun engine passes through. The aquatic mythology that connects feliX (neon tetra) and Oscar (axolotl) to the entire platform becomes *audible* through the master bus.
+- **Purpose:** Brand-defining master FX chain that makes all XOlokun output sound cohesive — "that sounds like XO_OX" regardless of which engine is active.
 
 ---
 
@@ -124,7 +124,7 @@ The 6 FX form 3 conceptual pairs:
 
 ## Macro Integration
 
-The Aquatic FX should respond to XOmnibus macros:
+The Aquatic FX should respond to XOlokun macros:
 
 - **CHARACTER macro** → Modulates Fathom depth + Biolume glow (more character = deeper + brighter)
 - **SPACE macro** → Modulates Reef size + Drift width (more space = larger reverb + wider chorus)

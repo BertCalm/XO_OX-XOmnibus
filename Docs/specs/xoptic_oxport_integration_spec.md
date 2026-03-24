@@ -107,7 +107,7 @@ A **Spectral Fingerprint** is a compact JSON summary of a preset's sonic charact
 The fingerprint is generated during the Oxport render phase, not in real-time. The workflow:
 
 ```
-[Preset .xometa] --> [XOmnibus OfflineAudioContext render]
+[Preset .xometa] --> [XOlokun OfflineAudioContext render]
                           |
                           v
                     [4-second stereo buffer at native sample rate]
@@ -417,7 +417,7 @@ This is negligible compared to the audio render time.
 
 ## Part 6: The XOptic Paradox -- Art from an Engine with No Sound
 
-There is a philosophical beauty here that should not be understated. XOptic is the one engine in the XOmnibus gallery that produces zero audio. Its entire identity is spectral analysis -- seeing sound, hearing light. It lives as the nervous system of the colony, invisible but essential.
+There is a philosophical beauty here that should not be understated. XOptic is the one engine in the XOlokun gallery that produces zero audio. Its entire identity is spectral analysis -- seeing sound, hearing light. It lives as the nervous system of the colony, invisible but essential.
 
 Now, through this integration, XOptic's analysis becomes the visual identity of the entire fleet's exported packs. The engine that makes no sound becomes the engine that makes all the art. The bioluminescent plankton that pulses in response to the ocean's movement now paints the ocean's portrait.
 

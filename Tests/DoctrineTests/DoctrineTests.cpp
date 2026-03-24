@@ -1,7 +1,7 @@
 /*
-    XOmnibus Doctrine Tests
+    XOlokun Doctrine Tests
     =======================
-    Automated tests for the 6 XOmnibus Doctrines:
+    Automated tests for the 6 XOlokun Doctrines:
 
       D001 — Velocity Must Shape Timbre (not just amplitude)
       D002 — Modulation is the Lifeblood (mod matrix slots defined)
@@ -107,7 +107,7 @@
 #include <algorithm>
 #include <numeric>
 
-using namespace xomnibus;
+using namespace xolokun;
 
 //==============================================================================
 // JUCE 8 compatibility: ParameterLayout is not iterable.
@@ -577,7 +577,7 @@ static void testD005_LFOBreathing()
         }
         else
         {
-            // Engine may have hardcoded LFOs (common pattern in XOmnibus).
+            // Engine may have hardcoded LFOs (common pattern in XOlokun).
             // We verify the engine at least has LFO-related parameters or
             // provides autonomous modulation through other means.
             std::string msg = "D005 " + id + ": has LFO infrastructure (param or built-in)";

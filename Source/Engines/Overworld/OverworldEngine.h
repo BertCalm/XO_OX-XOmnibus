@@ -12,10 +12,10 @@
 #include "dsp/FIREcho.h"
 #include "dsp/BitCrusher.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// OverworldEngine — XOverworld chip synthesis engine for XOmnibus
+// OverworldEngine — XOverworld chip synthesis engine for XOlokun
 //
 // Wraps XOverworld's 6-engine chip synthesizer (NES / FM Genesis / SNES /
 // Game Boy / PC Engine / Neo Geo) behind the SynthEngine interface.
@@ -81,7 +81,7 @@ public:
     {
         xoverworld::addParameters(params); // delegates to Parameters.h
 
-        // XOmnibus standard macros — added here (not in standalone Parameters.h)
+        // XOlokun standard macros — added here (not in standalone Parameters.h)
         // to preserve standalone XOverworld preset compatibility.
         // All default to 0.0 so existing presets are unaffected.
         //
@@ -229,7 +229,7 @@ public:
         p_gbPulseDuty   = apvts.getRawParameterValue(PID::GB_PULSE_DUTY);
         p_pceWaveSlot   = apvts.getRawParameterValue(PID::PCE_WAVE_SLOT);
 
-        // XOmnibus macros (declared above in addParameters)
+        // XOlokun macros (declared above in addParameters)
         p_macroEra      = apvts.getRawParameterValue("ow_macroEra");
         p_macroCrush    = apvts.getRawParameterValue("ow_macroCrush");
         p_macroGlitch   = apvts.getRawParameterValue("ow_macroGlitch");
@@ -264,7 +264,7 @@ public:
             snap.ampRelease = 0.05f;
         }
 
-        // -- Apply XOmnibus macros -------------------------------------------
+        // -- Apply XOlokun macros -------------------------------------------
         // M1 ERA: sweep ERA X-axis by up to 1.0 (full chip engine cross-fade).
         // M2 CRUSH: increase BitCrusher wet mix up to 0.85 (heavy lo-fi crunch).
         // M3 GLITCH: increase glitch amount up to 0.9 and mix up to 0.8.
@@ -697,7 +697,7 @@ private:
     std::atomic<float>* p_gbPulseDuty  = nullptr;
     std::atomic<float>* p_pceWaveSlot  = nullptr;
 
-    // XOmnibus macros (registered in addParameters, attached in attachParameters)
+    // XOlokun macros (registered in addParameters, attached in attachParameters)
     std::atomic<float>* p_macroEra      = nullptr;
     std::atomic<float>* p_macroCrush    = nullptr;
     std::atomic<float>* p_macroGlitch   = nullptr;
@@ -712,4 +712,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverworldEngine)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

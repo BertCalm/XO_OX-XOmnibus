@@ -89,7 +89,7 @@ XO_OX has 34 synthesis engines, 2,550 presets, and a complete XPN toolchain — 
 
 ### March 2027 — XO_OX Anthology Vol. 1 ($39.99)
 
-**Rationale**: 1-year mark from the XOmnibus 31-engine milestone (March 2026). The Anthology collects the best 4-6 kits per engine across all 31+ engines. A prestige product that demonstrates the full fleet. March timing echoes the Pi Day 2026 Theorem announcements — brand resonance across years.
+**Rationale**: 1-year mark from the XOlokun 31-engine milestone (March 2026). The Anthology collects the best 4-6 kits per engine across all 31+ engines. A prestige product that demonstrates the full fleet. March timing echoes the Pi Day 2026 Theorem announcements — brand resonance across years.
 
 - Format: Anthology tier (5,000+ samples)
 - Content: 4-6 kits per engine × 31 engines = ~140–186 kits
@@ -178,7 +178,7 @@ All pack tiers: 25% discount + 2-week early access window before public launch. 
 
 Proposed Patreon tiers:
 - $5/mo: Early access + liner notes PDF downloads
-- $10/mo: Early access + source preset files (.xometa bundles for XOmnibus)
+- $10/mo: Early access + source preset files (.xometa bundles for XOlokun)
 - $25/mo: Early access + source presets + raw XPM/WAV stems (build your own kits)
 
 At 50 subscribers on the $10 tier: $500/month recurring before any retail sale. This covers production time at a sustainable rate. Target: 50 paying Patreon subscribers before the May 2026 pack launch.
@@ -257,7 +257,7 @@ The implementation requires:
 5. Write the buffer to WAV at the project sample rate (never hardcoded 44100 — derive from `AudioContext`)
 6. Loop across the note range and velocity layer definitions in the render spec
 
-No new architecture is required. The offline render infrastructure already exists in the XOmnibus codebase. This is wiring, not invention.
+No new architecture is required. The offline render infrastructure already exists in the XOlokun codebase. This is wiring, not invention.
 
 ### Impact on Release Schedule
 
@@ -296,7 +296,7 @@ XO_OX_PackName_v1.0.zip
 
 `manifest.json` required fields: `packId`, `version`, `engineList`, `kitCount`, `sampleCount`, `velocityLayers`, `cycleGroups`, `compatibleHardware`, `releaseDate`, `price`, `patreonExclusive`.
 
-XPM 3 non-negotiable rules (per XOmnibus CLAUDE.md):
+XPM 3 non-negotiable rules (per XOlokun CLAUDE.md):
 - `KeyTrack` = `True`
 - `RootNote` = `0`
 - Empty layer `VelStart` = `0`

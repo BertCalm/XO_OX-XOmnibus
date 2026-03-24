@@ -258,13 +258,13 @@ def build_presets(count_per_pair, rng):
 # ---------------------------------------------------------------------------
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate OBSIDIAN + OBSCURA coupling presets for XOmnibus."
+        description="Generate OBSIDIAN + OBSCURA coupling presets for XOlokun."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = str(repo_root / "Presets" / "XOmnibus" / "Entangled")
+    default_out = str(repo_root / "Presets" / "XOlokun" / "Entangled")
 
     parser.add_argument("--output-dir", default=default_out,
-                        help="Directory to write .xometa files (default: Presets/XOmnibus/Entangled/)")
+                        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Print preset names without writing files")
     parser.add_argument("--seed", type=int, default=None,

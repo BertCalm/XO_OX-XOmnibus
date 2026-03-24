@@ -8,7 +8,7 @@ Run through these on your home machine before considering OPAL production-ready.
 ## 1. Compilation
 
 - [ ] Clean build with no warnings (`-Wall -Wextra`)
-- [ ] Verify `OpalEngine.h` compiles as part of the full XOmnibus target (AU + Standalone)
+- [ ] Verify `OpalEngine.h` compiles as part of the full XOlokun target (AU + Standalone)
 - [ ] Verify iOS build (AUv3 + Standalone)
 - [ ] Confirm `REGISTER_ENGINE(OpalEngine)` links correctly — "Opal" appears in `EngineRegistry::getRegisteredIds()`
 

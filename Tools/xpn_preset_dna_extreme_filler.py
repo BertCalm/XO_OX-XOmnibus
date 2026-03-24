@@ -14,7 +14,7 @@ Usage:
     python xpn_preset_dna_extreme_filler.py --dimensions auto
     python xpn_preset_dna_extreme_filler.py --dimensions brightness,aggression
     python xpn_preset_dna_extreme_filler.py --dry-run --seed 42
-    python xpn_preset_dna_extreme_filler.py --presets-dir ./Presets/XOmnibus --count 3
+    python xpn_preset_dna_extreme_filler.py --presets-dir ./Presets/XOlokun --count 3
 """
 
 import argparse
@@ -146,7 +146,7 @@ SUFFIXES = [
 ]
 
 # ---------------------------------------------------------------------------
-# Engine → canonical XOmnibus engine ID (for preset "engines" field)
+# Engine → canonical XOlokun engine ID (for preset "engines" field)
 # ---------------------------------------------------------------------------
 
 ENGINE_ID_MAP: dict[str, str] = {
@@ -439,7 +439,7 @@ def parse_args() -> argparse.Namespace:
         "--presets-dir",
         type=Path,
         default=None,
-        help="Root directory to scan for .xometa files (default: auto-detect Presets/XOmnibus/ relative to this script).",
+        help="Root directory to scan for .xometa files (default: auto-detect Presets/XOlokun/ relative to this script).",
     )
     parser.add_argument(
         "--output-dir",
@@ -476,14 +476,14 @@ def parse_args() -> argparse.Namespace:
 
 
 def resolve_presets_dir(explicit) -> Path:
-    """Find the Presets/XOmnibus directory relative to this script."""
+    """Find the Presets/XOlokun directory relative to this script."""
     if explicit is not None:
         return explicit.expanduser().resolve()
     # Walk up from script location
     script_dir = Path(__file__).parent
     candidates = [
-        script_dir.parent / "Presets" / "XOmnibus",
-        script_dir / "Presets" / "XOmnibus",
+        script_dir.parent / "Presets" / "XOlokun",
+        script_dir / "Presets" / "XOlokun",
     ]
     for c in candidates:
         if c.exists():

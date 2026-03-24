@@ -14,7 +14,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OceanicEngine — Swarm Particle Synthesis via Boid Flocking Rules.
@@ -1334,4 +1334,4 @@ private:
     std::atomic<float>* pMacroSpace = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

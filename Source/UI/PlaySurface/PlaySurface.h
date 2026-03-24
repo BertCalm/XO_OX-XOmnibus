@@ -5,10 +5,10 @@
 #include <vector>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// Forward declarations for color/font access from XOmnibusEditor.h
+// Forward declarations for color/font access from XOlokunEditor.h
 // (included after the main editor header)
 namespace GalleryColors {
     inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
@@ -1088,4 +1088,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

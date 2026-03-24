@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_macro_performance_recorder.py
-XO_OX XOmnibus — Macro Performance Script Tool
+XO_OX XOlokun — Macro Performance Script Tool
 
 Records and replays macro performance scripts, embeds automation hints
 in .xometa files, and generates ASCII performance scores.

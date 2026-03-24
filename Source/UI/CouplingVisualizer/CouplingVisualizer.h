@@ -2,12 +2,12 @@
 #include <juce_gui_extra/juce_gui_extra.h>
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/SynthEngine.h"
-#include "../XOmnibusEditor.h"   // GalleryColors
+#include "../XOlokunEditor.h"   // GalleryColors
 #include <array>
 #include <atomic>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // CouplingVisualizer — full-panel graph view of cross-engine modulation routing.
@@ -1101,4 +1101,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CouplingVisualizer)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

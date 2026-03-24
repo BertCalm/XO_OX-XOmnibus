@@ -1,6 +1,6 @@
 #pragma once
 //==============================================================================
-// OxytocinAdapter.h — XOmnibus adapter for OxytocinEngine
+// OxytocinAdapter.h — XOlokun adapter for OxytocinEngine
 //
 // Engine: XOxytocin (OXYTO) — Engine #48
 // Concept: Circuit-modeling synth based on Sternberg's Triangular Theory of Love
@@ -18,7 +18,7 @@
 #include "OxytocinEngine.h"
 #include "OxytocinParamSnapshot.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 class OxytocinAdapter : public SynthEngine
 {
@@ -193,7 +193,7 @@ public:
 
     //-- Parameters --------------------------------------------------------------
 
-    /// Called from XOmnibusProcessor::createParameterLayout() to add oxy_ params
+    /// Called from XOlokunProcessor::createParameterLayout() to add oxy_ params
     /// to the global APVTS alongside all other engine parameters.
     static void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -342,4 +342,4 @@ private:
     std::atomic<int> activeVoiceCount_ { 0 };
 };
 
-} // namespace xomnibus
+} // namespace xolokun

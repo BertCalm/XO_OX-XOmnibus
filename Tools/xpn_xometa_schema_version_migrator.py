@@ -2,7 +2,7 @@
 """
 xpn_xometa_schema_version_migrator.py
 
-Migrates .xometa preset files between schema versions for the XO_OX XOmnibus project.
+Migrates .xometa preset files between schema versions for the XO_OX XOlokun project.
 
 Usage:
     python xpn_xometa_schema_version_migrator.py <dir> [--dry-run] [--migrate]

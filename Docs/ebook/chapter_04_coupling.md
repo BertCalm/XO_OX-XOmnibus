@@ -6,7 +6,7 @@
 
 Most synthesizers exist in isolation. You load a patch, you play it, it makes a sound. The sound is whatever the patch is. If you want something different, you load a different patch. The relationship between the instrument and the player is a monologue — the synth speaks, you listen.
 
-Coupling breaks that model. When two engines are coupled in XOmnibus, they stop being separate instruments and start being a conversation. One engine reaches across the divide and pulls something from the other — a frequency, a density, a chaotic edge — and folds it into its own signal. The result is a sound that neither engine could produce alone. Not a blend. Not a layer. An entanglement.
+Coupling breaks that model. When two engines are coupled in XOlokun, they stop being separate instruments and start being a conversation. One engine reaches across the divide and pulls something from the other — a frequency, a density, a chaotic edge — and folds it into its own signal. The result is a sound that neither engine could produce alone. Not a blend. Not a layer. An entanglement.
 
 This chapter is about how that works, what it sounds like, and how to use it without ending up with sixteen simultaneous sounds fighting each other into mud.
 
@@ -16,7 +16,7 @@ This chapter is about how that works, what it sounds like, and how to use it wit
 
 Let's strip out all the language and get mechanical for a moment, because the mechanics matter.
 
-Every engine in XOmnibus is constantly producing internal state: filter positions, oscillator phases, envelope stages, spectral distributions. Most of that state is private — it stays inside the engine and shapes the output, but nothing else sees it. Coupling changes that. It designates some of that internal state as an output signal, routes it to another engine, and lets that second engine use it as a modulation source.
+Every engine in XOlokun is constantly producing internal state: filter positions, oscillator phases, envelope stages, spectral distributions. Most of that state is private — it stays inside the engine and shapes the output, but nothing else sees it. Coupling changes that. It designates some of that internal state as an output signal, routes it to another engine, and lets that second engine use it as a modulation source.
 
 What gets modulated depends on the coupling type. PITCH coupling means Engine A's current pitch value nudges Engine B's oscillator. FILTER coupling means Engine A's filter cutoff position pushes Engine B's filter up or down. AMPLITUDE coupling means Engine A's volume envelope shape reaches over and compresses or expands Engine B's amplitude in real time.
 
@@ -24,15 +24,15 @@ The key word is "real time." This is not a static routing like a send/return in 
 
 There are two parameters that govern every coupling route: **depth** and **polarity**. Depth controls how much of Engine A's signal reaches Engine B — at zero, the coupling exists but does nothing; at maximum, Engine B is completely dominated by Engine A's behavior. Polarity controls direction — positive polarity means Engine A and Engine B move in the same direction; negative polarity inverts the relationship, so when Engine A rises, Engine B falls.
 
-> **Tip:** Negative polarity coupling is one of the most useful sounds in XOmnibus and one of the least used. When Engine A's amplitude compresses Engine B's filter upward and Engine B's filter compresses Engine A's amplitude downward, you get a sidechain-like pumping effect that emerges from the physics of the interaction rather than being applied as a post-process. It breathes differently from a compressor. It feels alive.
+> **Tip:** Negative polarity coupling is one of the most useful sounds in XOlokun and one of the least used. When Engine A's amplitude compresses Engine B's filter upward and Engine B's filter compresses Engine A's amplitude downward, you get a sidechain-like pumping effect that emerges from the physics of the interaction rather than being applied as a post-process. It breathes differently from a compressor. It feels alive.
 
-The MegaCouplingMatrix in XOmnibus supports up to four simultaneous coupling routes per preset. Routes can be bidirectional (A→B and B→A simultaneously), unidirectional, or daisy-chained (A→B→C→D). Each route is independently toggleable and depth-controllable. In practice, two or three well-chosen routes produce richer results than four shallow ones.
+The MegaCouplingMatrix in XOlokun supports up to four simultaneous coupling routes per preset. Routes can be bidirectional (A→B and B→A simultaneously), unidirectional, or daisy-chained (A→B→C→D). Each route is independently toggleable and depth-controllable. In practice, two or three well-chosen routes produce richer results than four shallow ones.
 
 ---
 
 ## 4.2 The 12 Coupling Types
 
-XOmnibus implements twelve distinct coupling modes. Each defines what is being shared — the specific dimension of Engine A that modulates Engine B.
+XOlokun implements twelve distinct coupling modes. Each defines what is being shared — the specific dimension of Engine A that modulates Engine B.
 
 **FILTER** — Engine A's filter cutoff and resonance position modulates Engine B's filter. The most natural-feeling coupling type. Produces tracking, shadow, and sympathetic filter sweeps between engines.
 
@@ -164,7 +164,7 @@ The sonic result is something between a plucked surface and a moving body of wat
 
 ## 4.5 Building the Entangled Mood — Presets That Live or Die by Coupling
 
-XOmnibus ships 2,550 factory presets across seven mood categories. Entangled is the one where coupling is not a feature added on top — it is the synthesis itself.
+XOlokun ships 2,550 factory presets across seven mood categories. Entangled is the one where coupling is not a feature added on top — it is the synthesis itself.
 
 An Entangled preset typically has this structure:
 - Two or three engines loaded
@@ -188,7 +188,7 @@ When writing Entangled presets, my workflow is:
 
 ## 4.6 Using Coupling on MPC Hardware — The Q-Link Trick for Live Coupling Depth Control
 
-The MPC X and MPC Live assign four Q-Link knobs to each of the four macro parameters per program: CHARACTER, MOVEMENT, COUPLING, and SPACE. The COUPLING macro in XOmnibus presets is conventionally mapped to the overall coupling depth — not to any single route, but to a master depth multiplier that scales all active coupling routes proportionally.
+The MPC X and MPC Live assign four Q-Link knobs to each of the four macro parameters per program: CHARACTER, MOVEMENT, COUPLING, and SPACE. The COUPLING macro in XOlokun presets is conventionally mapped to the overall coupling depth — not to any single route, but to a master depth multiplier that scales all active coupling routes proportionally.
 
 This makes Q-Link 3 (the default COUPLING assignment) the most expressive control in the MPC hardware performance context. Turning it up brings all coupling routes live simultaneously. Turning it down isolates the engines back toward their individual character.
 
@@ -224,7 +224,7 @@ Coupling failures tend to fall into a few recognizable patterns. Once you know w
 
 ---
 
-The best coupled sounds in XOmnibus do not feel engineered. They feel discovered — like two instruments that happened to be in the same room and started listening to each other. That quality comes from choosing engines with genuine complementary contrast, building with the coupling active from the start, and leaving enough space in each engine for the other one's signal to land.
+The best coupled sounds in XOlokun do not feel engineered. They feel discovered — like two instruments that happened to be in the same room and started listening to each other. That quality comes from choosing engines with genuine complementary contrast, building with the coupling active from the start, and leaving enough space in each engine for the other one's signal to land.
 
 Coupling is not an effect. It is a compositional relationship. Treat it like one.
 

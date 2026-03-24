@@ -21,7 +21,7 @@
 
 **Personality in 3 words:** Lush, Prowling, Hypnotic
 
-**Gallery gap filled:** No XOmnibus engine models *interaction between internal synthesis layers* as the primary sound-shaping mechanism. All existing engines synthesize along a single dimension (harmonic, granular, temporal, metabolic). OCELOT introduces strata, typed cross-feed, and emergent behavior as musical parameters.
+**Gallery gap filled:** No XOlokun engine models *interaction between internal synthesis layers* as the primary sound-shaping mechanism. All existing engines synthesize along a single dimension (harmonic, granular, temporal, metabolic). OCELOT introduces strata, typed cross-feed, and emergent behavior as musical parameters.
 
 ---
 
@@ -374,7 +374,7 @@ All 4 macros produce audible, significant change at every point in their range i
 
 ---
 
-## 10. XOmnibus Coupling Interface
+## 10. XOlokun Coupling Interface
 
 ### As Coupling Source
 

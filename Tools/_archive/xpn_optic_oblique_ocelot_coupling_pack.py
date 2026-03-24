@@ -3,7 +3,7 @@
 xpn_optic_oblique_ocelot_coupling_pack.py
 Generates Entangled preset stubs for OPTIC, OBLIQUE, and OCELOT partner coverage.
 
-Output: Presets/XOmnibus/Entangled/
+Output: Presets/XOlokun/Entangled/
 Skips existing files.
 """
 
@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).parent
-PRESETS_DIR = SCRIPT_DIR.parent / "Presets" / "XOmnibus" / "Entangled"
+PRESETS_DIR = SCRIPT_DIR.parent / "Presets" / "XOlokun" / "Entangled"
 PRESETS_DIR.mkdir(parents=True, exist_ok=True)
 
 TODAY = "2026-03-16"

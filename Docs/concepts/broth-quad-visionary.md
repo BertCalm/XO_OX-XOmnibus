@@ -223,7 +223,7 @@ ReductionState {
 }
 ```
 
-This state is not reset between notes. It is not reset between phrases. It accumulates across the entire session. When you close XOmnibus, the ReductionState is saved to disk. When you reopen the project, XOverworn is exactly as reduced as when you left it.
+This state is not reset between notes. It is not reset between phrases. It accumulates across the entire session. When you close XOlokun, the ReductionState is saved to disk. When you reopen the project, XOverworn is exactly as reduced as when you left it.
 
 **You cannot escape the reduction.** You can slow it. You can pause it (freeze the reduction rate temporarily — "lower the heat"). But you cannot reverse it unilaterally.
 
@@ -358,7 +358,7 @@ XOverwash, XOverworn, XOverflow, XOvercast are not standalone pads. They are **p
 
 The truly radical version of BROTH coupling is not engine-to-engine. It is **BROTH-to-non-BROTH.** When XOverwash is coupled to XOpal (granular), the grains diffuse. When XOverworn is coupled to XOrbweave (knot topology), the knot structure reduces over the session. When XOverflow is coupled to XOrbital, pressure builds in the orbital patterns until eruption. When XOvercast is coupled to XOpenSky's shimmer, the shimmer freezes — a crystallized aurora, static and perfect and eerie.
 
-The BROTH quad is not six pads for ambient musicians. It is a transformation environment that any engine in XOmnibus can be cooked inside.
+The BROTH quad is not six pads for ambient musicians. It is a transformation environment that any engine in XOlokun can be cooked inside.
 
 The broth makes everything more itself — or completely other.
 

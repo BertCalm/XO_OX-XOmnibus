@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shore Engines Coupling Pack — XOmnibus Entangled presets.
+"""Shore Engines Coupling Pack — XOlokun Entangled presets.
 
 Generates coupling presets for the shore trinity:
   OSPREY  (osprey_ prefix, Azulejo Blue #1B4F8A)
@@ -11,7 +11,7 @@ Outputs:
   - 18 OSPREY   × partner presets
   - 18 OSTERIA  × partner presets
   - 18 OCEANIC  × partner presets
-Total target: 60 presets written to Presets/XOmnibus/Entangled/
+Total target: 60 presets written to Presets/XOlokun/Entangled/
 Skips any file that already exists.
 """
 
@@ -19,7 +19,7 @@ import json
 import os
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 
 # ── DNA baselines ────────────────────────────────────────────────────────────
 

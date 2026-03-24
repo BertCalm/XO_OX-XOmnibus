@@ -3,7 +3,7 @@
 //==============================================================================
 //
 //  ORGANON ENGINE — Informational Dissipative Synthesis
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  Creature: The Deep-Sea Chemotroph
 //  Depth:    Oscar-leaning — The Deep (slow, chemical, alien metabolism)
@@ -58,7 +58,7 @@
 #include <cstring>
 #include <atomic>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //  SECTION 1: NOISE SUBSTRATE
@@ -1347,7 +1347,7 @@ public:
     //  COUPLING — SYMBIOTIC AUDIO I/O
     //==========================================================================
     //
-    // Organon is the ultimate coupling *receiver* in the XOmnibus ecosystem.
+    // Organon is the ultimate coupling *receiver* in the XOlokun ecosystem.
     // While most engines couple by modulating each other's parameters,
     // Organon literally ingests the audio output of partner engines and
     // metabolizes it into new harmonic content. This is parasitic synthesis:
@@ -1686,4 +1686,4 @@ private:
     std::atomic<float>* paramNoiseColor       = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

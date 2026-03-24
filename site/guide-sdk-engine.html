@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Build an XOmnibus Engine in 200 Lines | XO_OX Field Guide</title>
-<meta name="description" content="Developer Guide: every engine in XOmnibus implements one C++ interface. This tutorial builds a minimal working engine from scratch — one oscillator, one filter, four parameters — and walks through the full integration path.">
+<title>How to Build an XOlokun Engine in 200 Lines | XO_OX Field Guide</title>
+<meta name="description" content="Developer Guide: every engine in XOlokun implements one C++ interface. This tutorial builds a minimal working engine from scratch — one oscillator, one filter, four parameters — and walks through the full integration path.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -534,12 +534,12 @@ footer {
   }
 }
 </style>
-<meta property="og:title" content="How to Build an XOmnibus Engine in 200 Lines | XO_OX Field Guide">
-<meta property="og:description" content="Developer Guide: build a minimal working XOmnibus engine from scratch — one oscillator, one filter, four parameters — and walk through the full integration path.">
+<meta property="og:title" content="How to Build an XOlokun Engine in 200 Lines | XO_OX Field Guide">
+<meta property="og:description" content="Developer Guide: build a minimal working XOlokun engine from scratch — one oscillator, one filter, four parameters — and walk through the full integration path.">
 <meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 </head>
 <body>
 
@@ -555,16 +555,16 @@ footer {
     <a href="updates.html">Signal</a>
     <a href="index.html#aquarium">Aquarium</a>
     <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
 <header class="article-hero">
   <a href="guide.html" class="back-link">&larr; Back to Field Guide</a>
   <div class="article-hero-label">SDK Guide &mdash; Architecture #14</div>
-  <h1>How to Build an XOmnibus Engine <em>in 200 Lines</em></h1>
+  <h1>How to Build an XOlokun Engine <em>in 200 Lines</em></h1>
   <p class="article-hero-sub">
-    Every engine in XOmnibus &mdash; all 46 of them &mdash; is a standalone DSP module that implements one C++ interface.
+    Every engine in XOlokun &mdash; all 46 of them &mdash; is a standalone DSP module that implements one C++ interface.
     The SDK removes JUCE as a dependency at the boundary. You can write a new engine with a text editor, a C++17 compiler, and this tutorial.
   </p>
   <div class="article-meta">
@@ -578,15 +578,15 @@ footer {
 <article class="article" id="article-content">
 
 <p class="reveal">
-Every engine in XOmnibus implements the same interface. ODDFELIX, with its snapshot synthesis and neon-tetra personality, implements it. ORGANISM, with its Wolfram automaton driving 16 cells of DSP, implements it. OPERA, with Kuramoto oscillator networks and an autonomous dramatic conductor, implements it. The interface is short. The surface area a third-party developer needs to understand is small. This tutorial builds a complete working engine &mdash; one sawtooth oscillator, one one-pole lowpass filter, four parameters, one macro &mdash; and integrates it into XOmnibus in about 200 lines.
+Every engine in XOlokun implements the same interface. ODDFELIX, with its snapshot synthesis and neon-tetra personality, implements it. ORGANISM, with its Wolfram automaton driving 16 cells of DSP, implements it. OPERA, with Kuramoto oscillator networks and an autonomous dramatic conductor, implements it. The interface is short. The surface area a third-party developer needs to understand is small. This tutorial builds a complete working engine &mdash; one sawtooth oscillator, one one-pole lowpass filter, four parameters, one macro &mdash; and integrates it into XOlokun in about 200 lines.
 </p>
 
 <p class="reveal">
-The XOmnibus SDK lives in <code>SDK/include/xomnibus/</code>. It has three headers: <code>SynthEngine.h</code> (the interface), <code>CouplingTypes.h</code> (the cross-engine modulation enum), and <code>EngineModule.h</code> (the export macro for compiled shared libraries). None of them include JUCE. JUCE types &mdash; <code>juce::AudioBuffer</code>, <code>juce::MidiBuffer</code>, <code>juce::String</code> &mdash; are replaced at the boundary with plain C++ equivalents: <code>StereoBuffer</code>, <code>MidiEventList</code>, <code>std::string</code>. The adapter layer inside XOmnibus translates between them. If you are building an engine that will ship as a compiled module, you never touch JUCE at all.
+The XOlokun SDK lives in <code>SDK/include/xolokun/</code>. It has three headers: <code>SynthEngine.h</code> (the interface), <code>CouplingTypes.h</code> (the cross-engine modulation enum), and <code>EngineModule.h</code> (the export macro for compiled shared libraries). None of them include JUCE. JUCE types &mdash; <code>juce::AudioBuffer</code>, <code>juce::MidiBuffer</code>, <code>juce::String</code> &mdash; are replaced at the boundary with plain C++ equivalents: <code>StereoBuffer</code>, <code>MidiEventList</code>, <code>std::string</code>. The adapter layer inside XOlokun translates between them. If you are building an engine that will ship as a compiled module, you never touch JUCE at all.
 </p>
 
 <p class="reveal">
-If you are building inside the XOmnibus source tree &mdash; contributing to the main repo or adding a private engine to your fork &mdash; you implement the JUCE-coupled <code>Source/Core/SynthEngine.h</code> interface instead. The structure is identical. The difference is only at the type boundary. This tutorial uses the SDK interface throughout, but all the patterns translate directly.
+If you are building inside the XOlokun source tree &mdash; contributing to the main repo or adding a private engine to your fork &mdash; you implement the JUCE-coupled <code>Source/Core/SynthEngine.h</code> interface instead. The structure is identical. The difference is only at the type boundary. This tutorial uses the SDK interface throughout, but all the patterns translate directly.
 </p>
 
 <div class="article-divider reveal"></div>
@@ -594,12 +594,12 @@ If you are building inside the XOmnibus source tree &mdash; contributing to the 
 <h2 class="reveal">Section 1: The Interface</h2>
 
 <p class="reveal">
-The full <code>xomnibus::SynthEngine</code> class is in <code>SDK/include/xomnibus/SynthEngine.h</code>. Here are the pure-virtual methods every engine must implement, each with its contract:
+The full <code>xolokun::SynthEngine</code> class is in <code>SDK/include/xolokun/SynthEngine.h</code>. Here are the pure-virtual methods every engine must implement, each with its contract:
 </p>
 
 <div class="code-block reveal" aria-label="SynthEngine pure-virtual interface">
-  <span class="code-label">SDK/include/xomnibus/SynthEngine.h &mdash; required interface</span>
-  <pre><span class="kw">namespace</span> xomnibus {
+  <span class="code-label">SDK/include/xolokun/SynthEngine.h &mdash; required interface</span>
+  <pre><span class="kw">namespace</span> xolokun {
 
 <span class="kw">class</span> <span class="nm">SynthEngine</span> {
 <span class="kw">public</span>:
@@ -656,7 +656,7 @@ The full <code>xomnibus::SynthEngine</code> class is in <code>SDK/include/xomnib
     <span class="kw">virtual</span> <span class="ty">int</span> getActiveVoiceCount() <span class="kw">const</span> { <span class="kw">return</span> <span class="nu">0</span>; }
 };
 
-} <span class="cm">// namespace xomnibus</span></pre>
+} <span class="cm">// namespace xolokun</span></pre>
 </div>
 
 <p class="reveal">
@@ -680,15 +680,15 @@ Start with the class declaration and identity methods. Pick an O-word engine ID 
 <div class="code-block reveal" aria-label="MinimalEngine class declaration">
   <span class="code-label">Step 1 — class declaration and identity</span>
   <pre><span class="pp">#pragma once</span>
-<span class="pp">#include</span> <span class="st">&lt;xomnibus/SynthEngine.h&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;xolokun/SynthEngine.h&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;cmath&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;atomic&gt;</span>
 
-<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xomnibus::SynthEngine {
+<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xolokun::SynthEngine {
 <span class="kw">public</span>:
     std::string getEngineId() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="st">"Minimal"</span>; }
 
-    xomnibus::Colour getAccentColour() <span class="kw">const</span> <span class="kw">override</span>
+    xolokun::Colour getAccentColour() <span class="kw">const</span> <span class="kw">override</span>
     {
         <span class="cm">// XO Gold — use your own accent colour here</span>
         <span class="kw">return</span> { <span class="nu">0xE9</span>, <span class="nu">0xC4</span>, <span class="nu">0x6A</span> };
@@ -723,7 +723,7 @@ Start with the class declaration and identity methods. Pick an O-word engine ID 
 
 <div class="code-block reveal" aria-label="getParameterDefs implementation">
   <span class="code-label">Step 2 — parameter declarations</span>
-  <pre>std::vector&lt;xomnibus::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
+  <pre>std::vector&lt;xolokun::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
 {
     <span class="cm">// ParameterDef: { id, name, min, max, default, step, skew }</span>
     <span class="cm">// skew &lt; 1.0 = log-like curve (good for frequency/time params)</span>
@@ -801,7 +801,7 @@ MIDI events arrive in the <code>MidiEventList</code> parameter of <code>renderBl
 }
 
 <span class="cm">// Call this per-event before the DSP loop</span>
-<span class="kw">void</span> handleEvent(<span class="kw">const</span> xomnibus::<span class="nm">MidiEvent</span>&amp; e)
+<span class="kw">void</span> handleEvent(<span class="kw">const</span> xolokun::<span class="nm">MidiEvent</span>&amp; e)
 {
     <span class="kw">if</span> (e.isNoteOn()) {
         freq_ = midiToHz(e.getNoteNumber());
@@ -823,7 +823,7 @@ MIDI events arrive in the <code>MidiEventList</code> parameter of <code>renderBl
 
 <div class="code-block reveal" aria-label="renderBlock implementation">
   <span class="code-label">Step 5 — renderBlock() with ParamSnapshot pattern</span>
-  <pre><span class="ty">void</span> renderBlock(xomnibus::<span class="nm">StereoBuffer</span>&amp; buf, <span class="kw">const</span> xomnibus::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
+  <pre><span class="ty">void</span> renderBlock(xolokun::<span class="nm">StereoBuffer</span>&amp; buf, <span class="kw">const</span> xolokun::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
 {
     <span class="cm">// ── ParamSnapshot: read atomics once per block ─────────────────────</span>
     <span class="kw">const</span> <span class="ty">float</span> cutoff  = pCutoff_.load();
@@ -889,23 +889,23 @@ The six steps above assemble into a single header file. Here is the complete <co
 <div class="code-block reveal" aria-label="Complete MinimalEngine.h">
   <span class="code-label">MinimalEngine.h — complete implementation (~200 lines)</span>
   <pre><span class="pp">#pragma once</span>
-<span class="pp">#include</span> <span class="st">&lt;xomnibus/SynthEngine.h&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;xolokun/SynthEngine.h&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;cmath&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;atomic&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;string&gt;</span>
 <span class="pp">#include</span> <span class="st">&lt;vector&gt;</span>
 
-<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xomnibus::<span class="nm">SynthEngine</span> {
+<span class="kw">class</span> <span class="nm">MinimalEngine</span> : <span class="kw">public</span> xolokun::<span class="nm">SynthEngine</span> {
 <span class="kw">public</span>:
 
     <span class="cm">// ── Identity ─────────────────────────────────────────────────────────</span>
     std::string getEngineId() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="st">"Minimal"</span>; }
-    xomnibus::<span class="nm">Colour</span> getAccentColour() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> {<span class="nu">0xE9</span>,<span class="nu">0xC4</span>,<span class="nu">0x6A</span>}; }
+    xolokun::<span class="nm">Colour</span> getAccentColour() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> {<span class="nu">0xE9</span>,<span class="nu">0xC4</span>,<span class="nu">0x6A</span>}; }
     <span class="ty">int</span> getMaxVoices() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> <span class="nu">1</span>; }
     <span class="ty">int</span> getActiveVoiceCount() <span class="kw">const</span> <span class="kw">override</span> { <span class="kw">return</span> gate_ ? <span class="nu">1</span> : <span class="nu">0</span>; }
 
     <span class="cm">// ── Parameters ───────────────────────────────────────────────────────</span>
-    std::vector&lt;xomnibus::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
+    std::vector&lt;xolokun::<span class="nm">ParameterDef</span>&gt; getParameterDefs() <span class="kw">const</span> <span class="kw">override</span>
     {
         <span class="kw">return</span> {
             { <span class="st">"min_cutoff"</span>,  <span class="st">"Filter Cutoff"</span>,  <span class="nu">0.0f</span>,  <span class="nu">1.0f</span>,  <span class="nu">0.5f</span>,  <span class="nu">0.001f</span>, <span class="nu">0.4f</span>  },
@@ -947,8 +947,8 @@ The six steps above assemble into a single header file. Here is the complete <co
     }
 
     <span class="cm">// ── Audio ────────────────────────────────────────────────────────────</span>
-    <span class="ty">void</span> renderBlock(xomnibus::<span class="nm">StereoBuffer</span>&amp; buf,
-                     <span class="kw">const</span> xomnibus::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
+    <span class="ty">void</span> renderBlock(xolokun::<span class="nm">StereoBuffer</span>&amp; buf,
+                     <span class="kw">const</span> xolokun::<span class="nm">MidiEventList</span>&amp; midi) <span class="kw">override</span>
     {
         <span class="cm">// ParamSnapshot — read atomics once, use captured values per sample</span>
         <span class="kw">const</span> <span class="ty">float</span> cutoff  = pCutoff_.load();
@@ -1009,7 +1009,7 @@ The six steps above assemble into a single header file. Here is the complete <co
     std::atomic&lt;<span class="ty">float</span>&gt; pAttack_  { <span class="nu">0.01f</span> };
     std::atomic&lt;<span class="ty">float</span>&gt; pRelease_ { <span class="nu">0.3f</span>  };
 
-    <span class="kw">void</span> handleEvent(<span class="kw">const</span> xomnibus::<span class="nm">MidiEvent</span>&amp; e) <span class="kw">noexcept</span>
+    <span class="kw">void</span> handleEvent(<span class="kw">const</span> xolokun::<span class="nm">MidiEvent</span>&amp; e) <span class="kw">noexcept</span>
     {
         <span class="kw">if</span>      (e.isNoteOn())  { freq_ = midiToHz(e.getNoteNumber());
                                    vel_  = e.getFloatVelocity(); gate_ = <span class="kw">true</span>; }
@@ -1026,13 +1026,13 @@ The six steps above assemble into a single header file. Here is the complete <co
 <h2 class="reveal">Section 3: The XOMNIBUS_EXPORT_ENGINE Macro</h2>
 
 <p class="reveal">
-When you ship an engine as a compiled shared library (<code>.dylib</code> / <code>.so</code> / <code>.dll</code>), one macro in your <code>.cpp</code> file exports the two C functions XOmnibus expects at the module boundary: <code>xomnibus_create_engine()</code>, which returns a new instance, and <code>xomnibus_engine_info()</code>, which fills metadata without instantiating the engine.
+When you ship an engine as a compiled shared library (<code>.dylib</code> / <code>.so</code> / <code>.dll</code>), one macro in your <code>.cpp</code> file exports the two C functions XOlokun expects at the module boundary: <code>xolokun_create_engine()</code>, which returns a new instance, and <code>xolokun_engine_info()</code>, which fills metadata without instantiating the engine.
 </p>
 
 <div class="code-block reveal" aria-label="XOMNIBUS_EXPORT_ENGINE macro usage">
   <span class="code-label">MinimalEngine.cpp — the only .cpp file you need</span>
   <pre><span class="pp">#include</span> <span class="st">"MinimalEngine.h"</span>
-<span class="pp">#include</span> <span class="st">&lt;xomnibus/EngineModule.h&gt;</span>
+<span class="pp">#include</span> <span class="st">&lt;xolokun/EngineModule.h&gt;</span>
 
 <span class="cm">// Arguments: ClassName, ID, DisplayName, Prefix, R, G, B, Version, Author</span>
 <span class="nm">XOMNIBUS_EXPORT_ENGINE</span>(
@@ -1047,7 +1047,7 @@ When you ship an engine as a compiled shared library (<code>.dylib</code> / <cod
 </div>
 
 <p class="reveal">
-That is the entire public API surface. XOmnibus loads the shared library, calls <code>xomnibus_engine_info()</code> to read metadata without allocating anything, then calls <code>xomnibus_create_engine()</code> to get a live instance. The <code>EngineMetadata</code> struct also carries the SDK version integer &mdash; if a future XOmnibus version introduces a breaking ABI change, the version field allows the host to reject incompatible modules gracefully.
+That is the entire public API surface. XOlokun loads the shared library, calls <code>xolokun_engine_info()</code> to read metadata without allocating anything, then calls <code>xolokun_create_engine()</code> to get a live instance. The <code>EngineMetadata</code> struct also carries the SDK version integer &mdash; if a future XOlokun version introduces a breaking ABI change, the version field allows the host to reject incompatible modules gracefully.
 </p>
 
 <div class="article-divider reveal"></div>
@@ -1055,7 +1055,7 @@ That is the entire public API surface. XOmnibus loads the shared library, calls 
 <h2 class="reveal">Section 4: Integration Checklist</h2>
 
 <p class="reveal">
-Whether you are building inside the XOmnibus source tree or shipping a compiled module, the integration path is the same four steps:
+Whether you are building inside the XOlokun source tree or shipping a compiled module, the integration path is the same four steps:
 </p>
 
 <div class="checklist reveal">
@@ -1063,8 +1063,8 @@ Whether you are building inside the XOmnibus source tree or shipping a compiled 
   <ul>
     <li>Copy <code>MinimalEngine.h</code> to <code>Source/Engines/Minimal/MinimalEngine.h</code></li>
     <li>Add <code>#include "Engines/Minimal/MinimalEngine.h"</code> to <code>Source/Core/EngineRegistry.h</code> and register the engine in the registry constructor</li>
-    <li>Add a row to the engine table in <code>CLAUDE.md</code> and <code>Docs/xomnibus_master_specification.md</code> (engine ID, parameter prefix, accent colour)</li>
-    <li>Copy any preset <code>.xometa</code> files to <code>Presets/XOmnibus/{mood}/</code></li>
+    <li>Add a row to the engine table in <code>CLAUDE.md</code> and <code>Docs/xolokun_master_specification.md</code> (engine ID, parameter prefix, accent colour)</li>
+    <li>Copy any preset <code>.xometa</code> files to <code>Presets/XOlokun/{mood}/</code></li>
     <li>Run <code>cmake --build build</code> and verify zero errors</li>
     <li>Run <code>auval -v aumu XOmn XOOX</code> and verify PASS</li>
     <li>Run the engine health check skill (<code>/engine-health-check</code>) against the new engine</li>
@@ -1072,7 +1072,7 @@ Whether you are building inside the XOmnibus source tree or shipping a compiled 
 </div>
 
 <p class="reveal">
-For a compiled third-party module, skip the registry step and drop the compiled <code>.xomodule</code> into the XOmnibus modules folder (<code>~/Library/Application Support/XO_OX/Modules/</code> on macOS). XOmnibus scans this folder at startup, loads every valid module, and registers its engines automatically.
+For a compiled third-party module, skip the registry step and drop the compiled <code>.xomodule</code> into the XOlokun modules folder (<code>~/Library/Application Support/XO_OX/Modules/</code> on macOS). XOlokun scans this folder at startup, loads every valid module, and registers its engines automatically.
 </p>
 
 <div class="article-divider reveal"></div>
@@ -1136,17 +1136,17 @@ MinimalEngine as shown above passes D004 (all four params wired), partially sati
 <h3 class="reveal">Adding Coupling</h3>
 
 <p class="reveal">
-To accept modulation from other engines, override <code>applyCouplingInput()</code>. The <code>CouplingType</code> enum in <code>SDK/include/xomnibus/CouplingTypes.h</code> has 14 types. The most common for a filter-and-oscillator engine are <code>AmpToFilter</code> (another engine's amplitude modulates your cutoff) and <code>LFOToPitch</code> (another engine's LFO modulates your pitch). Accumulate the coupling signal in a member variable and consume it during <code>renderBlock()</code>:
+To accept modulation from other engines, override <code>applyCouplingInput()</code>. The <code>CouplingType</code> enum in <code>SDK/include/xolokun/CouplingTypes.h</code> has 14 types. The most common for a filter-and-oscillator engine are <code>AmpToFilter</code> (another engine's amplitude modulates your cutoff) and <code>LFOToPitch</code> (another engine's LFO modulates your pitch). Accumulate the coupling signal in a member variable and consume it during <code>renderBlock()</code>:
 </p>
 
 <div class="code-block reveal" aria-label="Coupling input implementation">
   <span class="code-label">Accepting coupling input</span>
   <pre><span class="cm">// Member: float couplingFilterMod_ = 0.0f;</span>
 
-<span class="ty">void</span> applyCouplingInput(xomnibus::<span class="nm">CouplingType</span> type, <span class="ty">float</span> amount,
+<span class="ty">void</span> applyCouplingInput(xolokun::<span class="nm">CouplingType</span> type, <span class="ty">float</span> amount,
                          <span class="kw">const</span> <span class="ty">float</span>*, <span class="ty">int</span>) <span class="kw">override</span>
 {
-    <span class="kw">if</span> (type == xomnibus::<span class="nm">CouplingType</span>::<span class="nm">AmpToFilter</span>)
+    <span class="kw">if</span> (type == xolokun::<span class="nm">CouplingType</span>::<span class="nm">AmpToFilter</span>)
         couplingFilterMod_ = amount; <span class="cm">// added to cutoff in renderBlock()</span>
 }
 
@@ -1162,7 +1162,7 @@ To <em>send</em> coupling output (allowing other engines to read your audio), po
 <h3 class="reveal">The 6D Sonic DNA System</h3>
 
 <p class="reveal">
-Every preset in XOmnibus carries a 6D Sonic DNA fingerprint: brightness, warmth, movement, density, space, and aggression &mdash; each on a 0&ndash;1 scale. When you write presets for your engine, fill in the <code>"dna"</code> field in the <code>.xometa</code> JSON. The preset browser uses these values for filtering and recommendation. An engine with no DNA values will appear in search results but will not surface through the mood browser. A preset JSON with DNA looks like this:
+Every preset in XOlokun carries a 6D Sonic DNA fingerprint: brightness, warmth, movement, density, space, and aggression &mdash; each on a 0&ndash;1 scale. When you write presets for your engine, fill in the <code>"dna"</code> field in the <code>.xometa</code> JSON. The preset browser uses these values for filtering and recommendation. An engine with no DNA values will appear in search results but will not surface through the mood browser. A preset JSON with DNA looks like this:
 </p>
 
 <div class="code-block reveal" aria-label="Example preset xometa with Sonic DNA">
@@ -1199,15 +1199,15 @@ The <code>Source/DSP/</code> directory contains six shared utilities extracted f
 <h3 class="reveal">Read More</h3>
 
 <ul class="reveal">
-  <li><strong>Coupling deep dive</strong> &mdash; <a href="guide-coupling.html" style="color: var(--teal); text-decoration: none;">The Space Between the Engines</a> covers all 14 coupling types with audio examples and signal flow diagrams.</li>
+  <li><strong>Coupling deep dive</strong> &mdash; <a href="guide-coupling.html" style="color: var(--teal); text-decoration: none;">The Space Between the Engines</a> covers all 15 coupling types with audio examples and signal flow diagrams.</li>
   <li><strong>Architecture overview</strong> &mdash; <a href="guide-coupling-obrix-pairs.html" style="color: var(--teal); text-decoration: none;">OBRIX Pairs</a> shows how a complex engine connects to three other engines through the coupling matrix, with full preset recipes.</li>
-  <li><strong>Engine table</strong> &mdash; <code>CLAUDE.md</code> in the repository root contains the full table of all 70 engines, parameter prefixes, and accent colours. Use it as a reference when choosing a prefix for your engine.</li>
-  <li><strong>Full integration process</strong> &mdash; <code>Docs/xomnibus_new_engine_process.md</code> walks through the complete post-build pipeline: Doc Lock, Guru Bin, Presets, and Seance.</li>
+  <li><strong>Engine table</strong> &mdash; <code>CLAUDE.md</code> in the repository root contains the full table of all 73 engines, parameter prefixes, and accent colours. Use it as a reference when choosing a prefix for your engine.</li>
+  <li><strong>Full integration process</strong> &mdash; <code>Docs/xolokun_new_engine_process.md</code> walks through the complete post-build pipeline: Doc Lock, Guru Bin, Presets, and Seance.</li>
 </ul>
 
 <div class="callout reveal" style="margin-top: 3rem;">
   <span class="callout-label">The goal of the interface</span>
-  <p>XOmnibus has 70 engines because each one started as an independent instrument. The interface is short by design. The constraint that matters is not the API surface &mdash; it is the doctrines. An engine that passes D001&ndash;D006 can be trusted to sound like it has a point of view. That is what makes a character instrument rather than a feature matrix.</p>
+  <p>XOlokun has 73 engines because each one started as an independent instrument. The interface is short by design. The constraint that matters is not the API surface &mdash; it is the doctrines. An engine that passes D001&ndash;D006 can be trusted to sound like it has a point of view. That is what makes a character instrument rather than a feature matrix.</p>
 </div>
 
 </article>
@@ -1222,7 +1222,7 @@ The <code>Source/DSP/</code> directory contains six shared utilities extracted f
     <a href="guide.html">Field Guide</a>
     <a href="updates.html">Signal</a>
     <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
   </div>
   <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
 </footer>

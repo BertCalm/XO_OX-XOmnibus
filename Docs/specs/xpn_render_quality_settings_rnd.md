@@ -1,6 +1,6 @@
 # XPN Render Quality Settings — R&D
 
-**Topic**: Optimal sample rendering settings when creating XPN pack samples from XOmnibus
+**Topic**: Optimal sample rendering settings when creating XPN pack samples from XOlokun
 **Date**: 2026-03-16
 **Status**: Reference spec
 
@@ -42,7 +42,7 @@ Never deliver 96 kHz samples in an XPN pack. The MPC will downsample them, and t
 
 **Render internally at 32-bit float. Deliver at 24-bit integer with TPDF dither.**
 
-XOmnibus's OfflineAudioContext operates at 32-bit float precision. Rendering directly to 24-bit integer truncates the lower 8 bits without dither, producing low-level quantization distortion that is audible on quiet pad tails and long reverb decays.
+XOlokun's OfflineAudioContext operates at 32-bit float precision. Rendering directly to 24-bit integer truncates the lower 8 bits without dither, producing low-level quantization distortion that is audible on quiet pad tails and long reverb decays.
 
 **TPDF dither** (Triangular Probability Density Function) adds exactly 1 LSB of shaped noise before truncation. At 24-bit depth, TPDF noise sits at approximately -144 dBFS — effectively below the noise floor of any monitoring system or playback chain. Use TPDF, not noise shaping (e.g., POW-r), which can cause inter-sample peaks that clip after MPC's internal gain staging.
 
@@ -54,7 +54,7 @@ XOmnibus's OfflineAudioContext operates at 32-bit float precision. Rendering dir
 
 **Recommendation: capture raw, then apply a -70 dBFS noise gate with 5 ms release.**
 
-XOmnibus synthesis engines (particularly granular, FM, and physical modeling voices) produce synthesis noise at -80 to -90 dBFS during the sustained portion of a note. This is not a defect — it is part of the character.
+XOlokun synthesis engines (particularly granular, FM, and physical modeling voices) produce synthesis noise at -80 to -90 dBFS during the sustained portion of a note. This is not a defect — it is part of the character.
 
 Do not normalize before gating. Normalization raises the noise floor along with the signal, making the gate threshold harder to set cleanly and potentially introducing pumping artifacts.
 

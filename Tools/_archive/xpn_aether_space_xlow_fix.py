@@ -12,7 +12,7 @@ import random
 
 random.seed(42)
 
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOmnibus", "Aether")
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun", "Aether")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 AETHER_ENGINES = [

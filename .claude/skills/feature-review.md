@@ -17,7 +17,7 @@ Evaluate a feature against its spec, design intent, and quality standards. Answe
 Before reviewing, define what "complete" and "good" means for this feature.
 
 **Sources of truth (in priority order):**
-1. `Docs/xomnibus_master_specification.md` — authoritative spec
+1. `Docs/xolokun_master_specification.md` — authoritative spec
 2. Engine-specific docs in `Docs/` — detailed requirements
 3. `CLAUDE.md` — architecture rules and conventions
 4. Sound design guides — sonic intent and character expectations

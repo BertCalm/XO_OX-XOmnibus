@@ -8,7 +8,7 @@ namespace xowlfish {
 //==============================================================================
 // FastMath -- Denormal-safe fast math approximations for real-time DSP.
 // All functions are inline, allocation-free, and framework-independent.
-// XOwlfish local copy -- NOT shared with XOmnibus.
+// XOwlfish local copy -- NOT shared with XOlokun.
 //==============================================================================
 
 //------------------------------------------------------------------------------

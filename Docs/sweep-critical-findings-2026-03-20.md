@@ -71,9 +71,9 @@ These are two completely different calling conventions. Any attempt to compile O
 **Fix:**
 Add a comment block at the top of `ObrixEngine.h`:
 ```cpp
-// NOTE: ObrixEngine implements the INTERNAL xomnibus::SynthEngine interface
+// NOTE: ObrixEngine implements the INTERNAL xolokun::SynthEngine interface
 // (juce::AudioBuffer / juce::MidiBuffer), not the public SDK interface
-// (xomnibus::StereoBuffer / xomnibus::MidiEventList).
+// (xolokun::StereoBuffer / xolokun::MidiEventList).
 // This engine is not directly portable as an SDK community engine without
 // an adapter. See SDK/templates/MinimalEngine/ for the SDK interface.
 ```

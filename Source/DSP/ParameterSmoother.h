@@ -2,7 +2,7 @@
 #include "FastMath.h"
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ParameterSmoother — One-pole parameter smoothing for zipper-free automation.
@@ -114,4 +114,4 @@ private:
     ParameterSmoother smoother;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

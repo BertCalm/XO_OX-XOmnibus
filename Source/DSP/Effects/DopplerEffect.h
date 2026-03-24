@@ -5,7 +5,7 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // DopplerEffect — Distance-based filtering + pitch micro-shift + level change.
@@ -137,4 +137,4 @@ private:
     float lpfL = 0.0f, lpfR = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

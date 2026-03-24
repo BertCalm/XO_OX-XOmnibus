@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-preset_migration_sprint1.py — XOmnibus .xometa Preset Migration (Sprint 1)
+preset_migration_sprint1.py — XOlokun .xometa Preset Migration (Sprint 1)
 
-Applies 7 P0/P1 fixes across all .xometa files in Presets/XOmnibus/:
+Applies 7 P0/P1 fixes across all .xometa files in Presets/XOlokun/:
 
   Fix 1: Replace `coupling: null` with `{"pairs": []}`
   Fix 2: Fix wrong parameter prefixes per engine (engine-scoped, not global)
@@ -31,7 +31,7 @@ from pathlib import Path
 # Configuration
 # ---------------------------------------------------------------------------
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 # Maps engine name -> {wrong_prefix: correct_prefix}
 # Fixes are applied ONLY inside the named engine's parameter block.
@@ -246,7 +246,7 @@ def print_report(stats: Stats, dry_run: bool, report_only: bool) -> None:
     mode = "DRY RUN" if dry_run else ("REPORT ONLY" if report_only else "APPLIED")
     print()
     print("=" * 60)
-    print(f"  XOmnibus Preset Migration Sprint 1 — {mode}")
+    print(f"  XOlokun Preset Migration Sprint 1 — {mode}")
     print("=" * 60)
     print(f"  Files scanned:          {stats.total_scanned:>6,}")
     print(f"  Files with changes:     {stats.total_modified:>6,}")
@@ -283,7 +283,7 @@ def print_report(stats: Stats, dry_run: bool, report_only: bool) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="XOmnibus .xometa preset migration — Sprint 1 P0/P1 fixes."
+        description="XOlokun .xometa preset migration — Sprint 1 P0/P1 fixes."
     )
     mode_group = parser.add_mutually_exclusive_group()
     mode_group.add_argument(

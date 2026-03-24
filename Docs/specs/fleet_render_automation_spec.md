@@ -5,7 +5,7 @@
 
 ## The Problem
 
-Every XPN pack requires rendered WAV samples. Currently 100% manual: open XOmnibus,
+Every XPN pack requires rendered WAV samples. Currently 100% manual: open XOlokun,
 load preset, play notes, record, rename, repeat. At 34 engines x 150+ presets x 4
 velocity layers x multiple notes = hundreds of thousands of WAVs needed.
 
@@ -15,7 +15,7 @@ velocity layers x multiple notes = hundreds of thousands of WAVs needed.
 
     oxport render --engine Odyssey --output-dir ./wavs/odyssey/
 
-- XOmnibus runs with UI
+- XOlokun runs with UI
 - Python sends MIDI for note triggering via mido
 - Audio captured via loopback (BlackHole macOS, JACK Linux)
 - WAV naming follows Oxport conventions automatically
@@ -23,7 +23,7 @@ velocity layers x multiple notes = hundreds of thousands of WAVs needed.
 
 **Phase 2 (month 2): JUCE headless render**
 
-    xomnibus --headless --render-spec spec.json --output-dir ./wavs/
+    xolokun --headless --render-spec spec.json --output-dir ./wavs/
 
 - Bit-exact, faster than real-time, no audio interface needed
 - Reads render spec JSON directly from xpn_render_spec.py

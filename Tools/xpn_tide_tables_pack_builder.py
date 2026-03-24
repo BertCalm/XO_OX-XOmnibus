@@ -256,7 +256,7 @@ def build_pack_spec():
         "mood": "Entangled (primary) / Foundation (Program 1) / Atmosphere (Programs 2–3)",
         "target_audience": (
             "New listeners discovering XO_OX for the first time. "
-            "Producers who want a taste of all three flagship engines before committing to the full XOmnibus library."
+            "Producers who want a taste of all three flagship engines before committing to the full XOlokun library."
         ),
         "description": (
             "TIDE TABLES is the free gateway pack for XO_OX. "
@@ -278,8 +278,8 @@ def build_pack_spec():
             "100% free — no catch, no email wall. Just download and make something.",
             "Three flagship XO_OX engines in one pack: ONSET (drums), ODYSSEY (synth), OPAL (granular).",
             "64 pads across 4 programs, all synthesized from scratch — zero sample playback.",
-            "Entangled program shows XOmnibus engine coupling: rhythms that breathe, pads that pulse.",
-            "Gateway to the full XOmnibus library — every engine here has a deeper version in the main release.",
+            "Entangled program shows XOlokun engine coupling: rhythms that breathe, pads that pulse.",
+            "Gateway to the full XOlokun library — every engine here has a deeper version in the main release.",
             "MPC-native format: drop it in MPC Software or MPC Live/One/X and play immediately.",
         ],
         "release_checklist": [
@@ -297,7 +297,7 @@ def build_pack_spec():
             "preset_references": (
                 "Preset strings use the format ENGINE:Category > Preset Name. "
                 "These are reference labels for the sound designer — map them to actual "
-                "XOmnibus preset IDs during the XPN build step."
+                "XOlokun preset IDs during the XPN build step."
             ),
             "xpn_build_command": "python3 Tools/xpn_pack_builder.py Docs/packs/tide_tables/tide_tables_spec.json",
             "next_steps": [
@@ -324,7 +324,7 @@ README_TEMPLATE = """\
 ## What is this?
 
 TIDE TABLES is a free gateway pack for the XO_OX synthesizer library.
-It showcases three core engines from XOmnibus — ONSET, ODYSSEY, and OPAL — in a single
+It showcases three core engines from XOlokun — ONSET, ODYSSEY, and OPAL — in a single
 MPC expansion you can load today at no cost.
 
 No samples. No loops. Every sound is synthesized in real time.
@@ -404,7 +404,7 @@ This is the **Entangled mood**: no engine operates alone.
 
 ## Want More?
 
-TIDE TABLES is a taste. The full XOmnibus library contains **31+ engines**,
+TIDE TABLES is a taste. The full XOlokun library contains **31+ engines**,
 2,369+ factory presets, and the complete XO_OX water column mythology.
 
 Visit **xo-ox.org** to learn more, or join Patreon at the Signal tier
@@ -415,7 +415,7 @@ to receive new packs as they're released.
 ## Credits
 
 All sounds: XO_OX
-Engines: ONSET, ODYSSEY, OPAL (XOmnibus)
+Engines: ONSET, ODYSSEY, OPAL (XOlokun)
 Format: Akai MPC Expansion (.xpn)
 Released: {release_date}
 License: Free for personal and commercial use

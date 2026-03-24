@@ -1,12 +1,12 @@
 > **STATUS: ACTIVE** | Operational launch timeline. Pre-launch gates defined; L+0 date TBD.
 
-# XOmnibus V1 — Launch Coordinator's Master Timeline
+# XOlokun V1 — Launch Coordinator's Master Timeline
 
 **Document type:** Operational master plan
 **Owner:** Launch Coordinator (XO_OX Designs)
 **Version:** 1.0 — 2026-03-17
 **Launch target:** L+0 (exact date TBD — set L once all L-7 gates are green)
-**Scope:** XOmnibus plugin (AU/Standalone, macOS) + TIDE TABLES (free XPN) + MACHINE GUN REEF ($15 XPN)
+**Scope:** XOlokun plugin (AU/Standalone, macOS) + TIDE TABLES (free XPN) + MACHINE GUN REEF ($15 XPN)
 
 ---
 
@@ -37,7 +37,7 @@
 ### Plugin — known gaps before public repo
 
 - No `README.md` in repo root
-- No `LICENSE` file (GPLv3 intended per `xomnibus_brand_identity_and_launch.md`)
+- No `LICENSE` file (GPLv3 intended per `xolokun_brand_identity_and_launch.md`)
 - No `CONTRIBUTING.md`
 - No `Community/` folder structure
 - Binary release not packaged (no GitHub Release with `.component` bundle)
@@ -79,9 +79,9 @@ Everything in this phase is a prerequisite to any public-facing action. Do not a
 
 ### Plugin repo preparation
 
-- [ ] **[BLOCKER] Create `README.md` in repo root.** Must include: what XOmnibus is (2-paragraph plain-language description), platform requirements (macOS, AU host), download link (to Releases page), quick-start (load a preset, hear coupling), link to Getting Started guide on XO-OX.org, link to Discord, link to CONTRIBUTING.md. Max 4 minutes from landing on the page to knowing what this is. Use the elevator pitch from `xomnibus_brand_identity_and_launch.md` §4.3.
+- [ ] **[BLOCKER] Create `README.md` in repo root.** Must include: what XOlokun is (2-paragraph plain-language description), platform requirements (macOS, AU host), download link (to Releases page), quick-start (load a preset, hear coupling), link to Getting Started guide on XO-OX.org, link to Discord, link to CONTRIBUTING.md. Max 4 minutes from landing on the page to knowing what this is. Use the elevator pitch from `xolokun_brand_identity_and_launch.md` §4.3.
 - [ ] **[BLOCKER] Add `LICENSE` file — GPLv3.** Obtain the standard GPLv3 text from gnu.org. One file at repo root. No modifications.
-- [ ] **[BLOCKER] Create `CONTRIBUTING.md`.** Sections: contribution types (bug reports, presets, docs, code), preset submission workflow (the Guest Exhibition pipeline), code contribution rules (parameter IDs are frozen, no audio thread allocation, DSP in `.h` headers), how to run the build, where to ask questions. Template exists in `xomnibus_brand_identity_and_launch.md` §7.3 — expand it.
+- [ ] **[BLOCKER] Create `CONTRIBUTING.md`.** Sections: contribution types (bug reports, presets, docs, code), preset submission workflow (the Guest Exhibition pipeline), code contribution rules (parameter IDs are frozen, no audio thread allocation, DSP in `.h` headers), how to run the build, where to ask questions. Template exists in `xolokun_brand_identity_and_launch.md` §7.3 — expand it.
 - [ ] **[BLOCKER] Create `Community/` directory with `PRESET_SUBMISSION.md`.** Instructions for submitting a `.xometa` preset via GitHub PR, including schema requirements and naming conventions.
 - [ ] **[BLOCKER] Create a GitHub Release for V1.0.** Tag `v1.0.0`. Attach the compiled `.component` (AU bundle) as a release asset. Write release notes: what's included (34 engines, 2,550 presets), platform requirements, install instructions (copy to `/Library/Audio/Plug-Ins/Components/`), known limitations (5 Constellation engine stubs produce no audio, 4 concept engines pending).
 - [ ] **[IMPORTANT] Suppress or explain stub engines in UI.** The 5 Constellation family engine stubs (Obbligato, Ohm, Ole, Orphica, Ottoni) register but produce no audio. Decide: hide them from the engine selector, or show them with a "Coming in V1.1" badge. Either way, document the decision in the Release Notes. Do not leave silent engine slots with no explanation for new users.
@@ -91,7 +91,7 @@ Everything in this phase is a prerequisite to any public-facing action. Do not a
 
 ### Concept engine DSP builds (4 engines)
 
-- [ ] **[BLOCKER for complete V1]** OSTINATO DSP build — communal drum circle engine. Has design spec at `Docs/xomnibus_new_engine_process.md` and concept at `Docs/concepts/`.
+- [ ] **[BLOCKER for complete V1]** OSTINATO DSP build — communal drum circle engine. Has design spec at `Docs/xolokun_new_engine_process.md` and concept at `Docs/concepts/`.
 - [ ] **[BLOCKER for complete V1]** OPENSKY DSP build — euphoric shimmer, pure feliX.
 - [ ] **[BLOCKER for complete V1]** OCEANDEEP DSP build — abyssal bass, pure Oscar.
 - [ ] **[BLOCKER for complete V1]** OUIE DSP build — duophonic hammerhead, STRIFE↔LOVE axis.
@@ -102,7 +102,7 @@ Everything in this phase is a prerequisite to any public-facing action. Do not a
 
 - [x] **[BLOCKER] Patreon URL.** DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX live. All placeholder URLs replaced across site, Docs, Tools. Verify the real URL resolves on mobile and desktop.
 - [ ] **[BLOCKER] Gumroad account set up, payment processing verified.** Create account, connect bank/payout, run a test purchase with a personal card. Confirm receipt email arrives and download link works.
-- [ ] **[IMPORTANT] Discord server created and configured.** Channel structure per `xomnibus_brand_identity_and_launch.md` §11.4: announcements, general, preset-sharing, sound-design-tips, coupling-experiments, feature-requests, bug-reports, show-your-work, developer-chat. Set up roles: Visitor, Artist, Curator, Architect. Add invite link to README, CONTRIBUTING.md, and XO-OX.org.
+- [ ] **[IMPORTANT] Discord server created and configured.** Channel structure per `xolokun_brand_identity_and_launch.md` §11.4: announcements, general, preset-sharing, sound-design-tips, coupling-experiments, feature-requests, bug-reports, show-your-work, developer-chat. Set up roles: Visitor, Artist, Curator, Architect. Add invite link to README, CONTRIBUTING.md, and XO-OX.org.
 - [ ] **[IMPORTANT] Email capture mechanism active.** Gumroad auto-captures on purchase for paid packs. For TIDE TABLES (free), either route through a Gumroad "free product" checkout or add a separate sign-up. Test the full flow end-to-end.
 
 ### XPN pack preparation
@@ -144,9 +144,9 @@ Assets, content, and pre-launch visibility. Nothing is live for general public y
   ```
   press-kit/
   ├── logos/
-  │   ├── xomnibus-logo-light.svg
-  │   ├── xomnibus-logo-dark.svg
-  │   ├── xomnibus-logomark.svg
+  │   ├── xolokun-logo-light.svg
+  │   ├── xolokun-logo-dark.svg
+  │   ├── xolokun-logomark.svg
   │   └── xo-ox-brandmark.svg
   ├── screenshots/
   │   ├── hero-coupling-view.png        (4K, light mode, 2 engines coupled, active coupling viz)
@@ -160,12 +160,12 @@ Assets, content, and pre-launch visibility. Nothing is live for general public y
   ├── fact-sheet.md                     (plain text version of one-sheet)
   └── brand-guidelines-summary.pdf      (condensed: colors, fonts, do's and don'ts)
   ```
-- [ ] **[IMPORTANT] One-sheet written.** Update the fact sheet template in `xomnibus_brand_identity_and_launch.md` §12.2 with current numbers: 34 engines (30 with DSP, or all 34 if concept builds complete), 2,550 presets, platform, price, GitHub URL, Discord URL, contact email. Print-ready PDF.
+- [ ] **[IMPORTANT] One-sheet written.** Update the fact sheet template in `xolokun_brand_identity_and_launch.md` §12.2 with current numbers: 34 engines (30 with DSP, or all 34 if concept builds complete), 2,550 presets, platform, price, GitHub URL, Discord URL, contact email. Print-ready PDF.
 - [ ] **[NICE] Screenshots taken at retina resolution.** Light mode, two engines actively coupled. Use `OPAL→ONSET` or `ODYSSEY→OBBLIGATO` as hero coupling — visually distinctive accent colors.
 
 ### XO-OX.org content additions
 
-- [ ] **[BLOCKER] XOmnibus plugin download page published.** New page or section on XO-OX.org with: hero screenshot, 3-sentence description, platform requirements, GitHub Release download button, install instructions (drag to Components folder), Discord link. Not a product sales page — a welcome mat.
+- [ ] **[BLOCKER] XOlokun plugin download page published.** New page or section on XO-OX.org with: hero screenshot, 3-sentence description, platform requirements, GitHub Release download button, install instructions (drag to Components folder), Discord link. Not a product sales page — a welcome mat.
 - [ ] **[BLOCKER] Patreon URL corrected on all site pages.** Check `index.html`, `packs.html`, `guide.html`, `aquarium.html`, `manifesto.html`, `updates.html`.
 - [ ] **[IMPORTANT] Audio demo embeds added to site.** At minimum: site home page and packs page get embedded audio (SoundCloud, Bandcamp, or direct HTML5 audio elements). Demos must be hardware-captured.
 - [ ] **[IMPORTANT] Pack download pages live and tested on site.** TIDE TABLES page with Gumroad embed. MACHINE GUN REEF page with Gumroad embed. Test the full flow: land → click → Gumroad → download or purchase → file arrives.
@@ -377,7 +377,7 @@ The existing checklist in `xpn_launch_checklist_v1_rnd.md` covers 20 items. The 
 
 **Question: Same day or staggered?**
 
-**Recommendation: Same day, L+0.** The plugin and packs are designed as a system — TIDE TABLES showcases ONSET, which is inside XOmnibus. Separating them by days weakens both launches. The packs provide immediate proof of concept ("here is what ONSET sounds like on MPC") while the plugin provides the synthesis source ("here is how ONSET works"). They tell a complete story together.
+**Recommendation: Same day, L+0.** The plugin and packs are designed as a system — TIDE TABLES showcases ONSET, which is inside XOlokun. Separating them by days weakens both launches. The packs provide immediate proof of concept ("here is what ONSET sounds like on MPC") while the plugin provides the synthesis source ("here is how ONSET works"). They tell a complete story together.
 
 **Stagger packs only if:**
 - MACHINE GUN REEF's QA score does not clear 80 by L-7. In that case, launch TIDE TABLES on L+0 and MACHINE GUN REEF on L+14. Do not delay the free pack to wait for the paid one.
@@ -388,9 +388,9 @@ The existing checklist in `xpn_launch_checklist_v1_rnd.md` covers 20 items. The 
 
 ### Logos (vector, all variants)
 
-- [ ] XOmnibus wordmark — light background version (dark text, SVG)
-- [ ] XOmnibus wordmark — dark background version (light text, SVG)
-- [ ] XOmnibus coupling symbol logomark only (SVG, scalable to 16px favicon)
+- [ ] XOlokun wordmark — light background version (dark text, SVG)
+- [ ] XOlokun wordmark — dark background version (light text, SVG)
+- [ ] XOlokun coupling symbol logomark only (SVG, scalable to 16px favicon)
 - [ ] XO_OX brand mark (SVG)
 - [ ] All as PNG at 512px, 1024px, 2048px
 
@@ -414,7 +414,7 @@ The existing checklist in `xpn_launch_checklist_v1_rnd.md` covers 20 items. The 
 - [ ] One-sheet PDF (product summary, 3 key screenshots, key stats, website + GitHub + Discord links)
 - [ ] Fact sheet plain text (same content, no formatting — for journalists who strip PDF)
 - [ ] Brand guidelines summary PDF (colors, fonts, logo rules, voice examples)
-- [ ] Elevator pitch paragraph (from `xomnibus_brand_identity_and_launch.md` §4.3 — adapt for 34 engines)
+- [ ] Elevator pitch paragraph (from `xolokun_brand_identity_and_launch.md` §4.3 — adapt for 34 engines)
 
 ---
 

@@ -15,7 +15,7 @@ namespace xowlfish {
 //   - Andy Simper, "Linear Trapezoidal Integrated SVF" (Cytomic, 2013)
 //   - Vadim Zavalishin, "The Art of VA Filter Design" (2018), Chapter 4
 //
-// XOwlfish local copy -- NOT shared with XOmnibus.
+// XOwlfish local copy -- NOT shared with XOlokun.
 // All DSP inline. No allocations. No JUCE dependencies. Denormal-safe.
 //==============================================================================
 class CytomicSVF

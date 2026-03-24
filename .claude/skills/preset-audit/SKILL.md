@@ -1,6 +1,6 @@
 ---
 name: preset-audit
-description: Health check on XOmnibus presets. Use when auditing preset quality, checking for duplicates, validating DNA coverage, verifying schema compliance, or reviewing preset naming conventions.
+description: Health check on XOlokun presets. Use when auditing preset quality, checking for duplicates, validating DNA coverage, verifying schema compliance, or reviewing preset naming conventions.
 argument-hint: "[mood|engine|all] e.g. Atmosphere, OddfeliX, all"
 ---
 
@@ -10,7 +10,7 @@ Audit presets for **$ARGUMENTS**. If argument is a mood (Foundation, Atmosphere,
 
 ## Preset Location
 
-All factory presets: `Presets/XOmnibus/{mood}/*.xometa`
+All factory presets: `Presets/XOlokun/{mood}/*.xometa`
 
 7 moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
 

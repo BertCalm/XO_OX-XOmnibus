@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OasisEngine.h — XOasis | "The Spice Route Rhodes"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOasis is the Rhodes electric piano that traveled the Spice Route —
@@ -53,7 +53,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SpectralFingerprint — 152-byte metadata struct for FUSION inter-engine coupling.
@@ -68,8 +68,8 @@ namespace xomnibus {
 // The coupling engine uses these to model energy transfer (PLATE coupling)
 // without running audio through the coupled engine's processing chain.
 //==============================================================================
-#ifndef XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
-#define XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
+#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
+#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 struct SpectralFingerprint
 {
     float modalFrequencies[8] = {};   // Top 8 modal frequencies (Hz)
@@ -823,4 +823,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

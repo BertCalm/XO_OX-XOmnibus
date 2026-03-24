@@ -14,7 +14,7 @@
 
 XOpenSky is the euphoric synthesis engine. Shimmering supersaw anthems, crystalline bell pads, soaring leads that feel like breaking through clouds. Other engines go deep, go weird, go aggressive. OpenSky goes up.
 
-Every other XOmnibus engine lives in the water. OpenSky is what happens when you leave it. The neon tetra — feliX — has broken the surface completely. For one shimmering moment, neon scales catch the full spectrum of sunlight. The entire water column lies below. Nothing but air and light above. This is what the surface looks like from the other side.
+Every other XOlokun engine lives in the water. OpenSky is what happens when you leave it. The neon tetra — feliX — has broken the surface completely. For one shimmering moment, neon scales catch the full spectrum of sunlight. The entire water column lies below. Nothing but air and light above. This is what the surface looks like from the other side.
 
 XOpenSky is the engine that completes the top of the vertical axis. It pairs with XOceanDeep (pure Oscar, the floor) as the engine that completes the bottom. Together they span the full water column mythology — from the Trench Violet of the abyssal floor to the Sunburst of the open sky.
 
@@ -339,7 +339,7 @@ OPENSKY's shimmer stage (`sky_shimmerAmount`, `sky_shimmerDecay`, `sky_shimmerFe
 
 Where most synthesizers use dark interfaces (black panels, dark gray backgrounds, CRT-green or amber readouts), OPENSKY uses warm white and gold. The panel feels like looking at the sky through water — light refracting, golden warmth, nothing heavy or threatening.
 
-**Color palette:** Warm white base `#FFFEF7`, sunburst orange accent `#FF8C00`, golden highlights `#E9C46A` (XO Gold). Text in deep amber `#7A4500` rather than black. The one XOmnibus engine that leans into warmth and brightness as a design statement rather than just a brand accent.
+**Color palette:** Warm white base `#FFFEF7`, sunburst orange accent `#FF8C00`, golden highlights `#E9C46A` (XO Gold). Text in deep amber `#7A4500` rather than black. The one XOlokun engine that leans into warmth and brightness as a design statement rather than just a brand accent.
 
 **Panel concept:** The oscillator section is at the left (the horizon). The shimmer stage is at the center-top (the sky). The FX chain is at the right (the space). The four macro sliders are at the bottom in warm orange — RISE, WIDTH, GLOW, BREATH.
 

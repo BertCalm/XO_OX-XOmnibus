@@ -1,15 +1,15 @@
-# XOmnibus — Mobile Implementation Strategy
+# XOlokun — Mobile Implementation Strategy
 
 **Version:** 1.0
 **Date:** 2026-03-13
 **Status:** Active — Phase 1 In Progress
-**Depends On:** `xomnibus_mobile_and_midi_spec.md`, `xo_signature_playsurface_spec.md`
+**Depends On:** `xolokun_mobile_and_midi_spec.md`, `xo_signature_playsurface_spec.md`
 
 ---
 
 ## Executive Summary
 
-XOmnibus mobile is not a compromise — it is the instrument's natural home. Touch is superior to mouse for expressive performance. The phone becomes the instrument itself: tilt it, press it, play it with all ten fingers. This strategy defines how we get there in three phases, shipping playable software at each milestone.
+XOlokun mobile is not a compromise — it is the instrument's natural home. Touch is superior to mouse for expressive performance. The phone becomes the instrument itself: tilt it, press it, play it with all ten fingers. This strategy defines how we get there in three phases, shipping playable software at each milestone.
 
 ---
 
@@ -130,7 +130,7 @@ This means AUv3 hosted in a narrow panel automatically gets iPhone layout, even 
 
 ## Playability Innovation Targets
 
-These are the features that will differentiate XOmnibus from every mobile synth on the market:
+These are the features that will differentiate XOlokun from every mobile synth on the market:
 
 ### 1. Zero-Latency Haptic Pad Response
 Pre-prepared haptic patterns fire on touch-down, not on audio callback return. The player feels the instrument respond before the sound arrives. This creates the illusion of zero latency.
@@ -142,7 +142,7 @@ Per-finger pitch tracking with configurable portamento. Not stepped, not quantiz
 The XY controller has real physics: momentum, friction, spring-back, boundary reflection. Release your finger and the modulation continues, decaying naturally. No other mobile synth does this.
 
 ### 4. Cross-Engine Modulation in Your Hands
-The coupling matrix works on mobile. Two engines modulating each other, controlled by touch. Swipe X on a pad to blend between coupled engines. This is XOmnibus's killer feature and it must be fully playable on a phone.
+The coupling matrix works on mobile. Two engines modulating each other, controlled by touch. Swipe X on a pad to blend between coupled engines. This is XOlokun's killer feature and it must be fully playable on a phone.
 
 ### 5. Motion as Expression
 Tilt the phone to sweep a filter. Rock it to add vibrato. The phone IS the mod wheel. Opt-in, configurable, with sensible dead zones so you can play on a bus without your filter going crazy.

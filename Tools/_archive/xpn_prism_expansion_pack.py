@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-XOmnibus Prism Mood Expansion Pack
+XOlokun Prism Mood Expansion Pack
 Generates 60 Prism presets across three sub-categories:
   - Spectral (20): pristine prismatic, high brightness, low aggression
   - Refraction (20): light-in-motion, medium brightness, high movement
   - Crystal (20): sparse bright crystalline, very high brightness, low density
 
-Writes to Presets/XOmnibus/Prism/ — skips existing files.
+Writes to Presets/XOlokun/Prism/ — skips existing files.
 """
 
 import json
@@ -19,7 +19,7 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-OUTPUT_DIR = REPO_ROOT / "Presets" / "XOmnibus" / "Prism"
+OUTPUT_DIR = REPO_ROOT / "Presets" / "XOlokun" / "Prism"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ---------------------------------------------------------------------------

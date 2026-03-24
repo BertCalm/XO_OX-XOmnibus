@@ -1,4 +1,4 @@
-# XOmnibus Release Readiness Checklist — Round 12K
+# XOlokun Release Readiness Checklist — Round 12K
 
 **Date:** 2026-03-14
 **Round:** 12K (Prism Sweep — Final Polish)
@@ -11,10 +11,10 @@
 
 | Check | Status | Notes |
 |-------|--------|-------|
-| Main XOmnibus AU builds without errors | ✅ | 0 errors — Round 11J verified. 7 forward-reference `atPressure` bugs fixed in Bob/Bite/Onset/Opal/Ouroboros. |
+| Main XOlokun AU builds without errors | ✅ | 0 errors — Round 11J verified. 7 forward-reference `atPressure` bugs fixed in Bob/Bite/Onset/Opal/Ouroboros. |
 | auval passes for AU target (`auval -v aumu Xomn XoOx`) | ✅ | PASS — all render, MIDI, and parameter scheduling tests pass. Note: codes are `Xomn`/`XoOx` (case-sensitive). |
-| Test target (`XOmnibusTests`) compiles | ⚠️ | 2 pre-existing errors in `XPNExporter.h:633-634` — `juce_audio_formats` module not linked in test target. Main AU build unaffected. Deferred. |
-| No new warnings vs. baseline (Round 8H: 7 warnings) | ✅ | Still 7 warnings post-Round 11J. All pre-existing: `JUCE_DISPLAY_SPLASH_SCREEN` (1), `float→int` implicit conversion in `MasterFXSequencer.h:203` (1), deprecated `juce::Font(name,size,style)` in `XOmnibusEditor.h:129-133` (5). Zero new warnings. |
+| Test target (`XOlokunTests`) compiles | ⚠️ | 2 pre-existing errors in `XPNExporter.h:633-634` — `juce_audio_formats` module not linked in test target. Main AU build unaffected. Deferred. |
+| No new warnings vs. baseline (Round 8H: 7 warnings) | ✅ | Still 7 warnings post-Round 11J. All pre-existing: `JUCE_DISPLAY_SPLASH_SCREEN` (1), `float→int` implicit conversion in `MasterFXSequencer.h:203` (1), deprecated `juce::Font(name,size,style)` in `XOlokunEditor.h:129-133` (5). Zero new warnings. |
 | Binary size reasonable | ✅ | 8.9 MB (AU bundle). Build time ~38s full rebuild. |
 
 ---
@@ -112,7 +112,7 @@
 | Prism Sweep master index current | ✅ | `Docs/prism_sweep_index.md` documents all 12 completed rounds with artifacts, changes, and metrics. Round 12 marked Complete. |
 | CLAUDE.md reflects Round 12 state | ✅ | CLAUDE.md updated through Round 12 completion. Lists 23/23 aftertouch, 22/22 mod wheel (D006 fully resolved), 2,369 presets, Drift Option B, AudioToBuffer Phase 2, auval PASS, build PASS. |
 | 120 Docs files in `Docs/` | ✅ | `Docs/` contains 120 `.md` files covering specs, deep guides, fix reports, architecture blueprints, and sweep artifacts. |
-| `xomnibus_sound_design_guides.md` | ⚠️ | Unified guide covers 20 of 29 registered engines. OSPREY, OSTERIA, OWLFISH, OCELOT, and the 5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) are not yet integrated. Constellation engines have dedicated synthesis guides in `Docs/`. |
+| `xolokun_sound_design_guides.md` | ⚠️ | Unified guide covers 20 of 29 registered engines. OSPREY, OSTERIA, OWLFISH, OCELOT, and the 5 Constellation engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) are not yet integrated. Constellation engines have dedicated synthesis guides in `Docs/`. |
 
 ---
 
@@ -132,7 +132,7 @@ These issues are documented and understood. None are blocking a release of the c
 | Owlfish `applyCouplingInput` stub — no coupling input accepted | Medium | `Docs/coupling_audit.md` (Score 1) |
 | SNAP `AmpToFilter` missing — highest-value unimplemented wire in fleet | Medium | `Docs/coupling_audit.md` Priority 10 |
 | Drift FX gap — 1,353 standalone XOdyssey FX params not exposed in DriftEngine adapter | Medium | `Docs/drift_fx_gap_analysis.md` |
-| `juce::Font(name,size,style)` deprecated (5 warnings in `XOmnibusEditor.h:129-133`) | Low | `Docs/build_verification_11j.md` |
+| `juce::Font(name,size,style)` deprecated (5 warnings in `XOlokunEditor.h:129-133`) | Low | `Docs/build_verification_11j.md` |
 | `float→int` implicit conversion warning in `MasterFXSequencer.h:203` | Low | `Docs/build_verification_11j.md` |
 
 ### Expression (D006)

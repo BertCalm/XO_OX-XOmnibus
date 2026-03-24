@@ -3,7 +3,7 @@
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/EngineRegistry.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // CouplingStripEditor — Visual editor for MegaCouplingMatrix routes.
@@ -188,4 +188,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingStripEditor)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

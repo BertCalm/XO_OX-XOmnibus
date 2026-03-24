@@ -13,7 +13,7 @@ Founder's Frequency is a free weekly series showcasing XO_OX's Founder's Signatu
 
 The series serves three goals:
 1. **Teach** -- real synthesis education backed by actual DSP implementation details
-2. **Demonstrate** -- show what XOmnibus coupling can do that other synths cannot
+2. **Demonstrate** -- show what XOlokun coupling can do that other synths cannot
 3. **Distribute** -- the Founder's Signature presets are free, forever
 
 ---
@@ -47,7 +47,7 @@ Each post follows a consistent structure (~1000-1500 words):
 3. **The Science**: DSP/physics explanation. Accessible but real. Explains synthesis topology, algorithm choices, why the coupling interaction works at a physics level. Uses analogies to real instruments or physical phenomena.
 4. **How to Use It**: 4-5 specific production scenarios with genre context, key signatures, macro positions, what to listen for.
 5. **Macro Guide**: Table mapping M1-M4 to their functions with sweet spot recommendations.
-6. **Pair It With**: 2-3 complementary XOmnibus presets or engine combinations.
+6. **Pair It With**: 2-3 complementary XOlokun presets or engine combinations.
 7. **The Download**: Link to Founder's Signature Vol. 1 XPN pack.
 
 ---
@@ -89,7 +89,7 @@ See `xpn-bundle-config.json` in this directory for the bundle configuration.
 
 ### Production workflow
 
-1. Design preset in XOmnibus (save as .xometa)
+1. Design preset in XOlokun (save as .xometa)
 2. Write blog post following the format template
 3. Generate XPN pack using bundle builder
 4. Publish post on Patreon (free tier)

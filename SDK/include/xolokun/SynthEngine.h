@@ -1,5 +1,5 @@
 #pragma once
-// xomnibus-engine-sdk — SynthEngine.h
+// xolokun-engine-sdk — SynthEngine.h
 // Standalone interface — no JUCE dependency at the boundary.
 // Community engine developers implement this interface.
 //
@@ -9,7 +9,7 @@
 //   juce::String              →  std::string
 //   juce::Colour              →  Colour (uint8 RGBA)
 //
-// When building inside XOmnibus, the adapter layer converts between
+// When building inside XOlokun, the adapter layer converts between
 // JUCE types and these SDK types. When building standalone, developers
 // work with these types directly.
 
@@ -19,7 +19,7 @@
 #include <vector>
 #include <memory>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Plain types — no JUCE dependency
@@ -91,7 +91,7 @@ struct ParameterDef {
 };
 
 //==============================================================================
-// SynthEngine — the interface every XOmnibus engine implements.
+// SynthEngine — the interface every XOlokun engine implements.
 //==============================================================================
 class SynthEngine
 {
@@ -154,4 +154,4 @@ public:
     virtual int getActiveVoiceCount() const { return 0; }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

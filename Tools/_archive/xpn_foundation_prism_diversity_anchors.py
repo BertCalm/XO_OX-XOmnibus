@@ -22,8 +22,8 @@ import random
 
 random.seed(42)  # Reproducible output
 
-FOUNDATION_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus/Foundation"
-PRISM_DIR      = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus/Prism"
+FOUNDATION_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun/Foundation"
+PRISM_DIR      = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun/Prism"
 
 FOUNDATION_ENGINES = ["ODDFELIX", "ODDOSCAR", "OBLONG", "ONSET", "OVERDUB", "ODYSSEY", "OVERWORLD", "OPAL"]
 PRISM_ENGINES      = ["OPTIC", "OBLIQUE", "ORIGAMI", "ORACLE", "OVERWORLD", "OBLONG", "ONSET", "ORBITAL"]

@@ -313,7 +313,7 @@ ORACLE's maqam tuning system implements these microtonal intervals precisely, us
 
 ---
 
-## 6. XOmnibus Integration
+## 6. XOlokun Integration
 
 ### 6.1 MegaCouplingMatrix Compatibility
 

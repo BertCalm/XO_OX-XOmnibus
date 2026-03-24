@@ -15,7 +15,7 @@ Run static analysis, format checks, and architecture rule validation on the code
 
 ### 1. Architecture Rule Checks (always run)
 
-These are XOmnibus-specific invariants from CLAUDE.md. Verify by code inspection:
+These are XOlokun-specific invariants from CLAUDE.md. Verify by code inspection:
 
 **Audio thread safety:**
 - Grep for `new `, `malloc`, `calloc` in audio path files (SynthEngine implementations, processBlock)

@@ -14,7 +14,7 @@ Stages:
 
 CLI:
     python xpn_xometa_export_pipeline.py \\
-        --presets-dir Presets/XOmnibus/Foundation \\
+        --presets-dir Presets/XOlokun/Foundation \\
         --output-dir /tmp/builds \\
         --name "TIDE TABLES" \\
         --version 1.0.0 \\

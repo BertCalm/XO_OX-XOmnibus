@@ -506,9 +506,9 @@ Two rows:
 
 A thin horizontal bar spanning the full width between the main area and the bottom bar. This is the Global Character slider — dragging it left/right offsets all bands' character simultaneously. The bar gradient goes from feliX cool blue (left) to Oscar warm amber (right). The current global position is shown as a vertical line on the gradient. Label: "CHARACTER — feliX ←————— Oscar"
 
-### 8.7 Coupling Strip (visible when inside XOmnibus)
+### 8.7 Coupling Strip (visible when inside XOlokun)
 
-A collapsed panel at the very bottom, revealed when XObserve detects it is running as an XOmnibus slot. Shows:
+A collapsed panel at the very bottom, revealed when XObserve detects it is running as an XOlokun slot. Shows:
 - Active coupling route (e.g., "ONSET → Band 1 Gain [AmpToFilter]")
 - Coupling gain knob
 - Coupling target selector

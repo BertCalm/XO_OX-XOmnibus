@@ -2,15 +2,15 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add external audio input to XOmnibus via a new membrane engine (XOsmosis) and two Membrane Collection FX modules (fXFormant, fXBreath), enabling voice/guitar/instrument processing through the fleet.
+**Goal:** Add external audio input to XOlokun via a new membrane engine (XOsmosis) and two Membrane Collection FX modules (fXFormant, fXBreath), enabling voice/guitar/instrument processing through the fleet.
 
-**Architecture:** XOmnibusProcessor gains a stereo input bus. OsmosisEngine captures the input into a ring buffer and produces coupling signals (envelope, pitch, spectral). fXFormant and fXBreath are added to MasterFXChain as dual-purpose FX (work on both external audio and synth output). External audio routes through the existing 25+ stage MasterFX chain (Option C — no engine-specific FX).
+**Architecture:** XOlokunProcessor gains a stereo input bus. OsmosisEngine captures the input into a ring buffer and produces coupling signals (envelope, pitch, spectral). fXFormant and fXBreath are added to MasterFXChain as dual-purpose FX (work on both external audio and synth output). External audio routes through the existing 25+ stage MasterFX chain (Option C — no engine-specific FX).
 
 **Tech Stack:** JUCE 8, C++17, inline DSP in `.h` headers, CytomicSVF, StandardLFO, AudioRingBuffer, IAudioBufferSink
 
 **Key Reference Files:**
 - `Source/Core/SynthEngine.h` — engine interface (14 CouplingTypes, SilenceGate)
-- `Source/XOmnibusProcessor.cpp` — registration (line ~81), processBlock (line ~1101), getBusesProperties (line ~401)
+- `Source/XOlokunProcessor.cpp` — registration (line ~81), processBlock (line ~1101), getBusesProperties (line ~401)
 - `Source/Core/MegaCouplingMatrix.h` — coupling routing, processAudioRoute uses OpalEngine hard-cast
 - `Source/Core/MasterFXChain.h` — 22 stages, processBlock signature
 - `Source/DSP/Effects/fXOnslaught.h` — FX module pattern (prepare/setters/processBlock)
@@ -19,17 +19,17 @@
 
 ---
 
-### Task 1: Add Stereo Input Bus to XOmnibusProcessor
+### Task 1: Add Stereo Input Bus to XOlokunProcessor
 
 **Files:**
-- Modify: `Source/XOmnibusProcessor.h`
-- Modify: `Source/XOmnibusProcessor.cpp`
+- Modify: `Source/XOlokunProcessor.h`
+- Modify: `Source/XOlokunProcessor.cpp`
 
-This is the plumbing change that opens XOmnibus to external audio. The input bus is optional (instruments can still use XOmnibus as MIDI-only).
+This is the plumbing change that opens XOlokun to external audio. The input bus is optional (instruments can still use XOlokun as MIDI-only).
 
 - [ ] **Step 1: Add input bus to BusesProperties**
 
-In `XOmnibusProcessor.cpp`, find the constructor's `BusesProperties()` call and add an optional stereo input:
+In `XOlokunProcessor.cpp`, find the constructor's `BusesProperties()` call and add an optional stereo input:
 
 ```cpp
 AudioProcessor(BusesProperties()
@@ -41,16 +41,16 @@ The `false` makes the input bus disabled by default — DAW users opt in by enab
 
 - [ ] **Step 1b: Override isBusesLayoutSupported (P0-B fix — required for AU validation)**
 
-In `XOmnibusProcessor.h`, add to the public section:
+In `XOlokunProcessor.h`, add to the public section:
 
 ```cpp
 bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
 ```
 
-In `XOmnibusProcessor.cpp`, implement:
+In `XOlokunProcessor.cpp`, implement:
 
 ```cpp
-bool XOmnibusProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+bool XOlokunProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 {
     // Output must be stereo
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
@@ -68,7 +68,7 @@ bool XOmnibusProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
 
 This allows AU/AUv3 hosts to enable or disable the input bus dynamically.
 
-- [ ] **Step 2: Add external audio buffer member to XOmnibusProcessor.h**
+- [ ] **Step 2: Add external audio buffer member to XOlokunProcessor.h**
 
 ```cpp
 // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
@@ -88,7 +88,7 @@ externalInputBuffer.setSize(2, samplesPerBlock);
 
 - [ ] **Step 4: Capture external audio in processBlock before buffer.clear()**
 
-In `XOmnibusProcessor.cpp` `processBlock()`, BEFORE the existing `buffer.clear()` call, add:
+In `XOlokunProcessor.cpp` `processBlock()`, BEFORE the existing `buffer.clear()` call, add:
 
 ```cpp
 // Capture external audio input before clearing the buffer.
@@ -116,8 +116,8 @@ Expected: Clean compile. No audio changes yet — input is captured but not rout
 - [ ] **Step 6: Commit**
 
 ```bash
-git add Source/XOmnibusProcessor.h Source/XOmnibusProcessor.cpp
-git commit -m "feat: add optional stereo input bus to XOmnibusProcessor
+git add Source/XOlokunProcessor.h Source/XOlokunProcessor.cpp
+git commit -m "feat: add optional stereo input bus to XOlokunProcessor
 
 Captures external audio before buffer.clear() for Osmosis engine routing.
 Input bus disabled by default — DAW users opt in."
@@ -145,10 +145,10 @@ Create `Source/Engines/Osmosis/OsmosisEngine.h`:
 #include <cmath>
 #include <array>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// OsmosisEngine — the membrane between XOmnibus and the outside world.
+// OsmosisEngine — the membrane between XOlokun and the outside world.
 //
 // Receives external audio via setExternalInput(). Analyzes envelope, pitch,
 // and spectral content. Produces coupling signals that let other engines
@@ -238,7 +238,7 @@ public:
         lfo_.reset();
     }
 
-    //-- External audio injection (called by XOmnibusProcessor) ----------------
+    //-- External audio injection (called by XOlokunProcessor) ----------------
     void setExternalInput(const float* left, const float* right, int numSamples)
     {
         externalBufferL_ = left;
@@ -485,10 +485,10 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
-- [ ] **Step 2: Register OsmosisEngine in XOmnibusProcessor.cpp**
+- [ ] **Step 2: Register OsmosisEngine in XOlokunProcessor.cpp**
 
 Add with the other engine registrations (near line ~396):
 
@@ -537,7 +537,7 @@ Expected: Clean compile. Osmosis is now loadable as an engine. External audio fl
 - [ ] **Step 6: Commit**
 
 ```bash
-git add Source/Engines/Osmosis/OsmosisEngine.h Source/XOmnibusProcessor.cpp Source/Core/PresetManager.h
+git add Source/Engines/Osmosis/OsmosisEngine.h Source/XOlokunProcessor.cpp Source/Core/PresetManager.h
 git commit -m "feat: add OsmosisEngine — external audio membrane (#47)
 
 4 params (permeability/selectivity/reactivity/memory), osmo_ prefix.
@@ -566,7 +566,7 @@ Create `Source/DSP/Effects/fXFormant.h` following the fXOnslaught pattern:
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXFormant — Membrane Collection formant filter.
@@ -684,7 +684,7 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 - [ ] **Step 2: Add fXFormant to MasterFXChain (4 touch-points)**
@@ -781,7 +781,7 @@ Create `Source/DSP/Effects/fXBreath.h`:
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXBreath — Membrane Collection organic air texture.
@@ -888,7 +888,7 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 - [ ] **Step 2: Add fXBreath to MasterFXChain (4 touch-points)**
@@ -953,7 +953,7 @@ Lehmer LCG noise, CytomicSVF tilt filter. Zero CPU at mix=0."
 ### Task 5: Integration Test + First Preset
 
 **Files:**
-- Create: `Presets/XOmnibus/Atmosphere/Osmosis_First_Breath.xometa`
+- Create: `Presets/XOlokun/Atmosphere/Osmosis_First_Breath.xometa`
 - Modify: `Source/Core/PresetManager.h` (if not done in Task 2)
 
 - [ ] **Step 1: Create a test preset**
@@ -1012,7 +1012,7 @@ Expected: Clean compile with all 4 tasks integrated.
 
 - [ ] **Step 3: Manual smoke test (user action)**
 
-Load XOmnibus in DAW. Enable input bus (sidechain). Load "Osmosis First Breath" preset. Send audio from a track. Verify:
+Load XOlokun in DAW. Enable input bus (sidechain). Load "Osmosis First Breath" preset. Send audio from a track. Verify:
 - Audio passes through with membrane filter coloring
 - fXFormant adds vowel character when mix > 0
 - fXBreath adds air texture when mix > 0
@@ -1021,7 +1021,7 @@ Load XOmnibus in DAW. Enable input bus (sidechain). Load "Osmosis First Breath" 
 - [ ] **Step 4: Commit**
 
 ```bash
-git add Presets/XOmnibus/Atmosphere/Osmosis_First_Breath.xometa
+git add Presets/XOlokun/Atmosphere/Osmosis_First_Breath.xometa
 git commit -m "feat: add first Osmosis preset — Osmosis First Breath
 
 Atmosphere mood. Membrane + Origami slot, fXFormant + fXBreath active.
@@ -1042,4 +1042,4 @@ After all tasks pass:
 3. Add `Source/Engines/Osmosis/OsmosisEngine.h` to Key Files table
 4. Add fXFormant + fXBreath to FX chain documentation in MasterFXChain section
 5. Update product identity header engine count and comma list
-6. Update `Docs/xomnibus_master_specification.md` section 3.1
+6. Update `Docs/xolokun_master_specification.md` section 3.1

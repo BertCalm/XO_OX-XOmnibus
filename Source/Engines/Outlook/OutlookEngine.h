@@ -9,7 +9,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OutlookEngine — "Panoramic Visionary" synth engine.
@@ -728,4 +728,4 @@ private:
     std::atomic<float>* pAftertouchDep  = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

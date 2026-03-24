@@ -1,5 +1,5 @@
 /*
-    XOmnibus DSP Stability Tests
+    XOlokun DSP Stability Tests
     =============================
     Tests for FastMath, CytomicSVF, PolyBLEP, and per-engine rendering stability.
     No test framework — assert-based with descriptive console output.
@@ -60,11 +60,11 @@
 #include <functional>
 #include <algorithm>
 
-using namespace xomnibus;
+using namespace xolokun;
 
 //==============================================================================
 // Engine registration for the test binary.
-// The main plugin registers engines in XOmnibusProcessor.cpp via static init.
+// The main plugin registers engines in XOlokunProcessor.cpp via static init.
 // We must register them here for the standalone test executable.
 //==============================================================================
 

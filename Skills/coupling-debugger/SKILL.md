@@ -3,7 +3,7 @@
 **Invoke with:** `/coupling-debugger`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new coupling type addition or MegaCouplingMatrix changes
-**Purpose:** Diagnose and fix broken or inaudible coupling routes. Coupling is XOmnibus's signature feature — when it doesn't work, this skill finds why.
+**Purpose:** Diagnose and fix broken or inaudible coupling routes. Coupling is XOlokun's signature feature — when it doesn't work, this skill finds why.
 
 ---
 
@@ -150,10 +150,10 @@ Verify the matrix is routing at all:
 grep -n "fillControlRateBuffer\|applyCouplingToEngines" Source/Core/MegaCouplingMatrix.h
 ```
 
-**Check:** Is `kControlRateRatio` causing the coupling signal to only update every 32 samples? This is expected behavior — coupling is control-rate, not sample-rate. But if the matrix update isn't called from `XOmnibusProcessor.processBlock()`, nothing moves.
+**Check:** Is `kControlRateRatio` causing the coupling signal to only update every 32 samples? This is expected behavior — coupling is control-rate, not sample-rate. But if the matrix update isn't called from `XOlokunProcessor.processBlock()`, nothing moves.
 
 ```bash
-grep -n "megaMatrix\|MegaCoupling" Source/XOmnibusProcessor.cpp | head -20
+grep -n "megaMatrix\|MegaCoupling" Source/XOlokunProcessor.cpp | head -20
 ```
 
 ---

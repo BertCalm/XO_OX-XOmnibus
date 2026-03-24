@@ -1,5 +1,5 @@
 /*
-    XOmnibus Coupling Matrix Tests
+    XOlokun Coupling Matrix Tests
     ===============================
     Tests for MegaCouplingMatrix route management and processing.
     No test framework — assert-based with descriptive console output.
@@ -17,7 +17,7 @@
 #include <array>
 #include <cmath>
 
-using namespace xomnibus;
+using namespace xolokun;
 
 //==============================================================================
 // Test infrastructure

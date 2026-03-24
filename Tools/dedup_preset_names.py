@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-dedup_preset_names.py — Find and fix duplicate preset names across the XOmnibus fleet.
+dedup_preset_names.py — Find and fix duplicate preset names across the XOlokun fleet.
 
 Usage:
   python dedup_preset_names.py             # dry-run (default)
@@ -18,7 +18,7 @@ from typing import Dict, List, Optional, Set, Tuple
 ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
          "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"]
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 
 def to_roman(n: int) -> str:
@@ -147,7 +147,7 @@ def find_and_fix_duplicates(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Find and fix duplicate preset names in XOmnibus fleet."
+        description="Find and fix duplicate preset names in XOlokun fleet."
     )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(

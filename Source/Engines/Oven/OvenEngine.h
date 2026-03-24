@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OvenEngine.h — XOven | "The Cast Iron Concert Grand"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOven is the 9-foot concert grand piano cast entirely in iron — a
@@ -60,7 +60,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Cast Iron Piano Modal Ratios — from Chaigne & Kergomard (2016) Table 6.2,
@@ -1127,4 +1127,4 @@ private:
     std::atomic<float>* paramCouplingRes = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

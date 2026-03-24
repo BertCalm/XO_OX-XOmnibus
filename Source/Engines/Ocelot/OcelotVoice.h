@@ -111,7 +111,7 @@ public:
                                / static_cast<float>(sr);
         if (ecosystemDriftPhase > 1.0f) ecosystemDriftPhase -= 1.0f;
         // SRO: fastSin replaces std::sin (per-block LFO)
-        float driftSine = xomnibus::fastSin(ecosystemDriftPhase * juce::MathConstants<float>::twoPi);
+        float driftSine = xolokun::fastSin(ecosystemDriftPhase * juce::MathConstants<float>::twoPi);
         float lfoEcosystemDepth = std::clamp(
             snap.ecosystemDepth + snap.ecosystemDepth * 0.20f * driftSine, 0.0f, 1.0f);
 
@@ -186,8 +186,8 @@ public:
             {
                 float drive = 1.0f + snap.humidity * 4.0f;
                 // SRO: fastTanh replaces std::tanh (per-sample saturation)
-                l = xomnibus::fastTanh(l * drive) / drive;
-                r = xomnibus::fastTanh(r * drive) / drive;
+                l = xolokun::fastTanh(l * drive) / drive;
+                r = xolokun::fastTanh(r * drive) / drive;
             }
 
             // Amp envelope (per-sample)
@@ -214,7 +214,7 @@ public:
         // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
         float rmsArg = sumSq / static_cast<float>(numSamples);
         lastAmplitude = (rmsArg > 1e-10f)
-            ? xomnibus::fastPow2(0.5f * xomnibus::fastLog2(rmsArg))
+            ? xolokun::fastPow2(0.5f * xolokun::fastLog2(rmsArg))
             : 0.0f;
 
         // Voice goes idle when amp envelope finishes and all strata are quiet

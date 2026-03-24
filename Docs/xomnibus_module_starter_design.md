@@ -1,4 +1,4 @@
-# XOmnibus — Module Starter Design
+# XOlokun — Module Starter Design
 
 **Status:** Design
 **Date:** 2026-03-10

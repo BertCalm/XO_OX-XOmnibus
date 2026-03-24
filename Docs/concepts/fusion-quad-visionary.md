@@ -76,7 +76,7 @@ The Fusion quad's four engines are not four electric pianos. They are four instr
 
 ### How Migratory Coupling Works at the DSP Level
 
-Standard coupling in XOmnibus is directional: Engine A modulates Engine B's parameters. Migratory coupling is *bidirectional and transformative*. It models what actually happens when musical traditions meet: both parties change. The encounter is not broadcast and receive — it's conversation.
+Standard coupling in XOlokun is directional: Engine A modulates Engine B's parameters. Migratory coupling is *bidirectional and transformative*. It models what actually happens when musical traditions meet: both parties change. The encounter is not broadcast and receive — it's conversation.
 
 **The Migratory Exchange Protocol:**
 

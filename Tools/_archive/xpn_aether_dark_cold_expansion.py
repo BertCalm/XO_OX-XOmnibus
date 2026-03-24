@@ -14,7 +14,7 @@ import random
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus", "Aether"
+    "Presets", "XOlokun", "Aether"
 )
 
 random.seed(42)

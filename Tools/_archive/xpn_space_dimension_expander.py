@@ -643,7 +643,7 @@ def build_preset(name: str, engine_id: str, space: float,
 # Main generation logic
 # ---------------------------------------------------------------------------
 
-PRESET_BASE = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus")
+PRESET_BASE = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun")
 
 BAND_CONFIG = {
     "intimate": {

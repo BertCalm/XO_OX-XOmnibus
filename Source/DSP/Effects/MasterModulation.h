@@ -5,7 +5,7 @@
 #include <cstdint>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MasterModulation — Multi-mode modulation processor for the Master FX chain.
@@ -312,4 +312,4 @@ private:
     float feedback = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

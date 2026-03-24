@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Foundation Groove",
+  "name": "Foundation Cool",
   "mood": "Family",
   "engines": [
     "Oblong",
@@ -9,7 +9,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBLONG, ONSET, and OBESE — the rhythm section. Bob lays the harmonic foundation, Onset drives the pulse, Obese saturates everything with hot-pink character. The trio that holds the whole XOmnibus together. Neutral groove mode — Oblong chords, Onset pockets, Obese glue. The session-ready configuration.",
+  "description": "OBLONG, ONSET, and OBESE — the rhythm section. Bob lays the harmonic foundation, Onset drives the pulse, Obese saturates everything with hot-pink character. The trio that holds the whole XOlokun together. A cooler, more clinical foundation — Onset precise, Obese restrained, Oblong spectral.",
   "tags": [
     "family",
     "multi-engine",
@@ -26,18 +26,18 @@
   "couplingIntensity": null,
   "tempo": null,
   "dna": {
-    "brightness": 0.576,
-    "warmth": 0.659,
-    "movement": 0.709,
-    "density": 0.656,
-    "space": 0.496,
-    "aggression": 0.314
+    "brightness": 0.599,
+    "warmth": 0.578,
+    "movement": 0.622,
+    "density": 0.611,
+    "space": 0.539,
+    "aggression": 0.27
   },
   "parameters": {
     "Oblong": {
-      "bob_character": 0.491,
-      "bob_movement": 0.416,
-      "bob_space": 0.432,
+      "bob_character": 0.484,
+      "bob_movement": 0.407,
+      "bob_space": 0.775,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     },

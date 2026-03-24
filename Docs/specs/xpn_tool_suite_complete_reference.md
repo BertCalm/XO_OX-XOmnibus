@@ -8,7 +8,7 @@
 
 ## 1. Overview
 
-The XPN Tool Suite is a pure-Python (stdlib only) collection of scripts that covers the full lifecycle of XOmnibus preset development and MPC expansion pack production:
+The XPN Tool Suite is a pure-Python (stdlib only) collection of scripts that covers the full lifecycle of XOlokun preset development and MPC expansion pack production:
 
 - **Preset authoring** — generate `.xometa` stub presets for all mood categories, coupling pairs, and DNA zones
 - **Coverage tracking** — audit which engine pairs, moods, and DNA regions are under-represented
@@ -28,7 +28,7 @@ python3 Tools/xpn_<tool_name>.py [args]
 
 ### .xometa Format
 
-`.xometa` files are JSON preset descriptors stored in `Presets/XOmnibus/{Mood}/`. Every preset requires:
+`.xometa` files are JSON preset descriptors stored in `Presets/XOlokun/{Mood}/`. Every preset requires:
 
 | Field | Type | Description |
 |---|---|---|
@@ -127,7 +127,7 @@ Each engine uses a prefix for all parameter keys in the `params` block. Key pref
 
 ### 3.2 Coverage and Coupling Pack Generators
 
-These tools generate `.xometa` stub presets in `Presets/XOmnibus/Entangled/`. They all skip existing files.
+These tools generate `.xometa` stub presets in `Presets/XOlokun/Entangled/`. They all skip existing files.
 
 **Engine-specific coupling packs:**
 
@@ -187,7 +187,7 @@ These tools generate `.xometa` stub presets in `Presets/XOmnibus/Entangled/`. Th
 
 ### 3.3 Mood Expansion Packs
 
-Generate `.xometa` presets for non-Entangled moods. All output to `Presets/XOmnibus/{Mood}/`, skip existing files.
+Generate `.xometa` presets for non-Entangled moods. All output to `Presets/XOlokun/{Mood}/`, skip existing files.
 
 | Tool | Mood | Count | Sub-themes |
 |---|---|---|---|
@@ -312,7 +312,7 @@ The full MPC export path: `.xometa` presets → WAV samples → `.xpm` programs 
 | `xpn_validator.py` | Lint `.xpn` ZIP archives against Rex's XPN Bible: structure, manifest, XPM XML, WAV integrity |
 | `xpn_manifest_validator.py` | Validate `expansion.json` and `bundle_manifest.json` (fields, ranges, cross-file consistency) |
 | `xpn_kit_validator.py` | Validate drum `.xpm`: pad count, velocity layers, mute groups |
-| `xpn_xometa_batch_validator.py` | Batch validate all `.xometa` files against XOmnibus preset schema |
+| `xpn_xometa_batch_validator.py` | Batch validate all `.xometa` files against XOlokun preset schema |
 | `xpn_xometa_completeness_auditor.py` | 12-dimension quality score per `.xometa` file; flag low-scorers |
 | `xpn_qa_checker.py` | Perceptual WAV QA: silence, clipping, DC offset, phase cancellation, undynamic |
 | `xpn_full_qa_runner.py` | Master QA orchestrator: chains manifest + sample + cover art + dedup + kit validators |
@@ -471,7 +471,7 @@ The full MPC export path: `.xometa` presets → WAV samples → `.xpm` programs 
 ```sh
 # All tools are stdlib only — no pip install needed
 # Run from the repo root
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOlokun
 ```
 
 ### Common Invocations
@@ -481,7 +481,7 @@ cd ~/Documents/GitHub/XO_OX-XOmnibus
 python3 Tools/xpn_fleet_health_dashboard.py
 
 # Find engine with worst coverage
-python3 Tools/xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOmnibus
+python3 Tools/xpn_engine_preset_gap_reporter.py --engine OPAL --preset-dir Presets/XOlokun
 
 # Close coupling coverage gaps automatically
 python3 Tools/xpn_coverage_final_sprint.py
@@ -493,7 +493,7 @@ python3 Tools/xpn_fleet_dna_diversity_report.py
 python3 Tools/xpn_preset_dna_extreme_filler.py
 
 # Validate all .xometa files
-python3 Tools/xpn_xometa_batch_validator.py Presets/XOmnibus --strict
+python3 Tools/xpn_xometa_batch_validator.py Presets/XOlokun --strict
 
 # Full XPN export for ONSET drum kit
 python3 Tools/oxport.py run --engine Onset --wavs-dir /path/to/wavs --output-dir /tmp/onset_pack

@@ -15,7 +15,7 @@ import json
 import os
 import random
 
-OUTPUT_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus/Entangled"
+OUTPUT_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun/Entangled"
 
 COUPLING_TYPES = [
     "FILTER_MOD", "PITCH_MOD", "AMP_MOD", "ENVELOPE_SHARE",

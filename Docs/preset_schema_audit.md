@@ -36,7 +36,7 @@ Engines with presets in the library that are 100% schema-compliant:
 | Optic | 7 |
 | Oblique | 6 |
 
-Engines with zero presets in the XOmnibus library (no presets to audit):
+Engines with zero presets in the XOlokun library (no presets to audit):
 
 - Obscura, Obsidian, Oceanic, Oracle, Orbital, Origami, Osprey, Osteria
 
@@ -79,7 +79,7 @@ Engines with zero presets in the XOmnibus library (no presets to audit):
 
 **Current canonical params (38):** All use `drift_` prefix — `drift_oscA_mode`, `drift_oscA_level`, `drift_oscA_detune`, `drift_oscA_pw`, `drift_oscA_shape`, `drift_oscA_tune`, `drift_oscA_fmDepth`, `drift_oscB_*` (same 7), `drift_subLevel`, `drift_noiseLevel`, `drift_hazeAmount`, `drift_filterCutoff`, `drift_filterReso`, `drift_filterSlope`, `drift_filterEnvAmt`, `drift_shimmerAmount`, `drift_shimmerTone`, `drift_attack`, `drift_decay`, `drift_sustain`, `drift_release`, `drift_driftDepth`, `drift_driftRate`, `drift_lfoRate`, `drift_lfoDepth`, `drift_lfoDest`, `drift_formantMix`, `drift_formantMorph`, `drift_glide`, `drift_level`, `drift_voiceMode`, `drift_polyphony`.
 
-**Recommendation:** (b) Remove all ghost keys from presets. The unprefixed params were the XOdyssey v1 standalone schema; the canonical XOmnibus schema always uses `drift_`. 202 preset files need updating.
+**Recommendation:** (b) Remove all ghost keys from presets. The unprefixed params were the XOdyssey v1 standalone schema; the canonical XOlokun schema always uses `drift_`. 202 preset files need updating.
 
 ---
 
@@ -274,7 +274,7 @@ None of these map 1:1 to the canonical `perc_` schema. The `onset_` prefix has n
 
 ### OBSIDIAN `formantResonance` vs `formantIntensity` collision
 
-**Not present as an issue.** There are zero Obsidian presets in the XOmnibus preset library (`Presets/XOmnibus/**/*.xometa`). The collision exists at the engine code level (where `obsidian_formantResonance` was a former name, now replaced by `obsidian_formantIntensity` in the canonical `ObsidianEngine.h`), but since there are no presets in the library referencing it, there is no active schema violation to fix. Status: code-level risk only — if Obsidian presets are ever generated using the old name, they will fail.
+**Not present as an issue.** There are zero Obsidian presets in the XOlokun preset library (`Presets/XOlokun/**/*.xometa`). The collision exists at the engine code level (where `obsidian_formantResonance` was a former name, now replaced by `obsidian_formantIntensity` in the canonical `ObsidianEngine.h`), but since there are no presets in the library referencing it, there is no active schema violation to fix. Status: code-level risk only — if Obsidian presets are ever generated using the old name, they will fail.
 
 ---
 

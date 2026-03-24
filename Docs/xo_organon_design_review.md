@@ -1,14 +1,14 @@
 # XO-Organon Design Review
 
 **Document under review:** *Informational Metabolism and Topological Dissipation: The XO-Organon Architecture for Post-2025 Synthesis*
-**Reviewed against:** `xomnibus_master_specification.md`, `xomnibus_new_engine_process.md`, `SynthEngine.h`, `MegaCouplingMatrix.h`, and existing engine implementations
+**Reviewed against:** `xolokun_master_specification.md`, `xolokun_new_engine_process.md`, `SynthEngine.h`, `MegaCouplingMatrix.h`, and existing engine implementations
 **Date:** 2026-03-10
 
 ---
 
 ## Executive Summary
 
-XO-Organon proposes a genuinely novel synthesis paradigm — **Informational Dissipative Synthesis** — where sound emerges from a metabolic cycle of consuming, breaking down, and reconstructing signals. The concept is strong, the biological metaphor is compelling, and it aligns well with XOmnibus's ethos of engines that "couple, collide, and mutate." However, the document has significant gaps between its aspirational language and the concrete implementation reality of the XOmnibus platform. This review identifies what works, what doesn't, and what needs resolution before moving to Phase 1 (Architect).
+XO-Organon proposes a genuinely novel synthesis paradigm — **Informational Dissipative Synthesis** — where sound emerges from a metabolic cycle of consuming, breaking down, and reconstructing signals. The concept is strong, the biological metaphor is compelling, and it aligns well with XOlokun's ethos of engines that "couple, collide, and mutate." However, the document has significant gaps between its aspirational language and the concrete implementation reality of the XOlokun platform. This review identifies what works, what doesn't, and what needs resolution before moving to Phase 1 (Architect).
 
 ---
 
@@ -17,7 +17,7 @@ XO-Organon proposes a genuinely novel synthesis paradigm — **Informational Dis
 ### What works
 
 - **"XO + O-word" naming:** XO-Organon fits the brand convention perfectly.
-- **Coupling as core identity:** The document correctly identifies the MegaCouplingMatrix as the platform's differentiator and builds the entire engine around it. The "Ingestion" stage literally feeds on other engines — this is the deepest coupling integration proposed for any XOmnibus engine.
+- **Coupling as core identity:** The document correctly identifies the MegaCouplingMatrix as the platform's differentiator and builds the entire engine around it. The "Ingestion" stage literally feeds on other engines — this is the deepest coupling integration proposed for any XOlokun engine.
 - **"Character over feature count":** The metabolic metaphor gives the engine a distinct personality (a living organism) rather than being a feature checklist. The 6 preset archetypes ("Hibernation Cycle", "Symbiotic Drone", etc.) demonstrate real character thinking.
 - **"Dry patches must sound compelling":** The document addresses this directly — internal "breathing" and "blooming" from the metabolic cycle create movement without relying on effects. This is a credible claim given the Port-Hamiltonian modal array as the sound source.
 - **Post-2025 CPU justification:** The argument that modern SIMD throughput enables real-time ODE solving is sound. RK4 at audio rate for 32 modes is feasible on Apple Silicon.
@@ -81,7 +81,7 @@ If new types are genuinely needed, they must be added to the enum, the matrix `p
 
 **3b. "Free Energy Pool" is listed as a parameter but behaves as internal state.** The document describes it as "a self-depleting resource that is replenished by high-value input signals." If it depletes and replenishes autonomously, it's not a user-controllable parameter — it's an internal state variable that the user can *observe* but not directly set. The spec needs to clarify: is this a knob the user turns, or a meter they watch? If the latter, it shouldn't be in the parameter layout. If the former, what does turning it actually do — set an initial value? A capacity ceiling?
 
-**3c. "Phason Shift" range is 0-360 degrees** — this should use a normalized 0.0-1.0 range internally (like all other XOmnibus parameters) and display as degrees in the UI. Minor, but worth noting for consistency.
+**3c. "Phason Shift" range is 0-360 degrees** — this should use a normalized 0.0-1.0 range internally (like all other XOlokun parameters) and display as degrees in the UI. Minor, but worth noting for consistency.
 
 **3d. "Isotope Balance" range is "Sub/Ultra"** — this needs a concrete numeric range (e.g., 0.0-1.0 where 0.0 = subsonic center, 1.0 = ultrasonic center).
 
@@ -155,7 +155,7 @@ Each archetype exercises a different aspect of the engine. This is excellent des
 
 ## 8. Accent Color — MISSING
 
-The document never assigns Organon an accent color. Every XOmnibus engine has one:
+The document never assigns Organon an accent color. Every XOlokun engine has one:
 
 | Engine | Color |
 |---|---|
@@ -212,7 +212,7 @@ Suggestion: **Bioluminescent Cyan `#00E5CC`** or **Chlorophyll Green `#4CAF50`**
 
 **Verdict: Advance to Phase 1 (Architect) with required revisions.**
 
-The concept is genuinely innovative and aligns with XOmnibus's identity. The gaps identified above are all resolvable — none are architectural showstoppers. Before Phase 1 begins, the following must be resolved:
+The concept is genuinely innovative and aligns with XOlokun's identity. The gaps identified above are all resolvable — none are architectural showstoppers. Before Phase 1 begins, the following must be resolved:
 
 ### Must-fix (blocking)
 1. Map all coupling I/O to existing `CouplingType` enum values, or formally propose new enum entries
@@ -235,4 +235,4 @@ The concept is genuinely innovative and aligns with XOmnibus's identity. The gap
 
 ---
 
-*Reviewed against XOmnibus master specification v1, SynthEngine interface, MegaCouplingMatrix (12 coupling types), and existing engine implementations (ODDFELIX, OVERDUB, ONSET).*
+*Reviewed against XOlokun master specification v1, SynthEngine interface, MegaCouplingMatrix (12 coupling types), and existing engine implementations (ODDFELIX, OVERDUB, ONSET).*

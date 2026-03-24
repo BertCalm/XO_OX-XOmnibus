@@ -2,7 +2,7 @@
 """
 xpn_entangled_hot_warmth_pack.py
 Generate 80 scorching-warm Entangled presets (warmth >= 0.86) across 4 sub-groups.
-Saves to Presets/XOmnibus/Entangled/. Skips if file exists.
+Saves to Presets/XOlokun/Entangled/. Skips if file exists.
 """
 
 import json
@@ -11,7 +11,7 @@ import random
 import math
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 
 random.seed(42)
 

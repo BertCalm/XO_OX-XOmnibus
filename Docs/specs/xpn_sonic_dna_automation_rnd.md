@@ -8,7 +8,7 @@
 
 ## Background
 
-XOmnibus presets carry a 6D Sonic DNA vector: `brightness`, `warmth`, `movement`, `density`, `space`, `aggression`. Each dimension is a float 0.0–1.0. Currently these are assigned manually by a sound designer listening to each preset — accurate but slow, and prone to inconsistency across the fleet (2,369 presets and growing).
+XOlokun presets carry a 6D Sonic DNA vector: `brightness`, `warmth`, `movement`, `density`, `space`, `aggression`. Each dimension is a float 0.0–1.0. Currently these are assigned manually by a sound designer listening to each preset — accurate but slow, and prone to inconsistency across the fleet (2,369 presets and growing).
 
 The XPN tools already include `xpn_classify_instrument.py`, which performs DFT-based spectral analysis on raw PCM. It already outputs `spectral_centroid_hz`, `hf_energy_ratio`, and `transient_strength`. This R&D proposes building `xpn_auto_dna.py` on top of that engine to derive all six dimensions algorithmically.
 

@@ -82,7 +82,7 @@ Scripts that inspect, score, visualize, or report on presets, DNA, packs, or sam
 | `xpn_dna_interpolator.py` | Interpolate between two `.xometa` presets and generate stubs along the path | Interpolated `.xometa` stubs |
 | `xpn_sonic_dna_interpolator_v2.py` | v2 interpolator that generates new `.xometa` files at midpoints and beyond | Interpolated `.xometa` files |
 | `xpn_preset_dna_recalibrator.py` | Audit declared DNA values against parameter values and flag discrepancies | Calibration diff report |
-| `xpn_fleet_dna_diversity_report.py` | Deep 6D DNA diversity analysis of the full XOmnibus preset fleet | Fleet DNA report (Markdown) |
+| `xpn_fleet_dna_diversity_report.py` | Deep 6D DNA diversity analysis of the full XOlokun preset fleet | Fleet DNA report (Markdown) |
 | `xpn_engine_dna_profile_builder.py` | Compute authoritative per-engine DNA centroid from all its presets | Engine DNA profile JSON |
 | `xpn_preset_similarity_matrix.py` | Compute pairwise cosine similarity, cluster density, and ASCII heatmap | Similarity matrix report |
 | `xpn_preset_clustering_report.py` | k-means cluster presets by 6D DNA (stdlib only) | Cluster report (Markdown) |
@@ -202,7 +202,7 @@ Scripts that build XPM programs, `.xpn` ZIP archives, or drive the full oxport p
 | `xpn_manifest_generator.py` | Generate `expansion.json` + `bundle_manifest.json` for a pack | Pack manifest JSON files |
 | `xpn_expansion_json_builder.py` | Build and validate `expansion.json` — the primary MPC discovery manifest | `expansion.json` |
 | `xpn_xometa_to_pack_bridge.py` | Bridge `.xometa` preset system to the XPN pack pipeline | Pack-ready metadata |
-| `xpn_params_sidecar_spec.py` | Generate and validate `params_sidecar.json` for XOmnibus auto-load on MPC | `params_sidecar.json` |
+| `xpn_params_sidecar_spec.py` | Generate and validate `params_sidecar.json` for XOlokun auto-load on MPC | `params_sidecar.json` |
 | `xpn_pack_registry.py` | Manage `pack_registry.json` — master catalog of all released packs | `pack_registry.json` |
 | `xpn_oxport_pack_yml_template.py` | Generate `pack.yml` config for the oxport v2 pipeline | `pack.yml` template |
 
@@ -234,7 +234,7 @@ Scripts that build XPM programs, `.xpn` ZIP archives, or drive the full oxport p
 | `xpn_macro_assignment_suggester.py` | Suggest M1–M4 macro assignments for `.xometa` presets | Macro suggestion list |
 | `xpn_macro_curve_designer.py` | Design and visualize macro response curves for XPN programs | Macro curve spec |
 | `xpn_macro_label_normalizer.py` | Normalize macro labels across `.xometa` presets for consistency | Updated `.xometa` macro labels |
-| `xpn_macro_performance_recorder.py` | Record and export macro performance scripts for XOmnibus | Macro performance script |
+| `xpn_macro_performance_recorder.py` | Record and export macro performance scripts for XOlokun | Macro performance script |
 | `xpn_velocity_curve_designer.py` | Generate Vibe-curve velocity boundary configs for XPM programs | Velocity config XML/JSON |
 | `xpn_velocity_map_visualizer.py` | Render velocity layer structure of an XPM as an ASCII chart | ASCII velocity chart |
 | `xpn_velocity_zone_visualizer.py` | Parse XPM and render each keygroup's velocity zone structure | ASCII zone visualization |
@@ -253,12 +253,12 @@ Scripts that enforce schema correctness, run automated QA gates, and manage vers
 | `xpn_community_qa.py` | Headless QA orchestrator for community pack submissions | Community QA verdict |
 | `xpn_pack_ci_config_generator.py` | Generate GitHub Actions `.yml` for automated `.xpn` pack quality gating | `.github/workflows/xpn_qa.yml` |
 | `xpn_pack_integrity_check.py` | Deep structural integrity check on a `.xpn` pack | Integrity report |
-| `xpn_validator.py` | Validate `.xometa` preset files against the XOmnibus schema | Validation results |
+| `xpn_validator.py` | Validate `.xometa` preset files against the XOlokun schema | Validation results |
 | `xpn_manifest_validator.py` | Validate `expansion.json` and `bundle_manifest.json` — required fields, format | Validation results |
 | `xpn_pack_format_validator.py` | Deep XPN/XPM format validator: MPC XML schema + compatibility checks | Format validation report |
 | `xpn_pack_naming_validator.py` | Validate pack/program/sample/preset names against XO_OX brand naming rules | Naming validation report |
 | `xpn_kit_validator.py` | Deep structural validation of XPM drum kit programs | Kit validation report |
-| `xpn_xometa_batch_validator.py` | Validate all `.xometa` files in a directory against the XOmnibus preset schema | Batch validation results |
+| `xpn_xometa_batch_validator.py` | Validate all `.xometa` files in a directory against the XOlokun preset schema | Batch validation results |
 | `xpn_xpm_validator_strict.py` | Strict XPM XML validator: 3 critical XO_OX rules + MPC format compliance | Strict validation report |
 | `xpn_expansion_json_lint.py` | Lint `expansion.json` files for required fields, format compliance, suggestions | Lint results |
 | `xpn_collection_arc_validator.py` | Validate that a set of packs forms a coherent collection arc | Arc validation report |
@@ -376,7 +376,7 @@ Older scripts that seeded the initial preset library or performed one-time migra
 | `generate_coupling_presets.py` | Early coupling coverage fill targeting Overworld/Overbite/Organon/Ouroboros | `.xometa` coupling presets |
 | `generate_library_fills.py` | Fill mood gaps in Overdub/Odyssey/OddOscar/ONSET/OddfeliX | `.xometa` preset stubs |
 | `generate_preset_params.py` | Generate DSP parameter values for `.xocmeta` presets from metadata | Updated `.xocmeta` params |
-| `migrate_xocmeta_to_xometa.py` | One-time migration: OddfeliX `.xocmeta` → XOmnibus `.xometa` format | `.xometa` preset files |
+| `migrate_xocmeta_to_xometa.py` | One-time migration: OddfeliX `.xocmeta` → XOlokun `.xometa` format | `.xometa` preset files |
 | `apply_renames.py` | Bulk rename preset files, docs, and tools in a single pass | Renamed files |
 | `rename_weak_presets.py` | Elevate generic/functional preset names to evocative alternatives fleet-wide | Renamed `.xometa` files |
 | `fix_bob_presets.py` | Migrate XOblong preset params to canonical BobEngine schema | Fixed `.xometa` files |

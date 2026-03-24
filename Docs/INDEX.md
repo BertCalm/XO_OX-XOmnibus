@@ -5,20 +5,20 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ## Architecture & Specs
 
-- [xomnibus_master_specification.md](xomnibus_master_specification.md) — Master spec for XOmnibus platform
-- [XOmnibus_Master_Architecture- Volume 2.md.txt](XOmnibus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
-- [xomnibus_repo_structure.md](xomnibus_repo_structure.md) — Directory and file organization
-- [xomnibus_technical_design_system.md](xomnibus_technical_design_system.md) — Technical design patterns
-- [xomnibus_new_engine_process.md](xomnibus_new_engine_process.md) — How to add a new engine
-- [xomnibus_preset_spec_for_builder.md](xomnibus_preset_spec_for_builder.md) — Preset schema for builders
+- [xolokun_master_specification.md](xolokun_master_specification.md) — Master spec for XOlokun platform
+- [XOlokun_Master_Architecture- Volume 2.md.txt](XOlokun_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
+- [xolokun_repo_structure.md](xolokun_repo_structure.md) — Directory and file organization
+- [xolokun_technical_design_system.md](xolokun_technical_design_system.md) — Technical design patterns
+- [xolokun_new_engine_process.md](xolokun_new_engine_process.md) — How to add a new engine
+- [xolokun_preset_spec_for_builder.md](xolokun_preset_spec_for_builder.md) — Preset schema for builders
 - [xometa_schema.json](xometa_schema.json) — .xometa JSON schema definition
 - [xometa_examples.json](xometa_examples.json) — .xometa example files
-- [xomnibus_module_starter_design.md](xomnibus_module_starter_design.md) — Module starter patterns
-- [xomnibus_mobile_and_midi_spec.md](xomnibus_mobile_and_midi_spec.md) — iOS/MIDI specification
-- [xomnibus_mobile_implementation_strategy.md](xomnibus_mobile_implementation_strategy.md) — iOS implementation strategy
-- [xomnibus_recipe_system_design.md](xomnibus_recipe_system_design.md) — Recipe/coupling system design
-- [xomnibus_name_migration_reference.md](xomnibus_name_migration_reference.md) — Engine name migration reference
-- [how_to_write_a_xomnibus_adapter.md](how_to_write_a_xomnibus_adapter.md) — Adapter authoring guide
+- [xolokun_module_starter_design.md](xolokun_module_starter_design.md) — Module starter patterns
+- [xolokun_mobile_and_midi_spec.md](xolokun_mobile_and_midi_spec.md) — iOS/MIDI specification
+- [xolokun_mobile_implementation_strategy.md](xolokun_mobile_implementation_strategy.md) — iOS implementation strategy
+- [xolokun_recipe_system_design.md](xolokun_recipe_system_design.md) — Recipe/coupling system design
+- [xolokun_name_migration_reference.md](xolokun_name_migration_reference.md) — Engine name migration reference
+- [how_to_write_a_xolokun_adapter.md](how_to_write_a_xolokun_adapter.md) — Adapter authoring guide
 - [oscar_rive_spec.md](oscar_rive_spec.md) — Rive/Oscar UI animation spec
 - [xo_signature_playsurface_spec.md](xo_signature_playsurface_spec.md) — PlaySurface spec
 - [shore_system_spec.md](shore_system_spec.md) — Shore system (Osprey/Osteria) spec
@@ -38,7 +38,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [oracle_synthesis_guide.md](oracle_synthesis_guide.md) — ORACLE synthesis guide
 - [overlap_synthesis_guide.md](overlap_synthesis_guide.md) — OVERLAP synthesis guide
 - [outwit_synthesis_guide.md](outwit_synthesis_guide.md) — OUTWIT synthesis guide
-- [xomnibus_sound_design_guides.md](xomnibus_sound_design_guides.md) — Cross-engine sound design
+- [xolokun_sound_design_guides.md](xolokun_sound_design_guides.md) — Cross-engine sound design
 - [organon_vfe_guide.md](organon_vfe_guide.md) — ORGANON VFE guide
 - [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md) — ONSET XVC demo guide
 - [MPC_Controller_Setup.md](MPC_Controller_Setup.md) — MPC controller setup
@@ -82,13 +82,13 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ## Roadmaps & Launch Planning
 
-- [xomnibus_engine_roadmap_v3.md](xomnibus_engine_roadmap_v3.md) — Engine roadmap v3 (current)
-- [xomnibus_engine_roadmap.md](xomnibus_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
-- [xomnibus_v2_roadmap.md](xomnibus_v2_roadmap.md) — V2 roadmap
-- [xomnibus_launch_audit_2026.md](xomnibus_launch_audit_2026.md) — Launch audit 2026
-- [xomnibus_landscape_2026.md](xomnibus_landscape_2026.md) — Competitive landscape 2026
+- [xolokun_engine_roadmap_v3.md](xolokun_engine_roadmap_v3.md) — Engine roadmap v3 (current)
+- [xolokun_engine_roadmap.md](xolokun_engine_roadmap.md) — Engine roadmap v1 (superseded by v3)
+- [xolokun_v2_roadmap.md](xolokun_v2_roadmap.md) — V2 roadmap
+- [xolokun_launch_audit_2026.md](xolokun_launch_audit_2026.md) — Launch audit 2026
+- [xolokun_landscape_2026.md](xolokun_landscape_2026.md) — Competitive landscape 2026
 - [release_readiness_12k.md](release_readiness_12k.md) — Release readiness report (12k)
-- [xomnibus_brand_identity_and_launch.md](xomnibus_brand_identity_and_launch.md) — Brand identity & launch strategy
+- [xolokun_brand_identity_and_launch.md](xolokun_brand_identity_and_launch.md) — Brand identity & launch strategy
 - [funding_plan.md](funding_plan.md) — Funding strategy
 - [engine_expansion_toolkit_strategy.md](engine_expansion_toolkit_strategy.md) — Engine expansion strategy
 
@@ -150,7 +150,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [build_verification_11j.md](build_verification_11j.md) — Build verification round 11j
 - [build_verification_12j.md](build_verification_12j.md) — Build verification round 12j
 - [v007_journey_demo_report.md](v007_journey_demo_report.md) — v0.0.7 journey demo report
-- [xomnibus_volume2_review.md](xomnibus_volume2_review.md) — Volume 2 review
+- [xolokun_volume2_review.md](xolokun_volume2_review.md) — Volume 2 review
 
 ---
 
@@ -240,7 +240,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [concepts/xodyssey_concept_brief.md](concepts/xodyssey_concept_brief.md) — ODYSSEY concept
 - [concepts/xohm_concept_brief.md](concepts/xohm_concept_brief.md) — OHM concept
 - [concepts/xole_concept_brief.md](concepts/xole_concept_brief.md) — OLE concept
-- [concepts/xomnibus_collections_vision.md](concepts/xomnibus_collections_vision.md) — Collections vision
+- [concepts/xolokun_collections_vision.md](concepts/xolokun_collections_vision.md) — Collections vision
 - [concepts/xonset_concept_brief.md](concepts/xonset_concept_brief.md) — ONSET concept
 - [concepts/xopal_concept_brief.md](concepts/xopal_concept_brief.md) — OPAL concept
 
@@ -319,7 +319,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ## Research Compendium (`research/`)
 
-Continuous scanning for open-source resources relevant to XOmnibus: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
+Continuous scanning for open-source resources relevant to XOlokun: JUCE UI, audio visualization, Figma assets, MPE/input devices, ocean visualization, design systems.
 
 - [research/continuous-scan-2026-03-24.md](research/continuous-scan-2026-03-24.md) — **Scan 2026-03-24**: 42 resources across 8 domains. P0 finds: melatonin_blur, Vital UI, three.quarks+ocean shader, audioMotion-analyzer, SeaSynth Figma, WeAreROLI/mpejs, tonaljs, shadcn/ui.
 

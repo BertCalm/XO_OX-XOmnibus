@@ -129,4 +129,4 @@ For engines with explicit feliX-Oscar coupling parameters (e.g., OVERLAP, OUTWIT
 
 ---
 
-*Reference: XPN Tools — `~/Documents/GitHub/XO_OX-XOmnibus/Tools/` | Vibe musical curve implementation: `xpn_keygroup_export.py`*
+*Reference: XPN Tools — `~/Documents/GitHub/XO_OX-XOlokun/Tools/` | Vibe musical curve implementation: `xpn_keygroup_export.py`*

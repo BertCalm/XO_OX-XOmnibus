@@ -1,4 +1,4 @@
-# XOmnibus — Engine Name Migration Reference
+# XOlokun — Engine Name Migration Reference
 *Quick-reference for the legacy → canonical name transition.*
 *Last updated: March 2026*
 

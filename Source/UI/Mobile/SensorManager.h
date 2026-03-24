@@ -3,7 +3,7 @@
 #include <atomic>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SensorManager — Accelerometer, gyroscope, and motion integration.
@@ -187,4 +187,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

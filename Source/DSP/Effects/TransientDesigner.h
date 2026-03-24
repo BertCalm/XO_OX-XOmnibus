@@ -4,7 +4,7 @@
 #include <array>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // TransientDesigner — Attack/sustain shaping via envelope followers.
@@ -122,4 +122,4 @@ private:
     void calcCrossover() { /* crossover reserved for future per-band mode */ }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

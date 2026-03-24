@@ -40,7 +40,7 @@ Output naming:
 Usage:
     python xpn_variation_generator.py my_pack.xpn --type tone --direction felix --output ./variations/
     python xpn_variation_generator.py my_pack.xpn --type all --output ./variations/
-    python xpn_variation_generator.py my_pack.xpn --type dna --presets ./Presets/XOmnibus/ --output ./variations/
+    python xpn_variation_generator.py my_pack.xpn --type dna --presets ./Presets/XOlokun/ --output ./variations/
 """
 
 import argparse

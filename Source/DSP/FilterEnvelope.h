@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // FilterEnvelope — General-purpose ADSR envelope for filter/pitch modulation.
@@ -171,4 +171,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

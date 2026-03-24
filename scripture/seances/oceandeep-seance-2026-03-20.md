@@ -59,7 +59,7 @@ However, the oscillator section is conservative — pure sines only. Where is th
 
 "Clean architecture. The parameter snapshot pattern is correctly applied — all 25 parameters loaded once per block, no redundant atomic reads in the sample loop. The MIDI implementation handles note-on, note-off, CC1, channel pressure, and polyphonic aftertouch, which is thorough for a monophonic engine.
 
-The coupling interface accepts AmpToFilter, AmpToPitch, and PitchToPitch, making OCEANDEEP a good citizen in the XOmnibus ecosystem. The PitchToPitch coupling is particularly well-designed for the OPENSKY pairing: OPENSKY's bright harmonic content can modulate OCEANDEEP's pitch, creating a counter-melody relationship across the full water column.
+The coupling interface accepts AmpToFilter, AmpToPitch, and PitchToPitch, making OCEANDEEP a good citizen in the XOlokun ecosystem. The PitchToPitch coupling is particularly well-designed for the OPENSKY pairing: OPENSKY's bright harmonic content can modulate OCEANDEEP's pitch, creating a counter-melody relationship across the full water column.
 
 The macro system is well-designed: PRESSURE boosts compression and sub level, CREATURE amplifies the bio exciter, WRECK drives the waveguide character, ABYSS darkens the filter and adds reverb. Each macro has a distinct sonic identity that corresponds to a physical dimension of the abyssal environment.
 

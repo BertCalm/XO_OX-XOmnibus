@@ -2,7 +2,7 @@
 #include <cmath>
 #include "FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // CytomicSVF — Andrew Simper's topology-preserving state-variable filter.
@@ -217,4 +217,4 @@ private:
     float ic2eq = 0.0f;  // integrator 2 state
 };
 
-} // namespace xomnibus
+} // namespace xolokun

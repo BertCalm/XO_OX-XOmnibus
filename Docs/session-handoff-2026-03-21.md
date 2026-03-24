@@ -1,7 +1,7 @@
 # Session Handoff — 2026-03-21
 **From:** Extended overnight + morning session (2026-03-20 evening → 2026-03-21)
 **To:** Next session (2026-03-22 or later)
-**Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
+**Repo:** `~/Documents/GitHub/XO_OX-XOlokun/`
 **Branch:** `main`
 
 ---
@@ -33,7 +33,7 @@ changes that represent the "overnight work" dispatched as parallel agents.
 
 ## 2. New Infrastructure: 7 Shared DSP Utilities in Source/DSP/
 
-All 7 utilities are committed. They live in `/Source/DSP/` under the `xomnibus` namespace.
+All 7 utilities are committed. They live in `/Source/DSP/` under the `xolokun` namespace.
 All are allocation-free, noexcept, and real-time safe.
 
 | Header | Purpose | Fleet Coverage |
@@ -97,7 +97,7 @@ All are allocation-free, noexcept, and real-time safe.
    not vibrato." (Schulze)
 
 ### Registration Status
-- Registered in `Source/XOmnibusProcessor.cpp` (PASS)
+- Registered in `Source/XOlokunProcessor.cpp` (PASS)
 - CLAUDE.md updated: count, module list, engine table, parameter prefix table, key files (PASS)
 - 20 factory presets committed across 5 moods
 - Post-completion checklist: `Docs/post-completion/oware-completion-2026-03-21.md` (PASS with 2 blocking findings)
@@ -269,9 +269,9 @@ and need build verification before committing.
 
 **Modified tracked files that matter most:**
 - `Source/Engines/*/` (22 engines with shared utility migrations) — BUILD TEST FIRST
-- `Source/XOmnibusProcessor.cpp` / `.h` — OWARE registration (likely committed in CLAUDE.md update)
+- `Source/XOlokunProcessor.cpp` / `.h` — OWARE registration (likely committed in CLAUDE.md update)
 - `CLAUDE.md` — B016 amendment applied by a linter this session
-- `Presets/XOmnibus/Atmosphere/Tidal_Membrane.xometa` — a single preset was modified
+- `Presets/XOlokun/Atmosphere/Tidal_Membrane.xometa` — a single preset was modified
 
 **B016 AMENDMENT NOTE:** The Seance amended Blessing B016 (OBRIX Brick Independence) during this
 session. The new text clarifies that MIDI-layer voice independence is inviolable, but synthesis-layer
@@ -303,7 +303,7 @@ auval -v aumu XOMn Xa_X
 After committing the ~129 untracked presets, run the census script to get the updated count:
 ```bash
 # Count all .xometa files
-find Presets/XOmnibus -name "*.xometa" | wc -l
+find Presets/XOlokun -name "*.xometa" | wc -l
 ```
 
 Check for the two critical preset coverage gaps:

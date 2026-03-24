@@ -25,7 +25,7 @@ namespace xowlfish {
 //   7. ABYSS REVERB:    AbyssReverb (dark FDN reverb)
 //   8. OUTPUT:          Level + pan
 //
-// Coupling cache: lastOutL/R available via getLastSampleL/R() for XOmnibus
+// Coupling cache: lastOutL/R available via getLastSampleL/R() for XOlokun
 // cross-engine modulation.
 //
 // All DSP inline. No allocations in process(). Denormal-safe.
@@ -234,10 +234,10 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Get last output sample (left) for XOmnibus coupling cache.
+    /// Get last output sample (left) for XOlokun coupling cache.
     float getLastSampleL() const { return lastOutL; }
 
-    /// Get last output sample (right) for XOmnibus coupling cache.
+    /// Get last output sample (right) for XOlokun coupling cache.
     float getLastSampleR() const { return lastOutR; }
 
 private:

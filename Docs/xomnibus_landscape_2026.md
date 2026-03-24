@@ -1,22 +1,22 @@
-# XOmnibus Ecosystem Landscape — 2026-03-14
+# XOlokun Ecosystem Landscape — 2026-03-14
 
 **Compiled by:** Grand Surveyor Agent
 **Purpose:** Unified briefing for 11 subsequent rounds of refinement work
 **Sources:** All 24 seance records, 6 doctrine files, all 24 engine adapters, all standalone repos, Presets/ directory, CLAUDE.md, master specification
-**Total ecosystem presets:** 1,625 (XOmnibus Presets/) + additional standalone repo presets
+**Total ecosystem presets:** 1,625 (XOlokun Presets/) + additional standalone repo presets
 
 ---
 
 ## 1. Engine Completeness Matrix
 
 This table covers all 24 integrated engines plus XOpal (concept/standalone). Status codes:
-- **INTEGRATED** — Full adapter in Source/Engines/, builds, presets in XOmnibus
+- **INTEGRATED** — Full adapter in Source/Engines/, builds, presets in XOlokun
 - **INTEGRATED-THIN** — Adapter exists but delegates to standalone repo DSP; coupling stubs only
 - **CONCEPT** — Design complete, no adapter yet
 
 Seance scores are from the 24 seances held 2026-03-14.
 
-| Engine (Gallery Code) | Source Instrument | Accent | Adapter Lines | Unique Params | Preset Count (XOmnibus) | Standalone Presets | LFOs | Aftertouch | Coupling In | Coupling Out | Standalone Repo | auval | Seance Score |
+| Engine (Gallery Code) | Source Instrument | Accent | Adapter Lines | Unique Params | Preset Count (XOlokun) | Standalone Presets | LFOs | Aftertouch | Coupling In | Coupling Out | Standalone Repo | auval | Seance Score |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | ODDFELIX (Snap) | OddfeliX | Neon Tetra Blue `#00A6D6` | 952 | 14 | 245 | 519 (XOddCouple) | 0 | No | switch-impl | 2 | XOddCouple | Yes (via XOddCouple) | ~C+ |
 | ODDOSCAR (Morph) | OddOscar | Axolotl Pink `#E8839B` | 1,032 | 12 | 162 | 519 (XOddCouple) | 8 refs | No | 3 | 2 | XOddCouple | Yes (via XOddCouple) | 6.9/10 |
@@ -45,7 +45,7 @@ Seance scores are from the 24 seances held 2026-03-14.
 
 **Notes on "LFOs" column:** Value reflects number of LFO keyword occurrences in adapter `.h` file. Many engines reference LFOs in comments or coupling docs without implementing them. Zero means no LFO implementation found at all.
 
-**Notes on preset counts:** XOmnibus count = presets in `Presets/XOmnibus/` that reference the engine by canonical name. Engines with count=1 typically have one legacy/stub preset.
+**Notes on preset counts:** XOlokun count = presets in `Presets/XOlokun/` that reference the engine by canonical name. Engines with count=1 typically have one legacy/stub preset.
 
 ---
 
@@ -102,7 +102,7 @@ All bugs identified across the 24 seances, sorted by severity.
 | P2-20 | OPTIC | Zero-audio paradigm brilliant but onboarding is a barrier — no init preset that demonstrates the concept | Schulze, Kakehashi | V002 vision |
 | P2-21 | OBLONG (Bob) | CuriosityEngine is the soul but under-routed — most interesting parameter has fewest modulation paths; no aftertouch | 5 ghosts | 7.x/10 |
 | P2-22 | OBSIDIAN | Velocity-to-timbre mapping absent; velocity only scales amplitude | Vangelis, Smith | D001 violation |
-| P2-23 | ENGINES: Osprey, Osteria, Oceanic, Orbital, Organon, Oracle, Ouroboros, Origami, Obsidian | Zero presets in XOmnibus Presets/ (count = 0 or 1 stub) — no factory presets ship for these engines | All ghosts | Critical for usability |
+| P2-23 | ENGINES: Osprey, Osteria, Oceanic, Orbital, Organon, Oracle, Ouroboros, Origami, Obsidian | Zero presets in XOlokun Presets/ (count = 0 or 1 stub) — no factory presets ship for these engines | All ghosts | Critical for usability |
 
 ---
 
@@ -241,7 +241,7 @@ Every engine in the fleet except **OVERBITE (Bite)** has zero aftertouch impleme
 
 ### Zero Mod Wheel Processing
 
-No engine shows CC1 (mod wheel) processing in the XOmnibus adapter layer. Some standalone instruments had mod wheel; the adapters strip it.
+No engine shows CC1 (mod wheel) processing in the XOlokun adapter layer. Some standalone instruments had mod wheel; the adapters strip it.
 
 ### Velocity-to-Timbre Status
 
@@ -286,7 +286,7 @@ All 24 engines implement `applyCouplingInput` and `getSampleForCoupling`. Qualit
 
 Targets are approximate based on gallery size and engine role.
 
-| Engine | XOmnibus Presets | Standalone Presets | Target | Gap | Status |
+| Engine | XOlokun Presets | Standalone Presets | Target | Gap | Status |
 |--------|-----------------|-------------------|--------|-----|--------|
 | ODDFELIX (Snap) | 245 | 519 (XOddCouple) | 200 | Met | Healthy |
 | ODDOSCAR (Morph) | 162 | 519 (XOddCouple) | 200 | -38 | Slightly thin |
@@ -295,7 +295,7 @@ Targets are approximate based on gallery size and engine role.
 | OBLONG (Bob) | 347 | 0 | 200 | Met | Very healthy |
 | OBESE (Fat) | 159 | 0 | 150 | Met | Acceptable |
 | ONSET | 126 | — | 120 | Met | Healthy |
-| OVERWORLD | 53 | 280 | 120 | -67 | Thin in XOmnibus |
+| OVERWORLD | 53 | 280 | 120 | -67 | Thin in XOlokun |
 | OPAL | 120 | 150 | 150 | Met | Healthy |
 | OVERBITE (Bite) | 71 | 0 | 150 | -79 | Thin |
 | ORGANON | 146 | — | 120 | Met | Healthy |
@@ -306,14 +306,14 @@ Targets are approximate based on gallery size and engine role.
 | ORIGAMI | 1 | — | 100 | -99 | No presets (1 stub) |
 | ORACLE | 1 | — | 100 | -99 | No presets (1 stub) |
 | OBSCURA | 1 | — | 100 | -99 | No presets (1 stub) |
-| OCEANIC | 1 | 34 | 100 | -99 | No XOmnibus presets |
+| OCEANIC | 1 | 34 | 100 | -99 | No XOlokun presets |
 | OCELOT | 0 | 16 | 80 | -80 | Zero presets |
 | OSPREY | 0 | — | 80 | -80 | Zero presets |
 | OSTERIA | 0 | — | 80 | -80 | Zero presets |
 | ORBITAL | 1 | — | 100 | -99 | No presets (1 stub) |
 | OWLFISH | 0 | 16 | 80 | -80 | Zero presets |
 
-**Total XOmnibus presets:** 1,625
+**Total XOlokun presets:** 1,625
 **By mood:** Foundation=286, Atmosphere=281, Entangled=346, Prism=321, Flux=217, Aether=174
 **Thinnest mood:** Aether (174) and Flux (217) are significantly behind Entangled (346). Consider targeted Aether and Flux preset generation passes.
 
@@ -336,13 +336,13 @@ Targets are approximate based on gallery size and engine role.
 | OPAL | Yes (XOpal) | xopal_concept_brief.md | xopal_phase1_architecture.md | Seance 16 | |
 | ORGANON | Native | xorganon_concept_brief.md | xo_organon_phase1_architecture.md | Seance 22 | |
 | OUROBOROS | Native | xouroboros_concept_brief.md | xo_ouroboros_phase1_architecture.md | Seance 9 | |
-| OBSIDIAN | Native | xobsidian_design_spec.md | xomnibus_engine_roadmap_v3.md | Seance 20 | |
+| OBSIDIAN | Native | xobsidian_design_spec.md | xolokun_engine_roadmap_v3.md | Seance 20 | |
 | ORIGAMI | Native | xorigami_design_spec.md | xorigami_design_spec.md | Seance 4 | |
 | ORACLE | Native | xoracle_design_spec.md | xoracle_design_spec.md | Seance 21 | |
 | OBSCURA | Native | xobscura_design_spec.md | xobscura_design_spec.md | Seance 2 | |
 | OCEANIC | Yes (XOceanic) | xoceanic_concept_brief.md | xoceanic_master_spec.md | Seance 10 | Best spec of Vol.3 |
 | OCELOT | Yes (XOcelot) | xocelot_concept_brief.md | Partial | Seance 3 | Macro deadness not documented |
-| OVERBITE (Bite) | Yes (XOppossum) | xoverbite_concept_brief.md | docs/xomnibus_integration_spec.md | Seance 13 | Note: params use plain names, NOT poss_ prefix |
+| OVERBITE (Bite) | Yes (XOppossum) | xoverbite_concept_brief.md | docs/xolokun_integration_spec.md | Seance 13 | Note: params use plain names, NOT poss_ prefix |
 | ORBITAL | Native | xorbital_concept_brief.md | xorbital_architecture_blueprint.md | Seance 5 | |
 | OPTIC | Native | xoptic_concept_brief.md | Partial | Seance 6 | |
 | OBLIQUE | Native | xoblique_concept_brief.md | Partial | Seance 19 | Lowest score — docs reflect thin state |
@@ -509,7 +509,7 @@ Given what the Grand Survey found, here is recommended allocation for 11 subsequ
 - Sound Design Guide update for 4 missing engines (OCELOT, OSTINATO, OPENSKY, OCEANDEEP)
 - Seance findings incorporated into per-engine CLAUDE.md files
 - Final coupling matrix smoke test (all 24 engines × 13 coupling types)
-- Deliverable: XOmnibus v1.0 feature-complete
+- Deliverable: XOlokun v1.0 feature-complete
 
 ---
 
@@ -517,14 +517,14 @@ Given what the Grand Survey found, here is recommended allocation for 11 subsequ
 
 | Repo | Source Lines | Presets | CMakeLists | CLAUDE.md | auval Documented |
 |------|------------|---------|-----------|----------|-----------------|
-| XOblongBob | 15,066 | 0 (in XOmnibus: 347) | Yes | Yes | Yes (per MEMORY.md) |
-| XOdyssey | 6,835 | 0 (in XOmnibus: 379) | Yes | Yes | Yes (per MEMORY.md) |
-| XOverdub | 3,563 | 0 (in XOmnibus: 188) | Yes | Yes | Yes (per MEMORY.md) |
-| XOppossum (OVERBITE) | 1,004,823* | 0 (in XOmnibus: 71) | Yes | Yes | Yes (per MEMORY.md) |
+| XOblongBob | 15,066 | 0 (in XOlokun: 347) | Yes | Yes | Yes (per MEMORY.md) |
+| XOdyssey | 6,835 | 0 (in XOlokun: 379) | Yes | Yes | Yes (per MEMORY.md) |
+| XOverdub | 3,563 | 0 (in XOlokun: 188) | Yes | Yes | Yes (per MEMORY.md) |
+| XOppossum (OVERBITE) | 1,004,823* | 0 (in XOlokun: 71) | Yes | Yes | Yes (per MEMORY.md) |
 | XOverworld | 9,764 | 280 | Yes | Yes | Yes (per MEMORY.md) |
 | XOceanic | 2,032 | 34 | Yes | Yes | — |
 | XOwlfish | 2,615 | 16 | Yes | Yes | — |
-| XObese | 10,332 | 0 (in XOmnibus: 159) | Yes | Yes | Yes (documented in CLAUDE) |
+| XObese | 10,332 | 0 (in XOlokun: 159) | Yes | Yes | Yes (documented in CLAUDE) |
 | XOddCouple (ODDFELIX+ODDOSCAR) | 76 files | 519 | Yes | Yes | — |
 | XOcelot | 23 files | 16 | Yes | Yes | — |
 | XOpal | 10 files | 150 | Yes | Yes | — |
@@ -553,7 +553,7 @@ Given what the Grand Survey found, here is recommended allocation for 11 subsequ
 | 11 | Owlfish | 7.1/10 | Mixtur-Trautonium novel | Zero LFOs; dead morphGlide; no presets |
 | 12 | Obese (Fat) | 6.6/10 | 4-filter stereo exceptional | Zero LFOs; no CC |
 | 12 | Obsidian | 6.6/10 | Phase distortion correct | R channel bug; 1 preset |
-| 13 | Ocelot | 6.4/10 | EcosystemMatrix novel | Dead macros; 0 presets in XOmnibus |
+| 13 | Ocelot | 6.4/10 | EcosystemMatrix novel | Dead macros; 0 presets in XOlokun |
 | 14 | Morph (OddOscar) | 6.9/10 | Moog ladder excellent | Zero LFOs; no aftertouch |
 | 15 | Obscura | High | Physics IS synthesis (unanimous) | 1 preset |
 | 16 | Snap (OddfeliX) | ~C+ | Transient precision | M4 no-op; zero LFOs |

@@ -3,7 +3,7 @@
 
 OWLFISH (Abyssal Gold #B8860B, Mixtur-Trautonium oscillator, owl_ prefix)
 pairs with 12 partner engines — 3 presets per pair = 36 presets total.
-All written to Presets/XOmnibus/Entangled/ (mood: Entangled).
+All written to Presets/XOlokun/Entangled/ (mood: Entangled).
 
 Usage:
     python Tools/xpn_owlfish_coupling_pack.py
@@ -343,14 +343,14 @@ def make_preset(partner_key, variant_idx, rng, count):
 # ---------------------------------------------------------------------------
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate OWLFISH coupling presets for XOmnibus."
+        description="Generate OWLFISH coupling presets for XOlokun."
     )
-    default_out = pathlib.Path(__file__).parent.parent / "Presets" / "XOmnibus" / "Entangled"
+    default_out = pathlib.Path(__file__).parent.parent / "Presets" / "XOlokun" / "Entangled"
     parser.add_argument(
         "--output-dir",
         type=pathlib.Path,
         default=default_out,
-        help="Directory to write .xometa files (default: Presets/XOmnibus/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
     )
     parser.add_argument(
         "--dry-run",

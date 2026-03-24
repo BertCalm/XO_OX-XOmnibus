@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-OWARE was added to XOmnibus on 2026-03-20. It is the newest engine in the fleet. It has no seance score yet — this retreat is its first formal examination. Twenty presets exist spanning Foundation, Atmosphere, Prism, Entangled, and Flux moods. The 7 Pillars are all implemented: Material Continuum, Mallet Physics, Sympathetic Resonance Network, Resonator Body, Buzz Membrane, Breathing Gamelan shimmer, Thermal Drift.
+OWARE was added to XOlokun on 2026-03-20. It is the newest engine in the fleet. It has no seance score yet — this retreat is its first formal examination. Twenty presets exist spanning Foundation, Atmosphere, Prism, Entangled, and Flux moods. The 7 Pillars are all implemented: Material Continuum, Mallet Physics, Sympathetic Resonance Network, Resonator Body, Buzz Membrane, Breathing Gamelan shimmer, Thermal Drift.
 
 This is an instrument with deep academic lineage: Chaigne and Doutaut (1997) for balafon physics, Rossing (2000) for gamelan, Fletcher and Rossing (1998) for marimba and vibraphone, Adrien (1991) and Bilbao (2009) for modal synthesis. The engine earns citation. Now it must earn music.
 

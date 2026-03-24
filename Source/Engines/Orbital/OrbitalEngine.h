@@ -11,12 +11,12 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
 //  ORBITAL ENGINE — 64-Partial Additive Synthesis
-//  XOmnibus Engine Module | Accent: Warm Red #FF6B6B
+//  XOlokun Engine Module | Accent: Warm Red #FF6B6B
 //
 //  Creature: The Circling Current
 //  Habitat:  Open Water — the vast middle of the XO_OX water column
@@ -500,7 +500,7 @@ public:
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : outL;
 
         //-- ParamSnapshot: cache all parameter values once per block -----------
-        // This is the XOmnibus ParamSnapshot pattern. Loading atomic floats
+        // This is the XOlokun ParamSnapshot pattern. Loading atomic floats
         // once per block (not per sample) eliminates cache-line contention
         // and gives the compiler freedom to optimize the inner loop.
         const int   profileAIndex     = static_cast<int> (p_profileA->load());
@@ -1631,4 +1631,4 @@ private:
     std::atomic<float>* p_voiceMode       = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

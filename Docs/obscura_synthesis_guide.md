@@ -2,14 +2,14 @@
 
 **Engine:** OBSCURA | **Accent:** Daguerreotype Silver `#8A9BA8`
 **Parameter prefix:** `obscura_` | **Max voices:** 8
-**XOmnibus seance verdict:** High / unanimous — "The physics IS the synthesis."
+**XOlokun seance verdict:** High / unanimous — "The physics IS the synthesis."
 **D003 status:** Fully compliant
 
 ---
 
 ## Introduction: The Giant Squid at the Bottom of the World
 
-OBSCURA is the only engine in the XOmnibus fleet where the synthesis algorithm and the physical object being simulated are the same thing. When you adjust OBSCURA's stiffness, you are changing a real spring constant in a real (simulated) physical system. The sound you hear is not a metaphor for stiffness — it is what stiffness sounds like, exactly as physics dictates.
+OBSCURA is the only engine in the XOlokun fleet where the synthesis algorithm and the physical object being simulated are the same thing. When you adjust OBSCURA's stiffness, you are changing a real spring constant in a real (simulated) physical system. The sound you hear is not a metaphor for stiffness — it is what stiffness sounds like, exactly as physics dictates.
 
 Every other synthesis method in common use — subtractive, additive, FM, wavetable — works by computing waveforms: shapes described mathematically and then transformed. OBSCURA does not do this. It simulates a chain of 128 masses connected by springs, tracks where each mass is right now and where it was one step ago, applies the laws of Newtonian mechanics to each mass at every step, and then reads the resulting chain displacement pattern as a waveform. The physics comes first. The sound emerges from the physics. There is no waveform being approximated — there is only the actual state of the physical system at this moment, read out by a scanner moving along the chain at audio rate.
 
@@ -39,7 +39,7 @@ The distinction matters because physical systems have properties that formulas c
 
 **True modal synthesis.** Modal synthesis means synthesizing sound by simulating the modes of a resonant object (how it "wants" to vibrate). OBSCURA does not explicitly compute modes — the modes emerge from the chain's boundary conditions and spring topology. Change the boundary mode, the stiffness, the chain length: the modes change, not because you specified them, but because the physics of the system with those parameters has those modes. This self-consistency is fundamentally different from any additive method.
 
-**Physical coupling.** When another engine's audio is sent to OBSCURA via `AudioToFM` coupling, that audio is applied as a distributed force across the 128-mass chain — weighted by a sine function to create standing-wave patterns. The chain responds to this force as a physical object responds to being pushed. The coupling is not a mixer — it is a force acting on a resonant body. The chain's existing vibration state determines how it responds. A stiff chain responds differently to the same force than a slack chain. This is unique in the XOmnibus fleet.
+**Physical coupling.** When another engine's audio is sent to OBSCURA via `AudioToFM` coupling, that audio is applied as a distributed force across the 128-mass chain — weighted by a sine function to create standing-wave patterns. The chain responds to this force as a physical object responds to being pushed. The coupling is not a mixer — it is a force acting on a resonant body. The chain's existing vibration state determines how it responds. A stiff chain responds differently to the same force than a slack chain. This is unique in the XOlokun fleet.
 
 **Pluck/bow duality.** The transition between a plucked response (Gaussian impulse, no sustain force) and a bowed response (continuous Gaussian force) is a parameter, not a preset. Both behaviors emerge from the same physical model — the difference is only whether energy is injected once or continuously. A real instrument cannot be changed from plucked to bowed by turning a knob; OBSCURA can, because the underlying physics supports both excitation modes.
 
@@ -227,7 +227,7 @@ Initial chain displacement pattern before the first excitation impulse. **Sine:*
 
 ### Macro Parameters
 
-XOmnibus standard 4-macro layout, each mapped to core physical quantities:
+XOlokun standard 4-macro layout, each mapped to core physical quantities:
 
 **`obscura_macroCharacter`** [0.0] — CHARACTER
 Increases stiffness (+0.3) and nonlinearity (+0.2). Turning CHARACTER up moves OBSCURA from warm to metallic, from marimba to bell, from wood to glass. This is the fastest way to shift the fundamental acoustic character of the instrument.
@@ -281,7 +281,7 @@ The Yamaha VL1 (Virtual Acoustic, 1994) was the first commercial physical modeli
 
 The VL1 had approximately 100 parameters, most with physical interpretations (bore shape, reed stiffness, mouth pressure, embouchure). It was notoriously difficult to program — every parameter affected the physical system in ways that could easily produce no sound, unusable noise, or unpredictable behavior. This was the first time the "physics IS the synthesis" problem was faced commercially: how do you make a physically-modeled instrument accessible to non-physicists?
 
-OBSCURA faces the same challenge. The solution in XOmnibus is the macro layer: four macro parameters (CHARACTER, MOVEMENT, COUPLING, SPACE) each map to physically meaningful combinations of lower-level physics parameters. CHARACTER = stiffness + nonlinearity is an "acoustic hardness" control. SPACE = damping is an "acoustic liveness" control. These abstractions let players work at the level of "harder/softer" and "livelier/deader" without knowing spring constants.
+OBSCURA faces the same challenge. The solution in XOlokun is the macro layer: four macro parameters (CHARACTER, MOVEMENT, COUPLING, SPACE) each map to physically meaningful combinations of lower-level physics parameters. CHARACTER = stiffness + nonlinearity is an "acoustic hardness" control. SPACE = damping is an "acoustic liveness" control. These abstractions let players work at the level of "harder/softer" and "livelier/deader" without knowing spring constants.
 
 ---
 

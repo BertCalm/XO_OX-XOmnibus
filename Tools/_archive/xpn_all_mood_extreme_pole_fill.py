@@ -20,7 +20,7 @@ import math
 
 random.seed(42)
 
-BASE = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus"
+BASE = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun"
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 

@@ -210,7 +210,7 @@ The perceptual system. The owl's eyes don't create light — they amplify the fa
   - Makeup gain: automatic (computed from ratio + threshold — no user parameter needed)
   - At extreme settings, this reveals micro-details in the subharmonic output that would normally be inaudible — the owlfish seeing individual photons
 - **Resonant lowpass filter:**
-  - CytomicSVF-based (consistent with XOmnibus DSP library)
+  - CytomicSVF-based (consistent with XOlokun DSP library)
   - Cutoff: 20 Hz to 20 kHz (can be tuned to subharmonic frequencies)
   - Resonance: 0 to 1 (self-oscillation at max — the filter sings)
   - Key tracking: 0 to 100%

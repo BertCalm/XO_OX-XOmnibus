@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // LushReverb — Algorithmic stereo reverb (Schroeder-Moorer architecture).
@@ -301,4 +301,4 @@ private:
     int stereoSpread = 23;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

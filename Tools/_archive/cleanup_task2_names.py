@@ -13,7 +13,7 @@ import random
 
 random.seed(42)  # reproducible
 
-PRESETS_ROOT = "/home/user/XO_OX-XOmnibus/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
 
 # Name generation pools based on DNA dimensions
 BRIGHT_COLD = ["Crystal", "Glass", "Ice", "Frost", "Silver", "Prism", "Quartz", "Mirror", "Arctic", "Chrome"]

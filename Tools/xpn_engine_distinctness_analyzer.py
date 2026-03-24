@@ -35,7 +35,7 @@ from collections import defaultdict
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent.resolve()
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 

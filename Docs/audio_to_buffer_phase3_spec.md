@@ -49,7 +49,7 @@ without modifying the matrix. The `IAudioBufferSink` interface breaks this depen
 #pragma once
 #include "AudioRingBuffer.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // IAudioBufferSink — implemented by any engine that can receive an
@@ -98,7 +98,7 @@ public:
                                      bool frozen) noexcept = 0;
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 ### 1.3 OpalEngine conformance
@@ -255,7 +255,7 @@ void clearRoutes()
 ### 2.4 Normalled routes
 
 Normalled routes (set via `addNormalledDefaults()`) bypass cycle detection by convention —
-they are authored by the XOmnibus team and are guaranteed acyclic. The `isNormalled` flag can
+they are authored by the XOlokun team and are guaranteed acyclic. The `isNormalled` flag can
 be used as the guard:
 
 ```cpp
@@ -378,7 +378,7 @@ toggle all remain consistent — the CC is not a separate code path.
 
 **Rationale for CC#64**: The sustain pedal is universally available on MIDI keyboards, maps
 intuitively to "hold this moment", and is distinct from any parameter CC assignments already
-in use across the XOmnibus fleet.
+in use across the XOlokun fleet.
 
 ### 3.4 FREEZE and `receiveAudioBuffer()`
 
@@ -447,7 +447,7 @@ for (const auto& existing : *current)
 
 ### 4.3 Slot indices: source slot vs. receiver slot
 
-`route.sourceSlot` identifies which engine slot in the XOmnibus grid is the source. It is also
+`route.sourceSlot` identifies which engine slot in the XOlokun grid is the source. It is also
 the index passed to `IAudioBufferSink::getGrainBuffer(slot)`. This means that on the receiver,
 slot N holds audio from the source engine that occupies grid slot N — not from the Nth route
 registered.

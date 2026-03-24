@@ -13,7 +13,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -643,7 +643,7 @@ struct OspreyVoice
 //  -------------------------------------------------------------------------
 //  The osprey dives. Sound rises from the collision of wind and water.
 //
-//  Implements the SynthEngine interface for XOmnibus integration.
+//  Implements the SynthEngine interface for XOlokun integration.
 //  All DSP is inline in this header per XO_OX architecture rules.
 //==============================================================================
 class OspreyEngine : public SynthEngine
@@ -2051,4 +2051,4 @@ private:
     std::atomic<float>* paramLfo2Shape         = nullptr;  // 0=Sine, 1=Tri, 2=Saw, 3=Sq, 4=S&H
 };
 
-} // namespace xomnibus
+} // namespace xolokun

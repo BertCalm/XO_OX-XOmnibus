@@ -191,4 +191,4 @@ These parameter interactions appear in no current preset and no scripture verse 
 ---
 
 *Briefing prepared by the Retreat Accelerator — 2026-03-16*
-*Source files: `Source/Engines/Oracle/OracleEngine.h` | `Presets/XOmnibus/*/Oracle_*.xometa` | `Docs/seance_cross_reference.md` | `scripture/the-scripture.md`*
+*Source files: `Source/Engines/Oracle/OracleEngine.h` | `Presets/XOlokun/*/Oracle_*.xometa` | `Docs/seance_cross_reference.md` | `scripture/the-scripture.md`*

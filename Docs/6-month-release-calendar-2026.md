@@ -1,4 +1,4 @@
-# XOmnibus 6-Month Release Calendar
+# XOlokun 6-Month Release Calendar
 **March 23 -- September 27, 2026 | 26 Weeks**
 **Created:** 2026-03-20
 
@@ -28,7 +28,7 @@ Each week has:
 
 **CRITICAL (below 7.0):** OBLIQUE ~7.2 est., OCELOT 6.4, OBESE 6.6, OBSIDIAN ~8.2 est., ODDOSCAR 6.9, OLE 7.0
 **NEEDS WORK (7.0--7.9):** ODDFELIX ~7.0, OCEANIC 7.1, OWLFISH 7.1, OTTONI 7.2, OBRIX 7.2, OBLIQUE ~7.2, OVERDUB 7.4, OHM 7.6, ODYSSEY 7.6, OVERWORLD 7.6, OVERTONE 7.6, OCEANDEEP 7.8, OMBRE ~8.0, OBBLIGATO 7.8, OUTWIT 7.9
-**GOOD+ (8.0+):** OSTINATO 8.7, OUTWIT 8.7, ORACLE 8.6, ORCA ~8.6, OUIE 8.5, ORBWEAVE 8.4, OVERLAP 8.4, OCTOPUS 8.3, OBSIDIAN ~8.2, OPENSKY 8.1
+**GOOD+ (8.0+):** OSTINATO 8.7, ORACLE 8.6, ORCA ~8.6, OUIE 8.5, ORBWEAVE 8.4, OVERLAP 8.4, OCTOPUS 8.3, OBSIDIAN ~8.2, OPENSKY 8.1
 
 ---
 
@@ -45,7 +45,7 @@ V1.0 LAUNCH + ORBWEAVE preset gap fill (target: 150 factory presets)
 **Secondary** `CONTENT`
 Launch day social media blitz (see v1-launch-plan-2026-03-20.md). Press kit live. Download page live. Signal feed inaugural launch post.
 
-**Narrative:** *"42 engines. ~22,000 presets. Cross-engine coupling. Free. XOmnibus V1 is here."*
+**Narrative:** *"42 engines. ~22,000 presets. Cross-engine coupling. Free. XOlokun V1 is here."*
 
 **Hard gates this week:** Patreon URL fixed, ORBWEAVE presets written, 5+ hero audio clips on site, README/CONTRIBUTING/SECURITY live, preset silence audit complete.
 
@@ -88,7 +88,7 @@ CRITICAL engine sprint #3: OBLIQUE (~7.2 est.) full re-seance with new DSP. Expo
 **Secondary** `PRESET`
 Preset expansion: 50 new presets across OCEANIC (7.1), OWLFISH (7.1), OTTONI (7.2) -- the Tier 2 engines closest to 7.0.
 
-**Narrative:** *"Every engine in XOmnibus deserves to be heard at its best. This week: six engines got sharper."*
+**Narrative:** *"Every engine in XOlokun deserves to be heard at its best. This week: six engines got sharper."*
 
 **Milestone check:** All 6 CRITICAL engines should now be at 7.5+ (estimated). If any are lagging, carry into Month 2.
 
@@ -188,9 +188,9 @@ Fleet quality blitz #3: OVERTONE (7.6) -- implement remaining 7 voices (currentl
 OBRIX Awakening preset audio demos published on XO-OX.org.
 
 **Secondary** `FEAT`
-SDK update: publish engine development tutorial on Field Guide. "How to Build an XOmnibus Engine in 200 Lines."
+SDK update: publish engine development tutorial on Field Guide. "How to Build an XOlokun Engine in 200 Lines."
 
-**Narrative:** *"XOmnibus is not just a synth -- it is a platform. Here is how to build your own engine for it."*
+**Narrative:** *"XOlokun is not just a synth -- it is a platform. Here is how to build your own engine for it."*
 
 ---
 
@@ -232,9 +232,9 @@ Field Guide post: "The Water Column Atlas -- 42 Engines Mapped." Updated Aquariu
 XPN Expansion Pack #1: "Foundation Kit" -- ONSET percussion + OBLONG bass + ODDFELIX leads. 128 programs, cover art, MPC-ready. Requires WAV rendering session.
 
 **Secondary** `CONTENT`
-Elektronauts / MPC community outreach: post XPN pack announcement with installation walkthrough. "XOmnibus presets, on your MPC, no computer needed."
+Elektronauts / MPC community outreach: post XPN pack announcement with installation walkthrough. "XOlokun presets, on your MPC, no computer needed."
 
-**Narrative:** *"XOmnibus leaves the computer. The Foundation Kit puts 128 programs on your MPC. Tap the pad, hear the engine."*
+**Narrative:** *"XOlokun leaves the computer. The Foundation Kit puts 128 programs on your MPC. Tap the pad, hear the engine."*
 
 **GATE:** WAV audio must be rendered before XPN ships. Schedule hardware session early this week.
 
@@ -304,7 +304,7 @@ V2 architecture milestone: 5th-slot fusion mechanic prototype. This is the prere
 **Secondary** `BRIX` `CONTENT`
 OBRIX: "Master Class" Field Guide post -- advanced sound design techniques, Drift Bus theory, Journey macro mapping. Includes 5 downloadable .xometa tutorial presets.
 
-**Narrative:** *"OBRIX is the most complex engine in XOmnibus. Here is how to use every corner of it."*
+**Narrative:** *"OBRIX is the most complex engine in XOlokun. Here is how to use every corner of it."*
 
 ---
 
@@ -341,7 +341,7 @@ Kitchen Essentials Collection: engine design phase. 28 collection-specific engin
 Field Guide post: "What is a Collection?" -- tease the V2 expansion concept without revealing specifics. Frame around the 5th-slot fusion mechanic.
 OBRIX: 15 new "place presets" -- OBRIX sounds inspired by specific locations (coral reefs, tide pools, volcanic vents).
 
-**Narrative:** *"XOmnibus V1 is 42 engines that couple. V2 asks: what if the coupling itself became an instrument?"*
+**Narrative:** *"XOlokun V1 is 42 engines that couple. V2 asks: what if the coupling itself became an instrument?"*
 
 ---
 
@@ -356,7 +356,7 @@ OBRIX: 15 new "place presets" -- OBRIX sounds inspired by specific locations (co
 V1.5 Feature Release: SDK Phase 2 (improved third-party engine API), SNAP AmpToFilter coupling wire (deferred from V1.1), AudioToBuffer Phase 3, Drift FX gap closure (1,353 standalone params exposed).
 
 **Secondary** `CONTENT`
-Signal feed: V1.5 release notes. Developer-focused outreach: "Build an engine for XOmnibus" call-to-action with SDK tutorial link.
+Signal feed: V1.5 release notes. Developer-focused outreach: "Build an engine for XOlokun" call-to-action with SDK tutorial link.
 
 **Narrative:** *"V1.5 closes the gaps. The coupling system is wider. The FX are deeper. The SDK is ready for third-party engines."*
 
@@ -383,7 +383,7 @@ If Collection not ready: ship a 1,000-preset mega-expansion across the full flee
 **Secondary** `CONTENT`
 Community Showcase Event: "The Aquarium Live" -- curated playlist of the best community patches from 6 months of challenges. Published on XO-OX.org + YouTube compilation.
 
-**Narrative:** *"Six months ago, XOmnibus launched with 42 engines. Today, the community has found coupling combinations we never imagined. Here are the best."*
+**Narrative:** *"Six months ago, XOlokun launched with 42 engines. Today, the community has found coupling combinations we never imagined. Here are the best."*
 
 **GATE:** Kitchen Essentials requires 5th-slot fusion mechanic (Week 19). If not production-ready, defer to Month 7 and ship preset expansion instead.
 

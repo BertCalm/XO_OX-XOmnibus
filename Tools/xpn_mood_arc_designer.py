@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_mood_arc_designer.py — Mood Arc Designer for XPN packs
-XO_OX XOmnibus Tools Suite
+XO_OX XOlokun Tools Suite
 
 Analyzes and optimizes the emotional journey across pad banks in an XPN pack.
 Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
@@ -235,7 +235,7 @@ def build_report(
 
     # Header
     sections.append("=" * 72)
-    sections.append("XPN MOOD ARC DESIGNER — XO_OX XOmnibus Tools")
+    sections.append("XPN MOOD ARC DESIGNER — XO_OX XOlokun Tools")
     sections.append("=" * 72)
 
     # Original arc

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOmnibus Preset Validator — Comprehensive .xometa Quality Assurance
+XOlokun Preset Validator — Comprehensive .xometa Quality Assurance
 
 Validates all factory presets for:
   1. Schema compliance (required fields, types, ranges)
@@ -31,7 +31,7 @@ import os
 from pathlib import Path
 from collections import defaultdict, Counter
 
-PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -368,7 +368,7 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
         print("WARNING: No .xometa files found")
         return 1
 
-    print(f"XOmnibus Preset Validator")
+    print(f"XOlokun Preset Validator")
     print(f"{'=' * 60}")
     print(f"Scanning: {PRESET_DIR}")
     print(f"Found: {len(files)} preset files")

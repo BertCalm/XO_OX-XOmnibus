@@ -14,7 +14,7 @@
 ## Note on Coverage Discrepancy
 
 The task brief stated current coverage as 31% (174/561). A full scan of all .xometa files in
-`Presets/XOmnibus/Entangled/` (1,527 files) produces a materially different result: **484 of 561
+`Presets/XOlokun/Entangled/` (1,527 files) produces a materially different result: **484 of 561
 pairs are already covered (86.3%)**. The 30% sprint plan (wave 71 doc) was written from a
 137/561 baseline. Since then, extensive coupling preset generation across waves 71–present has
 closed the gap dramatically.

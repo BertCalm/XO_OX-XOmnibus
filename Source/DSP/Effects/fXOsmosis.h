@@ -4,7 +4,7 @@
 #include "../CytomicSVF.h"
 #include "Saturator.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXfXOsmosis — "Membrane Transfer" boutique effect.
@@ -211,4 +211,4 @@ private:
     float mix           = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -213,7 +213,7 @@ Note: 8 engines shown in "MISSING" column above (Obbligato, Ole, Ohm, Ottoni, Or
 
 ## Intentionally Left Without Mod Wheel
 
-**Optic (OPTIC)** — `OpticEngine.h` accepts `MidiBuffer& /*midi*/` — the parameter is commented out entirely. Optic is XOmnibus's "zero-audio identity" engine (Blessing B005): it generates no sound, only modulation signals for other engines. It has no note-on/off, no aftertouch, and does not require expression input. D006 does not apply.
+**Optic (OPTIC)** — `OpticEngine.h` accepts `MidiBuffer& /*midi*/` — the parameter is commented out entirely. Optic is XOlokun's "zero-audio identity" engine (Blessing B005): it generates no sound, only modulation signals for other engines. It has no note-on/off, no aftertouch, and does not require expression input. D006 does not apply.
 
 ---
 

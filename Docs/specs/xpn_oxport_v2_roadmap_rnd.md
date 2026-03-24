@@ -211,7 +211,7 @@ report = session.export_report(fmt="json")
 
 ### C++ automation via subprocess
 
-XOmnibus render automation can call Oxport programmatically without parsing print output:
+XOlokun render automation can call Oxport programmatically without parsing print output:
 
 ```cpp
 // In a worker thread — never the audio thread

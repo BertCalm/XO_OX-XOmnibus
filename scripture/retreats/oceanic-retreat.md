@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-**0 factory presets** in XOmnibus. 34 presets in standalone XOceanic repo (not integrated).
+**0 factory presets** in XOlokun. 34 presets in standalone XOceanic repo (not integrated).
 
 Sound design guide described OCEANIC as "paraphonic string ensemble" with BBD chorus and Chromatophore pedalboard — parameters `oceanic_ensemble`, `oceanic_filterCutoff`, `oceanic_pedalMix`, `oceanic_abyssMix`, `oceanic_freezeMix`, `oceanic_chromRate`. **None of these are real parameters.** (Actual prefix is `ocean_`.) The guide described a different engine entirely. Corrected during Phase R7.
 
@@ -124,7 +124,7 @@ Four verses to be inscribed in Book VII — Engine-Specific Verses.
 
 ## Documentation Correction Notes
 
-The following was incorrect in `Docs/xomnibus_sound_design_guides.md` before this retreat:
+The following was incorrect in `Docs/xolokun_sound_design_guides.md` before this retreat:
 - Engine type: "paraphonic string ensemble" → corrected to "swarm particle synthesis"
 - Voice count: "1 (paraphonic — all 128 MIDI notes)" → corrected to "Mono/Poly2/Poly4"
 - Parameters: six fabricated parameters → replaced with actual `ocean_separation`, `ocean_alignment`, `ocean_cohesion`, `ocean_tether`, `ocean_scatter`, `ocean_subflocks`, `ocean_damping`, `ocean_waveform`, `ocean_swarmEnvAttack/Decay/Sustain/Release`, `ocean_lfo1/2Rate/Depth/Shape`, `ocean_voiceMode`, `ocean_glide`, macros

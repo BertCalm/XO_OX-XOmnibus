@@ -2,7 +2,7 @@
 """
 Generate 80 Entangled movement-XLOW presets (ENT4 suffix).
 16 corners × 5 variants = 80 presets, all with movement ≤ 0.11.
-Save to Presets/XOmnibus/Entangled/
+Save to Presets/XOlokun/Entangled/
 """
 
 import json
@@ -183,7 +183,7 @@ def make_preset(corner, variant_idx):
 
 def main():
     out_dir = os.path.join(
-        os.path.dirname(__file__), "..", "Presets", "XOmnibus", "Entangled"
+        os.path.dirname(__file__), "..", "Presets", "XOlokun", "Entangled"
     )
     out_dir = os.path.abspath(out_dir)
     os.makedirs(out_dir, exist_ok=True)

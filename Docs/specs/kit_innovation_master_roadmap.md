@@ -1,5 +1,5 @@
 # Kit Innovation Master Roadmap
-**Author**: Atlas (XOmnibus Bridge Android)
+**Author**: Atlas (XOlokun Bridge Android)
 **Date**: 2026-03-16
 **Status**: MASTER EXECUTION DOCUMENT — synthesizes all overnight R&D sessions
 **Sources**:
@@ -300,7 +300,7 @@ These concepts need a new Python tool but require no DSP, no external dependenci
 **Inputs**: Engine pair (A, B), 4 parameter states per engine, coupling direction (A→B and B→A)
 **Outputs**: Two XPN programs in one pack: Program 1 = solo versions, Program 2 = coupled versions
 **Why S-effort**: The coupling recipe tool already generates coupled renders. The new work is the comparison program structure (two programs per pack) and the A/B grouping logic. ~150 new lines.
-**Output**: Directly educates producers about XOmnibus coupling architecture. Ships as a flagship "learn the system" content type.
+**Output**: Directly educates producers about XOlokun coupling architecture. Ships as a flagship "learn the system" content type.
 
 ---
 
@@ -310,7 +310,7 @@ These concepts need a new Python tool but require no DSP, no external dependenci
 **Outputs**: Chromatic keygroup XPN with 16 rule-derived zones mapped C3–D5
 **Why S-effort**: Rule numbers are integers 0–255. OUTWIT is already built and installed. The tool instantiates OUTWIT for each rule number, renders 4 seconds, selects 16 musically interesting rules (based on known Wolfram classification: chaotic, complex, periodic, self-similar), exports as keygroup zones. Pure scripting — no new DSP.
 **Estimated code**: ~300 lines
-**Output**: First kit that captures a generative XOmnibus engine as a portable static XPN. Unique concept — no other company has an engine-archive format.
+**Output**: First kit that captures a generative XOlokun engine as a portable static XPN. Unique concept — no other company has an engine-archive format.
 
 ---
 
@@ -430,9 +430,9 @@ These concepts require numpy/scipy signal processing, structured external data a
 
 ---
 
-## TIER 3: Requires XOmnibus DSP Work (Opus-level, Engine Builds)
+## TIER 3: Requires XOlokun DSP Work (Opus-level, Engine Builds)
 
-These kit concepts require a new XOmnibus utility engine to generate, because what they need is a real-time DSP system — not a batch Python tool. The utility engines from `utility_engine_concepts.md` are exactly this tier.
+These kit concepts require a new XOlokun utility engine to generate, because what they need is a real-time DSP system — not a batch Python tool. The utility engines from `utility_engine_concepts.md` are exactly this tier.
 
 ---
 
@@ -654,7 +654,7 @@ Why: The highest cultural urgency of any concept in the document (rated "Critica
 
 **GOLDMINE #5: Coupling State Kit (T0-08) + Coupling Demonstration Pack**
 
-Why: This is XO_OX's most differentiated structural feature (the coupling architecture) made accessible to MPC producers who will never open XOmnibus. It answers "what does coupling DO" in real-time — not through documentation but through A/B pad comparison. Strong onboarding function AND genuinely educational. Tools exist. The only work is the curation session.
+Why: This is XO_OX's most differentiated structural feature (the coupling architecture) made accessible to MPC producers who will never open XOlokun. It answers "what does coupling DO" in real-time — not through documentation but through A/B pad comparison. Strong onboarding function AND genuinely educational. Tools exist. The only work is the curation session.
 
 **Immediate build path**: Use `xpn_coupling_recipes.py` to render 6 high-contrast pairs today. OVERDUB↔ORPHICA, ONSET↔OHM, OVERBITE↔OPENSKY, OPAL↔ONSET, ORACLE↔OVERDUB, OUROBOROS↔OPAL. Each pair = one Coupling State Kit. 6 kits in one 4-hour session.
 
@@ -832,6 +832,6 @@ This is what it means to have 34 synthesis engines and a philosophy: the XPN out
 
 ---
 
-*Atlas — XOmnibus Bridge Android*
+*Atlas — XOlokun Bridge Android*
 *2026-03-16*
 *Master execution document synthesized from 3 R&D source documents + full Oxport toolchain audit*

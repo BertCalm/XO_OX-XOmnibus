@@ -11,7 +11,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OrphicaMicrosound — Per-voice granular microsound engine.
@@ -663,4 +663,4 @@ private:
     std::atomic<float>*mSurf=nullptr,*mDiv=nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

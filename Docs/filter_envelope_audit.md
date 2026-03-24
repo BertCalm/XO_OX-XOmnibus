@@ -1,5 +1,5 @@
 # Filter Envelope Audit — D001 Compliance
-## XOmnibus Fleet | 2026-03-14
+## XOlokun Fleet | 2026-03-14
 
 Doctrine D001: "Velocity Must Shape Timbre."
 A filter envelope wired to DSP with a non-zero default and velocity scaling is the primary

@@ -320,7 +320,7 @@ The overtone interactions between these voices produce spectral content that bel
 
 ---
 
-## 5. XOmnibus Integration
+## 5. XOlokun Integration
 
 ### 5.1 MegaCouplingMatrix Compatibility
 

@@ -1,14 +1,14 @@
-# XOmnibus Collections — Platform Vision
+# XOlokun Collections — Platform Vision
 
 **Status:** Early vision
 **Date:** March 2026
-**Scope:** Meta-organization of all XOmnibus engines into themed Collections
+**Scope:** Meta-organization of all XOlokun engines into themed Collections
 
 ---
 
 ## The Big Picture
 
-XOmnibus is growing beyond its original engine roster. As new engines emerge — themed around cuisine, water, botany, and beyond — a higher-level organizational structure is needed. **Collections** are that structure.
+XOlokun is growing beyond its original engine roster. As new engines emerge — themed around cuisine, water, botany, and beyond — a higher-level organizational structure is needed. **Collections** are that structure.
 
 A Collection is a themed family of engine quads that share:
 - A **unifying metaphor** (culinary, celestial, scientific, etc.)
@@ -28,7 +28,7 @@ The original 26 engines are NOT one monolithic collection. They span creatures, 
 Instead, the 26 are distributed across multiple collections based on their natural identity clusters. Some collections are purely original engines; others mix originals with new engines designed to fill out the collection's quads.
 
 ```
-XOMNIBUS PLATFORM
+XOLOKUN PLATFORM
 │
 ├── COLLECTION: The Depths (Aquatic/Creature)
 │   ├── Quad: Creatures — OddfeliX, OddOscar, Ocelot, Owlfish
@@ -96,7 +96,7 @@ XOMNIBUS PLATFORM
 
 **Engines:** 8 — OddfeliX, OddOscar, Ocelot, Owlfish, Oceanic, OceanDeep, Organon, OpenSky
 **Metaphor:** The water column — from sunlit surface to abyssal trench. Creatures that swim through it, forces that shape it, skies that sit above it.
-**Visual identity:** Deep blues, teals, bioluminescent accents. The aquatic mythology that started XOmnibus.
+**Visual identity:** Deep blues, teals, bioluminescent accents. The aquatic mythology that started XOlokun.
 **Community touchpoint:** Marine journal — ocean science, underwater photography, creature illustrations, conservation stories → presets. "What does bioluminescence sound like?"
 **Synesthesia domain:** Marine imagery, sonar data, ocean depth profiles, creature behaviors → presets.
 
@@ -105,7 +105,7 @@ XOMNIBUS PLATFORM
 | **Creatures** | OddfeliX (Neon Tetra Blue), OddOscar (Gill Pink), Ocelot (Tawny), Owlfish (Abyssal Gold) | Character instruments with animal souls. Each engine embodies its creature's movement, personality, habitat. |
 | **Waters** | Oceanic (Phosphorescent Teal), OceanDeep (Trench Violet), Organon (Bioluminescent Cyan), OpenSky (Sunburst Orange) | Environment engines spanning the full water column — surface shimmer to crushing depth to the sky above. Organon bridges biology and environment (bioluminescence is both creature and place). |
 
-*The Depths is the spiritual origin of XOmnibus. The aquatic mythology, the creature characters, the water column — this is where it all started. Making it its own collection honors that history while giving it room to grow. Future aquatic engines have a clear home.*
+*The Depths is the spiritual origin of XOlokun. The aquatic mythology, the creature characters, the water column — this is where it all started. Making it its own collection honors that history while giving it room to grow. Future aquatic engines have a clear home.*
 
 ---
 
@@ -156,7 +156,7 @@ XOMNIBUS PLATFORM
 | **Forces** | Odyssey (Violet), Orbital (Warm Red), Ouroboros (Strange Attractor Red) + 1 future engine | Dynamic system engines — voyage/drift, celestial mechanics, self-eating feedback. A fourth engine (gravity? magnetism? entropy?) completes the physics quartet. |
 | **Edges** | Obese (Hot Pink), Overbite (Fang White), Oblique (Prism Violet), Ouïe (Hammerhead Steel) | The aggressive quad. Saturation, bite, prismatic refraction, hammer percussion. These engines push past polite. They break things on purpose. |
 
-*The Frontier is for users who want to go further than "nice sounds." Forces provides the intellectual edge (chaos theory, orbital mechanics). Edges provides the sonic edge (distortion, aggression). Together they define the boundary of what XOmnibus can do.*
+*The Frontier is for users who want to go further than "nice sounds." Forces provides the intellectual edge (chaos theory, orbital mechanics). Edges provides the sonic edge (distortion, aggression). Together they define the boundary of what XOlokun can do.*
 
 ---
 
@@ -165,7 +165,7 @@ XOMNIBUS PLATFORM
 **Engines:** 28 standard + 4 secret + 8 Farmers Market (TBD) = up to 40 engines
 **Metaphor:** The professional kitchen — chefs, surfaces, ingredients, preservation, service
 **Visual identity:** Warm whites, copper tones, kitchen materials. Warm palette families per quad.
-**Community touchpoint:** The XOmnibus Cookbook (see `culinary_collection_overview.md`)
+**Community touchpoint:** The XOlokun Cookbook (see `culinary_collection_overview.md`)
 **Synesthesia domain:** Real recipes → presets. Ingredients, cooking methods, and timing interpreted as sound parameters.
 **Secret engine:** Fusion (EP quad) — 4 secret engines (XOasis, XOddfellow, XOnkolo, XOpcode). Unlocked by loading all 4 Kitchen engines. The only collection with a full secret QUAD rather than a single secret engine.
 
@@ -256,7 +256,7 @@ Laboratory (future)     TBD               TBD                                 TB
 **UI moment:** When the 4th Creature engine loads, the interface dims slightly. A slow pulse of `#00FFD4` light traces the edges of all four engine panels — like something massive is circling. The 5th slot rises from below with a 1000ms animation. The Leviathan has always been there. You just couldn't see it.
 
 **Preset potential:**
-- "Mariana" — all four creatures at maximum depth, Leviathan at 100%, the deepest sound in XOmnibus
+- "Mariana" — all four creatures at maximum depth, Leviathan at 100%, the deepest sound in XOlokun
 - "Surface Tension" — Leviathan at 10%, barely there, just a shadow beneath the other four
 - "Migration" — slow morph through all four creature timbres with Leviathan as the gravitational center
 
@@ -329,7 +329,7 @@ Laboratory (future)     TBD               TBD                                 TB
 - Hawking radiation: even at maximum density, tiny bright particles of the original four timbres escape — you can hear ghosts of the saturation, the bite, the prism, the hammer, leaking out of the compressed mass
 - Couples to all 4 Edges via the **Collapse** verb (gravitational infall toward the singularity)
 
-**UI moment:** When the 4th Edge engine loads, the four panels begin to drift toward the center of the screen — slowly, almost imperceptibly. The backgrounds darken to near-black. A white corona appears at the convergence point, and the 5th slot materializes as a circle, not a rectangle — the only circular engine panel in all of XOmnibus. The Singularity has its own geometry.
+**UI moment:** When the 4th Edge engine loads, the four panels begin to drift toward the center of the screen — slowly, almost imperceptibly. The backgrounds darken to near-black. A white corona appears at the convergence point, and the 5th slot materializes as a circle, not a rectangle — the only circular engine panel in all of XOlokun. The Singularity has its own geometry.
 
 **Preset potential:**
 - "Spaghettification" — high mass, extreme time-stretch, the sound elongated past recognition
@@ -354,7 +354,7 @@ Water is the golden thread that connects every collection. Not literal water eve
 
 ### The Geography
 
-Think of XOmnibus as a place. A real place. The website IS that place, and you move through it.
+Think of XOlokun as a place. A real place. The website IS that place, and you move through it.
 
 ```
                     ☆ CONSTELLATION
@@ -540,7 +540,7 @@ ANY COLLECTION → THE DEPTHS
 2. **The Depths owns underwater.** No other collection goes fully submerged. The Depths' uniqueness is that you're INSIDE the water. Everyone else is adjacent to it.
 3. **The shore is the hub.** Kitchen Essentials (the tavern) is the central location. From the shore, you can go in any direction — into the water (Depths), along the quay (Atelier), onto the pier (Arcade), up the cliff (Frontier), up to the sky (Constellation). The tavern is home base.
 4. **Water state reflects collection energy.** Still (Constellation) → Functional (Atelier) → Ambient (Arcade rain) → Cooking (Kitchen) → Violent (Frontier) → Total (Depths). The spectrum from calm to immersive.
-5. **XO Gold appears in every collection's water.** The one constant: wherever water catches light in XOmnibus, it glints XO Gold (`#E9C46A`). Sunlight through the tavern window hitting the basin. Neon reflecting gold in puddles. The single gold star reflected in the Constellation lake. The golden thread is LITERALLY golden light on water.
+5. **XO Gold appears in every collection's water.** The one constant: wherever water catches light in XOlokun, it glints XO Gold (`#E9C46A`). Sunlight through the tavern window hitting the basin. Neon reflecting gold in puddles. The single gold star reflected in the Constellation lake. The golden thread is LITERALLY golden light on water.
 6. **Performance matters.** The ambient water effects must be GPU-efficient. No collection page should load slowly because of water animations. Fallback to static water textures on low-end devices. The experience degrades gracefully — still beautiful at every level.
 
 ---
@@ -591,7 +591,7 @@ Laboratory          Equations, papers          Research journal entries
 The Synesthesia Engine (documented in `culinary_collection_overview.md`) is the technical bridge:
 
 ```
-ANY CREATIVE INPUT ──→ SYNESTHESIA ENGINE ──→ XOMNIBUS PRESET
+ANY CREATIVE INPUT ──→ SYNESTHESIA ENGINE ──→ XOLOKUN PRESET
      (recipe)              (AI model)           (.xometa)
      (star chart)          maps input to
      (equation)            6D Sonic DNA
@@ -633,7 +633,7 @@ Cycle deepens — each Collection's library grows from both directions
 
 ## Original Engine Distribution
 
-All 26 original XOmnibus engines, fully accounted for across four collections:
+All 26 original XOlokun engines, fully accounted for across four collections:
 
 | Engine | Collection | Quad | Why Here |
 |--------|-----------|------|----------|
@@ -695,7 +695,7 @@ Some collections have incomplete quads — these are deliberate growth slots for
 | Laboratory (future) | TBD | TBD | 1 (TBD) | TBD | TBD |
 | **Current total** | **~14** | **50+** | **8** | **6** | **~68+** |
 
-*FM = Farmers Market (concept stage). With all planned growth slots filled and future collections, XOmnibus could reach 100+ engines across 7+ Collections. Every collection has at least one secret engine — Kitchen Essentials is unique with a full secret quad. The `SynthEngine` interface scales to any count.*
+*FM = Farmers Market (concept stage). With all planned growth slots filled and future collections, XOlokun could reach 100+ engines across 7+ Collections. Every collection has at least one secret engine — Kitchen Essentials is unique with a full secret quad. The `SynthEngine` interface scales to any count.*
 
 ---
 
@@ -717,4 +717,4 @@ Some collections have incomplete quads — these are deliberate growth slots for
 
 ---
 
-*XO_OX Designs — XOmnibus Platform Vision — March 2026*
+*XO_OX Designs — XOlokun Platform Vision — March 2026*

@@ -338,7 +338,7 @@ def get_git_log(repo_path):
 | Commit burst (3+ commits < 1 hour) | Drum fill trigger |
 
 ### Creative Sonic Result
-A solo developer's late-night session becomes an erratic, high-intensity snare burst. A disciplined team's CI pipeline produces metronomic, consistent hits. A repository's 10-year history becomes a historical rhythm track — quiet periods map to whisper-soft hi-hats, crunch periods become wall-of-sound fills. The XO_OX-XOmnibus repo itself would generate a kit that sounds like the project was built.
+A solo developer's late-night session becomes an erratic, high-intensity snare burst. A disciplined team's CI pipeline produces metronomic, consistent hits. A repository's 10-year history becomes a historical rhythm track — quiet periods map to whisper-soft hi-hats, crunch periods become wall-of-sound fills. The XO_OX-XOlokun repo itself would generate a kit that sounds like the project was built.
 
 ### Implementation Complexity
 **Easy.** Git log output is well-structured and scriptable. `subprocess` is stdlib. The main design choice is normalization: how to scale files-changed and time-intervals into the 0–127 velocity range without clipping at either extreme.
@@ -555,7 +555,7 @@ Poem title or first line is the monster name. The syllable stress sequence (`010
 Gene symbol (e.g., `BRCA1`, `COX1`) is the monster name. The codon sequence — after encoding each of the 64 codons as a 6-bit value — is the DNA. Organisms sharing a gene produce related monsters.
 
 **Git Commit History**
-Repository name is the monster name. Each commit's `(timestamp mod 65536, files_changed)` pair becomes 3 bytes of DNA. Two forks of the same repo produce fork-monsters that diverge after their branch point. The XO_OX-XOmnibus repo would produce a legendary-tier monster.
+Repository name is the monster name. Each commit's `(timestamp mod 65536, files_changed)` pair becomes 3 bytes of DNA. Two forks of the same repo produce fork-monsters that diverge after their branch point. The XO_OX-XOlokun repo would produce a legendary-tier monster.
 
 **Weather**
 Station ID and year form the monster name. Daily TMAX/TMIN/PRCP values (quantized to bytes) provide ~1,095 bytes of seasonal DNA. Two years from the same station produce a climate-drift monster pair.

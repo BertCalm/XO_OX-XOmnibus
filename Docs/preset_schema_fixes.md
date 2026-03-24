@@ -14,7 +14,7 @@ engine registers camelCase IDs (e.g. `ow_era`, `ow_pulseDuty`, `ow_fmAlgorithm`,
 ignored at load time.
 
 **Root cause:** Some older presets in `XOverworld/Presets/Factory/` and the
-XOmnibus `Thunderforce.xometa` were written against a draft naming convention
+XOlokun `Thunderforce.xometa` were written against a draft naming convention
 before the Parameters.h constants were finalized.
 
 **Fix:** `Tools/fix_overworld_presets.py` — builds a 76-entry UPPER_SNAKE →
@@ -23,7 +23,7 @@ every affected `.xometa` file in place. Handles both flat and multi-engine
 nested `"parameters"` objects.
 
 **Result:**
-- Files fixed: **40** (39 Factory presets + `Thunderforce.xometa` in XOmnibus)
+- Files fixed: **40** (39 Factory presets + `Thunderforce.xometa` in XOlokun)
 - Keys renamed per file: **76**
 - Total key renames: **3040**
 
@@ -42,7 +42,7 @@ constexpr const char* sampleRateRed = "ocelot_sampleRate";
 The value was correct; the key was wrong.
 
 **Fix:** Python string replacement across all `.xometa` files under
-`Presets/XOmnibus/`. Each occurrence of `"ocelot_sampleRateRed"` was replaced
+`Presets/XOlokun/`. Each occurrence of `"ocelot_sampleRateRed"` was replaced
 with `"ocelot_sampleRate"`.
 
 **Affected presets:**
@@ -72,8 +72,8 @@ were renamed during the engine's development:
 | `fat_release` | `fat_ampRelease` |
 
 **Affected presets:**
-- `Presets/XOmnibus/Entangled/Supersize_Organism.xometa` — 6 keys renamed
-- `Presets/XOmnibus/Flux/Midnight_Strobe.xometa` — 2 keys renamed
+- `Presets/XOlokun/Entangled/Supersize_Organism.xometa` — 6 keys renamed
+- `Presets/XOlokun/Flux/Midnight_Strobe.xometa` — 2 keys renamed
   (`fat_filterCutoff`, `fat_filterReso`)
 
 **Fix:** Python script replacing each ghost key with the canonical name in the

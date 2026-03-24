@@ -15,7 +15,7 @@ Patreon URL: https://www.patreon.com/cw/XO_OX (live as of 2026-03-22)
 ## 1. Tier Architecture
 
 ### Signal — $0 / Free
-- XOmnibus plugin (AU + Standalone, macOS)
+- XOlokun plugin (AU + Standalone, macOS)
 - TIDE TABLES free pack (permanent — no gate, no email required)
 - Full Field Guide access (all published posts)
 - Signal feed (product update posts)
@@ -33,7 +33,7 @@ Patreon URL: https://www.patreon.com/cw/XO_OX (live as of 2026-03-22)
 ### Deep Water — $15/month
 - All Current benefits
 - Full back-catalog vault (all packs released to date, available immediately on join)
-- Preview builds of XOmnibus (2–4 weeks before public release)
+- Preview builds of XOlokun (2–4 weeks before public release)
 - Monthly voting rights: choose the theme/engine focus of one upcoming pack per quarter
 - Name in plugin credits (annual release)
 
@@ -62,7 +62,7 @@ Patreon URL: https://www.patreon.com/cw/XO_OX (live as of 2026-03-22)
 
 ### XPN Tool Suite Role
 
-The Tools/ pipeline (`~/Documents/GitHub/XO_OX-XOmnibus/Tools/`) handles the mechanical production. The handoff to Patreon is a human decision layer on top.
+The Tools/ pipeline (`~/Documents/GitHub/XO_OX-XOlokun/Tools/`) handles the mechanical production. The handoff to Patreon is a human decision layer on top.
 
 **Automated (runs without manual intervention):**
 - `xpn_pack_qa_report.py` — 10-check validation (pad count, velocity layers, file integrity, XPM compliance, etc.). A pack does not ship if any check fails. This is the go/no-go gate.
@@ -140,4 +140,4 @@ Monthly cadence, after each pack drop:
 
 - **Patreon URL activation:** DONE 2026-03-22 — https://www.patreon.com/cw/XO_OX is live and configured.
 - **File delivery method:** Patreon native file attachments vs. Gumroad private link embedded in post. Gumroad is preferable for file size and download reliability.
-- **iOS timing:** XOmnibus AUv3 is in scope for V1. If iOS ships before Patreon launch, consider whether XPN packs load cleanly on MPC app — validate before promoting iOS support to subscribers.
+- **iOS timing:** XOlokun AUv3 is in scope for V1. If iOS ships before Patreon launch, consider whether XPN packs load cleanly on MPC app — validate before promoting iOS support to subscribers.

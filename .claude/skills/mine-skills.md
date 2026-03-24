@@ -44,7 +44,7 @@ Analyze entries across these dimensions:
 **E. Cross-Project Echoes (Meta-Framework Candidates)**
 - If cross-repo data is available (`$SKILL_FRAMEWORK_HOME/journal/aggregated.jsonl`), find patterns that span projects
 - These are the most valuable — they're truly portable
-- Example: `scaffold-then-register` appears in XOmnibus, OddfeliX, and a web app → universal primitive
+- Example: `scaffold-then-register` appears in XOlokun, OddfeliX, and a web app → universal primitive
 
 ### 3. Score and Rank Candidates
 

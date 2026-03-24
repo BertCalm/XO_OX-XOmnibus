@@ -3,7 +3,7 @@
 #include "../Core/PresetManager.h"
 #include "XPNCoverArt.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // XPNDrumExporter — C++ port of Tools/xpn_drum_export.py.
@@ -679,4 +679,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

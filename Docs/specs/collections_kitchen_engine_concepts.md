@@ -54,7 +54,7 @@ The Sub 37 is a professional-grade instrument: analogue warmth that doesn't drif
 
 **Synthesis character:** Short transients, surgical cuts, attack-forward dynamics. feliX-leaning (Neon Tetra precision, forward momentum, high brightness).
 
-**Suggested XOmnibus engine:** OBLONG (XOblong) — amber character, attack-forward envelopes, plucked/struck synthesis with fast transient control.
+**Suggested XOlokun engine:** OBLONG (XOblong) — amber character, attack-forward envelopes, plucked/struck synthesis with fast transient control.
 
 **Parameter starting point:**
 ```
@@ -88,7 +88,7 @@ Velocity → filter: Strong (fast cuts are brighter; technique matters)
 
 **Synthesis character:** Friction resonance, noise-into-pitch transformation, sustained grinding textures. Oscar-leaning (axolotl patience, textural regeneration, process over result).
 
-**Suggested XOmnibus engine:** OUROBOROS — red character, friction/chaos dynamics, self-referential feedback. The ouroboros IS the circular grinding motion of the pestle.
+**Suggested XOlokun engine:** OUROBOROS — red character, friction/chaos dynamics, self-referential feedback. The ouroboros IS the circular grinding motion of the pestle.
 
 **Parameter starting point:**
 ```
@@ -120,7 +120,7 @@ Velocity → chaos: Increases ouro_topology (harder pressing = more texture rele
 
 **Synthesis character:** Additive synthesis, harmonic enrichment, presence without dominance. A catalyst voice — it makes other voices sound more like themselves.
 
-**Suggested XOmnibus engine:** ORBITAL (XOrbital) — warm red character, group envelope system (Blessing B001), designed for harmonic layering and additive synthesis relationships.
+**Suggested XOlokun engine:** ORBITAL (XOrbital) — warm red character, group envelope system (Blessing B001), designed for harmonic layering and additive synthesis relationships.
 
 **Parameter starting point:**
 ```
@@ -153,7 +153,7 @@ Coupling role:     CATALYST — designed to be the "salt" in any coupling config
 
 **Synthesis character:** Temperature-driven timbral morphing. Raw-to-cooked transformation over time. An engine that changes its own character as it "heats up" — starting cold and sparse, evolving toward rich complexity.
 
-**Suggested XOmnibus engine:** OVERWORLD (XOverworld) — neon green character, ERA Triangle (Blessing B009), which enables continuous 2D timbral crossfade. Heat IS the era transition: cold (pre-synthesis chip era) → warm (analogue golden age) → hot (chaotic digital fire).
+**Suggested XOlokun engine:** OVERWORLD (XOverworld) — neon green character, ERA Triangle (Blessing B009), which enables continuous 2D timbral crossfade. Heat IS the era transition: cold (pre-synthesis chip era) → warm (analogue golden age) → hot (chaotic digital fire).
 
 **Parameter starting point:**
 ```
@@ -206,7 +206,7 @@ The SH-101 is immediate, responsive, bright, and honest — no pretension, no co
 
 **Synthesis character:** Bright transient with char overtones. Noise bursts and harmonic clusters. Fast attack, sustained burn, unpredictable modulation. feliX-leaning (intensity, forward aggression, immediate energy).
 
-**Suggested XOmnibus engine:** OBESE (XObese) — hot pink character, Mojo Control (Blessing B015) for analogue/digital axis, aggressive saturation, FIRE character macro inherent.
+**Suggested XOlokun engine:** OBESE (XObese) — hot pink character, Mojo Control (Blessing B015) for analogue/digital axis, aggressive saturation, FIRE character macro inherent.
 
 **Parameter starting point:**
 ```
@@ -240,7 +240,7 @@ LFO1:              Irregular (random waveform, 1-4Hz) on fat_satDrive — flame 
 
 **Synthesis character:** Slow LFO modulation, sustained low harmonics, patient evolution. Low-frequency warmth that accumulates. Oscar-leaning (patient regeneration, depth over flash, long time constants).
 
-**Suggested XOmnibus engine:** OCEANIC (XOceanic) — phosphorescent teal character, Chromatophore Modulator (Blessing B013), slow evolving spectral shifts, separation and drift inherent to the engine.
+**Suggested XOlokun engine:** OCEANIC (XOceanic) — phosphorescent teal character, Chromatophore Modulator (Blessing B013), slow evolving spectral shifts, separation and drift inherent to the engine.
 
 **Parameter starting point:**
 ```
@@ -273,7 +273,7 @@ Velocity → attack: Gentle — simmering doesn't respond suddenly; it's already
 
 **Synthesis character:** Noise source plus resonant filter sweep. Pressure-build dynamics followed by sudden release. The physicality of steam: bandlimited noise shaped by a resonant filter moving upward (pressure increasing) then suddenly opening (release).
 
-**Suggested XOmnibus engine:** OBSIDIAN (XObsidian) — crystal white character, noise and resonance architecture, steep filter slopes, physical modeling of pressure and release.
+**Suggested XOlokun engine:** OBSIDIAN (XObsidian) — crystal white character, noise and resonance architecture, steep filter slopes, physical modeling of pressure and release.
 
 **Parameter starting point:**
 ```
@@ -307,7 +307,7 @@ Velocity → envelope speed: Faster = more pressure, faster release cycle
 
 **Synthesis character:** Frequency shift from harsh/bright to sweet/warm as a function of time and temperature. Harmonic evolution from odd-order (bitter) to even-order (sweet) partial relationships. An engine defined by a single parameter arc: cold → caramel → burnt.
 
-**Suggested XOmnibus engine:** ORACLE (XOracle) — prophecy indigo character, breakpoint-based spectral evolution (Blessing B010), GENDY stochastic synthesis enabling complex harmonic mutation. Oracle's breakpoints map directly to the caramelization temperature curve.
+**Suggested XOlokun engine:** ORACLE (XOracle) — prophecy indigo character, breakpoint-based spectral evolution (Blessing B010), GENDY stochastic synthesis enabling complex harmonic mutation. Oracle's breakpoints map directly to the caramelization temperature curve.
 
 **Parameter starting point:**
 ```
@@ -339,7 +339,7 @@ Velocity → position: Moderate — harder playing moves toward higher carameliz
 
 ## Quad 1 × Quad 2 Coupling Matrix
 
-The matrix below documents the primary coupling pairs between Mise en Place and Flame & Heat voices, specifying the XOmnibus coupling type, the interaction rationale, and the resulting sonic character.
+The matrix below documents the primary coupling pairs between Mise en Place and Flame & Heat voices, specifying the XOlokun coupling type, the interaction rationale, and the resulting sonic character.
 
 ```
             │ Open Flame │ Simmering  │ Steam      │ Caramelization
@@ -483,7 +483,7 @@ Kitchen_Essentials_Collection/
 Each individual engine XPN exports as a standard single-program pack:
 - 4 velocity layers (pp / mp / mf / ff — the knife work gets harder, the flame gets higher)
 - 88-key range with 4-semitone zone overlap
-- `KeyTrack=True`, `RootNote=0` (XOmnibus XPN spec)
+- `KeyTrack=True`, `RootNote=0` (XOlokun XPN spec)
 - Macro assignments: CHARACTER → primary engine identity, MOVEMENT → modulation depth, COUPLING → blend to adjacent voice, SPACE → reverb tail
 
 Coupled exports use MPC's **dual-program** architecture:
@@ -511,9 +511,9 @@ The `KE_CompleteKitchen.xpn` full-collection program uses MPC's **kit** format:
 
 **Concept:** Grand Cuisine is the synthesis engine that has mastered every technique in the kitchen. It doesn't specialize — it integrates. Where each quad voice represents one culinary voice or process, Grand Cuisine knows them all and can express any of them on demand, or all of them simultaneously.
 
-**Unlock condition:** In XOmnibus, the Fusion 5th Slot activates when all engines from at least two quads are loaded in the coupling matrix. This mirrors the culinary truth: you cannot do Grand Cuisine cooking without a fully stocked kitchen.
+**Unlock condition:** In XOlokun, the Fusion 5th Slot activates when all engines from at least two quads are loaded in the coupling matrix. This mirrors the culinary truth: you cannot do Grand Cuisine cooking without a fully stocked kitchen.
 
-**Suggested XOmnibus engine:** ORACLE (XOracle) — but in a dedicated Kitchen Essentials configuration.
+**Suggested XOlokun engine:** ORACLE (XOracle) — but in a dedicated Kitchen Essentials configuration.
 
 The reasoning:
 1. Oracle's breakpoint system can encode the entire kitchen process arc: Prep → Heat → Caramelization → Reduction → Plating
@@ -552,7 +552,7 @@ Grand Cuisine in the Fusion slot couples with ALL loaded engines simultaneously.
 ## Design Notes — Technical Constraints
 
 **New engine vs. existing engine mapping:**
-All four Quad 1 and four Quad 2 voices are mapped to existing XOmnibus engines (OBLONG, OUROBOROS, ORBITAL, OVERWORLD for Quad 1; OBESE, OCEANIC, OBSIDIAN, ORACLE for Quad 2). This means the Kitchen Essentials Collection can be built as a **preset expansion** rather than requiring new DSP — all synthesis behavior exists, and the collection provides curated configurations and coupling presets.
+All four Quad 1 and four Quad 2 voices are mapped to existing XOlokun engines (OBLONG, OUROBOROS, ORBITAL, OVERWORLD for Quad 1; OBESE, OCEANIC, OBSIDIAN, ORACLE for Quad 2). This means the Kitchen Essentials Collection can be built as a **preset expansion** rather than requiring new DSP — all synthesis behavior exists, and the collection provides curated configurations and coupling presets.
 
 The collection's unique contribution is:
 1. Named macro mappings (HEAT, CUISINE, REGION, SERVICE) that make existing parameters accessible through culinary metaphors

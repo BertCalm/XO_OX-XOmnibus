@@ -1,25 +1,25 @@
 #pragma once
-// xomnibus-engine-sdk — EngineModule.h
+// xolokun-engine-sdk — EngineModule.h
 // C export macros for community engine modules.
 //
 // Community engines are compiled as shared libraries (.dylib / .so / .dll)
 // and must export two C functions:
 //
-//   xomnibus_create_engine()  — factory that returns a new SynthEngine instance
-//   xomnibus_engine_info()    — fills metadata struct without creating an engine
+//   xolokun_create_engine()  — factory that returns a new SynthEngine instance
+//   xolokun_engine_info()    — fills metadata struct without creating an engine
 //
 // Usage in your engine .cpp:
 //
-//   #include <xomnibus/EngineModule.h>
-//   XOMNIBUS_EXPORT_ENGINE(MyEngine, "MyEngine", "My Engine Display Name",
-//                           "me_", 0x1E, 0x8B, 0x7E, "1.0.0", "Your Name")
+//   #include <xolokun/EngineModule.h>
+//   XOLOKUN_EXPORT_ENGINE(MyEngine, "MyEngine", "My Engine Display Name",
+//                          "me_", 0x1E, 0x8B, 0x7E, "1.0.0", "Your Name")
 
 #include "SynthEngine.h"
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
-/// Metadata returned by xomnibus_engine_info() without instantiating the engine.
+/// Metadata returned by xolokun_engine_info() without instantiating the engine.
 struct EngineMetadata {
     char id[64]        {};   ///< Engine ID (e.g. "MyEngine")
     char displayName[128] {};///< Human-readable name
@@ -33,33 +33,33 @@ struct EngineMetadata {
     int sdkVersion = 1;      ///< SDK ABI version (bump on breaking changes)
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 
 //==============================================================================
 // Export macros
 //==============================================================================
 
 #ifdef _WIN32
-  #define XOMNIBUS_EXPORT extern "C" __declspec(dllexport)
+  #define XOLOKUN_EXPORT extern "C" __declspec(dllexport)
 #else
-  #define XOMNIBUS_EXPORT extern "C" __attribute__((visibility("default")))
+  #define XOLOKUN_EXPORT extern "C" __attribute__((visibility("default")))
 #endif
 
 /// Convenience macro: define both C export functions for your engine.
 ///
-/// @param EngineClass   Your C++ class (must inherit xomnibus::SynthEngine)
+/// @param EngineClass   Your C++ class (must inherit xolokun::SynthEngine)
 /// @param id            Engine ID string (must be unique, use an O-word)
 /// @param displayName   Display name for UI
 /// @param prefix        Parameter prefix (e.g. "me_")
 /// @param r, g, b       Accent colour RGB (0-255)
 /// @param ver           Version string (e.g. "1.0.0")
 /// @param author        Author name
-#define XOMNIBUS_EXPORT_ENGINE(EngineClass, id, displayName, prefix, r, g, b, ver, author) \
-    XOMNIBUS_EXPORT std::unique_ptr<xomnibus::SynthEngine> xomnibus_create_engine()        \
+#define XOLOKUN_EXPORT_ENGINE(EngineClass, id, displayName, prefix, r, g, b, ver, author) \
+    XOLOKUN_EXPORT std::unique_ptr<xolokun::SynthEngine> xolokun_create_engine()         \
     {                                                                                       \
         return std::make_unique<EngineClass>();                                              \
     }                                                                                       \
-    XOMNIBUS_EXPORT void xomnibus_engine_info (xomnibus::EngineMetadata* out)               \
+    XOLOKUN_EXPORT void xolokun_engine_info (xolokun::EngineMetadata* out)                \
     {                                                                                       \
         if (!out) return;                                                                   \
         std::memset (out, 0, sizeof (*out));                                                \

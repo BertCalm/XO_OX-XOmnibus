@@ -28,7 +28,7 @@ assignees: ''
 - **Plugin format**: <!-- AU / Standalone / AUv3 -->
 - **DAW** (if applicable): <!-- e.g., Akai MPC Software 2.14 -->
 - **Audio interface / sample rate**: <!-- e.g., Built-in / 48kHz -->
-- **XOmnibus version**: <!-- e.g., V1.0.0 -->
+- **XOlokun version**: <!-- e.g., V1.0.0 -->
 
 ## Audio Example
 <!-- If applicable, attach an audio clip or screenshot showing the issue -->

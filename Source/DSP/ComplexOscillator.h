@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ComplexOscillator — Buchla 259-inspired bidirectional FM processor.
@@ -143,4 +143,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

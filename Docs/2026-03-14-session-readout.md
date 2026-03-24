@@ -24,7 +24,7 @@
 | 6 | `memory/MEMORY.md` | XOpal: 100 factory presets | 150 (Batch 1: 100, Batch 2: 50) | Chronologist |
 | 7 | `memory/MEMORY.md` | DUB/DRIFT in engine colors | OVERDUB/ODYSSEY (canonical gallery codes) | Editor |
 | 8 | `XOdyssey/CLAUDE.md` | Gallery code: DRIFT | ODYSSEY (legacy: DRIFT) | Editor |
-| 9 | `XOblongBob/CLAUDE.md` | Amber accent: `#f5c97a` | `#E9A84A` (all instances) | Editor (XOmnibus master spec) |
+| 9 | `XOblongBob/CLAUDE.md` | Amber accent: `#f5c97a` | `#E9A84A` (all instances) | Editor (XOlokun master spec) |
 | 10 | `XOverdub/CLAUDE.md` | Gallery Code: DUB / `#00FF88` | OVERDUB / Olive `#6B7B3A` | Editor + Archivist |
 | 11 | `XOddCouple/CLAUDE.md` | "XO_XO Designs" | "XO_OX Designs" | Chronologist (brand typo) |
 
@@ -32,7 +32,7 @@
 
 | File | Contents | Created By |
 |------|----------|-----------|
-| `XO_OX-XOmnibus/Docs/concepts/README.md` | Index of all 38 concept briefs, organized by category | Cataloguer |
+| `XO_OX-XOlokun/Docs/concepts/README.md` | Index of all 38 concept briefs, organized by category | Cataloguer |
 | `knowledge/primitives/PRIM-005-status-field-drift.md` | New primitive: status fields drift within days of completion | Archivist |
 | `knowledge/index.md` | Updated: primitive count 4 → 5 | Archivist |
 
@@ -40,21 +40,21 @@
 
 ### Chronologist (Time & Truth)
 - XOddCouple had wrong brand name ("XO_XO" instead of "XO_OX") — only repo in ecosystem
-- XOblongBob, XOverdub, XOdyssey all claim preset counts in CLAUDE.md but have 0 .xometa files in standalone repos — presets live in XOmnibus only
+- XOblongBob, XOverdub, XOdyssey all claim preset counts in CLAUDE.md but have 0 .xometa files in standalone repos — presets live in XOlokun only
 - XOhm phase status unclear ("Phase 2" but 0 presets, no synth_playbook)
 - XOpal presets 100 → 150 (Batch 2 existed but wasn't counted)
 
 ### Cataloguer (Structure & Navigation)
 - **38 concept briefs** in Docs/concepts/ had NO index — created README.md
-- **57 files** in XOmnibus/Docs/ parent folder — still needs a README (highest priority remaining)
+- **57 files** in XOlokun/Docs/ parent folder — still needs a README (highest priority remaining)
 - XOceanic, XOcelot, XOwlfish: repos exist with CLAUDE.md and source code but **zero memory satellite coverage**
 - 4 newer engine repos (XOceanic, XOcelot, XOwlfish, XOhm) lack synth_playbook/ scaffold
 - 12+ documents over 150 lines have no table of contents (largest: 2,127 lines)
 
 ### Editor (Clarity & Quality)
-- **3 color contradictions fixed**: XOverdub (#00FF88→#6B7B3A), XOblongBob (#f5c97a→#E9A84A), both now match XOmnibus master spec
+- **3 color contradictions fixed**: XOverdub (#00FF88→#6B7B3A), XOblongBob (#f5c97a→#E9A84A), both now match XOlokun master spec
 - **Gallery code confusion fixed**: DRIFT→ODYSSEY, DUB→OVERDUB
-- XObese parameter prefix story unclear (internal `p_` vs XOmnibus `fat_`) — needs adapter clarification
+- XObese parameter prefix story unclear (internal `p_` vs XOlokun `fat_`) — needs adapter clarification
 - XOverworld build command split across 2 lines (inconsistent with single-line standard)
 - Audio thread safety rules duplicated across 4+ CLAUDE.md files (fragmentation risk)
 
@@ -86,7 +86,7 @@
 
 | Priority | What | Status |
 |----------|------|--------|
-| HIGH | `how_to_write_a_xomnibus_adapter.md` | **DONE** (written this session from source) |
+| HIGH | `how_to_write_a_xolokun_adapter.md` | **DONE** (written this session from source) |
 | HIGH | Satellite memory files for XOceanic, XOcelot, XOwlfish | Pending |
 | HIGH | `how_to_design_coupling_presets.md` | Pending |
 | MEDIUM | XOblongBob + XOppossum knowledge backfill | Pending |
@@ -98,8 +98,8 @@
 
 # PART 2: NEW DELIVERABLES CREATED THIS SESSION
 
-## 1. `how_to_write_a_xomnibus_adapter.md`
-- **Path**: `~/Documents/GitHub/XO_OX-XOmnibus/Docs/how_to_write_a_xomnibus_adapter.md`
+## 1. `how_to_write_a_xolokun_adapter.md`
+- **Path**: `~/Documents/GitHub/XO_OX-XOlokun/Docs/how_to_write_a_xolokun_adapter.md`
 - **Written from actual source code** — not generic advice
 - Documents the real 10-method `SynthEngine` interface
 - Corrects a misconception: `REGISTER_ENGINE` macro exists but isn't used — real registration is via `EngineRegistry::instance().registerEngine()`
@@ -110,7 +110,7 @@
 ## 2. `/post-engine-completion-checklist` Skill
 - **Path**: `~/.claude/skills/post-engine-completion-checklist/SKILL.md`
 - **Status**: LIVE in skill registry
-- 5-point audit: CLAUDE.md accuracy, XOmnibus sync, knowledge compendium, memory/satellite, playbook protocol
+- 5-point audit: CLAUDE.md accuracy, XOlokun sync, knowledge compendium, memory/satellite, playbook protocol
 - Prevents PRIM-005 drift at the source
 - Triggers on: "done", "complete", "phase N complete", "auval passes", post-Seance
 
@@ -124,7 +124,7 @@
 
 ---
 
-# PART 3: PRODUCER'S GUILD BASELINE REPORT — XOmnibus Full Platform
+# PART 3: PRODUCER'S GUILD BASELINE REPORT — XOlokun Full Platform
 
 ## Platform Snapshot
 - **24 engine modules** (7 core DSP-complete, 17 additional at varying stages)
@@ -289,7 +289,7 @@
 
 ### Competitive Position
 
-| Feature | XOmnibus | Serum ($189) | Pigments ($199) | Massive X ($149) | Vital (Free) |
+| Feature | XOlokun | Serum ($189) | Pigments ($199) | Massive X ($149) | Vital (Free) |
 |---------|----------|------|----------|----------|-------|
 | Multi-engine coupling | **12 types, per-sample** | No | No | No | No |
 | Engine count | **24 (7 core)** | 2 | 4 | 1 | 3 |
@@ -379,13 +379,13 @@ Sofia (Jazz) and Amara (Afrobeat) independently asked for the same principle fro
 **Decision 1: Fix CC64/CC1/velocity (Phase A)**
 ```
 Fix expression basics →
-  1. Keyboard players can perform on XOmnibus
+  1. Keyboard players can perform on XOlokun
   2. Jazz, neo-soul, classical producers adopt
   3. They generate expressive content (demos, tutorials, presets)
-  4. Content reveals what XOmnibus sounds like when PLAYED, not programmed
+  4. Content reveals what XOlokun sounds like when PLAYED, not programmed
   5. Creates new position: "the free synth that feels like a real instrument"
   6. Expressive controller manufacturers (Roli, Sensel) seek integration
-  7. XOmnibus becomes default synthesis backend for expressive controllers
+  7. XOlokun becomes default synthesis backend for expressive controllers
 ```
 
 **Decision 2: Ship the arpeggiator (Phase B)**
@@ -397,26 +397,26 @@ Add arpeggiator →
   4. YouTube producers make viral "coupled arp" videos
   5. Forces competitors to explain why THEIR arps don't cross engines
   6. Competitors cannot add coupling retroactively
-  7. XOmnibus owns "coupled arps" permanently — first and free
+  7. XOlokun owns "coupled arps" permanently — first and free
 ```
 
 **Decision 3: Add micro-tuning (Phase D)**
 ```
 Ship Scala file loading →
-  1. Non-Western producers can use XOmnibus natively
+  1. Non-Western producers can use XOlokun natively
   2. Only free synth treating non-12-TET as first-class
   3. Producers in Lagos, Istanbul, Mumbai, Cairo, Jakarta discover it
   4. User base diversifies — new presets, new coupling recipes, new contexts
-  5. XOmnibus presets appear in Amapiano, Bollywood, Arabesk, Gamelan
+  5. XOlokun presets appear in Amapiano, Bollywood, Arabesk, Gamelan
   6. Western synth manufacturers realize they've ignored 80% of the world
-  7. XOmnibus becomes reference platform for global electronic music
+  7. XOlokun becomes reference platform for global electronic music
 ```
 
 ### The Prediction (18 months)
 > The conversation will not be about engine count or coupling types. It will be about **responsiveness** — the feeling that the instrument is listening to you. The CuriosityEngine, XVC, ORGANON's metabolism, the Climax system, Voyager Drift — these are all early forms of the same idea: synthesis that has agency. The producers who stay past the first week will be the ones who played a chord, heard the CuriosityEngine start investigating, felt the Voyager Drift pull voices apart, watched coupling create interactions they didn't program — and recognized that the instrument was doing something no preset told it to do. The technical term is "emergent expressivity." The market term is "it feels alive."
 
 ### Vision Statement
-> XOmnibus is not a synthesizer with more engines. It is the first instrument where the engines listen to each other and to the performer. The roadmap is not a feature list — it is a path from "a powerful tool that requires expertise" to "a responsive instrument that rewards expression." Fix the expression floor, then invest in the responsiveness ceiling. The result will be an instrument that feels alive — and the only one of its kind that is free.
+> XOlokun is not a synthesizer with more engines. It is the first instrument where the engines listen to each other and to the performer. The roadmap is not a feature list — it is a path from "a powerful tool that requires expertise" to "a responsive instrument that rewards expression." Fix the expression floor, then invest in the responsiveness ceiling. The result will be an instrument that feels alive — and the only one of its kind that is free.
 
 ---
 

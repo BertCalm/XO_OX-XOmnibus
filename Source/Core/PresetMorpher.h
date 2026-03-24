@@ -7,7 +7,7 @@
 #include <vector>
 
 //==============================================================================
-// PresetMorpher — Morphing, breeding, and smart randomization for XOmnibus
+// PresetMorpher — Morphing, breeding, and smart randomization for XOlokun
 //                 .xometa presets.
 //
 // Design contract:
@@ -27,12 +27,12 @@
 //   7. DNA Distance + Nearest Search (findNearest)
 //   8. PresetMorpher class (public API)
 //
-// All free functions live inside namespace xomnibus::morpher to avoid
+// All free functions live inside namespace xolokun::morpher to avoid
 // polluting the top-level namespace. The public PresetMorpher class is
-// in namespace xomnibus.
+// in namespace xolokun.
 //==============================================================================
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Section 1 — xorshift64 PRNG
@@ -107,7 +107,7 @@ inline bool isIntegerParam (const juce::String& paramId, const juce::var& value)
 
     // Name-based heuristics for parameters stored as floats but semantically
     // discrete (wave types, mode selectors, divider counts, etc.).
-    // Convention: XOmnibus engines use these suffixes/keywords for integers.
+    // Convention: XOlokun engines use these suffixes/keywords for integers.
     static const juce::StringArray integerKeywords {
         "Mode",    "Wave",    "Type",    "Shape",   "Select",
         "Div",     "Oct",     "Octave",  "Era",     "Scale",
@@ -1342,4 +1342,4 @@ private:
     morpher::Xorshift64 rng;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

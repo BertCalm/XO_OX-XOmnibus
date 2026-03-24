@@ -14,7 +14,7 @@ feliX is X — surface, transient, bright, rhythmic, electric. A flash of neon s
 
 Oscar is O — depth, sustain, warm, patient, regenerative. Pink gills breathing slowly in a deep cave. He lives in duration. Every note is a journey.
 
-When feliX and Oscar coupled for the first time — X met O, transient met sustain, surface met depth — the XO_OX universe was born. Every engine that followed is a species that evolved from that primordial coupling. Every sound in XOmnibus lives somewhere in the water column between feliX's sky and Oscar's floor.
+When feliX and Oscar coupled for the first time — X met O, transient met sustain, surface met depth — the XO_OX universe was born. Every engine that followed is a species that evolved from that primordial coupling. Every sound in XOlokun lives somewhere in the water column between feliX's sky and Oscar's floor.
 
 The XO_OX brand mark — **XO_OX** — is their names interleaved. X and O, forever coupled.
 

@@ -7,10 +7,10 @@
 #include <cctype>
 #include <cfloat>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// TuningSystem — Micro-tuning and alternative scale support for XOmnibus.
+// TuningSystem — Micro-tuning and alternative scale support for XOlokun.
 //
 // Provides a 128-entry precomputed frequency table so noteToFrequency() is a
 // single table lookup on the audio thread — zero transcendental math per call.
@@ -828,4 +828,4 @@ inline float centsToRatio (float cents) noexcept
     return fastPow2 (cents / 1200.0f);
 }
 
-} // namespace xomnibus
+} // namespace xolokun

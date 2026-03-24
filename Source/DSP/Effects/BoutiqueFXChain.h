@@ -5,7 +5,7 @@
 #include "SubmersionEngine.h"
 #include <juce_audio_processors/juce_audio_processors.h>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // BoutiqueFXChain — 4 boutique mashup FX processors (XOM-FX-BOUTIQUE).
@@ -140,4 +140,4 @@ private:
     SubmersionEngine submersion;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

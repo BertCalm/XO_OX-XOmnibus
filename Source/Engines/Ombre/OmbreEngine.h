@@ -10,7 +10,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OmbreMemoryBuffer — Circular delay-line with decay-on-read.
@@ -152,7 +152,7 @@ struct OmbreVoice
 };
 
 //==============================================================================
-// OmbreEngine — Dual-narrative synthesis. The 21st XOmnibus engine.
+// OmbreEngine — Dual-narrative synthesis. The 21st XOlokun engine.
 //
 // XOmbre: where forgetting meets seeing.
 //
@@ -946,4 +946,4 @@ private:
     std::atomic<float>* pMacroSpace     = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

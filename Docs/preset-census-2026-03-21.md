@@ -1,6 +1,6 @@
-# XOmnibus Fleet Preset Census
+# XOlokun Fleet Preset Census
 **Date**: 2026-03-21
-**Source**: `Presets/XOmnibus/` — all `.xometa` files
+**Source**: `Presets/XOlokun/` — all `.xometa` files
 
 ---
 

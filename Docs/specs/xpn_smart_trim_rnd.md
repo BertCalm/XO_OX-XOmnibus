@@ -199,5 +199,5 @@ python xpn_smart_trim.py --input <path/to/samples/> --xpm <program.xpm>
 ---
 
 ## References
-- XPM format: `Tools/` in XOmnibus repo — existing keygroup/drum export tools for field names
+- XPM format: `Tools/` in XOlokun repo — existing keygroup/drum export tools for field names
 - Related: `xpn-tools.md` (MPC export pipeline), `sound_design_best_practices_xpn.md`

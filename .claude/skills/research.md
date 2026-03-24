@@ -21,7 +21,7 @@ Clarify what we're investigating. Ask the user if ambiguous:
 ### 2. Internal research (codebase)
 
 **Spec layer:**
-- Read `Docs/xomnibus_master_specification.md` for relevant sections
+- Read `Docs/xolokun_master_specification.md` for relevant sections
 - Read engine-specific docs if applicable (`xo_mega_tool_engine_catalog.md`, sound design guides)
 - Read any related spec docs in `Docs/`
 - Extract: what was *intended* vs what was *deferred* vs what was *rejected*

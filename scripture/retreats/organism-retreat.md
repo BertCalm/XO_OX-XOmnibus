@@ -17,7 +17,7 @@
 
 ORGANISM arrived at the retreat with 332 presets and a fundamental identity crisis: **the library had designed for the automaton's output, not for the automaton's mathematics.** Presets were tuned to sound pleasant, missing the deeper truth — that each of the 8 curated rules encodes a specific physical or computational law, and these laws are the engine's actual sonic character.
 
-The engine does something no other XOmnibus engine does: **synthesis governed by universal computation.** Rule 110 is Turing-complete. Rule 30 is used in Wolfram's Mathematica random number generator. Rule 90 draws the Sierpinski triangle. Rule 184 models highway traffic. These are not aesthetic choices — they are theorems made audible.
+The engine does something no other XOlokun engine does: **synthesis governed by universal computation.** Rule 110 is Turing-complete. Rule 30 is used in Wolfram's Mathematica random number generator. Rule 90 draws the Sierpinski triangle. Rule 184 models highway traffic. These are not aesthetic choices — they are theorems made audible.
 
 What the presets were missing:
 1. **The freeze state** — only 3.3% of presets. Freezing the automaton produces a fixed, harmonically stable timbre determined entirely by the last cellular state. This is ORGANISM as a timbral memory device.
@@ -69,7 +69,7 @@ What the presets were missing:
 ## Ghost Parameter Audit
 
 **1 file with ghost params found and fixed:**
-- `Presets/XOmnibus/Entangled/Collision_Dub_Organism.xometa` — contained `org_ruleSet`, `org_colonyDensity`, `org_generationRate`, `org_outputLevel`, `macro_character`, `macro_movement`, `macro_coupling`, `macro_space` (8 ghost params). These referenced a pre-integration parameter schema. Remapped to canonical params with semantic equivalence preservation.
+- `Presets/XOlokun/Entangled/Collision_Dub_Organism.xometa` — contained `org_ruleSet`, `org_colonyDensity`, `org_generationRate`, `org_outputLevel`, `macro_character`, `macro_movement`, `macro_coupling`, `macro_space` (8 ghost params). These referenced a pre-integration parameter schema. Remapped to canonical params with semantic equivalence preservation.
 
 **27 files missing newer params:**
 - `org_velCutoff`, `org_seed`, `org_stepRate`, `org_subLevel` were absent from 27 presets (added in a later engine revision but not backfilled). All 27 were patched with sensible defaults (velCutoff=0.5, seed=42, stepRate=4.0, subLevel=0.35).
@@ -95,7 +95,7 @@ What the presets were missing:
 
 ## The Engine's Soul
 
-ORGANISM is the only XOmnibus engine whose sound is not designed — it is **computed.** Every other engine responds to parameters directly: raise the filter cutoff, hear more brightness. In ORGANISM, you specify a mathematical rule and an initial condition, and the sound emerges from the evolution. You are a biologist, not a designer.
+ORGANISM is the only XOlokun engine whose sound is not designed — it is **computed.** Every other engine responds to parameters directly: raise the filter cutoff, hear more brightness. In ORGANISM, you specify a mathematical rule and an initial condition, and the sound emerges from the evolution. You are a biologist, not a designer.
 
 The coral colony metaphor is exact. A coral polyp follows three rules: its own state, left neighbor, right neighbor. From those three inputs it computes one output. Repeat across 16 polyps, repeat across 1000 generations per second, and architecture emerges — living architecture that no single polyp planned.
 

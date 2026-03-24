@@ -1,4 +1,4 @@
-# XOmnibus Utility Engine Concepts — R&D Brainstorm
+# XOlokun Utility Engine Concepts — R&D Brainstorm
 
 **Date**: 2026-03-16 | **Source**: Kai R&D session
 

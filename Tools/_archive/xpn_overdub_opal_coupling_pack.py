@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Generate OVERDUB and OPAL coupling presets for XOmnibus.
+"""Generate OVERDUB and OPAL coupling presets for XOlokun.
 
 Seeds Entangled coupling coverage for two rich "texture" engines:
   - OVERDUB  (tape/dub/spring reverb,   dub_  prefix, Olive #6B7B3A)
   - OPAL     (granular synthesis,        opal_ prefix, Lavender #A78BFA)
 
-OVERDUB→OPAL is a key coupling in the XOmnibus design spec.
+OVERDUB→OPAL is a key coupling in the XOlokun design spec.
 
 Output: 66 presets total
   - OVERDUB + OPAL marquee pair                  =  6
@@ -398,10 +398,10 @@ def build_presets(rng: random.Random, count: int = 3) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate OVERDUB + OPAL coupling presets for XOmnibus."
+        description="Generate OVERDUB + OPAL coupling presets for XOlokun."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser.add_argument(
         "--output-dir",

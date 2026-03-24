@@ -14,9 +14,9 @@ There is a lot coming. Some of it is almost here. Some of it is three years out 
 
 Let me start with what already exists, because the scope of it is easy to miss when you are inside it.
 
-XOmnibus V1 ships with **34 synthesis engines**. That is not 34 presets. It is not 34 variations on a similar synthesis approach. It is 34 distinct characters — each built as a standalone instrument first, each with its own DSP architecture, its own aquatic mythology, its own accent color in the Gallery, its own factory preset library. The smallest preset library in the fleet is 80 presets; the largest is 200. The total is 2,550 factory presets, all in seven mood categories, all with 6D Sonic DNA tags, all tested in production context.
+XOlokun V1 ships with **34 synthesis engines**. That is not 34 presets. It is not 34 variations on a similar synthesis approach. It is 34 distinct characters — each built as a standalone instrument first, each with its own DSP architecture, its own aquatic mythology, its own accent color in the Gallery, its own factory preset library. The smallest preset library in the fleet is 80 presets; the largest is 200. The total is 2,550 factory presets, all in seven mood categories, all with 6D Sonic DNA tags, all tested in production context.
 
-Alongside the 34 engines, V1 ships the **Oxport Tool Suite** — eight tools for MPC producers that handle the full export pipeline from XOmnibus patch to installed MPC program:
+Alongside the 34 engines, V1 ships the **Oxport Tool Suite** — eight tools for MPC producers that handle the full export pipeline from XOlokun patch to installed MPC program:
 
 - **Drum Export** — Converts ONSET programs to MPC XPN format with full voice routing.
 - **Keygroup Export** — Maps any engine's chromatically rendered output to MPC keygroups.
@@ -51,7 +51,7 @@ These four engines will complete the water column. From OPENSKY above the surfac
 
 ## 9.3 Utility Engines — A New Category
 
-Here is something we have not talked about publicly yet: there is a second category of engine coming to XOmnibus, and it is architecturally different from everything in Chapter 8.
+Here is something we have not talked about publicly yet: there is a second category of engine coming to XOlokun, and it is architecturally different from everything in Chapter 8.
 
 The 34 synthesis engines in the current fleet are all creatures. They all MAKE sound. They inhabit the water column; they have biological identities; they couple and collide and produce audio. That is what synthesis engines do.
 
@@ -73,9 +73,9 @@ If you are reading this book in 2026, you may have already heard about the Akai 
 
 This changes everything about how XO_OX is designed.
 
-The XOmnibus PlaySurface — our 4-zone unified playing interface across Pad, Fretless, and Drum modes — was designed before the MPCe was announced. But when we saw the MPCe specs, we realized: we had already built the software architecture for exactly this hardware. Four corner zones. Independent parameter assignment per zone. The PlaySurface was prescient.
+The XOlokun PlaySurface — our 4-zone unified playing interface across Pad, Fretless, and Drum modes — was designed before the MPCe was announced. But when we saw the MPCe specs, we realized: we had already built the software architecture for exactly this hardware. Four corner zones. Independent parameter assignment per zone. The PlaySurface was prescient.
 
-Right now, every macro in every XOmnibus preset is designed with four macros (CHARACTER, MOVEMENT, COUPLING, SPACE) that map directly to the four Q-Link knobs on current MPC hardware. On the MPCe, those four macros become the four corners of every pad. Not four knobs you reach for — four pressure points under your fingers while you play.
+Right now, every macro in every XOlokun preset is designed with four macros (CHARACTER, MOVEMENT, COUPLING, SPACE) that map directly to the four Q-Link knobs on current MPC hardware. On the MPCe, those four macros become the four corners of every pad. Not four knobs you reach for — four pressure points under your fingers while you play.
 
 The implication: on MPCe, you are not playing notes with your right hand and tweaking knobs with your left. You are playing the synthesis and the modulation simultaneously with both hands, using every finger as a performance parameter. The COUPLING macro — which Chapter 4 describes as the most expressive Q-Link in a live performance context — becomes a pressure sensitivity dimension of the pad itself. You push into the corner and the engines entangle. You release and they separate.
 
@@ -105,7 +105,7 @@ This one is for the producers who have spent an afternoon rendering fifty keygro
 
 Fleet Render Automation is our term for the headless rendering pipeline that will eventually allow you to say "render this preset as a 37-note chromatic keygroup pack" and have the MPC program appear in your project five minutes later with no manual steps.
 
-The architecture exists in rough form in the Render Spec tool in the Oxport suite. What is missing is the full headless render integration — the ability to run XOmnibus in a non-GUI mode, accept a render specification, synthesize the audio, and output an XPN-ready bundle without the user touching anything.
+The architecture exists in rough form in the Render Spec tool in the Oxport suite. What is missing is the full headless render integration — the ability to run XOlokun in a non-GUI mode, accept a render specification, synthesize the audio, and output an XPN-ready bundle without the user touching anything.
 
 The timeline is 2026. The dependencies are: stable V1 with all 34+4 engines installed, the headless audio render API in JUCE finalized, and the Render Spec tool validated against all engine types. We are not there yet. But the Render Spec tool was designed specifically so that the work of specifying a render — which notes, which velocity layers, which round-robin cycle — can be done in advance and saved, so that when the headless pipeline arrives, every preset you have ever built already has its render specification waiting.
 
@@ -121,7 +121,7 @@ It is the community.
 
 Three programs are in early design:
 
-**Seed+Grow** — A mentorship and collaboration program where established producers partner with new producers around XOmnibus. The metaphor: a seed (new producer) gets planted in the soil of a mentor (experienced producer), grows with specific guidance, and eventually produces something neither could have made alone. Seed+Grow pairs will create joint preset libraries — the mentor's craft and the seed's fresh ears in collaboration. These libraries will be distributed through XO-OX.org and credited to both producers.
+**Seed+Grow** — A mentorship and collaboration program where established producers partner with new producers around XOlokun. The metaphor: a seed (new producer) gets planted in the soil of a mentor (experienced producer), grows with specific guidance, and eventually produces something neither could have made alone. Seed+Grow pairs will create joint preset libraries — the mentor's craft and the seed's fresh ears in collaboration. These libraries will be distributed through XO-OX.org and credited to both producers.
 
 **DNA Challenge** — A periodic community challenge where a "seed preset" is released: a single engine patch with a Sonic DNA signature (brightness: 0.8 / warmth: 0.3 / movement: 0.6 / density: 0.5 / space: 0.7 / aggression: 0.2 — or whatever the challenge specifies). Community members couple that seed with their own engines, modify it through the coupling matrix, and submit the result. The rule: the Sonic DNA of the submitted patch must be measurably different from the seed preset in at least three dimensions. The point: coupling transforms. The community demonstrates that transformation in real time, and we publish the best submissions as a community expansion pack.
 
@@ -133,11 +133,11 @@ None of this is live yet. Seed+Grow is in design. The DNA Challenge format is pr
 
 ## 9.8 A Personal Note from XO_OX
 
-I want to end this book the same way I think about every session in XOmnibus — by saying something true about what we are actually doing here.
+I want to end this book the same way I think about every session in XOlokun — by saying something true about what we are actually doing here.
 
 We are not trying to make the most powerful synthesizer. We are not trying to have the most engines, the most presets, the most parameters, the most coupling types. There are plugins with more of all of those things. Some of them are excellent.
 
-What we are trying to do is harder to describe and I think more rare: we are trying to give every sound in the fleet a reason to exist beyond its function. The owlfish is not in XOmnibus because we needed a monophonic bass engine. It is in XOmnibus because the *owlfish* — a real creature living in crushing darkness at 2,000 meters, with eyes like searchlights evolved to find photons in absolute black — *is the synthesis*. The extreme compression that pulls inaudible harmonics into audibility is not a feature. It is the creature's biology, translated into audio. When you turn up PRESSURE and the subharmonics deepen and the reverb tail extends into the abyss, you are not adjusting a macro. You are descending.
+What we are trying to do is harder to describe and I think more rare: we are trying to give every sound in the fleet a reason to exist beyond its function. The owlfish is not in XOlokun because we needed a monophonic bass engine. It is in XOlokun because the *owlfish* — a real creature living in crushing darkness at 2,000 meters, with eyes like searchlights evolved to find photons in absolute black — *is the synthesis*. The extreme compression that pulls inaudible harmonics into audibility is not a feature. It is the creature's biology, translated into audio. When you turn up PRESSURE and the subharmonics deepen and the reverb tail extends into the abyss, you are not adjusting a macro. You are descending.
 
 This is what we mean by character instruments. It is not branding. It is a design constraint: every feature must support a sonic pillar, and every sonic pillar must be grounded in something real — a creature, a physical phenomenon, a cultural tradition, a relationship between two things. The reef that Oblong provides is literally the architecture Oscar lives in. The in-laws that interfere with OHM's jam are nautiluses because nautiluses are mathematical and cold and they measure everything in logarithmic spirals. The flying fish brothers of OBBLIGATO can't sit still because flying fish literally launch from the water and glide.
 
@@ -145,7 +145,7 @@ We believe this approach produces better instruments. Not because mythology make
 
 The community we are building is made of people who feel that same way: that the best instrument is the one that makes you want to play, not just the one that makes the most technically impressive sound. The MPC is that instrument for a lot of us — not because it is the most powerful sequencer, but because it sits in front of you like a flat square of intention, and you hit the pads and something happens that feels like you, not like the software.
 
-XOmnibus is trying to be that, but for synthesis. Thirty-four creatures living in a water column, waiting to be coupled, waiting to collide, waiting for you to find the pairing that neither engine was expecting.
+XOlokun is trying to be that, but for synthesis. Thirty-four creatures living in a water column, waiting to be coupled, waiting to collide, waiting for you to find the pairing that neither engine was expecting.
 
 We are just getting started.
 

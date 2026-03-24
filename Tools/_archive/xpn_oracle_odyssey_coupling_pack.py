@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate ORACLE + ODYSSEY coupling pack presets for XOmnibus.
+"""Generate ORACLE + ODYSSEY coupling pack presets for XOlokun.
 
 Covers:
   - ORACLE × ODYSSEY marquee pair  (6 presets)
@@ -445,10 +445,10 @@ def write_presets(presets: list, output_dir: Path, dry_run: bool) -> list:
 
 def main():
     repo_root = Path(__file__).parent.parent
-    default_output = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Generate ORACLE + ODYSSEY coupling pack presets for XOmnibus."
+        description="Generate ORACLE + ODYSSEY coupling pack presets for XOlokun."
     )
     parser.add_argument(
         "--output-dir",

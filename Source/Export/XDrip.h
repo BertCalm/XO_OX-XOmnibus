@@ -12,7 +12,7 @@
 #include <string>
 #include <unordered_map>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // XDrip — Lightweight background preview renderer for the ExportDialog.
@@ -364,4 +364,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XDrip)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

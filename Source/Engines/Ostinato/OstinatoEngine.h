@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OstinatoEngine.h — XOstinato | "The Fire Circle"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOstinato is the fire at the center of the drum circle — the
@@ -69,7 +69,7 @@
 #include <cstring>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -2189,4 +2189,4 @@ private:
 // Eight seats, twelve traditions, one fire. Every rhythm a prayer.
 //==============================================================================
 
-} // namespace xomnibus
+} // namespace xolokun

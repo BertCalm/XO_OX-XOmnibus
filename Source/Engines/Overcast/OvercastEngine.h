@@ -14,12 +14,12 @@
 #include <cstring>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
 //  OVERCAST ENGINE — Crystallization Pad (Flash Freeze)
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOvercast is ice forming on glass. The anti-pad. It does not evolve
@@ -843,4 +843,4 @@ private:
     std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

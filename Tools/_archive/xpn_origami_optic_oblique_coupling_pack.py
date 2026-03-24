@@ -9,7 +9,7 @@ Covers:
   - ORIGAMI pairs with ORACLE, ODYSSEY, OPAL, OVERWORLD: 12 presets
   - OPTIC pairs with OUROBOROS, ORACLE, OVERWORLD, ORBITAL: 12 presets
   - OBLIQUE pairs with OPAL, ORACLE, OBLONG, OBBLIGATO: 12 presets
-  Total: 51 presets — all output to Presets/XOmnibus/Entangled/
+  Total: 51 presets — all output to Presets/XOlokun/Entangled/
 """
 
 import argparse
@@ -722,10 +722,10 @@ def build_all_presets(rng):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate ORIGAMI / OPTIC / OBLIQUE coupling presets for XOmnibus."
+        description="Generate ORIGAMI / OPTIC / OBLIQUE coupling presets for XOlokun."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = str(repo_root / "Presets" / "XOmnibus" / "Entangled")
+    default_out = str(repo_root / "Presets" / "XOlokun" / "Entangled")
     parser.add_argument(
         "--output-dir", default=default_out,
         help=f"Directory to write .xometa files (default: {default_out})"

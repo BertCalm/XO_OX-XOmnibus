@@ -2,7 +2,7 @@
 """
 xpn_cold_dense_preset_pack.py
 
-Generates Cold Dense quadrant preset stubs (.xometa) for XOmnibus engines.
+Generates Cold Dense quadrant preset stubs (.xometa) for XOlokun engines.
 
 The warmth/density balance doc prescribed a "Cold Dense" quadrant
 (warmth 0.0–0.25, density 0.75–1.0) — polyphonic digital clusters,
@@ -575,12 +575,12 @@ def build_preset(engine_key: str, preset_name: str, rng: random.Random) -> dict:
 
 def parse_args():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOmnibus" / "Aether"
+    default_output = repo_root / "Presets" / "XOlokun" / "Aether"
 
     parser = argparse.ArgumentParser(
         description=(
             "Generate Cold Dense quadrant preset stubs "
-            "(warmth≤0.25, density≥0.75) for XOmnibus."
+            "(warmth≤0.25, density≥0.75) for XOlokun."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
@@ -651,7 +651,7 @@ def main() -> None:
 
     target = len(engines) * count
 
-    print("XOmnibus Cold Dense Preset Pack")
+    print("XOlokun Cold Dense Preset Pack")
     print("  Quadrant    : warmth 0.0-0.25, density 0.75-1.0")
     print("  Mood        : Aether")
     print(f"  Engines     : {', '.join(engines)}")

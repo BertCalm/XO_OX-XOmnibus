@@ -5,13 +5,13 @@
 #include <vector>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // NaturalLanguageInterpreter — Maps creative, abstract, and plain language
 // descriptions to Sonic DNA adjustments and parameter intent.
 //
-// This is the bridge between how people THINK about sound and how XOmnibus
+// This is the bridge between how people THINK about sound and how XOlokun
 // represents it. It handles three tiers of input:
 //
 //   Tier 1 — Technical: "reduce filter resonance on engine 2, increase FM depth"
@@ -561,7 +561,7 @@ private:
             "allpass", "karplus", "waveguide", "phase distort", "ring mod",
             "vocoder", "cross-modulation", "sideband", "nyquist", "aliasing",
             "oversampl", "denormal", "dc offset", "zero-crossing", "polyphon",
-            // XOmnibus-specific
+            // XOlokun-specific
             "sonic dna", "mega coupling", "coupling matrix", "engine slot",
             "macro assign", "dna delta", "crossfade", "hot-swap",
             "mod depth", "mod rate", "key track", "velocity sens",
@@ -1848,4 +1848,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

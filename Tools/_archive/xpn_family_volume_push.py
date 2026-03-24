@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 xpn_family_volume_push.py
-Generates 150 Family mood presets (FAM_VOL series) for XOmnibus.
+Generates 150 Family mood presets (FAM_VOL series) for XOlokun.
 30 corner DNA combinations × 5 variants each = 150 presets.
-Output: Presets/XOmnibus/Family/
+Output: Presets/XOlokun/Family/
 """
 
 import json
@@ -16,7 +16,7 @@ random.seed(2026_03_16)
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 REPO_ROOT = Path(__file__).parent.parent
-OUTPUT_DIR = REPO_ROOT / "Presets" / "XOmnibus" / "Family"
+OUTPUT_DIR = REPO_ROOT / "Presets" / "XOlokun" / "Family"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── DNA range helpers ─────────────────────────────────────────────────────────

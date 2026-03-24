@@ -17,7 +17,7 @@
 
 ## Pre-Retreat State
 
-OPERA was designed and integrated into XOmnibus on 2026-03-21 as Engine #45. It arrived with a Synth Seance score of 8.7/10 — the highest first-seance score in the fleet's history. The seance council unanimously blessed the Kuramoto synthesis paradigm, the OperaConductor, and the EmotionalMemory system (Blessings B035, B036, B037). Three targeted fixes for 9.0+ were identified: init state default (arcMode=Manual hides the Conductor), preset velocity restraint (velToFilter=0.2 is too conservative for an operatic instrument), and detuning discovery gap (detuneAmount=0.0 produces a silent field, and no warning exists).
+OPERA was designed and integrated into XOlokun on 2026-03-21 as Engine #45. It arrived with a Synth Seance score of 8.7/10 — the highest first-seance score in the fleet's history. The seance council unanimously blessed the Kuramoto synthesis paradigm, the OperaConductor, and the EmotionalMemory system (Blessings B035, B036, B037). Three targeted fixes for 9.0+ were identified: init state default (arcMode=Manual hides the Conductor), preset velocity restraint (velToFilter=0.2 is too conservative for an operatic instrument), and detuning discovery gap (detuneAmount=0.0 produces a silent field, and no warning exists).
 
 180 factory presets exist across 8 moods. The "Conductor's Crescendo" preset (Flux) already applies all three seance fixes — it is the fleet's first example of a preset that corrects its own engine's init-state problem.
 
@@ -467,7 +467,7 @@ The synthesis equivalent of a murmuration.
 | partials=16, voices=1 | ~4% | Most awakening presets |
 | partials=24, voices=1 | ~6% | Double Peak Aria, Four Voices One Field |
 | partials=32, voices=1 | ~8% | Geological Arc — maximum for single-voice use |
-| partials=48, voices=8 | ~40% | Maximum configuration — use in XOmnibus solo context only |
+| partials=48, voices=8 | ~40% | Maximum configuration — use in XOlokun solo context only |
 
 **Note:** The 1024-entry sin table is the critical optimization. Without it, OPERA at 24 partials × 8 voices would cost ~25% CPU. With it, the cost is ~6% per voice. The table was an engineering gift.
 

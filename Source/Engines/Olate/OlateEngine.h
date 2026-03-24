@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OlateEngine.h — XOlate | "The Aged Wine Analog"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOlate is the wine cellar — oak barrels in the dark, esters forming,
@@ -51,7 +51,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // FermentationIntegrator — harmonic complexity grows over note sustain.
@@ -684,4 +684,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

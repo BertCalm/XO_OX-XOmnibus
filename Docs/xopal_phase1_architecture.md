@@ -17,13 +17,13 @@
 
 **Sound family:** Texture / Pad / Ambient / FX hybrid
 
-**Unique capability:** Real-time granulation of the XOmnibus coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This coupling doesn't exist anywhere else. OPAL is the first engine to use coupling for *audio-level transformation* rather than parameter modulation — an entirely new tier of engine interaction.
+**Unique capability:** Real-time granulation of the XOlokun coupling bus — any other engine's audio can enter XOpal's grain buffer and be scattered through time. NES pulses fragmented. Climax blooms frozen. Bass clouds sustained. This coupling doesn't exist anywhere else. OPAL is the first engine to use coupling for *audio-level transformation* rather than parameter modulation — an entirely new tier of engine interaction.
 
 **V008 Vision (Time Telescope):** OPAL is a universal transformer. Any engine's audio stream enters its grain buffer continuously and is reconstituted as something new. FREEZE (momentary hold, not toggle) allows the performer to capture a specific moment from the coupled stream and hold it — becoming a curator of temporal moments. The coupling mechanism that enables this is `AudioToBuffer`: a new coupling type distinct from `AudioToWavetable`, designed for continuous stereo audio streaming between engines.
 
 **Personality in 3 words:** Iridescent, Fragmented, Suspended
 
-**Gallery gap filled:** Every existing XOmnibus engine synthesizes *harmonically* — oscillators, wavetables, FM operators. None synthesizes in the *time domain*. OPAL introduces a fundamentally new synthesis dimension: granular time manipulation. Freeze, stretch, scatter, and cloud density become musical parameters rather than effects.
+**Gallery gap filled:** Every existing XOlokun engine synthesizes *harmonically* — oscillators, wavetables, FM operators. None synthesizes in the *time domain*. OPAL introduces a fundamentally new synthesis dimension: granular time manipulation. Freeze, stretch, scatter, and cloud density become musical parameters rather than effects.
 
 ---
 
@@ -1180,7 +1180,7 @@ float getSampleForCoupling(int channel, int sampleIndex) const override
 }
 ```
 
-The cache is written at the end of `renderBlock()` from the final stereo output (post-FX, post-finish). This is the same pattern used by all XOmnibus engines.
+The cache is written at the end of `renderBlock()` from the final stereo output (post-FX, post-finish). This is the same pattern used by all XOlokun engines.
 
 **Signal point:** Post-filter, post-character stages, post-FX chain, pre-level. Amplitude is normalized ±1.
 

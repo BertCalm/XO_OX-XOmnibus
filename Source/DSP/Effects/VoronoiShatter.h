@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // VoronoiShatter — Spatial-granular processor using geometric partitioning.
@@ -201,4 +201,4 @@ private:
     float outputPhase = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

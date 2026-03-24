@@ -29,10 +29,10 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <array>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// MasterFXChain — Post-mix master effects for XOmnibus.
+// MasterFXChain — Post-mix master effects for XOlokun.
 //
 // Signal chain (22 stages, fixed order):
 //   1.  Saturation        — Tape/Tube/Digital/FoldBack via Saturator (mode select)
@@ -1236,4 +1236,4 @@ private:
     std::atomic<float>* pSeqEnvAmt   = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

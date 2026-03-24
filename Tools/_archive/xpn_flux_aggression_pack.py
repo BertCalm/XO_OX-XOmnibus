@@ -5,7 +5,7 @@ Generates 60 Flux mood presets targeting the full aggression spectrum.
 - 20 Maximum Flux: aggression 0.85–1.0, movement 0.8–1.0
 - 20 Controlled Flux: aggression 0.5–0.75, movement 0.7–0.9
 - 20 Tension Flux: aggression 0.7–0.9, movement 0.1–0.3
-Writes to Presets/XOmnibus/Flux/. Skips existing files.
+Writes to Presets/XOlokun/Flux/. Skips existing files.
 """
 
 import json
@@ -14,7 +14,7 @@ import sys
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "..", "Presets", "XOmnibus", "Flux"
+    "..", "Presets", "XOlokun", "Flux"
 )
 
 # ---------------------------------------------------------------------------

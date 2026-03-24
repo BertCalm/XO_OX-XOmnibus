@@ -267,7 +267,7 @@ def package_xpn(
         # --- Coupling recipes (if a recipe_dir was provided or auto-discovered) ---
         # xpn_coupling_recipes.py generates {preset_slug}_coupling_recipe.json files.
         # We include any recipes found for the pack's programs so producers know how
-        # to recreate live coupling in XOmnibus from the static XPN audio.
+        # to recreate live coupling in XOlokun from the static XPN audio.
         coupling_recipes_dir = build_dir / "coupling_recipes"
         if coupling_recipes_dir.exists():
             recipe_jsons = sorted(coupling_recipes_dir.glob("*_coupling_recipe.json"))

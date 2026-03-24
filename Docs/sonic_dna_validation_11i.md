@@ -255,13 +255,13 @@ All 1805 presets have complete 6D DNA. Zero missing fields.
 
 | File | Engine | Fills Gap |
 |------|--------|-----------|
-| `Presets/XOmnibus/Flux/Obscura_Chain_Fury.xometa` | Obscura | movement HIGH, density HIGH, aggression HIGH |
-| `Presets/XOmnibus/Flux/Obscura_Mantle_Convulsion.xometa` | Obscura | movement HIGH (0.92), density HIGH (0.88) |
-| `Presets/XOmnibus/Atmosphere/Obscura_Mass_Migration.xometa` | Obscura | movement HIGH (0.78), density HIGH (0.82) |
-| `Presets/XOmnibus/Aether/Obsidian_Glass_Void.xometa` | Obsidian | density LOW (0.08), space HIGH (0.92) |
-| `Presets/XOmnibus/Aether/Obsidian_Shimmer_Hall.xometa` | Obsidian | density LOW (0.25), space HIGH (0.88) |
-| `Presets/XOmnibus/Atmosphere/Osprey_Kelp_Forest.xometa` | Osprey | warmth HIGH (0.82), density HIGH (0.78) |
-| `Presets/XOmnibus/Foundation/Osprey_Thermal_Shore.xometa` | Osprey | warmth HIGH (0.78), density HIGH (0.75) |
+| `Presets/XOlokun/Flux/Obscura_Chain_Fury.xometa` | Obscura | movement HIGH, density HIGH, aggression HIGH |
+| `Presets/XOlokun/Flux/Obscura_Mantle_Convulsion.xometa` | Obscura | movement HIGH (0.92), density HIGH (0.88) |
+| `Presets/XOlokun/Atmosphere/Obscura_Mass_Migration.xometa` | Obscura | movement HIGH (0.78), density HIGH (0.82) |
+| `Presets/XOlokun/Aether/Obsidian_Glass_Void.xometa` | Obsidian | density LOW (0.08), space HIGH (0.92) |
+| `Presets/XOlokun/Aether/Obsidian_Shimmer_Hall.xometa` | Obsidian | density LOW (0.25), space HIGH (0.88) |
+| `Presets/XOlokun/Atmosphere/Osprey_Kelp_Forest.xometa` | Osprey | warmth HIGH (0.82), density HIGH (0.78) |
+| `Presets/XOlokun/Foundation/Osprey_Thermal_Shore.xometa` | Osprey | warmth HIGH (0.78), density HIGH (0.75) |
 
 ### Gaps Closed: 6 gap flags across 3 engines
 

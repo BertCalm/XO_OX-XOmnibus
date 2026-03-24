@@ -6,7 +6,7 @@
 
 ## Overview
 
-The GARDEN quad is the Strings instrument family for XOmnibus. Four engines spanning orchestral, solo, chamber, and synth strings, unified by evolutionary coupling — state that accumulates over session time and never automatically resets.
+The GARDEN quad is the Strings instrument family for XOlokun. Four engines spanning orchestral, solo, chamber, and synth strings, unified by evolutionary coupling — state that accumulates over session time and never automatically resets.
 
 ## Engines
 
@@ -137,7 +137,7 @@ Docs/concepts/garden-quad-architecture.md — This document
 
 ## Next Steps
 
-1. Register all 4 engines in `EngineRegistry.h` and `XOmnibusProcessor.cpp`
+1. Register all 4 engines in `EngineRegistry.h` and `XOlokunProcessor.cpp`
 2. Update CLAUDE.md engine tables (4 new entries)
 3. Create 10 presets per engine (40 total) across moods
 4. Run Seance on each engine

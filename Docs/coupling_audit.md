@@ -1,4 +1,4 @@
-# XOmnibus Coupling Audit — Round 4 (Prism Sweep)
+# XOlokun Coupling Audit — Round 4 (Prism Sweep)
 **Date:** 2026-03-14
 **Auditor:** Claude (Sonnet 4.6), READ-ONLY pass
 **Scope:** All 24 engines in `Source/Engines/`
@@ -76,7 +76,7 @@ Definitions:
 ### Score 1: Complete Stubs
 
 #### OCELOT (XOcelot)
-- **`applyCouplingInput` status:** STUB — all 4 parameters cast to void. Comment says "Full routing wired when running inside XOmnibus" but nothing is wired.
+- **`applyCouplingInput` status:** STUB — all 4 parameters cast to void. Comment says "Full routing wired when running inside XOlokun" but nothing is wired.
 - **`getSampleForCoupling` status:** PROPER — per-sample cache populated post-render, ch0/ch1 stereo. No ch2 envelope exposed.
 - **Most natural coupling TARGET:** `biome` parameter (continuous ecosystem morph: Canopy→Understory→Floor). An external filter sweep or envelope from ONSET or ONSET's kick peak would be ideal input via `EnvToMorph`. Also: excitation energy to the modal resonators via `AudioToFM`.
 - **Most natural coupling SOURCE:** The ecosystem's emergent timbral energy — the voice pool amplitude is a meaningful envelope follower. The `OcelotCanopy` scanner position would make a compelling LFO-equivalent signal.
@@ -222,4 +222,4 @@ Types that are **never or rarely received** across the fleet:
 
 ### The Two Stubs: Root Cause
 
-Both Ocelot and Owlfish share the same structural reason for their stubs: they were integrated into XOmnibus from standalone instruments with their own internal modulation architectures (`EcosystemMatrix` / `OwlfishVoice + SubharmonicOsc` respectively). The coupling wiring was deferred with explicit "to be wired later" comments. Unlike earlier-integrated engines (Bob, Fat, Drift) which have basic coupling, these two newer integrations never received their Round 1 coupling pass.
+Both Ocelot and Owlfish share the same structural reason for their stubs: they were integrated into XOlokun from standalone instruments with their own internal modulation architectures (`EcosystemMatrix` / `OwlfishVoice + SubharmonicOsc` respectively). The coupling wiring was deferred with explicit "to be wired later" comments. Unlike earlier-integrated engines (Bob, Fat, Drift) which have basic coupling, these two newer integrations never received their Round 1 coupling pass.

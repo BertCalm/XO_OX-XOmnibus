@@ -1,13 +1,13 @@
-# JUCE to MPC Workflow: XOmnibus to XPN Pack
+# JUCE to MPC Workflow: XOlokun to XPN Pack
 
 **Status:** Internal reference guide | March 2026
-**Scope:** Complete pipeline from sound design in XOmnibus to production-ready XPN pack on MPC pads
+**Scope:** Complete pipeline from sound design in XOlokun to production-ready XPN pack on MPC pads
 
 ---
 
 ## Overview
 
-This is the end-to-end process for turning an XOmnibus preset into a deployable MPC expansion pack.
+This is the end-to-end process for turning an XOlokun preset into a deployable MPC expansion pack.
 The pipeline has four phases. Without Fleet Render Automation, the bottleneck is Phase 1 — manual
 recording. With Fleet Render, Phase 1 drops from several hours to minutes and the entire 20-preset
 pack closes in ~30 minutes.
@@ -30,7 +30,7 @@ the entire pipeline becomes viable at scale for the full 2,550-preset fleet.
 
 ---
 
-## Phase 1: Sound Design in XOmnibus
+## Phase 1: Sound Design in XOlokun
 
 **Estimated time: 3–5 hours (manual) | 10–15 min (Fleet Render)**
 
@@ -53,7 +53,7 @@ instrument — presets that read as interesting in a DAW can feel static on pads
 
 ### The 4 Macros and Their XPN Translation
 
-XOmnibus presets expose 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE. These do not survive
+XOlokun presets expose 4 macros: CHARACTER, MOVEMENT, COUPLING, SPACE. These do not survive
 into an XPN keygroup as interactive parameters — they are baked into which preset state you
 render. Before rendering:
 
@@ -69,10 +69,10 @@ render. Before rendering:
 ### Recording Renders
 
 **DAW recording:** Highest quality control. Automate MIDI notes, render tracks offline. Drawback:
-requires loading XOmnibus as a plugin, playing each note, naming files manually. For a 20-preset
+requires loading XOlokun as a plugin, playing each note, naming files manually. For a 20-preset
 pack at 4-layer velocity × 13 notes per octave, that is 1,040 individual recordings.
 
-**Standalone rendering:** Load XOmnibus standalone, use system audio recording (e.g., BlackHole or
+**Standalone rendering:** Load XOlokun standalone, use system audio recording (e.g., BlackHole or
 Loopback). Same bottleneck as DAW recording — manual, laborious.
 
 **Fleet Render Automation (future):** Once `renderNoteToWav()` is implemented in `XPNExporter.h`,
@@ -153,7 +153,7 @@ Run these tools in sequence on the raw WAV exports:
 
 3. **`xpn_coupling_docs_generator.py`** — Writes CouplingDNA comment blocks into the XPM files.
    These comments are human-readable metadata (not parsed by MPC OS) that document which
-   XOmnibus coupling configurations were active when the samples were rendered. Preserves the
+   XOlokun coupling configurations were active when the samples were rendered. Preserves the
    sonic genealogy for future re-renders or pack updates.
 
 4. **`xpn_pack_score.py`** — Scores the assembled pack against a rubric: note coverage breadth,

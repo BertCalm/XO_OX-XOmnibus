@@ -86,7 +86,7 @@ Push both COUPLING and MOVEMENT macros above 0.6. The filter exploration becomes
 
 ### The Download
 
-This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOmnibus and MPC.
+This preset is included in the **Founder's Signature Vol. 1** XPN pack -- 5 presets, free, for XOlokun and MPC.
 [Download link placeholder]
 
 ---

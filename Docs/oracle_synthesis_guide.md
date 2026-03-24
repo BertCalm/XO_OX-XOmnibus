@@ -2,13 +2,13 @@
 
 **Engine:** ORACLE | **Accent:** Prophecy Indigo `#4B0082`
 **Parameter prefix:** `oracle_` | **Max voices:** 8
-**XOmnibus seance score:** 8.6/10 — Buchla: 10/10 (only perfect score across all 24 seances)
+**XOlokun seance score:** 8.6/10 — Buchla: 10/10 (only perfect score across all 24 seances)
 
 ---
 
 ## Introduction
 
-Oracle is the only synthesizer in the XOmnibus fleet that uses Xenakis's 1991 GENDY (GENération DYnamique) synthesis algorithm. Where every other engine in XOmnibus — even the experimental ones like OUROBOROS (chaotic ODE) and ORGANON (metabolic) — produces output that is mathematically determined by its inputs, Oracle introduces genuine randomness as a creative force. Given identical parameter values, Oracle will never produce the same sound twice.
+Oracle is the only synthesizer in the XOlokun fleet that uses Xenakis's 1991 GENDY (GENération DYnamique) synthesis algorithm. Where every other engine in XOlokun — even the experimental ones like OUROBOROS (chaotic ODE) and ORGANON (metabolic) — produces output that is mathematically determined by its inputs, Oracle introduces genuine randomness as a creative force. Given identical parameter values, Oracle will never produce the same sound twice.
 
 The engine combines two systems that have no business being in the same instrument and are made extraordinary by their proximity:
 
@@ -566,7 +566,7 @@ For maximum effect: use with reverb (Oracle's dry output benefits from spatial p
 
 ## Part 5: Coupling Guide
 
-Oracle participates in XOmnibus's MegaCouplingMatrix as both a sender and receiver. Understanding the coupling interface enables cross-engine synthesis techniques not possible within any single engine.
+Oracle participates in XOlokun's MegaCouplingMatrix as both a sender and receiver. Understanding the coupling interface enables cross-engine synthesis techniques not possible within any single engine.
 
 ### 5.1 What Oracle Exports
 

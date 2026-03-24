@@ -88,7 +88,7 @@ except ImportError:
     COVER_ART_AVAILABLE = False
 
 REPO_ROOT   = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 
 
 # =============================================================================
@@ -592,7 +592,7 @@ def _generate_qlink_xml() -> str:
     """
     Generate Q-Link knob assignments for the program level.
 
-    Standardized XOmnibus macro → MPC Q-Link mapping:
+    Standardized XOlokun macro → MPC Q-Link mapping:
       Q1 → CHARACTER  (FilterCutoff — timbral character)
       Q2 → MOVEMENT   (LFO Rate — motion/modulation depth)
       Q3 → COUPLING   (Send2/AuxSend — cross-feed, closest MPC analog to coupling)
@@ -603,25 +603,25 @@ def _generate_qlink_xml() -> str:
     return (
         '    <QLinks>\n'
         '      <QLink number="1">\n'
-        '        <Name>CHARACTER</Name>\n'            # ≤10 chars — XOmnibus macro 1
+        '        <Name>CHARACTER</Name>\n'            # ≤10 chars — XOlokun macro 1
         '        <Parameter>FilterCutoff</Parameter>\n'
         '        <Min>0.200000</Min>\n'
         '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="2">\n'
-        '        <Name>MOVEMENT</Name>\n'             # ≤10 chars — XOmnibus macro 2
+        '        <Name>MOVEMENT</Name>\n'             # ≤10 chars — XOlokun macro 2
         '        <Parameter>LFORate</Parameter>\n'
         '        <Min>0.000000</Min>\n'
         '        <Max>1.000000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="3">\n'
-        '        <Name>COUPLING</Name>\n'             # ≤10 chars — XOmnibus macro 3
+        '        <Name>COUPLING</Name>\n'             # ≤10 chars — XOlokun macro 3
         '        <Parameter>Send2</Parameter>\n'
         '        <Min>0.000000</Min>\n'
         '        <Max>0.700000</Max>\n'
         '      </QLink>\n'
         '      <QLink number="4">\n'
-        '        <Name>SPACE</Name>\n'                # ≤10 chars — XOmnibus macro 4
+        '        <Name>SPACE</Name>\n'                # ≤10 chars — XOlokun macro 4
         '        <Parameter>Send1</Parameter>\n'
         '        <Min>0.000000</Min>\n'
         '        <Max>0.700000</Max>\n'

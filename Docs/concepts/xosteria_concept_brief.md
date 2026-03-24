@@ -309,7 +309,7 @@ When they arrive at the new shore, they're not the same quartet that left. `oste
 |------|----------|-----|
 | Foundation | **High** | Tight ensemble presets with unified shore position — warm, stable, grounding |
 | Atmosphere | **High** | Stretched quartet + tavern room — immersive, spatial, narrative |
-| Entangled | **High** | OSPREY×OSTERIA coupling presets. Quartet absorbing other engines' character. The engine's reason for existing in XOmnibus. |
+| Entangled | **High** | OSPREY×OSTERIA coupling presets. Quartet absorbing other engines' character. The engine's reason for existing in XOlokun. |
 | Prism | **High** | Bright stretched presets where voices on different shores create shimmering harmonic tension |
 | Flux | **High** | Journey presets with voices drifting between shores, memory accumulating |
 | Aether | Medium | Deep memory presets where voices carry so much history they become ghostly, indistinct |

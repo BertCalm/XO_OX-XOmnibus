@@ -2,7 +2,7 @@
 
 *Research & Design Spec | March 2026 | XO_OX Designs*
 
-**Purpose:** One-paragraph character briefs for all 34 registered XOmnibus engines. Written for the pack designer who needs to understand an engine's soul before they can represent it in sample form. Each brief answers four questions: What does this engine DO that no other engine does? What does it FEEL like to play? Who is the MPC producer who will love it? What's the one pack concept that perfectly captures its character?
+**Purpose:** One-paragraph character briefs for all 34 registered XOlokun engines. Written for the pack designer who needs to understand an engine's soul before they can represent it in sample form. Each brief answers four questions: What does this engine DO that no other engine does? What does it FEEL like to play? Who is the MPC producer who will love it? What's the one pack concept that perfectly captures its character?
 
 ---
 
@@ -126,7 +126,7 @@ XOrbital is a 64-harmonic additive synthesis engine where each partial is indepe
 
 ### OPTIC — Sound That Sees Itself
 
-XOptic is a zero-audio-identity visual modulation engine — it produces no sound of its own but generates modulation signals from the spectral analysis of whatever audio surrounds it in the coupling matrix, and its Winamp-style visualizer makes those signals visible as real-time animated graphics. The 8-band analyzer (sub, bass, lo-mid, mid, hi-mid, presence, brilliance, air) maps each band to a modulation source, and the AutoPulse mode generates self-evolving trance rhythms from spectral state without player input. The seance acknowledged it as a synthesis paradigm shift — Zero-Audio Identity (Blessing B005). "Playing" OPTIC feels like conducting a visualization: you set thresholds and routing, then the audio flowing through the system creates modulation that changes other engines' parameters. The MPC producer who will love OPTIC is the live performance producer who builds XOmnibus rigs and wants the system to react to its own audio in real time — the producer who wants to put OPTIC between ONSET and ODYSSEY and let the kick frequency modulate the pad filter. The perfect pack is *AutoPulse*, a collection of preset OPTIC configurations each with a companion patch on a second engine, demonstrating different reactive routing philosophies.
+XOptic is a zero-audio-identity visual modulation engine — it produces no sound of its own but generates modulation signals from the spectral analysis of whatever audio surrounds it in the coupling matrix, and its Winamp-style visualizer makes those signals visible as real-time animated graphics. The 8-band analyzer (sub, bass, lo-mid, mid, hi-mid, presence, brilliance, air) maps each band to a modulation source, and the AutoPulse mode generates self-evolving trance rhythms from spectral state without player input. The seance acknowledged it as a synthesis paradigm shift — Zero-Audio Identity (Blessing B005). "Playing" OPTIC feels like conducting a visualization: you set thresholds and routing, then the audio flowing through the system creates modulation that changes other engines' parameters. The MPC producer who will love OPTIC is the live performance producer who builds XOlokun rigs and wants the system to react to its own audio in real time — the producer who wants to put OPTIC between ONSET and ODYSSEY and let the kick frequency modulate the pad filter. The perfect pack is *AutoPulse*, a collection of preset OPTIC configurations each with a companion patch on a second engine, demonstrating different reactive routing philosophies.
 
 ---
 
@@ -255,5 +255,5 @@ XOctopus is a wavetable synthesizer where 8 independent LFOs (the arms) run at p
 
 ---
 
-*XO_OX Designs — XOmnibus Engine Character Briefs R&D | March 2026*
+*XO_OX Designs — XOlokun Engine Character Briefs R&D | March 2026*
 *34 engines registered. All seances complete. All doctrines resolved.*

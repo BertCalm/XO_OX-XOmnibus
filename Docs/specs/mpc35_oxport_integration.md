@@ -15,9 +15,9 @@ MPC 3.5 introduced several structural changes to program format, pad behavior, a
 
 MPC 3.5 added a new program type: VST3 Plugin Program. This allows a VST3 plugin to be embedded as a program in a project, with its state saved alongside keygroup and drum programs.
 
-### What This Means for XOmnibus
+### What This Means for XOlokun
 
-XOmnibus as a VST3 can theoretically become a Program type in an MPC 3.5 project. A user loads XOmnibus as a VST3 plugin program, selects a preset (e.g., OPAL "Cephalopod Drift"), and that program slot behaves identically to any other MPC program: it receives MIDI from pads, responds to Q-Links, exports via Stems.
+XOlokun as a VST3 can theoretically become a Program type in an MPC 3.5 project. A user loads XOlokun as a VST3 plugin program, selects a preset (e.g., OPAL "Cephalopod Drift"), and that program slot behaves identically to any other MPC program: it receives MIDI from pads, responds to Q-Links, exports via Stems.
 
 ### Speculative XPM Schema for VST3 Program
 
@@ -27,8 +27,8 @@ Based on MPC's XML conventions and the VST3 program type additions documented in
 <?xml version="1.0" encoding="UTF-8"?>
 <MPCVObject>
   <Version value="2.10"/>
-  <Program type="VST3Plugin" name="XOmnibus - OPAL Cephalopod Drift">
-    <PluginName value="XOmnibus"/>
+  <Program type="VST3Plugin" name="XOlokun - OPAL Cephalopod Drift">
+    <PluginName value="XOlokun"/>
     <PluginVendor value="XO_OX Designs"/>
     <PluginUID value="XOOX-XOMN-0001-0000"/>
     <PluginState>
@@ -50,11 +50,11 @@ Based on MPC's XML conventions and the VST3 program type additions documented in
 
 ### Oxport Integration Work Required
 
-1. **VST3 state serialization**: Oxport needs a pathway to read an XOmnibus `.xometa` preset, serialize it as a VST3 state chunk (base64), and embed it in the VST3 program XPM.
-2. **PluginUID registry**: XO_OX needs a registered VST3 UID that MPC 3.5 can look up. Current plugin codes (PLUGIN_CODE varies per engine) need consolidation to a single XOmnibus UID.
-3. **Fallback behavior**: If MPC version < 3.5 or XOmnibus VST3 not installed, Oxport should fall back to a rendered keygroup program with equivalent samples. Document this fallback in the XPN expansion README.
+1. **VST3 state serialization**: Oxport needs a pathway to read an XOlokun `.xometa` preset, serialize it as a VST3 state chunk (base64), and embed it in the VST3 program XPM.
+2. **PluginUID registry**: XO_OX needs a registered VST3 UID that MPC 3.5 can look up. Current plugin codes (PLUGIN_CODE varies per engine) need consolidation to a single XOlokun UID.
+3. **Fallback behavior**: If MPC version < 3.5 or XOlokun VST3 not installed, Oxport should fall back to a rendered keygroup program with equivalent samples. Document this fallback in the XPN expansion README.
 
-**Priority**: Medium. VST3 program type enables the richest playback experience but requires XOmnibus to be installed on the target machine. Rendered keygroup programs remain the universal path.
+**Priority**: Medium. VST3 program type enables the richest playback experience but requires XOlokun to be installed on the target machine. Rendered keygroup programs remain the universal path.
 
 ---
 
@@ -76,7 +76,7 @@ The Keygroup Synth Engine combines:
 Yes, XO_OX can ship embedded wavetables inside XPN expansions. The wavetable format is a single-cycle WAV (2048 samples at 44100Hz) or a sequential wavetable file (multiple single-cycle frames concatenated, with frame count specified in XPM).
 
 **Recommended workflow:**
-1. Render representative single-cycle waveforms from XOmnibus engines (OVERWORLD era snapshots, OPAL grain freezes, OUROBOROS chaos attractors as pitch).
+1. Render representative single-cycle waveforms from XOlokun engines (OVERWORLD era snapshots, OPAL grain freezes, OUROBOROS chaos attractors as pitch).
 2. Package these as `Wavetables/` folder inside the XPN bundle.
 3. Reference them in a Keygroup Synth Engine program XPM.
 

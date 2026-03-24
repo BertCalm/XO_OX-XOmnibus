@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <array>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Factory function type for creating shaper instances.
@@ -175,7 +175,7 @@ private:
 // Registration macro — use in each shaper's .cpp file
 #define REGISTER_SHAPER(ShaperId, ShaperClass)                               \
     static bool _shaper_##ShaperClass##_registered =                         \
-        xomnibus::ShaperRegistry::instance().registerShaper(                 \
-            ShaperId, []() { return std::make_unique<xomnibus::ShaperClass>(); });
+        xolokun::ShaperRegistry::instance().registerShaper(                 \
+            ShaperId, []() { return std::make_unique<xolokun::ShaperClass>(); });
 
-} // namespace xomnibus
+} // namespace xolokun

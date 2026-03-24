@@ -1,8 +1,8 @@
-# How to Write a XOmnibus Engine Adapter
+# How to Write a XOlokun Engine Adapter
 
 ## Overview
 
-A XOmnibus engine adapter is a thin C++ class that wraps a standalone XO_OX synthesizer behind the `SynthEngine` interface. It exists because standalone instruments have their own parameter namespaces, lifecycle management, and audio routing — the adapter bridges all of that into XOmnibus's unified system. XOmnibus holds up to four active engines in slots and connects them through the `MegaCouplingMatrix`. Every engine in those slots must speak the same interface; the adapter is the translator.
+A XOlokun engine adapter is a thin C++ class that wraps a standalone XO_OX synthesizer behind the `SynthEngine` interface. It exists because standalone instruments have their own parameter namespaces, lifecycle management, and audio routing — the adapter bridges all of that into XOlokun's unified system. XOlokun holds up to four active engines in slots and connects them through the `MegaCouplingMatrix`. Every engine in those slots must speak the same interface; the adapter is the translator.
 
 In practice, an adapter does three things: it re-exposes the standalone engine's parameters under a namespaced prefix (e.g., `poss_filterCutoff` instead of `filter_cutoff`), it routes `renderBlock()` calls to the underlying DSP, and it wires up the two coupling hooks (`getSampleForCoupling` and `applyCouplingInput`) so other engines can modulate it.
 
@@ -13,7 +13,7 @@ The canonical example of a complete adapter is `BiteEngine` (wrapping XOppossum)
 
 ## The SynthEngine Interface
 
-Every adapter inherits from `xomnibus::SynthEngine` (defined in `Source/Core/SynthEngine.h`). The full interface:
+Every adapter inherits from `xolokun::SynthEngine` (defined in `Source/Core/SynthEngine.h`). The full interface:
 
 ```cpp
 class SynthEngine {
@@ -52,7 +52,7 @@ public:
 };
 ```
 
-**Design contract enforced by XOmnibus:**
+**Design contract enforced by XOlokun:**
 - `renderBlock()` must never allocate memory or perform blocking I/O.
 - `getSampleForCoupling()` must be O(1) — return from a pre-written cache, not a computation.
 - `applyCouplingInput()` accumulates modulation into member variables; `renderBlock()` consumes them.
@@ -65,7 +65,7 @@ public:
 
 ### Step 1: Create the Adapter Header
 
-Create `Source/Engines/{CanonicalName}/{CanonicalName}Engine.h`. The canonical name is the XOmnibus gallery name (e.g., `Bite` for XOppossum, `Overworld` for XOverworld).
+Create `Source/Engines/{CanonicalName}/{CanonicalName}Engine.h`. The canonical name is the XOlokun gallery name (e.g., `Bite` for XOppossum, `Overworld` for XOverworld).
 
 Minimal skeleton:
 
@@ -81,7 +81,7 @@ Minimal skeleton:
 //   #include "engine/VoicePool.h"
 //   #include "dsp/SVFilter.h"
 
-namespace xomnibus {  // or a sub-namespace if needed
+namespace xolokun {  // or a sub-namespace if needed
 
 class MyNewEngine : public SynthEngine {
 public:
@@ -105,7 +105,7 @@ public:
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override;
 
-    // Called by XOmnibusProcessor::createParameterLayout()
+    // Called by XOlokunProcessor::createParameterLayout()
     static void addParameters(
         std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params);
 
@@ -137,7 +137,7 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 Also create a one-line `{CanonicalName}Engine.cpp`:
@@ -145,16 +145,16 @@ Also create a one-line `{CanonicalName}Engine.cpp`:
 ```cpp
 #include "MyNewEngine.h"
 // All DSP is inline in the .h. This stub provides the translation unit for CMake.
-// Registration is centralized in XOmnibusProcessor.cpp.
+// Registration is centralized in XOlokunProcessor.cpp.
 ```
 
-**Important:** All DSP in XOmnibus lives inline in `.h` headers. The `.cpp` is always a one-line stub. This is a project-wide architectural rule documented in `CLAUDE.md`.
+**Important:** All DSP in XOlokun lives inline in `.h` headers. The `.cpp` is always a one-line stub. This is a project-wide architectural rule documented in `CLAUDE.md`.
 
 ---
 
 ### Step 2: Implement createParameterLayout()
 
-This method must return every parameter the engine exposes, with namespaced IDs. The APVTS is built once for the whole XOmnibus processor with all engine parameters merged together — parameter ID collisions across engines will cause a JUCE assertion at startup.
+This method must return every parameter the engine exposes, with namespaced IDs. The APVTS is built once for the whole XOlokun processor with all engine parameters merged together — parameter ID collisions across engines will cause a JUCE assertion at startup.
 
 The required pattern is a static `addParametersImpl()` helper called from both `createParameterLayout()` and `addParameters()`:
 
@@ -201,7 +201,7 @@ The parameter prefix for each engine is documented in `CLAUDE.md` under "Engine 
 
 ### Step 3: Implement attachParameters()
 
-After the shared APVTS is constructed, XOmnibus calls `attachParameters()` once. Cache every raw parameter pointer here. Use these cached pointers in `renderBlock()` — never call `apvts.getRawParameterValue()` on the audio thread.
+After the shared APVTS is constructed, XOlokun calls `attachParameters()` once. Cache every raw parameter pointer here. Use these cached pointers in `renderBlock()` — never call `apvts.getRawParameterValue()` on the audio thread.
 
 ```cpp
 void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -401,9 +401,9 @@ For a minimal first integration, implement at least `AmpToFilter` (the most comm
 
 ---
 
-### Step 7: Register with XOmnibus
+### Step 7: Register with XOlokun
 
-Open `Source/XOmnibusProcessor.cpp`. There are two places to edit:
+Open `Source/XOlokunProcessor.cpp`. There are two places to edit:
 
 **1. Add an `#include` at the top:**
 ```cpp
@@ -413,10 +413,10 @@ Open `Source/XOmnibusProcessor.cpp`. There are two places to edit:
 **2. Add a static registration block near the other registrations:**
 ```cpp
 static bool registered_MyEngine =
-    xomnibus::EngineRegistry::instance().registerEngine(
+    xolokun::EngineRegistry::instance().registerEngine(
         "MyEngine",  // Must exactly match getEngineId()
-        []() -> std::unique_ptr<xomnibus::SynthEngine> {
-            return std::make_unique<xomnibus::MyNewEngine>();
+        []() -> std::unique_ptr<xolokun::SynthEngine> {
+            return std::make_unique<xolokun::MyNewEngine>();
         });
 ```
 
@@ -445,7 +445,7 @@ auval -v aumu Xomn Xoox  # Replace with your plugin codes
 ```
 
 **Smoke tests to run manually:**
-1. Load XOmnibus. Open a preset that references your engine. Confirm it sounds correct.
+1. Load XOlokun. Open a preset that references your engine. Confirm it sounds correct.
 2. Create a coupling route from your engine to another engine with `AmpToFilter`. Move a note and confirm the destination filter responds.
 3. Create a coupling route from another engine to yours with a type you declared support for. Confirm your engine responds.
 4. Load 20+ presets at random. Confirm no crashes and no parameter ID collisions in the JUCE console.
@@ -456,7 +456,7 @@ auval -v aumu Xomn Xoox  # Replace with your plugin codes
 
 ### The Core Problem
 
-Standalone XO_OX instruments often have parameter IDs that lack a prefix. XOppossum (the standalone synth behind OVERBITE) uses plain names like `filter_cutoff`, `osc_a_wave`, `amp_attack`. XOmnibus cannot use these as-is because the shared APVTS holds parameters from all engines simultaneously — collisions are guaranteed if two engines both register `filter_cutoff`.
+Standalone XO_OX instruments often have parameter IDs that lack a prefix. XOppossum (the standalone synth behind OVERBITE) uses plain names like `filter_cutoff`, `osc_a_wave`, `amp_attack`. XOlokun cannot use these as-is because the shared APVTS holds parameters from all engines simultaneously — collisions are guaranteed if two engines both register `filter_cutoff`.
 
 ### The Solution: Prefix Everything in the Adapter
 
@@ -469,7 +469,7 @@ pFilterCutoff = apvts.getRawParameterValue("poss_filterCutoff");
 pFilterCutoff = apvts.getRawParameterValue("filter_cutoff");
 ```
 
-### Presets Must Use the XOmnibus IDs
+### Presets Must Use the XOlokun IDs
 
 Factory presets for the engine must use the adapter's parameter IDs (with prefix), not the standalone instrument's IDs. A preset's `parameters` block is keyed by engine canonical name:
 
@@ -490,7 +490,7 @@ Some standalone engines define parameter ID constants in a namespace (XOverworld
 
 **Option A:** Use those constants directly in `attachParameters()`. The values of those constants must match whatever strings you registered in `createParameterLayout()`.
 
-**Option B:** Hardcode the XOmnibus-prefixed strings everywhere. Simpler, no dependency on the standalone's header structure.
+**Option B:** Hardcode the XOlokun-prefixed strings everywhere. Simpler, no dependency on the standalone's header structure.
 
 `OverworldEngine.h` uses Option A and delegates `createParameterLayout()` entirely:
 ```cpp
@@ -498,9 +498,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() over
     return xoverworld::createParameterLayout();  // standalone's own layout function
 }
 ```
-This only works if the standalone's parameter IDs are already the `ow_`-prefixed canonical XOmnibus IDs — which XOverworld's were, because it was built XOmnibus-ready from day one.
+This only works if the standalone's parameter IDs are already the `ow_`-prefixed canonical XOlokun IDs — which XOverworld's were, because it was built XOlokun-ready from day one.
 
-For older engines retrofitted from pre-XOmnibus code, Option A requires a translation shim or Option B (rewrite all IDs in the adapter).
+For older engines retrofitted from pre-XOlokun code, Option A requires a translation shim or Option B (rewrite all IDs in the adapter).
 
 ---
 
@@ -520,7 +520,7 @@ If two engines register the same parameter ID string, JUCE will assert at startu
 The string returned by `getEngineId()` must exactly match the key passed to `EngineRegistry::instance().registerEngine()`. If they differ, preset loading will fail (presets reference the canonical engine name, which PresetManager resolves through `validEngineNames` and `resolveEngineAlias()`).
 
 ### applyCouplingInput() called before prepare()
-XOmnibus may call `applyCouplingInput()` before the engine is fully prepared if the engine is loaded mid-stream. Guard all pointer dereferences with null checks. The `externalFMBuffer` pattern (store pointer, check in renderBlock) handles this cleanly.
+XOlokun may call `applyCouplingInput()` before the engine is fully prepared if the engine is loaded mid-stream. Guard all pointer dereferences with null checks. The `externalFMBuffer` pattern (store pointer, check in renderBlock) handles this cleanly.
 
 ### Forgetting to reset coupling accumulators
 `externalFilterMod` and similar accumulators must be reset to zero at the **end** of `renderBlock()`, after they are consumed. Failure to reset causes modulation to accumulate across blocks, producing an ever-growing offset. In `BiteEngine.h`, see the "Clear coupling buffer pointer after use" comment at line ~1362.
@@ -528,8 +528,8 @@ XOmnibus may call `applyCouplingInput()` before the engine is fully prepared if 
 ### Parameter version mismatch in ParameterID
 The second argument of `juce::ParameterID{"myeng_param", 1}` is the parameter version. It must be `1` for all new parameters. If you accidentally use `0`, JUCE may behave differently across builds. Always use `1`.
 
-### Omitting addParameters() in XOmnibusProcessor.cpp
-The `createParameterLayout()` on `XOmnibusProcessor` merges parameters from all engines by calling each engine's static `addParameters()`. If you add an engine registration but forget the `addParameters()` call, none of your engine's parameters will exist in the APVTS and `attachParameters()` will silently fill every pointer with `nullptr`.
+### Omitting addParameters() in XOlokunProcessor.cpp
+The `createParameterLayout()` on `XOlokunProcessor` merges parameters from all engines by calling each engine's static `addParameters()`. If you add an engine registration but forget the `addParameters()` call, none of your engine's parameters will exist in the APVTS and `attachParameters()` will silently fill every pointer with `nullptr`.
 
 ### Engine ID not in validEngineNames
 `PresetManager::parseJSON()` validates engine names against `validEngineNames` (in `PresetManager.h`). If your engine's canonical ID is not in that list, presets referencing your engine will be rejected at load time with no audio and no obvious error.
@@ -549,7 +549,7 @@ This is a complete working skeleton. Replace `MyEngine`, `myeng_`, and the DSP p
 #include <atomic>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MyEngineAdapter — wraps XOmyengine standalone DSP behind the SynthEngine
@@ -808,7 +808,7 @@ private:
     std::atomic<float>* pAmpRelease   = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 **`Source/Engines/MyEngine/MyEngineAdapter.cpp`:**
@@ -816,10 +816,10 @@ private:
 ```cpp
 #include "MyEngineAdapter.h"
 // All DSP is inline in the .h. This stub is required by CMake.
-// Registration is in XOmnibusProcessor.cpp.
+// Registration is in XOlokunProcessor.cpp.
 ```
 
-**In `Source/XOmnibusProcessor.cpp`** (three locations):
+**In `Source/XOlokunProcessor.cpp`** (three locations):
 
 ```cpp
 // 1. At top with other includes:
@@ -827,10 +827,10 @@ private:
 
 // 2. With other static registrations (after the existing blocks):
 static bool registered_MyEngine =
-    xomnibus::EngineRegistry::instance().registerEngine(
+    xolokun::EngineRegistry::instance().registerEngine(
         "MyEngine",
-        []() -> std::unique_ptr<xomnibus::SynthEngine> {
-            return std::make_unique<xomnibus::MyEngineAdapter>();
+        []() -> std::unique_ptr<xolokun::SynthEngine> {
+            return std::make_unique<xolokun::MyEngineAdapter>();
         });
 
 // 3. In createParameterLayout(), with other addParameters() calls:
@@ -847,7 +847,7 @@ inline const juce::StringArray validEngineNames {
 };
 ```
 
-**Write a factory preset** at `Presets/XOmnibus/{Mood}/01_MyPreset.xometa`:
+**Write a factory preset** at `Presets/XOlokun/{Mood}/01_MyPreset.xometa`:
 
 ```json
 {
@@ -886,14 +886,14 @@ inline const juce::StringArray validEngineNames {
 **Directly verified in source code:**
 - `SynthEngine` interface: `Source/Core/SynthEngine.h` (complete, all 10 methods)
 - `EngineRegistry` and the static registration pattern: `Source/Core/EngineRegistry.h`
-- Registration is done via raw `registerEngine()` calls in `XOmnibusProcessor.cpp`, NOT via the `REGISTER_ENGINE` macro (the macro exists in `EngineRegistry.h` but is not used in the actual codebase)
+- Registration is done via raw `registerEngine()` calls in `XOlokunProcessor.cpp`, NOT via the `REGISTER_ENGINE` macro (the macro exists in `EngineRegistry.h` but is not used in the actual codebase)
 - The `addParameters()` / `addParametersImpl()` / `createParameterLayout()` three-method pattern: verified in `BiteEngine.h` and `SnapEngine.h`
 - The coupling accumulator pattern (write in `applyCouplingInput`, consume in `renderBlock`, reset after): verified in `BiteEngine.h` and `OverworldEngine.h`
 - The output cache pattern (per-sample write during render, O(1) read in `getSampleForCoupling`): verified in both engines, with P0 bug history confirming this was initially missed
 - The `.cpp` one-line stub convention: verified in `BiteEngine.cpp`
 - `validEngineNames` location and `resolveEngineAlias()`: `Source/Core/PresetManager.h`
-- Preset `.xometa` format and parameter keying: `Presets/XOmnibus/Foundation/01_Bathyal_Floor.xometa`
-- The three locations requiring edits in `XOmnibusProcessor.cpp` (include, registration, addParameters call): verified at lines 3-26, 31-126, 184-207
+- Preset `.xometa` format and parameter keying: `Presets/XOlokun/Foundation/01_Bathyal_Floor.xometa`
+- The three locations requiring edits in `XOlokunProcessor.cpp` (include, registration, addParameters call): verified at lines 3-26, 31-126, 184-207
 
 **Inferred or extrapolated:**
 - The six-step verification checklist under "Step 8" is recommended practice based on patterns seen in coupling audit and P0 fix documentation — no explicit test suite was found

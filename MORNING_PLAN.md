@@ -15,17 +15,17 @@
 ## Session 1: Wire + Build (Sonnet, ~1 hour)
 
 ```
-Wire the Shaper Bus into XOmnibusProcessor. The ShaperEngine.h interface and
+Wire the Shaper Bus into XOlokunProcessor. The ShaperEngine.h interface and
 ShaperRegistry.h are at Source/Core/. ObserveShaper and OxideShaper are at
 Source/Shapers/Observe/ and Source/Shapers/Oxide/.
 
 Tasks:
-1. Add #include "Core/ShaperRegistry.h" to XOmnibusProcessor.h
+1. Add #include "Core/ShaperRegistry.h" to XOlokunProcessor.h
 2. Add ShaperRegistry member and shaper parameter registration in createParameterLayout
 3. In renderBlock: after each engine renders, call shaperRegistry.processInsert(slot, buffer)
 4. After engine sum, call shaperRegistry.processBus(buffer)
 5. Add Source/Shapers/ files to CMakeLists.txt target_sources
-6. Register both shapers in XOmnibusProcessor.cpp
+6. Register both shapers in XOlokunProcessor.cpp
 7. Build and verify zero errors: cmake -B build -G Ninja && cmake --build build
 8. Run /build-sentinel to confirm fleet still compiles
 ```

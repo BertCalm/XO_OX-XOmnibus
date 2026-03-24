@@ -10,12 +10,12 @@
 #include <cstring>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
 //  ORGANISM ENGINE — Generative Cellular Automata Synthesizer
-//  XOmnibus Engine Module | Accent: Emergence Lime #C6E377
+//  XOlokun Engine Module | Accent: Emergence Lime #C6E377
 //
 //  Creature: Coral Colony — millions of polyps following simple rules,
 //            emergent architecture. The Coral Colony lives in the mid-water
@@ -344,7 +344,7 @@ public:
     ~OrganismEngine() = default;
 
     //--------------------------------------------------------------------------
-    // Static parameter registration (called by XOmnibusProcessor)
+    // Static parameter registration (called by XOlokunProcessor)
     //--------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -1000,4 +1000,4 @@ private:
     std::atomic<float>* p_macroMutate   = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

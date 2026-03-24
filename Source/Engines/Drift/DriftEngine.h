@@ -13,7 +13,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // DriftNoiseGen — xorshift32 PRNG for noise oscillator.
@@ -616,7 +616,7 @@ private:
 };
 
 // DriftAdsrEnvelope replaced by StandardADSR (Source/DSP/StandardADSR.h).
-// All call sites updated to use xomnibus::StandardADSR directly.
+// All call sites updated to use xolokun::StandardADSR directly.
 
 // DriftLFO replaced by StandardLFO (Source/DSP/StandardLFO.h).
 // Note: DriftLFO used double-precision phase; StandardLFO uses float.
@@ -1737,4 +1737,4 @@ private:
     std::atomic<float>* pPolyphony = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

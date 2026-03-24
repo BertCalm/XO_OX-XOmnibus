@@ -1,4 +1,4 @@
-# XOmnibus — Recipe System Design
+# XOlokun — Recipe System Design
 
 **Status:** Design exploration
 **Date:** 2026-03-10
@@ -17,7 +17,7 @@ Think of it this way:
 
 The relationship: **Recipe configures the rig. Preset dials in the sound.**
 
-Recipes solve a real problem. XOmnibus has 34 engines and 13 coupling types. The combinatorial space is vast. Most users will never explore OBLONG + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
+Recipes solve a real problem. XOlokun has 34 engines and 13 coupling types. The combinatorial space is vast. Most users will never explore OBLONG + OUROBOROS with Audio->Ring coupling on their own. Recipes collapse that space into named, curated starting points that say: "try this combination — we already wired the interesting connections."
 
 ---
 
@@ -231,7 +231,7 @@ The "All Recipes" filter shows presets grouped by their implied recipe — prese
 
 ### Recipe Badge
 
-When a recipe is active, a small badge appears in the XOmnibus header bar:
+When a recipe is active, a small badge appears in the XOlokun header bar:
 
 ```
 RECIPE: Bass Station  [x]
@@ -285,7 +285,7 @@ A preset saved from a recipe context contains all the information needed to recr
 ### RecipeData Struct
 
 ```cpp
-namespace xomnibus {
+namespace xolokun {
 
 struct RecipeSlot {
     int slotIndex;           // 0-3
@@ -319,7 +319,7 @@ struct RecipeData {
     juce::File sourceFile;
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 ### RecipeManager Class
@@ -360,7 +360,7 @@ private:
 
 3. **PresetManager** — Add a method `getPresetsForEngines(StringArray engines)` that returns presets using the same engine combination. This enables the "filter presets by active recipe" feature.
 
-4. **XOmnibusProcessor** — Add `RecipeManager` as a member. Wire `applyRecipe()` to the message thread handler that currently manages engine slot changes.
+4. **XOlokunProcessor** — Add `RecipeManager` as a member. Wire `applyRecipe()` to the message thread handler that currently manages engine slot changes.
 
 5. **UI** — Add `RecipeBrowser` as a tab in the existing preset browser component. The recipe browser uses the same grid layout and styling as the preset browser but with recipe-specific card rendering (module badges, coupling visualization).
 
@@ -415,13 +415,13 @@ The architecture supports three preset tiers:
 
 | Tier | Path | Source | Editable |
 |------|------|--------|----------|
-| Factory | `Presets/XOmnibus/{mood}/` | Ships with app | No |
-| User | `~/XOmnibus/Presets/User/` | Saved by user | Yes |
-| Community | `~/XOmnibus/Presets/Community/` | Downloaded/shared | No (read-only locally) |
+| Factory | `Presets/XOlokun/{mood}/` | Ships with app | No |
+| User | `~/XOlokun/Presets/User/` | Saved by user | Yes |
+| Community | `~/XOlokun/Presets/Community/` | Downloaded/shared | No (read-only locally) |
 
 The sharing mechanism (post-v1): a curated gallery on the XO_OX website where users upload `.xometa` files, XO_OX reviews and features the best, and they become available in-app. This parallels the XPN export pipeline — presets are the next shareable artifact after sound packs.
 
-Community recipes follow the same pattern: `~/XOmnibus/Recipes/User/` and `~/XOmnibus/Recipes/Community/`.
+Community recipes follow the same pattern: `~/XOlokun/Recipes/User/` and `~/XOlokun/Recipes/Community/`.
 
 ---
 

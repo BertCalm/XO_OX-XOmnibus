@@ -4,7 +4,7 @@
 #include <atomic>
 #include "../DSP/FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MasterFXSequencer — Step-sequenced parameter modulation for the Master FX chain.
@@ -372,4 +372,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

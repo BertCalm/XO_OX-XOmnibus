@@ -9,7 +9,7 @@
 
 ## What KNOT Is
 
-All other `CouplingType` values in XOmnibus are directional: Engine A modulates Engine B's
+All other `CouplingType` values in XOlokun are directional: Engine A modulates Engine B's
 parameter (sender → receiver). The route has a clear source slot and destination slot.
 
 `KnotTopology` breaks this directionality. It creates **mutual, co-evolving entanglement**:
@@ -179,7 +179,7 @@ are irreducibly bound — this is the patch, not a side effect of routing."
 
 ### Why AmpToFilter as the universal fallback?
 
-Every engine in the XOmnibus fleet handles `CouplingType::AmpToFilter`. It maps source
+Every engine in the XOlokun fleet handles `CouplingType::AmpToFilter`. It maps source
 amplitude to a filter cutoff modulation destination — a safe, audible, musically useful
 result for any pairing. Using it as the KNOT fallback guarantees that:
 

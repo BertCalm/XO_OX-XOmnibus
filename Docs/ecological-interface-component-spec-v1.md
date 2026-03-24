@@ -27,7 +27,7 @@ Typography — values:    JetBrains Mono
 Focus ring:             #58A6FF  (2px, circular for knobs, rounded rect for buttons)
 ```
 
-Engine accent colors map directly from `GalleryColors::accentForEngine()` in `XOmnibusEditor.h`. All 47 values are present there. The ecological arc color = engine accent color throughout this spec.
+Engine accent colors map directly from `GalleryColors::accentForEngine()` in `XOlokunEditor.h`. All 47 values are present there. The ecological arc color = engine accent color throughout this spec.
 
 ---
 

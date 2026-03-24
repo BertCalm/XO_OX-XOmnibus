@@ -1,4 +1,4 @@
-# XOmnibus — Sound Shape XPN Rendering Specification
+# XOlokun — Sound Shape XPN Rendering Specification
 
 **Version:** 1.0
 **Author:** XO_OX Designs
@@ -21,7 +21,7 @@ Sound Shapes solve this by classifying each preset's temporal and timbral behavi
 
 ## 2. Sound Shape Taxonomy
 
-Every XOmnibus preset is assigned one of six Sound Shapes. The shape is stored in the `.xometa` file as `"soundShape"` and inferred automatically if absent.
+Every XOlokun preset is assigned one of six Sound Shapes. The shape is stored in the `.xometa` file as `"soundShape"` and inferred automatically if absent.
 
 | Shape | Character | Typical Duration | Engines |
 |-------|-----------|-----------------|---------|
@@ -160,7 +160,7 @@ This gives: 2 velocity bands × 2 round robins = 4 distinct samples per note.
 
 ## 5. The Looping Decision
 
-MPC keygroup programs support sample looping (`LoopOnOff`, `LoopStart`, `LoopEnd`, `LoopCrossfade`). The question: should XOmnibus-rendered WAVs use MPC looping for sustaining sounds?
+MPC keygroup programs support sample looping (`LoopOnOff`, `LoopStart`, `LoopEnd`, `LoopCrossfade`). The question: should XOlokun-rendered WAVs use MPC looping for sustaining sounds?
 
 ### 5.1 Decision: One-Shot for All Shapes
 

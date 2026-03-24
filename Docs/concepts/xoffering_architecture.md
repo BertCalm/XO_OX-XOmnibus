@@ -27,7 +27,7 @@
 
 XOffering doesn't sample records. It synthesizes the *entire signal chain of crate digging* — from the original drum hit, through the vinyl medium, through the sampler's conversion, through the chopping and layering process. The drums are generated, not played back. The city processing chains are psychoacoustic archetypes informed by real scenes, not attempts to replicate them.
 
-**The gap it fills:** XOmnibus has 44 engines. Zero are sample-archaeology synthesizers. ONSET does analog/digital drums. OSTINATO does modal percussion. OWARE does tuned percussion. XOffering does **boom bap drums as psychological process** — the act of discovering, degrading, and flipping sounds.
+**The gap it fills:** XOlokun has 44 engines. Zero are sample-archaeology synthesizers. ONSET does analog/digital drums. OSTINATO does modal percussion. OWARE does tuned percussion. XOffering does **boom bap drums as psychological process** — the act of discovering, degrading, and flipping sounds.
 
 **Core innovation:** Published psychological research (Berlyne, Wundt, Zajonc, Csikszentmihalyi) translated into DSP parameters. The engine has aesthetic judgment without AI.
 
@@ -723,7 +723,7 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 
 ---
 
-## File Structure (Standalone → XOmnibus)
+## File Structure (Standalone → XOlokun)
 
 ```
 ~/Documents/GitHub/XOffering/
@@ -745,7 +745,7 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 ├── CLAUDE.md                        — Project guide
 ├── CMakeLists.txt
 └── Docs/
-    └── xomnibus_integration_spec.md
+    └── xolokun_integration_spec.md
 ```
 
 ---
@@ -769,5 +769,5 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 2. **Build** — Phase 2: TransientGenerator → TextureLayer → CollageEngine → CityProcessor → CuriosityEngine → Voice → Master
 3. **Presets** — `/exo-meta` for initial 150 presets, then `/preset-audit-checklist` for 9.0+ quality gate
 4. **Retreat** — `/guru-bin` refinement on the V1 presets
-5. **Integrate** — Phase 3-4: Adapter → XOmnibus registration → engine #45
+5. **Integrate** — Phase 3-4: Adapter → XOlokun registration → engine #45
 6. **Re-seance** — Post-build ghost scoring (target 9.0+ with P0 fixes applied)

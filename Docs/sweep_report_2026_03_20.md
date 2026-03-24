@@ -1,4 +1,4 @@
-# XOmnibus Quality Sweep Report -- 2026-03-20
+# XOlokun Quality Sweep Report -- 2026-03-20
 
 Audit scope: READ-ONLY code quality sweep across the 3 newest engines (ORBWEAVE,
 OVERTONE, ORGANISM), preset health, documentation accuracy, seance coverage, and
@@ -88,7 +88,7 @@ No heap allocations (`new`, `malloc`, `resize`, `assign`) found in any
 
 ### 2.1 Total Count
 
-**15,199 `.xometa` preset files** found under `Presets/XOmnibus/`.
+**15,199 `.xometa` preset files** found under `Presets/XOlokun/`.
 
 ### 2.2 Spot-Check: 3 Random Presets
 
@@ -129,7 +129,7 @@ presets before release.
 ### 3.1 Engine Count
 
 CLAUDE.md states **"42 engines"** (line 7). The `Source/Engines/` directory
-contains **42 subdirectories**, and `XOmnibusProcessor.cpp` has **42
+contains **42 subdirectories**, and `XOlokunProcessor.cpp` has **42
 `registered_` lines**. All three numbers match.
 
 **Status: PASS**
@@ -198,7 +198,7 @@ raw seance notes).
 
 ### 5.1 Registration Count
 
-`XOmnibusProcessor.cpp` contains **42 `registered_` static variable
+`XOlokunProcessor.cpp` contains **42 `registered_` static variable
 declarations**, one for each engine:
 
 OddfeliX, OddOscar, Overdub, Odyssey, Oblong, Obese, Onset, Overworld,

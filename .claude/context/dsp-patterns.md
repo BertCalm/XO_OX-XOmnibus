@@ -1,6 +1,6 @@
 # DSP Patterns Catalog
 
-Common DSP patterns used across XOmnibus engines. Reference this when implementing or reviewing DSP code.
+Common DSP patterns used across XOlokun engines. Reference this when implementing or reviewing DSP code.
 
 ## Audio Thread Rules (Non-Negotiable)
 

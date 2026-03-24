@@ -534,12 +534,12 @@ def write_preset(preset: dict, output_dir: Path) -> tuple[Path, bool]:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate ORBITAL + OVERBITE + OBESE coupling presets for XOmnibus. "
-            "Writes ~66 .xometa files to Presets/XOmnibus/Entangled/ (skips existing)."
+            "Generate ORBITAL + OVERBITE + OBESE coupling presets for XOlokun. "
+            "Writes ~66 .xometa files to Presets/XOlokun/Entangled/ (skips existing)."
         )
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
     parser.add_argument(
         "--output-dir",
         type=Path,

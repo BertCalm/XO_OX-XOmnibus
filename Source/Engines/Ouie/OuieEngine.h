@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OuieEngine.h — XOuie | "The Hammerhead"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      The Hammerhead shark (Sphyrna) patrols the thermocline — that
@@ -75,7 +75,7 @@
 #include <cstring>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -1912,4 +1912,4 @@ private:
     std::atomic<float>* paramMacroCurrent = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

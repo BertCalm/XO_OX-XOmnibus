@@ -1,4 +1,4 @@
-# XOmnibus Fleet Seance Score Audit
+# XOlokun Fleet Seance Score Audit
 **Generated:** 2026-03-20
 **Updated:** 2026-03-21 — 5 engines recovered (OBESE/ODDOSCAR/ODDFELIX/OCELOT/ORPHICA); post-fix rescoring applied below. OPERA full seance added (8.7/10, path to 9.1).
 **Scope:** All 46 registered engines (OXBOW + OWARE + OPERA + OFFERING added 2026-03-21)

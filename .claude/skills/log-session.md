@@ -48,7 +48,7 @@ Run at the end of any substantive session — one that involved 3+ steps, used m
 ```json
 {
   "timestamp": "2026-03-12T17:30:00Z",
-  "project": "XOmnibus",
+  "project": "XOlokun",
   "project_type": "synth-engine",
   "task_type": "generation",
   "summary": "Generated 40 Overworld presets with DNA fingerprints",
@@ -59,7 +59,7 @@ Run at the end of any substantive session — one that involved 3+ steps, used m
     {"action": "validate", "target": "preset files", "tool": "validate_presets.py --fix", "repeatable": true}
   ],
   "tools_used": ["generate_overworld_presets.py", "validate_presets.py", "compute_preset_dna.py"],
-  "context_loaded": ["xometa_schema.json", "xomnibus_preset_spec_for_builder.md"],
+  "context_loaded": ["xometa_schema.json", "xolokun_preset_spec_for_builder.md"],
   "context_gaps": [],
   "friction_points": ["Had to run validate twice — once before DNA, once after"],
   "pattern_tags": ["validate-fix-loop", "chain-export"]

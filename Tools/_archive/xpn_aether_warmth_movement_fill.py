@@ -14,7 +14,7 @@ random.seed(42)
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus", "Aether"
+    "Presets", "XOlokun", "Aether"
 )
 
 AETHER_ENGINES = [

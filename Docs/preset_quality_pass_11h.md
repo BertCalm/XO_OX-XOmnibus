@@ -155,31 +155,31 @@ One minor observation: The 10 Bob aggression presets carry `engines: ["Oblong"]`
 ## Files Modified
 
 ### Renamed (filename + internal `name` field updated):
-- `Presets/XOmnibus/Flux/Rubber_Spine.xometa`
-- `Presets/XOmnibus/Flux/Velvet_Slab.xometa`
-- `Presets/XOmnibus/Flux/Circuit_Rash.xometa`
-- `Presets/XOmnibus/Flux/Steel_Rain.xometa`
-- `Presets/XOmnibus/Flux/White_Scar.xometa`
-- `Presets/XOmnibus/Flux/Midnight_Weight.xometa`
-- `Presets/XOmnibus/Prism/Grit_Choir.xometa`
-- `Presets/XOmnibus/Prism/Scorched_Bloom.xometa`
-- `Presets/XOmnibus/Prism/Throat_Opener.xometa`
-- `Presets/XOmnibus/Prism/Molten_Spectral.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Neural_Storm.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Handshake.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Solar_System.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Gravity_Bend.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Bright_Tide.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/First_Choke.xometa`
-- `Presets/XOmnibus/Entangled/Double_Nervous_System.xometa`
-- `Presets/XOmnibus/Entangled/Cetacean_Drive.xometa`
+- `Presets/XOlokun/Flux/Rubber_Spine.xometa`
+- `Presets/XOlokun/Flux/Velvet_Slab.xometa`
+- `Presets/XOlokun/Flux/Circuit_Rash.xometa`
+- `Presets/XOlokun/Flux/Steel_Rain.xometa`
+- `Presets/XOlokun/Flux/White_Scar.xometa`
+- `Presets/XOlokun/Flux/Midnight_Weight.xometa`
+- `Presets/XOlokun/Prism/Grit_Choir.xometa`
+- `Presets/XOlokun/Prism/Scorched_Bloom.xometa`
+- `Presets/XOlokun/Prism/Throat_Opener.xometa`
+- `Presets/XOlokun/Prism/Molten_Spectral.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Neural_Storm.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Handshake.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Solar_System.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Gravity_Bend.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Bright_Tide.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/First_Choke.xometa`
+- `Presets/XOlokun/Entangled/Double_Nervous_System.xometa`
+- `Presets/XOlokun/Entangled/Cetacean_Drive.xometa`
 
 ### Unchanged (passed review):
 - All 12 Osprey presets (excluding the Entangled coupling preset which was renamed)
 - All 10 Osteria presets (excluding the Entangled coupling preset)
-- `Presets/XOmnibus/Flux/Onset/XVC/Ghost_Generator.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Inverse_Field.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Mutate_Cascade.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Polyrhythm_Emergence.xometa`
-- `Presets/XOmnibus/Flux/Onset/XVC/Snare_Blooms_Space.xometa`
-- `Presets/XOmnibus/Entangled/Osteria_Shore_Dialogue.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Ghost_Generator.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Inverse_Field.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Mutate_Cascade.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Polyrhythm_Emergence.xometa`
+- `Presets/XOlokun/Flux/Onset/XVC/Snare_Blooms_Space.xometa`
+- `Presets/XOlokun/Entangled/Osteria_Shore_Dialogue.xometa`

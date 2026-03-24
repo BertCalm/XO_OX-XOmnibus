@@ -1,5 +1,5 @@
 #pragma once
-// MinimalEngine — XOmnibus SDK template
+// MinimalEngine — XOlokun SDK template
 // A sine oscillator with one parameter (pitch). Start here.
 //
 // To build:
@@ -9,12 +9,12 @@
 //   4. Compile as shared library
 //   5. Run validate-engine on your .dylib
 
-#include <xomnibus/SynthEngine.h>
-#include <xomnibus/EngineModule.h>
+#include <xolokun/SynthEngine.h>
+#include <xolokun/EngineModule.h>
 #include <cmath>
 #include <array>
 
-class MinimalEngine : public xomnibus::SynthEngine
+class MinimalEngine : public xolokun::SynthEngine
 {
 public:
     void prepare (double sampleRate, int /*maxBlockSize*/) override
@@ -30,7 +30,7 @@ public:
         activeNote = -1;
     }
 
-    void renderBlock (xomnibus::StereoBuffer& buffer, const xomnibus::MidiEventList& midi) override
+    void renderBlock (xolokun::StereoBuffer& buffer, const xolokun::MidiEventList& midi) override
     {
         // Process MIDI
         for (int i = 0; i < midi.numEvents; ++i)
@@ -62,7 +62,7 @@ public:
         }
     }
 
-    std::vector<xomnibus::ParameterDef> getParameterDefs() const override
+    std::vector<xolokun::ParameterDef> getParameterDefs() const override
     {
         return {
             { "min_pitch", "Pitch", 20.0f, 20000.0f, 440.0f, 0.1f, 0.3f }
@@ -71,7 +71,7 @@ public:
 
     std::string getEngineId() const override { return "Minimal"; }
 
-    xomnibus::Colour getAccentColour() const override
+    xolokun::Colour getAccentColour() const override
     {
         return { 100, 200, 150 };
     }
@@ -88,5 +88,5 @@ private:
 };
 
 // Export the engine for dynamic loading
-XOMNIBUS_EXPORT_ENGINE(MinimalEngine, "Minimal", "Minimal Sine Engine",
+XOLOKUN_EXPORT_ENGINE(MinimalEngine, "Minimal", "Minimal Sine Engine",
                         "min_", 100, 200, 150, "1.0.0", "XO_OX SDK Template")

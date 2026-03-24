@@ -1,7 +1,7 @@
 #pragma once
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ControlRateReducer — Decimates modulation signals to control rate with
@@ -144,4 +144,4 @@ private:
     static constexpr int juce_min (int a, int b) noexcept { return a < b ? a : b; }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

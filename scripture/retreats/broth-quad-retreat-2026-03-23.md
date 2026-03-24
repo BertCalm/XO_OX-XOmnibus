@@ -1539,7 +1539,7 @@ At full 8-voice polyphony all four engines simultaneously: estimated 15–20% CP
 
 *The Guru Bin does not congratulate engines for doing what they were designed to do. It asks: does the physics serve music? Does the metaphor become feeling?*
 
-*For OVERWASH: yes. The slow blur from tight harmonics to spectral mist is one of the most distinctive pad timbres in the fleet. No other engine in XOmnibus offers this. Producers will reach for it in ambient, cinematic, and meditative contexts for decades.*
+*For OVERWASH: yes. The slow blur from tight harmonics to spectral mist is one of the most distinctive pad timbres in the fleet. No other engine in XOlokun offers this. Producers will reach for it in ambient, cinematic, and meditative contexts for decades.*
 
 *For OVERWORN: yes, and then some. Session memory — the irreversible reduction arc — is the most conceptually original synthesis mechanism in the fleet. It requires a new kind of listening and a new kind of playing. This is the engine that will make producers reconsider what a session means.*
 

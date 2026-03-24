@@ -176,11 +176,11 @@ python3 Tools/xpn_sample_rate_auditor.py --dir ./session_stems/
 
 ### Re-import to DAW
 - Import stems as audio clips — no pitch or time correction at this stage
-- Keep XOmnibus plugin loaded on a dedicated insert channel for live processing
-- Route the XOmnibus send through the same coupling chain used during performance
+- Keep XOlokun plugin loaded on a dedicated insert channel for live processing
+- Route the XOlokun send through the same coupling chain used during performance
 
-### XOmnibus Plugin Processing
-Use XOmnibus in the DAW to apply additional engine processing to recorded stems:
+### XOlokun Plugin Processing
+Use XOlokun in the DAW to apply additional engine processing to recorded stems:
 - Load matching presets so processing character is continuous from performance to mix
 - Coupling chains (e.g., OPAL → DUB) can be reproduced in-plugin for deeper saturation on stems
 

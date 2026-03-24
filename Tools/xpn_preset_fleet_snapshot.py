@@ -26,7 +26,7 @@ DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"
 ENTANGLED_PAIRS_TOTAL = 561
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+DEFAULT_PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 DEFAULT_SNAPSHOT_DIR = REPO_ROOT / "Docs" / "snapshots"
 TOOLS_DIR = REPO_ROOT / "Tools"
 DOCS_DIR = REPO_ROOT / "Docs"
@@ -280,7 +280,7 @@ def parse_args() -> argparse.Namespace:
         "--presets-dir",
         type=Path,
         default=DEFAULT_PRESETS_DIR,
-        help=f"Path to XOmnibus presets directory (default: {DEFAULT_PRESETS_DIR})",
+        help=f"Path to XOlokun presets directory (default: {DEFAULT_PRESETS_DIR})",
     )
     parser.add_argument(
         "--save",

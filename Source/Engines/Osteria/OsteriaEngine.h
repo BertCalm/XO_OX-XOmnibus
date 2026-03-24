@@ -14,7 +14,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -651,7 +651,7 @@ public:
 
         // =====================================================================
         // ParamSnapshot — cache all APVTS parameter values once per block.
-        // This pattern (used across all XOmnibus engines) avoids atomic loads
+        // This pattern (used across all XOlokun engines) avoids atomic loads
         // per sample, which is critical at 128 formant filters peak load.
         // =====================================================================
 
@@ -1911,4 +1911,4 @@ private:
     StandardLFO userLFO;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

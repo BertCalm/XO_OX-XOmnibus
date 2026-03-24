@@ -281,7 +281,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The osprey hunts at the boundary — not fully water, not fully land. Five-coastline ShoreSystem captures the acoustic character and cultural rhythm of different shores. The signal ecology of the coast.",
   features: ["Five-coastline ShoreSystem with cultural rhythm data", "Shore blend parameter for coastline crossfading", "Boundary-zone synthesis at the water's edge", "Sibling engine to OSTERIA — shared ShoreSystem data"],
   coupling: ["OSTERIA", "ONSET", "OVERDUB"],
-  prefix: "osprey_", format: "XOmnibus native" },
+  prefix: "osprey_", format: "XOlokun native" },
 { name: "Osteria", code: "OSTERIA", color: "#722F37",
   desc: "Cultural warmth — the waterfront tavern, music from every port",
   wave: "additive", freq: 196, fm: 0.3, fmAmt: 20,
@@ -289,7 +289,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The oldest gathering place — simple food, port wine, music from wherever the sailors came from. Five coastlines of cultural warmth. ShoreSystem sibling to OSPREY. Where creatures pause and share what they carry.",
   features: ["Five-coastline ShoreSystem — cultural harmony synthesis", "Porto wine warmth: Q-bass harbor hum", "Cultural rhythm presets from global coastal traditions", "Sibling engine to OSPREY — shared ShoreSystem data"],
   coupling: ["OSPREY", "OHM", "OBLONG"],
-  prefix: "osteria_", format: "XOmnibus native" },
+  prefix: "osteria_", format: "XOlokun native" },
 { name: "Overlap", code: "OVERLAP", color: "#00FFB4",
   desc: "Kelp forest synthesis — entangled harmonics through KnotMatrix resonance",
   wave: "fm", freq: 220, fm: 1.5, fmAmt: 60,
@@ -297,7 +297,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "A cathedral of filtered green light and entangled kelp. KnotMatrix generates topological resonances — harmonics that loop through each other like living tendrils. FDN reverb is the cathedral space inside the forest.",
   features: ["KnotMatrix topological resonance engine", "FDN (Feedback Delay Network) reverb — cathedral forest space", "Bioluminescent harmonic shimmer", "Entanglement coupling: pair with ORBWEAVE for maximum topology"],
   coupling: ["ORBWEAVE", "OPAL", "OVERDUB"],
-  prefix: "olap_", format: "XOmnibus native" },
+  prefix: "olap_", format: "XOlokun native" },
 { name: "Outwit", code: "OUTWIT", color: "#CC6600",
   desc: "Chromatophore camouflage — adaptive timbre that shifts to complement its environment",
   wave: "fm", freq: 196, fm: 3.0, fmAmt: 120,
@@ -305,7 +305,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The mimic octopus. The cuttlefish. Creatures that are never the same twice. Adaptive timbre reads spectral content of input and shifts harmonic character to complement or disguise itself. The great mimic.",
   features: ["Spectral adaptive camouflage — reads and shifts to input", "Chromatophore AM modulation for timbral skin-shifting", "Mimic modes: complement, contrast, dissolve", "Deep-water character — works best in the dark"],
   coupling: ["OCELOT", "OCTOPUS", "ORGANON"],
-  prefix: "owit_", format: "XOmnibus native" },
+  prefix: "owit_", format: "XOlokun native" },
 { name: "Ombre", code: "OMBRE", color: "#7B6B8A",
   desc: "Dual narrative synthesis — the gradient between memory and forgetting",
   wave: "sine", freq: 220, fm: 0.5, fmAmt: 30,
@@ -313,7 +313,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The gradient where color fades. Two voices — bright and present, fading and past — blending at the thermocline. The boundary where clarity becomes uncertainty. Memory meeting forgetting in the same sound.",
   features: ["Dual-voice narrative blend with MEMORY/FORGETTING axis", "Thermocline gradient filter modeling", "Shadow depth parameter — how far into forgetting", "Perception vs reality modulation modes"],
   coupling: ["OVERDUB", "ODYSSEY", "OCEANDEEP"],
-  prefix: "ombre_", format: "XOmnibus native" },
+  prefix: "ombre_", format: "XOlokun native" },
 { name: "Orca", code: "ORCA", color: "#1B2838",
   desc: "Apex predator synthesis — wavetable body, echolocation, HUNT macro",
   wave: "wavetable", freq: 110, fm: 0, fmAmt: 0,
@@ -321,7 +321,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The only predator that hunts whales. Coordinated, strategic, spatial. The HUNT macro drives filter cutoff, resonance, echolocation resonance, and sub-bass simultaneously — the most cohesive macro in the fleet.",
   features: ["HUNT macro: coordinated predator behavior in one parameter", "Echolocation resonance — click train return modeling", "Breach dynamics: wavetable body leaving the water", "Spatial separation: three-dimensional ocean geometry"],
   coupling: ["OCEANDEEP", "ONSET", "OVERBITE"],
-  prefix: "orca_", format: "XOmnibus native" },
+  prefix: "orca_", format: "XOlokun native" },
 { name: "Octopus", code: "OCTOPUS", color: "#E040FB",
   desc: "Decentralized alien intelligence — 8 arm LFOs, chromatophores, ink cloud",
   wave: "wavetable", freq: 220, fm: 2.0, fmAmt: 80,
@@ -329,7 +329,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "Two-thirds of neurons in the arms. Eight arm LFOs operating semi-independently. Chromatophore skin-shifting AM modulation. Ink cloud timbral weapon. EnvToMorph coupling conducts all 8 arms simultaneously from outside.",
   features: ["8 arm LFOs with semi-independent rates and phase", "Chromatophore AM modulation — timbral skin color", "Ink cloud: harmonic noise burst timbral weapon", "Fleet-leading coupling: external env conducts arm neurological tempo"],
   coupling: ["OUTWIT", "ONSET", "ORGANON"],
-  prefix: "octo_", format: "XOmnibus native" },
+  prefix: "octo_", format: "XOlokun native" },
 { name: "Obrix", code: "OBRIX", color: "#1E8B7E",
   desc: "Modular brick synthesis — stackable building blocks, the coral architecture",
   wave: "additive", freq: 220, fm: 0, fmAmt: 0,
@@ -337,7 +337,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "Individual polyps stacking into architecture of staggering complexity. Oscillator bricks, filter bricks, modulation bricks, FX bricks snap together in configurable chains. Each brick alone is modest. Stacked, they become the reef.",
   features: ["Stackable synthesis bricks: oscillator, filter, mod, FX", "Configurable brick chains with independent addressability", "Reef jade architecture — maximum adaptability", "Blessing B016: Brick Independence — bricks individually addressable regardless of coupling"],
   coupling: ["OVERDUB", "OPAL", "ORACLE"],
-  prefix: "obrix_", format: "XOmnibus native" },
+  prefix: "obrix_", format: "XOlokun native" },
 { name: "Orbweave", code: "ORBWEAVE", color: "#8E4585",
   desc: "Topological knot coupling — bidirectional harmonic entanglement. Preview.",
   wave: "fm", freq: 196, fm: 2.5, fmAmt: 100,
@@ -345,7 +345,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "Kelp growing in fast currents ties itself into knots that cannot be undone without cutting. Topological resonances — harmonic series looping through each other inseparably. Built specifically around a coupling concept: it exists to entangle.",
   features: ["KnotMatrix topological resonance synthesis", "Bidirectional harmonic entanglement routing", "Kelp knot purple: the bruised color of pressure", "Preview engine — DSP complete, seance pending"],
   coupling: ["OVERLAP", "ODYSSEY", "OBRIX"],
-  prefix: "weave_", format: "XOmnibus native" },
+  prefix: "weave_", format: "XOlokun native" },
 { name: "Overtone", code: "OVERTONE", color: "#A8D8EA",
   desc: "Continued fraction spectral synthesis — the nautilus. Preview.",
   wave: "additive", freq: 330, fm: 0, fmAmt: 0,
@@ -353,7 +353,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "The nautilus builds its shell according to a logarithmic spiral. Harmonic series derived from continued fraction approximations of irrational numbers — pi, phi, e. Mathematically precise but never periodic.",
   features: ["Continued fraction harmonic series generation", "Irrational number spectrum: pi, phi, e, sqrt(2)", "Nautilus shell spiral parameter mapping", "Preview engine — DSP complete, seance pending"],
   coupling: ["ORACLE", "ORBITAL", "OBSCURA"],
-  prefix: "over_", format: "XOmnibus native" },
+  prefix: "over_", format: "XOlokun native" },
 { name: "Organism", code: "ORGANISM", color: "#C6E377",
   desc: "Cellular automata synthesis — coral colony emergence. Preview.",
   wave: "noise", freq: 220, fm: 0, fmAmt: 0,
@@ -361,7 +361,7 @@ Insert these 11 engine objects into the instruments array in index.html (before 
   tagline: "Millions of identical simple organisms following simple rules produce one of the most complex ecosystems on Earth. Cellular automata generate synthesis parameters. Patterns no human would compose but that feel inevitable once heard.",
   features: ["Conway-family + custom aquatic cellular automata", "Emergence: synthesis parameters from rule-based evolution", "Coral colony rule presets across automata families", "Preview engine — DSP complete, seance pending"],
   coupling: ["OCELOT", "OCTOPUS", "OUROBOROS"],
-  prefix: "org_", format: "XOmnibus native" },
+  prefix: "org_", format: "XOlokun native" },
 ```
 
 ---
@@ -417,7 +417,7 @@ Add a new section between the packs grid and the support section in packs.html:
       Support on Patreon to access Transcendental Vol 1
     </a>
     <div style="font-size:0.75rem;color:var(--text-faint);text-align:center;margin-top:0.5rem;">
-      Awakening tier (free) presets always available in XOmnibus directly.
+      Awakening tier (free) presets always available in XOlokun directly.
     </div>
   </div>
 </section>

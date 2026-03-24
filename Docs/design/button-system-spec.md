@@ -526,7 +526,7 @@ Focus ring spec (all tiers): `2px solid #E9C46A`, `2px offset`. Never overlaps t
 
 - **Toggle Button**: Uses Secondary tier in Default/Ghost pair (off/on). Same size matrix.
 - **Tab Bar**: Ghost tier, Compact size. Active tab gets gold text, not Primary background.
-- **Pad Controls** (XOmnibus): Custom tier outside this system — pads have their own pressure-sensitive state model.
+- **Pad Controls** (XOlokun): Custom tier outside this system — pads have their own pressure-sensitive state model.
 - **Outshine "Forge" CTA**: Primary tier, Large size, full-width in modal footer.
 - **Toolbar Actions**: Ghost tier, Compact size, icon-only with 44pt hit target.
 

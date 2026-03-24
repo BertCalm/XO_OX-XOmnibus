@@ -1,17 +1,17 @@
-# XOmnibus Preset System — Builder Specification
+# XOlokun Preset System — Builder Specification
 
 **For:** Architecture/Builder Agent
 **From:** Preset Design Agent
 **Date:** 2026-03-08
 **Status:** All decisions locked, migration tooling complete
 
-This document contains every decision the builder needs to implement the XOmnibus preset system. No planning narrative — just specs.
+This document contains every decision the builder needs to implement the XOlokun preset system. No planning narrative — just specs.
 
 ---
 
 ## 1. Product Identity
 
-- **Name:** XOmnibus ("for all" — the collected works of XO_OX Designs)
+- **Name:** XOlokun ("for all" — the collected works of XO_OX Designs)
 - **Type:** Multi-engine synth platform merging 6 character instruments
 - **Target:** 1000 factory presets at v1.0
 
@@ -86,7 +86,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 |------|--------|----------|
 | **Foundation** | Bass, drums, rhythmic anchors | Terracotta |
 | **Atmosphere** | Pads, drones, washes, textures | Teal |
-| **Entangled** | Cross-coupled, reactive — the XOmnibus signature | Gold |
+| **Entangled** | Cross-coupled, reactive — the XOlokun signature | Gold |
 | **Prism** | Leads, keys, bells, melodic, articulate | Silver |
 | **Flux** | Glitchy, unstable, experimental, lo-fi | Crimson |
 | **Aether** | Cinematic, transcendent, ambient, spiritual | Indigo |
@@ -110,7 +110,7 @@ Single source of truth. JSON files replacing all per-engine C++ presets and `.xo
 |-------|-------|--------|
 | M1 | CHARACTER | Each engine's defining parameter |
 | M2 | MOVEMENT | Modulation depth across all active engines |
-| M3 | COUPLING | Cross-engine interaction strength (XOmnibus signature) |
+| M3 | COUPLING | Cross-engine interaction strength (XOlokun signature) |
 | M4 | SPACE | Shared FX depth (reverb, delay, chorus) |
 
 **Per-engine macro targets:**
@@ -248,7 +248,7 @@ Cross-engine presets additionally:
 
 ## 13. MPC Export Strategy
 
-For MPC integration, XOmnibus renders presets as multi-sampled keygroup programs:
+For MPC integration, XOlokun renders presets as multi-sampled keygroup programs:
 - 21 notes per preset (every minor 3rd, C1-C6)
 - `KeyTrack=True`, `RootNote=0` (MPC convention)
 - Empty layers: `VelStart=0` to prevent ghost triggering
@@ -271,10 +271,10 @@ For MPC integration, XOmnibus renders presets as multi-sampled keygroup programs
 | Asset | Path |
 |-------|------|
 | Philosophy doc | `synth_playbook/docs/mega_tool_preset_philosophy.md` |
-| This spec | `synth_playbook/docs/xomnibus_preset_spec_for_builder.md` |
+| This spec | `synth_playbook/docs/xolokun_preset_spec_for_builder.md` |
 | .xometa schema | `synth_playbook/docs/xometa_schema.json` |
 | .xometa examples | `synth_playbook/docs/xometa_examples.json` |
-| Migrated presets | `Presets/XOmnibus/{mood}/*.xometa` |
+| Migrated presets | `Presets/XOlokun/{mood}/*.xometa` |
 | DNA generator | `tools/compute_preset_dna.py` |
 | Preset breeder | `tools/breed_presets.py` |
 | C++ extractor | `tools/extract_cpp_presets.py` |

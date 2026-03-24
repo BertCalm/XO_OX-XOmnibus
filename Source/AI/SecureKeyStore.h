@@ -4,7 +4,7 @@
 #include <array>
 #include <optional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SecureKeyStore — Encrypted storage for user-provided AI API keys.
@@ -187,7 +187,7 @@ private:
         juce::String material;
         material += juce::SystemStats::getComputerName();
         material += juce::SystemStats::getUniqueDeviceID();
-        material += "XOmnibus_KeyStore_v1";  // App-specific salt
+        material += "XOlokun_KeyStore_v1";  // App-specific salt
         material += juce::String (juce::SystemStats::getOperatingSystemType());
 
         // SHA-256 hash to get a consistent 256-bit key
@@ -242,7 +242,7 @@ private:
         auto dir = juce::File::getSpecialLocation (
             juce::File::userApplicationDataDirectory)
             .getChildFile ("XO_OX")
-            .getChildFile ("XOmnibus")
+            .getChildFile ("XOlokun")
             .getChildFile ("keys");
 
         dir.createDirectory();
@@ -278,4 +278,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SecureKeyStore)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

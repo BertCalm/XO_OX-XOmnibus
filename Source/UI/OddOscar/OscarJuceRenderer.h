@@ -9,7 +9,7 @@
 #include <vector>
 #include <stack>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OscarJucePath — implements rive::RenderPath using juce::Path.
@@ -255,4 +255,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

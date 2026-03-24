@@ -1,8 +1,8 @@
-# XOmnibus Code Health Report — Round 2
+# XOlokun Code Health Report — Round 2
 
 **Author:** Code Health Agent
 **Date:** 2026-03-14
-**Source:** Live filesystem reads + Grand Survey (`Docs/xomnibus_landscape_2026.md`)
+**Source:** Live filesystem reads + Grand Survey (`Docs/xolokun_landscape_2026.md`)
 **Scope:** All 24 integrated engines in `Source/Engines/`
 
 ---
@@ -18,7 +18,7 @@ Dead parameters are parameters that are declared, attached to the APVTS, and loa
 | OWLFISH | `owl_morphGlide` | `OwlfishParameters.h:11,117`; loaded into snapshot at `OwlfishParamSnapshot.h:95,159` | Not referenced in `OwlfishEngine.h` or `OwlfishVoice.h` — confirmed absent from all DSP paths | Yes — in all 16 standalone presets | **Wire** — route to `SubharmonicOsc` portamento/glide coefficient |
 | OBLIQUE | `oblq_percDecay` | `ObliqueEngine.h:1127` (layout); loaded as `bounceClickDecay` at line 739 | Loaded into `bounceClickDecay` but never passed to `BounceOscillator.clickDecayCoefficient` or `updateClickDecay()`; hardcoded `0.99f` wins at line 229 | Yes — in 7 presets | **Wire** — one-line fix: pass `bounceClickDecay` to `voice.bounceOscillator.updateClickDecay(bounceClickDecay)` at the per-voice update site |
 | ODYSSEY (Drift) | `crossFmDepth`, `crossFmRatio` | Documented in Grand Survey as "in ParamSnapshot" | Neither ID found anywhere in `Source/Engines/Drift/` — these parameters appear to not exist in the current codebase at all | Unknown — needs preset audit | **Investigate** — if these IDs were removed from the layout but remain in presets, silent load failures occur; if they were never added, the seance finding may be stale |
-| OCELOT | `ocelot_prowl`, `ocelot_foliage`, `ocelot_ecosystem`, `ocelot_canopy` | `OcelotParameters.h:89-92,219-222`; loaded into snapshot at `OcelotParamSnapshot.h:90-93,182-185` | Not referenced anywhere in `OcelotEngine.h`, `OcelotVoice.h`, `OcelotEmergent.h`, or `EcosystemMatrix.h` | In 0 XOmnibus presets (engine has zero presets) | **Wire** — route into EcosystemMatrix biome-blend parameters; this is the signature feature of the engine |
+| OCELOT | `ocelot_prowl`, `ocelot_foliage`, `ocelot_ecosystem`, `ocelot_canopy` | `OcelotParameters.h:89-92,219-222`; loaded into snapshot at `OcelotParamSnapshot.h:90-93,182-185` | Not referenced anywhere in `OcelotEngine.h`, `OcelotVoice.h`, `OcelotEmergent.h`, or `EcosystemMatrix.h` | In 0 XOlokun presets (engine has zero presets) | **Wire** — route into EcosystemMatrix biome-blend parameters; this is the signature feature of the engine |
 
 **Notes:**
 - The Drift engine's `modWheelAmount` (CC1) IS populated from MIDI at line 733 and applied to filter cutoff at line 901. The Grand Survey note about "ModWheel mod source never populated" is **inaccurate for the current codebase** — mod wheel is functional in Drift. Aftertouch is absent, however.
@@ -207,7 +207,7 @@ The `channel` and `sampleIndex` arguments are both ignored (commented out with `
 | FAT (Obese) | **Substantive** — 2 cases: `AmpToFilter` (filter mod), `AmpToPitch`/`LFOToPitch`/`PitchToPitch` (pitch mod) | Real stereo (outputCacheL/R) + envelope on ch2 | 3 types |
 | OVERWORLD | **Substantive** — 3 cases: `AmpToFilter` (±8000 Hz filter offset), `EnvToMorph` (ERA X position), `AudioToFM` (ERA Y position) | **Broken** — returns same `lastSample` scalar for all channels/sample indices (line 281-284) | 3 types (claimed); actual output is mono scalar |
 | ORBITAL | **Substantive** — `AudioToWavetable` (partial tilt), `AudioToFM` (FM partial freq mod), `AudioToRing` (ring mod buffer), `LFOToPitch` (pitch mod), `RhythmToBlend` (group envelope trigger) | Real stereo + envelope; coupling audio buffers allocated | 5 types |
-| OCELOT | **Stub** — all 4 args cast to `(void)` at line 91; comment says "Full routing wired when running inside XOmnibus" | Real stereo (outputCacheL/R) — no ch2 envelope | 0 (claimed some; none implemented) |
+| OCELOT | **Stub** — all 4 args cast to `(void)` at line 91; comment says "Full routing wired when running inside XOlokun" | Real stereo (outputCacheL/R) — no ch2 envelope | 0 (claimed some; none implemented) |
 | OWLFISH | **Stub** — all 4 args cast to `(void)` at lines 132-135; comment says "to be wired by MegaCouplingMatrix later" | Real stereo (outputCacheL/R) — no ch2 envelope | 0 (claimed some; none implemented) |
 | DRIFT (Odyssey) | **Substantive** — switch-impl with real coupling routing (filter mod, morph mod, pitch mod per Grand Survey) | Real stereo + envelope; full cache | Multiple types |
 | BOB (Oblong) | **Substantive** — switch-impl (per Grand Survey) | Real stereo cache | Multiple types |
@@ -269,4 +269,4 @@ The following Grand Survey findings were verified against the live codebase and 
 
 ---
 
-*Report generated 2026-03-14 by Code Health Agent. All file references are to `Source/Engines/` within the XO_OX-XOmnibus repository. Line numbers are approximate and may shift by ±5 lines due to context window reading; verify before applying fixes.*
+*Report generated 2026-03-14 by Code Health Agent. All file references are to `Source/Engines/` within the XO_OX-XOlokun repository. Line numbers are approximate and may shift by ±5 lines due to context window reading; verify before applying fixes.*

@@ -6,10 +6,10 @@
 #include <functional>
 #include <optional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// RecipeEngine — One-touch configuration of the entire XOmnibus architecture.
+// RecipeEngine — One-touch configuration of the entire XOlokun architecture.
 //
 // A Recipe (.xorecipe) is a "Scene Architect" that sets up:
 //   - Which engines load into the 4 slots
@@ -613,4 +613,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

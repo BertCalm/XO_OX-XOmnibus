@@ -12,12 +12,12 @@ The 3 background agents (ORBWEAVE DSP, OVERTONE seance+presets, ORGANISM seance+
 ---
 
 ## Phase 2: ORBWEAVE Integration (Sonnet, ~15 min)
-> **Trigger:** `register ORBWEAVE in XOmnibus — add to XOmnibusProcessor.cpp, PresetManager.h, XOmnibusEditor.h, CMakeLists.txt, and CLAUDE.md`
+> **Trigger:** `register ORBWEAVE in XOlokun — add to XOlokunProcessor.cpp, PresetManager.h, XOlokunEditor.h, CMakeLists.txt, and CLAUDE.md`
 
 The ORBWEAVE DSP was built by the agent but needs wiring:
-- `Source/XOmnibusProcessor.cpp` — add `#include` + `registerEngine("Orbweave", ...)`
+- `Source/XOlokunProcessor.cpp` — add `#include` + `registerEngine("Orbweave", ...)`
 - `Source/Core/PresetManager.h` — add to engine list + alias map (`"Orbweave", "weave"`)
-- `Source/UI/XOmnibusEditor.h` — add accent color `0xFF8E4585`
+- `Source/UI/XOlokunEditor.h` — add accent color `0xFF8E4585`
 - `CMakeLists.txt` — add `Source/Engines/Orbweave/OrbweaveEngine.h` + `.cpp`
 - `CLAUDE.md` — update engine count 39→42, add ORBWEAVE/OVERTONE/ORGANISM rows to table
 
@@ -101,7 +101,7 @@ Updates MEMORY.md, satellite files, CLAUDE.md engine counts, preset gap analysis
 ```
 # Phase 1-2 (Sonnet)
 just commit and push what the agents built last night
-register ORBWEAVE in XOmnibus — add to XOmnibusProcessor.cpp, PresetManager.h, XOmnibusEditor.h, CMakeLists.txt, and CLAUDE.md
+register ORBWEAVE in XOlokun — add to XOlokunProcessor.cpp, PresetManager.h, XOlokunEditor.h, CMakeLists.txt, and CLAUDE.md
 
 # Phase 3 (switch to Opus)
 run seance on ORBWEAVE then generate 150 presets

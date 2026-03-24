@@ -25,7 +25,7 @@
 
 **OVERLAP**: Not a dance engine in its current form. The FDN resonance is too diffuse for punchy transients. However, at high feedback + short delay base + Figure-Eight knot, it produces metallic percussion tones that could serve techno. Missing: tempo-synced pulse rate for rhythmic gating effects. The PULSE macro should have a sync option.
 
-**OUTWIT**: This is where OUTWIT shines for electronic music. Step rate synced to host BPM creates CA-driven rhythmic patterns that are genuinely novel — no sequencer, no step editor, just rules evolving. Verify `owit_stepSync` actually works in XOmnibus context. Class III rules (chaotic) at synced rates produce glitch textures impossible to program by hand. Need more Flux presets exploiting tempo sync.
+**OUTWIT**: This is where OUTWIT shines for electronic music. Step rate synced to host BPM creates CA-driven rhythmic patterns that are genuinely novel — no sequencer, no step editor, just rules evolving. Verify `owit_stepSync` actually works in XOlokun context. Class III rules (chaotic) at synced rates produce glitch textures impossible to program by hand. Need more Flux presets exploiting tempo sync.
 
 ### Panel 4 — Sarah Okonkwo (R&B / Neo-Soul)
 
@@ -171,7 +171,7 @@ OVERLAP's competitive moat is mathematical: the knot-to-FDN-matrix mapping is ge
 
 The SOLVE GA (genetic algorithm hunting for sound) is the strongest marketing angle — "a synth that hunts for the sound you want." This is AI-adjacent without being AI (no neural net, just evolutionary computation). Timely positioning.
 
-**Combined positioning**: OVERLAP + OUTWIT together represent XOmnibus's most academically rigorous engines. They demonstrate that the fleet isn't just another soft synth collection — it's a research platform that ships as a product. For the academic/experimental market, these two engines alone justify XOmnibus installation.
+**Combined positioning**: OVERLAP + OUTWIT together represent XOlokun's most academically rigorous engines. They demonstrate that the fleet isn't just another soft synth collection — it's a research platform that ships as a product. For the academic/experimental market, these two engines alone justify XOlokun installation.
 
 ---
 
@@ -253,16 +253,16 @@ Both engines have well-implemented `applyCouplingInput()` methods supporting 7+ 
 
 ### The Dominoes
 
-If SOLVE GA ships functional in V1.0, it establishes "self-evolving synthesis" as an XOmnibus capability. This creates demand for:
+If SOLVE GA ships functional in V1.0, it establishes "self-evolving synthesis" as an XOlokun capability. This creates demand for:
 1. SOLVE-like GA in other engines (ORGANON's metabolism could hunt, OUROBOROS could evolve toward attractors)
 2. Cross-engine GA (evolve 4 engines simultaneously toward a combined DNA target)
 3. User-trainable DNA targets (record a reference sound, extract DNA, set as SOLVE target)
 
-Each domino makes XOmnibus progressively more "alive" and further from any competitor's territory.
+Each domino makes XOlokun progressively more "alive" and further from any competitor's territory.
 
 ### 18-Month Prediction
 
-By September 2027, OUTWIT's SOLVE GA paradigm will be the most-cited XOmnibus feature in academic papers and music technology press. The knot topology of OVERLAP will attract a smaller but intensely devoted user base (mathematical music composers, spectral music practitioners). Together, they become the "proof of concept" engines that attract developers to build third-party engines for the XOmnibus platform — because the platform clearly supports paradigms that no plugin format or host has supported before. The first third-party engine contribution will likely be inspired by seeing what OVERLAP and OUTWIT proved was possible.
+By September 2027, OUTWIT's SOLVE GA paradigm will be the most-cited XOlokun feature in academic papers and music technology press. The knot topology of OVERLAP will attract a smaller but intensely devoted user base (mathematical music composers, spectral music practitioners). Together, they become the "proof of concept" engines that attract developers to build third-party engines for the XOlokun platform — because the platform clearly supports paradigms that no plugin format or host has supported before. The first third-party engine contribution will likely be inspired by seeing what OVERLAP and OUTWIT proved was possible.
 
 ---
 

@@ -18,7 +18,7 @@ DNA constraints:
   space:      0.65–1.00 (free)
   aggression: 0.00–0.25 (free)
 
-Writes to Presets/XOmnibus/Entangled/. Skips existing files.
+Writes to Presets/XOlokun/Entangled/. Skips existing files.
 """
 
 import json
@@ -26,7 +26,7 @@ import os
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "..", "Presets", "XOmnibus", "Entangled"
+    "..", "Presets", "XOlokun", "Entangled"
 )
 
 # ---------------------------------------------------------------------------

@@ -8,7 +8,7 @@ import json
 import glob
 import os
 
-PRESETS_ROOT = "/home/user/XO_OX-XOmnibus/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
 
 
 def main():

@@ -420,7 +420,7 @@ README_MD = """\
 ## What Is This?
 
 TIDE TABLES is the gateway pack for the XO_OX synthesizer library.
-It brings three of XOmnibus's flagship engines — **ONSET**, **ODYSSEY**, and **OPAL** —
+It brings three of XOlokun's flagship engines — **ONSET**, **ODYSSEY**, and **OPAL** —
 into a single, free MPC expansion you can load today.
 
 No samples. No loops. Every sound is synthesized in real time by the engines themselves.
@@ -513,17 +513,17 @@ This is the **Entangled mood**. No engine operates alone.
 
 TIDE TABLES is fully synthesized — no sample content, no licensing restrictions.
 Every pad responds to velocity, mod wheel, and aftertouch exactly as it would
-inside XOmnibus on a desktop. The engines are the same code running on the same DSP.
+inside XOlokun on a desktop. The engines are the same code running on the same DSP.
 
 The pack is also a map. Each program is a door into a different engine.
 Play Coastal Drums, then open Deep Water and hear what happens when all three
-engines lock together. That's what XOmnibus is built for.
+engines lock together. That's what XOlokun is built for.
 
 ---
 
 ## Want More?
 
-TIDE TABLES is a taste. The full XOmnibus library contains **34+ engines**,
+TIDE TABLES is a taste. The full XOlokun library contains **34+ engines**,
 2,550+ factory presets, and the complete XO_OX water column mythology.
 
 Visit **[xo-ox.org](https://xo-ox.org)** to learn more, or join Patreon at the Signal tier
@@ -534,7 +534,7 @@ to receive new packs as they're released.
 ## Credits
 
 All sounds: XO_OX
-Engines: ONSET, ODYSSEY, OPAL (XOmnibus)
+Engines: ONSET, ODYSSEY, OPAL (XOlokun)
 Format: Akai MPC Expansion (.xpn)
 Released: {TODAY}
 License: Free for personal and commercial use
@@ -566,7 +566,7 @@ TIDE TABLES is a free pack built for that moment:
 the moment you load something new, hit the first pad, and already know
 you're going to use this.
 
-Three of XOmnibus's most distinctive engines — ONSET, ODYSSEY, OPAL —
+Three of XOlokun's most distinctive engines — ONSET, ODYSSEY, OPAL —
 assembled into four programs. No demos. No watermarks. No strings.
 Just load it and play.
 
@@ -599,7 +599,7 @@ No engine operates alone.
 
 ### Call to Action
 
-TIDE TABLES is free because everyone deserves to hear what XOmnibus can do
+TIDE TABLES is free because everyone deserves to hear what XOlokun can do
 before they decide whether to go deeper.
 
 If these four programs feel like enough, keep them. Play them. Build with them.

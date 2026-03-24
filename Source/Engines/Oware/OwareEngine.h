@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OwareEngine.h — XOware | "The Resonant Board"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOware is the sunken oware board — a carved wooden mancala game
@@ -63,7 +63,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Material ratio tables — from Rossing (2000) and Fletcher & Rossing (1998).
@@ -211,7 +211,7 @@ struct OwareBuzzMembrane
 
         // Nonlinear: tanh on the extracted band (membrane only activates above threshold)
         float sensitivity = 5.0f + amount * 15.0f;
-        float buzzed = buzzBand * (1.0f + amount * xomnibus::fastTanh (buzzBand * sensitivity));
+        float buzzed = buzzBand * (1.0f + amount * xolokun::fastTanh (buzzBand * sensitivity));
 
         // Re-inject buzz artifacts
         return input + buzzed * amount;
@@ -261,8 +261,8 @@ struct OwareBodyResonator
         fundamentalHz = freqHz;
         // Cache bowl trig once per block (bowlFreq only changes here, not per-sample)
         float w = 2.0f * 3.14159265f * std::max (bowlFreq, 20.0f) / sr;
-        bowlCosW = xomnibus::fastCos (w);
-        bowlSinW = xomnibus::fastSin (w);
+        bowlCosW = xolokun::fastCos (w);
+        bowlSinW = xolokun::fastSin (w);
     }
 
     // Improvement #7: compute per-mode decay boost based on proximity to body resonances
@@ -1016,4 +1016,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

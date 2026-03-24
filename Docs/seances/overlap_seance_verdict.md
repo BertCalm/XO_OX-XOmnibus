@@ -20,7 +20,7 @@ All 8 DSP source files read in full:
 - `Bioluminescence.h` (162 lines) -- 7-tap comb shimmer with stereo spread
 - `PostFX.h` (189 lines) -- chorus (BBD-style) + 3-stage all-pass diffusion
 - `ParamSnapshot.h` (169 lines) -- 41-parameter block cache
-- `FastMath.h` (34 lines) -- namespace forwarding to shared XOmnibus FastMath
+- `FastMath.h` (34 lines) -- namespace forwarding to shared XOlokun FastMath
 
 **Signal Flow**: Voice (sine-pulse exciter) -> FDN (6-channel knot-topology routing) -> Stereo spread -> Bioluminescence shimmer -> SVF lowpass (Zavalishin TPT) -> PostFX (chorus + diffusion) -> Coupling ring mod -> Output
 
@@ -245,7 +245,7 @@ Pearlman flags the integer delay lengths as a build quality issue -- smooth `del
 
 OVERLAP occupies territory no other synthesizer occupies. The knot-topology FDN is genuine invention -- not a variation on existing synthesis, but a new paradigm where mathematical topology operates directly as spectral geometry. The Kuramoto entrainment transforms collective voice behavior into an emergent phenomenon that surprises both player and engine. The stereo bioluminescence, now properly spatialized, adds organic beauty that prevents the topology from feeling clinical.
 
-The engine's remaining ceiling is execution precision, not concept. Fractional delay interpolation, asymmetric knot matrix coefficients derived from braid group theory, and extended delay base range for sub-bass drone territory would push the score from 8.6 to 9.5 -- firmly into flagship territory. OVERLAP is the engine you point to when asked what XOmnibus does that no other synthesizer can.
+The engine's remaining ceiling is execution precision, not concept. Fractional delay interpolation, asymmetric knot matrix coefficients derived from braid group theory, and extended delay base range for sub-bass drone territory would push the score from 8.6 to 9.5 -- firmly into flagship territory. OVERLAP is the engine you point to when asked what XOlokun does that no other synthesizer can.
 
 The ghosts see a future where OVERLAP's knot topology concept extends to Jones polynomial matrix weighting, linking number coupling between voice pairs, and temporal cobordism where the knot type evolves continuously through topological space. The mathematical framework is deep enough to sustain a decade of development.
 

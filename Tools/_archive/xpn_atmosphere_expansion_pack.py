@@ -9,7 +9,7 @@ Atmosphere Expansion Pack — 60 .xometa presets for the Atmosphere mood.
   - Warm Drone        : ODDOSCAR, OSTERIA, OBLONG, OVERDUB, OHM, OTTONI, OBBLIGATO
 
 Usage: python3 xpn_atmosphere_expansion_pack.py
-Output: Presets/XOmnibus/Atmosphere/*.xometa  (skips existing files)
+Output: Presets/XOlokun/Atmosphere/*.xometa  (skips existing files)
 """
 
 import json
@@ -19,7 +19,7 @@ import math
 
 random.seed(2026)
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), '..', 'Presets', 'XOmnibus', 'Atmosphere')
+PRESET_DIR = os.path.join(os.path.dirname(__file__), '..', 'Presets', 'XOlokun', 'Atmosphere')
 
 # ─── Name pools (2-3 words, ≤30 chars, evocative) ────────────────────────────
 

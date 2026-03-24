@@ -9,7 +9,7 @@
 
 ## What Was Done This Session
 
-1. **Preset Audit Checklist skill** — created, registered globally + in XOmnibus repo, committed
+1. **Preset Audit Checklist skill** — created, registered globally + in XOlokun repo, committed
 2. **XOffering conceived and fully architected:**
    - Vision Quest 002 (Visionary L5 dive — boom bap as psychological archaeology)
    - 83-param architecture spec with real math, per-type transient models, structurally unique city chains
@@ -57,7 +57,7 @@
 ## NEXT SESSION: Build Phase D (DSP)
 
 ### Where to Build
-**Directly in XOmnibus:** `Source/Engines/Offering/`
+**Directly in XOlokun:** `Source/Engines/Offering/`
 No standalone repo. This matches OWARE, OXBOW, OPERA, and all recent engines.
 
 ### Build Order (serial — each depends on prior)
@@ -109,7 +109,7 @@ D6. OfferingEngine.h         — Master engine wiring:
 - Detroit drunk timing: per-voice trigger delay counter, NOT buffer delay
 
 ### After Build
-1. Register in `XOmnibusProcessor.cpp` + `PresetManager.h`
+1. Register in `XOlokunProcessor.cpp` + `PresetManager.h`
 2. Update CLAUDE.md (4 sections per engine checklist)
 3. `/build-sentinel` — compile + auval
 4. Presets (150+ target, 4 parallel Sonnet agents)

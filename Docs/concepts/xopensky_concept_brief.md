@@ -34,7 +34,7 @@
 
 1. **XO word:** XOpenSky ✓ — Open Sky: the space above the ocean, where feliX's light reaches its fullest expression
 2. **One-sentence thesis:** "XOpenSky is a euphoric synth engine where shimmering supersaw anthems and crystalline pads soar above the entire XO_OX water column — pure light, pure air, pure ascension." ✓
-3. **Sound only this can make:** Arena-sized euphoric leads and pads with harmonic shimmer processing that makes every note feel like sunlight breaking through water — the Van Halen jump, the Vangelis heaven, the moment the surface breaks. No other XOmnibus engine goes *up*. ✓
+3. **Sound only this can make:** Arena-sized euphoric leads and pads with harmonic shimmer processing that makes every note feel like sunlight breaking through water — the Van Halen jump, the Vangelis heaven, the moment the surface breaks. No other XOlokun engine goes *up*. ✓
 
 ---
 

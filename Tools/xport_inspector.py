@@ -22,7 +22,7 @@ Usage:
     python3 xport_inspector.py ./export/MyPack/
 
     # Inspect a folder of .xometa preset files (pre-export)
-    python3 xport_inspector.py Presets/XOmnibus/
+    python3 xport_inspector.py Presets/XOlokun/
 
     # JSON output for CI pipelines
     python3 xport_inspector.py MyPack.xpn --json

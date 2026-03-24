@@ -2,7 +2,7 @@
 """
 xpn_preset_movement_expander.py
 
-Generate high-movement presets for kinetic engines in XOmnibus.
+Generate high-movement presets for kinetic engines in XOlokun.
 Targets the Flux mood with three intensity levels: Pulse, Surge, Storm.
 """
 
@@ -244,12 +244,12 @@ def build_preset(engine_name: str, level_name: str, index: int,
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate high-movement Flux presets for XOmnibus kinetic engines."
+        description="Generate high-movement Flux presets for XOlokun kinetic engines."
     )
     parser.add_argument(
         "--output-dir",
-        default="Presets/XOmnibus/Flux/",
-        help="Directory to write preset JSON files (default: Presets/XOmnibus/Flux/)",
+        default="Presets/XOlokun/Flux/",
+        help="Directory to write preset JSON files (default: Presets/XOlokun/Flux/)",
     )
     parser.add_argument(
         "--dry-run",

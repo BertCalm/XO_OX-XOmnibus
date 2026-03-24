@@ -13,12 +13,12 @@
 
 ~800 words
 
-The XPN format is sparsely documented. The MPC manual covers hardware brilliantly but barely touches the expansion pack ecosystem. And XOmnibus — the deepest sound-design environment on the platform — ships with no MPC integration guide at all.
+The XPN format is sparsely documented. The MPC manual covers hardware brilliantly but barely touches the expansion pack ecosystem. And XOlokun — the deepest sound-design environment on the platform — ships with no MPC integration guide at all.
 
 This manual captures three years of R&D from XO_OX's Oxport sessions. It is the canonical reference for:
 
 - How XPN packs are designed, built, and shipped
-- How XOmnibus engines translate into MPC programs
+- How XOlokun engines translate into MPC programs
 - How coupling, DNA, and velocity expressivity survive the export
 - How to design your own packs using the same tools XO_OX uses
 
@@ -89,17 +89,17 @@ The manual is organized as a journey: from format fundamentals → workflow → 
 
 ---
 
-### Chapter 2: XOmnibus → MPC Workflow
+### Chapter 2: XOlokun → MPC Workflow
 **Estimated length**: ~6,000 words
 **Primary author voice**: Kai
 
 #### 2.1 The Export Pipeline Overview
-- XOmnibus engine → Oxport render → XPM generation → XPN bundle → MPC hardware
+- XOlokun engine → Oxport render → XPM generation → XPN bundle → MPC hardware
 - Where each tool lives in the pipeline: 10 Python tools in `/Tools/`
 - Philosophy: offline rendering is better than auto-sampling (consistency, sample rate accuracy)
 - Visual: pipeline flowchart from plugin to MPC pad
 
-#### 2.2 Rendering Samples from XOmnibus Engines
+#### 2.2 Rendering Samples from XOlokun Engines
 - `OfflineAudioContext` rendering: why it matters and how it works
 - Sample rate matching: derive from source, never hardcode 44100
 - Envelope matching: offline render must use same ADSR math as live engine
@@ -119,10 +119,10 @@ The manual is organized as a journey: from format fundamentals → workflow → 
 - How engines with velocity-shaped filter envelopes (D001 compliant) need 8+ layers to capture the sweep
 - The `velocity-cycle` hybrid: rendering velocity zones AND round-robin variants simultaneously
 
-#### 2.5 From XOmnibus Presets to MPC Programs
+#### 2.5 From XOlokun Presets to MPC Programs
 - Loading a preset, printing the sound, mapping to keygroup zones
 - Multi-articulation: sustain / staccato / release layers as `<ArticulationGroup>`
-- Coupling snapshots: if two engines are coupled in XOmnibus, how to capture the coupled timbre in a standalone XPN program
+- Coupling snapshots: if two engines are coupled in XOlokun, how to capture the coupled timbre in a standalone XPN program
 - Limitations: what doesn't transfer (real-time coupling modulation, live macro movement)
 
 #### 2.6 Drum Kit Export (ONSET Programs)
@@ -148,13 +148,13 @@ The manual is organized as a journey: from format fundamentals → workflow → 
 **Primary author voice**: Kai + community contributors
 
 #### 3.1 What Coupling Is (and Isn't in MPC)
-- XOmnibus coupling: real-time cross-engine parameter modulation
+- XOlokun coupling: real-time cross-engine parameter modulation
 - MPC's equivalent: Q-Links, send/return FX chains, MIDI routing between programs
 - What can be approximated: modulation depth, routing topology
 - What cannot: bi-directional live feedback coupling (KNOT topology especially)
 
 #### 3.2 The 5 Most Translatable Coupling Types
-For each: description, XOmnibus coupling name, MPC approximation method, Q-Link assignments, limitations
+For each: description, XOlokun coupling name, MPC approximation method, Q-Link assignments, limitations
 
 1. **Filter drive coupling** (OVERDUB → OPAL) — send level as modulation depth
 2. **Oscillator lock** (SNAP → OVERWORLD) — detuned unison approximation via layer pitch offset
@@ -286,7 +286,7 @@ Format: Name | Engines involved | MPC track template | Q-Link map | Sound descri
 - No hard dependencies between tools: any tool can be run in isolation
 
 #### 6.2 Tool 1: Sample Categorizer
-- Input: raw WAV folder (from XOmnibus renders)
+- Input: raw WAV folder (from XOlokun renders)
 - Output: categorized folder structure with naming conventions
 - DNA integration: reads `.xometa` preset to auto-tag samples
 - Command-line usage, flag reference
@@ -338,7 +338,7 @@ Format: Name | Engines involved | MPC track template | Q-Link map | Sound descri
 - Checksum generation for integrity verification
 
 #### 6.9 Tool 8: Render Spec Generator
-- Input: XOmnibus engine name + preset name
+- Input: XOlokun engine name + preset name
 - Output: render specification JSON (sample rate, note range, velocity steps, loop requirements)
 - Integration with Oxport pipeline as the front-end specification step
 
@@ -376,7 +376,7 @@ Format: Name | Engines involved | MPC track template | Q-Link map | Sound descri
 #### 7.3 Release Layers
 - Mute-group triggered release samples: the technique that separates great instrument libraries from mediocre ones
 - XPM mute group assignment for release triggering
-- Designing acoustic release transients for XOmnibus engines (string noise, key click, mechanical resonance)
+- Designing acoustic release transients for XOlokun engines (string noise, key click, mechanical resonance)
 - Automation: Oxport's release layer generator utility
 
 #### 7.4 Loop Point Design
@@ -453,7 +453,7 @@ Format: Name | Engines involved | MPC track template | Q-Link map | Sound descri
 #### 9.1 Who This Chapter Is For
 - Intermediate MPC producers who want to create commercial-quality packs
 - Sound designers who already have sample libraries and want to package them
-- Community members who have developed original XOmnibus presets and want to export them
+- Community members who have developed original XOlokun presets and want to export them
 
 #### 9.2 The XO_OX Community Contribution Model
 - How community packs differ from official XO_OX packs
@@ -646,7 +646,7 @@ TESTING
 **Target audience tiers**:
 1. **Primary**: MPC Live II/III owners using XO_OX packs, wanting to understand them more deeply
 2. **Secondary**: Sound designers and expansion pack creators wanting to build for MPC
-3. **Tertiary**: XOmnibus users wanting to bridge their plugin workflow to hardware
+3. **Tertiary**: XOlokun users wanting to bridge their plugin workflow to hardware
 
 **Tone**: Professional but warm — "written by producers, for producers." No corporate-speak. Code examples are practical and copy-paste ready. Historical context is included where it adds soul (a word that comes up a lot in XO_OX culture).
 

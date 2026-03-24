@@ -1,19 +1,19 @@
 # Playing the Space Between
-## A Performance Guide to XOmnibus Coupling
+## A Performance Guide to XOlokun Coupling
 
 **Version:** 1.0 — March 2026
 **Audience:** Producers familiar with synthesis who are new to inter-engine coupling
-**Prerequisite:** Basic familiarity with XOmnibus's four-slot engine architecture
+**Prerequisite:** Basic familiarity with XOlokun's four-slot engine architecture
 
 ---
 
 ## Introduction: The Space Between Engines
 
-Most synthesizers give you one voice. Layer two voices and you still get two separate sounds playing together — coexisting but not talking to each other. XOmnibus is built around a different idea.
+Most synthesizers give you one voice. Layer two voices and you still get two separate sounds playing together — coexisting but not talking to each other. XOlokun is built around a different idea.
 
 Coupling is not routing. Routing means signal from engine A arrives at the input of engine B. Coupling means the *behavior* of engine A reshapes the *parameters* of engine B while both are playing their own material. The drum hit doesn't go into the bass — the drum hit changes *how* the bass exists for a moment. The LFO in one engine doesn't drive the pitch of another — it changes where the other engine looks in its wavetable, which changes its timbre, which changes its relationship to what you're playing.
 
-This is the space between engines. It is where XOmnibus sounds unlike anything else.
+This is the space between engines. It is where XOlokun sounds unlike anything else.
 
 When you hear a coupling preset correctly, the two engines become a single organism with more behavioral complexity than either could produce alone. The mallet hits pump the reverb tail. The cellular automata engine decides where in a spectral buffer the shimmer engine looks for material. The drum machine's amplitude envelope dictates when the bass breathes. None of this is routing — it is conversation.
 
@@ -23,7 +23,7 @@ This guide walks you through the coupling architecture, the Performance View, fi
 
 ## Part 1: The 14 Coupling Types
 
-XOmnibus implements fourteen distinct coupling types. Each defines a *relationship* between source engine output and destination engine parameter. Learn what each one does and you will hear the vocabulary of every Entangled preset in the library.
+XOlokun implements fourteen distinct coupling types. Each defines a *relationship* between source engine output and destination engine parameter. Learn what each one does and you will hear the vocabulary of every Entangled preset in the library.
 
 The coupling types split naturally into four groups: amplitude modulation, LFO/envelope modulation, audio-rate modulation, and topological coupling.
 
@@ -67,7 +67,7 @@ The coupling types split naturally into four groups: amplitude modulation, LFO/e
 
 ## Part 2: The Performance View
 
-The Performance View is accessed via the **P** button in the XOmnibus header. It replaces the Overview Panel with a real-time coupling control surface built for live use.
+The Performance View is accessed via the **P** button in the XOlokun header. It replaces the Overview Panel with a real-time coupling control surface built for live use.
 
 ### Layout
 

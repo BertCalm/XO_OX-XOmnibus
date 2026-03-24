@@ -2,7 +2,7 @@
 """
 xpn_coupling_coverage_tracker_v2.py
 Scans all Entangled .xometa presets and reports coupling pair coverage
-across all 34 registered XOmnibus engines.
+across all 34 registered XOlokun engines.
 
 Usage: python3 Tools/xpn_coupling_coverage_tracker_v2.py
 """
@@ -16,7 +16,7 @@ from datetime import datetime
 # ─── Configuration ───────────────────────────────────────────────────────────
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+ENTANGLED_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 SNAPSHOT_PATH = os.path.join(REPO_ROOT, "Docs", "snapshots", "coupling_coverage_latest.json")
 
 # All 34 canonical engine names
@@ -216,7 +216,7 @@ def main() -> None:
 
     # ── stdout summary ──────────────────────────────────────────────────────
     print("=" * 65)
-    print("  XOmnibus Entangled Coupling Coverage Report")
+    print("  XOlokun Entangled Coupling Coverage Report")
     print(f"  Generated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
     print("=" * 65)
     print(f"\n  Presets scanned    : {preset_count}")

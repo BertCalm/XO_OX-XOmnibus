@@ -13,8 +13,8 @@ These files contain `https://patreon.com/xoox` as actual href values. Users clic
 
 | File | Line | Current Text | Action |
 |------|------|-------------|--------|
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/site/index.html` | 2340 | `<a href="https://patreon.com/xoox" class="patreon-btn" target="_blank" rel="noopener">Support on Patreon</a>` | Replace URL with real Patreon URL |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/site/index.html` | 2380 | `<a href="https://patreon.com/xoox" target="_blank" rel="noopener">Patreon</a>` | Replace URL with real Patreon URL |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/site/index.html` | 2340 | `<a href="https://patreon.com/xoox" class="patreon-btn" target="_blank" rel="noopener">Support on Patreon</a>` | Replace URL with real Patreon URL |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/site/index.html` | 2380 | `<a href="https://patreon.com/xoox" target="_blank" rel="noopener">Patreon</a>` | Replace URL with real Patreon URL |
 
 **Real URL to use:** `TODO — pending Patreon account creation`
 
@@ -26,17 +26,17 @@ These mention `patreon.com/xoox` explicitly as a placeholder. Update once the re
 
 | File | Line | Current Text |
 |------|------|-------------|
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/plans/xomnibus_v1_launch_master_plan.md` | 46 | `Patreon URL is placeholder \`patreon.com/xoox\` across site, README, inserts (BLOCKER #1 in existing checklist)` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/plans/xomnibus_v1_launch_master_plan.md` | 101 | `- [ ] **[BLOCKER] Patreon URL.** Set up real Patreon account, update the URL everywhere: \`site/index.html\`, any pack inserts, README. Search the entire repo for \`patreon.com/xoox\` and replace all occurrences.` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/sprint_report_2026-03-18.md` | 150 | `- Patreon URL placeholder (\`patreon.com/xoox\`) — needs real URL before launch` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/morning_plan_2026-03-20.md` | 94 | `\| **Patreon URL** \| Manual \| Still placeholder \`patreon.com/xoox\` \|` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_launch_checklist_v1_rnd.md` | 12 | `- [ ] **1. Patreon URL updated.** Replace placeholder \`patreon.com/xoox\` with the real URL across the site, README files, and any pack inserts.` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_patreon_pack_strategy_rnd.md` | 11 | `Patreon URL: \`patreon.com/xoox\` (placeholder — not live)` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_patreon_pack_strategy_rnd.md` | 141 | `- **Patreon URL activation:** \`patreon.com/xoox\` must be claimed and configured before any public announcement.` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_patreon_content_calendar_rnd.md` | 248 | `- **Patreon URL:** Currently placeholder \`patreon.com/xoox\` — finalize and update all site references before April launch` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_patreon_q2_2026_calendar_rnd.md` | 14 | `**Patreon URL:** patreon.com/xoox (placeholder — update before April 1 launch post)` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/xpn_patreon_q2_2026_calendar_rnd.md` | 211 | `- Confirm and update Patreon URL (patreon.com/xoox is placeholder)` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/specs/oxport_v2_feature_backlog.md` | 370 | `**Blocking dependencies:** Patreon API access (currently placeholder \`patreon.com/xoox\`);` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/plans/xolokun_v1_launch_master_plan.md` | 46 | `Patreon URL is placeholder \`patreon.com/xoox\` across site, README, inserts (BLOCKER #1 in existing checklist)` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/plans/xolokun_v1_launch_master_plan.md` | 101 | `- [ ] **[BLOCKER] Patreon URL.** Set up real Patreon account, update the URL everywhere: \`site/index.html\`, any pack inserts, README. Search the entire repo for \`patreon.com/xoox\` and replace all occurrences.` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/sprint_report_2026-03-18.md` | 150 | `- Patreon URL placeholder (\`patreon.com/xoox\`) — needs real URL before launch` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/morning_plan_2026-03-20.md` | 94 | `\| **Patreon URL** \| Manual \| Still placeholder \`patreon.com/xoox\` \|` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_launch_checklist_v1_rnd.md` | 12 | `- [ ] **1. Patreon URL updated.** Replace placeholder \`patreon.com/xoox\` with the real URL across the site, README files, and any pack inserts.` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_patreon_pack_strategy_rnd.md` | 11 | `Patreon URL: \`patreon.com/xoox\` (placeholder — not live)` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_patreon_pack_strategy_rnd.md` | 141 | `- **Patreon URL activation:** \`patreon.com/xoox\` must be claimed and configured before any public announcement.` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_patreon_content_calendar_rnd.md` | 248 | `- **Patreon URL:** Currently placeholder \`patreon.com/xoox\` — finalize and update all site references before April launch` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_patreon_q2_2026_calendar_rnd.md` | 14 | `**Patreon URL:** patreon.com/xoox (placeholder — update before April 1 launch post)` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/xpn_patreon_q2_2026_calendar_rnd.md` | 211 | `- Confirm and update Patreon URL (patreon.com/xoox is placeholder)` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/specs/oxport_v2_feature_backlog.md` | 370 | `**Blocking dependencies:** Patreon API access (currently placeholder \`patreon.com/xoox\`);` |
 
 ---
 
@@ -46,8 +46,8 @@ These contain the placeholder inside checklist strings that get written into gen
 
 | File | Line | Current Text |
 |------|------|-------------|
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Tools/xpn_tide_tables_pack_builder.py` | 294 | `"[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page"` |
-| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/packs/tide_tables/tide_tables_spec.json` | 734 | `"[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page"` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Tools/xpn_tide_tables_pack_builder.py` | 294 | `"[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page"` |
+| `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/packs/tide_tables/tide_tables_spec.json` | 734 | `"[ ] Update patreon.com/xoox bio link to point to TIDE TABLES landing page"` |
 
 ---
 
@@ -67,7 +67,7 @@ These carry the reminder that the URL is a placeholder. Update once real URL is 
 
 These contain `patreon.com` but reference third-party package authors, not XO_OX:
 
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Libs/JUCE/examples/Plugins/WebViewPluginDemoGUI/package-lock.json` — multiple entries for `patreon.com/feross`, `patreon.com/infusion`, `patreon.com/mdevils` (npm package author funding links, not XO_OX)
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Libs/JUCE/examples/Plugins/WebViewPluginDemoGUI/package-lock.json` — multiple entries for `patreon.com/feross`, `patreon.com/infusion`, `patreon.com/mdevils` (npm package author funding links, not XO_OX)
 
 ---
 
@@ -88,7 +88,7 @@ Files with generic mentions (not exhaustive — these are contextual references 
 - `xo-ox-claude-config/skills/ringleader/SKILL.md` — skill roster entry (no URL)
 - `xo-ox-claude-config/skills/launch-coordinator/SKILL.md` — launch checklist step (no URL)
 - `xo-ox-claude-config/skills/community/SKILL.md` — community funnel mention (no URL)
-- `xo-ox-claude-config/memory/skill-ecosystem.md` — "Patreon posts written in XOmnibus/patreon/" (path reference, no URL)
+- `xo-ox-claude-config/memory/skill-ecosystem.md` — "Patreon posts written in XOlokun/patreon/" (path reference, no URL)
 
 ---
 
@@ -101,7 +101,7 @@ patreon.com/xoox  →  patreon.com/REAL_HANDLE
 ```
 
 **Step 2 — Docs / Specs (cleanup pass):**
-Run a repo-wide find-and-replace for `patreon.com/xoox` → real URL across all `.md`, `.json`, `.py` files in XO_OX-XOmnibus (excluding `Libs/JUCE/`).
+Run a repo-wide find-and-replace for `patreon.com/xoox` → real URL across all `.md`, `.json`, `.py` files in XO_OX-XOlokun (excluding `Libs/JUCE/`).
 
 **Step 3 — Memory files:**
 Update both MEMORY.md files to remove the PENDING note and replace with the confirmed URL.

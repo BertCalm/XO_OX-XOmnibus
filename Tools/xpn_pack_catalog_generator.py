@@ -9,7 +9,7 @@ as marketing copy, documentation, and a producer reference guide.
 Scans a pack directory for:
   - expansion.json   — pack metadata
   - **/*.xpm         — MPC program files (Drum or Keygroup)
-  - **/*.xometa      — XOmnibus preset files
+  - **/*.xometa      — XOlokun preset files
 
 Catalog sections:
   1. Pack Header         name, version, description, author, tags
@@ -421,7 +421,7 @@ def generate_md(pack_dir: Path, expansion: dict, scan: dict) -> str:
         "",
         "### Performance Macros",
         "",
-        "XOmnibus programs expose four Q-Link macros:",
+        "XOlokun programs expose four Q-Link macros:",
         "",
         "| Macro     | Q-Link | Description                                    |",
         "| --------- | ------ | ---------------------------------------------- |",

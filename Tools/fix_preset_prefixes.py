@@ -112,7 +112,7 @@ def process_file(path: Path) -> tuple[bool, int]:
 
 
 def main():
-    preset_root = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus")
+    preset_root = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun")
     if not preset_root.exists():
         print(f"ERROR: Preset root not found: {preset_root}", file=sys.stderr)
         sys.exit(1)

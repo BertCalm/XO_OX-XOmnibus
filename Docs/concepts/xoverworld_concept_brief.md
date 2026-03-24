@@ -98,7 +98,7 @@ The glitch system creates unique coupling possibilities:
 |---------------|--------|
 | **External engine → XOverworld glitch amount** | Other engines' dynamics drive glitch intensity. ONSET kick hits increase glitch. ODYSSEY Climax triggers glitch cascade. |
 | **XOverworld glitch output → external engine** | Glitch events modulate other engines' parameters. A Missingno burst opens ODDOSCAR's filter. A Sprite Flicker gates OBESE's output. |
-| **Glitch as mod source** | The glitch event itself becomes a modulation source in XOmnibus's coupling matrix — `GlitchToFilter`, `GlitchToMorph`, `GlitchToPitch`. |
+| **Glitch as mod source** | The glitch event itself becomes a modulation source in XOlokun's coupling matrix — `GlitchToFilter`, `GlitchToMorph`, `GlitchToPitch`. |
 
 ### Glitch Design Philosophy
 
@@ -201,7 +201,7 @@ Each voice has a toggle: **MELODIC** or **PERC**
 
 XOverworld's engine panel includes a **theme selector** (dropdown or carousel) that swaps the accent color palette. Each theme is a subtle nod to an iconic character or console through color alone — no names, no logos, just the colors that anyone who grew up with these games will instantly recognize.
 
-The theme only changes the XOverworld panel's accent colors within the gallery frame. The XOmnibus shell (warm white walls, XO Gold macros) stays untouched — the gallery walls don't repaint for each exhibition, but the art inside changes.
+The theme only changes the XOverworld panel's accent colors within the gallery frame. The XOlokun shell (warm white walls, XO Gold macros) stays untouched — the gallery walls don't repaint for each exhibition, but the art inside changes.
 
 #### Theme Palettes
 
@@ -231,7 +231,7 @@ ow_colorTheme     enum (0-14)    Selects the active color palette
 
 - **UI behavior:** When the theme changes, the XOverworld panel's accent colors smoothly crossfade (200ms)
 - **Preset storage:** The selected theme is saved per-preset in `.xometa` — a "Kong Country" bass preset loads with brown/red/yellow, a "Blue Bomber" lead loads with blues
-- **Gallery rule:** The theme ONLY affects the XOverworld engine panel. The XOmnibus shell, other engine panels, coupling strip, and preset browser are unaffected. Each engine is its own exhibition — XOverworld's exhibition just has multiple rooms.
+- **Gallery rule:** The theme ONLY affects the XOverworld engine panel. The XOlokun shell, other engine panels, coupling strip, and preset browser are unaffected. Each engine is its own exhibition — XOverworld's exhibition just has multiple rooms.
 - **Default:** "CRT Phosphor" (Electric Green) — the engine's primary brand color for marketing and screenshots
 
 #### Why Per-Preset Themes Work
@@ -465,7 +465,7 @@ Research across NES, Genesis, and SNES eras identified these iconic soundtracks.
 
 **Franchise coverage:** 36 franchises/games represented across 120 presets.
 
-**Flux mood impact:** XOverworld alone contributes 30 Flux presets — nearly matching the entire existing XOmnibus Flux count (36). This engine fills the gallery's weakest category.
+**Flux mood impact:** XOverworld alone contributes 30 Flux presets — nearly matching the entire existing XOlokun Flux count (36). This engine fills the gallery's weakest category.
 
 **Visual identity impact:** 15 color themes give producers a visual connection to the franchise/era they're working in. The theme is saved per-preset, so "Bare Knuckle" loads with Hedgehog blue and "Coral Drift" loads with Kong Country brown/red/yellow.
 

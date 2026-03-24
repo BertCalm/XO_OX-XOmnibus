@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_fleet_health_dashboard.py
-Combined fleet health dashboard for XOmnibus.
+Combined fleet health dashboard for XOlokun.
 
 Performs three analyses in a single pass:
   1. Coupling coverage — scans Entangled presets for engine pair coverage
@@ -28,7 +28,7 @@ from itertools import combinations
 # ─── Configuration ────────────────────────────────────────────────────────────
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRESETS_ROOT = os.path.join(REPO_ROOT, "Presets", "XOmnibus")
+PRESETS_ROOT = os.path.join(REPO_ROOT, "Presets", "XOlokun")
 ENTANGLED_DIR = os.path.join(PRESETS_ROOT, "Entangled")
 SNAPSHOT_PATH = os.path.join(REPO_ROOT, "Docs", "snapshots", "fleet_health_latest.json")
 

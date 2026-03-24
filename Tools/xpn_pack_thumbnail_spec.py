@@ -15,7 +15,7 @@ import sys
 from datetime import date
 
 # ---------------------------------------------------------------------------
-# Engine accent color registry (canonical — matches XOmnibus CLAUDE.md table)
+# Engine accent color registry (canonical — matches XOlokun CLAUDE.md table)
 # ---------------------------------------------------------------------------
 ENGINE_COLORS = {
     "OBLONG":     "#FF6B6B",

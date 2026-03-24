@@ -8,7 +8,7 @@ ODYSSEY × ORGANON/OUROBOROS/OBSIDIAN/ORIGAMI/ORACLE: 5 pairs × 6 = 30 presets
 OBLONG  × ORGANON/OUROBOROS/ORIGAMI/ORACLE/OBSCURA:  5 pairs × 6 = 30 presets
 OBESE   × ORGANON/OUROBOROS/ORIGAMI/ORACLE/OBSCURA:  5 pairs × 6 = 30 presets
 
-Total: 90 presets written to Presets/XOmnibus/Entangled/
+Total: 90 presets written to Presets/XOlokun/Entangled/
 Skips files that already exist.
 """
 
@@ -20,7 +20,7 @@ from datetime import date
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT  = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 
 TODAY   = str(date.today())
 VERSION = "1.0"

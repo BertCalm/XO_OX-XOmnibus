@@ -1,5 +1,5 @@
 /*
-    XOmnibus XPN Export Tests
+    XOlokun XPN Export Tests
     ==========================
     Tests for XOriginate: XPM rule enforcement, WAV format, filename
     sanitization, note strategies, velocity layers, batch validation,
@@ -21,7 +21,7 @@
 #include <cmath>
 #include <set>
 
-using namespace xomnibus;
+using namespace xolokun;
 
 //==============================================================================
 // Test infrastructure
@@ -71,7 +71,7 @@ static PresetData makeTestPreset(const char* name, const char* engine = "Oddfeli
 static juce::File getTestOutputDir(const char* testName)
 {
     auto dir = juce::File::getSpecialLocation(juce::File::tempDirectory)
-                   .getChildFile("xomnibus_export_tests")
+                   .getChildFile("xolokun_export_tests")
                    .getChildFile(testName);
     dir.deleteRecursively();
     dir.createDirectory();

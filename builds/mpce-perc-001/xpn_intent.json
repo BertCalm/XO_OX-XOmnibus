@@ -188,7 +188,7 @@
     "fallback_description": "Standard version included for non-MPCe hardware."
   },
   "provenance": {
-    "xomnibus_version": "1.0",
+    "xolokun_version": "1.0",
     "source_presets": [],
     "quad_builder_version": "1.0",
     "render_spec": "",

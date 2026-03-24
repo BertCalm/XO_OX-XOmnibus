@@ -1,6 +1,6 @@
 ﻿XOMNIBUS: MASTER DSP ARCHITECTURE & DEVELOPMENT SEQUENCE
 Role: Senior DSP Engineer and C++ Audio Developer.
-Objective: Implement 10 radically experimental, highly optimized synthesis engines for the XOmnibus platform.
+Objective: Implement 10 radically experimental, highly optimized synthesis engines for the XOlokun platform.
 Strict DSP Rules:
 1. Zero heap allocation on the audio thread.
 2. Zero blocking I/O or mutex locks on the audio thread.
@@ -8,7 +8,7 @@ Strict DSP Rules:
 4. Parameters must have stable, persistent IDs (0-7 for core params, plus 4 Macros).
 5. All engines communicate via the MegaCouplingMatrix (passing audio/control-rate floats) and receive input from a continuous XYZ PlaySurface.
 PART 1: THE SEQUENCED DEVELOPMENT ROADMAP
-PHASE 0: The XOmnibus Foundation API
+PHASE 0: The XOlokun Foundation API
 Before writing a single oscillator, establish the rigid C++/Rust/DSP framework that all engines will plug into.
 * Audio-Thread Safety: Strict rules—no heap allocation, no locks, no blocking I/O.
 * MegaCouplingMatrix API: Define the struct/interface for the coupling buses (passing floats at control or audio rate between engines).
@@ -140,7 +140,7 @@ Parameter Taxonomy (Core 8)
    6. Sub-Register (Octave): Secondary tap from the grid running at exactly half the clock speed.
    7. Wasp Cutoff: Unstable, plastic-sounding low-pass filter response.
    8. CMOS Drive: Pushes 1-bit pulses hard against virtual rails for analog distortion.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Automaton Rule | MOVEMENT: Circuit Bend | COUPLING: Grid Injection | SPACE: Register Width
    * Accepts: BIT_FLIP_INJECTION (Audio digitized and written into cellular grid).
    * Emits: LOGIC_GATE (Outputs 1-bit state as raw generative control signal).
@@ -167,7 +167,7 @@ Parameter Taxonomy (Core 8)
    6. Asymmetry: Differentiates harmonic distortion for playing "early" vs "late".
    7. Inertia: Adds heavy trailing sub-oscillator that drags behind main phase.
    8. Percussive Snap: High-frequency energy burst exactly when phase aligns with Clave.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Slingshot Tension | MOVEMENT: Tumbao | COUPLING: Attractor Pull | SPACE: Inertia
    * Accepts: TEMPORAL_DISPLACEMENT (Audio knocks XOBLICUA off Clave axis, forcing compensatory phase-distortion).
    * Emits: MICRO_TIMING (Broadcasts elastic time-grid, forcing other engines to swing).
@@ -191,7 +191,7 @@ Parameter Taxonomy (Core 8)
    6. Formant Anchor: Shifts amplitude peak of partial series up or down.
    7. Neural Decay: Envelope specifically for lower partials to fade illusion smoothly.
    8. Blur: Audio-rate jitter on partial phases.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Tartini Drive | MOVEMENT: Inharmonicity LFO | COUPLING: Phantom Root Emission | SPACE: Formant Anchor
    * Accepts: CROSS_FM (Audio FM-modulates the upper partials, tearing apart harmonic relationships).
    * Emits: PHANTOM_PITCH (Anchors other engines to a root note that XOSCILLUM isn't actually playing).
@@ -217,7 +217,7 @@ Parameter Taxonomy (Core 8)
    6. Bioluminescence: Injects high-frequency noise spikes during mathematical stress.
    7. Respiration: Depth of inherent breathing/heaving.
    8. Atrophy: Biological decay rate (Release).
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Lunar Phase | MOVEMENT: Respiration | COUPLING: Tidal Lock | SPACE: Bioluminescence
    * Accepts: ENVIRONMENTAL_STRESS (External modulation acts as invasive species, scattering oscillators).
    * Emits: BIOLOGICAL_CLOCK (Broadcasts nonlinear breathing heartbeat to other engines).
@@ -243,7 +243,7 @@ Parameter Taxonomy (Core 8)
    6. Friction: Aggressiveness of Bowed Exciter (scraping vs smooth).
    7. Resonator Material: Damping calculation (metallic wire to nylon).
    8. Spectral Bleed: Allows dissonant excitation outside the scale.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Friction | MOVEMENT: Gamak Mass | COUPLING: Pitch Gravity | SPACE: Sympathetic Width
    * Accepts: KINETIC_IMPACT (Transients crash into strings, making drone bloom).
    * Emits: PITCH_GRAVITY (Forces other engines into its microtonal orbit).
@@ -267,7 +267,7 @@ Parameter Taxonomy (Core 8)
    6. Buzz Threshold: Amplitude required for waves to trigger nonlinear distortion.
    7. Mirliton Timbre: Morphs buzz from woody rattle to metallic tear.
    8. Edge Damping: Softens walls of membrane.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Mirliton Timbre | MOVEMENT: Membrane Topology | COUPLING: Surface Tension | SPACE: Wave Friction
    * Accepts: TENSION_MODULATION (External audio literally stretches the drum skin, dropping pitch and time).
    * Emits: INTERFERENCE_SPIKE (Broadcasts exact moments of wave collisions).
@@ -293,7 +293,7 @@ Parameter Taxonomy (Core 8)
    6. Grainger Inertia: Heavy, pendulum-like portamento.
    7. Etching Density: Limits light penetration (ghostly textures).
    8. Phosphor Exposure: Afterglow/Release envelope of the glass.
-XOmnibus Integration
+XOlokun Integration
    * Macros: CHARACTER: Celluloid Wear | MOVEMENT: Plate Speed | COUPLING: Prismatic Scatter | SPACE: Phosphor Exposure
    * Accepts: ILLUMINATION (External audio acts as a strobe light flashing behind the ANS plate).
    * Emits: OPTICAL_FOCUS (Broadcasts aperture width to external filters).
@@ -321,7 +321,7 @@ Parameter Taxonomy (Core 8)
    6. Turbulence Rate: Pitch/frequency of chaotic vortices.
    7. Cavitation: Probability of injecting 1-sample Dirac impulses.
    8. Chamber Size: Lattice delay time (defines fundamental pitch).
-XOmnibus Integration
+XOlokun Integration
       * Macros: CHARACTER: Shear Thickening | MOVEMENT: Flow Pressure | COUPLING: Aperture Width | SPACE: Viscosity
       * Accepts: HYDRODYNAMIC_PRESSURE (External audio blasts into pump, forcing immediate cavitation).
       * Emits: TURBULENCE_STATE (Broadcasts Reynolds breakdown).
@@ -423,7 +423,7 @@ Parameter ID
 	Linear
 	Audio
 	Dive. The Mandelbrot-to-Julia zoom parameter. 0.0: pure Mandelbrot —    free,   . 1.0: pure Julia —    locked,    is the performance parameter navigating   . Emitted as DIVE_DEPTH coupling signal to the MegaCouplingMatrix.
-	XOmnibus Integration
+	XOlokun Integration
 A. Macro Mapping
          * CHARACTER: XOB_P01 + XOB_P03 (Charfield sweeps    along the Mandelbrot cardioid from the resolved stable interior through the period-doubling cascade to the fractal boundary. Degree steps between integer polynomial universes.)
          * MOVEMENT: XOB_P05 + XOB_P06 (Drift Rate and Drift Radius together define the engine's autonomous temporal behavior. The drift path is itself a meta-orbit, giving the movement fractal self-similarity.)
@@ -440,7 +440,7 @@ B. MegaCouplingMatrix Compatibility
             * SHEET_INDEX — Current SHEET value (0–3) as a discrete mod source.
                * Accepts:
                * PHANTOM_PITCH — From XOscillum. XObsession uses this to tune its Temporal Scale so the orbit period aligns with a pitch neither engine physically emits.
-               * PITCH_MOD — Standard XOmnibus pitch modulation. Shifts Temporal Scale.
+               * PITCH_MOD — Standard XOlokun pitch modulation. Shifts Temporal Scale.
                * AMPLITUDE_FIELD — Applied to the Lyapunov-weighted mix gain pre-output.
                * CHAOS_SIGNAL — Perturbs the current    position.
                * SPECTRAL_PRESSURE — From XOscillum's spectral mask output. Applies frequency-domain emphasis to XObsession's summed output.
@@ -497,7 +497,7 @@ Parameter Taxonomy (Core 8)
                                     6. Eddy Currents: Resonance / Damping (parasitic electrical metallic damping).
                                     7. Flux Feedback: Self-Oscillation multiplier.
                                     8. Air Gap: High-Pass / Choke (distance between rotor and pickup).
-XOmnibus Integration
+XOlokun Integration
                                     * Macros: CHARACTER: Core Material | MOVEMENT: Air Gap | COUPLING: Flux Density | SPACE: Rotor Mass
                                     * Accepts: DC_BIAS_INJECTION (External audio magnetizes core in one direction for asymmetrical clipping).
                                     * Emits: FLUX_LEAKAGE (Broadcasts Barkhausen noise spikes).

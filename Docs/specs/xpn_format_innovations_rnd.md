@@ -287,7 +287,7 @@ For drum packs, the synthesis simulation can be condensed to 4 layers: granular 
 
 ### Implementation Strategy
 
-Each synthesis method produces a sample via XOmnibus offline render (using `xpn_render_spec.py` to define the render parameters per voice). The eight renders are then assembled into a single XPM instrument block via `xpn_keygroup_export.py`'s 8-velocity-layer mode.
+Each synthesis method produces a sample via XOlokun offline render (using `xpn_render_spec.py` to define the render parameters per voice). The eight renders are then assembled into a single XPM instrument block via `xpn_keygroup_export.py`'s 8-velocity-layer mode.
 
 **New capability needed in `xpn_render_spec.py`:** Support for specifying synthesis method per velocity layer in the render spec JSON, in addition to the existing per-preset render spec. Estimated 1-day addition.
 

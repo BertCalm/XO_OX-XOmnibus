@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Generate Organon + Ouroboros coupling presets for XOmnibus.
+"""Generate Organon + Ouroboros coupling presets for XOlokun.
 
 Covers:
   - ORGANON + OUROBOROS marquee pair: 6 presets
   - ORGANON pairs (8 partners × 3):   24 presets
   - OUROBOROS pairs (8 partners × 3): 24 presets
-  Total: 54 presets → Presets/XOmnibus/Entangled/
+  Total: 54 presets → Presets/XOlokun/Entangled/
 """
 
 import argparse
@@ -358,14 +358,14 @@ def safe_filename(name: str, eng_a: str = "", eng_b: str = "") -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate Organon + Ouroboros coupling presets for XOmnibus."
+        description="Generate Organon + Ouroboros coupling presets for XOlokun."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = str(repo_root / "Presets" / "XOmnibus" / "Entangled")
+    default_out = str(repo_root / "Presets" / "XOlokun" / "Entangled")
 
     parser.add_argument(
         "--output-dir", default=default_out,
-        help="Directory to write .xometa files (default: Presets/XOmnibus/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
     )
     parser.add_argument(
         "--dry-run", action="store_true",

@@ -118,7 +118,7 @@ public:
                 {
                     float decayPos = (callEnvSample - attackSamp) / decaySamp;
                     // SRO: fastExp replaces std::exp (per-sample envelope decay)
-                    envAmp = xomnibus::fastExp(-5.0f * decayPos);
+                    envAmp = xolokun::fastExp(-5.0f * decayPos);
                     if (envAmp < 0.0001f)
                         callEnvSample = -1.0f; // call finished
                 }
@@ -136,9 +136,9 @@ public:
                                  ? std::clamp(callEnvSample / totalSamp, 0.0f, 1.0f)
                                  : 0.0f;
             // SRO: fastSin + fastPow2 replace std:: trig/pow (per-sample)
-            float sweep    = xomnibus::fastSin(envPhaseNorm * juce::MathConstants<float>::pi)
+            float sweep    = xolokun::fastSin(envPhaseNorm * juce::MathConstants<float>::pi)
                              * biome.emergentPitchRange;
-            float sweepMul = xomnibus::fastPow2(sweep);
+            float sweepMul = xolokun::fastPow2(sweep);
 
             // 3 SVF bandpass formant filters in parallel
             float sample = formants[0].process(noise, f1 * sweepMul, q, sr)
@@ -157,7 +157,7 @@ public:
         // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
         float rmsArg = sumSq / static_cast<float>(numSamples);
         lastAmplitude = (rmsArg > 1e-10f)
-            ? xomnibus::fastPow2(0.5f * xomnibus::fastLog2(rmsArg))
+            ? xolokun::fastPow2(0.5f * xolokun::fastLog2(rmsArg))
             : 0.0f;
         lastPattern   = std::clamp(callsFired * 4.0f, 0.0f, 1.0f); // calls/block → density
         return lastAmplitude;
@@ -179,7 +179,7 @@ private:
             // freq coefficient: approximate, clamp well below Nyquist
             // SRO: fastSin replaces std::sin (per-sample SVF coefficient)
             float f = std::min(1.99f,
-                               2.0f * xomnibus::fastSin(juce::MathConstants<float>::pi
+                               2.0f * xolokun::fastSin(juce::MathConstants<float>::pi
                                                * std::min(freq, sr * 0.45f) / sr));
             float qInv = 1.0f / std::max(0.5f, q);
             float h    = x - lp - qInv * bp;
@@ -187,7 +187,7 @@ private:
             lp         = f * bp + lp;
             // Soft-saturate BP output to prevent numerical blowup at high Q
             // SRO: fastTanh replaces std::tanh (per-sample saturation)
-            bp         = xomnibus::fastTanh(bp);
+            bp         = xolokun::fastTanh(bp);
             return bp;
         }
 

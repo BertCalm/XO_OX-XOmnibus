@@ -8,7 +8,7 @@
 #include <algorithm>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // BakedCouplingState — Snapshot of the coupling performance overlay.
@@ -497,7 +497,7 @@ public:
     {
         auto appDir = juce::File::getSpecialLocation(
             juce::File::userApplicationDataDirectory)
-            .getChildFile("XOmnibus")
+            .getChildFile("XOlokun")
             .getChildFile("CouplingPresets");
 
         if (!appDir.isDirectory())
@@ -586,4 +586,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

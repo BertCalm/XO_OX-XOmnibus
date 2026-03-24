@@ -132,6 +132,6 @@ The presets will demonstrate correctly once the D006 fix lands.
 ## Next Steps
 
 1. **Fix D006** — Wire MIDI aftertouch and mod wheel data into `ModSources` in `PluginProcessor`. The presets are ready; the MIDI plumbing is not.
-2. **Move to XOmnibus Aether mood folder** — Once validated, copy relevant presets to `Presets/XOmnibus/Aether/` for inclusion in the main factory library.
+2. **Move to XOlokun Aether mood folder** — Once validated, copy relevant presets to `Presets/XOlokun/Aether/` for inclusion in the main factory library.
 3. **Seance verification** — Play all 10 presets on an aftertouch keyboard, confirm bloom timing and sonic identity match descriptions.
-4. **Gallery demo** — Apotheosis should be the default-loaded preset for ODYSSEY in any public demo of XOmnibus V007+.
+4. **Gallery demo** — Apotheosis should be the default-loaded preset for ODYSSEY in any public demo of XOlokun V007+.

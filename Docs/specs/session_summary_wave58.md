@@ -1,6 +1,6 @@
 # Session Summary — Wave 58 Snapshot
 **Date**: 2026-03-16
-**Project**: XO_OX XOmnibus
+**Project**: XO_OX XOlokun
 **Status**: Auto-generated session snapshot after wave 57 R&D
 
 ---
@@ -42,7 +42,7 @@
 
 **Concept engines**: 4 V1 engines (OSTINATO/OPENSKY/OCEANDEEP/OUIE) have zero presets. DSP builds are required before any preset work can begin.
 
-**XPN↔XOmnibus bridge**: `params_sidecar.json` is the buildable path for bridging XPN export data into XOmnibus. Full hardware plugin install requires an Akai OEM deal — not a near-term option.
+**XPN↔XOlokun bridge**: `params_sidecar.json` is the buildable path for bridging XPN export data into XOlokun. Full hardware plugin install requires an Akai OEM deal — not a near-term option.
 
 **Emotion wheel**: Fleet skews Trust (35%), Anticipation (25%), Sadness (20%). Joy and Surprise are underrepresented — worth targeting in coupling preset expansion.
 

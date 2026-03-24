@@ -1,4 +1,4 @@
-# XOceanic — XOmnibus Integration Spec
+# XOceanic — XOlokun Integration Spec
 
 **Engine:** OCEANIC
 **Source instrument:** XOceanic
@@ -13,7 +13,7 @@
 |-------|-------|
 | Gallery code | OCEANIC |
 | Engine ID (adapter) | `"Oceanic"` |
-| XOmnibus short name | OCEANIC |
+| XOlokun short name | OCEANIC |
 | Accent color | Phosphorescent Teal `#00B4A0` |
 | Parameter prefix | `oceanic_` |
 | Max voices | 1 (paraphonic — one shared voice path) |

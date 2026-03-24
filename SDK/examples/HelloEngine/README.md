@@ -1,6 +1,6 @@
-# Hello Engine — XOmnibus SDK Example
+# Hello Engine — XOlokun SDK Example
 
-A complete, minimal XOmnibus engine demonstrating every integration contract.
+A complete, minimal XOlokun engine demonstrating every integration contract.
 Start here before building your own engine.
 
 ---
@@ -36,7 +36,7 @@ SDK/examples/HelloEngine/
 ### Prerequisites
 
 - C++17 compiler (Clang 12+, GCC 10+, MSVC 2019+)
-- XOmnibus SDK headers in your include path (`SDK/include/`)
+- XOlokun SDK headers in your include path (`SDK/include/`)
 - No JUCE required for SDK engines
 
 ### macOS / Linux — shared library
@@ -73,7 +73,7 @@ clang++ -std=c++17 -I SDK/include \
 cl /std:c++17 /I SDK\include /LD SDK\examples\HelloEngine\HelloEngine.cpp
 ```
 
-### Inside XOmnibus (as a built-in engine)
+### Inside XOlokun (as a built-in engine)
 
 Add to `Source/Core/EngineRegistry.h`:
 
@@ -110,7 +110,7 @@ All checks must pass before submitting to the XO_OX engine registry.
 
 ## Doctrine Checklist
 
-Every XOmnibus engine must satisfy all 6 Doctrines before shipping.
+Every XOlokun engine must satisfy all 6 Doctrines before shipping.
 HelloEngine satisfies them as follows:
 
 | ID | Doctrine | HelloEngine Implementation |
@@ -126,7 +126,7 @@ HelloEngine satisfies them as follows:
 
 ## Coupling Integration
 
-HelloEngine participates in the XOmnibus coupling matrix in two roles:
+HelloEngine participates in the XOlokun coupling matrix in two roles:
 
 ### As a sender (any engine can listen to HelloEngine)
 
@@ -155,7 +155,7 @@ To create a new engine from HelloEngine:
 3. Change parameter prefix `hlo_` → `your_` (freeze the prefix before release — never rename)
 4. Replace DSP: oscillator, filter, envelope in `HelloVoice::tick()`
 5. Run `python3 SDK/tools/validate_engine.py YourEngine.h` — all checks must pass
-6. Write at least 10 presets in `.xometa` format (`Presets/XOmnibus/{mood}/`)
+6. Write at least 10 presets in `.xometa` format (`Presets/XOlokun/{mood}/`)
 
 ### Naming rules
 
@@ -168,7 +168,7 @@ To create a new engine from HelloEngine:
 ## Frequently Asked Questions
 
 **Q: Why is all DSP in a `.h` file?**
-A: XOmnibus architecture rule: "All DSP lives inline in `.h` headers; `.cpp` files are one-line stubs."
+A: XOlokun architecture rule: "All DSP lives inline in `.h` headers; `.cpp` files are one-line stubs."
 This makes engines portable and testable in isolation without a build system.
 
 **Q: Why does the filter use `exp(-2*PI*fc/sr)` instead of `w/(w+1)`?**
@@ -180,7 +180,7 @@ A: Denormal floating-point numbers (values ~1e-40) can cause 100x CPU spikes on 
 They occur naturally in decaying feedback paths. Flushing keeps the filter CPU-stable.
 
 **Q: Can I allocate memory inside `renderBlock()`?**
-A: No. This violates the XOmnibus Architecture Rule: "Never allocate memory on the audio thread."
+A: No. This violates the XOlokun Architecture Rule: "Never allocate memory on the audio thread."
 Allocate all buffers in `prepare()` and resize/clear them there.
 
 **Q: What is the SilenceGate?**
@@ -192,10 +192,10 @@ See `Source/Core/SynthEngine.h` for the JUCE-native version with `SilenceGate`.
 
 ## See Also
 
-- `SDK/include/xomnibus/SynthEngine.h` — full interface definition
-- `SDK/include/xomnibus/CouplingTypes.h` — all 14 coupling types
-- `SDK/include/xomnibus/EngineModule.h` — `XOMNIBUS_EXPORT_ENGINE` macro
+- `SDK/include/xolokun/SynthEngine.h` — full interface definition
+- `SDK/include/xolokun/CouplingTypes.h` — all 14 coupling types
+- `SDK/include/xolokun/EngineModule.h` — `XOLOKUN_EXPORT_ENGINE` macro
 - `SDK/tools/validate_engine.py` — doctrine validation script
 - `SDK/templates/MinimalEngine/MinimalEngine.h` — bare-minimum template (1 param, 1 voice)
 - `Source/Core/SynthEngine.h` — JUCE-native interface (for built-in engines)
-- `Docs/xomnibus_new_engine_process.md` — full new-engine process guide
+- `Docs/xolokun_new_engine_process.md` — full new-engine process guide

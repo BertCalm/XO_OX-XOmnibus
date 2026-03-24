@@ -1,8 +1,8 @@
-# XOmnibus
+# XOlokun
 
 **A free, open-source multi-engine synthesizer platform by XO_OX Designs.**
 
-71 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
+73 synthesis engines in one plugin. Each engine is a distinct instrument with its own DSP architecture, sonic character, and aquatic creature identity. Engines couple, collide, and mutate into sounds impossible with any single synth.
 
 ## Engines
 
@@ -54,11 +54,13 @@
 | Oware | Tuned percussion — material continuum + mallet physics + sympathetic resonance | Sunken Akan Board |
 | Opera | Additive-vocal Kuramoto synchronicity synthesis + autonomous Conductor arc | Bioluminescent Siren |
 | Offering | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city modes) | Mantis Shrimp |
+| Oxytocin | Circuit-modeling love-triangle synth (TriangularCoupling) | Praya dubia Siphonophore |
+| Outlook | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo) | Horizon Drifter |
 
 ## Features
 
 - **4-slot engine gallery** — load any combination of engines
-- **Cross-engine coupling** — 14 coupling types (including KnotTopology) let engines modulate each other
+- **Cross-engine coupling** — 15 coupling types (including KnotTopology and TriangularCoupling) let engines modulate each other
 - **~22,000+ factory presets** across 8 mood categories
 - **PlaySurface** — unified 4-zone playing interface (Pad, Fretless, Drum modes)
 - **6D Sonic DNA** — every preset tagged with brightness, warmth, movement, density, space, aggression
@@ -85,15 +87,15 @@ cmake --build build
 
 ## Presets
 
-Factory presets live in `Presets/XOmnibus/` organized by mood:
+Factory presets live in `Presets/XOlokun/` organized by mood:
 Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged.
 
-Preset format is `.xometa` (JSON). See `Docs/xomnibus_master_specification.md` for the schema.
+Preset format is `.xometa` (JSON). See `Docs/xolokun_master_specification.md` for the schema.
 
 ## Documentation
 
-- `Docs/xomnibus_master_specification.md` — the single source of truth
-- `Docs/xomnibus_sound_design_guides.md` — per-engine sound design guides
+- `Docs/xolokun_master_specification.md` — the single source of truth
+- `Docs/xolokun_sound_design_guides.md` — per-engine sound design guides
 - `scripture/the-scripture.md` — Guru Bin's accumulated DSP wisdom (Book of Bin)
 - `Docs/seance_cross_reference.md` — ghost council verdicts for all engines
 
@@ -103,6 +105,6 @@ Preset format is `.xometa` (JSON). See `Docs/xomnibus_master_specification.md` f
 
 ## About XO_OX Designs
 
-XO_OX builds instruments where character comes first. Every engine is designed as a standalone instrument, then integrated into XOmnibus where it can couple with others to create sounds impossible alone.
+XO_OX builds instruments where character comes first. Every engine is designed as a standalone instrument, then integrated into XOlokun where it can couple with others to create sounds impossible alone.
 
 Website: [XO-OX.org](https://xo-ox.org)

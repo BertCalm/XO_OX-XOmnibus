@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OBLONG + ONSET coupling expansion presets for XOmnibus.
+"""Generate OBLONG + ONSET coupling expansion presets for XOlokun.
 
 Covers the rhythm backbone marquee pair plus new partner pairings for both
 OBLONG (bob_ prefix, Amber) and ONSET (perc_ prefix, Electric Blue).
@@ -556,7 +556,7 @@ def build_all_presets(count_per_pair: int) -> list:
 # ---------------------------------------------------------------------------
 def main():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser = argparse.ArgumentParser(
         description="Generate OBLONG + ONSET coupling expansion presets."
@@ -564,7 +564,7 @@ def main():
     parser.add_argument(
         "--output-dir",
         default=str(default_output),
-        help="Directory to write .xometa files (default: Presets/XOmnibus/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
     )
     parser.add_argument(
         "--dry-run",

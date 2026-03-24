@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OVERWORLD + OBLONG coupling expansion presets for XOmnibus.
+"""Generate OVERWORLD + OBLONG coupling expansion presets for XOlokun.
 
 Covers:
   - OVERWORLD × OBLONG marquee (4 presets)
@@ -321,7 +321,7 @@ def generate_all_specs(count: int) -> list[dict]:
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser = argparse.ArgumentParser(
         description="Generate OVERWORLD + OBLONG coupling expansion presets."

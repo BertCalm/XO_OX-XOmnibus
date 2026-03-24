@@ -12,7 +12,7 @@
     },
     "project": {
       "type": "string",
-      "description": "Repository or project name (e.g., 'XOmnibus', 'OddfeliX')"
+      "description": "Repository or project name (e.g., 'XOlokun', 'OddfeliX')"
     },
     "project_type": {
       "type": "string",

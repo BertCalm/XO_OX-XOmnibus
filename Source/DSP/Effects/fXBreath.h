@@ -5,7 +5,7 @@
 #include "../CytomicSVF.h"
 #include "../ParameterSmoother.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXBreath — Membrane Collection organic air texture.
@@ -158,4 +158,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

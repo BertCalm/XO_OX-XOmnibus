@@ -51,7 +51,7 @@ Scan for:
 Build and run a diagnostic pass:
 
 ```bash
-cmake --build build --target XOmnibusTests
+cmake --build build --target XOlokunTests
 ```
 
 For the target engine:

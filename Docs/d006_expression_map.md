@@ -1,4 +1,4 @@
-# D006 Expression Map — XOmnibus Fleet Audit
+# D006 Expression Map — XOlokun Fleet Audit
 *Generated: 2026-03-14 | Auditor: Expression Auditor, Round 4 Prism Sweep*
 
 Doctrine D006: "Expression Input Is Not Optional."
@@ -85,7 +85,7 @@ The module handles smoothing internally. The engine does not need to manage smoo
 ### What would adding aftertouch to a standard engine require?
 ```
 // In engine class declaration:
-xomnibus::PolyAftertouch aftertouch;
+xolokun::PolyAftertouch aftertouch;
 
 // In prepare():
 aftertouch.prepare(sampleRate);

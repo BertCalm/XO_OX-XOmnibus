@@ -8,8 +8,8 @@
 
 ## Summary
 
-- **Main target (`XOmnibus`):** PASS — all 22 engine `.cpp` files compiled; `libXOmnibus_SharedCode.a` linked at step 41/42 with 0 errors.
-- **Test target (`XOmnibusTests`):** FAIL — 4 errors in `XPNExportTests.cpp`, all pre-existing and unrelated to Rounds 3–7.
+- **Main target (`XOlokun`):** PASS — all 22 engine `.cpp` files compiled; `libXOlokun_SharedCode.a` linked at step 41/42 with 0 errors.
+- **Test target (`XOlokunTests`):** FAIL — 4 errors in `XPNExportTests.cpp`, all pre-existing and unrelated to Rounds 3–7.
 - **No duplicate member declarations** introduced by Rounds 3–7.
 - **No missing includes** introduced by Rounds 3–7.
 - **AudioRingBuffer.h** is well-formed with proper `#pragma once` guard.
@@ -26,7 +26,7 @@ build/
   cmake_install.cmake
   CMakeCache.txt
   CMakeFiles/
-  XOmnibus_artefacts/
+  XOlokun_artefacts/
 ```
 
 ---
@@ -56,7 +56,7 @@ These are **different identifiers**. No actual duplicate member declaration.
 **Status:** New untracked file added in Round 7E.
 
 - Has `#pragma once` on line 1 — correct.
-- Wrapped in `namespace xomnibus { }` — correct.
+- Wrapped in `namespace xolokun { }` — correct.
 - `AudioToBuffer` enum added to `Source/Core/SynthEngine.h` line 22 — confirmed.
 - `MegaCouplingMatrix.h` has `couplingBufferR` scratch buffer and `processAudioRoute()` stub — confirmed.
 - `AudioRingBuffer.h` is referenced in comments only; actual `#include` is deferred to Phase 2 OpalEngine integration per design doc (`Docs/xopal_phase1_architecture.md §15.4`).
@@ -68,8 +68,8 @@ These are **different identifiers**. No actual duplicate member declaration.
 ### Main target
 
 ```
-cmake --build build --target XOmnibus
-[41/42] Linking CXX static library XOmnibus_artefacts/Release/libXOmnibus_SharedCode.a
+cmake --build build --target XOlokun
+[41/42] Linking CXX static library XOlokun_artefacts/Release/libXOlokun_SharedCode.a
 ```
 
 All 22 engine CPP files compiled successfully:
@@ -82,10 +82,10 @@ All 22 engine CPP files compiled successfully:
 **Warnings (pre-existing, not introduced by Rounds 3–7):**
 
 1. `MasterFXSequencer.h:203` — `implicit conversion from 'float' to 'int' changes value from 0.001 to 0` — clamp() arguments. Pre-existing.
-2. `XOmnibusEditor.h:129–133` — `juce::Font(...)` constructor deprecated, use `FontOptions`. Pre-existing JUCE 8 migration item.
+2. `XOlokunEditor.h:129–133` — `juce::Font(...)` constructor deprecated, use `FontOptions`. Pre-existing JUCE 8 migration item.
 3. `juce_gui_basics.cpp:61` — `JUCE_DISPLAY_SPLASH_SCREEN is ignored`. JUCE housekeeping, harmless.
 
-### Test target (XOmnibusTests)
+### Test target (XOlokunTests)
 
 **FAILED:** `Tests/ExportTests/XPNExportTests.cpp.o`
 
@@ -142,7 +142,7 @@ All 10 aftertouch engines include `../../Core/PolyAftertouch.h` and declare `Pol
 |---|---|---|---|
 | PRE-EXISTING | `Source/Export/XPNExporter.h:399,460` | `juce::StringArray::empty()` should be `.isEmpty()` | Deferred — not introduced by Rounds 3–7 |
 | PRE-EXISTING | `Source/Export/XPNExporter.h:633–634` | `juce::WavAudioFormat` / `juce::AudioFormatWriter` — `juce_audio_formats` module not available in test config | Deferred |
-| PRE-EXISTING | `Source/UI/XOmnibusEditor.h:129–133` | Deprecated `juce::Font(name, size, style)` constructor | Deferred — JUCE 8 FontOptions migration |
+| PRE-EXISTING | `Source/UI/XOlokunEditor.h:129–133` | Deprecated `juce::Font(name, size, style)` constructor | Deferred — JUCE 8 FontOptions migration |
 | PRE-EXISTING | `Source/Core/MasterFXSequencer.h:203` | Implicit float→int conversion warning | Deferred |
 
 **No issues introduced by Rounds 3–7.**
@@ -162,9 +162,9 @@ All 4 pre-existing errors in `Source/Export/XPNExporter.h` are now fixed.
 
 ### Fix 3 & 4: `juce::WavAudioFormat` / `juce::AudioFormatWriter` missing in test
 
-Root cause: `XOmnibusTests` linked `juce_audio_basics` but not `juce_audio_formats`. `WavAudioFormat` and `AudioFormatWriter` live in `juce_audio_formats`. The main `XOmnibus` target links `juce_audio_utils`, which transitively includes `juce_audio_formats`, so the main build was unaffected.
+Root cause: `XOlokunTests` linked `juce_audio_basics` but not `juce_audio_formats`. `WavAudioFormat` and `AudioFormatWriter` live in `juce_audio_formats`. The main `XOlokun` target links `juce_audio_utils`, which transitively includes `juce_audio_formats`, so the main build was unaffected.
 
-Fix: Added `juce::juce_audio_formats` to `target_link_libraries(XOmnibusTests ...)` in `CMakeLists.txt` (line 192).
+Fix: Added `juce::juce_audio_formats` to `target_link_libraries(XOlokunTests ...)` in `CMakeLists.txt` (line 192).
 
 **Files changed:**
 - `Source/Export/XPNExporter.h` — 2 `.empty()` → `.isEmpty()` replacements
@@ -174,4 +174,4 @@ Fix: Added `juce::juce_audio_formats` to `target_link_libraries(XOmnibusTests ..
 
 ## Conclusion
 
-The main `XOmnibus` shared library target **builds and links successfully** with all 22 engine adapters compiled cleanly. None of the Rounds 3–7 changes introduced new errors, duplicate declarations, or include breakage. The one failing target (`XOmnibusTests`) had pre-existing errors that are now resolved.
+The main `XOlokun` shared library target **builds and links successfully** with all 22 engine adapters compiled cleanly. None of the Rounds 3–7 changes introduced new errors, duplicate declarations, or include breakage. The one failing target (`XOlokunTests`) had pre-existing errors that are now resolved.

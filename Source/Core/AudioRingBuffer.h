@@ -2,7 +2,7 @@
 #include <vector>
 #include <atomic>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // AudioRingBuffer — lock-free circular audio buffer for cross-engine streaming.
@@ -150,4 +150,4 @@ struct AudioRingBuffer {
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

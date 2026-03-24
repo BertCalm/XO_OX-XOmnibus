@@ -1,4 +1,4 @@
-# XOmnibus Build Sentinel Report — 2026-03-20
+# XOlokun Build Sentinel Report — 2026-03-20
 
 **Date:** 2026-03-20
 **Engineer:** Claude Code (Build Sentinel)
@@ -10,8 +10,8 @@
 
 ### Plugin Build (AU)
 - **cmake configure:** PASS — no errors, Rive/Oscar correctly reported as absent
-- **cmake --build (XOmnibus_AU):** PASS — 75 of 75 steps complete
-- **AU installed to:** `~/Library/Audio/Plug-Ins/Components/XOmnibus.component`
+- **cmake --build (XOlokun_AU):** PASS — 75 of 75 steps complete
+- **AU installed to:** `~/Library/Audio/Plug-Ins/Components/XOlokun.component`
 - **Warnings:** 2 minor JUCE-internal warnings (`juce_NSViewComponentPeer_mac.mm` unused variable) — pre-existing, not engine-related
 
 ### auval Result: PASS
@@ -32,7 +32,7 @@ MIDI, parameter setting, and ramped scheduling all passed.
 |-------|--------|
 | Engine header (`OrbweaveEngine.h`) | PRESENT — topological knot phase coupling, 4 strands |
 | `addParameters()` defined | PASS — `OrbweaveEngine::addParameters()` at line 629 |
-| `addParameters()` called in Processor | PASS — line 328 of `XOmnibusProcessor.cpp` |
+| `addParameters()` called in Processor | PASS — line 328 of `XOlokunProcessor.cpp` |
 | Factory registered in Processor | PASS — `registered_Orbweave` static registration (line 211) |
 | Prefix map in PresetManager | PASS — `"Orbweave" → "weave"` (line 131) |
 | Engine listed in PresetManager engine array | PASS — line 30 |
@@ -45,7 +45,7 @@ MIDI, parameter setting, and ramped scheduling all passed.
 |-------|--------|
 | Engine header (`OvertoneEngine.h`) | PRESENT — continued fraction spectral additive, 8 partials |
 | `addParameters()` defined | PASS — `OvertoneEngine::addParameters()` at line 379 |
-| `addParameters()` called in Processor | PASS — line 329 of `XOmnibusProcessor.cpp` |
+| `addParameters()` called in Processor | PASS — line 329 of `XOlokunProcessor.cpp` |
 | Factory registered in Processor | PASS — `registered_Overtone` static registration (line 216) |
 | Prefix map in PresetManager | PASS — `"Overtone" → "over"` (line 132) |
 | Engine listed in PresetManager engine array | PASS — line 30 |
@@ -59,7 +59,7 @@ MIDI, parameter setting, and ramped scheduling all passed.
 |-------|--------|
 | Engine header (`OrganismEngine.h`) | PRESENT — 16-cell 1D cellular automaton, Wolfram rules 0–255 |
 | `addParameters()` defined | PASS — `OrganismEngine::addParameters()` at line 327 |
-| `addParameters()` called in Processor | PASS — line 330 of `XOmnibusProcessor.cpp` |
+| `addParameters()` called in Processor | PASS — line 330 of `XOlokunProcessor.cpp` |
 | Factory registered in Processor | PASS — `registered_Organism` static registration (line 221) |
 | Prefix map in PresetManager | PASS — `"Organism" → "org"` (line 133) |
 | Engine listed in PresetManager engine array | PASS — line 30 |
@@ -71,7 +71,7 @@ MIDI, parameter setting, and ramped scheduling all passed.
 
 ## Test Suite Status: KNOWN FAILURES (pre-existing, not new-engine-related)
 
-The `XOmnibusTests` target has 2 pre-existing failures that do NOT affect the plugin build:
+The `XOlokunTests` target has 2 pre-existing failures that do NOT affect the plugin build:
 
 1. **`Tests/ExportTests/XPNExportTests.cpp`** — `fatal error: 'Export/XOriginate.h' file not found`
    - `XOriginate.h` was never created; test references a planned but unimplemented file
@@ -100,7 +100,7 @@ Frozen parameter prefixes:
 
 ## Engine Count Confirmation
 
-**44 engines registered** in `Source/XOmnibusProcessor.cpp` and listed in `Source/Core/PresetManager.h`.
+**44 engines registered** in `Source/XOlokunProcessor.cpp` and listed in `Source/Core/PresetManager.h`.
 *(OXBOW and OWARE added 2026-03-20, pushing fleet from 42 → 44. This sentinel was written before those additions.)*
 
 All 44 engines present in `CLAUDE.md` engine table match the registration in code.

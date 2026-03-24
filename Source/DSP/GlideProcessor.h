@@ -2,10 +2,10 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// GlideProcessor — Shared portamento/glide for the XOmnibus fleet.
+// GlideProcessor — Shared portamento/glide for the XOlokun fleet.
 //
 // Consolidates the identical frequency-domain glide pattern found in 35+
 // engines. Operates in Hz space (analog synth convention — upward glides
@@ -128,4 +128,4 @@ struct GlideProcessor
     float coeff       = 1.0f;   // 1.0 = instant (no glide)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

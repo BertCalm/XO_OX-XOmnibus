@@ -2,14 +2,14 @@
 """
 xpn_family_expansion_pack.py
 Generate 60 Family mood presets — engine portraits, extended family, reunion duos.
-Writes to Presets/XOmnibus/Family/. Skips existing files.
+Writes to Presets/XOlokun/Family/. Skips existing files.
 """
 
 import json
 import os
 from pathlib import Path
 
-OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus" / "Family"
+OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun" / "Family"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 TODAY = "2026-03-16"

@@ -1,17 +1,17 @@
-# XOmnibus — Brand Identity & Launch Strategy
+# XOlokun — Brand Identity & Launch Strategy
 
 **Version:** 1.0
 **Author:** XO_OX Designs
 **Date:** 2026-03-08
-**Purpose:** Define the brand identity, visual language, community strategy, and launch plan for XOmnibus as an open-source creative tool
+**Purpose:** Define the brand identity, visual language, community strategy, and launch plan for XOlokun as an open-source creative tool
 
 ---
 
 ## 1. Brand Foundation
 
-### 1.1 What XOmnibus Is
+### 1.1 What XOlokun Is
 
-XOmnibus is a free, open-source multi-engine synthesizer platform that combines 6 character instruments into one unified creative environment. It is built by XO_OX Designs — a solo developer/sound designer operation that prioritizes character over feature count.
+XOlokun is a free, open-source multi-engine synthesizer platform that combines 6 character instruments into one unified creative environment. It is built by XO_OX Designs — a solo developer/sound designer operation that prioritizes character over feature count.
 
 **It is not:**
 - A commercial product
@@ -46,7 +46,7 @@ XOmnibus is a free, open-source multi-engine synthesizer platform that combines 
 
 ### 2.1 The Name
 
-**XOmnibus** — Latin: "for all." The collected works of XO_OX Designs, accessible to everyone.
+**XOlokun** — Latin: "for all." The collected works of XO_OX Designs, accessible to everyone.
 
 The name carries three meanings:
 1. **Omnibus = "for all"** — open source, community-focused
@@ -56,10 +56,10 @@ The name carries three meanings:
 ### 2.2 Wordmark Treatment
 
 ```
-Primary:        XOmnibus
+Primary:        XOlokun
 Stylized:       XO|mnibus  (pipe separator between XO and mnibus)
 Monogram:       XO (the brand constant across all instruments)
-Full brand:     XO_OX · XOmnibus
+Full brand:     XO_OX · XOlokun
 ```
 
 **Typography:** Space Grotesk Bold for the wordmark. The geometric precision of Space Grotesk contrasts with the organic, character-driven sound design philosophy — that tension is intentional.
@@ -74,7 +74,7 @@ Full brand:     XO_OX · XOmnibus
 
 ### 3.1 Primary Mark: The Coupling Symbol
 
-The XOmnibus logo is built from the brand's core concept: **two forces coupling to create something new.**
+The XOlokun logo is built from the brand's core concept: **two forces coupling to create something new.**
 
 **Concept:** Two interlocking rings — one an X shape, one an O shape — connected by a visible bridge/link between them. The bridge represents coupling. When engines couple, the bridge glows gold.
 
@@ -82,14 +82,14 @@ The XOmnibus logo is built from the brand's core concept: **two forces coupling 
 Variations:
 
 ○ Logomark only       — The coupled X/O symbol (app icon, favicon, small sizes)
-○ Logomark + wordmark — Symbol left, "XOmnibus" right (header bar, marketing)
-○ Wordmark only       — "XOmnibus" in Space Grotesk Bold (tight spaces)
-○ Full brand          — "XO_OX" above, coupling symbol, "XOmnibus" below (splash screen)
+○ Logomark + wordmark — Symbol left, "XOlokun" right (header bar, marketing)
+○ Wordmark only       — "XOlokun" in Space Grotesk Bold (tight spaces)
+○ Full brand          — "XO_OX" above, coupling symbol, "XOlokun" below (splash screen)
 ```
 
 ### 3.2 Engine Sub-Marks
 
-Each engine gets a minimal icon that lives inside its panel and appears in preset browser badges. These are secondary to the XOmnibus mark — they identify the engine, not the product.
+Each engine gets a minimal icon that lives inside its panel and appears in preset browser badges. These are secondary to the XOlokun mark — they identify the engine, not the product.
 
 | Engine | Icon | Visual | Color |
 |--------|------|--------|-------|
@@ -111,7 +111,7 @@ Monochrome:         Single color (black or white) for print/merch
 
 ### 3.4 Logo Clear Space
 
-Minimum clear space around the logo = the width of the "O" in XOmnibus. No other elements should intrude into this space.
+Minimum clear space around the logo = the width of the "O" in XOlokun. No other elements should intrude into this space.
 
 ### 3.5 Logo Don'ts
 
@@ -144,7 +144,7 @@ Short, active, memorable. It describes both the product (engines that couple) an
 
 ### 4.3 The Elevator Pitch
 
-> XOmnibus is a free, open-source synth that combines six character instruments into one platform. Each engine has its own personality — a dub delay machine, a psychedelic pad synth, a percussive circuit bender — but the magic happens when you couple them together. One engine's rhythm drives another's filter. A pad's envelope morphs a bass's pitch. 1000 presets, all with a sonic DNA fingerprint so you can find similar sounds, breed new ones, or discover opposites. It's not for sale. It's for everyone.
+> XOlokun is a free, open-source synth that combines six character instruments into one platform. Each engine has its own personality — a dub delay machine, a psychedelic pad synth, a percussive circuit bender — but the magic happens when you couple them together. One engine's rhythm drives another's filter. A pad's envelope morphs a bass's pitch. 1000 presets, all with a sonic DNA fingerprint so you can find similar sounds, breed new ones, or discover opposites. It's not for sale. It's for everyone.
 
 ---
 
@@ -152,9 +152,9 @@ Short, active, memorable. It describes both the product (engines that couple) an
 
 ### 5.1 The Gallery Model
 
-XOmnibus is a **gallery**. This isn't a metaphor — it's the organizing principle for every visual and community decision.
+XOlokun is a **gallery**. This isn't a metaphor — it's the organizing principle for every visual and community decision.
 
-| Gallery Concept | XOmnibus Equivalent |
+| Gallery Concept | XOlokun Equivalent |
 |-----------------|---------------------|
 | Gallery walls | The warm white shell — header, preset browser, macro bar |
 | Exhibition | An engine panel — colored, textured, unique to that instrument |
@@ -166,14 +166,14 @@ XOmnibus is a **gallery**. This isn't a metaphor — it's the organizing princip
 | Gallery guide | Getting Started walkthrough + engine deep-dives |
 | Art breeding program | Preset breeding — two presets combine DNA to produce offspring |
 
-This model scales from the plugin UI to the website to social media to documentation. Every touchpoint reinforces: **XO_OX is the gallery. XOmnibus is the exhibition space. Each engine is the art.**
+This model scales from the plugin UI to the website to social media to documentation. Every touchpoint reinforces: **XO_OX is the gallery. XOlokun is the exhibition space. Each engine is the art.**
 
 ### 5.2 Photography & Imagery Style
 
-Since XOmnibus is software, "photography" means:
+Since XOlokun is software, "photography" means:
 - **Screenshots:** Always light mode, retina resolution, showing a cross-engine preset with coupling active
 - **Abstract textures:** Engine-colored gradients used as backgrounds for social posts (terracotta→teal for OddfeliX/OddOscar content, violet→cyan for XOdyssey content)
-- **Waveform art:** Actual audio renders from XOmnibus presets, visualized as waveforms or spectrograms, used as hero images
+- **Waveform art:** Actual audio renders from XOlokun presets, visualized as waveforms or spectrograms, used as hero images
 - **No stock photos.** Everything is generated from the tool itself or designed from the brand palette.
 
 ### 5.3 Color Usage Outside the Plugin
@@ -235,12 +235,12 @@ Each engine gets a dedicated page:
 
 | Video | Length | Purpose |
 |-------|--------|---------|
-| "What is XOmnibus?" trailer | 60s | Social media hook |
+| "What is XOlokun?" trailer | 60s | Social media hook |
 | "First 5 minutes" walkthrough | 5min | Onboarding |
 | Engine spotlights (×6) | 3min each | Feature education |
 | "Coupling explained" | 4min | Signature feature showcase |
 | "Preset breeding" | 3min | DNA system demo |
-| "Building a track with XOmnibus" | 10min | Production context |
+| "Building a track with XOlokun" | 10min | Production context |
 | "Contributing presets" | 5min | Community onboarding |
 
 ---
@@ -254,7 +254,7 @@ Each engine gets a dedicated page:
 ### 7.2 Repository Structure
 
 ```
-xomnibus/
+xolokun/
 ├── Source/                    # C++ plugin source
 ├── Presets/                   # Factory .xometa files
 ├── Tools/                     # Python utilities (DNA, breeding, migration)
@@ -269,7 +269,7 @@ xomnibus/
 
 ### 7.3 Contribution Pathways
 
-Not everyone contributes code. XOmnibus should welcome:
+Not everyone contributes code. XOlokun should welcome:
 
 | Contribution Type | Barrier to Entry | Impact |
 |-------------------|-------------------|--------|
@@ -321,8 +321,8 @@ Available in next release — credited to the designer ("opening night")
 |--------|---------|----------|
 | GitHub repo goes public | GitHub | Critical |
 | Landing page live with download link | xo-ox.com (or similar) | Critical |
-| "XOmnibus is here" announcement | All social, KVR, Reddit, Discord | Critical |
-| Launch video: "What is XOmnibus?" (60s) | YouTube, social | Critical |
+| "XOlokun is here" announcement | All social, KVR, Reddit, Discord | Critical |
+| Launch video: "What is XOlokun?" (60s) | YouTube, social | Critical |
 | Getting Started guide published | Website / repo | Critical |
 | First 5 Minutes walkthrough | YouTube | High |
 | Press kit available (logos, screenshots, one-sheet) | Website | High |
@@ -353,7 +353,7 @@ Each opening night includes:
 | Weekly | Preset of the week, community spotlight |
 | Monthly | Feature update, community preset pack merge |
 | Quarterly | Major version with new capabilities |
-| Annually | "State of XOmnibus" — metrics, roadmap, community thanks |
+| Annually | "State of XOlokun" — metrics, roadmap, community thanks |
 
 ---
 
@@ -409,9 +409,9 @@ Most free plugins fail because:
 3. There's no story — just "here's a synth"
 4. No community — download and forget
 
-### 10.2 How XOmnibus Avoids This
+### 10.2 How XOlokun Avoids This
 
-| Problem | XOmnibus Solution |
+| Problem | XOlokun Solution |
 |---------|-------------------|
 | Looks cheap | Light-mode-first design, gallery aesthetic, professional typography |
 | Bad presets | 1000 factory presets with DNA fingerprints, evocative names, macro responsiveness |
@@ -424,7 +424,7 @@ Most free plugins fail because:
 
 A new user should experience this in their first 30 seconds:
 
-1. Open XOmnibus → hero preset auto-loads (two engines coupled)
+1. Open XOlokun → hero preset auto-loads (two engines coupled)
 2. Play a chord → hear something they've never heard before (coupling is audible)
 3. Turn COUPLING macro to zero → hear the engines decouple
 4. Turn it back up → "oh, THAT'S what coupling does"
@@ -488,7 +488,7 @@ Monthly community events framed as exhibitions:
 #coupling-experiments   — cross-engine discoveries
 #feature-requests       — what to build next
 #bug-reports            — issues (mirrors GitHub)
-#show-your-work         — tracks made with XOmnibus
+#show-your-work         — tracks made with XOlokun
 #developer-chat         — code contributions, architecture
 ```
 
@@ -501,10 +501,10 @@ Monthly community events framed as exhibitions:
 ```
 press-kit/
 ├── logos/
-│   ├── xomnibus-logo-light.svg
-│   ├── xomnibus-logo-dark.svg
-│   ├── xomnibus-logomark-only.svg
-│   ├── xomnibus-wordmark-only.svg
+│   ├── xolokun-logo-light.svg
+│   ├── xolokun-logo-dark.svg
+│   ├── xolokun-logomark-only.svg
+│   ├── xolokun-wordmark-only.svg
 │   └── xo-ox-brand-mark.svg
 ├── screenshots/
 │   ├── hero-coupling-view.png        (4K, light mode, 2 engines coupled)
@@ -523,7 +523,7 @@ press-kit/
 ### 12.2 Fact Sheet
 
 ```
-Product:        XOmnibus
+Product:        XOlokun
 Developer:      XO_OX Designs
 Price:          Free (open source, GPLv3)
 Platforms:      macOS (AU, VST3, Standalone)
@@ -542,11 +542,11 @@ Contact:        [TBD]
 
 ### 13.1 The Challenge
 
-Each engine was designed as a standalone instrument with its own visual identity. XOmnibus must unify them without erasing their personality.
+Each engine was designed as a standalone instrument with its own visual identity. XOlokun must unify them without erasing their personality.
 
 ### 13.2 The Solution: Shared Frame, Unique Canvas
 
-**What stays consistent (the XOmnibus shell):**
+**What stays consistent (the XOlokun shell):**
 - Warm white background (#F8F6F3)
 - Space Grotesk / Inter / JetBrains Mono font stack
 - XO Gold (#E9C46A) for macro knobs, active states, brand elements
@@ -574,7 +574,7 @@ Each engine was designed as a standalone instrument with its own visual identity
 
 > "The shell is the same gallery for every exhibition. The art inside changes completely."
 
-When an engine loads, its panel should feel like stepping into that engine's world — but the gallery walls (header, preset browser, macros, coupling strip) never change. This creates recognition: users always know they're in XOmnibus, but they also know immediately which engine they're working with.
+When an engine loads, its panel should feel like stepping into that engine's world — but the gallery walls (header, preset browser, macros, coupling strip) never change. This creates recognition: users always know they're in XOlokun, but they also know immediately which engine they're working with.
 
 ---
 
@@ -584,7 +584,7 @@ When an engine loads, its panel should feel like stepping into that engine's wor
 
 ```
 XO_OX Designs          — The studio/creator
-    └── XOmnibus       — The platform product
+    └── XOlokun       — The platform product
         ├── OddfeliX/OddOscar — Engine (percussive + pad coupling)
         ├── XOverdub   — Engine (dub mixing desk)
         ├── XOdyssey   — Engine (psychedelic pads)
@@ -595,7 +595,7 @@ XO_OX Designs          — The studio/creator
 
 ### 14.2 Naming Rules
 
-- The platform is always "XOmnibus" — never "XO Omnibus" or "Xomnibus"
+- The platform is always "XOlokun" — never "XO Omnibus" or "Xomnibus"
 - Engines keep their exact original names — never simplified
 - In running text: "the OddfeliX/OddOscar engine" (lowercase "the")
 - The brand is "XO_OX" with underscore — never "XOOX" or "XO-OX"
@@ -626,13 +626,13 @@ XO_OX Designs          — The studio/creator
 
 ---
 
-## 16. Summary: The XOmnibus Brand in One Page
+## 16. Summary: The XOlokun Brand in One Page
 
-**Name:** XOmnibus ("for all")
+**Name:** XOlokun ("for all")
 **By:** XO_OX Designs
 **Tagline:** "Couple everything."
 **Price:** Free, open source (GPLv3)
-**Core metaphor:** XOmnibus is a gallery. Each engine is an exhibition. Coupling is the corridor between them. Community presets are guest exhibitions.
+**Core metaphor:** XOlokun is a gallery. Each engine is an exhibition. Coupling is the corridor between them. Community presets are guest exhibitions.
 **Visual identity:** Light-mode gallery aesthetic — warm white walls, engine-colored art panels, XO Gold coupling corridors
 **Logo:** Coupled X/O symbol with golden bridge
 **Typography:** Space Grotesk (display) + Inter (UI) + JetBrains Mono (values)

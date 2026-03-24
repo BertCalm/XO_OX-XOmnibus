@@ -1,4 +1,4 @@
-# XOmnibus Prism Sweep 12F — Mood Distribution Audit
+# XOlokun Prism Sweep 12F — Mood Distribution Audit
 
 **Date**: 2026-03-14
 **Round**: 12F

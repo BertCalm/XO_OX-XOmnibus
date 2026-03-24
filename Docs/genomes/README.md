@@ -1,4 +1,4 @@
-# XOmnibus Engine Genomes
+# XOlokun Engine Genomes
 
 **Status:** 5 of 70 genomes complete
 **Schema:** v0.1 — see `Docs/specs/xogenome-schema-v0.1.md`
@@ -9,7 +9,7 @@
 
 ## What Is a Genome?
 
-A `.xogenome` file is a behavioral fingerprint for one XOmnibus engine. It captures
+A `.xogenome` file is a behavioral fingerprint for one XOlokun engine. It captures
 how the engine *behaves* — oscillator architecture, filter topology, modulation depth,
 velocity response, macro personality, sonic character, coupling affinities, and mythology.
 

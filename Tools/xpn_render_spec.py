@@ -4,7 +4,7 @@ XPN Render Spec Generator — XO_OX Designs
 Reads .xometa preset files and generates render specifications that tell
 the producer exactly what WAV files to record for XPN export.
 
-The render spec bridges the gap between XOmnibus presets (live synthesis)
+The render spec bridges the gap between XOlokun presets (live synthesis)
 and MPC expansion packs (static samples). It reads the preset's engine,
 Sonic DNA, and parameters to determine the optimal render strategy.
 
@@ -36,7 +36,7 @@ from pathlib import Path
 from typing import Optional
 
 REPO_ROOT   = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 
 # Standard chromatic sample points: every minor 3rd from C1 to C6
 MINOR_3RD_NOTES = [
@@ -446,7 +446,7 @@ def generate_render_spec(xometa_path: Path) -> dict:
         spec["wav_count"] = len(wav_list)
         spec["wavs"] = wav_list
         spec["render_instructions"] = (
-            f"In XOmnibus, load preset '{name}'. For each voice (kick, snare, etc.), "
+            f"In XOlokun, load preset '{name}'. For each voice (kick, snare, etc.), "
             f"trigger at 4 velocity levels (pp=20, mp=50, mf=80, ff=120) and record "
             f"the output as individual WAV files."
         )
@@ -461,7 +461,7 @@ def generate_render_spec(xometa_path: Path) -> dict:
             "render_note": "Play freely — capture the texture",
         }]
         spec["render_instructions"] = (
-            f"In XOmnibus, load preset '{name}'. Play or hold notes for "
+            f"In XOlokun, load preset '{name}'. Play or hold notes for "
             f"{strategy.get('duration_seconds', 30)} seconds, capturing the evolving "
             f"granular texture. Record as a single stereo WAV."
         )
@@ -504,7 +504,7 @@ def generate_render_spec(xometa_path: Path) -> dict:
             space_note = " This is a dry preset — render with no reverb."
 
         spec["render_instructions"] = (
-            f"In XOmnibus, load preset '{name}'. "
+            f"In XOlokun, load preset '{name}'. "
             f"For each note ({notes[0]}–{notes[-1]}), hold the note for 2 seconds "
             f"and render {vel_layers} velocity levels. "
             f"Name files: {slug}__NOTE__v1.WAV through v{vel_layers}.WAV"

@@ -2,7 +2,7 @@
 #include "SynthEngine.h"
 #include <array>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // CouplingCrossfader — Smooth transitions when switching coupling types in
@@ -300,4 +300,4 @@ private:
     double currentSampleRate = 0.0;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

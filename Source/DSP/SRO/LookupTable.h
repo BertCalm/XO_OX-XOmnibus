@@ -3,7 +3,7 @@
 #include <cmath>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // LookupTable — Pre-computed function table with linear interpolation.
@@ -177,4 +177,4 @@ struct SROTables
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

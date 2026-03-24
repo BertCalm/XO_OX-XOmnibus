@@ -294,7 +294,7 @@ City Pop and Italo Disco are the two parents of vaporwave — one Eastern, one W
 
 ---
 
-## 6. XOmnibus Integration
+## 6. XOlokun Integration
 
 ### 6.1 Macro Mapping
 
@@ -395,7 +395,7 @@ At 44.1kHz, 512-sample block, 16 voices:
 - M1 single-core throughput: ~3.2 GFLOPS
 - **CPU usage: ~0.75%** per engine instance
 
-This is extremely conservative. Even with control-rate modulation overhead, OBSIDIAN should not exceed **8%** of a single core under any configuration. This makes it the lightest engine in the entire XOmnibus gallery.
+This is extremely conservative. Even with control-rate modulation overhead, OBSIDIAN should not exceed **8%** of a single core under any configuration. This makes it the lightest engine in the entire XOlokun gallery.
 
 ### 8.3 Memory
 

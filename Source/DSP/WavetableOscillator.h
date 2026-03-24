@@ -3,7 +3,7 @@
 #include <cstring>
 #include "FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // WavetableOscillator — Wavetable oscillator with crossfade morphing.
@@ -244,4 +244,4 @@ private:
     float position = 0.0f;         // Morph position [0, 1]
 };
 
-} // namespace xomnibus
+} // namespace xolokun

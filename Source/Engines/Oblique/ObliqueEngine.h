@@ -46,7 +46,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ObliqueWavefolder — Sine wavefolder for harmonic enrichment.
@@ -804,7 +804,7 @@ public:
         const float lfo2Rate  = (pLfo2Rate  != nullptr) ? pLfo2Rate->load()  : 0.03f;
         const float lfo2Depth = (pLfo2Depth != nullptr) ? pLfo2Depth->load() : 0.25f;
 
-        // -- XOmnibus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
+        // -- XOlokun macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
         // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
         const float macroFold   = (pMacroFold   != nullptr) ? pMacroFold->load()   : 0.0f;
         const float macroBounce = (pMacroBounce != nullptr) ? pMacroBounce->load() : 0.0f;
@@ -1401,7 +1401,7 @@ public:
             juce::ParameterID { "oblq_lfo2Depth", 1 }, "Oblique LFO2 Depth",
             juce::NormalisableRange<float> (0.0f, 0.5f, 0.01f), 0.25f));
 
-        // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // XOlokun standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
         //
         // M1 FOLD (CHARACTER): increases wavefold amount by up to +0.7 — harmonic grit.
@@ -1466,7 +1466,7 @@ public:
         pLfo1Depth      = apvts.getRawParameterValue ("oblq_lfo1Depth");
         pLfo2Rate       = apvts.getRawParameterValue ("oblq_lfo2Rate");
         pLfo2Depth      = apvts.getRawParameterValue ("oblq_lfo2Depth");
-        // XOmnibus macros
+        // XOlokun macros
         pMacroFold      = apvts.getRawParameterValue ("oblq_macroFold");
         pMacroBounce    = apvts.getRawParameterValue ("oblq_macroBounce");
         pMacroColor     = apvts.getRawParameterValue ("oblq_macroColor");
@@ -1755,11 +1755,11 @@ private:
     // D002: LFO2 (phaser swirl modulator)
     std::atomic<float>* pLfo2Rate       = nullptr;
     std::atomic<float>* pLfo2Depth      = nullptr;
-    // XOmnibus macros
+    // XOlokun macros
     std::atomic<float>* pMacroFold      = nullptr;
     std::atomic<float>* pMacroBounce    = nullptr;
     std::atomic<float>* pMacroColor     = nullptr;
     std::atomic<float>* pMacroSpace     = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

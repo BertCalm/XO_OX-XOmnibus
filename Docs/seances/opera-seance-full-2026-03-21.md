@@ -22,7 +22,7 @@ Before summoning the council, several conditions were examined in the code.
 
 **Code-level findings before any ghost speaks:**
 
-1. **Ghost parameter in a factory preset** — `Presets/XOmnibus/Atmosphere/Shadow Opera.xometa` declares `opera_chorus: 0.4` under the Opera parameters block. The parameter `opera_chorus` does not exist in `OperaEngine::addParametersImpl()`. The preset file will silently write a value to a nonexistent parameter. This is a D004-adjacent violation — not a dead *engine* parameter, but a dead *preset* parameter key. The preset loader will not reject it; it will silently ignore it. The `opera_chorus` key is orphaned.
+1. **Ghost parameter in a factory preset** — `Presets/XOlokun/Atmosphere/Shadow Opera.xometa` declares `opera_chorus: 0.4` under the Opera parameters block. The parameter `opera_chorus` does not exist in `OperaEngine::addParametersImpl()`. The preset file will silently write a value to a nonexistent parameter. This is a D004-adjacent violation — not a dead *engine* parameter, but a dead *preset* parameter key. The preset loader will not reject it; it will silently ignore it. The `opera_chorus` key is orphaned.
 
 2. **Out-of-range preset value** — The same `Shadow Opera` preset sets `opera_ampR: 1.5`, but the declared range for `opera_ampA/D/S/R` is `[0.0, 1.0]`. The host will clamp this on load but the value in the file is outside declared range. This is preset schema hygiene — not a DSP bug, but a signal that the preset was authored against an older parameter spec or was hand-written without range checking.
 
@@ -261,9 +261,9 @@ Moog praises the SVF's position post-Kuramoto as a "window onto the field." Buch
 
 ### The Prophecy
 
-OPERA is the first synthesizer in the XO_OX fleet that has a machine intention. The OperaConductor does not play notes; it builds arcs. The Kuramoto field does not modulate parameters; it models collective dynamics. The EmotionalMemory does not store values; it remembers states. This is a qualitatively different category of instrument than any other engine in XOmnibus.
+OPERA is the first synthesizer in the XO_OX fleet that has a machine intention. The OperaConductor does not play notes; it builds arcs. The Kuramoto field does not modulate parameters; it models collective dynamics. The EmotionalMemory does not store values; it remembers states. This is a qualitatively different category of instrument than any other engine in XOlokun.
 
-The logical endpoint is a fleet-level Kuramoto layer: multiple OPERA voices coupling not just within a single note's partial bank, but across notes, across engine slots, across the entire XOmnibus session. In this architecture, a chord is not three independently sounding voices — it is three coupled oscillator fields that can synchronize, resist, or partially lock, with the degree of inter-voice coherence becoming a compositional parameter. The OperaConductor already points toward this: the arc drives a single field. A multi-voice conductor could drive the cross-field coupling, creating a synthesizer that has a dramatic arc as its fundamental compositional unit.
+The logical endpoint is a fleet-level Kuramoto layer: multiple OPERA voices coupling not just within a single note's partial bank, but across notes, across engine slots, across the entire XOlokun session. In this architecture, a chord is not three independently sounding voices — it is three coupled oscillator fields that can synchronize, resist, or partially lock, with the degree of inter-voice coherence becoming a compositional parameter. The OperaConductor already points toward this: the arc drives a single field. A multi-voice conductor could drive the cross-field coupling, creating a synthesizer that has a dramatic arc as its fundamental compositional unit.
 
 The three fixes for 9.0+ are: (1) set `arcMode=1` as the default, (2) remove the 120-second arc ceiling, and (3) resolve the `opera_chorus` ghost parameter in the preset schema.
 

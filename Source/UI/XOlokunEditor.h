@@ -1,12 +1,12 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../XOmnibusProcessor.h"
+#include "../XOlokunProcessor.h"
 #include "../Core/EngineRegistry.h"
 #include "CouplingStrip/CouplingStripEditor.h"
 #include "BinaryData.h"  // FontData:: namespace (embedded fonts)
 #include "EngineVocabulary.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Gallery Model — color constants with light/dark theme support.
@@ -446,7 +446,7 @@ public:
 class ParameterGrid : public juce::Component
 {
 public:
-    ParameterGrid(XOmnibusProcessor& proc,
+    ParameterGrid(XOlokunProcessor& proc,
                   const juce::String& engId,
                   const juce::String& enginePrefix,
                   juce::Colour accentColour)
@@ -555,7 +555,7 @@ private:
 class MacroHeroStrip : public juce::Component
 {
 public:
-    explicit MacroHeroStrip(XOmnibusProcessor& proc) : processor(proc) {}
+    explicit MacroHeroStrip(XOlokunProcessor& proc) : processor(proc) {}
 
     // Call after an engine slot is selected. Returns true if at least one
     // macro param was found and the strip should be shown.
@@ -692,7 +692,7 @@ public:
 private:
     static constexpr int kHeaderH = 22;
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     juce::String       engineName;
     juce::Colour       accentColour { GalleryColors::get(GalleryColors::borderGray()) };
     int                numMacros = 0;
@@ -713,7 +713,7 @@ private:
 class EngineDetailPanel : public juce::Component
 {
 public:
-    explicit EngineDetailPanel(XOmnibusProcessor& proc)
+    explicit EngineDetailPanel(XOlokunProcessor& proc)
         : processor(proc), macroHero(proc)
     {
         addAndMakeVisible(macroHero);
@@ -820,7 +820,7 @@ private:
     static constexpr int kHeaderH = 38;
     static constexpr int kHeroH   = 120; // height of the macro hero strip
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     MacroHeroStrip     macroHero;
     juce::Viewport     viewport;
     juce::String       engineId  { "—" };
@@ -885,7 +885,7 @@ public:
         g.setColour(juce::Colour(0xFF0D0D1A));
         g.fillRect(b);
 
-        // Zone bands (bottom=Midnight, top=Sunlit — matching XOmnibus ecology)
+        // Zone bands (bottom=Midnight, top=Sunlit — matching XOlokun ecology)
         struct ZoneBand { float yNormStart, yNormEnd; juce::uint32 rgba; float alpha; };
         const ZoneBand bands[] = {
             { 0.80f, 1.00f, 0xFF48CAE4, 0.04f },  // Sunlit   — top 20%
@@ -943,7 +943,7 @@ public:
         g.drawVerticalLine(static_cast<int>(cursorX), b.getY(), b.getBottom());
 
         // ── Label ────────────────────────────────────────────────────────────
-        g.setFont(juce::Font(8.0f));
+        g.setFont(juce::Font(juce::FontOptions(8.0f)));
         g.setColour(juce::Colours::white.withAlpha(0.20f));
         g.drawText("FIELD MAP", b.reduced(6.0f, 4.0f), juce::Justification::topLeft);
     }
@@ -983,14 +983,14 @@ inline juce::String couplingTypeLabel(CouplingType t)
 class OverviewPanel : public juce::Component
 {
 public:
-    explicit OverviewPanel(XOmnibusProcessor& proc) : processor(proc) {}
+    explicit OverviewPanel(XOlokunProcessor& proc) : processor(proc) {}
 
     // Called by the editor when engine state or coupling routes change.
     // Avoids calling getRoutes() (which copies a vector) inside paint().
     void refresh()
     {
         cachedActiveEngines.clear();
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
         {
             auto* eng = processor.getEngine(i);
             if (eng) cachedActiveEngines.push_back({eng->getEngineId(), eng->getAccentColour()});
@@ -1231,7 +1231,7 @@ public:
                 g.drawEllipse(nodePos[i].x - 6.0f, nodePos[i].y - 6.0f, 12.0f, 12.0f, 1.0f);
 
                 // Slot number label
-                g.setFont(juce::Font(7.0f));
+                g.setFont(juce::Font(juce::FontOptions(7.0f)));
                 g.setColour(juce::Colours::white.withAlpha(0.70f));
                 g.drawText(juce::String(i + 1),
                            (int)(nodePos[i].x - 6.0f), (int)(nodePos[i].y - 6.0f), 12, 12,
@@ -1252,7 +1252,7 @@ public:
     }
 
 private:
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     // Cached state — updated in refresh(), never in paint()
     std::vector<std::pair<juce::String, juce::Colour>> cachedActiveEngines;
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
@@ -1267,7 +1267,7 @@ class CompactEngineTile : public juce::Component, public juce::SettableTooltipCl
 public:
     std::function<void(int)> onSelect; // called with slot index when clicked
 
-    CompactEngineTile(XOmnibusProcessor& proc, int slotIndex)
+    CompactEngineTile(XOlokunProcessor& proc, int slotIndex)
         : processor(proc), slot(slotIndex)
     {
         A11y::setup (*this, "Engine Slot " + juce::String (slotIndex + 1),
@@ -1574,7 +1574,7 @@ private:
             });
     }
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     int slot;
     juce::String engineId;
     juce::Colour accent;
@@ -2274,7 +2274,7 @@ class PresetBrowserStrip : public juce::Component,
                            private PresetManager::Listener
 {
 public:
-    PresetBrowserStrip(XOmnibusProcessor& proc)
+    PresetBrowserStrip(XOlokunProcessor& proc)
         : processor(proc)
     {
         prevBtn.setButtonText("<");
@@ -2398,7 +2398,7 @@ private:
             getTopLevelComponent());
     }
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     juce::TextButton prevBtn, nextBtn, browseBtn;
     juce::Label nameLabel;
     MacroSection* macroSection = nullptr;
@@ -2415,7 +2415,7 @@ private:
 class ChordMachinePanel : public juce::Component, private juce::Timer
 {
 public:
-    explicit ChordMachinePanel (XOmnibusProcessor& proc)
+    explicit ChordMachinePanel (XOlokunProcessor& proc)
         : processor (proc)
     {
         setTitle ("Chord Machine");
@@ -2698,7 +2698,7 @@ private:
     static constexpr int kGridH   = 70;
     static constexpr int kKnobH   = 90;
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
 
     juce::TextButton enableBtn, seqBtn, enoBtn;
     juce::ComboBox paletteBox, voicingBox, patternBox, velCurveBox;
@@ -2730,7 +2730,7 @@ private:
 class PerformanceViewPanel : public juce::Component
 {
 public:
-    PerformanceViewPanel (XOmnibusProcessor& proc)
+    PerformanceViewPanel (XOlokunProcessor& proc)
         : processor (proc),
           apvts (proc.getAPVTS()),
           couplingStrip (proc.getCouplingMatrix(),
@@ -3213,7 +3213,7 @@ private:
     static constexpr int kNumRoutes   = 4;
     static constexpr float kStripRatio = 0.40f;
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     juce::AudioProcessorValueTreeState& apvts;
 
     // Left panel: coupling arc visualization
@@ -3263,7 +3263,7 @@ private:
 // transparent to mouse events; clicks pass through to the tiles beneath.
 //
 // Usage:
-//   - Construct with the XOmnibusProcessor reference.
+//   - Construct with the XOlokunProcessor reference.
 //   - Call setTileCenter(slot, centre) after tile bounds are set in resized().
 //   - Add to the editor and set its bounds to cover the full editor area.
 //   - The 30Hz timer drives continuous repaint; no other refresh needed.
@@ -3286,7 +3286,7 @@ private:
 class CouplingArcOverlay : public juce::Component, private juce::Timer
 {
 public:
-    explicit CouplingArcOverlay(XOmnibusProcessor& proc) : processor(proc)
+    explicit CouplingArcOverlay(XOlokunProcessor& proc) : processor(proc)
     {
         setInterceptsMouseClicks(false, false); // pass-through to tiles beneath
         startTimerHz(30);
@@ -3294,7 +3294,7 @@ public:
 
     ~CouplingArcOverlay() override { stopTimer(); }
 
-    // Called by XOmnibusEditor::resized() once tile positions are finalised.
+    // Called by XOlokunEditor::resized() once tile positions are finalised.
     // Centre is in the LOCAL coordinate space of this overlay component.
     void setTileCenter(int slot, juce::Point<float> centre)
     {
@@ -3423,7 +3423,7 @@ public:
     }
 
 private:
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     std::array<juce::Point<float>, MegaCouplingMatrix::MaxSlots> tileCenters {};
     float pulsePhase[12] {}; // one phase accumulator per unique arc pair (max 6 pairs, 12 for safety)
 
@@ -3431,7 +3431,7 @@ private:
 };
 
 //==============================================================================
-// XOmnibusEditor — Gallery Model plugin window.
+// XOlokunEditor — Gallery Model plugin window.
 //
 // Layout:
 //   ┌─────────────────────────────────────┐
@@ -3448,11 +3448,11 @@ private:
 // Transition: 150ms opacity cross-fade via juce::ComponentAnimator
 // when switching between overview and engine detail, or between engines.
 //
-class XOmnibusEditor : public juce::AudioProcessorEditor,
+class XOlokunEditor : public juce::AudioProcessorEditor,
                        private juce::Timer
 {
 public:
-    explicit XOmnibusEditor(XOmnibusProcessor& proc)
+    explicit XOlokunEditor(XOlokunProcessor& proc)
         : AudioProcessorEditor(proc),
           processor(proc),
           overview(proc),
@@ -3466,7 +3466,7 @@ public:
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
         {
             tiles[i] = std::make_unique<CompactEngineTile>(proc, i);
             tiles[i]->onSelect = [this](int slot) { selectSlot(slot); };
@@ -3538,7 +3538,7 @@ public:
             GalleryColors::darkMode() = themeToggleBtn.getToggleState();
             laf->applyTheme();
             repaint();
-            for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
                 tiles[i]->repaint();
             overview.repaint();
             detail.repaint();
@@ -3551,7 +3551,7 @@ public:
 
         // Scan factory preset directory
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                             .getChildFile("Application Support/XO_OX/XOmnibus/Presets");
+                             .getChildFile("Application Support/XO_OX/XOlokun/Presets");
         if (presetDir.isDirectory())
             proc.getPresetManager().scanPresetDirectory(presetDir);
         presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
@@ -3560,7 +3560,7 @@ public:
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         proc.onEngineChanged = [this](int slot)
         {
-            if (slot >= 0 && slot < XOmnibusProcessor::MaxSlots)
+            if (slot >= 0 && slot < XOlokunProcessor::MaxSlots)
                 tiles[slot]->refresh();
             overview.refresh();
             if (performancePanel.isVisible())
@@ -3571,13 +3571,13 @@ public:
         setResizable(true, true);
         setResizeLimits(720, 460, 1400, 900);
         setWantsKeyboardFocus(true);
-        setTitle ("XOmnibus Synthesizer");
+        setTitle ("XOlokun Synthesizer");
         setDescription ("Multi-engine synthesizer with cross-engine coupling. "
                         "Keys 1-4 select engine slots, Escape returns to overview.");
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
-    ~XOmnibusEditor() override
+    ~XOlokunEditor() override
     {
         stopTimer();
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
@@ -3587,7 +3587,7 @@ public:
     bool keyPressed(const juce::KeyPress& key) override
     {
         // Keys 1-4 jump directly to engine slots
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
         {
             if (key == juce::KeyPress('1' + i))
             {
@@ -3621,7 +3621,7 @@ public:
 
         g.setColour(get(textDark()));
         g.setFont(GalleryFonts::display(19.0f));
-        g.drawText("XOmnibus",
+        g.drawText("XOlokun",
                    juce::Rectangle<int>(16, 0, 160, kHeaderH - 3),
                    juce::Justification::centredLeft);
 
@@ -3681,8 +3681,8 @@ public:
 
         // Left sidebar tiles
         auto sidebar = area.removeFromLeft(kSidebarW);
-        int tileH = sidebar.getHeight() / XOmnibusProcessor::MaxSlots;
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        int tileH = sidebar.getHeight() / XOlokunProcessor::MaxSlots;
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->setBounds(sidebar.removeFromTop(tileH));
 
         // Field Map — fixed strip at the bottom of the right-panel area.
@@ -3704,7 +3704,7 @@ public:
         {
             // Recompute tile centre positions in overlay-local coordinates.
             // Tiles were laid out above; retrieve their current bounds.
-            for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+            for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             {
                 auto tileBounds = tiles[i]->getBounds(); // editor-local
                 couplingArcs.setTileCenter(i, tileBounds.getCentre().toFloat());
@@ -3716,7 +3716,7 @@ private:
     void selectSlot(int slot)
     {
         // Deselect all tiles
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->setSelected(i == slot);
 
         if (slot == selectedSlot && detail.isVisible())
@@ -3735,7 +3735,7 @@ private:
         auto& anim = juce::Desktop::getInstance().getAnimator();
 
         // SafePointer prevents crash if editor is destroyed during animation
-        juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+        juce::Component::SafePointer<XOlokunEditor> safeThis(this);
 
         if (detail.isVisible())
         {
@@ -3785,7 +3785,7 @@ private:
     void showOverview()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->setSelected(false);
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
@@ -3797,7 +3797,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -3814,7 +3814,7 @@ private:
     void showChordMachine()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->setSelected(false);
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
@@ -3824,7 +3824,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -3847,7 +3847,7 @@ private:
     void showPerformanceView()
     {
         selectedSlot = -1;
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->setSelected(false);
 
         performancePanel.refresh();
@@ -3859,7 +3859,7 @@ private:
                                   : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOmnibusEditor> safeThis(this);
+            juce::Component::SafePointer<XOlokunEditor> safeThis(this);
             juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
             anim.fadeOut(outgoing, kFadeMs);
             juce::Timer::callAfterDelay(kFadeMs, [safeThis, safeOutgoing]
@@ -3881,7 +3881,7 @@ private:
 
     void timerCallback() override
     {
-        for (int i = 0; i < XOmnibusProcessor::MaxSlots; ++i)
+        for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
             tiles[i]->refresh();
         if (!detail.isVisible())
             overview.refresh();
@@ -3892,10 +3892,10 @@ private:
         // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
         // XO Gold is used as fallback when no engine occupies the slot.
         static const juce::Colour kXOGold = juce::Colour(0xFFE9C46A);
-        processor.drainNoteEvents([&](const XOmnibusProcessor::NoteMapEvent& ev)
+        processor.drainNoteEvents([&](const XOlokunProcessor::NoteMapEvent& ev)
         {
             juce::Colour colour = kXOGold;
-            if (ev.slot >= 0 && ev.slot < XOmnibusProcessor::MaxSlots)
+            if (ev.slot >= 0 && ev.slot < XOlokunProcessor::MaxSlots)
             {
                 if (auto* eng = processor.getEngine(ev.slot))
                     colour = eng->getAccentColour();
@@ -3911,10 +3911,10 @@ private:
     static constexpr int kFadeMs    = 150;
     static constexpr int kFieldMapH = 110; // Field Map panel height (pixels)
 
-    XOmnibusProcessor& processor;
+    XOlokunProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
 
-    std::array<std::unique_ptr<CompactEngineTile>, XOmnibusProcessor::MaxSlots> tiles;
+    std::array<std::unique_ptr<CompactEngineTile>, XOlokunProcessor::MaxSlots> tiles;
     FieldMapPanel          fieldMap;
     OverviewPanel          overview;
     EngineDetailPanel      detail;
@@ -3930,7 +3930,7 @@ private:
 
     int selectedSlot = -1;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOmnibusEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunEditor)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -20,7 +20,7 @@ Outreach: send a free copy of the pack, explain the affiliate link takes 2 minut
 
 ## 2. Cross-Studio Collaboration
 
-A co-branded pack means another studio contributes raw sounds; XO_OX handles processing, engine integration, and XOmnibus export. The result is something neither studio could make alone.
+A co-branded pack means another studio contributes raw sounds; XO_OX handles processing, engine integration, and XOlokun export. The result is something neither studio could make alone.
 
 **Revenue split**: Start with 50/50. Adjust if one side is doing dramatically more work.
 

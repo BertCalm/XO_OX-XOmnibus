@@ -1,6 +1,6 @@
 # Ostinato Parameter Fix Audit
 **Date:** 2026-03-21
-**Scope:** All Ostinato presets in `Presets/XOmnibus/` (excluding `_quarantine/`)
+**Scope:** All Ostinato presets in `Presets/XOlokun/` (excluding `_quarantine/`)
 **Total Ostinato presets scanned:** 198
 
 ---

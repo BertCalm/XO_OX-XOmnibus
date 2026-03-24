@@ -31,7 +31,7 @@ Usage:
         --profile boom-bap-percussion \\
         --engine ONSET \\
         --count 64 \\
-        --presets-dir ../Presets/XOmnibus/
+        --presets-dir ../Presets/XOlokun/
 
     # With mood filter
     python xpn_profile_preset_selector.py \\
@@ -90,7 +90,7 @@ DNA_DIMENSIONS = ("brightness", "warmth", "movement", "density", "space", "aggre
 _DEFAULT_PROFILES_DIR = Path(__file__).parent.parent / "profiles"
 
 # Default presets directory
-_DEFAULT_PRESETS_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+_DEFAULT_PRESETS_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 
 # ---------------------------------------------------------------------------
@@ -258,7 +258,7 @@ def scan_presets(
     Parameters
     ----------
     presets_dir:
-        Root of the XOmnibus preset library (e.g. ``Presets/XOmnibus/``).
+        Root of the XOlokun preset library (e.g. ``Presets/XOlokun/``).
         Subdirectory names are treated as mood names.
     engine:
         Engine name to match (case-insensitive, e.g. ``"ONSET"``).
@@ -543,7 +543,7 @@ def select_presets(
     profiles_dir:
         Override the default ``profiles/`` directory.
     presets_dir:
-        Override the default ``Presets/XOmnibus/`` directory.
+        Override the default ``Presets/XOlokun/`` directory.
     qa_log:
         Optional :class:`~xpn_qa_decision_log.QADecisionLog` instance for
         recording accept/reject decisions.
@@ -630,7 +630,7 @@ def _build_parser() -> argparse.ArgumentParser:
         prog="xpn_profile_preset_selector",
         description=(
             "SELECT stage of the .oxbuild compiler.\n"
-            "Selects XOmnibus presets that match a pack profile's DNA genotype."
+            "Selects XOlokun presets that match a pack profile's DNA genotype."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
@@ -674,7 +674,7 @@ def _build_parser() -> argparse.ArgumentParser:
         "--presets-dir",
         default=None,
         metavar="DIR",
-        help=f"Root of the XOmnibus preset library. Default: {_DEFAULT_PRESETS_DIR}",
+        help=f"Root of the XOlokun preset library. Default: {_DEFAULT_PRESETS_DIR}",
     )
     parser.add_argument(
         "--pack-id",

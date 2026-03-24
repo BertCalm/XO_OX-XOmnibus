@@ -1,9 +1,9 @@
 #pragma once
-// xomnibus-engine-sdk — CouplingTypes.h
+// xolokun-engine-sdk — CouplingTypes.h
 // Standalone header — no JUCE dependency.
 // Defines the coupling modulation types available for cross-engine interaction.
 
-namespace xomnibus {
+namespace xolokun {
 
 /// Cross-engine modulation types.
 /// Each type describes a source→destination relationship between two engines.
@@ -52,4 +52,4 @@ inline const char* couplingTypeName (CouplingType t)
     return "Unknown";
 }
 
-} // namespace xomnibus
+} // namespace xolokun

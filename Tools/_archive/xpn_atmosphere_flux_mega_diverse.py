@@ -12,8 +12,8 @@ import random
 random.seed(42)
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ATM_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Atmosphere")
-FLUX_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Flux")
+ATM_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Atmosphere")
+FLUX_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Flux")
 
 # DNA ranges
 XLOW_RANGE  = (0.02, 0.13)

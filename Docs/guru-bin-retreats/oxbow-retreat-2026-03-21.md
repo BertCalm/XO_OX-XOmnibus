@@ -19,7 +19,7 @@
 
 ## Pre-Retreat State
 
-OXBOW was added to XOmnibus on 2026-03-20 and seanced the same day, receiving a post-fix score of 9.0/10. It arrived with 160 presets across all moods, the highest factory count of any engine added in that session. The seance confirmed all 18 parameters wired to audio, two Blessing candidates (Chiasmus Reverb Architecture B017 and Convergence-Gated Golden Standing Waves B018), and six doctrine passes.
+OXBOW was added to XOlokun on 2026-03-20 and seanced the same day, receiving a post-fix score of 9.0/10. It arrived with 160 presets across all moods, the highest factory count of any engine added in that session. The seance confirmed all 18 parameters wired to audio, two Blessing candidates (Chiasmus Reverb Architecture B017 and Convergence-Gated Golden Standing Waves B018), and six doctrine passes.
 
 This retreat is OXBOW's first formal sound design examination. It begins not from a thin library that needs expansion, but from an already substantial one that needs to understand itself. 160 presets is a quantity. What this retreat provides is the *why* behind the numbers — the parameter logic, the sweet spots, the traps, and the five recipe categories that will carry the library from 160 toward 210+ with deliberate intent rather than random exploration.
 

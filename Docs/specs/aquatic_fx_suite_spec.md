@@ -322,7 +322,7 @@ stage 20 (Brickwall Limiter):
 ... → Bus Compressor → [AquaticFXSuite] → Brickwall Limiter → DC Blocker
 ```
 
-Parameters are registered in `XOmnibusProcessor::createParameterLayout()` alongside existing
+Parameters are registered in `XOlokunProcessor::createParameterLayout()` alongside existing
 master FX parameters, using the `aqua_` prefix throughout.
 
 The suite's `prepare(sampleRate, samplesPerBlock)` is called from `MasterFXChain::prepare()`.

@@ -20,14 +20,14 @@ the next closest is selected.
 
 CLI:
     python xpn_dna_interpolator.py start.xometa end.xometa \\
-        --presets-dir ./Presets/XOmnibus/ \\
+        --presets-dir ./Presets/XOlokun/ \\
         --steps 8 \\
         --easing ease-in-out \\
         --engine OBLONG \\
         --format text
 
     python xpn_dna_interpolator.py start.xometa end.xometa \\
-        --presets-dir ./Presets/XOmnibus/ \\
+        --presets-dir ./Presets/XOlokun/ \\
         --steps 6 \\
         --format json
 
@@ -295,8 +295,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("end", help="Path to end .xometa preset")
     parser.add_argument(
         "--presets-dir",
-        default="./Presets/XOmnibus/",
-        help="Root directory to scan for .xometa files (default: ./Presets/XOmnibus/)",
+        default="./Presets/XOlokun/",
+        help="Root directory to scan for .xometa files (default: ./Presets/XOlokun/)",
     )
     parser.add_argument(
         "--steps",

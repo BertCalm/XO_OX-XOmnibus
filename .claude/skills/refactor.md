@@ -89,7 +89,7 @@ Classify the refactoring type and generate a plan:
 - If a test breaks, revert the last change and investigate
 - Never refactor and change behavior in the same commit
 
-**XOmnibus-specific rules:**
+**XOlokun-specific rules:**
 - **NEVER** rename a parameter ID — use `/migrate` instead
 - **NEVER** change DSP behavior during refactoring (separate concern)
 - **NEVER** modify the `SynthEngine` interface without updating all engines

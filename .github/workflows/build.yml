@@ -1,4 +1,4 @@
-name: Build XOmnibus
+name: Build XOlokun
 
 on:
   push:
@@ -54,28 +54,28 @@ jobs:
 
       - name: Verify AU component
         run: |
-          if [ ! -d "build/XOmnibus_artefacts/Release/AU/XOmnibus.component" ]; then
+          if [ ! -d "build/XOlokun_artefacts/Release/AU/XOlokun.component" ]; then
             echo "ERROR: AU component not found"
             exit 1
           fi
-          echo "AU component found at build/XOmnibus_artefacts/Release/AU/XOmnibus.component"
+          echo "AU component found at build/XOlokun_artefacts/Release/AU/XOlokun.component"
 
       - name: Verify Standalone app
         run: |
-          if [ ! -d "build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app" ]; then
+          if [ ! -d "build/XOlokun_artefacts/Release/Standalone/XOlokun.app" ]; then
             echo "ERROR: Standalone app not found"
             exit 1
           fi
-          echo "Standalone app found at build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app"
+          echo "Standalone app found at build/XOlokun_artefacts/Release/Standalone/XOlokun.app"
 
       - name: Upload AU component
         uses: actions/upload-artifact@v4
         with:
-          name: XOmnibus-AU
-          path: build/XOmnibus_artefacts/Release/AU/XOmnibus.component
+          name: XOlokun-AU
+          path: build/XOlokun_artefacts/Release/AU/XOlokun.component
 
       - name: Upload Standalone app
         uses: actions/upload-artifact@v4
         with:
-          name: XOmnibus-Standalone
-          path: build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app
+          name: XOlokun-Standalone
+          path: build/XOlokun_artefacts/Release/Standalone/XOlokun.app

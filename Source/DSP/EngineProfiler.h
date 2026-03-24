@@ -4,7 +4,7 @@
 #include <chrono>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // EngineProfiler — Real-time CPU measurement for audio engine profiling.
@@ -206,4 +206,4 @@ private:
     std::atomic<bool> budgetExceeded { false };
 };
 
-} // namespace xomnibus
+} // namespace xolokun

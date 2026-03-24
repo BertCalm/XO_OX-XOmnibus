@@ -27,7 +27,7 @@ def generate_coupling_comment(
     xometa_path: str,
     bpm: float = 120.0,
     root_note: str = "C3",
-    xomnibus_version: str = "1.0",
+    xolokun_version: str = "1.0",
     render_date: Optional[str] = None,
 ) -> str:
     """
@@ -37,7 +37,7 @@ def generate_coupling_comment(
         xometa_path: Path to the .xometa JSON file.
         bpm: BPM to embed in RenderConditions.
         root_note: Root note to embed in RenderConditions.
-        xomnibus_version: XOmnibus version string.
+        xolokun_version: XOlokun version string.
         render_date: ISO date string (YYYY-MM-DD). Defaults to today.
 
     Returns:
@@ -74,7 +74,7 @@ def generate_coupling_comment(
     bpm_str = f"{float(bpm):.0f}" if float(bpm) == int(bpm) else str(bpm)
     lines.append(
         f'  <RenderConditions bpm="{bpm_str}" root_note="{root_note}" '
-        f'xomnibus_version="{xomnibus_version}" render_date="{render_date}" />'
+        f'xolokun_version="{xolokun_version}" render_date="{render_date}" />'
     )
 
     lines.append("-->")
@@ -166,9 +166,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Root note to embed in RenderConditions (default: C3).",
     )
     parser.add_argument(
-        "--xomnibus-version",
+        "--xolokun-version",
         default="1.0",
-        help="XOmnibus version string (default: 1.0).",
+        help="XOlokun version string (default: 1.0).",
     )
     parser.add_argument(
         "--render-date",
@@ -191,7 +191,7 @@ def main() -> None:
             xometa_path=args.xometa,
             bpm=args.bpm,
             root_note=args.root_note,
-            xomnibus_version=args.xomnibus_version,
+            xolokun_version=args.xolokun_version,
             render_date=args.render_date,
         )
     except json.JSONDecodeError as exc:

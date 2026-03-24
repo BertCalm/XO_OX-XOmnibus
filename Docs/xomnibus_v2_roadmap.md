@@ -1,4 +1,4 @@
-# XOmnibus V2 Roadmap
+# XOlokun V2 Roadmap
 
 *Drafted: 2026-03-14 (mid next week target: ~2026-03-18)*
 *Scope rule: V1 = everything that existed by 2026-03-14 EOD. V2 = anything born after that date.*
@@ -9,7 +9,7 @@
 
 34 engines registered (24 original + 5 Constellation + OVERLAP + OUTWIT + OMBRE + ORCA + OCTOPUS), 2,451 presets, 7 moods, full doctrine compliance, all seances complete.
 The Constellation (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) is integrated as stubs, swept, and description-complete.
-OVERLAP and OUTWIT are Phase 3 complete in standalone form and pending XOmnibus installation.
+OVERLAP and OUTWIT are Phase 3 complete in standalone form and pending XOlokun installation.
 This document is what comes next.
 
 ---
@@ -172,4 +172,4 @@ Ongoing:
 - `Docs/audio_to_buffer_phase3_spec.md` — AudioToBuffer implementation spec
 - `~/.claude/skills/synth-seance/knowledge/visions/` — Full ghost vision files
 - `~/.claude/projects/-Users-joshuacramblet/memory/theorem-2026-03-14.md` — Theorem results detail
-- `Docs/xomnibus_engine_roadmap.md` — Updated engine integration status
+- `Docs/xolokun_engine_roadmap.md` — Updated engine integration status

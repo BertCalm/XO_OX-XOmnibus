@@ -18,11 +18,11 @@
 
 ### 1. Bank ordering — RESOLVED (2026-03-22)
 - `select_presets()` was returning presets in farthest-point-sampling (diversity)
-  order, not XOmnibus browser order.
+  order, not XOlokun browser order.
 - **Fix**: After `selector.select_presets()` returns, `oxport.py` now re-sorts
   `selected_presets` by `path` (ascending) — identical to Python `sorted()` on
   `.xometa` paths, which matches JUCE `File::findChildFiles` alphabetical ordering.
-- This guarantees MIDI program change `N` loads the same preset that the XOmnibus
+- This guarantees MIDI program change `N` loads the same preset that the XOlokun
   browser shows at position `N`.
 - Bank authoritative reference: `Docs/render_specs/mpce_perc_001_bank_index.json`
   (633 ONSET presets, programs 0–632, alphabetical path order).
@@ -85,7 +85,7 @@ python3 Tools/oxport.py build packs/mpce-perc-001.oxbuild --dry-run
 # Single-preset render test (uses program=0 from render spec, no SELECT)
 python3 Tools/oxport.py build packs/mpce-perc-001.oxbuild \
     --skip select,assemble,fallback,intent,docs,art,package,validate \
-    --midi-port "XOmnibus" --audio-device "BlackHole"
+    --midi-port "XOlokun" --audio-device "BlackHole"
 
 # Full build with SELECT wired to RENDER
 python3 Tools/oxport.py build packs/mpce-perc-001.oxbuild \

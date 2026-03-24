@@ -7,7 +7,7 @@
 #include <array>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // PinMatrixRandomizer — EMS VCS3-inspired random coupling discovery.
@@ -303,4 +303,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

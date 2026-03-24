@@ -37,7 +37,7 @@ For XO_OX, the opportunity gap is clear: **no expansion creator has yet built pa
 
 **Oxport implication:** The Keygroup Synth Engine is a potential new program type that XPN packs may eventually need to target. Monitor whether this becomes a standalone-compatible program type in future firmware.
 
-**VST3 implication:** Third-party plugin instrument packs (not just AIR) can now be targets for MPC content — opens door for XOmnibus plugin programs appearing in MPC Desktop as first-class pack content.
+**VST3 implication:** Third-party plugin instrument packs (not just AIR) can now be targets for MPC content — opens door for XOlokun plugin programs appearing in MPC Desktop as first-class pack content.
 
 ---
 
@@ -234,12 +234,12 @@ MPC Stems (zplane Stems Pro, available on standalone since July 2024) splits aud
 
 **MEDIUM PRIORITY — VST3 Program Type:**
 
-MPC Desktop 3.5 beta (May 2025) added VST3 support. XOmnibus ships as AU/VST3 on desktop. This creates an important opportunity:
+MPC Desktop 3.5 beta (May 2025) added VST3 support. XOlokun ships as AU/VST3 on desktop. This creates an important opportunity:
 
-- XOmnibus engines running in MPC Desktop as VST3 plugin programs = XO_OX content that's *playable inside MPC Software*
-- A user with MPC Desktop 3.5 could theoretically load XOmnibus as a VST3 instrument track
+- XOlokun engines running in MPC Desktop as VST3 plugin programs = XO_OX content that's *playable inside MPC Software*
+- A user with MPC Desktop 3.5 could theoretically load XOlokun as a VST3 instrument track
 - **Oxport pipeline should document this use case** even if it's user-driven rather than pack-native
-- Future consideration: XPN packs that reference XOmnibus VST3 plugin programs as instruments (when standalone VST3 hosting reaches hardware)
+- Future consideration: XPN packs that reference XOlokun VST3 plugin programs as instruments (when standalone VST3 hosting reaches hardware)
 
 *Note: As of research date, VST3 support is Desktop/controller mode only — not confirmed for standalone hardware. Watch for standalone VST3 in future firmware.*
 
@@ -275,12 +275,12 @@ MPC XL's 16 Q-Link encoders have OLED displays — each knob can show its own la
 
 ---
 
-### 3.2 XOmnibus Platform Impact
+### 3.2 XOlokun Platform Impact
 
-**MPCe + XOmnibus Preset Design:**
+**MPCe + XOlokun Preset Design:**
 
-XOmnibus presets running via MPC Desktop VST3 (or future standalone) could expose X/Y modulation to the MPCe pad. This means:
-- Each XOmnibus engine should have **recommended MPCe X/Y macro targets** documented
+XOlokun presets running via MPC Desktop VST3 (or future standalone) could expose X/Y modulation to the MPCe pad. This means:
+- Each XOlokun engine should have **recommended MPCe X/Y macro targets** documented
 - Macro 1/2 are the natural candidates: in many engines, Macro 1 = intensity/space, Macro 2 = character
 - For engines with DRAMA/BOND/GROW macros: map these to pad XY for live performance arcs
 
@@ -366,7 +366,7 @@ When designing drum programs for the Onset engine or XPN drum exports:
 
 ### Recommendation 3: Add MPCe XY Modulation Target Documentation to All Engine Cards
 
-Each XOmnibus engine card should include:
+Each XOlokun engine card should include:
 ```
 MPCe Recommended Mapping:
   Pad X → [parameter name]
@@ -393,7 +393,7 @@ Document this as the **"Stems Separation Standard"** in Oxport production guidel
 ### Recommendation 5: Monitor Standalone VST3 Announcement
 
 MPC Desktop 3.5 added VST3 support for computer-connected mode. The natural next step is standalone VST3 support on MPC XL / Live III hardware (sufficient RAM and CPU to run them). When Akai announces standalone VST3:
-- XOmnibus plugin programs become installable as MPC expansion content natively
+- XOlokun plugin programs become installable as MPC expansion content natively
 - Oxport would need to generate a new program type: `<ProgramType>Plugin</ProgramType>` with VST3 reference
 - This would be the most significant Oxport update in the platform's history
 
@@ -408,7 +408,7 @@ Consider a new Oxport export type: `cv_gate_patterns`
 - MIDI-only patterns designed to control CV/Gate outputs on MPC XL
 - One voice per output, 1V/oct pitch tracking, gate logic
 - Target market: modular synthesizer users using MPC XL as sequencer brain
-- Content concept: XOmnibus engine personality expressed as modular gate patterns ("what would OVERDUB sequence look like as CV?")
+- Content concept: XOlokun engine personality expressed as modular gate patterns ("what would OVERDUB sequence look like as CV?")
 
 ---
 

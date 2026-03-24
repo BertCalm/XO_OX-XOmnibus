@@ -4,13 +4,13 @@
 **Panels convened:** 25 genre specialists + full product team
 **Engine:** ObrixEngine.h | Gallery: OBRIX | Accent: Reef Jade `#1E8B7E`
 **Seance score:** 6.4/10 (Wave 1) | **Presets:** 0 (blocked until Wave 3 param freeze)
-**Identity:** The coral reef — modular brick synthesis, baby brother of XOmnibus
+**Identity:** The coral reef — modular brick synthesis, baby brother of XOlokun
 
 ---
 
 ## Executive Summary
 
-OBRIX is a runtime-configurable modular synthesizer inside XOmnibus — 2 sources, 3 processors, 4 modulators, 3 effects, all swappable at runtime. The Guild finds the brick concept genuinely novel (no competitor offers this) but identifies three barriers to adoption: the routing bugs flagged by the seance make the architecture untrustworthy, the zero-preset state means producers can't discover the engine through sound, and the "Wavetable" source type creates a promise the implementation doesn't keep. The strongest guild signal: 18 of 25 specialists want OBRIX as their "sketch pad" synth — the one they reach for when they don't know what sound they want yet. That's the product position.
+OBRIX is a runtime-configurable modular synthesizer inside XOlokun — 2 sources, 3 processors, 4 modulators, 3 effects, all swappable at runtime. The Guild finds the brick concept genuinely novel (no competitor offers this) but identifies three barriers to adoption: the routing bugs flagged by the seance make the architecture untrustworthy, the zero-preset state means producers can't discover the engine through sound, and the "Wavetable" source type creates a promise the implementation doesn't keep. The strongest guild signal: 18 of 25 specialists want OBRIX as their "sketch pad" synth — the one they reach for when they don't know what sound they want yet. That's the product position.
 
 ---
 
@@ -178,7 +178,7 @@ Nobody mentioned the **init patch output level**. The current default level is 0
 
 ### The Unseen Opportunity
 
-OBRIX's brick system + XOmnibus coupling = **a configurable coupling processor**. No other engine in the fleet can reconfigure its signal path at runtime. If OBRIX receives coupling input and routes it through its brick chain (wavefolder, filter, ring mod, effects), it becomes a *programmable coupling processor* — not just a sound source but a sound *transformer*. The producer doesn't just couple ONSET → OBRIX for added harmonics. They configure OBRIX's bricks to *shape* the coupled signal: drum transients through a wavefolder, pad audio through a chorus, bass through a resonant filter. OBRIX becomes the fleet's universal coupling insert.
+OBRIX's brick system + XOlokun coupling = **a configurable coupling processor**. No other engine in the fleet can reconfigure its signal path at runtime. If OBRIX receives coupling input and routes it through its brick chain (wavefolder, filter, ring mod, effects), it becomes a *programmable coupling processor* — not just a sound source but a sound *transformer*. The producer doesn't just couple ONSET → OBRIX for added harmonics. They configure OBRIX's bricks to *shape* the coupled signal: drum transients through a wavefolder, pad audio through a chorus, bass through a resonant filter. OBRIX becomes the fleet's universal coupling insert.
 
 This requires one architectural addition: a "coupling input as source" brick type. Source 3: External (coupling input). Route it through Proc3 and the FX chain. Suddenly OBRIX isn't just a synth — it's a modular effects processor for the entire fleet.
 
@@ -193,7 +193,7 @@ This requires one architectural addition: a "coupling input as source" brick typ
 → 4. XO_OX must choose: curate brick additions (slow, quality-controlled) or open the brick SDK (fast, chaotic)
 → 5. The Brick Drop strategy (new bricks every 2-4 weeks) positions XO_OX as a living-instrument company, not a ship-and-forget plugin
 → 6. Competitors cannot replicate the Brick Drop — their architectures are fixed. OBRIX's runtime configurability is a structural moat
-→ 7. OBRIX becomes the engine that *defines* XOmnibus to new users — the gateway drug. The reef grows.
+→ 7. OBRIX becomes the engine that *defines* XOlokun to new users — the gateway drug. The reef grows.
 ```
 
 **Decision: Add "coupling input as source" brick (the unseen opportunity)**
@@ -210,7 +210,7 @@ This requires one architectural addition: a "coupling input as source" brick typ
 
 ### The Prediction
 
-In 18 months, producers will not think of OBRIX as "the modular synth inside XOmnibus." They will think of it as "the instrument that changes every time I open it." The Brick Drop strategy — new source types, new processor types, new effects — turns OBRIX into a subscription-like experience inside a one-time-purchase product. Each drop is a reason to open XOmnibus again. The reef doesn't just grow — it *evolves*. And producers who've been using OBRIX for 18 months will have patches that literally couldn't have existed 12 months earlier, because the bricks they're built from didn't exist yet.
+In 18 months, producers will not think of OBRIX as "the modular synth inside XOlokun." They will think of it as "the instrument that changes every time I open it." The Brick Drop strategy — new source types, new processor types, new effects — turns OBRIX into a subscription-like experience inside a one-time-purchase product. Each drop is a reason to open XOlokun again. The reef doesn't just grow — it *evolves*. And producers who've been using OBRIX for 18 months will have patches that literally couldn't have existed 12 months earlier, because the bricks they're built from didn't exist yet.
 
 The danger: if the Brick Drop pace is too slow (quarterly, not biweekly), the reef feels stagnant. If the pace is too fast (weekly), quality control fails and broken bricks erode trust. The sweet spot is every 2-3 weeks, with each drop being 1-2 new brick types + 10-15 presets that demonstrate them. Not a product update — a *reef growth event*.
 

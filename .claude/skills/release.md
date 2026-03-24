@@ -36,7 +36,7 @@ Run these checks before any version change:
 - [ ] No new compiler warnings introduced
 
 **Documentation:**
-- [ ] `Docs/xomnibus_master_specification.md` reflects current state
+- [ ] `Docs/xolokun_master_specification.md` reflects current state
 - [ ] CLAUDE.md engine tables are current
 - [ ] Migration reference is up to date
 - [ ] Any new engines have sound design guide entries

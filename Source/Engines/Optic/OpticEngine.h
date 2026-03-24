@@ -7,7 +7,7 @@
 #include <cmath>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -522,7 +522,7 @@ struct OpticModOutputs
 // feedback loop of light and rhythm, like a comb jelly synchronizing its
 // bioluminescent flashes to the ocean's current.
 //
-// Unique among XOmnibus engines: 0 voices, 0 audio output, 16 parameters.
+// Unique among XOlokun engines: 0 voices, 0 audio output, 16 parameters.
 // OPTIC's value is entirely in what it *does to other engines*.
 //
 // Key couplings:
@@ -617,7 +617,7 @@ public:
         }
 
         // ---- ParamSnapshot: cache all parameter values once per block ----
-        // This is the XOmnibus standard pattern: read atomic parameter pointers
+        // This is the XOlokun standard pattern: read atomic parameter pointers
         // once at block start, then use local copies in the inner loop.
         // Avoids per-sample atomic loads (which defeat CPU branch prediction).
 
@@ -1051,4 +1051,4 @@ private:
     std::atomic<float>* pVizIntensity = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

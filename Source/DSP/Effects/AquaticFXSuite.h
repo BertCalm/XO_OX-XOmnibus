@@ -7,7 +7,7 @@
 #include <cmath>
 #include <random>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // AquaticFXSuite — 6-stage aquatic-themed master effects chain.
@@ -65,7 +65,7 @@ public:
 
     //--------------------------------------------------------------------------
     // Static parameter layout factory
-    // Call from XOmnibusProcessor::createParameterLayout() to add all aqua_ params.
+    // Call from XOlokunProcessor::createParameterLayout() to add all aqua_ params.
     //--------------------------------------------------------------------------
     static void addParameters (juce::AudioProcessorValueTreeState::ParameterLayout& layout);
 
@@ -1461,4 +1461,4 @@ inline void AquaticFXSuite::addParameters (juce::AudioProcessorValueTreeState::P
     layout.add (std::make_unique<AP>  ("aqua_biolume_character", "Biolume Character", NR (0.0f,   1.0f,   0.001f), 0.5f));
 }
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -3,7 +3,7 @@
 xpn_entangled_final_diversity_push.py
 Generates 120 .xometa Entangled presets with MAXIMUM DNA diversity impact.
 24 batches × 5 presets each — one batch per extreme DNA corner combination.
-Output: Presets/XOmnibus/Entangled/
+Output: Presets/XOlokun/Entangled/
 """
 
 import json
@@ -12,7 +12,7 @@ import random
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 
 XLOW  = (0.04, 0.12)
 XHIGH = (0.88, 0.96)

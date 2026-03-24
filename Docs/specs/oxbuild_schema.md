@@ -90,7 +90,7 @@ DNA analysis, and the existing tool configurations.
 | Field | Type | Description |
 |-------|------|-------------|
 | `pack_id` | string | Unique identifier. Convention: `{platform}-{archetype}-{edition}` |
-| `engine` | string | Primary XOmnibus engine name (ONSET, OPAL, etc.) |
+| `engine` | string | Primary XOlokun engine name (ONSET, OPAL, etc.) |
 | `platform` | string | Target: `mpce`, `standard`, `both` |
 | `archetype` | string | Content type: `percussion`, `melodic`, `texture`, `coupled` |
 

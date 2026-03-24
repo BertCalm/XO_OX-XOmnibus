@@ -6,7 +6,7 @@
 
 ## Who They Are
 
-The SRO Team is the backstage crew of XOmnibus. While 34 engines compete for the spotlight — sculpting timbres, folding waveforms, eating their own tails — the SRO Team works in the walls, under the floor, behind the racks. They are the ones who make sure four engines can run simultaneously without melting the CPU into a puddle of regret.
+The SRO Team is the backstage crew of XOlokun. While 34 engines compete for the spotlight — sculpting timbres, folding waveforms, eating their own tails — the SRO Team works in the walls, under the floor, behind the racks. They are the ones who make sure four engines can run simultaneously without melting the CPU into a puddle of regret.
 
 They are not glamorous. They have never received a Blessing. No ghost has ever praised them by name. But every engine that passes a seance does so on infrastructure the SRO Team built.
 

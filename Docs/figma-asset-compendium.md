@@ -4,7 +4,7 @@
 Date: 2026-03-22
 
 ### Purpose
-Reference compendium of community Figma wireframe kits, component libraries, and design systems curated for use across all XO_OX products: XOmnibus (desktop plugin), Outshine/Originate (companion tools), XO-OX.org (website), audio-xpm-creator (web app), and iOS AUv3/Standalone app.
+Reference compendium of community Figma wireframe kits, component libraries, and design systems curated for use across all XO_OX products: XOlokun (desktop plugin), Outshine/Originate (companion tools), XO-OX.org (website), audio-xpm-creator (web app), and iOS AUv3/Standalone app.
 
 ---
 
@@ -175,7 +175,7 @@ The most comprehensive kit in the collection — 100+ nodes covering:
 - REFERENCE the 3×3 grid card layout for the iOS engine selector (each card = one engine).
 - ADOPT the 4-tab bottom navigation pattern for the iOS app (Engines | Presets | Coupling | Settings).
 - REFERENCE the profile page layout for the "Engine Detail" view (avatar = engine icon, grid = preset cards).
-- ADOPT the settings screen patterns for iOS XOmnibus preferences.
+- ADOPT the settings screen patterns for iOS XOlokun preferences.
 - REFERENCE onboarding flow for iOS first-launch tutorial.
 
 **Key Node IDs:**
@@ -616,10 +616,10 @@ All in `~/` (home directory root). These document the visual evolution of XO-OX.
 #### Core Design System Docs
 | File | Path | Content |
 |------|------|---------|
-| Master UI Spec v2 | `Docs/design/xomnibus_ui_master_spec_v2.md` | Complete UI component specifications |
-| Design Guidelines | `Docs/design/xomnibus_design_guidelines.md` | Design methodology and constraints |
-| Technical Design System | `Docs/xomnibus_technical_design_system.md` | Implementation-level design tokens |
-| Brand Identity | `Docs/xomnibus_brand_identity_and_launch.md` | Brand positioning and launch strategy |
+| Master UI Spec v2 | `Docs/design/xolokun_ui_master_spec_v2.md` | Complete UI component specifications |
+| Design Guidelines | `Docs/design/xolokun_design_guidelines.md` | Design methodology and constraints |
+| Technical Design System | `Docs/xolokun_technical_design_system.md` | Implementation-level design tokens |
+| Brand Identity | `Docs/xolokun_brand_identity_and_launch.md` | Brand positioning and launch strategy |
 | Coupling UI Architecture | `Docs/coupling-ui-architecture-2026-03-21.md` | Coupling interface specification |
 
 #### Outshine & Originate
@@ -640,13 +640,13 @@ All in `~/` (home directory root). These document the visual evolution of XO-OX.
 #### HTML Prototype
 | File | Path | Content |
 |------|------|---------|
-| Main UI Mockup | `Docs/mockups/xomnibus-main-ui.html` | Interactive HTML prototype of plugin UI |
+| Main UI Mockup | `Docs/mockups/xolokun-main-ui.html` | Interactive HTML prototype of plugin UI |
 
 ---
 
 ### E. Site Assets Inventory
 
-**Path**: `Site/` (within XOmnibus repo)
+**Path**: `Site/` (within XOlokun repo)
 **Total**: 8,843+ image assets
 
 Key directories:

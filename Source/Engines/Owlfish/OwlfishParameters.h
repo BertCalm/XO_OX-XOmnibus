@@ -96,7 +96,7 @@ inline const juce::StringArray couplingBus {
 
 } // namespace Enums
 
-// -- Parameter Registration (vector-based, for XOmnibus shared APVTS) --
+// -- Parameter Registration (vector-based, for XOlokun shared APVTS) --
 
 inline void addParameters (std::vector<std::unique_ptr<juce::RangedAudioParameter>>& p)
 {

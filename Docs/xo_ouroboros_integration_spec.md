@@ -1,8 +1,8 @@
-# XOuroboros — XOmnibus Integration Spec
+# XOuroboros — XOlokun Integration Spec
 
 ## Engine Identity
 - **Engine ID:** `"OuroborosEngine"`
-- **XOmnibus Short Name:** OUROBOROS
+- **XOlokun Short Name:** OUROBOROS
 - **Accent Color:** Strange Attractor Red `#FF2D2D`
 - **Max Voices:** 6
 - **CPU Budget:** <22% single-engine, <28% in dual-engine preset

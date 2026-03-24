@@ -1,4 +1,4 @@
-# AIR Plugin Research Brief — XOmnibus Compatibility
+# AIR Plugin Research Brief — XOlokun Compatibility
 *Date: 2026-03-16 | Status: Research Brief*
 
 ---
@@ -30,11 +30,11 @@ achievable without an OEM firmware deal with Akai.
 
 ### Approach A — Native AIR-Compatible Plugin
 
-Package XOmnibus as an AU/VST3 that MPC Software discovers and loads, mirroring how AIR plugins
+Package XOlokun as an AU/VST3 that MPC Software discovers and loads, mirroring how AIR plugins
 work on desktop.
 
 **What this requires:**
-- XOmnibus already passes `auval` — the DSP is ready.
+- XOlokun already passes `auval` — the DSP is ready.
 - Apple Developer ID + notarization ($99/yr) for signed macOS distribution.
 - An expansion ZIP `plugin_bundle/` directory with a `manifest.json` declaring the plugin dependency
   (see `Docs/specs/xpn_air_plugin_architecture_rnd.md` for the full proposed spec).
@@ -52,7 +52,7 @@ Rather than replacing AIR plugins, design XPN packs that complement them. For ex
 - Keygroup programs (OPAL / OVERWORLD samples) tuned to work in the same key/tempo context as
   AIR Solina pads.
 - A `params_sidecar.json` file per program (see full spec in `xpn_air_plugin_architecture_rnd.md`)
-  that XOmnibus parses to restore engine voice character alongside the MPC program.
+  that XOlokun parses to restore engine voice character alongside the MPC program.
 
 This approach requires zero Akai cooperation. It positions XO_OX packs as "AIR-aware" — designed
 to be loaded alongside AIR plugins, with complementary sonic roles documented in pack liner notes.
@@ -68,11 +68,11 @@ These tasks require no novel DSP or SDK access:
 - Finalize `params_sidecar.json` format (spec exists in `xpn_air_plugin_architecture_rnd.md`).
 - Add sidecar file generation to `xpn_bundle_builder.py` — emit one `.json` per program directory
   containing the engine name, preset name, and key parameter values from the `.xometa` source.
-- Write an XOmnibus "Sidecar Import" feature: scan a user-selected directory for
+- Write an XOlokun "Sidecar Import" feature: scan a user-selected directory for
   `params_sidecar.json` files and load matching engine presets automatically.
 - Author a pack design guide: "XO_OX + AIR — Complementary Roles" covering sonic pairing
   (ONSET drums + AIR Bassline, OPAL pads + AIR Solina, etc.).
-- Pursue Apple notarization so XOmnibus can be distributed as a signed free download, linkable
+- Pursue Apple notarization so XOlokun can be distributed as a signed free download, linkable
   from pack pages and expansion metadata.
 
 ---
@@ -85,7 +85,7 @@ These tasks require novel architecture decisions, DSP porting, or SDK reverse-en
   getting MPC Software to honor it requires either Akai partnership outreach (business) or
   reverse-engineering the MPC expansion loader (technical risk). This is Opus-level coordination
   work, not raw DSP.
-- **Hardware MPC native port**: Running XOmnibus natively on MPC hardware (ARM Linux, embedded
+- **Hardware MPC native port**: Running XOlokun natively on MPC hardware (ARM Linux, embedded
   audio constraints, no JUCE GUI layer) is a full platform port. Requires deep embedded Linux
   knowledge, JUCE headless builds, and an Akai OEM arrangement. Multi-month effort minimum.
 - **AIR Bassline / Solina program generation**: If XO_OX wanted to generate *programs that drive
@@ -97,9 +97,9 @@ These tasks require novel architecture decisions, DSP porting, or SDK reverse-en
 ## Recommended Path
 
 1. **Now**: Ship `params_sidecar.json` in all new XPN packs. Zero dependencies, immediate value
-   for XOmnibus users.
-2. **V1.1**: Build XOmnibus sidecar importer. Sonnet-buildable in one session.
-3. **V1.x**: Notarize XOmnibus for signed distribution. Link from pack pages.
+   for XOlokun users.
+2. **V1.1**: Build XOlokun sidecar importer. Sonnet-buildable in one session.
+3. **V1.x**: Notarize XOlokun for signed distribution. Link from pack pages.
 4. **V2**: Monitor MPC Software for third-party plugin bundle support. File a feature request with
    Akai. Full `plugin_bundle/` ZIP architecture is the target when that gate opens.
 

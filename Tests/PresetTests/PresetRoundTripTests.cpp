@@ -1,5 +1,5 @@
 /*
-    XOmnibus Preset Round-Trip Tests
+    XOlokun Preset Round-Trip Tests
     =================================
     Tests for PresetManager: parsing, serialization, validation, DNA search.
     No test framework — assert-based with descriptive console output.
@@ -14,7 +14,7 @@
 #include <string>
 #include <cmath>
 
-using namespace xomnibus;
+using namespace xolokun;
 
 //==============================================================================
 // Test infrastructure
@@ -556,7 +556,7 @@ static void testFileSize()
     {
         auto tempDir = juce::File::getSpecialLocation(
             juce::File::tempDirectory);
-        auto bigFile = tempDir.getChildFile("xomnibus_test_big.xometa");
+        auto bigFile = tempDir.getChildFile("xolokun_test_big.xometa");
 
         // Write >1MB of data
         juce::String bigContent;

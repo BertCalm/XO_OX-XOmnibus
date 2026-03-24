@@ -54,7 +54,7 @@ Use these for variety across packs, or when the sound design concept demands it.
 - NW = staccato, NE = accent, SW = legato, SE = tremolo
 - Pressure (Z) adds a fifth dimension: breath or bow intensity
 
-**Coupling Corners** — for XOmnibus engine-derived packs:
+**Coupling Corners** — for XOlokun engine-derived packs:
 - NW = solo/isolated, NE = light coupling (two engines), SW = heavy coupling, SE = full coupling
 - Horizontal axis controls isolation-to-entanglement; vertical controls coupling density
 

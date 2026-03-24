@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-OddfeliX .xocmeta → XOmnibus .xometa Migration Script
+OddfeliX .xocmeta → XOlokun .xometa Migration Script
 
 Converts all 114 OddfeliX factory presets from .xocmeta format
-to the unified .xometa format for XOmnibus.
+to the unified .xometa format for XOlokun.
 
 Usage:
     python3 migrate_xocmeta_to_xometa.py [--dry-run]
@@ -19,9 +19,9 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 FACTORY_DIR = Path(__file__).parent.parent / "Presets" / "Factory"
-OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+OUTPUT_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
-# OddfeliX category → XOmnibus mood
+# OddfeliX category → XOlokun mood
 MOOD_MAP = {
     "Grounded": "Foundation",
     "Floating": "Atmosphere",

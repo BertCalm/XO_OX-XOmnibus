@@ -6,7 +6,7 @@
 #include "../CytomicSVF.h"
 #include "../StandardLFO.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXOnslaught — "Wave Function Collapse" boutique effect.
@@ -382,4 +382,4 @@ private:
     float mix             = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

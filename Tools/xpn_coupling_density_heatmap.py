@@ -282,7 +282,7 @@ def main():
     parser.add_argument(
         "--presets-dir",
         default=None,
-        help="Path to Presets/XOmnibus/Entangled/ directory. Auto-detected if omitted.",
+        help="Path to Presets/XOlokun/Entangled/ directory. Auto-detected if omitted.",
     )
     parser.add_argument(
         "--engine-filter",
@@ -297,7 +297,7 @@ def main():
     else:
         script_dir = pathlib.Path(__file__).resolve().parent
         repo_root  = script_dir.parent
-        presets_dir = repo_root / "Presets" / "XOmnibus" / "Entangled"
+        presets_dir = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     if not presets_dir.exists():
         print(f"[ERROR] Presets directory not found: {presets_dir}")

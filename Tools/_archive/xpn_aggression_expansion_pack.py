@@ -2,11 +2,11 @@
 """
 xpn_aggression_expansion_pack.py
 
-Generates high-aggression preset stubs (.xometa) for XOmnibus engines that are
+Generates high-aggression preset stubs (.xometa) for XOlokun engines that are
 naturally aggressive. Addresses the fleet DNA diversity problem: 27% of presets
 cluster at aggression 0.0–0.1. This tool fills the 0.6–1.0 aggressive territory.
 
-Outputs to Presets/XOmnibus/Flux/ (aggressive presets belong in the Flux mood).
+Outputs to Presets/XOlokun/Flux/ (aggressive presets belong in the Flux mood).
 
 Usage:
     python3 Tools/xpn_aggression_expansion_pack.py
@@ -698,10 +698,10 @@ def build_preset(
 
 def parse_args():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOmnibus" / "Flux"
+    default_output = repo_root / "Presets" / "XOlokun" / "Flux"
 
     parser = argparse.ArgumentParser(
-        description="Generate high-aggression preset stubs for XOmnibus engines.",
+        description="Generate high-aggression preset stubs for XOlokun engines.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -768,7 +768,7 @@ def main() -> None:
     total_skipped = 0
     seen_names: set[str] = set()
 
-    print(f"XOmnibus Aggression Expansion Pack")
+    print(f"XOlokun Aggression Expansion Pack")
     print(f"  Engines     : {', '.join(engines)}")
     print(f"  Bands       : {', '.join(BANDS.keys())}")
     print(f"  Per band    : {count_per_band}")

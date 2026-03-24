@@ -2,7 +2,7 @@
 xpn_foundation_ultra_diverse.py
 Generates 80 Foundation mood presets with extreme DNA diversity.
 16 corner combinations × 5 variants = 80 presets.
-Output: Presets/XOmnibus/Foundation/
+Output: Presets/XOlokun/Foundation/
 """
 
 import os
@@ -13,7 +13,7 @@ random.seed(None)
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Foundation")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Foundation")
 
 ENGINES = [
     "ODDFELIX", "ODDOSCAR", "OBLONG", "OBESE", "OVERBITE",

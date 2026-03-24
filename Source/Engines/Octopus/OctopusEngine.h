@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OctopusEngine — Decentralized Alien Intelligence Synthesis.
@@ -1457,4 +1457,4 @@ private:
     std::atomic<float>* paramMacroSpace = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -16,13 +16,13 @@
 #include <memory>
 #include <mutex>
 
-namespace xomnibus {
+namespace xolokun {
 
-class XOmnibusProcessor : public juce::AudioProcessor
+class XOlokunProcessor : public juce::AudioProcessor
 {
 public:
-    XOmnibusProcessor();
-    ~XOmnibusProcessor() override;
+    XOlokunProcessor();
+    ~XOlokunProcessor() override;
 
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -32,7 +32,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "XOmnibus"; }
+    const juce::String getName() const override { return "XOlokun"; }
     bool acceptsMidi() const override { return true; }
     bool producesMidi() const override { return false; }
     double getTailLengthSeconds() const override { return 6.0; }
@@ -228,7 +228,7 @@ private:
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOmnibusProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

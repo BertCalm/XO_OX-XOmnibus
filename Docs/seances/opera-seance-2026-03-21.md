@@ -64,7 +64,7 @@ Vangelis loves the 500ms window (human heartbeat timescale — the right duratio
 
 *Synthesizing the eight voices:*
 
-The Kuramoto field has demonstrated that collective oscillator dynamics can be a synthesis paradigm — not a technique, not an effect, but the engine's identity. OPERA's logical endpoint is an engine where multiple Kuramoto fields couple across voices AND across XOmnibus engines: a fleet-wide phase synchronization network where harmony is not intervals but *coherence*. The OperaConductor points further — toward a new class of instruments with autonomous dramatic intent, where the machine has a narrative arc and the player can override, collaborate, or surrender. The stereo field as a function of synchronization order is a principle that should migrate to other engines. Phase coherence is now a spatial coordinate.
+The Kuramoto field has demonstrated that collective oscillator dynamics can be a synthesis paradigm — not a technique, not an effect, but the engine's identity. OPERA's logical endpoint is an engine where multiple Kuramoto fields couple across voices AND across XOlokun engines: a fleet-wide phase synchronization network where harmony is not intervals but *coherence*. The OperaConductor points further — toward a new class of instruments with autonomous dramatic intent, where the machine has a narrative arc and the player can override, collaborate, or surrender. The stereo field as a function of synchronization order is a principle that should migrate to other engines. Phase coherence is now a spatial coordinate.
 
 ---
 

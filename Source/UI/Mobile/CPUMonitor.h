@@ -3,7 +3,7 @@
 #include <atomic>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // CPUMonitor — Real-time audio thread CPU tracking and quality mitigation.
@@ -217,4 +217,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

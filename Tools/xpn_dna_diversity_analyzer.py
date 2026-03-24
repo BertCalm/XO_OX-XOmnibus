@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_dna_diversity_analyzer.py
-Analyzes the full XOmnibus preset fleet for DNA diversity problems.
+Analyzes the full XOlokun preset fleet for DNA diversity problems.
 Outputs a human-readable report to stdout and saves a JSON snapshot.
 Uses stdlib only: json, os, math, random, statistics.
 """
@@ -16,7 +16,7 @@ from collections import defaultdict
 # ── Config ──────────────────────────────────────────────────────────────────
 PRESETS_ROOT = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus"
+    "Presets", "XOlokun"
 )
 SNAPSHOT_PATH = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -232,7 +232,7 @@ def print_dim_table(stats_dict, label="Fleet"):
 # ── Main ─────────────────────────────────────────────────────────────────────
 def main():
     print("=" * 70)
-    print("  XOmnibus DNA Diversity Analyzer")
+    print("  XOlokun DNA Diversity Analyzer")
     print("=" * 70)
 
     print("\nLoading presets...")

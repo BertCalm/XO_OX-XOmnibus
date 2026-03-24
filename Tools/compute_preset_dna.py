@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOmnibus Sonic DNA Fingerprint Generator
+XOlokun Sonic DNA Fingerprint Generator
 
 Computes a 6-dimensional "DNA" vector for every .xometa preset:
   [brightness, warmth, movement, density, space, aggression]
@@ -20,7 +20,7 @@ import math
 import sys
 from pathlib import Path
 
-PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+PRESET_DIR = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 # ---------------------------------------------------------------------------
 # Utility

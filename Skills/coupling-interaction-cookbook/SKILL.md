@@ -3,7 +3,7 @@
 **Invoke with:** `/coupling-interaction-cookbook`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On new engine addition or coupling type change
-**Purpose:** Quick-reference guide to the best engine pairings in XOmnibus — proven routes, coupling type recommendations, and character descriptions for each pair.
+**Purpose:** Quick-reference guide to the best engine pairings in XOlokun — proven routes, coupling type recommendations, and character descriptions for each pair.
 
 ---
 

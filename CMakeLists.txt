@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(XOmnibus VERSION 1.0.0 LANGUAGES C CXX)
+project(XOlokun VERSION 1.0.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -54,7 +54,7 @@ endif()
 
 # Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values).
 # All OFL-licensed. Embedded as C++ binary data via JUCE.
-juce_add_binary_data(XOmnibusFont
+juce_add_binary_data(XOlokunFont
     NAMESPACE "FontData"
     SOURCES
     Assets/fonts/SpaceGrotesk-Bold.otf
@@ -65,13 +65,13 @@ juce_add_binary_data(XOmnibusFont
     Assets/fonts/JetBrainsMono-Regular.ttf
 )
 
-juce_add_plugin(XOmnibus
+juce_add_plugin(XOlokun
     COMPANY_NAME "XO_OX Designs"
     PLUGIN_MANUFACTURER_CODE XoOx
-    PLUGIN_CODE Xomn
+    PLUGIN_CODE Xolk
     FORMATS ${XO_FORMATS}
-    PRODUCT_NAME "XOmnibus"
-    BUNDLE_ID "com.xo-ox.xomnibus"
+    PRODUCT_NAME "XOlokun"
+    BUNDLE_ID "com.xo-ox.xolokun"
     IS_SYNTH TRUE
     NEEDS_MIDI_INPUT TRUE
     NEEDS_MIDI_OUTPUT FALSE
@@ -82,7 +82,7 @@ juce_add_plugin(XOmnibus
 
 # Source files — only list files that exist.
 # As new modules are built, add them here.
-target_sources(XOmnibus PRIVATE
+target_sources(XOlokun PRIVATE
     # Core (interface + infrastructure)
     Source/Core/SynthEngine.h
     Source/Core/EngineRegistry.h
@@ -289,7 +289,7 @@ target_sources(XOmnibus PRIVATE
     Source/Core/MIDILearnManager.h
 
     # UI (Gallery Model)
-    Source/UI/XOmnibusEditor.h
+    Source/UI/XOlokunEditor.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h
     Source/UI/OpticVisualizer/OpticVisualizer.h
@@ -306,14 +306,29 @@ target_sources(XOmnibus PRIVATE
     Source/UI/Mobile/MobilePlaySurface.h
     Source/UI/Mobile/ParameterDrawer.h
 
+    # Kitchen Collection — Fusion (EP) engines
+    Source/Engines/Oasis/OasisEngine.cpp
+    Source/Engines/Oddfellow/OddfellowEngine.cpp
+    Source/Engines/Onkolo/OnkoloEngine.cpp
+    Source/Engines/Opcode/OpcodeEngine.cpp
+
+    # Kitchen Collection — Garden (Strings) engines
+    Source/Engines/Orchard/OrchardEngine.cpp
+    Source/Engines/Osier/OsierEngine.cpp
+    Source/Engines/Overgrow/OvergrowEngine.cpp
+    Source/Engines/Oxalis/OxalisEngine.cpp
+
+    # Psychology Boom Bap Drum Synthesis
+    Source/Engines/Offering/OfferingEngine.cpp
+
     # Main processor
-    Source/XOmnibusProcessor.h
-    Source/XOmnibusProcessor.cpp
+    Source/XOlokunProcessor.h
+    Source/XOlokunProcessor.cpp
 )
 
 # Oscar animated companion — requires Rive runtime
 if(XO_HAS_RIVE)
-    target_sources(XOmnibus PRIVATE
+    target_sources(XOlokun PRIVATE
         Source/UI/OddOscar/OscarAnimState.h
         Source/UI/OddOscar/OscarJuceRenderer.h
         Source/UI/OddOscar/OscarRiveComponent.h
@@ -321,42 +336,42 @@ if(XO_HAS_RIVE)
 endif()
 
 # XOverworld DSP headers — embedded in Source/Engines/Overworld/
-target_include_directories(XOmnibus PRIVATE
+target_include_directories(XOlokun PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
 # XOverlap and XOutwit DSP headers — embedded in Source/Engines/{Overlap,Outwit}/DSP/
 # FastMath.h stubs forward to the shared Source/DSP/FastMath.h via #include "DSP/FastMath.h".
 # That path requires Source/ in the search path.
-target_include_directories(XOmnibus PRIVATE
+target_include_directories(XOlokun PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/Source"
 )
 
-target_compile_definitions(XOmnibus PUBLIC
+target_compile_definitions(XOlokun PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
 )
 
-target_link_libraries(XOmnibus PRIVATE
+target_link_libraries(XOlokun PRIVATE
     juce::juce_audio_utils
     juce::juce_audio_processors
     juce::juce_dsp
     juce::juce_gui_extra
-    XOmnibusFont
+    XOlokunFont
 )
 if(XO_HAS_RIVE)
-    target_link_libraries(XOmnibus PRIVATE rive)
-    target_compile_definitions(XOmnibus PRIVATE XO_HAS_RIVE=1)
+    target_link_libraries(XOlokun PRIVATE rive)
+    target_compile_definitions(XOlokun PRIVATE XO_HAS_RIVE=1)
 endif()
 if(XO_HAS_OSCAR)
-    target_link_libraries(XOmnibus PRIVATE OscarRivData)
-    target_compile_definitions(XOmnibus PRIVATE XO_HAS_OSCAR=1)
+    target_link_libraries(XOlokun PRIVATE OscarRivData)
+    target_compile_definitions(XOlokun PRIVATE XO_HAS_OSCAR=1)
 endif()
 
 if(XO_MOBILE)
-    target_link_libraries(XOmnibus PRIVATE
+    target_link_libraries(XOlokun PRIVATE
         juce::juce_audio_plugin_client
     )
 endif()
@@ -364,7 +379,7 @@ endif()
 # ==============================================================================
 # Tests (standalone console application, no audio device or GUI required)
 # ==============================================================================
-add_executable(XOmnibusTests
+add_executable(XOlokunTests
     Tests/run_tests.cpp
     Tests/DSPTests/DSPStabilityTests.cpp
     Tests/CouplingTests/CouplingMatrixTests.cpp
@@ -378,12 +393,12 @@ add_executable(FamilyWaveguideTest
     Tests/FamilyWaveguideTest.cpp
 )
 
-target_include_directories(XOmnibusTests PRIVATE
+target_include_directories(XOlokunTests PRIVATE
     Source
     "${CMAKE_CURRENT_SOURCE_DIR}/Source/Engines/Overworld"
 )
 
-target_link_libraries(XOmnibusTests PRIVATE
+target_link_libraries(XOlokunTests PRIVATE
     juce::juce_core
     juce::juce_audio_basics
     juce::juce_audio_formats
@@ -391,7 +406,7 @@ target_link_libraries(XOmnibusTests PRIVATE
     juce::juce_gui_basics
 )
 
-target_compile_definitions(XOmnibusTests PRIVATE
+target_compile_definitions(XOlokunTests PRIVATE
     JUCE_STANDALONE_APPLICATION=1
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
@@ -399,4 +414,4 @@ target_compile_definitions(XOmnibusTests PRIVATE
 )
 
 enable_testing()
-add_test(NAME XOmnibusTests COMMAND XOmnibusTests)
+add_test(NAME XOlokunTests COMMAND XOlokunTests)

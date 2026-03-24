@@ -1,4 +1,4 @@
-# XOmnibus V1 — Community Activation Plan
+# XOlokun V1 — Community Activation Plan
 
 **Author:** Barry OB (Community Lead)
 **Date:** 2026-03-20
@@ -83,7 +83,7 @@ All times are relative to launch hour (L = launch). Stagger posts to avoid looki
 **L+0 — Twitter/X: The Opening**
 
 Post 1 (text + screenshot):
-> XOmnibus V1 is out. Free, open-source, 42 synthesis engines.
+> XOlokun V1 is out. Free, open-source, 42 synthesis engines.
 > Download: [link]
 
 Keep it flat and factual. No adjectives. No "finally." No exclamation points. Producers who've shipped things respect restraint.
@@ -115,7 +115,7 @@ Do NOT post the full engine list. Do NOT say "15,200 presets." Scale claims invi
 
 Start a thread in the MPC/Akai section (or General Synthesis if that's more active):
 
-Title: "XOmnibus V1 — free synth platform with XPN expansion export. Works with MPC."
+Title: "XOlokun V1 — free synth platform with XPN expansion export. Works with MPC."
 
 Open by acknowledging the audience: "I know Elektronauts is MPC-first. The XPN export pipeline was built specifically for this workflow." Then detail the export path: AU plugin → Oxport tools → .xpn bundle → MPC program. Show a screenshot of a rendered expansion in MPC. Be specific about which engines produce the most MPC-useful output (ONSET for drums, OBRIX for textured samples, OPENSKY for melodic pads).
 
@@ -137,9 +137,9 @@ Gearspace readers skew older, more skeptical, and more gear-literate. The right 
 
 Title: "Cross-engine coupling in a multi-synth architecture — some DSP decisions I had to make"
 
-Open with a technical question that naturally leads to XOmnibus: how do you route modulation between engines that were designed independently? Describe the MegaCouplingMatrix approach. Mention the 13 coupling types. Let the product emerge from the technical discussion, not the other way around.
+Open with a technical question that naturally leads to XOlokun: how do you route modulation between engines that were designed independently? Describe the MegaCouplingMatrix approach. Mention the 13 coupling types. Let the product emerge from the technical discussion, not the other way around.
 
-If it lands, it lands. Gearspace cannot be forced. A genuine technical thread that happens to describe XOmnibus is worth ten press releases.
+If it lands, it lands. Gearspace cannot be forced. A genuine technical thread that happens to describe XOlokun is worth ten press releases.
 
 ---
 
@@ -149,7 +149,7 @@ Pick one engine that photographs well and has a clear personality. OBRIX (Reef J
 
 > ORGANISM engine: cellular automata rules generate the timbre.
 > Rule 30: unstable, chaotic. Rule 110: complex, rhythmic. Rule 90: fractal symmetry.
-> You set the rule. XOmnibus evolves the sound.
+> You set the rule. XOlokun evolves the sound.
 > [screenshot]
 
 ---
@@ -164,7 +164,7 @@ Post a before/after: a plain MIDI clip, then the same MIDI through OBLONG + OVER
 
 **L+12 — Reddit r/WeAreTheMusicMakers: The Personal Story**
 
-WATMM is the right place for the "why I built this" version. Not a launch post — a creative journal entry that happens to mention XOmnibus is out now. Talk about the aquatic mythology angle, the seance process, the decision to name things after water-column depth zones. Let the mythology be human, not mystical.
+WATMM is the right place for the "why I built this" version. Not a launch post — a creative journal entry that happens to mention XOlokun is out now. Talk about the aquatic mythology angle, the seance process, the decision to name things after water-column depth zones. Let the mythology be human, not mystical.
 
 ---
 
@@ -183,7 +183,7 @@ Reddit and Gearspace will have skeptics. Some are good-faith, some are reflexive
 - "What's the CPU overhead of 4 coupled engines?"
 - "Is this actually 42 engines or 42 variations of one architecture?"
 
-Answer these directly, technically, without hedging. These readers can become your most effective advocates if you engage honestly. "The Grid is modular and more open-ended; XOmnibus is opinionated — each engine has a character, coupling is curated not arbitrary. Different tools." That's an honest answer that respects both tools and the questioner.
+Answer these directly, technically, without hedging. These readers can become your most effective advocates if you engage honestly. "The Grid is modular and more open-ended; XOlokun is opinionated — each engine has a character, coupling is curated not arbitrary. Different tools." That's an honest answer that respects both tools and the questioner.
 
 **Reflexive skeptics say things like:**
 - "Just another free synth nobody will use"
@@ -214,7 +214,7 @@ Do not feed the thread. The good-faith readers can see the difference. Your sile
 - Lore booklets — share one illustration or one mythology passage publicly; the full booklet is the reward
 - Quarterly 1:1 calls ($20 tier) — just mention it's limited to 20 patrons; scarcity is self-evident
 
-**Never frame Patreon as "locking features."** The framing is: "XOmnibus is complete as it is. Patreon funds what comes next."
+**Never frame Patreon as "locking features."** The framing is: "XOlokun is complete as it is. Patreon funds what comes next."
 
 ---
 
@@ -236,7 +236,7 @@ One preset, one audio clip, one paragraph about what's happening sonically. No p
 Tag the preset mood and engine. Invite the community to remix it: "What would you do differently with ORGANISM coupled in?"
 
 **Every other weekend: Community Showcase**
-Surface a user-submitted track or preset that used XOmnibus. One paragraph of genuine commentary — not a repost, a response. What did they do that surprised you? This makes contributors feel seen and shows the community that the project is alive and used.
+Surface a user-submitted track or preset that used XOlokun. One paragraph of genuine commentary — not a repost, a response. What did they do that surprised you? This makes contributors feel seen and shows the community that the project is alive and used.
 
 ---
 
@@ -275,7 +275,7 @@ Do not curate by technical correctness — curate by character. A preset that so
 Do not push Patreon at people. Let the product do it.
 
 The conversion moment happens when a user:
-- Finishes a track they love using XOmnibus and wants to support what made it possible
+- Finishes a track they love using XOlokun and wants to support what made it possible
 - Sees a Studio Session clip and wants the full walkthrough
 - Has a feature idea and learns that Patreon supporters get a vote
 - Gets a response to a bug report and wants to thank the team beyond a comment
@@ -322,13 +322,13 @@ Good:
 > "OCEANDEEP has a pressure macro. It doesn't add reverb — it narrows the stereo field and boosts the low-mids in a way that actually sounds like depth. I was surprised it worked."
 
 Bad:
-> "Featuring our innovative Pressure Macro technology, XOmnibus delivers immersive spatial synthesis experiences."
+> "Featuring our innovative Pressure Macro technology, XOlokun delivers immersive spatial synthesis experiences."
 
 Good:
 > "The coupling between ORCA and ONESET is not gentle. The echolocation LFO from ORCA is hitting the ONSET percussion release. It's a lot. I like it."
 
 Bad:
-> "XOmnibus's revolutionary cross-engine coupling system enables producers to achieve sounds previously impossible."
+> "XOlokun's revolutionary cross-engine coupling system enables producers to achieve sounds previously impossible."
 
 **Rules:**
 - Write in first person. "I built this" not "XO_OX Designs has created."
@@ -402,7 +402,7 @@ One response maximum, then silence. The response should be neutral and factual: 
 
 > **Title:** Free multi-engine synth — 42 engines, cross-engine coupling, ~15,000 presets. Here's what I learned building it.
 >
-> I've been building XOmnibus for about a year. It started as a way to put six character instruments I'd built separately into one platform. Then the coupling between engines became more interesting than the engines themselves.
+> I've been building XOlokun for about a year. It started as a way to put six character instruments I'd built separately into one platform. Then the coupling between engines became more interesting than the engines themselves.
 >
 > The basic idea: you load up to 4 engines, then route modulation between them. One engine's LFO shapes another engine's filter. A drum hit from ONSET triggers a harmonic shift in OPENSKY. The 13 coupling types are the core of the sound design workflow — not the individual engine controls.
 >
@@ -417,7 +417,7 @@ One response maximum, then silence. The response should be neutral and factual: 
 
 ### Discord Pinned Message Template
 
-> **Welcome to XO_OX Designs — XOmnibus V1 is live.**
+> **Welcome to XO_OX Designs — XOlokun V1 is live.**
 >
 > **Start here:** XO-OX.org — download, Field Guide, engine guide
 > **Bugs:** #bugs channel, or GitHub Issues (links above)

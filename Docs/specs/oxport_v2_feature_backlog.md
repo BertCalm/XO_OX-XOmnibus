@@ -42,7 +42,7 @@ per WAV, 32+ WAVs per preset, 100+ presets per engine. No pack is economically v
 With fleet render, a full engine ships in under an hour of unattended compute.
 
 **Blocking dependencies:**
-- `XOmnibusEngine` shared CMake target must be extracted from the plugin target (needed to link `fleet-render` CLI without a display)
+- `XOlokunEngine` shared CMake target must be extracted from the plugin target (needed to link `fleet-render` CLI without a display)
 - `fleet-render` CLI `Main.cpp` (see `fleet_render_automation_spec.md` Phase 2)
 - `xpn_render_spec.py` JSON output format must match `fleet-render --spec` input schema
 
@@ -101,7 +101,7 @@ The `--source` flag routes any valid WAV-producing source through the main pipel
 oxport.py run --source climate --climate-data ./noaa_2026.csv --engine Onset --output-dir ./climate_pack/
 
 # Route a git kit output (repository as drum machine)
-oxport.py run --source git --repo-path ~/Documents/GitHub/XO_OX-XOmnibus --output-dir ./git_pack/
+oxport.py run --source git --repo-path ~/Documents/GitHub/XO_OX-XOlokun --output-dir ./git_pack/
 
 # Route pre-rendered WAVs from any unconventional tool
 oxport.py run --source raw-wavs --wavs-dir ./my_custom_wavs/ --output-dir ./custom_pack/
@@ -185,7 +185,7 @@ without breaking flow.
 
 **What it is:** Builds XPN packs where each bank represents a temporal evolution of a sound — from
 its simplest form to its most developed form. Enables performers to "grow" a sound across a set by
-moving between banks. Pairs naturally with XOmnibus coupling presets where macros shift timbre over time.
+moving between banks. Pairs naturally with XOlokun coupling presets where macros shift timbre over time.
 
 **Complexity:** M
 
@@ -331,7 +331,7 @@ horizon items until a specific release goal is attached.
 ### P3.1 — Neural Timbre Transfer
 
 **What it is:** Use a PyTorch-based timbre transfer model (RAVE or similar) to apply the spectral
-character of one XOmnibus engine to WAVs rendered by another. Output: a kit that "sounds like Onset
+character of one XOlokun engine to WAVs rendered by another. Output: a kit that "sounds like Onset
 played through the timbral fingerprint of Opal."
 
 **Complexity:** XL
@@ -396,7 +396,7 @@ database access; pLDDT-to-velocity mapping algorithm needs empirical tuning by V
 
 | ID | Feature | Priority | Complexity | Owner | Status |
 |----|---------|----------|-----------|-------|--------|
-| P0.1 | `renderNoteToWav()` in XPNExporter.h | P0 | M | Rex + Ruby | Blocked on XOmnibusEngine target extraction |
+| P0.1 | `renderNoteToWav()` in XPNExporter.h | P0 | M | Rex + Ruby | Blocked on XOlokunEngine target extraction |
 | P0.2 | `xpn_bundle_builder.py` extended sources | P0 | M | Rex + Ruby | Ready to implement |
 | P0.3 | `oxport.py --source` flag | P0 | S | Ruby + Rex | Blocked on P0.2 |
 | P1.1 | `xpn_deconstruction_builder.py` | P1 | L | Vibe + Rex | Spec complete |
@@ -421,7 +421,7 @@ database access; pLDDT-to-velocity mapping algorithm needs empirical tuning by V
 ## Critical Path to April 2026
 
 ```
-P0.1: XOmnibusEngine CMake target extraction
+P0.1: XOlokunEngine CMake target extraction
       └─> renderNoteToWav() implementation (~40 lines)
           └─> fleet-render CLI Main.cpp
               └─> oxport.py render stage

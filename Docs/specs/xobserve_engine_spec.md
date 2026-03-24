@@ -14,7 +14,7 @@
 
 ### 1.1 What XObserve Is
 
-XObserve is the spectral intelligence layer of XOmnibus. It is a 6-band parametric EQ where every band carries an independent feliX↔Oscar character axis, per-band Tide LFO modulation, optional dynamic EQ response, and per-band mid/side scope. It is not a transparency tool. It is a tonal sculptor that listens, adapts, and teaches.
+XObserve is the spectral intelligence layer of XOlokun. It is a 6-band parametric EQ where every band carries an independent feliX↔Oscar character axis, per-band Tide LFO modulation, optional dynamic EQ response, and per-band mid/side scope. It is not a transparency tool. It is a tonal sculptor that listens, adapts, and teaches.
 
 The core idea that defines XObserve and has no parallel in any competing tool: **per-band analog character as a first-class parameter.** Every other EQ in every DAW's toolkit applies analog emulation as a single global toggle across all bands simultaneously. XObserve gives you six independent character decisions, one per band — and makes those decisions breathe via LFO and respond to other engines via coupling.
 
@@ -28,7 +28,7 @@ Both are on the same dial, per band.
 
 The mantis shrimp has 16 photoreceptor types compared to the human's 3. It does not see more color — it categorizes and acts on spectral data faster than any other creature on Earth. It perceives UV, infrared, and polarized light simultaneously, then acts on that spectral intelligence with a club strike at 23 m/s that generates a cavitation bubble.
 
-XObserve is the mantis shrimp of the XOmnibus fleet. It perceives the frequency spectrum with 16-photoreceptor precision and shapes it with physical force. The feliX bands are the UV perception — clinical, beyond-human, invisible. The Oscar bands are the smashing claw — warm, destructive, the analog warmth of physical force applied to signal.
+XObserve is the mantis shrimp of the XOlokun fleet. It perceives the frequency spectrum with 16-photoreceptor precision and shapes it with physical force. The feliX bands are the UV perception — clinical, beyond-human, invisible. The Oscar bands are the smashing claw — warm, destructive, the analog warmth of physical force applied to signal.
 
 The EQ does not observe passively. It reacts.
 
@@ -296,7 +296,7 @@ When `obs_ms_enable = off`, the M/S matrix encode/decode is bypassed entirely an
 
 ## 5. Coupling Design
 
-XObserve is an FX processor engine. Its coupling model is receiver-heavy on input and provides spectral analysis data on output — making it unique in the fleet as a sensor node that participates in the XOmnibus network.
+XObserve is an FX processor engine. Its coupling model is receiver-heavy on input and provides spectral analysis data on output — making it unique in the fleet as a sensor node that participates in the XOlokun network.
 
 ### 5.1 Coupling Inputs Accepted
 
@@ -324,7 +324,7 @@ This is what makes XObserve novel in the coupling network — it is simultaneous
 | `ch4` | Band 4–6 total energy — high-end air (0–1) | Scalar |
 | `ch5` | Dynamic EQ gain reduction (dBFS, signed) | Scalar |
 
-An engine coupled to `ch2` (spectral centroid) could track brightness and self-modulate as the EQ shapes it — closing a feedback loop that no standalone EQ product even considers. The architectural uniqueness: XObserve is simultaneously an FX processor and a spectral sensor in the XOmnibus signal graph.
+An engine coupled to `ch2` (spectral centroid) could track brightness and self-modulate as the EQ shapes it — closing a feedback loop that no standalone EQ product even considers. The architectural uniqueness: XObserve is simultaneously an FX processor and a spectral sensor in the XOlokun signal graph.
 
 ### 5.3 Flagship Coupling: ONSET → XOBSERVE
 
@@ -405,7 +405,7 @@ Dynamic: [ Enable]  Thresh: [-12 dB]  Ratio: [4:1]
 
 ### 7.4 Coupling Strip
 
-Revealed when XObserve detects it is running inside an XOmnibus slot:
+Revealed when XObserve detects it is running inside an XOlokun slot:
 - Active coupling route display (e.g., "ONSET → Band 1 Gain [AmpToFilter]")
 - Coupling gain knob
 - Coupling target selector
@@ -559,7 +559,7 @@ REGISTER_ENGINE("XObserve", []() -> std::unique_ptr<SynthEngine> {
 // Parameter prefix: "obs_"
 ```
 
-Add case to `prefixForEngine()` in `XOmnibusEditor.h`:
+Add case to `prefixForEngine()` in `XOlokunEditor.h`:
 ```cpp
 if (engineId == "Observe") return "obs_";
 ```

@@ -14,7 +14,7 @@ Generates .xometa JSON files across 7 moods:
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOmnibus")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
 
 # ── ORGANISM defaults (24 params) ────────────────────────────────────────────
 DEFAULTS = {

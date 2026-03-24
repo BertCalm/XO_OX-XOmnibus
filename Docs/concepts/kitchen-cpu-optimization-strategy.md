@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-The Kitchen Collection introduces the most CPU-demanding DSP in XOmnibus history. Five quads, each with novel synthesis architectures that push past anything in the existing 46-engine fleet. This document analyzes the real computational cost of each, identifies the hot paths, and provides V1/V2 optimization strategies that keep every engine under the 5% per-engine CPU target.
+The Kitchen Collection introduces the most CPU-demanding DSP in XOlokun history. Five quads, each with novel synthesis architectures that push past anything in the existing 46-engine fleet. This document analyzes the real computational cost of each, identifies the hot paths, and provides V1/V2 optimization strategies that keep every engine under the 5% per-engine CPU target.
 
 **The single most creative optimization idea for the entire collection:**
 

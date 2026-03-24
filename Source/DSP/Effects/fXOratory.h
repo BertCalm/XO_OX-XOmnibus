@@ -5,7 +5,7 @@
 #include "../CytomicSVF.h"
 #include "../StandardLFO.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXOratory — "Poetic Meter" boutique effect.
@@ -378,4 +378,4 @@ private:
     float mix              = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

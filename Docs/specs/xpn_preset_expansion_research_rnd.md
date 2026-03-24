@@ -1,6 +1,6 @@
 # XPN Preset Expansion R&D Spec
 **Date**: 2026-03-16
-**Scope**: Research and documentation for converting XOmnibus presets into MPC-native XPN expansions
+**Scope**: Research and documentation for converting XOlokun presets into MPC-native XPN expansions
 
 ---
 
@@ -10,7 +10,7 @@ DAW playback is a controlled environment — precise scheduling, unlimited CPU h
 
 MPC standalone inverts all of that. Processing budget is finite. Interaction is physical — pads, velocity, Q-Links. Timing comes from the producer's hands, not the DAW grid. This means a preset that sounds spectacular in Logic may feel inert and unresponsive on hardware.
 
-The critical gap: most XOmnibus presets are tuned for DAW listening. They reward careful A/B comparison, parameter exploration, and CPU-hungry real-time modulation. XPN expansions must be tuned for MPC playing. The producer triggers a pad at velocity 82 and expects something musical to happen immediately. If the preset sounds identical at velocity 40 and velocity 110, it fails the MPC test.
+The critical gap: most XOlokun presets are tuned for DAW listening. They reward careful A/B comparison, parameter exploration, and CPU-hungry real-time modulation. XPN expansions must be tuned for MPC playing. The producer triggers a pad at velocity 82 and expects something musical to happen immediately. If the preset sounds identical at velocity 40 and velocity 110, it fails the MPC test.
 
 ---
 
@@ -32,7 +32,7 @@ Any XPN drum kit that does not have at least 3 timbral layers per voice is incom
 
 ---
 
-## 3. What Translates from XOmnibus to MPC
+## 3. What Translates from XOlokun to MPC
 
 **Direct translations (high confidence):**
 - Single-engine Foundation and Atmosphere presets are the best candidates. They have clear sonic identities, no inter-engine dependencies, and stable parameter states that render consistently.
@@ -77,7 +77,7 @@ Packs below these densities feel thin on MPC. Producers cycle through programs q
 
 ## 6. The "Bake It" Principle
 
-Any XOmnibus feature requiring live coupling, real-time modulation, or CPU-intensive DSP that cannot be reproduced on MPC hardware must be baked into the exported sample.
+Any XOlokun feature requiring live coupling, real-time modulation, or CPU-intensive DSP that cannot be reproduced on MPC hardware must be baked into the exported sample.
 
 **Baking options, in order of preference:**
 1. Choose a parameter snapshot that represents peak musical value

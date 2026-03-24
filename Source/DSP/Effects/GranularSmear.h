@@ -7,7 +7,7 @@
 #include "../FastMath.h"
 #include "../SRO/LookupTable.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // GranularSmear — Micro-granular buffer that smears transients into texture.
@@ -164,4 +164,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

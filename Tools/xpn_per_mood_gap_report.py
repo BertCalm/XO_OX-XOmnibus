@@ -8,7 +8,7 @@ import os
 import glob
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PRESETS_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus")
+PRESETS_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun")
 
 moods = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
 dims = ["brightness", "warmth", "movement", "density", "space", "aggression"]

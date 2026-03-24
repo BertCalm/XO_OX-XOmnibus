@@ -1,6 +1,6 @@
-# MPC Controller Setup for XOmnibus
+# MPC Controller Setup for XOlokun
 
-Use any MPC as a hands-on controller for XOmnibus in your DAW.
+Use any MPC as a hands-on controller for XOlokun in your DAW.
 
 ---
 
@@ -8,7 +8,7 @@ Use any MPC as a hands-on controller for XOmnibus in your DAW.
 
 1. **Connect** your MPC to your computer via USB.
 2. **Set MPC to Controller Mode** — on the MPC, go to Menu > MIDI/Sync and set the MPC to send MIDI over USB. On MPC software units (One, Live, Key), enter Controller Mode from the main menu.
-3. **Load XOmnibus** in your DAW on a track receiving MIDI from the MPC.
+3. **Load XOlokun** in your DAW on a track receiving MIDI from the MPC.
 
 That's it. Pads send notes, pitch bend works, and you can start playing immediately.
 
@@ -18,7 +18,7 @@ That's it. Pads send notes, pitch bend works, and you can start playing immediat
 
 ### What works out of the box (no setup needed)
 
-| MPC Control | XOmnibus Target | Notes |
+| MPC Control | XOlokun Target | Notes |
 |---|---|---|
 | Pads | MIDI notes | Pads trigger voices — default behavior |
 | Pitch bend | Pitch | Standard pitch wheel / strip |
@@ -28,7 +28,7 @@ That's it. Pads send notes, pitch bend works, and you can start playing immediat
 
 Assign your Q-Links to these CCs in the MPC's MIDI control editor:
 
-| Q-Link | CC | XOmnibus Macro | What it does |
+| Q-Link | CC | XOlokun Macro | What it does |
 |---|---|---|---|
 | Q1 | CC 1 | CHARACTER | Sweeps the engine's tonal identity |
 | Q2 | CC 2 | MOVEMENT | Controls motion, modulation speed |
@@ -39,7 +39,7 @@ Assign your Q-Links to these CCs in the MPC's MIDI control editor:
 
 ### Aftertouch
 
-MPC pads send channel aftertouch. Map this to filter modulation in your DAW's MIDI learn or XOmnibus host:
+MPC pads send channel aftertouch. Map this to filter modulation in your DAW's MIDI learn or XOlokun host:
 
 | Source | Suggested Target |
 |---|---|
@@ -51,7 +51,7 @@ MPC pads send channel aftertouch. Map this to filter modulation in your DAW's MI
 
 The MPCe pads sense X, Y, and Z (pressure) independently per pad. Map these axes for expressive control:
 
-| Pad Axis | XOmnibus Target | CC |
+| Pad Axis | XOlokun Target | CC |
 |---|---|---|
 | X (left-right) | CHARACTER macro | CC 1 |
 | Y (top-bottom) | MOVEMENT macro | CC 2 |
@@ -77,13 +77,13 @@ This turns each pad into a 3D performance surface — slide your finger to morph
 ### MPC XL
 - 16 Q-Links with OLED displays — map Q1-4 to macros, Q5-8 to engine params, Q9-16 to FX or additional engine controls
 - 3D pad sensing on all 16 pads
-- The extra Q-Links make this the best XOmnibus controller in the lineup
+- The extra Q-Links make this the best XOlokun controller in the lineup
 
 ### MPC Key 61
 - Pitch and mod wheels built in — both work immediately
 - 4 Q-Links (knobs) — map to macros
 - 61 keys for melodic engines, pads for drums/triggers
-- Best choice for playing melodic XOmnibus engines
+- Best choice for playing melodic XOlokun engines
 
 ---
 
@@ -92,7 +92,7 @@ This turns each pad into a 3D performance surface — slide your finger to morph
 ### In your DAW
 Most DAWs support MIDI learn on plugin parameters:
 
-1. Right-click (or Ctrl-click) the XOmnibus knob you want to control
+1. Right-click (or Ctrl-click) the XOlokun knob you want to control
 2. Select "MIDI Learn" or "Learn MIDI CC"
 3. Move the Q-Link or pad on your MPC
 4. Done — the assignment is saved with your project
@@ -104,4 +104,4 @@ Most DAWs support MIDI learn on plugin parameters:
 - **MPC Software (standalone)**: Edit Program > Pad Assign for note mapping; MIDI Learn in plugin window for Q-Links
 
 ### Tip
-Save your Q-Link template on the MPC so you don't have to reassign CCs every session. Name it something like "XOmnibus 4 Macros" and load it whenever you open a session.
+Save your Q-Link template on the MPC so you don't have to reassign CCs every session. Name it something like "XOlokun 4 Macros" and load it whenever you open a session.

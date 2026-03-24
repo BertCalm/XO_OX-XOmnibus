@@ -1,6 +1,6 @@
 # /audit — Targeted Subsystem Health Check
 
-Quick, focused health check for a specific XOmnibus subsystem. Lighter than /roomba, designed for rapid validation after making changes to one area.
+Quick, focused health check for a specific XOlokun subsystem. Lighter than /roomba, designed for rapid validation after making changes to one area.
 
 ## Usage
 
@@ -30,7 +30,7 @@ Quick, focused health check for a specific XOmnibus subsystem. Lighter than /roo
 
 ### /audit presets
 
-1. Parse all .xometa files under Presets/XOmnibus/
+1. Parse all .xometa files under Presets/XOlokun/
 2. Validate JSON structure (schema_version, name, mood, engines, parameters)
 3. Check engine names resolve via validEngineNames/resolveEngineAlias
 4. Check parameter key prefixes match expected engine prefix
@@ -47,7 +47,7 @@ Quick, focused health check for a specific XOmnibus subsystem. Lighter than /roo
    - MPE expression initialized on voice start
    - Pitch bend applied in audio rendering (look for `pitchBendSemitones`)
 3. For meta-engines (Overworld) and non-voice engines (Optic): verify skip is appropriate
-4. Check XOmnibusProcessor for MPE zone manager integration
+4. Check XOlokunProcessor for MPE zone manager integration
 5. Report per-engine checklist table
 
 ### /audit build

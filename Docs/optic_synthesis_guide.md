@@ -1,5 +1,5 @@
 # OPTIC — The Zero-Audio Synthesis Guide
-*XO_OX Designs | XOmnibus Engine Reference*
+*XO_OX Designs | XOlokun Engine Reference*
 *Engine: OPTIC | Accent: Phosphor Green `#00FF41` | Prefix: `optic_`*
 
 ---
@@ -77,7 +77,7 @@ OPTIC produces no audio output. At the end of `renderBlock()`, the buffer is cle
 
 ### What `getSampleForCoupling()` Returns for a Zero-Audio Engine
 
-Every engine in XOmnibus exposes `getSampleForCoupling(channel, sampleIndex)` for inter-engine modulation. For audio-producing engines, channels 0 and 1 carry the left and right audio samples. For OPTIC, this contract is repurposed entirely: no audio is present, only modulation.
+Every engine in XOlokun exposes `getSampleForCoupling(channel, sampleIndex)` for inter-engine modulation. For audio-producing engines, channels 0 and 1 carry the left and right audio samples. For OPTIC, this contract is repurposed entirely: no audio is present, only modulation.
 
 | Channel | Signal | Range | Smoothed? |
 |---------|--------|-------|-----------|
@@ -232,7 +232,7 @@ OPTIC's source code and concept brief speak in terms of light: *brightness*, *ce
 
 **Pulse → total energy (ch9) and composite (ch0):** The "pulse" of a bioluminescent organism follows the movement of the water around it. OPTIC's energy tracking mirrors this: total energy rises when the music swells and falls when it recedes. Route this to a reverb wet/dry to create a mix that opens up during louder passages — the musical equivalent of a creature glowing brighter in agitated water.
 
-**Colony synchronization → multiple outputs routing to multiple engines:** No single output defines OPTIC's identity. The paradigm is that the entire gallery responds to OPTIC's analysis. Bass energy pumps OBESE's filter. Centroid drifts ODYSSEY's JOURNEY macro. Transient detection triggers ONSET fills. AutoPulse syncs the groove across all layers. When all of these are active simultaneously, the XOmnibus patch becomes a single organism responding to its own sound — the colony synchronizing through luminous modulation.
+**Colony synchronization → multiple outputs routing to multiple engines:** No single output defines OPTIC's identity. The paradigm is that the entire gallery responds to OPTIC's analysis. Bass energy pumps OBESE's filter. Centroid drifts ODYSSEY's JOURNEY macro. Transient detection triggers ONSET fills. AutoPulse syncs the groove across all layers. When all of these are active simultaneously, the XOlokun patch becomes a single organism responding to its own sound — the colony synchronizing through luminous modulation.
 
 ---
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate 100 XOpal factory presets for XOmnibus.
+"""Generate 100 XOpal factory presets for XOlokun.
 
 Categories (from Phase 1 spec):
   - Smooth Clouds (20): Large grains, low scatter, atmospheric pads
@@ -16,7 +16,7 @@ import random
 
 random.seed(42)  # Reproducible
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOmnibus")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
 
 # Default parameter values (all 86 opal_ params)
 DEFAULTS = {

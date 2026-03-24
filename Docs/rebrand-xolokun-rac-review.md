@@ -1,8 +1,8 @@
-# RAC Review: Rebranding XOmnibus to XOlokun
+# RAC Review: Rebranding XOlokun to XOlokun
 
 **Date:** 2026-03-23
 **Reviewers:** Ringleader (Joshua), Architect (Raj), Consultant (Rufus)
-**Decision:** Rename the synthesizer from XOmnibus to XOlokun. "Omnibus" becomes the tagline — "XOlokun — for all."
+**Decision:** Rename the synthesizer from XOlokun to XOlokun. "Omnibus" becomes the tagline — "XOlokun — for all."
 **Timing:** Pre-V1, zero external users. The rename window is now.
 
 ---
@@ -16,21 +16,21 @@ The rename touches five categories of artifact: (1) C++ source and build, (2) th
 
 ### Category 1: CMakeLists.txt — Build Identity
 
-**File:** `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/CMakeLists.txt`
+**File:** `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/CMakeLists.txt`
 
 This is the authoritative source of the plugin's machine-visible identity. Every downstream artifact — bundle path, AU database entry, settings folder — derives from it.
 
 | Line | Current Value | New Value | Notes |
 |------|--------------|-----------|-------|
-| `project(...)` | `XOmnibus` | `XOlokun` | CMake project name |
-| `juce_add_binary_data(XOmnibusFont ...)` | `XOmnibusFont` | `XOlokunFont` | Font binary data target name |
-| `juce_add_plugin(XOmnibus ...)` | `XOmnibus` | `XOlokun` | JUCE plugin target |
-| `PRODUCT_NAME` | `"XOmnibus"` | `"XOlokun"` | Human-visible AU name |
-| `BUNDLE_ID` | `"com.xo-ox.xomnibus"` | `"com.xo-ox.xolokun"` | macOS/iOS bundle ID |
+| `project(...)` | `XOlokun` | `XOlokun` | CMake project name |
+| `juce_add_binary_data(XOlokunFont ...)` | `XOlokunFont` | `XOlokunFont` | Font binary data target name |
+| `juce_add_plugin(XOlokun ...)` | `XOlokun` | `XOlokun` | JUCE plugin target |
+| `PRODUCT_NAME` | `"XOlokun"` | `"XOlokun"` | Human-visible AU name |
+| `BUNDLE_ID` | `"com.xo-ox.xolokun"` | `"com.xo-ox.xolokun"` | macOS/iOS bundle ID |
 | `PLUGIN_CODE` | `Xomn` | `Xolk` | **CRITICAL — AU four-character code** |
-| `target_sources(XOmnibus ...)` | `XOmnibus` | `XOlokun` | CMake target reference |
-| `target_link_libraries(XOmnibus ...)` | `XOmnibus` | `XOlokun` | Appears multiple times |
-| `XOmnibusFont` in `target_link_libraries` | `XOmnibusFont` | `XOlokunFont` | Font binary data link |
+| `target_sources(XOlokun ...)` | `XOlokun` | `XOlokun` | CMake target reference |
+| `target_link_libraries(XOlokun ...)` | `XOlokun` | `XOlokun` | Appears multiple times |
+| `XOlokunFont` in `target_link_libraries` | `XOlokunFont` | `XOlokunFont` | Font binary data link |
 
 **PLUGIN_CODE critical note:** `Xomn` is the four-character AU/VST3 identifier baked into saved DAW sessions. Changing it to `Xolk` is safe and correct pre-V1 because no external sessions reference the old code. After V1 ships, this must never change. Choose `Xolk` now and lock it.
 
@@ -40,40 +40,40 @@ This is the authoritative source of the plugin's machine-visible identity. Every
 
 #### Files requiring rename (filename + all internal references):
 
-**`Source/XOmnibusProcessor.h` → `Source/XOlokunProcessor.h`**
-- `class XOmnibusProcessor` → `class XOlokunProcessor`
-- `XOmnibusProcessor()` constructor → `XOlokunProcessor()`
-- `~XOmnibusProcessor()` → `~XOlokunProcessor()`
-- `getName() { return "XOmnibus"; }` → `getName() { return "XOlokun"; }`
-- `JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOmnibusProcessor)` → `(XOlokunProcessor)`
+**`Source/XOlokunProcessor.h` → `Source/XOlokunProcessor.h`**
+- `class XOlokunProcessor` → `class XOlokunProcessor`
+- `XOlokunProcessor()` constructor → `XOlokunProcessor()`
+- `~XOlokunProcessor()` → `~XOlokunProcessor()`
+- `getName() { return "XOlokun"; }` → `getName() { return "XOlokun"; }`
+- `JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOlokunProcessor)` → `(XOlokunProcessor)`
 
-**`Source/XOmnibusProcessor.cpp` → `Source/XOlokunProcessor.cpp`**
-- `#include "XOmnibusProcessor.h"` → `#include "XOlokunProcessor.h"`
-- `#include "UI/XOmnibusEditor.h"` → `#include "UI/XOlokunEditor.h"`
-- All `XOmnibusProcessor::` method definitions → `XOlokunProcessor::`
-- `XOmnibusProcessor::getName()` string literal change propagates from header
-- (242 total occurrences of `XOmnibus` in this file — the highest count in the codebase)
+**`Source/XOlokunProcessor.cpp` → `Source/XOlokunProcessor.cpp`**
+- `#include "XOlokunProcessor.h"` → `#include "XOlokunProcessor.h"`
+- `#include "UI/XOlokunEditor.h"` → `#include "UI/XOlokunEditor.h"`
+- All `XOlokunProcessor::` method definitions → `XOlokunProcessor::`
+- `XOlokunProcessor::getName()` string literal change propagates from header
+- (242 total occurrences of `XOlokun` in this file — the highest count in the codebase)
 
-**`Source/UI/XOmnibusEditor.h` → `Source/UI/XOlokunEditor.h`**
-- `#include "../XOmnibusProcessor.h"` → `#include "../XOlokunProcessor.h"`
-- `class XOmnibusEditor` → `class XOlokunEditor` (if class is named this — confirm in file)
-- `g.drawText("XOmnibus", ...)` at line 3624 → `g.drawText("XOlokun", ...)`
-- 52 occurrences of XOmnibus in this file
+**`Source/UI/XOlokunEditor.h` → `Source/UI/XOlokunEditor.h`**
+- `#include "../XOlokunProcessor.h"` → `#include "../XOlokunProcessor.h"`
+- `class XOlokunEditor` → `class XOlokunEditor` (if class is named this — confirm in file)
+- `g.drawText("XOlokun", ...)` at line 3624 → `g.drawText("XOlokun", ...)`
+- 52 occurrences of XOlokun in this file
 
 #### Files requiring internal edits only (no rename):
 
 **`Source/UI/PerformanceViewPanel.h`**
-- `#include "XOmnibusEditor.h"` → `#include "XOlokunEditor.h"`
+- `#include "XOlokunEditor.h"` → `#include "XOlokunEditor.h"`
 
 **`Source/UI/ExportDialog/ExportDialog.h`**
-- `#include "../XOmnibusEditor.h"` → `#include "../XOlokunEditor.h"`
-- `config.bundleId = "com.xo-ox.xomnibus." + ...` → `"com.xo-ox.xolokun." + ...`
+- `#include "../XOlokunEditor.h"` → `#include "../XOlokunEditor.h"`
+- `config.bundleId = "com.xo-ox.xolokun." + ...` → `"com.xo-ox.xolokun." + ...`
 
 **`Source/UI/PresetBrowser/PresetBrowser.h`**
-- `#include "../XOmnibusEditor.h"` → `#include "../XOlokunEditor.h"`
+- `#include "../XOlokunEditor.h"` → `#include "../XOlokunEditor.h"`
 
 **`Source/Core/SynthEngine.h`**
-- 5 occurrences — all comments: "XOmnibusProcessor" → "XOlokunProcessor"
+- 5 occurrences — all comments: "XOlokunProcessor" → "XOlokunProcessor"
 
 **`Source/Core/EngineRegistry.h`**
 - 6 occurrences — comments only
@@ -85,20 +85,20 @@ This is the authoritative source of the plugin's machine-visible identity. Every
 - 6 occurrences — confirm comment-only, update
 
 **`Source/Core/CouplingPresetManager.h`**
-- `.getChildFile("XOmnibus")` → `.getChildFile("XOlokun")` — **this is a filesystem path, changes on-disk location of coupling presets**
+- `.getChildFile("XOlokun")` → `.getChildFile("XOlokun")` — **this is a filesystem path, changes on-disk location of coupling presets**
 
 **`Source/AI/SoundAssistant.h`**
-- System prompt strings (lines 696-697, 714, 754, 826, 1029, 1050): "XOmnibus Sound Architect" → "XOlokun Sound Architect"; all "XOmnibus" references in prompts
+- System prompt strings (lines 696-697, 714, 754, 826, 1029, 1050): "XOlokun Sound Architect" → "XOlokun Sound Architect"; all "XOlokun" references in prompts
 
 **`Source/AI/SecureKeyStore.h`**
-- `.getChildFile("XOmnibus")` → `.getChildFile("XOlokun")` — **filesystem path**
+- `.getChildFile("XOlokun")` → `.getChildFile("XOlokun")` — **filesystem path**
 
 **`Source/Export/XPNExporter.h`**
 - Comments at lines 55, 121, 237, 240
-- String at line 237: `"XOmnibus - Foundation"` → `"XOlokun - Foundation"`
-- String at line 240: `"com.xo-ox.xomnibus.foundation"` → `"com.xo-ox.xolokun.foundation"`
+- String at line 237: `"XOlokun - Foundation"` → `"XOlokun - Foundation"`
+- String at line 240: `"com.xo-ox.xolokun.foundation"` → `"com.xo-ox.xolokun.foundation"`
 
-**Engine files with `namespace xomnibus` comment references:**
+**Engine files with `namespace xolokun` comment references:**
 - `Source/Engines/Oware/OwareEngine.h` (6 refs)
 - `Source/Engines/Oracle/OracleEngine.h` (6 refs)
 - `Source/Engines/Onset/OnsetEngine.h` (6 refs)
@@ -113,25 +113,25 @@ This is the authoritative source of the plugin's machine-visible identity. Every
 - `Source/Engines/Opal/OpalEngine.h`, and many others with 5-6 refs each
 - All other engine headers in the 248-file source count
 
-Engines with `namespace xomnibus` contain the namespace as a C++ symbol, not just a display string. See Category 3.
+Engines with `namespace xolokun` contain the namespace as a C++ symbol, not just a display string. See Category 3.
 
 **`Source/Engines/Overlap/DSP/FastMath.h`** and **`Source/Engines/Outwit/DSP/FastMath.h`**
 - 18 refs each — confirm whether these are namespace or comment references
 
 ---
 
-### Category 3: The C++ Namespace — `xomnibus`
+### Category 3: The C++ Namespace — `xolokun`
 
-The codebase uses `namespace xomnibus` pervasively — 397 opening/closing pairs found in Source alone. The SDK public headers also use `namespace xomnibus` and export symbols `xomnibus_create_engine()` and `xomnibus_engine_info()`.
+The codebase uses `namespace xolokun` pervasively — 397 opening/closing pairs found in Source alone. The SDK public headers also use `namespace xolokun` and export symbols `xolokun_create_engine()` and `xolokun_engine_info()`.
 
 **Decision required from the owner:**
 
 Option A — **Rename the namespace to `xolokun`**
 - Full consistency. Every source file changes.
-- SDK ABI breaks (the function symbols `xomnibus_create_engine` change). Since no external SDK users exist yet (SDK Phase 1 was internal), this is safe now.
+- SDK ABI breaks (the function symbols `xolokun_create_engine` change). Since no external SDK users exist yet (SDK Phase 1 was internal), this is safe now.
 - Estimated files: all 248 Source files + all 8 SDK files. Mechanical sed replacement.
 
-Option B — **Keep the namespace as `xomnibus` internally**
+Option B — **Keep the namespace as `xolokun` internally**
 - Zero C++ compilation risk.
 - The namespace is invisible to end users.
 - Precedent exists: JUCE uses `juce::` even though products built on it are not called JUCE. Many companies keep internal technical names distinct from brand names.
@@ -139,22 +139,22 @@ Option B — **Keep the namespace as `xomnibus` internally**
 
 **Architect recommendation: Option B for V1.** The namespace is a private implementation detail. Users never see it. Rename it in a dedicated V2 cleanup sprint after V1 ships. Document the divergence explicitly in CLAUDE.md.
 
-The two SDK function symbols (`xomnibus_create_engine`, `xomnibus_engine_info`) are a slightly stronger case for renaming since they form the public plugin module ABI — but again, zero external SDK users exist. If renamed, do it atomically with all SDK consumers.
+The two SDK function symbols (`xolokun_create_engine`, `xolokun_engine_info`) are a slightly stronger case for renaming since they form the public plugin module ABI — but again, zero external SDK users exist. If renamed, do it atomically with all SDK consumers.
 
 ---
 
-### Category 4: The SDK — `SDK/include/xomnibus/`
+### Category 4: The SDK — `SDK/include/xolokun/`
 
 **Files requiring changes:**
-- `SDK/include/xomnibus/EngineModule.h` — 10 refs to `xomnibus` namespace + symbol names
-- `SDK/include/xomnibus/SynthEngine.h` — namespace
-- `SDK/include/xomnibus/CouplingTypes.h` — namespace
-- `SDK/tools/validate_engine.py` — references to xomnibus symbols
+- `SDK/include/xolokun/EngineModule.h` — 10 refs to `xolokun` namespace + symbol names
+- `SDK/include/xolokun/SynthEngine.h` — namespace
+- `SDK/include/xolokun/CouplingTypes.h` — namespace
+- `SDK/tools/validate_engine.py` — references to xolokun symbols
 - `SDK/README.md` — brand text
 - `SDK/examples/HelloEngine/README.md` and `HelloEngine.h` — brand text
 - `SDK/templates/MinimalEngine/MinimalEngine.h` — brand text
 
-**Directory rename:** `SDK/include/xomnibus/` → `SDK/include/xolokun/` (only if namespace is renamed per Option A)
+**Directory rename:** `SDK/include/xolokun/` → `SDK/include/xolokun/` (only if namespace is renamed per Option A)
 
 ---
 
@@ -162,15 +162,15 @@ The two SDK function symbols (`xomnibus_create_engine`, `xomnibus_engine_info`) 
 
 **Critical: Filesystem path change**
 
-`Presets/XOmnibus/` is the factory preset directory root. It appears in:
+`Presets/XOlokun/` is the factory preset directory root. It appears in:
 - `CMakeLists.txt` (binary data sourcing, if applicable)
 - `Source/Core/PresetManager.h` (hardcoded path lookups — confirm)
 - `README.md`
 - `CLAUDE.md`
 
-The 13 `.xometa` files in `Presets/XOmnibus/` that grep-matched contain only incidental text references in description strings, not structural fields. The preset schema uses `"author": "XO_OX Designs"` and does not embed the plugin name as a required field. This means the `.xometa` files themselves need only cosmetic description updates (optional, not blocking).
+The 13 `.xometa` files in `Presets/XOlokun/` that grep-matched contain only incidental text references in description strings, not structural fields. The preset schema uses `"author": "XO_OX Designs"` and does not embed the plugin name as a required field. This means the `.xometa` files themselves need only cosmetic description updates (optional, not blocking).
 
-**Action:** Rename `Presets/XOmnibus/` directory → `Presets/XOlokun/` and update all path references.
+**Action:** Rename `Presets/XOlokun/` directory → `Presets/XOlokun/` and update all path references.
 
 **`Presets/Docs/engine_dna_profiles.json`** — 1 reference in description string, update.
 
@@ -180,42 +180,42 @@ The 13 `.xometa` files in `Presets/XOmnibus/` that grep-matched contain only inc
 
 The Docs folder has the highest surface area. Breakdown by priority:
 
-**Tier 1 — Rename file + update contents (filename contains XOmnibus):**
-- `Docs/xomnibus_master_specification.md` → `xolokun_master_specification.md`
-- `Docs/xomnibus_engine_roadmap.md` → `xolokun_engine_roadmap.md`
-- `Docs/xomnibus_engine_roadmap_v3.md` → `xolokun_engine_roadmap_v3.md`
-- `Docs/xomnibus_brand_identity_and_launch.md` → `xolokun_brand_identity_and_launch.md`
-- `Docs/xomnibus_landscape_2026.md` → `xolokun_landscape_2026.md`
-- `Docs/xomnibus_launch_audit_2026.md` → `xolokun_launch_audit_2026.md`
-- `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt` → rename
-- `Docs/xomnibus_master_fx_design_brief.md`
-- `Docs/xomnibus_mobile_and_midi_spec.md`
-- `Docs/xomnibus_mobile_implementation_strategy.md`
-- `Docs/xomnibus_module_starter_design.md`
-- `Docs/xomnibus_name_migration_reference.md`
-- `Docs/xomnibus_new_engine_process.md`
-- `Docs/xomnibus_preset_spec_for_builder.md`
-- `Docs/xomnibus_recipe_system_design.md`
-- `Docs/xomnibus_repo_structure.md`
-- `Docs/xomnibus_sound_design_guides.md`
-- `Docs/xomnibus_technical_design_system.md`
-- `Docs/xomnibus_v2_roadmap.md`
-- `Docs/xomnibus_volume2_review.md`
-- `Docs/how_to_write_a_xomnibus_adapter.md`
-- `Docs/design/xomnibus_design_guidelines.md`
-- `Docs/design/xomnibus_ui_master_spec_v2.md`
-- `Docs/mockups/xomnibus-main-ui.html`
-- `Docs/concepts/xomnibus_collections_vision.md`
-- `Docs/plans/xomnibus_v1_launch_master_plan.md`
+**Tier 1 — Rename file + update contents (filename contains XOlokun):**
+- `Docs/xolokun_master_specification.md` → `xolokun_master_specification.md`
+- `Docs/xolokun_engine_roadmap.md` → `xolokun_engine_roadmap.md`
+- `Docs/xolokun_engine_roadmap_v3.md` → `xolokun_engine_roadmap_v3.md`
+- `Docs/xolokun_brand_identity_and_launch.md` → `xolokun_brand_identity_and_launch.md`
+- `Docs/xolokun_landscape_2026.md` → `xolokun_landscape_2026.md`
+- `Docs/xolokun_launch_audit_2026.md` → `xolokun_launch_audit_2026.md`
+- `Docs/XOlokun_Master_Architecture- Volume 2.md.txt` → rename
+- `Docs/xolokun_master_fx_design_brief.md`
+- `Docs/xolokun_mobile_and_midi_spec.md`
+- `Docs/xolokun_mobile_implementation_strategy.md`
+- `Docs/xolokun_module_starter_design.md`
+- `Docs/xolokun_name_migration_reference.md`
+- `Docs/xolokun_new_engine_process.md`
+- `Docs/xolokun_preset_spec_for_builder.md`
+- `Docs/xolokun_recipe_system_design.md`
+- `Docs/xolokun_repo_structure.md`
+- `Docs/xolokun_sound_design_guides.md`
+- `Docs/xolokun_technical_design_system.md`
+- `Docs/xolokun_v2_roadmap.md`
+- `Docs/xolokun_volume2_review.md`
+- `Docs/how_to_write_a_xolokun_adapter.md`
+- `Docs/design/xolokun_design_guidelines.md`
+- `Docs/design/xolokun_ui_master_spec_v2.md`
+- `Docs/mockups/xolokun-main-ui.html`
+- `Docs/concepts/xolokun_collections_vision.md`
+- `Docs/plans/xolokun_v1_launch_master_plan.md`
 
-**Tier 2 — Content update only (file mentions XOmnibus but is not named for it):**
-All remaining 415 - 26 = ~389 Docs files with incidental XOmnibus mentions. These are seance verdicts, sweep reports, build verifications, etc. These are historical records and do not need to be retroactively rewritten — they document the product as it was during development. Consider adding a one-time header note: "Note: This document was written before the rebrand to XOlokun. References to XOmnibus refer to the same product."
+**Tier 2 — Content update only (file mentions XOlokun but is not named for it):**
+All remaining 415 - 26 = ~389 Docs files with incidental XOlokun mentions. These are seance verdicts, sweep reports, build verifications, etc. These are historical records and do not need to be retroactively rewritten — they document the product as it was during development. Consider adding a one-time header note: "Note: This document was written before the rebrand to XOlokun. References to XOlokun refer to the same product."
 
 ---
 
 ### Category 7: Site — 18 Files
 
-All 18 site HTML/XML files contain XOmnibus references and require updates:
+All 18 site HTML/XML files contain XOlokun references and require updates:
 - `site/index.html`, `site/aquarium.html`, `site/manifesto.html`, `site/packs.html`, `site/updates.html`, `site/guide.html`, `site/guide-collections.html`, `site/feed.xml`
 - All `site/guide-*.html` files
 
@@ -225,17 +225,17 @@ These are public-facing and must be updated before any V1 announcement.
 
 ### Category 8: Support Files
 
-**`README.md`** — Multiple references including "XOmnibus" heading, preset path, doc references.
+**`README.md`** — Multiple references including "XOlokun" heading, preset path, doc references.
 
 **`CLAUDE.md`** — 20+ references: product name, doc paths, preset paths. This is the AI agent project guide and must be updated to reflect the new name so future Claude sessions use the correct name.
 
-**`Skills/`** — 17 skill files reference XOmnibus in SKILL.md content. These should be updated as Skills are actively used by agents.
+**`Skills/`** — 17 skill files reference XOlokun in SKILL.md content. These should be updated as Skills are actively used by agents.
 
-**`scripture/`** — 18 files with XOmnibus mentions (mostly in context of the product). These are archival; update the active-use retreat templates.
+**`scripture/`** — 18 files with XOlokun mentions (mostly in context of the product). These are archival; update the active-use retreat templates.
 
 **`patreon/`** — 7 files. These are public-facing (Patreon descriptions) and must be updated before any announcement.
 
-**`Tools/`** — 249 Python tool files with XOmnibus references. Most are in: variable names like `xomnibus_version`, `xomnibus_idx`, comments, and version string fields like `"xomnibus_version": "1.0"`. The version field in generated XPN metadata is the highest-priority update as it appears in customer-facing output.
+**`Tools/`** — 249 Python tool files with XOlokun references. Most are in: variable names like `xolokun_version`, `xolokun_idx`, comments, and version string fields like `"xolokun_version": "1.0"`. The version field in generated XPN metadata is the highest-priority update as it appears in customer-facing output.
 
 ---
 
@@ -244,27 +244,27 @@ These are public-facing and must be updated before any V1 announcement.
 Execute in this sequence to minimize broken-build time:
 
 **Step 1 — CMakeLists.txt** (do first, invalidates all targets)
-1. Rename `juce_add_binary_data(XOmnibusFont` → `XOlokunFont`
-2. Rename `juce_add_plugin(XOmnibus` → `XOlokun`
+1. Rename `juce_add_binary_data(XOlokunFont` → `XOlokunFont`
+2. Rename `juce_add_plugin(XOlokun` → `XOlokun`
 3. Update `PRODUCT_NAME`, `BUNDLE_ID`, `PLUGIN_CODE`
-4. Update all `target_sources(XOmnibus` → `XOlokun`
+4. Update all `target_sources(XOlokun` → `XOlokun`
 5. Update all `target_link_libraries`
 
 **Step 2 — Source file renames** (must happen before any build)
-1. `Source/XOmnibusProcessor.h` → `Source/XOlokunProcessor.h`
-2. `Source/XOmnibusProcessor.cpp` → `Source/XOlokunProcessor.cpp`
-3. `Source/UI/XOmnibusEditor.h` → `Source/UI/XOlokunEditor.h`
+1. `Source/XOlokunProcessor.h` → `Source/XOlokunProcessor.h`
+2. `Source/XOlokunProcessor.cpp` → `Source/XOlokunProcessor.cpp`
+3. `Source/UI/XOlokunEditor.h` → `Source/UI/XOlokunEditor.h`
 
 **Step 3 — Source content edits** (class names, string literals, filesystem paths)
-1. Class rename: `XOmnibusProcessor` → `XOlokunProcessor`, `XOmnibusEditor` → `XOlokunEditor`
-2. String literals: `"XOmnibus"` → `"XOlokun"` in getName(), drawText(), AI prompts
-3. Filesystem path strings: `"XOmnibus"` → `"XOlokun"` in `CouplingPresetManager.h`, `SecureKeyStore.h`, `ExportDialog.h`
-4. Update all `#include "XOmnibusProcessor.h"` / `XOmnibusEditor.h` across all files that include them
+1. Class rename: `XOlokunProcessor` → `XOlokunProcessor`, `XOlokunEditor` → `XOlokunEditor`
+2. String literals: `"XOlokun"` → `"XOlokun"` in getName(), drawText(), AI prompts
+3. Filesystem path strings: `"XOlokun"` → `"XOlokun"` in `CouplingPresetManager.h`, `SecureKeyStore.h`, `ExportDialog.h`
+4. Update all `#include "XOlokunProcessor.h"` / `XOlokunEditor.h` across all files that include them
 
 **Step 4 — Namespace decision** (if Option A chosen)
-- Global sed: `namespace xomnibus` → `namespace xolokun` across all 248 Source files + 8 SDK files
-- Update SDK ABI symbols: `xomnibus_create_engine` → `xolokun_create_engine`
-- Update SDK include path: `<xomnibus/...>` → `<xolokun/...>`
+- Global sed: `namespace xolokun` → `namespace xolokun` across all 248 Source files + 8 SDK files
+- Update SDK ABI symbols: `xolokun_create_engine` → `xolokun_create_engine`
+- Update SDK include path: `<xolokun/...>` → `<xolokun/...>`
 - If Option B: document the namespace divergence in CLAUDE.md
 
 **Step 5 — Build and test**
@@ -274,13 +274,13 @@ Execute in this sequence to minimize broken-build time:
 - auval pass check
 
 **Step 6 — Preset directory rename**
-1. `git mv Presets/XOmnibus Presets/XOlokun`
+1. `git mv Presets/XOlokun Presets/XOlokun`
 2. Update `PresetManager.h` path references
 3. Update `README.md`, `CLAUDE.md` references to preset path
 
 **Step 7 — Tools and infrastructure**
-- Update `xomnibus_version` field name in Python tools to `xolokun_version` (or keep as a legacy compat field)
-- Update XPN sidecar spec `"xomnibus_version_min"` field
+- Update `xolokun_version` field name in Python tools to `xolokun_version` (or keep as a legacy compat field)
+- Update XPN sidecar spec `"xolokun_version_min"` field
 
 **Step 8 — Docs, Site, Skills, Patreon** (can run in parallel, no build dependency)
 
@@ -427,7 +427,7 @@ The owner's stated intention — "I want to completely honor that culture. I hop
 
 The rename to XOlokun is approved on all three axes reviewed:
 
-1. **Architecturally feasible:** Large surface area, low technical risk. Pre-V1 timing is ideal. The namespace question (Option A vs B) is the only genuine architectural decision; Option B (keep `namespace xomnibus` internally, rename only the user-visible product) is the safer V1 path.
+1. **Architecturally feasible:** Large surface area, low technical risk. Pre-V1 timing is ideal. The namespace question (Option A vs B) is the only genuine architectural decision; Option B (keep `namespace xolokun` internally, rename only the user-visible product) is the safer V1 path.
 
 2. **Culturally grounded:** Olokun fits the instrument's actual architecture and mythology in specific, non-superficial ways. The commitment to reverence is sound in intention. External cultural review before public launch is required to complete due diligence.
 
@@ -439,10 +439,10 @@ The rename to XOlokun is approved on all three axes reviewed:
 |---|--------|-----|------|
 | 1 | Namespace decision: Option A or B | Owner | Before any code changes |
 | 2 | Execute rename in CMakeLists.txt | Claude | Next session |
-| 3 | Rename and update `XOmnibusProcessor.*`, `XOmnibusEditor.h` | Claude | Next session |
+| 3 | Rename and update `XOlokunProcessor.*`, `XOlokunEditor.h` | Claude | Next session |
 | 4 | Update string literals and filesystem path strings in source | Claude | Next session |
 | 5 | Build + auval pass | Owner/Claude | Immediately after code |
-| 6 | `git mv Presets/XOmnibus Presets/XOlokun` + path update in PresetManager | Claude | Same session |
+| 6 | `git mv Presets/XOlokun Presets/XOlokun` + path update in PresetManager | Claude | Same session |
 | 7 | Update `CLAUDE.md`, `README.md`, `site/` | Claude | Same session |
 | 8 | Update `Skills/`, `patreon/`, active `Docs/` files | Claude | Same session |
 | 9 | Identify cultural advisor for Acknowledgment review | Owner | This week |
@@ -456,7 +456,7 @@ The rename to XOlokun is approved on all three axes reviewed:
 - The `.xocoupling` format
 - All parameter IDs (these must never change post-V1 regardless)
 - The XO_OX company name and domain (xo-ox.org)
-- The repo name `XO_OX-XOmnibus` on GitHub (can be renamed at the owner's discretion)
+- The repo name `XO_OX-XOlokun` on GitHub (can be renamed at the owner's discretion)
 
 ### The Motto
 

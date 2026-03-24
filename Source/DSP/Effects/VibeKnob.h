@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // VibeKnob — Bipolar character dial: GRIT ←→ SWEET.
@@ -311,4 +311,4 @@ private:
     static constexpr float kPi = 3.14159265358979f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

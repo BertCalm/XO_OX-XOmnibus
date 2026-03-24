@@ -21,7 +21,7 @@ The XPN pack buyer is a specific person: they own an MPC, they care about sound 
 
 - Producer encounters XO_OX content while searching for MPC workflow help or new sounds
 - Reads a Field Guide post that answers a real question they had (e.g., "how do I build a drum kit from a synth?")
-- Watches a YouTube tutorial demonstrating XOmnibus + MPC workflow end-to-end
+- Watches a YouTube tutorial demonstrating XOlokun + MPC workflow end-to-end
 - Sees an r/mpc or r/synthesizers thread where another producer recommends XO_OX
 - Finds the XO-OX.org Aquarium or pack listing through organic search
 - Hears a community beat challenge entry that credits XO_OX engines
@@ -43,7 +43,7 @@ The XPN pack buyer is a specific person: they own an MPC, they care about sound 
 ### XO_OX Response
 
 - **SEO anchor**: Field Guide posts target long-tail MPC queries ("MPC program file format explained," "XPM velocity layers tutorial," "best MPC expansion packs for sound design")
-- **YouTube strategy**: tutorials show the full workflow — XOmnibus preset → XPN export → MPC import → played live. No skip steps. Shows mastery.
+- **YouTube strategy**: tutorials show the full workflow — XOlokun preset → XPN export → MPC import → played live. No skip steps. Shows mastery.
 - **Community presence**: genuine participation in r/mpc and MPC-Samples.com threads, not promotional drops
 - **First impression standard**: every piece of XO_OX content must deliver one thing the viewer/reader couldn't find elsewhere. "These people know MPC deeply" is the only acceptable exit emotion.
 - **Pack challenge seeding**: community beat challenges give producers a reason to engage before they have spent anything

@@ -45,7 +45,7 @@
     {
       "file": "generate_presets_overlap_outwit.py",
       "category": "preset-design",
-      "description": "XOmnibus preset generator for OVERLAP (106 presets) and OUTWIT Block 1 (50 presets)",
+      "description": "XOlokun preset generator for OVERLAP (106 presets) and OUTWIT Block 1 (50 presets)",
       "status": "active"
     },
     {
@@ -56,7 +56,7 @@
     {
       "file": "oxport_render.py",
       "category": "xpn-export",
-      "description": "Fleet render automation \u2014 WAV rendering from XOmnibus via MIDI + audio loopback (BlackHole on macOS)",
+      "description": "Fleet render automation \u2014 WAV rendering from XOlokun via MIDI + audio loopback (BlackHole on macOS)",
       "status": "active"
     },
     {

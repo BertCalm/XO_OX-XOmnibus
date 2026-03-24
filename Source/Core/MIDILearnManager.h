@@ -4,7 +4,7 @@
 #include <vector>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MIDILearnManager — Cross-platform MIDI controller mapping.
@@ -297,4 +297,4 @@ private:
     std::atomic<int> pendingLearnChannel { 0 };
 };
 
-} // namespace xomnibus
+} // namespace xolokun

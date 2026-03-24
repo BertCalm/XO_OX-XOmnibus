@@ -159,9 +159,9 @@ def fix_preset(path: Path) -> int:
 
 
 def main():
-    # Search both the XOmnibus Presets directory and the XOverworld Factory directory
+    # Search both the XOlokun Presets directory and the XOverworld Factory directory
     search_dirs = [
-        Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets"),
+        Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets"),
         Path("/Users/joshuacramblet/Documents/GitHub/XOverworld/Presets"),
     ]
 

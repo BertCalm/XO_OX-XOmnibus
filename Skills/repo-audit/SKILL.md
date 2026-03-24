@@ -29,7 +29,7 @@ Run both before a release. Run `/repo-audit` more frequently during active devel
 
 These are real runtime bugs, not just doc issues. Engine IDs must match exactly in three places:
 1. `getEngineId()` return value in each adapter
-2. Registration key in `Source/XOmnibusProcessor.cpp`
+2. Registration key in `Source/XOlokunProcessor.cpp`
 3. `validEngineNames` set in `Source/Core/PresetManager.h`
 
 ```bash
@@ -37,7 +37,7 @@ These are real runtime bugs, not just doc issues. Engine IDs must match exactly 
 grep -rn "getEngineId" Source/Engines/ | grep "return " | sort
 
 # Extract all registerEngine() keys from processor
-grep -n "registerEngine" Source/XOmnibusProcessor.cpp | sort
+grep -n "registerEngine" Source/XOlokunProcessor.cpp | sort
 
 # Extract validEngineNames list
 grep -A 60 "validEngineNames" Source/Core/PresetManager.h | head -70
@@ -107,14 +107,14 @@ grep -rn "12 coupling\|13 coupling\|Coupling Types (12)\|Coupling Types (13)" Do
 
 ### 2.2 Engine Table Completeness
 
-Verify `README.md` engine table, `Docs/xomnibus_master_specification.md` engine table, and CLAUDE.md engine list all contain the same engines:
+Verify `README.md` engine table, `Docs/xolokun_master_specification.md` engine table, and CLAUDE.md engine list all contain the same engines:
 
 ```bash
 # Count engine rows in README
 grep -c "^| " README.md
 
 # Count engine rows in master spec section 3.1
-grep -A 200 "The 42 Engines" Docs/xomnibus_master_specification.md | grep -c "^|"
+grep -A 200 "The 42 Engines" Docs/xolokun_master_specification.md | grep -c "^|"
 
 # List all engine directories that exist
 ls Source/Engines/ | sort
@@ -180,10 +180,10 @@ Key sections that commonly go stale:
 
 ```bash
 # Check coupling type count in master spec
-grep "Coupling Types" Docs/xomnibus_master_specification.md
+grep "Coupling Types" Docs/xolokun_master_specification.md
 
 # Check for Design Doctrines section
-grep "Design Doctrines\|2\.6" Docs/xomnibus_master_specification.md
+grep "Design Doctrines\|2\.6" Docs/xolokun_master_specification.md
 ```
 
 ---

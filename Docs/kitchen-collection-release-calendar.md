@@ -5,6 +5,12 @@
 
 ---
 
+> **BUILD STATUS SUPERSEDED — All 6 quads built, integrated, seanced, and retreated as of 2026-03-23. This calendar's build timelines are historical.**
+
+---
+
+---
+
 ## How to Read This Document
 
 This calendar assumes V1 ships Week 1 (March 23, 2026) as planned in `6-month-release-calendar-2026.md`. The Kitchen Collection is V2 paid content — it cannot ship before V1 is stable and the community has formed.
@@ -23,12 +29,12 @@ Each quad entry includes:
 
 | Quad | Coupling Mode | Category | Build | Editorial | Patreon Early | Public Ship |
 |------|--------------|----------|-------|-----------|--------------|-------------|
-| **CHEF** (Organs) | Adversarial | Built NOW | Mar–Jun 2026 | Jun–Jul 2026 | Aug 4, 2026 | Aug 18, 2026 |
-| **KITCHEN** (Pianos) | Resonant | Design complete | Jul–Sep 2026 | Sep–Oct 2026 | Oct 6, 2026 | Oct 20, 2026 |
-| **CELLAR** (Bass) | Gravitational | Concept | Oct–Nov 2026 | Nov–Dec 2026 | Dec 8, 2026 | Dec 22, 2026 |
-| **GARDEN** (Strings) | Evolutionary | Concept | Jan–Feb 2027 | Feb 2027 | Mar 2, 2027 | Mar 16, 2027 |
-| **BROTH** (Pads) | Cooperative | Concept | Mar–Apr 2027 | Apr 2027 | May 4, 2027 | May 18, 2027 |
-| **FUSION** (Electric Pianos) | Migratory | Concept | May–Jun 2027 | Jun 2027 | Jul 6, 2027 | Jul 20, 2027 |
+| **CHEF** (Organs) | Adversarial | BUILT + RETREATED (2026-03-23) | Mar–Jun 2026 | Jun–Jul 2026 | Aug 4, 2026 | Aug 18, 2026 |
+| **KITCHEN** (Pianos) | Resonant | BUILT + RETREATED (2026-03-23) | Jul–Sep 2026 | Sep–Oct 2026 | Oct 6, 2026 | Oct 20, 2026 |
+| **CELLAR** (Bass) | Gravitational | BUILT + RETREATED (2026-03-23) | Oct–Nov 2026 | Nov–Dec 2026 | Dec 8, 2026 | Dec 22, 2026 |
+| **GARDEN** (Strings) | Evolutionary | BUILT + RETREATED (2026-03-23) | Jan–Feb 2027 | Feb 2027 | Mar 2, 2027 | Mar 16, 2027 |
+| **BROTH** (Pads) | Cooperative | BUILT + RETREATED (2026-03-23) | Mar–Apr 2027 | Apr 2027 | May 4, 2027 | May 18, 2027 |
+| **FUSION** (Electric Pianos) | Migratory | BUILT + RETREATED (2026-03-23) | May–Jun 2027 | Jun 2027 | Jul 6, 2027 | Jul 20, 2027 |
 | **The Complete Kitchen** | All 6 modes | — | — | Aug 2027 | Aug 31, 2027 | Sep 14, 2027 |
 
 **Total collection arc:** March 2026 — September 2027 (18 months)
@@ -36,9 +42,11 @@ Each quad entry includes:
 
 ---
 
-## Reality Check: What "Building NOW" Means for CHEF
+## Reality Check: Build Status as of 2026-03-23
 
-As of March 21, 2026:
+> **STATUS UPDATE (2026-03-23):** All 6 quads are now BUILT + RETREATED ahead of schedule. The original build timeline below was written 2026-03-21 when CHEF was still in design. The editorial windows and Patreon/public ship dates remain the forward-looking schedule.
+
+As of March 21, 2026 (original note — superseded):
 - All 4 engines are designed (XOto, XOctave, XOleg, XOtis) — see `culinary_collection_overview.md`
 - DSP architecture is mapped (adversarial coupling, organ parameter vocabulary)
 - Recipe framework exists (`recipe-design-process.md`)
@@ -131,7 +139,7 @@ This is not a slip — this is realistic. V1 ships March 23. CHEF ships August 1
 - Run every recipe through the 8-point accessibility audit (per `recipe-design-process.md`)
 - Conceptual taste test: read each recipe aloud
 - Layout: PDF master (free), EPUB structure (Patreon), print-on-demand spec (Tier 4)
-- Deep-link all preset names to XOmnibus (URL scheme)
+- Deep-link all preset names to XOlokun (URL scheme)
 - Write Signal post: "The Chef Quad Is Here" (announcement copy)
 - Write Field Guide post: Chronicle deep dive on adversarial coupling (editorial voice)
 
@@ -502,7 +510,7 @@ The Complete Kitchen is not a new book — it is a curation, indexing, and bindi
 ### Adoption Scenarios at CHEF Launch (August 2026)
 
 Assumptions at August 2026:
-- XOmnibus has been public for 5 months
+- XOlokun has been public for 5 months
 - Target community size: 2,000–5,000 active users
 - Patreon community: 100–300 patrons (realistic for 5-month solo dev)
 

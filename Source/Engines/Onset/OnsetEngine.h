@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OnsetEngine.h — XOnset | "The Surface Splash"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOnset lives at the water's surface — the boundary where air meets
@@ -64,7 +64,7 @@
 #include <cmath>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -1494,7 +1494,7 @@ struct OnsetVoice
 
 //==============================================================================
 // OnsetEngine — Percussive synthesis engine: 8 fixed voices, dual layers, blend.
-// Implements SynthEngine for the XOmnibus mega-tool.
+// Implements SynthEngine for the XOlokun mega-tool.
 //
 // The drum machine that morphs between an 808 and a physics simulation on
 // every hit. Lives at the water's surface in the XO_OX aquatic mythology —
@@ -1507,7 +1507,7 @@ struct OnsetVoice
 //   4 Macros: MACHINE (blend bias), PUNCH (snap+body), SPACE (FX), MUTATE (drift)
 //   FX Chain: Character Stage -> Delay -> Reverb -> LoFi
 //
-// Coupling interface (XOmnibus integration):
+// Coupling interface (XOlokun integration):
 //   getSampleForCoupling() returns post-FX master output
 //   applyCouplingInput() accepts filter, decay, blend, and choke modulation
 //==============================================================================
@@ -1595,7 +1595,7 @@ public:
 
         // ---- 1. Snapshot parameters (ParamSnapshot pattern) ----
         // Cache all parameter values once per block to avoid per-sample
-        // atomic loads. This is the XOmnibus-wide ParamSnapshot convention.
+        // atomic loads. This is the XOlokun-wide ParamSnapshot convention.
         float vBlend[kNumVoices], vPitch[kNumVoices], vDecay[kNumVoices];
         float vTone[kNumVoices], vSnap[kNumVoices], vBody[kNumVoices];
         float vChar[kNumVoices], vLevel[kNumVoices], vPan[kNumVoices];
@@ -2197,4 +2197,4 @@ private:
 // feliX's transients, isolated and amplified. Every trigger a ripple.
 //==============================================================================
 
-} // namespace xomnibus
+} // namespace xolokun

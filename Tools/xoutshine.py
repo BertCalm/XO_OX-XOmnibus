@@ -844,7 +844,7 @@ def apply_fade_guards(channels: List[List[float]], sr: int,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Rebirth Mode — XOmnibus-style DSP Transforms
+# Rebirth Mode — XOlokun-style DSP Transforms
 # ─────────────────────────────────────────────────────────────────────────────
 
 def rebirth_saturate(channels: List[List[float]], sr: int,
@@ -1276,7 +1276,7 @@ def enhance(samples: List[SampleInfo], work_dir: str,
     (fade length, saturation, round-robin variation width, loop detection) are
     shaped by the sample's Sonic DNA fingerprint.
 
-    When rebirth is True, samples are reprocessed through XOmnibus-style DSP
+    When rebirth is True, samples are reprocessed through XOlokun-style DSP
     transforms instead of preserving original character. Each round-robin
     variation gets different randomized parameters within the engine profile's
     ranges, creating natural variation like re-recording through analog gear.
@@ -2017,7 +2017,7 @@ Rebirth engines: OBESE, OUROBOROS, OPAL, ORIGAMI, OVERDUB
 
     # Rebirth Mode flags
     parser.add_argument("--rebirth", action="store_true",
-                        help="Enable Rebirth Mode: reprocess samples through XOmnibus-style "
+                        help="Enable Rebirth Mode: reprocess samples through XOlokun-style "
                              "DSP transforms instead of preserving original character")
     parser.add_argument("--rebirth-engine", default="OBESE",
                         choices=list(REBIRTH_PROFILES.keys()),

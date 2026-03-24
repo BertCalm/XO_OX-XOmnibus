@@ -9,7 +9,7 @@ Sub-groups:
 - brutal-cold   (20): aggression 0.88-0.98, brightness 0.05-0.20, warmth 0.10-0.25
 - brutal-movement (20): aggression 0.87-0.97, movement 0.80-0.98, density 0.55-0.80
 
-Writes to Presets/XOmnibus/Entangled/. Skips existing files.
+Writes to Presets/XOlokun/Entangled/. Skips existing files.
 """
 
 import json
@@ -17,7 +17,7 @@ import os
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
-    "..", "Presets", "XOmnibus", "Entangled"
+    "..", "Presets", "XOlokun", "Entangled"
 )
 
 # ---------------------------------------------------------------------------

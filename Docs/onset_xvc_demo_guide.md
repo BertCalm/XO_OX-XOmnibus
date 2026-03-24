@@ -83,7 +83,7 @@ The `global_amount` acts as a master multiplier. At 0.0, XVC is bypassed entirel
 
 ## The 12 XVC Demo Presets
 
-All presets live in `Presets/XOmnibus/Flux/Onset/XVC/` except Demo 12 which is in `Presets/XOmnibus/Entangled/`.
+All presets live in `Presets/XOlokun/Flux/Onset/XVC/` except Demo 12 which is in `Presets/XOlokun/Entangled/`.
 
 ### Demo 1 — Kick Pumps Hats
 **File:** `Kick_Pumps_Hats.xometa`
@@ -152,7 +152,7 @@ All presets live in `Presets/XOmnibus/Flux/Onset/XVC/` except Demo 12 which is i
 **Recommended progression:** Minimal XVC → Demo 1 (add kick-snare) → Demo 3 (add hat-decay) → Demo 4 (add tom pitch) → Demo 5 (full mesh).
 
 ### Demo 12 — XVC Dub Mesh (Entangled)
-**File:** `Presets/XOmnibus/Entangled/Onset_XVC_Dub_Mesh.xometa`
+**File:** `Presets/XOlokun/Entangled/Onset_XVC_Dub_Mesh.xometa`
 **Requires:** ONSET + OVERDUB
 **Core:** Internal XVC mesh (kick→snare filter 0.8, kick→tom pitch 0.75) + external coupling Onset→Overdub AmpToFilter (0.4)
 **What to listen for:** Two layers of coupling simultaneously. Inside ONSET, kick shapes the kit. Externally, the ONSET master output modulates OVERDUB's filter — so the kick not only brightens the snare internally but also pumps the bass synth's filter cutoff. One kick hit creates: (1) internal snare brightening via XVC, (2) internal tom pitch bend via XVC, (3) external OVERDUB filter pump via MegaCoupling. The dub bass breathes with the drums.
@@ -162,7 +162,7 @@ All presets live in `Presets/XOmnibus/Flux/Onset/XVC/` except Demo 12 which is i
 
 ## Advanced Patterns (Round 12G)
 
-Six presets exploring coupling patterns not covered in the original 12 demos. All live in `Presets/XOmnibus/Flux/Onset/XVC/`.
+Six presets exploring coupling patterns not covered in the original 12 demos. All live in `Presets/XOlokun/Flux/Onset/XVC/`.
 
 ### Advanced 1 — Tom's Heartbeat
 **File:** `Toms_Heartbeat.xometa`
@@ -256,4 +256,4 @@ When writing new presets with XVC intent, set `global_amount` first (recommend 0
 ---
 
 *Document version 1.1 — 2026-03-14 (Round 12G: +6 Advanced Pattern presets)*
-*Presets in: `Presets/XOmnibus/Flux/Onset/XVC/` (17 presets) + `Presets/XOmnibus/Entangled/Onset_XVC_Dub_Mesh.xometa` (1 preset)*
+*Presets in: `Presets/XOlokun/Flux/Onset/XVC/` (17 presets) + `Presets/XOlokun/Entangled/Onset_XVC_Dub_Mesh.xometa` (1 preset)*

@@ -11,7 +11,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -1142,4 +1142,4 @@ private:
     std::atomic<float>* pMacroDepth   = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -28,7 +28,7 @@ verify(target)
 
 ## Usage Examples
 
-**XOmnibus engine:**
+**XOlokun engine:**
 ```
 template: Source/Engines/{Name}/{Name}Engine.h + .cpp
 variables: {Name: "Origami", prefix: "origami_", color: "#E63946"}

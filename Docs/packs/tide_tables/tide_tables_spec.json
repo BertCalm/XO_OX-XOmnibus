@@ -12,7 +12,7 @@
     "OPAL"
   ],
   "mood": "Entangled (primary) / Foundation (Program 1) / Atmosphere (Programs 2–3)",
-  "target_audience": "New listeners discovering XO_OX for the first time. Producers who want a taste of all three flagship engines before committing to the full XOmnibus library.",
+  "target_audience": "New listeners discovering XO_OX for the first time. Producers who want a taste of all three flagship engines before committing to the full XOlokun library.",
   "description": "TIDE TABLES is the free gateway pack for XO_OX. Four programs trace a journey from the shore to the open sea: ONSET builds the rhythmic foundation (Incoming Tide), ODYSSEY opens the harmonic layer (Open Water), OPAL dissolves into granular texture (Surface Tension), and Full Spectrum couples all three in the Entangled mood. Everything here is synthesized — no samples. Every sound was born in the engine.",
   "programs": [
     {
@@ -718,8 +718,8 @@
     "100% free — no catch, no email wall. Just download and make something.",
     "Three flagship XO_OX engines in one pack: ONSET (drums), ODYSSEY (synth), OPAL (granular).",
     "64 pads across 4 programs, all synthesized from scratch — zero sample playback.",
-    "Entangled program shows XOmnibus engine coupling: rhythms that breathe, pads that pulse.",
-    "Gateway to the full XOmnibus library — every engine here has a deeper version in the main release.",
+    "Entangled program shows XOlokun engine coupling: rhythms that breathe, pads that pulse.",
+    "Gateway to the full XOlokun library — every engine here has a deeper version in the main release.",
     "MPC-native format: drop it in MPC Software or MPC Live/One/X and play immediately."
   ],
   "release_checklist": [
@@ -734,7 +734,7 @@
     "[ ] Update www.patreon.com/cw/XO_OX bio link to point to TIDE TABLES landing page"
   ],
   "build_notes": {
-    "preset_references": "Preset strings use the format ENGINE:Category > Preset Name. These are reference labels for the sound designer — map them to actual XOmnibus preset IDs during the XPN build step.",
+    "preset_references": "Preset strings use the format ENGINE:Category > Preset Name. These are reference labels for the sound designer — map them to actual XOlokun preset IDs during the XPN build step.",
     "xpn_build_command": "python3 Tools/xpn_pack_builder.py Docs/packs/tide_tables/tide_tables_spec.json",
     "next_steps": [
       "Run xpn_pack_builder.py to generate .xpn bundle",

@@ -1,6 +1,6 @@
 # Chapter 8: The XO_OX Fleet — All 34 Engines at a Glance
 
-*Written by Atlas, XOmnibus Bridge Expert*
+*Written by Atlas, XOlokun Bridge Expert*
 
 ---
 

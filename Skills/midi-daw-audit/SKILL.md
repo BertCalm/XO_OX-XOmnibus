@@ -2,7 +2,7 @@
 
 **Invoke with:** `/midi-daw-audit [engine-name | processor | full]`
 **Status:** LIVE
-**Purpose:** Comprehensive MIDI and DAW compatibility audit for XOmnibus engines and the host processor. Covers CC handling thread safety, MIDI learn integration, parameter automation exposure, state persistence, MPE configuration, pitch bend, sustain, transport sync, and plugin contract compliance. Produces a pass/fail report with remediation notes.
+**Purpose:** Comprehensive MIDI and DAW compatibility audit for XOlokun engines and the host processor. Covers CC handling thread safety, MIDI learn integration, parameter automation exposure, state persistence, MPE configuration, pitch bend, sustain, transport sync, and plugin contract compliance. Produces a pass/fail report with remediation notes.
 
 ---
 
@@ -21,7 +21,7 @@ Run all three for a complete pre-release check. This skill does **not** duplicat
 ## When to Use This Skill
 
 - Before any release or AU/AUv3 submission
-- After modifying `XOmnibusProcessor.cpp` or any engine's MIDI handling
+- After modifying `XOlokunProcessor.cpp` or any engine's MIDI handling
 - When a user reports "CC not working in [DAW]" or "automation lost after reopen"
 - After adding a new engine that handles its own MIDI (not routed through ChordMachine)
 - After adding new non-APVTS state that needs DAW project recall
@@ -35,7 +35,7 @@ Run all three for a complete pre-release check. This skill does **not** duplicat
 | ID | Check | Scope |
 |----|-------|-------|
 | M01 | CC handling thread safety | `MIDILearnManager`, per-engine MIDI loops |
-| M02 | MIDI learn wired end-to-end | `XOmnibusProcessor` integration |
+| M02 | MIDI learn wired end-to-end | `XOlokunProcessor` integration |
 | M03 | APVTS parameter exposure | All parameters host-automatable |
 | M04 | State persistence completeness | Non-APVTS state in `getStateInformation` |
 | M05 | MPE configuration backed by APVTS | `mpe_*` params cached and synced |
@@ -86,9 +86,9 @@ Five integration points must all be present for `MIDILearnManager` to function:
 
 | Point | Location | Check |
 |-------|----------|-------|
-| `#include "Core/MIDILearnManager.h"` | `XOmnibusProcessor.h` | Header included |
-| `MIDILearnManager midiLearnManager` | `XOmnibusProcessor.h` private | Member declared |
-| `getMIDILearnManager()` | `XOmnibusProcessor.h` public | Accessor exposed to UI |
+| `#include "Core/MIDILearnManager.h"` | `XOlokunProcessor.h` | Header included |
+| `MIDILearnManager midiLearnManager` | `XOlokunProcessor.h` private | Member declared |
+| `getMIDILearnManager()` | `XOlokunProcessor.h` public | Accessor exposed to UI |
 | `midiLearnManager.setAPVTS(&apvts)` | Constructor | APVTS pointer set |
 | `midiLearnManager.loadDefaultMappings()` | Constructor | Default CC map installed |
 | `midiLearnManager.processMidi(midi)` | `processBlock()` | Called each block |
@@ -125,7 +125,7 @@ Required parameter groups:
 
 **For each engine, verify `addParameters()` is called in `createParameterLayout()`:**
 ```
-Search: createParameterLayout() in XOmnibusProcessor.cpp
+Search: createParameterLayout() in XOlokunProcessor.cpp
 Find: [EngineName]Engine::addParameters(params)
 All 43 registered engines must appear.
 ```
@@ -320,7 +320,7 @@ if (auto* playHead = getPlayHead())
 
 ## M09 — Parameter ID Versioning and Stability
 
-XOmnibus has a hard rule: **parameter IDs are frozen after release.** A changed ID breaks all saved automation in every DAW project that used it.
+XOlokun has a hard rule: **parameter IDs are frozen after release.** A changed ID breaks all saved automation in every DAW project that used it.
 
 **Version number format check:**
 ```cpp
@@ -353,9 +353,9 @@ cm_*      → Chord Machine only
 
 ## M10 — Plugin Contract Compliance
 
-The JUCE `AudioProcessor` contract has several methods XOmnibus must implement correctly for DAW compatibility.
+The JUCE `AudioProcessor` contract has several methods XOlokun must implement correctly for DAW compatibility.
 
-**Check `XOmnibusProcessor.h` for required overrides:**
+**Check `XOlokunProcessor.h` for required overrides:**
 
 | Method | Expected Value | Risk If Wrong |
 |--------|---------------|---------------|
@@ -364,7 +364,7 @@ The JUCE `AudioProcessor` contract has several methods XOmnibus must implement c
 | `getTailLengthSeconds()` | `6.0` | Host cuts playback tail too early; reverbs/delays clip |
 | `getLatencySamples()` | 0 (or actual if lookahead added) | DAW compensates incorrectly; MIDI sync offset |
 | `isBusesLayoutSupported()` | must accept stereo output | Hosts may refuse to instantiate |
-| `getName()` | `"XOmnibus"` | Preset/project file association |
+| `getName()` | `"XOlokun"` | Preset/project file association |
 
 **Bus layout check:**
 ```cpp
@@ -380,13 +380,13 @@ BusesProperties().withOutput("Output", juce::AudioChannelSet::stereo(), true)
 
 ## Phase 1: Processor-Level Audit
 
-Run this when auditing `XOmnibusProcessor.*`:
+Run this when auditing `XOlokunProcessor.*`:
 
 ```
-1. Open Source/XOmnibusProcessor.h
+1. Open Source/XOlokunProcessor.h
 2. Verify: MIDILearnManager member + accessor present          → M02
 3. Verify: mpe_* params in CachedParams, all non-null         → M05
-4. Open Source/XOmnibusProcessor.cpp
+4. Open Source/XOlokunProcessor.cpp
 5. Check processMidi() call in processBlock()                  → M02
 6. Check MPE sync block in processBlock()                      → M05
 7. Check transport sync block in processBlock()                → M08
@@ -477,8 +477,8 @@ REMEDIATION ORDER:
 
 - `Source/Core/MIDILearnManager.h` — Full MIDI learn implementation
 - `Source/Core/MPEManager.h` — MPE zone + per-voice expression state
-- `Source/XOmnibusProcessor.h/.cpp` — All processor-level integration points
-- `Docs/xomnibus_mobile_and_midi_spec.md` — MPE controller layout + spec
-- `Docs/xomnibus_master_specification.md` — Plugin format targets + AU/VST3 roadmap
+- `Source/XOlokunProcessor.h/.cpp` — All processor-level integration points
+- `Docs/xolokun_mobile_and_midi_spec.md` — MPE controller layout + spec
+- `Docs/xolokun_master_specification.md` — Plugin format targets + AU/VST3 roadmap
 - `/dsp-safety` — Audio thread allocation / blocking I/O (separate skill)
 - `/engine-health-check` — D001–D006 doctrine compliance (separate skill)

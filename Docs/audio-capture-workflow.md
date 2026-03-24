@@ -221,11 +221,11 @@ Match the phrase to what the engine does, not to what is easy:
 ## 5. Step-by-Step Capture Workflow
 
 ### Setup (do once)
-1. Open XOmnibus in standalone mode (or Logic Pro AU)
+1. Open XOlokun in standalone mode (or Logic Pro AU)
 2. Set audio output: your interface (recording at 44.1 kHz / 24-bit)
 3. Set MIDI input: your keyboard or controller
 4. Open DAW session at 44100 Hz, 24-bit — create one stereo audio track
-5. Set input monitoring: XOmnibus stereo out → DAW stereo track
+5. Set input monitoring: XOlokun stereo out → DAW stereo track
 6. Create a folder: `~/Documents/xoox-hero-clips/wav/`
 7. Verify the 71-filename list is ready (Section 2 above)
 
@@ -233,7 +233,7 @@ Match the phrase to what the engine does, not to what is easy:
 ```
 For each engine:
 
-a. In XOmnibus — select the engine slot
+a. In XOlokun — select the engine slot
 b. Navigate to the hero preset from Section 1
    (If preset not yet created: load a named init patch or manually dial in
     the character described in the Hero Preset column)
@@ -407,7 +407,7 @@ ffmpeg alone is sufficient for all post-processing steps in this workflow.
 - [ ] Create folder: `mkdir -p ~/Documents/xoox-hero-clips/wav`
 - [ ] Save post-processing script to `~/Documents/xoox-hero-clips/process.sh`
 - [ ] `chmod +x ~/Documents/xoox-hero-clips/process.sh`
-- [ ] Open XOmnibus standalone (or Logic Pro AU)
+- [ ] Open XOlokun standalone (or Logic Pro AU)
 - [ ] Set DAW to 44100 Hz / 24-bit stereo
 - [ ] Work through engines in batches using Section 4 play guidance
 - [ ] Name each export exactly per the 71-filename list in Section 2

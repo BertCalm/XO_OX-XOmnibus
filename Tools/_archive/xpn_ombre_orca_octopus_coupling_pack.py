@@ -295,7 +295,7 @@ def build_triads(rng):
 # ---------------------------------------------------------------------------
 
 def write_preset(preset, output_dir, dry_run):
-    mood_dir = Path(output_dir) / "XOmnibus" / preset["mood"]
+    mood_dir = Path(output_dir) / "XOlokun" / preset["mood"]
     filepath = mood_dir / (preset["name"] + ".xometa")
     if dry_run:
         return filepath, False
@@ -312,7 +312,7 @@ def write_preset(preset, output_dir, dry_run):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate OMBRE / ORCA / OCTOPUS coupling presets for XOmnibus."
+        description="Generate OMBRE / ORCA / OCTOPUS coupling presets for XOlokun."
     )
     default_out = Path(__file__).resolve().parent.parent / "Presets"
     parser.add_argument(
@@ -357,7 +357,7 @@ def main():
     if args.dry_run:
         print(f"\nDry run complete — {total} presets would be written (0 files created).")
     else:
-        print(f"\nDone — {written}/{total} presets written to {args.output_dir}/XOmnibus/Entangled/")
+        print(f"\nDone — {written}/{total} presets written to {args.output_dir}/XOlokun/Entangled/")
 
     return 0
 

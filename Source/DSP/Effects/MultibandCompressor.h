@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MultibandCompressor — 3-band upward+downward compression (OTT-style).
@@ -266,4 +266,4 @@ private:
     float mix = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

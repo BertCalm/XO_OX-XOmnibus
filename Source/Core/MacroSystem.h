@@ -3,7 +3,7 @@
 #include <array>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MacroTarget — describes a single parameter modulated by a macro knob.
@@ -68,7 +68,7 @@ public:
     // Maps to MPCe quad-corner right axis (see coupling_performance_spec.md §4.2).
     static constexpr int CouplingMacroIndex = 2;  // macro3 (0-based)
 
-    // Default labels matching the XOmnibus spec
+    // Default labels matching the XOlokun spec
     static constexpr std::array<const char*, 4> DefaultLabels = {
         "CHARACTER", "MOVEMENT", "COUPLING", "SPACE"
     };
@@ -465,4 +465,4 @@ private:
     std::array<MacroSlot, NumMacros> macroSlots;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

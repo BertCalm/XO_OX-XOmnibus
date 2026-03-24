@@ -22,7 +22,7 @@ XO_OX tutorials are for MPC producers, not synthesizer nerds. Avoid oscillator t
 Plays through 5 programs from a single pack in a beat context. Not a patch-by-patch menu tour — a mini-session showing what the pack sounds like in use. Each program gets 20–30 seconds of musical context: a loop, a stab, a texture. Closes with a full-beat demo using all 5 programs together. This is the primary sales video for each pack.
 
 **Type B — Engine Deep Dive** (8–12 min, YouTube primary)
-Takes one XOmnibus engine and explores its sound design philosophy using a specific pack as the example material. Not a parameter walkthrough. Answers: what is this engine's character, what does it do that other engines don't, and how do the pack presets reflect that? ONSET deep dive covers why MPC drum machines have a physical quality. OPAL deep dive covers why granular works differently than sampling. Requires more prep but builds the most durable audience trust.
+Takes one XOlokun engine and explores its sound design philosophy using a specific pack as the example material. Not a parameter walkthrough. Answers: what is this engine's character, what does it do that other engines don't, and how do the pack presets reflect that? ONSET deep dive covers why MPC drum machines have a physical quality. OPAL deep dive covers why granular works differently than sampling. Requires more prep but builds the most durable audience trust.
 
 **Type C — Quick Tip** (60–90 sec vertical, Instagram/TikTok primary)
 One technique or workflow insight, no more. Hook in the first 3 seconds, deliver the tip, show the result, done. Repurposed from longer YouTube content where possible — not produced from scratch every time. These are the discovery engine. Most new viewers will find XO_OX through a Quick Tip first.
@@ -40,7 +40,7 @@ Full pack design session from concept to final program. Shows the process: what 
 
 3. **ONSET engine deep dive: why MPC drum machines sound good** — Type B. ONSET is the most immediately legible engine for MPC producers. A well-made deep dive here builds credibility for the weirder engines later.
 
-4. **Quick tip: coupling on MPC — how to use Entangled presets** — Type C. Addresses the one concept most likely to confuse new XOmnibus users. Reduces friction before it becomes a support question.
+4. **Quick tip: coupling on MPC — how to use Entangled presets** — Type C. Addresses the one concept most likely to confuse new XOlokun users. Reduces friction before it becomes a support question.
 
 5. **Behind the Pack: MACHINE GUN REEF design session** — Type D, Patreon exclusive. Rewards early Patreon members with access to the full creative process behind a marquee pack.
 

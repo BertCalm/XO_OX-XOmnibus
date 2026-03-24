@@ -1,5 +1,5 @@
 """
-xpn_pack_localization_guide.py — XO_OX XOmnibus Pack Localization Checker
+xpn_pack_localization_guide.py — XO_OX XOlokun Pack Localization Checker
 
 Checks pack names, descriptions, and .xometa preset names for potential
 localization issues: non-ASCII characters, false-friend words, display-length

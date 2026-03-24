@@ -8,7 +8,7 @@
 #include <memory>
 #include <string>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MegaCouplingMatrix — Cross-engine modulation routing.
@@ -198,7 +198,7 @@ public:
 
     //-- Hot-swap coupling integrity -------------------------------------------
 
-    // Called by XOmnibusProcessor::loadEngine() after an engine swap on `slot`.
+    // Called by XOlokunProcessor::loadEngine() after an engine swap on `slot`.
     //
     // AudioToBuffer routes require OpalEngine as the destination — any other
     // engine as dest will silently return nullptr from the dynamic_cast in
@@ -435,4 +435,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

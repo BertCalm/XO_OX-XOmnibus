@@ -8,7 +8,7 @@ Usage:
     python Tools/xpn_preset_similarity_matrix.py
     python Tools/xpn_preset_similarity_matrix.py --top 20
     python Tools/xpn_preset_similarity_matrix.py --mood-filter Flux
-    python Tools/xpn_preset_similarity_matrix.py --presets-dir /path/to/Presets/XOmnibus
+    python Tools/xpn_preset_similarity_matrix.py --presets-dir /path/to/Presets/XOlokun
 """
 
 import argparse
@@ -173,7 +173,7 @@ def render_heatmap(records: List[dict], pairs: List[Tuple[float, int, int]], moo
 
 def parse_args() -> argparse.Namespace:
     repo_root = Path(__file__).resolve().parent.parent
-    default_presets = repo_root / "Presets" / "XOmnibus"
+    default_presets = repo_root / "Presets" / "XOlokun"
 
     p = argparse.ArgumentParser(
         description="Compute pairwise Sonic DNA similarity matrix across .xometa presets."

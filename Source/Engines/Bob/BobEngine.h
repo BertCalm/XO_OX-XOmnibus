@@ -13,7 +13,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // BobNoiseGen — xorshift32 PRNG (replaces juce::Random for RT-safe noise).
@@ -1741,4 +1741,4 @@ private:
     std::atomic<float>* pPolyphony = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

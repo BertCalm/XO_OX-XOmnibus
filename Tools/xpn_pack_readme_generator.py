@@ -60,7 +60,7 @@ ENGINE_DESCRIPTIONS: dict[str, str] = {
         "→ Spring Reverb → Master. The Spring Reverb received the Blessing B004 from "
         "Vangelis and Tomita for its metallic splash character. 38 parameters, 40 "
         "presets, and four performance pads (FIRE, XOSEND, ECHO CUT, PANIC) make it "
-        "the most performance-oriented engine in XOmnibus."
+        "the most performance-oriented engine in XOlokun."
     ),
     "ODDFELIX": (
         "ODDFELIX is the feliX pole engine — neon-bright, harmonically ordered, and "
@@ -348,7 +348,7 @@ def generate_readme_for_pack(pack_dir: Path) -> str:
 
 {badge_line}
 
-> Designed by XO_OX | Part of the XOmnibus instrument ecosystem
+> Designed by XO_OX | Part of the XOlokun instrument ecosystem
 > [xo-ox.org](https://xo-ox.org)
 
 ---
@@ -385,7 +385,7 @@ def generate_readme_for_pack(pack_dir: Path) -> str:
 
 ## Credits + License
 
-Designed by XO_OX | XOmnibus Pack v{version} | Free to use in commercial productions
+Designed by XO_OX | XOlokun Pack v{version} | Free to use in commercial productions
 
 - Site: [xo-ox.org](https://xo-ox.org)
 - Field Guide: [xo-ox.org/guide](https://xo-ox.org/guide)

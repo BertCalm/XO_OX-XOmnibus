@@ -18,13 +18,13 @@ Usage:
 
 Examples:
   # All presets to stdout as CSV
-  python xpn_xometa_dna_bulk_export.py ../Presets/XOmnibus/
+  python xpn_xometa_dna_bulk_export.py ../Presets/XOlokun/
 
   # Filter to OPAL engine, JSON output
-  python xpn_xometa_dna_bulk_export.py ../Presets/XOmnibus/ --engine OPAL --format json
+  python xpn_xometa_dna_bulk_export.py ../Presets/XOlokun/ --engine OPAL --format json
 
   # Markdown summary to file
-  python xpn_xometa_dna_bulk_export.py ../Presets/XOmnibus/ --format markdown --output dna_report.md
+  python xpn_xometa_dna_bulk_export.py ../Presets/XOlokun/ --format markdown --output dna_report.md
 """
 
 import argparse

@@ -1,4 +1,4 @@
-# XOmnibus Documentation Health Plan
+# XOlokun Documentation Health Plan
 **Date:** 2026-03-20
 **Scope:** Full documentation ecosystem — accuracy, governance, organization, duplication, obsolescence
 **Status:** ACTIVE — Phase 1–4 defined; Phase 1–3 executed same day
@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-The XOmnibus documentation ecosystem is active and well-intentioned but carries four categories of debt:
+The XOlokun documentation ecosystem is active and well-intentioned but carries four categories of debt:
 1. **Accuracy errors** — wrong counts, orphaned blessing IDs, stale debate status
 2. **No governance** — no policy for "when to update which doc," no update SLAs, no metadata on skills
 3. **Organizational chaos** — 162-file specs/ dumping ground, 3 duplicate guild directories, seance verdicts for original 24 engines lost
@@ -21,7 +21,7 @@ The XOmnibus documentation ecosystem is active and well-intentioned but carries 
 **Problem:** Code has 14 coupling types (SynthEngine.h:11–37), CLAUDE.md says 13, master spec says 12.
 **Root cause:** AudioToBuffer added Round 7, KnotTopology added for ORBWEAVE; neither updated in docs.
 **Fix:** Update CLAUDE.md "13 coupling types" → 14. Update master spec section 4.1 to include both missing types.
-**Files:** CLAUDE.md line 12, xomnibus_master_specification.md section 4.1
+**Files:** CLAUDE.md line 12, xolokun_master_specification.md section 4.1
 
 ### P1.2 Preset Count
 **Problem:** CLAUDE.md says "~15,200" but actual count is 15,542.
@@ -65,12 +65,12 @@ The XOmnibus documentation ecosystem is active and well-intentioned but carries 
 ### P1.5 Doctrines Missing from Master Spec
 **Problem:** THE single source of truth has no mention of D001–D006.
 **Fix:** Add "Design Doctrines" section to master spec after section 2.
-**Files:** Docs/xomnibus_master_specification.md
+**Files:** Docs/xolokun_master_specification.md
 
 ### P1.6 Master Spec Document Hierarchy Incomplete
-**Problem:** Master spec's Document Hierarchy table (section 1) lists 12 "foundation docs" but omits CLAUDE.md, seance_cross_reference, prism_sweep_final_report, xomnibus_landscape_2026, and all skills.
+**Problem:** Master spec's Document Hierarchy table (section 1) lists 12 "foundation docs" but omits CLAUDE.md, seance_cross_reference, prism_sweep_final_report, xolokun_landscape_2026, and all skills.
 **Fix:** Add note distinguishing "foundation architecture docs" from "living project intelligence docs."
-**Files:** Docs/xomnibus_master_specification.md
+**Files:** Docs/xolokun_master_specification.md
 
 ---
 
@@ -135,7 +135,7 @@ Docs/specs/
 ├── active/             (current feature specs in development)
 ├── archive/            (completed research, superseded specs)
 │   ├── prism-sweep/    (rounds 1-12 artifacts)
-│   └── early-rnd/      (collections_, air_, pre-XOmnibus work)
+│   └── early-rnd/      (collections_, air_, pre-XOlokun work)
 ├── engine-deep-dives/  (OBRIX, Outwit, etc. deep specs)
 └── roadmaps/           (v2 strategy, feature roadmaps)
 ```
@@ -147,11 +147,11 @@ Docs/specs/
 **Estimated effort:** 30 minutes.
 
 ### P4.3 Back-Generate Original 24 Seance Verdicts
-**Current state:** ODDFELIX through OWLFISH seances exist only as aggregated data in xomnibus_landscape_2026.md and seance_cross_reference.md. No individual verdict files.
+**Current state:** ODDFELIX through OWLFISH seances exist only as aggregated data in xolokun_landscape_2026.md and seance_cross_reference.md. No individual verdict files.
 **Target:** 24 verdict files in Docs/seances/ reconstructed from landscape data.
 **Estimated effort:** 4-hour agent sprint (24 files × 10 min each).
 
-### P4.4 Update xomnibus_landscape_2026.md
+### P4.4 Update xolokun_landscape_2026.md
 **Current state:** Dated 2026-03-14 with pre-sweep bug counts. Bugs marked in landscape were fixed in Prism Sweep Rounds 1-12.
 **Target:** Re-publish with post-sweep status, side-by-side before/after table, link to prism_sweep_final_report.md.
 **Estimated effort:** 1-hour agent sprint.

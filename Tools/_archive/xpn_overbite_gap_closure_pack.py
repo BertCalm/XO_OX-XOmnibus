@@ -2,7 +2,7 @@
 """
 xpn_overbite_gap_closure_pack.py
 
-Scans Presets/XOmnibus/Entangled/ for existing OVERBITE pairs,
+Scans Presets/XOlokun/Entangled/ for existing OVERBITE pairs,
 identifies uncovered partners from the target list, and generates
 2 presets per missing partner.
 
@@ -15,7 +15,7 @@ import os
 import sys
 
 ENTANGLED_DIR = os.path.join(
-    os.path.dirname(__file__), "..", "Presets", "XOmnibus", "Entangled"
+    os.path.dirname(__file__), "..", "Presets", "XOlokun", "Entangled"
 )
 
 TARGET_PARTNERS = [

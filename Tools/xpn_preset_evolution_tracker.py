@@ -2,7 +2,7 @@
 """
 xpn_preset_evolution_tracker.py
 --------------------------------
-Tracks XOmnibus preset fleet evolution over git history.
+Tracks XOlokun preset fleet evolution over git history.
 
 Usage:
     python xpn_preset_evolution_tracker.py [--repo-dir .] [--output timeline.txt] [--samples 50]
@@ -223,7 +223,7 @@ def build_report(
     def add(text: str = ""):
         lines.append(text)
 
-    h("XOmnibus Preset Fleet — Evolution Tracker")
+    h("XOlokun Preset Fleet — Evolution Tracker")
     add(f"Repo     : {repo_dir.resolve()}")
     add(f"Path     : {preset_path}")
     add(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
@@ -313,7 +313,7 @@ def build_report(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Track XOmnibus preset fleet evolution via git history.",
+        description="Track XOlokun preset fleet evolution via git history.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

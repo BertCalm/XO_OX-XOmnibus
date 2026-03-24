@@ -163,7 +163,7 @@ Flag all wild suggestions with stability notes and recommended safety limits.
 - Validates with: `/debug-audio` (stability of feedback routes), `/preset-qa` (coupling in presets)
 
 ## Notes
-- Coupling is what makes XOmnibus unique — it's where "engines couple, collide, and mutate"
+- Coupling is what makes XOlokun unique — it's where "engines couple, collide, and mutate"
 - Direction matters: A→B ≠ B→A for most coupling types
 - Bidirectional coupling can create feedback — always note stability limits
 - The COUPLING macro (M3) should be the primary user control for coupling intensity

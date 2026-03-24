@@ -9,7 +9,7 @@ import glob
 import os
 from collections import defaultdict
 
-PRESETS_ROOT = "/home/user/XO_OX-XOmnibus/Presets"
+PRESETS_ROOT = "/home/user/XO_OX-XOlokun/Presets"
 
 
 def main():

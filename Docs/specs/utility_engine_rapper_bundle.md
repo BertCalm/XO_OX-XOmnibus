@@ -452,7 +452,7 @@ CONNECTS the crew — it wires feedback paths between engines. XOware sets the T
 the SPACE; XOlvido sets the AGE. XOrganum adds HARMONY; XOmen adds CHANCE; XOuvre adds MEMORY;
 XOscillograph adds PLACE; XOrdinate adds MOVEMENT.
 
-In a full XOmnibus session with utility engines loaded:
+In a full XOlokun session with utility engines loaded:
 - XOrrery is analyzing the synthesis engines and feeding modulation
 - XOware is chopping the output in West African polyrhythm
 - XOltre is placing everything in 3D

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OSPREY + OSTERIA coupling presets for XOmnibus.
+"""Generate OSPREY + OSTERIA coupling presets for XOlokun.
 
 Seeds coupling coverage for the sister shore engines (ShoreSystem B012 blessing).
 Produces 41 Entangled-mood .xometa presets across 13 engine pairs.
@@ -214,12 +214,12 @@ def build_preset_specs(rng: random.Random) -> list:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate OSPREY + OSTERIA coupling presets for XOmnibus."
+        description="Generate OSPREY + OSTERIA coupling presets for XOlokun."
     )
     parser.add_argument(
         "--output-dir",
         default=None,
-        help="Output directory (default: Presets/XOmnibus/Entangled/ relative to repo root).",
+        help="Output directory (default: Presets/XOlokun/Entangled/ relative to repo root).",
     )
     parser.add_argument(
         "--dry-run",
@@ -247,7 +247,7 @@ def main():
         output_dir = Path(args.output_dir)
     else:
         repo_root = Path(__file__).parent.parent
-        output_dir = repo_root / "Presets" / "XOmnibus" / "Entangled"
+        output_dir = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     if not args.dry_run:
         output_dir.mkdir(parents=True, exist_ok=True)

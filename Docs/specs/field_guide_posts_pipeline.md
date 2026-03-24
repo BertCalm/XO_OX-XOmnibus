@@ -18,7 +18,7 @@ The Field Guide lives at `/guide/` on XO-OX.org. Its function is dual: it drives
 
 | # | Post Title | Topic Area | Approx. Word Count | Date Published |
 |---|-----------|-----------|-------------------|---------------|
-| 1 | What Is XOmnibus? | Product introduction / brand overview | 3,800 | 2025-09 |
+| 1 | What Is XOlokun? | Product introduction / brand overview | 3,800 | 2025-09 |
 | 2 | The Aquatic Mythology of XO_OX | Brand lore / world-building | 4,200 | 2025-10 |
 | 3 | feliX and Oscar: The Two Poles of Sound | Brand philosophy / feliX-Oscar polarity | 3,500 | 2025-10 |
 | 4 | How Presets Are Born: The .xometa System | Technical / preset architecture | 3,100 | 2025-11 |
@@ -28,7 +28,7 @@ The Field Guide lives at `/guide/` on XO-OX.org. Its function is dual: it drives
 | 8 | The 6D Sonic DNA System Explained | Technical / DNA badge | 2,900 | 2026-01 |
 | 9 | ONSET: Building a Drum Engine from First Principles | Engine deep dive / ONSET | 4,100 | 2026-01 |
 | 10 | The Water Column Atlas: 29 Engines Across 9 Depth Zones | Brand lore / aquarium feature | 4,500 | 2026-02 |
-| 11 | Mood Families: How XOmnibus Organizes 2,500 Presets | Technical / preset system | 3,000 | 2026-02 |
+| 11 | Mood Families: How XOlokun Organizes 2,500 Presets | Technical / preset system | 3,000 | 2026-02 |
 | 12 | OVERWORLD: Three Eras, One Oscillator | Engine deep dive / OVERWORLD | 3,200 | 2026-02 |
 | 13 | XPN Format: What It Is and Why It Matters for MPC Producers | Technical / XPN format | 2,800 | 2026-03 |
 | 14 | The Manifesto: Character Over Feature Count | Brand philosophy / manifesto | 3,400 | 2026-03 |
@@ -47,7 +47,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 **Summary:** A deep dive into XOblong, the instrument that established XO_OX's philosophy of character over feature count. The post traces how a single instrument idea — a synth with a distinct personality rather than a feature checklist — became the design doctrine that governs every engine built since. Covers the BOB parameter prefix architecture, the filter character, and the specific presets that define what OBLONG does that nothing else does. Includes quotes from the seance session (Moog, Buchla, Schulze perspectives on character synthesis). Ends with a practical section: how to use OBLONG in a mix context, which coupling routes bring out its personality, and why the amber accent color was chosen. The post functions both as an engine reference for producers who own it and as brand narrative for producers who are encountering XO_OX for the first time. Word count target allows for full seance findings integration and 3–4 preset walkthroughs.
 
-**Product tie-in:** OBLONG engine; XOmnibus Gallery; Patreon build diary opportunity.
+**Product tie-in:** OBLONG engine; XOlokun Gallery; Patreon build diary opportunity.
 **Target word count:** 3,500
 **Production dependencies:** Seance findings for OBLONG; 2–3 audio reference clips; engine identity card (exists).
 
@@ -55,7 +55,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 2 — "OVERBITE: Five Macros, One Beast"
 
-**Summary:** OVERBITE (the XOverbite engine, gallery code BITE) has the most distinctive macro system in the XOmnibus fleet: BELLY, BITE, SCURRY, TRASH, and PLAY DEAD — five axes of timbral control named after possum behavior. This post explains why the macro naming convention matters (macros that have physical metaphors are more musically intuitive than macros named CUTOFF or DRIVE), walks through each of the five macros with audio descriptions, and demonstrates how the BITE macro in particular produces results unavailable on any other synth. The seance gave B008 (the Five-Macro System) a fleet-wide blessing — this post is the public-facing version of that finding. Covers the Fang White aesthetic, the bass-forward character identity, and the XOpossumAdapter.h coupling translation. Includes a practical walkthrough: building a bass patch from the init, engaging coupling with OVERDUB for the dub-bass archetype, and exporting via Oxport.
+**Summary:** OVERBITE (the XOverbite engine, gallery code BITE) has the most distinctive macro system in the XOlokun fleet: BELLY, BITE, SCURRY, TRASH, and PLAY DEAD — five axes of timbral control named after possum behavior. This post explains why the macro naming convention matters (macros that have physical metaphors are more musically intuitive than macros named CUTOFF or DRIVE), walks through each of the five macros with audio descriptions, and demonstrates how the BITE macro in particular produces results unavailable on any other synth. The seance gave B008 (the Five-Macro System) a fleet-wide blessing — this post is the public-facing version of that finding. Covers the Fang White aesthetic, the bass-forward character identity, and the XOpossumAdapter.h coupling translation. Includes a practical walkthrough: building a bass patch from the init, engaging coupling with OVERDUB for the dub-bass archetype, and exporting via Oxport.
 
 **Product tie-in:** OVERBITE engine; ONSET coupling presets (BITE + ONSET rhythm layer); Patreon source XPM opportunity.
 **Target word count:** 3,200
@@ -65,9 +65,9 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 3 — "The PlaySurface: One Interface for Every Playing Style"
 
-**Summary:** The PlaySurface is XOmnibus's 4-zone unified playing interface supporting Pad, Fretless, and Drum modes — one of the features that most distinguishes XOmnibus from a conventional multi-timbral synth. This post explains the design intention behind unifying three very different playing paradigms into one surface, and why the choice was made to ship it as a single interface rather than three separate views. Covers the chord and scale modes, the MPCe 3D pad integration, and the specific scenarios where each mode is the correct choice (Pad mode for melodic layering, Fretless for continuous pitch expression, Drum for ONSET patterns). Includes a comparison with the MPC's native pad interface and why XOmnibus's approach is complementary rather than redundant. The post targets producers who are comfortable with MPC pads but have not explored the full PlaySurface range.
+**Summary:** The PlaySurface is XOlokun's 4-zone unified playing interface supporting Pad, Fretless, and Drum modes — one of the features that most distinguishes XOlokun from a conventional multi-timbral synth. This post explains the design intention behind unifying three very different playing paradigms into one surface, and why the choice was made to ship it as a single interface rather than three separate views. Covers the chord and scale modes, the MPCe 3D pad integration, and the specific scenarios where each mode is the correct choice (Pad mode for melodic layering, Fretless for continuous pitch expression, Drum for ONSET patterns). Includes a comparison with the MPC's native pad interface and why XOlokun's approach is complementary rather than redundant. The post targets producers who are comfortable with MPC pads but have not explored the full PlaySurface range.
 
-**Product tie-in:** XOmnibus core feature; MPCe compatibility; XOblong chord/scale modes.
+**Product tie-in:** XOlokun core feature; MPCe compatibility; XOblong chord/scale modes.
 **Target word count:** 3,000
 **Production dependencies:** Screenshots of each PlaySurface mode; MPCe hardware access for 3D pad section.
 
@@ -95,9 +95,9 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 6 — "Coupling Deep Dive: Building a Sound That No Single Engine Can Make"
 
-**Summary:** A practical workshop post, not a conceptual explainer. Takes one coupling combination — DRIFT→OPAL (the Odyssey-to-Opal coupling, one of the 12 documented coupling types) — and builds a complete sound from scratch, showing every decision. The post demonstrates what coupling produces that layering cannot: not two sounds playing simultaneously, but one sound that could not exist without both engines. Covers the coupling strip UI, the 12 coupling types with their musical use cases, and the specific settings that produced the most successful Entangled mood presets in the factory library. Includes a secondary example: OPAL→OVERDUB for the classic granular-dub texture. The post is designed to be the resource that converts a producer who has bought XOmnibus but has not engaged with coupling into a coupling user. The transition from "I just use one engine at a time" to "I always build in pairs" is the key conversion this post drives.
+**Summary:** A practical workshop post, not a conceptual explainer. Takes one coupling combination — DRIFT→OPAL (the Odyssey-to-Opal coupling, one of the 12 documented coupling types) — and builds a complete sound from scratch, showing every decision. The post demonstrates what coupling produces that layering cannot: not two sounds playing simultaneously, but one sound that could not exist without both engines. Covers the coupling strip UI, the 12 coupling types with their musical use cases, and the specific settings that produced the most successful Entangled mood presets in the factory library. Includes a secondary example: OPAL→OVERDUB for the classic granular-dub texture. The post is designed to be the resource that converts a producer who has bought XOlokun but has not engaged with coupling into a coupling user. The transition from "I just use one engine at a time" to "I always build in pairs" is the key conversion this post drives.
 
-**Product tie-in:** XOmnibus coupling system; Entangled mood presets; Patreon source files opportunity.
+**Product tie-in:** XOlokun coupling system; Entangled mood presets; Patreon source files opportunity.
 **Target word count:** 3,500
 **Production dependencies:** Step-by-step coupling session recording; screenshots of coupling strip settings; 2–3 audio comparisons (pre/post coupling).
 
@@ -105,9 +105,9 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 7 — "OPTIC: The Engine That Has No Sound"
 
-**Summary:** OPTIC (XOptic engine) is the only XOmnibus engine that produces no audio output. It is a visual modulation engine — its output is the OpticVisualizer, an audio-reactive display inspired by Winamp-era visualizers but driven by synthesis parameters rather than audio amplitude. Seance Blessing B005 (Zero-Audio Identity) recognized this as genuinely novel: a synthesis engine whose primary output is visual. This post explains why including a non-audio engine in a synthesizer is a coherent decision rather than a gimmick: the visualizer is a modulation source (OpticVisualizer outputs drive coupling routes), and the act of making synthesis parameters visible changes how producers interact with them. Covers the Phosphor Green aesthetic, the AutoPulse system, and the specific scenarios where OPTIC is the most useful engine to include in a slot (live performance visualization, modulation mapping debug, YouTube demo content generation).
+**Summary:** OPTIC (XOptic engine) is the only XOlokun engine that produces no audio output. It is a visual modulation engine — its output is the OpticVisualizer, an audio-reactive display inspired by Winamp-era visualizers but driven by synthesis parameters rather than audio amplitude. Seance Blessing B005 (Zero-Audio Identity) recognized this as genuinely novel: a synthesis engine whose primary output is visual. This post explains why including a non-audio engine in a synthesizer is a coherent decision rather than a gimmick: the visualizer is a modulation source (OpticVisualizer outputs drive coupling routes), and the act of making synthesis parameters visible changes how producers interact with them. Covers the Phosphor Green aesthetic, the AutoPulse system, and the specific scenarios where OPTIC is the most useful engine to include in a slot (live performance visualization, modulation mapping debug, YouTube demo content generation).
 
-**Product tie-in:** OPTIC engine; YouTube content strategy (XOptic visualizer clips); XOmnibus coupling system.
+**Product tie-in:** OPTIC engine; YouTube content strategy (XOptic visualizer clips); XOlokun coupling system.
 **Target word count:** 2,800
 **Production dependencies:** Screen recording of OpticVisualizer in use; coupling route examples with OPTIC as source.
 
@@ -145,7 +145,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 ### Planned Post 11 — "OBSIDIAN: Synthesis at the Edge of Silence"
 
-**Summary:** OBSIDIAN (Crystal White aesthetic, `obsidian_depth` parameter) is the XOmnibus engine that lives closest to silence — its synthesis architecture generates sound through subtraction and erosion rather than additive or subtractive methods. This post covers the engine's design intent (a synthesizer for textures that feel like they are disappearing rather than appearing), the Crystal White visual identity (negative space as presence), and the specific preset categories where OBSIDIAN excels: ambient pads that feel like they are fading even when they are sustaining, textural layers that sit below conscious perception, and coupling configurations where OBSIDIAN acts as a subtractive modifier of another engine's output. Covers the coupling types that work best with OBSIDIAN as a destination versus OBSIDIAN as a source.
+**Summary:** OBSIDIAN (Crystal White aesthetic, `obsidian_depth` parameter) is the XOlokun engine that lives closest to silence — its synthesis architecture generates sound through subtraction and erosion rather than additive or subtractive methods. This post covers the engine's design intent (a synthesizer for textures that feel like they are disappearing rather than appearing), the Crystal White visual identity (negative space as presence), and the specific preset categories where OBSIDIAN excels: ambient pads that feel like they are fading even when they are sustaining, textural layers that sit below conscious perception, and coupling configurations where OBSIDIAN acts as a subtractive modifier of another engine's output. Covers the coupling types that work best with OBSIDIAN as a destination versus OBSIDIAN as a source.
 
 **Product tie-in:** OBSIDIAN engine; Atmosphere mood presets; Aether mood presets.
 **Target word count:** 3,000
@@ -177,7 +177,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 **Summary:** Most synthesizer companies treat presets as an afterthought — a demo disk that comes with the instrument. XO_OX treats presets as a core product feature, equal in design time and creative investment to the DSP itself. This post explains the XO_OX preset philosophy: what makes a preset worth keeping (it must sound compelling dry, before effects; it must demonstrate something the engine can do that nothing else can; it must earn its name), the 7 mood categories and what each category is designed to do, the 6D Sonic DNA system as a quality control mechanism, and the specific process used to write 150 patches per engine (the fleet target). Covers the naming conventions (2–3 words, evocative, no duplicates, no jargon), the prohibition against "Init Patch" energy, and the review process that caught 22 duplicate names and corrected them. Functions as both a transparency post (here is how we work) and a quality signal post (here is why the presets feel considered).
 
-**Product tie-in:** XOmnibus preset system; Patreon build diary opportunity; trust/credibility content.
+**Product tie-in:** XOlokun preset system; Patreon build diary opportunity; trust/credibility content.
 **Target word count:** 3,200
 **Production dependencies:** Preset process documentation; before/after naming examples; DNA badge visual assets.
 
@@ -187,7 +187,7 @@ These 16 posts were identified in earlier research and pipeline planning. Each i
 
 **Summary:** The Seance is XO_OX's internal quality evaluation method — a speculative council of eight synthesizer legends (Moog, Buchla, Schulze, Vangelis, Pearlman, Tomita, Kakehashi, Smith) who "evaluate" each engine through the lens of their known philosophies and design values. 29 seances have been conducted across the 34 registered engines. This post explains the method, its origins, why it produces more useful feedback than a feature checklist, and what the Six Doctrines (D001–D006) mean for the quality of the final instrument. Includes excerpts from actual seance findings — the B010 blessing on ORACLE, the B011 finding on ORGANON, the 4 ongoing debates that remain unresolved across the fleet. The post is designed to build trust with producers who are skeptical of boutique synthesizer marketing: it shows the internal standard, not just the outcome. Covers the 15 blessings, the 4 debates, and what "fleet-wide doctrine compliance" means in practice.
 
-**Product tie-in:** XOmnibus quality standard; brand trust; Patreon deep-dive opportunity.
+**Product tie-in:** XOlokun quality standard; brand trust; Patreon deep-dive opportunity.
 **Target word count:** 4,200
 **Production dependencies:** Seance findings formatted for public readability; permission to quote blessing language from specific engines.
 
@@ -223,7 +223,7 @@ The following 10 posts were identified during the 2026-03-16 content strategy R&
 
 **Summary:** The feliX-Oscar polarity is the organizing principle of the entire XO_OX engine library — feliX (the neon tetra, bright, fast, surface, yang) at one pole and Oscar (the axolotl, dark, slow, deep, yin) at the other. Every engine lives somewhere on this spectrum; every coupling combination moves between these poles; every Aquarium depth zone maps to a position between them. This post explains the polarity for the first time to a general producer audience. It opens with a listening exercise: two ONSET presets, one configured toward feliX character and one toward Oscar character, with the producer asked to feel the difference before reading the explanation. Then it names the polarity, traces its origin in the feliX and Oscar mascot characters, and maps a selection of engines to positions on the spectrum. The post gives producers a vocabulary for talking about XO_OX engines that transcends genre ("this engine is feliX-forward," "this coupling pulls Oscar out of a feliX preset") and creates shareable brand language. Ends with a practical tool: how to consciously move any preset along the feliX-Oscar axis using coupling and macro settings.
 
-**Product tie-in:** XOmnibus brand architecture; ODDFELIX and ODDOSCAR engines; Aquarium site page.
+**Product tie-in:** XOlokun brand architecture; ODDFELIX and ODDOSCAR engines; Aquarium site page.
 **Target word count:** 3,200
 **Production dependencies:** Audio demonstration presets at feliX and Oscar extremes; feliX/Oscar mascot art assets; Aquarium spectrum visualization.
 
@@ -251,9 +251,9 @@ The following 10 posts were identified during the 2026-03-16 content strategy R&
 
 ### New Post 5 — "How Coupling Works: 12 Types Explained"
 
-**Summary:** The definitive technical reference for XOmnibus coupling. The post opens with the distinction between layering (two sounds playing simultaneously) and coupling (one sound that cannot exist without two engines). Then walks through all 12 coupling types in the MegaCouplingMatrix — for each type: what it does, which engines support it, what it sounds like, and one practical example with two specific engines. The 12 types are not named here pending confirmation from `Docs/coupling_audit.md`, but the post covers the full range from pitch modulation coupling through filter coupling through envelope coupling through feedback coupling. The final section covers the coupling strip UI: how to route a coupling, how to adjust depth, and the three most common mistakes producers make when setting up coupling for the first time. Designed to be the reference a producer bookmarks after their first successful coupling session. Also functions as an SEO target for "synthesis coupling" and "cross-engine modulation."
+**Summary:** The definitive technical reference for XOlokun coupling. The post opens with the distinction between layering (two sounds playing simultaneously) and coupling (one sound that cannot exist without two engines). Then walks through all 12 coupling types in the MegaCouplingMatrix — for each type: what it does, which engines support it, what it sounds like, and one practical example with two specific engines. The 12 types are not named here pending confirmation from `Docs/coupling_audit.md`, but the post covers the full range from pitch modulation coupling through filter coupling through envelope coupling through feedback coupling. The final section covers the coupling strip UI: how to route a coupling, how to adjust depth, and the three most common mistakes producers make when setting up coupling for the first time. Designed to be the reference a producer bookmarks after their first successful coupling session. Also functions as an SEO target for "synthesis coupling" and "cross-engine modulation."
 
-**Product tie-in:** XOmnibus coupling system; Entangled mood presets; coupling preset library.
+**Product tie-in:** XOlokun coupling system; Entangled mood presets; coupling preset library.
 **Target word count:** 4,000
 **Production dependencies:** `coupling_audit.md` for accurate 12-type enumeration; audio examples for each coupling type; coupling strip UI screenshots.
 
@@ -263,7 +263,7 @@ The following 10 posts were identified during the 2026-03-16 content strategy R&
 
 **Summary:** The 6D Sonic DNA system assigns six dimensions — brightness, warmth, movement, density, space, aggression — to every XO_OX preset. This post teaches producers how to read a DNA badge before they hear a preset, and explains why the six-dimensional map is more useful than genre tags. Opens with the usability argument: "dark, warm, sparse, calm" is a specific instruction that tells you how the preset will behave in a mix, in a way that "ambient pad" does not. Then covers each dimension: what it measures, what the extremes feel like, and how it interacts with the other five dimensions. Includes practical guidance: if you need a pad that will sit under a vocal without competing, which DNA profile do you want? (High space, low density, low aggression, moderate warmth.) If you need a bass that cuts through a busy mix? (High brightness, high density, low space, high aggression.) The post closes by walking through the `/packs/` DNA filter — how to use the radar chart to find the right preset before auditioning. Designed to be the on-ramp post for producers who have just discovered the badge system.
 
-**Product tie-in:** DNA badge system; `/packs/` redesign; XOmnibus preset library.
+**Product tie-in:** DNA badge system; `/packs/` redesign; XOlokun preset library.
 **Target word count:** 3,000
 **Production dependencies:** DNA badge visual assets; `/packs/` redesign must be complete or in progress; 3–4 worked examples with preset + DNA chart + audio clip.
 

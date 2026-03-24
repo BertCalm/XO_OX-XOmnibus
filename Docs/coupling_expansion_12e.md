@@ -17,7 +17,7 @@ Round 12E adds 6 coupling presets covering 3 engine pairs not previously represe
 
 ## Pair 7: OBSCURA → ORGANON
 
-**Directory:** `Presets/XOmnibus/Entangled/Obscura-Organon/`
+**Directory:** `Presets/XOlokun/Entangled/Obscura-Organon/`
 
 **Why this pair is new:** The existing library's closest pair is ORACLE → ORGANON (stochastic audio into metabolic FM). OBSCURA → ORGANON replaces the stochastic source with a *physical model* — continuous string resonance rather than random-walk synthesis. The character of the audio feeding into ORGANON is radically different: Obscura's output is deterministic, physically grounded, and rich in inharmonic partials from the nonlinear spring model. ORGANON's `Audio->FM` coupling ingests this as metabolic input via the per-voice buffer, producing a completely different class of organism behavior than the GENDY-fed version.
 
@@ -58,7 +58,7 @@ Round 12E adds 6 coupling presets covering 3 engine pairs not previously represe
 
 ## Pair 8: ONSET → ORGANON
 
-**Directory:** `Presets/XOmnibus/Entangled/Onset-Organon/`
+**Directory:** `Presets/XOlokun/Entangled/Onset-Organon/`
 
 **Why this pair is new:** ONSET already appears in the library as a *source* (ONSET → OVERBITE, Pair 1) and as a *destination* (OUROBOROS → ONSET, Pair 6). This is ONSET as source into a completely different target domain. OVERBITE responds to ONSET with character and bass physics. ORGANON responds with biological chemistry. The difference: OVERBITE's coupling is *animal* — percussion triggers predator behavior. ORGANON's coupling is *metabolic* — percussion delivers energy that an organism processes on its own timeline.
 
@@ -103,7 +103,7 @@ This preset requires a live ONSET pattern to demonstrate coupling — like all O
 
 ## Pair 9: OVERWORLD → OBSCURA
 
-**Directory:** `Presets/XOmnibus/Entangled/Overworld-Obscura/`
+**Directory:** `Presets/XOlokun/Entangled/Overworld-Obscura/`
 
 **Why this pair is new:** OVERWORLD already appears in the library feeding OPAL (Pair 4). The difference here is the destination's nature: OPAL atomizes the chip audio into particles. OBSCURA routes the chip's amplitude into the physical model's resonant parameters. The interaction is *structural*, not spectral — the chip does not become the string's source material; it reshapes the string's physics. The `Amp->Filter` coupling into OBSCURA targets spring stiffness (Obscura maps `AmpToFilter` coupling to its stiffness and scan parameters), and the `Env->Morph` coupling targets the scan position.
 

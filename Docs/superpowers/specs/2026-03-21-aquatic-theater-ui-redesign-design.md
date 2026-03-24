@@ -1,4 +1,4 @@
-# XOmnibus UI Redesign — Aquatic Theater
+# XOlokun UI Redesign — Aquatic Theater
 
 **Date:** 2026-03-21
 **Status:** Design
@@ -8,7 +8,7 @@
 
 ## Vision
 
-Transform XOmnibus from a developer prototype into a premium aquatic-themed instrument that feels unique in the market. Deep ocean gradients, floating engine orbs, glowing coupling arcs, and progressive disclosure that serves both the creator's workflow and a broad audience.
+Transform XOlokun from a developer prototype into a premium aquatic-themed instrument that feels unique in the market. Deep ocean gradients, floating engine orbs, glowing coupling arcs, and progressive disclosure that serves both the creator's workflow and a broad audience.
 
 No other synth looks like this. The aquatic mythology IS the UI identity.
 
@@ -36,7 +36,7 @@ No other synth looks like this. The aquatic mythology IS the UI identity.
 - Engine count: `EngineRegistry::instance().getRegisteredIds().size()` (currently 46)
 - Coupling types: hardcode 14 (from `CouplingType` enum in `SynthEngine.h`)
 - Preset count: `presetManager.getLibrary().size()`. If 0 (not yet scanned), show "18000+" as static fallback
-- **File:** `XOmnibusEditor.h` ~line 2760
+- **File:** `XOlokunEditor.h` ~line 2760
 
 ### 1.2 Missing mood filters
 - **Current:** PresetBrowserPanel has 7 tabs (ALL + 6 moods), missing Family and Submerged
@@ -46,22 +46,22 @@ No other synth looks like this. The aquatic mythology IS the UI identity.
   - `moodNames[]` in `updateFilter()` (~line 1575)
   - `moodColors[]` in `paintListBoxItem` (~line 1487) — assign colors for Family and Submerged
   - `moodIds[]` in `paintListBoxItem` (~line 1496) — add matching IDs
-- **File:** `XOmnibusEditor.h` PresetBrowserPanel section
+- **File:** `XOlokunEditor.h` PresetBrowserPanel section
 
 ### 1.3 Right-click context menu
 - **Current:** Tooltip says "right-click to swap" but mouseUp only handles left button
 - **Fix:** Implement right-click PopupMenu on CompactEngineTile with: Swap Engine, Remove Engine, Move to Slot N
-- **File:** `XOmnibusEditor.h` CompactEngineTile::mouseUp
+- **File:** `XOlokunEditor.h` CompactEngineTile::mouseUp
 
 ### 1.4 Engine removal
 - **Current:** No way to remove an engine from a slot
 - **Fix:** Add "Remove Engine" to the right-click menu + showLoadMenu. Calls `processor.loadEngine(slot, "")` or equivalent clear.
-- **File:** `XOmnibusEditor.h` CompactEngineTile::showLoadMenu
+- **File:** `XOlokunEditor.h` CompactEngineTile::showLoadMenu
 
 ### 1.5 mouseUp button check bug
 - **Current:** `if (!e.mods.isLeftButtonDown())` is vacuous on mouseUp (button already released)
 - **Fix:** Remove the dead check, keep only `mouseWasDraggedSinceMouseDown()` guard
-- **File:** `XOmnibusEditor.h` CompactEngineTile::mouseUp ~line 830
+- **File:** `XOlokunEditor.h` CompactEngineTile::mouseUp ~line 830
 
 ---
 
@@ -236,7 +236,7 @@ When "Show All" is toggled:
 ```
 
 ### 5.3 PlaySurface wiring
-- Instantiate `PlaySurface` in `XOmnibusEditor`
+- Instantiate `PlaySurface` in `XOlokunEditor`
 - **MIDI injection (thread-safe):** Use `juce::MidiMessageCollector` owned by the processor.
   - Editor calls `collector.addMessageToQueue(msg)` from the UI thread (lock-free)
   - Processor calls `collector.removeNextBlockOfMessages(midiBuffer, numSamples)` in `processBlock`
@@ -318,7 +318,7 @@ When "Show All" is toggled:
 
 ## Success Criteria
 
-1. A new user can load an engine and hear sound within 30 seconds of opening XOmnibus
+1. A new user can load an engine and hear sound within 30 seconds of opening XOlokun
 2. The UI feels visually distinct — no one mistakes it for another synth
 3. Parameters are discoverable without reading documentation
 4. The PlaySurface is accessible and connected to the audio engine

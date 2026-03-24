@@ -1168,5 +1168,5 @@
       "program": 0
     }
   ],
-  "_program_wiring_note": "program field = 0-indexed preset position in XOmnibus bank. When building from .oxbuild, cmd_build RENDER stage injects per-preset program numbers from selected_presets.json into a clone of this note-layout spec. program=0 here is the smoke-test default (first loaded preset)."
+  "_program_wiring_note": "program field = 0-indexed preset position in XOlokun bank. When building from .oxbuild, cmd_build RENDER stage injects per-preset program numbers from selected_presets.json into a clone of this note-layout spec. program=0 here is the smoke-test default (first loaded preset)."
 }

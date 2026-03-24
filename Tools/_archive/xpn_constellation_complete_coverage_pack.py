@@ -20,7 +20,7 @@ import re
 # --- Output path ------------------------------------------------------------
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOmnibus", "Entangled")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "Presets", "XOlokun", "Entangled")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # --- Partner engines --------------------------------------------------------

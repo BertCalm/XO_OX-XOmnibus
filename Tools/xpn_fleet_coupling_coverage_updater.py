@@ -174,7 +174,7 @@ def print_report(
     pct = n_covered / TOTAL_POSSIBLE_PAIRS * 100
 
     print("=" * 64)
-    print("  XOmnibus Fleet Coupling Coverage Report")
+    print("  XOlokun Fleet Coupling Coverage Report")
     print("=" * 64)
     print()
 
@@ -258,10 +258,10 @@ def print_report(
 
 def main():
     repo_root = Path(__file__).resolve().parent.parent
-    default_presets = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_presets = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Report XOmnibus fleet coupling coverage toward 561-pair goal.",
+        description="Report XOlokun fleet coupling coverage toward 561-pair goal.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(

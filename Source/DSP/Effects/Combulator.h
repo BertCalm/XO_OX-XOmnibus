@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Combulator — Tuned comb filter bank with noise exciter.
@@ -249,4 +249,4 @@ private:
     float stereoSpread = 0.5f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

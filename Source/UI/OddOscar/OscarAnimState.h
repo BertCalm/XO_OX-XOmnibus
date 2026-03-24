@@ -2,7 +2,7 @@
 #include <atomic>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OscarAnimState — lock-free atomic bridge between the MorphEngine (audio
@@ -86,4 +86,4 @@ struct OscarAnimState
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

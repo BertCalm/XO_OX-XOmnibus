@@ -1,4 +1,4 @@
-# XOmnibus Master FX Tract — Design Brief
+# XOlokun Master FX Tract — Design Brief
 
 **Status:** Implemented
 **Author:** Claude Code
@@ -22,7 +22,7 @@ The Master FX chain (`Source/Core/MasterFXChain.h`) is a fixed 3-stage post-mix 
 
 ## 2. Design Goals
 
-Expand the Master FX tract from a 3-stage utility chain into a **6-stage creative instrument** that can produce sounds impossible with the engines alone. Each new stage draws from specific hardware inspiration while fitting the XOmnibus character-first philosophy.
+Expand the Master FX tract from a 3-stage utility chain into a **6-stage creative instrument** that can produce sounds impossible with the engines alone. Each new stage draws from specific hardware inspiration while fitting the XOlokun character-first philosophy.
 
 **Guiding principles:**
 - Master FX are part of the instrument sound, not a mixing board
@@ -37,7 +37,7 @@ Expand the Master FX tract from a 3-stage utility chain into a **6-stage creativ
 
 ### 3.1 Meris (Air Sprite / Delay Pro / Flavor Pro lineage)
 
-**Key takeaways for XOmnibus:**
+**Key takeaways for XOlokun:**
 - **Pitch-shifted reverb tails** (shimmer) via granular pitch processing in the reverb diffusion network
 - **Modulated multi-tap delay** with per-tap pitch shift and filtering — not just echo, but a melodic instrument
 - **Analog-modeled saturation** with "flavor" character switching (clean boost → tape → tube → transformer)
@@ -48,7 +48,7 @@ Expand the Master FX tract from a 3-stage utility chain into a **6-stage creativ
 
 ### 3.2 OBNE (Old Blood Noise Endeavors)
 
-**Key takeaways for XOmnibus:**
+**Key takeaways for XOlokun:**
 - **Signal splitting and recombination** — effects that process two paths differently and blend (Dark Star, Sunlight)
 - **Textural reverb** with built-in modulation (chorus/vibrato/tremolo baked into the reverb algorithm)
 - **Dwell control** — how long the input feeds the effect before it decays (not just mix, but input saturation of the effect itself)
@@ -58,7 +58,7 @@ Expand the Master FX tract from a 3-stage utility chain into a **6-stage creativ
 
 ### 3.3 Walrus Audio
 
-**Key takeaways for XOmnibus:**
+**Key takeaways for XOlokun:**
 - **Polyphonic octave generation** (Polychrome) — pitch detection feeding octave-shifted parallel paths
 - **Analog bucket-brigade emulation** (Julia) — chorus/vibrato with BBD character (clock noise, limited bandwidth)
 - **Swell/auto-volume** effects (Slö) — slow-attack ambient pad creation from any input
@@ -67,7 +67,7 @@ Expand the Master FX tract from a 3-stage utility chain into a **6-stage creativ
 
 ### 3.4 Chase Bliss
 
-**Key takeaways for XOmnibus:**
+**Key takeaways for XOlokun:**
 - **Per-parameter LFO/envelope/random modulation** — every knob has its own modulation source (Mood, Automatone)
 - **Digital engine + analog signal path** — DSP controls analog circuits (relevant philosophy for hybrid sound)
 - **Micro-looper grain capture** — Mood MKII's granular looper captures and manipulates tiny audio fragments
@@ -77,7 +77,7 @@ Expand the Master FX tract from a 3-stage utility chain into a **6-stage creativ
 
 ### 3.5 Torso S-4
 
-**Key takeaways for XOmnibus:**
+**Key takeaways for XOlokun:**
 - **Step-sequenced modulation of effect parameters** — 16 steps, each step sets a target value for multiple parameters
 - **Euclidean rhythm generation** for parameter triggers — sparse, musical rhythmic patterns
 - **Per-step probability and randomization** — controlled chaos
@@ -462,11 +462,11 @@ The bottom strip grows from 3 knobs to a **scrollable/tabbed FX strip** with 6 s
 | File | Changes |
 |------|---------|
 | `Source/Core/MasterFXChain.h` | Add stages 2, 4, 6; reorder chain; add new param pointers |
-| `Source/XOmnibusProcessor.h` | Include new headers |
-| `Source/XOmnibusProcessor.cpp` | Register 19 new APVTS parameters; wire prepare/process/reset |
-| `Source/UI/XOmnibusEditor.h` | Expand MasterFXSection to 6-section strip; add SequencerPanel |
+| `Source/XOlokunProcessor.h` | Include new headers |
+| `Source/XOlokunProcessor.cpp` | Register 19 new APVTS parameters; wire prepare/process/reset |
+| `Source/UI/XOlokunEditor.h` | Expand MasterFXSection to 6-section strip; add SequencerPanel |
 | `Source/Core/PresetManager.h` | Parse/save new masterFX keys in `.xometa` |
-| `Docs/xomnibus_master_specification.md` | Update §5.2 Master FX Rack |
+| `Docs/xolokun_master_specification.md` | Update §5.2 Master FX Rack |
 
 ---
 
@@ -543,6 +543,6 @@ With v2 features, the final count is **28 parameters** (7 original + 21 new):
 | MasterModulation DSP | `Source/DSP/Effects/MasterModulation.h` | **COMPLETE** |
 | MasterFXSequencer | `Source/Core/MasterFXSequencer.h` | **COMPLETE** |
 | MasterFXChain (6-stage) | `Source/Core/MasterFXChain.h` | **COMPLETE** |
-| APVTS Parameters (28) | `Source/XOmnibusProcessor.cpp` | **COMPLETE** |
-| Transport sync (PPQ/BPM) | `Source/XOmnibusProcessor.cpp` | **COMPLETE** |
-| UI (6-section strip) | `Source/UI/XOmnibusEditor.h` | **COMPLETE** |
+| APVTS Parameters (28) | `Source/XOlokunProcessor.cpp` | **COMPLETE** |
+| Transport sync (PPQ/BPM) | `Source/XOlokunProcessor.cpp` | **COMPLETE** |
+| UI (6-section strip) | `Source/UI/XOlokunEditor.h` | **COMPLETE** |

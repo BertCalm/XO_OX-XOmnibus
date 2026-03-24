@@ -105,6 +105,6 @@ of raising each is unambiguous.
 
 With the D005 LFO fix and 8 new presets demonstrating the matrix at diverse configurations,
 OCELOT should advance from 6.4/10 toward 7.5–8.0/10. The Ecosystem Matrix remains the
-most architecturally novel feature in the XOmnibus fleet — a typed directed-graph
+most architecturally novel feature in the XOlokun fleet — a typed directed-graph
 cross-modulation system with ecological behavioral semantics. The recovery ensures
 this feature is no longer invisible.

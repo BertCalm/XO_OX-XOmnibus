@@ -1,7 +1,7 @@
 #pragma once
 
 //==============================================================================
-// XOutwitAdapter.h — XOmnibus adapter for XOutwit (OUTWIT)
+// XOutwitAdapter.h — XOlokun adapter for XOutwit (OUTWIT)
 //
 // 8-arm Wolfram cellular automaton synthesizer. Giant Pacific Octopus —
 // eight independent voice-channels each running their own Wolfram rule (0-255).
@@ -11,7 +11,7 @@
 // Parameter prefix: owit_ | Macros: M1=SOLVE, M2=SYNAPSE, M3=CHROMATOPHORE, M4=DEN
 // Coupling output: 9 types supported
 //
-// XOmnibus integration: DSP headers resolved via target_include_directories
+// XOlokun integration: DSP headers resolved via target_include_directories
 // pointing to XOutwit/Source/ — see CMakeLists.txt.
 //==============================================================================
 
@@ -29,7 +29,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 class XOutwitEngine : public SynthEngine {
 public:
@@ -713,4 +713,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

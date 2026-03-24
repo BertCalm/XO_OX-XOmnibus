@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_preset_mood_classifier.py — XO_OX XOmnibus Preset Mood Classifier
+xpn_preset_mood_classifier.py — XO_OX XOlokun Preset Mood Classifier
 
 Auto-classifies .xometa presets with "Unknown" or missing mood assignments
 by scoring them against 7 mood profiles using 6D Sonic DNA weights.
@@ -25,7 +25,7 @@ from typing import Optional
 #
 # DNA dimensions: brightness, warmth, movement, density, space, aggression
 #
-# Profile rationale (matches CLAUDE.md + XOmnibus master spec):
+# Profile rationale (matches CLAUDE.md + XOlokun master spec):
 #   Foundation  — stable/versatile: balanced DNA, penalise extremes
 #   Atmosphere  — spatial/textural: high space, low density + aggression
 #   Entangled   — coupling: handled by engine-count override (score kept neutral)
@@ -208,7 +208,7 @@ def apply_fix(path: Path, preset: dict, suggested_mood: str) -> bool:
 def build_report(results: list[dict]) -> str:
     """Format the classification results as a human-readable report."""
     lines = [
-        "XOmnibus Preset Mood Classifier — Report",
+        "XOlokun Preset Mood Classifier — Report",
         "=" * 60,
         f"Total flagged presets: {len(results)}",
         "",

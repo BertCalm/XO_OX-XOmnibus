@@ -10,7 +10,7 @@
 
 Build a 3-engine patch where each macro controls a different engine's character.
 
-The 4 macros in XOmnibus — CHARACTER, MOVEMENT, COUPLING, SPACE — span all loaded engines simultaneously. That's the design: one gesture, the whole system responds. Most people use them as a global tone shaper. This challenge is about using them as an architectural tool instead.
+The 4 macros in XOlokun — CHARACTER, MOVEMENT, COUPLING, SPACE — span all loaded engines simultaneously. That's the design: one gesture, the whole system responds. Most people use them as a global tone shaper. This challenge is about using them as an architectural tool instead.
 
 The idea is specific. You're designing a patch where each of your 3 engines is *primarily shaped* by a different macro. Turning CHARACTER changes Engine 1's core tone. Turning MOVEMENT changes Engine 2's modulation state. Turning COUPLING modulates the routing intensity between Engine 2 and Engine 3. SPACE shapes the reverb and width of Engine 3, or the whole patch, but in a way that feels like it belongs to one engine's voice. The result is a patch that plays like a 3-dimensional instrument: one hand on the macros, three engines moving in distinct directions.
 
@@ -54,7 +54,7 @@ The coupling route is load-bearing. Without it, you have 3 independent sounds. W
 
 Three engines. One coupling route. Each macro controls a different engine's character.
 
-The macro system in XOmnibus is usually treated as a global tone control. CHARACTER makes everything brighter. SPACE adds reverb to the whole patch. That's valid — but it's not what the macros are for. The macros are a composition tool. This challenge is about using them as one.
+The macro system in XOlokun is usually treated as a global tone control. CHARACTER makes everything brighter. SPACE adds reverb to the whole patch. That's valid — but it's not what the macros are for. The macros are a composition tool. This challenge is about using them as one.
 
 **Your challenge:**
 

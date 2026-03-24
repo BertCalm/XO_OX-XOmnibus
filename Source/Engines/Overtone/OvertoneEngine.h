@@ -9,12 +9,12 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
 //  OVERTONE ENGINE — Spectral Additive Synthesis via Continued Fractions
-//  XOmnibus Engine Module | Accent: Spectral Ice #A8D8EA
+//  XOlokun Engine Module | Accent: Spectral Ice #A8D8EA
 //
 //  Creature: The Nautilus — mid-column dweller, logarithmic spiral.
 //  Habitat:  THE MESOPELAGIC ZONE — 200–1000 m depth, twilight diffusion,
@@ -239,37 +239,66 @@ struct OverAllpassReso {
 // ---------------------------------------------------------------------------
 struct OverSpaceReverb {
     static constexpr int kCombs = 4;
-    // Prime-spaced comb lengths for diffuse tail (longer than deep-sea, brighter)
-    static constexpr int kCombLensL[kCombs] = { 1116, 1188, 1277, 1356 };
-    static constexpr int kCombLensR[kCombs] = { 1139, 1211, 1300, 1379 };
-    static constexpr int kAP1Len = 347, kAP2Len = 113;
 
-    float combBufL[kCombs][1380] = {};
-    float combBufR[kCombs][1380] = {};
-    int   combPosL[kCombs]       = {};
-    int   combPosR[kCombs]       = {};
-    float combStateL[kCombs]     = {};
-    float combStateR[kCombs]     = {};
+    // Reference comb and allpass lengths designed for 48000 Hz.
+    // At runtime these are scaled to the actual sample rate in prepare().
+    // Prime-spaced comb lengths for diffuse tail (longer than deep-sea, brighter).
+    static constexpr int kRefCombLensL[kCombs] = { 1116, 1188, 1277, 1356 };
+    static constexpr int kRefCombLensR[kCombs] = { 1139, 1211, 1300, 1379 };
+    static constexpr int kRefAP1Len = 347, kRefAP2Len = 113;
 
-    float ap1BufL[kAP1Len] = {}, ap1BufR[kAP1Len] = {};
-    float ap2BufL[kAP2Len] = {}, ap2BufR[kAP2Len] = {};
+    // Maximum buffer sizes: reference lengths scaled to 96000 Hz (2×) with margin.
+    // Supports sample rates up to 96000 Hz without dynamic allocation.
+    static constexpr int kMaxCombLen = 2760;  // ceil(1379 * 96000/48000) + margin
+    static constexpr int kMaxAP1Len  = 700;   // ceil(347  * 96000/48000) + margin
+    static constexpr int kMaxAP2Len  = 230;   // ceil(113  * 96000/48000) + margin
+
+    // Runtime-scaled delay lengths (set in prepare())
+    int combLensL[kCombs] = { 1116, 1188, 1277, 1356 };
+    int combLensR[kCombs] = { 1139, 1211, 1300, 1379 };
+    int ap1Len = kRefAP1Len;
+    int ap2Len = kRefAP2Len;
+
+    float combBufL[kCombs][kMaxCombLen] = {};
+    float combBufR[kCombs][kMaxCombLen] = {};
+    int   combPosL[kCombs]              = {};
+    int   combPosR[kCombs]              = {};
+    float combStateL[kCombs]            = {};
+    float combStateR[kCombs]            = {};
+
+    float ap1BufL[kMaxAP1Len] = {}, ap1BufR[kMaxAP1Len] = {};
+    float ap2BufL[kMaxAP2Len] = {}, ap2BufR[kMaxAP2Len] = {};
     int   ap1PosL = 0, ap1PosR = 0, ap2PosL = 0, ap2PosR = 0;
 
     void reset() {
         for (int i = 0; i < kCombs; ++i) {
-            std::fill(combBufL[i], combBufL[i] + kCombLensL[i], 0.f);
-            std::fill(combBufR[i], combBufR[i] + kCombLensR[i], 0.f);
+            std::fill(combBufL[i], combBufL[i] + combLensL[i], 0.f);
+            std::fill(combBufR[i], combBufR[i] + combLensR[i], 0.f);
             combStateL[i] = combStateR[i] = 0.f;
             combPosL[i]   = combPosR[i]   = 0;
         }
-        std::fill(ap1BufL, ap1BufL + kAP1Len, 0.f);
-        std::fill(ap1BufR, ap1BufR + kAP1Len, 0.f);
-        std::fill(ap2BufL, ap2BufL + kAP2Len, 0.f);
-        std::fill(ap2BufR, ap2BufR + kAP2Len, 0.f);
+        std::fill(ap1BufL, ap1BufL + ap1Len, 0.f);
+        std::fill(ap1BufR, ap1BufR + ap1Len, 0.f);
+        std::fill(ap2BufL, ap2BufL + ap2Len, 0.f);
+        std::fill(ap2BufR, ap2BufR + ap2Len, 0.f);
         ap1PosL = ap1PosR = ap2PosL = ap2PosR = 0;
     }
 
-    void prepare(double /*sr*/) { reset(); }
+    void prepare(double sr) {
+        // Scale delay lengths from the 48000 Hz reference to the actual sample rate.
+        // This ensures the reverb tail resonant frequencies remain constant regardless
+        // of whether the host runs at 44100, 48000, 88200, or 96000 Hz.
+        for (int i = 0; i < kCombs; ++i) {
+            combLensL[i] = std::max(1, (int)(kRefCombLensL[i] * sr / 48000.0));
+            combLensR[i] = std::max(1, (int)(kRefCombLensR[i] * sr / 48000.0));
+            // Clamp to buffer capacity (supports up to 96000 Hz)
+            combLensL[i] = std::min(combLensL[i], kMaxCombLen - 1);
+            combLensR[i] = std::min(combLensR[i], kMaxCombLen - 1);
+        }
+        ap1Len = std::max(1, std::min((int)(kRefAP1Len * sr / 48000.0), kMaxAP1Len - 1));
+        ap2Len = std::max(1, std::min((int)(kRefAP2Len * sr / 48000.0), kMaxAP2Len - 1));
+        reset();
+    }
 
     // space: 0-1 scales feedback 0.72→0.88 (bright spectral room)
     // mix:   wet mix 0-1
@@ -301,15 +330,15 @@ struct OverSpaceReverb {
 
         float wL = 0.f, wR = 0.f;
         for (int i = 0; i < kCombs; ++i) {
-            wL += runComb(combBufL[i], combPosL[i], combStateL[i], kCombLensL[i], inL);
-            wR += runComb(combBufR[i], combPosR[i], combStateR[i], kCombLensR[i], inR);
+            wL += runComb(combBufL[i], combPosL[i], combStateL[i], combLensL[i], inL);
+            wR += runComb(combBufR[i], combPosR[i], combStateR[i], combLensR[i], inR);
         }
         wL *= 0.25f; wR *= 0.25f;
 
-        wL = runAP(ap1BufL, ap1PosL, kAP1Len, wL);
-        wL = runAP(ap2BufL, ap2PosL, kAP2Len, wL);
-        wR = runAP(ap1BufR, ap1PosR, kAP1Len, wR);
-        wR = runAP(ap2BufR, ap2PosR, kAP2Len, wR);
+        wL = runAP(ap1BufL, ap1PosL, ap1Len, wL);
+        wL = runAP(ap2BufL, ap2PosL, ap2Len, wL);
+        wR = runAP(ap1BufR, ap1PosR, ap1Len, wR);
+        wR = runAP(ap2BufR, ap2PosR, ap2Len, wR);
 
         inL = dryL * (1.f - mix) + wL * mix;
         inR = dryR * (1.f - mix) + wR * mix;
@@ -378,7 +407,7 @@ public:
     ~OvertoneEngine() = default;
 
     //--------------------------------------------------------------------------
-    // Static parameter registration (called by XOmnibusProcessor)
+    // Static parameter registration (called by XOlokunProcessor)
     //--------------------------------------------------------------------------
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
@@ -926,4 +955,4 @@ private:
     std::atomic<float>* p_macroSpace    = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -28,7 +28,7 @@ import os
 
 PRESET_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus", "Entangled"
+    "Presets", "XOlokun", "Entangled"
 )
 
 COUPLING_TYPES = [

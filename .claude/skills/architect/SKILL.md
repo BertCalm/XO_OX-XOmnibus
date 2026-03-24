@@ -1,12 +1,12 @@
 ---
 name: architect
-description: Review and approve proposed code changes before implementation. Use as a quality gate before applying fixes, enhancements, refactors, or new features to prevent conflicts, regressions, and inconsistent quality across the XOmnibus codebase. Also triggered by "sisters" or "scions" (SCIONS — Sisters of Continuous Improvement and Organic Natural Simplification).
+description: Review and approve proposed code changes before implementation. Use as a quality gate before applying fixes, enhancements, refactors, or new features to prevent conflicts, regressions, and inconsistent quality across the XOlokun codebase. Also triggered by "sisters" or "scions" (SCIONS — Sisters of Continuous Improvement and Organic Natural Simplification).
 argument-hint: [change-description e.g. "D001 velocity fix for BOB engine", "add breathing LFO to FAT"]
 ---
 
-# XOmnibus Architect Review Gate
+# XOlokun Architect Review Gate
 
-Review the proposed change **$ARGUMENTS** against the full XOmnibus governance framework — Doctrines, Blessings, Debates, Brand Rules, Architecture Rules, and cross-engine consistency — before implementation.
+Review the proposed change **$ARGUMENTS** against the full XOlokun governance framework — Doctrines, Blessings, Debates, Brand Rules, Architecture Rules, and cross-engine consistency — before implementation.
 
 ## SCIONS — The Architect's Operating Philosophy
 

@@ -22,13 +22,13 @@ wish had existed when MPC 3.5 dropped. It didn't. So we wrote it ourselves.*
 MPC Software 3.5 Desktop Beta (May 2025) landed two things we've been waiting years for:
 
 1. **VST3 plugin support** in MPC Desktop — not AIR instruments, not VST2, but proper VST3. This is the
-   format XOmnibus ships in. The collision is not an accident.
+   format XOlokun ships in. The collision is not an accident.
 
 2. **Keygroup Synth Engine** — a new program type that doesn't render samples at all. It hosts a synth
    plugin directly inside an MPC program, with Q-Link mappings, pad-to-MIDI routing, and the full MPC
    workflow wrapping a live synthesis engine.
 
-These two features together create a path we've never had before: XOmnibus running *inside* an MPC
+These two features together create a path we've never had before: XOlokun running *inside* an MPC
 project as a native plugin program — no bouncing, no samples, live synthesis on the device.
 
 This document specs what we know, what we're guessing, and what we need to build to take advantage of
@@ -71,12 +71,12 @@ Fields marked **[PROPOSED]** do not exist in verified files — they are our bes
 
     <!-- [PROPOSED] Plugin identity block — analogous to DAW plugin state -->
     <SynthPlugin>
-      <PluginName Value="XOmnibus" />
+      <PluginName Value="XOlokun" />
       <PluginVendor Value="XO_OX Designs" />
       <PluginFormat Value="VST3" />
       <!-- VST3 UID — 16-byte hex, matches JUCE plugin UID -->
       <PluginUID Value="58 4F 4D 42 55 53 00 00 00 00 00 00 00 00 00 00" />
-      <!-- Plugin preset name to recall on load — maps to XOmnibus preset selector -->
+      <!-- Plugin preset name to recall on load — maps to XOlokun preset selector -->
       <PresetName Value="Opal_Crystal_Drift" />
       <!-- Raw VST3 state blob as base64 — fallback if preset name lookup fails -->
       <PluginState Encoding="base64" Value="" />
@@ -184,29 +184,29 @@ the plugin itself.
 
 ---
 
-## Section 2: XOmnibus VST3 → MPC Plugin Program Path
+## Section 2: XOlokun VST3 → MPC Plugin Program Path
 
 ### 2.1 The Full Chain
 
 ```
-XOmnibus.vst3
+XOlokun.vst3
     ↓ installed to ~/Library/Audio/Plug-Ins/VST3/
 MPC 3.5 Desktop scans VST3 path on launch
-    ↓ XOmnibus appears in plugin browser
+    ↓ XOlokun appears in plugin browser
 User creates new Keygroup Synth Engine program
-    ↓ selects XOmnibus from plugin list
+    ↓ selects XOlokun from plugin list
 Selects factory preset "Opal_Crystal_Drift"
-    ↓ XOmnibus loads preset, XPM stores PluginState + PresetName
+    ↓ XOlokun loads preset, XPM stores PluginState + PresetName
 Q-Links 1–4 assigned to CHARACTER / MOVEMENT / COUPLING / SPACE
     ↓ via QLinkAssignment index → VST3 parameter index
-16 pads trigger MIDI notes C2–D#3 into XOmnibus
+16 pads trigger MIDI notes C2–D#3 into XOlokun
     ↓
 Full live synthesis in MPC project — no sample rendering required
 ```
 
 ### 2.2 VST3 Parameter Indexing — Critical Detail for Rex
 
-XOmnibus JUCE parameters are registered in `PluginProcessor.cpp` via `AudioProcessorValueTreeState`.
+XOlokun JUCE parameters are registered in `PluginProcessor.cpp` via `AudioProcessorValueTreeState`.
 JUCE assigns VST3 parameter indices (0, 1, 2...) in the order parameters are added to the APVTS.
 
 **The 4 macros must be registered first (or at known indices) for reliable Q-Link mapping.**
@@ -232,7 +232,7 @@ Two options for encoding the preset in the XPM:
 ```xml
 <PresetName Value="Opal_Crystal_Drift" />
 ```
-XOmnibus must implement `setStateInformation()` / `getStateInformation()` with preset-by-name
+XOlokun must implement `setStateInformation()` / `getStateInformation()` with preset-by-name
 lookup. When MPC loads the XPM, it calls `setStateInformation` with the stored blob. If the blob
 is empty, MPC falls back to passing the preset name as a program change string. **[SPECULATIVE]**
 that MPC has a preset-name-to-plugin convention — safer to always include the state blob.
@@ -260,7 +260,7 @@ Proposed Oxport `--mode live` pipeline:
 ```
 
 The `xpn_plugin_program_builder.py` script (specced in Section 3) generates a Keygroup Synth Engine
-XPM that references the installed XOmnibus VST3. No audio rendering. No disk I/O beyond writing XML.
+XPM that references the installed XOlokun VST3. No audio rendering. No disk I/O beyond writing XML.
 Build time drops from hours to seconds.
 
 ---
@@ -273,7 +273,7 @@ Build time drops from hours to seconds.
 XO_OX_OPAL_EXPANSION.xpn/          ← standard ZIP with .xpn extension
   Programs/
     Opal_Crystal_Drift_SAMPLES.xpm  ← works on MPC 2.x+ (sample-based)
-    Opal_Crystal_Drift_LIVE.xpm     ← requires XOmnibus VST3 on MPC 3.5+
+    Opal_Crystal_Drift_LIVE.xpm     ← requires XOlokun VST3 on MPC 3.5+
     Opal_Void_Flutter_SAMPLES.xpm
     Opal_Void_Flutter_LIVE.xpm
     [... one SAMPLES + one LIVE pair per preset ...]
@@ -283,8 +283,8 @@ XO_OX_OPAL_EXPANSION.xpn/          ← standard ZIP with .xpn extension
       Opal_Crystal_Drift__C2__v2.WAV
       [...]
   Plugins/
-    README_PLUGINS.txt              ← instructions: download XOmnibus at xo-ox.org
-    XOmnibus_version_required.txt   ← "Requires XOmnibus v1.0 or later"
+    README_PLUGINS.txt              ← instructions: download XOlokun at xo-ox.org
+    XOlokun_version_required.txt   ← "Requires XOlokun v1.0 or later"
   expansion.json
   liner_notes.json
 ```
@@ -303,7 +303,7 @@ This is the question Rex and Hex disagree on. Here is the full analysis:
 | Multiple packs same plugin | Every pack duplicates binary | Install once, all packs work |
 
 **Rex's call:** Do NOT bundle the VST3 in the XPN. The `Plugins/` directory in the pack should
-contain only a README pointing to `xo-ox.org/download`. XOmnibus is a free open-source download.
+contain only a README pointing to `xo-ox.org/download`. XOlokun is a free open-source download.
 The pack README makes this frictionless. Bundling creates size problems, license ambiguity, and
 stale-version traps.
 
@@ -322,11 +322,11 @@ as a recognized directory. It is likely ignored (ZIP contains arbitrary files, o
   "mpc_version_minimum": "2.10",
   "plugin_programs": {
     "supported": true,
-    "plugin_name": "XOmnibus",
+    "plugin_name": "XOlokun",
     "plugin_version_minimum": "1.0.0",
     "mpc_version_required": "3.5",
     "download_url": "https://xo-ox.org/download",
-    "fallback": "Use *_SAMPLES.xpm programs on MPC < 3.5 or without XOmnibus installed"
+    "fallback": "Use *_SAMPLES.xpm programs on MPC < 3.5 or without XOlokun installed"
   },
   "presets": 150,
   "program_pairs": 150
@@ -337,10 +337,10 @@ as a recognized directory. It is likely ignored (ZIP contains arbitrary files, o
 
 ```
 python xpn_plugin_program_builder.py \
-  --plugin "XOmnibus" \
+  --plugin "XOlokun" \
   --plugin-uid "58 4F 4D 42 55 53 00 00 00 00 00 00 00 00 00 00" \
   --preset "Opal_Crystal_Drift" \
-  --xometa-file Presets/XOmnibus/Atmosphere/Opal_Crystal_Drift.xometa \
+  --xometa-file Presets/XOlokun/Atmosphere/Opal_Crystal_Drift.xometa \
   --macros CHARACTER:0,MOVEMENT:1,COUPLING:2,SPACE:3 \
   --qlinks 1,2,3,4 \
   --pad-root C2 \
@@ -379,16 +379,16 @@ STAGE_ORDER = [
 
 ---
 
-## Section 4: Hex's Lab — Getting XOmnibus on MPC Hardware
+## Section 4: Hex's Lab — Getting XOlokun on MPC Hardware
 
 *This is where we get into the actual path to hardware. Rated step by step.*
 
 ### 4.1 MPC Desktop VST3 Plugin Path
 
-**Step: Install XOmnibus VST3 to standard macOS path**
+**Step: Install XOlokun VST3 to standard macOS path**
 
 ```
-~/Library/Audio/Plug-Ins/VST3/XOmnibus.vst3
+~/Library/Audio/Plug-Ins/VST3/XOlokun.vst3
 ```
 
 **[CONFIRMED]** This is the standard VST3 path on macOS. Any DAW following VST3 spec scans here.
@@ -397,24 +397,24 @@ STAGE_ORDER = [
 feature. AIR instruments previously required Akai's own plugin hosting path; VST3 uses the OS
 standard.
 
-**Step: Launch MPC 3.5 Desktop and find XOmnibus in the plugin browser**
+**Step: Launch MPC 3.5 Desktop and find XOlokun in the plugin browser**
 
 **[PLAUSIBLE]** MPC 3.5 Desktop should enumerate `~/Library/Audio/Plug-Ins/VST3/` on launch or
-on a manual plugin rescan. XOmnibus should appear if it passes the VST3 validation check.
+on a manual plugin rescan. XOlokun should appear if it passes the VST3 validation check.
 
 **Risk:** MPC Desktop may maintain its own plugin whitelist or require Akai signing. We have no
 evidence of this but it is a non-zero risk. **[SPECULATIVE]**
 
-**Step: Create Keygroup Synth Engine program, load XOmnibus, load preset**
+**Step: Create Keygroup Synth Engine program, load XOlokun, load preset**
 
-**[PLAUSIBLE]** If MPC 3.5 Desktop recognizes XOmnibus as a valid VST3, creating a Keygroup Synth
+**[PLAUSIBLE]** If MPC 3.5 Desktop recognizes XOlokun as a valid VST3, creating a Keygroup Synth
 Engine program and selecting it should work identically to any AIR instrument workflow. Preset
-selection would depend on whether MPC exposes XOmnibus's internal preset browser or requires
+selection would depend on whether MPC exposes XOlokun's internal preset browser or requires
 loading state from a file.
 
 **[SPECULATIVE]** MPC may surface the VST3's `getProgramName()` preset list. JUCE exposes factory
-presets via this mechanism. If XOmnibus implements it, preset names appear in MPC's program change
-list. Rex: confirm JUCE `getNumPrograms()` / `getProgramName()` implementation in XOmnibus before
+presets via this mechanism. If XOlokun implements it, preset names appear in MPC's program change
+list. Rex: confirm JUCE `getNumPrograms()` / `getProgramName()` implementation in XOlokun before
 testing.
 
 **Step: Assign Q-Links to CHARACTER / MOVEMENT / COUPLING / SPACE**
@@ -424,11 +424,11 @@ capability of the Keygroup Synth Engine / plugin program type. This is what make
 useful rather than just being a hosted plugin with no hardware control.
 
 **[PLAUSIBLE]** The MPC UI shows a list of VST3 parameters by name. You click a Q-Link, click a
-parameter, done. JUCE exposes parameter names via `getParameterName(index)` — XOmnibus parameter
+parameter, done. JUCE exposes parameter names via `getParameterName(index)` — XOlokun parameter
 names will appear in this list. The 4 macros (registered at indices 0–3 per the spec above) should
 appear at the top if registration order is maintained.
 
-**Step: Play 16 pads → MIDI notes into XOmnibus → PROFIT**
+**Step: Play 16 pads → MIDI notes into XOlokun → PROFIT**
 
 **[CONFIRMED as Keygroup Synth Engine design]** This is the point of the feature. Pads output MIDI
 notes, plugin synthesizes audio, MPC handles mixing and sequencing. No samples needed.
@@ -457,12 +457,12 @@ MPC OS 3.8 or 4.0 — late 2026 or 2027. The desktop feature in 3.5 is the provi
 ### 4.3 Hex's Test Plan — Right Now, MPC 3.5 Desktop
 
 ```
-Step 1: Build XOmnibus.vst3 release binary
+Step 1: Build XOlokun.vst3 release binary
         → cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build
         [CONFIRMED WORKS — we do this already]
 
 Step 2: Copy to VST3 path
-        → cp -r build/XOmnibus_artefacts/Release/VST3/XOmnibus.vst3 \
+        → cp -r build/XOlokun_artefacts/Release/VST3/XOlokun.vst3 \
                ~/Library/Audio/Plug-Ins/VST3/
         [CONFIRMED: standard macOS VST3 install]
 
@@ -471,20 +471,20 @@ Step 3: Download MPC Software 3.5 Desktop Beta (or latest 3.x)
         [CONFIRMED: publicly available]
 
 Step 4: Launch MPC 3.5 Desktop → Preferences → Plugins → Scan
-        → verify XOmnibus appears in plugin list
+        → verify XOlokun appears in plugin list
         [PLAUSIBLE: should work if no whitelist blocking]
 
 Step 5: New Project → New Track → Keygroup Synth Engine program type
-        → select XOmnibus from plugin list
+        → select XOlokun from plugin list
         [PLAUSIBLE: requires the program type to be visible in 3.5]
 
 Step 6: Load preset "Opal_Crystal_Drift" via MPC preset browser or state import
         [SPECULATIVE: depends on JUCE getProgramName() exposure]
 
-Step 7: Assign Q-Links 1–4 to XOmnibus params → CHARACTER / MOVEMENT / COUPLING / SPACE
+Step 7: Assign Q-Links 1–4 to XOlokun params → CHARACTER / MOVEMENT / COUPLING / SPACE
         [PLAUSIBLE: stated Q-Link-to-VST3-param feature of Keygroup Synth Engine]
 
-Step 8: Play pads → hear XOmnibus synthesizing live in MPC → PROFIT
+Step 8: Play pads → hear XOlokun synthesizing live in MPC → PROFIT
         [PLAUSIBLE → CONFIRMED after test]
 ```
 
@@ -494,7 +494,7 @@ Step 8: Play pads → hear XOmnibus synthesizing live in MPC → PROFIT
 |------|--------|-----------------|
 | Build + install VST3 | CONFIRMED | None — we do this |
 | MPC 3.5 scans standard VST3 path | CONFIRMED | Nothing works without this |
-| XOmnibus passes validation | PLAUSIBLE | Possible whitelist/signing issue |
+| XOlokun passes validation | PLAUSIBLE | Possible whitelist/signing issue |
 | Keygroup Synth Engine UI accessible | PLAUSIBLE | May be AIR-only in 3.5 |
 | Preset loading via getProgramName | SPECULATIVE | Need state blob fallback |
 | Q-Link assignment to macros | PLAUSIBLE | Param index order must be right |
@@ -530,10 +530,10 @@ These do not exist in confirmed XPM files. They are Hex + Rex's proposed schema:
 
 ### Immediate (can do now)
 
-1. **[Rex]** Verify XOmnibus APVTS macro registration order — ensure CHARACTER/MOVEMENT/COUPLING/SPACE
-   are at parameter indices 0–3. If not, add a frozen index guarantee block in `XOmnibusProcessor.h`.
+1. **[Rex]** Verify XOlokun APVTS macro registration order — ensure CHARACTER/MOVEMENT/COUPLING/SPACE
+   are at parameter indices 0–3. If not, add a frozen index guarantee block in `XOlokunProcessor.h`.
 
-2. **[Rex]** Confirm JUCE `getNumPrograms()` / `getProgramName()` is implemented in XOmnibus.
+2. **[Rex]** Confirm JUCE `getNumPrograms()` / `getProgramName()` is implemented in XOlokun.
    If not, add it — this is what exposes preset names to MPC's plugin browser.
 
 3. **[Hex]** Install MPC 3.5 Desktop (latest available build). Run the test plan in Section 4.3.
@@ -555,7 +555,7 @@ These do not exist in confirmed XPM files. They are Hex + Rex's proposed schema:
    `expansion.json` schema with the `plugin_programs` block from Section 3.2.
 
 8. **[Both]** Design the first full hybrid XPN pack: OPAL as the pilot. 150 preset pairs.
-   Every preset ships both `_SAMPLES.xpm` (works everywhere) and `_LIVE.xpm` (XOmnibus required).
+   Every preset ships both `_SAMPLES.xpm` (works everywhere) and `_LIVE.xpm` (XOlokun required).
 
 ---
 
@@ -564,7 +564,7 @@ These do not exist in confirmed XPM files. They are Hex + Rex's proposed schema:
 We are one successful test away from this being real. Everything in Section 4.3 can be run today
 on MPC 3.5 Desktop. The hardware path is speculative but the desktop path is not.
 
-The moment Hex installs XOmnibus.vst3 → opens MPC 3.5 Desktop → sees XOmnibus in the plugin list,
+The moment Hex installs XOlokun.vst3 → opens MPC 3.5 Desktop → sees XOlokun in the plugin list,
 that's the confirmation that changes our entire export strategy. No more rendering. No more disk.
 Live synthesis in the box.
 

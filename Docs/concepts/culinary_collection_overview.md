@@ -133,7 +133,7 @@ The table is where the food is served and the meal becomes an occasion. Food wit
 
 Electric pianos exist because genres collided. Jazz needed amplification. Funk needed percussive keys. Pop needed shimmer. R&B needed warmth-at-volume. Every EP is a fusion instrument — acoustic principles married to electric amplification, creating sounds that belong to no single tradition. The crossroads where blues met jazz met soul met pop met electronic.
 
-**You can't do fusion cooking without a fully equipped kitchen.** Load all 4 Kitchen surfaces (Cast Iron, Copper, Stone, Glass) into the coupling matrix and a 5th slot appears — the Fusion slot. The kitchen is complete, the chef is ready, and now fusion cuisine becomes possible. This is XOmnibus's prestige configuration: commitment to the Kitchen quad rewards you with a secret instrument group that couples with all 4 surfaces simultaneously.
+**You can't do fusion cooking without a fully equipped kitchen.** Load all 4 Kitchen surfaces (Cast Iron, Copper, Stone, Glass) into the coupling matrix and a 5th slot appears — the Fusion slot. The kitchen is complete, the chef is ready, and now fusion cuisine becomes possible. This is XOlokun's prestige configuration: commitment to the Kitchen quad rewards you with a secret instrument group that couples with all 4 surfaces simultaneously.
 
 *(See "The 5th Slot — Fusion Unlock Mechanic" section below for full details.)*
 
@@ -251,7 +251,7 @@ The four engines map to four culinary liquid processes, each operating on a diff
 
 ## The 5th Slot — Fusion Unlock Mechanic
 
-XOmnibus has 4 engine slots. Always has. The Culinary Collection introduces a **secret 5th slot** — the Fusion slot — that appears only under a specific condition:
+XOlokun has 4 engine slots. Always has. The Culinary Collection introduces a **secret 5th slot** — the Fusion slot — that appears only under a specific condition:
 
 ### How to Unlock
 
@@ -276,9 +276,9 @@ SLOT 4: XOpaline (Glass)        ─┘
 
 **Thematically:** You can't do fusion cooking without a fully equipped kitchen. Master all four surfaces — cast iron, copper, stone, glass — and you've earned the right to attempt fusion. Every great fusion chef first mastered classical technique. The 5th slot IS that mastery reward.
 
-**Musically:** The Fusion engine couples with ALL 4 Kitchen surfaces simultaneously. XOasis's Rhodes bell-tones processed through cast iron's mass AND copper's responsiveness AND stone's cold resonance AND glass's fragility at once. Five-way coupling. No other configuration in XOmnibus can do this.
+**Musically:** The Fusion engine couples with ALL 4 Kitchen surfaces simultaneously. XOasis's Rhodes bell-tones processed through cast iron's mass AND copper's responsiveness AND stone's cold resonance AND glass's fragility at once. Five-way coupling. No other configuration in XOlokun can do this.
 
-**As discovery mechanic:** Players who load a full Kitchen quad discover the unlock organically. No tutorial tells them. The slot just appears. Word spreads through the community: "Load all 4 Kitchen engines and see what happens." This is the XOmnibus equivalent of a fighting game's hidden character — a reward for commitment that deepens the experience for those who find it.
+**As discovery mechanic:** Players who load a full Kitchen quad discover the unlock organically. No tutorial tells them. The slot just appears. Word spreads through the community: "Load all 4 Kitchen engines and see what happens." This is the XOlokun equivalent of a fighting game's hidden character — a reward for commitment that deepens the experience for those who find it.
 
 ### 5th Slot Coupling Rules
 
@@ -442,7 +442,7 @@ The Culinary Collection absorbs and extends the existing quad concepts:
 - **Fusion Quad** → Promoted from standard quad to **secret 5th-slot unlock**. EP instruments were always fusion instruments by nature — acoustic principles married to electric amplification. Making them a secret reward for committing to a full Kitchen loadout is thematically perfect: you can't do fusion cooking without mastering the fundamentals first.
 - **Choir Quad** → **NEW** — fills the voice-shaped hole in the instrument taxonomy. Organ, piano, strings, bass, pads were all covered — but no voices. The Table is where the meal becomes an occasion.
 
-The `dual_quad_relationships.md` Confluences (Crank the Serpent, Aitake Dissolves, Yellowstone Glass, Cathedral Inhales) remain valid — they describe cross-quad coupling with existing XOmnibus engines (Ouroboros, Oceanic, Obsidian, Opal). The four new Culinary Confluences (Sunday Gravy, Omakase, Fermentation, Mole) are internal to the Collection.
+The `dual_quad_relationships.md` Confluences (Crank the Serpent, Aitake Dissolves, Yellowstone Glass, Cathedral Inhales) remain valid — they describe cross-quad coupling with existing XOlokun engines (Ouroboros, Oceanic, Obsidian, Opal). The four new Culinary Confluences (Sunday Gravy, Omakase, Fermentation, Mole) are internal to the Collection.
 
 ---
 
@@ -766,7 +766,7 @@ Each company's character becomes a spice that transforms the base instrument. Th
 
 ---
 
-## The XOmnibus Cookbook — Real Recipes for Real Presets
+## The XOlokun Cookbook — Real Recipes for Real Presets
 
 Every preset in the Culinary Collection ships with a paired real-world recipe. Not a metaphor — an actual recipe you can cook while the preset plays. The cookbook is a living document that evolves alongside the preset library.
 
@@ -841,7 +841,7 @@ What if any creative input could become a preset?
 
 ### Core Idea
 
-An AI-powered feature (opt-in, on-device or cloud) that interprets non-musical creative inputs and generates XOmnibus presets from them. The Culinary Collection's recipe→preset pairing is just the first instance of a much bigger idea: **synesthesia as a product feature.**
+An AI-powered feature (opt-in, on-device or cloud) that interprets non-musical creative inputs and generates XOlokun presets from them. The Culinary Collection's recipe→preset pairing is just the first instance of a much bigger idea: **synesthesia as a product feature.**
 
 ### Input Domains
 
@@ -867,7 +867,7 @@ SYNESTHESIA ENGINE (AI model)
 ├── Generates: .xometa preset file with all parameter values
          │
          ▼
-PRESET (loadable in XOmnibus, editable, sharable)
+PRESET (loadable in XOlokun, editable, sharable)
 ├── Metadata includes: source input, AI interpretation notes, Sonic DNA values
 ├── User can tweak any parameter — the AI output is a starting point, not a cage
 └── Community can vote/rate AI-generated presets
@@ -884,7 +884,7 @@ The Synesthesia Engine is inherently social:
 
 ### Relationship to Collections
 
-Every XOmnibus Collection gets its own synesthesia domain (see `xomnibus_collections_vision.md`):
+Every XOlokun Collection gets its own synesthesia domain (see `xolokun_collections_vision.md`):
 
 | Collection | Primary Synesthesia Domain | Community Touchpoint |
 |-----------|---------------------------|---------------------|
@@ -898,7 +898,7 @@ Every XOmnibus Collection gets its own synesthesia domain (see `xomnibus_collect
 ## Open Questions
 
 1. **Accent colors** — Does each quad share a color family, or does each engine get its own? The culinary metaphor suggests warm palette families (copper tones for Kitchen, deep reds for Cellar, greens for Garden, etc.). Choir might use throat/flesh tones or warm neutrals.
-2. **FX recipes — DSP implementation** — Recipe archetypes are designed for all 7 quads (28 recipes total). Next step: translate each recipe's FX chain into specific DSP module selections, parameter ranges, and routing from the XOmnibus shared DSP library.
+2. **FX recipes — DSP implementation** — Recipe archetypes are designed for all 7 quads (28 recipes total). Next step: translate each recipe's FX chain into specific DSP module selections, parameter ranges, and routing from the XOlokun shared DSP library.
 3. **Aquatic identity** — Does the Culinary Collection sit within the water column mythology? If so, where? The kitchen is on land — on the shore, perhaps. The osteria at the water's edge.
 4. **Integration priority** — Which quad builds first after Chef? Kitchen (Piano) and Cellar (Bass) are the most universally needed. Kitchen is now even more critical since it gates the Fusion unlock.
 5. **XOpaline vs XOpal** — Name collision. XOpal already exists in the main engine roster. XOpaline is distinct but close. Consider alternatives: XObjet, XOrnament, XOverture.

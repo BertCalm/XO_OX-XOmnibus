@@ -12,7 +12,7 @@
 
 ## 1. Identity
 
-**XOuïe** (pronounced *WEE* — French: *ouïe*, the sense of hearing; also the gill slits of a fish) is XOmnibus's duophonic synthesis engine. Two synthesizer voices. Two independent synthesis algorithms. One shared relationship that the player controls.
+**XOuïe** (pronounced *WEE* — French: *ouïe*, the sense of hearing; also the gill slits of a fish) is XOlokun's duophonic synthesis engine. Two synthesizer voices. Two independent synthesis algorithms. One shared relationship that the player controls.
 
 The name carries a double meaning: *ouïe* is the raw faculty of hearing — the French word that names the act of listening — and *ouïes* are the gill openings of a fish, the breathing apparatus that mediates between an animal and its world. XOuïe does both: it listens to itself, constantly monitoring the relationship between its two voices, and breathes through the interaction between them.
 
@@ -24,11 +24,11 @@ This is not redundancy. This is stereoscopic intelligence — the same environme
 
 XOuïe's two voices are the two halves of the cephalofoil. They can work in perfect concert — **LOVE mode**, binocular depth perception, harmonic intervals sought and locked together — or they can be in active competition — **STRIFE mode**, two signals fighting for frequency space, repelling each other, generating dissonance as a texture. The two macros STRIFE and LOVE control which state dominates.
 
-**Position in the water column:** The thermocline. The hammerhead patrols the invisible boundary where warm surface water meets cold deep water. XOuïe is the only XOmnibus engine at dead-center polarity — 50% feliX, 50% Oscar. Not because it is neutral. Because it inhabits both simultaneously.
+**Position in the water column:** The thermocline. The hammerhead patrols the invisible boundary where warm surface water meets cold deep water. XOuïe is the only XOlokun engine at dead-center polarity — 50% feliX, 50% Oscar. Not because it is neutral. Because it inhabits both simultaneously.
 
 ### Accent Color: Hammerhead Steel `#708090`
 
-Slate gray with a cool-blue undertone. The color of cartilage, of industrial mesh, of the underside of a shark seen from below. The first and only neutral-cool accent in the XOmnibus gallery — every other engine uses a vibrant or saturated color. OUIE's restraint is intentional. The hammerhead is not flamboyant. It is precise, purposeful, and dangerous exactly because it does not announce itself.
+Slate gray with a cool-blue undertone. The color of cartilage, of industrial mesh, of the underside of a shark seen from below. The first and only neutral-cool accent in the XOlokun gallery — every other engine uses a vibrant or saturated color. OUIE's restraint is intentional. The hammerhead is not flamboyant. It is precise, purposeful, and dangerous exactly because it does not announce itself.
 
 ### Historical Homage
 
@@ -402,7 +402,7 @@ Use `?? 0` not `|| 0` when indexing Float32Array buffers in algorithm output —
 
 ## 6. feliX/Oscar Polarity
 
-XOuïe is the only XOmnibus engine at dead-center polarity — 50% feliX, 50% Oscar.
+XOuïe is the only XOlokun engine at dead-center polarity — 50% feliX, 50% Oscar.
 
 This is not neutrality. It is simultaneous inhabitation of both poles.
 
@@ -551,7 +551,7 @@ Abstract `OuieAlgorithm` base class: `virtual float* process(float frequency, fl
 12 hero presets first, in `.xometa` format, establishing STRIFE/LOVE/ECHO vocabulary. Expand to 150 in preset phase.
 
 **9. Coupling adapter stubs:**
-Accepted: `AmpToFilter`, `EnvToMorph`, `LFOToPitch`, `AudioToFM`. Sent: `getSample`, `AmpToFilter`, `EnvToMorph`. Define in `OuieEngine.h` before XOmnibus integration.
+Accepted: `AmpToFilter`, `EnvToMorph`, `LFOToPitch`, `AudioToFM`. Sent: `getSample`, `AmpToFilter`, `EnvToMorph`. Define in `OuieEngine.h` before XOlokun integration.
 
 ### Build Scope Estimate
 

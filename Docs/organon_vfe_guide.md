@@ -11,7 +11,7 @@
 
 ## Preface: What This Guide Is For
 
-Organon received the only unanimous blessing from all eight ghost synthesists assembled in the XOmnibus seance. Schulze, Buchla, Vangelis, Kakehashi, Tomita, Pearlman, Carlos, Smith — all eight passed it without qualification. The comment was precise: the Variational Free Energy metabolism is not an interesting gimmick or a branding metaphor. It is a genuine implementation of a neuroscience principle as a synthesis engine, and it could be published as an academic paper.
+Organon received the only unanimous blessing from all eight ghost synthesists assembled in the XOlokun seance. Schulze, Buchla, Vangelis, Kakehashi, Tomita, Pearlman, Carlos, Smith — all eight passed it without qualification. The comment was precise: the Variational Free Energy metabolism is not an interesting gimmick or a branding metaphor. It is a genuine implementation of a neuroscience principle as a synthesis engine, and it could be published as an academic paper.
 
 This guide exists to do three things: explain the science clearly enough that a developer can extend it; explain the synthesis clearly enough that a performer can play it; and document the vision clearly enough that the architecture decision is never reversed in the name of simplicity.
 
@@ -519,7 +519,7 @@ The macros define the organism's nature. The performer's notes and coupling conn
 
 ### Coupling as Ecology
 
-Organon is described in the XOmnibus aquatic mythology as the chemotroph of the XOmnibus ecosystem — an organism that converts the chemical energy of other engines' outputs into harmonic structures. This framing yields a productive design vocabulary:
+Organon is described in the XOlokun aquatic mythology as the chemotroph of the XOlokun ecosystem — an organism that converts the chemical energy of other engines' outputs into harmonic structures. This framing yields a productive design vocabulary:
 
 - **ODDFELIX → Organon**: Percussive hits feed the organism bursts of high-entropy energy. Each drum strike triggers a metabolic spike, creating rhythmic harmonic blooms that decay as the organism starves between hits.
 - **ODDOSCAR → Organon**: Lush wavetable pads provide a slow-entropy, consistent feed. The organism builds up dense harmonic content over minutes, mirroring and metabolizing the character of the pad.
@@ -531,7 +531,7 @@ Organon is described in the XOmnibus aquatic mythology as the chemotroph of the 
 
 Route Organon's output (via `getSampleForCoupling()`) back into its own `AudioToFM` input. At moderate catalyst drive, this creates a self-sustaining feedback loop where the organism feeds on its own harmonic reconstruction — a self-referential metabolism that can sustain indefinitely at a fixed energy level. Damping Coefficient controls whether this is stable (high damping, self-limited) or can crescendo (low damping, energy accumulates).
 
-This is the synthesis equivalent of autopoiesis — self-production. Combined with OUROBOROS (the self-consuming recursive feedback engine, Strange Attractor Red `#FF2D2D`), this creates a feedback ecology unique in the XOmnibus galaxy.
+This is the synthesis equivalent of autopoiesis — self-production. Combined with OUROBOROS (the self-consuming recursive feedback engine, Strange Attractor Red `#FF2D2D`), this creates a feedback ecology unique in the XOlokun galaxy.
 
 ---
 

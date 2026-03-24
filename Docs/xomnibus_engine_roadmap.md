@@ -1,4 +1,4 @@
-# XOmnibus — Engine Expansion Roadmap
+# XOlokun — Engine Expansion Roadmap
 
 *Document version: 3.3 | March 2026 — 29+ engines registered (24 original + 5 Constellation: OHM/ORPHICA/OBBLIGATO/OTTONI/OLE + OMBRE); OVERLAP and OUTWIT are Phase 3 complete but not yet installed*
 
@@ -6,7 +6,7 @@
 
 ## Current Gallery State (March 2026)
 
-**29+ engines registered** in XOmnibus. **24 original engines** integrated in `Source/Engines/` with SynthEngine adapters (OSPREY, OSTERIA, and OWLFISH are registered but not listed in the volume tables below — they were added between Volume 1.5 and the Constellation wave). **5 Constellation family engines** (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) registered as stubs. **OMBRE** dual-narrative engine integrated. **2 engines** (OVERLAP and OUTWIT) are Phase 3 complete in standalone form but not yet registered in XOmnibus. 2,369+ factory presets across 7 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family).
+**29+ engines registered** in XOlokun. **24 original engines** integrated in `Source/Engines/` with SynthEngine adapters (OSPREY, OSTERIA, and OWLFISH are registered but not listed in the volume tables below — they were added between Volume 1.5 and the Constellation wave). **5 Constellation family engines** (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) registered as stubs. **OMBRE** dual-narrative engine integrated. **2 engines** (OVERLAP and OUTWIT) are Phase 3 complete in standalone form but not yet registered in XOlokun. 2,369+ factory presets across 7 moods (Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family).
 
 ### Volume 1 — Core Engines (Original Instruments)
 
@@ -44,7 +44,7 @@
 
 ## Standalone Instrument Status
 
-These are the full standalone instruments (AU + Standalone builds) that exist alongside their XOmnibus adapters:
+These are the full standalone instruments (AU + Standalone builds) that exist alongside their XOlokun adapters:
 
 | Instrument | Repo | Status | Files | Presets |
 |-----------|------|--------|-------|---------|
@@ -67,9 +67,9 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 - **Parameter prefix:** `ocelot_`
 - **Thesis:** Canopy-layered ecosystem synth — 4 interacting strata (Floor/Understory/Canopy/Emergent) with biome transformations (Jungle/Underwater/Winter)
 - **Max voices:** 8
-- **XOmnibus integration:** 3,010 lines in `Source/Engines/Ocelot/`
+- **XOlokun integration:** 3,010 lines in `Source/Engines/Ocelot/`
 - **Standalone repo:** `~/Documents/GitHub/XOcelot/` — scaffold with Phase 1 architecture
-- **Sound design guide:** Section not yet written (add to `xomnibus_sound_design_guides.md`)
+- **Sound design guide:** Section not yet written (add to `xolokun_sound_design_guides.md`)
 
 **Coupling Matrix (OCELOT)**
 
@@ -183,8 +183,8 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 ## Volume 2 Engines (Future — Not Yet Started)
 
-*Source: `Docs/XOmnibus_Master_Architecture- Volume 2.md.txt`*
-*Review: `Docs/xomnibus_volume2_review.md`*
+*Source: `Docs/XOlokun_Master_Architecture- Volume 2.md.txt`*
+*Review: `Docs/xolokun_volume2_review.md`*
 
 ### Build Queue
 
@@ -200,7 +200,7 @@ These are the full standalone instruments (AU + Standalone builds) that exist al
 
 ### Merged — OUROBOROS v2
 
-XOBSESSION's best ideas (Mandelbrot c-plane navigation, Julia mode, DIVE parameter, Riemann sheet rotation) will be absorbed into a future OUROBOROS version update. See `Docs/xomnibus_volume2_review.md` Section F for merge plan.
+XOBSESSION's best ideas (Mandelbrot c-plane navigation, Julia mode, DIVE parameter, Riemann sheet rotation) will be absorbed into a future OUROBOROS version update. See `Docs/xolokun_volume2_review.md` Section F for merge plan.
 
 ### Killed
 

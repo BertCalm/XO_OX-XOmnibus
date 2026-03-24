@@ -3,7 +3,7 @@
 **Invoke with:** `/xpn-export-specialist`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** On XPN format changes or new MPC compatibility requirements
-**Purpose:** End-to-end guide for building XPN (MPC-compatible) export bundles from XOmnibus presets — covering render specs, WAV rendering, XPM generation, bundle assembly, and the 3 critical XPM rules.
+**Purpose:** End-to-end guide for building XPN (MPC-compatible) export bundles from XOlokun presets — covering render specs, WAV rendering, XPM generation, bundle assembly, and the 3 critical XPM rules.
 
 ---
 
@@ -86,7 +86,7 @@ All tools live in `Tools/`. Run from repo root.
 
 ```bash
 # Single preset
-python3 Tools/xpn_render_spec.py --preset Presets/XOmnibus/Foundation/Deep_Cut.xometa --json
+python3 Tools/xpn_render_spec.py --preset Presets/XOlokun/Foundation/Deep_Cut.xometa --json
 
 # All Foundation presets
 python3 Tools/xpn_render_spec.py --engine Oblong --output-dir /tmp/specs
@@ -100,7 +100,7 @@ The render spec tells you:
 
 ### Step 2: Render WAVs
 
-Render WAVs from the XOmnibus plugin using the spec. File naming convention:
+Render WAVs from the XOlokun plugin using the spec. File naming convention:
 
 ```
 {preset_slug}__{note}__{velocity_layer}.WAV
@@ -190,7 +190,7 @@ Set up a bundle profile in `Tools/bundle_profiles/`:
 {
   "name": "Foundation Pack Vol. 1",
   "version": "1.0.0",
-  "description": "Bass, kicks, and rhythmic anchors from XOmnibus",
+  "description": "Bass, kicks, and rhythmic anchors from XOlokun",
   "presets": [
     {
       "name": "Deep Cut",

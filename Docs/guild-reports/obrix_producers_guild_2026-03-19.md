@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-OBRIX is architecture waiting for its catalogue. The brick-pool modular philosophy is genuinely original within XOmnibus — a meta-engine that becomes a different instrument depending on which bricks are active and which engines are coupled. But 25 genre specialists, unanimously and independently, delivered the same verdict: **zero factory presets is a session-blocking omission**. The engine architecture is sound. The empty library communicates unfinished work regardless of what the DSP does. The roadmap below transforms OBRIX from a demo instrument into a production tool in three phases.
+OBRIX is architecture waiting for its catalogue. The brick-pool modular philosophy is genuinely original within XOlokun — a meta-engine that becomes a different instrument depending on which bricks are active and which engines are coupled. But 25 genre specialists, unanimously and independently, delivered the same verdict: **zero factory presets is a session-blocking omission**. The engine architecture is sound. The empty library communicates unfinished work regardless of what the DSP does. The roadmap below transforms OBRIX from a demo instrument into a production tool in three phases.
 
 ---
 
@@ -152,7 +152,7 @@ Individually modest. Combined: Tide Mode draws exclusively from ocean-sourced wa
 
 ```
 Phase 1 ships →
-  1. OBRIX becomes standalone-viable — new segment: producers who don't yet own XOmnibus
+  1. OBRIX becomes standalone-viable — new segment: producers who don't yet own XOlokun
   2. COUPLING self-routing + CHARACTER feedback creates unintentional self-oscillating patches
      — community discovers this, posts about it, OBRIX gets credited for something it didn't design
   3. Audio-rate LFO triggers "why can't I route it as FM operator?" requests within 90 days
@@ -161,7 +161,7 @@ Phase 1 ships →
      — expands addressable genre pool, revenue from unreachable segment
   5. COUPLING self-routing architecture becomes SDK reference implementation
      — third-party developers learn the self-coupling pattern from OBRIX source
-  6. Standalone viability changes Brick Drop marketing from "XOmnibus users" to "OBRIX owners"
+  6. Standalone viability changes Brick Drop marketing from "XOlokun users" to "OBRIX owners"
      — wider audience per drop, same development cost
   7. Phase 1 completeness re-scores the Seance from 7.2 → 8.8+
      — the score is referenced by purchase decisions; better score = better conversion

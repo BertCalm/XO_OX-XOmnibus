@@ -73,7 +73,7 @@ from xml.sax.saxutils import escape as xml_escape
 
 
 REPO_ROOT   = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 
 
 # ---------------------------------------------------------------------------
@@ -1003,7 +1003,7 @@ def generate_keygroup_xpm(
             inst_idx += 1
             num_instruments += 1
 
-    # Standardized XOmnibus macro → MPC Q-Link mapping:
+    # Standardized XOlokun macro → MPC Q-Link mapping:
     #   Q1 → CHARACTER  (FilterCutoff — timbral character)
     #   Q2 → MOVEMENT   (LFO Rate — motion/modulation depth)
     #   Q3 → COUPLING   (Send2/AuxSend — cross-feed, closest MPC analog to coupling)

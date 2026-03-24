@@ -1,9 +1,9 @@
-# XOmnibus State Persistence Audit
+# XOlokun State Persistence Audit
 **Date:** 2026-03-21
 **Auditor:** Claude Code (Sonnet 4.6)
 **DAW targets:** PreSonus Studio One, Akai MPC
 **Files audited:**
-- `Source/XOmnibusProcessor.h/.cpp`
+- `Source/XOlokunProcessor.h/.cpp`
 - `Source/Core/PresetManager.h`
 - `Source/Core/EngineRegistry.h`
 - `Source/Core/MegaCouplingMatrix.h`
@@ -62,17 +62,17 @@ The state is serialized to XML (`state.createXml()`) wrapped in JUCE's binary en
 The APVTS parameter layout (`createParameterLayout`, line 467–638) contains no `xo_slot_0_engine`, `xo_slot_1_engine`, etc. parameters. Engine slot selection is purely runtime state managed by `engines[4]` (atomic shared_ptr array) — it is never written into the APVTS ValueTree.
 
 **What happens in Studio One:**
-1. User loads XOmnibus, selects OceanDeep → Orbit → Oware → Obrix in slots 0–3
+1. User loads XOlokun, selects OceanDeep → Orbit → Oware → Obrix in slots 0–3
 2. User saves the session
 3. User closes and reopens Studio One
-4. XOmnibus loads: all 4 slots are **empty** (null engines, silent plugin)
+4. XOlokun loads: all 4 slots are **empty** (null engines, silent plugin)
 5. Parameter values for all engines are restored by APVTS — but no engine is loaded to use them
 
-**Fix required** in `Source/XOmnibusProcessor.cpp`:
+**Fix required** in `Source/XOlokunProcessor.cpp`:
 
 In `getStateInformation`, after building the XML, add slot engine IDs as XML attributes:
 ```cpp
-void XOmnibusProcessor::getStateInformation(juce::MemoryBlock& destData)
+void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     auto state = apvts.copyState();
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
@@ -96,7 +96,7 @@ void XOmnibusProcessor::getStateInformation(juce::MemoryBlock& destData)
 
 In `setStateInformation`, after `apvts.replaceState()`, restore engine slots:
 ```cpp
-void XOmnibusProcessor::setStateInformation(const void* data, int sizeInBytes)
+void XOlokunProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml && xml->hasTagName(apvts.state.getType()))
@@ -114,7 +114,7 @@ void XOmnibusProcessor::setStateInformation(const void* data, int sizeInBytes)
                 if (engineId.isNotEmpty())
                 {
                     // Resolve legacy aliases (e.g. "Snap" -> "OddfeliX")
-                    engineId = xomnibus::resolveEngineAlias(engineId);
+                    engineId = xolokun::resolveEngineAlias(engineId);
                     if (EngineRegistry::instance().isRegistered(engineId.toStdString()))
                         loadEngine(i, engineId.toStdString());
                 }
@@ -152,7 +152,7 @@ The performance overlay routes (`cp_r1_active`, etc.) are APVTS params and **are
 - All `CouplingRoute` entries with `isNormalled = false` (user-created routes)
 - Their `sourceSlot`, `destSlot`, `type`, `amount`, and `active` state
 
-**Fix required** in `Source/XOmnibusProcessor.cpp`:
+**Fix required** in `Source/XOlokunProcessor.cpp`:
 
 Add a helper to serialize/deserialize `CouplingRoute` vectors into the XML state:
 
@@ -261,11 +261,11 @@ if (stateVersion >= 2)
 
 **Severity: Low (UX gap).**
 
-When XOmnibus is first inserted on a track in Studio One with no saved state, the constructor (line 400–417) does not call `loadEngine()`. All 4 slots are null. The user sees 4 blank tiles and no audio. There is no "default patch" experience.
+When XOlokun is first inserted on a track in Studio One with no saved state, the constructor (line 400–417) does not call `loadEngine()`. All 4 slots are null. The user sees 4 blank tiles and no audio. There is no "default patch" experience.
 
 **Recommended fix:**
 ```cpp
-// In XOmnibusProcessor constructor, after cacheParameterPointers():
+// In XOlokunProcessor constructor, after cacheParameterPointers():
 loadEngine(0, "OddfeliX");   // feliX the neon tetra — engaging default
 ```
 Or use a curated 2-engine default (e.g. OddfeliX + Orbital) that demonstrates coupling immediately.
@@ -296,7 +296,7 @@ Work through these in order. Each test builds on the one before.
 
 ### Test 1 — Baseline round-trip (single instance)
 1. Open Studio One, create a new Song
-2. Insert XOmnibus on an instrument track
+2. Insert XOlokun on an instrument track
 3. Select **OceanDeep** in Slot 1 and **Orbital** in Slot 2 via the engine tiles
 4. Set macro1 (CHARACTER) to ~0.75, macro3 (COUPLING) to ~0.3
 5. In OceanDeep, turn `deep_macroPressure` to max; in Orbital, turn `orb_brightness` down
@@ -336,7 +336,7 @@ Work through these in order. Each test builds on the one before.
     - [ ] The Oware param values match what was set
 
 ### Test 5 — Multiple instances on different tracks
-1. Add a second XOmnibus instance on a second instrument track
+1. Add a second XOlokun instance on a second instrument track
 2. Load Obrix in Slot 1 of the second instance; set distinct params
 3. Save the Song, close, reopen
 4. **Verify:**
@@ -352,7 +352,7 @@ Work through these in order. Each test builds on the one before.
     - [ ] No crash on unrecognized engine ID (should load empty slot with warning in debug build)
 
 ### Test 7 — MPC scenario (Akai MPC as controller / plugin host)
-1. If using XOmnibus as a plugin on MPC hardware, use the MPC's session save function
+1. If using XOlokun as a plugin on MPC hardware, use the MPC's session save function
 2. Save a session with a two-engine patch and coupling route
 3. Power cycle the MPC (or reload the session)
 4. **Verify same checklist items as Test 1–3 above**
@@ -370,4 +370,4 @@ Work through these in order. Each test builds on the one before.
 | P3 | FINDING 5 — No default engine on fresh insert | UX: blank tiles on first use |
 | P3 | FINDING 6 — Preset name not shown after reload | Cosmetic UI gap |
 
-All P0 fixes are in a single function pair (`getStateInformation` / `setStateInformation`) in `Source/XOmnibusProcessor.cpp`. They can be landed together in one commit.
+All P0 fixes are in a single function pair (`getStateInformation` / `setStateInformation`) in `Source/XOlokunProcessor.cpp`. They can be landed together in one commit.

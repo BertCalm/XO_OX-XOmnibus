@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingCuriosity.h — Psychology-Driven Timbral Variation Engine
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  Translates published psychological research into DSP parameter variation:
 //
@@ -28,7 +28,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OfferingVariationSet — Cached parameter offsets for one trigger event.
@@ -181,4 +181,4 @@ private:
     bool hasLastVariation_[8] = {};
 };
 
-} // namespace xomnibus
+} // namespace xolokun

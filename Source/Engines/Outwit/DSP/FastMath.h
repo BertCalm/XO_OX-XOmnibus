@@ -1,7 +1,7 @@
 #pragma once
 
 //==============================================================================
-// FastMath.h (XOutwit local) — forwards to the shared XOmnibus FastMath and
+// FastMath.h (XOutwit local) — forwards to the shared XOlokun FastMath and
 // re-exports all symbols into the xoutwit namespace so adapter code can call
 // xoutwit::fastTanh, xoutwit::midiToFreq, etc.
 //
@@ -12,22 +12,22 @@
 
 namespace xoutwit {
 
-using xomnibus::flushDenormal;
-using xomnibus::fastExp;
-using xomnibus::fastTanh;
-using xomnibus::fastSin;
-using xomnibus::fastCos;
-using xomnibus::fastTan;
-using xomnibus::fastLog2;
-using xomnibus::fastPow2;
-using xomnibus::midiToFreq;
-using xomnibus::midiToFreqTune;
-using xomnibus::dbToGain;
-using xomnibus::gainToDb;
-using xomnibus::clamp;
-using xomnibus::lerp;
-using xomnibus::smoothstep;
-using xomnibus::smoothCoeffFromTime;
-using xomnibus::softClip;
+using xolokun::flushDenormal;
+using xolokun::fastExp;
+using xolokun::fastTanh;
+using xolokun::fastSin;
+using xolokun::fastCos;
+using xolokun::fastTan;
+using xolokun::fastLog2;
+using xolokun::fastPow2;
+using xolokun::midiToFreq;
+using xolokun::midiToFreqTune;
+using xolokun::dbToGain;
+using xolokun::gainToDb;
+using xolokun::clamp;
+using xolokun::lerp;
+using xolokun::smoothstep;
+using xolokun::smoothCoeffFromTime;
+using xolokun::softClip;
 
 } // namespace xoutwit

@@ -5,7 +5,7 @@
 #include "../FastMath.h"
 #include "Saturator.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MasterDelay — Stereo delay for the Master FX chain.
@@ -386,4 +386,4 @@ private:
     bool autoclearPending = false;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

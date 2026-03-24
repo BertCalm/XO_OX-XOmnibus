@@ -2,7 +2,7 @@
 
 **Date:** March 2026
 **Status:** Phase 1 — Architecture designed, scaffold built
-**Engine location:** `Source/Engines/Osprey/OspreyEngine.h` (native XOmnibus engine, self-contained)
+**Engine location:** `Source/Engines/Osprey/OspreyEngine.h` (native XOlokun engine, self-contained)
 **Companion engine:** XOsteria (shared Shore System)
 
 ---

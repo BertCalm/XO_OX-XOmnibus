@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate XOverbite .xometa preset files for XOmnibus.
+"""Generate XOverbite .xometa preset files for XOlokun.
 
 Overbite (formerly XOpossum) is a dual-oscillator subtractive synth with
 character stages: Fur (pre-filter saturation), Chew (contour), Drive,
@@ -19,7 +19,7 @@ import random
 
 random.seed(99)
 
-PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOmnibus")
+PRESET_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Presets", "XOlokun")
 
 
 def r(lo, hi):

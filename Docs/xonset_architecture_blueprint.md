@@ -2,13 +2,13 @@
 
 **Date:** March 2026
 **Status:** Phase 1 LOCKED — Parameter architecture confirmed, remaining phases defined
-**Engine location:** `Source/Engines/Onset/OnsetEngine.h` (native XOmnibus engine)
+**Engine location:** `Source/Engines/Onset/OnsetEngine.h` (native XOlokun engine)
 
 ---
 
 ## 1. Current Implementation State
 
-OnsetEngine.h: **1041 lines**, fully integrated in XOmnibus gallery.
+OnsetEngine.h: **1041 lines**, fully integrated in XOlokun gallery.
 
 ### What's Built
 
@@ -242,7 +242,7 @@ All 4 macros produce audible change at every position in every preset.
 | Parameter prefix | `perc_` |
 | Max voices | 8 (fixed — never reduced) |
 | CPU budget | <15.5% @ 8 voices, all active, 44100Hz, 512 block |
-| DSP location | `Source/Engines/Onset/OnsetEngine.h` (inline, native XOmnibus) |
+| DSP location | `Source/Engines/Onset/OnsetEngine.h` (inline, native XOlokun) |
 
 ---
 

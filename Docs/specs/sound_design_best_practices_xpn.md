@@ -1,4 +1,4 @@
-# XOmnibus — Sound Design Best Practices for XPN/MPC Export
+# XOlokun — Sound Design Best Practices for XPN/MPC Export
 
 **Version:** 1.0
 **Author:** Vibe (XO_OX Sound Design)
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-XOmnibus presets are live synthesis objects. XPN exports are frozen audio artifacts. The gap between those two things is where sound design decisions either succeed or fail.
+XOlokun presets are live synthesis objects. XPN exports are frozen audio artifacts. The gap between those two things is where sound design decisions either succeed or fail.
 
 This guide covers the thinking, the numbers, and the judgment calls that determine whether an MPC producer gets a sample that sounds like the actual engine — or a pale, truncated, lifeless echo of it.
 
@@ -119,14 +119,14 @@ The XPN keygroup exporter produces stereo by default. Mono renders are specified
 
 ### 1.6 feliX-Oscar Export Considerations
 
-Every XOmnibus preset sits on the feliX-Oscar polarity axis. That polarity has real acoustic consequences at render time.
+Every XOlokun preset sits on the feliX-Oscar polarity axis. That polarity has real acoustic consequences at render time.
 
 **feliX patches (bright, clinical, digital: ODDFELIX, OVERWORLD, OPTIC, ORACLE, OBLIQUE)**
 
 - Aliasing risk at high velocities, especially with hard sync and wavetable engines. Render at 48kHz minimum.
 - OVERWORLD chip-register patches: NES square waves at high pitches approach Nyquist quickly. Use `--samplerate 48000` for renders above C5.
 - Air frequencies (8-16kHz) are load-bearing for feliX character. Do not apply high-frequency rolloff during render. Normalize to -3 dBFS (not -6 dBFS) to preserve headroom while keeping air present.
-- Anti-aliasing note: XOmnibus engines use minBLEP/PolyBLEP at the DSP level. Do not add additional anti-aliasing at the render stage — it will soften the clinical feliX character.
+- Anti-aliasing note: XOlokun engines use minBLEP/PolyBLEP at the DSP level. Do not add additional anti-aliasing at the render stage — it will soften the clinical feliX character.
 
 **Oscar patches (warm, organic, deep: OBLONG, OBESE, OVERDUB, OWLFISH, OBSCURA, OCEAN-DEEP)**
 
@@ -384,7 +384,7 @@ For granular engines, render at multiple grain sizes if the grain size parameter
 
 ### 2.5 Coupling Presets (Entangled Mood)
 
-Entangled mood presets define the XOmnibus difference. They must be rendered in their coupling state — the coupling IS the preset.
+Entangled mood presets define the XOlokun difference. They must be rendered in their coupling state — the coupling IS the preset.
 
 **Always render both engines at their coupling state.** Do not render each engine solo and combine in the XPM. The coupled output is not the sum of two solos — it is a new sound that only exists when the coupling is active.
 
@@ -489,7 +489,7 @@ A kit should have internal DNA coherence. The 16 pads of a kit should feel like 
 
 The MPC's internal sample rate is 44.1kHz. Samples at 48kHz are resampled on import. This is not a problem — the MPC's resampling is clean. The reason to render at 48kHz is to preserve the source transient shape before the resampler handles it.
 
-96kHz renders are only warranted if the synthesis engine generates genuine energy above 20kHz. Analog-modeled and most synthesis engines do not. The exceptions: some physical modeling engines produce partials above 20kHz through physical processes. In practice, for XOmnibus exports, use 48kHz/24-bit as the ceiling.
+96kHz renders are only warranted if the synthesis engine generates genuine energy above 20kHz. Analog-modeled and most synthesis engines do not. The exceptions: some physical modeling engines produce partials above 20kHz through physical processes. In practice, for XOlokun exports, use 48kHz/24-bit as the ceiling.
 
 16-bit is acceptable for one-shots where the lowest-level signal is -60 dBFS or louder. For melodic content, loop points, and any sustained sound below -60 dBFS, 16-bit dither artifacts are audible in quiet passages.
 

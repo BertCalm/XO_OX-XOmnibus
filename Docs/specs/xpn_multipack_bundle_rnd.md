@@ -160,7 +160,7 @@ The discount exists but lives in the math, not the headline.
 
 **OVERDUB + OPAL** — The Dub Column
 - OVERDUB is the tape delay + spring reverb send architecture; OPAL is the granular shimmer receiver
-- These two couple beautifully in XOmnibus (OVERDUB→OPAL is a documented coupling route)
+- These two couple beautifully in XOlokun (OVERDUB→OPAL is a documented coupling route)
 - Pair price: $28
 - Marketing: "Send it. Scatter it."
 
@@ -168,7 +168,7 @@ The discount exists but lives in the math, not the headline.
 
 Pairs serve three customer types:
 1. **Budget-conscious producers** who want to test the ecosystem before buying a full collection
-2. **XOmnibus users** who already have some engines and want the missing half of a polarity pair
+2. **XOlokun users** who already have some engines and want the missing half of a polarity pair
 3. **Gift purchasers** who want a clean, low-risk entry point
 
 Pairs should always link to their parent collection page. Every pair sale is a pipeline into a FORM or DOCTRINE purchase.

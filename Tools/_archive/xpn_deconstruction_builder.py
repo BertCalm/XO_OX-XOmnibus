@@ -654,7 +654,7 @@ Bank A  ──►  Bank B  ──►  Bank C
 
 ---
 
-*XO_OX Designs — XOmnibus Platform*
+*XO_OX Designs — XOlokun Platform*
 """
 
 

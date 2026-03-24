@@ -11,7 +11,7 @@
 | Check | Result |
 |-------|--------|
 | CMake configuration | PASS |
-| XOmnibus AU build | PASS |
+| XOlokun AU build | PASS |
 | Warnings (AU target) | 7 (all pre-existing) |
 | auval validation | PASS |
 | Binary size | 8.9 MB |
@@ -28,7 +28,7 @@ Clean configuration. No errors.
 ```
 -- Configuring done (0.8s)
 -- Generating done (0.0s)
--- Build files have been written to: .../XO_OX-XOmnibus/build
+-- Build files have been written to: .../XO_OX-XOlokun/build
 ```
 
 ---
@@ -70,7 +70,7 @@ This is valid sequencing for the smoothed value (MIDI loop sets new pressure, th
 |---------|------|--------|
 | `JUCE_DISPLAY_SPLASH_SCREEN is ignored` | JUCE internal | Pre-existing |
 | `implicit conversion from 'float' to 'int'` | `MasterFXSequencer.h:203` | Pre-existing |
-| `juce::Font(name, size, style)` deprecated (×5) | `XOmnibusEditor.h:129-133` | Pre-existing (JUCE 8 FontOptions migration) |
+| `juce::Font(name, size, style)` deprecated (×5) | `XOlokunEditor.h:129-133` | Pre-existing (JUCE 8 FontOptions migration) |
 
 No new warnings introduced by Round 11 changes.
 
@@ -78,7 +78,7 @@ No new warnings introduced by Round 11 changes.
 
 ## XPNExporter Test Target
 
-The `XOmnibusTests` target (XPNExportTests.cpp) has 2 pre-existing errors:
+The `XOlokunTests` target (XPNExportTests.cpp) has 2 pre-existing errors:
 
 | Error | Location | Cause |
 |-------|----------|-------|
@@ -118,10 +118,10 @@ All auval tests passed:
 
 | Artifact | Size |
 |----------|------|
-| `XOmnibus.component/Contents/MacOS/XOmnibus` (AU binary) | 8.9 MB |
-| `XOmnibus.component` (full bundle) | 8.9 MB |
+| `XOlokun.component/Contents/MacOS/XOlokun` (AU binary) | 8.9 MB |
+| `XOlokun.component` (full bundle) | 8.9 MB |
 
-**Installed to:** `/Users/joshuacramblet/Library/Audio/Plug-Ins/Components/XOmnibus.component`
+**Installed to:** `/Users/joshuacramblet/Library/Audio/Plug-Ins/Components/XOlokun.component`
 
 **Build time:** ~38 seconds (full rebuild of AU target from modified source files)
 

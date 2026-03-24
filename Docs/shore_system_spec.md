@@ -287,7 +287,7 @@ ORBITAL is a spectral partials engine using additive synthesis with group envelo
 ```
 (Used by both `Source/Engines/Osprey/OspreyEngine.h` and `Source/Engines/Osteria/OsteriaEngine.h`)
 
-**Namespace:** `xomnibus`
+**Namespace:** `xolokun`
 
 **Zero runtime cost:** All five data tables (`kShoreResonators`, `kShoreCreatures`, `kFluidCharacter`, `kTavernCharacter`, `kShoreRhythm`) are `static constexpr` arrays. They live in read-only data segment. The morphing functions are `inline` with no virtual dispatch, no heap, no locks.
 

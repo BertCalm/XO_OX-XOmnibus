@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OddfellowEngine.h — XOddfellow | "The Night Market Wurlitzer"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOddfellow is the Wurlitzer electric piano that lives in the night
@@ -51,12 +51,12 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 // Forward declaration — SpectralFingerprint defined in OasisEngine.h
 // All FUSION engines share the same struct definition.
-#ifndef XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
-#define XOMNIBUS_SPECTRAL_FINGERPRINT_DEFINED
+#ifndef XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
+#define XOLOKUN_SPECTRAL_FINGERPRINT_DEFINED
 struct SpectralFingerprint
 {
     float modalFrequencies[8] = {};
@@ -742,4 +742,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

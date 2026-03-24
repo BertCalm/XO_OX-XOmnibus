@@ -5,7 +5,7 @@ Wolfram's 256 elementary cellular automaton rules as chromatic keygroup zones.
 
 Maps all 256 CA rules to pad triggers via behavioral class. The OUTWIT engine
 (XOctopus, 8-arm CA engine) implements Wolfram CA internally — this tool
-packages that rule-space as a portable XPN keygroup for non-XOmnibus users.
+packages that rule-space as a portable XPN keygroup for non-XOlokun users.
 
 Wolfram Classes (behavioral taxonomy):
   Class I   (fixed point): Rules that converge to uniform state — silence/solid
@@ -438,7 +438,7 @@ def build_manifest(selected_rules: Optional[List[int]] = None) -> dict:
         "version": "1.0.0",
         "date": date.today().isoformat(),
         "description": "Wolfram elementary CA rules mapped to MPC pad triggers",
-        "xomnibus_engine": "OUTWIT (XOctopus — 8-arm Wolfram CA)",
+        "xolokun_engine": "OUTWIT (XOctopus — 8-arm Wolfram CA)",
         "pad_bank_map": {
             "bank_a": {"pads": "1–4",  "midi": "36–39", "class": 1, "name": "fixed",    "velocity": "1–31"},
             "bank_b": {"pads": "5–8",  "midi": "40–43", "class": 2, "name": "periodic", "velocity": "32–63"},

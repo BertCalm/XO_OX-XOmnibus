@@ -6,10 +6,10 @@
 #include <set>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// Valid engine names — all registered XOmnibus engines.
+// Valid engine names — all registered XOlokun engines.
 inline const juce::StringArray validEngineNames {
     // All engine IDs start with O (brand convention)
     "OddfeliX", "OddOscar",  // Mascots: feliX the neon tetra, Oscar the axolotl
@@ -236,7 +236,7 @@ inline juce::String resolveSnapParamAlias(const juce::String& paramId)
 
 // Resolve legacy per-parameter aliases for Overbite (Bite) engine.
 // The engine accumulated 4 generations of parameter naming across its life as a
-// standalone plugin (XOppossum) and XOmnibus integration. Returns the canonical
+// standalone plugin (XOppossum) and XOlokun integration. Returns the canonical
 // param ID (poss_-prefixed, matching BiteEngine.h frozen APVTS IDs), or an empty
 // String if the param has no canonical equivalent and should be dropped silently.
 inline juce::String resolveBiteParamAlias(const juce::String& paramId)
@@ -298,9 +298,12 @@ inline juce::String resolveBiteParamAlias(const juce::String& paramId)
     return (it != renamed.end()) ? it->second : paramId;
 }
 
-// Valid moods — the 8 browsing categories plus User.
+// Valid moods — 15 browsing categories plus User.
+// Must match the 15 mood directories under Presets/XOlokun/ and CLAUDE.md.
 inline const juce::StringArray validMoods {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged", "User"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged",
+    "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+    "User"
 };
 
 // Valid coupling intensity levels.
@@ -348,8 +351,8 @@ struct CouplingPair {
 struct PresetData {
     int schemaVersion = 1;
     juce::String name;
-    juce::String mood;                     // Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|User
-    juce::StringArray engines;             // 1-3 engine names
+    juce::String mood;                     // 15 moods: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|User
+    juce::StringArray engines;             // 1-4 engine names (MaxSlots = 4)
     juce::String author;
     juce::String version;
     juce::String description;
@@ -368,7 +371,7 @@ struct PresetData {
 
 //==============================================================================
 // PresetManager — Loading, saving, browsing, and DNA-powered search for
-// the XOmnibus .xometa preset format.
+// the XOlokun .xometa preset format.
 //
 // Design contract:
 //   - UI-thread only. No audio-thread calls.
@@ -762,8 +765,8 @@ private:
         }
         if (out.engines.isEmpty())
             return false;
-        // Cap at 3 engines
-        while (out.engines.size() > 3)
+        // Cap at 4 engines — matches EngineRegistry::MaxSlots and MegaCouplingMatrix::MaxSlots.
+        while (out.engines.size() > 4)
             out.engines.remove(out.engines.size() - 1);
 
         // author
@@ -976,4 +979,4 @@ private:
     std::vector<Listener*> listeners;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

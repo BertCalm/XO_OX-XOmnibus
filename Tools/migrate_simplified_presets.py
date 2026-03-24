@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 migrate_simplified_presets.py
-Converts agent-written simplified preset format to the canonical XOmnibus schema.
+Converts agent-written simplified preset format to the canonical XOlokun schema.
 
 Simplified format (agent-written):
 {
@@ -44,7 +44,7 @@ import glob
 import sys
 from pathlib import Path
 
-PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOmnibus"
+PRESETS_ROOT = Path(__file__).parent.parent / "Presets" / "XOlokun"
 
 # Map simplified sonicDNA keys to canonical dna keys
 DNA_KEY_MAP = {

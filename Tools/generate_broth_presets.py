@@ -8,7 +8,7 @@ Engines: Overwash, Overworn, Overflow, Overcast
 import json
 import os
 
-PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOmnibus")
+PRESET_DIR = os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun")
 
 def write_preset(mood, filename, data):
     mood_dir = os.path.join(PRESET_DIR, mood)

@@ -31,7 +31,7 @@ The five quads reviewed here are: KITCHEN (Pianos), CELLAR (Bass), GARDEN (Strin
 
 The **Thermal Drift system** elicits unanimous response. All three ghosts register that real-time pitch drift derived from material thermal expansion coefficients (copper drifts 1.2 cents/10°C; cast iron 0.8 cents; glass adds inter-partial instability rather than pure drift) is genuinely unprecedented in piano synthesis. The phrase that captures it: "You tune by cooling." No one has said that about a synthesizer before.
 
-The coupling insight — that XOpaline sends narrow spectral spikes that crystallize XOven's dense modal cloud, while XOven infuses XOpaline with dark mass — is praised as the most physically coherent coupling design in the XOmnibus fleet.
+The coupling insight — that XOpaline sends narrow spectral spikes that crystallize XOven's dense modal cloud, while XOven infuses XOpaline with dark mass — is praised as the most physically coherent coupling design in the XOlokun fleet.
 
 ### What Concerns the Council
 
@@ -339,7 +339,7 @@ The **cooperative coupling through shared environmental state** — XOverwash re
 
 **BROTH: 9.1 / 10**
 
-The four time-relationships-to-time framing is conceptually the most original in the Culinary Collection. The Fick's Second Law diffusion implementation, the Clausius-Clapeyron pressure mechanics, Wilson's nucleation, and the reduction integral are physics implementations equivalent in rigor to KITCHEN's impedance tables and OWARE's Chaigne mallet model. XOverworn as a pad that ends is the most radical single design decision in the collection. The shared environmental state cooperative coupling (all four engines reading XOverworn's ReductionState) creates the most tightly integrated quad architecture in XOmnibus history. Score held at 9.1 because the irreversibility UX challenge is significant and the Reduction Rate range design requires careful attention.
+The four time-relationships-to-time framing is conceptually the most original in the Culinary Collection. The Fick's Second Law diffusion implementation, the Clausius-Clapeyron pressure mechanics, Wilson's nucleation, and the reduction integral are physics implementations equivalent in rigor to KITCHEN's impedance tables and OWARE's Chaigne mallet model. XOverworn as a pad that ends is the most radical single design decision in the collection. The shared environmental state cooperative coupling (all four engines reading XOverworn's ReductionState) creates the most tightly integrated quad architecture in XOlokun history. Score held at 9.1 because the irreversibility UX challenge is significant and the Reduction Rate range design requires careful attention.
 
 ### Blessing Candidates
 
@@ -353,7 +353,7 @@ The first pad engine that explicitly accumulates session memory and cannot forge
 All four BROTH engines share XOverworn's ReductionState as an environmental variable. XOverwash adjusts diffusion viscosity to match reduction age. XOverflow calibrates saturation threshold to concentrated dark level. XOvercast seeds crystals from current spectral mass. The four engines age together, in concert, as one pot. This is the most tightly integrated coupling architecture in the fleet.
 
 **B-BROTH-004: XOvercast Crystallization Window**
-The 20-200ms audible crystallization transition — not a click, not a crossfade, a crystalline crackling as the nucleation front propagates outward from spectral peaks. If implemented correctly, this is the most distinctive single moment in any pad engine in XOmnibus. The crystallization window is the sonic signature of the entire BROTH quad.
+The 20-200ms audible crystallization transition — not a click, not a crossfade, a crystalline crackling as the nucleation front propagates outward from spectral peaks. If implemented correctly, this is the most distinctive single moment in any pad engine in XOlokun. The crystallization window is the sonic signature of the entire BROTH quad.
 
 ### Top 3 Enhancement Suggestions
 
@@ -383,7 +383,7 @@ The 20-200ms audible crystallization transition — not a click, not a crossfade
 
 **Unique angle:** BROTH is positioned as "transformation infrastructure" rather than "atmospheric pads." The distinction is important: existing pad instruments (Omnisphere, Pigments in pad modes) model static or slowly evolving textures. BROTH models transformation processes. The pad is what happens *while* the transformation runs.
 
-The cross-engine pitch: when XOverwash is coupled to XOpal (granular, existing in fleet), the grains diffuse. When XOverworn couples to XOrbweave (knot topology), the knot structure reduces over the session. BROTH as transformation environment for the entire XOmnibus fleet is the strongest marketing angle.
+The cross-engine pitch: when XOverwash is coupled to XOpal (granular, existing in fleet), the grains diffuse. When XOverworn couples to XOrbweave (knot topology), the knot structure reduces over the session. BROTH as transformation environment for the entire XOlokun fleet is the strongest marketing angle.
 
 ### Feature Priority
 
@@ -442,7 +442,7 @@ The MegaCouplingMatrix extending from 4×4 to conditional 5×5 when Kitchen comp
 Not broadcast-and-receive but genuine two-way cultural exchange: each engine extracts timbral characteristics and injects them into the other's processing chain. Both parties are changed by the encounter. The coupling amount is explicitly framed as "depth of cultural immersion." This is a coupling design paradigm distinct from all 14 existing coupling types in the fleet.
 
 **B-FUSION-003: Plate Coupling — 5-Way Simultaneous Surface Contact**
-The Fusion engine coupled to all four Kitchen surfaces simultaneously, with per-surface Plate behaviors derived from material physics. No other configuration in XOmnibus achieves 5-way simultaneous coupling. The Plate coupling type (food on surface, energy transfers bidirectionally) is a physically meaningful coupling design.
+The Fusion engine coupled to all four Kitchen surfaces simultaneously, with per-surface Plate behaviors derived from material physics. No other configuration in XOlokun achieves 5-way simultaneous coupling. The Plate coupling type (food on surface, energy transfers bidirectionally) is a physically meaningful coupling design.
 
 ### Top 3 Enhancement Suggestions
 
@@ -460,11 +460,11 @@ The Fusion engine coupled to all four Kitchen surfaces simultaneously, with per-
 
 1. **Neo-Soul / Lo-Fi producers** — XOasis (Rhodes) and XOddfellow (Wurlitzer) are the two most sought-after electric piano sounds in these genres. A well-implemented Rhodes and Wurlitzer alone justify the FUSION quad's existence for this market. The Migratory coupling is a bonus.
 
-2. **Funk / Soul producers** — XOnkolo (Clavinet) must funk. If it does, it becomes the most useful Clavinet simulation in XOmnibus's target market. The Clavinet gap in the synthesis market is real — Pianoteq covers it, but as part of a piano package. A dedicated Clavinet engine with authentic string-strike physics and West African percussion ancestry is a product gap filler.
+2. **Funk / Soul producers** — XOnkolo (Clavinet) must funk. If it does, it becomes the most useful Clavinet simulation in XOlokun's target market. The Clavinet gap in the synthesis market is real — Pianoteq covers it, but as part of a piano package. A dedicated Clavinet engine with authentic string-strike physics and West African percussion ancestry is a product gap filler.
 
 3. **City Pop / Japanese Electronic / Synthwave** — XOpcode (DX FM EP) has a dedicated audience that has never had an instrument explicitly framing the DX7 EP as a cultural artifact of Japan's 1980s utopian sound. The "Silicon Valley → Tokyo" narrative is immediately resonant for anyone who knows City Pop.
 
-4. **Electronic / Dream Pop / Indie producers** — The 5th slot unlock mechanic is the kind of thing that generates YouTube tutorials, Reddit posts, and Discord discussions. "Load all 4 Kitchen engines and see what happens" will be the most-shared XOmnibus discovery of the V2 release cycle. This audience actively seeks hidden features and rewards.
+4. **Electronic / Dream Pop / Indie producers** — The 5th slot unlock mechanic is the kind of thing that generates YouTube tutorials, Reddit posts, and Discord discussions. "Load all 4 Kitchen engines and see what happens" will be the most-shared XOlokun discovery of the V2 release cycle. This audience actively seeks hidden features and rewards.
 
 5. **Jazz producers / Composers** — The Rhodes-as-traveler framing (XOasis has been through Tokyo jazz cafes, Lagos Afrobeat sessions, Rio bossa nova, London soul) positions XOasis as a culturally aware Rhodes rather than a sample playback device. Jazz composers who think about the instrument's history will respond to this.
 
@@ -472,7 +472,7 @@ The Fusion engine coupled to all four Kitchen surfaces simultaneously, with per-
 
 **Unique angle:** FUSION has two distinct market stories that can be told independently:
 1. **For the EP player:** "Four electric pianos from four traditions — Rhodes, Wurlitzer, Clavinet, FM — that can borrow from each other." This is immediately accessible to anyone who plays keys.
-2. **For the XOmnibus enthusiast:** "The secret 5th slot unlocked by mastering all 4 Kitchen pianos." This is the viral discovery mechanic that generates community discussion.
+2. **For the XOlokun enthusiast:** "The secret 5th slot unlocked by mastering all 4 Kitchen pianos." This is the viral discovery mechanic that generates community discussion.
 
 The 5th slot mechanic is rare in synthesis marketing: a feature whose existence cannot be explained in a spec sheet, only discovered. This is its competitive advantage.
 
@@ -498,7 +498,7 @@ The 5th slot mechanic is rare in synthesis marketing: a feature whose existence 
 
 1. **GARDEN** (9.2) — Most complete fusion of biological metaphor and DSP design. The W/A/D accumulator model, Growth Mode, mycorrhizal network, succession sequence, and seasonal cycle form a coherent and unprecedented synthesis philosophy. The document is also the most rigorous in specifying what cannot be negotiated away.
 
-2. **BROTH** (9.1) — The four ontologically distinct time-relationships (distance/irreversibility/potential/negation) is the most philosophically original framing in the collection. XOverworn's irreversibility and the ReductionState as session memory are the most radical design decisions in XOmnibus history. The cooperative environmental state coupling makes this the most tightly integrated quad.
+2. **BROTH** (9.1) — The four ontologically distinct time-relationships (distance/irreversibility/potential/negation) is the most philosophically original framing in the collection. XOverworn's irreversibility and the ReductionState as session memory are the most radical design decisions in XOlokun history. The cooperative environmental state coupling makes this the most tightly integrated quad.
 
 3. **KITCHEN** (9.0) — The material impedance physics (Hunt-Crossley contact model, modal synthesis from material tables, Thermal Drift) represent the clearest academic-citation-level claims in the collection. The Thermal Drift system ("you tune by cooling") is the most quotable single concept. The XObelisk prepared object system is Cage's insight finally operationalized with physical rigor.
 

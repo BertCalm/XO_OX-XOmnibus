@@ -10,7 +10,7 @@
 
 ## 1. Identity
 
-XOxide is a continuous 2D character shaper. It is XOmnibus's first utility engine that processes
+XOxide is a continuous 2D character shaper. It is XOlokun's first utility engine that processes
 audio rather than synthesising it. Drop it into any slot alongside a synthesis engine; couple the
 synthesis engine's output as `AudioToBuffer` and XOxide becomes that engine's character stage.
 
@@ -460,7 +460,7 @@ y_driven = clamp(oxide_y + lfo_out * oxide_lfoYAmount * oxide_lfoDepth,  0,  1)
 
 ---
 
-## 6. XOmnibus Integration
+## 6. XOlokun Integration
 
 ### 6.1 Engine Registration
 
@@ -471,7 +471,7 @@ Parameter prefix: `oxide_`. Engine ID string: `"Oxide"`.
 
 XOxide is an **FX processor** — it generates no audio of its own. Two design constraints follow:
 
-1. `renderBlock()` must have an audio input path. XOmnibus's architecture passes the mixed
+1. `renderBlock()` must have an audio input path. XOlokun's architecture passes the mixed
    output of other active slots as the `AudioToBuffer` coupling signal into XOxide's input
    ring buffer, or the user manually routes a specific slot.
 2. `getMaxVoices()` returns 0. XOxide has no voice engine and ignores MIDI note events.
@@ -515,7 +515,7 @@ This means placing XOxide adjacent to any synthesis engine "just works" with no 
 
 ### 6.7 prefixForEngine() Addition
 
-In `XOmnibusEditor.h`, add case to `prefixForEngine()`:
+In `XOlokunEditor.h`, add case to `prefixForEngine()`:
 ```cpp
 if (engineId == "Oxide") return "oxide_";
 ```
@@ -788,9 +788,9 @@ sequence — they are facets of a single character gesture.
 11. LFO engine (Sine/Triangle/S&H/Lorenz Chaos)
 12. LFO → XY displacement routing
 
-### Phase 4 — XOmnibus Integration
+### Phase 4 — XOlokun Integration
 13. `REGISTER_ENGINE(OxideEngine)` in EngineRegistry.h
-14. Add `"oxide_"` case to `prefixForEngine()` in XOmnibusEditor.h
+14. Add `"oxide_"` case to `prefixForEngine()` in XOlokunEditor.h
 15. Normalled default route: adjacent synthesis engine → AudioToBuffer → OxideEngine
 
 ### Phase 5 — Presets and Polish

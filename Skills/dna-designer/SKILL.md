@@ -3,7 +3,7 @@
 **Invoke with:** `/dna-designer`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.1 | **Next Review:** On new engine addition
-**Purpose:** Assign accurate, musically meaningful 6D Sonic DNA values to XOmnibus presets — covering brightness, warmth, movement, density, space, and aggression with consistent methodology across all 42 engines.
+**Purpose:** Assign accurate, musically meaningful 6D Sonic DNA values to XOlokun presets — covering brightness, warmth, movement, density, space, and aggression with consistent methodology across all 42 engines.
 
 ---
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOmnibus — Find Presets Missing Sonic DNA Blocks
+XOlokun — Find Presets Missing Sonic DNA Blocks
 
 Scans all .xometa files and identifies presets that are missing a top-level
 `sonic_dna` or `dna` block (or have an incomplete block — any of the 6 required
@@ -96,7 +96,7 @@ def main() -> int:
     sep = "=" * 70
 
     print(sep)
-    print("XOmnibus — Missing Sonic DNA Report")
+    print("XOlokun — Missing Sonic DNA Report")
     print(sep)
     print(f"Total .xometa files scanned : {total}")
     print(f"Presets with complete DNA   : {complete}")

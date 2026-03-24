@@ -23,7 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-PRESETS_ROOT = Path(__file__).resolve().parent.parent / "Presets" / "XOmnibus"
+PRESETS_ROOT = Path(__file__).resolve().parent.parent / "Presets" / "XOlokun"
 QUARANTINE_ROOT = PRESETS_ROOT / "_quarantine"
 
 

@@ -161,13 +161,13 @@ I play with everyone. I have opinions about what makes an engine playable.
 | Dimension | Score | Reasoning |
 |-----------|-------|-----------|
 | DSP Correctness | 6.5/10 | Drawbar ratios correct; crosstalk concept sound but uniform across harmonics; Leslie Doppler is amplitude-only (fundamental error) — pitch modulation absent; calliope is the strongest model |
-| Identity Strength | 8.5/10 | The four-model American instrument collection is distinctive. No other XOmnibus engine occupies this cultural territory. The mythology (gospel fish, parrotfish, Otis Redding's gold) is vivid and coherent |
+| Identity Strength | 8.5/10 | The four-model American instrument collection is distinctive. No other XOlokun engine occupies this cultural territory. The mythology (gospel fish, parrotfish, Otis Redding's gold) is vivid and coherent |
 | Expressive Depth | 7.5/10 | D001/D002/D006 all pass. Velocity shapes drive/bend/breath. Aftertouch routes to three different expressions. Mod wheel routes to Leslie/vibrato/bellows. Missing: bipolar filter envelope; vibrato rate control for harmonica |
 | Preset Library | 7.0/10 | 11 presets with only 1 accordion, 2 harmonica, 2 calliope. Hammond dominates with 6. All macros at 0.0. No presets in Entangled, Aether, Submerged, or Family moods. Gospel territory well-covered; jazz/folk/world underserved |
 | Doctrine Compliance | 8.5/10 | D001 PASS, D002 PASS (2 LFOs + mod wheel + aftertouch + 4 macros), D003 PARTIAL (drawbars accurate, Leslie Doppler wrong, calliope physically sound, reed spectra approximate), D004 PASS (all 37 params wired), D005 PASS (LFO rate floor 0.005 Hz), D006 PASS |
 | Technical Robustness | 8.0/10 | Silence gate correct (500ms — appropriate for Leslie tail). Parameter smoothers on 5 paths. No obvious memory allocation. anyKeysHeld underflow guard present. voiceCounter overflow distant (uint64_t). filterEnv per-voice correctly prepared at noteOn |
 | Sound Design Range | 7.5/10 | Hammond covers enormous ground from whisper-soft Chorale Hymn to wall-of-sound Deep Purple. Calliope has genuine chaos range. Harmonica limited to blues. Accordion limited to Zydeco. The model selection boundary is hard — no morphing between models |
-| Fleet Contribution | 8.5/10 | Fills a real gap — no other XOmnibus engine touches Americana/soul/gospel. Coupling potential: Hammond crosstalk into another engine's filter, or using OWARE's sympathetic resonance to color the organ tail |
+| Fleet Contribution | 8.5/10 | Fills a real gap — no other XOlokun engine touches Americana/soul/gospel. Coupling potential: Hammond crosstalk into another engine's filter, or using OWARE's sympathetic resonance to color the organ tail |
 
 ---
 
@@ -275,7 +275,7 @@ Change detune computation from `1.0f + (detuneRatio - 1.0f) × musetteAmount × 
 
 - Engine source: `Source/Engines/Otis/OtisEngine.h`
 - Architecture: `Docs/otis-engine-architecture.md`
-- Presets: `Presets/XOmnibus/{Atmosphere,Flux,Foundation,Kinetic,Prism}/Otis_*.xometa`
+- Presets: `Presets/XOlokun/{Atmosphere,Flux,Foundation,Kinetic,Prism}/Otis_*.xometa`
 - Fleet scores: `Docs/fleet-seance-scores-2026-03-20.md` — **add this engine at 7.8/10**
 - Cross-reference: `Docs/seance_cross_reference.md` — update to include OTIS
 

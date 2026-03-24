@@ -1,10 +1,12 @@
-# XOmnibus — Claude Code Project Guide
+# XOlokun — Claude Code Project Guide
+
+> **Rename note:** Formerly XOmnibus. Renamed to XOlokun 2026-03-24. Motto: "XOlokun — for all."
 
 ## Product Identity
 
-XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
+XOlokun ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **73 engines** are registered in XOmnibus
+and mutate into sounds impossible with any single synth. **73 engines** are registered in XOlokun
 (5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23)
 — see engine table below.
 
@@ -92,7 +94,7 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 | OLEG | XOleg | Theatre Red `#C0392B` |
 | OTIS | XOtis | Gospel Gold `#D4A017` |
 | OVEN | XOven | Steinway Ebony `#1C1C1C` |
-| OCHRE | XOchre | Upright Oak `#9C6B30` |
+| OCHRE | XOchre | Ochre Pigment `#CC7722` |
 | OBELISK | XObelisk | Grand Ivory `#FFFFF0` |
 | OPALINE | XOpaline | Prepared Rust `#B7410E` |
 | OGRE | XOgre | Sub Bass Black `#0D0D0D` |
@@ -106,11 +108,11 @@ and mutate into sounds impossible with any single synth. **73 engines** are regi
 | OVERWASH | XOverwash | Tide Foam White `#F0F8FF` |
 | OVERWORN | XOverworn | Worn Felt Grey `#808080` |
 | OVERFLOW | XOverflow | Deep Current Blue `#1A3A5C` |
-| OVERCAST | XOvercast | Storm Cloud Slate `#708090` |
+| OVERCAST | XOvercast | Light Slate Gray `#778899` |
 | OASIS | XOasis | Desert Spring Teal `#00827F` |
 | ODDFELLOW | XOddfellow | Fusion Copper `#B87333` |
 | ONKOLO | XOnkolo | Spectral Amber `#FFBF00` |
-| OPCODE | XOpcode | Circuit Green `#39FF14` |
+| OPCODE | XOpcode | Dark Turquoise `#00CED1` |
 | OUTLOOK | XOutlook | Horizon Indigo `#4169E1` |
 
 ### Engine ID vs Parameter Prefix
@@ -196,14 +198,14 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
-See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas.
+See `Docs/xolokun_name_migration_reference.md` (formerly `Docs/xolokun_name_migration_reference.md`) for the full mapping and gotchas.
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
-| `Docs/xomnibus_master_specification.md` | **THE** single source of truth |
-| `Docs/xomnibus_name_migration_reference.md` | Legacy → canonical engine name mapping |
+| `Docs/xolokun_master_specification.md` | **THE** single source of truth |
+| `Docs/xolokun_name_migration_reference.md` | Legacy → canonical engine name mapping |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -220,7 +222,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
 | `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xomnibus_sound_design_guides.md` | Sound design guide (38 of 44 engines covered; OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE need entries) |
+| `Docs/xolokun_sound_design_guides.md` | Sound design guide (38 of 44 engines covered; OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE need entries) |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -238,8 +240,8 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Osmosis/OsmosisEngine.h` | External audio membrane engine (envelope follower, pitch detect, coupling source) |
 | `Source/Engines/Oxytocin/OxytocinAdapter.h` | Circuit-modeling love-triangle synth (RE-201/MS-20/Moog/Serge/Buchla + TriangularCoupling #15) |
 | `Source/Engines/Outlook/OutlookEngine.h` | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo + vista filter + aurora mod) |
-| `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
-| `Presets/XOmnibus/{mood}/` | Factory presets by mood |
+| `SDK/include/xolokun/` | JUCE-free SDK headers for third-party engine development |
+| `Presets/XOlokun/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
 | `Docs/` | All specification documents |
 
@@ -281,13 +283,13 @@ cmake --build build-ios --config Release
 
 ## Adding New Engines
 
-New engines are designed as standalone instruments first, then integrated into XOmnibus.
+New engines are designed as standalone instruments first, then integrated into XOlokun.
 
 **Invoke:** `/new-xo-engine` — walks through ideation, architecture, scaffold, and integration prep.
 
-**Full process:** `Docs/xomnibus_new_engine_process.md`
+**Full process:** `Docs/xolokun_new_engine_process.md` (formerly `Docs/xolokun_new_engine_process.md`)
 
-**Quick rules for XOmnibus-ready standalone development:**
+**Quick rules for XOlokun-ready standalone development:**
 - Parameter IDs use `{shortname}_{paramName}` format from day one
 - Presets use `.xometa` JSON format from day one
 - DSP lives in inline `.h` headers (portable)
@@ -326,7 +328,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
 - Seance review of Guild plan: `Docs/seance-review-guild-plan-2026-03-20.md`
-- Grand Survey: `Docs/xomnibus_landscape_2026.md`
+- Grand Survey: `Docs/xolokun_landscape_2026.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
 
@@ -458,12 +460,12 @@ When a new engine is registered, update **all four** of these sections in CLAUDE
 4. **Key Files table** (if the engine has a notable architecture worth linking) — add `| Source/Engines/Name/NameEngine.h | Brief description |`
 
 Then update these external files:
-- `Docs/xomnibus_master_specification.md` section 3.1 engine table (add row)
+- `Docs/xolokun_master_specification.md` section 3.1 engine table (add row)
 - `Docs/seance_cross_reference.md` (add seance row after the seance is run)
-- `Source/XOmnibusProcessor.cpp` (register the engine)
+- `Source/XOlokunProcessor.cpp` (register the engine)
 - `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
 
-Full process: `Docs/xomnibus_new_engine_process.md`
+Full process: `Docs/xolokun_new_engine_process.md`
 
 ---
 
@@ -472,17 +474,17 @@ Full process: `Docs/xomnibus_new_engine_process.md`
 - Full doc inventory: `Docs/MANIFEST.md`
 - Documentation governance: `Docs/GOVERNANCE.md`
 - Documentation improvement plan: `Docs/documentation_health_plan.md`
-- Master specification: `Docs/xomnibus_master_specification.md`
+- Master specification: `Docs/xolokun_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
 
 ---
 
 ## Development Workflow
 
-1. Read the master spec (`Docs/xomnibus_master_specification.md`) before making changes
+1. Read the master spec (`Docs/xolokun_master_specification.md`) before making changes
 2. Plan before coding — produce architecture + QA plan first
 3. All engines must implement the `SynthEngine` interface
 4. Parameter IDs are namespaced by engine (e.g., `snap_filterCutoff`, `dub_sendAmount`)
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
-7. For new engines, follow the process in `Docs/xomnibus_new_engine_process.md`
+7. For new engines, follow the process in `Docs/xolokun_new_engine_process.md`

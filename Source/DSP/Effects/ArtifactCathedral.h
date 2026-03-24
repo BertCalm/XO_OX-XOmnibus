@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ArtifactCathedral — Dual-engine cinematic reverb with data-rot decay.
@@ -316,4 +316,4 @@ private:
     float crossLPStateL = 0.0f, crossLPStateR = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

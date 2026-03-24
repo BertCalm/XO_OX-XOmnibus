@@ -28,7 +28,7 @@ find(file_pattern)
 
 ## Usage Examples
 
-**XOmnibus engine rename:**
+**XOlokun engine rename:**
 ```python
 rules = {"XOddCouple": "OddfeliX", "XOblongBob": "XOblong"}
 # Tools/apply_renames.py applies across presets, docs, and tools

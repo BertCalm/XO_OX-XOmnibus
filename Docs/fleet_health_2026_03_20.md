@@ -1,4 +1,4 @@
-# XOmnibus Fleet Health Dashboard
+# XOlokun Fleet Health Dashboard
 
 **Generated**: 2026-03-20
 **Scope**: 42 engine directories surveyed in `Source/Engines/` — OXBOW and OWARE (engines 43–44, both added 2026-03-20) are not included in this snapshot. Fleet total is 44 engines.
@@ -90,4 +90,4 @@ The primary gap is **seance coverage**: 29 engines have never been through a syn
 - **Source Lines**: Engine has DSP source code in `Source/Engines/`
 - **Presets**: Count of `.xometa` and `.json` preset files referencing the engine (from `"engines"` or `"engine"` field)
 - **Seance**: Verdict file exists in `Docs/seances/`
-- **Registered**: `static bool registered_` entry in `Source/XOmnibusProcessor.cpp`
+- **Registered**: `static bool registered_` entry in `Source/XOlokunProcessor.cpp`

@@ -132,7 +132,7 @@ def normalize_preset(path: Path) -> bool:
 
 def main():
     repo_root = Path(__file__).parent.parent
-    preset_dir = repo_root / "Presets" / "XOmnibus"
+    preset_dir = repo_root / "Presets" / "XOlokun"
 
     if not preset_dir.exists():
         print(f"ERROR: preset dir not found: {preset_dir}")

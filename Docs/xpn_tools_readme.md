@@ -1,6 +1,6 @@
 # XPN Tools — Comprehensive Index
 
-All Python scripts in `Tools/` for the XOmnibus preset fleet.
+All Python scripts in `Tools/` for the XOlokun preset fleet.
 **Total scripts: 338** (as of 2026-03-16)
 
 ---
@@ -21,7 +21,7 @@ The foundational export and build pipeline.
 
 | Script | Purpose | Input | Output | Status |
 |--------|---------|-------|--------|--------|
-| `oxport.py` | Full XPN export pipeline orchestrator — chains render-spec → drum-export → keygroup-export → packager in sequence | `Presets/XOmnibus/*.xometa`, pack config | `.xpn` zip bundle | active |
+| `oxport.py` | Full XPN export pipeline orchestrator — chains render-spec → drum-export → keygroup-export → packager in sequence | `Presets/XOlokun/*.xometa`, pack config | `.xpn` zip bundle | active |
 | `xpn_drum_export.py` | Export `.xometa` drum presets to MPC-compatible XPM drum programs | `.xometa` drum presets | `Output/XPM/` XPM XML files | active |
 | `xpn_keygroup_export.py` | Export `.xometa` keygroup presets to MPC-compatible XPM keygroup programs | `.xometa` keygroup presets | `Output/XPM/` XPM XML files | active |
 | `xpn_kit_expander.py` | Expand a single kit stub into velocity-layered / round-robin XPM programs | Kit spec JSON / XPM stub | Expanded XPM programs | active |
@@ -47,16 +47,16 @@ Scripts that write new `.xometa` preset files.
 
 | Script | Purpose | Input | Output | Status |
 |--------|---------|-------|--------|--------|
-| `generate_constellation_presets.py` | Generate 530 presets for 5 Constellation Fast Track engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) | none | `Presets/XOmnibus/` `.xometa` files | active |
+| `generate_constellation_presets.py` | Generate 530 presets for 5 Constellation Fast Track engines (OHM/ORPHICA/OBBLIGATO/OTTONI/OLE) | none | `Presets/XOlokun/` `.xometa` files | active |
 | `generate_coupling_presets.py` | Generate cross-engine coupling preset stubs for newer engines | none | `.xometa` coupling presets | active |
 | `generate_library_fills.py` | Fill mood/engine gaps for Overdub, Odyssey, OddOscar, ONSET, OddfeliX | none | `.xometa` gap-fill presets | active |
-| `generate_onset_presets.py` | Generate ONSET (XOnset) factory presets | none | `Presets/XOmnibus/` `.xometa` files | reference |
-| `generate_opal_presets.py` | Generate 100 XOpal factory presets across 5 granular categories | none | `Presets/XOmnibus/` `.xometa` files | reference |
-| `generate_organon_presets.py` | Generate 120 XOrganon factory presets | none | `Presets/XOmnibus/` `.xometa` files | reference |
+| `generate_onset_presets.py` | Generate ONSET (XOnset) factory presets | none | `Presets/XOlokun/` `.xometa` files | reference |
+| `generate_opal_presets.py` | Generate 100 XOpal factory presets across 5 granular categories | none | `Presets/XOlokun/` `.xometa` files | reference |
+| `generate_organon_presets.py` | Generate 120 XOrganon factory presets | none | `Presets/XOlokun/` `.xometa` files | reference |
 | `generate_organon_coupling_presets.py` | Generate Organon + other engine coupling presets | none | `.xometa` coupling presets | reference |
-| `generate_ouroboros_presets.py` | Generate XOuroboros (chaotic attractor) factory presets | none | `Presets/XOmnibus/` `.xometa` files | reference |
-| `generate_overbite_presets.py` | Generate XOverbite (BITE) factory presets | none | `Presets/XOmnibus/` `.xometa` files | reference |
-| `generate_overworld_presets.py` | Generate 40 XOverworld (chip synth) factory presets | none | `Presets/XOmnibus/` `.xometa` files | reference |
+| `generate_ouroboros_presets.py` | Generate XOuroboros (chaotic attractor) factory presets | none | `Presets/XOlokun/` `.xometa` files | reference |
+| `generate_overbite_presets.py` | Generate XOverbite (BITE) factory presets | none | `Presets/XOlokun/` `.xometa` files | reference |
+| `generate_overworld_presets.py` | Generate 40 XOverworld (chip synth) factory presets | none | `Presets/XOlokun/` `.xometa` files | reference |
 | `generate_preset_params.py` | Generate DSP parameter values for `.xocmeta` stubs from metadata heuristics | `.xocmeta` stubs | Populated `.xocmeta` | superseded |
 
 ### 2b. Diversity Expansion Packs
@@ -135,7 +135,7 @@ These scripts generate presets targeting specific DNA extremes or mood gaps. Gro
 
 | Script | Purpose | Status |
 |--------|---------|--------|
-| `xpn_prism_expansion_pack.py` | XOmnibus Prism mood expansion | reference |
+| `xpn_prism_expansion_pack.py` | XOlokun Prism mood expansion | reference |
 | `xpn_prism_ultra_diverse.py` | Ultra-diverse Prism presets | active |
 | `xpn_prism_gap_pack.py` | Prism gap closure pack | active |
 | `xpn_prism_flux_bright_extreme_pack.py` | Prism + Flux bright-extreme zone fill | active |
@@ -180,7 +180,7 @@ These scripts generate presets targeting specific DNA extremes or mood gaps. Gro
 
 ### 2c. Engine-Pair Coupling Packs
 
-Scripts generating coupling presets for specific engine pairs. All write to `Presets/XOmnibus/` as `.xometa` files.
+Scripts generating coupling presets for specific engine pairs. All write to `Presets/XOlokun/` as `.xometa` files.
 
 | Script | Engine Pair(s) | Status |
 |--------|---------------|--------|
@@ -260,7 +260,7 @@ Read-only scripts that report on the fleet without writing presets.
 
 | Script | Purpose | Input | Output | Status |
 |--------|---------|-------|--------|--------|
-| `xpn_dna_diversity_analyzer.py` | Fleet-wide 6D cosine diversity score + per-mood breakdown | `Presets/XOmnibus/*.xometa` | Console report + `Docs/snapshots/dna_diversity_analysis.json` | active |
+| `xpn_dna_diversity_analyzer.py` | Fleet-wide 6D cosine diversity score + per-mood breakdown | `Presets/XOlokun/*.xometa` | Console report + `Docs/snapshots/dna_diversity_analysis.json` | active |
 | `xpn_fleet_diversity_score_v2.py` | Fleet diversity score v2 (improved sampling) | `.xometa` fleet | Score report | active |
 | `xpn_fleet_dna_diversity_report.py` | Full per-engine DNA diversity report | `.xometa` fleet | DNA report | active |
 | `xpn_dna_gap_finder.py` | Find underrepresented zones in 6D DNA space | `.xometa` fleet | Gap report | active |
@@ -346,10 +346,10 @@ Scripts that modify existing presets to fix issues or migrate formats.
 | `xpn_preset_rebalancer.py` | General preset collection rebalancer | `.xometa` fleet | Rebalanced `.xometa` | active |
 | `xpn_macro_label_normalizer.py` | Normalize macro label text across fleet | `.xometa` fleet | Patched `.xometa` files | active |
 | `xpn_entangled_preset_fixer.py` | Add missing second-engine coupling to single-engine Entangled presets | `.xometa` Entangled presets | Patched presets | reference |
-| `fix_bob_presets.py` | Migrate XOblong presets from standalone → XOmnibus param schema | `Presets/XOmnibus/` Bob presets | Migrated `.xometa` | reference |
-| `fix_drift_presets.py` | Migrate XOdyssey presets from standalone → XOmnibus param schema | `Presets/XOmnibus/` Drift presets | Migrated `.xometa` | reference |
-| `fix_dub_presets.py` | Migrate XOverdub presets from standalone → XOmnibus param schema | `Presets/XOmnibus/` Dub presets | Migrated `.xometa` | reference |
-| `fix_overworld_presets.py` | Fix Overworld presets using wrong UPPER_SNAKE_CASE param keys | `Presets/XOmnibus/` Overworld presets | Fixed `.xometa` | reference |
+| `fix_bob_presets.py` | Migrate XOblong presets from standalone → XOlokun param schema | `Presets/XOlokun/` Bob presets | Migrated `.xometa` | reference |
+| `fix_drift_presets.py` | Migrate XOdyssey presets from standalone → XOlokun param schema | `Presets/XOlokun/` Drift presets | Migrated `.xometa` | reference |
+| `fix_dub_presets.py` | Migrate XOverdub presets from standalone → XOlokun param schema | `Presets/XOlokun/` Dub presets | Migrated `.xometa` | reference |
+| `fix_overworld_presets.py` | Fix Overworld presets using wrong UPPER_SNAKE_CASE param keys | `Presets/XOlokun/` Overworld presets | Fixed `.xometa` | reference |
 | `fix_xobese_xpms.py` | Patch broken XObese keygroup XPM programs for MPC compliance | XObese XPM files | Patched XPM files | reference |
 | `migrate_xocmeta_to_xometa.py` | Convert OddfeliX `.xocmeta` → unified `.xometa` format | `.xocmeta` files | `.xometa` files | superseded |
 | `add_missing_dna.py` | Auto-populate missing Sonic DNA blocks via heuristics | `.xometa` files without DNA | Updated `.xometa` files | active |

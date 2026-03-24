@@ -132,7 +132,7 @@ The mod matrix is the most architecturally significant deferred item. It require
 | Migrated presets with dropped values | 1,353 | 1,353 (unchanged — values were lost at migration) |
 | New presets can use Tidal/Fracture/Reverb | No | Yes |
 
-The 1,353 dropped values from the Round 5E migration are not recoverable from the preset files (the original values were lost in migration). However, going forward, all new Drift presets authored against the XOmnibus schema can use the 7 new parameters. The 165 natively-authored Drift presets require no changes. The 227 migrated presets default to off for all 7 new params (same sonic result as before, but now editable).
+The 1,353 dropped values from the Round 5E migration are not recoverable from the preset files (the original values were lost in migration). However, going forward, all new Drift presets authored against the XOlokun schema can use the 7 new parameters. The 165 natively-authored Drift presets require no changes. The 227 migrated presets default to off for all 7 new params (same sonic result as before, but now editable).
 
 ---
 
@@ -146,7 +146,7 @@ If the standalone preset files no longer have the original values, Option B-1 ap
 
 ## Audio Thread Safety
 
-All three new DSP classes satisfy the XOmnibus architecture constraints:
+All three new DSP classes satisfy the XOlokun architecture constraints:
 
 - **DriftTidalPulse**: Phase counter only — zero heap allocation, no locks, no I/O
 - **DriftFracture**: `std::array<float, 4096>` — stack-like fixed allocation in the struct, no heap, no locks
@@ -156,11 +156,11 @@ All three new DSP classes satisfy the XOmnibus architecture constraints:
 
 ## Files Modified
 
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Source/Engines/Drift/DriftEngine.h` — primary change file
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Drift/DriftEngine.h` — primary change file
 
 ## Files Referenced (read-only)
 
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Docs/drift_fx_gap_analysis.md` — analysis driving this pass
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Docs/drift_fx_gap_analysis.md` — analysis driving this pass
 - `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/TidalPulse.h` — source for DriftTidalPulse
 - `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/Fracture.h` — source for DriftFracture
 - `/Users/joshuacramblet/Documents/GitHub/XOdyssey/src/engine/ReverbFX.h` — source for DriftReverb

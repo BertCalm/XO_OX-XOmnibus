@@ -166,7 +166,7 @@ Three parameter interactions discovered in session 2 that are not documented els
 
 3. **Seance OVERTONE** — the engine now has 18 awakening presets and 3 distinct mood archetypes. Seance conditions are met for the first formal quality assessment. Predicted score: 8.2-8.6.
 
-4. **Sound design guide entry** — write the OVERTONE entry for `Docs/xomnibus_sound_design_guides.md` (currently missing; flagged in CLAUDE.md).
+4. **Sound design guide entry** — write the OVERTONE entry for `Docs/xolokun_sound_design_guides.md` (currently missing; flagged in CLAUDE.md).
 
 ---
 

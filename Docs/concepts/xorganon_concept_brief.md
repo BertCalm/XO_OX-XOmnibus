@@ -91,7 +91,7 @@ XOrganon produces sounds that no other synthesis method can create: harmonic str
 
 ## Coupling Thesis
 
-Organon is the great consumer. Every other engine in XOmnibus is potential nutrition. Feed it OddfeliX's transients and watch the entropy spike catalyze rapid harmonic growth. Feed it OddOscar's slow wavetable morphing and the organism settles into a warm, predictive state — low VFE, rich sustained harmonics. Feed it XOuroboros's chaotic output and the Active Inference system is perpetually surprised, creating unstable, flickering harmonic structures.
+Organon is the great consumer. Every other engine in XOlokun is potential nutrition. Feed it OddfeliX's transients and watch the entropy spike catalyze rapid harmonic growth. Feed it OddOscar's slow wavetable morphing and the organism settles into a warm, predictive state — low VFE, rich sustained harmonics. Feed it XOuroboros's chaotic output and the Active Inference system is perpetually surprised, creating unstable, flickering harmonic structures.
 
 As a source, Organon's output is unlike any other engine: harmonic content that has been biologically processed, filtered through entropy analysis and metabolic economy. Its 32-mode output makes extraordinary coupling material for engines that accept AudioToFM or AudioToWavetable — the biological harmonics create modulation patterns that sound organic in a way that LFOs and envelopes cannot.
 

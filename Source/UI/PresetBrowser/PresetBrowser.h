@@ -1,9 +1,9 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/PresetManager.h"
-#include "../XOmnibusEditor.h"
+#include "../XOlokunEditor.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // PresetBrowser — Searchable, filterable browser for 10,028+ factory presets.
@@ -101,7 +101,7 @@ public:
         addAndMakeVisible(statusLabel);
 
         setTitle("Preset Browser");
-        setDescription("Browse, search, and filter XOmnibus presets by mood and sonic DNA");
+        setDescription("Browse, search, and filter XOlokun presets by mood and sonic DNA");
         setWantsKeyboardFocus(true);
 
         applyFilters();
@@ -410,4 +410,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowser)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

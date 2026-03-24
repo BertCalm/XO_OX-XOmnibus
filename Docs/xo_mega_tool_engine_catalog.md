@@ -58,7 +58,7 @@ This document catalogs every synth engine module available for the XO_OX Mega-To
 | ORIGAMI | INTEGRATED (native) | Not scored | — | — | P0-03 STFT race condition risk | InstantaneousFreq (V004) unused |
 | ORACLE | INTEGRATED (native) | 8.6/10 | B010 GENDY + Maqam | — (D003 compliant) | — | Buchla 10/10; no presets yet |
 | OBSCURA | INTEGRATED (native) | High / unanimous | — (D003 compliant) | — | — | Verlet mass-spring; physics IS synthesis |
-| OCEANIC | INTEGRATED (standalone) | 7.1/10 | B013 Chromatophore Modulator | D001: zero velocity response | — | Triple-BBD chorus soul; 1 XOmnibus preset |
+| OCEANIC | INTEGRATED (standalone) | 7.1/10 | B013 Chromatophore Modulator | D001: zero velocity response | — | Triple-BBD chorus soul; 1 XOlokun preset |
 | OCELOT | INTEGRATED (standalone) | 6.4/10 | — | D004: macro_1–4 all dead (route nowhere) | — | EcosystemMatrix novel but inaccessible |
 | OVERBITE (Bite) | INTEGRATED (standalone) | Full approval | B008 Five-Macro System | — (best expression in fleet) | — | Only engine with aftertouch |
 | ORBITAL | INTEGRATED (native) | APPROVED | B001 Group Envelope System | D005: zero LFOs | — | Group envelopes are crown jewel; 1 preset |

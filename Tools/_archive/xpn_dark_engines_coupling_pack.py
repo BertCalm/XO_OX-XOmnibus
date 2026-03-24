@@ -14,7 +14,7 @@ Generates ~56 presets:
   4  OBSIDIAN × ODDFELIX/ODDOSCAR/OVERDUB/ODYSSEY
   4  OUROBOROS × ODDFELIX/ODDOSCAR/OVERDUB/ODYSSEY
 
-All presets written to Presets/XOmnibus/Entangled/. Skips existing files.
+All presets written to Presets/XOlokun/Entangled/. Skips existing files.
 
 Usage:
     python3 Tools/xpn_dark_engines_coupling_pack.py
@@ -551,14 +551,14 @@ def write_preset(preset: dict, output_dir: Path, skip_existing: bool = True) -> 
 
 def main():
     repo_root = Path(__file__).resolve().parent.parent
-    default_output = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_output = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser = argparse.ArgumentParser(
-        description="Generate dark-character engine Entangled coupling presets for XOmnibus.",
+        description="Generate dark-character engine Entangled coupling presets for XOlokun.",
     )
     parser.add_argument(
         "--output-dir", type=Path, default=default_output,
-        help="Directory to write .xometa files (default: Presets/XOmnibus/Entangled/)",
+        help="Directory to write .xometa files (default: Presets/XOlokun/Entangled/)",
     )
     parser.add_argument(
         "--dry-run", action="store_true",

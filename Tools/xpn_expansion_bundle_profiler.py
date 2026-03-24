@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 xpn_expansion_bundle_profiler.py
-XO_OX XOmnibus — XPN Expansion Bundle Profiler
+XO_OX XOlokun — XPN Expansion Bundle Profiler
 
 Profiles a released or in-progress XPN expansion bundle (ZIP file) and generates
 a comprehensive "bundle fingerprint" useful for QA, marketing copy, and release

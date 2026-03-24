@@ -13,7 +13,7 @@ All changes applied to `Source/Engines/Obrix/ObrixEngine.h`:
 
 | Change | Location | Old | New |
 |--------|----------|-----|-----|
-| Identity framing | Line 17 | "OBRIX is the baby brother of XOmnibus" | "OBRIX is not an instrument. It is a habitat." |
+| Identity framing | Line 17 | "OBRIX is the baby brother of XOlokun" | "OBRIX is not an instrument. It is a habitat." |
 | ADSR historical comment | Lines 99–104 | `// ObrixADSR` | Ussachevsky origin, Moog refinement, 1965 lineage |
 | Gesture display names | gestChoices array | `{"Ripple", "Pulse", "Flow", "Tide"}` | `{"Ripple", "Bioluminescent Pulse", "Undertow", "Surge"}` |
 | Gesture mythology | Lines 87–95 | No mythology | Chromatophore comment (octopus/cuttlefish signaling) |
@@ -77,7 +77,7 @@ Comprehensive 340-preset library audit. Full report: `Docs/fab_five_obrix_sound_
 
 ### Key Transformations
 
-**F1 Style**: "OBRIX is the baby brother of XOmnibus" → "OBRIX is not an instrument. It is a habitat." — this single sentence change reframes the entire engine. Baby brothers are subordinate. Habitats are foundational. The 27 "functional name" presets (Add Filter, Chorus Width, Lesson Raw Saw, etc.) are now First Reef Wall, Tide Shift, First Shell, etc. — names that paint pictures.
+**F1 Style**: "OBRIX is the baby brother of XOlokun" → "OBRIX is not an instrument. It is a habitat." — this single sentence change reframes the entire engine. Baby brothers are subordinate. Habitats are foundational. The 27 "functional name" presets (Add Filter, Chorus Width, Lesson Raw Saw, etc.) are now First Reef Wall, Tide Shift, First Shell, etc. — names that paint pictures.
 
 **F5 Soul**: The chromatophore mythology now lives in the code. The ADSR struct traces its lineage to Vladimir Ussachevsky and Robert Moog. The coupling channel 2 carries Dave Smith's blessing. Driftwood replaced Lo-Fi Saw. Bioluminescent Pulse replaced Pulse. The engine's code now sounds like the engine it describes.
 

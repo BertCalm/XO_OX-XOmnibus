@@ -6,7 +6,7 @@
  * Sections:
  *   1. Global Brand
  *   2. Ecological Depth Zones
- *   3. Engine Accent Colors (72 engines)
+ *   3. Engine Accent Colors (73 engines)
  *   4. Ecological Instrument Anatomy
  *   5. Glass / Porthole Formula
  *   6. PlaySurface Tokens
@@ -114,7 +114,7 @@
 
 
 /* ============================================================
-   SECTION 3 — Engine Accent Colors (72 engines)
+   SECTION 3 — Engine Accent Colors (73 engines)
    One custom property per registered engine.
    Property name matches the Engine ID (all-caps).
    Source: CLAUDE.md Engine Modules table.
@@ -199,7 +199,7 @@
 
   /* --- Kitchen Collection — Kitchen Quad (Pianos / Resonant coupling) --- */
   --engine-OVEN:     #2C2C2C;   /* Cast Iron Black           — XOven */
-  --engine-OCHRE:    #B87333;   /* Copper Patina             — XOchre */
+  --engine-OCHRE:    #CC7722;   /* Ochre Pigment             — XOchre */
   --engine-OBELISK:  #4A4A4A;   /* Obsidian Slate            — XObelisk */
   --engine-OPALINE:  #B8D4E3;   /* Crystal Blue              — XOpaline */
 
@@ -219,13 +219,14 @@
   --engine-OVERWASH: #D4A76A;   /* Tea Amber                 — XOverwash */
   --engine-OVERWORN: #4A1A2E;   /* Reduced Wine              — XOverworn */
   --engine-OVERFLOW: #E8E8E8;   /* Steam White               — XOverflow */
-  --engine-OVERCAST: #B0E0E6;   /* Ice Blue                  — XOvercast */
+  --engine-OVERCAST: #778899;   /* Light Slate Gray          — XOvercast */
 
   /* --- Kitchen Collection — Fusion Quad (Electric Piano / Migratory coupling) --- */
   --engine-OASIS:    #C49B3F;   /* Cardamom Gold             — XOasis */
   --engine-ODDFELLOW:#FF6B35;   /* Neon Night                — XOddfellow */
   --engine-ONKOLO:   #FFB300;   /* Kente Gold                — XOnkolo */
-  --engine-OPCODE:   #00CED1;   /* Digital Cyan              — XOpcode (matches ORGANON; both engines use the same hex) */
+  --engine-OPCODE:   #00CED1;   /* Dark Turquoise            — XOpcode */
+  --engine-OUTLOOK:  #4169E1;   /* Horizon Indigo            — XOutlook */
 }
 
 

@@ -2,7 +2,7 @@
 """
 oxport_render.py — Fleet Render Automation (Phase 1)
 
-Automates WAV rendering from XOmnibus by sending MIDI to the plugin
+Automates WAV rendering from XOlokun by sending MIDI to the plugin
 and recording audio output via loopback (BlackHole on macOS).
 
 Requirements:
@@ -310,13 +310,13 @@ def dry_run(jobs: list[dict], output_dir: str):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Oxport Fleet Render — automate WAV rendering from XOmnibus via MIDI + loopback audio",
+        description="Oxport Fleet Render — automate WAV rendering from XOlokun via MIDI + loopback audio",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   python3 oxport_render.py --list-ports
   python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/
-  python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/ --midi-port "XOmnibus" --audio-device "BlackHole"
+  python3 oxport_render.py --spec render_spec.json --output-dir ./wavs/ --midi-port "XOlokun" --audio-device "BlackHole"
   python3 oxport_render.py --dry-run --spec render_spec.json
 
 Render spec JSON format:

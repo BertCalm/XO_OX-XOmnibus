@@ -13,7 +13,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -26,7 +26,7 @@ namespace xomnibus {
 //
 //  OracleEngine — Stochastic GENDY + Maqam Microtonal Synthesis
 //  Accent: Prophecy Indigo #4B0082
-//  XO_OX Designs | XOmnibus Engine Module
+//  XO_OX Designs | XOlokun Engine Module
 //
 //==============================================================================
 //
@@ -84,7 +84,7 @@ namespace xomnibus {
 //    - DC blocker (5Hz first-order HPF) + soft limiter post-processing
 //    - Mono/Legato/Poly4/Poly8 voice modes with LRU stealing + 5ms crossfade
 //    - 2 LFOs (Sine/Tri/Saw/Square/S&H)
-//    - Full XOmnibus coupling support
+//    - Full XOlokun coupling support
 //
 //  COUPLING
 //    - Output: post-processing stereo audio via getSampleForCoupling
@@ -458,7 +458,7 @@ public:
 
         // Voice-stealing crossfade rate: ramp gain from 1.0 to 0.0 over 5ms.
         // At 44.1kHz: 1.0 / (0.005 * 44100) = ~0.00454 per sample.
-        constexpr float kCrossfadeDuration = 0.005f;  // 5ms — matches XOmnibus engine hot-swap standard
+        constexpr float kCrossfadeDuration = 0.005f;  // 5ms — matches XOlokun engine hot-swap standard
         voiceCrossfadeRate = 1.0f / (kCrossfadeDuration * sampleRateFloat);
 
         // Allocate output cache for coupling reads (other engines read our output)
@@ -817,7 +817,7 @@ public:
     //==========================================================================
     // SynthEngine interface — Coupling (Symbiosis in the water column)
     //
-    // Oracle participates in the XOmnibus coupling ecosystem:
+    // Oracle participates in the XOlokun coupling ecosystem:
     //   Channel 0: Left audio output (post-processing)
     //   Channel 1: Right audio output (post-processing)
     //   Channel 2: Envelope follower (peak amplitude for sidechain coupling)
@@ -1642,4 +1642,4 @@ private:
     std::atomic<float>* pMacroDrift        = nullptr;  // Increases overall drift and motion
 };
 
-} // namespace xomnibus
+} // namespace xolokun

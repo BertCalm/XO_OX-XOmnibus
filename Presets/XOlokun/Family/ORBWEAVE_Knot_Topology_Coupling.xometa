@@ -5,7 +5,7 @@
   },
   "couplingIntensity": "None",
   "created": "2026-03-21",
-  "description": "The engine's coupling output is its most powerful family contribution: the KnotTopology coupling type is the only cross-engine coupling in XOmnibus derived from a topological routing matrix rather than a signal or envelope. This preset is designed as the source engine: high level output, Torus knot at (5,8) golden winding number, no reverb (keeps coupling signal clean), maximum braid depth. Whatever engine receives ORBWEAVE coupling through KnotTopology will have its phase relationships shaped by golden ratio winding. The Kelp Knot as a coupling master.",
+  "description": "The engine's coupling output is its most powerful family contribution: the KnotTopology coupling type is the only cross-engine coupling in XOlokun derived from a topological routing matrix rather than a signal or envelope. This preset is designed as the source engine: high level output, Torus knot at (5,8) golden winding number, no reverb (keeps coupling signal clean), maximum braid depth. Whatever engine receives ORBWEAVE coupling through KnotTopology will have its phase relationships shaped by golden ratio winding. The Kelp Knot as a coupling master.",
   "dna": {
     "brightness": 0.58,
     "warmth": 0.52,

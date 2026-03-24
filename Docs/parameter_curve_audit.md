@@ -1,4 +1,4 @@
-# Parameter Curve Audit — XOmnibus Fleet
+# Parameter Curve Audit — XOlokun Fleet
 
 **Date:** 2026-03-14
 **Auditor:** Claude Code (automated)

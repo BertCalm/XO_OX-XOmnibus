@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED: Use superpowers:subagent-driven-development to implement this plan. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build XOwlfish — a monophonic subharmonic organism synth — as a standalone JUCE plugin, then integrate it into XOmnibus as engine #22.
+**Goal:** Build XOwlfish — a monophonic subharmonic organism synth — as a standalone JUCE plugin, then integrate it into XOlokun as engine #22.
 
-**Architecture:** Single monophonic voice with 5 interdependent organs (Abyss Habitat subharmonic oscillator → Owl Optics compressor/filter → Diet micro-granular → Sacrificial Armor velocity-triggered grain capture). Follows XOcelot's proven dual-target architecture: DSP in inline `.h` headers, standalone processor wrapper, thin SynthEngine adapter for XOmnibus.
+**Architecture:** Single monophonic voice with 5 interdependent organs (Abyss Habitat subharmonic oscillator → Owl Optics compressor/filter → Diet micro-granular → Sacrificial Armor velocity-triggered grain capture). Follows XOcelot's proven dual-target architecture: DSP in inline `.h` headers, standalone processor wrapper, thin SynthEngine adapter for XOlokun.
 
 **Tech Stack:** C++17, JUCE 8.0.12, CMake + Ninja, macOS (AU + Standalone)
 
@@ -42,19 +42,19 @@ XOwlfish/
     │   ├── ArmorBuffer.h             # Velocity-triggered grain capture + delay
     │   └── AbyssReverb.h             # Dark algorithmic reverb (heavy LP damping)
     ├── adapter/
-    │   ├── SynthEngine.h             # XOmnibus interface (copied from XOcelot)
+    │   ├── SynthEngine.h             # XOlokun interface (copied from XOcelot)
     │   └── OwlfishEngine.h           # SynthEngine adapter
     └── preset/
         └── PresetManager.h           # .xometa loader (copied from XOcelot)
 ```
 
-### XOmnibus Integration: `Source/Engines/Owlfish/`
+### XOlokun Integration: `Source/Engines/Owlfish/`
 
 All headers from `XOwlfish/src/` copied flat + include paths adjusted + `OwlfishEngine.cpp` registration stub.
 
 ---
 
-## Modified Files (XOmnibus repo)
+## Modified Files (XOlokun repo)
 
 | File | Change |
 |------|--------|
@@ -270,7 +270,7 @@ git add src/engine/OwlfishParamSnapshot.h && git commit -m "feat: add OwlfishPar
 **Files:**
 - Create: `~/Documents/GitHub/XOwlfish/src/dsp/SubharmonicOsc.h`
 
-This is the novel DSP — the core of the engine. No existing XOmnibus DSP module does subharmonic generation.
+This is the novel DSP — the core of the engine. No existing XOlokun DSP module does subharmonic generation.
 
 - [ ] **Step 1: Write SubharmonicOsc.h**
 
@@ -407,7 +407,7 @@ Dark algorithmic reverb tuned for deep-sea sound:
 - **Interface:** `processSample(float inputL, float inputR, float& outL, float& outR)`
 - **Denormal flush** on all delay line and filter state
 
-Can adapt the FDN pattern from `Source/DSP/Effects/LushReverb.h` in XOmnibus if it exists, but tune all defaults dark (low damping cutoff, long decay, long pre-delay).
+Can adapt the FDN pattern from `Source/DSP/Effects/LushReverb.h` in XOlokun if it exists, but tune all defaults dark (low damping cutoff, long decay, long pre-delay).
 
 - [ ] **Step 2: Commit**
 
@@ -525,7 +525,7 @@ currentFreq = targetFreq + (currentFreq - targetFreq) * glideSpeed;
 - `noteOn` with `legatoMode == 1` and voice already active: only change `targetFreq`, don't retrigger envelope
 - `noteOn` with `legatoMode == 0` or voice idle: set `targetFreq` AND retrigger envelope
 
-**CytomicSVF:** Use from XOmnibus shared DSP (`Source/DSP/CytomicSVF.h`). Copy it into `src/dsp/CytomicSVF.h`. If unavailable, implement inline — 2nd order SVF with LP/BP/HP modes, resonance, and key tracking.
+**CytomicSVF:** Use from XOlokun shared DSP (`Source/DSP/CytomicSVF.h`). Copy it into `src/dsp/CytomicSVF.h`. If unavailable, implement inline — 2nd order SVF with LP/BP/HP modes, resonance, and key tracking.
 
 - [ ] **Step 2: Build validation**
 
@@ -579,7 +579,7 @@ private:
     xowlfish::OwlfishVoice voice;
     juce::MidiKeyboardState keyboardState;
 
-    // Coupling cache for XOmnibus integration
+    // Coupling cache for XOlokun integration
     std::vector<float> outputCacheL, outputCacheR;
 };
 ```
@@ -734,13 +734,13 @@ git add Presets/init.xometa && git commit -m "feat: add init preset with sensibl
 
 ---
 
-## Chunk 5: XOmnibus Adapter + Integration
+## Chunk 5: XOlokun Adapter + Integration
 
 ### Task 13: Create OwlfishEngine.h — SynthEngine adapter
 
 **Files:**
 - Create: `~/Documents/GitHub/XOwlfish/src/adapter/OwlfishEngine.h`
-- Copy: `~/Documents/GitHub/XOwlfish/src/adapter/SynthEngine.h` (from XOcelot or XOmnibus)
+- Copy: `~/Documents/GitHub/XOwlfish/src/adapter/SynthEngine.h` (from XOcelot or XOlokun)
 
 **Reference:** XOcelot's `src/adapter/OcelotEngine.h` for the exact pattern.
 
@@ -753,7 +753,7 @@ cp ~/Documents/GitHub/XOcelot/src/adapter/SynthEngine.h \
 
 - [ ] **Step 2: Write OwlfishEngine.h**
 
-Implements `xomnibus::SynthEngine` interface. Key differences from OcelotEngine:
+Implements `xolokun::SynthEngine` interface. Key differences from OcelotEngine:
 - `getEngineId()` returns `"Owlfish"`
 - `getAccentColour()` returns `juce::Colour(0xFFB8860B)` (Abyssal Gold)
 - `getMaxVoices()` returns `1`
@@ -761,7 +761,7 @@ Implements `xomnibus::SynthEngine` interface. Key differences from OcelotEngine:
 - `renderBlock()` wraps the single `OwlfishVoice`
 - `getSampleForCoupling()` uses `outputCacheL/R` vectors (per-sample coupling)
 - `applyCouplingInput()` handles 7 coupling types: AudioToWavetable, AudioToFM, AmpToFilter, RhythmToBlend, EnvToDecay, EnvToMorph, LFOToPitch
-- Guard with `#ifdef XOMNIBUS_INTEGRATION` (will be removed in XOmnibus copy)
+- Guard with `#ifdef XOLOKUN_INTEGRATION` (will be removed in XOlokun copy)
 - Use `xowlfish` namespace, with `using xowlfish::OwlfishEngine;` before REGISTER_ENGINE
 
 - [ ] **Step 3: Build validation**
@@ -773,22 +773,22 @@ cd ~/Documents/GitHub/XOwlfish && cmake --build build 2>&1 | tail -5
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/adapter/ && git commit -m "feat: add OwlfishEngine adapter — SynthEngine interface for XOmnibus"
+git add src/adapter/ && git commit -m "feat: add OwlfishEngine adapter — SynthEngine interface for XOlokun"
 ```
 
-### Task 14: Register OWLFISH in XOmnibus
+### Task 14: Register OWLFISH in XOlokun
 
 **Files:**
-- Create: `~/Documents/GitHub/XO_OX-XOmnibus/Source/Engines/Owlfish/` (all headers copied flat)
-- Create: `~/Documents/GitHub/XO_OX-XOmnibus/Source/Engines/Owlfish/OwlfishEngine.cpp`
-- Modify: `~/Documents/GitHub/XO_OX-XOmnibus/CMakeLists.txt`
+- Create: `~/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Owlfish/` (all headers copied flat)
+- Create: `~/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Owlfish/OwlfishEngine.cpp`
+- Modify: `~/Documents/GitHub/XO_OX-XOlokun/CMakeLists.txt`
 
 **Reference:** How OCELOT was integrated (Task 10 from previous session).
 
-- [ ] **Step 1: Copy all XOwlfish headers to XOmnibus**
+- [ ] **Step 1: Copy all XOwlfish headers to XOlokun**
 
 ```bash
-mkdir -p ~/Documents/GitHub/XO_OX-XOmnibus/Source/Engines/Owlfish/
+mkdir -p ~/Documents/GitHub/XO_OX-XOlokun/Source/Engines/Owlfish/
 # Copy all .h files from XOwlfish/src/ into flat directory
 # Flatten include paths (../dsp/X.h → X.h, ../engine/X.h → X.h)
 ```
@@ -804,7 +804,7 @@ Files to copy (13 headers):
 - `ArmorBuffer.h`
 - `AbyssReverb.h`
 - `CytomicSVF.h` (if separate copy needed)
-- `OwlfishEngine.h` (remove `#ifdef XOMNIBUS_INTEGRATION` guard)
+- `OwlfishEngine.h` (remove `#ifdef XOLOKUN_INTEGRATION` guard)
 - `SynthEngine.h` (interface reference)
 - `PresetManager.h` (if used)
 
@@ -823,11 +823,11 @@ Add all Owlfish source files to `target_sources()`.
 - [ ] **Step 4: Verify OcelotEngine.cpp compiles clean**
 
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOlokun
 cmake -B build -G Ninja && cmake --build build -- Source/Engines/Owlfish/OwlfishEngine.cpp 2>&1
 ```
 
-Note: Full XOmnibus build has pre-existing errors (not caused by OWLFISH). Verify OwlfishEngine.cpp itself compiles.
+Note: Full XOlokun build has pre-existing errors (not caused by OWLFISH). Verify OwlfishEngine.cpp itself compiles.
 
 - [ ] **Step 5: Update CLAUDE.md engine tables**
 
@@ -847,7 +847,7 @@ git commit -m "feat(engines): add OWLFISH — monophonic subharmonic organism sy
 
 **Files:**
 - Create: 15 `.xometa` files in `~/Documents/GitHub/XOwlfish/Presets/`
-- Copy: To `~/Documents/GitHub/XO_OX-XOmnibus/Presets/XOmnibus/{mood}/`
+- Copy: To `~/Documents/GitHub/XO_OX-XOlokun/Presets/XOlokun/{mood}/`
 
 **Reference:** XOwlfish concept brief preset strategy section.
 
@@ -879,10 +879,10 @@ Each preset must:
 - Follow `.xometa` schema from init.xometa pattern
 - Use evocative naming (2-3 words, max 30 chars)
 
-- [ ] **Step 2: Copy presets to XOmnibus mood folders**
+- [ ] **Step 2: Copy presets to XOlokun mood folders**
 
 ```bash
-# Foundation presets → Presets/XOmnibus/Foundation/
+# Foundation presets → Presets/XOlokun/Foundation/
 # Atmosphere → Atmosphere/
 # Aether → Aether/
 # Prism → Prism/
@@ -898,9 +898,9 @@ cd ~/Documents/GitHub/XOwlfish
 git add Presets/ && git commit -m "feat(presets): add 15 factory presets across 7 categories"
 ```
 
-XOmnibus repo:
+XOlokun repo:
 ```bash
-cd ~/Documents/GitHub/XO_OX-XOmnibus
+cd ~/Documents/GitHub/XO_OX-XOlokun
 git add Presets/ && git commit -m "feat(presets): add 15 OWLFISH factory presets to mood folders"
 ```
 
@@ -922,6 +922,6 @@ After all tasks complete:
 - [ ] MicroGranular produces texture at high density
 - [ ] ArmorBuffer triggers on high velocity and ducks main signal
 - [ ] AbyssReverb produces dark, long tails
-- [ ] OwlfishEngine.cpp compiles in XOmnibus
+- [ ] OwlfishEngine.cpp compiles in XOlokun
 - [ ] 15 presets authored and distributed to mood folders
 - [ ] CLAUDE.md updated with OWLFISH engine entry

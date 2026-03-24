@@ -4,7 +4,7 @@
 #include <functional>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ToucheExpression — Ondes Martenot-inspired dedicated expression zone.
@@ -209,4 +209,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

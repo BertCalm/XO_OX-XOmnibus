@@ -4,13 +4,13 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OxideShaper — The Mimic Octopus
 //
 // 6-mode saturation engine with per-harmonic control and Lorenz chaos LFO.
-// The Flavor Pro of XOmnibus — transforms any signal through analog character.
+// The Flavor Pro of XOlokun — transforms any signal through analog character.
 //
 // Drive modes: Tube, Tape, Transistor, Diode, Digital Clip, Lorenz Chaos
 // Per-harmonic: 2nd, 3rd, 4th, 5th, 7th + balance control
@@ -484,4 +484,4 @@ private:
     std::atomic<float>* pMacroChaos = nullptr, *pMacroBlend = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Bulk rename script for XOmnibus preset files, documentation, and tools.
+Bulk rename script for XOlokun preset files, documentation, and tools.
 
 Renames:
   - XOddCouple → OddfeliX (in presets, tools)
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def rename_xometa_files():
     """Rename XOddCouple→OddfeliX and XOblongBob→XOblong in .xometa files."""
-    preset_dir = ROOT / "Presets" / "XOmnibus"
+    preset_dir = ROOT / "Presets" / "XOlokun"
     xometa_files = sorted(preset_dir.rglob("*.xometa"))
 
     modified_count = 0
@@ -235,7 +235,7 @@ def rename_tools():
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("XOmnibus Bulk Rename Script")
+    print("XOlokun Bulk Rename Script")
     print("=" * 60)
 
     print("\n[1/3] Renaming .xometa preset files...")

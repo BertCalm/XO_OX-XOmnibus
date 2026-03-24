@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OfferingCollage.h — Layer Stacking, Chop Sim, Time-Stretch, Ring Mod
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  Simulates the creative act of sample manipulation:
 //    Layer stacking  — 1-4 transient variations per trigger
@@ -22,7 +22,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OfferingCollage — Per-voice collage processor applied after texture layer.
@@ -218,4 +218,4 @@ private:
     float layerGains_[kMaxLayers] = {};
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -55,7 +55,7 @@
 
 1. **XO word:** XOcelot — Ocelot: nocturnal jungle cat, stealthy, beautiful, elusive. The prowling predator moving between the layers of the forest.
 2. **One-sentence thesis:** "XOcelot is a canopy-layered sample-mangling synthesizer that builds living soundscapes from four interacting strata — percussion floor, chopped understory, spectral canopy, and emergent creature calls."
-3. **Sound only this can make:** A berimbau-driven groove where the rhythm's amplitude opens the canopy layer's spectral filter, which triggers formant-synthesized bird trills in the emergent layer, while an SP-1200-crushed chop weaves through the understory — all four strata feeding each other in real time. No DAW plugin or XOmnibus engine does cross-strata ecosystem synthesis.
+3. **Sound only this can make:** A berimbau-driven groove where the rhythm's amplitude opens the canopy layer's spectral filter, which triggers formant-synthesized bird trills in the emergent layer, while an SP-1200-crushed chop weaves through the understory — all four strata feeding each other in real time. No DAW plugin or XOlokun engine does cross-strata ecosystem synthesis.
 
 ---
 

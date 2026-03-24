@@ -1,9 +1,9 @@
-# XOmnibus — Technical Design System & UI Philosophy
+# XOlokun — Technical Design System & UI Philosophy
 
 **Version:** 1.0
 **Author:** XO_OX Designs
 **Date:** 2026-03-08
-**Purpose:** Define the visual language, UI architecture, and technical design standards for XOmnibus
+**Purpose:** Define the visual language, UI architecture, and technical design standards for XOlokun
 
 ---
 
@@ -11,7 +11,7 @@
 
 ### 1.1 The Gallery Model
 
-XOmnibus is a **gallery**. Each engine is an **exhibition**.
+XOlokun is a **gallery**. Each engine is an **exhibition**.
 
 The platform provides a clean, neutral space — warm white walls, consistent typography, predictable navigation — that frames whatever art is on display. When a producer loads the OddfeliX/OddOscar engine, the gallery fills with terracotta and teal. Switch to XOdyssey, and violet gradients take over. Couple two engines, and their colors meet in the coupling strip like two exhibitions connected by a golden corridor.
 
@@ -24,13 +24,13 @@ This metaphor drives every design decision:
 
 ### 1.2 Core Principle: Light Creates Contrast
 
-XOmnibus defaults to **light mode**. This is a deliberate choice that serves the gallery model — a bright, clean gallery wall makes the colored engine art pop harder. When every other synth is a dark rectangle, XOmnibus is the one you notice.
+XOlokun defaults to **light mode**. This is a deliberate choice that serves the gallery model — a bright, clean gallery wall makes the colored engine art pop harder. When every other synth is a dark rectangle, XOlokun is the one you notice.
 
 Dark mode is available as a toggle — some producers work at 3AM and need it. But the marketing, screenshots, and first-launch experience are all light. The gallery is open during daylight hours by default.
 
 ### 1.3 The XO_OX Visual DNA
 
-Every XO_OX instrument has had its own personality. XOmnibus doesn't flatten these — each engine is a distinct exhibition within the gallery:
+Every XO_OX instrument has had its own personality. XOlokun doesn't flatten these — each engine is a distinct exhibition within the gallery:
 
 | Engine (Exhibition) | Visual Character | Palette | Material/Texture |
 |-----------|-----------|-------|----------|
@@ -45,7 +45,7 @@ Every XO_OX instrument has had its own personality. XOmnibus doesn't flatten the
 
 The gallery shell wraps all engines in a **neutral, warm white frame** with engine-specific color appearing only inside the active engine panel(s). This creates:
 - **Separation** — the platform (gallery) is visually distinct from the instruments (exhibitions)
-- **Recognition** — users always know they're in XOmnibus, regardless of which engine is active
+- **Recognition** — users always know they're in XOlokun, regardless of which engine is active
 - **Identity** — each engine retains its full visual personality within its panel
 - **Coupling as connection** — when two engines are active, the golden coupling strip between them is the gallery corridor linking two exhibitions
 
@@ -379,7 +379,7 @@ Minimal line icons, 1.5px stroke, engine accent or text secondary color:
 The design system maps to JUCE's `LookAndFeel` system:
 
 ```cpp
-// XOmnibusLookAndFeel extends juce::LookAndFeel_V4
+// XOlokunLookAndFeel extends juce::LookAndFeel_V4
 // Each engine registers its accent color on activation
 // Shell colors come from a ThemeManager (light/dark toggle)
 
@@ -458,7 +458,7 @@ assets/
 - Square (1080×1080) for Instagram/threads
 - 16:9 (1920×1080) for YouTube thumbnails
 - Dark background variant for video overlays
-- Always include XO_OX logo + "XOmnibus" wordmark
+- Always include XO_OX logo + "XOlokun" wordmark
 
 ---
 

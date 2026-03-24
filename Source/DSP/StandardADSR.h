@@ -3,10 +3,10 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// StandardADSR — Shared amplitude envelope for the XOmnibus fleet.
+// StandardADSR — Shared amplitude envelope for the XOlokun fleet.
 //
 // Consolidates the identical ADSR pattern found in 20+ engines into a single
 // correct implementation. Supports three shapes:
@@ -240,4 +240,4 @@ private:
     int holdSamplesLeft = 0;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -3,7 +3,7 @@
 **Invoke with:** `/master-audit`
 **Status:** LIVE
 **Last Updated:** 2026-03-20 | **Version:** 1.0 | **Next Review:** Monthly or on major milestone
-**Purpose:** Orchestrate all XOmnibus QA checks into a comprehensive fleet-wide health report. Use before releases, after major engine additions, or when you need a full picture of what needs attention.
+**Purpose:** Orchestrate all XOlokun QA checks into a comprehensive fleet-wide health report. Use before releases, after major engine additions, or when you need a full picture of what needs attention.
 
 ---
 
@@ -20,17 +20,17 @@
 ## Phase 1: Code Integrity
 
 ### 1.1 Engine Registration Audit
-Check that every engine in CLAUDE.md is registered in `Source/XOmnibusProcessor.cpp`:
+Check that every engine in CLAUDE.md is registered in `Source/XOlokunProcessor.cpp`:
 
 ```bash
-grep -c "registerEngine" Source/XOmnibusProcessor.cpp
+grep -c "registerEngine" Source/XOlokunProcessor.cpp
 # Should equal 42 (one per engine)
 ```
 
 Verify `getEngineId()` in each adapter matches the registered key (these MUST match):
 
 ```bash
-grep -n "getEngineId\|registerEngine" Source/XOmnibusProcessor.cpp | head -100
+grep -n "getEngineId\|registerEngine" Source/XOlokunProcessor.cpp | head -100
 grep -rn "getEngineId" Source/Engines/ | grep "return " | sort
 ```
 
@@ -163,7 +163,7 @@ Fix any stale counts found.
 Produce a summary report in `Docs/fleet_health_{YYYY-MM-DD}.md`:
 
 ```markdown
-# XOmnibus Fleet Health — {DATE}
+# XOlokun Fleet Health — {DATE}
 
 ## Summary
 - Engines registered: 42 / 42

@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // OrbweaveEngine — The Kelp Knot: Topological Knot-Coupling Synthesis
@@ -1042,4 +1042,4 @@ private:
     std::atomic<float>* pPitchBendRange = nullptr, *pGlideTime = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

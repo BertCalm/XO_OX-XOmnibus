@@ -1,7 +1,7 @@
 #pragma once
 
 //==============================================================================
-// XOverlapAdapter.h — XOmnibus adapter for XOverlap (OVERLAP)
+// XOverlapAdapter.h — XOlokun adapter for XOverlap (OVERLAP)
 //
 // 6-voice knot-topology FDN synthesizer.
 // Lion's Mane jellyfish signal tangling through Feedback Delay Networks.
@@ -11,7 +11,7 @@
 // 41 canonical olap_ parameters. Gallery code: OVERLAP.
 // Accent: Bioluminescent Cyan-Green #00FFB4
 //
-// XOmnibus integration: DSP headers resolved via target_include_directories
+// XOlokun integration: DSP headers resolved via target_include_directories
 // pointing to XOverlap/Source/ — see CMakeLists.txt.
 //==============================================================================
 
@@ -33,7 +33,7 @@
 #include <cmath>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 class XOverlapEngine : public SynthEngine
@@ -364,7 +364,7 @@ public:
                 right *= (1.0f + extRingMod);
             }
 
-            // i. Accumulate into buffer (XOmnibus handles clearing — never overwrite)
+            // i. Accumulate into buffer (XOlokun handles clearing — never overwrite)
             outL[sample] += left;
             if (outR != nullptr)
                 outR[sample] += right;
@@ -393,7 +393,7 @@ public:
             }
         }
 
-        // Count active voices for XOmnibus voice display
+        // Count active voices for XOlokun voice display
         activeCount = 0;
         for (auto& v : voices)
             if (v.isActive()) ++activeCount;
@@ -638,7 +638,7 @@ private:
     float lastSampleL = 0.0f;
     float lastSampleR = 0.0f;
 
-    // Active voice count for XOmnibus display
+    // Active voice count for XOlokun display
     int activeCount = 0;
 
     //==========================================================================
@@ -772,4 +772,4 @@ private:
 
 constexpr float XOverlapEngine::kPanPositions[6];
 
-} // namespace xomnibus
+} // namespace xolokun

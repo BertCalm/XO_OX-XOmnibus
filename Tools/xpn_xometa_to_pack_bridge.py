@@ -2,7 +2,7 @@
 """
 XPN XOMeta → Pack Bridge — XO_OX Designs
 =========================================
-Bridges the XOmnibus .xometa preset system and the XPN pack pipeline.
+Bridges the XOlokun .xometa preset system and the XPN pack pipeline.
 
 Workflow:
   1. Use xpn_preset_browser.py (or hand-curate) to build pack_selection.json
@@ -24,7 +24,7 @@ render_spec.json output format:
     "programs": [
       {
         "name": "Iron Hat",
-        "preset_file": "Presets/XOmnibus/Foundation/ONSET/Iron Hat.xometa",
+        "preset_file": "Presets/XOlokun/Foundation/ONSET/Iron Hat.xometa",
         "engine": "ONSET",
         "render_notes": [36, 38, 42, 44, 46, 49],
         "velocities": [40, 80, 100, 120],
@@ -39,7 +39,7 @@ render_spec.json output format:
 Usage:
   python xpn_xometa_to_pack_bridge.py \\
       --selection pack_selection.json \\
-      --presets-dir ./Presets/XOmnibus/ \\
+      --presets-dir ./Presets/XOlokun/ \\
       --output render_spec.json
 """
 
@@ -240,8 +240,8 @@ def main() -> int:
     )
     parser.add_argument(
         "--presets-dir", "-p",
-        default=str(Path(__file__).parent.parent / "Presets" / "XOmnibus"),
-        help="Root directory of XOmnibus presets (default: ../../Presets/XOmnibus)",
+        default=str(Path(__file__).parent.parent / "Presets" / "XOlokun"),
+        help="Root directory of XOlokun presets (default: ../../Presets/XOlokun)",
     )
     parser.add_argument(
         "--output", "-o",

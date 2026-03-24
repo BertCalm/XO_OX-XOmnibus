@@ -6,7 +6,7 @@
 #include <array>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // FamilyWaveguide — Shared physical-modeling DSP for the XOrphica Family Constellation.
@@ -749,4 +749,4 @@ private:
     FamilyDampingFilter frictionLP;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

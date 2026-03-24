@@ -346,7 +346,7 @@ XOchre is the only engine with a hard P0 (LFO2 dead, `(void) lfo2Val`). It is al
 
 ### 4. Quad Cohesion
 
-The Kitchen quad holds together better than any previous engine family in XOmnibus. The reasons:
+The Kitchen quad holds together better than any previous engine family in XOlokun. The reasons:
 
 - **Shared material narrative:** All four derive from acoustic material physics with citations. The impedance spectrum (36.72 → 33.60 → 10.26 → 12.58 MRayl) provides a physical ordering that maps to sonic character.
 - **Shared culinary mythology:** Cast iron/Maillard sear, Caramel/copper saucepan, Marble/prepared table surface, Creme brulee/porcelain ramekin. The kitchen metaphor holds across all four without feeling forced.

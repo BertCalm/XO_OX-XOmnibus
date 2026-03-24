@@ -3,7 +3,7 @@
 #include "MobileLayoutManager.h"
 #include "HapticEngine.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ParameterDrawer — iPhone bottom drawer for engine parameters.
@@ -248,4 +248,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

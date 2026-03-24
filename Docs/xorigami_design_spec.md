@@ -17,7 +17,7 @@
 
 **Sound family:** Texture / Pad / Lead / Experimental
 
-**Unique capability:** Real-time geometric transformation of spectral content via STFT analysis-resynthesis. Every existing XOmnibus engine works in the time domain — oscillators generating waveforms sample by sample. ORIGAMI operates in the frequency domain, applying spatial geometry to the spectrum itself. It answers the question: "What does a sound look like when you fold its spectrum in half?"
+**Unique capability:** Real-time geometric transformation of spectral content via STFT analysis-resynthesis. Every existing XOlokun engine works in the time domain — oscillators generating waveforms sample by sample. ORIGAMI operates in the frequency domain, applying spatial geometry to the spectrum itself. It answers the question: "What does a sound look like when you fold its spectrum in half?"
 
 **Personality in 3 words:** Kaleidoscopic, geometric, alive.
 
@@ -274,7 +274,7 @@ ORIGAMI's spectral folding operations produce timbres with the same metallic, in
 
 ---
 
-## 6. XOmnibus Integration
+## 6. XOlokun Integration
 
 ### 6.1 MegaCouplingMatrix Compatibility
 

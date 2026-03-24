@@ -5,16 +5,16 @@
 **Date:** 2026-03-17
 **Status:** FLAGGED — New direction identified, needs dedicated planning session
 **Origin:** SRO Optimization session (logged as "separate workstream" in SRO decisions table)
-**Prior art:** `Docs/concepts/xomnibus_collections_vision.md`, `Docs/concepts/culinary_collection_overview.md`
+**Prior art:** `Docs/concepts/xolokun_collections_vision.md`, `Docs/concepts/culinary_collection_overview.md`
 
 ---
 
 ## What Is It
 
-The Synesthesia Engine is an AI-powered cross-domain preset generation system. It converts arbitrary creative inputs into XOmnibus `.xometa` presets:
+The Synesthesia Engine is an AI-powered cross-domain preset generation system. It converts arbitrary creative inputs into XOlokun `.xometa` presets:
 
 ```
-ANY CREATIVE INPUT ──→ SYNESTHESIA ENGINE ──→ XOMNIBUS PRESET
+ANY CREATIVE INPUT ──→ SYNESTHESIA ENGINE ──→ XOLOKUN PRESET
      (recipe)              (AI model)           (.xometa)
      (star chart)          maps input to
      (painting)            6D Sonic DNA
@@ -47,7 +47,7 @@ Every Collection has a Synesthesia domain:
 
 4. **It intersects with existing code** — `Source/AI/NaturalLanguageInterpreter.h` already maps natural language descriptors (including food/taste terms like "sweet", "bitter", "spicy") to 6D Sonic DNA vectors. This is arguably a proto-Synesthesia Engine. The relationship needs to be clarified before both evolve independently.
 
-5. **It's a differentiator** — No other synth does this. The concept of "what does bioluminescence sound like?" or "turn this curry recipe into a pad" is the kind of thing that defines XOmnibus as a creative platform rather than just a synthesizer.
+5. **It's a differentiator** — No other synth does this. The concept of "what does bioluminescence sound like?" or "turn this curry recipe into a pad" is the kind of thing that defines XOlokun as a creative platform rather than just a synthesizer.
 
 ## What's NOT Being Asked Right Now
 
@@ -62,7 +62,7 @@ This is purely a **planning and architecture escalation** — making sure the Sy
 From `culinary_collection_overview.md` §Open Questions #11:
 > **Synesthesia Engine scope** — On-device (privacy, offline) vs cloud (more powerful model)? Or hybrid with local fast-draft + optional cloud refinement? What's the minimum viable version — recipe→preset only, or multi-domain from launch?
 
-From `xomnibus_collections_vision.md` §Open Questions #7:
+From `xolokun_collections_vision.md` §Open Questions #7:
 > **Synesthesia Engine MVP** — What's the simplest version that proves the concept? Probably: recipe text → 6D Sonic DNA → engine/preset suggestion. No parameter-level AI at first.
 
 Additional questions surfaced during this escalation:

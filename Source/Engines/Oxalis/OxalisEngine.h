@@ -2,7 +2,7 @@
 //==============================================================================
 //
 //  OxalisEngine.h — XOxalis | "The Geometric Garden"
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOxalis is the geometric plant — clover patterns, fractal leaf
@@ -54,7 +54,7 @@
 #include <cmath>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Phyllotaxis oscillator bank — partials at golden ratio intervals
@@ -727,4 +727,4 @@ private:
     std::atomic<float>* paramLfo2Shape = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

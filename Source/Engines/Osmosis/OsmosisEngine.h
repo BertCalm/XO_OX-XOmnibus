@@ -6,10 +6,10 @@
 #include <cmath>
 #include <array>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// OsmosisEngine — the membrane between XOmnibus and the outside world.
+// OsmosisEngine — the membrane between XOlokun and the outside world.
 //
 // Receives external audio via setExternalInput(). Analyzes envelope, pitch,
 // and spectral content. Produces coupling signals that let other engines
@@ -99,7 +99,7 @@ public:
         lfo_.reset();
     }
 
-    //-- External audio injection (called by XOmnibusProcessor) ----------------
+    //-- External audio injection (called by XOlokunProcessor) ----------------
     void setExternalInput(const float* left, const float* right, int numSamples)
     {
         externalBufferL_ = left;
@@ -350,4 +350,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

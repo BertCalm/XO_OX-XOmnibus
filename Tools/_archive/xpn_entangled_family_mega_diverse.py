@@ -292,6 +292,6 @@ def generate(out_dir_ent, out_dir_fam):
 
 if __name__ == "__main__":
     repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    out_ent = os.path.join(repo, "Presets", "XOmnibus", "Entangled")
-    out_fam = os.path.join(repo, "Presets", "XOmnibus", "Family")
+    out_ent = os.path.join(repo, "Presets", "XOlokun", "Entangled")
+    out_fam = os.path.join(repo, "Presets", "XOlokun", "Family")
     generate(out_ent, out_fam)

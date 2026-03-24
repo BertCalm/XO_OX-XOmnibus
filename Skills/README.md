@@ -1,6 +1,6 @@
-# XOmnibus Skill Library
+# XOlokun Skill Library
 
-This directory contains Claude Code skill files for working efficiently with the XOmnibus codebase. Each skill is a focused procedure guide that teaches Claude how to perform a specific workflow with maximum quality and minimum back-and-forth.
+This directory contains Claude Code skill files for working efficiently with the XOlokun codebase. Each skill is a focused procedure guide that teaches Claude how to perform a specific workflow with maximum quality and minimum back-and-forth.
 
 ---
 
@@ -35,7 +35,7 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 | Skill | Invoke | Purpose | Source |
 |-------|--------|---------|--------|
 | synth-seance | `/synth-seance` | Ghost council evaluation of engine quality against 6 doctrines and 15 blessings | `Docs/seance_cross_reference.md` |
-| post-engine-completion-checklist | `/post-engine-completion-checklist` | 5-point audit after engine completion: CLAUDE.md accuracy, XOmnibus sync, knowledge compendium, memory/satellite, playbook | `Docs/knowledge_tree_update_12i.md` |
+| post-engine-completion-checklist | `/post-engine-completion-checklist` | 5-point audit after engine completion: CLAUDE.md accuracy, XOlokun sync, knowledge compendium, memory/satellite, playbook | `Docs/knowledge_tree_update_12i.md` |
 | producers-guild | `/producers-guild` | 12 genre specialist + PM + market research product review | `Docs/2026-03-14-session-readout.md` |
 
 ---
@@ -75,10 +75,10 @@ These skills exist in the Claude profile (not version-controlled here) but are r
 
 - `Docs/coupling_audit.md` — Coupling quality scores for all engines
 - `Docs/coupling_preset_library.md` — 18 proven coupling preset examples with mythology
-- `Docs/xomnibus_sound_design_guides.md` — Per-engine parameter reference (38 of 42 engines; OBRIX/ORBWEAVE/OVERTONE/ORGANISM pending)
+- `Docs/xolokun_sound_design_guides.md` — Per-engine parameter reference (38 of 42 engines; OBRIX/ORBWEAVE/OVERTONE/ORGANISM pending)
 - `Docs/sonic_dna_audit.md` — DNA coverage analysis + gap table
-- `Docs/how_to_write_a_xomnibus_adapter.md` — Adapter writing guide
-- `Docs/xomnibus_new_engine_process.md` — New engine development process
+- `Docs/how_to_write_a_xolokun_adapter.md` — Adapter writing guide
+- `Docs/xolokun_new_engine_process.md` — New engine development process
 - `Docs/seance_cross_reference.md` — All engine seance scores + D-violations + P0 bugs
 
 ---

@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ObrixEngine — Ocean Bricks: The Living Reef
@@ -1849,4 +1849,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

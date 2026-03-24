@@ -32,7 +32,7 @@ Total presets referencing Organon: **~100+** across all moods (Flux, Entangled, 
 
 ### Presets with WRONG prefix (`org_`): 1
 
-**`Presets/XOmnibus/Entangled/Ouro_Organon_Metabolism.xometa`**
+**`Presets/XOlokun/Entangled/Ouro_Organon_Metabolism.xometa`**
 
 This preset (created 2026-03-10) used 8 wrong parameter keys:
 
@@ -73,7 +73,7 @@ All other Organon presets across all moods use the correct `organon_` prefix and
 
 ## Coupling Presets Written by 8C Agent
 
-The 8C coupling preset library agent wrote presets to `Presets/XOmnibus/Entangled/`. All Organon-containing presets created by that agent use the correct `organon_` prefix:
+The 8C coupling preset library agent wrote presets to `Presets/XOlokun/Entangled/`. All Organon-containing presets created by that agent use the correct `organon_` prefix:
 
 | File | Status |
 |------|--------|

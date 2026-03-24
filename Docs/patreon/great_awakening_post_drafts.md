@@ -42,7 +42,7 @@ From the crushing darkness of the ocean floor to the open sky above the waves, t
 
 ### What "Awakening" Means
 
-Every Awakening preset is a hero sound -- the best expression of what each engine can do. They ship free inside XOmnibus, marked with a gold visual treatment in the Gallery. They're not demos. They're not teasers. They're finished, performance-ready sounds designed during dedicated Guru Bin retreats where we sat with each engine until it revealed something we didn't expect.
+Every Awakening preset is a hero sound -- the best expression of what each engine can do. They ship free inside XOlokun, marked with a gold visual treatment in the Gallery. They're not demos. They're not teasers. They're finished, performance-ready sounds designed during dedicated Guru Bin retreats where we sat with each engine until it revealed something we didn't expect.
 
 OBRIX taught us about self-oscillating FM. OSTINATO showed us that swing percentage is geography. OPENSKY proved the Shepard tone still has secrets. OCEANDEEP produced a diagnostic preset so beautiful we shipped it as-is. OUIE convinced us that musical intervals, not raw frequencies, should be the primary control.
 
@@ -52,9 +52,9 @@ OBRIX taught us about self-oscillating FM. OSTINATO showed us that swing percent
 
 The Awakening presets point toward territory we explored much further during the retreats. That deeper work -- 15-20 additional presets per engine, with sound design documentation and MPC-ready XPN exports -- will arrive as Transcendental Vol 1 for our Patreon supporters beginning late April.
 
-More on that soon. For now: update XOmnibus and meet the new species.
+More on that soon. For now: update XOlokun and meet the new species.
 
-[Download / Update XOmnibus]
+[Download / Update XOlokun]
 
 ---
 
@@ -120,7 +120,7 @@ This became the basis for three of the ten Awakening presets. The other seven ex
 
 ### The 10 Awakening Presets
 
-All 10 ship free inside XOmnibus with gold visual treatment. They range from simple (2-brick pads) to complex (4-brick FM feedback networks) and are designed to teach the engine as much as to sound good.
+All 10 ship free inside XOlokun with gold visual treatment. They range from simple (2-brick pads) to complex (4-brick FM feedback networks) and are designed to teach the engine as much as to sound good.
 
 [Audio demos embedded here]
 
@@ -255,7 +255,7 @@ The full guide (estimated 12-15 pages) ships with the complete OBRIX Transcenden
 
 ### Installation
 
-Drop the .xometa files into your XOmnibus Presets folder. They'll appear in the Gallery with the Transcendental visual treatment (silver border, retreat icon). The XPN files are in the /XPN subfolder for MPC users.
+Drop the .xometa files into your XOlokun Presets folder. They'll appear in the Gallery with the Transcendental visual treatment (silver border, retreat icon). The XPN files are in the /XPN subfolder for MPC users.
 
 ---
 
@@ -293,7 +293,7 @@ Two voices. Two algorithms. One knob decides: harmony or destruction. Named for 
 
 7/ All 50 Awakening presets ship free. Gold treatment in the Gallery. No catch. No trial. No expiry.
 
-Update XOmnibus now: [link]
+Update XOlokun now: [link]
 
 Transcendental Vol 1 (75-100 premium presets + lore booklets) begins late April on Patreon: [link]
 
@@ -301,10 +301,10 @@ Transcendental Vol 1 (75-100 premium presets + lore booklets) begins late April 
 
 [Image: 5 engine accent colors arranged vertically representing the water column -- Sunburst at top, Hammerhead Steel in middle, Trench Violet at bottom]
 
-Caption: Five new species have surfaced. From the open sky to the ocean floor -- the Great Awakening brings 5 engines and 50 free presets to XOmnibus.
+Caption: Five new species have surfaced. From the open sky to the ocean floor -- the Great Awakening brings 5 engines and 50 free presets to XOlokun.
 
 OBRIX / OSTINATO / OPENSKY / OCEANDEEP / OUIE
 
 Free update available now. Link in bio.
 
-#XOmnibus #SynthDesign #SoundDesign #MusicProduction #FreeSynth #OpenSource
+#XOlokun #SynthDesign #SoundDesign #MusicProduction #FreeSynth #OpenSource

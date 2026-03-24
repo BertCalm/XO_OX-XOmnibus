@@ -8,11 +8,11 @@
 
 ## 1. Vision Statement
 
-> **The XO Chord Machine distributes chord voicings across XOmnibus's 4 engine slots, so each tone in a harmony is shaped by a different synthesis character. You play one key — four engines voice the chord.**
+> **The XO Chord Machine distributes chord voicings across XOlokun's 4 engine slots, so each tone in a harmony is shaped by a different synthesis character. You play one key — four engines voice the chord.**
 
 No other instrument does this. Divisimate distributes MIDI across *instances* of the same plugin. The NDLR generates patterns across *identical* outputs. Ableton's Chord device stacks intervals on *one* synth. The XO Chord Machine is the first instrument where the **timbral identity of each chord tone is a creative parameter** — where the root is a warm analog bass (OBLONG), the fifth is a gritty bitcrushed snarl (OBESE), the seventh is a drifting pad (ODYSSEY), and the octave is chip arpeggiation (OVERWORLD). And all four are coupled through the MegaCouplingMatrix while they voice the harmony.
 
-This is the feature that makes XOmnibus's 4-slot architecture musically inevitable, not just technically interesting.
+This is the feature that makes XOlokun's 4-slot architecture musically inevitable, not just technically interesting.
 
 ---
 
@@ -507,7 +507,7 @@ A dedicated preset category for Chord Machine configurations:
 ### 9.1 Module Placement
 
 ```
-┌─ XOmnibusProcessor ──────────────────────────────────────┐
+┌─ XOlokunProcessor ──────────────────────────────────────┐
 │                                                           │
 │  ┌─ ChordMachine ──────────────────────────────────┐     │
 │  │                                                  │     │
@@ -536,7 +536,7 @@ A dedicated preset category for Chord Machine configurations:
 
 ### 9.2 Data Flow
 
-1. **MIDI arrives** at XOmnibusProcessor::processBlock()
+1. **MIDI arrives** at XOlokunProcessor::processBlock()
 2. If Chord Machine is OFF → MIDI routes to active engine slot as normal
 3. If Chord Machine is ON:
    a. **Sequencer advances** (if running) or **live note received**
@@ -553,7 +553,7 @@ A dedicated preset category for Chord Machine configurations:
 ```cpp
 // Source/Core/ChordMachine.h
 
-namespace xomnibus {
+namespace xolokun {
 
 enum class PaletteType { Warm, Bright, Tension, Open, Dark, Sweet, Complex, Raw };
 enum class VoicingMode { RootSpread, Drop2, Quartal, UpperStructure, Unison };
@@ -666,12 +666,12 @@ private:
     bool hasActiveChord = false;
 };
 
-} // namespace xomnibus
+} // namespace xolokun
 ```
 
 ### 9.4 Audio Thread Safety
 
-All Chord Machine operations follow XOmnibus rules:
+All Chord Machine operations follow XOlokun rules:
 - **No allocation** in processBlock — step events use a pre-allocated vector (reserved in prepare())
 - **No locks** — palette/voicing/root changes use atomic reads or block-rate snapshot caching
 - **Block-constant parameters** — palette lookups and voicing computation happen once per block, not per sample
@@ -701,7 +701,7 @@ Source/UI/
 - `ChordMachine::processBlock()` routing MIDI to 4 slots
 - Palette lookup tables (8 chord qualities)
 - SPREAD knob (single control, 0-100%)
-- Wire into XOmnibusProcessor (bypass when OFF)
+- Wire into XOlokunProcessor (bypass when OFF)
 
 ### Phase 2: Sequencer (1 session)
 - `StepSequencer` with 16-step clock
@@ -749,7 +749,7 @@ Source/UI/
 
 1. **No other instrument does timbral chord distribution.** Divisimate distributes MIDI; the XO Chord Machine distributes *character*.
 
-2. **The coupling matrix makes harmony interactive.** Chord tones modulate each other through the same coupling routes that define XOmnibus's identity. The chords are alive.
+2. **The coupling matrix makes harmony interactive.** Chord tones modulate each other through the same coupling routes that define XOlokun's identity. The chords are alive.
 
 3. **Zero theory required, full theory available.** The SPREAD knob and palette system let anyone make chords. The voicing modes, parameter locks, and Eno mode reward deep exploration.
 

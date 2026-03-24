@@ -75,21 +75,21 @@ ReaSamplomatic5000 supports multi-sample mapping with velocity layers. Its prese
 
 ---
 
-## 6. XO_OX Recommendation — XOmnibus vs XPN Conversion
+## 6. XO_OX Recommendation — XOlokun vs XPN Conversion
 
-**The honest answer: XOmnibus is the better path for DAW producers.**
+**The honest answer: XOlokun is the better path for DAW producers.**
 
-XOmnibus is a JUCE AU/VST3 plugin that loads in every major DAW on macOS and Windows. It carries all 31+ engines, 2,369+ presets, and the full XO_OX sound palette — with no conversion, no file extraction, no format negotiation.
+XOlokun is a JUCE AU/VST3 plugin that loads in every major DAW on macOS and Windows. It carries all 31+ engines, 2,369+ presets, and the full XO_OX sound palette — with no conversion, no file extraction, no format negotiation.
 
 For a DAW producer:
-- Load XOmnibus as an instrument track in Ableton/Logic/FL/Reaper/Pro Tools
+- Load XOlokun as an instrument track in Ableton/Logic/FL/Reaper/Pro Tools
 - Browse presets directly in the plugin UI
 - Record MIDI + audio as with any instrument
 - Stems via multiple instances or DAW audio routing
 
 XPN packs remain valuable for **MPC-centric producers** who live in the hardware/standalone workflow, and for use cases where the MPC's pattern sequencer, pad performance, or hardware feel is central to the work.
 
-**Marketing framing suggestion**: "XPN packs are for your MPC. XOmnibus is for your DAW. Same sounds, different home." This cleanly segments the two products without implying one is a workaround for the other. A conversion tool (XPN → Ableton/Kontakt/SFZ) could be positioned as a bonus utility for producers who own both.
+**Marketing framing suggestion**: "XPN packs are for your MPC. XOlokun is for your DAW. Same sounds, different home." This cleanly segments the two products without implying one is a workaround for the other. A conversion tool (XPN → Ableton/Kontakt/SFZ) could be positioned as a bonus utility for producers who own both.
 
 ---
 

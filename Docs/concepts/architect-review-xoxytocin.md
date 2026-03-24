@@ -1,6 +1,6 @@
 # Architect Review: XOxytocin (OXYTO)
 
-**Engine #48 — Proposed addition to the XOmnibus fleet**
+**Engine #48 — Proposed addition to the XOlokun fleet**
 **Review date:** 2026-03-22
 **Reviewed against:** SynthEngine.h, MegaCouplingMatrix.h, CLAUDE.md engine registry, engine_identity_cards.md, VoiceAllocator.h, StandardLFO.h, OverwornEngine.h (session state precedent)
 

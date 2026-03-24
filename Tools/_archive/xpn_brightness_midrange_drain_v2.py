@@ -15,7 +15,7 @@ import random
 
 random.seed(42)
 
-BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus"
+BASE_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun"
 
 ENGINES = [
     "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",

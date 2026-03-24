@@ -9,7 +9,7 @@
 
 ## Notes on Non-Standard Mood Folders
 
-The following non-canonical mood folders exist in `Presets/XOmnibus/` and contain presets for some of these engines:
+The following non-canonical mood folders exist in `Presets/XOlokun/` and contain presets for some of these engines:
 
 | Folder | Total files | Engines with presence |
 |--------|------------|----------------------|
@@ -168,7 +168,7 @@ The following non-canonical mood folders exist in `Presets/XOmnibus/` and contai
 **Non-Standard Moods:** Deep=1 (via Entangled subdirectory counting)
 **Missing Moods:** None. All 8 moods well-represented. Strongest total of the 8 engines.
 
-**Note on Entangled structure:** Overlap has an additional subdirectory `Presets/XOmnibus/Entangled/Overlap/` containing 40 presets. These are correctly mood-tagged as "Entangled" and counted in the 250 total. The subdirectory is non-standard — other engines do not use subdirectories. This creates file organization inconsistency.
+**Note on Entangled structure:** Overlap has an additional subdirectory `Presets/XOlokun/Entangled/Overlap/` containing 40 presets. These are correctly mood-tagged as "Entangled" and counted in the 250 total. The subdirectory is non-standard — other engines do not use subdirectories. This creates file organization inconsistency.
 
 **DNA Range:**
 
@@ -219,7 +219,7 @@ The following non-canonical mood folders exist in `Presets/XOmnibus/` and contai
 **P1 Issues:**
 - **68/290 solo-engine Entangled presets (23%) have no coupling pairs** — this is the highest ratio of the batch. Overlap uses Entangled as its primary solo-engine mood (knot topology is "self-entangled"). This is a conceptual misuse of the Entangled mood bucket. Consider: (a) relocate solo Overlap topology presets to Foundation/Atmosphere/Prism, or (b) formally document that single-engine Overlap Entangled presets are intentional because the engine is topologically self-coupled.
 - 153/522 presets (29%) carry **both** `"dna"` and `"sonic_dna"` keys — highest dual-DNA rate in the batch. Concentrated in Entangled presets generated early in the pipeline.
-- Entangled subdirectory `Presets/XOmnibus/Entangled/Overlap/` is non-standard. All other engines store flat. Consolidate or document exception.
+- Entangled subdirectory `Presets/XOlokun/Entangled/Overlap/` is non-standard. All other engines store flat. Consolidate or document exception.
 
 **P2 Issues:**
 - 85/522 presets (16%) have empty or missing `description` — lowest rate in the batch, acceptable.

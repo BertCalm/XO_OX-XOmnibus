@@ -38,10 +38,10 @@ These are the sound design discoveries made during each engine's retreat -- cont
 
 ## Patron Tier Benefits (Aligned with Guru Bin Tiers)
 
-### Free (All XOmnibus Users)
+### Free (All XOlokun Users)
 - 50 Awakening presets (10 per engine) -- gold visual treatment in the Gallery
 - Access to all 5 engines and their full parameter sets
-- Core XOmnibus remains free and open source
+- Core XOlokun remains free and open source
 
 ### Tier 1 -- Listener ($5/month)
 - Behind-the-scenes posts on each engine's design journey
@@ -72,7 +72,7 @@ These are the sound design discoveries made during each engine's retreat -- cont
 
 **Public post:** "The Great Awakening -- 5 New Engines, 50 Free Presets"
 - Announce all 5 engines with identity cards
-- Link to XOmnibus download / update
+- Link to XOlokun download / update
 - Tease the Transcendental tier without revealing specific presets
 - Include audio demos of 2-3 Awakening presets per engine
 

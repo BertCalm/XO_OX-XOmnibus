@@ -1,7 +1,7 @@
 # Voice Stealing & Engine Hot-Swap Hardening
 **Date:** 2026-03-21
 **Status:** Design + Exact Code Changes
-**Scope:** `VoiceAllocator.h`, `MegaCouplingMatrix.h`, `XOmnibusProcessor.cpp/h`, `SynthEngine.h`
+**Scope:** `VoiceAllocator.h`, `MegaCouplingMatrix.h`, `XOlokunProcessor.cpp/h`, `SynthEngine.h`
 
 ---
 
@@ -29,7 +29,7 @@ No issues were found in the crossfade rendering itself (correct per-sample gain 
 
 ### The one real risk: AudioToBuffer during voice steal
 
-`processAudioRoute` (lines 285–313 in MegaCouplingMatrix.h) calls `getSampleForCoupling` inside the same block where `renderBlock` also ran. Because `renderBlock` runs first (lines 1183–1218 in XOmnibusProcessor.cpp), the cache is already populated before coupling reads it. Voice stealing happens *inside* `renderBlock`, not between the two calls.
+`processAudioRoute` (lines 285–313 in MegaCouplingMatrix.h) calls `getSampleForCoupling` inside the same block where `renderBlock` also ran. Because `renderBlock` runs first (lines 1183–1218 in XOlokunProcessor.cpp), the cache is already populated before coupling reads it. Voice stealing happens *inside* `renderBlock`, not between the two calls.
 
 **Verdict:** No live-voice race exists in the current architecture. The `isVoiceCoupledTo(slot)` guard requested in the task is a future-proofing hedge, not a fix for a current bug. It becomes relevant if a future engine type reads voice state *from another engine's voice array directly* (cross-engine voice sharing). For the current fleet, the coupling read path is block-level, not voice-level.
 
@@ -76,7 +76,7 @@ There is no mechanism to:
 
 ### Change 1: Fix `CrossfadeState` Data Race in `loadEngine` / `unloadEngine`
 
-**File:** `Source/XOmnibusProcessor.h`
+**File:** `Source/XOlokunProcessor.h`
 
 Add `std::mutex crossfadeMutex;` to the private section:
 
@@ -91,7 +91,7 @@ std::array<CrossfadeState, MaxSlots> crossfades;
 std::mutex crossfadeMutex;  // ADD THIS — guards crossfades[] between message and audio threads
 ```
 
-**File:** `Source/XOmnibusProcessor.cpp`
+**File:** `Source/XOlokunProcessor.cpp`
 
 In `loadEngine()`, wrap the crossfade mutation:
 ```cpp
@@ -143,7 +143,7 @@ In `processBlock()`, wrap the crossfade read (lines 1365–1403):
 Add a method to the public interface:
 
 ```cpp
-// Called by XOmnibusProcessor::loadEngine() after an engine swap.
+// Called by XOlokunProcessor::loadEngine() after an engine swap.
 // Suspends any routes where the incoming engine's slot is the source or
 // destination of an AudioToBuffer route (which requires OpalEngine as dest).
 // All other route types survive the swap — engines must handle unknown
@@ -182,7 +182,7 @@ void notifyCouplingMatrixOfSwap(int slot, const std::string& newEngineId)
 }
 ```
 
-**File:** `Source/XOmnibusProcessor.cpp`, in `loadEngine()`, after the atomic swap:
+**File:** `Source/XOlokunProcessor.cpp`, in `loadEngine()`, after the atomic swap:
 
 ```cpp
 // Atomic swap — audio thread sees the new engine on next block
@@ -268,7 +268,7 @@ static int findFreeVoiceCouplingAware (VoiceArray& voices, int maxPolyphony,
 
 ### Change 4: Wake the New Engine's Silence Gate on Hot-Swap
 
-**File:** `Source/XOmnibusProcessor.cpp`, in `loadEngine()`:
+**File:** `Source/XOlokunProcessor.cpp`, in `loadEngine()`:
 
 ```cpp
 newEngine->attachParameters(apvts);
@@ -288,13 +288,13 @@ This is a real functional bug: a freshly instantiated engine will have `SilenceG
 
 | # | File | Change | Type |
 |---|------|--------|------|
-| 1 | `XOmnibusProcessor.h` | Add `std::mutex crossfadeMutex` to private section | Bug fix — data race |
-| 2 | `XOmnibusProcessor.cpp` | Wrap crossfade mutations in `loadEngine`/`unloadEngine` with `scoped_lock` | Bug fix — data race |
-| 3 | `XOmnibusProcessor.cpp` | Wrap crossfade reads in `processBlock` with `scoped_lock` | Bug fix — data race |
+| 1 | `XOlokunProcessor.h` | Add `std::mutex crossfadeMutex` to private section | Bug fix — data race |
+| 2 | `XOlokunProcessor.cpp` | Wrap crossfade mutations in `loadEngine`/`unloadEngine` with `scoped_lock` | Bug fix — data race |
+| 3 | `XOlokunProcessor.cpp` | Wrap crossfade reads in `processBlock` with `scoped_lock` | Bug fix — data race |
 | 4 | `MegaCouplingMatrix.h` | Add `notifyCouplingMatrixOfSwap(slot, newEngineId)` | Feature — route integrity |
-| 5 | `XOmnibusProcessor.cpp` | Call `notifyCouplingMatrixOfSwap` after atomic swap in `loadEngine` | Feature — route integrity |
+| 5 | `XOlokunProcessor.cpp` | Call `notifyCouplingMatrixOfSwap` after atomic swap in `loadEngine` | Feature — route integrity |
 | 6 | `VoiceAllocator.h` | Add `findFreeVoiceCouplingAware()` variant | Forward-compat only |
-| 7 | `XOmnibusProcessor.cpp` | Add `newEngine->wakeSilenceGate()` after prepare in `loadEngine` | Bug fix — mid-note swap |
+| 7 | `XOlokunProcessor.cpp` | Add `newEngine->wakeSilenceGate()` after prepare in `loadEngine` | Bug fix — mid-note swap |
 
 Changes 1–3 and 7 are bug fixes. Changes 4–5 are new features. Change 6 is additive only. All changes are non-breaking: no parameter IDs changed, no engine interface broken, no existing routes removed.
 

@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Yesterday OBRIX had zero presets. Today it has 340. That is the headline. The raw number is genuinely impressive: OBRIX is now the largest single-engine library in XOmnibus, and the coverage — 8 moods, recognizable categories within each, evocative names — reflects real curation effort rather than bulk generation.
+Yesterday OBRIX had zero presets. Today it has 340. That is the headline. The raw number is genuinely impressive: OBRIX is now the largest single-engine library in XOlokun, and the coverage — 8 moods, recognizable categories within each, evocative names — reflects real curation effort rather than bulk generation.
 
 The library works. It has a soul. It has a flagship (The Living Reef). It has Journey Mode. It uses FM. The coral reef mythology shows up in the naming with consistency. That said, a gala-intensity evaluation demands honesty about where the library still shows its rapid-assembly origins.
 

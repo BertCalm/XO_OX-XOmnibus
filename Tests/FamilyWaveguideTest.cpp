@@ -1,7 +1,7 @@
 // FamilyWaveguideTest.cpp
 // Standalone C++ test for FamilyWaveguide.h — no JUCE required.
 //
-// Build from XO_OX-XOmnibus root:
+// Build from XO_OX-XOlokun root:
 //   mkdir -p Tests/build && cd Tests/build
 //   cmake .. -DCMAKE_CXX_STANDARD=17 && make
 //   ./FamilyWaveguideTest
@@ -31,7 +31,7 @@ void check (bool condition, const char* name, const char* msg)
 // Run a Karplus-Strong loop for numSamples. Returns peak and final amplitude.
 struct KSResult { float peak; float finalAmp; bool noNaN; };
 
-KSResult runKS (xomnibus::FamilyDelayLine& dl, xomnibus::FamilyDampingFilter& df,
+KSResult runKS (xolokun::FamilyDelayLine& dl, xolokun::FamilyDampingFilter& df,
                 float delayLen, int numSamples, float damping)
 {
     float peak = 0.0f, finalAmp = 0.0f;
@@ -63,7 +63,7 @@ int main()
     // A wrong formula would produce large discontinuities at integer frac values.
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilyDelayLine dl;
+        xolokun::FamilyDelayLine dl;
         dl.prepare (512);
         // Write a simple ramp so we can predict expected values
         for (int i = 0; i < 200; ++i)
@@ -87,7 +87,7 @@ int main()
     // 1. FamilyDelayLine — basic read is finite
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilyDelayLine dl;
+        xolokun::FamilyDelayLine dl;
         dl.prepare (static_cast<int> (SR) + 8);
         dl.write (1.0f);
         for (int i = 0; i < 10; ++i) dl.write (0.0f);
@@ -99,8 +99,8 @@ int main()
     // 2. Karplus-Strong loop — no NaN
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilyDelayLine  dl;
-        xomnibus::FamilyDampingFilter df;
+        xolokun::FamilyDelayLine  dl;
+        xolokun::FamilyDampingFilter df;
         dl.prepare (static_cast<int> (SR) + 8);
         df.prepare();
         // Seed with impulse
@@ -116,7 +116,7 @@ int main()
     // 3. PluckExciter — fires, decays, goes silent
     // -----------------------------------------------------------------------
     {
-        xomnibus::PluckExciter pe;
+        xolokun::PluckExciter pe;
         pe.prepare (SR);
         pe.trigger (2.0f);
         float maxOut = 0.0f;
@@ -138,7 +138,7 @@ int main()
     // 4. StrumExciter — multi-string staggered output
     // -----------------------------------------------------------------------
     {
-        xomnibus::StrumExciter se;
+        xolokun::StrumExciter se;
         se.prepare (SR);
         se.trigger (4, 5.0f, 1.0f);
         float maxOut = 0.0f;
@@ -156,7 +156,7 @@ int main()
     // 5. PickExciter — attack burst, non-zero
     // -----------------------------------------------------------------------
     {
-        xomnibus::PickExciter pe;
+        xolokun::PickExciter pe;
         pe.prepare (SR);
         pe.trigger (1.5f);
         float maxOut = 0.0f;
@@ -174,7 +174,7 @@ int main()
     // 6. AirJetExciter — sound at full breath, near-silent at zero
     // -----------------------------------------------------------------------
     {
-        xomnibus::AirJetExciter ae;
+        xolokun::AirJetExciter ae;
         ae.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -195,7 +195,7 @@ int main()
     // 7. ReedExciter — continuous output at breathPressure > 0
     // -----------------------------------------------------------------------
     {
-        xomnibus::ReedExciter re;
+        xolokun::ReedExciter re;
         re.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -212,7 +212,7 @@ int main()
     // 8. LipBuzzExciter — oscillates at given frequency
     // -----------------------------------------------------------------------
     {
-        xomnibus::LipBuzzExciter le;
+        xolokun::LipBuzzExciter le;
         le.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -229,7 +229,7 @@ int main()
     // 9. BowExciter — non-zero with pressure, silent at zero pressure
     // -----------------------------------------------------------------------
     {
-        xomnibus::BowExciter be;
+        xolokun::BowExciter be;
         be.prepare (SR);
         float maxOut = 0.0f;
         bool  anyNaN = false;
@@ -250,7 +250,7 @@ int main()
     // 10. FamilyBodyResonance — resonates from impulse, no NaN
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilyBodyResonance br;
+        xolokun::FamilyBodyResonance br;
         br.prepare (SR);
         br.setParams (440.0f, 5.0f);
         float maxOut = 0.0f;
@@ -268,7 +268,7 @@ int main()
     // 11. FamilySympatheticBank — sympathetic bloom after input
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilySympatheticBank sb;
+        xolokun::FamilySympatheticBank sb;
         sb.prepare (SR, 512);
         sb.tune (440.0f);
         float maxOut = 0.0f;
@@ -287,7 +287,7 @@ int main()
     // 12. FamilyOrganicDrift — output within ±1 semitone, non-zero
     // -----------------------------------------------------------------------
     {
-        xomnibus::FamilyOrganicDrift od;
+        xolokun::FamilyOrganicDrift od;
         od.prepare (SR);
         float maxDrift = 0.0f;
         bool  anyNaN   = false;

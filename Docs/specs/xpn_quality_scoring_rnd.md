@@ -124,7 +124,7 @@ All XO_OX XPN packs are scored against this 100-point rubric before release. A p
 **Fix**: Spend design time specifically hunting for the unexpected. Push macros to extremes; render the accident.
 
 ### Coupling Documentation Present (5 pts)
-**Measurement**: Automated + human. `pack.yaml` must list at least one `coupling_suggestions` entry. The suggested coupling engine must exist in XOmnibus.
+**Measurement**: Automated + human. `pack.yaml` must list at least one `coupling_suggestions` entry. The suggested coupling engine must exist in XOlokun.
 **Pass**: At least one valid coupling documented — 5 pts. Field present but empty — 0 pts.
 **Fix**: Identify the natural feliX→Oscar or Oscar→feliX pair for this pack and document it. Every pack has a natural counterpart.
 

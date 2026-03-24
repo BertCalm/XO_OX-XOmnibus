@@ -27,4 +27,4 @@
 
 ---
 
-*Part of XOmnibus by XO_OX Designs*
+*Part of XOlokun by XO_OX Designs*

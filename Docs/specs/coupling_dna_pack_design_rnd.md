@@ -1,7 +1,7 @@
 # Coupling DNA & XPN Pack Design — R&D
 
 **Date:** 2026-03-16
-**Scope:** How XOmnibus cross-engine coupling should inform XPN pack design, documentation, and future re-render workflows.
+**Scope:** How XOlokun cross-engine coupling should inform XPN pack design, documentation, and future re-render workflows.
 
 ---
 
@@ -60,7 +60,7 @@ MPC software ignores XML comments — the comment is invisible to playback but p
     <RenderConditions
       bpm="120"
       root_note="C3"
-      xomnibus_version="1.0.0"
+      xolokun_version="1.0.0"
       render_date="2026-03-16"
     />
   </CouplingDNA>
@@ -118,7 +118,7 @@ The `<CouplingDNA>` block in each XPM documents exactly what changed between var
 - Pack A: `[Engine A] — [Pair Name] Side A` — 32 pads, Engine A stems with coupling OUT documented
 - Pack B: `[Engine B] — [Pair Name] Side B` — 32 pads, Engine B stems with coupling IN documented
 
-Each pad's XPM contains a `<CouplingDNA>` block describing which routes from Side A are feeding it. A producer who loads both packs into adjacent programs can reconstruct the full coupling relationship in XOmnibus from the documentation alone.
+Each pad's XPM contains a `<CouplingDNA>` block describing which routes from Side A are feeding it. A producer who loads both packs into adjacent programs can reconstruct the full coupling relationship in XOlokun from the documentation alone.
 
 **Inaugural pair: OSPREY × OSTERIA** — "The Shore & The Tavern" (existing ShoreSystem narrative already in Docs). Osprey shore waves feed the tavern room model via `AudioToFM`; Osprey's sea state drives Osteria's elastic tightness via `AmpToFilter`.
 
@@ -213,7 +213,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-XOMNIBUS_VERSION = "1.0.0"
+XOLOKUN_VERSION = "1.0.0"
 
 POLARITY_LABELS = {
     True:  "negative",  # inverted (ducking) routes
@@ -270,7 +270,7 @@ def build_coupling_dna_xml(preset: dict, bpm: int, root_note: str) -> str:
         f'    <RenderConditions',
         f'      bpm="{bpm}"',
         f'      root_note="{root_note}"',
-        f'      xomnibus_version="{XOMNIBUS_VERSION}"',
+        f'      xolokun_version="{XOLOKUN_VERSION}"',
         f'      render_date="{date.today().isoformat()}"',
         f'    />',
         "  </CouplingDNA>",
@@ -320,7 +320,7 @@ if __name__ == "__main__":
 
 ```bash
 # Print CouplingDNA block to stdout
-python xpn_coupling_docs_generator.py Presets/XOmnibus/Entangled/Glass\ Shard\ Coupling.xometa
+python xpn_coupling_docs_generator.py Presets/XOlokun/Entangled/Glass\ Shard\ Coupling.xometa
 
 # Print with render context
 python xpn_coupling_docs_generator.py Glass_Shard_Coupling.xometa --bpm 94 --root D2
@@ -330,10 +330,10 @@ python xpn_coupling_docs_generator.py Glass_Shard_Coupling.xometa \
     --inject ./XPN_Export/Glass_Shard_Coupling/Glass_Shard_Coupling.xpm
 ```
 
-**Integration point:** Call this from `xpn_packager.py` immediately after XPM generation, before ZIP packaging. The `couplingRoutes` key in `.xometa` must be populated by `PresetManager.h` on save — verify the field is present in presets exported from XOmnibus before running at scale.
+**Integration point:** Call this from `xpn_packager.py` immediately after XPM generation, before ZIP packaging. The `couplingRoutes` key in `.xometa` must be populated by `PresetManager.h` on save — verify the field is present in presets exported from XOlokun before running at scale.
 
 ---
 
 ## Summary
 
-The coupling system is XOmnibus's deepest differentiator — sounds that cannot exist in any single-engine synthesizer. XPN export freezes that live modulation into audio, but the `<CouplingDNA>` block preserves the knowledge of what produced the sound. The three pack series (Entangled, Cross-Engine Pairs, Coupling Showcase) turn coupling knowledge into a curriculum: producers learn by listening to what coupling does, comparing dry against entangled, reading the embedded documentation, and eventually returning to XOmnibus to reconstruct and remix the coupling state themselves. The velocity-stratified coupling dimension extends this into the pad itself, where soft touches play the uncoupled engine and hard strikes deliver the fully entangled version.
+The coupling system is XOlokun's deepest differentiator — sounds that cannot exist in any single-engine synthesizer. XPN export freezes that live modulation into audio, but the `<CouplingDNA>` block preserves the knowledge of what produced the sound. The three pack series (Entangled, Cross-Engine Pairs, Coupling Showcase) turn coupling knowledge into a curriculum: producers learn by listening to what coupling does, comparing dry against entangled, reading the embedded documentation, and eventually returning to XOlokun to reconstruct and remix the coupling state themselves. The velocity-stratified coupling dimension extends this into the pad itself, where soft touches play the uncoupled engine and hard strikes deliver the fully entangled version.

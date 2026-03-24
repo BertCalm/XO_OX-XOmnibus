@@ -3,7 +3,7 @@
 #include <algorithm>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // StereoSculptor — Mid/Side frequency-dependent stereo field shaping.
@@ -214,4 +214,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

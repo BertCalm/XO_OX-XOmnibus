@@ -45,7 +45,7 @@
 
 ## Issues Preventing Higher Score
 
-1. **No standard 4-macro system** -- Organon has 10 unique params but no M1-M4 (CHARACTER/MOVEMENT/COUPLING/SPACE). This breaks the XOmnibus gallery convention.
+1. **No standard 4-macro system** -- Organon has 10 unique params but no M1-M4 (CHARACTER/MOVEMENT/COUPLING/SPACE). This breaks the XOlokun gallery convention.
 2. **No user-controllable LFO** -- The VFE system creates breathing, but there is no discrete LFO with a rate knob that can go to 0.01 Hz. D005 spirit is met but letter is not.
 3. **No filter envelope** -- Velocity shapes initial energy but there is no explicit velocity-to-filter-brightness path. D001 is satisfied via the metabolic growth curve, but it is indirect.
 
@@ -53,7 +53,7 @@
 
 ## Path to 9.0
 
-1. Add 4 standard XOmnibus macros (CHARACTER -> catalystDrive+dampingCoeff, MOVEMENT -> phasonShift+lockIn, COUPLING -> signalFlux+membrane, SPACE -> noiseColor+dampingCoeff). ~50 LOC.
+1. Add 4 standard XOlokun macros (CHARACTER -> catalystDrive+dampingCoeff, MOVEMENT -> phasonShift+lockIn, COUPLING -> signalFlux+membrane, SPACE -> noiseColor+dampingCoeff). ~50 LOC.
 2. Add a breathing LFO (0.01-0.5 Hz) that modulates isotopeBalance or enzymeSelect. ~30 LOC.
 3. Add explicit velocity-to-enzymeSelect mapping (harder hits = brighter enzyme selectivity). ~5 LOC.
 

@@ -20,8 +20,8 @@ Example: *ONSET Complete* = TIDE TABLES + MACHINE GUN REEF + 2 future ONSET pack
 **Collection Bundle** — all packs spanning one collection arc (Kitchen Essentials, Travel/Water, Artwork).
 Example: *Kitchen Essentials Bundle* = all 6 Kitchen collection packs across 6 different engines. This is a cross-engine bundle built around a creative concept rather than a single instrument. Best for producers building a unified production palette.
 
-**Coupling Bundle** — two packs explicitly designed to interact via XOmnibus coupling architecture.
-Example: *OPAL × OVERDUB* = granular source feeding into tape delay character. Coupling bundles are the most narrative of the three: they exist because the two engines have a documented coupling relationship in XOmnibus, and the packs were designed with that signal path in mind.
+**Coupling Bundle** — two packs explicitly designed to interact via XOlokun coupling architecture.
+Example: *OPAL × OVERDUB* = granular source feeding into tape delay character. Coupling bundles are the most narrative of the three: they exist because the two engines have a documented coupling relationship in XOlokun, and the packs were designed with that signal path in mind.
 
 **Seasonal Bundle** — time-limited cross-collection grab. Black Friday, Pi Day, etc. Deepest discount, shortest window. The contents are curated for the moment (e.g., darkest / most experimental packs), not permanent catalog groupings.
 

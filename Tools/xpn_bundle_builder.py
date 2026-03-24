@@ -135,7 +135,7 @@ except ImportError:
     SIDECAR_AVAILABLE = False
 
 REPO_ROOT  = Path(__file__).parent.parent
-PRESETS_DIR = REPO_ROOT / "Presets" / "XOmnibus"
+PRESETS_DIR = REPO_ROOT / "Presets" / "XOlokun"
 PROFILES_DIR = REPO_ROOT / "Tools" / "bundle_profiles"
 
 # Engines that produce drum programs (vs keygroup programs)
@@ -145,7 +145,7 @@ DRUM_ENGINES = {"onset", "Onset", "ONSET"}
 ENGINE_ORDER = ["ONSET", "OVERWORLD", "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE", "OPAL",
                 "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE"]
 
-# Canonical engine name aliases — maps legacy/long names to XOmnibus short names
+# Canonical engine name aliases — maps legacy/long names to XOlokun short names
 ENGINE_ALIASES: dict[str, str] = {
     "xoblongbob":  "Oblong",
     "bob":         "Oblong",
@@ -175,7 +175,7 @@ ENGINE_ALIASES: dict[str, str] = {
 }
 
 def normalize_engine(name: str) -> str:
-    """Return canonical XOmnibus engine short name."""
+    """Return canonical XOlokun engine short name."""
     return ENGINE_ALIASES.get(name.lower(), name)
 
 
@@ -600,7 +600,7 @@ PREDEFINED_PROFILES = {
     },
     "coupling": {
         "name": "Coupling Showcase",
-        "description": "All cross-engine coupling presets — designed for XOmnibus",
+        "description": "All cross-engine coupling presets — designed for XOlokun",
         "cover_engine": "ONSET",
         "mood_filter": "Entangled",
         "max_count": 50,

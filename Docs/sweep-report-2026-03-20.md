@@ -1,4 +1,4 @@
-# XOmnibus DSP Sweep Report — 2026-03-20
+# XOlokun DSP Sweep Report — 2026-03-20
 
 **Scope:** 5 targeted areas — Aquatic FX, Mathematical FX, Boutique FX, OBRIX DSP, SDK
 **Auditor:** Claude Code (Sonnet 4.6)
@@ -156,7 +156,7 @@ The KS buffer `ksBufL` is used for both the delay read and `ksOut`. `ksBufR` is 
 
 **[Low] `BoutiqueFXChain::addParameters` takes `std::vector<unique_ptr<RangedAudioParameter>>&` but `AquaticFXSuite::addParameters` takes `ParameterLayout&`**
 File: `BoutiqueFXChain.h` line 74, `MathFXChain.h` line 63, vs `AquaticFXSuite.h` line 70
-The three FX chains have inconsistent parameter registration APIs. AquaticFXSuite uses the newer JUCE `ParameterLayout&` API; MathFX and BoutiqueFX use the older `vector<unique_ptr<>>` pattern. Both work, but the inconsistency complicates the calling code in `XOmnibusProcessor`.
+The three FX chains have inconsistent parameter registration APIs. AquaticFXSuite uses the newer JUCE `ParameterLayout&` API; MathFX and BoutiqueFX use the older `vector<unique_ptr<>>` pattern. Both work, but the inconsistency complicates the calling code in `XOlokunProcessor`.
 **Fix (Low):** Standardize all three to use `ParameterLayout&` for consistency.
 
 **DSP correctness (PASS):**
@@ -185,7 +185,7 @@ The internal `SynthEngine` interface declares:
 ```cpp
 virtual void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) = 0;
 ```
-These match. However the **SDK** `SynthEngine` (in `SDK/include/xomnibus/SynthEngine.h`) declares a different, JUCE-free signature:
+These match. However the **SDK** `SynthEngine` (in `SDK/include/xolokun/SynthEngine.h`) declares a different, JUCE-free signature:
 ```cpp
 virtual void renderBlock (StereoBuffer& buffer, const MidiEventList& midi) = 0;
 ```
@@ -244,20 +244,20 @@ The `attachParameters()` call covers all Wave 1 (44), Wave 2 (5), and Wave 3 (5)
 
 ---
 
-## Area 5 — SDK (`SDK/include/xomnibus/`)
+## Area 5 — SDK (`SDK/include/xolokun/`)
 
 **Status: PASS**
 
 ### Findings
 
 **[Medium] `CouplingType` enum is defined in two places with different values**
-File: `SDK/include/xomnibus/CouplingTypes.h` vs `Source/Core/SynthEngine.h`
+File: `SDK/include/xolokun/CouplingTypes.h` vs `Source/Core/SynthEngine.h`
 The SDK `CouplingTypes.h` defines 13 types (`AmpToFilter` through `AudioToBuffer`). The internal `Source/Core/SynthEngine.h` defines 14 types — it includes `KnotTopology` as a 14th type. The SDK is missing `KnotTopology`.
-This means community engines built against the SDK cannot declare support for KnotTopology coupling. If XOmnibus sends a `KnotTopology` coupling signal to an SDK engine, the `applyCouplingInput()` default handler will simply ignore it (the default implementation returns without action). This is safe but limits SDK engines from opting into the Knot coupling system.
-**Fix:** Add `KnotTopology` to `SDK/include/xomnibus/CouplingTypes.h` and update `kNumCouplingTypes` from 13 to 14, with a comment noting it is a V2 feature. Alternatively, leave it out until V2 and document the gap.
+This means community engines built against the SDK cannot declare support for KnotTopology coupling. If XOlokun sends a `KnotTopology` coupling signal to an SDK engine, the `applyCouplingInput()` default handler will simply ignore it (the default implementation returns without action). This is safe but limits SDK engines from opting into the Knot coupling system.
+**Fix:** Add `KnotTopology` to `SDK/include/xolokun/CouplingTypes.h` and update `kNumCouplingTypes` from 13 to 14, with a comment noting it is a V2 feature. Alternatively, leave it out until V2 and document the gap.
 
 **[Low] `kNumCouplingTypes = 13` is a magic constant that can silently go stale**
-File: `SDK/include/xomnibus/CouplingTypes.h` line 27
+File: `SDK/include/xolokun/CouplingTypes.h` line 27
 ```cpp
 constexpr int kNumCouplingTypes = 13;
 ```
@@ -265,7 +265,7 @@ If a new type is added to the enum without updating this constant, iterating cod
 **Fix:** Use `static_cast<int>(CouplingType::AudioToBuffer) + 1` or add a `kCount` sentinel at the end of the enum.
 
 **[Low] `EngineMetadata::sdkVersion` is hardcoded to 1 in the export macro and never externally configurable**
-File: `SDK/include/xomnibus/EngineModule.h` line 72
+File: `SDK/include/xolokun/EngineModule.h` line 72
 ```cpp
 out->sdkVersion = 1;
 ```
@@ -281,16 +281,16 @@ Community developers will take this as a reference implementation. The SDK's `Sy
 **Fix (Low):** Add a comment: `// Replace std::sin with a fast approximation in production code`. Optionally include a header-only `fastSin` in the SDK.
 
 **JUCE-free guarantee (PASS):**
-`SDK/include/xomnibus/SynthEngine.h`, `CouplingTypes.h`, and `EngineModule.h` contain zero JUCE includes. The only standard library headers used are `<string>`, `<cstdint>`, `<vector>`, `<memory>`, `<cstring>`. The SDK is clean.
+`SDK/include/xolokun/SynthEngine.h`, `CouplingTypes.h`, and `EngineModule.h` contain zero JUCE includes. The only standard library headers used are `<string>`, `<cstdint>`, `<vector>`, `<memory>`, `<cstring>`. The SDK is clean.
 
 **API correctness (PASS):**
 The `SynthEngine` pure virtuals (`prepare`, `reset`, `renderBlock`, `getParameterDefs`, `getEngineId`) are the minimal correct set. Default no-op implementations for optional methods (`releaseResources`, `setParameter`, `getParameter`, `getSampleForCoupling`, `applyCouplingInput`) are appropriate and safe.
 
 **Export macro (PASS):**
-`XOMNIBUS_EXPORT_ENGINE` uses `std::memset` + `std::strncpy` with `sizeof(field) - 1` guards. The null-pointer guard `if (!out) return;` is present. Cross-platform `__declspec(dllexport)` / `__attribute__((visibility("default")))` handled correctly.
+`XOLOKUN_EXPORT_ENGINE` uses `std::memset` + `std::strncpy` with `sizeof(field) - 1` guards. The null-pointer guard `if (!out) return;` is present. Cross-platform `__declspec(dllexport)` / `__attribute__((visibility("default")))` handled correctly.
 
 **MinimalEngine template (PASS):**
-The template compiles against the SDK interface (uses `StereoBuffer`, `MidiEventList`), demonstrates note-on/off MIDI handling, additive audio output (correct for XOmnibus's summing model), and correct parameter definition format.
+The template compiles against the SDK interface (uses `StereoBuffer`, `MidiEventList`), demonstrates note-on/off MIDI handling, additive audio output (correct for XOlokun's summing model), and correct parameter definition format.
 
 ---
 

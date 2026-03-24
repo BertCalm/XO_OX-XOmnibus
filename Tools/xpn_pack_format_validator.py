@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-xpn_pack_format_validator.py — Deep XPN/XPM format validator for XO_OX XOmnibus packs.
+xpn_pack_format_validator.py — Deep XPN/XPM format validator for XO_OX XOlokun packs.
 
 Validates XPM XML schema and MPC compatibility beyond surface-level QA checks.
 
@@ -349,7 +349,7 @@ def render_json(results: list, summary: dict) -> str:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Deep XPN/XPM format validator for XO_OX XOmnibus packs."
+        description="Deep XPN/XPM format validator for XO_OX XOlokun packs."
     )
     parser.add_argument("target", help="Path to a .xpm file or directory to scan recursively")
     parser.add_argument(

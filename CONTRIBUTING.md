@@ -1,10 +1,10 @@
-# Contributing to XOmnibus
+# Contributing to XOlokun
 
-Thanks for your interest in contributing to XOmnibus! This document covers everything you need to get started.
+Thanks for your interest in contributing to XOlokun! This document covers everything you need to get started.
 
 ## Environment Setup
 
-XOmnibus requires:
+XOlokun requires:
 - **CMake** 3.22+
 - **Ninja** build system
 - **C++17** compiler (Xcode on macOS, GCC/Clang on Linux)
@@ -25,7 +25,7 @@ cmake --build build
 
 ```bash
 auval -a  # List all Audio Units
-auval -v aumu Xomn Xoox  # Validate XOmnibus AU
+auval -v aumu Xomn Xoox  # Validate XOlokun AU
 ```
 
 ## Architecture Overview
@@ -34,7 +34,7 @@ auval -v aumu Xomn Xoox  # Validate XOmnibus AU
 - **Core** (`Source/Core/`): Engine registry, coupling matrix, preset manager.
 - **DSP** (`Source/DSP/`): Shared DSP library (filters, effects, SRO framework).
 - **UI** (`Source/UI/`): Gallery Model components.
-- **Presets** (`Presets/XOmnibus/`): `.xometa` JSON files organized by mood.
+- **Presets** (`Presets/XOlokun/`): `.xometa` JSON files organized by mood.
 - **Tools** (`Tools/`): Python utilities for preset management and XPN export.
 
 ## Code Style

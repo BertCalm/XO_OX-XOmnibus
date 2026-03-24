@@ -1,9 +1,9 @@
-# XOmnibus — Monorepo Structure & Migration Plan
+# XOlokun — Monorepo Structure & Migration Plan
 
 **Version:** 1.0
 **Author:** XO_OX Designs
 **Date:** 2026-03-08
-**Purpose:** Define the GitHub monorepo structure for XOmnibus and the migration plan from 6 existing XO_OX repos
+**Purpose:** Define the GitHub monorepo structure for XOlokun and the migration plan from 6 existing XO_OX repos
 
 ---
 
@@ -11,15 +11,15 @@
 
 ### Why a Monorepo
 
-XOmnibus is the collected works of XO_OX Designs — 7 synth engines unified into a single gallery-model instrument. A monorepo is the correct structure for three reasons:
+XOlokun is the collected works of XO_OX Designs — 7 synth engines unified into a single gallery-model instrument. A monorepo is the correct structure for three reasons:
 
 1. **Shared DSP.** CytomicSVF, PolyBLEP, FastMath, ADSR, Wavetable, DCBlocker, and Reverb are used across multiple engines. A monorepo means one copy, one place to fix bugs, one place to optimize. No submodule version drift, no diamond dependency problems.
 
 2. **Single build system.** One CMakeLists.txt builds all engines, the shared DSP library, the PlaySurface, the UI shell, and the plugin targets for macOS and iOS. CI runs once, validates everything. No per-repo build matrix.
 
-3. **Clean forward.** The 6 existing repos were each built as standalone instruments. They served that purpose. XOmnibus is a new product with a new architecture (gallery shell, engine registry, coupling matrix, shared preset system). Migrating into a fresh repo avoids carrying forward 6 different directory conventions, build configs, and naming patterns.
+3. **Clean forward.** The 6 existing repos were each built as standalone instruments. They served that purpose. XOlokun is a new product with a new architecture (gallery shell, engine registry, coupling matrix, shared preset system). Migrating into a fresh repo avoids carrying forward 6 different directory conventions, build configs, and naming patterns.
 
-**Repo location:** `~/Documents/GitHub/XOmnibus/`
+**Repo location:** `~/Documents/GitHub/XOlokun/`
 **Existing repos:** Archived as read-only historical references after migration.
 
 ---
@@ -27,7 +27,7 @@ XOmnibus is the collected works of XO_OX Designs — 7 synth engines unified int
 ## 2. Directory Structure
 
 ```
-XOmnibus/
+XOlokun/
 ├── CLAUDE.md                          # Agent guide (see Section 4)
 ├── CMakeLists.txt                     # Top-level build (see Section 3)
 ├── ios.cmake                          # iOS cross-compilation toolchain
@@ -95,7 +95,7 @@ XOmnibus/
 │   │   └── PerfPads.h/.cpp            # Performance pad triggers
 │   │
 │   ├── UI/
-│   │   ├── XOmnibusLookAndFeel.h/.cpp # Gallery shell look-and-feel
+│   │   ├── XOlokunLookAndFeel.h/.cpp # Gallery shell look-and-feel
 │   │   ├── ThemeManager.h/.cpp        # Light/dark mode, engine accent registration
 │   │   ├── HeaderBar.h/.cpp           # Logo, preset nav, macro knobs
 │   │   ├── BottomBar.h/.cpp           # Mood tabs, browser/DNA/sequencer toggle
@@ -116,7 +116,7 @@ XOmnibus/
 │   └── PluginEditor.h/.cpp            # Main editor: shell layout, engine panel hosting
 │
 ├── Presets/
-│   └── XOmnibus/                      # .xometa files organized by mood
+│   └── XOlokun/                      # .xometa files organized by mood
 │       ├── Foundation/                # Terracotta — grounded, solid, rhythmic
 │       ├── Atmosphere/                # Teal — ambient, floating, textural
 │       ├── Entangled/                 # Gold — cross-engine, coupled, complex
@@ -134,10 +134,10 @@ XOmnibus/
 │       └── xpn_export.py             # MPC .xpn pack builder
 │
 ├── Docs/
-│   ├── xomnibus_repo_structure.md     # This document
-│   ├── xomnibus_technical_design_system.md
-│   ├── xomnibus_brand_identity_and_launch.md
-│   ├── xomnibus_preset_spec_for_builder.md
+│   ├── xolokun_repo_structure.md     # This document
+│   ├── xolokun_technical_design_system.md
+│   ├── xolokun_brand_identity_and_launch.md
+│   ├── xolokun_preset_spec_for_builder.md
 │   ├── xo_mega_tool_engine_catalog.md
 │   ├── xo_mega_tool_chaining_architecture.md
 │   ├── xo_mega_tool_preset_system.md
@@ -186,7 +186,7 @@ XOmnibus/
 
 ```cmake
 cmake_minimum_required(VERSION 3.24)
-project(XOmnibus VERSION 1.0.0 LANGUAGES CXX)
+project(XOlokun VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -201,7 +201,7 @@ else()
     set(XO_PLATFORM "macOS")
 endif()
 
-message(STATUS "XOmnibus — Building for ${XO_PLATFORM}")
+message(STATUS "XOlokun — Building for ${XO_PLATFORM}")
 
 # ── JUCE ────────────────────────────────────────────────────────────
 add_subdirectory(Libs/JUCE)
@@ -258,7 +258,7 @@ target_link_libraries(XO_Surface PUBLIC XO_Core juce::juce_gui_basics)
 
 # ── UI Library ──────────────────────────────────────────────────────
 add_library(XO_UI STATIC
-    Source/UI/XOmnibusLookAndFeel.cpp
+    Source/UI/XOlokunLookAndFeel.cpp
     Source/UI/ThemeManager.cpp
     Source/UI/HeaderBar.cpp
     Source/UI/BottomBar.cpp
@@ -285,10 +285,10 @@ target_link_libraries(XO_Export PUBLIC XO_Core juce::juce_core)
 # ── Plugin Target ───────────────────────────────────────────────────
 if(XO_MOBILE)
     # iOS: AUv3 + Standalone
-    juce_add_plugin(XOmnibus
-        PRODUCT_NAME "XOmnibus"
+    juce_add_plugin(XOlokun
+        PRODUCT_NAME "XOlokun"
         COMPANY_NAME "XO_OX Designs"
-        BUNDLE_ID "com.xo-ox.xomnibus"
+        BUNDLE_ID "com.xo-ox.xolokun"
         PLUGIN_MANUFACTURER_CODE XoOx
         PLUGIN_CODE Xomn
         FORMATS AUv3 Standalone
@@ -298,10 +298,10 @@ if(XO_MOBILE)
     )
 else()
     # macOS: AU + VST3 + Standalone
-    juce_add_plugin(XOmnibus
-        PRODUCT_NAME "XOmnibus"
+    juce_add_plugin(XOlokun
+        PRODUCT_NAME "XOlokun"
         COMPANY_NAME "XO_OX Designs"
-        BUNDLE_ID "com.xo-ox.xomnibus"
+        BUNDLE_ID "com.xo-ox.xolokun"
         PLUGIN_MANUFACTURER_CODE XoOx
         PLUGIN_CODE Xomn
         FORMATS AU VST3 Standalone
@@ -311,12 +311,12 @@ else()
     )
 endif()
 
-target_sources(XOmnibus PRIVATE
+target_sources(XOlokun PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
 )
 
-target_link_libraries(XOmnibus PRIVATE
+target_link_libraries(XOlokun PRIVATE
     XO_Core
     XO_DSP
     XO_Fat
@@ -342,7 +342,7 @@ target_link_libraries(XOmnibus PRIVATE
     juce::juce_gui_extra
 )
 
-target_compile_definitions(XOmnibus PUBLIC
+target_compile_definitions(XOlokun PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
@@ -350,7 +350,7 @@ target_compile_definitions(XOmnibus PUBLIC
 )
 
 # ── Binary Assets (fonts, icons) ────────────────────────────────────
-juce_add_binary_data(XOmnibusAssets SOURCES
+juce_add_binary_data(XOlokunAssets SOURCES
     Assets/fonts/Inter-Regular.ttf
     Assets/fonts/Inter-Medium.ttf
     Assets/fonts/Inter-SemiBold.ttf
@@ -359,10 +359,10 @@ juce_add_binary_data(XOmnibusAssets SOURCES
     Assets/images/logo-light.svg
     Assets/images/logo-dark.svg
 )
-target_link_libraries(XOmnibus PRIVATE XOmnibusAssets)
+target_link_libraries(XOlokun PRIVATE XOlokunAssets)
 
 # ── Tests (optional, gated behind BUILD_TESTING) ────────────────────
-option(XO_BUILD_TESTS "Build XOmnibus test suite" OFF)
+option(XO_BUILD_TESTS "Build XOlokun test suite" OFF)
 if(XO_BUILD_TESTS)
     enable_testing()
     add_subdirectory(Tests)
@@ -390,14 +390,14 @@ cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DXO_BUILD_TESTS=ON && cmake --
 
 ## 4. CLAUDE.md Template
 
-The following is the complete `CLAUDE.md` to be placed at the repo root (`XOmnibus/CLAUDE.md`):
+The following is the complete `CLAUDE.md` to be placed at the repo root (`XOlokun/CLAUDE.md`):
 
 ````markdown
-# XOmnibus — Claude Code Project Guide
+# XOlokun — Claude Code Project Guide
 
 ## Product Identity
 
-XOmnibus ("for all") is the collected works of **XO_OX Designs** — 7 synth engines
+XOlokun ("for all") is the collected works of **XO_OX Designs** — 7 synth engines
 unified in a gallery-model instrument. Each engine is a distinct sonic exhibition; the
 platform provides a clean neutral shell, shared DSP, coupling between engines, and a
 unified preset system.
@@ -444,7 +444,7 @@ unified preset system.
 | Source/Surface/ | PlaySurface, NoteInput, OrbitPath, PerfStrip, PerfPads |
 | Source/UI/ | Gallery shell: LookAndFeel, panels, browser, coupling view |
 | Source/Export/ | XPN/XPM pipeline for MPC export |
-| Presets/XOmnibus/ | .xometa files by mood (6 categories) |
+| Presets/XOlokun/ | .xometa files by mood (6 categories) |
 | Tools/ | Python utilities (DNA, breeding, migration, export) |
 | Assets/ | Icons (SVG), fonts (TTF), images |
 
@@ -483,13 +483,13 @@ cmake -B build-ios -G Xcode -DCMAKE_TOOLCHAIN_FILE=ios.cmake
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DXO_BUILD_TESTS=ON && cmake --build build && ctest --test-dir build
 
 # auval validation (macOS, after build)
-auval -a | grep XOmnibus
+auval -a | grep XOlokun
 ```
 
 ## Preset System
 
 - **Format:** `.xometa` JSON (version-controlled, human-readable)
-- **Location:** `Presets/XOmnibus/{mood}/`
+- **Location:** `Presets/XOlokun/{mood}/`
 - **6 moods:** Foundation, Atmosphere, Entangled, Prism, Flux, Aether
 - **Sonic DNA:** 6-dimensional vector (Brightness, Warmth, Movement, Density, Space, Aggression)
 - **Target:** 1000 presets (519 already migrated)
@@ -498,7 +498,7 @@ auval -a | grep XOmnibus
 
 ## Design System Reference
 
-See `Docs/xomnibus_technical_design_system.md` for the full visual specification:
+See `Docs/xolokun_technical_design_system.md` for the full visual specification:
 - Gallery model: warm white shell (#F8F6F3), engine-specific accent panels
 - XO Gold (#E9C46A) for brand constants (macro knobs, active states, coupling)
 - Light mode default, dark mode toggle
@@ -526,7 +526,7 @@ See `Docs/xomnibus_technical_design_system.md` for the full visual specification
 
 | Step | Action | Verify |
 |------|--------|--------|
-| 1.1 | Create `~/Documents/GitHub/XOmnibus/` repo on GitHub | `git clone` succeeds |
+| 1.1 | Create `~/Documents/GitHub/XOlokun/` repo on GitHub | `git clone` succeeds |
 | 1.2 | Create full directory structure (all dirs from Section 2) | `ls -R` matches tree |
 | 1.3 | Clone JUCE 8.0.12 into `Libs/JUCE/` | `Libs/JUCE/CMakeLists.txt` exists |
 | 1.4 | Write `CMakeLists.txt` (Section 3 draft) | — |
@@ -593,7 +593,7 @@ After at least 2 engines are migrated and building:
 | 3.1 | PlaySurface | Port XOblong's PlaySurface into `Source/Surface/`, generalize for multi-engine use |
 | 3.2 | PresetManager | Implement `.xometa` JSON loading/saving with mood categorization in `Source/Core/` |
 | 3.3 | PresetBrowser | Build card grid UI with mood tabs, search, DNA sparklines in `Source/UI/` |
-| 3.4 | XOmnibusLookAndFeel | Implement gallery shell (warm white frame, per-engine accent panels, light/dark toggle) per design system |
+| 3.4 | XOlokunLookAndFeel | Implement gallery shell (warm white frame, per-engine accent panels, light/dark toggle) per design system |
 | 3.5 | CouplingMatrix | Port from OddfeliX/OddOscar, generalize to arbitrary engine pairs |
 | 3.6 | SharedTransport | Global BPM, sync, clock shared across all engines |
 | 3.7 | SonicDNA | Port `compute_preset_dna.py` logic into C++ for real-time DNA display |
@@ -617,7 +617,7 @@ After all engines and shared systems are in place:
 
 | Step | Task | Details |
 |------|------|---------|
-| 5.1 | Import migrated presets | Copy 519 `.xometa` files into `Presets/XOmnibus/` by mood |
+| 5.1 | Import migrated presets | Copy 519 `.xometa` files into `Presets/XOlokun/` by mood |
 | 5.2 | Parameter ID remapping | Update all parameter IDs in imported presets to use new engine-prefixed names |
 | 5.3 | Validation pass | Load every imported preset, verify no missing parameters, no silent failures |
 | 5.4 | DNA computation | Run `compute_preset_dna.py` on all 519 presets, embed DNA vectors |
@@ -629,12 +629,12 @@ After all engines and shared systems are in place:
 
 ## 6. Archive Plan for Existing Repos
 
-After migration is complete and XOmnibus is building with all engines validated:
+After migration is complete and XOlokun is building with all engines validated:
 
 | Step | Action |
 |------|--------|
 | 6.1 | Tag each repo with `v1.0-standalone-archive` |
-| 6.2 | Add archive notice to each repo's README: *"This project has been merged into [XOmnibus](https://github.com/xo-ox-designs/XOmnibus). This repo is archived as a historical reference."* |
+| 6.2 | Add archive notice to each repo's README: *"This project has been merged into [XOlokun](https://github.com/xo-ox-designs/XOlokun). This repo is archived as a historical reference."* |
 | 6.3 | Set each repo to archived/read-only on GitHub (Settings > Archive) |
 | 6.4 | Do NOT delete any repos — they serve as historical reference for design decisions, commit history, and issue discussions |
 
@@ -659,7 +659,7 @@ Note: XOnset has no existing repo (spec only, lives in OddfeliX/OddOscar docs) �
 
 ```yaml
 # .github/workflows/build.yml
-name: XOmnibus Build
+name: XOlokun Build
 on:
   push:
     branches: [main, develop]
@@ -706,9 +706,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Schema validation
-        run: python3 Tools/validate_presets.py Presets/XOmnibus/
+        run: python3 Tools/validate_presets.py Presets/XOlokun/
       - name: DNA completeness check
-        run: python3 Tools/compute_preset_dna.py --check Presets/XOmnibus/
+        run: python3 Tools/compute_preset_dna.py --check Presets/XOlokun/
 ```
 
 ### CI Checklist
@@ -726,4 +726,4 @@ jobs:
 
 ---
 
-*This document is the source of truth for XOmnibus repo structure and migration. Update it as decisions evolve.*
+*This document is the source of truth for XOlokun repo structure and migration. Update it as decisions evolve.*

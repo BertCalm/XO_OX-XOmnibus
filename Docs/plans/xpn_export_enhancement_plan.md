@@ -83,7 +83,7 @@ Common export configurations as one-click profiles:
 ### 4a. Screen Reader Support for Export Dialog
 All export UI controls need JUCE accessibility attributes:
 - `setAccessible(true)`, `setTitle()`, `setDescription()` on every interactive element
-- Focus ring drawing (already in `A11y` namespace in XOmnibusEditor.h)
+- Focus ring drawing (already in `A11y` namespace in XOlokunEditor.h)
 - Keyboard tab order for all controls
 - Announce progress updates to screen readers via `AccessibilityHandler::postAnnouncement()`
 

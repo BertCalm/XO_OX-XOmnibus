@@ -1,4 +1,4 @@
-# Sonic DNA Audit — XOmnibus Library
+# Sonic DNA Audit — XOlokun Library
 
 **Date:** 2026-03-14
 **Tool:** `Tools/audit_sonic_dna.py`
@@ -125,10 +125,10 @@ All 3 Oblique gaps are resolved.
 
 | File | Corner | DNA Summary |
 |------|--------|-------------|
-| `Presets/XOmnibus/Prism/Morph_Razor_Crest.xometa` | High brightness + High aggression | B=0.92 W=0.18 M=0.55 D=0.70 S=0.30 A=0.91 |
-| `Presets/XOmnibus/Foundation/Morph_Digital_Lattice.xometa` | Low warmth + High density | B=0.65 W=0.08 M=0.45 D=0.92 S=0.40 A=0.48 |
-| `Presets/XOmnibus/Atmosphere/Morph_Deep_Void.xometa` | High space + Low movement | B=0.42 W=0.55 M=0.04 D=0.52 S=0.96 A=0.08 |
-| `Presets/XOmnibus/Aether/Morph_Maximum_State.xometa` | Max everything | B=0.88 W=0.86 M=0.88 D=0.92 S=0.90 A=0.85 |
+| `Presets/XOlokun/Prism/Morph_Razor_Crest.xometa` | High brightness + High aggression | B=0.92 W=0.18 M=0.55 D=0.70 S=0.30 A=0.91 |
+| `Presets/XOlokun/Foundation/Morph_Digital_Lattice.xometa` | Low warmth + High density | B=0.65 W=0.08 M=0.45 D=0.92 S=0.40 A=0.48 |
+| `Presets/XOlokun/Atmosphere/Morph_Deep_Void.xometa` | High space + Low movement | B=0.42 W=0.55 M=0.04 D=0.52 S=0.96 A=0.08 |
+| `Presets/XOlokun/Aether/Morph_Maximum_State.xometa` | Max everything | B=0.88 W=0.86 M=0.88 D=0.92 S=0.90 A=0.85 |
 
 **Morph Razor Crest** — Wavetable at peak spectral position (morph=0.98), high filter resonance (0.88), fast decay. Establishes the high-brightness/high-aggression corner that was completely absent.
 
@@ -142,10 +142,10 @@ All 3 Oblique gaps are resolved.
 
 | File | Corner | DNA Summary |
 |------|--------|-------------|
-| `Presets/XOmnibus/Prism/UV_Overload.xometa` | High brightness + High aggression | B=0.93 W=0.10 M=0.90 D=0.78 S=0.25 A=0.92 |
-| `Presets/XOmnibus/Flux/Ice_Lattice_Pulse.xometa` | Low warmth + High density | B=0.70 W=0.08 M=0.88 D=0.91 S=0.35 A=0.60 |
-| `Presets/XOmnibus/Aether/Deep_Signal_Drift.xometa` | High space + Low movement | B=0.48 W=0.62 M=0.12 D=0.42 S=0.96 A=0.08 |
-| `Presets/XOmnibus/Flux/Optic_Maximum_State.xometa` | Max everything | B=0.87 W=0.85 M=0.93 D=0.90 S=0.86 A=0.88 |
+| `Presets/XOlokun/Prism/UV_Overload.xometa` | High brightness + High aggression | B=0.93 W=0.10 M=0.90 D=0.78 S=0.25 A=0.92 |
+| `Presets/XOlokun/Flux/Ice_Lattice_Pulse.xometa` | Low warmth + High density | B=0.70 W=0.08 M=0.88 D=0.91 S=0.35 A=0.60 |
+| `Presets/XOlokun/Aether/Deep_Signal_Drift.xometa` | High space + Low movement | B=0.48 W=0.62 M=0.12 D=0.42 S=0.96 A=0.08 |
+| `Presets/XOlokun/Flux/Optic_Maximum_State.xometa` | Max everything | B=0.87 W=0.85 M=0.93 D=0.90 S=0.86 A=0.88 |
 
 **UV Overload** — AutoPulse at maximum accent depth (1.0), sharp square shape, high subdivision rate. OddfeliX adds transient snap. Both engines in overloaded territory. Brightness 0.93, Aggression 0.92.
 
@@ -159,10 +159,10 @@ All 3 Oblique gaps are resolved.
 
 | File | Corner | DNA Summary |
 |------|--------|-------------|
-| `Presets/XOmnibus/Prism/Oblique_Solar_Flare.xometa` | High brightness + High aggression | B=0.95 W=0.15 M=0.80 D=0.72 S=0.45 A=0.93 |
-| `Presets/XOmnibus/Foundation/Oblique_Velvet_Prism.xometa` | High warmth + Low density | B=0.22 W=0.88 M=0.35 D=0.22 S=0.65 A=0.08 |
-| `Presets/XOmnibus/Atmosphere/Oblique_Dark_Cathedral.xometa` | High space + Low movement | B=0.28 W=0.55 M=0.05 D=0.42 S=0.97 A=0.12 |
-| `Presets/XOmnibus/Entangled/Oblique_Maximum_State.xometa` | Max everything | B=0.88 W=0.82 M=0.92 D=0.90 S=0.88 A=0.90 |
+| `Presets/XOlokun/Prism/Oblique_Solar_Flare.xometa` | High brightness + High aggression | B=0.95 W=0.15 M=0.80 D=0.72 S=0.45 A=0.93 |
+| `Presets/XOlokun/Foundation/Oblique_Velvet_Prism.xometa` | High warmth + Low density | B=0.22 W=0.88 M=0.35 D=0.22 S=0.65 A=0.08 |
+| `Presets/XOlokun/Atmosphere/Oblique_Dark_Cathedral.xometa` | High space + Low movement | B=0.28 W=0.55 M=0.05 D=0.42 S=0.97 A=0.12 |
+| `Presets/XOlokun/Entangled/Oblique_Maximum_State.xometa` | Max everything | B=0.88 W=0.82 M=0.92 D=0.90 S=0.88 A=0.90 |
 
 **Oblique Solar Flare** — Wavefold at 0.95 on sawtooth, filter ceiling at 16kHz, resonance 0.72, prism feedback near breaking (0.75), fast high-pitched clicks. Brightness 0.95, Aggression 0.93 — previously impossible without wavefold at max.
 

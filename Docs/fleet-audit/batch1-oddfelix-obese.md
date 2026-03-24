@@ -1,4 +1,4 @@
-# XOmnibus Preset Quality Audit — Batch 1
+# XOlokun Preset Quality Audit — Batch 1
 **Engines:** OddfeliX, OddOscar, Overdub, Odyssey, Oblong, Obese, Overbite
 **Date:** 2026-03-21
 **Auditor:** Rodrigo (automated + structural analysis)

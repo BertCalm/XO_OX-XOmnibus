@@ -11,7 +11,7 @@
 #include <cmath>
 #include <mutex>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SoundShapeClassifier — Analyzes preset DNA + engines to determine optimal
@@ -52,7 +52,7 @@ public:
 
             if (upper == "OVERWORLD" || upper == "XOVERWORLD")
             {
-                // Drum kit mode is an XOmnibus-level param stored under the engine name
+                // Drum kit mode is an XOlokun-level param stored under the engine name
                 auto it = preset.parametersByEngine.find(eng);
                 if (it != preset.parametersByEngine.end())
                     if (auto* obj = it->second.getDynamicObject())
@@ -118,7 +118,7 @@ private:
 };
 
 //==============================================================================
-// XOriginate — Renders XOmnibus presets to WAV samples and packages them
+// XOriginate — Renders XOlokun presets to WAV samples and packages them
 // as MPC-compatible .xpn expansion packs.
 //
 // IMPORTANT: All rendering runs on a worker thread (never the audio thread).
@@ -234,10 +234,10 @@ public:
     };
 
     struct BundleConfig {
-        juce::String name;                     // e.g. "XOmnibus - Foundation"
+        juce::String name;                     // e.g. "XOlokun - Foundation"
         juce::String manufacturer = "XO_OX Designs";
         juce::String version      = "1.0.0";
-        juce::String bundleId;                 // e.g. "com.xo-ox.xomnibus.foundation"
+        juce::String bundleId;                 // e.g. "com.xo-ox.xolokun.foundation"
         juce::String description;
         juce::String coverEngine;              // Engine ID for cover art style (e.g. "ONSET")
         juce::File   outputDir;
@@ -1258,4 +1258,4 @@ private:
 // Backward-compatibility alias — use XOriginate in new code
 using XPNExporter = XOriginate;
 
-} // namespace xomnibus
+} // namespace xolokun

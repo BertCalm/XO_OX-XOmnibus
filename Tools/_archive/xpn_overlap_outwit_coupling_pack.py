@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate OVERLAP and OUTWIT coupling presets for XOmnibus.
+"""Generate OVERLAP and OUTWIT coupling presets for XOlokun.
 
 Seeds Entangled coupling coverage for two newly installed engines:
   - OVERLAP  (Lion's Mane jellyfish FDN reverb,   olap_ prefix)
@@ -327,10 +327,10 @@ def build_presets(rng: random.Random) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Generate OVERLAP + OUTWIT coupling presets for XOmnibus."
+        description="Generate OVERLAP + OUTWIT coupling presets for XOlokun."
     )
     repo_root = Path(__file__).resolve().parent.parent
-    default_out = repo_root / "Presets" / "XOmnibus" / "Entangled"
+    default_out = repo_root / "Presets" / "XOlokun" / "Entangled"
 
     parser.add_argument(
         "--output-dir",

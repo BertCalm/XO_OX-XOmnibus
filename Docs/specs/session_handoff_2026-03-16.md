@@ -97,7 +97,7 @@
 | coupling_dna_pack_design_rnd.md        | Coupling DNA & XPN Pack Design — R&D                                 | 339   |
 | engine_sound_design_philosophy_rnd.md  | Engine Sound Design Philosophy — XPN Pack Design Rules               | 193   |
 | generative_kit_architectures_rnd.md    | Generative Kit Architectures R&D                                     | 713   |
-| juce_to_mpc_workflow_rnd.md            | JUCE to MPC Workflow: XOmnibus to XPN Pack                           | 205   |
+| juce_to_mpc_workflow_rnd.md            | JUCE to MPC Workflow: XOlokun to XPN Pack                           | 205   |
 | kit_curation_innovation_rnd.md         | Kit Curation Innovation — R&D Session                                | 1005  |
 | live_performance_xpn_rnd.md            | Live Performance XPN — R&D Session                                   | 881   |
 | mpc3_advanced_workflow_rnd.md          | MPC OS 3.x Advanced Workflow R&D                                     | 103   |

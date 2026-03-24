@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-XOmnibus Preset Search Engine — Full-text search across .xometa preset library
+XOlokun Preset Search Engine — Full-text search across .xometa preset library
 
 Searches preset name, description, tags, engines, mood, macro labels,
 and parameter names simultaneously with relevance scoring.
@@ -15,9 +15,9 @@ Options:
     --format text|json  Output format (default: text)
 
 Examples:
-    python xpn_preset_search_engine.py Presets/XOmnibus "warm bass"
-    python xpn_preset_search_engine.py Presets/XOmnibus "pad" --engine OPAL --top 20
-    python xpn_preset_search_engine.py Presets/XOmnibus "dark" --mood Atmosphere --format json
+    python xpn_preset_search_engine.py Presets/XOlokun "warm bass"
+    python xpn_preset_search_engine.py Presets/XOlokun "pad" --engine OPAL --top 20
+    python xpn_preset_search_engine.py Presets/XOlokun "dark" --mood Atmosphere --format json
 """
 
 import json
@@ -272,7 +272,7 @@ def format_json(results):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Full-text search across XOmnibus .xometa preset library"
+        description="Full-text search across XOlokun .xometa preset library"
     )
     parser.add_argument("presets_dir", help="Path to presets directory (searched recursively)")
     parser.add_argument("query", help="Search query (space-separated tokens)")

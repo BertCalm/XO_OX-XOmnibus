@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Fix 5 known bugs in XOmnibusEditor.h — stale tagline, missing mood filters, broken right-click, missing engine removal, vacuous mouseUp check.
+**Goal:** Fix 5 known bugs in XOlokunEditor.h — stale tagline, missing mood filters, broken right-click, missing engine removal, vacuous mouseUp check.
 
-**Architecture:** All changes are in `Source/UI/XOmnibusEditor.h` (3006 lines, inline header). No new files. No DSP changes. No preset changes. Pure UI correctness fixes.
+**Architecture:** All changes are in `Source/UI/XOlokunEditor.h` (3006 lines, inline header). No new files. No DSP changes. No preset changes. Pure UI correctness fixes.
 
 **Tech Stack:** JUCE 8, C++17, inline headers. Build: `cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release && cmake --build build`
 
@@ -15,7 +15,7 @@
 ### Task 1: Fix stale header tagline (line 2813)
 
 **Files:**
-- Modify: `Source/UI/XOmnibusEditor.h:2813`
+- Modify: `Source/UI/XOlokunEditor.h:2813`
 
 - [ ] **Step 1: Locate and read the stale string**
 
@@ -46,7 +46,7 @@ Expected: 0 errors. The tagline should now read "46 Engines · 14 Coupling Types
 - [ ] **Step 4: Commit**
 
 ```bash
-git add Source/UI/XOmnibusEditor.h
+git add Source/UI/XOlokunEditor.h
 git commit -m "fix: dynamic engine/preset counts in header tagline (was hardcoded 21/1600)"
 ```
 
@@ -55,7 +55,7 @@ git commit -m "fix: dynamic engine/preset counts in header tagline (was hardcode
 ### Task 2: Fix mouseUp button check bug (line 883)
 
 **Files:**
-- Modify: `Source/UI/XOmnibusEditor.h:881-884`
+- Modify: `Source/UI/XOlokunEditor.h:881-884`
 
 - [ ] **Step 1: Read the current mouseUp handler**
 
@@ -112,7 +112,7 @@ Expected: 0 errors.
 - [ ] **Step 4: Commit**
 
 ```bash
-git add Source/UI/XOmnibusEditor.h
+git add Source/UI/XOlokunEditor.h
 git commit -m "fix: remove vacuous isLeftButtonDown check in CompactEngineTile mouseUp"
 ```
 
@@ -121,7 +121,7 @@ git commit -m "fix: remove vacuous isLeftButtonDown check in CompactEngineTile m
 ### Task 3: Add missing mood filter tabs — Family and Submerged (lines 1422, 1487, 1575, 1606)
 
 **Files:**
-- Modify: `Source/UI/XOmnibusEditor.h` at 4 locations
+- Modify: `Source/UI/XOlokunEditor.h` at 4 locations
 
 - [ ] **Step 1: Update kNumMoods (line 1606)**
 
@@ -192,7 +192,7 @@ Expected: 0 errors. The preset browser should now show 9 mood tabs.
 - [ ] **Step 7: Commit**
 
 ```bash
-git add Source/UI/XOmnibusEditor.h
+git add Source/UI/XOlokunEditor.h
 git commit -m "fix: add Family and Submerged mood tabs to preset browser (was missing 2 of 8)"
 ```
 
@@ -201,7 +201,7 @@ git commit -m "fix: add Family and Submerged mood tabs to preset browser (was mi
 ### Task 4: Implement right-click context menu + engine removal (lines 881, 899)
 
 **Files:**
-- Modify: `Source/UI/XOmnibusEditor.h` CompactEngineTile class
+- Modify: `Source/UI/XOlokunEditor.h` CompactEngineTile class
 
 - [ ] **Step 1: Add mouseDown handler for right-click**
 
@@ -282,7 +282,7 @@ if (result == 9999)
 }
 ```
 
-- [ ] **Step 4: Wire onEngineRemoved in XOmnibusEditor**
+- [ ] **Step 4: Wire onEngineRemoved in XOlokunEditor**
 
 In the main editor where CompactEngineTile instances are created, add:
 ```cpp
@@ -308,7 +308,7 @@ Expected: 0 errors. Right-clicking a loaded engine slot should show: Change Engi
 - [ ] **Step 7: Commit**
 
 ```bash
-git add Source/UI/XOmnibusEditor.h
+git add Source/UI/XOlokunEditor.h
 git commit -m "feat: right-click context menu on engine slots (change/remove/move)"
 ```
 
@@ -326,7 +326,7 @@ Expected: 0 errors, plugin installs to Components.
 - [ ] **Step 2: Open standalone and verify**
 
 ```bash
-open build/XOmnibus_artefacts/Release/Standalone/XOmnibus.app
+open build/XOlokun_artefacts/Release/Standalone/XOlokun.app
 ```
 
 Verify:
@@ -339,6 +339,6 @@ Verify:
 - [ ] **Step 3: Commit any final adjustments**
 
 ```bash
-git add Source/UI/XOmnibusEditor.h
-git commit -m "phase 1 complete: fix 5 broken UI elements in XOmnibusEditor"
+git add Source/UI/XOlokunEditor.h
+git commit -m "phase 1 complete: fix 5 broken UI elements in XOlokunEditor"
 ```

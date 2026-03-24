@@ -5,7 +5,7 @@
 #include "AttractorDrive.h"
 #include <juce_audio_processors/juce_audio_processors.h>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MathFXChain — 4 mathematical FX processors from the XOM-FX-CORE manifesto.
@@ -128,4 +128,4 @@ private:
     AttractorDrive attractorDrive;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

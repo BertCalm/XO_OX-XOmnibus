@@ -3,14 +3,14 @@
 xpn_hot_dense_preset_pack.py
 
 Generates "Hot Dense" quadrant presets (warmth 0.75-1.0, density 0.75-1.0)
-for XOmnibus engines. Targets thick analog bass and saturated pads in the
+for XOlokun engines. Targets thick analog bass and saturated pads in the
 Foundation mood category.
 
 Usage:
     python3 xpn_hot_dense_preset_pack.py
     python3 xpn_hot_dense_preset_pack.py --dry-run
     python3 xpn_hot_dense_preset_pack.py --count 5 --engines OBLONG,OBESE
-    python3 xpn_hot_dense_preset_pack.py --output-dir Presets/XOmnibus/Foundation/ --seed 42
+    python3 xpn_hot_dense_preset_pack.py --output-dir Presets/XOlokun/Foundation/ --seed 42
 """
 
 import json
@@ -313,14 +313,14 @@ def write_preset(preset, output_dir, dry_run):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Generate Hot Dense quadrant presets for XOmnibus engines.",
+        description="Generate Hot Dense quadrant presets for XOlokun engines.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
     parser.add_argument(
         "--output-dir",
-        default="Presets/XOmnibus/Foundation/",
-        help="Output directory for generated presets (default: Presets/XOmnibus/Foundation/)",
+        default="Presets/XOlokun/Foundation/",
+        help="Output directory for generated presets (default: Presets/XOlokun/Foundation/)",
     )
     parser.add_argument(
         "--dry-run",

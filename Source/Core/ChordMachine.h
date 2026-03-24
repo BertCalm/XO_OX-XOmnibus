@@ -6,10 +6,10 @@
 #include <climits>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// Chord Machine — distributes chord voicings across XOmnibus's 4 engine slots.
+// Chord Machine — distributes chord voicings across XOlokun's 4 engine slots.
 //
 // One MIDI note in → 4 engine-specific MIDI notes out.
 // Each slot voices a different chord tone through its own synthesis engine.
@@ -1043,4 +1043,4 @@ private:
     double sr = 44100.0;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

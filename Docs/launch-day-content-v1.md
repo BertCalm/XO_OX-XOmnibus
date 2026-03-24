@@ -1,4 +1,4 @@
-# XOmnibus V1 — Launch Day Content
+# XOlokun V1 — Launch Day Content
 
 **Date drafted:** 2026-03-21
 **Product state:** 46 engines | ~22,000 presets | macOS AU + Standalone | MIT license | Free
@@ -11,7 +11,7 @@
 
 **(1/7)**
 
-XOmnibus V1 is out.
+XOlokun V1 is out.
 
 46 synthesis engines. ~22,000 presets. Cross-engine coupling in real time.
 
@@ -92,7 +92,7 @@ xo-ox.org
 
 ## 2. Single Tweet Version (280 char max)
 
-XOmnibus V1: 46 synthesis engines (Kuramoto vocal, mallet physics, cellular automata, continued fractions, Berlyne curiosity). Cross-engine coupling. ~22k presets. Free. MIT. macOS AU + Standalone. [DOWNLOAD LINK]
+XOlokun V1: 46 synthesis engines (Kuramoto vocal, mallet physics, cellular automata, continued fractions, Berlyne curiosity). Cross-engine coupling. ~22k presets. Free. MIT. macOS AU + Standalone. [DOWNLOAD LINK]
 
 *(243 characters)*
 
@@ -106,7 +106,7 @@ OPERA runs Kuramoto phase synchronization — 32 partials that lock together or 
 
 The coupling system connects them in real time. Load four engines. Wire the transient envelope of a percussion synth to the phase coherence of a vocal synth. Wire a granular cloud's density to the feedback depth of an entangled reverb. The space between the engines is where the music lives. ~22,000 factory presets. MIT license. Always free. Download at link in bio.
 
-#synthesizer #sounddesign #vst #plugin #openSource #freePlugin #audioPlugin #synthDIY #experimentalMusic #JUCE #macOS #electronicmusic #modularThinking #DSP #musicproduction #XOmnibus #XOOX
+#synthesizer #sounddesign #vst #plugin #openSource #freePlugin #audioPlugin #synthDIY #experimentalMusic #JUCE #macOS #electronicmusic #modularThinking #DSP #musicproduction #XOlokun #XOOX
 
 ---
 
@@ -118,7 +118,7 @@ The coupling system connects them in real time. Load four engines. Wire the tran
 
 ---
 
-I shipped XOmnibus V1 today.
+I shipped XOlokun V1 today.
 
 I've been sitting with that sentence for a few hours trying to figure out what the right thing to say is. The honest answer is: I don't know exactly what this is yet. I know what it contains — 46 synthesis engines, ~22,000 presets, a cross-engine coupling system, 14 coupling types, a shared DSP library — but the thing about building something like this for a year is that you lose the ability to see it from the outside.
 
@@ -154,7 +154,7 @@ xo-ox.org
 
 ---
 
-Hi r/synthesizers. I shipped XOmnibus V1 today. Free, MIT-licensed, macOS AU + Standalone. Download is at xo-ox.org. But that's not the interesting part.
+Hi r/synthesizers. I shipped XOlokun V1 today. Free, MIT-licensed, macOS AU + Standalone. Download is at xo-ox.org. But that's not the interesting part.
 
 The thing I kept getting wrong was assuming more engines meant more variety. It doesn't, by itself. You can have 46 engines that each sound like a slightly different subtractive synth with different filter characteristics. That's not what this is, but it's what it could have been.
 
@@ -182,13 +182,13 @@ It's one person, MIT license, always free. Happy to answer questions about speci
 
 ## 6. Forum Post (Gearspace)
 
-**Title:** XOmnibus V1 — cross-engine coupling architecture and physics citations, if you want them
+**Title:** XOlokun V1 — cross-engine coupling architecture and physics citations, if you want them
 
 **Subforum:** Instruments & Plug-Ins / Soft Synths, Samplers, ROMplers & Plugin Instruments
 
 ---
 
-I shipped XOmnibus V1 today. Free, open-source (MIT), macOS AU + Standalone. I'll put the download link at the bottom, but I want to lead with the technical specifics because Gearspace readers are the ones who'll actually care about them.
+I shipped XOlokun V1 today. Free, open-source (MIT), macOS AU + Standalone. I'll put the download link at the bottom, but I want to lead with the technical specifics because Gearspace readers are the ones who'll actually care about them.
 
 **The coupling system**
 

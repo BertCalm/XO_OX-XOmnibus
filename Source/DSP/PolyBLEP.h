@@ -2,7 +2,7 @@
 #include <cmath>
 #include "FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // PolyBLEP — Band-limited oscillator with polynomial BLEP anti-aliasing.
@@ -207,4 +207,4 @@ private:
     float triIntegrator = 0.0f;    // Leaky integrator state for triangle wave
 };
 
-} // namespace xomnibus
+} // namespace xolokun

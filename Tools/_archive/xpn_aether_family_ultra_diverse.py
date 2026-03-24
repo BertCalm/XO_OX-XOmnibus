@@ -5,8 +5,8 @@ Each preset has 4 DNA dimensions in extreme zones (XLOW: 0.04–0.11 or XHIGH: 0
 and 2 dimensions in midrange (0.40–0.60).
 
 Output:
-  Presets/XOmnibus/Aether/  — 40 presets
-  Presets/XOmnibus/Family/  — 40 presets
+  Presets/XOlokun/Aether/  — 40 presets
+  Presets/XOlokun/Family/  — 40 presets
 
 Usage:
   python3 Tools/xpn_aether_family_ultra_diverse.py
@@ -18,8 +18,8 @@ from datetime import date
 random.seed(2026)
 
 REPO_ROOT = os.path.join(os.path.dirname(__file__), '..')
-AETHER_DIR = os.path.join(REPO_ROOT, 'Presets', 'XOmnibus', 'Aether')
-FAMILY_DIR = os.path.join(REPO_ROOT, 'Presets', 'XOmnibus', 'Family')
+AETHER_DIR = os.path.join(REPO_ROOT, 'Presets', 'XOlokun', 'Aether')
+FAMILY_DIR = os.path.join(REPO_ROOT, 'Presets', 'XOlokun', 'Family')
 TODAY = str(date.today())
 
 # ─── All 34 engines ──────────────────────────────────────────────────────────

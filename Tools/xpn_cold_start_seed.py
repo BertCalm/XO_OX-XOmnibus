@@ -9,7 +9,7 @@ past pack design decision as a retroactive training example.
 
 Usage:
     python xpn_cold_start_seed.py \
-        --presets-dir ../Presets/XOmnibus/ \
+        --presets-dir ../Presets/XOlokun/ \
         --profiles-dir ../profiles/ \
         --output builds/seed_sessions.json
 """
@@ -358,7 +358,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--presets-dir",
-        default=os.path.join(os.path.dirname(__file__), "..", "Presets", "XOmnibus"),
+        default=os.path.join(os.path.dirname(__file__), "..", "Presets", "XOlokun"),
         help="Root directory containing mood-subfolder .xometa files",
     )
     parser.add_argument(

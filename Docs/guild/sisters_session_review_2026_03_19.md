@@ -13,7 +13,7 @@ This session had two distinct phases:
 
 **Phase A — Sonnet (mechanical execution):**
 - Continued from a previous session's B1-B7 task list (already complete)
-- Repo consolidation: embedded XOverlap/XOutwit/XOverworld DSP into XOmnibus, removed symlink dependencies
+- Repo consolidation: embedded XOverlap/XOutwit/XOverworld DSP into XOlokun, removed symlink dependencies
 - Model discussion with user: "which model can do what?"
 - Build validation after CMakeLists changes
 
@@ -109,7 +109,7 @@ Optimal sequence: **The same.** The sweep had to run first because its findings 
 
 **MEMORY.md:** Now 178 lines (down from 205). Good progress. But the "New Engines — Status" section (lines 106-128 in the original) was consolidated into a 5-line summary. The detailed engine-by-engine status that was removed is still valuable — it should live in `open-engines-status.md` (which already exists). **Verify the topic file is current.**
 
-**CLAUDE.md (XOmnibus):** This file is the heaviest context load in the session. At 330+ lines, it's loaded on every turn. The Seance Findings section (lines 219-297) is 78 lines of detailed findings that are rarely consulted mid-session. **Recommendation:** Move the Blessings table, Debates table, and Prism Sweep section to a referenced file (`Docs/seance_cross_reference.md` already exists). Replace with a 3-line summary: "29 seances complete, 15 Blessings, 4 Debates. Full data: `Docs/seance_cross_reference.md`". Estimated savings: ~60 lines per turn.
+**CLAUDE.md (XOlokun):** This file is the heaviest context load in the session. At 330+ lines, it's loaded on every turn. The Seance Findings section (lines 219-297) is 78 lines of detailed findings that are rarely consulted mid-session. **Recommendation:** Move the Blessings table, Debates table, and Prism Sweep section to a referenced file (`Docs/seance_cross_reference.md` already exists). Replace with a 3-line summary: "29 seances complete, 15 Blessings, 4 Debates. Full data: `Docs/seance_cross_reference.md`". Estimated savings: ~60 lines per turn.
 
 **Skill files:** The `/synth-seance` skill is 476 lines — the longest skill loaded this session. The 8 ghost biographies (each ~25 lines of "In Life" + "In Heaven" + "What They Examine" + "Future Vision") are beautiful but rarely influence the actual seance output. The ghost voices are established enough that a 3-line summary per ghost would suffice. **Recommendation:** Trim each ghost bio to: name, domain, what they examine (bullet list), one-line future vision. Estimated savings: ~200 lines.
 

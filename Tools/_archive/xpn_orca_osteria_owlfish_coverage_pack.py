@@ -8,7 +8,7 @@ Generates:
   - 20 ORCA × partner presets
   - 20 OSTERIA × partner presets
   - 20 OWLFISH × partner presets
-Total: 66 presets → Presets/XOmnibus/Entangled/
+Total: 66 presets → Presets/XOlokun/Entangled/
 
 Python stdlib only. Skips files that already exist.
 """
@@ -19,7 +19,7 @@ import random
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus", "Entangled"
+    "Presets", "XOlokun", "Entangled"
 )
 
 # ── DNA baselines ────────────────────────────────────────────────────────────

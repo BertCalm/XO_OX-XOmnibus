@@ -6,7 +6,7 @@
 
 ## The Problem
 
-XOmnibus has 34 engines, 2,550 presets, coupling mechanics, and a PlaySurface that takes 15 minutes
+XOlokun has 34 engines, 2,550 presets, coupling mechanics, and a PlaySurface that takes 15 minutes
 to explain. A new producer who loads their first XPN pack on an MPC Live has no map. They hear
 something interesting, they have no idea how to push further, and they churn. Educational content is
 not supplementary — it is a retention multiplier and a sales vector.
@@ -29,7 +29,7 @@ persistent (community). Each layer must work independently and reinforce the oth
 
 ### Series A — "XO_OX in 5 Minutes"
 
-**Target audience**: Total beginner. Has never loaded an XPN pack. May be unfamiliar with XOmnibus entirely.
+**Target audience**: Total beginner. Has never loaded an XPN pack. May be unfamiliar with XOlokun entirely.
 **Length**: 4–6 minutes. Hard cap at 6.
 **Format**: Single continuous screen recording. No chapter breaks.
 
@@ -49,7 +49,7 @@ Release: First video in the series. Publish before any other video exists.
 
 ### Series B — "Deep Dive" (One Per Engine)
 
-**Target audience**: XOmnibus user who wants to understand a specific engine.
+**Target audience**: XOlokun user who wants to understand a specific engine.
 **Length**: 10–15 minutes.
 **Chapters**: 5 standard chapters per episode.
 
@@ -77,7 +77,7 @@ Priority order for first 8 episodes (by install base and uniqueness):
 
 ### Series C — "MPC + XO_OX Workflow"
 
-**Target audience**: Beat makers. MPC-native producers who want to integrate XOmnibus into a full
+**Target audience**: Beat makers. MPC-native producers who want to integrate XOlokun into a full
 production workflow, not just play presets.
 **Length**: 20–25 minutes.
 **Episodes**: Planned 4-episode arc.
@@ -98,7 +98,7 @@ Each episode starts where the previous one ended. A viewer who watches all 4 has
 **Target audience**: Patreon tier 2+ subscribers. Aspiring sound designers. People who want to
 understand how XO_OX presets are built, not just consumed.
 **Length**: 15–20 minutes.
-**Format**: Behind-the-scenes. Screen share of XOmnibus parameter window + real-time audio.
+**Format**: Behind-the-scenes. Screen share of XOlokun parameter window + real-time audio.
 
 Episode concepts (3-episode arc):
 
@@ -266,7 +266,7 @@ Minimum 150 words. Should cover:
 
 ---
 
-## 4. Interactive XOmnibus Guide (XO-OX.org/guide)
+## 4. Interactive XOlokun Guide (XO-OX.org/guide)
 
 ### Per-Engine Audio Examples
 

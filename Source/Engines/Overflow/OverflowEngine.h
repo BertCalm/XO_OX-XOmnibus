@@ -13,12 +13,12 @@
 #include <cmath>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
 //  OVERFLOW ENGINE — Pressure Pad (Pressure Cooking)
-//  XO_OX Designs | XOmnibus Multi-Engine Synthesizer
+//  XO_OX Designs | XOlokun Multi-Engine Synthesizer
 //
 //  CREATURE IDENTITY:
 //      XOverflow is a pressure cooker. Energy accumulates with playing density.
@@ -826,4 +826,4 @@ private:
     std::atomic<float>* pMacroSpaceParam     = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -65,7 +65,7 @@ AU VALIDATION SUCCEEDED.
 | DNA coverage | 100% |
 | Build warnings | 7 (pre-existing) |
 
-**Verdict: BUILD PASS. auval PASS. XOmnibus v1.0 is build-ready.**
+**Verdict: BUILD PASS. auval PASS. XOlokun v1.0 is build-ready.**
 
 ---
 

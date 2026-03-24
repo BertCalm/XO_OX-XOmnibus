@@ -20,7 +20,7 @@
 
 ## Context — Why This Engine
 
-Every existing XOmnibus engine synthesizes in the **time domain** — oscillators, wavetables, FM operators, granular schedulers, sample playback. None gives the user direct access to individual harmonics. XOrbital fills the **spectral domain** gap — the first engine where you sculpt the frequency content directly, not through filters applied after the fact.
+Every existing XOlokun engine synthesizes in the **time domain** — oscillators, wavetables, FM operators, granular schedulers, sample playback. None gives the user direct access to individual harmonics. XOrbital fills the **spectral domain** gap — the first engine where you sculpt the frequency content directly, not through filters applied after the fact.
 
 The design draws from three reference instruments:
 - **Kawai K5000** — playability: formant filter, macro spectral shaping, grouped harmonic editing
@@ -38,7 +38,7 @@ The goal is to solve the "complexity problem" — additive synthesis offers infi
 - **Why additive serves the character:**
   An orbital is defined by its energy level — specific, quantized, precise. Harmonics behave the same way: each partial occupies a specific frequency, a specific amplitude, a specific phase. Where other engines blur these distinctions (wavetables average, FM scatters, granular fragments), XOrbital preserves them. The character is in the *precision* — every harmonic individually addressable, every spectral change intentional.
 - **The coupling thesis:**
-  Alone, XOrbital produces pristine harmonic spectra — organs, bells, glass, evolving pads. But its real power is as a **spectral lens** for the XOmnibus gallery. Other engines' audio, envelopes, and rhythms can reach *inside* ORBITAL's spectrum and sculpt individual harmonics. No filter or effect can do this — only additive synthesis exposes the harmonic structure directly. Coupling doesn't just modulate ORBITAL; it reveals spectral relationships between engines that are invisible in any other architecture.
+  Alone, XOrbital produces pristine harmonic spectra — organs, bells, glass, evolving pads. But its real power is as a **spectral lens** for the XOlokun gallery. Other engines' audio, envelopes, and rhythms can reach *inside* ORBITAL's spectrum and sculpt individual harmonics. No filter or effect can do this — only additive synthesis exposes the harmonic structure directly. Coupling doesn't just modulate ORBITAL; it reveals spectral relationships between engines that are invisible in any other architecture.
 
 ---
 
@@ -46,7 +46,7 @@ The goal is to solve the "complexity problem" — additive synthesis offers infi
 
 1. **XO word:** XOrbital ✓ — Orbital: electron shell, celestial path, harmonic energy level. Physics metaphor directly maps to additive synthesis (partials at specific energy/frequency levels).
 2. **One-sentence thesis:** "XOrbital is an additive synthesis engine that builds sound from individual harmonic orbits — each partial a satellite in a living spectral system, directly visible and sculptable." ✓
-3. **Sound only this can make:** Real-time spectral coupling — OVERWORLD's NES pulse odd-harmonic fingerprint superimposed onto a 64-partial organ chord, with ONSET's kick envelope sculpting which harmonics decay fastest. Three synthesis methods interacting at the harmonic level. No DAW plugin or other XOmnibus engine does this. ✓
+3. **Sound only this can make:** Real-time spectral coupling — OVERWORLD's NES pulse odd-harmonic fingerprint superimposed onto a 64-partial organ chord, with ONSET's kick envelope sculpting which harmonics decay fastest. Three synthesis methods interacting at the harmonic level. No DAW plugin or other XOlokun engine does this. ✓
 
 ---
 
@@ -222,7 +222,7 @@ All 4 macros produce audible, significant change at every point in their range i
 | `PitchToPitch` | Source pitch → fundamental pitch offset | Harmony — another engine's pitch offsets ORBITAL's fundamental. |
 | `EnvToDecay` | Source envelope → per-group decay times | Percussion sculpts how fast bell harmonics ring down. ONSET → ORBITAL: kick shortens upper partial decay. |
 
-**Primary coupling:** `AudioToWavetable` — spectral coupling is the reason ORBITAL exists in XOmnibus. Every engine feeding into ORBITAL creates a unique "engine DNA transfer" voice.
+**Primary coupling:** `AudioToWavetable` — spectral coupling is the reason ORBITAL exists in XOlokun. Every engine feeding into ORBITAL creates a unique "engine DNA transfer" voice.
 
 ### ORBITAL as Source (sending to other engines)
 
@@ -556,9 +556,9 @@ Primary moods: Prism, Atmosphere, Entangled, Aether.
 | Aether | 18 | Pure tones, frozen harmonics, OPAL freeze coupling |
 | **Total** | **150** | |
 
-**Coupling impact:** 60 presets (40%) are coupling showcases — the highest ratio of any XOmnibus engine. This reflects ORBITAL's unique position as a **spectral lens** that reveals hidden relationships between synthesis methods. Every engine in the gallery sounds different when coupled with ORBITAL because the coupling operates at the harmonic level, not just at the audio level.
+**Coupling impact:** 60 presets (40%) are coupling showcases — the highest ratio of any XOlokun engine. This reflects ORBITAL's unique position as a **spectral lens** that reveals hidden relationships between synthesis methods. Every engine in the gallery sounds different when coupled with ORBITAL because the coupling operates at the harmonic level, not just at the audio level.
 
-**Gallery impact:** ORBITAL adds 38 Entangled presets to the gallery — nearly doubling the existing coupling-focused preset count. This reinforces XOmnibus's core thesis that engines coupled together produce sounds impossible with any single synth.
+**Gallery impact:** ORBITAL adds 38 Entangled presets to the gallery — nearly doubling the existing coupling-focused preset count. This reinforces XOlokun's core thesis that engines coupled together produce sounds impossible with any single synth.
 
 ### Five Signature Presets
 
@@ -582,7 +582,7 @@ A single sustained C-E-G chord on a clean 64-partial preset. Moderate inharmonic
 
 ## Feature Scope
 
-### v1 — Core (ship with XOmnibus)
+### v1 — Core (ship with XOlokun)
 - 64-partial additive bank, 6 voices polyphonic
 - 2 spectral profiles (A/B) with continuous morph
 - Formant filter (spectral envelope with vowel presets)

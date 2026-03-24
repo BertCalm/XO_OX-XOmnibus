@@ -6,7 +6,7 @@
 
 ## What Is This?
 
-MACHINE GUN REEF is the premium companion to the free TIDE TABLES pack. While TIDE TABLES introduced you to XOmnibus with gentle synthesis — drums, leads, and shimmer — MACHINE GUN REEF goes deeper and harder.
+MACHINE GUN REEF is the premium companion to the free TIDE TABLES pack. While TIDE TABLES introduced you to XOlokun with gentle synthesis — drums, leads, and shimmer — MACHINE GUN REEF goes deeper and harder.
 
 Four engines. Five programs. 80 pads. This is percussion-forward, bass-heavy, and built for production.
 
@@ -56,7 +56,7 @@ This is what keeps everything grounded.
 
 TIDE TABLES showed you the door. MACHINE GUN REEF walks you through it.
 
-More programs. More engines. More depth. This pack rewards producers who want to understand what XOmnibus can actually do when pushed to its limits.
+More programs. More engines. More depth. This pack rewards producers who want to understand what XOlokun can actually do when pushed to its limits.
 
 Your $15 supports the development of free engines, free updates, and the next free pack.
 

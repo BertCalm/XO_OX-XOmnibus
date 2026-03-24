@@ -14,7 +14,7 @@ import os
 import glob
 from collections import defaultdict
 
-PRESETS_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets"
+PRESETS_DIR = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun/Presets"
 
 
 # ---------------------------------------------------------------------------

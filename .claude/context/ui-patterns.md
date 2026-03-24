@@ -1,6 +1,6 @@
 # UI Patterns — Gallery Model Design System
 
-Standards for XOmnibus UI implementation following the Gallery Model aesthetic.
+Standards for XOlokun UI implementation following the Gallery Model aesthetic.
 
 ## Gallery Model Philosophy
 

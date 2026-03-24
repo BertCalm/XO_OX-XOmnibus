@@ -271,7 +271,7 @@ Examples:
   python xpn_preset_name_generator.py \\
       --brightness 0.5 --warmth 0.5 --movement 0.5 \\
       --density 0.5 --space 0.5 --aggression 0.5 \\
-      --existing-dir Presets/XOmnibus/
+      --existing-dir Presets/XOlokun/
 """,
     )
     for dim in DIMENSIONS:

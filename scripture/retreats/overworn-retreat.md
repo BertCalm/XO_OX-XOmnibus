@@ -508,7 +508,7 @@ Never use stateReset in a performance preset unless the intent is to demonstrate
 - **`worn_sessionAge` APVTS write-back.** The defining feature is invisible to any host display. Fix: one `pSessionAgeParam->store()` call per buffer.
 - **Implement infusion.** When `isInfusion = true`, re-energize upper spectral bands slightly and skip the heat multiplier.
 - **Visual reduction meter.** The 8-band `spectralMass[]` array as a frequency-domain bar chart would give players a real-time view of where they are in the reduction arc. The data is already exported.
-- **BROTH coordinator.** Fifteen lines in XOmnibusProcessor to pump `sessionAge`, `concentrateDark`, and `spectralMass` to the other three BROTH engines. This unlocks the entire cooperative chemistry that makes BROTH a collection rather than four independent engines.
+- **BROTH coordinator.** Fifteen lines in XOlokunProcessor to pump `sessionAge`, `concentrateDark`, and `spectralMass` to the other three BROTH engines. This unlocks the entire cooperative chemistry that makes BROTH a collection rather than four independent engines.
 
 ---
 

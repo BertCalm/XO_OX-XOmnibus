@@ -10,7 +10,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //
@@ -421,7 +421,7 @@ public:
 
         //----------------------------------------------------------------------
         // ParamSnapshot: cache all parameter values once per block.
-        // This is the XOmnibus pattern — atomic loads happen here, not per-sample.
+        // This is the XOlokun pattern — atomic loads happen here, not per-sample.
         //----------------------------------------------------------------------
         const float morphPosition     = (paramMorphPosition != nullptr) ? paramMorphPosition->load() : 0.5f;
         const float attackTime        = (paramBloomAttack != nullptr) ? paramBloomAttack->load() : 1.25f;
@@ -456,7 +456,7 @@ public:
         if (glideTimeSeconds > 0.001f)
             glideCoefficient = 1.0f - std::exp (-1.0f / (glideTimeSeconds * cachedSampleRateFloat));
 
-        // -- XOmnibus macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
+        // -- XOlokun macros (CHARACTER, MOVEMENT, COUPLING, SPACE) ------------
         // Loaded once per block; defaults to 0.0 so existing presets are unaffected.
         const float macroBloom = (paramMacroBloom != nullptr) ? paramMacroBloom->load() : 0.0f;
         const float macroDrift = (paramMacroDrift != nullptr) ? paramMacroDrift->load() : 0.0f;
@@ -928,7 +928,7 @@ private:
             juce::ParameterID { "morph_glide", 1 }, "Morph Glide",
             juce::NormalisableRange<float> (0.0f, 2.0f, 0.001f, 0.5f), 0.0f));
 
-        // XOmnibus standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
+        // XOlokun standard macros (CHARACTER, MOVEMENT, COUPLING, SPACE)
         // All default to 0.0 — existing presets are unaffected.
         //
         // M1 BLOOM (CHARACTER): shifts morph position +1.5 — unfurls gills from sine to square.
@@ -997,7 +997,7 @@ public:
         paramPolyphony       = apvts.getRawParameterValue ("morph_polyphony");
         paramVoiceMode       = apvts.getRawParameterValue ("morph_voiceMode");
         paramGlide           = apvts.getRawParameterValue ("morph_glide");
-        // XOmnibus macros
+        // XOlokun macros
         paramMacroBloom      = apvts.getRawParameterValue ("morph_macroBloom");
         paramMacroDrift      = apvts.getRawParameterValue ("morph_macroDrift");
         paramMacroDepth      = apvts.getRawParameterValue ("morph_macroDepth");
@@ -1247,7 +1247,7 @@ private:
     std::atomic<float>* paramPolyphony       = nullptr;
     std::atomic<float>* paramVoiceMode       = nullptr;
     std::atomic<float>* paramGlide           = nullptr;
-    // XOmnibus macros
+    // XOlokun macros
     std::atomic<float>* paramMacroBloom      = nullptr;
     std::atomic<float>* paramMacroDrift      = nullptr;
     std::atomic<float>* paramMacroDepth      = nullptr;
@@ -1260,4 +1260,4 @@ private:
     std::atomic<float>* paramLfo2Depth       = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

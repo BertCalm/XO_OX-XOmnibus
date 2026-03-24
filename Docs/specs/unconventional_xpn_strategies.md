@@ -7,7 +7,7 @@
 
 Every MPC expansion pack in existence starts from the same place: a human producer chooses drum samples, assigns them to pads, sets a BPM, calls it done. The variance between packs is entirely surface — different samples, same architecture. The MPC is a powerful instrument being used as a sample playback button.
 
-XOmnibus has 31 synthesis engines, a 6D Sonic DNA system, a coupling architecture, a Prism mood taxonomy, an aquatic mythology, and a philosophy about the feliX-Oscar polarity. None of this has ever been leveraged to generate XPN output in a way that is STRUCTURALLY different from what any other company does.
+XOlokun has 31 synthesis engines, a 6D Sonic DNA system, a coupling architecture, a Prism mood taxonomy, an aquatic mythology, and a philosophy about the feliX-Oscar polarity. None of this has ever been leveraged to generate XPN output in a way that is STRUCTURALLY different from what any other company does.
 
 This document proposes three R&D directions that would make XO_OX's XPN output genuinely unprecedented:
 
@@ -49,7 +49,7 @@ Mirror XOptic's frequency band analysis. Divide the source spectrum into 8 perce
 
 For each band: compute RMS energy, peak energy, spectral centroid within band, and time-domain variance (how much the band's energy fluctuates over time). Output is a 32-value vector. This is the source material's frequency personality.
 
-The vector maps directly to XOmnibus engine selection via a distance function: every registered engine has a pre-computed 32-value spectral archetype vector. The tool finds the nearest engine to the source fingerprint using cosine distance. A recording dominated by sub-bass with low upper-mid energy will map toward OCEANDEEP or OHM. A recording with high air-band content and fast upper-mid variance will map toward ORPHICA or OPAL.
+The vector maps directly to XOlokun engine selection via a distance function: every registered engine has a pre-computed 32-value spectral archetype vector. The tool finds the nearest engine to the source fingerprint using cosine distance. A recording dominated by sub-bass with low upper-mid energy will map toward OCEANDEEP or OHM. A recording with high air-band content and fast upper-mid variance will map toward ORPHICA or OPAL.
 
 **Stage 2: Onset Detection**
 
@@ -116,7 +116,7 @@ Each detected onset cluster becomes one pad. The pad assignment logic:
 - Remaining clusters → assigned to perc/special region (pads B1–B8)
 
 For each pad:
-1. Pull the 3 XOmnibus presets nearest to the pad's spectral fingerprint using cosine distance against pre-computed preset fingerprint database
+1. Pull the 3 XOlokun presets nearest to the pad's spectral fingerprint using cosine distance against pre-computed preset fingerprint database
 2. Select the one with the correct feliX-Oscar placement (matching the source's overall placement)
 3. Apply the onset's attack/decay metrics as envelope parameters
 4. Apply the source's velocity curve character to the pad's velocity-to-volume mapping
@@ -199,7 +199,7 @@ Products like iZotope Neutron detect instruments and suggest processing. Product
 
 ### `xpn_curiosity_engine.py`
 
-The Curiosity Engine is a deliberate happy accident machine. It systematically explores the edges of what XOmnibus engines can do, runs configurations no human would intentionally choose, and harvests the interesting results. It is a research tool that doubles as a pack generator.
+The Curiosity Engine is a deliberate happy accident machine. It systematically explores the edges of what XOlokun engines can do, runs configurations no human would intentionally choose, and harvests the interesting results. It is a research tool that doubles as a pack generator.
 
 The thesis: every interesting sound exists somewhere in parameter space. The problem is that human producers only explore a tiny convex neighborhood around "sounds good." The Curiosity Engine is designed to explore everywhere else.
 
@@ -223,7 +223,7 @@ This produces sounds that no preset author would have written, because no preset
 
 **Strategy 2: Coupling Feedback Runaway**
 
-XOmnibus's coupling architecture allows engine A to modulate engine B. Set up bidirectional coupling chains: A modulates B with amount α, B modulates A with amount α. Sweep α from 0 to 1 in 20 steps.
+XOlokun's coupling architecture allows engine A to modulate engine B. Set up bidirectional coupling chains: A modulates B with amount α, B modulates A with amount α. Sweep α from 0 to 1 in 20 steps.
 
 At low α: independent operation with mild cross-talk.
 At medium α (0.3–0.6): interesting mutual modulation, emergent rhythmic patterns from beating interactions.
@@ -232,7 +232,7 @@ At α > 0.9: runaway instability — audio clip-prevention kicks in, but the bri
 
 Capture audio at each α step. The "edge of chaos" zone (typically α = 0.7–0.85 for most engine pairs) reliably produces the most complex, least predictable timbres. This is where deterministic synthesis becomes indistinguishable from organic recording.
 
-Run all 31×30 = 930 unique engine pair combinations at the 20 α steps. That is 18,600 renders. At 500ms each, this is a 9,300-second batch job (about 2.5 hours on a modern CPU using parallel rendering). The output is the most comprehensive sonic survey of XOmnibus coupling space ever created.
+Run all 31×30 = 930 unique engine pair combinations at the 20 α steps. That is 18,600 renders. At 500ms each, this is a 9,300-second batch job (about 2.5 hours on a modern CPU using parallel rendering). The output is the most comprehensive sonic survey of XOlokun coupling space ever created.
 
 **Strategy 3: Wrong Engine for Wrong Job**
 
@@ -337,7 +337,7 @@ The fleet novelty score is the most important filter for deciding what makes it 
 
 ### 20 Never-Before-Seen Kit Concepts
 
-These 20 concepts share a common property: none of them has shipped in any MPC expansion, Splice pack, Native Instruments library, or DAW sample library as of March 2026. They are technically possible with XOmnibus's architecture or adjacent tooling. Some are achievable in 2026. Some require systems that do not yet exist. All are worth documenting as XO_OX's design horizon.
+These 20 concepts share a common property: none of them has shipped in any MPC expansion, Splice pack, Native Instruments library, or DAW sample library as of March 2026. They are technically possible with XOlokun's architecture or adjacent tooling. Some are achievable in 2026. Some require systems that do not yet exist. All are worth documenting as XO_OX's design horizon.
 
 ---
 
@@ -1027,7 +1027,7 @@ Convolve the synthesis output with this noise floor sample (a cross-correlation 
 
 ## APPENDIX B: THE FLEET NOVELTY DATABASE
 
-All tools in this document depend on a pre-computed **fleet novelty database**: a library of spectral fingerprints for every existing XPN pack, every XOmnibus factory preset, and every Curiosity Engine render that has been accepted into a pack. This database is the reference against which new renders are scored for novelty.
+All tools in this document depend on a pre-computed **fleet novelty database**: a library of spectral fingerprints for every existing XPN pack, every XOlokun factory preset, and every Curiosity Engine render that has been accepted into a pack. This database is the reference against which new renders are scored for novelty.
 
 Structure:
 ```json

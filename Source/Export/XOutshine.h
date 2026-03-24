@@ -13,13 +13,13 @@
 #include <random>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 //  XOutshine — Sample Pack Upgrade Engine
 //  "Outshine the original."
 //
-//  Integrated into the XOmnibus desktop application. Ingests any WAV samples
+//  Integrated into the XOlokun desktop application. Ingests any WAV samples
 //  or XPN archives and upgrades them into production-quality, expressive,
 //  dynamic MPC instruments — without leaving the plugin.
 //
@@ -1015,4 +1015,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

@@ -8,7 +8,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 struct ObbligatoAdapterVoice {
     bool active=false; int note=0; float vel=0, freq=440, ampEnv=0, sr=44100;
@@ -516,4 +516,4 @@ private:
     std::atomic<float>*pMBreath=nullptr,*pMBond_=nullptr,*pMMisc_=nullptr,*pMWind_=nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

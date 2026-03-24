@@ -12,10 +12,10 @@
 namespace xowlfish {
 
 //==============================================================================
-// OwlfishEngine -- XOmnibus SynthEngine adapter for the monophonic owlfish.
+// OwlfishEngine -- XOlokun SynthEngine adapter for the monophonic owlfish.
 //
 // This adapter wraps OwlfishVoice as a single-organ monophonic instrument
-// inside the XOmnibus multi-engine chassis. It translates the XOmnibus
+// inside the XOlokun multi-engine chassis. It translates the XOlokun
 // SynthEngine interface into calls on the standalone voice, handling:
 //
 //   - Monophonic MIDI routing with lastNoteOn tracking
@@ -24,7 +24,7 @@ namespace xowlfish {
 //   - Frozen owl_ parameter namespace (never changes after release)
 //
 // Coupling stubs are left empty for now -- the MegaCouplingMatrix will wire
-// them when the organism is registered in the XOmnibus engine registry.
+// them when the organism is registered in the XOlokun engine registry.
 //
 // Signal flow is identical to standalone: the voice processes its full
 // organ chain (Abyss Habitat -> Owl Optics -> Diet -> Sacrificial Armor
@@ -32,7 +32,7 @@ namespace xowlfish {
 // frames it for multi-engine life.
 //==============================================================================
 
-class OwlfishEngine final : public xomnibus::SynthEngine
+class OwlfishEngine final : public xolokun::SynthEngine
 {
 public:
     OwlfishEngine() = default;
@@ -107,7 +107,7 @@ public:
             // descends deeper, expanding its resonant body. Full wheel adds +0.45 to subMix.
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
-            else if (msg.isPitchWheel()) pitchBendNorm = xomnibus::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            else if (msg.isPitchWheel()) pitchBendNorm = xolokun::PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty()) { buffer.clear(); return; }
@@ -134,7 +134,7 @@ public:
 
         // Apply pitch bend to voice target frequency
         if (voice.isActive())
-            voice.applyPitchBend (xomnibus::PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f));
+            voice.applyPitchBend (xolokun::PitchBendUtil::semitonesToFreqRatio (pitchBendNorm * 2.0f));
 
         // Render the organism
         buffer.clear();
@@ -166,7 +166,7 @@ public:
 
     //--------------------------------------------------------------------------
     /// Coupling input — routes external modulation into the owlfish organ chain.
-    void applyCouplingInput (xomnibus::CouplingType type,
+    void applyCouplingInput (xolokun::CouplingType type,
                              float amount,
                              const float* sourceBuffer,
                              int numSamples) override
@@ -176,19 +176,19 @@ public:
 
         switch (type)
         {
-            case xomnibus::CouplingType::LFOToPitch:
+            case xolokun::CouplingType::LFOToPitch:
                 // External LFO modulates pitch — applied as pitch offset in semitones.
                 // Max ±1 semitone at amount=1.0 — subtle organic drift from partner engine.
                 couplingPitchMod = amount * 1.0f;
                 break;
 
-            case xomnibus::CouplingType::AmpToFilter:
+            case xolokun::CouplingType::AmpToFilter:
                 // External amplitude modulates grain density — partner loudness
                 // increases predatory grain cloud activity.
                 couplingGrainMod = amount * 0.3f;
                 break;
 
-            case xomnibus::CouplingType::EnvToMorph:
+            case xolokun::CouplingType::EnvToMorph:
                 // External envelope modulates subharmonic mix — partner dynamics
                 // push the owlfish deeper into its Mixtur-Trautonium resonant abyss.
                 couplingSubMod = amount * 0.2f;
@@ -200,7 +200,7 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Create the frozen owl_ parameter layout for XOmnibus APVTS.
+    /// Create the frozen owl_ parameter layout for XOlokun APVTS.
     juce::AudioProcessorValueTreeState::ParameterLayout
         createParameterLayout() override
     {
@@ -208,7 +208,7 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    /// Attach parameter snapshot to the XOmnibus APVTS.
+    /// Attach parameter snapshot to the XOlokun APVTS.
     /// Called once after the host creates the value tree.
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
@@ -229,10 +229,10 @@ public:
     int getActiveVoiceCount() const override { return voice.isActive() ? 1 : 0; }
 
 private:
-    xomnibus::SilenceGate      silenceGate;
+    xolokun::SilenceGate      silenceGate;
     OwlfishVoice               voice;
     OwlfishParamSnapshot       snapshot;
-    xomnibus::PolyAftertouch   aftertouch;
+    xolokun::PolyAftertouch   aftertouch;
     std::vector<float>         outputCacheL, outputCacheR;
 
     int    lastNoteOn    = -1;

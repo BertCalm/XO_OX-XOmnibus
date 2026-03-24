@@ -3,7 +3,7 @@
 #include <functional>
 #include <vector>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Layout modes determined by available width, not device type.
@@ -201,4 +201,4 @@ private:
     std::vector<LayoutChangeCallback> listeners;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

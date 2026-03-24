@@ -1,18 +1,18 @@
-# XOmnibus — Designer Brief & Visual Design System
+# XOlokun — Designer Brief & Visual Design System
 
 **Prepared for:** External UI/Brand Designer
 **Version:** 1.0
 **Date:** 2026-03-17
 **Source of truth docs:**
-- `Docs/xomnibus_technical_design_system.md` — authoritative component/color/typography spec
-- `Docs/xomnibus_brand_identity_and_launch.md` — logo, voice, brand rules
-- `Source/UI/XOmnibusEditor.h` — live color constants (GalleryColors namespace)
+- `Docs/xolokun_technical_design_system.md` — authoritative component/color/typography spec
+- `Docs/xolokun_brand_identity_and_launch.md` — logo, voice, brand rules
+- `Source/UI/XOlokunEditor.h` — live color constants (GalleryColors namespace)
 
 ---
 
-## 1. What XOmnibus Is
+## 1. What XOlokun Is
 
-XOmnibus is a **free, open-source multi-engine synthesizer platform** by XO_OX Designs. Thirty-four character synthesis engines exist inside a single unified shell. The signature feature is **cross-engine coupling** — one engine's output modulates another's filter, pitch, amplitude, or any other parameter.
+XOlokun is a **free, open-source multi-engine synthesizer platform** by XO_OX Designs. Thirty-four character synthesis engines exist inside a single unified shell. The signature feature is **cross-engine coupling** — one engine's output modulates another's filter, pitch, amplitude, or any other parameter.
 
 Tagline: **"Couple everything."**
 
@@ -25,9 +25,9 @@ The platform ships as:
 
 ## 2. The Gallery Model — Core Design Metaphor
 
-XOmnibus is a **gallery**. This metaphor drives every design decision.
+XOlokun is a **gallery**. This metaphor drives every design decision.
 
-| Gallery Concept | XOmnibus Equivalent |
+| Gallery Concept | XOlokun Equivalent |
 |----------------|---------------------|
 | Gallery walls | The warm white shell — header bar, preset browser, coupling strip frame |
 | Exhibition | An engine panel — colored, textured, unique to that instrument |
@@ -38,11 +38,11 @@ XOmnibus is a **gallery**. This metaphor drives every design decision.
 **The organizing rule:**
 > "The shell is the same gallery for every exhibition. The art inside changes completely."
 
-The shell never changes color. Engine panels change completely. Users always know they're in XOmnibus, but immediately know which engine is active.
+The shell never changes color. Engine panels change completely. Users always know they're in XOlokun, but immediately know which engine is active.
 
 ### Why Light Mode is Default
 
-XOmnibus defaults to light mode. A bright, clean gallery wall makes the colored engine art pop harder. When every other synth is a dark rectangle, XOmnibus is the one you notice. Dark mode is available as a toggle, but all marketing, screenshots, and first-launch experience are light.
+XOlokun defaults to light mode. A bright, clean gallery wall makes the colored engine art pop harder. When every other synth is a dark rectangle, XOlokun is the one you notice. Dark mode is available as a toggle, but all marketing, screenshots, and first-launch experience are light.
 
 ---
 
@@ -62,7 +62,7 @@ These are the neutral frame. They never change between engines.
 | `textPrimary` | `#1A1A1A` | `#EEEEEE` | Primary text |
 | `textSecondary` | `#777570` | `#C8C8C8` | Labels, secondary info |
 
-Implementation note: In `Source/UI/XOmnibusEditor.h`, these are live in the `GalleryColors` namespace with theme-aware accessor functions. The `darkMode()` bool is the toggle. Do not hard-code hex values in component code — use the accessors.
+Implementation note: In `Source/UI/XOlokunEditor.h`, these are live in the `GalleryColors` namespace with theme-aware accessor functions. The `darkMode()` bool is the toggle. Do not hard-code hex values in component code — use the accessors.
 
 ### 3.2 Brand Constant — XO Gold
 
@@ -496,9 +496,9 @@ Two interlocking rings (X shape + O shape) connected by a visible bridge. The br
 ```
 Variations:
   Logomark only          — Coupled X/O symbol (app icon, favicon)
-  Logomark + wordmark    — Symbol left, "XOmnibus" right (header bar, marketing)
-  Wordmark only          — "XOmnibus" in Space Grotesk Bold (tight spaces)
-  Full brand             — "XO_OX" above, coupling symbol, "XOmnibus" below (splash)
+  Logomark + wordmark    — Symbol left, "XOlokun" right (header bar, marketing)
+  Wordmark only          — "XOlokun" in Space Grotesk Bold (tight spaces)
+  Full brand             — "XO_OX" above, coupling symbol, "XOlokun" below (splash)
 ```
 
 ### 9.2 Logo Colors
@@ -520,7 +520,7 @@ Monochrome:         Single color (black or white) for print/merch
 
 ### 9.4 Clear Space
 
-Minimum clear space = width of the "O" in "XOmnibus" on all sides.
+Minimum clear space = width of the "O" in "XOlokun" on all sides.
 
 ---
 
@@ -613,14 +613,14 @@ Utility engines are a distinct class from synthesis engines. Synthesis engines =
 Design maps to JUCE's `LookAndFeel` system:
 
 ```
-XOmnibusLookAndFeel extends juce::LookAndFeel_V4
+XOlokunLookAndFeel extends juce::LookAndFeel_V4
 Each engine registers its accent color on activation
 Shell colors come from ThemeManager (light/dark toggle)
 Engine panels create child LookAndFeel overrides
   setting rotarySliderFillColour to their accent
 ```
 
-The font `juce::Font(name, size, style)` constructor is deprecated in JUCE 8 — there are 5 pre-existing warnings in `XOmnibusEditor.h:129-133` from this. Any redesign should use the JUCE 8 `FontOptions` API.
+The font `juce::Font(name, size, style)` constructor is deprecated in JUCE 8 — there are 5 pre-existing warnings in `XOlokunEditor.h:129-133` from this. Any redesign should use the JUCE 8 `FontOptions` API.
 
 ### 11.4 Asset Pipeline Locations
 
@@ -701,7 +701,7 @@ Engine accent colors and XO Gold **never change between modes**. They are brand 
 - Square 1080×1080 (Instagram/Threads)
 - 16:9 1920×1080 (YouTube thumbnails)
 - Dark background variant for video overlays
-- Always include XO_OX logo + "XOmnibus" wordmark
+- Always include XO_OX logo + "XOlokun" wordmark
 - 2px XO Gold border on all social images
 
 ---
@@ -721,7 +721,7 @@ This section documents known design gaps and areas flagged in internal docs as n
 - No splash screen
 - No press kit materials
 
-All of these are described as specifications in `xomnibus_brand_identity_and_launch.md` but exist only as text, not as files. A designer's first deliverable should be this icon and logo system.
+All of these are described as specifications in `xolokun_brand_identity_and_launch.md` but exist only as text, not as files. A designer's first deliverable should be this icon and logo system.
 
 ### 15.2 Light-Accent Engines Need Contrast Treatment
 
@@ -748,11 +748,11 @@ This is a significant design gap: 28 engine panels need material/texture identit
 
 ### 15.6 Typography Deprecation Warning
 
-Five warnings exist in `XOmnibusEditor.h:129-133` from deprecated `juce::Font(name, size, style)` constructor calls. Any typography redesign must use the JUCE 8 `FontOptions` API. This is a developer/designer handoff item.
+Five warnings exist in `XOlokunEditor.h:129-133` from deprecated `juce::Font(name, size, style)` constructor calls. Any typography redesign must use the JUCE 8 `FontOptions` API. This is a developer/designer handoff item.
 
 ### 15.7 Mobile UI Is Spec-Only
 
-The full iOS layout specification exists in `Docs/xomnibus_mobile_and_midi_spec.md` and the component headers exist in `Source/UI/Mobile/`, but mobile UI has not been implemented or visually designed beyond the specification text. This is a complete design deliverable pending.
+The full iOS layout specification exists in `Docs/xolokun_mobile_and_midi_spec.md` and the component headers exist in `Source/UI/Mobile/`, but mobile UI has not been implemented or visually designed beyond the specification text. This is a complete design deliverable pending.
 
 ### 15.8 No Visual Hierarchy for 34 Engines in the Browser
 
@@ -817,20 +817,20 @@ For web-based preset browser, documentation site, or any web component:
 
 | Topic | Document |
 |-------|---------|
-| Complete design system spec | `Docs/xomnibus_technical_design_system.md` |
-| Brand identity, logo, voice | `Docs/xomnibus_brand_identity_and_launch.md` |
+| Complete design system spec | `Docs/xolokun_technical_design_system.md` |
+| Brand identity, logo, voice | `Docs/xolokun_brand_identity_and_launch.md` |
 | Aquatic mythology / engine identities | `Docs/xo_ox_aquatic_mythology.md` |
 | Engine identity cards (all 34) | `Docs/engine_identity_cards.md` |
 | PlaySurface spec | `Docs/xo_signature_playsurface_spec.md` |
-| Mobile layout spec | `Docs/xomnibus_mobile_and_midi_spec.md` |
-| Live color constants (C++) | `Source/UI/XOmnibusEditor.h` (GalleryColors namespace) |
+| Mobile layout spec | `Docs/xolokun_mobile_and_midi_spec.md` |
+| Live color constants (C++) | `Source/UI/XOlokunEditor.h` (GalleryColors namespace) |
 | Coupling strip component | `Source/UI/CouplingStrip/CouplingStripEditor.h` |
 | PlaySurface component | `Source/UI/PlaySurface/PlaySurface.h` |
 | OpticVisualizer component | `Source/UI/OpticVisualizer/OpticVisualizer.h` |
 | Mobile components | `Source/UI/Mobile/` |
 | Utility engine concepts (V2) | `Docs/specs/utility_engine_concepts.md` |
-| V2 roadmap | `Docs/xomnibus_v2_roadmap.md` |
+| V2 roadmap | `Docs/xolokun_v2_roadmap.md` |
 
 ---
 
-*This document was compiled from all design-related sources in the XO_OX-XOmnibus repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*
+*This document was compiled from all design-related sources in the XO_OX-XOlokun repo on 2026-03-17. The canonical sources listed in Section 18 take precedence if any conflict exists.*

@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in XOmnibus, please report it responsibly:
+If you discover a security vulnerability in XOlokun, please report it responsibly:
 
 **Do NOT file a public GitHub issue for security vulnerabilities.**
 
@@ -18,7 +18,7 @@ You will receive an acknowledgment within 48 hours. Fixes for confirmed vulnerab
 
 ## Scope
 
-XOmnibus is an audio plugin that processes audio signals locally. The primary security concerns are:
+XOlokun is an audio plugin that processes audio signals locally. The primary security concerns are:
 - Malicious preset files (`.xometa` JSON parsing)
 - Malicious XPN expansion packs (ZIP extraction)
 - Buffer overflows in DSP processing

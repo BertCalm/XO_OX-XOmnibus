@@ -160,11 +160,11 @@ Schulze wants the reverb to be genuinely binaural — true stereo independent de
 
 ### The Prophecy
 
-OPENSKY occupies a crucial emotional position in the XOmnibus fleet — the pure feliX bookend, the flying fish at the top of the water column. The supersaw core is well-engineered, the shimmer reverb is a genuine sonic signature, and the macro system translates the engine's identity into intuitive performance gestures.
+OPENSKY occupies a crucial emotional position in the XOlokun fleet — the pure feliX bookend, the flying fish at the top of the water column. The supersaw core is well-engineered, the shimmer reverb is a genuine sonic signature, and the macro system translates the engine's identity into intuitive performance gestures.
 
 The engine's ceiling is not concept — it is execution completeness. Wiring the mod matrix, connecting `sky_shimmerOctave` to the octave/fifth blend, and adding pitch bend handling are three straightforward fixes that convert D004 violations and missing gestures into full compliance. Stereo shimmer reverb is the longer-term enhancement that would push the score toward 9.0+.
 
-OPENSKY and OCEANDEEP are mythological siblings. Their coupling preset — "The Full Column" — should be the centerpiece of every XOmnibus demo session.
+OPENSKY and OCEANDEEP are mythological siblings. Their coupling preset — "The Full Column" — should be the centerpiece of every XOlokun demo session.
 
 ---
 

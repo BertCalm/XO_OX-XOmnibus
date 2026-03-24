@@ -182,8 +182,8 @@ def generate_batch(corners, engine_pool, mood, out_dir, variants=5):
 # ---------------------------------------------------------------------------
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-FND_OUT = REPO_ROOT / "Presets" / "XOmnibus" / "Foundation"
-FAM_OUT = REPO_ROOT / "Presets" / "XOmnibus" / "Family"
+FND_OUT = REPO_ROOT / "Presets" / "XOlokun" / "Foundation"
+FAM_OUT = REPO_ROOT / "Presets" / "XOlokun" / "Family"
 
 def main():
     print("Generating Foundation aggression-XHIGH presets...")

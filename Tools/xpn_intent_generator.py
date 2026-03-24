@@ -15,7 +15,7 @@ USAGE:
         --pack-name "XO_OX MPCe Percussion Vol. 1" \
         --engine ONSET \
         --corner-pattern dynamic_expression \
-        --presets-dir ../Presets/XOmnibus/ \
+        --presets-dir ../Presets/XOlokun/ \
         --output xpn_intent.json
 
     # Generate intent from an existing XPM program
@@ -319,7 +319,7 @@ def generate_intent(
         },
 
         "provenance": {
-            "xomnibus_version": "1.0",
+            "xolokun_version": "1.0",
             "source_presets": [],
             "quad_builder_version": "1.0",
             "render_spec": "",
@@ -351,7 +351,7 @@ Examples:
       --pack-name "XO_OX MPCe Percussion Vol. 1" \\
       --engine ONSET \\
       --corner-pattern dynamic_expression \\
-      --presets-dir ../Presets/XOmnibus/ \\
+      --presets-dir ../Presets/XOlokun/ \\
       --output xpn_intent.json
         """
     )

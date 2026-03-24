@@ -1,4 +1,4 @@
-# XOmnibus — Engine Expansion Roadmap: Volume 3
+# XOlokun — Engine Expansion Roadmap: Volume 3
 *Next 5 Gallery Additions: OBSIDIAN, ORIGAMI, ORACLE, OBSCURA, OCEANIC*
 *Document version: 1.0 | March 2026*
 
@@ -65,7 +65,7 @@
 
 ### Thesis
 
-Volume 3 fills the final conceptual gaps in XOmnibus with five engines drawn from underexplored or entirely novel synthesis science. Where Volumes 1–2 built on established paradigms (subtractive, granular, FM, wavetable, physical modeling, chaos), Volume 3 reaches into academic research, forgotten commercial dead-ends, and mathematical domains never before applied to real-time audio synthesis.
+Volume 3 fills the final conceptual gaps in XOlokun with five engines drawn from underexplored or entirely novel synthesis science. Where Volumes 1–2 built on established paradigms (subtractive, granular, FM, wavetable, physical modeling, chaos), Volume 3 reaches into academic research, forgotten commercial dead-ends, and mathematical domains never before applied to real-time audio synthesis.
 
 **The five pillars:**
 1. **OBSIDIAN** — Crystalline Phase Distortion (the melodic anchor — peak leads, pads, arps)
@@ -203,16 +203,16 @@ Design spec at `Docs/xobsidian_design_spec.md`.
 - Full QA pass
 - **Gate:** Definition of Done criteria met
 
-#### Phase 3.X — XOmnibus Integration Prep
+#### Phase 3.X — XOlokun Integration Prep
 - Write adapter against `SynthEngine` interface
 - Verify coupling: `AudioToFM`, `AmpToFilter`, `EnvToMorph` supported
 - Write integration spec
 - Test coupling routes with ORIGAMI, OBSCURA, OCEANIC locally
 
 #### Phase 4.X — Gallery Install
-- Copy DSP headers to `XO_OX-XOmnibus/Source/Engines/OBSIDIAN/`
+- Copy DSP headers to `XO_OX-XOlokun/Source/Engines/OBSIDIAN/`
 - `REGISTER_ENGINE(XObsidianAdapter)`
-- Copy presets to XOmnibus Presets directory
+- Copy presets to XOlokun Presets directory
 - Run `compute_preset_dna.py`
 - Design 10 cross-engine Entangled presets
 - Update gallery docs

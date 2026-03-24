@@ -1,6 +1,6 @@
 # /roomba — Automated Repo Health Sweep
 
-Deep, comprehensive repo health scan that finds inconsistencies, drift, and technical debt across the entire XOmnibus codebase. Like a Roomba — thorough, systematic, and leaves things cleaner than it found them.
+Deep, comprehensive repo health scan that finds inconsistencies, drift, and technical debt across the entire XOlokun codebase. Like a Roomba — thorough, systematic, and leaves things cleaner than it found them.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Run every check below in order. Collect all findings, then produce a single repo
 ### Phase 1: Engine Registration Integrity
 
 1. **Registry Completeness**
-   - Read `Source/XOmnibusProcessor.cpp` — extract all `registerEngine("CanonicalName", ...)` calls
+   - Read `Source/XOlokunProcessor.cpp` — extract all `registerEngine("CanonicalName", ...)` calls
    - Read every `Source/Engines/*/Engine*.cpp` — extract all `REGISTER_ENGINE()` calls
    - Cross-reference: every engine directory must have a canonical registration in the Processor
    - Canonical names must match what `getEngineId()` returns in each engine header
@@ -109,7 +109,7 @@ Run every check below in order. Collect all findings, then produce a single repo
    - Accent colors — verify documented colors match getAccentColour() returns
 
 2. **Master Spec Drift**
-   - If Docs/xomnibus_master_specification.md exists, check engine count claims
+   - If Docs/xolokun_master_specification.md exists, check engine count claims
    - Cross-reference any spec claims about features vs actual implementation state
 
 3. **Stale Docs**
@@ -148,7 +148,7 @@ NEVER auto-fix:
 ## Report Format
 
 ```markdown
-# XOmnibus Roomba Report
+# XOlokun Roomba Report
 **Date:** {date} | **Mode:** {full/quick/focused} | **Branch:** {branch}
 
 ## Health Score: {X}/100

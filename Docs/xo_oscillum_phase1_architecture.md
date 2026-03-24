@@ -346,7 +346,7 @@ Fits comfortably within the established per-engine budget.
 
 ---
 
-## 9. Build Phases (following `Docs/xomnibus_new_engine_process.md`)
+## 9. Build Phases (following `Docs/xolokun_new_engine_process.md`)
 
 ### Phase 0: Ideation — COMPLETE (this document + Volume 2 source)
 
@@ -375,9 +375,9 @@ Fits comfortably within the established per-engine budget.
 - Write integration spec
 
 ### Phase 4: Gallery Install
-- Copy DSP headers to `XO_OX-XOmnibus/Source/Engines/Oscillum/`
+- Copy DSP headers to `XO_OX-XOlokun/Source/Engines/Oscillum/`
 - `REGISTER_ENGINE(XOscillumAdapter)`
-- Copy presets to XOmnibus Presets directory
+- Copy presets to XOlokun Presets directory
 - Run `compute_preset_dna.py`
 - Design 10 cross-engine Entangled presets
 - Update gallery docs, CLAUDE.md engine table

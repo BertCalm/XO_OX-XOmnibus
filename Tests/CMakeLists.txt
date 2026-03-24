@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(FamilyWaveguideTest FamilyWaveguideTest.cpp)
 
-# Source/DSP/FamilyWaveguide.h is relative to XO_OX-XOmnibus root (one level up)
+# Source/DSP/FamilyWaveguide.h is relative to XO_OX-XOlokun root (one level up)
 target_include_directories(FamilyWaveguideTest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/..)
 
-# Strict warnings to match XOmnibus quality gate
+# Strict warnings to match XOlokun quality gate
 target_compile_options(FamilyWaveguideTest PRIVATE
     $<$<CXX_COMPILER_ID:Clang,AppleClang,GNU>:-Wall -Wextra -Wpedantic>
 )

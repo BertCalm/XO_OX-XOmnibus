@@ -5,7 +5,7 @@ to the canonical DriftEngine schema.
 
 Problem: 202 presets were authored against the old XOdyssey standalone parameter
 schema (unprefixed, e.g. `osc_a_mode`, `filt_a_cutoff`, `env_amp_attack`) before
-the `drift_` prefix convention was enforced in XOmnibus. Three presets also contain
+the `drift_` prefix convention was enforced in XOlokun. Three presets also contain
 `drift_osc_a_mode`-style double-prefixed params from a partial prior migration run.
 One preset uses `odyssey_detune` (wrong prefix).
 

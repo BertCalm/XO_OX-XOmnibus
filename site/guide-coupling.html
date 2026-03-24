@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Space Between the Engines — Coupling System | XO_OX Field Guide</title>
-<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOmnibus's 14-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
+<meta name="description" content="Field Guide Post #19: A complete walkthrough of XOlokun's 14-type cross-engine coupling system — how it works, what each type does, and why the seam between engines is where the interesting music lives.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -589,14 +589,14 @@ footer {
 }
 </style>
 <meta property="og:title" content="The Space Between the Engines — XO_OX Field Guide">
-<meta property="og:description" content="A complete walkthrough of XOmnibus's 14-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
+<meta property="og:description" content="A complete walkthrough of XOlokun's 14-type cross-engine coupling system. The seam between two engines is where the interesting music lives.">
 <meta property="og:image" content="https://xo-ox.com/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Space Between the Engines — XO_OX Field Guide">
-<meta name="twitter:description" content="14 coupling types. Any engine can drive any other. Here is how.">
+<meta name="twitter:description" content="15 coupling types. Any engine can drive any other. Here is how.">
 <meta name="twitter:image" content="https://xo-ox.com/assets/og-image.png">
-<link rel="alternate" type="application/rss+xml" title="XOmnibus Signal" href="feed.xml">
+<link rel="alternate" type="application/rss+xml" title="XOlokun Signal" href="feed.xml">
 </head>
 <body>
 
@@ -614,7 +614,7 @@ footer {
     <a href="updates.html">Signal</a>
     <a href="index.html#aquarium">Aquarium</a>
     <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" rel="noopener">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" rel="noopener">GitHub</a>
   </div>
 </nav>
 
@@ -624,7 +624,7 @@ footer {
   <div class="article-hero-label">Field Guide &mdash; Architecture 10</div>
   <h1>The Space Between <em>the Engines</em></h1>
   <p class="article-hero-sub">
-    XOmnibus has 46 synthesis engines. The interesting sounds don't live inside them. They live in the connections. This is the complete guide to the MegaCouplingMatrix &mdash; all 14 coupling types, how to wire them, and why the seam between two engines is where the music is.
+    XOlokun has 73 synthesis engines. The interesting sounds don't live inside them. They live in the connections. This is the complete guide to the MegaCouplingMatrix &mdash; all 15 coupling types, how to wire them, and why the seam between two engines is where the music is.
   </p>
   <div class="article-meta">
     <div class="article-meta-item">System<span style="color: var(--coupling);">MegaCouplingMatrix &mdash; Cross-Engine Coupling</span></div>
@@ -638,7 +638,7 @@ footer {
 <article class="article" id="article-content">
 
 <p class="reveal">
-Load any two engines into XOmnibus slots 1 and 2. Play a note. You will hear two sounds happening simultaneously &mdash; which is to say, you will hear what any two plugins running side by side in a DAW would produce. Two sounds. Two independent instruments. A mix. This is not what XOmnibus is for.
+Load any two engines into XOlokun slots 1 and 2. Play a note. You will hear two sounds happening simultaneously &mdash; which is to say, you will hear what any two plugins running side by side in a DAW would produce. Two sounds. Two independent instruments. A mix. This is not what XOlokun is for.
 </p>
 
 <p class="reveal">
@@ -666,7 +666,7 @@ The difference is the grain of the signal. A sidechain compressor responds to an
 </p>
 
 <p class="reveal">
-XOmnibus coupling operates at two granularities. Control-rate coupling updates every block (same as sidechain). But audio-rate coupling &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong> &mdash; operates sample by sample. Engine 1's audio output is passed directly into Engine 2's synthesis process at the sample level. At 48kHz, that is 48,000 interactions per second. The signal from Engine 1 isn't modulating Engine 2's parameters. It <em>is</em> Engine 2's parameters, in real time, at audio rate.
+XOlokun coupling operates at two granularities. Control-rate coupling updates every block (same as sidechain). But audio-rate coupling &mdash; <strong>AudioToFM</strong>, <strong>AudioToRing</strong>, <strong>AudioToWavetable</strong>, <strong>AudioToBuffer</strong> &mdash; operates sample by sample. Engine 1's audio output is passed directly into Engine 2's synthesis process at the sample level. At 48kHz, that is 48,000 interactions per second. The signal from Engine 1 isn't modulating Engine 2's parameters. It <em>is</em> Engine 2's parameters, in real time, at audio rate.
 </p>
 
 <p class="reveal">
@@ -682,7 +682,7 @@ The MegaCouplingMatrix operates on a pattern called the <strong>Normalled Matria
 </p>
 
 <p class="reveal">
-In XOmnibus, every engine pairing has a set of default routes &mdash; pre-wired connections that engage when you load two engines together and represent the designers' best intuition about how those specific engines like to interact. Load ONSET in Slot 1 and OPERA in Slot 2, and the normalled connection is <strong>AmpToFilter</strong>: ONSET's percussive transient envelope drives OPERA's filter cutoff. Load ORBWEAVE and OXBOW, and the normalled connection is <strong>KnotTopology</strong>, because those two engines were designed to entangle. The defaults are meant to produce an interesting sound before you patch anything.
+In XOlokun, every engine pairing has a set of default routes &mdash; pre-wired connections that engage when you load two engines together and represent the designers' best intuition about how those specific engines like to interact. Load ONSET in Slot 1 and OPERA in Slot 2, and the normalled connection is <strong>AmpToFilter</strong>: ONSET's percussive transient envelope drives OPERA's filter cutoff. Load ORBWEAVE and OXBOW, and the normalled connection is <strong>KnotTopology</strong>, because those two engines were designed to entangle. The defaults are meant to produce an interesting sound before you patch anything.
 </p>
 
 <p class="reveal">
@@ -971,7 +971,7 @@ Above 0.7, you are in territory where the driven engine is no longer itself. Eng
 <h2 class="reveal">The XVC Exception</h2>
 
 <p class="reveal">
-There is a fifteenth coupling behavior in XOmnibus that does not appear in the MegaCouplingMatrix, because it doesn't live between engines. It lives inside one.
+There is a fifteenth coupling behavior in XOlokun that does not appear in the MegaCouplingMatrix, because it doesn't live between engines. It lives inside one.
 </p>
 
 <p class="reveal">
@@ -991,7 +991,7 @@ XVC is not in the CouplingType enum because it is implemented entirely within ON
 <h2 class="reveal">Coupling Is the Instrument</h2>
 
 <p class="reveal">
-There is a convenient way to think about XOmnibus, and it is incomplete. The convenient view is: 70 engines, pick four, mix together, enjoy. The engines are the instrument and the coupling is a modulation bonus.
+There is a convenient way to think about XOlokun, and it is incomplete. The convenient view is: 73 engines, pick four, mix together, enjoy. The engines are the instrument and the coupling is a modulation bonus.
 </p>
 
 <p class="reveal">
@@ -1011,13 +1011,13 @@ This is the coupling system's actual argument: it isn't that you can connect Eng
 </p>
 
 <p class="reveal">
-The aquarium metaphor that runs through XOmnibus's design is not just aesthetic. An ecosystem is not a collection of animals. It is the sum of the relationships between them. The pistol shrimp and the gobby fish share a burrow; the shrimp digs and the fish watches for predators. Neither behavior is fully intelligible without the other. In the aquarium, engines are organisms. The coupling matrix is the ecology. The sounds that matter are the ones that emerge from the relationship.
+The aquarium metaphor that runs through XOlokun's design is not just aesthetic. An ecosystem is not a collection of animals. It is the sum of the relationships between them. The pistol shrimp and the gobby fish share a burrow; the shrimp digs and the fish watches for predators. Neither behavior is fully intelligible without the other. In the aquarium, engines are organisms. The coupling matrix is the ecology. The sounds that matter are the ones that emerge from the relationship.
 </p>
 
 <div class="article-divider reveal"></div>
 
 <p class="reveal" style="font-size: 0.8rem; color: var(--text-faint); text-align: center; margin-top: 3rem;">
-<em>System: MegaCouplingMatrix | 14 Coupling Types | Accent: Interconnect Teal #2AA19B</em><br>
+<em>System: MegaCouplingMatrix | 15 Coupling Types | Accent: Interconnect Teal #2AA19B</em><br>
 <em>XO_OX Field Guide &mdash; Architecture 10 | March 2026</em>
 </p>
 
@@ -1034,7 +1034,7 @@ The aquarium metaphor that runs through XOmnibus's design is not just aesthetic.
     <a href="guide.html">Field Guide</a>
     <a href="updates.html">Signal</a>
     <a href="index.html#community">Community</a>
-    <a href="https://github.com/BertCalm/XO_OX-XOmnibus" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
   </div>
   <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Character synthesis.</div>
 </footer>

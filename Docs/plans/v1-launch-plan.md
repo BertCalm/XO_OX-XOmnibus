@@ -1,6 +1,6 @@
 > **STATUS: ACTIVE** | V1 launch criteria defined and ratified. Prism Sweep complete (2026-03-20). Awaiting final launch gates.
 
-# XOmnibus V1 Launch Plan
+# XOlokun V1 Launch Plan
 
 *Drafted: 2026-03-17 | Updated: 2026-03-17 (RAC review + owner ratification)*
 *Goal: Ship a clean, confident, no-apologies V1*
@@ -127,7 +127,7 @@ With 11,247 presets, the 120/engine minimum target needs recalculation. Run per-
 | Task | Details | Effort | Status |
 |------|---------|--------|--------|
 | **MIT License** | Committed to repo | S | ✅ DONE |
-| **README.md** | User-facing: what is XOmnibus, how to build, how to contribute | M | In progress |
+| **README.md** | User-facing: what is XOlokun, how to build, how to contribute | M | In progress |
 | **CONTRIBUTING.md** | PR standards, code style, fnm requirement | M | In progress |
 | **SECURITY.md** | Vulnerability reporting process | S | In progress |
 | **CODE_OF_CONDUCT.md** | Contributor Covenant | S | In progress |

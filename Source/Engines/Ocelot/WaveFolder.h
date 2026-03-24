@@ -13,7 +13,7 @@ struct WaveFolder
     // drive: 1.0 = clean, higher = more folds (useful range 1–5)
     static float process(float x, float drive)
     {
-        return xomnibus::fastTanh(x * drive);
+        return xolokun::fastTanh(x * drive);
     }
 };
 

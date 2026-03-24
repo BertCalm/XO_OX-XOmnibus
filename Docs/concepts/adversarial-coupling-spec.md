@@ -9,7 +9,7 @@
 
 ## 1. Conceptual Foundation
 
-Every existing coupling type in XOmnibus (all 14, including KnotTopology) is fundamentally
+Every existing coupling type in XOlokun (all 14, including KnotTopology) is fundamentally
 cooperative. Source feeds destination. Both engines coexist. The relationship enhances each engine's
 expression without taking anything away.
 
@@ -545,11 +545,11 @@ to full competition, pull back. One knob tells the whole story.
 | Cooperative fallback | No (it always chokes) | Yes — at intensity=0, both engines coexist fully |
 | Performance modulation | Via separate AmpToChoke amount | Via single `competition_intensity` (M3 macro) |
 
-Adversarial coupling is the first coupling type in XOmnibus designed for the scenario where engines
+Adversarial coupling is the first coupling type in XOlokun designed for the scenario where engines
 are narrative opponents rather than collaborative voices. It gives producers a tool for tension —
 not just texture.
 
 ---
 
-*Docs/concepts/adversarial-coupling-spec.md — XOmnibus by XO_OX Designs*
+*Docs/concepts/adversarial-coupling-spec.md — XOlokun by XO_OX Designs*
 *Design only — no implementation. See open questions in Section 9 before writing code.*

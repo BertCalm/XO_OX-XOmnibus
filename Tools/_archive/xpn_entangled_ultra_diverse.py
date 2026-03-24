@@ -4,7 +4,7 @@ xpn_entangled_ultra_diverse.py
 Generate 100 Entangled presets with FOUR extreme DNA dimensions each,
 targeting maximum cosine distance from fleet centroid.
 
-Output: Presets/XOmnibus/Entangled/
+Output: Presets/XOlokun/Entangled/
 """
 
 import json
@@ -15,7 +15,7 @@ import random
 
 OUTPUT_DIR = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-    "Presets", "XOmnibus", "Entangled"
+    "Presets", "XOlokun", "Entangled"
 )
 
 ENGINES = [

@@ -15,7 +15,7 @@
 
 **OXIDE**. The name is literal and alchemical at once — oxidation is transformation through contact, the process by which raw metal becomes something with character. Forge Orange `#D4500A` is the color of molten iron just after it leaves the crucible: not yet solid, not yet finished, actively being shaped. Every preset in OXIDE is metal in that state.
 
-OXIDE is the **Flavor Pro** of XOmnibus. Where other engines synthesize, OXIDE transforms. Feed it a signal and it returns it changed — warmer, dirtier, stranger, richer. It is the engine you reach for when something technically correct needs to become musically true.
+OXIDE is the **Flavor Pro** of XOlokun. Where other engines synthesize, OXIDE transforms. Feed it a signal and it returns it changed — warmer, dirtier, stranger, richer. It is the engine you reach for when something technically correct needs to become musically true.
 
 ### Aquatic Creature: The Mimic Octopus
 

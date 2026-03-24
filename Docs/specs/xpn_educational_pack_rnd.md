@@ -14,7 +14,7 @@ No MPC-native tutorial pack studio exists. Native Instruments bundles education 
 
 **Format**: 3-pack progression sold together ($0 / $0 / $5 or bundled at $8)
 **Presets**: 16 pads × 3 packs = 48 total XPN presets across the series
-**Target audience**: Intermediate — producers who know XOmnibus but haven't engaged coupling
+**Target audience**: Intermediate — producers who know XOlokun but haven't engaged coupling
 
 The same 16 source sounds appear in all three packs. Pad labels and routing change; the source material does not. This makes the transformation audible and attributable.
 

@@ -12,12 +12,12 @@ Before doing any work, note what already exists:
   per-program sidecar schema (engine, preset_name, params dict, qlinks dict).
 - **Standalone tool built** — `Tools/xpn_params_sidecar_spec.py` implements `generate` and
   `validate` CLI commands, Jaccard name-matching, and a pack-level sidecar schema
-  (`version / pack_name / xomnibus_version_min / mappings[]`).
+  (`version / pack_name / xolokun_version_min / mappings[]`).
 - **NOT integrated** — `xpn_bundle_builder.py` has zero sidecar references. The sidecar tool
   exists but is never called during a pack build.
 - **NOT shipped in any pack** — no existing XPN ZIP output contains `params_sidecar.json`.
 
-The tasks below close those gaps and add the XOmnibus-side importer.
+The tasks below close those gaps and add the XOlokun-side importer.
 
 ---
 
@@ -34,7 +34,7 @@ Per-program sidecar placed inside each `Programs/<ProgramName>/` directory:
 ```json
 {
   "xo_ox_version": "1.0",
-  "target_plugin": "XO_OX.XOmnibus",
+  "target_plugin": "XO_OX.XOlokun",
   "engine": "OVERBITE",
   "preset_name": "Concrete Jaw",
   "params": {
@@ -56,7 +56,7 @@ Pack-level sidecar placed at the pack root, with a `mappings[]` array:
 {
   "version": "1.0",
   "pack_name": "ONSET Drum Essentials",
-  "xomnibus_version_min": "1.0.0",
+  "xolokun_version_min": "1.0.0",
   "mappings": [
     {
       "program_file": "kick_hard.xpm",
@@ -74,18 +74,18 @@ Pack-level sidecar placed at the pack root, with a `mappings[]` array:
 **Option 1 — Keep pack-level sidecar (Schema B, keep existing tool as-is)**
 - One file at pack root: `params_sidecar.json`
 - Mappings array links XPM filename → .xometa filename → engine
-- XOmnibus importer reads this one file to load all engine presets for the pack
+- XOlokun importer reads this one file to load all engine presets for the pack
 - Pro: one file per pack, simpler ZIP layout, existing tool already implements it
-- Con: requires XOmnibus to cross-reference which program the user just loaded
+- Con: requires XOlokun to cross-reference which program the user just loaded
 
 **Option 2 — Per-program sidecar (Schema A, rewrite tool)**
 - One `params_sidecar.json` per `Programs/<ProgramName>/` directory
-- XOmnibus can read it when the user opens a specific program
+- XOlokun can read it when the user opens a specific program
 - Pro: decoupled — each program carries its own engine preset inline
 - Con: many small files, params duplication if multiple programs share a preset
 
 **Recommendation**: Use Option 1 (pack-level) for the initial implementation. It matches the
-existing tool, is simpler to validate, and XOmnibus can read it on pack import. Option 2 can
+existing tool, is simpler to validate, and XOlokun can read it on pack import. Option 2 can
 be added in V1.1 as a per-program companion alongside the pack-level file.
 
 ### Files to modify
@@ -155,7 +155,7 @@ disk before being added to the archive.
 - If `Programs/` directory is empty or contains no `.xpm` files, skip sidecar and log a
   warning — do not fail the build.
 - If zero mappings are found (no `.xometa` files match the pack's programs), write the sidecar
-  anyway with an empty `mappings: []` — the file presence is what signals XOmnibus to look.
+  anyway with an empty `mappings: []` — the file presence is what signals XOlokun to look.
 - Log the sidecar mapping count at the end of the build summary alongside existing stats.
 
 ### Files to modify
@@ -174,7 +174,7 @@ Yes. Pattern follows the existing guarded-import pattern already used for `xpn_c
 **Status: Sonnet-ready (preset authoring) | Complexity: Large**
 
 Design XPN pack programs that are explicitly intended to sit alongside AIR plugins. The
-sidecar carries the XOmnibus engine character; the pack liner notes document the pairing.
+sidecar carries the XOlokun engine character; the pack liner notes document the pairing.
 
 ### Pairing targets
 
@@ -206,7 +206,7 @@ textural pads. Both occupy the same frequency region (lush, sustained, mid-high)
 as layers rather than complements: Solina for the string attack edge, OPAL for the granular
 shimmer underneath.
 
-Concrete deliverable: Identify 8–12 existing OPAL presets from `Presets/XOmnibus/` that have
+Concrete deliverable: Identify 8–12 existing OPAL presets from `Presets/XOlokun/` that have
 DNA brightness ≥ 0.5 and movement ≥ 0.4 (the Solina-adjacent zone). Document them in a
 `Docs/specs/air_opal_solina_pairs.md` file with: preset name, DNA values, recommended AIR
 Solina preset character, suggested mix role.
@@ -238,17 +238,17 @@ manual review.
 
 ---
 
-## Task 4: XOmnibus Sidecar Importer (C++ Feature)
+## Task 4: XOlokun Sidecar Importer (C++ Feature)
 
 **Status: Sonnet-ready | Complexity: Medium | Not pure documentation — touches JUCE code**
 
-This is the XOmnibus-side feature that makes the sidecar actionable for end users. Without it,
+This is the XOlokun-side feature that makes the sidecar actionable for end users. Without it,
 the sidecar ships in packs but nothing loads it.
 
 ### What to build
 
 A `SidecarImporter` utility class in `Source/Export/SidecarImporter.h` (inline header,
-following XOmnibus conventions — DSP in `.h`, `.cpp` is a one-line stub).
+following XOlokun conventions — DSP in `.h`, `.cpp` is a one-line stub).
 
 **Responsibilities:**
 
@@ -269,7 +269,7 @@ struct SidecarMapping {
 };
 ```
 
-**UI integration point:** Add a "Load XO_OX Pack Presets" button to the XOmnibus preset
+**UI integration point:** Add a "Load XO_OX Pack Presets" button to the XOlokun preset
 browser or pack import panel. On click: open a directory picker, call `SidecarImporter::scan`,
 show a list of found mappings with confidence scores, let user confirm, then call
 `loadMapping()` for each confirmed entry.
@@ -345,7 +345,7 @@ written. Update the "Now" item to reference that Task 2 above closes this gap, a
 | 1 | Task 1 — Schema reconciliation | None. Do this first so Tasks 2 and 4 build on the right schema. |
 | 2 | Task 2 — bundle_builder integration | Task 1 must be decided. |
 | 3 | Task 3 — Preset pair documentation | Independent. Can run in parallel with Task 2. |
-| 4 | Task 4 — XOmnibus SidecarImporter | Independent of Tasks 2–3. Needs JUCE context. |
+| 4 | Task 4 — XOlokun SidecarImporter | Independent of Tasks 2–3. Needs JUCE context. |
 | 5 | Task 5 — Docs | Run last, after Tasks 1–4 are done and confirmed. |
 
 ---

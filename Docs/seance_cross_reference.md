@@ -2,7 +2,7 @@
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
 **Updated:** 2026-03-21 — Seance 45: OPERA
-**Sources:** Grand Survey (`xomnibus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 45 seance records
+**Sources:** Grand Survey (`xolokun_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all 45 seance records
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
 ---
@@ -22,7 +22,7 @@
 | XOuroboros | OUROBOROS | Production-ready | B003 Leash + B007 Velocity Coupling | None | D003 compliant — most rigorous engine | "Lorenz, Rossler, Chua, Aizawa — this engine cites its sources. It is science." |
 | XOceanic | OCEANIC | 7.1/10 | B013 Chromatophore Modulator | None | D001: zero velocity response at all | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." |
 | XOdyssey | ODYSSEY | 7.6/10 | V007 Climax Paradigm | None | D004: crossFmDepth dead; AfterTouch/ModWheel never fed | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." |
-| XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only; D005: no LFO in adapter | "The ERA triangle arrives at the XOmnibus dock with no luggage." |
+| XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only; D005: no LFO in adapter | "The ERA triangle arrives at the XOlokun dock with no luggage." |
 | XOppossum | OVERBITE | Full approval | B008 Five-Macro System | None | None (best expression in fleet) | "These macros are not parameters — they are survival strategies." |
 | XOwlfish | OWLFISH | 7.1/10 | B014 Mixtur-Trautonium Oscillator | None | D004: owl_morphGlide dead; D005: zero LFOs | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." |
 | XObese | OBESE | 6.6/10 | B015 Mojo Control | None | D002 + D005: zero LFOs; D006: no CC | "The Mojo axis is unique in synthesis history — a continuous analog↔digital spectrum — and nothing modulates it." |
@@ -166,7 +166,7 @@ Round 8A addresses the remaining doctrine gaps: D005 (no LFO) and strengthening 
 | D004: `oblq_percDecay` discarded | 3B | `clickDecay` now passed to `ObliqueBounce::fireClick()` — click burst duration controllable 1–30ms |
 | D001: Filter envelope added | 7B | `oblq_filterEnvDepth` parameter added; velocity × envelope sweeps SVF cutoff by up to +7000 Hz |
 | Preset expansion 6→16 | 7C | 10 new presets covering Foundation, Atmosphere, Prism, Flux, Entangled moods |
-| Macros wired: FOLD, BOUNCE, COLOR, SPACE | 7D | All 4 XOmnibus standard macros produce audible change |
+| Macros wired: FOLD, BOUNCE, COLOR, SPACE | 7D | All 4 XOlokun standard macros produce audible change |
 | D006: Aftertouch + Mod Wheel | 7F | Channel pressure → prism mix depth (+0.3); CC1 mod wheel → prism color spread (+0.3) |
 | D005: Prism LFO | 8A | `obliqueLfoPhase` double accumulator; 0.2 Hz sine modulates `prismColor` ±0.15 — engine now breathes |
 | D001: Velocity-to-fold | 8A | `velocityFoldAmount = effectiveOscFold + velocity × 0.25` — harder hits produce +25% fold depth |
@@ -199,4 +199,4 @@ Comprehensive synthesis guides have been written for engines with complex or uni
 
 ---
 
-*See `Docs/xomnibus_landscape_2026.md` Section 8 for the full priority work queue across all 12 refinement rounds.*
+*See `Docs/xolokun_landscape_2026.md` Section 8 for the full priority work queue across all 12 refinement rounds.*

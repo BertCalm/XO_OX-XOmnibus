@@ -2,10 +2,10 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
-// VoiceAllocator — Shared voice allocation and stealing for the XOmnibus fleet.
+// VoiceAllocator — Shared voice allocation and stealing for the XOlokun fleet.
 //
 // Consolidates the identical LRU voice-stealing pattern found in 18+ engines.
 // Works with any voice array whose elements have `bool active` and
@@ -187,4 +187,4 @@ struct VoiceAllocator
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

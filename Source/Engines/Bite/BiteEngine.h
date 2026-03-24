@@ -14,7 +14,7 @@
 #include <vector>
 #include <cstdint>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // BiteNoiseGen -- xorshift32 PRNG for RT-safe noise generation.
@@ -2348,4 +2348,4 @@ private:
     std::atomic<float>* pPan = nullptr;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

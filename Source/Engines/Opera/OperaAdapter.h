@@ -1,6 +1,6 @@
 #pragma once
 //==============================================================================
-// OperaAdapter.h — XOmnibus adapter for opera::OperaEngine
+// OperaAdapter.h — XOlokun adapter for opera::OperaEngine
 //
 // Engine: XOpera — Kuramoto-coupled additive-vocal synthesis
 // Accent: Aria Gold #D4AF37 | Prefix: opera_ | Voices: 8
@@ -10,7 +10,7 @@
 #include "../../Core/SynthEngine.h"
 #include "OperaEngine.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 class OperaAdapter : public SynthEngine
 {
@@ -78,4 +78,4 @@ private:
     opera::OperaEngine engine_;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

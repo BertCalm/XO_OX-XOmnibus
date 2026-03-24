@@ -4,9 +4,7 @@
   "mood": "Atmosphere",
   "engines": [
     "Osmosis",
-    "Origami",
-    "",
-    ""
+    "Origami"
   ],
   "parameters": {
     "osmo_permeability": 0.6,

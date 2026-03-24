@@ -2,7 +2,7 @@
 """
 xpn_warmth_cold_dense_expander.py
 
-Populates the four under-represented warmth/density quadrants in the XOmnibus
+Populates the four under-represented warmth/density quadrants in the XOlokun
 preset fleet.  The fleet currently clusters 80.7% of presets in warmth 0.45-0.75
 and 77.7% in density 0.45-0.75.  This tool fills the extremes.
 
@@ -387,7 +387,7 @@ TARGET_PER_QUADRANT = 20
 def generate_quadrant(quadrant, repo_root, rng, dry_run, verbose):
     cfg = QUADRANT_CONFIG[quadrant]
     engines = QUADRANT_ENGINES[quadrant]
-    out_dir = repo_root / "Presets" / "XOmnibus" / cfg["subdir"]
+    out_dir = repo_root / "Presets" / "XOlokun" / cfg["subdir"]
 
     total = TARGET_PER_QUADRANT
     used_names = set()
@@ -420,7 +420,7 @@ QUADRANT_CHOICES = ["hot_dense", "cold_sparse", "hot_sparse", "cold_dense", "all
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Fill warmth/density extreme quadrants in the XOmnibus preset fleet.",
+        description="Fill warmth/density extreme quadrants in the XOlokun preset fleet.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )

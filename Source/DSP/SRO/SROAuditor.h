@@ -4,7 +4,7 @@
 #include <atomic>
 #include <cstring>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // SROAuditor — Sustainability & Resource Optimization diagnostic.
@@ -183,4 +183,4 @@ private:
     std::atomic<float> slotRoi[MaxSlots]  {};
 };
 
-} // namespace xomnibus
+} // namespace xolokun

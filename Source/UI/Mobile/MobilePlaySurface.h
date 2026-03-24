@@ -9,7 +9,7 @@
 #include <array>
 #include <cmath>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // MobilePlaySurface — Touch-optimized PlaySurface for iOS.
@@ -724,4 +724,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

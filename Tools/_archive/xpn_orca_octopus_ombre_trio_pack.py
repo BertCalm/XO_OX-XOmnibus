@@ -420,7 +420,7 @@ def build_octopus_others(rng: random.Random) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def write_preset(preset: dict, output_dir: str, dry_run: bool) -> Tuple[Path, bool]:
-    mood_dir = Path(output_dir) / "XOmnibus" / preset["mood"]
+    mood_dir = Path(output_dir) / "XOlokun" / preset["mood"]
     filepath = mood_dir / (preset["name"] + ".xometa")
     if dry_run:
         return filepath, False
@@ -437,7 +437,7 @@ def write_preset(preset: dict, output_dir: str, dry_run: bool) -> Tuple[Path, bo
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Generate ORCA × OCTOPUS × OMBRE Entangled coupling presets for XOmnibus."
+        description="Generate ORCA × OCTOPUS × OMBRE Entangled coupling presets for XOlokun."
     )
     default_out = Path(__file__).resolve().parent.parent / "Presets"
     parser.add_argument(
@@ -493,7 +493,7 @@ def main() -> int:
     if args.dry_run:
         print(f"\nDry run complete — {total} presets listed (0 files written).")
     else:
-        print(f"\nDone — {written}/{total} presets written to {args.output_dir}/XOmnibus/Entangled/")
+        print(f"\nDone — {written}/{total} presets written to {args.output_dir}/XOlokun/Entangled/")
     return 0
 
 

@@ -29,7 +29,7 @@ The Producer's Guild brings valuable market perspective. They represent the hand
 
 **Council verdict:** APPROVE as internal infrastructure (shared phase accumulator, sync logic, rate scaling) but REJECT as a drop-in replacement for all engines. Each engine must define its own default destination, default shape, and optionally unique waveform shapes that reflect its character. The `StandardLFO.h` header should provide `BaseLFO` that engines extend, not `StandardLFO` that engines consume.
 
-**Risk if ignored:** Fleet sounds like "42 engines with the same wobble." This is the single greatest threat to XOmnibus identity.
+**Risk if ignored:** Fleet sounds like "42 engines with the same wobble." This is the single greatest threat to XOlokun identity.
 
 ---
 

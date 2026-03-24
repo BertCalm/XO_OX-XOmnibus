@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <functional>
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // Touch phase mirrors UITouch phases but is platform-agnostic.
@@ -301,4 +301,4 @@ private:
     }
 };
 
-} // namespace xomnibus
+} // namespace xolokun

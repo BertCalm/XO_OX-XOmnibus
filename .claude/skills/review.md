@@ -1,6 +1,6 @@
 # /review — Code Review Checklist
 
-Structured code review tailored for audio/synth plugin development. Catches architecture violations, audio thread safety issues, and XOmnibus-specific gotchas.
+Structured code review tailored for audio/synth plugin development. Catches architecture violations, audio thread safety issues, and XOlokun-specific gotchas.
 
 ## Usage
 

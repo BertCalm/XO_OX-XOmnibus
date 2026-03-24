@@ -3,7 +3,7 @@
 #include <vector>
 #include "../FastMath.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // fXfXOneiric — "Dream State" boutique effect.
@@ -290,4 +290,4 @@ private:
     float mix         = 0.0f;
 };
 
-} // namespace xomnibus
+} // namespace xolokun

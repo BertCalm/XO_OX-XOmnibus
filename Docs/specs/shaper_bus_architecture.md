@@ -1,4 +1,4 @@
-# XOmnibus Shaper Bus — Architecture Specification
+# XOlokun Shaper Bus — Architecture Specification
 
 **Date:** 2026-03-19 | **Status:** APPROVED (RAC Brief ratified)
 **Author:** Ringleader + Architect + Consultant | **Version:** 1.0
@@ -7,7 +7,7 @@
 
 ## 1. Overview
 
-The Shaper Bus adds a new processing layer to XOmnibus: **utility engines that shape sound rather than synthesize it.** 12 shaper types across 6 categories, deployed in 6 slots (4 per-engine inserts + 2 post-mix bus).
+The Shaper Bus adds a new processing layer to XOlokun: **utility engines that shape sound rather than synthesize it.** 12 shaper types across 6 categories, deployed in 6 slots (4 per-engine inserts + 2 post-mix bus).
 
 ```
 Engine 1 → [Insert Shaper] ─┐

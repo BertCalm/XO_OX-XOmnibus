@@ -8,9 +8,9 @@
 #include "../../Core/PresetManager.h"
 #include "../../Core/EngineRegistry.h"
 #include "../../Core/MegaCouplingMatrix.h"
-#include "../XOmnibusEditor.h"
+#include "../XOlokunEditor.h"
 
-namespace xomnibus {
+namespace xolokun {
 
 //==============================================================================
 // ExportDialog — XPN export workflow UI with Gallery Model styling,
@@ -928,7 +928,7 @@ private:
 
                 XOriginate::BundleConfig config;
                 config.name = bundleName;
-                config.bundleId = "com.xo-ox.xomnibus." + config.name.toLowerCase().replace(" ", "-");
+                config.bundleId = "com.xo-ox.xolokun." + config.name.toLowerCase().replace(" ", "-");
                 config.outputDir = dialog.outputDir;
                 config.outputDir.createDirectory();
 
@@ -1086,4 +1086,4 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ExportDialog)
 };
 
-} // namespace xomnibus
+} // namespace xolokun

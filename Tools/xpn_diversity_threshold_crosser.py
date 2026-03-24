@@ -7,7 +7,7 @@ from 0.1991 to >= 0.20. Each preset places 5 of 6 DNA dimensions in extreme
 zones (XLOW 0.04-0.10 or XHIGH 0.90-0.96) and 1 dimension in midrange
 (0.43-0.57). This maximises cosine distance from the cluster centroid.
 
-Output: Presets/XOmnibus/{mood}/ — one .xometa per preset.
+Output: Presets/XOlokun/{mood}/ — one .xometa per preset.
 Skips files that already exist.
 """
 
@@ -15,8 +15,8 @@ import json
 import os
 import random
 
-REPO_ROOT = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus"  # FIXME: hardcoded path — should use os.path.join or argparse
-PRESET_BASE = os.path.join(REPO_ROOT, "Presets", "XOmnibus")
+REPO_ROOT = "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOlokun"  # FIXME: hardcoded path — should use os.path.join or argparse
+PRESET_BASE = os.path.join(REPO_ROOT, "Presets", "XOlokun")
 
 ENGINES = [
     "ODDFELIX", "ODDOSCAR", "OVERDUB", "ODYSSEY", "OBLONG", "OBESE",
@@ -227,7 +227,7 @@ def main():
         print(f"  {mood:12s}: {preset_count[mood]:3d} written")
     print(f"  {'TOTAL':12s}: {total_written:3d} written, {total_skipped} skipped")
     print()
-    print("Output root: Presets/XOmnibus/{mood}/")
+    print("Output root: Presets/XOlokun/{mood}/")
     print("Strategy: 5-extreme dims + 1 midrange dim per preset")
     print("Expected diversity impact: push fleet DNA diversity >= 0.20")
 

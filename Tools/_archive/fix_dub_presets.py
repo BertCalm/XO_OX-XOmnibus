@@ -5,7 +5,7 @@ to the canonical DubEngine schema.
 
 Problem: 41 presets were authored against the old XOverdub standalone parameter
 schema (unprefixed, e.g. `osc_wave`, `filter_cutoff`, `env_attack`, `send_level`)
-before the `dub_` prefix convention was enforced in XOmnibus.
+before the `dub_` prefix convention was enforced in XOlokun.
 
 This script:
 1. Finds all .xometa files with Overdub or Dub engine blocks
