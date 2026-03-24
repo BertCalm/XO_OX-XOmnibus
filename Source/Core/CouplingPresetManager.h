@@ -122,7 +122,7 @@ struct BakedCouplingState
 
                 auto& r = state.routes[static_cast<size_t>(i)];
                 r.active           = static_cast<bool>(routeObj->getProperty("active"));
-                r.couplingTypeIndex = juce::jlimit(0, static_cast<int>(CouplingType::KnotTopology),
+                r.couplingTypeIndex = juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling),
                                                    static_cast<int>(routeObj->getProperty("type")));
                 r.amount           = juce::jlimit(-1.0f, 1.0f,
                                                    static_cast<float>(routeObj->getProperty("amount")));
@@ -225,7 +225,7 @@ public:
 
             if (auto* p = apvts.getRawParameterValue(prefix + "type"))
                 route.couplingTypeIndex = juce::jlimit(0,
-                    static_cast<int>(CouplingType::KnotTopology),
+                    static_cast<int>(CouplingType::TriangularCoupling),
                     juce::roundToInt(p->load()));
 
             if (auto* p = apvts.getRawParameterValue(prefix + "amount"))
@@ -320,7 +320,7 @@ public:
             "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
             "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
             "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
-            "AudioToBuffer", "KnotTopology"
+            "AudioToBuffer", "KnotTopology", "TriangularCoupling"
         };
 
         std::vector<CouplingPair> pairs;
@@ -345,7 +345,8 @@ public:
             if (std::abs(amount) < 0.001f)
                 continue;
 
-            int typeIdx   = juce::jlimit(0, 13, juce::roundToInt(typeParam->load()));
+            int typeIdx   = juce::jlimit(0, static_cast<int>(CouplingType::TriangularCoupling),
+                                          juce::roundToInt(typeParam->load()));
             int srcSlot   = juce::jlimit(0, 3, juce::roundToInt(sourceParam->load()));
             int tgtSlot   = juce::jlimit(0, 3, juce::roundToInt(targetParam->load()));
 

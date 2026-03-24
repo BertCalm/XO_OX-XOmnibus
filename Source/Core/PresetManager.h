@@ -320,10 +320,12 @@ inline const juce::StringArray validCouplingTypes {
     "AmpToFilter", "AmpToPitch", "LFOToPitch", "EnvToMorph",
     "AudioToFM", "AudioToRing", "FilterToFilter", "AmpToChoke",
     "RhythmToBlend", "EnvToDecay", "PitchToPitch", "AudioToWavetable",
+    "AudioToBuffer", "KnotTopology", "TriangularCoupling",
     // Legacy arrow-notation aliases
     "Amp->Filter", "Amp->Pitch", "LFO->Pitch", "Env->Morph",
     "Audio->FM", "Audio->Ring", "Filter->Filter", "Amp->Choke",
-    "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable"
+    "Rhythm->Blend", "Env->Decay", "Pitch->Pitch", "Audio->Wavetable",
+    "Audio->Buffer", "Knot->Topology", "Triangular->Coupling"
 };
 
 //==============================================================================

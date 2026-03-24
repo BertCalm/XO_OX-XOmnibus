@@ -50,16 +50,26 @@ public:
         couplingBufferR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
     }
 
-    // Set the engine pointers for the active slots (audio thread)
+    // Set the engine pointers for the active slots (audio thread).
+    // Each pointer is stored atomically so getActiveEngines() may be called
+    // from the message thread without a data race (H04 fix).
     void setEngines(std::array<SynthEngine*, MaxSlots> engines)
     {
-        activeEngines = engines;
+        for (int i = 0; i < MaxSlots; ++i)
+            activeEngines[static_cast<size_t>(i)].store(engines[static_cast<size_t>(i)],
+                                                         std::memory_order_release);
     }
 
-    // Get the engine pointers for the active slots (message thread — read-only)
-    const std::array<SynthEngine*, MaxSlots>& getActiveEngines() const
+    // Get the engine pointers for the active slots (message thread — read-only).
+    // Returns a plain array snapshot using acquire loads — safe to call
+    // concurrently with setEngines() on the audio thread.
+    std::array<SynthEngine*, MaxSlots> getActiveEngines() const
     {
-        return activeEngines;
+        std::array<SynthEngine*, MaxSlots> result {};
+        for (int i = 0; i < MaxSlots; ++i)
+            result[static_cast<size_t>(i)] =
+                activeEngines[static_cast<size_t>(i)].load(std::memory_order_acquire);
+        return result;
     }
 
     //-- Route mutation (message thread only) ----------------------------------
@@ -123,7 +133,7 @@ public:
 
         for (const auto& route : *routes)
         {
-            if (!route.active || route.amount < 0.001f)
+            if (!route.active || std::abs(route.amount) < 0.001f)
                 continue;
 
             // Bounds check slot indices to prevent OOB access
@@ -131,8 +141,8 @@ public:
                 || route.destSlot < 0 || route.destSlot >= MaxSlots)
                 continue;
 
-            auto* source = activeEngines[static_cast<size_t>(route.sourceSlot)];
-            auto* dest = activeEngines[static_cast<size_t>(route.destSlot)];
+            auto* source = activeEngines[static_cast<size_t>(route.sourceSlot)].load(std::memory_order_relaxed);
+            auto* dest = activeEngines[static_cast<size_t>(route.destSlot)].load(std::memory_order_relaxed);
             if (!source || !dest)
                 continue;
 
@@ -260,7 +270,7 @@ private:
 
     std::shared_ptr<std::vector<CouplingRoute>> routeList =
         std::make_shared<std::vector<CouplingRoute>>();
-    std::array<SynthEngine*, MaxSlots> activeEngines = {};
+    std::array<std::atomic<SynthEngine*>, MaxSlots> activeEngines {};
     std::vector<float> couplingBuffer;   // L / mono scratch — pre-allocated in prepare()
     std::vector<float> couplingBufferR;  // R scratch for AudioToBuffer stereo push
 
