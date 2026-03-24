@@ -198,14 +198,14 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
-See `Docs/xolokun_name_migration_reference.md` (formerly `Docs/xolokun_name_migration_reference.md`) for the full mapping and gotchas.
+See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas.
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
-| `Docs/xolokun_master_specification.md` | **THE** single source of truth |
-| `Docs/xolokun_name_migration_reference.md` | Legacy → canonical engine name mapping |
+| `Docs/xomnibus_master_specification.md` | **THE** single source of truth |
+| `Docs/xomnibus_name_migration_reference.md` | Legacy → canonical engine name mapping |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -222,7 +222,7 @@ See `Docs/xolokun_name_migration_reference.md` (formerly `Docs/xolokun_name_migr
 | `Source/Engines/Overtone/OvertoneEngine.h` | Continued fraction spectral engine (Nautilus) |
 | `Source/Engines/Organism/OrganismEngine.h` | Cellular automata generative engine (Coral Colony) |
 | `Source/UI/OpticVisualizer/OpticVisualizer.h` | Winamp-style audio-reactive visualizer |
-| `Docs/xolokun_sound_design_guides.md` | Sound design guide (38 of 44 engines covered; OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE need entries) |
+| `Docs/xomnibus_sound_design_guides.md` | Sound design guide |
 | `Source/DSP/` | Shared DSP library |
 | `Source/UI/` | Gallery Model UI components |
 | `Source/Export/` | XPN export pipeline |
@@ -287,7 +287,7 @@ New engines are designed as standalone instruments first, then integrated into X
 
 **Invoke:** `/new-xo-engine` — walks through ideation, architecture, scaffold, and integration prep.
 
-**Full process:** `Docs/xolokun_new_engine_process.md` (formerly `Docs/xolokun_new_engine_process.md`)
+**Full process:** `Docs/xomnibus_new_engine_process.md`
 
 **Quick rules for XOlokun-ready standalone development:**
 - Parameter IDs use `{shortname}_{paramName}` format from day one
@@ -328,7 +328,7 @@ Previous Waves preserved — all existing behavior unchanged when reefResident=O
 - Post-fix rescoring: `Docs/post-fix-rescoring-2026-03-20.md`
 - Producer's Guild review: `Docs/producers-guild-fleet-review-2026-03-20.md`
 - Seance review of Guild plan: `Docs/seance-review-guild-plan-2026-03-20.md`
-- Grand Survey: `Docs/xolokun_landscape_2026.md`
+- Grand Survey: `Docs/xomnibus_landscape_2026.md`
 - Cross-reference: `Docs/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
 
@@ -463,12 +463,12 @@ When a new engine is registered, update **all four** of these sections in CLAUDE
 4. **Key Files table** (if the engine has a notable architecture worth linking) — add `| Source/Engines/Name/NameEngine.h | Brief description |`
 
 Then update these external files:
-- `Docs/xolokun_master_specification.md` section 3.1 engine table (add row)
+- `Docs/xomnibus_master_specification.md` section 3.1 engine table (add row)
 - `Docs/seance_cross_reference.md` (add seance row after the seance is run)
 - `Source/XOlokunProcessor.cpp` (register the engine)
 - `Source/Core/PresetManager.h` (add to `validEngineNames` and `frozenPrefixForEngine`)
 
-Full process: `Docs/xolokun_new_engine_process.md`
+Full process: `Docs/xomnibus_new_engine_process.md`
 
 ---
 
@@ -477,17 +477,17 @@ Full process: `Docs/xolokun_new_engine_process.md`
 - Full doc inventory: `Docs/MANIFEST.md`
 - Documentation governance: `Docs/GOVERNANCE.md`
 - Documentation improvement plan: `Docs/documentation_health_plan.md`
-- Master specification: `Docs/xolokun_master_specification.md`
+- Master specification: `Docs/xomnibus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
 
 ---
 
 ## Development Workflow
 
-1. Read the master spec (`Docs/xolokun_master_specification.md`) before making changes
+1. Read the master spec (`Docs/xomnibus_master_specification.md`) before making changes
 2. Plan before coding — produce architecture + QA plan first
 3. All engines must implement the `SynthEngine` interface
 4. Parameter IDs are namespaced by engine (e.g., `snap_filterCutoff`, `dub_sendAmount`)
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
-7. For new engines, follow the process in `Docs/xolokun_new_engine_process.md`
+7. For new engines, follow the process in `Docs/xomnibus_new_engine_process.md`

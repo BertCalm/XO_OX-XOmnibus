@@ -2,7 +2,6 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../Core/SynthEngine.h"
 #include "../../DSP/PitchBendUtil.h"
-#include "../../DSP/FastMath.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
 #include <array>

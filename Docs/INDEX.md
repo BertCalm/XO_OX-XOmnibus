@@ -5,20 +5,20 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 
 ## Architecture & Specs
 
-- [xolokun_master_specification.md](xolokun_master_specification.md) — Master spec for XOlokun platform
+- [xomnibus_master_specification.md](xomnibus_master_specification.md) — Master spec for XOlokun platform
 - [XOlokun_Master_Architecture- Volume 2.md.txt](XOlokun_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture
-- [xolokun_repo_structure.md](xolokun_repo_structure.md) — Directory and file organization
-- [xolokun_technical_design_system.md](xolokun_technical_design_system.md) — Technical design patterns
-- [xolokun_new_engine_process.md](xolokun_new_engine_process.md) — How to add a new engine
-- [xolokun_preset_spec_for_builder.md](xolokun_preset_spec_for_builder.md) — Preset schema for builders
+- [xomnibus_repo_structure.md](xomnibus_repo_structure.md) — Directory and file organization
+- [xomnibus_technical_design_system.md](xomnibus_technical_design_system.md) — Technical design patterns
+- [xomnibus_new_engine_process.md](xomnibus_new_engine_process.md) — How to add a new engine
+- [xomnibus_preset_spec_for_builder.md](xomnibus_preset_spec_for_builder.md) — Preset schema for builders
 - [xometa_schema.json](xometa_schema.json) — .xometa JSON schema definition
 - [xometa_examples.json](xometa_examples.json) — .xometa example files
-- [xolokun_module_starter_design.md](xolokun_module_starter_design.md) — Module starter patterns
-- [xolokun_mobile_and_midi_spec.md](xolokun_mobile_and_midi_spec.md) — iOS/MIDI specification
-- [xolokun_mobile_implementation_strategy.md](xolokun_mobile_implementation_strategy.md) — iOS implementation strategy
-- [xolokun_recipe_system_design.md](xolokun_recipe_system_design.md) — Recipe/coupling system design
-- [xolokun_name_migration_reference.md](xolokun_name_migration_reference.md) — Engine name migration reference
-- [how_to_write_a_xolokun_adapter.md](how_to_write_a_xolokun_adapter.md) — Adapter authoring guide
+- [xomnibus_module_starter_design.md](xomnibus_module_starter_design.md) — Module starter patterns
+- [xomnibus_mobile_and_midi_spec.md](xomnibus_mobile_and_midi_spec.md) — iOS/MIDI specification
+- [xomnibus_mobile_implementation_strategy.md](xomnibus_mobile_implementation_strategy.md) — iOS implementation strategy
+- [xomnibus_recipe_system_design.md](xomnibus_recipe_system_design.md) — Recipe/coupling system design
+- [xomnibus_name_migration_reference.md](xomnibus_name_migration_reference.md) — Engine name migration reference
+- [how_to_write_a_xomnibus_adapter.md](how_to_write_a_xomnibus_adapter.md) — Adapter authoring guide
 - [oscar_rive_spec.md](oscar_rive_spec.md) — Rive/Oscar UI animation spec
 - [xo_signature_playsurface_spec.md](xo_signature_playsurface_spec.md) — PlaySurface spec
 - [shore_system_spec.md](shore_system_spec.md) — Shore system (Osprey/Osteria) spec
@@ -38,7 +38,7 @@ Generated: 2026-03-19 | Updated: 2026-03-21 | Total: 187+ files
 - [oracle_synthesis_guide.md](oracle_synthesis_guide.md) — ORACLE synthesis guide
 - [overlap_synthesis_guide.md](overlap_synthesis_guide.md) — OVERLAP synthesis guide
 - [outwit_synthesis_guide.md](outwit_synthesis_guide.md) — OUTWIT synthesis guide
-- [xolokun_sound_design_guides.md](xolokun_sound_design_guides.md) — Cross-engine sound design
+- [xomnibus_sound_design_guides.md](xomnibus_sound_design_guides.md) — Cross-engine sound design
 - [organon_vfe_guide.md](organon_vfe_guide.md) — ORGANON VFE guide
 - [onset_xvc_demo_guide.md](onset_xvc_demo_guide.md) — ONSET XVC demo guide
 - [MPC_Controller_Setup.md](MPC_Controller_Setup.md) — MPC controller setup

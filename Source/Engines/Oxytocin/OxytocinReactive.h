@@ -85,12 +85,15 @@ public:
     }
 
     /// Process one sample with given effective commitment, intimacy, passion.
+    /// commitRate and baseRelease are reserved for a planned future feature (per-sample
+    /// release modulation driven by commitment level — V1.1 scope). They are passed
+    /// now to keep the call-site API stable and avoid parameter-ID freeze issues later.
     float processSample (float input,
                          float effectiveCommitment,
                          float effectiveIntimacy,
                          float effectivePassion,
-                         float commitRate,
-                         float baseRelease) noexcept
+                         [[maybe_unused]] float commitRate,
+                         [[maybe_unused]] float baseRelease) noexcept
     {
         // Obsession mode — smoothstep crossfade over the threshold region.
         // Replaces the hard binary switch: prevents a resonance step when

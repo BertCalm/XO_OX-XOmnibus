@@ -30,7 +30,7 @@ Last night's session was a Full Audit (Phase 1) + XOlokun rebirth + autonomous e
 | PresetManager: engine cap 3→4 (slot 4 data preserved) | `Source/Core/PresetManager.h` | DONE |
 | OVERTONE: reverb comb lengths from sampleRate (96kHz fix) | `Source/Engines/Overtone/OvertoneEngine.h` | DONE |
 | JUCE Font deprecation (2 warnings eliminated) | `Source/UI/XOlokunEditor.h` | DONE |
-| Osmosis preset: blank engine names removed | `Presets/XOmnibus/Atmosphere/Osmosis_First_Breath.xometa` | DONE |
+| Osmosis preset: blank engine names removed | `Presets/XOlokun/Atmosphere/Osmosis_First_Breath.xometa` | DONE |
 
 ### Site Updates (10 HTML files)
 | Fix | Status |
