@@ -365,8 +365,13 @@ private:
     bool envFollowEnabled = false;
     float envFollowAmount = 0.5f;
 
-    // Clamp helper for int
+    // Clamp helpers — separate int and float overloads to prevent implicit float→int
+    // truncation (e.g. clamp(0.5f, 0.0f, 1.0f) must not truncate to 0).
     static int clamp (int x, int lo, int hi)
+    {
+        return (x < lo) ? lo : ((x > hi) ? hi : x);
+    }
+    static float clamp (float x, float lo, float hi)
     {
         return (x < lo) ? lo : ((x > hi) ? hi : x);
     }

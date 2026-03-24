@@ -587,7 +587,10 @@ public:
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 reset();
             else if (msg.isChannelPressure())
+            {
+                // Braces added to prevent dangling-else with the subsequent else-if chain.
                 for (auto& v : voices) if (v.active) v.aftertouch = msg.getChannelPressureValue() / 127.0f;
+            }
             else if (msg.isPitchWheel())
                 pitchBend_ = (msg.getPitchWheelValue() - 8192) / 8192.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)

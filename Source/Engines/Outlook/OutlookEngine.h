@@ -5,6 +5,7 @@
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/StandardLFO.h"
 #include <array>
+#include <vector>
 #include <cmath>
 #include <algorithm>
 
@@ -84,9 +85,11 @@ public:
         lfo1.reset();
         lfo2.reset();
 
-        // FX buffers
-        delayBufL.fill (0.0f);
-        delayBufR.fill (0.0f);
+        // FX buffers — size dynamically so delay is correct at any sample rate
+        // Max delay time is 0.375s (L channel); add 1 sample of headroom.
+        kDelayBufSizeDynamic = static_cast<int> (kDelayMaxSeconds * sampleRate) + 1;
+        delayBufL.assign (static_cast<size_t> (kDelayBufSizeDynamic), 0.0f);
+        delayBufR.assign (static_cast<size_t> (kDelayBufSizeDynamic), 0.0f);
         delayWritePos = 0;
         reverbBuf.fill (0.0f);
         reverbWritePos = 0;
@@ -231,8 +234,8 @@ public:
                 const float scan1 = horizonPos;
                 const float scan2 = 1.0f - horizonPos;
 
-                const float osc1 = renderWave (v.phase1, static_cast<int> (pWave1), scan1);
-                const float osc2 = renderWave (v.phase2, static_cast<int> (pWave2), scan2);
+                const float osc1 = renderWave (v.phase1, static_cast<int> (pWave1), scan1, v.noiseSeed);
+                const float osc2 = renderWave (v.phase2, static_cast<int> (pWave2), scan2, v.noiseSeed);
 
                 v.phase1 += phaseInc;
                 v.phase2 += phaseInc * 1.001; // Slight detune for width
@@ -281,15 +284,15 @@ public:
             const float spaceAmt = std::clamp (pMacroSpc + pReverb, 0.0f, 1.0f);
             const float delayAmt = std::clamp (pDelay + pMacroCouple * 0.3f, 0.0f, 1.0f);
 
-            // Ping-pong delay (0.375s L, 0.25s R at 48kHz)
-            const int delayWriteIdx = delayWritePos % kDelayBufSize;
-            const int delayReadL = (delayWritePos - static_cast<int> (0.375 * sr) + kDelayBufSize * 4) % kDelayBufSize;
-            const int delayReadR = (delayWritePos - static_cast<int> (0.25 * sr) + kDelayBufSize * 4) % kDelayBufSize;
+            // Ping-pong delay (0.375s L, 0.25s R) — uses dynamic buffer sized in prepare()
+            const int delayWriteIdx = delayWritePos % kDelayBufSizeDynamic;
+            const int delayReadL = (delayWritePos - static_cast<int> (0.375 * sr) + kDelayBufSizeDynamic * 4) % kDelayBufSizeDynamic;
+            const int delayReadR = (delayWritePos - static_cast<int> (0.25 * sr) + kDelayBufSizeDynamic * 4) % kDelayBufSizeDynamic;
             const float delayOutL = flushDenormal (delayBufL[static_cast<size_t> (delayReadL)]);
             const float delayOutR = flushDenormal (delayBufR[static_cast<size_t> (delayReadR)]);
             delayBufL[static_cast<size_t> (delayWriteIdx)] = mixR * 0.5f + delayOutR * 0.35f; // Cross-feed for ping-pong
             delayBufR[static_cast<size_t> (delayWriteIdx)] = mixL * 0.5f + delayOutL * 0.35f;
-            delayWritePos = (delayWritePos + 1) % kDelayBufSize;
+            delayWritePos = (delayWritePos + 1) % kDelayBufSizeDynamic;
 
             // Diffusion reverb (4-tap allpass with feedback)
             const int revIdx = reverbWritePos % kReverbBufSize;
@@ -319,6 +322,12 @@ public:
                 buffer.getReadPointer (ch), numSamples);
 
         analyzeForSilenceGate (buffer, numSamples);
+
+        // F04: reset per-block coupling accumulators so stale values don't persist
+        // after a coupling route is deactivated (matches OxytocinAdapter pattern).
+        couplingFilterMod   = 0.0f;
+        couplingParallaxMod = 0.0f;
+        couplingHorizonMod  = 0.0f;
     }
 
     //-- Coupling ---------------------------------------------------------------
@@ -335,6 +344,7 @@ public:
                              const float* sourceBuffer, int numSamples) override
     {
         if (amount < 0.001f || sourceBuffer == nullptr) return;
+        if (numSamples <= 0) return; // F03: guard divide-by-zero (legal in tail-render hosts)
 
         switch (type)
         {
@@ -518,6 +528,9 @@ private:
         float baseFreq = 440.0f;
         double phase1 = 0.0, phase2 = 0.0;
         uint32_t age = 0; // For oldest-voice stealing
+        // F06: per-voice PRNG seed (was static thread_local — hidden RT alloc on first access).
+        // Each voice gets independent noise (sonically better too).
+        uint32_t noiseSeed = 2463534242u;
         SimpleEnvelope ampEnv, filterEnv;
         CytomicSVF filterLP, filterHP;
     };
@@ -584,7 +597,7 @@ private:
 
     //-- Wavetable rendering ----------------------------------------------------
 
-    static float renderWave (double phase, int shape, float scan)
+    static float renderWave (double phase, int shape, float scan, uint32_t& noiseSeed)
     {
         const float p = static_cast<float> (phase);
         const float s = std::clamp (scan, 0.0f, 1.0f);
@@ -642,11 +655,10 @@ private:
                 base = sum / 3.0f;
                 break;
             }
-            case 6: // Noise (lock-free xorshift32 PRNG)
+            case 6: // Noise (xorshift32 PRNG — F06: per-voice seed, no thread_local)
             {
-                static thread_local uint32_t rng = 2463534242u;
-                rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
-                base = static_cast<float> (rng) / static_cast<float> (0xFFFFFFFFu) * 2.0f - 1.0f;
+                noiseSeed ^= noiseSeed << 13; noiseSeed ^= noiseSeed >> 17; noiseSeed ^= noiseSeed << 5;
+                base = static_cast<float> (noiseSeed) / static_cast<float> (0xFFFFFFFFu) * 2.0f - 1.0f;
                 break;
             }
             case 7: // Formant-ish
@@ -680,10 +692,12 @@ private:
     float pitchBendNorm = 0.0f;
     uint32_t voiceCounter = 0;
 
-    // Delay buffers (ping-pong, ~0.5s at 48kHz)
-    static constexpr int kDelayBufSize = 24000;
-    std::array<float, kDelayBufSize> delayBufL {};
-    std::array<float, kDelayBufSize> delayBufR {};
+    // Delay buffers (ping-pong) — dynamically sized in prepare() for sample-rate independence.
+    // Max delay time = 0.5s (covers 0.375s L + headroom at any sample rate up to 192 kHz+).
+    static constexpr float kDelayMaxSeconds = 0.5f;
+    int kDelayBufSizeDynamic = 24000; // updated in prepare()
+    std::vector<float> delayBufL {};
+    std::vector<float> delayBufR {};
     int delayWritePos = 0;
 
     // Reverb buffer (4-tap allpass diffusion)

@@ -4,6 +4,10 @@
 /// ParamSnapshot — cache all 29 oxy_ parameter values once per block.
 /// Never query APVTS on the audio thread per-sample; call update() once at
 /// the top of processBlock() and then read the plain POD fields throughout.
+///
+/// F02 fix (2026-03-24): pointer caching. attachParameters() must be called
+/// once at construction/plugin-load time to cache all 29 std::atomic<float>*
+/// pointers. update() then calls .load(relaxed) directly — no string lookup.
 struct ParamSnapshot
 {
     // Love components
@@ -56,50 +60,123 @@ struct ParamSnapshot
     int   voices = 4;
 
     // ----------------------------------------------------------------
-    void update (juce::AudioProcessorValueTreeState& apvts)
+    /// Call once during attachParameters() — caches all 29 raw pointers so
+    /// update() performs zero string lookups on the audio thread.
+    void attachParameters (juce::AudioProcessorValueTreeState& apvts)
     {
-        // P2-2: use memory_order_relaxed — audio parameters updated on UI thread
-        // and read on audio thread do not require sequential consistency.
-        // Eliminates memory barriers on ARM / Apple Silicon.
-        auto getF = [&](const char* id) -> float
+        pIntimacy     = apvts.getRawParameterValue ("oxy_intimacy");
+        pPassion      = apvts.getRawParameterValue ("oxy_passion");
+        pCommitment   = apvts.getRawParameterValue ("oxy_commitment");
+        pWarmthRate   = apvts.getRawParameterValue ("oxy_warmth_rate");
+        pPassionRate  = apvts.getRawParameterValue ("oxy_passion_rate");
+        pCommitRate   = apvts.getRawParameterValue ("oxy_commit_rate");
+        pEntanglement = apvts.getRawParameterValue ("oxy_entanglement");
+        pCircuitAge   = apvts.getRawParameterValue ("oxy_circuit_age");
+        pCircuitNoise = apvts.getRawParameterValue ("oxy_circuit_noise");
+        pMemoryDepth  = apvts.getRawParameterValue ("oxy_memory_depth");
+        pMemoryDecay  = apvts.getRawParameterValue ("oxy_memory_decay");
+        pTopology     = apvts.getRawParameterValue ("oxy_topology");
+        pTopologyLock = apvts.getRawParameterValue ("oxy_topology_lock");
+        pFeedback     = apvts.getRawParameterValue ("oxy_feedback");
+        pCutoff       = apvts.getRawParameterValue ("oxy_cutoff");
+        pPitch        = apvts.getRawParameterValue ("oxy_pitch");
+        pDetune       = apvts.getRawParameterValue ("oxy_detune");
+        pAttack       = apvts.getRawParameterValue ("oxy_attack");
+        pDecay        = apvts.getRawParameterValue ("oxy_decay");
+        pSustain      = apvts.getRawParameterValue ("oxy_sustain");
+        pRelease      = apvts.getRawParameterValue ("oxy_release");
+        pLfoRate      = apvts.getRawParameterValue ("oxy_lfo_rate");
+        pLfoDepth     = apvts.getRawParameterValue ("oxy_lfo_depth");
+        pLfoShape     = apvts.getRawParameterValue ("oxy_lfo_shape");
+        pLfo2Rate     = apvts.getRawParameterValue ("oxy_lfo2_rate");
+        pLfo2Depth    = apvts.getRawParameterValue ("oxy_lfo2_depth");
+        pOutput       = apvts.getRawParameterValue ("oxy_output");
+        pPan          = apvts.getRawParameterValue ("oxy_pan");
+        pVoices       = apvts.getRawParameterValue ("oxy_voices");
+    }
+
+    // ----------------------------------------------------------------
+    /// Call once per audio block. Reads all 29 cached atomic<float>* pointers
+    /// with memory_order_relaxed — zero string lookups on the audio thread.
+    void update()
+    {
+        auto loadF = [](std::atomic<float>* p, float def) -> float
         {
-            auto* p = apvts.getRawParameterValue (id);
-            return p ? p->load (std::memory_order_relaxed) : 0.0f;
+            return p ? p->load (std::memory_order_relaxed) : def;
         };
-        auto getI = [&](const char* id) -> int
+        auto loadI = [](std::atomic<float>* p, int def) -> int
         {
-            auto* p = apvts.getRawParameterValue (id);
-            return p ? static_cast<int> (p->load (std::memory_order_relaxed)) : 0;
+            return p ? static_cast<int> (p->load (std::memory_order_relaxed)) : def;
         };
 
-        intimacy    = getF ("oxy_intimacy");
-        passion     = getF ("oxy_passion");
-        commitment  = getF ("oxy_commitment");
-        warmthRate  = getF ("oxy_warmth_rate");
-        passionRate = getF ("oxy_passion_rate");
-        commitRate  = getF ("oxy_commit_rate");
-        entanglement  = getF ("oxy_entanglement");
-        circuitAge    = getF ("oxy_circuit_age");
-        circuitNoise  = getF ("oxy_circuit_noise");
-        memoryDepth   = getF ("oxy_memory_depth");
-        memoryDecay   = getF ("oxy_memory_decay");
-        topology      = getI ("oxy_topology");
-        topologyLock  = getI ("oxy_topology_lock");
-        feedback      = getF ("oxy_feedback");
-        cutoff        = getF ("oxy_cutoff");
-        pitch         = getF ("oxy_pitch");
-        detune        = getF ("oxy_detune");
-        attack        = getF ("oxy_attack");
-        decay         = getF ("oxy_decay");
-        sustain       = getF ("oxy_sustain");
-        release       = getF ("oxy_release");
-        lfoRate       = getF ("oxy_lfo_rate");
-        lfoDepth      = getF ("oxy_lfo_depth");
-        lfoShape      = getI ("oxy_lfo_shape");
-        lfo2Rate      = getF ("oxy_lfo2_rate");
-        lfo2Depth     = getF ("oxy_lfo2_depth");
-        output        = getF ("oxy_output");
-        pan           = getF ("oxy_pan");
-        voices        = getI ("oxy_voices");
+        intimacy      = loadF (pIntimacy,     0.3f);
+        passion       = loadF (pPassion,      0.25f);
+        commitment    = loadF (pCommitment,   0.2f);
+        warmthRate    = loadF (pWarmthRate,   0.3f);
+        passionRate   = loadF (pPassionRate,  0.005f);
+        commitRate    = loadF (pCommitRate,   1.0f);
+        entanglement  = loadF (pEntanglement, 0.4f);
+        circuitAge    = loadF (pCircuitAge,   0.0f);
+        circuitNoise  = loadF (pCircuitNoise, 0.05f);
+        memoryDepth   = loadF (pMemoryDepth,  0.0f);
+        memoryDecay   = loadF (pMemoryDecay,  5.0f);
+        topology      = loadI (pTopology,     0);
+        topologyLock  = loadI (pTopologyLock, 0);
+        feedback      = loadF (pFeedback,     0.3f);
+        cutoff        = loadF (pCutoff,       8000.0f);
+        pitch         = loadF (pPitch,        0.0f);
+        detune        = loadF (pDetune,       0.0f);
+        attack        = loadF (pAttack,       0.01f);
+        decay         = loadF (pDecay,        0.5f);
+        sustain       = loadF (pSustain,      0.7f);
+        release       = loadF (pRelease,      0.5f);
+        lfoRate       = loadF (pLfoRate,      1.0f);
+        lfoDepth      = loadF (pLfoDepth,     0.0f);
+        lfoShape      = loadI (pLfoShape,     0);
+        lfo2Rate      = loadF (pLfo2Rate,     0.067f);
+        lfo2Depth     = loadF (pLfo2Depth,    0.0f);
+        output        = loadF (pOutput,       0.0f);
+        pan           = loadF (pPan,          0.0f);
+        voices        = loadI (pVoices,       4);
     }
+
+    /// Legacy overload — accepts APVTS reference but ignores it; kept for
+    /// call-site compatibility during migration. Use update() after
+    /// attachParameters() has been called.
+    void update (juce::AudioProcessorValueTreeState& /*apvts*/)
+    {
+        update();
+    }
+
+private:
+    // Cached parameter pointers — set once in attachParameters(), read every block.
+    std::atomic<float>* pIntimacy     = nullptr;
+    std::atomic<float>* pPassion      = nullptr;
+    std::atomic<float>* pCommitment   = nullptr;
+    std::atomic<float>* pWarmthRate   = nullptr;
+    std::atomic<float>* pPassionRate  = nullptr;
+    std::atomic<float>* pCommitRate   = nullptr;
+    std::atomic<float>* pEntanglement = nullptr;
+    std::atomic<float>* pCircuitAge   = nullptr;
+    std::atomic<float>* pCircuitNoise = nullptr;
+    std::atomic<float>* pMemoryDepth  = nullptr;
+    std::atomic<float>* pMemoryDecay  = nullptr;
+    std::atomic<float>* pTopology     = nullptr;
+    std::atomic<float>* pTopologyLock = nullptr;
+    std::atomic<float>* pFeedback     = nullptr;
+    std::atomic<float>* pCutoff       = nullptr;
+    std::atomic<float>* pPitch        = nullptr;
+    std::atomic<float>* pDetune       = nullptr;
+    std::atomic<float>* pAttack       = nullptr;
+    std::atomic<float>* pDecay        = nullptr;
+    std::atomic<float>* pSustain      = nullptr;
+    std::atomic<float>* pRelease      = nullptr;
+    std::atomic<float>* pLfoRate      = nullptr;
+    std::atomic<float>* pLfoDepth     = nullptr;
+    std::atomic<float>* pLfoShape     = nullptr;
+    std::atomic<float>* pLfo2Rate     = nullptr;
+    std::atomic<float>* pLfo2Depth    = nullptr;
+    std::atomic<float>* pOutput       = nullptr;
+    std::atomic<float>* pPan          = nullptr;
+    std::atomic<float>* pVoices       = nullptr;
 };

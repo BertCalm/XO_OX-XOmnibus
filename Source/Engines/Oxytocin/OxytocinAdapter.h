@@ -210,7 +210,7 @@ public:
     void attachParameters (juce::AudioProcessorValueTreeState& apvts) override
     {
         apvts_ = &apvts;
-        snap_.update (apvts);
+        snap_.attachParameters (apvts); // F02: cache 29 raw pointers once; update() has no string lookups
     }
 
 private:
