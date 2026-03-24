@@ -34,16 +34,16 @@
       "look_release": 0.6,
       "look_lfo1Rate": 2.0,
       "look_lfo1Depth": 0.2,
-      "look_lfo2Rate": 0.8,
+      "look_lfo2Rate": 0.73,
       "look_lfo2Depth": 0.25,
       "look_modWheelDepth": 0.6,
       "look_aftertouchDepth": 0.6,
-      "look_reverbMix": 0.3,
+      "look_reverbMix": 0.2,
       "look_delayMix": 0.15,
       "look_macroCharacter": 0.7,
-      "look_macroMovement": 0.0,
+      "look_macroMovement": 0.15,
       "look_macroCoupling": 0.0,
-      "look_macroSpace": 0.3
+      "look_macroSpace": 0.25
     }
   },
   "coupling": { "pairs": [] }

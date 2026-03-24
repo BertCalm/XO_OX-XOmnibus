@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "OUTLOOK Albatross Soar",
+  "mood": "Atmosphere",
+  "engines": ["Outlook"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Dynamic soaring — super-saw shimmer at maximum parallax width. High notes stretch to the edges of the stereo field. Put on headphones and lean back.",
+  "tags": ["soaring", "wide", "shimmer", "stereo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.6,
+    "warmth": 0.55,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.85,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 5,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.6,
+      "look_parallaxAmount": 0.9,
+      "look_vistaLine": 0.75,
+      "look_resonance": 0.28,
+      "look_filterEnvAmt": 0.35,
+      "look_attack": 0.5,
+      "look_decay": 0.6,
+      "look_sustain": 0.75,
+      "look_release": 4.0,
+      "look_lfo1Rate": 0.067,
+      "look_lfo1Depth": 0.3,
+      "look_lfo2Rate": 0.113,
+      "look_lfo2Depth": 0.25,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.25,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.55,
+      "look_macroMovement": 0.2,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.3
+    }
+  },
+  "coupling": { "pairs": [] }
+}

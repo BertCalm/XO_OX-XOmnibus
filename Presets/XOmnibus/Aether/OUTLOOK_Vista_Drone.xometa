@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "OUTLOOK Vista Drone",
+  "mood": "Aether",
+  "engines": ["Outlook"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Edge of the atmosphere — dual sines with 50-second breathing cycles and micro-beating from phase drift. Nearly static. Deeply spatial. The closest OUTLOOK gets to silence.",
+  "tags": ["drone", "minimal", "ethereal", "meditative"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.2,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 0,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.3,
+      "look_parallaxAmount": 0.3,
+      "look_vistaLine": 0.85,
+      "look_resonance": 0.2,
+      "look_filterEnvAmt": 0.2,
+      "look_attack": 1.5,
+      "look_decay": 0.5,
+      "look_sustain": 0.85,
+      "look_release": 5.0,
+      "look_lfo1Rate": 0.02,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.031,
+      "look_lfo2Depth": 0.15,
+      "look_modWheelDepth": 0.4,
+      "look_aftertouchDepth": 0.4,
+      "look_reverbMix": 0.5,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.08,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.45
+    }
+  },
+  "coupling": { "pairs": [] }
+}

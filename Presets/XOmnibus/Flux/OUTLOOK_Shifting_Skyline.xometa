@@ -38,12 +38,12 @@
       "look_lfo2Depth": 0.45,
       "look_modWheelDepth": 0.7,
       "look_aftertouchDepth": 0.55,
-      "look_reverbMix": 0.35,
+      "look_reverbMix": 0.25,
       "look_delayMix": 0.25,
       "look_macroCharacter": 0.4,
       "look_macroMovement": 0.35,
       "look_macroCoupling": 0.0,
-      "look_macroSpace": 0.35
+      "look_macroSpace": 0.3
     }
   },
   "coupling": { "pairs": [] }

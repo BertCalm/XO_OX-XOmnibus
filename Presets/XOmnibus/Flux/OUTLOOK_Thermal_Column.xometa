@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "OUTLOOK Thermal Column",
+  "mood": "Flux",
+  "engines": ["Outlook"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "Rising thermals — aggressive filter pumping from fast coprime LFOs. Triangle-to-saw morphing against narrowing square pulse creates churning, kinetic texture.",
+  "tags": ["kinetic", "restless", "movement", "textural"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.6,
+    "space": 0.4,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 1,
+      "look_waveShape2": 3,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.35,
+      "look_parallaxAmount": 0.5,
+      "look_vistaLine": 0.6,
+      "look_resonance": 0.35,
+      "look_filterEnvAmt": 0.55,
+      "look_attack": 0.05,
+      "look_decay": 0.4,
+      "look_sustain": 0.55,
+      "look_release": 1.2,
+      "look_lfo1Rate": 0.8,
+      "look_lfo1Depth": 0.45,
+      "look_lfo2Rate": 0.53,
+      "look_lfo2Depth": 0.3,
+      "look_modWheelDepth": 0.7,
+      "look_aftertouchDepth": 0.55,
+      "look_reverbMix": 0.15,
+      "look_delayMix": 0.1,
+      "look_macroCharacter": 0.4,
+      "look_macroMovement": 0.6,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.2
+    }
+  },
+  "coupling": { "pairs": [] }
+}

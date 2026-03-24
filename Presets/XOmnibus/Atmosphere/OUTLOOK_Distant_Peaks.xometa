@@ -38,7 +38,7 @@
       "look_lfo2Depth": 0.3,
       "look_modWheelDepth": 0.6,
       "look_aftertouchDepth": 0.35,
-      "look_reverbMix": 0.6,
+      "look_reverbMix": 0.5,
       "look_delayMix": 0.15,
       "look_macroCharacter": 0.35,
       "look_macroMovement": 0.15,
