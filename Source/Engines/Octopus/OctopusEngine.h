@@ -517,6 +517,12 @@ public:
 
         float peakEnv = 0.0f;
 
+        // Hoist block-constant chromatophore envelope follower coefficient.
+        // pChromaSpeed and srf are both block-rate values — computing this once
+        // per block instead of per-sample saves one std::exp call per active voice
+        // per sample (up to 16x calls at max polyphony).
+        const float chromaCoeff = 1.0f - std::exp (-kTwoPi * (pChromaSpeed * 20.0f + 1.0f) / srf);
+
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
@@ -638,8 +644,8 @@ public:
                 if (smoothedChromaDepth > 0.001f)
                 {
                     // Envelope follower — tracks signal amplitude
+                    // chromaCoeff is hoisted above the sample loop (block-constant)
                     float envIn = std::fabs (voiceSignal);
-                    float chromaCoeff = 1.0f - std::exp (-kTwoPi * (pChromaSpeed * 20.0f + 1.0f) / srf);
                     voice.envFollower += (envIn - voice.envFollower) * chromaCoeff;
                     voice.envFollower = flushDenormal (voice.envFollower);
 

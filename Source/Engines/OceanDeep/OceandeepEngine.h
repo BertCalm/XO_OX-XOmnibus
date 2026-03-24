@@ -8,6 +8,7 @@
 #include <cmath>
 #include <algorithm>
 #include <cstring>
+#include <vector>
 namespace xolokun {
 
 //==============================================================================
@@ -102,23 +103,28 @@ struct DeepHydroCompressor {
 //   1 = cave        (higher feedback, slightly detuned comb = cave reflections)
 //   2 = wreck       (high feedback, short comb + allpass diffusion = hull modes)
 //
-// Buffer is pre-allocated at prepare() to max delay (1 Hz fundamental → 44100 samples).
-// No allocation in renderBlock().
+// Buffer is dynamically sized in prepare() to cover 1 Hz fundamental at any
+// sample rate up to 192 kHz.  No allocation in renderBlock().
 // ---------------------------------------------------------------------------
 struct DeepWaveguideBody {
-    static constexpr int kMaxDelay = 48001; // covers 1 Hz fundamental at up to 48 kHz
-
-    float buf[kMaxDelay] = {};
+    // kMaxDelay is computed dynamically in prepare() from the actual sample rate.
+    // Worst case: 1 Hz fundamental at 192 kHz = 192001 samples.
+    std::vector<float> buf;
+    int   maxDelay  = 48001; // set by prepare(), matches buf.size()
     int   writePos  = 0;
     float sr        = 44100.f;
 
     void prepare(double s) {
         sr = (float)s;
+        // Size buffer to cover 1 Hz fundamental (longest possible delay) at
+        // the given sample rate.  +1 for the fencepost (delaySamples < maxDelay).
+        maxDelay = (int)(sr + 1.5f); // ceil(sr) + 1
+        buf.assign(static_cast<size_t>(maxDelay), 0.f);
         reset();
     }
 
     void reset() {
-        std::fill(std::begin(buf), std::end(buf), 0.f);
+        std::fill(buf.begin(), buf.end(), 0.f);
         writePos = 0;
     }
 
@@ -132,13 +138,13 @@ struct DeepWaveguideBody {
         float f = clamp(freq * (1.f + tuneOffset), 20.f, sr * 0.48f);
         int delaySamples = (int)(sr / f + 0.5f);
         if (delaySamples < 2)   delaySamples = 2;
-        if (delaySamples >= kMaxDelay) delaySamples = kMaxDelay - 1;
+        if (delaySamples >= maxDelay) delaySamples = maxDelay - 1;
 
         // Read from circular buffer
         int readPos = writePos - delaySamples;
-        if (readPos < 0) readPos += kMaxDelay;
+        if (readPos < 0) readPos += maxDelay;
 
-        float delayed = buf[readPos];
+        float delayed = buf[static_cast<size_t>(readPos)];
         float out = in + feedback * delayed;
         out = flushDenormal(out);
 
@@ -151,8 +157,8 @@ struct DeepWaveguideBody {
             out = flushDenormal(out);
         }
 
-        buf[writePos] = out;
-        writePos = (writePos + 1 >= kMaxDelay) ? 0 : writePos + 1;
+        buf[static_cast<size_t>(writePos)] = out;
+        writePos = (writePos + 1 >= maxDelay) ? 0 : writePos + 1;
 
         return out;
     }

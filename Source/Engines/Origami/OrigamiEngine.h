@@ -614,6 +614,22 @@ public:
 
         float peakEnvelopeLevel = 0.0f;
 
+        // ---- Pre-compute per-voice constant-power pan gains ----
+        // Pan position depends only on voice index (deterministic stereo spread),
+        // not on any per-sample state.  Computing std::cos/std::sin once per
+        // block per voice avoids up to kMaxVoices * numSamples transcendental
+        // calls (e.g. 8 voices × 512 samples = 8192 fewer calls per block).
+        struct VoicePanGains { float left = 1.0f; float right = 1.0f; };
+        std::array<VoicePanGains, kMaxVoices> voicePanGains;
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            float panPosition = 0.5f;
+            if (kMaxVoices > 1)
+                panPosition = 0.3f + 0.4f * static_cast<float> (vi) / static_cast<float> (kMaxVoices - 1);
+            voicePanGains[vi].left  = std::cos (panPosition * kPI * 0.5f);
+            voicePanGains[vi].right = std::sin (panPosition * kPI * 0.5f);
+        }
+
         // ---- Per-Sample Render Loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
@@ -751,15 +767,10 @@ public:
                 // ---- Deterministic stereo spread based on voice index ----
                 // Voices are distributed across a 0.3-0.7 pan range (not hard L/R)
                 // for a natural stereo image without holes in the center.
-                float panPosition = 0.5f;
-                if (kMaxVoices > 1)
-                {
-                    int voiceIndex = static_cast<int> (&voice - &voices[0]);
-                    panPosition = 0.3f + 0.4f * static_cast<float> (voiceIndex) / static_cast<float> (kMaxVoices - 1);
-                }
-                // Constant-power panning using sin/cos law
-                float panGainLeft  = std::cos (panPosition * kPI * 0.5f);
-                float panGainRight = std::sin (panPosition * kPI * 0.5f);
+                // Pan gains are pre-computed above the sample loop (block-constant).
+                int voiceIndex = static_cast<int> (&voice - &voices[0]);
+                float panGainLeft  = voicePanGains[voiceIndex].left;
+                float panGainRight = voicePanGains[voiceIndex].right;
 
                 stereoMixLeft  += outputSample * panGainLeft;
                 stereoMixRight += outputSample * panGainRight;
