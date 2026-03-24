@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "Refracted Vista",
+  "mood": "Prism",
+  "engines": ["Outlook"],
+  "author": "XO_OX",
+  "version": "1.0.0",
+  "description": "Bright, colorful lead-pad hybrid with fast horizon scanning and wide parallax — light through a prism",
+  "tags": ["lead", "bright", "colorful", "prismatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.8,
+    "warmth": 0.4,
+    "movement": 0.6,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 2,
+      "look_waveShape2": 3,
+      "look_oscMix": 0.4,
+      "look_horizonScan": 0.7,
+      "look_parallaxAmount": 0.85,
+      "look_vistaLine": 0.85,
+      "look_resonance": 0.45,
+      "look_filterEnvAmt": 0.6,
+      "look_attack": 0.02,
+      "look_decay": 0.5,
+      "look_sustain": 0.6,
+      "look_release": 0.6,
+      "look_lfo1Rate": 2.0,
+      "look_lfo1Depth": 0.2,
+      "look_lfo2Rate": 0.73,
+      "look_lfo2Depth": 0.25,
+      "look_modWheelDepth": 0.6,
+      "look_aftertouchDepth": 0.6,
+      "look_reverbMix": 0.2,
+      "look_delayMix": 0.15,
+      "look_macroCharacter": 0.7,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.25
+    }
+  },
+  "coupling": { "pairs": [] }
+}

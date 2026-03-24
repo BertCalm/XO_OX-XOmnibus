@@ -50,6 +50,8 @@ inline const juce::StringArray validEngineNames {
     "Osmosis",
     // Love Triangle Circuit Synth
     "Oxytocin",
+    // Panoramic visionary synth
+    "Outlook",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob",
     "XObese", "XOnset", "XOrbital", "XOrganon", "XOuroboros",
@@ -198,6 +200,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         { "Osmosis",     "osmo_"   },
         // Love Triangle Circuit Synth
         { "Oxytocin",    "oxy"     },
+        // Panoramic Visionary Synth
+        { "Outlook",     "look_"   },
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : engineId.toLowerCase();

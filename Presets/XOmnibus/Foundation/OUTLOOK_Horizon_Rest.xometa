@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "OUTLOOK Horizon Rest",
+  "mood": "Foundation",
+  "engines": ["Outlook"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The albatross at rest — warm sine/triangle pad with natural parallax depth and 15-second breathing cycles. The definitive OUTLOOK starting point.",
+  "tags": ["pad", "clean", "warm", "panoramic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.35,
+    "space": 0.45,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 0,
+      "look_waveShape2": 1,
+      "look_oscMix": 0.5,
+      "look_horizonScan": 0.4,
+      "look_parallaxAmount": 0.55,
+      "look_vistaLine": 0.7,
+      "look_resonance": 0.25,
+      "look_filterEnvAmt": 0.4,
+      "look_attack": 0.3,
+      "look_decay": 0.4,
+      "look_sustain": 0.7,
+      "look_release": 2.0,
+      "look_lfo1Rate": 0.067,
+      "look_lfo1Depth": 0.35,
+      "look_lfo2Rate": 0.113,
+      "look_lfo2Depth": 0.25,
+      "look_modWheelDepth": 0.5,
+      "look_aftertouchDepth": 0.5,
+      "look_reverbMix": 0.2,
+      "look_delayMix": 0.0,
+      "look_macroCharacter": 0.5,
+      "look_macroMovement": 0.15,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.25
+    }
+  },
+  "coupling": { "pairs": [] }
+}

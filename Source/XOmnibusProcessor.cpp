@@ -76,6 +76,8 @@
 #include "Engines/Opcode/OpcodeEngine.h"
 #include "Engines/Osmosis/OsmosisEngine.h"
 #include "Engines/Oxytocin/OxytocinAdapter.h"
+// OUTLOOK — panoramic visionary synth
+#include "Engines/Outlook/OutlookEngine.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -405,6 +407,11 @@ static bool registered_Osmosis = xomnibus::EngineRegistry::instance().registerEn
 static bool registered_Oxytocin = xomnibus::EngineRegistry::instance().registerEngine(
     "Oxytocin", []() -> std::unique_ptr<xomnibus::SynthEngine> {
         return std::make_unique<xomnibus::OxytocinAdapter>();
+    });
+// OUTLOOK — panoramic visionary synth (Albatross / Surface Soarer)
+static bool registered_Outlook = xomnibus::EngineRegistry::instance().registerEngine(
+    "Outlook", []() -> std::unique_ptr<xomnibus::SynthEngine> {
+        return std::make_unique<xomnibus::OutlookEngine>();
     });
 
 namespace xomnibus {

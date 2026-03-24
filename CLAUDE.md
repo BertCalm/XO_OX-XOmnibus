@@ -4,11 +4,11 @@
 
 XOmnibus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **72 engines** are registered in XOmnibus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23)
+and mutate into sounds impossible with any single synth. **73 engines** are registered in XOmnibus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** ~19,000+ factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
@@ -111,6 +111,7 @@ and mutate into sounds impossible with any single synth. **72 engines** are regi
 | ODDFELLOW | XOddfellow | Fusion Copper `#B87333` |
 | ONKOLO | XOnkolo | Spectral Amber `#FFBF00` |
 | OPCODE | XOpcode | Circuit Green `#39FF14` |
+| OUTLOOK | XOutlook | Horizon Indigo `#4169E1` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -191,6 +192,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oddfellow | `oddf_` | `oddf_spectralShift` |
 | Onkolo | `onko_` | `onko_resonanceCore` |
 | Opcode | `opco_` | `opco_codeDepth` |
+| Outlook | `look_` | `look_horizonScan` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -235,6 +237,7 @@ See `Docs/xomnibus_name_migration_reference.md` for the full mapping and gotchas
 | `Source/Engines/Offering/OfferingEngine.h` | Psychology-driven boom bap drum synthesis (Berlyne curiosity + 5 city chains + per-type transient models) |
 | `Source/Engines/Osmosis/OsmosisEngine.h` | External audio membrane engine (envelope follower, pitch detect, coupling source) |
 | `Source/Engines/Oxytocin/OxytocinAdapter.h` | Circuit-modeling love-triangle synth (RE-201/MS-20/Moog/Serge/Buchla + TriangularCoupling #15) |
+| `Source/Engines/Outlook/OutlookEngine.h` | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo + vista filter + aurora mod) |
 | `SDK/include/xomnibus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOmnibus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |
@@ -438,6 +441,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | post-engine-completion-checklist (`~/.claude/skills/`) | `/post-engine-completion-checklist` | 5-point post-build audit |
 | producers-guild (`~/.claude/skills/`) | `/producers-guild` | 12-specialist market/product review |
 | [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit — path to 9.0+ libraries (supersedes ad-hoc preset QA) |
+| [new-xo-engine](Skills/new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation: concept, scaffold, integration, verification |
 | [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills, then repair and link |
 
 Full index: `Skills/README.md`

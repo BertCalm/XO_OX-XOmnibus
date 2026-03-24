@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "name": "OUTLOOK Storm Front",
+  "mood": "Flux",
+  "engines": ["Outlook"],
+  "author": "Guru Bin",
+  "version": "1.0.0",
+  "description": "The albatross feeds on the storm — closed resonant filter with square-pulse and noise chaos. Fast LFO pumping drives the vista. Dark, aggressive, untamed.",
+  "tags": ["dark", "aggressive", "storm", "resonant"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "sonicDNA": {
+    "brightness": 0.35,
+    "warmth": 0.4,
+    "movement": 0.75,
+    "density": 0.7,
+    "space": 0.35,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Outlook": {
+      "look_waveShape1": 3,
+      "look_waveShape2": 6,
+      "look_oscMix": 0.45,
+      "look_horizonScan": 0.6,
+      "look_parallaxAmount": 0.5,
+      "look_vistaLine": 0.3,
+      "look_resonance": 0.55,
+      "look_filterEnvAmt": 0.6,
+      "look_attack": 0.03,
+      "look_decay": 0.3,
+      "look_sustain": 0.5,
+      "look_release": 0.8,
+      "look_lfo1Rate": 1.2,
+      "look_lfo1Depth": 0.5,
+      "look_lfo2Rate": 0.79,
+      "look_lfo2Depth": 0.35,
+      "look_modWheelDepth": 0.7,
+      "look_aftertouchDepth": 0.6,
+      "look_reverbMix": 0.15,
+      "look_delayMix": 0.2,
+      "look_macroCharacter": 0.4,
+      "look_macroMovement": 0.7,
+      "look_macroCoupling": 0.0,
+      "look_macroSpace": 0.15
+    }
+  },
+  "coupling": { "pairs": [] }
+}
