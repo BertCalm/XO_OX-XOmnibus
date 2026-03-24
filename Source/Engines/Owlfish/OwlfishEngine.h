@@ -72,6 +72,7 @@ public:
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // Read parameters once per block (snapshot reads from cached atomics)
         snapshot.updateFrom();
 

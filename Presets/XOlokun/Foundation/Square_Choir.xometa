@@ -32,15 +32,9 @@
   },
   "parameters": {
     "OddfeliX": {
-      "snap_morph": 2.0,
-      "snap_bloom": 2.5,
       "snap_decay": 3.0,
-      "snap_sustain": 0.8,
-      "snap_release": 2.5,
       "snap_filterCutoff": 2200.0,
       "snap_filterReso": 0.25,
-      "snap_drift": 0.15,
-      "snap_sub": 0.7,
       "snap_detune": 18.0,
       "snap_level": 0.75,
       "snap_polyphony": 3

@@ -612,6 +612,7 @@ public:
                      juce::MidiBuffer&          midi,
                      int                        numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // 1. Parse MIDI — note-on/off, CC1 (mod wheel D006), aftertouch (D006)
         for (const auto meta : midi) {
             const auto msg = meta.getMessage();

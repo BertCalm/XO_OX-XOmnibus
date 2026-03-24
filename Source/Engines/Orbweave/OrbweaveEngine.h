@@ -240,6 +240,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0) return;
 
         // SRO SilenceGate: wake on note-on, bypass when silent

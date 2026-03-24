@@ -447,6 +447,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // MIDI processing
         for (const auto metadata : midi)
         {

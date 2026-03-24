@@ -611,6 +611,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // ---- D006: MIDI expression processing ----
         // OPTIC is a modulation engine with no voices, but it still responds to
         // MIDI expression for live performance control. Aftertouch boosts pulse

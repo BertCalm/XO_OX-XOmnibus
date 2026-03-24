@@ -9,11 +9,15 @@
 namespace xolokun {
 
 //==============================================================================
-// Forward declarations for color/font access from XOlokunEditor.h
-// (included after the main editor header)
+// Forward declarations for color/font access from XOlokunEditor.h.
+// When PlaySurface.h is included from within XOlokunEditor.h the full
+// GalleryColors namespace is already defined; guard the stub so we don't
+// emit a second identical inline definition.
+#ifndef XOLOKUN_GALLERY_COLORS_DEFINED
 namespace GalleryColors {
     inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
 }
+#endif
 
 //==============================================================================
 // PlaySurface Constants
@@ -80,6 +84,23 @@ public:
 
     std::function<void(int note, float velocity)> onNoteOn;
     std::function<void(int note)> onNoteOff;
+    // Aftertouch callback — fired when the pad is held and the mouse moves
+    // within it. pressure is 0-1 derived from Y position within the pad cell
+    // (top = max pressure, bottom = min pressure, matching MPC convention).
+    std::function<void(int note, float pressure)> onAftertouch;
+
+    //----------------------------------------------------------------------
+    // Bank selection (A=0, B=1, C=2, D=3).
+    // In Pad mode: note = bankBaseNote(bank) + pad position
+    //   Bank A: 36-51 (C2-D#3) — MPC default Bank A
+    //   Bank B: 52-67 (E3-G4)
+    //   Bank C: 68-83 (G#4-B5)
+    //   Bank D: 84-99 (C6-D#7)
+    // In Drum mode: bank selects an alternate drum kit offset (16 per bank).
+    // kBaseNote (48) is unused in bank-aware mode; kept for legacy scale mode.
+    enum class Bank { A = 0, B = 1, C = 2, D = 3 };
+    void setBank(Bank b) { currentBank = b; repaint(); }
+    Bank getBank() const { return currentBank; }
 
     NoteInputZone()
     {
@@ -130,8 +151,12 @@ public:
                 midiCollector->addMessageToQueue(
                     juce::MidiMessage::pitchWheel(midiChannel, 0));
             }
+            // Zero-out aftertouch before note-off to prevent stuck pressure
+            if (mode == Mode::Pad || mode == Mode::Drum)
+                fireAftertouch(lastNote, 0.0f);
             fireNoteOff(lastNote);
             lastNote = -1;
+            lastPad = -1;
         }
     }
 
@@ -190,14 +215,33 @@ private:
         }
     }
 
+    // Polyphonic key pressure (per-note aftertouch).
+    // pressure is 0-1; converted to MIDI 0-127 before dispatch.
+    // MPC convention: continued downward pressure after the initial hit.
+    void fireAftertouch(int note, float pressure)
+    {
+        uint8_t midiPressure = (uint8_t)juce::jlimit(0, 127, (int)(pressure * 127.0f));
+        if (midiCollector)
+        {
+            midiCollector->addMessageToQueue(
+                juce::MidiMessage::aftertouchChange(midiChannel, note, midiPressure));
+        }
+        else if (onAftertouch)
+        {
+            onAftertouch(note, pressure);
+        }
+    }
+
     struct ScaleDef { const char* name; std::vector<int> intervals; };
     struct WarmMemoryEntry { int pad = -1; float age = 99.0f; };
 
     Mode mode = Mode::Pad;
+    Bank currentBank = Bank::A;
     int  octaveOffset = 0;
     int  currentScale = 0;
     int  rootKey = 0;
     int  lastNote = -1;
+    int  lastPad  = -1;   // pad index of the currently sounding note (for aftertouch geometry)
     float lastFretlessVelocity_ = 0.75f;  // updated on each fretless touch; drives ring glow
     std::vector<ScaleDef> scales;
     std::array<float, PS::kNumPads> padVelocity {};
@@ -208,8 +252,12 @@ private:
     {
         if (mode == Mode::Drum)
         {
-            // P0-4: MPC standard Bank A drum note mapping.
-            // pad 0 = bottom-left (Pad 1 in MPC 1-indexed convention).
+            // MPC standard Bank A drum note mapping (pad 0 = bottom-left = MPC Pad 1).
+            // Each bank shifts the entire table by 16 notes, following MPC convention:
+            //   Bank A = base table  (notes 36-51 area)
+            //   Bank B = base + 16
+            //   Bank C = base + 32
+            //   Bank D = base + 48
             // Source: Akai MPC Bank A default, spec section 3.8.
             static constexpr int kDrumNotes[PS::kNumPads] = {
                 37, 36, 42, 82,  // row 0 (bottom): Kick A, Kick B, Snare A, Snare B
@@ -217,13 +265,18 @@ private:
                 48, 47, 45, 43,  // row 2: Tom 1, Perc A, Perc B, Crash
                 49, 55, 57, 51,  // row 3 (top): Fx 1, Fx 2, Fx 3, Fx 4
             };
-            return juce::jlimit(0, 127, kDrumNotes[pad]);
+            int bankOffset = (int)currentBank * 16;
+            return juce::jlimit(0, 127, kDrumNotes[pad] + bankOffset);
         }
-        // Chromatic / Pad mode: scale-quantized note with octave offset
+        // Pad mode: MPC-standard Bank A starts at note 36 (C2).
+        // Each bank adds 16: A=36, B=52, C=68, D=84.
+        // Layout: left-to-right within a row, bottom-to-top rows (MPC standard).
+        // Octave offset still applies on top of the bank base.
+        static constexpr int kBankBase[4] = { 36, 52, 68, 84 };
         int row = pad / PS::kPadCols;
         int col = pad % PS::kPadCols;
-        int rawNote = PS::kBaseNote + (octaveOffset * 12) + (row * 4) + col;
-        return quantizeToScale(rawNote);
+        int rawNote = kBankBase[(int)currentBank] + (octaveOffset * 12) + (row * PS::kPadCols) + col;
+        return quantizeToScale(juce::jlimit(0, 127, rawNote));
     }
 
     int quantizeToScale(int note) const
@@ -253,23 +306,45 @@ private:
         }
 
         auto b = getLocalBounds();
+        float padW = (float)b.getWidth()  / PS::kPadCols;
+        float padH = (float)b.getHeight() / PS::kPadRows;
+
         int col = (int)((float)e.x / b.getWidth() * PS::kPadCols);
         int row = PS::kPadRows - 1 - (int)((float)e.y / b.getHeight() * PS::kPadRows);
         col = juce::jlimit(0, PS::kPadCols - 1, col);
         row = juce::jlimit(0, PS::kPadRows - 1, row);
         int pad = row * PS::kPadCols + col;
 
+        // Velocity: Y position within the entire zone (top = hard, bottom = soft).
         float velocity = juce::jlimit(0.3f, 1.0f, 1.0f - (float)e.y / b.getHeight());
         int note = midiNoteForPad(pad);
 
         if (isDown || note != lastNote)
         {
-            if (lastNote >= 0) fireNoteOff(lastNote);
+            if (lastNote >= 0)
+            {
+                fireAftertouch(lastNote, 0.0f); // zero pressure before leaving the pad
+                fireNoteOff(lastNote);
+            }
             padVelocity[(size_t)pad] = velocity;
             warmMemory[(size_t)warmMemIdx] = { pad, 0.0f };
             warmMemIdx = (warmMemIdx + 1) % (int)warmMemory.size();
             lastNote = note;
+            lastPad  = pad;
             fireNoteOn(note, velocity);
+        }
+        else if (!isDown && pad == lastPad && lastNote >= 0)
+        {
+            // Drag within the same pad: send aftertouch.
+            // Aftertouch pressure = Y position within the pad cell.
+            // top of cell = maximum pressure (1.0), bottom = minimum (0.0).
+            int displayRow = PS::kPadRows - 1 - row; // flip: row 0 is rendered at top
+            float padTopY = displayRow * padH;
+            float yInPad  = juce::jlimit(0.0f, 1.0f,
+                                         ((float)e.y - padTopY) / padH);
+            // Top of pad → pressure 1.0; bottom → 0.0
+            float pressure = juce::jlimit(0.0f, 1.0f, 1.0f - yInPad);
+            fireAftertouch(lastNote, pressure);
         }
     }
 
@@ -417,6 +492,19 @@ private:
                 g.drawText(label, padRect, juce::Justification::centred);
             }
         }
+
+        // Bank badge — top-right corner overlay showing active bank (A/B/C/D).
+        // Uses XO Gold so performers can identify bank at a glance during play.
+        {
+            static const char* kBankNames[] = { "A", "B", "C", "D" };
+            juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
+            auto badgeRect = b.withHeight(16.0f).withWidth(48.0f)
+                              .withRightX(b.getRight())
+                              .withY(b.getY());
+            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.75f)); // XO Gold
+            g.setFont(juce::Font(9.0f).boldened());
+            g.drawText(badge, badgeRect, juce::Justification::centredRight);
+        }
     }
 
     // Zone-aware fretless paintFretless:
@@ -546,6 +634,7 @@ private:
 class OrbitPathZone : public juce::Component
 {
 public:
+    OrbitPathZone() = default;
     enum class PhysicsMode { Free, Lock, Snap };
 
     std::function<void(float x, float y)> onPositionChanged;
@@ -779,6 +868,7 @@ private:
 class PerformanceStrip : public juce::Component
 {
 public:
+    PerformanceStrip() = default;
     enum class StripMode { DubSpace, FilterSweep, Coupling, DubSiren };
 
     std::function<void(float x, float y)> onPositionChanged;
@@ -925,6 +1015,7 @@ private:
 class PerformancePads : public juce::Component
 {
 public:
+    PerformancePads() = default;
     std::function<void()> onFire;
     std::function<void(bool held)> onXoSend;
     std::function<void(bool held)> onEchoCut;
@@ -1093,6 +1184,26 @@ public:
             octLabel.setText("OCT " + juce::String(noteInput.getOctave()), juce::dontSendNotification);
         };
 
+        // Bank selector buttons (A/B/C/D).
+        // Selects the 16-note bank offset for Pad and Drum modes.
+        static const char* bankLabels[] = { "A", "B", "C", "D" };
+        for (int i = 0; i < 4; ++i)
+        {
+            bankButtons[i].setClickingTogglesState(true);
+            bankButtons[i].setRadioGroupId(103);
+            bankButtons[i].setButtonText(bankLabels[i]);
+            addAndMakeVisible(bankButtons[i]);
+        }
+        bankButtons[0].setToggleState(true, juce::dontSendNotification);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            bankButtons[i].onClick = [this, i]
+            {
+                noteInput.setBank(static_cast<NoteInputZone::Bank>(i));
+            };
+        }
+
         // Strip mode buttons
         for (int i = 0; i < 4; ++i)
         {
@@ -1149,6 +1260,11 @@ public:
         octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
         octLabel.setBounds(header.removeFromLeft(44).reduced(2));
         octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
+
+        // Bank selector buttons — 24px each, immediately after octave controls
+        header.removeFromLeft(8); // small gap
+        for (int i = 0; i < 4; ++i)
+            bankButtons[i].setBounds(header.removeFromLeft(24).reduced(2));
 
         // Strip mode buttons at right of header
         for (int i = 3; i >= 0; --i)
@@ -1216,6 +1332,7 @@ private:
 
     std::array<juce::TextButton, 3> modeButtons;
     std::array<juce::TextButton, 4> stripModeButtons;
+    std::array<juce::TextButton, 4> bankButtons;  // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
     juce::Label      octLabel;
 

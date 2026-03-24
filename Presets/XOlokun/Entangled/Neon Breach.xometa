@@ -36,14 +36,12 @@
   "name": "Neon Breach",
   "parameters": {
     "OddfeliX": {
-      "snap_attack": 0.0,
       "snap_filterCutoff": 0.679,
       "snap_filterRes": 0.332,
       "snap_lfoDepth": 0.171,
       "snap_lfoRate": 0.131,
       "snap_macroCharacter": 0.028,
-      "snap_macroCoupling": 0.0,
-      "snap_release": 1.0
+      "snap_macroCoupling": 0.0
     },
     "Orca": {
       "orca_ampAttack": 0.0806,

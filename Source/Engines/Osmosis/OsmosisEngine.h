@@ -117,6 +117,7 @@ public:
                      juce::MidiBuffer& /*midi*/,
                      int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // SilenceGate: early-out when no external audio is present (P1-E fix)
         if (isSilenceGateBypassed())
         {

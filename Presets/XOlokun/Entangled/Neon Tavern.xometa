@@ -36,14 +36,12 @@
   "name": "Neon Tavern",
   "parameters": {
     "OddfeliX": {
-      "snap_attack": 0.098,
       "snap_filterCutoff": 0.595,
       "snap_filterRes": 0.41,
       "snap_lfoDepth": 0.26,
       "snap_lfoRate": 0.082,
       "snap_macroCharacter": 0.0,
-      "snap_macroCoupling": 0.031,
-      "snap_release": 1.0
+      "snap_macroCoupling": 0.031
     },
     "Osteria": {
       "osteria_attack": 0.099,

@@ -1,5 +1,6 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
+#include <juce_audio_devices/juce_audio_devices.h>  // juce::MidiMessageCollector
 #include "Core/SynthEngine.h"
 #include "Core/EngineRegistry.h"
 #include "Core/MegaCouplingMatrix.h"
@@ -120,6 +121,11 @@ public:
     // Coupling preset management — bake, save, load coupling presets (UI thread only)
     CouplingPresetManager& getCouplingPresetManager() { return couplingPresetManager; }
 
+    // PlaySurface MIDI bridge — events from the on-screen PlaySurface are
+    // enqueued here on the message thread and merged into processBlock's
+    // MidiBuffer each audio callback.  Thread-safe by JUCE contract.
+    juce::MidiMessageCollector& getMidiCollector() { return playSurfaceMidiCollector; }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -224,6 +230,9 @@ private:
     std::array<NoteMapEvent, kNoteQueueSize> noteQueue {};
     std::atomic<size_t> noteQueueHead { 0 };
     std::atomic<size_t> noteQueueTail { 0 };
+
+    // PlaySurface MIDI collector — message thread enqueues, processBlock drains.
+    juce::MidiMessageCollector playSurfaceMidiCollector;
 
     void cacheParameterPointers();
     void processFamilyBleed(std::array<SynthEngine*, MaxSlots>& enginePtrs);

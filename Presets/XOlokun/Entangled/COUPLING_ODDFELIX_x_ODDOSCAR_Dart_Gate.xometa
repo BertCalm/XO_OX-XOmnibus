@@ -37,7 +37,6 @@
     "OddfeliX": {
       "snap_filterCutoff": 4800.0,
       "snap_filterReso": 0.35,
-      "snap_filterEnvAmt": 0.65,
       "snap_filtEnvAttack": 0.001,
       "snap_filtEnvDecay": 0.12,
       "snap_filtEnvSustain": 0.0,

@@ -2,7 +2,7 @@
 #include <juce_gui_extra/juce_gui_extra.h>
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../../Core/SynthEngine.h"
-#include "../XOlokunEditor.h"   // GalleryColors
+#include "../GalleryColors.h"   // GalleryColors namespace (no editor circular dep)
 #include <array>
 #include <atomic>
 #include <functional>

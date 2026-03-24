@@ -289,6 +289,7 @@ target_sources(XOlokun PRIVATE
     Source/Core/MIDILearnManager.h
 
     # UI (Gallery Model)
+    Source/UI/XOlokunEditor.cpp
     Source/UI/XOlokunEditor.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingStrip/CouplingStripEditor.h

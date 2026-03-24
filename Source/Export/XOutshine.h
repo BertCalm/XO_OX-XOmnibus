@@ -84,7 +84,7 @@ inline const char* categoryName (SampleCategory c)
 //------------------------------------------------------------------------------
 // Velocity curve presets — defined in XPNVelocityCurves.h (shared with XOriginate)
 //------------------------------------------------------------------------------
-// VelocitySplit, VelocityCurve, and getVelocitySplits() are available via the
+// VelocitySplit, XPNVelocityCurve, and getVelocitySplits() are available via the
 // XPNVelocityCurves.h include above.
 
 //------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ struct OutshineSettings
 {
     int            velocityLayers = 4;
     int            roundRobin     = 4;
-    VelocityCurve  velocityCurve  = VelocityCurve::Musical;
+    XPNVelocityCurve  velocityCurve  = XPNVelocityCurve::Musical;
     float          lufsTarget     = -14.0f;
     bool           applyFadeGuards = true;
     bool           removeDC       = true;

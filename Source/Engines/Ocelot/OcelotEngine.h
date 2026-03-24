@@ -43,6 +43,7 @@ public:
                      juce::MidiBuffer& midi,
                      int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // 1. Update snapshot from APVTS (once per block)
         if (apvtsRef != nullptr)
             snapshot.updateFrom(*apvtsRef);

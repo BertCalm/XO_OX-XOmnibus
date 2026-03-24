@@ -42,13 +42,7 @@
       "snap_level": 0.75,
       "snap_pitchLock": false,
       "snap_unison": 0,
-      "snap_polyphony": 3,
-      "snap_morph": 0.7,
-      "snap_bloom": 1.5,
-      "snap_sustain": 0.7,
-      "snap_release": 2.0,
-      "snap_drift": 0.3,
-      "snap_sub": 0.5
+      "snap_polyphony": 3
     }
   },
   "coupling": {

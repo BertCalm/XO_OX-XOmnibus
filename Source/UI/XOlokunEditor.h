@@ -2,271 +2,25 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../XOlokunProcessor.h"
 #include "../Core/EngineRegistry.h"
-#include "CouplingStrip/CouplingStripEditor.h"
-#include "BinaryData.h"  // FontData:: namespace (embedded fonts)
 #include "EngineVocabulary.h"
+// GalleryColors.h provides GalleryColors, GalleryFonts, A11y — must come before
+// CouplingVisualizer.h and ExportDialog.h which depend on those namespaces.
+#include "GalleryColors.h"
+#include "CouplingVisualizer/CouplingVisualizer.h"
+#include "ExportDialog/ExportDialog.h"
+// PlaySurface.h has a minimal GalleryColors::get() stub guarded by this macro.
+// Define before inclusion so the stub is skipped (full def is already above).
+#define XOLOKUN_GALLERY_COLORS_DEFINED 1
+#include "PlaySurface/PlaySurface.h"
+// PresetBrowser.h opens its own namespace xolokun { } block — must be included
+// at file scope (before our namespace xolokun { below) to avoid nesting.
+#include "PresetBrowser/PresetBrowser.h"
 
 namespace xolokun {
 
-//==============================================================================
-// Gallery Model — color constants with light/dark theme support.
-// Light mode is the primary presentation (brand rule). Dark mode is a toggle.
-namespace GalleryColors {
-
-    // Theme state — light by default (brand rule)
-    inline bool& darkMode()
-    {
-        static bool dark = false;
-        return dark;
-    }
-
-    // Light palette
-    namespace Light {
-        constexpr uint32_t shellWhite = 0xFFF8F6F3;
-        constexpr uint32_t textDark   = 0xFF1A1A1A;
-        constexpr uint32_t textMid    = 0xFF777570;
-        constexpr uint32_t borderGray = 0xFFDDDAD5;
-        constexpr uint32_t slotBg     = 0xFFFCFBF9;
-        constexpr uint32_t emptySlot  = 0xFFEAE8E4;
-        constexpr uint32_t xoGoldText = 0xFF9E7C2E;   // WCAG AA on shellWhite
-    }
-
-    // Dark palette (from master spec section 6.2–6.4)
-    namespace Dark {
-        constexpr uint32_t shellWhite = 0xFF1A1A1A;    // near-black background
-        constexpr uint32_t textDark   = 0xFFEEEEEE;    // off-white primary text
-        constexpr uint32_t textMid    = 0xFFC8C8C8;    // secondary text (raised for WCAG AA on dark bg)
-        constexpr uint32_t borderGray = 0xFF4A4A4A;    // borders
-        constexpr uint32_t slotBg     = 0xFF2D2D2D;    // cards/panels
-        constexpr uint32_t emptySlot  = 0xFF363636;    // empty slot background
-        constexpr uint32_t xoGoldText = 0xFFE9C46A;    // Gold reads well on dark
-    }
-
-    // Brand constants — unchanged between modes
-    constexpr uint32_t xoGold     = 0xFFE9C46A;
-
-    // Theme-aware accessors
-    inline uint32_t shellWhite() { return darkMode() ? Dark::shellWhite : Light::shellWhite; }
-    inline uint32_t textDark()   { return darkMode() ? Dark::textDark   : Light::textDark; }
-    inline uint32_t textMid()    { return darkMode() ? Dark::textMid    : Light::textMid; }
-    inline uint32_t borderGray() { return darkMode() ? Dark::borderGray : Light::borderGray; }
-    inline uint32_t slotBg()     { return darkMode() ? Dark::slotBg     : Light::slotBg; }
-    inline uint32_t emptySlot()  { return darkMode() ? Dark::emptySlot  : Light::emptySlot; }
-    inline uint32_t xoGoldText() { return darkMode() ? Dark::xoGoldText : Light::xoGoldText; }
-
-    // Backward compatibility: constant names used as values throughout the UI.
-    // These remain as constexpr for code that already references them directly.
-    // New code should prefer the function accessors above.
-    constexpr uint32_t shellWhite_v = 0xFFF8F6F3;
-    constexpr uint32_t textDark_v   = 0xFF1A1A1A;
-    constexpr uint32_t textMid_v    = 0xFF777570;
-    constexpr uint32_t borderGray_v = 0xFFDDDAD5;
-    constexpr uint32_t slotBg_v     = 0xFFFCFBF9;
-    constexpr uint32_t emptySlot_v  = 0xFFEAE8E4;
-
-    inline juce::Colour get(uint32_t hex) { return juce::Colour(hex); }
-
-    inline juce::Colour accentForEngine(const juce::String& id)
-    {
-        if (id == "OddfeliX")  return juce::Colour(0xFF00A6D6); // Neon Tetra Blue
-        if (id == "OddOscar")  return juce::Colour(0xFFE8839B); // Axolotl Gill Pink
-        if (id == "Overdub")   return juce::Colour(0xFF6B7B3A); // Olive
-        if (id == "Odyssey")   return juce::Colour(0xFF7B2D8B); // Violet
-        if (id == "Oblong")    return juce::Colour(0xFFE9A84A); // Amber
-        if (id == "Obese")     return juce::Colour(0xFFFF1493); // Hot Pink
-        if (id == "Onset")     return juce::Colour(0xFF0066FF); // Electric Blue
-        if (id == "Overworld") return juce::Colour(0xFF39FF14); // Neon Green
-        if (id == "Opal")      return juce::Colour(0xFFA78BFA); // Lavender
-        if (id == "Orbital")   return juce::Colour(0xFFFF6B6B); // Warm Red
-        if (id == "Organon")   return juce::Colour(0xFF00CED1); // Bioluminescent Cyan
-        if (id == "Ouroboros") return juce::Colour(0xFFFF2D2D); // Strange Attractor Red
-        if (id == "Obsidian")  return juce::Colour(0xFFE8E0D8); // Crystal White
-        if (id == "Overbite")  return juce::Colour(0xFFF0EDE8); // Fang White
-        if (id == "Origami")   return juce::Colour(0xFFE63946); // Vermillion Fold
-        if (id == "Oracle")    return juce::Colour(0xFF4B0082); // Prophecy Indigo
-        if (id == "Obscura")   return juce::Colour(0xFF8A9BA8); // Daguerreotype Silver
-        if (id == "Oceanic")   return juce::Colour(0xFF00B4A0); // Phosphorescent Teal
-        if (id == "Optic")     return juce::Colour(0xFF00FF41); // Phosphor Green
-        if (id == "Oblique")   return juce::Colour(0xFFBF40FF); // Prism Violet
-        if (id == "Ocelot")    return juce::Colour(0xFFC5832B); // Ocelot Tawny
-        if (id == "Osprey")    return juce::Colour(0xFF1B4F8A); // Azulejo Blue
-        if (id == "Osteria")   return juce::Colour(0xFF722F37); // Porto Wine
-        if (id == "Owlfish")   return juce::Colour(0xFFB8860B); // Abyssal Gold
-        // Constellation family engines
-        if (id == "Ohm")       return juce::Colour(0xFF87AE73); // Sage
-        if (id == "Orphica")   return juce::Colour(0xFF7FDBCA); // Siren Seafoam
-        if (id == "Obbligato") return juce::Colour(0xFFFF8A7A); // Rascal Coral
-        if (id == "Ottoni")    return juce::Colour(0xFF5B8A72); // Patina
-        if (id == "Ole")       return juce::Colour(0xFFC9377A); // Hibiscus
-        // Standalone adapters (Phase 4)
-        if (id == "XOverlap")  return juce::Colour(0xFF00FFB4); // Bioluminescent Cyan-Green
-        if (id == "XOutwit")   return juce::Colour(0xFFCC6600); // Chromatophore Amber
-        // V1 Concept Engines
-        if (id == "OpenSky")   return juce::Colour(0xFFFF8C00); // Sunburst
-        if (id == "Ostinato")  return juce::Colour(0xFFE8701A); // Firelight Orange
-        if (id == "Oceandeep") return juce::Colour(0xFF2D0A4E); // Trench Violet
-        if (id == "Ouie")      return juce::Colour(0xFF708090); // Hammerhead Steel
-        // Flagship
-        if (id == "Obrix")     return juce::Colour(0xFF1E8B7E); // Reef Jade
-        // V2 Theorem Engines
-        if (id == "Orbweave")  return juce::Colour(0xFF8E4585); // Kelp Knot Purple
-        if (id == "Overtone")  return juce::Colour(0xFFA8D8EA); // Spectral Ice
-        if (id == "Organism")  return juce::Colour(0xFFC6E377); // Emergence Lime
-        return get(borderGray());
-    }
-
-    inline juce::String prefixForEngine(const juce::String& id)
-    {
-        return frozenPrefixForEngine(id);
-    }
-}
-
-//==============================================================================
-// GalleryFonts — centralized typography matching the design system.
-//
-// Space Grotesk (display), Inter (body), JetBrains Mono (values).
-// All OFL-licensed. Embedded via juce_add_binary_data in CMakeLists.txt.
-// Typefaces are loaded once on first access and cached as shared pointers.
-//
-namespace GalleryFonts {
-
-    // ── Typeface loading (cached singletons) ──────────────────────────
-    // Font data comes from FontData:: namespace (juce_add_binary_data with NAMESPACE "FontData")
-
-    inline juce::Typeface::Ptr loadTypeface(const char* data, int size)
-    {
-        return juce::Typeface::createSystemTypefaceFor(data, static_cast<size_t>(size));
-    }
-
-    inline juce::Typeface::Ptr spaceGroteskBold()
-    {
-        static auto tf = loadTypeface(FontData::SpaceGroteskBold_otf,
-                                       FontData::SpaceGroteskBold_otfSize);
-        return tf;
-    }
-
-    inline juce::Typeface::Ptr spaceGroteskMedium()
-    {
-        static auto tf = loadTypeface(FontData::SpaceGroteskMedium_otf,
-                                       FontData::SpaceGroteskMedium_otfSize);
-        return tf;
-    }
-
-    inline juce::Typeface::Ptr interRegular()
-    {
-        static auto tf = loadTypeface(FontData::InterRegular_ttf,
-                                       FontData::InterRegular_ttfSize);
-        return tf;
-    }
-
-    inline juce::Typeface::Ptr interMedium()
-    {
-        static auto tf = loadTypeface(FontData::InterMedium_ttf,
-                                       FontData::InterMedium_ttfSize);
-        return tf;
-    }
-
-    inline juce::Typeface::Ptr interBold()
-    {
-        static auto tf = loadTypeface(FontData::InterBold_ttf,
-                                       FontData::InterBold_ttfSize);
-        return tf;
-    }
-
-    inline juce::Typeface::Ptr jetBrainsMono()
-    {
-        static auto tf = loadTypeface(FontData::JetBrainsMonoRegular_ttf,
-                                       FontData::JetBrainsMonoRegular_ttfSize);
-        return tf;
-    }
-
-    // ── Font accessors for common roles ───────────────────────────────
-
-    inline juce::Font display (float size)
-    {
-        return juce::Font(spaceGroteskBold()).withHeight(size);
-    }
-
-    inline juce::Font heading (float size)
-    {
-        return juce::Font(interBold()).withHeight(size);
-    }
-
-    inline juce::Font body (float size)
-    {
-        return juce::Font(interRegular()).withHeight(size);
-    }
-
-    inline juce::Font label (float size)
-    {
-        return juce::Font(interMedium()).withHeight(size);
-    }
-
-    inline juce::Font value (float size)
-    {
-        return juce::Font(jetBrainsMono()).withHeight(size);
-    }
-}
-
-//==============================================================================
-// Accessibility helpers — WCAG 2.1 AA compliance utilities
-namespace A11y {
-
-    // Focus ring color — high contrast, visible on both light and dark backgrounds
-    inline juce::Colour focusRingColour()
-    {
-        return GalleryColors::darkMode()
-            ? juce::Colour (0xFF58A6FF)    // Bright blue on dark
-            : juce::Colour (0xFF0066CC);   // Deep blue on light
-    }
-
-    // Draw a 2px focus ring around a component. Call from paint() when
-    // hasKeyboardFocus(true) returns true. WCAG 2.4.7 Focus Visible.
-    inline void drawFocusRing (juce::Graphics& g, juce::Rectangle<float> bounds,
-                               float cornerRadius = 4.0f)
-    {
-        g.setColour (focusRingColour());
-        g.drawRoundedRectangle (bounds.reduced (1.0f), cornerRadius, 2.0f);
-    }
-
-    // Draw a circular focus ring (for rotary knobs)
-    inline void drawCircularFocusRing (juce::Graphics& g, float cx, float cy, float radius)
-    {
-        g.setColour (focusRingColour());
-        g.drawEllipse (cx - radius, cy - radius, radius * 2.0f, radius * 2.0f, 2.0f);
-    }
-
-    // Configure a component for accessibility: keyboard focus, title, description.
-    // WCAG 4.1.2 Name, Role, Value.
-    inline void setup (juce::Component& comp, const juce::String& title,
-                       const juce::String& description = {},
-                       bool wantsKeyFocus = true)
-    {
-        comp.setTitle (title);
-        if (description.isNotEmpty())
-            comp.setDescription (description);
-        comp.setWantsKeyboardFocus (wantsKeyFocus);
-    }
-
-    // Minimum touch target check — returns true if size meets WCAG 2.5.8 (44x44 mobile, 24x24 desktop)
-    inline bool meetsMinTargetSize (const juce::Component& comp, bool mobile = false)
-    {
-        int minSize = mobile ? 44 : 24;
-        return comp.getWidth() >= minSize && comp.getHeight() >= minSize;
-    }
-
-    // Whether the user prefers reduced motion (checks OS setting via JUCE)
-    inline bool prefersReducedMotion()
-    {
-        // JUCE 7+ exposes Desktop::isReducedMotionEnabled() on supported platforms
-       #if JUCE_MAC || JUCE_IOS
-        return juce::Desktop::getInstance().isScreenSaverEnabled() == false; // Approximation
-       #else
-        return false; // No reliable API; default to animations on
-       #endif
-    }
-
-} // namespace A11y
+// GalleryColors, GalleryFonts, and A11y are provided by GalleryColors.h
+// (included above).  Their definitions are canonical in that file; they are
+// available here via the xolokun:: namespace that GalleryColors.h opens.
 
 //==============================================================================
 // GalleryLookAndFeel — Gallery Model visual language (WCAG 2.1 AA compliant)
@@ -443,9 +197,84 @@ public:
 //==============================================================================
 // ParameterGrid — auto-generates knobs for all params matching a prefix.
 // Mounted inside a Viewport for scrolling.
+//
+// Parameters are sorted into color-coded sections (OSC / FILTER / MOD / FX /
+// MACRO / OTHER) based on keywords in the parameter inner name.  Each section
+// gets a Space Grotesk Bold 10pt ALL-CAPS header with a color dot, and every
+// knob cell receives a subtle 3px left-border bar in the section color.
 class ParameterGrid : public juce::Component
 {
 public:
+    // ── Section identity ────────────────────────────────────────────────────
+    enum class Section { OSC, FILTER, MOD, FX, MACRO, OTHER };
+
+    // Classify a parameter by its inner name (part after prefix_).
+    static Section classifyParam(const juce::String& inner)
+    {
+        juce::String s = inner.toLowerCase();
+
+        // MACRO checked first — "macroCharacter" must not fall through to OSC/OTHER
+        if (s.contains("macro") || s.contains("character") ||
+            s.contains("movement") || s.contains("coupling") ||
+            s.contains("space"))
+            return Section::MACRO;
+
+        // OSC
+        if (s.contains("osc") || s.contains("wave") || s.contains("tune") ||
+            s.contains("pitch") || s.contains("detune") || s.contains("harm") ||
+            s.contains("partial") || s.contains("src"))
+            return Section::OSC;
+
+        // FILTER
+        if (s.contains("filter") || s.contains("cutoff") || s.contains("reso") ||
+            s.contains("freq") || s.contains("filt") || s.contains("flt") ||
+            s.contains("svf") || s.contains("q"))
+            return Section::FILTER;
+
+        // MOD
+        if (s.contains("lfo") || s.contains("mod") || s.contains("env") ||
+            s.contains("attack") || s.contains("decay") || s.contains("sustain") ||
+            s.contains("release") || s.contains("rate") || s.contains("depth") ||
+            s.contains("amount") || s.contains("adsr"))
+            return Section::MOD;
+
+        // FX
+        if (s.contains("delay") || s.contains("reverb") || s.contains("chorus") ||
+            s.contains("drive") || s.contains("sat") || s.contains("wet") ||
+            s.contains("dry") || s.contains("mix") || s.contains("fx") ||
+            s.contains("distort") || s.contains("compress"))
+            return Section::FX;
+
+        return Section::OTHER;
+    }
+
+    static juce::Colour sectionColour(Section s)
+    {
+        switch (s)
+        {
+            case Section::OSC:    return juce::Colour(0xFF48CAE4); // Sunlit blue
+            case Section::FILTER: return juce::Colour(0xFFFF6B6B); // Warm red
+            case Section::MOD:    return juce::Colour(0xFF00FF41); // Phosphor green
+            case Section::FX:     return juce::Colour(0xFFBF40FF); // Prism violet
+            case Section::MACRO:  return juce::Colour(0xFFE9C46A); // XO Gold
+            default:              return juce::Colour(0xFF9E9B97); // text-muted
+        }
+    }
+
+    static const char* sectionName(Section s)
+    {
+        switch (s)
+        {
+            case Section::OSC:    return "OSC";
+            case Section::FILTER: return "FILTER";
+            case Section::MOD:    return "MOD";
+            case Section::FX:     return "FX";
+            case Section::MACRO:  return "MACRO";
+            default:              return "OTHER";
+        }
+    }
+
+    // ── Constructor ─────────────────────────────────────────────────────────
     ParameterGrid(XOlokunProcessor& proc,
                   const juce::String& engId,
                   const juce::String& enginePrefix,
@@ -454,6 +283,11 @@ public:
         auto& apvts = proc.getAPVTS();
         auto& rawParams = proc.getParameters(); // juce::AudioProcessor::getParameters()
         juce::String pfx = enginePrefix + "_";
+
+        // ── Collect params into per-section buckets ─────────────────────────
+        struct ParamEntry { juce::String pid; juce::String shortLabel; Section sec; };
+        // 6 buckets — index matches Section enum value (OSC=0 … OTHER=5)
+        std::vector<ParamEntry> buckets[6];
 
         for (auto* p : rawParams)
         {
@@ -464,21 +298,45 @@ public:
                     continue;
 
                 auto inner = pid.substring(pfx.length()); // e.g. "filterCutoff"
-                // Use vocabulary override if one exists; fall back to makeShortLabel.
                 juce::String shortLabel = EngineVocabulary::labelFor(
                     engId, pid, makeShortLabel(inner));
+
+                Section sec = classifyParam(inner);
+                buckets[static_cast<int>(sec)].push_back({ pid, shortLabel, sec });
+            }
+        }
+
+        // ── Flatten buckets → ordered param list; record section runs ───────
+        // Display order: OSC, FILTER, MOD, FX, MACRO, OTHER
+        constexpr Section kOrder[] = {
+            Section::OSC, Section::FILTER, Section::MOD,
+            Section::FX,  Section::MACRO,  Section::OTHER
+        };
+
+        for (auto orderedSec : kOrder)
+        {
+            auto& bucket = buckets[static_cast<int>(orderedSec)];
+            if (bucket.empty()) continue;
+
+            int startIdx = (int)sliders.size();
+
+            for (auto& entry : bucket)
+            {
+                auto* rp = dynamic_cast<juce::RangedAudioParameter*>(
+                    apvts.getParameter(entry.pid));
+                if (!rp) continue;
 
                 auto slider = std::make_unique<juce::Slider>();
                 slider->setSliderStyle(juce::Slider::RotaryVerticalDrag);
                 slider->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
                 slider->setColour(juce::Slider::rotarySliderFillColourId, accentColour);
                 slider->setTooltip(rp->getName(64));
-                A11y::setup (*slider, rp->getName (64),
-                             rp->getName (64) + " (" + pid + ")");
+                A11y::setup(*slider, rp->getName(64),
+                            rp->getName(64) + " (" + entry.pid + ")");
                 addAndMakeVisible(*slider);
 
                 auto label = std::make_unique<juce::Label>();
-                label->setText(shortLabel, juce::dontSendNotification);
+                label->setText(entry.shortLabel, juce::dontSendNotification);
                 label->setFont(GalleryFonts::label(8.0f));
                 label->setColour(juce::Label::textColourId,
                                  GalleryColors::get(GalleryColors::textMid()));
@@ -488,39 +346,122 @@ public:
 
                 attachments.push_back(
                     std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-                        apvts, pid, *slider));
+                        apvts, entry.pid, *slider));
 
                 sliders.push_back(std::move(slider));
                 labels.push_back(std::move(label));
             }
+
+            sectionRuns.push_back({ orderedSec, startIdx, (int)sliders.size() - startIdx });
         }
     }
 
+    // ── Height calculation — accounts for per-section header rows ───────────
     int getRequiredHeight(int availableWidth) const
     {
         int cols = juce::jmax(1, availableWidth / kCellW);
-        int rows = ((int)sliders.size() + cols - 1) / cols;
-        return rows * kCellH + kPad * 2;
+        int y = kPad;
+
+        for (auto& run : sectionRuns)
+        {
+            y += kHeaderRowH; // section header strip
+            int rows = (run.count + cols - 1) / cols;
+            y += rows * kCellH;
+        }
+
+        return y + kPad;
     }
 
     void resized() override
     {
-        int cols = juce::jmax(1, getWidth() / kCellW);
+        int cols    = juce::jmax(1, getWidth() / kCellW);
         int offsetX = (getWidth() - cols * kCellW) / 2;
+        int y       = kPad;
 
-        for (int i = 0; i < (int)sliders.size(); ++i)
+        knobBounds.resize(sliders.size());
+        int flatIdx = 0;
+
+        for (auto& run : sectionRuns)
         {
-            int col = i % cols;
-            int row = i / cols;
-            int cx = offsetX + col * kCellW;
-            int cy = kPad + row * kCellH;
+            y += kHeaderRowH; // skip over section header
 
-            sliders[i]->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
-            labels[i]->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+            for (int i = 0; i < run.count; ++i, ++flatIdx)
+            {
+                int col = i % cols;
+                int row = i / cols;
+                int cx  = offsetX + col * kCellW;
+                int cy  = y + row * kCellH;
+
+                sliders[flatIdx]->setBounds(cx + 6, cy + 4, kCellW - 12, kCellW - 12);
+                labels[flatIdx]->setBounds(cx, cy + kCellW - 4, kCellW, 14);
+                knobBounds[flatIdx] = { cx, cy };
+            }
+
+            int rows = (run.count + cols - 1) / cols;
+            y += rows * kCellH;
+        }
+    }
+
+    // ── Paint — section headers + left-border bars on each knob cell ────────
+    void paint(juce::Graphics& g) override
+    {
+        int cols      = juce::jmax(1, getWidth() / kCellW);
+        int y         = kPad;
+        int flatIdx   = 0;
+        bool firstSec = true;
+
+        for (auto& run : sectionRuns)
+        {
+            juce::Colour secCol  = sectionColour(run.sec);
+            juce::String secText = sectionName(run.sec);
+
+            // ── Separator line above every section except the first ─────────
+            if (!firstSec)
+            {
+                g.setColour(secCol.withAlpha(0.20f));
+                g.drawHorizontalLine(y, 4.0f, (float)(getWidth() - 4));
+            }
+            firstSec = false;
+
+            // ── Section header background tint ─────────────────────────────
+            g.setColour(secCol.withAlpha(0.06f));
+            g.fillRect(0, y, getWidth(), kHeaderRowH);
+
+            // ── Color dot (6×6 circle, vertically centered in header row) ──
+            const int dotSize = 6;
+            const int dotX    = 10;
+            const int dotY    = y + (kHeaderRowH - dotSize) / 2;
+            g.setColour(secCol);
+            g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
+
+            // ── Section name — Space Grotesk Bold 10pt, ALL CAPS ───────────
+            g.setColour(secCol.brighter(0.15f));
+            g.setFont(juce::Font(GalleryFonts::spaceGroteskBold()).withHeight(10.0f));
+            g.drawText(secText,
+                       dotX + dotSize + 6, y,
+                       getWidth() - dotX - dotSize - 16, kHeaderRowH,
+                       juce::Justification::centredLeft);
+
+            y += kHeaderRowH;
+
+            // ── 3px left-border bar on each knob cell ──────────────────────
+            for (int i = 0; i < run.count; ++i, ++flatIdx)
+            {
+                if (flatIdx >= (int)knobBounds.size()) break;
+                auto [cx, cy] = knobBounds[flatIdx];
+                g.setColour(secCol.withAlpha(0.50f));
+                g.fillRect(cx, cy + 2, 3, kCellH - 4);
+            }
+
+            int rows = (run.count + cols - 1) / cols;
+            y += rows * kCellH;
         }
     }
 
 private:
+    // Section run descriptor — one entry per non-empty section, in display order
+    struct SectionRun { Section sec; int startIdx; int count; };
+
     // "filterCutoff" → "CUTOFF", "level" → "LEVEL", "ampAttack" → "ATTACK"
     static juce::String makeShortLabel(const juce::String& inner)
     {
@@ -530,9 +471,10 @@ private:
         return inner.toUpperCase();
     }
 
-    static constexpr int kCellW = 82;
-    static constexpr int kCellH = 90;
-    static constexpr int kPad   = 12;
+    static constexpr int kCellW      = 82;
+    static constexpr int kCellH      = 90;
+    static constexpr int kPad        = 12;
+    static constexpr int kHeaderRowH = 22; // height of each section header strip
 
     // Destruction order matters: attachments first, then sliders.
     // Members are destroyed in reverse declaration order, so declare
@@ -540,6 +482,10 @@ private:
     std::vector<std::unique_ptr<juce::Slider>> sliders;
     std::vector<std::unique_ptr<juce::Label>>  labels;
     std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> attachments;
+
+    // Section layout metadata — populated during construction / resized()
+    std::vector<SectionRun>         sectionRuns; // ordered section descriptors
+    std::vector<std::pair<int,int>>  knobBounds;  // (cx, cy) per slider, filled in resized()
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ParameterGrid)
 };
@@ -2065,9 +2011,10 @@ public:
         searchField.onTextChange = [this] { updateFilter(); };
         addAndMakeVisible(searchField);
 
-        // Mood filter buttons (ALL = index 0, then 8 moods)
+        // Mood filter buttons (ALL = index 0, then 15 moods)
         static const char* moodLabels[] = {
-            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"
+            "ALL", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
         };
         for (int i = 0; i < kNumMoods; ++i)
         {
@@ -2132,20 +2079,28 @@ public:
 
         // Mood accent dot
         static const juce::Colour moodColors[] = {
-            juce::Colour(0xFF00A6D6), // Foundation → OddfeliX/Neon Tetra Blue
-            juce::Colour(0xFFE8839B), // Atmosphere → OddOscar/Axolotl Gill Pink
-            juce::Colour(0xFF7B2D8B), // Entangled  → Drift/Violet
-            juce::Colour(0xFF0066FF), // Prism      → Onset/Blue
-            juce::Colour(0xFFE9A84A), // Flux       → Bob/Amber
-            juce::Colour(0xFFA78BFA), // Aether     → Opal/Lavender
-            juce::Colour(0xFFFF8A7A), // Family     → Rascal Coral
-            juce::Colour(0xFF2D0A4E), // Submerged  → Trench Violet
+            juce::Colour(0xFF00A6D6), // Foundation  → OddfeliX/Neon Tetra Blue
+            juce::Colour(0xFFE8839B), // Atmosphere  → OddOscar/Axolotl Gill Pink
+            juce::Colour(0xFF7B2D8B), // Entangled   → Drift/Violet
+            juce::Colour(0xFF0066FF), // Prism       → Onset/Blue
+            juce::Colour(0xFFE9A84A), // Flux        → Bob/Amber
+            juce::Colour(0xFFA78BFA), // Aether      → Opal/Lavender
+            juce::Colour(0xFFFF8A7A), // Family      → Rascal Coral
+            juce::Colour(0xFF2D0A4E), // Submerged   → Trench Violet
+            juce::Colour(0xFF1A6B5A), // Coupling    → Oxbow Teal
+            juce::Colour(0xFFA8D8EA), // Crystalline → Spectral Ice
+            juce::Colour(0xFF003366), // Deep        → Synth Bass Blue
+            juce::Colour(0xFF9B5DE5), // Ethereal    → Synapse Violet
+            juce::Colour(0xFFE5B80B), // Kinetic     → Crate Wax Yellow
+            juce::Colour(0xFFC6E377), // Luminous    → Emergence Lime
+            juce::Colour(0xFF228B22), // Organic     → Forest Green
         };
         static const char* moodIds[] = {
-            "Foundation","Atmosphere","Entangled","Prism","Flux","Aether","Family","Submerged"
+            "Foundation", "Atmosphere", "Entangled",  "Prism",   "Flux",     "Aether",   "Family",  "Submerged",
+            "Coupling",   "Crystalline","Deep",        "Ethereal","Kinetic",  "Luminous", "Organic"
         };
         juce::Colour dot = get(borderGray());
-        for (int mi = 0; mi < 8; ++mi)
+        for (int mi = 0; mi < 15; ++mi)
             if (preset.mood == moodIds[mi]) { dot = moodColors[mi]; break; }
 
         g.setColour(dot.withAlpha(0.7f));
@@ -2222,7 +2177,8 @@ private:
     void updateFilter()
     {
         static const char* moodNames[] = {
-            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family", "Submerged"
+            "", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
         };
 
         auto query = searchField.getText().trim();
@@ -2252,7 +2208,7 @@ private:
                            juce::dontSendNotification);
     }
 
-    static constexpr int kNumMoods = 9;
+    static constexpr int kNumMoods = 16; // ALL + 15 moods
 
     const PresetManager& presetManager;
     std::function<void(const PresetData&)> onPresetSelected;
@@ -2266,6 +2222,10 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PresetBrowserPanel)
 };
+
+// PresetBrowser is included at the top of this file (before namespace xolokun {)
+// to avoid the nested-namespace problem.  The class is available here as
+// xolokun::PresetBrowser.
 
 //==============================================================================
 // PresetBrowserStrip — prev/next navigation + preset name display.
@@ -2379,7 +2339,11 @@ private:
         // CallOutBox is still open (e.g., plugin editor closed during browse).
         juce::Component::SafePointer<PresetBrowserStrip> safeThis(this);
 
-        auto onSelect = [safeThis, &proc = processor](const PresetData& preset)
+        // Build the full PresetBrowser (search + DNA + 48px rows).
+        auto browser = std::make_unique<PresetBrowser>(pm);
+
+        // Wire the onPresetSelected callback — same logic as the old panel.
+        browser->onPresetSelected = [safeThis, &proc = processor](const PresetData& preset)
         {
             proc.getPresetManager().setCurrentPreset(preset);
             proc.applyPreset(preset);
@@ -2392,8 +2356,12 @@ private:
             }
         };
 
+        // Size: 560 wide × 520 tall — accommodates 48px rows, search bar,
+        // mood filter strip, and the "Find Similar" DNA button at the bottom.
+        browser->setSize(560, 520);
+
         juce::CallOutBox::launchAsynchronously(
-            std::make_unique<PresetBrowserPanel>(pm, std::move(onSelect)),
+            std::move(browser),
             browseBtn.getScreenBounds(),
             getTopLevelComponent());
     }
@@ -2717,8 +2685,8 @@ private:
 //   │  [P] PERFORMANCE VIEW                   [BAKE] [X]  │
 //   ├───────────────────────┬──────────────────────────────┤
 //   │                       │  Route Detail Panel          │
-//   │  CouplingStripEditor  │  Route 1: [Src] → [Tgt]     │
-//   │  (node + arc viz)     │  Type: [dropdown]  Depth: ═  │
+//   │  CouplingVisualizer   │  Route 1: [Src] → [Tgt]     │
+//   │  (diamond graph viz)  │  Type: [dropdown]  Depth: ═  │
 //   │                       │  Route 2 / 3 / 4 ...         │
 //   ├───────────────────────┴──────────────────────────────┤
 //   │  ◉ CHARACTER  ◉ MOVEMENT  ◉ COUPLING  ◉ SPACE       │
@@ -2733,23 +2701,24 @@ public:
     PerformanceViewPanel (XOlokunProcessor& proc)
         : processor (proc),
           apvts (proc.getAPVTS()),
-          couplingStrip (proc.getCouplingMatrix(),
-                         [&proc] (int slot) -> juce::String
-                         {
-                             auto* eng = proc.getEngine (slot);
-                             return eng ? eng->getEngineId() : juce::String{};
-                         },
-                         [&proc] (int slot) -> juce::Colour
-                         {
-                             auto* eng = proc.getEngine (slot);
-                             return eng ? eng->getAccentColour()
-                                        : juce::Colour (0xFF555555);
-                         })
+          couplingVisualizer (proc.getCouplingMatrix(),
+                              [&proc] (int slot) -> juce::String
+                              {
+                                  auto* eng = proc.getEngine (slot);
+                                  return eng ? eng->getEngineId() : juce::String{};
+                              },
+                              [&proc] (int slot) -> juce::Colour
+                              {
+                                  auto* eng = proc.getEngine (slot);
+                                  return eng ? eng->getAccentColour()
+                                             : juce::Colour (0xFF555555);
+                              })
     {
         setTitle ("Performance View");
         setDescription ("Real-time coupling performance interface with route controls and macro knobs");
 
-        addAndMakeVisible (couplingStrip);
+        addAndMakeVisible (couplingVisualizer);
+        couplingVisualizer.start();
 
         // ── BAKE button ──
         addAndMakeVisible (bakeBtn);
@@ -2774,7 +2743,7 @@ public:
                             GalleryColors::get (GalleryColors::textMid()));
         clearBtn.onClick = [this] {
             processor.getCouplingPresetManager().clearOverlay();
-            couplingStrip.refresh();
+            couplingVisualizer.refresh();
             repaint();
         };
 
@@ -2896,7 +2865,7 @@ public:
     // Call from editor timer or on engine change to keep route labels current.
     void refresh()
     {
-        couplingStrip.refresh();
+        couplingVisualizer.refresh();
         updateRouteLabels();
         repaint();
     }
@@ -3012,7 +2981,7 @@ public:
         // ── Body: coupling strip (left 40%) + route panel (right 60%) ──
         auto body = area;
         int stripW = (int) (body.getWidth() * kStripRatio);
-        couplingStrip.setBounds (body.removeFromLeft (stripW));
+        couplingVisualizer.setBounds (body.removeFromLeft (stripW));
 
         // ── Route sections ──
         auto routePanel = body.reduced (6, 4);
@@ -3172,7 +3141,7 @@ private:
         if (preset)
         {
             cpm.loadBakedCoupling (*preset);
-            couplingStrip.refresh();
+            couplingVisualizer.refresh();
             updateRouteLabels();
             repaint();
         }
@@ -3216,8 +3185,8 @@ private:
     XOlokunProcessor& processor;
     juce::AudioProcessorValueTreeState& apvts;
 
-    // Left panel: coupling arc visualization
-    CouplingStripEditor couplingStrip;
+    // Left panel: full-graph coupling visualizer (replaces CouplingStripEditor)
+    CouplingVisualizer couplingVisualizer;
 
     // Header controls
     juce::TextButton bakeBtn;
@@ -3527,6 +3496,30 @@ public:
                 showOverview();
         };
 
+        // "PS" toggle button — PlaySurface (4-zone performance interface)
+        addAndMakeVisible(surfaceToggleBtn);
+        surfaceToggleBtn.setButtonText("PS");
+        surfaceToggleBtn.setTooltip("PlaySurface — 4-zone performance interface (pads, orbit, strip, triggers)");
+        A11y::setup (surfaceToggleBtn, "PlaySurface Toggle",
+                     "Toggle the PlaySurface performance panel at the bottom of the editor");
+        surfaceToggleBtn.setClickingTogglesState(true);
+        surfaceToggleBtn.onClick = [this]
+        {
+            if (surfaceToggleBtn.getToggleState())
+                showPlaySurface();
+            else
+                hidePlaySurface();
+        };
+
+        // PlaySurface — hidden by default; revealed via surfaceToggleBtn
+        addAndMakeVisible(playSurface);
+        playSurface.setVisible(false);
+        playSurface.setAlpha(0.0f);
+
+        // Wire MIDI: PlaySurface note events flow through the processor's
+        // MidiMessageCollector, which is drained into processBlock each audio callback.
+        playSurface.setMidiCollector(&proc.getMidiCollector(), 1);
+
         // Dark mode toggle — light is default (brand rule)
         addAndMakeVisible(themeToggleBtn);
         themeToggleBtn.setButtonText("D");
@@ -3547,6 +3540,22 @@ public:
             macros.repaint();
             masterFXStrip.repaint();
             presetBrowser.repaint();
+        };
+
+        // Export button — launches ExportDialog as a CallOutBox
+        addAndMakeVisible(exportBtn);
+        exportBtn.setButtonText("XPN");
+        exportBtn.setTooltip("Export presets as MPC-compatible XPN expansion pack");
+        A11y::setup (exportBtn, "Export", "Open export dialog to build XPN expansion packs");
+        exportBtn.onClick = [this]
+        {
+            juce::CallOutBox::launchAsynchronously(
+                std::make_unique<ExportDialog>(
+                    processor.getPresetManager(),
+                    &processor.getAPVTS(),
+                    &processor.getCouplingMatrix()),
+                exportBtn.getScreenBounds(),
+                getTopLevelComponent());
         };
 
         // Scan factory preset directory
@@ -3671,9 +3680,22 @@ public:
         // Header: reserve space for toggle buttons and preset browser (right side)
         auto header = area.removeFromTop(kHeaderH);
         presetBrowser.setBounds(header.removeFromRight(220).reduced(4, 10));
+        exportBtn.setBounds(header.removeFromRight(46).reduced(4, 12));
         themeToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
+        surfaceToggleBtn.setBounds(header.removeFromRight(36).reduced(2, 12));
         perfToggleBtn.setBounds(header.removeFromRight(32).reduced(2, 12));
         cmToggleBtn.setBounds(header.removeFromRight(42).reduced(4, 12));
+
+        // PlaySurface — when visible it occupies ~40% of the content height at the
+        // very bottom of the editor (below the macros + masterFX strips), spanning
+        // the full editor width.  Its own dark palette (PS::kSurfaceBg 0xFF1A1A1A)
+        // provides a clear visual break from the Gallery shell above.
+        const int contentH = area.getHeight();
+        const int surfaceH = (int)(contentH * 0.40f);  // 40% of content area
+        if (playSurface.isVisible())
+            playSurface.setBounds(area.removeFromBottom(surfaceH));
+        else
+            playSurface.setBounds(0, getHeight(), getWidth(), surfaceH); // parked below visible area
 
         // Bottom strips (from bottom up)
         masterFXStrip.setBounds(area.removeFromBottom(kMasterFXH).reduced(6, 3));
@@ -3879,6 +3901,33 @@ private:
         }
     }
 
+    // ── PlaySurface show/hide ──────────────────────────────────────────────────
+    // The PlaySurface overlays the bottom ~40% of the editor.  Showing it
+    // triggers a resized() so the layout pushes up the macros/masterFX strips;
+    // hiding it restores the original layout.  Both use the standard 150ms fade.
+
+    void showPlaySurface()
+    {
+        auto& anim = juce::Desktop::getInstance().getAnimator();
+        playSurface.setAlpha(0.0f);
+        playSurface.setVisible(true);
+        resized(); // recalculate layout so PlaySurface gets its bounds before fading in
+        anim.fadeIn(&playSurface, kFadeMs);
+    }
+
+    void hidePlaySurface()
+    {
+        auto& anim = juce::Desktop::getInstance().getAnimator();
+        juce::Component::SafePointer<XOlokunEditor> safeThis(this);
+        anim.fadeOut(&playSurface, kFadeMs);
+        juce::Timer::callAfterDelay(kFadeMs, [safeThis]
+        {
+            if (safeThis == nullptr) return;
+            safeThis->playSurface.setVisible(false);
+            safeThis->resized(); // restore layout once panel is hidden
+        });
+    }
+
     void timerCallback() override
     {
         for (int i = 0; i < XOlokunProcessor::MaxSlots; ++i)
@@ -3925,7 +3974,10 @@ private:
     PresetBrowserStrip     presetBrowser;
     juce::TextButton       cmToggleBtn;
     juce::TextButton       perfToggleBtn;
+    juce::TextButton       surfaceToggleBtn;
     juce::TextButton       themeToggleBtn;
+    juce::TextButton       exportBtn;
+    PlaySurface            playSurface;
     CouplingArcOverlay     couplingArcs { processor };
 
     int selectedSlot = -1;

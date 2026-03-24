@@ -838,7 +838,7 @@ private:
 
     static float velocityForLayer(int layer, int totalLayers)
     {
-        return renderVelocityForLayer(layer, totalLayers, VelocityCurve::Musical);
+        return renderVelocityForLayer(layer, totalLayers, XPNVelocityCurve::Musical);
     }
 
     //==========================================================================
@@ -1158,7 +1158,7 @@ private:
         xml << "  <PitchBendRange>12</PitchBendRange>\n";
         xml << "  <Keygroups>\n";
 
-        auto velSplits = getVelocitySplits(VelocityCurve::Musical, settings.velocityLayers);
+        auto velSplits = getVelocitySplits(XPNVelocityCurve::Musical, settings.velocityLayers);
 
         for (int i = 0; i < (int)notes.size(); ++i)
         {

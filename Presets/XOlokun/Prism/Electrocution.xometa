@@ -32,15 +32,12 @@
   "name": "Electrocution",
   "parameters": {
     "OddfeliX": {
-      "snap_attack": 0.2,
       "snap_decay": 30.0,
       "snap_drive": 0.95,
       "snap_filterCutoff": 7800.0,
       "snap_filterEnvDepth": 0.95,
       "snap_filterReso": 0.95,
-      "snap_oscMode": 1.0,
-      "snap_release": 20.0,
-      "snap_sustain": 0.0
+      "snap_oscMode": 1.0
     }
   },
   "schema_version": 1,

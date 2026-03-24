@@ -32,15 +32,12 @@
   "name": "Spectral Blur",
   "parameters": {
     "OddfeliX": {
-      "snap_attack": 1.0,
       "snap_decay": 60.0,
       "snap_drive": 0.82,
       "snap_filterCutoff": 7500.0,
       "snap_filterEnvDepth": 0.88,
       "snap_filterReso": 0.45,
-      "snap_oscMode": 3.0,
-      "snap_release": 45.0,
-      "snap_sustain": 0.82
+      "snap_oscMode": 3.0
     }
   },
   "schema_version": 1,

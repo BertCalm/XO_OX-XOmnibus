@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<!--
+  XOlokun — V0.2 "The Convergence" Prototype
+  UIX Design Studio: Ulf · Issea · Xavier · JUCE-y Lucy
+  Date: 2026-03-24
+
+  THE FOUR THREADS:
+  1. Depth-Zone Dials — ocean gradient engine selector
+  2. Audio UI Knob Aesthetics — filmstrip-style tactile knobs
+  3. OpenBridge Dark Cockpit — 5-level opacity hierarchy (B041)
+  4. APERTURE Typography — stencil futuristic display font
+
+  INTERACTIONS:
+  - Click engine nodes to switch engines (accent color changes globally)
+  - Click GALLERY / PERFORMANCE / COUPLING mode buttons to see Dark Cockpit
+  - Hover knobs for value tooltips
+  - Watch the XOuija Planchette drift in Lissajous pattern
+  - Drag knobs to change values
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>XOlokun — V0.2 The Convergence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ══ APERTURE approximation — stencil cuts via CSS ══════════════ */
+    @font-face {
+      font-family: 'ApertureApprox';
+      src: local('Space Grotesk');
+      /* We approximate APERTURE's stencil feel with letter-spacing + weight */
+    }
+
+    /* ══ Design Tokens ═══════════════════════════════════════════════ */
+    :root {
+      /* Shell */
+      --shell: #F8F6F3;
+      --shell-hi: #FDFCFA;
+      --shell-dim: #F0EDE8;
+      --border: #DDDAD5;
+      --border-subtle: rgba(221, 218, 213, 0.5);
+
+      /* Text */
+      --t1: #1A1A1A;
+      --t2: #6E6B68;
+      --t3: #9E9B97;
+      --t4: #C8C5C2;
+      --text-muted: rgba(240, 237, 232, 0.45);
+
+      /* Brand */
+      --gold: #E9C46A;
+      --gold-dim: rgba(233, 196, 106, 0.16);
+      --gold-glow: rgba(233, 196, 106, 0.32);
+      --gold-bright: rgba(233, 196, 106, 0.85);
+
+      /* Engine accent (dynamic — changes with engine selection) */
+      --accent: #1E8B7E;         /* Default: OBRIX Reef Jade */
+      --accent-dim: rgba(30, 139, 126, 0.15);
+      --accent-glow: rgba(30, 139, 126, 0.35);
+
+      /* Dark Cockpit levels */
+      --cockpit-full: 1.0;
+      --cockpit-active: 0.8;
+      --cockpit-secondary: 0.45;
+      --cockpit-dim: 0.20;
+      --cockpit-hidden: 0.0;
+
+      /* Depth zones */
+      --zone-sunlit: #48CAE4;
+      --zone-twilight: #0096C7;
+      --zone-midnight: #7B2FBE;
+      --zone-abyss: #2D0A4E;
+
+      /* Dark mode */
+      --dark-bg: #0E0E10;
+      --dark-surface: #1A1A1C;
+      --dark-elevated: #242426;
+      --dark-border: rgba(255, 255, 255, 0.07);
+      --dark-t1: #F0EDE8;
+      --dark-t2: #9E9B97;
+
+      /* Typography */
+      --f-display: 'Space Grotesk', -apple-system, sans-serif;
+      --f-body: 'Inter', -apple-system, sans-serif;
+      --f-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+      --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --dur-fast: 150ms;
+      --dur-cockpit: 400ms;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0A0A0C;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, #141418 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, #0D0D12 0%, transparent 50%);
+      padding: 24px;
+      font-family: var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      color: var(--dark-t1);
+    }
+
+    /* ══ Mode selector (above plugin) ═══════════════════════════════ */
+    .mode-bar {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      padding: 3px;
+    }
+    .mode-btn {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--dark-t2);
+      background: transparent;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all var(--dur-cockpit) var(--ease-out);
+      text-transform: uppercase;
+    }
+    .mode-btn:hover { color: var(--dark-t1); background: rgba(255,255,255,0.04); }
+    .mode-btn.active {
+      color: var(--dark-t1);
+      background: rgba(255,255,255,0.08);
+    }
+    .mode-btn.active[data-mode="coupling"] { color: var(--gold); }
+
+    /* ══ Plugin window ═══════════════════════════════════════════════ */
+    .plugin {
+      width: 1100px;
+      height: 700px;
+      background: var(--dark-bg);
+      border-radius: 11px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 0.5px rgba(255,255,255,0.06),
+        0 2px 4px rgba(0,0,0,0.3),
+        0 8px 24px rgba(0,0,0,0.4),
+        0 32px 80px rgba(0,0,0,0.5);
+      position: relative;
+      user-select: none;
+    }
+
+    /* ══ Header ═════════════════════════════════════════════════════ */
+    .header {
+      height: 52px;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border);
+      gap: 12px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Logo */
+    .logo {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo svg { width: 24px; height: 24px; }
+
+    /* Engine name — APERTURE style */
+    .engine-title {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      text-transform: uppercase;
+      /* Stencil effect via text-shadow gaps */
+      text-shadow: 0 0 12px var(--accent-glow);
+      transition: color var(--dur-cockpit) var(--ease-out),
+                  text-shadow var(--dur-cockpit) var(--ease-out);
+    }
+
+    /* Preset navigator */
+    .preset-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 8px;
+    }
+    .preset-arrow {
+      width: 20px; height: 20px;
+      background: none;
+      border: 1.5px solid var(--dark-t2);
+      border-radius: 4px;
+      color: var(--dark-t2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 10px;
+      transition: all var(--dur-fast) ease;
+      opacity: 0.6;
+    }
+    .preset-arrow:hover { border-color: var(--dark-t1); color: var(--dark-t1); opacity: 1; }
+    .preset-name {
+      font-family: var(--f-body);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--dark-t1);
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .preset-heart {
+      width: 18px; height: 18px;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity var(--dur-fast) ease;
+    }
+    .preset-heart:hover { opacity: 0.8; }
+    .preset-heart.active { opacity: 1; }
+
+    /* Macro knobs in header */
+    .header-macros {
+      display: flex;
+      gap: 6px;
+      margin-left: auto;
+      align-items: center;
+    }
+
+    /* Indicators (right side) */
+    .header-indicators {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-left: 12px;
+    }
+    .indicator {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--dark-t2);
+      opacity: 0.5;
+      transition: opacity var(--dur-cockpit) var(--ease-out);
+    }
+    .indicator.active { opacity: 1; color: var(--accent); }
+
+    /* ══ Main body ═══════════════════════════════════════════════════ */
+    .main {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ══ Engine panel (left 61.8%) ═══════════════════════════════════ */
+    .engine-panel {
+      width: 61.8%;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--dark-border);
+      position: relative;
+    }
+
+    /* Depth-Zone Dial */
+    .depth-zone-strip {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      border-bottom: 1px solid var(--dark-border);
+      background: linear-gradient(90deg,
+        rgba(72, 202, 228, 0.03) 0%,
+        rgba(0, 150, 199, 0.03) 50%,
+        rgba(123, 47, 190, 0.03) 100%
+      );
+    }
+
+    .depth-dial {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .depth-dial-bg {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      /* Ocean gradient rim */
+      background: conic-gradient(
+        from 210deg,
+        var(--zone-sunlit) 0deg,
+        var(--zone-twilight) 120deg,
+        var(--zone-midnight) 240deg,
+        var(--zone-abyss) 300deg,
+        var(--zone-sunlit) 360deg
+      );
+      opacity: 0.7;
+    }
+    .depth-dial-inner {
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--dark-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .depth-dial-icon {
+      font-size: 16px;
+      opacity: 0.7;
+      transition: opacity var(--dur-fast) ease;
+    }
+    .depth-dial:hover .depth-dial-icon { opacity: 1; }
+    .depth-dial-pointer {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      top: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 6px var(--accent-glow);
+      transition: background var(--dur-cockpit) var(--ease-out);
+    }
+
+    /* Engine slot tiles */
+    .engine-slots {
+      display: flex;
+      gap: 0;
+      flex: 1;
+    }
+    .engine-slot {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      border-right: 1px solid var(--dark-border);
+      transition: opacity var(--dur-cockpit) var(--ease-out);
+      position: relative;
+    }
+    .engine-slot:last-child { border-right: none; }
+    .engine-slot.dimmed { opacity: 0.20; }
+    .engine-slot.secondary { opacity: 0.45; }
+
+    .slot-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .slot-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow);
+      transition: background var(--dur-cockpit) var(--ease-out),
+                  box-shadow var(--dur-cockpit) var(--ease-out);
+    }
+    .slot-name {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: color var(--dur-cockpit) var(--ease-out);
+    }
+    .slot-badge {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--dark-t2);
+      background: rgba(255,255,255,0.04);
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: auto;
+    }
+
+    /* Knob grid in slot */
+    .knob-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    /* ══ Filmstrip-style Knob ═══════════════════════════════════════ */
+    .knob {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: opacity var(--dur-cockpit) var(--ease-out);
+    }
+    .knob.macro { --knob-size: 56px; }
+    .knob.section { --knob-size: 40px; }
+    .knob.detail { --knob-size: 32px; }
+
+    .knob-body {
+      width: var(--knob-size, 40px);
+      height: var(--knob-size, 40px);
+      border-radius: 50%;
+      position: relative;
+      /* Filmstrip approximation — 3D tactile feel */
+      background: radial-gradient(
+        circle at 40% 35%,
+        #3A3A3E 0%,
+        #2A2A2E 40%,
+        #1E1E22 70%,
+        #141418 100%
+      );
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.4),
+        0 -1px 1px rgba(255,255,255,0.03),
+        inset 0 1px 3px rgba(0,0,0,0.3),
+        inset 0 -1px 2px rgba(255,255,255,0.02);
+      transition: box-shadow var(--dur-fast) ease;
+    }
+    .knob:hover .knob-body {
+      box-shadow:
+        0 1px 2px rgba(0,0,0,0.4),
+        0 -1px 1px rgba(255,255,255,0.05),
+        inset 0 1px 3px rgba(0,0,0,0.3),
+        inset 0 -1px 2px rgba(255,255,255,0.04),
+        0 0 12px var(--accent-dim);
+    }
+
+    /* Knob indicator dot */
+    .knob-indicator {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 4px var(--accent-glow);
+      /* Positioned by --knob-angle custom property */
+      top: calc(50% - 2px + sin(var(--knob-angle, -2.35rad)) * calc(var(--knob-size, 40px) / 2 - 6px));
+      left: calc(50% - 2px + cos(var(--knob-angle, -2.35rad)) * calc(var(--knob-size, 40px) / 2 - 6px));
+      transition: background var(--dur-cockpit) var(--ease-out);
+    }
+
+    /* Arc overlay (SVG) */
+    .knob-arc {
+      position: absolute;
+      inset: -3px;
+      pointer-events: none;
+    }
+    .knob-arc circle {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      opacity: 0.7;
+      transition: stroke var(--dur-cockpit) var(--ease-out);
+    }
+
+    .knob-label {
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark-t2);
+      text-align: center;
+      transition: color var(--dur-cockpit) var(--ease-out);
+    }
+    .knob-value {
+      font-family: var(--f-mono);
+      font-size: 8px;
+      color: var(--dark-t2);
+      opacity: 0.6;
+    }
+
+    /* Macro knob special style */
+    .knob.macro .knob-label { color: var(--gold); font-weight: 600; }
+    .knob.macro .knob-body {
+      background: radial-gradient(
+        circle at 40% 35%,
+        #3E3A36 0%,
+        #2E2A26 40%,
+        #221E1A 70%,
+        #181410 100%
+      );
+    }
+
+    /* ══ Sidebar (right 38.2%) ══════════════════════════════════════ */
+    .sidebar {
+      width: 38.2%;
+      display: flex;
+      flex-direction: column;
+      background: var(--dark-surface);
+      transition: opacity var(--dur-cockpit) var(--ease-out);
+    }
+    .sidebar.dimmed { opacity: 0.20; }
+
+    .sidebar-tabs {
+      display: flex;
+      height: 36px;
+      border-bottom: 1px solid var(--dark-border);
+      flex-shrink: 0;
+    }
+    .sidebar-tab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dark-t2);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: all var(--dur-fast) ease;
+    }
+    .sidebar-tab:hover { color: var(--dark-t1); }
+    .sidebar-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* Coupling tab content */
+    .coupling-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      gap: 16px;
+      position: relative;
+    }
+
+    /* Gold corridor */
+    .gold-corridor {
+      height: 24px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--gold-dim) 20%,
+        var(--gold-glow) 50%,
+        var(--gold-dim) 80%,
+        transparent 100%
+      );
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--dur-cockpit) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    .gold-corridor::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(233, 196, 106, 0.15) 50%,
+        transparent 100%
+      );
+      animation: corridor-pulse 3s ease-in-out infinite;
+    }
+    @keyframes corridor-pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    .gold-corridor-label {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    /* Coupling visualizer */
+    .coupling-viz {
+      flex: 1;
+      position: relative;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--dark-border);
+      overflow: hidden;
+    }
+    .coupling-viz canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Coupling controls */
+    .coupling-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .coupling-type {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--dark-t2);
+      background: rgba(255,255,255,0.04);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--dark-border);
+    }
+
+    /* ══ PlaySurface (bottom) ═══════════════════════════════════════ */
+    .playsurface-container {
+      height: 264px;
+      min-height: 264px;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--dark-border);
+      background: var(--dark-bg);
+      position: relative;
+    }
+
+    .surface-tabs {
+      height: 28px;
+      display: flex;
+      padding: 0 16px;
+      gap: 0;
+      background: var(--dark-surface);
+      border-bottom: 1px solid var(--dark-border);
+      flex-shrink: 0;
+    }
+    .surface-tab {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dark-t2);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0 14px;
+      cursor: pointer;
+      transition: all var(--dur-fast) ease;
+    }
+    .surface-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .surface-body {
+      flex: 1;
+      display: flex;
+      position: relative;
+    }
+
+    /* XOuija surface */
+    .xouija-surface {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      cursor: none;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(30, 139, 126, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(123, 47, 190, 0.03) 0%, transparent 50%);
+    }
+
+    /* Planchette */
+    .planchette {
+      position: absolute;
+      width: 80px;
+      height: 60px;
+      border-radius: 12px;
+      border: 2px solid var(--accent);
+      background: rgba(14, 14, 16, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        inset 0 0 12px var(--accent-dim),
+        0 4px 16px rgba(0,0,0,0.3);
+      pointer-events: none;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      padding: 6px 8px;
+      gap: 2px;
+      transition: border-color var(--dur-cockpit) var(--ease-out),
+                  box-shadow var(--dur-cockpit) var(--ease-out);
+    }
+    .planchette-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .planchette-note {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--dark-t1);
+    }
+    .planchette-hz {
+      font-family: var(--f-mono);
+      font-size: 10px;
+      color: var(--dark-t2);
+    }
+    .planchette-rule {
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.2;
+      margin: 1px 0;
+    }
+    .planchette-meta {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--dark-t2);
+      opacity: 0.5;
+    }
+    .planchette-engine {
+      font-family: var(--f-display);
+      font-weight: 600;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      transition: color var(--dur-cockpit) var(--ease-out);
+    }
+
+    /* Trail points */
+    .trail-point {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      pointer-events: none;
+      transition: background var(--dur-cockpit) var(--ease-out);
+    }
+
+    /* Expression panel */
+    .expression-panel {
+      width: 172px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      gap: 8px;
+      border-left: 1px solid var(--dark-border);
+      background: var(--dark-surface);
+      transition: opacity var(--dur-cockpit) var(--ease-out);
+    }
+    .expression-panel.dimmed { opacity: 0.20; }
+
+    .exp-wheel {
+      width: 28px;
+      height: 120px;
+      border-radius: 4px;
+      background: var(--dark-elevated);
+      border: 1px solid var(--dark-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-wheel-fill {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, var(--accent-dim), var(--accent-glow));
+      border-radius: 0 0 3px 3px;
+      transition: height 0.1s ease, background var(--dur-cockpit) var(--ease-out);
+    }
+    .exp-label {
+      font-family: var(--f-display);
+      font-weight: 500;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark-t2);
+    }
+
+    /* Tide Controller */
+    .tide-controller {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--dark-elevated);
+      border: 1px solid var(--dark-border);
+      position: relative;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .tide-controller canvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    /* ══ Status bar ═════════════════════════════════════════════════ */
+    .status-bar {
+      height: 28px;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      background: var(--dark-surface);
+      border-top: 1px solid var(--dark-border);
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .status-item {
+      font-family: var(--f-mono);
+      font-size: 9px;
+      color: var(--dark-t2);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #3FCF92;
+    }
+    .status-right {
+      margin-left: auto;
+      display: flex;
+      gap: 16px;
+    }
+
+    /* ══ Waveform display in engine slot ═══════════════════════════ */
+    .waveform-display {
+      height: 48px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--dark-border);
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .waveform-display canvas {
+      width: 100%; height: 100%;
+    }
+
+    /* ══ ADSR display ═════════════════════════════════════════════ */
+    .adsr-display {
+      height: 40px;
+      margin-top: 6px;
+    }
+    .adsr-display svg { width: 100%; height: 100%; }
+
+    /* ══ Animations ═════════════════════════════════════════════════ */
+    @keyframes breathe {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* ══ Engine accent color classes ════════════════════════════════ */
+    .accent-obrix {
+      --accent: #1E8B7E;
+      --accent-dim: rgba(30, 139, 126, 0.15);
+      --accent-glow: rgba(30, 139, 126, 0.35);
+    }
+    .accent-opera {
+      --accent: #D4AF37;
+      --accent-dim: rgba(212, 175, 55, 0.15);
+      --accent-glow: rgba(212, 175, 55, 0.35);
+    }
+    .accent-oxytocin {
+      --accent: #9B5DE5;
+      --accent-dim: rgba(155, 93, 229, 0.15);
+      --accent-glow: rgba(155, 93, 229, 0.35);
+    }
+    .accent-oceandeep {
+      --accent: #2D0A4E;
+      --accent-dim: rgba(45, 10, 78, 0.15);
+      --accent-glow: rgba(45, 10, 78, 0.35);
+    }
+    .accent-opensky {
+      --accent: #FF8C00;
+      --accent-dim: rgba(255, 140, 0, 0.15);
+      --accent-glow: rgba(255, 140, 0, 0.35);
+    }
+    .accent-onset {
+      --accent: #0066FF;
+      --accent-dim: rgba(0, 102, 255, 0.15);
+      --accent-glow: rgba(0, 102, 255, 0.35);
+    }
+    .accent-oware {
+      --accent: #B5883E;
+      --accent-dim: rgba(181, 136, 62, 0.15);
+      --accent-glow: rgba(181, 136, 62, 0.35);
+    }
+    .accent-offering {
+      --accent: #E5B80B;
+      --accent-dim: rgba(229, 184, 11, 0.15);
+      --accent-glow: rgba(229, 184, 11, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mode switcher -->
+  <div class="mode-bar">
+    <button class="mode-btn active" data-mode="gallery" onclick="setMode('gallery')">Gallery</button>
+    <button class="mode-btn" data-mode="performance" onclick="setMode('performance')">Performance</button>
+    <button class="mode-btn" data-mode="coupling" onclick="setMode('coupling')">Coupling</button>
+  </div>
+
+  <!-- Plugin window -->
+  <div class="plugin accent-obrix" id="plugin">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="12" r="6" stroke="var(--dark-t2)"/>
+          <circle cx="16" cy="12" r="6" stroke="var(--dark-t2)"/>
+          <line x1="11" y1="9" x2="13" y2="9" stroke="var(--gold)" stroke-width="2"/>
+          <line x1="11" y1="15" x2="13" y2="15" stroke="var(--gold)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="engine-title" id="engineTitle">OBRIX</div>
+      <div class="preset-nav">
+        <button class="preset-arrow">◂</button>
+        <span class="preset-name">Coral Cathedral</span>
+        <button class="preset-arrow">▸</button>
+        <svg class="preset-heart" viewBox="0 0 18 18"><path d="M9 15.5s-6.5-4-6.5-7.5a3.5 3.5 0 0 1 6.5-1.5 3.5 3.5 0 0 1 6.5 1.5c0 3.5-6.5 7.5-6.5 7.5z" fill="none" stroke="var(--gold)" stroke-width="1.2"/></svg>
+      </div>
+      <div class="header-macros">
+        <div class="knob macro" title="CHARACTER">
+          <div class="knob-body" style="--knob-size: 36px">
+            <svg class="knob-arc" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="19" stroke-dasharray="85 120" stroke-dashoffset="-30" stroke="var(--gold)"/>
+            </svg>
+          </div>
+          <span class="knob-label" style="color: var(--gold)">CHAR</span>
+        </div>
+        <div class="knob macro" title="MOVEMENT">
+          <div class="knob-body" style="--knob-size: 36px">
+            <svg class="knob-arc" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="19" stroke-dasharray="60 120" stroke-dashoffset="-30" stroke="#00FF41"/>
+            </svg>
+          </div>
+          <span class="knob-label" style="color: #00FF41">MOVE</span>
+        </div>
+        <div class="knob macro" title="COUPLING">
+          <div class="knob-body" style="--knob-size: 36px">
+            <svg class="knob-arc" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="19" stroke-dasharray="95 120" stroke-dashoffset="-30" stroke="#BF40FF"/>
+            </svg>
+          </div>
+          <span class="knob-label" style="color: #BF40FF">COUP</span>
+        </div>
+        <div class="knob macro" title="SPACE">
+          <div class="knob-body" style="--knob-size: 36px">
+            <svg class="knob-arc" viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="19" stroke-dasharray="72 120" stroke-dashoffset="-30" stroke="#00B4A0"/>
+            </svg>
+          </div>
+          <span class="knob-label" style="color: #00B4A0">SPACE</span>
+        </div>
+      </div>
+      <div class="header-indicators">
+        <span class="indicator">CPU 4.2%</span>
+        <span class="indicator active">MIDI ●</span>
+        <span class="indicator">⚙</span>
+      </div>
+    </div>
+
+    <!-- Main body -->
+    <div class="main">
+
+      <!-- Engine panel -->
+      <div class="engine-panel">
+
+        <!-- Depth-Zone Strip -->
+        <div class="depth-zone-strip">
+          <div class="depth-dial" title="Scroll to change engine">
+            <div class="depth-dial-bg"></div>
+            <div class="depth-dial-inner">
+              <span class="depth-dial-icon">🪸</span>
+            </div>
+            <div class="depth-dial-pointer"></div>
+          </div>
+          <!-- Engine nodes (clickable) -->
+          <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+            <button class="engine-node active" data-engine="obrix" data-color="#1E8B7E" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#1E8B7E;border:none;cursor:pointer;box-shadow:0 0 8px rgba(30,139,126,0.5);transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="opera" data-color="#D4AF37" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#D4AF37;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="oxytocin" data-color="#9B5DE5" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#9B5DE5;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="opensky" data-color="#FF8C00" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#FF8C00;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="onset" data-color="#0066FF" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#0066FF;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="oware" data-color="#B5883E" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#B5883E;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+            <button class="engine-node" data-engine="offering" data-color="#E5B80B" onclick="switchEngine(this)" style="width:24px;height:24px;border-radius:50%;background:#E5B80B;border:none;cursor:pointer;opacity:0.35;transition:all 0.2s">
+            </button>
+          </div>
+          <div style="margin-left: auto; font-family: var(--f-mono); font-size: 9px; color: var(--dark-t2);">
+            SLOT 1/4 · <span style="color: var(--zone-sunlit)">SUNLIT</span>
+          </div>
+        </div>
+
+        <!-- Engine slots -->
+        <div class="engine-slots">
+          <!-- Slot 1: Active -->
+          <div class="engine-slot" id="slot1">
+            <div class="slot-header">
+              <div class="slot-dot"></div>
+              <span class="slot-name" id="slotName1">OBRIX</span>
+              <span class="slot-badge">81 params</span>
+            </div>
+
+            <!-- Progressive disclosure: Macros only (default view) -->
+            <div class="knob-grid" style="grid-template-columns: repeat(2, 1fr); gap: 12px;">
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="78 140" stroke-dashoffset="-35"/>
+                  </svg>
+                </div>
+                <span class="knob-label">SRC TYPE</span>
+                <span class="knob-value">SAW</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="55 140" stroke-dashoffset="-35"/>
+                  </svg>
+                </div>
+                <span class="knob-label">CUTOFF</span>
+                <span class="knob-value">4.2 kHz</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="90 140" stroke-dashoffset="-35"/>
+                  </svg>
+                </div>
+                <span class="knob-label">RESO</span>
+                <span class="knob-value">0.65</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="42 140" stroke-dashoffset="-35"/>
+                  </svg>
+                </div>
+                <span class="knob-label">FIELD</span>
+                <span class="knob-value">0.30</span>
+              </div>
+            </div>
+
+            <!-- Waveform -->
+            <div class="waveform-display">
+              <canvas id="waveform1"></canvas>
+            </div>
+
+            <!-- ADSR mini -->
+            <div class="adsr-display">
+              <svg viewBox="0 0 200 40" fill="none">
+                <path d="M0,38 L20,4 L50,14 L140,18 L200,38" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent-dim)"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Slot 2: Secondary -->
+          <div class="engine-slot secondary" id="slot2">
+            <div class="slot-header">
+              <div class="slot-dot" style="background: #D4AF37; box-shadow: 0 0 8px rgba(212,175,55,0.35)"></div>
+              <span class="slot-name" style="color: #D4AF37">OPERA</span>
+              <span class="slot-badge">84 params</span>
+            </div>
+            <div class="knob-grid" style="grid-template-columns: repeat(2, 1fr); gap: 12px;">
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="65 140" stroke-dashoffset="-35" stroke="#D4AF37"/>
+                  </svg>
+                </div>
+                <span class="knob-label">DRAMA</span>
+                <span class="knob-value">0.72</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="80 140" stroke-dashoffset="-35" stroke="#D4AF37"/>
+                  </svg>
+                </div>
+                <span class="knob-label">VOICE</span>
+                <span class="knob-value">0.55</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="48 140" stroke-dashoffset="-35" stroke="#D4AF37"/>
+                  </svg>
+                </div>
+                <span class="knob-label">CHORUS</span>
+                <span class="knob-value">0.34</span>
+              </div>
+              <div class="knob section">
+                <div class="knob-body" style="--knob-size: 44px">
+                  <svg class="knob-arc" viewBox="0 0 50 50">
+                    <circle cx="25" cy="25" r="22" stroke-dasharray="70 140" stroke-dashoffset="-35" stroke="#D4AF37"/>
+                  </svg>
+                </div>
+                <span class="knob-label">STAGE</span>
+                <span class="knob-value">0.50</span>
+              </div>
+            </div>
+            <div class="waveform-display">
+              <canvas id="waveform2"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-tabs">
+          <button class="sidebar-tab" onclick="setSidebarTab(this)">PRESET</button>
+          <button class="sidebar-tab active" onclick="setSidebarTab(this)">COUPLE</button>
+          <button class="sidebar-tab" onclick="setSidebarTab(this)">FX</button>
+          <button class="sidebar-tab" onclick="setSidebarTab(this)">PLAY</button>
+        </div>
+
+        <div class="coupling-content">
+          <div class="gold-corridor">
+            <span class="gold-corridor-label">Coupling Active</span>
+          </div>
+
+          <div class="coupling-viz">
+            <canvas id="couplingCanvas"></canvas>
+          </div>
+
+          <div class="coupling-controls">
+            <div class="knob section">
+              <div class="knob-body" style="--knob-size: 36px">
+                <svg class="knob-arc" viewBox="0 0 42 42">
+                  <circle cx="21" cy="21" r="19" stroke-dasharray="72 120" stroke-dashoffset="-30" stroke="var(--gold)"/>
+                </svg>
+              </div>
+              <span class="knob-label">AMOUNT</span>
+            </div>
+            <span class="coupling-type">ENTANGLE</span>
+            <div class="knob section">
+              <div class="knob-body" style="--knob-size: 36px">
+                <svg class="knob-arc" viewBox="0 0 42 42">
+                  <circle cx="21" cy="21" r="19" stroke-dasharray="50 120" stroke-dashoffset="-30" stroke="var(--gold)"/>
+                </svg>
+              </div>
+              <span class="knob-label">DEPTH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PlaySurface -->
+    <div class="playsurface-container">
+      <div class="surface-tabs">
+        <button class="surface-tab active" onclick="setSurfaceTab(this)">XOUIJA</button>
+        <button class="surface-tab" onclick="setSurfaceTab(this)">MPC</button>
+        <button class="surface-tab" onclick="setSurfaceTab(this)">KEYS</button>
+      </div>
+      <div class="surface-body">
+        <div class="xouija-surface" id="xouijaSurface">
+          <!-- Planchette (animated via JS) -->
+          <div class="planchette" id="planchette">
+            <div class="planchette-row">
+              <span class="planchette-note">Eb4</span>
+              <span class="planchette-hz">311.1 Hz</span>
+            </div>
+            <div class="planchette-rule"></div>
+            <div class="planchette-row">
+              <span class="planchette-meta">Vel: 0.72</span>
+              <span class="planchette-meta">Expr: 0.45</span>
+            </div>
+            <span class="planchette-engine" id="planchetteEngine">OBRIX</span>
+          </div>
+          <!-- Trail points rendered by JS -->
+          <canvas id="trailCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+        </div>
+
+        <!-- Expression panel -->
+        <div class="expression-panel" id="expressionPanel">
+          <span class="exp-label">MOD</span>
+          <div class="exp-wheel">
+            <div class="exp-wheel-fill" style="height: 35%"></div>
+          </div>
+          <span class="exp-label">BEND</span>
+          <div class="exp-wheel">
+            <div class="exp-wheel-fill" style="height: 50%"></div>
+          </div>
+          <div class="tide-controller">
+            <canvas id="tideCanvas"></canvas>
+          </div>
+          <span class="exp-label">TIDE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <div class="status-bar">
+      <div class="status-item">
+        <div class="status-dot"></div>
+        <span>XOlokun v1.0</span>
+      </div>
+      <div class="status-item" style="color: var(--accent); transition: color var(--dur-cockpit) var(--ease-out)">
+        OBRIX → OPERA : Entangle @ 0.72
+      </div>
+      <div class="status-right">
+        <span class="status-item">Voices: 4/8</span>
+        <span class="status-item">48kHz / 512</span>
+        <span class="status-item" style="opacity: 0.4">v0.2-convergence</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Engine info -->
+  <div style="margin-top: 16px; text-align: center;">
+    <span style="font-family: var(--f-display); font-weight: 700; font-size: 10px; letter-spacing: 0.3em; color: var(--dark-t2); text-transform: uppercase;">
+      Click engine dots to switch · Click mode buttons for Dark Cockpit
+    </span>
+  </div>
+
+<script>
+// ═══ ENGINE SWITCHING ══════════════════════════════════════════════
+const engines = {
+  obrix:    { name: 'OBRIX',    color: '#1E8B7E', icon: '🪸', zone: 'SUNLIT',   preset: 'Coral Cathedral', params: '81 params' },
+  opera:    { name: 'OPERA',    color: '#D4AF37', icon: '🎭', zone: 'TWILIGHT', preset: 'Aria Infinita', params: '84 params' },
+  oxytocin: { name: 'OXYTOCIN', color: '#9B5DE5', icon: '💜', zone: 'TWILIGHT', preset: 'First Touch', params: '29 params' },
+  opensky:  { name: 'OPENSKY',  color: '#FF8C00', icon: '☀️', zone: 'SUNLIT',   preset: 'Horizon Shimmer', params: '67 params' },
+  onset:    { name: 'ONSET',    color: '#0066FF', icon: '🥁', zone: 'SUNLIT',   preset: 'Circuit Kick', params: '111 params' },
+  oware:    { name: 'OWARE',    color: '#B5883E', icon: '🪘', zone: 'TWILIGHT', preset: 'Akan Gold', params: '24 params' },
+  offering: { name: 'OFFERING', color: '#E5B80B', icon: '📦', zone: 'MIDNIGHT', preset: 'Brooklyn Boom', params: '84 params' },
+};
+
+let currentEngine = 'obrix';
+
+function switchEngine(el) {
+  const engine = el.dataset.engine;
+  if (!engines[engine]) return;
+  currentEngine = engine;
+  const e = engines[engine];
+
+  // Update CSS custom properties
+  const plugin = document.getElementById('plugin');
+  plugin.className = 'plugin accent-' + engine;
+  plugin.style.setProperty('--accent', e.color);
+
+  const r = parseInt(e.color.slice(1,3), 16);
+  const g = parseInt(e.color.slice(3,5), 16);
+  const b = parseInt(e.color.slice(5,7), 16);
+  plugin.style.setProperty('--accent-dim', `rgba(${r},${g},${b},0.15)`);
+  plugin.style.setProperty('--accent-glow', `rgba(${r},${g},${b},0.35)`);
+
+  // Update title
+  document.getElementById('engineTitle').textContent = e.name;
+  document.getElementById('planchetteEngine').textContent = e.name;
+  document.getElementById('slotName1').textContent = e.name;
+  document.getElementById('slotName1').style.color = e.color;
+
+  // Update slot dot
+  document.querySelector('#slot1 .slot-dot').style.background = e.color;
+  document.querySelector('#slot1 .slot-dot').style.boxShadow = `0 0 8px rgba(${r},${g},${b},0.5)`;
+  document.querySelector('#slot1 .slot-badge').textContent = e.params;
+
+  // Update preset name
+  document.querySelector('.preset-name').textContent = e.preset;
+
+  // Update depth zone label
+  const zoneColors = { SUNLIT: '#48CAE4', TWILIGHT: '#0096C7', MIDNIGHT: '#7B2FBE', ABYSS: '#2D0A4E' };
+  const zoneLabel = document.querySelector('.depth-zone-strip .status-item, [style*="SUNLIT"], [style*="TWILIGHT"], [style*="MIDNIGHT"]');
+
+  // Update engine nodes
+  document.querySelectorAll('.engine-node').forEach(n => {
+    n.style.opacity = n.dataset.engine === engine ? '1' : '0.35';
+    n.style.boxShadow = n.dataset.engine === engine
+      ? `0 0 8px ${n.dataset.color}80`
+      : 'none';
+  });
+
+  // Update depth dial icon
+  document.querySelector('.depth-dial-icon').textContent = e.icon;
+  document.querySelector('.depth-dial-pointer').style.background = e.color;
+  document.querySelector('.depth-dial-pointer').style.boxShadow = `0 0 6px rgba(${r},${g},${b},0.5)`;
+}
+
+// ═══ DARK COCKPIT MODE ══════════════════════════════════════════════
+let currentMode = 'gallery';
+
+function setMode(mode) {
+  currentMode = mode;
+
+  // Update mode buttons
+  document.querySelectorAll('.mode-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.mode === mode);
+  });
+
+  const slot1 = document.getElementById('slot1');
+  const slot2 = document.getElementById('slot2');
+  const sidebar = document.getElementById('sidebar');
+  const exprPanel = document.getElementById('expressionPanel');
+
+  switch(mode) {
+    case 'gallery':
+      // Everything visible
+      slot1.style.opacity = '1';
+      slot2.style.opacity = '0.45';
+      sidebar.style.opacity = '1';
+      exprPanel.style.opacity = '1';
+      document.querySelector('.depth-zone-strip').style.opacity = '1';
+      break;
+
+    case 'performance':
+      // Active engine bright, everything else dims
+      slot1.style.opacity = '1';
+      slot2.style.opacity = '0.20';
+      sidebar.style.opacity = '0.20';
+      exprPanel.style.opacity = '1';
+      document.querySelector('.depth-zone-strip').style.opacity = '0.45';
+      break;
+
+    case 'coupling':
+      // Coupling elements bright, engines secondary
+      slot1.style.opacity = '0.45';
+      slot2.style.opacity = '0.45';
+      sidebar.style.opacity = '1';
+      exprPanel.style.opacity = '0.45';
+      document.querySelector('.depth-zone-strip').style.opacity = '0.20';
+      // Gold corridor pulses
+      break;
+  }
+}
+
+// ═══ SIDEBAR TABS ══════════════════════════════════════════════════
+function setSidebarTab(el) {
+  document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function setSurfaceTab(el) {
+  document.querySelectorAll('.surface-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ═══ XOUIJA PLANCHETTE — LISSAJOUS DRIFT ═══════════════════════════
+const planchette = document.getElementById('planchette');
+const surface = document.getElementById('xouijaSurface');
+let planchetteT = 0;
+let isTracking = false;
+let targetX = 0, targetY = 0;
+let currentX = 0, currentY = 0;
+
+// Trail system
+const trailCanvas = document.getElementById('trailCanvas');
+const trailCtx = trailCanvas.getContext('2d');
+let trail = [];
+const MAX_TRAIL = 12;
+
+function resizeTrailCanvas() {
+  const rect = surface.getBoundingClientRect();
+  trailCanvas.width = rect.width * devicePixelRatio;
+  trailCanvas.height = rect.height * devicePixelRatio;
+  trailCtx.scale(devicePixelRatio, devicePixelRatio);
+}
+resizeTrailCanvas();
+window.addEventListener('resize', resizeTrailCanvas);
+
+surface.addEventListener('mouseenter', () => { isTracking = true; });
+surface.addEventListener('mouseleave', () => { isTracking = false; });
+surface.addEventListener('mousemove', (e) => {
+  if (!isTracking) return;
+  const rect = surface.getBoundingClientRect();
+  targetX = e.clientX - rect.left;
+  targetY = e.clientY - rect.top;
+
+  // Add trail point
+  const now = performance.now() / 1000;
+  const vx = Math.abs(targetX - currentX);
+  const vy = Math.abs(targetY - currentY);
+  const velocity = Math.min(Math.sqrt(vx*vx + vy*vy) / 20, 1);
+  trail.push({ x: targetX, y: targetY, time: now, velocity });
+  if (trail.length > MAX_TRAIL) trail.shift();
+});
+
+function animatePlanchette() {
+  const rect = surface.getBoundingClientRect();
+  const w = rect.width;
+  const h = rect.height;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  planchetteT += 0.016; // ~60fps
+
+  if (!isTracking) {
+    // Lissajous drift
+    const a = 0.3, b = 0.2, delta = Math.PI / 2;
+    const ampX = w * 0.15;
+    const ampY = h * 0.15;
+    targetX = cx + ampX * Math.sin(a * planchetteT * 2 * Math.PI + delta);
+    targetY = cy + ampY * Math.sin(b * planchetteT * 2 * Math.PI);
+    planchette.style.opacity = '0.4';
+    planchette.style.borderWidth = '1.5px';
+  } else {
+    planchette.style.opacity = '1';
+    planchette.style.borderWidth = '2px';
+  }
+
+  // Spring follow (k=0.85)
+  currentX += (targetX - currentX) * 0.85;
+  currentY += (targetY - currentY) * 0.85;
+
+  // Position planchette
+  planchette.style.left = (currentX - 40) + 'px';
+  planchette.style.top = (currentY - 30) + 'px';
+
+  // Draw trail
+  const now = performance.now() / 1000;
+  trailCtx.clearRect(0, 0, trailCanvas.width / devicePixelRatio, trailCanvas.height / devicePixelRatio);
+
+  const style = getComputedStyle(document.getElementById('plugin'));
+  const accent = style.getPropertyValue('--accent').trim();
+
+  trail = trail.filter(p => now - p.time < 1.5);
+  trail.forEach(p => {
+    const age = now - p.time;
+    const alpha = 0.6 * (1.0 - age / 1.5);
+    const radius = 3 + p.velocity * 4;
+    if (alpha > 0) {
+      trailCtx.beginPath();
+      trailCtx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+      trailCtx.fillStyle = accent.replace(')', `, ${alpha})`).replace('rgb', 'rgba');
+      // Simpler: just use the hex with alpha
+      const r = parseInt(accent.slice(1,3) || '1E', 16);
+      const g = parseInt(accent.slice(3,5) || '8B', 16);
+      const b = parseInt(accent.slice(5,7) || '7E', 16);
+      trailCtx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+      trailCtx.fill();
+    }
+  });
+
+  requestAnimationFrame(animatePlanchette);
+}
+animatePlanchette();
+
+// ═══ COUPLING VISUALIZER — LIVING ARCS ══════════════════════════════
+const couplingCanvas = document.getElementById('couplingCanvas');
+const cCtx = couplingCanvas.getContext('2d');
+
+function resizeCouplingCanvas() {
+  const rect = couplingCanvas.parentElement.getBoundingClientRect();
+  couplingCanvas.width = rect.width * devicePixelRatio;
+  couplingCanvas.height = rect.height * devicePixelRatio;
+  cCtx.scale(devicePixelRatio, devicePixelRatio);
+}
+resizeCouplingCanvas();
+window.addEventListener('resize', resizeCouplingCanvas);
+
+let couplingT = 0;
+
+function drawCoupling() {
+  const w = couplingCanvas.width / devicePixelRatio;
+  const h = couplingCanvas.height / devicePixelRatio;
+  cCtx.clearRect(0, 0, w, h);
+  couplingT += 0.016;
+
+  const style = getComputedStyle(document.getElementById('plugin'));
+  const accent = style.getPropertyValue('--accent').trim();
+
+  // Engine nodes
+  const nodes = [
+    { x: w * 0.25, y: h * 0.3, color: accent, name: engines[currentEngine]?.name || 'OBRIX', active: true },
+    { x: w * 0.75, y: h * 0.3, color: '#D4AF37', name: 'OPERA', active: true },
+    { x: w * 0.25, y: h * 0.7, color: '#0066FF', name: 'ONSET', active: false },
+    { x: w * 0.75, y: h * 0.7, color: '#9B5DE5', name: 'OXYTOCIN', active: false },
+  ];
+
+  // Draw coupling arcs
+  const couplingAmount = 0.72;
+  const noise1 = Math.sin(couplingT * 0.5 * Math.PI * 2) * 3;
+  const noise2 = Math.cos(couplingT * 0.3 * Math.PI * 2) * 3;
+
+  // Active coupling: node 0 ↔ node 1
+  const n0 = nodes[0], n1 = nodes[1];
+  const thickness = 1.5 + couplingAmount * 3.0;
+
+  cCtx.beginPath();
+  cCtx.moveTo(n0.x, n0.y);
+  cCtx.bezierCurveTo(
+    n0.x + (n1.x - n0.x) * 0.3, n0.y - 30 + noise1,
+    n0.x + (n1.x - n0.x) * 0.7, n1.y - 30 + noise2,
+    n1.x, n1.y
+  );
+
+  // Blend colors for arc
+  const r0 = parseInt(accent.slice(1,3), 16);
+  const g0 = parseInt(accent.slice(3,5), 16);
+  const b0 = parseInt(accent.slice(5,7), 16);
+  const arcColor = `rgba(${Math.round((r0 + 212)/2)}, ${Math.round((g0 + 175)/2)}, ${Math.round((b0 + 55)/2)}, 0.7)`;
+
+  cCtx.strokeStyle = arcColor;
+  cCtx.lineWidth = thickness;
+  cCtx.stroke();
+
+  // Second arc (breathing)
+  const breathAlpha = 0.3 + 0.2 * Math.sin(couplingT * Math.PI);
+  cCtx.beginPath();
+  cCtx.moveTo(n0.x, n0.y);
+  cCtx.bezierCurveTo(
+    n0.x + (n1.x - n0.x) * 0.3, n0.y + 20 + noise2,
+    n0.x + (n1.x - n0.x) * 0.7, n1.y + 20 + noise1,
+    n1.x, n1.y
+  );
+  cCtx.strokeStyle = `rgba(233, 196, 106, ${breathAlpha})`;
+  cCtx.lineWidth = 1;
+  cCtx.stroke();
+
+  // Draw nodes
+  nodes.forEach(node => {
+    const alpha = node.active ? 1.0 : 0.25;
+
+    // Glow
+    if (node.active) {
+      const gradient = cCtx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 20);
+      const nr = parseInt(node.color.slice(1,3), 16);
+      const ng = parseInt(node.color.slice(3,5), 16);
+      const nb = parseInt(node.color.slice(5,7), 16);
+      gradient.addColorStop(0, `rgba(${nr},${ng},${nb},0.3)`);
+      gradient.addColorStop(1, `rgba(${nr},${ng},${nb},0)`);
+      cCtx.beginPath();
+      cCtx.arc(node.x, node.y, 20, 0, Math.PI * 2);
+      cCtx.fillStyle = gradient;
+      cCtx.fill();
+    }
+
+    // Node circle
+    cCtx.beginPath();
+    cCtx.arc(node.x, node.y, 12, 0, Math.PI * 2);
+    cCtx.fillStyle = node.color;
+    cCtx.globalAlpha = alpha;
+    cCtx.fill();
+    cCtx.globalAlpha = 1;
+
+    // Label
+    cCtx.font = '500 9px "Space Grotesk", sans-serif';
+    cCtx.fillStyle = `rgba(240, 237, 232, ${alpha * 0.7})`;
+    cCtx.textAlign = 'center';
+    cCtx.fillText(node.name, node.x, node.y + 24);
+  });
+
+  requestAnimationFrame(drawCoupling);
+}
+drawCoupling();
+
+// ═══ WAVEFORM DISPLAY ══════════════════════════════════════════════
+function drawWaveform(canvasId, type) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * devicePixelRatio;
+  canvas.height = rect.height * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  const w = rect.width;
+  const h = rect.height;
+
+  let t = 0;
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    t += 0.02;
+
+    const style = getComputedStyle(document.getElementById('plugin'));
+    const accent = style.getPropertyValue('--accent').trim() || '#1E8B7E';
+
+    ctx.beginPath();
+    ctx.moveTo(0, h/2);
+    for (let x = 0; x < w; x++) {
+      const phase = (x / w) * Math.PI * 4 + t;
+      let y;
+      if (type === 'saw') {
+        y = h/2 + ((phase % (Math.PI * 2)) / Math.PI - 1) * h * 0.35 * Math.sin(t * 0.5);
+      } else {
+        y = h/2 + Math.sin(phase) * h * 0.3 * Math.sin(t * 0.3 + 1);
+      }
+      ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = 0.6;
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+drawWaveform('waveform1', 'saw');
+drawWaveform('waveform2', 'sine');
+
+// ═══ TIDE CONTROLLER — WATER SIMULATION ═════════════════════════════
+const tideCanvas = document.getElementById('tideCanvas');
+const tCtx = tideCanvas.getContext('2d');
+
+function resizeTide() {
+  tideCanvas.width = 200;
+  tideCanvas.height = 200;
+}
+resizeTide();
+
+// 16x16 wave grid
+const GRID = 16;
+const waveH = Array.from({length: GRID}, () => new Float32Array(GRID));
+const waveV = Array.from({length: GRID}, () => new Float32Array(GRID));
+const propagation = 0.3;
+const damping = 0.98;
+
+// Random initial ripple
+waveH[8][8] = 1.0;
+
+function stepWave() {
+  for (let x = 1; x < GRID-1; x++) {
+    for (let y = 1; y < GRID-1; y++) {
+      waveV[x][y] += propagation * (waveH[x-1][y] + waveH[x+1][y] + waveH[x][y-1] + waveH[x][y+1] - 4*waveH[x][y]);
+      waveV[x][y] *= damping;
+    }
+  }
+  for (let x = 0; x < GRID; x++) {
+    for (let y = 0; y < GRID; y++) {
+      waveH[x][y] += waveV[x][y];
+    }
+  }
+}
+
+let tideT = 0;
+function drawTide() {
+  tideT++;
+  if (tideT % 60 === 0) {
+    // Random ripple
+    const rx = Math.floor(Math.random() * (GRID-2)) + 1;
+    const ry = Math.floor(Math.random() * (GRID-2)) + 1;
+    waveH[rx][ry] = 0.5 + Math.random() * 0.5;
+  }
+
+  stepWave();
+
+  const style = getComputedStyle(document.getElementById('plugin'));
+  const accent = style.getPropertyValue('--accent').trim() || '#1E8B7E';
+  const r = parseInt(accent.slice(1,3), 16);
+  const g = parseInt(accent.slice(3,5), 16);
+  const b = parseInt(accent.slice(5,7), 16);
+
+  const cellW = 200 / GRID;
+  const cellH = 200 / GRID;
+
+  tCtx.clearRect(0, 0, 200, 200);
+
+  for (let x = 0; x < GRID; x++) {
+    for (let y = 0; y < GRID; y++) {
+      const val = Math.max(0, Math.min(1, (waveH[x][y] + 1) / 2));
+      const brightness = 0.1 + val * 0.5;
+      tCtx.fillStyle = `rgba(${r},${g},${b},${brightness})`;
+      tCtx.fillRect(x * cellW, y * cellH, cellW + 0.5, cellH + 0.5);
+    }
+  }
+
+  requestAnimationFrame(drawTide);
+}
+drawTide();
+
+// ═══ TIDE CONTROLLER INTERACTION ════════════════════════════════════
+const tideEl = document.querySelector('.tide-controller');
+tideEl.addEventListener('click', (e) => {
+  const rect = tideEl.getBoundingClientRect();
+  const x = Math.floor(((e.clientX - rect.left) / rect.width) * GRID);
+  const y = Math.floor(((e.clientY - rect.top) / rect.height) * GRID);
+  if (x >= 0 && x < GRID && y >= 0 && y < GRID) {
+    waveH[x][y] = 1.0;
+  }
+});
+</script>
+
+</body>
+</html>

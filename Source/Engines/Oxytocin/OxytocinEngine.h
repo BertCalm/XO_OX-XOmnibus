@@ -130,6 +130,7 @@ public:
                        juce::MidiBuffer&          midiMessages,
                        ParamSnapshot&             snap) noexcept
     {
+        juce::ScopedNoDenormals noDenormals;
         const int numSamples = buffer.getNumSamples();
         jassert (numSamples <= allocatedBlockSize);  // P0-1: guard
         buffer.clear();

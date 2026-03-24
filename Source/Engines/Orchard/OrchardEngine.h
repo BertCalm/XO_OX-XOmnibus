@@ -230,6 +230,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         int noteOnCount = 0;
 
         for (const auto metadata : midi)

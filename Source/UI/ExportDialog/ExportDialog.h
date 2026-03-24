@@ -8,7 +8,7 @@
 #include "../../Core/PresetManager.h"
 #include "../../Core/EngineRegistry.h"
 #include "../../Core/MegaCouplingMatrix.h"
-#include "../XOlokunEditor.h"
+#include "../GalleryColors.h"   // GalleryColors, prefixForEngine (no editor circular dep)
 
 namespace xolokun {
 

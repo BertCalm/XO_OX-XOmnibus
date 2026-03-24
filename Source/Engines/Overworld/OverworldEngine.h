@@ -247,6 +247,7 @@ public:
                      juce::MidiBuffer& midi,
                      int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
 

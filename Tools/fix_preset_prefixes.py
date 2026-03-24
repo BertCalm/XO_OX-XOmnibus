@@ -33,6 +33,7 @@ ENGINE_PREFIX_FIXES = {
     "Ouroboros": ("ouroboros_", "ouro_"),
     "Oceanic":   ("oceanic_",   "ocean_"),
     "Orbital":   ("orbital_",   "orb_"),
+    "Oblong":    ("ob_",        "bob_"),
 }
 
 # Also handle engine name aliases that may appear in the parameters dict

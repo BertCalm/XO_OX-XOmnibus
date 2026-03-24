@@ -840,6 +840,7 @@ public:
                       juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         EngineProfiler::ScopedMeasurement measurement (profiler);
 
         //----------------------------------------------------------------------

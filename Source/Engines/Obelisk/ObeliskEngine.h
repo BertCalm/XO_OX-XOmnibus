@@ -611,6 +611,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // Step 1: Parse MIDI — BEFORE silence gate check
         for (const auto metadata : midi)
         {

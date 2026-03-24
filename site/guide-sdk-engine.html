@@ -1024,19 +1024,19 @@ The six steps above assemble into a single header file. Here is the complete <co
 
 <div class="article-divider reveal"></div>
 
-<h2 class="reveal">Section 3: The XOMNIBUS_EXPORT_ENGINE Macro</h2>
+<h2 class="reveal">Section 3: The XOLOKUN_EXPORT_ENGINE Macro</h2>
 
 <p class="reveal">
 When you ship an engine as a compiled shared library (<code>.dylib</code> / <code>.so</code> / <code>.dll</code>), one macro in your <code>.cpp</code> file exports the two C functions XOlokun expects at the module boundary: <code>xolokun_create_engine()</code>, which returns a new instance, and <code>xolokun_engine_info()</code>, which fills metadata without instantiating the engine.
 </p>
 
-<div class="code-block reveal" aria-label="XOMNIBUS_EXPORT_ENGINE macro usage">
+<div class="code-block reveal" aria-label="XOLOKUN_EXPORT_ENGINE macro usage">
   <span class="code-label">MinimalEngine.cpp — the only .cpp file you need</span>
   <pre><span class="pp">#include</span> <span class="st">"MinimalEngine.h"</span>
 <span class="pp">#include</span> <span class="st">&lt;xolokun/EngineModule.h&gt;</span>
 
 <span class="cm">// Arguments: ClassName, ID, DisplayName, Prefix, R, G, B, Version, Author</span>
-<span class="nm">XOMNIBUS_EXPORT_ENGINE</span>(
+<span class="nm">XOLOKUN_EXPORT_ENGINE</span>(
     <span class="nm">MinimalEngine</span>,         <span class="cm">// your C++ class</span>
     <span class="st">"Minimal"</span>,             <span class="cm">// engine ID — use an O-word for fleet engines</span>
     <span class="st">"Minimal Engine"</span>,      <span class="cm">// display name shown in UI</span>

@@ -1,7 +1,10 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/PresetManager.h"
-#include "../XOlokunEditor.h"
+// NOTE: GalleryColors, GalleryFonts, A11y, and PresetData are defined in
+// XOlokunEditor.h, which includes this file.  The circular include is avoided
+// intentionally — those symbols are already in scope when this header is
+// compiled as part of XOlokunEditor.h.
 
 namespace xolokun {
 
@@ -10,8 +13,9 @@ namespace xolokun {
 //
 // Features:
 //   - Real-time text search (filters name, tags, description, engine names)
-//   - Mood category filter buttons (Foundation, Atmosphere, Entangled, Prism,
-//     Flux, Aether, Family)
+//   - Mood category filter buttons (all 15 moods: Foundation, Atmosphere, Entangled, Prism,
+//     Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic,
+//     Luminous, Organic)
 //   - Scrollable preset list with name, mood, engine tags
 //   - DNA-based "Find Similar" button (6D Euclidean distance)
 //   - Gallery Model look and feel (warm white shell, XO Gold accents)
@@ -45,8 +49,8 @@ public:
 
         // --- Mood filter buttons ---
         static const char* moods[] = {
-            "All", "Foundation", "Atmosphere", "Entangled",
-            "Prism", "Flux", "Aether", "Family"
+            "All", "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+            "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
         };
 
         for (auto* mood : moods)
@@ -397,13 +401,21 @@ private:
 
     static juce::Colour moodColour(const juce::String& mood)
     {
-        if (mood == "Foundation") return juce::Colour(0xFF00A6D6);  // Neon Tetra Blue
-        if (mood == "Atmosphere") return juce::Colour(0xFFE8839B);  // Axolotl Gill Pink
-        if (mood == "Entangled")  return juce::Colour(0xFF7B2D8B);  // Violet
-        if (mood == "Prism")      return juce::Colour(0xFF0066FF);  // Electric Blue
-        if (mood == "Flux")       return juce::Colour(0xFFE9A84A);  // Amber
-        if (mood == "Aether")     return juce::Colour(0xFFA78BFA);  // Lavender
-        if (mood == "Family")     return juce::Colour(0xFFE9C46A);  // XO Gold
+        if (mood == "Foundation")  return juce::Colour(0xFF00A6D6);  // Neon Tetra Blue
+        if (mood == "Atmosphere")  return juce::Colour(0xFFE8839B);  // Axolotl Gill Pink
+        if (mood == "Entangled")   return juce::Colour(0xFF7B2D8B);  // Violet
+        if (mood == "Prism")       return juce::Colour(0xFF0066FF);  // Electric Blue
+        if (mood == "Flux")        return juce::Colour(0xFFE9A84A);  // Amber
+        if (mood == "Aether")      return juce::Colour(0xFFA78BFA);  // Lavender
+        if (mood == "Family")      return juce::Colour(0xFFE9C46A);  // XO Gold
+        if (mood == "Submerged")   return juce::Colour(0xFF2D0A4E);  // Trench Violet
+        if (mood == "Coupling")    return juce::Colour(0xFF1A6B5A);  // Oxbow Teal
+        if (mood == "Crystalline") return juce::Colour(0xFFA8D8EA);  // Spectral Ice
+        if (mood == "Deep")        return juce::Colour(0xFF003366);  // Synth Bass Blue
+        if (mood == "Ethereal")    return juce::Colour(0xFF9B5DE5);  // Synapse Violet
+        if (mood == "Kinetic")     return juce::Colour(0xFFE5B80B);  // Crate Wax Yellow
+        if (mood == "Luminous")    return juce::Colour(0xFFC6E377);  // Emergence Lime
+        if (mood == "Organic")     return juce::Colour(0xFF228B22);  // Forest Green
         return juce::Colour(GalleryColors::borderGray());
     }
 

@@ -36,14 +36,12 @@
   "name": "Neon Filament",
   "parameters": {
     "OddfeliX": {
-      "snap_attack": 0.0,
       "snap_filterCutoff": 0.487,
       "snap_filterRes": 0.332,
       "snap_lfoDepth": 0.239,
       "snap_lfoRate": 0.25,
       "snap_macroCharacter": 0.0,
-      "snap_macroCoupling": 0.0,
-      "snap_release": 1.0
+      "snap_macroCoupling": 0.0
     },
     "Owlfish": {
       "owl_abyssalDrive": 0.286,

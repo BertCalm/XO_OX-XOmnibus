@@ -32,11 +32,11 @@
   "name": "Oblong Pluck Anchor",
   "parameters": {
     "Oblong": {
-      "ob_body": 0.7,
-      "ob_decay": 0.25,
-      "ob_drive": 0.4,
-      "ob_sub": 0.65,
-      "ob_tone": 0.4,
+      "bob_body": 0.7,
+      "bob_decay": 0.25,
+      "bob_drive": 0.4,
+      "bob_sub": 0.65,
+      "bob_tone": 0.4,
       "bob_curAmount": 0.2,
       "bob_lfo1Depth": 0.08
     }

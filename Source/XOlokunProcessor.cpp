@@ -1,5 +1,8 @@
 #include "XOlokunProcessor.h"
-#include "UI/XOlokunEditor.h"
+// XOlokunEditor.h is intentionally NOT included here. createEditor() is
+// implemented in Source/UI/XOlokunEditor.cpp to keep the UI include chain
+// (ExportDialog → XPNVelocityCurves, CouplingVisualizer → GalleryColors, etc.)
+// out of this translation unit and avoid circular include complications.
 #include "Engines/Snap/SnapEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
@@ -1116,6 +1119,10 @@ void XOlokunProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     currentSampleRate = sampleRate;
     currentBlockSize = samplesPerBlock;
 
+    // Reset the PlaySurface MIDI collector to the new sample rate so
+    // its timestamp conversion is accurate after host restart / rate change.
+    playSurfaceMidiCollector.reset(sampleRate);
+
     couplingMatrix.prepare(samplesPerBlock);
     couplingCrossfader.prepare(sampleRate, samplesPerBlock);
 
@@ -1201,6 +1208,12 @@ void XOlokunProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         return;
 
     couplingMatrix.setEngines(enginePtrs);
+
+    // Merge PlaySurface note-on/off events queued from the message thread.
+    // removeNextBlockOfMessages() is thread-safe; it drains the lock-free queue
+    // and appends the messages into `midi` so the rest of the pipeline sees them
+    // exactly like host-generated MIDI events.
+    playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
 
     // Process MIDI learn CC → parameter routing (audio thread safe)
     midiLearnManager.processMidi(midi);
@@ -1693,10 +1706,7 @@ SynthEngine* XOlokunProcessor::getEngine(int slot) const
     return nullptr;
 }
 
-juce::AudioProcessorEditor* XOlokunProcessor::createEditor()
-{
-    return new XOlokunEditor(*this);
-}
+// createEditor() is implemented in Source/UI/XOlokunEditor.cpp
 
 void XOlokunProcessor::getStateInformation(juce::MemoryBlock& destData)
 {

@@ -880,6 +880,7 @@ public:
     void renderBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi,
                       int numSamples) override
     {
+        juce::ScopedNoDenormals noDenormals;
         // Step 1: Parse MIDI — wake gate BEFORE bypass check
         for (const auto metadata : midi)
         {

@@ -201,6 +201,7 @@ public:
     }
 
     void renderBlock(juce::AudioBuffer<float>&buf,juce::MidiBuffer&midi,int ns) override {
+        juce::ScopedNoDenormals noDenormals;
         for(const auto m:midi){
             auto msg=m.getMessage();
             if(msg.isNoteOn()){
