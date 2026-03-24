@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professor Oscar's Academy — XO_OX Designs. Five depth levels. From your first sound to building your own engine. Everyone deserves to make music.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>Professor Oscar's Academy — XO_OX Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.12);
+  --coral:      #C4636E;
+  --bio-cyan:   #48CAE4;
+
+  /* Depth zone colors */
+  --zone-sunlit:   #48CAE4;
+  --zone-twilight: #0096C7;
+  --zone-midnight: #7B2FBE;
+
+  /* Per-level depth backgrounds */
+  --level-1-bg: rgba(72, 202, 228, 0.06);
+  --level-2-bg: rgba(0, 150, 199, 0.06);
+  --level-3-bg: rgba(0, 100, 160, 0.06);
+  --level-4-bg: rgba(30, 20, 60, 0.5);
+  --level-5-bg: rgba(3, 3, 8, 0.8);
+
+  --level-1-border: rgba(72, 202, 228, 0.25);
+  --level-2-border: rgba(0, 150, 199, 0.25);
+  --level-3-border: rgba(0, 100, 160, 0.25);
+  --level-4-border: rgba(123, 47, 190, 0.3);
+  --level-5-border: rgba(155, 93, 229, 0.25);
+
+  --level-1-accent: #48CAE4;
+  --level-2-accent: #0096C7;
+  --level-3-accent: #2AA19B;
+  --level-4-accent: #7B2FBE;
+  --level-5-accent: #9B5DE5;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(72, 202, 228, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(123, 47, 190, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.15) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover { background: var(--cream) !important; color: var(--bg-deep) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn { display: inline-block; text-align: center; align-self: flex-start; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ SHARED LAYOUT ═══════════ */
+.page-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.section-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 620px;
+  margin-bottom: 3rem;
+}
+
+/* ═══════════ HERO ═══════════ */
+.learn-hero {
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(7rem, 14vw, 11rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.learn-hero::before {
+  content: '';
+  position: absolute;
+  width: 900px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(72, 202, 228, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(123, 47, 190, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  animation: hero-glow 8s ease-in-out infinite;
+}
+@keyframes hero-glow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%       { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+.learn-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.learn-hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.learn-hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.learn-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 300;
+  color: var(--text);
+  max-width: 540px;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.depth-levels-chip {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: rgba(72, 202, 228, 0.07);
+  border: 1px solid rgba(72, 202, 228, 0.2);
+  border-radius: 30px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--bio-cyan);
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════ PROFESSOR OSCAR ═══════════ */
+.oscar-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.oscar-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  flex-wrap: wrap;
+}
+
+/* CSS-art Oscar the octopus */
+.oscar-art {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 160px;
+}
+
+.oscar-body {
+  width: 100px;
+  height: 80px;
+  background: radial-gradient(
+    ellipse at 50% 38%,
+    rgba(255,255,255,0.12) 0%,
+    #E8839B 30%,
+    #8B2D4A 100%
+  );
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  box-shadow:
+    0 0 30px rgba(232, 131, 155, 0.3),
+    0 0 60px rgba(232, 131, 155, 0.1);
+  animation: oscar-breathe 4s ease-in-out infinite;
+}
+@keyframes oscar-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+/* Oscar's glowing spots */
+.oscar-spots {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.oscar-spot {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--bio-cyan);
+  box-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+  animation: spot-pulse var(--sp-dur, 2s) var(--sp-delay, 0s) ease-in-out infinite;
+}
+@keyframes spot-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.4); }
+}
+
+/* Oscar's arms */
+.oscar-arms {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-top: -6px;
+}
+.oscar-arm {
+  width: 9px;
+  height: 36px;
+  background: linear-gradient(to bottom, #C4636E, #7B1A30);
+  border-radius: 0 0 50% 50%;
+  transform-origin: top center;
+  animation: arm-wave var(--arm-dur, 3s) var(--arm-delay, 0s) ease-in-out infinite;
+}
+@keyframes arm-wave {
+  0%, 100% { transform: rotate(-8deg) scaleY(1); }
+  25%       { transform: rotate(8deg) scaleY(0.92); }
+  75%       { transform: rotate(-5deg) scaleY(0.96); }
+}
+
+.oscar-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.oscar-bio {
+  flex: 1;
+  min-width: 260px;
+}
+.oscar-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.oscar-title {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.2rem;
+}
+.oscar-bio p {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.85;
+  margin-bottom: 0.8rem;
+}
+.oscar-bio p em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* ═══════════ DEPTH LEVELS ═══════════ */
+.depth-spine {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.depth-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+/* Vertical descent track */
+.level-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Connector line down the left */
+.level-track::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--zone-sunlit),
+    var(--zone-twilight) 50%,
+    var(--zone-midnight)
+  );
+  opacity: 0.3;
+}
+
+.depth-level {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2rem 2rem 2rem 0;
+  position: relative;
+  transition: transform 0.3s;
+}
+.depth-level:hover { transform: translateX(4px); }
+
+/* Level number badge */
+.level-badge {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: 2px solid var(--level-accent);
+  background: var(--level-bg);
+  color: var(--level-accent);
+  box-shadow: 0 0 20px var(--level-glow, transparent);
+  z-index: 1;
+  transition: box-shadow 0.4s;
+}
+.depth-level:hover .level-badge {
+  box-shadow: 0 0 30px var(--level-glow);
+}
+
+.level-card {
+  flex: 1;
+  background: var(--level-bg);
+  border: 1px solid var(--level-border);
+  border-radius: 10px;
+  padding: 1.5rem 1.8rem;
+  transition: border-color 0.4s, background 0.4s;
+}
+.depth-level:hover .level-card {
+  border-color: var(--level-accent);
+  background: var(--level-bg-hover, var(--level-bg));
+}
+
+/* Progressive depth backgrounds */
+.depth-level-1 {
+  --level-accent: #48CAE4;
+  --level-bg: rgba(72, 202, 228, 0.05);
+  --level-bg-hover: rgba(72, 202, 228, 0.08);
+  --level-border: rgba(72, 202, 228, 0.2);
+  --level-glow: rgba(72, 202, 228, 0.25);
+}
+.depth-level-2 {
+  --level-accent: #0096C7;
+  --level-bg: rgba(0, 150, 199, 0.05);
+  --level-bg-hover: rgba(0, 150, 199, 0.09);
+  --level-border: rgba(0, 150, 199, 0.22);
+  --level-glow: rgba(0, 150, 199, 0.22);
+}
+.depth-level-3 {
+  --level-accent: #2AA19B;
+  --level-bg: rgba(42, 161, 155, 0.06);
+  --level-bg-hover: rgba(42, 161, 155, 0.1);
+  --level-border: rgba(42, 161, 155, 0.22);
+  --level-glow: rgba(42, 161, 155, 0.22);
+}
+.depth-level-4 {
+  --level-accent: #7B2FBE;
+  --level-bg: rgba(20, 10, 40, 0.5);
+  --level-bg-hover: rgba(30, 15, 55, 0.6);
+  --level-border: rgba(123, 47, 190, 0.3);
+  --level-glow: rgba(123, 47, 190, 0.3);
+}
+.depth-level-5 {
+  --level-accent: #9B5DE5;
+  --level-bg: rgba(4, 2, 10, 0.75);
+  --level-bg-hover: rgba(8, 4, 18, 0.85);
+  --level-border: rgba(155, 93, 229, 0.28);
+  --level-glow: rgba(155, 93, 229, 0.28);
+}
+
+.level-num-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--level-accent);
+  margin-bottom: 0.4rem;
+}
+.level-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+.level-audience {
+  display: inline-block;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 1.1rem;
+}
+.level-topics {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.level-topics li {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+.level-topics li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--level-accent);
+  box-shadow: 0 0 4px var(--level-accent);
+}
+
+.level-begin-btn {
+  display: inline-block;
+  background: none;
+  border: 1px solid var(--level-border);
+  border-radius: 4px;
+  padding: 0.55rem 1.3rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--level-accent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+}
+.level-begin-btn:hover {
+  border-color: var(--level-accent);
+  background: rgba(255,255,255,0.04);
+  transform: scale(1.02);
+}
+
+/* Depth meter on the right of each card */
+.level-depth-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+}
+.depth-block {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--level-accent);
+  opacity: 0.3;
+}
+.depth-block.active {
+  opacity: 0.9;
+  box-shadow: 0 0 4px var(--level-accent);
+}
+.depth-block-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-faint);
+  margin-left: 0.3rem;
+}
+
+/* ═══════════ NO PREREQUISITES ═══════════ */
+.no-prereq-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.no-prereq-quote {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.4;
+  margin-bottom: 2.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.no-prereq-quote em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.no-prereq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.no-prereq-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  text-align: left;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.no-prereq-card:hover {
+  border-color: rgba(42, 161, 155, 0.25);
+  transform: translateY(-2px);
+}
+.no-prereq-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+.no-prereq-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.no-prereq-card p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ═══════════ COMING SOON WAVEFORM ═══════════ */
+.coming-soon-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  background: rgba(123, 47, 190, 0.12);
+  border: 1px solid rgba(123, 47, 190, 0.3);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #A78BFA;
+  margin-bottom: 1.5rem;
+}
+.coming-soon-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.coming-soon-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.coming-soon-desc {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--text);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+/* CSS animated waveform */
+.waveform-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 60px;
+  margin: 0 auto 2rem;
+}
+
+.wave-bar {
+  width: 3px;
+  background: var(--bio-cyan);
+  border-radius: 2px;
+  opacity: 0.7;
+  animation: wave-bar-animate var(--bar-dur, 1.2s) var(--bar-delay, 0s) ease-in-out infinite alternate;
+  box-shadow: 0 0 4px rgba(72, 202, 228, 0.5);
+}
+@keyframes wave-bar-animate {
+  from { height: 4px; }
+  to   { height: var(--bar-height, 40px); }
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="learn.html" class="active">Academy</a>
+    <a href="updates.html">Signal</a>
+    <a href="community.html">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="learn-hero" aria-labelledby="learn-hero-title">
+  <div class="learn-hero-label">Professor Oscar's Academy</div>
+  <h1 class="learn-hero-title reveal" id="learn-hero-title">
+    Everyone deserves<br>to make <em>music.</em>
+  </h1>
+  <p class="learn-hero-sub reveal">Start wherever you are. No prerequisites. No account. No cost. The ocean doesn't check your credentials.</p>
+  <div class="depth-levels-chip reveal">
+    Five depth levels &nbsp;&mdash;&nbsp; From first sound to building your own engine
+  </div>
+</section>
+
+<!-- ═══════════ PROFESSOR OSCAR ═══════════ -->
+<section class="oscar-section reveal" aria-labelledby="oscar-heading">
+  <div class="section-label">Your Guide</div>
+
+  <div class="oscar-inner">
+    <!-- CSS-art Oscar octopus -->
+    <div class="oscar-art" aria-hidden="true">
+      <div class="oscar-body">
+        <!-- Bioluminescent spots -->
+        <div class="oscar-spots">
+          <div class="oscar-spot" style="width:5px;height:5px;top:25%;left:28%;--sp-dur:2.1s;--sp-delay:0s;"></div>
+          <div class="oscar-spot" style="width:7px;height:7px;top:35%;left:55%;--sp-dur:2.8s;--sp-delay:-0.7s;"></div>
+          <div class="oscar-spot" style="width:4px;height:4px;top:55%;left:40%;--sp-dur:1.9s;--sp-delay:-1.2s;"></div>
+          <div class="oscar-spot" style="width:5px;height:5px;top:20%;left:68%;--sp-dur:3.2s;--sp-delay:-0.4s;"></div>
+          <div class="oscar-spot" style="width:6px;height:6px;top:65%;left:65%;--sp-dur:2.5s;--sp-delay:-1.8s;"></div>
+        </div>
+      </div>
+      <!-- 8 arms -->
+      <div class="oscar-arms">
+        <div class="oscar-arm" style="--arm-dur:3.0s;--arm-delay:0s;"></div>
+        <div class="oscar-arm" style="--arm-dur:2.7s;--arm-delay:-0.4s;"></div>
+        <div class="oscar-arm" style="--arm-dur:3.3s;--arm-delay:-0.8s;"></div>
+        <div class="oscar-arm" style="--arm-dur:2.9s;--arm-delay:-1.2s;"></div>
+        <div class="oscar-arm" style="--arm-dur:3.1s;--arm-delay:-1.6s;"></div>
+        <div class="oscar-arm" style="--arm-dur:2.8s;--arm-delay:-2.0s;"></div>
+        <div class="oscar-arm" style="--arm-dur:3.4s;--arm-delay:-2.4s;"></div>
+        <div class="oscar-arm" style="--arm-dur:2.6s;--arm-delay:-2.8s;"></div>
+      </div>
+      <div class="oscar-label">Prof. Oscar</div>
+    </div>
+
+    <div class="oscar-bio">
+      <div class="oscar-name" id="oscar-heading">Professor Oscar</div>
+      <div class="oscar-title">Resident Academician — XO_OX Deep Research Station</div>
+      <p>
+        Professor Oscar has lived in the deep for <em>millennia</em>, studying every form of sound that travels through water. Eight arms for eight voices. He has heard every oscillator waveform, traced every envelope shape, and mapped the topology of every coupling type.
+      </p>
+      <p>
+        He does not believe in prerequisites. He does not believe in gatekeeping. He believes that <em>sound belongs to everyone</em> — and that the best way to learn is to touch a knob and listen to what happens next.
+      </p>
+      <p style="color: var(--text-faint); font-size: 0.88rem; font-style: italic;">
+        "I have met students who never touched a synth before. I have met expert engineers who had never thought about sound as a living thing. I teach both. I meet you where you are."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FIVE DEPTH LEVELS ═══════════ -->
+<div class="depth-spine">
+  <div class="depth-header reveal">
+    <div class="section-label" style="justify-content: center; text-align: center;">The Curriculum</div>
+    <h2>Five Depth <em>Levels</em></h2>
+    <p class="section-sub" style="margin: 0 auto; text-align: center;">Descend at your own pace. Each level builds on the last — but you can enter anywhere. The ocean is patient.</p>
+  </div>
+
+  <div class="level-track">
+
+    <!-- LEVEL 1: TIDEPOOLS -->
+    <div class="depth-level depth-level-1 reveal" aria-labelledby="level-1-name">
+      <div class="level-badge" style="--level-accent:#48CAE4;--level-bg:rgba(72,202,228,0.07);--level-glow:rgba(72,202,228,0.3);" aria-hidden="true">1</div>
+      <div class="level-card">
+        <div class="level-num-label">Level 1</div>
+        <h3 class="level-name" id="level-1-name">Tidepools</h3>
+        <div class="level-audience">Ages 8+ &nbsp;&middot;&nbsp; Complete Beginners</div>
+        <ul class="level-topics">
+          <li>What is sound? How does it travel through water and air?</li>
+          <li>Your first noise — making a sound in under 60 seconds</li>
+          <li>What does a filter do? Listening before explaining</li>
+          <li>The difference between noise, tone, and music</li>
+        </ul>
+        <div class="level-depth-indicator">
+          <div class="depth-block active"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <span class="depth-block-label">Surface</span>
+        </div>
+        <a href="#" class="level-begin-btn" aria-label="Begin Level 1: Tidepools" style="margin-top: 1.2rem; display: inline-block;">Begin &rarr;</a>
+      </div>
+    </div>
+
+    <!-- LEVEL 2: SHALLOWS -->
+    <div class="depth-level depth-level-2 reveal" aria-labelledby="level-2-name">
+      <div class="level-badge" style="--level-accent:#0096C7;--level-bg:rgba(0,150,199,0.07);--level-glow:rgba(0,150,199,0.28);" aria-hidden="true">2</div>
+      <div class="level-card">
+        <div class="level-num-label">Level 2</div>
+        <h3 class="level-name" id="level-2-name">The Shallows</h3>
+        <div class="level-audience">Beginners, Any Age</div>
+        <ul class="level-topics">
+          <li>Oscillators: sine, saw, square, triangle — and why they sound different</li>
+          <li>ADSR: shaping the life cycle of a sound</li>
+          <li>LFOs: making sound move by itself</li>
+          <li>Your first patch: oscillator → filter → amplifier</li>
+        </ul>
+        <div class="level-depth-indicator">
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <span class="depth-block-label">Shallow</span>
+        </div>
+        <a href="#" class="level-begin-btn" aria-label="Begin Level 2: The Shallows" style="margin-top: 1.2rem; display: inline-block;">Begin &rarr;</a>
+      </div>
+    </div>
+
+    <!-- LEVEL 3: OPEN WATER -->
+    <div class="depth-level depth-level-3 reveal" aria-labelledby="level-3-name">
+      <div class="level-badge" style="--level-accent:#2AA19B;--level-bg:rgba(42,161,155,0.07);--level-glow:rgba(42,161,155,0.28);" aria-hidden="true">3</div>
+      <div class="level-card">
+        <div class="level-num-label">Level 3</div>
+        <h3 class="level-name" id="level-3-name">Open Water</h3>
+        <div class="level-audience">Intermediate — Some Synth Experience</div>
+        <ul class="level-topics">
+          <li>The modulation matrix: routing anything to anything</li>
+          <li>FM synthesis: one oscillator modulating another</li>
+          <li>Granular synthesis: slicing sound into grains</li>
+          <li>Physical modeling: simulating how real instruments behave</li>
+        </ul>
+        <div class="level-depth-indicator">
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block"></div>
+          <div class="depth-block"></div>
+          <span class="depth-block-label">Mid-depth</span>
+        </div>
+        <a href="#" class="level-begin-btn" aria-label="Begin Level 3: Open Water" style="margin-top: 1.2rem; display: inline-block;">Begin &rarr;</a>
+      </div>
+    </div>
+
+    <!-- LEVEL 4: THE DEEP -->
+    <div class="depth-level depth-level-4 reveal" aria-labelledby="level-4-name">
+      <div class="level-badge" style="--level-accent:#7B2FBE;--level-bg:rgba(20,10,40,0.6);--level-glow:rgba(123,47,190,0.35);" aria-hidden="true">4</div>
+      <div class="level-card">
+        <div class="level-num-label">Level 4</div>
+        <h3 class="level-name" id="level-4-name">The Deep</h3>
+        <div class="level-audience">Advanced — Comfortable with Sound Design</div>
+        <ul class="level-topics">
+          <li>Coupling: how two engines can speak to each other in real time</li>
+          <li>Chaos theory in synthesis: strange attractors, coupled oscillators</li>
+          <li>Psychoacoustics: how the brain interprets sound differently from what's there</li>
+          <li>Building presets that evolve: temporal depth as a design goal</li>
+        </ul>
+        <div class="level-depth-indicator">
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block"></div>
+          <span class="depth-block-label">Deep</span>
+        </div>
+        <a href="#" class="level-begin-btn" aria-label="Begin Level 4: The Deep" style="margin-top: 1.2rem; display: inline-block;">Begin &rarr;</a>
+      </div>
+    </div>
+
+    <!-- LEVEL 5: HADAL ZONE -->
+    <div class="depth-level depth-level-5 reveal" aria-labelledby="level-5-name">
+      <div class="level-badge" style="--level-accent:#9B5DE5;--level-bg:rgba(5,2,12,0.8);--level-glow:rgba(155,93,229,0.35);" aria-hidden="true">5</div>
+      <div class="level-card">
+        <div class="level-num-label">Level 5</div>
+        <h3 class="level-name" id="level-5-name">Hadal Zone</h3>
+        <div class="level-audience">Expert &nbsp;&middot;&nbsp; Synth Engineers &amp; DSP Enthusiasts</div>
+        <ul class="level-topics">
+          <li>DSP mathematics: filters, convolution, FFT — from first principles</li>
+          <li>Filter design: Z-plane, matched-Z, IIR vs. FIR</li>
+          <li>Building an engine from scratch with the XOlokun SDK</li>
+          <li>Submitting an engine to the open-source fleet</li>
+        </ul>
+        <div class="level-depth-indicator">
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <div class="depth-block active"></div>
+          <span class="depth-block-label">Hadal</span>
+        </div>
+        <a href="guide-sdk-engine.html" class="level-begin-btn" aria-label="Begin Level 5: Hadal Zone — Engine Builder Guide" style="margin-top: 1.2rem; display: inline-block;">Begin &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════ NO PREREQUISITES ═══════════ -->
+<section class="no-prereq-section reveal" aria-labelledby="prereq-heading">
+  <div class="section-label" style="justify-content: center;">The Promise</div>
+  <blockquote class="no-prereq-quote" id="prereq-heading">
+    "The only <em>prerequisite</em> is curiosity."
+  </blockquote>
+
+  <div class="no-prereq-grid">
+    <div class="no-prereq-card">
+      <div class="no-prereq-icon">&#128272;</div>
+      <h4>No Account Needed</h4>
+      <p>Every lesson is accessible without signing up. We will never ask for your email to give you knowledge.</p>
+    </div>
+    <div class="no-prereq-card">
+      <div class="no-prereq-icon">&#128193;</div>
+      <h4>No Download Needed</h4>
+      <p>Browser-based interactive lessons. No installation. Works on any device with a modern browser.</p>
+    </div>
+    <div class="no-prereq-card">
+      <div class="no-prereq-icon">&#127775;</div>
+      <h4>Every Lesson is Free</h4>
+      <p>The curriculum is open. Always. Zero paywalls between you and the knowledge you came here to find.</p>
+    </div>
+    <div class="no-prereq-card">
+      <div class="no-prereq-icon">&#127760;</div>
+      <h4>Every Concept Explained</h4>
+      <p>Nothing is assumed. Even at Level 5, we explain why before we explain how. No unexplained jargon.</p>
+    </div>
+  </div>
+
+  <p style="font-size: 1rem; font-weight: 300; color: var(--text-dim); margin-top: 1.5rem; font-style: italic;">
+    "The ocean doesn't check your credentials."
+  </p>
+</section>
+
+<!-- ═══════════ COMING SOON WAVEFORM ═══════════ -->
+<section class="coming-soon-section reveal" aria-labelledby="coming-soon-heading">
+  <div class="coming-soon-badge">Coming Soon</div>
+  <h2 class="coming-soon-title" id="coming-soon-heading">Learn by <em>playing,</em> not just reading.</h2>
+  <p class="coming-soon-desc">
+    Interactive lessons with browser-based synthesizers are in development. Every concept you learn will have a playable demonstration. Hear what a resonant filter does the moment you read about it.
+  </p>
+
+  <!-- Animated waveform (CSS only) -->
+  <div class="waveform-wrap" aria-hidden="true" id="waveform"></div>
+
+  <p style="font-size: 0.78rem; color: var(--text-faint); margin-bottom: 2rem;">
+    Interactive audio lessons are in development — watch the <a href="updates.html" style="color: var(--teal); text-decoration: none;">Signal</a> for launch announcements.
+  </p>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
+    <a href="community.html">Community</a>
+    <a href="learn.html">Academy</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Omnibus — for all.</div>
+</footer>
+
+<script>
+// ═══════════ HAMBURGER MENU ═══════════
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// ═══════════ SCROLL REVEAL ═══════════
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+// ═══════════ CSS WAVEFORM BARS ═══════════
+(function() {
+  const wrap = document.getElementById('waveform');
+  if (!wrap) return;
+  // One sine-wave period worth of bars
+  const count = 48;
+  const heights = [];
+  for (let i = 0; i < count; i++) {
+    const t = i / count;
+    // Sine envelope with some harmonic content
+    const h = 6 + Math.abs(Math.sin(t * Math.PI * 2) * 40 + Math.sin(t * Math.PI * 6) * 10);
+    heights.push(Math.max(4, Math.min(54, h)));
+  }
+  heights.forEach(function(h, i) {
+    const bar = document.createElement('div');
+    bar.className = 'wave-bar';
+    const dur = 0.8 + (i % 7) * 0.12;
+    const delay = -(i * 0.04);
+    bar.style.cssText =
+      '--bar-dur:' + dur + 's;' +
+      '--bar-delay:' + delay + 's;' +
+      '--bar-height:' + h + 'px;';
+    wrap.appendChild(bar);
+  });
+})();
+</script>
+
+</body>
+</html>

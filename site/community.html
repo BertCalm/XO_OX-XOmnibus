@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Community Ocean — XO_OX Designs. Share presets, adopt a creature, join the expedition. The deep is more interesting when you explore it together.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
+<title>Community Ocean — XO_OX Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── Skip link (accessibility) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100000;
+  padding: 0.75rem 1.5rem;
+  background: var(--gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 0; }
+
+:root {
+  --bg-deep:    #060A10;
+  --bg-warm:    #0A1018;
+  --bg-card:    #0E1620;
+  --bg-surface: #131D28;
+  --bg-raised:  #182435;
+  --gold:       #E9C46A;
+  --gold-dim:   #C4A44E;
+  --gold-glow:  rgba(233, 196, 106, 0.12);
+  --gold-glow-bright: rgba(233, 196, 106, 0.25);
+  --cream:      #E4EAF0;
+  --text:       #B0BEC8;
+  --text-dim:   #6B7F8E;
+  --text-faint: #4A6878;
+  --border:     #152330;
+  --teal:       #2AA19B;
+  --teal-glow:  rgba(42, 161, 155, 0.12);
+  --coral:      #C4636E;
+  --bio-cyan:   #48CAE4;
+  --bio-cyan-glow: rgba(72, 202, 228, 0.15);
+  --bio-cyan-bright: rgba(72, 202, 228, 0.35);
+
+  /* Depth palette */
+  --xo-abyssal: #030608;
+  --xo-pelagic: #07101A;
+  --zone-sunlit:   #48CAE4;
+  --zone-twilight: #0096C7;
+  --zone-midnight: #7B2FBE;
+}
+
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-deep); }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse at 15% 85%, rgba(42, 161, 155, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(72, 202, 228, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(10, 40, 70, 0.18) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--teal); color: var(--bg-deep); }
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ═══════════ NAV ═══════════ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(6, 10, 16, 0.9);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--cream);
+  text-decoration: none;
+}
+.nav-logo .gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--teal);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--cream); }
+.nav-download-btn {
+  background: var(--gold) !important;
+  color: var(--bg-deep) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-download-btn::after { display: none !important; }
+.nav-download-btn:hover { background: var(--cream) !important; color: var(--bg-deep) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1001;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 1px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(6, 10, 16, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1.5rem clamp(1.5rem, 5vw, 6rem);
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav .nav-links.mobile-open { display: flex; }
+  .nav-links a { font-size: 0.75rem !important; }
+  .nav-download-btn { display: inline-block; text-align: center; align-self: flex-start; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ═══════════ SCROLL REVEAL ═══════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════ SECTION SCAFFOLDING ═══════════ */
+.page-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+  opacity: 0.6;
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+/* ═══════════ HERO ═══════════ */
+.community-hero {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(6rem, 12vw, 10rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+}
+
+.community-hero::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(72, 202, 228, 0.07) 0%, transparent 55%),
+    radial-gradient(circle at 50% 65%, rgba(42, 161, 155, 0.05) 0%, transparent 50%);
+  border-radius: 50%;
+  animation: hero-breathe 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hero-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50%       { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+}
+
+/* Floating particles behind hero */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--bio-cyan);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float var(--dur, 8s) var(--delay, 0s) infinite ease-in-out;
+}
+@keyframes particle-float {
+  0%   { transform: translateY(100%) translateX(0); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(-20px) translateX(var(--drift, 20px)); opacity: 0; }
+}
+
+.community-hero-label {
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.community-hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.community-hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.community-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 300;
+  color: var(--text);
+  max-width: 580px;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.community-motto {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════ DIVE CODE SECTION ═══════════ */
+.dive-code-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border);
+}
+
+.bottle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.bottle-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* The "bottle" glowing input */
+.dive-input-bottle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(72, 202, 228, 0.04);
+  border: 1px solid rgba(72, 202, 228, 0.2);
+  border-radius: 40px;
+  padding: 0.1rem 0.1rem 0.1rem 1.5rem;
+  box-shadow:
+    0 0 30px rgba(72, 202, 228, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 0.4s, box-shadow 0.4s;
+  animation: bottle-float 4s ease-in-out infinite;
+}
+
+@keyframes bottle-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+.dive-input-bottle:focus-within {
+  border-color: rgba(72, 202, 228, 0.5);
+  box-shadow:
+    0 0 50px rgba(72, 202, 228, 0.15),
+    0 0 100px rgba(72, 202, 228, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  animation-play-state: paused;
+}
+
+.dive-input-bottle.shake {
+  animation: bottle-shake 0.5s ease, bottle-float 4s ease-in-out infinite 0.5s;
+}
+@keyframes bottle-shake {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  15% { transform: translateX(-6px) translateY(-2px); }
+  30% { transform: translateX(6px) translateY(-4px); }
+  45% { transform: translateX(-4px) translateY(-2px); }
+  60% { transform: translateX(4px) translateY(-4px); }
+  75% { transform: translateX(-2px) translateY(-2px); }
+}
+
+.dive-input-bottle.valid {
+  border-color: rgba(72, 202, 228, 0.7);
+  box-shadow:
+    0 0 60px rgba(72, 202, 228, 0.3),
+    0 0 120px rgba(72, 202, 228, 0.12),
+    inset 0 1px 0 rgba(72, 202, 228, 0.1);
+}
+
+#diveCodeInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream);
+  caret-color: var(--bio-cyan);
+  padding: 0.75rem 0;
+}
+#diveCodeInput::placeholder {
+  color: var(--text-faint);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.dive-submit-btn {
+  background: var(--gold);
+  color: var(--bg-deep);
+  border: none;
+  border-radius: 30px;
+  padding: 0.65rem 1.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+}
+.dive-submit-btn:hover {
+  background: var(--cream);
+  transform: scale(1.03);
+}
+
+.dive-code-hint {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  text-align: center;
+  font-style: italic;
+}
+
+.dive-code-feedback {
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  min-height: 1.4em;
+  text-align: center;
+  transition: color 0.4s, opacity 0.4s;
+  opacity: 0;
+}
+.dive-code-feedback.show { opacity: 1; }
+.dive-code-feedback.error { color: var(--coral); }
+.dive-code-feedback.success { color: var(--bio-cyan); }
+
+/* ── Ripple canvas on success ── */
+.ripple-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ripple-canvas.active { opacity: 1; }
+
+/* ── Hidden gift section ── */
+.mystery-gift-section {
+  max-width: 520px;
+  margin: 2rem auto 0;
+  display: none;
+  animation: gift-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.mystery-gift-section.revealed { display: block; }
+
+@keyframes gift-appear {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mystery-gift-card {
+  background: linear-gradient(135deg, rgba(72, 202, 228, 0.07) 0%, rgba(42, 161, 155, 0.05) 100%);
+  border: 1px solid rgba(72, 202, 228, 0.25);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(72, 202, 228, 0.1);
+}
+.mystery-gift-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--bio-cyan), transparent);
+}
+.mystery-gift-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--bio-cyan);
+  margin-bottom: 0.75rem;
+}
+.mystery-gift-desc {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.mystery-gift-badge {
+  display: inline-block;
+  background: rgba(72, 202, 228, 0.12);
+  border: 1px solid rgba(72, 202, 228, 0.3);
+  border-radius: 20px;
+  padding: 0.4rem 1.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--bio-cyan);
+  text-transform: uppercase;
+}
+
+/* ═══════════ PRESET GALLERY ═══════════ */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.filter-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.filter-btn:hover, .filter-btn.active {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(42, 161, 155, 0.06);
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.preset-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s, transform 0.4s, background 0.4s;
+}
+.preset-card:hover {
+  border-color: rgba(42, 161, 155, 0.3);
+  background: var(--bg-surface);
+  transform: translateY(-3px);
+}
+.preset-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent-color, var(--teal));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.preset-card:hover::before { transform: scaleX(1); }
+
+.preset-tag {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-color, var(--teal));
+  margin-bottom: 0.6rem;
+}
+.preset-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+.preset-engine {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+.preset-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.preset-creator {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+.preset-creator span {
+  color: var(--gold);
+  font-weight: 500;
+}
+.depth-rating {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.depth-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 1px solid var(--text-faint);
+  transition: background 0.3s;
+}
+.depth-dot.filled {
+  background: var(--bio-cyan);
+  border-color: var(--bio-cyan);
+  box-shadow: 0 0 4px rgba(72, 202, 228, 0.5);
+}
+
+.preset-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+.preset-dl-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.gallery-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ═══════════ CREATURE ADOPTION ═══════════ */
+.creature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.creature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.6rem 1.2rem;
+  text-align: center;
+  transition: border-color 0.4s, transform 0.4s, background 0.4s;
+  cursor: default;
+}
+.creature-card:hover {
+  border-color: rgba(255,255,255,0.1);
+  background: var(--bg-surface);
+  transform: translateY(-4px);
+}
+.creature-card:hover .creature-orb { animation-play-state: running; }
+
+.creature-orb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 1.2rem;
+  background: radial-gradient(circle at 38% 38%,
+    rgba(255,255,255,0.15) 0%,
+    var(--orb-color, #2AA19B) 35%,
+    var(--orb-dark, #0A1018) 100%);
+  box-shadow:
+    0 0 20px var(--orb-glow, rgba(42,161,155,0.3)),
+    0 0 40px var(--orb-glow2, rgba(42,161,155,0.1)),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  animation: orb-pulse var(--orb-period, 3s) ease-in-out infinite;
+  animation-play-state: paused;
+}
+@keyframes orb-pulse {
+  0%, 100% { box-shadow: 0 0 20px var(--orb-glow), 0 0 40px var(--orb-glow2), inset 0 -2px 6px rgba(0,0,0,0.4); }
+  50%       { box-shadow: 0 0 35px var(--orb-glow), 0 0 70px var(--orb-glow2), inset 0 -2px 6px rgba(0,0,0,0.4); transform: scale(1.06); }
+}
+
+.creature-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.creature-species {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.2rem;
+}
+.adopt-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+.creature-card:hover .adopt-btn {
+  border-color: var(--orb-color, var(--teal));
+  color: var(--orb-color, var(--teal));
+  background: rgba(42,161,155,0.06);
+}
+
+.adoption-explanation {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  padding: 1.5rem 1.8rem;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 680px;
+}
+
+/* ═══════════ COUPLING LAB ═══════════ */
+.coupling-lab-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.coupling-canvas-wrap {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+
+.coupling-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.coupling-node {
+  cursor: default;
+}
+.coupling-node circle {
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px var(--node-color));
+}
+.coupling-line {
+  stroke-dasharray: 6 4;
+  stroke-dashoffset: 0;
+  animation: dash-flow 2.5s linear infinite;
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -60; }
+}
+
+.coupling-lab-desc {
+  max-width: 500px;
+  text-align: center;
+}
+.coupling-lab-desc h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+.coupling-lab-desc .coming-soon-chip {
+  display: inline-block;
+  background: rgba(123, 47, 190, 0.15);
+  border: 1px solid rgba(123, 47, 190, 0.4);
+  border-radius: 20px;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #A78BFA;
+  margin-bottom: 1rem;
+}
+.coupling-lab-desc p {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.coupling-lab-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+@media (min-width: 720px) {
+  .coupling-lab-inner {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.notify-btn {
+  background: rgba(123, 47, 190, 0.12);
+  border: 1px solid rgba(123, 47, 190, 0.35);
+  border-radius: 4px;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #A78BFA;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.notify-btn:hover {
+  background: rgba(123, 47, 190, 0.2);
+  border-color: rgba(123, 47, 190, 0.6);
+  transform: scale(1.03);
+}
+.notify-btn:active { transform: scale(0.98); }
+
+/* ═══════════ MONTHLY CHALLENGE ═══════════ */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 900px) {
+  .challenge-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.challenge-card {
+  background: linear-gradient(135deg, rgba(233, 196, 106, 0.05) 0%, rgba(14, 22, 32, 0.8) 100%);
+  border: 1px solid rgba(233, 196, 106, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.challenge-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(233,196,106,0));
+}
+
+.challenge-kicker {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.challenge-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+.challenge-desc {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+.challenge-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+.challenge-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.meta-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.meta-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+.submit-challenge-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--bg-deep);
+  border: none;
+  border-radius: 4px;
+  padding: 0.7rem 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+.submit-challenge-btn:hover { background: var(--cream); transform: scale(1.02); }
+
+.past-winners-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.past-winners-card h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+}
+.winner-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.winner-entry:last-child { border-bottom: none; }
+.winner-medal {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.winner-info h5 {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 0.15rem;
+}
+.winner-info span {
+  font-size: 0.68rem;
+  color: var(--text-faint);
+}
+
+/* ═══════════ SONAR FEED ═══════════ */
+.sonar-feed {
+  background: var(--xo-abyssal, #030608);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  max-width: 720px;
+}
+
+.sonar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.sonar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bio-cyan);
+  box-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+  animation: sonar-blink 2s ease-in-out infinite;
+}
+@keyframes sonar-blink {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(72, 202, 228, 0.8); }
+  50%       { opacity: 0.4; box-shadow: 0 0 4px rgba(72, 202, 228, 0.3); }
+}
+.sonar-header-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bio-cyan);
+}
+
+.ping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ping {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.85rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  cursor: default;
+  position: relative;
+}
+.ping:hover {
+  background: rgba(72, 202, 228, 0.04);
+}
+.ping::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 2px;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  background: var(--ping-color, var(--teal));
+  opacity: 0;
+  border-radius: 1px;
+  transition: opacity 0.3s;
+}
+.ping:hover::after { opacity: 0.6; }
+.ping-time {
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.ping-text {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.ping-text strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+.ping-text .engine-ref {
+  color: var(--gold);
+}
+.ping-glow-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ping-color, var(--teal));
+  box-shadow: 0 0 6px var(--ping-color, var(--teal));
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+/* ═══════════ OPEN SOURCE PROMISE ═══════════ */
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+@media (min-width: 600px) {
+  .promise-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.promise-line {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: var(--cream);
+  padding: 1rem 1.4rem;
+  border-left: 2px solid var(--teal);
+  background: rgba(42, 161, 155, 0.03);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.5;
+}
+.promise-line em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.contributor-paths {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0;
+}
+.contributor-path {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.contributor-path:hover {
+  border-color: rgba(42, 161, 155, 0.3);
+  color: var(--teal);
+}
+.contributor-path .path-icon {
+  font-size: 1rem;
+}
+
+.motto-line {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  margin: 2.5rem 0;
+}
+.motto-line em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.github-link-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.65rem 1.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+}
+.github-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ═══════════ CTAs ═══════════ */
+.cta-btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.cta-btn.primary {
+  background: var(--gold);
+  color: var(--bg-deep);
+}
+.cta-btn.primary:hover { background: var(--cream); transform: scale(1.02); }
+.cta-btn.secondary {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.cta-btn.secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ═══════════ FOOTER CTA BAND ═══════════ */
+.footer-cta-band {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  background: radial-gradient(ellipse at 50% 100%, rgba(42,161,155,0.04) 0%, transparent 70%);
+}
+.footer-cta-band h2 {
+  margin-bottom: 1rem;
+}
+.footer-cta-band p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-copy {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="site-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="XO_OX Designs home"><span class="gold">X</span>O_O<span class="gold">X</span></a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="manifesto.html">Manifesto</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="updates.html">Signal</a>
+    <a href="index.html#aquarium">Aquarium</a>
+    <a href="community.html" class="active">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="index.html#download" class="nav-download-btn">Download</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="community-hero" aria-labelledby="community-hero-title">
+  <div class="hero-particles" aria-hidden="true" id="heroParticles"></div>
+
+  <div class="community-hero-label">The Community Ocean</div>
+  <h1 class="community-hero-title reveal" id="community-hero-title">
+    Omnibus — <em>For All.</em>
+  </h1>
+  <p class="community-hero-sub reveal">
+    The deep is more interesting when you explore it together. Share presets, adopt a creature, build the library, and shape what comes next.
+  </p>
+  <p class="community-motto reveal">Free &amp; open. Always.</p>
+</section>
+
+<!-- ═══════════ DIVE CODE ═══════════ -->
+<section class="dive-code-section reveal" aria-labelledby="dive-code-heading" id="dive-code">
+  <div class="section-label">Hidden Depth</div>
+  <h2 id="dive-code-heading">Enter a <em>Dive Code</em></h2>
+  <p class="section-sub">Something washed ashore. Found in an unexpected place. The ocean leaves messages for those paying attention.</p>
+
+  <div class="bottle-container">
+    <div class="bottle-wrap">
+      <div class="dive-input-bottle" id="diveBottle" role="group" aria-label="Dive code entry">
+        <input
+          type="text"
+          id="diveCodeInput"
+          maxlength="20"
+          placeholder="Enter a Dive Code..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-label="Dive code"
+          aria-describedby="dive-feedback"
+        >
+        <button class="dive-submit-btn" id="diveSubmitBtn" type="button">Dive</button>
+      </div>
+    </div>
+    <div class="dive-code-feedback" id="dive-feedback" role="status" aria-live="polite"></div>
+    <p class="dive-code-hint">Codes appear in unexpected places. Keep your eyes open.</p>
+
+    <!-- Hidden gift section, revealed on valid code -->
+    <div class="mystery-gift-section" id="mysteryGift" aria-live="polite">
+      <div class="mystery-gift-card">
+        <div class="mystery-gift-title">You found something in the deep.</div>
+        <p class="mystery-gift-desc">
+          A bioluminescent signal — something left here by the expedition before you arrived.
+          This mystery preset pack surfaces a collection of six hand-crafted coupling experiments,
+          never included in the main library. They belong to you now.
+        </p>
+        <div class="mystery-gift-badge">Deep Discovery — DEEPOPEN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bioluminescent ripple canvas -->
+<canvas class="ripple-canvas" id="rippleCanvas" aria-hidden="true"></canvas>
+
+<!-- ═══════════ PRESET GALLERY ═══════════ -->
+<section class="page-section reveal" aria-labelledby="gallery-heading" id="gallery">
+  <div class="section-label">Expedition Archives</div>
+  <h2 id="gallery-heading">Sounds from the <em>Expedition</em></h2>
+  <p class="section-sub">Community-contributed presets, verified and indexed. Each one carries a depth rating — how far down the sonic rabbit hole it pulls you.</p>
+
+  <div class="filter-bar" role="group" aria-label="Filter presets by category">
+    <button class="filter-btn active" data-filter="all" type="button">All</button>
+    <button class="filter-btn" data-filter="coupling" type="button">Coupling</button>
+    <button class="filter-btn" data-filter="bass" type="button">Bass</button>
+    <button class="filter-btn" data-filter="pads" type="button">Pads</button>
+    <button class="filter-btn" data-filter="leads" type="button">Leads</button>
+    <button class="filter-btn" data-filter="drums" type="button">Drums</button>
+    <button class="filter-btn" data-filter="experimental" type="button">Experimental</button>
+  </div>
+
+  <div class="preset-grid" id="presetGrid">
+
+    <article class="preset-card" data-category="coupling" style="--accent-color: #48CAE4;">
+      <div class="preset-tag">Coupling</div>
+      <h3 class="preset-name">Symbiont Bloom</h3>
+      <div class="preset-engine">ORGANON + OXBOW — Coupling: Entrainment</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>hydra_x</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 4 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Symbiont Bloom preset">Download .xometa</a>
+    </article>
+
+    <article class="preset-card" data-category="bass" style="--accent-color: #B5883E;">
+      <div class="preset-tag">Bass</div>
+      <h3 class="preset-name">Trench Walker</h3>
+      <div class="preset-engine">OGRE — Gravitational Coupling</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>lowend_dao</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 5 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Trench Walker preset">Download .xometa</a>
+    </article>
+
+    <article class="preset-card" data-category="pads" style="--accent-color: #A78BFA;">
+      <div class="preset-tag">Pads</div>
+      <h3 class="preset-name">Pelagic Drift</h3>
+      <div class="preset-engine">OPAL — Granular</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>fog_architecture</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 3 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Pelagic Drift preset">Download .xometa</a>
+    </article>
+
+    <article class="preset-card" data-category="leads" style="--accent-color: #00A6D6;">
+      <div class="preset-tag">Lead</div>
+      <h3 class="preset-name">Neon Strike</h3>
+      <div class="preset-engine">ODDFELIX — Snapshot Synthesis</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>sparkframe</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 2 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Neon Strike preset">Download .xometa</a>
+    </article>
+
+    <article class="preset-card" data-category="drums" style="--accent-color: #0066FF;">
+      <div class="preset-tag">Drums</div>
+      <h3 class="preset-name">Deep Kick 001</h3>
+      <div class="preset-engine">ONSET — Drum Synthesis</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>perc_anon</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 1 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+          <div class="depth-dot"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Deep Kick 001 preset">Download .xometa</a>
+    </article>
+
+    <article class="preset-card" data-category="experimental" style="--accent-color: #E040FB;">
+      <div class="preset-tag">Experimental</div>
+      <h3 class="preset-name">Chromatophore Storm</h3>
+      <div class="preset-engine">OCTOPUS + OUROBOROS — Chaos × Alien</div>
+      <div class="preset-meta">
+        <div class="preset-creator">by <span>deep_signal_x</span></div>
+        <div class="depth-rating" aria-label="Depth rating: 5 out of 5">
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+          <div class="depth-dot filled"></div>
+        </div>
+      </div>
+      <a href="#" class="preset-dl-btn" aria-label="Download Chromatophore Storm preset">Download .xometa</a>
+    </article>
+
+  </div>
+
+  <div class="gallery-cta">
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun/discussions" target="_blank" rel="noopener" class="cta-btn primary">Share Your Preset</a>
+    <p style="margin-top: 1rem; font-size: 0.78rem; color: var(--text-faint);">Submit via GitHub Discussions — presets are reviewed and indexed each week.</p>
+  </div>
+</section>
+
+<!-- ═══════════ CREATURE ADOPTION ═══════════ -->
+<section class="page-section reveal" aria-labelledby="adoption-heading" id="adoption">
+  <div class="section-label">Creature Adoption</div>
+  <h2 id="adoption-heading">Adopt a <em>Creature</em></h2>
+  <p class="section-sub">Each engine is a living creature in the XO_OX ecosystem. Become one's champion. Build their sound library. Shape their identity in the community.</p>
+
+  <div class="creature-grid">
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#00A6D6;--orb-dark:#040D1A;--orb-glow:rgba(0,166,214,0.35);--orb-glow2:rgba(0,166,214,0.12);--orb-period:2.8s;" aria-hidden="true"></div>
+      <div class="creature-name">OddfeliX</div>
+      <div class="creature-species">Neon Tetra</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('OddfeliX')">Adopt</button>
+    </div>
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#E8839B;--orb-dark:#1A080E;--orb-glow:rgba(232,131,155,0.35);--orb-glow2:rgba(232,131,155,0.12);--orb-period:4.2s;" aria-hidden="true"></div>
+      <div class="creature-name">OddOscar</div>
+      <div class="creature-species">Axolotl</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('OddOscar')">Adopt</button>
+    </div>
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#E040FB;--orb-dark:#1A001A;--orb-glow:rgba(224,64,251,0.35);--orb-glow2:rgba(224,64,251,0.12);--orb-period:3.5s;" aria-hidden="true"></div>
+      <div class="creature-name">XOctopus</div>
+      <div class="creature-species">Chromatophore Alien</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('XOctopus')">Adopt</button>
+    </div>
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#00FFB4;--orb-dark:#001A10;--orb-glow:rgba(0,255,180,0.3);--orb-glow2:rgba(0,255,180,0.1);--orb-period:3s;" aria-hidden="true"></div>
+      <div class="creature-name">XOverlap</div>
+      <div class="creature-species">Bioluminescent Knot</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('XOverlap')">Adopt</button>
+    </div>
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#9B5DE5;--orb-dark:#100A1A;--orb-glow:rgba(155,93,229,0.35);--orb-glow2:rgba(155,93,229,0.12);--orb-period:5s;" aria-hidden="true"></div>
+      <div class="creature-name">XOxytocin</div>
+      <div class="creature-species">Siphonophore Circuit</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('XOxytocin')">Adopt</button>
+    </div>
+
+    <div class="creature-card">
+      <div class="creature-orb" style="--orb-color:#FF2D2D;--orb-dark:#1A0404;--orb-glow:rgba(255,45,45,0.35);--orb-glow2:rgba(255,45,45,0.1);--orb-period:2.5s;" aria-hidden="true"></div>
+      <div class="creature-name">XOuroboros</div>
+      <div class="creature-species">Strange Attractor</div>
+      <button class="adopt-btn" type="button" onclick="handleAdopt('XOuroboros')">Adopt</button>
+    </div>
+
+  </div>
+
+  <div class="adoption-explanation">
+    <strong style="color: var(--cream);">How adoption works:</strong> Choose a creature whose sounds you love. Create presets for them. Submit through GitHub. If your presets are accepted into the library, you're credited as a Creature Champion — your name lives in the engine's preset metadata forever.
+  </div>
+</section>
+
+<!-- ═══════════ COUPLING LAB ═══════════ -->
+<section class="page-section reveal" aria-labelledby="coupling-lab-heading" id="coupling-lab">
+  <div class="section-label">Coming Soon</div>
+  <h2 id="coupling-lab-heading">The <em>Coupling Lab</em></h2>
+
+  <div class="coupling-lab-inner">
+    <!-- SVG coupling visualization -->
+    <div class="coupling-canvas-wrap" aria-hidden="true">
+      <svg class="coupling-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Animated coupling lines -->
+        <line class="coupling-line" x1="60" y1="60" x2="240" y2="60"
+          stroke="#48CAE4" stroke-width="1.5" stroke-opacity="0.5"/>
+        <line class="coupling-line" x1="60" y1="60" x2="60" y2="140"
+          stroke="#E9C46A" stroke-width="1.5" stroke-opacity="0.5"
+          style="animation-delay: -0.8s;"/>
+        <line class="coupling-line" x1="240" y1="60" x2="240" y2="140"
+          stroke="#A78BFA" stroke-width="1.5" stroke-opacity="0.4"
+          style="animation-delay: -1.6s;"/>
+        <line class="coupling-line" x1="60" y1="140" x2="240" y2="140"
+          stroke="#2AA19B" stroke-width="1.5" stroke-opacity="0.4"
+          style="animation-delay: -2.4s;"/>
+        <line class="coupling-line" x1="60" y1="60" x2="240" y2="140"
+          stroke="#C4636E" stroke-width="1" stroke-opacity="0.3"
+          style="animation-delay: -1.2s;"/>
+        <!-- Engine nodes -->
+        <g class="coupling-node" style="--node-color:#00A6D6;">
+          <circle cx="60" cy="60" r="14" fill="#060A10" stroke="#00A6D6" stroke-opacity="0.8"/>
+          <circle cx="60" cy="60" r="6" fill="#00A6D6" opacity="0.9"/>
+        </g>
+        <g class="coupling-node" style="--node-color:#E9C46A;">
+          <circle cx="240" cy="60" r="14" fill="#060A10" stroke="#E9C46A" stroke-opacity="0.8"/>
+          <circle cx="240" cy="60" r="6" fill="#E9C46A" opacity="0.9"/>
+        </g>
+        <g class="coupling-node" style="--node-color:#A78BFA;">
+          <circle cx="240" cy="140" r="14" fill="#060A10" stroke="#A78BFA" stroke-opacity="0.8"/>
+          <circle cx="240" cy="140" r="6" fill="#A78BFA" opacity="0.9"/>
+        </g>
+        <g class="coupling-node" style="--node-color:#2AA19B;">
+          <circle cx="60" cy="140" r="14" fill="#060A10" stroke="#2AA19B" stroke-opacity="0.8"/>
+          <circle cx="60" cy="140" r="6" fill="#2AA19B" opacity="0.9"/>
+        </g>
+        <!-- Labels -->
+        <text x="60" y="48" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#6B7F8E">feliX</text>
+        <text x="240" y="48" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#6B7F8E">OPAL</text>
+        <text x="60" y="167" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#6B7F8E">OXBOW</text>
+        <text x="240" y="167" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#6B7F8E">ORACLE</text>
+      </svg>
+    </div>
+
+    <div class="coupling-lab-desc">
+      <div class="coming-soon-chip">Coming Soon</div>
+      <h3>Design coupling recipes<br>in your browser.</h3>
+      <p>No plugin needed. Connect engines visually, audition coupling types, save recipes as shareable links. The entire coupling system — in a web page.</p>
+      <button class="notify-btn" type="button" id="notifyMeBtn" onclick="handleNotifyMe()">Notify me when it launches</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MONTHLY CHALLENGE ═══════════ -->
+<section class="page-section reveal" aria-labelledby="challenge-heading" id="challenge">
+  <div class="section-label">Monthly Challenge</div>
+  <h2 id="challenge-heading">This Month's <em>Challenge</em></h2>
+  <p class="section-sub">One theme. One month. Community judges select the winners.</p>
+
+  <div class="challenge-grid">
+    <div class="challenge-card">
+      <div class="challenge-kicker">March 2026 Challenge</div>
+      <h3 class="challenge-title">The Coupling Challenge</h3>
+      <p class="challenge-desc">
+        Create the best 2-engine coupling preset. Any two engines, any coupling type. Judged on creativity, depth, and how well the two voices speak to each other. The winner's preset ships in V1.2.
+      </p>
+      <div class="challenge-meta">
+        <div class="challenge-meta-item">
+          <span class="meta-label">Deadline</span>
+          <span class="meta-value">Mar 31, 2026</span>
+        </div>
+        <div class="challenge-meta-item">
+          <span class="meta-label">Prize</span>
+          <span class="meta-value">Ships in V1.2 + Credit</span>
+        </div>
+        <div class="challenge-meta-item">
+          <span class="meta-label">Entries</span>
+          <span class="meta-value" id="entryCount">17 so far</span>
+        </div>
+      </div>
+      <a href="https://github.com/BertCalm/XO_OX-XOlokun/discussions" target="_blank" rel="noopener" class="submit-challenge-btn">Submit Your Entry</a>
+    </div>
+
+    <div class="past-winners-card">
+      <h4>Past Winners</h4>
+      <div class="winner-entry">
+        <span class="winner-medal">&#127941;</span>
+        <div class="winner-info">
+          <h5>Abyssal Choir</h5>
+          <span>by signal_witch — Feb 2026 — OPERA + OUROBOROS</span>
+        </div>
+      </div>
+      <div class="winner-entry">
+        <span class="winner-medal">&#127942;</span>
+        <div class="winner-info">
+          <h5>Reef Resonance</h5>
+          <span>by aquatic_00 — Jan 2026 — OBRIX + OXBOW</span>
+        </div>
+      </div>
+      <div class="winner-entry">
+        <span class="winner-medal">&#127941;</span>
+        <div class="winner-info">
+          <h5>Organism Cascade</h5>
+          <span>by emerge_dao — Dec 2025 — ORGANISM + OWARE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SONAR FEED ═══════════ -->
+<section class="page-section reveal" aria-labelledby="sonar-heading" id="sonar">
+  <div class="section-label">Live Activity</div>
+  <h2 id="sonar-heading">Sonar — <em>Live from the Deep</em></h2>
+  <p class="section-sub">Signals rising from the community. Every shared preset, every discovery, every milestone.</p>
+
+  <div class="sonar-feed" role="feed" aria-label="Community activity feed">
+    <div class="sonar-header">
+      <div class="sonar-dot" aria-hidden="true"></div>
+      <span class="sonar-header-title">Signal Feed</span>
+    </div>
+    <div class="ping-list">
+
+      <div class="ping" style="--ping-color: #48CAE4;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">2h ago</span>
+        <span class="ping-text">
+          <strong>Explorer_42</strong> shared a new
+          <span class="engine-ref">OUROBOROS</span> preset — "Attractor Field III"
+        </span>
+      </div>
+
+      <div class="ping" style="--ping-color: #E9C46A;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">6h ago</span>
+        <span class="ping-text">
+          <strong>fog_architecture</strong> opened a Creature Adoption for
+          <span class="engine-ref">XOpal</span>
+        </span>
+      </div>
+
+      <div class="ping" style="--ping-color: #E9C46A;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">1d ago</span>
+        <span class="ping-text">
+          <strong>Chef Quad unlocked</strong> — 10 Explorers reached awakening depth
+        </span>
+      </div>
+
+      <div class="ping" style="--ping-color: #D4AF37;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">3d ago</span>
+        <span class="ping-text">
+          New coupling recipe:
+          <span class="engine-ref">ONSET</span> &#215; <span class="engine-ref">OPERA</span>
+          — "Rhythmic Conductor" by <strong>lowend_dao</strong>
+        </span>
+      </div>
+
+      <div class="ping" style="--ping-color: #9B5DE5;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">4d ago</span>
+        <span class="ping-text">
+          <strong>signal_witch</strong> submitted their entry for the March Coupling Challenge
+        </span>
+      </div>
+
+      <div class="ping" style="--ping-color: #2AA19B;" tabindex="0">
+        <div class="ping-glow-indicator" aria-hidden="true"></div>
+        <span class="ping-time">5d ago</span>
+        <span class="ping-text">
+          Field Guide entry published: <strong>"Understanding KnotTopology"</strong>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OPEN SOURCE PROMISE ═══════════ -->
+<section class="page-section reveal" aria-labelledby="promise-heading" id="open-source">
+  <div class="section-label">The Foundation</div>
+  <h2 id="promise-heading">Open by <em>Design</em></h2>
+
+  <div class="promise-grid">
+    <div class="promise-line">The <em>Code</em> is Open.</div>
+    <div class="promise-line">The <em>Presets</em> are Open.</div>
+    <div class="promise-line">The <em>Knowledge</em> is Open.</div>
+    <div class="promise-line">The <em>Community</em> is Open.</div>
+  </div>
+
+  <p class="section-text" style="margin: 2rem 0; max-width: 600px; font-size: 0.95rem; line-height: 1.8; color: var(--text);">
+    There are no tiers. No paywalls for the tools themselves. No gatekeeping. If you want to understand how any part of XOlokun works — the engine DSP, the preset format, the coupling system — the source is there. Read it. Fork it. Build on it.
+  </p>
+
+  <div class="github-link-row">
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener" class="github-btn">
+      View on GitHub
+    </a>
+    <span style="font-size: 0.78rem; color: var(--text-faint);">Free &amp; open-source under MIT License</span>
+  </div>
+
+  <h3 style="font-size: 1rem; font-weight: 500; color: var(--cream); margin: 2.5rem 0 1rem; letter-spacing: 0.05em;">Contributor Pathways</h3>
+  <div class="contributor-paths">
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun/discussions" target="_blank" rel="noopener" class="contributor-path">
+      <span class="path-icon">&#127911;</span>Preset Designer
+    </a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener" class="contributor-path">
+      <span class="path-icon">&#128279;</span>Coupling Explorer
+    </a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun/issues" target="_blank" rel="noopener" class="contributor-path">
+      <span class="path-icon">&#128030;</span>Bug Reporter
+    </a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener" class="contributor-path">
+      <span class="path-icon">&#127760;</span>Translator
+    </a>
+    <a href="guide-sdk-engine.html" class="contributor-path">
+      <span class="path-icon">&#9881;&#65039;</span>Engine Builder
+    </a>
+  </div>
+
+  <p class="motto-line">
+    For <em>you.</em> For me. For them. For her.<br>
+    For him. For us. For all.
+  </p>
+</section>
+
+<!-- ═══════════ FOOTER CTA BAND ═══════════ -->
+<div class="footer-cta-band reveal">
+  <h2>Join the <em>Expedition</em></h2>
+  <p>The ocean gets bigger every week. Engines, presets, knowledge, community — all growing together. Come dive.</p>
+  <a href="index.html#download" class="cta-btn primary">Download XOlokun Free</a>
+  &nbsp;&nbsp;
+  <a href="guide.html" class="cta-btn secondary">Read the Field Guide</a>
+</div>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-logo">XO_OX</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#instruments">Instruments</a>
+    <a href="guide.html">Field Guide</a>
+    <a href="packs.html">Sound Packs</a>
+    <a href="updates.html">Signal</a>
+    <a href="community.html">Community</a>
+    <a href="https://github.com/BertCalm/XO_OX-XOlokun" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.patreon.com/cw/XO_OX" target="_blank" rel="noopener">Patreon</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 XO_OX Designs. Free &amp; open-source. Omnibus — for all.</div>
+</footer>
+
+<script>
+// ═══════════ HAMBURGER MENU ═══════════
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+  btn.addEventListener('click', function() {
+    const open = nav.classList.toggle('mobile-open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('mobile-open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+// ═══════════ SCROLL REVEAL ═══════════
+(function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+// ═══════════ HERO PARTICLES ═══════════
+(function() {
+  const container = document.getElementById('heroParticles');
+  if (!container) return;
+  const count = 24;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const left = Math.random() * 100;
+    const dur = 7 + Math.random() * 8;
+    const delay = -(Math.random() * dur);
+    const drift = (Math.random() - 0.5) * 60;
+    const size = 1 + Math.random() * 2.5;
+    p.style.cssText =
+      'left:' + left + '%;' +
+      'bottom:0;' +
+      '--dur:' + dur + 's;' +
+      '--delay:' + delay + 's;' +
+      '--drift:' + drift + 'px;' +
+      'width:' + size + 'px;' +
+      'height:' + size + 'px;' +
+      'animation-duration:' + dur + 's;' +
+      'animation-delay:' + delay + 's;';
+    container.appendChild(p);
+  }
+})();
+
+// ═══════════ DIVE CODE ═══════════
+const VALID_CODES = {
+  'DEEPOPEN': true
+};
+
+function showDiveFeedback(msg, type) {
+  const el = document.getElementById('dive-feedback');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'dive-code-feedback show ' + type;
+}
+
+function triggerBioRipple() {
+  const canvas = document.getElementById('rippleCanvas');
+  if (!canvas) return;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  canvas.classList.add('active');
+
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  let radius = 0;
+  const maxRadius = Math.max(window.innerWidth, window.innerHeight) * 0.9;
+  let opacity = 0.7;
+  let frame;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Multiple rings
+    for (let i = 0; i < 4; i++) {
+      const r = Math.max(0, radius - i * 80);
+      if (r <= 0) continue;
+      const alpha = opacity * (1 - i * 0.22) * (1 - radius / maxRadius);
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(72, 202, 228, ' + alpha + ')';
+      ctx.lineWidth = 2 - i * 0.4;
+      ctx.stroke();
+    }
+    radius += 12;
+    opacity *= 0.99;
+    if (radius < maxRadius && opacity > 0.01) {
+      frame = requestAnimationFrame(draw);
+    } else {
+      canvas.classList.remove('active');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+  frame = requestAnimationFrame(draw);
+}
+
+function handleDiveCode() {
+  const input = document.getElementById('diveCodeInput');
+  const bottle = document.getElementById('diveBottle');
+  const gift = document.getElementById('mysteryGift');
+  if (!input || !bottle) return;
+
+  const code = input.value.trim().toUpperCase();
+
+  if (VALID_CODES[code]) {
+    bottle.classList.remove('shake');
+    bottle.classList.add('valid');
+    showDiveFeedback('You found something in the deep.', 'success');
+    triggerBioRipple();
+    setTimeout(function() {
+      if (gift) {
+        gift.classList.add('revealed');
+        gift.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 600);
+  } else {
+    bottle.classList.remove('shake', 'valid');
+    // Force reflow to restart animation
+    void bottle.offsetWidth;
+    bottle.classList.add('shake');
+    showDiveFeedback('This depth has shifted...', 'error');
+    setTimeout(function() {
+      const fb = document.getElementById('dive-feedback');
+      if (fb) fb.classList.remove('show');
+    }, 2500);
+  }
+}
+
+document.getElementById('diveSubmitBtn').addEventListener('click', handleDiveCode);
+document.getElementById('diveCodeInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handleDiveCode();
+});
+
+// ═══════════ FILTER BAR ═══════════
+(function() {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.preset-card');
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+
+// ═══════════ CREATURE ADOPTION ═══════════
+function handleAdopt(name) {
+  console.log('[XO_OX] Adoption interest registered for:', name);
+  // In a real implementation this would open a GitHub Discussion or form
+  window.open('https://github.com/BertCalm/XO_OX-XOlokun/discussions', '_blank', 'noopener,noreferrer');
+}
+
+// ═══════════ COUPLING LAB NOTIFY ═══════════
+function handleNotifyMe() {
+  console.log('[XO_OX] Coupling Lab interest registered');
+  const btn = document.getElementById('notifyMeBtn');
+  if (btn) {
+    btn.textContent = 'Noted. We will signal you.';
+    btn.style.borderColor = 'rgba(72, 202, 228, 0.5)';
+    btn.style.color = '#48CAE4';
+    btn.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>

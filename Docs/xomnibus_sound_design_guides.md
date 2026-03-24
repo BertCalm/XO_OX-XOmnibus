@@ -3705,3 +3705,166 @@ Clavinet D6 physical model — rubber pad strikes a tensioned string, dual magne
 - **+ OMEGA (FM bass):** FM piano + FM bass. Both 2-op, both FM. OMEGA's distillation from complex to pure is a good counterpoint to OPCODE's velocity-sensitive modulation.
 - **+ OASIS + ODDFELLOW + ONKOLO (full Fusion):** Complete Fusion Quad — all SpectralFingerprints active. The five-slot EP ecosystem.
 - **+ OXBOW (entangled reverb):** FM partials feeding chiasmus FDN. The FM sideband spectrum becomes golden-ratio-spaced reverb resonances.
+
+---
+
+## 69. OPERA — XOpera
+**Aria Gold `#D4AF37` · Prefix: `opera_` · 8 voices**
+
+Kuramoto-coupled additive-vocal synthesis — the first XOlokun engine with autonomous narrative intent (Blessing B035). Partials are synchronized via the Kuramoto phase-coupling model; the degree of synchronization (order parameter R) directly controls the stereo field: coherent partials spread wide, chaotic partials collapse to center (B036). EmotionalMemory stores partial phases at note-off and recalls them within a 500ms window, so the next note "wakes up knowing where it was" (B037, named Vangelis in source code). Conductor arc (ArcMode) provides an autonomous dramatic arc — four arc shapes configurable over `opera_arcTime` seconds, with ±5% jitter for organic variation. Seance score: 8.85/10.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| DRAMA | 0–1 | Kuramoto coupling strength: incoherent whisper → unified choir |
+| VOICE | 0–1 | Vowel position + breath/effort balance |
+| CHORUS | 0–1 | Unison count + stereo spread from coherence |
+| STAGE | 0–1 | Reverb depth + arc time scaling |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `opera_drama` | 0–1 | 0.5 | 0.3–0.8 | Kuramoto coupling K — coherence of the partial ensemble |
+| `opera_voice` | 0–1 | 0.5 | 0.2–0.8 | Vocal character: soprano lightness → baritone weight |
+| `opera_vowelA` | 0–5 | 2 | — | Vowel slot A: 0=ah, 1=eh, 2=ee, 3=oh, 4=oo, 5=mm |
+| `opera_vowelB` | 0–5 | 0 | — | Vowel slot B for morphing |
+| `opera_breath` | 0–1 | 0.2 | 0.05–0.4 | Breath noise level — vocal air audibility |
+| `opera_effort` | 0–1 | 0.5 | 0.2–0.8 | Singing effort → harmonic brightness + spectral tilt |
+| `opera_partials` | 4–48 | 24 | 8–40 | Number of additive partials |
+| `opera_detune` | 0–1 | 0.15 | 0.05–0.3 | Partial detuning — choir spread |
+| `opera_arcMode` | 0–2 | 1 | — | 0=off, 1=Conductor on, 2=manual only |
+| `opera_arcTime` | 4–120 | 30 | 8–60 | Conductor arc duration in seconds |
+| `opera_vibRate` | 0.01–8 | 5.5 | 3–7 | Vibrato rate |
+| `opera_vibDepth` | 0–1 | 0.2 | 0.05–0.4 | Vibrato depth |
+| `opera_unison` | 1–4 | 2 | 1–4 | Unison count per voice |
+| `opera_width` | 0–1 | 0.6 | 0.3–0.9 | Stereo width (modulated by R coherence via B036) |
+| `opera_portamento` | 0–2 | 0.0 | 0–0.3 | Portamento time |
+| `opera_stage` | 0–1 | 0.4 | 0.2–0.7 | Reverb depth — the stage the choir inhabits |
+
+### Coupling Interface
+- **Sends:** Kuramoto order parameter R as modulation signal via `AmpToFilter` (coherence level driving other engines), Conductor arc state for `EnvToMorph`
+- **Receives:** `LFOToPitch` for vibrato synchronization, `EnvToFilter` for dramatic tension modulating vowel position
+
+### Sound Design Tips
+- **Full Conductor arc:** ArcMode=1, `opera_arcTime` 30–60s. Sustain a chord and listen — the drama unfolds automatically. Incoherent/chaotic at beginning, building to unified climax, then resolving.
+- **Coherence automation:** ArcMode=0, automate `opera_drama` from 0→1 manually. Feel how the stereo field widens as partials lock together. The coherence parameter IS the performance.
+- **EmotionalMemory:** Play staccato notes 400ms apart. The phases recall — notes feel connected across the silence. Play notes 600ms+ apart — fresh phase state each time. The 500ms threshold is a musical parameter.
+- **Breath + effort expression:** Use mod wheel for `opera_effort` in real time. Soft = low effort + little breath; hard = full effort + no breath (breath disappears under full projection).
+- **Choir of choirs:** Two OPERA instances, different vowels, different arc phases. Contrapuntal autonomous narratives.
+
+### Recommended Pairings
+- **+ OTO (mouth organs):** Breath-driven physical reed instruments accompanying an operatic vocal ensemble. Both use breath pressure as a primary parameter.
+- **+ OSIER (chamber strings):** OSIER's companion planting pitch attractor shapes the harmonic language; OPERA's Conductor follows it. Natural harmonic co-evolution.
+- **+ OXBOW (entangled reverb):** Operatic partials through chiasmus FDN. The Kuramoto coherence field becomes a golden-spiral reverb.
+
+---
+
+## 70. OSMOSIS — XOsmosis
+**Surface Tension Silver `#C0C0C0` · Prefix: `osmo_` · Analysis engine (no synthesis output)**
+
+External audio membrane analysis engine — the only XOlokun engine that produces no synthesis output. `isAnalysisEngine()` returns true. Instead, OSMOSIS analyzes an external audio input (sidechain or live input) and produces coupling data that other engines can receive: envelope follower (one-pole attack/release tracking amplitude), zero-crossing pitch detection (fundamental frequency estimate), and four spectral RMS bands (sub/lo-mid/hi-mid/presence). Membrane LP filter optionally colors the audio pass-through for tonal integration. Biological framing: OSMOSIS is a semi-permeable membrane — it selects which aspects of an external signal pass into the XOlokun ecosystem.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| PERMEABILITY | 0–1 | How much external audio crosses the membrane (coupling output depth) |
+| SELECTIVITY | 0–1 | Spectral band selectivity — which bands are allowed to pass |
+| REACTIVITY | 0–1 | How quickly OSMOSIS responds to changes in the external signal |
+| MEMORY | 0–1 | How long coupling data persists after external signal stops |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `osmo_permeability` | 0–1 | 0.5 | 0.3–0.8 | Coupling output gain from external signal analysis |
+| `osmo_selectivity` | 0–1 | 0.5 | 0.2–0.8 | Band selectivity (high = only dominant band passes) |
+| `osmo_reactivity` | 0–1 | 0.5 | 0.2–0.8 | Envelope follower response speed (attack/release) |
+| `osmo_memory` | 0–1 | 0.3 | 0.1–0.6 | Coupling data hold time after signal disappears |
+| `osmo_envAttack` | 0.001–0.5 | 0.01 | 0.005–0.05 | Envelope follower attack time |
+| `osmo_envRelease` | 0.01–2 | 0.1 | 0.05–0.5 | Envelope follower release time |
+| `osmo_pitchConfidence` | 0–1 | 0.5 | 0.3–0.8 | Zero-crossing pitch detection confidence threshold |
+| `osmo_membraneLP` | 20–8000 | 2000 | 200–4000 | Membrane LP filter for audio pass-through coloring |
+
+### Coupling Interface
+- **Sends:** Four coupling signals: amplitude envelope (`AmpToFilter`), pitch estimate (`LFOToPitch`), spectral bands 1–4 (`EnvToFilter`, `EnvToMorph`, `AudioToFM`, `AmpToFilter` variants)
+- **Receives:** External audio input via the standard coupling audio path — any external signal routable through the DAW's sidechain
+
+### Sound Design Tips
+- **Vocal follower:** Route a vocal through OSMOSIS. Connect envelope output to `oasis_drive` or `opera_drama`. The vocal dynamics now control electric piano drive or choral coherence.
+- **Drum sidechain coupling:** Route kick+snare through OSMOSIS. Band 1 (sub) from the kick drives OGRE's `ogre_subLevel`. Band 3 (hi-mid) from snare drives OVERFLOW's pressure accumulator. The drum mix becomes the modulator for the synth mix.
+- **Pitch tracking:** OSMOSIS's zero-crossing pitch output can drive `LFOToPitch` on any engine. Route a bass guitar and have OLATE's filter cutoff track the bass note in real time.
+- **Temporal memory:** `osmo_memory` 0.6 — coupling data holds after the external signal drops out. Used to create delayed responses where the synth reacts to where the external signal *was*, not where it is.
+- **Live performance:** OSMOSIS is the bridge between live instruments and XOlokun in performance. A drummer triggers the synthesis world; a guitarist's pitch becomes a modulation source.
+
+### Recommended Pairings
+- **+ OVERFLOW (pressure):** Route dense live ensemble through OSMOSIS — the ensemble density builds OVERFLOW's pressure accumulator. The live band creates the pressure release.
+- **+ OPERA (vocal):** Route live singer through OSMOSIS. Vocal amplitude drives OPERA's `opera_drama` (Kuramoto coupling). The live voice coherence mirrors the synthetic choir coherence.
+- **+ Any engine via coupling:** OSMOSIS is universally useful as a performance modifier — it makes any pair of engines responsive to live input.
+
+---
+
+## 71. OXYTOCIN — XOxytocin
+**Synapse Violet `#9B5DE5` · Prefix: `oxy_` · 8 voices · Fleet Leader 9.5/10**
+
+Circuit-modeling synthesizer built on Sternberg's Triangular Theory of Love — three synthesis parameters directly map to the three love components: intimacy (circuit warmth, filter resonance, spectral glow), passion (drive intensity, envelope sharpness, modulation depth), commitment (phase stability, voice coherence, circuit memory across notes). Five legend lineages: RE-201 (Roland Space Echo tape warmth), MS-20 (Korg hard sync + patch bay), Moog Ladder (24dB LP resonant precision), Serge (West Coast non-linear waveshaping), Buchla (Music Easel timbral freedom). TriangularCoupling #15: three coupling bands (intimacy/passion/commitment) that other engines can read as distinct modulation sources. Blessing B040: note duration is a first-class synthesis parameter — long notes unlock timbral states unavailable to short notes (circuit warmth accumulates with held duration). Seance: 9.5/10, unanimous, new fleet leader.
+
+### Macros
+
+| Macro | Range | Effect |
+|-------|-------|--------|
+| `oxy_macroA` (INTIMACY) | 0–1 | Circuit warmth + filter resonance glow |
+| `oxy_macroB` (PASSION) | 0–1 | Drive intensity + envelope sharpness |
+| `oxy_macroC` (COMMITMENT) | 0–1 | Phase stability + voice coherence across notes |
+| `oxy_macroD` (MEMORY) | 0–1 | Circuit memory depth + note-duration synthesis unlock speed |
+
+### Key Parameters
+
+| Parameter | Range | Default | Sweet Spot | Notes |
+|-----------|-------|---------|------------|-------|
+| `oxy_intimacy` | 0–1 | 0.5 | 0.3–0.8 | Core intimacy axis — filter warmth, spectral glow |
+| `oxy_passion` | 0–1 | 0.5 | 0.2–0.8 | Core passion axis — drive, envelope speed |
+| `oxy_commitment` | 0–1 | 0.5 | 0.3–0.9 | Core commitment axis — phase stability, coherence |
+| `oxy_warmth_rate` | 0–1 | 0.3 | 0.1–0.6 | Speed of intimacy accumulation over note duration |
+| `oxy_passion_rate` | 0–1 | 0.5 | 0.2–0.8 | Passion envelope response speed |
+| `oxy_commit_rate` | 0–1 | 0.2 | 0.05–0.4 | Commitment bonding rate per note |
+| `oxy_entanglement` | 0–1 | 0.4 | 0.2–0.7 | TriangularCoupling inter-band entanglement |
+| `oxy_circuit_age` | 0–1 | 0.3 | 0.1–0.5 | Legend lineage age → vintage character |
+| `oxy_circuit_noise` | 0–1 | 0.15 | 0.05–0.3 | Circuit noise floor — RE-201 tape hiss, MS-20 grunge |
+| `oxy_memory_depth` | 0–1 | 0.5 | 0.2–0.8 | How much commitment state carries forward between notes |
+| `oxy_memory_decay` | 0–1 | 0.3 | 0.1–0.5 | How fast committed state decays between notes |
+| `oxy_topology` | 0–2 | 0 | — | TriangularCoupling topology: 0=balanced, 1=intimacy-led, 2=passion-led |
+| `oxy_topology_lock` | 0–8 | 0 | — | Lock topology to specific legend lineage (0=auto) |
+| `oxy_feedback` | 0–1 | 0.2 | 0.05–0.4 | Circuit feedback path |
+| `oxy_cutoff` | 20–20000 | 3000 | 500–8000 | Filter cutoff |
+| `oxy_attack` | 0.001–2 | 0.05 | 0.01–0.3 | Envelope attack |
+| `oxy_decay` | 0.01–4 | 0.4 | 0.1–1.5 | Envelope decay |
+| `oxy_sustain` | 0–1 | 0.7 | 0.4–0.9 | Sustain level |
+| `oxy_release` | 0.01–8 | 1.2 | 0.3–4.0 | Release |
+| `oxy_lfo_rate` | 0.01–8 | 0.8 | 0.05–4 | Primary LFO |
+| `oxy_lfo_depth` | 0–1 | 0.25 | 0.1–0.5 | LFO depth |
+| `oxy_lfo_shape` | 0–4 | 0 | — | LFO shape: sine/triangle/saw/square/S&H |
+
+### Coupling Interface — TriangularCoupling #15
+- **Sends:** Three distinct coupling bands via TriangularCoupling: `bandA` (intimacy level) → `AmpToFilter`, `bandB` (passion level) → `EnvToFilter`, `bandC` (commitment level) → `EnvToMorph`. `bandD` (commitment memory average) → `LFOToPitch`
+- **Receives:** Any coupling type — OXYTOCIN's three axes respond independently to different coupling sources
+- **Best as source for:** Any engine that benefits from slowly-evolving, emotionally-contoured modulation. The intimacy axis builds slowly (circuit warmth) and is an excellent pad filter modulator. The passion axis is fast (drive) — good for envelope modulation of drums.
+
+### Sound Design Tips
+- **B040 note duration synthesis:** Hold a single note for 8+ seconds. Feel the circuit warmth accumulate — `oxy_intimacy` literally grows with held duration. Short staccato notes are bright and detached; whole notes bloom into deeply warm, committed tone. This is the flagship mechanic.
+- **RE-201 lineage:** `oxy_topology_lock=1` (RE-201), `oxy_circuit_age` 0.5, `oxy_circuit_noise` 0.2. Tape warmth, slightly compressed, time-smeared. Perfect for lo-fi and nostalgic production.
+- **MS-20 commitment tension:** `oxy_topology_lock=2` (MS-20), `oxy_passion` high, `oxy_commitment` low. Unstable, hard-sync-adjacent tension. Great for leads and textures with urgency.
+- **Buchla freedom:** `oxy_topology_lock=5` (Buchla), `oxy_entanglement` 0.7 — the three love components become entangled. Commitment affects intimacy; passion feeds commitment. Non-linear emotional dynamics.
+- **TriangularCoupling as emotional architecture:** Connect OXYTOCIN's `bandA` (intimacy) to a pad engine's filter cutoff. As you play long, warm notes, the pad filter opens. The warmth of OXYTOCIN's performance is physically manifest in the pad's brightness. Emotional state mapped to sonic state.
+- **Love triangle preset design:** Design presets that tell a story — low intimacy, high passion, no commitment (infatuation). Or high intimacy, low passion, high commitment (long marriage). The theory maps directly to sound character.
+
+### Recommended Pairings
+- **+ OPERA (vocal):** Kuramoto coherence (OPERA's love for its own partials) + Triangular Love (OXYTOCIN's love physics). TriangularCoupling `bandC` (commitment) driving OPERA's `opera_drama`. The more committed, the more coherent the choir.
+- **+ OCHRE (copper piano):** OCHRE's thermal drift + OXYTOCIN's circuit warmth accumulation. Two instruments that grow warmer over time, in complementary ways.
+- **+ OSMOSIS (analysis):** Route external vocal through OSMOSIS. OSMOSIS envelope drives OXYTOCIN's `oxy_passion`. The live voice's intensity controls the synthesizer's passion level. Human emotion transmitted through circuits.
+
+---
+
+*End of Sound Design Guide — 71 engines covered*
